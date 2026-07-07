@@ -73,6 +73,16 @@ The output includes links from both:
 - `https://www.youtube.com/@DrAlexClarke/videos`
 - `https://www.youtube.com/@DrAlexClarke/streams`
 
+## Fetch a Video Transcript
+
+The transcript puller also uses `youtubei.js` and defaults to one YouTube request per minute. This test video ID comes from the checkpointed video list:
+
+```powershell
+npm run fetch:transcript -- --video-id --l6rRIfksQ --json-output src/transcripts/json/--l6rRIfksQ.json --txt-output src/transcripts/txt/--l6rRIfksQ.txt --tsv-output src/transcripts/tsv/--l6rRIfksQ.tsv
+```
+
+JSON stores structured segment data. TXT is a readable timestamped transcript. TSV is for structured timestamp/link review.
+
 ## Content Model
 
 Use `segment` as the primary searchable object. Segment kinds currently planned:
