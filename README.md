@@ -83,6 +83,13 @@ npm run fetch:transcript -- --video-id --l6rRIfksQ --json-output src/transcripts
 
 JSON stores structured segment data. TXT is a readable timestamped transcript. TSV is for structured timestamp/link review.
 
+Convert existing transcript JSON without calling YouTube:
+
+```powershell
+npm run convert:transcript-json -- src/transcripts/json/--l6rRIfksQ.json --output-dir src/transcripts/txt
+npm run convert:transcript-json -- --format tsv src/transcripts/json/--l6rRIfksQ.json --output-dir src/transcripts/tsv
+```
+
 ## Content Model
 
 Use `segment` as the primary searchable object. Segment kinds currently planned:

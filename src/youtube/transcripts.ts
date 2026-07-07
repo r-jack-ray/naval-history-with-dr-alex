@@ -1,5 +1,5 @@
 import { dirname } from "node:path";
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 
 import { Innertube } from "youtubei.js";
 
@@ -97,10 +97,104 @@ export async function writeTranscriptOutputs(
   await Promise.all(writes);
 }
 
+export async function readVideoTranscriptJson(path: string): Promise<VideoTranscript> {
+  return parseVideoTranscriptJson(JSON.parse(await readFile(path, "utf8")), path);
+}
+
+export function parseVideoTranscriptJson(value: unknown, sourceName = "transcript JSON"): VideoTranscript {
+  const object = asRecord(value);
+  if (!object) {
+    throw new Error(`${sourceName} must contain a JSON object.`);
+  }
+
+  const videoId = readString(object, "videoId");
+  if (!videoId) {
+    throw new Error(`${sourceName} is missing string field videoId.`);
+  }
+
+  const segments = readTranscriptSegmentsArray(object.segments, sourceName);
+  const transcript: VideoTranscript = {
+    videoId,
+    source: "youtubei.js",
+    fetchedAt: readString(object, "fetchedAt") ?? new Date(0).toISOString(),
+    availableLanguages: readStringArray(object.availableLanguages),
+    segments,
+  };
+
+  const selectedLanguage = readString(object, "selectedLanguage");
+  if (selectedLanguage !== undefined) {
+    transcript.selectedLanguage = selectedLanguage;
+  }
+
+  return transcript;
+}
+
 export function transcriptToTxt(transcript: VideoTranscript): string {
   return `${transcript.segments
     .map((segment) => `[${segment.startTimeText}] ${segment.text}`)
     .join("\n")}\n`;
+}
+
+function readTranscriptSegmentsArray(value: unknown, sourceName: string): TranscriptSegment[] {
+  if (!Array.isArray(value)) {
+    throw new Error(`${sourceName} is missing array field segments.`);
+  }
+
+  return value.map((segment, index) => readTranscriptSegment(segment, `${sourceName} segment ${index + 1}`));
+}
+
+function readTranscriptSegment(value: unknown, sourceName: string): TranscriptSegment {
+  const object = asRecord(value);
+  if (!object) {
+    throw new Error(`${sourceName} must be an object.`);
+  }
+
+  const text = readString(object, "text");
+  if (!text) {
+    throw new Error(`${sourceName} is missing string field text.`);
+  }
+
+  const startMs = integerValue(object.startMs) ?? secondsToMs(numberValue(object.startSeconds));
+  const endMs = integerValue(object.endMs) ?? secondsToMs(numberValue(object.endSeconds));
+  const startSeconds = integerValue(object.startSeconds) ?? (startMs === undefined ? undefined : Math.floor(startMs / 1000));
+  const endSeconds = integerValue(object.endSeconds) ?? (endMs === undefined ? undefined : Math.ceil(endMs / 1000));
+
+  if (
+    startMs === undefined ||
+    endMs === undefined ||
+    startSeconds === undefined ||
+    endSeconds === undefined
+  ) {
+    throw new Error(`${sourceName} is missing usable timestamp fields.`);
+  }
+
+  const segment: TranscriptSegment = {
+    startMs,
+    endMs,
+    startSeconds,
+    endSeconds,
+    startTimeText: readString(object, "startTimeText") ?? formatTimestamp(startSeconds),
+    text,
+  };
+
+  const targetId = readString(object, "targetId");
+  if (targetId !== undefined) {
+    segment.targetId = targetId;
+  }
+
+  return segment;
+}
+
+function secondsToMs(value: number | undefined): number | undefined {
+  return value === undefined ? undefined : Math.round(value * 1000);
+}
+
+function numberValue(value: unknown): number | undefined {
+  return typeof value === "number" && Number.isFinite(value) ? value : undefined;
+}
+
+function readStringArray(value: unknown): string[] {
+  return Array.isArray(value) ? value.filter((item): item is string => typeof item === "string") : [];
 }
 
 export function transcriptToTsv(transcript: VideoTranscript): string {
