@@ -2,7 +2,7 @@
 
 Static reference archive tooling for [Naval History with Dr Alex](https://www.youtube.com/@DrAlexClarke).
 
-This project is being set up as a sibling to `ancient-egypt-and-the-bible`, but it uses a segment-first model rather than a Q&A-first model. The core curated unit is a video segment: a chapter, notable point, actual Q&A exchange, or optional transcript excerpt.
+The archive uses a segment-first model. The core curated unit is a video segment: a chapter, notable point, actual Q&A exchange, or optional transcript excerpt.
 
 ## Current Status
 
@@ -86,4 +86,4 @@ Every curated segment should eventually point back to a video ID, timestamp, can
 
 ## Contributor Notes
 
-See `AGENTS.md` for repository-specific guidance. Until this project has full local configuration, use `C:\Workspaces\ancient-egypt-and-the-bible` as a reference for setup patterns, while preserving this project's segment-first model.
+See `AGENTS.md` for repository-specific contributor and agent guidance.
