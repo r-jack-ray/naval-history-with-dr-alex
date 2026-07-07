@@ -1,0 +1,16 @@
+node_modules/
+dist/
+
+# Generated reports, validation output, and smoke-test output.
+/reports/
+
+# Task notes: keep Markdown planning/context notes, ignore other scratch output.
+task-notes/**
+!task-notes/
+!task-notes/**/
+!task-notes/**/*.md
+
+# Hugo/static-site local build artifacts.
+/site/.hugo_build.lock
+/site/public/
+/site/resources/_gen/

@@ -1,0 +1,148 @@
+#!/usr/bin/env node
+import {
+  defaultChannelVideoLinksOptions,
+  fetchChannelVideoLinks,
+  writeSplitVideoLinksOutput,
+  writeVideoLinksOutput,
+  type FetchChannelVideoLinksOptions,
+} from "../youtube/channel-video-links.js";
+
+type CliOptions = FetchChannelVideoLinksOptions & {
+  output?: string;
+  linksOutput?: string;
+  metadataOutput?: string;
+  quiet: boolean;
+};
+
+async function main(): Promise<void> {
+  const options = parseArgs(process.argv.slice(2));
+  const fetchOptions: FetchChannelVideoLinksOptions = {
+    channelUrl: options.channelUrl,
+    requestDelayMs: options.requestDelayMs,
+  };
+
+  if (options.maxPages !== undefined) {
+    fetchOptions.maxPages = options.maxPages;
+  }
+
+  if (!options.quiet) {
+    fetchOptions.logger = (message) => console.error(message);
+  }
+  if (options.includeVideoDetails !== undefined) {
+    fetchOptions.includeVideoDetails = options.includeVideoDetails;
+  }
+  if (options.detailLimit !== undefined) {
+    fetchOptions.detailLimit = options.detailLimit;
+  }
+
+  const result = await fetchChannelVideoLinks(fetchOptions);
+
+  if (options.linksOutput || options.metadataOutput) {
+    const linksPath = options.linksOutput ?? "reports/dr-alex-video-list.json";
+    const metadataPath = options.metadataOutput ?? "reports/dr-alex-video-metadata.json";
+    await writeSplitVideoLinksOutput(linksPath, metadataPath, result);
+    console.error(`Wrote ${result.links.length} base video links to ${linksPath}`);
+    console.error(`Wrote ${result.links.length} video metadata records to ${metadataPath}`);
+    return;
+  }
+
+  if (options.output) {
+    await writeVideoLinksOutput(options.output, result);
+    console.error(`Wrote ${result.links.length} unique video links to ${options.output}`);
+    return;
+  }
+
+  console.log(JSON.stringify(result, null, 2));
+}
+
+function parseArgs(args: string[]): CliOptions {
+  const defaults = defaultChannelVideoLinksOptions();
+  const options: CliOptions = { ...defaults, quiet: false };
+
+  for (let index = 0; index < args.length; index += 1) {
+    const arg = args[index];
+
+    switch (arg) {
+      case "--channel-url":
+        options.channelUrl = readValue(args, ++index, arg);
+        break;
+      case "--output":
+        options.output = readValue(args, ++index, arg);
+        break;
+      case "--links-output":
+        options.linksOutput = readValue(args, ++index, arg);
+        break;
+      case "--metadata-output":
+        options.metadataOutput = readValue(args, ++index, arg);
+        break;
+      case "--request-delay-ms":
+        options.requestDelayMs = readPositiveInteger(readValue(args, ++index, arg), arg);
+        break;
+      case "--max-pages":
+        options.maxPages = readPositiveInteger(readValue(args, ++index, arg), arg);
+        break;
+      case "--include-video-details":
+        options.includeVideoDetails = true;
+        break;
+      case "--detail-limit":
+        options.detailLimit = readPositiveInteger(readValue(args, ++index, arg), arg);
+        break;
+      case "--quiet":
+        options.quiet = true;
+        break;
+      case "--help":
+      case "-h":
+        printHelp();
+        process.exit(0);
+      default:
+        throw new Error(`Unknown argument: ${arg ?? ""}`);
+    }
+  }
+
+  return options;
+}
+
+function readValue(args: string[], index: number, name: string): string {
+  const value = args[index];
+  if (!value) {
+    throw new Error(`Missing value for ${name}.`);
+  }
+  return value;
+}
+
+function readPositiveInteger(value: string, name: string): number {
+  const parsed = Number(value);
+  if (!Number.isInteger(parsed) || parsed < 0) {
+    throw new Error(`${name} must be a non-negative integer.`);
+  }
+  return parsed;
+}
+
+function printHelp(): void {
+  console.log(`Usage: npm run fetch:video-links -- [options]
+
+Options:
+  --channel-url <url>       Channel URL or tab URL. Defaults to Dr. Alex Clarke's channel.
+  --output <path>           Write combined JSON to a file instead of stdout.
+  --links-output <path>     Write base video list JSON. Defaults when metadata output is used.
+  --metadata-output <path>  Write video metadata JSON. Defaults when links output is used.
+  --request-delay-ms <ms>   Delay between YouTube requests. Defaults to 60000.
+  --max-pages <count>       Limit pages fetched per tab for safe probes.
+  --include-video-details   Fetch exact per-video publish/upload/stream timestamps.
+  --detail-limit <count>    Limit exact per-video detail calls.
+  --quiet                   Suppress progress logs.
+  --help                    Show this help.
+
+Examples:
+  npm run fetch:video-links -- --output reports/dr-alex-video-links.json
+  npm run fetch:video-links -- --links-output reports/dr-alex-video-list.json --metadata-output reports/dr-alex-video-metadata.json
+  npm run fetch:video-links -- --include-video-details --detail-limit 10 --metadata-output reports/dr-alex-video-metadata-probe.json
+  npm run fetch:video-links -- --max-pages 1 --request-delay-ms 5000
+`);
+}
+
+main().catch((error: unknown) => {
+  const message = error instanceof Error ? error.message : String(error);
+  console.error(`Failed to fetch channel video links: ${message}`);
+  process.exitCode = 1;
+});
