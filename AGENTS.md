@@ -23,7 +23,7 @@ npm run build
 npm run check:types
 npm test
 npm run check
-npm run fetch:video-links -- --links-output reports/dr-alex-video-list.json --metadata-output reports/dr-alex-video-metadata.json
+npm run fetch:video-links -- --links-output reports/dr-alex-video-list.json --metadata-output reports/dr-alex-video-metadata.json --checkpoint-output reports/dr-alex-video-fetch-checkpoint.json
 ```
 
 Use normal Git for repository operations:

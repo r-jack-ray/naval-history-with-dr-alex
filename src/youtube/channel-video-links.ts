@@ -35,6 +35,7 @@ export interface FetchChannelVideoLinksOptions {
   maxPages?: number;
   includeVideoDetails?: boolean;
   detailLimit?: number;
+  checkpointOutput?: string;
   logger?: (message: string) => void;
 }
 
@@ -90,6 +91,8 @@ type TabCollection = {
   pagesFetched: number;
   rawCount: number;
 };
+
+type TabProgressCallback = (collection: TabCollection) => Promise<void>;
 
 const defaultChannelUrl = "https://www.youtube.com/@DrAlexClarke";
 
@@ -154,9 +157,50 @@ export async function fetchChannelVideoLinks(
   }
 
   const channel = await youtube.getChannel(channelId);
+  const fetchedAt = new Date().toISOString();
+  const tabState: ChannelVideoLinksResult["tabs"] = {
+    videos: {
+      url: `${channelUrl}/videos`,
+      pagesFetched: 0,
+      rawCount: 0,
+    },
+    streams: {
+      url: `${channelUrl}/streams`,
+      pagesFetched: 0,
+      rawCount: 0,
+    },
+  };
+  const recordsByTab: Record<ChannelVideoTab, ChannelVideoLink[]> = {
+    videos: [],
+    streams: [],
+  };
+
+  const writeCheckpoint = async (tab: ChannelVideoTab, collection: TabCollection) => {
+    recordsByTab[tab] = [...collection.records];
+    tabState[tab] = {
+      ...tabState[tab],
+      pagesFetched: collection.pagesFetched,
+      rawCount: collection.rawCount,
+    };
+    options.logger?.(
+      `${tab}: fetched page ${collection.pagesFetched}; raw items=${collection.rawCount}; extracted links=${collection.records.length}`,
+    );
+
+    if (options.checkpointOutput) {
+      await writeVideoLinksOutput(
+        options.checkpointOutput,
+        buildLinksResult(channelUrl, channelId, fetchedAt, options.requestDelayMs, tabState, recordsByTab),
+      );
+    }
+  };
+
   const [videos, streams] = [
-    await collectTab("videos", (await channel.getVideos()) as FeedLike, options.maxPages),
-    await collectTab("streams", (await channel.getLiveStreams()) as FeedLike, options.maxPages),
+    await collectTab("videos", (await channel.getVideos()) as FeedLike, options.maxPages, (collection) =>
+      writeCheckpoint("videos", collection),
+    ),
+    await collectTab("streams", (await channel.getLiveStreams()) as FeedLike, options.maxPages, (collection) =>
+      writeCheckpoint("streams", collection),
+    ),
   ];
   const links = mergeLinks([...videos.records, ...streams.records]);
 
@@ -167,20 +211,9 @@ export async function fetchChannelVideoLinks(
   return {
     channelUrl,
     channelId,
-    fetchedAt: new Date().toISOString(),
+    fetchedAt,
     requestDelayMs: options.requestDelayMs,
-    tabs: {
-      videos: {
-        url: `${channelUrl}/videos`,
-        pagesFetched: videos.pagesFetched,
-        rawCount: videos.rawCount,
-      },
-      streams: {
-        url: `${channelUrl}/streams`,
-        pagesFetched: streams.pagesFetched,
-        rawCount: streams.rawCount,
-      },
-    },
+    tabs: tabState,
     links,
   };
 }
@@ -298,7 +331,12 @@ export function defaultChannelVideoLinksOptions(): FetchChannelVideoLinksOptions
   };
 }
 
-async function collectTab(tab: ChannelVideoTab, firstFeed: FeedLike, maxPages?: number): Promise<TabCollection> {
+async function collectTab(
+  tab: ChannelVideoTab,
+  firstFeed: FeedLike,
+  maxPages?: number,
+  onPage?: TabProgressCallback,
+): Promise<TabCollection> {
   const records: ChannelVideoLink[] = [];
   let feed = firstFeed;
   let pagesFetched = 0;
@@ -316,6 +354,8 @@ async function collectTab(tab: ChannelVideoTab, firstFeed: FeedLike, maxPages?: 
         records.push(record);
       }
     }
+
+    await onPage?.({ records, pagesFetched, rawCount });
 
     if (!feed.has_continuation || (maxPages !== undefined && pagesFetched >= maxPages)) {
       return { records, pagesFetched, rawCount };
@@ -371,6 +411,27 @@ function mergeLinks(records: ChannelVideoLink[]): ChannelVideoLink[] {
   }
 
   return [...linksById.values()];
+}
+
+function buildLinksResult(
+  channelUrl: string,
+  channelId: string,
+  fetchedAt: string,
+  requestDelayMs: number,
+  tabs: ChannelVideoLinksResult["tabs"],
+  recordsByTab: Record<ChannelVideoTab, ChannelVideoLink[]>,
+): ChannelVideoLinksResult {
+  return {
+    channelUrl,
+    channelId,
+    fetchedAt,
+    requestDelayMs,
+    tabs: {
+      videos: { ...tabs.videos },
+      streams: { ...tabs.streams },
+    },
+    links: mergeLinks([...recordsByTab.videos, ...recordsByTab.streams]),
+  };
 }
 
 async function enrichWithVideoDetails(

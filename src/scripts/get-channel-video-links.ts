@@ -11,6 +11,7 @@ type CliOptions = FetchChannelVideoLinksOptions & {
   output?: string;
   linksOutput?: string;
   metadataOutput?: string;
+  checkpointOutput?: string;
   quiet: boolean;
 };
 
@@ -33,6 +34,9 @@ async function main(): Promise<void> {
   }
   if (options.detailLimit !== undefined) {
     fetchOptions.detailLimit = options.detailLimit;
+  }
+  if (options.checkpointOutput !== undefined) {
+    fetchOptions.checkpointOutput = options.checkpointOutput;
   }
 
   const result = await fetchChannelVideoLinks(fetchOptions);
@@ -74,6 +78,9 @@ function parseArgs(args: string[]): CliOptions {
         break;
       case "--metadata-output":
         options.metadataOutput = readValue(args, ++index, arg);
+        break;
+      case "--checkpoint-output":
+        options.checkpointOutput = readValue(args, ++index, arg);
         break;
       case "--request-delay-ms":
         options.requestDelayMs = readPositiveInteger(readValue(args, ++index, arg), arg);
@@ -126,6 +133,7 @@ Options:
   --output <path>           Write combined JSON to a file instead of stdout.
   --links-output <path>     Write base video list JSON. Defaults when metadata output is used.
   --metadata-output <path>  Write video metadata JSON. Defaults when links output is used.
+  --checkpoint-output <path> Continuously update combined JSON while fetching.
   --request-delay-ms <ms>   Delay between YouTube requests. Defaults to 60000.
   --max-pages <count>       Limit pages fetched per tab for safe probes.
   --include-video-details   Fetch exact per-video publish/upload/stream timestamps.
@@ -135,7 +143,7 @@ Options:
 
 Examples:
   npm run fetch:video-links -- --output reports/dr-alex-video-links.json
-  npm run fetch:video-links -- --links-output reports/dr-alex-video-list.json --metadata-output reports/dr-alex-video-metadata.json
+  npm run fetch:video-links -- --links-output reports/dr-alex-video-list.json --metadata-output reports/dr-alex-video-metadata.json --checkpoint-output reports/dr-alex-video-fetch-checkpoint.json
   npm run fetch:video-links -- --include-video-details --detail-limit 10 --metadata-output reports/dr-alex-video-metadata-probe.json
   npm run fetch:video-links -- --max-pages 1 --request-delay-ms 5000
 `);

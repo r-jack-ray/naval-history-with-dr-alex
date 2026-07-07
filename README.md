@@ -53,7 +53,7 @@ The inventory script uses `youtubei.js` and defaults to one YouTube request per 
 Full run with separate base-list and metadata files:
 
 ```powershell
-npm run fetch:video-links -- --links-output reports/dr-alex-video-list.json --metadata-output reports/dr-alex-video-metadata.json
+npm run fetch:video-links -- --links-output reports/dr-alex-video-list.json --metadata-output reports/dr-alex-video-metadata.json --checkpoint-output reports/dr-alex-video-fetch-checkpoint.json
 ```
 
 Small smoke test:
