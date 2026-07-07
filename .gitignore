@@ -1,8 +1,27 @@
+*.iws
+.idea/
+.idea_modules/
+.tmp/
+atlassian-ide-plugin.xml
+cmake-build-*/
+out/
+
 node_modules/
 dist/
 
+# Python virtual environments and local installs used by transcript tooling.
+.venv/
+.venv-*/
+venv/
+env/
+.venv-transcripts/
+/Python/
+
 # Generated reports, validation output, and smoke-test output.
 /reports/
+
+# Ignore run summaries from transcript/channel pull helpers.
+scripts/Get-YouTubeTranscriptJson.run-summary*
 
 # Task notes: keep Markdown planning/context notes, ignore other scratch output.
 task-notes/**
