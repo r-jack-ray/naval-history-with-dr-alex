@@ -23,9 +23,9 @@ npm run build
 npm run check:types
 npm test
 npm run check
-npm run fetch:video-links -- --links-output reports/dr-alex-video-list.json --metadata-output reports/dr-alex-video-metadata.json --checkpoint-output reports/dr-alex-video-fetch-checkpoint.json
-npm run fetch:transcript -- --video-id --l6rRIfksQ --json-output src/transcripts/json/--l6rRIfksQ.json --txt-output src/transcripts/txt/--l6rRIfksQ.txt
-npm run convert:transcript-json -- src/transcripts/json/--l6rRIfksQ.json --output-dir src/transcripts/txt
+npm run fetch:video-links -- --master-output src/channel/episodes.json --checkpoint-output reports/dr-alex-video-fetch-checkpoint.json
+npm run fetch:transcript -- --video-id uURe69Wnh-Q
+npm run convert:transcript-json -- src/transcripts/json/uURe69Wnh-Q.json --output-dir src/transcripts/txt
 ```
 
 Use normal Git for repository operations:
@@ -36,11 +36,13 @@ git diff --check
 git push
 ```
 
-`build` emits `dist/`; `check:types` type-checks only; `test` compiles and runs Node's test runner; `check` combines both. YouTube fetch scripts use `youtubei.js` and default to 60 seconds between requests.
+`build` emits `dist/`; `check:types` type-checks only; `test` compiles and runs Node's test runner; `check` combines both. YouTube fetch scripts default to 60 seconds between requests.
 
 ## Coding Style & Naming Conventions
 
 Use TypeScript under `src/**/*.ts`, Markdown for curated content, and JSON for inventories. Keep filenames lowercase and hyphenated, for example `docs/videos/battle-of-jutland-overview.md`. Use timestamp-first task notes matching `yyyy-MM-dd_THH-mm-ss-0500_short-topic.md`.
+
+Transcript and episode file stems should use `timestamp_title-slug_videoId` when an exact timestamp is known, otherwise `title-slug_videoId`; keep the video ID suffix.
 
 The core content model is `segment`, not `question`. Valid segment kinds include `chapter`, `notable_point`, `qa`, and optional `transcript_excerpt`. Do not force ordinary lecture segments into fabricated Q&A.
 
@@ -50,7 +52,7 @@ Use Node's built-in test runner with `*.test.ts` files. Validators should check 
 
 ## Commit & Pull Request Guidelines
 
-Current history uses concise imperative commits, such as `Initialize naval history project plan`. Keep commits scoped. PRs should explain changes, rationale, validation, and known transcript/tooling gaps.
+History uses concise imperative commits. Keep commits scoped. PRs should explain changes, rationale, validation, and known transcript/tooling gaps.
 
 ## Agent-Specific Instructions
 

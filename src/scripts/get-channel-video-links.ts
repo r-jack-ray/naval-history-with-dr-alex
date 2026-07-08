@@ -1,14 +1,19 @@
 #!/usr/bin/env node
 import {
+  defaultEpisodeMasterOutput,
   defaultChannelVideoLinksOptions,
   fetchChannelVideoLinks,
+  writeChannelEpisodeMasterOutput,
   writeSplitVideoLinksOutput,
   writeVideoLinksOutput,
+  type ChannelInventoryCompleteness,
   type FetchChannelVideoLinksOptions,
 } from "../youtube/channel-video-links.js";
 
 type CliOptions = FetchChannelVideoLinksOptions & {
   output?: string;
+  masterOutput?: string;
+  inventoryCompleteness: ChannelInventoryCompleteness;
   linksOutput?: string;
   metadataOutput?: string;
   checkpointOutput?: string;
@@ -41,6 +46,14 @@ async function main(): Promise<void> {
 
   const result = await fetchChannelVideoLinks(fetchOptions);
 
+  if (options.masterOutput) {
+    await writeChannelEpisodeMasterOutput(options.masterOutput, result, {
+      completeness: options.inventoryCompleteness,
+    });
+    console.error(`Wrote ${result.links.length} episodes to ${options.masterOutput}`);
+    return;
+  }
+
   if (options.linksOutput || options.metadataOutput) {
     const linksPath = options.linksOutput ?? "reports/dr-alex-video-list.json";
     const metadataPath = options.metadataOutput ?? "reports/dr-alex-video-metadata.json";
@@ -61,7 +74,7 @@ async function main(): Promise<void> {
 
 function parseArgs(args: string[]): CliOptions {
   const defaults = defaultChannelVideoLinksOptions();
-  const options: CliOptions = { ...defaults, quiet: false };
+  const options: CliOptions = { ...defaults, inventoryCompleteness: "unknown", quiet: false };
 
   for (let index = 0; index < args.length; index += 1) {
     const arg = args[index];
@@ -72,6 +85,12 @@ function parseArgs(args: string[]): CliOptions {
         break;
       case "--output":
         options.output = readValue(args, ++index, arg);
+        break;
+      case "--master-output":
+        options.masterOutput = readValue(args, ++index, arg);
+        break;
+      case "--inventory-completeness":
+        options.inventoryCompleteness = readInventoryCompleteness(readValue(args, ++index, arg));
         break;
       case "--links-output":
         options.linksOutput = readValue(args, ++index, arg);
@@ -109,6 +128,14 @@ function parseArgs(args: string[]): CliOptions {
   return options;
 }
 
+function readInventoryCompleteness(value: string): ChannelInventoryCompleteness {
+  if (value === "complete" || value === "partial" || value === "unknown") {
+    return value;
+  }
+
+  throw new Error("--inventory-completeness must be complete, partial, or unknown.");
+}
+
 function readValue(args: string[], index: number, name: string): string {
   const value = args[index];
   if (!value) {
@@ -131,6 +158,9 @@ function printHelp(): void {
 Options:
   --channel-url <url>       Channel URL or tab URL. Defaults to Dr. Alex Clarke's channel.
   --output <path>           Write combined JSON to a file instead of stdout.
+  --master-output <path>    Write canonical source episode list. Defaults by convention to ${defaultEpisodeMasterOutput}.
+  --inventory-completeness <complete|partial|unknown>
+                            Completeness flag for --master-output. Defaults to unknown.
   --links-output <path>     Write base video list JSON. Defaults when metadata output is used.
   --metadata-output <path>  Write video metadata JSON. Defaults when links output is used.
   --checkpoint-output <path> Continuously update combined JSON while fetching.
@@ -142,6 +172,7 @@ Options:
   --help                    Show this help.
 
 Examples:
+  npm run fetch:video-links -- --master-output ${defaultEpisodeMasterOutput} --checkpoint-output reports/dr-alex-video-fetch-checkpoint.json
   npm run fetch:video-links -- --output reports/dr-alex-video-links.json
   npm run fetch:video-links -- --links-output reports/dr-alex-video-list.json --metadata-output reports/dr-alex-video-metadata.json --checkpoint-output reports/dr-alex-video-fetch-checkpoint.json
   npm run fetch:video-links -- --include-video-details --detail-limit 10 --metadata-output reports/dr-alex-video-metadata-probe.json

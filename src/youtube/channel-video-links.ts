@@ -3,7 +3,13 @@ import { mkdir, writeFile } from "node:fs/promises";
 
 import { Innertube } from "youtubei.js";
 
+import { slugifyVideoTitle, videoFileStem } from "../naming.js";
+
 export type ChannelVideoTab = "videos" | "streams";
+export type ChannelInventoryCompleteness = "complete" | "partial" | "unknown";
+
+export const defaultChannelSourceRoot = "src/channel";
+export const defaultEpisodeMasterOutput = `${defaultChannelSourceRoot}/episodes.json`;
 
 export interface ChannelVideoLink {
   videoId: string;
@@ -12,6 +18,7 @@ export interface ChannelVideoLink {
   durationText?: string;
   publishedText?: string;
   viewCountText?: string;
+  publishedAt?: string;
   publishDate?: string;
   uploadDate?: string;
   streamStartAt?: string;
@@ -65,11 +72,69 @@ export interface ChannelVideoMetadataResult {
     durationText?: string;
     publishedText?: string;
     viewCountText?: string;
+    publishedAt?: string;
     publishDate?: string;
     uploadDate?: string;
     streamStartAt?: string;
     streamEndAt?: string;
   }[];
+}
+
+export interface ChannelEpisodeMasterResult {
+  schemaVersion: 1;
+  channelUrl: string;
+  channelId: string;
+  fetchedAt: string;
+  requestDelayMs: number;
+  inventory: {
+    completeness: ChannelInventoryCompleteness;
+    tabs: ChannelVideoLinksResult["tabs"];
+    notes: string[];
+  };
+  storage: {
+    transcriptsManifest: "src/transcripts/manifest.json";
+  };
+  episodes: ChannelEpisodeRecord[];
+}
+
+export interface ChannelEpisodeRecord {
+  videoId: string;
+  slug?: string;
+  fileStem: string;
+  url: string;
+  channelOrder: number;
+  title?: string;
+  durationText?: string;
+  publishedText?: string;
+  viewCountText?: string;
+  publishedAt?: string;
+  publishDate?: string;
+  uploadDate?: string;
+  streamStartAt?: string;
+  streamEndAt?: string;
+  tabs: ChannelVideoTab[];
+  tabPositions: Partial<Record<ChannelVideoTab, number>>;
+  transcript: ChannelEpisodeTranscriptState;
+}
+
+export type ChannelEpisodeTranscriptState =
+  | {
+      status: "stored";
+      jsonPath: string;
+      txtPath?: string;
+      tsvPath?: string;
+      segmentCount?: number;
+      selectedLanguage?: string;
+      fetchedAt?: string;
+    }
+  | {
+      status: "not_checked";
+    };
+
+export interface BuildChannelEpisodeMasterOptions {
+  completeness?: ChannelInventoryCompleteness;
+  notes?: string[];
+  transcriptStates?: ReadonlyMap<string, ChannelEpisodeTranscriptState>;
 }
 
 export interface RateLimitedFetchOptions {
@@ -235,6 +300,41 @@ export async function writeSplitVideoLinksOutput(
   ]);
 }
 
+export async function writeChannelEpisodeMasterOutput(
+  path: string,
+  result: ChannelVideoLinksResult,
+  options: BuildChannelEpisodeMasterOptions = {},
+): Promise<void> {
+  await writeJsonFile(path, buildChannelEpisodeMaster(result, options));
+}
+
+export function buildChannelEpisodeMaster(
+  result: ChannelVideoLinksResult,
+  options: BuildChannelEpisodeMasterOptions = {},
+): ChannelEpisodeMasterResult {
+  const notes = [...(options.notes ?? [])];
+  if (result.tabs.streams.pagesFetched === 0) {
+    notes.push("Streams tab has not been fetched in this inventory.");
+  }
+
+  return {
+    schemaVersion: 1,
+    channelUrl: result.channelUrl,
+    channelId: result.channelId,
+    fetchedAt: result.fetchedAt,
+    requestDelayMs: result.requestDelayMs,
+    inventory: {
+      completeness: options.completeness ?? "unknown",
+      tabs: result.tabs,
+      notes,
+    },
+    storage: {
+      transcriptsManifest: "src/transcripts/manifest.json",
+    },
+    episodes: result.links.map((link, index) => channelEpisodeRecord(link, index + 1, options.transcriptStates)),
+  };
+}
+
 export function splitChannelVideoLinksResult(result: ChannelVideoLinksResult): {
   list: ChannelVideoListResult;
   metadata: ChannelVideoMetadataResult;
@@ -261,6 +361,7 @@ export function splitChannelVideoLinksResult(result: ChannelVideoLinksResult): {
       exactDetailsIncluded: result.links.some(
         (link) =>
           link.publishDate !== undefined ||
+          link.publishedAt !== undefined ||
           link.uploadDate !== undefined ||
           link.streamStartAt !== undefined ||
           link.streamEndAt !== undefined,
@@ -268,6 +369,56 @@ export function splitChannelVideoLinksResult(result: ChannelVideoLinksResult): {
       videos: result.links.map((link) => videoMetadataRecord(link)),
     },
   };
+}
+
+function channelEpisodeRecord(
+  link: ChannelVideoLink,
+  channelOrder: number,
+  transcriptStates: ReadonlyMap<string, ChannelEpisodeTranscriptState> | undefined,
+): ChannelEpisodeRecord {
+  const record: ChannelEpisodeRecord = {
+    videoId: link.videoId,
+    fileStem: videoFileStem(link.videoId, link.title, link.streamStartAt ?? link.publishedAt),
+    url: link.url,
+    channelOrder,
+    tabs: link.tabs,
+    tabPositions: link.tabPositions,
+    transcript: transcriptStates?.get(link.videoId) ?? { status: "not_checked" },
+  };
+
+  if (link.title !== undefined) {
+    record.title = link.title;
+    const slug = slugifyVideoTitle(link.title);
+    if (slug !== undefined) {
+      record.slug = slug;
+    }
+  }
+  if (link.durationText !== undefined) {
+    record.durationText = link.durationText;
+  }
+  if (link.publishedText !== undefined) {
+    record.publishedText = link.publishedText;
+  }
+  if (link.viewCountText !== undefined) {
+    record.viewCountText = link.viewCountText;
+  }
+  if (link.publishedAt !== undefined) {
+    record.publishedAt = link.publishedAt;
+  }
+  if (link.publishDate !== undefined) {
+    record.publishDate = link.publishDate;
+  }
+  if (link.uploadDate !== undefined) {
+    record.uploadDate = link.uploadDate;
+  }
+  if (link.streamStartAt !== undefined) {
+    record.streamStartAt = link.streamStartAt;
+  }
+  if (link.streamEndAt !== undefined) {
+    record.streamEndAt = link.streamEndAt;
+  }
+
+  return record;
 }
 
 export function extractVideoLink(
@@ -396,6 +547,9 @@ function mergeLinks(records: ChannelVideoLink[]): ChannelVideoLink[] {
     if (existing.viewCountText === undefined && record.viewCountText !== undefined) {
       existing.viewCountText = record.viewCountText;
     }
+    if (existing.publishedAt === undefined && record.publishedAt !== undefined) {
+      existing.publishedAt = record.publishedAt;
+    }
     if (existing.publishDate === undefined && record.publishDate !== undefined) {
       existing.publishDate = record.publishDate;
     }
@@ -484,6 +638,9 @@ function videoMetadataRecord(link: ChannelVideoLink): ChannelVideoMetadataResult
   }
   if (link.viewCountText !== undefined) {
     record.viewCountText = link.viewCountText;
+  }
+  if (link.publishedAt !== undefined) {
+    record.publishedAt = link.publishedAt;
   }
   if (link.publishDate !== undefined) {
     record.publishDate = link.publishDate;

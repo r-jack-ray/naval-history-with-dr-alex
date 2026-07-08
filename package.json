@@ -13,8 +13,12 @@
     "check:types": "tsc --noEmit -p tsconfig.json",
     "clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
     "convert:transcript-json": "npm run build && node dist/scripts/convert-transcript-json.js",
+    "extract:saved-channel-html": "npm run build && node dist/scripts/extract-saved-channel-html.js",
+    "extract:live-streams-html": "npm run build && node dist/scripts/extract-live-streams-html.js",
+    "extract:videos-html": "npm run extract:saved-channel-html -- --tab videos",
     "fetch:transcript": "npm run build && node dist/scripts/get-video-transcript.js",
     "fetch:video-links": "npm run build && node dist/scripts/get-channel-video-links.js",
+    "store:transcript-json": "npm run build && node dist/scripts/store-transcript-json.js",
     "test": "npm run build && node --test \"dist/**/*.test.js\""
   },
   "devDependencies": {
@@ -22,6 +26,7 @@
     "typescript": "^5.7.0"
   },
   "dependencies": {
+    "youtube-transcript-plus": "^2.0.0",
     "youtubei.js": "^17.2.0"
   }
 }

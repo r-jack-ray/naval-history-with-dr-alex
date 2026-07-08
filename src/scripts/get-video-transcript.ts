@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 import {
+  defaultTranscriptStorageRoot,
   fetchVideoTranscript,
+  writeTranscriptStorage,
   writeTranscriptOutputs,
   type FetchVideoTranscriptOptions,
 } from "../youtube/transcripts.js";
@@ -9,6 +11,9 @@ type CliOptions = FetchVideoTranscriptOptions & {
   jsonOutput?: string;
   txtOutput?: string;
   tsvOutput?: string;
+  outputRoot: string;
+  videoTitle?: string;
+  videoTimestamp?: string;
   quiet: boolean;
 };
 
@@ -27,23 +32,38 @@ async function main(): Promise<void> {
   }
 
   const transcript = await fetchVideoTranscript(fetchOptions);
-  const outputs: {
-    jsonOutput?: string;
-    txtOutput?: string;
-    tsvOutput?: string;
-  } = {};
-
-  if (options.jsonOutput !== undefined) {
-    outputs.jsonOutput = options.jsonOutput;
+  if (options.videoTitle !== undefined) {
+    transcript.videoTitle = options.videoTitle;
   }
-  if (options.txtOutput !== undefined) {
-    outputs.txtOutput = options.txtOutput;
-  }
-  if (options.tsvOutput !== undefined) {
-    outputs.tsvOutput = options.tsvOutput;
+  if (options.videoTimestamp !== undefined) {
+    transcript.videoPublishedAt = options.videoTimestamp;
   }
 
-  await writeTranscriptOutputs(transcript, outputs);
+  if (hasExplicitOutputs(options)) {
+    const outputs: {
+      jsonOutput?: string;
+      txtOutput?: string;
+      tsvOutput?: string;
+    } = {};
+
+    if (options.jsonOutput !== undefined) {
+      outputs.jsonOutput = options.jsonOutput;
+    }
+    if (options.txtOutput !== undefined) {
+      outputs.txtOutput = options.txtOutput;
+    }
+    if (options.tsvOutput !== undefined) {
+      outputs.tsvOutput = options.tsvOutput;
+    }
+
+    await writeTranscriptOutputs(transcript, outputs);
+  } else {
+    const paths = await writeTranscriptStorage(transcript, options.outputRoot);
+    console.error(`Stored JSON transcript: ${paths.jsonOutput}`);
+    console.error(`Stored TXT transcript: ${paths.txtOutput}`);
+    console.error(`Stored TSV transcript: ${paths.tsvOutput}`);
+    console.error(`Updated transcript manifest: ${paths.manifestOutput}`);
+  }
 
   console.error(
     `Fetched ${transcript.segments.length} transcript segments for ${options.videoId} (${transcript.selectedLanguage ?? "unknown language"}).`,
@@ -53,6 +73,7 @@ async function main(): Promise<void> {
 function parseArgs(args: string[]): CliOptions {
   const options: Partial<CliOptions> = {
     requestDelayMs: 60_000,
+    outputRoot: defaultTranscriptStorageRoot,
     quiet: false,
   };
 
@@ -75,6 +96,15 @@ function parseArgs(args: string[]): CliOptions {
       case "--tsv-output":
         options.tsvOutput = readValue(args, ++index, arg);
         break;
+      case "--output-root":
+        options.outputRoot = readValue(args, ++index, arg);
+        break;
+      case "--video-title":
+        options.videoTitle = readValue(args, ++index, arg);
+        break;
+      case "--video-timestamp":
+        options.videoTimestamp = readValue(args, ++index, arg);
+        break;
       case "--request-delay-ms":
         options.requestDelayMs = readPositiveInteger(readValue(args, ++index, arg), arg);
         break;
@@ -94,12 +124,11 @@ function parseArgs(args: string[]): CliOptions {
     throw new Error("Missing required --video-id.");
   }
 
-  if (!options.jsonOutput && !options.txtOutput && !options.tsvOutput) {
-    options.jsonOutput = `src/transcripts/json/${options.videoId}.json`;
-    options.txtOutput = `src/transcripts/txt/${options.videoId}.txt`;
-  }
-
   return options as CliOptions;
+}
+
+function hasExplicitOutputs(options: CliOptions): boolean {
+  return options.jsonOutput !== undefined || options.txtOutput !== undefined || options.tsvOutput !== undefined;
 }
 
 function readValue(args: string[], index: number, name: string): string {
@@ -123,16 +152,19 @@ function printHelp(): void {
 
 Options:
   --video-id <id>          Required YouTube video ID.
-  --language <name>        Optional transcript language label from youtubei.js.
-  --json-output <path>     Write structured transcript JSON.
-  --txt-output <path>      Write readable timestamped text.
-  --tsv-output <path>      Write tab-separated transcript rows.
+  --language <name>        Optional transcript language code or label.
+  --output-root <path>     Local transcript store. Defaults to src/transcripts.
+  --video-title <title>    Override stored title used for readable file naming.
+  --video-timestamp <ts>   Override stored timestamp prefix, e.g. 2026-06-14T05:29:19-05:00.
+  --json-output <path>     Write structured transcript JSON instead of using the store.
+  --txt-output <path>      Write readable timestamped text instead of using the store.
+  --tsv-output <path>      Write tab-separated rows instead of using the store.
   --request-delay-ms <ms>  Delay between YouTube requests. Defaults to 60000.
   --quiet                  Suppress progress logs.
   --help                   Show this help.
 
 Example:
-  npm run fetch:transcript -- --video-id --l6rRIfksQ --json-output src/transcripts/json/--l6rRIfksQ.json --txt-output src/transcripts/txt/--l6rRIfksQ.txt
+  npm run fetch:transcript -- --video-id uURe69Wnh-Q
 `);
 }
 

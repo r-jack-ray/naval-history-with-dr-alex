@@ -12,6 +12,8 @@ The repository is in early setup. It currently has:
 - Strict TypeScript compilation.
 - Node's built-in test runner.
 - A rate-limited YouTube channel link inventory script.
+- A source master episode list under `src/channel/`.
+- A local transcript store under `src/transcripts/`.
 - Planning notes under `task-notes/`.
 
 Curated video pages, transcript ingestion, search indexes, and static site output are planned but not complete yet.
@@ -20,14 +22,21 @@ Curated video pages, transcript ingestion, search indexes, and static site outpu
 
 ```text
 src/
+  channel/                 Canonical channel inventory
+    episodes.json          Master episode list
   scripts/                 TypeScript CLI entrypoints
   youtube/                 YouTube inventory helpers
+  transcripts/             Local transcript archive
+    manifest.json          Index of stored transcript files
+    json/                  Raw structured transcript JSON
+    txt/                   Generated timestamped text
+    tsv/                   Generated tab-separated rows
 task-notes/                Temporary planning and handoff notes
 reports/                   Generated reports and smoke-test output, ignored by Git
 dist/                      Compiled JavaScript, ignored by Git
 ```
 
-Planned archive data will follow the structure in `task-notes/2026-07-07_T17-34-31-0500_naval-history-project-plan.md`, including `src/channel/`, `src/transcripts/`, `docs/videos/`, and `site/static/search/`.
+Planned archive data will follow the structure in `task-notes/2026-07-07_T17-34-31-0500_naval-history-project-plan.md`, including `docs/videos/` and `site/static/search/`.
 
 ## Setup
 
@@ -50,7 +59,15 @@ npm run check
 
 The inventory script uses `youtubei.js` and defaults to one YouTube request per minute to reduce the chance of temporary IP blocks.
 
-Full run with separate base-list and metadata files:
+Full run into the source master episode list:
+
+```powershell
+npm run fetch:video-links -- --master-output src/channel/episodes.json --checkpoint-output reports/dr-alex-video-fetch-checkpoint.json
+```
+
+The current master can be partial. Check `inventory.completeness` before using it as the full backlog.
+
+Optional separate base-list and metadata report files:
 
 ```powershell
 npm run fetch:video-links -- --links-output reports/dr-alex-video-list.json --metadata-output reports/dr-alex-video-metadata.json --checkpoint-output reports/dr-alex-video-fetch-checkpoint.json
@@ -73,22 +90,58 @@ The output includes links from both:
 - `https://www.youtube.com/@DrAlexClarke/videos`
 - `https://www.youtube.com/@DrAlexClarke/streams`
 
-## Fetch a Video Transcript
+## Extract Saved Live Streams HTML
 
-The transcript puller also uses `youtubei.js` and defaults to one YouTube request per minute. This test video ID comes from the checkpointed video list:
+If a channel tab page is saved from a browser, parse its rendered lockup markup offline without making YouTube requests:
 
 ```powershell
-npm run fetch:transcript -- --video-id --l6rRIfksQ --json-output src/transcripts/json/--l6rRIfksQ.json --txt-output src/transcripts/txt/--l6rRIfksQ.txt --tsv-output src/transcripts/tsv/--l6rRIfksQ.tsv
+npm run extract:videos-html -- --output reports/dr-alex-videos-html-extraction.json --links-output reports/dr-alex-videos-html-links.json --base-output reports/dr-alex-video-list-from-html.json --metadata-output reports/dr-alex-video-metadata-from-html.json --master-output src/channel/episodes.json --inventory-completeness partial
 ```
 
-JSON stores structured segment data. TXT is a readable timestamped transcript. TSV is for structured timestamp/link review.
+Use the generic command for other saved channel tabs:
+
+```powershell
+npm run extract:saved-channel-html -- --tab streams --input "reports/Naval History with Dr Alex - YouTube_live_streams.html" --output reports/dr-alex-live-streams-html-extraction.json
+```
+
+The report includes parse stats, continuation-token detection, and the standard channel-link result. Saved `/videos` pages can contain many rendered rows; saved `/streams` pages may contain only the visible page of stream items.
+
+The older live-stream helper parses sparse `ytInitialData` snapshots and is kept for comparison:
+
+```powershell
+npm run extract:live-streams-html -- --output reports/dr-alex-live-streams-html-extraction.json --links-output reports/dr-alex-live-streams-html-links.json
+```
+
+## Store Video Transcripts Locally
+
+The transcript puller uses `youtube-transcript-plus` first, falls back to `youtubei.js` caption tracks, and defaults to one YouTube request per minute. By default it writes JSON, TXT, TSV, and updates `src/transcripts/manifest.json`:
+
+```powershell
+npm run fetch:transcript -- --video-id uURe69Wnh-Q
+```
+
+JSON stores structured segment data. TXT is a readable timestamped transcript. TSV is for structured timestamp/link review. Stored transcript files use `timestamp_title-slug_videoId.ext` when exact timing is known, otherwise `title-slug_videoId.ext`.
+
+When the transcript backend does not provide enough naming metadata, pass explicit values:
+
+```powershell
+npm run fetch:transcript -- --video-id uURe69Wnh-Q --video-title "Video Title" --video-timestamp 2026-06-14T05:29:19-05:00
+```
+
+To re-store an existing JSON file with readable naming without calling YouTube:
+
+```powershell
+npm run store:transcript-json -- src/transcripts/json/<file-stem>.json --video-title "Video Title" --video-timestamp 2026-06-14T05:29:19-05:00
+```
 
 Convert existing transcript JSON without calling YouTube:
 
 ```powershell
-npm run convert:transcript-json -- src/transcripts/json/--l6rRIfksQ.json --output-dir src/transcripts/txt
-npm run convert:transcript-json -- --format tsv src/transcripts/json/--l6rRIfksQ.json --output-dir src/transcripts/tsv
+npm run convert:transcript-json -- src/transcripts/json/<file-stem>.json --output-dir src/transcripts/txt
+npm run convert:transcript-json -- --format tsv src/transcripts/json/<file-stem>.json --output-dir src/transcripts/tsv
 ```
+
+See `src/transcripts/README.md` for the storage layout.
 
 ## Content Model
 

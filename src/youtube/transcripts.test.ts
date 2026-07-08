@@ -1,7 +1,13 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { extractTranscriptSegments, transcriptToTsv, transcriptToTxt } from "./transcripts.js";
+import {
+  extractJson3TranscriptSegments,
+  extractTranscriptSegments,
+  extractVttTranscriptSegments,
+  transcriptToTsv,
+  transcriptToTxt,
+} from "./transcripts.js";
 
 test("extracts transcript segments from youtubei.js transcript shape", () => {
   const segments = extractTranscriptSegments({
@@ -36,6 +42,54 @@ test("extracts transcript segments from youtubei.js transcript shape", () => {
       startTimeText: "0:01",
       text: "Opening line",
       targetId: "abc.transcript.0",
+    },
+  ]);
+});
+
+test("extracts transcript segments from YouTube json3 caption events", () => {
+  const segments = extractJson3TranscriptSegments({
+    events: [
+      {
+        tStartMs: 1234,
+        dDurationMs: 2200,
+        segs: [{ utf8: "Opening" }, { utf8: " line" }],
+      },
+      {
+        tStartMs: 4000,
+      },
+    ],
+  });
+
+  assert.deepEqual(segments, [
+    {
+      startMs: 1234,
+      endMs: 3434,
+      startSeconds: 1,
+      endSeconds: 4,
+      startTimeText: "0:01",
+      text: "Opening line",
+    },
+  ]);
+});
+
+test("extracts transcript segments from WebVTT captions", () => {
+  const segments = extractVttTranscriptSegments(`WEBVTT
+
+00:00:01.234 --> 00:00:03.434 align:start
+<c>Opening</c> &amp; line
+
+00:00:04.000 --> 00:00:04.500
+
+`);
+
+  assert.deepEqual(segments, [
+    {
+      startMs: 1234,
+      endMs: 3434,
+      startSeconds: 1,
+      endSeconds: 4,
+      startTimeText: "0:01",
+      text: "Opening & line",
     },
   ]);
 });

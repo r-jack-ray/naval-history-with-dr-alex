@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import {
+  buildChannelEpisodeMaster,
   createRateLimitedFetch,
   extractVideoLink,
   splitChannelVideoLinksResult,
@@ -89,6 +90,79 @@ test("splits base video links from metadata records", () => {
       videoId: "--l6rRIfksQ",
       title: "Ideal Destroyers",
       publishDate: "2026-07-04",
+    },
+  ]);
+});
+
+test("builds a canonical source episode master list", () => {
+  const master = buildChannelEpisodeMaster(
+    {
+      channelUrl: "https://www.youtube.com/@DrAlexClarke",
+      channelId: "UCE2x09tU0GwAGiSbFPEhIwQ",
+      fetchedAt: "2026-07-07T23:00:00.000Z",
+      requestDelayMs: 60_000,
+      tabs: {
+        videos: {
+          url: "https://www.youtube.com/@DrAlexClarke/videos",
+          pagesFetched: 1,
+          rawCount: 1,
+        },
+        streams: {
+          url: "https://www.youtube.com/@DrAlexClarke/streams",
+          pagesFetched: 0,
+          rawCount: 0,
+        },
+      },
+      links: [
+        {
+          videoId: "uURe69Wnh-Q",
+          url: "https://www.youtube.com/watch?v=uURe69Wnh-Q",
+          title: "Stored transcript video",
+          durationText: "4:35:38",
+          tabs: ["videos"],
+          tabPositions: { videos: 1 },
+        },
+      ],
+    },
+    {
+      completeness: "partial",
+      transcriptStates: new Map([
+        [
+          "uURe69Wnh-Q",
+          {
+            status: "stored",
+            jsonPath: "src/transcripts/json/uURe69Wnh-Q.json",
+            txtPath: "src/transcripts/txt/uURe69Wnh-Q.txt",
+            tsvPath: "src/transcripts/tsv/uURe69Wnh-Q.tsv",
+            segmentCount: 6438,
+            selectedLanguage: "en",
+          },
+        ],
+      ]),
+    },
+  );
+
+  assert.equal(master.inventory.completeness, "partial");
+  assert.equal(master.inventory.notes[0], "Streams tab has not been fetched in this inventory.");
+  assert.deepEqual(master.episodes, [
+    {
+      videoId: "uURe69Wnh-Q",
+      slug: "stored-transcript-video",
+      fileStem: "stored-transcript-video_uURe69Wnh-Q",
+      url: "https://www.youtube.com/watch?v=uURe69Wnh-Q",
+      channelOrder: 1,
+      title: "Stored transcript video",
+      durationText: "4:35:38",
+      tabs: ["videos"],
+      tabPositions: { videos: 1 },
+      transcript: {
+        status: "stored",
+        jsonPath: "src/transcripts/json/uURe69Wnh-Q.json",
+        txtPath: "src/transcripts/txt/uURe69Wnh-Q.txt",
+        tsvPath: "src/transcripts/tsv/uURe69Wnh-Q.tsv",
+        segmentCount: 6438,
+        selectedLanguage: "en",
+      },
     },
   ]);
 });
