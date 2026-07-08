@@ -1,22 +1,22 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-08T03:29:08.586Z",
+  "updatedAt": "2026-07-08T03:37:15.810Z",
   "inputPath": "src/channel/episodes.json",
   "outputRoot": "src/transcripts",
-  "requestDelayMs": 5000,
+  "requestDelayMs": 2000,
   "retryFailed": false,
   "force": false,
   "stats": {
     "inputVideoCount": 2078,
-    "skippedStoredCount": 2,
+    "skippedStoredCount": 12,
     "skippedPreviousFailureCount": 0,
-    "attemptedCount": 10,
-    "fetchedCount": 10,
+    "attemptedCount": 50,
+    "fetchedCount": 50,
     "failedCount": 0,
-    "pendingCount": 2066,
+    "pendingCount": 2016,
     "totalFailureCount": 0
   },
   "failures": [],
   "metadataInput": "src/channel/video-metadata.json",
-  "limit": 10
+  "limit": 50
 }
