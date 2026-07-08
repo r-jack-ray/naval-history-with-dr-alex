@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-08T05:08:17.710Z",
+  "updatedAt": "2026-07-08T05:14:25.543Z",
   "inputPath": "src/channel/episodes.json",
   "outputRoot": "src/transcripts",
   "requestDelayMs": 2000,
@@ -8,13 +8,13 @@
   "force": false,
   "stats": {
     "inputVideoCount": 2078,
-    "skippedStoredCount": 549,
+    "skippedStoredCount": 599,
     "skippedPreviousFailureCount": 1,
     "attemptedCount": 50,
-    "fetchedCount": 50,
-    "failedCount": 0,
-    "pendingCount": 1478,
-    "totalFailureCount": 1
+    "fetchedCount": 49,
+    "failedCount": 1,
+    "pendingCount": 1428,
+    "totalFailureCount": 2
   },
   "failures": [
     {
@@ -28,6 +28,18 @@
       "title": "Check Campaign 16: UAD has updated & to Learn it's new ways I started another British Campaign",
       "publishedAt": "2024-05-06T11:00:33-07:00",
       "channelOrder": 360
+    },
+    {
+      "videoId": "s37gUDr_Z9w",
+      "attemptedAt": "2026-07-08T05:12:06.795Z",
+      "classification": "no_caption_tracks",
+      "error": "No caption tracks found for video: s37gUDr_Z9w.",
+      "tabs": [
+        "videos"
+      ],
+      "title": "Building an R Class to fight a convoy battle vs the Scharnhorsts",
+      "publishedAt": "2023-05-31T11:00:20-07:00",
+      "channelOrder": 627
     }
   ],
   "metadataInput": "src/channel/video-metadata.json",
