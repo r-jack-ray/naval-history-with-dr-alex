@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-08T05:28:14.031Z",
+  "updatedAt": "2026-07-08T05:34:33.422Z",
   "inputPath": "src/channel/episodes.json",
   "outputRoot": "src/transcripts",
   "requestDelayMs": 2000,
@@ -8,15 +8,26 @@
   "force": false,
   "stats": {
     "inputVideoCount": 2078,
-    "skippedStoredCount": 697,
+    "skippedStoredCount": 747,
     "skippedPreviousFailureCount": 3,
     "attemptedCount": 50,
-    "fetchedCount": 50,
-    "failedCount": 0,
-    "pendingCount": 1328,
-    "totalFailureCount": 3
+    "fetchedCount": 49,
+    "failedCount": 1,
+    "pendingCount": 1278,
+    "totalFailureCount": 4
   },
   "failures": [
+    {
+      "videoId": "5G14HxOrzGg",
+      "attemptedAt": "2026-07-08T05:32:35.054Z",
+      "classification": "empty_transcript",
+      "error": "Caption track contained no transcript segments: English (auto-generated) (en).",
+      "tabs": [
+        "videos"
+      ],
+      "title": "Sverdlov Class: The Last of Stalin's Soviet Gun Cruisers",
+      "channelOrder": 780
+    },
     {
       "videoId": "dcjjHarz1Ew",
       "attemptedAt": "2026-07-08T05:16:10.704Z",
