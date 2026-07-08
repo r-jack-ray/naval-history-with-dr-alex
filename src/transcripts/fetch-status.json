@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-08T05:53:36.868Z",
+  "updatedAt": "2026-07-08T06:00:37.586Z",
   "inputPath": "src/channel/episodes.json",
   "outputRoot": "src/transcripts",
   "requestDelayMs": 2000,
@@ -8,13 +8,13 @@
   "force": false,
   "stats": {
     "inputVideoCount": 2078,
-    "skippedStoredCount": 895,
+    "skippedStoredCount": 945,
     "skippedPreviousFailureCount": 5,
     "attemptedCount": 50,
-    "fetchedCount": 50,
-    "failedCount": 0,
-    "pendingCount": 1128,
-    "totalFailureCount": 5
+    "fetchedCount": 49,
+    "failedCount": 1,
+    "pendingCount": 1078,
+    "totalFailureCount": 6
   },
   "failures": [
     {
@@ -50,6 +50,17 @@
       ],
       "title": "Blonde Class: Scout Cruisers of the Royal Navy (Long Patrol)",
       "channelOrder": 862
+    },
+    {
+      "videoId": "O0vjty1ueho",
+      "attemptedAt": "2026-07-08T05:57:43.659Z",
+      "classification": "empty_transcript",
+      "error": "Caption track contained no transcript segments: English (auto-generated) (en).",
+      "tabs": [
+        "videos"
+      ],
+      "title": "County Cruisers P2: The Kent Class Continued",
+      "channelOrder": 971
     },
     {
       "videoId": "rJmiSW1x2nU",
