@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-08T08:27:30.733Z",
+  "updatedAt": "2026-07-08T08:35:00.541Z",
   "inputPath": "src/channel/episodes.json",
   "outputRoot": "src/transcripts",
   "requestDelayMs": 2000,
@@ -8,15 +8,27 @@
   "force": false,
   "stats": {
     "inputVideoCount": 2078,
-    "skippedStoredCount": 1880,
-    "skippedPreviousFailureCount": 21,
+    "skippedStoredCount": 1927,
+    "skippedPreviousFailureCount": 24,
     "attemptedCount": 50,
     "fetchedCount": 47,
     "failedCount": 3,
-    "pendingCount": 127,
-    "totalFailureCount": 24
+    "pendingCount": 77,
+    "totalFailureCount": 27
   },
   "failures": [
+    {
+      "videoId": "-sOPrkXNRaU",
+      "attemptedAt": "2026-07-08T08:32:46.580Z",
+      "classification": "empty_transcript",
+      "error": "Caption track contained no transcript segments: English (auto-generated) (en).",
+      "tabs": [
+        "streams"
+      ],
+      "title": "Patreon 21: Notable WW2 commanders of smaller naval forces",
+      "publishedAt": "2021-04-15T17:22:13+00:00",
+      "channelOrder": 1979
+    },
     {
       "videoId": "048g_xMLsqo",
       "attemptedAt": "2026-07-08T08:25:40.935Z",
@@ -111,6 +123,18 @@
       "channelOrder": 1465
     },
     {
+      "videoId": "hVm0HoGdq-g",
+      "attemptedAt": "2026-07-08T08:34:11.555Z",
+      "classification": "no_caption_tracks",
+      "error": "No caption tracks found for video: hVm0HoGdq-g.",
+      "tabs": [
+        "streams"
+      ],
+      "title": "Bruships 39: Books Off the Shelf...",
+      "publishedAt": "2021-02-28T18:10:33+00:00",
+      "channelOrder": 1993
+    },
+    {
       "videoId": "IZui0sFSIdE",
       "attemptedAt": "2026-07-08T05:43:42.577Z",
       "classification": "no_caption_tracks",
@@ -189,6 +213,18 @@
       "title": "Bruships 171: Oh Kallax my Kallax, Where art though my Kallax",
       "publishedAt": "2024-11-17T19:33:08+00:00",
       "channelOrder": 1650
+    },
+    {
+      "videoId": "oD6sV0zuWcU",
+      "attemptedAt": "2026-07-08T08:30:30.674Z",
+      "classification": "no_caption_tracks",
+      "error": "No caption tracks found for video: oD6sV0zuWcU.",
+      "tabs": [
+        "streams"
+      ],
+      "title": "Bruships 53: The Big Gun Era.... bad sound...",
+      "publishedAt": "2021-07-18T16:57:44+00:00",
+      "channelOrder": 1957
     },
     {
       "videoId": "P-Pj-Vkc04g",
