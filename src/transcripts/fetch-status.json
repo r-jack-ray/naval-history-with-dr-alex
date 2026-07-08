@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-08T07:18:49.917Z",
+  "updatedAt": "2026-07-08T07:26:55.339Z",
   "inputPath": "src/channel/episodes.json",
   "outputRoot": "src/transcripts",
   "requestDelayMs": 2000,
@@ -8,13 +8,13 @@
   "force": false,
   "stats": {
     "inputVideoCount": 2078,
-    "skippedStoredCount": 1442,
-    "skippedPreviousFailureCount": 9,
+    "skippedStoredCount": 1487,
+    "skippedPreviousFailureCount": 14,
     "attemptedCount": 50,
-    "fetchedCount": 45,
-    "failedCount": 5,
-    "pendingCount": 577,
-    "totalFailureCount": 14
+    "fetchedCount": 49,
+    "failedCount": 1,
+    "pendingCount": 527,
+    "totalFailureCount": 15
   },
   "failures": [
     {
@@ -38,6 +38,18 @@
       ],
       "title": "Bruships 250: Naval History Questions Answered Live...",
       "channelOrder": 1467
+    },
+    {
+      "videoId": "8vkrEqP1xUM",
+      "attemptedAt": "2026-07-08T07:22:30.914Z",
+      "classification": "no_caption_tracks",
+      "error": "No caption tracks found for video: 8vkrEqP1xUM.",
+      "tabs": [
+        "streams"
+      ],
+      "title": "Bruships 230: Naval History Questions Answered Live...2nd Start",
+      "publishedAt": "2026-02-01T21:10:48+00:00",
+      "channelOrder": 1508
     },
     {
       "videoId": "dcjjHarz1Ew",
