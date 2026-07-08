@@ -1,5 +1,5 @@
-import { dirname, join } from "node:path";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { dirname, isAbsolute, join, relative, resolve } from "node:path";
+import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
 
 import { fetchTranscript as fetchTranscriptPlus } from "youtube-transcript-plus";
 import type {
@@ -11,7 +11,7 @@ import type {
 
 import { formatTimestamp } from "../index.js";
 import { videoFileStem } from "../naming.js";
-import { createRateLimitedFetch } from "./channel-video-links.js";
+import { createRateLimitedFetch, fetchInitWithRequestLabel } from "./channel-video-links.js";
 
 type FetchHeaders = NonNullable<NonNullable<Parameters<typeof fetch>[1]>["headers"]>;
 type FetchResponseHeaders = Awaited<ReturnType<typeof fetch>>["headers"];
@@ -79,6 +79,11 @@ export interface TranscriptManifestRecord {
   };
 }
 
+export interface StoredTranscriptRecord {
+  record: TranscriptManifestRecord;
+  paths: TranscriptStoragePaths;
+}
+
 export interface FetchVideoTranscriptOptions {
   videoId: string;
   requestDelayMs: number;
@@ -120,9 +125,9 @@ async function fetchVideoTranscriptWithPlus(
     retries: 0,
     userAgent: youtubeUserAgent,
     videoDetails: true,
-    videoFetch: (params: TranscriptPlusFetchParams) => transcriptPlusFetch(params, limitedFetch),
-    playerFetch: (params: TranscriptPlusFetchParams) => transcriptPlusFetch(params, limitedFetch),
-    transcriptFetch: (params: TranscriptPlusFetchParams) => transcriptPlusFetch(params, limitedFetch),
+    videoFetch: (params: TranscriptPlusFetchParams) => transcriptPlusFetch(params, limitedFetch, "video page"),
+    playerFetch: (params: TranscriptPlusFetchParams) => transcriptPlusFetch(params, limitedFetch, "player metadata"),
+    transcriptFetch: (params: TranscriptPlusFetchParams) => transcriptPlusFetch(params, limitedFetch, "transcript data"),
   };
 
   if (options.language !== undefined) {
@@ -184,6 +189,7 @@ function transcriptPlusSegmentToTranscriptSegment(segment: TranscriptPlusSegment
 async function transcriptPlusFetch(
   params: TranscriptPlusFetchParams,
   limitedFetch: typeof fetch,
+  requestLabel: string,
 ): Promise<Response> {
   const headers: Record<string, string> = {
     ...(params.headers ?? {}),
@@ -210,7 +216,7 @@ async function transcriptPlusFetch(
     init.signal = params.signal;
   }
 
-  return limitedFetch(params.url, init);
+  return limitedFetch(params.url, fetchInitWithRequestLabel(init, requestLabel));
 }
 
 function errorMessage(error: unknown): string {
@@ -329,7 +335,10 @@ export async function writeTranscriptStorage(
     txtOutput: paths.txtOutput,
     tsvOutput: paths.tsvOutput,
   });
-  await upsertTranscriptManifest(transcript, paths);
+  const previousRecord = await upsertTranscriptManifest(transcript, paths);
+  if (previousRecord !== undefined) {
+    await removeSupersededTranscriptOutputs(root, previousRecord, paths);
+  }
 
   return paths;
 }
@@ -351,13 +360,54 @@ export function transcriptStoragePaths(
   };
 }
 
+export function transcriptStoragePathsFromRecord(
+  record: TranscriptManifestRecord,
+  root = defaultTranscriptStorageRoot,
+): TranscriptStoragePaths {
+  return {
+    root,
+    jsonOutput: join(root, record.paths.json),
+    txtOutput: join(root, record.paths.txt),
+    tsvOutput: join(root, record.paths.tsv),
+    manifestOutput: join(root, "manifest.json"),
+  };
+}
+
+export async function findStoredTranscriptRecord(options: {
+  videoId: string;
+  root?: string;
+  language?: string;
+}): Promise<StoredTranscriptRecord | undefined> {
+  const root = options.root ?? defaultTranscriptStorageRoot;
+  const manifest = await readTranscriptManifest(join(root, "manifest.json"));
+  const record = manifest.transcripts.find((candidate) =>
+    candidate.videoId === options.videoId && transcriptLanguageMatches(candidate, options.language),
+  );
+  if (record === undefined) {
+    return undefined;
+  }
+
+  const paths = transcriptStoragePathsFromRecord(record, root);
+  try {
+    await readFile(paths.jsonOutput, "utf8");
+  } catch (error) {
+    if (errorCode(error) === "ENOENT") {
+      return undefined;
+    }
+    throw error;
+  }
+
+  return { record, paths };
+}
+
 async function upsertTranscriptManifest(
   transcript: VideoTranscript,
   paths: TranscriptStoragePaths,
-): Promise<void> {
+): Promise<TranscriptManifestRecord | undefined> {
   const manifest = await readTranscriptManifest(paths.manifestOutput);
   const record = transcriptManifestRecord(transcript);
   const index = manifest.transcripts.findIndex((existing) => existing.videoId === transcript.videoId);
+  const previousRecord = index >= 0 ? manifest.transcripts[index] : undefined;
 
   if (index >= 0) {
     manifest.transcripts[index] = record;
@@ -368,6 +418,49 @@ async function upsertTranscriptManifest(
 
   manifest.updatedAt = new Date().toISOString();
   await writeTextFile(paths.manifestOutput, `${JSON.stringify(manifest, null, 2)}\n`);
+  return previousRecord;
+}
+
+async function removeSupersededTranscriptOutputs(
+  root: string,
+  previousRecord: TranscriptManifestRecord,
+  currentPaths: TranscriptStoragePaths,
+): Promise<void> {
+  const previousPaths = transcriptStoragePathsFromRecord(previousRecord, root);
+  const obsoletePaths = [previousPaths.jsonOutput, previousPaths.txtOutput, previousPaths.tsvOutput].filter(
+    (path) => !samePath(path, currentPaths.jsonOutput) &&
+      !samePath(path, currentPaths.txtOutput) &&
+      !samePath(path, currentPaths.tsvOutput),
+  );
+
+  for (const path of obsoletePaths) {
+    await rm(resolveTranscriptStorePath(root, path), { force: true });
+  }
+}
+
+function samePath(left: string, right: string): boolean {
+  return resolve(left) === resolve(right);
+}
+
+function resolveTranscriptStorePath(root: string, path: string): string {
+  const rootPath = resolve(root);
+  const resolvedPath = resolve(path);
+  const relativePath = relative(rootPath, resolvedPath);
+
+  if (relativePath && (relativePath.startsWith("..") || isAbsolute(relativePath))) {
+    throw new Error(`Refusing to remove transcript path outside ${root}: ${path}`);
+  }
+
+  return resolvedPath;
+}
+
+function transcriptLanguageMatches(record: TranscriptManifestRecord, language: string | undefined): boolean {
+  if (language === undefined) {
+    return true;
+  }
+
+  const normalized = language.toLowerCase();
+  return [record.selectedLanguage, ...record.availableLanguages].some((value) => value?.toLowerCase() === normalized);
 }
 
 async function readTranscriptManifest(path: string): Promise<TranscriptManifest> {
@@ -524,9 +617,10 @@ async function fetchWatchPageTranscript(options: {
   logger: ((message: string) => void) | undefined;
 }): Promise<VideoTranscript | undefined> {
   options.logger?.(`Fetching watch page captions: ${options.videoId}`);
-  const response = await options.fetch(`https://www.youtube.com/watch?v=${encodeURIComponent(options.videoId)}`, {
-    headers: youtubeRequestHeaders(),
-  });
+  const response = await options.fetch(
+    `https://www.youtube.com/watch?v=${encodeURIComponent(options.videoId)}`,
+    fetchInitWithRequestLabel({ headers: youtubeRequestHeaders() }, "watch page"),
+  );
   const body = await response.text();
 
   if (!response.ok) {
@@ -648,7 +742,10 @@ async function fetchCaptionTrackFormat(
   format: "json3" | "vtt",
   headers: FetchHeaders,
 ): Promise<string> {
-  const response = await fetcher(captionTrackFormatUrl(track, format), { headers });
+  const response = await fetcher(
+    captionTrackFormatUrl(track, format),
+    fetchInitWithRequestLabel({ headers }, `${format} caption track`),
+  );
   const body = await response.text();
 
   if (!response.ok) {

@@ -58,6 +58,11 @@ export interface FetchVideoMetadataOptions {
   logger?: (message: string) => void;
 }
 
+export interface VideoNamingMetadata {
+  title?: string;
+  timestamp?: string;
+}
+
 export function readVideoIdsFromEpisodeMaster(value: unknown): string[] {
   const object = asRecord(value);
   const episodes = object?.episodes;
@@ -76,6 +81,36 @@ export function readVideoIdsFromEpisodeMaster(value: unknown): string[] {
   }
 
   return ids;
+}
+
+export async function findVideoMetadataRecord(
+  videoId: string,
+  path = defaultVideoMetadataOutput,
+): Promise<VideoMetadataRecord | undefined> {
+  const store = await readExistingStore(path);
+  return store?.videos.find((record) => record.videoId === videoId);
+}
+
+export function videoNamingMetadata(record: VideoMetadataRecord | undefined): VideoNamingMetadata {
+  if (record === undefined) {
+    return {};
+  }
+
+  const title = record.snippet?.title ?? undefined;
+  const timestamp = record.snippet?.publishedAt ??
+    record.liveStreamingDetails?.actualStartTime ??
+    record.liveStreamingDetails?.scheduledStartTime ??
+    undefined;
+  const metadata: VideoNamingMetadata = {};
+
+  if (title !== undefined) {
+    metadata.title = title;
+  }
+  if (timestamp !== undefined) {
+    metadata.timestamp = timestamp;
+  }
+
+  return metadata;
 }
 
 export async function fetchAndStoreVideoMetadata(options: FetchVideoMetadataOptions): Promise<VideoMetadataStore> {

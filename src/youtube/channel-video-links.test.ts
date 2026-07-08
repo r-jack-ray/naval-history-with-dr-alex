@@ -5,6 +5,7 @@ import {
   buildChannelEpisodeMaster,
   createRateLimitedFetch,
   extractVideoLink,
+  fetchInitWithRequestLabel,
   mergeChannelVideoLinksResults,
   splitChannelVideoLinksResult,
 } from "./channel-video-links.js";
@@ -244,4 +245,18 @@ test("spaces fetch calls through a serial rate limiter", async () => {
 
   assert.deepEqual(waits, [60_000]);
   assert.deepEqual(starts, [1_000, 61_000]);
+});
+
+test("logs optional rate-limited request labels", async () => {
+  const logs: string[] = [];
+  const baseFetch = (async () => new Response("{}")) as typeof fetch;
+  const limitedFetch = createRateLimitedFetch({
+    delayMs: 0,
+    baseFetch,
+    logger: (message) => logs.push(message),
+  });
+
+  await limitedFetch("https://www.youtube.com/watch?v=abc123", fetchInitWithRequestLabel({}, "video page"));
+
+  assert.deepEqual(logs, ["YouTube request 1: video page (www.youtube.com)"]);
 });

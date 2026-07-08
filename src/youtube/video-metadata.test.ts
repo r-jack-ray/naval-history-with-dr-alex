@@ -4,6 +4,7 @@ import test from "node:test";
 import {
   buildVideoMetadataStore,
   readVideoIdsFromEpisodeMaster,
+  videoNamingMetadata,
   type VideoMetadataRecord,
 } from "./video-metadata.js";
 
@@ -46,4 +47,23 @@ test("builds an ordered resumable video metadata store", () => {
   assert.deepEqual(store.pendingVideoIds, ["abc123"]);
   assert.deepEqual(store.missingVideoIds, ["abc123"]);
   assert.deepEqual(store.videos, [record]);
+});
+
+test("builds local naming metadata from YouTube video metadata", () => {
+  const record: VideoMetadataRecord = {
+    videoId: "abc123",
+    fetchedAt: "2026-07-08T00:00:00.000Z",
+    snippet: {
+      title: "Modern Navy Questions",
+      publishedAt: "2026-07-05T23:25:48Z",
+    },
+    liveStreamingDetails: {
+      actualStartTime: "2026-07-05T18:33:54Z",
+    },
+  };
+
+  assert.deepEqual(videoNamingMetadata(record), {
+    title: "Modern Navy Questions",
+    timestamp: "2026-07-05T23:25:48Z",
+  });
 });

@@ -149,6 +149,8 @@ export interface RateLimitedFetchOptions {
 }
 
 type RequestGate = (label: string) => Promise<void>;
+type FetchInit = NonNullable<Parameters<typeof fetch>[1]>;
+type LabeledFetchInit = FetchInit & { [fetchRequestLabel]?: string };
 
 type OfficialChannelInfo = {
   channelId: string;
@@ -156,6 +158,15 @@ type OfficialChannelInfo = {
 };
 
 const defaultChannelUrl = "https://www.youtube.com/@DrAlexClarke";
+const fetchRequestLabel = Symbol("fetchRequestLabel");
+
+export function fetchInitWithRequestLabel(init: FetchInit, label: string): FetchInit {
+  Object.defineProperty(init, fetchRequestLabel, {
+    value: label,
+    enumerable: false,
+  });
+  return init;
+}
 
 export function createRateLimitedFetch(options: RateLimitedFetchOptions): typeof fetch {
   const baseFetch = options.baseFetch ?? fetch;
@@ -177,7 +188,7 @@ export function createRateLimitedFetch(options: RateLimitedFetchOptions): typeof
 
       lastStartMs = now();
       requestCount += 1;
-      options.logger?.(`YouTube request ${requestCount}: ${requestHost(input)}`);
+      options.logger?.(`YouTube request ${requestCount}: ${requestDescription(input, init)}`);
       return baseFetch(input, init);
     };
 
@@ -822,6 +833,12 @@ function handleFromChannelUrl(channelUrl: string): string | undefined {
 function requestHost(input: Parameters<typeof fetch>[0]): string {
   const url = typeof input === "string" || input instanceof URL ? input.toString() : input.url;
   return new URL(url).host;
+}
+
+function requestDescription(input: Parameters<typeof fetch>[0], init: Parameters<typeof fetch>[1]): string {
+  const label = (init as LabeledFetchInit | undefined)?.[fetchRequestLabel];
+  const host = requestHost(input);
+  return label ? `${label} (${host})` : host;
 }
 
 function textValue(value: unknown): string | undefined {

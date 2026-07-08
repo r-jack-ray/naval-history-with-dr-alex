@@ -1,24 +1,40 @@
 #!/usr/bin/env node
+import { access } from "node:fs/promises";
+
 import {
   defaultTranscriptStorageRoot,
+  findStoredTranscriptRecord,
   fetchVideoTranscript,
+  readVideoTranscriptJson,
+  transcriptStoragePaths,
   writeTranscriptStorage,
   writeTranscriptOutputs,
   type FetchVideoTranscriptOptions,
+  type TranscriptStoragePaths,
+  type VideoTranscript,
 } from "../youtube/transcripts.js";
+import {
+  defaultVideoMetadataOutput,
+  findVideoMetadataRecord,
+  videoNamingMetadata,
+  type VideoNamingMetadata,
+} from "../youtube/video-metadata.js";
 
 type CliOptions = FetchVideoTranscriptOptions & {
   jsonOutput?: string;
   txtOutput?: string;
   tsvOutput?: string;
   outputRoot: string;
+  metadataInput: string | undefined;
   videoTitle?: string;
   videoTimestamp?: string;
+  force: boolean;
   quiet: boolean;
 };
 
 async function main(): Promise<void> {
   const options = parseArgs(process.argv.slice(2));
+  const namingMetadata = await readNamingMetadata(options);
   const fetchOptions: FetchVideoTranscriptOptions = {
     videoId: options.videoId,
     requestDelayMs: options.requestDelayMs,
@@ -31,13 +47,41 @@ async function main(): Promise<void> {
     fetchOptions.logger = (message) => console.error(message);
   }
 
+  if (!hasExplicitOutputs(options) && !options.force) {
+    const stored = await findStoredTranscriptRecord({
+      videoId: options.videoId,
+      root: options.outputRoot,
+      ...(options.language !== undefined ? { language: options.language } : {}),
+    });
+    if (stored !== undefined) {
+      const transcript = await readVideoTranscriptJson(stored.paths.jsonOutput);
+      applyNamingMetadata(transcript, options, namingMetadata);
+      const targetPaths = transcriptStoragePaths(
+        transcript.videoId,
+        options.outputRoot,
+        transcript.videoTitle,
+        transcript.videoPublishedAt,
+      );
+      const missingOutputs = await missingTranscriptOutputs(stored.paths);
+
+      if (!sameTranscriptPaths(stored.paths, targetPaths) || missingOutputs.length > 0) {
+        const paths = await writeTranscriptStorage(transcript, options.outputRoot);
+        console.error(`Re-stored existing transcript from local JSON: ${paths.jsonOutput}`);
+        console.error(`Stored TXT transcript: ${paths.txtOutput}`);
+        console.error(`Stored TSV transcript: ${paths.tsvOutput}`);
+        console.error(`Updated transcript manifest: ${paths.manifestOutput}`);
+      } else {
+        console.error(`Transcript already stored: ${stored.paths.jsonOutput}`);
+        console.error(`Stored TXT transcript: ${stored.paths.txtOutput}`);
+        console.error(`Stored TSV transcript: ${stored.paths.tsvOutput}`);
+        console.error("No YouTube requests made. Use --force to refetch.");
+      }
+      return;
+    }
+  }
+
   const transcript = await fetchVideoTranscript(fetchOptions);
-  if (options.videoTitle !== undefined) {
-    transcript.videoTitle = options.videoTitle;
-  }
-  if (options.videoTimestamp !== undefined) {
-    transcript.videoPublishedAt = options.videoTimestamp;
-  }
+  applyNamingMetadata(transcript, options, namingMetadata);
 
   if (hasExplicitOutputs(options)) {
     const outputs: {
@@ -74,6 +118,8 @@ function parseArgs(args: string[]): CliOptions {
   const options: Partial<CliOptions> = {
     requestDelayMs: 60_000,
     outputRoot: defaultTranscriptStorageRoot,
+    metadataInput: defaultVideoMetadataOutput,
+    force: false,
     quiet: false,
   };
 
@@ -99,6 +145,12 @@ function parseArgs(args: string[]): CliOptions {
       case "--output-root":
         options.outputRoot = readValue(args, ++index, arg);
         break;
+      case "--metadata-input":
+        options.metadataInput = readValue(args, ++index, arg);
+        break;
+      case "--no-metadata-lookup":
+        options.metadataInput = undefined;
+        break;
       case "--video-title":
         options.videoTitle = readValue(args, ++index, arg);
         break;
@@ -107,6 +159,9 @@ function parseArgs(args: string[]): CliOptions {
         break;
       case "--request-delay-ms":
         options.requestDelayMs = readPositiveInteger(readValue(args, ++index, arg), arg);
+        break;
+      case "--force":
+        options.force = true;
         break;
       case "--quiet":
         options.quiet = true;
@@ -125,6 +180,54 @@ function parseArgs(args: string[]): CliOptions {
   }
 
   return options as CliOptions;
+}
+
+async function readNamingMetadata(options: CliOptions): Promise<VideoNamingMetadata> {
+  if (options.metadataInput === undefined) {
+    return {};
+  }
+
+  const record = await findVideoMetadataRecord(options.videoId, options.metadataInput);
+  return videoNamingMetadata(record);
+}
+
+function applyNamingMetadata(
+  transcript: VideoTranscript,
+  options: CliOptions,
+  metadata: VideoNamingMetadata,
+): void {
+  const videoTitle = options.videoTitle ?? metadata.title;
+  const videoTimestamp = options.videoTimestamp ?? metadata.timestamp;
+
+  if (videoTitle !== undefined) {
+    transcript.videoTitle = videoTitle;
+  }
+  if (videoTimestamp !== undefined) {
+    transcript.videoPublishedAt = videoTimestamp;
+  }
+}
+
+async function missingTranscriptOutputs(paths: TranscriptStoragePaths): Promise<string[]> {
+  const outputs = [paths.jsonOutput, paths.txtOutput, paths.tsvOutput];
+  const missing: string[] = [];
+
+  for (const output of outputs) {
+    try {
+      await access(output);
+    } catch (error) {
+      if (errorCode(error) === "ENOENT") {
+        missing.push(output);
+      } else {
+        throw error;
+      }
+    }
+  }
+
+  return missing;
+}
+
+function sameTranscriptPaths(left: TranscriptStoragePaths, right: TranscriptStoragePaths): boolean {
+  return left.jsonOutput === right.jsonOutput && left.txtOutput === right.txtOutput && left.tsvOutput === right.tsvOutput;
 }
 
 function hasExplicitOutputs(options: CliOptions): boolean {
@@ -147,6 +250,12 @@ function readPositiveInteger(value: string, name: string): number {
   return parsed;
 }
 
+function errorCode(error: unknown): string | undefined {
+  return typeof error === "object" && error !== null && "code" in error
+    ? String((error as { code?: unknown }).code)
+    : undefined;
+}
+
 function printHelp(): void {
   console.log(`Usage: npm run fetch:transcript -- --video-id <id> [options]
 
@@ -154,12 +263,15 @@ Options:
   --video-id <id>          Required YouTube video ID.
   --language <name>        Optional transcript language code or label.
   --output-root <path>     Local transcript store. Defaults to src/transcripts.
+  --metadata-input <path>  Local video metadata JSON. Defaults to src/channel/video-metadata.json.
+  --no-metadata-lookup     Do not read local metadata for title/timestamp naming.
   --video-title <title>    Override stored title used for readable file naming.
   --video-timestamp <ts>   Override stored timestamp prefix, e.g. 2026-06-14T05:29:19-05:00.
   --json-output <path>     Write structured transcript JSON instead of using the store.
   --txt-output <path>      Write readable timestamped text instead of using the store.
   --tsv-output <path>      Write tab-separated rows instead of using the store.
   --request-delay-ms <ms>  Delay between YouTube requests. Defaults to 60000.
+  --force                  Refetch from YouTube even when the transcript is already stored.
   --quiet                  Suppress progress logs.
   --help                   Show this help.
 

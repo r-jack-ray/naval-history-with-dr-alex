@@ -34,10 +34,15 @@ npm run fetch:transcript -- --video-id uURe69Wnh-Q
 ```
 
 The default store root is `src/transcripts`. The fetcher writes JSON, TXT, TSV,
-and updates `manifest.json`. Use explicit `--json-output`, `--txt-output`, or
-`--tsv-output` only for ad hoc exports outside the store.
-Use `--video-title` and `--video-timestamp` when naming metadata needs to be
-supplied manually.
+and updates `manifest.json`. If the video is already present in the manifest,
+the command reads the local JSON and exits without calling YouTube; pass
+`--force` only when you intentionally want to refetch.
+
+By default, the fetcher reads `src/channel/video-metadata.json` for title and
+publish timestamp naming. Use `--video-title` and `--video-timestamp` when
+naming metadata needs to be supplied manually, or `--no-metadata-lookup` to use
+only transcript-provided metadata. Use explicit `--json-output`, `--txt-output`,
+or `--tsv-output` only for ad hoc exports outside the store.
 
 Re-store an existing JSON file without calling YouTube:
 
