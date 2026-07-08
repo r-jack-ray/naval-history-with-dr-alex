@@ -1,5 +1,6 @@
 import { dirname, isAbsolute, join, relative, resolve } from "node:path";
 import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { setTimeout as sleep } from "node:timers/promises";
 
 import { fetchTranscript as fetchTranscriptPlus } from "youtube-transcript-plus";
 import type {
@@ -229,6 +230,27 @@ function errorCode(error: unknown): string | undefined {
     : undefined;
 }
 
+async function withTransientFileRetry<T>(operation: () => Promise<T>): Promise<T> {
+  const maxAttempts = 5;
+
+  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+    try {
+      return await operation();
+    } catch (error) {
+      if (attempt === maxAttempts || !isTransientFileError(error)) {
+        throw error;
+      }
+      await sleep(150 * attempt);
+    }
+  }
+
+  throw new Error("Unreachable file retry state.");
+}
+
+function isTransientFileError(error: unknown): boolean {
+  return ["UNKNOWN", "EBUSY", "EPERM", "EMFILE", "ENFILE"].includes(errorCode(error) ?? "");
+}
+
 export function extractJson3TranscriptSegments(value: unknown): TranscriptSegment[] {
   const object = asRecord(value);
   const events = object?.events;
@@ -389,7 +411,7 @@ export async function findStoredTranscriptRecord(options: {
 
   const paths = transcriptStoragePathsFromRecord(record, root);
   try {
-    await readFile(paths.jsonOutput, "utf8");
+    await readFileWithRetry(paths.jsonOutput);
   } catch (error) {
     if (errorCode(error) === "ENOENT") {
       return undefined;
@@ -465,7 +487,7 @@ function transcriptLanguageMatches(record: TranscriptManifestRecord, language: s
 
 async function readTranscriptManifest(path: string): Promise<TranscriptManifest> {
   try {
-    const value = JSON.parse(await readFile(path, "utf8"));
+    const value = JSON.parse(await readFileWithRetry(path));
     return normalizeTranscriptManifest(value);
   } catch (error) {
     if (errorCode(error) === "ENOENT") {
@@ -865,7 +887,7 @@ function extractBalancedJsonObject(text: string, startIndex: number): string | u
 }
 
 export async function readVideoTranscriptJson(path: string): Promise<VideoTranscript> {
-  return parseVideoTranscriptJson(JSON.parse(await readFile(path, "utf8")), path);
+  return parseVideoTranscriptJson(JSON.parse(await readFileWithRetry(path)), path);
 }
 
 export function parseVideoTranscriptJson(value: unknown, sourceName = "transcript JSON"): VideoTranscript {
@@ -1160,7 +1182,15 @@ function textValue(value: unknown): string | undefined {
 
 async function writeTextFile(path: string, content: string): Promise<void> {
   await mkdir(dirname(path), { recursive: true });
-  await writeFile(path, content, "utf8");
+  await writeFileWithRetry(path, content);
+}
+
+async function readFileWithRetry(path: string): Promise<string> {
+  return withTransientFileRetry(() => readFile(path, "utf8"));
+}
+
+async function writeFileWithRetry(path: string, content: string): Promise<void> {
+  await withTransientFileRetry(() => writeFile(path, content, "utf8"));
 }
 
 function tsvEscape(value: string): string {

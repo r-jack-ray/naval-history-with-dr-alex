@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-08T06:08:59.181Z",
+  "updatedAt": "2026-07-08T06:16:16.902Z",
   "inputPath": "src/channel/episodes.json",
   "outputRoot": "src/transcripts",
   "requestDelayMs": 2000,
@@ -8,13 +8,13 @@
   "force": false,
   "stats": {
     "inputVideoCount": 2078,
-    "skippedStoredCount": 994,
+    "skippedStoredCount": 1044,
     "skippedPreviousFailureCount": 6,
     "attemptedCount": 50,
-    "fetchedCount": 50,
-    "failedCount": 0,
-    "pendingCount": 1028,
-    "totalFailureCount": 6
+    "fetchedCount": 49,
+    "failedCount": 1,
+    "pendingCount": 978,
+    "totalFailureCount": 7
   },
   "failures": [
     {
@@ -85,6 +85,17 @@
       "title": "Building an R Class to fight a convoy battle vs the Scharnhorsts",
       "publishedAt": "2023-05-31T11:00:20-07:00",
       "channelOrder": 627
+    },
+    {
+      "videoId": "usSZIzRtuas",
+      "attemptedAt": "2026-07-08T06:12:15.483Z",
+      "classification": "no_caption_tracks",
+      "error": "No caption tracks found for video: usSZIzRtuas.",
+      "tabs": [
+        "videos"
+      ],
+      "title": "No Sound??? Battle of the Atlantic: Escort Procurement - Comment Response",
+      "channelOrder": 1068
     }
   ],
   "metadataInput": "src/channel/video-metadata.json",
