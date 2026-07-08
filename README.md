@@ -60,6 +60,8 @@ npm run check
 
 The inventory script uses the official YouTube Data API through `googleapis`. Set `YOUTUBE_API_KEY` before running API-backed commands. It defaults to one request per minute; this is conservative and can be lowered for official API runs.
 
+YouTube Data API quota is tracked by Google project and resets at midnight Pacific Time. The default allocation is 10,000 units per day for most endpoints, with `playlistItems.list` and `videos.list` costing 1 unit per call. `search.list` has its own default limit of 100 calls per day, and `captions.list` costs 50 units per call. Check the official [YouTube Data API quota cost table](https://developers.google.com/youtube/v3/determine_quota_cost) before changing fetch strategy.
+
 Full run into the source master episode list:
 
 ```powershell
