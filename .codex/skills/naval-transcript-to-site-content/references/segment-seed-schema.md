@@ -1,0 +1,90 @@
+# Segment Seed Schema
+
+Curated site content currently lives in `src/derived/prototype-segments.json`.
+
+## Top Level
+
+- `schemaVersion`: must be `1`.
+- `videos`: site-visible videos. Add a video here before adding its segments.
+- `topics`: stable browsing/search topics.
+- `segments`: independently addressable site records.
+
+## Video Seed
+
+```json
+{
+  "videoId": "uURe69Wnh-Q",
+  "topics": ["modern-navy", "live-q-and-a"]
+}
+```
+
+- `videoId` must exist in `src/channel/episodes.json`.
+- `topics` must refer to slugs in the same seed file.
+
+## Topic Seed
+
+```json
+{
+  "slug": "destroyers",
+  "title": "Destroyers",
+  "summary": "Destroyers, destroyer escorts, large surface combatants, and escort force design.",
+  "aliases": ["destroyer escorts", "surface combatants"]
+}
+```
+
+- Keep slugs lowercase and hyphenated.
+- Add aliases for common search wording, abbreviations, class names, navies, or alternate spellings.
+
+## Segment Seed
+
+```json
+{
+  "id": "carrier-group-force-structure",
+  "videoId": "uURe69Wnh-Q",
+  "slug": "carrier-group-force-structure",
+  "title": "Carrier group force structure sketch",
+  "kind": "notable_point",
+  "start": "2:59:42",
+  "end": "3:00:48",
+  "topics": ["carrier-groups", "naval-aviation"],
+  "summary": "A force-structure answer sketches a carrier group built around carriers, LHDs, air-defense destroyers, ASW frigates, and submarines.",
+  "body": "This segment tests multi-topic browsing and search metadata.",
+  "sourcePath": "src/transcripts/txt/example_uURe69Wnh-Q.txt",
+  "evidence": [
+    {
+      "start": "2:59:42",
+      "end": "3:00:48",
+      "note": "The transcript lists carrier group components."
+    }
+  ]
+}
+```
+
+Required fields:
+
+- `id`: stable unique identifier.
+- `videoId`: video the segment belongs to.
+- `slug`: route slug under `/segments/`.
+- `title`: concise page title.
+- `kind`: one of `chapter`, `notable_point`, `qa`, or `transcript_excerpt`.
+- `start`: timestamp label, `m:ss` or `h:mm:ss`.
+- `topics`: topic slugs.
+- `summary`: short search/result summary.
+- `body`: human-readable segment note.
+- `sourcePath`: repo-relative TXT transcript path.
+- `evidence`: one or more timestamp windows from the transcript.
+
+Optional fields:
+
+- `end`: segment end timestamp.
+- `question`: required when `kind` is `qa`.
+- `answerShort`: required when `kind` is `qa`.
+
+## Validation Expectations
+
+- `sourcePath` must exist and should match the TXT path in `src/transcripts/manifest.json`.
+- Segment and evidence timestamps must be within the stored transcript duration.
+- `end` must be after `start`.
+- Every topic slug must already exist in `topics`.
+- Every segment video must exist in `videos`.
+- Q&A fields belong only on `kind: qa` records.

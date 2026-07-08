@@ -9,6 +9,7 @@ Use this brief when working on the Astro/Pagefind website for the Dr. Alex Clark
 - Use `src/channel/episodes.json`, `src/channel/video-metadata.json`, and `src/derived/prototype-segments.json` as current generator inputs.
 - Use `src/site/archive-data.ts` for deterministic site-data generation and validation.
 - Avoid touching `src/transcripts/` unless the user explicitly asks for transcript ingestion, conversion, or transcript-backed curation.
+- Hand transcript-backed curation work to `.agents/transcript-content-curator.md` and `$naval-transcript-to-site-content`.
 
 ## Content Model
 
@@ -31,6 +32,7 @@ Run focused site checks before handing off:
 
 ```powershell
 npm run generate:site-data
+npm run audit:site-content
 npm run site:check
 npm run site:build
 ```

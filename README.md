@@ -18,6 +18,7 @@ The repository is in early setup. It currently has:
 - A deployed site shell with light, dark, and system theme switching.
 - A generated Astro archive data file built from channel inventory, YouTube metadata, and curated segment seeds.
 - One prototype video page, four segment pages, seven topic pages, and a Pagefind component search UI with filters.
+- A transcript-to-site-content process with a curation agent brief, Codex skill, backlog audit, and validation hook.
 - A rate-limited YouTube channel link inventory script.
 - A source master episode list under `src/channel/`.
 - A local transcript store under `src/transcripts/`.
@@ -72,6 +73,7 @@ npm run build
 npm run check:types
 npm test
 npm run check
+npm run audit:site-content
 npm run generate:site-data
 ```
 
@@ -231,11 +233,41 @@ Every curated segment should eventually point back to a video ID, timestamp, can
 
 The current prototype keeps Q&A as `kind: qa` inside the segment model rather than creating a separate question collection.
 
+## Process Transcripts Into Site Content
+
+Use the transcript curation process when moving stored transcript material into site-visible pages:
+
+```powershell
+npm run audit:site-content
+pwsh -NoProfile -File .codex/hooks/validate-content-pipeline.ps1 -SkipRepoCheck
+```
+
+`npm run audit:site-content` validates existing curated segment evidence and writes `reports/site-content-backlog.md` with stored transcripts that do not yet have curated segments. Reports are ignored by Git.
+
+Record every processed transcript file in `src/derived/site-content-processing.log`. The log has no header; every non-empty line is one processed file with tab-separated fields:
+
+```text
+processedAt	sourcePath	videoId	action	needsFurtherProcessing	determination
+```
+
+Use `yes` or `no` for `needsFurtherProcessing`.
+
+For agent-driven work, use:
+
+- `.agents/transcript-content-curator.md`: role brief for transcript-backed curation.
+- `.codex/skills/naval-transcript-to-site-content/SKILL.md`: reusable workflow for converting transcript TXT/TSV evidence into `src/derived/prototype-segments.json`.
+- `.codex/hooks/validate-content-pipeline.ps1`: audit, regenerate generated site data, run Astro checks, and optionally run the full repository check.
+
+The process is intentionally segment-first. Use `kind: qa` only for actual Q&A exchanges; keep lecture material as `chapter`, `notable_point`, or `transcript_excerpt`.
+
 ## Project Helpers
 
 - `.agents/site-archive-builder.md`: project-local brief for agents working on Astro/Pagefind site pages.
+- `.agents/transcript-content-curator.md`: project-local brief for transcript-backed segment curation.
 - `.codex/skills/naval-video-page-prototype/SKILL.md`: reusable Codex skill for extending the prototype video-page workflow.
+- `.codex/skills/naval-transcript-to-site-content/SKILL.md`: reusable Codex skill for processing transcripts into segment seed data.
 - `.codex/hooks/validate-site.ps1`: optional validation helper for site checks and the full repository check.
+- `.codex/hooks/validate-content-pipeline.ps1`: optional validation helper for transcript curation plus generated site checks.
 
 Run the helper directly when you want a site-focused validation pass:
 

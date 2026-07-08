@@ -25,6 +25,7 @@ npm run build
 npm run check:types
 npm test
 npm run check
+npm run audit:site-content
 npm run generate:site-data
 npm run site:check
 npm run site:build
@@ -42,7 +43,7 @@ git diff --check
 git push
 ```
 
-`build` emits `dist/`; `check:types` type-checks only; `test` compiles and runs Node's test runner; `check` combines both. `generate:site-data` writes deterministic Astro data to `site/src/data/generated/archive.json`; `site:build` regenerates that data, builds `site/dist/`, and runs Pagefind. YouTube fetch scripts default to 60 seconds between requests.
+`build` emits `dist/`; `check:types` type-checks only; `test` compiles and runs Node's test runner; `check` combines both. `audit:site-content` validates curated transcript evidence and writes `reports/site-content-backlog.md`. `generate:site-data` writes deterministic Astro data to `site/src/data/generated/archive.json`; `site:build` regenerates that data, builds `site/dist/`, and runs Pagefind. YouTube fetch scripts default to 60 seconds between requests.
 
 ## Coding Style & Naming Conventions
 
@@ -54,9 +55,13 @@ The core content model is `segment`, not `question`. Valid segment kinds include
 
 Keep Q&A as `kind: qa` segment data unless a future layout/search requirement proves a separate collection is needed.
 
+When processing transcripts into site content, use `.agents/transcript-content-curator.md` and `$naval-transcript-to-site-content`. Curate into `src/derived/prototype-segments.json`, keep `sourcePath` and evidence windows on every segment, and validate with `.codex/hooks/validate-content-pipeline.ps1`.
+
+Record every processed transcript file in `src/derived/site-content-processing.log`. The log has no header; every non-empty line is one processed file with tab-separated fields: `processedAt`, `sourcePath`, `videoId`, `action`, `needsFurtherProcessing`, `determination`. Use `yes` or `no` for `needsFurtherProcessing`. Use `src/derived/site-content-processing.config.json` for first-pass defaults, follow-up stage names, and topic grouping.
+
 ## Testing Guidelines
 
-Use Node's built-in test runner with `*.test.ts` files. Validators should check timestamp labels and links, transcript sources, inventory references, search manifest integrity, generated site-data references, duplicate routes, topic references, and TXT coverage. Add search tests for ship names, battles, classes, operations, admirals, countries, dates, and abbreviations.
+Use Node's built-in test runner with `*.test.ts` files. Validators should check timestamp labels and links, transcript sources, inventory references, search manifest integrity, generated site-data references, duplicate routes, topic references, curation backlog state, evidence windows, and TXT coverage. Add search tests for ship names, battles, classes, operations, admirals, countries, dates, and abbreviations.
 
 ## Commit & Pull Request Guidelines
 

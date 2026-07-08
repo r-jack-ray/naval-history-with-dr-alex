@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "firstPass": {
+    "defaultAction": "curated 1 first-pass segment",
+    "defaultNeedsFurtherProcessing": true,
+    "minimumEvidenceWindows": 1,
+    "preferredSegmentKinds": [
+      "notable_point",
+      "chapter",
+      "qa",
+      "transcript_excerpt"
+    ],
+    "guidance": "First pass should add one high-value, transcript-backed overview segment per video and mark needsFurtherProcessing=yes unless the transcript was fully chaptered or intentionally closed without site content."
+  },
+  "followUpStages": [
+    {
+      "slug": "deep-chaptering",
+      "title": "Deep Chaptering",
+      "description": "Split long lectures and current-affairs streams into durable chapters after the first overview segment exists."
+    },
+    {
+      "slug": "qa-extraction",
+      "title": "Q&A Extraction",
+      "description": "Extract actual audience prompts and answers from Bruships, Patreon, and live review streams without forcing lecture material into Q&A."
+    },
+    {
+      "slug": "topic-review",
+      "title": "Topic Review",
+      "description": "Normalize new topic slugs into stable browsing groups and aliases."
+    }
+  ],
+  "videoTypeRules": [
+    {
+      "matchTitle": "Bruships",
+      "defaultKind": "chapter",
+      "defaultTopics": [
+        "live-q-and-a",
+        "naval-history"
+      ],
+      "followUpStage": "qa-extraction"
+    },
+    {
+      "matchTitle": "What if",
+      "defaultKind": "notable_point",
+      "defaultTopics": [
+        "alternate-history",
+        "naval-history"
+      ],
+      "followUpStage": "deep-chaptering"
+    },
+    {
+      "matchTitle": "Defence Investment Plan",
+      "defaultKind": "notable_point",
+      "defaultTopics": [
+        "british-defence-policy",
+        "current-affairs",
+        "naval-procurement"
+      ],
+      "followUpStage": "deep-chaptering"
+    }
+  ],
+  "topicGroups": [
+    {
+      "slug": "ship-types",
+      "title": "Ship Types",
+      "topics": [
+        "destroyers",
+        "frigates",
+        "battlecruisers",
+        "carrier-groups"
+      ]
+    },
+    {
+      "slug": "navies",
+      "title": "Navies",
+      "topics": [
+        "royal-navy",
+        "us-navy",
+        "italian-navy",
+        "soviet-navy",
+        "japanese-navy",
+        "indian-navy"
+      ]
+    },
+    {
+      "slug": "design-and-procurement",
+      "title": "Design And Procurement",
+      "topics": [
+        "ship-design",
+        "naval-procurement",
+        "force-structure",
+        "modular-warship-design",
+        "fleet-screening"
+      ]
+    },
+    {
+      "slug": "formats",
+      "title": "Formats",
+      "topics": [
+        "live-q-and-a",
+        "alternate-history",
+        "science-fiction"
+      ]
+    }
+  ]
+}
