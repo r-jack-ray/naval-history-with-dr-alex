@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-08T07:11:27.251Z",
+  "updatedAt": "2026-07-08T07:18:49.917Z",
   "inputPath": "src/channel/episodes.json",
   "outputRoot": "src/transcripts",
   "requestDelayMs": 2000,
@@ -8,13 +8,13 @@
   "force": false,
   "stats": {
     "inputVideoCount": 2078,
-    "skippedStoredCount": 1441,
+    "skippedStoredCount": 1442,
     "skippedPreviousFailureCount": 9,
-    "attemptedCount": 1,
-    "fetchedCount": 1,
-    "failedCount": 0,
-    "pendingCount": 627,
-    "totalFailureCount": 9
+    "attemptedCount": 50,
+    "fetchedCount": 45,
+    "failedCount": 5,
+    "pendingCount": 577,
+    "totalFailureCount": 14
   },
   "failures": [
     {
@@ -29,6 +29,17 @@
       "channelOrder": 780
     },
     {
+      "videoId": "670r43jZo5o",
+      "attemptedAt": "2026-07-08T07:15:22.346Z",
+      "classification": "no_caption_tracks",
+      "error": "No caption tracks found for video: 670r43jZo5o.",
+      "tabs": [
+        "streams"
+      ],
+      "title": "Bruships 250: Naval History Questions Answered Live...",
+      "channelOrder": 1467
+    },
+    {
       "videoId": "dcjjHarz1Ew",
       "attemptedAt": "2026-07-08T05:16:10.704Z",
       "classification": "no_caption_tracks",
@@ -41,6 +52,17 @@
       "channelOrder": 656
     },
     {
+      "videoId": "Ec-QeRtmPzw",
+      "attemptedAt": "2026-07-08T07:15:10.291Z",
+      "classification": "no_caption_tracks",
+      "error": "No caption tracks found for video: Ec-QeRtmPzw.",
+      "tabs": [
+        "streams"
+      ],
+      "title": "Bruships 252: Naval History Questions Answered Live...",
+      "channelOrder": 1465
+    },
+    {
       "videoId": "IZui0sFSIdE",
       "attemptedAt": "2026-07-08T05:43:42.577Z",
       "classification": "no_caption_tracks",
@@ -50,6 +72,28 @@
       ],
       "title": "Blonde Class: Scout Cruisers of the Royal Navy (Long Patrol)",
       "channelOrder": 862
+    },
+    {
+      "videoId": "mmppT8c_kb8",
+      "attemptedAt": "2026-07-08T07:15:16.798Z",
+      "classification": "no_caption_tracks",
+      "error": "No caption tracks found for video: mmppT8c_kb8.",
+      "tabs": [
+        "streams"
+      ],
+      "title": "Bruships 251: Alternate History & Naval History Questions Answered Live...",
+      "channelOrder": 1466
+    },
+    {
+      "videoId": "Nfv-qSf9wLs",
+      "attemptedAt": "2026-07-08T07:14:58.226Z",
+      "classification": "no_caption_tracks",
+      "error": "No caption tracks found for video: Nfv-qSf9wLs.",
+      "tabs": [
+        "streams"
+      ],
+      "title": "The Press Gang, myth and reality...",
+      "channelOrder": 1463
     },
     {
       "videoId": "O0vjty1ueho",
@@ -98,6 +142,17 @@
       "channelOrder": 627
     },
     {
+      "videoId": "U5LfsnBSt8w",
+      "attemptedAt": "2026-07-08T07:15:04.315Z",
+      "classification": "no_caption_tracks",
+      "error": "No caption tracks found for video: U5LfsnBSt8w.",
+      "tabs": [
+        "streams"
+      ],
+      "title": "Bruships 253: Science Fiction & Naval History Questions Answered Live...",
+      "channelOrder": 1464
+    },
+    {
       "videoId": "usSZIzRtuas",
       "attemptedAt": "2026-07-08T06:12:15.483Z",
       "classification": "no_caption_tracks",
@@ -122,5 +177,5 @@
     }
   ],
   "metadataInput": "src/channel/video-metadata.json",
-  "limit": 1
+  "limit": 50
 }
