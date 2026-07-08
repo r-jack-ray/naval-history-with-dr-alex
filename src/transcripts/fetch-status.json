@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-08T08:13:08.692Z",
+  "updatedAt": "2026-07-08T08:20:01.751Z",
   "inputPath": "src/channel/episodes.json",
   "outputRoot": "src/transcripts",
   "requestDelayMs": 2000,
@@ -8,13 +8,13 @@
   "force": false,
   "stats": {
     "inputVideoCount": 2078,
-    "skippedStoredCount": 1781,
+    "skippedStoredCount": 1831,
     "skippedPreviousFailureCount": 20,
     "attemptedCount": 50,
-    "fetchedCount": 50,
-    "failedCount": 0,
-    "pendingCount": 227,
-    "totalFailureCount": 20
+    "fetchedCount": 49,
+    "failedCount": 1,
+    "pendingCount": 177,
+    "totalFailureCount": 21
   },
   "failures": [
     {
@@ -165,6 +165,18 @@
       "title": "Bruships 171: Oh Kallax my Kallax, Where art though my Kallax",
       "publishedAt": "2024-11-17T19:33:08+00:00",
       "channelOrder": 1650
+    },
+    {
+      "videoId": "P-Pj-Vkc04g",
+      "attemptedAt": "2026-07-08T08:19:48.107Z",
+      "classification": "empty_transcript",
+      "error": "Caption track contained no transcript segments: English (auto-generated) (en).",
+      "tabs": [
+        "streams"
+      ],
+      "title": "The Forgotten Trafalgar: the 1509 Battle of Diu",
+      "publishedAt": "2022-02-03T18:29:02+00:00",
+      "channelOrder": 1899
     },
     {
       "videoId": "QJDfypv9XxY",
