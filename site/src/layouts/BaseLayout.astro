@@ -6,7 +6,9 @@ interface Props {
 }
 
 const { title, description, pageType } = Astro.props;
-const baseUrl = import.meta.env.BASE_URL;
+const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 ---
 
 <!doctype html>
@@ -18,18 +20,110 @@ const baseUrl = import.meta.env.BASE_URL;
     <meta name="description" content={description} />
     <meta data-pagefind-meta="type[content]" content={pageType} />
     <meta data-pagefind-filter="type[content]" content={pageType} />
+    <script is:inline>
+      (() => {
+        const storageKey = "naval-history-theme";
+        const choices = new Set(["light", "dark", "system"]);
+        const savedChoice = (() => {
+          try {
+            return localStorage.getItem(storageKey) || "";
+          } catch {
+            return "";
+          }
+        })();
+        const themeChoice = choices.has(savedChoice) ? savedChoice : "system";
+        const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const appliedTheme = themeChoice === "system" ? (systemPrefersDark ? "dark" : "light") : themeChoice;
+
+        document.documentElement.dataset.theme = appliedTheme;
+        document.documentElement.dataset.themeChoice = themeChoice;
+        document.documentElement.style.colorScheme = appliedTheme;
+      })();
+    </script>
     <link rel="stylesheet" href={`${baseUrl}styles/site.css`} />
     <slot name="head" />
   </head>
   <body>
     <header class="site-header">
       <a class="brand" href={baseUrl}>Naval History with Dr. Alex</a>
-      <nav class="nav-links" aria-label="Primary">
-        <a href={`${baseUrl}videos/`}>Videos</a>
-        <a href={`${baseUrl}topics/`}>Topics</a>
-        <a href={`${baseUrl}search/`}>Search</a>
-      </nav>
+      <div class="header-controls">
+        <nav class="nav-links" aria-label="Primary">
+          <a href={`${baseUrl}videos/`}>Videos</a>
+          <a href={`${baseUrl}topics/`}>Topics</a>
+          <a href={`${baseUrl}search/`}>Search</a>
+        </nav>
+        <div class="theme-switcher" role="group" aria-label="Color theme">
+          <button type="button" data-theme-choice="light" aria-pressed="false">
+            <span class="theme-icon theme-icon-light" aria-hidden="true"></span>
+            <span>Light</span>
+          </button>
+          <button type="button" data-theme-choice="dark" aria-pressed="false">
+            <span class="theme-icon theme-icon-dark" aria-hidden="true"></span>
+            <span>Dark</span>
+          </button>
+          <button type="button" data-theme-choice="system" aria-pressed="false">
+            <span class="theme-icon theme-icon-system" aria-hidden="true"></span>
+            <span>System</span>
+          </button>
+        </div>
+      </div>
     </header>
     <slot />
+    <script is:inline>
+      (() => {
+        const storageKey = "naval-history-theme";
+        const choices = new Set(["light", "dark", "system"]);
+        const systemQuery = window.matchMedia("(prefers-color-scheme: dark)");
+        const buttons = Array.from(document.querySelectorAll(".theme-switcher button[data-theme-choice]"));
+
+        const getThemeChoice = () => {
+          const savedChoice = (() => {
+            try {
+              return localStorage.getItem(storageKey) || "";
+            } catch {
+              return "";
+            }
+          })();
+          return choices.has(savedChoice) ? savedChoice : "system";
+        };
+
+        const applyTheme = (themeChoice) => {
+          const appliedTheme =
+            themeChoice === "system" ? (systemQuery.matches ? "dark" : "light") : themeChoice;
+
+          document.documentElement.dataset.theme = appliedTheme;
+          document.documentElement.dataset.themeChoice = themeChoice;
+          document.documentElement.style.colorScheme = appliedTheme;
+
+          buttons.forEach((button) => {
+            button.setAttribute("aria-pressed", String(button.dataset.themeChoice === themeChoice));
+          });
+        };
+
+        buttons.forEach((button) => {
+          button.addEventListener("click", () => {
+            const themeChoice = button.dataset.themeChoice;
+            if (!choices.has(themeChoice)) {
+              return;
+            }
+
+            try {
+              localStorage.setItem(storageKey, themeChoice);
+            } catch {
+              /* Ignore storage failures and still apply the current-page theme. */
+            }
+            applyTheme(themeChoice);
+          });
+        });
+
+        systemQuery.addEventListener("change", () => {
+          if (getThemeChoice() === "system") {
+            applyTheme("system");
+          }
+        });
+
+        applyTheme(getThemeChoice());
+      })();
+    </script>
   </body>
 </html>
