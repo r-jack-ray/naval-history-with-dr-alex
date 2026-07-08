@@ -1,7 +1,6 @@
 import { dirname, join } from "node:path";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 
-import { Innertube } from "youtubei.js";
 import { fetchTranscript as fetchTranscriptPlus } from "youtube-transcript-plus";
 import type {
   FetchParams as TranscriptPlusFetchParams,
@@ -35,7 +34,7 @@ export interface VideoTranscript {
   videoId: string;
   videoTitle?: string;
   videoPublishedAt?: string;
-  source: "youtube-transcript-plus" | "youtubei.js";
+  source: "youtube-transcript-plus" | "watch-page-captions";
   fetchedAt: string;
   selectedLanguage?: string;
   availableLanguages: string[];
@@ -97,7 +96,7 @@ export async function fetchVideoTranscript(options: FetchVideoTranscriptOptions)
   try {
     return await fetchVideoTranscriptWithPlus(options, limitedFetch);
   } catch (error) {
-    options.logger?.(`youtube-transcript-plus failed: ${errorMessage(error)}. Trying caption-track fallback.`);
+    options.logger?.(`youtube-transcript-plus failed: ${errorMessage(error)}. Trying watch-page caption fallback.`);
   }
 
   const watchPageTranscript = await fetchWatchPageTranscript({
@@ -108,27 +107,6 @@ export async function fetchVideoTranscript(options: FetchVideoTranscriptOptions)
   });
   if (watchPageTranscript) {
     return watchPageTranscript;
-  }
-
-  const youtube = await Innertube.create({
-    fetch: limitedFetch,
-    generate_session_locally: true,
-    retrieve_player: false,
-  });
-
-  options.logger?.(`Fetching video info for transcript: ${options.videoId}`);
-  const info = await youtube.getInfo(options.videoId);
-
-  const captionTranscript = await fetchCaptionTrackTranscript({
-    videoId: options.videoId,
-    info,
-    language: options.language,
-    fetch: limitedFetch,
-    logger: options.logger,
-    headers: youtubeRequestHeaders(),
-  });
-  if (captionTranscript) {
-    return captionTranscript;
   }
 
   throw new Error(`No caption tracks found for video: ${options.videoId}.`);
@@ -600,7 +578,7 @@ async function fetchTranscriptFromCaptionTracks(options: {
   return {
     videoId: options.videoId,
     ...(options.videoTitle ? { videoTitle: options.videoTitle } : {}),
-    source: "youtubei.js",
+    source: "watch-page-captions",
     fetchedAt: new Date().toISOString(),
     selectedLanguage: captionTrackLanguage(track),
     availableLanguages: captionTracks.map(captionTrackLanguage),
@@ -736,7 +714,7 @@ function captionTrackCode(track: Record<string, unknown>): string | undefined {
 
 function readTranscriptSource(object: Record<string, unknown>): VideoTranscript["source"] {
   const source = readString(object, "source");
-  return source === "youtube-transcript-plus" ? "youtube-transcript-plus" : "youtubei.js";
+  return source === "youtube-transcript-plus" ? "youtube-transcript-plus" : "watch-page-captions";
 }
 
 function extractInitialPlayerResponse(html: string): unknown | undefined {

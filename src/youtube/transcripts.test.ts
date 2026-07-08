@@ -9,7 +9,7 @@ import {
   transcriptToTxt,
 } from "./transcripts.js";
 
-test("extracts transcript segments from youtubei.js transcript shape", () => {
+test("extracts transcript segments from legacy transcript shape", () => {
   const segments = extractTranscriptSegments({
     transcript: {
       content: {
@@ -97,7 +97,7 @@ test("extracts transcript segments from WebVTT captions", () => {
 test("formats transcript text and TSV outputs", () => {
   const transcript = {
     videoId: "abc123",
-    source: "youtubei.js" as const,
+    source: "watch-page-captions" as const,
     fetchedAt: "2026-07-07T00:00:00.000Z",
     selectedLanguage: "English",
     availableLanguages: ["English"],

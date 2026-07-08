@@ -24,6 +24,7 @@ Curated video pages, transcript ingestion, search indexes, and static site outpu
 src/
   channel/                 Canonical channel inventory
     episodes.json          Master episode list
+    video-metadata.json    YouTube Data API metadata store
   scripts/                 TypeScript CLI entrypoints
   youtube/                 YouTube inventory helpers
   transcripts/             Local transcript archive
@@ -57,7 +58,7 @@ npm run check
 
 ## Fetch Channel Video Links
 
-The inventory script uses `youtubei.js` and defaults to one YouTube request per minute to reduce the chance of temporary IP blocks.
+The inventory script uses the official YouTube Data API through `googleapis`. Set `YOUTUBE_API_KEY` before running API-backed commands. It defaults to one request per minute; this is conservative and can be lowered for official API runs.
 
 Full run into the source master episode list:
 
@@ -79,16 +80,29 @@ Small smoke test:
 npm run fetch:video-links -- --max-pages 1 --request-delay-ms 5000 --output reports/dr-alex-video-links-probe.json
 ```
 
-Exact per-video publish/upload/stream timestamps require video detail calls. At the default rate limit, this adds one minute per video:
+Exact per-video metadata can be included in 50-ID official API batches:
 
 ```powershell
 npm run fetch:video-links -- --include-video-details --detail-limit 10 --metadata-output reports/dr-alex-video-metadata-probe.json
 ```
 
-The output includes links from both:
+The official API path crawls the channel uploads playlist. Use saved HTML extraction for channel tabs when a browser-rendered `/videos` or `/streams` page has already been captured.
 
-- `https://www.youtube.com/@DrAlexClarke/videos`
-- `https://www.youtube.com/@DrAlexClarke/streams`
+## Fetch Video Metadata
+
+Populate or resume the source metadata store from `src/channel/episodes.json` using official `videos.list` batches:
+
+```powershell
+npm run fetch:video-metadata
+```
+
+Useful bounded probe:
+
+```powershell
+npm run fetch:video-metadata -- --limit 50 --request-delay-ms 1000
+```
+
+The output is `src/channel/video-metadata.json`. Existing records are skipped unless `--force` is passed.
 
 ## Extract Saved Live Streams HTML
 
@@ -101,20 +115,20 @@ npm run extract:videos-html -- --output reports/dr-alex-videos-html-extraction.j
 Use the generic command for other saved channel tabs:
 
 ```powershell
-npm run extract:saved-channel-html -- --tab streams --input "reports/Naval History with Dr Alex - YouTube_live_streams.html" --output reports/dr-alex-live-streams-html-extraction.json
+npm run extract:saved-channel-html -- --tab streams --output reports/dr-alex-streams-html-extraction.json --links-output reports/dr-alex-streams-html-links.json
 ```
 
 The report includes parse stats, continuation-token detection, and the standard channel-link result. Saved `/videos` pages can contain many rendered rows; saved `/streams` pages may contain only the visible page of stream items.
 
-The older live-stream helper parses sparse `ytInitialData` snapshots and is kept for comparison:
+Merge saved tab outputs into the source master:
 
 ```powershell
-npm run extract:live-streams-html -- --output reports/dr-alex-live-streams-html-extraction.json --links-output reports/dr-alex-live-streams-html-links.json
+npm run merge:video-links -- --input reports/dr-alex-videos-html-links.json --input reports/dr-alex-streams-html-links.json --master-output src/channel/episodes.json --inventory-completeness partial
 ```
 
 ## Store Video Transcripts Locally
 
-The transcript puller uses `youtube-transcript-plus` first, falls back to `youtubei.js` caption tracks, and defaults to one YouTube request per minute. By default it writes JSON, TXT, TSV, and updates `src/transcripts/manifest.json`:
+The transcript puller uses `youtube-transcript-plus` first, falls back to direct watch-page caption tracks, and defaults to one YouTube request per minute. The official YouTube Data API does not provide public transcript download by API key. By default this writes JSON, TXT, TSV, and updates `src/transcripts/manifest.json`:
 
 ```powershell
 npm run fetch:transcript -- --video-id uURe69Wnh-Q

@@ -5,6 +5,7 @@ import {
   buildChannelEpisodeMaster,
   createRateLimitedFetch,
   extractVideoLink,
+  mergeChannelVideoLinksResults,
   splitChannelVideoLinksResult,
 } from "./channel-video-links.js";
 
@@ -165,6 +166,60 @@ test("builds a canonical source episode master list", () => {
       },
     },
   ]);
+});
+
+test("merges channel video link results across tabs", () => {
+  const merged = mergeChannelVideoLinksResults([
+    {
+      channelUrl: "https://www.youtube.com/@DrAlexClarke",
+      channelId: "UCE2x09tU0GwAGiSbFPEhIwQ",
+      fetchedAt: "2026-07-07T23:00:00.000Z",
+      requestDelayMs: 0,
+      tabs: {
+        videos: { url: "https://www.youtube.com/@DrAlexClarke/videos", pagesFetched: 1, rawCount: 2 },
+        streams: { url: "https://www.youtube.com/@DrAlexClarke/streams", pagesFetched: 0, rawCount: 0 },
+      },
+      links: [
+        {
+          videoId: "abc123",
+          url: "https://www.youtube.com/watch?v=abc123",
+          title: "Video",
+          tabs: ["videos"],
+          tabPositions: { videos: 1 },
+        },
+      ],
+    },
+    {
+      channelUrl: "https://www.youtube.com/@DrAlexClarke",
+      channelId: "UCE2x09tU0GwAGiSbFPEhIwQ",
+      fetchedAt: "2026-07-08T00:00:00.000Z",
+      requestDelayMs: 0,
+      tabs: {
+        videos: { url: "https://www.youtube.com/@DrAlexClarke/videos", pagesFetched: 0, rawCount: 0 },
+        streams: { url: "https://www.youtube.com/@DrAlexClarke/streams", pagesFetched: 1, rawCount: 2 },
+      },
+      links: [
+        {
+          videoId: "abc123",
+          url: "https://www.youtube.com/watch?v=abc123",
+          tabs: ["streams"],
+          tabPositions: { streams: 1 },
+        },
+        {
+          videoId: "def456",
+          url: "https://www.youtube.com/watch?v=def456",
+          tabs: ["streams"],
+          tabPositions: { streams: 2 },
+        },
+      ],
+    },
+  ]);
+
+  assert.equal(merged.tabs.videos.pagesFetched, 1);
+  assert.equal(merged.tabs.streams.pagesFetched, 1);
+  assert.deepEqual(merged.links.map((link) => link.videoId), ["abc123", "def456"]);
+  assert.deepEqual(merged.links[0]?.tabs, ["videos", "streams"]);
+  assert.deepEqual(merged.links[0]?.tabPositions, { videos: 1, streams: 1 });
 });
 
 test("spaces fetch calls through a serial rate limiter", async () => {

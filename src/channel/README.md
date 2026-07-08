@@ -8,6 +8,7 @@ curation, and search workflows.
 ```text
 src/channel/
   episodes.json  Master episode list for the channel.
+  video-metadata.json  Official YouTube Data API metadata store.
 ```
 
 ## episodes.json
@@ -34,4 +35,18 @@ Refresh from a channel crawl:
 
 ```powershell
 npm run fetch:video-links -- --master-output src/channel/episodes.json --checkpoint-output reports/dr-alex-video-fetch-checkpoint.json
+```
+
+Refresh from saved `/videos` and `/streams` HTML:
+
+```powershell
+npm run extract:videos-html -- --links-output reports/dr-alex-videos-html-links.json
+npm run extract:saved-channel-html -- --tab streams --links-output reports/dr-alex-streams-html-links.json
+npm run merge:video-links -- --input reports/dr-alex-videos-html-links.json --input reports/dr-alex-streams-html-links.json --master-output src/channel/episodes.json --inventory-completeness partial
+```
+
+Populate official metadata with `YOUTUBE_API_KEY`:
+
+```powershell
+npm run fetch:video-metadata
 ```

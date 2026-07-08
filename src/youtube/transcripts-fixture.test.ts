@@ -15,7 +15,7 @@ test("reads structured transcript JSON for conversion", async () => {
       input,
       JSON.stringify({
         videoId: "abc123",
-        source: "youtubei.js",
+        source: "watch-page-captions",
         fetchedAt: "2026-07-07T00:00:00.000Z",
         availableLanguages: ["English"],
         segments: [

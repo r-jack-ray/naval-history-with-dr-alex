@@ -26,6 +26,16 @@ async function main(): Promise<void> {
     channelUrl: options.channelUrl,
     requestDelayMs: options.requestDelayMs,
   };
+  const apiKey = options.apiKey ?? process.env.YOUTUBE_API_KEY;
+  if (apiKey !== undefined) {
+    fetchOptions.apiKey = apiKey;
+  }
+  if (options.channelId !== undefined) {
+    fetchOptions.channelId = options.channelId;
+  }
+  if (options.uploadsPlaylistId !== undefined) {
+    fetchOptions.uploadsPlaylistId = options.uploadsPlaylistId;
+  }
 
   if (options.maxPages !== undefined) {
     fetchOptions.maxPages = options.maxPages;
@@ -82,6 +92,15 @@ function parseArgs(args: string[]): CliOptions {
     switch (arg) {
       case "--channel-url":
         options.channelUrl = readValue(args, ++index, arg);
+        break;
+      case "--api-key":
+        options.apiKey = readValue(args, ++index, arg);
+        break;
+      case "--channel-id":
+        options.channelId = readValue(args, ++index, arg);
+        break;
+      case "--uploads-playlist-id":
+        options.uploadsPlaylistId = readValue(args, ++index, arg);
         break;
       case "--output":
         options.output = readValue(args, ++index, arg);
@@ -157,6 +176,9 @@ function printHelp(): void {
 
 Options:
   --channel-url <url>       Channel URL or tab URL. Defaults to Dr. Alex Clarke's channel.
+  --api-key <key>           YouTube Data API key. Defaults to YOUTUBE_API_KEY.
+  --channel-id <id>         Override channel ID resolution.
+  --uploads-playlist-id <id> Override uploads playlist resolution.
   --output <path>           Write combined JSON to a file instead of stdout.
   --master-output <path>    Write canonical source episode list. Defaults by convention to ${defaultEpisodeMasterOutput}.
   --inventory-completeness <complete|partial|unknown>

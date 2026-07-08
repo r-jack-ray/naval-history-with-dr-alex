@@ -1,7 +1,7 @@
 import { dirname } from "node:path";
 import { mkdir, writeFile } from "node:fs/promises";
 
-import { Innertube } from "youtubei.js";
+import { google, type youtube_v3 } from "googleapis";
 
 import { slugifyVideoTitle, videoFileStem } from "../naming.js";
 
@@ -39,6 +39,9 @@ export interface ChannelVideoLinksResult {
 export interface FetchChannelVideoLinksOptions {
   channelUrl: string;
   requestDelayMs: number;
+  apiKey?: string;
+  channelId?: string;
+  uploadsPlaylistId?: string;
   maxPages?: number;
   includeVideoDetails?: boolean;
   detailLimit?: number;
@@ -145,19 +148,12 @@ export interface RateLimitedFetchOptions {
   sleep?: (ms: number) => Promise<void>;
 }
 
-type FeedLike = {
-  videos: unknown[];
-  has_continuation: boolean;
-  getContinuation(): Promise<FeedLike>;
-};
+type RequestGate = (label: string) => Promise<void>;
 
-type TabCollection = {
-  records: ChannelVideoLink[];
-  pagesFetched: number;
-  rawCount: number;
+type OfficialChannelInfo = {
+  channelId: string;
+  uploadsPlaylistId: string;
 };
-
-type TabProgressCallback = (collection: TabCollection) => Promise<void>;
 
 const defaultChannelUrl = "https://www.youtube.com/@DrAlexClarke";
 
@@ -200,28 +196,38 @@ export async function fetchChannelVideoLinks(
   options: FetchChannelVideoLinksOptions,
 ): Promise<ChannelVideoLinksResult> {
   const channelUrl = normalizeChannelUrl(options.channelUrl);
-  const rateLimitOptions: RateLimitedFetchOptions = {
+  const apiKey = options.apiKey;
+  if (!apiKey) {
+    throw new Error("A YouTube Data API key is required. Pass --api-key or set YOUTUBE_API_KEY.");
+  }
+
+  const youtube = google.youtube({ version: "v3", auth: apiKey });
+  const gateOptions: {
+    delayMs: number;
+    logger?: (message: string) => void;
+  } = {
     delayMs: options.requestDelayMs,
   };
-
-  if (options.logger) {
-    rateLimitOptions.logger = options.logger;
+  if (options.logger !== undefined) {
+    gateOptions.logger = options.logger;
   }
-
-  const limitedFetch = createRateLimitedFetch(rateLimitOptions);
-  const youtube = await Innertube.create({
-    fetch: limitedFetch,
-    generate_session_locally: true,
-    retrieve_player: false,
-  });
-
-  const endpoint = await youtube.resolveURL(channelUrl);
-  const channelId = readString(endpoint.payload, "browseId");
-  if (!channelId) {
-    throw new Error(`Could not resolve a channel ID from ${channelUrl}.`);
+  const gate = createRequestGate(gateOptions);
+  const resolveOptions: {
+    channelUrl: string;
+    channelId?: string;
+    uploadsPlaylistId?: string;
+    gate: RequestGate;
+  } = {
+    channelUrl,
+    gate,
+  };
+  if (options.channelId !== undefined) {
+    resolveOptions.channelId = options.channelId;
   }
-
-  const channel = await youtube.getChannel(channelId);
+  if (options.uploadsPlaylistId !== undefined) {
+    resolveOptions.uploadsPlaylistId = options.uploadsPlaylistId;
+  }
+  const channel = await resolveOfficialChannel(youtube, resolveOptions);
   const fetchedAt = new Date().toISOString();
   const tabState: ChannelVideoLinksResult["tabs"] = {
     videos: {
@@ -235,51 +241,74 @@ export async function fetchChannelVideoLinks(
       rawCount: 0,
     },
   };
-  const recordsByTab: Record<ChannelVideoTab, ChannelVideoLink[]> = {
-    videos: [],
-    streams: [],
-  };
 
-  const writeCheckpoint = async (tab: ChannelVideoTab, collection: TabCollection) => {
-    recordsByTab[tab] = [...collection.records];
-    tabState[tab] = {
-      ...tabState[tab],
-      pagesFetched: collection.pagesFetched,
-      rawCount: collection.rawCount,
+  const records: ChannelVideoLink[] = [];
+  let pagesFetched = 0;
+  let rawCount = 0;
+  let pageToken: string | undefined;
+
+  while (true) {
+    pagesFetched += 1;
+    await gate(`playlistItems.list uploads page ${pagesFetched}`);
+    const params: youtube_v3.Params$Resource$Playlistitems$List = {
+      part: ["snippet", "contentDetails", "status"],
+      playlistId: channel.uploadsPlaylistId,
+      maxResults: 50,
+    };
+    if (pageToken !== undefined) {
+      params.pageToken = pageToken;
+    }
+
+    const response = await youtube.playlistItems.list(params);
+    const items = response.data.items ?? [];
+    rawCount += items.length;
+
+    for (const item of items) {
+      const record = playlistItemToVideoLink(item, records.length + 1);
+      if (record !== undefined) {
+        records.push(record);
+      }
+    }
+
+    tabState.videos = {
+      ...tabState.videos,
+      pagesFetched,
+      rawCount,
     };
     options.logger?.(
-      `${tab}: fetched page ${collection.pagesFetched}; raw items=${collection.rawCount}; extracted links=${collection.records.length}`,
+      `videos: fetched uploads page ${pagesFetched}; raw items=${rawCount}; extracted links=${records.length}`,
     );
-
     if (options.checkpointOutput) {
       await writeVideoLinksOutput(
         options.checkpointOutput,
-        buildLinksResult(channelUrl, channelId, fetchedAt, options.requestDelayMs, tabState, recordsByTab),
+        {
+          channelUrl,
+          channelId: channel.channelId,
+          fetchedAt,
+          requestDelayMs: options.requestDelayMs,
+          tabs: tabState,
+          links: records,
+        },
       );
     }
-  };
 
-  const [videos, streams] = [
-    await collectTab("videos", (await channel.getVideos()) as FeedLike, options.maxPages, (collection) =>
-      writeCheckpoint("videos", collection),
-    ),
-    await collectTab("streams", (await channel.getLiveStreams()) as FeedLike, options.maxPages, (collection) =>
-      writeCheckpoint("streams", collection),
-    ),
-  ];
-  const links = mergeLinks([...videos.records, ...streams.records]);
+    if (!response.data.nextPageToken || (options.maxPages !== undefined && pagesFetched >= options.maxPages)) {
+      break;
+    }
+    pageToken = response.data.nextPageToken;
+  }
 
   if (options.includeVideoDetails) {
-    await enrichWithVideoDetails(youtube, links, options.detailLimit, options.logger);
+    await enrichWithOfficialVideoDetails(youtube, records, options.detailLimit, gate, options.logger);
   }
 
   return {
     channelUrl,
-    channelId,
+    channelId: channel.channelId,
     fetchedAt,
     requestDelayMs: options.requestDelayMs,
     tabs: tabState,
-    links,
+    links: records,
   };
 }
 
@@ -371,6 +400,29 @@ export function splitChannelVideoLinksResult(result: ChannelVideoLinksResult): {
   };
 }
 
+export function mergeChannelVideoLinksResults(results: ChannelVideoLinksResult[]): ChannelVideoLinksResult {
+  if (results.length === 0) {
+    throw new Error("At least one channel video link result is required.");
+  }
+
+  const first = results[0];
+  if (first === undefined) {
+    throw new Error("At least one channel video link result is required.");
+  }
+
+  return {
+    channelUrl: first.channelUrl,
+    channelId: first.channelId,
+    fetchedAt: new Date().toISOString(),
+    requestDelayMs: Math.max(...results.map((result) => result.requestDelayMs)),
+    tabs: {
+      videos: mergeTabState(results, "videos"),
+      streams: mergeTabState(results, "streams"),
+    },
+    links: mergeLinks(results.flatMap((result) => result.links)),
+  };
+}
+
 function channelEpisodeRecord(
   link: ChannelVideoLink,
   channelOrder: number,
@@ -419,6 +471,70 @@ function channelEpisodeRecord(
   }
 
   return record;
+}
+
+function mergeTabState(
+  results: ChannelVideoLinksResult[],
+  tab: ChannelVideoTab,
+): ChannelVideoLinksResult["tabs"][ChannelVideoTab] {
+  const first = results.find((result) => result.tabs[tab].pagesFetched > 0)?.tabs[tab] ?? results[0]?.tabs[tab];
+
+  return {
+    url: first?.url ?? `${defaultChannelUrl}/${tab}`,
+    pagesFetched: results.reduce((sum, result) => sum + result.tabs[tab].pagesFetched, 0),
+    rawCount: results.reduce((sum, result) => sum + result.tabs[tab].rawCount, 0),
+  };
+}
+
+function mergeLinks(records: ChannelVideoLink[]): ChannelVideoLink[] {
+  const linksById = new Map<string, ChannelVideoLink>();
+
+  for (const record of records) {
+    const existing = linksById.get(record.videoId);
+    if (!existing) {
+      linksById.set(record.videoId, { ...record, tabs: [...record.tabs], tabPositions: { ...record.tabPositions } });
+      continue;
+    }
+
+    for (const tab of record.tabs) {
+      if (!existing.tabs.includes(tab)) {
+        existing.tabs.push(tab);
+      }
+      if (existing.tabPositions[tab] === undefined && record.tabPositions[tab] !== undefined) {
+        existing.tabPositions[tab] = record.tabPositions[tab];
+      }
+    }
+
+    if (existing.title === undefined && record.title !== undefined) {
+      existing.title = record.title;
+    }
+    if (existing.durationText === undefined && record.durationText !== undefined) {
+      existing.durationText = record.durationText;
+    }
+    if (existing.publishedText === undefined && record.publishedText !== undefined) {
+      existing.publishedText = record.publishedText;
+    }
+    if (existing.viewCountText === undefined && record.viewCountText !== undefined) {
+      existing.viewCountText = record.viewCountText;
+    }
+    if (existing.publishedAt === undefined && record.publishedAt !== undefined) {
+      existing.publishedAt = record.publishedAt;
+    }
+    if (existing.publishDate === undefined && record.publishDate !== undefined) {
+      existing.publishDate = record.publishDate;
+    }
+    if (existing.uploadDate === undefined && record.uploadDate !== undefined) {
+      existing.uploadDate = record.uploadDate;
+    }
+    if (existing.streamStartAt === undefined && record.streamStartAt !== undefined) {
+      existing.streamStartAt = record.streamStartAt;
+    }
+    if (existing.streamEndAt === undefined && record.streamEndAt !== undefined) {
+      existing.streamEndAt = record.streamEndAt;
+    }
+  }
+
+  return [...linksById.values()];
 }
 
 export function extractVideoLink(
@@ -482,143 +598,169 @@ export function defaultChannelVideoLinksOptions(): FetchChannelVideoLinksOptions
   };
 }
 
-async function collectTab(
-  tab: ChannelVideoTab,
-  firstFeed: FeedLike,
-  maxPages?: number,
-  onPage?: TabProgressCallback,
-): Promise<TabCollection> {
-  const records: ChannelVideoLink[] = [];
-  let feed = firstFeed;
-  let pagesFetched = 0;
-  let rawCount = 0;
-  let tabPosition = 0;
+function createRequestGate(options: {
+  delayMs: number;
+  logger?: (message: string) => void;
+  now?: () => number;
+  sleep?: (ms: number) => Promise<void>;
+}): RequestGate {
+  const sleep = options.sleep ?? ((ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms)));
+  const now = options.now ?? (() => Date.now());
+  let lastStartMs: number | undefined;
+  let requestCount = 0;
 
-  while (true) {
-    pagesFetched += 1;
-    rawCount += feed.videos.length;
-
-    for (const node of feed.videos) {
-      tabPosition += 1;
-      const record = extractVideoLink(node, tab, tabPosition);
-      if (record) {
-        records.push(record);
+  return async (label: string) => {
+    if (lastStartMs !== undefined) {
+      const waitMs = Math.max(0, lastStartMs + options.delayMs - now());
+      if (waitMs > 0) {
+        options.logger?.(`Waiting ${Math.ceil(waitMs / 1000)}s before the next YouTube request.`);
+        await sleep(waitMs);
       }
     }
 
-    await onPage?.({ records, pagesFetched, rawCount });
-
-    if (!feed.has_continuation || (maxPages !== undefined && pagesFetched >= maxPages)) {
-      return { records, pagesFetched, rawCount };
-    }
-
-    feed = await feed.getContinuation();
-  }
-}
-
-function mergeLinks(records: ChannelVideoLink[]): ChannelVideoLink[] {
-  const linksById = new Map<string, ChannelVideoLink>();
-
-  for (const record of records) {
-    const existing = linksById.get(record.videoId);
-    if (!existing) {
-      linksById.set(record.videoId, { ...record, tabs: [...record.tabs] });
-      continue;
-    }
-
-    for (const tab of record.tabs) {
-      if (!existing.tabs.includes(tab)) {
-        existing.tabs.push(tab);
-      }
-      if (existing.tabPositions[tab] === undefined && record.tabPositions[tab] !== undefined) {
-        existing.tabPositions[tab] = record.tabPositions[tab];
-      }
-    }
-
-    if (existing.title === undefined && record.title !== undefined) {
-      existing.title = record.title;
-    }
-    if (existing.durationText === undefined && record.durationText !== undefined) {
-      existing.durationText = record.durationText;
-    }
-    if (existing.publishedText === undefined && record.publishedText !== undefined) {
-      existing.publishedText = record.publishedText;
-    }
-    if (existing.viewCountText === undefined && record.viewCountText !== undefined) {
-      existing.viewCountText = record.viewCountText;
-    }
-    if (existing.publishedAt === undefined && record.publishedAt !== undefined) {
-      existing.publishedAt = record.publishedAt;
-    }
-    if (existing.publishDate === undefined && record.publishDate !== undefined) {
-      existing.publishDate = record.publishDate;
-    }
-    if (existing.uploadDate === undefined && record.uploadDate !== undefined) {
-      existing.uploadDate = record.uploadDate;
-    }
-    if (existing.streamStartAt === undefined && record.streamStartAt !== undefined) {
-      existing.streamStartAt = record.streamStartAt;
-    }
-    if (existing.streamEndAt === undefined && record.streamEndAt !== undefined) {
-      existing.streamEndAt = record.streamEndAt;
-    }
-  }
-
-  return [...linksById.values()];
-}
-
-function buildLinksResult(
-  channelUrl: string,
-  channelId: string,
-  fetchedAt: string,
-  requestDelayMs: number,
-  tabs: ChannelVideoLinksResult["tabs"],
-  recordsByTab: Record<ChannelVideoTab, ChannelVideoLink[]>,
-): ChannelVideoLinksResult {
-  return {
-    channelUrl,
-    channelId,
-    fetchedAt,
-    requestDelayMs,
-    tabs: {
-      videos: { ...tabs.videos },
-      streams: { ...tabs.streams },
-    },
-    links: mergeLinks([...recordsByTab.videos, ...recordsByTab.streams]),
+    lastStartMs = now();
+    requestCount += 1;
+    options.logger?.(`YouTube Data API request ${requestCount}: ${label}`);
   };
 }
 
-async function enrichWithVideoDetails(
-  youtube: Awaited<ReturnType<typeof Innertube.create>>,
+async function resolveOfficialChannel(
+  youtube: youtube_v3.Youtube,
+  options: {
+    channelUrl: string;
+    channelId?: string;
+    uploadsPlaylistId?: string;
+    gate: RequestGate;
+  },
+): Promise<OfficialChannelInfo> {
+  const channelId = options.channelId ?? channelIdFromUrl(options.channelUrl);
+  if (channelId !== undefined && options.uploadsPlaylistId !== undefined) {
+    return {
+      channelId,
+      uploadsPlaylistId: options.uploadsPlaylistId,
+    };
+  }
+
+  const params: youtube_v3.Params$Resource$Channels$List = {
+    part: ["contentDetails"],
+  };
+
+  if (channelId !== undefined) {
+    params.id = [channelId];
+  } else {
+    const handle = handleFromChannelUrl(options.channelUrl);
+    if (handle === undefined) {
+      throw new Error("Could not resolve a channel handle. Pass --channel-id for non-handle URLs.");
+    }
+    params.forHandle = handle;
+  }
+
+  await options.gate("channels.list contentDetails");
+  const response = await youtube.channels.list(params);
+  const channel = response.data.items?.[0];
+  const resolvedChannelId = channel?.id ?? channelId;
+  const uploadsPlaylistId =
+    options.uploadsPlaylistId ?? channel?.contentDetails?.relatedPlaylists?.uploads ?? undefined;
+
+  if (resolvedChannelId === undefined || uploadsPlaylistId === undefined) {
+    throw new Error(`Could not resolve channel uploads playlist from ${options.channelUrl}.`);
+  }
+
+  return {
+    channelId: resolvedChannelId,
+    uploadsPlaylistId,
+  };
+}
+
+function playlistItemToVideoLink(
+  item: youtube_v3.Schema$PlaylistItem,
+  tabPosition: number,
+): ChannelVideoLink | undefined {
+  const videoId = item.contentDetails?.videoId ?? item.snippet?.resourceId?.videoId ?? undefined;
+  if (videoId === undefined) {
+    return undefined;
+  }
+
+  const record: ChannelVideoLink = {
+    videoId,
+    url: `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}`,
+    tabs: ["videos"],
+    tabPositions: { videos: tabPosition },
+  };
+  const title = item.snippet?.title ?? undefined;
+  const publishedAt = item.contentDetails?.videoPublishedAt ?? item.snippet?.publishedAt ?? undefined;
+
+  if (title !== undefined && title !== "Deleted video" && title !== "Private video") {
+    record.title = title;
+  }
+  if (publishedAt !== undefined) {
+    record.publishedAt = publishedAt;
+    record.publishDate = publishedAt.slice(0, 10);
+    record.publishedText = record.publishDate;
+  }
+
+  return record;
+}
+
+async function enrichWithOfficialVideoDetails(
+  youtube: youtube_v3.Youtube,
   links: ChannelVideoLink[],
   detailLimit: number | undefined,
+  gate: RequestGate,
   logger: ((message: string) => void) | undefined,
 ): Promise<void> {
   const limitedLinks = detailLimit === undefined ? links : links.slice(0, detailLimit);
+  const linksById = new Map(limitedLinks.map((link) => [link.videoId, link]));
 
-  for (const [index, link] of limitedLinks.entries()) {
-    logger?.(`Fetching exact video metadata ${index + 1}/${limitedLinks.length}: ${link.videoId}`);
-    const info = await youtube.getBasicInfo(link.videoId);
-    const microformat = asRecord(readPath(info, ["page", "0", "microformat"]));
-    const basicInfo = asRecord(readPath(info, ["basic_info"]));
+  for (let index = 0; index < limitedLinks.length; index += 50) {
+    const batch = limitedLinks.slice(index, index + 50);
+    logger?.(`Fetching exact video metadata ${index + 1}-${index + batch.length}/${limitedLinks.length}`);
+    await gate(`videos.list metadata batch ${Math.floor(index / 50) + 1}`);
+    const response = await youtube.videos.list({
+      part: ["snippet", "contentDetails", "statistics", "status", "liveStreamingDetails"],
+      id: batch.map((link) => link.videoId),
+      maxResults: 50,
+    });
 
-    const publishDate = microformat ? readString(microformat, "publish_date") : undefined;
-    const uploadDate = microformat ? readString(microformat, "upload_date") : undefined;
-    const streamStartAt = dateValue(readPath(basicInfo, ["start_timestamp"])) ?? dateValue(readPath(microformat, ["start_timestamp"]));
-    const streamEndAt = dateValue(readPath(basicInfo, ["end_timestamp"])) ?? dateValue(readPath(microformat, ["end_timestamp"]));
+    for (const video of response.data.items ?? []) {
+      const videoId = video.id;
+      const link = videoId ? linksById.get(videoId) : undefined;
+      if (!link) {
+        continue;
+      }
 
-    if (publishDate !== undefined) {
-      link.publishDate = publishDate;
+      applyOfficialVideoMetadata(link, video);
     }
-    if (uploadDate !== undefined) {
-      link.uploadDate = uploadDate;
-    }
-    if (streamStartAt !== undefined) {
-      link.streamStartAt = streamStartAt;
-    }
-    if (streamEndAt !== undefined) {
-      link.streamEndAt = streamEndAt;
-    }
+  }
+}
+
+function applyOfficialVideoMetadata(link: ChannelVideoLink, video: youtube_v3.Schema$Video): void {
+  const snippet = video.snippet;
+  const statistics = video.statistics;
+  const liveStreamingDetails = video.liveStreamingDetails;
+
+  const title = snippet?.title ?? undefined;
+  const publishedAt = snippet?.publishedAt ?? undefined;
+  const viewCount = statistics?.viewCount ?? undefined;
+  const actualStartTime = liveStreamingDetails?.actualStartTime ?? undefined;
+  const actualEndTime = liveStreamingDetails?.actualEndTime ?? undefined;
+
+  if (title !== undefined) {
+    link.title = title;
+  }
+  if (publishedAt !== undefined) {
+    link.publishedAt = publishedAt;
+    link.publishDate = publishedAt.slice(0, 10);
+    link.publishedText = link.publishDate;
+  }
+  if (viewCount !== undefined) {
+    link.viewCountText = `${viewCount} views`;
+  }
+  if (actualStartTime !== undefined) {
+    link.streamStartAt = actualStartTime;
+  }
+  if (actualEndTime !== undefined) {
+    link.streamEndAt = actualEndTime;
   }
 }
 
@@ -665,6 +807,16 @@ async function writeJsonFile(path: string, value: unknown): Promise<void> {
 
 function normalizeChannelUrl(channelUrl: string): string {
   return channelUrl.replace(/\/(?:videos|streams)\/?$/u, "").replace(/\/$/u, "");
+}
+
+function channelIdFromUrl(channelUrl: string): string | undefined {
+  const match = /(?:^|\/)channel\/(UC[A-Za-z0-9_-]{22})(?:\/|$)/u.exec(channelUrl);
+  return match?.[1];
+}
+
+function handleFromChannelUrl(channelUrl: string): string | undefined {
+  const match = /(?:^|\/)@([A-Za-z0-9._-]+)(?:\/|$)/u.exec(channelUrl);
+  return match ? `@${match[1]}` : undefined;
 }
 
 function requestHost(input: Parameters<typeof fetch>[0]): string {
