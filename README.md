@@ -1,5 +1,7 @@
 # Naval History With Dr. Alex
 
+[Main site](https://r-jack-ray.github.io/naval-history-with-dr-alex/)
+
 Static reference archive tooling for [Naval History with Dr Alex](https://www.youtube.com/@DrAlexClarke).
 
 The archive uses a segment-first model. The core curated unit is a video segment: a chapter, notable point, actual Q&A exchange, or optional transcript excerpt.
