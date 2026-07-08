@@ -87,8 +87,12 @@ export async function findVideoMetadataRecord(
   videoId: string,
   path = defaultVideoMetadataOutput,
 ): Promise<VideoMetadataRecord | undefined> {
-  const store = await readExistingStore(path);
+  const store = await readVideoMetadataStore(path);
   return store?.videos.find((record) => record.videoId === videoId);
+}
+
+export async function readVideoMetadataStore(path = defaultVideoMetadataOutput): Promise<VideoMetadataStore | undefined> {
+  return readExistingStore(path);
 }
 
 export function videoNamingMetadata(record: VideoMetadataRecord | undefined): VideoNamingMetadata {

@@ -17,6 +17,7 @@
     "extract:live-streams-html": "npm run build && node dist/scripts/extract-live-streams-html.js",
     "extract:videos-html": "npm run extract:saved-channel-html -- --tab videos",
     "fetch:transcript": "npm run build && node dist/scripts/get-video-transcript.js",
+    "fetch:transcripts": "npm run build && node dist/scripts/fetch-transcript-batch.js",
     "fetch:video-metadata": "npm run build && node dist/scripts/fetch-video-metadata.js",
     "fetch:video-links": "npm run build && node dist/scripts/get-channel-video-links.js",
     "merge:video-links": "npm run build && node dist/scripts/merge-channel-video-links.js",

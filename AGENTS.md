@@ -25,6 +25,7 @@ npm test
 npm run check
 npm run fetch:video-links -- --master-output src/channel/episodes.json --checkpoint-output reports/dr-alex-video-fetch-checkpoint.json
 npm run fetch:transcript -- --video-id uURe69Wnh-Q
+npm run fetch:transcripts -- --limit 1 --request-delay-ms 5000
 npm run convert:transcript-json -- src/transcripts/json/uURe69Wnh-Q.json --output-dir src/transcripts/txt
 ```
 

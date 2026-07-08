@@ -128,11 +128,29 @@ npm run merge:video-links -- --input reports/dr-alex-videos-html-links.json --in
 
 ## Store Video Transcripts Locally
 
-The transcript puller uses `youtube-transcript-plus` first, falls back to direct watch-page caption tracks, and defaults to one YouTube request per minute. The official YouTube Data API does not provide public transcript download by API key. By default this writes JSON, TXT, TSV, and updates `src/transcripts/manifest.json`:
+The transcript puller uses `youtube-transcript-plus` first, falls back to direct
+watch-page caption tracks, and defaults to a 5-second delay between YouTube
+requests. The official YouTube Data API does not provide public transcript
+download by API key. By default this writes JSON, TXT, TSV, and updates
+`src/transcripts/manifest.json`:
 
 ```powershell
 npm run fetch:transcript -- --video-id uURe69Wnh-Q
 ```
+
+For unattended ingestion, use the batch runner. It skips transcripts already in
+`src/transcripts/manifest.json`, uses `src/channel/video-metadata.json` for
+timestamped naming, and checkpoints failures/progress to
+`src/transcripts/fetch-status.json`:
+
+```powershell
+npm run fetch:transcripts -- --limit 1 --request-delay-ms 5000
+npm run fetch:transcripts
+```
+
+Use `--request-delay-ms 60000` if YouTube starts rate-limiting or blocking
+transcript requests. Use `--retry-failed` to retry videos recorded in the status
+file.
 
 JSON stores structured segment data. TXT is a readable timestamped transcript. TSV is for structured timestamp/link review. Stored transcript files use `timestamp_title-slug_videoId.ext` when exact timing is known, otherwise `title-slug_videoId.ext`.
 

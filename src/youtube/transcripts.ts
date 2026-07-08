@@ -88,15 +88,15 @@ export interface FetchVideoTranscriptOptions {
   videoId: string;
   requestDelayMs: number;
   language?: string;
+  fetch?: typeof fetch;
   logger?: (message: string) => void;
 }
 
 export async function fetchVideoTranscript(options: FetchVideoTranscriptOptions): Promise<VideoTranscript> {
-  const limitedFetchOptions = {
+  const limitedFetch = options.fetch ?? createRateLimitedFetch({
     delayMs: options.requestDelayMs,
     ...(options.logger ? { logger: options.logger } : {}),
-  };
-  const limitedFetch = createRateLimitedFetch(limitedFetchOptions);
+  });
 
   try {
     return await fetchVideoTranscriptWithPlus(options, limitedFetch);

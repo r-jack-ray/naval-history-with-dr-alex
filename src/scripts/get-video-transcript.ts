@@ -116,7 +116,7 @@ async function main(): Promise<void> {
 
 function parseArgs(args: string[]): CliOptions {
   const options: Partial<CliOptions> = {
-    requestDelayMs: 60_000,
+    requestDelayMs: 5_000,
     outputRoot: defaultTranscriptStorageRoot,
     metadataInput: defaultVideoMetadataOutput,
     force: false,
@@ -270,7 +270,7 @@ Options:
   --json-output <path>     Write structured transcript JSON instead of using the store.
   --txt-output <path>      Write readable timestamped text instead of using the store.
   --tsv-output <path>      Write tab-separated rows instead of using the store.
-  --request-delay-ms <ms>  Delay between YouTube requests. Defaults to 60000.
+  --request-delay-ms <ms>  Delay between YouTube requests. Defaults to 5000.
   --force                  Refetch from YouTube even when the transcript is already stored.
   --quiet                  Suppress progress logs.
   --help                   Show this help.

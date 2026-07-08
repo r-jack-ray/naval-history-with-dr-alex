@@ -1,0 +1,189 @@
+import assert from "node:assert/strict";
+import test from "node:test";
+import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { join } from "node:path";
+import { tmpdir } from "node:os";
+
+import {
+  fetchAndStoreTranscriptBatch,
+  readTranscriptBatchEpisodes,
+  type TranscriptBatchStatus,
+} from "./batch-transcripts.js";
+import { writeTranscriptStorage, type VideoTranscript } from "./transcripts.js";
+
+test("reads unique transcript batch episodes from the channel master list", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "naval-transcript-batch-"));
+  const input = join(dir, "episodes.json");
+
+  try {
+    await writeFile(
+      input,
+      JSON.stringify({
+        episodes: [
+          { videoId: "abc123", title: "First", tabs: ["videos"], channelOrder: 1 },
+          { videoId: "abc123", title: "Duplicate", tabs: ["streams"], channelOrder: 2 },
+          { videoId: "def456", title: "Second", publishedAt: "2026-07-01T00:00:00Z" },
+        ],
+      }),
+      "utf8",
+    );
+
+    const episodes = await readTranscriptBatchEpisodes(input);
+
+    assert.deepEqual(episodes.map((episode) => episode.videoId), ["abc123", "def456"]);
+    assert.equal(episodes[0]?.title, "First");
+    assert.deepEqual(episodes[0]?.tabs, ["videos"]);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("batch fetch skips stored transcripts and writes checkpoint status", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "naval-transcript-batch-"));
+  const input = join(dir, "episodes.json");
+  const metadataInput = join(dir, "metadata.json");
+  const outputRoot = join(dir, "transcripts");
+  const statusOutput = join(outputRoot, "fetch-status.json");
+  const calls: string[] = [];
+
+  try {
+    await writeTranscriptStorage(sampleTranscript("abc123"), outputRoot);
+    await writeFile(
+      input,
+      JSON.stringify({
+        episodes: [
+          { videoId: "abc123", title: "Stored", tabs: ["videos"], channelOrder: 1 },
+          { videoId: "def456", title: "Pending", tabs: ["streams"], channelOrder: 2 },
+        ],
+      }),
+      "utf8",
+    );
+    await writeFile(
+      metadataInput,
+      JSON.stringify({
+        videos: [
+          {
+            videoId: "def456",
+            fetchedAt: "2026-07-08T00:00:00.000Z",
+            snippet: { title: "Metadata Title", publishedAt: "2026-07-03T18:30:17Z" },
+          },
+        ],
+      }),
+      "utf8",
+    );
+
+    const status = await fetchAndStoreTranscriptBatch({
+      inputPath: input,
+      metadataInput,
+      outputRoot,
+      statusOutput,
+      requestDelayMs: 5,
+      fetchTranscript: async (options) => {
+        calls.push(options.videoId);
+        return sampleTranscript(options.videoId);
+      },
+    });
+
+    assert.deepEqual(calls, ["def456"]);
+    assert.equal(status.stats.skippedStoredCount, 1);
+    assert.equal(status.stats.fetchedCount, 1);
+    assert.equal(status.stats.pendingCount, 0);
+
+    const checkpoint = JSON.parse(await readFile(statusOutput, "utf8")) as TranscriptBatchStatus;
+    assert.equal(checkpoint.stats.fetchedCount, 1);
+    assert.equal(
+      (await readFile(join(outputRoot, "json", "2026-07-03_T18-30-17+0000_metadata-title_def456.json"), "utf8"))
+        .includes('"videoTitle": "Metadata Title"'),
+      true,
+    );
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("batch skips previous failures until retry is requested", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "naval-transcript-batch-"));
+  const input = join(dir, "episodes.json");
+  const outputRoot = join(dir, "transcripts");
+  const statusOutput = join(outputRoot, "fetch-status.json");
+  const calls: string[] = [];
+
+  try {
+    await writeFile(
+      input,
+      JSON.stringify({
+        episodes: [{ videoId: "abc123", title: "Previously failed", tabs: ["videos"], channelOrder: 1 }],
+      }),
+      "utf8",
+    );
+    await mkdir(outputRoot, { recursive: true });
+    await writeFile(
+      statusOutput,
+      JSON.stringify({
+        failures: [
+          {
+            videoId: "abc123",
+            attemptedAt: "2026-07-08T00:00:00.000Z",
+            classification: "no_caption_tracks",
+            error: "No caption tracks found for video: abc123.",
+            tabs: ["videos"],
+          },
+        ],
+      }),
+      "utf8",
+    );
+
+    const skipped = await fetchAndStoreTranscriptBatch({
+      inputPath: input,
+      outputRoot,
+      statusOutput,
+      requestDelayMs: 5,
+      fetchTranscript: async (options) => {
+        calls.push(options.videoId);
+        return sampleTranscript(options.videoId);
+      },
+    });
+
+    assert.equal(calls.length, 0);
+    assert.equal(skipped.stats.skippedPreviousFailureCount, 1);
+    assert.equal(skipped.stats.totalFailureCount, 1);
+
+    const retried = await fetchAndStoreTranscriptBatch({
+      inputPath: input,
+      outputRoot,
+      statusOutput,
+      requestDelayMs: 5,
+      retryFailed: true,
+      fetchTranscript: async (options) => {
+        calls.push(options.videoId);
+        return sampleTranscript(options.videoId);
+      },
+    });
+
+    assert.deepEqual(calls, ["abc123"]);
+    assert.equal(retried.stats.fetchedCount, 1);
+    assert.equal(retried.stats.totalFailureCount, 0);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+function sampleTranscript(videoId: string): VideoTranscript {
+  return {
+    videoId,
+    source: "youtube-transcript-plus",
+    fetchedAt: "2026-07-08T00:00:00.000Z",
+    selectedLanguage: "en",
+    availableLanguages: ["en"],
+    segments: [
+      {
+        startMs: 0,
+        endMs: 1000,
+        startSeconds: 0,
+        endSeconds: 1,
+        startTimeText: "0:00",
+        text: "Hello",
+      },
+    ],
+  };
+}
