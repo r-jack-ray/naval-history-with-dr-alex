@@ -140,7 +140,9 @@ export async function fetchAndStoreVideoMetadata(options: FetchVideoMetadataOpti
     recordsById,
     batchesFetched,
   });
-  await writeVideoMetadataStore(options.outputPath, store);
+  if (batchesFetched === 0) {
+    await writeVideoMetadataStore(options.outputPath, store);
+  }
   return store;
 }
 
