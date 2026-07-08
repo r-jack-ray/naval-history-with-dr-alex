@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-08T06:30:42.833Z",
+  "updatedAt": "2026-07-08T06:37:31.067Z",
   "inputPath": "src/channel/episodes.json",
   "outputRoot": "src/transcripts",
   "requestDelayMs": 2000,
@@ -8,13 +8,13 @@
   "force": false,
   "stats": {
     "inputVideoCount": 2078,
-    "skippedStoredCount": 1143,
+    "skippedStoredCount": 1193,
     "skippedPreviousFailureCount": 7,
     "attemptedCount": 50,
-    "fetchedCount": 50,
-    "failedCount": 0,
-    "pendingCount": 878,
-    "totalFailureCount": 7
+    "fetchedCount": 48,
+    "failedCount": 2,
+    "pendingCount": 828,
+    "totalFailureCount": 9
   },
   "failures": [
     {
@@ -63,6 +63,17 @@
       "channelOrder": 971
     },
     {
+      "videoId": "QJDfypv9XxY",
+      "attemptedAt": "2026-07-08T06:35:56.171Z",
+      "classification": "no_caption_tracks",
+      "error": "No caption tracks found for video: QJDfypv9XxY.",
+      "tabs": [
+        "videos"
+      ],
+      "title": "Town Class Part 5 of 7: Southamptons",
+      "channelOrder": 1234
+    },
+    {
       "videoId": "rJmiSW1x2nU",
       "attemptedAt": "2026-07-08T04:37:41.890Z",
       "classification": "empty_transcript",
@@ -96,6 +107,18 @@
       ],
       "title": "No Sound??? Battle of the Atlantic: Escort Procurement - Comment Response",
       "channelOrder": 1068
+    },
+    {
+      "videoId": "xsE4uYFn1m0",
+      "attemptedAt": "2026-07-08T06:36:14.332Z",
+      "classification": "no_caption_tracks",
+      "error": "No caption tracks found for video: xsE4uYFn1m0.",
+      "tabs": [
+        "videos"
+      ],
+      "title": "Town Class Part 5 of 7: Southamptons (inadvertent silent movie style...6&7 are ok)",
+      "publishedAt": "2020-12-13T06:00:26-08:00",
+      "channelOrder": 1237
     }
   ],
   "metadataInput": "src/channel/video-metadata.json",
