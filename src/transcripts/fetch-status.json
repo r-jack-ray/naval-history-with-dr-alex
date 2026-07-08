@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-08T08:20:01.751Z",
+  "updatedAt": "2026-07-08T08:27:30.733Z",
   "inputPath": "src/channel/episodes.json",
   "outputRoot": "src/transcripts",
   "requestDelayMs": 2000,
@@ -8,15 +8,27 @@
   "force": false,
   "stats": {
     "inputVideoCount": 2078,
-    "skippedStoredCount": 1831,
-    "skippedPreviousFailureCount": 20,
+    "skippedStoredCount": 1880,
+    "skippedPreviousFailureCount": 21,
     "attemptedCount": 50,
-    "fetchedCount": 49,
-    "failedCount": 1,
-    "pendingCount": 177,
-    "totalFailureCount": 21
+    "fetchedCount": 47,
+    "failedCount": 3,
+    "pendingCount": 127,
+    "totalFailureCount": 24
   },
   "failures": [
+    {
+      "videoId": "048g_xMLsqo",
+      "attemptedAt": "2026-07-08T08:25:40.935Z",
+      "classification": "no_caption_tracks",
+      "error": "No caption tracks found for video: 048g_xMLsqo.",
+      "tabs": [
+        "streams"
+      ],
+      "title": "Bruships 57: Some Cool Books and Naval History Chat",
+      "publishedAt": "2021-10-17T17:02:43+00:00",
+      "channelOrder": 1933
+    },
     {
       "videoId": "3M9ae7K2XKU",
       "attemptedAt": "2026-07-08T07:58:43.505Z",
@@ -62,6 +74,18 @@
       "title": "Bruships 230: Naval History Questions Answered Live...2nd Start",
       "publishedAt": "2026-02-01T21:10:48+00:00",
       "channelOrder": 1508
+    },
+    {
+      "videoId": "cP_PpcABQFQ",
+      "attemptedAt": "2026-07-08T08:25:46.911Z",
+      "classification": "no_caption_tracks",
+      "error": "No caption tracks found for video: cP_PpcABQFQ.",
+      "tabs": [
+        "streams"
+      ],
+      "title": "Patreon 35: The Naval Career of Jackie Fisher - First Sea Lord Extraordinaire",
+      "publishedAt": "2021-10-14T17:31:13+00:00",
+      "channelOrder": 1934
     },
     {
       "videoId": "dcjjHarz1Ew",
@@ -177,6 +201,18 @@
       "title": "The Forgotten Trafalgar: the 1509 Battle of Diu",
       "publishedAt": "2022-02-03T18:29:02+00:00",
       "channelOrder": 1899
+    },
+    {
+      "videoId": "PLcyjZ29LHA",
+      "attemptedAt": "2026-07-08T08:25:28.742Z",
+      "classification": "no_caption_tracks",
+      "error": "No caption tracks found for video: PLcyjZ29LHA.",
+      "tabs": [
+        "streams"
+      ],
+      "title": "'The Imperial High Seas Fleet: Tarkin replaces Tirpitz & Thrawn replaces Scheer at Jutland...’",
+      "publishedAt": "2021-10-24T17:16:52+00:00",
+      "channelOrder": 1931
     },
     {
       "videoId": "QJDfypv9XxY",
