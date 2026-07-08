@@ -21,6 +21,7 @@ Use this brief when turning stored Dr. Alex transcript files into site-visible s
 7. Append exactly one line to `src/derived/site-content-processing.log` for each transcript file processed.
 8. Regenerate and validate with `.codex/hooks/validate-content-pipeline.ps1 -SkipRepoCheck` before handoff; run without `-SkipRepoCheck` when TypeScript or shared contracts changed.
 9. Mark first-pass overview-only work as `needsFurtherProcessing=yes`; use `no` only when the file is fully curated or intentionally closed without a site segment.
+10. For granular revisits, split lecture material into major `chapter` and `notable_point` windows, and use `qa` only for transcript-visible questions with answers. Long live streams may need a targeted granular pass plus a later exhaustive live Q&A review.
 
 ## Processing Log
 
