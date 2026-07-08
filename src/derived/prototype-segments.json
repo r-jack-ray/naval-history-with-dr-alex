@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "videos": [
+    {
+      "videoId": "uURe69Wnh-Q",
+      "topics": [
+        "modern-navy",
+        "naval-history",
+        "live-q-and-a"
+      ]
+    }
+  ],
+  "topics": [
+    {
+      "slug": "modern-navy",
+      "title": "Modern Navy",
+      "summary": "Current and near-future naval force structure, warship design, and operational tradeoffs.",
+      "aliases": [
+        "modern navies",
+        "current fleets"
+      ]
+    },
+    {
+      "slug": "naval-history",
+      "title": "Naval History",
+      "summary": "Historical context, ship development, naval institutions, and maritime strategy.",
+      "aliases": [
+        "maritime history"
+      ]
+    },
+    {
+      "slug": "live-q-and-a",
+      "title": "Live Q&A",
+      "summary": "Live-stream questions, answers, panel exchanges, and audience prompts.",
+      "aliases": [
+        "questions",
+        "q&a"
+      ]
+    },
+    {
+      "slug": "destroyers",
+      "title": "Destroyers",
+      "summary": "Destroyers, destroyer escorts, large surface combatants, and escort force design.",
+      "aliases": [
+        "destroyer escorts",
+        "surface combatants"
+      ]
+    },
+    {
+      "slug": "spanish-navy",
+      "title": "Spanish Navy",
+      "summary": "Spanish naval forces, ship classes, and modernization discussions.",
+      "aliases": [
+        "Armada Espanola"
+      ]
+    },
+    {
+      "slug": "carrier-groups",
+      "title": "Carrier Groups",
+      "summary": "Carrier battle groups, escorts, amphibious ships, submarines, and fleet package design.",
+      "aliases": [
+        "carrier battle groups",
+        "task groups"
+      ]
+    },
+    {
+      "slug": "naval-aviation",
+      "title": "Naval Aviation",
+      "summary": "Aircraft carriers, naval aircraft, embarked aviation, and air power at sea.",
+      "aliases": [
+        "fleet air arm",
+        "carrier aviation"
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "id": "questions-system-opening",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "questions-system-opening",
+      "title": "Live question system setup",
+      "kind": "chapter",
+      "start": "7:45",
+      "end": "8:40",
+      "topics": [
+        "live-q-and-a"
+      ],
+      "summary": "The stream explains how audience questions should be submitted so they can be tracked rather than lost in chat.",
+      "body": "This chapter is useful archive structure evidence: live-stream pages need Q&A segments that can preserve the prompt, timestamp, and source context separately from ordinary topical notes.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T23-25-48+0000_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "7:45",
+          "end": "8:40",
+          "note": "The transcript discusses adding questions to the question system."
+        }
+      ]
+    },
+    {
+      "id": "modern-navy-blackburn-blackburn",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "modern-navy-blackburn-blackburn",
+      "title": "Modern Navy equivalent of the Blackburn Blackburn",
+      "kind": "qa",
+      "start": "12:01",
+      "end": "12:28",
+      "topics": [
+        "modern-navy",
+        "naval-aviation",
+        "live-q-and-a"
+      ],
+      "question": "What is the modern Navy equivalent of the Blackburn Blackburn for this channel?",
+      "answerShort": "The prototype keeps this as a timestamped Q&A seed for later transcript-backed answer cleanup.",
+      "summary": "A live Q&A prompt asks for a modern Navy analogue to the Blackburn Blackburn, giving the prototype a real `qa` segment to render and search.",
+      "body": "This segment deliberately records the question and source window without over-polishing the answer. It proves that Q&A can remain a segment subtype while still carrying question-specific fields.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T23-25-48+0000_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "12:01",
+          "end": "12:28",
+          "note": "The transcript contains the modern Navy equivalent question and setup."
+        }
+      ]
+    },
+    {
+      "id": "spanish-1950s-destroyer-escorts",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "spanish-1950s-destroyer-escorts",
+      "title": "Spanish 1950s destroyer escorts",
+      "kind": "notable_point",
+      "start": "25:00",
+      "end": "26:46",
+      "topics": [
+        "destroyers",
+        "spanish-navy",
+        "modern-navy"
+      ],
+      "summary": "A discussion of Spanish Navy destroyer escorts frames them as useful ships, but as gun-and-torpedo designs in a naval world moving beyond that model.",
+      "body": "The segment shows how ordinary subject notes should work: it is not a fabricated Q&A entry, but a topical point with timestamped transcript evidence and tags for search and browsing.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T23-25-48+0000_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "25:00",
+          "end": "26:46",
+          "note": "The transcript discusses Spanish Navy destroyer escorts and gun-and-torpedo destroyer design."
+        }
+      ]
+    },
+    {
+      "id": "carrier-group-force-structure",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "carrier-group-force-structure",
+      "title": "Carrier group force structure sketch",
+      "kind": "notable_point",
+      "start": "2:59:42",
+      "end": "3:00:48",
+      "topics": [
+        "carrier-groups",
+        "naval-aviation",
+        "destroyers",
+        "modern-navy"
+      ],
+      "summary": "A force-structure answer sketches a carrier group built around carriers, LHDs, air-defense destroyers, ASW frigates, and submarines.",
+      "body": "This segment tests multi-topic browsing and search metadata: the same timestamp belongs under carrier groups, naval aviation, destroyers, and modern navy planning.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T23-25-48+0000_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "2:59:42",
+          "end": "3:00:48",
+          "note": "The transcript lists carriers, LHDs, air-defense destroyers, ASW frigates, and SSNs around a carrier group."
+        }
+      ]
+    }
+  ]
+}

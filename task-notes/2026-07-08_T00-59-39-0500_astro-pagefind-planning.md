@@ -468,3 +468,16 @@ A small Astro site that builds, runs Pagefind, and demonstrates:
 6. working static search.
 
 Once that is solid, expand the generator and content model.
+
+## Implementation Status
+
+Updated 2026-07-08 after implementation.
+
+- Phase 1 is implemented: Astro uses `site/src`, `site/public`, and `site/dist`; Pagefind runs after build; GitHub Actions deploys `site/dist`.
+- Phase 2 is implemented: one video page renders from generated structured data sourced from `src/channel/episodes.json` and `src/channel/video-metadata.json`.
+- Phase 3 is implemented for the prototype: `src/derived/prototype-segments.json` seeds four segment pages, including ordinary `notable_point` segments and one `qa` segment.
+- Phase 4 is implemented for the prototype: topic pages are generated from the same seed and list related videos and segments.
+- Phase 5 is implemented for the prototype: `/search/` uses Pagefind's component UI and the generated pages expose filters for type, topic, video, and segment kind.
+- Phase 6 is implemented as an initial deterministic generator: `npm run generate:site-data` reads channel metadata plus curated segment seeds and writes `site/src/data/generated/archive.json`; generator tests cover duplicate routes, topic references, timestamps, and basic output shape.
+
+Remaining expansion work is content scale, not the initial publishing route: broaden curated segment seeds, decide when `docs/videos/` becomes canonical for long-form curation, add richer search smoke tests, and avoid indexing raw transcript text until result quality is evaluated.

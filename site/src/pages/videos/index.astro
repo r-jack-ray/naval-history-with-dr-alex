@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { prototypeVideos } from "../../data/prototype-video";
+import { archiveVideos } from "../../data/archive";
 
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
@@ -17,14 +17,14 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
       <p class="eyebrow">Videos</p>
       <h1>Prototype video records.</h1>
       <p class="lede">
-        This first pass renders one structured record from the channel inventory before expanding
-        into generated pages.
+        Generated video records combine channel inventory, YouTube metadata, and curated
+        segment links.
       </p>
     </section>
 
     <section class="video-card-grid" aria-label="Prototype video records">
       {
-        prototypeVideos.map((video) => (
+        archiveVideos.map((video) => (
           <article class="video-card">
             <a href={`${baseUrl}videos/${video.slug}/`}>
               <img
@@ -38,7 +38,7 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
                 <span class="label">{video.sourceType}</span>
                 <h2>{video.title}</h2>
                 <p>
-                  {video.publishedLabel} · {video.durationLabel} · {video.viewCountLabel}
+                  {video.publishedLabel} · {video.durationLabel} · {video.segmentSlugs.length} segments
                 </p>
               </div>
             </a>

@@ -1,12 +1,20 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getPrototypeVideoPaths, type PrototypeVideo } from "../../data/prototype-video";
+import {
+  getVideoPaths,
+  segmentsForVideo,
+  type ArchiveVideo,
+} from "../../data/archive";
 
 export function getStaticPaths() {
-  return getPrototypeVideoPaths();
+  return getVideoPaths();
 }
 
-const { video } = Astro.props as { video: PrototypeVideo };
+const { video } = Astro.props as { video: ArchiveVideo };
+const segments = segmentsForVideo(video);
+const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 ---
 
 <BaseLayout
@@ -18,7 +26,7 @@ const { video } = Astro.props as { video: PrototypeVideo };
     <meta data-pagefind-meta="video[content]" content={video.title} />
     <meta data-pagefind-meta="videoId[content]" content={video.videoId} />
     <meta data-pagefind-filter="video[content]" content={video.title} />
-    {video.topics.map((topic) => <meta data-pagefind-filter="topic[content]" content={topic} />)}
+    {video.topics.map((topic) => <meta data-pagefind-filter="topic[content]" content={topic.title} />)}
   </Fragment>
 
   <main class="video-page" data-pagefind-body>
@@ -27,15 +35,15 @@ const { video } = Astro.props as { video: PrototypeVideo };
         <p class="eyebrow">Prototype Video Record</p>
         <h1>{video.title}</h1>
         <div class="topic-row" aria-label="Topics">
-          {video.topics.map((topic) => <span>{topic}</span>)}
+          {video.topics.map((topic) => <a href={`${baseUrl}topics/${topic.slug}/`}>{topic.title}</a>)}
         </div>
         <p class="lede">
-          Source-backed prototype page using the channel inventory and YouTube metadata store. Segment
-          links below are chapter-style timestamps from the source video description.
+          Source-backed page using the channel inventory, YouTube metadata store, and curated
+          segment seed. Segment links below are independently addressable archive entries.
         </p>
         <div class="action-row">
           <a class="primary-link" href={video.youtubeUrl}>Watch on YouTube</a>
-          <a class="secondary-link" href="#segments">View timestamps</a>
+          <a class="secondary-link" href="#segments">View segments</a>
         </div>
       </div>
 
@@ -97,14 +105,15 @@ const { video } = Astro.props as { video: PrototypeVideo };
       </div>
 
       <div id="segments">
-        <h2>Timestamp outline</h2>
+        <h2>Curated segments</h2>
         <ol class="segment-list">
           {
-            video.segments.map((segment) => (
+            segments.map((segment) => (
               <li>
-                <a href={segment.youtubeUrl}>
-                  <span>{segment.timestamp}</span>
+                <a href={`${baseUrl}segments/${segment.slug}/`}>
+                  <span>{segment.start}</span>
                   <strong>{segment.title}</strong>
+                  <small>{segment.kindLabel}</small>
                 </a>
               </li>
             ))

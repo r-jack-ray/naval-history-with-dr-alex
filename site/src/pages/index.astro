@@ -1,10 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { prototypeVideo } from "../data/prototype-video";
+import { archiveSegments, archiveTopics, archiveVideos } from "../data/archive";
 
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
+const prototypeVideo = archiveVideos[0];
 const prototypeVideoUrl = `${baseUrl}videos/${prototypeVideo.slug}/`;
 ---
 
@@ -42,18 +43,18 @@ const prototypeVideoUrl = `${baseUrl}videos/${prototypeVideo.slug}/`;
     <section class="status-grid" aria-label="Archive sections">
       <article>
         <span class="label">Videos</span>
-        <h2>One page per video</h2>
-        <p>Each page will collect metadata, source links, transcript state, and curated segments.</p>
+        <h2>{archiveVideos.length} video page</h2>
+        <p>Each page collects metadata, source links, transcript state, and curated segments.</p>
       </article>
       <article>
         <span class="label">Segments</span>
-        <h2>Subject chunks</h2>
-        <p>Chapters, notable points, Q&A, and transcript excerpts stay distinct and timestamped.</p>
+        <h2>{archiveSegments.length} timestamped chunks</h2>
+        <p>Chapters, notable points, Q&A, and transcript excerpts stay distinct and searchable.</p>
       </article>
       <article>
-        <span class="label">Search</span>
-        <h2>Pagefind index</h2>
-        <p>Static search will surface videos, segment pages, topics, and timestamped result metadata.</p>
+        <span class="label">Topics</span>
+        <h2>{archiveTopics.length} browsable topics</h2>
+        <p>Topic pages collect related videos and segments without overbuilding taxonomy.</p>
       </article>
     </section>
   </main>

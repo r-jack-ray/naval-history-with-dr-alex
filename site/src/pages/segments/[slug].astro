@@ -1,0 +1,112 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  findVideoById,
+  getSegmentPaths,
+  type ArchiveSegment,
+} from "../../data/archive";
+
+export function getStaticPaths() {
+  return getSegmentPaths();
+}
+
+const { segment } = Astro.props as { segment: ArchiveSegment };
+const video = findVideoById(segment.videoId);
+const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+---
+
+<BaseLayout
+  title={`${segment.title} | Naval History with Dr. Alex Archive`}
+  description={segment.summary}
+  pageType="segment"
+>
+  <Fragment slot="head">
+    <meta data-pagefind-meta="video[content]" content={segment.videoTitle} />
+    <meta data-pagefind-meta="videoId[content]" content={segment.videoId} />
+    <meta data-pagefind-meta="timestamp[content]" content={segment.start} />
+    <meta data-pagefind-meta="kind[content]" content={segment.kindLabel} />
+    <meta data-pagefind-filter="video[content]" content={segment.videoTitle} />
+    <meta data-pagefind-filter="kind[content]" content={segment.kindLabel} />
+    {segment.topics.map((topic) => <meta data-pagefind-filter="topic[content]" content={topic.title} />)}
+  </Fragment>
+
+  <main class="segment-page" data-pagefind-body>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href={`${baseUrl}segments/`}>Segments</a>
+      <span>/</span>
+      <a href={`${baseUrl}videos/${segment.videoSlug}/`}>{segment.videoTitle}</a>
+    </nav>
+
+    <section class="section-heading">
+      <p class="eyebrow">{segment.kindLabel} · {segment.start}{segment.end ? `-${segment.end}` : ""}</p>
+      <h1>{segment.title}</h1>
+      <p class="lede">{segment.summary}</p>
+      <div class="topic-row" aria-label="Topics">
+        {segment.topics.map((topic) => <a href={`${baseUrl}topics/${topic.slug}/`}>{topic.title}</a>)}
+      </div>
+      <div class="action-row">
+        <a class="primary-link" href={segment.youtubeUrl}>Open timestamp</a>
+        {video && <a class="secondary-link" href={`${baseUrl}videos/${video.slug}/`}>Video page</a>}
+      </div>
+    </section>
+
+    <section class="content-grid">
+      <article class="prose-panel">
+        {segment.question && (
+          <>
+            <span class="label">Question</span>
+            <p class="callout">{segment.question}</p>
+          </>
+        )}
+        {segment.answerShort && (
+          <>
+            <span class="label">Short answer</span>
+            <p>{segment.answerShort}</p>
+          </>
+        )}
+        <span class="label">Notes</span>
+        <p>{segment.body}</p>
+      </article>
+
+      <aside class="source-panel">
+        <h2>Source</h2>
+        <dl class="metadata-list">
+          <div>
+            <dt>Video</dt>
+            <dd>{segment.videoTitle}</dd>
+          </div>
+          <div>
+            <dt>Timestamp</dt>
+            <dd>{segment.start}{segment.end ? `-${segment.end}` : ""}</dd>
+          </div>
+          <div>
+            <dt>Kind</dt>
+            <dd>{segment.kindLabel}</dd>
+          </div>
+          {segment.sourcePath && (
+            <div>
+              <dt>Transcript source</dt>
+              <dd>{segment.sourcePath}</dd>
+            </div>
+          )}
+        </dl>
+
+        {segment.evidence.length > 0 && (
+          <div class="evidence-list">
+            <h3>Evidence windows</h3>
+            <ul>
+              {segment.evidence.map((evidence) => (
+                <li>
+                  <strong>{evidence.start}{evidence.end ? `-${evidence.end}` : ""}</strong>
+                  <span>{evidence.note}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </aside>
+    </section>
+  </main>
+</BaseLayout>

@@ -1,0 +1,75 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  getTopicPaths,
+  segmentsForTopic,
+  videosForTopic,
+  type ArchiveTopic,
+} from "../../data/archive";
+
+export function getStaticPaths() {
+  return getTopicPaths();
+}
+
+const { topic } = Astro.props as { topic: ArchiveTopic };
+const videos = videosForTopic(topic);
+const segments = segmentsForTopic(topic);
+const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+---
+
+<BaseLayout
+  title={`${topic.title} | Naval History with Dr. Alex Archive`}
+  description={topic.summary}
+  pageType="topic"
+>
+  <Fragment slot="head">
+    <meta data-pagefind-meta="topic[content]" content={topic.title} />
+    <meta data-pagefind-filter="topic[content]" content={topic.title} />
+  </Fragment>
+
+  <main class="page-shell" data-pagefind-body>
+    <section class="section-heading">
+      <p class="eyebrow">Topic</p>
+      <h1>{topic.title}</h1>
+      <p class="lede">{topic.summary}</p>
+      {topic.aliases.length > 0 && <p class="alias-line">Also indexed as {topic.aliases.join(", ")}.</p>}
+    </section>
+
+    <section class="content-grid">
+      <article class="prose-panel">
+        <h2>Related segments</h2>
+        <ol class="segment-list">
+          {
+            segments.map((segment) => (
+              <li>
+                <a href={`${baseUrl}segments/${segment.slug}/`}>
+                  <span>{segment.start}</span>
+                  <strong>{segment.title}</strong>
+                  <small>{segment.kindLabel}</small>
+                </a>
+              </li>
+            ))
+          }
+        </ol>
+      </article>
+
+      <aside class="source-panel">
+        <h2>Related videos</h2>
+        <ul class="small-card-list">
+          {
+            videos.map((video) => (
+              <li>
+                <a href={`${baseUrl}videos/${video.slug}/`}>
+                  <strong>{video.title}</strong>
+                  <span>{video.publishedLabel} · {video.segmentSlugs.length} segments</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </aside>
+    </section>
+  </main>
+</BaseLayout>

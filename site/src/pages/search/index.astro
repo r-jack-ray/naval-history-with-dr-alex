@@ -13,21 +13,7 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
 >
   <Fragment slot="head">
     <link rel="stylesheet" href={`${baseUrl}pagefind/pagefind-component-ui.css`} />
-    <script type="module" is:inline>
-      window.addEventListener("DOMContentLoaded", () => {
-        const searchElement = document.getElementById("archive-search");
-        const pagefindUiUrl = searchElement?.dataset.pagefindComponentUi;
-
-        if (!searchElement || !pagefindUiUrl) {
-          return;
-        }
-
-        const script = document.createElement("script");
-        script.type = "module";
-        script.src = pagefindUiUrl;
-        document.head.append(script);
-      });
-    </script>
+    <script type="module" src={`${baseUrl}pagefind/pagefind-component-ui.js`} is:inline></script>
   </Fragment>
 
   <main class="page-shell" data-pagefind-body>
@@ -35,17 +21,17 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
       <p class="eyebrow">Search</p>
       <h1>Find videos, topics, and segment notes.</h1>
       <p class="lede">
-        Pagefind builds this search index from the static HTML output after Astro finishes.
+        Pagefind builds this index from the generated video, segment, and topic pages after Astro
+        finishes.
       </p>
     </section>
 
     <section class="search-panel" aria-label="Site search">
-      <div
-        id="archive-search"
-        data-pagefind-component-ui={`${baseUrl}pagefind/pagefind-component-ui.js`}
-      >
-        <pagefind-searchbox></pagefind-searchbox>
-      </div>
+      <pagefind-config bundle-path={`${baseUrl}pagefind/`} base-url={baseUrl} faceted></pagefind-config>
+      <pagefind-input placeholder="Search archive"></pagefind-input>
+      <pagefind-filter-pane show-empty="false" sort="alphabetical" open="type,kind,topic,video"></pagefind-filter-pane>
+      <pagefind-summary default-message="Search video, segment, and topic pages."></pagefind-summary>
+      <pagefind-results show-images="false"></pagefind-results>
     </section>
   </main>
 </BaseLayout>

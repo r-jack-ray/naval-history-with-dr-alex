@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { archiveSegments } from "../../data/archive";
+
+const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+---
+
+<BaseLayout
+  title="Segments | Naval History with Dr. Alex Archive"
+  description="Browse timestamped segment notes from Naval History with Dr. Alex videos."
+  pageType="segment-index"
+>
+  <main class="page-shell" data-pagefind-body>
+    <section class="section-heading">
+      <p class="eyebrow">Segments</p>
+      <h1>Timestamped subject chunks.</h1>
+      <p class="lede">
+        Segment pages keep chapters, notable points, Q&A, and transcript excerpts distinct while
+        linking back to their source video timestamps.
+      </p>
+    </section>
+
+    <section class="record-grid" aria-label="Segment records">
+      {
+        archiveSegments.map((segment) => (
+          <article class="segment-card">
+            <span class="label">{segment.kindLabel} · {segment.start}</span>
+            <h2><a href={`${baseUrl}segments/${segment.slug}/`}>{segment.title}</a></h2>
+            <p>{segment.summary}</p>
+            <div class="topic-row compact" aria-label="Topics">
+              {segment.topics.map((topic) => <a href={`${baseUrl}topics/${topic.slug}/`}>{topic.title}</a>)}
+            </div>
+          </article>
+        ))
+      }
+    </section>
+  </main>
+</BaseLayout>

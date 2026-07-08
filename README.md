@@ -16,13 +16,14 @@ The repository is in early setup. It currently has:
 - An Astro static site configured for GitHub Pages.
 - Pagefind indexing during site builds.
 - A deployed site shell with light, dark, and system theme switching.
-- A prototype video detail page generated from channel inventory and YouTube metadata.
+- A generated Astro archive data file built from channel inventory, YouTube metadata, and curated segment seeds.
+- One prototype video page, four segment pages, seven topic pages, and a Pagefind component search UI with filters.
 - A rate-limited YouTube channel link inventory script.
 - A source master episode list under `src/channel/`.
 - A local transcript store under `src/transcripts/`.
 - Planning notes under `task-notes/`.
 
-Curated segment generation, transcript-backed evidence pages, and full search expansion are still in progress.
+Full transcript-backed curation and broad topic expansion are still in progress.
 
 ## Project Layout
 
@@ -31,7 +32,10 @@ src/
   channel/                 Canonical channel inventory
     episodes.json          Master episode list
     video-metadata.json    YouTube Data API metadata store
+  derived/                 Curated segment/topic seeds for generated site data
+    prototype-segments.json
   scripts/                 TypeScript CLI entrypoints
+  site/                    Site data generator and validation logic
   youtube/                 YouTube inventory helpers
   transcripts/             Local transcript archive
     manifest.json          Index of stored transcript files
@@ -40,6 +44,7 @@ src/
     tsv/                   Generated tab-separated rows
 site/
   src/                     Astro pages, layouts, and site data adapters
+    data/generated/        Deterministic generated archive JSON
   public/                  Static assets copied into the site
   dist/                    Generated GitHub Pages artifact, ignored by Git
 .agents/                   Project-local agent briefs
@@ -67,6 +72,7 @@ npm run build
 npm run check:types
 npm test
 npm run check
+npm run generate:site-data
 ```
 
 ## Website
@@ -82,7 +88,14 @@ npm run site:build
 npm run site:preview
 ```
 
-`npm run site:build` emits `site/dist/` and then runs Pagefind against that output. Do not commit generated `site/dist/` files.
+`npm run site:check` and `npm run site:build` regenerate `site/src/data/generated/archive.json` first. `npm run site:build` emits `site/dist/` and then runs Pagefind against that output. Do not commit generated `site/dist/` files.
+
+The current generated site demonstrates the intended route shape:
+
+- `/videos/<slug>/`: video metadata and curated segment links.
+- `/segments/<slug>/`: independently addressable segment or Q&A entries with timestamp links.
+- `/topics/<slug>/`: topic landing pages listing related videos and segments.
+- `/search/`: Pagefind component search over the built HTML with filters for type, kind, topic, and video.
 
 ## Fetch Channel Video Links
 
@@ -215,6 +228,8 @@ Use `segment` as the primary searchable object. Segment kinds currently planned:
 - `transcript_excerpt`
 
 Every curated segment should eventually point back to a video ID, timestamp, canonical YouTube URL, source transcript file, and transcript evidence window.
+
+The current prototype keeps Q&A as `kind: qa` inside the segment model rather than creating a separate question collection.
 
 ## Project Helpers
 

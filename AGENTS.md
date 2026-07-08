@@ -11,8 +11,10 @@ Planned source layout:
 - `src/transcripts/txt/`: generated plain-text transcripts.
 - `src/transcripts/tsv/`: optional structured timestamp rows.
 - `src/derived/`: segment data for chapters, notable points, and Q&A.
+- `src/site/`: deterministic site-data generator and tests.
 - `docs/videos/`: one primary Markdown page per video.
-- `site/static/search/`: static search manifest, core index, and transcript shards.
+- `site/src/data/generated/`: generated Astro-facing archive JSON.
+- `site/dist/pagefind/`: generated Pagefind index, ignored by Git.
 
 ## Build, Test, and Development Commands
 
@@ -23,6 +25,9 @@ npm run build
 npm run check:types
 npm test
 npm run check
+npm run generate:site-data
+npm run site:check
+npm run site:build
 npm run fetch:video-links -- --master-output src/channel/episodes.json --checkpoint-output reports/dr-alex-video-fetch-checkpoint.json
 npm run fetch:transcript -- --video-id uURe69Wnh-Q
 npm run fetch:transcripts -- --limit 1 --request-delay-ms 5000
@@ -37,7 +42,7 @@ git diff --check
 git push
 ```
 
-`build` emits `dist/`; `check:types` type-checks only; `test` compiles and runs Node's test runner; `check` combines both. YouTube fetch scripts default to 60 seconds between requests.
+`build` emits `dist/`; `check:types` type-checks only; `test` compiles and runs Node's test runner; `check` combines both. `generate:site-data` writes deterministic Astro data to `site/src/data/generated/archive.json`; `site:build` regenerates that data, builds `site/dist/`, and runs Pagefind. YouTube fetch scripts default to 60 seconds between requests.
 
 ## Coding Style & Naming Conventions
 
@@ -47,9 +52,11 @@ Transcript and episode file stems should use `timestamp_title-slug_videoId` when
 
 The core content model is `segment`, not `question`. Valid segment kinds include `chapter`, `notable_point`, `qa`, and optional `transcript_excerpt`. Do not force ordinary lecture segments into fabricated Q&A.
 
+Keep Q&A as `kind: qa` segment data unless a future layout/search requirement proves a separate collection is needed.
+
 ## Testing Guidelines
 
-Use Node's built-in test runner with `*.test.ts` files. Validators should check timestamp labels and links, transcript sources, inventory references, search manifest integrity, and TXT coverage. Add search tests for ship names, battles, classes, operations, admirals, countries, dates, and abbreviations.
+Use Node's built-in test runner with `*.test.ts` files. Validators should check timestamp labels and links, transcript sources, inventory references, search manifest integrity, generated site-data references, duplicate routes, topic references, and TXT coverage. Add search tests for ship names, battles, classes, operations, admirals, countries, dates, and abbreviations.
 
 ## Commit & Pull Request Guidelines
 

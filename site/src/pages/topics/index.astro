@@ -1,5 +1,10 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { archiveTopics } from "../../data/archive";
+
+const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 ---
 
 <BaseLayout
@@ -12,24 +17,22 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       <p class="eyebrow">Topics</p>
       <h1>Browse by subject.</h1>
       <p class="lede">
-        Topic pages will collect related videos and timestamped segment entries as the archive
-        model fills in.
+        Topic pages collect related videos and timestamped segment entries while the controlled
+        topic list stays small and auditable.
       </p>
     </section>
 
-    <section class="placeholder-list" aria-label="Planned topic groups">
-      <article>
-        <span class="label">Ships</span>
-        <h2>Classes, names, and design families</h2>
-      </article>
-      <article>
-        <span class="label">Operations</span>
-        <h2>Battles, campaigns, and deployments</h2>
-      </article>
-      <article>
-        <span class="label">Navies</span>
-        <h2>Countries, fleets, and institutions</h2>
-      </article>
+    <section class="record-grid topics" aria-label="Topics">
+      {
+        archiveTopics.map((topic) => (
+          <article class="topic-card">
+            <span class="label">{topic.videoCount} videos · {topic.segmentCount} segments</span>
+            <h2><a href={`${baseUrl}topics/${topic.slug}/`}>{topic.title}</a></h2>
+            <p>{topic.summary}</p>
+            {topic.aliases.length > 0 && <small>Also: {topic.aliases.join(", ")}</small>}
+          </article>
+        ))
+      }
     </section>
   </main>
 </BaseLayout>
