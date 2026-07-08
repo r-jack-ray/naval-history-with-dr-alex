@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-08T07:34:28.366Z",
+  "updatedAt": "2026-07-08T07:41:46.225Z",
   "inputPath": "src/channel/episodes.json",
   "outputRoot": "src/transcripts",
   "requestDelayMs": 2000,
@@ -8,13 +8,13 @@
   "force": false,
   "stats": {
     "inputVideoCount": 2078,
-    "skippedStoredCount": 1536,
+    "skippedStoredCount": 1586,
     "skippedPreviousFailureCount": 15,
     "attemptedCount": 50,
-    "fetchedCount": 50,
-    "failedCount": 0,
-    "pendingCount": 477,
-    "totalFailureCount": 15
+    "fetchedCount": 49,
+    "failedCount": 1,
+    "pendingCount": 427,
+    "totalFailureCount": 16
   },
   "failures": [
     {
@@ -117,6 +117,18 @@
       ],
       "title": "County Cruisers P2: The Kent Class Continued",
       "channelOrder": 971
+    },
+    {
+      "videoId": "o9DACEN7Sr0",
+      "attemptedAt": "2026-07-08T07:41:36.693Z",
+      "classification": "no_caption_tracks",
+      "error": "No caption tracks found for video: o9DACEN7Sr0.",
+      "tabs": [
+        "streams"
+      ],
+      "title": "Bruships 171: Oh Kallax my Kallax, Where art though my Kallax",
+      "publishedAt": "2024-11-17T19:33:08+00:00",
+      "channelOrder": 1650
     },
     {
       "videoId": "QJDfypv9XxY",
