@@ -13,12 +13,16 @@ The repository is in early setup. It currently has:
 - Node 22+ and TypeScript project scaffolding.
 - Strict TypeScript compilation.
 - Node's built-in test runner.
+- An Astro static site configured for GitHub Pages.
+- Pagefind indexing during site builds.
+- A deployed site shell with light, dark, and system theme switching.
+- A prototype video detail page generated from channel inventory and YouTube metadata.
 - A rate-limited YouTube channel link inventory script.
 - A source master episode list under `src/channel/`.
 - A local transcript store under `src/transcripts/`.
 - Planning notes under `task-notes/`.
 
-Curated video pages, transcript ingestion, search indexes, and static site output are planned but not complete yet.
+Curated segment generation, transcript-backed evidence pages, and full search expansion are still in progress.
 
 ## Project Layout
 
@@ -34,12 +38,19 @@ src/
     json/                  Raw structured transcript JSON
     txt/                   Generated timestamped text
     tsv/                   Generated tab-separated rows
+site/
+  src/                     Astro pages, layouts, and site data adapters
+  public/                  Static assets copied into the site
+  dist/                    Generated GitHub Pages artifact, ignored by Git
+.agents/                   Project-local agent briefs
+.codex/skills/             Project-local Codex skills
+.codex/hooks/              Project-local validation helper scripts
 task-notes/                Temporary planning and handoff notes
 reports/                   Generated reports and smoke-test output, ignored by Git
 dist/                      Compiled JavaScript, ignored by Git
 ```
 
-Planned archive data will follow the structure in `task-notes/2026-07-07_T17-34-31-0500_naval-history-project-plan.md`, including `docs/videos/` and `site/static/search/`.
+Planned archive data will follow the structure in `task-notes/2026-07-07_T17-34-31-0500_naval-history-project-plan.md`, including `docs/videos/` and generated search assets.
 
 ## Setup
 
@@ -57,6 +68,21 @@ npm run check:types
 npm test
 npm run check
 ```
+
+## Website
+
+The public site is deployed from GitHub Actions to [r-jack-ray.github.io/naval-history-with-dr-alex](https://r-jack-ray.github.io/naval-history-with-dr-alex/).
+
+Local site commands:
+
+```powershell
+npm run site:dev
+npm run site:check
+npm run site:build
+npm run site:preview
+```
+
+`npm run site:build` emits `site/dist/` and then runs Pagefind against that output. Do not commit generated `site/dist/` files.
 
 ## Fetch Channel Video Links
 
@@ -189,6 +215,18 @@ Use `segment` as the primary searchable object. Segment kinds currently planned:
 - `transcript_excerpt`
 
 Every curated segment should eventually point back to a video ID, timestamp, canonical YouTube URL, source transcript file, and transcript evidence window.
+
+## Project Helpers
+
+- `.agents/site-archive-builder.md`: project-local brief for agents working on Astro/Pagefind site pages.
+- `.codex/skills/naval-video-page-prototype/SKILL.md`: reusable Codex skill for extending the prototype video-page workflow.
+- `.codex/hooks/validate-site.ps1`: optional validation helper for site checks and the full repository check.
+
+Run the helper directly when you want a site-focused validation pass:
+
+```powershell
+pwsh -NoProfile -File .codex/hooks/validate-site.ps1 -SkipRepoCheck
+```
 
 ## Contributor Notes
 

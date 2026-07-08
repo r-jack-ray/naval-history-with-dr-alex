@@ -1,5 +1,10 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { prototypeVideos } from "../../data/prototype-video";
+
+const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
 ---
 
 <BaseLayout
@@ -10,19 +15,36 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   <main class="page-shell" data-pagefind-body>
     <section class="section-heading">
       <p class="eyebrow">Videos</p>
-      <h1>Video records will land here first.</h1>
+      <h1>Prototype video records.</h1>
       <p class="lede">
-        The next implementation phase will render one structured video prototype from the channel
-        inventory before expanding into generated pages.
+        This first pass renders one structured record from the channel inventory before expanding
+        into generated pages.
       </p>
     </section>
 
-    <section class="empty-state">
-      <span class="label">Next phase</span>
-      <h2>Prototype one source video</h2>
-      <p>
-        This page is ready for `src/channel/episodes.json` data and segment-first content entries.
-      </p>
+    <section class="video-card-grid" aria-label="Prototype video records">
+      {
+        prototypeVideos.map((video) => (
+          <article class="video-card">
+            <a href={`${baseUrl}videos/${video.slug}/`}>
+              <img
+                src={video.thumbnailUrl}
+                alt={`Thumbnail for ${video.title}`}
+                loading="lazy"
+                width="480"
+                height="270"
+              />
+              <div>
+                <span class="label">{video.sourceType}</span>
+                <h2>{video.title}</h2>
+                <p>
+                  {video.publishedLabel} · {video.durationLabel} · {video.viewCountLabel}
+                </p>
+              </div>
+            </a>
+          </article>
+        ))
+      }
     </section>
   </main>
 </BaseLayout>

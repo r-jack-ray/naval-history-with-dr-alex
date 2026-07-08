@@ -1,0 +1,116 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getPrototypeVideoPaths, type PrototypeVideo } from "../../data/prototype-video";
+
+export function getStaticPaths() {
+  return getPrototypeVideoPaths();
+}
+
+const { video } = Astro.props as { video: PrototypeVideo };
+---
+
+<BaseLayout
+  title={`${video.title} | Naval History with Dr. Alex Archive`}
+  description={`Prototype archive page for ${video.title}.`}
+  pageType="video"
+>
+  <Fragment slot="head">
+    <meta data-pagefind-meta="video[content]" content={video.title} />
+    <meta data-pagefind-meta="videoId[content]" content={video.videoId} />
+    <meta data-pagefind-filter="video[content]" content={video.title} />
+    {video.topics.map((topic) => <meta data-pagefind-filter="topic[content]" content={topic} />)}
+  </Fragment>
+
+  <main class="video-page" data-pagefind-body>
+    <section class="video-hero">
+      <div class="video-hero-copy">
+        <p class="eyebrow">Prototype Video Record</p>
+        <h1>{video.title}</h1>
+        <div class="topic-row" aria-label="Topics">
+          {video.topics.map((topic) => <span>{topic}</span>)}
+        </div>
+        <p class="lede">
+          Source-backed prototype page using the channel inventory and YouTube metadata store. Segment
+          links below are chapter-style timestamps from the source video description.
+        </p>
+        <div class="action-row">
+          <a class="primary-link" href={video.youtubeUrl}>Watch on YouTube</a>
+          <a class="secondary-link" href="#segments">View timestamps</a>
+        </div>
+      </div>
+
+      <div class="video-media">
+        <iframe
+          src={video.embedUrl}
+          title={video.title}
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+    </section>
+
+    <section class="detail-grid" aria-label="Video metadata">
+      <article>
+        <span class="label">Published</span>
+        <strong>{video.publishedLabel}</strong>
+      </article>
+      <article>
+        <span class="label">Duration</span>
+        <strong>{video.durationLabel}</strong>
+      </article>
+      <article>
+        <span class="label">Source type</span>
+        <strong>{video.sourceType}</strong>
+      </article>
+      <article>
+        <span class="label">Transcript</span>
+        <strong>{video.transcriptStatus}</strong>
+      </article>
+    </section>
+
+    <section class="video-details">
+      <div>
+        <h2>Source metadata</h2>
+        <dl class="metadata-list">
+          <div>
+            <dt>Video ID</dt>
+            <dd>{video.videoId}</dd>
+          </div>
+          <div>
+            <dt>Inventory stem</dt>
+            <dd>{video.fileStem}</dd>
+          </div>
+          <div>
+            <dt>Views</dt>
+            <dd>{video.stats.views ?? video.viewCountLabel}</dd>
+          </div>
+          <div>
+            <dt>Likes</dt>
+            <dd>{video.stats.likes ?? "Unavailable"}</dd>
+          </div>
+          <div>
+            <dt>Comments</dt>
+            <dd>{video.stats.comments ?? "Unavailable"}</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div id="segments">
+        <h2>Timestamp outline</h2>
+        <ol class="segment-list">
+          {
+            video.segments.map((segment) => (
+              <li>
+                <a href={segment.youtubeUrl}>
+                  <span>{segment.timestamp}</span>
+                  <strong>{segment.title}</strong>
+                </a>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

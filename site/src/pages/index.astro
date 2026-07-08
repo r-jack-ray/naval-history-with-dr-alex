@@ -1,9 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { prototypeVideo } from "../data/prototype-video";
 
-const prototypeVideoId = "uURe69Wnh-Q";
-const prototypeVideoUrl = `https://www.youtube.com/watch?v=${prototypeVideoId}`;
-const prototypeThumbnailUrl = `https://i.ytimg.com/vi/${prototypeVideoId}/hqdefault.jpg`;
+const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const prototypeVideoUrl = `${baseUrl}videos/${prototypeVideo.slug}/`;
 ---
 
 <BaseLayout
@@ -24,15 +26,15 @@ const prototypeThumbnailUrl = `https://i.ytimg.com/vi/${prototypeVideoId}/hqdefa
 
       <a class="feature-card" href={prototypeVideoUrl}>
         <img
-          src={prototypeThumbnailUrl}
-          alt="Thumbnail for a Naval History with Dr. Alex live Q&A video"
+          src={prototypeVideo.thumbnailUrl}
+          alt={`Thumbnail for ${prototypeVideo.title}`}
           loading="lazy"
           width="480"
           height="360"
         />
         <div>
-          <span>Prototype source video</span>
-          <strong>BRuShips 249</strong>
+          <span>Prototype video page</span>
+          <strong>{prototypeVideo.title}</strong>
         </div>
       </a>
     </section>
