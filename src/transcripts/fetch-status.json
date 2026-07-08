@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-08T08:35:00.541Z",
+  "updatedAt": "2026-07-08T08:42:25.983Z",
   "inputPath": "src/channel/episodes.json",
   "outputRoot": "src/transcripts",
   "requestDelayMs": 2000,
@@ -8,15 +8,27 @@
   "force": false,
   "stats": {
     "inputVideoCount": 2078,
-    "skippedStoredCount": 1927,
-    "skippedPreviousFailureCount": 24,
+    "skippedStoredCount": 1974,
+    "skippedPreviousFailureCount": 27,
     "attemptedCount": 50,
-    "fetchedCount": 47,
-    "failedCount": 3,
-    "pendingCount": 77,
-    "totalFailureCount": 27
+    "fetchedCount": 48,
+    "failedCount": 2,
+    "pendingCount": 27,
+    "totalFailureCount": 29
   },
   "failures": [
+    {
+      "videoId": "_xGSIeZku8I",
+      "attemptedAt": "2026-07-08T08:41:01.690Z",
+      "classification": "no_caption_tracks",
+      "error": "No caption tracks found for video: _xGSIeZku8I.",
+      "tabs": [
+        "streams"
+      ],
+      "title": "Patreon 8 - “The Treaty of London 1930” by Daniel Freedman",
+      "publishedAt": "2020-10-27T18:06:35+00:00",
+      "channelOrder": 2037
+    },
     {
       "videoId": "-sOPrkXNRaU",
       "attemptedAt": "2026-07-08T08:32:46.580Z",
@@ -40,6 +52,18 @@
       "title": "Bruships 57: Some Cool Books and Naval History Chat",
       "publishedAt": "2021-10-17T17:02:43+00:00",
       "channelOrder": 1933
+    },
+    {
+      "videoId": "2FM59LjWsyI",
+      "attemptedAt": "2026-07-08T08:40:43.517Z",
+      "classification": "no_caption_tracks",
+      "error": "No caption tracks found for video: 2FM59LjWsyI.",
+      "tabs": [
+        "streams"
+      ],
+      "title": "Arethusa Class Cruisers",
+      "publishedAt": "2020-11-03T18:05:31+00:00",
+      "channelOrder": 2034
     },
     {
       "videoId": "3M9ae7K2XKU",
