@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-08T07:49:34.993Z",
+  "updatedAt": "2026-07-08T07:58:53.175Z",
   "inputPath": "src/channel/episodes.json",
   "outputRoot": "src/transcripts",
   "requestDelayMs": 2000,
@@ -8,15 +8,27 @@
   "force": false,
   "stats": {
     "inputVideoCount": 2078,
-    "skippedStoredCount": 1635,
+    "skippedStoredCount": 1685,
     "skippedPreviousFailureCount": 16,
     "attemptedCount": 50,
-    "fetchedCount": 50,
-    "failedCount": 0,
-    "pendingCount": 377,
-    "totalFailureCount": 16
+    "fetchedCount": 46,
+    "failedCount": 4,
+    "pendingCount": 327,
+    "totalFailureCount": 20
   },
   "failures": [
+    {
+      "videoId": "3M9ae7K2XKU",
+      "attemptedAt": "2026-07-08T07:58:43.505Z",
+      "classification": "empty_transcript",
+      "error": "Caption track contained no transcript segments: English (auto-generated) (en).",
+      "tabs": [
+        "streams"
+      ],
+      "title": "Naval History Questions Live... with Irn Bru... which is a scottish soft drink... not fizzy whisky!",
+      "publishedAt": "2023-09-17T18:57:27+00:00",
+      "channelOrder": 1750
+    },
     {
       "videoId": "5G14HxOrzGg",
       "attemptedAt": "2026-07-08T05:32:35.054Z",
@@ -86,6 +98,18 @@
       "channelOrder": 862
     },
     {
+      "videoId": "j8csQfIH0mQ",
+      "attemptedAt": "2026-07-08T07:58:03.293Z",
+      "classification": "empty_transcript",
+      "error": "Caption track contained no transcript segments: English (auto-generated) (en).",
+      "tabs": [
+        "streams"
+      ],
+      "title": "Bruships 124: Hutchinsons Pictorial History of the War Series",
+      "publishedAt": "2023-10-08T18:05:31+00:00",
+      "channelOrder": 1744
+    },
+    {
       "videoId": "mmppT8c_kb8",
       "attemptedAt": "2026-07-08T07:15:16.798Z",
       "classification": "no_caption_tracks",
@@ -106,6 +130,18 @@
       ],
       "title": "The Press Gang, myth and reality...",
       "channelOrder": 1463
+    },
+    {
+      "videoId": "nvCV5fqNkCE",
+      "attemptedAt": "2026-07-08T07:58:34.043Z",
+      "classification": "no_caption_tracks",
+      "error": "No caption tracks found for video: nvCV5fqNkCE.",
+      "tabs": [
+        "streams"
+      ],
+      "title": "Patreon 84: The underpaid and underappreciated Merchant Marine of WWII",
+      "publishedAt": "2023-09-21T18:05:18+00:00",
+      "channelOrder": 1749
     },
     {
       "videoId": "O0vjty1ueho",
@@ -152,6 +188,18 @@
       "title": "Check Campaign 16: UAD has updated & to Learn it's new ways I started another British Campaign",
       "publishedAt": "2024-05-06T11:00:33-07:00",
       "channelOrder": 360
+    },
+    {
+      "videoId": "rrr7wCH8SH8",
+      "attemptedAt": "2026-07-08T07:54:28.250Z",
+      "classification": "empty_transcript",
+      "error": "Caption track contained no transcript segments: English (auto-generated) (en).",
+      "tabs": [
+        "streams"
+      ],
+      "title": "Racking up the Fight Back: American Carrier raids of 1942",
+      "publishedAt": "2024-02-01T19:21:48+00:00",
+      "channelOrder": 1709
     },
     {
       "videoId": "s37gUDr_Z9w",

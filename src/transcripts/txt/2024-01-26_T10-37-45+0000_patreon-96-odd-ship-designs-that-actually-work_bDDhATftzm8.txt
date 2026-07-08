@@ -1,0 +1,2853 @@
+[0:06] [Music]
+[0:11] go go
+[0:14] [Music]
+[0:19] live hello
+[0:22] everyone
+[0:24] so today's topic all chip designs how
+[0:28] that work
+[0:31] and if I sound at any point mly ill
+[0:34] well I'm not ill but I'm certainly
+[0:38] working on making myself that
+[0:42] way today was day four of five gym
+[0:48] days so basically I've managed to get
+[0:51] back to the gym this week and my plan
+[0:55] the plan is to
+[0:58] do five days the the weekday go to the
+[1:01] gym every day and then weekend have
+[1:07] off I'm sort of in one
+[1:11] piece there is not a single bone in my
+[1:14] body which does not ache in some way
+[1:16] shape or
+[1:17] form but to be fair That's Not Unusual I
+[1:21] have been through this before I know how
+[1:24] much weight I need to lose I am watching
+[1:27] the intake and I'm now increasing the
+[1:28] outgoing this is all
+[1:36] sensible at a certain point I might even
+[1:38] be alive uh be alive to enjoy
+[1:44] it hello everyone how are we
+[1:52] doing um
+[1:55] right
+[1:57] so if anyone from the bill wants team is
+[2:05] watching the recording has gone in and
+[2:08] they should be now getting the getting
+[2:12] the
+[2:13] notifications
+[2:15] about the
+[2:18] timings
+[2:21] um they should be he
+[2:28] says
+[2:34] we can always
+[2:35] hope we can always
+[2:37] hope so hopefully that will
+[2:44] work um it's it's it's as usual
+[2:56] son how is everyone feeling today though
+[3:00] done in my casee mildly dead on my
+[3:04] feet mildly dead on my
+[3:13] feet and as said I apologies we did have
+[3:16] to cook a cook a person right say um
+[3:19] he's supposed to come at roughly 2:30 he
+[3:21] arrived at 6:30 not his fault honestly
+[3:24] they just Ram so many different people
+[3:27] into it jobs into it in day and they
+[3:29] don't factor in any time for the reality
+[3:31] of sorting things
+[3:46] out good evening Peter dson hello Paul
+[3:49] hello John Shay night to everyone there
+[3:52] are people of all kinds in the world
+[3:56] frankly if I spent my life arguing with
+[3:58] those people I'd spend my my life having
+[4:01] to be just
+[4:11] annoyed hello Michael
+[4:14] Co H John
+[4:22] sh hello Paul Amos hello lesie Mitchell
+[4:26] hello Ste Richards hello K gwick hello
+[4:29] to hello
+[4:32] Alki hello dg4 hello Naval guide hello
+[4:37] the Brock hello just Funk hello Dr hello
+[4:40] Phil Williams
+[4:41] [Music]
+[4:42] hello Maximus hello hello
+[4:45] Stafford hello Nicole Ross hello TANF
+[4:49] hello
+[4:50] everyone didn't nals count us odd um
+[4:54] probably should though and actually that
+[4:56] would have made my life easier if ID
+[4:57] added them in but I didn't add in the
+[4:59] the nail rods cuz honestly we've done so
+[5:00] many videos stuff about the nail rods
+[5:03] and we're always talking about the nail
+[5:04] rods and the g3s I just didn't want to
+[5:06] add them
+[5:08] in and also the thing is I took this
+[5:11] literally as I said is odd ship designs
+[5:13] at work and I thought well that means I
+[5:16] don't have to stick to just warships I
+[5:18] can do some more Maritime interesting
+[5:20] history so there are a few ships flown
+[5:23] in there thrown in there which are
+[5:24] definitely not warships but they are
+[5:26] kind of
+[5:26] cool and there are 12 of them
+[5:31] not sure how long it will take this
+[5:33] evening I am going to apologize now I
+[5:36] will not be on Discord this evening
+[5:37] afterwards I normally do try to be and I
+[5:39] am trying to get back into that habit
+[5:40] but
+[5:42] honestly getting up going to the gym at
+[5:45] the time I'm going in the morning or as
+[5:46] tomorrow morning getting up recording
+[5:48] build pumps then going to the gym and
+[5:50] then going to a dinner in the evening up
+[5:53] in London
+[5:55] um I just don't have the energy this
+[5:58] week
+[6:01] in good news I have managed an hour
+[6:03] every day at the gym in bad news my um
+[6:08] one of the people actually asked me how
+[6:10] bad a CO I'd had how bad you know Co
+[6:16] illness I suffer from considering that
+[6:18] my um endurance compared to what it was
+[6:20] was so much lower on things and I was
+[6:23] just going no no this is just a month
+[6:25] I'm not going to the gym properly yeah
+[6:28] this is just just just just being
+[6:31] fat oh fun
+[6:40] times
+[6:44] so the Brock have you found any new
+[6:46] muscle bones you Haven known before no
+[6:48] you see the thing is a few years ago
+[6:50] once I finished my PhD I decided I had
+[6:53] to get
+[6:55] fit and believe it or not I had to lo I
+[6:57] had to lose sum region of 4 44
+[7:00] kg to get down to 93 kg which is roughly
+[7:06] I'm my for my height I'm supposed to be
+[7:08] between 88 and 93 I find if I'm 88 I
+[7:11] look gaunt and like I'm about to starve
+[7:14] to death for some reason so 93 is
+[7:16] normally what I aim for this time I have
+[7:19] to
+[7:21] lose 100 I have to lose 19 kg so that's
+[7:25] nowhere near that level um it's you know
+[7:29] it's it's it's roughly 2 and a half
+[7:33] Stone um last time was well over five
+[7:35] Stone and I already lost the stone
+[7:39] before I lo I I lost the stone before I
+[7:41] lost that so um
+[7:48] yeah I've found these muscles before
+[7:51] it's just I wish I wasn't having to do
+[7:52] it a second time it's far easier to keep
+[7:54] it off and maintain it off than is to
+[7:56] work it off after it's put back on I
+[7:59] haven't put in Korean Turtle ships
+[8:01] because again whilst they are an odd
+[8:03] design that actually works again it's
+[8:05] something we've discussed a bit
+[8:09] before uh no I'm getting the train
+[8:12] Nicole honestly I'm going into Central
+[8:15] London and nicest way a there's the all
+[8:18] the dvla and all the all all all the
+[8:21] taxes and the things you have to pay
+[8:23] going not dvla all the taxes but also
+[8:25] there's the whole part finding car park
+[8:27] in Central London I was having this
+[8:29] conversation with some of the people who
+[8:30] are going with me and they're going well
+[8:32] I might drive and I'm
+[8:34] going why would you drive into Central
+[8:37] London there are there are perfectly
+[8:40] good things called trains and tubes you
+[8:42] can avoid the roads completely do that
+[8:45] when they're working when they're on
+[8:46] strike don't go into
+[8:52] London excellent ran
+[8:58] congratulations
+[9:04] anyway
+[9:06] so next
+[9:14] things as you all know this is my
+[9:19] book I love it I thank you everyone
+[9:21] who's bought one thank everyone who
+[9:23] supports the channel thank you everyone
+[9:25] who likes shares and subscribes when
+[9:27] they like videos and thank you to one
+[9:29] who is is a patron or is a member of the
+[9:33] Discord chatting away or is uh does the
+[9:35] stuff on Kofi
+[9:36] [Music]
+[9:38] or I think there's Kofi there's Patron
+[9:42] and there's membership of the membership
+[9:44] of the channel if you prefer that thank
+[9:46] you to everyone who does that seriously
+[9:47] you keep the channel going you
+[9:49] definitely keep my book habit going but
+[9:50] you also make
+[9:52] it well I've worked out with all the
+[9:54] work I the things I'm doing on average a
+[9:58] week
+[10:00] I'm putting roughly 32 hours of working
+[10:04] time into the channel a
+[10:05] week and I think it's more than worth it
+[10:09] I because I enjoy it so much and I let's
+[10:12] be honest I haven't got a Perman
+[10:15] lectoring post to take up my time either
+[10:18] so this is quite a lot of fun for me but
+[10:21] um it would be a lot less
+[10:24] fun if that was roughly 128 Hours a
+[10:28] month
+[10:29] and it was for it was
+[10:32] completely off my own back because I'm
+[10:37] with the state of of contract lecturing
+[10:39] and employment in history at the moment
+[10:41] and the way you get your money in
+[10:43] history um that wouldn't be possible
+[10:46] which does lead to me to an interesting
+[10:48] scenario in that history and I think
+[10:50] quite a few of the humanities Etc
+[10:52] subjects are going to return to topics
+[10:54] which are going to be
+[10:57] um very much
+[11:00] the product of people who can afford to
+[11:02] do
+[11:03] it I people who have other source of
+[11:06] incomes they're either going to be maybe
+[11:08] retired with a decent pension or which
+[11:10] are rare enough these days or um they're
+[11:13] going to be people who have the means to
+[11:16] support themselves which could lead to
+[11:18] some interesting things because let's be
+[11:19] honest junian corbette was a gentleman
+[11:21] historian and he was very good there are
+[11:23] also a fair number of gentleman
+[11:24] historians who frankly I would prefer
+[11:26] never to never to have written anything
+[11:27] but we'll leave that to one side there
+[11:29] are quite a lot of non- gentlemen
+[11:30] historians who i' prefer to have never
+[11:31] written anything so you know we'll lead
+[11:33] out to one
+[11:38] side it's fun Pegasus hydrol that was
+[11:42] suggested by many sources when I was
+[11:44] looking for odd ships
+[11:47] no honestly to me the Pegasus H the
+[11:49] hydro foil doesn't seem to me that odd
+[11:52] it's a natural progression of we want to
+[11:54] make our torpedo boats as fast as
+[11:55] possible and they become missile boats
+[11:57] well we still want to make them as fast
+[11:58] as possible
+[12:02] as I say with a monitor monitor's not
+[12:06] odd that's why I haven't put Us's HMS
+[12:09] captain or anything like that in
+[12:18] it it's like getting from DC to into DC
+[12:22] from Virginia don't drive just drive to
+[12:23] Vienna and take the
+[12:25] [Music]
+[12:26] metro I've heard that a few times
+[12:35] and again the try criteria was odd
+[12:37] designs that
+[12:39] worked there are some of the cases I
+[12:42] have to the 12 I've selected which may
+[12:44] be
+[12:46] interesting may be interesting but it is
+[12:49] the year of the aircraft car so I
+[12:50] thought I'd start and I will finish with
+[12:52] an aircraft car so the E and here you go
+[12:55] the as answer the question of okay okay
+[12:59] we're in a lot of problems what can we
+[13:01] do that's not actually going to solve
+[13:03] it they work by any definition cuz they
+[13:06] actually launch aircraft so they
+[13:10] work we not really surprised they work
+[13:13] are they actually useful when they work
+[13:16] um no cuz let's be
+[13:20] honest they weren that useful to begin
+[13:27] with the Isaac glass battleships were
+[13:30] capable of a top speed of 23
+[13:33] knots even after reconstruction they
+[13:36] were capable of 25
+[13:38] knots as hybrid carriers their range
+[13:41] does not go up any go their speed does
+[13:44] not go any
+[13:48] higher so are they going to help your
+[13:50] fast Carri operations by providing them
+[13:52] with the cover no they're going to slow
+[13:54] down your carrier
+[13:56] forces as hybrid carriers what do they
+[13:59] carry 22
+[14:00] aircraft for that they sacrifice
+[14:04] two
+[14:06] pairs
+[14:08] of the well their gun their 35 well 356
+[14:13] mm guns which all brain engage 14in guns
+[14:19] so they sacrificed 4 14in guns for 22
+[14:24] aircraft which mostly aren't that useful
+[14:27] because let's be honest
+[14:29] their really big issue is they can
+[14:31] launch aircraft and they have a lift for
+[14:35] aircraft but
+[14:39] um how do I put this
+[14:48] politely recovering
+[14:52] aircraft that's an interesting
+[14:57] one recover in
+[15:01] aircraft
+[15:03] just doesn't really
+[15:09] work and they have 11 dive bombers and
+[15:12] 11 reconnaissance
+[15:23] aircraft Nea ship surprisingly enough
+[15:26] ever uses its aircraft during combat and
+[15:28] I'm not really surprised because they
+[15:31] just
+[15:34] no okay how do I put this this an odd
+[15:37] design actually work it works in the
+[15:39] theory that you can actually launch a
+[15:41] recover aircraft does it work in terms
+[15:42] of operational sense no it
+[15:45] doesn't cuz you either have a battleship
+[15:47] which has a huge great big flipping
+[15:49] Target on the back full of aviation
+[15:52] fuel yeah that sounds like a good
+[15:55] idea
+[15:57] or you have have a ship which has all
+[16:00] the weight and drawbacks of being a
+[16:02] battleship but you can't actually use it
+[16:03] as a battleship which is when those
+[16:05] things become
+[16:07] advantages it's heavy it's slow because
+[16:10] it's heavy it's got massive guns which
+[16:15] provide a lot of weight it's got a huge
+[16:17] amount of armor that makes your job
+[16:20] difficult and yet you can't use it for
+[16:24] that because of the Fring flight deck on
+[16:27] its back
+[16:29] and it's not even a proper Flight Deck
+[16:30] cuz you can't land your aircraft on
+[16:54] it going to see what's in the chat
+[17:14] sorry
+[17:16] little thing flying around being
+[17:27] buzzy
+[17:31] fairly sure it's
+[17:38] dead look if you have a helicopter I to
+[17:42] is asked yes a helicopter for Andy
+[17:45] summing Warfare
+[17:47] operations but still doesn't really make
+[17:51] sense because what are you building for
+[17:53] it's one of the things I find most
+[17:54] strange because they're armed with dive
+[17:56] bombers and reconnaissance aircraft
+[18:00] okay you've got die bombs of
+[18:01] reconnaissance aircraft what's the real
+[18:04] point in
+[18:05] that you
+[18:08] see cuz with only two catapults you
+[18:11] can't really launch a meaningful
+[18:13] strike the way it's about you can't
+[18:15] arain your aircraft up and quickly
+[18:18] Cascade them forward because that's not
+[18:20] the system it's
+[18:21] got because you can't launch the
+[18:23] aircraft straight ahead because they run
+[18:25] into the guns you have to C it out and
+[18:28] that requires maneuvering and you're
+[18:30] also using float planes the thing is
+[18:33] they actually have float plane
+[18:35] Fighters and that's the other problem
+[18:37] they use D4 Y diers and a
+[18:41] e6a reconnaissance aircraft which are
+[18:44] not the most reliable aircraft anyway so
+[18:47] honestly the just the whole decision
+[18:50] making process is
+[18:52] banned and ultimately it comes back to a
+[18:55] phrase which is the sort of a favorite
+[18:57] phrase of myself and many of my
+[18:59] colleagues in naal history which is if
+[19:02] this is the
+[19:06] answer are you asking the right
+[19:13] questions because think about
+[19:16] it this ship is a lot of
+[19:20] crew it is a lot of personnel it's
+[19:23] nearly 1500 people to put it to se
+[19:30] what else could you be doing with those
+[19:31] 1500 people and all that
+[19:36] Waits the fact
+[19:38] is even after you've taken the turrets
+[19:41] off and added all this stuff of the AR
+[19:44] she actually goes up in tonnage in
+[19:51] weight yes you can you can argue you can
+[19:54] go well it's only 700 tons more but
+[19:57] you've taken of two turrets and all
+[20:00] their
+[20:01] ammunition that is a huge amount of
+[20:05] weight and you've added this on so
+[20:08] that's probably a destroyer or maybe
+[20:10] even more worth of construction you've
+[20:13] just put into this ship and I know
+[20:15] you've got issues with engines
+[20:20] Etc but would have been better to I
+[20:23] don't
+[20:26] know de crew this [ __ ]
+[20:29] push forward you know and just push
+[20:31] forward and acceler to service some of
+[20:33] the merchant vessels Etc you're
+[20:34] converting to aircraft carriers this is
+[20:37] before we get to the whole problem of
+[20:38] the fact that the Japanese at this point
+[20:41] are really suffering from their decision
+[20:42] to focus everything on having the
+[20:45] strongest Frontline uh Air Aviation
+[20:48] Force they can
+[20:49] have because the whole idea had been put
+[20:52] all your veterans into the into the
+[20:55] attack operations put all your veterans
+[20:57] into that and don't cycle them back to
+[21:00] train up Crews don't have a cycle
+[21:03] process going on load those things up
+[21:05] with a veterans and load them up
+[21:08] veterans and make it as hard and as
+[21:10] tough for people to learn how to be
+[21:11] Pilots as possible so you get a smaller
+[21:14] flow through as
+[21:16] possible yeah that's a good
+[21:22] idea
+[21:26] just and then I people s around some oh
+[21:29] the Japanese they were masters of Naval
+[21:31] Aviation you go they were good yes but
+[21:34] Masters no I don't think there's anyone
+[21:38] in World War II I would I would describe
+[21:41] as an absolute master of Naval
+[21:45] Aviation the British thanks to Churchill
+[21:49] they never have enough carriers to be
+[21:50] the masters of Naval Aviation thanks to
+[21:52] Church's decision to pause carer
+[21:54] construction if he hadn't pause carer
+[21:57] construction yes they wouldn't have
+[21:58] reached the Peaks the Americans reach
+[22:00] because their yards are mostly being
+[22:02] bombed barring the ones in sort of
+[22:04] Belfast that doesn't how and wolf don't
+[22:07] get bombed that regularly they still get
+[22:08] bombed occasionally not that regular or
+[22:10] rather attempted attacks that
+[22:12] occasionally but the thing
+[22:14] is the you know they they're never going
+[22:18] to match in terms of numbers the
+[22:20] Americans with a sheer production
+[22:22] capability the Americans bring online
+[22:23] for the
+[22:25] war but for World War for World War too
+[22:28] to clarify if anyone's
+[22:30] wondering
+[22:32] but that's really the only problem the
+[22:35] British have cuz otherwise you'd have a
+[22:37] lot more multicarrier operations as
+[22:39] they'd Pro they'd prophesized and
+[22:42] discussed and planned for in the inter
+[22:44] War years you'd have things like you
+[22:47] know Toranto would have been a far
+[22:49] bigger strike because you would have had
+[22:52] two carriers involved no matter what
+[22:54] happens you would have had all sorts of
+[22:56] things ready at various points probably
+[22:57] proba Arc Royal would have been able to
+[23:00] be more easily maintained and could have
+[23:02] actually had something done to her which
+[23:04] might have meant that she isn't in the
+[23:06] state she is in when she gets
+[23:08] sunk um
+[23:11] which frankly I realize some of my
+[23:14] colleagues in history put a lot of
+[23:16] emphasis on that as the reason for a
+[23:17] sinking and I go well that is certainly
+[23:20] part of it but I think the decisions
+[23:21] made in some of the damage control had
+[23:24] had slightly more to contribute to it it
+[23:26] depends on which side you're on but even
+[23:28] way an improvement of one buys more time
+[23:31] for the other to be corrected so it all
+[23:33] sort of
+[23:37] works
+[23:41] realistically though the Americans I
+[23:44] love them dearly but they never have
+[23:46] their whole Force capable of Knight
+[23:47] strikes in World War II they just don't
+[23:50] they don't need to though but they don't
+[23:53] so it's hard to call them masters of
+[23:55] Aviation when they don't enable Aviation
+[23:57] when they don't achieve
+[23:58] that and so you can go for all three of
+[24:01] the forces and you can go well not
+[24:03] Masters they're good at it they're all
+[24:05] very good at the areas of Naval Aviation
+[24:06] they've developed and focused on and
+[24:08] practiced but they're not Masters
+[24:20] yet T odd ships the French neor would
+[24:23] seem to should would seem to be a rich
+[24:25] mind to seem to be a rich vein to mind
+[24:28] it would be but the trouble is if I go
+[24:30] into the French navy all we will talk
+[24:32] about is the French navy because they
+[24:33] are so
+[24:56] many I'm not sure if haga and is is and
+[25:01] haga well yes they would have let's put
+[25:04] it this way in an H glorious situation
+[25:07] having 814 in guns that might well have
+[25:10] been enough to drive off Shan hor NIS
+[25:13] now but the fact is I in a carrier
+[25:16] strike operation glorious would have
+[25:18] actually been able to take out isai and
+[25:19] Huga Huga a long time before they
+[25:22] managed to fight attack her
+[25:24] properly
+[25:26] um one of the things is for for
+[25:28] reconnaissance and for combat a
+[25:31] situational awareness you need conon Air
+[25:32] Patrol and these ships can't really
+[25:34] maintain conson Air Patrol nor about
+[25:37] pausing to recover float
+[25:46] planes if Japan worked up there through
+[25:49] developing a rotating P program during
+[25:51] the second one war would have been good
+[25:52] enough by the time p
+[25:54] h
+[25:56] um would it be good enough at Pearl
+[25:58] Harbor yes would it been as good as the
+[26:01] aircraft as the pilots were at Pearl
+[26:03] Harbor probably not quite the same but
+[26:06] they wouldn't have been far off the
+[26:08] thing is what you do when you're doing a
+[26:10] rotating pilot program I you basically
+[26:13] go right then you've served on the front
+[26:15] line you've maybe made it to flight
+[26:16] leader that's good you're good we're
+[26:18] happy right and we're going to take you
+[26:20] back we're going to train you as an
+[26:21] instructor or a test
+[26:24] pilot so going to be testing and
+[26:26] developing the next generation of
+[26:28] aircraft using that experience or you're
+[26:29] going to be training next generation of
+[26:31] Pilots going through and after you've
+[26:32] served a while as in EA role you'll go
+[26:35] forward again as a squadron commander
+[26:37] with that experience taken from all the
+[26:39] unadultered flying as a flying as a test
+[26:42] pilot we put aircraft for metal and
+[26:44] really do understand all the various
+[26:45] types and probably flown some of the
+[26:47] enemy aircraft types when they've been
+[26:49] captured and they've been sent to
+[26:51] testing so you have a really good
+[26:53] understanding of those or you go forward
+[26:55] and you've got the people you've trained
+[26:56] and you'll take you up and then what you
+[26:58] do even more for you bring these people
+[27:00] forward but also you split up a current
+[27:02] Squadron so you divide that into 50/50
+[27:05] and the existing Squadron command
+[27:07] structure and their veteran p and half
+[27:10] their veteran pilot their current Pilots
+[27:13] get melded with another you know a set
+[27:15] of inex inexperienced is Pilots but to
+[27:20] you know to become a combined squ one
+[27:22] one one Squadron add half the
+[27:24] experienced experienced Pilots go off
+[27:27] with maybe the deputy commander of
+[27:29] Squadron to become the new squadron
+[27:30] commander the flight Le the um
+[27:33] instructor from back there comes the
+[27:35] Squadron Deputy Co or the uh test pilot
+[27:39] becomes Squadron Deputy Co on the on the
+[27:42] new Squadron being created and they've
+[27:44] got half veteran pilots and half new
+[27:45] pilots and so your aggregate force is
+[27:48] far more capable because no Squadron you
+[27:52] have is entirely new
+[27:55] pilots so it's in case of they're all
+[27:57] mixture and that experience bleeds off
+[28:00] you know the one of the things I miss
+[28:02] about Naval History about history
+[28:04] conferences and I'm hoping to go get and
+[28:06] actually get to go back to some
+[28:08] conferences this year and take part in
+[28:10] them it's discussions at lunchtimes and
+[28:13] dinners and those S discussions when you
+[28:16] have outside of the Cal because yes you
+[28:18] get to hear some really wonderful and
+[28:20] cool history but the actual discussion
+[28:22] times they have value they are where you
+[28:24] learn a lot of career
+[28:26] development and it's the same for
+[28:29] Pilots you know where do they pick up a
+[28:31] lot of their experience it's better to
+[28:33] pick it up from people who've already
+[28:34] experienced it than to pick it up by the
+[28:38] by experiencing it
+[28:56] yourself
+[29:02] right as c car has been able to do all
+[29:05] they D could
+[29:07] do there's a certain argument for
+[29:24] that here's a quote Oh two thank you
+[29:26] here's a quote found on Battle carriers
+[29:28] from director naal Gunner Captain Gerald
+[29:30] MB Langley the functions and
+[29:31] requirements of carriers and service gun
+[29:33] platforms are entirely incompatible the
+[29:35] conception of these designs is evidently
+[29:37] the result of unresolved contest between
+[29:39] a conscious acceptance of aircraft and a
+[29:41] sub subconscious desire for a 1914 Fleet
+[29:45] these abortions are the result of a
+[29:47] psychological Mal adjustment the
+[29:49] necessary Readjustment should result
+[29:51] from a proper reanalysis of the whole
+[29:53] question what would be a balance Fleet
+[29:55] in 1945 50 or 55 very
+[30:06] good hang on sorry someone's just
+[30:09] appeared at my
+[30:10] door and she's
+[30:15] waiting what you doing here you want me
+[30:18] to help
+[30:26] that
+[30:56] e
+[31:04] sisters sisters sister sisters sorry
+[31:07] bird bath had apparently not been put
+[31:09] back right and sister was trying to lift
+[31:12] it
+[31:15] herself at least she's not moving chairs
+[31:17] yet at least she's not moving
+[31:20] chairs he
+[31:26] apologies
+[31:34] I would
+[31:35] say
+[31:38] though these
+[31:40] ships the thing
+[31:42] is they are
+[31:46] originally
+[31:49] ordered in 1914 is laid down
+[31:53] 1915 launched 1916 or 17 seene in the
+[31:57] case of uh Mitsubishi nagas of Huga and
+[32:01] Mitsubishi Nagasaki and completed in 197
+[32:08] 1918 the fact is they probably should
+[32:11] not have been
+[32:13] around now we have an odd ship but it
+[32:15] works the ram form
+[32:18] Hyperion what do you know it the thing
+[32:22] is what can I say why did I put this in
+[32:26] here because it does look weird it's
+[32:29] basically a floating
+[32:31] triangle
+[32:33] and if you want to look it up it works
+[32:36] for petroleum geoservices
+[32:39] and it's
+[32:43] basically how do I put this it's
+[32:46] basically a a high quality Servo
+[32:52] vessel and
+[32:54] it's designed to have the maximum toe
+[32:58] density so it's able to it's able to
+[33:03] actually really really go for very high
+[33:06] quality seismic data
+[33:12] production it has what 24 streamer res
+[33:15] I'm I have the vessel specifications up
+[33:18] here please not
+[33:21] um it has 16 in the first row a breast
+[33:26] eight in a second
+[33:28] Ro this is what allows it to
+[33:31] do high high volume exploration 3D high
+[33:35] density 3D or even 4D
+[33:38] apparently um analysis and anything
+[33:41] varying in between is what they advertis
+[33:43] it as and I wouldn't be surprised if
+[33:45] it's fairly accurate because most of the
+[33:47] really interesting jobs I've heard being
+[33:50] done recently people tend to try and get
+[33:52] this vessel or um vessels which are
+[33:55] considered getting close to itk
+[33:57] abilities
+[34:02] along John sh are you going to put the B
+[34:04] off in concrete the bird bu is made of
+[34:07] concrete but apparently it wasn't the
+[34:09] right way around I put it back
+[34:12] earlier I put it back earlier
+[34:20] oh okay so if people are noticing I'm
+[34:24] slightly wincy more Again Jim
+[34:27] but today today as a bright
+[34:31] spark idea I decided that I would test
+[34:36] out how many um pull-ups I could still
+[34:40] do well chinups to be honest getting my
+[34:44] chin up above the above the bar and
+[34:46] trying to do sort of that
+[34:49] properly and it turns out I can still do
+[34:52] a few I was very PR I was very
+[34:55] happy I I did used to be able to do 30
+[34:58] in a row which is not amazing but was
+[35:01] fine anyway so after having not done a
+[35:05] chin up
+[35:07] in a little
+[35:10] over 18
+[35:17] months sorry fridge collapsing on
+[35:21] me that's not
+[35:24] helpful that's not helpful so after
+[35:27] having not done a chin up in a little
+[35:29] over 18
+[35:32] months I managed to
+[35:34] do
+[35:37] 15 but the trouble is my body is now
+[35:40] reminding me that I did
+[35:42] 15 and I haven't done
+[35:46] that hadn't done that in 18
+[35:52] months I don't think my body's happy
+[35:54] with
+[35:55] me
+[36:02] oh
+[36:05] God anyway right now
+[36:09] sorry H that's not really helpful you go
+[36:13] there sorry fridges decided to fall
+[36:16] apart and now the door won't close which
+[36:19] is why I'm which is why I currently gone
+[36:21] away oh God it's like a soap I say me in
+[36:25] pain and bending over a fridge all
+[36:30] ARA get my fat ass down here excuse the
+[36:38] French goes in there that goes in there
+[36:43] that goes in
+[36:45] there that's happy that all goes in
+[36:49] there ouch my
+[36:52] back no it's not a triun it's a single
+[36:56] form single hole it's just a giant
+[36:59] triangle
+[37:06] uh well if you include the Petra
+[37:09] exploration ships there are a lot of
+[37:10] weird designs there are and I thought it
+[37:12] would worth all considering
+[37:14] that
+[37:21] um M please don't say
+[37:25] that
+[37:27] it's a really cool ship and actually uh
+[37:30] one of the interesting things is when it
+[37:32] does actually come in to Harbor and it
+[37:35] was built of course in Japan but it's
+[37:37] Port of registry is Oslo and it's
+[37:39] flagged out of
+[37:41] Norway when it does come into Harbor
+[37:44] it's really interesting because I've
+[37:46] seen a video of it of it Mooring
+[37:48] alongside because of its actually it's
+[37:51] quite strange
+[37:52] shape there are a lot of Harbors which
+[37:55] find it very interesting
+[38:00] what it is true and you I do know it I
+[38:02] just don't want you to say it the idea
+[38:04] that on Sand you'll still have to move a
+[38:06] millimeter or something you'll probably
+[38:07] move a millimeter every single day
+[38:08] between now and then
+[38:11] um concrete chips of World War II I did
+[38:13] consider and World War I I did consider
+[38:16] by MTS I decided not to because they're
+[38:18] not really how I put this they're not
+[38:21] really odd forms of chips they're just
+[38:22] made of concrete which is not normal
+[38:25] material can't what is 4D
+[38:30] analysis it mean it's basically it's a
+[38:33] taking over various different times to
+[38:35] watch the fluctuations of the siping
+[38:39] activity n31 I'm fairly sure that's off
+[38:46] topic one of the things I find strange
+[38:49] is that people find this topic
+[38:54] surprising if Britain finds itself in a
+[38:56] War versus Russia that will be by
+[38:59] probably by definition a World War
+[39:01] because I'm fairly sure we won't be in
+[39:02] such a war without allies and Russia W
+[39:04] be in a war without such allies and if
+[39:06] you consider every other previous World
+[39:08] War Britain introduces
+[39:10] conscription
+[39:12] so where is this
+[39:15] surprising where is the idea that
+[39:18] conscription will come back if well if
+[39:20] world world war breaks out
+[39:25] surprising I think what's more going to
+[39:27] be surprising is people only they
+[39:28] realize that conscription could a be
+[39:32] fully gender
+[39:34] balanced um because of the own the own
+[39:39] legislation so it means both instead of
+[39:42] previously the genders should be has
+[39:44] been one which has been recruited and
+[39:46] conscripted up to the AR service the
+[39:47] other one has been
+[39:49] voluntary um now everyone could be Rec
+[39:53] conscripted so that that's going to
+[39:55] cause some fun cuz there are some people
+[39:57] who are I would say psychologically not
+[40:00] prepared for that scenario although it's
+[40:03] a
+[40:05] reality and I would add in the other fun
+[40:08] that's going to
+[40:09] happen and this is an important thing to
+[40:12] remember if you're in that scenario is
+[40:15] that it actually might be safer you to
+[40:16] be on the front lines than in the rear
+[40:19] because there's probably going to be
+[40:20] less defens not enough defensive
+[40:22] equipment to go around because the thing
+[40:24] is yes you're going to consider it
+[40:26] script that many people and probably
+[40:27] need that many people but are you
+[40:29] supplying the weapons they
+[40:30] need this something they need probably
+[40:32] not but that's enough of that that is a
+[40:34] build trumps question and we have got
+[40:36] build trumps
+[40:37] tomorrow and there should be a calendar
+[40:41] invite I should have sent out to all my
+[40:55] colleagues
+[40:58] he says it should have
+[41:00] gone I'm not sure if it has gone let me
+[41:03] just have an argument
+[41:07] with X formly known as Twitter you are
+[41:10] annoying me you vex me so sometimes you
+[41:13] vex me
+[41:15] so okay let's do this
+[41:18] again to make sure Bill trumps is
+[41:25] recorded
+[41:53] should
+[41:54] work now
+[41:59] yes it has
+[42:05] gone
+[42:07] now
+[42:11] um Discord what's your views on
+[42:13] Outsourcing lry functions recruitment
+[42:16] procurement um I wouldn't do it if I
+[42:19] could it just doesn't seem sensible to
+[42:21] me but it it's all the idea that the
+[42:24] look there's often an idea that private
+[42:26] indry is automatically going to be
+[42:27] cheaper because they have to deal with
+[42:29] Market forces without a realization that
+[42:32] a lot of sections of government aren't
+[42:33] really applicable to Market forces for
+[42:35] example if Britain wants to build a
+[42:37] warship and we're going to build them in
+[42:39] UK which yards do we have well if we
+[42:41] want to build a small frig we have one
+[42:42] yard as option if you want to build a
+[42:44] large escort we have another yard as an
+[42:46] option and if we want to build an
+[42:48] aircraft carry we've got to go to all
+[42:49] the yards and get parts from all them
+[42:52] and put them together in one particular
+[42:53] yard which defines the size of the ship
+[42:55] we're building cuz we're literally
+[42:56] building to fill out that yard so yeah
+[43:00] that's not really Market forces is it
+[43:03] that's not Market forces so you either
+[43:06] have to say we will build our warships
+[43:07] abroad and therefore truly open to
+[43:10] Market forces or if you're going to
+[43:11] build them all in the UK uh then you
+[43:14] accept that they're all in the UK and
+[43:15] you accept that or you're paying an
+[43:16] extra premium to give a private company
+[43:18] which has a monopoly profit a profit
+[43:21] margin you're paying more than you need
+[43:23] to and everything is dependent upon
+[43:25] they're going to pass all the cost on to
+[43:26] you cuz you're literally their sole
+[43:36] customer when you need a lot of Beam
+[43:38] with not a lot of displacement she
+[43:40] definitely does have a lot of beam and
+[43:41] that is true that's one of the reasons
+[43:43] why she can have so many streamers let's
+[43:45] be honest the thing about ramform
+[43:47] Hyperion and this is what I really like
+[43:49] about her and I do consider one of the
+[43:50] things I wanted to talk about I was
+[43:52] thinking about
+[43:54] this Dury during the Cold
+[43:58] War there were the c
+[44:01] ships the sance tooray sensus system
+[44:04] vessels of the US Navy which were
+[44:06] basically some really really Advanced
+[44:12] trollers and their job was to provide
+[44:16] really long
+[44:20] range coverage of the Atlantic pretty
+[44:23] much
+[44:25] um
+[44:27] and they were good really interesting
+[44:29] ships
+[44:40] well this is your other platform which
+[44:44] could be modified into a cerus
+[44:47] platform we haven't built a new C ship
+[44:51] or similar in a long time and the only
+[44:53] ones who had them on the US Navy
+[44:56] but you need them if you're going to do
+[44:59] proper peer-on-peer anti-submarine
+[45:01] Warfare you need the oceanic coverage
+[45:04] that aeras style system and Asser stands
+[45:06] for surveillance toaday sensor system
+[45:09] provides
+[45:10] you you
+[45:13] do and yes we can always make the case
+[45:16] well you can do it with these other
+[45:17] systems as well you can do it with those
+[45:19] other systems as well they're useful
+[45:22] systems let's be honest you prefer to
+[45:26] have those other systems focusing in on
+[45:27] the jobs they're supposed to be
+[45:30] doing thank you Paul Thompson hope you
+[45:32] enjoy
+[45:36] it what say she like in stor weather
+[45:39] she's actually very surprisingly good in
+[45:40] storing
+[45:52] weather come
+[45:54] go
+[45:56] I'm not getting into that one but it's
+[45:58] fairly obvious for anyone in the
+[46:00] scenario if Britain finds herself in a
+[46:02] war of Russia or anything like that then
+[46:04] it's
+[46:06] because probably one of our allies has
+[46:08] being
+[46:10] attacked because I don't think Britain's
+[46:12] and British politicians aren't in the
+[46:14] habit of going and starting Wars with
+[46:16] major
+[46:17] Powers let's be honest the forlands is a
+[46:19] good example of they did were so worried
+[46:22] about upsetting them that they didn't
+[46:23] even want to deploy ships when they
+[46:25] could Det Conflict for risk of creating
+[46:27] conflict and that's pretty much been our
+[46:28] history for the last odd 40 OD plus
+[46:48] years one I just collect Wiki one of
+[46:51] calls a sister ramform Titan the world's
+[46:53] ugliest ship there are a few Ram
+[46:56] form
+[47:00] ships um the ram form
+[47:08] Titan how do I put this
+[47:10] politely they are pretty cool ships
+[47:15] really but they are specialist
+[47:20] ships there are six of these operated in
+[47:24] the by the same company
+[47:26] same component operates all
+[47:29] six and so calling the Titan I've used
+[47:32] the Hyperion as the example here
+[47:35] but
+[47:37] um in terms of the
+[47:50] ships let's
+[47:53] see um
+[47:57] they have Titan
+[47:59] Atlas And there's some cool pictures of
+[48:02] Atlas I will what I will do is I will
+[48:04] put because what I have next to me is I
+[48:06] have a link on my notes to the fleet
+[48:09] page and I will put for those who are
+[48:11] interested in the ram form Fleet you
+[48:13] will find all their
+[48:16] details here on the link Bel posted
+[48:22] below it's in
+[48:24] description
+[48:27] and they are some really cool
+[48:37] vessels you can also see the evolution
+[48:39] of the ram
+[48:40] form as they've got bigger and
+[48:54] bigger
+[48:58] this like when dra mentions Square Cube
+[49:00] this this is the ship use example
+[49:05] yeah as I said it's an oddl looking ship
+[49:09] but it works very very well it's the
+[49:12] basically definition of the
+[49:15] title hi
+[49:24] Richards
+[49:42] definitely the front of a very large
+[49:52] warship she could be a very large ship
+[49:55] you think about it if that could be the
+[49:57] front of a very large ship but just
+[49:59] think about how big a ship it'd have to
+[50:01] be for that to make sense this
+[50:05] bow probably a cruise lineer or
+[50:19] something so then we have the lovely
+[50:23] spx1 now I wasn't honest sure what I
+[50:26] should considered this a ship but the
+[50:29] thing
+[50:30] is I find the C based xand radar system
+[50:34] technically it is a ship because
+[50:36] technically it is
+[50:38] self-propelled and it floats it's very
+[50:41] weird looking and usually when you want
+[50:42] to take a long distance it's put on a
+[50:44] lifting ship we'll be getting to lifting
+[50:46] ships later but
+[50:50] um this is really quite another critical
+[50:54] asset
+[50:58] it is a system which
+[51:00] allows for you to move around a very
+[51:03] powerful xand radar that's why it's
+[51:06] called cbx c-based xand
+[51:08] radar and it's part of the US's missile
+[51:12] defense system blister missile defense
+[51:24] system
+[51:29] and just like cers has which I discussed
+[51:32] a bit ago this is about providing
+[51:37] data it's the reality of a lot of Modern
+[51:40] Warfare that information data whatever
+[51:43] you want to call it
+[51:46] matters if we live a look at recent
+[51:49] examples where there have been for
+[51:51] example various patrols going on in the
+[51:54] world trying to protect Merchant vessels
+[51:57] whether from Pirates or from other
+[51:59] interesting me methods of attack the
+[52:03] problem consistently has been making
+[52:04] sure you have enough ships in the area
+[52:06] to provide enough
+[52:09] data if you want to intercept ballistic
+[52:12] missiles Etc you need a lot of data you
+[52:14] can do it you know nice way most ships
+[52:17] have been
+[52:20] practicing most navies have been
+[52:22] practicing the concept of dealing with
+[52:23] ballistic missiles for a long time
+[52:27] we're talking
+[52:28] 1970s but it's very different to deal
+[52:30] with a ballistic missile which is coming
+[52:32] straight at
+[52:33] you versus atic missile which is
+[52:37] going past you you need a lot more data
+[52:41] to be able to successfully work out
+[52:42] where you can intercept that than
+[52:47] that and that's a problem that is a real
+[52:51] problem well here is part of the
+[52:53] solution for it
+[52:56] and yes it's also part of the early
+[52:58] warning system because usually it's
+[53:00] based in
+[53:01] Alaska which is its own lovely Powder
+[53:04] Keg get its precise time but we'll leave
+[53:05] up to one side
+[53:10] um this one gives you a lot of
+[53:20] range now when it's on station its draft
+[53:24] is about 9 8 ft when it's moving itself
+[53:28] it's roughly 33
+[53:33] ft it has uh about 80
+[53:39] crew again there's a debate of how
+[53:43] civilian the crew are there's often
+[53:46] discussion of they are mostly civilian
+[53:49] contractors and it's case of they
+[53:52] civilian in the in the sense that most
+[53:54] of them are members of the
+[53:57] reserves um we may or may not that may
+[53:59] or may not be the case or at least
+[54:02] former active military active P service
+[54:05] Personnel who may still be liable for
+[54:07] calling back into
+[54:08] service um may or may not be the case so
+[54:12] it's h it's something I I always take
+[54:15] the civilian approach for crew on
+[54:17] certain systems with a healthy dose of
+[54:22] skepticism historians dose of skepticism
+[54:25] not a journalist one I will
+[54:42] add
+[54:46] now her admitted range her publicly
+[54:50] admitted range is 2,000 km for her radar
+[54:56] or 12200
+[55:03] miles and she displaces roughly 45,000
+[55:16] tons she's not exactly
+[55:19] light she's not exactly
+[55:23] small is she useful yes is she critical
+[55:26] I would argue
+[55:28] so and argue when you look at the look
+[55:30] at her there would be a number of people
+[55:32] who would say well you know you could
+[55:34] have spent that money on an extra agis
+[55:36] Destroyer an extra AIS Cruiser here's
+[55:38] the thing you could put an asset like
+[55:40] her if you had enough of
+[55:42] them you could have put an asset like
+[55:45] her let's see say somewhere near the Red
+[55:49] Sea and a lot of the problems would have
+[55:53] been solved
+[55:55] instead we have carriers and hawy
+[55:57] sorting out those problems and providing
+[56:00] the data coverage because we don't have
+[56:01] enough ships to have enough data
+[56:03] coverage in those
+[56:05] areas and this by the way is filmed in
+[56:07] 2024 if anyone wants to ask what's going
+[56:10] on at time I'm sure you can look out the
+[56:11] news and find out what's going on in the
+[56:13] world but this is a History Channel not
+[56:15] a politics channel so I try and
+[56:17] stay away from current events where it's
+[56:23] advisable
+[56:29] she does she aners herself kind of like
+[56:33] well basically she's a self-propelled
+[56:35] oil rig in in regard she is
+[56:38] a um she is a twin hold semi submersible
+[56:42] oil platform a fifth generation oil
+[56:46] platform
+[56:49] um that's what she's built that's what
+[56:52] they did they took a they took a
+[56:56] I wouldn't say bog standard but a pretty
+[56:58] much standard for its generation Oil
+[57:02] Semi submersible oil platform and
+[57:05] instead of putting all the accoutrements
+[57:07] for working
+[57:08] with oil fields they put on the radar
+[57:11] systems and it works it's a great idea
+[57:16] you know it's a very good example of an
+[57:17] off the shelf asset you could have you
+[57:19] can easily
+[57:23] procure
+[57:57] now I would argue agree she does need
+[58:00] protection I would
+[58:03] say if she's operating in the open ocean
+[58:06] you you will want to have things with
+[58:09] her to protect her the really
+[58:11] interesting thing I
+[58:13] found considering it though was no one
+[58:16] thought a let's get another couple of
+[58:19] Rigs and have them protect her instead
+[58:22] the ideas basically are you have a Burke
+[58:25] or something nearby protecting and you s
+[58:27] of going uh a that ties up a burke and B
+[58:30] is that really
+[58:32] sensible there again if you had
+[58:36] a burke
+[58:38] rig cuz that's basically what you'd end
+[58:40] up building with a helicopter platform
+[58:42] everything on that would I could see
+[58:45] that very quickly becoming a problem of
+[58:48] Congress because there'll be someone
+[58:50] looking you converted an oil rig into
+[58:54] what
+[58:55] basically a
+[58:56] destroyer for how much did it cost Well
+[58:59] it can't go as fast or operate the same
+[59:02] as a destroyer no but think of it as a
+[59:05] presence asset we literally park it off
+[59:08] somewhere and it just sits there like an
+[59:09] orig does and Supply
+[59:13] it no it's not a good idea it's not a
+[59:16] good idea it's not a good idea no I can
+[59:18] now I I know why the US Navy didn't go
+[59:21] that route it it just occurred to me but
+[59:23] then I then I very quickly I shut it
+[59:25] down mentally very quickly
+[59:39] no now she is a
+[59:44] oneoff
+[59:47] but and I would say this she's a oneoff
+[59:50] but she she could quite easily be
+[59:53] replicated
+[59:59] she could quite easily be uh
+[1:00:07] replicated I'd argue she's sort of
+[1:00:09] similar to the Texas Tower's
+[1:00:11] design
+[1:00:16] um but she's
+[1:00:22] mobile tell a accepted Aegis of sure
+[1:00:26] they will eat Aegis of shore don't get
+[1:00:29] me
+[1:00:31] started how many Mark 41 well that's the
+[1:00:34] interesting thing cuz I was sitting
+[1:00:35] there thinking
+[1:00:37] actually you could probably one of these
+[1:00:40] things might actually be stable enough
+[1:00:42] you could actually reload a VLS a VLS
+[1:00:45] cell on
+[1:00:47] board might be probably would
+[1:00:53] be
+[1:00:55] considering they're basically designed
+[1:00:56] around
+[1:01:07] stability she's currently Alaska Pearl
+[1:01:10] Harbor is where she wanders
+[1:01:14] between and I want I agree that there is
+[1:01:18] a thing that they would like more would
+[1:01:21] have liked more of them would like more
+[1:01:22] of them in service
+[1:01:25] [Music]
+[1:01:28] um she's actually been in service pretty
+[1:01:31] much since
+[1:01:36] 2012 actually
+[1:01:40] know she's been in service since
+[1:01:43] 2006 she was then put into a sort of
+[1:01:46] testing role in
+[1:01:49] 2012 she was she's been maintained in
+[1:01:52] 2019 she's still she's wandering around
+[1:01:55] she's she basically wanders between
+[1:01:57] being a reserve asset and active
+[1:02:18] asset but again it's an odd chip but it
+[1:02:23] works
+[1:02:25] so then we have the
+[1:02:28] flip i k I was looking forward to
+[1:02:32] getting this in
+[1:02:34] here the
+[1:02:36] flip I was siging between this and the
+[1:02:38] glow more Explorer and I went with
+[1:02:44] this it's owned by the US Office of
+[1:02:47] Naval
+[1:02:50] Research it's currently under status to
+[1:02:53] be scrap
+[1:02:55] but it was a very capable
+[1:02:57] vessel
+[1:03:03] um it's basically designed to self-
+[1:03:06] repel itself broadly speaking it usually
+[1:03:08] actually had a tug assisting it but self
+[1:03:11] repel
+[1:03:12] itself to a
+[1:03:14] spot and then turn itself into
+[1:03:22] this with the ability for people to go
+[1:03:24] under water as
+[1:03:39] well it's um how do I put
+[1:03:49] this it's mostly immune to wave action
+[1:03:52] thanks to how its buyant is
+[1:03:55] maintained it's basically also known as
+[1:03:58] the flip boy and it's designed similarly
+[1:04:01] to a spar
+[1:04:03] boy to empty the ballast tanks they use
+[1:04:08] compressed
+[1:04:12] air that would return it to its
+[1:04:14] horizontal
+[1:04:16] position it was frequently mistaken for
+[1:04:19] a capsized ocean transport vessel and I
+[1:04:24] know I did just say it was rough
+[1:04:26] supposed speaking still propelled but
+[1:04:28] actually no it doesn't have propulsion I
+[1:04:30] thought it had
+[1:04:31] propulsion this is the trouble when
+[1:04:33] you're going through your notes and
+[1:04:34] going I read this in years I'm sure it's
+[1:04:36] so no it isn't actually it entirely has
+[1:04:39] various things on it for stability it
+[1:04:41] has no actual repulsion which is why it
+[1:04:43] uses a um tug to get it to places I do
+[1:04:47] apologize and good carrier compliment of
+[1:04:50] five crew and 11 researchers
+[1:04:53] aboard
+[1:04:55] its purpose was to study wave height
+[1:04:58] acoustic signals water
+[1:05:00] temperature uh density all sorts of
+[1:05:03] methodological D data this is fed into
+[1:05:05] most of our Ocean Models but also is
+[1:05:08] kind of critical for development of Andy
+[1:05:09] submarine warfare this this vessel has
+[1:05:11] been absolutely amazing for
+[1:05:19] this they had planned in 2021 to to
+[1:05:24] spend roughly $8 million which for the
+[1:05:27] US Navy budget for the US Department of
+[1:05:30] Defense budget is frankly A Drop in the
+[1:05:32] Ocean um to give
+[1:05:35] it operational life until
+[1:05:39] 2031 and honestly it could have been a
+[1:05:42] nice museum piece to have let now let's
+[1:05:45] be honest it would be a very cool museum
+[1:05:47] piece to have but as of
+[1:05:50] 2023 August it was sent to the scrap
+[1:05:54] yard
+[1:05:56] and there's an instrument instrument
+[1:05:59] boom which is which has been um retained
+[1:06:03] to be installed on a pier at scripts as
+[1:06:06] a sort of Memorial to it I think but uh
+[1:06:14] yeah
+[1:06:15] it's
+[1:06:17] gone well it's
+[1:06:23] going
+[1:06:29] the hotel in bathroom facilities
+[1:06:31] including bathrooms were interesting I
+[1:06:33] would say that's an understatement uh
+[1:06:36] you go there it's kind of like the going
+[1:06:39] to the Arctic or Antarctic you're not
+[1:06:41] going there for the accommodations
+[1:06:43] you're going there for the
+[1:06:45] research or space let's be honest the
+[1:06:48] moment you know going up to the space
+[1:06:50] station is it's not a really fun exp fun
+[1:06:54] experience no I don't think there are
+[1:06:55] plans for replacement cuz let's be
+[1:06:56] honest any replacement would cost a huge
+[1:06:58] amount of money this thing was built
+[1:07:01] very efficiently and very cheaply and if
+[1:07:03] they aren't going to spend 8 million on
+[1:07:06] repairing it I doubt they are going to
+[1:07:09] spend when it originally cost them
+[1:07:12] summer region
+[1:07:14] of well there's a debate okay some
+[1:07:17] figures put it at $600,000 some put it
+[1:07:19] at a million dollar okay it what we do
+[1:07:23] know is is is launched in 1962 it's it's
+[1:07:26] all 1962
+[1:07:29] so I would argue if it even it cost a
+[1:07:33] million dollars in 1962 it's worth it if
+[1:07:35] it cost 600,000 it's definitely worth it
+[1:07:37] but if they've turned down 8 million to
+[1:07:40] upgrade and give another decade of life
+[1:07:42] I doubt they're going to provide the
+[1:07:44] let's figure out how much it would get
+[1:07:46] charged for it in the modern world to
+[1:07:49] build a new version of this building a
+[1:07:52] new version of this would be be
+[1:07:55] extortion
+[1:07:56] expensive and probably would cost more
+[1:08:04] than well I would say probably north of
+[1:08:06] a
+[1:08:08] billion because I can imagine the amount
+[1:08:12] of I'm going to use the phrase Mission
+[1:08:15] creep that would uh creep which would
+[1:08:19] evolve into design but some might call
+[1:08:21] it portfolio padding
+[1:08:51] it'll be
+[1:08:52] interesting anyway
+[1:08:57] way
+[1:09:06] so well he's the thing the TR is odd but
+[1:09:10] it
+[1:09:11] works okay odd looking but it works cir
+[1:09:15] off and pretty much all of the gun [ __ ]
+[1:09:17] on gun Cruisers are odd do they work yes
+[1:09:21] is it a good idea no
+[1:09:28] is it a good idea
+[1:09:32] no it just isn't it just really isn't
+[1:09:35] and let's have a look at this design and
+[1:09:37] you let's see if you can work out why it
+[1:09:39] isn't a good idea if you don't already
+[1:09:52] know
+[1:10:11] now as you can see it has big
+[1:10:16] guns and big guns they're good they're
+[1:10:19] gorgeous in this period they are truly
+[1:10:21] beautiful and amazing things
+[1:10:25] we all have a nice big
+[1:10:28] gun
+[1:10:35] but there you
+[1:10:37] go but and this is the problem with the
+[1:10:41] cir
+[1:10:42] off
+[1:10:47] but as lovely as those big guns
+[1:10:52] are to actually she operated it you have
+[1:10:54] to
+[1:10:55] surface and that's a submarine on a
+[1:11:01] Surface yes it has big
+[1:11:05] guns but doesn't want to fight anything
+[1:11:07] which justifies those guns not
+[1:11:12] really now you can argue that those guns
+[1:11:15] and shells are more efficient use of
+[1:11:18] space and weight than Torpedoes they are
+[1:11:23] torpedoes take up a lot of space but you
+[1:11:25] are able to fire them from
+[1:11:27] underwater submerge where a submarine
+[1:11:30] which is let's be honest an ambush
+[1:11:32] Predator is
+[1:11:35] safest now the ADV you most submarines
+[1:11:39] have some form of gun on them in this
+[1:11:41] period but the trouble is those guns
+[1:11:44] also get you in range of the enemy
+[1:11:46] guns this idea was you'd have a big gun
+[1:11:49] which would allow you to take out
+[1:11:50] targets more quickly and efficiently
+[1:11:52] especially Merchant vessels and also
+[1:11:53] from a ranger which you'd be safe from
+[1:11:55] any weapon they'd likely to have and be
+[1:11:57] able to
+[1:11:58] possess three small problems with this
+[1:12:01] one you're in a submarine which has the
+[1:12:04] uh how do I put this Gunnery
+[1:12:07] platform
+[1:12:09] um profile
+[1:12:14] of well I'm just going to start ripping
+[1:12:17] this water this iron Brew around and
+[1:12:22] basically that's the stability of your
+[1:12:24] Gunnery platform on a on a submarine
+[1:12:27] that is especially as you can see the
+[1:12:30] larger the submarine you are the bigger
+[1:12:32] the submarine the more you're going to
+[1:12:33] be rocking which is not good for Big
+[1:12:35] Guns which require stabilization and
+[1:12:37] actually accuracy in order to fight them
+[1:12:39] especially when you only have two so you
+[1:12:40] don't have enough for really Salvo
+[1:12:43] ranging which needs about three in this
+[1:12:45] time
+[1:12:47] period secondly secondly here is the
+[1:12:49] other GL glut
+[1:12:52] mark the fact is even if you are a cir
+[1:13:00] off you
+[1:13:03] have two 8 in guns that's
+[1:13:08] great but your 8 in guns the Practical
+[1:13:13] range where due to the height of your
+[1:13:16] range fighter cuz you are a
+[1:13:21] submarine is roughly 12
+[1:13:26] km this increases to 16 km if you are
+[1:13:30] using the
+[1:13:33] Periscope but consider those guns
+[1:13:35] mounted on a warship have a range of 26
+[1:13:44] km and most warships carrying them are
+[1:13:47] going to be carrying a lot more guns
+[1:13:49] than
+[1:13:50] you and this is the other trouble r ear
+[1:13:53] is because you start to get
+[1:13:57] into let's consider a standard
+[1:14:01] decent
+[1:14:03] British gun of the time period for most
+[1:14:05] of their
+[1:14:11] destroyers the uh quick firing
+[1:14:16] um Mark 4.7 in Mark 9 and Mark
+[1:14:20] 12 that that
+[1:14:23] has a maximum firing range of 15 half km
+[1:14:29] at 14 40° that's a
+[1:14:35] destroyer
+[1:14:38] so let's say you come up across a convoy
+[1:14:41] and you think I'm going to bombard this
+[1:14:44] Convoy I'm going to start taking these
+[1:14:46] targets use your
+[1:14:50] Periscope from 16 K you can engage AG
+[1:14:53] from 16 km
+[1:14:57] away and you are having to straight
+[1:15:00] everything and try you can imagine the
+[1:15:02] accuracy sighting through the Periscope
+[1:15:03] right that's that's going to be great
+[1:15:06] you you have a theoretical increase of R
+[1:15:08] range but let's be honest you
+[1:15:11] surface and you don't fire till 3
+[1:15:14] minutes and 35 seconds so you've been on
+[1:15:16] the surface for 3 minutes 35 seconds
+[1:15:19] before you fire and that's as long as
+[1:15:22] you're firing for if you're firing
+[1:15:26] broadside that requires you to train the
+[1:15:28] turret and training the turret is that's
+[1:15:32] say it's not fast is just to to be under
+[1:15:34] under selling it
+[1:15:39] really and then you have to wait for the
+[1:15:41] vessel to be at the correct pitch and
+[1:15:46] roll so the ship's moving all that and
+[1:15:48] you're waiting for the brief moment when
+[1:15:50] it's stable like
+[1:15:52] this
+[1:15:54] if the ship's rolling more than 8
+[1:15:55] degrees you can't train a
+[1:16:01] turret and you can't observe the sh or
+[1:16:04] shop when you fire at
+[1:16:10] night it just gets worse and worse and
+[1:16:13] worse and oh by the way you're able to
+[1:16:15] fire a total of 28 rounds before you
+[1:16:17] need to reload the ready
+[1:16:19] magazines so thinking of that imagine
+[1:16:22] you service a data time and you surface
+[1:16:24] near a convoy able to start firing at 16
+[1:16:26] km okay you're
+[1:16:28] waiting you're quite a big Target on
+[1:16:30] Surface and they're going to be watching
+[1:16:32] out and they're going to go wow that's a
+[1:16:33] big submarine just turn the surface up
+[1:16:35] there ah it's 16 km away
+[1:16:39] okay do you think you are going to be
+[1:16:43] firing before they have reduced the
+[1:16:45] range to 15 and a half
+[1:16:48] km that's an interesting question
+[1:16:50] because I'm not
+[1:16:52] sure okay 500 M that's that's that's a
+[1:16:56] long distance but the trouble is there's
+[1:16:59] also going to be a problem that some of
+[1:17:00] the escorts are going to be outside of
+[1:17:02] NS of the Convoy so to be within range
+[1:17:04] of the merchant vessels at 16 km you
+[1:17:06] might already be well inside the 15 and2
+[1:17:08] km of the convoys gun of the escorts
+[1:17:12] guns and the escorts are going to come
+[1:17:15] charging towards you going holy moly we
+[1:17:18] got a big Target because you've got no
+[1:17:22] armor
+[1:17:23] I mean they can literally shred you with
+[1:17:27] their machine guns let alone their
+[1:17:32] actual catain
+[1:17:35] guns Lord help you if they fire a
+[1:17:37] torpedo at you so yes it works yes it
+[1:17:43] can Surface yes it can fire its guns yes
+[1:17:47] in theory it's devastating but in actual
+[1:17:51] reality no no one would want to use
+[1:17:56] it
+[1:18:02] no you can reload ready magazine while
+[1:18:05] submerged yes you can I think I'm not
+[1:18:08] sure
+[1:18:21] actually
+[1:18:30] why service for 3 minutes 45 seconds
+[1:18:32] well uh DT squads on the right road is
+[1:18:35] unplugging the guns removing the
+[1:18:37] waterproofing stuff unlocking turrets
+[1:18:39] getting cruin turrets getting everything
+[1:18:41] cleaned making sure everything's dry
+[1:18:43] making sure all all is work in the right
+[1:18:45] place um you might even want to launch
+[1:18:48] your float plane which in 1938 they try
+[1:18:50] and switch out for an auto gyro
+[1:18:54] um who Dr the r this design oh lots of
+[1:18:57] people
+[1:18:59] um she's a she's a fun ship to have
+[1:19:03] let's be honest she looks you know she's
+[1:19:06] a status asset but that's because she's
+[1:19:19] weird and the fact is she was allowed
+[1:19:22] under the Washington Naval
+[1:19:29] treaty
+[1:19:34] it's she's a submarine Cruiser and this
+[1:19:37] is the whole idea was have these
+[1:19:38] submarine cruisers for surface rating
+[1:19:41] and it's a nice idea if you think about
+[1:19:43] a theory because it's supposed to
+[1:19:44] combine the assets of your submarine the
+[1:19:46] ability to submerge and hide with the
+[1:19:49] most viable weapon system you have for
+[1:19:53] actually destroying Merchant vessels
+[1:19:55] your Cruiser
+[1:19:59] guns but it's just
+[1:20:14] terrible it's just
+[1:20:17] no and I think her top speed underwater
+[1:20:22] was 10 knots on the surface it's 18 and
+[1:20:25] 1 half
+[1:20:26] knots so again most escorting destroyers
+[1:20:29] of a convoy are going to have an
+[1:20:30] absolute field day with
+[1:20:41] it they were planning I will say this
+[1:20:44] they were planning to have a elevating
+[1:20:48] platform which was supposed to help
+[1:20:50] Lookouts be 15 M High
+[1:20:54] but it was abandoned because it was
+[1:20:56] affected uh both affected and was
+[1:20:58] affected by the submarine role because
+[1:21:00] submarines are not designed to be
+[1:21:02] surface combat
+[1:21:04] assets they are designed to have a
+[1:21:07] higher speed on the surface stand
+[1:21:09] underwater at this time period because
+[1:21:10] they will spend a lot more of their time
+[1:21:12] on waterer but they're supposed to fight
+[1:21:20] underwater s can if the London Naval
+[1:21:23] treaty had a separate treaty section for
+[1:21:25] Cruiser submarines a I would eat my hat
+[1:21:29] B I would eat adal Henderson's hat and
+[1:21:32] see you would see some of the most
+[1:21:34] interesting these are honestly Cruiser
+[1:21:36] submarines not just large Fleet
+[1:21:38] submarines or M laying submarines
+[1:21:41] produced by US Navy and the Royal Navy
+[1:21:44] because by that point the Royal Navy was
+[1:21:45] really not keen on the
+[1:21:51] concept
+[1:21:54] um that's go I thought the r use SP was
+[1:21:56] not in the pressure hle but in the
+[1:21:57] waterproof boxes in the back of turret
+[1:21:59] so not possible to reload the radi use
+[1:22:02] submerged you could well be right but I
+[1:22:04] have read some conflicting things on
+[1:22:06] that
+[1:22:07] one I think you are right in theory in
+[1:22:11] practice I
+[1:22:14] have read something about them trying to
+[1:22:17] trying to reload stuff but again that
+[1:22:20] could be that could be I could be mixing
+[1:22:23] up my CW my um Cruiser submarines
+[1:22:26] honestly I have to admit I didn't
+[1:22:28] actually do a specific research on Soo
+[1:22:30] for this video just uh I'm going from
+[1:22:33] memory and I'm going from the fact that
+[1:22:35] Cruiser submarines as a whole cuz that's
+[1:22:38] is representing the entire concept there
+[1:22:41] are British Cruiser submarines honestly
+[1:22:43] the x-class are just even more
+[1:22:48] obscene the x-class looked like some of
+[1:22:51] the and this is going to be me being
+[1:22:52] being very very kind about something the
+[1:22:55] X glass remind me of some of the Soviet
+[1:22:57] motor some of the Soviet um gunboats
+[1:23:00] they really do look like a Soviet
+[1:23:01] gunboat has been attached onto a
+[1:23:03] submarine hle in some of the
+[1:23:08] cases bullets are always cheaper
+[1:23:11] Stafford the trouble is bullets aren't
+[1:23:13] always the appropriate weapon and in
+[1:23:15] this case they're not the appropriate
+[1:23:16] Weapon by any stretch of the
+[1:23:21] imagination
+[1:23:23] M so Cru Subs are possible whated for
+[1:23:25] the writing competition technically they
+[1:23:29] are they
+[1:23:35] are the unbuilt
+[1:23:45] ones and cir was supposed to be a plan a
+[1:23:48] class of three so there are two of
+[1:23:51] those
+[1:24:04] does anyone know why you get so much
+[1:24:06] spam these days
+[1:24:07] suggesting um that you if that you need
+[1:24:12] you want a prize because it seems to me
+[1:24:15] like people think that you do nothing
+[1:24:16] but spend your day entering
+[1:24:18] competitions you've won a
+[1:24:21] prize
+[1:24:32] what else we can add oh yes honestly the
+[1:24:35] whole idea of Cruiser
+[1:24:40] submarines it's supposed to solve a
+[1:24:42] problem which doesn't really exist and
+[1:24:45] that's his main thing it's kind of like
+[1:24:47] is and Huger you're asking the
+[1:24:50] question if this is the answer to
+[1:24:52] question are you asking the right
+[1:24:58] question now if you consider the money
+[1:25:00] this cost would the French have been
+[1:25:02] sensible under the Washington treaty
+[1:25:03] which remember doesn't limit their the
+[1:25:05] amount of Cruisers they can build would
+[1:25:06] they more sensible building a cruiser
+[1:25:07] and building a submarine
+[1:25:21] probably
+[1:25:26] Brook what they intended to go after on
+[1:25:27] squarter ships well that was also the
+[1:25:29] fury to go off unquoted ships but again
+[1:25:31] here's a small problem how's it going to
+[1:25:33] find the unced
+[1:25:36] ships let's think about that vers of
+[1:25:39] surface Raider surface Rader can launch
+[1:25:40] and recover its aircraft quite easily
+[1:25:42] this thing launches its aircraft it does
+[1:25:44] have to stand on the surface for its
+[1:25:45] aircraft to find and come
+[1:25:47] back cuz how does an aircraft find its
+[1:25:50] submarine find its submarine or it has
+[1:25:53] to say very close to the surface with a
+[1:25:55] radio signal Beacon going up beeping to
+[1:25:59] tell the aircraft where it
+[1:26:03] is or alternatively it gives its
+[1:26:05] position and tells the aircraft it's
+[1:26:07] going to stay there so it has to stay
+[1:26:08] there which is fun and then when it
+[1:26:11] Services it finds it's not actually
+[1:26:12] stayed there because of currents this is
+[1:26:15] this is all sorts of
+[1:26:17] issues for launching and recovering
+[1:26:21] aircraft and that's before we again on
+[1:26:22] the fact the whole launching process you
+[1:26:24] get the aircraft out you have to
+[1:26:26] assemble the
+[1:26:28] aircraft cuz whil it comes in large
+[1:26:31] pieces it is some assembly required to
+[1:26:33] launch and launch the aircraft and then
+[1:26:37] you have to do the reverse when it comes
+[1:26:38] back and going back reverse takes even
+[1:26:40] more
+[1:26:42] time so what's up of thing does it
+[1:26:44] cruise around on the surface trying to
+[1:26:45] track down chips on its own the trouble
+[1:26:47] is it can do 18 and 1/2 knots yes but
+[1:26:50] it's not going to do 18 and 1/2 knots
+[1:26:51] constantly
+[1:26:53] it's going to spend most of its time
+[1:26:55] doing a cruising speed of probably 10
+[1:26:59] knots maybe 13 and a half
+[1:27:02] knots either way if ships traveling
+[1:27:05] independently they might be able to go
+[1:27:06] fasten it or alternatively they might be
+[1:27:09] able to set off a message before it can
+[1:27:11] get close enough to tell everyone it's
+[1:27:13] there and if it gets caught on the
+[1:27:15] surface by air enemy aircraft or enemy
+[1:27:18] ships it's
+[1:27:20] gone it's basically case of is this is
+[1:27:23] the answer to your question are you
+[1:27:24] asking the right
+[1:27:26] question you should always ask yourself
+[1:27:29] when making decision of procurement is
+[1:27:31] is this the right answer is this the
+[1:27:33] right question it's like I thanks
+[1:27:36] to Jack cray actually gave me um gave me
+[1:27:42] these have some very
+[1:27:45] nice
+[1:27:47] headphones and that was the whole sort
+[1:27:50] of discussion with Jack cuz we were
+[1:27:53] talking about them and I I needed to get
+[1:27:55] some head some headphones but I usually
+[1:27:58] wear headphones when I go to the gym I
+[1:27:59] wouldn't take these to the gym these are
+[1:28:01] very nice headphones which are very nice
+[1:28:03] when I go traveling on planes and they
+[1:28:05] will get do full noise cancellation the
+[1:28:07] thing is I don't want noise cancellation
+[1:28:09] in the gym because if you're like me and
+[1:28:11] you go to a gym where there are people
+[1:28:13] other people in the gym you want to be
+[1:28:15] able to hear you want enough music to
+[1:28:17] drown out the sound of the gym music and
+[1:28:20] most of the people but you still want to
+[1:28:22] be able to hear in case someone starts
+[1:28:24] dropping their weights around nearby so
+[1:28:26] you can get out the Fring way before you
+[1:28:28] get crushed by
+[1:28:30] them I'm not saying that some of su
+[1:28:33] people who go to my gym are not quite do
+[1:28:36] not quite have the same level of Common
+[1:28:38] Sense they have shoe size but I am
+[1:28:42] saying that people in in excise s
+[1:28:46] situations often overestimate their own
+[1:28:48] ability to be
+[1:28:51] strong classic example this
+[1:28:53] is you'll have those people who will
+[1:28:56] lift things and make a massive noise and
+[1:28:59] then drop the
+[1:29:00] weights and go oh look at me I I just
+[1:29:03] lifted up th those weights no if you're
+[1:29:06] actually capable and strong you can put
+[1:29:09] the weights down just lifting up the
+[1:29:11] weights that's great you lift them you
+[1:29:13] don't have the real strength you should
+[1:29:15] actually probably practice on a lower
+[1:29:16] weight until you've got enough control
+[1:29:18] that you can actually lift and control
+[1:29:20] the weights and bring them
+[1:29:23] that because it's quite dangerous to
+[1:29:26] other people in the gym if you drop your
+[1:29:28] weights because half the time the people
+[1:29:31] who do it haven't put on and this
+[1:29:33] happened to me on I think it was Tuesday
+[1:29:35] this week I was watching some some was
+[1:29:38] not far from me I was just doing my ex
+[1:29:41] on the leg press giving that a best go
+[1:29:44] testing out whe I can still do it and
+[1:29:47] they hadn't put the clips on right on
+[1:29:49] the poll because they didn't think they
+[1:29:51] needed the clips on on the pole and so
+[1:29:54] their attempt to
+[1:29:56] lift 200 kg which they were going to
+[1:29:59] bench
+[1:30:01] went all over the
+[1:30:04] place happily the gym guy got them out
+[1:30:06] but let's B on on
+[1:30:09] side it just it's good to be able to
+[1:30:11] hear so that's the
+[1:30:14] thing these are wonderful headphones but
+[1:30:16] they're not the answer to my question
+[1:30:17] for I need new headphones for the gym
+[1:30:20] because the other the old pair I have I
+[1:30:22] sweated through so much they've
+[1:30:25] disintegrated um and it's the same with
+[1:30:28] Cruisers Cruis summering Cruisers they
+[1:30:31] are if they the answer the question are
+[1:30:32] you asking the right
+[1:30:50] question
+[1:31:07] are we allowed to submit more than one
+[1:31:09] story for the competition I don't think
+[1:31:10] I put a requirements that you could only
+[1:31:12] submit once so there is no CH no reason
+[1:31:15] you
+[1:31:16] can't but I would also say that as
+[1:31:19] quality is going to be a hefty part of
+[1:31:21] marking and the sort of the uh judging
+[1:31:25] is going to be based on quality not
+[1:31:27] quantity um be very careful about
+[1:31:29] putting in more multiple stories if you
+[1:31:32] can't can't actually deliver on the
+[1:31:36] quality you know if you can do very one
+[1:31:39] one very well there probably a better
+[1:31:41] chance if you do the one very well than
+[1:31:43] if you do two okay or three
+[1:31:50] poly M I think you would still oh I'd
+[1:31:53] still hear the weights hitting the floor
+[1:31:54] but this way if I'm using these the
+[1:31:57] point is if I'm using these I won't hear
+[1:31:59] the O and the noise first I don't wait
+[1:32:03] for the weights hitting the floor to be
+[1:32:05] moving I hear the O and noise and I am
+[1:32:09] if I'm anywhere near where I think that
+[1:32:11] noise is because I've I tend to keep
+[1:32:14] awareness and look around I'm moving in
+[1:32:16] the direction away from them so that's
+[1:32:18] the thing it's not that this would
+[1:32:20] cancel out the noise of the wait I want
+[1:32:22] to be able to hear
+[1:32:26] [Music]
+[1:32:28] the uh we don't mind if it's English or
+[1:32:37] American oh yeah but there's a reason
+[1:32:40] please note there's a reason I prefer
+[1:32:41] the headphones and I will say this again
+[1:32:44] this is some people like having those
+[1:32:46] buds stuck in their ears I
+[1:32:50] don't
+[1:32:54] mainly because it feels like you know
+[1:32:55] whenever I the amount of my use was feel
+[1:32:57] like someone sticking a finger in my ear
+[1:32:59] the whole
+[1:33:06] time these are actually pretty good at
+[1:33:08] canceling out human
+[1:33:13] voices the Sonny ones are good at
+[1:33:20] it
+[1:33:23] uh quite possibly but you know it's been
+[1:33:25] several things where I tried mly so then
+[1:33:28] we've got circular
+[1:33:31] ships okay so let me put this to one
+[1:33:34] thing
+[1:33:36] circular battleships
+[1:33:39] no D Squad Can I submit the story in
+[1:33:41] language of English
+[1:33:43] nope and I don't mean that in a cruel
+[1:33:46] way it's just all the people marking it
+[1:33:48] can read
+[1:33:49] English and the variations of
+[1:33:52] English but our linguistic capabilities
+[1:33:55] are not great so that would mean we'd be
+[1:33:57] dependent on Google Translate to
+[1:33:58] translate it for us and that's not
+[1:34:01] always that
+[1:34:11] good now but for Harbor River defense
+[1:34:15] they are fairly good and in fact another
+[1:34:18] is for this is a sort of this is a sort
+[1:34:22] of gunboat
+[1:34:26] really and it's a really useful system
+[1:34:29] for that but the same things that make
+[1:34:30] it
+[1:34:31] good and let's be honest the things that
+[1:34:33] make it good are it shallow
+[1:34:46] draft and its abilities to be able to be
+[1:34:50] used
+[1:34:52] in the water the confined areas of the
+[1:34:55] Baltic and the Black
+[1:34:57] Sea
+[1:35:01] well that make it useful but those
+[1:35:05] similar things mean that other than
+[1:35:07] being coastal defense and
+[1:35:13] riverine you don't want to be using
+[1:35:19] her she will was started out being
+[1:35:23] classified as a
+[1:35:26] battleship they literally tried to call
+[1:35:28] them battleships later on they called
+[1:35:30] them a coastal defense Battleship and
+[1:35:32] that pretty much fits with her
+[1:35:37] qualities she had a crew of 150 officers
+[1:35:41] and crew carried two 11in guns turned
+[1:35:46] the ship as a way of really aiming those
+[1:35:48] guns and that's it
+[1:35:52] it that's her
+[1:35:55] Armament now this is really where her
+[1:35:58] problems
+[1:36:01] begin I would argue because she has wood
+[1:36:06] and copper sheing to reduce
+[1:36:08] biofouling um this increased her
+[1:36:11] diameter to 30.8 M or 101
+[1:36:14] ft her maximum draft was 13t 6
+[1:36:19] in and she displaced 2531
+[1:36:24] tons but our freeboard is only 18
+[1:36:29] in the deck curves up to the barbette in
+[1:36:33] the center and as you can see by it
+[1:36:35] curving up in this way actually gives it
+[1:36:39] another bit of a rise but also actually
+[1:36:41] manages to make it kind of like a seash
+[1:36:44] Shaw for waves coming in in fact
+[1:36:47] regularly that's uh 18 in free board
+[1:36:52] was dramatically lower than that if she
+[1:36:55] tried
+[1:36:56] anything deeper to go
+[1:37:00] to and again I'm going to expand this so
+[1:37:03] you can all get a nice good
+[1:37:12] look yeah I I realized Carl you might
+[1:37:15] have read somewhere that bigger made
+[1:37:16] them better but
+[1:37:19] um not really
+[1:37:22] she was a 6 and a half knot vessel with
+[1:37:25] six shafts and six compound expansion
+[1:37:27] steam
+[1:37:28] engines to drive those six shafts she
+[1:37:32] had eight boilers to power those six
+[1:37:36] engines and I said she's capable of 6
+[1:37:39] and a half
+[1:37:41] knots there is a big problem with their
+[1:37:45] design D and it's one of the reasons why
+[1:37:47] we use circular ships today and we can
+[1:37:50] use circular chips today because of the
+[1:37:51] various advances in propulsion
+[1:37:53] especially asouth work that we
+[1:37:57] have but one of the big problems for her
+[1:38:01] with this
+[1:38:03] is the way the water flows around the
+[1:38:06] circular
+[1:38:09] object if you're considering how water
+[1:38:13] flows
+[1:38:14] around a ship it's sort of the ship cuts
+[1:38:18] through the water and the water goes
+[1:38:20] like that
+[1:38:23] well when you're dealing with a circular
+[1:38:25] object a you're going to have almost
+[1:38:29] it's kind of like it's pushing back at a
+[1:38:30] flat wall at the beginning but it also
+[1:38:33] tends to Ruck around the sides it's okay
+[1:38:36] it's it's not cutting through the water
+[1:38:38] so much as trying to push through the
+[1:38:41] water or barge through the
+[1:38:43] water that's one of the reasons that
+[1:38:45] gives it interesting and gives it very
+[1:38:47] interesting handling
+[1:38:50] characteristics
+[1:39:02] now I would
+[1:39:08] add that the idea of them being
+[1:39:11] completely
+[1:39:14] uncontrollable is again dependent upon
+[1:39:16] the waters you're in because if you
+[1:39:18] consider Fred Jan's quote on a trial
+[1:39:20] Cruise the nogrod and the vit anal Popov
+[1:39:24] another vessel built to a similar
+[1:39:27] design went up the D River very nicely
+[1:39:30] for some
+[1:39:32] distance then they turn to retire it's
+[1:39:35] dur when they're retiring down the river
+[1:39:37] the current captures them and they're
+[1:39:39] carried out to
+[1:39:42] sea where they were
+[1:39:45] basically worlded around because of the
+[1:39:48] pressure on them and the way the
+[1:39:51] circular effects of the water once see
+[1:39:53] the trouble is the because the water's
+[1:39:55] pressing on all sides and she's not got
+[1:39:57] she got a flat side she's not got a flat
+[1:39:58] side she's got to completely
+[1:40:00] cirde a it's difficult pushing up to get
+[1:40:03] high speed and then if you get caught by
+[1:40:05] the Curr one you can literally get the
+[1:40:07] currs caten and it can wit you round it
+[1:40:10] requires a lot of experience to get the
+[1:40:12] best out of these ships and that's one
+[1:40:13] of reasons why why a lot of the quotes
+[1:40:16] which are critical of them come from
+[1:40:17] earlier in their
+[1:40:19] careers
+[1:40:23] these
+[1:40:24] vessels have a nice idea they're an odd
+[1:40:28] idea and the reason they don't really
+[1:40:31] work is because to make them work you
+[1:40:34] probably need Asma frosters rather than
+[1:40:36] a r you probably need about six I would
+[1:40:40] guess that you could control the pitch
+[1:40:43] and elevation of and the focus of the
+[1:40:45] frost and then they would be incredibly
+[1:40:48] useful but they still wouldn't be high
+[1:40:50] speeded assets
+[1:40:53] they were compound engines
+[1:41:03] Melanie there were
+[1:41:05] multiple
+[1:41:19] um
+[1:41:26] and honestly they were designed to
+[1:41:27] defend eseries and Straits and for that
+[1:41:30] they're fine it's Open Seas where you've
+[1:41:32] got currents and waves and wind coming
+[1:41:34] from all sorts of different
+[1:41:37] oceans and that's the big
+[1:41:49] problem going from floating Fortress I
+[1:41:51] guess potentially potentially but again
+[1:41:54] you know as you can see this model is
+[1:41:56] quite cool and you can find this model
+[1:41:59] let's check in the um International
+[1:42:03] Maritime Museum in
+[1:42:11] Hamburg I would say the another reason I
+[1:42:14] would argue they're not as bad as they
+[1:42:16] might be M maintained is that even the
+[1:42:18] Russians wouldn't have kept them in Act
+[1:42:21] commission for 30 years if they've been
+[1:42:24] as bad as they were maintain as they
+[1:42:25] maintained to
+[1:42:27] be even the Russians wouldn't have done
+[1:42:29] that especially on that period the
+[1:42:31] Imperial Navy is far happier to get rid
+[1:42:33] of junk than the uh latest Soviet
+[1:42:42] navy finally R we now have the gorillo
+[1:42:46] class tracked to motor torpedo boat
+[1:42:49] torpedo motor Boo and and honestly it's
+[1:42:52] kind of like the
+[1:42:54] lvt someone took the landing vehicle
+[1:42:56] tracked and went I want you to be a
+[1:42:58] torpedo
+[1:43:00] boat that would have been an interesting
+[1:43:02] concept but pretty much the idea was
+[1:43:05] that to get into several parts of very
+[1:43:08] interesting Austrian bases and to attack
+[1:43:11] their ships with
+[1:43:13] Torpedoes you needed to get over sand
+[1:43:16] banks especially at low tide toble to
+[1:43:19] attack them and give
+[1:43:21] surprise and so tracked motor torpedo
+[1:43:23] boats make sense they're weird cuz they
+[1:43:26] do look a bit like an lvt Landing
+[1:43:29] vehicle
+[1:43:30] tracked but at the same time they make
+[1:43:41] sense usually M when I'm referring to a
+[1:43:44] compound engine when I'm talking about
+[1:43:46] something as having a compound engine
+[1:43:49] I'm talking about
+[1:43:52] the predecessor to the double
+[1:44:08] expansions so usually I'm compound is
+[1:44:13] usually is more than one stage yes but
+[1:44:16] there is a very basic level of double
+[1:44:18] two of um two stage
+[1:44:22] before you get to what we would consider
+[1:44:24] a proper double expansion engine or
+[1:44:26] proper compound engine and that is
+[1:44:28] usually what I will call a compound
+[1:44:30] otherwise I will call it a double or a
+[1:44:36] triple but there are ones which are
+[1:44:38] let's put this way there are ones which
+[1:44:40] are true St two stage compound engines
+[1:44:43] and there are others which are kind of
+[1:44:45] like the four stage compound engines
+[1:44:47] which are basically almost three and a
+[1:44:49] half rather than four there are some
+[1:44:51] which are one and a half so they are not
+[1:44:54] a d they're not a true
+[1:45:02] double and that means they're not as
+[1:45:04] efficient a compound engine is usually
+[1:45:07] operates more efficiently than a single
+[1:45:09] expansion engine um these ones were not
+[1:45:12] that
+[1:45:19] great and
+[1:45:21] they are
+[1:45:23] horizontal compound expansion steam
+[1:45:26] engines rather than vertical expansion
+[1:45:28] steam engines and they're built by B
+[1:45:31] Works in
+[1:45:33] Scotland so when I'm so what I'm
+[1:45:37] explaining saying they're not that great
+[1:45:39] yeah they're not that great there are
+[1:45:42] there are better ones built by British
+[1:45:44] yards than
+[1:45:49] that and um yeah he he basically bed
+[1:45:53] works is set up by a Scottish engineer
+[1:45:57] in St pet is it it's sent in St
+[1:46:01] Petersburg yes so they bu sort of it's a
+[1:46:04] British Scotti Scottish engineer who
+[1:46:06] works out of St Petersburg and builds
+[1:46:12] them except the Gill made awful lot of
+[1:46:15] noise while trying to get over torpedo
+[1:46:16] net booms and while some of the port
+[1:46:17] crew ran in Terror they're enough to man
+[1:46:20] a few uh man a few guns well yes they
+[1:46:23] did make an awful lot of noise but as an
+[1:46:25] idea it's still an
+[1:46:30] idea saying they would have be more
+[1:46:32] useful tracks are on the chains that
+[1:46:34] could certainly have made things more
+[1:46:36] interesting but they had chains for a
+[1:46:39] reason it was felt the chains would work
+[1:46:42] and they did do some testing and it did
+[1:46:44] work it's just they were
+[1:46:49] noisy
+[1:46:56] and you know it could have been
+[1:46:58] worse it could be a lot worse with them
+[1:47:01] they they have a interesting how do I
+[1:47:04] put this um
+[1:47:07] shaping but still broadly speaking I
+[1:47:10] will give them a lot of benefit of that
+[1:47:12] for basically for what to getting being
+[1:47:15] what they are as early as they
+[1:47:19] are
+[1:47:27] that's the Joy about
+[1:47:49] them
+[1:48:00] and now we have the docwise Vanguard now
+[1:48:03] why have I picked the docwise Vanguard
+[1:48:05] because honestly I couldn't have think
+[1:48:06] of a better example of a lifting ship a
+[1:48:09] heavy lift ship than a docwise Vanguard
+[1:48:12] which is
+[1:48:13] [Music]
+[1:48:16] literally oh good lord how can you
+[1:48:18] describe her as anything she's
+[1:48:23] just she is just
+[1:48:27] cool but the amount of stuff you can
+[1:48:29] lift and move with
+[1:48:32] them these I swear should be considered
+[1:48:35] strategic assets by governments I I get
+[1:48:38] into a lot of trouble when I start
+[1:48:40] saying that
+[1:48:49] um
+[1:48:51] she's a semi submersible heavy lift ship
+[1:48:54] and
+[1:48:56] frankly they're all
+[1:49:02] special they're all all special the
+[1:49:06] Vanguard is the largest of her type ever
+[1:49:11] built and can carry 110,000
+[1:49:16] tons so
+[1:49:19] theoretically
+[1:49:27] if you have having trouble with let's
+[1:49:29] say your four class aircraft carrier and
+[1:49:32] you needed to get it moved home she
+[1:49:35] could come and give you a
+[1:49:37] lift
+[1:49:41] now I do
+[1:49:44] admit that you're 333 M long in your
+[1:49:47] forast class and she
+[1:49:52] is only
+[1:49:55] 275 met long but I think she could still
+[1:49:59] fit you I think she
+[1:50:02] could I think she could manage it would
+[1:50:04] be an interesting it would certainly be
+[1:50:06] interesting to see I would love to see
+[1:50:08] her pick up a Ford
+[1:50:09] class but again if you have trouble with
+[1:50:12] any of your aircraft carriers it ships
+[1:50:14] like this which are coming to get you
+[1:50:16] and this is the reason why I consider
+[1:50:18] them strategic assets because I would
+[1:50:19] say if if I was a nation which operated
+[1:50:22] aircraft carriers I would make sure that
+[1:50:26] I had a controlling interest in a
+[1:50:29] company which was a nationally
+[1:50:31] registered company that owned ones big
+[1:50:33] enough to move my aircraft
+[1:50:37] carriers do I have a pick of her without
+[1:50:41] cargo yes I do have a pick of her
+[1:50:43] without
+[1:50:44] cargo I have to admit it's her Wiki
+[1:50:47] pick but as you all know and as I've
+[1:50:49] said admitted many times before I
+[1:50:51] shamelessly use Wikipedia for the
+[1:50:53] pictures because my viewers if it's on
+[1:50:55] Wikipedia I'm probably allowed to use
+[1:51:03] it and people aren't going to get too
+[1:51:05] annoyed me for using
+[1:51:12] it that's a bit
+[1:51:14] big oh God that's still too
+[1:51:18] big
+[1:51:21] starting to get better in
+[1:51:25] size getting a lot better in
+[1:51:27] [Music]
+[1:51:29] size there we
+[1:51:34] go without
+[1:51:48] cargo
+[1:51:57] now the whole point is she literally
+[1:52:00] sinks herself to float things onto her
+[1:52:04] then picks them up and takes them
+[1:52:07] home when her ballast tanks are flooded
+[1:52:10] her deck lies roughly 60 M below the
+[1:52:16] surface
+[1:52:18] again if consider the Ford class their
+[1:52:21] draft is 12 M so you can float them one
+[1:52:23] of them
+[1:52:30] on her Bess tanks and empty and allow
+[1:52:32] her to demp and allow to lift transort
+[1:52:34] caros of up to 110,000 tons that's 50%
+[1:52:39] more than the
+[1:52:41] previous uh well no the than the blue
+[1:52:43] marlin which was the third largest heavy
+[1:52:45] ship which is another vessel that's
+[1:52:48] worthwhile um thinking about because if
+[1:52:51] you've seen pictures of the USS Cole
+[1:52:54] coming home after she got
+[1:52:57] damaged she was being carried by the
+[1:53:00] blue
+[1:53:05] Marin most of these
+[1:53:08] ships are operated by dockwise shipping
+[1:53:12] of
+[1:53:13] nevland so most of them are operated by
+[1:53:15] the
+[1:53:18] Dutch
+[1:53:23] theoretically and they have a very
+[1:53:25] interesting
+[1:53:26] Fleet um they have doc Vanguard um doc
+[1:53:33] white Marlin which I think is a sister
+[1:53:35] of her don't not sure if that's in the
+[1:53:37] service
+[1:53:38] yet uh the blue Marlins the black marlin
+[1:53:41] the mighty
+[1:53:43] servants all of those big
+[1:53:46] ships are and again if you SE and the
+[1:53:50] mighty servants are the US you've seen
+[1:53:52] when they've been bringing various frigs
+[1:53:55] home from around the
+[1:53:56] world these ships are colossal they're
+[1:54:00] heavy lift ships and they are really
+[1:54:02] really
+[1:54:04] special there aren't that many of them
+[1:54:06] in the world
+[1:54:09] though and the fact that most of them
+[1:54:11] are owned
+[1:54:14] by one
+[1:54:16] company is pretty worrying I would say
+[1:54:21] it may it sort of kind of makes the
+[1:54:24] Netherlands have an a value
+[1:54:26] outside of what their National value is
+[1:54:30] because having access to these assets is
+[1:54:33] critical for the maintenance of Fleet
+[1:54:36] and being able to repair ships which are
+[1:54:38] severely
+[1:54:48] damaged
+[1:55:05] all right so the tire structures keep it
+[1:55:06] sa and flight it done to an extent
+[1:55:14] yes
+[1:55:16] um yeah
+[1:55:18] docwise
+[1:55:24] they are a subsidiary of BOS galus but
+[1:55:26] they're still um how do I put this they
+[1:55:28] are they're no longer but yeah BOS
+[1:55:30] gallis
+[1:55:33] is another Dutch
+[1:55:36] firm and
+[1:55:38] [Music]
+[1:55:41] basically I let me put this way the
+[1:55:44] reason I keep talking about docwise is
+[1:55:45] docwise is the specialty arm of them and
+[1:55:47] they b as I understand it and as I've
+[1:55:50] seen they emerged into it but they are
+[1:55:53] still Runners basically the Bosca
+[1:55:55] section runs the dredging and the other
+[1:55:58] things and this is their own sort of
+[1:56:12] division but I will admit I'm more
+[1:56:14] interested in the ships than I'm
+[1:56:15] interested in the company on
+[1:56:18] 92
+[1:56:32] Dra she's basically a well a wless
+[1:56:34] self-propelled dry do seriously
+[1:56:36] surprised they're not they will not
+[1:56:37] develop
+[1:56:41] sooner well have you ever seen a LIF
+[1:56:44] ship carrying an or
+[1:56:48] EG they are just they are really cool
+[1:56:51] assets they are oddl looking let's be
+[1:56:53] honest no look at that go that looks
+[1:56:55] like a normal regular ship you just
+[1:57:00] wouldn't but you also look at and go
+[1:57:07] H that's pretty
+[1:57:10] cool that's pretty
+[1:57:18] cool
+[1:57:27] so seeing as I was basically going to
+[1:57:31] spend a lot a lot while arguing about
+[1:57:33] the cruiser submarines I felt it only
+[1:57:35] fair that I talked about the K Glass
+[1:57:38] submarines and the
+[1:57:41] whole interesting joy that is Baka
+[1:57:44] Vanguard since
+[1:57:45] 2018 oh they've renamed
+[1:57:48] her oh
+[1:58:08] yeah they
+[1:58:18] have
+[1:58:24] so get rid of that K class Su
+[1:58:30] Marines now the thing is these are I've
+[1:58:34] done a video about them they are
+[1:58:35] accident prone they are terribly unlucky
+[1:58:38] they are a terribly bad
+[1:58:41] design but even for a submarine they're
+[1:58:43] oddl looking even for a submarine of
+[1:58:46] period they are oddl looking do they
+[1:58:49] will work well not as they're sort of
+[1:58:51] intended to be as Cruiser submarines to
+[1:58:54] you know as fast submarines Fleet
+[1:58:56] submarines that can keep up with the
+[1:58:57] fleet and then be useful for them when
+[1:59:00] they're when they're sort of as used as
+[1:59:02] submarines and operations close with the
+[1:59:04] fleet but as terms of long range
+[1:59:06] submarines they're actually quite
+[1:59:18] good
+[1:59:19] and yeah I have to admit it is tempting
+[1:59:22] to leave this here but honestly you
+[1:59:23] don't need
+[1:59:25] this this vessel to get that
+[1:59:28] home um I think the entire K class could
+[1:59:32] be fitted on one let me just check
+[1:59:37] that why is it every time I do a search
+[1:59:40] for k on my computer the first thing to
+[1:59:41] come cuz Nets off no I'm not looking
+[1:59:46] that let's see um
+[1:59:52] roughly 1,800 tons
+[1:59:54] then
+[1:59:57] uh they built
+[2:00:01] 17 yeah you could fit the entire class
+[2:00:03] aboard this and still have a huge amount
+[2:00:07] of tonage left I mean honestly this
+[2:00:09] thing could carry the entire class
+[2:00:12] without even worrying about it in fact I
+[2:00:15] think the entire class could probably
+[2:00:16] carry on be carried on them and could
+[2:00:19] submerge from them they wouldn't even
+[2:00:21] have to go through the problem of
+[2:00:22] submerging themselves you just dock it
+[2:00:25] down and they'd actually be
+[2:00:34] underwater no that still doesn't make
+[2:00:36] the K class work but it's an
+[2:00:40] idea take care s good
+[2:00:45] luck so the idea starts in
+[2:00:50] 1913 the idea was to have it able to
+[2:00:53] operate the service Fleet and able to
+[2:00:54] sweep ahead of it and you know carry out
+[2:00:58] all those roles basically the idea was
+[2:01:01] that in a battle of Jin scenario these
+[2:01:03] ship these Subs would be with the with
+[2:01:05] the ground Fleet they'd see the enemy
+[2:01:09] and they'd swoop they be charging at
+[2:01:13] them then they dive underwater and
+[2:01:15] underwater they converge on the enemy
+[2:01:17] Fleet and fire their torpedo
+[2:01:19] and sink them and it would stop them
+[2:01:22] getting close to the the grand Fleet and
+[2:01:24] it would allow the grand Fleet to Pummel
+[2:01:25] them at range and it's all a wonderful
+[2:01:27] idea the trouble is
+[2:01:32] um how do I put
+[2:01:36] this they have
+[2:01:38] issues they try things out with HMS
+[2:01:41] Nautilus and HMS
+[2:01:44] swordfish um which are some very
+[2:01:46] interesting experimental submarines
+[2:01:49] if you've ever looked up HMS Nautilus
+[2:01:52] from
+[2:01:53] 1914 you will find a very very
+[2:01:56] interesting submarine that was ordered
+[2:01:58] from
+[2:02:01] vickas and if you look up hmus swordfish
+[2:02:05] from
+[2:02:07] 1916
+[2:02:09] well how do I put this politely about
+[2:02:12] hmus
+[2:02:14] swordfish she is a very unique boat
+[2:02:21] and I do realize that you can either be
+[2:02:23] unique or not unique you can't be very
+[2:02:26] unique but there is a whole phraseology
+[2:02:29] in British when we use the phrase very
+[2:02:31] before something which you cannot
+[2:02:33] actually be that comes a whole Lo de
+[2:02:36] meeing and I'm fairly sure most people
+[2:02:39] can work out what it is once they start
+[2:02:41] reading up her history and her
+[2:02:44] service the swordfish
+[2:02:47] was a very unique
+[2:02:53] vessel the RN had decided that they were
+[2:02:56] going to actually test those two vessels
+[2:03:02] thoroughly thoroughly before they went
+[2:03:04] ahead with
+[2:03:05] them and honestly the test in the
+[2:03:08] Nautilus went so well they ordered the
+[2:03:10] jclass which failed to meet expectations
+[2:03:13] in any way shape or
+[2:03:17] form
+[2:03:20] and therefore they decided to go with
+[2:03:22] the K class which were an improvement
+[2:03:26] over the swordfish in
+[2:03:29] theory in
+[2:03:33] theory in
+[2:03:38] practice
+[2:03:40] look the idea is simple and you could
+[2:03:43] argue that nuclear powered vessels which
+[2:03:46] are basically steam to do basically use
+[2:03:49] steam turbines um have actually solved
+[2:03:53] the problems but steam turbines as they
+[2:03:56] were available in the
+[2:04:00] 1910s not really the sort of things you
+[2:04:02] want to put on submarines because if you
+[2:04:04] think about it think of all the problems
+[2:04:06] that we were talking about earlier with
+[2:04:07] the
+[2:04:08] guns on the cir off and other crewser
+[2:04:13] summaries and how they was so long to
+[2:04:15] get ready to actually fight with
+[2:04:17] them and they didn't those guns and
+[2:04:21] systems didn't usually directly
+[2:04:23] penetrate the pressure
+[2:04:25] Hull as much as possible was outside the
+[2:04:28] pressure
+[2:04:30] hole as much as
+[2:04:39] possible
+[2:04:45] now I think I did say that earlier on
+[2:04:47] that one
+[2:04:49] the
+[2:04:51] the the joy with a steam
+[2:04:54] engine is by it's very n
+[2:04:58] definition it's generating
+[2:05:01] steam how does it generate steam well it
+[2:05:05] does it by burning fossil fuels in this
+[2:05:08] case oil and if it's burning oil what
+[2:05:11] does it need to burn for oil it need for
+[2:05:14] something to burn it needs oxygen and
+[2:05:16] where does it get oxygen from from the
+[2:05:18] yeah and how does it get that air well
+[2:05:20] it has
+[2:05:23] funnels which let out smoke and light in
+[2:05:27] air this is not
+[2:05:31] good not
+[2:05:34] good for a ship for a
+[2:05:37] submarine because that means you have to
+[2:05:40] have something which you have to try and
+[2:05:41] block up which goes
+[2:05:45] directly directly from the outside to
+[2:05:48] the in a most of the
+[2:05:55] inside and yes they can maintain a
+[2:05:59] surface speed of 24 knots on the surface
+[2:06:01] which means they are three knots faster
+[2:06:03] than H astronaut which was a critical
+[2:06:05] criteria for being able to maintain C
+[2:06:07] capacity with the
+[2:06:12] fleet that that doesn't really
+[2:06:17] help
+[2:06:21] now instead of Building 21 boats they
+[2:06:24] actually built
+[2:06:25] 17 and
+[2:06:28] um they eventually decided to try and
+[2:06:31] order the mclass instead which lead to
+[2:06:34] the whole Cruiser submarine
+[2:06:36] debacle and let's be honest the mclass
+[2:06:38] submarines are sufficiently strange to
+[2:06:41] Warrant their own video at some point I
+[2:06:42] think I might have done one uh
+[2:06:46] but yes the mclass
+[2:06:49] are very very large
+[2:06:53] boats um and they are basically improved
+[2:06:56] K
+[2:06:58] class and uh in the case of the
+[2:07:02] mclass they were usually armed with a 12
+[2:07:08] in Mark 9 gun a single
+[2:07:17] one
+[2:07:21] the fact is that the K Class LED to so
+[2:07:23] much weirdness and you can honestly put
+[2:07:25] the whole
+[2:07:26] Cruiser submarine ideas really at their
+[2:07:29] fault cuz it's trying to fulfill some of
+[2:07:31] the similar
+[2:07:32] ideas the idea of being a long range
+[2:07:35] independent action
+[2:07:38] vessel the idea of being able to fulfill
+[2:07:40] the cruiser
+[2:07:44] role and the thing about a cruiser role
+[2:07:47] is honestly if you think about about
+[2:07:49] it a Cruiser's biggest asset in
+[2:07:54] deterrence in peace time and in terms of
+[2:07:57] its value as something you're going to
+[2:08:00] pay for in peace time is it visibility a
+[2:08:03] submarine its value lies in its
+[2:08:06] invisibility it ability to hide those
+[2:08:08] two things
+[2:08:09] are directly
+[2:08:15] opposed and the next in skagra now
+[2:08:20] again another civilian ship which I just
+[2:08:23] thought would be fun to have in
+[2:08:24] it I just thought an next and Scag will
+[2:08:27] be quite cool to have in here because
+[2:08:30] there are a few like this
+[2:08:33] around and again I'm going to say this
+[2:08:36] now if you if I get the company details
+[2:08:39] wrong I will apologize that I produce
+[2:08:41] notes on these things a long time ago
+[2:08:44] but more
+[2:08:47] importantly
+[2:08:49] I think nexans is still
+[2:08:52] around
+[2:08:53] [Music]
+[2:08:55] um I'm fairly sure to scagg the
+[2:08:58] around because but basically I'm going
+[2:09:02] from their system about
+[2:09:07] it now it's entirely designed with the
+[2:09:11] idea of installing or repairing high
+[2:09:14] voltage Cable Systems
+[2:09:17] underwater
+[2:09:20] that's
+[2:09:23] it she's entirely designed around that
+[2:09:26] around laying and supporting these
+[2:09:38] systems
+[2:09:42] now she has 60 cabins for 60 single
+[2:09:47] cabins for 60 crew
+[2:09:49] always nice to
+[2:09:55] have she can carry oh how much
+[2:10:03] cable 7,000 tons worth of
+[2:10:09] cable I think that's the correct one
+[2:10:11] from my
+[2:10:12] notes my notes are a photocopy of I have
+[2:10:16] to admit the scarx next and scar
+[2:10:18] own brochure on her because I was trying
+[2:10:21] to go well where's the stuff coming in
+[2:10:24] the details oh they have it
+[2:10:34] okay they have a 3x 15 M enclosed area a
+[2:10:38] purpose design for performance of high
+[2:10:40] voltage cable joining and jointing they
+[2:10:44] have all the equipment for required for
+[2:10:47] that they they have various A-frames and
+[2:10:50] as you can see various different cradles
+[2:10:52] and turntables this vessel is designed
+[2:10:55] for the whole purpose to try and do get
+[2:10:57] the maximum efficiency out of its laying
+[2:11:01] gain because when cables go down and
+[2:11:04] need to be repaired you want them
+[2:11:05] repaired quickly because every second
+[2:11:07] they out they're out it costs you
+[2:11:10] money when you want to lay new cables
+[2:11:12] again that's a very expensive project
+[2:11:14] you want it done as quickly as stably as
+[2:11:17] you physically can want it done so that
+[2:11:19] you don't have to worry about it and you
+[2:11:21] can just get on making
+[2:11:27] money but let's be honest she's a fairly
+[2:11:29] oddl looking
+[2:11:32] [ __ ] she's not
+[2:11:34] exactly um well she's more regular
+[2:11:37] shaped than some we've discussed today
+[2:11:41] but the OD the bumps and all the other
+[2:11:44] things she's G on her really do add
+[2:11:46] character to this design
+[2:11:49] really doad
+[2:12:02] character then we have the SMS seedler
+[2:12:05] now the interesting thing is usually
+[2:12:07] when I point out to students that this
+[2:12:09] picture is not from the 1800s it's not
+[2:12:13] from the 18 you know any period in
+[2:12:15] Napoleonic Wars this is World War I
+[2:12:20] this is I think it's a French
+[2:12:23] vessel let me just
+[2:12:32] check yes it's her capturing the French
+[2:12:34] bark the C Cambron off the Brazilian
+[2:12:38] Coast on the 20th of March
+[2:12:43] 1917 during her
+[2:12:46] operations she she managed to capture
+[2:12:50] 30,000 tons 16
+[2:12:56] ships a fair number of them were steam
+[2:13:01] ships the Gladius Royal the lond the
+[2:13:08] island both steam
+[2:13:15] ships barks and Schooners a lot a lot
+[2:13:18] but again she did
+[2:13:26] well now she of course comes to a pretty
+[2:13:29] bad
+[2:13:31] end in
+[2:13:34] that she gets caught in a tsunami
+[2:13:37] smashed on a
+[2:13:39] reef and then they burned her to hide
+[2:13:42] her a presence from Allied ships but the
+[2:13:44] thing
+[2:13:46] is she's gone
+[2:13:49] but she's one of the most successful
+[2:13:51] surface Raiders of World War I and she
+[2:13:54] has a top speed of n knots an auxiliary
+[2:13:57] diesel engine a one shaft auxiliary
+[2:14:00] diesel engine and her main power comes
+[2:14:02] from her free Mass on a full rig with
+[2:14:05] 2,600 square m of sail area she carried
+[2:14:09] two 4in guns 105 mm machine gun
+[2:14:12] millimeter guns and two machine
+[2:14:16] guns
+[2:14:32] CR
+[2:14:37] 64 top speed of nine knots when using
+[2:14:40] the
+[2:14:42] engine this is a vessel which is very
+[2:14:46] much you can argue and an
+[2:14:53] arism but it's to an extent expected to
+[2:14:55] be because if you look at the problem in
+[2:14:58] World War
+[2:14:59] I the Germans are dealing with the same
+[2:15:02] problem they've been dealing with from
+[2:15:04] the beginning of the war in that how do
+[2:15:06] you a break out of the North
+[2:15:10] Sea B how do you operate
+[2:15:14] vessels so far away from home you have
+[2:15:18] nothing to support
+[2:15:20] them and
+[2:15:23] see how do you supply those ships with
+[2:15:26] fuel let alone spare
+[2:15:29] parts well sailing ships have been
+[2:15:32] operating around the world for year
+[2:15:35] Centuries by this point without any
+[2:15:37] support from home so it's an obvious
+[2:15:39] solution to go for it's not something to
+[2:15:41] do in World War II but it's another
+[2:15:43] solution to go for in World War
+[2:15:46] I and it works
+[2:15:48] it really does mostly because who is
+[2:15:52] going to look for
+[2:15:55] that who's going to look for it and go
+[2:15:57] you know what I
+[2:15:59] reckon what they're wandering around in
+[2:16:02] I'm I'm sure what they're wandering
+[2:16:04] around
+[2:16:05] in is a sailing
+[2:16:10] ship I'm sure that's what they're
+[2:16:12] wondering around by way that's the
+[2:16:14] seedler that's the French
+[2:16:16] bar
+[2:16:23] it just makes sense you know you expect
+[2:16:25] in world one this is what you're going
+[2:16:26] to be looking out for you're going to be
+[2:16:27] looking out for a vessel wandering
+[2:16:30] around the world Jesus steel H free
+[2:16:33] mastered sailing
+[2:16:35] ship she's originally built in the
+[2:16:42] UK she's built by Robert Duncan and
+[2:16:44] Company in
+[2:16:46] Glasgow she operates from 1888 to 1908
+[2:16:51] under David Clark messes Gibson and
+[2:16:54] Clark and of Glasgow then 18 1908 to
+[2:16:59] 1909 she's part of the riverplate
+[2:17:01] shipping company based in
+[2:17:03] Montreal in 1999 to 1914 she's on the
+[2:17:07] ship pass of balma
+[2:17:09] company
+[2:17:11] um she's then the owned by the har
+[2:17:15] Harvey steamship company in New York
+[2:17:21] which he owns 1914 to 1915 and then the
+[2:17:25] Germans aquire in
+[2:17:43] 1915 it works well for them it's a
+[2:17:47] useful vessel but it's hardly what you
+[2:17:50] expect to see in world
+[2:17:53] one we start with a carrier we're
+[2:17:55] finishing with a carrier USS Wolverine
+[2:17:59] now the USS Wolverine is a paddle wield
+[2:18:06] carrier Yes you heard me right if you
+[2:18:10] haven't heard of her before and please
+[2:18:12] look her
+[2:18:14] up because she's kind of cool
+[2:18:21] she is a sidewheel steam
+[2:18:25] Cruiser which was converted originally
+[2:18:28] called the CNB which is converted into
+[2:18:31] the USS Wolverine to allow for land of
+[2:18:34] Flight Deck training for air crew on the
+[2:18:37] great
+[2:18:39] lakes and she literally spends her day
+[2:18:41] sailing up and
+[2:18:44] down sailing up and down providing
+[2:18:46] Flight Deck training
+[2:18:49] is sure is she not an aircraft carrier
+[2:18:51] no she's not going into a war zone but
+[2:18:52] let's be
+[2:18:54] honest she was used to train roughly
+[2:18:57] 177,000 Pilots Landing signal officers
+[2:19:00] and other Naval personnel with what can
+[2:19:03] only be described as minimal losses for
+[2:19:06] wartime conscript
+[2:19:09] training she's Fring
+[2:19:12] excellent
+[2:19:16] honestly if you didn't have the all the
+[2:19:18] systems you have today in terms of
+[2:19:22] simulators Etc you probably still want
+[2:19:24] something like this wandering around
+[2:19:26] because Flight Deck training that can be
+[2:19:30] carried out this cheaply this safely
+[2:19:33] this
+[2:19:36] easily it's worth it's weight in
+[2:19:39] gold this is one of the principal assets
+[2:19:42] which enables the US Navy to grow its
+[2:19:46] Aviation capabilities as as quickly as
+[2:19:48] it
+[2:19:50] does but she's not
+[2:19:55] exactly a regular
+[2:19:58] vessel and she does have a sister us
+[2:20:01] isable which is also another sidewheel
+[2:20:04] uh passenger ship converted into an
+[2:20:07] aircraft
+[2:20:16] carrier but
+[2:20:20] again both between them are very very
+[2:20:25] useful they're not made for aircraft to
+[2:20:28] stay
+[2:20:29] overnight they don't have an Air Group
+[2:20:32] they don't as we would sort of consider
+[2:20:34] it they don't
+[2:20:35] have you know spaces to store ships they
+[2:20:38] don't even have lifts aboard them to
+[2:20:41] strike aircraft down what they
+[2:20:45] have is a massive flight
+[2:20:49] deck and space for you to practice space
+[2:20:52] for you to get used to landing on these
+[2:20:57] ships again worth its weight in
+[2:21:08] gold and if we go back to this picture
+[2:21:11] from the profiles of the sailing plan
+[2:21:15] that's the seedler that's the French sh
+[2:21:18] that's the Z that's the
+[2:21:25] Friendship they're
+[2:21:28] everything they are able and one of the
+[2:21:30] reasons they are set up as they are and
+[2:21:32] they flight decks painted as it is is to
+[2:21:34] give people experience of how to land on
+[2:21:36] narrower ships I do you have to land
+[2:21:38] between the white lines or between you
+[2:21:42] know those two white lines or on the
+[2:21:44] center line between on the between over
+[2:21:47] the threee white lines so you have the
+[2:21:49] en entire Flight Deck space to land and
+[2:21:51] you have to land in a portion of it to
+[2:21:52] avoid parked aircraft you can do all
+[2:21:54] sorts of training with these
+[2:21:59] ships that's just
+[2:22:01] useful that makes life so much easier
+[2:22:04] and so much
+[2:22:05] better it really
+[2:22:14] does it's what you need and what you
+[2:22:16] want
+[2:22:54] you're up flying the flags the other way
+[2:22:57] around
+[2:23:04] um oh frig it well they could but the
+[2:23:08] thing
+[2:23:13] is that's
+[2:23:16] interesting
+[2:23:21] could be right it's an interesting one
+[2:23:25] because how do I put
+[2:23:29] this the
+[2:23:31] seedler had a
+[2:23:34] full had that style had the
+[2:23:40] sales a well spoted on the flags I
+[2:23:43] hadn't even bought i' literally just
+[2:23:44] gone on the sales and the sales on the
+[2:23:47] seedler are like that not like
+[2:23:50] that but maybe some maybe the artist
+[2:23:53] took some creative discipline to dis to
+[2:23:56] um rewrite it but C it took some
+[2:24:00] creative license with it but
+[2:24:02] um
+[2:24:06] yeah cuz that's the C
+[2:24:16] Bron
+[2:24:29] but that's good
+[2:24:34] that's
+[2:24:45] uh
+[2:24:47] it's interesting because they the only
+[2:24:51] ones who've decided to depict her MK
+[2:24:54] like that and her stuff like that when
+[2:24:59] all the other pictures of her M
+[2:25:01] especially showed that she's a free
+[2:25:02] mastered ship which of course that one's
+[2:25:04] shown with two Mas so that should been
+[2:25:06] keep I presume the third one was
+[2:25:08] hiding
+[2:25:10] and honestly that's more of a bark rig
+[2:25:13] than that is that's that's
+[2:25:18] artists and
+[2:25:31] paintings perhaps they've done some
+[2:25:33] research and they found out that it was
+[2:25:35] like that but
+[2:25:37] um I don't think so because all the
+[2:25:40] descriptions I've read have her still
+[2:25:42] with her full her full sailing rig
+[2:25:45] and that is not full rig that's full rig
+[2:25:50] that
+[2:25:51] is lantin
+[2:25:58] rig the artwork is from Wiki yes the
+[2:26:00] artwork is all sa the artwork is mostly
+[2:26:02] for these things from Wikipedia but I
+[2:26:05] would I actually had to go up and look
+[2:26:07] up the notes on that art picture because
+[2:26:08] I just have it sitting in there as I've
+[2:26:12] said many times before I shamelessly use
+[2:26:15] Wikipedia to find pictures which are in
+[2:26:18] the Commons allowed to be used for
+[2:26:21] copyright
+[2:26:25] reasons see I had book on 1418 Commerce
+[2:26:29] Raiders sh there is a fully red free
+[2:26:33] Master yeah that it makes more sense for
+[2:26:36] it to be a fly Road free
+[2:26:45] master
+[2:27:01] that enough but yeah that's that's
+[2:27:03] annoying cuz
+[2:27:04] the the rigging design definitely favors
+[2:27:08] that one but the flags you are right I I
+[2:27:10] was wrong I was literally going by the
+[2:27:12] rigging cuz I was using example talking
+[2:27:15] about it but um
+[2:27:18] yeah but the rigging is wrong for the r
+[2:27:21] rigging is wrong for the
+[2:27:23] seedler completely wrong for
+[2:27:28] S and I suppose that's supposed to be
+[2:27:31] some Billows of
+[2:27:45] gunfire
+[2:27:47] AI art would have something like spars
+[2:27:49] pass yes I don't use AI art
+[2:27:51] yet I should probably get to that at
+[2:27:53] some point but um I might I might start
+[2:27:56] trying to use AI art because my artistic
+[2:27:59] skills are legendary for being terrible
+[2:28:00] but we'll leave that to one
+[2:28:13] side literally all the images I can find
+[2:28:17] of her other than that painting show her
+[2:28:20] with full rigged sailing masks
+[2:28:33] design so
+[2:28:36] yeah that artist was out to confuse
+[2:28:45] me
+[2:28:49] cruelty cruelty
+[2:28:51] bio it's not right but I I should have
+[2:28:54] checked the the I should have actually
+[2:28:57] checked but I just going Ah that's a
+[2:28:59] good picture of it because it shows it
+[2:29:00] actually in combat so it's a good
+[2:29:02] painting and went oh yep done
+[2:29:08] done then look going and go hang on
+[2:29:11] though they've got the rigging the the
+[2:29:13] the sails wrong way
+[2:29:15] around
+[2:29:26] okay well
+[2:29:28] yeah
+[2:29:36] so I am hoping and I'm going to say this
+[2:29:39] now I'm going to be better next week
+[2:29:41] because I'll be more used to being back
+[2:29:42] at the gym and the gym exercise routine
+[2:29:48] and my body will L be aching less so
+[2:29:50] hopefully I won't make any silly
+[2:29:52] mistakes next week because let's be
+[2:29:55] honest this week tonight today's video
+[2:29:56] was a very nice Patron but it also a bit
+[2:29:58] of
+[2:29:59] fun and I will do a nice there will be a
+[2:30:03] a long Patrol for this on Sunday on
+[2:30:05] Saturday I mean and Sunday will be Brew
+[2:30:08] ships at some point I am driving down to
+[2:30:12] Cornwall to check out houses I'm not
+[2:30:14] sure when that's going to be
+[2:30:18] and I think also one of the February
+[2:30:21] Thursdays is going to have to move to a
+[2:30:22] Friday because my sister's Got A din got
+[2:30:25] a dinner a fancy dinner she's got to go
+[2:30:28] to and I will put a link down below to
+[2:30:31] the
+[2:30:32] contest you give me a second I'll add it
+[2:30:34] in
+[2:30:45] now I'm basically putting um links to
+[2:30:49] contests below every video that's coming
+[2:30:52] out while it's
+[2:30:54] running that's the plan
+[2:31:11] anyway so thank you very much everyone
+[2:31:14] hope you enjoyed um
+[2:31:16] hope you found it
+[2:31:18] interesting and I said apologies I'm not
+[2:31:21] on Discord this evening but I I I do
+[2:31:23] need to get to
+[2:31:24] bed at some point I have actually
+[2:31:26] managed to tie myself to the point I
+[2:31:28] might actually sleep tonight instead of
+[2:31:29] just staying awake all
+[2:31:31] night it's
+[2:31:36] possible you never know so thanks Nicole
+[2:31:39] Ross thank you Steve Clark thank you D
+[2:31:41] Squad thank you Dron red thank you John
+[2:31:43] Shay all 92 thank you um k gbg thank you
+[2:31:48] John Shay thank you I2 thank you Melanie
+[2:31:52] 1640 thank you seniro thank you everyone
+[2:31:55] who's been on admin this evening thank
+[2:31:56] you the Brock thank
+[2:31:59] you H Leslie Mitchell thank you thank
+[2:32:02] you runon thank you Stafford thank you
+[2:32:05] thank you runon thank you Tim O'Neal
+[2:32:09] hello hello Tim I'm always looking
+[2:32:12] forward cuz I get some really cool
+[2:32:13] comments I'm not sure I always see I
+[2:32:15] don't always say hello to you on the
+[2:32:16] live St I know some miss you so I'm
+[2:32:19] making sure I'm saying hello to now
+[2:32:21] hello Felix B hello Richards thank you
+[2:32:25] very much for watching thank you black
+[2:32:27] Maximus thank you Danny Wright thank you
+[2:32:30] everyone who's been watching to
+[2:32:32] even Mega scrow thank you uh nights6
+[2:32:36] every1 thank you thank you everyone
+[2:32:39] who's been watching hope you
+[2:32:41] enjoyed Malaga hello thank you for
+[2:32:44] watching and peace hello you thank you
+[2:32:47] for watching thank you Captain
+[2:32:53] banjo and yeah thank you everyone for
+[2:32:56] watching hope you
+[2:32:58] enjoyed Take
+[2:33:01] Care thank you in Morrison thank you
+[2:33:04] John Shay thank you ads Ford thank you
+[2:33:07] everyone and have a nice evening what we
+[2:33:09] coming up next week we've got um the
+[2:33:11] British World War II carry naal Aviation
+[2:33:13] Doctrine on the
+[2:33:15] 30th
+[2:33:19] if if I'm happy with the recording by
+[2:33:22] the 30th I've recorded my first version
+[2:33:24] of that back on the
+[2:33:27] 10th I won't say how many recordings are
+[2:33:29] that I'm up to but it it's a lot thank
+[2:33:32] you for much sh take care and hope you
+[2:33:34] enjoyed the ark Royals video which came
+[2:33:37] out this week again on the Wednesday
+[2:33:39] because again multiple versions
+[2:33:41] recorded thank you take care and have a
+[2:33:44] nice
+[2:33:45] evening
+[2:33:53] I that all B There you
+[2:34:15] go
