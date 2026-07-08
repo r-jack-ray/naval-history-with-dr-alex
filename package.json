@@ -21,11 +21,18 @@
     "fetch:video-metadata": "npm run build && node dist/scripts/fetch-video-metadata.js",
     "fetch:video-links": "npm run build && node dist/scripts/get-channel-video-links.js",
     "merge:video-links": "npm run build && node dist/scripts/merge-channel-video-links.js",
+    "site:build": "astro build && pagefind --site site/dist",
+    "site:check": "astro check --tsconfig tsconfig.astro.json",
+    "site:dev": "astro dev",
+    "site:preview": "astro preview",
     "store:transcript-json": "npm run build && node dist/scripts/store-transcript-json.js",
     "test": "npm run build && node --test \"dist/**/*.test.js\""
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.9",
     "@types/node": "^22.10.0",
+    "astro": "^7.0.6",
+    "pagefind": "^1.5.2",
     "typescript": "^5.7.0"
   },
   "dependencies": {

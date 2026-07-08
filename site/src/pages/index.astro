@@ -1,0 +1,58 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const prototypeVideoId = "uURe69Wnh-Q";
+const prototypeVideoUrl = `https://www.youtube.com/watch?v=${prototypeVideoId}`;
+const prototypeThumbnailUrl = `https://i.ytimg.com/vi/${prototypeVideoId}/hqdefault.jpg`;
+---
+
+<BaseLayout
+  title="Naval History with Dr. Alex Archive"
+  description="Static reference archive for Naval History with Dr. Alex videos, segments, topics, and Q&A."
+  pageType="home"
+>
+  <main data-pagefind-body>
+    <section class="intro">
+      <div class="intro-copy">
+        <p class="eyebrow">Static Reference Archive</p>
+        <h1>Video-first naval history notes, searchable by subject.</h1>
+        <p class="lede">
+          This archive will turn channel metadata, transcripts, and curated segment notes into a
+          static website for browsing videos, ships, battles, navies, topics, and Q&A entries.
+        </p>
+      </div>
+
+      <a class="feature-card" href={prototypeVideoUrl}>
+        <img
+          src={prototypeThumbnailUrl}
+          alt="Thumbnail for a Naval History with Dr. Alex live Q&A video"
+          loading="lazy"
+          width="480"
+          height="360"
+        />
+        <div>
+          <span>Prototype source video</span>
+          <strong>BRuShips 249</strong>
+        </div>
+      </a>
+    </section>
+
+    <section class="status-grid" aria-label="Archive sections">
+      <article>
+        <span class="label">Videos</span>
+        <h2>One page per video</h2>
+        <p>Each page will collect metadata, source links, transcript state, and curated segments.</p>
+      </article>
+      <article>
+        <span class="label">Segments</span>
+        <h2>Subject chunks</h2>
+        <p>Chapters, notable points, Q&A, and transcript excerpts stay distinct and timestamped.</p>
+      </article>
+      <article>
+        <span class="label">Search</span>
+        <h2>Pagefind index</h2>
+        <p>Static search will surface videos, segment pages, topics, and timestamped result metadata.</p>
+      </article>
+    </section>
+  </main>
+</BaseLayout>

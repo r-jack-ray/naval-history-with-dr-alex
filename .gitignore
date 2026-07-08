@@ -9,6 +9,7 @@ desktop.ini
 
 node_modules/
 dist/
+.astro/
 
 # Python virtual environments and local installs used by transcript tooling.
 .venv/
@@ -30,7 +31,7 @@ task-notes/**
 !task-notes/**/
 !task-notes/**/*.md
 
-# Hugo/static-site local build artifacts.
+# Static-site local build artifacts.
 /site/.hugo_build.lock
-/site/public/
+/site/dist/
 /site/resources/_gen/

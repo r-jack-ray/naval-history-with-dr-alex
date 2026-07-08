@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const baseUrl = import.meta.env.BASE_URL;
+---
+
+<BaseLayout
+  title="Search | Naval History with Dr. Alex Archive"
+  description="Search the Naval History with Dr. Alex static archive."
+  pageType="search"
+>
+  <Fragment slot="head">
+    <link rel="stylesheet" href={`${baseUrl}pagefind/pagefind-component-ui.css`} />
+    <script type="module" is:inline>
+      window.addEventListener("DOMContentLoaded", () => {
+        const searchElement = document.getElementById("archive-search");
+        const pagefindUiUrl = searchElement?.dataset.pagefindComponentUi;
+
+        if (!searchElement || !pagefindUiUrl) {
+          return;
+        }
+
+        const script = document.createElement("script");
+        script.type = "module";
+        script.src = pagefindUiUrl;
+        document.head.append(script);
+      });
+    </script>
+  </Fragment>
+
+  <main class="page-shell" data-pagefind-body>
+    <section class="section-heading">
+      <p class="eyebrow">Search</p>
+      <h1>Find videos, topics, and segment notes.</h1>
+      <p class="lede">
+        Pagefind builds this search index from the static HTML output after Astro finishes.
+      </p>
+    </section>
+
+    <section class="search-panel" aria-label="Site search">
+      <div
+        id="archive-search"
+        data-pagefind-component-ui={`${baseUrl}pagefind/pagefind-component-ui.js`}
+      >
+        <pagefind-searchbox></pagefind-searchbox>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
