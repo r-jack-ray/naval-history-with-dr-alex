@@ -6,51 +6,401 @@
     "naval-history",
     "destroyers",
     "royal-navy",
-    "naval-weapons"
+    "naval-weapons",
+    "modular-warship-design",
+    "missiles",
+    "battleships",
+    "us-navy",
+    "force-structure",
+    "carrier-groups",
+    "naval-gunnery",
+    "naval-treaties",
+    "naval-logistics",
+    "ship-design",
+    "cruisers"
   ],
   "segments": [
     {
       "id": "bruships-238-base-bleed-shells-destroyers-qa",
+      "videoId": "pqBl_0M1Jzk",
       "slug": "bruships-238-base-bleed-shells-destroyers-qa",
-      "title": "Base-bleed shells for destroyer guns",
+      "title": "Base-bleed shells for Royal Navy destroyers",
       "kind": "qa",
       "start": "45:05",
       "end": "49:24",
       "topics": [
         "live-q-and-a",
-        "naval-history",
         "destroyers",
         "royal-navy",
-        "naval-weapons"
+        "naval-weapons",
+        "naval-gunnery"
       ],
       "question": "What impact would base-bleed shells have on Second World War vessels such as Tribal-class destroyers using Royal Navy 4.7-inch guns?",
-      "answerShort": "The answer says base-bleed rounds could extend range, but the tradeoff in explosive filler and poor long-range hit probability means the benefit is uncertain and may not be worth it.",
-      "summary": "A Bruships 238 Q&A weighs base-bleed shells for Royal Navy 4.7-inch destroyer guns against explosive filler loss, range gains, and practical hit probability.",
-      "body": "This live Q&A segment captures a technical gunnery exchange from Bruships 238. Dr. Clarke and the panel identify base-bleed ammunition as a range-extending approach that reduces drag rather than adding rocket thrust, then weigh the possible five-to-fifteen kilometer range gain against reduced explosive filler and the limited value of very long-range destroyer gunfire.",
+      "answerShort": "They could extend range, but the answer stresses the lost explosive filler and poor long-range hit probability, so the practical benefit is uncertain.",
+      "summary": "A Bruships 238 Q&A weighs base-bleed ammunition for Royal Navy 4.7-inch destroyer guns against explosive filler loss, range gain, and hit probability.",
+      "body": "The panel treats base-bleed as a drag-reduction approach rather than rocket assistance, which means the shell can retain velocity and gain range. The tradeoff is that the shell sacrifices explosive volume, and Dr. Clarke questions whether a destroyer needs enough extra range to double the reach of a Tribal-class gun. The answer leaves the idea as technically interesting but hard to justify without a clear tactical use.",
+      "sourcePath": "src/transcripts/txt/2026-04-05_T23-09-03_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
       "evidence": [
         {
           "start": "45:05",
           "end": "45:20",
-          "note": "The audience prompt asks about base-bleed shells on World War II vessels such as Tribal-class destroyers and Royal Navy 4.7-inch guns."
+          "note": "The prompt asks about base-bleed shells for Tribal-class and other Royal Navy 4.7-inch destroyers."
         },
         {
           "start": "45:38",
           "end": "46:08",
-          "note": "The answer identifies base-bleed shells as gas-releasing rounds that maintain velocity and extend range, while warning about lost explosive filler."
+          "note": "The panel identifies gas release, velocity retention, range extension, and the loss of explosive filler."
         },
         {
-          "start": "46:17",
-          "end": "47:21",
-          "note": "The panel distinguishes base bleed from rocket assistance and estimates a five-to-fifteen kilometer range increase, again noting the explosive-mass tradeoff."
-        },
-        {
-          "start": "47:42",
+          "start": "47:02",
           "end": "49:24",
-          "note": "The answer questions whether destroyers need that much extra range, notes low hit probability at extreme range, and treats improved penetration as theoretically interesting but uncertain in practice."
+          "note": "The answer estimates extra range, questions whether destroyers need it, and notes the theoretical penetration benefit."
         }
-      ],
+      ]
+    },
+    {
+      "id": "bruships-238-stanflex-vls-depth-qa",
       "videoId": "pqBl_0M1Jzk",
-      "sourcePath": "src/transcripts/txt/2026-04-05_T23-09-03_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt"
+      "slug": "bruships-238-stanflex-vls-depth-qa",
+      "title": "Deep StanFlex modules for VLS",
+      "kind": "qa",
+      "start": "1:19:10",
+      "end": "1:23:38",
+      "topics": [
+        "live-q-and-a",
+        "modular-warship-design",
+        "missiles",
+        "danish-navy",
+        "ship-design"
+      ],
+      "question": "Is a double-length StanFlex module possible, and what could it be used for?",
+      "answerShort": "A deeper module is more plausible than a double-length one, and the main use discussed is fitting VLS cells such as Mark 41 or Sylver while accepting crane and deck-space tradeoffs.",
+      "summary": "A StanFlex answer explains how deeper modules could carry VLS cells and why modular missile fits trade deck efficiency for easier replacement and ashore reload options.",
+      "body": "Dr. Clarke distinguishes between making a StanFlex module longer and making it deeper, then sketches how a deeper space could accommodate strategic-length missile cells with some protrusion above deck. The answer links modularity to practical handling: a heavier crane requirement, possible twelve-cell reload packages ashore, and the ability to change VLS systems later. It is a useful watch point for understanding why modular warship design is never just a deck-space calculation.",
+      "sourcePath": "src/transcripts/txt/2026-04-05_T23-09-03_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
+      "evidence": [
+        {
+          "start": "1:19:10",
+          "end": "1:20:15",
+          "note": "The prompt asks about double-length StanFlex; the answer says deeper modules are more plausible and discusses crane and depth limits."
+        },
+        {
+          "start": "1:20:17",
+          "end": "1:21:26",
+          "note": "The answer compares Mark 41 and Sylver dimensions and describes fitting VLS cells in a StanFlex space."
+        },
+        {
+          "start": "1:23:08",
+          "end": "1:23:38",
+          "note": "The answer frames Mark 41 efficiency against the cost and replacement flexibility of modular VLS."
+        }
+      ]
+    },
+    {
+      "id": "bruships-238-panama-canal-battleship-design-qa",
+      "videoId": "pqBl_0M1Jzk",
+      "slug": "bruships-238-panama-canal-battleship-design-qa",
+      "title": "Panama Canal limits and US battleship hulls",
+      "kind": "qa",
+      "start": "1:26:04",
+      "end": "1:28:04",
+      "topics": [
+        "live-q-and-a",
+        "us-navy",
+        "battleships",
+        "ship-design",
+        "naval-architecture"
+      ],
+      "question": "If the Panama Canal opened to the later Panamax standard, how would it affect US Navy battleship development?",
+      "answerShort": "A wider canal would let US battleships become broader and more seaworthy instead of being forced into long, narrow hull forms shaped by canal limits.",
+      "summary": "A US battleship design answer ties Panama Canal dimensions to beam limits, Iowa-style hull proportions, North Atlantic seaworthiness, and larger capital-ship options.",
+      "body": "The answer treats the canal as a design constraint, not just a transit route. Dr. Clarke argues that a wider standard would let American fast battleships avoid some of the long, narrow compromises used to maintain speed while fitting the canal. The payoff is a clearer view of how infrastructure can shape warship beam, bow form, and ocean-keeping qualities.",
+      "sourcePath": "src/transcripts/txt/2026-04-05_T23-09-03_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
+      "evidence": [
+        {
+          "start": "1:26:04",
+          "end": "1:26:18",
+          "note": "The prompt asks how a larger Panama Canal standard would affect US battleships."
+        },
+        {
+          "start": "1:26:18",
+          "end": "1:26:55",
+          "note": "The answer says US battleships could be broader and would not need the same long, thin hull compromises."
+        },
+        {
+          "start": "1:27:55",
+          "end": "1:28:04",
+          "note": "The answer summarizes the result as chunkier and happier US Navy battleships."
+        }
+      ]
+    },
+    {
+      "id": "bruships-238-defiant-battlecruiser-deployment-qa",
+      "videoId": "pqBl_0M1Jzk",
+      "slug": "bruships-238-defiant-battlecruiser-deployment-qa",
+      "title": "Deploying a large Defiant battlecruiser fleet",
+      "kind": "qa",
+      "start": "2:08:09",
+      "end": "2:09:21",
+      "topics": [
+        "live-q-and-a",
+        "battlecruisers",
+        "carrier-groups",
+        "force-structure",
+        "us-navy"
+      ],
+      "question": "If the United States built and commissioned all 20 to 25 Defiant-class battlecruisers, how would the panel deploy them?",
+      "answerShort": "The answer puts one with each carrier group and uses the remainder as high-visibility independent patrol ships split between the Pacific and Atlantic.",
+      "summary": "A force-structure answer turns a large Defiant-class battlecruiser fleet into carrier escorts and global presence ships divided between the Pacific and Atlantic.",
+      "body": "The panel's answer uses the hypothetical battlecruisers in two roles: dedicated companions for carrier forces and independent cruisers for repeated presence patrols. The split shows how a navy might use large, prestigious surface combatants both for task-group protection and for reassurance or signaling visits. It is a compact example of matching ship type to operational geography.",
+      "sourcePath": "src/transcripts/txt/2026-04-05_T23-09-03_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
+      "evidence": [
+        {
+          "start": "2:08:09",
+          "end": "2:08:20",
+          "note": "The prompt asks how 20 to 25 Defiant-class battlecruisers would be deployed."
+        },
+        {
+          "start": "2:08:23",
+          "end": "2:08:52",
+          "note": "The answer assigns ships to carriers and splits the remainder between Pacific and Atlantic patrol areas."
+        },
+        {
+          "start": "2:08:59",
+          "end": "2:09:21",
+          "note": "The answer frames the independent ships as regular visits that show presence and attention."
+        }
+      ]
+    },
+    {
+      "id": "bruships-238-royal-navy-vls-cell-count-qa",
+      "videoId": "pqBl_0M1Jzk",
+      "slug": "bruships-238-royal-navy-vls-cell-count-qa",
+      "title": "Why 48 VLS cells was not enough",
+      "kind": "qa",
+      "start": "2:10:10",
+      "end": "2:11:35",
+      "topics": [
+        "live-q-and-a",
+        "royal-navy",
+        "missiles",
+        "air-defence",
+        "carrier-groups",
+        "naval-procurement"
+      ],
+      "question": "Did British missile doctrine assume one missile per target, and why did some designs settle around 48 VLS cells?",
+      "answerShort": "The answer says the Royal Navy used the same basic two-shot standard as others, and 48 cells reflected what was funded rather than what the panel considered ideal.",
+      "summary": "A missile-defense exchange challenges the idea that 48 VLS cells were doctrinally sufficient and ties the number to funding, NFR90 studies, and carrier task-group assumptions.",
+      "body": "Dr. Clarke rejects the idea that British practice was simply one missile for one target, pointing instead to the common practice of firing pairs. The discussion then turns to the 48-cell figure as a procurement outcome rather than a capability ideal. The cited studies assumed several air-defense ships around each carrier, which makes the cell count meaningful only inside a larger task-group design.",
+      "sourcePath": "src/transcripts/txt/2026-04-05_T23-09-03_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
+      "evidence": [
+        {
+          "start": "2:10:10",
+          "end": "2:10:24",
+          "note": "The answer says the British used the same standard as others, basically firing two missiles."
+        },
+        {
+          "start": "2:10:25",
+          "end": "2:11:03",
+          "note": "The panel connects redirectable missile ideas to claims about needing only 48 VLS cells, while doubting that 48 cells was enough."
+        },
+        {
+          "start": "2:11:03",
+          "end": "2:11:35",
+          "note": "The answer says the studies assumed task groups with at least four ships per carrier and frames the issue as frustrating procurement logic."
+        }
+      ]
+    },
+    {
+      "id": "bruships-238-british-gun-standardization-qa",
+      "videoId": "pqBl_0M1Jzk",
+      "slug": "bruships-238-british-gun-standardization-qa",
+      "title": "British gun standardization and destroyer size",
+      "kind": "qa",
+      "start": "2:35:14",
+      "end": "2:39:17",
+      "topics": [
+        "live-q-and-a",
+        "royal-navy",
+        "naval-gunnery",
+        "destroyers",
+        "battleships",
+        "naval-treaties"
+      ],
+      "question": "Why did Britain use so many different capital-ship and dual-purpose guns instead of standardizing on weapons such as 15-inch and 4.7-inch guns?",
+      "answerShort": "The answer points to treaty politics, continuing money for tests, changing requirements, and the possibility that early standardization might have pushed destroyers toward larger 5.5-inch-gun designs.",
+      "summary": "A Royal Navy gunnery answer connects British interwar gun variety to treaty politics, testing cycles, capital-ship limits, and destroyer-size consequences.",
+      "body": "The answer separates capital-ship gun choices from destroyer and dual-purpose weapons. Treaty limits help explain 14-inch King George V guns and 16-inch Lion studies, while continuing British testing encouraged new gun marks instead of a single fixed standard. Dr. Clarke also notes that a serious early standardization path might have favored a 5.5-inch destroyer gun, which would push destroyers toward much larger hulls and blur the cruiser boundary.",
+      "sourcePath": "src/transcripts/txt/2026-04-05_T23-09-03_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
+      "evidence": [
+        {
+          "start": "2:35:14",
+          "end": "2:35:55",
+          "note": "The prompt asks why Britain had many armaments and the answer cites Nelson, Rodney, King George V, Lion, and treaty politics."
+        },
+        {
+          "start": "2:35:57",
+          "end": "2:36:36",
+          "note": "The answer says British money and testing cycles kept moving standardization toward new guns, and identifies 5.5-inch as a plausible destroyer-and-below standard."
+        },
+        {
+          "start": "2:37:20",
+          "end": "2:39:17",
+          "note": "The panel discusses 4.7-inch and 5.5-inch destroyer guns, destroyer displacement growth, and the possible cruiser-category consequences."
+        }
+      ]
+    },
+    {
+      "id": "bruships-238-ceylon-far-east-base-qa",
+      "videoId": "pqBl_0M1Jzk",
+      "slug": "bruships-238-ceylon-far-east-base-qa",
+      "title": "Ceylon as the Royal Navy Far East base",
+      "kind": "qa",
+      "start": "3:13:39",
+      "end": "3:14:32",
+      "topics": [
+        "live-q-and-a",
+        "royal-navy",
+        "naval-logistics",
+        "second-world-war",
+        "force-structure"
+      ],
+      "question": "If Britain put its Far East naval base in Ceylon, would it have been better prepared for the Indian Ocean raid?",
+      "answerShort": "Yes. The answer says a developed Ceylon base would place more fleet strength and command structure at Trincomalee while avoiding some Singapore-centered problems.",
+      "summary": "A Far East basing answer explains how a stronger Ceylon center could affect the Indian Ocean raid, Trincomalee, Singapore, and command arrangements.",
+      "body": "Dr. Clarke answers that Britain already had a base at Trincomalee, but it was not developed to Singapore's level. If Ceylon had been the central Far East base, the Indian Ocean raid would likely have found a larger Royal Navy force there, with command arrangements already focused on the region. The segment is useful for seeing basing as a mix of infrastructure, fleet concentration, and command geography.",
+      "sourcePath": "src/transcripts/txt/2026-04-05_T23-09-03_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
+      "evidence": [
+        {
+          "start": "3:13:39",
+          "end": "3:13:56",
+          "note": "The prompt asks whether a Ceylon Far East base would improve Indian Ocean raid preparedness; the answer notes Trincomalee existed but was less built up than Singapore."
+        },
+        {
+          "start": "3:13:56",
+          "end": "3:14:14",
+          "note": "The answer says centering forces on Ceylon would likely mean a larger fleet there and fewer Singapore-fall problems."
+        },
+        {
+          "start": "3:14:14",
+          "end": "3:14:32",
+          "note": "The answer connects a Ceylon base to earlier Royal Navy high command placement in the Far East."
+        }
+      ]
+    },
+    {
+      "id": "bruships-238-stanflex-navy-size-qa",
+      "videoId": "pqBl_0M1Jzk",
+      "slug": "bruships-238-stanflex-navy-size-qa",
+      "title": "When StanFlex makes sense for a navy",
+      "kind": "qa",
+      "start": "3:14:47",
+      "end": "3:17:19",
+      "topics": [
+        "live-q-and-a",
+        "modular-warship-design",
+        "naval-procurement",
+        "force-structure",
+        "danish-navy"
+      ],
+      "question": "Can a navy be too big or too small for StanFlex to make sense?",
+      "answerShort": "Yes. The answer says StanFlex becomes less straightforward at US Navy scale, but multinational adoption could reduce costs and make the system harder for governments to underuse or cancel.",
+      "summary": "A StanFlex procurement answer weighs navy size, government follow-through, multinational adoption, MEKO links, and NFR90-style standardization.",
+      "body": "Dr. Clarke says StanFlex can become less sensible at the scale of the US Navy, but the key issue is not just fleet size. He argues that many problems come from governments failing to use the system fully, while multinational buy-in could reduce development costs and raise the political cost of cancellation. The answer then expands into a MEKO-plus-StanFlex and NFR90 scenario, showing modularity as an alliance-industrial choice as much as a ship-design choice.",
+      "sourcePath": "src/transcripts/txt/2026-04-05_T23-09-03_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
+      "evidence": [
+        {
+          "start": "3:14:47",
+          "end": "3:15:13",
+          "note": "The prompt asks whether a navy can be too big or too small; the answer says US Navy scale can make StanFlex less sensible and notes underuse problems."
+        },
+        {
+          "start": "3:15:15",
+          "end": "3:15:58",
+          "note": "The answer says multinational adoption could reduce costs and create domestic and international barriers to cancellation."
+        },
+        {
+          "start": "3:16:00",
+          "end": "3:17:19",
+          "note": "The answer links StanFlex to MEKO, British and Dutch involvement, NFR90, and possible broader standardization."
+        }
+      ]
+    },
+    {
+      "id": "bruships-238-european-vls-standardization-qa",
+      "videoId": "pqBl_0M1Jzk",
+      "slug": "bruships-238-european-vls-standardization-qa",
+      "title": "European VLS standards versus Mark 41",
+      "kind": "qa",
+      "start": "3:19:47",
+      "end": "3:22:44",
+      "topics": [
+        "live-q-and-a",
+        "missiles",
+        "modular-warship-design",
+        "naval-procurement",
+        "air-defence"
+      ],
+      "question": "How might wider StanFlex and European missile-system adoption affect Mark 41, Aster, and allied ship choices?",
+      "answerShort": "The answer sketches a split where much of Europe and Australia could favor Aster/Sylver-style systems while the United States and Pacific partners remain closer to Mark 41, with industrial pressure shaping later choices.",
+      "summary": "A speculative procurement answer explores European and Pacific VLS standards, Aster versus Standard missiles, and whether US industry would push into a wider StanFlex ecosystem.",
+      "body": "The answer follows the implications of StanFlex standardization into missile and radar choices. Dr. Clarke suggests a possible divide between European Aster/Sylver-style systems and Mark 41/Standard Missile users in the American and Pacific orbit. He then connects that technical split to industrial incentives, asking whether US industry would eventually push for participation if a European modular standard became large enough.",
+      "sourcePath": "src/transcripts/txt/2026-04-05_T23-09-03_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
+      "evidence": [
+        {
+          "start": "3:19:47",
+          "end": "3:20:24",
+          "note": "The answer sketches American/Pacific Mark 41 users and European/Australian Aster and VLS alternatives."
+        },
+        {
+          "start": "3:20:28",
+          "end": "3:21:06",
+          "note": "The answer frames the split as European and American systems solving similar problems through different methods."
+        },
+        {
+          "start": "3:21:21",
+          "end": "3:22:44",
+          "note": "The answer asks whether US industry would seek a share of a StanFlex market and uses Australia's Hobart choice as an off-the-shelf capability example."
+        }
+      ]
+    },
+    {
+      "id": "bruships-238-automatic-eight-inch-cruiser-qa",
+      "videoId": "pqBl_0M1Jzk",
+      "slug": "bruships-238-automatic-eight-inch-cruiser-qa",
+      "title": "Automatic eight-inch guns on cruiser hulls",
+      "kind": "qa",
+      "start": "2:14:28",
+      "end": "2:21:35",
+      "topics": [
+        "live-q-and-a",
+        "cruisers",
+        "naval-gunnery",
+        "ship-design",
+        "us-navy"
+      ],
+      "question": "If Ibuki's catapult space is removed, and a notional cruiser uses single automatic eight-inch guns, what can usefully replace the space or arm the ship?",
+      "answerShort": "The answer says a carrier conversion cannot easily be repurposed without major reconstruction, and a cruiser built around many single automatic eight-inch mounts is a poor use of weight and deck space.",
+      "summary": "A design exchange moves from Ibuki's carrier-conversion limits to why single automatic eight-inch mounts make an awkward cruiser armament.",
+      "body": "Dr. Clarke first notes that once a hull has been built into carrier form, reclaiming catapult space is not a simple swap; the ship would have to be stripped back toward the strength deck. The discussion then turns to a cruiser concept with multiple single automatic eight-inch mounts, where the panel worries about weight, metacentric height, rotating machinery, and deck-space consumption. The result is a useful warning that historical technology does not automatically make a balanced warship design.",
+      "sourcePath": "src/transcripts/txt/2026-04-05_T23-09-03_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
+      "evidence": [
+        {
+          "start": "2:14:28",
+          "end": "2:15:12",
+          "note": "The prompt asks about removing Ibuki catapult equipment; the answer says carrier-form reconstruction would have to go back toward the strength deck."
+        },
+        {
+          "start": "2:15:17",
+          "end": "2:17:34",
+          "note": "The panel discusses a cruiser with single automatic eight-inch guns and raises questions about weight and metacentric height."
+        },
+        {
+          "start": "2:18:03",
+          "end": "2:21:35",
+          "note": "The answer says the single mount made more sense as a destroyer test than as a cruiser armament and recommends a twin-mount direction instead."
+        }
+      ]
     }
   ]
 }

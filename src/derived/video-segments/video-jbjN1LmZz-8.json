@@ -5,45 +5,467 @@
     "live-q-and-a",
     "naval-history",
     "royal-navy",
-    "naval-aviation"
+    "naval-aviation",
+    "battlecruisers",
+    "kriegsmarine",
+    "battle-of-the-atlantic",
+    "amphibious-warfare",
+    "fortifications",
+    "us-navy",
+    "japanese-navy",
+    "naval-procurement",
+    "ship-design",
+    "force-structure",
+    "uncrewed-systems",
+    "fleet-carriers",
+    "strategic-deterrence",
+    "danish-navy",
+    "modular-warship-design",
+    "naval-gunnery",
+    "naval-weapons",
+    "battleships",
+    "alternate-history",
+    "pacific-war",
+    "naval-logistics",
+    "naval-doctrine",
+    "surface-warfare",
+    "missiles"
   ],
   "segments": [
     {
       "id": "bruships-240-technology-disparity-qa",
+      "videoId": "jbjN1LmZz-8",
       "slug": "bruships-240-technology-disparity-qa",
-      "title": "Historical naval technology disparity examples",
+      "title": "Carrier aircraft against pirate junks",
       "kind": "qa",
       "start": "15:58",
       "end": "17:27",
       "topics": [
         "live-q-and-a",
-        "naval-history",
         "royal-navy",
-        "naval-aviation"
+        "naval-aviation",
+        "naval-history"
       ],
       "question": "Are there historical naval battles with a modern-carrier-versus-old-war level of technological disparity?",
-      "answerShort": "The answer points to Royal Navy counter-piracy work in the 1920s South China Sea, where aircraft from carriers could intervene against junks armed with boarding weapons rather than guns.",
-      "summary": "A Bruships 240 Q&A asks for real naval technology-disparity examples, and the answer cites 1920s Royal Navy carrier aircraft used in South China Sea counter-piracy.",
-      "body": "This live Q&A segment captures a clean audience prompt from a long Bruships stream. The answer uses Royal Navy operations against pirates in the South China Sea as a practical example of extreme naval technology mismatch: merchant ships signaled distress, carrier aircraft located junks attempting to board them, and the aircraft's machine guns or bombs changed the encounter. Later live-Q&A review can add further questions from the rest of the stream.",
+      "answerShort": "The answer points to Royal Navy counter-piracy work in the 1920s South China Sea, where carrier aircraft could confront pirate junks whose crews might have only boarding weapons.",
+      "summary": "A technology-disparity question leads to 1920s Royal Navy carrier aircraft protecting merchant ships against South China Sea pirates.",
+      "body": "This answer gives a concrete historical example of extreme naval technology mismatch. Dr. Clarke describes Royal Navy counter-piracy patrols in which carriers such as Hermes or Eagle could send aircraft toward merchant ships threatened by junks, turning a boarding attack into a contest against machine guns and bombs.",
+      "sourcePath": "src/transcripts/txt/2026-04-26_T23-18-49_bruships-240-naval-history-questions-answered-live_jbjN1LmZz-8.txt",
       "evidence": [
         {
           "start": "15:58",
           "end": "16:14",
-          "note": "The viewer asks whether any historical naval battle had the same level of technological disparity as modern ships inserted into older wars."
+          "note": "The audience question asks for a real naval example of extreme technological disparity."
         },
         {
           "start": "16:22",
           "end": "16:58",
-          "note": "The answer identifies South China Sea piracy cases where carrier aircraft confronted junks whose crews often lacked guns."
+          "note": "The answer identifies South China Sea piracy cases involving carrier aircraft and junks."
         },
         {
           "start": "16:58",
           "end": "17:27",
-          "note": "The transcript explains the Royal Navy counter-piracy pattern: listen for a flare, send aircraft toward the merchant ship, and deter or attack boarders."
+          "note": "The transcript explains the Royal Navy pattern of sending aircraft toward threatened merchant ships."
         }
-      ],
+      ]
+    },
+    {
+      "id": "bruships-240-bismarck-scharnhorst-gneisenau-qa",
       "videoId": "jbjN1LmZz-8",
-      "sourcePath": "src/transcripts/txt/2026-04-26_T23-18-49_bruships-240-naval-history-questions-answered-live_jbjN1LmZz-8.txt"
+      "slug": "bruships-240-bismarck-scharnhorst-gneisenau-qa",
+      "title": "Bismarck with Scharnhorst and Gneisenau",
+      "kind": "qa",
+      "start": "39:22",
+      "end": "41:09",
+      "topics": [
+        "live-q-and-a",
+        "kriegsmarine",
+        "battle-of-the-atlantic",
+        "royal-navy"
+      ],
+      "question": "If Operation Berlin had been delayed, would Scharnhorst and Gneisenau have joined Bismarck and improved her chances?",
+      "answerShort": "They might have joined, but a three-capital-ship breakout would likely have caused a larger Royal Navy concentration in the North Atlantic.",
+      "summary": "The Operation Berlin counterfactual weighs a stronger German sortie against the Royal Navy panic and reinforcement it would trigger.",
+      "body": "The answer treats the added German ships as a double-edged advantage. A combined Bismarck, Scharnhorst, and Gneisenau breakout would be more dangerous, but it would also be much harder for the British to ignore, likely drawing Ark Royal, Victorious, fast capital ships, and even slower battle groups into the hunt.",
+      "sourcePath": "src/transcripts/txt/2026-04-26_T23-18-49_bruships-240-naval-history-questions-answered-live_jbjN1LmZz-8.txt",
+      "evidence": [
+        {
+          "start": "39:22",
+          "end": "39:42",
+          "note": "The question asks whether Scharnhorst and Gneisenau could have joined Bismarck if Operation Berlin were delayed."
+        },
+        {
+          "start": "39:43",
+          "end": "40:16",
+          "note": "The answer says the larger force would frighten the British and pull in stronger carrier coverage."
+        },
+        {
+          "start": "40:16",
+          "end": "41:09",
+          "note": "The transcript sketches a broad Royal Navy response with fast ships and Home Fleet concentration."
+        }
+      ]
+    },
+    {
+      "id": "bruships-240-f3-battlecruiser-qa",
+      "videoId": "jbjN1LmZz-8",
+      "slug": "bruships-240-f3-battlecruiser-qa",
+      "title": "F3 battlecruiser protection tradeoffs",
+      "kind": "qa",
+      "start": "41:44",
+      "end": "45:19",
+      "topics": [
+        "live-q-and-a",
+        "battlecruisers",
+        "ship-design",
+        "royal-navy"
+      ],
+      "question": "Why is the F3 battlecruiser design better than the Admiral and Renown classes despite slightly lower speed and range?",
+      "answerShort": "The panel emphasizes F3's broader armor coverage, extra gun, heavier secondaries, and postwar expectations for fighting contemporary gunfire.",
+      "summary": "A battlecruiser comparison uses F3, Hood, and Renown to explain why protection and role changes could matter more than a few knots.",
+      "body": "The answer is useful for understanding battlecruiser design as more than speed and range arithmetic. The discussion argues that the postwar F3 concept reflects a different role: a faster capital ship expected to survive contemporary gunfire, with better armor coverage and heavier armament than the earlier Admiral and Renown designs.",
+      "sourcePath": "src/transcripts/txt/2026-04-26_T23-18-49_bruships-240-naval-history-questions-answered-live_jbjN1LmZz-8.txt",
+      "evidence": [
+        {
+          "start": "41:44",
+          "end": "42:49",
+          "note": "The audience question compares F3 with Admiral and Renown on speed and range."
+        },
+        {
+          "start": "43:31",
+          "end": "44:18",
+          "note": "The answer frames the key difference as the changed postwar battlecruiser role and protection against contemporary gunfire."
+        },
+        {
+          "start": "44:20",
+          "end": "44:50",
+          "note": "The transcript cites F3's additional gun, six-inch secondaries, and broader armor coverage."
+        }
+      ]
+    },
+    {
+      "id": "bruships-240-invading-england-logistics-qa",
+      "videoId": "jbjN1LmZz-8",
+      "slug": "bruships-240-invading-england-logistics-qa",
+      "title": "Landing an army in England",
+      "kind": "qa",
+      "start": "49:30",
+      "end": "51:44",
+      "topics": [
+        "live-q-and-a",
+        "amphibious-warfare",
+        "naval-history",
+        "fortifications"
+      ],
+      "question": "Who was the last foreign power to successfully land an army in England?",
+      "answerShort": "The answer moves from the historical landing question into why proposed landing sites such as Falmouth create severe naval, geographic, and logistical problems.",
+      "summary": "A landing-in-England question turns into a practical lesson on why amphibious success depends on ports, fortifications, geography, and the march inland.",
+      "body": "This watch point is valuable for the constraints behind invasion maps. Dr. Clarke explains that a place like Falmouth might look useful as an anchorage, but existing fortifications, distance from London, terrain, and vulnerable baggage routes would make the operation costly even after a successful landing.",
+      "sourcePath": "src/transcripts/txt/2026-04-26_T23-18-49_bruships-240-naval-history-questions-answered-live_jbjN1LmZz-8.txt",
+      "evidence": [
+        {
+          "start": "49:30",
+          "end": "49:35",
+          "note": "The question asks about the last successful foreign army landing in England."
+        },
+        {
+          "start": "50:40",
+          "end": "51:00",
+          "note": "The answer discusses Falmouth Roads, fortifications, and expected losses."
+        },
+        {
+          "start": "51:00",
+          "end": "51:44",
+          "note": "The transcript explains the problem of marching inland from Cornwall and protecting the baggage train."
+        }
+      ]
+    },
+    {
+      "id": "bruships-240-rn-maintenance-cycle-qa",
+      "videoId": "jbjN1LmZz-8",
+      "slug": "bruships-240-rn-maintenance-cycle-qa",
+      "title": "Royal Navy wartime maintenance cycles",
+      "kind": "qa",
+      "start": "53:47",
+      "end": "54:51",
+      "topics": [
+        "live-q-and-a",
+        "royal-navy",
+        "pacific-war",
+        "naval-logistics"
+      ],
+      "question": "Did the Royal Navy have roughly the same eighteen-month maintenance cycle as the U.S. Navy in the Pacific War?",
+      "answerShort": "Roughly, but damage repairs, existing British port infrastructure, and theater differences made the practical cycle less uniform than a simple schedule.",
+      "summary": "A maintenance-cycle question distinguishes Pacific fleet routines from the Royal Navy's repair opportunities in the Mediterranean and North Atlantic.",
+      "body": "The answer shows why maintenance cycles are not just calendar rules. Dr. Clarke notes that damaged ships often received other work while already in port, and that British operations in areas with established dockyard infrastructure differed from the later Pacific rhythm.",
+      "sourcePath": "src/transcripts/txt/2026-04-26_T23-18-49_bruships-240-naval-history-questions-answered-live_jbjN1LmZz-8.txt",
+      "evidence": [
+        {
+          "start": "53:47",
+          "end": "53:54",
+          "note": "The question asks whether Royal Navy ships followed a similar maintenance cycle."
+        },
+        {
+          "start": "53:58",
+          "end": "54:18",
+          "note": "The answer explains that battle damage repairs could also become maintenance opportunities."
+        },
+        {
+          "start": "54:20",
+          "end": "54:51",
+          "note": "The transcript contrasts established British infrastructure with the Pacific maintenance pattern."
+        }
+      ]
+    },
+    {
+      "id": "bruships-240-royal-navy-rapid-readiness-qa",
+      "videoId": "jbjN1LmZz-8",
+      "slug": "bruships-240-royal-navy-rapid-readiness-qa",
+      "title": "How quickly the Royal Navy could get harsher",
+      "kind": "qa",
+      "start": "54:56",
+      "end": "56:59",
+      "topics": [
+        "live-q-and-a",
+        "royal-navy",
+        "force-structure",
+        "naval-procurement",
+        "uncrewed-systems"
+      ],
+      "question": "If the British Navy had to get nasty quickly, how would you go about it?",
+      "answerShort": "The answer says there are few quick options: maximize buildouts, recover retired ships where possible, call up skilled people, and lean on drones while recognizing their limits.",
+      "summary": "A modern readiness question explains why a navy built with little slack cannot quickly generate ships, missiles, crews, or industrial capacity.",
+      "body": "This segment gives a blunt force-structure lesson. Dr. Clarke argues that Britain can try to expand orders, use retired assets, mobilize relevant personnel, and rely partly on uncrewed systems, but the larger problem is a system optimized around predictable events rather than rapid reaction.",
+      "sourcePath": "src/transcripts/txt/2026-04-26_T23-18-49_bruships-240-naval-history-questions-answered-live_jbjN1LmZz-8.txt",
+      "evidence": [
+        {
+          "start": "54:56",
+          "end": "55:08",
+          "note": "The audience asks how the British Navy could become more combat-ready quickly."
+        },
+        {
+          "start": "55:11",
+          "end": "55:39",
+          "note": "The answer lists quick measures such as buildouts, retired ships, reservists, retirees, and drones."
+        },
+        {
+          "start": "55:43",
+          "end": "56:59",
+          "note": "The transcript explains why drones and procurement speed are constrained by a system with little built-in slack."
+        }
+      ]
+    },
+    {
+      "id": "bruships-240-cancelled-cold-war-ships-qa",
+      "videoId": "jbjN1LmZz-8",
+      "slug": "bruships-240-cancelled-cold-war-ships-qa",
+      "title": "Saving cancelled Cold War ship classes",
+      "kind": "qa",
+      "start": "1:27:50",
+      "end": "1:31:05",
+      "topics": [
+        "live-q-and-a",
+        "naval-procurement",
+        "fleet-carriers",
+        "strategic-deterrence",
+        "force-structure"
+      ],
+      "question": "If you could save one cancelled Cold War or later ship class, which would you save and why?",
+      "answerShort": "The discussion favors CVA-01 for its likely Falklands deterrent effect, then considers Type 82, a fifth Resolution-class SSBN, and U.S. nuclear strike cruisers.",
+      "summary": "A cancelled-ship question compares CVA-01, Type 82, an extra British SSBN, and CSGN as different ways to preserve naval options.",
+      "body": "The answer is a compact procurement counterfactual. CVA-01 gets the strongest initial case because a carrier with Phantoms, Buccaneers, and airborne early warning might have deterred Argentina, while the follow-on discussion shows how saved classes can reshape escorts, deterrent availability, and cruiser mobility.",
+      "sourcePath": "src/transcripts/txt/2026-04-26_T23-18-49_bruships-240-naval-history-questions-answered-live_jbjN1LmZz-8.txt",
+      "evidence": [
+        {
+          "start": "1:27:50",
+          "end": "1:28:16",
+          "note": "The question asks which cancelled Cold War or later ship class the panel would save."
+        },
+        {
+          "start": "1:28:19",
+          "end": "1:28:47",
+          "note": "The answer makes the case for CVA-01 and its Falklands War implications."
+        },
+        {
+          "start": "1:29:20",
+          "end": "1:30:15",
+          "note": "The discussion adds Type 82, a fifth Resolution-class SSBN, and CSGN options."
+        }
+      ]
+    },
+    {
+      "id": "bruships-240-stanflex-five-inch-gun-qa",
+      "videoId": "jbjN1LmZz-8",
+      "slug": "bruships-240-stanflex-five-inch-gun-qa",
+      "title": "StanFlex and a five-inch gun",
+      "kind": "qa",
+      "start": "1:08:24",
+      "end": "1:09:19",
+      "topics": [
+        "live-q-and-a",
+        "danish-navy",
+        "modular-warship-design",
+        "naval-gunnery",
+        "naval-weapons"
+      ],
+      "question": "How big would StanFlex buckets need to be for a five-inch gun?",
+      "answerShort": "The answer recalls an extra-large or double-wide StanFlex-style arrangement, with earlier options considering both a five-inch gun and Mark 41 VLS.",
+      "summary": "A modular-warship question uses StanFlex to show why a five-inch gun is a much larger integration problem than a small module swap.",
+      "body": "This answer is useful for readers tracking modular ship design limits. Dr. Clarke notes that a five-inch gun was discussed as an extra-large or double-wide fit, and that the associated options included both the gun and a Mark 41 vertical-launch system rather than a simple plug-in module.",
+      "sourcePath": "src/transcripts/txt/2026-04-26_T23-18-49_bruships-240-naval-history-questions-answered-live_jbjN1LmZz-8.txt",
+      "evidence": [
+        {
+          "start": "1:08:24",
+          "end": "1:08:29",
+          "note": "The question asks how large StanFlex buckets would need to be for a five-inch gun."
+        },
+        {
+          "start": "1:08:29",
+          "end": "1:08:52",
+          "note": "The answer describes an extra-large or double-wide container concept."
+        },
+        {
+          "start": "1:09:02",
+          "end": "1:09:19",
+          "note": "The transcript says the considered options included a five-inch gun and Mark 41 VLS."
+        }
+      ]
+    },
+    {
+      "id": "bruships-240-japanese-kii-battleships-qa",
+      "videoId": "jbjN1LmZz-8",
+      "slug": "bruships-240-japanese-kii-battleships-qa",
+      "title": "Japan with Kii-style battleships in 1918",
+      "kind": "qa",
+      "start": "1:10:11",
+      "end": "1:21:58",
+      "topics": [
+        "live-q-and-a",
+        "japanese-navy",
+        "battleships",
+        "alternate-history",
+        "ship-design",
+        "naval-procurement"
+      ],
+      "question": "What if all Japanese battleships in 1918 became copies of the Ise and Kii designs?",
+      "answerShort": "A Kii-style Japanese battle line would be fast, heavily armed, and difficult for any navy to fight, forcing major British and American reactions.",
+      "summary": "The Japanese capital-ship counterfactual turns into a force-structure lesson on speed, gunpower, the Eight-Eight fleet, and foreign naval budgets.",
+      "body": "The panel treats the Kii version as especially disruptive because it combines near-30-knot speed, ten 16-inch guns, and heavy secondary armament across a large battle line. The answer emphasizes operational initiative: such ships could choose engagement terms, pressure every other major fleet, and force the Royal Navy and U.S. Navy into expensive responses.",
+      "sourcePath": "src/transcripts/txt/2026-04-26_T23-18-49_bruships-240-naval-history-questions-answered-live_jbjN1LmZz-8.txt",
+      "evidence": [
+        {
+          "start": "1:10:11",
+          "end": "1:10:49",
+          "note": "The question asks about Japanese battleships becoming Kii-style ships and lists major characteristics."
+        },
+        {
+          "start": "1:12:11",
+          "end": "1:13:08",
+          "note": "The transcript explains that a fast Japanese battle line could choose the time, place, and direction of engagement."
+        },
+        {
+          "start": "1:16:01",
+          "end": "1:17:39",
+          "note": "The panel discusses the size of the resulting force and how Japan could use an Eight-Eight-style fleet."
+        },
+        {
+          "start": "1:20:05",
+          "end": "1:20:57",
+          "note": "The answer notes that the design is only slightly ahead of Japanese plans and heavily armed against destroyer attack."
+        }
+      ]
+    },
+    {
+      "id": "bruships-240-coral-sea-night-surface-action-qa",
+      "videoId": "jbjN1LmZz-8",
+      "slug": "bruships-240-coral-sea-night-surface-action-qa",
+      "title": "Coral Sea night surface action counterfactual",
+      "kind": "qa",
+      "start": "3:00:00",
+      "end": "3:08:30",
+      "topics": [
+        "live-q-and-a",
+        "us-navy",
+        "japanese-navy",
+        "pacific-war",
+        "naval-doctrine",
+        "surface-warfare"
+      ],
+      "question": "What if Fletcher sent his surface fleet at Coral Sea to seek the Japanese carriers in a night action?",
+      "answerShort": "The answer says the outcome hinges on detection: U.S. radar and ships give a chance, but Japanese night optics and torpedoes make the risk severe, and losing escorts could undermine Midway.",
+      "summary": "A Coral Sea counterfactual weighs U.S. radar, Japanese night-fighting skill, destroyer torpedoes, escort losses, and the follow-on effect on Midway.",
+      "body": "This is a strong watch point for readers studying carrier battles as fleet operations rather than aircraft-only contests. Dr. Clarke argues that even if Lexington and Yorktown survived, losing cruisers and destroyers could make Midway impossible, while the night action itself would depend on who detected whom first.",
+      "sourcePath": "src/transcripts/txt/2026-04-26_T23-18-49_bruships-240-naval-history-questions-answered-live_jbjN1LmZz-8.txt",
+      "evidence": [
+        {
+          "start": "3:00:00",
+          "end": "3:00:41",
+          "note": "The question asks whether Fletcher could send his surface fleet to find the Japanese carrier force at night."
+        },
+        {
+          "start": "3:00:45",
+          "end": "3:01:23",
+          "note": "The answer says losing surface escorts could prevent a Midway operation even if the carriers survived."
+        },
+        {
+          "start": "3:01:23",
+          "end": "3:02:45",
+          "note": "The transcript compares U.S. radar and Japanese night visual systems."
+        },
+        {
+          "start": "3:02:45",
+          "end": "3:04:50",
+          "note": "The answer explains why straight-line night steaming and torpedoes would be dangerous."
+        },
+        {
+          "start": "3:04:50",
+          "end": "3:08:30",
+          "note": "The discussion closes by stressing detection order and using Cape Bon as a night-action example."
+        }
+      ]
+    },
+    {
+      "id": "bruships-240-modern-six-inch-naval-guns-qa",
+      "videoId": "jbjN1LmZz-8",
+      "slug": "bruships-240-modern-six-inch-naval-guns-qa",
+      "title": "Modern six-inch naval gun compatibility",
+      "kind": "qa",
+      "start": "4:00:57",
+      "end": "4:06:15",
+      "topics": [
+        "live-q-and-a",
+        "naval-gunnery",
+        "naval-weapons",
+        "ship-design",
+        "missiles"
+      ],
+      "question": "Could a new 155 mm or six-inch naval gun share ammunition compatibility with land artillery?",
+      "answerShort": "The answer says full shell commonality is unlikely, but guidance packages, explosives, and some subcomponents could overlap while naval guns remain larger, faster-firing ship systems.",
+      "summary": "A naval-gun question explains why six-inch ship artillery differs from land guns, even when both use similar nominal calibers.",
+      "body": "Dr. Clarke uses the question to unpack the scale of a ship gun system. Naval mounts can extend several decks into the ship, connect to shipboard fire-control systems, and fire larger or longer-ranged ammunition, so compatibility is more plausible in guidance or explosive components than in complete shells.",
+      "sourcePath": "src/transcripts/txt/2026-04-26_T23-18-49_bruships-240-naval-history-questions-answered-live_jbjN1LmZz-8.txt",
+      "evidence": [
+        {
+          "start": "4:00:57",
+          "end": "4:01:19",
+          "note": "The question asks about 155 mm naval guns and ammunition compatibility."
+        },
+        {
+          "start": "4:01:25",
+          "end": "4:02:30",
+          "note": "The answer explains why naval gun systems and shells are larger than land-artillery equivalents."
+        },
+        {
+          "start": "4:02:30",
+          "end": "4:03:20",
+          "note": "The transcript describes possible commonality in guidance packages or explosives rather than complete shells."
+        },
+        {
+          "start": "4:03:20",
+          "end": "4:06:15",
+          "note": "The answer connects naval guns to fire-control systems and specialized anti-drone or underwater-threat ammunition."
+        }
+      ]
     }
   ]
 }
