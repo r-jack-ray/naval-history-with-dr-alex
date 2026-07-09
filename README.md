@@ -8,23 +8,24 @@ The archive uses a segment-first model. The core curated unit is a video segment
 
 ## Current Status
 
-The repository is in early setup. It currently has:
+The repository currently has:
 
 - Node 22+ and TypeScript project scaffolding.
 - Strict TypeScript compilation.
 - Node's built-in test runner.
 - An Astro static site configured for GitHub Pages.
 - Pagefind indexing during site builds.
-- A deployed site shell with light, dark, and system theme switching.
-- A generated Astro archive data file built from channel inventory, YouTube metadata, and curated segment seeds.
-- One prototype video page, four segment pages, seven topic pages, and a Pagefind component search UI with filters.
-- A transcript-to-site-content process with a curation agent brief, Codex skill, backlog audit, and validation hook.
+- A deployed learner-facing study-guide site with light, dark, and system theme switching.
+- A generated Astro archive data file built from channel inventory, YouTube metadata, and curated per-video segment shards.
+- Dynamic video, segment, topic, and search pages backed by `site/src/data/generated/archive.json`.
+- A Pagefind component search UI with filters for result type, segment kind, topic, and video.
+- A transcript-to-site-content process with curation and audit agent briefs, Codex skills, backlog audit, and validation hooks.
 - A rate-limited YouTube channel link inventory script.
 - A source master episode list under `src/channel/`.
 - A local transcript store under `src/transcripts/`.
 - Planning notes under `task-notes/`.
 
-Full transcript-backed curation and broad topic expansion are still in progress.
+The generated archive already spans hundreds of video guides and thousands of curated segments. Transcript-backed curation and follow-up quality passes are still in progress.
 
 ## Project Layout
 
@@ -33,8 +34,13 @@ src/
   channel/                 Canonical channel inventory
     episodes.json          Master episode list
     video-metadata.json    YouTube Data API metadata store
-  derived/                 Curated segment/topic seeds for generated site data
-    prototype-segments.json
+  content/                 Site-content audit logic
+  derived/                 Curated site-content sources and curation bookkeeping
+    site-content-processing.config.json
+    site-content-processing.log
+    video-segments/        Source-of-truth curated study-guide content
+      topics.json          Shared topic records and aliases
+      video-<videoId>.json One curated segment shard per video
   scripts/                 TypeScript CLI entrypoints
   site/                    Site data generator and validation logic
   youtube/                 YouTube inventory helpers
@@ -56,7 +62,7 @@ reports/                   Generated reports and smoke-test output, ignored by G
 dist/                      Compiled JavaScript, ignored by Git
 ```
 
-Planned archive data will follow the structure in `task-notes/2026-07-07_T17-34-31-0500_naval-history-project-plan.md`, including `docs/videos/` and generated search assets.
+Curated public content currently lives in `src/derived/video-segments/`. There is no committed `docs/` tree at the moment; the public site is generated through Astro routes and `site/src/data/generated/archive.json`.
 
 ## Setup
 
@@ -75,6 +81,8 @@ npm test
 npm run check
 npm run audit:site-content
 npm run generate:site-data
+npm run site:check
+npm run site:build
 ```
 
 ## Website
@@ -92,7 +100,7 @@ npm run site:preview
 
 `npm run site:check` and `npm run site:build` regenerate `site/src/data/generated/archive.json` first. `npm run site:build` emits `site/dist/` and then runs Pagefind against that output. Do not commit generated `site/dist/` files.
 
-The current generated site demonstrates the intended route shape:
+The generated site exposes:
 
 - `/videos/<slug>/`: video metadata and curated segment links.
 - `/segments/<slug>/`: independently addressable segment or Q&A entries with timestamp links.
@@ -101,7 +109,7 @@ The current generated site demonstrates the intended route shape:
 
 ## Fetch Channel Video Links
 
-The inventory script uses the official YouTube Data API through `googleapis`. Set `YOUTUBE_API_KEY` before running API-backed commands. It defaults to one request per minute; this is conservative and can be lowered for official API runs.
+The inventory script uses the official YouTube Data API through `googleapis`. The npm scripts default to reading the API key from `reports/youtube-api-key.txt`; alternatively pass `--api-key` or `--api-key-file` after `--` when invoking the npm script. Direct CLI use can also read `YOUTUBE_API_KEY`. Fetching defaults to one request per minute; this is conservative and can be lowered for official API runs.
 
 YouTube Data API quota is tracked by Google project and resets at midnight Pacific Time. The default allocation is 10,000 units per day for most endpoints, with `playlistItems.list` and `videos.list` costing 1 unit per call. `search.list` has its own default limit of 100 calls per day, and `captions.list` costs 50 units per call. Check the official [YouTube Data API quota cost table](https://developers.google.com/youtube/v3/determine_quota_cost) before changing fetch strategy.
 
@@ -222,16 +230,16 @@ See `src/transcripts/README.md` for the storage layout.
 
 ## Content Model
 
-Use `segment` as the primary searchable object. Segment kinds currently planned:
+Use `segment` as the primary searchable object. Supported segment kinds are:
 
 - `chapter`
 - `notable_point`
 - `qa`
 - `transcript_excerpt`
 
-Every curated segment should eventually point back to a video ID, timestamp, canonical YouTube URL, source transcript file, and transcript evidence window.
+Every curated segment should point back to a video ID, timestamp, canonical YouTube URL, source transcript file, and transcript evidence window.
 
-The current prototype keeps Q&A as `kind: qa` inside the segment model rather than creating a separate question collection.
+Q&A stays as `kind: qa` inside the segment model rather than a separate question collection. Use it only for actual transcript-visible question and answer exchanges.
 
 ## Process Transcripts Into Site Content
 
@@ -255,7 +263,9 @@ Use `yes` or `no` for `needsFurtherProcessing`.
 For agent-driven work, use:
 
 - `.agents/transcript-content-curator.md`: role brief for transcript-backed curation.
-- `.codex/skills/naval-transcript-to-site-content/SKILL.md`: reusable workflow for converting transcript TXT/TSV evidence into `src/derived/prototype-segments.json`.
+- `.agents/site-content-auditor.md`: role brief for follow-up public wording, density, and evidence checks.
+- `.codex/skills/naval-transcript-to-site-content/SKILL.md`: reusable workflow for converting transcript TXT/TSV evidence into `src/derived/video-segments/video-<videoId>.json`.
+- `.codex/skills/naval-site-content-auditor/SKILL.md`: reusable workflow for strengthening existing segment notes.
 - `.codex/hooks/validate-content-pipeline.ps1`: audit, regenerate generated site data, run Astro checks, and optionally run the full repository check.
 
 The process is intentionally segment-first. Use `kind: qa` only for actual Q&A exchanges; keep lecture material as `chapter`, `notable_point`, or `transcript_excerpt`.
