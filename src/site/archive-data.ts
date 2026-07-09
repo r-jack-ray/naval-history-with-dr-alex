@@ -208,6 +208,7 @@ export function buildSiteArchiveData(input: {
   const topicSeedsBySlug = new Map(input.seed.topics.map((topic) => [topic.slug, topic]));
   const videoSeedsById = new Map(input.seed.videos.map((video) => [video.videoId, video]));
   const videoRecordsById = new Map<string, SiteVideo>();
+  const usedVideoSlugs = new Set<string>();
 
   for (const videoSeed of input.seed.videos) {
     const episode = episodesById.get(videoSeed.videoId);
@@ -215,12 +216,14 @@ export function buildSiteArchiveData(input: {
       throw new Error(`Site video seed references missing episode: ${videoSeed.videoId}`);
     }
 
-    videoRecordsById.set(videoSeed.videoId, buildSiteVideo({
+    const video = buildSiteVideo({
       episode,
       metadata: metadataById.get(videoSeed.videoId),
       topics: topicRefs(videoSeed.topics, topicSeedsBySlug),
       segmentSlugs: [],
-    }));
+    });
+    video.slug = uniqueVideoSlug(video.slug, video.videoId, usedVideoSlugs);
+    videoRecordsById.set(videoSeed.videoId, video);
   }
 
   const segments = input.seed.segments.map((segmentSeed) => {
@@ -418,6 +421,26 @@ function assertUnique(values: string[], label: string): void {
     }
     seen.add(value);
   }
+}
+
+function uniqueVideoSlug(candidate: string, videoId: string, usedSlugs: Set<string>): string {
+  if (!usedSlugs.has(candidate)) {
+    usedSlugs.add(candidate);
+    return candidate;
+  }
+
+  const idSuffix = slugifyVideoTitle(videoId) ?? videoId.toLowerCase();
+  const baseCandidate = `${candidate}-${idSuffix}`;
+  let routeSlug = baseCandidate;
+  let index = 2;
+
+  while (usedSlugs.has(routeSlug)) {
+    routeSlug = `${baseCandidate}-${index}`;
+    index += 1;
+  }
+
+  usedSlugs.add(routeSlug);
+  return routeSlug;
 }
 
 function thumbnailUrl(videoId: string, metadata: VideoMetadata | undefined): string {

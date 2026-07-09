@@ -28,6 +28,25 @@ test("rejects duplicate segment routes", () => {
   );
 });
 
+test("makes duplicate video title slugs route-unique", () => {
+  const input = sampleInput();
+  input.episodesStore.episodes.push({
+    videoId: "def456",
+    title: "Sample Video",
+    slug: "sample-video",
+    url: "https://www.youtube.com/watch?v=def456",
+  });
+  input.seed.videos.push({
+    videoId: "def456",
+    topics: ["destroyers"],
+  });
+
+  const archive = buildSiteArchiveData(input);
+
+  assert.equal(archive.videos[0]?.slug, "sample-video");
+  assert.equal(archive.videos[1]?.slug, "sample-video-def456");
+});
+
 test("rejects segment references to unknown topics", () => {
   const input = sampleInput();
   input.seed.segments[0]!.topics = ["missing-topic"];

@@ -85,12 +85,6 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
             <dt>Kind</dt>
             <dd>{segment.kindLabel}</dd>
           </div>
-          {segment.sourcePath && (
-            <div>
-              <dt>Transcript source</dt>
-              <dd>{segment.sourcePath}</dd>
-            </div>
-          )}
         </dl>
 
         {segment.evidence.length > 0 && (

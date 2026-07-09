@@ -15,7 +15,7 @@ const activeTopics = [...archiveTopics]
 
 <BaseLayout
   title="Naval History with Dr. Alex Archive"
-  description="Static reference archive for Naval History with Dr. Alex videos, segments, topics, and Q&A."
+  description="Browse Naval History with Dr. Alex videos by timestamp, subject, and Q&A."
   pageType="home"
 >
   <main id="content" class="home-page" data-pagefind-body>
@@ -24,8 +24,8 @@ const activeTopics = [...archiveTopics]
         <p class="eyebrow">Naval History Archive</p>
         <h1>Dr. Alex Clarke videos, organized by timestamp and topic.</h1>
         <p class="lede">
-          Browse channel videos through source metadata, transcript-backed segment notes, and
-          topic pages for ships, battles, navies, operations, and Q&A.
+          Browse channel videos through timestamped notes, source links, and topic pages for
+          ships, battles, navies, operations, and Q&A.
         </p>
         <div class="action-row">
           <a class="primary-link" href={`${baseUrl}videos/`}>Browse videos</a>
@@ -42,7 +42,7 @@ const activeTopics = [...archiveTopics]
           height="360"
         />
         <div>
-          <span>Featured video record</span>
+          <span>Featured video</span>
           <strong>{featuredVideo.title}</strong>
         </div>
       </a>
@@ -51,18 +51,18 @@ const activeTopics = [...archiveTopics]
     <section class="status-grid" aria-label="Archive sections">
       <article>
         <span class="label">Videos</span>
-        <h2>{archiveVideos.length} video records</h2>
-        <p>Each page collects metadata, source links, transcript state, and curated segments.</p>
+        <h2>{archiveVideos.length} videos</h2>
+        <p>Each page groups the YouTube link, key details, topics, and related timestamps.</p>
       </article>
       <article>
         <span class="label">Segments</span>
         <h2>{archiveSegments.length} timestamped segments</h2>
-        <p>Chapters, notable points, Q&A, and transcript excerpts stay distinct and searchable.</p>
+        <p>Chapters, notable points, Q&A, and source passages stay grouped by timestamp.</p>
       </article>
       <article>
         <span class="label">Topics</span>
         <h2>{archiveTopics.length} browsable topics</h2>
-        <p>Topic pages collect related videos and timestamped evidence under stable labels.</p>
+        <p>Topic pages collect related videos and timestamped notes under stable subject labels.</p>
       </article>
     </section>
 

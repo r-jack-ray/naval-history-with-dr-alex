@@ -15,11 +15,12 @@ const segments = segmentsForVideo(video);
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
+const formatSourceType = (sourceType: string) => sourceType === "stream" ? "Stream" : "Video";
 ---
 
 <BaseLayout
   title={`${video.title} | Naval History with Dr. Alex Archive`}
-  description={`Archive record for ${video.title}.`}
+  description={`Video page for ${video.title}.`}
   pageType="video"
 >
   <Fragment slot="head">
@@ -32,14 +33,13 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   <main id="content" class="video-page" data-pagefind-body>
     <section class="video-hero">
       <div class="video-hero-copy">
-        <p class="eyebrow">Video Record</p>
+        <p class="eyebrow">Video</p>
         <h1>{video.title}</h1>
         <div class="topic-row" aria-label="Topics">
           {video.topics.map((topic) => <a href={`${baseUrl}topics/${topic.slug}/`}>{topic.title}</a>)}
         </div>
         <p class="lede">
-          Source metadata, transcript state, topics, and curated timestamps for this channel
-          video.
+          YouTube link, key details, topics, and timestamped notes for this channel video.
         </p>
         <div class="action-row">
           <a class="primary-link" href={video.youtubeUrl}>Watch on YouTube</a>
@@ -68,26 +68,22 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
         <strong>{video.durationLabel}</strong>
       </article>
       <article>
-        <span class="label">Source type</span>
-        <strong>{video.sourceType}</strong>
+        <span class="label">Format</span>
+        <strong>{formatSourceType(video.sourceType)}</strong>
       </article>
       <article>
-        <span class="label">Transcript</span>
-        <strong>{video.transcriptStatus}</strong>
+        <span class="label">Segments</span>
+        <strong>{segments.length}</strong>
       </article>
     </section>
 
     <section class="video-details">
       <div>
-        <h2>Source metadata</h2>
+        <h2>Video details</h2>
         <dl class="metadata-list">
           <div>
             <dt>Video ID</dt>
             <dd>{video.videoId}</dd>
-          </div>
-          <div>
-            <dt>Inventory stem</dt>
-            <dd>{video.fileStem}</dd>
           </div>
           <div>
             <dt>Views</dt>
