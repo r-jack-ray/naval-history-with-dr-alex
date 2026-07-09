@@ -5,208 +5,285 @@
     "alternate-history",
     "royal-navy",
     "battlecruisers",
+    "battleships",
+    "british-defence-policy",
     "ship-design",
     "naval-architecture",
+    "naval-logistics",
+    "naval-procurement",
     "ship-modernization",
+    "ship-propulsion",
     "naval-treaties",
     "interwar-navy",
+    "mediterranean-theater",
     "naval-strategy",
-    "force-structure"
+    "force-structure",
+    "naval-weapons",
+    "world-war-i"
   ],
   "segments": [
     {
-      "id": "hms-tiger-15-inch-counterfactual-setup",
-      "slug": "hms-tiger-15-inch-counterfactual-setup",
-      "title": "HMS Tiger 15-inch upgrade counterfactual starts from the real ship constraints",
-      "kind": "notable_point",
-      "start": "0:00",
-      "end": "0:39",
-      "topics": [
-        "alternate-history",
-        "royal-navy",
-        "battlecruisers",
-        "ship-design"
-      ],
-      "summary": "The episode explicitly splits historical setup from alternate history before moving into HMS Tiger gun and barbette constraints.",
-      "body": "The later scenario is meant to rest on real history and ship-design constraints.",
-      "evidence": [
-        {
-          "start": "0:00",
-          "end": "0:39",
-          "note": "Opening explains the history-first structure and introduces the 13.5-inch barbette issue."
-        }
-      ],
+      "id": "tiger-barbette-and-hull-density-case",
       "videoId": "uqSLUFlWki8",
-      "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt"
-    },
-    {
-      "id": "tiger-barbette-15-inch-feasibility",
-      "slug": "tiger-barbette-15-inch-feasibility",
-      "title": "Tiger barbette feasibility for 15-inch guns",
+      "slug": "tiger-barbette-and-hull-density-case",
+      "title": "Tiger's hull makes a 15-inch refit physically plausible",
       "kind": "chapter",
-      "start": "0:39",
-      "end": "4:24",
+      "start": "0:37",
+      "end": "4:41",
       "topics": [
         "battlecruisers",
         "royal-navy",
         "naval-architecture",
         "ship-modernization"
       ],
-      "summary": "The technical opening compares 13.5-inch and 15-inch barbette requirements and Tiger hull dimensions.",
-      "body": "The opening grounds the Tiger counterfactual in physical engineering rather than wishful refitting. Dr. Clarke compares the 13.5-inch and 15-inch barbette requirements against the Tiger hull to ask whether the larger gun can fit at all. That makes the later strategic argument depend on ship dimensions, not only on a preference for heavier weapons.",
+      "summary": "The opening compares barbette diameters, beam, displacement density, and Queen Elizabeth-class dimensions to test whether Tiger could carry 15-inch turrets.",
+      "body": "This watch point starts the counterfactual with ship geometry rather than a simple wish for heavier guns. Dr. Clarke compares Tiger's 13.5-inch barbette spaces with the wider 15-inch Mark I turret requirements, then checks the hull against Queen Elizabeth, Renown, and Hood by density and beam. The result is a useful naval-architecture argument: Tiger would need serious work, but her size and construction put the idea inside the plausible range.",
+      "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
       "evidence": [
         {
-          "start": "0:39",
-          "end": "4:24",
-          "note": "The technical opening compares 13.5-inch and 15-inch barbette requirements and Tiger hull dimensions."
+          "start": "0:37",
+          "end": "1:15",
+          "note": "Compares the 13.5-inch and 15-inch barbette diameters and the extra width required."
+        },
+        {
+          "start": "1:18",
+          "end": "4:41",
+          "note": "Uses Tiger's beam, displacement density, and comparison ships to argue she could support the larger guns."
         }
-      ],
-      "videoId": "uqSLUFlWki8",
-      "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt"
+      ]
     },
     {
-      "id": "tiger-washington-treaty-viability",
-      "slug": "tiger-washington-treaty-viability",
-      "title": "Washington Naval Treaty viability for upgrading Tiger",
+      "id": "tiger-fast-battleship-edge-and-jutland-resilience",
+      "videoId": "uqSLUFlWki8",
+      "slug": "tiger-fast-battleship-edge-and-jutland-resilience",
+      "title": "Tiger sits near the fast-battleship edge before Jutland proves her resilience",
+      "kind": "notable_point",
+      "start": "4:42",
+      "end": "10:57",
+      "topics": [
+        "battlecruisers",
+        "battleships",
+        "royal-navy",
+        "world-war-i",
+        "ship-design"
+      ],
+      "summary": "The episode frames Tiger as a battlecruiser moving toward fast-battleship territory, then uses Jutland damage to show why the hull mattered.",
+      "body": "Dr. Clarke treats Tiger as one British route toward the fast battleship, with Queen Elizabeth approaching the same problem from the battleship side. Her speed, stability, size over Queen Mary, and heavy wartime punishment all matter to the refit question. The Jutland section is especially useful because it turns survivability into evidence for why Tiger remained an attractive retained capital ship.",
+      "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
+      "evidence": [
+        {
+          "start": "4:42",
+          "end": "6:06",
+          "note": "Describes Tiger as the battlecruiser-side approach toward fast-battleship qualities."
+        },
+        {
+          "start": "9:35",
+          "end": "10:57",
+          "note": "Reviews Jutland hits, damage, survival, and return to service as evidence of resilience."
+        }
+      ]
+    },
+    {
+      "id": "washington-treaty-blocks-tiger-main-armament-change",
+      "videoId": "uqSLUFlWki8",
+      "slug": "washington-treaty-blocks-tiger-main-armament-change",
+      "title": "Washington treaty rules block the historical Tiger gun change",
       "kind": "chapter",
-      "start": "11:13",
+      "start": "11:00",
       "end": "14:21",
       "topics": [
-        "battlecruisers",
         "naval-treaties",
-        "interwar-navy"
-      ],
-      "summary": "The treaty section asks whether an upgraded Tiger would exceed capital-ship limits.",
-      "body": "This partitions the legal/treaty argument from the physical refit argument.",
-      "evidence": [
-        {
-          "start": "11:13",
-          "end": "14:21",
-          "note": "The treaty section asks whether an upgraded Tiger would exceed capital-ship limits."
-        }
-      ],
-      "videoId": "uqSLUFlWki8",
-      "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt"
-    },
-    {
-      "id": "tiger-armour-density-and-internals",
-      "slug": "tiger-armour-density-and-internals",
-      "title": "Hull density and armour support",
-      "kind": "notable_point",
-      "start": "15:01",
-      "end": "15:58",
-      "topics": [
         "battlecruisers",
-        "naval-architecture",
-        "ship-design"
-      ],
-      "summary": "The transcript explains why denser internals and stronger subdivision matter when adding armour and heavy changes.",
-      "body": "The discussion captures the naval-architecture logic behind possible modernization.",
-      "evidence": [
-        {
-          "start": "15:01",
-          "end": "15:58",
-          "note": "The transcript explains why denser internals and stronger subdivision matter when adding armour and heavy changes."
-        }
-      ],
-      "videoId": "uqSLUFlWki8",
-      "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt"
-    },
-    {
-      "id": "tiger-courageous-turrets-opportunity",
-      "slug": "tiger-courageous-turrets-opportunity",
-      "title": "Courageous-class turrets create an upgrade opportunity",
-      "kind": "chapter",
-      "start": "16:21",
-      "end": "17:13",
-      "topics": [
-        "battlecruisers",
-        "ship-modernization",
+        "interwar-navy",
         "royal-navy"
       ],
-      "summary": "The episode notes that 15-inch guns and turrets from Courageous-class ships could be available.",
-      "body": "The discussion marks the material path that makes the alternate history easier.",
+      "summary": "The treaty passage explains why Tiger could fit under tonnage and gun limits yet still fail the reconstruction rule on main-armament changes.",
+      "body": "This section separates what was technically possible from what the treaty system allowed. Dr. Clarke reads the reconstruction rules that permitted defensive improvements but barred changes to side armor, caliber, number, or type of main-armament mounting except for named exemptions. Tiger therefore becomes a case study in how interwar treaty wording could stop a plausible engineering project.",
+      "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
       "evidence": [
         {
-          "start": "16:21",
-          "end": "17:13",
-          "note": "The episode notes that 15-inch guns and turrets from Courageous-class ships could be available."
+          "start": "11:00",
+          "end": "12:31",
+          "note": "Introduces Washington Naval Treaty replacement rules and the limit on main-armament changes."
+        },
+        {
+          "start": "13:00",
+          "end": "14:08",
+          "note": "Explains that Tiger would not exceed broad tonnage or 16-inch gun limits but still fails the reconstruction clause."
         }
-      ],
-      "videoId": "uqSLUFlWki8",
-      "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt"
+      ]
     },
     {
-      "id": "tiger-field-and-speed-strategy",
-      "slug": "tiger-field-and-speed-strategy",
-      "title": "Frederick Field and strategic speed logic",
+      "id": "courageous-turrets-and-british-rearmament-pace",
+      "videoId": "uqSLUFlWki8",
+      "slug": "courageous-turrets-and-british-rearmament-pace",
+      "title": "Courageous-class turrets make the hardware path easier",
+      "kind": "notable_point",
+      "start": "14:13",
+      "end": "18:25",
+      "topics": [
+        "naval-weapons",
+        "battlecruisers",
+        "ship-modernization",
+        "british-defence-policy",
+        "interwar-navy"
+      ],
+      "summary": "The discussion notes that 15-inch turrets from Courageous-class conversions existed in storage, then links that fact to Britain's measured rearmament choices.",
+      "body": "The counterfactual is not only about designing new turrets; Britain had large amounts of wartime material sitting available after conversions and treaty decisions. Dr. Clarke points to the Courageous-class 15-inch guns and turrets as a practical source for a Tiger rebuild. He then uses that stored hardware to push back against the idea that British rearmament was purely panicked, arguing instead for a politically measured pace before the Second World War.",
+      "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
+      "evidence": [
+        {
+          "start": "14:13",
+          "end": "16:29",
+          "note": "Explains the available Courageous-class 15-inch guns and why stored armament matters."
+        },
+        {
+          "start": "16:46",
+          "end": "18:25",
+          "note": "Connects stored guns, armor stocks, and buying options to Britain's measured rearmament pace."
+        }
+      ]
+    },
+    {
+      "id": "battlecruisers-as-rapid-response-force",
+      "videoId": "uqSLUFlWki8",
+      "slug": "battlecruisers-as-rapid-response-force",
+      "title": "Battlecruisers answer the Royal Navy's strategic-speed problem",
       "kind": "chapter",
-      "start": "25:15",
-      "end": "28:13",
+      "start": "18:29",
+      "end": "28:43",
       "topics": [
         "battlecruisers",
+        "naval-strategy",
+        "force-structure",
         "royal-navy",
-        "naval-strategy"
+        "naval-logistics"
       ],
-      "summary": "The scenario develops around Frederick Field, speed, and what the Royal Navy needs fast capital ships to do.",
-      "body": "The discussion separates operational rationale from pure gun replacement.",
+      "summary": "The video reframes Tiger around rapid response, Singapore timing, Frederick Field's thinking, and the need to move capital power across the empire quickly.",
+      "body": "This is the strategic core of the episode: Tiger matters because fast capital ships can arrive while a crisis is still unfolding. Dr. Clarke compares transit times from Portsmouth and Malta to Singapore, then links the need for speed to Frederick Field's long-range Royal Navy thinking and F3 preference. The section is a strong watch point for understanding why battlecruisers were not simply under-armored vanity projects, but tools for imperial response and task-group mobility.",
+      "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
       "evidence": [
         {
-          "start": "25:15",
-          "end": "28:13",
-          "note": "The scenario develops around Frederick Field, speed, and what the Royal Navy needs fast capital ships to do."
+          "start": "18:29",
+          "end": "21:21",
+          "note": "Frames the battlecruiser force as Britain's rapid-response force and compares Singapore transit timing."
+        },
+        {
+          "start": "26:08",
+          "end": "28:43",
+          "note": "Connects Frederick Field, F3 preferences, force projection, and battlecruiser strategic logic."
         }
-      ],
-      "videoId": "uqSLUFlWki8",
-      "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt"
+      ]
     },
     {
-      "id": "tiger-15-inch-standardisation",
-      "slug": "tiger-15-inch-standardisation",
-      "title": "15-inch standardisation instead of 16-inch escalation",
+      "id": "fifteen-inch-standardization-treaty-bargain",
+      "videoId": "uqSLUFlWki8",
+      "slug": "fifteen-inch-standardization-treaty-bargain",
+      "title": "A 15-inch standardization bargain changes the treaty path",
       "kind": "chapter",
-      "start": "32:20",
-      "end": "34:32",
+      "start": "32:07",
+      "end": "36:50",
       "topics": [
-        "battlecruisers",
         "naval-treaties",
-        "ship-modernization"
+        "naval-weapons",
+        "naval-procurement",
+        "royal-navy",
+        "alternate-history"
       ],
-      "summary": "The answer explores whether Britain might standardize on 15-inch guns rather than chase 16-inch guns.",
-      "body": "The answer moves from Tiger herself to British capital-ship standardization. Dr. Clarke asks whether the Royal Navy might have consolidated around the 15-inch gun instead of chasing a 16-inch escalation path. The point is useful because it links a single battlecruiser design choice to wider fleet planning and industrial continuity.",
+      "summary": "The alternate-history route asks whether Britain could trade away 16-inch ambitions in return for standardizing Tiger and future capital ships around 15-inch guns.",
+      "body": "Dr. Clarke offers two related political routes: make the Tiger work already underway, or bargain for British 15-inch standardization while other powers keep 16-inch prestige. The argument matters because it turns caliber into a treaty negotiation, industrial-logistics question, and fleet-standardization choice. The later tonnage discussion reminds viewers that Tiger's standard and full-load displacement figures complicate simple claims about how large the ship really was.",
+      "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
       "evidence": [
         {
-          "start": "32:20",
-          "end": "34:32",
-          "note": "The answer explores whether Britain might standardize on 15-inch guns rather than chase 16-inch guns."
+          "start": "32:07",
+          "end": "34:19",
+          "note": "Introduces the two treaty paths and the logic of standardizing on 15-inch guns."
+        },
+        {
+          "start": "34:23",
+          "end": "36:50",
+          "note": "Discusses 3,000 tons of treaty allowance, full-load implications, and Tiger's size relative to Renown and Repulse."
         }
-      ],
-      "videoId": "uqSLUFlWki8",
-      "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt"
+      ]
     },
     {
-      "id": "tiger-fast-capital-ship-fleet-effects",
-      "slug": "tiger-fast-capital-ship-fleet-effects",
-      "title": "Fleet effects of a rebuilt Tiger",
-      "kind": "chapter",
-      "start": "48:18",
-      "end": "57:25",
+      "id": "rebuilt-tiger-boilers-layout-and-role",
+      "videoId": "uqSLUFlWki8",
+      "slug": "rebuilt-tiger-boilers-layout-and-role",
+      "title": "The rebuilt Tiger becomes a boiler, layout, and endurance problem",
+      "kind": "notable_point",
+      "start": "38:00",
+      "end": "50:57",
       "topics": [
+        "ship-modernization",
+        "ship-propulsion",
         "battlecruisers",
-        "royal-navy",
-        "force-structure"
+        "force-structure",
+        "royal-navy"
       ],
-      "summary": "The later section considers Tiger alongside Hood, Renown, and Repulse as a fast 15-inch capital-ship group.",
-      "body": "The later section tests the rebuilt Tiger against a fast capital-ship force that already includes Hood, Renown, and Repulse. Dr. Clarke uses the grouping to ask whether another 15-inch fast ship changes deployment choices, deterrence, and the balance between legacy battlecruisers and newer capital ships. The counterfactual payoff is fleet composition, not just a larger gun fit.",
+      "summary": "The reconstruction sketch moves from 15-inch barbettes to oil firing, boiler replacement, deck-space changes, endurance, and how a fourth fast capital ship affects availability.",
+      "body": "This watch point shows the refit as a whole-ship modernization, not just a turret swap. Dr. Clarke discusses oil firing, boiler replacement, stack arrangements, secondary-gun deck space, and whether new machinery could improve speed and range. The force-generation argument then explains why a fourth fast capital ship matters: when one is in refit, the Royal Navy still has more deployable fast power available.",
+      "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
       "evidence": [
         {
-          "start": "48:18",
-          "end": "57:25",
-          "note": "The later section considers Tiger alongside Hood, Renown, and Repulse as a fast 15-inch capital-ship group."
+          "start": "38:00",
+          "end": "39:49",
+          "note": "Sketches the possible rebuilt Tiger, including boilers, stacks, deck space, and rearranged 4-inch guns."
+        },
+        {
+          "start": "45:01",
+          "end": "48:12",
+          "note": "Frames the rebuild as a way to buy time and improve fast-capital-ship force generation."
+        },
+        {
+          "start": "49:03",
+          "end": "50:57",
+          "note": "Links oil firing, endurance, range, appearance, and treaty acceptance of a reconstruction already underway."
         }
-      ],
+      ]
+    },
+    {
+      "id": "fast-capital-ship-force-structure-effects",
       "videoId": "uqSLUFlWki8",
-      "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt"
+      "slug": "fast-capital-ship-force-structure-effects",
+      "title": "More fast 15-inch ships reshape British force structure",
+      "kind": "chapter",
+      "start": "54:24",
+      "end": "1:09:48",
+      "topics": [
+        "force-structure",
+        "naval-strategy",
+        "royal-navy",
+        "battlecruisers",
+        "battleships",
+        "naval-treaties",
+        "mediterranean-theater"
+      ],
+      "summary": "The final scenario expands from Tiger to F3-style capital ships, two battle lines, German raider choices, carrier demands, and possible eastern basing.",
+      "body": "The ending broadens the single-ship counterfactual into a Royal Navy force-structure exercise. Dr. Clarke asks what happens if Britain keeps 15-inch commonality, builds three or four new fast capital ships, and combines them with Tiger, Hood, Renown, Repulse, the Queen Elizabeths, and the Rs. The payoff is strategic rather than cosmetic: more fast heavy ships affect deterrence, German surface-raider logic, carrier design pressure, and where Britain might base an additional battle squadron.",
+      "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
+      "evidence": [
+        {
+          "start": "54:24",
+          "end": "57:54",
+          "note": "Explores a treaty bargain that yields 15-inch standardization and a larger fast capital-ship force."
+        },
+        {
+          "start": "58:57",
+          "end": "1:00:58",
+          "note": "Describes two battle lines, task-group generation, and deterrent value from multiple fast 15-inch ships."
+        },
+        {
+          "start": "1:01:03",
+          "end": "1:05:54",
+          "note": "Discusses refits, German raider implications, World War II deployments, carrier pressure, and strategic speed."
+        },
+        {
+          "start": "1:06:31",
+          "end": "1:09:48",
+          "note": "Ends with the 15-inch standardization question, capital-ship numbers, and possible Ceylon or west India basing."
+        }
+      ]
     }
   ]
 }

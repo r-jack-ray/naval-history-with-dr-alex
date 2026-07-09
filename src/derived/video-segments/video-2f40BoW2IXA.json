@@ -4,46 +4,286 @@
   "topics": [
     "ship-design",
     "naval-procurement",
+    "naval-architecture",
+    "ship-propulsion",
     "naval-weapons",
-    "modern-navy",
-    "naval-architecture"
+    "naval-doctrine",
+    "naval-personnel",
+    "royal-navy",
+    "air-defence",
+    "naval-policy",
+    "naval-history",
+    "anti-submarine-warfare",
+    "naval-aviation",
+    "battle-of-jutland"
   ],
   "segments": [
     {
-      "id": "warship-trials-de-risk-service-entry",
-      "slug": "warship-trials-de-risk-service-entry",
-      "title": "Warship trials de-risk service entry",
-      "kind": "notable_point",
+      "id": "build-quality-class-variation",
+      "videoId": "2f40BoW2IXA",
+      "slug": "build-quality-class-variation",
+      "title": "Build quality and class variation",
+      "kind": "chapter",
       "start": "1:53",
-      "end": "9:08",
+      "end": "4:11",
       "topics": [
         "ship-design",
-        "naval-procurement",
-        "naval-weapons",
-        "modern-navy",
-        "naval-architecture"
+        "naval-architecture",
+        "naval-procurement"
       ],
-      "summary": "The opening explains how warship trials expose build variation, performance, shock resilience, systems integration, and weapons readiness before service.",
-      "body": "Testing matters because each ship is a complex system whose construction, machinery, sensors, weapons, and software can diverge from assumptions before operational use.",
+      "summary": "The opening watch point explains why ships in the same class still need trials: small build, machinery, and weight differences add up at warship scale.",
+      "body": "Dr. Clarke starts with the practical problem that warships are not assembly-line products. Bulkhead placement, steel thickness, machinery variants, and other small changes can accumulate into tons of difference across a large vessel. This is the foundation for why trials have to test the actual ship rather than only trusting the design intent.",
+      "sourcePath": "src/transcripts/txt/2026-05-23_T18-30-06_trials-and-tribulations-why-testing-warships-matters_2f40BoW2IXA.txt",
       "evidence": [
         {
           "start": "1:53",
-          "end": "4:11",
-          "note": "The transcript moves from build-quality variation into speed, efficiency, maneuvering, and range testing."
+          "end": "2:57",
+          "note": "The transcript describes same-class ships varying by steel, bulkhead placement, and construction choices."
         },
         {
-          "start": "4:11",
-          "end": "6:03",
-          "note": "Shock trials are framed as valuable but costly and potentially damaging tests before service."
-        },
-        {
-          "start": "6:09",
-          "end": "9:08",
-          "note": "The transcript covers systems checks, vibration interactions, weapons testing, and de-risking future systems on current ships."
+          "start": "2:59",
+          "end": "3:36",
+          "note": "Engine variants and many small system changes are described as adding up to tens or hundreds of tons."
         }
-      ],
+      ]
+    },
+    {
+      "id": "speed-trials-and-commissioning-politics",
       "videoId": "2f40BoW2IXA",
-      "sourcePath": "src/transcripts/txt/2026-05-23_T18-30-06_trials-and-tribulations-why-testing-warships-matters_2f40BoW2IXA.txt"
+      "slug": "speed-trials-and-commissioning-politics",
+      "title": "Speed trials and commissioning politics",
+      "kind": "notable_point",
+      "start": "19:27",
+      "end": "23:39",
+      "topics": [
+        "naval-procurement",
+        "ship-propulsion",
+        "naval-policy",
+        "naval-history"
+      ],
+      "summary": "A speed-trial discussion uses Seydlitz and British-German practice to show how timing, loading, crew status, and budget politics shape reported performance.",
+      "body": "The segment distinguishes useful trial data from headline-friendly trial numbers. German and British practices differed over whether ships were commissioned before or after trials, and a lightly loaded ship could produce impressive top-speed claims that did not fully match wartime operating conditions. The useful lesson is that speed and efficiency figures are evidence only when the trial conditions are understood.",
+      "sourcePath": "src/transcripts/txt/2026-05-23_T18-30-06_trials-and-tribulations-why-testing-warships-matters_2f40BoW2IXA.txt",
+      "evidence": [
+        {
+          "start": "19:27",
+          "end": "20:09",
+          "note": "The transcript contrasts British and German commissioning and trial practice around Seydlitz."
+        },
+        {
+          "start": "20:14",
+          "end": "22:30",
+          "note": "The transcript explains how loading, budget optics, and civilian or naval crews affect trial statistics."
+        },
+        {
+          "start": "22:30",
+          "end": "23:39",
+          "note": "The transcript ties speed and efficiency tests to class similarity, hull quality, and real water behavior."
+        }
+      ]
+    },
+    {
+      "id": "first-crew-finds-layout-problems",
+      "videoId": "2f40BoW2IXA",
+      "slug": "first-crew-finds-layout-problems",
+      "title": "First crews find layout problems",
+      "kind": "chapter",
+      "start": "10:27",
+      "end": "16:29",
+      "topics": [
+        "naval-personnel",
+        "ship-design",
+        "royal-navy"
+      ],
+      "summary": "The Queen Elizabeth and Type 45 examples show why crew feedback during construction catches usability, safety, and maintenance problems before they become permanent.",
+      "body": "This watch point treats a warship as a working environment, not just a set of drawings. Early crews test whether command-center seats, access routes, firefighting gear, and maintenance spaces actually work for people under pressure. Dr. Clarke's Type 45 example shows how a theoretically acceptable position for firefighting equipment became a practical damage-control problem once crews tested how they would reach it.",
+      "sourcePath": "src/transcripts/txt/2026-05-23_T18-30-06_trials-and-tribulations-why-testing-warships-matters_2f40BoW2IXA.txt",
+      "evidence": [
+        {
+          "start": "10:27",
+          "end": "12:22",
+          "note": "The transcript frames modern ships as systems of systems and describes Queen Elizabeth's early crew involvement."
+        },
+        {
+          "start": "12:43",
+          "end": "14:24",
+          "note": "The transcript uses command-center chairs to explain comfort, access, shock support, and alertness."
+        },
+        {
+          "start": "14:27",
+          "end": "16:29",
+          "note": "The transcript gives the Type 45 firefighting-gear placement example and explains why early crew testing matters."
+        }
+      ]
+    },
+    {
+      "id": "maneuvering-tests-and-survivability",
+      "videoId": "2f40BoW2IXA",
+      "slug": "maneuvering-tests-and-survivability",
+      "title": "Maneuvering tests and survivability",
+      "kind": "notable_point",
+      "start": "24:01",
+      "end": "27:21",
+      "topics": [
+        "naval-doctrine",
+        "ship-design",
+        "anti-submarine-warfare",
+        "naval-aviation"
+      ],
+      "summary": "The maneuvering section connects zigzagging, crash stops, decoy use, and aircraft or torpedo threats to why ships must be tested beyond steady-speed runs.",
+      "body": "Dr. Clarke explains that maneuvering trials are a separate problem from speed and endurance runs. Warships need to change speed, crash stop, zigzag, and make erratic movements because survival can depend on being a harder torpedo, missile, or bombing target. The segment also shows how maneuvering can expose hidden problems inside the ship, such as a carrier fuel-management issue that only appears under motion.",
+      "sourcePath": "src/transcripts/txt/2026-05-23_T18-30-06_trials-and-tribulations-why-testing-warships-matters_2f40BoW2IXA.txt",
+      "evidence": [
+        {
+          "start": "24:01",
+          "end": "25:17",
+          "note": "The transcript connects zigzagging, steering gear, crash stops, and machinery stress to maneuvering trials."
+        },
+        {
+          "start": "25:17",
+          "end": "26:34",
+          "note": "The transcript describes high-speed battle movement, erratic maneuvers, decoys, torpedoes, and missiles."
+        },
+        {
+          "start": "26:36",
+          "end": "27:21",
+          "note": "The transcript notes that maneuvering tests can reveal internal system problems such as carrier fuel-management behavior."
+        }
+      ]
+    },
+    {
+      "id": "machinery-shock-and-quieting-checks",
+      "videoId": "2f40BoW2IXA",
+      "slug": "machinery-shock-and-quieting-checks",
+      "title": "Machinery shock and quieting checks",
+      "kind": "notable_point",
+      "start": "27:37",
+      "end": "32:13",
+      "topics": [
+        "ship-propulsion",
+        "naval-architecture",
+        "anti-submarine-warfare"
+      ],
+      "summary": "The HMAS Diamantina and computer-shock examples show why machinery, bearings, rafting, and quieting systems have to be tested as fitted.",
+      "body": "This section moves from the visible simplicity of older steam machinery to the many bearings, components, and interactions that can fail under maneuvering or explosive shock. Dr. Clarke uses computer damage as a familiar analogy for why modern electronics and machinery mounts need shock and vibration checks. The point is especially important for quieting systems: rafting only helps if it still absorbs vibration rather than locking solid.",
+      "sourcePath": "src/transcripts/txt/2026-05-23_T18-30-06_trials-and-tribulations-why-testing-warships-matters_2f40BoW2IXA.txt",
+      "evidence": [
+        {
+          "start": "27:37",
+          "end": "29:24",
+          "note": "The transcript uses HMAS Diamantina to explain the complexity of triple-expansion machinery and fitted systems."
+        },
+        {
+          "start": "29:29",
+          "end": "31:24",
+          "note": "The transcript compares computer shock damage with the need to protect shipboard electronics."
+        },
+        {
+          "start": "31:27",
+          "end": "32:13",
+          "note": "The transcript explains checking rafting and vibration absorption for quieting and survivability."
+        }
+      ]
+    },
+    {
+      "id": "sensors-electronics-and-type-45-integration",
+      "videoId": "2f40BoW2IXA",
+      "slug": "sensors-electronics-and-type-45-integration",
+      "title": "Sensors, electronics, and Type 45 integration",
+      "kind": "chapter",
+      "start": "36:37",
+      "end": "44:00",
+      "topics": [
+        "air-defence",
+        "ship-design",
+        "naval-weapons",
+        "royal-navy"
+      ],
+      "summary": "The electronics section explains how ship motion, radar interactions, VLS behavior, and Type 45 test facilities reveal integration risks before deployment.",
+      "body": "Modern warships need finely calibrated weapons, sensors, software, and ship-motion data to agree with each other. Dr. Clarke explains how gun stabilization, missile launchers, and radar fits can behave differently once the actual ship's stability and vibration profile is known. The Type 45 discussion shows why shore test facilities such as the Sampson radar setup matter even when final proof still has to come at sea.",
+      "sourcePath": "src/transcripts/txt/2026-05-23_T18-30-06_trials-and-tribulations-why-testing-warships-matters_2f40BoW2IXA.txt",
+      "evidence": [
+        {
+          "start": "36:37",
+          "end": "38:31",
+          "note": "The transcript describes sensors, gun stabilization, VLS behavior, and computer assumptions being challenged by real ship behavior."
+        },
+        {
+          "start": "38:37",
+          "end": "40:38",
+          "note": "The transcript describes Type 45 Sampson radar test facilities and repeated integration testing."
+        },
+        {
+          "start": "40:41",
+          "end": "44:00",
+          "note": "The transcript links radar history and interference problems to why modern system integration needs careful testing."
+        }
+      ]
+    },
+    {
+      "id": "weapons-testing-after-jutland",
+      "videoId": "2f40BoW2IXA",
+      "slug": "weapons-testing-after-jutland",
+      "title": "Weapons testing after Jutland",
+      "kind": "notable_point",
+      "start": "48:52",
+      "end": "52:31",
+      "topics": [
+        "battle-of-jutland",
+        "naval-weapons",
+        "royal-navy",
+        "naval-doctrine"
+      ],
+      "summary": "A Jutland-derived lesson explains why navies test guns, shells, torpedoes, and missile systems before trusting them in battle.",
+      "body": "Dr. Clarke argues that Royal Navy experience after Jutland pushed a lasting concern with weapons performance and night-fighting readiness. The key lesson is not only whether a weapon exists, but whether the whole chain of shells, torpedoes, fire-control assumptions, and later missile systems works under operational conditions. This is a useful watch point for understanding why weapon trials are about lives, ships, and national risk rather than box-ticking.",
+      "sourcePath": "src/transcripts/txt/2026-05-23_T18-30-06_trials-and-tribulations-why-testing-warships-matters_2f40BoW2IXA.txt",
+      "evidence": [
+        {
+          "start": "48:52",
+          "end": "51:40",
+          "note": "The transcript links Jutland, night-fighting concerns, and weapons testing to Royal Navy development habits."
+        },
+        {
+          "start": "51:47",
+          "end": "52:31",
+          "note": "The transcript explains continuing weapons testing for upgraded missiles, guns, shells, ships, and national survival."
+        }
+      ]
+    },
+    {
+      "id": "shock-trials-and-ship-manuals",
+      "videoId": "2f40BoW2IXA",
+      "slug": "shock-trials-and-ship-manuals",
+      "title": "Shock trials and ship manuals",
+      "kind": "chapter",
+      "start": "52:33",
+      "end": "1:07:29",
+      "topics": [
+        "ship-design",
+        "naval-architecture",
+        "naval-personnel",
+        "naval-doctrine"
+      ],
+      "summary": "The closing chapter shows why physical shock trials, commissioning crews, manuals, refit updates, and exercises turn test data into the ship's operating culture.",
+      "body": "Shock trials are presented as the most punishing proof of whether a warship's design assumptions survive contact with real force. Dr. Clarke argues that computer modeling can help, but the first-in-class ship still needs hard data that crews, funders, and future operators can trust. The later discussion follows that data into manuals, standard procedures, refit updates, and exercises with other ships, aircraft, and auxiliaries.",
+      "sourcePath": "src/transcripts/txt/2026-05-23_T18-30-06_trials-and-tribulations-why-testing-warships-matters_2f40BoW2IXA.txt",
+      "evidence": [
+        {
+          "start": "52:33",
+          "end": "57:35",
+          "note": "The transcript explains shock trials, their cost, the limits of computer-only testing, and the need for hard data."
+        },
+        {
+          "start": "57:38",
+          "end": "1:02:29",
+          "note": "The transcript explains how commissioning crews turn trial data into manuals, procedures, and later refit updates."
+        },
+        {
+          "start": "1:03:10",
+          "end": "1:07:29",
+          "note": "The transcript shows exercise and operations revealing integration, communications, aviation, accommodation, and support issues."
+        }
+      ]
     }
   ]
 }
