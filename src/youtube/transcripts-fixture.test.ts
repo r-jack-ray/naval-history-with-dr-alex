@@ -77,9 +77,9 @@ test("stores transcript JSON, TXT, TSV, and manifest under a local root", async 
 
     const manifest = JSON.parse(await readFile(paths.manifestOutput, "utf8"));
     assert.equal(manifest.transcripts[0].videoId, "abc123");
-    assert.equal(manifest.transcripts[0].fileStem, "2026-06-14_T05-29-19-0500_ships-and-strategy-a-test_abc123");
+    assert.equal(manifest.transcripts[0].fileStem, "2026-06-14_T05-29-19_ships-and-strategy-a-test_abc123");
     assert.equal(manifest.transcripts[0].videoTitle, "Ships & Strategy: A Test!");
-    assert.equal(manifest.transcripts[0].paths.json, "json/2026-06-14_T05-29-19-0500_ships-and-strategy-a-test_abc123.json");
+    assert.equal(manifest.transcripts[0].paths.json, "json/2026-06-14_T05-29-19_ships-and-strategy-a-test_abc123.json");
     assert.equal((await readVideoTranscriptJson(paths.jsonOutput)).source, "youtube-transcript-plus");
 
     const stored = await findStoredTranscriptRecord({ videoId: "abc123", root: dir, language: "en" });

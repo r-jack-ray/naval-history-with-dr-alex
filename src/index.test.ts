@@ -36,9 +36,9 @@ test("builds direct YouTube timestamp links", () => {
 
 test("builds readable video file stems", () => {
   assert.equal(slugifyVideoTitle("Ships & Strategy: A Test!"), "ships-and-strategy-a-test");
-  assert.equal(archiveTimestampPrefix("2026-06-14T05:29:19-05:00"), "2026-06-14_T05-29-19-0500");
+  assert.equal(archiveTimestampPrefix("2026-06-14T05:29:19-05:00"), "2026-06-14_T05-29-19");
   assert.equal(
     videoFileStem("abc123", "Ships & Strategy: A Test!", "2026-06-14T05:29:19-05:00"),
-    "2026-06-14_T05-29-19-0500_ships-and-strategy-a-test_abc123",
+    "2026-06-14_T05-29-19_ships-and-strategy-a-test_abc123",
   );
 });

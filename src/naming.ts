@@ -47,14 +47,6 @@ export function archiveTimestampPrefix(value: string): string | undefined {
     return undefined;
   }
 
-  const [, date, hour, minute, second, offset] = match;
-  const normalizedOffset = offset === undefined
-    ? undefined
-    : offset === "Z"
-      ? ""
-      : offset.replace(":", "");
-
-  return normalizedOffset
-    ? `${date}_T${hour}-${minute}-${second}${normalizedOffset}`
-    : `${date}_T${hour}-${minute}-${second}`;
+  const [, date, hour, minute, second] = match;
+  return `${date}_T${hour}-${minute}-${second}`;
 }

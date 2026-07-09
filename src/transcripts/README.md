@@ -18,9 +18,9 @@ src/transcripts/
 Use a readable filename stem that keeps the YouTube video ID at the end:
 
 ```text
-json/2026-06-14_T05-29-19-0500_title-slug_videoId.json
-txt/2026-06-14_T05-29-19-0500_title-slug_videoId.txt
-tsv/2026-06-14_T05-29-19-0500_title-slug_videoId.tsv
+json/2026-06-14_T05-29-19_title-slug_videoId.json
+txt/2026-06-14_T05-29-19_title-slug_videoId.txt
+tsv/2026-06-14_T05-29-19_title-slug_videoId.tsv
 ```
 
 If an exact publish or stream timestamp is not known, omit the timestamp prefix
