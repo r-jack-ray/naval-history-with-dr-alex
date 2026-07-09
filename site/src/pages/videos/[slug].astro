@@ -16,11 +16,12 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 const formatSourceType = (sourceType: string) => sourceType === "stream" ? "Stream" : "Video";
+const timestampCountLabel = (count: number) => count === 1 ? "1 timestamp" : `${count} timestamps`;
 ---
 
 <BaseLayout
-  title={`${video.title} | Naval History with Dr. Alex Archive`}
-  description={`Video page for ${video.title}.`}
+  title={`${video.title} | Naval History with Dr. Alex Study Guide`}
+  description={`${video.title} timestamp guide for learning naval history with Dr. Alex Clarke.`}
   pageType="video"
 >
   <Fragment slot="head">
@@ -39,11 +40,12 @@ const formatSourceType = (sourceType: string) => sourceType === "stream" ? "Stre
           {video.topics.map((topic) => <a href={`${baseUrl}topics/${topic.slug}/`}>{topic.title}</a>)}
         </div>
         <p class="lede">
-          YouTube link, key details, topics, and timestamped notes for this channel video.
+          A timestamp guide to the naval history, strategy, technology, and institutions
+          covered in this Dr. Clarke video.
         </p>
         <div class="action-row">
           <a class="primary-link" href={video.youtubeUrl}>Watch on YouTube</a>
-          <a class="secondary-link" href="#segments">View segments</a>
+          <a class="secondary-link" href="#segments">View timestamps</a>
         </div>
       </div>
 
@@ -58,13 +60,13 @@ const formatSourceType = (sourceType: string) => sourceType === "stream" ? "Stre
       </div>
     </section>
 
-    <section class="detail-grid" aria-label="Video metadata">
+    <section class="detail-grid" aria-label="Video overview">
       <article>
         <span class="label">Published</span>
         <strong>{video.publishedLabel}</strong>
       </article>
       <article>
-        <span class="label">Duration</span>
+        <span class="label">Runtime</span>
         <strong>{video.durationLabel}</strong>
       </article>
       <article>
@@ -72,43 +74,24 @@ const formatSourceType = (sourceType: string) => sourceType === "stream" ? "Stre
         <strong>{formatSourceType(video.sourceType)}</strong>
       </article>
       <article>
-        <span class="label">Segments</span>
-        <strong>{segments.length}</strong>
+        <span class="label">Guide points</span>
+        <strong>{timestampCountLabel(segments.length)}</strong>
       </article>
     </section>
 
-    <section class="video-details">
+    <section id="segments" class="video-details">
       <div>
-        <h2>Video details</h2>
-        <dl class="metadata-list">
-          <div>
-            <dt>Video ID</dt>
-            <dd>{video.videoId}</dd>
-          </div>
-          <div>
-            <dt>Views</dt>
-            <dd>{video.stats.views ?? video.viewCountLabel}</dd>
-          </div>
-          <div>
-            <dt>Likes</dt>
-            <dd>{video.stats.likes ?? "Unavailable"}</dd>
-          </div>
-          <div>
-            <dt>Comments</dt>
-            <dd>{video.stats.comments ?? "Unavailable"}</dd>
-          </div>
-        </dl>
-      </div>
-
-      <div id="segments">
-        <h2>Curated segments</h2>
+        <h2>Timestamp guide</h2>
         <ol class="segment-list">
           {
             segments.map((segment) => (
               <li>
                 <a href={`${baseUrl}segments/${segment.slug}/`}>
                   <span>{segment.start}</span>
-                  <strong>{segment.title}</strong>
+                  <div>
+                    <strong>{segment.title}</strong>
+                    <p>{segment.summary}</p>
+                  </div>
                   <small>{segment.kindLabel}</small>
                 </a>
               </li>

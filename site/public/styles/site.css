@@ -621,9 +621,6 @@ h1 {
 }
 
 .video-details {
-  display: grid;
-  grid-template-columns: minmax(0, 0.86fr) minmax(320px, 1.14fr);
-  gap: 22px;
   margin-top: 24px;
 }
 
@@ -696,6 +693,17 @@ h1 {
 .segment-list strong {
   color: var(--ink);
   line-height: 1.35;
+}
+
+.segment-list div {
+  min-width: 0;
+}
+
+.segment-list p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.45;
 }
 
 .segment-list small {

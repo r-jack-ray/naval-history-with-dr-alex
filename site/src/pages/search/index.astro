@@ -11,8 +11,8 @@ const popularTopics = [...archiveTopics]
 ---
 
 <BaseLayout
-  title="Search | Naval History with Dr. Alex Archive"
-  description="Search Naval History with Dr. Alex videos, topics, and timestamped notes."
+  title="Search | Naval History with Dr. Alex Study Guide"
+  description="Search Dr. Alex Clarke videos by subject, topic, and timestamp."
   pageType="search"
 >
   <Fragment slot="head">
@@ -23,17 +23,18 @@ const popularTopics = [...archiveTopics]
   <main id="content" class="page-shell" data-pagefind-body>
     <section class="section-heading">
       <p class="eyebrow">Search</p>
-      <h1>Find videos, topics, and segment notes.</h1>
+      <h1>Search ships, navies, battles, and ideas.</h1>
       <p class="lede">
-        Search across videos, timestamped notes, topic pages, and source passages.
+        Search the timestamped notes, topic pages, and video titles to find the
+        Dr. Clarke moment that matches what you want to learn.
       </p>
     </section>
 
     <section class="search-panel" aria-label="Site search">
       <pagefind-config bundle-path={`${baseUrl}pagefind/`} base-url={baseUrl} faceted></pagefind-config>
-      <pagefind-input placeholder="Search ships, battles, navies, and questions"></pagefind-input>
+      <pagefind-input placeholder="Search ships, battles, navies, weapons, strategy"></pagefind-input>
       <pagefind-filter-pane show-empty="false" sort="alphabetical" open="type,kind,topic,video"></pagefind-filter-pane>
-      <pagefind-summary default-message="Search videos, timestamped notes, and topics."></pagefind-summary>
+      <pagefind-summary default-message="Search video guides, timestamped notes, and topics."></pagefind-summary>
       <pagefind-results show-images="false"></pagefind-results>
     </section>
 
@@ -41,7 +42,7 @@ const popularTopics = [...archiveTopics]
       <div class="section-title-row">
         <div>
           <p class="eyebrow">Topics</p>
-          <h2 id="popular-topics-heading">Common searches</h2>
+          <h2 id="popular-topics-heading">Starting points</h2>
         </div>
       </div>
       <div class="topic-cloud" aria-label="Common searches">
