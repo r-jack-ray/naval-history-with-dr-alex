@@ -11,9 +11,9 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` when converting
 
 1. Read `AGENTS.md` and `.agents/transcript-content-curator.md`.
 2. Verify local dependencies before content edits. If `node_modules/.bin/tsc.cmd` or the platform equivalent is missing in the active workspace, run `npm ci` before validation. If dependency installation or the first audit cannot run, report the blocker and make no transcript-content edits.
-3. Run `npm run audit:site-content` to validate current curation and generate `reports/site-content-backlog.md`.
-4. Pick one transcript from the backlog unless the user named a specific video or transcript path.
-5. Read the matching `src/transcripts/txt/*.txt` or `src/transcripts/tsv/*.tsv` file before editing site content.
+3. Resolve the selected input. When the invoking task names a transcript path or schedule/queue row, treat it as authoritative, follow its claim timing, and do not replace it with a generic backlog candidate merely because existing content or log rows are present.
+4. Only when no input was named, run `npm run audit:site-content` and pick one transcript from `reports/site-content-backlog.md`. For named inputs, still run the audit after claiming when the invoking workflow requires current context.
+5. Read the matching `src/transcripts/txt/*.txt` or `src/transcripts/tsv/*.tsv` file before editing site content. For long transcripts, map the full duration from TSV timestamps and read contiguous time-based chunks small enough to avoid tool-output truncation; do not rely on one raw full-file dump or only the opening portion.
 6. Read `references/segment-seed-schema.md` before changing `src/derived/video-segments/`.
 7. Check `src/derived/site-content-processing.config.json` for first-pass policy, video-type defaults, follow-up stages, and topic grouping guidance.
 
@@ -35,7 +35,7 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` when converting
 6. Keep `summary` concise, searchable, and useful as a watch pointer. Use `body` for reader-facing context, caveats, and why the segment matters.
 7. Avoid long transcript quotes; paraphrase and cite the time window.
 8. Append one line to `src/derived/site-content-processing.log` for the transcript file just processed. Read `references/processing-log.md` for the exact format. Treat shared log changes as recoverable append-only bookkeeping; the current-schema content shard is the source of truth.
-9. For the main transcript pass, prioritize getting useful current-schema watch points into the site over final polish. Use `needsFurtherProcessing=yes` unless the transcript was fully chaptered, Q&A was extracted, or the review intentionally closed the file without site content.
+9. For the main transcript pass, prioritize getting useful current-schema watch points into the site over final polish. Use `needsFurtherProcessing=yes` unless the full duration was inspected and the transcript was fully chaptered or Q&A was extracted, or the review intentionally closed the file without site content. Partial transcript coverage must remain `yes` and be disclosed in the processing log or handoff.
 10. Do not stop at one broad overview when the transcript contains distinct subjects, arguments, examples, or Q&A exchanges. Add multiple focused watch points, normally 3-8 for structured episodes and streams when evidence supports them, then leave deeper cleanup or expansion for the auditor pass.
 
 Public fields must not expose workflow status. Do not put "first pass", "later extraction", "processing", "curation", "search metadata", "source window", "evidence window", "seed", "prototype", or "this segment exists to..." language in `summary`, `body`, `question`, or `answerShort` when it describes the site or content pipeline. The same words are allowed when the related transcript specifically uses them in the same subject-matter sense, such as warship prototypes, electoral first-past-the-post discussion, or data processing. Put incomplete-work status in the processing log or handoff. Segment `body` should normally be 2-4 substantive sentences, especially for `chapter` and `notable_point` records, with concrete transcript-backed detail rather than a one-line label.
@@ -48,9 +48,9 @@ For public wording, prefer human study-guide terms such as `video guide`, `watch
 - The normal processing unit is one transcript/video content shard per process run in the main working checkout. That is already isolated by design, so do not default to detached worktrees for routine transcript curation.
 - A worktree is only useful for broad, risky, or unrelated code changes. For one transcript file -> one content shard, worktrees add merge and stale-state failure modes without much isolation benefit.
 - Shared append-only bookkeeping such as the processing log is acceptable. Do not treat log churn as the architectural problem.
-- Do not recreate the deleted four-schedule detached worker design as it stood. The failure was stale-schema `src/derived/prototype-segments.json` work and detached changes with no reliable plug-in path, not the existence of independent workers.
+- Independent schedule files are supported when each invocation claims exactly one transcript, runs locally in the main checkout, and owns one current-schema shard. The prohibited failure modes are detached-worktree curation, stale `src/derived/prototype-segments.json` edits, or two workers owning the same transcript/shard.
 - Treat transcript processing as an explicit scoped run: one named transcript or one selected backlog item, its current-schema `src/derived/video-segments/video-<videoId>.json` shard, optional shared topic additions, one processing-log entry, generated archive regeneration, and validation.
-- If automation is reintroduced later, prefer local execution against the main checkout with one transcript per invocation. It must refuse `src/derived/prototype-segments.json`, write only supported `src/derived/video-segments/` content, validate locally, and stop after the one claimed transcript.
+- Run scheduled transcript processing as a single-agent job. Do not use `ultra`, multi-agent mode, or subagents inside a claimed run. Scheduled workers must refuse `src/derived/prototype-segments.json`, write only supported `src/derived/video-segments/` content, validate locally, and stop after the one claimed transcript.
 - When a user names a task-note queue file or transcript path, treat that as the selected input and do not replace it with the generic backlog choice.
 - Main-pass curation and follow-up auditing are separate phases. Do not stall the main pass trying to exhaustively polish every segment; produce useful transcript-backed content now and let `$naval-site-content-auditor` handle later substance, wording, and density passes.
 
@@ -72,4 +72,4 @@ The hook writes `reports/site-content-backlog.md`, regenerates `site/src/data/ge
 
 ## Handoff
 
-Report the video ID, transcript path, segments added or changed, topics added, processing-log entry, and validation command. If a transcript cannot be curated safely, leave a dated Markdown note under `task-notes/` with the blocker and inspected time windows.
+Report the video ID, transcript path, segments added or changed, topics added, transcript coverage status, processing-log entry, and validation command. If a transcript cannot be curated safely, leave a dated Markdown note under `task-notes/` with the blocker and inspected time windows.

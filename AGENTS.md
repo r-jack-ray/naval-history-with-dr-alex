@@ -70,7 +70,7 @@ The core content model is `segment`, not `question`. Valid segment kinds include
 
 Keep Q&A as `kind: qa` segment data unless a future layout/search requirement proves a separate collection is needed.
 
-When processing transcripts into site content, use `.agents/transcript-content-curator.md` and `$naval-transcript-to-site-content`. Curate into `src/derived/video-segments/video-<videoId>.json`, keep shared topics in `src/derived/video-segments/topics.json`, keep `sourcePath` and transcript evidence on every segment, and validate with `.codex/hooks/validate-content-pipeline.ps1`.
+When processing transcripts into site content, use `.agents/transcript-content-curator.md` and `$naval-transcript-to-site-content`. Curate into `src/derived/video-segments/video-<videoId>.json`, keep shared topics in `src/derived/video-segments/topics.json`, keep `sourcePath` and transcript evidence on every segment, and validate with `.codex/hooks/validate-content-pipeline.ps1`. When the invoking task names a transcript path or schedule/queue row, that selection is authoritative; use the generated backlog only when no input was named. Inspect long transcripts in time-based chunks across their duration before calling them complete. Partial coverage must keep `needsFurtherProcessing=yes` and be disclosed in the processing log or handoff. Scheduled transcript processing is single-agent work: do not use `ultra`, multi-agent mode, or subagents inside a claimed transcript run.
 
 Record processed transcript files in `src/derived/site-content-processing.log`. The log has no header; every non-empty line is one processed file with tab-separated fields: `processedAt`, `sourcePath`, `videoId`, `action`, `needsFurtherProcessing`, `determination`. Use `yes` or `no` for `needsFurtherProcessing`. The log is append-only bookkeeping, not the content source of truth; do not block useful content work solely because the log or generated archive has concurrent changes. Use `src/derived/site-content-processing.config.json` for first-pass defaults, follow-up stage names, and topic grouping.
 
@@ -90,6 +90,6 @@ History uses concise imperative commits. Keep commits scoped. PRs should explain
 
 ## Agent-Specific Instructions
 
-Until local configuration is complete, use `C:\Workspaces\ancient-egypt-and-the-bible` for setup hints: validation, transcript conversion, task-note policy, report placement, and static search checks. Adapt patterns here; do not copy its Q&A-first model.
+Treat this repository's `AGENTS.md`, `.agents/` briefs, and repo-local skills as the authoritative setup guidance. Do not consult or modify sibling repositories unless the user explicitly requests it.
 
 Preserve the segment-first design. Ground claims in transcript evidence: video ID, timestamp, and source passage when possible. Keep temporary notes in `task-notes/`; put durable guidance here or in stable docs.

@@ -1,6 +1,6 @@
 # Site Content Auditor
 
-Use this brief for high-effort follow-up passes that make the public study guide richer, more searchable, and less mechanical. Recommended runtime: GPT-5.5 with reasoning effort set to Extra High.
+Use this brief for high-effort follow-up passes that make the public study guide richer, more searchable, and less mechanical. Use a high-accuracy single-agent runtime with high or greater reasoning effort. Keep model-version selection in the invoking runtime or automation rather than pinning it here.
 
 ## Mission
 

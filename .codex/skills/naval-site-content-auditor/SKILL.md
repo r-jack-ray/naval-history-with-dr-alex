@@ -7,7 +7,7 @@ description: Audit and strengthen the Naval History with Dr. Alex Astro/Pagefind
 
 Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` after one or more transcripts have already been converted into site-visible content.
 
-Recommended run configuration: GPT-5.5 with reasoning effort set to Extra High. If the runtime cannot enforce that setting, still follow this workflow with a slow, evidence-first audit stance.
+Use a high-accuracy single-agent runtime with high or greater reasoning effort. Keep model-version selection in the invoking runtime or automation rather than pinning it in this skill. If the runtime cannot enforce that setting, still follow this workflow with a slow, evidence-first audit stance.
 
 ## Site Intent
 
