@@ -3,10 +3,16 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 
 import { formatTimestamp, segmentKinds, type SegmentKind } from "../index.js";
 import { slugifyVideoTitle } from "../naming.js";
+import {
+  loadCuratedArchiveSeed,
+  type CuratedArchiveSeed,
+  type CuratedSegmentSeed,
+  type CuratedTopicSeed,
+} from "./curated-seed.js";
 
 export const defaultSiteEpisodesInput = "src/channel/episodes.json";
 export const defaultSiteMetadataInput = "src/channel/video-metadata.json";
-export const defaultSiteSegmentsInput = "src/derived/prototype-segments.json";
+export const defaultSiteSegmentsInput = "src/derived/video-segments";
 export const defaultSiteArchiveOutput = "site/src/data/generated/archive.json";
 
 export interface GenerateSiteArchiveDataOptions {
@@ -137,47 +143,11 @@ interface VideoMetadata {
   };
 }
 
-interface CuratedArchiveSeed {
-  schemaVersion: 1;
-  videos: CuratedVideoSeed[];
-  topics: CuratedTopicSeed[];
-  segments: CuratedSegmentSeed[];
-}
-
-interface CuratedVideoSeed {
-  videoId: string;
-  topics: string[];
-}
-
-interface CuratedTopicSeed {
-  slug: string;
-  title: string;
-  summary: string;
-  aliases?: string[];
-}
-
-interface CuratedSegmentSeed {
-  id: string;
-  videoId: string;
-  slug: string;
-  title: string;
-  kind: SegmentKind;
-  start: string;
-  end?: string;
-  topics: string[];
-  summary: string;
-  body: string;
-  question?: string;
-  answerShort?: string;
-  sourcePath?: string;
-  evidence?: SegmentEvidence[];
-}
-
 export async function generateSiteArchiveData(options: GenerateSiteArchiveDataOptions): Promise<SiteArchiveData> {
   const [episodesStore, metadataStore, seed] = await Promise.all([
     readJson<EpisodeStore>(options.episodesInput),
     readJson<VideoMetadataStore>(options.metadataInput),
-    readJson<CuratedArchiveSeed>(options.segmentsInput),
+    loadCuratedArchiveSeed(options.segmentsInput),
   ]);
   const archive = buildSiteArchiveData({
     episodesStore,

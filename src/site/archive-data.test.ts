@@ -1,7 +1,11 @@
 import assert from "node:assert/strict";
+import { mkdtemp, rm, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 import test from "node:test";
 
 import { buildSiteArchiveData } from "./archive-data.js";
+import { loadCuratedArchiveSeed } from "./curated-seed.js";
 
 test("builds deterministic site archive data from channel metadata and segment seeds", () => {
   const archive = buildSiteArchiveData(sampleInput());
@@ -55,6 +59,48 @@ test("rejects segment references to unknown topics", () => {
     () => buildSiteArchiveData(input),
     /Segment intro references missing topic: missing-topic/u,
   );
+});
+
+test("loads curated site content from per-video files", async () => {
+  const directory = await mkdtemp(join(tmpdir(), "naval-site-content-"));
+  try {
+    await writeFile(join(directory, "topics.json"), JSON.stringify({
+      schemaVersion: 1,
+      topics: [
+        {
+          slug: "destroyers",
+          title: "Destroyers",
+          summary: "Destroyer discussions.",
+        },
+      ],
+    }));
+    await writeFile(join(directory, "video-abc123.json"), JSON.stringify({
+      schemaVersion: 1,
+      videoId: "abc123",
+      topics: ["destroyers"],
+      segments: [
+        {
+          id: "intro",
+          slug: "intro",
+          videoId: "abc123",
+          title: "Intro",
+          kind: "chapter",
+          start: "0:00",
+          topics: ["destroyers"],
+          summary: "Intro segment.",
+          body: "Intro body.",
+        },
+      ],
+    }));
+
+    const seed = await loadCuratedArchiveSeed(directory);
+
+    assert.equal(seed.videos.length, 1);
+    assert.equal(seed.videos[0]?.videoId, "abc123");
+    assert.equal(seed.segments[0]?.id, "intro");
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
 });
 
 function sampleInput(): Parameters<typeof buildSiteArchiveData>[0] {

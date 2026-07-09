@@ -10,7 +10,8 @@ Planned source layout:
 - `src/transcripts/json/`: raw transcript JSON, the source of record.
 - `src/transcripts/txt/`: generated plain-text transcripts.
 - `src/transcripts/tsv/`: optional structured timestamp rows.
-- `src/derived/`: segment data for chapters, notable points, and Q&A.
+- `src/derived/video-segments/`: source-of-truth curated site content, with `topics.json` plus one `video-<videoId>.json` file per video.
+- `src/derived/`: other generated or supporting derived data.
 - `src/site/`: deterministic site-data generator and tests.
 - `docs/videos/`: one primary Markdown page per video.
 - `site/src/data/generated/`: generated Astro-facing archive JSON.
@@ -69,9 +70,9 @@ The core content model is `segment`, not `question`. Valid segment kinds include
 
 Keep Q&A as `kind: qa` segment data unless a future layout/search requirement proves a separate collection is needed.
 
-When processing transcripts into site content, use `.agents/transcript-content-curator.md` and `$naval-transcript-to-site-content`. Curate into `src/derived/prototype-segments.json`, keep `sourcePath` and transcript evidence on every segment, and validate with `.codex/hooks/validate-content-pipeline.ps1`.
+When processing transcripts into site content, use `.agents/transcript-content-curator.md` and `$naval-transcript-to-site-content`. Curate into `src/derived/video-segments/video-<videoId>.json`, keep shared topics in `src/derived/video-segments/topics.json`, keep `sourcePath` and transcript evidence on every segment, and validate with `.codex/hooks/validate-content-pipeline.ps1`.
 
-Record every processed transcript file in `src/derived/site-content-processing.log`. The log has no header; every non-empty line is one processed file with tab-separated fields: `processedAt`, `sourcePath`, `videoId`, `action`, `needsFurtherProcessing`, `determination`. Use `yes` or `no` for `needsFurtherProcessing`. Use `src/derived/site-content-processing.config.json` for first-pass defaults, follow-up stage names, and topic grouping.
+Record processed transcript files in `src/derived/site-content-processing.log`. The log has no header; every non-empty line is one processed file with tab-separated fields: `processedAt`, `sourcePath`, `videoId`, `action`, `needsFurtherProcessing`, `determination`. Use `yes` or `no` for `needsFurtherProcessing`. The log is append-only bookkeeping, not the content source of truth; do not block useful content work solely because the log or generated archive has concurrent changes. Use `src/derived/site-content-processing.config.json` for first-pass defaults, follow-up stage names, and topic grouping.
 
 Public `summary`, `body`, `question`, and `answerShort` text must read as user-facing study-guide notes, not workflow status. Do not expose phrases such as "first pass", "later extraction", "processing", "curation", "search metadata", "source window", or "evidence window" in public fields. Keep those details in logs, task notes, and handoffs. Segment `body` text should usually be 2-4 substantive sentences that explain what the video moment covers, why it matters, and any important caveat grounded in the transcript.
 

@@ -2,10 +2,15 @@ import { existsSync } from "node:fs";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { dirname, isAbsolute, join } from "node:path";
 
-import { segmentKinds, type SegmentKind } from "../index.js";
+import { segmentKinds } from "../index.js";
+import {
+  loadCuratedArchiveSeed,
+  type CuratedArchiveSeed,
+  type CuratedSegmentSeed,
+} from "../site/curated-seed.js";
 
 export const defaultSiteContentAuditManifest = "src/transcripts/manifest.json";
-export const defaultSiteContentAuditSegmentsInput = "src/derived/prototype-segments.json";
+export const defaultSiteContentAuditSegmentsInput = "src/derived/video-segments";
 export const defaultSiteContentProcessingLog = "src/derived/site-content-processing.log";
 export const defaultSiteContentAuditOutput = "reports/site-content-backlog.md";
 
@@ -69,52 +74,10 @@ export interface TranscriptManifestRecord {
   };
 }
 
-export interface CuratedArchiveSeed {
-  schemaVersion: 1;
-  videos: CuratedVideoSeed[];
-  topics: CuratedTopicSeed[];
-  segments: CuratedSegmentSeed[];
-}
-
-export interface CuratedVideoSeed {
-  videoId: string;
-  topics: string[];
-}
-
-export interface CuratedTopicSeed {
-  slug: string;
-  title: string;
-  summary: string;
-  aliases?: string[];
-}
-
-export interface CuratedSegmentSeed {
-  id: string;
-  videoId: string;
-  slug: string;
-  title: string;
-  kind: SegmentKind;
-  start: string;
-  end?: string;
-  topics: string[];
-  summary: string;
-  body: string;
-  question?: string;
-  answerShort?: string;
-  sourcePath?: string;
-  evidence?: SegmentEvidenceSeed[];
-}
-
-export interface SegmentEvidenceSeed {
-  start: string;
-  end?: string;
-  note: string;
-}
-
 export async function auditSiteContent(options: AuditSiteContentOptions): Promise<SiteContentAudit> {
   const [manifest, seed] = await Promise.all([
     readJson<TranscriptManifest>(options.manifestPath),
-    readJson<CuratedArchiveSeed>(options.segmentsInput),
+    loadCuratedArchiveSeed(options.segmentsInput),
   ]);
   const processingLogText = await readOptionalText(options.processingLog);
   const audit = buildSiteContentAudit({

@@ -20,7 +20,7 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` when working on
 - Read `AGENTS.md` first for current repository rules.
 - Use `src/channel/episodes.json` for canonical video IDs, slugs, URLs, transcript state, and inventory stems.
 - Use `src/channel/video-metadata.json` for YouTube title, description, thumbnail, duration, and statistics.
-- Use `src/derived/prototype-segments.json` for the current curated segment/topic seed.
+- Use `src/derived/video-segments/` for current curated video, segment, and topic source data.
 - Use `src/site/archive-data.ts` and `npm run generate:site-data` to produce `site/src/data/generated/archive.json`.
 - Treat `src/transcripts/json/` as the transcript source of record only when the task explicitly asks for transcript-backed curation.
 

@@ -1,25 +1,28 @@
 # Segment Seed Schema
 
-Curated site content currently lives in `src/derived/prototype-segments.json`.
+Curated site content lives in `src/derived/video-segments/`.
 
-## Top Level
+## Files
 
-- `schemaVersion`: must be `1`.
-- `videos`: site-visible videos. Add a video here before adding its segments.
-- `topics`: stable browsing/search topics.
-- `segments`: independently addressable site records.
+- `topics.json`: shared stable browsing/search topics.
+- `video-<videoId>.json`: one file per site-visible video, containing that video's topic slugs and segments.
 
-## Video Seed
+Do not recreate a monolithic curated-content file. `site/src/data/generated/archive.json` is generated output.
+
+## Video File
 
 ```json
 {
+  "schemaVersion": 1,
   "videoId": "uURe69Wnh-Q",
-  "topics": ["modern-navy", "live-q-and-a"]
+  "topics": ["modern-navy", "live-q-and-a"],
+  "segments": []
 }
 ```
 
 - `videoId` must exist in `src/channel/episodes.json`.
-- `topics` must refer to slugs in the same seed file.
+- `topics` must refer to slugs in `topics.json`.
+- `segments` contains only records for this `videoId`.
 
 ## Topic Seed
 
@@ -93,6 +96,6 @@ Optional fields:
 - `sourcePath` must exist and should match the TXT path in `src/transcripts/manifest.json`.
 - Segment and evidence timestamps must be within the stored transcript duration.
 - `end` must be after `start`.
-- Every topic slug must already exist in `topics`.
-- Every segment video must exist in `videos`.
+- Every topic slug must already exist in `topics.json`.
+- Every segment video must match the containing `video-<videoId>.json` file.
 - Q&A fields belong only on `kind: qa` records.

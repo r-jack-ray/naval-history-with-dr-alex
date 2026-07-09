@@ -14,7 +14,7 @@ Use this brief when working on the Astro/Pagefind website for the Dr. Alex Clark
 
 - Work in `site/src/` for Astro pages, layouts, and data adapters.
 - Use `site/public/` for static assets that should ship unchanged.
-- Use `src/channel/episodes.json`, `src/channel/video-metadata.json`, and `src/derived/prototype-segments.json` as current generator inputs.
+- Use `src/channel/episodes.json`, `src/channel/video-metadata.json`, and `src/derived/video-segments/` as current generator inputs.
 - Use `src/site/archive-data.ts` for deterministic site-data generation and validation.
 - Avoid touching `src/transcripts/` unless the user explicitly asks for transcript ingestion, conversion, or transcript-backed curation.
 - Hand transcript-backed curation work to `.agents/transcript-content-curator.md` and `$naval-transcript-to-site-content`.

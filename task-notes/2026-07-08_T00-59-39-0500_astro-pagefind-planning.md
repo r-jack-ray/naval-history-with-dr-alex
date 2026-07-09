@@ -475,7 +475,7 @@ Updated 2026-07-08 after implementation.
 
 - Phase 1 is implemented: Astro uses `site/src`, `site/public`, and `site/dist`; Pagefind runs after build; GitHub Actions deploys `site/dist`.
 - Phase 2 is implemented: one video page renders from generated structured data sourced from `src/channel/episodes.json` and `src/channel/video-metadata.json`.
-- Phase 3 is implemented for the prototype: `src/derived/prototype-segments.json` seeds four segment pages, including ordinary `notable_point` segments and one `qa` segment.
+- Phase 3 is implemented for the prototype: `src/derived/video-segments/` seeds segment pages, including ordinary `notable_point` segments and `qa` segments.
 - Phase 4 is implemented for the prototype: topic pages are generated from the same seed and list related videos and segments.
 - Phase 5 is implemented for the prototype: `/search/` uses Pagefind's component UI and the generated pages expose filters for type, topic, video, and segment kind.
 - Phase 6 is implemented as an initial deterministic generator: `npm run generate:site-data` reads channel metadata plus curated segment seeds and writes `site/src/data/generated/archive.json`; generator tests cover duplicate routes, topic references, timestamps, and basic output shape.

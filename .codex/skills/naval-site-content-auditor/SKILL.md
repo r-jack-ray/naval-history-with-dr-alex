@@ -1,6 +1,6 @@
 ---
 name: naval-site-content-auditor
-description: Audit and strengthen the Naval History with Dr. Alex Astro/Pagefind study-guide content after transcript curation. Use when asked to add substance to thin segment notes, remove workflow/scaffold wording from public fields, align wording with learner intent, validate transcript-backed claims, improve segment density, or run a high-effort follow-up pass over `src/derived/prototype-segments.json`, video pages, segment pages, topic pages, or generated archive data.
+description: Audit and strengthen the Naval History with Dr. Alex Astro/Pagefind study-guide content after transcript curation. Use when asked to add substance to thin segment notes, remove workflow/scaffold wording from public fields, align wording with learner intent, validate transcript-backed claims, improve segment density, or run a high-effort follow-up pass over `src/derived/video-segments/`, video pages, segment pages, topic pages, or generated archive data.
 ---
 
 # Naval Site Content Auditor
@@ -21,7 +21,7 @@ Recommended run configuration: GPT-5.5 with reasoning effort set to Extra High. 
 
 1. Read `AGENTS.md`, `.agents/transcript-content-curator.md`, and `.agents/site-content-auditor.md`.
 2. Inspect the current diff before edits with `git -c safe.directory=C:/Workspaces/naval-history-with-dr-alex status --short`.
-3. Treat `src/derived/prototype-segments.json` as the source for public segment wording. Treat `site/src/data/generated/archive.json` as generated output.
+3. Treat `src/derived/video-segments/` as the source for public segment wording. Treat `site/src/data/generated/archive.json` as generated output.
 4. If a specific video, segment, topic, or screenshot was named, scope the audit there first. Otherwise sample the shortest and most scaffold-like segment bodies across `chapter`, `notable_point`, and `qa`.
 
 ## Audit Public Wording

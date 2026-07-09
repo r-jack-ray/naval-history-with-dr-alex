@@ -2,7 +2,7 @@
 
 Timestamp: 2026-07-08T03:10:52-05:00
 
-Generated from `src/transcripts/manifest.json`, `src/derived/prototype-segments.json`, and `src/derived/site-content-processing.log`.
+Generated from `src/transcripts/manifest.json`, `src/derived/video-segments/`, and `src/derived/site-content-processing.log`.
 
 Criteria: stored TXT transcript, no curated segment for its video ID, and no completed processing-log line with `needsFurtherProcessing=no`.
 

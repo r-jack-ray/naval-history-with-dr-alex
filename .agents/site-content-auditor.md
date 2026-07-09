@@ -35,9 +35,9 @@ Use this brief for high-effort follow-up passes that make the public study guide
 ## Audit Workflow
 
 1. Check the worktree and preserve unrelated user changes.
-2. Scan `src/derived/prototype-segments.json` for short bodies, scaffold wording, and public workflow terms.
+2. Scan `src/derived/video-segments/` for short bodies, scaffold wording, and public workflow terms.
 3. For each candidate, read its `summary`, `topics`, `evidence`, and cited transcript passage when needed.
-4. Edit only the seed data and source Astro/CSS files. Regenerate `site/src/data/generated/archive.json`; do not hand-edit generated archive data.
+4. Edit only per-video source files, `topics.json`, and source Astro/CSS files. Regenerate `site/src/data/generated/archive.json`; do not hand-edit generated archive data.
 5. Validate with:
 
 ```powershell

@@ -67,7 +67,7 @@ function printUsage(): void {
 Options:
   --episodes-input <path>  Channel episode master. Defaults to ${defaultSiteEpisodesInput}.
   --metadata-input <path>  YouTube metadata store. Defaults to ${defaultSiteMetadataInput}.
-  --segments-input <path>  Curated segment seed. Defaults to ${defaultSiteSegmentsInput}.
+  --segments-input <path>  Per-video curated content directory. Defaults to ${defaultSiteSegmentsInput}.
   --output <path>          Astro-facing archive JSON. Defaults to ${defaultSiteArchiveOutput}.
 `);
 }

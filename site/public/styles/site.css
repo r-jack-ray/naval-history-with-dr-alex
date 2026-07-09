@@ -721,16 +721,78 @@ h1 {
   gap: 18px;
 }
 
-.search-panel pagefind-input,
-.search-panel pagefind-filter-pane,
-.search-panel pagefind-summary,
-.search-panel pagefind-results {
-  --pf-primary-color: var(--signal-strong);
-  --pf-text-color: var(--ink);
-  --pf-muted-color: var(--muted);
-  --pf-background-color: var(--panel);
-  --pf-border-color: var(--line);
-  --pf-border-radius: 8px;
+.site-search-form {
+  display: grid;
+  gap: 10px;
+}
+
+.site-search-form label {
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.site-search-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+}
+
+.site-search-row input {
+  width: 100%;
+  min-height: 54px;
+  padding: 0 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.site-search-row input:focus {
+  border-color: var(--signal);
+  outline: 3px solid color-mix(in srgb, var(--signal) 30%, transparent);
+}
+
+.site-search-row button {
+  min-height: 54px;
+  padding: 0 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--signal-strong);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.site-search-row button:hover {
+  border-color: var(--signal);
+}
+
+.search-help,
+.search-status {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.search-help {
+  font-size: 14px;
+}
+
+.search-status {
+  font-weight: 700;
+}
+
+.search-results {
+  margin-top: 4px;
+}
+
+.search-result-card {
+  min-height: 0;
 }
 
 .status-grid article {

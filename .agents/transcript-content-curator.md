@@ -9,11 +9,12 @@ Use this brief when turning stored Dr. Alex transcript files into site-visible s
 - Make summaries act as watch pointers: name the naval subject, preview the argument or example, and clarify the learning payoff.
 - Keep the site highly searchable with concrete ships, classes, navies, battles, weapons, policies, doctrine, logistics, acronyms, and alternate wording when supported by the transcript.
 - Prefer many distinct, useful time notes over a single sparse overview when the transcript has enough substance.
+- Keep the reusable project theme here and in the skill. Schedules should only provide queue mechanics, concurrency guards, and run-control instructions.
 
 ## Scope
 
 - Read from `src/transcripts/manifest.json` and the matching `src/transcripts/txt/` or `src/transcripts/tsv/` file.
-- Curate into `src/derived/prototype-segments.json` until a later multi-file segment store replaces it.
+- Curate into `src/derived/video-segments/video-<videoId>.json`. Shared topic records live in `src/derived/video-segments/topics.json`.
 - Use `src/channel/episodes.json` and `src/channel/video-metadata.json` only for inventory, title, date, thumbnail, and source metadata checks.
 - Use `src/derived/site-content-processing.config.json` for first-pass defaults, video-type handling, follow-up stages, and topic grouping.
 - Do not fetch transcripts, edit raw transcript JSON, or commit `src/transcripts/` changes unless the user explicitly asks for ingestion work.
@@ -22,11 +23,11 @@ Use this brief when turning stored Dr. Alex transcript files into site-visible s
 
 1. Run `npm run audit:site-content` and open `reports/site-content-backlog.md` for the next stored transcript without curated segments.
 2. Inspect the transcript TXT/TSV around candidate windows before writing summaries.
-3. Add or update the video entry in `src/derived/prototype-segments.json`.
+3. Add or update the one per-video file for the transcript under `src/derived/video-segments/`.
 4. Add topic records when the segment needs new stable browsing/search tags.
 5. Add segment records with `videoId`, `slug`, `kind`, `start`, optional `end`, `topics`, summary/body fields, `sourcePath`, and at least one transcript evidence passage.
 6. Use `kind: qa` only for actual question/answer exchanges. Keep lectures, profiles, and explanations as `chapter`, `notable_point`, or `transcript_excerpt`.
-7. Append exactly one line to `src/derived/site-content-processing.log` for each transcript file processed.
+7. Append one line to `src/derived/site-content-processing.log` for each transcript file processed. Treat this as best-effort bookkeeping; if it collides, the per-video content file is the important artifact.
 8. Regenerate and validate with `.codex/hooks/validate-content-pipeline.ps1 -SkipRepoCheck` before handoff; run without `-SkipRepoCheck` when TypeScript or shared contracts changed.
 9. For partial first-pass work, use `needsFurtherProcessing=yes`; use `no` only when the file is fully curated or intentionally closed without a site segment.
 10. During first-pass work, split distinct subjects, arguments, and Q&A exchanges into separate watch points when evidence supports it. Structured episodes and streams should normally get 3-8 substantive segments before a later exhaustive revisit.
@@ -40,10 +41,11 @@ Use this brief when turning stored Dr. Alex transcript files into site-visible s
 - Make `body` meatier than a label. Prefer 2-4 concise sentences that explain the video moment's subject, the useful detail or argument, and any transcript-grounded caveat. For notable points, include the actual historical, technical, or strategic takeaway rather than saying the point is useful for browsing or search.
 - Avoid creator-facing metrics, internal filenames, and raw inventory language in public text unless the user explicitly asks for an admin/debug view.
 - It is fine for evidence notes to be short and factual, but public notes should still sound like study-guide prose.
+- Prefer public labels such as `video guide`, `watch point`, `time note`, and `video moment`. Keep timestamp terminology for technical fields, evidence checks, and URLs rather than button, card, or headline copy.
 
 ## Processing Log
 
-Use `src/derived/site-content-processing.log` as the durable curation log. The file has no header: every non-empty line is one processed transcript file.
+Use `src/derived/site-content-processing.log` as the append-only curation log. The file has no header: every non-empty line is one processed transcript file. The log is useful for backlog filtering, but public content lives in `src/derived/video-segments/`.
 
 Use tab-separated fields:
 

@@ -115,7 +115,7 @@ function printHelp(): void {
 
 Options:
   --manifest <path>        Transcript manifest. Defaults to src/transcripts/manifest.json.
-  --segments-input <path>  Curated segment seed. Defaults to src/derived/prototype-segments.json.
+  --segments-input <path>  Per-video curated content directory. Defaults to src/derived/video-segments.
   --processing-log <path>  One-line-per-file processing log. Defaults to src/derived/site-content-processing.log.
   --output <path>          Markdown report path. Defaults to reports/site-content-backlog.md.
   --no-output              Do not write a report.
