@@ -1,8 +1,9 @@
 import { existsSync } from "node:fs";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 import { dirname, isAbsolute, join } from "node:path";
 
 import { segmentKinds } from "../index.js";
+import { writeTextAtomically } from "../pipeline/atomic-write.js";
 import {
   loadCuratedArchiveSeed,
   type CuratedArchiveSeed,
@@ -218,8 +219,7 @@ export function renderSiteContentAuditReport(audit: SiteContentAudit): string {
 }
 
 async function writeAuditReport(output: string, audit: SiteContentAudit): Promise<void> {
-  await mkdir(dirname(output), { recursive: true });
-  await writeFile(output, renderSiteContentAuditReport(audit), "utf8");
+  await writeTextAtomically(output, renderSiteContentAuditReport(audit));
 }
 
 function validateSegment(

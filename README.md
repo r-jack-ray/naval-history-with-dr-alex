@@ -54,8 +54,8 @@ site/
     data/generated/        Deterministic generated archive JSON
   public/                  Static assets copied into the site
   dist/                    Generated GitHub Pages artifact, ignored by Git
-.agents/                   Project-local agent briefs
-.codex/skills/             Project-local Codex skills
+.agents/                   Project-local agent briefs and Codex skills
+.agents/skills/            Project-local Codex skills
 .codex/hooks/              Project-local validation helper scripts
 task-notes/                Temporary planning and handoff notes
 reports/                   Generated reports and smoke-test output, ignored by Git
@@ -264,18 +264,39 @@ For agent-driven work, use:
 
 - `.agents/transcript-content-curator.md`: role brief for transcript-backed curation.
 - `.agents/site-content-auditor.md`: role brief for follow-up public wording, density, and evidence checks.
-- `.codex/skills/naval-transcript-to-site-content/SKILL.md`: reusable workflow for converting transcript TXT/TSV evidence into `src/derived/video-segments/video-<videoId>.json`.
-- `.codex/skills/naval-site-content-auditor/SKILL.md`: reusable workflow for strengthening existing segment notes.
+- `.agents/skills/naval-transcript-to-site-content/SKILL.md`: reusable workflow for converting transcript TXT/TSV evidence into `src/derived/video-segments/video-<videoId>.json`.
+- `.agents/skills/naval-site-content-auditor/SKILL.md`: reusable workflow for strengthening existing segment notes.
 - `.codex/hooks/validate-content-pipeline.ps1`: audit, regenerate generated site data, run Astro checks, and optionally run the full repository check.
 
 The process is intentionally segment-first. Use `kind: qa` only for actual Q&A exchanges; keep lecture material as `chapter`, `notable_point`, or `transcript_excerpt`.
+
+### Serialized Content-Pipeline Writes
+
+`site/src/data/generated/archive.json` remains tracked so Astro can statically import a reviewable archive. Regenerate it through `npm run generate:site-data`, `npm run site:check`, or `npm run site:build`; each standalone command regenerates it once. The content validation hook builds once, writes the backlog report, regenerates the archive once, and then runs the no-regeneration Astro check.
+
+The archive, backlog report, and processing log are protected by the repository-wide writer lease at `.tmp/site-content-pipeline.lock`. Direct `npm run audit:site-content` and `npm run generate:site-data` acquire a short-lived lease automatically. A scheduled transcript worker must acquire a persistent lease before it claims a row or changes a shared topic, log, report, or archive:
+
+```powershell
+$lease = node .codex/hooks/site-content-pipeline-lock.mjs acquire --owner "schedule-worker" --purpose "transcript-curation" --recover-stale | ConvertFrom-Json
+```
+
+Keep `$lease.lease.token` for the current run and export it before invoking any normal pipeline npm command, so that command joins the existing lease:
+
+```powershell
+$env:CONTENT_PIPELINE_LOCK_TOKEN = $lease.lease.token
+npm.cmd run append:site-content-processing-log -- --token $lease.lease.token --processed-at <iso-time> --source-path <transcript-path> --video-id <video-id> --action <action> --needs-further-processing <yes-or-no> --determination <reason>
+pwsh -NoProfile -File .codex/hooks/validate-content-pipeline.ps1 -SkipRepoCheck -LockToken $lease.lease.token
+Remove-Item Env:CONTENT_PIPELINE_LOCK_TOKEN -ErrorAction SilentlyContinue
+```
+
+The hook releases the lease in `finally` on success or failure; the caller clears its own environment variable after the child PowerShell process returns. If a run stops before reaching validation, release it explicitly with `node .codex/hooks/site-content-pipeline-lock.mjs release --token $lease.lease.token`. Leases expire after 90 minutes unless renewed; use `status` to inspect a blocker, and `acquire --recover-stale` to quarantine an expired lease with its owner metadata before continuing.
 
 ## Project Helpers
 
 - `.agents/site-archive-builder.md`: project-local brief for agents working on Astro/Pagefind site pages.
 - `.agents/transcript-content-curator.md`: project-local brief for transcript-backed segment curation.
-- `.codex/skills/naval-video-page-prototype/SKILL.md`: reusable Codex skill for extending the prototype video-page workflow.
-- `.codex/skills/naval-transcript-to-site-content/SKILL.md`: reusable Codex skill for processing transcripts into segment seed data.
+- `.agents/skills/naval-video-page-prototype/SKILL.md`: reusable Codex skill for extending the prototype video-page workflow.
+- `.agents/skills/naval-transcript-to-site-content/SKILL.md`: reusable Codex skill for processing transcripts into segment seed data.
 - `.codex/hooks/validate-site.ps1`: optional validation helper for site checks and the full repository check.
 - `.codex/hooks/validate-content-pipeline.ps1`: optional validation helper for transcript curation plus generated site checks.
 

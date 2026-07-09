@@ -1,8 +1,8 @@
-import { dirname } from "node:path";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 
 import { formatTimestamp, segmentKinds, type SegmentKind } from "../index.js";
 import { slugifyVideoTitle } from "../naming.js";
+import { writeTextAtomically } from "../pipeline/atomic-write.js";
 import {
   loadCuratedArchiveSeed,
   type CuratedArchiveSeed,
@@ -160,8 +160,7 @@ export async function generateSiteArchiveData(options: GenerateSiteArchiveDataOp
     },
   });
 
-  await mkdir(dirname(options.output), { recursive: true });
-  await writeFile(options.output, `${JSON.stringify(archive, null, 2)}\n`, "utf8");
+  await writeTextAtomically(options.output, `${JSON.stringify(archive, null, 2)}\n`);
   return archive;
 }
 

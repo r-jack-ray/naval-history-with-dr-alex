@@ -21,19 +21,20 @@ Use this brief when turning stored Dr. Alex transcript files into site-visible s
 
 ## Workflow
 
-1. Verify local dependencies before content edits. If `node_modules/.bin/tsc.cmd` or the platform equivalent is missing in the active workspace, run `npm ci` before validation. If dependency installation or the first audit cannot run, report the blocker and make no transcript-content edits.
-2. Resolve the input from the invoking task. A named transcript path or claimed schedule/queue row is authoritative; follow its claim timing and do not replace it with a generic backlog candidate merely because a shard or processing-log row already exists.
-3. Only when no input was named, run `npm run audit:site-content` and open `reports/site-content-backlog.md` to select the next stored transcript without curated segments. For named inputs, still run the audit after claiming when the invoking workflow requires current context.
-4. Inspect the transcript TXT/TSV before writing summaries. For long transcripts, use TSV timestamps to map the full duration and read contiguous time-based chunks small enough to avoid tool-output truncation; do not rely on one raw full-file dump or only the opening portion.
-5. Add or update the current-schema content shard under `src/derived/video-segments/`, normally `video-<videoId>.json` for the selected transcript. Treat that shard as the owned content artifact for this process run.
-6. Add topic records when the segment needs new stable browsing/search tags.
-7. Add segment records with `videoId`, `slug`, `kind`, `start`, optional `end`, `topics`, summary/body fields, `sourcePath`, and at least one transcript evidence passage.
-8. Use `kind: qa` only for actual question/answer exchanges. Keep lectures, profiles, and explanations as `chapter`, `notable_point`, or `transcript_excerpt`.
-9. Append one line to `src/derived/site-content-processing.log` for each transcript file processed. Treat this as best-effort append-only bookkeeping; shared log churn is acceptable and should not be confused with the content source of truth.
-10. Regenerate and validate with `.codex/hooks/validate-content-pipeline.ps1 -SkipRepoCheck` before handoff; run without `-SkipRepoCheck` when TypeScript or shared contracts changed.
-11. For the main transcript pass, prioritize getting useful current-schema watch points into the site over final polish. Use `needsFurtherProcessing=yes` for entries that should receive a later auditor cleanup, more granular follow-up, or additional transcript coverage. Use `no` only after full-duration inspection or when the file is intentionally closed without a site segment.
-12. During first-pass work, split distinct subjects, arguments, and Q&A exchanges into separate watch points when evidence supports it. Structured episodes and streams should normally get 3-8 substantive segments before a later exhaustive revisit.
-13. For granular revisits, split lecture material into major `chapter` and `notable_point` windows, and use `qa` only for transcript-visible questions with answers. Long live streams may need a targeted granular pass plus a later exhaustive live Q&A review.
+1. For a scheduled run, acquire the persistent repository writer lease before dependency checks, queue claims, or content edits, then set `CONTENT_PIPELINE_LOCK_TOKEN` to its token so normal pipeline npm commands join the lease. If the lease is busy, report its diagnostics and stop without changing a schedule row or source file.
+2. Verify local dependencies before content edits. If `node_modules/.bin/tsc.cmd` or the platform equivalent is missing in the active workspace, run `npm ci` before validation. If dependency installation or the first audit cannot run, release any lease and report the blocker without transcript-content edits.
+3. Resolve the input from the invoking task. A named transcript path or claimed schedule/queue row is authoritative; follow its claim timing and do not replace it with a generic backlog candidate merely because a shard or processing-log row already exists.
+4. Only when no input was named, run `npm run audit:site-content` and open `reports/site-content-backlog.md` to select the next stored transcript without curated segments. For named inputs, still run the audit after claiming when the invoking workflow requires current context.
+5. Inspect the transcript TXT/TSV before writing summaries. For long transcripts, use TSV timestamps to map the full duration and read contiguous time-based chunks small enough to avoid tool-output truncation; do not rely on one raw full-file dump or only the opening portion.
+6. Add or update the current-schema content shard under `src/derived/video-segments/`, normally `video-<videoId>.json` for the selected transcript. Treat that shard as the owned content artifact for this process run.
+7. Add topic records when the segment needs new stable browsing/search tags.
+8. Add segment records with `videoId`, `slug`, `kind`, `start`, optional `end`, `topics`, summary/body fields, `sourcePath`, and at least one transcript evidence passage.
+9. Use `kind: qa` only for actual question/answer exchanges. Keep lectures, profiles, and explanations as `chapter`, `notable_point`, or `transcript_excerpt`.
+10. Append one line to `src/derived/site-content-processing.log` for each transcript file processed with `npm.cmd run append:site-content-processing-log -- --token <lease-token> ...`; do not write this shared file directly. It remains bookkeeping rather than the content source of truth.
+11. Renew the writer lease after a long inspection, then regenerate and validate with `.codex/hooks/validate-content-pipeline.ps1 -SkipRepoCheck -LockToken <lease-token>` before handoff; the hook releases the lease on success or failure. Clear `CONTENT_PIPELINE_LOCK_TOKEN` in the calling shell after the hook returns. Run without `-SkipRepoCheck` when TypeScript or shared contracts changed.
+12. For the main transcript pass, prioritize getting useful current-schema watch points into the site over final polish. Use `needsFurtherProcessing=yes` for entries that should receive a later auditor cleanup, more granular follow-up, or additional transcript coverage. Use `no` only after full-duration inspection or when the file is intentionally closed without a site segment.
+13. During first-pass work, split distinct subjects, arguments, and Q&A exchanges into separate watch points when evidence supports it. Structured episodes and streams should normally get 3-8 substantive segments before a later exhaustive revisit.
+14. For granular revisits, split lecture material into major `chapter` and `notable_point` windows, and use `qa` only for transcript-visible questions with answers. Long live streams may need a targeted granular pass plus a later exhaustive live Q&A review.
 
 ## Public Wording
 
@@ -47,7 +48,7 @@ Use this brief when turning stored Dr. Alex transcript files into site-visible s
 
 ## Processing Log
 
-Use `src/derived/site-content-processing.log` as the append-only curation log. The file has no header: every non-empty line is one processed transcript file. The log is useful for backlog filtering, but public content lives in `src/derived/video-segments/`. If concurrent runs touch this file, reconcile it as bookkeeping after preserving the current-schema content shards.
+Use `src/derived/site-content-processing.log` as the append-only curation log. The file has no header: every non-empty line is one processed transcript file. The log is useful for backlog filtering, but public content lives in `src/derived/video-segments/`. The repository writer lease serializes log updates, so a scheduled run must not direct-append or reconcile concurrent log churn.
 
 Use tab-separated fields:
 
