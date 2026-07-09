@@ -7,14 +7,18 @@
     "force-structure",
     "modern-navy",
     "naval-procurement",
-    "ship-design"
+    "ship-design",
+    "air-defence",
+    "naval-aviation",
+    "cruisers",
+    "frigates"
   ],
   "segments": [
     {
       "id": "burke-class-century-backbone",
       "slug": "burke-class-century-backbone",
       "title": "Burke class as a century fleet backbone",
-      "kind": "notable_point",
+      "kind": "chapter",
       "start": "0:52",
       "end": "5:39",
       "topics": [
@@ -25,22 +29,272 @@
         "naval-procurement",
         "ship-design"
       ],
-      "summary": "The opening frames the Arleigh Burke class as the US Navy's long-running destroyer backbone and benchmark surface combatant.",
-      "body": "Burkes were intended as general-purpose destroyers that tied the fleet together, but their production, service life, and repeated flights made them a durable standard for US Navy surface-force planning.",
+      "summary": "The opening frames the Arleigh Burke class as the US Navy destroyer design that became a long-running fleet benchmark.",
+      "body": "Dr. Clarke links Admiral Arleigh Burke's work habits and institutional legacy to a destroyer class that outlived its original replacement assumptions. The watch point is useful for understanding why the Burkes became more than another 20-ship US Navy class: they turned into the surface-combatant standard against which later programs are judged. It also sets up the video's central tension, that a very successful design can make successor procurement harder.",
+      "sourcePath": "src/transcripts/txt/2026-05-09_T18-30-06_total-burke-domination-why-the-us-navy-could-be-rebranded-the-arleigh-burke-flotilla-and-friends_PH7c3uz-8GY.txt",
       "evidence": [
         {
           "start": "0:52",
           "end": "2:48",
-          "note": "The opening connects Admiral Burke's namesake qualities to destroyers conceived as the US Navy fleet backbone and general-purpose workhorses."
+          "note": "The transcript introduces the Burkes as general-purpose destroyers meant to tie the US Navy fleet together."
         },
         {
           "start": "4:03",
           "end": "5:39",
-          "note": "The transcript argues that the class remained useful beyond its intended replacement point and could represent a century of Burke primacy."
+          "note": "The speaker argues that the class could represent a century of Burke primacy in US Navy thinking."
         }
       ],
-      "videoId": "PH7c3uz-8GY",
-      "sourcePath": "src/transcripts/txt/2026-05-09_T18-30-06_total-burke-domination-why-the-us-navy-could-be-rebranded-the-arleigh-burke-flotilla-and-friends_PH7c3uz-8GY.txt"
+      "videoId": "PH7c3uz-8GY"
+    },
+    {
+      "id": "early-burke-task-group-design",
+      "slug": "early-burke-task-group-design",
+      "title": "Early Burkes as carrier task-group ships",
+      "kind": "notable_point",
+      "start": "8:15",
+      "end": "11:41",
+      "topics": [
+        "destroyers",
+        "us-navy",
+        "carrier-groups",
+        "naval-aviation",
+        "air-defence"
+      ],
+      "summary": "The first Burke flights are explained as Aegis task-group escorts built around carrier protection, VLS firepower, and Cold War reload assumptions.",
+      "body": "This section distinguishes the early Burkes from independent frigate-style escorts. They could land and refuel helicopters, but without hangars they were mainly built to support carrier groups, add Aegis air defence, and help absorb missile attacks against high-value formations. The discussion of the old VLS reloading cranes shows how Cold War ammunition assumptions shaped even details that later proved awkward.",
+      "sourcePath": "src/transcripts/txt/2026-05-09_T18-30-06_total-burke-domination-why-the-us-navy-could-be-rebranded-the-arleigh-burke-flotilla-and-friends_PH7c3uz-8GY.txt",
+      "evidence": [
+        {
+          "start": "8:15",
+          "end": "9:55",
+          "note": "The transcript says Flight I and II Burkes were built as carrier task-group ships with Aegis support."
+        },
+        {
+          "start": "9:58",
+          "end": "11:41",
+          "note": "The transcript explains the VLS crane cells and the Cold War concern with at-sea missile reloading."
+        }
+      ],
+      "videoId": "PH7c3uz-8GY"
+    },
+    {
+      "id": "mark-41-vls-versatility",
+      "slug": "mark-41-vls-versatility",
+      "title": "Mark 41 VLS makes the Burke adaptable",
+      "kind": "notable_point",
+      "start": "11:51",
+      "end": "18:52",
+      "topics": [
+        "destroyers",
+        "us-navy",
+        "ship-design",
+        "air-defence",
+        "force-structure"
+      ],
+      "summary": "A close look at Mark 41 VLS explains why Burke-size ships remained useful across changing missile loads and missions.",
+      "body": "The video compares VLS flexibility to an aircraft carrier changing air groups: the hull remains valuable because the weapons and software can change. Dr. Clarke walks through Tomahawk, Standard Missile, ASROC, and Sea Sparrow loadout logic, then ties that versatility to ship size and growth from Flight I to Flight III. This is the best early watch point for the design tradeoff between magazine depth, hull volume, and modern surface-combatant relevance.",
+      "sourcePath": "src/transcripts/txt/2026-05-09_T18-30-06_total-burke-domination-why-the-us-navy-could-be-rebranded-the-arleigh-burke-flotilla-and-friends_PH7c3uz-8GY.txt",
+      "evidence": [
+        {
+          "start": "11:51",
+          "end": "14:48",
+          "note": "The transcript explains how VLS and software updates helped the Burkes remain flexible while the class kept expanding."
+        },
+        {
+          "start": "14:55",
+          "end": "18:52",
+          "note": "The transcript describes Mark 41 missile options and argues that VLS-cell quantity drove Burke size and later growth."
+        }
+      ],
+      "videoId": "PH7c3uz-8GY"
+    },
+    {
+      "id": "spy-radar-and-aegis-evolution",
+      "slug": "spy-radar-and-aegis-evolution",
+      "title": "SPY radar and the sensor-growth problem",
+      "kind": "notable_point",
+      "start": "23:23",
+      "end": "32:21",
+      "topics": [
+        "destroyers",
+        "us-navy",
+        "air-defence",
+        "ship-design",
+        "modern-navy"
+      ],
+      "summary": "The radar discussion shows why Burke modernization depended on computing power, sensor generations, and naval funding priorities.",
+      "body": "Dr. Clarke uses SPY radar to explain the difference between mature PESA systems and newer AESA arrays. The Burke story becomes a sensor-and-processing story as much as a missile story, because air-defence ships need targeting data as well as VLS cells. The section also places the 1990s and 2000s funding environment in context, when assumptions about wars of choice and the unlikelihood of naval war slowed some investments.",
+      "sourcePath": "src/transcripts/txt/2026-05-09_T18-30-06_total-burke-domination-why-the-us-navy-could-be-rebranded-the-arleigh-burke-flotilla-and-friends_PH7c3uz-8GY.txt",
+      "evidence": [
+        {
+          "start": "23:23",
+          "end": "28:43",
+          "note": "The transcript contrasts Burke PESA radars with the later AESA generation and explains the computing demands."
+        },
+        {
+          "start": "30:27",
+          "end": "32:21",
+          "note": "The transcript connects delayed naval upgrades to saltwater integration, computing demands, and post-Cold War funding attitudes."
+        }
+      ],
+      "videoId": "PH7c3uz-8GY"
+    },
+    {
+      "id": "flight-two-a-real-upgrade",
+      "slug": "flight-two-a-real-upgrade",
+      "title": "Flight IIA brings the practical upgrade",
+      "kind": "chapter",
+      "start": "33:04",
+      "end": "39:20",
+      "topics": [
+        "destroyers",
+        "us-navy",
+        "ship-design",
+        "naval-aviation",
+        "naval-procurement"
+      ],
+      "summary": "Flight IIA is presented as the point where the Burke line gains hangars, more VLS cells, and clearer design change.",
+      "body": "The Flight IIA discussion is useful because it separates branding from meaningful design evolution. Dr. Clarke argues that the earlier Flight II changes were modest, while Flight IIA added helicopter hangars, removed the VLS reload cranes, increased cell count, and folded in stealth and survivability changes. The section also warns that small dimensional changes can hide significant internal rearrangement and density growth.",
+      "sourcePath": "src/transcripts/txt/2026-05-09_T18-30-06_total-burke-domination-why-the-us-navy-could-be-rebranded-the-arleigh-burke-flotilla-and-friends_PH7c3uz-8GY.txt",
+      "evidence": [
+        {
+          "start": "33:04",
+          "end": "35:08",
+          "note": "The transcript lists the hangar, extra VLS cells, lost reload cranes, heavier displacement, and small length growth."
+        },
+        {
+          "start": "35:18",
+          "end": "39:20",
+          "note": "The transcript describes gun, survivability, mine-detection, mast, and radar-cross-section changes, then calls Flight IIA the real break point."
+        }
+      ],
+      "videoId": "PH7c3uz-8GY"
+    },
+    {
+      "id": "zumwalt-politics-versus-burke-standard",
+      "slug": "zumwalt-politics-versus-burke-standard",
+      "title": "Zumwalt loses against the Burke standard",
+      "kind": "chapter",
+      "start": "43:43",
+      "end": "57:29",
+      "topics": [
+        "destroyers",
+        "us-navy",
+        "naval-procurement",
+        "ship-design",
+        "force-structure"
+      ],
+      "summary": "The Zumwalt comparison explains how a successor can fail when it looks politically weaker than the proven Burke benchmark.",
+      "body": "This watch point turns the Burke from a ship class into a procurement problem. Dr. Clarke argues that Zumwalt accumulated too many novel ideas while still being labeled a destroyer, so public and congressional comparisons with the 96-cell Burke became unavoidable. The lesson is not just that Zumwalt was technologically ambitious, but that a replacement design needs familiar capability anchors as well as visible improvement.",
+      "sourcePath": "src/transcripts/txt/2026-05-09_T18-30-06_total-burke-domination-why-the-us-navy-could-be-rebranded-the-arleigh-burke-flotilla-and-friends_PH7c3uz-8GY.txt",
+      "evidence": [
+        {
+          "start": "43:43",
+          "end": "49:29",
+          "note": "The transcript describes Zumwalt as a Christmas-tree project whose small production run made program costs and comparison with Burke worse."
+        },
+        {
+          "start": "51:33",
+          "end": "57:29",
+          "note": "The transcript argues that Zumwalt needed more Burke-like reference points in VLS, air defence, and destroyer role perception."
+        }
+      ],
+      "videoId": "PH7c3uz-8GY"
+    },
+    {
+      "id": "flight-two-a-restart-reliability",
+      "slug": "flight-two-a-restart-reliability",
+      "title": "Flight IIA restart chooses reliability",
+      "kind": "notable_point",
+      "start": "57:33",
+      "end": "1:05:56",
+      "topics": [
+        "destroyers",
+        "us-navy",
+        "naval-procurement",
+        "ship-design",
+        "modern-navy"
+      ],
+      "summary": "The restart section shows why the US Navy returned to a known Flight IIA design while still stretching the Burke hull through upgrades.",
+      "body": "After the Zumwalt comparison, Dr. Clarke uses John Finn and the Flight IIA restart to show the appeal of a proven destroyer in a politically uncertain procurement environment. Rebuilding the production tooling cost money, but the Navy could trust the design's ASW aviation facilities, Aegis role, and accumulated modernizations. The discussion of stern flaps, computing upgrades, and ballistic-missile defence sets up the limit: modernization extends usefulness but cannot make an old hull endlessly new.",
+      "sourcePath": "src/transcripts/txt/2026-05-09_T18-30-06_total-burke-domination-why-the-us-navy-could-be-rebranded-the-arleigh-burke-flotilla-and-friends_PH7c3uz-8GY.txt",
+      "evidence": [
+        {
+          "start": "57:33",
+          "end": "1:00:50",
+          "note": "The transcript says Zumwalt failed politically while the Flight IIA restart offered a reliable, trusted destroyer design."
+        },
+        {
+          "start": "1:04:45",
+          "end": "1:05:56",
+          "note": "The transcript describes retrofitted improvements such as stern flaps and combat-system upgrades, then notes limits to repeated modernization."
+        }
+      ],
+      "videoId": "PH7c3uz-8GY"
+    },
+    {
+      "id": "ddgx-new-hull-dilemma",
+      "slug": "ddgx-new-hull-dilemma",
+      "title": "DDG(X) and the new-hull dilemma",
+      "kind": "chapter",
+      "start": "1:12:00",
+      "end": "1:21:25",
+      "topics": [
+        "destroyers",
+        "us-navy",
+        "naval-procurement",
+        "force-structure",
+        "ship-design",
+        "cruisers"
+      ],
+      "summary": "DDG(X) is used to show the awkward balance between a safer Burke-like successor and a visibly different next-generation combatant.",
+      "body": "Dr. Clarke contrasts DDG(X) with Zumwalt: instead of too much novelty, DDG(X) risked looking like a Burke on a larger hull with similar weapons. That made it easier to explain technically, but harder to justify politically against simply buying more Burkes. The section is valuable for understanding why future large surface combatants must solve both engineering requirements and the budgetary story Congress is asked to believe.",
+      "sourcePath": "src/transcripts/txt/2026-05-09_T18-30-06_total-burke-domination-why-the-us-navy-could-be-rebranded-the-arleigh-burke-flotilla-and-friends_PH7c3uz-8GY.txt",
+      "evidence": [
+        {
+          "start": "1:12:00",
+          "end": "1:15:27",
+          "note": "The transcript describes DDG(X) as a more traditional Burke successor with a new hull, integrated power, new radars, and familiar weapons."
+        },
+        {
+          "start": "1:15:35",
+          "end": "1:21:25",
+          "note": "The transcript explains why a safer Burke-like successor can lose the argument to continued Burke construction."
+        }
+      ],
+      "videoId": "PH7c3uz-8GY"
+    },
+    {
+      "id": "flight-three-and-replacement-pressure",
+      "slug": "flight-three-and-replacement-pressure",
+      "title": "Flight III and replacement pressure",
+      "kind": "chapter",
+      "start": "1:21:45",
+      "end": "1:43:02",
+      "topics": [
+        "destroyers",
+        "us-navy",
+        "force-structure",
+        "naval-procurement",
+        "air-defence",
+        "frigates"
+      ],
+      "summary": "The closing argument explains how Flight III, frigate comparisons, and future large-combatant politics all orbit the Burke benchmark.",
+      "body": "The final technical section follows the Flight IIA technology insert into Flight III, where new power distribution, Aegis baselines, SPY-6, larger crews, and cruiser-replacement duties press against the old hull. Dr. Clarke then broadens the issue: frigates can become Burke-like, battleship or cruiser proposals can appear as ways around naming politics, and air-defence ships still need size for radars, processors, and missiles. The video closes by asking what kind of successor can escape the Burke comparison without losing political support.",
+      "sourcePath": "src/transcripts/txt/2026-05-09_T18-30-06_total-burke-domination-why-the-us-navy-could-be-rebranded-the-arleigh-burke-flotilla-and-friends_PH7c3uz-8GY.txt",
+      "evidence": [
+        {
+          "start": "1:21:45",
+          "end": "1:29:45",
+          "note": "The transcript covers technology insertion and Flight III equipment, including power, Aegis, SPY-6, VLS, helicopters, and crew growth."
+        },
+        {
+          "start": "1:31:25",
+          "end": "1:43:02",
+          "note": "The transcript connects Burke dominance to frigate design, battleship or strike-cruiser ideas, air-defence size pressures, and the question of a successor."
+        }
+      ],
+      "videoId": "PH7c3uz-8GY"
     }
   ]
 }

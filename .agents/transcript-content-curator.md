@@ -37,7 +37,7 @@ Use this brief when turning stored Dr. Alex transcript files into site-visible s
 ## Public Wording
 
 - Write `summary`, `body`, `question`, and `answerShort` for readers using a study guide, not for maintainers watching the workflow.
-- Keep workflow terms out of public fields: avoid "first pass", "later extraction", "processing", "curation", "search metadata", "source window", "evidence window", "this segment exists to", and similar scaffold language.
+- Keep workflow terms out of public fields when they describe the site or content pipeline: avoid "first pass", "later extraction", "processing", "curation", "search metadata", "source window", "evidence window", "seed", "prototype", "this segment exists to", and similar scaffold language. The same words are allowed when the related transcript specifically uses them in the same subject-matter sense, such as warship prototypes, electoral first-past-the-post discussion, or data processing.
 - Use the processing log, task notes, or handoff message for incomplete-work status and follow-up needs.
 - Make `body` meatier than a label. Prefer 2-4 concise sentences that explain the video moment's subject, the useful detail or argument, and any transcript-grounded caveat. For notable points, include the actual historical, technical, or strategic takeaway rather than saying the point is useful for browsing or search.
 - Avoid creator-facing metrics, internal filenames, and raw inventory language in public text unless the user explicitly asks for an admin/debug view.

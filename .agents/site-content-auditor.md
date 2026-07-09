@@ -19,7 +19,7 @@ Use this brief for high-effort follow-up passes that make the public study guide
 ## Public Wording Rules
 
 - Public fields are `summary`, `body`, `question`, `answerShort`, page headings, card text, labels, and search placeholders.
-- Do not expose maintainer language such as "first pass", "later extraction", "processing", "curation", "source window", "evidence window", "search metadata", "seed", "prototype", "this segment exists to", or "useful for search".
+- Do not expose maintainer language such as "first pass", "later extraction", "processing", "curation", "source window", "evidence window", "search metadata", "seed", "prototype", "this segment exists to", or "useful for search" when it describes the site or content pipeline. The same words are allowed when the related transcript specifically uses them in the same subject-matter sense, such as warship prototypes, electoral first-past-the-post discussion, or data processing.
 - Use "transcript passage" or "source passage" for visible source labels.
 - Keep incomplete-work status in logs, reports, task notes, or handoff text.
 - Avoid public YouTube analytics or internal identifiers unless the user asks for an admin/debug surface.

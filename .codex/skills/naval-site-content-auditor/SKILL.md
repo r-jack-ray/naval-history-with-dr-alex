@@ -27,14 +27,14 @@ Recommended run configuration: GPT-5.5 with reasoning effort set to Extra High. 
 ## Audit Public Wording
 
 1. Scan public fields: `summary`, `body`, `question`, `answerShort`, visible page headings, card text, and search placeholder text.
-2. Remove maintainer/workflow language from public fields, including "first pass", "later extraction", "processing", "curation", "source window", "evidence window", "search metadata", "this segment exists to", and "useful for search".
+2. Remove maintainer/workflow language from public fields when it describes the site or content pipeline, including "first pass", "later extraction", "processing", "curation", "source window", "evidence window", "search metadata", "seed", "prototype", "this segment exists to", and "useful for search".
 3. Keep workflow status in `src/derived/site-content-processing.log`, `reports/`, task notes, or the handoff, not in the site content.
 4. Prefer reader-facing study-guide prose:
    - Explain what the video moment covers.
    - State the historical, technical, strategic, or historiographic takeaway.
    - Make clear why opening the video at that time is useful.
    - Include transcript-grounded caveats when useful.
-   - Avoid announcing that the page is an archive, prototype, seed, extraction, or search target.
+   - Avoid announcing that the page or segment is an archive, prototype, seed, extraction, or search target. Words such as "prototype" and "processing" are fine when the related transcript specifically uses them in the same subject-matter sense, such as warship prototypes or data processing.
 
 ## Add Substance
 
