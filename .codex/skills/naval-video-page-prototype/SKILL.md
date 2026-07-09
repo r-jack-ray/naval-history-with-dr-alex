@@ -1,11 +1,19 @@
 ---
 name: naval-video-page-prototype
-description: Build or extend the Naval History with Dr. Alex Astro/Pagefind prototype from generated archive data. Use when adding video, segment, topic, search, timestamp, Pagefind metadata, or generator-adjacent content in this repository.
+description: Build or extend the Naval History with Dr. Alex Astro/Pagefind study-guide site from generated archive data. Use when adding video guide pages, segment pages, topic pages, search, timestamp pointers, Pagefind metadata, or generator-adjacent content in this repository.
 ---
 
 # Naval Video Page Prototype
 
 Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` when working on the website prototype.
+
+## Site Intent
+
+- Build for learners who want to understand naval history and how navies work.
+- Make timestamp discovery the core experience: readers should know what a Dr. Clarke timestamp covers before opening YouTube.
+- Keep search and topic paths strong for ships, classes, navies, battles, weapons, doctrine, logistics, acronyms, and alternate wording.
+- Support deep dives through many separate summary segments instead of sparse video-level overviews.
+- Avoid public creator/admin surfaces such as YouTube stats, internal filenames, or processing status unless the user explicitly asks for them.
 
 ## Sources
 
@@ -25,6 +33,7 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` when working on
 5. Add Pagefind metadata and filters for type, video title, video ID, timestamp, topic, and segment kind when present.
 6. Regenerate generated site data through the script; do not hand-edit `site/src/data/generated/archive.json`.
 7. Avoid staging or committing transcript fetch outputs unless the user explicitly includes them.
+8. Keep visible copy learner-facing. Prefer "study guide", "timestamp guide", "timestamp pointer", "topic", and "subject" over processing, inventory, or metadata language.
 
 ## Validation
 

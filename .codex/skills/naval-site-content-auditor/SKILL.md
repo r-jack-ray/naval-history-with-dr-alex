@@ -1,6 +1,6 @@
 ---
 name: naval-site-content-auditor
-description: Audit and strengthen the Naval History with Dr. Alex Astro/Pagefind archive content after transcript curation. Use when asked to add substance to thin segment notes, remove workflow/scaffold wording from public fields, validate transcript-backed claims, improve segment density, or run a high-effort follow-up pass over `src/derived/prototype-segments.json`, video pages, segment pages, topic pages, or generated archive data.
+description: Audit and strengthen the Naval History with Dr. Alex Astro/Pagefind study-guide content after transcript curation. Use when asked to add substance to thin segment notes, remove workflow/scaffold wording from public fields, align wording with learner intent, validate transcript-backed claims, improve segment density, or run a high-effort follow-up pass over `src/derived/prototype-segments.json`, video pages, segment pages, topic pages, or generated archive data.
 ---
 
 # Naval Site Content Auditor
@@ -8,6 +8,14 @@ description: Audit and strengthen the Naval History with Dr. Alex Astro/Pagefind
 Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` after one or more transcripts have already been converted into site-visible content.
 
 Recommended run configuration: GPT-5.5 with reasoning effort set to Extra High. If the runtime cannot enforce that setting, still follow this workflow with a slow, evidence-first audit stance.
+
+## Site Intent
+
+- Write for readers learning naval history and how navies work, not for creators, maintainers, or pipeline operators.
+- Treat every segment as a timestamp pointer into a Dr. Clarke video: preview what the reader will see or hear, identify the naval subject, and explain the learning payoff.
+- Keep the site highly searchable by using transcript-supported names for ships, classes, navies, battles, weapons, policies, doctrine, logistics, acronyms, and alternate wording.
+- Prefer many precise, substantive segments over one sparse video overview when transcript evidence supports more granular coverage.
+- Do not surface YouTube analytics, internal filenames, processing status, or raw inventory details in public pages unless the user asks for an admin/debug view.
 
 ## Start
 
@@ -21,9 +29,10 @@ Recommended run configuration: GPT-5.5 with reasoning effort set to Extra High. 
 1. Scan public fields: `summary`, `body`, `question`, `answerShort`, visible page headings, card text, and search placeholder text.
 2. Remove maintainer/workflow language from public fields, including "first pass", "later extraction", "processing", "curation", "source window", "evidence window", "search metadata", "this segment exists to", and "useful for search".
 3. Keep workflow status in `src/derived/site-content-processing.log`, `reports/`, task notes, or the handoff, not in the site content.
-4. Prefer reader-facing archive prose:
+4. Prefer reader-facing study-guide prose:
    - Explain what the timestamp covers.
    - State the historical, technical, strategic, or historiographic takeaway.
+   - Make clear why opening the video at that timestamp is useful.
    - Include transcript-grounded caveats when useful.
    - Avoid announcing that the page is an archive, prototype, seed, extraction, or search target.
 

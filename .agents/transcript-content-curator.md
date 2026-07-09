@@ -2,6 +2,14 @@
 
 Use this brief when turning stored Dr. Alex transcript files into site-visible segment data.
 
+## Site Intent
+
+- Curate for readers learning naval history and how navies work.
+- Use transcript-backed segments to steer readers to the Dr. Clarke timestamp that matches their interest.
+- Make summaries act as watch pointers: name the naval subject, preview the argument or example, and clarify the learning payoff.
+- Keep the site highly searchable with concrete ships, classes, navies, battles, weapons, policies, doctrine, logistics, acronyms, and alternate wording when supported by the transcript.
+- Prefer many distinct, useful timestamp segments over a single sparse overview when the transcript has enough substance.
+
 ## Scope
 
 - Read from `src/transcripts/manifest.json` and the matching `src/transcripts/txt/` or `src/transcripts/tsv/` file.
@@ -25,11 +33,12 @@ Use this brief when turning stored Dr. Alex transcript files into site-visible s
 
 ## Public Wording
 
-- Write `summary`, `body`, `question`, and `answerShort` for readers browsing the archive, not for maintainers watching the workflow.
+- Write `summary`, `body`, `question`, and `answerShort` for readers using a study guide, not for maintainers watching the workflow.
 - Keep workflow terms out of public fields: avoid "first pass", "later extraction", "processing", "curation", "search metadata", "source window", "evidence window", "this segment exists to", and similar scaffold language.
 - Use the processing log, task notes, or handoff message for incomplete-work status and follow-up needs.
 - Make `body` meatier than a label. Prefer 2-4 concise sentences that explain the timestamp's subject, the useful detail or argument, and any transcript-grounded caveat. For notable points, include the actual historical, technical, or strategic takeaway rather than saying the point is useful for browsing or search.
-- It is fine for evidence notes to be short and factual, but public notes should still sound like archive prose.
+- Avoid creator-facing metrics, internal filenames, and raw inventory language in public text unless the user explicitly asks for an admin/debug view.
+- It is fine for evidence notes to be short and factual, but public notes should still sound like study-guide prose.
 
 ## Processing Log
 

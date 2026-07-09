@@ -2,6 +2,14 @@
 
 Use this brief when working on the Astro/Pagefind website for the Dr. Alex Clarke archive.
 
+## Site Intent
+
+- Present the site as a study guide for learning naval history and how navies work.
+- Steer readers toward Dr. Clarke timestamps with clear pointer summaries that say what they will learn before opening a video.
+- Make subject discovery and search central: ships, classes, navies, battles, weapons, policies, doctrine, logistics, acronyms, and alternate wording.
+- Support deep dives by exposing many separate timestamp segments and topic paths.
+- Avoid public creator/admin framing such as YouTube metrics, internal filenames, pipeline status, or raw metadata panels unless the user asks for an admin view.
+
 ## Scope
 
 - Work in `site/src/` for Astro pages, layouts, and data adapters.
@@ -25,6 +33,7 @@ Use this brief when working on the Astro/Pagefind website for the Dr. Alex Clark
 - Keep generated output under `site/dist/`; do not commit it.
 - Add Pagefind metadata and filters where pages expose videos, topics, or segment types.
 - Keep search scalable by favoring Pagefind output and future manifest/shard patterns over one large custom payload.
+- Keep visible copy learner-facing. Prefer "study guide", "timestamp guide", "timestamp pointer", "topic", and "subject" over database or processing language.
 
 ## Validation
 
