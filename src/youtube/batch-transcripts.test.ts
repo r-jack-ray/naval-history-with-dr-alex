@@ -92,7 +92,7 @@ test("batch fetch skips stored transcripts and writes checkpoint status", async 
     const checkpoint = JSON.parse(await readFile(statusOutput, "utf8")) as TranscriptBatchStatus;
     assert.equal(checkpoint.stats.fetchedCount, 1);
     assert.equal(
-      (await readFile(join(outputRoot, "json", "2026-07-03_T18-30-17+0000_metadata-title_def456.json"), "utf8"))
+      (await readFile(join(outputRoot, "json", "2026-07-03_T18-30-17_metadata-title_def456.json"), "utf8"))
         .includes('"videoTitle": "Metadata Title"'),
       true,
     );

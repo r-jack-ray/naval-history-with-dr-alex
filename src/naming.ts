@@ -51,7 +51,7 @@ export function archiveTimestampPrefix(value: string): string | undefined {
   const normalizedOffset = offset === undefined
     ? undefined
     : offset === "Z"
-      ? "+0000"
+      ? ""
       : offset.replace(":", "");
 
   return normalizedOffset
