@@ -1,25 +1,25 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-07-08T08:47:23.812Z",
+  "updatedAt": "2026-07-09T06:07:45.400Z",
   "inputPath": "src/channel/episodes.json",
   "outputRoot": "src/transcripts",
-  "requestDelayMs": 2000,
-  "retryFailed": false,
+  "requestDelayMs": 5000,
+  "retryFailed": true,
   "force": false,
   "stats": {
     "inputVideoCount": 2078,
-    "skippedStoredCount": 2022,
-    "skippedPreviousFailureCount": 29,
-    "attemptedCount": 27,
-    "fetchedCount": 27,
-    "failedCount": 0,
+    "skippedStoredCount": 2049,
+    "skippedPreviousFailureCount": 0,
+    "attemptedCount": 29,
+    "fetchedCount": 8,
+    "failedCount": 21,
     "pendingCount": 0,
-    "totalFailureCount": 29
+    "totalFailureCount": 21
   },
   "failures": [
     {
       "videoId": "_xGSIeZku8I",
-      "attemptedAt": "2026-07-08T08:41:01.690Z",
+      "attemptedAt": "2026-07-09T06:07:45.025Z",
       "classification": "no_caption_tracks",
       "error": "No caption tracks found for video: _xGSIeZku8I.",
       "tabs": [
@@ -30,20 +30,8 @@
       "channelOrder": 2037
     },
     {
-      "videoId": "-sOPrkXNRaU",
-      "attemptedAt": "2026-07-08T08:32:46.580Z",
-      "classification": "empty_transcript",
-      "error": "Caption track contained no transcript segments: English (auto-generated) (en).",
-      "tabs": [
-        "streams"
-      ],
-      "title": "Patreon 21: Notable WW2 commanders of smaller naval forces",
-      "publishedAt": "2021-04-15T17:22:13+00:00",
-      "channelOrder": 1979
-    },
-    {
       "videoId": "048g_xMLsqo",
-      "attemptedAt": "2026-07-08T08:25:40.935Z",
+      "attemptedAt": "2026-07-09T06:06:15.026Z",
       "classification": "no_caption_tracks",
       "error": "No caption tracks found for video: 048g_xMLsqo.",
       "tabs": [
@@ -55,7 +43,7 @@
     },
     {
       "videoId": "2FM59LjWsyI",
-      "attemptedAt": "2026-07-08T08:40:43.517Z",
+      "attemptedAt": "2026-07-09T06:07:30.113Z",
       "classification": "no_caption_tracks",
       "error": "No caption tracks found for video: 2FM59LjWsyI.",
       "tabs": [
@@ -66,31 +54,8 @@
       "channelOrder": 2034
     },
     {
-      "videoId": "3M9ae7K2XKU",
-      "attemptedAt": "2026-07-08T07:58:43.505Z",
-      "classification": "empty_transcript",
-      "error": "Caption track contained no transcript segments: English (auto-generated) (en).",
-      "tabs": [
-        "streams"
-      ],
-      "title": "Naval History Questions Live... with Irn Bru... which is a scottish soft drink... not fizzy whisky!",
-      "publishedAt": "2023-09-17T18:57:27+00:00",
-      "channelOrder": 1750
-    },
-    {
-      "videoId": "5G14HxOrzGg",
-      "attemptedAt": "2026-07-08T05:32:35.054Z",
-      "classification": "empty_transcript",
-      "error": "Caption track contained no transcript segments: English (auto-generated) (en).",
-      "tabs": [
-        "videos"
-      ],
-      "title": "Sverdlov Class: The Last of Stalin's Soviet Gun Cruisers",
-      "channelOrder": 780
-    },
-    {
       "videoId": "670r43jZo5o",
-      "attemptedAt": "2026-07-08T07:15:22.346Z",
+      "attemptedAt": "2026-07-09T06:03:59.785Z",
       "classification": "no_caption_tracks",
       "error": "No caption tracks found for video: 670r43jZo5o.",
       "tabs": [
@@ -101,7 +66,7 @@
     },
     {
       "videoId": "8vkrEqP1xUM",
-      "attemptedAt": "2026-07-08T07:22:30.914Z",
+      "attemptedAt": "2026-07-09T06:04:14.579Z",
       "classification": "no_caption_tracks",
       "error": "No caption tracks found for video: 8vkrEqP1xUM.",
       "tabs": [
@@ -113,7 +78,7 @@
     },
     {
       "videoId": "cP_PpcABQFQ",
-      "attemptedAt": "2026-07-08T08:25:46.911Z",
+      "attemptedAt": "2026-07-09T06:06:29.949Z",
       "classification": "no_caption_tracks",
       "error": "No caption tracks found for video: cP_PpcABQFQ.",
       "tabs": [
@@ -125,7 +90,7 @@
     },
     {
       "videoId": "dcjjHarz1Ew",
-      "attemptedAt": "2026-07-08T05:16:10.704Z",
+      "attemptedAt": "2026-07-09T06:01:14.486Z",
       "classification": "no_caption_tracks",
       "error": "No caption tracks found for video: dcjjHarz1Ew.",
       "tabs": [
@@ -137,7 +102,7 @@
     },
     {
       "videoId": "Ec-QeRtmPzw",
-      "attemptedAt": "2026-07-08T07:15:10.291Z",
+      "attemptedAt": "2026-07-09T06:03:29.775Z",
       "classification": "no_caption_tracks",
       "error": "No caption tracks found for video: Ec-QeRtmPzw.",
       "tabs": [
@@ -148,7 +113,7 @@
     },
     {
       "videoId": "hVm0HoGdq-g",
-      "attemptedAt": "2026-07-08T08:34:11.555Z",
+      "attemptedAt": "2026-07-09T06:07:15.345Z",
       "classification": "no_caption_tracks",
       "error": "No caption tracks found for video: hVm0HoGdq-g.",
       "tabs": [
@@ -160,7 +125,7 @@
     },
     {
       "videoId": "IZui0sFSIdE",
-      "attemptedAt": "2026-07-08T05:43:42.577Z",
+      "attemptedAt": "2026-07-09T06:01:44.716Z",
       "classification": "no_caption_tracks",
       "error": "No caption tracks found for video: IZui0sFSIdE.",
       "tabs": [
@@ -170,20 +135,8 @@
       "channelOrder": 862
     },
     {
-      "videoId": "j8csQfIH0mQ",
-      "attemptedAt": "2026-07-08T07:58:03.293Z",
-      "classification": "empty_transcript",
-      "error": "Caption track contained no transcript segments: English (auto-generated) (en).",
-      "tabs": [
-        "streams"
-      ],
-      "title": "Bruships 124: Hutchinsons Pictorial History of the War Series",
-      "publishedAt": "2023-10-08T18:05:31+00:00",
-      "channelOrder": 1744
-    },
-    {
       "videoId": "mmppT8c_kb8",
-      "attemptedAt": "2026-07-08T07:15:16.798Z",
+      "attemptedAt": "2026-07-09T06:03:44.940Z",
       "classification": "no_caption_tracks",
       "error": "No caption tracks found for video: mmppT8c_kb8.",
       "tabs": [
@@ -194,7 +147,7 @@
     },
     {
       "videoId": "Nfv-qSf9wLs",
-      "attemptedAt": "2026-07-08T07:14:58.226Z",
+      "attemptedAt": "2026-07-09T06:02:59.705Z",
       "classification": "no_caption_tracks",
       "error": "No caption tracks found for video: Nfv-qSf9wLs.",
       "tabs": [
@@ -205,7 +158,7 @@
     },
     {
       "videoId": "nvCV5fqNkCE",
-      "attemptedAt": "2026-07-08T07:58:34.043Z",
+      "attemptedAt": "2026-07-09T06:05:14.857Z",
       "classification": "no_caption_tracks",
       "error": "No caption tracks found for video: nvCV5fqNkCE.",
       "tabs": [
@@ -216,19 +169,8 @@
       "channelOrder": 1749
     },
     {
-      "videoId": "O0vjty1ueho",
-      "attemptedAt": "2026-07-08T05:57:43.659Z",
-      "classification": "empty_transcript",
-      "error": "Caption track contained no transcript segments: English (auto-generated) (en).",
-      "tabs": [
-        "videos"
-      ],
-      "title": "County Cruisers P2: The Kent Class Continued",
-      "channelOrder": 971
-    },
-    {
       "videoId": "o9DACEN7Sr0",
-      "attemptedAt": "2026-07-08T07:41:36.693Z",
+      "attemptedAt": "2026-07-09T06:04:29.836Z",
       "classification": "no_caption_tracks",
       "error": "No caption tracks found for video: o9DACEN7Sr0.",
       "tabs": [
@@ -240,7 +182,7 @@
     },
     {
       "videoId": "oD6sV0zuWcU",
-      "attemptedAt": "2026-07-08T08:30:30.674Z",
+      "attemptedAt": "2026-07-09T06:06:44.893Z",
       "classification": "no_caption_tracks",
       "error": "No caption tracks found for video: oD6sV0zuWcU.",
       "tabs": [
@@ -251,20 +193,8 @@
       "channelOrder": 1957
     },
     {
-      "videoId": "P-Pj-Vkc04g",
-      "attemptedAt": "2026-07-08T08:19:48.107Z",
-      "classification": "empty_transcript",
-      "error": "Caption track contained no transcript segments: English (auto-generated) (en).",
-      "tabs": [
-        "streams"
-      ],
-      "title": "The Forgotten Trafalgar: the 1509 Battle of Diu",
-      "publishedAt": "2022-02-03T18:29:02+00:00",
-      "channelOrder": 1899
-    },
-    {
       "videoId": "PLcyjZ29LHA",
-      "attemptedAt": "2026-07-08T08:25:28.742Z",
+      "attemptedAt": "2026-07-09T06:05:59.923Z",
       "classification": "no_caption_tracks",
       "error": "No caption tracks found for video: PLcyjZ29LHA.",
       "tabs": [
@@ -276,7 +206,7 @@
     },
     {
       "videoId": "QJDfypv9XxY",
-      "attemptedAt": "2026-07-08T06:35:56.171Z",
+      "attemptedAt": "2026-07-09T06:02:29.809Z",
       "classification": "no_caption_tracks",
       "error": "No caption tracks found for video: QJDfypv9XxY.",
       "tabs": [
@@ -286,32 +216,8 @@
       "channelOrder": 1234
     },
     {
-      "videoId": "rJmiSW1x2nU",
-      "attemptedAt": "2026-07-08T04:37:41.890Z",
-      "classification": "empty_transcript",
-      "error": "Caption track contained no transcript segments: English (auto-generated) (en).",
-      "tabs": [
-        "videos"
-      ],
-      "title": "Check Campaign 16: UAD has updated & to Learn it's new ways I started another British Campaign",
-      "publishedAt": "2024-05-06T11:00:33-07:00",
-      "channelOrder": 360
-    },
-    {
-      "videoId": "rrr7wCH8SH8",
-      "attemptedAt": "2026-07-08T07:54:28.250Z",
-      "classification": "empty_transcript",
-      "error": "Caption track contained no transcript segments: English (auto-generated) (en).",
-      "tabs": [
-        "streams"
-      ],
-      "title": "Racking up the Fight Back: American Carrier raids of 1942",
-      "publishedAt": "2024-02-01T19:21:48+00:00",
-      "channelOrder": 1709
-    },
-    {
       "videoId": "s37gUDr_Z9w",
-      "attemptedAt": "2026-07-08T05:12:06.795Z",
+      "attemptedAt": "2026-07-09T06:00:59.547Z",
       "classification": "no_caption_tracks",
       "error": "No caption tracks found for video: s37gUDr_Z9w.",
       "tabs": [
@@ -323,7 +229,7 @@
     },
     {
       "videoId": "U5LfsnBSt8w",
-      "attemptedAt": "2026-07-08T07:15:04.315Z",
+      "attemptedAt": "2026-07-09T06:03:14.699Z",
       "classification": "no_caption_tracks",
       "error": "No caption tracks found for video: U5LfsnBSt8w.",
       "tabs": [
@@ -334,7 +240,7 @@
     },
     {
       "videoId": "usSZIzRtuas",
-      "attemptedAt": "2026-07-08T06:12:15.483Z",
+      "attemptedAt": "2026-07-09T06:02:14.728Z",
       "classification": "no_caption_tracks",
       "error": "No caption tracks found for video: usSZIzRtuas.",
       "tabs": [
@@ -345,7 +251,7 @@
     },
     {
       "videoId": "xsE4uYFn1m0",
-      "attemptedAt": "2026-07-08T06:36:14.332Z",
+      "attemptedAt": "2026-07-09T06:02:44.856Z",
       "classification": "no_caption_tracks",
       "error": "No caption tracks found for video: xsE4uYFn1m0.",
       "tabs": [
@@ -356,6 +262,5 @@
       "channelOrder": 1237
     }
   ],
-  "metadataInput": "src/channel/video-metadata.json",
-  "limit": 50
+  "metadataInput": "src/channel/video-metadata.json"
 }

@@ -9,7 +9,7 @@ Use this brief when turning stored Dr. Alex transcript files into site-visible s
 - Make summaries act as watch pointers: name the naval subject, preview the argument or example, and clarify the learning payoff.
 - Keep the site highly searchable with concrete ships, classes, navies, battles, weapons, policies, doctrine, logistics, acronyms, and alternate wording when supported by the transcript.
 - Prefer many distinct, useful time notes over a single sparse overview when the transcript has enough substance.
-- Keep the reusable project theme here and in the skill. Schedules should only provide queue mechanics, concurrency guards, and run-control instructions.
+- Keep the reusable project theme here and in the skill. The normal processing unit is one transcript/video content shard per process run in the main working checkout. That is already isolated by design, so do not default to detached worktrees for routine transcript curation. Do not recreate the deleted four-schedule pattern that allowed stale `prototype-segments.json` edits and detached changes with no reliable plug-in path.
 
 ## Scope
 
@@ -21,17 +21,18 @@ Use this brief when turning stored Dr. Alex transcript files into site-visible s
 
 ## Workflow
 
-1. Run `npm run audit:site-content` and open `reports/site-content-backlog.md` for the next stored transcript without curated segments.
-2. Inspect the transcript TXT/TSV around candidate windows before writing summaries.
-3. Add or update the one per-video file for the transcript under `src/derived/video-segments/`.
-4. Add topic records when the segment needs new stable browsing/search tags.
-5. Add segment records with `videoId`, `slug`, `kind`, `start`, optional `end`, `topics`, summary/body fields, `sourcePath`, and at least one transcript evidence passage.
-6. Use `kind: qa` only for actual question/answer exchanges. Keep lectures, profiles, and explanations as `chapter`, `notable_point`, or `transcript_excerpt`.
-7. Append one line to `src/derived/site-content-processing.log` for each transcript file processed. Treat this as best-effort bookkeeping; if it collides, the per-video content file is the important artifact.
-8. Regenerate and validate with `.codex/hooks/validate-content-pipeline.ps1 -SkipRepoCheck` before handoff; run without `-SkipRepoCheck` when TypeScript or shared contracts changed.
-9. For partial first-pass work, use `needsFurtherProcessing=yes`; use `no` only when the file is fully curated or intentionally closed without a site segment.
-10. During first-pass work, split distinct subjects, arguments, and Q&A exchanges into separate watch points when evidence supports it. Structured episodes and streams should normally get 3-8 substantive segments before a later exhaustive revisit.
-11. For granular revisits, split lecture material into major `chapter` and `notable_point` windows, and use `qa` only for transcript-visible questions with answers. Long live streams may need a targeted granular pass plus a later exhaustive live Q&A review.
+1. Verify local dependencies before content edits. If `node_modules/.bin/tsc.cmd` or the platform equivalent is missing in the active workspace, run `npm ci` before validation. If dependency installation or the first audit cannot run, report the blocker and make no transcript-content edits.
+2. Run `npm run audit:site-content` and open `reports/site-content-backlog.md` for the next stored transcript without curated segments.
+3. Inspect the transcript TXT/TSV around candidate windows before writing summaries.
+4. Add or update the current-schema content shard under `src/derived/video-segments/`, normally `video-<videoId>.json` for the selected transcript. Treat that shard as the owned content artifact for this process run.
+5. Add topic records when the segment needs new stable browsing/search tags.
+6. Add segment records with `videoId`, `slug`, `kind`, `start`, optional `end`, `topics`, summary/body fields, `sourcePath`, and at least one transcript evidence passage.
+7. Use `kind: qa` only for actual question/answer exchanges. Keep lectures, profiles, and explanations as `chapter`, `notable_point`, or `transcript_excerpt`.
+8. Append one line to `src/derived/site-content-processing.log` for each transcript file processed. Treat this as best-effort append-only bookkeeping; shared log churn is acceptable and should not be confused with the content source of truth.
+9. Regenerate and validate with `.codex/hooks/validate-content-pipeline.ps1 -SkipRepoCheck` before handoff; run without `-SkipRepoCheck` when TypeScript or shared contracts changed.
+10. For the main transcript pass, prioritize getting useful current-schema watch points into the site over final polish. Use `needsFurtherProcessing=yes` for entries that should receive a later auditor cleanup or more granular follow-up; use `no` only when the file is fully curated or intentionally closed without a site segment.
+11. During first-pass work, split distinct subjects, arguments, and Q&A exchanges into separate watch points when evidence supports it. Structured episodes and streams should normally get 3-8 substantive segments before a later exhaustive revisit.
+12. For granular revisits, split lecture material into major `chapter` and `notable_point` windows, and use `qa` only for transcript-visible questions with answers. Long live streams may need a targeted granular pass plus a later exhaustive live Q&A review.
 
 ## Public Wording
 
@@ -45,7 +46,7 @@ Use this brief when turning stored Dr. Alex transcript files into site-visible s
 
 ## Processing Log
 
-Use `src/derived/site-content-processing.log` as the append-only curation log. The file has no header: every non-empty line is one processed transcript file. The log is useful for backlog filtering, but public content lives in `src/derived/video-segments/`.
+Use `src/derived/site-content-processing.log` as the append-only curation log. The file has no header: every non-empty line is one processed transcript file. The log is useful for backlog filtering, but public content lives in `src/derived/video-segments/`. If concurrent runs touch this file, reconcile it as bookkeeping after preserving the current-schema content shards.
 
 Use tab-separated fields:
 
@@ -65,7 +66,7 @@ processedAt	sourcePath	videoId	action	needsFurtherProcessing	determination
 - Every curated claim needs transcript evidence: video ID, timestamp, `sourcePath`, and a source passage.
 - Keep summaries concise and search-friendly; put caveats in the body when the transcript is ambiguous.
 - Preserve Dr. Alex's meaning, but do not overquote transcript text.
-- Prefer a compact set of high-value segments per first pass, normally 3-8 for structured episodes or streams, over either exhaustive low-value slicing or a single broad note.
+- Prefer a compact set of high-value segments per main pass, normally 3-8 for structured episodes or streams, over either exhaustive low-value slicing or a single broad note. Leave cleanup and expansion targets explicit through `needsFurtherProcessing=yes` rather than stalling the main pass for final polish.
 
 ## Handoff
 

@@ -4,103 +4,344 @@
   "topics": [
     "modern-navy",
     "naval-history",
-    "live-q-and-a"
+    "live-q-and-a",
+    "royal-navy",
+    "naval-aviation",
+    "destroyers",
+    "spanish-navy",
+    "naval-logistics",
+    "fleet-screening",
+    "naval-procurement",
+    "carrier-groups",
+    "submarines",
+    "uncrewed-systems",
+    "strategic-deterrence",
+    "naval-industrial-base"
   ],
   "segments": [
     {
-      "id": "questions-system-opening",
+      "id": "bruships-249-royal-navy-capital-ship-throughput",
       "videoId": "uURe69Wnh-Q",
-      "slug": "questions-system-opening",
-      "title": "Live question system setup",
-      "kind": "chapter",
-      "start": "7:45",
-      "end": "8:40",
-      "topics": [
-        "live-q-and-a"
-      ],
-      "summary": "The stream explains how audience questions should be submitted so they can be tracked rather than lost in chat.",
-      "body": "The live-stream setup explains how audience questions should be submitted so they can be answered in sequence rather than disappearing in chat. It also shows why a live Q&A works best when the prompt and the relevant video moment stay connected.",
-      "sourcePath": "src/transcripts/txt/2026-07-05_T23-25-48_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
-      "evidence": [
-        {
-          "start": "7:45",
-          "end": "8:40",
-          "note": "The transcript discusses adding questions to the question system."
-        }
-      ]
-    },
-    {
-      "id": "modern-navy-blackburn-blackburn",
-      "videoId": "uURe69Wnh-Q",
-      "slug": "modern-navy-blackburn-blackburn",
-      "title": "Modern Navy equivalent of the Blackburn Blackburn",
+      "slug": "bruships-249-royal-navy-capital-ship-throughput",
+      "title": "Royal Navy capital-ship throughput after World War I",
       "kind": "qa",
-      "start": "12:01",
-      "end": "12:28",
+      "start": "13:15",
+      "end": "16:28",
       "topics": [
-        "modern-navy",
-        "naval-aviation",
-        "live-q-and-a"
+        "royal-navy",
+        "battlecruisers",
+        "battleships",
+        "naval-industrial-base",
+        "naval-procurement"
       ],
-      "question": "What is the modern Navy equivalent of the Blackburn Blackburn for this channel?",
-      "answerShort": "The prompt is preserved with its video moment so the Blackburn Blackburn comparison can be found from the topic and video pages.",
-      "summary": "A live Q&A prompt asks for a modern Navy analogue to the Blackburn Blackburn and is preserved as a source-linked segment.",
-      "body": "The question ties an unusual naval-aircraft comparison to the relevant part of the live Q&A. It is useful for viewers following odd aircraft analogies because the prompt is kept with the surrounding discussion rather than separated from its context.",
+      "question": "How might the Royal Navy's capital-ship program have developed if postwar construction continued at scale?",
+      "answerShort": "Dr. Clarke argues that ongoing yard throughput could have kept costs competitive, supported a 24-ship goal, and pushed British capital ships toward 16-inch and then 18-inch guns.",
+      "summary": "A counterfactual Royal Navy answer explains how steady post-World War I capital-ship construction could have changed costs, yard competition, and gun standardization.",
+      "body": "This answer treats the Royal Navy's postwar capital-ship plan as an industrial problem as much as a design problem. Dr. Clarke connects four ships a year, multiple competing yards, and the absence of a special one-off construction premium to a possible path toward a much larger battle line. The same exchange also sketches how G3-style battlecruisers and later capital ships might have split between 16-inch and 18-inch gun choices.",
       "sourcePath": "src/transcripts/txt/2026-07-05_T23-25-48_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
       "evidence": [
         {
-          "start": "12:01",
-          "end": "12:28",
-          "note": "The transcript contains the modern Navy equivalent question and setup."
+          "start": "13:15",
+          "end": "15:20",
+          "note": "The transcript describes a four-per-year capital-ship plan, a 24-ship target, and the cost effect of steady construction through competing Royal Navy and civilian yards."
+        },
+        {
+          "start": "15:29",
+          "end": "16:28",
+          "note": "The transcript links possible G3 follow-ons to 16-inch guns and later capital ships to 18-inch gun standardization."
         }
       ]
     },
     {
-      "id": "spanish-1950s-destroyer-escorts",
+      "id": "bruships-249-experimental-carrier-rebuilds",
       "videoId": "uURe69Wnh-Q",
-      "slug": "spanish-1950s-destroyer-escorts",
-      "title": "Spanish 1950s destroyer escorts",
-      "kind": "notable_point",
+      "slug": "bruships-249-experimental-carrier-rebuilds",
+      "title": "Which experimental Royal Navy carrier was worth rebuilding",
+      "kind": "qa",
+      "start": "18:22",
+      "end": "19:17",
+      "topics": [
+        "royal-navy",
+        "naval-aviation",
+        "fleet-carriers",
+        "ship-modernization"
+      ],
+      "question": "Of the Royal Navy's experimental carriers, which would bring the most benefit from an extensive rebuild in the early 1930s?",
+      "answerShort": "He rules out Argus, treats Hermes and Eagle as constrained by their hull origins, and leaves Furious as the likely candidate despite her repeated rebuilds.",
+      "summary": "A carrier-modernization answer compares Eagle, Hermes, Argus, and Furious as candidates for a major early-1930s rebuild.",
+      "body": "The answer is useful because it separates carrier potential from the hull each ship inherited. Argus is dismissed, Hermes is limited by light-cruiser scale, and Eagle remains bounded by her converted battleship hull. Furious emerges as the plausible rebuild candidate, but the answer stresses that she had already been heavily altered.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T23-25-48_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "18:22",
+          "end": "19:17",
+          "note": "The transcript names Eagle, Hermes, Argus, and Furious, then compares their rebuild limits and likely value."
+        }
+      ]
+    },
+    {
+      "id": "bruships-249-spanish-destroyer-escorts",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "bruships-249-spanish-destroyer-escorts",
+      "title": "Spanish 1950s destroyer escorts in a changing navy",
+      "kind": "qa",
       "start": "25:00",
       "end": "26:46",
       "topics": [
-        "destroyers",
         "spanish-navy",
+        "destroyers",
+        "fleet-screening",
         "modern-navy"
       ],
-      "summary": "A discussion of Spanish Navy destroyer escorts frames them as useful ships, but as gun-and-torpedo designs in a naval world moving beyond that model.",
-      "body": "Dr. Clarke treats the Spanish destroyer escorts as useful ships whose gun-and-torpedo design sat uneasily in a navy moving toward missiles and broader escort roles. The note separates the ships' practical value from the limits of their Cold War design context.",
+      "question": "What was Dr. Clarke's view of the Spanish Navy destroyers built in the 1950s?",
+      "answerShort": "He describes them as useful destroyer escorts, but emphasizes that their gun-and-torpedo design belonged to a naval world moving past that model.",
+      "summary": "A Spanish Navy answer frames the 1950s destroyer escorts as practical ships whose design sat on the wrong side of changing Cold War escort requirements.",
+      "body": "Dr. Clarke distinguishes the ships' usefulness from their classification and design limits. He reads them as destroyer escorts rather than full fleet destroyers, then points to gun-and-torpedo armament as the key sign that naval requirements were moving on. The watch point is a compact example of how Cold War escort value could diverge from older destroyer labels.",
       "sourcePath": "src/transcripts/txt/2026-07-05_T23-25-48_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
       "evidence": [
         {
           "start": "25:00",
+          "end": "25:33",
+          "note": "The transcript identifies the Spanish Navy 1950s ships and calls them destroyer escorts."
+        },
+        {
+          "start": "26:31",
           "end": "26:46",
-          "note": "The transcript discusses Spanish Navy destroyer escorts and gun-and-torpedo destroyer design."
+          "note": "The transcript says gun-and-torpedo destroyers had been passed by the naval world around them."
         }
       ]
     },
     {
-      "id": "carrier-group-force-structure",
+      "id": "bruships-249-royal-navy-signalling-drones",
       "videoId": "uURe69Wnh-Q",
-      "slug": "carrier-group-force-structure",
-      "title": "Carrier group force structure sketch",
-      "kind": "notable_point",
-      "start": "2:59:42",
-      "end": "3:00:48",
+      "slug": "bruships-249-royal-navy-signalling-drones",
+      "title": "Royal Navy signalling habits and drone communications",
+      "kind": "qa",
+      "start": "52:00",
+      "end": "53:22",
       "topics": [
-        "carrier-groups",
-        "naval-aviation",
-        "destroyers",
-        "modern-navy"
+        "royal-navy",
+        "modern-navy",
+        "uncrewed-systems",
+        "naval-policy"
       ],
-      "summary": "A force-structure answer sketches a carrier group built around carriers, LHDs, air-defense destroyers, ASW frigates, and submarines.",
-      "body": "The carrier-group sketch brings several force elements into one answer: carriers, amphibious aviation, air-defense destroyers, ASW frigates, and submarines. The same video moment is worth following through multiple subjects because Dr. Clarke is describing a layered naval force, not a single ship type.",
+      "question": "Should the Royal Navy fall back on visual signalling when communications investment is weak?",
+      "answerShort": "He notes that the Royal Navy still uses signal lamps, then turns the idea into a practical question about how drones might communicate with legacy visual systems.",
+      "summary": "A communications answer connects Royal Navy signal-lamp practice to the problem of integrating drones with resilient visual or optical links.",
+      "body": "The answer starts with a joking prompt but lands on a real integration issue. Dr. Clarke notes that signal lamps remain part of Royal Navy practice and history, while the panel compares them with laser links. The useful point is that uncrewed systems may still need ways to communicate with ships and sailors using robust, low-bandwidth visual methods.",
       "sourcePath": "src/transcripts/txt/2026-07-05_T23-25-48_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
       "evidence": [
         {
-          "start": "2:59:42",
+          "start": "52:00",
+          "end": "52:35",
+          "note": "The transcript says the Royal Navy still uses signal lamps and compares laser links to a modern signal lamp."
+        },
+        {
+          "start": "52:46",
+          "end": "53:22",
+          "note": "The transcript asks whether drones may need a signal-lamp-like system that can communicate with people using signal lamps."
+        }
+      ]
+    },
+    {
+      "id": "bruships-249-future-destroyer-armament-mix",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "bruships-249-future-destroyer-armament-mix",
+      "title": "Future destroyers, gun mixes, and LUSVs",
+      "kind": "qa",
+      "start": "56:43",
+      "end": "57:37",
+      "topics": [
+        "destroyers",
+        "italian-navy",
+        "naval-gunnery",
+        "missiles",
+        "uncrewed-systems",
+        "naval-procurement"
+      ],
+      "question": "Are any navies planning a ship with 5-inch, 76 mm, and 40 mm guns plus a large VLS fit?",
+      "answerShort": "He points first to Italian destroyer thinking, then contrasts several major future-destroyer programs with the UK's more unusual proposal.",
+      "summary": "A future-destroyer answer uses gun and VLS combinations to compare Italian, Japanese, American, South Korean, Indian, and British force-design directions.",
+      "body": "This watch point turns a weapon-fit question into a broader procurement comparison. Dr. Clarke says Italy is the most plausible navy to examine for a 5-inch and 76 mm combination, then notes that several navies are pairing large destroyers with LUSV concepts. The contrast is useful for understanding why the UK's proposed direction appears unusual against contemporary destroyer programs.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T23-25-48_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "56:43",
+          "end": "57:06",
+          "note": "The transcript discusses 5-inch, 76 mm, 40 mm, and VLS combinations, with Italy as the likely comparison."
+        },
+        {
+          "start": "57:06",
+          "end": "57:37",
+          "note": "The transcript compares Italian, Japanese, American, South Korean, and Indian future destroyer programs with large destroyer and LUSV scenarios."
+        }
+      ]
+    },
+    {
+      "id": "bruships-249-rfa-lusv-navalization",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "bruships-249-rfa-lusv-navalization",
+      "title": "Royal Fleet Auxiliary integration and LUSV support",
+      "kind": "qa",
+      "start": "1:36:47",
+      "end": "1:38:43",
+      "topics": [
+        "royal-navy",
+        "naval-logistics",
+        "uncrewed-systems",
+        "fleet-screening",
+        "naval-policy"
+      ],
+      "question": "How likely is the Royal Fleet Auxiliary to be merged into the Royal Navy, and how early could that have happened?",
+      "answerShort": "He says it could have been inside the Royal Navy from the beginning, but a modern LUSV support role would require more combat capability and more naval crewing.",
+      "summary": "A Royal Fleet Auxiliary answer links institutional status to the practical question of how large uncrewed surface vessels might be supported near combat zones.",
+      "body": "Dr. Clarke explains that the RFA could always have been structured as a branch or service within the Royal Navy, but that its civilian status has practical advantages for port access. The modern force-design point is sharper: if RFA ships become the route by which LUSVs move, reload, or leave combat zones, their combat capability and crewing model would have to change. This is a logistics watch point with direct implications for uncrewed-surface-vessel operations.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T23-25-48_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "1:36:47",
+          "end": "1:37:24",
+          "note": "The transcript says the RFA could have been part of the Royal Navy from the beginning and compares possible service-within-service models."
+        },
+        {
+          "start": "1:37:27",
+          "end": "1:38:43",
+          "note": "The transcript links RFA movement to LUSV support, then explains the resulting need for greater combat capability, naval crewing, and the tradeoff with civilian port access."
+        }
+      ]
+    },
+    {
+      "id": "bruships-249-belgian-dutch-frigate-tradeoffs",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "bruships-249-belgian-dutch-frigate-tradeoffs",
+      "title": "Belgian and Dutch frigate-program tradeoffs",
+      "kind": "qa",
+      "start": "1:38:51",
+      "end": "1:41:24",
+      "topics": [
+        "frigates",
+        "destroyers",
+        "dutch-navy",
+        "naval-procurement",
+        "amphibious-warfare"
+      ],
+      "question": "What ships would make sense for a navy like Belgium, across past, present, and future needs?",
+      "answerShort": "He argues Belgium historically needed destroyers and monitors, while its modern joint frigate approach risks paying custom-development costs for a ship it does not want fully armed.",
+      "summary": "A small-navy procurement answer compares Belgian destroyer needs, weak modern frigates, Dutch program requirements, and the knock-on effects for British-Dutch amphibious planning.",
+      "body": "The answer is a concise study in small-navy procurement compromise. Dr. Clarke says Belgium's historical needs pointed toward destroyers and monitors, then criticizes the modern Belgian-Dutch frigate path for combining custom development with a weak Belgian fit. He also notes how Dutch participation might have affected British Type 31 and amphibious-program choices, making this more than a single-country answer.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T23-25-48_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "1:38:51",
+          "end": "1:39:56",
+          "note": "The transcript says Belgium needed destroyers and monitors, then criticizes a weak modern frigate fit and the cost of custom development."
+        },
+        {
+          "start": "1:39:59",
+          "end": "1:41:24",
+          "note": "The transcript discusses Dutch alternatives, Type 31 implications, and British movement in and out of amphibious-warfare cooperation."
+        }
+      ]
+    },
+    {
+      "id": "bruships-249-submarines-covert-insertion",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "bruships-249-submarines-covert-insertion",
+      "title": "Modern submarines and covert insertion missions",
+      "kind": "qa",
+      "start": "2:52:22",
+      "end": "2:55:14",
+      "topics": [
+        "submarines",
+        "naval-strategy",
+        "us-navy",
+        "royal-navy",
+        "modern-navy"
+      ],
+      "question": "How do modern submarines compare with earlier submarines for intelligence insertion and extraction work?",
+      "answerShort": "He says modern submarines still do this work often, sometimes with specialist equipment for launching and recovering special-operations craft.",
+      "summary": "A submarine answer explains how modern boats remain important for covert insertion and extraction, with specialist fittings and examples from British, American, and Australian contexts.",
+      "body": "Dr. Clarke emphasizes continuity: submarines still do covert insertion and extraction work, even if many missions cannot be discussed publicly. He describes specialist fittings aft of the sail for launch and recovery of craft used by forces such as the SBS or SEALs, while also noting simpler inflatable-boat methods. The answer uses examples such as Conqueror and Jimmy Carter to show how intelligence and special-operations missions can outweigh publicly famous combat actions.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T23-25-48_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "2:52:22",
+          "end": "2:53:06",
+          "note": "The transcript says modern submarines still do many covert insertions and extractions, including specialist craft for SBS or SEAL teams."
+        },
+        {
+          "start": "2:53:08",
+          "end": "2:55:14",
+          "note": "The transcript discusses classified submarine tasks, Conqueror, and USS Jimmy Carter as examples of important but often undisclosed missions."
+        }
+      ]
+    },
+    {
+      "id": "bruships-249-ideal-royal-navy-composition",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "bruships-249-ideal-royal-navy-composition",
+      "title": "Ideal Royal Navy composition with proper funding",
+      "kind": "qa",
+      "start": "2:59:33",
+      "end": "3:02:11",
+      "topics": [
+        "royal-navy",
+        "force-structure",
+        "carrier-groups",
+        "destroyers",
+        "frigates",
+        "submarines",
+        "uncrewed-systems",
+        "strategic-deterrence"
+      ],
+      "question": "What would an ideal Royal Navy composition look like if spending and acquisition were at the right level?",
+      "answerShort": "He sketches carriers, LHDs, seven escort groups, LUSVs, support ships, SSNs, and SSBN/SSGN ambiguity as a high-quality but not enormous force.",
+      "summary": "A force-structure answer builds an ideal Royal Navy around carrier and amphibious availability, escort groups, LUSVs, logistics ships, attack submarines, and strategic submarines.",
+      "body": "This is one of the stream's clearest force-structure sketches. Dr. Clarke builds from two carriers and three F-35-capable LHDs into seven escort groups with Type 45, Type 26, Type 31, LUSV, support-ship, tanker, and SSN components. He then adds SSBN/SSGN ambiguity and drone-control expectations, describing a navy that is high quality and layered rather than simply large.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T23-25-48_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "2:59:33",
           "end": "3:00:48",
-          "note": "The transcript lists carriers, LHDs, air-defense destroyers, ASW frigates, and SSNs around a carrier group."
+          "note": "The transcript lays out carriers, LHDs, seven escort groups, Type 45s, Type 26s, Type 31s, LUSVs, logistics ships, tankers, and SSNs."
+        },
+        {
+          "start": "3:00:51",
+          "end": "3:02:11",
+          "note": "The transcript adds SSN numbers, SSBN/SSGN ambiguity, patrol ships, drone control, and a high-quality force conclusion."
+        }
+      ]
+    },
+    {
+      "id": "bruships-249-canadian-submarine-choice",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "bruships-249-canadian-submarine-choice",
+      "title": "Canadian submarine choice and AUKUS limits",
+      "kind": "qa",
+      "start": "3:58:06",
+      "end": "4:03:13",
+      "topics": [
+        "submarines",
+        "royal-canadian-navy",
+        "aukus",
+        "uncrewed-systems",
+        "anti-submarine-warfare"
+      ],
+      "question": "What might drive Canada's submarine decision, and how does that relate to AUKUS or uncrewed submarines?",
+      "answerShort": "He sees Korean or German SSKs as plausible choices, but argues Canada's needs are defensive and that uncrewed submarine integration would require stronger communications.",
+      "summary": "A Canadian submarine answer weighs Korean and German SSK options, Arctic defence, possible AUKUS links, and the communications demands of uncrewed undersea systems.",
+      "body": "Dr. Clarke frames Canada's submarine choice around cost, capability, politics, and the high north mission rather than expeditionary contribution. He suggests Korean boats may have advantages on delivery and capability, while German industry remains a plausible political and technical option. The AUKUS discussion matters because he argues undersea cooperation is not just about submarines: uncrewed submarine systems would also demand much stronger communications infrastructure.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T23-25-48_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "3:58:06",
+          "end": "3:59:58",
+          "note": "The transcript compares Korean and German options and describes Canadian SSKs as defensive assets for the high north."
+        },
+        {
+          "start": "4:00:00",
+          "end": "4:03:13",
+          "note": "The transcript discusses Canada's possible AUKUS relationship and the communications burden created by uncrewed submarine systems."
         }
       ]
     }

@@ -5,17 +5,19 @@ import {
   fetchAndStoreVideoMetadata,
   type FetchVideoMetadataOptions,
 } from "../youtube/video-metadata.js";
+import { resolveYoutubeApiKey } from "./youtube-api-key-file.js";
 
 type CliOptions = Omit<FetchVideoMetadataOptions, "apiKey"> & {
   apiKey?: string;
+  apiKeyFile?: string;
   quiet: boolean;
 };
 
 async function main(): Promise<void> {
   const options = parseArgs(process.argv.slice(2));
-  const apiKey = options.apiKey ?? process.env.YOUTUBE_API_KEY;
+  const apiKey = await resolveYoutubeApiKey(options);
   if (!apiKey) {
-    throw new Error("Set YOUTUBE_API_KEY or pass --api-key.");
+    throw new Error("Set YOUTUBE_API_KEY, pass --api-key, or pass --api-key-file.");
   }
 
   const fetchOptions: FetchVideoMetadataOptions = {
@@ -62,6 +64,9 @@ function parseArgs(args: string[]): CliOptions {
         break;
       case "--api-key":
         options.apiKey = readValue(args, ++index, arg);
+        break;
+      case "--api-key-file":
+        options.apiKeyFile = readValue(args, ++index, arg);
         break;
       case "--request-delay-ms":
         options.requestDelayMs = readPositiveInteger(readValue(args, ++index, arg), arg);
@@ -121,6 +126,7 @@ Options:
   --input <path>          Episode master list. Defaults to ${defaultVideoMetadataInput}.
   --output <path>         Metadata store. Defaults to ${defaultVideoMetadataOutput}.
   --api-key <key>         YouTube Data API key. Defaults to YOUTUBE_API_KEY.
+  --api-key-file <path>   Read YouTube Data API key from a text file.
   --request-delay-ms <ms> Delay between YouTube Data API requests. Defaults to 60000.
   --batch-size <count>    IDs per videos.list call, 1-50. Defaults to 50.
   --limit <count>         Fetch only this many missing IDs.

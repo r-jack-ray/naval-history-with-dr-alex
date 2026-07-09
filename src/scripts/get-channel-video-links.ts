@@ -9,8 +9,10 @@ import {
   type ChannelInventoryCompleteness,
   type FetchChannelVideoLinksOptions,
 } from "../youtube/channel-video-links.js";
+import { resolveYoutubeApiKey } from "./youtube-api-key-file.js";
 
 type CliOptions = FetchChannelVideoLinksOptions & {
+  apiKeyFile?: string;
   output?: string;
   masterOutput?: string;
   inventoryCompleteness: ChannelInventoryCompleteness;
@@ -22,11 +24,11 @@ type CliOptions = FetchChannelVideoLinksOptions & {
 
 async function main(): Promise<void> {
   const options = parseArgs(process.argv.slice(2));
+  const apiKey = await resolveYoutubeApiKey(options);
   const fetchOptions: FetchChannelVideoLinksOptions = {
     channelUrl: options.channelUrl,
     requestDelayMs: options.requestDelayMs,
   };
-  const apiKey = options.apiKey ?? process.env.YOUTUBE_API_KEY;
   if (apiKey !== undefined) {
     fetchOptions.apiKey = apiKey;
   }
@@ -95,6 +97,9 @@ function parseArgs(args: string[]): CliOptions {
         break;
       case "--api-key":
         options.apiKey = readValue(args, ++index, arg);
+        break;
+      case "--api-key-file":
+        options.apiKeyFile = readValue(args, ++index, arg);
         break;
       case "--channel-id":
         options.channelId = readValue(args, ++index, arg);
@@ -177,6 +182,7 @@ function printHelp(): void {
 Options:
   --channel-url <url>       Channel URL or tab URL. Defaults to Dr. Alex Clarke's channel.
   --api-key <key>           YouTube Data API key. Defaults to YOUTUBE_API_KEY.
+  --api-key-file <path>     Read YouTube Data API key from a text file.
   --channel-id <id>         Override channel ID resolution.
   --uploads-playlist-id <id> Override uploads playlist resolution.
   --output <path>           Write combined JSON to a file instead of stdout.
