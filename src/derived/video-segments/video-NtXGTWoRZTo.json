@@ -4,62 +4,260 @@
   "topics": [
     "modern-navy",
     "ship-design",
+    "naval-architecture",
     "naval-procurement",
     "force-structure",
     "naval-weapons",
     "missiles",
+    "air-defence",
+    "modular-warship-design",
+    "naval-logistics",
     "naval-industrial-base",
-    "naval-logistics"
+    "uncrewed-systems",
+    "maritime-security"
   ],
   "segments": [
     {
-      "id": "modern-warship-growth-unvirtuous-circle",
-      "slug": "modern-warship-growth-unvirtuous-circle",
-      "title": "Modern warship growth and the unvirtuous circle",
-      "kind": "notable_point",
+      "id": "modern-warship-size-bands",
+      "videoId": "NtXGTWoRZTo",
+      "slug": "modern-warship-size-bands",
+      "title": "Warship size bands and presence missions",
+      "kind": "chapter",
       "start": "0:44",
-      "end": "1:12:20",
+      "end": "3:33",
       "topics": [
         "modern-navy",
         "ship-design",
-        "naval-procurement",
-        "force-structure",
-        "naval-weapons",
-        "missiles",
-        "naval-industrial-base",
-        "naval-logistics"
+        "naval-architecture"
       ],
-      "summary": "The lecture argues that modern warships keep growing because shrinking fleets push more sensors, weapons, magazine depth, and strategic slack onto each remaining hull.",
-      "body": "Smaller fleet numbers require each hull to do more, which means more sensors, weapons, and systems, which raises cost and invites further cuts. The lecture extends that logic through VLS magazine depth, containerized missile limits, construction pacing, maintenance reserves, and the need for mass as well as technology.",
+      "summary": "The opening answer links modern warship growth to recurring displacement bands for presence ships, single-mission vessels, and more flexible combatants.",
+      "body": "Dr. Clarke starts with the obvious drivers: weapons, sensors, geography, threats, risk, and construction. He then argues that navies keep rediscovering practical size bands, with global presence ships clustering around 9,000 to 10,000 tons and smaller single-mission vessels sitting well below that. The comparison reaches back to HMS Warrior, interwar cruiser limits, and modern Arleigh Burke destroyers to show that size reflects mission endurance as much as equipment.",
+      "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
       "evidence": [
         {
           "start": "0:44",
+          "end": "1:21",
+          "note": "The opening lists weapons, sensors, geography, threats, risk, and construction, then compares Second World War destroyer displacement with an Arleigh Burke."
+        },
+        {
+          "start": "1:25",
           "end": "3:33",
-          "note": "The opening frames weapons, sensors, geography, threats, risk, construction, and recurring warship size bands as the quick answer for why modern warships grow."
-        },
+          "note": "The transcript lays out recurring size bands for presence ships, single-mission warships, flexible single-mission assets, and 9,000-to-10,000-ton global ships."
+        }
+      ]
+    },
+    {
+      "id": "shrinking-fleets-unvirtuous-circle",
+      "videoId": "NtXGTWoRZTo",
+      "slug": "shrinking-fleets-unvirtuous-circle",
+      "title": "Shrinking fleets and the unvirtuous circle",
+      "kind": "notable_point",
+      "start": "3:35",
+      "end": "9:09",
+      "topics": [
+        "force-structure",
+        "naval-procurement",
+        "modern-navy"
+      ],
+      "summary": "A force-structure explanation shows how fewer hulls make each ship carry more capability, which raises cost and invites further fleet cuts.",
+      "body": "This watch point is the lecture's core procurement argument. Smaller fleets push more sensors, weapons, and systems onto each surviving hull, making ships larger and more expensive; governments then cut numbers again to save money. Dr. Clarke ties the cycle to post-Cold War optimism, short-term budget choices, and the mistaken belief that navies can keep doing more with less.",
+      "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
+      "evidence": [
         {
-          "start": "3:41",
+          "start": "3:35",
           "end": "6:01",
-          "note": "The transcript defines the unvirtuous circle: fewer hulls must carry more capability, become larger and more expensive, and then face further fleet-number cuts."
+          "note": "The transcript defines the unvirtuous circle from shrinking fleet numbers to more capable, larger, costlier ships and renewed cuts."
         },
         {
-          "start": "9:17",
-          "end": "15:53",
-          "note": "The VLS discussion argues that missile cells are the ship's practical magazine depth and that cutting cells after paying for sensors and combat systems creates capability gaps."
+          "start": "6:31",
+          "end": "9:09",
+          "note": "The follow-on explanation connects the cycle to 1990s and 2000s assumptions that major naval conflict was unlikely."
+        }
+      ]
+    },
+    {
+      "id": "vls-magazine-depth-tradeoff",
+      "videoId": "NtXGTWoRZTo",
+      "slug": "vls-magazine-depth-tradeoff",
+      "title": "VLS cells as magazine depth",
+      "kind": "chapter",
+      "start": "9:15",
+      "end": "15:53",
+      "topics": [
+        "missiles",
+        "air-defence",
+        "naval-weapons",
+        "naval-procurement"
+      ],
+      "summary": "The VLS discussion explains why missile cells are not just launchers but the ship's practical combat magazine once underway replenishment is difficult.",
+      "body": "Dr. Clarke contrasts vertical launch systems with older reloadable launchers to show why cell count matters so much. Because reloading VLS at sea is slow, exposed, and sea-state dependent, a ship's installed cells become its real missile depth for air defence and strike. The Type 45 and European frigate examples show how navies can buy the expensive sensors and combat systems, then undercut the ship by fitting too few cells or short-range-only additions.",
+      "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
+      "evidence": [
+        {
+          "start": "9:15",
+          "end": "11:18",
+          "note": "The transcript explains VLS reload limits at sea and states that the VLS is the ship's entire missile magazine depth."
         },
+        {
+          "start": "11:20",
+          "end": "15:53",
+          "note": "The discussion moves through VLS cell-count decisions, NFR-90, Horizon-derived ships, Type 45 space, Sea Ceptor insertion, and Mark 41 alternatives."
+        }
+      ]
+    },
+    {
+      "id": "containerized-vls-armed-merchant-limits",
+      "videoId": "NtXGTWoRZTo",
+      "slug": "containerized-vls-armed-merchant-limits",
+      "title": "Containerized missiles and merchant-ship limits",
+      "kind": "notable_point",
+      "start": "16:05",
+      "end": "24:57",
+      "topics": [
+        "missiles",
+        "modular-warship-design",
+        "naval-logistics",
+        "naval-weapons"
+      ],
+      "summary": "Containerized VLS sounds attractive, but the lecture highlights height, power, magazine density, and merchant-shipping constraints that make it a poor substitute for purpose-built warship capacity.",
+      "body": "The container section turns a simple idea into a practical design problem. Standard VLS modules are taller than normal shipping containers, and even visible missile-container concepts provide limited rounds for the size and value of the ship carrying them. Dr. Clarke treats armed merchant concepts as possible niche deterrents for smaller powers, but not as an efficient answer for major navies that need reliable missile capacity and logistics.",
+      "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
+      "evidence": [
+        {
+          "start": "16:05",
+          "end": "18:42",
+          "note": "The transcript compares container dimensions with Mark 41, Mark 57, and Sylver VLS heights and concludes that the systems do not fit cleanly."
+        },
+        {
+          "start": "21:32",
+          "end": "24:57",
+          "note": "The armed-merchant discussion covers power supply, visible containers, 60-missile density, and the value of refrigerated container ships."
+        }
+      ]
+    },
+    {
+      "id": "sensors-data-power-and-survivability",
+      "videoId": "NtXGTWoRZTo",
+      "slug": "sensors-data-power-and-survivability",
+      "title": "Sensors, data, power, and survivability",
+      "kind": "chapter",
+      "start": "25:02",
+      "end": "30:34",
+      "topics": [
+        "ship-design",
+        "naval-architecture",
+        "modern-navy"
+      ],
+      "summary": "A sensor-and-computing section shows why better awareness demands more data processing, power generation, cooling, technicians, and protected internal volume.",
+      "body": "This chapter explains that larger sensors do not simply add a radar face; they add data flow, computing load, cooling, technicians, software, redundancy, and shock or electromagnetic protection. Dr. Clarke uses the image of finding one wrong tree in a growing forest of returns to explain why better sensors increase decision burden as well as detection range. The payoff is speed of understanding, but that speed consumes space and electrical power inside the hull.",
+      "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
+      "evidence": [
+        {
+          "start": "25:02",
+          "end": "26:56",
+          "note": "The transcript describes sensors producing more detailed information and requiring more data processing to identify the important contact."
+        },
+        {
+          "start": "26:56",
+          "end": "30:34",
+          "note": "The section links computing, cooling, technicians, salt-water survivability, electromagnetic protection, and electrical power to ship size."
+        }
+      ]
+    },
+    {
+      "id": "presence-mission-cruiser-sized-destroyers",
+      "videoId": "NtXGTWoRZTo",
+      "slug": "presence-mission-cruiser-sized-destroyers",
+      "title": "Presence missions keep producing cruiser-sized ships",
+      "kind": "notable_point",
+      "start": "32:26",
+      "end": "38:18",
+      "topics": [
+        "maritime-security",
+        "force-structure",
+        "modern-navy",
+        "ship-design"
+      ],
+      "summary": "The lecture argues that global trading states still need ships big enough to show up, stay visible, and carry credible capability even when they avoid the word cruiser.",
+      "body": "Dr. Clarke notes that modern navies keep building large surface combatants while calling them destroyers or frigates rather than cruisers. The reason is not just prestige: global trade, maritime insurance, international commitments, and freedom of movement all create demand for ships that can be present far from home. The segment is useful for understanding why political language may shrink, while the physical ship needed for presence does not.",
+      "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
+      "evidence": [
+        {
+          "start": "32:26",
+          "end": "33:20",
+          "note": "The transcript says navies keep building cruiser-sized ships but label them destroyers, frigates, or other terms."
+        },
+        {
+          "start": "33:20",
+          "end": "38:18",
+          "note": "The argument ties global trade, maritime services, and east-of-Suez commitments to the need for visible naval presence."
+        }
+      ]
+    },
+    {
+      "id": "uncrewed-assets-make-motherships-larger",
+      "videoId": "NtXGTWoRZTo",
+      "slug": "uncrewed-assets-make-motherships-larger",
+      "title": "Uncrewed assets may make crewed ships larger",
+      "kind": "chapter",
+      "start": "45:52",
+      "end": "52:10",
+      "topics": [
+        "uncrewed-systems",
+        "ship-design",
+        "submarines",
+        "modern-navy"
+      ],
+      "summary": "The uncrewed-systems section argues that drones can shift work onto a crewed mothership rather than reducing the size of the main combatant.",
+      "body": "Instead of treating uncrewed vessels as a simple replacement for ships, Dr. Clarke stresses communications, bandwidth, autonomy, legal responsibility, and recovery space. Underwater systems need low-bandwidth acoustic or very-low-frequency links, while surface and air systems may need satellite, laser, relay, or emission-controlled communications. If a crewed ship becomes the center of an uncrewed task group, it may need docks, workshops, launch facilities, and command spaces that push the hull larger.",
+      "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
+      "evidence": [
+        {
+          "start": "45:52",
+          "end": "48:28",
+          "note": "The transcript introduces uncrewed systems, submarine communication limits, bandwidth limits, autonomy, and legal responsibility."
+        },
+        {
+          "start": "48:51",
+          "end": "52:10",
+          "note": "The section says crewed warships may become task-group centers for uncrewed assets, requiring docking, repair, communications, and control facilities."
+        }
+      ]
+    },
+    {
+      "id": "construction-maintenance-slack-costs",
+      "videoId": "NtXGTWoRZTo",
+      "slug": "construction-maintenance-slack-costs",
+      "title": "Construction pace, maintenance slack, and real cost",
+      "kind": "chapter",
+      "start": "59:00",
+      "end": "1:06:58",
+      "topics": [
+        "naval-industrial-base",
+        "naval-logistics",
+        "naval-procurement",
+        "force-structure"
+      ],
+      "summary": "The closing procurement section explains how slow construction, reserve-force choices, dry-dock capacity, and spares policy shape both ship cost and fleet availability.",
+      "body": "Dr. Clarke uses the Queen Elizabeth-class carriers, reserve-fleet practice, Zumwalt-to-Burke yard changes, and maintenance schedules to show that apparent efficiency can raise long-term cost. Building slowly may keep yards open but also drains money that could have produced more hulls. A navy also needs slack: reserve ships, dry docks, spares, and predictable maintenance capacity, because ships and parts cannot be acquired quickly in an emergency.",
+      "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
+      "evidence": [
         {
           "start": "59:00",
-          "end": "1:07:16",
-          "note": "The construction and maintenance section links slow builds, reserve-force practice, dry-dock capacity, spares, and slack to fleet cost and operational availability."
+          "end": "1:00:51",
+          "note": "The transcript explains how slow construction can keep yards open while raising total program cost and reducing money available for more ships."
         },
         {
-          "start": "1:11:56",
-          "end": "1:12:20",
-          "note": "The conclusion restates the cycle from shrinking fleets to more systems per ship, larger costs, and renewed fleet reductions."
+          "start": "1:00:51",
+          "end": "1:04:52",
+          "note": "The section covers reserve ships, hull life, Zumwalt-to-Burke yard changes, and dry-dock requirements when maintenance schedules are disrupted."
+        },
+        {
+          "start": "1:04:59",
+          "end": "1:06:58",
+          "note": "The conclusion argues that slack in spares, hulls, construction, and maintenance lowers average cost and improves operational resilience."
         }
-      ],
-      "videoId": "NtXGTWoRZTo",
-      "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt"
+      ]
     }
   ]
 }
