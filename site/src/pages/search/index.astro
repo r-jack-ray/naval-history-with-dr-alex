@@ -1,9 +1,13 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { archiveTopics } from "../../data/archive";
 
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
+const popularTopics = [...archiveTopics]
+  .sort((left, right) => right.segmentCount - left.segmentCount || right.videoCount - left.videoCount)
+  .slice(0, 8);
 ---
 
 <BaseLayout
@@ -16,13 +20,13 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
     <script type="module" src={`${baseUrl}pagefind/pagefind-component-ui.js`} is:inline></script>
   </Fragment>
 
-  <main class="page-shell" data-pagefind-body>
+  <main id="content" class="page-shell" data-pagefind-body>
     <section class="section-heading">
       <p class="eyebrow">Search</p>
       <h1>Find videos, topics, and segment notes.</h1>
       <p class="lede">
-        Pagefind builds this index from the generated video, segment, and topic pages after Astro
-        finishes.
+        Search across source video records, timestamped segment notes, topic pages, and transcript
+        passages.
       </p>
     </section>
 
@@ -32,6 +36,25 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
       <pagefind-filter-pane show-empty="false" sort="alphabetical" open="type,kind,topic,video"></pagefind-filter-pane>
       <pagefind-summary default-message="Search video, segment, and topic pages."></pagefind-summary>
       <pagefind-results show-images="false"></pagefind-results>
+    </section>
+
+    <section class="home-section" aria-labelledby="popular-topics-heading">
+      <div class="section-title-row">
+        <div>
+          <p class="eyebrow">Topics</p>
+          <h2 id="popular-topics-heading">Common searches</h2>
+        </div>
+      </div>
+      <div class="topic-cloud" aria-label="Common searches">
+        {
+          popularTopics.map((topic) => (
+            <a href={`${baseUrl}topics/${topic.slug}/`}>
+              <strong>{topic.title}</strong>
+              <span>{topic.videoCount} videos · {topic.segmentCount} segments</span>
+            </a>
+          ))
+        }
+      </div>
     </section>
   </main>
 </BaseLayout>

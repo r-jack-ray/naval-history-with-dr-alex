@@ -1,6 +1,6 @@
 ---
 name: naval-transcript-to-site-content
-description: Convert stored Dr. Alex Clarke transcript TXT/TSV evidence into segment-first site content for this repository. Use when asked to process transcripts, curate video pages, add chapters/notable points/Q&A segments, expand topics, validate source windows, or move transcript-backed material into `src/derived/prototype-segments.json` and the Astro/Pagefind site.
+description: Convert stored Dr. Alex Clarke transcript TXT/TSV evidence into segment-first site content for this repository. Use when asked to process transcripts, curate video pages, add chapters/notable points/Q&A segments, expand topics, validate transcript evidence passages, or move transcript-backed material into `src/derived/prototype-segments.json` and the Astro/Pagefind site.
 ---
 
 # Naval Transcript To Site Content
@@ -23,10 +23,12 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` when converting
 3. Add the video to the seed `videos` array if it is not already present.
 4. Add segment records with source-backed `start`, optional `end`, `sourcePath`, and `evidence`.
 5. Use `kind: qa` only when the transcript contains an actual prompt and answer. Do not invent Q&A from lecture material.
-6. Keep `summary` concise and searchable. Use `body` for context, caveats, and why the segment matters.
+6. Keep `summary` concise and searchable. Use `body` for reader-facing context, caveats, and why the segment matters.
 7. Avoid long transcript quotes; paraphrase and cite the timestamp window.
 8. Append one line to `src/derived/site-content-processing.log` for the transcript file just processed. Read `references/processing-log.md` for the exact format.
 9. For first-pass overview-only work, use `needsFurtherProcessing=yes` unless the transcript was fully chaptered, Q&A was extracted, or the review intentionally closed the file without site content.
+
+Public fields must not expose workflow status. Do not put "first pass", "later extraction", "processing", "curation", "search metadata", "source window", "evidence window", or "this segment exists to..." language in `summary`, `body`, `question`, or `answerShort`. Put incomplete-work status in the processing log or handoff. Segment `body` should normally be 2-4 substantive sentences, especially for `chapter` and `notable_point` records, with concrete transcript-backed detail rather than a one-line label.
 
 ## Validate
 

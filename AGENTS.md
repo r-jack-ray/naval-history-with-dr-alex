@@ -55,13 +55,17 @@ The core content model is `segment`, not `question`. Valid segment kinds include
 
 Keep Q&A as `kind: qa` segment data unless a future layout/search requirement proves a separate collection is needed.
 
-When processing transcripts into site content, use `.agents/transcript-content-curator.md` and `$naval-transcript-to-site-content`. Curate into `src/derived/prototype-segments.json`, keep `sourcePath` and evidence windows on every segment, and validate with `.codex/hooks/validate-content-pipeline.ps1`.
+When processing transcripts into site content, use `.agents/transcript-content-curator.md` and `$naval-transcript-to-site-content`. Curate into `src/derived/prototype-segments.json`, keep `sourcePath` and transcript evidence on every segment, and validate with `.codex/hooks/validate-content-pipeline.ps1`.
 
 Record every processed transcript file in `src/derived/site-content-processing.log`. The log has no header; every non-empty line is one processed file with tab-separated fields: `processedAt`, `sourcePath`, `videoId`, `action`, `needsFurtherProcessing`, `determination`. Use `yes` or `no` for `needsFurtherProcessing`. Use `src/derived/site-content-processing.config.json` for first-pass defaults, follow-up stage names, and topic grouping.
 
+Public `summary`, `body`, `question`, and `answerShort` text must read as user-facing archive notes, not workflow status. Do not expose phrases such as "first pass", "later extraction", "processing", "curation", "search metadata", "source window", or "evidence window" in public fields. Keep those details in logs, task notes, and handoffs. Segment `body` text should usually be 2-4 substantive sentences that explain what the timestamp covers, why it matters, and any important caveat grounded in the transcript.
+
+For follow-up quality passes, use `.agents/site-content-auditor.md` and `$naval-site-content-auditor`. This audit pass is for adding substance to thin notes, checking public wording, and validating generated site output after transcript-backed content exists.
+
 ## Testing Guidelines
 
-Use Node's built-in test runner with `*.test.ts` files. Validators should check timestamp labels and links, transcript sources, inventory references, search manifest integrity, generated site-data references, duplicate routes, topic references, curation backlog state, evidence windows, and TXT coverage. Add search tests for ship names, battles, classes, operations, admirals, countries, dates, and abbreviations.
+Use Node's built-in test runner with `*.test.ts` files. Validators should check timestamp labels and links, transcript sources, inventory references, search manifest integrity, generated site-data references, duplicate routes, topic references, curation backlog state, transcript evidence passages, and TXT coverage. Add search tests for ship names, battles, classes, operations, admirals, countries, dates, and abbreviations.
 
 ## Commit & Pull Request Guidelines
 
@@ -71,4 +75,4 @@ History uses concise imperative commits. Keep commits scoped. PRs should explain
 
 Until local configuration is complete, use `C:\Workspaces\ancient-egypt-and-the-bible` for setup hints: validation, transcript conversion, task-note policy, report placement, and static search checks. Adapt patterns here; do not copy its Q&A-first model.
 
-Preserve the segment-first design. Ground claims in transcript evidence: video ID, timestamp, and source window when possible. Keep temporary notes in `task-notes/`; put durable guidance here or in stable docs.
+Preserve the segment-first design. Ground claims in transcript evidence: video ID, timestamp, and source passage when possible. Keep temporary notes in `task-notes/`; put durable guidance here or in stable docs.

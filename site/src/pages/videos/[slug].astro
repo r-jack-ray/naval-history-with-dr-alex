@@ -19,7 +19,7 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
 
 <BaseLayout
   title={`${video.title} | Naval History with Dr. Alex Archive`}
-  description={`Prototype archive page for ${video.title}.`}
+  description={`Archive record for ${video.title}.`}
   pageType="video"
 >
   <Fragment slot="head">
@@ -29,17 +29,17 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
     {video.topics.map((topic) => <meta data-pagefind-filter="topic[content]" content={topic.title} />)}
   </Fragment>
 
-  <main class="video-page" data-pagefind-body>
+  <main id="content" class="video-page" data-pagefind-body>
     <section class="video-hero">
       <div class="video-hero-copy">
-        <p class="eyebrow">Prototype Video Record</p>
+        <p class="eyebrow">Video Record</p>
         <h1>{video.title}</h1>
         <div class="topic-row" aria-label="Topics">
           {video.topics.map((topic) => <a href={`${baseUrl}topics/${topic.slug}/`}>{topic.title}</a>)}
         </div>
         <p class="lede">
-          Source-backed page using the channel inventory, YouTube metadata store, and curated
-          segment seed. Segment links below are independently addressable archive entries.
+          Source metadata, transcript state, topics, and curated timestamps for this channel
+          video.
         </p>
         <div class="action-row">
           <a class="primary-link" href={video.youtubeUrl}>Watch on YouTube</a>

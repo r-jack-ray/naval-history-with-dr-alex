@@ -16,12 +16,20 @@ Use this brief when turning stored Dr. Alex transcript files into site-visible s
 2. Inspect the transcript TXT/TSV around candidate windows before writing summaries.
 3. Add or update the video entry in `src/derived/prototype-segments.json`.
 4. Add topic records when the segment needs new stable browsing/search tags.
-5. Add segment records with `videoId`, `slug`, `kind`, `start`, optional `end`, `topics`, summary/body fields, `sourcePath`, and at least one evidence window.
+5. Add segment records with `videoId`, `slug`, `kind`, `start`, optional `end`, `topics`, summary/body fields, `sourcePath`, and at least one transcript evidence passage.
 6. Use `kind: qa` only for actual question/answer exchanges. Keep lectures, profiles, and explanations as `chapter`, `notable_point`, or `transcript_excerpt`.
 7. Append exactly one line to `src/derived/site-content-processing.log` for each transcript file processed.
 8. Regenerate and validate with `.codex/hooks/validate-content-pipeline.ps1 -SkipRepoCheck` before handoff; run without `-SkipRepoCheck` when TypeScript or shared contracts changed.
 9. Mark first-pass overview-only work as `needsFurtherProcessing=yes`; use `no` only when the file is fully curated or intentionally closed without a site segment.
 10. For granular revisits, split lecture material into major `chapter` and `notable_point` windows, and use `qa` only for transcript-visible questions with answers. Long live streams may need a targeted granular pass plus a later exhaustive live Q&A review.
+
+## Public Wording
+
+- Write `summary`, `body`, `question`, and `answerShort` for readers browsing the archive, not for maintainers watching the workflow.
+- Keep workflow terms out of public fields: avoid "first pass", "later extraction", "processing", "curation", "search metadata", "source window", "evidence window", "this segment exists to", and similar scaffold language.
+- Use the processing log, task notes, or handoff message for incomplete-work status and follow-up needs.
+- Make `body` meatier than a label. Prefer 2-4 concise sentences that explain the timestamp's subject, the useful detail or argument, and any transcript-grounded caveat. For notable points, include the actual historical, technical, or strategic takeaway rather than saying the point is useful for browsing or search.
+- It is fine for evidence notes to be short and factual, but public notes should still sound like archive prose.
 
 ## Processing Log
 
@@ -42,7 +50,7 @@ processedAt	sourcePath	videoId	action	needsFurtherProcessing	determination
 
 ## Evidence Rules
 
-- Every curated claim needs transcript evidence: video ID, timestamp, `sourcePath`, and a source window.
+- Every curated claim needs transcript evidence: video ID, timestamp, `sourcePath`, and a source passage.
 - Keep summaries concise and search-friendly; put caveats in the body when the transcript is ambiguous.
 - Preserve Dr. Alex's meaning, but do not overquote transcript text.
 - Prefer a small number of high-value segments per first pass over exhaustive low-value slicing.

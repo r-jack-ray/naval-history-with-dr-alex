@@ -5,8 +5,12 @@ import { archiveSegments, archiveTopics, archiveVideos } from "../data/archive";
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
-const prototypeVideo = archiveVideos[0];
-const prototypeVideoUrl = `${baseUrl}videos/${prototypeVideo.slug}/`;
+const featuredVideo = archiveVideos[0];
+const featuredVideoUrl = `${baseUrl}videos/${featuredVideo.slug}/`;
+const featuredSegments = archiveSegments.slice(0, 4);
+const activeTopics = [...archiveTopics]
+  .sort((left, right) => right.segmentCount - left.segmentCount || right.videoCount - left.videoCount)
+  .slice(0, 10);
 ---
 
 <BaseLayout
@@ -14,28 +18,32 @@ const prototypeVideoUrl = `${baseUrl}videos/${prototypeVideo.slug}/`;
   description="Static reference archive for Naval History with Dr. Alex videos, segments, topics, and Q&A."
   pageType="home"
 >
-  <main data-pagefind-body>
+  <main id="content" class="home-page" data-pagefind-body>
     <section class="intro">
       <div class="intro-copy">
-        <p class="eyebrow">Static Reference Archive</p>
-        <h1>Video-first naval history notes, searchable by subject.</h1>
+        <p class="eyebrow">Naval History Archive</p>
+        <h1>Dr. Alex Clarke videos, organized by timestamp and topic.</h1>
         <p class="lede">
-          This archive will turn channel metadata, transcripts, and curated segment notes into a
-          static website for browsing videos, ships, battles, navies, topics, and Q&A entries.
+          Browse channel videos through source metadata, transcript-backed segment notes, and
+          topic pages for ships, battles, navies, operations, and Q&A.
         </p>
+        <div class="action-row">
+          <a class="primary-link" href={`${baseUrl}videos/`}>Browse videos</a>
+          <a class="secondary-link" href={`${baseUrl}search/`}>Search archive</a>
+        </div>
       </div>
 
-      <a class="feature-card" href={prototypeVideoUrl}>
+      <a class="feature-card" href={featuredVideoUrl}>
         <img
-          src={prototypeVideo.thumbnailUrl}
-          alt={`Thumbnail for ${prototypeVideo.title}`}
+          src={featuredVideo.thumbnailUrl}
+          alt={`Thumbnail for ${featuredVideo.title}`}
           loading="lazy"
           width="480"
           height="360"
         />
         <div>
-          <span>Prototype video page</span>
-          <strong>{prototypeVideo.title}</strong>
+          <span>Featured video record</span>
+          <strong>{featuredVideo.title}</strong>
         </div>
       </a>
     </section>
@@ -43,19 +51,60 @@ const prototypeVideoUrl = `${baseUrl}videos/${prototypeVideo.slug}/`;
     <section class="status-grid" aria-label="Archive sections">
       <article>
         <span class="label">Videos</span>
-        <h2>{archiveVideos.length} video page</h2>
+        <h2>{archiveVideos.length} video records</h2>
         <p>Each page collects metadata, source links, transcript state, and curated segments.</p>
       </article>
       <article>
         <span class="label">Segments</span>
-        <h2>{archiveSegments.length} timestamped chunks</h2>
+        <h2>{archiveSegments.length} timestamped segments</h2>
         <p>Chapters, notable points, Q&A, and transcript excerpts stay distinct and searchable.</p>
       </article>
       <article>
         <span class="label">Topics</span>
         <h2>{archiveTopics.length} browsable topics</h2>
-        <p>Topic pages collect related videos and segments without overbuilding taxonomy.</p>
+        <p>Topic pages collect related videos and timestamped evidence under stable labels.</p>
       </article>
+    </section>
+
+    <section class="home-section" aria-labelledby="featured-segments-heading">
+      <div class="section-title-row">
+        <div>
+          <p class="eyebrow">Segments</p>
+          <h2 id="featured-segments-heading">Featured timestamped notes</h2>
+        </div>
+        <a class="secondary-link" href={`${baseUrl}segments/`}>All segments</a>
+      </div>
+      <div class="record-grid compact-grid">
+        {
+          featuredSegments.map((segment) => (
+            <article class="segment-card">
+              <span class="label">{segment.kindLabel} · {segment.start}</span>
+              <h3><a href={`${baseUrl}segments/${segment.slug}/`}>{segment.title}</a></h3>
+              <p>{segment.summary}</p>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="home-section" aria-labelledby="active-topics-heading">
+      <div class="section-title-row">
+        <div>
+          <p class="eyebrow">Topics</p>
+          <h2 id="active-topics-heading">Active subject areas</h2>
+        </div>
+        <a class="secondary-link" href={`${baseUrl}topics/`}>All topics</a>
+      </div>
+      <div class="topic-cloud" aria-label="Active topics">
+        {
+          activeTopics.map((topic) => (
+            <a href={`${baseUrl}topics/${topic.slug}/`}>
+              <strong>{topic.title}</strong>
+              <span>{topic.videoCount} videos · {topic.segmentCount} segments</span>
+            </a>
+          ))
+        }
+      </div>
     </section>
   </main>
 </BaseLayout>

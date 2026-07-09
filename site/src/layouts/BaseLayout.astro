@@ -9,6 +9,14 @@ const { title, description, pageType } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
+const currentPath = Astro.url.pathname.endsWith("/") ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const navItems = [
+  { label: "Videos", path: "videos/" },
+  { label: "Segments", path: "segments/" },
+  { label: "Topics", path: "topics/" },
+  { label: "Search", path: "search/" },
+];
+const isActivePath = (path: string) => currentPath.startsWith(`${baseUrl}${path}`);
 ---
 
 <!doctype html>
@@ -44,32 +52,53 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
     <slot name="head" />
   </head>
   <body>
+    <a class="skip-link" href="#content">Skip to content</a>
     <header class="site-header">
-      <a class="brand" href={baseUrl}>Naval History with Dr. Alex</a>
-      <div class="header-controls">
-        <nav class="nav-links" aria-label="Primary">
-          <a href={`${baseUrl}videos/`}>Videos</a>
-          <a href={`${baseUrl}segments/`}>Segments</a>
-          <a href={`${baseUrl}topics/`}>Topics</a>
-          <a href={`${baseUrl}search/`}>Search</a>
-        </nav>
-        <div class="theme-switcher" role="group" aria-label="Color theme">
-          <button type="button" data-theme-choice="light" aria-pressed="false">
-            <span class="theme-icon theme-icon-light" aria-hidden="true"></span>
-            <span>Light</span>
-          </button>
-          <button type="button" data-theme-choice="dark" aria-pressed="false">
-            <span class="theme-icon theme-icon-dark" aria-hidden="true"></span>
-            <span>Dark</span>
-          </button>
-          <button type="button" data-theme-choice="system" aria-pressed="false">
-            <span class="theme-icon theme-icon-system" aria-hidden="true"></span>
-            <span>System</span>
-          </button>
+      <div class="site-header-inner">
+        <a class="brand" href={baseUrl}>
+          <span>Naval History</span>
+          <small>with Dr. Alex</small>
+        </a>
+        <div class="header-controls">
+          <nav class="nav-links" aria-label="Primary">
+            {
+              navItems.map((item) => (
+                <a href={`${baseUrl}${item.path}`} aria-current={isActivePath(item.path) ? "page" : undefined}>
+                  {item.label}
+                </a>
+              ))
+            }
+          </nav>
+          <div class="theme-switcher" role="group" aria-label="Color theme">
+            <button type="button" data-theme-choice="light" aria-pressed="false">
+              <span class="theme-icon theme-icon-light" aria-hidden="true"></span>
+              <span>Light</span>
+            </button>
+            <button type="button" data-theme-choice="dark" aria-pressed="false">
+              <span class="theme-icon theme-icon-dark" aria-hidden="true"></span>
+              <span>Dark</span>
+            </button>
+            <button type="button" data-theme-choice="system" aria-pressed="false">
+              <span class="theme-icon theme-icon-system" aria-hidden="true"></span>
+              <span>System</span>
+            </button>
+          </div>
         </div>
       </div>
     </header>
     <slot />
+    <footer class="site-footer">
+      <div>
+        <strong>Naval History with Dr. Alex Archive</strong>
+        <span>Static video records, transcript-backed segments, and auditable topics.</span>
+      </div>
+      <nav aria-label="Footer">
+        <a href={`${baseUrl}videos/`}>Videos</a>
+        <a href={`${baseUrl}segments/`}>Segments</a>
+        <a href={`${baseUrl}topics/`}>Topics</a>
+        <a href={`${baseUrl}search/`}>Search</a>
+      </nav>
+    </footer>
     <script is:inline>
       (() => {
         const storageKey = "naval-history-theme";

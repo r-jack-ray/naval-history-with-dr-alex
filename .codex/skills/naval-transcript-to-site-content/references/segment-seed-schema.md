@@ -48,7 +48,7 @@ Curated site content currently lives in `src/derived/prototype-segments.json`.
   "end": "3:00:48",
   "topics": ["carrier-groups", "naval-aviation"],
   "summary": "A force-structure answer sketches a carrier group built around carriers, LHDs, air-defense destroyers, ASW frigates, and submarines.",
-  "body": "This segment tests multi-topic browsing and search metadata.",
+  "body": "The answer treats a carrier group as a layered force rather than a single centerpiece. It ties aviation, air defense, anti-submarine escorts, and submarines together into one practical force-structure sketch.",
   "sourcePath": "src/transcripts/txt/example_uURe69Wnh-Q.txt",
   "evidence": [
     {

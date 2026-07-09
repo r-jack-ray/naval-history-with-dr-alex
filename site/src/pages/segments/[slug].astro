@@ -32,7 +32,7 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
     {segment.topics.map((topic) => <meta data-pagefind-filter="topic[content]" content={topic.title} />)}
   </Fragment>
 
-  <main class="segment-page" data-pagefind-body>
+  <main id="content" class="segment-page" data-pagefind-body>
     <nav class="breadcrumb" aria-label="Breadcrumb">
       <a href={`${baseUrl}segments/`}>Segments</a>
       <span>/</span>
@@ -95,7 +95,7 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
 
         {segment.evidence.length > 0 && (
           <div class="evidence-list">
-            <h3>Evidence windows</h3>
+            <h3>Transcript passages</h3>
             <ul>
               {segment.evidence.map((evidence) => (
                 <li>
