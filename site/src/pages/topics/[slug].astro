@@ -17,7 +17,7 @@ const segments = segmentsForTopic(topic);
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
-const timestampCountLabel = (count: number) => count === 1 ? "1 timestamp" : `${count} timestamps`;
+const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${count} time notes`;
 ---
 
 <BaseLayout
@@ -40,7 +40,7 @@ const timestampCountLabel = (count: number) => count === 1 ? "1 timestamp" : `${
 
     <section class="content-grid">
       <article class="prose-panel">
-        <h2>Timestamp pointers</h2>
+        <h2>Related time notes</h2>
         <ol class="segment-list">
           {
             segments.map((segment) => (
@@ -64,7 +64,7 @@ const timestampCountLabel = (count: number) => count === 1 ? "1 timestamp" : `${
               <li>
                 <a href={`${baseUrl}videos/${video.slug}/`}>
                   <strong>{video.title}</strong>
-                  <span>{video.publishedLabel} · {timestampCountLabel(video.segmentSlugs.length)}</span>
+                  <span>{video.publishedLabel} · {timeNoteCountLabel(video.segmentSlugs.length)}</span>
                 </a>
               </li>
             ))

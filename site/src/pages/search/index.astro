@@ -12,7 +12,7 @@ const popularTopics = [...archiveTopics]
 
 <BaseLayout
   title="Search | Naval History with Dr. Alex Study Guide"
-  description="Search Dr. Alex Clarke videos by subject, topic, and timestamp."
+  description="Search Dr. Alex Clarke videos by subject, topic, and video moment."
   pageType="search"
 >
   <Fragment slot="head">
@@ -25,7 +25,7 @@ const popularTopics = [...archiveTopics]
       <p class="eyebrow">Search</p>
       <h1>Search ships, navies, battles, and ideas.</h1>
       <p class="lede">
-        Search the timestamped notes, topic pages, and video titles to find the
+        Search the time notes, topic pages, and video titles to find the
         Dr. Clarke moment that matches what you want to learn.
       </p>
     </section>
@@ -34,7 +34,7 @@ const popularTopics = [...archiveTopics]
       <pagefind-config bundle-path={`${baseUrl}pagefind/`} base-url={baseUrl} faceted></pagefind-config>
       <pagefind-input placeholder="Search ships, battles, navies, weapons, strategy"></pagefind-input>
       <pagefind-filter-pane show-empty="false" sort="alphabetical" open="type,kind,topic,video"></pagefind-filter-pane>
-      <pagefind-summary default-message="Search video guides, timestamped notes, and topics."></pagefind-summary>
+      <pagefind-summary default-message="Search video guides, time notes, and topics."></pagefind-summary>
       <pagefind-results show-images="false"></pagefind-results>
     </section>
 

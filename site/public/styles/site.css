@@ -14,6 +14,7 @@
   --control-bg: rgba(255, 255, 255, 0.64);
   --control-active-bg: #17212b;
   --control-active-ink: #ffffff;
+  --video-thumb-ratio: 16 / 9;
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
@@ -175,7 +176,7 @@ main {
 
 .intro {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
+  grid-template-columns: minmax(0, 700px) minmax(520px, 1fr);
   gap: clamp(28px, 6vw, 72px);
   align-items: center;
 }
@@ -223,7 +224,8 @@ h1 {
 .feature-card img {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  height: auto;
+  aspect-ratio: var(--video-thumb-ratio);
   object-fit: cover;
   background: var(--image-bg);
 }
@@ -304,8 +306,8 @@ h1 {
 .video-card-grid {
   display: grid;
   align-items: start;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+  gap: 22px;
   margin-top: 44px;
 }
 
@@ -318,17 +320,18 @@ h1 {
 }
 
 .video-card a {
-  display: grid;
-  grid-template-columns: minmax(180px, 280px) minmax(0, 1fr);
-  min-height: 190px;
+  display: block;
+  min-height: 0;
   color: inherit;
   text-decoration: none;
 }
 
 .video-card img {
+  display: block;
   width: 100%;
-  height: 100%;
-  min-height: 190px;
+  height: auto;
+  min-height: 0;
+  aspect-ratio: var(--video-thumb-ratio);
   object-fit: cover;
   background: var(--image-bg);
 }
@@ -828,7 +831,7 @@ main {
 }
 
 .intro {
-  grid-template-columns: minmax(0, 1fr) minmax(280px, 400px);
+  grid-template-columns: minmax(0, 700px) minmax(520px, 1fr);
   gap: clamp(24px, 4vw, 52px);
 }
 
@@ -861,7 +864,7 @@ h1 {
 }
 
 .video-card-grid {
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
   gap: 22px;
 }
 
@@ -878,7 +881,7 @@ h1 {
   display: block;
   height: auto;
   min-height: 0;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: var(--video-thumb-ratio);
 }
 
 .video-card div {
@@ -1023,6 +1026,16 @@ h1 {
   text-decoration: none;
 }
 
+@media (max-width: 980px) {
+  .intro {
+    display: block;
+  }
+
+  .feature-card {
+    margin-top: 28px;
+  }
+}
+
 @media (max-width: 760px) {
   .site-header,
   .intro,
@@ -1073,7 +1086,7 @@ h1 {
   .video-card img {
     height: auto;
     min-height: 0;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: var(--video-thumb-ratio);
   }
 
   .segment-list a {

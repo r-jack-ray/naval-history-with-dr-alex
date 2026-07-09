@@ -16,12 +16,12 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 const formatSourceType = (sourceType: string) => sourceType === "stream" ? "Stream" : "Video";
-const timestampCountLabel = (count: number) => count === 1 ? "1 timestamp" : `${count} timestamps`;
+const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${count} time notes`;
 ---
 
 <BaseLayout
   title={`${video.title} | Naval History with Dr. Alex Study Guide`}
-  description={`${video.title} timestamp guide for learning naval history with Dr. Alex Clarke.`}
+  description={`${video.title} video guide for learning naval history with Dr. Alex Clarke.`}
   pageType="video"
 >
   <Fragment slot="head">
@@ -40,12 +40,12 @@ const timestampCountLabel = (count: number) => count === 1 ? "1 timestamp" : `${
           {video.topics.map((topic) => <a href={`${baseUrl}topics/${topic.slug}/`}>{topic.title}</a>)}
         </div>
         <p class="lede">
-          A timestamp guide to the naval history, strategy, technology, and institutions
+          A video guide to the naval history, strategy, technology, and institutions
           covered in this Dr. Clarke video.
         </p>
         <div class="action-row">
           <a class="primary-link" href={video.youtubeUrl}>Watch on YouTube</a>
-          <a class="secondary-link" href="#segments">View timestamps</a>
+          <a class="secondary-link" href="#segments">View time notes</a>
         </div>
       </div>
 
@@ -75,13 +75,13 @@ const timestampCountLabel = (count: number) => count === 1 ? "1 timestamp" : `${
       </article>
       <article>
         <span class="label">Guide points</span>
-        <strong>{timestampCountLabel(segments.length)}</strong>
+        <strong>{timeNoteCountLabel(segments.length)}</strong>
       </article>
     </section>
 
     <section id="segments" class="video-details">
       <div>
-        <h2>Timestamp guide</h2>
+        <h2>Time notes</h2>
         <ol class="segment-list">
           {
             segments.map((segment) => (

@@ -15,21 +15,21 @@ const activeTopics = [...archiveTopics]
 
 <BaseLayout
   title="Naval History with Dr. Alex Study Guide"
-  description="Search Dr. Alex Clarke videos by naval history subject, topic, and timestamp."
+  description="Search Dr. Alex Clarke videos by ship, battle, navy, doctrine, and video moment."
   pageType="home"
 >
   <main id="content" class="home-page" data-pagefind-body>
     <section class="intro">
       <div class="intro-copy">
-        <p class="eyebrow">Learn how navies work</p>
-        <h1>Naval history, organized around Dr. Clarke video timestamps.</h1>
+        <p class="eyebrow">Naval history study guide</p>
+        <h1>Find the right Dr. Clarke video moment for the naval question you are asking.</h1>
         <p class="lede">
-          Find the ships, battles, design choices, strategy questions, and naval institutions
-          you want to understand, then jump straight to the relevant point in the video.
+          Search ships, battles, weapons, navies, doctrine, and design tradeoffs,
+          then open the video at the moment where Dr. Clarke explains them.
         </p>
         <div class="action-row">
-          <a class="primary-link" href={`${baseUrl}videos/`}>Browse timestamp guides</a>
-          <a class="secondary-link" href={`${baseUrl}search/`}>Search subjects</a>
+          <a class="primary-link" href={`${baseUrl}videos/`}>Browse video guides</a>
+          <a class="secondary-link" href={`${baseUrl}search/`}>Search topics</a>
         </div>
       </div>
 
@@ -38,11 +38,11 @@ const activeTopics = [...archiveTopics]
           src={featuredVideo.thumbnailUrl}
           alt={`Thumbnail for ${featuredVideo.title}`}
           loading="lazy"
-          width="480"
+          width="640"
           height="360"
         />
         <div>
-          <span>Featured timestamp guide</span>
+          <span>Featured video guide</span>
           <strong>{featuredVideo.title}</strong>
         </div>
       </a>
@@ -52,27 +52,27 @@ const activeTopics = [...archiveTopics]
       <article>
         <span class="label">Videos</span>
         <h2>{archiveVideos.length} video guides</h2>
-        <p>Start from a Dr. Clarke episode and see the subjects it covers before opening YouTube.</p>
+        <p>Start with an episode and scan the naval subjects it covers before opening YouTube.</p>
       </article>
       <article>
-        <span class="label">Segments</span>
-        <h2>{archiveSegments.length} timestamp pointers</h2>
-        <p>Focused summaries explain what you will hear at a moment in the video and why it matters.</p>
+        <span class="label">Time notes</span>
+        <h2>{archiveSegments.length} time notes</h2>
+        <p>Short summaries explain what Dr. Clarke covers at that moment and why it matters.</p>
       </article>
       <article>
         <span class="label">Topics</span>
-        <h2>{archiveTopics.length} subject paths</h2>
-        <p>Follow ships, navies, battles, weapons, doctrine, and policy across related timestamps.</p>
+        <h2>{archiveTopics.length} topic paths</h2>
+        <p>Follow ships, navies, battles, weapons, doctrine, and policy across related video moments.</p>
       </article>
     </section>
 
     <section class="home-section" aria-labelledby="featured-segments-heading">
       <div class="section-title-row">
         <div>
-          <p class="eyebrow">Segments</p>
-          <h2 id="featured-segments-heading">Featured timestamp pointers</h2>
+          <p class="eyebrow">Time notes</p>
+          <h2 id="featured-segments-heading">Featured watch points</h2>
         </div>
-        <a class="secondary-link" href={`${baseUrl}segments/`}>All timestamps</a>
+        <a class="secondary-link" href={`${baseUrl}segments/`}>All time notes</a>
       </div>
       <div class="record-grid compact-grid">
         {

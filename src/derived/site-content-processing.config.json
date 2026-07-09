@@ -1,16 +1,16 @@
 {
   "schemaVersion": 1,
   "firstPass": {
-    "defaultAction": "curated 1 first-pass segment",
+    "defaultAction": "curated granular first-pass segments",
     "defaultNeedsFurtherProcessing": true,
-    "minimumEvidenceWindows": 1,
+    "minimumEvidenceWindows": 2,
     "preferredSegmentKinds": [
       "notable_point",
       "chapter",
       "qa",
       "transcript_excerpt"
     ],
-    "guidance": "First pass should add one high-value, transcript-backed overview segment per video and mark needsFurtherProcessing=yes unless the transcript was fully chaptered or intentionally closed without site content."
+    "guidance": "First pass should add multiple focused, transcript-backed timestamp pointers whenever the transcript has distinct subjects, arguments, Q&A exchanges, or topic shifts. Prefer 3-8 substantive segments over one broad overview for structured episodes and streams. Mark needsFurtherProcessing=yes unless the transcript was fully chaptered, Q&A was extracted, or intentionally closed without site content."
   },
   "followUpStages": [
     {

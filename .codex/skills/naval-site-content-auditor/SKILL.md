@@ -12,7 +12,7 @@ Recommended run configuration: GPT-5.5 with reasoning effort set to Extra High. 
 ## Site Intent
 
 - Write for readers learning naval history and how navies work, not for creators, maintainers, or pipeline operators.
-- Treat every segment as a timestamp pointer into a Dr. Clarke video: preview what the reader will see or hear, identify the naval subject, and explain the learning payoff.
+- Treat every segment as a watch point into a Dr. Clarke video: preview what the reader will see or hear, identify the naval subject, and explain the learning payoff.
 - Keep the site highly searchable by using transcript-supported names for ships, classes, navies, battles, weapons, policies, doctrine, logistics, acronyms, and alternate wording.
 - Prefer many precise, substantive segments over one sparse video overview when transcript evidence supports more granular coverage.
 - Do not surface YouTube analytics, internal filenames, processing status, or raw inventory details in public pages unless the user asks for an admin/debug view.
@@ -30,9 +30,9 @@ Recommended run configuration: GPT-5.5 with reasoning effort set to Extra High. 
 2. Remove maintainer/workflow language from public fields, including "first pass", "later extraction", "processing", "curation", "source window", "evidence window", "search metadata", "this segment exists to", and "useful for search".
 3. Keep workflow status in `src/derived/site-content-processing.log`, `reports/`, task notes, or the handoff, not in the site content.
 4. Prefer reader-facing study-guide prose:
-   - Explain what the timestamp covers.
+   - Explain what the video moment covers.
    - State the historical, technical, strategic, or historiographic takeaway.
-   - Make clear why opening the video at that timestamp is useful.
+   - Make clear why opening the video at that time is useful.
    - Include transcript-grounded caveats when useful.
    - Avoid announcing that the page is an archive, prototype, seed, extraction, or search target.
 
@@ -42,7 +42,7 @@ Recommended run configuration: GPT-5.5 with reasoning effort set to Extra High. 
 2. Read the segment `summary`, `evidence` notes, and the cited transcript passage before expanding a record.
 3. For `chapter` and `notable_point`, aim for 2-4 concise sentences in `body`.
 4. For `qa`, keep the actual prompt in `question`, the direct answer in `answerShort`, and use `body` for context, constraints, and why the answer matters.
-5. Do not invent new facts. If the existing evidence is too thin, either inspect the transcript around the timestamp or leave a targeted follow-up note.
+5. Do not invent new facts. If the existing evidence is too thin, either inspect the transcript around the cited time or leave a targeted follow-up note.
 6. Merge duplicate phrasing instead of padding. More text should add substance, not repetition.
 
 ## Validate

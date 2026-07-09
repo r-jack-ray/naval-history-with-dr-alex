@@ -5,12 +5,12 @@ import { archiveVideos } from "../../data/archive";
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
-const timestampCountLabel = (count: number) => count === 1 ? "1 timestamp" : `${count} timestamps`;
+const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${count} time notes`;
 ---
 
 <BaseLayout
   title="Video Guides | Naval History with Dr. Alex Study Guide"
-  description="Browse Dr. Alex Clarke video guides by subject and timestamp."
+  description="Browse Dr. Alex Clarke video guides by subject and time note."
   pageType="video-index"
 >
   <main id="content" class="page-shell" data-pagefind-body>
@@ -18,8 +18,8 @@ const timestampCountLabel = (count: number) => count === 1 ? "1 timestamp" : `${
       <p class="eyebrow">Videos</p>
       <h1>Video guides.</h1>
       <p class="lede">
-        Start from a Dr. Clarke video, scan the subjects it covers, then jump to the
-        timestamp that matches what you want to learn.
+        Start from a Dr. Clarke video, scan the subjects it covers, then jump to
+        the part that matches what you want to learn.
       </p>
     </section>
 
@@ -32,14 +32,14 @@ const timestampCountLabel = (count: number) => count === 1 ? "1 timestamp" : `${
                 src={video.thumbnailUrl}
                 alt={`Thumbnail for ${video.title}`}
                 loading="lazy"
-                width="480"
-                height="270"
+                width="640"
+                height="360"
               />
               <div>
                 <span class="label">{video.sourceType}</span>
                 <h2>{video.title}</h2>
                 <p>
-                  {video.publishedLabel} · {video.durationLabel} · {timestampCountLabel(video.segmentSlugs.length)}
+                  {video.publishedLabel} · {video.durationLabel} · {timeNoteCountLabel(video.segmentSlugs.length)}
                 </p>
                 <div class="topic-row compact" aria-label="Topics">
                   {video.topics.slice(0, 4).map((topic) => <span>{topic.title}</span>)}

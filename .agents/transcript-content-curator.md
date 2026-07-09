@@ -5,10 +5,10 @@ Use this brief when turning stored Dr. Alex transcript files into site-visible s
 ## Site Intent
 
 - Curate for readers learning naval history and how navies work.
-- Use transcript-backed segments to steer readers to the Dr. Clarke timestamp that matches their interest.
+- Use transcript-backed segments to steer readers to the Dr. Clarke video moment that matches their interest.
 - Make summaries act as watch pointers: name the naval subject, preview the argument or example, and clarify the learning payoff.
 - Keep the site highly searchable with concrete ships, classes, navies, battles, weapons, policies, doctrine, logistics, acronyms, and alternate wording when supported by the transcript.
-- Prefer many distinct, useful timestamp segments over a single sparse overview when the transcript has enough substance.
+- Prefer many distinct, useful time notes over a single sparse overview when the transcript has enough substance.
 
 ## Scope
 
@@ -28,15 +28,16 @@ Use this brief when turning stored Dr. Alex transcript files into site-visible s
 6. Use `kind: qa` only for actual question/answer exchanges. Keep lectures, profiles, and explanations as `chapter`, `notable_point`, or `transcript_excerpt`.
 7. Append exactly one line to `src/derived/site-content-processing.log` for each transcript file processed.
 8. Regenerate and validate with `.codex/hooks/validate-content-pipeline.ps1 -SkipRepoCheck` before handoff; run without `-SkipRepoCheck` when TypeScript or shared contracts changed.
-9. Mark first-pass overview-only work as `needsFurtherProcessing=yes`; use `no` only when the file is fully curated or intentionally closed without a site segment.
-10. For granular revisits, split lecture material into major `chapter` and `notable_point` windows, and use `qa` only for transcript-visible questions with answers. Long live streams may need a targeted granular pass plus a later exhaustive live Q&A review.
+9. For partial first-pass work, use `needsFurtherProcessing=yes`; use `no` only when the file is fully curated or intentionally closed without a site segment.
+10. During first-pass work, split distinct subjects, arguments, and Q&A exchanges into separate watch points when evidence supports it. Structured episodes and streams should normally get 3-8 substantive segments before a later exhaustive revisit.
+11. For granular revisits, split lecture material into major `chapter` and `notable_point` windows, and use `qa` only for transcript-visible questions with answers. Long live streams may need a targeted granular pass plus a later exhaustive live Q&A review.
 
 ## Public Wording
 
 - Write `summary`, `body`, `question`, and `answerShort` for readers using a study guide, not for maintainers watching the workflow.
 - Keep workflow terms out of public fields: avoid "first pass", "later extraction", "processing", "curation", "search metadata", "source window", "evidence window", "this segment exists to", and similar scaffold language.
 - Use the processing log, task notes, or handoff message for incomplete-work status and follow-up needs.
-- Make `body` meatier than a label. Prefer 2-4 concise sentences that explain the timestamp's subject, the useful detail or argument, and any transcript-grounded caveat. For notable points, include the actual historical, technical, or strategic takeaway rather than saying the point is useful for browsing or search.
+- Make `body` meatier than a label. Prefer 2-4 concise sentences that explain the video moment's subject, the useful detail or argument, and any transcript-grounded caveat. For notable points, include the actual historical, technical, or strategic takeaway rather than saying the point is useful for browsing or search.
 - Avoid creator-facing metrics, internal filenames, and raw inventory language in public text unless the user explicitly asks for an admin/debug view.
 - It is fine for evidence notes to be short and factual, but public notes should still sound like study-guide prose.
 
@@ -62,9 +63,9 @@ processedAt	sourcePath	videoId	action	needsFurtherProcessing	determination
 - Every curated claim needs transcript evidence: video ID, timestamp, `sourcePath`, and a source passage.
 - Keep summaries concise and search-friendly; put caveats in the body when the transcript is ambiguous.
 - Preserve Dr. Alex's meaning, but do not overquote transcript text.
-- Prefer a small number of high-value segments per first pass over exhaustive low-value slicing.
+- Prefer a compact set of high-value segments per first pass, normally 3-8 for structured episodes or streams, over either exhaustive low-value slicing or a single broad note.
 
 ## Handoff
 
 - Mention the video ID, transcript path, segment count added, topics added, processing-log line added, and validation command.
-- If a transcript is too noisy or incomplete, leave a timestamped task note under `task-notes/` with the blocker and the windows already inspected.
+- If a transcript is too noisy or incomplete, leave a dated task note under `task-notes/` with the blocker and the windows already inspected.

@@ -12,7 +12,7 @@ Use this brief for high-effort follow-up passes that make the public study guide
 ## Site Intent
 
 - Write for someone who wants to learn naval history or understand how navies work, not for another YouTube creator or maintainer.
-- Each segment should act as a pointer to a useful Dr. Clarke timestamp: what the viewer will encounter, what naval subject it illuminates, and why it is worth opening.
+- Each segment should act as a pointer to a useful Dr. Clarke video moment: what the viewer will encounter, what naval subject it illuminates, and why it is worth opening.
 - Favor precise, separate segments when the transcript supports them, so search and topic pages can send readers to exact moments.
 - Keep search breadth in mind by naming ships, classes, navies, battles, weapons, policies, doctrine, logistics, acronyms, and common alternate phrasing when evidence supports it.
 
@@ -30,7 +30,7 @@ Use this brief for high-effort follow-up passes that make the public study guide
 - Name the subject directly: ship, navy, battle, class, policy, technical system, or strategic problem.
 - Explain the takeaway and learning value, not just why the record exists.
 - For `qa`, make `answerShort` the direct answer and use `body` for reasoning, limits, and context.
-- If the transcript evidence does not support a meatier note, inspect the cited timestamp range before expanding. Do not pad with generic topic language.
+- If the transcript evidence does not support a meatier note, inspect the cited time range before expanding. Do not pad with generic topic language.
 
 ## Audit Workflow
 

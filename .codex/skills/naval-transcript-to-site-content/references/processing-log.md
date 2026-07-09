@@ -27,4 +27,4 @@ Field rules:
 
 If one transcript file is revisited later, add another line for the later processing pass. Do not edit old log lines unless correcting a factual typo from the same pass.
 
-The latest valid line for a video controls whether audit backlog treats it as complete. Use `needsFurtherProcessing=no` only when the transcript is fully curated or intentionally closed without site content; leave first-pass overview-only curation as `yes`.
+The latest valid line for a video controls whether audit backlog treats it as complete. Use `needsFurtherProcessing=no` only when the transcript is fully curated or intentionally closed without site content; leave partial first-pass curation as `yes`.

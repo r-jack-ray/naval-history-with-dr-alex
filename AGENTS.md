@@ -24,11 +24,11 @@ The site should help visitors:
 
 - Learn how navies work: institutions, doctrine, procurement, logistics, technology, force structure, and operational tradeoffs.
 - Learn naval history through concrete ships, battles, navies, wars, people, policies, and design choices.
-- Decide which Dr. Clarke video timestamp to watch by reading a short pointer summary that explains what they will see or hear there.
+- Decide which Dr. Clarke video moment to watch by reading a short pointer summary that explains what they will see or hear there.
 - Search effectively for ships, classes, navies, battles, weapons, acronyms, time periods, concepts, and alternate wordings.
-- Dive deeply through many separate, substantive timestamp segments rather than one broad note per video.
+- Dive deeply through many separate, substantive time notes rather than one broad note per video.
 
-Public pages should privilege subject discovery, timestamp jumps, and learning value. Avoid foregrounding YouTube creator metrics, internal filenames, transcript-processing status, or implementation details unless a user explicitly asks for an admin/debug view.
+Public pages should privilege subject discovery, direct video jumps, and learning value. Avoid foregrounding YouTube creator metrics, internal filenames, transcript-processing status, or implementation details unless a user explicitly asks for an admin/debug view.
 
 ## Build, Test, and Development Commands
 
@@ -73,9 +73,9 @@ When processing transcripts into site content, use `.agents/transcript-content-c
 
 Record every processed transcript file in `src/derived/site-content-processing.log`. The log has no header; every non-empty line is one processed file with tab-separated fields: `processedAt`, `sourcePath`, `videoId`, `action`, `needsFurtherProcessing`, `determination`. Use `yes` or `no` for `needsFurtherProcessing`. Use `src/derived/site-content-processing.config.json` for first-pass defaults, follow-up stage names, and topic grouping.
 
-Public `summary`, `body`, `question`, and `answerShort` text must read as user-facing study-guide notes, not workflow status. Do not expose phrases such as "first pass", "later extraction", "processing", "curation", "search metadata", "source window", or "evidence window" in public fields. Keep those details in logs, task notes, and handoffs. Segment `body` text should usually be 2-4 substantive sentences that explain what the timestamp covers, why it matters, and any important caveat grounded in the transcript.
+Public `summary`, `body`, `question`, and `answerShort` text must read as user-facing study-guide notes, not workflow status. Do not expose phrases such as "first pass", "later extraction", "processing", "curation", "search metadata", "source window", or "evidence window" in public fields. Keep those details in logs, task notes, and handoffs. Segment `body` text should usually be 2-4 substantive sentences that explain what the video moment covers, why it matters, and any important caveat grounded in the transcript.
 
-Segment titles and summaries should work as timestamp pointers: a reader should understand the naval subject, the likely learning payoff, and why opening the video at that time is useful. When transcript evidence supports it, prefer multiple focused segments over a sparse overview so topic pages and search results can send readers to precise moments.
+Segment titles and summaries should work as watch points: a reader should understand the naval subject, the likely learning payoff, and why opening the video at that time is useful. When transcript evidence supports it, prefer multiple focused segments over a sparse overview so topic pages and search results can send readers to precise moments.
 
 For follow-up quality passes, use `.agents/site-content-auditor.md` and `$naval-site-content-auditor`. This audit pass is for adding substance to thin notes, checking public wording, and validating generated site output after transcript-backed content exists.
 
