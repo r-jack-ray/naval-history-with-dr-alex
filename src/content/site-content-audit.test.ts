@@ -109,7 +109,7 @@ test("requires the live-stream mixed-content extraction policy", () => {
   assert.match(configIssue?.message ?? "", /liveStreamExtraction object/u);
 });
 
-test("requires the content-derived iterative topic lifecycle", () => {
+test("requires the shard-derived automatic topic lifecycle", () => {
   const { topicLifecycle: _topicLifecycle, ...processingConfig } = sampleProcessingConfig();
 
   const audit = buildSiteContentAudit({
@@ -342,11 +342,10 @@ function sampleProcessingConfig(): SiteContentProcessingConfig {
       guidance: "Inspect live streams in full and separate lecture blocks from every substantive Q&A exchange.",
     },
     topicLifecycle: {
-      mode: "content-derived-iterative",
-      transcriptPass: "Derive significant topics from transcript content.",
-      auditPass: "Add missed topics during higher-effort content audit.",
-      consolidationPass: "Merge synonyms while preserving aliases.",
-      completionRule: "Repeat focused passes until no substantive topic remains absent.",
+      mode: "shard-derived-automatic",
+      contentPass: "Add evidence-backed topic slugs to video shards.",
+      synchronization: "Synchronize the topic registry from shard usage.",
+      exceptionRule: "Investigate only reported topic problems.",
     },
     contentExhaustion: {
       mode: "model-effort-saturation",

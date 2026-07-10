@@ -14,7 +14,7 @@ Use this brief when turning stored Dr. Alex transcript files into site-visible s
 ## Scope
 
 - Read from `src/transcripts/manifest.json` and the matching `src/transcripts/txt/` or `src/transcripts/tsv/` file.
-- Curate into `src/derived/video-segments/video-<videoId>.json`. Shared topic records live in `src/derived/video-segments/topics.json`.
+- Curate into `src/derived/video-segments/video-<videoId>.json`. Add topic slugs to that shard; archive generation synchronizes shared records in `src/derived/video-segments/topics.json` without a routine AI editing step.
 - Use `src/channel/episodes.json` and `src/channel/video-metadata.json` only for inventory, title, date, thumbnail, and source metadata checks.
 - Use `src/derived/site-content-processing.config.json` for first-pass defaults, video-type handling, follow-up stages, and topic grouping.
 - Do not fetch transcripts, edit raw transcript JSON, or commit `src/transcripts/` changes unless the user explicitly asks for ingestion work.
@@ -27,7 +27,7 @@ Use this brief when turning stored Dr. Alex transcript files into site-visible s
 4. Only when no input was named, run `npm run audit:site-content` and open `reports/site-content-backlog.md` to select the next stored transcript without curated segments. For named inputs, still run the audit after claiming when the invoking workflow requires current context.
 5. Inspect the transcript TXT/TSV before writing summaries. For long transcripts, use TSV timestamps to map the full duration and read contiguous time-based chunks small enough to avoid tool-output truncation; do not rely on one raw full-file dump or only the opening portion.
 6. Add or update the current-schema content shard under `src/derived/video-segments/`, normally `video-<videoId>.json` for the selected transcript. Treat that shard as the owned content artifact for this process run.
-7. Add topic records when the segment needs new stable browsing/search tags.
+7. Add evidence-backed topic slugs to the video and segment arrays. Do not inspect or edit `topics.json` unless synchronization or validation reports a problem.
 8. Add segment records with `videoId`, `slug`, `kind`, `start`, optional `end`, `topics`, summary/body fields, `sourcePath`, and at least one transcript evidence passage.
 9. Use `kind: qa` only for actual question/answer exchanges. Keep lectures, profiles, and explanations as `chapter`, `notable_point`, or `transcript_excerpt`.
 10. Append one line to `src/derived/site-content-processing.log` for each transcript file processed with `npm.cmd run append:site-content-processing-log -- --token <lease-token> ...`; do not write this shared file directly. It remains bookkeeping rather than the content source of truth.
@@ -37,7 +37,7 @@ Use this brief when turning stored Dr. Alex transcript files into site-visible s
 14. Check the canonical source type in the channel inventory. Treat every live stream as mixed classroom-style content: inspect the full duration, preserve substantive lecture blocks as `chapter` or `notable_point`, and create a separate `kind: qa` segment for every substantive transcript-visible prompt and response. Each Q&A needs its own `start`, optional `end`, `question`, `answerShort`, and evidence.
 15. Compare the canonical title with `liveStreamExtraction.explicitQaTitleMarkers` in the processing config. A matching title makes exhaustive Q&A extraction especially explicit, but it does not erase lecture material; retain substantive lecture portions under their proper segment kinds.
 16. If a live-stream run cannot complete full-duration mixed-content extraction, keep `needsFurtherProcessing=yes` and state the remaining coverage in the processing log or handoff.
-17. Derive significant segment topics from the transcript as content is extracted. Add every evidence-backed topic needed for discovery and understanding, without targeting a tag count or restricting the pass to a starter taxonomy. Preserve raw specificity now; synonym merging and broader taxonomy cleanup happen after the higher-effort content audit.
+17. Derive significant segment topic slugs from the transcript as content is extracted. Add every evidence-backed slug needed for discovery and understanding, without targeting a tag count or restricting the pass to a starter taxonomy. The deterministic synchronizer handles routine registry creation and consistency; investigate synonym or taxonomy issues only when validation finds a problem.
 
 ## Public Wording
 
@@ -72,9 +72,9 @@ processedAt	sourcePath	videoId	action	needsFurtherProcessing	determination
 - Keep summaries concise and search-friendly; put caveats in the body when the transcript is ambiguous.
 - Preserve Dr. Alex's meaning, but do not overquote transcript text.
 - Let the transcript determine the number of useful segments. Use substantive changes in subject, argument, example, or Q&A exchange as boundaries; do not compress distinct material into one note or create filler to reach a quota. For live streams, preserve lecture blocks and extract every substantive Q&A exchange across the full duration. Leave unfinished coverage explicit through `needsFurtherProcessing=yes` rather than calling a sampled live-stream set complete.
-- Let significant topics arise from the extracted content. Prefer adding an evidence-backed specific topic or alias over omitting a useful discovery path; defer synonym and near-duplicate merging until the post-audit topic-consolidation pass.
+- Let significant topics arise from the extracted content. Prefer an evidence-backed specific slug over omitting a useful discovery path. Leave registry generation to the synchronizer and reserve synonym or near-duplicate work for reported taxonomy problems.
 
 ## Handoff
 
-- Mention the video ID, transcript path, segment count added, topics added, transcript coverage status, processing-log line added, and validation command.
+- Mention the video ID, transcript path, segment count added, topic slugs introduced in the shard, transcript coverage status, processing-log line added, and validation command. Mention the registry only if synchronization failed.
 - If a transcript is too noisy or incomplete, leave a dated task note under `task-notes/` with the blocker and the windows already inspected.

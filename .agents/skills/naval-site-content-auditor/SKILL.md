@@ -50,8 +50,8 @@ This audit is repeatable. A prior first, second, third, or later pass is not evi
 ## Deepen Coverage And Topics
 
 1. Re-read the transcript across the audited scope, not only the existing segment windows. Add omitted chapters, notable points, and Q&A exchanges when substantive learning value is still missing from the pages.
-2. Let significant topics arise from the strengthened content. Add transcript-backed topic slugs and aliases that improve discovery; do not target a tag count or confine the audit to the existing taxonomy.
-3. After the first transcript pass and this higher-effort audit, consolidate topics: merge synonyms and near-duplicates into stable slugs, preserve useful alternate wording as aliases, and keep video-level topics as a concise summary subset of the richer segment-level topics.
+2. Let significant topics arise from the strengthened content. Add transcript-backed topic slugs to the video and segment arrays without targeting a tag count or confining the audit to the existing taxonomy. Do not inspect or edit `topics.json` during an ordinary content audit; archive generation synchronizes it deterministically.
+3. Keep video-level topics as a concise summary subset of the richer segment-level topics. Investigate registry records, aliases, synonyms, or near-duplicates only when synchronization or validation reports a taxonomy problem, or when the user explicitly requests taxonomy work.
 4. Treat the audit as iterative rather than terminal. On each content-exhaustion review, independently compare the full transcript against the current shard instead of reviewing only previously selected windows. Leave precise follow-up targets for thin or under-extracted ranges. Stop repeating the same model and effort when a pass produces churn without new transcript-backed substance, but keep the transcript eligible for a future review under a materially stronger configuration or improved method.
 
 ## Validate
@@ -79,4 +79,4 @@ npm run site:build
 
 ## Handoff
 
-Report the scope audited, the number or type of records strengthened, topics added or consolidated, files changed, validation commands, and any remaining transcript passages that need another focused pass.
+Report the scope audited, the number or type of records strengthened, topic slugs added to shards, files changed, validation commands, and any remaining transcript passages that need another focused pass. Mention topic-registry work only when a synchronization or taxonomy problem required intervention.

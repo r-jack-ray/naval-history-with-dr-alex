@@ -32,11 +32,10 @@
     "guidance": "Inspect every live stream across its full duration as mixed classroom-style content. Preserve substantive lecture blocks as chapter or notable_point segments and create one timestamped qa segment for every substantive prompt and response. Explicit Q&A title markers make exhaustive Q&A extraction mandatory. A sampled subset must remain needsFurtherProcessing=yes."
   },
   "topicLifecycle": {
-    "mode": "content-derived-iterative",
-    "transcriptPass": "Derive significant segment topics and aliases from transcript content without targeting a tag count or restricting the pass to a fixed starter taxonomy.",
-    "auditPass": "During the higher-effort content audit, add missed topics and aliases while deepening notes and adding or splitting omitted segments.",
-    "consolidationPass": "After the transcript and audit passes, merge synonyms and near-duplicates into stable topic slugs, preserve useful alternate wording as aliases, and keep video-level topics as a concise summary subset.",
-    "completionRule": "Repeat focused content and topic passes with a given model-and-effort configuration until another pass adds no transcript-backed substance. Record that configuration as saturated, not permanently complete, and reopen review when a materially stronger model, higher effort, improved method, or new evidence becomes available."
+    "mode": "shard-derived-automatic",
+    "contentPass": "Add evidence-backed topic slugs to video and segment topic arrays without targeting a tag count or restricting the pass to a fixed starter taxonomy. Do not inspect or edit topics.json during routine transcript or audit work.",
+    "synchronization": "generate:site-data and site:build collect topic usage from every video shard, preserve existing enriched records, and add deterministic default records for newly referenced slugs.",
+    "exceptionRule": "Use AI attention for topic registry work only when synchronization or validation reports invalid data or a taxonomy conflict, or when the user explicitly requests taxonomy work."
   },
   "contentExhaustion": {
     "mode": "model-effort-saturation",
@@ -71,9 +70,9 @@
       "description": "Run an independent full-transcript comparison against the current shard. Stop when that model-and-effort configuration produces churn without new transcript-backed substance, while preserving eligibility for a materially stronger future review."
     },
     {
-      "slug": "topic-review",
-      "title": "Topic Review",
-      "description": "After transcript generation and higher-effort content audit, merge synonyms and near-duplicates into stable topic slugs, preserve alternate wording as aliases, and identify any remaining content-derived topic gaps."
+      "slug": "topic-diagnostics",
+      "title": "Topic Diagnostics",
+      "description": "Investigate topic records only after synchronization or validation reports invalid data, duplicate or conflicting taxonomy, or another concrete registry problem."
     }
   ],
   "videoTypeRules": [

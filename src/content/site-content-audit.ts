@@ -45,11 +45,10 @@ export interface SiteContentProcessingConfig {
     guidance: string;
   };
   topicLifecycle: {
-    mode: "content-derived-iterative";
-    transcriptPass: string;
-    auditPass: string;
-    consolidationPass: string;
-    completionRule: string;
+    mode: "shard-derived-automatic";
+    contentPass: string;
+    synchronization: string;
+    exceptionRule: string;
   };
   contentExhaustion: {
     mode: "model-effort-saturation";
@@ -613,13 +612,12 @@ function validateTopicLifecycle(
     return;
   }
 
-  if (value.mode !== "content-derived-iterative") {
-    report('topicLifecycle.mode must be "content-derived-iterative".');
+  if (value.mode !== "shard-derived-automatic") {
+    report('topicLifecycle.mode must be "shard-derived-automatic".');
   }
-  validateNonEmptyString(value.transcriptPass, "topicLifecycle.transcriptPass", report);
-  validateNonEmptyString(value.auditPass, "topicLifecycle.auditPass", report);
-  validateNonEmptyString(value.consolidationPass, "topicLifecycle.consolidationPass", report);
-  validateNonEmptyString(value.completionRule, "topicLifecycle.completionRule", report);
+  validateNonEmptyString(value.contentPass, "topicLifecycle.contentPass", report);
+  validateNonEmptyString(value.synchronization, "topicLifecycle.synchronization", report);
+  validateNonEmptyString(value.exceptionRule, "topicLifecycle.exceptionRule", report);
 }
 
 function validateLiveStreamExtraction(

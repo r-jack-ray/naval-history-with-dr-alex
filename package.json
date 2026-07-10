@@ -34,6 +34,7 @@
     "site:dev": "astro dev",
     "site:preview": "astro preview",
     "store:transcript-json": "npm run build && node dist/scripts/store-transcript-json.js",
+    "sync:video-topics": "node .codex/hooks/site-content-pipeline-lock.mjs run --build --purpose video-topic-sync --recover-stale -- node dist/scripts/sync-video-topics.js",
     "test": "npm run build && node --test \"dist/**/*.test.js\"",
     "preaudit:lighthouse:home": "node -e \"require('fs').mkdirSync('reports/lighthouse', { recursive: true })\"",
     "audit:lighthouse:home": "lighthouse https://r-jack-ray.github.io/naval-history-with-dr-alex/ --output=html --output=json --output-path=reports/lighthouse/home --chrome-flags=\"--headless\"",

@@ -6,9 +6,11 @@ import {
   generateSiteArchiveData,
 } from "../site/archive-data.js";
 import { withSiteBuildRepairHint } from "../site/build-repair-guidance.js";
+import { synchronizeCuratedTopicStore } from "../site/topic-store.js";
 
 try {
   const options = parseArgs(process.argv.slice(2));
+  await synchronizeCuratedTopicStore(options.segmentsInput);
   const archive = await generateSiteArchiveData(options);
   console.error(
     `Generated site archive data: ${options.output} (${archive.videos.length} videos, ${archive.segments.length} segments, ${archive.topics.length} topics)`,

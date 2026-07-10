@@ -17,7 +17,7 @@ Treat the audit as repeatable, but track saturation per model and effort level. 
 - Each segment should act as a pointer to a useful Dr. Clarke video moment: what the viewer will encounter, what naval subject it illuminates, and why it is worth opening.
 - Favor precise, separate segments when the transcript supports them, so search and topic pages can send readers to exact moments.
 - Keep search breadth in mind by naming ships, classes, navies, battles, weapons, policies, doctrine, logistics, acronyms, and common alternate phrasing when evidence supports it.
-- Let significant topics arise from the transcript-backed content rather than a fixed taxonomy or tag quota. Preserve useful specificity during content passes, then merge synonyms and near-duplicates after the higher-effort audit.
+- Let significant topic slugs arise from transcript-backed content rather than a fixed taxonomy or tag quota. Preserve useful specificity in the per-video shard and leave routine registry synchronization to the build script.
 
 ## Public Wording Rules
 
@@ -40,8 +40,8 @@ Treat the audit as repeatable, but track saturation per model and effort level. 
 1. Check the worktree and preserve unrelated user changes.
 2. Scan `src/derived/video-segments/` for short bodies, scaffold wording, and public workflow terms.
 3. For each candidate, read its `summary`, `topics`, `evidence`, and cited transcript passage when needed.
-4. Edit only per-video source files, `topics.json`, and source Astro/CSS files. Regenerate `site/src/data/generated/archive.json`; do not hand-edit generated archive data.
-5. Add omitted segments, significant topics, and aliases revealed by the deeper read. After the first transcript pass and this audit pass, consolidate topic synonyms and near-duplicates into stable slugs while preserving alternate wording as aliases.
+4. Edit only per-video source files and source Astro/CSS files during an ordinary content audit. Do not inspect or edit `topics.json`; regenerate `site/src/data/generated/archive.json` and let the deterministic synchronizer update the registry. Do not hand-edit generated archive data.
+5. Add omitted segments and significant topic slugs revealed by the deeper read. Investigate registry records, aliases, synonyms, or near-duplicates only when synchronization or validation reports a taxonomy problem, or when the user explicitly requests taxonomy work.
 6. Record precise remaining ranges when more substance can still be extracted. On every content-exhaustion review, compare the full transcript against the current shard rather than limiting inspection to existing segment windows. Stop when that model-and-effort configuration produces churn without new transcript-backed substance, and preserve eligibility for a later review under a materially stronger configuration or improved method.
 7. Validate with:
 

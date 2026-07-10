@@ -4,7 +4,7 @@ Curated site content lives in `src/derived/video-segments/`.
 
 ## Files
 
-- `topics.json`: shared stable browsing/search topics.
+- `topics.json`: synchronized shared browsing/search topic records, generated from topic usage in the video shards while preserving existing enriched metadata.
 - `video-<videoId>.json`: one file per site-visible video, containing that video's topic slugs and segments.
 
 Do not recreate a monolithic curated-content file. `site/src/data/generated/archive.json` is generated output.
@@ -21,7 +21,7 @@ Do not recreate a monolithic curated-content file. `site/src/data/generated/arch
 ```
 
 - `videoId` must exist in `src/channel/episodes.json`.
-- `topics` must refer to slugs in `topics.json`.
+- `topics` contains stable lowercase, hyphenated slugs. `generate:site-data` synchronizes missing registry records before archive validation.
 - `topics` is a curated summary subset for the video page; it does not need to repeat every more-granular segment topic.
 - `segments` contains only records for this `videoId`.
 
@@ -37,7 +37,8 @@ Do not recreate a monolithic curated-content file. `site/src/data/generated/arch
 ```
 
 - Keep slugs lowercase and hyphenated.
-- Add aliases for common search wording, abbreviations, class names, navies, or alternate spellings.
+- Routine transcript curation does not create or edit topic records. The synchronizer derives missing records from shard usage and preserves existing enriched titles, summaries, and aliases.
+- Edit aliases or consolidate taxonomy only when validation identifies a problem or the user explicitly requests taxonomy work.
 
 ## Segment Seed
 
@@ -99,6 +100,6 @@ For live streams, create one segment per substantive transcript-visible Q&A exch
 - `sourcePath` must exist and should match the TXT path in `src/transcripts/manifest.json`.
 - Segment and evidence timestamps must be within the stored transcript duration.
 - `end` must be after `start`.
-- Every topic slug must already exist in `topics.json`.
+- Every topic slug must be lowercase and hyphenated so the synchronizer can materialize its registry record.
 - Every segment video must match the containing `video-<videoId>.json` file.
 - Q&A fields belong only on `kind: qa` records.
