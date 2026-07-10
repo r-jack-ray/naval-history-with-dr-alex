@@ -274,7 +274,7 @@ The process is intentionally segment-first. Use `kind: qa` only for actual Q&A e
 
 `site/src/data/generated/archive.json` remains tracked so Astro can statically import a reviewable archive. Regenerate it through `npm run generate:site-data`, `npm run site:check`, or `npm run site:build`; each standalone command regenerates it once. The content validation hook builds once, writes the backlog report, regenerates the archive once, and then runs the no-regeneration Astro check.
 
-The archive, backlog report, and processing log are protected by the repository-wide writer lease at `.tmp/site-content-pipeline.lock`. Direct `npm run audit:site-content` and `npm run generate:site-data` acquire a short-lived lease automatically. A scheduled transcript worker must acquire a persistent lease before it claims a row or changes a shared topic, log, report, or archive:
+The archive, backlog report, and shared processing log are protected by the repository-wide writer lease at `.tmp/site-content-pipeline.lock`. Direct `npm run audit:site-content` and `npm run generate:site-data` acquire a short-lived lease automatically. A scheduled transcript worker that changes shared topics, logs, reports, or archives must acquire a persistent lease before it claims a row or writes shared output:
 
 ```powershell
 $lease = node .codex/hooks/site-content-pipeline-lock.mjs acquire --owner "schedule-worker" --purpose "transcript-curation" --recover-stale | ConvertFrom-Json
@@ -290,6 +290,8 @@ Remove-Item Env:CONTENT_PIPELINE_LOCK_TOKEN -ErrorAction SilentlyContinue
 ```
 
 The hook releases the lease in `finally` on success or failure; the caller clears its own environment variable after the child PowerShell process returns. If a run stops before reaching validation, release it explicitly with `node .codex/hooks/site-content-pipeline-lock.mjs release --token $lease.lease.token`. Leases expire after 90 minutes unless renewed; use `status` to inspect a blocker, and `acquire --recover-stale` to quarantine an expired lease with its owner metadata before continuing.
+
+The four lane-isolated transcript schedule automations are deliberately lockless because each uses a separate schedule, lane log, claimed video shard, and video-specific validation directory. Those automations call `schedule-claim`, `append-log`, `schedule-complete`, and `schedule-reset` with `--no-lease`; they never acquire or inspect repository or lane locks, and they never treat a PID, owner record, other active run, or dirty file as contention. Lockless claims skip existing `[~]` rows and take the next `[ ]`, while completion and reset target the invocation's exact source path.
 
 ## Project Helpers
 

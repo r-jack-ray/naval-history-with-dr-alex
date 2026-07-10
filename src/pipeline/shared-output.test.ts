@@ -502,6 +502,139 @@ test("schedule claims resume after interruption and complete or reset exactly on
   }
 });
 
+test("lockless lanes claim distinct rows and complete without creating a lease", async () => {
+  const directory = await mkdtemp(join(tmpdir(), "site-content-lockless-lane-"));
+  const lockPath = join(directory, "must-not-exist.lock");
+  const schedulePath = join(directory, "schedule.md");
+  const logPath = join(directory, "processing.log");
+  const videoSegmentsDirectory = join(directory, "video-segments");
+  const sources = [
+    "src/transcripts/txt/first.txt",
+    "src/transcripts/txt/second.txt",
+    "src/transcripts/txt/third.txt",
+  ];
+
+  try {
+    await writeFile(
+      schedulePath,
+      `# Schedule\r\n\r\nTimestamp: 2020-01-01T00:00:00Z\r\n\r\n` +
+      `- [ ] ${sources[0]} | first | First\r\n` +
+      `- [ ] ${sources[1]} | second | Second\r\n` +
+      `- [ ] ${sources[2]} | third | Third\r\n`,
+      "utf8",
+    );
+
+    const claimArguments = [
+      lockTool,
+      "schedule-claim",
+      "--no-lease",
+      "--lock-path",
+      lockPath,
+      "--schedule-path",
+      schedulePath,
+    ];
+    const firstClaim = await runNode(claimArguments);
+    assert.equal(firstClaim.code, 0, firstClaim.stderr);
+    assert.equal((JSON.parse(firstClaim.stdout) as { sourcePath: string }).sourcePath, sources[0]);
+
+    const secondClaim = await runNode(claimArguments);
+    assert.equal(secondClaim.code, 0, secondClaim.stderr);
+    const secondClaimResult = JSON.parse(secondClaim.stdout) as { sourcePath: string; inProgressCount: number };
+    assert.equal(secondClaimResult.sourcePath, sources[1]);
+    assert.equal(secondClaimResult.inProgressCount, 1);
+    assert.equal(existsSync(lockPath), false);
+    assert.match(await readFile(schedulePath, "utf8"), /- \[~\] src\/transcripts\/txt\/first\.txt/u);
+    assert.match(await readFile(schedulePath, "utf8"), /- \[~\] src\/transcripts\/txt\/second\.txt/u);
+
+    const firstProcessedAt = "2026-07-09T22:45:00-05:00";
+    const secondProcessedAt = "2026-07-09T22:45:01-05:00";
+    const completionArguments = (sourcePath: string, processedAt: string) => [
+      lockTool,
+      "schedule-complete",
+      "--no-lease",
+      "--lock-path",
+      lockPath,
+      "--schedule-path",
+      schedulePath,
+      "--processing-log",
+      logPath,
+      "--video-segments-dir",
+      videoSegmentsDirectory,
+      "--source-path",
+      sourcePath,
+      "--processed-at",
+      processedAt,
+    ];
+
+    const missingShard = await runNode(completionArguments(sources[0]!, firstProcessedAt));
+    assert.notEqual(missingShard.code, 0);
+    assert.match(missingShard.stderr, /shard required for schedule completion is missing/u);
+
+    await mkdir(videoSegmentsDirectory, { recursive: true });
+    await writeFile(join(videoSegmentsDirectory, "video-first.json"), "{}\n", "utf8");
+    await writeFile(join(videoSegmentsDirectory, "video-second.json"), "{}\n", "utf8");
+
+    const appendArguments = (sourcePath: string, videoId: string, processedAt: string) => [
+      lockTool,
+      "append-log",
+      "--no-lease",
+      "--lock-path",
+      lockPath,
+      "--processing-log",
+      logPath,
+      "--processed-at",
+      processedAt,
+      "--source-path",
+      sourcePath,
+      "--video-id",
+      videoId,
+      "--action",
+      "curated 1 segment",
+      "--needs-further-processing",
+      "yes",
+      "--determination",
+      "lockless lane",
+    ];
+    const [firstAppend, secondAppend] = await Promise.all([
+      runNode(appendArguments(sources[0]!, "first", firstProcessedAt)),
+      runNode(appendArguments(sources[1]!, "second", secondProcessedAt)),
+    ]);
+    assert.equal(firstAppend.code, 0, firstAppend.stderr);
+    assert.equal(secondAppend.code, 0, secondAppend.stderr);
+    const logRows = (await readFile(logPath, "utf8")).trim().split("\n");
+    assert.equal(logRows.length, 2);
+
+    const [firstComplete, secondComplete] = await Promise.all([
+      runNode(completionArguments(sources[0]!, firstProcessedAt)),
+      runNode(completionArguments(sources[1]!, secondProcessedAt)),
+    ]);
+    assert.equal(firstComplete.code, 0, firstComplete.stderr);
+    assert.equal(secondComplete.code, 0, secondComplete.stderr);
+    const completedSchedule = await readFile(schedulePath, "utf8");
+    assert.match(completedSchedule, /- \[x\] src\/transcripts\/txt\/first\.txt/u);
+    assert.match(completedSchedule, /- \[x\] src\/transcripts\/txt\/second\.txt/u);
+
+    const thirdClaim = await runNode(claimArguments);
+    assert.equal(thirdClaim.code, 0, thirdClaim.stderr);
+    const reset = await runNode([
+      lockTool,
+      "schedule-reset",
+      "--no-lease",
+      "--lock-path",
+      lockPath,
+      "--schedule-path",
+      schedulePath,
+      "--source-path",
+      sources[2]!,
+    ]);
+    assert.equal(reset.code, 0, reset.stderr);
+    assert.match(await readFile(schedulePath, "utf8"), /- \[ \] src\/transcripts\/txt\/third\.txt/u);
+    assert.equal(existsSync(lockPath), false);
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
 test("nested pipeline commands join an exported lease token without releasing it", async () => {
   const directory = await mkdtemp(join(tmpdir(), "site-content-nested-"));
   const lockPath = join(directory, "writer.lock");

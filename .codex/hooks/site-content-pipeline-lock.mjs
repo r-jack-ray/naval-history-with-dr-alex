@@ -2,7 +2,7 @@
 
 import { spawn } from "node:child_process";
 import { randomUUID } from "node:crypto";
-import { mkdir, readFile, rename, rm, stat, writeFile } from "node:fs/promises";
+import { appendFile, mkdir, open, readFile, rename, rm, stat, writeFile } from "node:fs/promises";
 import { basename, dirname, join, resolve } from "node:path";
 
 const defaultLockPath = ".tmp/site-content-pipeline.lock";
@@ -85,6 +85,7 @@ function parseOptions(args) {
     staleAfterMs: defaultStaleAfterMs,
     waitMs: defaultWaitMs,
     recoverStale: false,
+    noLease: false,
     token: process.env[lockTokenEnvironment],
     processedAt: undefined,
     sourcePath: undefined,
@@ -133,6 +134,9 @@ function parseOptions(args) {
         break;
       case "--recover-stale":
         options.recoverStale = true;
+        break;
+      case "--no-lease":
+        options.noLease = true;
         break;
       case "--build":
         options.build = true;
@@ -322,6 +326,19 @@ async function appendProcessingLog(options) {
   ];
   validateLogFields(fields);
 
+  const processingLogPath = resolve(options.processingLogPath);
+  if (options.noLease) {
+    const existing = await readOptionalText(processingLogPath);
+    validateExistingProcessingLog(existing, processingLogPath);
+    await mkdir(dirname(processingLogPath), { recursive: true });
+    await appendFile(processingLogPath, `${fields.join("\t")}\n`, "utf8");
+    return {
+      processingLogPath,
+      appended: true,
+      lockless: true,
+    };
+  }
+
   const lockPath = resolve(options.lockPath);
   const token = options.token;
   let acquiredHere = false;
@@ -334,7 +351,6 @@ async function appendProcessingLog(options) {
     await assertOwnedLease(lockPath, activeToken);
   }
 
-  const processingLogPath = resolve(options.processingLogPath);
   try {
     const existing = await readOptionalText(processingLogPath);
     validateExistingProcessingLog(existing, processingLogPath);
@@ -353,9 +369,13 @@ async function appendProcessingLog(options) {
 }
 
 async function claimScheduleRow(options) {
+  const schedulePath = resolve(requiredValue(options.schedulePath, "--schedule-path"));
+  if (options.noLease) {
+    return await claimScheduleRowWithoutLease(schedulePath);
+  }
+
   const lockPath = resolve(options.lockPath);
   const token = requiredToken(options);
-  const schedulePath = resolve(requiredValue(options.schedulePath, "--schedule-path"));
   await assertOwnedLease(lockPath, token);
 
   const schedule = await readFile(schedulePath, "utf8");
@@ -383,6 +403,7 @@ async function claimScheduleRow(options) {
       claimed: false,
       resumed: false,
       exhausted: true,
+      inProgressCount: inProgressRows.length,
     };
   }
 
@@ -393,27 +414,61 @@ async function claimScheduleRow(options) {
     claimed: true,
     resumed: false,
     exhausted: false,
+    inProgressCount: inProgressRows.length,
   });
 }
 
+async function claimScheduleRowWithoutLease(schedulePath) {
+  for (let attempt = 0; attempt < 20; attempt += 1) {
+    const schedule = await readFile(schedulePath, "utf8");
+    const rows = parseScheduleRows(schedule);
+    if (rows.length === 0) {
+      throw new Error(`No transcript schedule rows were found: ${schedulePath}`);
+    }
+
+    const inProgressCount = rows.filter((row) => row.state === "~").length;
+    const nextRow = rows.find((row) => row.state === " ");
+    if (nextRow === undefined) {
+      return {
+        schedulePath,
+        claimed: false,
+        resumed: false,
+        exhausted: true,
+        inProgressCount,
+        lockless: true,
+      };
+    }
+
+    if (!await replaceScheduleRowStateInPlace(schedulePath, schedule, nextRow, "~")) {
+      continue;
+    }
+    return scheduleRowResult(schedulePath, { ...nextRow, state: "~" }, {
+      claimed: true,
+      resumed: false,
+      exhausted: false,
+      inProgressCount,
+      lockless: true,
+    });
+  }
+
+  throw new Error(`Schedule changed repeatedly while claiming a row; retry the invocation: ${schedulePath}`);
+}
+
 async function transitionScheduleRow(options, targetState) {
-  const lockPath = resolve(options.lockPath);
-  const token = requiredToken(options);
   const schedulePath = resolve(requiredValue(options.schedulePath, "--schedule-path"));
   const sourcePath = requiredValue(options.sourcePath, "--source-path");
-  await assertOwnedLease(lockPath, token);
+  const lockPath = resolve(options.lockPath);
+  const token = options.noLease ? undefined : requiredToken(options);
+  if (token !== undefined) {
+    await assertOwnedLease(lockPath, token);
+  }
 
   const schedule = await readFile(schedulePath, "utf8");
   const rows = parseScheduleRows(schedule);
-  const inProgressRows = rows.filter((row) => row.state === "~");
-  if (inProgressRows.length !== 1) {
-    throw new Error(`Schedule must have exactly one in-progress row and was left unchanged: ${schedulePath}`);
-  }
-
-  const row = inProgressRows[0];
-  if (row.sourcePath !== sourcePath) {
+  const row = rows.find((candidate) => candidate.sourcePath === sourcePath);
+  if (row === undefined || row.state !== "~") {
     throw new Error(
-      `In-progress schedule row is ${JSON.stringify(row.sourcePath)}, not ${JSON.stringify(sourcePath)}; schedule was left unchanged.`,
+      `No in-progress schedule row matches ${JSON.stringify(sourcePath)}; schedule was left unchanged: ${schedulePath}`,
     );
   }
 
@@ -421,23 +476,23 @@ async function transitionScheduleRow(options, targetState) {
     await assertScheduleCompletionArtifacts(schedulePath, schedule, row, options);
   }
 
-  const updated = replaceScheduleRowState(schedule, row, targetState);
-  await assertOwnedLease(lockPath, token);
-  await writeTextAtomically(schedulePath, updated);
+  if (token === undefined) {
+    if (!await replaceScheduleRowStateInPlace(schedulePath, schedule, row, targetState)) {
+      throw new Error(`Schedule row changed before transition and was left unchanged: ${sourcePath}`);
+    }
+  } else {
+    const updated = replaceScheduleRowState(schedule, row, targetState);
+    await assertOwnedLease(lockPath, token);
+    await writeTextAtomically(schedulePath, updated);
+  }
   return scheduleRowResult(schedulePath, { ...row, state: targetState }, {
     transitioned: true,
     previousState: "~",
+    ...(options.noLease ? { lockless: true } : {}),
   });
 }
 
 async function assertScheduleCompletionArtifacts(schedulePath, schedule, row, options) {
-  const scheduleTimestamp = readScheduleTimestamp(schedule, schedulePath);
-  const scheduleStats = await stat(schedulePath);
-  // Processing-log timestamps are commonly second-precision, so compare them
-  // to the claim mtime rounded down to the same precision.
-  const claimTimestamp = Math.floor(scheduleStats.mtimeMs / 1000) * 1000;
-  const freshnessBoundary = Math.max(scheduleTimestamp, claimTimestamp);
-
   if (!/^[A-Za-z0-9_-]+$/u.test(row.videoId)) {
     throw new Error(`Schedule row has an unsafe video ID: ${JSON.stringify(row.videoId)}`);
   }
@@ -452,14 +507,32 @@ async function assertScheduleCompletionArtifacts(schedulePath, schedule, row, op
     .filter((line) => line !== "")
     .map((line) => line.split("\t"))
     .filter((fields) => fields[1] === row.sourcePath && fields[2] === row.videoId);
-  const freshEntry = matchingEntries.find((fields) => {
-    const processedAt = Date.parse(fields[0] ?? "");
-    return Number.isFinite(processedAt) && processedAt >= freshnessBoundary;
-  });
+  let freshEntry;
+  let requiredLogDescription;
+  if (options.noLease) {
+    const expectedProcessedAt = requiredValue(options.processedAt, "--processed-at");
+    if (!Number.isFinite(Date.parse(expectedProcessedAt))) {
+      throw new Error(`--processed-at must be a valid timestamp: ${JSON.stringify(expectedProcessedAt)}`);
+    }
+    freshEntry = matchingEntries.find((fields) => fields[0] === expectedProcessedAt);
+    requiredLogDescription = `with processedAt ${JSON.stringify(expectedProcessedAt)}`;
+  } else {
+    const scheduleTimestamp = readScheduleTimestamp(schedule, schedulePath);
+    const scheduleStats = await stat(schedulePath);
+    // Processing-log timestamps are commonly second-precision, so compare them
+    // to the claim mtime rounded down to the same precision.
+    const claimTimestamp = Math.floor(scheduleStats.mtimeMs / 1000) * 1000;
+    const freshnessBoundary = Math.max(scheduleTimestamp, claimTimestamp);
+    freshEntry = matchingEntries.find((fields) => {
+      const processedAt = Date.parse(fields[0] ?? "");
+      return Number.isFinite(processedAt) && processedAt >= freshnessBoundary;
+    });
+    requiredLogDescription = `at or after ${new Date(freshnessBoundary).toISOString()}`;
+  }
   if (freshEntry === undefined) {
     throw new Error(
       `Schedule completion requires a processing-log row for ${JSON.stringify(row.sourcePath)} and ` +
-      `${JSON.stringify(row.videoId)} at or after ${new Date(freshnessBoundary).toISOString()}; schedule was left unchanged.`,
+      `${JSON.stringify(row.videoId)} ${requiredLogDescription}; schedule was left unchanged.`,
     );
   }
 }
@@ -531,6 +604,23 @@ function replaceScheduleRowState(schedule, row, targetState) {
     throw new Error(`Schedule row state changed unexpectedly at line ${row.lineNumber}.`);
   }
   return `${schedule.slice(0, row.stateIndex)}${targetState}${schedule.slice(row.stateIndex + 1)}`;
+}
+
+async function replaceScheduleRowStateInPlace(schedulePath, schedule, row, targetState) {
+  const stateOffset = Buffer.byteLength(schedule.slice(0, row.stateIndex), "utf8");
+  const handle = await open(schedulePath, "r+");
+  try {
+    const currentState = Buffer.alloc(1);
+    const { bytesRead } = await handle.read(currentState, 0, 1, stateOffset);
+    if (bytesRead !== 1 || currentState.toString("utf8") !== row.state) {
+      return false;
+    }
+    const replacement = Buffer.from(targetState, "utf8");
+    await handle.write(replacement, 0, replacement.length, stateOffset);
+    return true;
+  } finally {
+    await handle.close();
+  }
 }
 
 function scheduleRowResult(schedulePath, row, fields) {
@@ -787,11 +877,13 @@ Common options:
   --stale-after-ms <ms>    Lease duration; defaults to ${defaultStaleAfterMs}.
   --wait-ms <ms>           Contention wait; defaults to ${defaultWaitMs}.
   --recover-stale          Quarantine an expired lease before acquiring a new one.
+  --no-lease              For lane-private schedule/log operations, do not create or inspect a lease.
   --build                  Compile TypeScript before the run command while holding the lease.
 
 Examples:
   node .codex/hooks/site-content-pipeline-lock.mjs acquire --owner schedule-1 --recover-stale
   node .codex/hooks/site-content-pipeline-lock.mjs schedule-claim --schedule-path task-notes/schedule.md --token <token>
+  node .codex/hooks/site-content-pipeline-lock.mjs schedule-claim --no-lease --schedule-path task-notes/lane.md
   node .codex/hooks/site-content-pipeline-lock.mjs status
   node .codex/hooks/site-content-pipeline-lock.mjs run -- node dist/scripts/generate-site-data.js
 `);
