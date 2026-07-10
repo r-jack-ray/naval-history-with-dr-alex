@@ -257,7 +257,7 @@ function errorCode(error: unknown): string | undefined {
 }
 
 function printHelp(): void {
-  console.log(`Usage: npm run fetch:transcript -- --video-id <id> [options]
+  console.log(`Usage: npm run alternate:fetch:transcript -- --video-id <id> [options]
 
 Options:
   --video-id <id>          Required YouTube video ID.
@@ -276,7 +276,7 @@ Options:
   --help                   Show this help.
 
 Example:
-  npm run fetch:transcript -- --video-id uURe69Wnh-Q
+  npm run alternate:fetch:transcript -- --video-id uURe69Wnh-Q
 `);
 }
 

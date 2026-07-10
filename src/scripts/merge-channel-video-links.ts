@@ -123,7 +123,7 @@ async function writeJsonFile(path: string, value: unknown): Promise<void> {
 }
 
 function printHelp(): void {
-  console.log(`Usage: npm run merge:video-links -- --input <path> [--input <path> ...] [options]
+  console.log(`Usage: npm run alternate:merge:video-links -- --input <path> [--input <path> ...] [options]
 
 Options:
   --input <path>           ChannelVideoLinksResult JSON input. Repeat for multiple sources.
@@ -136,7 +136,7 @@ Options:
   --help                   Show this help.
 
 Example:
-  npm run merge:video-links -- --input reports/dr-alex-videos-html-links.json --input reports/dr-alex-streams-html-links.json --master-output src/channel/episodes.json --inventory-completeness partial
+  npm run alternate:merge:video-links -- --input reports/dr-alex-videos-html-links.json --input reports/dr-alex-streams-html-links.json --master-output src/channel/episodes.json --inventory-completeness partial
 `);
 }
 

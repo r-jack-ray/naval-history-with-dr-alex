@@ -45,8 +45,8 @@ npm run generate:site-data
 npm run site:check
 npm run site:build
 npm run fetch:video-links -- --master-output src/channel/episodes.json --checkpoint-output reports/dr-alex-video-fetch-checkpoint.json
-npm run fetch:transcript -- --video-id uURe69Wnh-Q
-npm run fetch:transcripts -- --limit 1 --request-delay-ms 5000
+npm run alternate:fetch:transcript -- --video-id uURe69Wnh-Q
+npm run alternate:fetch:transcripts -- --limit 1 --request-delay-ms 5000
 npm run convert:transcript-json -- src/transcripts/json/uURe69Wnh-Q.json --output-dir src/transcripts/txt
 ```
 
@@ -58,7 +58,7 @@ git diff --check
 git push
 ```
 
-`build` emits `dist/`; `check:types` type-checks only; `test` compiles and runs Node's test runner; `check` combines both. `audit:site-content` validates curated transcript evidence and writes `reports/site-content-backlog.md`. `generate:site-data` writes deterministic Astro data to `site/src/data/generated/archive.json`; `site:build` regenerates that data, builds `site/dist/`, and runs Pagefind. YouTube fetch scripts default to 60 seconds between requests.
+`build` emits `dist/`; `check:types` type-checks only; `test` compiles and runs Node's test runner; `check` combines both. `audit:site-content` validates curated transcript evidence and writes `reports/site-content-backlog.md`. `generate:site-data` writes deterministic Astro data to `site/src/data/generated/archive.json`; `site:build` regenerates that data, builds `site/dist/`, and runs Pagefind. Official YouTube Data API tasks default to one second between requests; alternate transcript fetches default to five seconds.
 
 ## Coding Style & Naming Conventions
 

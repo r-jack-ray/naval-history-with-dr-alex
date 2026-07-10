@@ -47,7 +47,7 @@ function parseArgs(args: string[]): CliOptions {
   const options: CliOptions = {
     inputPath: defaultVideoMetadataInput,
     outputPath: defaultVideoMetadataOutput,
-    requestDelayMs: 60_000,
+    requestDelayMs: 1_000,
     batchSize: 50,
     quiet: false,
   };
@@ -127,7 +127,7 @@ Options:
   --output <path>         Metadata store. Defaults to ${defaultVideoMetadataOutput}.
   --api-key <key>         YouTube Data API key. Defaults to YOUTUBE_API_KEY.
   --api-key-file <path>   Read YouTube Data API key from a text file.
-  --request-delay-ms <ms> Delay between YouTube Data API requests. Defaults to 60000.
+  --request-delay-ms <ms> Delay between YouTube Data API requests. Defaults to 1000.
   --batch-size <count>    IDs per videos.list call, 1-50. Defaults to 50.
   --limit <count>         Fetch only this many missing IDs.
   --force                 Refetch IDs already present in the output file.

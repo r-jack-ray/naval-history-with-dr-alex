@@ -31,7 +31,7 @@ and use `title-slug_videoId.ext`. The ID must remain in the filename.
 Fetch and store all local transcript formats:
 
 ```powershell
-npm run fetch:transcript -- --video-id uURe69Wnh-Q
+npm run alternate:fetch:transcript -- --video-id uURe69Wnh-Q
 ```
 
 The default store root is `src/transcripts`. The fetcher writes JSON, TXT, TSV,
@@ -43,8 +43,8 @@ default to a 5-second delay; pass `--request-delay-ms 60000` for cautious runs.
 Fetch from the channel master list:
 
 ```powershell
-npm run fetch:transcripts -- --limit 1 --request-delay-ms 5000
-npm run fetch:transcripts
+npm run alternate:fetch:transcripts -- --limit 1 --request-delay-ms 5000
+npm run alternate:fetch:transcripts
 ```
 
 The batch runner reads `src/channel/episodes.json`, skips stored transcripts,

@@ -192,7 +192,7 @@ Options:
   --links-output <path>     Write base video list JSON. Defaults when metadata output is used.
   --metadata-output <path>  Write video metadata JSON. Defaults when links output is used.
   --checkpoint-output <path> Continuously update combined JSON while fetching.
-  --request-delay-ms <ms>   Delay between YouTube requests. Defaults to 60000.
+  --request-delay-ms <ms>   Delay between YouTube Data API requests. Defaults to 1000.
   --max-pages <count>       Limit pages fetched per tab for safe probes.
   --include-video-details   Fetch exact per-video publish/upload/stream timestamps.
   --detail-limit <count>    Limit exact per-video detail calls.

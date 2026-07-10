@@ -605,7 +605,7 @@ export function extractVideoLink(
 export function defaultChannelVideoLinksOptions(): FetchChannelVideoLinksOptions {
   return {
     channelUrl: defaultChannelUrl,
-    requestDelayMs: 60_000,
+    requestDelayMs: 1_000,
   };
 }
 

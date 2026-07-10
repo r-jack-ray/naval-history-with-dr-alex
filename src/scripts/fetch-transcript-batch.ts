@@ -136,7 +136,7 @@ function readPositiveInteger(value: string, name: string): number {
 }
 
 function printHelp(): void {
-  console.log(`Usage: npm run fetch:transcripts -- [options]
+  console.log(`Usage: npm run alternate:fetch:transcripts -- [options]
 
 Options:
   --input <path>          Episode master JSON. Defaults to src/channel/episodes.json.
@@ -154,8 +154,8 @@ Options:
   --help                  Show this help.
 
 Examples:
-  npm run fetch:transcripts -- --limit 1 --request-delay-ms 5000
-  npm run fetch:transcripts -- --limit 10 --retry-failed
+  npm run alternate:fetch:transcripts -- --limit 1 --request-delay-ms 5000
+  npm run alternate:fetch:transcripts -- --limit 10 --retry-failed
 `);
 }
 

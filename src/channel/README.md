@@ -40,9 +40,9 @@ npm run fetch:video-links -- --master-output src/channel/episodes.json --checkpo
 Refresh from saved `/videos` and `/streams` HTML:
 
 ```powershell
-npm run extract:videos-html -- --links-output reports/dr-alex-videos-html-links.json
-npm run extract:saved-channel-html -- --tab streams --links-output reports/dr-alex-streams-html-links.json
-npm run merge:video-links -- --input reports/dr-alex-videos-html-links.json --input reports/dr-alex-streams-html-links.json --master-output src/channel/episodes.json --inventory-completeness partial
+npm run alternate:extract:videos-html -- --links-output reports/dr-alex-videos-html-links.json
+npm run alternate:extract:saved-channel-html -- --tab streams --links-output reports/dr-alex-streams-html-links.json
+npm run alternate:merge:video-links -- --input reports/dr-alex-videos-html-links.json --input reports/dr-alex-streams-html-links.json --master-output src/channel/episodes.json --inventory-completeness partial
 ```
 
 Populate official metadata with `YOUTUBE_API_KEY`:

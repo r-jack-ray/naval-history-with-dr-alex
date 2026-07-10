@@ -5,41 +5,273 @@
     "ship-design",
     "naval-procurement",
     "naval-industrial-base",
-    "modern-navy",
-    "naval-history",
-    "naval-weapons"
+    "ship-propulsion",
+    "naval-weapons",
+    "modern-navy"
   ],
   "segments": [
     {
       "id": "warship-trials-before-acceptance",
+      "videoId": "ejSC6OlHDVY",
       "slug": "warship-trials-before-acceptance",
-      "title": "Warship trials shift risk before acceptance",
-      "kind": "notable_point",
+      "title": "Warship trials keep acceptance risk with the builder",
+      "kind": "chapter",
       "start": "8:00",
       "end": "10:23",
       "topics": [
-        "ship-design",
         "naval-procurement",
         "naval-industrial-base",
-        "modern-navy",
-        "naval-weapons"
+        "ship-design"
       ],
-      "summary": "The opening argues that warship trials should happen before commissioning so build quality, performance, systems, sensors, and weapons problems are found before acceptance.",
-      "body": "Testing is often targeted for cost savings, but pre-commissioning trials keep more risk with the builder and expose build-quality, speed, maneuvering, shock, systems, sensor, weapon, exercise, and operations issues before the ship enters service.",
+      "summary": "Pre-commissioning trials expose construction and performance faults while the builder still bears much of the cost and responsibility.",
+      "body": "Dr. Clarke explains why navies should test as much as possible before formally accepting a warship. Commissioning too early can shift the financial burden of correcting defects from the builder to the government, while partial acceptance offers ways to involve naval crews without surrendering that leverage. He then outlines the broad trial program, from build quality and propulsion to sensors, weapons, shock, and operations.",
+      "sourcePath": "src/transcripts/txt/2026-01-30_T12-19-03_trials-and-tribulations-why-ships-go-through-the-testing-they-do-before-they-enter-service_ejSC6OlHDVY.txt",
       "evidence": [
         {
           "start": "8:00",
           "end": "9:02",
-          "note": "The opening says nations often try to save money by changing or cutting trials, then argues for pre-commissioning testing because post-commissioning trials shift cost toward the procuring government."
+          "note": "The transcript argues for testing before commissioning because procurement contracts often leave more responsibility and cost with the builder until acceptance."
         },
         {
-          "start": "9:47",
+          "start": "9:20",
           "end": "10:23",
-          "note": "The transcript lists the broad trial areas: build quality, speed and efficiency, maneuvering, shock, systems, sensors, weapons, exercises, and operations."
+          "note": "Partial acceptance is described before the lecture lists the principal categories of warship trials."
         }
-      ],
+      ]
+    },
+    {
+      "id": "first-crew-build-quality-feedback",
       "videoId": "ejSC6OlHDVY",
-      "sourcePath": "src/transcripts/txt/2026-01-30_T12-19-03_trials-and-tribulations-why-ships-go-through-the-testing-they-do-before-they-enter-service_ejSC6OlHDVY.txt"
+      "slug": "first-crew-build-quality-feedback",
+      "title": "The first crew turns design drawings into a usable ship",
+      "kind": "chapter",
+      "start": "15:10",
+      "end": "27:00",
+      "topics": [
+        "ship-design",
+        "naval-industrial-base",
+        "naval-procurement"
+      ],
+      "summary": "HMS Queen Elizabeth illustrates how an early naval crew checks construction, supplies immediate design feedback, and carries lessons into later ships of the class.",
+      "body": "The first crew acts as the ship's practical quality-control team before she goes to sea. Using HMS Queen Elizabeth, Dr. Clarke shows how a small naval presence grew during construction, checked whether spaces and systems could actually be used, and corrected details while dockyard specialists were still close at hand. That cooperation also preserves knowledge across a class, helping later ships build and commission faster.",
+      "sourcePath": "src/transcripts/txt/2026-01-30_T12-19-03_trials-and-tribulations-why-ships-go-through-the-testing-they-do-before-they-enter-service_ejSC6OlHDVY.txt",
+      "evidence": [
+        {
+          "start": "15:10",
+          "end": "18:04",
+          "note": "The transcript presents Queen Elizabeth's early naval personnel as end users who check that the ship meets its mission and can be operated in practice."
+        },
+        {
+          "start": "18:10",
+          "end": "19:20",
+          "note": "Crew and dockyard experience is described as accumulated knowledge that speeds delivery of later ships in a class."
+        },
+        {
+          "start": "20:23",
+          "end": "22:54",
+          "note": "An obstructive light reflecting from a display demonstrates how early crew feedback can produce a quick, inexpensive dockyard correction."
+        },
+        {
+          "start": "23:38",
+          "end": "26:59",
+          "note": "Type 23 hull plating, subdivision, seals, materials, and service-life effects illustrate the construction details checked during build-quality review."
+        }
+      ]
+    },
+    {
+      "id": "speed-efficiency-trial-conditions",
+      "videoId": "ejSC6OlHDVY",
+      "slug": "speed-efficiency-trial-conditions",
+      "title": "Speed trials depend on load, machinery, wind, and current",
+      "kind": "notable_point",
+      "start": "27:38",
+      "end": "35:38",
+      "topics": [
+        "ship-propulsion",
+        "ship-design",
+        "naval-procurement"
+      ],
+      "summary": "Published top speeds can reflect deliberately chosen loads and trial conditions, while the deeper engineering purpose is to measure propulsion efficiency and range.",
+      "body": "Dr. Clarke contrasts navies that understate performance by testing fully laden ships with those that chase impressive figures using lighter loads or forced draft. The important measurement is not a headline speed alone but how efficiently the machinery moves a known displacement under known conditions. Trial-area currents and crosswinds can materially change the result, so apparently comparable figures may rest on very different tests.",
+      "sourcePath": "src/transcripts/txt/2026-01-30_T12-19-03_trials-and-tribulations-why-ships-go-through-the-testing-they-do-before-they-enter-service_ejSC6OlHDVY.txt",
+      "evidence": [
+        {
+          "start": "27:38",
+          "end": "31:06",
+          "note": "The transcript compares fully loaded trials and normal machinery ratings with light-load and forced-draft methods that produce higher official speeds."
+        },
+        {
+          "start": "31:41",
+          "end": "35:38",
+          "note": "Efficiency, range estimates, displacement, trial-zone currents, and crosswinds are identified as the conditions needed to interpret performance figures."
+        }
+      ]
+    },
+    {
+      "id": "crash-stop-zigzag-maneuvering-trials",
+      "videoId": "ejSC6OlHDVY",
+      "slug": "crash-stop-zigzag-maneuvering-trials",
+      "title": "Crash stops and zigzags test the whole ship at once",
+      "kind": "chapter",
+      "start": "36:00",
+      "end": "44:45",
+      "topics": [
+        "ship-propulsion",
+        "ship-design",
+        "fleet-tactics"
+      ],
+      "summary": "Extreme maneuvering trials load steering gear, propulsion, and hull structure hard enough to expose failures before operational service.",
+      "body": "A crash stop rapidly reverses propulsion to arrest a ship, imposing loads far beyond an ordinary reduction in speed. Zigzag trials test steering response and stability, while combinations of turns and emergency stops can make the trial physically punishing for both ship and crew. These tests can break a defective vessel, but that is preferable to discovering the same weakness during an operational emergency.",
+      "sourcePath": "src/transcripts/txt/2026-01-30_T12-19-03_trials-and-tribulations-why-ships-go-through-the-testing-they-do-before-they-enter-service_ejSC6OlHDVY.txt",
+      "evidence": [
+        {
+          "start": "36:00",
+          "end": "38:14",
+          "note": "Crash stops are described as simultaneous tests of steering gear, hull strength, and machinery created by forcing the propulsion system into reverse."
+        },
+        {
+          "start": "38:18",
+          "end": "41:20",
+          "note": "Zigzag and crash-stop examples show the severe rolling, structural loads, and risk of damaging a ship during maneuvering trials."
+        },
+        {
+          "start": "41:20",
+          "end": "44:45",
+          "note": "The transcript explains that failed trials can delay or prevent commissioning, particularly when repairing a defective small combatant is less valuable than completing sound sister ships."
+        }
+      ]
+    },
+    {
+      "id": "machinery-systems-trial-baseline",
+      "videoId": "ejSC6OlHDVY",
+      "slug": "machinery-systems-trial-baseline",
+      "title": "Machinery trials establish maintenance baselines",
+      "kind": "chapter",
+      "start": "45:00",
+      "end": "48:50",
+      "topics": [
+        "ship-propulsion",
+        "ship-design",
+        "ship-modernization"
+      ],
+      "summary": "Repeated machinery and auxiliary-system checks prove that the ship works and create the running-hour records that govern future maintenance.",
+      "body": "Engines may be run ashore and again after installation, while navigation, fire-control, hydraulic, electrical, and hotel systems receive repeated checks before and at sea. Dr. Clarke explains why engine age is tracked through operating hours rather than the hull's launch date. Accurate mechanical and digital records then drive maintenance intervals and help reveal tampering or discrepancies.",
+      "sourcePath": "src/transcripts/txt/2026-01-30_T12-19-03_trials-and-tribulations-why-ships-go-through-the-testing-they-do-before-they-enter-service_ejSC6OlHDVY.txt",
+      "evidence": [
+        {
+          "start": "45:00",
+          "end": "47:10",
+          "note": "The transcript describes repeated checks of engines, navigation, fire control, hydraulics, pumps, electrical services, and other installed systems."
+        },
+        {
+          "start": "47:10",
+          "end": "48:50",
+          "note": "Engine running hours, redundant records, maintenance schedules, hull condition, and refit decisions are tied together as through-life baselines."
+        }
+      ]
+    },
+    {
+      "id": "sensor-weapon-integration-testing",
+      "videoId": "ejSC6OlHDVY",
+      "slug": "sensor-weapon-integration-testing",
+      "title": "Land sites and sea trials prove sensor-weapon integration",
+      "kind": "chapter",
+      "start": "1:05:00",
+      "end": "1:16:00",
+      "topics": [
+        "shipboard-air-defense",
+        "naval-weapons",
+        "ship-design"
+      ],
+      "summary": "Type 45 test installations illustrate why radars, combat systems, weapons, aviation facilities, and outside targeting data must be checked together before service.",
+      "body": "Shore integration sites let engineers arrange and test sensor suites before committing them to a ship, but sea trials remain essential because alignment, software, false tracks, and blind sectors can still defeat a combat system. Weapons trials then cover storage, loading, firing, resupply, and coordination with the ship's own sensors and external data. Early misses are less important than discovering how new crews, software, radars, launchers, and weapons behave as one system.",
+      "sourcePath": "src/transcripts/txt/2026-01-30_T12-19-03_trials-and-tribulations-why-ships-go-through-the-testing-they-do-before-they-enter-service_ejSC6OlHDVY.txt",
+      "evidence": [
+        {
+          "start": "1:05:00",
+          "end": "1:08:48",
+          "note": "Type 45 shore installations at Portsdown are used to explain repeated sensor integration tests and the operational consequences of false tracks or coverage gaps."
+        },
+        {
+          "start": "1:10:24",
+          "end": "1:13:58",
+          "note": "Weapons testing is described as covering loading, resupply, firing, storage, aviation support, and coordination with outside targeting data."
+        },
+        {
+          "start": "1:14:38",
+          "end": "1:16:00",
+          "note": "The transcript notes that first-of-class firing trials integrate new crews, radars, communications, launchers, weapons, and software rather than merely scoring hits."
+        }
+      ]
+    },
+    {
+      "id": "shock-trial-damage-baseline",
+      "videoId": "ejSC6OlHDVY",
+      "slug": "shock-trial-damage-baseline",
+      "title": "Shock trials test survivability just short of destruction",
+      "kind": "notable_point",
+      "start": "1:16:00",
+      "end": "1:23:02",
+      "topics": [
+        "damage-control",
+        "ship-design",
+        "naval-weapons"
+      ],
+      "summary": "A nearby explosive shock is applied only after normal systems are proven, allowing engineers to distinguish expected damage from unacceptable failures.",
+      "body": "Shock trials deliberately impose a severe underwater blast near a working ship without turning the event into a sinking exercise. Establishing a complete systems baseline first lets engineers identify what the blast actually broke, repair ordinary damage, and redesign components that failed unexpectedly. Later ships may still need renewed testing because construction details, software, or nominally identical sensors can change between hulls.",
+      "sourcePath": "src/transcripts/txt/2026-01-30_T12-19-03_trials-and-tribulations-why-ships-go-through-the-testing-they-do-before-they-enter-service_ejSC6OlHDVY.txt",
+      "evidence": [
+        {
+          "start": "1:16:00",
+          "end": "1:18:57",
+          "note": "The transcript defines shock trials as near-destructive tests conducted after other systems have established a working baseline, followed by inspection and repair."
+        },
+        {
+          "start": "1:18:57",
+          "end": "1:23:02",
+          "note": "Differences between hulls and updates to a nominally unchanged radar are given as reasons to repeat checks rather than assume every ship is identical."
+        }
+      ]
+    },
+    {
+      "id": "commissioning-crew-operational-doctrine",
+      "videoId": "ejSC6OlHDVY",
+      "slug": "commissioning-crew-operational-doctrine",
+      "title": "Commissioning trials become the class operating manual",
+      "kind": "chapter",
+      "start": "1:24:12",
+      "end": "1:47:58",
+      "topics": [
+        "naval-leadership",
+        "fleet-organization",
+        "carrier-groups",
+        "fleet-tactics"
+      ],
+      "summary": "HMS Queen Elizabeth's commissioning crew turned manufacturer guidance and sea experience into operating procedures, then learned how the carrier fits into allied task groups.",
+      "body": "The commissioning captain and crew do more than prove individual equipment: they convert builder instructions and trial reports into the class's practical operating manual. Sea experience supplies procedures for maintenance, aviation, heavy weather, refits, and the ship's emerging culture. Exercises then move beyond treating the carrier as an isolated centerpiece and reveal how it must respond to escorts, coordinate air defence, and divide roles with allied carriers.",
+      "sourcePath": "src/transcripts/txt/2026-01-30_T12-19-03_trials-and-tribulations-why-ships-go-through-the-testing-they-do-before-they-enter-service_ejSC6OlHDVY.txt",
+      "evidence": [
+        {
+          "start": "1:24:12",
+          "end": "1:31:22",
+          "note": "The transcript follows Queen Elizabeth's commissioning command and explains how manufacturer guides, build notes, and sea experience become class operating procedures."
+        },
+        {
+          "start": "1:32:07",
+          "end": "1:34:47",
+          "note": "Operational exercises are contrasted with solo trials as the point where a carrier must heed anti-submarine escorts and remain inside the task group's protection."
+        },
+        {
+          "start": "1:35:00",
+          "end": "1:45:52",
+          "note": "Queen Elizabeth-class exercises with amphibious and American carrier groups illustrate emergent command, air-defence, sensor, and ship-to-ship roles."
+        },
+        {
+          "start": "1:47:00",
+          "end": "1:47:58",
+          "note": "The closing manual discussion adds the commissioning crew's role in recording shipboard culture alongside formal procedures."
+        }
+      ]
     }
   ]
 }

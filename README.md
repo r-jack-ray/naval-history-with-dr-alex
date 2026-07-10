@@ -109,7 +109,7 @@ The generated site exposes:
 
 ## Fetch Channel Video Links
 
-The inventory script uses the official YouTube Data API through `googleapis`. The npm scripts default to reading the API key from `reports/youtube-api-key.txt`; alternatively pass `--api-key` or `--api-key-file` after `--` when invoking the npm script. Direct CLI use can also read `YOUTUBE_API_KEY`. Fetching defaults to one request per minute; this is conservative and can be lowered for official API runs.
+The main inventory task uses the official YouTube Data API through `googleapis`. It defaults to reading the API key from `reports/youtube-api-key.txt`; alternatively pass `--api-key` or `--api-key-file` after `--`. Direct CLI use can also read `YOUTUBE_API_KEY`. Official API calls default to a one-second delay between requests.
 
 YouTube Data API quota is tracked by Google project and resets at midnight Pacific Time. The default allocation is 10,000 units per day for most endpoints, with `playlistItems.list` and `videos.list` costing 1 unit per call. `search.list` has its own default limit of 100 calls per day, and `captions.list` costs 50 units per call. Check the official [YouTube Data API quota cost table](https://developers.google.com/youtube/v3/determine_quota_cost) before changing fetch strategy.
 
@@ -157,18 +157,18 @@ npm run fetch:video-metadata -- --limit 50 --request-delay-ms 1000
 
 The output is `src/channel/video-metadata.json`. Existing records are skipped unless `--force` is passed.
 
-## Extract Saved Live Streams HTML
+## Alternate Saved-HTML Inventory
 
 If a channel tab page is saved from a browser, parse its rendered lockup markup offline without making YouTube requests:
 
 ```powershell
-npm run extract:videos-html -- --output reports/dr-alex-videos-html-extraction.json --links-output reports/dr-alex-videos-html-links.json --base-output reports/dr-alex-video-list-from-html.json --metadata-output reports/dr-alex-video-metadata-from-html.json --master-output src/channel/episodes.json --inventory-completeness partial
+npm run alternate:extract:videos-html -- --output reports/dr-alex-videos-html-extraction.json --links-output reports/dr-alex-videos-html-links.json --base-output reports/dr-alex-video-list-from-html.json --metadata-output reports/dr-alex-video-metadata-from-html.json --master-output src/channel/episodes.json --inventory-completeness partial
 ```
 
 Use the generic command for other saved channel tabs:
 
 ```powershell
-npm run extract:saved-channel-html -- --tab streams --output reports/dr-alex-streams-html-extraction.json --links-output reports/dr-alex-streams-html-links.json
+npm run alternate:extract:saved-channel-html -- --tab streams --output reports/dr-alex-streams-html-extraction.json --links-output reports/dr-alex-streams-html-links.json
 ```
 
 The report includes parse stats, continuation-token detection, and the standard channel-link result. Saved `/videos` pages can contain many rendered rows; saved `/streams` pages may contain only the visible page of stream items.
@@ -176,7 +176,7 @@ The report includes parse stats, continuation-token detection, and the standard 
 Merge saved tab outputs into the source master:
 
 ```powershell
-npm run merge:video-links -- --input reports/dr-alex-videos-html-links.json --input reports/dr-alex-streams-html-links.json --master-output src/channel/episodes.json --inventory-completeness partial
+npm run alternate:merge:video-links -- --input reports/dr-alex-videos-html-links.json --input reports/dr-alex-streams-html-links.json --master-output src/channel/episodes.json --inventory-completeness partial
 ```
 
 ## Store Video Transcripts Locally
@@ -188,7 +188,7 @@ download by API key. By default this writes JSON, TXT, TSV, and updates
 `src/transcripts/manifest.json`:
 
 ```powershell
-npm run fetch:transcript -- --video-id uURe69Wnh-Q
+npm run alternate:fetch:transcript -- --video-id uURe69Wnh-Q
 ```
 
 For unattended ingestion, use the batch runner. It skips transcripts already in
@@ -197,8 +197,8 @@ timestamped naming, and checkpoints failures/progress to
 `src/transcripts/fetch-status.json`:
 
 ```powershell
-npm run fetch:transcripts -- --limit 1 --request-delay-ms 5000
-npm run fetch:transcripts
+npm run alternate:fetch:transcripts -- --limit 1 --request-delay-ms 5000
+npm run alternate:fetch:transcripts
 ```
 
 Use `--request-delay-ms 60000` if YouTube starts rate-limiting or blocking
@@ -210,7 +210,7 @@ JSON stores structured segment data. TXT is a readable timestamped transcript. T
 When the transcript backend does not provide enough naming metadata, pass explicit values:
 
 ```powershell
-npm run fetch:transcript -- --video-id uURe69Wnh-Q --video-title "Video Title" --video-timestamp 2026-06-14T05:29:19-05:00
+npm run alternate:fetch:transcript -- --video-id uURe69Wnh-Q --video-title "Video Title" --video-timestamp 2026-06-14T05:29:19-05:00
 ```
 
 To re-store an existing JSON file with readable naming without calling YouTube:

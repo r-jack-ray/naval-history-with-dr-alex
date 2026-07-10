@@ -120,7 +120,7 @@ async function writeJsonFile(path: string, value: unknown): Promise<void> {
 }
 
 function printHelp(): void {
-  console.log(`Usage: npm run extract:live-streams-html -- [options]
+  console.log(`Usage: npm run alternate:extract:live-streams-html -- [options]
 
 Options:
   --input <path>        Saved YouTube live streams HTML. Defaults to ${defaultLiveStreamsHtmlInput}.
@@ -132,8 +132,8 @@ Options:
   --help                Show this help.
 
 Examples:
-  npm run extract:live-streams-html -- --output reports/dr-alex-live-streams-html-extraction.json
-  npm run extract:live-streams-html -- --links-output reports/dr-alex-live-streams-html-links.json
+  npm run alternate:extract:live-streams-html -- --output reports/dr-alex-live-streams-html-extraction.json
+  npm run alternate:extract:live-streams-html -- --links-output reports/dr-alex-live-streams-html-links.json
 `);
 }
 

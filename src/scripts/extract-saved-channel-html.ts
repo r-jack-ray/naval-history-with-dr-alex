@@ -187,7 +187,7 @@ async function writeJsonFile(path: string, value: unknown): Promise<void> {
 }
 
 function printHelp(): void {
-  console.log(`Usage: npm run extract:saved-channel-html -- [options]
+  console.log(`Usage: npm run alternate:extract:saved-channel-html -- [options]
 
 Options:
   --input <path>           Saved YouTube channel tab HTML.
@@ -205,8 +205,8 @@ Options:
   --help                   Show this help.
 
 Examples:
-  npm run extract:saved-channel-html -- --output reports/dr-alex-videos-html-extraction.json
-  npm run extract:saved-channel-html -- --tab streams --input "${defaultSavedStreamsHtmlInput}"
+  npm run alternate:extract:saved-channel-html -- --output reports/dr-alex-videos-html-extraction.json
+  npm run alternate:extract:saved-channel-html -- --tab streams --input "${defaultSavedStreamsHtmlInput}"
 `);
 }
 
