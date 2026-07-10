@@ -322,7 +322,7 @@ Priority: P2
 ### Tasks
 
 - [ ] Measure which transcript formats the production site build actually consumes.
-- [ ] Use sparse checkout in the Pages workflow if raw JSON/TXT/TSV files are not required for deployment.
+- [ ] Use sparse checkout in the Pages workflow if raw JSON/TXT files are not required for deployment.
 - [ ] Evaluate Git LFS, release assets, a separate archival repository, or another durable source-of-record strategy for large raw transcript history.
 - [ ] Keep the curated shards and deterministic site inputs easy to clone and audit.
 - [ ] Document the recovery and regeneration path before moving any canonical transcript data.

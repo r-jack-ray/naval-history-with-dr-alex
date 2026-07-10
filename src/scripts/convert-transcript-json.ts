@@ -104,7 +104,6 @@ Options:
 
 Examples:
   npm run convert:transcript-json -- src/transcripts/json/--l6rRIfksQ.json --output-dir src/transcripts/txt
-  npm run convert:transcript-json -- --format tsv src/transcripts/json/--l6rRIfksQ.json --output-dir src/transcripts/tsv
 `);
 }
 

@@ -68,12 +68,10 @@ async function main(): Promise<void> {
         const paths = await writeTranscriptStorage(transcript, options.outputRoot);
         console.error(`Re-stored existing transcript from local JSON: ${paths.jsonOutput}`);
         console.error(`Stored TXT transcript: ${paths.txtOutput}`);
-        console.error(`Stored TSV transcript: ${paths.tsvOutput}`);
         console.error(`Updated transcript manifest: ${paths.manifestOutput}`);
       } else {
         console.error(`Transcript already stored: ${stored.paths.jsonOutput}`);
         console.error(`Stored TXT transcript: ${stored.paths.txtOutput}`);
-        console.error(`Stored TSV transcript: ${stored.paths.tsvOutput}`);
         console.error("No YouTube requests made. Use --force to refetch.");
       }
       return;
@@ -105,7 +103,6 @@ async function main(): Promise<void> {
     const paths = await writeTranscriptStorage(transcript, options.outputRoot);
     console.error(`Stored JSON transcript: ${paths.jsonOutput}`);
     console.error(`Stored TXT transcript: ${paths.txtOutput}`);
-    console.error(`Stored TSV transcript: ${paths.tsvOutput}`);
     console.error(`Updated transcript manifest: ${paths.manifestOutput}`);
   }
 
@@ -208,7 +205,7 @@ function applyNamingMetadata(
 }
 
 async function missingTranscriptOutputs(paths: TranscriptStoragePaths): Promise<string[]> {
-  const outputs = [paths.jsonOutput, paths.txtOutput, paths.tsvOutput];
+  const outputs = [paths.jsonOutput, paths.txtOutput];
   const missing: string[] = [];
 
   for (const output of outputs) {
@@ -227,7 +224,7 @@ async function missingTranscriptOutputs(paths: TranscriptStoragePaths): Promise<
 }
 
 function sameTranscriptPaths(left: TranscriptStoragePaths, right: TranscriptStoragePaths): boolean {
-  return left.jsonOutput === right.jsonOutput && left.txtOutput === right.txtOutput && left.tsvOutput === right.tsvOutput;
+  return left.jsonOutput === right.jsonOutput && left.txtOutput === right.txtOutput;
 }
 
 function hasExplicitOutputs(options: CliOptions): boolean {

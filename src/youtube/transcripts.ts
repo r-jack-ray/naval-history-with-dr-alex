@@ -46,7 +46,6 @@ export interface TranscriptStoragePaths {
   root: string;
   jsonOutput: string;
   txtOutput: string;
-  tsvOutput: string;
   manifestOutput: string;
 }
 
@@ -56,7 +55,6 @@ export interface TranscriptManifest {
   storage: {
     json: "json/{fileStem}.json";
     txt: "txt/{fileStem}.txt";
-    tsv: "tsv/{fileStem}.tsv";
   };
   transcripts: TranscriptManifestRecord[];
 }
@@ -76,7 +74,6 @@ export interface TranscriptManifestRecord {
   paths: {
     json: string;
     txt: string;
-    tsv: string;
   };
 }
 
@@ -355,7 +352,6 @@ export async function writeTranscriptStorage(
   await writeTranscriptOutputs(transcript, {
     jsonOutput: paths.jsonOutput,
     txtOutput: paths.txtOutput,
-    tsvOutput: paths.tsvOutput,
   });
   const previousRecord = await upsertTranscriptManifest(transcript, paths);
   if (previousRecord !== undefined) {
@@ -377,7 +373,6 @@ export function transcriptStoragePaths(
     root,
     jsonOutput: join(root, "json", `${stem}.json`),
     txtOutput: join(root, "txt", `${stem}.txt`),
-    tsvOutput: join(root, "tsv", `${stem}.tsv`),
     manifestOutput: join(root, "manifest.json"),
   };
 }
@@ -390,7 +385,6 @@ export function transcriptStoragePathsFromRecord(
     root,
     jsonOutput: join(root, record.paths.json),
     txtOutput: join(root, record.paths.txt),
-    tsvOutput: join(root, record.paths.tsv),
     manifestOutput: join(root, "manifest.json"),
   };
 }
@@ -449,10 +443,9 @@ async function removeSupersededTranscriptOutputs(
   currentPaths: TranscriptStoragePaths,
 ): Promise<void> {
   const previousPaths = transcriptStoragePathsFromRecord(previousRecord, root);
-  const obsoletePaths = [previousPaths.jsonOutput, previousPaths.txtOutput, previousPaths.tsvOutput].filter(
+  const obsoletePaths = [previousPaths.jsonOutput, previousPaths.txtOutput].filter(
     (path) => !samePath(path, currentPaths.jsonOutput) &&
-      !samePath(path, currentPaths.txtOutput) &&
-      !samePath(path, currentPaths.tsvOutput),
+      !samePath(path, currentPaths.txtOutput),
   );
 
   for (const path of obsoletePaths) {
@@ -519,7 +512,6 @@ function emptyTranscriptManifest(): TranscriptManifest {
     storage: {
       json: "json/{fileStem}.json",
       txt: "txt/{fileStem}.txt",
-      tsv: "tsv/{fileStem}.tsv",
     },
     transcripts: [],
   };
@@ -539,7 +531,6 @@ function transcriptManifestRecord(transcript: VideoTranscript): TranscriptManife
     paths: {
       json: `json/${stem}.json`,
       txt: `txt/${stem}.txt`,
-      tsv: `tsv/${stem}.tsv`,
     },
   };
 
@@ -574,9 +565,8 @@ function transcriptManifestRecordFromJson(value: unknown): TranscriptManifestRec
   const fileStem = object ? readString(object, "fileStem") : undefined;
   const json = paths ? readString(paths, "json") : undefined;
   const txt = paths ? readString(paths, "txt") : undefined;
-  const tsv = paths ? readString(paths, "tsv") : undefined;
 
-  if (!object || !videoId || !source || !fetchedAt || segmentCount === undefined || !json || !txt || !tsv) {
+  if (!object || !videoId || !source || !fetchedAt || segmentCount === undefined || !json || !txt) {
     return undefined;
   }
 
@@ -587,7 +577,7 @@ function transcriptManifestRecordFromJson(value: unknown): TranscriptManifestRec
     fetchedAt,
     availableLanguages: readStringArray(object?.availableLanguages),
     segmentCount,
-    paths: { json, txt, tsv },
+    paths: { json, txt },
   };
   const selectedLanguage = readString(object, "selectedLanguage");
   const firstStartSeconds = integerValue(object.firstStartSeconds);

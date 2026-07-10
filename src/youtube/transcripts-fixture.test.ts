@@ -45,7 +45,7 @@ test("reads structured transcript JSON for conversion", async () => {
   }
 });
 
-test("stores transcript JSON, TXT, TSV, and manifest under a local root", async () => {
+test("stores transcript JSON, TXT, and manifest under a local root", async () => {
   const dir = await mkdtemp(join(tmpdir(), "naval-transcript-store-"));
 
   try {
@@ -73,13 +73,13 @@ test("stores transcript JSON, TXT, TSV, and manifest under a local root", async 
     );
 
     assert.equal(await readFile(paths.txtOutput, "utf8"), "[0:00] Hello\n");
-    assert.equal(await readFile(paths.tsvOutput, "utf8"), "StartSeconds\tEndSeconds\tStart\tText\tVideoUrl\n0\t1\t0:00\tHello\thttps://youtu.be/abc123?t=0\n");
 
     const manifest = JSON.parse(await readFile(paths.manifestOutput, "utf8"));
     assert.equal(manifest.transcripts[0].videoId, "abc123");
     assert.equal(manifest.transcripts[0].fileStem, "2026-06-14_T05-29-19_ships-and-strategy-a-test_abc123");
     assert.equal(manifest.transcripts[0].videoTitle, "Ships & Strategy: A Test!");
     assert.equal(manifest.transcripts[0].paths.json, "json/2026-06-14_T05-29-19_ships-and-strategy-a-test_abc123.json");
+    assert.equal(manifest.transcripts[0].paths.tsv, undefined);
     assert.equal((await readVideoTranscriptJson(paths.jsonOutput)).source, "youtube-transcript-plus");
 
     const stored = await findStoredTranscriptRecord({ videoId: "abc123", root: dir, language: "en" });

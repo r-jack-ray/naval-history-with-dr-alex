@@ -22,7 +22,6 @@ src/
   transcripts/
     json/
     txt/
-    tsv/
   derived/
     chapters/
     notable-points/
@@ -78,7 +77,6 @@ Each segment should include:
 3. Build transcript ingestion.
    - Store raw transcript JSON under `src/transcripts/json/` as the source of record.
    - Generate `src/transcripts/txt/` for fast inspection and search.
-   - Generate `src/transcripts/tsv/` only when structured timestamp/link columns are useful.
    - Track missing, empty, private, unavailable, and auto-caption-only transcript states in reports.
 
 4. Create first-pass curation workflows.

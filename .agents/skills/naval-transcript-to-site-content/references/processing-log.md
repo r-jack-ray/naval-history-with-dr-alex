@@ -19,7 +19,7 @@ Example:
 Field rules:
 
 - `processedAt`: ISO 8601 timestamp with offset.
-- `sourcePath`: repo-relative transcript TXT or TSV path.
+- `sourcePath`: repo-relative transcript TXT path.
 - `videoId`: YouTube video ID.
 - `action`: short statement of what was done, such as `curated 4 segments`, `reviewed no usable segments`, or `blocked noisy transcript`.
 - `needsFurtherProcessing`: exactly `yes` or `no`.

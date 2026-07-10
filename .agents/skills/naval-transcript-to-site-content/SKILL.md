@@ -1,6 +1,6 @@
 ---
 name: naval-transcript-to-site-content
-description: Convert one explicitly selected Dr. Alex Clarke transcript TXT/TSV into one segment-first per-video study-guide shard. Use when asked to process a named transcript, curate a named video guide, add transcript-backed chapters/notable points/Q&A watch points, or update `src/derived/video-segments/video-<videoId>.json`.
+description: Convert one explicitly selected Dr. Alex Clarke transcript TXT into one segment-first per-video study-guide shard. Use when asked to process a named transcript, curate a named video guide, add transcript-backed chapters/notable points/Q&A watch points, or update `src/derived/video-segments/video-<videoId>.json`.
 ---
 
 # Naval Transcript To Site Content
@@ -13,7 +13,7 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` when converting
 2. Before any shard edit, require an explicitly named transcript path or an exact transcript/video selected by the invoking automation. When the automation prompt defines its own atomic claim procedure, let that prompt perform the claim first. Otherwise, if no exact transcript was supplied, stop without edits; do not select from a backlog, schedule, report, manifest, or existing shard set.
 3. Do not acquire, inspect, wait on, renew, or release a repository lease. Do not claim, complete, or reset schedule rows. An invoking automation owns any claim, lane log, private validation, completion, or reset procedure.
 4. Verify required dependencies and compiled helpers only when the invoking workflow names them. If anything is missing, report the prerequisite and stop without edits; do not run `npm ci`, build tooling, audits, generation, or tests.
-5. Read the selected `src/transcripts/txt/*.txt` or `src/transcripts/tsv/*.tsv` file before editing site content. For long transcripts, map the full duration from TSV timestamps and read contiguous time-based chunks small enough to avoid tool-output truncation; do not rely on one raw full-file dump or only the opening portion.
+5. Read the selected `src/transcripts/txt/*.txt` file before editing site content. For long transcripts, map the full duration from its timestamped lines and read contiguous time-based chunks small enough to avoid tool-output truncation; do not rely on one raw full-file dump or only the opening portion.
 6. Read `references/segment-seed-schema.md` before changing the selected shard.
 7. Check `src/derived/site-content-processing.config.json` for first-pass content policy, video-type defaults, follow-up stages, and topic grouping guidance.
 

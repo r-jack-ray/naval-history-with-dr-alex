@@ -48,7 +48,6 @@ src/
     manifest.json          Index of stored transcript files
     json/                  Raw structured transcript JSON
     txt/                   Generated timestamped text
-    tsv/                   Generated tab-separated rows
 site/
   src/                     Astro pages, layouts, and site data adapters
     data/generated/        Deterministic generated archive JSON
@@ -184,7 +183,7 @@ npm run alternate:merge:video-links -- --input reports/dr-alex-videos-html-links
 The transcript puller uses `youtube-transcript-plus` first, falls back to direct
 watch-page caption tracks, and defaults to a 5-second delay between YouTube
 requests. The official YouTube Data API does not provide public transcript
-download by API key. By default this writes JSON, TXT, TSV, and updates
+download by API key. By default this writes JSON and TXT, and updates
 `src/transcripts/manifest.json`:
 
 ```powershell
@@ -205,7 +204,7 @@ Use `--request-delay-ms 60000` if YouTube starts rate-limiting or blocking
 transcript requests. Use `--retry-failed` to retry videos recorded in the status
 file.
 
-JSON stores structured segment data. TXT is a readable timestamped transcript. TSV is for structured timestamp/link review. Stored transcript files use `timestamp_title-slug_videoId.ext` when exact timing is known, otherwise `title-slug_videoId.ext`.
+JSON stores structured segment data. TXT is a readable timestamped transcript. Stored transcript files use `timestamp_title-slug_videoId.ext` when exact timing is known, otherwise `title-slug_videoId.ext`.
 
 When the transcript backend does not provide enough naming metadata, pass explicit values:
 
@@ -223,7 +222,6 @@ Convert existing transcript JSON without calling YouTube:
 
 ```powershell
 npm run convert:transcript-json -- src/transcripts/json/<file-stem>.json --output-dir src/transcripts/txt
-npm run convert:transcript-json -- --format tsv src/transcripts/json/<file-stem>.json --output-dir src/transcripts/tsv
 ```
 
 See `src/transcripts/README.md` for the storage layout.
@@ -264,7 +262,7 @@ For agent-driven work, use:
 
 - `.agents/transcript-content-curator.md`: role brief for transcript-backed curation.
 - `.agents/site-content-auditor.md`: role brief for follow-up public wording, density, and evidence checks.
-- `.agents/skills/naval-transcript-to-site-content/SKILL.md`: reusable workflow for converting transcript TXT/TSV evidence into `src/derived/video-segments/video-<videoId>.json`.
+- `.agents/skills/naval-transcript-to-site-content/SKILL.md`: reusable workflow for converting transcript TXT evidence into `src/derived/video-segments/video-<videoId>.json`.
 - `.agents/skills/naval-site-content-auditor/SKILL.md`: reusable workflow for strengthening existing segment notes.
 - `.codex/hooks/validate-content-pipeline.ps1`: audit, regenerate generated site data, run Astro checks, and optionally run the full repository check.
 

@@ -125,7 +125,6 @@ export type ChannelEpisodeTranscriptState =
       status: "stored";
       jsonPath: string;
       txtPath?: string;
-      tsvPath?: string;
       segmentCount?: number;
       selectedLanguage?: string;
       fetchedAt?: string;

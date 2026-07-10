@@ -9,7 +9,6 @@ Planned source layout:
 - `src/channel/`: channel inventory, playlists, video IDs, dates, and transcript states.
 - `src/transcripts/json/`: raw transcript JSON, the source of record.
 - `src/transcripts/txt/`: generated plain-text transcripts.
-- `src/transcripts/tsv/`: optional structured timestamp rows.
 - `src/derived/video-segments/`: source-of-truth curated site content, with `topics.json` plus one `video-<videoId>.json` file per video.
 - `src/derived/`: other generated or supporting derived data.
 - `src/site/`: deterministic site-data generator and tests.

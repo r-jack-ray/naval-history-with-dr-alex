@@ -31,7 +31,6 @@ async function main(): Promise<void> {
   const paths = await writeTranscriptStorage(transcript, options.outputRoot);
   console.error(`Stored JSON transcript: ${paths.jsonOutput}`);
   console.error(`Stored TXT transcript: ${paths.txtOutput}`);
-  console.error(`Stored TSV transcript: ${paths.tsvOutput}`);
   console.error(`Updated transcript manifest: ${paths.manifestOutput}`);
 }
 

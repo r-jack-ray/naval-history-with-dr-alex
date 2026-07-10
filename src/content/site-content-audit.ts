@@ -124,7 +124,6 @@ export interface TranscriptManifestRecord {
   paths?: {
     json?: string;
     txt?: string;
-    tsv?: string;
   };
 }
 

@@ -10,7 +10,6 @@ src/transcripts/
   fetch-status.json  Batch fetch progress and failures.
   json/           Raw structured transcript JSON. Source of record.
   txt/            Timestamped plain-text view generated from JSON.
-  tsv/            Tab-separated timestamp rows generated from JSON.
 ```
 
 ## File Naming
@@ -20,7 +19,6 @@ Use a readable filename stem that keeps the YouTube video ID at the end:
 ```text
 json/2026-06-14_T05-29-19_title-slug_videoId.json
 txt/2026-06-14_T05-29-19_title-slug_videoId.txt
-tsv/2026-06-14_T05-29-19_title-slug_videoId.tsv
 ```
 
 If an exact publish or stream timestamp is not known, omit the timestamp prefix
@@ -34,7 +32,7 @@ Fetch and store all local transcript formats:
 npm run alternate:fetch:transcript -- --video-id uURe69Wnh-Q
 ```
 
-The default store root is `src/transcripts`. The fetcher writes JSON, TXT, TSV,
+The default store root is `src/transcripts`. The fetcher writes JSON and TXT,
 and updates `manifest.json`. If the video is already present in the manifest,
 the command reads the local JSON and exits without calling YouTube; pass
 `--force` only when you intentionally want to refetch. Transcript requests
@@ -64,10 +62,8 @@ Re-store an existing JSON file without calling YouTube:
 npm run store:transcript-json -- src/transcripts/json/<file-stem>.json --video-title "Video Title" --video-timestamp 2026-06-14T05:29:19-05:00
 ```
 
-Treat JSON as authoritative. Regenerate TXT or TSV from JSON when formatting
-changes:
+Treat JSON as authoritative. Regenerate TXT from JSON when formatting changes:
 
 ```powershell
 npm run convert:transcript-json -- src/transcripts/json/<file-stem>.json --output-dir src/transcripts/txt
-npm run convert:transcript-json -- --format tsv src/transcripts/json/<file-stem>.json --output-dir src/transcripts/tsv
 ```
