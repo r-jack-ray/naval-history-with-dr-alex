@@ -9,8 +9,8 @@ Generated from every stored TXT transcript in the manifest. All rows are intenti
 Criteria: stored TXT transcript exists. Existing video segment shards, generated archive entries, and prior processing-log rows do not remove a file from this schedule.
 
 Schedule: 1 of 4
-Files in this schedule: 513
-Total files split across schedules: 2049
+Files in this schedule: 515
+Total files split across schedules: 2057
 
 ## Files
 
@@ -72,7 +72,7 @@ Total files split across schedules: 2049
 - [x] src/transcripts/txt/2026-04-09_T18-30-06_could-the-royal-navy-have-lauched-a-carrier-strike-in-wwi-on-wilhelmshaven_A8SZWI_bmT4.txt | A8SZWI_bmT4 | 2026-04-09T18:30:06Z | rows=2088 | durationSeconds=5243 | Could the Royal Navy have lauched a Carrier Strike in WWI on Wilhelmshaven?
 - [x] src/transcripts/txt/2026-04-07_T18-30-06_building-for-national-survival-italian-destroyers-prior-to-wwi_Y1jhukJirng.txt | Y1jhukJirng | 2026-04-07T18:30:06Z | rows=1038 | durationSeconds=2452 | Building for National Survival: Italian Destroyers prior to WWI
 - [x] src/transcripts/txt/2026-04-05_T23-09-03_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt | pqBl_0M1Jzk | 2026-04-05T23:09:03Z | rows=6140 | durationSeconds=15814 | Bruships 238: Naval History Questions Answered Live...
-- [x] src/transcripts/txt/2026-04-04_T18-30-06_what-if-the-royal-navy-used-the-lessons-of-the-1982-falklands-war-to-go-stanflex_6_0S2zCVlag.txt | 6_0S2zCVlag | 2026-04-04T18:30:06Z | rows=2002 | durationSeconds=4379 | What if the Royal Navy used the Lessons of the 1982 Falklands War to go Stanflex?
+- [ ] src/transcripts/txt/2026-04-04_T18-30-06_what-if-the-royal-navy-used-the-lessons-of-the-1982-falklands-war-to-go-stanflex_6_0S2zCVlag.txt | 6_0S2zCVlag | 2026-04-04T18:30:06Z | rows=2002 | durationSeconds=4379 | What if the Royal Navy used the Lessons of the 1982 Falklands War to go Stanflex?
 - [x] src/transcripts/txt/2026-04-03_T18-30-06_admiral-arleigh-burke-the-convenor-of-the-modern-us-navy_1uP3YPNzxg0.txt | 1uP3YPNzxg0 | 2026-04-03T18:30:06Z | rows=1487 | durationSeconds=3598 | Admiral Arleigh Burke: The Convenor of the Modern US Navy...
 - [x] src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt | NtXGTWoRZTo | 2026-04-02T18:30:06Z | rows=2133 | durationSeconds=4490 | Why do Modern Warships just keep getting bigger?
 - [x] src/transcripts/txt/2026-03-31_T18-30-06_why-the-royal-navy-s-type-45s-daring-class-destroyers-are-what-they-are-and-what-their-future-is_maxYqMfZqdg.txt | maxYqMfZqdg | 2026-03-31T18:30:06Z | rows=2873 | durationSeconds=6249 | Why the Royal Navy's Type 45s Daring Class Destroyers are what they are & what their future is?
@@ -527,3 +527,5 @@ Total files split across schedules: 2049
 - [ ] src/transcripts/txt/2024-07-22_T18-00-20_check-campaign-26-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_meFZB1q6zqs.txt | meFZB1q6zqs | 2024-07-22T18:00:20Z | rows=1191 | durationSeconds=7195 | Check Campaign 26: UAD has updated & to Learn it's new ways I started another British Campaign
 - [ ] src/transcripts/txt/2024-07-18_T18-30-07_how-would-a-naval-historian-change-the-goa-uld-fleet-to-be-supreme-patreon-premier-7_4G0xz8STTfA.txt | 4G0xz8STTfA | 2024-07-18T18:30:07Z | rows=1808 | durationSeconds=4071 | How would a Naval Historian Change the Goa'uld Fleet to be supreme? Patreon Premier 7
 - [ ] src/transcripts/txt/2024-07-15_T18-00-12_check-campaign-25-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_Au1ol1a2Hpw.txt | Au1ol1a2Hpw | 2024-07-15T18:00:12Z | rows=1976 | durationSeconds=8621 | Check Campaign 25: UAD has updated & to Learn it's new ways I started another British Campaign
+- [x] src/transcripts/txt/2024-07-15_T10-48-44_bruships-158-home-for-naval-history-questions-and-trialing-the-new-question-bot-so-cross-fingers_aP5bK3kWh4E.txt | aP5bK3kWh4E | 2024-07-15T10:48:44Z | rows=5537 | durationSeconds=13608 | Bruships 158: Home for Naval History Questions & Trialing the new Question Bot... so cross fingers!
+- [x] src/transcripts/txt/2024-07-13_T18-00-35_what-is-an-escort-carrier-to-be-for-bogue-and-ruler-classes-why-building-woolworths-made-sense_sFexJTXR6oA.txt | sFexJTXR6oA | 2024-07-13T18:00:35Z | rows=1997 | durationSeconds=5053 | What is an Escort Carrier to be for? Bogue & Ruler Classes - Why building Woolworths made sense!

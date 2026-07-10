@@ -2,7 +2,7 @@ import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { dirname, isAbsolute, join } from "node:path";
 
-import { segmentKinds } from "../index.js";
+import { segmentKinds, type SegmentKind } from "../index.js";
 import { writeTextAtomically } from "../pipeline/atomic-write.js";
 import {
   loadCuratedArchiveSeed,
@@ -13,14 +13,47 @@ import {
 export const defaultSiteContentAuditManifest = "src/transcripts/manifest.json";
 export const defaultSiteContentAuditSegmentsInput = "src/derived/video-segments";
 export const defaultSiteContentProcessingLog = "src/derived/site-content-processing.log";
+export const defaultSiteContentProcessingConfig = "src/derived/site-content-processing.config.json";
 export const defaultSiteContentAuditOutput = "reports/site-content-backlog.md";
 
 export interface AuditSiteContentOptions {
   manifestPath: string;
   segmentsInput: string;
   processingLog: string;
+  processingConfig?: string;
   output?: string;
   limit: number;
+}
+
+export interface SiteContentProcessingConfig {
+  schemaVersion: 1;
+  firstPass: {
+    defaultAction: string;
+    defaultNeedsFurtherProcessing: boolean;
+    minimumEvidenceWindows: number;
+    preferredSegmentKinds: SegmentKind[];
+    guidance: string;
+  };
+  videoLevelTopics: {
+    mode: "curated-summary-subset";
+    requireAllSegmentTopics: false;
+  };
+  followUpStages: Array<{
+    slug: string;
+    title: string;
+    description: string;
+  }>;
+  videoTypeRules: Array<{
+    matchTitle: string;
+    defaultKind: SegmentKind;
+    defaultTopics: string[];
+    followUpStage: string;
+  }>;
+  topicGroups: Array<{
+    slug: string;
+    title: string;
+    topics: string[];
+  }>;
 }
 
 export interface SiteContentAudit {
@@ -76,14 +109,18 @@ export interface TranscriptManifestRecord {
 }
 
 export async function auditSiteContent(options: AuditSiteContentOptions): Promise<SiteContentAudit> {
-  const [manifest, seed] = await Promise.all([
+  const processingConfigPath = options.processingConfig ?? defaultSiteContentProcessingConfig;
+  const [manifest, seed, processingConfig] = await Promise.all([
     readJson<TranscriptManifest>(options.manifestPath),
     loadCuratedArchiveSeed(options.segmentsInput),
+    readJson<unknown>(processingConfigPath),
   ]);
   const processingLogText = await readOptionalText(options.processingLog);
   const audit = buildSiteContentAudit({
     manifest,
     seed,
+    processingConfig,
+    processingConfigPath,
     processingLogText,
     processingLogPath: options.processingLog,
     rootDir: process.cwd(),
@@ -102,6 +139,8 @@ export async function auditSiteContent(options: AuditSiteContentOptions): Promis
 export function buildSiteContentAudit(input: {
   manifest: TranscriptManifest;
   seed: CuratedArchiveSeed;
+  processingConfig?: unknown;
+  processingConfigPath?: string;
   processingLogText?: string;
   processingLogPath?: string;
   rootDir: string;
@@ -113,6 +152,15 @@ export function buildSiteContentAudit(input: {
   const manifestByVideoId = new Map<string, TranscriptManifestRecord>();
   const segmentVideoIds = new Set<string>();
   const allowedKinds = new Set<string>(segmentKinds);
+  const processingConfig = input.processingConfig === undefined
+    ? undefined
+    : validateProcessingConfig(
+      input.processingConfig,
+      input.processingConfigPath ?? defaultSiteContentProcessingConfig,
+      issues,
+      allowedKinds,
+    );
+  const minimumEvidenceWindows = processingConfig?.firstPass.minimumEvidenceWindows ?? 1;
   const processingLog = validateProcessingLog(input, issues);
 
   for (const record of input.manifest.transcripts) {
@@ -130,7 +178,7 @@ export function buildSiteContentAudit(input: {
 
   for (const segment of input.seed.segments) {
     segmentVideoIds.add(segment.videoId);
-    validateSegment(segment, manifestByVideoId.get(segment.videoId), input, issues, allowedKinds);
+    validateSegment(segment, manifestByVideoId.get(segment.videoId), input, issues, allowedKinds, minimumEvidenceWindows);
   }
 
   const uncuratedTranscriptRecords = input.manifest.transcripts
@@ -232,6 +280,7 @@ function validateSegment(
   },
   issues: SiteContentAuditIssue[],
   allowedKinds: ReadonlySet<string>,
+  minimumEvidenceWindows: number,
 ): void {
   if (!allowedKinds.has(segment.kind)) {
     issues.push({
@@ -286,7 +335,7 @@ function validateSegment(
   }
 
   validateSourcePath(segment, transcript, input, issues);
-  validateEvidence(segment, transcript, issues);
+  validateEvidence(segment, transcript, issues, minimumEvidenceWindows);
   validateQuestionFields(segment, issues);
 }
 
@@ -372,15 +421,20 @@ function validateEvidence(
   segment: CuratedSegmentSeed,
   transcript: TranscriptManifestRecord | undefined,
   issues: SiteContentAuditIssue[],
+  minimumEvidenceWindows: number,
 ): void {
-  if (segment.evidence === undefined || segment.evidence.length === 0) {
+  const evidenceWindowCount = segment.evidence?.length ?? 0;
+  if (evidenceWindowCount < minimumEvidenceWindows) {
     issues.push({
       severity: "error",
-      code: "missing-evidence-window",
-      message: "Curated segment must include at least one transcript evidence window.",
+      code: evidenceWindowCount === 0 ? "missing-evidence-window" : "insufficient-evidence-windows",
+      message: `Curated segment must include at least ${minimumEvidenceWindows} transcript evidence ${minimumEvidenceWindows === 1 ? "window" : "windows"}.`,
       videoId: segment.videoId,
       segmentId: segment.id,
     });
+  }
+
+  if (segment.evidence === undefined || segment.evidence.length === 0) {
     return;
   }
 
@@ -446,6 +500,215 @@ function validateQuestionFields(segment: CuratedSegmentSeed, issues: SiteContent
       segmentId: segment.id,
     });
   }
+}
+
+function validateProcessingConfig(
+  value: unknown,
+  path: string,
+  issues: SiteContentAuditIssue[],
+  allowedKinds: ReadonlySet<string>,
+): SiteContentProcessingConfig | undefined {
+  const issueCountBeforeValidation = issues.length;
+  const report = (message: string): void => {
+    issues.push({
+      severity: "error",
+      code: "processing-config-invalid",
+      message,
+      path,
+    });
+  };
+
+  if (!isRecord(value)) {
+    report("Site content processing config must be a JSON object.");
+    return undefined;
+  }
+
+  if (value.schemaVersion !== 1) {
+    report("Site content processing config schemaVersion must be 1.");
+  }
+
+  const firstPass = value.firstPass;
+  if (!isRecord(firstPass)) {
+    report("Site content processing config must include a firstPass object.");
+  } else {
+    validateNonEmptyString(firstPass.defaultAction, "firstPass.defaultAction", report);
+    if (typeof firstPass.defaultNeedsFurtherProcessing !== "boolean") {
+      report("firstPass.defaultNeedsFurtherProcessing must be a boolean.");
+    }
+    if (!Number.isInteger(firstPass.minimumEvidenceWindows) || Number(firstPass.minimumEvidenceWindows) < 1) {
+      report("firstPass.minimumEvidenceWindows must be a positive integer.");
+    }
+    validateSegmentKindArray(firstPass.preferredSegmentKinds, "firstPass.preferredSegmentKinds", report, allowedKinds, true);
+    validateNonEmptyString(firstPass.guidance, "firstPass.guidance", report);
+  }
+
+  const videoLevelTopics = value.videoLevelTopics;
+  if (!isRecord(videoLevelTopics)) {
+    report("Site content processing config must include a videoLevelTopics object.");
+  } else {
+    if (videoLevelTopics.mode !== "curated-summary-subset") {
+      report('videoLevelTopics.mode must be "curated-summary-subset".');
+    }
+    if (videoLevelTopics.requireAllSegmentTopics !== false) {
+      report("videoLevelTopics.requireAllSegmentTopics must be false for curated summary topics.");
+    }
+  }
+
+  const followUpStageSlugs = validateFollowUpStages(value.followUpStages, report);
+  validateVideoTypeRules(value.videoTypeRules, report, allowedKinds, followUpStageSlugs);
+  validateTopicGroups(value.topicGroups, report);
+
+  if (issues.length !== issueCountBeforeValidation) {
+    return undefined;
+  }
+  return value as unknown as SiteContentProcessingConfig;
+}
+
+function validateFollowUpStages(value: unknown, report: (message: string) => void): Set<string> {
+  const slugs = new Set<string>();
+  if (!Array.isArray(value)) {
+    report("followUpStages must be an array.");
+    return slugs;
+  }
+
+  for (const [index, stage] of value.entries()) {
+    const prefix = `followUpStages[${index}]`;
+    if (!isRecord(stage)) {
+      report(`${prefix} must be an object.`);
+      continue;
+    }
+    const slug = validateSlug(stage.slug, `${prefix}.slug`, report);
+    if (slug !== undefined) {
+      if (slugs.has(slug)) {
+        report(`${prefix}.slug duplicates follow-up stage ${slug}.`);
+      }
+      slugs.add(slug);
+    }
+    validateNonEmptyString(stage.title, `${prefix}.title`, report);
+    validateNonEmptyString(stage.description, `${prefix}.description`, report);
+  }
+  return slugs;
+}
+
+function validateVideoTypeRules(
+  value: unknown,
+  report: (message: string) => void,
+  allowedKinds: ReadonlySet<string>,
+  followUpStageSlugs: ReadonlySet<string>,
+): void {
+  if (!Array.isArray(value)) {
+    report("videoTypeRules must be an array.");
+    return;
+  }
+
+  const normalizedTitleMatches = new Set<string>();
+  for (const [index, rule] of value.entries()) {
+    const prefix = `videoTypeRules[${index}]`;
+    if (!isRecord(rule)) {
+      report(`${prefix} must be an object.`);
+      continue;
+    }
+
+    const matchTitle = validateNonEmptyString(rule.matchTitle, `${prefix}.matchTitle`, report);
+    if (matchTitle !== undefined) {
+      const normalizedMatch = matchTitle.toLocaleLowerCase("en-US");
+      if (normalizedTitleMatches.has(normalizedMatch)) {
+        report(`${prefix}.matchTitle duplicates another rule when matched case-insensitively.`);
+      }
+      normalizedTitleMatches.add(normalizedMatch);
+    }
+
+    if (typeof rule.defaultKind !== "string" || !allowedKinds.has(rule.defaultKind)) {
+      report(`${prefix}.defaultKind must be a supported segment kind.`);
+    }
+    validateSlugArray(rule.defaultTopics, `${prefix}.defaultTopics`, report);
+    const followUpStage = validateSlug(rule.followUpStage, `${prefix}.followUpStage`, report);
+    if (followUpStage !== undefined && !followUpStageSlugs.has(followUpStage)) {
+      report(`${prefix}.followUpStage must reference a configured follow-up stage.`);
+    }
+  }
+}
+
+function validateTopicGroups(value: unknown, report: (message: string) => void): void {
+  if (!Array.isArray(value)) {
+    report("topicGroups must be an array.");
+    return;
+  }
+
+  const slugs = new Set<string>();
+  for (const [index, group] of value.entries()) {
+    const prefix = `topicGroups[${index}]`;
+    if (!isRecord(group)) {
+      report(`${prefix} must be an object.`);
+      continue;
+    }
+    const slug = validateSlug(group.slug, `${prefix}.slug`, report);
+    if (slug !== undefined) {
+      if (slugs.has(slug)) {
+        report(`${prefix}.slug duplicates topic group ${slug}.`);
+      }
+      slugs.add(slug);
+    }
+    validateNonEmptyString(group.title, `${prefix}.title`, report);
+    validateSlugArray(group.topics, `${prefix}.topics`, report);
+  }
+}
+
+function validateSegmentKindArray(
+  value: unknown,
+  field: string,
+  report: (message: string) => void,
+  allowedKinds: ReadonlySet<string>,
+  requireNonEmpty: boolean,
+): void {
+  if (!Array.isArray(value) || (requireNonEmpty && value.length === 0)) {
+    report(`${field} must be ${requireNonEmpty ? "a non-empty" : "an"} array.`);
+    return;
+  }
+  if (value.some((item) => typeof item !== "string" || !allowedKinds.has(item))) {
+    report(`${field} must contain only supported segment kinds.`);
+  }
+}
+
+function validateSlugArray(value: unknown, field: string, report: (message: string) => void): void {
+  if (!Array.isArray(value)) {
+    report(`${field} must be an array.`);
+    return;
+  }
+  const seen = new Set<string>();
+  for (const [index, item] of value.entries()) {
+    const slug = validateSlug(item, `${field}[${index}]`, report);
+    if (slug !== undefined) {
+      if (seen.has(slug)) {
+        report(`${field} must not contain duplicate slug ${slug}.`);
+      }
+      seen.add(slug);
+    }
+  }
+}
+
+function validateSlug(value: unknown, field: string, report: (message: string) => void): string | undefined {
+  if (typeof value !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/u.test(value)) {
+    report(`${field} must be a lowercase hyphenated slug.`);
+    return undefined;
+  }
+  return value;
+}
+
+function validateNonEmptyString(
+  value: unknown,
+  field: string,
+  report: (message: string) => void,
+): string | undefined {
+  if (typeof value !== "string" || value.trim().length === 0) {
+    report(`${field} must be a non-empty string.`);
+    return undefined;
+  }
+  return value;
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
 interface ProcessingLogAudit {

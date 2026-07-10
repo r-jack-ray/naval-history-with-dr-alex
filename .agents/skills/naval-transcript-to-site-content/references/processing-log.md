@@ -27,7 +27,7 @@ Field rules:
 
 If one transcript file is revisited later, add another line for the later processing pass. Do not edit old log lines unless correcting a factual typo from the same pass.
 
-The latest valid line for a video controls whether audit backlog treats it as complete. Use `needsFurtherProcessing=no` only when the transcript is fully curated or intentionally closed without site content; leave partial first-pass curation as `yes`.
+The latest valid line for a video controls whether audit backlog treats it as complete. Use `needsFurtherProcessing=no` only when the full transcript was inspected and fully curated, or when it was intentionally closed without site content; leave partial first-pass curation as `yes`. The flag is bookkeeping for separately managed follow-up passes rather than an automatic second-pass queue.
 
 ## Shared Writer Lease
 
@@ -37,4 +37,4 @@ For a scheduled transcript run, acquire the repository writer lease before claim
 npm.cmd run append:site-content-processing-log -- --token <lease-token> --processed-at <iso-time> --source-path <transcript-path> --video-id <video-id> --action <action> --needs-further-processing <yes-or-no> --determination <reason>
 ```
 
-The command validates all six fields and atomically publishes the complete log, so it does not interleave or leave a partial final record. Do not use `Add-Content` or hand-edit the shared log during a scheduled run. Pass the same token to the validation hook; it releases the lease on success or failure. Clear `CONTENT_PIPELINE_LOCK_TOKEN` in the calling shell after validation returns. If a run ends before validation, release the lease explicitly and report the failure.
+The command validates all six fields and atomically publishes the complete log, so it does not interleave or leave a partial final record. Do not use `Add-Content` or hand-edit the shared log during a scheduled run. A scheduled worker first validates with `-RetainCallerLease`, then appends the log, completes its `[~]` row, and releases the lease. On a handled failure it resets `[~]` to `[ ]` before release; an interrupted `[~]` row remains available for the next invocation to resume.

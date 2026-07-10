@@ -1,7 +1,11 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { buildSiteContentAudit, renderSiteContentAuditReport } from "./site-content-audit.js";
+import {
+  buildSiteContentAudit,
+  renderSiteContentAuditReport,
+  type SiteContentProcessingConfig,
+} from "./site-content-audit.js";
 
 test("audits curated transcript-backed segments and reports uncurated transcripts", () => {
   const audit = buildSiteContentAudit({
@@ -41,6 +45,48 @@ test("flags missing transcript evidence and source paths", () => {
     ["missing-source-path", "missing-evidence-window"],
   );
   assert.equal(audit.stats.errorCount, 2);
+});
+
+test("enforces the configured minimum number of transcript evidence windows", () => {
+  const processingConfig = sampleProcessingConfig();
+  processingConfig.firstPass.minimumEvidenceWindows = 2;
+
+  const audit = buildSiteContentAudit({
+    manifest: sampleManifest(),
+    seed: sampleSeed(),
+    processingConfig,
+    processingConfigPath: "src/derived/site-content-processing.config.json",
+    rootDir: "C:/repo",
+    transcriptRoot: "src/transcripts",
+    limit: 10,
+    fileExists: () => true,
+  });
+
+  assert.equal(audit.issues.find((issue) => issue.code === "insufficient-evidence-windows")?.severity, "error");
+  assert.match(
+    audit.issues.find((issue) => issue.code === "insufficient-evidence-windows")?.message ?? "",
+    /at least 2 transcript evidence windows/u,
+  );
+});
+
+test("validates the processing config video-level topic policy", () => {
+  const { videoLevelTopics: _videoLevelTopics, ...processingConfig } = sampleProcessingConfig();
+
+  const audit = buildSiteContentAudit({
+    manifest: sampleManifest(),
+    seed: sampleSeed(),
+    processingConfig,
+    processingConfigPath: "src/derived/site-content-processing.config.json",
+    rootDir: "C:/repo",
+    transcriptRoot: "src/transcripts",
+    limit: 10,
+    fileExists: () => true,
+  });
+
+  const configIssue = audit.issues.find((issue) => issue.code === "processing-config-invalid");
+  assert.equal(configIssue?.severity, "error");
+  assert.match(configIssue?.message ?? "", /videoLevelTopics object/u);
+  assert.equal(configIssue?.path, "src/derived/site-content-processing.config.json");
 });
 
 test("flags segment timestamps outside the stored transcript range", () => {
@@ -210,6 +256,45 @@ function sampleSeed(): Parameters<typeof buildSiteContentAudit>[0]["seed"] {
             note: "Transcript evidence.",
           },
         ],
+      },
+    ],
+  };
+}
+
+function sampleProcessingConfig(): SiteContentProcessingConfig {
+  return {
+    schemaVersion: 1,
+    firstPass: {
+      defaultAction: "curated granular first-pass segments",
+      defaultNeedsFurtherProcessing: true,
+      minimumEvidenceWindows: 1,
+      preferredSegmentKinds: ["notable_point", "chapter", "qa", "transcript_excerpt"],
+      guidance: "Add useful transcript-backed watch points.",
+    },
+    videoLevelTopics: {
+      mode: "curated-summary-subset",
+      requireAllSegmentTopics: false,
+    },
+    followUpStages: [
+      {
+        slug: "qa-extraction",
+        title: "Q&A Extraction",
+        description: "Extract transcript-visible questions and answers.",
+      },
+    ],
+    videoTypeRules: [
+      {
+        matchTitle: "Bruships",
+        defaultKind: "chapter",
+        defaultTopics: ["live-q-and-a"],
+        followUpStage: "qa-extraction",
+      },
+    ],
+    topicGroups: [
+      {
+        slug: "formats",
+        title: "Formats",
+        topics: ["live-q-and-a"],
       },
     ],
   };

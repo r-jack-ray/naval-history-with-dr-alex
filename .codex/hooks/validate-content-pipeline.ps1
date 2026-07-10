@@ -1,6 +1,7 @@
 [CmdletBinding()]
 param(
   [switch]$SkipRepoCheck,
+  [switch]$RetainCallerLease,
   [int]$BacklogLimit = 25,
   [string]$LockToken,
   [ValidateRange(0, 300)]
@@ -39,7 +40,8 @@ $projectRoot = Resolve-Path "$PSScriptRoot\..\.."
 $lockTool = Join-Path $projectRoot ".codex\hooks\site-content-pipeline-lock.mjs"
 $previousLockToken = $env:CONTENT_PIPELINE_LOCK_TOKEN
 $activeLockToken = $LockToken
-$releaseLock = -not [string]::IsNullOrWhiteSpace($activeLockToken)
+$callerProvidedLock = -not [string]::IsNullOrWhiteSpace($activeLockToken)
+$releaseLock = $callerProvidedLock
 
 Push-Location $projectRoot
 try {
@@ -67,14 +69,15 @@ try {
   }
 }
 finally {
-  if ($releaseLock -and -not [string]::IsNullOrWhiteSpace($activeLockToken)) {
+  $retainActiveLock = $RetainCallerLease -and $callerProvidedLock
+  if ($releaseLock -and -not $retainActiveLock -and -not [string]::IsNullOrWhiteSpace($activeLockToken)) {
     & node $lockTool "release" "--token" $activeLockToken | Out-Null
     if ($LASTEXITCODE -ne 0) {
       Write-Warning "Unable to release content-pipeline writer lease $activeLockToken. Inspect it with node .codex/hooks/site-content-pipeline-lock.mjs status."
     }
   }
 
-  if ($null -eq $previousLockToken -or $previousLockToken -eq $activeLockToken) {
+  if ($null -eq $previousLockToken) {
     Remove-Item Env:CONTENT_PIPELINE_LOCK_TOKEN -ErrorAction SilentlyContinue
   }
   else {

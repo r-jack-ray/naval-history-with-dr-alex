@@ -3,7 +3,7 @@
   "firstPass": {
     "defaultAction": "curated granular first-pass segments",
     "defaultNeedsFurtherProcessing": true,
-    "minimumEvidenceWindows": 2,
+    "minimumEvidenceWindows": 1,
     "preferredSegmentKinds": [
       "notable_point",
       "chapter",
@@ -11,6 +11,10 @@
       "transcript_excerpt"
     ],
     "guidance": "First pass should add multiple focused, transcript-backed watch points whenever the transcript has distinct subjects, arguments, Q&A exchanges, or topic shifts. Prefer 3-8 substantive segments over one broad overview for structured episodes and streams. Mark needsFurtherProcessing=yes unless the transcript was fully chaptered, Q&A was extracted, or intentionally closed without site content."
+  },
+  "videoLevelTopics": {
+    "mode": "curated-summary-subset",
+    "requireAllSegmentTopics": false
   },
   "followUpStages": [
     {

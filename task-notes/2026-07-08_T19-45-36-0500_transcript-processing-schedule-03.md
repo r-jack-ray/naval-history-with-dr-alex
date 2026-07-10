@@ -9,8 +9,8 @@ Generated from every stored TXT transcript in the manifest. All rows are intenti
 Criteria: stored TXT transcript exists. Existing video segment shards, generated archive entries, and prior processing-log rows do not remove a file from this schedule.
 
 Schedule: 3 of 4
-Files in this schedule: 512
-Total files split across schedules: 2049
+Files in this schedule: 514
+Total files split across schedules: 2057
 
 ## Files
 
@@ -114,6 +114,7 @@ Total files split across schedules: 2049
 - [ ] src/transcripts/txt/2022-11-18_T19-00-07_diadem-class-first-class-protected-cruisers-19th-century-cruisers-series-2-part-10_LjHOSgZ5mZs.txt | LjHOSgZ5mZs | 2022-11-18T19:00:07Z | rows=1766 | durationSeconds=4854 | Diadem Class: First Class Protected Cruisers (19th Century Cruisers Series 2 Part 10)
 - [ ] src/transcripts/txt/2022-11-17_T19-00-14_chateaurenault-1898-the-french-columbia-class-19th-century-cruisers-series-2-part-9_PkzcPsDSrbw.txt | PkzcPsDSrbw | 2022-11-17T19:00:14Z | rows=989 | durationSeconds=2756 | Châteaurenault (1898): The French Columbia Class... (19th Century Cruisers Series 2 Part 9)
 - [ ] src/transcripts/txt/2022-11-16_T19-00-00_descartes-1894-class-i-cruiser-therefore-i-am-19th-century-cruisers-series-2-part-8_-VGWXOfIYlA.txt | -VGWXOfIYlA | 2022-11-16T19:00:00Z | rows=1276 | durationSeconds=3543 | Descartes(1894) Class: I Cruiser Therefore I Am? (19th Century Cruisers Series 2 Part 8)
+- [ ] src/transcripts/txt/2022-11-15_T19-00-03_sverdlov-class-the-last-of-stalin-s-soviet-gun-cruisers_5G14HxOrzGg.txt | 5G14HxOrzGg | 2022-11-15T19:00:03Z | rows=2019 | durationSeconds=5979 | Sverdlov Class: The Last of Stalin's Soviet Gun Cruisers
 - [ ] src/transcripts/txt/2022-11-14_T19-00-19_apollo-1890-class-quantity-quality-19th-century-cruisers-series-2-part-7_OE5dB3px9vI.txt | OE5dB3px9vI | 2022-11-14T19:00:19Z | rows=1961 | durationSeconds=5429 | Apollo(1890?) Class: Quantity = Quality (19th Century Cruisers Series 2 Part 7)
 - [ ] src/transcripts/txt/2022-11-14_T01-35-14_bruships-91-new-books-and-cruiser-books_YyvTu65AZnE.txt | YyvTu65AZnE | 2022-11-14T01:35:14Z | rows=5302 | durationSeconds=17107 | Bruships 91: New Books & Cruiser Books
 - [ ] src/transcripts/txt/2022-11-12_T19-00-12_washington-cheaties-an-inevitability-of-winning-a-treaty_VRTByvYWZ1Y.txt | VRTByvYWZ1Y | 2022-11-12T19:00:12Z | rows=1614 | durationSeconds=4205 | Washington "Cheaties'': an Inevitability of Winning a Treaty
@@ -368,6 +369,7 @@ Total files split across schedules: 2049
 - [ ] src/transcripts/txt/2022-02-06_T22-06-32_bruships-69-the-decider_9gUEFTF-6LI.txt | 9gUEFTF-6LI | 2022-02-06T22:06:32Z | rows=5010 | durationSeconds=13302 | Bruships 69: The Decider
 - [ ] src/transcripts/txt/2022-02-05_T11-00-16_the-forgotten-trafalgar-the-1509-battle-of-diu-long-patrol_iBth-OMu6sk.txt | iBth-OMu6sk | 2022-02-05T11:00:16Z | rows=2087 | durationSeconds=5583 | The Forgotten Trafalgar: The 1509 Battle of Diu (Long Patrol)
 - [ ] src/transcripts/txt/2022-02-04_T18-00-08_a-historical-possibility-triple-turret-potentiality-uad-hms-queen-mary-3-long-patrol_N8ogz96ogTk.txt | N8ogz96ogTk | 2022-02-04T18:00:08Z | rows=742 | durationSeconds=1800 | A Historical Possibility: Triple Turret Potentiality UAD - HMS Queen Mary 3 (Long Patrol)
+- [ ] src/transcripts/txt/2022-02-03_T21-53-26_the-forgotten-trafalgar-the-1509-battle-of-diu_P-Pj-Vkc04g.txt | P-Pj-Vkc04g | 2022-02-03T21:53:26Z | rows=4174 | durationSeconds=11347 | The Forgotten Trafalgar: the 1509 Battle of Diu
 - [ ] src/transcripts/txt/2022-02-01_T11-00-01_county-cruisers-p3-the-london-class-long-patrol_al7hCeGh9eY.txt | al7hCeGh9eY | 2022-02-01T11:00:01Z | rows=1382 | durationSeconds=3602 | County Cruisers P3: The London Class (Long Patrol)
 - [ ] src/transcripts/txt/2022-01-31_T11-00-31_british-industry-the-more-than-just-ships-p1-4-building-long-patrol_hyB26-mBZDM.txt | hyB26-mBZDM | 2022-01-31T11:00:31Z | rows=1392 | durationSeconds=3603 | British Industry: The More than Just Ships P1/4 - Building (Long Patrol)
 - [ ] src/transcripts/txt/2022-01-30_T21-54-40_bruships-68-random-naval-history-books-and-questions_vR5zyE5_-c8.txt | vR5zyE5_-c8 | 2022-01-30T21:54:40Z | rows=4807 | durationSeconds=13212 | Bruships 68: Random Naval History Books & Questions
@@ -387,6 +389,7 @@ Total files split across schedules: 2049
 - [ ] src/transcripts/txt/2022-01-09_T11-00-21_question-time-answering-knight6831-s-questions-long-patrol_sJZhGz-0TsE.txt | sJZhGz-0TsE | 2022-01-09T11:00:21Z | rows=945 | durationSeconds=2036 | Question Time: Answering Knight6831's Questions (Long Patrol)
 - [ ] src/transcripts/txt/2022-01-08_T11-00-02_quirky-classes-and-what-they-tell-us-about-their-navies-long-patrol_2nQ9kwVfWDg.txt | 2nQ9kwVfWDg | 2022-01-08T11:00:02Z | rows=1093 | durationSeconds=2524 | Quirky Classes and What they tell us about their navies… (Long Patrol)
 - [ ] src/transcripts/txt/2022-01-06_T21-52-58_quirky-classes-and-what-they-tell-us-about-their-navies-live_eO5z0d0peAo.txt | eO5z0d0peAo | 2022-01-06T21:52:58Z | rows=3802 | durationSeconds=11372 | Quirky Classes and What they tell us about their navies… (Live)
+- [ ] src/transcripts/txt/2022-01-05_T19-15-00_county-cruisers-p2-the-kent-class-continued_O0vjty1ueho.txt | O0vjty1ueho | 2022-01-05T19:15:00Z | rows=1454 | durationSeconds=3873 | County Cruisers P2: The Kent Class Continued
 - [ ] src/transcripts/txt/2022-01-05_T11-00-30_county-cruisers-p1-the-kent-class-long-patrol_beBXubEZu_4.txt | beBXubEZu_4 | 2022-01-05T11:00:30Z | rows=1424 | durationSeconds=3634 | County Cruisers P1: The Kent Class (Long Patrol)
 - [ ] src/transcripts/txt/2022-01-02_T22-33-01_bruships-65-naval-history-books-and-questions-answered_EhccXYEqnIw.txt | EhccXYEqnIw | 2022-01-02T22:33:01Z | rows=5823 | durationSeconds=17284 | Bruships 65: Naval History Books & Questions Answered
 - [ ] src/transcripts/txt/2022-01-01_T11-00-07_the-1905-1906-and-the-1911-morocco-crises-long-patrol_Fvf8SpjfN9E.txt | Fvf8SpjfN9E | 2022-01-01T11:00:07Z | rows=1680 | durationSeconds=4134 | The 1905-1906 and the 1911 Morocco Crises (Long Patrol)
@@ -525,4 +528,3 @@ Total files split across schedules: 2049
 - [ ] src/transcripts/txt/2021-08-24_T19-15-00_naval-fire-support-of-the-wwi-western-front-long-patrol-part-7-m15-class_-HtXaBFdwHU.txt | -HtXaBFdwHU | 2021-08-24T19:15:00Z | rows=1329 | durationSeconds=3304 | Naval Fire Support of the WWI Western Front: Long Patrol Part 7, M15 Class
 - [ ] src/transcripts/txt/2021-08-23_T19-15-01_battle-of-the-atlantic-escort-procurement-comment-response_ocgoxjRapvs.txt | ocgoxjRapvs | 2021-08-23T19:15:01Z | rows=1916 | durationSeconds=4084 | Battle of the Atlantic: Escort Procurement - Comment Response
 - [ ] src/transcripts/txt/2021-08-23_T10-00-08_battle-of-the-atlantic-original-comment-response_LSpbKORrVQo.txt | LSpbKORrVQo | 2021-08-23T10:00:08Z | rows=1153 | durationSeconds=2523 | Battle of the Atlantic (Original): Comment Response
-- [ ] src/transcripts/txt/2021-08-22_T22-28-48_bruships-55-new-books_1soFZnAvSe8.txt | 1soFZnAvSe8 | 2021-08-22T22:28:48Z | rows=6828 | durationSeconds=18451 | Bruships 55: New Books

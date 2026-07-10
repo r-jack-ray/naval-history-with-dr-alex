@@ -4,6 +4,7 @@ import {
   defaultSiteContentAuditManifest,
   defaultSiteContentAuditOutput,
   defaultSiteContentAuditSegmentsInput,
+  defaultSiteContentProcessingConfig,
   defaultSiteContentProcessingLog,
   type AuditSiteContentOptions,
 } from "../content/site-content-audit.js";
@@ -48,6 +49,7 @@ function parseArgs(args: string[]): CliOptions {
     manifestPath: defaultSiteContentAuditManifest,
     segmentsInput: defaultSiteContentAuditSegmentsInput,
     processingLog: defaultSiteContentProcessingLog,
+    processingConfig: defaultSiteContentProcessingConfig,
     output: defaultSiteContentAuditOutput,
     limit: 25,
     failOnUncurated: false,
@@ -66,6 +68,9 @@ function parseArgs(args: string[]): CliOptions {
         break;
       case "--processing-log":
         options.processingLog = readValue(args, ++index, arg);
+        break;
+      case "--processing-config":
+        options.processingConfig = readValue(args, ++index, arg);
         break;
       case "--output":
         options.output = readValue(args, ++index, arg);
@@ -117,6 +122,8 @@ Options:
   --manifest <path>        Transcript manifest. Defaults to src/transcripts/manifest.json.
   --segments-input <path>  Per-video curated content directory. Defaults to src/derived/video-segments.
   --processing-log <path>  One-line-per-file processing log. Defaults to src/derived/site-content-processing.log.
+  --processing-config <path>
+                           Processing rules config. Defaults to src/derived/site-content-processing.config.json.
   --output <path>          Markdown report path. Defaults to reports/site-content-backlog.md.
   --no-output              Do not write a report.
   --limit <count>          Number of uncurated transcripts to list. Defaults to 25.

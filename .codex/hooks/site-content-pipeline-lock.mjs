@@ -7,6 +7,7 @@ import { basename, dirname, join, resolve } from "node:path";
 
 const defaultLockPath = ".tmp/site-content-pipeline.lock";
 const defaultProcessingLogPath = "src/derived/site-content-processing.log";
+const defaultVideoSegmentsDirectory = "src/derived/video-segments";
 const defaultStaleAfterMs = 90 * 60 * 1000;
 const defaultWaitMs = 30 * 1000;
 const retryIntervalMs = 250;
@@ -53,6 +54,21 @@ async function main() {
       console.log(JSON.stringify(result, null, 2));
       return;
     }
+    case "schedule-claim": {
+      const result = await claimScheduleRow(options);
+      console.log(JSON.stringify(result, null, 2));
+      return;
+    }
+    case "schedule-complete": {
+      const result = await transitionScheduleRow(options, "x");
+      console.log(JSON.stringify(result, null, 2));
+      return;
+    }
+    case "schedule-reset": {
+      const result = await transitionScheduleRow(options, " ");
+      console.log(JSON.stringify(result, null, 2));
+      return;
+    }
     default:
       throw new Error(`Unknown content-pipeline lock command: ${command}`);
   }
@@ -62,6 +78,8 @@ function parseOptions(args) {
   const options = {
     lockPath: defaultLockPath,
     processingLogPath: defaultProcessingLogPath,
+    videoSegmentsDirectory: defaultVideoSegmentsDirectory,
+    schedulePath: undefined,
     owner: defaultOwner(),
     purpose: "site-content-pipeline",
     staleAfterMs: defaultStaleAfterMs,
@@ -91,6 +109,12 @@ function parseOptions(args) {
         break;
       case "--processing-log":
         options.processingLogPath = readValue(args, ++index, arg);
+        break;
+      case "--video-segments-dir":
+        options.videoSegmentsDirectory = readValue(args, ++index, arg);
+        break;
+      case "--schedule-path":
+        options.schedulePath = readValue(args, ++index, arg);
         break;
       case "--owner":
         options.owner = readValue(args, ++index, arg);
@@ -216,9 +240,9 @@ async function inspectLease(options) {
 
   const lease = await readLease(lockPath);
   const referenceTime = lease === undefined
-    ? lockStats.mtimeMs
+    ? lockStats.mtimeMs + options.staleAfterMs
     : Date.parse(lease.expiresAt);
-  const stale = Number.isFinite(referenceTime) && referenceTime <= Date.now();
+  const stale = !Number.isFinite(referenceTime) || referenceTime <= Date.now();
 
   return {
     status: stale ? "stale" : lease === undefined ? "incomplete" : "active",
@@ -314,6 +338,7 @@ async function appendProcessingLog(options) {
   try {
     const existing = await readOptionalText(processingLogPath);
     validateExistingProcessingLog(existing, processingLogPath);
+    await assertOwnedLease(lockPath, activeToken);
     await writeTextAtomically(processingLogPath, `${existing}${fields.join("\t")}\n`);
     return {
       processingLogPath,
@@ -327,11 +352,222 @@ async function appendProcessingLog(options) {
   }
 }
 
+async function claimScheduleRow(options) {
+  const lockPath = resolve(options.lockPath);
+  const token = requiredToken(options);
+  const schedulePath = resolve(requiredValue(options.schedulePath, "--schedule-path"));
+  await assertOwnedLease(lockPath, token);
+
+  const schedule = await readFile(schedulePath, "utf8");
+  const rows = parseScheduleRows(schedule);
+  if (rows.length === 0) {
+    throw new Error(`No transcript schedule rows were found: ${schedulePath}`);
+  }
+
+  const inProgressRows = rows.filter((row) => row.state === "~");
+  if (inProgressRows.length > 1) {
+    throw new Error(`Schedule has multiple in-progress rows and was left unchanged: ${schedulePath}`);
+  }
+  if (inProgressRows.length === 1) {
+    return scheduleRowResult(schedulePath, inProgressRows[0], {
+      claimed: true,
+      resumed: true,
+      exhausted: false,
+    });
+  }
+
+  const nextRow = rows.find((row) => row.state === " ");
+  if (nextRow === undefined) {
+    return {
+      schedulePath,
+      claimed: false,
+      resumed: false,
+      exhausted: true,
+    };
+  }
+
+  const updated = replaceScheduleRowState(schedule, nextRow, "~");
+  await assertOwnedLease(lockPath, token);
+  await writeTextAtomically(schedulePath, updated);
+  return scheduleRowResult(schedulePath, { ...nextRow, state: "~" }, {
+    claimed: true,
+    resumed: false,
+    exhausted: false,
+  });
+}
+
+async function transitionScheduleRow(options, targetState) {
+  const lockPath = resolve(options.lockPath);
+  const token = requiredToken(options);
+  const schedulePath = resolve(requiredValue(options.schedulePath, "--schedule-path"));
+  const sourcePath = requiredValue(options.sourcePath, "--source-path");
+  await assertOwnedLease(lockPath, token);
+
+  const schedule = await readFile(schedulePath, "utf8");
+  const rows = parseScheduleRows(schedule);
+  const inProgressRows = rows.filter((row) => row.state === "~");
+  if (inProgressRows.length !== 1) {
+    throw new Error(`Schedule must have exactly one in-progress row and was left unchanged: ${schedulePath}`);
+  }
+
+  const row = inProgressRows[0];
+  if (row.sourcePath !== sourcePath) {
+    throw new Error(
+      `In-progress schedule row is ${JSON.stringify(row.sourcePath)}, not ${JSON.stringify(sourcePath)}; schedule was left unchanged.`,
+    );
+  }
+
+  if (targetState === "x") {
+    await assertScheduleCompletionArtifacts(schedulePath, schedule, row, options);
+  }
+
+  const updated = replaceScheduleRowState(schedule, row, targetState);
+  await assertOwnedLease(lockPath, token);
+  await writeTextAtomically(schedulePath, updated);
+  return scheduleRowResult(schedulePath, { ...row, state: targetState }, {
+    transitioned: true,
+    previousState: "~",
+  });
+}
+
+async function assertScheduleCompletionArtifacts(schedulePath, schedule, row, options) {
+  const scheduleTimestamp = readScheduleTimestamp(schedule, schedulePath);
+  const scheduleStats = await stat(schedulePath);
+  // Processing-log timestamps are commonly second-precision, so compare them
+  // to the claim mtime rounded down to the same precision.
+  const claimTimestamp = Math.floor(scheduleStats.mtimeMs / 1000) * 1000;
+  const freshnessBoundary = Math.max(scheduleTimestamp, claimTimestamp);
+
+  if (!/^[A-Za-z0-9_-]+$/u.test(row.videoId)) {
+    throw new Error(`Schedule row has an unsafe video ID: ${JSON.stringify(row.videoId)}`);
+  }
+  const shardPath = resolve(options.videoSegmentsDirectory, `video-${row.videoId}.json`);
+  await assertRegularFile(shardPath, `Video-segment shard required for schedule completion is missing`);
+
+  const processingLogPath = resolve(options.processingLogPath);
+  const processingLog = await readOptionalText(processingLogPath);
+  validateExistingProcessingLog(processingLog, processingLogPath);
+  const matchingEntries = processingLog
+    .split(/\r?\n/u)
+    .filter((line) => line !== "")
+    .map((line) => line.split("\t"))
+    .filter((fields) => fields[1] === row.sourcePath && fields[2] === row.videoId);
+  const freshEntry = matchingEntries.find((fields) => {
+    const processedAt = Date.parse(fields[0] ?? "");
+    return Number.isFinite(processedAt) && processedAt >= freshnessBoundary;
+  });
+  if (freshEntry === undefined) {
+    throw new Error(
+      `Schedule completion requires a processing-log row for ${JSON.stringify(row.sourcePath)} and ` +
+      `${JSON.stringify(row.videoId)} at or after ${new Date(freshnessBoundary).toISOString()}; schedule was left unchanged.`,
+    );
+  }
+}
+
+function readScheduleTimestamp(schedule, schedulePath) {
+  const matches = [...schedule.matchAll(/^Timestamp:[ \t]*(\S+)[ \t]*\r?$/gmu)];
+  if (matches.length !== 1) {
+    throw new Error(`Schedule must have exactly one Timestamp header: ${schedulePath}`);
+  }
+  const timestampText = matches[0]?.[1] ?? "";
+  const timestamp = Date.parse(timestampText);
+  if (!Number.isFinite(timestamp)) {
+    throw new Error(`Schedule Timestamp is invalid in ${schedulePath}: ${JSON.stringify(timestampText)}`);
+  }
+  return timestamp;
+}
+
+async function assertRegularFile(path, message) {
+  let fileStats;
+  try {
+    fileStats = await stat(path);
+  } catch (error) {
+    if (errorCode(error) === "ENOENT") {
+      throw new Error(`${message}: ${path}`);
+    }
+    throw error;
+  }
+  if (!fileStats.isFile()) {
+    throw new Error(`${message}: ${path}`);
+  }
+}
+
+function parseScheduleRows(schedule) {
+  const rows = [];
+  const pattern = /^(\s*-\s+\[)([ x~])(\]\s+)([^|\r\n]+?)(\s+\|[^\r\n]*)$/gmu;
+  for (const match of schedule.matchAll(pattern)) {
+    const prefix = match[1];
+    const state = match[2];
+    const sourcePath = match[4];
+    const metadata = match[5];
+    if (
+      match.index === undefined ||
+      prefix === undefined ||
+      state === undefined ||
+      sourcePath === undefined ||
+      metadata === undefined
+    ) {
+      continue;
+    }
+    const lineNumber = countLinesThrough(schedule, match.index);
+    const videoId = metadata.split("|")[1]?.trim();
+    if (videoId === undefined || videoId === "") {
+      throw new Error(`Schedule row ${lineNumber} does not have a video ID.`);
+    }
+    rows.push({
+      state,
+      stateIndex: match.index + prefix.length,
+      sourcePath: sourcePath.trim(),
+      videoId,
+      lineNumber,
+      row: match[0],
+    });
+  }
+  return rows;
+}
+
+function replaceScheduleRowState(schedule, row, targetState) {
+  if (schedule[row.stateIndex] !== row.state) {
+    throw new Error(`Schedule row state changed unexpectedly at line ${row.lineNumber}.`);
+  }
+  return `${schedule.slice(0, row.stateIndex)}${targetState}${schedule.slice(row.stateIndex + 1)}`;
+}
+
+function scheduleRowResult(schedulePath, row, fields) {
+  return {
+    schedulePath,
+    ...fields,
+    state: row.state,
+    lineNumber: row.lineNumber,
+    sourcePath: row.sourcePath,
+    videoId: row.videoId,
+    row: row.row.replace(
+      /^(\s*-\s+\[)[ x~]/u,
+      (_match, prefix) => `${prefix}${row.state}`,
+    ),
+  };
+}
+
+function countLinesThrough(text, index) {
+  let lineNumber = 1;
+  for (let cursor = 0; cursor < index; cursor += 1) {
+    if (text.charCodeAt(cursor) === 10) {
+      lineNumber += 1;
+    }
+  }
+  return lineNumber;
+}
+
 async function assertOwnedLease(lockPath, token) {
   const lease = await readLease(lockPath);
   if (lease === undefined || lease.token !== token) {
     const inspection = await inspectLease({ lockPath, staleAfterMs: defaultStaleAfterMs });
     throw new Error(`Content-pipeline writer lease token does not own ${lockPath}: ${JSON.stringify(inspection)}`);
+  }
+  const expiresAt = Date.parse(lease.expiresAt);
+  if (!Number.isFinite(expiresAt) || expiresAt <= Date.now()) {
+    const inspection = await inspectLease({ lockPath, staleAfterMs: defaultStaleAfterMs });
+    throw new Error(`Content-pipeline writer lease has expired: ${JSON.stringify(inspection)}`);
   }
   return lease;
 }
@@ -534,10 +770,18 @@ Commands:
   release      Release an owned persistent writer lease.
   run          Run one command inside a writer lease.
   append-log   Atomically append one validated processing-log row inside a lease.
+  schedule-claim     Atomically claim or resume one schedule row as [~].
+  schedule-complete  Move [~] to [x] after verifying a fresh log row and shard.
+  schedule-reset     Atomically move an owned schedule row from [~] to [ ].
 
 Common options:
   --lock-path <path>       Defaults to ${defaultLockPath}.
   --token <token>          Defaults to CONTENT_PIPELINE_LOCK_TOKEN.
+  --schedule-path <path>   Schedule used by schedule-* commands.
+  --source-path <path>     Claimed transcript required by complete/reset.
+  --processing-log <path>  Completion log; defaults to ${defaultProcessingLogPath}.
+  --video-segments-dir <path>
+                           Completion shards; defaults to ${defaultVideoSegmentsDirectory}.
   --owner <name>           Diagnostic owner label for acquire/run.
   --purpose <name>         Diagnostic purpose label for acquire/run.
   --stale-after-ms <ms>    Lease duration; defaults to ${defaultStaleAfterMs}.
@@ -547,6 +791,7 @@ Common options:
 
 Examples:
   node .codex/hooks/site-content-pipeline-lock.mjs acquire --owner schedule-1 --recover-stale
+  node .codex/hooks/site-content-pipeline-lock.mjs schedule-claim --schedule-path task-notes/schedule.md --token <token>
   node .codex/hooks/site-content-pipeline-lock.mjs status
   node .codex/hooks/site-content-pipeline-lock.mjs run -- node dist/scripts/generate-site-data.js
 `);

@@ -22,6 +22,7 @@ Do not recreate a monolithic curated-content file. `site/src/data/generated/arch
 
 - `videoId` must exist in `src/channel/episodes.json`.
 - `topics` must refer to slugs in `topics.json`.
+- `topics` is a curated summary subset for the video page; it does not need to repeat every more-granular segment topic.
 - `segments` contains only records for this `videoId`.
 
 ## Topic Seed

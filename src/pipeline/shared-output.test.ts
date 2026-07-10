@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
 import { existsSync } from "node:fs";
-import { mkdir, mkdtemp, readFile, readdir, rm, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, readFile, readdir, rm, stat, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -58,6 +58,8 @@ test("validation hooks generate the archive once before their generated-data che
   assert.equal((contentHook.match(/dist\/scripts\/generate-site-data\.js/gu) ?? []).length, 1);
   assert.equal((siteHook.match(/dist\/scripts\/generate-site-data\.js/gu) ?? []).length, 1);
   assert.match(contentHook, /site:check:generated/u);
+  assert.match(contentHook, /\[switch\]\$RetainCallerLease/u);
+  assert.match(contentHook, /\$retainActiveLock = \$RetainCallerLease -and \$callerProvidedLock/u);
   assert.match(siteHook, /site:check:generated/u);
   assert.match(siteHook, /site:build:generated/u);
   assert.doesNotMatch(packageJson.scripts["site:check:generated"] ?? "", /generate:site-data/u);
@@ -226,6 +228,229 @@ test("lock-aware log appends and stale recovery preserve diagnostics", async () 
     ]);
     assert.equal(released.code, 0, released.stderr);
     assert.equal(existsSync(lockPath), false);
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+test("schedule claims resume after interruption and complete or reset exactly one row", async () => {
+  const directory = await mkdtemp(join(tmpdir(), "site-content-schedule-"));
+  const lockPath = join(directory, "writer.lock");
+  const schedulePath = join(directory, "schedule.md");
+  const logPath = join(directory, "processing.log");
+  const videoSegmentsDirectory = join(directory, "video-segments");
+  const firstSource = "src/transcripts/txt/first.txt";
+  const secondSource = "src/transcripts/txt/second.txt";
+
+  try {
+    await writeFile(
+      schedulePath,
+      `# Schedule\r\n\r\nTimestamp: 2020-01-01T00:00:00Z\r\n\r\n- [ ] ${firstSource} | first | First\r\n- [ ] ${secondSource} | second | Second\r\n`,
+      "utf8",
+    );
+    const firstAcquire = await runNode([
+      lockTool,
+      "acquire",
+      "--lock-path",
+      lockPath,
+      "--wait-ms",
+      "0",
+    ]);
+    assert.equal(firstAcquire.code, 0, firstAcquire.stderr);
+    const firstLease = JSON.parse(firstAcquire.stdout) as { lease: { token: string } };
+
+    const firstClaim = await runNode([
+      lockTool,
+      "schedule-claim",
+      "--lock-path",
+      lockPath,
+      "--schedule-path",
+      schedulePath,
+      "--token",
+      firstLease.lease.token,
+    ]);
+    assert.equal(firstClaim.code, 0, firstClaim.stderr);
+    const claimed = JSON.parse(firstClaim.stdout) as {
+      claimed: boolean;
+      resumed: boolean;
+      sourcePath: string;
+      videoId: string;
+      state: string;
+    };
+    assert.equal(claimed.claimed, true);
+    assert.equal(claimed.resumed, false);
+    assert.equal(claimed.sourcePath, firstSource);
+    assert.equal(claimed.videoId, "first");
+    assert.equal(claimed.state, "~");
+    assert.match(await readFile(schedulePath, "utf8"), /- \[~\] src\/transcripts\/txt\/first\.txt/u);
+
+    const owner = JSON.parse(await readFile(join(lockPath, "owner.json"), "utf8")) as {
+      expiresAt: string;
+    };
+    owner.expiresAt = "2000-01-01T00:00:00.000Z";
+    await writeFile(join(lockPath, "owner.json"), `${JSON.stringify(owner, null, 2)}\n`, "utf8");
+
+    const expiredRenew = await runNode([
+      lockTool,
+      "renew",
+      "--lock-path",
+      lockPath,
+      "--token",
+      firstLease.lease.token,
+    ]);
+    assert.notEqual(expiredRenew.code, 0);
+    assert.match(expiredRenew.stderr, /lease has expired/u);
+
+    const expiredAppend = await runNode([
+      lockTool,
+      "append-log",
+      "--lock-path",
+      lockPath,
+      "--processing-log",
+      logPath,
+      "--token",
+      firstLease.lease.token,
+      "--processed-at",
+      "2026-07-09T16:05:25-05:00",
+      "--source-path",
+      firstSource,
+      "--video-id",
+      "first",
+      "--action",
+      "curated 1 segment",
+      "--needs-further-processing",
+      "no",
+      "--determination",
+      "expired writer",
+    ]);
+    assert.notEqual(expiredAppend.code, 0);
+    assert.match(expiredAppend.stderr, /lease has expired/u);
+    assert.equal(existsSync(logPath), false);
+
+    const recovered = await runNode([
+      lockTool,
+      "acquire",
+      "--lock-path",
+      lockPath,
+      "--wait-ms",
+      "0",
+      "--recover-stale",
+    ]);
+    assert.equal(recovered.code, 0, recovered.stderr);
+    const recoveredLease = JSON.parse(recovered.stdout) as { lease: { token: string } };
+
+    const resumedClaim = await runNode([
+      lockTool,
+      "schedule-claim",
+      "--lock-path",
+      lockPath,
+      "--schedule-path",
+      schedulePath,
+      "--token",
+      recoveredLease.lease.token,
+    ]);
+    assert.equal(resumedClaim.code, 0, resumedClaim.stderr);
+    const resumed = JSON.parse(resumedClaim.stdout) as {
+      resumed: boolean;
+      sourcePath: string;
+      videoId: string;
+    };
+    assert.equal(resumed.resumed, true);
+    assert.equal(resumed.sourcePath, firstSource);
+    assert.equal(resumed.videoId, "first");
+
+    const completionArguments = [
+      lockTool,
+      "schedule-complete",
+      "--lock-path",
+      lockPath,
+      "--schedule-path",
+      schedulePath,
+      "--processing-log",
+      logPath,
+      "--video-segments-dir",
+      videoSegmentsDirectory,
+      "--source-path",
+      firstSource,
+      "--token",
+      recoveredLease.lease.token,
+    ];
+    const missingShard = await runNode(completionArguments);
+    assert.notEqual(missingShard.code, 0);
+    assert.match(missingShard.stderr, /shard required for schedule completion is missing/u);
+    assert.match(await readFile(schedulePath, "utf8"), /- \[~\] src\/transcripts\/txt\/first\.txt/u);
+
+    await mkdir(videoSegmentsDirectory, { recursive: true });
+    await writeFile(join(videoSegmentsDirectory, "video-first.json"), "{}\n", "utf8");
+    const missingLog = await runNode(completionArguments);
+    assert.notEqual(missingLog.code, 0);
+    assert.match(missingLog.stderr, /requires a processing-log row/u);
+
+    const claimMtime = (await stat(schedulePath)).mtimeMs;
+    const staleProcessedAt = new Date(claimMtime - 5_000).toISOString();
+    await writeFile(
+      logPath,
+      `${staleProcessedAt}\t${firstSource}\tfirst\tcurated 1 segment\tno\tstale pre-claim row\n`,
+      "utf8",
+    );
+    const staleLog = await runNode(completionArguments);
+    assert.notEqual(staleLog.code, 0);
+    assert.match(staleLog.stderr, /requires a processing-log row/u);
+
+    const freshProcessedAt = new Date(claimMtime + 1_000).toISOString();
+    await writeFile(
+      logPath,
+      `${staleProcessedAt}\t${firstSource}\tfirst\tcurated 1 segment\tno\tstale pre-claim row\n` +
+      `${freshProcessedAt}\t${firstSource}\tfirst\tcurated 1 segment\tno\tfresh claimed-row output\n`,
+      "utf8",
+    );
+    const completed = await runNode(completionArguments);
+    assert.equal(completed.code, 0, completed.stderr);
+    assert.match(await readFile(schedulePath, "utf8"), /- \[x\] src\/transcripts\/txt\/first\.txt/u);
+
+    const secondClaim = await runNode([
+      lockTool,
+      "schedule-claim",
+      "--lock-path",
+      lockPath,
+      "--schedule-path",
+      schedulePath,
+      "--token",
+      recoveredLease.lease.token,
+    ]);
+    assert.equal(secondClaim.code, 0, secondClaim.stderr);
+    assert.equal((JSON.parse(secondClaim.stdout) as { sourcePath: string }).sourcePath, secondSource);
+
+    await rm(videoSegmentsDirectory, { recursive: true, force: true });
+    await rm(logPath, { force: true });
+
+    const reset = await runNode([
+      lockTool,
+      "schedule-reset",
+      "--lock-path",
+      lockPath,
+      "--schedule-path",
+      schedulePath,
+      "--source-path",
+      secondSource,
+      "--token",
+      recoveredLease.lease.token,
+    ]);
+    assert.equal(reset.code, 0, reset.stderr);
+    assert.equal(
+      await readFile(schedulePath, "utf8"),
+      `# Schedule\r\n\r\nTimestamp: 2020-01-01T00:00:00Z\r\n\r\n- [x] ${firstSource} | first | First\r\n- [ ] ${secondSource} | second | Second\r\n`,
+    );
+
+    const released = await runNode([
+      lockTool,
+      "release",
+      "--lock-path",
+      lockPath,
+      "--token",
+      recoveredLease.lease.token,
+    ]);
+    assert.equal(released.code, 0, released.stderr);
   } finally {
     await rm(directory, { recursive: true, force: true });
   }

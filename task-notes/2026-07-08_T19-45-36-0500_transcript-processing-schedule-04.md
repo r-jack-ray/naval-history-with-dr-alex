@@ -9,11 +9,12 @@ Generated from every stored TXT transcript in the manifest. All rows are intenti
 Criteria: stored TXT transcript exists. Existing video segment shards, generated archive entries, and prior processing-log rows do not remove a file from this schedule.
 
 Schedule: 4 of 4
-Files in this schedule: 512
-Total files split across schedules: 2049
+Files in this schedule: 514
+Total files split across schedules: 2057
 
 ## Files
 
+- [ ] src/transcripts/txt/2021-08-22_T22-28-48_bruships-55-new-books_1soFZnAvSe8.txt | 1soFZnAvSe8 | 2021-08-22T22:28:48Z | rows=6828 | durationSeconds=18451 | Bruships 55: New Books
 - [x] src/transcripts/txt/2021-08-22_T10-00-34_battle-of-the-atlantic-redo-comment-response_wvsrWjNdXJk.txt | wvsrWjNdXJk | 2021-08-22T10:00:34Z | rows=1464 | durationSeconds=3183 | Battle of the Atlantic (Redo): Comment Response
 - [x] src/transcripts/txt/2021-08-19_T20-54-06_patreon-30-japanese-hybrid-warships-of-ww2_98OD-HUp6pY.txt | 98OD-HUp6pY | 2021-08-19T20:54:06Z | rows=4457 | durationSeconds=11652 | Patreon 30: Japanese hybrid warships of WW2
 - [x] src/transcripts/txt/2021-08-19_T09-00-03_japanese-hybrids-teaser-for-today-s-patreon-live_A5do7QehKjg.txt | A5do7QehKjg | 2021-08-19T09:00:03Z | rows=522 | durationSeconds=1604 | Japanese Hybrids: Teaser for Today's Patreon Live
@@ -89,7 +90,7 @@ Total files split across schedules: 2049
 - [x] src/transcripts/txt/2021-06-13_T14-00-04_a-book-or-two-to-review-2-the-life-and-letters-of-david-beatty_G2G2i0LTgIs.txt | G2G2i0LTgIs | 2021-06-13T14:00:04Z | rows=710 | durationSeconds=1502 | A Book or Two to Review (2): The Life and Letters of David Beatty
 - [x] src/transcripts/txt/2021-06-11_T21-01-14_patreon-25-history-of-east-india-company-merchantmen-and-differences-to-ship-of-the-line_ENuVS7RvAag.txt | ENuVS7RvAag | 2021-06-11T21:01:14Z | rows=3914 | durationSeconds=10772 | Patreon 25: History of East India Company Merchantmen and differences to Ship of the line.
 - [x] src/transcripts/txt/2021-06-10_T17-00-22_a-book-or-two-to-review-1-favourite-of-fortune_RV_nPWjlk8Q.txt | RV_nPWjlk8Q | 2021-06-10T17:00:22Z | rows=593 | durationSeconds=1236 | A Book or Two to Review (1): Favourite of Fortune
-- [ ] src/transcripts/txt/2021-06-09_T17-00-35_blockade_n6Fh2ZfiZEU.txt | n6Fh2ZfiZEU | 2021-06-09T17:00:35Z | rows=1022 | durationSeconds=2566 | Blockade
+- [x] src/transcripts/txt/2021-06-09_T17-00-35_blockade_n6Fh2ZfiZEU.txt | n6Fh2ZfiZEU | 2021-06-09T17:00:35Z | rows=1022 | durationSeconds=2566 | Blockade
 - [ ] src/transcripts/txt/2021-06-06_T21-55-54_bruships-50-a-d-day-special-with-questions-and-some-new-books-from-pen-and-sword_9gzy53FUeEA.txt | 9gzy53FUeEA | 2021-06-06T21:55:54Z | rows=5919 | durationSeconds=15177 | Bruships 50: A D-Day special with Questions & some New Books from Pen & Sword
 - [ ] src/transcripts/txt/2021-06-06_T08-27-16_four-random-books-memberships-and-the-seapower-of-castles_whP0XPQA_uY.txt | whP0XPQA_uY | 2021-06-06T08:27:16Z | rows=170 | durationSeconds=368 | Four Random Books, Memberships & the Seapower of Castles
 - [ ] src/transcripts/txt/2021-06-05_T13-57-48_naval-fire-support-of-the-wwi-western-front-long-patrol-part-6-gorgon-class_vNSz291deEI.txt | vNSz291deEI | 2021-06-05T13:57:48Z | rows=1334 | durationSeconds=3098 | Naval Fire Support of the WWI Western Front: Long Patrol, Part 6, Gorgon Class
@@ -129,6 +130,7 @@ Total files split across schedules: 2049
 - [ ] src/transcripts/txt/2021-04-21_T17-00-33_four-random-books-33-liberty-ships-and-depth-in-history_xw8dAZ924uQ.txt | xw8dAZ924uQ | 2021-04-21T17:00:33Z | rows=976 | durationSeconds=2226 | Four Random Books 33: Liberty Ships & Depth in History
 - [ ] src/transcripts/txt/2021-04-20_T18-30-04_k-class-submarines-not-such-a-kalamity_I-30zzka80Y.txt | I-30zzka80Y | 2021-04-20T18:30:04Z | rows=1313 | durationSeconds=3952 | 'K' Class Submarines; not such a Kalamity
 - [ ] src/transcripts/txt/2021-04-18_T21-41-57_bruships-45-something-medieval_bEUFc4qVwSc.txt | bEUFc4qVwSc | 2021-04-18T21:41:57Z | rows=5133 | durationSeconds=15459 | Bruships 45: Something Medieval
+- [ ] src/transcripts/txt/2021-04-15_T20-40-16_patreon-21-notable-ww2-commanders-of-smaller-naval-forces_-sOPrkXNRaU.txt | -sOPrkXNRaU | 2021-04-15T20:40:16Z | rows=3492 | durationSeconds=10694 | Patreon 21: Notable WW2 commanders of smaller naval forces
 - [ ] src/transcripts/txt/2021-04-14_T21-00-14_four-random-books-32-medieval_wGixGMYR1nU.txt | wGixGMYR1nU | 2021-04-14T21:00:14Z | rows=761 | durationSeconds=1458 | Four Random Books 32: Medieval
 - [ ] src/transcripts/txt/2021-04-11_T20-13-58_the-battle-of-the-saintes-1782-239yrs-ago-today_p4m8Q5-hpfQ.txt | p4m8Q5-hpfQ | 2021-04-11T20:13:58Z | rows=3090 | durationSeconds=9088 | The Battle of the Saintes (1782): 239yrs ago... Today!
 - [ ] src/transcripts/txt/2021-04-10_T21-22-33_prince-philips-navy_oYKLQSW1vW8.txt | oYKLQSW1vW8 | 2021-04-10T21:22:33Z | rows=3036 | durationSeconds=9527 | Prince Philips Navy
