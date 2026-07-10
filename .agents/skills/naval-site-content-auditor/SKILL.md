@@ -1,6 +1,6 @@
 ---
 name: naval-site-content-auditor
-description: Audit and strengthen the Naval History with Dr. Alex Astro/Pagefind study-guide content after transcript curation. Use when asked to add substance to thin segment notes, remove workflow/scaffold wording from public fields, align wording with learner intent, validate transcript-backed claims, improve segment density, or run a high-effort follow-up pass over `src/derived/video-segments/`, video pages, segment pages, topic pages, or generated archive data.
+description: Audit and strengthen transcript-backed study-guide content in one selected per-video shard after transcript curation. Use when asked to add substance to thin segment notes, remove workflow/scaffold wording from public fields, align wording with learner intent, validate transcript-backed claims, improve segment density, or run a high-effort follow-up pass over `src/derived/video-segments/video-<videoId>.json`.
 ---
 
 # Naval Site Content Auditor
@@ -21,10 +21,11 @@ This audit is repeatable. A prior first, second, third, or later pass is not evi
 
 ## Start
 
-1. Read `AGENTS.md`, `.agents/transcript-content-curator.md`, and `.agents/site-content-auditor.md`.
+1. Read `AGENTS.md` and `.agents/site-content-auditor.md`.
 2. Inspect the current diff before edits with `git -c safe.directory=C:/Workspaces/naval-history-with-dr-alex status --short`.
 3. Treat `src/derived/video-segments/` as the source for public segment wording. Treat `site/src/data/generated/archive.json` as generated output.
-4. If a specific video, segment, topic, or screenshot was named, scope the audit there first. Otherwise sample the shortest and most scaffold-like segment bodies across `chapter`, `notable_point`, and `qa`.
+4. Require an explicitly named video ID, transcript, or exact per-video shard. If none was supplied, stop without edits; do not sample or select from the shard directory.
+5. Own only the selected per-video shard. Preserve every other shard and all shared or generated outputs.
 
 ## Audit Public Wording
 
@@ -50,33 +51,17 @@ This audit is repeatable. A prior first, second, third, or later pass is not evi
 ## Deepen Coverage And Topics
 
 1. Re-read the transcript across the audited scope, not only the existing segment windows. Add omitted chapters, notable points, and Q&A exchanges when substantive learning value is still missing from the pages.
-2. Let significant topics arise from the strengthened content. Add transcript-backed topic slugs to the video and segment arrays without targeting a tag count or confining the audit to the existing taxonomy. Do not inspect or edit `topics.json` during an ordinary content audit; archive generation synchronizes it deterministically.
-3. Keep video-level topics as a concise summary subset of the richer segment-level topics. Investigate registry records, aliases, synonyms, or near-duplicates only when synchronization or validation reports a taxonomy problem, or when the user explicitly requests taxonomy work.
+2. Let significant topics arise from the strengthened content. Add transcript-backed topic slugs to the video and segment arrays without targeting a tag count or confining the audit to the existing taxonomy. Do not inspect or edit `topics.json` during an ordinary content audit; the repository owner's later build synchronizes it deterministically.
+3. Keep video-level topics as a concise summary subset of the richer segment-level topics. Investigate registry records, aliases, synonyms, or near-duplicates only when the repository owner's later synchronization or validation reports a taxonomy problem, or when the user explicitly requests taxonomy work.
 4. Treat the audit as iterative rather than terminal. On each content-exhaustion review, independently compare the full transcript against the current shard instead of reviewing only previously selected windows. Leave precise follow-up targets for thin or under-extracted ranges. Stop repeating the same model and effort when a pass produces churn without new transcript-backed substance, but keep the transcript eligible for a future review under a materially stronger configuration or improved method.
 
-## Validate
+## Shared-Output Boundary
 
-1. Regenerate generated data after editing the seed:
-
-```powershell
-npm run generate:site-data
-```
-
-2. Run the content/site validation hook:
-
-```powershell
-pwsh -NoProfile -File .codex/hooks/validate-content-pipeline.ps1 -SkipRepoCheck
-```
-
-3. Run the site build when layout, visible wording, generated archive data, or Pagefind output matters:
-
-```powershell
-npm run site:build
-```
-
-4. Run `git -c safe.directory=C:/Workspaces/naval-history-with-dr-alex diff --check`.
-5. Report any existing warnings separately from new failures.
+- Do not run `generate:site-data`, `site:check`, `site:build`, Pagefind, `.codex/hooks/validate-content-pipeline.ps1`, `npm run check`, or any other repository-wide generation, test, build, audit, or validation command.
+- Do not write `topics.json`, `site/src/data/generated/archive.json`, `site/dist/`, `reports/`, processing logs, schedules, package files, tooling, Astro source, or CSS.
+- The repository owner performs shared generation, tests, Astro/Pagefind builds, and integration validation before push.
+- Read-only inspection and `git diff --check` scoped to the owned shard are allowed when useful. A lane-specific automation may additionally run only the private temporary-directory checks explicitly provided by that automation prompt.
 
 ## Handoff
 
-Report the scope audited, the number or type of records strengthened, topic slugs added to shards, files changed, validation commands, and any remaining transcript passages that need another focused pass. Mention topic-registry work only when a synchronization or taxonomy problem required intervention.
+Report the scope audited, the number or type of records strengthened, topic slugs added to the owned shard, the shard changed, and any remaining transcript passages that need another focused pass. State that shared generation, tests, builds, and validation were intentionally not run because the repository owner performs them before push. Mention topic-registry work only when a previously reported synchronization or taxonomy problem required intervention.

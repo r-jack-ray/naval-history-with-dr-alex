@@ -14,30 +14,28 @@ Use this brief when turning stored Dr. Alex transcript files into site-visible s
 ## Scope
 
 - Read from `src/transcripts/manifest.json` and the matching `src/transcripts/txt/` or `src/transcripts/tsv/` file.
-- Curate into `src/derived/video-segments/video-<videoId>.json`. Add topic slugs to that shard; archive generation synchronizes shared records in `src/derived/video-segments/topics.json` without a routine AI editing step.
+- Curate only the explicitly selected `src/derived/video-segments/video-<videoId>.json` shard. Add topic slugs to that shard; the repository owner's later build synchronizes shared records without a routine AI editing step.
 - Use `src/channel/episodes.json` and `src/channel/video-metadata.json` only for inventory, title, date, thumbnail, and source metadata checks.
 - Use `src/derived/site-content-processing.config.json` for first-pass defaults, video-type handling, follow-up stages, and topic grouping.
 - Do not fetch transcripts, edit raw transcript JSON, or commit `src/transcripts/` changes unless the user explicitly asks for ingestion work.
 
 ## Workflow
 
-1. For a scheduled run, acquire the persistent repository writer lease before dependency checks, queue claims, or content edits, then set `CONTENT_PIPELINE_LOCK_TOKEN` to its token so normal pipeline npm commands join the lease. If the lease is busy, report its diagnostics and stop without changing a schedule row or source file.
-2. Verify local dependencies before content edits. If `node_modules/.bin/tsc.cmd` or the platform equivalent is missing in the active workspace, run `npm ci` before validation. If dependency installation or the first audit cannot run, release any lease and report the blocker without transcript-content edits.
-3. Resolve the input from the invoking task. A named transcript path or claimed schedule/queue row is authoritative; follow its claim timing and do not replace it with a generic backlog candidate merely because a shard or processing-log row already exists. For a schedule file, claim through `node .codex/hooks/site-content-pipeline-lock.mjs schedule-claim --schedule-path <schedule> --token <lease-token>`. This atomically changes `[ ]` to `[~]` or resumes the one existing `[~]` row.
-4. Only when no input was named, run `npm run audit:site-content` and open `reports/site-content-backlog.md` to select the next stored transcript without curated segments. For named inputs, still run the audit after claiming when the invoking workflow requires current context.
-5. Inspect the transcript TXT/TSV before writing summaries. For long transcripts, use TSV timestamps to map the full duration and read contiguous time-based chunks small enough to avoid tool-output truncation; do not rely on one raw full-file dump or only the opening portion.
-6. Add or update the current-schema content shard under `src/derived/video-segments/`, normally `video-<videoId>.json` for the selected transcript. Treat that shard as the owned content artifact for this process run.
-7. Add evidence-backed topic slugs to the video and segment arrays. Do not inspect or edit `topics.json` unless synchronization or validation reports a problem.
-8. Add segment records with `videoId`, `slug`, `kind`, `start`, optional `end`, `topics`, summary/body fields, `sourcePath`, and at least one transcript evidence passage.
-9. Use `kind: qa` only for actual question/answer exchanges. Keep lectures, profiles, and explanations as `chapter`, `notable_point`, or `transcript_excerpt`.
-10. Append one line to `src/derived/site-content-processing.log` for each transcript file processed with `npm.cmd run append:site-content-processing-log -- --token <lease-token> ...`; do not write this shared file directly. It remains bookkeeping rather than the content source of truth.
-11. Renew the writer lease after a long inspection and before any shared write with `node .codex/hooks/site-content-pipeline-lock.mjs renew --token <lease-token>`. For scheduled work, validate with `.codex/hooks/validate-content-pipeline.ps1 -SkipRepoCheck -LockToken <lease-token> -RetainCallerLease`, append the processing-log row, change the claimed row from `[~]` to `[x]` with `schedule-complete`, and then release the lease. On a handled failure, use `schedule-reset` before releasing; an interrupted `[~]` row is resumed by the next run. Run validation without `-SkipRepoCheck` when TypeScript or shared contracts changed.
-12. For the main transcript pass, prioritize getting useful current-schema watch points into the site over final polish. Use `needsFurtherProcessing=yes` for entries that should receive a later auditor cleanup, more granular follow-up, or additional transcript coverage. Use `no` only after full-duration inspection plus complete substantive chaptering or Q&A extraction, or when the file is intentionally closed without a site segment. The flag is bookkeeping for separately managed follow-up passes.
-13. Let segment count arise from the transcript for every video. Do not target a minimum, maximum, or preferred numeric range; split when the subject, argument, example, or exchange meaningfully changes, and avoid both broad catch-all notes and artificial padding.
-14. Check the canonical source type in the channel inventory. Treat every live stream as mixed classroom-style content: inspect the full duration, preserve substantive lecture blocks as `chapter` or `notable_point`, and create a separate `kind: qa` segment for every substantive transcript-visible prompt and response. Each Q&A needs its own `start`, optional `end`, `question`, `answerShort`, and evidence.
-15. Compare the canonical title with `liveStreamExtraction.explicitQaTitleMarkers` in the processing config. A matching title makes exhaustive Q&A extraction especially explicit, but it does not erase lecture material; retain substantive lecture portions under their proper segment kinds.
-16. If a live-stream run cannot complete full-duration mixed-content extraction, keep `needsFurtherProcessing=yes` and state the remaining coverage in the processing log or handoff.
-17. Derive significant segment topic slugs from the transcript as content is extracted. Add every evidence-backed slug needed for discovery and understanding, without targeting a tag count or restricting the pass to a starter taxonomy. The deterministic synchronizer handles routine registry creation and consistency; investigate synonym or taxonomy issues only when validation finds a problem.
+1. Before any shard edit, require an explicitly named transcript path or an exact transcript/video selected by the invoking automation. When the automation prompt defines its own atomic claim procedure, let that prompt perform the claim first. Otherwise, if no exact transcript was supplied, stop without edits; do not select from a backlog, schedule, report, manifest, or existing shard set.
+2. Do not acquire, inspect, wait on, renew, or release repository leases. Do not claim, complete, or reset schedule rows. An invoking automation owns any claim, lane log, private validation, completion, or reset procedure.
+3. If required dependencies or compiled helpers are missing, report the prerequisite and stop without edits. Do not install dependencies, build tooling, run audits, or generate shared output.
+4. Inspect the selected transcript TXT/TSV before writing summaries. For long transcripts, use TSV timestamps to map the full duration and read contiguous time-based chunks small enough to avoid tool-output truncation; do not rely on one raw full-file dump or only the opening portion.
+5. Add or update only the selected current-schema `video-<videoId>.json` shard. Preserve every other shard and all shared or generated files.
+6. Add evidence-backed topic slugs to the video and segment arrays. Do not inspect or edit `topics.json`; the repository owner's later build synchronizes the registry.
+7. Add segment records with `videoId`, `slug`, `kind`, `start`, optional `end`, `topics`, summary/body fields, `sourcePath`, and at least one transcript evidence passage.
+8. Use `kind: qa` only for actual question/answer exchanges. Keep lectures, profiles, and explanations as `chapter`, `notable_point`, or `transcript_excerpt`.
+9. Do not write processing logs, schedules, reports, the topic registry, generated archives, package files, tooling, Astro/CSS sources, or any file other than the selected shard. Do not run repository-wide generation, tests, builds, audits, or validation commands.
+10. For the main transcript pass, prioritize useful current-schema watch points over final polish. Report `needsFurtherProcessing=yes` unless full-duration inspection and complete substantive chaptering or Q&A extraction support `no`, or the file is intentionally closed without a site segment.
+11. Let segment count arise from the transcript. Do not target a minimum, maximum, or preferred numeric range; split when the subject, argument, example, or exchange meaningfully changes, and avoid broad catch-all notes and artificial padding.
+12. Check the canonical source type in the channel inventory. Treat every live stream as mixed classroom-style content: inspect the full duration, preserve substantive lecture blocks as `chapter` or `notable_point`, and create a separate `kind: qa` segment for every substantive transcript-visible prompt and response. Each Q&A needs its own `start`, optional `end`, `question`, `answerShort`, and evidence.
+13. Compare the canonical title with `liveStreamExtraction.explicitQaTitleMarkers` in the processing config. A matching title makes exhaustive Q&A extraction explicit but does not erase lecture material.
+14. If a live-stream run cannot complete full-duration mixed-content extraction, report `needsFurtherProcessing=yes` and state the remaining coverage in the handoff.
+15. Derive significant segment topic slugs from the transcript without targeting a tag count or restricting the pass to a starter taxonomy. Investigate synonym or taxonomy issues only when the repository owner's later synchronization reports a concrete problem.
 
 ## Public Wording
 
@@ -49,22 +47,12 @@ Use this brief when turning stored Dr. Alex transcript files into site-visible s
 - It is fine for evidence notes to be short and factual, but public notes should still sound like study-guide prose.
 - Prefer public labels such as `video guide`, `watch point`, `time note`, and `video moment`. Keep timestamp terminology for technical fields, evidence checks, and URLs rather than button, card, or headline copy.
 
-## Processing Log
+## Shared-Output Boundary
 
-Use `src/derived/site-content-processing.log` as the append-only curation log. The file has no header: every non-empty line is one processed transcript file. The log is useful for backlog filtering, but public content lives in `src/derived/video-segments/`. The repository writer lease serializes log updates, so a scheduled run must not direct-append or reconcile concurrent log churn.
-
-Use tab-separated fields:
-
-```text
-processedAt	sourcePath	videoId	action	needsFurtherProcessing	determination
-```
-
-- `processedAt`: ISO 8601 timestamp with offset.
-- `sourcePath`: repo-relative transcript TXT or TSV path.
-- `videoId`: YouTube video ID.
-- `action`: short note of what was done, for example `curated 4 segments`, `reviewed no usable segments`, or `blocked noisy transcript`.
-- `needsFurtherProcessing`: `yes` or `no`.
-- `determination`: short reason or follow-up note.
+- Edit only the selected per-video shard.
+- Do not touch leases, schedules, processing logs, reports, `topics.json`, generated archives, `site/dist/`, package files, tooling, Astro/CSS sources, or other shards.
+- Do not run `npm ci`, builds, audits, generation, tests, Pagefind, or shared validation.
+- The repository owner performs shared integration work before push. A lane automation may separately perform only the claim, lane-private log, temporary validation, and exact completion/reset steps defined in its own prompt.
 
 ## Evidence Rules
 
@@ -76,5 +64,5 @@ processedAt	sourcePath	videoId	action	needsFurtherProcessing	determination
 
 ## Handoff
 
-- Mention the video ID, transcript path, segment count added, topic slugs introduced in the shard, transcript coverage status, processing-log line added, and validation command. Mention the registry only if synchronization failed.
-- If a transcript is too noisy or incomplete, leave a dated task note under `task-notes/` with the blocker and the windows already inspected.
+- Mention the video ID, transcript path, shard changed, segment count added, topic slugs introduced, transcript coverage status, and remaining ranges. State that shared generation, logs, schedules, tests, builds, and validation were intentionally not touched.
+- If an invoking automation performed lane-private bookkeeping or temporary checks, report only those prompt-owned results. If a transcript is too noisy or incomplete, report the blocker and inspected windows without creating a shared task note.

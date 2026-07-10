@@ -37,19 +37,12 @@ Treat the audit as repeatable, but track saturation per model and effort level. 
 
 ## Audit Workflow
 
-1. Check the worktree and preserve unrelated user changes.
-2. Scan `src/derived/video-segments/` for short bodies, scaffold wording, and public workflow terms.
+1. Require an explicitly named video ID, transcript, or exact per-video shard. If none was supplied, stop without edits; do not select from the shard directory.
+2. Check the worktree, preserve unrelated user changes, and scan only the selected shard for short bodies, scaffold wording, and public workflow terms.
 3. For each candidate, read its `summary`, `topics`, `evidence`, and cited transcript passage when needed.
-4. Edit only per-video source files and source Astro/CSS files during an ordinary content audit. Do not inspect or edit `topics.json`; regenerate `site/src/data/generated/archive.json` and let the deterministic synchronizer update the registry. Do not hand-edit generated archive data.
-5. Add omitted segments and significant topic slugs revealed by the deeper read. Investigate registry records, aliases, synonyms, or near-duplicates only when synchronization or validation reports a taxonomy problem, or when the user explicitly requests taxonomy work.
+4. Edit only the selected `src/derived/video-segments/video-<videoId>.json` shard during an ordinary content audit. Preserve every other shard and all shared or generated outputs. Do not inspect or edit `topics.json`; the repository owner's later build synchronizes the registry.
+5. Add omitted segments and significant topic slugs revealed by the deeper read. Investigate registry records, aliases, synonyms, or near-duplicates only when the repository owner's later synchronization or validation reports a taxonomy problem, or when the user explicitly requests taxonomy work.
 6. Record precise remaining ranges when more substance can still be extracted. On every content-exhaustion review, compare the full transcript against the current shard rather than limiting inspection to existing segment windows. Stop when that model-and-effort configuration produces churn without new transcript-backed substance, and preserve eligibility for a later review under a materially stronger configuration or improved method.
-7. Validate with:
-
-```powershell
-npm run generate:site-data
-pwsh -NoProfile -File .codex/hooks/validate-content-pipeline.ps1 -SkipRepoCheck
-npm run site:build
-git -c safe.directory=C:/Workspaces/naval-history-with-dr-alex diff --check
-```
-
-6. Report changed scope, validation results, and any remaining thin records that need transcript review.
+7. Do not run `generate:site-data`, `site:check`, `site:build`, Pagefind, `.codex/hooks/validate-content-pipeline.ps1`, `npm run check`, or any other repository-wide generation, test, build, audit, or validation command. Do not write `topics.json`, the generated archive, `site/dist/`, reports, processing logs, schedules, package files, tooling, Astro source, or CSS. The repository owner performs shared integration checks before push.
+8. Read-only inspection and `git diff --check` scoped to the owned shard are allowed when useful. A lane-specific automation may additionally run only the private temporary-directory checks explicitly provided by that automation prompt.
+9. Report the changed shard, strengthened content, topic slugs introduced, remaining thin ranges, and that shared generation, tests, builds, and validation were intentionally not run.

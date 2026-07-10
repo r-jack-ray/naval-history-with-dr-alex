@@ -1,6 +1,6 @@
 ---
 name: naval-transcript-to-site-content
-description: Convert stored Dr. Alex Clarke transcript TXT/TSV evidence into segment-first study-guide content for this repository. Use when asked to process transcripts, curate video guides, add chapters/notable points/Q&A watch points, expand searchable topics, validate transcript evidence passages, or move transcript-backed material into `src/derived/video-segments/` and the Astro/Pagefind site.
+description: Convert one explicitly selected Dr. Alex Clarke transcript TXT/TSV into one segment-first per-video study-guide shard. Use when asked to process a named transcript, curate a named video guide, add transcript-backed chapters/notable points/Q&A watch points, or update `src/derived/video-segments/video-<videoId>.json`.
 ---
 
 # Naval Transcript To Site Content
@@ -10,13 +10,12 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` when converting
 ## Start
 
 1. Read `AGENTS.md` and `.agents/transcript-content-curator.md`.
-2. For a scheduled run, acquire the persistent repository writer lease before dependency checks, queue claims, or content edits, then set `CONTENT_PIPELINE_LOCK_TOKEN` to its token so normal pipeline npm commands join the lease. If it is busy, report the lock status and stop without changing a schedule row or source file.
-3. Verify local dependencies before content edits. If `node_modules/.bin/tsc.cmd` or the platform equivalent is missing in the active workspace, run `npm ci` before validation. If dependency installation or the first audit cannot run, release any lease and report the blocker without transcript-content edits.
-4. Resolve the selected input. When the invoking task names a transcript path or schedule/queue row, treat it as authoritative and do not replace it with a generic backlog candidate merely because existing content or log rows are present. Scheduled workers claim or resume through `node .codex/hooks/site-content-pipeline-lock.mjs schedule-claim --schedule-path <schedule> --token <lease-token>`; `[~]` means an owned or interrupted in-progress row, while `[x]` means validated and logged.
-5. Only when no input was named, run `npm run audit:site-content` and pick one transcript from `reports/site-content-backlog.md`. For named inputs, still run the audit after claiming when the invoking workflow requires current context.
-6. Read the matching `src/transcripts/txt/*.txt` or `src/transcripts/tsv/*.tsv` file before editing site content. For long transcripts, map the full duration from TSV timestamps and read contiguous time-based chunks small enough to avoid tool-output truncation; do not rely on one raw full-file dump or only the opening portion.
-7. Read `references/segment-seed-schema.md` before changing `src/derived/video-segments/`.
-8. Check `src/derived/site-content-processing.config.json` for first-pass policy, video-type defaults, follow-up stages, and topic grouping guidance.
+2. Before any shard edit, require an explicitly named transcript path or an exact transcript/video selected by the invoking automation. When the automation prompt defines its own atomic claim procedure, let that prompt perform the claim first. Otherwise, if no exact transcript was supplied, stop without edits; do not select from a backlog, schedule, report, manifest, or existing shard set.
+3. Do not acquire, inspect, wait on, renew, or release a repository lease. Do not claim, complete, or reset schedule rows. An invoking automation owns any claim, lane log, private validation, completion, or reset procedure.
+4. Verify required dependencies and compiled helpers only when the invoking workflow names them. If anything is missing, report the prerequisite and stop without edits; do not run `npm ci`, build tooling, audits, generation, or tests.
+5. Read the selected `src/transcripts/txt/*.txt` or `src/transcripts/tsv/*.tsv` file before editing site content. For long transcripts, map the full duration from TSV timestamps and read contiguous time-based chunks small enough to avoid tool-output truncation; do not rely on one raw full-file dump or only the opening portion.
+6. Read `references/segment-seed-schema.md` before changing the selected shard.
+7. Check `src/derived/site-content-processing.config.json` for first-pass content policy, video-type defaults, follow-up stages, and topic grouping guidance.
 
 ## Site Intent
 
@@ -29,7 +28,7 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` when converting
 ## Curate
 
 1. Identify useful time windows: chapters, notable points, actual Q&A exchanges, or short transcript excerpts.
-2. Add evidence-backed topic slugs directly to the video or segment `topics` arrays. Do not inspect or edit `topics.json` during routine curation; archive generation synchronizes missing registry records from the video shards. Investigate topics only when synchronization or validation reports invalid data or a taxonomy conflict.
+2. Add evidence-backed topic slugs directly to the video or segment `topics` arrays. Do not inspect or edit `topics.json` during routine curation; the repository owner's later build synchronizes missing registry records from the video shards. Investigate topics only when a previously reported synchronization or taxonomy problem explicitly requires it.
 3. Add or update `src/derived/video-segments/video-<videoId>.json` for the selected transcript.
 4. Add segment records with source-backed `start`, optional `end`, `sourcePath`, and `evidence`.
 5. Use `kind: qa` only when the transcript contains an actual prompt and answer. Do not invent Q&A from lecture material.
@@ -37,7 +36,7 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` when converting
 7. Compare live-stream titles with `liveStreamExtraction.explicitQaTitleMarkers` in `src/derived/site-content-processing.config.json`. A marker match makes exhaustive Q&A extraction mandatory but does not force lecture portions into Q&A.
 8. Keep `summary` concise, searchable, and useful as a watch pointer. Use `body` for reader-facing context, caveats, and why the segment matters.
 9. Avoid long transcript quotes; paraphrase and cite the time window.
-10. Append one line to `src/derived/site-content-processing.log` through `npm.cmd run append:site-content-processing-log -- --token <lease-token> ...`. Read `references/processing-log.md` for the exact format. The current-schema content shard remains the source of truth; do not direct-append the shared log. Scheduled workers defer this append until the shard has passed retained-lease validation.
+10. Do not write processing logs, schedules, reports, topic registries, generated archives, package files, tooling, Astro/CSS sources, or any file other than the selected per-video shard. An invoking automation may perform only its explicitly defined lane-private bookkeeping after this shard edit.
 11. For the main transcript pass, prioritize getting useful current-schema watch points into the site over final polish. Use `needsFurtherProcessing=yes` unless the full duration was inspected and the transcript was fully chaptered or Q&A was extracted, or the review intentionally closed the file without site content. Partial transcript coverage must remain `yes` and be disclosed in the processing log or handoff. A live stream with only a sampled subset is incomplete even when every sampled segment is polished.
 12. Let the transcript determine segment count for every video. Do not target a minimum, maximum, or preferred numeric range. Split when the subject, argument, example, or Q&A exchange meaningfully changes; avoid both broad catch-all notes and artificial padding.
 13. Derive significant segment topic slugs from the transcript. Add evidence-backed slugs needed to describe ships, classes, navies, battles, weapons, policies, doctrine, logistics, people, places, and time periods without targeting a tag count or limiting the pass to a fixed starter taxonomy. Preserve useful specificity for the later auditor; leave registry creation, titles, default summaries, and routine consistency checks to the deterministic synchronizer.
@@ -48,41 +47,16 @@ For public wording, prefer human study-guide terms such as `video guide`, `watch
 
 ## Runner Boundary
 
-- Keep reusable site intent, public wording, segment density, and validation rules in this skill and `.agents/transcript-content-curator.md`.
+- Keep reusable site intent, public wording, and segment-density rules in this skill and `.agents/transcript-content-curator.md`.
 - The normal processing unit is one transcript/video content shard per process run in the main working checkout. That is already isolated by design, so do not default to detached worktrees for routine transcript curation.
 - A worktree is only useful for broad, risky, or unrelated code changes. For one transcript file -> one content shard, worktrees add merge and stale-state failure modes without much isolation benefit.
-- The processing log, schedule files, generated backlog report, and generated archive are shared writer outputs. Acquire the persistent repository lease before a scheduled run claims a row; use its token for the schedule helper, log appender, and validation hook.
-- Independent schedule files are supported when each invocation claims exactly one transcript, runs locally in the main checkout, and owns one current-schema shard. The prohibited failure modes are detached-worktree curation, stale `src/derived/prototype-segments.json` edits, or two workers owning the same transcript/shard.
-- Treat transcript processing as an explicit scoped run: one named transcript or one selected backlog item, its current-schema `src/derived/video-segments/video-<videoId>.json` shard, one processing-log entry, generated archive regeneration, and validation. Topic-registry synchronization occurs inside archive generation and does not require a separate AI editing step. A scheduled run uses `[ ] -> [~] -> [x]`: retain the caller lease through successful validation, append the log, complete the row, and release. Reset `[~]` to `[ ]` on a handled failure; if the process is interrupted, the next invocation resumes `[~]`. Clear `CONTENT_PIPELINE_LOCK_TOKEN` after releasing.
-- Run scheduled transcript processing as a single-agent job. Do not use `ultra`, multi-agent mode, or subagents inside a claimed run. Scheduled workers must refuse `src/derived/prototype-segments.json`, write only supported `src/derived/video-segments/` content, validate locally, and stop after the one claimed transcript.
-- When a user names a task-note queue file or transcript path, treat that as the selected input and do not replace it with the generic backlog choice.
+- Require the invoking task or automation to identify exactly one transcript and one owned current-schema shard. Do not choose work from a generic backlog or infer ownership from existing files.
+- The skill itself edits only that shard. It does not acquire leases; inspect other active runs; claim schedules; append logs; generate reports or archives; synchronize shared topics; install dependencies; run tests, builds, audits, or validation; or complete/reset queue state.
+- A schedule automation may separately own an atomic claim, lane-private log, video-specific temporary validation directory, and exact-row completion/reset. Follow those prompt-specific steps without widening them into shared pipeline work.
+- Run scheduled transcript processing as a single-agent job. Do not use `ultra`, multi-agent mode, or subagents inside a claimed run. Scheduled workers must refuse `src/derived/prototype-segments.json`, write only the one owned current-schema shard, use only automation-prompt-owned private checks when supplied, and stop after the one claimed transcript.
+- A transcript path or exact automation-claimed row is authoritative. A queue or schedule filename by itself does not select a shard; the invoking automation must perform its own atomic claim before this skill edits content.
 - Main-pass curation and follow-up auditing are separate phases. Do not stall the main pass trying to exhaustively polish every segment; produce useful transcript-backed content now and let `$naval-site-content-auditor` handle later substance and wording passes. This separation does not permit sampled live-stream coverage: live streams still require full-duration mixed-content extraction, with `needsFurtherProcessing=yes` when that coverage is unfinished.
-
-## Validate
-
-Run the content hook after curation:
-
-```powershell
-pwsh -NoProfile -File .codex/hooks/validate-content-pipeline.ps1 -SkipRepoCheck -LockToken <lease-token>
-```
-
-For a scheduled claim, keep the same lease until the processing log and row state are committed:
-
-```powershell
-pwsh -NoProfile -File .codex/hooks/validate-content-pipeline.ps1 -SkipRepoCheck -LockToken <lease-token> -RetainCallerLease
-npm.cmd run append:site-content-processing-log -- --token <lease-token> ...
-node .codex/hooks/site-content-pipeline-lock.mjs schedule-complete --schedule-path <schedule> --source-path <transcript-path> --token <lease-token>
-node .codex/hooks/site-content-pipeline-lock.mjs release --token <lease-token>
-```
-
-Run the full hook when TypeScript, schema, generator, or shared site behavior changed:
-
-```powershell
-pwsh -NoProfile -File .codex/hooks/validate-content-pipeline.ps1 -LockToken <lease-token>
-```
-
-The hook writes `reports/site-content-backlog.md`, regenerates `site/src/data/generated/archive.json`, and checks the Astro site. Do not commit `reports/` or `site/dist/`.
 
 ## Handoff
 
-Report the video ID, transcript path, segments added or changed, topic slugs introduced in the shard, transcript coverage status, processing-log entry, and validation command. Mention the shared topic registry only if synchronization reported a problem. If a transcript cannot be curated safely, leave a dated Markdown note under `task-notes/` with the blocker and inspected time windows.
+Report the video ID, transcript path, shard changed, segments added or changed, topic slugs introduced, transcript coverage status, and any remaining ranges. State that shared generation, logs, schedules, tests, builds, and validation were intentionally not touched by the skill. If an invoking automation performed lane-private bookkeeping or temporary checks, report only those prompt-owned results. If the transcript cannot be curated safely, report the blocker and inspected time windows without creating a shared task note.
