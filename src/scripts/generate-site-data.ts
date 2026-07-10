@@ -5,6 +5,7 @@ import {
   defaultSiteSegmentsInput,
   generateSiteArchiveData,
 } from "../site/archive-data.js";
+import { withSiteBuildRepairHint } from "../site/build-repair-guidance.js";
 
 try {
   const options = parseArgs(process.argv.slice(2));
@@ -13,7 +14,8 @@ try {
     `Generated site archive data: ${options.output} (${archive.videos.length} videos, ${archive.segments.length} segments, ${archive.topics.length} topics)`,
   );
 } catch (error) {
-  console.error(error instanceof Error ? error.message : String(error));
+  const message = error instanceof Error ? error.message : String(error);
+  console.error(withSiteBuildRepairHint(message));
   process.exitCode = 1;
 }
 

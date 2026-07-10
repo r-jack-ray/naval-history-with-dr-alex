@@ -5,7 +5,10 @@ import { join } from "node:path";
 import test from "node:test";
 
 import { buildSiteArchiveData } from "./archive-data.js";
-import { loadCuratedArchiveSeed } from "./curated-seed.js";
+import {
+  findCuratedSegmentDuplicates,
+  loadCuratedArchiveSeed,
+} from "./curated-seed.js";
 
 test("builds deterministic site archive data from channel metadata and segment seeds", () => {
   const archive = buildSiteArchiveData(sampleInput());
@@ -102,6 +105,65 @@ test("loads curated site content from per-video files", async () => {
     await rm(directory, { recursive: true, force: true });
   }
 });
+
+test("reports every source shard for duplicate segment IDs and slugs", async () => {
+  const directory = await mkdtemp(join(tmpdir(), "naval-site-content-duplicates-"));
+  try {
+    await writeFile(join(directory, "topics.json"), JSON.stringify({
+      schemaVersion: 1,
+      topics: [],
+    }));
+    await writeFile(join(directory, "video-abc123.json"), JSON.stringify({
+      schemaVersion: 1,
+      videoId: "abc123",
+      topics: [],
+      segments: [sampleCuratedSegment("abc123", "First title")],
+    }));
+    await writeFile(join(directory, "video-def456.json"), JSON.stringify({
+      schemaVersion: 1,
+      videoId: "def456",
+      topics: [],
+      segments: [sampleCuratedSegment("def456", "Second title")],
+    }));
+
+    const duplicates = await findCuratedSegmentDuplicates(directory);
+    assert.deepEqual(
+      duplicates.map((duplicate) => [duplicate.field, duplicate.value, duplicate.occurrences.length]),
+      [
+        ["id", "duplicate-segment", 2],
+        ["slug", "duplicate-segment", 2],
+      ],
+    );
+
+    await assert.rejects(
+      () => loadCuratedArchiveSeed(directory),
+      (error: Error) => {
+        assert.match(error.message, /Duplicate segment ID: duplicate-segment/u);
+        assert.match(error.message, /video-abc123\.json/u);
+        assert.match(error.message, /video-def456\.json/u);
+        assert.match(error.message, /First title/u);
+        assert.match(error.message, /Second title/u);
+        return true;
+      },
+    );
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+function sampleCuratedSegment(videoId: string, title: string) {
+  return {
+    id: "duplicate-segment",
+    slug: "duplicate-segment",
+    videoId,
+    title,
+    kind: "chapter",
+    start: "1:23",
+    topics: [],
+    summary: "Summary.",
+    body: "Body.",
+  };
+}
 
 function sampleInput(): Parameters<typeof buildSiteArchiveData>[0] {
   return {
