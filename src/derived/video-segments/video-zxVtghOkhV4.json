@@ -2,59 +2,338 @@
   "schemaVersion": 1,
   "videoId": "zxVtghOkhV4",
   "topics": [
-    "missiles",
     "naval-weapons",
+    "vertical-launch-systems",
     "naval-gunnery",
-    "ship-design",
-    "naval-procurement",
-    "carrier-groups",
-    "modern-navy",
-    "air-defence"
+    "modular-warships",
+    "naval-logistics",
+    "battle-of-jutland"
   ],
   "segments": [
     {
-      "id": "scuttlebutt-17-vls-carriers-and-gun-tradeoffs",
-      "slug": "scuttlebutt-17-vls-carriers-and-gun-tradeoffs",
-      "title": "VLS, carriers, and naval gun tradeoffs",
-      "kind": "notable_point",
+      "id": "taiwan-convoys-vls-and-carrier-airpower",
+      "videoId": "zxVtghOkhV4",
+      "slug": "taiwan-convoys-vls-and-carrier-airpower",
+      "title": "Can 10,000 VLS cells protect each Taiwan convoy?",
+      "kind": "qa",
       "start": "1:44",
-      "end": "23:16",
+      "end": "9:26",
       "topics": [
-        "missiles",
-        "naval-weapons",
-        "naval-gunnery",
-        "ship-design",
-        "naval-procurement",
-        "carrier-groups",
-        "modern-navy",
-        "air-defence"
+        "taiwan",
+        "vertical-launch-systems",
+        "arleigh-burke-class",
+        "aircraft-carriers",
+        "carrier-battle-groups",
+        "naval-logistics",
+        "arsenal-ships"
       ],
-      "summary": "The Scuttlebutt response links VLS saturation assumptions, carrier rearming, reloadable launchers, Canadian Type 26 choices, and modern naval gun value.",
-      "body": "The discussion captures the episode's main weapons-design thread rather than every comment response. Dr. Clarke starts by challenging a 10,000-cell VLS convoy claim, uses carriers as the practical reloadable arsenal ship, and then turns to reload-at-sea launch systems, Canadian River-class VLS fit, and why guns still matter after missile-centric design culture.",
+      "summary": "A claim that every Taiwan-bound convoy needs 10,000 VLS cells leads to a force-structure comparison between Arleigh Burke destroyers and reloadable carrier airpower.",
+      "body": "Dr. Clarke tests the claim against the 96-cell fit of an Arleigh Burke and concludes that it implies roughly 105 destroyers for one convoy, before accounting for repeated operations. He argues that aircraft carriers, drone carriers, and LHDs provide the more practical model because their aircraft can be rearmed at sea and generate repeated strikes. The scenario therefore points toward layered carrier groups with air, point-defence, and anti-submarine protection rather than an immense disposable bank of VLS cells.",
+      "question": "Would each convoy entering a Taiwan conflict need about 10,000 VLS cells?",
+      "answerShort": "No; that estimate exceeds plausible missile and destroyer capacity, while carrier airpower offers reloadable, repeated firepower within a layered task group.",
+      "sourcePath": "src/transcripts/txt/2025-12-29_T19-30-06_scuttlebutt-17-missiles-guns-and-other-barrels-of-fun_zxVtghOkhV4.txt",
       "evidence": [
         {
           "start": "1:44",
-          "end": "7:24",
-          "note": "The opening response challenges the 10,000-cell VLS premise and reframes the problem around carrier battle groups and reloadable airpower."
+          "end": "4:23",
+          "note": "The response calculates the destroyer requirement and questions the 10,000-cell premise."
         },
+        {
+          "start": "4:25",
+          "end": "7:24",
+          "note": "Carrier aviation is presented as reloadable firepower and the practical counterpart to an arsenal ship."
+        },
+        {
+          "start": "7:26",
+          "end": "9:26",
+          "note": "The answer discusses carrier availability and uncertainty around projected Taiwan conflict windows."
+        }
+      ]
+    },
+    {
+      "id": "rearming-vls-ships-at-sea",
+      "videoId": "zxVtghOkhV4",
+      "slug": "rearming-vls-ships-at-sea",
+      "title": "Why VLS rearming at sea changes fleet endurance",
+      "kind": "notable_point",
+      "start": "9:28",
+      "end": "12:03",
+      "topics": [
+        "vertical-launch-systems",
+        "missile-rearming",
+        "naval-logistics",
+        "fleet-auxiliaries",
+        "swing-arm-launchers",
+        "saturation-attacks"
+      ],
+      "summary": "The advantages of VLS are weighed against its poor reloadability, with mixed launchers and shipboard loading gear offered as ways to restore endurance.",
+      "body": "VLS gives rapid firing, redundancy, and independent cells, but a ship that cannot replenish those cells at sea can exhaust its combat value during a dense missile campaign. Dr. Clarke considers mixing VLS with reloadable swing-arm launchers and prefers loading equipment carried aboard each combatant. That arrangement would let an auxiliary distribute missiles quickly and move on while individual ships restow their own cells.",
+      "sourcePath": "src/transcripts/txt/2025-12-29_T19-30-06_scuttlebutt-17-missiles-guns-and-other-barrels-of-fun_zxVtghOkhV4.txt",
+      "evidence": [
         {
           "start": "9:28",
-          "end": "12:03",
-          "note": "The missile-centrism section argues that VLS is powerful but hard to reload at sea, motivating mixed launch systems or onboard loading gear."
+          "end": "10:58",
+          "note": "The transcript contrasts VLS advantages with the need for a reloadable weapon option."
         },
+        {
+          "start": "11:02",
+          "end": "12:03",
+          "note": "An onboard gantry is preferred so a supply ship need not remain alongside for the complete reload."
+        }
+      ]
+    },
+    {
+      "id": "canadian-river-class-vls-and-role",
+      "videoId": "zxVtghOkhV4",
+      "slug": "canadian-river-class-vls-and-role",
+      "title": "Do Canada's River-class combatants offer value?",
+      "kind": "qa",
+      "start": "12:09",
+      "end": "15:52",
+      "topics": [
+        "river-class-destroyers",
+        "canadian-navy",
+        "type-26-frigates",
+        "vertical-launch-systems",
+        "essm",
+        "anti-submarine-warfare",
+        "warship-classification"
+      ],
+      "summary": "A value-for-money challenge to Canada's Type 26-derived River class opens a comparison of VLS capacity, European ASW frigates, and Canadian destroyer terminology.",
+      "body": "The answer notes that the Canadian design carries multiple launch systems, reserves space for additional Mark 41 cells, and devotes substantial volume to data systems. A comparison with the Dutch-Belgian ASW frigate programme shows why eight or sixteen quad-packed ESSM cells produce very different local-defence capacity. Dr. Clarke also explains that Canadian usage treats a destroyer as a general-purpose combatant and a frigate as an ASW-focused ship, making the River-class label historically consistent.",
+      "question": "Is the Canadian Surface Combatant, or River class, poor value for money?",
+      "answerShort": "Its cost and fit need context: it combines several launch systems and data capacity, and fifteen general-purpose ships would give Canada a useful force if delivered.",
+      "sourcePath": "src/transcripts/txt/2025-12-29_T19-30-06_scuttlebutt-17-missiles-guns-and-other-barrels-of-fun_zxVtghOkhV4.txt",
+      "evidence": [
         {
           "start": "12:09",
-          "end": "15:52",
-          "note": "The Canadian Surface Combatant discussion compares VLS counts, ESSM packing, program changes, and Canadian destroyer versus frigate terminology."
+          "end": "12:46",
+          "note": "The response identifies the River class launch-system mix, expansion space, and data-centre volume."
         },
         {
-          "start": "16:19",
-          "end": "23:16",
-          "note": "The gun-caliber section explains 6-inch and 9.2-inch sweet spots, missile-era neglect of guns, and the ship-design impact of weapon and computer-system choices."
+          "start": "12:50",
+          "end": "14:58",
+          "note": "Dutch and Belgian ASW frigate plans illustrate the operational significance of cell counts and ESSM quad-packing."
+        },
+        {
+          "start": "15:08",
+          "end": "15:52",
+          "note": "Canadian destroyer and frigate labels are tied to general-purpose and ASW roles."
         }
-      ],
+      ]
+    },
+    {
+      "id": "six-inch-guns-for-modern-capital-ships",
       "videoId": "zxVtghOkhV4",
-      "sourcePath": "src/transcripts/txt/2025-12-29_T19-30-06_scuttlebutt-17-missiles-guns-and-other-barrels-of-fun_zxVtghOkhV4.txt"
+      "slug": "six-inch-guns-for-modern-capital-ships",
+      "title": "What gun caliber suits a modern capital ship?",
+      "kind": "qa",
+      "start": "16:19",
+      "end": "20:43",
+      "topics": [
+        "naval-gunnery",
+        "six-inch-guns",
+        "nine-point-two-inch-guns",
+        "automatic-guns",
+        "naval-gunfire-support",
+        "air-defence",
+        "falklands-war"
+      ],
+      "summary": "A proposed multi-domain capital ship prompts an explanation of why six-inch guns offer a useful balance of shell effect, rate of fire, and installation cost.",
+      "body": "Dr. Clarke identifies six inches, or roughly 152-155 mm, as the likely modern sweet spot, with 9.2 inches as the next meaningful jump in shell effect. He explains that treaty-era eight-inch guns did not necessarily outperform rapid-firing six-inch weapons in explosive delivered over time. Modern automation narrows the rate-of-fire gap between five- and six-inch mounts, while the Falklands War and other conflicts show the continuing value of guns for air defence, general-purpose fire, and shore support.",
+      "question": "How large should the guns be on a resilient modern multi-domain capital ship?",
+      "answerShort": "About six inches offers the strongest balance for most modern ships; larger calibers bring greater shell effect but progressively worse weight and rate-of-fire tradeoffs.",
+      "sourcePath": "src/transcripts/txt/2025-12-29_T19-30-06_scuttlebutt-17-missiles-guns-and-other-barrels-of-fun_zxVtghOkhV4.txt",
+      "evidence": [
+        {
+          "start": "16:19",
+          "end": "18:50",
+          "note": "The response derives six-inch and 9.2-inch caliber sweet spots from shell effect and rate of fire."
+        },
+        {
+          "start": "18:52",
+          "end": "20:43",
+          "note": "Postwar automatic guns, missile centrism, combat experience, and modern ship size frame the case for six-inch weapons."
+        }
+      ]
+    },
+    {
+      "id": "warship-computers-and-redundant-design",
+      "videoId": "zxVtghOkhV4",
+      "slug": "warship-computers-and-redundant-design",
+      "title": "Modern warship cost and the danger of cascading failures",
+      "kind": "notable_point",
+      "start": "20:50",
+      "end": "23:17",
+      "topics": [
+        "warship-design",
+        "combat-systems",
+        "damage-control",
+        "system-redundancy",
+        "electromagnetic-pulse",
+        "naval-procurement"
+      ],
+      "summary": "Ruggedized data systems and carefully separated redundancy matter more to warship cost and survival than a modest increase in gun-mount weight.",
+      "body": "Large modern warships devote major cost and volume to data centres whose components must withstand shock, electromagnetic effects, and battle damage. Dr. Clarke compares computer casualties with flooding and fire: none must be decisive until damage overwhelms the crew or redundant systems. A single hit that disables the entire combat system therefore reveals a design with an avoidable single point of failure.",
+      "sourcePath": "src/transcripts/txt/2025-12-29_T19-30-06_scuttlebutt-17-missiles-guns-and-other-barrels-of-fun_zxVtghOkhV4.txt",
+      "evidence": [
+        {
+          "start": "20:50",
+          "end": "22:10",
+          "note": "The transcript describes the expense and protection requirements of warship computing hardware."
+        },
+        {
+          "start": "22:13",
+          "end": "23:17",
+          "note": "Survivability is framed around controlling damage and preventing cascading system failures."
+        }
+      ]
+    },
+    {
+      "id": "ten-inch-gun-caliber-tradeoffs",
+      "videoId": "zxVtghOkhV4",
+      "slug": "ten-inch-gun-caliber-tradeoffs",
+      "title": "Why ten-inch naval guns miss the caliber sweet spots",
+      "kind": "qa",
+      "start": "24:03",
+      "end": "30:05",
+      "topics": [
+        "naval-gunnery",
+        "ten-inch-guns",
+        "nine-point-two-inch-guns",
+        "twelve-inch-guns",
+        "sixteen-inch-guns",
+        "g3-battlecruisers",
+        "washington-naval-treaty"
+      ],
+      "summary": "A proposed automatic ten-inch gun is compared with faster 9.2-inch weapons and harder-hitting twelve-inch guns, revealing why the intermediate caliber was uncommon.",
+      "body": "Once shells become heavy enough to require powerful mechanical handling, calibers from roughly ten to fourteen inches tend toward similar loading constraints. A ten-inch mount therefore loses the rapid-fire advantage of a 9.2-inch weapon without gaining the impact of a twelve-inch gun. The answer extends the tradeoff to the G3 battlecruisers and asks how completed British 16.5-inch guns might have shaped Washington Treaty negotiations and later battleship debates.",
+      "question": "Would an automatic ten-inch gun be an effective compromise for a modern large warship?",
+      "answerShort": "Probably not; it carries much of the machinery and weight of a twelve-inch system but lacks both that gun's impact and a 9.2-inch gun's rate of fire.",
+      "sourcePath": "src/transcripts/txt/2025-12-29_T19-30-06_scuttlebutt-17-missiles-guns-and-other-barrels-of-fun_zxVtghOkhV4.txt",
+      "evidence": [
+        {
+          "start": "24:03",
+          "end": "27:23",
+          "note": "The response compares loading machinery, firing rate, shell effect, and the treaty origin of the eight-inch limit."
+        },
+        {
+          "start": "27:24",
+          "end": "30:05",
+          "note": "The caliber discussion expands to 16.5-inch G3 guns and the political difficulty of funding marginally larger weapons."
+        }
+      ]
+    },
+    {
+      "id": "mission-bays-modularity-and-type-83",
+      "videoId": "zxVtghOkhV4",
+      "slug": "mission-bays-modularity-and-type-83",
+      "title": "Are mission bays a liability for future destroyers?",
+      "kind": "qa",
+      "start": "30:53",
+      "end": "33:39",
+      "topics": [
+        "mission-bays",
+        "modular-warships",
+        "type-83-destroyers",
+        "type-26-frigates",
+        "type-31-frigates",
+        "stanflex",
+        "uncrewed-systems",
+        "humanitarian-assistance"
+      ],
+      "summary": "Concern about LCS-style modularity is answered with practical mission-bay roles on Danish and British warships, from boats and disaster relief to uncrewed systems and command facilities.",
+      "body": "Dr. Clarke separates the troubled Littoral Combat Ship model from mission bays that navies have used successfully for decades. Type 26 and Type 31 spaces can carry additional boats, relief supplies, uncrewed surface or undersea vehicles, electronic-warfare equipment, or an ad hoc flagship staff. Danish StanFlex experience shows that modularity improves adaptability, but it still requires funding and cannot make one hull cover two places at once.",
+      "question": "Do Littoral Combat Ship problems show that mission bays are a bad idea for ships such as Type 83?",
+      "answerShort": "No; well-designed mission bays are useful flexible spaces, although modularity needs sustained funding and cannot substitute for adequate ship numbers.",
+      "sourcePath": "src/transcripts/txt/2025-12-29_T19-30-06_scuttlebutt-17-missiles-guns-and-other-barrels-of-fun_zxVtghOkhV4.txt",
+      "evidence": [
+        {
+          "start": "30:53",
+          "end": "32:50",
+          "note": "The answer lists proven mission-bay uses for boats, relief cargo, uncrewed systems, electronic warfare, and command staffs."
+        },
+        {
+          "start": "32:53",
+          "end": "33:39",
+          "note": "Danish modularity illustrates adaptability while the speaker stresses its funding and hull-number limits."
+        }
+      ]
+    },
+    {
+      "id": "british-shells-and-international-naval-technology",
+      "videoId": "zxVtghOkhV4",
+      "slug": "british-shells-and-international-naval-technology",
+      "title": "Shell defects and shared technology in the naval arms race",
+      "kind": "notable_point",
+      "start": "35:46",
+      "end": "39:17",
+      "topics": [
+        "british-shells",
+        "greenboy-shells",
+        "anglo-german-naval-race",
+        "naval-industrial-base",
+        "parsons-turbines",
+        "imperial-japanese-navy",
+        "austro-hungarian-navy",
+        "naval-architecture"
+      ],
+      "summary": "A counterfactual battle question first uncovers British shell defects and the surprising cross-border exchange of fuzes, turbines, and shipbuilding expertise before 1914.",
+      "body": "British 15-inch shells were imperfect before Jutland, but Dr. Clarke describes the earlier 13.5-inch ammunition as the more serious problem; the later Greenboy improvements addressed defects across several calibers. The discussion then highlights how supposed naval rivals depended on one another's technology, including British Parsons turbines in German ships and extensive exchange among Britain, the United States, Japan, Italy, and Austria-Hungary. Strategic planning still had to assume that an opponent would build a strong design competently rather than rely on industrial shortcomings.",
+      "sourcePath": "src/transcripts/txt/2025-12-29_T19-30-06_scuttlebutt-17-missiles-guns-and-other-barrels-of-fun_zxVtghOkhV4.txt",
+      "evidence": [
+        {
+          "start": "35:46",
+          "end": "37:13",
+          "note": "The response distinguishes 15-inch and 13.5-inch shell problems and notes British and German dependence on foreign components."
+        },
+        {
+          "start": "37:15",
+          "end": "39:17",
+          "note": "The naval arms race is described as technologically interconnected, with Austria-Hungary singled out for strong naval architecture."
+        }
+      ]
+    },
+    {
+      "id": "dogger-bank-counterfactual-and-shell-reform",
+      "videoId": "zxVtghOkhV4",
+      "slug": "dogger-bank-counterfactual-and-shell-reform",
+      "title": "Would a different Dogger Bank expose British shell defects?",
+      "kind": "qa",
+      "start": "35:46",
+      "end": "42:03",
+      "topics": [
+        "battle-of-dogger-bank",
+        "battle-of-jutland",
+        "battlecruisers",
+        "royal-navy",
+        "imperial-german-navy",
+        "british-shells",
+        "night-fighting",
+        "lessons-learned"
+      ],
+      "summary": "Whether hypothetical 15-inch British battlecruisers reveal shell defects at Dogger Bank depends less on hits than on whether the Germans escape a frustrating result.",
+      "body": "A crushing British success would probably conceal the ammunition problem because victory discourages scrutiny, much as the historical result did. If German ships survived numerous hits and escaped, frustrated gunnery officers would have stronger reason to investigate shell performance. Dr. Clarke connects that institutional response to Jutland, where a strategic British success still drove decades of attention to night fighting because the High Seas Fleet got home.",
+      "question": "If hypothetical British 15-inch battlecruisers fought at Dogger Bank, would the Royal Navy discover its shell problem before Jutland?",
+      "answerShort": "Only if the battle produced a frustrating escape after many hits; an overwhelming victory would be less likely to trigger close scrutiny of ammunition performance.",
+      "sourcePath": "src/transcripts/txt/2025-12-29_T19-30-06_scuttlebutt-17-missiles-guns-and-other-barrels-of-fun_zxVtghOkhV4.txt",
+      "evidence": [
+        {
+          "start": "35:46",
+          "end": "36:16",
+          "note": "The audience prompt asks whether 15-inch battlecruisers at Dogger Bank expose British shell defects early."
+        },
+        {
+          "start": "39:21",
+          "end": "40:00",
+          "note": "The answer contrasts a decisive success with an escape that would provoke gunnery officers to ask questions."
+        },
+        {
+          "start": "40:03",
+          "end": "42:03",
+          "note": "Jutland is used to show how an incomplete victory can motivate prolonged doctrinal reform."
+        }
+      ]
     }
   ]
 }

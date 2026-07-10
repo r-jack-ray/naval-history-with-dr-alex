@@ -85,7 +85,7 @@ Optional fields:
 - `question`: required when `kind` is `qa`.
 - `answerShort`: required when `kind` is `qa`.
 
-For live streams, create one segment per substantive transcript-visible Q&A exchange while preserving lecture blocks under their proper segment kinds. `start` points to that question (or the nearest reliable transcript timestamp), `question` is a concise faithful restatement of the prompt, and `answerShort` is a concise faithful summary of Dr. Clarke's answer. Do not combine unrelated audience questions into a generic Q&A overview.
+For every first-pass transcript, scan the full duration for substantive transcript-visible Q&A regardless of source type or title. Create one segment per exchange while preserving lecture blocks under their proper segment kinds; do not defer all Q&A to a later audit. `start` points to that question (or the nearest reliable transcript timestamp), `question` is a concise faithful restatement of the prompt, and `answerShort` is a concise faithful summary of Dr. Clarke's answer. Do not combine unrelated audience questions into a generic Q&A overview.
 
 ## Public Content Intent
 

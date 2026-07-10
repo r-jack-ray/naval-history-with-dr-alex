@@ -109,6 +109,48 @@ test("requires the live-stream mixed-content extraction policy", () => {
   assert.match(configIssue?.message ?? "", /liveStreamExtraction object/u);
 });
 
+test("requires first-pass subject and Q&A content scans", () => {
+  const processingConfig = sampleProcessingConfig();
+  processingConfig.firstPass.requiredContentScans = ["subject-segments"] as SiteContentProcessingConfig["firstPass"]["requiredContentScans"];
+
+  const audit = buildSiteContentAudit({
+    manifest: sampleManifest(),
+    seed: sampleSeed(),
+    processingConfig,
+    processingConfigPath: "src/derived/site-content-processing.config.json",
+    processingLogText: "",
+    rootDir: ".",
+    transcriptRoot: "src/transcripts",
+    limit: 10,
+    fileExists: () => true,
+  });
+
+  const configIssue = audit.issues.find((issue) => issue.code === "processing-config-invalid");
+  assert.equal(configIssue?.severity, "error");
+  assert.match(configIssue?.message ?? "", /requiredContentScans must contain subject-segments and qa-exchanges/u);
+});
+
+test("requires full-file best-effort first-pass processing", () => {
+  const processingConfig = sampleProcessingConfig();
+  processingConfig.firstPass.processingMode = "sampled" as SiteContentProcessingConfig["firstPass"]["processingMode"];
+
+  const audit = buildSiteContentAudit({
+    manifest: sampleManifest(),
+    seed: sampleSeed(),
+    processingConfig,
+    processingConfigPath: "src/derived/site-content-processing.config.json",
+    processingLogText: "",
+    rootDir: ".",
+    transcriptRoot: "src/transcripts",
+    limit: 10,
+    fileExists: () => true,
+  });
+
+  const configIssue = audit.issues.find((issue) => issue.code === "processing-config-invalid");
+  assert.equal(configIssue?.severity, "error");
+  assert.match(configIssue?.message ?? "", /processingMode must be "full-file-best-effort"/u);
+});
+
 test("requires the shard-derived automatic topic lifecycle", () => {
   const { topicLifecycle: _topicLifecycle, ...processingConfig } = sampleProcessingConfig();
 
@@ -327,8 +369,10 @@ function sampleProcessingConfig(): SiteContentProcessingConfig {
     firstPass: {
       defaultAction: "curated granular first-pass segments",
       defaultNeedsFurtherProcessing: true,
+      processingMode: "full-file-best-effort",
       minimumEvidenceWindows: 1,
       preferredSegmentKinds: ["notable_point", "chapter", "qa", "transcript_excerpt"],
+      requiredContentScans: ["subject-segments", "qa-exchanges"],
       guidance: "Add useful transcript-backed watch points.",
     },
     videoLevelTopics: {

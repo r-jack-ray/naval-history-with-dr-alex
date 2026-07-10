@@ -3,6 +3,7 @@
   "firstPass": {
     "defaultAction": "curated granular first-pass segments",
     "defaultNeedsFurtherProcessing": true,
+    "processingMode": "full-file-best-effort",
     "minimumEvidenceWindows": 1,
     "preferredSegmentKinds": [
       "notable_point",
@@ -10,7 +11,11 @@
       "qa",
       "transcript_excerpt"
     ],
-    "guidance": "Let segment count arise from the transcript. Do not target a minimum, maximum, or preferred numeric range. Split whenever the subject, argument, example, Q&A exchange, or topic meaningfully changes, and avoid both broad catch-all notes and artificial padding. Live streams require full-duration mixed-content extraction under liveStreamExtraction. Mark needsFurtherProcessing=yes unless the transcript was fully chaptered, Q&A was extracted, or intentionally closed without site content."
+    "requiredContentScans": [
+      "subject-segments",
+      "qa-exchanges"
+    ],
+    "guidance": "Every first pass must do as much useful in-file processing as the configured model and effort can support across the full transcript. Inspect for both subject segments and transcript-visible Q&A regardless of source type or title; preserve substantive chapters and notable points, and create a separate qa segment for every substantive prompt and response. Do not stop at an overview, sample a subset, or deliberately reserve supported content for a later stage. Let segment count arise from the transcript; do not target a numeric range or create padding. Mark needsFurtherProcessing=yes when the lower-effort run genuinely leaves substantive chapter or Q&A coverage unresolved, and never report a pass complete when transcript-visible Q&A was skipped."
   },
   "videoLevelTopics": {
     "mode": "curated-summary-subset",

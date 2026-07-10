@@ -30,8 +30,10 @@ export interface SiteContentProcessingConfig {
   firstPass: {
     defaultAction: string;
     defaultNeedsFurtherProcessing: boolean;
+    processingMode: "full-file-best-effort";
     minimumEvidenceWindows: number;
     preferredSegmentKinds: SegmentKind[];
+    requiredContentScans: Array<"subject-segments" | "qa-exchanges">;
     guidance: string;
   };
   videoLevelTopics: {
@@ -553,10 +555,14 @@ function validateProcessingConfig(
     if (typeof firstPass.defaultNeedsFurtherProcessing !== "boolean") {
       report("firstPass.defaultNeedsFurtherProcessing must be a boolean.");
     }
+    if (firstPass.processingMode !== "full-file-best-effort") {
+      report('firstPass.processingMode must be "full-file-best-effort".');
+    }
     if (!Number.isInteger(firstPass.minimumEvidenceWindows) || Number(firstPass.minimumEvidenceWindows) < 1) {
       report("firstPass.minimumEvidenceWindows must be a positive integer.");
     }
     validateSegmentKindArray(firstPass.preferredSegmentKinds, "firstPass.preferredSegmentKinds", report, allowedKinds, true);
+    validateRequiredFirstPassContentScans(firstPass.requiredContentScans, report);
     validateNonEmptyString(firstPass.guidance, "firstPass.guidance", report);
   }
 
@@ -584,6 +590,21 @@ function validateProcessingConfig(
     return undefined;
   }
   return value as unknown as SiteContentProcessingConfig;
+}
+
+function validateRequiredFirstPassContentScans(
+  value: unknown,
+  report: (message: string) => void,
+): void {
+  const expectedScans = new Set(["subject-segments", "qa-exchanges"]);
+  if (
+    !Array.isArray(value)
+    || value.length !== expectedScans.size
+    || value.some((scan) => typeof scan !== "string" || !expectedScans.has(scan))
+    || new Set(value).size !== expectedScans.size
+  ) {
+    report("firstPass.requiredContentScans must contain subject-segments and qa-exchanges exactly once.");
+  }
 }
 
 function validateContentExhaustion(
