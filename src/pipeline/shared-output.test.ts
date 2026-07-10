@@ -62,6 +62,7 @@ test("validation hooks generate the archive once before their generated-data che
   assert.match(contentHook, /\$retainActiveLock = \$RetainCallerLease -and \$callerProvidedLock/u);
   assert.match(siteHook, /site:check:generated/u);
   assert.match(siteHook, /site:build:generated/u);
+  assert.match(packageJson.scripts["generate:site-data"] ?? "", /--recover-stale -- node/u);
   assert.doesNotMatch(packageJson.scripts["site:check:generated"] ?? "", /generate:site-data/u);
   assert.doesNotMatch(packageJson.scripts["site:build:generated"] ?? "", /generate:site-data/u);
 });
@@ -228,6 +229,51 @@ test("lock-aware log appends and stale recovery preserve diagnostics", async () 
     ]);
     assert.equal(released.code, 0, released.stderr);
     assert.equal(existsSync(lockPath), false);
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+test("one-shot writer commands recover a stale lease and preserve its diagnostics", async () => {
+  const directory = await mkdtemp(join(tmpdir(), "site-content-stale-run-"));
+  const lockPath = join(directory, "writer.lock");
+  const markerPath = join(directory, "ran.txt");
+
+  try {
+    await mkdir(lockPath, { recursive: true });
+    await writeFile(join(lockPath, "owner.json"), JSON.stringify({
+      schemaVersion: 1,
+      token: "stale-run-token",
+      owner: "interrupted-worker",
+      purpose: "test",
+      acquiredAt: "2026-07-09T00:00:00.000Z",
+      renewedAt: "2026-07-09T00:00:00.000Z",
+      expiresAt: "2026-07-09T00:01:00.000Z",
+    }), "utf8");
+
+    const recovered = await runNode([
+      lockTool,
+      "run",
+      "--lock-path",
+      lockPath,
+      "--wait-ms",
+      "0",
+      "--recover-stale",
+      "--",
+      "node",
+      "-e",
+      `require('node:fs').writeFileSync(${JSON.stringify(markerPath)}, 'ran')`,
+    ]);
+    assert.equal(recovered.code, 0, recovered.stderr);
+    assert.equal(await readFile(markerPath, "utf8"), "ran");
+    assert.equal(existsSync(lockPath), false);
+
+    const quarantined = (await readdir(directory)).filter((entry) => entry.startsWith("writer.lock.stale-"));
+    assert.equal(quarantined.length, 1);
+    const previousLease = JSON.parse(
+      await readFile(join(directory, quarantined[0] ?? "", "owner.json"), "utf8"),
+    ) as { token: string };
+    assert.equal(previousLease.token, "stale-run-token");
   } finally {
     await rm(directory, { recursive: true, force: true });
   }

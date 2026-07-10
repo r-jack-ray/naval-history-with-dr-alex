@@ -24,7 +24,7 @@
     "fetch:transcripts:retry": "npm run fetch:transcripts -- --retry-failed",
     "fetch:video-metadata": "npm run build && node dist/scripts/fetch-video-metadata.js --api-key-file reports/youtube-api-key.txt",
     "fetch:video-links": "npm run build && node dist/scripts/get-channel-video-links.js --api-key-file reports/youtube-api-key.txt",
-    "generate:site-data": "node .codex/hooks/site-content-pipeline-lock.mjs run --build --purpose site-archive-generation -- node dist/scripts/generate-site-data.js",
+    "generate:site-data": "node .codex/hooks/site-content-pipeline-lock.mjs run --build --purpose site-archive-generation --recover-stale -- node dist/scripts/generate-site-data.js",
     "merge:video-links": "npm run build && node dist/scripts/merge-channel-video-links.js",
     "site:build": "npm run generate:site-data && npm run site:build:generated",
     "site:build:generated": "astro build && pagefind --site site/dist",
