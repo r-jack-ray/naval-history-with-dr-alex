@@ -70,17 +70,17 @@ const isActivePath = (path: string) => currentPath.startsWith(`${baseUrl}${path}
             }
           </nav>
           <div class="theme-switcher" role="group" aria-label="Color theme">
-            <button type="button" data-theme-choice="light" aria-pressed="false">
+            <button type="button" data-theme-choice="light" aria-label="Use light theme" aria-pressed="false">
               <span class="theme-icon theme-icon-light" aria-hidden="true"></span>
-              <span>Light</span>
+              <span class="theme-label">Light</span>
             </button>
-            <button type="button" data-theme-choice="dark" aria-pressed="false">
+            <button type="button" data-theme-choice="dark" aria-label="Use dark theme" aria-pressed="false">
               <span class="theme-icon theme-icon-dark" aria-hidden="true"></span>
-              <span>Dark</span>
+              <span class="theme-label">Dark</span>
             </button>
-            <button type="button" data-theme-choice="system" aria-pressed="false">
+            <button type="button" data-theme-choice="system" aria-label="Use system theme" aria-pressed="false">
               <span class="theme-icon theme-icon-system" aria-hidden="true"></span>
-              <span>System</span>
+              <span class="theme-label">System</span>
             </button>
           </div>
         </div>
