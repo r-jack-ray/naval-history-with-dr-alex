@@ -84,6 +84,8 @@ Optional fields:
 - `question`: required when `kind` is `qa`.
 - `answerShort`: required when `kind` is `qa`.
 
+For live streams, create one segment per substantive transcript-visible Q&A exchange while preserving lecture blocks under their proper segment kinds. `start` points to that question (or the nearest reliable transcript timestamp), `question` is a concise faithful restatement of the prompt, and `answerShort` is a concise faithful summary of Dr. Clarke's answer. Do not combine unrelated audience questions into a generic Q&A overview.
+
 ## Public Content Intent
 
 - `title` and `summary` should work as a watch point: name the naval subject and preview what the reader will learn by opening the video there.

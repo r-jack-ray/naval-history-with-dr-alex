@@ -16,6 +16,7 @@
     "check:types": "tsc --noEmit -p tsconfig.json",
     "clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
     "convert:transcript-json": "npm run build && node dist/scripts/convert-transcript-json.js",
+    "diagnose:site-content-duplicates": "npm run build && node dist/scripts/diagnose-site-content-duplicates.js",
     "alternate:extract:saved-channel-html": "npm run build && node dist/scripts/extract-saved-channel-html.js",
     "alternate:extract:live-streams-html": "npm run build && node dist/scripts/extract-live-streams-html.js",
     "alternate:extract:videos-html": "npm run alternate:extract:saved-channel-html -- --tab videos",

@@ -89,8 +89,19 @@ const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${c
                 <a href={`${baseUrl}segments/${segment.slug}/`}>
                   <span>{segment.start}</span>
                   <div>
-                    <strong>{segment.title}</strong>
-                    <p>{segment.summary}</p>
+                    {segment.kind === "qa" && segment.question && segment.answerShort ? (
+                      <>
+                        <span class="qa-field-label">Question</span>
+                        <strong>{segment.question}</strong>
+                        <span class="qa-field-label answer-label">Answer</span>
+                        <p>{segment.answerShort}</p>
+                      </>
+                    ) : (
+                      <>
+                        <strong>{segment.title}</strong>
+                        <p>{segment.summary}</p>
+                      </>
+                    )}
                   </div>
                   <small>{segment.kindLabel}</small>
                 </a>

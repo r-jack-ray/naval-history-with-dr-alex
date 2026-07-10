@@ -38,6 +38,25 @@ export interface SiteContentProcessingConfig {
     mode: "curated-summary-subset";
     requireAllSegmentTopics: false;
   };
+  liveStreamExtraction: {
+    mode: "full-duration-mixed-content";
+    explicitQaTitleMarkers: string[];
+    requiredQaFields: Array<"start" | "question" | "answerShort">;
+    guidance: string;
+  };
+  topicLifecycle: {
+    mode: "content-derived-iterative";
+    transcriptPass: string;
+    auditPass: string;
+    consolidationPass: string;
+    completionRule: string;
+  };
+  contentExhaustion: {
+    mode: "model-effort-saturation";
+    comparisonScope: string;
+    stopRule: string;
+    reopenRule: string;
+  };
   followUpStages: Array<{
     slug: string;
     title: string;
@@ -554,6 +573,10 @@ function validateProcessingConfig(
     }
   }
 
+  validateLiveStreamExtraction(value.liveStreamExtraction, report);
+  validateTopicLifecycle(value.topicLifecycle, report);
+  validateContentExhaustion(value.contentExhaustion, report);
+
   const followUpStageSlugs = validateFollowUpStages(value.followUpStages, report);
   validateVideoTypeRules(value.videoTypeRules, report, allowedKinds, followUpStageSlugs);
   validateTopicGroups(value.topicGroups, report);
@@ -562,6 +585,98 @@ function validateProcessingConfig(
     return undefined;
   }
   return value as unknown as SiteContentProcessingConfig;
+}
+
+function validateContentExhaustion(
+  value: unknown,
+  report: (message: string) => void,
+): void {
+  if (!isRecord(value)) {
+    report("Site content processing config must include a contentExhaustion object.");
+    return;
+  }
+
+  if (value.mode !== "model-effort-saturation") {
+    report('contentExhaustion.mode must be "model-effort-saturation".');
+  }
+  validateNonEmptyString(value.comparisonScope, "contentExhaustion.comparisonScope", report);
+  validateNonEmptyString(value.stopRule, "contentExhaustion.stopRule", report);
+  validateNonEmptyString(value.reopenRule, "contentExhaustion.reopenRule", report);
+}
+
+function validateTopicLifecycle(
+  value: unknown,
+  report: (message: string) => void,
+): void {
+  if (!isRecord(value)) {
+    report("Site content processing config must include a topicLifecycle object.");
+    return;
+  }
+
+  if (value.mode !== "content-derived-iterative") {
+    report('topicLifecycle.mode must be "content-derived-iterative".');
+  }
+  validateNonEmptyString(value.transcriptPass, "topicLifecycle.transcriptPass", report);
+  validateNonEmptyString(value.auditPass, "topicLifecycle.auditPass", report);
+  validateNonEmptyString(value.consolidationPass, "topicLifecycle.consolidationPass", report);
+  validateNonEmptyString(value.completionRule, "topicLifecycle.completionRule", report);
+}
+
+function validateLiveStreamExtraction(
+  value: unknown,
+  report: (message: string) => void,
+): void {
+  if (!isRecord(value)) {
+    report("Site content processing config must include a liveStreamExtraction object.");
+    return;
+  }
+
+  if (value.mode !== "full-duration-mixed-content") {
+    report('liveStreamExtraction.mode must be "full-duration-mixed-content".');
+  }
+
+  validateUniqueNonEmptyStringArray(
+    value.explicitQaTitleMarkers,
+    "liveStreamExtraction.explicitQaTitleMarkers",
+    report,
+  );
+
+  const requiredQaFields = value.requiredQaFields;
+  const expectedFields = new Set(["start", "question", "answerShort"]);
+  if (
+    !Array.isArray(requiredQaFields)
+    || requiredQaFields.length !== expectedFields.size
+    || requiredQaFields.some((field) => typeof field !== "string" || !expectedFields.has(field))
+    || new Set(requiredQaFields).size !== expectedFields.size
+  ) {
+    report("liveStreamExtraction.requiredQaFields must contain start, question, and answerShort exactly once.");
+  }
+
+  validateNonEmptyString(value.guidance, "liveStreamExtraction.guidance", report);
+}
+
+function validateUniqueNonEmptyStringArray(
+  value: unknown,
+  field: string,
+  report: (message: string) => void,
+): void {
+  if (!Array.isArray(value) || value.length === 0) {
+    report(`${field} must be a non-empty array.`);
+    return;
+  }
+
+  const seen = new Set<string>();
+  for (const [index, item] of value.entries()) {
+    const marker = validateNonEmptyString(item, `${field}[${index}]`, report);
+    if (marker === undefined) {
+      continue;
+    }
+    const normalizedMarker = marker.toLocaleLowerCase("en-US");
+    if (seen.has(normalizedMarker)) {
+      report(`${field}[${index}] duplicates another marker when matched case-insensitively.`);
+    }
+    seen.add(normalizedMarker);
+  }
 }
 
 function validateFollowUpStages(value: unknown, report: (message: string) => void): Set<string> {

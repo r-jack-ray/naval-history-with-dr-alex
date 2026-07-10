@@ -9,6 +9,8 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` after one or mo
 
 Use a high-accuracy single-agent runtime with high or greater reasoning effort. Keep model-version selection in the invoking runtime or automation rather than pinning it in this skill. If the runtime cannot enforce that setting, still follow this workflow with a slow, evidence-first audit stance.
 
+This audit is repeatable. A prior first, second, third, or later pass is not evidence that the content is exhausted, and a newly available stronger model is a valid reason to run another independent full-transcript comparison. If a pass only rephrases or rearranges existing material without adding transcript-backed substance, stop repeating that specific model-and-effort configuration and record it as saturated. Saturation does not prevent a future pass with a materially stronger model, higher effort, improved method, or new evidence.
+
 ## Site Intent
 
 - Write for readers learning naval history and how navies work, not for creators, maintainers, or pipeline operators.
@@ -45,6 +47,13 @@ Use a high-accuracy single-agent runtime with high or greater reasoning effort. 
 5. Do not invent new facts. If the existing evidence is too thin, either inspect the transcript around the cited time or leave a targeted follow-up note.
 6. Merge duplicate phrasing instead of padding. More text should add substance, not repetition.
 
+## Deepen Coverage And Topics
+
+1. Re-read the transcript across the audited scope, not only the existing segment windows. Add omitted chapters, notable points, and Q&A exchanges when substantive learning value is still missing from the pages.
+2. Let significant topics arise from the strengthened content. Add transcript-backed topic slugs and aliases that improve discovery; do not target a tag count or confine the audit to the existing taxonomy.
+3. After the first transcript pass and this higher-effort audit, consolidate topics: merge synonyms and near-duplicates into stable slugs, preserve useful alternate wording as aliases, and keep video-level topics as a concise summary subset of the richer segment-level topics.
+4. Treat the audit as iterative rather than terminal. On each content-exhaustion review, independently compare the full transcript against the current shard instead of reviewing only previously selected windows. Leave precise follow-up targets for thin or under-extracted ranges. Stop repeating the same model and effort when a pass produces churn without new transcript-backed substance, but keep the transcript eligible for a future review under a materially stronger configuration or improved method.
+
 ## Validate
 
 1. Regenerate generated data after editing the seed:
@@ -70,4 +79,4 @@ npm run site:build
 
 ## Handoff
 
-Report the scope audited, the number or type of records strengthened, files changed, validation commands, and any remaining transcript passages that need a deeper human or model pass.
+Report the scope audited, the number or type of records strengthened, topics added or consolidated, files changed, validation commands, and any remaining transcript passages that need another focused pass.

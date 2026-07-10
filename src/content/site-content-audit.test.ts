@@ -89,6 +89,66 @@ test("validates the processing config video-level topic policy", () => {
   assert.equal(configIssue?.path, "src/derived/site-content-processing.config.json");
 });
 
+test("requires the live-stream mixed-content extraction policy", () => {
+  const { liveStreamExtraction: _liveStreamExtraction, ...processingConfig } = sampleProcessingConfig();
+
+  const audit = buildSiteContentAudit({
+    manifest: sampleManifest(),
+    seed: sampleSeed(),
+    processingConfig,
+    processingConfigPath: "src/derived/site-content-processing.config.json",
+    processingLogText: "",
+    rootDir: ".",
+    transcriptRoot: "src/transcripts",
+    limit: 10,
+    fileExists: () => true,
+  });
+
+  const configIssue = audit.issues.find((issue) => issue.code === "processing-config-invalid");
+  assert.equal(configIssue?.severity, "error");
+  assert.match(configIssue?.message ?? "", /liveStreamExtraction object/u);
+});
+
+test("requires the content-derived iterative topic lifecycle", () => {
+  const { topicLifecycle: _topicLifecycle, ...processingConfig } = sampleProcessingConfig();
+
+  const audit = buildSiteContentAudit({
+    manifest: sampleManifest(),
+    seed: sampleSeed(),
+    processingConfig,
+    processingConfigPath: "src/derived/site-content-processing.config.json",
+    processingLogText: "",
+    rootDir: ".",
+    transcriptRoot: "src/transcripts",
+    limit: 10,
+    fileExists: () => true,
+  });
+
+  const configIssue = audit.issues.find((issue) => issue.code === "processing-config-invalid");
+  assert.equal(configIssue?.severity, "error");
+  assert.match(configIssue?.message ?? "", /topicLifecycle object/u);
+});
+
+test("requires model-and-effort scoped content-exhaustion saturation", () => {
+  const { contentExhaustion: _contentExhaustion, ...processingConfig } = sampleProcessingConfig();
+
+  const audit = buildSiteContentAudit({
+    manifest: sampleManifest(),
+    seed: sampleSeed(),
+    processingConfig,
+    processingConfigPath: "src/derived/site-content-processing.config.json",
+    processingLogText: "",
+    rootDir: ".",
+    transcriptRoot: "src/transcripts",
+    limit: 10,
+    fileExists: () => true,
+  });
+
+  const configIssue = audit.issues.find((issue) => issue.code === "processing-config-invalid");
+  assert.equal(configIssue?.severity, "error");
+  assert.match(configIssue?.message ?? "", /contentExhaustion object/u);
+});
+
 test("flags segment timestamps outside the stored transcript range", () => {
   const seed = sampleSeed();
   seed.segments[0]!.start = "20:00";
@@ -274,6 +334,25 @@ function sampleProcessingConfig(): SiteContentProcessingConfig {
     videoLevelTopics: {
       mode: "curated-summary-subset",
       requireAllSegmentTopics: false,
+    },
+    liveStreamExtraction: {
+      mode: "full-duration-mixed-content",
+      explicitQaTitleMarkers: ["Q&A", "Questions Answered"],
+      requiredQaFields: ["start", "question", "answerShort"],
+      guidance: "Inspect live streams in full and separate lecture blocks from every substantive Q&A exchange.",
+    },
+    topicLifecycle: {
+      mode: "content-derived-iterative",
+      transcriptPass: "Derive significant topics from transcript content.",
+      auditPass: "Add missed topics during higher-effort content audit.",
+      consolidationPass: "Merge synonyms while preserving aliases.",
+      completionRule: "Repeat focused passes until no substantive topic remains absent.",
+    },
+    contentExhaustion: {
+      mode: "model-effort-saturation",
+      comparisonScope: "Compare the full transcript against the current shard.",
+      stopRule: "Stop repeating a configuration when it adds no transcript-backed substance.",
+      reopenRule: "Reopen when a materially stronger configuration or new evidence becomes available.",
     },
     followUpStages: [
       {
