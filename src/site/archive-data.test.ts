@@ -15,6 +15,7 @@ test("builds deterministic site archive data from channel metadata and segment s
 
   assert.equal(archive.videos.length, 1);
   assert.equal(archive.videos[0]?.slug, "sample-video");
+  assert.equal(archive.videos[0]?.publishedAt, "2026-07-08T00:00:00Z");
   assert.deepEqual(archive.videos[0]?.segmentSlugs, ["intro", "qa-segment"]);
   assert.equal(archive.segments[1]?.kind, "qa");
   assert.equal(archive.segments[1]?.start, "12:01");

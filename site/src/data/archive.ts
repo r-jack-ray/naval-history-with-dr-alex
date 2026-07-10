@@ -14,6 +14,7 @@ export interface ArchiveVideo {
   youtubeUrl: string;
   embedUrl: string;
   thumbnailUrl: string;
+  publishedAt?: string | null;
   publishedLabel: string;
   durationLabel: string;
   viewCountLabel: string;

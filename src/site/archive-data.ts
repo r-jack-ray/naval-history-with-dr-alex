@@ -41,6 +41,7 @@ export interface SiteVideo {
   youtubeUrl: string;
   embedUrl: string;
   thumbnailUrl: string;
+  publishedAt: string | null;
   publishedLabel: string;
   durationLabel: string;
   viewCountLabel: string;
@@ -258,6 +259,10 @@ function buildSiteVideo(input: {
   const slug = input.episode.slug ?? slugifyVideoTitle(title) ?? input.episode.videoId;
   const youtubeUrl = input.episode.url ?? `https://www.youtube.com/watch?v=${input.episode.videoId}`;
   const stats = buildStats(input.metadata);
+  const publishedAt = input.episode.publishedAt ??
+    input.metadata?.snippet?.publishedAt ??
+    input.episode.publishDate ??
+    null;
 
   return {
     title,
@@ -266,8 +271,9 @@ function buildSiteVideo(input: {
     youtubeUrl,
     embedUrl: `https://www.youtube-nocookie.com/embed/${input.episode.videoId}`,
     thumbnailUrl: thumbnailUrl(input.episode.videoId, input.metadata),
+    publishedAt,
     publishedLabel: input.episode.publishedText ??
-      formatDate(input.episode.publishDate ?? input.episode.publishedAt ?? input.metadata?.snippet?.publishedAt) ??
+      formatDate(publishedAt ?? undefined) ??
       "Unknown publication date",
     durationLabel: input.episode.durationText ?? parseYoutubeDuration(input.metadata?.contentDetails?.duration) ?? "Unknown duration",
     viewCountLabel: input.episode.viewCountText ?? stats.views ?? "Unknown views",
