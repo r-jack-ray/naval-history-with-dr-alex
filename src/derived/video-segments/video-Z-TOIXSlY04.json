@@ -6,17 +6,15 @@
     "naval-history",
     "royal-navy",
     "age-of-sail",
-    "frigates",
-    "destroyers",
-    "anti-submarine-warfare",
-    "submarines",
-    "naval-treaties",
     "cruisers",
-    "ship-design",
-    "world-war-i",
+    "battleships",
     "battlecruisers",
-    "fleet-organization",
-    "imperial-german-navy",
+    "ship-design",
+    "naval-architecture",
+    "naval-treaties",
+    "world-war-i",
+    "pacific-war",
+    "us-navy",
     "japanese-navy"
   ],
   "segments": [
@@ -36,28 +34,28 @@
         "naval-history"
       ],
       "question": "How many brigs did the Royal Navy have in the Napoleonic Wars, and how effective were they?",
-      "answerShort": "The answer estimates about twenty in the Mediterranean example and treats them as convoy escorts and occasional frigate substitutes, not ships meant to fight above their weight.",
-      "summary": "A Napoleonic Royal Navy answer explains brigs as convoy escorts and frigate substitutes rather than miniature line-of-battle ships.",
-      "body": "The answer uses a Mediterranean example to put brigs below the frigate force but still inside the practical working fleet. Their value was in escorting convoys, filling gaps in inshore squadrons, and broadening the number of small warships available when frigates were too scarce or too valuable. They could fight peers or sometimes a corvette, but their main usefulness came from routine presence and escort work.",
+      "answerShort": "Using a Mediterranean example, the answer estimates about twenty brigs and places them in the working fleet as convoy escorts, inshore support, and occasional frigate substitutes.",
+      "summary": "A Napoleonic Royal Navy answer explains brigs as convoy escorts and frigate substitutes rather than miniature ships of the line.",
+      "body": "The answer places brigs below the frigate force but firmly inside the practical working fleet. They filled escort and inshore-squadron gaps when frigates were scarce, and could fight comparable small vessels without being expected to overpower larger warships. Their importance therefore came from expanding the navy's routine presence and convoy capacity.",
       "sourcePath": "src/transcripts/txt/2022-12-04_T23-25-04_bruships-94-some-new-books-some-others-books-and-a-lot-of-naval-chat_Z-TOIXSlY04.txt",
       "evidence": [
         {
           "start": "3:16",
           "end": "4:29",
-          "note": "The prompt asks how many brigs the Royal Navy had in the Napoleonic Wars, and the answer frames the 1805 fleet with about 160 frigates and a similar number of smaller vessels."
+          "note": "The prompt asks about Royal Navy brigs in the Napoleonic Wars, and the answer compares roughly 160 frigates with a similar number of smaller vessels."
         },
         {
           "start": "5:53",
           "end": "6:43",
-          "note": "The answer estimates about twenty brigs in the Mediterranean example and describes their role as convoy escort, inshore squadron support, and occasional frigate substitute."
+          "note": "The answer estimates about twenty brigs in the Mediterranean example and identifies convoy escort, inshore work, and frigate substitution as their roles."
         }
       ]
     },
     {
-      "id": "bruships-94-small-escorts-underrated-warships",
+      "id": "bruships-94-small-escorts-do-the-fleet-work",
       "videoId": "Z-TOIXSlY04",
-      "slug": "bruships-94-small-escorts-underrated-warships",
-      "title": "Small escorts as underrated warships",
+      "slug": "bruships-94-small-escorts-do-the-fleet-work",
+      "title": "Small escorts do the fleet's daily work",
       "kind": "qa",
       "start": "10:17",
       "end": "13:23",
@@ -70,29 +68,29 @@
         "age-of-sail",
         "naval-history"
       ],
-      "question": "What is the most underrated warship type for each period?",
-      "answerShort": "The answer points to smaller ships: World War I sloops and destroyers, treaty-era escorts, and Age of Sail third rates or smaller vessels that carried much of the daily naval workload.",
-      "summary": "A question on underrated warship types turns into a defense of small escorts, destroyers, sloops, and third rates as the ships that made fleets function.",
-      "body": "The answer argues that naval discussion often favors prestige ships while overlooking the cheaper vessels that made strategy possible. In a submarine counterfactual, the useful response is not just more major combatants but the ability to produce many escorts under treaty limits. The same logic carries back into the Age of Sail, where third rates and smaller ships mattered because navies could not afford to fight every task with first and second rates.",
+      "question": "What is the most underrated warship type in different periods?",
+      "answerShort": "The answer champions smaller ships: First World War sloops and destroyers, treaty-era escorts, and Age of Sail third rates that carried out much of a navy's essential work.",
+      "summary": "A question on underrated warships becomes a defense of escorts, destroyers, sloops, and third rates as the ships that made fleets workable.",
+      "body": "The answer argues that prestige warships dominate discussion while smaller vessels make strategy possible. In a submarine counterfactual, a British reply can be large-scale escort construction outside treaty limits rather than an exclusive focus on major combatants. The same constraint applies in the Age of Sail, where money, manpower, and material made reliance on only the largest rates impossible.",
       "sourcePath": "src/transcripts/txt/2022-12-04_T23-25-04_bruships-94-some-new-books-some-others-books-and-a-lot-of-naval-chat_Z-TOIXSlY04.txt",
       "evidence": [
         {
           "start": "10:17",
           "end": "11:42",
-          "note": "The answer names World War I sloops and destroyers, then uses a German submarine counterfactual to discuss Royal Navy escort construction under the London and Washington treaty system."
+          "note": "The answer names First World War sloops and destroyers, then uses a German submarine counterfactual to discuss treaty-era Royal Navy escort construction."
         },
         {
           "start": "12:03",
           "end": "13:23",
-          "note": "The Age of Sail portion stresses smaller ships and third rates because navies lacked the money, people, and resources to rely only on the largest rates."
+          "note": "The Age of Sail portion emphasizes small ships and third rates because navies lacked the resources to rely solely on first and second rates."
         }
       ]
     },
     {
-      "id": "bruships-94-bigger-german-cruiser-response",
+      "id": "bruships-94-treaty-limits-and-german-cruisers",
       "videoId": "Z-TOIXSlY04",
-      "slug": "bruships-94-bigger-german-cruiser-response",
-      "title": "Treaty limits shape bigger German cruiser responses",
+      "slug": "bruships-94-treaty-limits-and-german-cruisers",
+      "title": "Treaty limits shape a response to larger German cruisers",
       "kind": "qa",
       "start": "35:52",
       "end": "38:04",
@@ -104,21 +102,49 @@
         "royal-navy",
         "interwar-navy"
       ],
-      "question": "What would the British response to bigger German cruisers look like?",
-      "answerShort": "The answer depends on treaty limits: an eight-inch-gun ceiling points to a heavy cruiser solution, while a changed or broken treaty system could produce a super-cruiser or emergency 14-inch design.",
-      "summary": "A cruiser counterfactual shows how treaty ceilings, German armament choices, and British industrial options would steer any Royal Navy response.",
-      "body": "The answer starts by rejecting a response that ignores what Germany could plausibly build, then shifts to the treaty ceiling as the real design driver. If the rules held the British to eight-inch guns, the likely answer stays closer to a heavy-cruiser design. If the 1936 treaty framework changed or collapsed, the answer opens into larger super-cruisers or even a ship using already available twin 14-inch turrets.",
+      "question": "What would a British response to larger German cruisers look like?",
+      "answerShort": "The answer makes treaty limits the decisive factor: an eight-inch ceiling favors a heavy-cruiser answer, while altered rules or treaty collapse could permit a super-cruiser or emergency 14-inch design.",
+      "summary": "A cruiser counterfactual shows how treaty ceilings, German armament choices, and British industrial options would govern any Royal Navy response.",
+      "body": "The answer first rejects designs that ignore what Germany could plausibly build, then treats the treaty ceiling as the key design constraint. An eight-inch limit points toward a conventional heavy-cruiser solution, whereas a revised or broken 1936 treaty system opens the door to super-cruisers or ships using twin 14-inch turrets already in production. The episode is a useful reminder that naval design is shaped as much by legal and industrial boundaries as by a notional enemy ship.",
       "sourcePath": "src/transcripts/txt/2022-12-04_T23-25-04_bruships-94-some-new-books-some-others-books-and-a-lot-of-naval-chat_Z-TOIXSlY04.txt",
       "evidence": [
         {
           "start": "35:52",
           "end": "36:39",
-          "note": "The prompt asks about British responses to potential larger German cruisers, and the answer says the German design and plausible armament must drive the scenario."
+          "note": "The prompt asks about potential larger German cruisers, and the answer says the plausible German design and armament must drive the scenario."
         },
         {
           "start": "36:42",
           "end": "38:04",
-          "note": "The answer explains how an eight-inch treaty limit, a revised 1936 treaty, or a treaty breakdown could lead to different cruiser or super-cruiser designs."
+          "note": "The answer distinguishes an eight-inch treaty limit from a revised or collapsed treaty system, including super-cruiser and twin-14-inch possibilities."
+        }
+      ]
+    },
+    {
+      "id": "bruships-94-torpedo-nets-speed-penalty",
+      "videoId": "Z-TOIXSlY04",
+      "slug": "bruships-94-torpedo-nets-speed-penalty",
+      "title": "Why torpedo nets lost their appeal",
+      "kind": "qa",
+      "start": "1:05:04",
+      "end": "1:05:55",
+      "topics": [
+        "live-q-and-a",
+        "battleships",
+        "world-war-i",
+        "naval-architecture",
+        "ship-design"
+      ],
+      "question": "Why did Victorian-era torpedo nets fall from favor by the First World War?",
+      "answerShort": "Their weight and drag reduced ship performance, while damaged nets could become a hazard of their own by fouling propellers; the trade-off worsened as operating speeds rose.",
+      "summary": "A torpedo-net question shows why a sensible harbor-defense measure became a poor fit for faster warships.",
+      "body": "The answer treats torpedo nets as a trade-off rather than a simple protective upgrade. They were manageable at low speed, but their weight and effect on performance became more serious as fleets operated faster. Damage in a seaway could also leave netting around the propellers, turning a defensive measure into a mobility problem at exactly the wrong moment.",
+      "sourcePath": "src/transcripts/txt/2022-12-04_T23-25-04_bruships-94-some-new-books-some-others-books-and-a-lot-of-naval-chat_Z-TOIXSlY04.txt",
+      "evidence": [
+        {
+          "start": "1:05:04",
+          "end": "1:05:55",
+          "note": "The answer identifies net weight, performance penalties, higher operating speeds, and propeller fouling after damage as the main objections."
         }
       ]
     },
@@ -139,10 +165,10 @@
         "ship-design",
         "naval-architecture"
       ],
-      "question": "How would World War I Royal Navy battleship and battlecruiser development change if they adopted a transom stern?",
-      "answerShort": "The answer emphasizes speed and fuel efficiency, with the biggest operational implication being a faster fleet that might bring Jutland on earlier and make German escape harder.",
+      "question": "How would First World War Royal Navy battleship and battlecruiser development change with transom sterns?",
+      "answerShort": "The answer emphasizes greater speed and fuel efficiency, with the operational consequence that an earlier Jutland action could reduce the German fleet's chance of escape.",
       "summary": "A ship-design counterfactual links transom sterns to higher cruising speed, battlecruiser development, and a possible earlier Jutland action.",
-      "body": "The answer treats the transom stern as an efficiency change with strategic consequences rather than a cosmetic hull feature. Faster and more fuel-efficient capital ships could push the Royal Navy further toward speed and might alter how quickly the Grand Fleet could bring action. In the Jutland example, an earlier start gives Jellicoe more daylight and raises the chance of crossing the German line again.",
+      "body": "The answer treats the transom stern as an efficiency change with strategic consequences rather than a cosmetic hull feature. Faster, more fuel-efficient capital ships could move the Royal Navy further toward speed and alter how quickly the Grand Fleet brought action. In the Jutland example, more daylight raises the prospect of another chance to cross the German line.",
       "sourcePath": "src/transcripts/txt/2022-12-04_T23-25-04_bruships-94-some-new-books-some-others-books-and-a-lot-of-naval-chat_Z-TOIXSlY04.txt",
       "evidence": [
         {
@@ -175,18 +201,80 @@
         "naval-history"
       ],
       "summary": "A Pacific 1914 force summary compares British, French, Australian, Japanese, and German cruiser deployments around the opening moves of the war.",
-      "body": "The stream pauses on the South Pacific and China Station balance at the outbreak of the First World War. The useful point is force disposition: the British, French, Australian, and Japanese ships together made von Spee running across the Pacific the sensible option, but that also exposed the problem of not reinforcing the places he still could reach. The later list of German movements, Japanese blockade work, troop convoys, and Coronel-bound British forces turns a scattered theater into a connected operational map.",
+      "body": "The discussion maps the South Pacific and China Station balance at the outbreak of the First World War. Allied ships made von Spee's move across the Pacific a sensible choice, but also exposed the danger of concentrating force where he was not. The subsequent movements of German raiders, Japanese blockade ships, troop escorts, and the Coronel-bound British force turn a scattered theater into a connected operational problem.",
       "sourcePath": "src/transcripts/txt/2022-12-04_T23-25-04_bruships-94-some-new-books-some-others-books-and-a-lot-of-naval-chat_Z-TOIXSlY04.txt",
       "evidence": [
         {
           "start": "1:40:40",
           "end": "1:42:16",
-          "note": "The discussion lists British, French, Australian, and German naval forces and argues that von Spee running across the Pacific was sensible given the Allied concentration."
+          "note": "The discussion lists British, French, Australian, and German naval forces and argues that von Spee's Pacific withdrawal was sensible given the Allied concentration."
         },
         {
           "start": "1:42:20",
           "end": "1:46:34",
-          "note": "The follow-on evidence tracks German cruiser movements, Japanese operations, troop convoy escorts, and the force that leads into Coronel."
+          "note": "The follow-on evidence tracks German cruiser movements, Japanese operations, troop-convoy escorts, and the force heading toward Coronel."
+        }
+      ]
+    },
+    {
+      "id": "bruships-94-us-pacific-war-readiness",
+      "videoId": "Z-TOIXSlY04",
+      "slug": "bruships-94-us-pacific-war-readiness",
+      "title": "Three changes for US Navy effectiveness in the Pacific",
+      "kind": "qa",
+      "start": "2:27:13",
+      "end": "2:28:55",
+      "topics": [
+        "live-q-and-a",
+        "us-navy",
+        "pacific-war",
+        "naval-logistics",
+        "submarines",
+        "battlecruisers",
+        "naval-aviation"
+      ],
+      "question": "What three changes would most improve US effectiveness in the Pacific in 1941–42?",
+      "answerShort": "The answer prioritizes more oilers, a corrected Mark 14 torpedo, and completing a pair of Lexington-class battlecruisers to give carrier forces faster, heavier support.",
+      "summary": "A Pacific-war counterfactual connects fleet oilers, reliable submarine torpedoes, and fast capital ships to American carrier operations.",
+      "body": "The answer puts logistics and weapons reliability ahead of a single prestige solution. More oilers improve operational reach, while fixing the Mark 14 addresses the effectiveness of submarine attacks. Completing fast Lexington-class battlecruisers would add confidence and weight to carrier forces, particularly through air-defense support and a stronger surface presence early in the war.",
+      "sourcePath": "src/transcripts/txt/2022-12-04_T23-25-04_bruships-94-some-new-books-some-others-books-and-a-lot-of-naval-chat_Z-TOIXSlY04.txt",
+      "evidence": [
+        {
+          "start": "2:27:13",
+          "end": "2:27:46",
+          "note": "The answer names oilers and correcting the Mark 14 torpedo as the first two priorities."
+        },
+        {
+          "start": "2:28:00",
+          "end": "2:28:55",
+          "note": "The answer favors finishing a pair of Lexington-class battlecruisers to strengthen early-war carrier support and air defense."
+        }
+      ]
+    },
+    {
+      "id": "bruships-94-turbine-blades-as-bottleneck",
+      "videoId": "Z-TOIXSlY04",
+      "slug": "bruships-94-turbine-blades-as-bottleneck",
+      "title": "Turbine blades as a warship-building bottleneck",
+      "kind": "qa",
+      "start": "3:25:17",
+      "end": "3:26:01",
+      "topics": [
+        "live-q-and-a",
+        "ship-design",
+        "naval-architecture",
+        "modern-navy"
+      ],
+      "question": "What is the hardest single component to make for a dreadnought battleship?",
+      "answerShort": "The answer picks turbine blades: they require exact metallurgy and precision engineering, and failure in a geared-turbine system can cripple the ship's propulsion.",
+      "summary": "A dreadnought-construction question identifies turbine blades as the precision-engineering component most likely to defeat an otherwise sound design.",
+      "body": "Main turrets are difficult assemblies, but the answer singles out turbine blades as the most demanding individual component. Their performance relies on precise metallurgy and manufacture, especially in geared-turbine machinery. A failure there directly threatens propulsion, illustrating why naval industrial capacity is more than the ability to assemble a hull and guns.",
+      "sourcePath": "src/transcripts/txt/2022-12-04_T23-25-04_bruships-94-some-new-books-some-others-books-and-a-lot-of-naval-chat_Z-TOIXSlY04.txt",
+      "evidence": [
+        {
+          "start": "3:25:17",
+          "end": "3:26:01",
+          "note": "Asked for the hardest single battleship component, the answer names turbine blades and stresses their precision metallurgy and the consequences of failure."
         }
       ]
     }
