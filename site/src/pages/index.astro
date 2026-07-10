@@ -49,21 +49,21 @@ const activeTopics = [...archiveTopics]
     </section>
 
     <section class="status-grid" aria-label="Study guide sections">
-      <article>
+      <a class="status-card" href={`${baseUrl}videos/`}>
         <span class="label">Videos</span>
         <h2>{archiveVideos.length} video guides</h2>
         <p>Start with an episode and scan the naval subjects it covers before opening YouTube.</p>
-      </article>
-      <article>
+      </a>
+      <a class="status-card" href={`${baseUrl}segments/`}>
         <span class="label">Time notes</span>
         <h2>{archiveSegments.length} time notes</h2>
         <p>Short summaries explain what Dr. Clarke covers at that moment and why it matters.</p>
-      </article>
-      <article>
+      </a>
+      <a class="status-card" href={`${baseUrl}topics/`}>
         <span class="label">Topics</span>
         <h2>{archiveTopics.length} topic paths</h2>
         <p>Follow ships, navies, battles, weapons, doctrine, and policy across related video moments.</p>
-      </article>
+      </a>
     </section>
 
     <section class="home-section" aria-labelledby="featured-segments-heading">
