@@ -12,7 +12,7 @@ Repair site-pipeline failures without widening scope or destabilizing establishe
 1. Read `AGENTS.md`, inspect `git status --short --branch`, and preserve unrelated staged, unstaged, and untracked changes.
 2. Reproduce the user's exact failing command when practical. Treat a diagnosis-only request as read-only.
 3. Run `npm run diagnose:site-content-duplicates` for archive uniqueness failures or before changing segment routes. An exit code of 1 means duplicates were found and is an expected diagnostic result.
-4. Classify the first actionable failure and apply the narrowest safe repair.
+4. Classify the first actionable failure and apply the narrowest safe repair. For duplicate routes, rank every occurrence by transcript-backed accuracy and completeness before choosing which occurrence keeps the contested key.
 5. Regenerate `site/src/data/generated/archive.json` through repository commands; never hand-edit generated archive data.
 6. Validate in proportion to the change and report the exact source and generated files changed.
 
@@ -22,9 +22,13 @@ Repair site-pipeline failures without widening scope or destabilizing establishe
 
 - Inspect every occurrence reported by `npm run diagnose:site-content-duplicates`.
 - Preserve both substantive watch points unless transcript evidence proves one is accidental duplication.
-- Prefer changing a newly added or currently edited shard only when the established occurrence is clear from Git state.
-- Derive the replacement from the changed segment's learner-facing title or subject. Keep `id` and `slug` equal unless the existing schema deliberately differs.
-- Search the repository for the old value before renaming. If both occurrences are established, external references may depend on either route, or the safe owner is ambiguous, stop and ask for direction.
+- Rank occurrences by comparative confidence that each segment is accurate and complete; do not invent a numeric probability when the evidence supports only a qualitative judgment. Do not treat diagnostic order, creation date, filename date, Git age or status, or prior generated-output order as content-quality evidence. Use Git state only to protect unrelated work.
+- Apply evidence in this order:
+  1. **Accuracy gate:** verify the `videoId`, `sourcePath`, timestamp, evidence note, and public claims against the transcript. An unsupported or contradicted occurrence must not keep the contested route.
+  2. **Segment completeness:** among accurate candidates, prefer the focused occurrence that captures the full exchange or argument, supplies substantive learner-facing fields, uses an appropriate kind and topics, and includes enough evidence for its claims.
+  3. **Audit provenance:** give a documented later content audit more weight than first-pass provenance when the current segment reflects added transcript-backed coverage or correction. Treat an audit label, pass number, or model level as context rather than proof; judge the resulting content and evidence. Do not use `reports/video-segment-audit-probabilities.tsv` to choose the canonical occurrence because it is a fast audit-prioritization aid, not an accuracy or completeness measure.
+- Keep the contested `id` and `slug` on the highest-confidence occurrence. Derive unique replacements for every lower-confidence occurrence from its learner-facing title or subject, and keep `id` and `slug` equal unless the existing schema deliberately differs.
+- If candidates remain tied, prefer the occurrence whose learner-facing subject most precisely matches the contested key. Search the repository for the old value before renaming. If transcript evidence, audit state, and semantic fit still do not separate the candidates confidently, or references require compatibility the repository cannot preserve, stop and ask for direction; never break the tie by choosing what was first or oldest.
 - Rerun the duplicate diagnostic after editing; do not stop after clearing only the first reported collision.
 
 ### Missing topics or invalid curated shards
