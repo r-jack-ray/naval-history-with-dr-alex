@@ -246,7 +246,7 @@ Total files split across schedules: 2057
 - [x] src/transcripts/txt/2020-12-13_T16-00-14_town-class-part-6-of-7-gloucesters_M294Kn-AIfM.txt | M294Kn-AIfM | 2020-12-13T16:00:14Z | rows=788 | durationSeconds=2324 | Town Class Part 6 of 7: Gloucesters
 - [x] src/transcripts/txt/2020-12-13_T12-00-12_town-class-part-4-of-7-overview-of-war_NgWr8HNjeoo.txt | NgWr8HNjeoo | 2020-12-13T12:00:12Z | rows=481 | durationSeconds=1443 | Town Class Part 4 of 7: Overview of War
 - [x] src/transcripts/txt/2020-12-13_T10-00-09_town-class-part-3-of-7-pre-war_HShRphBNRlA.txt | HShRphBNRlA | 2020-12-13T10:00:09Z | rows=681 | durationSeconds=1864 | Town Class Part 3 of 7: Pre-War
-- [ ] src/transcripts/txt/2020-12-13_T08-00-07_town-class-part-2-of-7-contruction_ZPzwVh42aFY.txt | ZPzwVh42aFY | 2020-12-13T08:00:07Z | rows=892 | durationSeconds=2583 | Town Class Part 2 of 7: Contruction
+- [x] src/transcripts/txt/2020-12-13_T08-00-07_town-class-part-2-of-7-contruction_ZPzwVh42aFY.txt | ZPzwVh42aFY | 2020-12-13T08:00:07Z | rows=892 | durationSeconds=2583 | Town Class Part 2 of 7: Contruction
 - [ ] src/transcripts/txt/2020-12-13_T06-00-11_town-class-part-1-of-7-cruisers_ZxycxvYFDcY.txt | ZxycxvYFDcY | 2020-12-13T06:00:11Z | rows=585 | durationSeconds=1533 | Town Class Part 1 of 7: Cruisers
 - [ ] src/transcripts/txt/2020-12-10_T21-06-22_rn-paper-cruisers-the-what-might-have-beens_3euMjW7yK8w.txt | 3euMjW7yK8w | 2020-12-10T21:06:22Z | rows=3011 | durationSeconds=8652 | RN Paper Cruisers; the what might have beens…
 - [ ] src/transcripts/txt/2020-12-09_T12-00-02_four-random-books-15-civil-war_9u61SFg2m8k.txt | 9u61SFg2m8k | 2020-12-09T12:00:02Z | rows=659 | durationSeconds=1324 | Four Random Books 15: Civil War
