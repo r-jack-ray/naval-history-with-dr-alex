@@ -539,6 +539,10 @@ h1 {
   list-style: none;
 }
 
+.small-card-list {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .evidence-list li,
 .small-card-list a {
   display: grid;
