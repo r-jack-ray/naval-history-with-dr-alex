@@ -6,20 +6,7 @@ import { canonicalVideoSegmentFileName } from "../site/video-segment-files.js";
 
 export const defaultTranscriptScheduleManifest = "src/transcripts/manifest.json";
 export const defaultTranscriptScheduleProcessingLog = "src/derived/site-content-processing.log";
-export const defaultTranscriptScheduleProcessingLogPaths = [
-  defaultTranscriptScheduleProcessingLog,
-  "src/derived/site-content-processing-schedule-01.log",
-  "src/derived/site-content-processing-schedule-02.log",
-  "src/derived/site-content-processing-schedule-03.log",
-  "src/derived/site-content-processing-schedule-04.log",
-] as const;
 export const defaultTranscriptScheduleSegmentsInput = "src/derived/video-segments";
-export const defaultTranscriptSchedulePaths = [
-  "task-notes/2026-07-08_T19-45-36-0500_transcript-processing-schedule-01.md",
-  "task-notes/2026-07-08_T19-45-36-0500_transcript-processing-schedule-02.md",
-  "task-notes/2026-07-08_T19-45-36-0500_transcript-processing-schedule-03.md",
-  "task-notes/2026-07-08_T19-45-36-0500_transcript-processing-schedule-04.md",
-] as const;
 
 export interface TranscriptScheduleAuditOptions {
   manifestPath: string;

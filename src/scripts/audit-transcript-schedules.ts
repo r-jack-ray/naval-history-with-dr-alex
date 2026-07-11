@@ -2,9 +2,7 @@
 import {
   auditTranscriptSchedules,
   defaultTranscriptScheduleManifest,
-  defaultTranscriptSchedulePaths,
   defaultTranscriptScheduleProcessingLog,
-  defaultTranscriptScheduleProcessingLogPaths,
   defaultTranscriptScheduleSegmentsInput,
   type TranscriptScheduleAuditOptions,
 } from "../pipeline/transcript-schedule-audit.js";
@@ -44,7 +42,6 @@ function parseArgs(args: string[]): CliOptions {
     schedulePaths,
     checkArtifacts: false,
     processingLogPath: defaultTranscriptScheduleProcessingLog,
-    processingLogPaths: [...defaultTranscriptScheduleProcessingLogPaths],
     segmentsInput: defaultTranscriptScheduleSegmentsInput,
     quiet: false,
   };
@@ -62,7 +59,9 @@ function parseArgs(args: string[]): CliOptions {
       default: throw new Error(`Unknown argument: ${arg ?? ""}`);
     }
   }
-  if (schedulePaths.length === 0) schedulePaths.push(...defaultTranscriptSchedulePaths);
+  if (schedulePaths.length === 0) {
+    throw new Error("At least one --schedule <path> is required.");
+  }
   if (processingLogPaths.length > 0) {
     options.processingLogPaths = processingLogPaths;
     options.processingLogPath = processingLogPaths[0]!;
@@ -81,9 +80,9 @@ function printHelp(): void {
 
 Options:
   --manifest <path>        Transcript manifest path.
-  --schedule <path>        Schedule path; repeat to override the four defaults.
+  --schedule <path>        Schedule path; required and repeatable.
   --check-artifacts        Require checked rows to have a fresh log entry and shard.
-  --processing-log <path>  Processing log used by artifact checks; repeat to override the default shared and lane logs.
+  --processing-log <path>  Processing log used by artifact checks; defaults to src/derived/site-content-processing.log.
   --segments-input <path>  Current-schema shard directory.
   --quiet                  Suppress issue and summary output.
   --help                   Show this help.`);
