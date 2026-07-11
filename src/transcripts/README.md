@@ -1,15 +1,14 @@
 # Transcript Store
 
-This directory is the local transcript archive.
+This directory is the local transcript archive. Timestamped TXT files are the transcript source of record.
 
 ## Layout
 
 ```text
 src/transcripts/
-  manifest.json   Index of locally stored transcript files.
+  manifest.json      Index of locally stored transcript files.
   fetch-status.json  Batch fetch progress and failures.
-  json/           Raw structured transcript JSON. Source of record.
-  txt/            Timestamped plain-text view generated from JSON.
+  txt/               Stored timestamped plain-text transcripts.
 ```
 
 ## File Naming
@@ -17,26 +16,27 @@ src/transcripts/
 Use a readable filename stem that keeps the YouTube video ID at the end:
 
 ```text
-json/2026-06-14_T05-29-19_title-slug_videoId.json
 txt/2026-06-14_T05-29-19_title-slug_videoId.txt
 ```
 
 If an exact publish or stream timestamp is not known, omit the timestamp prefix
-and use `title-slug_videoId.ext`. The ID must remain in the filename.
+and use `title-slug_videoId.txt`. The ID must remain in the filename. Once a
+record is stored, its manifest `fileStem` remains authoritative during refetches
+even if title or timestamp metadata later changes.
 
 ## Workflow
 
-Fetch and store all local transcript formats:
+Fetch and store a transcript:
 
 ```powershell
 npm run alternate:fetch:transcript -- --video-id uURe69Wnh-Q
 ```
 
-The default store root is `src/transcripts`. The fetcher writes JSON and TXT,
-and updates `manifest.json`. If the video is already present in the manifest,
-the command reads the local JSON and exits without calling YouTube; pass
-`--force` only when you intentionally want to refetch. Transcript requests
-default to a 5-second delay; pass `--request-delay-ms 60000` for cautious runs.
+The default store root is `src/transcripts`. The fetcher writes TXT and updates
+`manifest.json`. A manifest record plus its TXT file is sufficient for the
+command to exit without calling YouTube; pass `--force` only when you
+intentionally want to refetch. Transcript requests default to a 5-second delay;
+pass `--request-delay-ms 60000` for cautious runs.
 
 Fetch from the channel master list:
 
@@ -53,17 +53,5 @@ provided.
 By default, the fetcher reads `src/channel/video-metadata.json` for title and
 publish timestamp naming. Use `--video-title` and `--video-timestamp` when
 naming metadata needs to be supplied manually, or `--no-metadata-lookup` to use
-only transcript-provided metadata. Use explicit `--json-output`, `--txt-output`,
-or `--tsv-output` only for ad hoc exports outside the store.
-
-Re-store an existing JSON file without calling YouTube:
-
-```powershell
-npm run store:transcript-json -- src/transcripts/json/<file-stem>.json --video-title "Video Title" --video-timestamp 2026-06-14T05:29:19-05:00
-```
-
-Treat JSON as authoritative. Regenerate TXT from JSON when formatting changes:
-
-```powershell
-npm run convert:transcript-json -- src/transcripts/json/<file-stem>.json --output-dir src/transcripts/txt
-```
+only transcript-provided metadata. Use explicit `--txt-output` or `--tsv-output`
+only for ad hoc exports outside the store.

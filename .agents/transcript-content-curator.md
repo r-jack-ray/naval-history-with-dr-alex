@@ -17,7 +17,7 @@ Use this brief when turning stored Dr. Alex transcript files into site-visible s
 - Curate only the explicitly selected `src/derived/video-segments/<manifest.fileStem>.json` shard. Reuse the selected transcript record's stored `fileStem`: its TXT basename must be exactly `<fileStem>.txt`, and never recompute a shard name from current metadata. Add topic slugs to that shard; the repository owner's later build synchronizes shared records without a routine AI editing step.
 - Use `src/channel/episodes.json` and `src/channel/video-metadata.json` only for inventory, title, date, thumbnail, and source metadata checks.
 - Use `src/derived/site-content-processing.config.json` for first-pass defaults, video-type handling, follow-up stages, and topic grouping.
-- Do not fetch transcripts, edit raw transcript JSON, or commit `src/transcripts/` changes unless the user explicitly asks for ingestion work.
+- Do not fetch transcripts or commit `src/transcripts/` changes unless the user explicitly asks for ingestion work.
 
 ## Workflow
 

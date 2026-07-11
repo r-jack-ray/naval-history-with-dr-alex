@@ -44,16 +44,14 @@ export interface VideoTranscript {
 
 export interface TranscriptStoragePaths {
   root: string;
-  jsonOutput: string;
   txtOutput: string;
   manifestOutput: string;
 }
 
 export interface TranscriptManifest {
-  schemaVersion: 1;
+  schemaVersion: 2;
   updatedAt: string;
   storage: {
-    json: "json/{fileStem}.json";
     txt: "txt/{fileStem}.txt";
   };
   transcripts: TranscriptManifestRecord[];
@@ -72,7 +70,6 @@ export interface TranscriptManifestRecord {
   firstStartSeconds?: number;
   lastEndSeconds?: number;
   paths: {
-    json: string;
     txt: string;
   };
 }
@@ -321,16 +318,11 @@ export function extractTranscriptSegments(transcriptInfo: unknown): TranscriptSe
 export async function writeTranscriptOutputs(
   transcript: VideoTranscript,
   outputs: {
-    jsonOutput?: string;
     txtOutput?: string;
     tsvOutput?: string;
   },
 ): Promise<void> {
   const writes: Promise<void>[] = [];
-
-  if (outputs.jsonOutput) {
-    writes.push(writeTextFile(outputs.jsonOutput, `${JSON.stringify(transcript, null, 2)}\n`));
-  }
 
   if (outputs.txtOutput) {
     writes.push(writeTextFile(outputs.txtOutput, transcriptToTxt(transcript)));
@@ -347,13 +339,17 @@ export async function writeTranscriptStorage(
   transcript: VideoTranscript,
   root = defaultTranscriptStorageRoot,
 ): Promise<TranscriptStoragePaths> {
-  const paths = transcriptStoragePaths(transcript.videoId, root, transcript.videoTitle, transcript.videoPublishedAt);
+  const manifestOutput = join(root, "manifest.json");
+  const manifest = await readTranscriptManifest(manifestOutput);
+  const existingRecord = manifest.transcripts.find((record) => record.videoId === transcript.videoId);
+  const stem = existingRecord?.fileStem ??
+    videoFileStem(transcript.videoId, transcript.videoTitle, transcript.videoPublishedAt);
+  const paths = transcriptStoragePathsFromStem(root, stem);
 
   await writeTranscriptOutputs(transcript, {
-    jsonOutput: paths.jsonOutput,
     txtOutput: paths.txtOutput,
   });
-  const previousRecord = await upsertTranscriptManifest(transcript, paths);
+  const previousRecord = await upsertTranscriptManifest(transcript, paths, manifest, stem);
   if (previousRecord !== undefined) {
     await removeSupersededTranscriptOutputs(root, previousRecord, paths);
   }
@@ -368,10 +364,12 @@ export function transcriptStoragePaths(
   timestamp?: string,
 ): TranscriptStoragePaths {
   const stem = videoFileStem(videoId, title, timestamp);
+  return transcriptStoragePathsFromStem(root, stem);
+}
 
+function transcriptStoragePathsFromStem(root: string, stem: string): TranscriptStoragePaths {
   return {
     root,
-    jsonOutput: join(root, "json", `${stem}.json`),
     txtOutput: join(root, "txt", `${stem}.txt`),
     manifestOutput: join(root, "manifest.json"),
   };
@@ -383,7 +381,6 @@ export function transcriptStoragePathsFromRecord(
 ): TranscriptStoragePaths {
   return {
     root,
-    jsonOutput: join(root, record.paths.json),
     txtOutput: join(root, record.paths.txt),
     manifestOutput: join(root, "manifest.json"),
   };
@@ -405,7 +402,7 @@ export async function findStoredTranscriptRecord(options: {
 
   const paths = transcriptStoragePathsFromRecord(record, root);
   try {
-    await readFileWithRetry(paths.jsonOutput);
+    await readFileWithRetry(paths.txtOutput);
   } catch (error) {
     if (errorCode(error) === "ENOENT") {
       return undefined;
@@ -419,9 +416,10 @@ export async function findStoredTranscriptRecord(options: {
 async function upsertTranscriptManifest(
   transcript: VideoTranscript,
   paths: TranscriptStoragePaths,
+  manifest: TranscriptManifest,
+  fileStem: string,
 ): Promise<TranscriptManifestRecord | undefined> {
-  const manifest = await readTranscriptManifest(paths.manifestOutput);
-  const record = transcriptManifestRecord(transcript);
+  const record = transcriptManifestRecord(transcript, fileStem);
   const index = manifest.transcripts.findIndex((existing) => existing.videoId === transcript.videoId);
   const previousRecord = index >= 0 ? manifest.transcripts[index] : undefined;
 
@@ -443,10 +441,7 @@ async function removeSupersededTranscriptOutputs(
   currentPaths: TranscriptStoragePaths,
 ): Promise<void> {
   const previousPaths = transcriptStoragePathsFromRecord(previousRecord, root);
-  const obsoletePaths = [previousPaths.jsonOutput, previousPaths.txtOutput].filter(
-    (path) => !samePath(path, currentPaths.jsonOutput) &&
-      !samePath(path, currentPaths.txtOutput),
-  );
+  const obsoletePaths = [previousPaths.txtOutput].filter((path) => !samePath(path, currentPaths.txtOutput));
 
   for (const path of obsoletePaths) {
     await rm(resolveTranscriptStorePath(root, path), { force: true });
@@ -507,20 +502,18 @@ function normalizeTranscriptManifest(value: unknown): TranscriptManifest {
 
 function emptyTranscriptManifest(): TranscriptManifest {
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     updatedAt: new Date(0).toISOString(),
     storage: {
-      json: "json/{fileStem}.json",
       txt: "txt/{fileStem}.txt",
     },
     transcripts: [],
   };
 }
 
-function transcriptManifestRecord(transcript: VideoTranscript): TranscriptManifestRecord {
+function transcriptManifestRecord(transcript: VideoTranscript, stem: string): TranscriptManifestRecord {
   const first = transcript.segments[0];
   const last = transcript.segments.at(-1);
-  const stem = videoFileStem(transcript.videoId, transcript.videoTitle, transcript.videoPublishedAt);
   const record: TranscriptManifestRecord = {
     videoId: transcript.videoId,
     fileStem: stem,
@@ -529,7 +522,6 @@ function transcriptManifestRecord(transcript: VideoTranscript): TranscriptManife
     availableLanguages: transcript.availableLanguages,
     segmentCount: transcript.segments.length,
     paths: {
-      json: `json/${stem}.json`,
       txt: `txt/${stem}.txt`,
     },
   };
@@ -563,10 +555,9 @@ function transcriptManifestRecordFromJson(value: unknown): TranscriptManifestRec
   const fetchedAt = object ? readString(object, "fetchedAt") : undefined;
   const segmentCount = integerValue(object?.segmentCount);
   const fileStem = object ? readString(object, "fileStem") : undefined;
-  const json = paths ? readString(paths, "json") : undefined;
   const txt = paths ? readString(paths, "txt") : undefined;
 
-  if (!object || !videoId || !source || !fetchedAt || segmentCount === undefined || !json || !txt) {
+  if (!object || !videoId || !source || !fetchedAt || segmentCount === undefined || !txt) {
     return undefined;
   }
 
@@ -577,7 +568,7 @@ function transcriptManifestRecordFromJson(value: unknown): TranscriptManifestRec
     fetchedAt,
     availableLanguages: readStringArray(object?.availableLanguages),
     segmentCount,
-    paths: { json, txt },
+    paths: { txt },
   };
   const selectedLanguage = readString(object, "selectedLanguage");
   const firstStartSeconds = integerValue(object.firstStartSeconds);
@@ -874,10 +865,6 @@ function extractBalancedJsonObject(text: string, startIndex: number): string | u
   }
 
   return undefined;
-}
-
-export async function readVideoTranscriptJson(path: string): Promise<VideoTranscript> {
-  return parseVideoTranscriptJson(JSON.parse(await readFileWithRetry(path)), path);
 }
 
 export function parseVideoTranscriptJson(value: unknown, sourceName = "transcript JSON"): VideoTranscript {

@@ -92,9 +92,87 @@ test("batch fetch skips stored transcripts and writes checkpoint status", async 
     const checkpoint = JSON.parse(await readFile(statusOutput, "utf8")) as TranscriptBatchStatus;
     assert.equal(checkpoint.stats.fetchedCount, 1);
     assert.equal(
-      (await readFile(join(outputRoot, "json", "2026-07-03_T18-30-17_metadata-title_def456.json"), "utf8"))
-        .includes('"videoTitle": "Metadata Title"'),
-      true,
+      await readFile(join(outputRoot, "txt", "2026-07-03_T18-30-17_metadata-title_def456.txt"), "utf8"),
+      "[0:00] Hello\n",
+    );
+    const manifest = JSON.parse(await readFile(join(outputRoot, "manifest.json"), "utf8"));
+    assert.equal(
+      manifest.transcripts.find((record: { videoId: string }) => record.videoId === "def456")?.fileStem,
+      "2026-07-03_T18-30-17_metadata-title_def456",
+    );
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("batch refetches a manifest record whose TXT file is missing", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "naval-transcript-batch-"));
+  const input = join(dir, "episodes.json");
+  const outputRoot = join(dir, "transcripts");
+  const statusOutput = join(outputRoot, "fetch-status.json");
+  const calls: string[] = [];
+
+  try {
+    const stored = await writeTranscriptStorage(sampleTranscript("abc123"), outputRoot);
+    await rm(stored.txtOutput);
+    await writeFile(
+      input,
+      JSON.stringify({ episodes: [{ videoId: "abc123", title: "Stored", tabs: ["videos"] }] }),
+      "utf8",
+    );
+
+    const status = await fetchAndStoreTranscriptBatch({
+      inputPath: input,
+      outputRoot,
+      statusOutput,
+      requestDelayMs: 5,
+      fetchTranscript: async (options) => {
+        calls.push(options.videoId);
+        return sampleTranscript(options.videoId);
+      },
+    });
+
+    assert.deepEqual(calls, ["abc123"]);
+    assert.equal(status.stats.fetchedCount, 1);
+    assert.equal(await readFile(stored.txtOutput, "utf8"), "[0:00] Hello\n");
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("batch force-refetch preserves an existing manifest fileStem", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "naval-transcript-batch-"));
+  const input = join(dir, "episodes.json");
+  const outputRoot = join(dir, "transcripts");
+  const statusOutput = join(outputRoot, "fetch-status.json");
+
+  try {
+    await writeTranscriptStorage({
+      ...sampleTranscript("abc123"),
+      videoTitle: "Original Title",
+      videoPublishedAt: "2026-01-02T03:04:05Z",
+    }, outputRoot);
+    await writeFile(
+      input,
+      JSON.stringify({ episodes: [{ videoId: "abc123", title: "Renamed Title", tabs: ["videos"] }] }),
+      "utf8",
+    );
+
+    const status = await fetchAndStoreTranscriptBatch({
+      inputPath: input,
+      outputRoot,
+      statusOutput,
+      requestDelayMs: 5,
+      force: true,
+      fetchTranscript: async (options) => sampleTranscript(options.videoId),
+    });
+
+    const manifest = JSON.parse(await readFile(join(outputRoot, "manifest.json"), "utf8"));
+    assert.equal(status.stats.fetchedCount, 1);
+    assert.equal(manifest.transcripts[0].fileStem, "2026-01-02_T03-04-05_original-title_abc123");
+    assert.equal(
+      await readFile(join(outputRoot, "txt", "2026-01-02_T03-04-05_original-title_abc123.txt"), "utf8"),
+      "[0:00] Hello\n",
     );
   } finally {
     await rm(dir, { recursive: true, force: true });

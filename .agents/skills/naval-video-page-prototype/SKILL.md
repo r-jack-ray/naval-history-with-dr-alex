@@ -22,7 +22,7 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` when working on
 - Use `src/channel/video-metadata.json` for YouTube title, description, thumbnail, duration, and statistics.
 - Use `src/derived/video-segments/` for current curated video, segment, and topic source data.
 - Use `src/site/archive-data.ts` and `npm run generate:site-data` to produce `site/src/data/generated/archive.json`.
-- Treat `src/transcripts/json/` as the transcript source of record only when the task explicitly asks for transcript-backed curation.
+- Use the manifest-owned `src/transcripts/txt/` file as the transcript source of record when a task explicitly asks for transcript-backed curation.
 
 ## Workflow
 

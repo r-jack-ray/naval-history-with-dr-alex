@@ -22,9 +22,6 @@
     "generate:site-data": "node .codex/hooks/site-content-pipeline-lock.mjs run --build --purpose site-archive-generation --recover-stale -- node dist/scripts/generate-site-data.js",
     "append:site-content-processing-log": "node .codex/hooks/site-content-pipeline-lock.mjs append-log",
 
-    "convert:transcript-json": "npm run build && node dist/scripts/convert-transcript-json.js",
-    "store:transcript-json": "npm run build && node dist/scripts/store-transcript-json.js",
-
     "fetch:video-links": "npm run build && node dist/scripts/get-channel-video-links.js --api-key-file reports/youtube-api-key.txt",
     "fetch:video-metadata": "npm run build && node dist/scripts/fetch-video-metadata.js --api-key-file reports/youtube-api-key.txt",
 

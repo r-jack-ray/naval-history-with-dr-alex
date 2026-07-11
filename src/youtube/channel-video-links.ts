@@ -123,8 +123,7 @@ export interface ChannelEpisodeRecord {
 export type ChannelEpisodeTranscriptState =
   | {
       status: "stored";
-      jsonPath: string;
-      txtPath?: string;
+      txtPath: string;
       segmentCount?: number;
       selectedLanguage?: string;
       fetchedAt?: string;

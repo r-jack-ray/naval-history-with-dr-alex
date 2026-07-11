@@ -174,7 +174,7 @@ export async function fetchAndStoreTranscriptBatch(
       const paths = await writeTranscriptStorage(transcript, options.outputRoot);
       failuresById.delete(episode.videoId);
       counters.fetchedCount += 1;
-      options.logger?.(`Stored transcript JSON: ${paths.jsonOutput}`);
+      options.logger?.(`Stored transcript TXT: ${paths.txtOutput}`);
     } catch (error) {
       counters.failedCount += 1;
       const failure = transcriptBatchFailure(episode, error);

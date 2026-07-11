@@ -7,8 +7,7 @@ Static reference archive for Dr. Alex Clarke's YouTube channel. Keep source data
 Planned source layout:
 
 - `src/channel/`: channel inventory, playlists, video IDs, dates, and transcript states.
-- `src/transcripts/json/`: raw transcript JSON, the source of record.
-- `src/transcripts/txt/`: generated plain-text transcripts.
+- `src/transcripts/txt/`: stored timestamped plain-text transcripts, the transcript source of record.
 - `src/derived/video-segments/`: source-of-truth curated site content, with `topics.json` plus one `<manifest.fileStem>.json` file per video. Use the stored `fileStem` from `src/transcripts/manifest.json`; do not recompute it from current metadata.
 - `src/derived/`: other generated or supporting derived data.
 - `src/site/`: deterministic site-data generator and tests.
@@ -47,7 +46,6 @@ npm run sync:video-topics
 npm run fetch:video-links -- --master-output src/channel/episodes.json --checkpoint-output reports/dr-alex-video-fetch-checkpoint.json
 npm run alternate:fetch:transcript -- --video-id uURe69Wnh-Q
 npm run alternate:fetch:transcripts -- --limit 1 --request-delay-ms 5000
-npm run convert:transcript-json -- src/transcripts/json/uURe69Wnh-Q.json --output-dir src/transcripts/txt
 ```
 
 Use normal Git for repository operations:

@@ -133,7 +133,6 @@ test("builds a canonical source episode master list", () => {
           "uURe69Wnh-Q",
           {
             status: "stored",
-            jsonPath: "src/transcripts/json/uURe69Wnh-Q.json",
             txtPath: "src/transcripts/txt/uURe69Wnh-Q.txt",
             segmentCount: 6438,
             selectedLanguage: "en",
@@ -158,7 +157,6 @@ test("builds a canonical source episode master list", () => {
       tabPositions: { videos: 1 },
       transcript: {
         status: "stored",
-        jsonPath: "src/transcripts/json/uURe69Wnh-Q.json",
         txtPath: "src/transcripts/txt/uURe69Wnh-Q.txt",
         segmentCount: 6438,
         selectedLanguage: "en",
