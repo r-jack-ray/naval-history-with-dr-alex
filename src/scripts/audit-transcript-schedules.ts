@@ -4,6 +4,7 @@ import {
   defaultTranscriptScheduleManifest,
   defaultTranscriptSchedulePaths,
   defaultTranscriptScheduleProcessingLog,
+  defaultTranscriptScheduleProcessingLogPaths,
   defaultTranscriptScheduleSegmentsInput,
   type TranscriptScheduleAuditOptions,
 } from "../pipeline/transcript-schedule-audit.js";
@@ -37,11 +38,13 @@ async function main(): Promise<void> {
 
 function parseArgs(args: string[]): CliOptions {
   const schedulePaths: string[] = [];
+  const processingLogPaths: string[] = [];
   const options: CliOptions = {
     manifestPath: defaultTranscriptScheduleManifest,
     schedulePaths,
     checkArtifacts: false,
     processingLogPath: defaultTranscriptScheduleProcessingLog,
+    processingLogPaths: [...defaultTranscriptScheduleProcessingLogPaths],
     segmentsInput: defaultTranscriptScheduleSegmentsInput,
     quiet: false,
   };
@@ -51,7 +54,7 @@ function parseArgs(args: string[]): CliOptions {
       case "--manifest": options.manifestPath = readValue(args, ++index, arg); break;
       case "--schedule": schedulePaths.push(readValue(args, ++index, arg)); break;
       case "--check-artifacts": options.checkArtifacts = true; break;
-      case "--processing-log": options.processingLogPath = readValue(args, ++index, arg); break;
+      case "--processing-log": processingLogPaths.push(readValue(args, ++index, arg)); break;
       case "--segments-input": options.segmentsInput = readValue(args, ++index, arg); break;
       case "--quiet": options.quiet = true; break;
       case "--help":
@@ -60,6 +63,10 @@ function parseArgs(args: string[]): CliOptions {
     }
   }
   if (schedulePaths.length === 0) schedulePaths.push(...defaultTranscriptSchedulePaths);
+  if (processingLogPaths.length > 0) {
+    options.processingLogPaths = processingLogPaths;
+    options.processingLogPath = processingLogPaths[0]!;
+  }
   return options;
 }
 
@@ -76,7 +83,7 @@ Options:
   --manifest <path>        Transcript manifest path.
   --schedule <path>        Schedule path; repeat to override the four defaults.
   --check-artifacts        Require checked rows to have a fresh log entry and shard.
-  --processing-log <path>  Processing log used by artifact checks.
+  --processing-log <path>  Processing log used by artifact checks; repeat to override the default shared and lane logs.
   --segments-input <path>  Current-schema shard directory.
   --quiet                  Suppress issue and summary output.
   --help                   Show this help.`);

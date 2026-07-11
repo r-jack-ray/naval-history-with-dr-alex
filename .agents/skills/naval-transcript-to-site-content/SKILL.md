@@ -1,6 +1,6 @@
 ---
 name: naval-transcript-to-site-content
-description: Convert one explicitly selected Dr. Alex Clarke transcript TXT into one segment-first per-video study-guide shard. Use when asked to process a named transcript, curate a named video guide, add transcript-backed chapters/notable points/Q&A watch points, or update `src/derived/video-segments/video-<videoId>.json`.
+description: Convert one explicitly selected Dr. Alex Clarke transcript TXT into one segment-first per-video study-guide shard. Use when asked to process a named transcript, curate a named video guide, add transcript-backed chapters/notable points/Q&A watch points, or update `src/derived/video-segments/<manifest.fileStem>.json`.
 ---
 
 # Naval Transcript To Site Content
@@ -29,7 +29,7 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` when converting
 
 1. Inspect the full transcript for both subject segments and actual Q&A, regardless of source type or title. Identify useful chapters, notable points, short transcript excerpts, and every substantive transcript-visible prompt and response; do not defer Q&A wholesale to a later pass.
 2. Add evidence-backed topic slugs directly to the video or segment `topics` arrays. Do not inspect or edit `topics.json` during routine curation; the repository owner's later build synchronizes missing registry records from the video shards. Investigate topics only when a previously reported synchronization or taxonomy problem explicitly requires it.
-3. Add or update `src/derived/video-segments/video-<videoId>.json` for the selected transcript.
+3. Add or update `src/derived/video-segments/<manifest.fileStem>.json` for the selected transcript. Use its stored manifest `fileStem` exactly: the selected transcript TXT basename must equal `<fileStem>.txt`, and current video title or publish metadata must not be used to synthesize a new filename.
 4. Add segment records with source-backed `start`, optional `end`, `sourcePath`, and `evidence`.
 5. Use `kind: qa` only when the transcript contains an actual prompt and answer. Do not invent Q&A from lecture material.
 6. Check the canonical source type before applying ordinary density guidance. The first-pass Q&A scan applies to recorded videos, interviews, premieres, and other non-live sources as well as live streams. Treat every live stream as mixed classroom-style content: inspect the full duration, preserve substantive lecture blocks as `chapter` or `notable_point`, and create one `kind: qa` record for every substantive prompt and response. Each Q&A record needs an accurate `start`, optional `end`, concise `question`, concise `answerShort`, and evidence.

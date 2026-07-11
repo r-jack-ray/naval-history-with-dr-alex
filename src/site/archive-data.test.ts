@@ -78,7 +78,7 @@ test("loads curated site content from per-video files", async () => {
         },
       ],
     }));
-    await writeFile(join(directory, "video-abc123.json"), JSON.stringify({
+    await writeFile(join(directory, "2026-07-08_T00-00-00_sample-video_abc123.json"), JSON.stringify({
       schemaVersion: 1,
       videoId: "abc123",
       topics: ["destroyers"],
@@ -114,13 +114,13 @@ test("reports every source shard for duplicate segment IDs and slugs", async () 
       schemaVersion: 1,
       topics: [],
     }));
-    await writeFile(join(directory, "video-abc123.json"), JSON.stringify({
+    await writeFile(join(directory, "2026-07-08_T00-00-00_first-video_abc123.json"), JSON.stringify({
       schemaVersion: 1,
       videoId: "abc123",
       topics: [],
       segments: [sampleCuratedSegment("abc123", "First title")],
     }));
-    await writeFile(join(directory, "video-def456.json"), JSON.stringify({
+    await writeFile(join(directory, "2026-07-07_T00-00-00_second-video_def456.json"), JSON.stringify({
       schemaVersion: 1,
       videoId: "def456",
       topics: [],
@@ -140,12 +140,67 @@ test("reports every source shard for duplicate segment IDs and slugs", async () 
       () => loadCuratedArchiveSeed(directory),
       (error: Error) => {
         assert.match(error.message, /Duplicate segment ID: duplicate-segment/u);
-        assert.match(error.message, /video-abc123\.json/u);
-        assert.match(error.message, /video-def456\.json/u);
+        assert.match(error.message, /first-video_abc123\.json/u);
+        assert.match(error.message, /second-video_def456\.json/u);
         assert.match(error.message, /First title/u);
         assert.match(error.message, /Second title/u);
         return true;
       },
+    );
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+test("loads readable shard filenames in video-ID order rather than filename order", async () => {
+  const directory = await mkdtemp(join(tmpdir(), "naval-site-content-order-"));
+  try {
+    await writeFile(join(directory, "topics.json"), JSON.stringify({ schemaVersion: 1, topics: [] }));
+    await writeFile(join(directory, "z-readable-name_abc123.json"), JSON.stringify({
+      schemaVersion: 1,
+      videoId: "abc123",
+      topics: [],
+      segments: [sampleCuratedSegment("abc123", "First")],
+    }));
+    await writeFile(join(directory, "a-readable-name_def456.json"), JSON.stringify({
+      schemaVersion: 1,
+      videoId: "def456",
+      topics: [],
+      segments: [{
+        ...sampleCuratedSegment("def456", "Second"),
+        id: "second-segment",
+        slug: "second-segment",
+      }],
+    }));
+
+    const seed = await loadCuratedArchiveSeed(directory);
+    assert.deepEqual(seed.videos.map((video) => video.videoId), ["abc123", "def456"]);
+    assert.deepEqual(seed.segments.map((segment) => segment.videoId), ["abc123", "def456"]);
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+test("rejects duplicate video identities across readable shard filenames", async () => {
+  const directory = await mkdtemp(join(tmpdir(), "naval-site-content-duplicate-video-"));
+  try {
+    await writeFile(join(directory, "topics.json"), JSON.stringify({ schemaVersion: 1, topics: [] }));
+    await writeFile(join(directory, "first-readable-name_abc123.json"), JSON.stringify({
+      schemaVersion: 1,
+      videoId: "abc123",
+      topics: [],
+      segments: [],
+    }));
+    await writeFile(join(directory, "second-readable-name_abc123.json"), JSON.stringify({
+      schemaVersion: 1,
+      videoId: "abc123",
+      topics: [],
+      segments: [],
+    }));
+
+    await assert.rejects(
+      () => loadCuratedArchiveSeed(directory),
+      /Video abc123 appears in both/u,
     );
   } finally {
     await rm(directory, { recursive: true, force: true });

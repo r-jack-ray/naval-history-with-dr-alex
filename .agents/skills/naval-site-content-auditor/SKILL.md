@@ -1,6 +1,6 @@
 ---
 name: naval-site-content-auditor
-description: Audit and strengthen transcript-backed study-guide content in one selected per-video shard after transcript curation. Use when asked to add substance to thin segment notes, remove workflow/scaffold wording from public fields, align wording with learner intent, validate transcript-backed claims, improve segment density, or run a high-effort follow-up pass over `src/derived/video-segments/video-<videoId>.json`.
+description: Audit and strengthen transcript-backed study-guide content in one selected per-video shard after transcript curation. Use when asked to add substance to thin segment notes, remove workflow/scaffold wording from public fields, align wording with learner intent, validate transcript-backed claims, improve segment density, or run a high-effort follow-up pass over `src/derived/video-segments/<manifest.fileStem>.json`.
 ---
 
 # Naval Site Content Auditor

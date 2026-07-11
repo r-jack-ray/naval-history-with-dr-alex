@@ -1,7 +1,8 @@
-import { readdir, readFile, stat } from "node:fs/promises";
+import { readFile, stat } from "node:fs/promises";
 import { join } from "node:path";
 
 import type { SegmentKind } from "../index.js";
+import { discoverVideoSegmentShards } from "./video-segment-files.js";
 
 export interface CuratedArchiveSeed {
   schemaVersion: 1;
@@ -116,10 +117,6 @@ export function formatCuratedSegmentDuplicate(duplicate: CuratedSegmentDuplicate
   return [`Duplicate segment ${label}: ${duplicate.value}`, ...occurrences].join("\n");
 }
 
-export function curatedVideoSeedFileName(videoId: string): string {
-  return `video-${videoId}.json`;
-}
-
 function validateVideoFileSeed(video: CuratedVideoFileSeed, fileName: string): void {
   if (video.schemaVersion !== 1) {
     throw new Error(`Curated video file ${fileName} schemaVersion must be 1.`);
@@ -149,18 +146,12 @@ async function validateInputDirectory(inputDirectory: string): Promise<void> {
 }
 
 async function loadCuratedVideoFiles(inputDirectory: string): Promise<LoadedCuratedVideoFile[]> {
-  const entries = await readdir(inputDirectory, { withFileTypes: true });
-  const fileNames = entries
-    .filter((entry) => entry.isFile() && entry.name.endsWith(".json") && entry.name !== "topics.json")
-    .map((entry) => entry.name)
-    .sort((left, right) => left.localeCompare(right));
-
-  return Promise.all(fileNames.map(async (fileName) => {
-    const filePath = join(inputDirectory, fileName);
-    const video = await readJson<CuratedVideoFileSeed>(filePath);
+  const { shards } = await discoverVideoSegmentShards(inputDirectory);
+  return shards.map(({ fileName, filePath, value }) => {
+    const video = value as CuratedVideoFileSeed;
     validateVideoFileSeed(video, fileName);
     return { filePath, video };
-  }));
+  });
 }
 
 function collectCuratedSegmentDuplicates(

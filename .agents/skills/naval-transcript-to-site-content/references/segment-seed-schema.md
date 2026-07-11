@@ -5,7 +5,7 @@ Curated site content lives in `src/derived/video-segments/`.
 ## Files
 
 - `topics.json`: synchronized shared browsing/search topic records, generated from topic usage in the video shards while preserving existing enriched metadata.
-- `video-<videoId>.json`: one file per site-visible video, containing that video's topic slugs and segments.
+- `<manifest.fileStem>.json`: one file per site-visible video, containing that video's topic slugs and segments. The stored `fileStem` in `src/transcripts/manifest.json` is canonical; the record's `paths.txt` basename must be exactly `<fileStem>.txt`, and the name must not be recomputed from current metadata.
 
 Do not recreate a monolithic curated-content file. `site/src/data/generated/archive.json` is generated output.
 
@@ -101,5 +101,5 @@ For every first-pass transcript, scan the full duration for substantive transcri
 - Segment and evidence timestamps must be within the stored transcript duration.
 - `end` must be after `start`.
 - Every topic slug must be lowercase and hyphenated so the synchronizer can materialize its registry record.
-- Every segment video must match the containing `video-<videoId>.json` file.
+- Every segment video must match the containing manifest-named shard's JSON `videoId`; JSON identity remains authoritative even though the filename is readable.
 - Q&A fields belong only on `kind: qa` records.

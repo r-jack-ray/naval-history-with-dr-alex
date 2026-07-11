@@ -284,6 +284,7 @@ test("schedule claims resume after interruption and complete or reset exactly on
   const lockPath = join(directory, "writer.lock");
   const schedulePath = join(directory, "schedule.md");
   const logPath = join(directory, "processing.log");
+  const manifestPath = join(directory, "manifest.json");
   const videoSegmentsDirectory = join(directory, "video-segments");
   const firstSource = "src/transcripts/txt/first.txt";
   const secondSource = "src/transcripts/txt/second.txt";
@@ -294,6 +295,12 @@ test("schedule claims resume after interruption and complete or reset exactly on
       `# Schedule\r\n\r\nTimestamp: 2020-01-01T00:00:00Z\r\n\r\n- [ ] ${firstSource} | first | First\r\n- [ ] ${secondSource} | second | Second\r\n`,
       "utf8",
     );
+    await writeFile(manifestPath, JSON.stringify({
+      transcripts: [
+        { videoId: "first", fileStem: "first", paths: { txt: "txt/first.txt" } },
+        { videoId: "second", fileStem: "second", paths: { txt: "txt/second.txt" } },
+      ],
+    }), "utf8");
     const firstAcquire = await runNode([
       lockTool,
       "acquire",
@@ -416,6 +423,8 @@ test("schedule claims resume after interruption and complete or reset exactly on
       logPath,
       "--video-segments-dir",
       videoSegmentsDirectory,
+      "--manifest",
+      manifestPath,
       "--source-path",
       firstSource,
       "--token",
@@ -428,6 +437,10 @@ test("schedule claims resume after interruption and complete or reset exactly on
 
     await mkdir(videoSegmentsDirectory, { recursive: true });
     await writeFile(join(videoSegmentsDirectory, "video-first.json"), "{}\n", "utf8");
+    const oldNameOnly = await runNode(completionArguments);
+    assert.notEqual(oldNameOnly.code, 0);
+    assert.match(oldNameOnly.stderr, /shard required for schedule completion is missing/u);
+    await writeFile(join(videoSegmentsDirectory, "first.json"), "{}\n", "utf8");
     const missingLog = await runNode(completionArguments);
     assert.notEqual(missingLog.code, 0);
     assert.match(missingLog.stderr, /requires a processing-log row/u);
@@ -507,6 +520,7 @@ test("lockless lanes claim distinct rows and complete without creating a lease",
   const lockPath = join(directory, "must-not-exist.lock");
   const schedulePath = join(directory, "schedule.md");
   const logPath = join(directory, "processing.log");
+  const manifestPath = join(directory, "manifest.json");
   const videoSegmentsDirectory = join(directory, "video-segments");
   const sources = [
     "src/transcripts/txt/first.txt",
@@ -523,6 +537,12 @@ test("lockless lanes claim distinct rows and complete without creating a lease",
       `- [ ] ${sources[2]} | third | Third\r\n`,
       "utf8",
     );
+    await writeFile(manifestPath, JSON.stringify({
+      transcripts: sources.map((sourcePath) => {
+        const videoId = sourcePath.match(/([^/]+)\.txt$/u)?.[1] ?? "";
+        return { videoId, fileStem: videoId, paths: { txt: `txt/${videoId}.txt` } };
+      }),
+    }), "utf8");
 
     const claimArguments = [
       lockTool,
@@ -560,6 +580,8 @@ test("lockless lanes claim distinct rows and complete without creating a lease",
       logPath,
       "--video-segments-dir",
       videoSegmentsDirectory,
+      "--manifest",
+      manifestPath,
       "--source-path",
       sourcePath,
       "--processed-at",
@@ -571,8 +593,8 @@ test("lockless lanes claim distinct rows and complete without creating a lease",
     assert.match(missingShard.stderr, /shard required for schedule completion is missing/u);
 
     await mkdir(videoSegmentsDirectory, { recursive: true });
-    await writeFile(join(videoSegmentsDirectory, "video-first.json"), "{}\n", "utf8");
-    await writeFile(join(videoSegmentsDirectory, "video-second.json"), "{}\n", "utf8");
+    await writeFile(join(videoSegmentsDirectory, "first.json"), "{}\n", "utf8");
+    await writeFile(join(videoSegmentsDirectory, "second.json"), "{}\n", "utf8");
 
     const appendArguments = (sourcePath: string, videoId: string, processedAt: string) => [
       lockTool,

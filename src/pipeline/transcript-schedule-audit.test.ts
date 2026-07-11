@@ -50,15 +50,15 @@ test("reports invalid states, duplicate rows, missing files, and incomplete mani
 test("optional artifact checks require post-schedule log and shard completion", () => {
   const schedules = [schedule("one.md", 1, 1, 3, [row("x", records[0]!), row("~", records[1]!), row(" ", records[2]!)])];
   const log = [
-    `2026-07-09T01:00:00-05:00\tsrc/transcripts/txt/a.txt\ta\tcurated\tno\tdone`,
-    `2026-07-09T01:00:00-05:00\tsrc/transcripts/txt/b.txt\tb\tcurated\tno\tdone`,
+    `2026-07-09T01:00:00-05:00\tsrc/transcripts/txt/stored_a.txt\ta\tcurated\tno\tdone`,
+    `2026-07-09T01:00:00-05:00\tsrc/transcripts/txt/stored_b.txt\tb\tcurated\tno\tdone`,
   ].join("\n");
   const audit = buildTranscriptScheduleAudit({
     manifest: { transcripts: records },
     manifestPath: "src/transcripts/manifest.json",
     schedules,
     rootDir: "C:/repo",
-    fileExists: (path) => path.includes("src\\transcripts\\txt") || path.endsWith("video-a.json") || path.endsWith("video-b.json"),
+    fileExists: (path) => path.includes("src\\transcripts\\txt") || path.endsWith("stored_a.json") || path.endsWith("stored_b.json"),
     checkArtifacts: true,
     processingLogText: log,
     processingLogPath: "processing.log",
@@ -68,19 +68,36 @@ test("optional artifact checks require post-schedule log and shard completion", 
   assert.equal(audit.issues[0]?.code, "in-progress-ready-to-finalize");
 });
 
+test("rejects old-form shards when artifact checks require a manifest filename", () => {
+  const audit = buildTranscriptScheduleAudit({
+    manifest: { transcripts: records },
+    manifestPath: "src/transcripts/manifest.json",
+    schedules: [schedule("one.md", 1, 1, 3, [row("x", records[0]!), row(" ", records[1]!), row(" ", records[2]!)])],
+    rootDir: "C:/repo",
+    fileExists: (path) => path.includes("src\\transcripts\\txt") || path.endsWith("video-a.json"),
+    checkArtifacts: true,
+    processingLogText: "2026-07-09T01:00:00-05:00\tsrc/transcripts/txt/stored_a.txt\ta\tcurated\tno\tdone\n",
+    processingLogPath: "processing.log",
+    segmentsInput: "segments",
+  });
+
+  assert.ok(audit.issues.some((issue) => issue.code === "checked-row-missing-shard"));
+});
+
 function record(videoId: string, publishedAt: string, count: number) {
   return {
     videoId,
+    fileStem: `stored_${videoId}`,
     videoTitle: `Title ${videoId}`,
     videoPublishedAt: publishedAt,
     segmentCount: count,
     lastEndSeconds: count * 10,
-    paths: { txt: `txt/${videoId}.txt` },
+    paths: { txt: `txt/stored_${videoId}.txt` },
   };
 }
 
 function row(state: string, item: ReturnType<typeof record>): string {
-  return `- [${state}] src/transcripts/txt/${item.videoId}.txt | ${item.videoId} | ${item.videoPublishedAt} | rows=${item.segmentCount} | durationSeconds=${item.lastEndSeconds} | ${item.videoTitle}`;
+  return `- [${state}] src/transcripts/txt/stored_${item.videoId}.txt | ${item.videoId} | ${item.videoPublishedAt} | rows=${item.segmentCount} | durationSeconds=${item.lastEndSeconds} | ${item.videoTitle}`;
 }
 
 function schedule(path: string, number: number, count: number, files: number, rows: string[]) {

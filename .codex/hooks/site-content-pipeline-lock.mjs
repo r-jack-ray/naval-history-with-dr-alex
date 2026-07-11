@@ -8,6 +8,7 @@ import { basename, dirname, join, resolve } from "node:path";
 const defaultLockPath = ".tmp/site-content-pipeline.lock";
 const defaultProcessingLogPath = "src/derived/site-content-processing.log";
 const defaultVideoSegmentsDirectory = "src/derived/video-segments";
+const defaultTranscriptManifestPath = "src/transcripts/manifest.json";
 const defaultStaleAfterMs = 90 * 60 * 1000;
 const defaultWaitMs = 30 * 1000;
 const retryIntervalMs = 250;
@@ -79,6 +80,7 @@ function parseOptions(args) {
     lockPath: defaultLockPath,
     processingLogPath: defaultProcessingLogPath,
     videoSegmentsDirectory: defaultVideoSegmentsDirectory,
+    manifestPath: defaultTranscriptManifestPath,
     schedulePath: undefined,
     owner: defaultOwner(),
     purpose: "site-content-pipeline",
@@ -113,6 +115,9 @@ function parseOptions(args) {
         break;
       case "--video-segments-dir":
         options.videoSegmentsDirectory = readValue(args, ++index, arg);
+        break;
+      case "--manifest":
+        options.manifestPath = readValue(args, ++index, arg);
         break;
       case "--schedule-path":
         options.schedulePath = readValue(args, ++index, arg);
@@ -493,10 +498,7 @@ async function transitionScheduleRow(options, targetState) {
 }
 
 async function assertScheduleCompletionArtifacts(schedulePath, schedule, row, options) {
-  if (!/^[A-Za-z0-9_-]+$/u.test(row.videoId)) {
-    throw new Error(`Schedule row has an unsafe video ID: ${JSON.stringify(row.videoId)}`);
-  }
-  const shardPath = resolve(options.videoSegmentsDirectory, `video-${row.videoId}.json`);
+  const shardPath = await resolveCanonicalScheduleShardPath(row, options);
   await assertRegularFile(shardPath, `Video-segment shard required for schedule completion is missing`);
 
   const processingLogPath = resolve(options.processingLogPath);
@@ -535,6 +537,58 @@ async function assertScheduleCompletionArtifacts(schedulePath, schedule, row, op
       `${JSON.stringify(row.videoId)} ${requiredLogDescription}; schedule was left unchanged.`,
     );
   }
+}
+
+async function resolveCanonicalScheduleShardPath(row, options) {
+  if (!/^[A-Za-z0-9_-]+$/u.test(row.videoId)) {
+    throw new Error(`Schedule row has an unsafe video ID: ${JSON.stringify(row.videoId)}`);
+  }
+
+  const manifestPath = resolve(options.manifestPath);
+  let manifest;
+  try {
+    manifest = JSON.parse(await readFile(manifestPath, "utf8"));
+  } catch (error) {
+    throw new Error(`Could not parse transcript manifest required for schedule completion: ${manifestPath}`, { cause: error });
+  }
+  if (!manifest || typeof manifest !== "object" || !Array.isArray(manifest.transcripts)) {
+    throw new Error(`Transcript manifest must contain a transcripts array: ${manifestPath}`);
+  }
+
+  const matchingRecords = manifest.transcripts.filter((record) => (
+    record
+    && typeof record === "object"
+    && record.videoId === row.videoId
+  ));
+  if (matchingRecords.length !== 1) {
+    throw new Error(
+      `Schedule completion requires exactly one transcript manifest record for video ${row.videoId}; found ${matchingRecords.length}.`,
+    );
+  }
+  const record = matchingRecords[0];
+  const fileStem = record.fileStem;
+  const manifestTxtPath = record.paths?.txt;
+  if (typeof fileStem !== "string" || !/^[A-Za-z0-9_-]+$/u.test(fileStem)) {
+    throw new Error(`Transcript manifest fileStem for ${row.videoId} must be a safe string.`);
+  }
+  if (typeof manifestTxtPath !== "string") {
+    throw new Error(`Transcript manifest paths.txt for ${row.videoId} must be a string.`);
+  }
+  const expectedTxtName = `${fileStem}.txt`;
+  if (basename(manifestTxtPath.replaceAll("\\", "/")) !== expectedTxtName) {
+    throw new Error(
+      `Transcript manifest paths.txt for ${row.videoId} must use ${JSON.stringify(expectedTxtName)}.`,
+    );
+  }
+  if (basename(row.sourcePath.replaceAll("\\", "/")) !== expectedTxtName) {
+    throw new Error(
+      `Schedule sourcePath for ${row.videoId} must use manifest TXT basename ${JSON.stringify(expectedTxtName)}.`,
+    );
+  }
+  if (fileStem !== row.videoId && !fileStem.endsWith(`_${row.videoId}`)) {
+    throw new Error(`Transcript manifest fileStem for ${row.videoId} must end with that video ID.`);
+  }
+  return resolve(options.videoSegmentsDirectory, `${fileStem}.json`);
 }
 
 function readScheduleTimestamp(schedule, schedulePath) {
@@ -872,6 +926,8 @@ Common options:
   --processing-log <path>  Completion log; defaults to ${defaultProcessingLogPath}.
   --video-segments-dir <path>
                            Completion shards; defaults to ${defaultVideoSegmentsDirectory}.
+  --manifest <path>        Transcript manifest used to resolve canonical shard names;
+                           defaults to ${defaultTranscriptManifestPath}.
   --owner <name>           Diagnostic owner label for acquire/run.
   --purpose <name>         Diagnostic purpose label for acquire/run.
   --stale-after-ms <ms>    Lease duration; defaults to ${defaultStaleAfterMs}.

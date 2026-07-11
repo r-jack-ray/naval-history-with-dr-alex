@@ -1,4 +1,4 @@
-import { readdir, readFile } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
 import { writeTextAtomically } from "../pipeline/atomic-write.js";
@@ -7,6 +7,7 @@ import type {
   CuratedTopicStore,
   CuratedVideoFileSeed,
 } from "./curated-seed.js";
+import { discoverVideoSegmentShards } from "./video-segment-files.js";
 
 export interface SynchronizeTopicStoreResult {
   addedSlugs: string[];
@@ -47,15 +48,11 @@ export async function synchronizeCuratedTopicStore(
 }
 
 export async function collectUsedTopicSlugs(inputDirectory: string): Promise<string[]> {
-  const entries = await readdir(inputDirectory, { withFileTypes: true });
-  const fileNames = entries
-    .filter((entry) => entry.isFile() && entry.name.startsWith("video-") && entry.name.endsWith(".json"))
-    .map((entry) => entry.name)
-    .sort((left, right) => left.localeCompare(right));
+  const { shards } = await discoverVideoSegmentShards(inputDirectory);
   const slugs = new Set<string>();
 
-  for (const fileName of fileNames) {
-    const video = JSON.parse(await readFile(join(inputDirectory, fileName), "utf8")) as CuratedVideoFileSeed;
+  for (const { fileName, value } of shards) {
+    const video = value as CuratedVideoFileSeed;
     collectTopicArray(video.topics, `${fileName} video`, slugs);
     if (!Array.isArray(video.segments)) {
       throw new Error(`Curated video file ${fileName} must include a segments array.`);

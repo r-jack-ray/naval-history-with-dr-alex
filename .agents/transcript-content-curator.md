@@ -14,7 +14,7 @@ Use this brief when turning stored Dr. Alex transcript files into site-visible s
 ## Scope
 
 - Read from `src/transcripts/manifest.json` and the matching `src/transcripts/txt/` file.
-- Curate only the explicitly selected `src/derived/video-segments/video-<videoId>.json` shard. Add topic slugs to that shard; the repository owner's later build synchronizes shared records without a routine AI editing step.
+- Curate only the explicitly selected `src/derived/video-segments/<manifest.fileStem>.json` shard. Reuse the selected transcript record's stored `fileStem`: its TXT basename must be exactly `<fileStem>.txt`, and never recompute a shard name from current metadata. Add topic slugs to that shard; the repository owner's later build synchronizes shared records without a routine AI editing step.
 - Use `src/channel/episodes.json` and `src/channel/video-metadata.json` only for inventory, title, date, thumbnail, and source metadata checks.
 - Use `src/derived/site-content-processing.config.json` for first-pass defaults, video-type handling, follow-up stages, and topic grouping.
 - Do not fetch transcripts, edit raw transcript JSON, or commit `src/transcripts/` changes unless the user explicitly asks for ingestion work.
@@ -25,7 +25,7 @@ Use this brief when turning stored Dr. Alex transcript files into site-visible s
 2. Do not acquire, inspect, wait on, renew, or release repository leases. Do not claim, complete, or reset schedule rows. An invoking automation owns any claim, lane log, private validation, completion, or reset procedure.
 3. If required dependencies or compiled helpers are missing, report the prerequisite and stop without edits. Do not install dependencies, build tooling, run audits, or generate shared output.
 4. Inspect the selected transcript TXT before writing summaries. For long transcripts, use its timestamped lines to map the full duration and read contiguous time-based chunks small enough to avoid tool-output truncation; do not rely on one raw full-file dump or only the opening portion.
-5. Add or update only the selected current-schema `video-<videoId>.json` shard. Preserve every other shard and all shared or generated files.
+5. Add or update only the selected current-schema `<manifest.fileStem>.json` shard. Preserve every other shard and all shared or generated files.
 6. Add evidence-backed topic slugs to the video and segment arrays. Do not inspect or edit `topics.json`; the repository owner's later build synchronizes the registry.
 7. Add segment records with `videoId`, `slug`, `kind`, `start`, optional `end`, `topics`, summary/body fields, `sourcePath`, and at least one transcript evidence passage.
 8. Use `kind: qa` only for actual question/answer exchanges. Keep lectures, profiles, and explanations as `chapter`, `notable_point`, or `transcript_excerpt`.

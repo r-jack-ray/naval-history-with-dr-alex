@@ -40,7 +40,7 @@ src/
     site-content-processing.log
     video-segments/        Source-of-truth curated study-guide content
       topics.json          Shared topic records and aliases
-      video-<videoId>.json One curated segment shard per video
+      <manifest.fileStem>.json One curated segment shard per video; reuse the stored transcript manifest stem
   scripts/                 TypeScript CLI entrypoints
   site/                    Site data generator and validation logic
   youtube/                 YouTube inventory helpers
@@ -262,7 +262,7 @@ For agent-driven work, use:
 
 - `.agents/transcript-content-curator.md`: role brief for transcript-backed curation.
 - `.agents/site-content-auditor.md`: role brief for follow-up public wording, density, and evidence checks.
-- `.agents/skills/naval-transcript-to-site-content/SKILL.md`: reusable workflow for converting transcript TXT evidence into `src/derived/video-segments/video-<videoId>.json`.
+- `.agents/skills/naval-transcript-to-site-content/SKILL.md`: reusable workflow for converting transcript TXT evidence into `src/derived/video-segments/<manifest.fileStem>.json`, using the selected transcript's stored manifest stem rather than recomputing a filename from metadata.
 - `.agents/skills/naval-site-content-auditor/SKILL.md`: reusable workflow for strengthening existing segment notes.
 - `.codex/hooks/validate-content-pipeline.ps1`: audit, regenerate generated site data, run Astro checks, and optionally run the full repository check.
 
