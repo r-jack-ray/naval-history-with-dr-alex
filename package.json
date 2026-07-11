@@ -14,6 +14,8 @@
     "test": "npm run build && node --test \"dist/**/*.test.js\"",
     "check": "npm run check:types && npm test",
 
+    "list:files-that-need-processing": "node src/scripts/list-files-that-need-processing.js",
+
     "analyze:video-segment-audit": "tsc -p tsconfig.video-segment-audit.json && node .tmp/video-segment-audit-build/scripts/analyze-video-segment-audit.js",
     "audit:site-content": "node .codex/hooks/site-content-pipeline-lock.mjs run --build --purpose site-content-audit -- node dist/scripts/audit-site-content.js",
     "audit:transcript-schedules": "npm run build && node dist/scripts/audit-transcript-schedules.js",
@@ -36,8 +38,9 @@
     "site:dev": "astro dev",
     "site:check": "npm run generate:site-data && npm run site:check:generated",
     "site:check:generated": "astro check --tsconfig tsconfig.astro.json",
-    "site:build": "npm run generate:site-data && npm run site:build:generated",
-    "site:build:generated": "astro build && pagefind --site site/dist",
+    "site:build": "node .codex/hooks/site-build-if-changed.mjs --generate",
+    "site:build:generated": "node .codex/hooks/site-build-if-changed.mjs",
+    "site:build:full": "astro build --silent && pagefind --site site/dist",
     "site:preview": "astro preview",
 
     "preaudit:lighthouse:home": "node -e \"require('fs').mkdirSync('reports/lighthouse', { recursive: true })\"",
