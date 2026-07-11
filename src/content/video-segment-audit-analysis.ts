@@ -1,5 +1,6 @@
 export interface VideoSegmentAuditInput {
   fileStem: string;
+  filePath?: string;
   videoId: string;
   videoTitle: string;
   transcriptBytes: number | undefined;
@@ -25,6 +26,7 @@ export interface VideoSegmentAuditRow {
   priority: "critical" | "high" | "medium" | "low";
   videoId: string;
   fileStem: string;
+  filePath: string | undefined;
   videoTitle: string;
   needsFurtherProcessing: "yes" | "no" | "unknown";
   transcriptBytes: number | undefined;
@@ -124,6 +126,7 @@ export function analyzeVideoSegment(input: VideoSegmentAuditInput): VideoSegment
     priority: priorityFor(auditProbabilityPct),
     videoId: input.videoId,
     fileStem: input.fileStem,
+    filePath: input.filePath,
     videoTitle: input.videoTitle,
     needsFurtherProcessing: input.needsFurtherProcessing,
     transcriptBytes: input.transcriptBytes,
@@ -172,7 +175,7 @@ export function renderVideoSegmentAuditTsv(rows: VideoSegmentAuditRow[]): string
   ];
   const body = rows.map((row) =>
     [
-      row.fileStem,
+      row.filePath ?? row.fileStem,
       row.rank,
       row.auditProbabilityPct,
       row.priority,

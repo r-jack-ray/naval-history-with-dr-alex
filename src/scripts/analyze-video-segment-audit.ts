@@ -68,6 +68,7 @@ async function main(): Promise<void> {
     const transcriptBytes = await fileSizeOrUndefined(transcriptPath);
     const input: VideoSegmentAuditInput = {
       fileStem,
+      filePath: contentRootPath(shardPath),
       videoId,
       videoTitle: manifestEntry?.videoTitle ?? fileStem,
       transcriptBytes,
@@ -177,6 +178,10 @@ async function fileSizeOrUndefined(filePath: string): Promise<number | undefined
   } catch {
     return undefined;
   }
+}
+
+function contentRootPath(filePath: string): string {
+  return path.relative(process.cwd(), path.resolve(filePath)).replaceAll(path.sep, "/");
 }
 
 function readValue(args: string[], index: number, name: string): string {

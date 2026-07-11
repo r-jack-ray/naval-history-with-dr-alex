@@ -53,6 +53,7 @@ test("keeps a dense, full-coverage shard at low probability", () => {
 test("treats an explicit further-processing state as high priority and renders valid TSV", () => {
   const row = analyzeVideoSegment({
     fileStem: "video_ghi",
+    filePath: "src/derived/video-segments/video_ghi.json",
     videoId: "ghi",
     videoTitle: "Title\twith newline\n",
     transcriptBytes: 10_000,
@@ -69,5 +70,6 @@ test("treats an explicit further-processing state as high priority and renders v
   assert.ok(["high", "critical"].includes(ranked[0]?.priority ?? ""));
   assert.equal(tsv.trimEnd().split("\n").length, 2);
   assert.ok(tsv.startsWith("file_stem\t"));
+  assert.equal(tsv.split("\n")[1]?.split("\t")[0], "src/derived/video-segments/video_ghi.json");
   assert.match(tsv, /Title with newline/u);
 });
