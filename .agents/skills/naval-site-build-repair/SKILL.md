@@ -47,7 +47,7 @@ Repair site-pipeline failures without widening scope or destabilizing establishe
 
 Run the narrow checks first, then the full pipeline when source data or routes changed:
 
-Allow `site:build` at least five minutes to complete. When the shell runner has a command timeout, set it to `300000` milliseconds or longer; do not interpret an earlier runner timeout as a site-build failure.
+Allow `site:build` at least ten minutes to complete. When the shell runner has a command timeout, set it to `600000` milliseconds or longer; do not interpret an earlier runner timeout as a site-build failure.
 
 ```powershell
 npm run diagnose:site-content-duplicates
