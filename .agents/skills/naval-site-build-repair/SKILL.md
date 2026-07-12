@@ -13,7 +13,7 @@ Repair site-pipeline failures without widening scope or destabilizing establishe
 2. Reproduce the user's exact failing command when practical. Treat a diagnosis-only request as read-only.
 3. Run `npm run diagnose:site-content-duplicates` for archive uniqueness failures or before changing segment routes. An exit code of 1 means duplicates were found and is an expected diagnostic result.
 4. Classify the first actionable failure and apply the narrowest safe repair. For duplicate routes, rank every occurrence by transcript-backed accuracy and completeness before choosing which occurrence keeps the contested key.
-5. Regenerate `site/src/data/generated/archive.json` through repository commands; never hand-edit generated archive data.
+5. Regenerate the tracked manifest and shards under `site/src/data/generated/archive/` through repository commands; never hand-edit `index.json` or its listed generated archive files.
 6. Validate in proportion to the change and report the exact source and generated files changed.
 
 ## Repair Rules

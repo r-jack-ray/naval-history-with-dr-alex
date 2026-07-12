@@ -16,9 +16,9 @@ The repository currently has:
 - An Astro static site configured for GitHub Pages.
 - Pagefind indexing during site builds.
 - A deployed learner-facing study-guide site with light, dark, and system theme switching.
-- A generated Astro archive data file built from channel inventory, YouTube metadata, and curated per-video segment shards.
-- Dynamic video, segment, topic, and search pages backed by `site/src/data/generated/archive.json`.
-- A Pagefind component search UI with filters for result type, segment kind, topic, and video.
+- A generated Astro archive dataset built from channel inventory, YouTube metadata, and curated per-video segment shards.
+- Static video, segment, and topic pages built from the manifest and stable JSON shards under `site/src/data/generated/archive/`.
+- A deferred browser full-text search UI backed by generated Pagefind data under the configured site base path, without an inline archive corpus.
 - A transcript-to-site-content process with curation and audit agent briefs, Codex skills, backlog audit, and validation hooks.
 - A rate-limited YouTube channel link inventory script.
 - A source master episode list under `src/channel/`.
@@ -49,7 +49,7 @@ src/
     txt/                   Stored timestamped transcript text; source of record
 site/
   src/                     Astro pages, layouts, and site data adapters
-    data/generated/        Deterministic generated archive JSON
+    data/generated/archive/ Deterministic generated archive manifest and JSON shards
   public/                  Static assets copied into the site
   dist/                    Generated GitHub Pages artifact, ignored by Git
 .agents/                   Project-local agent briefs and Codex skills
@@ -60,7 +60,7 @@ reports/                   Generated reports and smoke-test output, ignored by G
 dist/                      Compiled JavaScript, ignored by Git
 ```
 
-Curated public content currently lives in `src/derived/video-segments/`. There is no committed `docs/` tree at the moment; the public site is generated through Astro routes and `site/src/data/generated/archive.json`.
+Curated public content currently lives in `src/derived/video-segments/`. There is no committed `docs/` tree at the moment; the public site is generated through Astro routes and the split dataset under `site/src/data/generated/archive/`.
 
 ## Setup
 
@@ -96,14 +96,14 @@ npm run site:build
 npm run site:preview
 ```
 
-`npm run site:check` and `npm run site:build` regenerate `site/src/data/generated/archive.json` first. `npm run site:build` emits `site/dist/` and then runs Pagefind against that output. Do not commit generated `site/dist/` files.
+`npm run site:check` and `npm run site:build` regenerate `site/src/data/generated/archive/` first. Its authoritative `index.json` manifest lists the tracked generated collection files and segment buckets. `npm run site:build` emits `site/dist/` and then runs Pagefind against that output. Do not hand-edit the generated archive dataset, and do not commit generated `site/dist/` files.
 
 The generated site exposes:
 
 - `/videos/<slug>/`: video metadata and curated segment links.
 - `/segments/<slug>/`: independently addressable segment or Q&A entries with timestamp links.
 - `/topics/<slug>/`: topic landing pages listing related videos and segments.
-- `/search/`: Pagefind component search over the built HTML with filters for type, kind, topic, and video.
+- `/search/`: deferred browser full-text search over the built HTML through the generated Pagefind index.
 
 ## Fetch Channel Video Links
 
@@ -257,7 +257,7 @@ The process is intentionally segment-first. Use `kind: qa` only for actual Q&A e
 
 ### Serialized Content-Pipeline Writes
 
-`site/src/data/generated/archive.json` remains tracked so Astro can statically import a reviewable archive. Regenerate it through `npm run generate:site-data`, `npm run site:check`, or `npm run site:build`; each standalone command regenerates it once. The content validation hook builds once, writes the backlog report, regenerates the archive once, and then runs the no-regeneration Astro check.
+The generated manifest and shards under `site/src/data/generated/archive/` remain tracked so Astro can statically import a reviewable archive dataset. Regenerate the dataset through `npm run generate:site-data`, `npm run site:check`, or `npm run site:build`; each standalone command regenerates it once. Never hand-edit `index.json` or its listed files. The content validation hook builds once, writes the backlog report, regenerates the archive once, and then runs the no-regeneration Astro check.
 
 The archive, backlog report, and shared processing log are protected by the repository-wide writer lease at `.tmp/site-content-pipeline.lock`. Direct `npm run audit:site-content` and `npm run generate:site-data` acquire a short-lived lease automatically. A scheduled transcript worker that changes shared topics, logs, reports, or archives must acquire a persistent lease before it claims a row or writes shared output:
 

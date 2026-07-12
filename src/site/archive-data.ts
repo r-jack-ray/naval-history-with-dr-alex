@@ -1,4 +1,6 @@
-import { readFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
+import { readdir, readFile, rm } from "node:fs/promises";
+import { join } from "node:path";
 
 import { formatTimestamp, segmentKinds, type SegmentKind } from "../index.js";
 import { slugifyVideoTitle } from "../naming.js";
@@ -13,13 +15,16 @@ import {
 export const defaultSiteEpisodesInput = "src/channel/episodes.json";
 export const defaultSiteMetadataInput = "src/channel/video-metadata.json";
 export const defaultSiteSegmentsInput = "src/derived/video-segments";
-export const defaultSiteArchiveOutput = "site/src/data/generated/archive.json";
+export const defaultSiteArchiveOutputDir = "site/src/data/generated/archive";
+export const siteArchiveSchemaVersion = 2 as const;
+export const siteArchiveSegmentBucketCount = 64;
+export const siteArchiveSegmentShardingAlgorithm = "sha256-video-id-mod" as const;
 
 export interface GenerateSiteArchiveDataOptions {
   episodesInput: string;
   metadataInput: string;
   segmentsInput: string;
-  output: string;
+  outputDir: string;
 }
 
 export interface SiteArchiveData {
@@ -32,6 +37,47 @@ export interface SiteArchiveData {
   videos: SiteVideo[];
   segments: SiteSegment[];
   topics: SiteTopic[];
+}
+
+export interface SiteArchiveFileRecord {
+  path: string;
+  count: number;
+  sha256: string;
+}
+
+export interface SiteArchiveSegmentBucketRecord extends SiteArchiveFileRecord {
+  id: string;
+}
+
+export interface SiteArchiveManifest {
+  schemaVersion: typeof siteArchiveSchemaVersion;
+  source: SiteArchiveData["source"];
+  counts: {
+    videos: number;
+    segments: number;
+    topics: number;
+  };
+  segmentSharding: {
+    algorithm: typeof siteArchiveSegmentShardingAlgorithm;
+    bucketCount: typeof siteArchiveSegmentBucketCount;
+  };
+  files: {
+    videos: SiteArchiveFileRecord;
+    topics: SiteArchiveFileRecord;
+    segmentBuckets: SiteArchiveSegmentBucketRecord[];
+  };
+}
+
+export interface SiteArchiveSegmentBucket {
+  id: string;
+  segments: SiteSegment[];
+}
+
+export interface SiteArchiveSplitData {
+  manifest: SiteArchiveManifest;
+  videos: SiteVideo[];
+  topics: SiteTopic[];
+  segmentBuckets: SiteArchiveSegmentBucket[];
 }
 
 export interface SiteVideo {
@@ -144,7 +190,9 @@ interface VideoMetadata {
   };
 }
 
-export async function generateSiteArchiveData(options: GenerateSiteArchiveDataOptions): Promise<SiteArchiveData> {
+export async function generateSiteArchiveData(
+  options: GenerateSiteArchiveDataOptions,
+): Promise<SiteArchiveSplitData> {
   const [episodesStore, metadataStore, seed] = await Promise.all([
     readJson<EpisodeStore>(options.episodesInput),
     readJson<VideoMetadataStore>(options.metadataInput),
@@ -161,8 +209,9 @@ export async function generateSiteArchiveData(options: GenerateSiteArchiveDataOp
     },
   });
 
-  await writeTextAtomically(options.output, `${JSON.stringify(archive, null, 2)}\n`);
-  return archive;
+  const splitData = splitSiteArchiveData(archive);
+  await writeSiteArchiveSplitData(options.outputDir, splitData);
+  return splitData;
 }
 
 export function buildSiteArchiveData(input: {
@@ -247,6 +296,548 @@ export function buildSiteArchiveData(input: {
     segments,
     topics,
   };
+}
+
+export function siteArchiveSegmentBucketId(videoId: string): string {
+  if (videoId.length === 0) {
+    throw new Error("Cannot assign an empty video ID to a site archive segment bucket.");
+  }
+
+  const digest = createHash("sha256").update(videoId, "utf8").digest();
+  const bucket = digest.readUInt32BE(0) % siteArchiveSegmentBucketCount;
+  return bucket.toString(16).padStart(2, "0");
+}
+
+export function canonicalSiteArchiveJson(value: unknown): string {
+  return `${JSON.stringify(value, null, 2)}\n`;
+}
+
+export function siteArchiveSha256(value: string | Uint8Array): string {
+  return createHash("sha256").update(value).digest("hex");
+}
+
+export function splitSiteArchiveData(archive: SiteArchiveData): SiteArchiveSplitData {
+  const bucketSegments = new Map<string, SiteSegment[]>(
+    expectedSiteArchiveBucketIds().map((id) => [id, []]),
+  );
+
+  for (const segment of archive.segments) {
+    bucketSegments.get(siteArchiveSegmentBucketId(segment.videoId))?.push(segment);
+  }
+
+  const videos = [...archive.videos];
+  const topics = [...archive.topics];
+  const segmentBuckets = expectedSiteArchiveBucketIds().map((id) => ({
+    id,
+    segments: bucketSegments.get(id) ?? [],
+  }));
+  const manifest: SiteArchiveManifest = {
+    schemaVersion: siteArchiveSchemaVersion,
+    source: archive.source,
+    counts: {
+      videos: videos.length,
+      segments: archive.segments.length,
+      topics: topics.length,
+    },
+    segmentSharding: {
+      algorithm: siteArchiveSegmentShardingAlgorithm,
+      bucketCount: siteArchiveSegmentBucketCount,
+    },
+    files: {
+      videos: fileRecord("./videos.json", videos),
+      topics: fileRecord("./topics.json", topics),
+      segmentBuckets: segmentBuckets.map((bucket) => ({
+        id: bucket.id,
+        ...fileRecord(`./segments/${bucket.id}.json`, bucket.segments),
+      })),
+    },
+  };
+  const splitData = { manifest, videos, topics, segmentBuckets };
+
+  validateSiteArchiveSplitData(splitData);
+  const reconstructed = reconstructSiteArchiveDataUnchecked(splitData);
+  if (canonicalSiteArchiveJson(reconstructed) !== canonicalSiteArchiveJson(archive)) {
+    throw new Error(
+      "Split site archive reconstruction does not preserve the canonical logical archive order.",
+    );
+  }
+
+  return splitData;
+}
+
+export function validateSiteArchiveManifest(value: unknown): asserts value is SiteArchiveManifest {
+  if (!isRecord(value)) {
+    throw new Error("Site archive manifest must be an object.");
+  }
+  if (value.schemaVersion !== siteArchiveSchemaVersion) {
+    throw new Error(`Site archive manifest schemaVersion must be ${siteArchiveSchemaVersion}.`);
+  }
+
+  const source = requireRecord(value.source, "Site archive manifest source");
+  requireString(source.episodesInput, "Site archive manifest source.episodesInput");
+  requireString(source.metadataInput, "Site archive manifest source.metadataInput");
+  requireString(source.segmentsInput, "Site archive manifest source.segmentsInput");
+
+  const counts = requireRecord(value.counts, "Site archive manifest counts");
+  requireCount(counts.videos, "Site archive manifest counts.videos");
+  requireCount(counts.segments, "Site archive manifest counts.segments");
+  requireCount(counts.topics, "Site archive manifest counts.topics");
+
+  const sharding = requireRecord(value.segmentSharding, "Site archive manifest segmentSharding");
+  if (sharding.algorithm !== siteArchiveSegmentShardingAlgorithm) {
+    throw new Error(
+      `Site archive segment sharding algorithm must be ${siteArchiveSegmentShardingAlgorithm}.`,
+    );
+  }
+  if (sharding.bucketCount !== siteArchiveSegmentBucketCount) {
+    throw new Error(
+      `Site archive segment bucket count must be ${siteArchiveSegmentBucketCount}.`,
+    );
+  }
+
+  const files = requireRecord(value.files, "Site archive manifest files");
+  validateFileRecord(files.videos, "./videos.json", "videos");
+  validateFileRecord(files.topics, "./topics.json", "topics");
+  if (!Array.isArray(files.segmentBuckets)) {
+    throw new Error("Site archive manifest files.segmentBuckets must be an array.");
+  }
+
+  const expectedIds = expectedSiteArchiveBucketIds();
+  if (files.segmentBuckets.length !== expectedIds.length) {
+    throw new Error(`Site archive manifest must declare all ${expectedIds.length} segment buckets.`);
+  }
+  for (const [index, expectedId] of expectedIds.entries()) {
+    const record = requireRecord(
+      files.segmentBuckets[index],
+      `Site archive segment bucket record ${expectedId}`,
+    );
+    if (record.id !== expectedId) {
+      throw new Error(
+        `Site archive segment bucket records must be in lexical order; expected ${expectedId} at index ${index}.`,
+      );
+    }
+    validateFileRecord(record, `./segments/${expectedId}.json`, `segment bucket ${expectedId}`);
+  }
+}
+
+export function validateSiteArchiveSplitData(splitData: SiteArchiveSplitData): void {
+  validateSiteArchiveManifest(splitData.manifest);
+  if (!Array.isArray(splitData.videos) || !Array.isArray(splitData.topics)) {
+    throw new Error("Split site archive videos and topics must be arrays.");
+  }
+  if (!Array.isArray(splitData.segmentBuckets)) {
+    throw new Error("Split site archive segmentBuckets must be an array.");
+  }
+
+  const { manifest } = splitData;
+  assertFileRecordMatches(
+    manifest.files.videos,
+    splitData.videos,
+    "videos",
+  );
+  assertFileRecordMatches(
+    manifest.files.topics,
+    splitData.topics,
+    "topics",
+  );
+
+  const expectedIds = expectedSiteArchiveBucketIds();
+  if (splitData.segmentBuckets.length !== expectedIds.length) {
+    throw new Error(`Split site archive must contain all ${expectedIds.length} segment buckets.`);
+  }
+
+  const allSegments: SiteSegment[] = [];
+  for (const [index, expectedId] of expectedIds.entries()) {
+    const bucket = splitData.segmentBuckets[index];
+    if (bucket === undefined || bucket.id !== expectedId || !Array.isArray(bucket.segments)) {
+      throw new Error(`Split site archive segment bucket ${expectedId} is missing or out of order.`);
+    }
+    const record = manifest.files.segmentBuckets[index];
+    if (record === undefined) {
+      throw new Error(`Site archive manifest is missing segment bucket ${expectedId}.`);
+    }
+    assertFileRecordMatches(record, bucket.segments, `segment bucket ${expectedId}`);
+    for (const segment of bucket.segments) {
+      const actualBucketId = siteArchiveSegmentBucketId(segment.videoId);
+      if (actualBucketId !== expectedId) {
+        throw new Error(
+          `Segment ${segment.id} is in bucket ${expectedId}, but video ${segment.videoId} belongs in ${actualBucketId}.`,
+        );
+      }
+    }
+    allSegments.push(...bucket.segments);
+  }
+
+  if (manifest.counts.videos !== splitData.videos.length) {
+    throw new Error("Site archive manifest video count does not match videos.json.");
+  }
+  if (manifest.counts.topics !== splitData.topics.length) {
+    throw new Error("Site archive manifest topic count does not match topics.json.");
+  }
+  if (manifest.counts.segments !== allSegments.length) {
+    throw new Error("Site archive manifest segment count does not match the segment buckets.");
+  }
+
+  validateSiteArchiveRelationships(splitData.videos, allSegments, splitData.topics);
+  const canonicalSegments = reconstructSegments(splitData.videos, allSegments);
+  const canonicalSegmentIdsByBucket = new Map<string, string[]>(
+    expectedIds.map((id) => [id, []]),
+  );
+  for (const segment of canonicalSegments) {
+    canonicalSegmentIdsByBucket.get(siteArchiveSegmentBucketId(segment.videoId))?.push(segment.id);
+  }
+  for (const [index, bucket] of splitData.segmentBuckets.entries()) {
+    assertSameStringSequence(
+      bucket.segments.map((segment) => segment.id),
+      canonicalSegmentIdsByBucket.get(bucket.id) ?? [],
+      `segment bucket ${bucket.id} ordering`,
+    );
+    if (manifest.files.segmentBuckets[index]?.count !== bucket.segments.length) {
+      throw new Error(`Site archive manifest count for segment bucket ${bucket.id} is incorrect.`);
+    }
+  }
+}
+
+export function reconstructSiteArchiveData(splitData: SiteArchiveSplitData): SiteArchiveData {
+  validateSiteArchiveSplitData(splitData);
+  return reconstructSiteArchiveDataUnchecked(splitData);
+}
+
+export async function validateSiteArchiveDirectory(
+  outputDir: string,
+  options: { allowExtraJsonFiles?: boolean } = {},
+): Promise<SiteArchiveSplitData> {
+  const manifestPath = join(outputDir, "index.json");
+  const manifestText = await readRequiredText(manifestPath);
+  const manifestValue = parseJson(manifestText, manifestPath);
+  validateSiteArchiveManifest(manifestValue);
+  if (manifestText !== canonicalSiteArchiveJson(manifestValue)) {
+    throw new Error(`Site archive manifest is not canonically serialized: ${manifestPath}`);
+  }
+  const manifest = manifestValue;
+
+  const [videos, topics] = await Promise.all([
+    readAndValidateArchiveArray<SiteVideo>(outputDir, manifest.files.videos, "videos"),
+    readAndValidateArchiveArray<SiteTopic>(outputDir, manifest.files.topics, "topics"),
+  ]);
+  const segmentBuckets: SiteArchiveSegmentBucket[] = [];
+  for (const record of manifest.files.segmentBuckets) {
+    segmentBuckets.push({
+      id: record.id,
+      segments: await readAndValidateArchiveArray<SiteSegment>(
+        outputDir,
+        record,
+        `segment bucket ${record.id}`,
+      ),
+    });
+  }
+
+  const splitData = { manifest, videos, topics, segmentBuckets };
+  validateSiteArchiveSplitData(splitData);
+  if (options.allowExtraJsonFiles !== true) {
+    await assertNoExtraArchiveJsonFiles(outputDir);
+  }
+  return splitData;
+}
+
+export async function writeSiteArchiveSplitData(
+  outputDir: string,
+  splitData: SiteArchiveSplitData,
+): Promise<void> {
+  validateSiteArchiveSplitData(splitData);
+
+  const dataFiles: Array<{ path: string; text: string; record: SiteArchiveFileRecord }> = [
+    {
+      path: join(outputDir, "videos.json"),
+      text: canonicalSiteArchiveJson(splitData.videos),
+      record: splitData.manifest.files.videos,
+    },
+    {
+      path: join(outputDir, "topics.json"),
+      text: canonicalSiteArchiveJson(splitData.topics),
+      record: splitData.manifest.files.topics,
+    },
+    ...splitData.segmentBuckets.map((bucket, index) => {
+      const record = splitData.manifest.files.segmentBuckets[index];
+      if (record === undefined) {
+        throw new Error(`Site archive manifest is missing segment bucket ${bucket.id}.`);
+      }
+      return {
+        path: join(outputDir, "segments", `${bucket.id}.json`),
+        text: canonicalSiteArchiveJson(bucket.segments),
+        record,
+      };
+    }),
+  ];
+
+  for (const file of dataFiles) {
+    await writeTextAtomically(file.path, file.text);
+  }
+  for (const file of dataFiles) {
+    const writtenBytes = await readFile(file.path);
+    const writtenHash = siteArchiveSha256(writtenBytes);
+    if (writtenHash !== file.record.sha256) {
+      throw new Error(`Written site archive file failed SHA-256 verification: ${file.path}`);
+    }
+  }
+
+  await writeTextAtomically(
+    join(outputDir, "index.json"),
+    canonicalSiteArchiveJson(splitData.manifest),
+  );
+  await validateSiteArchiveDirectory(outputDir, { allowExtraJsonFiles: true });
+  await removeExtraArchiveJsonFiles(outputDir);
+  await validateSiteArchiveDirectory(outputDir);
+}
+
+function fileRecord(path: string, value: unknown[]): SiteArchiveFileRecord {
+  return {
+    path,
+    count: value.length,
+    sha256: siteArchiveSha256(canonicalSiteArchiveJson(value)),
+  };
+}
+
+function reconstructSiteArchiveDataUnchecked(splitData: SiteArchiveSplitData): SiteArchiveData {
+  const allSegments = splitData.segmentBuckets.flatMap((bucket) => bucket.segments);
+  return {
+    schemaVersion: 1,
+    source: splitData.manifest.source,
+    videos: splitData.videos,
+    segments: reconstructSegments(splitData.videos, allSegments),
+    topics: splitData.topics,
+  };
+}
+
+function reconstructSegments(videos: SiteVideo[], segments: SiteSegment[]): SiteSegment[] {
+  const segmentsBySlug = new Map(segments.map((segment) => [segment.slug, segment]));
+  const reconstructed: SiteSegment[] = [];
+  const usedSlugs = new Set<string>();
+
+  for (const video of videos) {
+    for (const slug of video.segmentSlugs) {
+      if (usedSlugs.has(slug)) {
+        throw new Error(`Segment slug is referenced more than once by site videos: ${slug}`);
+      }
+      const segment = segmentsBySlug.get(slug);
+      if (segment === undefined) {
+        throw new Error(`Site video ${video.videoId} references missing segment slug: ${slug}`);
+      }
+      if (segment.videoId !== video.videoId) {
+        throw new Error(
+          `Site video ${video.videoId} references segment ${slug} from video ${segment.videoId}.`,
+        );
+      }
+      reconstructed.push(segment);
+      usedSlugs.add(slug);
+    }
+  }
+
+  if (usedSlugs.size !== segments.length) {
+    const unreferenced = segments.find((segment) => !usedSlugs.has(segment.slug));
+    throw new Error(`Site segment is not referenced by its video: ${unreferenced?.slug ?? "unknown"}`);
+  }
+  return reconstructed;
+}
+
+function validateSiteArchiveRelationships(
+  videos: SiteVideo[],
+  segments: SiteSegment[],
+  topics: SiteTopic[],
+): void {
+  assertUnique(videos.map((video) => video.videoId), "video ID");
+  assertUnique(videos.map((video) => video.slug), "video route slug");
+  assertUnique(segments.map((segment) => segment.id), "segment ID");
+  assertUnique(segments.map((segment) => segment.slug), "segment slug");
+  assertUnique(topics.map((topic) => topic.slug), "topic slug");
+
+  const videosById = new Map(videos.map((video) => [video.videoId, video]));
+  const topicSlugs = new Set(topics.map((topic) => topic.slug));
+  for (const video of videos) {
+    assertTopicRefsExist(video.topics, topicSlugs, `Video ${video.videoId}`);
+  }
+  for (const segment of segments) {
+    const video = videosById.get(segment.videoId);
+    if (video === undefined) {
+      throw new Error(`Segment ${segment.id} references missing site video: ${segment.videoId}`);
+    }
+    if (segment.videoSlug !== video.slug) {
+      throw new Error(`Segment ${segment.id} has an incorrect video route slug.`);
+    }
+    assertTopicRefsExist(segment.topics, topicSlugs, `Segment ${segment.id}`);
+  }
+
+  reconstructSegments(videos, segments);
+  const segmentCountByTopic = new Map<string, number>();
+  const videoIdsByTopic = new Map<string, Set<string>>();
+  for (const video of videos) {
+    for (const reference of video.topics) {
+      const videoIds = videoIdsByTopic.get(reference.slug) ?? new Set<string>();
+      videoIds.add(video.videoId);
+      videoIdsByTopic.set(reference.slug, videoIds);
+    }
+  }
+  for (const segment of segments) {
+    for (const reference of segment.topics) {
+      segmentCountByTopic.set(reference.slug, (segmentCountByTopic.get(reference.slug) ?? 0) + 1);
+      const videoIds = videoIdsByTopic.get(reference.slug) ?? new Set<string>();
+      videoIds.add(segment.videoId);
+      videoIdsByTopic.set(reference.slug, videoIds);
+    }
+  }
+  for (const topic of topics) {
+    const segmentCount = segmentCountByTopic.get(topic.slug) ?? 0;
+    const videoCount = videoIdsByTopic.get(topic.slug)?.size ?? 0;
+    if (topic.segmentCount !== segmentCount || topic.videoCount !== videoCount) {
+      throw new Error(`Site topic ${topic.slug} has incorrect relationship counts.`);
+    }
+  }
+}
+
+function assertTopicRefsExist(
+  references: TopicRef[],
+  topicSlugs: ReadonlySet<string>,
+  owner: string,
+): void {
+  for (const reference of references) {
+    if (!topicSlugs.has(reference.slug)) {
+      throw new Error(`${owner} references missing topic: ${reference.slug}`);
+    }
+  }
+}
+
+function assertFileRecordMatches(
+  record: SiteArchiveFileRecord,
+  values: unknown[],
+  label: string,
+): void {
+  if (record.count !== values.length) {
+    throw new Error(`Site archive ${label} count does not match its manifest record.`);
+  }
+  const actualHash = siteArchiveSha256(canonicalSiteArchiveJson(values));
+  if (record.sha256 !== actualHash) {
+    throw new Error(`Site archive ${label} SHA-256 does not match its manifest record.`);
+  }
+}
+
+function validateFileRecord(value: unknown, expectedPath: string, label: string): void {
+  const record = requireRecord(value, `Site archive ${label} file record`);
+  if (record.path !== expectedPath) {
+    throw new Error(`Site archive ${label} path must be ${expectedPath}.`);
+  }
+  requireCount(record.count, `Site archive ${label} count`);
+  if (typeof record.sha256 !== "string" || !/^[a-f0-9]{64}$/u.test(record.sha256)) {
+    throw new Error(`Site archive ${label} must include a lowercase SHA-256 hash.`);
+  }
+}
+
+async function readAndValidateArchiveArray<T>(
+  outputDir: string,
+  record: SiteArchiveFileRecord,
+  label: string,
+): Promise<T[]> {
+  const filePath = join(outputDir, ...record.path.replace(/^\.\//u, "").split("/"));
+  const text = await readRequiredText(filePath);
+  if (siteArchiveSha256(text) !== record.sha256) {
+    throw new Error(`Site archive ${label} SHA-256 mismatch: ${filePath}`);
+  }
+  const value = parseJson(text, filePath);
+  if (!Array.isArray(value)) {
+    throw new Error(`Site archive ${label} must contain a JSON array: ${filePath}`);
+  }
+  if (value.length !== record.count) {
+    throw new Error(`Site archive ${label} count mismatch: ${filePath}`);
+  }
+  if (text !== canonicalSiteArchiveJson(value)) {
+    throw new Error(`Site archive ${label} is not canonically serialized: ${filePath}`);
+  }
+  return value as T[];
+}
+
+async function assertNoExtraArchiveJsonFiles(outputDir: string): Promise<void> {
+  const extraFiles = await findExtraArchiveJsonFiles(outputDir);
+  if (extraFiles.length > 0) {
+    throw new Error(`Unexpected site archive JSON file: ${extraFiles[0]}`);
+  }
+}
+
+async function removeExtraArchiveJsonFiles(outputDir: string): Promise<void> {
+  for (const filePath of await findExtraArchiveJsonFiles(outputDir)) {
+    await rm(filePath);
+  }
+}
+
+async function findExtraArchiveJsonFiles(outputDir: string): Promise<string[]> {
+  const expectedRootFiles = new Set(["index.json", "topics.json", "videos.json"]);
+  const expectedSegmentFiles = new Set(
+    expectedSiteArchiveBucketIds().map((id) => `${id}.json`),
+  );
+  const extras: string[] = [];
+  const rootEntries = await readdir(outputDir, { withFileTypes: true });
+  for (const entry of rootEntries) {
+    if (entry.isFile() && entry.name.endsWith(".json") && !expectedRootFiles.has(entry.name)) {
+      extras.push(join(outputDir, entry.name));
+    }
+  }
+  const segmentDir = join(outputDir, "segments");
+  const segmentEntries = await readdir(segmentDir, { withFileTypes: true });
+  for (const entry of segmentEntries) {
+    if (entry.isFile() && entry.name.endsWith(".json") && !expectedSegmentFiles.has(entry.name)) {
+      extras.push(join(segmentDir, entry.name));
+    }
+  }
+  return extras.sort((left, right) => left.localeCompare(right));
+}
+
+function expectedSiteArchiveBucketIds(): string[] {
+  return Array.from({ length: siteArchiveSegmentBucketCount }, (_, index) => (
+    index.toString(16).padStart(2, "0")
+  ));
+}
+
+function assertSameStringSequence(actual: string[], expected: string[], label: string): void {
+  if (actual.length !== expected.length || actual.some((value, index) => value !== expected[index])) {
+    throw new Error(`Site archive ${label} is not deterministic.`);
+  }
+}
+
+function requireRecord(value: unknown, label: string): Record<string, unknown> {
+  if (!isRecord(value)) {
+    throw new Error(`${label} must be an object.`);
+  }
+  return value;
+}
+
+function requireString(value: unknown, label: string): void {
+  if (typeof value !== "string" || value.length === 0) {
+    throw new Error(`${label} must be a non-empty string.`);
+  }
+}
+
+function requireCount(value: unknown, label: string): void {
+  if (typeof value !== "number" || !Number.isSafeInteger(value) || value < 0) {
+    throw new Error(`${label} must be a non-negative safe integer.`);
+  }
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+function parseJson(text: string, path: string): unknown {
+  try {
+    return JSON.parse(text) as unknown;
+  } catch (error) {
+    throw new Error(`Could not parse generated site archive JSON: ${path}`, { cause: error });
+  }
+}
+
+async function readRequiredText(path: string): Promise<string> {
+  try {
+    return await readFile(path, "utf8");
+  } catch (error) {
+    throw new Error(`Could not read generated site archive file: ${path}`, { cause: error });
+  }
 }
 
 function buildSiteVideo(input: {

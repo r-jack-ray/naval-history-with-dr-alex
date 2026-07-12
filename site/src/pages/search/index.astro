@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { archiveSegments, archiveTopics, archiveVideos } from "../../data/archive";
+import { archiveTopics } from "../../data/archive";
 
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
@@ -8,59 +8,6 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
 const popularTopics = [...archiveTopics]
   .sort((left, right) => right.segmentCount - left.segmentCount || right.videoCount - left.videoCount)
   .slice(0, 8);
-const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${count} time notes`;
-const searchItems = [
-  ...archiveSegments.map((segment) => ({
-    type: "Time note",
-    title: segment.title,
-    url: `${baseUrl}segments/${segment.slug}/`,
-    label: `${segment.kindLabel} · ${segment.start}`,
-    meta: segment.videoTitle,
-    summary: segment.summary,
-    topics: segment.topics.map((topic) => topic.title),
-    text: [
-      segment.title,
-      segment.kindLabel,
-      segment.start,
-      segment.videoTitle,
-      segment.summary,
-      segment.body,
-      segment.question,
-      segment.answerShort,
-      ...segment.topics.map((topic) => topic.title),
-    ].filter(Boolean).join(" "),
-  })),
-  ...archiveVideos.map((video) => ({
-    type: "Video guide",
-    title: video.title,
-    url: `${baseUrl}videos/${video.slug}/`,
-    label: video.sourceType,
-    meta: `${video.publishedLabel} · ${video.durationLabel} · ${timeNoteCountLabel(video.segmentSlugs.length)}`,
-    summary:
-      video.topics.length > 0
-        ? `Covers ${video.topics.slice(0, 4).map((topic) => topic.title).join(", ")}.`
-        : "Open this video guide to see available time notes.",
-    topics: video.topics.map((topic) => topic.title),
-    text: [
-      video.title,
-      video.sourceType,
-      video.publishedLabel,
-      video.durationLabel,
-      ...video.topics.map((topic) => topic.title),
-    ].join(" "),
-  })),
-  ...archiveTopics.map((topic) => ({
-    type: "Topic",
-    title: topic.title,
-    url: `${baseUrl}topics/${topic.slug}/`,
-    label: "Topic",
-    meta: `${topic.videoCount} videos · ${topic.segmentCount} segments`,
-    summary: topic.summary,
-    topics: topic.aliases,
-    text: [topic.title, topic.summary, ...topic.aliases].join(" "),
-  })),
-];
-const searchDataJson = JSON.stringify(searchItems).replace(/</g, "\\u003c");
 ---
 
 <BaseLayout
@@ -69,7 +16,6 @@ const searchDataJson = JSON.stringify(searchItems).replace(/</g, "\\u003c");
   pageType="search"
 >
   <Fragment slot="head">
-    <script type="application/json" id="site-search-data" set:html={searchDataJson} is:inline></script>
     <script src={`${baseUrl}scripts/site-search.js`} defer is:inline></script>
   </Fragment>
 
@@ -84,7 +30,14 @@ const searchDataJson = JSON.stringify(searchItems).replace(/</g, "\\u003c");
     </section>
 
     <section class="search-panel" aria-label="Site search">
-      <form class="site-search-form" role="search" data-site-search-form>
+      <form
+        class="site-search-form"
+        role="search"
+        data-site-search-form
+        data-pagefind-url={`${baseUrl}pagefind/pagefind.js`}
+        data-pagefind-base={`${baseUrl}pagefind/`}
+        data-site-base={baseUrl}
+      >
         <label for="site-search-input">Search the guide</label>
         <div class="site-search-row">
           <input
@@ -93,18 +46,26 @@ const searchDataJson = JSON.stringify(searchItems).replace(/</g, "\\u003c");
             name="q"
             placeholder="Try Royal Navy, destroyers, Jutland, carriers, logistics"
             autocomplete="off"
+            aria-controls="site-search-results"
+            aria-describedby="site-search-help site-search-status"
             data-site-search-input
           />
           <button type="button" data-site-search-clear hidden>Clear</button>
         </div>
-        <p class="search-help">
+        <p class="search-help" id="site-search-help">
           Search video guides, time notes, topics, ship classes, navies, battles, weapons, doctrine, and strategy.
         </p>
       </form>
-      <p class="search-status" data-site-search-status aria-live="polite">
+      <p class="search-status" id="site-search-status" data-site-search-status aria-live="polite">
         Type a subject to search the study guide.
       </p>
-      <div class="record-grid search-results" data-site-search-results></div>
+      <div
+        class="record-grid search-results"
+        id="site-search-results"
+        data-site-search-results
+        aria-label="Search results"
+        aria-busy="false"
+      ></div>
     </section>
 
     <section class="home-section" aria-labelledby="popular-topics-heading">

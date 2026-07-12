@@ -21,7 +21,7 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` when working on
 - Use `src/channel/episodes.json` for canonical video IDs, slugs, URLs, transcript state, and inventory stems.
 - Use `src/channel/video-metadata.json` for YouTube title, description, thumbnail, duration, and statistics.
 - Use `src/derived/video-segments/` for current curated video, segment, and topic source data.
-- Use `src/site/archive-data.ts` and `npm run generate:site-data` to produce `site/src/data/generated/archive.json`.
+- Use `src/site/archive-data.ts` and `npm run generate:site-data` to produce the tracked manifest and JSON shards under `site/src/data/generated/archive/`; `index.json` is the authoritative generated-file manifest.
 - Use the manifest-owned `src/transcripts/txt/` file as the transcript source of record when a task explicitly asks for transcript-backed curation.
 
 ## Workflow
@@ -31,7 +31,7 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` when working on
 3. Keep routes compatible with the GitHub Pages base path `/naval-history-with-dr-alex/`.
 4. Preserve the segment-first model: `chapter`, `notable_point`, `qa`, and `transcript_excerpt`.
 5. Add Pagefind metadata and filters for type, video title, video ID, timestamp, topic, and segment kind when present.
-6. Regenerate generated site data through the script; do not hand-edit `site/src/data/generated/archive.json`.
+6. Regenerate generated site data through `npm run generate:site-data`, `npm run site:check`, or `npm run site:build`; do not hand-edit `site/src/data/generated/archive/index.json` or any manifest-listed shard.
 7. Avoid staging or committing transcript fetch outputs unless the user explicitly includes them.
 8. Keep visible copy learner-facing. Prefer "study guide", "video guide", "time note", "watch point", "topic", and "subject" over processing, inventory, or metadata language.
 

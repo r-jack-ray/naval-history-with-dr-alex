@@ -23,7 +23,7 @@ This audit is repeatable. A prior first, second, third, or later pass is not evi
 
 1. Read `AGENTS.md` and `.agents/site-content-auditor.md`.
 2. Inspect the current diff before edits with `git -c safe.directory=C:/Workspaces/naval-history-with-dr-alex status --short`.
-3. Treat `src/derived/video-segments/` as the source for public segment wording. Treat `site/src/data/generated/archive.json` as generated output.
+3. Treat `src/derived/video-segments/` as the source for public segment wording. Treat the manifest and shards under `site/src/data/generated/archive/` as generated output.
 4. Require an explicitly named video ID, transcript, or exact per-video shard. If none was supplied, stop without edits; do not sample or select from the shard directory.
 5. Own only the selected per-video shard. Preserve every other shard and all shared or generated outputs.
 
@@ -63,7 +63,7 @@ This audit is repeatable. A prior first, second, third, or later pass is not evi
 ## Shared-Output Boundary
 
 - Do not run `generate:site-data`, `site:check`, `site:build`, Pagefind, `.codex/hooks/validate-content-pipeline.ps1`, `npm run check`, or any other repository-wide generation, test, build, audit, or validation command.
-- Do not write `topics.json`, `site/src/data/generated/archive.json`, `site/dist/`, `reports/`, processing logs, schedules, package files, tooling, Astro source, or CSS.
+- Do not write `topics.json`, anything under `site/src/data/generated/archive/`, `site/dist/`, `reports/`, processing logs, schedules, package files, tooling, Astro source, or CSS.
 - The repository owner performs shared generation, tests, Astro/Pagefind builds, and integration validation before push.
 - Read-only inspection and `git diff --check` scoped to the owned shard are allowed when useful. A lane-specific automation may additionally run only the private temporary-directory checks explicitly provided by that automation prompt.
 

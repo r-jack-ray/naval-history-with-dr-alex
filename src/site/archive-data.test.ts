@@ -1,10 +1,21 @@
 import assert from "node:assert/strict";
-import { mkdtemp, rm, writeFile } from "node:fs/promises";
+import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
 
-import { buildSiteArchiveData } from "./archive-data.js";
+import {
+  buildSiteArchiveData,
+  canonicalSiteArchiveJson,
+  reconstructSiteArchiveData,
+  siteArchiveSegmentBucketCount,
+  siteArchiveSegmentBucketId,
+  siteArchiveSha256,
+  splitSiteArchiveData,
+  validateSiteArchiveDirectory,
+  validateSiteArchiveSplitData,
+  writeSiteArchiveSplitData,
+} from "./archive-data.js";
 import {
   findCuratedSegmentDuplicates,
   loadCuratedArchiveSeed,
@@ -21,6 +32,136 @@ test("builds deterministic site archive data from channel metadata and segment s
   assert.equal(archive.segments[1]?.start, "12:01");
   assert.equal(archive.segments[1]?.youtubeUrl, "https://www.youtube.com/watch?v=abc123&t=721s");
   assert.equal(archive.topics.find((topic) => topic.slug === "destroyers")?.segmentCount, 2);
+});
+
+test("splits and reconstructs the logical archive with 64 deterministic segment buckets", () => {
+  const archive = buildSiteArchiveData(sampleInput());
+  const split = splitSiteArchiveData(archive);
+
+  assert.equal(siteArchiveSegmentBucketId("abc123"), "12");
+  assert.equal(split.segmentBuckets.length, siteArchiveSegmentBucketCount);
+  assert.deepEqual(
+    split.segmentBuckets.map((bucket) => bucket.id),
+    Array.from({ length: 64 }, (_, index) => index.toString(16).padStart(2, "0")),
+  );
+  assert.deepEqual(
+    split.segmentBuckets.find((bucket) => bucket.id === "12")?.segments.map((segment) => segment.id),
+    ["intro", "qa"],
+  );
+  assert.equal(split.manifest.files.segmentBuckets[0]?.path, "./segments/00.json");
+  assert.equal(split.manifest.files.segmentBuckets[63]?.path, "./segments/3f.json");
+  assert.equal(
+    split.manifest.files.videos.sha256,
+    siteArchiveSha256(canonicalSiteArchiveJson(split.videos)),
+  );
+  assert.deepEqual(reconstructSiteArchiveData(split), archive);
+  assert.deepEqual(splitSiteArchiveData(archive), split);
+});
+
+test("keeps existing bucket filenames and assignments stable when records are appended", () => {
+  const original = splitSiteArchiveData(buildSiteArchiveData(sampleInput()));
+  const input = sampleInput();
+  input.episodesStore.episodes.push({
+    videoId: "def456",
+    title: "Second Video",
+    slug: "second-video",
+  });
+  input.seed.videos.push({ videoId: "def456", topics: ["destroyers"] });
+  input.seed.segments.push({
+    id: "second-video-intro",
+    slug: "second-video-intro",
+    videoId: "def456",
+    title: "Second intro",
+    kind: "chapter",
+    start: "0:00",
+    topics: ["destroyers"],
+    summary: "Second intro segment.",
+    body: "Second intro body.",
+  });
+
+  const appended = splitSiteArchiveData(buildSiteArchiveData(input));
+
+  assert.deepEqual(
+    appended.manifest.files.segmentBuckets.map((record) => record.path),
+    original.manifest.files.segmentBuckets.map((record) => record.path),
+  );
+  assert.equal(siteArchiveSegmentBucketId("abc123"), "12");
+  assert.equal(siteArchiveSegmentBucketId("def456"), "1c");
+  assert.deepEqual(
+    appended.segmentBuckets.find((bucket) => bucket.id === "12")?.segments.map((segment) => segment.id),
+    ["intro", "qa"],
+  );
+});
+
+test("writes, validates, and rewrites a byte-deterministic split archive directory", async () => {
+  const directory = await mkdtemp(join(tmpdir(), "naval-split-archive-"));
+  try {
+    const archive = buildSiteArchiveData(sampleInput());
+    const split = splitSiteArchiveData(archive);
+    await writeSiteArchiveSplitData(directory, split);
+
+    const firstManifest = await readFile(join(directory, "index.json"), "utf8");
+    const firstBucket = await readFile(join(directory, "segments", "12.json"), "utf8");
+    const loaded = await validateSiteArchiveDirectory(directory);
+    assert.deepEqual(reconstructSiteArchiveData(loaded), archive);
+
+    await writeSiteArchiveSplitData(directory, split);
+    assert.equal(await readFile(join(directory, "index.json"), "utf8"), firstManifest);
+    assert.equal(await readFile(join(directory, "segments", "12.json"), "utf8"), firstBucket);
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+test("rejects schema mismatch, misbucketed records, and damaged shard sets", async () => {
+  const split = splitSiteArchiveData(buildSiteArchiveData(sampleInput()));
+  const wrongSchema = structuredClone(split);
+  (wrongSchema.manifest as { schemaVersion: number }).schemaVersion = 99;
+  assert.throws(
+    () => validateSiteArchiveSplitData(wrongSchema),
+    /schemaVersion must be 2/u,
+  );
+
+  const misbucketed = structuredClone(split);
+  const sourceBucket = misbucketed.segmentBuckets.find((bucket) => bucket.id === "12")!;
+  const targetBucket = misbucketed.segmentBuckets.find((bucket) => bucket.id === "00")!;
+  targetBucket.segments.push(sourceBucket.segments[0]!);
+  sourceBucket.segments.splice(0, 1);
+  for (const bucket of [sourceBucket, targetBucket]) {
+    const record = misbucketed.manifest.files.segmentBuckets.find((candidate) => candidate.id === bucket.id)!;
+    record.count = bucket.segments.length;
+    record.sha256 = siteArchiveSha256(canonicalSiteArchiveJson(bucket.segments));
+  }
+  assert.throws(
+    () => validateSiteArchiveSplitData(misbucketed),
+    /belongs in 12/u,
+  );
+
+  const directory = await mkdtemp(join(tmpdir(), "naval-damaged-split-archive-"));
+  try {
+    await writeSiteArchiveSplitData(directory, split);
+    await writeFile(join(directory, "segments", "12.json"), "[]\n", "utf8");
+    await assert.rejects(
+      () => validateSiteArchiveDirectory(directory),
+      /SHA-256 mismatch/u,
+    );
+
+    await writeSiteArchiveSplitData(directory, split);
+    await writeFile(join(directory, "segments", "extra.json"), "[]\n", "utf8");
+    await assert.rejects(
+      () => validateSiteArchiveDirectory(directory),
+      /Unexpected site archive JSON file/u,
+    );
+
+    await writeSiteArchiveSplitData(directory, split);
+    await rm(join(directory, "segments", "12.json"));
+    await assert.rejects(
+      () => validateSiteArchiveDirectory(directory),
+      /Could not read generated site archive file/u,
+    );
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
 });
 
 test("rejects duplicate segment routes", () => {

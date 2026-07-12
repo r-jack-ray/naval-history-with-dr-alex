@@ -13,13 +13,13 @@ import {
   stat,
   writeFile,
 } from "node:fs/promises";
-import { dirname, relative, resolve } from "node:path";
+import { dirname, isAbsolute, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const archiveCachePath = resolve(repositoryRoot, ".tmp/site-archive-cache.json");
 const siteCachePath = resolve(repositoryRoot, ".tmp/site-build-cache.json");
-const archiveOutputSentinels = ["site/src/data/generated/archive.json"];
+const archiveOutputSentinels = ["site/src/data/generated/archive/index.json"];
 const siteOutputSentinels = [
   "site/dist/index.html",
   "site/dist/pagefind/pagefind-entry.json",
@@ -43,8 +43,8 @@ const siteInputPaths = [
   "site/public",
   "site/src",
 ];
-const archiveCacheVersion = 1;
-const siteCacheVersion = 2;
+const archiveCacheVersion = 2;
+const siteCacheVersion = 3;
 
 async function main() {
   const args = process.argv.slice(2);
@@ -73,20 +73,34 @@ async function ensureSiteArchive(force) {
     [...archiveInputPaths, ...typescriptSources],
   );
   const cache = await readCache(archiveCachePath, archiveCacheVersion);
-  const outputsExist = await allPathsExist(archiveOutputSentinels);
+  const archiveValidation = await validateSiteArchive();
+  const outputsExist = archiveValidation.valid;
 
   if (!force && outputsExist && cache?.fingerprint === fingerprint) {
     console.log("Archive inputs are unchanged; skipped site archive generation.");
     return true;
   }
 
-  const reason = buildReason(force, outputsExist, cache, "archive inputs changed");
+  const reason = buildReason(
+    force,
+    outputsExist,
+    cache,
+    "archive inputs changed",
+    archiveValidation.reason,
+  );
   console.log(`Generating site archive because ${reason}.`);
 
   const exitCode = await runNpmScript("generate:site-data");
   if (exitCode !== 0) {
     process.exitCode = exitCode;
     return false;
+  }
+
+  const completedArchiveValidation = await validateSiteArchive();
+  if (!completedArchiveValidation.valid) {
+    throw new Error(
+      `Generated site archive failed integrity validation: ${completedArchiveValidation.reason}`,
+    );
   }
 
   const completedFingerprint = await calculateFingerprint(
@@ -133,14 +147,134 @@ async function ensureBuiltSite(force) {
   });
 }
 
-function buildReason(force, outputsExist, cache, changedReason) {
+function buildReason(force, outputsExist, cache, changedReason, missingReason) {
   return force
     ? "a forced build was requested"
     : !outputsExist
-      ? "required output is missing"
+      ? (missingReason ?? "required output is missing")
       : cache === undefined
         ? "no successful cache exists"
         : changedReason;
+}
+
+async function validateSiteArchive() {
+  const manifestPath = resolve(repositoryRoot, archiveOutputSentinels[0]);
+  const archiveDirectory = dirname(manifestPath);
+
+  let manifest;
+  try {
+    manifest = JSON.parse(await readFile(manifestPath, "utf8"));
+  } catch (error) {
+    if (error?.code === "ENOENT") {
+      return invalidArchive("the archive manifest is missing");
+    }
+    if (error instanceof SyntaxError) {
+      return invalidArchive("the archive manifest is not valid JSON");
+    }
+    throw error;
+  }
+
+  if (manifest?.schemaVersion !== 2) {
+    return invalidArchive("the archive manifest schema version is unsupported");
+  }
+  if (
+    manifest?.segmentSharding?.algorithm !== "sha256-video-id-mod" ||
+    manifest.segmentSharding.bucketCount !== 64
+  ) {
+    return invalidArchive("the archive manifest has an unsupported segment-sharding contract");
+  }
+
+  const videos = manifest?.files?.videos;
+  const topics = manifest?.files?.topics;
+  const segmentBuckets = manifest?.files?.segmentBuckets;
+  if (!isArchiveFileRecord(videos) || videos.path !== "./videos.json") {
+    return invalidArchive("the archive videos file record is invalid");
+  }
+  if (!isArchiveFileRecord(topics) || topics.path !== "./topics.json") {
+    return invalidArchive("the archive topics file record is invalid");
+  }
+  if (!Array.isArray(segmentBuckets) || segmentBuckets.length !== 64) {
+    return invalidArchive("the archive manifest does not declare all 64 segment buckets");
+  }
+
+  for (let bucketIndex = 0; bucketIndex < segmentBuckets.length; bucketIndex += 1) {
+    const expectedId = bucketIndex.toString(16).padStart(2, "0");
+    const bucket = segmentBuckets[bucketIndex];
+    if (
+      !isArchiveFileRecord(bucket) ||
+      bucket.id !== expectedId ||
+      bucket.path !== `./segments/${expectedId}.json`
+    ) {
+      return invalidArchive(`the archive segment bucket ${expectedId} record is invalid`);
+    }
+  }
+
+  if (
+    !isNonnegativeInteger(manifest?.counts?.videos) ||
+    !isNonnegativeInteger(manifest?.counts?.segments) ||
+    !isNonnegativeInteger(manifest?.counts?.topics) ||
+    videos.count !== manifest.counts.videos ||
+    topics.count !== manifest.counts.topics ||
+    segmentBuckets.reduce((sum, bucket) => sum + bucket.count, 0) !==
+      manifest.counts.segments
+  ) {
+    return invalidArchive("the archive manifest counts are inconsistent");
+  }
+
+  const fileRecords = [videos, topics, ...segmentBuckets];
+  const seenPaths = new Set();
+  for (const fileRecord of fileRecords) {
+    if (seenPaths.has(fileRecord.path)) {
+      return invalidArchive(`the archive manifest repeats ${fileRecord.path}`);
+    }
+    seenPaths.add(fileRecord.path);
+
+    const filePath = resolve(archiveDirectory, fileRecord.path);
+    const archiveRelativePath = relative(archiveDirectory, filePath);
+    if (
+      archiveRelativePath.length === 0 ||
+      archiveRelativePath === ".." ||
+      archiveRelativePath.startsWith(`..${process.platform === "win32" ? "\\" : "/"}`) ||
+      isAbsolute(archiveRelativePath)
+    ) {
+      return invalidArchive(`the archive file path escapes its generated directory: ${fileRecord.path}`);
+    }
+
+    let bytes;
+    try {
+      bytes = await readFile(filePath);
+    } catch (error) {
+      if (error?.code === "ENOENT") {
+        return invalidArchive(`the archive file is missing: ${fileRecord.path}`);
+      }
+      throw error;
+    }
+    const sha256 = createHash("sha256").update(bytes).digest("hex");
+    if (sha256 !== fileRecord.sha256) {
+      return invalidArchive(`the archive file hash does not match: ${fileRecord.path}`);
+    }
+  }
+
+  return { valid: true };
+}
+
+function isArchiveFileRecord(value) {
+  return (
+    value !== null &&
+    typeof value === "object" &&
+    typeof value.path === "string" &&
+    isNonnegativeInteger(value.count) &&
+    typeof value.sha256 === "string" &&
+    /^[a-f0-9]{64}$/.test(value.sha256)
+  );
+}
+
+function isNonnegativeInteger(value) {
+  return Number.isInteger(value) && value >= 0;
+}
+
+function invalidArchive(reason) {
+  return { valid: false, reason };
 }
 
 async function calculateFingerprint(name, version, paths) {

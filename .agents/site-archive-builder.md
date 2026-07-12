@@ -29,10 +29,10 @@ Use this brief when working on the Astro/Pagefind website for the Dr. Alex Clark
 ## Site Expectations
 
 - Keep GitHub Pages compatibility in mind: the site base path is `/naval-history-with-dr-alex/`.
-- Regenerate `site/src/data/generated/archive.json` through `npm run generate:site-data`; do not hand-edit it.
+- Regenerate the tracked manifest and shards under `site/src/data/generated/archive/` through `npm run generate:site-data`, `npm run site:check`, or `npm run site:build`; do not hand-edit `index.json` or its listed files.
 - Keep generated output under `site/dist/`; do not commit it.
 - Add Pagefind metadata and filters where pages expose videos, topics, or segment types.
-- Keep search scalable by favoring Pagefind output and future manifest/shard patterns over one large custom payload.
+- Keep search scalable by querying Pagefind output instead of embedding the archive dataset as one large custom browser payload.
 - Keep visible copy learner-facing. Prefer "study guide", "video guide", "time note", "watch point", "topic", and "subject" over database or processing language.
 
 ## Validation

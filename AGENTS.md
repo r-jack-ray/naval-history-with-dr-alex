@@ -12,7 +12,7 @@ Planned source layout:
 - `src/derived/`: other generated or supporting derived data.
 - `src/site/`: deterministic site-data generator and tests.
 - `docs/videos/`: one primary Markdown page per video.
-- `site/src/data/generated/`: generated Astro-facing archive JSON.
+- `site/src/data/generated/archive/`: tracked, generated Astro-facing archive manifest and JSON shards.
 - `site/dist/pagefind/`: generated Pagefind index, ignored by Git.
 
 ## Site Intent
@@ -58,7 +58,7 @@ git push
 
 On Windows, do not launch the roaming `npm` shim from repository Node wrappers: on this machine it resolves a missing `C:\Users\JR\AppData\Roaming\npm\node_modules\npm\bin\npm-cli.js`. Direct `spawn()` of `npm.cmd` can also fail with `EINVAL`. Resolve `npm.cmd` beside `process.execPath` and invoke that fixed command through the system shell; for interactive validation, use `C:\Program Files\nodejs\npm.cmd` directly when plain `npm` hits the broken shim.
 
-`build` emits `dist/`; `check:types` type-checks only; `test` compiles and runs Node's test runner; `check` combines both. `audit:site-content` validates curated transcript evidence and writes `reports/site-content-backlog.md`. `generate:site-data` writes deterministic Astro data to `site/src/data/generated/archive.json`. `site:build` fingerprints the generator and site inputs, uses ignored `.tmp/` caches to skip unchanged archive, Astro, and Pagefind stages, and performs the required stages when inputs or outputs change; use `npm run site:build -- --force` to bypass both caches. Official YouTube Data API tasks default to one second between requests; alternate transcript fetches default to five seconds.
+`build` emits `dist/`; `check:types` type-checks only; `test` compiles and runs Node's test runner; `check` combines both. `audit:site-content` validates curated transcript evidence and writes `reports/site-content-backlog.md`. `generate:site-data` writes deterministic Astro data under `site/src/data/generated/archive/`, with `index.json` as the authoritative manifest for the generated files. Never hand-edit that tracked generated dataset. `site:build` fingerprints the generator and site inputs, validates every manifest-listed archive file and SHA-256 before skipping generation, uses ignored `.tmp/` caches to skip unchanged archive, Astro, and Pagefind stages, and performs the required stages when inputs or outputs change; use `npm run site:build -- --force` to bypass both caches. Official YouTube Data API tasks default to one second between requests; alternate transcript fetches default to five seconds.
 
 ## Coding Style & Naming Conventions
 

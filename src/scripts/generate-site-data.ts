@@ -1,5 +1,5 @@
 import {
-  defaultSiteArchiveOutput,
+  defaultSiteArchiveOutputDir,
   defaultSiteEpisodesInput,
   defaultSiteMetadataInput,
   defaultSiteSegmentsInput,
@@ -13,7 +13,7 @@ try {
   await synchronizeCuratedTopicStore(options.segmentsInput);
   const archive = await generateSiteArchiveData(options);
   console.error(
-    `Generated site archive data: ${options.output} (${archive.videos.length} videos, ${archive.segments.length} segments, ${archive.topics.length} topics)`,
+    `Generated site archive data: ${options.outputDir} (${archive.manifest.counts.videos} videos, ${archive.manifest.counts.segments} segments, ${archive.manifest.counts.topics} topics)`,
   );
 } catch (error) {
   const message = error instanceof Error ? error.message : String(error);
@@ -26,7 +26,7 @@ function parseArgs(args: string[]) {
     episodesInput: defaultSiteEpisodesInput,
     metadataInput: defaultSiteMetadataInput,
     segmentsInput: defaultSiteSegmentsInput,
-    output: defaultSiteArchiveOutput,
+    outputDir: defaultSiteArchiveOutputDir,
   };
 
   for (let index = 0; index < args.length; index += 1) {
@@ -41,8 +41,8 @@ function parseArgs(args: string[]) {
       case "--segments-input":
         options.segmentsInput = readValue(args, ++index, arg);
         break;
-      case "--output":
-        options.output = readValue(args, ++index, arg);
+      case "--output-dir":
+        options.outputDir = readValue(args, ++index, arg);
         break;
       case "--help":
       case "-h":
@@ -72,6 +72,6 @@ Options:
   --episodes-input <path>  Channel episode master. Defaults to ${defaultSiteEpisodesInput}.
   --metadata-input <path>  YouTube metadata store. Defaults to ${defaultSiteMetadataInput}.
   --segments-input <path>  Per-video curated content directory. Defaults to ${defaultSiteSegmentsInput}.
-  --output <path>          Astro-facing archive JSON. Defaults to ${defaultSiteArchiveOutput}.
+  --output-dir <path>      Astro-facing archive directory. Defaults to ${defaultSiteArchiveOutputDir}.
 `);
 }

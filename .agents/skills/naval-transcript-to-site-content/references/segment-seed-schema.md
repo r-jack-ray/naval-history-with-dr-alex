@@ -7,7 +7,7 @@ Curated site content lives in `src/derived/video-segments/`.
 - `topics.json`: synchronized shared browsing/search topic records, generated from topic usage in the video shards while preserving existing enriched metadata.
 - `<manifest.fileStem>.json`: one file per site-visible video, containing that video's topic slugs and segments. The stored `fileStem` in `src/transcripts/manifest.json` is canonical; the record's `paths.txt` basename must be exactly `<fileStem>.txt`, and the name must not be recomputed from current metadata.
 
-Do not recreate a monolithic curated-content file. `site/src/data/generated/archive.json` is generated output.
+Do not recreate a monolithic curated-content file. The manifest and shards under `site/src/data/generated/archive/` are generated output.
 
 ## Video File
 
