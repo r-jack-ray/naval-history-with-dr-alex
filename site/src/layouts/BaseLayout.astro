@@ -34,7 +34,7 @@ const isActivePath = (path: string) => currentPath.startsWith(`${baseUrl}${path}
     <script is:inline>
       (() => {
         const storageKey = "naval-history-theme";
-        const choices = new Set(["light", "dark", "system"]);
+        const choices = new Set(["light", "dark", "bruships", "system"]);
         const savedChoice = (() => {
           try {
             return localStorage.getItem(storageKey) || "";
@@ -48,7 +48,7 @@ const isActivePath = (path: string) => currentPath.startsWith(`${baseUrl}${path}
 
         document.documentElement.dataset.theme = appliedTheme;
         document.documentElement.dataset.themeChoice = themeChoice;
-        document.documentElement.style.colorScheme = appliedTheme;
+        document.documentElement.style.colorScheme = appliedTheme === "bruships" ? "dark" : appliedTheme;
       })();
     </script>
     <slot name="head" />
@@ -80,6 +80,10 @@ const isActivePath = (path: string) => currentPath.startsWith(`${baseUrl}${path}
               <span class="theme-icon theme-icon-dark" aria-hidden="true"></span>
               <span class="theme-label">Dark</span>
             </button>
+            <button type="button" data-theme-choice="bruships" aria-label="Use Bruships theme" aria-pressed="false">
+              <span class="theme-icon theme-icon-bruships" aria-hidden="true"></span>
+              <span class="theme-label">Bruships</span>
+            </button>
             <button type="button" data-theme-choice="system" aria-label="Use system theme" aria-pressed="false">
               <span class="theme-icon theme-icon-system" aria-hidden="true"></span>
               <span class="theme-label">System</span>
@@ -104,7 +108,7 @@ const isActivePath = (path: string) => currentPath.startsWith(`${baseUrl}${path}
     <script is:inline>
       (() => {
         const storageKey = "naval-history-theme";
-        const choices = new Set(["light", "dark", "system"]);
+        const choices = new Set(["light", "dark", "bruships", "system"]);
         const systemQuery = window.matchMedia("(prefers-color-scheme: dark)");
         const buttons = Array.from(document.querySelectorAll(".theme-switcher button[data-theme-choice]"));
 
@@ -125,7 +129,7 @@ const isActivePath = (path: string) => currentPath.startsWith(`${baseUrl}${path}
 
           document.documentElement.dataset.theme = appliedTheme;
           document.documentElement.dataset.themeChoice = themeChoice;
-          document.documentElement.style.colorScheme = appliedTheme;
+          document.documentElement.style.colorScheme = appliedTheme === "bruships" ? "dark" : appliedTheme;
 
           const pageBackground = getComputedStyle(document.documentElement)
             .getPropertyValue("--paper")

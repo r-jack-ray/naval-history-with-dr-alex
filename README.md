@@ -15,7 +15,7 @@ The repository currently has:
 - Node's built-in test runner.
 - An Astro static site configured for GitHub Pages.
 - Pagefind indexing during site builds.
-- A deployed learner-facing study-guide site with light, dark, and system theme switching.
+- A deployed learner-facing study-guide site with Light, Dark, Bruships, and System theme switching.
 - A generated Astro archive dataset built from channel inventory, YouTube metadata, and curated per-video segment shards.
 - Static video, segment, and topic pages built from the manifest and stable JSON shards under `site/src/data/generated/archive/`.
 - Deferred Pagefind-backed search across video guides, time notes, and topics, without an inline archive corpus.

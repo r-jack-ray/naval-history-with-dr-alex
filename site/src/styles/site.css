@@ -15,6 +15,17 @@
   --control-bg: rgba(255, 255, 255, 0.64);
   --control-active-bg: #17212b;
   --control-active-ink: #ffffff;
+  --header-ink: var(--ink);
+  --header-muted: var(--muted);
+  --header-hover: var(--signal-strong);
+  --header-line: var(--line);
+  --header-control-bg: var(--control-bg);
+  --header-control-active-bg: var(--control-active-bg);
+  --header-control-active-ink: var(--control-active-ink);
+  --page-background: var(--paper);
+  --header-background: var(--header-bg);
+  --card-radius: 8px;
+  --control-radius: 6px;
   --video-thumb-ratio: 16 / 9;
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -38,19 +49,56 @@
   --control-active-ink: #10161d;
 }
 
+:root[data-theme="bruships"] {
+  color-scheme: dark;
+  --ink: #fefcfd;
+  --muted: #c9dcf3;
+  --line: #4d83bd;
+  --paper: #08347d;
+  --panel: #0a4194;
+  --header-bg: #fa7e26;
+  --signal: #ffb27a;
+  --signal-strong: #ffb27a;
+  --accent: #ffb27a;
+  --feature-shadow: 0 22px 58px rgba(2, 19, 51, 0.42);
+  --image-bg: #0a5bad;
+  --control-bg: rgba(254, 252, 253, 0.1);
+  --control-active-bg: #ffb27a;
+  --control-active-ink: #0b1f3a;
+  --header-ink: #0b1f3a;
+  --header-muted: #193c65;
+  --header-hover: #08347d;
+  --header-line: rgba(11, 31, 58, 0.42);
+  --header-control-bg: rgba(254, 252, 253, 0.3);
+  --header-control-active-bg: #08347d;
+  --header-control-active-ink: #fefcfd;
+  --page-background:
+    radial-gradient(circle at 10% 14%, rgba(10, 91, 173, 0.5) 0 42px, transparent 44px),
+    radial-gradient(circle at 88% 34%, rgba(10, 91, 173, 0.34) 0 82px, transparent 85px),
+    radial-gradient(circle at 24% 82%, rgba(255, 178, 122, 0.12) 0 56px, transparent 59px),
+    #08347d;
+  --header-background:
+    radial-gradient(circle at 16% -80%, rgba(255, 178, 122, 0.9) 0 86px, transparent 90px),
+    radial-gradient(circle at 78% 140%, rgba(255, 133, 47, 0.68) 0 72px, transparent 76px),
+    #fa7e26;
+  --card-radius: 14px;
+  --control-radius: 12px;
+}
+
 * {
   box-sizing: border-box;
 }
 
 html {
   min-height: 100%;
-  background-color: var(--paper);
+  background: var(--page-background);
 }
 
 body {
   margin: 0;
   min-height: 100vh;
-  background-color: var(--paper);
+  background: var(--page-background);
+  background-attachment: scroll;
   color: var(--ink);
 }
 
@@ -65,8 +113,9 @@ a {
   justify-content: space-between;
   gap: 24px;
   padding: 22px clamp(18px, 5vw, 64px);
-  border-bottom: 1px solid var(--line);
-  background: var(--header-bg);
+  border-bottom: 1px solid var(--header-line);
+  background: var(--header-background);
+  color: var(--header-ink);
 }
 
 .brand {
@@ -81,7 +130,7 @@ a {
   gap: 18px;
   font-size: 14px;
   font-weight: 700;
-  color: var(--muted);
+  color: var(--header-muted);
 }
 
 .nav-links a {
@@ -89,7 +138,7 @@ a {
 }
 
 .nav-links a:hover {
-  color: var(--signal-strong);
+  color: var(--header-hover);
 }
 
 .header-controls {
@@ -100,13 +149,13 @@ a {
 
 .theme-switcher {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, auto));
+  grid-template-columns: repeat(4, minmax(0, auto));
   gap: 3px;
   min-height: 36px;
   padding: 3px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: var(--control-bg);
+  border: 1px solid var(--header-line);
+  border-radius: var(--card-radius);
+  background: var(--header-control-bg);
 }
 
 .theme-switcher button {
@@ -118,9 +167,9 @@ a {
   min-height: 28px;
   padding: 4px 9px;
   border: 0;
-  border-radius: 6px;
+  border-radius: var(--control-radius);
   background: transparent;
-  color: var(--muted);
+  color: var(--header-muted);
   font: inherit;
   font-size: 13px;
   font-weight: 800;
@@ -129,12 +178,12 @@ a {
 }
 
 .theme-switcher button:hover {
-  color: var(--signal-strong);
+  color: var(--header-hover);
 }
 
 .theme-switcher button[aria-pressed="true"] {
-  background: var(--control-active-bg);
-  color: var(--control-active-ink);
+  background: var(--header-control-active-bg);
+  color: var(--header-control-active-ink);
 }
 
 .theme-icon {
@@ -154,6 +203,13 @@ a {
   border-radius: 999px;
   box-shadow: inset -5px 0 0 0 currentColor;
   outline: 2px solid currentColor;
+}
+
+.theme-icon-bruships {
+  overflow: hidden;
+  border: 2px solid currentColor;
+  border-radius: 4px;
+  background: linear-gradient(to bottom, #fa7e26 0 48%, #08347d 52% 100%);
 }
 
 .theme-icon-system {
@@ -221,7 +277,7 @@ h1 {
   display: block;
   overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--card-radius);
   background: var(--panel);
   box-shadow: var(--feature-shadow);
   text-decoration: none;
@@ -967,7 +1023,7 @@ h1 {
 }
 
 .brand small {
-  color: var(--muted);
+  color: var(--header-muted);
   font-size: 12px;
   font-weight: 800;
 }
@@ -977,8 +1033,15 @@ h1 {
 }
 
 .nav-links a[aria-current="page"] {
-  color: var(--ink);
+  color: var(--header-ink);
   box-shadow: inset 0 -2px 0 var(--accent);
+}
+
+.brand:focus-visible,
+.nav-links a:focus-visible,
+.theme-switcher button:focus-visible {
+  outline: 3px solid var(--header-hover);
+  outline-offset: 3px;
 }
 
 main {
@@ -1205,6 +1268,17 @@ h1 {
   text-decoration: none;
 }
 
+@media (max-width: 1180px) {
+  .theme-label {
+    display: none;
+  }
+
+  .theme-switcher button {
+    min-width: 34px;
+    padding-inline: 7px;
+  }
+}
+
 @media (max-width: 980px) {
   .intro {
     display: block;
@@ -1254,7 +1328,7 @@ h1 {
   }
 
   .theme-switcher {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     width: 100%;
   }
 
@@ -1362,14 +1436,60 @@ h1 {
   }
 }
 
-@media (max-width: 360px) {
-  .theme-switcher button {
-    min-width: 34px;
-    padding-inline: 7px;
+/* Bruships keeps reading surfaces opaque while rounding the shared card language. */
+:root[data-theme="bruships"] :where(
+    .placeholder-list article,
+    .empty-state,
+    .search-panel,
+    .video-card,
+    .segment-card,
+    .topic-card,
+    .prose-panel,
+    .source-panel,
+    .evidence-list li,
+    .small-card-list a,
+    .video-media,
+    .detail-grid article,
+    .video-details > div,
+    .status-card,
+    .search-result-card,
+    .time-notes-blank,
+    .route-guidance p
+  ) {
+  border-radius: var(--card-radius);
+}
+
+:root[data-theme="bruships"] :where(
+    .primary-link,
+    .secondary-link,
+    .search-input,
+    .search-select,
+    .search-clear-button,
+    .show-more-button
+  ) {
+  border-radius: var(--control-radius);
+}
+
+@media (forced-colors: active) {
+  :root,
+  :root[data-theme="bruships"] {
+    --page-background: Canvas;
+    --header-background: Canvas;
+    --header-ink: CanvasText;
+    --header-muted: CanvasText;
+    --header-hover: LinkText;
+    --header-line: CanvasText;
+    --header-control-bg: Canvas;
+    --header-control-active-bg: Highlight;
+    --header-control-active-ink: HighlightText;
   }
 
-  .theme-label {
-    display: none;
+  .theme-switcher button[aria-pressed="true"] {
+    border: 2px solid Highlight;
+  }
+
+  .theme-icon-bruships {
+    background: Canvas;
   }
 }
 
