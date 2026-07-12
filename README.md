@@ -247,10 +247,13 @@ Use `yes` or `no` for `needsFurtherProcessing`.
 
 For agent-driven work, use:
 
+- `.agents/site-archive-builder.md`: role brief for Astro/Pagefind pages, routes, search, and generated-data adapters.
 - `.agents/transcript-content-curator.md`: role brief for transcript-backed curation.
 - `.agents/site-content-auditor.md`: role brief for follow-up public wording, density, and evidence checks.
+- `.agents/skills/naval-video-page-prototype/SKILL.md`: reusable workflow for Astro/Pagefind study-guide implementation.
 - `.agents/skills/naval-transcript-to-site-content/SKILL.md`: reusable workflow for converting transcript TXT evidence into `src/derived/video-segments/<manifest.fileStem>.json`, using the selected transcript's stored manifest stem rather than recomputing a filename from metadata.
 - `.agents/skills/naval-site-content-auditor/SKILL.md`: reusable workflow for strengthening existing segment notes.
+- `.agents/skills/naval-site-build-repair/SKILL.md`: reusable workflow for diagnosing and repairing site-pipeline failures.
 - `.codex/hooks/validate-content-pipeline.ps1`: audit, regenerate generated site data, run Astro checks, and optionally run the full repository check.
 
 The process is intentionally segment-first. Use `kind: qa` only for actual Q&A exchanges; keep lecture material as `chapter`, `notable_point`, or `transcript_excerpt`.
@@ -282,8 +285,11 @@ The four lane-isolated transcript schedule automations are deliberately lockless
 
 - `.agents/site-archive-builder.md`: project-local brief for agents working on Astro/Pagefind site pages.
 - `.agents/transcript-content-curator.md`: project-local brief for transcript-backed segment curation.
+- `.agents/site-content-auditor.md`: project-local brief for follow-up transcript-backed content audits.
 - `.agents/skills/naval-video-page-prototype/SKILL.md`: reusable Codex skill for extending the prototype video-page workflow.
 - `.agents/skills/naval-transcript-to-site-content/SKILL.md`: reusable Codex skill for processing transcripts into segment seed data.
+- `.agents/skills/naval-site-content-auditor/SKILL.md`: reusable Codex skill for strengthening one selected video shard.
+- `.agents/skills/naval-site-build-repair/SKILL.md`: reusable Codex skill for diagnosing and repairing site-pipeline failures.
 - `.codex/hooks/validate-site.ps1`: optional validation helper for site checks and the full repository check.
 - `.codex/hooks/validate-content-pipeline.ps1`: optional validation helper for transcript curation plus generated site checks.
 

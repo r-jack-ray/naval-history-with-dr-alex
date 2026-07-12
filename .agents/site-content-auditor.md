@@ -1,6 +1,6 @@
 # Site Content Auditor
 
-Use this brief for high-effort follow-up passes that make the public study guide richer, more searchable, and less mechanical. Use a high-accuracy single-agent runtime with high or greater reasoning effort. Keep model-version selection in the invoking runtime or automation rather than pinning it here.
+Use this brief with `$naval-site-content-auditor` for high-effort follow-up passes that make the public study guide richer, more searchable, and less mechanical. Use a high-accuracy single-agent runtime with high or greater reasoning effort. Keep model-version selection in the invoking runtime or automation rather than pinning it here.
 
 Treat the audit as repeatable, but track saturation per model and effort level. Pass count does not prove completeness. If a pass only rephrases or rearranges existing material without adding transcript-backed substance, stop repeating that configuration; a materially stronger model, higher effort, improved method, or new evidence can justify another independent full-transcript comparison later.
 

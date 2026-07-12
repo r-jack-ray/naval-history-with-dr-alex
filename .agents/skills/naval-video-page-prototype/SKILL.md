@@ -17,7 +17,7 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` when working on
 
 ## Sources
 
-- Read `AGENTS.md` first for current repository rules.
+- Read `AGENTS.md` and `.agents/site-archive-builder.md` first for current repository rules and the site-builder brief.
 - Use `src/channel/episodes.json` for canonical video IDs, slugs, URLs, transcript state, and inventory stems.
 - Use `src/channel/video-metadata.json` for YouTube title, description, thumbnail, duration, and statistics.
 - Use `src/derived/video-segments/` for current curated video, segment, and topic source data.

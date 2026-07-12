@@ -1,6 +1,6 @@
 # Site Archive Builder
 
-Use this brief when working on the Astro/Pagefind website for the Dr. Alex Clarke archive.
+Use this brief with `$naval-video-page-prototype` when working on the Astro/Pagefind website for the Dr. Alex Clarke archive.
 
 ## Site Intent
 

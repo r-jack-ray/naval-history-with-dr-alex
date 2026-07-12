@@ -16,7 +16,7 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` when converting
 5. Read the selected `src/transcripts/txt/*.txt` file before editing site content. For long transcripts, map the full duration from its timestamped lines and read contiguous time-based chunks small enough to avoid tool-output truncation; do not rely on one raw full-file dump or only the opening portion.
    - Keep transcript reads antivirus-safe. Never build or run a multi-range timestamp extractor as an inline PowerShell `-Command`. Do not stream the full file through `ForEach-Object` or `foreach` while using regex timestamp parsing, range arrays, command-line variables, or a command-line output-encoding prelude. Do not encode, obfuscate, or move equivalent dynamic logic into an ad hoc script.
    - Read sequentially with separate, simple commands. Locate a known timestamp with `rg -n --fixed-strings` when useful, then read one contiguous line slice at a time with a literal path and numeric constants, for example `Get-Content -LiteralPath '<transcript>' | Select-Object -Skip <line> -First <count>`. If endpoint protection blocks a read, stop and report the blocked command pattern; do not retry it in another dynamic form.
-6. Read `references/segment-seed-schema.md` before changing the selected shard.
+6. Read `.agents/skills/naval-transcript-to-site-content/references/segment-seed-schema.md` before changing the selected shard.
 7. Check `src/derived/site-content-processing.config.json` for first-pass content policy, video-type defaults, follow-up stages, and topic grouping guidance.
 
 ## Site Intent

@@ -1,6 +1,6 @@
 # Transcript Content Curator
 
-Use this brief when turning stored Dr. Alex transcript files into site-visible segment data.
+Use this brief with `$naval-transcript-to-site-content` when turning stored Dr. Alex transcript files into site-visible segment data.
 
 ## Site Intent
 
