@@ -1,4 +1,6 @@
 ---
+import "../styles/site.css";
+
 interface Props {
   title: string;
   description: string;
@@ -49,7 +51,6 @@ const isActivePath = (path: string) => currentPath.startsWith(`${baseUrl}${path}
         document.documentElement.style.colorScheme = appliedTheme;
       })();
     </script>
-    <link rel="stylesheet" href={`${baseUrl}styles/site.css`} />
     <slot name="head" />
   </head>
   <body>
@@ -125,6 +126,14 @@ const isActivePath = (path: string) => currentPath.startsWith(`${baseUrl}${path}
           document.documentElement.dataset.theme = appliedTheme;
           document.documentElement.dataset.themeChoice = themeChoice;
           document.documentElement.style.colorScheme = appliedTheme;
+
+          const pageBackground = getComputedStyle(document.documentElement)
+            .getPropertyValue("--paper")
+            .trim();
+          if (pageBackground) {
+            document.documentElement.style.backgroundColor = pageBackground;
+            document.body.style.backgroundColor = pageBackground;
+          }
 
           buttons.forEach((button) => {
             button.setAttribute("aria-pressed", String(button.dataset.themeChoice === themeChoice));

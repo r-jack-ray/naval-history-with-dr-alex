@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { archiveTopics } from "../../data/archive";
+import topicsIndexUrl from "../../scripts/topics-index.js?url";
 
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
@@ -22,7 +23,7 @@ const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${c
   pageType="topic-index"
 >
   <Fragment slot="head">
-    <script src={`${baseUrl}scripts/topics-index.js`} defer is:inline></script>
+    <script src={topicsIndexUrl} defer is:inline></script>
   </Fragment>
 
   <main id="content" class="page-shell" data-pagefind-body>
@@ -62,11 +63,12 @@ const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${c
         </div>
       </div>
 
-      <form class="topic-directory-controls" role="search" data-topic-controls>
-        <div class="topic-filter-control">
-          <label for="topic-filter">Filter topics</label>
-          <div class="topic-filter-row">
+      <form class="search-controls topic-directory-controls" role="search" data-topic-controls>
+        <div class="search-control topic-filter-control">
+          <label for="topic-filter">Filter all topics</label>
+          <div class="search-input-shell">
             <input
+              class="search-input"
               id="topic-filter"
               type="search"
               name="topic"
@@ -76,23 +78,23 @@ const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${c
               aria-describedby="topic-directory-help topic-directory-status"
               data-topic-filter
             />
-            <button type="button" data-topic-clear hidden>Clear</button>
+            <button class="search-clear-button" type="button" data-topic-clear hidden>Clear</button>
           </div>
         </div>
-        <div class="topic-sort-control">
+        <div class="search-control topic-sort-control">
           <label for="topic-sort">Sort by</label>
-          <select id="topic-sort" data-topic-sort>
+          <select class="search-select" id="topic-sort" name="sort" data-topic-sort>
             <option value="alphabetical">A–Z</option>
             <option value="time-notes">Most time notes</option>
             <option value="videos">Most videos</option>
           </select>
         </div>
         <p class="search-help" id="topic-directory-help">
-          Filtering matches topic names, alternate names, and descriptions.
+          Matches topic names, alternate names, and descriptions as you type.
         </p>
       </form>
 
-      <p class="topic-directory-status" id="topic-directory-status" data-topic-status aria-live="polite">
+      <p class="search-status search-feedback topic-directory-status" id="topic-directory-status" data-topic-status aria-live="polite" aria-atomic="true">
         Showing {alphabeticalTopics.length.toLocaleString("en-US")} topics.
       </p>
 
@@ -115,9 +117,12 @@ const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${c
         ))
       }
       </section>
-      <p class="topic-directory-empty" data-topic-empty hidden>
+      <p class="search-empty-state topic-directory-empty" data-topic-empty hidden>
         No topics match that filter. Try a ship, battle, navy, weapon, or broader subject.
       </p>
+      <noscript>
+        <p class="search-fallback">Filtering and sorting need JavaScript. The full A–Z topic directory remains available below.</p>
+      </noscript>
     </section>
   </main>
 </BaseLayout>

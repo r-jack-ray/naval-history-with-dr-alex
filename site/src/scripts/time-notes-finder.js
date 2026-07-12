@@ -1,3 +1,4 @@
+/* Emitted through Astro's asset pipeline for cache-safe search updates. */
 (() => {
   const form = document.querySelector("[data-time-notes-form]");
   const input = document.querySelector("[data-time-notes-query]");
@@ -6,6 +7,7 @@
   const blankState = document.querySelector("[data-time-notes-blank]");
   const results = document.querySelector("[data-time-notes-results]");
   const showMoreButton = document.querySelector("[data-time-notes-more]");
+  const suggestionLinks = Array.from(document.querySelectorAll("[data-time-notes-suggestion]"));
 
   if (!form || !input || !clearButton || !status || !blankState || !results || !showMoreButton) {
     return;
@@ -20,6 +22,7 @@
   let pagefindPromise;
   let debounceTimer;
   let latestSearchId = 0;
+  let isEditingHistory = false;
   let activeResults = [];
   let batchOffset = 0;
   let renderedUrls = new Set();
@@ -405,6 +408,7 @@
   };
 
   const restoreFromUrl = (normalizeInvalidMode = false) => {
+    isEditingHistory = false;
     const params = new URLSearchParams(window.location.search);
     const query = (params.get("q") || "").trim();
     const requestedMode = params.get("mode") || "all";
@@ -418,20 +422,60 @@
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-    startSearch({ immediate: true, history: "push" });
+    startSearch({ immediate: true, history: "replace" });
+    isEditingHistory = false;
   });
-  input.addEventListener("input", () => startSearch());
+  input.addEventListener("input", () => {
+    const history = isEditingHistory ? "replace" : "push";
+    isEditingHistory = true;
+    startSearch({ history });
+  });
+  input.addEventListener("focus", () => {
+    void loadPagefind().catch(() => undefined);
+  }, { once: true });
+  input.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape" || input.value.length === 0) {
+      return;
+    }
+    input.value = "";
+    startSearch({ immediate: true, history: isEditingHistory ? "replace" : "push" });
+    isEditingHistory = false;
+  });
   form.addEventListener("change", (event) => {
     if (event.target instanceof HTMLInputElement && event.target.name === "mode") {
       startSearch({ immediate: true, history: "push" });
+      isEditingHistory = false;
     }
   });
   clearButton.addEventListener("click", () => {
     input.value = "";
-    setSelectedMode("all");
-    startSearch({ immediate: true, history: "push" });
+    startSearch({ immediate: true, history: isEditingHistory ? "replace" : "push" });
+    isEditingHistory = false;
     input.focus();
   });
+  for (const link of suggestionLinks) {
+    link.addEventListener("click", (event) => {
+      if (
+        event.defaultPrevented
+        || event.button !== 0
+        || event.metaKey
+        || event.ctrlKey
+        || event.shiftKey
+        || event.altKey
+      ) {
+        return;
+      }
+      const suggestion = link.dataset.timeNotesSuggestion?.trim();
+      if (!suggestion) {
+        return;
+      }
+      event.preventDefault();
+      input.value = suggestion;
+      startSearch({ immediate: true, history: "push" });
+      isEditingHistory = false;
+      input.focus();
+    });
+  }
   showMoreButton.addEventListener("click", () => {
     const query = input.value.trim();
     const mode = selectedMode();

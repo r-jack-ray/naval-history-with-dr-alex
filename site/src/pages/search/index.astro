@@ -1,13 +1,14 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { archiveTopics } from "../../data/archive";
+import siteSearchUrl from "../../scripts/site-search.js?url";
 
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 const popularTopics = [...archiveTopics]
   .sort((left, right) => right.segmentCount - left.segmentCount || right.videoCount - left.videoCount)
-  .slice(0, 30);
+  .slice(0, 12);
 ---
 
 <BaseLayout
@@ -16,7 +17,7 @@ const popularTopics = [...archiveTopics]
   pageType="search"
 >
   <Fragment slot="head">
-    <script src={`${baseUrl}scripts/site-search.js`} defer is:inline></script>
+    <script src={siteSearchUrl} defer is:inline></script>
   </Fragment>
 
   <main id="content" class="page-shell" data-pagefind-body>
@@ -29,34 +30,37 @@ const popularTopics = [...archiveTopics]
       </p>
     </section>
 
-    <section class="search-panel" aria-label="Site search">
+    <section class="search-panel search-experience" aria-label="Site search">
       <form
-        class="site-search-form"
+        class="search-controls site-search-form"
         role="search"
         data-site-search-form
         data-pagefind-url={`${baseUrl}pagefind/pagefind.js`}
         data-pagefind-base={`${baseUrl}pagefind/`}
         data-site-base={baseUrl}
       >
-        <label for="site-search-input">Search the guide</label>
-        <div class="site-search-row">
-          <input
-            id="site-search-input"
-            type="search"
-            name="q"
-            placeholder="Try Royal Navy, destroyers, Jutland, carriers, logistics"
-            autocomplete="off"
-            aria-controls="site-search-results"
-            aria-describedby="site-search-help site-search-status"
-            data-site-search-input
-          />
-          <button type="button" data-site-search-clear hidden>Clear</button>
+        <div class="search-control">
+          <label for="site-search-input">Search the study guide</label>
+          <div class="search-input-shell">
+            <input
+              class="search-input"
+              id="site-search-input"
+              type="search"
+              name="q"
+              placeholder="Try Royal Navy, destroyers, Jutland, carriers, logistics"
+              autocomplete="off"
+              aria-controls="site-search-results"
+              aria-describedby="site-search-help site-search-status"
+              data-site-search-input
+            />
+            <button class="search-clear-button" type="button" data-site-search-clear hidden>Clear</button>
+          </div>
+          <p class="search-help" id="site-search-help">
+            Find video guides, time notes, and topics by ship, navy, battle, weapon, doctrine, or strategy.
+          </p>
         </div>
-        <p class="search-help" id="site-search-help">
-          Search video guides, time notes, topics, ship classes, navies, battles, weapons, doctrine, and strategy.
-        </p>
       </form>
-      <p class="search-status" id="site-search-status" data-site-search-status aria-live="polite">
+      <p class="search-status search-feedback" id="site-search-status" data-site-search-status aria-live="polite" aria-atomic="true">
         Type a subject to search the study guide.
       </p>
       <div
@@ -66,14 +70,19 @@ const popularTopics = [...archiveTopics]
         aria-label="Search results"
         aria-busy="false"
       ></div>
+      <button class="show-more-button" type="button" data-site-search-more hidden>Show more results</button>
+      <noscript>
+        <p class="search-fallback">Search needs JavaScript. You can still browse the topic directory and video guides.</p>
+      </noscript>
     </section>
 
     <section class="home-section" aria-labelledby="popular-topics-heading">
       <div class="section-title-row">
         <div>
           <p class="eyebrow">Topics</p>
-          <h2 id="popular-topics-heading">Starting points</h2>
+          <h2 id="popular-topics-heading">Popular subjects</h2>
         </div>
+        <a class="secondary-link" href={`${baseUrl}topics/`}>Browse all topics</a>
       </div>
       <div class="topic-cloud" aria-label="Common searches">
         {
