@@ -27,14 +27,19 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
     <meta data-pagefind-meta="videoId[content]" content={segment.videoId} />
     <meta data-pagefind-meta="timestamp[content]" content={segment.start} />
     <meta data-pagefind-meta="kind[content]" content={segment.kindLabel} />
+    <meta data-pagefind-meta="kindKey[content]" content={segment.kind} />
+    <meta data-pagefind-meta="summary[content]" content={segment.summary} />
+    <meta data-pagefind-meta="videoGuideUrl[content]" content={`${baseUrl}videos/${segment.videoSlug}/`} />
+    <meta data-pagefind-meta="watchUrl[content]" content={segment.youtubeUrl} />
     <meta data-pagefind-filter="video[content]" content={segment.videoTitle} />
     <meta data-pagefind-filter="kind[content]" content={segment.kindLabel} />
+    <meta data-pagefind-filter="kindKey[content]" content={segment.kind} />
     {segment.topics.map((topic) => <meta data-pagefind-filter="topic[content]" content={topic.title} />)}
   </Fragment>
 
   <main id="content" class="segment-page" data-pagefind-body>
     <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href={`${baseUrl}segments/`}>Segments</a>
+      <a href={`${baseUrl}segments/`}>Time Notes</a>
       <span>/</span>
       <a href={`${baseUrl}videos/${segment.videoSlug}/`}>{segment.videoTitle}</a>
     </nav>

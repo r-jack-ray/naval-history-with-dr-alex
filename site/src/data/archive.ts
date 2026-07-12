@@ -309,7 +309,10 @@ for (const video of archiveVideos) {
 }
 for (const segment of shardedSegments) {
   assertStringField(segment, "id", "segment record");
-  assertStringField(segment, "slug", `segment ${segment.id}`);
+  const segmentSlug = assertStringField(segment, "slug", `segment ${segment.id}`);
+  if (segmentSlug === "browse") {
+    archiveError("segment slug browse is reserved for the static time-notes archive route.");
+  }
   assertStringField(segment, "videoId", `segment ${segment.id}`);
   if (!Array.isArray(segment.topics)) {
     archiveError(`segment ${segment.id} must contain a topics array.`);
@@ -448,6 +451,37 @@ export function segmentsForVideo(video: ArchiveVideo): ArchiveSegment[] {
 
 export function segmentsForTopic(topic: ArchiveTopic): ArchiveSegment[] {
   return [...(segmentsByTopicSlug.get(topic.slug) ?? [])];
+}
+
+export function segmentsForBrowse(): ArchiveSegment[] {
+  const publishedTimestamp = (videoId: string): number | undefined => {
+    const publishedAt = videosById.get(videoId)?.publishedAt;
+    if (typeof publishedAt !== "string" || publishedAt.length === 0) {
+      return undefined;
+    }
+    const timestamp = Date.parse(publishedAt);
+    return Number.isFinite(timestamp) ? timestamp : undefined;
+  };
+
+  return [...archiveSegments].sort((left, right) => {
+    const leftPublished = publishedTimestamp(left.videoId);
+    const rightPublished = publishedTimestamp(right.videoId);
+    if (leftPublished !== undefined || rightPublished !== undefined) {
+      if (leftPublished === undefined) {
+        return 1;
+      }
+      if (rightPublished === undefined) {
+        return -1;
+      }
+      if (leftPublished !== rightPublished) {
+        return rightPublished - leftPublished;
+      }
+    }
+
+    return left.videoId.localeCompare(right.videoId)
+      || left.startSeconds - right.startSeconds
+      || left.slug.localeCompare(right.slug);
+  });
 }
 
 export function videosForTopic(topic: ArchiveTopic): ArchiveVideo[] {

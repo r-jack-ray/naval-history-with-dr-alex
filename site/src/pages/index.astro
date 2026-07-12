@@ -72,7 +72,7 @@ const activeTopics = [...archiveTopics]
           <p class="eyebrow">Time notes</p>
           <h2 id="featured-segments-heading">Featured watch points</h2>
         </div>
-        <a class="secondary-link" href={`${baseUrl}segments/`}>All time notes</a>
+        <a class="secondary-link" href={`${baseUrl}segments/`}>Find time notes</a>
       </div>
       <div class="record-grid compact-grid">
         {
@@ -100,7 +100,7 @@ const activeTopics = [...archiveTopics]
           activeTopics.map((topic) => (
             <a href={`${baseUrl}topics/${topic.slug}/`}>
               <strong>{topic.title}</strong>
-              <span>{topic.videoCount} videos · {topic.segmentCount} segments</span>
+              <span>{topic.videoCount} videos · {topic.segmentCount} time notes</span>
             </a>
           ))
         }

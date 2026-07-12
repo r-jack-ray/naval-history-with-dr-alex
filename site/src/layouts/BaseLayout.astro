@@ -12,7 +12,7 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
 const currentPath = Astro.url.pathname.endsWith("/") ? Astro.url.pathname : `${Astro.url.pathname}/`;
 const navItems = [
   { label: "Videos", path: "videos/" },
-  { label: "Segments", path: "segments/" },
+  { label: "Time Notes", path: "segments/" },
   { label: "Topics", path: "topics/" },
   { label: "Search", path: "search/" },
 ];
@@ -95,7 +95,7 @@ const isActivePath = (path: string) => currentPath.startsWith(`${baseUrl}${path}
       </div>
       <nav aria-label="Footer">
         <a href={`${baseUrl}videos/`}>Videos</a>
-        <a href={`${baseUrl}segments/`}>Segments</a>
+        <a href={`${baseUrl}segments/`}>Time Notes</a>
         <a href={`${baseUrl}topics/`}>Topics</a>
         <a href={`${baseUrl}search/`}>Search</a>
       </nav>

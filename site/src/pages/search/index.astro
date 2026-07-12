@@ -80,7 +80,7 @@ const popularTopics = [...archiveTopics]
           popularTopics.map((topic) => (
             <a href={`${baseUrl}topics/${topic.slug}/`}>
               <strong>{topic.title}</strong>
-              <span>{topic.videoCount} videos · {topic.segmentCount} segments</span>
+              <span>{topic.videoCount} videos · {topic.segmentCount} time notes</span>
             </a>
           ))
         }
