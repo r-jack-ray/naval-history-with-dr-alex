@@ -7,7 +7,7 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   : `${import.meta.env.BASE_URL}/`;
 const popularTopics = [...archiveTopics]
   .sort((left, right) => right.segmentCount - left.segmentCount || right.videoCount - left.videoCount)
-  .slice(0, 8);
+  .slice(0, 30);
 ---
 
 <BaseLayout

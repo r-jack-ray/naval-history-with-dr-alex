@@ -5,6 +5,15 @@ import { archiveTopics } from "../../data/archive";
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
+const topicsWithCoverage = archiveTopics.filter(
+  (topic) => topic.videoCount > 0 || topic.segmentCount > 0,
+);
+const featuredTopics = topicsWithCoverage.slice(0, 8);
+const alphabeticalTopics = [...topicsWithCoverage].sort((left, right) =>
+  left.title.localeCompare(right.title, "en", { sensitivity: "base" }),
+);
+const videoCountLabel = (count: number) => count === 1 ? "1 video" : `${count} videos`;
+const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${count} time notes`;
 ---
 
 <BaseLayout
@@ -12,6 +21,10 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   description="Follow naval history subjects across Dr. Alex Clarke video moments."
   pageType="topic-index"
 >
+  <Fragment slot="head">
+    <script src={`${baseUrl}scripts/topics-index.js`} defer is:inline></script>
+  </Fragment>
+
   <main id="content" class="page-shell" data-pagefind-body>
     <section class="section-heading">
       <p class="eyebrow">Topics</p>
@@ -22,17 +35,89 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
       </p>
     </section>
 
-    <section class="record-grid topics" aria-label="Topics">
+    <section class="home-section" aria-labelledby="featured-topics-heading">
+      <div class="section-title-row">
+        <div>
+          <p class="eyebrow">Starting points</p>
+          <h2 id="featured-topics-heading">Featured subjects</h2>
+        </div>
+      </div>
+      <div class="topic-cloud" aria-label="Featured topics">
+        {
+          featuredTopics.map((topic) => (
+            <a href={`${baseUrl}topics/${topic.slug}/`}>
+              <strong>{topic.title}</strong>
+              <span>{videoCountLabel(topic.videoCount)} · {timeNoteCountLabel(topic.segmentCount)}</span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="home-section topic-directory" aria-labelledby="all-topics-heading" data-topic-directory>
+      <div class="section-title-row">
+        <div>
+          <p class="eyebrow">Directory</p>
+          <h2 id="all-topics-heading">All topics</h2>
+        </div>
+      </div>
+
+      <form class="topic-directory-controls" role="search" data-topic-controls>
+        <div class="topic-filter-control">
+          <label for="topic-filter">Filter topics</label>
+          <div class="topic-filter-row">
+            <input
+              id="topic-filter"
+              type="search"
+              name="topic"
+              placeholder="Try destroyers, Jutland, logistics, or Royal Navy"
+              autocomplete="off"
+              aria-controls="topic-directory-grid"
+              aria-describedby="topic-directory-help topic-directory-status"
+              data-topic-filter
+            />
+            <button type="button" data-topic-clear hidden>Clear</button>
+          </div>
+        </div>
+        <div class="topic-sort-control">
+          <label for="topic-sort">Sort by</label>
+          <select id="topic-sort" data-topic-sort>
+            <option value="alphabetical">A–Z</option>
+            <option value="time-notes">Most time notes</option>
+            <option value="videos">Most videos</option>
+          </select>
+        </div>
+        <p class="search-help" id="topic-directory-help">
+          Filtering matches topic names, alternate names, and descriptions.
+        </p>
+      </form>
+
+      <p class="topic-directory-status" id="topic-directory-status" data-topic-status aria-live="polite">
+        Showing {alphabeticalTopics.length.toLocaleString("en-US")} topics.
+      </p>
+
+      <section class="record-grid topics topic-directory-grid" id="topic-directory-grid" aria-label="All topics" data-topic-grid>
       {
-        archiveTopics.map((topic) => (
-          <article class="topic-card">
-            <span class="label">{topic.videoCount} videos · {topic.segmentCount} segments</span>
+        alphabeticalTopics.map((topic) => (
+          <article
+            class="topic-card"
+            data-topic-card
+            data-topic-title={topic.title}
+            data-topic-search={[topic.title, ...topic.aliases, topic.summary].join(" ")}
+            data-topic-videos={topic.videoCount}
+            data-topic-time-notes={topic.segmentCount}
+          >
+            <span class="label">{videoCountLabel(topic.videoCount)} · {timeNoteCountLabel(topic.segmentCount)}</span>
             <h2><a href={`${baseUrl}topics/${topic.slug}/`}>{topic.title}</a></h2>
             <p>{topic.summary}</p>
             {topic.aliases.length > 0 && <small>Also: {topic.aliases.join(", ")}</small>}
           </article>
         ))
       }
+      </section>
+      <p class="topic-directory-empty" data-topic-empty hidden>
+        No topics match that filter. Try a ship, battle, navy, weapon, or broader subject.
+      </p>
     </section>
   </main>
 </BaseLayout>

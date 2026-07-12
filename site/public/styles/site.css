@@ -807,6 +807,96 @@ h1 {
   margin-top: 4px;
 }
 
+.topic-directory-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(190px, 0.24fr);
+  gap: 16px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.topic-filter-control,
+.topic-sort-control {
+  display: grid;
+  align-content: start;
+  gap: 9px;
+}
+
+.topic-directory-controls label {
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.topic-filter-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 9px;
+}
+
+.topic-filter-row input,
+.topic-sort-control select {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 700;
+}
+
+.topic-filter-row input:focus,
+.topic-sort-control select:focus {
+  border-color: var(--signal);
+  outline: 3px solid color-mix(in srgb, var(--signal) 30%, transparent);
+}
+
+.topic-filter-row button {
+  min-height: 48px;
+  padding: 0 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  color: var(--signal-strong);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.topic-filter-row button:hover {
+  border-color: var(--signal);
+}
+
+.topic-directory-controls .search-help {
+  grid-column: 1 / -1;
+}
+
+.topic-directory-status {
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.topic-directory-grid {
+  margin-top: 18px;
+}
+
+.topic-directory-empty {
+  margin: 28px 0 0;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  color: var(--muted);
+  line-height: 1.5;
+}
+
 .search-result-card {
   min-height: 0;
 }
@@ -1264,6 +1354,20 @@ h1 {
 
   .topic-cloud a + a {
     margin-top: 12px;
+  }
+
+  .topic-directory-controls,
+  .topic-filter-row {
+    display: block;
+  }
+
+  .topic-sort-control,
+  .topic-filter-row button {
+    margin-top: 14px;
+  }
+
+  .topic-filter-row button {
+    width: 100%;
   }
 }
 
