@@ -18,7 +18,8 @@ The repository currently has:
 - A deployed learner-facing study-guide site with light, dark, and system theme switching.
 - A generated Astro archive dataset built from channel inventory, YouTube metadata, and curated per-video segment shards.
 - Static video, segment, and topic pages built from the manifest and stable JSON shards under `site/src/data/generated/archive/`.
-- A deferred browser full-text search UI backed by generated Pagefind data under the configured site base path, without an inline archive corpus.
+- Deferred Pagefind-backed search across video guides, time notes, and topics, without an inline archive corpus.
+- A subject-focused Time Notes finder with explanation/Q&A filters and a paginated browse-all fallback.
 - A transcript-to-site-content process with curation and audit agent briefs, Codex skills, backlog audit, and validation hooks.
 - A rate-limited YouTube channel link inventory script.
 - A source master episode list under `src/channel/`.
@@ -78,10 +79,13 @@ npm run check:types
 npm test
 npm run check
 npm run audit:site-content
+npm run sync:video-topics
 npm run generate:site-data
 npm run site:check
 npm run site:build
 ```
+
+On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive commands if plain `npm` resolves the broken roaming shim.
 
 ## Website
 
@@ -96,14 +100,16 @@ npm run site:build
 npm run site:preview
 ```
 
-`npm run site:check` and `npm run site:build` regenerate `site/src/data/generated/archive/` first. Its authoritative `index.json` manifest lists the tracked generated collection files and segment buckets. `npm run site:build` emits `site/dist/` and then runs Pagefind against that output. Do not hand-edit the generated archive dataset, and do not commit generated `site/dist/` files.
+`npm run site:check` regenerates `site/src/data/generated/archive/` before running Astro checks. `npm run site:build` fingerprints the generator and site inputs, validates the manifest-listed generated files and SHA-256 values, and regenerates or rebuilds only when inputs or outputs changed; pass `-- --force` to bypass its caches. A performed build emits `site/dist/` and runs Pagefind against that output. The authoritative generated `index.json` manifest lists the tracked collection files and segment buckets. Do not hand-edit the generated archive dataset, and do not commit generated `site/dist/` files.
 
 The generated site exposes:
 
-- `/videos/<slug>/`: video metadata and curated segment links.
-- `/segments/<slug>/`: independently addressable segment or Q&A entries with timestamp links.
-- `/topics/<slug>/`: topic landing pages listing related videos and segments.
-- `/search/`: deferred browser full-text search over the built HTML through the generated Pagefind index.
+- `/videos/` and `/videos/<slug>/`: the video-guide directory and individual guides with curated time-note links.
+- `/segments/`: a Pagefind-backed subject finder for explanations and transcript-visible Q&A.
+- `/segments/browse/` and `/segments/browse/<page>/`: the complete paginated time-note directory.
+- `/segments/<slug>/`: independently addressable chapters, notable points, Q&A, and transcript excerpts with direct video-time links.
+- `/topics/` and `/topics/<slug>/`: the topic directory and subject pages listing related videos and time notes.
+- `/search/`: deferred full-text search across video guides, time notes, and topics through the generated Pagefind index.
 
 ## Fetch Channel Video Links
 
@@ -228,16 +234,24 @@ Q&A stays as `kind: qa` inside the segment model rather than a separate question
 
 ## Process Transcripts Into Site Content
 
-Use the transcript curation process when moving stored transcript material into site-visible pages:
+Transcript curation is shard-only. Each run must be given exactly one stored TXT transcript and must edit only its manifest-owned `src/derived/video-segments/<manifest.fileStem>.json` file. The transcript basename, `manifest.fileStem`, and shard basename must match; do not derive a new shard name from current title metadata.
+
+The curation run reads the full selected transcript, keeps lecture material as chapters or notable points, and creates `kind: qa` records only for substantive transcript-visible prompts and answers. It adds evidence-backed topic slugs to the selected shard but does not edit `topics.json`, processing logs, schedules, reports, generated archives, package/tooling files, or site sources. It also does not run repository-wide audits, generation, tests, or builds.
+
+For agent-driven curation, use `.agents/transcript-content-curator.md` with `.agents/skills/naval-transcript-to-site-content/SKILL.md`. For a follow-up substance and wording pass on one explicitly selected shard, use `.agents/site-content-auditor.md` with `.agents/skills/naval-site-content-auditor/SKILL.md`.
+
+After shard work, the repository owner can synchronize shared topic records and run integration checks:
 
 ```powershell
+npm run sync:video-topics
 npm run audit:site-content
-pwsh -NoProfile -File .codex/hooks/validate-content-pipeline.ps1 -SkipRepoCheck
+npm run site:check
+npm run site:build
 ```
 
-`npm run audit:site-content` validates existing curated segment evidence and writes `reports/site-content-backlog.md` with stored transcripts that do not yet have curated segments. Reports are ignored by Git.
+`npm run audit:site-content` validates curated transcript evidence and writes `reports/site-content-backlog.md`. Reports are ignored by Git. Shared generation, reports, schedules, and processing logs are coordinator-owned outputs rather than shard-worker outputs.
 
-Record every processed transcript file in `src/derived/site-content-processing.log`. The log has no header; every non-empty line is one processed file with tab-separated fields:
+When the coordinating workflow records a completed transcript in `src/derived/site-content-processing.log`, the log has no header; every non-empty line uses these tab-separated fields:
 
 ```text
 processedAt	sourcePath	videoId	action	needsFurtherProcessing	determination
@@ -245,27 +259,23 @@ processedAt	sourcePath	videoId	action	needsFurtherProcessing	determination
 
 Use `yes` or `no` for `needsFurtherProcessing`.
 
-For agent-driven work, use:
+Other project workflows are:
 
 - `.agents/site-archive-builder.md`: role brief for Astro/Pagefind pages, routes, search, and generated-data adapters.
-- `.agents/transcript-content-curator.md`: role brief for transcript-backed curation.
-- `.agents/site-content-auditor.md`: role brief for follow-up public wording, density, and evidence checks.
 - `.agents/skills/naval-video-page-prototype/SKILL.md`: reusable workflow for Astro/Pagefind study-guide implementation.
-- `.agents/skills/naval-transcript-to-site-content/SKILL.md`: reusable workflow for converting transcript TXT evidence into `src/derived/video-segments/<manifest.fileStem>.json`, using the selected transcript's stored manifest stem rather than recomputing a filename from metadata.
-- `.agents/skills/naval-site-content-auditor/SKILL.md`: reusable workflow for strengthening existing segment notes.
 - `.agents/skills/naval-site-build-repair/SKILL.md`: reusable workflow for diagnosing and repairing site-pipeline failures.
 - `.codex/hooks/validate-content-pipeline.ps1`: audit, regenerate generated site data, run Astro checks, and optionally run the full repository check.
 
 The process is intentionally segment-first. Use `kind: qa` only for actual Q&A exchanges; keep lecture material as `chapter`, `notable_point`, or `transcript_excerpt`.
 
-### Serialized Content-Pipeline Writes
+### Shared Content-Pipeline Writes
 
-The generated manifest and shards under `site/src/data/generated/archive/` remain tracked so Astro can statically import a reviewable archive dataset. Regenerate the dataset through `npm run generate:site-data`, `npm run site:check`, or `npm run site:build`; each standalone command regenerates it once. Never hand-edit `index.json` or its listed files. The content validation hook builds once, writes the backlog report, regenerates the archive once, and then runs the no-regeneration Astro check.
+The generated manifest and shards under `site/src/data/generated/archive/` remain tracked so Astro can statically import a reviewable archive dataset. `npm run generate:site-data` and `npm run site:check` regenerate it directly; `npm run site:build` regenerates it only when its validated cache requires that stage. Never hand-edit `index.json` or its listed files. The content validation hook builds once, writes the backlog report, regenerates the archive once, and then runs the no-regeneration Astro check.
 
-The archive, backlog report, and shared processing log are protected by the repository-wide writer lease at `.tmp/site-content-pipeline.lock`. Direct `npm run audit:site-content` and `npm run generate:site-data` acquire a short-lived lease automatically. A scheduled transcript worker that changes shared topics, logs, reports, or archives must acquire a persistent lease before it claims a row or writes shared output:
+The archive, backlog report, shared topic registry, and shared processing log are protected by the repository-wide writer lease at `.tmp/site-content-pipeline.lock`. Direct shared-writer commands such as `npm run audit:site-content`, `npm run sync:video-topics`, and `npm run generate:site-data` acquire a short-lived lease automatically. A coordinator that intentionally groups several shared-output operations may acquire one persistent lease and pass its token to the supported commands:
 
 ```powershell
-$lease = node .codex/hooks/site-content-pipeline-lock.mjs acquire --owner "schedule-worker" --purpose "transcript-curation" --recover-stale | ConvertFrom-Json
+$lease = node .codex/hooks/site-content-pipeline-lock.mjs acquire --owner "content-coordinator" --purpose "shared-content-integration" --recover-stale | ConvertFrom-Json
 ```
 
 Keep `$lease.lease.token` for the current run and export it before invoking any normal pipeline npm command, so that command joins the existing lease:
@@ -279,7 +289,7 @@ Remove-Item Env:CONTENT_PIPELINE_LOCK_TOKEN -ErrorAction SilentlyContinue
 
 The hook releases the lease in `finally` on success or failure; the caller clears its own environment variable after the child PowerShell process returns. If a run stops before reaching validation, release it explicitly with `node .codex/hooks/site-content-pipeline-lock.mjs release --token $lease.lease.token`. Leases expire after 90 minutes unless renewed; use `status` to inspect a blocker, and `acquire --recover-stale` to quarantine an expired lease with its owner metadata before continuing.
 
-The four lane-isolated transcript schedule automations are deliberately lockless because each uses a separate schedule, lane log, claimed video shard, and video-specific validation directory. Those automations call `schedule-claim`, `append-log`, `schedule-complete`, and `schedule-reset` with `--no-lease`; they never acquire or inspect repository or lane locks, and they never treat a PID, owner record, other active run, or dirty file as contention. Lockless claims skip existing `[~]` rows and take the next `[ ]`, while completion and reset target the invocation's exact source path.
+Lane-isolated transcript automations follow only their prompt-owned atomic claim, lane-private log, video-specific temporary checks, and exact completion/reset procedure. They remain single-agent, do not acquire or inspect the repository lease, and do not write shared topics, reports, processing logs, or generated archives.
 
 ## Project Helpers
 
