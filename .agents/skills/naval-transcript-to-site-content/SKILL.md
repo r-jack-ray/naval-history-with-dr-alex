@@ -1,6 +1,6 @@
 ---
 name: naval-transcript-to-site-content
-description: Convert one explicitly selected Dr. Alex Clarke transcript TXT into one segment-first per-video study-guide shard. Use when asked to process a named transcript, curate a named video guide, add transcript-backed chapters/notable points/Q&A watch points, or update `src/derived/video-segments/<manifest.fileStem>.json`.
+description: Convert one explicitly selected Dr. Alex Clarke transcript TXT into one segment-first per-video study-guide shard. Use when asked to process a named transcript, curate a named video guide, add transcript-backed chapters/notable points/Q&A watch points, or update its manifest-owned file under `src/derived/video-segments/`.
 ---
 
 # Naval Transcript To Site Content
@@ -14,6 +14,8 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` when converting
 3. Do not acquire, inspect, wait on, renew, or release a repository lease. Do not claim, complete, or reset schedule rows. An invoking automation owns any claim, lane log, private validation, completion, or reset procedure.
 4. Verify required dependencies and compiled helpers only when the invoking workflow names them. If anything is missing, report the prerequisite and stop without edits; do not run `npm ci`, build tooling, audits, generation, or tests.
 5. Read the selected `src/transcripts/txt/*.txt` file before editing site content. For long transcripts, map the full duration from its timestamped lines and read contiguous time-based chunks small enough to avoid tool-output truncation; do not rely on one raw full-file dump or only the opening portion.
+   - Keep transcript reads antivirus-safe. Never build or run a multi-range timestamp extractor as an inline PowerShell `-Command`. Do not stream the full file through `ForEach-Object` or `foreach` while using regex timestamp parsing, range arrays, command-line variables, or a command-line output-encoding prelude. Do not encode, obfuscate, or move equivalent dynamic logic into an ad hoc script.
+   - Read sequentially with separate, simple commands. Locate a known timestamp with `rg -n --fixed-strings` when useful, then read one contiguous line slice at a time with a literal path and numeric constants, for example `Get-Content -LiteralPath '<transcript>' | Select-Object -Skip <line> -First <count>`. If endpoint protection blocks a read, stop and report the blocked command pattern; do not retry it in another dynamic form.
 6. Read `references/segment-seed-schema.md` before changing the selected shard.
 7. Check `src/derived/site-content-processing.config.json` for first-pass content policy, video-type defaults, follow-up stages, and topic grouping guidance.
 

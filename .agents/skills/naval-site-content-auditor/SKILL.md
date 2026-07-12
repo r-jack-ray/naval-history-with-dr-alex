@@ -1,6 +1,6 @@
 ---
 name: naval-site-content-auditor
-description: Audit and strengthen transcript-backed study-guide content in one selected per-video shard after transcript curation. Use when asked to add substance to thin segment notes, remove workflow/scaffold wording from public fields, align wording with learner intent, validate transcript-backed claims, improve segment density, or run a high-effort follow-up pass over `src/derived/video-segments/<manifest.fileStem>.json`.
+description: Audit and strengthen transcript-backed study-guide content in one selected per-video shard after transcript curation. Use when asked to add substance to thin segment notes, remove workflow/scaffold wording from public fields, align wording with learner intent, validate transcript-backed claims, improve segment density, or run a high-effort follow-up pass over a manifest-owned file under `src/derived/video-segments/`.
 ---
 
 # Naval Site Content Auditor
@@ -26,6 +26,11 @@ This audit is repeatable. A prior first, second, third, or later pass is not evi
 3. Treat `src/derived/video-segments/` as the source for public segment wording. Treat `site/src/data/generated/archive.json` as generated output.
 4. Require an explicitly named video ID, transcript, or exact per-video shard. If none was supplied, stop without edits; do not sample or select from the shard directory.
 5. Own only the selected per-video shard. Preserve every other shard and all shared or generated outputs.
+
+## Transcript Read Safety
+
+- Keep transcript reads antivirus-safe. Never build or run a multi-range timestamp extractor as an inline PowerShell `-Command`. Do not stream the full file through `ForEach-Object` or `foreach` while using regex timestamp parsing, range arrays, command-line variables, or a command-line output-encoding prelude. Do not encode, obfuscate, or move equivalent dynamic logic into an ad hoc script.
+- Read sequentially with separate, simple commands. Locate a known timestamp with `rg -n --fixed-strings` when useful, then read one contiguous line slice at a time with a literal path and numeric constants, for example `Get-Content -LiteralPath '<transcript>' | Select-Object -Skip <line> -First <count>`. If endpoint protection blocks a read, stop and report the blocked command pattern; do not retry it in another dynamic form.
 
 ## Audit Public Wording
 
