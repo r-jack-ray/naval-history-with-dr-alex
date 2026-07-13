@@ -6,6 +6,13 @@ import { formatTimestamp, segmentKinds, type SegmentKind } from "../index.js";
 import { slugifyVideoTitle } from "../naming.js";
 import { writeTextAtomically } from "../pipeline/atomic-write.js";
 import {
+  resolveVideoState,
+  type VideoDateKind,
+  type VideoKind,
+  type VideoMetadataRecord,
+  type VideoStateResult,
+} from "../youtube/video-metadata.js";
+import {
   loadCuratedArchiveSeed,
   type CuratedArchiveSeed,
   type CuratedSegmentSeed,
@@ -14,24 +21,27 @@ import {
 
 export const defaultSiteEpisodesInput = "src/channel/episodes.json";
 export const defaultSiteMetadataInput = "src/channel/video-metadata.json";
+export const defaultSiteTranscriptsInput = "src/transcripts/manifest.json";
 export const defaultSiteSegmentsInput = "src/derived/video-segments";
 export const defaultSiteArchiveOutputDir = "site/src/data/generated/archive";
-export const siteArchiveSchemaVersion = 2 as const;
+export const siteArchiveSchemaVersion = 3 as const;
 export const siteArchiveSegmentBucketCount = 64;
 export const siteArchiveSegmentShardingAlgorithm = "sha256-video-id-mod" as const;
 
 export interface GenerateSiteArchiveDataOptions {
   episodesInput: string;
   metadataInput: string;
+  transcriptsInput: string;
   segmentsInput: string;
   outputDir: string;
 }
 
 export interface SiteArchiveData {
-  schemaVersion: 1;
+  schemaVersion: 2;
   source: {
     episodesInput: string;
     metadataInput: string;
+    transcriptsInput: string;
     segmentsInput: string;
   };
   videos: SiteVideo[];
@@ -87,11 +97,12 @@ export interface SiteVideo {
   youtubeUrl: string;
   embedUrl: string;
   thumbnailUrl: string;
-  publishedAt: string | null;
-  publishedLabel: string;
+  videoDateAt: string;
+  videoDateLabel: string;
+  videoDateKind: VideoDateKind;
+  videoKind: VideoKind;
   durationLabel: string;
   viewCountLabel: string;
-  sourceType: string;
   transcriptStatus: string;
   fileStem: string;
   description: string;
@@ -160,8 +171,12 @@ interface ChannelEpisode {
   durationText?: string;
   publishedText?: string;
   publishedAt?: string;
-  publishDate?: string;
-  streamStartAt?: string;
+  scheduledStartAt?: string;
+  actualStartAt?: string;
+  actualEndAt?: string;
+  videoDateAt?: string;
+  videoDateKind?: VideoDateKind;
+  videoKind?: VideoKind;
   viewCountText?: string;
   tabs?: string[];
   transcript?: {
@@ -170,46 +185,35 @@ interface ChannelEpisode {
 }
 
 interface VideoMetadataStore {
-  videos: VideoMetadata[];
+  videos: VideoMetadataRecord[];
 }
 
-interface VideoMetadata {
-  videoId: string;
-  snippet?: {
-    title?: string;
-    description?: string;
-    publishedAt?: string;
-    thumbnails?: Record<string, { url?: string; width?: number; height?: number }>;
-  };
-  contentDetails?: {
-    duration?: string;
-  };
-  statistics?: {
-    viewCount?: string;
-    likeCount?: string;
-    commentCount?: string;
-  };
-  liveStreamingDetails?: {
-    actualStartTime?: string;
-    scheduledStartTime?: string;
-  };
+interface TranscriptManifestStore {
+  transcripts: {
+    videoId: string;
+    fileStem: string;
+    paths: { txt: string };
+  }[];
 }
 
 export async function generateSiteArchiveData(
   options: GenerateSiteArchiveDataOptions,
 ): Promise<SiteArchiveSplitData> {
-  const [episodesStore, metadataStore, seed] = await Promise.all([
+  const [episodesStore, metadataStore, transcriptsStore, seed] = await Promise.all([
     readJson<EpisodeStore>(options.episodesInput),
     readJson<VideoMetadataStore>(options.metadataInput),
+    readJson<TranscriptManifestStore>(options.transcriptsInput),
     loadCuratedArchiveSeed(options.segmentsInput),
   ]);
   const archive = buildSiteArchiveData({
     episodesStore,
     metadataStore,
+    transcriptsStore,
     seed,
     source: {
       episodesInput: options.episodesInput,
       metadataInput: options.metadataInput,
+      transcriptsInput: options.transcriptsInput,
       segmentsInput: options.segmentsInput,
     },
   });
@@ -222,6 +226,7 @@ export async function generateSiteArchiveData(
 export function buildSiteArchiveData(input: {
   episodesStore: EpisodeStore;
   metadataStore: VideoMetadataStore;
+  transcriptsStore: TranscriptManifestStore;
   seed: CuratedArchiveSeed;
   source: SiteArchiveData["source"];
 }): SiteArchiveData {
@@ -229,20 +234,46 @@ export function buildSiteArchiveData(input: {
 
   const episodesById = new Map(input.episodesStore.episodes.map((episode) => [episode.videoId, episode]));
   const metadataById = new Map(input.metadataStore.videos.map((metadata) => [metadata.videoId, metadata]));
+  const transcriptsById = new Map(input.transcriptsStore.transcripts.map((record) => [record.videoId, record]));
   const topicSeedsBySlug = new Map(input.seed.topics.map((topic) => [topic.slug, topic]));
   const videoSeedsById = new Map(input.seed.videos.map((video) => [video.videoId, video]));
   const videoRecordsById = new Map<string, SiteVideo>();
   const usedVideoSlugs = new Set<string>();
+  const deferredVideoIds = new Set<string>();
 
   for (const videoSeed of input.seed.videos) {
     const episode = episodesById.get(videoSeed.videoId);
     if (episode === undefined) {
       throw new Error(`Site video seed references missing episode: ${videoSeed.videoId}`);
     }
+    const metadata = metadataById.get(videoSeed.videoId);
+    if (metadata === undefined) {
+      throw new Error(`Site video seed references missing metadata: ${videoSeed.videoId}`);
+    }
+    const state = resolveVideoState(metadata);
+    if (state.state === "deferred") {
+      deferredVideoIds.add(videoSeed.videoId);
+      continue;
+    }
+    if (state.state === "invalid") {
+      throw new Error(
+        `Site video ${videoSeed.videoId} has invalid readiness metadata: ${state.reason} (${state.diagnostic})`,
+      );
+    }
+    const transcript = transcriptsById.get(videoSeed.videoId);
+    if (transcript === undefined) {
+      throw new Error(`Site video seed references missing transcript manifest record: ${videoSeed.videoId}`);
+    }
+    if (episode.fileStem !== transcript.fileStem) {
+      throw new Error(
+        `Site video ${videoSeed.videoId} episode fileStem does not match the transcript manifest.`,
+      );
+    }
 
     const video = buildSiteVideo({
       episode,
-      metadata: metadataById.get(videoSeed.videoId),
+      metadata,
+      state,
       topics: topicRefs(videoSeed.topics, topicSeedsBySlug),
       segmentSlugs: [],
     });
@@ -250,9 +281,12 @@ export function buildSiteArchiveData(input: {
     videoRecordsById.set(videoSeed.videoId, video);
   }
 
-  const segments = input.seed.segments.map((segmentSeed) => {
+  const segments = input.seed.segments.flatMap((segmentSeed) => {
     const video = videoRecordsById.get(segmentSeed.videoId);
     if (video === undefined) {
+      if (deferredVideoIds.has(segmentSeed.videoId)) {
+        return [];
+      }
       throw new Error(`Segment ${segmentSeed.id} references missing site video: ${segmentSeed.videoId}`);
     }
 
@@ -262,7 +296,7 @@ export function buildSiteArchiveData(input: {
       topics: topicRefs(segmentSeed.topics, topicSeedsBySlug),
     });
     video.segmentSlugs.push(segment.slug);
-    return segment;
+    return [segment];
   });
 
   for (const segment of segments) {
@@ -295,7 +329,7 @@ export function buildSiteArchiveData(input: {
   });
 
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     source: input.source,
     videos: [...videoRecordsById.values()],
     segments,
@@ -381,6 +415,7 @@ export function validateSiteArchiveManifest(value: unknown): asserts value is Si
   const source = requireRecord(value.source, "Site archive manifest source");
   requireString(source.episodesInput, "Site archive manifest source.episodesInput");
   requireString(source.metadataInput, "Site archive manifest source.metadataInput");
+  requireString(source.transcriptsInput, "Site archive manifest source.transcriptsInput");
   requireString(source.segmentsInput, "Site archive manifest source.segmentsInput");
 
   const counts = requireRecord(value.counts, "Site archive manifest counts");
@@ -606,7 +641,7 @@ function fileRecord(path: string, value: unknown[]): SiteArchiveFileRecord {
 function reconstructSiteArchiveDataUnchecked(splitData: SiteArchiveSplitData): SiteArchiveData {
   const allSegments = splitData.segmentBuckets.flatMap((bucket) => bucket.segments);
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     source: splitData.manifest.source,
     videos: splitData.videos,
     segments: reconstructSegments(splitData.videos, allSegments),
@@ -659,6 +694,25 @@ function validateSiteArchiveRelationships(
   const videosById = new Map(videos.map((video) => [video.videoId, video]));
   const topicSlugs = new Set(topics.map((topic) => topic.slug));
   for (const video of videos) {
+    if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/u.test(video.videoDateAt)) {
+      throw new Error(`Video ${video.videoId} has a noncanonical videoDateAt.`);
+    }
+    if (video.videoDateLabel !== formatDate(video.videoDateAt)) {
+      throw new Error(`Video ${video.videoId} has a date label not derived from videoDateAt.`);
+    }
+    if (
+      video.videoDateKind !== "actual_start" &&
+      video.videoDateKind !== "scheduled_start" &&
+      video.videoDateKind !== "published"
+    ) {
+      throw new Error(`Video ${video.videoId} has an invalid videoDateKind.`);
+    }
+    if (video.videoKind !== "upload" && video.videoKind !== "stream") {
+      throw new Error(`Video ${video.videoId} has an invalid videoKind.`);
+    }
+    if (video.durationLabel === "0:00" || video.durationLabel === "P0D") {
+      throw new Error(`Video ${video.videoId} has a non-positive public runtime.`);
+    }
     assertTopicRefsExist(video.topics, topicSlugs, `Video ${video.videoId}`);
   }
   for (const segment of segments) {
@@ -847,7 +901,8 @@ async function readRequiredText(path: string): Promise<string> {
 
 function buildSiteVideo(input: {
   episode: ChannelEpisode;
-  metadata: VideoMetadata | undefined;
+  metadata: VideoMetadataRecord;
+  state: Extract<VideoStateResult, { state: "ready" }>;
   topics: TopicRef[];
   segmentSlugs: string[];
 }): SiteVideo {
@@ -855,13 +910,9 @@ function buildSiteVideo(input: {
   const slug = input.episode.slug ?? slugifyVideoTitle(title) ?? input.episode.videoId;
   const youtubeUrl = input.episode.url ?? `https://www.youtube.com/watch?v=${input.episode.videoId}`;
   const stats = buildStats(input.metadata);
-  const publishedAt = input.episode.streamStartAt ??
-    input.metadata?.liveStreamingDetails?.actualStartTime ??
-    input.metadata?.liveStreamingDetails?.scheduledStartTime ??
-    input.episode.publishedAt ??
-    input.metadata?.snippet?.publishedAt ??
-    input.episode.publishDate ??
-    null;
+  if (input.episode.fileStem === undefined || input.episode.fileStem.length === 0) {
+    throw new Error(`Site video ${input.episode.videoId} is missing its manifest-owned fileStem.`);
+  }
 
   return {
     title,
@@ -870,15 +921,14 @@ function buildSiteVideo(input: {
     youtubeUrl,
     embedUrl: `https://www.youtube-nocookie.com/embed/${input.episode.videoId}`,
     thumbnailUrl: thumbnailUrl(input.episode.videoId, input.metadata),
-    publishedAt,
-    publishedLabel: input.episode.publishedText ??
-      formatDate(publishedAt ?? undefined) ??
-      "Unknown publication date",
-    durationLabel: input.episode.durationText ?? parseYoutubeDuration(input.metadata?.contentDetails?.duration) ?? "Unknown duration",
+    videoDateAt: input.state.videoDateAt,
+    videoDateLabel: formatDate(input.state.videoDateAt),
+    videoDateKind: input.state.videoDateKind,
+    videoKind: input.state.videoKind,
+    durationLabel: formatTimestamp(Math.floor(input.state.durationSeconds)),
     viewCountLabel: input.episode.viewCountText ?? stats.views ?? "Unknown views",
-    sourceType: input.episode.tabs?.includes("streams") ? "stream" : "video",
     transcriptStatus: input.episode.transcript?.status ?? "unknown",
-    fileStem: input.episode.fileStem ?? "",
+    fileStem: input.episode.fileStem,
     description: input.metadata?.snippet?.description ?? "",
     topics: input.topics,
     segmentSlugs: input.segmentSlugs,
@@ -1017,14 +1067,14 @@ function uniqueVideoSlug(candidate: string, videoId: string, usedSlugs: Set<stri
   return routeSlug;
 }
 
-function thumbnailUrl(videoId: string, metadata: VideoMetadata | undefined): string {
+function thumbnailUrl(videoId: string, metadata: VideoMetadataRecord | undefined): string {
   return metadata?.snippet?.thumbnails?.maxres?.url ??
     metadata?.snippet?.thumbnails?.standard?.url ??
     metadata?.snippet?.thumbnails?.high?.url ??
     `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
 }
 
-function buildStats(metadata: VideoMetadata | undefined): SiteVideo["stats"] {
+function buildStats(metadata: VideoMetadataRecord | undefined): SiteVideo["stats"] {
   const stats: SiteVideo["stats"] = {};
   const views = formatCount(metadata?.statistics?.viewCount, "views");
   const likes = formatCount(metadata?.statistics?.likeCount, "likes");
@@ -1043,8 +1093,8 @@ function buildStats(metadata: VideoMetadata | undefined): SiteVideo["stats"] {
   return stats;
 }
 
-function formatCount(value: string | undefined, label: string): string | undefined {
-  if (value === undefined || value.trim() === "") {
+function formatCount(value: string | null | undefined, label: string): string | undefined {
+  if (value === undefined || value === null || value.trim() === "") {
     return undefined;
   }
 
@@ -1056,14 +1106,10 @@ function formatCount(value: string | undefined, label: string): string | undefin
   return `${new Intl.NumberFormat("en-US").format(parsedValue)} ${label}`;
 }
 
-function formatDate(value: string | undefined): string | undefined {
-  if (value === undefined || value.trim() === "") {
-    return undefined;
-  }
-
+function formatDate(value: string): string {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) {
-    return value;
+    throw new Error(`Invalid canonical video date: ${value}`);
   }
 
   return new Intl.DateTimeFormat("en-US", {
@@ -1072,22 +1118,6 @@ function formatDate(value: string | undefined): string | undefined {
     day: "numeric",
     year: "numeric",
   }).format(date);
-}
-
-function parseYoutubeDuration(value: string | undefined): string | undefined {
-  if (value === undefined) {
-    return undefined;
-  }
-
-  const match = /^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/u.exec(value);
-  if (!match) {
-    return value;
-  }
-
-  const hours = Number.parseInt(match[1] ?? "0", 10);
-  const minutes = Number.parseInt(match[2] ?? "0", 10);
-  const seconds = Number.parseInt(match[3] ?? "0", 10);
-  return formatTimestamp((hours * 3600) + (minutes * 60) + seconds);
 }
 
 function parseTimestamp(value: string): number {

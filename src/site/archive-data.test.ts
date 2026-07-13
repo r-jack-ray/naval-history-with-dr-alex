@@ -26,7 +26,8 @@ test("builds deterministic site archive data from channel metadata and segment s
 
   assert.equal(archive.videos.length, 1);
   assert.equal(archive.videos[0]?.slug, "sample-video");
-  assert.equal(archive.videos[0]?.publishedAt, "2026-07-08T00:00:00Z");
+  assert.equal(archive.videos[0]?.videoDateAt, "2026-07-08T00:00:00Z");
+  assert.equal(archive.videos[0]?.videoDateLabel, "Jul 8, 2026");
   assert.deepEqual(archive.videos[0]?.segmentSlugs, ["intro", "qa-segment"]);
   assert.equal(archive.segments[1]?.kind, "qa");
   assert.equal(archive.segments[1]?.start, "12:01");
@@ -36,12 +37,17 @@ test("builds deterministic site archive data from channel metadata and segment s
 
 test("uses livestream time instead of the advance upload timestamp", () => {
   const input = sampleInput();
-  input.episodesStore.episodes[0]!.publishedAt = "2026-06-14T16:44:14Z";
-  input.episodesStore.episodes[0]!.streamStartAt = "2026-07-12T18:30:00Z";
+  input.metadataStore.videos[0]!.snippet!.publishedAt = "2026-06-14T16:44:14Z";
+  input.metadataStore.videos[0]!.liveStreamingDetails = {
+    scheduledStartTime: "2026-07-12T18:30:00Z",
+    actualStartTime: "2026-07-12T18:33:54Z",
+    actualEndTime: "2026-07-12T20:33:54Z",
+  };
 
   const archive = buildSiteArchiveData(input);
 
-  assert.equal(archive.videos[0]?.publishedAt, "2026-07-12T18:30:00Z");
+  assert.equal(archive.videos[0]?.videoDateAt, "2026-07-12T18:33:54Z");
+  assert.equal(archive.videos[0]?.videoKind, "stream");
 });
 
 test("splits and reconstructs the logical archive with 64 deterministic segment buckets", () => {
@@ -75,6 +81,13 @@ test("keeps existing bucket filenames and assignments stable when records are ap
     videoId: "def456",
     title: "Second Video",
     slug: "second-video",
+    fileStem: "2026-07-07_T00-00-00_second-video_def456",
+  });
+  input.metadataStore.videos.push(readyUploadMetadata("def456", "Second Video", "2026-07-07T00:00:00Z"));
+  input.transcriptsStore.transcripts.push({
+    videoId: "def456",
+    fileStem: "2026-07-07_T00-00-00_second-video_def456",
+    paths: { txt: "txt/2026-07-07_T00-00-00_second-video_def456.txt" },
   });
   input.seed.videos.push({ videoId: "def456", topics: ["destroyers"] });
   input.seed.segments.push({
@@ -129,7 +142,7 @@ test("rejects schema mismatch, misbucketed records, and damaged shard sets", asy
   (wrongSchema.manifest as { schemaVersion: number }).schemaVersion = 99;
   assert.throws(
     () => validateSiteArchiveSplitData(wrongSchema),
-    /schemaVersion must be 2/u,
+    /schemaVersion must be 3/u,
   );
 
   const misbucketed = structuredClone(split);
@@ -194,6 +207,13 @@ test("makes duplicate video title slugs route-unique", () => {
     title: "Sample Video",
     slug: "sample-video",
     url: "https://www.youtube.com/watch?v=def456",
+    fileStem: "2026-07-07_T00-00-00_sample-video_def456",
+  });
+  input.metadataStore.videos.push(readyUploadMetadata("def456", "Sample Video", "2026-07-07T00:00:00Z"));
+  input.transcriptsStore.transcripts.push({
+    videoId: "def456",
+    fileStem: "2026-07-07_T00-00-00_sample-video_def456",
+    paths: { txt: "txt/2026-07-07_T00-00-00_sample-video_def456.txt" },
   });
   input.seed.videos.push({
     videoId: "def456",
@@ -377,6 +397,7 @@ function sampleInput(): Parameters<typeof buildSiteArchiveData>[0] {
     source: {
       episodesInput: "episodes.json",
       metadataInput: "metadata.json",
+      transcriptsInput: "manifest.json",
       segmentsInput: "segments.json",
     },
     episodesStore: {
@@ -386,6 +407,7 @@ function sampleInput(): Parameters<typeof buildSiteArchiveData>[0] {
           title: "Sample Video",
           slug: "sample-video",
           url: "https://www.youtube.com/watch?v=abc123",
+          fileStem: "2026-07-08_T00-00-00_sample-video_abc123",
           tabs: ["streams"],
           transcript: { status: "stored" },
         },
@@ -395,13 +417,25 @@ function sampleInput(): Parameters<typeof buildSiteArchiveData>[0] {
       videos: [
         {
           videoId: "abc123",
+          fetchedAt: "2026-07-08T01:00:00Z",
           snippet: {
             title: "Sample Video",
             publishedAt: "2026-07-08T00:00:00Z",
+            liveBroadcastContent: "none",
             thumbnails: { high: { url: "https://example.test/thumb.jpg" } },
           },
           contentDetails: { duration: "PT1H2M3S" },
           statistics: { viewCount: "1234" },
+          status: { uploadStatus: "processed" },
+        },
+      ],
+    },
+    transcriptsStore: {
+      transcripts: [
+        {
+          videoId: "abc123",
+          fileStem: "2026-07-08_T00-00-00_sample-video_abc123",
+          paths: { txt: "txt/2026-07-08_T00-00-00_sample-video_abc123.txt" },
         },
       ],
     },
@@ -447,5 +481,15 @@ function sampleInput(): Parameters<typeof buildSiteArchiveData>[0] {
         },
       ],
     },
+  };
+}
+
+function readyUploadMetadata(videoId: string, title: string, publishedAt: string) {
+  return {
+    videoId,
+    fetchedAt: "2026-07-08T01:00:00Z",
+    snippet: { title, publishedAt, liveBroadcastContent: "none" },
+    contentDetails: { duration: "PT1H" },
+    status: { uploadStatus: "processed" },
   };
 }

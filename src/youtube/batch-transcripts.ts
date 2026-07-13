@@ -13,11 +13,14 @@ import { createRateLimitedFetch } from "./channel-video-links.js";
 import {
   defaultVideoMetadataInput,
   defaultVideoMetadataOutput,
-  isPublishedButUnstarted,
   readVideoMetadataStore,
+  resolveVideoState,
   videoNamingMetadata,
+  type VideoDateKind,
   type VideoMetadataRecord,
   type VideoNamingMetadata,
+  type VideoReadinessReason,
+  type VideoStateResult,
 } from "./video-metadata.js";
 
 export const defaultTranscriptBatchInput = defaultVideoMetadataInput;
@@ -27,8 +30,11 @@ export interface TranscriptBatchEpisode {
   videoId: string;
   title?: string;
   publishedAt?: string;
-  streamStartAt?: string;
-  uploadDate?: string;
+  scheduledStartAt?: string;
+  actualStartAt?: string;
+  actualEndAt?: string;
+  videoDateAt?: string;
+  videoDateKind?: VideoDateKind;
   channelOrder?: number;
   tabs: string[];
 }
@@ -39,7 +45,7 @@ export interface TranscriptBatchFailure {
   classification: TranscriptFailureClassification;
   error: string;
   title?: string;
-  publishedAt?: string;
+  videoDateAt?: string;
   channelOrder?: number;
   tabs: string[];
 }
@@ -52,7 +58,7 @@ export type TranscriptFailureClassification =
   | "fetch_failed";
 
 export interface TranscriptBatchStatus {
-  schemaVersion: 1;
+  schemaVersion: 2;
   updatedAt: string;
   inputPath: string;
   outputRoot: string;
@@ -62,7 +68,8 @@ export interface TranscriptBatchStatus {
   stats: {
     inputVideoCount: number;
     skippedStoredCount: number;
-    skippedUnstartedCount: number;
+    skippedDeferredCount: number;
+    deferredCounts: Record<VideoReadinessReason, number>;
     skippedPreviousFailureCount: number;
     attemptedCount: number;
     fetchedCount: number;
@@ -93,7 +100,8 @@ export interface FetchTranscriptBatchOptions {
 
 interface TranscriptBatchCounters {
   skippedStoredCount: number;
-  skippedUnstartedCount: number;
+  skippedDeferredCount: number;
+  deferredCounts: Record<VideoReadinessReason, number>;
   skippedPreviousFailureCount: number;
   attemptedCount: number;
   fetchedCount: number;
@@ -115,7 +123,8 @@ export async function fetchAndStoreTranscriptBatch(
   const fetchTranscript = options.fetchTranscript ?? fetchVideoTranscript;
   const counters: TranscriptBatchCounters = {
     skippedStoredCount: 0,
-    skippedUnstartedCount: 0,
+    skippedDeferredCount: 0,
+    deferredCounts: emptyDeferredCounts(),
     skippedPreviousFailureCount: 0,
     attemptedCount: 0,
     fetchedCount: 0,
@@ -124,7 +133,7 @@ export async function fetchAndStoreTranscriptBatch(
   };
 
   for (const videoId of failuresById.keys()) {
-    if (isPublishedButUnstarted(metadataById.get(videoId))) {
+    if (resolveVideoState(metadataById.get(videoId)).state === "deferred") {
       failuresById.delete(videoId);
     }
   }
@@ -146,10 +155,14 @@ export async function fetchAndStoreTranscriptBatch(
     }
 
     const metadata = metadataById.get(episode.videoId);
-    if (isPublishedButUnstarted(metadata)) {
-      failuresById.delete(episode.videoId);
-      counters.skippedUnstartedCount += 1;
-      options.logger?.(`Skipping published but unstarted video: ${episode.videoId}`);
+    const state = resolveVideoState(metadata);
+    if (state.state !== "ready") {
+      if (state.state === "deferred") {
+        failuresById.delete(episode.videoId);
+      }
+      counters.skippedDeferredCount += 1;
+      counters.deferredCounts[state.reason] += 1;
+      options.logger?.(`Skipping not-ready video ${episode.videoId}: ${state.reason} (${state.diagnostic})`);
       continue;
     }
 
@@ -188,14 +201,14 @@ export async function fetchAndStoreTranscriptBatch(
       }
 
       const transcript = await fetchTranscript(fetchOptions);
-      applyNamingMetadata(transcript, namingMetadataForEpisode(episode, metadata));
+      applyNamingMetadata(transcript, namingMetadataForEpisode(episode, metadata, state));
       const paths = await writeTranscriptStorage(transcript, options.outputRoot);
       failuresById.delete(episode.videoId);
       counters.fetchedCount += 1;
       options.logger?.(`Stored transcript TXT: ${paths.txtOutput}`);
     } catch (error) {
       counters.failedCount += 1;
-      const failure = transcriptBatchFailure(episode, error);
+      const failure = transcriptBatchFailure(episode, error, state.videoDateAt);
       failuresById.set(episode.videoId, failure);
       options.logger?.(`Transcript fetch failed for ${episode.videoId}: ${failure.error}`);
     }
@@ -230,8 +243,11 @@ export async function readTranscriptBatchEpisodes(path: string): Promise<Transcr
     };
     const title = readString(record, "title");
     const publishedAt = readString(record, "publishedAt");
-    const streamStartAt = readString(record, "streamStartAt");
-    const uploadDate = readString(record, "uploadDate");
+    const scheduledStartAt = readString(record, "scheduledStartAt");
+    const actualStartAt = readString(record, "actualStartAt") ?? readString(record, "streamStartAt");
+    const actualEndAt = readString(record, "actualEndAt") ?? readString(record, "streamEndAt");
+    const videoDateAt = readString(record, "videoDateAt");
+    const videoDateKind = readVideoDateKind(record?.videoDateKind);
     const channelOrder = integerValue(record?.channelOrder);
 
     if (title !== undefined) {
@@ -240,11 +256,20 @@ export async function readTranscriptBatchEpisodes(path: string): Promise<Transcr
     if (publishedAt !== undefined) {
       batchEpisode.publishedAt = publishedAt;
     }
-    if (streamStartAt !== undefined) {
-      batchEpisode.streamStartAt = streamStartAt;
+    if (scheduledStartAt !== undefined) {
+      batchEpisode.scheduledStartAt = scheduledStartAt;
     }
-    if (uploadDate !== undefined) {
-      batchEpisode.uploadDate = uploadDate;
+    if (actualStartAt !== undefined) {
+      batchEpisode.actualStartAt = actualStartAt;
+    }
+    if (actualEndAt !== undefined) {
+      batchEpisode.actualEndAt = actualEndAt;
+    }
+    if (videoDateAt !== undefined) {
+      batchEpisode.videoDateAt = videoDateAt;
+    }
+    if (videoDateKind !== undefined) {
+      batchEpisode.videoDateKind = videoDateKind;
     }
     if (channelOrder !== undefined) {
       batchEpisode.channelOrder = channelOrder;
@@ -273,18 +298,22 @@ function applyNamingMetadata(transcript: VideoTranscript, metadata: VideoNamingM
     transcript.videoTitle = metadata.title;
   }
   if (metadata.timestamp !== undefined) {
-    transcript.videoPublishedAt = metadata.timestamp;
+    transcript.videoDateAt = metadata.timestamp;
+  }
+  if (metadata.dateKind !== undefined) {
+    transcript.videoDateKind = metadata.dateKind;
   }
 }
 
 function namingMetadataForEpisode(
   episode: TranscriptBatchEpisode,
   metadataRecord: VideoMetadataRecord | undefined,
+  state: Extract<VideoStateResult, { state: "ready" }>,
 ): VideoNamingMetadata {
   const metadata = videoNamingMetadata(metadataRecord);
   const result: VideoNamingMetadata = {};
   const title = metadata.title ?? episode.title;
-  const timestamp = metadata.timestamp ?? episode.streamStartAt ?? episode.publishedAt ?? episode.uploadDate;
+  const timestamp = metadata.timestamp ?? state.videoDateAt ?? episode.videoDateAt;
 
   if (title !== undefined) {
     result.title = title;
@@ -292,6 +321,8 @@ function namingMetadataForEpisode(
   if (timestamp !== undefined) {
     result.timestamp = timestamp;
   }
+  result.dateKind = metadata.dateKind ?? state.videoDateKind ?? episode.videoDateKind;
+  result.videoKind = metadata.videoKind ?? state.videoKind;
 
   return result;
 }
@@ -324,14 +355,14 @@ function buildTranscriptBatchStatus(
   failuresById: ReadonlyMap<string, TranscriptBatchFailure>,
 ): TranscriptBatchStatus {
   const processedCount = counters.skippedStoredCount +
-    counters.skippedUnstartedCount +
+    counters.skippedDeferredCount +
     counters.skippedPreviousFailureCount +
     counters.fetchedCount +
     counters.failedCount +
     counters.pendingCount;
   const pendingCount = counters.pendingCount + Math.max(0, episodes.length - processedCount);
   const status: TranscriptBatchStatus = {
-    schemaVersion: 1,
+    schemaVersion: 2,
     updatedAt: new Date().toISOString(),
     inputPath: options.inputPath,
     outputRoot: options.outputRoot,
@@ -341,7 +372,8 @@ function buildTranscriptBatchStatus(
     stats: {
       inputVideoCount: episodes.length,
       skippedStoredCount: counters.skippedStoredCount,
-      skippedUnstartedCount: counters.skippedUnstartedCount,
+      skippedDeferredCount: counters.skippedDeferredCount,
+      deferredCounts: { ...counters.deferredCounts },
       skippedPreviousFailureCount: counters.skippedPreviousFailureCount,
       attemptedCount: counters.attemptedCount,
       fetchedCount: counters.fetchedCount,
@@ -365,7 +397,11 @@ function buildTranscriptBatchStatus(
   return status;
 }
 
-function transcriptBatchFailure(episode: TranscriptBatchEpisode, error: unknown): TranscriptBatchFailure {
+function transcriptBatchFailure(
+  episode: TranscriptBatchEpisode,
+  error: unknown,
+  videoDateAt: string,
+): TranscriptBatchFailure {
   const message = error instanceof Error ? error.message : String(error);
   const failure: TranscriptBatchFailure = {
     videoId: episode.videoId,
@@ -378,9 +414,7 @@ function transcriptBatchFailure(episode: TranscriptBatchEpisode, error: unknown)
   if (episode.title !== undefined) {
     failure.title = episode.title;
   }
-  if (episode.publishedAt !== undefined) {
-    failure.publishedAt = episode.publishedAt;
-  }
+  failure.videoDateAt = videoDateAt;
   if (episode.channelOrder !== undefined) {
     failure.channelOrder = episode.channelOrder;
   }
@@ -437,14 +471,14 @@ function transcriptBatchFailureFromJson(value: unknown): TranscriptBatchFailure 
     tabs: readStringArray(object.tabs),
   };
   const title = readString(object, "title");
-  const publishedAt = readString(object, "publishedAt");
+  const videoDateAt = readString(object, "videoDateAt") ?? readString(object, "publishedAt");
   const channelOrder = integerValue(object.channelOrder);
 
   if (title !== undefined) {
     failure.title = title;
   }
-  if (publishedAt !== undefined) {
-    failure.publishedAt = publishedAt;
+  if (videoDateAt !== undefined) {
+    failure.videoDateAt = videoDateAt;
   }
   if (channelOrder !== undefined) {
     failure.channelOrder = channelOrder;
@@ -465,7 +499,7 @@ function readTranscriptFailureClassification(value: unknown): TranscriptFailureC
 
 function emptyTranscriptBatchStatus(): TranscriptBatchStatus {
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     updatedAt: new Date(0).toISOString(),
     inputPath: "",
     outputRoot: defaultTranscriptStorageRoot,
@@ -475,7 +509,8 @@ function emptyTranscriptBatchStatus(): TranscriptBatchStatus {
     stats: {
       inputVideoCount: 0,
       skippedStoredCount: 0,
-      skippedUnstartedCount: 0,
+      skippedDeferredCount: 0,
+      deferredCounts: emptyDeferredCounts(),
       skippedPreviousFailureCount: 0,
       attemptedCount: 0,
       fetchedCount: 0,
@@ -485,6 +520,22 @@ function emptyTranscriptBatchStatus(): TranscriptBatchStatus {
     },
     failures: [],
   };
+}
+
+function emptyDeferredCounts(): Record<VideoReadinessReason, number> {
+  return {
+    upcoming: 0,
+    live_in_progress: 0,
+    processing: 0,
+    metadata_missing: 0,
+    invalid_metadata: 0,
+  };
+}
+
+function readVideoDateKind(value: unknown): VideoDateKind | undefined {
+  return value === "actual_start" || value === "scheduled_start" || value === "published"
+    ? value
+    : undefined;
 }
 
 function readString(object: Record<string, unknown> | undefined, key: string): string | undefined {

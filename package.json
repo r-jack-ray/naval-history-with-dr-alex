@@ -36,6 +36,7 @@
     "alternate:fetch:transcripts:retry": "npm run alternate:fetch:transcripts -- --retry-failed",
     "alternate:fetch:transcripts:retry:safe": "npm run alternate:fetch:transcripts -- --retry-failed --force --request-delay-ms 60000",
     "report:transcript-problems": "npm run build && node dist/scripts/report-transcript-problems.js",
+    "migrate:video-timestamps": "npm run build && node dist/scripts/migrate-video-timestamps.js",
 
     "site:dev": "astro dev",
     "site:check": "npm run generate:site-data && npm run site:check:generated",

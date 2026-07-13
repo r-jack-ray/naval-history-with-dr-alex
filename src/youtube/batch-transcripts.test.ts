@@ -10,7 +10,7 @@ import {
   type TranscriptBatchStatus,
 } from "./batch-transcripts.js";
 import { writeTranscriptStorage, type VideoTranscript } from "./transcripts.js";
-import { isPublishedButUnstarted } from "./video-metadata.js";
+import { resolveVideoState } from "./video-metadata.js";
 
 test("reads unique transcript batch episodes from the channel master list", async () => {
   const dir = await mkdtemp(join(tmpdir(), "naval-transcript-batch-"));
@@ -67,6 +67,8 @@ test("batch fetch skips stored transcripts and writes checkpoint status", async 
             videoId: "def456",
             fetchedAt: "2026-07-08T00:00:00.000Z",
             snippet: { title: "Metadata Title", publishedAt: "2026-07-03T18:30:17Z" },
+            status: { uploadStatus: "processed" },
+            contentDetails: { duration: "PT1M" },
           },
         ],
       }),
@@ -109,6 +111,7 @@ test("batch fetch skips stored transcripts and writes checkpoint status", async 
 test("batch refetches a manifest record whose TXT file is missing", async () => {
   const dir = await mkdtemp(join(tmpdir(), "naval-transcript-batch-"));
   const input = join(dir, "episodes.json");
+  const metadataInput = join(dir, "metadata.json");
   const outputRoot = join(dir, "transcripts");
   const statusOutput = join(outputRoot, "fetch-status.json");
   const calls: string[] = [];
@@ -121,9 +124,11 @@ test("batch refetches a manifest record whose TXT file is missing", async () => 
       JSON.stringify({ episodes: [{ videoId: "abc123", title: "Stored", tabs: ["videos"] }] }),
       "utf8",
     );
+    await writeReadyMetadata(metadataInput, ["abc123"]);
 
     const status = await fetchAndStoreTranscriptBatch({
       inputPath: input,
+      metadataInput,
       outputRoot,
       statusOutput,
       requestDelayMs: 5,
@@ -144,6 +149,7 @@ test("batch refetches a manifest record whose TXT file is missing", async () => 
 test("batch force-refetch preserves an existing manifest fileStem", async () => {
   const dir = await mkdtemp(join(tmpdir(), "naval-transcript-batch-"));
   const input = join(dir, "episodes.json");
+  const metadataInput = join(dir, "metadata.json");
   const outputRoot = join(dir, "transcripts");
   const statusOutput = join(outputRoot, "fetch-status.json");
 
@@ -151,16 +157,19 @@ test("batch force-refetch preserves an existing manifest fileStem", async () => 
     await writeTranscriptStorage({
       ...sampleTranscript("abc123"),
       videoTitle: "Original Title",
-      videoPublishedAt: "2026-01-02T03:04:05Z",
+      videoDateAt: "2026-01-02T03:04:05Z",
+      videoDateKind: "published",
     }, outputRoot);
     await writeFile(
       input,
       JSON.stringify({ episodes: [{ videoId: "abc123", title: "Renamed Title", tabs: ["videos"] }] }),
       "utf8",
     );
+    await writeReadyMetadata(metadataInput, ["abc123"]);
 
     const status = await fetchAndStoreTranscriptBatch({
       inputPath: input,
+      metadataInput,
       outputRoot,
       statusOutput,
       requestDelayMs: 5,
@@ -183,6 +192,7 @@ test("batch force-refetch preserves an existing manifest fileStem", async () => 
 test("batch skips previous failures until retry is requested", async () => {
   const dir = await mkdtemp(join(tmpdir(), "naval-transcript-batch-"));
   const input = join(dir, "episodes.json");
+  const metadataInput = join(dir, "metadata.json");
   const outputRoot = join(dir, "transcripts");
   const statusOutput = join(outputRoot, "fetch-status.json");
   const calls: string[] = [];
@@ -195,6 +205,7 @@ test("batch skips previous failures until retry is requested", async () => {
       }),
       "utf8",
     );
+    await writeReadyMetadata(metadataInput, ["abc123"]);
     await mkdir(outputRoot, { recursive: true });
     await writeFile(
       statusOutput,
@@ -214,6 +225,7 @@ test("batch skips previous failures until retry is requested", async () => {
 
     const skipped = await fetchAndStoreTranscriptBatch({
       inputPath: input,
+      metadataInput,
       outputRoot,
       statusOutput,
       requestDelayMs: 5,
@@ -229,6 +241,7 @@ test("batch skips previous failures until retry is requested", async () => {
 
     const retried = await fetchAndStoreTranscriptBatch({
       inputPath: input,
+      metadataInput,
       outputRoot,
       statusOutput,
       requestDelayMs: 5,
@@ -301,7 +314,8 @@ test("batch skips published but unstarted videos and clears stale failures", asy
     });
 
     assert.deepEqual(calls, []);
-    assert.equal(status.stats.skippedUnstartedCount, 1);
+    assert.equal(status.stats.skippedDeferredCount, 1);
+    assert.equal(status.stats.deferredCounts.upcoming, 1);
     assert.equal(status.stats.attemptedCount, 0);
     assert.equal(status.stats.failedCount, 0);
     assert.equal(status.stats.pendingCount, 0);
@@ -312,16 +326,18 @@ test("batch skips published but unstarted videos and clears stale failures", asy
   }
 });
 
-test("published video is eligible after its stream has actually started", () => {
-  assert.equal(isPublishedButUnstarted({
+test("started livestream remains deferred until completion is proven", () => {
+  assert.equal(resolveVideoState({
     videoId: "started123",
     fetchedAt: "2026-07-13T00:00:00.000Z",
-    snippet: { publishedAt: "2026-06-14T16:44:14Z" },
+    snippet: { publishedAt: "2026-06-14T16:44:14Z", liveBroadcastContent: "none" },
+    status: { uploadStatus: "processed" },
+    contentDetails: { duration: "PT1H" },
     liveStreamingDetails: {
       scheduledStartTime: "2026-07-12T18:30:00Z",
       actualStartTime: "2026-07-12T18:30:06Z",
     },
-  }), false);
+  }).state, "deferred");
 });
 
 function sampleTranscript(videoId: string): VideoTranscript {
@@ -342,4 +358,16 @@ function sampleTranscript(videoId: string): VideoTranscript {
       },
     ],
   };
+}
+
+async function writeReadyMetadata(path: string, videoIds: string[]): Promise<void> {
+  await writeFile(path, JSON.stringify({
+    videos: videoIds.map((videoId) => ({
+      videoId,
+      fetchedAt: "2026-07-08T00:00:00.000Z",
+      snippet: { title: `Metadata ${videoId}`, publishedAt: "2026-07-03T18:30:17Z", liveBroadcastContent: "none" },
+      status: { uploadStatus: "processed" },
+      contentDetails: { duration: "PT1M" },
+    })),
+  }), "utf8");
 }

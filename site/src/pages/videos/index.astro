@@ -1,17 +1,12 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { archiveVideos } from "../../data/archive";
+import { archiveVideos, compareVideosByDateDescending } from "../../data/archive";
 
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${count} time notes`;
-const videosByPublishDate = [...archiveVideos].sort((left, right) => {
-  const leftTimestamp = left.publishedAt == null ? Number.NEGATIVE_INFINITY : Date.parse(left.publishedAt);
-  const rightTimestamp = right.publishedAt == null ? Number.NEGATIVE_INFINITY : Date.parse(right.publishedAt);
-
-  return rightTimestamp - leftTimestamp || left.title.localeCompare(right.title);
-});
+const videosByDate = [...archiveVideos].sort(compareVideosByDateDescending);
 ---
 
 <BaseLayout
@@ -31,7 +26,7 @@ const videosByPublishDate = [...archiveVideos].sort((left, right) => {
 
     <section class="video-card-grid" aria-label="Videos">
       {
-        videosByPublishDate.map((video) => (
+        videosByDate.map((video) => (
           <article class="video-card">
             <a href={`${baseUrl}videos/${video.slug}/`}>
               <img
@@ -42,10 +37,10 @@ const videosByPublishDate = [...archiveVideos].sort((left, right) => {
                 height="360"
               />
               <div>
-                <span class="label">{video.sourceType}</span>
+                <span class="label">{video.videoKind === "stream" ? "stream" : "video"}</span>
                 <h2>{video.title}</h2>
                 <p>
-                  {video.publishedLabel} · {video.durationLabel} · {timeNoteCountLabel(video.segmentSlugs.length)}
+                  <time datetime={video.videoDateAt}>{video.videoDateLabel}</time> · {video.durationLabel} · {timeNoteCountLabel(video.segmentSlugs.length)}
                 </p>
                 <div class="topic-row compact" aria-label="Topics">
                   {video.topics.slice(0, 4).map((topic) => <span>{topic.title}</span>)}

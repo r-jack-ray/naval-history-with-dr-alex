@@ -156,6 +156,7 @@ test("builds a canonical source episode master list", () => {
       channelOrder: 1,
       title: "Stored transcript video",
       durationText: "4:35:38",
+      videoKind: "upload",
       tabs: ["videos"],
       tabPositions: { videos: 1 },
       transcript: {
@@ -168,27 +169,32 @@ test("builds a canonical source episode master list", () => {
   ]);
 });
 
-test("prefers actual then scheduled livestream time over the upload timestamp", () => {
+test("exposes a stream start only after completion is independently proven", () => {
   assert.equal(
     officialVideoStreamStartTime({
-      snippet: { publishedAt: "2026-06-14T16:44:14Z" },
+      snippet: { publishedAt: "2026-06-14T16:44:14Z", liveBroadcastContent: "upcoming" },
+      status: { uploadStatus: "uploaded" },
+      contentDetails: { duration: "P0D" },
       liveStreamingDetails: { scheduledStartTime: "2026-07-12T18:30:00Z" },
     }),
-    "2026-07-12T18:30:00Z",
+    undefined,
   );
   assert.equal(
     officialVideoStreamStartTime({
-      snippet: { publishedAt: "2026-06-14T16:44:14Z" },
+      snippet: { publishedAt: "2026-06-14T16:44:14Z", liveBroadcastContent: "none" },
+      status: { uploadStatus: "processed" },
+      contentDetails: { duration: "PT2H" },
       liveStreamingDetails: {
         scheduledStartTime: "2026-07-12T18:30:00Z",
         actualStartTime: "2026-07-12T18:33:54Z",
+        actualEndTime: "2026-07-12T20:33:54Z",
       },
     }),
     "2026-07-12T18:33:54Z",
   );
 });
 
-test("official enrichment exposes the stream date and retains the advance upload time", () => {
+test("official enrichment keeps raw stream dates separate from the effective date", () => {
   const link: ChannelVideoLink = {
     videoId: "abc123",
     url: "https://www.youtube.com/watch?v=abc123",
@@ -198,17 +204,26 @@ test("official enrichment exposes the stream date and retains the advance upload
 
   applyOfficialVideoMetadata(link, {
     snippet: {
-      title: "Upcoming Naval History Live",
+      title: "Completed Naval History Live",
       publishedAt: "2026-06-14T16:44:14Z",
+      liveBroadcastContent: "none",
     },
+    status: { uploadStatus: "processed" },
+    contentDetails: { duration: "PT2H" },
     liveStreamingDetails: {
       scheduledStartTime: "2026-07-12T18:30:00Z",
+      actualStartTime: "2026-07-12T18:33:54Z",
+      actualEndTime: "2026-07-12T20:33:54Z",
     },
   });
 
-  assert.equal(link.uploadDate, "2026-06-14T16:44:14Z");
-  assert.equal(link.streamStartAt, "2026-07-12T18:30:00Z");
-  assert.equal(link.publishedAt, "2026-07-12T18:30:00Z");
+  assert.equal(link.publishedAt, "2026-06-14T16:44:14Z");
+  assert.equal(link.scheduledStartAt, "2026-07-12T18:30:00Z");
+  assert.equal(link.actualStartAt, "2026-07-12T18:33:54Z");
+  assert.equal(link.actualEndAt, "2026-07-12T20:33:54Z");
+  assert.equal(link.videoDateAt, "2026-07-12T18:33:54Z");
+  assert.equal(link.videoDateKind, "actual_start");
+  assert.equal(link.videoKind, "stream");
   assert.equal(link.publishDate, "2026-07-12");
   assert.equal(link.publishedText, "2026-07-12");
 });

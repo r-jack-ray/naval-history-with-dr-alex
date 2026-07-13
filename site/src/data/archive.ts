@@ -5,7 +5,7 @@ import archiveTopicsJson from "./generated/archive/topics.json";
 import archiveVideosJson from "./generated/archive/videos.json";
 
 export interface ArchiveData {
-  schemaVersion: 1;
+  schemaVersion: 2;
   videos: ArchiveVideo[];
   segments: ArchiveSegment[];
   topics: ArchiveTopic[];
@@ -22,10 +22,11 @@ export interface ArchiveSegmentBucketRecord extends ArchiveFileRecord {
 }
 
 export interface ArchiveManifest {
-  schemaVersion: 2;
+  schemaVersion: 3;
   source: {
     episodesInput: string;
     metadataInput: string;
+    transcriptsInput: string;
     segmentsInput: string;
   };
   counts: {
@@ -51,11 +52,12 @@ export interface ArchiveVideo {
   youtubeUrl: string;
   embedUrl: string;
   thumbnailUrl: string;
-  publishedAt?: string | null;
-  publishedLabel: string;
+  videoDateAt: string;
+  videoDateLabel: string;
+  videoDateKind: "actual_start" | "scheduled_start" | "published";
+  videoKind: "upload" | "stream";
   durationLabel: string;
   viewCountLabel: string;
-  sourceType: string;
   transcriptStatus: string;
   fileStem: string;
   description: string;
@@ -181,13 +183,13 @@ function bucketIdForVideo(videoId: string): string {
 }
 
 function validateManifestShape(): void {
-  if (!isRecord(manifest) || manifest.schemaVersion !== 2) {
-    archiveError(`manifest schemaVersion must be 2; received ${String(manifest?.schemaVersion)}.`);
+  if (!isRecord(manifest) || manifest.schemaVersion !== 3) {
+    archiveError(`manifest schemaVersion must be 3; received ${String(manifest?.schemaVersion)}.`);
   }
   if (!isRecord(manifest.source)) {
     archiveError("manifest source is missing.");
   }
-  for (const field of ["episodesInput", "metadataInput", "segmentsInput"] as const) {
+  for (const field of ["episodesInput", "metadataInput", "transcriptsInput", "segmentsInput"] as const) {
     if (typeof manifest.source[field] !== "string" || manifest.source[field].length === 0) {
       archiveError(`manifest source.${field} must be a non-empty string.`);
     }
@@ -303,6 +305,24 @@ function uniqueMap<T>(
 for (const video of archiveVideos) {
   assertStringField(video, "videoId", "video record");
   assertStringField(video, "slug", `video ${video.videoId}`);
+  const videoDateAt = assertStringField(video, "videoDateAt", `video ${video.videoId}`);
+  const videoDateLabel = assertStringField(video, "videoDateLabel", `video ${video.videoId}`);
+  if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/u.test(videoDateAt) || !Number.isFinite(Date.parse(videoDateAt))) {
+    archiveError(`video ${video.videoId} must contain a canonical UTC videoDateAt.`);
+  }
+  if (videoDateLabel.length === 0) {
+    archiveError(`video ${video.videoId} must contain videoDateLabel.`);
+  }
+  if (
+    video.videoDateKind !== "actual_start" &&
+    video.videoDateKind !== "scheduled_start" &&
+    video.videoDateKind !== "published"
+  ) {
+    archiveError(`video ${video.videoId} has an invalid videoDateKind.`);
+  }
+  if (video.videoKind !== "upload" && video.videoKind !== "stream") {
+    archiveError(`video ${video.videoId} has an invalid videoKind.`);
+  }
   if (!Array.isArray(video.segmentSlugs) || !Array.isArray(video.topics)) {
     archiveError(`video ${video.videoId} must contain segmentSlugs and topics arrays.`);
   }
@@ -406,7 +426,7 @@ for (const topic of archiveTopics) {
 }
 
 export const archive: ArchiveData = {
-  schemaVersion: 1,
+  schemaVersion: 2,
   videos: archiveVideos,
   segments: archiveSegments,
   topics: archiveTopics,
@@ -450,40 +470,31 @@ export function segmentsForVideo(video: ArchiveVideo): ArchiveSegment[] {
 }
 
 export function segmentsForTopic(topic: ArchiveTopic): ArchiveSegment[] {
-  return [...(segmentsByTopicSlug.get(topic.slug) ?? [])];
+  return sortSegmentsByVideoDate(segmentsByTopicSlug.get(topic.slug) ?? []);
 }
 
 export function segmentsForBrowse(): ArchiveSegment[] {
-  const publishedTimestamp = (videoId: string): number | undefined => {
-    const publishedAt = videosById.get(videoId)?.publishedAt;
-    if (typeof publishedAt !== "string" || publishedAt.length === 0) {
-      return undefined;
-    }
-    const timestamp = Date.parse(publishedAt);
-    return Number.isFinite(timestamp) ? timestamp : undefined;
-  };
-
-  return [...archiveSegments].sort((left, right) => {
-    const leftPublished = publishedTimestamp(left.videoId);
-    const rightPublished = publishedTimestamp(right.videoId);
-    if (leftPublished !== undefined || rightPublished !== undefined) {
-      if (leftPublished === undefined) {
-        return 1;
-      }
-      if (rightPublished === undefined) {
-        return -1;
-      }
-      if (leftPublished !== rightPublished) {
-        return rightPublished - leftPublished;
-      }
-    }
-
-    return left.videoId.localeCompare(right.videoId)
-      || left.startSeconds - right.startSeconds
-      || left.slug.localeCompare(right.slug);
-  });
+  return sortSegmentsByVideoDate(archiveSegments);
 }
 
 export function videosForTopic(topic: ArchiveTopic): ArchiveVideo[] {
-  return [...(videosByTopicSlug.get(topic.slug) ?? [])];
+  return [...(videosByTopicSlug.get(topic.slug) ?? [])].sort(compareVideosByDateDescending);
+}
+
+export function compareVideosByDateDescending(left: ArchiveVideo, right: ArchiveVideo): number {
+  return Date.parse(right.videoDateAt) - Date.parse(left.videoDateAt)
+    || left.videoId.localeCompare(right.videoId);
+}
+
+function sortSegmentsByVideoDate(segments: readonly ArchiveSegment[]): ArchiveSegment[] {
+  return [...segments].sort((left, right) => {
+    const leftVideo = videosById.get(left.videoId);
+    const rightVideo = videosById.get(right.videoId);
+    if (leftVideo === undefined || rightVideo === undefined) {
+      archiveError(`segment date ordering references a missing parent video.`);
+    }
+    return compareVideosByDateDescending(leftVideo, rightVideo)
+      || left.startSeconds - right.startSeconds
+      || left.slug.localeCompare(right.slug);
+  });
 }

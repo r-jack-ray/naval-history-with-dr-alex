@@ -15,7 +15,7 @@ const segments = segmentsForVideo(video);
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
-const formatSourceType = (sourceType: string) => sourceType === "stream" ? "Stream" : "Video";
+const formatVideoKind = (videoKind: ArchiveVideo["videoKind"]) => videoKind === "stream" ? "Stream" : "Video";
 const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${count} time notes`;
 ---
 
@@ -62,8 +62,8 @@ const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${c
 
     <section class="detail-grid" aria-label="Video overview">
       <article>
-        <span class="label">Published</span>
-        <strong>{video.publishedLabel}</strong>
+        <span class="label">Date</span>
+        <strong><time datetime={video.videoDateAt}>{video.videoDateLabel}</time></strong>
       </article>
       <article>
         <span class="label">Runtime</span>
@@ -71,7 +71,7 @@ const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${c
       </article>
       <article>
         <span class="label">Format</span>
-        <strong>{formatSourceType(video.sourceType)}</strong>
+        <strong>{formatVideoKind(video.videoKind)}</strong>
       </article>
       <article>
         <span class="label">Guide points</span>

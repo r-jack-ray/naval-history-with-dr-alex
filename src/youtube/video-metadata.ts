@@ -57,13 +57,46 @@ export interface FetchVideoMetadataOptions {
   limit?: number;
   force?: boolean;
   additionalVideoIds?: string[];
+  refreshVideoIds?: string[];
   logger?: (message: string) => void;
 }
 
 export interface VideoNamingMetadata {
   title?: string;
   timestamp?: string;
+  dateKind?: VideoDateKind;
+  videoKind?: VideoKind;
 }
+
+export type VideoDateKind = "actual_start" | "scheduled_start" | "published";
+export type VideoKind = "upload" | "stream";
+export type VideoReadinessReason =
+  | "upcoming"
+  | "live_in_progress"
+  | "processing"
+  | "metadata_missing"
+  | "invalid_metadata";
+
+export type VideoStateResult =
+  | {
+      state: "ready";
+      videoKind: VideoKind;
+      videoDateAt: string;
+      videoDateKind: VideoDateKind;
+      durationSeconds: number;
+    }
+  | {
+      state: "deferred";
+      videoKind: VideoKind;
+      reason: VideoReadinessReason;
+      diagnostic: string;
+    }
+  | {
+      state: "invalid";
+      videoKind: VideoKind;
+      reason: VideoReadinessReason;
+      diagnostic: string;
+    };
 
 export function readVideoIdsFromEpisodeMaster(value: unknown): string[] {
   const object = asRecord(value);
@@ -117,25 +150,159 @@ export function videoNamingMetadata(record: VideoMetadataRecord | undefined): Vi
   }
 
   const title = record.snippet?.title ?? undefined;
-  const timestamp = record.liveStreamingDetails?.actualStartTime ??
-    record.liveStreamingDetails?.scheduledStartTime ??
-    record.snippet?.publishedAt ??
-    undefined;
+  const state = resolveVideoState(record);
   const metadata: VideoNamingMetadata = {};
 
   if (title !== undefined) {
     metadata.title = title;
   }
-  if (timestamp !== undefined) {
-    metadata.timestamp = timestamp;
+  if (state.state === "ready") {
+    metadata.timestamp = state.videoDateAt;
+    metadata.dateKind = state.videoDateKind;
+    metadata.videoKind = state.videoKind;
   }
 
   return metadata;
 }
 
+/** @deprecated Use resolveVideoState so completion and processing are checked together. */
 export function isPublishedButUnstarted(record: VideoMetadataRecord | undefined): boolean {
   return record?.liveStreamingDetails?.scheduledStartTime != null &&
     record.liveStreamingDetails.actualStartTime == null;
+}
+
+export function resolveVideoState(record: VideoMetadataRecord | undefined): VideoStateResult {
+  if (record === undefined) {
+    return invalidVideoState("upload", "metadata_missing", "Video metadata is missing.");
+  }
+
+  const videoKind: VideoKind = record.liveStreamingDetails !== undefined ||
+    record.snippet?.liveBroadcastContent === "upcoming" ||
+    record.snippet?.liveBroadcastContent === "live"
+    ? "stream"
+    : "upload";
+  const broadcastState = record.snippet?.liveBroadcastContent ?? undefined;
+  if (broadcastState === "upcoming") {
+    return deferredVideoState(videoKind, "upcoming", "The video is scheduled but has not started.");
+  }
+  if (broadcastState === "live") {
+    return deferredVideoState(videoKind, "live_in_progress", "The livestream is currently in progress.");
+  }
+
+  const uploadStatus = record.status?.uploadStatus ?? undefined;
+  if (uploadStatus !== "processed") {
+    if (uploadStatus === "uploaded") {
+      return deferredVideoState(videoKind, "processing", "YouTube has not finished processing the video.");
+    }
+    return invalidVideoState(
+      videoKind,
+      uploadStatus === undefined ? "metadata_missing" : "invalid_metadata",
+      uploadStatus === undefined
+        ? "Video metadata is missing status.uploadStatus."
+        : `YouTube upload status is ${uploadStatus}, not processed.`,
+    );
+  }
+
+  const durationSeconds = parseYoutubeDurationSeconds(record.contentDetails?.duration ?? undefined);
+  if (durationSeconds === undefined || durationSeconds <= 0) {
+    return invalidVideoState(
+      videoKind,
+      "invalid_metadata",
+      `Processed video has an invalid or non-positive duration: ${record.contentDetails?.duration ?? "missing"}.`,
+    );
+  }
+
+  const actualStartTime = canonicalVideoTimestamp(record.liveStreamingDetails?.actualStartTime ?? undefined);
+  const scheduledStartTime = canonicalVideoTimestamp(record.liveStreamingDetails?.scheduledStartTime ?? undefined);
+  const actualEndTime = canonicalVideoTimestamp(record.liveStreamingDetails?.actualEndTime ?? undefined);
+  const publishedAt = canonicalVideoTimestamp(record.snippet?.publishedAt ?? undefined);
+  const malformedTimestamp = [actualStartTime, scheduledStartTime, actualEndTime, publishedAt]
+    .find((value) => value === null);
+  if (malformedTimestamp === null) {
+    return invalidVideoState(videoKind, "invalid_metadata", "Video metadata contains a malformed timestamp.");
+  }
+
+  if (videoKind === "stream") {
+    if (actualEndTime === undefined) {
+      return deferredVideoState(
+        videoKind,
+        "live_in_progress",
+        "Livestream metadata does not yet prove completion with actualEndTime.",
+      );
+    }
+    if (
+      typeof actualStartTime === "string" &&
+      typeof actualEndTime === "string" &&
+      Date.parse(actualEndTime) < Date.parse(actualStartTime)
+    ) {
+      return invalidVideoState(videoKind, "invalid_metadata", "Livestream actualEndTime precedes actualStartTime.");
+    }
+  }
+
+  const candidates: [VideoDateKind, string | undefined][] = [
+    ["actual_start", actualStartTime ?? undefined],
+    ["scheduled_start", scheduledStartTime ?? undefined],
+    ["published", publishedAt ?? undefined],
+  ];
+  const selected = candidates.find(([, value]) => value !== undefined);
+  if (selected === undefined || selected[1] === undefined) {
+    return invalidVideoState(videoKind, "metadata_missing", "No canonical publication or stream timestamp is available.");
+  }
+
+  return {
+    state: "ready",
+    videoKind,
+    videoDateAt: selected[1],
+    videoDateKind: selected[0],
+    durationSeconds,
+  };
+}
+
+export function canonicalVideoTimestamp(value: string | undefined): string | undefined | null {
+  if (value === undefined) {
+    return undefined;
+  }
+  const timestamp = value.trim();
+  if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.0+)?(?:Z|[+-]\d{2}:?\d{2})$/u.test(timestamp)) {
+    return null;
+  }
+  const milliseconds = Date.parse(timestamp);
+  if (!Number.isFinite(milliseconds)) {
+    return null;
+  }
+  return new Date(milliseconds).toISOString().replace(/\.000Z$/u, "Z");
+}
+
+export function parseYoutubeDurationSeconds(value: string | undefined): number | undefined {
+  if (value === undefined) {
+    return undefined;
+  }
+  const match = /^P(?:(\d+)D)?(?:T(?:(\d+)H)?(?:(\d+)M)?(?:(\d+(?:\.\d+)?)S)?)?$/u.exec(value);
+  if (match === null || match.slice(1).every((part) => part === undefined)) {
+    return undefined;
+  }
+  const days = Number(match[1] ?? 0);
+  const hours = Number(match[2] ?? 0);
+  const minutes = Number(match[3] ?? 0);
+  const seconds = Number(match[4] ?? 0);
+  const total = (days * 86_400) + (hours * 3_600) + (minutes * 60) + seconds;
+  return Number.isFinite(total) ? total : undefined;
+}
+
+function deferredVideoState(
+  videoKind: VideoKind,
+  reason: VideoReadinessReason,
+  diagnostic: string,
+): VideoStateResult {
+  return { state: "deferred", videoKind, reason, diagnostic };
+}
+
+function invalidVideoState(
+  videoKind: VideoKind,
+  reason: VideoReadinessReason,
+  diagnostic: string,
+): VideoStateResult {
+  return { state: "invalid", videoKind, reason, diagnostic };
 }
 
 export async function fetchAndStoreVideoMetadata(options: FetchVideoMetadataOptions): Promise<VideoMetadataStore> {
@@ -154,7 +321,10 @@ export async function fetchAndStoreVideoMetadata(options: FetchVideoMetadataOpti
   );
   const videoIds = mergeVideoIds(inputVideoIds, additionalVideoIds);
   const recordsById = new Map(existing?.videos.map((record) => [record.videoId, record]) ?? []);
-  const targetIds = options.force ? videoIds : videoIds.filter((videoId) => !recordsById.has(videoId));
+  const refreshIds = new Set(options.refreshVideoIds ?? []);
+  const targetIds = options.force
+    ? videoIds
+    : videoIds.filter((videoId) => !recordsById.has(videoId) || refreshIds.has(videoId));
   const pendingIds = options.limit === undefined ? targetIds : targetIds.slice(0, options.limit);
   const youtube = google.youtube({ version: "v3", auth: apiKey });
   const gateOptions: {

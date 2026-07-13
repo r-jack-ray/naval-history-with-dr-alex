@@ -12,7 +12,7 @@ import {
 import {
   defaultVideoMetadataOutput,
   findVideoMetadataRecord,
-  isPublishedButUnstarted,
+  resolveVideoState,
   videoNamingMetadata,
   type VideoMetadataRecord,
   type VideoNamingMetadata,
@@ -32,9 +32,13 @@ type CliOptions = FetchVideoTranscriptOptions & {
 async function main(): Promise<void> {
   const options = parseArgs(process.argv.slice(2));
   const metadataRecord = await readMetadataRecord(options);
-  if (isPublishedButUnstarted(metadataRecord)) {
-    console.error(`Skipping published but unstarted video: ${options.videoId}`);
+  const state = resolveVideoState(metadataRecord);
+  if (state.state === "deferred") {
+    console.error(`Skipping not-ready video ${options.videoId}: ${state.reason} (${state.diagnostic})`);
     return;
+  }
+  if (state.state === "invalid") {
+    throw new Error(`Cannot fetch transcript for ${options.videoId}: ${state.reason} (${state.diagnostic})`);
   }
   const namingMetadata = videoNamingMetadata(metadataRecord);
   const fetchOptions: FetchVideoTranscriptOptions = {
@@ -175,7 +179,10 @@ function applyNamingMetadata(
     transcript.videoTitle = videoTitle;
   }
   if (videoTimestamp !== undefined) {
-    transcript.videoPublishedAt = videoTimestamp;
+    transcript.videoDateAt = videoTimestamp;
+  }
+  if (metadata.dateKind !== undefined) {
+    transcript.videoDateKind = metadata.dateKind;
   }
 }
 

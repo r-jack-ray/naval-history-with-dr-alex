@@ -1,15 +1,24 @@
 import { dirname } from "node:path";
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 
 import { google, type youtube_v3 } from "googleapis";
 
 import { slugifyVideoTitle, videoFileStem } from "../naming.js";
+import {
+  defaultVideoMetadataOutput,
+  readVideoMetadataStore,
+  resolveVideoState,
+  type VideoDateKind,
+  type VideoKind,
+  type VideoMetadataRecord,
+} from "./video-metadata.js";
 
 export type ChannelVideoTab = "videos" | "streams";
 export type ChannelInventoryCompleteness = "complete" | "partial" | "unknown";
 
 export const defaultChannelSourceRoot = "src/channel";
 export const defaultEpisodeMasterOutput = `${defaultChannelSourceRoot}/episodes.json`;
+export const defaultTranscriptManifestInput = "src/transcripts/manifest.json";
 
 export interface ChannelVideoLink {
   videoId: string;
@@ -23,6 +32,12 @@ export interface ChannelVideoLink {
   uploadDate?: string;
   streamStartAt?: string;
   streamEndAt?: string;
+  scheduledStartAt?: string;
+  actualStartAt?: string;
+  actualEndAt?: string;
+  videoDateAt?: string;
+  videoDateKind?: VideoDateKind;
+  videoKind?: VideoKind;
   tabs: ChannelVideoTab[];
   tabPositions: Partial<Record<ChannelVideoTab, number>>;
 }
@@ -77,14 +92,17 @@ export interface ChannelVideoMetadataResult {
     viewCountText?: string;
     publishedAt?: string;
     publishDate?: string;
-    uploadDate?: string;
-    streamStartAt?: string;
-    streamEndAt?: string;
+    scheduledStartAt?: string;
+    actualStartAt?: string;
+    actualEndAt?: string;
+    videoDateAt?: string;
+    videoDateKind?: VideoDateKind;
+    videoKind?: VideoKind;
   }[];
 }
 
 export interface ChannelEpisodeMasterResult {
-  schemaVersion: 1;
+  schemaVersion: 2;
   channelUrl: string;
   channelId: string;
   fetchedAt: string;
@@ -111,10 +129,12 @@ export interface ChannelEpisodeRecord {
   publishedText?: string;
   viewCountText?: string;
   publishedAt?: string;
-  publishDate?: string;
-  uploadDate?: string;
-  streamStartAt?: string;
-  streamEndAt?: string;
+  scheduledStartAt?: string;
+  actualStartAt?: string;
+  actualEndAt?: string;
+  videoDateAt?: string;
+  videoDateKind?: VideoDateKind;
+  videoKind: VideoKind;
   tabs: ChannelVideoTab[];
   tabPositions: Partial<Record<ChannelVideoTab, number>>;
   transcript: ChannelEpisodeTranscriptState;
@@ -136,6 +156,18 @@ export interface BuildChannelEpisodeMasterOptions {
   completeness?: ChannelInventoryCompleteness;
   notes?: string[];
   transcriptStates?: ReadonlyMap<string, ChannelEpisodeTranscriptState>;
+  storedTranscripts?: ReadonlyMap<string, StoredTranscriptEpisodeRecord>;
+  metadataRecords?: ReadonlyMap<string, VideoMetadataRecord>;
+  transcriptsManifestPath?: string;
+  videoMetadataPath?: string;
+}
+
+export interface StoredTranscriptEpisodeRecord {
+  fileStem: string;
+  txtPath: string;
+  segmentCount?: number;
+  selectedLanguage?: string;
+  fetchedAt?: string;
 }
 
 export interface RateLimitedFetchOptions {
@@ -343,7 +375,18 @@ export async function writeChannelEpisodeMasterOutput(
   result: ChannelVideoLinksResult,
   options: BuildChannelEpisodeMasterOptions = {},
 ): Promise<void> {
-  await writeJsonFile(path, buildChannelEpisodeMaster(result, options));
+  const storedTranscripts = options.storedTranscripts ??
+    await readStoredTranscriptEpisodeRecords(options.transcriptsManifestPath ?? defaultTranscriptManifestInput);
+  const metadataStore = options.metadataRecords === undefined
+    ? await readVideoMetadataStore(options.videoMetadataPath ?? defaultVideoMetadataOutput)
+    : undefined;
+  const metadataRecords = options.metadataRecords ??
+    new Map(metadataStore?.videos.map((record) => [record.videoId, record]) ?? []);
+  await writeJsonFile(path, buildChannelEpisodeMaster(result, {
+    ...options,
+    storedTranscripts,
+    metadataRecords,
+  }));
 }
 
 export function buildChannelEpisodeMaster(
@@ -356,7 +399,7 @@ export function buildChannelEpisodeMaster(
   }
 
   return {
-    schemaVersion: 1,
+    schemaVersion: 2,
     channelUrl: result.channelUrl,
     channelId: result.channelId,
     fetchedAt: result.fetchedAt,
@@ -369,7 +412,7 @@ export function buildChannelEpisodeMaster(
     storage: {
       transcriptsManifest: "src/transcripts/manifest.json",
     },
-    episodes: result.links.map((link, index) => channelEpisodeRecord(link, index + 1, options.transcriptStates)),
+    episodes: result.links.map((link, index) => channelEpisodeRecord(link, index + 1, options)),
   };
 }
 
@@ -400,9 +443,9 @@ export function splitChannelVideoLinksResult(result: ChannelVideoLinksResult): {
         (link) =>
           link.publishDate !== undefined ||
           link.publishedAt !== undefined ||
-          link.uploadDate !== undefined ||
-          link.streamStartAt !== undefined ||
-          link.streamEndAt !== undefined,
+          link.scheduledStartAt !== undefined ||
+          link.actualStartAt !== undefined ||
+          link.actualEndAt !== undefined,
       ),
       videos: result.links.map((link) => videoMetadataRecord(link)),
     },
@@ -435,21 +478,33 @@ export function mergeChannelVideoLinksResults(results: ChannelVideoLinksResult[]
 function channelEpisodeRecord(
   link: ChannelVideoLink,
   channelOrder: number,
-  transcriptStates: ReadonlyMap<string, ChannelEpisodeTranscriptState> | undefined,
+  options: BuildChannelEpisodeMasterOptions,
 ): ChannelEpisodeRecord {
+  const metadata = options.metadataRecords?.get(link.videoId);
+  const state = resolveVideoState(metadata);
+  const stored = options.storedTranscripts?.get(link.videoId);
+  const title = metadata?.snippet?.title ?? link.title;
+  const normalizedDate = state.state === "ready" ? state.videoDateAt : undefined;
+  const fallbackDate = link.videoDateAt ?? link.actualStartAt ?? link.streamStartAt ?? link.publishedAt;
+  const videoKind = metadata === undefined
+    ? link.videoKind ?? (link.tabs.includes("streams") ? "stream" : "upload")
+    : state.videoKind;
   const record: ChannelEpisodeRecord = {
     videoId: link.videoId,
-    fileStem: videoFileStem(link.videoId, link.title, link.streamStartAt ?? link.publishedAt),
+    fileStem: stored?.fileStem ?? videoFileStem(link.videoId, title, normalizedDate ?? fallbackDate),
     url: link.url,
     channelOrder,
     tabs: link.tabs,
     tabPositions: link.tabPositions,
-    transcript: transcriptStates?.get(link.videoId) ?? { status: "not_checked" },
+    videoKind,
+    transcript: stored === undefined
+      ? options.transcriptStates?.get(link.videoId) ?? { status: "not_checked" }
+      : storedTranscriptState(stored),
   };
 
-  if (link.title !== undefined) {
-    record.title = link.title;
-    const slug = slugifyVideoTitle(link.title);
+  if (title !== undefined) {
+    record.title = title;
+    const slug = slugifyVideoTitle(title);
     if (slug !== undefined) {
       record.slug = slug;
     }
@@ -463,22 +518,110 @@ function channelEpisodeRecord(
   if (link.viewCountText !== undefined) {
     record.viewCountText = link.viewCountText;
   }
-  if (link.publishedAt !== undefined) {
-    record.publishedAt = link.publishedAt;
-  }
-  if (link.publishDate !== undefined) {
-    record.publishDate = link.publishDate;
-  }
-  if (link.uploadDate !== undefined) {
-    record.uploadDate = link.uploadDate;
-  }
-  if (link.streamStartAt !== undefined) {
-    record.streamStartAt = link.streamStartAt;
-  }
-  if (link.streamEndAt !== undefined) {
-    record.streamEndAt = link.streamEndAt;
-  }
+  copyAuthoritativeEpisodeDates(record, metadata, link, state);
 
+  return record;
+}
+
+function storedTranscriptState(stored: StoredTranscriptEpisodeRecord): ChannelEpisodeTranscriptState {
+  const state: Extract<ChannelEpisodeTranscriptState, { status: "stored" }> = {
+    status: "stored",
+    txtPath: stored.txtPath,
+  };
+  if (stored.segmentCount !== undefined) {
+    state.segmentCount = stored.segmentCount;
+  }
+  if (stored.selectedLanguage !== undefined) {
+    state.selectedLanguage = stored.selectedLanguage;
+  }
+  if (stored.fetchedAt !== undefined) {
+    state.fetchedAt = stored.fetchedAt;
+  }
+  return state;
+}
+
+function copyAuthoritativeEpisodeDates(
+  record: ChannelEpisodeRecord,
+  metadata: VideoMetadataRecord | undefined,
+  link: ChannelVideoLink,
+  state: ReturnType<typeof resolveVideoState>,
+): void {
+  const publishedAt = metadata?.snippet?.publishedAt ?? link.publishedAt;
+  const scheduledStartAt = metadata?.liveStreamingDetails?.scheduledStartTime ?? link.scheduledStartAt;
+  const actualStartAt = metadata?.liveStreamingDetails?.actualStartTime ?? link.actualStartAt ?? link.streamStartAt;
+  const actualEndAt = metadata?.liveStreamingDetails?.actualEndTime ?? link.actualEndAt ?? link.streamEndAt;
+  if (publishedAt !== undefined) {
+    record.publishedAt = publishedAt;
+  }
+  if (scheduledStartAt !== undefined) {
+    record.scheduledStartAt = scheduledStartAt;
+  }
+  if (actualStartAt !== undefined) {
+    record.actualStartAt = actualStartAt;
+  }
+  if (actualEndAt !== undefined) {
+    record.actualEndAt = actualEndAt;
+  }
+  if (state.state === "ready") {
+    record.videoDateAt = state.videoDateAt;
+    record.videoDateKind = state.videoDateKind;
+  }
+}
+
+export async function readStoredTranscriptEpisodeRecords(
+  path = defaultTranscriptManifestInput,
+): Promise<ReadonlyMap<string, StoredTranscriptEpisodeRecord>> {
+  const value = JSON.parse(await readFile(path, "utf8")) as unknown;
+  const object = asRecord(value);
+  const transcripts = object?.transcripts;
+  if (!Array.isArray(transcripts)) {
+    throw new Error(`Transcript manifest must contain a transcripts array: ${path}`);
+  }
+  const records = new Map<string, StoredTranscriptEpisodeRecord>();
+  for (const value of transcripts) {
+    const transcript = asRecord(value);
+    const paths = asRecord(transcript?.paths);
+    if (transcript === undefined || paths === undefined) {
+      continue;
+    }
+    const videoId = readString(transcript, "videoId");
+    const fileStem = readString(transcript, "fileStem");
+    const txtPath = readString(paths, "txt");
+    if (videoId === undefined || fileStem === undefined || txtPath === undefined) {
+      continue;
+    }
+    const record: StoredTranscriptEpisodeRecord = { fileStem, txtPath };
+    const segmentCount = transcript.segmentCount;
+    const selectedLanguage = readString(transcript, "selectedLanguage");
+    const fetchedAt = readString(transcript, "fetchedAt");
+    if (typeof segmentCount === "number" && Number.isInteger(segmentCount)) {
+      record.segmentCount = segmentCount;
+    }
+    if (selectedLanguage !== undefined) {
+      record.selectedLanguage = selectedLanguage;
+    }
+    if (fetchedAt !== undefined) {
+      record.fetchedAt = fetchedAt;
+    }
+    records.set(videoId, record);
+  }
+  return records;
+}
+
+function videoToResolverRecord(videoId: string, video: youtube_v3.Schema$Video): VideoMetadataRecord {
+  const record: VideoMetadataRecord = { videoId, fetchedAt: new Date(0).toISOString() };
+  if (video.snippet !== undefined && video.snippet !== null) {
+    record.snippet = video.snippet;
+  }
+  if (video.contentDetails !== undefined && video.contentDetails !== null) {
+    record.contentDetails = video.contentDetails;
+  }
+  if (video.status !== undefined && video.status !== null) {
+    record.status = video.status;
+  }
+  if (video.liveStreamingDetails !== undefined && video.liveStreamingDetails !== null) {
+    record.liveStreamingDetails = video.liveStreamingDetails;
+  }
   return record;
 }
 
@@ -751,36 +894,44 @@ export function applyOfficialVideoMetadata(link: ChannelVideoLink, video: youtub
   const title = snippet?.title ?? undefined;
   const publishedAt = snippet?.publishedAt ?? undefined;
   const viewCount = statistics?.viewCount ?? undefined;
-  const streamStartTime = officialVideoStreamStartTime(video);
+  const scheduledStartTime = liveStreamingDetails?.scheduledStartTime ?? undefined;
+  const actualStartTime = liveStreamingDetails?.actualStartTime ?? undefined;
   const actualEndTime = liveStreamingDetails?.actualEndTime ?? undefined;
 
   if (title !== undefined) {
     link.title = title;
   }
   if (publishedAt !== undefined) {
-    link.uploadDate = publishedAt;
+    link.publishedAt = publishedAt;
   }
-  const presentationTimestamp = streamStartTime ?? publishedAt;
-  if (presentationTimestamp !== undefined) {
-    link.publishedAt = presentationTimestamp;
-    link.publishDate = presentationTimestamp.slice(0, 10);
-    link.publishedText = link.publishDate;
+  if (scheduledStartTime !== undefined) {
+    link.scheduledStartAt = scheduledStartTime;
   }
   if (viewCount !== undefined) {
     link.viewCountText = `${viewCount} views`;
   }
-  if (streamStartTime !== undefined) {
-    link.streamStartAt = streamStartTime;
+  if (actualStartTime !== undefined) {
+    link.actualStartAt = actualStartTime;
   }
   if (actualEndTime !== undefined) {
-    link.streamEndAt = actualEndTime;
+    link.actualEndAt = actualEndTime;
+  }
+  const state = resolveVideoState(videoToResolverRecord(link.videoId, video));
+  link.videoKind = state.videoKind;
+  if (state.state === "ready") {
+    link.videoDateAt = state.videoDateAt;
+    link.videoDateKind = state.videoDateKind;
+    link.publishDate = state.videoDateAt.slice(0, 10);
+    link.publishedText = link.publishDate;
   }
 }
 
 export function officialVideoStreamStartTime(video: youtube_v3.Schema$Video): string | undefined {
-  return video.liveStreamingDetails?.actualStartTime ??
-    video.liveStreamingDetails?.scheduledStartTime ??
-    undefined;
+  const videoId = video.id ?? "metadata-record";
+  const state = resolveVideoState(videoToResolverRecord(videoId, video));
+  return state.state === "ready" && state.videoKind === "stream" && state.videoDateKind !== "published"
+    ? state.videoDateAt
+    : undefined;
 }
 
 function videoMetadataRecord(link: ChannelVideoLink): ChannelVideoMetadataResult["videos"][number] {
@@ -806,14 +957,23 @@ function videoMetadataRecord(link: ChannelVideoLink): ChannelVideoMetadataResult
   if (link.publishDate !== undefined) {
     record.publishDate = link.publishDate;
   }
-  if (link.uploadDate !== undefined) {
-    record.uploadDate = link.uploadDate;
+  if (link.scheduledStartAt !== undefined) {
+    record.scheduledStartAt = link.scheduledStartAt;
   }
-  if (link.streamStartAt !== undefined) {
-    record.streamStartAt = link.streamStartAt;
+  if (link.actualStartAt !== undefined) {
+    record.actualStartAt = link.actualStartAt;
   }
-  if (link.streamEndAt !== undefined) {
-    record.streamEndAt = link.streamEndAt;
+  if (link.actualEndAt !== undefined) {
+    record.actualEndAt = link.actualEndAt;
+  }
+  if (link.videoDateAt !== undefined) {
+    record.videoDateAt = link.videoDateAt;
+  }
+  if (link.videoDateKind !== undefined) {
+    record.videoDateKind = link.videoDateKind;
+  }
+  if (link.videoKind !== undefined) {
+    record.videoKind = link.videoKind;
   }
 
   return record;

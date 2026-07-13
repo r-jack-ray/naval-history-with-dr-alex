@@ -39,14 +39,15 @@ export function assertSafeVideoId(videoId: string): void {
   }
 }
 
-export function archiveTimestampPrefix(value: string): string | undefined {
+export function archiveTimestampPrefix(value: string): string {
   const timestamp = value.trim();
-  const match = /^(\d{4}-\d{2}-\d{2})[T ](\d{2}):(\d{2}):(\d{2})(?:\.\d+)?(?:\s*(Z|[+-]\d{2}:?\d{2}))?$/u.exec(timestamp);
-
-  if (!match) {
-    return undefined;
+  if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.0+)?(?:Z|[+-]\d{2}:?\d{2})$/u.test(timestamp)) {
+    throw new Error(`Invalid timezone-bearing whole-second video timestamp: ${value}`);
   }
-
-  const [, date, hour, minute, second] = match;
-  return `${date}_T${hour}-${minute}-${second}`;
+  const milliseconds = Date.parse(timestamp);
+  if (!Number.isFinite(milliseconds)) {
+    throw new Error(`Invalid video timestamp: ${value}`);
+  }
+  const canonical = new Date(milliseconds).toISOString();
+  return canonical.slice(0, 19).replace("T", "_T").replaceAll(":", "-");
 }

@@ -64,7 +64,7 @@ const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${c
               <li>
                 <a href={`${baseUrl}videos/${video.slug}/`}>
                   <strong>{video.title}</strong>
-                  <span>{video.publishedLabel} · {timeNoteCountLabel(video.segmentSlugs.length)}</span>
+                  <span><time datetime={video.videoDateAt}>{video.videoDateLabel}</time> · {timeNoteCountLabel(video.segmentSlugs.length)}</span>
                 </a>
               </li>
             ))

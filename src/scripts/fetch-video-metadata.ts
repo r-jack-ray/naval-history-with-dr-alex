@@ -33,6 +33,9 @@ async function main(): Promise<void> {
   if (options.additionalVideoIds !== undefined) {
     fetchOptions.additionalVideoIds = options.additionalVideoIds;
   }
+  if (options.refreshVideoIds !== undefined) {
+    fetchOptions.refreshVideoIds = options.refreshVideoIds;
+  }
   if (options.force !== undefined) {
     fetchOptions.force = options.force;
   }
@@ -83,6 +86,10 @@ function parseArgs(args: string[]): CliOptions {
       case "--video-id":
         options.additionalVideoIds ??= [];
         options.additionalVideoIds.push(readValue(args, ++index, arg));
+        break;
+      case "--refresh-video-id":
+        options.refreshVideoIds ??= [];
+        options.refreshVideoIds.push(readValue(args, ++index, arg));
         break;
       case "--force":
         options.force = true;
@@ -138,6 +145,7 @@ Options:
   --batch-size <count>    IDs per videos.list call, 1-50. Defaults to 50.
   --limit <count>         Fetch only this many missing IDs.
   --video-id <id>         Include a video absent from the episode inventory. Repeatable.
+  --refresh-video-id <id> Refetch one stored ID without globally forcing every record. Repeatable.
   --force                 Refetch IDs already present in the output file.
   --quiet                 Suppress progress logs.
   --help                  Show this help.

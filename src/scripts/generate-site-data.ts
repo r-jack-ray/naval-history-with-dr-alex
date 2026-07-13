@@ -2,6 +2,7 @@ import {
   defaultSiteArchiveOutputDir,
   defaultSiteEpisodesInput,
   defaultSiteMetadataInput,
+  defaultSiteTranscriptsInput,
   defaultSiteSegmentsInput,
   generateSiteArchiveData,
 } from "../site/archive-data.js";
@@ -25,6 +26,7 @@ function parseArgs(args: string[]) {
   const options = {
     episodesInput: defaultSiteEpisodesInput,
     metadataInput: defaultSiteMetadataInput,
+    transcriptsInput: defaultSiteTranscriptsInput,
     segmentsInput: defaultSiteSegmentsInput,
     outputDir: defaultSiteArchiveOutputDir,
   };
@@ -37,6 +39,9 @@ function parseArgs(args: string[]) {
         break;
       case "--metadata-input":
         options.metadataInput = readValue(args, ++index, arg);
+        break;
+      case "--transcripts-input":
+        options.transcriptsInput = readValue(args, ++index, arg);
         break;
       case "--segments-input":
         options.segmentsInput = readValue(args, ++index, arg);
@@ -71,6 +76,7 @@ function printUsage(): void {
 Options:
   --episodes-input <path>  Channel episode master. Defaults to ${defaultSiteEpisodesInput}.
   --metadata-input <path>  YouTube metadata store. Defaults to ${defaultSiteMetadataInput}.
+  --transcripts-input <path> Transcript manifest. Defaults to ${defaultSiteTranscriptsInput}.
   --segments-input <path>  Per-video curated content directory. Defaults to ${defaultSiteSegmentsInput}.
   --output-dir <path>      Astro-facing archive directory. Defaults to ${defaultSiteArchiveOutputDir}.
 `);

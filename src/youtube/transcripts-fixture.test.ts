@@ -33,7 +33,7 @@ test("parses an external structured transcript payload", () => {
   assert.equal(transcriptToTxt(transcript), "[0:00] Hello\n");
 });
 
-test("stores transcript TXT and a version 2 manifest under a local root", async () => {
+test("stores transcript TXT and a version 3 manifest under a local root", async () => {
   const dir = await mkdtemp(join(tmpdir(), "naval-transcript-store-"));
 
   try {
@@ -41,13 +41,13 @@ test("stores transcript TXT and a version 2 manifest under a local root", async 
     assert.equal(await readFile(paths.txtOutput, "utf8"), "[0:00] Hello\n");
 
     const manifest = JSON.parse(await readFile(paths.manifestOutput, "utf8"));
-    assert.equal(manifest.schemaVersion, 2);
+    assert.equal(manifest.schemaVersion, 3);
     assert.deepEqual(manifest.storage, { txt: "txt/{fileStem}.txt" });
     assert.equal(manifest.transcripts[0].videoId, "abc123");
-    assert.equal(manifest.transcripts[0].fileStem, "2026-06-14_T05-29-19_ships-and-strategy-a-test_abc123");
+    assert.equal(manifest.transcripts[0].fileStem, "2026-06-14_T10-29-19_ships-and-strategy-a-test_abc123");
     assert.equal(manifest.transcripts[0].videoTitle, "Ships & Strategy: A Test!");
     assert.deepEqual(manifest.transcripts[0].paths, {
-      txt: "txt/2026-06-14_T05-29-19_ships-and-strategy-a-test_abc123.txt",
+      txt: "txt/2026-06-14_T10-29-19_ships-and-strategy-a-test_abc123.txt",
     });
 
     const stored = await findStoredTranscriptRecord({ videoId: "abc123", root: dir, language: "en" });
@@ -79,7 +79,8 @@ test("reuses the stored fileStem when an existing transcript is refetched", asyn
       {
         ...sampleTranscript(),
         videoTitle: "Renamed Video",
-        videoPublishedAt: "2026-07-11T00:00:00Z",
+        videoDateAt: "2026-07-11T00:00:00Z",
+        videoDateKind: "published",
         segments: [{ ...sampleTranscript().segments[0]!, text: "Updated" }],
       },
       dir,
@@ -88,7 +89,7 @@ test("reuses the stored fileStem when an existing transcript is refetched", asyn
     assert.equal(secondPaths.txtOutput, firstPaths.txtOutput);
     assert.equal(await readFile(secondPaths.txtOutput, "utf8"), "[0:00] Updated\n");
     const manifest = JSON.parse(await readFile(secondPaths.manifestOutput, "utf8"));
-    assert.equal(manifest.transcripts[0].fileStem, "2026-06-14_T05-29-19_ships-and-strategy-a-test_abc123");
+    assert.equal(manifest.transcripts[0].fileStem, "2026-06-14_T10-29-19_ships-and-strategy-a-test_abc123");
   } finally {
     await rm(dir, { recursive: true, force: true });
   }
@@ -133,7 +134,8 @@ function sampleTranscript(): VideoTranscript {
   return {
     videoId: "abc123",
     videoTitle: "Ships & Strategy: A Test!",
-    videoPublishedAt: "2026-06-14T05:29:19-05:00",
+    videoDateAt: "2026-06-14T05:29:19-05:00",
+    videoDateKind: "published",
     source: "youtube-transcript-plus",
     fetchedAt: "2026-07-07T00:00:00.000Z",
     selectedLanguage: "en",

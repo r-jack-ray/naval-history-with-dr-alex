@@ -13,6 +13,7 @@ import type {
 import { formatTimestamp } from "../index.js";
 import { videoFileStem } from "../naming.js";
 import { createRateLimitedFetch, fetchInitWithRequestLabel } from "./channel-video-links.js";
+import { canonicalVideoTimestamp, type VideoDateKind } from "./video-metadata.js";
 
 type FetchHeaders = NonNullable<NonNullable<Parameters<typeof fetch>[1]>["headers"]>;
 type FetchResponseHeaders = Awaited<ReturnType<typeof fetch>>["headers"];
@@ -34,7 +35,8 @@ export interface TranscriptSegment {
 export interface VideoTranscript {
   videoId: string;
   videoTitle?: string;
-  videoPublishedAt?: string;
+  videoDateAt?: string;
+  videoDateKind?: VideoDateKind;
   source: "youtube-transcript-plus" | "watch-page-captions";
   fetchedAt: string;
   selectedLanguage?: string;
@@ -49,7 +51,7 @@ export interface TranscriptStoragePaths {
 }
 
 export interface TranscriptManifest {
-  schemaVersion: 2;
+  schemaVersion: 3;
   updatedAt: string;
   storage: {
     txt: "txt/{fileStem}.txt";
@@ -60,7 +62,8 @@ export interface TranscriptManifest {
 export interface TranscriptManifestRecord {
   videoId: string;
   videoTitle?: string;
-  videoPublishedAt?: string;
+  videoDateAt?: string;
+  videoDateKind?: VideoDateKind;
   fileStem: string;
   source: VideoTranscript["source"];
   fetchedAt: string;
@@ -343,7 +346,7 @@ export async function writeTranscriptStorage(
   const manifest = await readTranscriptManifest(manifestOutput);
   const existingRecord = manifest.transcripts.find((record) => record.videoId === transcript.videoId);
   const stem = existingRecord?.fileStem ??
-    videoFileStem(transcript.videoId, transcript.videoTitle, transcript.videoPublishedAt);
+    videoFileStem(transcript.videoId, transcript.videoTitle, transcript.videoDateAt);
   const paths = transcriptStoragePathsFromStem(root, stem);
 
   await writeTranscriptOutputs(transcript, {
@@ -502,7 +505,7 @@ function normalizeTranscriptManifest(value: unknown): TranscriptManifest {
 
 function emptyTranscriptManifest(): TranscriptManifest {
   return {
-    schemaVersion: 2,
+    schemaVersion: 3,
     updatedAt: new Date(0).toISOString(),
     storage: {
       txt: "txt/{fileStem}.txt",
@@ -532,8 +535,15 @@ function transcriptManifestRecord(transcript: VideoTranscript, stem: string): Tr
   if (transcript.videoTitle !== undefined) {
     record.videoTitle = transcript.videoTitle;
   }
-  if (transcript.videoPublishedAt !== undefined) {
-    record.videoPublishedAt = transcript.videoPublishedAt;
+  if (transcript.videoDateAt !== undefined) {
+    const canonical = canonicalVideoTimestamp(transcript.videoDateAt);
+    if (canonical === null || canonical === undefined) {
+      throw new Error(`Transcript ${transcript.videoId} has an invalid videoDateAt timestamp.`);
+    }
+    record.videoDateAt = canonical;
+  }
+  if (transcript.videoDateKind !== undefined) {
+    record.videoDateKind = transcript.videoDateKind;
   }
   if (first !== undefined) {
     record.firstStartSeconds = first.startSeconds;
@@ -550,7 +560,10 @@ function transcriptManifestRecordFromJson(value: unknown): TranscriptManifestRec
   const paths = asRecord(object?.paths);
   const videoId = object ? readString(object, "videoId") : undefined;
   const videoTitle = object ? readString(object, "videoTitle") : undefined;
-  const videoPublishedAt = object ? readString(object, "videoPublishedAt") : undefined;
+  const videoDateAt = object
+    ? readString(object, "videoDateAt") ?? readString(object, "videoPublishedAt")
+    : undefined;
+  const videoDateKind = object ? readVideoDateKind(object.videoDateKind) : undefined;
   const source = object ? readTranscriptSource(object) : undefined;
   const fetchedAt = object ? readString(object, "fetchedAt") : undefined;
   const segmentCount = integerValue(object?.segmentCount);
@@ -563,7 +576,7 @@ function transcriptManifestRecordFromJson(value: unknown): TranscriptManifestRec
 
   const record: TranscriptManifestRecord = {
     videoId,
-    fileStem: fileStem ?? videoFileStem(videoId, videoTitle, videoPublishedAt),
+    fileStem: fileStem ?? videoFileStem(videoId, videoTitle, videoDateAt),
     source,
     fetchedAt,
     availableLanguages: readStringArray(object?.availableLanguages),
@@ -580,8 +593,11 @@ function transcriptManifestRecordFromJson(value: unknown): TranscriptManifestRec
   if (videoTitle !== undefined) {
     record.videoTitle = videoTitle;
   }
-  if (videoPublishedAt !== undefined) {
-    record.videoPublishedAt = videoPublishedAt;
+  if (videoDateAt !== undefined) {
+    record.videoDateAt = videoDateAt;
+  }
+  if (videoDateKind !== undefined) {
+    record.videoDateKind = videoDateKind;
   }
   if (firstStartSeconds !== undefined) {
     record.firstStartSeconds = firstStartSeconds;
@@ -817,6 +833,12 @@ function readTranscriptSource(object: Record<string, unknown>): VideoTranscript[
   return source === "youtube-transcript-plus" ? "youtube-transcript-plus" : "watch-page-captions";
 }
 
+function readVideoDateKind(value: unknown): VideoDateKind | undefined {
+  return value === "actual_start" || value === "scheduled_start" || value === "published"
+    ? value
+    : undefined;
+}
+
 function extractInitialPlayerResponse(html: string): unknown | undefined {
   const marker = "ytInitialPlayerResponse";
   const markerIndex = html.indexOf(marker);
@@ -891,9 +913,13 @@ export function parseVideoTranscriptJson(value: unknown, sourceName = "transcrip
   if (videoTitle !== undefined) {
     transcript.videoTitle = videoTitle;
   }
-  const videoPublishedAt = readString(object, "videoPublishedAt");
-  if (videoPublishedAt !== undefined) {
-    transcript.videoPublishedAt = videoPublishedAt;
+  const videoDateAt = readString(object, "videoDateAt") ?? readString(object, "videoPublishedAt");
+  if (videoDateAt !== undefined) {
+    transcript.videoDateAt = videoDateAt;
+  }
+  const videoDateKind = readVideoDateKind(object.videoDateKind);
+  if (videoDateKind !== undefined) {
+    transcript.videoDateKind = videoDateKind;
   }
 
   const selectedLanguage = readString(object, "selectedLanguage");

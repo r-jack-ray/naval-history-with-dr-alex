@@ -3,8 +3,11 @@ import test from "node:test";
 
 import {
   buildVideoMetadataStore,
+  canonicalVideoTimestamp,
   mergeVideoIds,
+  parseYoutubeDurationSeconds,
   readVideoIdsFromEpisodeMaster,
+  resolveVideoState,
   resolveAdditionalVideoIds,
   videoNamingMetadata,
   type VideoMetadataRecord,
@@ -79,22 +82,28 @@ test("builds local naming metadata from YouTube video metadata", () => {
     },
     liveStreamingDetails: {
       actualStartTime: "2026-07-05T18:33:54Z",
+      actualEndTime: "2026-07-05T20:33:54Z",
     },
+    status: { uploadStatus: "processed" },
+    contentDetails: { duration: "PT2H" },
   };
 
   assert.deepEqual(videoNamingMetadata(record), {
     title: "Modern Navy Questions",
     timestamp: "2026-07-05T18:33:54Z",
+    dateKind: "actual_start",
+    videoKind: "stream",
   });
 });
 
-test("uses a scheduled livestream start for naming before the stream begins", () => {
+test("does not produce naming metadata before a scheduled livestream completes", () => {
   const record: VideoMetadataRecord = {
     videoId: "abc123",
     fetchedAt: "2026-07-08T00:00:00.000Z",
     snippet: {
       title: "Upcoming Naval History Live",
       publishedAt: "2026-06-14T16:44:14Z",
+      liveBroadcastContent: "upcoming",
     },
     liveStreamingDetails: {
       scheduledStartTime: "2026-07-12T18:30:00Z",
@@ -103,6 +112,89 @@ test("uses a scheduled livestream start for naming before the stream begins", ()
 
   assert.deepEqual(videoNamingMetadata(record), {
     title: "Upcoming Naval History Live",
-    timestamp: "2026-07-12T18:30:00Z",
   });
+  assert.deepEqual(resolveVideoState(record), {
+    state: "deferred",
+    videoKind: "stream",
+    reason: "upcoming",
+    diagnostic: "The video is scheduled but has not started.",
+  });
+});
+
+test("requires processing, positive duration, and explicit stream completion", () => {
+  const common: VideoMetadataRecord = {
+    videoId: "abc123",
+    fetchedAt: "2026-07-08T00:00:00.000Z",
+    snippet: {
+      publishedAt: "2026-07-05T23:25:48Z",
+      liveBroadcastContent: "none",
+    },
+    contentDetails: { duration: "PT2H" },
+    status: { uploadStatus: "processed" },
+    liveStreamingDetails: {
+      actualStartTime: "2026-07-05T18:33:54Z",
+      scheduledStartTime: "2026-07-05T18:30:00Z",
+    },
+  };
+
+  assert.deepEqual(resolveVideoState(common), {
+    state: "deferred",
+    videoKind: "stream",
+    reason: "live_in_progress",
+    diagnostic: "Livestream metadata does not yet prove completion with actualEndTime.",
+  });
+  assert.equal(resolveVideoState({
+    ...common,
+    status: { uploadStatus: "uploaded" },
+    contentDetails: { duration: "P0D" },
+  }).state, "deferred");
+});
+
+test("uses scheduled start only after independent stream completion proof", () => {
+  const state = resolveVideoState({
+    videoId: "abc123",
+    fetchedAt: "2026-07-08T00:00:00.000Z",
+    snippet: {
+      publishedAt: "2026-07-01T00:00:00Z",
+      liveBroadcastContent: "none",
+    },
+    contentDetails: { duration: "PT1H30M" },
+    status: { uploadStatus: "processed" },
+    liveStreamingDetails: {
+      scheduledStartTime: "2026-07-05T18:30:00-05:00",
+      actualEndTime: "2026-07-06T01:00:00Z",
+    },
+  });
+
+  assert.deepEqual(state, {
+    state: "ready",
+    videoKind: "stream",
+    videoDateAt: "2026-07-05T23:30:00Z",
+    videoDateKind: "scheduled_start",
+    durationSeconds: 5_400,
+  });
+});
+
+test("ordinary processed uploads use publication time", () => {
+  assert.deepEqual(resolveVideoState({
+    videoId: "abc123",
+    fetchedAt: "2026-07-08T00:00:00.000Z",
+    snippet: { publishedAt: "2026-07-05T18:30:00-05:00", liveBroadcastContent: "none" },
+    contentDetails: { duration: "PT12M34S" },
+    status: { uploadStatus: "processed" },
+  }), {
+    state: "ready",
+    videoKind: "upload",
+    videoDateAt: "2026-07-05T23:30:00Z",
+    videoDateKind: "published",
+    durationSeconds: 754,
+  });
+});
+
+test("normalizes exact UTC timestamps and parses positive YouTube durations", () => {
+  assert.equal(canonicalVideoTimestamp("2026-07-05T18:30:00-05:00"), "2026-07-05T23:30:00Z");
+  assert.equal(canonicalVideoTimestamp("2026-07-05 18:30:00"), null);
+  assert.equal(parseYoutubeDurationSeconds("P1DT2H3M4S"), 93_784);
+  assert.equal(parseYoutubeDurationSeconds("P0D"), 0);
+  assert.equal(parseYoutubeDurationSeconds("n/a"), undefined);
 });

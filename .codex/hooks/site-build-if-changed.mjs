@@ -32,6 +32,7 @@ const archiveInputPaths = [
   "tsconfig.json",
   "src/channel/episodes.json",
   "src/channel/video-metadata.json",
+  "src/transcripts/manifest.json",
   "src/derived/video-segments",
 ];
 const siteInputPaths = [

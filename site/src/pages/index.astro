@@ -1,18 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { archiveSegments, archiveTopics, archiveVideos } from "../data/archive";
+import { archiveSegments, archiveTopics, archiveVideos, compareVideosByDateDescending } from "../data/archive";
 
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 const latestVideo = [...archiveVideos]
   .filter((video) => video.segmentSlugs.length > 0)
-  .sort((left, right) => {
-    const leftTimestamp = left.publishedAt == null ? Number.NEGATIVE_INFINITY : Date.parse(left.publishedAt);
-    const rightTimestamp = right.publishedAt == null ? Number.NEGATIVE_INFINITY : Date.parse(right.publishedAt);
-
-    return rightTimestamp - leftTimestamp || left.title.localeCompare(right.title);
-  })[0];
+  .sort(compareVideosByDateDescending)[0];
 const latestVideoUrl = `${baseUrl}videos/${latestVideo.slug}/`;
 const featuredSegments = archiveSegments.slice(0, 4);
 const activeTopics = [...archiveTopics]
