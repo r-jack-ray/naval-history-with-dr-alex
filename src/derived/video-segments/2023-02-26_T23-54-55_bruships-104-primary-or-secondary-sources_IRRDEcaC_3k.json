@@ -9,6 +9,7 @@
     "frigates",
     "force-structure",
     "naval-personnel",
+    "naval-administration",
     "naval-aviation",
     "fleet-carriers",
     "anti-submarine-warfare",
@@ -17,6 +18,7 @@
     "pre-world-war-i",
     "naval-intelligence",
     "naval-logistics",
+    "naval-propulsion",
     "carrier-aircraft"
   ],
   "segments": [
@@ -130,6 +132,36 @@
       ]
     },
     {
+      "id": "shipyard-capacity-needs-administrative-memory",
+      "videoId": "IRRDEcaC_3k",
+      "slug": "shipyard-capacity-needs-administrative-memory",
+      "title": "Shipyards need administrative memory to regenerate fleets",
+      "kind": "notable_point",
+      "start": "1:57:08",
+      "end": "2:00:29",
+      "topics": [
+        "naval-administration",
+        "shipbuilding",
+        "industrial-mobilization",
+        "force-structure"
+      ],
+      "summary": "A fleet-mobilization discussion explains why shipyards and industrial plant cannot expand naval power without experienced administration coordinating the work.",
+      "body": "Dr. Clarke uses nineteenth-century British naval expansion to separate physical capacity from organizational capacity. Yards and infrastructure mattered, but they could not rapidly produce an effective fleet unless an experienced bureaucracy knew how to coordinate people, materials, schedules, and decisions. His warehouse-office analogy shows how much practical knowledge can reside in long-serving administrators whose formal job descriptions understate their role. Losing those people without trained successors can leave an institution unable to use the assets it still owns.",
+      "sourcePath": "src/transcripts/txt/2023-02-26_T23-54-55_bruships-104-primary-or-secondary-sources_IRRDEcaC_3k.txt",
+      "evidence": [
+        {
+          "start": "1:57:08",
+          "end": "1:58:10",
+          "note": "The passage uses nineteenth-century British fleet expansion to argue that yards and infrastructure do not work without the bureaucracy needed to organize them."
+        },
+        {
+          "start": "1:59:11",
+          "end": "2:00:29",
+          "note": "Dr. Clarke compares national mobilization with a warehouse whose experienced administrative coordinator holds practical knowledge, then explains the loss when that person leaves without training a successor."
+        }
+      ]
+    },
+    {
       "id": "fw200-condor-audacity-martlet-lessons",
       "videoId": "IRRDEcaC_3k",
       "slug": "fw200-condor-audacity-martlet-lessons",
@@ -193,6 +225,33 @@
           "start": "26:49",
           "end": "27:27",
           "note": "The answer says the doctrine was not always enforceable, notes periods of Brazilian superiority, and connects Brazilian naval strength to Roosevelt's argument for developing the U.S. fleet."
+        }
+      ]
+    },
+    {
+      "id": "renown-35-knot-power-requirement",
+      "videoId": "IRRDEcaC_3k",
+      "slug": "renown-35-knot-power-requirement",
+      "title": "Power needed for a 35-knot Renown design",
+      "kind": "qa",
+      "start": "29:26",
+      "end": "30:29",
+      "topics": [
+        "battlecruisers",
+        "renown-class",
+        "naval-propulsion",
+        "ship-design"
+      ],
+      "question": "How much shaft horsepower would a lighter Renown-type design need to reach 35 knots?",
+      "answerShort": "For the Ultimate Admiral: Dreadnoughts design under discussion, Dr. Clarke estimates at least 160,000 shaft horsepower, while stressing that the answer depends on the ship's weight.",
+      "summary": "A battlecruiser-design answer gives a weight-dependent power estimate for pushing a Renown-type hull to 35 knots.",
+      "body": "The estimate is tied to the hypothetical design being discussed rather than offered as a universal figure for the historical ship. Dr. Clarke first asks which Renown design is meant and how light it has become, then places the requirement at no less than roughly 160,000 shaft horsepower.",
+      "sourcePath": "src/transcripts/txt/2023-02-26_T23-54-55_bruships-104-primary-or-secondary-sources_IRRDEcaC_3k.txt",
+      "evidence": [
+        {
+          "start": "29:26",
+          "end": "30:29",
+          "note": "The audience asks about the power needed for a shallow-draft Renown design to make 35 knots, and Dr. Clarke identifies the Ultimate Admiral design, qualifies the estimate by weight, and answers at least 160,000 shaft horsepower."
         }
       ]
     },
@@ -285,6 +344,33 @@
           "start": "55:05",
           "end": "55:37",
           "note": "The answer names increased manpower, changed ship basing, and an easier funding case as the principal effects."
+        }
+      ]
+    },
+    {
+      "id": "combined-steam-gas-propulsion-purpose",
+      "videoId": "IRRDEcaC_3k",
+      "slug": "combined-steam-gas-propulsion-purpose",
+      "title": "Why combine steam and gas propulsion",
+      "kind": "qa",
+      "start": "57:57",
+      "end": "58:07",
+      "topics": [
+        "naval-propulsion",
+        "gas-turbines",
+        "steam-turbines",
+        "ship-design"
+      ],
+      "question": "What was the point of combined steam-and-gas propulsion?",
+      "answerShort": "The concept sought the advantages of both systems, a familiar naval response when one power plant cannot satisfy every requirement equally well.",
+      "summary": "A compact propulsion answer explains the combined plant as an attempt to draw useful qualities from both steam and gas systems.",
+      "body": "Dr. Clarke describes the arrangement as an effort to obtain the best of both worlds. He places it within a broader naval tendency to combine power sources when a single system does not cover the whole operating requirement.",
+      "sourcePath": "src/transcripts/txt/2023-02-26_T23-54-55_bruships-104-primary-or-secondary-sources_IRRDEcaC_3k.txt",
+      "evidence": [
+        {
+          "start": "57:57",
+          "end": "58:07",
+          "note": "The question asks the purpose of combined steam and gas propulsion, and the answer calls it an attempt to get the best of both worlds, noting that such combinations are not unusual for navies."
         }
       ]
     },
@@ -823,16 +909,19 @@
       "title": "Why a Four Power coalition fails the resource test",
       "kind": "notable_point",
       "start": "4:04:00",
-      "end": "4:09:25",
+      "end": "4:12:50",
       "topics": [
         "second-world-war",
         "naval-logistics",
         "kriegsmarine",
         "soviet-navy",
-        "graf-zeppelin"
+        "graf-zeppelin",
+        "submarine-warfare",
+        "sea-lanes",
+        "suez-canal"
       ],
-      "summary": "A late synthesis tests a German-Soviet-Italian-Japanese coalition against trucks, fuel, industrial allocation, carrier handling, political hostility, and the routes toward India.",
-      "body": "The coalition's paper strength conceals competition for the same scarce transport and industrial resources. Dr. Clarke imagines the Kriegsmarine not only fighting the German army and Luftwaffe for funding but also surrendering guns and turrets to Soviet shipbuilding, while a Graf Zeppelin-derived carrier would still suffer from a slow aircraft-handling system. Mutual hostility and the absence of roads or railways across the approaches to India make the alliance an unstable collection of statistics rather than a coherent war-fighting system.",
+      "summary": "A late synthesis tests a German-Soviet-Italian-Japanese coalition against trucks, fuel, industrial allocation, carrier handling, political hostility, inland routes, and vulnerable sea lanes.",
+      "body": "The coalition's paper strength conceals competition for the same scarce transport and industrial resources. Dr. Clarke imagines the Kriegsmarine not only fighting the German army and Luftwaffe for funding but also surrendering guns and turrets to Soviet shipbuilding, while a Graf Zeppelin-derived carrier would still suffer from a slow aircraft-handling system. Mutual hostility and the absence of roads or railways across the approaches to India make the alliance an unstable collection of statistics rather than a coherent war-fighting system. Its maritime links are vulnerable too: American submarines based in Alaska could attack traffic between Russia and Japan, while an Italian defection could let Britain use Gibraltar and the Suez Canal to shorten its own supply route and obstruct German submarine access to the Mediterranean.",
       "sourcePath": "src/transcripts/txt/2023-02-26_T23-54-55_bruships-104-primary-or-secondary-sources_IRRDEcaC_3k.txt",
       "evidence": [
         {
@@ -849,6 +938,16 @@
           "start": "4:07:12",
           "end": "4:09:25",
           "note": "He emphasizes political hostility within the coalition and the lack of road and rail infrastructure on routes through Afghanistan or Iran toward India."
+        },
+        {
+          "start": "4:11:08",
+          "end": "4:11:22",
+          "note": "The discussion identifies American submarines based in Alaska as a threat to maritime transport between Russia and Japan."
+        },
+        {
+          "start": "4:12:07",
+          "end": "4:12:50",
+          "note": "Dr. Clarke argues that Britain might peel Italy away, use Gibraltar to restrict German submarine access, and move supplies through the Mediterranean and Suez Canal."
         }
       ]
     },
@@ -877,6 +976,34 @@
           "start": "4:15:23",
           "end": "4:16:20",
           "note": "The answer lists Aquila, Graf Zeppelin, a Soviet Graf Zeppelin-related design, and the uncertain Joffre class, then contrasts interwar and postwar French ship design."
+        }
+      ]
+    },
+    {
+      "id": "soviet-german-heavy-warship-comparison",
+      "videoId": "IRRDEcaC_3k",
+      "slug": "soviet-german-heavy-warship-comparison",
+      "title": "Soviet heavy-warship plans and German influence",
+      "kind": "qa",
+      "start": "4:18:11",
+      "end": "4:18:58",
+      "topics": [
+        "soviet-navy",
+        "kriegsmarine",
+        "battlecruisers",
+        "admiral-hipper-class",
+        "lutzow"
+      ],
+      "question": "Did the Soviet Union plan a warship type comparable to Germany's heavy Panzerschiffe?",
+      "answerShort": "Not directly. Dr. Clarke points instead to Soviet battlecruiser work involving 11-inch guns and to the acquisition of the incomplete Admiral Hipper-class cruiser Lützow from Germany.",
+      "summary": "A design-history answer distinguishes Soviet battlecruiser ambitions from a direct German-style Panzerschiff program while noting the transfer of Lützow.",
+      "body": "The comparison does not produce a simple Soviet equivalent to the German type. Dr. Clarke instead directs attention to Soviet interest in 11-inch-gunned battlecruisers and to practical German influence through the transfer of an unfinished Admiral Hipper-class cruiser. The answer separates a broad resemblance in heavy-gun ambitions from a one-for-one copy of the German concept.",
+      "sourcePath": "src/transcripts/txt/2023-02-26_T23-54-55_bruships-104-primary-or-secondary-sources_IRRDEcaC_3k.txt",
+      "evidence": [
+        {
+          "start": "4:18:11",
+          "end": "4:18:58",
+          "note": "The audience asks about a Soviet counterpart to a German heavy-warship type, and Dr. Clarke says not really, then cites 11-inch-gunned Soviet battlecruiser work and the transfer of Lützow."
         }
       ]
     },
