@@ -5,6 +5,9 @@ import { dirname, isAbsolute, join } from "node:path";
 import { segmentKinds, type SegmentKind } from "../index.js";
 import { writeTextAtomically } from "../pipeline/atomic-write.js";
 import {
+  parseSiteContentProcessingLog,
+} from "./site-content-processing-log.js";
+import {
   loadCuratedArchiveSeed,
   type CuratedArchiveSeed,
   type CuratedSegmentSeed,
@@ -116,6 +119,7 @@ export interface TranscriptManifest {
 
 export interface TranscriptManifestRecord {
   videoId: string;
+  fileStem?: string;
   videoTitle?: string;
   videoPublishedAt?: string;
   segmentCount?: number;
@@ -851,6 +855,7 @@ interface ProcessingLogAudit {
 
 function validateProcessingLog(
   input: {
+    manifest: TranscriptManifest;
     processingLogText?: string;
     processingLogPath?: string;
     rootDir: string;
@@ -858,96 +863,43 @@ function validateProcessingLog(
   },
   issues: SiteContentAuditIssue[],
 ): ProcessingLogAudit {
-  const lines = input.processingLogText
-    ?.split(/\r?\n/u)
-    .map((line, index) => ({ line, lineNumber: index + 1 }))
-    .filter((entry) => entry.line.trim().length > 0) ?? [];
   const processingLogPath = input.processingLogPath ?? "processing log";
-  const latestNeedsFurtherProcessingByVideoId = new Map<string, "yes" | "no">();
-
-  for (const entry of lines) {
-    const fields = entry.line.split("\t");
-    if (fields.length !== 6) {
+  if (input.processingLogText === undefined || input.processingLogText.trim().length === 0) {
+    return { entryCount: 0, completedVideoIds: new Set<string>() };
+  }
+  let parsed;
+  try {
+    parsed = parseSiteContentProcessingLog(input.processingLogText, input.manifest.transcripts);
+  } catch (error: unknown) {
+    issues.push({
+      severity: "error",
+      code: "processing-log-invalid-header",
+      message: error instanceof Error ? error.message : String(error),
+      path: processingLogPath,
+    });
+    return { entryCount: 0, completedVideoIds: new Set<string>() };
+  }
+  for (const problem of parsed.problems) {
+    issues.push({ severity: "error", code: problem.code, message: problem.message, path: processingLogPath });
+  }
+  for (const record of parsed.records) {
+    if (!input.fileExists(resolveRepoPath(input.rootDir, record.shardPath))) {
       issues.push({
         severity: "error",
-        code: "processing-log-field-count",
-        message: `Processing log line ${entry.lineNumber} must have 6 tab-separated fields.`,
-        path: processingLogPath,
+        code: "processing-log-shard-not-found",
+        message: `Processing log line ${record.lineNumber} references a missing shard path.`,
+        path: record.shardPath,
       });
-      continue;
-    }
-
-    const [processedAt, sourcePath, videoId, action, needsFurtherProcessing, determination] = fields;
-    if (processedAt === undefined || Number.isNaN(Date.parse(processedAt))) {
-      issues.push({
-        severity: "error",
-        code: "processing-log-invalid-timestamp",
-        message: `Processing log line ${entry.lineNumber} has an invalid timestamp.`,
-        path: processingLogPath,
-      });
-    }
-    if (sourcePath === undefined || !sourcePath.trim()) {
-      issues.push({
-        severity: "error",
-        code: "processing-log-missing-source",
-        message: `Processing log line ${entry.lineNumber} is missing a source transcript path.`,
-        path: processingLogPath,
-      });
-    } else if (!input.fileExists(resolveRepoPath(input.rootDir, sourcePath))) {
-      issues.push({
-        severity: "error",
-        code: "processing-log-source-not-found",
-        message: `Processing log line ${entry.lineNumber} references a missing source transcript path.`,
-        path: sourcePath,
-      });
-    }
-    if (videoId === undefined || !/^[A-Za-z0-9_-]+$/u.test(videoId)) {
-      issues.push({
-        severity: "error",
-        code: "processing-log-invalid-video-id",
-        message: `Processing log line ${entry.lineNumber} has an invalid video ID.`,
-        path: processingLogPath,
-      });
-    }
-    if (action === undefined || !action.trim()) {
-      issues.push({
-        severity: "error",
-        code: "processing-log-missing-action",
-        message: `Processing log line ${entry.lineNumber} must describe what was done.`,
-        path: processingLogPath,
-      });
-    }
-    if (needsFurtherProcessing !== "yes" && needsFurtherProcessing !== "no") {
-      issues.push({
-        severity: "error",
-        code: "processing-log-invalid-further-processing",
-        message: `Processing log line ${entry.lineNumber} must use yes or no for needsFurtherProcessing.`,
-        path: processingLogPath,
-      });
-    }
-    if (determination === undefined || !determination.trim()) {
-      issues.push({
-        severity: "error",
-        code: "processing-log-missing-determination",
-        message: `Processing log line ${entry.lineNumber} must include a short determination.`,
-        path: processingLogPath,
-      });
-    }
-
-    if (videoId !== undefined && /^[A-Za-z0-9_-]+$/u.test(videoId) && (needsFurtherProcessing === "yes" || needsFurtherProcessing === "no")) {
-      latestNeedsFurtherProcessingByVideoId.set(videoId, needsFurtherProcessing);
     }
   }
 
   const completedVideoIds = new Set<string>();
-  for (const [videoId, needsFurtherProcessing] of latestNeedsFurtherProcessingByVideoId) {
-    if (needsFurtherProcessing === "no") {
-      completedVideoIds.add(videoId);
-    }
+  for (const [videoId, record] of parsed.latestByVideoId) {
+    if (record.needsFurtherProcessing === "no") completedVideoIds.add(videoId);
   }
 
   return {
-    entryCount: lines.length,
+    entryCount: parsed.records.length,
     completedVideoIds,
   };
 }

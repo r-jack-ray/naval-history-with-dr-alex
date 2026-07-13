@@ -14,7 +14,7 @@ test("audits curated transcript-backed segments and reports uncurated transcript
     rootDir: "C:/repo",
     transcriptRoot: "src/transcripts",
     limit: 10,
-    fileExists: (path) => path.endsWith("sample-video_abc123.txt"),
+    fileExists: (path) => path.endsWith("sample-video_abc123.txt") || path.endsWith("sample-video_abc123.json"),
   });
 
   assert.equal(audit.stats.storedTranscriptCount, 2);
@@ -211,12 +211,15 @@ test("counts valid processing log entries", () => {
   const audit = buildSiteContentAudit({
     manifest: sampleManifest(),
     seed: sampleSeed(),
-    processingLogText: "2026-07-08T02:45:00-05:00\tsrc/transcripts/txt/sample-video_abc123.txt\tabc123\tcurated 1 notable point\tno\tready for site\n",
+    processingLogText: [
+      "timestamp;shardPath;result;needsFurtherProcessing;notes",
+      "2026-07-08T02:45:00-05:00;src/derived/video-segments/sample-video_abc123.json;curated 1 notable point;no;ready for site",
+    ].join("\n"),
     processingLogPath: "src/derived/site-content-processing.log",
     rootDir: "C:/repo",
     transcriptRoot: "src/transcripts",
     limit: 10,
-    fileExists: (path) => path.endsWith("sample-video_abc123.txt"),
+    fileExists: (path) => path.endsWith("sample-video_abc123.txt") || path.endsWith("sample-video_abc123.json"),
   });
 
   assert.equal(audit.stats.processingLogEntryCount, 1);
@@ -229,13 +232,14 @@ test("omits transcripts with a latest completed processing log line from backlog
     manifest: sampleManifest(),
     seed: sampleSeed(),
     processingLogText: [
-      "2026-07-08T02:45:00-05:00\tsrc/transcripts/txt/uncurated-video_def456.txt\tdef456\treviewed no usable segments\tyes\tfirst pass needs a revisit",
-      "2026-07-08T03:45:00-05:00\tsrc/transcripts/txt/uncurated-video_def456.txt\tdef456\treviewed no usable segments\tno\tcomplete without site segment",
+      "timestamp;shardPath;result;needsFurtherProcessing;notes",
+      "2026-07-08T02:45:00-05:00;src/derived/video-segments/uncurated-video_def456.json;reviewed no usable segments;yes;first pass needs a revisit",
+      "2026-07-08T03:45:00-05:00;src/derived/video-segments/uncurated-video_def456.json;reviewed no usable segments;no;complete without site segment",
     ].join("\n"),
     rootDir: "C:/repo",
     transcriptRoot: "src/transcripts",
     limit: 10,
-    fileExists: (path) => path.endsWith("sample-video_abc123.txt") || path.endsWith("uncurated-video_def456.txt"),
+    fileExists: (path) => path.endsWith("sample-video_abc123.txt") || path.endsWith("uncurated-video_def456.txt") || path.endsWith("uncurated-video_def456.json"),
   });
 
   assert.equal(audit.stats.uncuratedStoredTranscriptCount, 0);
@@ -248,13 +252,14 @@ test("keeps transcripts in backlog when a later processing log line needs more w
     manifest: sampleManifest(),
     seed: sampleSeed(),
     processingLogText: [
-      "2026-07-08T02:45:00-05:00\tsrc/transcripts/txt/uncurated-video_def456.txt\tdef456\treviewed no usable segments\tno\tcomplete without site segment",
-      "2026-07-08T03:45:00-05:00\tsrc/transcripts/txt/uncurated-video_def456.txt\tdef456\treopened for topic review\tyes\tneeds topic pass",
+      "timestamp;shardPath;result;needsFurtherProcessing;notes",
+      "2026-07-08T02:45:00-05:00;src/derived/video-segments/uncurated-video_def456.json;reviewed no usable segments;no;complete without site segment",
+      "2026-07-08T03:45:00-05:00;src/derived/video-segments/uncurated-video_def456.json;reopened for topic review;yes;needs topic pass",
     ].join("\n"),
     rootDir: "C:/repo",
     transcriptRoot: "src/transcripts",
     limit: 10,
-    fileExists: (path) => path.endsWith("sample-video_abc123.txt") || path.endsWith("uncurated-video_def456.txt"),
+    fileExists: (path) => path.endsWith("sample-video_abc123.txt") || path.endsWith("uncurated-video_def456.txt") || path.endsWith("uncurated-video_def456.json"),
   });
 
   assert.equal(audit.stats.uncuratedStoredTranscriptCount, 1);
@@ -266,7 +271,7 @@ test("flags malformed processing log entries", () => {
   const audit = buildSiteContentAudit({
     manifest: sampleManifest(),
     seed: sampleSeed(),
-    processingLogText: "not enough fields\n",
+    processingLogText: "timestamp;shardPath;result;needsFurtherProcessing;notes\nnot enough fields\n",
     processingLogPath: "src/derived/site-content-processing.log",
     rootDir: "C:/repo",
     transcriptRoot: "src/transcripts",
@@ -298,6 +303,7 @@ function sampleManifest(): Parameters<typeof buildSiteContentAudit>[0]["manifest
     transcripts: [
       {
         videoId: "abc123",
+        fileStem: "sample-video_abc123",
         videoTitle: "Sample Video",
         videoPublishedAt: "2026-07-01T00:00:00Z",
         segmentCount: 20,
@@ -309,6 +315,7 @@ function sampleManifest(): Parameters<typeof buildSiteContentAudit>[0]["manifest
       },
       {
         videoId: "def456",
+        fileStem: "uncurated-video_def456",
         videoTitle: "Uncurated Video",
         videoPublishedAt: "2026-07-02T00:00:00Z",
         segmentCount: 10,

@@ -16,7 +16,7 @@
 
     "list:files-that-need-processing": "node src/scripts/list-files-that-need-processing.js",
 
-    "analyze:video-segment-audit": "tsc -p tsconfig.video-segment-audit.json && node .tmp/video-segment-audit-build/scripts/analyze-video-segment-audit.js",
+    "rank:video-segment-audit-risk": "tsc -p tsconfig.video-segment-audit-risk.json && node .tmp/video-segment-audit-risk-build/scripts/rank-video-segment-audit-risk.js",
     "audit:site-content": "node .codex/hooks/site-content-pipeline-lock.mjs run --build --purpose site-content-audit -- node dist/scripts/audit-site-content.js",
     "audit:transcript-schedules": "npm run build && node dist/scripts/audit-transcript-schedules.js",
     "diagnose:site-content-duplicates": "npm run build && node dist/scripts/diagnose-site-content-duplicates.js",
