@@ -8,7 +8,9 @@
     "surface-warfare",
     "merchant-navy",
     "ship-design",
-    "maritime-security"
+    "maritime-security",
+    "dutch-navy",
+    "defense-policy"
   ],
   "segments": [
     {
@@ -167,21 +169,85 @@
       ]
     },
     {
+      "id": "pirate-galleon-capture",
+      "videoId": "00PlmwhNmxI",
+      "slug": "pirate-galleon-capture",
+      "title": "Overwhelming and capturing a pirate galleon",
+      "kind": "chapter",
+      "start": "1:42:35",
+      "end": "1:46:22",
+      "topics": [
+        "age-of-sail",
+        "surface-warfare",
+        "maritime-security",
+        "prize-warfare"
+      ],
+      "summary": "A second anti-pirate battle shows how a mixed British squadron can mob a damaged galleon and then add the prize to the fleet instead of selling it.",
+      "body": "Dr. Clarke organizes his sixth rates and smaller vessels separately before sending the whole force against a pirate galleon. The target has only thirteen of sixty guns working, so the engagement demonstrates concentration against a damaged but potentially valuable opponent rather than a balanced fleet action. After the victory, he chooses to retain the captured ship, linking tactical success directly to fleet expansion and prize-taking.",
+      "sourcePath": "src/transcripts/txt/2023-02-13_T19-00-00_empire-total-war-twitch-stream-1-february-2023_00PlmwhNmxI.txt",
+      "evidence": [
+        {
+          "start": "1:42:35",
+          "end": "1:44:25",
+          "note": "The transcript groups the sixth rates and small vessels, states the plan to mob the galleon, and notes that only thirteen of its sixty guns are working."
+        },
+        {
+          "start": "1:45:45",
+          "end": "1:46:22",
+          "note": "After the British-flagged attack, Dr. Clarke compares selling the prize for one thousand with adding it to the fleet and chooses the captured ship."
+        }
+      ]
+    },
+    {
+      "id": "fleet-upkeep-trade-income-and-indiamen",
+      "videoId": "00PlmwhNmxI",
+      "slug": "fleet-upkeep-trade-income-and-indiamen",
+      "title": "Fleet upkeep, trade income, and Indiamen",
+      "kind": "notable_point",
+      "start": "1:46:52",
+      "end": "1:48:30",
+      "topics": [
+        "naval-logistics",
+        "merchant-navy",
+        "naval-strategy",
+        "naval-finance"
+      ],
+      "summary": "A bankruptcy check turns into a concise demonstration of how army and navy upkeep must be supported by taxation and maritime trade.",
+      "body": "Dr. Clarke opens the campaign accounts after another bankruptcy warning and finds both army and navy upkeep pressing hard against income. A viewer's reminder about Indiamen leads him to explain that Newfoundland was meant to produce merchantmen for the trade routes. The passage is useful for seeing naval expansion as a fiscal and logistical system: warships consume revenue, while ports, trade routes, and purpose-built trading ships are needed to sustain them.",
+      "sourcePath": "src/transcripts/txt/2023-02-13_T19-00-00_empire-total-war-twitch-stream-1-february-2023_00PlmwhNmxI.txt",
+      "evidence": [
+        {
+          "start": "1:46:52",
+          "end": "1:47:27",
+          "note": "The national summary shows colossal army upkeep and navy upkeep that exceeds trade income."
+        },
+        {
+          "start": "1:48:02",
+          "end": "1:48:30",
+          "note": "Dr. Clarke says he intended to use Newfoundland to produce Indiamen for trade routes but became absorbed in fighting wars instead of managing the economy."
+        }
+      ]
+    },
+    {
       "id": "dutch-merchant-warship-design",
       "videoId": "00PlmwhNmxI",
       "slug": "dutch-merchant-warship-design",
       "title": "Dutch merchant-warship design tradeoffs",
-      "kind": "notable_point",
+      "kind": "qa",
       "start": "2:30:35",
-      "end": "2:42:22",
+      "end": "2:37:54",
       "topics": [
         "ship-design",
         "merchant-navy",
         "naval-strategy",
-        "naval-history"
+        "naval-history",
+        "dutch-navy",
+        "fluyt"
       ],
-      "summary": "A Dutch ship-design aside explains fluyts, race-built galleons, merchant-warship overlap, and the strategic problem of defending a trading empire with land borders.",
-      "body": "This is the strongest historical aside in the stream. Dr. Clarke first compares Dutch fluyts with galleons and then answers a chat point about Dutch ship design: cargo capacity, shallow draft, speed, and the interchangeability of merchant ships and warships all mattered. He broadens that into a strategic constraint, arguing that the Dutch Navy had to compete with homeland army needs because a continental trading power could not ignore its land borders.",
+      "summary": "A viewer's design criteria prompt leads to an explanation of fluyts, race-built galleons, and the Dutch overlap between merchant ships and warships.",
+      "question": "What criteria shaped Dutch ship design beyond cargo capacity, low crew cost, shallow draft, and speed?",
+      "answerShort": "Dutch merchantmen were also designed with wartime conversion in mind, so stronger construction and merchant-warship interchangeability made them useful naval and pirate vessels.",
+      "body": "Dr. Clarke first distinguishes the trading fluyt from the race-built galleon captured in the game. Responding to the viewer's list of Dutch design priorities, he adds a frequently overlooked requirement: for many years Dutch merchant ships and warships were interchangeable. Their comparatively strong construction helped make these vessels attractive to pirates and contributed to Dutch-built ships appearing disproportionately often in pirate service.",
       "sourcePath": "src/transcripts/txt/2023-02-13_T19-00-00_empire-total-war-twitch-stream-1-february-2023_00PlmwhNmxI.txt",
       "evidence": [
         {
@@ -191,13 +257,66 @@
         },
         {
           "start": "2:36:53",
-          "end": "2:37:35",
-          "note": "Dr. Clarke discusses Dutch design criteria including cargo capacity, low crew cost, shallow draft, speed, and merchant-warship interchangeability."
-        },
+          "end": "2:37:54",
+          "note": "A viewer lists cargo capacity, low crew cost, shallow draft, and speed, and Dr. Clarke adds merchant-warship interchangeability, stronger construction, and usefulness to pirates."
+        }
+      ]
+    },
+    {
+      "id": "dutch-fleet-plans-in-the-world-wars",
+      "videoId": "00PlmwhNmxI",
+      "slug": "dutch-fleet-plans-in-the-world-wars",
+      "title": "Unfinished Dutch fleet plans in the world wars",
+      "kind": "notable_point",
+      "start": "2:37:57",
+      "end": "2:38:38",
+      "topics": [
+        "dutch-navy",
+        "world-war-i",
+        "world-war-ii",
+        "naval-procurement",
+        "anti-aircraft-warfare"
+      ],
+      "summary": "Dr. Clarke considers how unfinished Dutch warship programs, especially their planned anti-aircraft fit, might have changed Dutch naval service in the world wars.",
+      "body": "The discussion moves from early modern merchantmen to the Dutch Navy's incomplete building programs in the First and Second World Wars. Dr. Clarke argues that larger planned ships with capable anti-aircraft armament could have been valuable assets. He particularly highlights their possible usefulness in the Far East, while presenting the counterfactual cautiously rather than claiming a certain outcome.",
+      "sourcePath": "src/transcripts/txt/2023-02-13_T19-00-00_empire-total-war-twitch-stream-1-february-2023_00PlmwhNmxI.txt",
+      "evidence": [
+        {
+          "start": "2:37:57",
+          "end": "2:38:38",
+          "note": "The transcript discusses incomplete Dutch building plans in both world wars, the intended anti-aircraft fit of larger vessels, and their potential value in the Far East."
+        }
+      ]
+    },
+    {
+      "id": "medium-power-force-structure-choices",
+      "videoId": "00PlmwhNmxI",
+      "slug": "medium-power-force-structure-choices",
+      "title": "Medium-power choices between army, navy, and air force",
+      "kind": "notable_point",
+      "start": "2:41:05",
+      "end": "2:46:46",
+      "topics": [
+        "dutch-navy",
+        "royal-navy",
+        "defense-policy",
+        "force-structure",
+        "sea-power",
+        "air-power"
+      ],
+      "summary": "The Dutch need to defend land borders becomes a wider lesson on why medium powers must choose where to concentrate limited defense resources.",
+      "body": "Dr. Clarke explains that the Dutch Navy competed with an army required to defend the homeland, and that flooding defenses or hired allied forces could not remove that tradeoff indefinitely. He then applies the same force-structure problem to contemporary Britain: a medium power cannot be strong everywhere and must decide whether scarce money and personnel belong in a continental army or in technologically expensive naval and air forces. His strategic case for the latter rests on Britain's island position, where control of the surrounding sea and air is central to national protection, while acknowledging that alliance commitments can still justify costly land deployments.",
+      "sourcePath": "src/transcripts/txt/2023-02-13_T19-00-00_empire-total-war-twitch-stream-1-february-2023_00PlmwhNmxI.txt",
+      "evidence": [
         {
           "start": "2:41:05",
-          "end": "2:42:22",
-          "note": "The transcript explains that the Dutch Navy competed with army and homeland-defense needs because continental powers had land borders to defend."
+          "end": "2:42:29",
+          "note": "The transcript says the Dutch Navy competed with army and homeland-defense needs and eventually could not afford both services at the desired strength."
+        },
+        {
+          "start": "2:42:49",
+          "end": "2:46:46",
+          "note": "Dr. Clarke compares funding a British army in Europe with investing in naval and air power, framing the decision as a medium-power force-structure choice shaped by island geography and alliance costs."
         }
       ]
     }

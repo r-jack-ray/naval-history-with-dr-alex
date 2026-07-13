@@ -289,7 +289,7 @@ Remove-Item Env:CONTENT_PIPELINE_LOCK_TOKEN -ErrorAction SilentlyContinue
 
 The hook releases the lease in `finally` on success or failure; the caller clears its own environment variable after the child PowerShell process returns. If a run stops before reaching validation, release it explicitly with `node .codex/hooks/site-content-pipeline-lock.mjs release --token $lease.lease.token`. Leases expire after 90 minutes unless renewed; use `status` to inspect a blocker, and `acquire --recover-stale` to quarantine an expired lease with its owner metadata before continuing.
 
-Lane-isolated transcript automations follow only their prompt-owned atomic claim, lane-private log, video-specific temporary checks, and exact completion/reset procedure. They remain single-agent, do not acquire or inspect the repository lease, and do not write shared topics, reports, processing logs, or generated archives.
+Lane-isolated transcript automations follow their prompt-owned atomic claim, lane-private log, video-specific temporary checks, and exact completion/reset procedure. They remain single-agent, do not acquire or inspect the repository lease, and do not write shared topics, reports, or generated archives.
 
 ## Project Helpers
 

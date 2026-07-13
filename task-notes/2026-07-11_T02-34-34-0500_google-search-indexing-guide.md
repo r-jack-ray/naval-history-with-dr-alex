@@ -428,7 +428,7 @@ If push or deployment is not authorized in the implementation turn, local accept
 - Do not rename existing detail routes or slugs. The only new routes are the planned pagination routes; zero-relation topic routes intentionally cease to be generated until referenced.
 - Do not edit generated `site/dist/` files directly.
 - Do not edit `site/src/data/generated/archive.json` by hand.
-- Do not alter shared transcript shards, the topic registry, schedules, logs, reports unrelated to indexing, or the currently dirty stylesheet.
+- Do not alter shared transcript shards, the topic registry, schedules, reports unrelated to indexing, or the currently dirty stylesheet.
 - Do not add tracking or analytics.
 - Do not expose internal reports through Astro routes.
 - Do not claim control over the `r-jack-ray.github.io` host-root `robots.txt` from this project repository.

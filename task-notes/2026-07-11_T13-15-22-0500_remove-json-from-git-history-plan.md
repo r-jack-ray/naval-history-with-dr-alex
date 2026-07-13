@@ -72,7 +72,7 @@ Downstream site-content, schedule, and audit code already consumes `paths.txt` a
 
 - Do not remove or filter any `.json` file outside `src/transcripts/json/`.
 - Do not remove `src/transcripts/manifest.json`, `src/transcripts/fetch-status.json`, channel JSON, curated shard JSON, `topics.json`, generated archive JSON, package JSON, or configuration JSON.
-- Do not alter transcript wording, timestamps, curated segments, topic data, schedules, logs, reports, or site content as part of this migration.
+- Do not alter transcript wording, timestamps, curated segments, topic data, schedules, reports, or site content as part of this migration.
 - Do not regenerate transcripts from YouTube merely to support removal. The existing TXT files are the retained transcript bodies.
 - Do not scrub historical prose references from old task notes or commit messages. Current active code and guidance must be corrected; historical planning records may remain.
 - Do not rewrite old manifest or code commits individually. Filtering the exact directory will necessarily make some historical checkouts that expected JSON incomplete; the supported rewritten tip must be fully TXT-only and pass all tests.
@@ -450,7 +450,7 @@ Preserve all unrelated work. Pause writers. Ask me for the existing 7z path, tes
 
 Before implementation, run npm run build and `.tmp/json-history-rewrite-tools/verify-transcript-json-txt-parity.mjs` to prove every current JSON transcript has one manifest-owned TXT and byte-compare a fresh transcriptToTxt rendering of every JSON with the retained TXT. Stop on any mismatch, missing file, extra file, unsafe path, or identity drift. Use `.tmp/json-history-rewrite-tools/migrate-transcript-manifest-to-txt-only.mjs` for the guarded preview and manifest-v2 write. These temporary tools and their output must stay ignored and must not be committed.
 
-Implement the TXT-only contract without staging the tracked JSON deletions: migrate the manifest to version 2 with TXT-only storage, make fetch/storage/batch logic write and detect TXT only, preserve existing manifest fileStem values, remove JSON output and obsolete store/convert JSON commands, update related schemas/tests/current guidance, and add the exact /src/transcripts/json/ ignore rule while preserving /src/transcripts/tsv/. Do not change retained TXT content, curated content, schedules, logs, topics, reports, or unrelated JSON.
+Implement the TXT-only contract without staging the tracked JSON deletions: migrate the manifest to version 2 with TXT-only storage, make fetch/storage/batch logic write and detect TXT only, preserve existing manifest fileStem values, remove JSON output and obsolete store/convert JSON commands, update related schemas/tests/current guidance, and add the exact /src/transcripts/json/ ignore rule while preserving /src/transcripts/tsv/. Do not change retained TXT content, curated content, schedules, topics, reports, or unrelated JSON.
 
 Run every focused and repository validation in the plan. At gate 1, report staged paths, all-file conversion parity, TXT hashes, manifest/TXT counts, archive verification, reference searches, tests/audits/builds, and local/remote tips. Ask for explicit approval before the preparatory commit or normal push.
 

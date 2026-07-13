@@ -29,7 +29,7 @@ Use this brief with `$naval-transcript-to-site-content` when turning stored Dr. 
 6. Add evidence-backed topic slugs to the video and segment arrays. Do not inspect or edit `topics.json`; the repository owner's later build synchronizes the registry.
 7. Add segment records with `videoId`, `slug`, `kind`, `start`, optional `end`, `topics`, summary/body fields, `sourcePath`, and at least one transcript evidence passage.
 8. Use `kind: qa` only for actual question/answer exchanges. Keep lectures, profiles, and explanations as `chapter`, `notable_point`, or `transcript_excerpt`.
-9. Do not write processing logs, schedules, reports, the topic registry, generated archives, package files, tooling, Astro/CSS sources, or any file other than the selected shard. Do not run repository-wide generation, tests, builds, audits, or validation commands.
+9. After a successful shard write, append exactly one result line at the physical bottom of `src/derived/site-content-processing.log` as required by the skill. Do not write schedules, reports, the topic registry, generated archives, package files, tooling, Astro/CSS sources, or any file other than the selected shard and logs. Do not run repository-wide generation, tests, builds, audits, or validation commands.
 10. For the main transcript pass, do as much useful in-file processing as the configured model and effort can support across the full transcript. Inspect for both subject segments and actual Q&A regardless of source type or title. Add separate `kind: qa` records for every substantive prompt and response found; do not stop at an overview, sample a subset, or deliberately reserve supported chapters or Q&A for a later audit. Favor coverage and transcript-backed substance over final wording polish. Report `needsFurtherProcessing=yes` when the lower-effort run genuinely leaves substantive coverage unresolved; use `no` only when substantive chaptering and Q&A extraction are complete, or the file is intentionally closed without a site segment.
 11. Let segment count arise from the transcript. Do not target a minimum, maximum, or preferred numeric range; split when the subject, argument, example, or exchange meaningfully changes, and avoid broad catch-all notes and artificial padding.
 12. Check the canonical source type in the channel inventory. The universal first-pass Q&A scan still applies to recorded videos, interviews, premieres, and other non-live sources. Treat every live stream as mixed classroom-style content: inspect the full duration, preserve substantive lecture blocks as `chapter` or `notable_point`, and create a separate `kind: qa` segment for every substantive transcript-visible prompt and response. Each Q&A needs its own `start`, optional `end`, `question`, `answerShort`, and evidence.
@@ -49,8 +49,8 @@ Use this brief with `$naval-transcript-to-site-content` when turning stored Dr. 
 
 ## Shared-Output Boundary
 
-- Edit only the selected per-video shard.
-- Do not touch leases, schedules, processing logs, reports, `topics.json`, generated archives, `site/dist/`, package files, tooling, Astro/CSS sources, or other shards.
+- Edit only the selected per-video shard and append its one required result line at the physical bottom of `src/derived/site-content-processing.log` after a successful shard write.
+- Do not touch leases, schedules, reports, `topics.json`, generated archives, `site/dist/`, package files, tooling, Astro/CSS sources, or other shards.
 - Do not run `npm ci`, builds, audits, generation, tests, Pagefind, or shared validation.
 - The repository owner performs shared integration work before push. A lane automation may separately perform only the claim, lane-private log, temporary validation, and exact completion/reset steps defined in its own prompt.
 
@@ -64,5 +64,5 @@ Use this brief with `$naval-transcript-to-site-content` when turning stored Dr. 
 
 ## Handoff
 
-- Mention the video ID, transcript path, shard changed, segment count added, topic slugs introduced, transcript coverage status, and remaining ranges. State that shared generation, logs, schedules, tests, builds, and validation were intentionally not touched.
+- Mention the video ID, transcript path, shard changed, segment count added, topic slugs introduced, transcript coverage status, the processing-log line appended, and remaining ranges. State that shared generation, other logs, schedules, tests, builds, and validation were intentionally not touched.
 - If an invoking automation performed lane-private bookkeeping or temporary checks, report only those prompt-owned results. If a transcript is too noisy or incomplete, report the blocker and inspected windows without creating a shared task note.

@@ -99,7 +99,7 @@ This count is a snapshot, not an acceptance constant. Re-run the dry run after t
 - Do not regenerate transcript file stems or rename transcript JSON/TXT files.
 - Do not redesign the public site, routes, or search behavior.
 - Do not combine this migration with transcript curation, taxonomy cleanup, schedule processing, or content auditing.
-- Do not rewrite processing logs or historical task notes simply to replace old filename prose.
+- Do not rewrite historical task notes simply to replace old filename prose.
 - Do not commit, push, alter remote state, or modify external automation configuration without the authority present in the implementation task.
 
 ## Preconditions and Stop Conditions
