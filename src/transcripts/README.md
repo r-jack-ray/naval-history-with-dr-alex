@@ -50,6 +50,17 @@ uses one shared request limiter, and writes `fetch-status.json` after each
 attempt. Previous failures are skipped on resume unless `--retry-failed` is
 provided.
 
+Generate a diagnostic report from the saved failures without contacting YouTube
+or retrying any transcript:
+
+```powershell
+npm run report:transcript-problems
+```
+
+The command reads `fetch-status.json` and writes
+`reports/transcript-problems.md`. Its probable reasons are labeled with a
+confidence level and remain limited to evidence saved by prior fetch runs.
+
 By default, the fetcher reads `src/channel/video-metadata.json` for title and
 publish timestamp naming. Use `--video-title` and `--video-timestamp` when
 naming metadata needs to be supplied manually, or `--no-metadata-lookup` to use
