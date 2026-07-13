@@ -2,12 +2,15 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import {
+  applyOfficialVideoMetadata,
   buildChannelEpisodeMaster,
   createRateLimitedFetch,
   extractVideoLink,
   fetchInitWithRequestLabel,
   mergeChannelVideoLinksResults,
+  officialVideoStreamStartTime,
   splitChannelVideoLinksResult,
+  type ChannelVideoLink,
 } from "./channel-video-links.js";
 
 test("extracts video links from YouTube LockupView nodes", () => {
@@ -163,6 +166,51 @@ test("builds a canonical source episode master list", () => {
       },
     },
   ]);
+});
+
+test("prefers actual then scheduled livestream time over the upload timestamp", () => {
+  assert.equal(
+    officialVideoStreamStartTime({
+      snippet: { publishedAt: "2026-06-14T16:44:14Z" },
+      liveStreamingDetails: { scheduledStartTime: "2026-07-12T18:30:00Z" },
+    }),
+    "2026-07-12T18:30:00Z",
+  );
+  assert.equal(
+    officialVideoStreamStartTime({
+      snippet: { publishedAt: "2026-06-14T16:44:14Z" },
+      liveStreamingDetails: {
+        scheduledStartTime: "2026-07-12T18:30:00Z",
+        actualStartTime: "2026-07-12T18:33:54Z",
+      },
+    }),
+    "2026-07-12T18:33:54Z",
+  );
+});
+
+test("official enrichment exposes the stream date and retains the advance upload time", () => {
+  const link: ChannelVideoLink = {
+    videoId: "abc123",
+    url: "https://www.youtube.com/watch?v=abc123",
+    tabs: ["streams" as const],
+    tabPositions: { streams: 1 },
+  };
+
+  applyOfficialVideoMetadata(link, {
+    snippet: {
+      title: "Upcoming Naval History Live",
+      publishedAt: "2026-06-14T16:44:14Z",
+    },
+    liveStreamingDetails: {
+      scheduledStartTime: "2026-07-12T18:30:00Z",
+    },
+  });
+
+  assert.equal(link.uploadDate, "2026-06-14T16:44:14Z");
+  assert.equal(link.streamStartAt, "2026-07-12T18:30:00Z");
+  assert.equal(link.publishedAt, "2026-07-12T18:30:00Z");
+  assert.equal(link.publishDate, "2026-07-12");
+  assert.equal(link.publishedText, "2026-07-12");
 });
 
 test("merges channel video link results across tabs", () => {

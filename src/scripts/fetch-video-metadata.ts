@@ -30,6 +30,9 @@ async function main(): Promise<void> {
   if (options.limit !== undefined) {
     fetchOptions.limit = options.limit;
   }
+  if (options.additionalVideoIds !== undefined) {
+    fetchOptions.additionalVideoIds = options.additionalVideoIds;
+  }
   if (options.force !== undefined) {
     fetchOptions.force = options.force;
   }
@@ -76,6 +79,10 @@ function parseArgs(args: string[]): CliOptions {
         break;
       case "--limit":
         options.limit = readPositiveInteger(readValue(args, ++index, arg), arg);
+        break;
+      case "--video-id":
+        options.additionalVideoIds ??= [];
+        options.additionalVideoIds.push(readValue(args, ++index, arg));
         break;
       case "--force":
         options.force = true;
@@ -130,6 +137,7 @@ Options:
   --request-delay-ms <ms> Delay between YouTube Data API requests. Defaults to 1000.
   --batch-size <count>    IDs per videos.list call, 1-50. Defaults to 50.
   --limit <count>         Fetch only this many missing IDs.
+  --video-id <id>         Include a video absent from the episode inventory. Repeatable.
   --force                 Refetch IDs already present in the output file.
   --quiet                 Suppress progress logs.
   --help                  Show this help.

@@ -13,6 +13,7 @@ import { createRateLimitedFetch } from "./channel-video-links.js";
 import {
   defaultVideoMetadataInput,
   defaultVideoMetadataOutput,
+  isPublishedButUnstarted,
   readVideoMetadataStore,
   videoNamingMetadata,
   type VideoMetadataRecord,
@@ -61,6 +62,7 @@ export interface TranscriptBatchStatus {
   stats: {
     inputVideoCount: number;
     skippedStoredCount: number;
+    skippedUnstartedCount: number;
     skippedPreviousFailureCount: number;
     attemptedCount: number;
     fetchedCount: number;
@@ -91,6 +93,7 @@ export interface FetchTranscriptBatchOptions {
 
 interface TranscriptBatchCounters {
   skippedStoredCount: number;
+  skippedUnstartedCount: number;
   skippedPreviousFailureCount: number;
   attemptedCount: number;
   fetchedCount: number;
@@ -112,12 +115,19 @@ export async function fetchAndStoreTranscriptBatch(
   const fetchTranscript = options.fetchTranscript ?? fetchVideoTranscript;
   const counters: TranscriptBatchCounters = {
     skippedStoredCount: 0,
+    skippedUnstartedCount: 0,
     skippedPreviousFailureCount: 0,
     attemptedCount: 0,
     fetchedCount: 0,
     failedCount: 0,
     pendingCount: 0,
   };
+
+  for (const videoId of failuresById.keys()) {
+    if (isPublishedButUnstarted(metadataById.get(videoId))) {
+      failuresById.delete(videoId);
+    }
+  }
 
   await writeTranscriptBatchStatus(options, episodes, counters, failuresById);
 
@@ -132,6 +142,14 @@ export async function fetchAndStoreTranscriptBatch(
     if (stored !== undefined) {
       counters.skippedStoredCount += 1;
       options.logger?.(`Skipping stored transcript: ${episode.videoId}`);
+      continue;
+    }
+
+    const metadata = metadataById.get(episode.videoId);
+    if (isPublishedButUnstarted(metadata)) {
+      failuresById.delete(episode.videoId);
+      counters.skippedUnstartedCount += 1;
+      options.logger?.(`Skipping published but unstarted video: ${episode.videoId}`);
       continue;
     }
 
@@ -170,7 +188,7 @@ export async function fetchAndStoreTranscriptBatch(
       }
 
       const transcript = await fetchTranscript(fetchOptions);
-      applyNamingMetadata(transcript, namingMetadataForEpisode(episode, metadataById.get(episode.videoId)));
+      applyNamingMetadata(transcript, namingMetadataForEpisode(episode, metadata));
       const paths = await writeTranscriptStorage(transcript, options.outputRoot);
       failuresById.delete(episode.videoId);
       counters.fetchedCount += 1;
@@ -266,7 +284,7 @@ function namingMetadataForEpisode(
   const metadata = videoNamingMetadata(metadataRecord);
   const result: VideoNamingMetadata = {};
   const title = metadata.title ?? episode.title;
-  const timestamp = metadata.timestamp ?? episode.publishedAt ?? episode.streamStartAt ?? episode.uploadDate;
+  const timestamp = metadata.timestamp ?? episode.streamStartAt ?? episode.publishedAt ?? episode.uploadDate;
 
   if (title !== undefined) {
     result.title = title;
@@ -306,6 +324,7 @@ function buildTranscriptBatchStatus(
   failuresById: ReadonlyMap<string, TranscriptBatchFailure>,
 ): TranscriptBatchStatus {
   const processedCount = counters.skippedStoredCount +
+    counters.skippedUnstartedCount +
     counters.skippedPreviousFailureCount +
     counters.fetchedCount +
     counters.failedCount +
@@ -322,6 +341,7 @@ function buildTranscriptBatchStatus(
     stats: {
       inputVideoCount: episodes.length,
       skippedStoredCount: counters.skippedStoredCount,
+      skippedUnstartedCount: counters.skippedUnstartedCount,
       skippedPreviousFailureCount: counters.skippedPreviousFailureCount,
       attemptedCount: counters.attemptedCount,
       fetchedCount: counters.fetchedCount,
@@ -455,6 +475,7 @@ function emptyTranscriptBatchStatus(): TranscriptBatchStatus {
     stats: {
       inputVideoCount: 0,
       skippedStoredCount: 0,
+      skippedUnstartedCount: 0,
       skippedPreviousFailureCount: 0,
       attemptedCount: 0,
       fetchedCount: 0,

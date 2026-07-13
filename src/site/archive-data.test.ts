@@ -34,6 +34,16 @@ test("builds deterministic site archive data from channel metadata and segment s
   assert.equal(archive.topics.find((topic) => topic.slug === "destroyers")?.segmentCount, 2);
 });
 
+test("uses livestream time instead of the advance upload timestamp", () => {
+  const input = sampleInput();
+  input.episodesStore.episodes[0]!.publishedAt = "2026-06-14T16:44:14Z";
+  input.episodesStore.episodes[0]!.streamStartAt = "2026-07-12T18:30:00Z";
+
+  const archive = buildSiteArchiveData(input);
+
+  assert.equal(archive.videos[0]?.publishedAt, "2026-07-12T18:30:00Z");
+});
+
 test("splits and reconstructs the logical archive with 64 deterministic segment buckets", () => {
   const archive = buildSiteArchiveData(sampleInput());
   const split = splitSiteArchiveData(archive);

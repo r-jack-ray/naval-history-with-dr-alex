@@ -743,7 +743,7 @@ async function enrichWithOfficialVideoDetails(
   }
 }
 
-function applyOfficialVideoMetadata(link: ChannelVideoLink, video: youtube_v3.Schema$Video): void {
+export function applyOfficialVideoMetadata(link: ChannelVideoLink, video: youtube_v3.Schema$Video): void {
   const snippet = video.snippet;
   const statistics = video.statistics;
   const liveStreamingDetails = video.liveStreamingDetails;
@@ -751,26 +751,36 @@ function applyOfficialVideoMetadata(link: ChannelVideoLink, video: youtube_v3.Sc
   const title = snippet?.title ?? undefined;
   const publishedAt = snippet?.publishedAt ?? undefined;
   const viewCount = statistics?.viewCount ?? undefined;
-  const actualStartTime = liveStreamingDetails?.actualStartTime ?? undefined;
+  const streamStartTime = officialVideoStreamStartTime(video);
   const actualEndTime = liveStreamingDetails?.actualEndTime ?? undefined;
 
   if (title !== undefined) {
     link.title = title;
   }
   if (publishedAt !== undefined) {
-    link.publishedAt = publishedAt;
-    link.publishDate = publishedAt.slice(0, 10);
+    link.uploadDate = publishedAt;
+  }
+  const presentationTimestamp = streamStartTime ?? publishedAt;
+  if (presentationTimestamp !== undefined) {
+    link.publishedAt = presentationTimestamp;
+    link.publishDate = presentationTimestamp.slice(0, 10);
     link.publishedText = link.publishDate;
   }
   if (viewCount !== undefined) {
     link.viewCountText = `${viewCount} views`;
   }
-  if (actualStartTime !== undefined) {
-    link.streamStartAt = actualStartTime;
+  if (streamStartTime !== undefined) {
+    link.streamStartAt = streamStartTime;
   }
   if (actualEndTime !== undefined) {
     link.streamEndAt = actualEndTime;
   }
+}
+
+export function officialVideoStreamStartTime(video: youtube_v3.Schema$Video): string | undefined {
+  return video.liveStreamingDetails?.actualStartTime ??
+    video.liveStreamingDetails?.scheduledStartTime ??
+    undefined;
 }
 
 function videoMetadataRecord(link: ChannelVideoLink): ChannelVideoMetadataResult["videos"][number] {

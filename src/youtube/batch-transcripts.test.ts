@@ -10,6 +10,7 @@ import {
   type TranscriptBatchStatus,
 } from "./batch-transcripts.js";
 import { writeTranscriptStorage, type VideoTranscript } from "./transcripts.js";
+import { isPublishedButUnstarted } from "./video-metadata.js";
 
 test("reads unique transcript batch episodes from the channel master list", async () => {
   const dir = await mkdtemp(join(tmpdir(), "naval-transcript-batch-"));
@@ -244,6 +245,83 @@ test("batch skips previous failures until retry is requested", async () => {
   } finally {
     await rm(dir, { recursive: true, force: true });
   }
+});
+
+test("batch skips published but unstarted videos and clears stale failures", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "naval-transcript-batch-"));
+  const input = join(dir, "episodes.json");
+  const metadataInput = join(dir, "metadata.json");
+  const outputRoot = join(dir, "transcripts");
+  const statusOutput = join(outputRoot, "fetch-status.json");
+  const calls: string[] = [];
+
+  try {
+    await writeFile(
+      input,
+      JSON.stringify({ episodes: [{ videoId: "upcoming123", title: "Upcoming", tabs: ["streams"] }] }),
+      "utf8",
+    );
+    await writeFile(
+      metadataInput,
+      JSON.stringify({
+        videos: [{
+          videoId: "upcoming123",
+          fetchedAt: "2026-07-13T00:00:00.000Z",
+          snippet: { publishedAt: "2026-06-14T16:44:14Z", liveBroadcastContent: "upcoming" },
+          liveStreamingDetails: { scheduledStartTime: "2026-07-19T18:30:00Z" },
+        }],
+      }),
+      "utf8",
+    );
+    await mkdir(outputRoot, { recursive: true });
+    await writeFile(
+      statusOutput,
+      JSON.stringify({
+        failures: [{
+          videoId: "upcoming123",
+          attemptedAt: "2026-07-09T00:00:00.000Z",
+          classification: "no_caption_tracks",
+          error: "No caption tracks found for video: upcoming123.",
+          tabs: ["streams"],
+        }],
+      }),
+      "utf8",
+    );
+
+    const status = await fetchAndStoreTranscriptBatch({
+      inputPath: input,
+      metadataInput,
+      outputRoot,
+      statusOutput,
+      requestDelayMs: 5,
+      fetchTranscript: async (options) => {
+        calls.push(options.videoId);
+        return sampleTranscript(options.videoId);
+      },
+    });
+
+    assert.deepEqual(calls, []);
+    assert.equal(status.stats.skippedUnstartedCount, 1);
+    assert.equal(status.stats.attemptedCount, 0);
+    assert.equal(status.stats.failedCount, 0);
+    assert.equal(status.stats.pendingCount, 0);
+    assert.equal(status.stats.totalFailureCount, 0);
+    assert.deepEqual(status.failures, []);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("published video is eligible after its stream has actually started", () => {
+  assert.equal(isPublishedButUnstarted({
+    videoId: "started123",
+    fetchedAt: "2026-07-13T00:00:00.000Z",
+    snippet: { publishedAt: "2026-06-14T16:44:14Z" },
+    liveStreamingDetails: {
+      scheduledStartTime: "2026-07-12T18:30:00Z",
+      actualStartTime: "2026-07-12T18:30:06Z",
+    },
+  }), false);
 });
 
 function sampleTranscript(videoId: string): VideoTranscript {

@@ -12,7 +12,9 @@ import {
 import {
   defaultVideoMetadataOutput,
   findVideoMetadataRecord,
+  isPublishedButUnstarted,
   videoNamingMetadata,
+  type VideoMetadataRecord,
   type VideoNamingMetadata,
 } from "../youtube/video-metadata.js";
 
@@ -29,7 +31,12 @@ type CliOptions = FetchVideoTranscriptOptions & {
 
 async function main(): Promise<void> {
   const options = parseArgs(process.argv.slice(2));
-  const namingMetadata = await readNamingMetadata(options);
+  const metadataRecord = await readMetadataRecord(options);
+  if (isPublishedButUnstarted(metadataRecord)) {
+    console.error(`Skipping published but unstarted video: ${options.videoId}`);
+    return;
+  }
+  const namingMetadata = videoNamingMetadata(metadataRecord);
   const fetchOptions: FetchVideoTranscriptOptions = {
     videoId: options.videoId,
     requestDelayMs: options.requestDelayMs,
@@ -148,13 +155,12 @@ function parseArgs(args: string[]): CliOptions {
   return options as CliOptions;
 }
 
-async function readNamingMetadata(options: CliOptions): Promise<VideoNamingMetadata> {
+async function readMetadataRecord(options: CliOptions): Promise<VideoMetadataRecord | undefined> {
   if (options.metadataInput === undefined) {
-    return {};
+    return undefined;
   }
 
-  const record = await findVideoMetadataRecord(options.videoId, options.metadataInput);
-  return videoNamingMetadata(record);
+  return findVideoMetadataRecord(options.videoId, options.metadataInput);
 }
 
 function applyNamingMetadata(

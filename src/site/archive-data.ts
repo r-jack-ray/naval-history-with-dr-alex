@@ -161,6 +161,7 @@ interface ChannelEpisode {
   publishedText?: string;
   publishedAt?: string;
   publishDate?: string;
+  streamStartAt?: string;
   viewCountText?: string;
   tabs?: string[];
   transcript?: {
@@ -187,6 +188,10 @@ interface VideoMetadata {
     viewCount?: string;
     likeCount?: string;
     commentCount?: string;
+  };
+  liveStreamingDetails?: {
+    actualStartTime?: string;
+    scheduledStartTime?: string;
   };
 }
 
@@ -850,7 +855,10 @@ function buildSiteVideo(input: {
   const slug = input.episode.slug ?? slugifyVideoTitle(title) ?? input.episode.videoId;
   const youtubeUrl = input.episode.url ?? `https://www.youtube.com/watch?v=${input.episode.videoId}`;
   const stats = buildStats(input.metadata);
-  const publishedAt = input.episode.publishedAt ??
+  const publishedAt = input.episode.streamStartAt ??
+    input.metadata?.liveStreamingDetails?.actualStartTime ??
+    input.metadata?.liveStreamingDetails?.scheduledStartTime ??
+    input.episode.publishedAt ??
     input.metadata?.snippet?.publishedAt ??
     input.episode.publishDate ??
     null;

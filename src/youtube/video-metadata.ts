@@ -19,6 +19,7 @@ export interface VideoMetadataStore {
   source: {
     api: "youtube-data-api-v3";
     inputPath: string;
+    additionalVideoIds?: string[];
     requestDelayMs: number;
     batchSize: number;
     parts: string[];
@@ -55,6 +56,7 @@ export interface FetchVideoMetadataOptions {
   batchSize: number;
   limit?: number;
   force?: boolean;
+  additionalVideoIds?: string[];
   logger?: (message: string) => void;
 }
 
@@ -83,6 +85,20 @@ export function readVideoIdsFromEpisodeMaster(value: unknown): string[] {
   return ids;
 }
 
+export function mergeVideoIds(videoIds: readonly string[], additionalVideoIds: readonly string[] = []): string[] {
+  return [...new Set([...videoIds, ...additionalVideoIds])];
+}
+
+export function resolveAdditionalVideoIds(
+  inputVideoIds: readonly string[],
+  storedAdditionalVideoIds: readonly string[] = [],
+  requestedAdditionalVideoIds: readonly string[] = [],
+): string[] {
+  const inputIds = new Set(inputVideoIds);
+  return mergeVideoIds(storedAdditionalVideoIds, requestedAdditionalVideoIds)
+    .filter((videoId) => !inputIds.has(videoId));
+}
+
 export async function findVideoMetadataRecord(
   videoId: string,
   path = defaultVideoMetadataOutput,
@@ -101,9 +117,9 @@ export function videoNamingMetadata(record: VideoMetadataRecord | undefined): Vi
   }
 
   const title = record.snippet?.title ?? undefined;
-  const timestamp = record.snippet?.publishedAt ??
-    record.liveStreamingDetails?.actualStartTime ??
+  const timestamp = record.liveStreamingDetails?.actualStartTime ??
     record.liveStreamingDetails?.scheduledStartTime ??
+    record.snippet?.publishedAt ??
     undefined;
   const metadata: VideoNamingMetadata = {};
 
@@ -117,6 +133,11 @@ export function videoNamingMetadata(record: VideoMetadataRecord | undefined): Vi
   return metadata;
 }
 
+export function isPublishedButUnstarted(record: VideoMetadataRecord | undefined): boolean {
+  return record?.liveStreamingDetails?.scheduledStartTime != null &&
+    record.liveStreamingDetails.actualStartTime == null;
+}
+
 export async function fetchAndStoreVideoMetadata(options: FetchVideoMetadataOptions): Promise<VideoMetadataStore> {
   const apiKey = options.apiKey.trim();
   if (!apiKey) {
@@ -124,8 +145,14 @@ export async function fetchAndStoreVideoMetadata(options: FetchVideoMetadataOpti
   }
 
   const input = JSON.parse(await readFile(options.inputPath, "utf8")) as unknown;
-  const videoIds = readVideoIdsFromEpisodeMaster(input);
   const existing = await readExistingStore(options.outputPath);
+  const inputVideoIds = readVideoIdsFromEpisodeMaster(input);
+  const additionalVideoIds = resolveAdditionalVideoIds(
+    inputVideoIds,
+    existing?.source.additionalVideoIds,
+    options.additionalVideoIds,
+  );
+  const videoIds = mergeVideoIds(inputVideoIds, additionalVideoIds);
   const recordsById = new Map(existing?.videos.map((record) => [record.videoId, record]) ?? []);
   const targetIds = options.force ? videoIds : videoIds.filter((videoId) => !recordsById.has(videoId));
   const pendingIds = options.limit === undefined ? targetIds : targetIds.slice(0, options.limit);
@@ -167,6 +194,7 @@ export async function fetchAndStoreVideoMetadata(options: FetchVideoMetadataOpti
       videoIds,
       recordsById,
       batchesFetched,
+      ...(additionalVideoIds.length > 0 ? { additionalVideoIds } : {}),
     }));
     options.logger?.(`Stored metadata for ${recordsById.size}/${videoIds.length} videos.`);
   }
@@ -178,6 +206,7 @@ export async function fetchAndStoreVideoMetadata(options: FetchVideoMetadataOpti
     videoIds,
     recordsById,
     batchesFetched,
+    ...(additionalVideoIds.length > 0 ? { additionalVideoIds } : {}),
   });
   if (batchesFetched === 0) {
     await writeVideoMetadataStore(options.outputPath, store);
@@ -192,6 +221,7 @@ export function buildVideoMetadataStore(options: {
   videoIds: string[];
   recordsById: ReadonlyMap<string, VideoMetadataRecord>;
   batchesFetched: number;
+  additionalVideoIds?: string[];
 }): VideoMetadataStore {
   const videos = options.videoIds
     .map((videoId) => options.recordsById.get(videoId))
@@ -205,6 +235,7 @@ export function buildVideoMetadataStore(options: {
     source: {
       api: "youtube-data-api-v3",
       inputPath: options.inputPath,
+      ...(options.additionalVideoIds !== undefined ? { additionalVideoIds: options.additionalVideoIds } : {}),
       requestDelayMs: options.requestDelayMs,
       batchSize: options.batchSize,
       parts: [...defaultVideoMetadataParts],
