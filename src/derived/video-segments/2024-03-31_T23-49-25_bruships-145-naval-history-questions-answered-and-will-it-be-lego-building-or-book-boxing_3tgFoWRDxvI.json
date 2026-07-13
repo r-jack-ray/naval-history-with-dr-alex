@@ -7,9 +7,36 @@
     "ship-design",
     "naval-aviation",
     "naval-gunnery",
-    "naval-procurement"
+    "naval-procurement",
+    "aircraft-carriers",
+    "naval-industrial-base"
   ],
   "segments": [
+    {
+      "id": "francesco-caracciolo-status-and-fast-battleship-politics",
+      "videoId": "3tgFoWRDxvI",
+      "slug": "francesco-caracciolo-status-and-fast-battleship-politics",
+      "title": "Why the first fast battleship would matter before it fought",
+      "kind": "notable_point",
+      "start": "5:00",
+      "end": "10:29",
+      "topics": [
+        "francesco-caracciolo-class",
+        "fast-battleships",
+        "italian-navy",
+        "naval-procurement"
+      ],
+      "summary": "The Francesco Caracciolo class could reshape public and naval expectations through speed and prestige even though its armor and protection involved serious compromises.",
+      "body": "Dr. Clarke distinguishes historical importance from combat excellence. A completed Francesco Caracciolo would check the visible boxes of a battleship while adding roughly 28-knot speed, allowing Italy to claim the first fast battleship and forcing other navies to respond politically and institutionally. He argues that the Royal Navy could use that headline capability to justify more ships and infrastructure even while its professionals recognized the design's thin deck armor and incomplete torpedo protection. The passage is a useful warning that a ship's strategic and procurement impact can precede any test in battle.",
+      "sourcePath": "src/transcripts/txt/2024-03-31_T23-49-25_bruships-145-naval-history-questions-answered-and-will-it-be-lego-building-or-book-boxing_3tgFoWRDxvI.txt",
+      "evidence": [
+        {
+          "start": "5:00",
+          "end": "10:29",
+          "note": "The discussion contrasts the class's armor and torpedo-defense compromises with the prestige and procurement effect of commissioning the first 28-knot fast battleship."
+        }
+      ]
+    },
     {
       "id": "cold-starting-oil-fired-warship-boilers",
       "videoId": "3tgFoWRDxvI",
@@ -113,6 +140,32 @@
       ]
     },
     {
+      "id": "torpedo-bulges-length-beam-ratio-and-speed",
+      "videoId": "3tgFoWRDxvI",
+      "slug": "torpedo-bulges-length-beam-ratio-and-speed",
+      "title": "Why torpedo bulges usually cost speed",
+      "kind": "qa",
+      "start": "31:16",
+      "end": "31:34",
+      "topics": [
+        "torpedo-protection",
+        "naval-architecture",
+        "ship-design"
+      ],
+      "summary": "Adding torpedo bulges increases a ship's beam and usually reduces its top speed by changing the hull's proportions.",
+      "body": "Dr. Clarke applies the earlier length-to-beam discussion directly to refits. A torpedo bulge makes the ship broader, changing the ratio that helps determine resistance and speed through the water. The concise answer explains why improved underwater protection often imposed a measurable performance penalty.",
+      "question": "What happens to length-to-beam calculations when torpedo bulges are added to a ship?",
+      "answerShort": "The added beam makes the ship broader and usually slower, so bulged ships commonly lose some top speed.",
+      "sourcePath": "src/transcripts/txt/2024-03-31_T23-49-25_bruships-145-naval-history-questions-answered-and-will-it-be-lego-building-or-book-boxing_3tgFoWRDxvI.txt",
+      "evidence": [
+        {
+          "start": "31:16",
+          "end": "31:34",
+          "note": "The answer says bulges increase beam and that most ships become slower after being bulged."
+        }
+      ]
+    },
+    {
       "id": "extra-torpedoes-versus-anti-aircraft-weight",
       "videoId": "3tgFoWRDxvI",
       "slug": "extra-torpedoes-versus-anti-aircraft-weight",
@@ -167,6 +220,112 @@
       ]
     },
     {
+      "id": "royal-navy-warship-orders-in-american-yards",
+      "videoId": "3tgFoWRDxvI",
+      "slug": "royal-navy-warship-orders-in-american-yards",
+      "title": "Why Britain did not need American yards for major warships",
+      "kind": "qa",
+      "start": "39:18",
+      "end": "40:18",
+      "topics": [
+        "royal-navy",
+        "second-world-war",
+        "naval-industrial-base",
+        "lend-lease"
+      ],
+      "summary": "After United States entry into the war, Britain used American construction for escorts, landing craft, and auxiliaries rather than ordering major combatants.",
+      "body": "Dr. Clarke argues that the Royal Navy already had major-warship production distributed across British, Canadian, and other imperial yards. American capacity was more useful for escort carriers, frigates, landing ships, auxiliaries, and other urgently needed supporting vessels. The Destroyers for Bases ships had already filled an emergency gap, even if Britain was not enthusiastic about their quality. The answer shows how allied shipbuilding was divided by the most pressing capability and production needs rather than by a simple desire for more cruisers or capital ships.",
+      "question": "After the United States entered the Second World War, did the Royal Navy consider ordering warships from American yards?",
+      "answerShort": "It obtained escorts and many supporting vessels, but did not need American yards to build major warships because British and imperial production already covered that requirement.",
+      "sourcePath": "src/transcripts/txt/2024-03-31_T23-49-25_bruships-145-naval-history-questions-answered-and-will-it-be-lego-building-or-book-boxing_3tgFoWRDxvI.txt",
+      "evidence": [
+        {
+          "start": "39:18",
+          "end": "40:18",
+          "note": "The answer lists escort carriers, frigates, landing craft, and auxiliaries from North American production while rejecting a need for larger American-built combatants."
+        }
+      ]
+    },
+    {
+      "id": "steam-water-oil-heat-exchanger",
+      "videoId": "3tgFoWRDxvI",
+      "slug": "steam-water-oil-heat-exchanger",
+      "title": "How a steam-water-oil heat exchanger protects fuel systems",
+      "kind": "qa",
+      "start": "41:03",
+      "end": "43:39",
+      "topics": [
+        "ship-propulsion",
+        "marine-engineering",
+        "fuel-oil"
+      ],
+      "summary": "Warship fuel heating could separate boiler steam from fuel oil by using an intermediate hot-water circuit.",
+      "body": "Dr. Clarke recalls a two-stage exchanger in which steam heats water and the water then warms the fuel oil. Keeping steam piping away from the oil reduces the risk that corrosion or a pipe failure will contaminate fuel with water. That separation matters because heavy ship fuel is already difficult to handle and water contamination can make it unusable for the machinery. He presents the exact arrangement from memory and notes that a diagram would be needed for a definitive component-level explanation.",
+      "question": "Did the system for warming warship fuel oil pass steam directly through the oil tank?",
+      "answerShort": "Probably not directly; the described arrangement used steam to heat water, which then heated the oil so a steam-pipe failure could not contaminate the fuel.",
+      "sourcePath": "src/transcripts/txt/2024-03-31_T23-49-25_bruships-145-naval-history-questions-answered-and-will-it-be-lego-building-or-book-boxing_3tgFoWRDxvI.txt",
+      "evidence": [
+        {
+          "start": "41:03",
+          "end": "43:39",
+          "note": "The answer describes steam heating water and water heating oil, with separation intended to prevent corrosion failures from mixing water into the fuel."
+        }
+      ]
+    },
+    {
+      "id": "maintaining-british-capital-ship-construction-in-war",
+      "videoId": "3tgFoWRDxvI",
+      "slug": "maintaining-british-capital-ship-construction-in-war",
+      "title": "What Britain gains by maintaining its capital-ship program",
+      "kind": "qa",
+      "start": "1:02:27",
+      "end": "1:05:23",
+      "topics": [
+        "royal-navy",
+        "second-world-war",
+        "naval-procurement",
+        "force-structure"
+      ],
+      "summary": "Continuing battleship and carrier construction would provide not just more hulls but the reserves needed when ships were damaged, refitting, or committed elsewhere.",
+      "body": "Dr. Clarke expects the Lion-class battleships and additional large carriers to be completed if wartime construction stays on course. More carriers available early could enlarge operations such as Taranto and give Britain more freedom to distribute strength across a global war. His larger point is about resilience: a navy with only one ship offering a capability loses that capability whenever the ship is damaged, under repair, or deployed elsewhere. Maintaining the program therefore buys strategic options and a reserve against the normal friction of wartime service.",
+      "question": "How much of Britain's capital-ship program could be completed if Churchill maintained construction instead of slowing the yards?",
+      "answerShort": "The Lions and more large carriers could be completed, giving the Royal Navy both stronger early operations and enough spare hulls to absorb damage, repair, and competing deployments.",
+      "sourcePath": "src/transcripts/txt/2024-03-31_T23-49-25_bruships-145-naval-history-questions-answered-and-will-it-be-lego-building-or-book-boxing_3tgFoWRDxvI.txt",
+      "evidence": [
+        {
+          "start": "1:02:27",
+          "end": "1:05:23",
+          "note": "The answer predicts completed Lions and carriers, uses Taranto as an example, and explains why reserve hulls preserve capabilities when ships are damaged or unavailable."
+        }
+      ]
+    },
+    {
+      "id": "when-a-cruiser-becomes-an-aircraft-carrier",
+      "videoId": "3tgFoWRDxvI",
+      "slug": "when-a-cruiser-becomes-an-aircraft-carrier",
+      "title": "When a cruiser becomes an aircraft carrier",
+      "kind": "qa",
+      "start": "1:12:42",
+      "end": "1:13:55",
+      "topics": [
+        "aircraft-carriers",
+        "cruisers",
+        "naval-doctrine"
+      ],
+      "summary": "The decisive classification test is whether embarked aircraft provide the ship's primary offensive and defensive power.",
+      "body": "Dr. Clarke defines a carrier by the role of its embarked or parasite craft rather than by hull shape or the continued presence of shipboard weapons. If fighters are expected to intercept threats at distance and the air group is the preferred striking arm, the ship functions as a carrier. If onboard guns, missiles, or other systems remain the primary means of fighting, it is still a cruiser or a hybrid. The distinction focuses classification on operational doctrine and combat function.",
+      "question": "At what point is a cruiser officially an aircraft carrier?",
+      "answerShort": "When its embarked aircraft become its primary means of offense and defense rather than a supporting capability.",
+      "sourcePath": "src/transcripts/txt/2024-03-31_T23-49-25_bruships-145-naval-history-questions-answered-and-will-it-be-lego-building-or-book-boxing_3tgFoWRDxvI.txt",
+      "evidence": [
+        {
+          "start": "1:12:42",
+          "end": "1:13:55",
+          "note": "The answer defines a carrier through reliance on its parasite craft for primary offense and defense and contrasts that with ships centered on onboard weapons."
+        }
+      ]
+    },
+    {
       "id": "triple-versus-quadruple-cruiser-turrets",
       "videoId": "3tgFoWRDxvI",
       "slug": "triple-versus-quadruple-cruiser-turrets",
@@ -189,6 +348,33 @@
           "start": "1:25:54",
           "end": "1:28:16",
           "note": "The answer compares turret complexity, crew space, reliability, and rounds-per-minute output for triple and quadruple six-inch mountings."
+        }
+      ]
+    },
+    {
+      "id": "hms-warrior-and-the-benchmark-navy",
+      "videoId": "3tgFoWRDxvI",
+      "slug": "hms-warrior-and-the-benchmark-navy",
+      "title": "How HMS Warrior made the Royal Navy a technological benchmark",
+      "kind": "qa",
+      "start": "1:29:52",
+      "end": "1:31:11",
+      "topics": [
+        "hms-warrior",
+        "royal-navy",
+        "ironclads",
+        "naval-technology"
+      ],
+      "summary": "HMS Warrior demonstrated that a single technological leap could set the standard other navies had to follow.",
+      "body": "Dr. Clarke chooses Warrior rather than a particular nineteenth-century war as the experience with the greatest institutional effect on the Royal Navy after 1815. Warrior and the French Gloire broke a period in which warships had remained broadly comparable and showed how new technology could establish global naval status. Britain then sought to repeat that benchmark-setting effect with Dreadnought and later innovations. The lesson is that technical leadership could preserve superiority more economically by forcing rivals to measure themselves against a British standard.",
+      "question": "Which nineteenth-century experience after 1815 had the most significant effect on the Royal Navy?",
+      "answerShort": "HMS Warrior, because it taught the Navy how a technological breakthrough could make Britain the benchmark that every other fleet had to follow.",
+      "sourcePath": "src/transcripts/txt/2024-03-31_T23-49-25_bruships-145-naval-history-questions-answered-and-will-it-be-lego-building-or-book-boxing_3tgFoWRDxvI.txt",
+      "evidence": [
+        {
+          "start": "1:29:52",
+          "end": "1:31:11",
+          "note": "The answer identifies Warrior and explains how technological leadership created a benchmark role that the Royal Navy later tried to repeat with Dreadnought."
         }
       ]
     },
@@ -485,6 +671,33 @@
       ]
     },
     {
+      "id": "british-warships-panama-canal-and-eastward-basing",
+      "videoId": "3tgFoWRDxvI",
+      "slug": "british-warships-panama-canal-and-eastward-basing",
+      "title": "Why the Royal Navy rarely needed the Panama Canal",
+      "kind": "qa",
+      "start": "2:13:26",
+      "end": "2:14:15",
+      "topics": [
+        "panama-canal",
+        "royal-navy",
+        "naval-basing",
+        "logistics"
+      ],
+      "summary": "Neutrality mattered, but Britain's worldwide base network was organized eastward through the Mediterranean, Suez, and the Indian Ocean rather than westward through Panama.",
+      "body": "Dr. Clarke says a small number of British warships may have transited the Panama Canal before American entry into the First World War, subject to neutrality rules. The larger reason the route saw little British use was institutional geography: Royal Navy planning and support ran eastward through the Mediterranean, Suez, the Indian Ocean, and onward bases. Ships, fuel, and maintenance arrangements followed that established chain. Panama was therefore not the natural axis for British global movement even when a transit might be legally possible.",
+      "question": "Could British warships transit the Panama Canal before the United States entered the First World War?",
+      "answerShort": "Possibly in limited cases under neutrality rules, but Britain rarely needed the route because its global basing system was organized eastward through Suez and the Indian Ocean.",
+      "sourcePath": "src/transcripts/txt/2024-03-31_T23-49-25_bruships-145-naval-history-questions-answered-and-will-it-be-lego-building-or-book-boxing_3tgFoWRDxvI.txt",
+      "evidence": [
+        {
+          "start": "2:13:26",
+          "end": "2:14:15",
+          "note": "The answer mentions neutrality and possible limited transits, then explains the eastward British base network through the Mediterranean, Suez, and Indian Ocean."
+        }
+      ]
+    },
+    {
       "id": "super-dreadnought-development-inevitable",
       "videoId": "3tgFoWRDxvI",
       "slug": "super-dreadnought-development-inevitable",
@@ -539,6 +752,33 @@
       ]
     },
     {
+      "id": "queen-elizabeth-small-tube-boiler-fast-battleship",
+      "videoId": "3tgFoWRDxvI",
+      "slug": "queen-elizabeth-small-tube-boiler-fast-battleship",
+      "title": "Could small-tube boilers make Queen Elizabeth a 28-knot battleship?",
+      "kind": "qa",
+      "start": "2:27:20",
+      "end": "2:30:12",
+      "topics": [
+        "queen-elizabeth-class",
+        "ship-propulsion",
+        "marine-engineering",
+        "fast-battleships"
+      ],
+      "summary": "A switch from large-tube to contemporary Yarrow small-tube boilers might provide enough power to push the Queen Elizabeth design close to 28 knots.",
+      "body": "Dr. Clarke compares the Queen Elizabeth class's 24 large-tube boilers and roughly 75,000 shaft horsepower with the 20 small-tube Yarrow boilers proposed for the Francesco Caracciolo class. A simple power comparison suggests later small-tube machinery could reach about 126,000 shaft horsepower, although a 1912-era installation would probably be less efficient and nearer 100,000. He still judges that output potentially sufficient for about 28 knots, especially if the hull were lengthened slightly to improve its proportions and create more machinery space. The answer is explicitly a back-of-the-envelope engineering estimate rather than a finalized design study.",
+      "question": "If Queen Elizabeth had received early small-tube boilers, could she have reached about 28 knots?",
+      "answerShort": "Possibly; contemporary Yarrow machinery might approach 100,000 shaft horsepower, and a slightly lengthened hull could put the design near 28 knots.",
+      "sourcePath": "src/transcripts/txt/2024-03-31_T23-49-25_bruships-145-naval-history-questions-answered-and-will-it-be-lego-building-or-book-boxing_3tgFoWRDxvI.txt",
+      "evidence": [
+        {
+          "start": "2:27:20",
+          "end": "2:30:12",
+          "note": "The answer compares boiler counts and shaft horsepower, adjusts for earlier machinery efficiency, and proposes slight hull lengthening to approach 28 knots."
+        }
+      ]
+    },
+    {
       "id": "geography-and-the-end-of-fleet-battle-doctrine",
       "videoId": "3tgFoWRDxvI",
       "slug": "geography-and-the-end-of-fleet-battle-doctrine",
@@ -561,6 +801,33 @@
           "start": "2:35:33",
           "end": "2:36:18",
           "note": "The answer contrasts the confined North Sea and Mediterranean with the vast operating areas of Anglo-American-Japanese conflict."
+        }
+      ]
+    },
+    {
+      "id": "unlimited-destroyer-tonnage-and-royal-navy-force-structure",
+      "videoId": "3tgFoWRDxvI",
+      "slug": "unlimited-destroyer-tonnage-and-royal-navy-force-structure",
+      "title": "How an unlimited destroyer allowance reshapes the Royal Navy",
+      "kind": "qa",
+      "start": "2:36:58",
+      "end": "2:38:00",
+      "topics": [
+        "destroyers",
+        "sloops",
+        "naval-treaties",
+        "force-structure"
+      ],
+      "summary": "A treaty limiting destroyer size but not total tonnage would encourage Britain to build a large continuous force of destroyers and sloops.",
+      "body": "Dr. Clarke estimates that the Royal Navy might happily build about 18 destroyers each year if a treaty capped individual ships at 2,000 tons but imposed no aggregate limit. Britain could also continue producing sloops and use the combined force as the flexible strength needed to address worldwide escort and patrol problems. The answer demonstrates how treaty wording can redirect a navy's force structure without directly prescribing a particular fleet. A per-ship ceiling alone would favor quantity and continuous production.",
+      "question": "What if the first London naval agreement limited destroyers to 2,000 tons but placed no limit on their total tonnage?",
+      "answerShort": "The Royal Navy would probably build destroyers and sloops continuously, perhaps around 18 destroyers a year, and make those numerous small ships a central part of its global force.",
+      "sourcePath": "src/transcripts/txt/2024-03-31_T23-49-25_bruships-145-naval-history-questions-answered-and-will-it-be-lego-building-or-book-boxing_3tgFoWRDxvI.txt",
+      "evidence": [
+        {
+          "start": "2:36:58",
+          "end": "2:38:00",
+          "note": "The answer predicts roughly 18 destroyers per year and continued destroyer and sloop construction as the Navy's flexible problem-solving strength."
         }
       ]
     },
@@ -641,6 +908,33 @@
           "start": "2:49:34",
           "end": "2:50:03",
           "note": "The answer predicts dramatic naval growth because a world-revolution policy would require a navy to project power overseas."
+        }
+      ]
+    },
+    {
+      "id": "wilhelmshaven-carrier-raid-and-interwar-carrier-programs",
+      "videoId": "3tgFoWRDxvI",
+      "slug": "wilhelmshaven-carrier-raid-and-interwar-carrier-programs",
+      "title": "How a successful 1918 carrier raid could accelerate fleet carriers",
+      "kind": "qa",
+      "start": "2:52:56",
+      "end": "2:54:06",
+      "topics": [
+        "wilhelmshaven-raid",
+        "aircraft-carriers",
+        "naval-aviation",
+        "interwar-navies"
+      ],
+      "summary": "A successful British carrier strike on Wilhelmshaven would give naval aviation a dramatic combat proof before the Washington Naval Conference.",
+      "body": "Dr. Clarke expects a successful 1918 raid that sank or forced out a significant part of the German fleet to trigger a major carrier-construction response. Navies would treat aircraft carriers as demonstrated fleet weapons rather than experimental auxiliaries. Britain and other powers could enter the early 1920s with more purpose-built fleet carriers already under construction, changing the starting assumptions of the Washington treaty negotiations. The counterfactual links one operational success to procurement, doctrine, and arms-control consequences.",
+      "question": "What would change if the planned British carrier raid on Wilhelmshaven had taken place in 1918 and succeeded?",
+      "answerShort": "It would likely trigger a major carrier-building program and put more fleet carriers under construction before the Washington Naval Conference.",
+      "sourcePath": "src/transcripts/txt/2024-03-31_T23-49-25_bruships-145-naval-history-questions-answered-and-will-it-be-lego-building-or-book-boxing_3tgFoWRDxvI.txt",
+      "evidence": [
+        {
+          "start": "2:52:56",
+          "end": "2:54:06",
+          "note": "The answer says a successful raid would generate intense interest in carriers and could put fleet-carrier programs underway before the Washington treaty."
         }
       ]
     },
@@ -753,6 +1047,33 @@
       ]
     },
     {
+      "id": "early-twin-turret-light-cruisers-and-caliber-growth",
+      "videoId": "3tgFoWRDxvI",
+      "slug": "early-twin-turret-light-cruisers-and-caliber-growth",
+      "title": "How early twin-turret cruisers could accelerate gun growth",
+      "kind": "qa",
+      "start": "3:16:52",
+      "end": "3:18:23",
+      "topics": [
+        "light-cruisers",
+        "turret-design",
+        "naval-gunnery",
+        "royal-navy"
+      ],
+      "summary": "Adopting twin-gun light-cruiser turrets during the First World War could mature British mounting design and encourage larger cruiser calibers sooner.",
+      "body": "Dr. Clarke imagines early British light cruisers using arrangements derived from five-turret capital-ship layouts, with multiple twin mountings replacing single shielded guns. Repeated work on those mountings would leave the Royal Navy far more experienced with cruiser turrets by 1918 and would influence foreign designers as well. He also expects the larger turret margin to encourage movement from six-inch weapons toward 7.5-inch and eventually 9.2-inch cruiser guns. The answer connects one layout decision to industrial learning and a wider change in cruiser armament.",
+      "question": "What changes if the Royal Navy starts designing twin-turret light cruisers during the First World War?",
+      "answerShort": "Britain gains much earlier experience with cruiser turrets, influences other navies, and may progress to 7.5-inch and 9.2-inch cruiser guns sooner.",
+      "sourcePath": "src/transcripts/txt/2024-03-31_T23-49-25_bruships-145-naval-history-questions-answered-and-will-it-be-lego-building-or-book-boxing_3tgFoWRDxvI.txt",
+      "evidence": [
+        {
+          "start": "3:16:52",
+          "end": "3:18:23",
+          "note": "The answer proposes early multi-turret layouts, greater British experience by war's end, foreign influence, and a possible progression to larger cruiser calibers."
+        }
+      ]
+    },
+    {
       "id": "helldiver-crash-and-british-rejection",
       "videoId": "3tgFoWRDxvI",
       "slug": "helldiver-crash-and-british-rejection",
@@ -776,6 +1097,33 @@
           "start": "3:19:23",
           "end": "3:21:18",
           "note": "The answer says rejection predated the crash and links the decision to role duplication and logistical efficiency."
+        }
+      ]
+    },
+    {
+      "id": "cva-01-and-nuclear-powered-british-carriers",
+      "videoId": "3tgFoWRDxvI",
+      "slug": "cva-01-and-nuclear-powered-british-carriers",
+      "title": "Why CVA-01 was Britain's nuclear-carrier opportunity",
+      "kind": "qa",
+      "start": "3:22:53",
+      "end": "3:26:26",
+      "topics": [
+        "cva-01",
+        "aircraft-carriers",
+        "nuclear-propulsion",
+        "royal-navy"
+      ],
+      "summary": "CVA-01 offered a plausible point for Britain to adopt nuclear carrier propulsion, but government cost priorities favored existing oil-fired practice and nuclear submarines.",
+      "body": "Dr. Clarke says a somewhat smaller counterpart to the first American nuclear carriers deserved serious consideration within the CVA-01 project. Britain already operated nuclear submarines and possessed relevant propulsion experience, yet ministers treated nuclear power as an added carrier cost while viewing submarines as the more important future investment. Oil-fired carriers were familiar and appeared cheaper in the immediate budget. He argues that this saved money in the short term while surrendering a valuable long-term capability, making CVA-01 the clearest missed opening for a British nuclear-powered carrier.",
+      "question": "Should the Royal Navy have built nuclear-powered fleet carriers during the Cold War?",
+      "answerShort": "Yes; CVA-01 was the practical opportunity, but the government prioritized cost savings and nuclear submarines while retaining familiar oil-fired carrier propulsion.",
+      "sourcePath": "src/transcripts/txt/2024-03-31_T23-49-25_bruships-145-naval-history-questions-answered-and-will-it-be-lego-building-or-book-boxing_3tgFoWRDxvI.txt",
+      "evidence": [
+        {
+          "start": "3:22:53",
+          "end": "3:26:26",
+          "note": "The answer identifies CVA-01 as the opportunity, contrasts nuclear-submarine priorities with carrier costs, and explains why oil propulsion appeared easier to retain."
         }
       ]
     },
@@ -834,6 +1182,33 @@
       ]
     },
     {
+      "id": "cold-war-warship-secrecy-after-export",
+      "videoId": "3tgFoWRDxvI",
+      "slug": "cold-war-warship-secrecy-after-export",
+      "title": "Why exported Cold War warships can keep British records closed",
+      "kind": "qa",
+      "start": "3:41:37",
+      "end": "3:43:03",
+      "topics": [
+        "cold-war",
+        "warship-exports",
+        "naval-intelligence",
+        "allied-navies"
+      ],
+      "summary": "Technical records can remain sensitive after a ship leaves British service because allied navies still operate vessels based on the same systems and design baseline.",
+      "body": "Dr. Clarke doubts that technological change alone will quickly open more Cold War warship records. Former British ships remain important parts of allied fleets, and even modernized vessels still rely on much of their original design and machinery. Releasing detailed British information could therefore expose capabilities or vulnerabilities belonging to the current operator. The fair course is to preserve secrecy until those allied ships also leave service, after which fuller disclosure becomes much more likely.",
+      "question": "Will advancing technology make detailed information on Cold War warships available sooner?",
+      "answerShort": "Not while former British ships remain in allied service, because their original systems and design baselines can still make those records operationally sensitive.",
+      "sourcePath": "src/transcripts/txt/2024-03-31_T23-49-25_bruships-145-naval-history-questions-answered-and-will-it-be-lego-building-or-book-boxing_3tgFoWRDxvI.txt",
+      "evidence": [
+        {
+          "start": "3:41:37",
+          "end": "3:43:03",
+          "note": "The answer explains that exported ships remain critical to allied fleets and that releasing their British baseline information could undermine the current operator's security."
+        }
+      ]
+    },
+    {
       "id": "best-and-worst-landplane-carrier-conversions",
       "videoId": "3tgFoWRDxvI",
       "slug": "best-and-worst-landplane-carrier-conversions",
@@ -884,6 +1259,31 @@
           "start": "3:53:58",
           "end": "3:54:46",
           "note": "The answer allows a prewar race home through Suez and explains why Britain would not necessarily stop it before hostilities."
+        }
+      ]
+    },
+    {
+      "id": "surviving-american-carriers-as-comparative-evidence",
+      "videoId": "3tgFoWRDxvI",
+      "slug": "surviving-american-carriers-as-comparative-evidence",
+      "title": "What surviving American carriers reveal about interwar naval aviation",
+      "kind": "notable_point",
+      "start": "4:07:56",
+      "end": "4:10:33",
+      "topics": [
+        "aircraft-carriers",
+        "museum-ships",
+        "naval-aviation",
+        "naval-historiography"
+      ],
+      "summary": "Preserved American carriers provide physical evidence for comparing how the United States, Britain, and Japan approached interwar carrier design and aviation systems.",
+      "body": "Because no comparable British or Japanese fleet carrier survives, Dr. Clarke treats preserved American ships as an essential physical starting point rather than a universal model. Their machinery, spaces, and arrangements reveal one navy's assumptions, which can then be compared with documentary evidence for the other two powers. He rejects the idea that one side simply got carrier development right while the others got it wrong; each built around its own strategic circumstances and made different mistakes. For Japan, he identifies pilot training and replacement as a deeper wartime weakness than aircraft design alone, because the aviation system was not prepared for a long peer conflict.",
+      "sourcePath": "src/transcripts/txt/2024-03-31_T23-49-25_bruships-145-naval-history-questions-answered-and-will-it-be-lego-building-or-book-boxing_3tgFoWRDxvI.txt",
+      "evidence": [
+        {
+          "start": "4:07:56",
+          "end": "4:10:33",
+          "note": "The discussion explains the comparative value of surviving American carriers, cautions against one-right-answer analysis, and identifies Japanese pilot replacement as a major weakness."
         }
       ]
     },
