@@ -18,6 +18,7 @@ function input(overrides: Partial<VideoSegmentAuditRiskInput> = {}): VideoSegmen
     videoId: "abc123",
     videoTitle: "Sample video",
     canonicalSourcePath: sourcePath,
+    processLogEntries: 0,
     transcriptBytes: 10_000,
     shardBytes: 2_000,
     durationSeconds: 3_600,
@@ -102,4 +103,5 @@ test("route precedence beats score and TSV uses risk terminology", () => {
   assert.equal(ranked[0]?.auditRoute, "repair_required");
   assert.match(tsv.split("\n")[0] ?? "", /audit_route\taudit_risk_score\trisk_tier/u);
   assert.match(tsv.split("\n")[0] ?? "", /last_segment_position_pct/u);
+  assert.match(tsv.split("\n")[0] ?? "", /needs_further_processing\tprocess_log_entries\ttranscript_bytes/u);
 });

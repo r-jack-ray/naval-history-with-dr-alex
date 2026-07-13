@@ -37,6 +37,7 @@ test("CLI maps canonical processing states, isolates malformed shards, and emits
     await writeFile(logPath, [
       "timestamp;shardPath;result;needsFurtherProcessing;notes",
       "2026-07-12T20:00:00;src/derived/video-segments/follow_follow1.json;reviewed;yes;more work",
+      "2026-07-12T20:00:00;src/derived/video-segments/follow_follow1.json;reviewed;yes;still more work",
       "2026-07-12T20:00:01;src/derived/video-segments/done_done1.json;closed;no;intentional empty",
     ].join("\n"), "utf8");
 
@@ -46,10 +47,19 @@ test("CLI maps canonical processing states, isolates malformed shards, and emits
     const output = await readFile(outputPath, "utf8");
     const lines = output.trimEnd().split("\n");
     assert.match(lines[0] ?? "", /audit_route\taudit_risk_score\trisk_tier/u);
+    assert.match(lines[0] ?? "", /needs_further_processing\tprocess_log_entries\ttranscript_bytes/u);
     assert.doesNotMatch(lines[0] ?? "", /probability/u);
     assert.match(lines[1] ?? "", /repair_required/u);
     assert.match(output, /follow_up_required/u);
-    assert.match(output, /\tdone1\tDone\tno\t/u);
+    const header = (lines[0] ?? "").split("\t");
+    const rows = lines.slice(1).map((line) => line.split("\t"));
+    const fileStemIndex = header.indexOf("file_stem");
+    const processLogEntriesIndex = header.indexOf("process_log_entries");
+    const follow = rows.find((row) => row[fileStemIndex]?.endsWith("follow_follow1.json"));
+    const repair = rows.find((row) => row[fileStemIndex]?.endsWith("repair_repair1.json"));
+    assert.equal(follow?.[processLogEntriesIndex], "2");
+    assert.equal(repair?.[processLogEntriesIndex], "0");
+    assert.match(output, /\tdone1\tDone\tno\t1\t/u);
   } finally {
     await rm(root, { recursive: true, force: true });
   }

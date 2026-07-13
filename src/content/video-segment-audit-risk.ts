@@ -24,6 +24,7 @@ export interface VideoSegmentAuditRiskInput {
   videoId: string;
   videoTitle: string;
   canonicalSourcePath?: string;
+  processLogEntries: number;
   transcriptBytes: number | undefined;
   shardBytes: number;
   durationSeconds: number | undefined;
@@ -44,6 +45,7 @@ export interface VideoSegmentAuditRiskRow {
   filePath: string | undefined;
   videoTitle: string;
   needsFurtherProcessing: ProcessingState;
+  processLogEntries: number;
   transcriptBytes: number | undefined;
   shardBytes: number;
   shardToTranscriptRatio: number | undefined;
@@ -206,6 +208,7 @@ export function analyzeVideoSegmentRisk(input: VideoSegmentAuditRiskInput): Vide
     filePath: input.filePath,
     videoTitle: input.videoTitle,
     needsFurtherProcessing: input.needsFurtherProcessing,
+    processLogEntries: input.processLogEntries,
     transcriptBytes: input.transcriptBytes,
     shardBytes: input.shardBytes,
     shardToTranscriptRatio: positive(input.transcriptBytes) ? input.shardBytes / input.transcriptBytes : undefined,
@@ -241,7 +244,7 @@ export function rankVideoSegmentAuditRisks(rows: VideoSegmentAuditRiskRow[]): Vi
 export function renderVideoSegmentAuditRiskTsv(rows: VideoSegmentAuditRiskRow[]): string {
   const headers = [
     "file_stem", "rank", "audit_route", "audit_risk_score", "risk_tier", "video_id", "video_title",
-    "needs_further_processing", "transcript_bytes", "shard_bytes", "shard_to_transcript_ratio", "duration_minutes",
+    "needs_further_processing", "process_log_entries", "transcript_bytes", "shard_bytes", "shard_to_transcript_ratio", "duration_minutes",
     "segment_count", "qa_count", "valid_qa_count", "qa_temporal_bins_covered", "segments_per_hour",
     "first_segment_position_pct", "last_segment_position_pct", "temporal_bins_covered", "largest_anchor_gap_pct",
     "valid_anchor_count", "invalid_anchor_count", "missing_source_path_segments", "wrong_source_path_segments",
@@ -249,7 +252,7 @@ export function renderVideoSegmentAuditRiskTsv(rows: VideoSegmentAuditRiskRow[])
   ];
   const body = rows.map((row) => [
     row.filePath ?? row.fileStem, row.rank, row.auditRoute, row.auditRiskScore, row.riskTier, row.videoId, row.videoTitle,
-    row.needsFurtherProcessing, row.transcriptBytes ?? "", row.shardBytes, format(row.shardToTranscriptRatio, 4),
+    row.needsFurtherProcessing, row.processLogEntries, row.transcriptBytes ?? "", row.shardBytes, format(row.shardToTranscriptRatio, 4),
     format(row.durationMinutes, 1), row.segmentCount, row.qaCount, row.validQaCount, row.qaTemporalBinsCovered,
     format(row.segmentsPerHour, 2), format(row.firstSegmentPositionPct, 1), format(row.lastSegmentPositionPct, 1),
     row.temporalBinsCovered, format(row.largestAnchorGapPct, 1), row.validAnchorCount, row.invalidAnchorCount,

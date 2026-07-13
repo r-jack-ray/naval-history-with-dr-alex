@@ -45,6 +45,10 @@ async function main(): Promise<void> {
   const manifestByStem = uniqueMap(manifest, (item) => item.fileStem, "file stem");
   const manifestByVideoId = uniqueMap(manifest, (item) => item.videoId, "video ID");
   const processingLog = parseSiteContentProcessingLog(await readFile(options.processingLog, "utf8"), manifest);
+  const processLogEntriesByFileStem = new Map<string, number>();
+  for (const record of processingLog.records) {
+    processLogEntriesByFileStem.set(record.fileStem, (processLogEntriesByFileStem.get(record.fileStem) ?? 0) + 1);
+  }
   const shardNames = (await readdir(options.segmentsInput))
     .filter((name) => name.endsWith(".json") && name !== "topics.json")
     .sort();
@@ -96,6 +100,7 @@ async function main(): Promise<void> {
       videoId: manifestEntry?.videoId ?? shardVideoId ?? "unknown",
       videoTitle,
       canonicalSourcePath: contentRootPath(transcriptPath),
+      processLogEntries: processLogEntriesByFileStem.get(canonicalStem) ?? 0,
       transcriptBytes,
       shardBytes,
       durationSeconds: manifestEntry?.lastEndSeconds,
