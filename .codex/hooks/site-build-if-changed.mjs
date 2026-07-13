@@ -45,6 +45,7 @@ const siteInputPaths = [
 ];
 const archiveCacheVersion = 2;
 const siteCacheVersion = 3;
+const runStartedAt = new Date();
 
 async function main() {
   const args = process.argv.slice(2);
@@ -407,7 +408,26 @@ async function writeCache(cachePath, cache) {
   }
 }
 
-main().catch((error) => {
+try {
+  await main();
+} catch (error) {
   console.error(error instanceof Error ? error.stack : error);
   process.exitCode = 1;
-});
+} finally {
+  const runEndedAt = new Date();
+  console.log(`Run Time: ${formatRunTime(runEndedAt - runStartedAt)}`);
+  console.log(`Start Time: ${runStartedAt.toISOString()}`);
+  console.log(`End Time: ${runEndedAt.toISOString()}`);
+}
+
+function formatRunTime(milliseconds) {
+  const hours = Math.floor(milliseconds / 3_600_000);
+  const minutes = Math.floor((milliseconds % 3_600_000) / 60_000);
+  const seconds = Math.floor((milliseconds % 60_000) / 1_000);
+  const remainder = milliseconds % 1_000;
+  return `${hours.toString().padStart(2, "0")}:${minutes
+    .toString()
+    .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}.${remainder
+    .toString()
+    .padStart(3, "0")}`;
+}
