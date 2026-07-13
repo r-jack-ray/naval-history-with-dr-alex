@@ -34,6 +34,7 @@
     "alternate:fetch:transcript": "npm run build && node dist/scripts/get-video-transcript.js",
     "alternate:fetch:transcripts": "npm run build && node dist/scripts/fetch-transcript-batch.js",
     "alternate:fetch:transcripts:retry": "npm run alternate:fetch:transcripts -- --retry-failed",
+    "report:transcript-problems": "npm run build && node dist/scripts/report-transcript-problems.js",
 
     "site:dev": "astro dev",
     "site:check": "npm run generate:site-data && npm run site:check:generated",
