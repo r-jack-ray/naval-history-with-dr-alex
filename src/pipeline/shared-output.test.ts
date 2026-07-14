@@ -54,6 +54,7 @@ test("validation hooks generate the archive once before their generated-data che
   };
   const contentHook = await readFile(join(repositoryRoot, ".codex", "hooks", "validate-content-pipeline.ps1"), "utf8");
   const siteHook = await readFile(join(repositoryRoot, ".codex", "hooks", "validate-site.ps1"), "utf8");
+  const siteBuildWrapper = await readFile(join(repositoryRoot, ".codex", "hooks", "site-build-if-changed.mjs"), "utf8");
 
   assert.equal((contentHook.match(/dist\/scripts\/generate-site-data\.js/gu) ?? []).length, 1);
   assert.equal((siteHook.match(/dist\/scripts\/generate-site-data\.js/gu) ?? []).length, 1);
@@ -63,6 +64,8 @@ test("validation hooks generate the archive once before their generated-data che
   assert.match(siteHook, /site:check:generated/u);
   assert.match(siteHook, /site:build:generated/u);
   assert.match(packageJson.scripts["generate:site-data"] ?? "", /--recover-stale -- node/u);
+  assert.match(siteBuildWrapper, /manifest\?\.schemaVersion !== 3/u);
+  assert.match(siteBuildWrapper, /"src\/transcripts\/manifest\.json"/u);
   assert.doesNotMatch(packageJson.scripts["site:check:generated"] ?? "", /generate:site-data/u);
   assert.doesNotMatch(packageJson.scripts["site:build:generated"] ?? "", /generate:site-data/u);
 });

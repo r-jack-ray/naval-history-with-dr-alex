@@ -176,7 +176,7 @@ async function validateSiteArchive() {
     throw error;
   }
 
-  if (manifest?.schemaVersion !== 2) {
+  if (manifest?.schemaVersion !== 3) {
     return invalidArchive("the archive manifest schema version is unsupported");
   }
   if (

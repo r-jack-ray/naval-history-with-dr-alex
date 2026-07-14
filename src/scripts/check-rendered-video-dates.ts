@@ -176,7 +176,12 @@ function validateBruships250(
     throw new Error("Bruships 250 does not have the refreshed canonical date/runtime contract.");
   }
   const fragment = fragmentsByUrl.get(`/videos/${video.slug}/`);
-  if (fragment === undefined || !fragment.content.includes("DateJul 12, 2026Runtime4:32:47FormatStream")) {
+  if (
+    fragment === undefined ||
+    !fragment.content.includes("DateJul 12, 2026") ||
+    !fragment.content.includes("Runtime4:32:47") ||
+    !fragment.content.includes("FormatStream")
+  ) {
     throw new Error("Bruships 250 Pagefind content does not contain the refreshed public metadata.");
   }
 }
