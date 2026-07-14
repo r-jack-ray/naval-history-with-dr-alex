@@ -60,6 +60,7 @@ interface MigrationPlan {
 
 interface CliOptions {
   output?: string;
+  mapping?: string;
   writeReferences: boolean;
 }
 
@@ -71,11 +72,13 @@ async function main(): Promise<void> {
   const metadataRecords = requireArray(metadataStore.videos, `${metadataPath} videos`) as VideoMetadataRecord[];
   const metadataById = new Map(metadataRecords.map((record) => [record.videoId, record]));
   const transcripts = requireArray(manifest.transcripts, `${manifestPath} transcripts`);
-  const plan = await buildMigrationPlan(
-    transcripts,
-    metadataById,
-    requireString(metadataStore.generatedAt, `${metadataPath} generatedAt`),
-  );
+  const plan = options.mapping === undefined
+    ? await buildMigrationPlan(
+        transcripts,
+        metadataById,
+        requireString(metadataStore.generatedAt, `${metadataPath} generatedAt`),
+      )
+    : await readMigrationPlan(options.mapping);
 
   if (options.output !== undefined) {
     await writeTextAtomically(options.output, `${JSON.stringify(plan, null, 2)}\n`);
@@ -453,16 +456,32 @@ function parseArgs(args: string[]): CliOptions {
       const value = args[++index];
       if (value === undefined) throw new Error("Missing value for --output.");
       options.output = value;
+    } else if (arg === "--mapping") {
+      const value = args[++index];
+      if (value === undefined) throw new Error("Missing value for --mapping.");
+      options.mapping = value;
     } else if (arg === "--write-references") {
       options.writeReferences = true;
     } else if (arg === "--help" || arg === "-h") {
-      console.log("Usage: npm run migrate:video-timestamps -- [--output <path>] [--write-references]");
+      console.log(
+        "Usage: npm run migrate:video-timestamps -- [--output <path>] [--mapping <path> --write-references]",
+      );
       process.exit(0);
     } else {
       throw new Error(`Unknown argument: ${arg ?? ""}`);
     }
   }
   return options;
+}
+
+async function readMigrationPlan(path: string): Promise<MigrationPlan> {
+  const value = await readJsonObject(path);
+  if (value.schemaVersion !== 1) throw new Error(`Migration map schemaVersion must be 1: ${path}`);
+  const records = requireArray(value.records, `${path} records`);
+  if (records.some((record) => !requireRecord(record, `${path} record`).videoId)) {
+    throw new Error(`Migration map contains an invalid record: ${path}`);
+  }
+  return value as unknown as MigrationPlan;
 }
 
 main().catch((error: unknown) => {

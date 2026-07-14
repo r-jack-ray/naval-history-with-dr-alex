@@ -19,10 +19,16 @@ Use a readable filename stem that keeps the YouTube video ID at the end:
 txt/2026-06-14_T05-29-19_title-slug_videoId.txt
 ```
 
-If an exact publish or stream timestamp is not known, omit the timestamp prefix
-and use `title-slug_videoId.txt`. The ID must remain in the filename. Once a
-record is stored, its manifest `fileStem` remains authoritative during refetches
-even if title or timestamp metadata later changes.
+The timestamp is the video's canonical UTC date: an eligible completed stream's
+actual start when available, its scheduled start only as a completion-proven
+fallback, or the raw YouTube publication time. Upcoming, live, processing, and
+zero-duration videos are deferred and do not receive stored transcript files.
+The ID must remain in the filename. Once a record is stored, its manifest
+`fileStem` remains authoritative during refetches even if title or timestamp
+metadata later changes.
+
+Manifest schema 3 stores the normalized value as `videoDateAt` and its source as
+`videoDateKind`; it does not overload a publication-named field with stream time.
 
 ## Workflow
 
@@ -46,9 +52,10 @@ npm run alternate:fetch:transcripts
 ```
 
 The batch runner reads `src/channel/episodes.json`, skips stored transcripts,
-uses one shared request limiter, and writes `fetch-status.json` after each
-attempt. Previous failures are skipped on resume unless `--retry-failed` is
-provided.
+defers videos whose metadata does not yet prove completion and processing, uses
+one shared request limiter, and writes schema-2 `fetch-status.json` after each
+attempt. Deferred videos are not attempts or previous failures. Previous real
+failures are skipped on resume unless `--retry-failed` is provided.
 
 Generate a diagnostic report from the saved failures without contacting YouTube
 or retrying any transcript:
@@ -62,7 +69,7 @@ The command reads `fetch-status.json` and writes
 confidence level and remain limited to evidence saved by prior fetch runs.
 
 By default, the fetcher reads `src/channel/video-metadata.json` for title and
-publish timestamp naming. Use `--video-title` and `--video-timestamp` when
+canonical video-date naming. Use `--video-title` and `--video-timestamp` when
 naming metadata needs to be supplied manually, or `--no-metadata-lookup` to use
 only transcript-provided metadata. Use explicit `--txt-output` or `--tsv-output`
 only for ad hoc exports outside the store.

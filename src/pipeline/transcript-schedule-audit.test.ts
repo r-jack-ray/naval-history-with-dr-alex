@@ -84,12 +84,12 @@ test("rejects old-form shards when artifact checks require a manifest filename",
   assert.ok(audit.issues.some((issue) => issue.code === "checked-row-missing-shard"));
 });
 
-function record(videoId: string, publishedAt: string, count: number) {
+function record(videoId: string, videoDateAt: string, count: number) {
   return {
     videoId,
     fileStem: `stored_${videoId}`,
     videoTitle: `Title ${videoId}`,
-    videoPublishedAt: publishedAt,
+    videoDateAt,
     segmentCount: count,
     lastEndSeconds: count * 10,
     paths: { txt: `txt/stored_${videoId}.txt` },
@@ -97,7 +97,7 @@ function record(videoId: string, publishedAt: string, count: number) {
 }
 
 function row(state: string, item: ReturnType<typeof record>): string {
-  return `- [${state}] src/transcripts/txt/stored_${item.videoId}.txt | ${item.videoId} | ${item.videoPublishedAt} | rows=${item.segmentCount} | durationSeconds=${item.lastEndSeconds} | ${item.videoTitle}`;
+  return `- [${state}] src/transcripts/txt/stored_${item.videoId}.txt | ${item.videoId} | ${item.videoDateAt} | rows=${item.segmentCount} | durationSeconds=${item.lastEndSeconds} | ${item.videoTitle}`;
 }
 
 function schedule(path: string, number: number, count: number, files: number, rows: string[]) {

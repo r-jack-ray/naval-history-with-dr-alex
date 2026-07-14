@@ -107,7 +107,7 @@ export interface SiteContentAuditIssue {
 export interface SiteContentBacklogItem {
   videoId: string;
   title: string;
-  publishedAt?: string;
+  videoDateAt?: string;
   transcriptPath?: string;
   segmentCount?: number;
   durationSeconds?: number;
@@ -121,7 +121,7 @@ export interface TranscriptManifestRecord {
   videoId: string;
   fileStem?: string;
   videoTitle?: string;
-  videoPublishedAt?: string;
+  videoDateAt?: string;
   segmentCount?: number;
   firstStartSeconds?: number;
   lastEndSeconds?: number;
@@ -273,8 +273,8 @@ export function renderSiteContentAuditReport(audit: SiteContentAudit): string {
   } else {
     for (const item of audit.uncuratedTranscripts) {
       lines.push(`- ${item.title} (${item.videoId})`);
-      if (item.publishedAt !== undefined) {
-        lines.push(`  - Published: ${item.publishedAt}`);
+      if (item.videoDateAt !== undefined) {
+        lines.push(`  - Date: ${item.videoDateAt}`);
       }
       if (item.transcriptPath !== undefined) {
         lines.push(`  - TXT: ${item.transcriptPath}`);
@@ -909,8 +909,8 @@ function backlogItem(record: TranscriptManifestRecord, transcriptRoot: string): 
     videoId: record.videoId,
     title: record.videoTitle ?? record.videoId,
   };
-  if (record.videoPublishedAt !== undefined) {
-    item.publishedAt = record.videoPublishedAt;
+  if (record.videoDateAt !== undefined) {
+    item.videoDateAt = record.videoDateAt;
   }
   const txtPath = manifestTxtRepoPath(record, transcriptRoot);
   if (txtPath !== undefined) {
@@ -926,8 +926,8 @@ function backlogItem(record: TranscriptManifestRecord, transcriptRoot: string): 
 }
 
 function compareTranscriptRecords(left: TranscriptManifestRecord, right: TranscriptManifestRecord): number {
-  const rightDate = right.videoPublishedAt ?? "";
-  const leftDate = left.videoPublishedAt ?? "";
+  const rightDate = right.videoDateAt ?? "";
+  const leftDate = left.videoDateAt ?? "";
   const dateCompare = rightDate.localeCompare(leftDate);
   return dateCompare === 0 ? left.videoId.localeCompare(right.videoId) : dateCompare;
 }

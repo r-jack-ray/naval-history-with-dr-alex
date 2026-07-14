@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "updatedAt": "2026-07-13T21:29:08.215Z",
   "inputPath": "src/channel/episodes.json",
   "outputRoot": "src/transcripts",
@@ -14,7 +14,15 @@
     "fetchedCount": 0,
     "failedCount": 0,
     "pendingCount": 0,
-    "totalFailureCount": 16
+    "totalFailureCount": 16,
+    "skippedDeferredCount": 0,
+    "deferredCounts": {
+      "upcoming": 0,
+      "live_in_progress": 0,
+      "processing": 0,
+      "metadata_missing": 0,
+      "invalid_metadata": 0
+    }
   },
   "failures": [
     {
@@ -26,8 +34,8 @@
         "streams"
       ],
       "title": "Patreon 8 - “The Treaty of London 1930” by Daniel Freedman",
-      "publishedAt": "2020-10-27T18:06:35+00:00",
-      "channelOrder": 2037
+      "channelOrder": 2037,
+      "videoDateAt": "2020-10-27T18:06:35Z"
     },
     {
       "videoId": "048g_xMLsqo",
@@ -38,8 +46,8 @@
         "streams"
       ],
       "title": "Bruships 57: Some Cool Books and Naval History Chat",
-      "publishedAt": "2021-10-17T17:02:43+00:00",
-      "channelOrder": 1933
+      "channelOrder": 1933,
+      "videoDateAt": "2021-10-17T17:02:43Z"
     },
     {
       "videoId": "2FM59LjWsyI",
@@ -50,8 +58,8 @@
         "streams"
       ],
       "title": "Arethusa Class Cruisers",
-      "publishedAt": "2020-11-03T18:05:31+00:00",
-      "channelOrder": 2034
+      "channelOrder": 2034,
+      "videoDateAt": "2020-11-03T18:05:31Z"
     },
     {
       "videoId": "8vkrEqP1xUM",
@@ -62,8 +70,8 @@
         "streams"
       ],
       "title": "Bruships 230: Naval History Questions Answered Live...2nd Start",
-      "publishedAt": "2026-02-01T21:10:48+00:00",
-      "channelOrder": 1508
+      "channelOrder": 1508,
+      "videoDateAt": "2026-02-01T21:10:48Z"
     },
     {
       "videoId": "cP_PpcABQFQ",
@@ -74,8 +82,8 @@
         "streams"
       ],
       "title": "Patreon 35: The Naval Career of Jackie Fisher - First Sea Lord Extraordinaire",
-      "publishedAt": "2021-10-14T17:31:13+00:00",
-      "channelOrder": 1934
+      "channelOrder": 1934,
+      "videoDateAt": "2021-10-14T17:31:13Z"
     },
     {
       "videoId": "dcjjHarz1Ew",
@@ -86,8 +94,8 @@
         "videos"
       ],
       "title": "Amagi Class Battlecruiser: No Sound, but still a Question",
-      "publishedAt": "2023-04-30T02:00:30-07:00",
-      "channelOrder": 656
+      "channelOrder": 656,
+      "videoDateAt": "2023-04-30T09:00:30Z"
     },
     {
       "videoId": "hVm0HoGdq-g",
@@ -98,8 +106,8 @@
         "streams"
       ],
       "title": "Bruships 39: Books Off the Shelf...",
-      "publishedAt": "2021-02-28T18:10:33+00:00",
-      "channelOrder": 1993
+      "channelOrder": 1993,
+      "videoDateAt": "2021-02-28T18:10:33Z"
     },
     {
       "videoId": "IZui0sFSIdE",
@@ -110,7 +118,8 @@
         "videos"
       ],
       "title": "Blonde Class: Scout Cruisers of the Royal Navy (Long Patrol)",
-      "channelOrder": 862
+      "channelOrder": 862,
+      "videoDateAt": "2022-06-28T18:00:05Z"
     },
     {
       "videoId": "nvCV5fqNkCE",
@@ -121,8 +130,8 @@
         "streams"
       ],
       "title": "Patreon 84: The underpaid and underappreciated Merchant Marine of WWII",
-      "publishedAt": "2023-09-21T18:05:18+00:00",
-      "channelOrder": 1749
+      "channelOrder": 1749,
+      "videoDateAt": "2023-09-21T18:05:18Z"
     },
     {
       "videoId": "o9DACEN7Sr0",
@@ -133,8 +142,8 @@
         "streams"
       ],
       "title": "Bruships 171: Oh Kallax my Kallax, Where art though my Kallax",
-      "publishedAt": "2024-11-17T19:33:08+00:00",
-      "channelOrder": 1650
+      "channelOrder": 1650,
+      "videoDateAt": "2024-11-17T19:33:08Z"
     },
     {
       "videoId": "oD6sV0zuWcU",
@@ -145,8 +154,8 @@
         "streams"
       ],
       "title": "Bruships 53: The Big Gun Era.... bad sound...",
-      "publishedAt": "2021-07-18T16:57:44+00:00",
-      "channelOrder": 1957
+      "channelOrder": 1957,
+      "videoDateAt": "2021-07-18T16:57:44Z"
     },
     {
       "videoId": "PLcyjZ29LHA",
@@ -157,8 +166,8 @@
         "streams"
       ],
       "title": "'The Imperial High Seas Fleet: Tarkin replaces Tirpitz & Thrawn replaces Scheer at Jutland...’",
-      "publishedAt": "2021-10-24T17:16:52+00:00",
-      "channelOrder": 1931
+      "channelOrder": 1931,
+      "videoDateAt": "2021-10-24T17:16:52Z"
     },
     {
       "videoId": "QJDfypv9XxY",
@@ -169,7 +178,8 @@
         "videos"
       ],
       "title": "Town Class Part 5 of 7: Southamptons",
-      "channelOrder": 1234
+      "channelOrder": 1234,
+      "videoDateAt": "2020-12-15T13:42:32Z"
     },
     {
       "videoId": "s37gUDr_Z9w",
@@ -180,8 +190,8 @@
         "videos"
       ],
       "title": "Building an R Class to fight a convoy battle vs the Scharnhorsts",
-      "publishedAt": "2023-05-31T11:00:20-07:00",
-      "channelOrder": 627
+      "channelOrder": 627,
+      "videoDateAt": "2023-05-31T18:00:20Z"
     },
     {
       "videoId": "usSZIzRtuas",
@@ -192,7 +202,8 @@
         "videos"
       ],
       "title": "No Sound??? Battle of the Atlantic: Escort Procurement - Comment Response",
-      "channelOrder": 1068
+      "channelOrder": 1068,
+      "videoDateAt": "2021-08-23T16:00:32Z"
     },
     {
       "videoId": "xsE4uYFn1m0",
@@ -203,8 +214,8 @@
         "videos"
       ],
       "title": "Town Class Part 5 of 7: Southamptons (inadvertent silent movie style...6&7 are ok)",
-      "publishedAt": "2020-12-13T06:00:26-08:00",
-      "channelOrder": 1237
+      "channelOrder": 1237,
+      "videoDateAt": "2020-12-13T14:00:26Z"
     }
   ],
   "metadataInput": "src/channel/video-metadata.json",

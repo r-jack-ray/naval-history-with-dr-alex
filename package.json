@@ -37,6 +37,7 @@
     "alternate:fetch:transcripts:retry:safe": "npm run alternate:fetch:transcripts -- --retry-failed --force --request-delay-ms 60000",
     "report:transcript-problems": "npm run build && node dist/scripts/report-transcript-problems.js",
     "migrate:video-timestamps": "npm run build && node dist/scripts/migrate-video-timestamps.js",
+    "audit:video-timestamp-alignment": "npm run build && node dist/scripts/audit-video-timestamp-alignment.js",
 
     "site:dev": "astro dev",
     "site:check": "npm run generate:site-data && npm run site:check:generated",
@@ -44,6 +45,7 @@
     "site:build": "node .codex/hooks/site-build-if-changed.mjs --generate",
     "site:build:generated": "node .codex/hooks/site-build-if-changed.mjs",
     "site:build:full": "astro build --silent && pagefind --site site/dist",
+    "check:rendered-video-dates": "npm run build && node dist/scripts/check-rendered-video-dates.js",
     "site:preview": "astro preview",
 
     "preaudit:lighthouse:home": "node -e \"require('fs').mkdirSync('reports/lighthouse', { recursive: true })\"",

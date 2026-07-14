@@ -50,6 +50,31 @@ test("uses livestream time instead of the advance upload timestamp", () => {
   assert.equal(archive.videos[0]?.videoKind, "stream");
 });
 
+test("excludes upcoming videos and all dependent public records", () => {
+  const input = sampleInput();
+  input.metadataStore.videos[0]!.snippet!.liveBroadcastContent = "upcoming";
+  input.metadataStore.videos[0]!.liveStreamingDetails = {
+    scheduledStartTime: "2026-07-12T18:30:00Z",
+  };
+
+  const archive = buildSiteArchiveData(input);
+
+  assert.deepEqual(archive.videos, []);
+  assert.deepEqual(archive.segments, []);
+  assert.equal(archive.topics[0]?.videoCount, 0);
+  assert.equal(archive.topics[0]?.segmentCount, 0);
+});
+
+test("rejects processed videos with a zero runtime instead of publishing P0D", () => {
+  const input = sampleInput();
+  input.metadataStore.videos[0]!.contentDetails = { duration: "P0D" };
+
+  assert.throws(
+    () => buildSiteArchiveData(input),
+    /invalid or non-positive duration: P0D/u,
+  );
+});
+
 test("splits and reconstructs the logical archive with 64 deterministic segment buckets", () => {
   const archive = buildSiteArchiveData(sampleInput());
   const split = splitSiteArchiveData(archive);

@@ -48,7 +48,7 @@ interface TranscriptManifestRecord {
   videoId: string;
   fileStem?: string;
   videoTitle?: string;
-  videoPublishedAt?: string;
+  videoDateAt?: string;
   segmentCount?: number;
   lastEndSeconds?: number;
   paths?: { txt?: string };
@@ -63,7 +63,7 @@ interface ScheduleEntry {
   state: string;
   transcriptPath: string;
   videoId: string;
-  publishedAt: string;
+  videoDateAt: string;
   rows: number;
   durationSeconds: number;
   title: string;
@@ -244,7 +244,7 @@ function parseSchedule(source: ScheduleSource, issues: TranscriptScheduleAuditIs
       state,
       transcriptPath: match[2] ?? "",
       videoId: match[3] ?? "",
-      publishedAt: match[4] ?? "",
+      videoDateAt: match[4] ?? "",
       rows: Number(match[5]),
       durationSeconds: Number(match[6]),
       title: match[7] ?? "",
@@ -268,9 +268,9 @@ function validateOrder(entries: ScheduleEntry[], issues: TranscriptScheduleAudit
   let previous: ScheduleEntry | undefined;
   let previousTime: number | undefined;
   for (const entry of entries) {
-    const time = Date.parse(entry.publishedAt);
+    const time = Date.parse(entry.videoDateAt);
     if (Number.isNaN(time)) {
-      addIssue(issues, "error", "invalid-schedule-published-at", `Invalid publication timestamp ${entry.publishedAt}.`, entry.schedulePath, entry.line, entry.videoId);
+      addIssue(issues, "error", "invalid-schedule-video-date", `Invalid video timestamp ${entry.videoDateAt}.`, entry.schedulePath, entry.line, entry.videoId);
       continue;
     }
     if (previous && previousTime !== undefined && time > previousTime) {
@@ -286,7 +286,7 @@ function validateManifestMetadata(entry: ScheduleEntry, record: TranscriptManife
     addIssue(issues, "error", "schedule-video-id-mismatch", `${entry.transcriptPath} lists video ${entry.videoId}, but the manifest lists ${record.videoId}.`, entry.schedulePath, entry.line, entry.videoId);
   }
   validateScheduleSourcePathContract(entry, record, issues);
-  const metadataMatches = record.videoPublishedAt === entry.publishedAt
+  const metadataMatches = record.videoDateAt === entry.videoDateAt
     && record.segmentCount === entry.rows
     && record.lastEndSeconds === entry.durationSeconds
     && record.videoTitle === entry.title;
