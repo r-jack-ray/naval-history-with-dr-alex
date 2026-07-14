@@ -1,6 +1,6 @@
 # Canonical Video Timestamp Alignment and Website Date Repair Plan
 
-Status: planning only. Do not perform the repository-wide timestamp migration as part of this task.
+Status: implemented on `codex/timestamp-alignment-remediation`.
 
 Timestamp: 2026-07-13T17:43:08-05:00
 
@@ -16,30 +16,30 @@ Make one completion-and-timestamp rule govern transcript eligibility, transcript
 
 Preserve YouTube's raw publication, scheduled-start, actual-start, and actual-end values as distinct source facts. Do not overwrite raw metadata to make one field serve several meanings.
 
-## Current Repository Snapshot
+## Review-Time Repository Snapshot
 
-Refresh every count immediately before implementation because transcript workers and inventory fetches can change the tree.
+The implementation refreshed every count before mutation because transcript workers and inventory fetches can change the tree. That refresh superseded the preliminary 601-record estimate below: authoritative metadata for `670r43jZo5o` proved it complete and added it to the migration, producing 602 physical stem migrations, 604 manifest timestamp-value corrections, 17,233 segment `sourcePath` replacements, and 465 processing-log path replacements.
 
-- The transcript manifest currently has 2,061 records, and metadata is available for all of them.
-- 601 manifest records use a filename timestamp later than the confirmed livestream `actualStartTime`. These require physical TXT and shard renames.
-- Two additional records require manifest-field correction without a physical rename:
+- The transcript manifest has 2,061 records, and metadata is available for all of them.
+- 602 manifest records used a filename timestamp that disagreed with the canonical completed-video date. These required physical TXT and shard renames.
+- Two additional records required manifest-field correction without a physical rename:
   - `6ylMAfzwEAc`: the filename already uses `2026-07-09T18:30:27Z`, but the manifest records the later `2026-07-10T10:54:57Z` publication time.
   - `dQ-0-R4NNIU`: the filename already uses `2026-07-11T18:30:06Z`, but the manifest lacks the corresponding timestamp field.
-- The expected starting scope is therefore 601 physical stem migrations and 603 manifest timestamp-value corrections.
-- The 601 renamed shards include 585 nonempty shards and 16 zero-segment shards. Do not call all 16 intentionally empty without stronger evidence: only six currently have matching processing-log closure evidence, and only one records `needsFurtherProcessing: false` in the shard.
-- The nonempty shards contain 17,158 segment records whose `sourcePath` values use the old TXT names.
-- The canonical processing log contains 464 path references to 280 affected stems.
+- The refreshed scope was therefore 602 physical stem migrations and 604 manifest timestamp-value corrections.
+- The preliminary 601 renamed shards included 585 nonempty shards and 16 zero-segment shards. Do not infer curation completion from the migration; the additional refreshed record was migrated according to the same identity and path rules.
+- The migrated shards contained 17,233 segment records whose `sourcePath` values used the old TXT names.
+- The canonical processing log contained 465 affected path references.
 - Active audit queues contain 321 affected shard paths: 197 in `task-notes/file-auditing-01.txt` and 124 in `task-notes/file-auditing-02.txt`. Both files are ignored/untracked, so Git commits, a separate worktree, and Git reverts do not preserve them.
-- After the 601 target stems are applied, 1,360 transcript-backed `src/channel/episodes.json` `fileStem` values still need alignment to the manifest. The same 1,360 generated `fileStem` values will change on regeneration. Among the 929 transcript-backed records with an actual start, 925 episode rows also lack the exact `streamStartAt` value. If episode `publishedAt` is normalized to raw YouTube publication semantics, 1,328 transcript-backed rows require correction. Refresh these counts in the migration planner rather than treating the 601 physical renames as the whole inventory diff.
-- All 2,081 current episode rows say `transcript.status=not_checked`, including all 2,061 manifest-backed videos. Episode-master regeneration must restore stored transcript state/TXT references from the manifest as well as the authoritative stem.
-- Generated `videos.json` already represents every canonical instant correctly, but not with the intended contract: 559 timestamp strings use equivalent non-UTC-offset spelling, and 839 generated date display values are noncanonical (725 ordinary relative values, 75 `Streamed ... ago` values, one `Scheduled for ...` value, and 38 absolute values with the wrong UTC calendar date). Renaming the generated fields changes all 2,061 video objects. The 64 generated segment buckets also contain the same 17,158 old `sourcePath` references. Generated output must be regenerated, never hand-edited.
-- Current auxiliary scope includes eight affected references in `reports/site-content-backlog.md`, 601 in ignored `reports/video-segment-audit-risk.tsv`, and a transcript-problem report whose totals can drift from `fetch-status.json`. Regenerate each current report from authoritative inputs or explicitly classify it as stale/historical.
-- Four videos currently resolve as upcoming and are correctly absent from the transcript manifest, TXT/shard directories, and failure state: `mmppT8c_kb8`, `Ec-QeRtmPzw`, `U5LfsnBSt8w`, and `Nfv-qSf9wLs`. Treat this list as a dated snapshot, not a permanent assertion; derive the regression set from current metadata because these videos will eventually start.
-- `670r43jZo5o` is the one curated record backed by stale pre-completion metadata: `uploadStatus=uploaded`, `duration=P0D`, and no `actualEndTime`. Refresh it before migration/site generation. If refreshed metadata still cannot prove completion and processing, exclude it from the generated site rather than publishing `P0D` or scheduled wording.
+- The preliminary audit also found 1,360 transcript-backed `src/channel/episodes.json` `fileStem` values needing alignment to the manifest, with the same generated `fileStem` changes on regeneration. Among the 929 transcript-backed records then known to have an actual start, 925 episode rows lacked the exact `streamStartAt` value. Normalizing episode `publishedAt` to raw YouTube publication semantics required broader inventory correction. The implementation refreshed these counts rather than treating physical renames as the whole inventory diff.
+- All 2,081 review-time episode rows said `transcript.status=not_checked`, including all 2,061 manifest-backed videos. Episode-master regeneration therefore had to restore stored transcript state/TXT references from the manifest as well as the authoritative stem.
+- Generated `videos.json` represented every canonical instant correctly, but not with the intended contract: 559 timestamp strings used equivalent non-UTC-offset spelling, and 839 generated date display values were noncanonical (725 ordinary relative values, 75 `Streamed ... ago` values, one `Scheduled for ...` value, and 38 absolute values with the wrong UTC calendar date). Renaming the generated fields changed all 2,061 video objects. The 64 generated segment buckets contained 17,233 old `sourcePath` references after the metadata refresh. Generated output was regenerated, never hand-edited.
+- Current auxiliary scope included eight affected references in `reports/site-content-backlog.md`, 601 in ignored `reports/video-segment-audit-risk.tsv`, and a transcript-problem report whose totals can drift from `fetch-status.json`. Each current report was regenerated from authoritative inputs.
+- Four videos resolved as upcoming at implementation time and were correctly absent from the transcript manifest, TXT/shard directories, and failure state: `mmppT8c_kb8`, `Ec-QeRtmPzw`, `U5LfsnBSt8w`, and `Nfv-qSf9wLs`. Treat this list as a dated snapshot, not a permanent assertion; derive the regression set from current metadata because these videos will eventually start.
+- `670r43jZo5o` was the one curated record backed by stale pre-completion metadata. Its bounded refresh returned `uploadStatus=processed`, `duration=PT4H32M47S`, `actualStartTime=2026-07-12T18:30:05Z`, and `actualEndTime=2026-07-12T23:02:45Z`, so it was eligible for migration and publication using its actual start.
 
 The worktree was clean at review time (`## main...origin/main`). Recheck immediately before implementation; any later dirty state on an affected path is a stop/preservation condition. The implementation must not run the broad migration while another task can write transcripts, shards, schedules, the processing log, or generated archive data.
 
-The user made a complete backup of the project folder, excluding reproducible `node_modules`, immediately before this review. Before mutation, record the backup's absolute path and creation time and spot-check that manifest, TXT, shard, queue, log, inventory, and generated files are readable. Keep the deterministic mapping, byte snapshots, and Git history as the primary rollback tools so restoring the whole backup cannot overwrite legitimate work created afterward.
+The user confirmed a complete backup of the project folder, excluding reproducible `node_modules`, immediately before implementation. Its location was not needed as a migration input and the implementation did not modify it. The deterministic mapping, local byte snapshots and hashes, and Git history remain the primary rollback tools so restoring the whole backup cannot overwrite legitimate work created afterward.
 
 ## Canonical Timestamp Model
 
@@ -82,7 +82,7 @@ Return readiness/defer state, the timestamp, and its source kind. Use the same r
 ### Filename and display contracts
 
 - Transcript TXT and per-video shard stems use the canonical effective instant formatted in UTC as `yyyy-MM-dd_THH-mm-ss`.
-- The manifest's stored `fileStem` remains authoritative during ordinary operation. Recomputing 601 existing stems is allowed only through this reviewed one-time migration.
+- The manifest's stored `fileStem` remains authoritative during ordinary operation. Recomputing the 602 migrated stems was allowed only through this reviewed one-time migration.
 - For each migrated artifact, replace only the leading timestamp token and preserve the remainder of the stored stem byte-for-byte. Do not regenerate the title slug from mutable current metadata.
 - Website sorting and “latest” selection use the canonical instant, not visible date text.
 - Website visible dates are formatted from the canonical instant. Keep the site's current UTC calendar-date behavior for this repair and make that timezone explicit in code/tests; do not introduce viewer-local date changes incidentally.
@@ -94,7 +94,7 @@ Return readiness/defer state, the timestamp, and its source kind. Use the same r
 
 1. Let active transcript and audit lanes finish. Preserve their intended work before migration.
 2. Record the branch tip and `git status --short --branch` without cleaning or resetting unrelated changes. Require every affected tracked source to match `HEAD` before the pure rename step; otherwise a `git mv` can fold pre-existing content edits into the rename commit and lose `R100` status.
-3. Record and spot-check the user's full project-folder backup.
+3. Record the user's confirmation that a full project-folder backup exists; do not require access to or write into that last-resort backup.
 4. Create byte-for-byte snapshots plus SHA-256 hashes for ignored/untracked operational files that Git cannot restore, especially both active audit queues and ignored current reports. Record hashes for mutable tracked JSON/log inputs as well.
 5. Capture a preliminary read-only baseline of all counts and stale-reference classes. Do not create the executable mapping until the shared resolver in Phase 2 exists and passes its unit tests; the migration must not duplicate timestamp precedence logic.
 
@@ -113,7 +113,7 @@ Stop before mutation if:
 - the current counts differ from the refreshed audit without an explained inventory change;
 - active automation cannot be paused or updated to understand the new stems.
 
-Save the reviewed mapping, reverse mapping, original-value journal, ignored-file byte snapshots, and hashes under a protected `.tmp/` migration directory and in the user's external backup location. Use that exact mapping to drive `git mv`; do not independently reconstruct destinations in a second script. Do not commit a large transient mapping unless it is intentionally needed as a durable migration record.
+Save the reviewed mapping, reverse mapping, original-value journal, ignored-file byte snapshots, and hashes under a protected `.tmp/` migration directory. Leave the user's complete external backup untouched. Use that exact mapping to drive `git mv`; do not independently reconstruct destinations in a second script. Do not commit a large transient mapping unless it is intentionally needed as a durable migration record.
 
 ## Phase 2: Centralize Timestamp Resolution and Eligibility
 
@@ -160,7 +160,7 @@ Treat these as explicit schema migrations, not incidental field edits:
 - split generated archive manifest schema `2` to `3`;
 - fetch-status schema `1` to `2` if deferred counters/reasons change shape.
 
-Update producers, readers, runtime validators, fixtures, tests, hashes, and generated `index.json` together. Because the manifest and archive record contracts change, expect all 2,061 manifest/generated video records to receive schema-field churn even though only 603 manifest timestamp values are wrong.
+Update producers, readers, runtime validators, fixtures, tests, hashes, and generated `index.json` together. Because the manifest and archive record contracts change, expect all 2,061 manifest/generated video records to receive schema-field churn even though only 604 manifest timestamp values were wrong after metadata refresh.
 
 Prevent future `fileStem` and transcript-state drift: every episode-master producer must join the transcript manifest by video ID, use the manifest's stored stem/TXT state for stored transcripts instead of recomputing it from current title/date metadata, and preserve `not_checked` only for videos absent from the manifest. Site generation must validate the episode/manifest/shard identity. If the site generator does not read the manifest directly, pass the authoritative stored stem through the episode-master input and fail on disagreement.
 
@@ -192,10 +192,10 @@ Git does not store an explicit rename map in a commit. It records paths and file
 
 Perform this only on a dedicated migration branch built from the fully preserved integrated tip, and only when the implementation task authorizes commits. Prefer the paused operational checkout because the two active queue files and some reports are ignored/untracked and will not appear in a separate Git worktree. If a separate worktree is required, explicitly copy in, hash, update, verify, and fold back those operational files before resuming any writer.
 
-1. Let `N` be the final reviewed physical-migration count (currently expected to be 601). Use the mapping to run `git mv` for `N` TXT files and `N` shard files.
+1. Let `N` be the final reviewed physical-migration count (`N=602` after the required metadata refresh). Use the mapping to run `git mv` for `N` TXT files and `N` shard files.
 2. Do not edit manifest values, JSON contents, logs, queues, reports, inventory, or generated files in this first step.
 3. Stage only the `2N` rename operations. Do not use `git add -A` in the operational checkout, and do not stage unrelated changes.
-4. Require `--name-status` to report `2N` `R100` records and `--summary` to report `2N` `rename ... (100%)` summaries, with no delete/add pairs for mapped files. At the current expected `N=601`, this is 1,202 rename operations and 2,404 old/new pathname endpoints:
+4. Require `--name-status` to report `2N` `R100` records and `--summary` to report `2N` `rename ... (100%)` summaries, with no delete/add pairs for mapped files. At the refreshed `N=602`, this is 1,204 rename operations and 2,408 old/new pathname endpoints:
 
 ```powershell
 git diff --cached --name-status -M100%
@@ -223,14 +223,14 @@ The pure rename commit is the authoritative Git mapping even if an aggregate hos
 
 With writers still frozen and the pure rename commit complete, apply the reviewed mapping to file contents and references in one controlled operation:
 
-1. Migrate the manifest to its new schema. Update the 601 affected `fileStem`/`paths.txt` pairs, correct the 603 known timestamp values, and populate `videoDateAt`/`videoDateKind` on every record as required by the new contract.
+1. Migrate the manifest to its new schema. Update the 602 affected `fileStem`/`paths.txt` pairs, correct the 604 timestamp values established by the refreshed plan, and populate `videoDateAt`/`videoDateKind` on every record as required by the new contract.
 2. Update every affected segment `sourcePath` to the new TXT path; preserve segment IDs, timestamps, evidence, wording, ordering, and topics.
 3. Update affected shard paths in `src/derived/site-content-processing.log` while preserving the header, physical row order, timestamps, results, processing decisions, and notes.
 4. Replace exact affected path tokens in the two active ignored audit queues without changing row order, checkbox state, or unrelated text. Verify their 197/124 replacement counts and post-write hashes against the saved originals.
 5. Regenerate or normalize `src/channel/episodes.json` from raw metadata plus the transcript manifest so raw publication, scheduled start, actual start, and actual end are distinct; normalized `videoDateAt`/`videoDateKind` come from the resolver; every stored `fileStem` and transcript state matches the post-migration manifest; and ambiguous legacy date fields are removed after compatibility validation. Review the expected broader 1,360 stem corrections and other schema churn explicitly.
 6. Regenerate current reports from authoritative inputs: `reports/site-content-backlog.md`, ignored `reports/video-segment-audit-risk.tsv`, and `reports/transcript-problems.md` when status data changes. Do not hand-edit generated report totals.
 7. Search tracked current code, data, active queues, logs, and current reports for every old stem. The tracked historical transcript backlog currently contains 595 affected references; either update it because it remains executable or explicitly whitelist it as historical in the stale-reference audit. Do not allow a blanket search to produce an unexplained nonzero result.
-8. Regenerate the 64 archive segment buckets in Phase 6 to replace their 17,158 derived `sourcePath` values; never edit those generated files directly.
+8. Regenerate the 64 archive segment buckets in Phase 6 to replace their 17,233 derived `sourcePath` values; never edit those generated files directly.
 
 Before replacing content, render every complete replacement file into a staging directory, validate the staged set, and retain an original-value/byte journal. Then use per-file atomic replacement plus a resumable execution journal; do not describe hundreds of filesystem operations as one transaction. Review the second commit to confirm that it modifies the already-renamed shards instead of adding another set of paths.
 
@@ -341,7 +341,7 @@ If `audit:site-content` rewrites `reports/site-content-backlog.md`, review the d
 
 After a forced site build, inspect at least:
 
-1. Bruships 250 (`670r43jZo5o`): the detail-page field label is `Date`, and the video-index card shows the same label-free standard value `Jul 12, 2026`, both derived from `2026-07-12T18:30:00Z`. No `Scheduled for` text appears, `Format`/the card eyebrow says `Stream`, and runtime is a refreshed positive duration rather than `P0D`. If metadata is still not processed, the page and card are absent and the build reports why.
+1. Bruships 250 (`670r43jZo5o`): the detail-page field label is `Date`, and the video-index card shows the same label-free standard value `Jul 12, 2026`, both derived from the refreshed actual start `2026-07-12T18:30:05Z` rather than the scheduled `2026-07-12T18:30:00Z`. No `Scheduled for` text appears, `Format`/the card eyebrow says `Stream`, and runtime is the refreshed positive `PT4H32M47S` rather than `P0D`.
 2. `6ylMAfzwEAc`: `Date` is `Jul 9, 2026`, not its later July 10 raw publication date.
 3. `dQ-0-R4NNIU`: `Date` is `Jul 11, 2026`.
 4. One ordinary non-live upload: its canonical publication date remains correct, the detail page uses the `Date` label with `Format` saying `Video`, and its compact card keeps the same absolute date unlabeled.
@@ -357,7 +357,7 @@ After a forced site build, inspect at least:
 - All completed/processed streams use actual start time when available; scheduled time is only a completion-proven fallback.
 - Every manifest, TXT filename, shard filename, segment `sourcePath`, active queue path, and current log/report reference is internally aligned.
 - Every stored episode uses the manifest's authoritative stem and transcript state, and another inventory refresh preserves that alignment.
-- Git history contains a pure `R100` rename commit for all `2N` moved TXT/shard artifacts (currently expected 1,202), followed by separate schema/reference-alignment and generated-output commits; ignored queue/report updates have verified hashes outside Git.
+- Git history contains a pure `R100` rename commit for all `2N` moved TXT/shard artifacts (1,204 after refresh), followed by separate schema/reference-alignment and generated-output commits; ignored queue/report updates have verified hashes outside Git.
 - Raw publication metadata remains distinguishable from stream start metadata.
 - The public site displays and sorts by the same canonical timestamp used for naming.
 - Every explicitly labeled public date field is labeled `Date`; compact cards keep their standard absolute date unlabeled. Stale scraped `publishedText` cannot override the UTC-derived value, and no scheduled/relative date wording appears.
@@ -377,4 +377,4 @@ After a forced site build, inspect at least:
 
 ## Implementer Handoff
 
-Implement this as repository-owner maintenance, not as a transcript-curation skill run. Work single-agent, freeze all transcript/shard writers, verify the user's backup and ignored-file snapshots, implement/test the shared resolver before producing the final dry-run mapping, and stop on any unexplained count change or collision. Preserve unrelated dirty changes. When commit authority is supplied, use the paused operational checkout on a dedicated branch unless ignored-file transfer is handled explicitly; create the pure `git mv` commit before changing contents, then use separate schema/reference-alignment, generated-output, and compatibility-removal commits. Do not push or alter external automation unless the implementation task explicitly authorizes it. Close out with exact before/after counts, the `R100` rename count, queue/report hashes, affected files, validation results, website QA results, remaining stale-reference searches and historical whitelist, and any blocked follow-up.
+Implement this as repository-owner maintenance, not as a transcript-curation skill run. Work single-agent, freeze all transcript/shard writers, acknowledge the user's complete backup and verify local ignored-file snapshots, implement/test the shared resolver before producing the final dry-run mapping, and stop on any unexplained count change or collision. Preserve unrelated dirty changes. When commit authority is supplied, use the paused operational checkout on a dedicated branch unless ignored-file transfer is handled explicitly; create the pure `git mv` commit before changing contents, then use separate schema/reference-alignment, generated-output, and compatibility-removal commits. Do not push or alter external automation unless the implementation task explicitly authorizes it. Close out with exact before/after counts, the `R100` rename count, queue/report hashes, affected files, validation results, website QA results, remaining stale-reference searches and historical whitelist, and any blocked follow-up.
