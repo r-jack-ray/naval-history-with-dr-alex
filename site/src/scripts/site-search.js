@@ -63,6 +63,14 @@
     return element;
   };
 
+  const appendTime = (parent, datetime, label) => {
+    const element = document.createElement("time");
+    element.dateTime = datetime;
+    element.textContent = label;
+    parent.appendChild(element);
+    return element;
+  };
+
   const setBusy = (busy) => {
     results.setAttribute("aria-busy", String(busy));
     showMoreButton.disabled = busy;
@@ -177,12 +185,19 @@
     if (type === "segment") {
       labels.push(firstText(meta.kind), firstText(meta.timestamp), firstText(meta.video));
     }
+    const videoDateAt = firstText(meta.videoDateAt);
+    const videoDateLabel = firstText(meta.videoDateLabel);
+    if ((type === "video" || type === "segment") && (!videoDateAt || !videoDateLabel)) {
+      return null;
+    }
 
     return {
       type,
       title,
       url,
       label: labels.filter(Boolean).join(" · "),
+      videoDateAt,
+      videoDateLabel,
       summary: firstText(data.plain_excerpt) || firstText(data.excerpt),
       topics: textValues(filters.topic),
     };
@@ -192,7 +207,11 @@
     const article = document.createElement("article");
     article.className = "segment-card search-result-card";
 
-    appendText(article, "span", item.label, "label");
+    const label = appendText(article, "span", item.label, "label");
+    if (item.videoDateAt && item.videoDateLabel) {
+      label.append(" · ");
+      appendTime(label, item.videoDateAt, item.videoDateLabel);
+    }
 
     const heading = document.createElement("h2");
     const link = document.createElement("a");

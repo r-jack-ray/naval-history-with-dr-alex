@@ -3,6 +3,7 @@ import type { GetStaticPaths, Page } from "astro";
 
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import {
+  findVideoById,
   segmentsForBrowse,
   type ArchiveSegment,
 } from "../../../data/archive";
@@ -24,6 +25,10 @@ const baseAwareUrl = (path: string | undefined): string | undefined => {
 };
 const previousUrl = baseAwareUrl(page.url.prev);
 const nextUrl = baseAwareUrl(page.url.next);
+const datedSegments = page.data.map((segment) => ({
+  segment,
+  video: findVideoById(segment.videoId),
+}));
 ---
 
 <BaseLayout
@@ -53,13 +58,14 @@ const nextUrl = baseAwareUrl(page.url.next);
 
     <section class="record-grid archive-record-grid" aria-label="Time Notes" data-pagefind-ignore>
       {
-        page.data.map((segment) => (
+        datedSegments.map(({ segment, video }) => (
           <article class="segment-card archive-segment-card" data-segment-slug={segment.slug}>
             <span class="label">{segment.kindLabel} · {segment.start}</span>
             <h2><a href={`${baseUrl}segments/${segment.slug}/`}>{segment.title}</a></h2>
             <p>{segment.summary}</p>
             <p class="parent-video">
               From <a href={`${baseUrl}videos/${segment.videoSlug}/`}>{segment.videoTitle}</a>
+              {video && <> · <time datetime={video.videoDateAt}>{video.videoDateLabel}</time></>}
             </p>
             <div class="result-actions">
               <a class="primary-link" href={segment.youtubeUrl}>Watch at this time</a>

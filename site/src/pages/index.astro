@@ -44,7 +44,7 @@ const activeTopics = [...archiveTopics]
           height="360"
         />
         <div>
-          <span>Latest video guide</span>
+          <span>Latest video guide · <time datetime={latestVideo.videoDateAt}>{latestVideo.videoDateLabel}</time></span>
           <strong>{latestVideo.title}</strong>
         </div>
       </a>

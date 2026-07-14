@@ -55,6 +55,14 @@
     return element;
   };
 
+  const appendTime = (parent, datetime, label) => {
+    const element = document.createElement("time");
+    element.dateTime = datetime;
+    element.textContent = label;
+    parent.appendChild(element);
+    return element;
+  };
+
   const selectedMode = () => {
     const selected = form.querySelector('input[name="mode"]:checked');
     return selected && validModes.has(selected.value) ? selected.value : "all";
@@ -217,6 +225,8 @@
       kind: firstText(meta.kind),
       timestamp: firstText(meta.timestamp),
       videoTitle: firstText(meta.video),
+      videoDateAt: firstText(meta.videoDateAt),
+      videoDateLabel: firstText(meta.videoDateLabel),
       videoGuideUrl: internalUrl(meta.videoGuideUrl),
       watchUrl: youtubeUrl(meta.watchUrl),
       topics: textValues(filters.topic),
@@ -228,6 +238,8 @@
       item.kind,
       item.timestamp,
       item.videoTitle,
+      item.videoDateAt,
+      item.videoDateLabel,
       item.videoGuideUrl,
       item.watchUrl,
     ];
@@ -252,6 +264,8 @@
     videoLink.href = item.videoGuideUrl;
     videoLink.textContent = item.videoTitle;
     parent.appendChild(videoLink);
+    parent.append(" · ");
+    appendTime(parent, item.videoDateAt, item.videoDateLabel);
 
     if (item.topics.length > 0) {
       const topicRow = document.createElement("div");

@@ -29,7 +29,7 @@ Treat the audit as repeatable, but track saturation per model and effort level. 
 
 ## Substance Rules
 
-- A good `body` usually has 2-8 compact sentences.
+- A good `body` usually has 4-8 compact sentences.
 - Name the subject directly: ship, navy, battle, class, policy, technical system, or strategic problem.
 - Explain the takeaway and learning value, not just why the record exists.
 - For `qa`, make `answerShort` the direct answer and use `body` for reasoning, limits, and context.

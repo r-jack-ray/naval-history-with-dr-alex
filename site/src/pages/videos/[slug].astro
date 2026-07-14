@@ -27,6 +27,8 @@ const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${c
   <Fragment slot="head">
     <meta data-pagefind-meta="video[content]" content={video.title} />
     <meta data-pagefind-meta="videoId[content]" content={video.videoId} />
+    <meta data-pagefind-meta="videoDateAt[content]" content={video.videoDateAt} />
+    <meta data-pagefind-meta="videoDateLabel[content]" content={video.videoDateLabel} />
     <meta data-pagefind-filter="video[content]" content={video.title} />
     {video.topics.map((topic) => <meta data-pagefind-filter="topic[content]" content={topic.title} />)}
   </Fragment>

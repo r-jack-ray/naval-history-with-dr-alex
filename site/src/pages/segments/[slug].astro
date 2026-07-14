@@ -25,6 +25,8 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   <Fragment slot="head">
     <meta data-pagefind-meta="video[content]" content={segment.videoTitle} />
     <meta data-pagefind-meta="videoId[content]" content={segment.videoId} />
+    {video && <meta data-pagefind-meta="videoDateAt[content]" content={video.videoDateAt} />}
+    {video && <meta data-pagefind-meta="videoDateLabel[content]" content={video.videoDateLabel} />}
     <meta data-pagefind-meta="timestamp[content]" content={segment.start} />
     <meta data-pagefind-meta="kind[content]" content={segment.kindLabel} />
     <meta data-pagefind-meta="kindKey[content]" content={segment.kind} />
@@ -82,6 +84,12 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
             <dt>Video</dt>
             <dd>{segment.videoTitle}</dd>
           </div>
+          {video && (
+            <div>
+              <dt>Date</dt>
+              <dd><time datetime={video.videoDateAt}>{video.videoDateLabel}</time></dd>
+            </div>
+          )}
           <div>
             <dt>Time</dt>
             <dd>{segment.start}{segment.end ? `-${segment.end}` : ""}</dd>
