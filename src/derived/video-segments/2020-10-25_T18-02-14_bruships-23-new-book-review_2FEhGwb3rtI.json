@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "videoId": "2FEhGwb3rtI",
-  "topics": ["book-reviews", "naval-history", "naval-strategy", "live-q-and-a"],
+  "topics": ["book-reviews", "naval-history", "naval-strategy", "live-q-and-a", "aircraft-carriers", "cruisers", "naval-aviation", "naval-treaties"],
   "segments": [
     {
       "id": "bruships-23-book-review-format",
@@ -13,7 +13,7 @@
       "end": "6:37",
       "topics": ["book-reviews", "naval-history"],
       "summary": "Dr. Clarke introduces a mixed selection of recently received naval-history books and explains why the range of subjects makes this Bruships session unusual.",
-      "body": "The stream is structured around short, candid appraisals rather than a single historical topic. Dr. Clarke flags that the books span different periods, navies, and levels of technical detail, so viewers can use the discussion to identify a useful next read. He also distinguishes books he has been sent for review from titles he has added for context.",
+      "body": "The stream is structured around short, candid appraisals rather than a single historical topic. Dr. Clarke flags that the books span different periods, navies, and levels of technical detail, so viewers can use the discussion to identify a useful next read. He also distinguishes books he has been sent for review from titles he has added for context. An illustrated Falkland Islands volume from Paul Morrison appears as an extra recommendation before the main Pen and Sword selection begins.",
       "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
       "evidence": [{"start": "3:14", "end": "6:37", "note": "He introduces the varied batch of books and the review format."}]
     },
@@ -46,6 +46,22 @@
       "evidence": [{"start": "15:36", "end": "20:31", "note": "He assesses the book and explains the carrier maintenance-versus-aircraft-number trade-off."}, {"start": "22:19", "end": "23:38", "note": "A quoted section explains the strategic importance of Abadan oil and tanker capacity."}, {"start": "25:51", "end": "26:57", "note": "He recommends the book as an accessible entry to the period."}]
     },
     {
+      "id": "british-carrier-deck-parks-and-aircraft-availability",
+      "videoId": "2FEhGwb3rtI",
+      "slug": "british-carrier-deck-parks-and-aircraft-availability",
+      "title": "British carrier deck parks depended on theatre and losses",
+      "kind": "qa",
+      "start": "20:53",
+      "end": "25:32",
+      "topics": ["aircraft-carriers", "royal-navy", "naval-aviation", "deck-parks", "aircraft-maintenance", "mediterranean"],
+      "question": "Did British carriers keep aircraft on deck in addition to their hangar complement?",
+      "answerShort": "Sometimes, especially for alert fighters in the Mediterranean, but Atlantic weather, folding-wing limits, combat losses, and unserviceability often prevented a full extra deck park.",
+      "summary": "An operational answer explains why nominal carrier capacity did not guarantee that a British ship could sustain an additional deck park.",
+      "body": "Dr. Clarke says storing aircraft permanently on deck made little sense in rough Atlantic conditions. British carriers did use deck parks in the Mediterranean, often keeping alert fighters ready for rapid launch. Whether those aircraft were truly additional to the hangar complement depended on how many machines were available at that moment. Combat losses and aircraft awaiting repair could reduce the air group before a theoretical deck park was filled. The exchange connects carrier capacity to weather, folding wings, readiness, and the attrition of sustained operations.",
+      "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
+      "evidence": [{"start": "20:53", "end": "21:46", "note": "He contrasts Atlantic conditions with Mediterranean alert-fighter deck parks."}, {"start": "24:25", "end": "25:32", "note": "He answers whether deck-park aircraft were additional and explains why losses and unserviceability often reduced the available complement."}]
+    },
+    {
       "id": "british-naval-intelligence-reading-order",
       "videoId": "2FEhGwb3rtI",
       "slug": "british-naval-intelligence-reading-order",
@@ -55,9 +71,23 @@
       "end": "40:25",
       "topics": ["book-reviews", "naval-intelligence", "enigma", "world-war-ii", "royal-navy"],
       "summary": "Andrew Boyd's century-spanning naval-intelligence history is praised for depth, while readers new to naval history are advised to build context first.",
-      "body": "The discussion uses the book's account of the naval Enigma effort to show its density: Hut 4, Hut 8, Alan Turing, cryptographic capacity, and intelligence assessment all appear in a short passage. Dr. Clarke considers it a superb reference for an experienced reader but warns that its concentration of detail can overwhelm a beginner. He recommends an introductory survey first, then returning to this volume once the institutions and wartime setting are more familiar.",
+      "body": "The discussion uses the book's account of the naval Enigma effort to show its density: Hut 4, Hut 8, Alan Turing, cryptographic capacity, and intelligence assessment all appear in a short passage. Dr. Clarke considers it a superb reference for an experienced reader but warns that its concentration of detail can overwhelm a beginner. He recommends an introductory survey first, then returning to this volume once the institutions and wartime setting are more familiar. In a later exchange he rejects the idea that the notes are simply badly arranged, arguing instead that the book contains enough material to have supported several separate volumes.",
       "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
-      "evidence": [{"start": "30:23", "end": "31:44", "note": "The book's scope and its challenge for first-time naval-history readers are introduced."}, {"start": "32:42", "end": "35:35", "note": "A passage covers the naval Enigma effort and the intelligence-production chain."}, {"start": "36:09", "end": "40:25", "note": "He explains the book's strengths and the recommended reading order."}]
+      "evidence": [{"start": "30:23", "end": "31:44", "note": "The book's scope and its challenge for first-time naval-history readers are introduced."}, {"start": "32:42", "end": "35:35", "note": "A passage covers the naval Enigma effort and the intelligence-production chain."}, {"start": "36:09", "end": "40:25", "note": "He explains the book's strengths and the recommended reading order."}, {"start": "3:19:53", "end": "3:20:34", "note": "He attributes the reading difficulty to the quantity of information rather than poor note arrangement."}]
+    },
+    {
+      "id": "carrier-protection-and-repair-geography",
+      "videoId": "2FEhGwb3rtI",
+      "slug": "carrier-protection-and-repair-geography",
+      "title": "Carrier protection followed repair geography",
+      "kind": "notable_point",
+      "start": "38:22",
+      "end": "39:53",
+      "topics": ["aircraft-carriers", "us-navy", "royal-navy", "ship-repair", "industrial-capacity", "naval-strategy"],
+      "summary": "A short discussion links American wooden flight decks and British armoured designs to where each navy expected to fight and repair its ships.",
+      "body": "Dr. Clarke treats flight-deck protection as an operational choice rather than a contest between universally better designs. The US Navy expected to fight Japan with limited forward steel-repair capacity, making replaceable wooden decking an intelligible solution. A navy expecting to operate far from its industrial base could value different protection and maintenance arrangements. He also notes that both the Royal Navy and US Navy understood a war against one another would be exceptionally costly. The watch point helps readers connect carrier construction to bases, repair facilities, and campaign geography.",
+      "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
+      "evidence": [{"start": "38:22", "end": "38:50", "note": "He explains how expected operating areas and distance from industry shaped carrier and aircraft design."}, {"start": "39:32", "end": "39:53", "note": "The discussion returns to the US wooden-deck judgment and the cost of an Anglo-American naval war."}]
     },
     {
       "id": "essex-class-photo-history-and-korean-war",
@@ -74,6 +104,20 @@
       "evidence": [{"start": "42:24", "end": "45:58", "note": "The book and its treatment of Essex-class modernization are described."}, {"start": "46:18", "end": "48:04", "note": "The Korean War carrier discussion and Sea Fury example appear here."}]
     },
     {
+      "id": "essex-production-and-invasion-loss-estimates",
+      "videoId": "2FEhGwb3rtI",
+      "slug": "essex-production-and-invasion-loss-estimates",
+      "title": "Essex production reflected invasion-loss estimates",
+      "kind": "notable_point",
+      "start": "49:24",
+      "end": "50:11",
+      "topics": ["essex-class", "aircraft-carriers", "us-navy", "world-war-ii", "invasion-of-japan", "industrial-capacity"],
+      "summary": "The scale of Essex-class construction is placed against American expectations of severe carrier losses during an invasion of Japan.",
+      "body": "The discussion moves from the 24 completed Essex-class carriers to the still larger wartime program of ships planned or under construction. Dr. Clarke says planners anticipated losing roughly twelve to sixteen carriers during an invasion of Japan. Those estimates help explain why American construction continued on such a vast scale. He uses the expected casualties to caution against reading late-war decisions without the fears and assumptions held at the time. The moment connects industrial output, operational planning, and the anticipated cost of ending the Pacific War.",
+      "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
+      "evidence": [{"start": "49:24", "end": "50:11", "note": "He links the wider Essex construction program to projected carrier losses in an invasion of Japan and to contemporary expectations of casualties."}]
+    },
+    {
       "id": "essex-versus-british-carrier-designs",
       "videoId": "2FEhGwb3rtI",
       "slug": "essex-versus-british-carrier-designs",
@@ -88,6 +132,68 @@
       "body": "Dr. Clarke calls Essex highly successful in its American context but resists treating it as a universal answer. He sees Implacable and Essex as designs with balancing advantages and disadvantages, while a Malta-class carrier with a comparable American air group could offer stronger protection and fighter-direction control. The exchange returns to the broader theme that carrying more aircraft is only one part of operational effectiveness.",
       "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
       "evidence": [{"start": "50:18", "end": "51:10", "note": "He compares Essex with Implacable and Malta as designs for different requirements."}, {"start": "54:50", "end": "55:15", "note": "He explains why Malta's protection and fighter-direction arrangements could be decisive."}]
+    },
+    {
+      "id": "sea-fury-versus-mig-15-in-korea",
+      "videoId": "2FEhGwb3rtI",
+      "slug": "sea-fury-versus-mig-15-in-korea",
+      "title": "Sea Fury pilots could make MiG-15 fights dangerous",
+      "kind": "qa",
+      "start": "51:26",
+      "end": "52:06",
+      "topics": ["sea-fury", "mig-15", "fleet-air-arm", "korean-war", "naval-aviation"],
+      "question": "How often did MiG-15s shoot down Sea Furies during the Korean War?",
+      "answerShort": "Not often; Dr. Clarke describes the encounter as a dangerous draw and says MiG pilots regarded the Sea Fury as a formidable opponent in experienced Fleet Air Arm hands.",
+      "summary": "A follow-up to the Essex-class review explains why a late piston fighter could still trouble early jets in Korea.",
+      "body": "Dr. Clarke says MiG-15s did not shoot down Sea Furies often. He characterizes encounters between them as a dangerous draw rather than a simple demonstration of jet superiority. MiG pilots regarded the Sea Fury as a serious opponent. He attributes part of that performance to the strong personalities and experience found among Fleet Air Arm aviators. The answer adds operational context to the better-known episode in which a Sea Fury shot down a MiG.",
+      "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
+      "evidence": [{"start": "51:26", "end": "52:06", "note": "He describes the Sea Fury and MiG-15 match-up and the Fleet Air Arm pilots involved."}]
+    },
+    {
+      "id": "marriott-versus-jordan-naval-books",
+      "videoId": "2FEhGwb3rtI",
+      "slug": "marriott-versus-jordan-naval-books",
+      "title": "Marriott photographs and Jordan analysis serve different readers",
+      "kind": "qa",
+      "start": "52:29",
+      "end": "53:33",
+      "topics": ["book-reviews", "naval-historiography", "essex-class", "treaty-cruisers", "naval-education"],
+      "question": "Should a reader choose Leo Marriott's illustrated naval books or John Jordan's treaty-era studies?",
+      "answerShort": "Dr. Clarke recommends both: Marriott offers accessible information and abundant photographs, while Jordan supplies the deeper comparative analysis.",
+      "summary": "A reading recommendation distinguishes an image-led entry point from a more analytical treatment of warship design and treaty limits.",
+      "body": "Dr. Clarke values Marriott's books for their photographs, clear presentation, and easy route into unfamiliar ships. He sees them as suitable even for a young reader who may need to ask about some technical terms. Jordan's books answer a different need by comparing designs and the treaty system in greater depth. Choosing between them would therefore discard one of two complementary ways of learning. The answer gives viewers a practical reading sequence rather than naming a single best book.",
+      "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
+      "evidence": [{"start": "52:29", "end": "53:33", "note": "He recommends both authors and explains the accessible photographic strengths of Marriott's books."}]
+    },
+    {
+      "id": "848-naval-air-squadron-hover-taxi-at-stanley",
+      "videoId": "2FEhGwb3rtI",
+      "slug": "848-naval-air-squadron-hover-taxi-at-stanley",
+      "title": "848 Naval Air Squadron hover-taxied through Stanley",
+      "kind": "notable_point",
+      "start": "59:03",
+      "end": "1:03:05",
+      "topics": ["fleet-air-arm", "848-naval-air-squadron", "commando-helicopter-force", "falklands-war", "sea-king-helicopters", "stanley"],
+      "summary": "A Fleet Air Arm anecdote shows how low-level helicopter flying became a practical way to locate a ceasefire meeting in Stanley.",
+      "body": "Dr. Clarke describes 848 Naval Air Squadron as part of the Commando Helicopter Force, flying Sea King Mark 4s and later Merlins for troop transport. Its pilots treated extremely low altitude as normal rather than exceptional. In the anecdote, a helicopter reached Stanley airport and then needed to locate the house where a ceasefire discussion would take place. Instead of landing and walking, the crew hover-taxied along the streets at roughly a foot and a half above the ground. The story gives viewers a vivid example of the precision and confidence expected in naval helicopter operations.",
+      "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
+      "evidence": [{"start": "59:03", "end": "59:50", "note": "He introduces 848 Squadron and the very low-level habits of Commando Helicopter Force pilots."}, {"start": "1:02:08", "end": "1:03:05", "note": "He recounts the hover-taxi through Stanley to locate a ceasefire meeting point."}]
+    },
+    {
+      "id": "town-class-missile-and-helicopter-modernization",
+      "videoId": "2FEhGwb3rtI",
+      "slug": "town-class-missile-and-helicopter-modernization",
+      "title": "A Town-class cruiser modernization with missiles and helicopters",
+      "kind": "qa",
+      "start": "1:03:23",
+      "end": "1:03:53",
+      "topics": ["town-class", "cruisers", "missiles", "helicopters", "ship-modernization", "hms-belfast"],
+      "question": "How might a Town-class cruiser be modernized to carry missiles and helicopters?",
+      "answerShort": "Dr. Clarke would remove X turret for a helicopter hangar, retain Y turret, place missiles between the after funnel and new structure, and modernize the power plant and crew arrangements.",
+      "summary": "A design answer turns the spare volume of a large interwar cruiser into a plausible missile-and-helicopter conversion.",
+      "body": "Dr. Clarke proposes removing X turret and building a helicopter hangar in its place while leaving Y turret aboard. Missile space could be created between the after funnel and the new aviation structure. He later adds that any navy returning such a cruiser to service would need to modernize both its machinery and its manpower demands. The large original engineering spaces could accept a much more modern power plant. The answer shows how hull volume, surviving gun armament, aviation facilities, propulsion, and crew costs have to be considered together.",
+      "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
+      "evidence": [{"start": "1:03:23", "end": "1:03:53", "note": "He lays out the turret, hangar, and missile-space arrangement."}, {"start": "3:21:11", "end": "3:21:24", "note": "He adds that staffing and the power plant would need modernization and notes the machinery space available."}]
     },
     {
       "id": "kaisers-u-boat-assault-on-america",
@@ -118,6 +224,20 @@
       "evidence": [{"start": "1:28:14", "end": "1:29:10", "note": "He introduces the book as a technical and visual reference."}, {"start": "1:29:39", "end": "1:34:35", "note": "The quoted material covers U-boat equipment, deck guns, and anti-aircraft limitations."}]
     },
     {
+      "id": "ise-hyuga-aviation-conversions-without-aircraft",
+      "videoId": "2FEhGwb3rtI",
+      "slug": "ise-hyuga-aviation-conversions-without-aircraft",
+      "title": "Ise and Hyuga gained flight decks but not air groups",
+      "kind": "notable_point",
+      "start": "1:41:31",
+      "end": "1:41:58",
+      "topics": ["ise-class", "imperial-japanese-navy", "naval-aviation", "hybrid-warships", "world-war-ii", "naval-logistics"],
+      "summary": "A compact note separates the physical conversion of Ise and Hyuga from Japan's ability to provide aircraft for the hybrid battleships.",
+      "body": "Ise and Hyuga received flight-deck facilities in place of their after turrets. Dr. Clarke emphasizes that the conversions did not produce functioning carrier air groups because suitable aircraft were no longer available. The ships instead served largely in transport roles late in the war. Their experience shows that installing aviation spaces is not the same as fielding trained aircraft, crews, and an operational system. This is a useful caution when comparing hybrid-warship specifications with actual wartime employment.",
+      "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
+      "evidence": [{"start": "1:41:31", "end": "1:41:58", "note": "He notes the flight-deck conversion, absence of suitable aircraft, and subsequent transport use."}]
+    },
+    {
       "id": "warships-after-washington-interwar-naval-design",
       "videoId": "2FEhGwb3rtI",
       "slug": "warships-after-washington-interwar-naval-design",
@@ -132,6 +252,22 @@
       "evidence": [{"start": "1:42:54", "end": "1:47:14", "note": "The book's purpose and its Italian cruiser material are introduced."}, {"start": "1:47:16", "end": "1:50:31", "note": "The discussion examines machinery space, armour thickness, range, and design trade-offs."}, {"start": "1:55:39", "end": "1:58:04", "note": "A French fast-destroyer example demonstrates how high-speed designs evolved."}]
     },
     {
+      "id": "armour-thickness-gun-calibre-and-metallurgy",
+      "videoId": "2FEhGwb3rtI",
+      "slug": "armour-thickness-gun-calibre-and-metallurgy",
+      "title": "Armour thickness is only a rough guide to shell resistance",
+      "kind": "qa",
+      "start": "1:53:12",
+      "end": "1:55:31",
+      "topics": ["naval-armour", "naval-gunnery", "ship-design", "metallurgy", "interwar-period"],
+      "question": "Can armour resistance be estimated directly from the calibre of the gun it is meant to defeat?",
+      "answerShort": "Only roughly: side armour near the shell calibre and deck armour near half that figure can be a starting estimate, but steel quality, metallurgy, range, and impact conditions create wide variation.",
+      "summary": "A technical answer explains why simple armour-to-gun ratios help with orientation but cannot replace material and ballistic context.",
+      "body": "Dr. Clarke accepts a rough rule of side armour near a shell's calibre and deck armour near half that thickness as an initial estimate. He immediately warns that the grade and purity of the steel can change the result substantially. His reading of interwar material leads him to rate British metallurgy ahead of several European rivals in the 1920s and 1930s, with the United States catching up during the 1940s. He links that advantage partly to continuing construction, experimentation, and investment. The answer teaches viewers to treat armour figures as evidence requiring context rather than as an automatic measure of protection.",
+      "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
+      "evidence": [{"start": "1:53:12", "end": "1:54:48", "note": "He gives the rough side- and deck-armour ratios and explains the importance of metallurgy."}, {"start": "1:55:12", "end": "1:55:31", "note": "He confirms that the estimate is useful only with considerable room for variation."}]
+    },
+    {
       "id": "warships-after-london-and-design-logic",
       "videoId": "2FEhGwb3rtI",
       "slug": "warships-after-london-and-design-logic",
@@ -144,6 +280,36 @@
       "body": "Dr. Clarke treats Warships after London as another strong guide to treaty-era shipbuilding and uses Italian cruiser changes to show how designers exchanged speed for protection and fleet utility. He argues that a design can have an intelligible strategic logic without proving successful in war. The larger lesson is to distinguish navies building for their own operational needs from navies caught in a narrow cycle of answering a rival's last design. This comparison gives readers a way to look beyond a ship's statistics to the strategic assumptions behind them.",
       "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
       "evidence": [{"start": "2:00:23", "end": "2:06:08", "note": "The book and the Italian cruiser design discussion are introduced."}, {"start": "2:06:28", "end": "2:09:42", "note": "He explains the comparative value of the books and the logic behind reactive procurement."}]
+    },
+    {
+      "id": "littorio-class-visual-rangefinders",
+      "videoId": "2FEhGwb3rtI",
+      "slug": "littorio-class-visual-rangefinders",
+      "title": "Why Littorio carried so many rangefinders",
+      "kind": "qa",
+      "start": "2:10:43",
+      "end": "2:10:58",
+      "topics": ["littorio-class", "italian-navy", "fire-control", "rangefinders", "radar"],
+      "question": "Why did the Littorio-class battleships carry such a large number of rangefinders?",
+      "answerShort": "They were designed before radar fire control could replace visual solutions, so the ships needed numerous optical rangefinders for their weapons and control positions.",
+      "summary": "A concise answer places Littorio's crowded fire-control appearance in the pre-radar environment.",
+      "body": "The many optical instruments on Littorio can look excessive when viewed from a radar-era perspective. Dr. Clarke points out that the class was designed before radar could provide the necessary firing information. Visual rangefinders therefore remained essential equipment rather than decorative duplication. The answer gives viewers the technological context needed to read the battleship's superstructure.",
+      "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
+      "evidence": [{"start": "2:10:43", "end": "2:10:58", "note": "He attributes the number of rangefinders to the ship's pre-radar fire-control requirements."}]
+    },
+    {
+      "id": "large-navies-and-competing-doctrines",
+      "videoId": "2FEhGwb3rtI",
+      "slug": "large-navies-and-competing-doctrines",
+      "title": "Large navies preserved competing wartime ideas",
+      "kind": "notable_point",
+      "start": "2:11:54",
+      "end": "2:12:17",
+      "topics": ["naval-doctrine", "us-navy", "imperial-japanese-navy", "royal-navy", "interwar-period"],
+      "summary": "A brief observation explains why a navy can later claim it anticipated an unexpected kind of war.",
+      "body": "Dr. Clarke agrees that most navies did not fight the Second World War exactly as they expected. He adds that very large institutions such as the US Navy, Imperial Japanese Navy, and Royal Navy contained several schools of thought at once. Some officers could therefore point to pre-war ideas that resembled later operations even when those ideas were not the institution's single settled plan. The moment helps readers distinguish doctrinal diversity from accurate institutional prediction.",
+      "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
+      "evidence": [{"start": "2:11:54", "end": "2:12:17", "note": "He explains how the largest navies accommodated multiple officer groups and competing opinions."}]
     },
     {
       "id": "roskill-versus-treaty-era-surveys",
@@ -173,9 +339,9 @@
       "question": "Could a future weapon become the next Mark 14 torpedo, and are swarms likely to decide naval combat?",
       "answerShort": "Dr. Clarke is sceptical of swarms as a decisive answer because historical schemes repeatedly meet coordination, survivability, and cost problems in real war.",
       "summary": "A cautious answer challenges the assumption that masses of small missiles, aircraft, or drones will automatically overwhelm a defended force.",
-      "body": "The appeal of a swarm is obvious: many small, fast weapons might saturate an opponent. Dr. Clarke argues that comparable ideas have appeared since the 1920s and 1930s, but operational friction intervenes when systems need to coordinate, survive, and be sustained. He also notes the economic pressure toward reusable systems once the limitations of light, expendable weapons become clear.",
+      "body": "The appeal of a swarm is obvious: many small, fast weapons might saturate an opponent. Dr. Clarke connects it to the recurring belief that one new technology, such as wartime sonar, will remove an entire category of operational problem. Comparable swarm ideas have appeared since the 1920s and 1930s, but operational friction intervenes when systems need to coordinate, survive, and be sustained. He also notes the economic pressure toward reusable systems once the limitations of light, expendable weapons become clear. Later claims that a single controller will synchronize the attack do not persuade him that those practical problems have disappeared. Even very large historical air attacks often arrived in waves rather than as one perfectly timed mass.",
       "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
-      "evidence": [{"start": "2:15:55", "end": "2:18:48", "note": "He answers the Mark 14 question with a critique of historical and modern swarm concepts."}]
+      "evidence": [{"start": "2:14:50", "end": "2:15:09", "note": "He uses confidence in sonar as an example of recurring technological-solution claims."}, {"start": "2:15:55", "end": "2:18:48", "note": "He answers the Mark 14 question with a critique of historical and modern swarm concepts."}, {"start": "2:31:54", "end": "2:32:22", "note": "He explains why centralized control does not automatically solve swarm coordination."}, {"start": "2:36:40", "end": "2:36:50", "note": "He notes that even a very large carrier-air attack arrived in waves rather than as a single swarm."}]
     },
     {
       "id": "falklands-strike-capability-and-politics",
@@ -189,25 +355,39 @@
       "question": "Could Britain have struck the Argentine mainland during the Falklands War?",
       "answerShort": "Britain had some engineering capability to strike at range, but political consequences and the limited military payoff made that very different from a practical option.",
       "summary": "The answer separates technical reach from strategically usable power in the Falklands War.",
-      "body": "Dr. Clarke acknowledges that Black Buck missions demonstrated remarkable long-range reach. He argues that bombing Buenos Aires or even mainland military installations would have had limited direct military effect compared with the effort involved and could have damaged vital international support. The exchange is a useful reminder that an operation's feasibility does not settle its strategic wisdom.",
+      "body": "Dr. Clarke acknowledges that Black Buck missions demonstrated remarkable long-range reach. He argues that bombing Buenos Aires or even mainland military installations would have had limited direct military effect compared with the effort involved and could have damaged vital international support. British submarines likewise watched Argentine task groups near their ports but did not simply attack them at the first possible moment. The political conditions governing where force could be used mattered alongside the engineering capability to reach a target. The exchange is a useful reminder that an operation's feasibility does not settle its strategic wisdom.",
       "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
-      "evidence": [{"start": "2:19:28", "end": "2:20:30", "note": "He distinguishes engineering capability, military utility, and political consequences."}]
+      "evidence": [{"start": "2:19:28", "end": "2:20:30", "note": "He distinguishes engineering capability, military utility, and political consequences."}, {"start": "2:27:33", "end": "2:28:10", "note": "He uses submarine patrols near Argentine ports to show how political limits constrained technically possible attacks."}]
+    },
+    {
+      "id": "arethusa-leander-machinery-and-australian-transfers",
+      "videoId": "2FEhGwb3rtI",
+      "slug": "arethusa-leander-machinery-and-australian-transfers",
+      "title": "Arethusa and Leander trade-offs reached the Australian Navy",
+      "kind": "chapter",
+      "start": "2:21:55",
+      "end": "2:25:29",
+      "topics": ["arethusa-class", "leander-class", "royal-navy", "royal-australian-navy", "cruisers", "naval-procurement", "ship-design"],
+      "summary": "The later portion of the Warships after London review follows cruiser machinery, aircraft requirements, protection, and the transfer of modified Leanders to Australia.",
+      "body": "Dr. Clarke reads the Arethusa class as a smaller Leander with three twin 6-inch turrets and a unit machinery arrangement intended to preserve power after adjacent compartments flooded. Fleet commanders did not value cruiser aircraft equally, but the Admiralty still required reconnaissance capability for trade-protection employment. Applying unit machinery to the modified Leanders lengthened the protected machinery spaces, reduced accommodation, increased beam, and complicated the catapult position. Phaeton became HMAS Sydney while Amphion and Apollo later entered Australian service as Perth and Hobart. The sequence shows how survivability, aircraft, displacement, and Commonwealth procurement interacted in one family of cruisers.",
+      "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
+      "evidence": [{"start": "2:21:55", "end": "2:23:23", "note": "He reads the Arethusa design, unit machinery, and disputed reconnaissance-aircraft requirement."}, {"start": "2:23:24", "end": "2:25:29", "note": "He follows the modified Leanders through machinery and catapult compromises to their Australian transfers."}]
     },
     {
       "id": "modern-warship-guns-and-type-31",
       "videoId": "2FEhGwb3rtI",
       "slug": "modern-warship-guns-and-type-31",
-      "title": "Modern gunfights and a Type 31 response",
+      "title": "A Type 31 response to small-boat swarms",
       "kind": "qa",
       "start": "2:28:55",
       "end": "2:39:31",
       "topics": ["type-31-frigates", "naval-gunnery", "iranian-navy", "small-combatants", "martlet"],
-      "question": "Do modern warships lack gunfire for close combat, and how might a frigate deal with small-boat swarms?",
-      "answerShort": "A modern ship should avoid a gunfight, but Dr. Clarke would still prefer more gun armament and sees the Type 31's mix of medium guns, lighter weapons, and helicopter missiles as useful against small craft.",
-      "summary": "A live Q&A answer links the danger of modern gunfights with a layered response to small craft and commerce disruption.",
-      "body": "Dr. Clarke says a forced gunfight means that several earlier defences have already failed, but he would welcome two twin mounts rather than a single main gun. In discussing Iranian gunboat swarms, he separates their threat to a warship from their ability to frighten or disrupt merchant traffic. He imagines a Type 31 using 57 mm, 40 mm, and likely other light weapons alongside a helicopter carrying Martlet missiles to break up approaching boats at range.",
+      "question": "How might a Type 31 frigate counter Iranian small-boat swarms in the Gulf?",
+      "answerShort": "Its 57 mm and 40 mm guns, likely additional light weapons, and a helicopter carrying Martlet missiles could engage boats in layers before they close with the frigate or nearby merchant traffic.",
+      "summary": "A live Q&A answer describes a layered Type 31 defence against small craft while distinguishing attacks on warships from disruption of commerce.",
+      "body": "Dr. Clarke separates the direct danger small boats pose to a frigate from their ability to frighten or disrupt merchant shipping. He imagines the Type 31 using its 57 mm and 40 mm guns, plus likely 30 mm weapons or miniguns, against boats that reach the ship's local defensive area. A helicopter armed with multiple Martlet missiles could range ahead and break up groups before they close. Several mounts matter because boats may emerge from the cover of merchant traffic on different bearings. The concept is a layered response rather than confidence in one decisive gun or missile.",
       "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
-      "evidence": [{"start": "2:28:55", "end": "2:29:22", "note": "The question about Iranian swarms and a Type 31 response is answered."}, {"start": "2:34:51", "end": "2:35:13", "note": "He answers the question about whether modern combat ships have enough gunfire."}, {"start": "2:38:42", "end": "2:39:31", "note": "He expands on the layered Type 31 armament concept."}]
+      "evidence": [{"start": "2:28:55", "end": "2:29:22", "note": "The question about Iranian swarms and a Type 31 response is answered."}, {"start": "2:32:33", "end": "2:33:01", "note": "He places a Martlet-armed helicopter ahead of the frigate in the layered defence."}, {"start": "2:38:42", "end": "2:39:31", "note": "He expands on the guns and arcs available against several approaching boats."}]
     },
     {
       "id": "grand-fleet-grey-paint",
@@ -226,6 +406,54 @@
       "evidence": [{"start": "2:30:55", "end": "2:31:30", "note": "He answers the paint-colour question and references HMS Caroline photographs."}]
     },
     {
+      "id": "iran-saudi-rivalry-and-strait-disruption",
+      "videoId": "2FEhGwb3rtI",
+      "slug": "iran-saudi-rivalry-and-strait-disruption",
+      "title": "Strait disruption could serve Iran's rivalry with Saudi Arabia",
+      "kind": "qa",
+      "start": "2:33:09",
+      "end": "2:34:30",
+      "topics": ["iranian-navy", "strait-of-hormuz", "saudi-arabia", "maritime-trade", "naval-strategy", "commerce-disruption"],
+      "question": "What could Iran gain by disrupting shipping through the strait?",
+      "answerShort": "Timed disruption could pressure Saudi Arabia and amplify a regional rivalry whose effects extend into the eastern Mediterranean, Africa, and Asia.",
+      "summary": "A strategic answer places small-boat and tanker threats within the wider Iran-Saudi contest rather than treating them as isolated naval incidents.",
+      "body": "Dr. Clarke frames Iranian pressure on shipping as part of a real regional cold war with Saudi Arabia. Disruption at the right moment could create leverage by frightening merchant traffic and affecting the flow of oil. He argues that the rivalry shapes alignments beyond the Gulf, including disputes that reach toward Cyprus, Greece, and Turkey. Its effects also spread into parts of Africa and Asia even though neither state is usually described as a superpower. The answer connects local maritime harassment to regional strategy and global trade routes.",
+      "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
+      "evidence": [{"start": "2:33:09", "end": "2:34:30", "note": "He explains the leverage sought through disruption and the wider geographic reach of the Iran-Saudi rivalry."}]
+    },
+    {
+      "id": "modern-warship-main-gun-armament",
+      "videoId": "2FEhGwb3rtI",
+      "slug": "modern-warship-main-gun-armament",
+      "title": "Why one main gun can still feel too little",
+      "kind": "qa",
+      "start": "2:34:51",
+      "end": "2:35:13",
+      "topics": ["naval-gunnery", "surface-warfare", "warship-design", "battle-class"],
+      "question": "Do modern warships lack gun firepower if they are forced into a close-range engagement?",
+      "answerShort": "They are designed to avoid a gunfight, but Dr. Clarke would still prefer at least two main-gun mounts and ideally two twin mounts.",
+      "summary": "A short answer distinguishes the design aim of avoiding close combat from the value of retaining redundant gunfire.",
+      "body": "Dr. Clarke says a modern combatant should not reach a gunfight unless several earlier layers of defence have failed. That does not make a single main gun an ideal arrangement. He would prefer two mounts and would be happier with twin guns in each. His reference point is the Battle-class destroyer layout rather than a ship built around only one forward weapon. The answer separates expected doctrine from the resilience a ship may need when plans fail.",
+      "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
+      "evidence": [{"start": "2:34:51", "end": "2:35:13", "note": "He answers the gunfire question and gives his preferred minimum arrangement."}]
+    },
+    {
+      "id": "royal-navy-response-to-hijacked-tanker",
+      "videoId": "2FEhGwb3rtI",
+      "slug": "royal-navy-response-to-hijacked-tanker",
+      "title": "The nearest suitable ship would answer a tanker seizure",
+      "kind": "qa",
+      "start": "2:35:57",
+      "end": "2:36:09",
+      "topics": ["royal-navy", "type-23-frigates", "river-class", "maritime-security", "constabulary-operations"],
+      "question": "What Royal Navy ship might be sent after a hijacked tanker?",
+      "answerShort": "Dr. Clarke suggests either a Type 23 frigate or a River-class patrol vessel, depending on which suitable ship is closest.",
+      "summary": "A concise maritime-security answer emphasizes availability and proximity rather than a single prescribed warship type.",
+      "body": "The question concerns the immediate naval response to a merchant tanker seizure. Dr. Clarke names a Type 23 frigate or River-class patrol vessel as plausible ships. Which class would be used depends primarily on what is close enough to respond. The answer illustrates how constabulary operations are shaped by readiness and geography as much as by a platform's nominal combat power.",
+      "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
+      "evidence": [{"start": "2:35:57", "end": "2:36:09", "note": "He identifies Type 23 and River-class options and makes proximity the deciding factor."}]
+    },
+    {
       "id": "project-71-soviet-small-carrier",
       "videoId": "2FEhGwb3rtI",
       "slug": "project-71-soviet-small-carrier",
@@ -240,6 +468,22 @@
       "evidence": [{"start": "2:42:30", "end": "2:43:22", "note": "He introduces Project 71 and its intended operating areas."}]
     },
     {
+      "id": "whitley-world-war-ii-cruisers-reference",
+      "videoId": "2FEhGwb3rtI",
+      "slug": "whitley-world-war-ii-cruisers-reference",
+      "title": "Whitley's World War II Cruisers is useful but needs checking",
+      "kind": "qa",
+      "start": "2:44:37",
+      "end": "2:46:03",
+      "topics": ["book-reviews", "cruisers", "naval-historiography", "french-navy", "emile-bertin-class"],
+      "question": "What does Dr. Clarke think of M. J. Whitley's World War II Cruisers?",
+      "answerShort": "It is a very good reference, but readers should verify figures because Dr. Clarke has encountered and repeated a few mathematical errors from it.",
+      "summary": "A book recommendation pairs praise for a standard cruiser reference with a warning that authoritative-looking tables still require source checking.",
+      "body": "Dr. Clarke keeps Whitley's World War II Cruisers close at hand and calls it a very good book. He also acknowledges that a few mathematical errors in it entered his own C-class cruiser work because he trusted figures that had proved reliable elsewhere. That experience makes the recommendation useful without turning the volume into an unquestionable authority. He opens the book to the French cruiser Emile Bertin as an example of the classes it covers. The answer models a historian's habit of using a valued reference while still checking its calculations.",
+      "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
+      "evidence": [{"start": "2:44:37", "end": "2:45:07", "note": "He recommends the book while describing mathematical errors he once repeated."}, {"start": "2:45:14", "end": "2:46:03", "note": "He uses the Emile Bertin entry to illustrate the reference's coverage."}]
+    },
+    {
       "id": "30mm-diving-shells-against-torpedoes",
       "videoId": "2FEhGwb3rtI",
       "slug": "30mm-diving-shells-against-torpedoes",
@@ -251,9 +495,9 @@
       "question": "How could a 30 mm gun be used against an incoming torpedo?",
       "answerShort": "The proposal uses diving shells, but it needs ammunition selection and feed arrangements that preserve the gun's ability to engage other targets.",
       "summary": "A technical Q&A note on an active-defence concept that would fire specially designed 30 mm rounds into the water at an incoming torpedo.",
-      "body": "Dr. Clarke explains that the British concept uses a diving shell rather than an ordinary surface-target round. The practical challenge is not only whether the shell can travel and strike underwater, but how a mount changes between that ammunition and rounds for aircraft or surface targets. He connects the idea to a possible combined 30 mm and Martlet mount, while noting the importance of space and weight.",
+      "body": "Dr. Clarke explains that the British concept uses a diving shell rather than an ordinary surface-target round. The practical challenge is not only whether the shell can travel and strike underwater, but how a mount changes between that ammunition and rounds for aircraft or surface targets. He connects the idea to a possible combined 30 mm and Martlet mount, while noting the importance of space and weight. A dual-feed arrangement would let the crew select anti-torpedo ammunition without sacrificing the gun's other defensive roles. He also notes that crews tried to shoot torpedoes with guns and machine guns during both world wars, giving the modern system a historical lineage.",
       "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
-      "evidence": [{"start": "2:46:53", "end": "2:47:54", "note": "He explains diving shells, ammunition feeds, and the combined-mount idea."}]
+      "evidence": [{"start": "2:46:53", "end": "2:47:54", "note": "He explains diving shells, ammunition feeds, and the combined-mount idea."}, {"start": "2:50:17", "end": "2:50:49", "note": "He describes how the diving projectile is intended to continue accurately through the water."}, {"start": "2:59:02", "end": "2:59:07", "note": "He notes earlier attempts to use guns against torpedoes in both world wars."}]
     },
     {
       "id": "kingston-class-replacement-for-canada",
@@ -267,9 +511,9 @@
       "question": "What should replace the Royal Canadian Navy's Kingston-class ships?",
       "answerShort": "Dr. Clarke favours something based on a larger, modern cold-weather ocean-patrol vessel rather than a direct like-for-like replacement.",
       "summary": "A force-structure answer weighs minesweeping, modular payloads, two-ocean responsibilities, and High North operations.",
-      "body": "The Kingston class's mine-countermeasures and modular role shape the answer, but Dr. Clarke looks beyond a small coastal replacement. He suggests a design akin to a modern Scandinavian-style ocean patrol vessel: larger, more capable in cold weather, and useful across the Canadian Navy's broad geography. He contrasts Canada's need for useful additional hulls with the Royal Navy's concern that overly capable patrol ships might substitute politically for frigates or destroyers.",
+      "body": "The Kingston class's mine-countermeasures and modular role shape the answer, but Dr. Clarke looks beyond a small coastal replacement. He suggests a design akin to a modern Scandinavian-style ocean patrol vessel: larger, more capable in cold weather, and useful across the Canadian Navy's broad geography. Such a ship would add a hangar and be designed from the outset for High North conditions. He contrasts Canada's need for useful additional hulls with the Royal Navy's concern that overly capable patrol ships might substitute politically for frigates or destroyers. The answer treats the replacement as force multiplication for a two-ocean navy rather than a like-for-like minesweeper purchase.",
       "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
-      "evidence": [{"start": "2:51:36", "end": "2:53:54", "note": "He assesses the Kingston role and proposes a more capable cold-weather ocean-patrol design."}]
+      "evidence": [{"start": "2:51:36", "end": "2:53:54", "note": "He assesses the Kingston role and proposes a more capable cold-weather ocean-patrol design."}, {"start": "2:59:18", "end": "2:59:40", "note": "He contrasts a River-class option with the cold-weather orientation and hangar of his preferred design."}]
     },
     {
       "id": "mogami-aircraft-cruiser-conversion",
@@ -288,6 +532,22 @@
       "evidence": [{"start": "3:00:08", "end": "3:00:20", "note": "He directly answers the question about Mogami's aircraft conversion."}]
     },
     {
+      "id": "canadian-lhds-for-amphibious-and-disaster-response",
+      "videoId": "2FEhGwb3rtI",
+      "slug": "canadian-lhds-for-amphibious-and-disaster-response",
+      "title": "Canadian LHDs instead of one fleet carrier",
+      "kind": "qa",
+      "start": "3:00:58",
+      "end": "3:01:06",
+      "topics": ["royal-canadian-navy", "amphibious-warfare", "amphibious-assault-ships", "disaster-response", "force-structure"],
+      "question": "Should Canada acquire an aircraft carrier?",
+      "answerShort": "Dr. Clarke prefers two or three landing helicopter dock ships, which would spread capability across several hulls and support both warfighting and disaster response.",
+      "summary": "A Canadian force-structure answer favors several multipurpose amphibious ships over concentrating aircraft and personnel in one fleet carrier.",
+      "body": "Dr. Clarke does not make a conventional fleet carrier his first recommendation for Canada. He instead suggests two or three landing helicopter dock ships. Several LHDs would distribute aviation and amphibious capability rather than placing a large share of personnel and aircraft in one hull. An audience follow-up also highlights their value for disaster response, which he accepts as an important additional role. The answer frames amphibious ships as a broader national capability rather than only a platform for assault operations.",
+      "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
+      "evidence": [{"start": "3:00:58", "end": "3:01:06", "note": "He recommends two or three LHDs rather than simply giving Canada a carrier."}, {"start": "3:06:09", "end": "3:06:17", "note": "He agrees that LHDs would have substantial disaster-response value."}, {"start": "3:14:11", "end": "3:14:21", "note": "He links the LHD preference to concern about concentrating too much capability in one carrier."}]
+    },
+    {
       "id": "italian-circling-torpedo-mechanical-guidance",
       "videoId": "2FEhGwb3rtI",
       "slug": "italian-circling-torpedo-mechanical-guidance",
@@ -299,9 +559,9 @@
       "question": "How did the Italian circling torpedo work?",
       "answerShort": "It used a mechanical steering arrangement that could be set for a port or starboard circle, rather than a sophisticated directional seeker.",
       "summary": "A technical explanation of a looping torpedo whose search pattern relied on a fixed mechanical steering system.",
-      "body": "Dr. Clarke describes the weapon as using internal navigation and mechanically programmed steering rather than a modern homing system. He identifies an arrangement involving an arm, eccentric projection, and cogwheel that could set a port or starboard turning direction. Once fired, the torpedo would continue its circular run according to that preset arrangement, illustrating both ingenuity and the limitations of contemporary control systems.",
+      "body": "Dr. Clarke describes the weapon as using internal navigation and mechanically programmed steering rather than a modern homing system. He identifies an arrangement involving an arm, eccentric projection, and cogwheel that could set a port or starboard turning direction. Once fired, the torpedo would continue its circular run according to that preset arrangement, illustrating both ingenuity and the limitations of contemporary control systems. Germany fielded a looping design of its own but judged the Italian system better. He adds that the Allies were especially interested in obtaining the Italian technology in 1943 because their own development work had struggled.",
       "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
-      "evidence": [{"start": "3:01:24", "end": "3:04:28", "note": "He works through the mechanical steering and fixed circular run of the Italian torpedo."}]
+      "evidence": [{"start": "3:01:24", "end": "3:04:28", "note": "He works through the mechanical steering and fixed circular run of the Italian torpedo."}, {"start": "3:08:01", "end": "3:08:22", "note": "He compares the German and Italian systems and explains Allied interest in the Italian technology."}]
     },
     {
       "id": "torpedo-nets-and-underwater-drag",
@@ -343,13 +603,29 @@
       "kind": "qa",
       "start": "3:13:29",
       "end": "3:17:04",
-      "topics": ["washington-naval-treaty", "london-naval-treaty", "royal-navy", "naval-strategy", "cruisers"],
-      "question": "Was the Washington Naval Treaty a British loss, and why did treaty navies want different kinds of cruisers?",
-      "answerShort": "Dr. Clarke sees London as a clear British success and argues that public claims of loss can conceal a favourable result; cruiser preferences followed each navy's strategic problem.",
-      "summary": "A treaty Q&A connects bargaining outcomes with the Royal Navy's worldwide trade-protection problem and the US Navy's Pacific battle focus.",
-      "body": "The answer says the Royal Navy could present Washington as a loss publicly while still protecting important interests, with London giving Britain a more visible success. Dr. Clarke then contrasts the ships different navies needed: the Royal Navy needed enough cruisers to sustain blockade and trade protection around the world, while the US Navy expected a decisive Pacific battle and therefore valued the heavy cruiser more highly. The distinction is not a matter of one navy being right and another wrong; it follows from geography, bases, and the sequence each expected a war to take.",
+      "topics": ["washington-naval-treaty", "london-naval-treaty", "royal-navy", "naval-treaties", "interwar-period"],
+      "question": "Was the Washington Naval Treaty a British defeat?",
+      "answerShort": "Dr. Clarke regards Washington as at least defensible for Britain and London as a clear success, while noting that British claims of loss could make a favourable bargain less conspicuous.",
+      "summary": "A treaty Q&A separates the public language surrounding arms limitation from the interests Britain actually protected at Washington and London.",
+      "body": "Dr. Clarke cautions against accepting the public description of Washington as a straightforward British loss. Presenting the agreement that way could reduce opposition and avoid advertising how much Britain had preserved. He describes the London conference as a much clearer British success. France, Italy, Japan, and the United States each entered the treaty system with different military and political constraints, so no single ratio tells the whole story. The answer encourages viewers to compare bargaining goals and outcomes rather than repeat the rhetoric used after the conference.",
       "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
-      "evidence": [{"start": "3:13:29", "end": "3:13:59", "note": "He assesses Washington and London as treaty outcomes."}, {"start": "3:24:15", "end": "3:25:55", "note": "He explains differing British and American cruiser requirements."}, {"start": "3:29:38", "end": "3:30:30", "note": "He clarifies the strategic context behind Mahan and Corbett."}]
+      "evidence": [{"start": "3:13:29", "end": "3:13:59", "note": "He assesses Washington and London as treaty outcomes and explains the usefulness of publicly claiming a loss."}, {"start": "3:14:45", "end": "3:17:04", "note": "The discussion compares what the principal treaty powers gained or failed to secure."}]
+    },
+    {
+      "id": "british-and-american-cruiser-requirements",
+      "videoId": "2FEhGwb3rtI",
+      "slug": "british-and-american-cruiser-requirements",
+      "title": "British and American navies needed different cruisers",
+      "kind": "qa",
+      "start": "3:24:15",
+      "end": "3:25:55",
+      "topics": ["cruisers", "royal-navy", "us-navy", "trade-protection", "blockade", "naval-strategy"],
+      "question": "Why did the Royal Navy and US Navy prefer different kinds of treaty cruiser?",
+      "answerShort": "Britain needed numerous light cruisers for worldwide trade protection and blockade, while the United States prioritized heavy cruisers for a decisive Pacific fleet battle before turning to blockade.",
+      "summary": "A cruiser-design answer ties gun calibre and fleet numbers to each navy's geography and expected sequence of war.",
+      "body": "Dr. Clarke argues that the right cruiser depends on the strategic task assigned to it. The Royal Navy expected a long war of trade protection and blockade across a global network, making numbers and reach especially important. The US Navy focused first on fighting through the Pacific and defeating Japan's main fleet, a problem better suited to the heavy cruiser. American planners could address blockade after winning that battle, potentially using armed merchant cruisers once the major enemy force had been removed. The contrast explains why two capable navies could rationally choose different treaty-cruiser mixes.",
+      "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
+      "evidence": [{"start": "3:24:15", "end": "3:25:55", "note": "He contrasts British worldwide blockade and trade-protection needs with the American Pacific battle sequence."}]
     },
     {
       "id": "queen-elizabeth-carrier-automation-and-damage-control",
@@ -363,9 +639,25 @@
       "question": "Does the smaller crew of the Queen Elizabeth class weaken damage control?",
       "answerShort": "Not necessarily: automation reduces routine manning needs, and the remaining crew can be skilled and available for damage control when systems fail.",
       "summary": "A damage-control answer argues that crew numbers need to be assessed alongside automation and the tasks people are otherwise needed to perform.",
-      "body": "Dr. Clarke rejects a simple headcount comparison with a US carrier. Catapults and different operating systems require additional people, while automation on the Queen Elizabeth class removes some routine demands. He also frames avoiding damage as the first layer of damage control, then argues that a smaller but sufficiently skilled crew can handle emergencies when the ship's automated systems cannot.",
+      "body": "Dr. Clarke rejects a simple headcount comparison with a US carrier. Catapults and different operating systems require additional people, while automation on the Queen Elizabeth class removes some routine demands. He also frames avoiding damage as the first layer of damage control. If automated systems fail, the ship still retains trained personnel for direct intervention. The meaningful comparison is therefore between tasks, systems, and available skills rather than raw crew totals.",
       "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
       "evidence": [{"start": "3:27:51", "end": "3:28:40", "note": "He answers the question about crew size, automation, and damage control."}]
+    },
+    {
+      "id": "mahan-corbett-and-strategic-sequence",
+      "videoId": "2FEhGwb3rtI",
+      "slug": "mahan-corbett-and-strategic-sequence",
+      "title": "Mahan and Corbett begin from different strategic positions",
+      "kind": "qa",
+      "start": "3:29:38",
+      "end": "3:30:30",
+      "topics": ["alfred-thayer-mahan", "julian-corbett", "naval-strategy", "sea-control", "economic-warfare", "naval-bases"],
+      "question": "Is it accurate to call American cruiser strategy Mahanian and British strategy Corbettian?",
+      "answerShort": "Only as a simplification: Mahan also expects economic warfare after victory, while Corbett writes from a British position that already possesses worldwide bases and command of the sea.",
+      "summary": "A strategy answer shows how battle, bases, and economic pressure occur in a different order for an ascending navy and an established maritime power.",
+      "body": "Dr. Clarke resists reducing Mahan to fleet battle and Corbett to commerce warfare. Mahan acknowledges the need for economic pressure, but the United States first has to defeat the enemy and obtain the bases from which that pressure can be imposed. Corbett writes from a British strategic position shaped by earlier victories and an existing worldwide base network. Britain can therefore begin with command of the sea and concentrate on enforcing it. The distinction is about strategic sequence and initial position, not two mutually exclusive theories of naval war.",
+      "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
+      "evidence": [{"start": "3:29:38", "end": "3:30:30", "note": "He explains why Mahan and Corbett cannot be reduced to battle versus commerce warfare and compares their starting positions."}]
     },
     {
       "id": "admiral-class-battlecruisers-alternate-history",
@@ -379,9 +671,9 @@
       "question": "How might the world have changed if all Admiral-class battlecruisers had been completed?",
       "answerShort": "Some could have remained battlecruisers while others might have become large carriers, potentially replacing the Courageous-class conversions.",
       "summary": "An alternate-history answer traces the treaty-era choices that could have turned completed Admirals into both improved capital ships and very large carriers.",
-      "body": "Dr. Clarke suggests that a completed class would have changed the replacement choices under the treaty system, likely making Renown and Repulse more expendable. He imagines modified or improved Hood-like battlecruisers remaining in service while some Admirals became carrier conversions instead of Courageous and Glorious. That path could have given the Royal Navy larger, more powerful aircraft carriers and a different carrier-tonnage balance.",
+      "body": "Dr. Clarke suggests that a completed class would have changed the replacement choices under the treaty system, likely making Renown and Repulse more expendable. He imagines modified or improved Hood-like battlecruisers remaining in service while some Admirals became carrier conversions instead of Courageous and Glorious. That path could have given the Royal Navy larger, more powerful aircraft carriers and a different carrier-tonnage balance. A later follow-up compares the result with Lexington and Saratoga and suggests the converted Admirals might have pushed British carrier designs toward roughly 27,000 rather than 23,000 tons. The counterfactual therefore changes both the capital-ship roster and the scale of treaty-era carrier development.",
       "sourcePath": "src/transcripts/txt/2020-10-25_T18-02-14_bruships-23-new-book-review_2FEhGwb3rtI.txt",
-      "evidence": [{"start": "3:30:34", "end": "3:31:25", "note": "He outlines potential battlecruiser retention and carrier-conversion outcomes."}]
+      "evidence": [{"start": "3:30:34", "end": "3:31:25", "note": "He outlines potential battlecruiser retention and carrier-conversion outcomes."}, {"start": "3:33:57", "end": "3:34:12", "note": "He compares converted Admirals with American treaty carriers and suggests a higher carrier tonnage."}]
     }
   ]
 }
