@@ -70,6 +70,12 @@ test("validation hooks generate the archive once before their generated-data che
   assert.doesNotMatch(packageJson.scripts["site:build:generated"] ?? "", /generate:site-data/u);
 });
 
+test("Astro dev does not watch generated production output", async () => {
+  const astroConfig = await readFile(join(repositoryRoot, "astro.config.mjs"), "utf8");
+
+  assert.match(astroConfig, /ignored:\s*\["\*\*\/site\/dist\/\*\*"\]/u);
+});
+
 test("two overlapping writer processes serialize complete archive, report, and log output", async () => {
   const directory = await mkdtemp(join(tmpdir(), "site-content-writer-"));
   const lockPath = join(directory, "writer.lock");

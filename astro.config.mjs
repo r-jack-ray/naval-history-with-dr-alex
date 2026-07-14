@@ -7,4 +7,11 @@ export default defineConfig({
   srcDir: "./site/src",
   publicDir: "./site/public",
   outDir: "./site/dist",
+  vite: {
+    server: {
+      watch: {
+        ignored: ["**/site/dist/**"],
+      },
+    },
+  },
 });
