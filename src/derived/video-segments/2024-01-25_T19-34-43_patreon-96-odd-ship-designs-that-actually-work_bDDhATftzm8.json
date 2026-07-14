@@ -6,7 +6,9 @@
     "naval-architecture",
     "special-purpose-ships",
     "naval-aviation",
-    "submarines"
+    "submarines",
+    "naval-procurement",
+    "naval-logistics"
   ],
   "segments": [
     {
@@ -19,7 +21,7 @@
       "end": "12:35",
       "topics": ["odd-ship-designs", "naval-architecture", "special-purpose-ships"],
       "summary": "The opening defines the survey around unconventional ships that performed their intended task, including civilian maritime designs as well as warships.",
-      "body": "Dr. Clarke distinguishes an unfamiliar-looking vessel from a failed concept: the design must actually do the job for which it was built. That criterion broadens the discussion beyond warships and excludes familiar curiosities already covered elsewhere, setting up twelve case studies in functional specialization.",
+      "body": "Dr. Clarke distinguishes an unfamiliar-looking vessel from a failed concept: an odd design still has to do the job for which it was built. That test allows a technically awkward ship to qualify when it succeeds in a narrow mission, while excluding curiosities that merely look strange. It also broadens the survey beyond warships to commercial and research vessels whose shapes follow unusual operational demands. Familiar examples such as the Nelson class, Korean turtle ships, monitors, and hydrofoil missile boats are left aside because their logic has already been discussed or follows a recognizable development path. The resulting twelve cases frame unconventional naval architecture as a problem of mission fit rather than appearance alone.",
       "sourcePath": "src/transcripts/txt/2024-01-25_T19-34-43_patreon-96-odd-ship-designs-that-actually-work_bDDhATftzm8.txt",
       "evidence": [
         { "start": "4:50", "end": "5:26", "note": "The speaker explains that the list includes maritime vessels beyond warships." },
@@ -36,7 +38,7 @@
       "end": "24:20",
       "topics": ["ise-class", "japanese-navy", "hybrid-carriers", "naval-aviation", "world-war-ii"],
       "summary": "The Ise-class conversion could launch aircraft, but slow speed, weak recovery arrangements, and competing battleship requirements made the hybrid operationally unconvincing.",
-      "body": "The conversion traded four 14-inch guns for a small floatplane air group while retaining the weight, crew, and speed limits of an elderly battleship. Dr. Clarke emphasizes that launching aircraft is not enough: recovery, sustained combat air patrol, strike generation, and integration with fast carriers determine whether the aviation capability is useful. The case also opens a wider comparison of Japanese, British, and American wartime carrier practice.",
+      "body": "The conversion traded four 14-inch guns for a 22-aircraft floatplane group while retaining the weight, crew, and speed limits of an elderly battleship. Even after reconstruction, a top speed near 25 knots would slow the fast-carrier force the ships were notionally meant to support. The aircraft could be launched, but recovery depended on stopping for floatplanes, and two catapults could not quickly generate a large strike or maintain a useful combat air patrol. The aviation installation also added weight and exposed fuel aboard a ship that still required roughly 1,500 crew. Dr. Clarke therefore treats Ise and Hyuga as a costly conversion that proved launch capability without producing a coherent carrier or battleship mission.",
       "sourcePath": "src/transcripts/txt/2024-01-25_T19-34-43_patreon-96-odd-ship-designs-that-actually-work_bDDhATftzm8.txt",
       "evidence": [
         { "start": "13:27", "end": "16:30", "note": "The transcript describes the ships' speed, sacrificed guns, 22-aircraft group, and inability to land aircraft aboard." },
@@ -53,12 +55,47 @@
       "end": "19:13",
       "topics": ["hybrid-carriers", "anti-submarine-warfare", "naval-helicopters", "mission-design"],
       "summary": "An audience question tests whether helicopters would make the hybrid useful for anti-submarine warfare; the answer returns to the ship's intended mission and launch capacity.",
-      "body": "Dr. Clarke accepts that a helicopter could support anti-submarine warfare, but argues that merely adding a plausible aircraft does not repair an incoherent platform. With only two catapults and a layout that obstructs rapid launch, the ship cannot generate a meaningful aviation effort, so the mission question remains unresolved.",
+      "body": "Dr. Clarke accepts that a helicopter could support anti-submarine warfare, but argues that merely adding a plausible aircraft does not repair an incoherent platform. The ship still needs a clearly defined mission that justifies retaining a battleship hull and its large crew. With only two catapults and a layout obstructed by the main armament, the original conversion could not rapidly marshal and launch a meaningful aviation effort. Helicopters would change the aircraft type, but not the underlying capacity, personnel, and opportunity-cost problems.",
       "question": "Would helicopters make the hybrid design useful for anti-submarine warfare?",
       "answerShort": "A helicopter could perform ASW work, but the platform still lacks the launch cycle, capacity, and coherent mission needed to justify the conversion.",
       "sourcePath": "src/transcripts/txt/2024-01-25_T19-34-43_patreon-96-odd-ship-designs-that-actually-work_bDDhATftzm8.txt",
       "evidence": [
         { "start": "17:38", "end": "19:13", "note": "The audience asks about an ASW helicopter and the response evaluates the catapults, aircraft types, and underlying mission." }
+      ]
+    },
+    {
+      "id": "wartime-carrier-aviation-specialization",
+      "videoId": "bDDhATftzm8",
+      "slug": "wartime-carrier-aviation-specialization",
+      "title": "Why no navy mastered every part of carrier aviation",
+      "kind": "notable_point",
+      "start": "20:23",
+      "end": "24:08",
+      "topics": ["naval-aviation", "carrier-doctrine", "royal-navy", "us-navy", "japanese-navy", "world-war-ii"],
+      "summary": "The Japanese, British, and American carrier forces each developed real strengths, but training depth, construction policy, industrial scale, and night operations left every navy with important limits.",
+      "body": "Japan concentrated veteran aviators in front-line units and restricted the training pipeline, producing exceptional early formations without enough depth to replace losses. Britain developed multi-carrier and night-strike ideas, but the pause in carrier construction limited how fully those plans could be practiced and sustained during the war. American industry eventually created unmatched numbers, yet not every carrier formation possessed a night-strike capability. Dr. Clarke therefore resists calling any one service the complete master of wartime naval aviation. The comparison shows that aircraft quality, doctrine, training, ship production, and force-wide proficiency have to be judged together.",
+      "sourcePath": "src/transcripts/txt/2024-01-25_T19-34-43_patreon-96-odd-ship-designs-that-actually-work_bDDhATftzm8.txt",
+      "evidence": [
+        { "start": "20:23", "end": "21:45", "note": "The speaker links Japan's elite front-line strength to a narrow pilot-training and replacement system." },
+        { "start": "21:45", "end": "24:08", "note": "He compares British carrier-construction limits and multi-carrier doctrine with American production and incomplete night-strike proficiency." }
+      ]
+    },
+    {
+      "id": "ise-hyuga-hms-glorious-comparison",
+      "videoId": "bDDhATftzm8",
+      "slug": "ise-hyuga-hms-glorious-comparison",
+      "title": "Would Ise and Hyuga fare better than HMS Glorious?",
+      "kind": "qa",
+      "start": "24:56",
+      "end": "25:24",
+      "topics": ["ise-class", "hms-glorious", "scharnhorst", "gneisenau", "hybrid-carriers", "carrier-doctrine"],
+      "summary": "The retained 14-inch guns might help the Japanese hybrids in a sudden surface encounter, but a functioning carrier air group should strike before the battleships can close.",
+      "body": "Dr. Clarke distinguishes the hybrids' theoretical advantage in a Glorious-style surprise from their value in a normal carrier operation. Eight retained 14-inch guns could plausibly drive off Scharnhorst and Gneisenau if the ships reached surface-gun range. A properly operating carrier, however, should detect and attack Ise or Hyuga with aircraft well before that surface action develops. The comparison reinforces that emergency gun power does not compensate for weak carrier reconnaissance, combat air patrol, and strike generation.",
+      "question": "Would Ise and Hyuga have done better than HMS Glorious against Scharnhorst and Gneisenau?",
+      "answerShort": "Probably in a sudden gun action, because their eight 14-inch guns could deter the German ships, but an effective carrier should attack the hybrids before they reach surface range.",
+      "sourcePath": "src/transcripts/txt/2024-01-25_T19-34-43_patreon-96-odd-ship-designs-that-actually-work_bDDhATftzm8.txt",
+      "evidence": [
+        { "start": "24:56", "end": "25:24", "note": "The response contrasts the hybrids' retained heavy guns with the ability of a functioning carrier to strike them before surface combat." }
       ]
     },
     {
@@ -71,12 +108,28 @@
       "end": "28:38",
       "topics": ["japanese-navy", "naval-aviation", "pilot-training", "world-war-ii", "force-generation"],
       "summary": "A question about rotating combat veterans into training leads to a force-generation model that spreads experience through new squadrons.",
-      "body": "The answer suggests Japan could have retained much of its early-war skill by cycling experienced pilots into instructor and test roles, then returning them as squadron leaders. Splitting veteran formations and combining each half with new pilots would distribute practical knowledge instead of exposing wholly inexperienced units to combat.",
+      "body": "The answer suggests Japan could have retained much of its early-war skill by cycling experienced pilots into instructor and test roles, then returning them as squadron leaders. Test work would expose veterans to new and captured aircraft, while instruction would pass combat lessons to a larger replacement pool. Dr. Clarke also proposes splitting veteran squadrons and combining each half with new pilots rather than fielding entirely inexperienced units. The mixed formations would spread practical knowledge through everyday flying and reduce the shock of first combat. Peak proficiency at Pearl Harbor might be slightly lower, but the force as a whole would be more sustainable.",
       "question": "Would a rotating pilot program have kept Japanese naval aviation effective by Pearl Harbor and afterward?",
       "answerShort": "It might slightly reduce peak early-war proficiency, but it would create a broader, more sustainable force by passing veteran experience into training and mixed squadrons.",
       "sourcePath": "src/transcripts/txt/2024-01-25_T19-34-43_patreon-96-odd-ship-designs-that-actually-work_bDDhATftzm8.txt",
       "evidence": [
         { "start": "25:46", "end": "28:38", "note": "The transcript lays out instructor rotations, test-pilot experience, and mixing veteran and new pilots." }
+      ]
+    },
+    {
+      "id": "battlecarrier-institutional-compromise",
+      "videoId": "bDDhATftzm8",
+      "slug": "battlecarrier-institutional-compromise",
+      "title": "Battle-carriers as an unresolved fleet compromise",
+      "kind": "notable_point",
+      "start": "29:24",
+      "end": "29:55",
+      "topics": ["hybrid-carriers", "carrier-doctrine", "balanced-fleet", "naval-procurement", "naval-historiography"],
+      "summary": "A contemporary gunnery officer's criticism treats hybrid battle-carriers as incompatible requirements joined by institutional reluctance to abandon the old battle fleet.",
+      "body": "Dr. Clarke reads Gerald Maund Langley's criticism that a carrier and a service gun platform demand fundamentally different qualities. In that view, the hybrid reflects a conscious acceptance of aircraft combined with a lingering desire to preserve the 1914 battle fleet. The result is not simply an eccentric layout but an institutional failure to choose which mission should govern the ship. Langley's proposed remedy was to reanalyze what a balanced fleet would need in the postwar decades. The passage gives the Ise discussion a contemporary professional framework rather than judging the conversion only with hindsight.",
+      "sourcePath": "src/transcripts/txt/2024-01-25_T19-34-43_patreon-96-odd-ship-designs-that-actually-work_bDDhATftzm8.txt",
+      "evidence": [
+        { "start": "29:24", "end": "29:55", "note": "The speaker reads Langley's critique of incompatible carrier and gun-platform requirements and his call to reconsider the balanced fleet." }
       ]
     },
     {
@@ -89,7 +142,7 @@
       "end": "50:19",
       "topics": ["ramform-hyperion", "seismic-survey-ships", "naval-architecture", "special-purpose-ships", "surveillance-ships"],
       "summary": "Ramform Hyperion's broad triangular stern provides the towing density and stable working area needed for large seismic sensor arrays.",
-      "body": "The apparently eccentric hull is driven by a precise commercial requirement: deploying many streamer reels abreast for high-density 3D and time-series 4D seismic surveys. Dr. Clarke uses the ship to show how extreme beam can be a rational answer to sensor geometry, and he notes that similar hull capacity could inform wide-area ocean surveillance and anti-submarine sensing.",
+      "body": "The apparently eccentric hull is driven by a precise commercial requirement: deploying many streamer reels abreast for high-density 3D and time-series 4D seismic surveys. Sixteen reels form the first row and eight the second, giving the broad stern a sensor density a conventional narrow hull could not match. The triangular form is therefore a direct answer to towing geometry rather than an experiment in appearance. Dr. Clarke notes that the same deck width and sensor capacity could support a modern counterpart to Cold War SURTASS ocean-surveillance ships. Ramform Hyperion shows how a commercial seismic platform can also illuminate the wide-area sensing demands of peer anti-submarine warfare.",
       "sourcePath": "src/transcripts/txt/2024-01-25_T19-34-43_patreon-96-odd-ship-designs-that-actually-work_bDDhATftzm8.txt",
       "evidence": [
         { "start": "32:13", "end": "33:57", "note": "The transcript identifies Ramform Hyperion and explains its triangular form, 24 streamer reels, and dense seismic data mission." },
@@ -106,7 +159,7 @@
       "end": "38:39",
       "topics": ["seismic-survey-ships", "oceanographic-data", "sensor-systems"],
       "summary": "The fourth dimension in a seismic survey is repeated measurement over time, allowing analysts to observe changes in subsurface activity.",
-      "body": "The answer clarifies that 4D is not another spatial axis on the ship. It means revisiting the survey across different times so changes and fluctuations can be compared.",
+      "body": "The answer clarifies that 4D is not another spatial axis built into the ship or its streamer array. The first three dimensions describe the surveyed volume. The fourth is time, added by revisiting the same area on different occasions. Comparing those repeated measurements reveals changes or fluctuations in subsurface activity that a single survey would miss.",
       "question": "What does 4D analysis mean for a seismic survey ship?",
       "answerShort": "It repeats measurements over time so analysts can track changes in seismic or subsurface activity.",
       "sourcePath": "src/transcripts/txt/2024-01-25_T19-34-43_patreon-96-odd-ship-designs-that-actually-work_bDDhATftzm8.txt",
@@ -124,7 +177,7 @@
       "end": "43:26",
       "topics": ["naval-procurement", "british-shipbuilding", "industrial-strategy", "shipyards"],
       "summary": "A procurement question highlights how a government buying sovereign warships from a handful of specialized yards does not enjoy ordinary market competition.",
-      "body": "Dr. Clarke argues that outsourcing is not automatically cheaper when only one domestic yard can build each broad class of ship and the state is effectively the sole customer. Keeping construction national can be a valid policy choice, but the buyer must recognize that it is funding a private monopoly's margin rather than drawing on a competitive market.",
+      "body": "Dr. Clarke argues that outsourcing is not automatically cheaper when only one domestic yard can build each broad class of ship and the state is effectively the sole customer. Britain has different constrained choices for small frigates, large escorts, and carrier assembly, so the ship's requirements can be shaped by the capacity of the available yard. A domestic-build policy may be justified for sovereign and industrial reasons, but it does not create ordinary market competition. The buyer must recognize that it is funding a private monopoly's margin and carrying the costs passed through by its only practical supplier.",
       "question": "What is the value of outsourcing military recruitment and procurement functions?",
       "answerShort": "For sovereign warship construction, very limited yard choice and a single government customer undermine normal market competition, so private provision need not be cheaper.",
       "sourcePath": "src/transcripts/txt/2024-01-25_T19-34-43_patreon-96-odd-ship-designs-that-actually-work_bDDhATftzm8.txt",
@@ -142,7 +195,7 @@
       "end": "1:02:25",
       "topics": ["sea-based-x-band-radar", "ballistic-missile-defense", "sensor-ships", "early-warning", "offshore-platforms"],
       "summary": "The Sea-Based X-Band Radar places a powerful missile-tracking sensor on a mobile semi-submersible platform to extend early warning and engagement-quality data.",
-      "body": "SBX is technically self-propelled, though it is commonly transported aboard a heavy-lift ship for long moves. Its value lies in positioning a long-range radar where fixed installations and ordinary warships cannot provide enough coverage, especially when an interceptor must engage a missile passing through rather than attacking the sensor itself. Reusing a proven oil-platform form also illustrates pragmatic off-the-shelf design.",
+      "body": "SBX is technically self-propelled, though it is commonly transported aboard a heavy-lift ship for long moves. Its X-band radar supplies the dense tracking data needed to engage ballistic missiles, especially targets passing across a defended region rather than flying directly at the sensor. The mobile platform can place that coverage where fixed installations and a limited number of Aegis warships cannot sustain it. A publicly stated radar reach of roughly 2,000 kilometers gives the 45,000-ton platform strategic value far beyond its unconventional appearance. Reusing a proven semi-submersible oil-platform form also illustrates pragmatic off-the-shelf design for a highly specialized military sensor.",
       "sourcePath": "src/transcripts/txt/2024-01-25_T19-34-43_patreon-96-odd-ship-designs-that-actually-work_bDDhATftzm8.txt",
       "evidence": [
         { "start": "50:19", "end": "53:05", "note": "The transcript identifies SBX as a mobile X-band radar and explains the data demands of ballistic-missile interception." },
@@ -159,7 +212,7 @@
       "end": "1:09:06",
       "topics": ["flip-research-platform", "oceanography", "anti-submarine-warfare", "research-ships", "spar-buoys"],
       "summary": "FLIP flooded ballast tanks to rotate from a towable horizontal hull into a spar-like vertical laboratory largely isolated from surface-wave motion.",
-      "body": "The platform had no propulsion and relied on a tug, but once vertical it provided unusually stable measurements of waves, acoustic signals, temperature, and water density. Those observations fed ocean models and anti-submarine warfare research. Its small complement and cheap original construction contrast with the expense and likely mission growth of any modern replacement.",
+      "body": "FLIP had no propulsion and relied on a tug to reach its operating area. Flooding the long ballast section rotated the platform vertically, while compressed air later returned it to the horizontal towing position. In the spar-like orientation, most of the structure sat below the waves and produced a remarkably stable laboratory for measuring wave height, acoustic signals, temperature, and water density. Those observations fed ocean models and anti-submarine warfare research. A complement of five crew and eleven researchers shows how a small, purpose-built platform could deliver scientific and naval value without becoming a conventional research ship.",
       "sourcePath": "src/transcripts/txt/2024-01-25_T19-34-43_patreon-96-odd-ship-designs-that-actually-work_bDDhATftzm8.txt",
       "evidence": [
         { "start": "1:02:28", "end": "1:05:19", "note": "The transcript explains FLIP's rotation, spar-buoy stability, lack of propulsion, complement, and research missions." },
@@ -176,7 +229,7 @@
       "end": "1:08:21",
       "topics": ["flip-research-platform", "research-ships", "naval-procurement", "mission-creep"],
       "summary": "A replacement question contrasts an abandoned $8 million life extension with the far greater cost and mission growth likely in a new platform.",
-      "body": "Dr. Clarke reasons that an organization unwilling to fund a modest extension is unlikely to authorize a purpose-built successor. A new design would invite additional requirements and portfolio padding, turning a simple, efficient research tool into a much more expensive acquisition.",
+      "body": "Dr. Clarke reasons that an organization unwilling to fund an $8 million life extension is unlikely to authorize a purpose-built successor. FLIP had been built cheaply in the early 1960s and continued producing valuable research for decades. Recreating that simple capability under modern acquisition rules would invite additional requirements, expanded missions, and portfolio padding. The result could cost vastly more than preserving the efficient original platform, which is why he sees replacement as improbable.",
       "question": "Are there plans to replace FLIP?",
       "answerShort": "Probably not: the rejected life extension was cheap compared with a new platform, whose requirements and mission growth could drive the price dramatically higher.",
       "sourcePath": "src/transcripts/txt/2024-01-25_T19-34-43_patreon-96-odd-ship-designs-that-actually-work_bDDhATftzm8.txt",
@@ -194,11 +247,29 @@
       "end": "1:33:23",
       "topics": ["surcouf", "cruiser-submarines", "french-navy", "commerce-raiding", "submarine-design"],
       "summary": "Surcouf's twin 8-inch guns promised economical commerce raiding, but using them forced a vulnerable and unstable submarine to fight on the surface.",
-      "body": "The guns offered cheaper ammunition and theoretical reach, yet the low director and periscope height sharply reduced practical range, while roll limits, slow preparation, and a small ready magazine complicated fire control. Destroyer escorts could close quickly and engage an unarmored target with comparable range. The reconnaissance aircraft added another surface-dependent sequence, reinforcing the mismatch between a submarine's strength in concealment and a cruiser's visible surface role.",
+      "body": "Surcouf's twin 8-inch guns offered cheaper ammunition and greater destructive effect against merchant ships than torpedoes, but using them forced the submarine onto the surface. Low director and periscope height cut practical range far below the guns' nominal performance, while roll limits, slow preparation, and a small ready magazine complicated fire control. Destroyer escorts could close quickly and engage the large, unarmored target with comparable practical range. The reconnaissance aircraft added another lengthy surface-dependent sequence for assembly, launch, recovery, and stowage. The design therefore combined a submarine's vulnerability on the surface with a cruiser's need to remain visible, rather than preserving the concealment that makes an ambush submarine effective.",
       "sourcePath": "src/transcripts/txt/2024-01-25_T19-34-43_patreon-96-odd-ship-designs-that-actually-work_bDDhATftzm8.txt",
       "evidence": [
         { "start": "1:09:06", "end": "1:17:56", "note": "The transcript assesses gun size, stability, practical range, firing delay, ammunition, and vulnerability to escorts." },
         { "start": "1:24:32", "end": "1:27:26", "note": "The speaker explains the conceptual mismatch and difficulties of using the reconnaissance aircraft to find unescorted shipping." }
+      ]
+    },
+    {
+      "id": "surcouf-unescorted-shipping-reconnaissance",
+      "videoId": "bDDhATftzm8",
+      "slug": "surcouf-unescorted-shipping-reconnaissance",
+      "title": "Could Surcouf hunt unescorted merchant ships?",
+      "kind": "qa",
+      "start": "1:25:26",
+      "end": "1:27:26",
+      "topics": ["surcouf", "cruiser-submarines", "commerce-raiding", "reconnaissance-aircraft", "submarine-design"],
+      "summary": "Even unescorted prey was difficult to find because the reconnaissance aircraft forced Surcouf to expose herself, advertise a recovery point, and spend time assembling and handling the aircraft.",
+      "body": "Dr. Clarke agrees that unescorted shipping was the intended target, but asks how the submarine would locate it across an ocean. Launching the aircraft required Surcouf to surface, assemble the machine, and either remain near a known position or transmit a signal that helped the pilot find the boat again. Currents could move the submarine away from the planned recovery point, and disassembly after recovery prolonged the exposure. Cruising on the surface without the aircraft was also slow enough that independent merchantmen might escape or report the raider. The scouting system therefore weakened the concealment and freedom of movement that were supposed to justify a cruiser submarine.",
+      "question": "Could Surcouf use its guns and aircraft to hunt unescorted merchant ships?",
+      "answerShort": "That was the theory, but finding and recovering the scout aircraft exposed the submarine and limited its movement, while surface cruising risked detection before it could close the target.",
+      "sourcePath": "src/transcripts/txt/2024-01-25_T19-34-43_patreon-96-odd-ship-designs-that-actually-work_bDDhATftzm8.txt",
+      "evidence": [
+        { "start": "1:25:26", "end": "1:27:26", "note": "The response explains the aircraft assembly, navigation, signaling, recovery, speed, and detection problems involved in finding unescorted shipping." }
       ]
     },
     {
@@ -211,7 +282,7 @@
       "end": "1:42:42",
       "topics": ["novgorod", "circular-warships", "imperial-russian-navy", "coastal-defense", "riverine-warfare"],
       "summary": "The Russian circular ships paired very shallow draft and heavy guns with severe drag and handling limits, making them defensible for estuaries and straits but poor open-sea vessels.",
-      "body": "A circular hull could carry two 11-inch guns on a compact, shallow-draft platform, with the ship itself used to help aim them. The same form pushed rather than cut through water, required six shafts for only about six and a half knots, and was vulnerable to currents and wave action. Dr. Clarke argues their thirty-year service makes more sense when judged as specialized coastal-defense vessels rather than ordinary battleships.",
+      "body": "A circular hull could carry two 11-inch guns on a compact, shallow-draft platform, with the ship itself used to help aim them. Only 18 inches of freeboard and a deck rising toward the central barbette made open-water operation especially wet and hazardous. The same form pushed rather than cut through water, requiring six shafts and eight boilers for only about six and a half knots. Currents could catch the rounded hull and turn it, so effective handling demanded experience and remained far less predictable than a conventional ship. Dr. Clarke argues the vessels' thirty-year service makes sense when they are judged as specialized estuary, strait, and coastal-defense platforms rather than ordinary battleships.",
       "sourcePath": "src/transcripts/txt/2024-01-25_T19-34-43_patreon-96-odd-ship-designs-that-actually-work_bDDhATftzm8.txt",
       "evidence": [
         { "start": "1:34:11", "end": "1:38:50", "note": "The transcript covers the coastal mission, shallow draft, armament, low freeboard, propulsion, speed, and hydrodynamic drag." },
@@ -228,7 +299,7 @@
       "end": "1:48:00",
       "topics": ["grillo-class", "italian-navy", "motor-torpedo-boats", "harbor-attack", "world-war-i"],
       "summary": "The Grillo-class motor torpedo boats used tracked chains to cross harbor obstructions and reach Austro-Hungarian anchorages with torpedoes.",
-      "body": "Their landing-vehicle appearance followed directly from the problem of crossing sandbanks, booms, and other defenses around enemy bases. The chain tracks worked in trials but generated enough noise to compromise surprise during operations. The design therefore demonstrates a plausible mechanical solution whose tactical execution remained hazardous.",
+      "body": "Their landing-vehicle appearance followed directly from the problem of crossing sandbanks, booms, and other defenses around Austro-Hungarian bases. Chain tracks were meant to carry the small torpedo boats over obstacles that would stop an ordinary hull. Trials showed that the mechanism could work, so the design was more than a visual curiosity. In action, however, the chains generated enough noise to compromise surprise and give harbor defenders time to react, making the mechanical success tactically hazardous.",
       "sourcePath": "src/transcripts/txt/2024-01-25_T19-34-43_patreon-96-odd-ship-designs-that-actually-work_bDDhATftzm8.txt",
       "evidence": [
         { "start": "1:42:45", "end": "1:43:30", "note": "The transcript describes the tracked torpedo-boat concept and its intended access over sandbanks into Austrian bases." },
@@ -245,7 +316,7 @@
       "end": "1:57:27",
       "topics": ["dockwise-vanguard", "heavy-lift-ships", "fleet-logistics", "ship-repair", "strategic-sealift"],
       "summary": "The semi-submersible Dockwise Vanguard can lift exceptionally large ships, making commercial heavy-lift capacity strategically important for fleet recovery and repair.",
-      "body": "Vanguard floods down so cargo can float over its deck, then deballasts to lift as much as 110,000 tons for transport. Dr. Clarke argues that a carrier-operating state should retain dependable access to such ships because they can recover major naval units that cannot voyage home under their own power. The concentration of this capacity in a small Dutch-owned fleet gives the service strategic weight beyond ordinary commercial shipping.",
+      "body": "Vanguard floods down so cargo can float over its deck, then deballasts to lift as much as 110,000 tons for transport. The same basic method allowed the smaller Blue Marlin to carry the damaged USS Cole home, demonstrating how heavy lift can substitute for a voyage an injured warship cannot make. Dr. Clarke argues that a carrier-operating state should retain dependable access to a ship large enough to recover its capital units. Only a small number of vessels can perform work at this scale, and much of the capacity sits within one Dutch corporate group. That commercial concentration gives the Netherlands and its heavy-lift fleet strategic importance beyond ordinary shipping services.",
       "sourcePath": "src/transcripts/txt/2024-01-25_T19-34-43_patreon-96-odd-ship-designs-that-actually-work_bDDhATftzm8.txt",
       "evidence": [
         { "start": "1:48:00", "end": "1:50:37", "note": "The transcript identifies Vanguard, its 110,000-ton capacity, and the case for national access to carrier-sized heavy lift." },
@@ -262,7 +333,7 @@
       "end": "2:08:15",
       "topics": ["k-class-submarines", "royal-navy", "fleet-submarines", "steam-turbines", "world-war-i"],
       "summary": "The K class used steam turbines to reach fleet speed, but funnels, boilers, and the transition to diving imposed dangerous complexity on a submarine.",
-      "body": "The 1913 concept imagined fast submarines scouting ahead of the Grand Fleet and then submerging to torpedo an approaching enemy line. Experimental Nautilus and Swordfish led through the disappointing J class to K-class boats that could make about 24 knots on the surface. Their oil-fired steam plant required air intakes and exhaust routes through the pressure boundary, creating precisely the sealing and transition problems a submarine should avoid; the design lineage then fed the large gun-armed M class.",
+      "body": "The 1913 concept imagined fast submarines scouting ahead of the Grand Fleet and then submerging to torpedo an approaching enemy line. Experimental Nautilus and Swordfish led through the disappointing J class to K-class boats that could make about 24 knots on the surface. Their oil-fired steam plant required air intakes and exhaust routes through the pressure boundary, creating precisely the sealing and transition problems a submarine should avoid. Although the boats failed in the close fleet role and suffered an accident-prone reputation, Dr. Clarke notes that their size and range could be useful in independent long-range submarine operations. The design lineage then fed the gun-armed M class, while also exposing the deeper contradiction between a cruiser's peacetime value in visibility and a submarine's combat value in remaining unseen.",
       "sourcePath": "src/transcripts/txt/2024-01-25_T19-34-43_patreon-96-odd-ship-designs-that-actually-work_bDDhATftzm8.txt",
       "evidence": [
         { "start": "1:57:27", "end": "2:01:27", "note": "The transcript introduces the K class, evaluates its actual usefulness, and describes the fleet-submarine tactical concept." },
@@ -279,7 +350,7 @@
       "end": "2:12:02",
       "topics": ["nexans-skagerrak", "cable-laying-ships", "undersea-cables", "maritime-infrastructure", "special-purpose-ships"],
       "summary": "Nexans Skagerrak's turntables, cable tanks, joining space, and handling gear support rapid installation and repair of high-voltage undersea cables.",
-      "body": "The ship is organized around one infrastructure mission rather than conventional cargo carriage. It can carry thousands of tons of cable and provides a protected area for high-voltage joining alongside the A-frames, cradles, and turntables needed to control deployment. Speed and stability matter because every delay increases the cost of a new project or prolongs an outage.",
+      "body": "The ship is organized around one infrastructure mission rather than conventional cargo carriage. It can carry about 7,000 tons of cable and provides a protected area for high-voltage joining. A-frames, cradles, turntables, and handling gear control the cable as it is installed or recovered. Speed, stability, and reliable jointing matter because every delay raises the cost of a new project or prolongs an outage in critical undersea infrastructure.",
       "sourcePath": "src/transcripts/txt/2024-01-25_T19-34-43_patreon-96-odd-ship-designs-that-actually-work_bDDhATftzm8.txt",
       "evidence": [
         { "start": "2:08:15", "end": "2:11:21", "note": "The transcript describes the cable mission, accommodation, cable capacity, joining area, handling gear, and economic value of quick work." }
@@ -295,7 +366,7 @@
       "end": "2:17:53",
       "topics": ["sms-seeadler", "commerce-raiding", "imperial-german-navy", "sailing-ships", "world-war-i"],
       "summary": "The sailing raider Seeadler captured sixteen ships while avoiding the fuel and support demands that constrained German surface raiders far from home.",
-      "body": "A full-rigged sailing ship looked anachronistic in 1917, which also made it an effective disguise and a practical long-range platform. Seeadler combined sail power with a small auxiliary diesel and light armament, capturing roughly 30,000 tons of shipping before a tsunami wrecked her on a reef. The design directly answered Germany's problems of breaking out, sustaining distant operations, and supplying fuel.",
+      "body": "A full-rigged sailing ship looked anachronistic in 1917, which also made it an effective disguise and a practical long-range platform. Seeadler combined 2,600 square meters of sail with a small auxiliary diesel and light armament. She captured sixteen ships totaling roughly 30,000 tons before a tsunami wrecked her on a reef. Sail directly answered Germany's problems of breaking out, sustaining distant operations, and supplying fuel far from home. The solution belonged to the conditions of the First World War, when commercial sailing ships still moved globally and were far less conspicuous than a German steam raider.",
       "sourcePath": "src/transcripts/txt/2024-01-25_T19-34-43_patreon-96-odd-ship-designs-that-actually-work_bDDhATftzm8.txt",
       "evidence": [
         { "start": "2:12:02", "end": "2:14:16", "note": "The transcript identifies the World War I sailing raider, captures, loss, speed, rig, and armament." },
@@ -312,7 +383,7 @@
       "end": "2:22:14",
       "topics": ["uss-wolverine", "uss-sable", "training-carriers", "us-navy", "naval-aviation", "great-lakes"],
       "summary": "A converted side-wheel passenger ship gave wartime naval aviators a cheap, safe flight deck for repeated carrier-landing practice on the Great Lakes.",
-      "body": "Wolverine and sister Sable lacked hangars, lifts, and operational air groups, but those omissions matched their training mission. Their broad decks allowed pilots, landing-signal officers, and deck crews to practice approach geometry and constrained landing areas without tying up combat carriers. Dr. Clarke credits this specialized capacity with helping the US Navy expand naval aviation quickly and with relatively low training losses.",
+      "body": "Wolverine and sister Sable lacked hangars, lifts, and operational air groups, but those omissions matched their training mission. Converted side-wheel passenger ships offered broad flight decks without consuming combat-carrier hulls or exposing trainees to an operational war zone. Painted deck markings let pilots practice narrow landing lanes, centerline approaches, and avoiding the space that parked aircraft would occupy. The ships trained pilots, landing-signal officers, and other naval personnel on the Great Lakes with relatively low wartime losses. Dr. Clarke credits this cheap, specialized capacity with helping the US Navy expand naval aviation quickly and safely.",
       "sourcePath": "src/transcripts/txt/2024-01-25_T19-34-43_patreon-96-odd-ship-designs-that-actually-work_bDDhATftzm8.txt",
       "evidence": [
         { "start": "2:17:53", "end": "2:20:07", "note": "The transcript introduces the paddle-wheel carrier conversion, Great Lakes mission, trainee scale, and sister ship." },
@@ -329,7 +400,7 @@
       "end": "2:29:15",
       "topics": ["sms-seeadler", "sailing-rigs", "historical-sources", "maritime-art"],
       "summary": "Viewer observations prompt a live correction: flags may identify the ships, but the painting's masts and sail plan do not reliably depict Seeadler's full rig.",
-      "body": "Dr. Clarke first follows the depicted sail arrangements, then revises his identification after comparing the flags and the ship's documented three-masted full rig. The exchange demonstrates why attractive historical artwork must be checked against technical descriptions and other images, especially when an artist may have used creative license.",
+      "body": "Dr. Clarke first follows the depicted sail arrangements, then revises his identification after viewers point to the national flags. The painting shows a mast and sail plan that does not agree with Seeadler's documented three-masted full rig. Comparing the image with technical descriptions and other photographs reveals that the artist likely used creative license. The live correction demonstrates why attractive historical artwork should be treated as evidence to test rather than a precise technical drawing.",
       "sourcePath": "src/transcripts/txt/2024-01-25_T19-34-43_patreon-96-odd-ship-designs-that-actually-work_bDDhATftzm8.txt",
       "evidence": [
         { "start": "2:22:54", "end": "2:25:50", "note": "The audience flags an identification issue and the speaker compares flags, mast count, and sail plans." },

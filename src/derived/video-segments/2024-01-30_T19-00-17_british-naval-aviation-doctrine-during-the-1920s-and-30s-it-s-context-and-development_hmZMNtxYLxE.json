@@ -9,7 +9,9 @@
     "aircraft-carriers",
     "carrier-doctrine",
     "night-operations",
-    "torpedo-bombers"
+    "torpedo-bombers",
+    "naval-procurement",
+    "naval-logistics"
   ],
   "segments": [
     {
@@ -22,9 +24,23 @@
       "end": "9:39",
       "topics": ["royal-navy", "naval-aviation", "carrier-doctrine", "interwar-period", "forensic-engineering", "aircraft-procurement"],
       "summary": "The opening explains how ship and aircraft compromises reveal what the Royal Navy truly valued in interwar carrier warfare.",
-      "body": "Dr. Clarke frames the lecture through his research on the Fleet Air Arm's separation from the Royal Navy and introduces forensic engineering: testing official claims against what ships could actually do. The method exposes the priorities hidden in carrier layout, air-group size, armor, and procurement compromises. He also maps the cumbersome chain linking naval requirements, the Admiralty, Air Ministry, and aircraft manufacturers.",
+      "body": "Dr. Clarke frames the lecture through his research on the Fleet Air Arm's separation from the Royal Navy and introduces forensic engineering: testing official claims against what ships could actually do. The method exposes the priorities hidden in carrier layout, air-group size, armor, and procurement compromises. Once treaty limits disappeared, the broadly similar Midway and Malta concepts suggested that British and American ideals had converged, while their differences still reflected infrastructure and air-group experience. He also maps the cumbersome chain linking naval requirements, the Admiralty, Air Ministry, and aircraft manufacturers.",
       "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
       "evidence": [{"start": "3:14", "end": "6:54", "note": "The lecture defines forensic engineering and traces the indirect aircraft-requirements chain."}]
+    },
+    {
+      "id": "aircraft-development-costs-versus-production-scale",
+      "videoId": "hmZMNtxYLxE",
+      "slug": "aircraft-development-costs-versus-production-scale",
+      "title": "Aircraft trials cost less than fleet-scale production",
+      "kind": "notable_point",
+      "start": "7:00",
+      "end": "8:35",
+      "topics": ["aircraft-procurement", "naval-industrial-base", "research-and-development", "interwar-period"],
+      "summary": "Interwar prototype competitions let the Royal Navy explore successive aircraft designs even when mass orders and new warships remained harder political choices.",
+      "body": "Dr. Clarke separates the cost of designing and testing an aircraft from the much larger decision to procure it in fleet strength. Relative to constructing additional ships, prototype competitions were affordable enough to keep several firms exploring new naval aircraft during economic difficulty. Governments could still restrict development or production, so affordability did not guarantee a large order. The distinction helps explain why the Fleet Air Arm could generate many specifications and trial types without fielding every design in quantity. Low production totals therefore do not by themselves prove that the Navy lacked an aviation doctrine or development program.",
+      "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
+      "evidence": [{"start": "7:00", "end": "8:35", "note": "The lecture distinguishes comparatively affordable aircraft development competitions from the separate expense and policy choice of mass procurement."}]
     },
     {
       "id": "world-war-one-lessons-drive-british-naval-aviation",
@@ -36,7 +52,7 @@
       "end": "12:28",
       "topics": ["royal-navy", "world-war-i", "battle-of-jutland", "naval-aviation", "aerial-reconnaissance", "naval-gunfire-spotting", "aerial-torpedoes"],
       "summary": "Jutland, submarines, and the German fleet's protected anchorages shape a Royal Navy determined to use aircraft for reconnaissance, spotting, and attack.",
-      "body": "The Royal Navy's interwar approach grew from three painful experiences: submarine losses, the German fleet's escape at Jutland, and its ability to shelter in port. Aircraft had already demonstrated reconnaissance, gunfire spotting, fighter support, and torpedo attack, making aviation a central answer to those problems rather than a rival to the battle fleet.",
+      "body": "The Royal Navy's interwar approach grew from three painful experiences: submarine losses, the German fleet's escape at Jutland, and its ability to shelter in port. Each failure pointed toward a different aviation task, from hunting and suppressing submarines to maintaining contact with an enemy fleet and striking ships behind harbor defenses. Aircraft had already demonstrated reconnaissance, gunfire spotting, fighter support, and torpedo attack during World War I. Aviation therefore became a central answer to operational frustrations rather than a rival imposed on the battle fleet.",
       "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
       "evidence": [{"start": "9:40", "end": "12:25", "note": "The transcript connects World War I failures with the adoption of aviation as a fundamental fleet capability."}]
     },
@@ -50,7 +66,7 @@
       "end": "17:25",
       "topics": ["charles-madden", "atlantic-fleet", "aircraft-carriers", "fleet-air-defense", "anti-submarine-warfare", "naval-gunfire-spotting", "british-empire"],
       "summary": "A 1919 paper assigns specialized carriers to reconnaissance, spotting, torpedo attack, anti-submarine work, and air defense.",
-      "body": "Madden proposed eleven aviation ships for an Atlantic Fleet of ten battleships and four battlecruisers, with separate reconnaissance, divisional, torpedo, ASW, and air-defense roles. Extended across the Mediterranean and a proposed Indian Ocean fleet, the concept implied at least thirty-three carriers. The scale challenges the image of an interwar Royal Navy indifferent to naval air power.",
+      "body": "Madden proposed eleven aviation ships for an Atlantic Fleet of ten battleships and four battlecruisers, with separate reconnaissance, divisional, torpedo, ASW, and air-defense roles. Extended across the Mediterranean and a proposed Indian Ocean fleet, the concept implied at least thirty-three carriers before adding ships for detached cruiser duties. Madden was the Atlantic Fleet commander and later First Sea Lord, so this was a senior fleet requirement rather than a marginal aviation proposal. His accompanying timetable sought most of the ships before his successor completed a command term. The scale and urgency challenge the image of an interwar Royal Navy indifferent to naval air power.",
       "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
       "evidence": [{"start": "12:29", "end": "16:57", "note": "Madden's paper lists specialized carrier types and the fleet structure they would support."}]
     },
@@ -64,9 +80,23 @@
       "end": "25:38",
       "topics": ["hms-argus", "hms-vindictive", "aircraft-carriers", "carrier-design", "washington-naval-treaty", "fleet-air-arm", "naval-exercises"],
       "summary": "With only Argus and the compromised Vindictive available, the Royal Navy uses intensive trials to develop carrier roles and air-group requirements.",
-      "body": "Vindictive demonstrated the limits of mixing cruiser and carrier functions, while Argus became the workhorse for trials, exercises, and development. Studies converged on a roughly common carrier able to embark about forty-eight mixed aircraft, with a larger fighter total in an air-defense fit. Treaty limits prevented the much larger fleet envisioned in 1919, but did not end the experimental program.",
+      "body": "Vindictive demonstrated the limits of mixing cruiser and carrier functions, leading the Navy to prefer distinct cruiser and carrier hulls. Argus became the workhorse for trials, exercises, and development while new carriers were still being completed. Studies converged on a roughly common carrier able to embark about forty-eight mixed aircraft, with a larger fighter total in an air-defense fit. That common hull could be adapted to reconnaissance, spotting, torpedo, anti-submarine, or fighter-heavy duties by changing its air group. Treaty limits prevented the much larger fleet envisioned in 1919, but did not end the experimental program.",
       "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
       "evidence": [{"start": "17:38", "end": "21:23", "note": "The transcript contrasts Vindictive with Argus and outlines standardized carrier and air-group studies."}]
+    },
+    {
+      "id": "carrier-construction-as-shipyard-policy",
+      "videoId": "hmZMNtxYLxE",
+      "slug": "carrier-construction-as-shipyard-policy",
+      "title": "Carrier orders could sustain yards and design skills",
+      "kind": "notable_point",
+      "start": "19:19",
+      "end": "20:06",
+      "topics": ["naval-industrial-base", "aircraft-carriers", "shipyards", "naval-procurement", "interwar-period"],
+      "summary": "The proposed carrier program is also presented as a way to keep large shipyards active and accumulate experience while Britain decides its future battle-fleet design.",
+      "body": "Dr. Clarke distinguishes Britain's heavy postwar debt from an inability to choose any major naval investment. He argues that carrier orders could have kept large-ship yards working while policy makers decided what the next battle fleet should look like. Building a series of carriers would also have created practical design and production experience that paper studies could not supply. This industrial perspective connects force planning with the survival of shipyard capacity and specialist skills. The watch point is useful because it treats procurement as both a fleet decision and a long-term industrial policy choice.",
+      "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
+      "evidence": [{"start": "19:19", "end": "20:06", "note": "The transcript argues that carrier construction could sustain large yards and build experience while future battle-fleet choices matured."}]
     },
     {
       "id": "interwar-fighter-design-follows-operational-geography",
@@ -78,7 +108,7 @@
       "end": "30:35",
       "topics": ["naval-fighters", "parnall-panther", "fairey-flycatcher", "imperial-japanese-navy", "aircraft-design", "logistics", "fleet-air-defense"],
       "summary": "British fighters pursue maneuverability but retain ruggedness and repairability for operations far from home support.",
-      "body": "The Panther and later Flycatcher illustrate the demand for highly maneuverable naval fighters. Dr. Clarke contrasts British and Japanese design pressures: similar interest in agile aircraft, but different assumptions about distance from factories and replacement pools. The British requirement for global deployment favored a stronger, more repairable airframe.",
+      "body": "The Panther and later Flycatcher illustrate the demand for highly maneuverable naval fighters. Dr. Clarke uses the period term 'inflective' for an aircraft that responds readily to a pilot's desired maneuver and can be thrown around the sky. He contrasts British and Japanese design pressures: similar interest in agility, but different assumptions about distance from factories and replacement pools. A navy expecting to fight near home could accept a lighter, harder-to-repair machine because replacements were closer. The British requirement for global deployment instead favored a stronger, more repairable airframe.",
       "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
       "evidence": [{"start": "25:39", "end": "28:29", "note": "The lecture ties fighter maneuverability, ruggedness, and repairability to the geography of expected operations."}]
     },
@@ -92,7 +122,7 @@
       "end": "30:35",
       "topics": ["fleet-air-defense", "naval-fighters", "anti-aircraft-artillery", "air-defense-doctrine", "torpedo-bombers", "royal-navy"],
       "summary": "Fighters and successive bands of heavy, medium, and light anti-aircraft fire are meant to fragment strikes before weapon release.",
-      "body": "The desired result was not simply an aircraft kill count. Long-range fighters would break up a formation, heavy and medium AA would divide it further, and light weapons would confront the remaining attackers at close range. If disruption prevented accurate torpedo or bomb delivery, the defense had succeeded.",
+      "body": "The desired result was not simply an aircraft kill count. Long-range fighters would break up a formation, heavy and medium AA would divide it further, and light weapons would confront the remaining attackers at close range. This approach contrasted with the Air Ministry faction that treated the bomber as essentially unstoppable and therefore saw less value in defensive fighters. Naval commanders could not accept that premise because a successful bomb or torpedo release directly endangered the fleet. If disruption prevented accurate weapon delivery, the layered defense had succeeded even when some attackers escaped.",
       "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
       "evidence": [{"start": "28:31", "end": "30:31", "note": "The transcript describes a layered fighter and anti-aircraft defense designed to fragment incoming strikes."}]
     },
@@ -106,7 +136,7 @@
       "end": "38:50",
       "topics": ["fairey-flycatcher", "parnall-plover", "gloster-nightjar", "blackburn-dart", "blackburn-blackburn", "night-operations", "aircraft-procurement"],
       "summary": "Overlapping competitions test fighters, spotters, and torpedo aircraft while the Royal Navy begins systematic carrier night operations.",
-      "body": "Several competing fighters entered operational trials before the Flycatcher emerged as the preferred aircraft, while spotter and torpedo designs repeatedly borrowed from one another. Reused names and second-generation designs can conceal the pace of replacement. Night flying, navigator requirements, and increasingly versatile spotter-reconnaissance aircraft became part of the same experimental system.",
+      "body": "Several competing fighters entered operational trials before the Flycatcher emerged as the preferred aircraft, while spotter and torpedo designs repeatedly borrowed from one another. Reused names and second-generation designs can conceal the pace of replacement because a familiar designation might cover a substantially revised aircraft from another competition. Dr. Clarke notes that this naming practice could even make the Treasury believe an airframe had remained unchanged for longer than it really had. Night flying added life-saving equipment, navigation demands, and extra crew weight to the naval specification. Increasingly versatile spotter-reconnaissance and torpedo designs grew from the same experimental system.",
       "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
       "evidence": [{"start": "33:14", "end": "38:28", "note": "The lecture traces fighter trials, early night operations, and convergence between spotter and torpedo aircraft."}]
     },
@@ -120,7 +150,7 @@
       "end": "42:00",
       "topics": ["hms-eagle", "hms-hermes", "aircraft-carriers", "naval-exercises", "torpedo-bombers", "night-operations", "carrier-doctrine"],
       "summary": "The arrival of Eagle and Hermes lets the Royal Navy test carrier combat and exposes the vulnerability of daylight torpedo attacks.",
-      "body": "With three operational carriers, the fleet could compare carrier forces directly and feed exercise results back into aircraft selection. Daylight trials showed unescorted torpedo bombers were highly vulnerable, encouraging fighter escort where practical and strengthening the preference for night attack. At night, a torpedo could be released before defenders had time to react effectively.",
+      "body": "With three operational carriers, the fleet could compare carrier forces directly and feed exercise results back into aircraft selection. The immediate choice of the Flycatcher over competing fighters shows exercises influencing procurement rather than remaining isolated demonstrations. Daylight trials showed unescorted torpedo bombers were highly vulnerable, encouraging fighter escort where range permitted. The same evidence strengthened the preference for night attack, when defenders might not detect the aircraft until after weapon release. Carrier-versus-carrier practice therefore joined aircraft selection, escort tactics, and the developing night doctrine.",
       "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
       "evidence": [{"start": "39:01", "end": "41:27", "note": "The transcript links the new carriers' exercises to fighter selection and the preference for escorted or night torpedo attacks."}]
     },
@@ -134,9 +164,23 @@
       "end": "51:13",
       "topics": ["fleet-air-arm", "naval-observers", "royal-air-force", "air-ministry", "personnel-policy", "carrier-doctrine", "naval-aviation"],
       "summary": "Dual-service promotion constraints push the Royal Navy to rely on observer-navigators as its senior aviation thinkers.",
-      "body": "Naval pilots held parallel RAF and Navy ranks, while RAF promotion priorities limited their access to squadron command and senior experience. Observer-navigators remained wholly under naval control and were selected for navigation, memory, judgment, and problem-solving. Their careers and staff papers therefore became a principal channel through which Royal Navy aviation doctrine developed.",
+      "body": "Naval pilots held parallel RAF and Navy ranks, while RAF promotion priorities limited their access to squadron command and senior experience. Observer-navigators remained wholly under naval control and were selected for navigation, memory, judgment, and problem-solving. Unlike the pilot-led pattern Dr. Clarke identifies in American and Japanese naval aviation, British observers treated the aircraft more explicitly as a system for accomplishing fleet tasks. Some pilots even transferred to the observer branch to escape stalled promotion under the dual-rank arrangement. Observer careers and staff papers therefore became a principal channel through which Royal Navy aviation doctrine developed.",
       "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
       "evidence": [{"start": "43:01", "end": "50:14", "note": "The transcript explains dual-rank promotion problems and why observers became central to naval aviation leadership."}]
+    },
+    {
+      "id": "aircraft-specifications-anticipate-future-war",
+      "videoId": "hmZMNtxYLxE",
+      "slug": "aircraft-specifications-anticipate-future-war",
+      "title": "Aircraft specifications must predict future requirements",
+      "kind": "notable_point",
+      "start": "42:13",
+      "end": "43:01",
+      "topics": ["aircraft-procurement", "force-planning", "fleet-air-arm", "technology-development"],
+      "summary": "A two- or three-year development cycle forces naval planners to specify the aircraft they expect to need later rather than solve only the current fleet problem.",
+      "body": "Aircraft specifications commonly preceded operational service by two or three years. The Swordfish, for example, arose from a 1933 requirement but entered service in 1936. Procurement therefore demanded a forecast of future carrier operations, enemy threats, and aircraft growth rather than a description of present conditions alone. Errors in that forecast could persist into the fleet long after the original decision. This watch point makes the later control and promotion disputes important because the officers writing requirements were shaping capabilities years ahead.",
+      "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
+      "evidence": [{"start": "42:13", "end": "43:01", "note": "The lecture uses the Swordfish's specification-to-service interval to show that aircraft procurement must anticipate future requirements."}]
     },
     {
       "id": "furious-dual-flight-decks-and-continuous-fighter-cover",
@@ -148,9 +192,23 @@
       "end": "54:09",
       "topics": ["hms-furious", "carrier-design", "flight-decks", "naval-fighters", "carrier-air-groups", "blackburn-ripon"],
       "summary": "Furious's lower flying-off deck is designed to launch light fighters while strike aircraft are being arranged above.",
-      "body": "The unusual arrangement was an operational solution, not simply an evolutionary dead end. Short-takeoff fighters could stream from the forward hangar while the main deck remained occupied by a strike, preserving emergency fighter launches. The concept ceased to work as aircraft became heavier, but it reveals the priority placed on simultaneous fighter cover and strike preparation.",
+      "body": "The unusual arrangement was an operational solution, not simply an evolutionary dead end. Short-takeoff fighters could stream from the forward hangar while the main deck remained occupied by a strike, preserving emergency fighter launches. This reduced the risk that arranging a large attack would leave every fighter trapped behind aircraft on the main deck. The concept ceased to work as fighters became heavier and required more takeoff distance. Furious therefore reveals both the priority placed on simultaneous fighter cover and strike preparation and the way aircraft growth could invalidate a sound layout.",
       "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
       "evidence": [{"start": "51:13", "end": "52:25", "note": "The lecture explains the tactical purpose of Furious's separate fighter flying-off deck."}]
+    },
+    {
+      "id": "mixed-air-groups-manage-transition-risk",
+      "videoId": "hmZMNtxYLxE",
+      "slug": "mixed-air-groups-manage-transition-risk",
+      "title": "Mixed air groups make new aircraft safer to learn",
+      "kind": "notable_point",
+      "start": "52:39",
+      "end": "53:58",
+      "topics": ["blackburn-ripon", "carrier-air-groups", "training", "aircraft-procurement", "doctrine-development"],
+      "summary": "Carriers operate proven and newly introduced aircraft together so crews can explore a new type without surrendering the capability they already understand.",
+      "body": "The Blackburn Ripon illustrates how higher landing weights drove work on wing design while torpedo, spotting, and reconnaissance roles continued to converge. Carriers often embarked both an established type and its newer replacement rather than switching the whole air group at once. The older aircraft supplied a dependable capability whose handling and tactics were already understood. The new aircraft could then be tested, trained, and adapted under operational conditions with less risk. Mixed air groups were therefore a deliberate bridge between procurement and mature doctrine, not merely evidence of obsolete machines lingering in service.",
+      "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
+      "evidence": [{"start": "52:39", "end": "53:58", "note": "The transcript explains Ripon development and the deliberate overlap of familiar and new aircraft while crews learn the replacement type."}]
     },
     {
       "id": "six-carriers-for-global-presence-and-maintenance",
@@ -162,7 +220,7 @@
       "end": "59:45",
       "topics": ["hms-courageous", "hms-glorious", "hms-eagle", "hms-hermes", "hms-argus", "hms-furious", "fleet-logistics", "carrier-doctrine"],
       "summary": "Courageous and Glorious expand the fleet to six carriers, enough to rotate ships among home, Mediterranean, and Far Eastern commitments.",
-      "body": "The number fell far short of the pre-treaty ambition, but six hulls allowed for maintenance and geographically separated commitments. Carrier layout also reflected two related missions: a concentrated strike and a continuous flow of reconnaissance, fighter cover, and smaller attacks. Growing aircraft weight and cumulative treaty tonnage increasingly constrained both roles.",
+      "body": "The number fell far short of the pre-treaty ambition, but six hulls allowed for maintenance and geographically separated commitments at home, in the Mediterranean, and in the Far East. Enclosed hangars protected aircraft from North Sea weather and supported sustained operations. Carrier layout also reflected two related missions: a concentrated strike and a continuous flow of reconnaissance, fighter cover, and smaller attacks. Growing aircraft weight steadily eroded the usefulness of short flying-off decks and reduced air-group capacity. Britain's need for several deployable hulls made the cumulative treaty tonnage limit more restrictive than the maximum allowed size of one carrier.",
       "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
       "evidence": [{"start": "54:10", "end": "59:41", "note": "The transcript connects carrier numbers, global station coverage, maintenance, and continuous-operation layouts."}]
     },
@@ -176,7 +234,7 @@
       "end": "1:03:56",
       "topics": ["exercise-mz", "naval-exercises", "hms-courageous", "hms-eagle", "hms-furious", "torpedo-bombers", "hms-nelson", "hms-rodney"],
       "summary": "The 1929 exercise repeatedly slows battle squadrons with carrier torpedo attacks and validates aircraft-led fleet reconnaissance.",
-      "body": "Aircraft from Courageous, Eagle, and Furious attacked battleships in successive waves, with assessed hits reducing squadron speed and altering fleet movement. The exercise also suggested that effective air reconnaissance could replace the traditional dispersed cruiser scouting line. Its results made carrier position, escort, and command relationships urgent fleet problems.",
+      "body": "Aircraft from Courageous, Eagle, and Furious attacked battleships in successive waves, with assessed hits reducing individual ships and entire squadrons to very low speeds. Repeated attacks demonstrated how aviation could shape fleet movement rather than merely deliver one opening blow. The exercise also suggested that effective air reconnaissance could replace the traditional dispersed cruiser scouting line and let the advanced force remain concentrated. Its detailed reports exposed the difficulty of keeping a carrier positioned when flying operations forced it away from the battle line. Carrier location, escort, and command relationships consequently became urgent fleet problems.",
       "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
       "evidence": [{"start": "1:00:11", "end": "1:03:50", "note": "The transcript recounts Exercise MZ's torpedo attacks and its conclusion about air reconnaissance."}]
     },
@@ -190,7 +248,7 @@
       "end": "1:07:10",
       "topics": ["carrier-escorts", "tribal-class-destroyers", "town-class-cruisers", "aretheusa-class-cruisers", "d-class-cruisers", "carrier-doctrine", "naval-exercises"],
       "summary": "Exercises show that carriers cannot simply wander away from the fleet, creating demand for dedicated escorts and command arrangements.",
-      "body": "Once a carrier turned into the wind and separated from the battle line, commanders had to decide whether to abandon it, detach escorts, or move the fleet with it. The debate influenced several cruiser and destroyer programs intended to protect carrier operations. Attempts to tie carrier maneuvers directly to battleships proved impractical.",
+      "body": "Once a carrier turned into the wind and separated from the battle line, commanders had to decide whether to abandon it, detach escorts, or move the fleet with it. The debate influenced Tribal-class destroyers and several cruiser programs intended to protect carrier operations. British planners generally preferred escorts over giving carriers heavy cruiser guns for self-defense, a choice that contrasts with Lexington and Saratoga. Attempts to tie carrier maneuvers directly to battleships proved impractical because the capital ships could not continually follow every turn required for launch and recovery. The exercise record therefore pushed the Navy toward distinct carrier commands and supporting formations.",
       "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
       "evidence": [{"start": "1:03:56", "end": "1:06:59", "note": "The lecture traces the carrier-separation problem into escort ship design and command reform."}]
     },
@@ -204,7 +262,7 @@
       "end": "1:16:23",
       "topics": ["reginald-henderson", "rear-admiral-aircraft-carriers", "fleet-air-arm", "carrier-command", "alexander-ramsay", "aircraft-procurement", "royal-australian-navy"],
       "summary": "The first Rear Admiral Aircraft Carriers defines a post responsible for tactics, training, material development, and advice across the fleet.",
-      "body": "Henderson effectively wrote his own duties and gained unusual authority to connect carrier operations, aircrew training, technical development, and Admiralty advice. His successors moved into senior aviation, production, and Commonwealth naval posts, spreading the institution they had built. The appointment of highly regarded officers signals the Navy's investment in aviation leadership.",
+      "body": "Henderson effectively wrote his own duties and gained unusual authority to connect carrier operations, aircrew training, technical development, and Admiralty advice. The post could correspond directly with the Air Ministry, giving its holder a way through the otherwise cumbersome requirements chain. Alexander Ramsay later became Fifth Sea Lord, Frank Lawrence represented naval interests in aircraft production, and Charles Royal carried aviation experience into leadership of the Royal Australian Navy. Their later appointments spread the institution and expertise the carrier command had built. Entrusting the first post to Henderson, a respected convoy staff officer and commander, signals the Navy's investment in aviation leadership.",
       "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
       "evidence": [{"start": "1:07:11", "end": "1:10:44", "note": "The transcript lists Henderson's responsibilities and the later careers of carrier-command successors."}]
     },
@@ -218,7 +276,7 @@
       "end": "1:18:10",
       "topics": ["multicarrier-operations", "carrier-task-forces", "hms-eagle", "hms-courageous", "carrier-doctrine", "fleet-support"],
       "summary": "Eagle and Courageous train together while planners debate whether carriers should mass as a force or distribute among fleet-support roles.",
-      "body": "The new carrier command could fuse separate ships into a coordinated formation, anticipating later concentrated carrier operations. Yet Madden's older distinction between independent carrier action and direct fleet support remained influential. The Royal Navy therefore explored both concentration for striking power and distribution for reconnaissance and protection.",
+      "body": "The new carrier command could fuse separate ships into a coordinated formation, anticipating later concentrated carrier operations. Eagle and Courageous had already begun working together in exercises, giving the institution practical material to develop. Dr. Clarke compares the organizational question with the later Japanese carrier striking force without claiming the doctrines were identical. Madden's older distinction between independent carrier action and direct fleet support remained influential. The Royal Navy therefore explored both concentration for striking power and distribution for reconnaissance and protection.",
       "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
       "evidence": [{"start": "1:16:23", "end": "1:17:55", "note": "The lecture identifies Eagle-Courageous cooperation and the debate over grouping or dispersing carriers."}]
     },
@@ -232,7 +290,7 @@
       "end": "1:22:17",
       "topics": ["armored-carriers", "illustrious-class", "hms-ark-royal", "mediterranean-fleet", "far-east-fleet", "land-based-air-power", "damage-control", "naval-logistics"],
       "summary": "Mediterranean land-based air power and scarce Far Eastern repair facilities both favor carriers able to survive damage.",
-      "body": "Threat studies mapped airfields, ranges, and likely attack directions across Europe and the Mediterranean. In the Far East, a badly damaged carrier might have to return to Britain, making survivability essential to continued operations; in the Mediterranean, coordinated land-based strikes posed a high-volume threat. Ark Royal and the armored Illustrious design answered these pressures in different balances.",
+      "body": "Threat studies mapped airfields, ranges, and likely attack directions across northern Europe and the Mediterranean while the Admiralty assembled its own Far Eastern assessments. In the Far East, a badly damaged carrier might have to return to Britain, making survivability essential to continued operations. In the Mediterranean, coordinated land-based strikes could arrive in greater volume and with easier shore-based communication than a carrier force could generate. British planners were therefore considering two different air wars: distant operations with scarce repair infrastructure and concentrated attack under land-based air power. Ark Royal and the armored Illustrious design answered those pressures in different balances.",
       "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
       "evidence": [{"start": "1:18:10", "end": "1:22:17", "note": "The transcript connects global air-base assessments and repair distance with carrier survivability."}]
     },
@@ -246,9 +304,23 @@
       "end": "1:25:52",
       "topics": ["proactive-defense", "continuous-air-operations", "fleet-air-defense", "anti-submarine-warfare", "motor-torpedo-boats", "destroyers", "carrier-doctrine"],
       "summary": "British carriers aim to disrupt aircraft, submarines, and light surface attacks before they reach the battle fleet.",
-      "body": "Rather than relying only on one decisive alpha strike, British doctrine emphasized a continuous air presence suited to attacks arriving from many directions. Fighters, bombers, and patrol aircraft would break formations apart, force submarines underwater, and scatter destroyers or motor torpedo boats. The fleet's guns could then defeat smaller, uncoordinated threats in sequence.",
+      "body": "Rather than relying only on one decisive alpha strike, British doctrine emphasized a continuous air presence suited to attacks arriving from many directions. Fighters, bombers, and patrol aircraft would break formations apart, force submarines underwater, and scatter destroyers or motor torpedo boats. Even an attack that scored no hit could succeed by making light forces maneuver, lose cohesion, and arrive piecemeal. The fleet's guns could then defeat smaller, uncoordinated threats in sequence. Large strikes remained part of the doctrine for an enemy fleet or harbor, preferably at night, but they sat within this broader offensively defensive system.",
       "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
       "evidence": [{"start": "1:22:17", "end": "1:25:46", "note": "The lecture defines an offensively defensive system that disrupts air, submarine, and surface attacks."}]
+    },
+    {
+      "id": "competitive-design-pipeline-supports-multiple-roles",
+      "videoId": "hmZMNtxYLxE",
+      "slug": "competitive-design-pipeline-supports-multiple-roles",
+      "title": "Several firms keep naval aircraft roles evolving",
+      "kind": "notable_point",
+      "start": "1:25:52",
+      "end": "1:28:22",
+      "topics": ["hawker-nimrod", "hawker-osprey", "fairey-seal", "supermarine", "naval-industrial-base", "aircraft-procurement", "multi-role-aircraft"],
+      "summary": "The Nimrod, Osprey, and Seal show a competitive design network feeding fighters, shipborne reconnaissance, and increasingly versatile carrier aircraft.",
+      "body": "The arrival of the Hawker Nimrod, Hawker Osprey, and Fairey Seal shows procurement advancing several naval-air roles at once. The Osprey adapted a land-based Hawker design for shipborne reconnaissance, while the Seal continued the convergence of spotting, reconnaissance, torpedo, and bombing functions. Blackburn, Hawker, Fairey, Parnall, and Supermarine all contributed to a broad development base rather than leaving one firm to define every solution. Supermarine's continuing naval work mattered even when its name was not attached to the main carrier types on screen. This competitive pipeline supplied the aircraft and engineering experience on which Henderson's more demanding operational program could draw.",
+      "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
+      "evidence": [{"start": "1:25:52", "end": "1:28:22", "note": "The transcript surveys the Nimrod, Osprey, Seal, and the range of companies supporting new fighter, reconnaissance, and multi-role designs."}]
     },
     {
       "id": "royal-navy-whole-air-group-night-qualification",
@@ -260,7 +332,7 @@
       "end": "1:35:31",
       "topics": ["night-operations", "carrier-air-groups", "reginald-henderson", "naval-observers", "night-fighters", "night-torpedo-attacks", "battle-of-jutland"],
       "summary": "Henderson turns night flying from a specialist skill into a fleet-wide capability for fighters, spotters, and torpedo bombers.",
-      "body": "The goal required more than a single night-qualified squadron: every aircraft type, aircrew specialty, carrier lighting system, and recovery procedure had to work after dark. Night competence offered an offset against numerically superior opponents by letting the Royal Navy choose when to strike. The institutional drive also answered Jutland's enduring lesson that a fleet unable to fight at night might lose contact with its enemy.",
+      "body": "The goal required more than a single night-qualified squadron: every aircraft type, aircrew specialty, carrier lighting system, and recovery procedure had to work after dark. Henderson used senior naval observers as de facto air-group commanders because their appointments remained under naval control. Night competence offered an offset against numerically superior opponents by letting the Royal Navy choose when to strike. The institutional drive also answered Jutland's enduring lesson that a fleet unable to fight at night might lose contact with its enemy. Reaching fleet-wide competence by the early 1930s represented roughly fifteen years of investment, exercises, training, and ship modification rather than a sudden tactical inspiration.",
       "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
       "evidence": [{"start": "1:28:22", "end": "1:35:19", "note": "The transcript describes universal night qualification, carrier modifications, and night fighting as an offset strategy."}]
     },
@@ -274,7 +346,7 @@
       "end": "1:44:23",
       "topics": ["fairey-swordfish", "aerial-torpedoes", "torpedo-bombers", "taranto-raid", "night-operations", "weapon-testing", "blackburn-dart", "fleet-air-arm"],
       "summary": "Decades of testing combine a reliable torpedo, controlled water entry, flares, and precise night delivery in the Swordfish system.",
-      "body": "The Royal Navy treated the torpedo and aircraft as a single delivery problem, refining both weapon behavior and airframe handling. A tension wire could control the torpedo's attitude for shallow-water attack, while flares silhouetted a harbor target from behind. The Swordfish embodied lessons accumulated from earlier aircraft such as the Blackburn Dart and made a carefully rehearsed night attack like Taranto possible.",
+      "body": "The Royal Navy treated the torpedo and aircraft as a single delivery problem, refining both weapon behavior and airframe handling. Multiple torpedo-bomber types and repeated weapon trials reflected the importance placed on a reliable hit rather than on headline speed or warhead size alone. A tension wire could control the torpedo's attitude for shallow-water attack, while flares silhouetted a harbor target from behind and made the approaching aircraft harder to see. Aircrew had to deliver the weapon at the correct speed and altitude in darkness, turning engineering reliability into a demanding training requirement. The Swordfish embodied lessons accumulated from earlier aircraft such as the Blackburn Dart and made a carefully rehearsed night attack like Taranto possible.",
       "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
       "evidence": [{"start": "1:37:37", "end": "1:43:58", "note": "The lecture explains torpedo reliability, Swordfish tension-wire delivery, and flare placement for night harbor attack."}]
     },
@@ -288,9 +360,37 @@
       "end": "1:39:28",
       "topics": ["torpedo-bombers", "aerial-torpedoes", "attack-tactics", "fleet-air-arm", "carrier-air-groups"],
       "summary": "British torpedo attacks use multiple six-aircraft flights approaching from different directions to constrain a ship's evasive turn.",
-      "body": "Even after air units adopted squadron organization, the attack remained built around six-aircraft flights. Several flights could approach on different bearings so that avoiding one spread exposed the ship to another. The formation linked organization directly to the geometry of torpedo attack.",
+      "body": "Even after air units adopted squadron organization, the attack remained built around six-aircraft flights. One flight could approach from one bearing while others closed from different directions. A target turning to avoid one torpedo spread would expose itself to another, reducing the value of a single evasive maneuver. The formation therefore linked unit organization directly to the geometry of torpedo attack. Exercise practice made the six-aircraft flight a durable tactical building block rather than an administrative accident.",
       "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
       "evidence": [{"start": "1:38:51", "end": "1:39:28", "note": "The transcript explains coordinated attacks by several six-aircraft flights from separate directions."}]
+    },
+    {
+      "id": "night-attack-protects-elite-torpedo-crews",
+      "videoId": "hmZMNtxYLxE",
+      "slug": "night-attack-protects-elite-torpedo-crews",
+      "title": "Night attack makes torpedo-aircrew risk count",
+      "kind": "chapter",
+      "start": "1:44:23",
+      "end": "1:49:16",
+      "topics": ["torpedo-bombers", "night-operations", "taranto-raid", "harbor-attack", "fleet-air-arm", "weapons-reliability"],
+      "summary": "The Royal Navy combines night tactics and highly reliable torpedoes so that elite aircrews have the best chance to survive and inflict worthwhile damage.",
+      "body": "Royal Navy planners studied not only whether an attack could hit but also whether the trained crews and aircraft were likely to survive. Torpedo-bomber personnel were treated as an elite whose dangerous work should be paired with a weapon system that justified the risk. Night attacks reduced the fighter problem and gave a formation a better chance to reach release position against an enemy fleet. Dr. Clarke uses the Taranto crews' uncertainty about who had survived to convey the psychological cost even when the attack succeeded. Longstanding harbor-attack work at imperial-defense level shows that striking a fleet in sanctuary was an institutional objective carried forward from the frustration of World War I.",
+      "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
+      "evidence": [{"start": "1:44:23", "end": "1:49:16", "note": "The transcript links casualty calculations, elite torpedo crews, night attack, Taranto experience, reliable weapons, and formal harbor-attack planning."}]
+    },
+    {
+      "id": "range-measured-by-usable-night-strike-reach",
+      "videoId": "hmZMNtxYLxE",
+      "slug": "range-measured-by-usable-night-strike-reach",
+      "title": "Useful range includes navigation, payload, and darkness",
+      "kind": "chapter",
+      "start": "1:49:30",
+      "end": "1:54:27",
+      "topics": ["long-range-strike", "night-operations", "naval-observers", "fairey-swordfish", "carrier-doctrine", "aircraft-design", "naval-logistics"],
+      "summary": "Aircraft range matters only when the crew, navigation equipment, fuel, and weapons can perform the intended reconnaissance or strike mission at night.",
+      "body": "Dr. Clarke cautions against comparing aircraft by a single maximum-range figure detached from doctrine. British aircraft carried observers, beacon receivers, survival equipment, and other weight because long-range night navigation had to work over the sea. Swordfish could trade the observer's normal position for an auxiliary fuel tank, moving the observer aft and extending operational reach at considerable personal risk. The purpose of that range was to maintain contact, guide a strike, or hit first far enough from the fleet to break up the enemy's strength. A shorter paper range could therefore be more useful if the complete aircraft-and-crew system could deliver its mission reliably in darkness.",
+      "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
+      "evidence": [{"start": "1:49:30", "end": "1:54:27", "note": "The lecture defines range through doctrinal usefulness and explains the observer, equipment, and auxiliary-fuel arrangements behind long night strikes."}]
     },
     {
       "id": "fleet-air-arm-transfer-exposes-procurement-damage",
@@ -302,7 +402,7 @@
       "end": "2:04:53",
       "topics": ["fleet-air-arm", "air-ministry", "inskip-award", "aircraft-procurement", "gloster-sea-gladiator", "blackburn-skua", "blackburn-roc", "naval-fighters"],
       "summary": "The 1937 transfer restores Admiralty control but leaves inherited fighter delays, engine shortages, and unsuccessful turret-fighter choices.",
-      "body": "The Sea Gladiator had to bridge a fighter gap while authority shifted from the Air Ministry to the Admiralty. Competing service demands restricted engines and disrupted planned replacements, while the Skua succeeded as an accurate dive bomber but lacked fighter performance. The turret-armed Roc demonstrated how an Air Ministry concept could become operationally unsuitable at sea.",
+      "body": "The Inskip review exposed an Air Ministry plan to use fleet carriers first as aircraft transports to the Far East and only later return them for their naval air groups, without having coordinated the plan with the Admiralty. The Sea Gladiator had to bridge a fighter gap while authority shifted from the Air Ministry to naval control. Competing service demands restricted engines and disrupted planned replacements, while the Skua succeeded as an accurate dive bomber but lacked fighter performance. The turret-armed Roc demonstrated how an Air Ministry concept could become operationally unsuitable at sea. A proposed Supermarine single-seat naval fighter was also lost when wartime priority concentrated the company's effort on Spitfire production, leaving the inherited gap harder to close.",
       "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
       "evidence": [{"start": "1:55:50", "end": "2:03:20", "note": "The lecture traces the control transfer, fighter and engine constraints, and the Skua-Roc outcome."}]
     },
@@ -316,7 +416,7 @@
       "end": "2:07:24",
       "topics": ["hms-ark-royal", "illustrious-class", "armored-carriers", "carrier-design", "carrier-air-groups", "multicarrier-operations", "taranto-raid"],
       "summary": "Treaty limits force one carrier design toward a large striking air group and another toward armored survivability.",
-      "body": "Ark Royal was conceived as the large-air-group strike carrier at the center of a multicarrier attack. Illustrious displaced more but traded air-group capacity for protection in the fleet-support role. The distinction was a constrained response to aircraft growth and treaty tonnage, not evidence that one requirement had displaced the other.",
+      "body": "Ark Royal was conceived as the large-air-group strike carrier at the center of a multicarrier attack, and Taranto was originally expected to include Eagle as well. Illustrious displaced more but traded air-group capacity for protection in the fleet-support role. Aircraft became larger across a carrier's life, so a ship's first air group was likely to be the largest equivalent mix it would ever carry. That growth had already reduced Courageous, Glorious, and Furious from potential strike carriers toward fleet-support capacity by the approach of World War II. The distinction between Ark Royal and Illustrious was therefore a constrained response to aircraft growth and treaty tonnage, not evidence that one requirement had displaced the other.",
       "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
       "evidence": [{"start": "2:04:53", "end": "2:07:17", "note": "The transcript contrasts Ark Royal's strike role with the protected fleet-carrier requirement."}]
     },
@@ -330,9 +430,23 @@
       "end": "2:14:44",
       "topics": ["carrier-task-forces", "hms-courageous", "hms-glorious", "force-h", "carrier-escorts", "fast-battleships", "anti-submarine-warfare", "naval-logistics"],
       "summary": "The loss of Courageous and Glorious illustrates doctrine that paired a fast carrier with capital-ship firepower, cruisers, and destroyers.",
-      "body": "Carrier aircraft supplied reconnaissance and long reach, while a fast capital ship supplied the heavy blow and security against surface attack. Cruisers and destroyers protected the carrier when the striking group detached, making the formation's aggregate capability more important than any single hull. Courageous was lost in an ASW role before escort carriers were available, while Glorious violated the long-standing rule against an unprotected carrier in a war zone.",
+      "body": "Carrier aircraft supplied reconnaissance and long reach, while a fast capital ship supplied the heavy blow and security against surface attack. Cruisers and destroyers protected the carrier when the striking group detached, making the formation's aggregate capability more important than any single hull. The planned smaller cruiser-carrier role later appeared in escort carriers, but those ships were not yet available when Courageous was assigned anti-submarine work. Glorious then violated the long-standing rule against an unprotected carrier in a war zone. Later forces such as Force H combined fast carrier, capital ship, cruiser, and destroyer capabilities so each component covered weaknesses the others could not solve alone.",
       "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
       "evidence": [{"start": "2:07:37", "end": "2:12:39", "note": "The lecture uses Courageous, Glorious, and later task forces to explain combined carrier-capital-ship doctrine."}]
+    },
+    {
+      "id": "multi-role-aircraft-reduce-global-logistics-burden",
+      "videoId": "hmZMNtxYLxE",
+      "slug": "multi-role-aircraft-reduce-global-logistics-burden",
+      "title": "Four aircraft families simplify a global air arm",
+      "kind": "notable_point",
+      "start": "2:13:39",
+      "end": "2:14:44",
+      "topics": ["naval-logistics", "aircraft-procurement", "multi-role-aircraft", "fleet-air-arm", "british-empire"],
+      "summary": "The Royal Navy seeks a small set of multi-role carrier and shipborne aircraft to reduce the maintenance and supply burden of worldwide operations.",
+      "body": "Supporting many specialized aircraft types on the other side of the world imposed a large burden of spares, training, and maintenance. The Navy had already experienced the complexity of operating numerous designs together and sought to compress the future fleet into roughly four aircraft families. Multi-role torpedo-spotter-reconnaissance and fighter-reconnaissance aircraft accepted compromises in exchange for simpler global support. A dedicated fighter and a shipborne reconnaissance type completed the proposed mix. This logistical logic explains part of the movement toward multi-role aircraft without claiming that every combined design was tactically ideal.",
+      "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
+      "evidence": [{"start": "2:13:39", "end": "2:14:44", "note": "The transcript connects worldwide sustainment with a proposed four-type mix of multi-role carrier and shipborne aircraft."}]
     },
     {
       "id": "british-naval-aviation-doctrine-fights-locally-outnumbered",
@@ -344,7 +458,7 @@
       "end": "2:18:02",
       "topics": ["carrier-doctrine", "british-empire", "sea-lanes", "trade-protection", "far-east-fleet", "fleet-logistics", "naval-strategy", "interwar-period"],
       "summary": "A global trade network and no permanent third fleet lead British planners to expect local inferiority even when the Navy is globally strongest.",
-      "body": "The doctrine rested on tested weapons, a maritime empire dependent on commerce, and the need to cover widely separated theaters. Treaty parity did not create enough British ships for simultaneous concentration everywhere, so forces in the Mediterranean or Far East might have to hold while outnumbered. Aviation's reconnaissance, range, and disruptive power offered ways to create a favorable local engagement.",
+      "body": "The doctrine rested on tested weapons, a maritime empire dependent on commerce, and the need to cover widely separated theaters. Britain could be the world's strongest navy in aggregate while lacking a permanent third fleet for the Indian Ocean and Far East. Treaty parity also did not mean the United States had already built equal strength, yet British planners expected that any later American support would take time to enter a conflict. Forces in the Mediterranean or Far East might therefore have to hold while locally outnumbered. Aviation's reconnaissance, range, night capability, and disruptive power offered ways to turn that local inferiority into a favorable engagement.",
       "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
       "evidence": [{"start": "2:14:44", "end": "2:18:00", "note": "The transcript summarizes the empire's strategic geography and the expectation of local numerical inferiority."}]
     },
@@ -358,7 +472,7 @@
       "end": "2:20:49",
       "topics": ["fleet-air-arm", "admiralty", "air-ministry", "interservice-rivalry", "aerial-reconnaissance", "naval-gunfire-spotting", "aircraft-procurement"],
       "summary": "An Admiralty submission argues that reconnaissance and spotting are as inherently naval as gunnery, torpedoes, and wireless communication.",
-      "body": "The issue was responsibility as much as institutional pride: commanders accountable for the fleet's survival wanted authority over the aviation on which it increasingly depended. Divided control also obstructed direct communication between operational users and aircraft firms. Henderson sometimes bypassed the formal chain, accelerating development but intensifying friction with the Air Ministry.",
+      "body": "The Admiralty argued that reconnaissance and spotting were naval functions as integral to the fleet as gunnery, torpedoes, or wireless communication. The issue was responsibility as much as institutional pride: commanders accountable for the fleet's survival wanted authority over the aviation on which it increasingly depended. Divided control obstructed promotion, requirement-setting, and direct communication between operational users and aircraft firms. Henderson sometimes bypassed the formal chain, accelerating development but intensifying friction with the Air Ministry. Returning control therefore aligned operational accountability with the personnel and procurement decisions needed to make the doctrine work.",
       "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
       "evidence": [{"start": "2:18:25", "end": "2:20:42", "note": "The transcript presents the Admiralty case for control and explains the consequences of bypassing the Air Ministry."}]
     },
@@ -372,9 +486,23 @@
       "end": "2:32:36",
       "topics": ["reginald-henderson", "naval-exercises", "weapon-testing", "anti-aircraft-artillery", "high-angle-control-system", "anti-submarine-warfare", "doctrine-development"],
       "summary": "The officer driving fleet air defense cautions that exercises and high-angle fire trials cannot reproduce wartime behavior.",
-      "body": "Henderson believed the fleet overrated its high-angle fire-control system because realistic evidence was thin. Exercise boundaries made submarines easier to locate, and aviators pursued prestigious capital-ship targets that wartime crews might avoid under fire. The Navy still had to make procurement and doctrinal decisions from the best data available while recognizing that peace could produce dangerous false confidence.",
+      "body": "Henderson believed the fleet overrated its high-angle fire-control system because realistic evidence was thin. Exercise boundaries made submarines easier to locate, and aviators pursued prestigious capital-ship targets that wartime crews might avoid under fire. Even the adoption of weapons such as the 4.7-inch gun had to proceed from data that senior officers considered incomplete. Simulations and exercises remained necessary, but their rules and assumptions could encode a false picture of combat. The Navy still had to make procurement and doctrinal decisions from the best evidence available while recognizing that peace could produce dangerous confidence.",
       "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
       "evidence": [{"start": "2:20:49", "end": "2:28:27", "note": "The transcript quotes Henderson's warning and shows how exercise rules distorted AA, ASW, and targeting evidence."}]
+    },
+    {
+      "id": "treaty-pressure-splits-ideal-carrier-into-tiers",
+      "videoId": "hmZMNtxYLxE",
+      "slug": "treaty-pressure-splits-ideal-carrier-into-tiers",
+      "title": "Treaty pressure turns one ideal into carrier tiers",
+      "kind": "notable_point",
+      "start": "2:23:21",
+      "end": "2:26:12",
+      "topics": ["aircraft-carriers", "naval-treaties", "carrier-design", "hms-ark-royal", "illustrious-class", "escort-carriers", "force-structure"],
+      "summary": "The Navy cannot combine Ark Royal's air group, Illustrious's protection, and a worldwide presence fleet within treaty tonnage, so it distributes those requirements among specialized carrier types.",
+      "body": "Madden's older distinction between fleet carriers and smaller reconnaissance or presence carriers remained visible beneath later designs. In an unconstrained ship, British planners would have preferred both Ark Royal's large air group and Illustrious-level protection. Treaty tonnage and the need for many hulls made that combination unavailable. The Navy therefore spread striking power, protected fleet support, and worldwide presence across three practical carrier tiers rather than obtaining one universal design. Later escort carriers fulfilled part of the smaller presence and anti-submarine role that interwar plans had repeatedly identified.",
+      "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
+      "evidence": [{"start": "2:23:21", "end": "2:26:12", "note": "The lecture traces Madden's fleet and presence roles into the treaty-driven division among strike, armored fleet, and smaller carrier types."}]
     },
     {
       "id": "reconnaissance-range-and-night-strike-doctrinal-synthesis",
@@ -386,7 +514,7 @@
       "end": "2:36:53",
       "topics": ["carrier-doctrine", "aerial-reconnaissance", "night-operations", "long-range-strike", "naval-gunfire-spotting", "radar", "indian-ocean-raid"],
       "summary": "The conclusion joins proactive defense, long reach, night striking power, and continuous information into one interwar carrier doctrine.",
-      "body": "Aircraft range mattered because it extended reconnaissance, maintained contact, guided attacks, and disrupted threats before they reached the fleet. Night operations offered a way to impose battle timing, while spotting remained valuable for both guns and aircraft. Dr. Clarke presents the result as an imperfect but coherent doctrine shaped by global commitments and the evidence available before war tested it.",
+      "body": "Aircraft range mattered because it extended reconnaissance, maintained contact, guided attacks, and disrupted threats before they reached the fleet. Spotter-reconnaissance aircraft remained a constant across successive generations because information could direct battleship fire, locate an enemy fleet, or lead a carrier strike to its target. Night operations offered a way to impose battle timing and exploit a capability built across the whole fleet rather than one specialist squadron. The doctrine joined that information advantage with proactive defense and a reliable torpedo-strike system. Dr. Clarke presents the result as imperfect but coherent, shaped by global commitments and the incomplete evidence available before war tested it.",
       "sourcePath": "src/transcripts/txt/2024-01-30_T19-00-17_british-naval-aviation-doctrine-during-the-1920s-and-30s-it-s-context-and-development_hmZMNtxYLxE.txt",
       "evidence": [{"start": "2:32:36", "end": "2:36:47", "note": "The conclusion identifies proactive defense, night attack, range, reconnaissance, and strike guidance as enduring themes."}]
     }

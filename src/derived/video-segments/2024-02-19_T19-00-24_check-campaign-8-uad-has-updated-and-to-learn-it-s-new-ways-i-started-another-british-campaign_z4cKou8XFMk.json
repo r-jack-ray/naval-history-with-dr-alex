@@ -5,6 +5,8 @@
     "ultimate-admiral-dreadnoughts",
     "naval-strategy",
     "ship-design",
+    "naval-procurement",
+    "fleet-readiness",
     "fleet-logistics",
     "royal-navy"
   ],
@@ -25,7 +27,7 @@
         "naval-invasions"
       ],
       "summary": "The campaign map turns oil production into a strategic reason to challenge Italy or seize Russian coastal territory.",
-      "body": "Dr. Clarke compares national oil output before choosing where British naval power might be used next. Southern Russia and Crimea become attractive because their ports and resources could support a fleet whose fuel demands are growing, linking territorial strategy to maritime logistics.",
+      "body": "Dr. Clarke compares British oil production with the much larger Italian and American totals before deciding where naval power might be used next. He searches the campaign map for the source of Italy's advantage and treats fuel access as a strategic problem rather than a background statistic. Southern Russia and Crimea become attractive because their ports and resources could support a fleet whose oil demands are growing. The intended naval invasions therefore link territorial strategy, maritime access, and the logistics of operating an exceptionally large fleet.",
       "sourcePath": "src/transcripts/txt/2024-02-19_T19-00-24_check-campaign-8-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_z4cKou8XFMk.txt",
       "evidence": [
         {
@@ -56,7 +58,7 @@
         "fire-control"
       ],
       "summary": "A battleship refit adds fire control, heavier protection, and improved guns while exposing the cost and time of modernization.",
-      "body": "The design is updated with radio direction finding, hydraulic systems, thicker belt and deck armor, and improved ammunition handling. Weight must then be recovered by trading away some secondary protection, and the resulting year-long refit illustrates why fleet modernization is a major program rather than a minor repair.",
+      "body": "The Lion design is updated with radio direction finding, hydraulic systems, improved ammunition handling, and more capable guns. Belt and deck armor are increased until the displacement limit forces reductions in reinforced bulkheads, torpedo protection, and secondary armor. The result preserves a powerful twelve-gun main battery while making survivability a deliberate set of tradeoffs rather than a simple upgrade. A refit lasting roughly a year shows why modernizing a battle fleet is a major program, and Dr. Clarke plans to refit about a dozen ships at a time to return stronger units to service quickly.",
       "sourcePath": "src/transcripts/txt/2024-02-19_T19-00-24_check-campaign-8-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_z4cKou8XFMk.txt",
       "evidence": [
         {
@@ -82,7 +84,7 @@
         "naval-gunnery"
       ],
       "summary": "A Canada-class refit preserves 32-knot speed and twelve 15-inch guns while spending the last available displacement on protection.",
-      "body": "The design exercise treats speed as an operational characteristic worth protecting during modernization. Once machinery and armament are set, the remaining weight is used to strengthen the belt and deck rather than pushing the ship beyond its intended role.",
+      "body": "The Canada-class exercise treats speed as an operational characteristic worth protecting during modernization. Dr. Clarke considers increasing it, but retains 32 knots rather than letting machinery changes consume the remaining displacement. The ship also keeps twelve 15-inch guns, so the refit does not sacrifice its established striking power. With speed and armament fixed, the last available weight goes into belt and deck protection, illustrating how a refit can preserve a ship's role while improving its ability to survive.",
       "sourcePath": "src/transcripts/txt/2024-02-19_T19-00-24_check-campaign-8-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_z4cKou8XFMk.txt",
       "evidence": [
         {
@@ -99,7 +101,7 @@
       "title": "Electronics make an old hull more useful",
       "kind": "notable_point",
       "start": "45:18",
-      "end": "49:39",
+      "end": "46:50",
       "topics": [
         "ship-refits",
         "anti-submarine-warfare",
@@ -108,18 +110,65 @@
         "naval-technology"
       ],
       "summary": "A refit improves torpedo detection, anti-submarine performance, and defensive capability without replacing the ship.",
-      "body": "Dr. Clarke emphasizes upgrading ships whenever useful equipment becomes available. The resulting weight increase is justified by better torpedo spotting, anti-submarine effectiveness, and defense, showing how sensors and systems can extend the value of an existing hull.",
+      "body": "Dr. Clarke emphasizes upgrading ships whenever useful equipment becomes available rather than waiting for replacement hulls. The new fit adds weight, but it improves torpedo spotting, anti-submarine effectiveness, and defensive power. Those gains show how electronics and underwater-warfare systems can materially change an older ship's utility even when its basic hull and armament remain familiar. The tradeoff is accepted because the refit expands the missions the ship can perform and the threats it can meet.",
       "sourcePath": "src/transcripts/txt/2024-02-19_T19-00-24_check-campaign-8-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_z4cKou8XFMk.txt",
       "evidence": [
         {
           "start": "45:18",
           "end": "46:50",
           "note": "The stream explains the torpedo-spotting, anti-submarine, and defensive gains produced by the refit."
-        },
+        }
+      ]
+    },
+    {
+      "id": "washington-treaty-constraints-absent",
+      "videoId": "z4cKou8XFMk",
+      "slug": "washington-treaty-constraints-absent",
+      "title": "The campaign fleet ignores Washington treaty limits",
+      "kind": "notable_point",
+      "start": "48:18",
+      "end": "48:40",
+      "topics": [
+        "washington-naval-treaty",
+        "naval-treaties",
+        "battleship-design",
+        "naval-gunnery",
+        "fleet-composition"
+      ],
+      "summary": "The absence of a Washington Naval Treaty system leaves a fleet of heavily armed battleships free from historical tonnage and gun limits.",
+      "body": "Dr. Clarke notes that the campaign does not move into a Washington Naval Treaty-style restriction system. That omission matters because his fleet already includes battleships armed with 16.5-inch guns and would be nowhere near treaty compliant. The player can therefore continue pursuing large hulls and heavy armament without the design compromises imposed on historical interwar navies. This brief comparison makes the campaign's freedom of procurement easier to distinguish from the political limits that shaped real battleship development.",
+      "sourcePath": "src/transcripts/txt/2024-02-19_T19-00-24_check-campaign-8-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_z4cKou8XFMk.txt",
+      "evidence": [
+        {
+          "start": "48:18",
+          "end": "48:40",
+          "note": "The stream says the game does not enter a Washington treaty-style situation and observes that the existing 16.5-inch-gun battleships would not comply."
+        }
+      ]
+    },
+    {
+      "id": "british-and-american-gun-balance-points",
+      "videoId": "z4cKou8XFMk",
+      "slug": "british-and-american-gun-balance-points",
+      "title": "British and American battleship guns reach different balance points",
+      "kind": "notable_point",
+      "start": "48:46",
+      "end": "49:39",
+      "topics": [
+        "naval-gunnery",
+        "battleship-design",
+        "royal-navy",
+        "us-navy",
+        "naval-procurement"
+      ],
+      "summary": "Gun research prompts Dr. Clarke's counterfactual that Britain might settle on 16.5-inch weapons while the United States preferred 16 inches.",
+      "body": "The campaign research queue returns attention to rangefinders and the performance of heavy naval guns. Dr. Clarke prioritizes improving the 16.5-inch weapon because he regards it as a particularly effective balance point. He offers the qualified historical judgment that the Royal Navy might ultimately have favored that caliber, while the U.S. Navy would probably have remained attached to the 16-inch gun. The comparison is presented as his interpretation of institutional preference and design balance, not as a claim that either counterfactual choice was inevitable.",
+      "sourcePath": "src/transcripts/txt/2024-02-19_T19-00-24_check-campaign-8-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_z4cKou8XFMk.txt",
+      "evidence": [
         {
           "start": "48:46",
           "end": "49:39",
-          "note": "Research priorities return to rangefinding and gun capability."
+          "note": "Rangefinder and big-gun research leads to a stated preference for 16.5-inch British guns and a likely 16-inch American balance point."
         }
       ]
     },
@@ -139,7 +188,7 @@
         "technology-gap"
       ],
       "summary": "Allied fleets help blockade the Soviet Union before a 1890s cruiser encounters four fast 1920s battleships.",
-      "body": "The strategic map rewards friendly relations by bringing French, Italian, and Japanese pressure into the blockade. The ensuing encounter demonstrates the extreme tactical mismatch between an obsolete light cruiser and a modern battle squadron, while also revealing that the battleships have become faster than their destroyer escorts.",
+      "body": "The strategic map rewards friendly relations by bringing French, Italian, and Japanese pressure into the blockade of the Soviet Union. Dr. Clarke's own force contains four modern battleships with six destroyers, giving the operation both concentrated firepower and a screen. An 1890s light cruiser then encounters the squadron and is rapidly overwhelmed by ships built to a completely different technological standard. The approach also reveals an unintended fleet problem: the modern battleships are now fast enough to outrun their destroyer escorts, so screening units must be redesigned to keep pace.",
       "sourcePath": "src/transcripts/txt/2024-02-19_T19-00-24_check-campaign-8-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_z4cKou8XFMk.txt",
       "evidence": [
         {
@@ -170,7 +219,7 @@
         "armor-protection"
       ],
       "summary": "The game forces armor to serve as ballast, prompting an argument for explicit weight-balancing controls in ship design.",
-      "body": "Dr. Clarke points out that deck and belt armor are being added partly to balance the hull rather than solely for protection. A dedicated ballast control would separate stability and trim decisions from armor allocation, producing a more credible naval-architecture model.",
+      "body": "Dr. Clarke points out that deck and belt armor are being added partly to balance the hull rather than solely for protection. That forces a protective system to perform the separate naval-architecture task of controlling trim and weight distribution. He proposes an explicit ballast control so designers could correct balance without distorting the armor scheme. The suggested mechanic would make stability decisions visible and allow protection to be chosen for combat value rather than as a workaround for hull balance.",
       "sourcePath": "src/transcripts/txt/2024-02-19_T19-00-24_check-campaign-8-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_z4cKou8XFMk.txt",
       "evidence": [
         {
@@ -196,7 +245,7 @@
         "southern-russia"
       ],
       "summary": "Four large battleships supply enough tonnage to support simultaneous invasions of Crimea and southern Russia.",
-      "body": "The game converts capital-ship displacement directly into invasion support, allowing a concentrated squadron to satisfy two regional requirements at once. Dr. Clarke notes that building exceptionally large battleships can trivialize the tonnage threshold, a useful illustration of how a model's incentives shape fleet design.",
+      "body": "The game converts capital-ship displacement directly into invasion support, and southern Russia asks for only 60,000 tons. Dr. Clarke observes that one of his very large battleships could nearly satisfy that figure by itself, while the four-ship squadron provides roughly 300,000 tons. The same force then gives both Crimea and southern Russia a reported 100 percent chance of invasion success. The result shows how concentrating displacement can simplify amphibious requirements and how a model's scoring rules may reward exceptionally large capital ships beyond their tactical value.",
       "sourcePath": "src/transcripts/txt/2024-02-19_T19-00-24_check-campaign-8-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_z4cKou8XFMk.txt",
       "evidence": [
         {
@@ -208,6 +257,34 @@
           "start": "1:04:00",
           "end": "1:07:31",
           "note": "The same four-battleship force supports invasions of Crimea and southern Russia at full success probability."
+        }
+      ]
+    },
+    {
+      "id": "bearn-long-service-reflects-french-need",
+      "videoId": "z4cKou8XFMk",
+      "slug": "bearn-long-service-reflects-french-need",
+      "title": "Béarn's long service reflected continuing French need",
+      "kind": "qa",
+      "start": "1:04:39",
+      "end": "1:05:08",
+      "topics": [
+        "aircraft-carriers",
+        "french-navy",
+        "bearn",
+        "fleet-replacement",
+        "naval-procurement"
+      ],
+      "summary": "A comparison with shorter-lived British carriers prompts an explanation of why France retained Béarn for 47 years.",
+      "body": "A viewer observes that Béarn served for 47 years, longer than several famous British carriers. Dr. Clarke says the length of service shows how much the French Navy continued to need her for the work she was performing. He also points to the absence of a replacement or a decisive change in that role. The exchange frames longevity as evidence of force-structure need and replacement constraints, rather than proof that an old carrier remained equivalent to newer frontline ships.",
+      "question": "Why did Béarn remain in French service for 47 years, outlasting many British carriers?",
+      "answerShort": "France still needed her for the work she was doing and did not replace her with a different ship for that role.",
+      "sourcePath": "src/transcripts/txt/2024-02-19_T19-00-24_check-campaign-8-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_z4cKou8XFMk.txt",
+      "evidence": [
+        {
+          "start": "1:04:39",
+          "end": "1:05:08",
+          "note": "A viewer compares Béarn's 47-year career with British carriers, and the response attributes it to continuing French need and lack of replacement."
         }
       ]
     },
@@ -227,7 +304,7 @@
         "naval-budgets"
       ],
       "summary": "A proposed reserve system would trade peacetime savings against maintenance, crew training, and wartime mobilization speed.",
-      "body": "Dr. Clarke argues that ships should be placeable in ordinary or reserve status rather than remaining fully active or being scrapped. A reserve budget and training setting could determine material condition and mobilization readiness, adding institutional choices that real navies must manage in peacetime.",
+      "body": "Dr. Clarke argues that ships should be placeable in ordinary or reserve status rather than remaining fully active or being scrapped. Such a system would reduce peacetime costs while preserving hulls that could be mobilized when a war begins. He proposes separate reserve funding and crew-training controls to determine how well the ships are maintained and how quickly they can return to service. The mechanic would turn readiness into an institutional choice, making players balance savings against material condition, trained personnel, and mobilization delay.",
       "sourcePath": "src/transcripts/txt/2024-02-19_T19-00-24_check-campaign-8-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_z4cKou8XFMk.txt",
       "evidence": [
         {
@@ -259,7 +336,7 @@
         "defence-policy"
       ],
       "summary": "Current frigate pressures lead to an argument for retaining recently refitted ships in reserve instead of selling them.",
-      "body": "The discussion connects game mechanics to the Royal Navy's Type 26 and Type 31 transition, worldwide commitments, and limited hull numbers. Dr. Clarke questions why a ship emerging from refit could not become the first member of a reserve squadron, arguing that post-Cold War policy has undervalued reserve forces.",
+      "body": "The discussion connects game mechanics to the Royal Navy's Type 26 and Type 31 transition, worldwide commitments, and limited hull numbers. Dr. Clarke stresses that scrapping or selling a ship removes capacity that cannot be recreated quickly when demand rises. He points to a vessel already fourteen months into refit and asks why it could not become the first member of a reserve squadron instead. The proposal would preserve a recently modernized hull while the new frigate programs mature, and it supports his broader argument that post-Cold War policy has undervalued reserve forces in favor of an exclusive focus on new ships.",
       "sourcePath": "src/transcripts/txt/2024-02-19_T19-00-24_check-campaign-8-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_z4cKou8XFMk.txt",
       "evidence": [
         {
@@ -290,7 +367,7 @@
         "force-structure"
       ],
       "summary": "Rumors about assault ships are treated cautiously because institutions may float proposals while competing over armed-forces funding.",
-      "body": "Dr. Clarke warns that some claims come from advocates who want a particular outcome rather than from settled policy. In a constrained budget debate, public rumors can test reactions or protect one capability from cuts elsewhere, so the source and institutional incentive matter.",
+      "body": "Dr. Clarke treats the reported assault-ship proposal cautiously because its source appears to want that outcome rather than describe settled policy. He places the rumor inside a wider struggle over funding across the armed forces. Institutions or advocates may float an idea to test public reaction, build support, or protect one capability from cuts elsewhere. The lesson is to examine who benefits from a defence claim and what budget pressure surrounds it before treating the claim as an approved force-structure decision.",
       "sourcePath": "src/transcripts/txt/2024-02-19_T19-00-24_check-campaign-8-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_z4cKou8XFMk.txt",
       "evidence": [
         {
@@ -317,7 +394,7 @@
         "anti-submarine-warfare"
       ],
       "summary": "A new destroyer trades protection, reloads, range, speed, and secondary systems against a strict displacement limit.",
-      "body": "The hull is repeatedly rearranged to fit guns and torpedoes while controlling weight and balance. Dr. Clarke weighs a double hull, torpedo reloads, depth charges, operating range, machinery efficiency, and a final speed of 34 knots, demonstrating how destroyer design is a chain of interdependent compromises.",
+      "body": "The 1,700-ton hull is repeatedly rearranged to fit guns, torpedo tubes, and the towers needed to control them while maintaining acceptable balance. Dr. Clarke weighs a double hull against displacement, then compares increased torpedo reloads with the weight available for depth charges and other equipment. Operating range and machinery efficiency compete with protection and weapon load, so each improvement changes what can be afforded elsewhere. The accepted design reaches 34 knots at exactly the displacement limit, demonstrating how destroyer design becomes a chain of interdependent compromises rather than a list of maximum specifications.",
       "sourcePath": "src/transcripts/txt/2024-02-19_T19-00-24_check-campaign-8-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_z4cKou8XFMk.txt",
       "evidence": [
         {
@@ -348,7 +425,7 @@
         "royal-navy"
       ],
       "summary": "The inexpensive 1,700-ton design supports a construction surge aimed at an active fleet of roughly 1,100 ships.",
-      "body": "Once a repeatable destroyer design is available, the campaign shifts from individual design choices to industrial scale. Dr. Clarke contrasts the projected fleet with the Royal Navy and US Navy of the Second World War, highlighting how mass production can change strategic possibilities.",
+      "body": "Once a repeatable 1,700-ton destroyer is available, the campaign shifts from individual design choices to industrial scale. Dr. Clarke orders large batches because the relatively inexpensive hull can be produced in numbers that capital ships cannot match. The program is expected to push the active fleet toward roughly 1,100 ships. His comparison with the Royal Navy and U.S. Navy of the Second World War highlights how standardized mass construction can change screening capacity, fleet reach, and the strategic possibilities available to a maritime power.",
       "sourcePath": "src/transcripts/txt/2024-02-19_T19-00-24_check-campaign-8-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_z4cKou8XFMk.txt",
       "evidence": [
         {
@@ -374,7 +451,7 @@
         "fleet-logistics"
       ],
       "summary": "The Soviet state collapses after losing its ports, while Kazakhstan and Kyrgyzstan become targets for their oil supplies.",
-      "body": "The campaign outcome gives maritime access disproportionate strategic weight: once every port is lost, the Soviet Union is dissolved. The immediate focus then moves inland to oil, reinforcing the link between port control, territorial conquest, and the fuel needed to operate a huge fleet.",
+      "body": "The campaign outcome gives maritime access disproportionate strategic weight: once every port is lost, the Soviet Union is dissolved. The political collapse follows port loss even though large inland territories remain, revealing how strongly the game privileges coastal access. Dr. Clarke immediately turns attention to Kazakhstan and Kyrgyzstan because their oil could supply his expanding navy. The sequence links ports, territorial conquest, and energy security while also showing how a naval game can oversimplify the resilience of a continental state.",
       "sourcePath": "src/transcripts/txt/2024-02-19_T19-00-24_check-campaign-8-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_z4cKou8XFMk.txt",
       "evidence": [
         {
@@ -400,7 +477,7 @@
         "naval-procurement"
       ],
       "summary": "The game's aggregate construction limit is criticized for underrepresenting the number and size of yards available to a sprawling empire.",
-      "body": "Dr. Clarke argues that a state controlling vast territory would possess more parallel building capacity than the interface allows. The point distinguishes maximum individual yard size from the broader industrial base required to construct many ships at once.",
+      "body": "Dr. Clarke argues that a state controlling vast territory would possess more parallel building capacity than the interface allows. The campaign appears to treat maximum individual shipyard size as if it also determines the empire's total construction throughput. A global maritime power should instead have many distributed yards able to build and refit ships simultaneously, even if only a few can accept the largest hulls. The criticism distinguishes slipway size from aggregate industrial capacity and shows why fleet expansion depends on the breadth of the shipbuilding base as well as its biggest facility.",
       "sourcePath": "src/transcripts/txt/2024-02-19_T19-00-24_check-campaign-8-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_z4cKou8XFMk.txt",
       "evidence": [
         {
@@ -428,7 +505,7 @@
         "maritime-chokepoints"
       ],
       "summary": "A comparison with France shows British battleship and destroyer superiority, while German territory offers control of both sides of the Kiel Canal.",
-      "body": "The force comparison separates total fleet size into battleships, cruisers, destroyers, torpedo boats, and submarines rather than treating every hull as equivalent. Germany then becomes strategically attractive because taking western Germany would improve the position against France and secure both banks of a major maritime chokepoint.",
+      "body": "The force comparison separates total fleet size into battleships, cruisers, destroyers, torpedo boats, and submarines rather than treating every hull as equivalent. Britain holds a large advantage in battleships and destroyers, while France has many more cruisers, so the balance depends on category and mission. Germany then becomes strategically attractive because western German territory would improve Britain's position for a later contest with France. Control of both banks of the Kiel Canal would also secure a major maritime chokepoint and turn territorial conquest into operational leverage between the North Sea and Baltic.",
       "sourcePath": "src/transcripts/txt/2024-02-19_T19-00-24_check-campaign-8-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_z4cKou8XFMk.txt",
       "evidence": [
         {
@@ -440,6 +517,64 @@
           "start": "1:52:20",
           "end": "1:53:33",
           "note": "Western Germany and control of both sides of the Kiel Canal are identified as strategic objectives."
+        }
+      ]
+    },
+    {
+      "id": "resource-gap-limits-naval-arms-response",
+      "videoId": "z4cKou8XFMk",
+      "slug": "resource-gap-limits-naval-arms-response",
+      "title": "Resource gaps limit a rival's naval arms response",
+      "kind": "qa",
+      "start": "1:55:50",
+      "end": "1:56:53",
+      "topics": [
+        "naval-arms-races",
+        "naval-industrial-base",
+        "french-navy",
+        "defence-spending",
+        "naval-procurement"
+      ],
+      "summary": "France could theoretically answer Britain's construction surge, but the campaign's resource disparity makes matching it increasingly unrealistic.",
+      "body": "The audience asks whether other powers should respond to Britain's massive shipbuilding program. Dr. Clarke agrees that a reaction would make sense, although he notes that repeated wars have provided a justification for his own expansion. France is the only rival he considers theoretically capable of answering at comparable scale, but even France lacks the resources and funding to keep pace. He compares the imbalance with the modern difficulty of matching U.S. defence investment, showing that an arms response depends on economic capacity as much as strategic intent.",
+      "question": "Should the other powers respond to Britain's massive naval construction program?",
+      "answerShort": "They should try, but only France is even theoretically positioned to respond, and the resource gap makes a matching program unaffordable.",
+      "sourcePath": "src/transcripts/txt/2024-02-19_T19-00-24_check-campaign-8-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_z4cKou8XFMk.txt",
+      "evidence": [
+        {
+          "start": "1:55:50",
+          "end": "1:56:53",
+          "note": "A question about responding to British shipbuilding leads to France's theoretical position and the funding gap that prevents an equal answer."
+        }
+      ]
+    },
+    {
+      "id": "two-levels-of-answering-history-questions",
+      "videoId": "z4cKou8XFMk",
+      "slug": "two-levels-of-answering-history-questions",
+      "title": "Quick history answers differ from researched conclusions",
+      "kind": "notable_point",
+      "start": "2:03:39",
+      "end": "2:05:44",
+      "topics": [
+        "historical-research",
+        "history-education",
+        "public-history",
+        "naval-history"
+      ],
+      "summary": "Dr. Clarke distinguishes concise answers drawn from accumulated knowledge from fuller conclusions that require dedicated research and argument.",
+      "body": "Dr. Clarke explains that some audience questions can be answered accurately at two very different levels. A live response may draw on his existing learning, while a fully developed treatment would require further research, detailed reasoning, and a sustained argument. He also rejects the idea of a stupid question because asking is how learners obtain information they recognize they lack. The passage helps viewers interpret the scope of an improvised stream answer and presents questions as an active part of historical learning rather than evidence of weakness.",
+      "sourcePath": "src/transcripts/txt/2024-02-19_T19-00-24_check-campaign-8-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_z4cKou8XFMk.txt",
+      "evidence": [
+        {
+          "start": "2:03:39",
+          "end": "2:04:25",
+          "note": "The stream distinguishes a quick answer based on previous learning from a fully researched conclusion with detailed argument."
+        },
+        {
+          "start": "2:04:28",
+          "end": "2:05:44",
+          "note": "Dr. Clarke explains why asking questions is necessary for learning and rejects treating a question as evidence that a student is not intelligent."
         }
       ]
     },
@@ -459,7 +594,7 @@
         "wind-over-deck"
       ],
       "summary": "Carrier layout and the need to steam into the wind make stern approaches the practical standard for landing aircraft.",
-      "body": "Early aircraft could use less standardized approaches, but a mature carrier is arranged around a consistent operating direction. Steaming forward into the wind increases airflow over the deck, while catapults and other fixed systems reinforce a bow-to-stern flight-deck layout.",
+      "body": "Early carrier aircraft could use less standardized approaches, but a mature carrier is arranged around a consistent operating direction. The ship normally steams forward into the wind to increase wind over the deck and lower the aircraft's speed relative to the landing surface. That makes a stern approach the natural way to land while the carrier maintains useful forward speed. Dr. Clarke notes that a carrier moving backward fast enough could theoretically reverse the arrangement, but catapults and other fixed systems make the established bow-to-stern flight-deck layout much more practical.",
       "question": "Why do aircraft land on a carrier from the stern rather than the bow?",
       "answerShort": "The carrier normally steams forward into the wind to create wind over the deck, and its catapults and flight-deck systems are arranged around that operating direction.",
       "sourcePath": "src/transcripts/txt/2024-02-19_T19-00-24_check-campaign-8-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_z4cKou8XFMk.txt",
@@ -488,7 +623,7 @@
         "french-navy"
       ],
       "summary": "Research and deployment choices build a dense submarine force intended to make the Channel dangerous for France.",
-      "body": "Dr. Clarke prioritizes improved minelaying submarines and rejects the idea that the fleet already has enough boats. Concentrating submarines near the French coast is presented as deterrence and sea denial before formal war begins, though the resulting fleet is unusually submarine-heavy.",
+      "body": "Dr. Clarke prioritizes improved minelaying submarines and rejects the idea that a fleet already approaching 700 boats has enough. The submarines are concentrated near the French coast before formal war begins, creating a visible threat to movement through nearby waters. Their mine warfare role complements the broader effort to make the English Channel unsafe for French operations. The force is unusually submarine-heavy, but in campaign terms it supplies both deterrence and a sea-denial posture that France must consider before choosing war.",
       "sourcePath": "src/transcripts/txt/2024-02-19_T19-00-24_check-campaign-8-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_z4cKou8XFMk.txt",
       "evidence": [
         {
@@ -519,7 +654,7 @@
         "fleet-readiness"
       ],
       "summary": "The campaign's unrest rules encourage maintaining a strong fleet while provoking an opponent to declare war first.",
-      "body": "Territorial expansion remains the goal, but the domestic-political model penalizes open aggression. Dr. Clarke therefore keeps submarines active and raises tension while trying to make France initiate the conflict, illustrating how political rules can redirect naval posture.",
+      "body": "Territorial expansion remains the goal, but the domestic-political model attaches a larger unrest cost to open aggression. Dr. Clarke therefore tries to make France declare war first rather than starting the conflict himself. He keeps the submarine fleet active and raises tension so the navy is ready while the opponent is encouraged to make the politically useful first move. The episode illustrates how domestic legitimacy rules can redirect fleet posture, turning deterrent-looking deployments into instruments of deliberate provocation.",
       "sourcePath": "src/transcripts/txt/2024-02-19_T19-00-24_check-campaign-8-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_z4cKou8XFMk.txt",
       "evidence": [
         {
@@ -551,7 +686,7 @@
         "technology-integration"
       ],
       "summary": "Balanced research links radar and rangefinding to guns that can exploit their reach, while mine warfare supports Channel control.",
-      "body": "Dr. Clarke argues against treating advanced sensors as isolated upgrades: long-range detection only pays off when weapons can engage effectively at that range. Minefield technology is developed alongside radar, rangefinders, and larger guns to create a coherent operational system.",
+      "body": "Dr. Clarke argues against treating advanced sensors as isolated upgrades. Radar and rangefinders only create a decisive advantage when the fleet also has guns capable of engaging effectively at the ranges those systems reveal. He therefore favors a balanced research program that improves detection, fire control, and heavy weapons together rather than racing ahead in one category. Minefield technology is developed alongside them to support a coherent Channel-denial system in which sensors, gunfire, submarines, and mines reinforce one another.",
       "sourcePath": "src/transcripts/txt/2024-02-19_T19-00-24_check-campaign-8-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_z4cKou8XFMk.txt",
       "evidence": [
         {
@@ -582,7 +717,7 @@
         "naval-technology"
       ],
       "summary": "Research is delayed briefly so new ships start with better systems, yet a two-year battleship build still guarantees further upgrades before service.",
-      "body": "The campaign waits a month for technology that can be incorporated into the initial design, avoiding an immediately obsolete fit where possible. Even so, radios, fire control, armor, and other systems advance during a long capital-ship build, so Dr. Clarke prepares a refit as soon as each ship launches.",
+      "body": "The campaign waits a month for imminent technology that can be incorporated into the initial battleship design. That choice avoids beginning construction with systems already known to be obsolete where a short delay can prevent it. Even so, radios, fire control, armor, and other equipment continue advancing during a capital-ship build of roughly two years. Dr. Clarke therefore treats a launch-day refit as inevitable, using the much shorter modernization period to bring a newly completed hull up to the standard reached while it was under construction.",
       "sourcePath": "src/transcripts/txt/2024-02-19_T19-00-24_check-campaign-8-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_z4cKou8XFMk.txt",
       "evidence": [
         {
@@ -615,7 +750,7 @@
         "warship-speed"
       ],
       "summary": "An 86,000-ton fast battleship combines fifteen 16.5-inch guns with heavy secondary fire, strong underwater protection, and long range.",
-      "body": "The design begins as a 33-knot dream ship with maximum beam and draft, oil fuel, layered torpedo protection, reinforced bulkheads, and extensive flooding control. Weight and pitch force repeated compromises, but the final concept retains exceptional main-battery power and enough six-inch secondary armament that Dr. Clarke jokes it can escort itself.",
+      "body": "The Rodney-derived design begins as a 33-knot dream ship with maximum beam and draft, oil fuel, layered torpedo protection, reinforced bulkheads, and extensive flooding control. Its intended battery reaches fifteen 16.5-inch guns, backed by enough six-inch weapons to make close attack costly from several directions. Weight, pitch, machinery efficiency, range, and protection force repeated adjustments before the hull can be accepted. The final roughly 86,000-ton concept retains exceptional main-battery power and so much secondary fire that Dr. Clarke jokes it can escort itself, making the ship an exaggerated demonstration of what unconstrained capital-ship design can produce.",
       "sourcePath": "src/transcripts/txt/2024-02-19_T19-00-24_check-campaign-8-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_z4cKou8XFMk.txt",
       "evidence": [
         {
@@ -651,7 +786,7 @@
         "scapa-flow"
       ],
       "summary": "Six roughly 86,000-ton battleships are ordered together after the construction load is checked against national capacity.",
-      "body": "The final procurement decision translates an extreme individual design into a fleet program of more than half a million tons. Construction capacity is checked before all six ships are assigned to Scapa Flow, with an expected build time of 32 months.",
+      "body": "The final procurement decision translates an extreme individual design into a six-ship fleet program. At roughly 86,000 tons apiece, the order represents about 516,000 tons of new battleships before escorts, refits, or support vessels are counted. Dr. Clarke checks the national construction load before authorizing all six, showing that even an unconstrained design must be tested against aggregate industrial capacity. The ships are ordered for a northern base with an expected build time of 32 months, turning the design exercise into a long-term commitment of yards, money, and future fleet manpower.",
       "sourcePath": "src/transcripts/txt/2024-02-19_T19-00-24_check-campaign-8-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_z4cKou8XFMk.txt",
       "evidence": [
         {

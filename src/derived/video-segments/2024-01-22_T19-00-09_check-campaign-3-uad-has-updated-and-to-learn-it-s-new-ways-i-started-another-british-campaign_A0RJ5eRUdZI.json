@@ -8,7 +8,9 @@
     "naval-ship-design",
     "naval-mine-warfare",
     "capital-ships",
-    "naval-tactics"
+    "naval-tactics",
+    "naval-procurement",
+    "fleet-readiness"
   ],
   "segments": [
     {
@@ -21,7 +23,7 @@
       "end": "7:04",
       "topics": ["ultimate-admiral-dreadnoughts", "naval-strategy-games", "naval-balance", "naval-force-structure", "capital-ships", "submarines"],
       "summary": "The campaign opens with a comparison of British, German, and French ship totals before the next operation is chosen.",
-      "body": "The game map becomes a prompt to think about naval balance as more than a headline total: the British fleet has many ships, but the German and French forces still include substantial capital-ship, destroyer, torpedo-boat, and submarine components. The discussion shows why an operational decision starts with identifying where a rival's useful forces and local commitments actually are.",
+      "body": "The game map becomes a prompt to think about naval balance as more than a headline total. The British fleet has roughly 600 ships, but the German and French forces still include substantial capital-ship, destroyer, torpedo-boat, and submarine components. French strength in small combatants and Germany's 17 battleships make the composition of those totals as important as their size. The discussion shows why an operational decision starts with identifying what useful forces an opponent has and where they can be committed.",
       "sourcePath": "src/transcripts/txt/2024-01-22_T19-00-09_check-campaign-3-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_A0RJ5eRUdZI.txt",
       "evidence": [
         {
@@ -41,7 +43,7 @@
       "end": "21:48",
       "topics": ["naval-mine-warfare", "minelaying-submarines", "coastal-submarines", "port-defense", "naval-tactics"],
       "summary": "A coastal-submarine build plan is used to explain how minefields can raise the cost of attacking a port.",
-      "body": "The campaign plan emphasizes coastal minelaying submarines and expanding minefields before the next war. The useful distinction is that mines do not automatically stop a port attack; they impose losses and risk that can change an opponent's calculation and make an assault less attractive.",
+      "body": "The campaign plan emphasizes coastal minelaying submarines and expanding minefields before the next war. Clarke expects the number of defensive submarines and the minefields they create to grow rapidly, making preparation a cumulative process rather than a last-minute response. He is careful not to claim that a large minefield automatically stops a port attack. Its value is to impose losses and uncertainty that raise the price of an assault and may change an opponent's calculation.",
       "sourcePath": "src/transcripts/txt/2024-01-22_T19-00-09_check-campaign-3-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_A0RJ5eRUdZI.txt",
       "evidence": [
         {
@@ -61,7 +63,7 @@
       "end": "26:31",
       "topics": ["royal-navy", "naval-armament", "dual-purpose-guns", "qf-4-7-inch-gun", "qf-4-5-inch-gun", "qf-5-25-inch-gun"],
       "summary": "A viewer asks whether developing the 4.7-inch gun more fully would have been preferable to the troubled 5.25-inch route.",
-      "body": "The answer treats the choice as a trade-off rather than a simple calibre contest. He argues that a 4.7-inch dual-purpose weapon might have covered some of the roles later filled by the 4.5-inch and 5.25-inch guns, but that repairing the earlier 5-inch programme would have been the stronger outcome; in his account, the central failure was political and developmental as much as technical.",
+      "body": "The answer treats the choice as a trade-off rather than a simple calibre contest. A developed 4.7-inch dual-purpose weapon might have covered some of the roles later divided between the 4.5-inch and 5.25-inch guns. Clarke nevertheless argues that repairing the earlier British 5-inch programme would have produced the stronger outcome. In his account, that programme's failure arose as much from political and design-management decisions associated with Beatty and Chatfield as from the weapon's underlying technology.",
       "question": "Would developing the 4.7-inch gun have been better than pursuing the 5.25-inch weapon?",
       "answerShort": "Possibly, because it could have covered roles later assigned to 4.5-inch and 5.25-inch guns; the better answer would have been to fix the earlier 5-inch programme and its political problems.",
       "sourcePath": "src/transcripts/txt/2024-01-22_T19-00-09_check-campaign-3-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_A0RJ5eRUdZI.txt",
@@ -70,6 +72,26 @@
           "start": "25:15",
           "end": "26:31",
           "note": "A viewer asks about 5.25-inch, 4.7-inch, and 4.5-inch development; he explains the trade-offs and political failures."
+        }
+      ]
+    },
+    {
+      "id": "renown-redesign-balances-speed-protection-and-range",
+      "videoId": "A0RJ5eRUdZI",
+      "slug": "renown-redesign-balances-speed-protection-and-range",
+      "title": "Balancing speed, protection, range, and secondary fire in a capital-ship redesign",
+      "kind": "chapter",
+      "start": "42:32",
+      "end": "47:37",
+      "topics": ["capital-ships", "battleships", "naval-ship-design", "naval-procurement", "fleet-readiness", "armor-protection", "ship-speed", "cruising-range"],
+      "summary": "A Renown-class redesign shows how a capital ship's protection, speed, endurance, and secondary batteries are traded against one another.",
+      "body": "The campaign introduces the Renown class as some of the world's largest battleships and a replacement for older Sovereign-style ships. Clarke highlights the dense 6-inch and 3-inch secondary armament before adjusting the design rather than judging it only by its main battery. The revision improves protection while retaining 27 knots and about 9,000 kilometres of range. This makes the watch point a useful example of capital-ship design as a connected set of readiness and mission trade-offs rather than a search for the largest gun alone.",
+      "sourcePath": "src/transcripts/txt/2024-01-22_T19-00-09_check-campaign-3-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_A0RJ5eRUdZI.txt",
+      "evidence": [
+        {
+          "start": "42:32",
+          "end": "47:37",
+          "note": "He presents the Renown class, reviews its 6-inch and 3-inch armament, and redesigns it for more protection while retaining 27 knots and 9,000-kilometre range."
         }
       ]
     },
@@ -83,13 +105,35 @@
       "end": "48:25",
       "topics": ["scharnhorst-class", "dunkerque-class", "battleships", "battlecruisers", "ship-classification", "naval-ship-design"],
       "summary": "The video cautions against classifying Scharnhorst and Dunkerque solely by how unusual they look beside later capital ships.",
-      "body": "He describes both designs as battleships because that was the intended role and design category, even if French and German industrial capacity produced ships that looked unlike the most familiar late-1930s capital-ship model. The watch point is useful for separating a ship's label and operational purpose from a simplified visual template for what a battleship should be.",
+      "body": "Clarke describes both Scharnhorst and Dunkerque as battleships because that was their intended role and design category. French and German infrastructure produced ships that looked unlike the most familiar late-1930s capital-ship model. Their differences do not automatically turn them into battlecruisers. The watch point is useful for separating a ship's intended employment and national construction context from a simplified visual template for what a battleship should be.",
       "sourcePath": "src/transcripts/txt/2024-01-22_T19-00-09_check-campaign-3-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_A0RJ5eRUdZI.txt",
       "evidence": [
         {
           "start": "47:46",
           "end": "48:25",
           "note": "He says Scharnhorst and the Dunkerques were built and scoped as battleships, within their countries' industrial limits."
+        }
+      ]
+    },
+    {
+      "id": "qa-allied-orders-and-building-capacity",
+      "videoId": "A0RJ5eRUdZI",
+      "slug": "qa-allied-orders-and-building-capacity",
+      "title": "Why accept Allied orders when the shipyards are already full?",
+      "kind": "qa",
+      "start": "48:58",
+      "end": "51:14",
+      "topics": ["naval-procurement", "naval-industrial-capacity", "warship-exports", "naval-diplomacy", "warship-construction"],
+      "summary": "A shipbuilding-capacity prompt reveals the diplomatic cost of refusing Allied warship orders when domestic construction is already delayed.",
+      "body": "Clarke acknowledges that the construction programme has exceeded available shipbuilding capacity, largely because of Allied orders. He keeps accepting those orders because, in his campaign experience, repeated refusals can weaken alliances. The game does not let him promise an ally a later delivery while prioritising a domestic battleship, so industrial scheduling and diplomacy become inseparable. The answer illustrates how export commitments can consume capacity even when the navy still has a profitable programme and many ships of its own under construction or repair.",
+      "question": "Why keep accepting Allied warship orders after exceeding shipbuilding capacity?",
+      "answerShort": "Because refusing Allied orders can damage alliances, while the game offers no way to delay exports and prioritise domestic construction.",
+      "sourcePath": "src/transcripts/txt/2024-01-22_T19-00-09_check-campaign-3-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_A0RJ5eRUdZI.txt",
+      "evidence": [
+        {
+          "start": "48:58",
+          "end": "51:14",
+          "note": "He says Allied orders caused most of the capacity overrun, explains that refusing them risks alliances, and notes the absence of domestic-build prioritisation."
         }
       ]
     },
@@ -103,7 +147,7 @@
       "end": "56:23",
       "topics": ["naval-procurement", "naval-industrial-capacity", "fleet-planning", "warship-construction"],
       "summary": "A capacity question leads to a discussion of ordering ships for expected future needs rather than an immediate scenario.",
-      "body": "The answer accepts that a crowded building programme can be tolerable when the force is being assembled for a war expected several years away. The wider planning principle is that naval construction decisions have long lead times, so force design has to anticipate future operational needs rather than react only to the crisis on screen.",
+      "body": "The answer accepts that a crowded building programme can be tolerable when the force is being assembled for a war expected several years away. Clarke expects these ships to be needed in four or five years, so a modest delivery penalty does not defeat the purpose of ordering them now. He designs for his preferred way of fighting within the campaign's historical setting rather than for the immediate scenario alone. The wider planning principle is that naval construction has long lead times, so force design must anticipate future operational needs rather than react only to the crisis on screen.",
       "question": "Does keeping shipyard capacity full create too great a penalty for new construction?",
       "answerShort": "Not necessarily: the ships are ordered for a war expected four or five years later, so immediate delivery pressure matters less than building the intended force in time.",
       "sourcePath": "src/transcripts/txt/2024-01-22_T19-00-09_check-campaign-3-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_A0RJ5eRUdZI.txt",
@@ -125,13 +169,33 @@
       "end": "57:36",
       "topics": ["battleships", "pre-dreadnoughts", "secondary-batteries", "torpedo-boats", "naval-ship-design", "naval-tactics"],
       "summary": "The campaign's capital-ship layout is explained as a response to pre-dreadnought opponents and proliferating torpedo boats.",
-      "body": "The player describes a dreadnought-scale hull with a pre-dreadnought-style mix of 12-inch and 6-inch weapons, chosen because many likely opponents are older ships and smaller threats still matter. Its successor adds numerous 3-inch guns to deal with torpedo boats, illustrating how a design can trade purity for a better fit with a particular threat environment.",
+      "body": "The player describes a dreadnought-scale hull with a pre-dreadnought-style mix of 12-inch and 6-inch weapons. Many likely opponents are older capital ships, so the 6-inch battery remains useful alongside the main guns. The successor design adds numerous 3-inch weapons because torpedo boats are proliferating and becoming a more persistent threat. The sequence illustrates how a capital ship can trade theoretical purity for a battery better matched to the opponents it expects to encounter.",
       "sourcePath": "src/transcripts/txt/2024-01-22_T19-00-09_check-campaign-3-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_A0RJ5eRUdZI.txt",
       "evidence": [
         {
           "start": "55:57",
           "end": "57:36",
           "note": "He explains the mixed battery, expected pre-dreadnought opponents, and 3-inch anti-torpedo-boat armament."
+        }
+      ]
+    },
+    {
+      "id": "crossfire-punishes-an-isolated-battleship",
+      "videoId": "A0RJ5eRUdZI",
+      "slug": "crossfire-punishes-an-isolated-battleship",
+      "title": "Crossfire punishes an isolated battleship and its unsupported cruisers",
+      "kind": "notable_point",
+      "start": "58:02",
+      "end": "1:03:11",
+      "topics": ["naval-tactics", "crossfire", "battleships", "light-cruisers", "fleet-concentration", "naval-gunnery"],
+      "summary": "A fleet action shows how divided fire and poor formation choices leave a battleship caught between British capital ships while light cruisers face the wrong opponent.",
+      "body": "Clarke manoeuvres New Zealand and Repulse to divide the enemy's attention and place the opposing formation between British firing positions. The German battleship then moves into the middle of the British capital ships and is caught in a crossfire rather than supported at a useful distance. Its 13.8-inch guns sound formidable, but their short 31-calibre form does not by itself rescue the tactical situation. The accompanying light cruisers compound the mismatch by closing against ships whose heavier and numerous secondary batteries they were not designed to fight.",
+      "sourcePath": "src/transcripts/txt/2024-01-22_T19-00-09_check-campaign-3-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_A0RJ5eRUdZI.txt",
+      "evidence": [
+        {
+          "start": "58:02",
+          "end": "1:03:11",
+          "note": "He plans to divide the enemy's fire, describes its battleship entering a crossfire, and notes that its light cruisers are not designed to fight the British capital ships."
         }
       ]
     },
@@ -145,7 +209,7 @@
       "end": "1:20:27",
       "topics": ["naval-gunnery", "weapon-range", "secondary-batteries", "cruisers", "naval-tactics"],
       "summary": "A running engagement illustrates how gun range and smaller batteries can decide who is forced into the other's effective zone.",
-      "body": "The commentary follows an opponent whose main battery is coming into range while its secondary turret remains ineffective and the British 6-inch and then 3-inch weapons begin to engage. It is a compact illustration of engagement geometry: the side that can control the range can force the other to accept a fight on unfavourable weapon terms.",
+      "body": "The commentary follows an opponent whose main battery is only just entering range while its secondary turret remains ineffective. The British 6-inch weapons begin firing first, and the target is likely to enter 3-inch range before it can answer effectively. Both sides initially struggle to hit, showing that theoretical range alone does not guarantee useful fire. The watch point is a compact illustration of engagement geometry: the side that controls distance can force the other to accept a fight on unfavourable weapon terms.",
       "sourcePath": "src/transcripts/txt/2024-01-22_T19-00-09_check-campaign-3-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_A0RJ5eRUdZI.txt",
       "evidence": [
         {
@@ -165,7 +229,7 @@
       "end": "1:37:14",
       "topics": ["destroyers", "torpedoes", "torpedo-attacks", "naval-tactics", "weapon-range"],
       "summary": "The battle commentary argues that destroyers waste their chief weapon if they stay beyond torpedo range.",
-      "body": "He contrasts cautious destroyer handling with the need to get close enough to launch torpedoes, saying that their killing weapon is useless if they remain outside its short reach. After an unsuccessful action, he identifies the practical design implication as a need for greater torpedo range as well as speed.",
+      "body": "Clarke contrasts cautious destroyer handling with the need to get close enough to launch torpedoes. A destroyer whose principal killing weapon reaches only about three kilometres gains little by remaining outside that distance, even if closing exposes it to heavy fire. The campaign's AI instead sends battleships close while holding destroyers back, reversing the roles their weapons suggest. After the unsuccessful attack, he identifies the practical design response as faster ships carrying longer-ranged torpedoes.",
       "sourcePath": "src/transcripts/txt/2024-01-22_T19-00-09_check-campaign-3-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_A0RJ5eRUdZI.txt",
       "evidence": [
         {
@@ -185,7 +249,7 @@
       "end": "1:53:48",
       "topics": ["armored-cruisers", "distant-stations", "battleships", "naval-force-structure", "naval-ship-design"],
       "summary": "An armoured-cruiser action explains why ships on distant stations may need enough gun power to face a minor power's battleship.",
-      "body": "The cruiser pair is not intended to join the main battle line, but it carries 11-inch guns so it will not be wholly outmatched if it encounters a battleship while operating far from home. That rationale shows how distant-station forces can need a different balance of firepower and mission flexibility from fleet units concentrated in home waters.",
+      "body": "The armoured-cruiser pair is not intended to serve as a second line of battleships, but each ship carries 11-inch guns for a reason. On a distant station it might meet a battleship bought by a minor power, and Clarke does not want the cruiser to be completely outmatched in that encounter. The two cruiser classes also complement one another, with different mixtures of 6-inch and 3-inch secondary weapons. During the action, the steady rain of 3-inch shells shows how numerous light guns can still impose cumulative damage and distraction even while the heavier weapons decide the main contest.",
       "sourcePath": "src/transcripts/txt/2024-01-22_T19-00-09_check-campaign-3-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_A0RJ5eRUdZI.txt",
       "evidence": [
         {
@@ -205,7 +269,7 @@
       "end": "2:05:42",
       "topics": ["imperator-aleksandr-ii-class", "russian-imperial-navy", "coastal-defense-ships", "battleships", "naval-ship-design"],
       "summary": "The Imperator Aleksandr II class is used to show how prolonged construction could leave a battleship obsolete at completion.",
-      "body": "He describes the pair as Imperial Russian battleships whose protracted construction, low speed, and limited two-gun 12-inch main turret left them outclassed by the time they entered service. The example demonstrates why a coastal-defence role and modest displacement do not remove the risk that changing technology and long build times will undermine a design before it is ready.",
+      "body": "Clarke describes the Imperator Aleksandr II pair as battleships built for the Imperial Russian Navy on roughly 9,942 tons. Protracted construction meant they were virtually obsolete by completion. A speed of about 15 knots and a single turret with two 12-inch guns left them weak beside newer battleships, despite their numerous smaller secondary weapons. The example demonstrates how long build times can undermine a coastal-defence design before it is ready for service.",
       "sourcePath": "src/transcripts/txt/2024-01-22_T19-00-09_check-campaign-3-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_A0RJ5eRUdZI.txt",
       "evidence": [
         {
@@ -225,13 +289,33 @@
       "end": "2:18:46",
       "topics": ["fleet-concentration", "naval-logistics", "naval-force-structure", "naval-strategy-games"],
       "summary": "A short campaign note explains the appeal of moving a single concentrated fleet from crisis to crisis rather than redistributing every unit separately.",
-      "body": "The discussion reflects a basic command-and-logistics problem: returning ships to scattered posts after a conflict takes time, while a large formation can be moved quickly toward the next threatened theatre. The approach sacrifices some local flexibility, but it highlights the operational value of having usable force already concentrated.",
+      "body": "Returning ships to scattered stations after a conflict takes time and creates a recurring command-and-logistics burden. Clarke therefore tends to form one massive fleet and move it from crisis to crisis. Keeping the ships together reduces the work of repeatedly redistributing individual units and puts substantial force within one movement order. The approach sacrifices local flexibility and persistent presence, but it highlights the operational value of having usable combat power already concentrated.",
       "sourcePath": "src/transcripts/txt/2024-01-22_T19-00-09_check-campaign-3-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_A0RJ5eRUdZI.txt",
       "evidence": [
         {
           "start": "2:18:32",
           "end": "2:18:46",
           "note": "He says that returning ships after a conflict takes ages and that he tends to move one massive fleet from crisis to crisis."
+        }
+      ]
+    },
+    {
+      "id": "massing-tonnage-for-a-priority-invasion",
+      "videoId": "A0RJ5eRUdZI",
+      "slug": "massing-tonnage-for-a-priority-invasion",
+      "title": "Massing available tonnage for a priority invasion",
+      "kind": "chapter",
+      "start": "2:28:24",
+      "end": "2:29:15",
+      "topics": ["naval-invasions", "fleet-concentration", "naval-logistics", "naval-force-structure", "naval-strategy-games"],
+      "summary": "A high-priority invasion prompts the concentration of every available regional ship rather than the use of a balanced peacetime distribution.",
+      "body": "Clarke commits every available ship in the region to a single invasion because partial reinforcement may not produce a winning chance. He even considers shifting additional formations from elsewhere, treating the objective as important enough to justify temporary concentration. The decision illustrates how an amphibious priority can pull ships away from other tasks and turn raw tonnage into the immediate measure of support. It also exposes the opportunity cost of concentration: the same ships cannot maintain their previous regional coverage while they mass for the operation.",
+      "sourcePath": "src/transcripts/txt/2024-01-22_T19-00-09_check-campaign-3-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_A0RJ5eRUdZI.txt",
+      "evidence": [
+        {
+          "start": "2:28:24",
+          "end": "2:29:15",
+          "note": "He plans to send every ship in the area to the invasion and considers moving more because success at that objective is especially important."
         }
       ]
     },
@@ -245,13 +329,33 @@
       "end": "2:32:21",
       "topics": ["naval-invasions", "combined-operations", "mine-clearance", "pre-dreadnoughts", "naval-landing-operations"],
       "summary": "The video sketches an alternative assault sequence that combines troop landings with specially prepared pre-dreadnoughts clearing a mined approach.",
-      "body": "The proposed sequence would land troops as ships forced a route through the obstruction, with older battleships modified for buoyancy and used as expendable mine-clearance vessels. Whatever the feasibility of the details, the strategic point is clear: separating naval and land elements into disconnected stages can expose weakness and invite hesitation after losses.",
+      "body": "Clarke argues that the sensible underlying idea was weakened by the gap between planning and execution. His alternative would land troops while the fleet forced a route through the obstruction, keeping the land and naval parts of the assault together. Selected pre-dreadnoughts would have sealed, cork-filled forward sections and minimal crews so they could lead the way through mines while retaining as much buoyancy as possible. Whatever the feasibility of those details, the strategic point is that separating the naval and land stages can expose weakness and invite hesitation after losses.",
       "sourcePath": "src/transcripts/txt/2024-01-22_T19-00-09_check-campaign-3-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_A0RJ5eRUdZI.txt",
       "evidence": [
         {
           "start": "2:31:09",
           "end": "2:32:21",
           "note": "He proposes simultaneous troop landings and cork-filled, sealed pre-dreadnoughts to force a mined route."
+        }
+      ]
+    },
+    {
+      "id": "ballast-versus-armor-for-ship-stability",
+      "videoId": "A0RJ5eRUdZI",
+      "slug": "ballast-versus-armor-for-ship-stability",
+      "title": "Ballast versus armour as a ship-stability tool",
+      "kind": "notable_point",
+      "start": "2:33:37",
+      "end": "2:34:15",
+      "topics": ["naval-architecture", "ship-stability", "ballast", "armor-protection", "naval-ship-design"],
+      "summary": "A design complaint separates weight added for stability from armour added for protection.",
+      "body": "The campaign's framing limits prompt Clarke to ask for ballast as a distinct design control. In the current system he has to add armour when his immediate goal is to stabilise the ship rather than increase protection. Treating those functions separately would let a designer place weight for trim and stability without pretending that every added ton belongs in the armour scheme. The moment is useful because it distinguishes two reasons for adding weight that can look interchangeable in a simplified design interface but serve different naval-architecture purposes.",
+      "sourcePath": "src/transcripts/txt/2024-01-22_T19-00-09_check-campaign-3-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_A0RJ5eRUdZI.txt",
+      "evidence": [
+        {
+          "start": "2:33:37",
+          "end": "2:34:15",
+          "note": "He asks for the ability to add ballast to stabilise ships instead of having to use armour for that purpose."
         }
       ]
     },
@@ -265,7 +369,7 @@
       "end": "2:41:14",
       "topics": ["russian-imperial-navy", "black-sea-fleet", "dreadnoughts", "battleships", "naval-ship-design"],
       "summary": "A brief comparison notes that Russian dreadnought designs could be more heavily armoured while still reflecting their Black Sea role.",
-      "body": "The commentary points to a Russian dreadnought as a design that appears heavily armoured but is also shaped by Black Sea service and its own construction choices. It is a useful reminder that ship characteristics should be read against the theatre and intended employment, not only against a generic capital-ship standard.",
+      "body": "The Imperatritsa Mariya-class discussion points to Russian dreadnoughts that appear more heavily armoured than some comparisons would suggest. Clarke also stresses that they were very much Black Sea ships rather than generic fleet battleships. Their framing and construction choices make them more lightly built in some respects than the Gangut class, despite the apparent armour emphasis. The watch point is a reminder to read capital-ship characteristics against theatre, structure, and intended employment instead of one headline measure.",
       "sourcePath": "src/transcripts/txt/2024-01-22_T19-00-09_check-campaign-3-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_A0RJ5eRUdZI.txt",
       "evidence": [
         {
@@ -285,7 +389,7 @@
       "end": "2:45:34",
       "topics": ["coastal-submarines", "naval-invasions", "submarines", "naval-mine-warfare", "naval-strategy-games"],
       "summary": "The campaign closes by weighing an invasion chance against a defence featuring many coastal submarines.",
-      "body": "The final invasion screen turns the presence of numerous coastal submarines into a concrete operational risk rather than a background statistic. It reinforces the earlier mine-warfare discussion: short-range defensive craft can complicate an amphibious operation even when the attacker has a much larger overall fleet.",
+      "body": "The final invasion screen gives the operation only a 65 percent chance of success despite the forces already committed. A large number of defending coastal submarines stands out as an immediate explanation for the residual risk. Their short range matters less when the objective brings the attacking fleet close to defended waters. The moment reinforces the earlier mine-warfare discussion by showing how local submarines can complicate an amphibious operation even when the attacker possesses a much larger overall fleet.",
       "sourcePath": "src/transcripts/txt/2024-01-22_T19-00-09_check-campaign-3-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_A0RJ5eRUdZI.txt",
       "evidence": [
         {

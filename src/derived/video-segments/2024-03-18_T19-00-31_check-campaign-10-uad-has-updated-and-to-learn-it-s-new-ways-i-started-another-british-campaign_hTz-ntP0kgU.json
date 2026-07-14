@@ -7,7 +7,10 @@
     "ship-design",
     "naval-logistics",
     "defence-organization",
-    "capital-ships"
+    "capital-ships",
+    "amphibious-operations",
+    "mine-warfare",
+    "naval-industrial-capacity"
   ],
   "segments": [
     {
@@ -26,7 +29,7 @@
         "naval-aviation"
       ],
       "summary": "Dr. Clarke explains why a carrier group's anti-submarine strength includes offboard helicopters, their host ships, and the frigates that cue them onto contacts.",
-      "body": "The example counts ASW capability across the whole formation rather than treating each escort in isolation. Carrier-borne Merlins, helicopters operating from destroyers and frigates, and towed-array frigates form a linked detection-and-attack system; a destroyer contributes even when its main role is to support an embarked helicopter.",
+      "body": "The example counts ASW capability across the whole formation rather than treating each escort in isolation. Carrier-borne Merlins, helicopters operating from destroyers and frigates, and towed-array frigates form a linked detection-and-attack system. The frigates' sensors cue offboard aircraft, while destroyers contribute by supporting embarked helicopters even if the hull lacks every ASW function itself. The practical lesson is that task-group strength cannot be inferred by counting frigate labels alone.",
       "sourcePath": "src/transcripts/txt/2024-03-18_T19-00-31_check-campaign-10-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_hTz-ntP0kgU.txt",
       "evidence": [
         {
@@ -57,13 +60,39 @@
         "fleet-defense"
       ],
       "summary": "The campaign map shows Britain ringed with mines, illustrating how mine warfare can restrict enemy movement without requiring a surface squadron at every approach.",
-      "body": "Dr. Clarke treats the mine belt as a standing obstacle around the United Kingdom: an opponent cannot move freely into British waters simply because no battle fleet is visible at that point. The game abstracts the details, but the moment conveys the strategic value of mines as persistent sea-denial weapons that shape where enemy ships can safely operate.",
+      "body": "Dr. Clarke treats the mine belt as a standing obstacle around the United Kingdom. An opponent cannot move freely into British waters simply because no battle fleet is visible at that point. The game abstracts laying, sweeping, and maintaining the fields, but the map still shows how persistent sea-denial weapons shape safe routes and fleet movement. Opening the video here gives a clear geographical view of a defensive system whose cumulative effects appear later in the campaign.",
       "sourcePath": "src/transcripts/txt/2024-03-18_T19-00-31_check-campaign-10-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_hTz-ntP0kgU.txt",
       "evidence": [
         {
           "start": "5:03",
           "end": "5:24",
           "note": "The campaign map is described as showing the United Kingdom ringed with mines that constrain enemy movement."
+        }
+      ]
+    },
+    {
+      "id": "invasion-tonnage-serves-strategic-resource-objectives",
+      "videoId": "hTz-ntP0kgU",
+      "slug": "invasion-tonnage-serves-strategic-resource-objectives",
+      "title": "Naval mass supports strategic resource objectives ashore",
+      "kind": "chapter",
+      "start": "15:04",
+      "end": "16:57",
+      "topics": [
+        "amphibious-operations",
+        "force-concentration",
+        "naval-logistics",
+        "war-economy",
+        "oil-supply"
+      ],
+      "summary": "The planned invasion of northern France concentrates as much naval tonnage as possible because taking the region would reduce French production and oil access.",
+      "body": "Dr. Clarke moves every available ship toward the invasion area and describes the plan as overwhelming the requirement with tonnage. The objective is not territory for its own sake: northern France is identified as an important source of French production and oil. The campaign mechanic compresses an amphibious operation into a tonnage threshold, yet it still links sea power to economic targets ashore. The sequence shows how force concentration, logistics, and war-economy objectives meet in operational planning.",
+      "sourcePath": "src/transcripts/txt/2024-03-18_T19-00-31_check-campaign-10-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_hTz-ntP0kgU.txt",
+      "evidence": [
+        {
+          "start": "15:04",
+          "end": "16:57",
+          "note": "Ships are concentrated for the northern France invasion, whose capture is expected to reduce French production and oil access."
         }
       ]
     },
@@ -83,7 +112,7 @@
         "ship-design"
       ],
       "summary": "A tour of the campaign's Rodney-class design links numerous 6-inch guns to the tactical problem of stopping cruisers and destroyers before they can close.",
-      "body": "The design pairs long-range 16.2-inch main guns with a dense 6-inch secondary battery. Dr. Clarke presents the smaller guns as a protective layer intended to break up light-force attacks, illustrating how a battleship's armament plan can reflect the threats expected around the battle line.",
+      "body": "The Rodney-class design pairs long-range 16.2-inch main guns with a dense 6-inch secondary battery. Dr. Clarke presents the smaller weapons as a protective layer intended to keep cruisers and destroyers from closing. Their purpose is therefore more specific than simply adding firepower: they help preserve the battleship's preferred engagement range against light-force attacks. The ship tour connects a visible armament layout to the tactical threats expected around the battle line.",
       "question": "Can you show some of the campaign's ship designs?",
       "answerShort": "The tour highlights a Rodney-class battleship whose long-range 16.2-inch main battery is backed by numerous 6-inch guns intended to keep cruisers and destroyers away.",
       "sourcePath": "src/transcripts/txt/2024-03-18_T19-00-31_check-campaign-10-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_hTz-ntP0kgU.txt",
@@ -111,7 +140,7 @@
         "reserve-fleets"
       ],
       "summary": "The campaign's large invasion requirements prompt a discussion of retaining older ships when usable hulls and tonnage matter more than front-line quality.",
-      "body": "Dr. Clarke avoids scrapping a ship while it can still perform a useful operation, then connects that policy to the mass required for an invasion of northern France. The moment highlights a recurring force-structure tradeoff: replacing everything with the newest design may improve average quality, but it can also remove the hull numbers needed for secondary theatres and support tasks.",
+      "body": "Dr. Clarke avoids scrapping a ship while it can still perform a useful operation. Large invasion requirements make aggregate hull numbers and displacement valuable even when every ship is not a front-line design. Older units gradually move toward more distant stations, leaving newer ships for the most demanding duties. The moment highlights a force-structure tradeoff: replacing everything with the newest design can improve average quality while removing the mass needed for secondary theatres and support tasks.",
       "sourcePath": "src/transcripts/txt/2024-03-18_T19-00-31_check-campaign-10-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_hTz-ntP0kgU.txt",
       "evidence": [
         {
@@ -137,7 +166,7 @@
         "fleet-maintenance"
       ],
       "summary": "A chat exchange explains that ships placed in reserve can be bought by allied navies, giving an alternative to retaining every older hull in active service.",
-      "body": "Dr. Clarke says his older ships tend to move toward more distant stations as they age, while mothballing creates another outlet because allies may purchase them. The game mechanic points to a real force-management question: a navy can preserve hulls for mobilization, transfer them abroad, or keep paying to operate them itself.",
+      "body": "Dr. Clarke says his older ships tend to move toward more distant stations as they age. Mothballing creates another outlet because allied navies may purchase the reserved hulls. That offers a choice among retaining ships for possible reuse, transferring them abroad, or continuing to pay for active service. The answer turns a simple campaign mechanic into a compact force-management question about reserves, allied capacity, and the useful life of older warships.",
       "question": "Can mothballed ships be bought by allied navies?",
       "answerShort": "Yes. In the campaign, allies tend to buy mothballed ships, which helps move older hulls out of the active fleet.",
       "sourcePath": "src/transcripts/txt/2024-03-18_T19-00-31_check-campaign-10-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_hTz-ntP0kgU.txt",
@@ -166,7 +195,7 @@
         "alternate-history"
       ],
       "summary": "A 53,000-ton campaign design imagines a fast Queen Elizabeth-type battleship with twelve 15-inch guns and asks what such a ship would have meant at Jutland.",
-      "body": "The hypothetical ship combines four triple 15-inch mountings, a large 6-inch battery, and a speed of 32 knots. Although it is a game design rather than a historical proposal, the comparison makes the cost of concentrating extreme gun power, speed, and displacement easy to see and provides a springboard for thinking about First World War capital-ship limits.",
+      "body": "The hypothetical ship combines four triple 15-inch mountings, a large 6-inch battery, and a speed of 32 knots. Its displacement is about 53,100 tons, making the scale of the design as important as its twelve-gun broadside. Dr. Clarke imagines the effect of such a ship arriving at Jutland, framing it as an extravagant Queen Elizabeth-class counterfactual rather than a historical proposal. The comparison makes the concentration of gun power, speed, and displacement easy to see while keeping the game's design freedom distinct from actual First World War constraints.",
       "sourcePath": "src/transcripts/txt/2024-03-18_T19-00-31_check-campaign-10-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_hTz-ntP0kgU.txt",
       "evidence": [
         {
@@ -192,7 +221,7 @@
         "warship-design"
       ],
       "summary": "A chat exchange considers player-designed submarines and aircraft carriers, with carriers posing the added problem of modelling their aircraft as part of the weapon system.",
-      "body": "Dr. Clarke agrees that very large fleet submarines make a player design system attractive. Carriers are harder to add because their combat value cannot be represented by the hull alone: the game would also need a way to design or otherwise model the aircraft, connecting the ship, air group, and mission system.",
+      "body": "Dr. Clarke agrees that very large fleet submarines make a player design system attractive. Carriers are harder to add because their combat value cannot be represented by the hull alone. A carrier feature would also need to design or otherwise model the aircraft that deliver its striking power. The exchange therefore identifies the carrier, air group, and mission system as an interdependent weapon rather than treating the ship as a self-contained gun platform.",
       "question": "Could Ultimate Admiral: Dreadnoughts support player-designed submarines and aircraft carriers?",
       "answerShort": "Submarine design would be interesting, but carriers create a deeper modelling problem because the aircraft and their design must also be represented.",
       "sourcePath": "src/transcripts/txt/2024-03-18_T19-00-31_check-campaign-10-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_hTz-ntP0kgU.txt",
@@ -221,13 +250,39 @@
         "fleet-screening"
       ],
       "summary": "Facing many destroyers, Dr. Clarke uses long-range 6-inch fire and a compact battleship formation to deny the enemy a viable torpedo approach.",
-      "body": "The tactical problem is framed as a contest between destroyer numbers and the range at which those destroyers can be disabled. The battle line stays together and zigzags while lighter ships screen, showing how formation discipline, secondary gunfire, and manoeuvre combine to reduce torpedo risk.",
+      "body": "The French destroyer numbers create a serious torpedo threat if they can close the range. Dr. Clarke answers with long-range 6-inch fire intended to disable the attackers before their torpedoes become usable. The battleships remain together and zigzag while lighter ships screen ahead rather than dispersing into individual chases. He also identifies the battleships as the ships most capable of surviving a torpedo hit if one gets through. The sequence shows formation discipline, secondary gunnery, manoeuvre, and damage tolerance working together as a layered defence against a massed light-force attack.",
       "sourcePath": "src/transcripts/txt/2024-03-18_T19-00-31_check-campaign-10-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_hTz-ntP0kgU.txt",
       "evidence": [
         {
           "start": "44:20",
           "end": "45:58",
           "note": "The commentary contrasts destroyer torpedo attacks with long-range 6-inch fire and orders the battleships to stay together and zigzag."
+        }
+      ]
+    },
+    {
+      "id": "sacrificial-cruisers-fix-the-enemy",
+      "videoId": "hTz-ntP0kgU",
+      "slug": "sacrificial-cruisers-fix-the-enemy",
+      "title": "Sacrificial cruisers fix the enemy for destruction",
+      "kind": "notable_point",
+      "start": "51:27",
+      "end": "51:54",
+      "topics": [
+        "light-cruisers",
+        "fixing-action",
+        "defeat-in-detail",
+        "fleet-tactics",
+        "naval-leadership"
+      ],
+      "summary": "Dr. Clarke admits using light cruisers as sacrificial fixing forces so the slower battle line can prevent a French withdrawal and destroy the fleet in detail.",
+      "body": "The light cruisers are sent close enough to hold the French in action rather than because they are the strongest ships available. Dr. Clarke calls them sacrificial and explains that their purpose is to stop the enemy from running away. That creates time for the heavier force to complete the destruction of separate French elements. The moment makes the cost of a fixing action explicit: a commander may risk a weaker unit to secure a larger operational result, but the loss remains a consequence of that choice.",
+      "sourcePath": "src/transcripts/txt/2024-03-18_T19-00-31_check-campaign-10-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_hTz-ntP0kgU.txt",
+      "evidence": [
+        {
+          "start": "51:27",
+          "end": "51:54",
+          "note": "The light cruisers are described as sacrificial ships used to hold the French in position so the fleet can annihilate them in detail."
         }
       ]
     },
@@ -247,7 +302,7 @@
         "fleet-tactics"
       ],
       "summary": "A damaged French light cruiser tries to escape, demonstrating how flooding and accumulated hits can turn a nominal speed advantage into a fatal shortfall.",
-      "body": "The cruiser begins with a 34.3-knot top speed, but damage has already reduced its ability to outrun the pursuing force. Dr. Clarke also notes that driving a flooding ship harder can worsen its condition, making the scene a compact illustration of the interaction between mobility, damage control, and tactical withdrawal.",
+      "body": "The French light cruiser begins with a nominal top speed of 34.3 knots. Accumulated damage has already reduced the advantage it needs to outrun the pursuing British force. Dr. Clarke also notes that driving a flooding ship harder can worsen its condition, so the attempt to escape may accelerate the loss of buoyancy. The failed withdrawal demonstrates how battle damage turns speed from a design statistic into a condition-dependent capability.",
       "sourcePath": "src/transcripts/txt/2024-03-18_T19-00-31_check-campaign-10-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_hTz-ntP0kgU.txt",
       "evidence": [
         {
@@ -273,7 +328,7 @@
         "naval-logistics"
       ],
       "summary": "Transport losses are compared with each side's shipping capacity, showing why identical losses can impose very different strategic pressure.",
-      "body": "Dr. Clarke accepts substantial transport losses because his side began with much more shipping than France and still retains excess capacity. The useful strategic point is proportional: commerce warfare succeeds by exhausting an opponent's ability to absorb or replace losses, not simply by producing a large raw tally.",
+      "body": "Dr. Clarke accepts substantial transport losses because his side still holds about 168 percent of the shipping capacity it needs. Britain began with more merchant tonnage than France and can therefore absorb a similar raw loss more easily. He judges the contest proportionally and concludes that France is losing the shipping war despite British losses. The strategic lesson is that commerce warfare succeeds by exhausting an opponent's capacity to sustain and replace shipping, not merely by producing an impressive tally.",
       "sourcePath": "src/transcripts/txt/2024-03-18_T19-00-31_check-campaign-10-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_hTz-ntP0kgU.txt",
       "evidence": [
         {
@@ -299,7 +354,7 @@
         "target-prioritization"
       ],
       "summary": "A light cruiser is lured away from its convoy, letting a destroyer attack the transports before turning back on the isolated escort.",
-      "body": "The engagement is won by separating the protecting cruiser from the ships it is meant to defend. Once the transports are destroyed, the attacker can use speed and torpedoes against the escort; the sequence makes the escort mission's real priority clear, because chasing an enemy can be tactically attractive while failing the protected force.",
+      "body": "The engagement turns when the protecting cruiser is drawn away from the transports it is meant to defend. The attacking destroyer closes among the charges, where the escort's fire is constrained by the danger of hitting its own convoy. Once the transports are destroyed, the attacker can increase speed and use its torpedoes against the isolated cruiser. The sequence makes the escort mission's priority clear: chasing an enemy may look tactically attractive while leaving the protected force to be defeated.",
       "sourcePath": "src/transcripts/txt/2024-03-18_T19-00-31_check-campaign-10-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_hTz-ntP0kgU.txt",
       "evidence": [
         {
@@ -330,7 +385,7 @@
         "torpedoes"
       ],
       "summary": "A destroyer with advantages in stabilization, hull size, and torpedo reloads still loses after its commander presses the attack too closely.",
-      "body": "The chase begins with a plausible edge in fire control and weapons endurance, but it ends after flooding and an overcommitted approach. Dr. Clarke explicitly identifies target fixation as the mistake, turning the loss into a reminder that a favourable material comparison does not remove the need to preserve tactical distance and reassess risk.",
+      "body": "The British destroyer begins with plausible advantages in gun stabilization, hull size, and torpedo reloads. Both ships become less accurate at maximum speed, while flooding progressively erodes the British ship's mobility. Dr. Clarke presses the action too closely instead of ending the battle when the risk turns against him. He explicitly identifies target fixation as the mistake, showing that a favourable material comparison does not remove the need to preserve distance and reassess an engagement.",
       "sourcePath": "src/transcripts/txt/2024-03-18_T19-00-31_check-campaign-10-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_hTz-ntP0kgU.txt",
       "evidence": [
         {
@@ -361,7 +416,7 @@
         "naval-procurement"
       ],
       "summary": "Campaign research prompts a design lesson: construction flaws can leave a ship slower than its intended trial speed.",
-      "body": "Dr. Clarke emphasizes quality control because a nominal 32-knot design may deliver only 30 or 31 knots when construction defects accumulate. The point separates paper performance from fleet reality and shows why industrial execution belongs inside discussions of procurement and combat capability.",
+      "body": "Dr. Clarke prioritizes another quality-control research level rather than treating the design drawing as the end of procurement. Construction flaws can leave a nominal 32-knot ship capable of only 30 or 31 knots in service. That shortfall can alter whether the ship keeps formation, catches an opponent, or escapes an unfavourable action. The point separates paper performance from fleet reality and places industrial execution inside the assessment of combat capability.",
       "sourcePath": "src/transcripts/txt/2024-03-18_T19-00-31_check-campaign-10-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_hTz-ntP0kgU.txt",
       "evidence": [
         {
@@ -392,7 +447,7 @@
         "naval-gunnery"
       ],
       "summary": "Dr. Clarke enters a favourable engagement partly to give destroyer crews experience, while battleships provide overwhelming support against the opposing destroyer.",
-      "body": "The battle is selected for training value rather than strategic necessity, and the force is arranged so the destroyers can participate without bearing the full risk alone. The episode illustrates the tension between preserving inexperienced crews and exposing them to the operations needed to improve readiness, even though the game's accelerated experience system is only a rough model of real naval training.",
+      "body": "The battle is selected for training value rather than strategic necessity. Dr. Clarke arranges the force so the destroyers can participate without bearing the full risk alone, while battleships provide overwhelming support. The action even shows a 15-inch battery engaging the enemy destroyer, emphasizing how controlled the matchup has become. The episode illustrates the tension between preserving inexperienced crews and exposing them to operations that improve readiness, although the game's accelerated experience system is only a rough model of naval training.",
       "sourcePath": "src/transcripts/txt/2024-03-18_T19-00-31_check-campaign-10-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_hTz-ntP0kgU.txt",
       "evidence": [
         {
@@ -404,6 +459,37 @@
           "start": "1:18:44",
           "end": "1:19:21",
           "note": "The supporting battleship uses 15-inch fire against the destroyer and the commentary reviews its accuracy and damage."
+        }
+      ]
+    },
+    {
+      "id": "minefields-inflict-cumulative-attrition",
+      "videoId": "hTz-ntP0kgU",
+      "slug": "minefields-inflict-cumulative-attrition",
+      "title": "Minefields keep inflicting losses between fleet actions",
+      "kind": "notable_point",
+      "start": "1:20:43",
+      "end": "1:21:21",
+      "topics": [
+        "naval-mines",
+        "mine-warfare",
+        "attrition",
+        "fleet-readiness",
+        "sea-denial"
+      ],
+      "summary": "Campaign reports show French ships and crews suffering mine damage, turning the earlier defensive barrier into continuing attrition outside set-piece battles.",
+      "body": "Mine warfare continues to affect the campaign while the main fleet is occupied elsewhere. Dr. Clarke reviews French ship and crew losses attributed to mines, then later notes that mine attrition is still reducing enemy strength. The game abstracts the mine-laying and clearance contest, but it shows how a persistent barrier can create repair burdens and remove usable ships without a set-piece engagement. Viewed alongside the opening map, the report connects minefield geography to operational consequences.",
+      "sourcePath": "src/transcripts/txt/2024-03-18_T19-00-31_check-campaign-10-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_hTz-ntP0kgU.txt",
+      "evidence": [
+        {
+          "start": "1:20:43",
+          "end": "1:21:21",
+          "note": "The campaign report attributes French ship damage and crew losses to mines while comparing wider wartime losses."
+        },
+        {
+          "start": "1:39:46",
+          "end": "1:39:53",
+          "note": "Later commentary confirms that French ships continue to be attrited by mines."
         }
       ]
     },
@@ -423,7 +509,7 @@
         "submarines"
       ],
       "summary": "The campaign's Hawaiian and Samoan invasions show the practical need to assemble enough surface and submarine tonnage in the theatre before an operation can proceed.",
-      "body": "Dr. Clarke checks the required tonnage, moves additional forces into the region, and assigns submarines before opening a second island operation. The game mechanic is simplified, but it usefully visualizes how amphibious ambition is constrained by the amount of naval power that can be concentrated and sustained locally.",
+      "body": "Dr. Clarke compares the Hawaiian invasion's required tonnage with the 1.3 million tons assembled in the theatre. He moves additional ships and submarines into the region until the operation reaches a stated 100 percent chance of success. Only then does he consider opening a second invasion against eastern Samoa. The mechanic is simplified, but it usefully visualizes how amphibious ambition is constrained by the naval power that can be concentrated and sustained locally.",
       "sourcePath": "src/transcripts/txt/2024-03-18_T19-00-31_check-campaign-10-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_hTz-ntP0kgU.txt",
       "evidence": [
         {
@@ -449,7 +535,7 @@
         "ship-refits"
       ],
       "summary": "Repeated surprise torpedo attacks identify detection and warning time—not gun power—as the campaign fleet's most urgent capability gap.",
-      "body": "Dr. Clarke says torpedoes are causing most of his losses and that the immediate requirement is better detection. The point matters because a fleet cannot exploit speed, armour, or firepower against a weapon it notices too late; this diagnosis later drives the Rodney-class refit toward improved warning and avoidance.",
+      "body": "Dr. Clarke identifies surprise torpedoes as the recurring cause of his lost fights. The immediate capability gap is detection and warning time rather than another increase in gun power. Earlier notice would give ships a chance to manoeuvre before a spread reaches unavoidable range, allowing their speed and handling to matter. This diagnosis later drives the Rodney-class refit toward improved torpedo warning and avoidance.",
       "sourcePath": "src/transcripts/txt/2024-03-18_T19-00-31_check-campaign-10-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_hTz-ntP0kgU.txt",
       "evidence": [
         {
@@ -461,6 +547,32 @@
           "start": "1:36:55",
           "end": "1:37:32",
           "note": "Another encounter confirms that the incoming threat is torpedoes."
+        }
+      ]
+    },
+    {
+      "id": "shipbuilding-and-repair-timelines-shape-theatre-strength",
+      "videoId": "hTz-ntP0kgU",
+      "slug": "shipbuilding-and-repair-timelines-shape-theatre-strength",
+      "title": "Construction and repair timing shapes theatre strength",
+      "kind": "notable_point",
+      "start": "1:39:58",
+      "end": "1:41:05",
+      "topics": [
+        "shipbuilding",
+        "ship-repair",
+        "naval-industrial-capacity",
+        "fleet-readiness",
+        "force-concentration"
+      ],
+      "summary": "A million tons tied up in construction and repair are assessed by completion date and arrival port, showing why nominal fleet size is not the same as immediately available strength.",
+      "body": "Dr. Clarke finds roughly a million tons of ships in construction or repair and checks the production timeline rather than counting them as current combat power. A group due to finish in one month is expected to relieve the construction pressure and appear at Portsmouth. Their arrival will materially reinforce the force facing France, so completion date and basing matter as much as the total program. The campaign view illustrates how industrial throughput, repair work, and deployment timing determine the fleet a commander can actually use in a theatre.",
+      "sourcePath": "src/transcripts/txt/2024-03-18_T19-00-31_check-campaign-10-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_hTz-ntP0kgU.txt",
+      "evidence": [
+        {
+          "start": "1:39:58",
+          "end": "1:41:05",
+          "note": "The construction screen shows about a million tons building or repairing, with a batch one month from completion and expected at Portsmouth opposite France."
         }
       ]
     },
@@ -481,7 +593,7 @@
         "ship-design"
       ],
       "summary": "The Rodney-class refit balances improved torpedo warning, limited spare displacement, gun range, speed, and comparison with a faster rival battleship design.",
-      "body": "Repeated torpedo losses make detection and avoidance the immediate modernization priority. The refit then becomes a compact design exercise: only about 150 tons remain after weight correction, while gun performance and a comparison with the 32-knot, twelve-gun Canada class expose the continuing trade among protection, firepower, speed, and displacement.",
+      "body": "Repeated torpedo losses make detection and avoidance the immediate modernization priority for the Rodney class. The refit has only about 150 tons available after weight correction, so even a focused improvement must fit a tight displacement margin. Dr. Clarke also reviews gun ranges and compares the 28-knot Rodney with the faster, twelve-gun Canada class rather than judging the upgrade in isolation. The decision to refit all six ships shows how a fleet-wide standard emerges from tradeoffs among warning, firepower, speed, and available weight.",
       "sourcePath": "src/transcripts/txt/2024-03-18_T19-00-31_check-campaign-10-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_hTz-ntP0kgU.txt",
       "evidence": [
         {
@@ -512,7 +624,7 @@
         "defence-policy"
       ],
       "summary": "An audience question about service chiefs leads to an argument that the senior defence adviser must rise above single-service loyalties and give genuinely joint advice.",
-      "body": "Dr. Clarke worries that public comments by former chiefs reveal service-centred thinking in a role meant to serve the whole armed forces. He suggests that a distinct uniform might reinforce the mental transition: when one minister holds the defence budget, the senior military adviser must think in joint or 'purple' terms rather than act as an advocate for the Navy, Army, or Air Force.",
+      "body": "Dr. Clarke worries that public comments by former chiefs reveal service-centred thinking in a role meant to serve the whole armed forces. The chief of defence is supposed to advise for the combined force rather than continue representing the Navy, Army, or Air Force. He suggests that a distinct uniform might reinforce that mental transition into a genuinely joint, or 'purple,' identity. The organizational point is especially important when one minister controls the defence budget and therefore needs advice that weighs the services together rather than three separate cases.",
       "question": "What do recent comments by former service chiefs suggest about how jointly senior defence leaders approached their role?",
       "answerShort": "The chief of defence should stop representing one service and provide advice for the armed forces as a whole; a visibly separate identity could help reinforce that joint responsibility.",
       "sourcePath": "src/transcripts/txt/2024-03-18_T19-00-31_check-campaign-10-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_hTz-ntP0kgU.txt",
@@ -540,7 +652,7 @@
         "naval-gunnery"
       ],
       "summary": "A French battleship sensibly directs long-range fire at the heavy cruisers most capable of damaging it, rather than simply shooting at the largest available target.",
-      "body": "The commentary approves the battleship's decision to concentrate on the ships that present the most credible immediate danger. It is a small but useful tactical lesson: target value depends on the enemy's ability to affect the fight, not only on prestige, size, or nominal class.",
+      "body": "The French battleship concentrates on the British heavy cruisers because their long-range guns are the ships most likely to damage it. Dr. Clarke approves the choice even though other targets may look larger or more prestigious. The decision ranks threats by their ability to change the current fight rather than by nominal class alone. It is a concise demonstration of target prioritization under fire: the most valuable target is the one that can hurt you now.",
       "sourcePath": "src/transcripts/txt/2024-03-18_T19-00-31_check-campaign-10-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_hTz-ntP0kgU.txt",
       "evidence": [
         {
@@ -565,7 +677,7 @@
         "military-terminology"
       ],
       "summary": "A follow-up question asks why officers working across service boundaries are described as purple rather than by their parent service colour.",
-      "body": "Dr. Clarke explains the term as a mixture of the colours associated with the individual armed services. The label matters in the preceding discussion because it describes an institutional identity meant to sit above Navy, Army, and Air Force advocacy.",
+      "body": "Dr. Clarke explains purple as a mixture of the colours associated with the individual armed services. The term gives officers working across service boundaries a visual identity that is not owned by one branch. In the preceding discussion, that identity marks the mental shift expected from a chief of defence who must advise for the armed forces as a whole. The short answer therefore clarifies both a piece of military terminology and the institutional purpose behind it.",
       "question": "Why is joint-service thinking called purple?",
       "answerShort": "Purple represents the service colours mixed together, making it a shorthand for a joint identity rather than allegiance to one branch.",
       "sourcePath": "src/transcripts/txt/2024-03-18_T19-00-31_check-campaign-10-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_hTz-ntP0kgU.txt",
@@ -594,7 +706,7 @@
         "ship-speed"
       ],
       "summary": "The closing historical aside notes that Russian designers pursued a 24-knot battleship early and knowingly accepted lighter armor to obtain the speed.",
-      "body": "Dr. Clarke uses the Russian example to stress that fast battleships were not simply a matter of installing more machinery. Higher speed had to be purchased with another design quality, and in this case the stated compromise was reduced armor protection.",
+      "body": "Dr. Clarke notes that Russian designers pursued a 24-knot battleship before fast battleships became a wider ambition. The proposal accepted lighter armour as the price of obtaining the higher speed. That trade makes clear that speed was not simply added on top of an unchanged battleship design. The historical aside provides a compact way to compare priorities in capital-ship design: gaining mobility requires displacement, machinery, protection, or some combination of them to be reconsidered.",
       "sourcePath": "src/transcripts/txt/2024-03-18_T19-00-31_check-campaign-10-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_hTz-ntP0kgU.txt",
       "evidence": [
         {

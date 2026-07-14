@@ -9,7 +9,9 @@
     "naval-procurement",
     "submarines",
     "battleships",
-    "naval-history-books"
+    "naval-history-books",
+    "naval-industrial-base",
+    "naval-logistics"
   ],
   "segments": [
     {
@@ -145,20 +147,28 @@
       "id": "anglo-german-naval-race-numbers-versus-technology",
       "videoId": "bMexXL_da6o",
       "slug": "anglo-german-naval-race-numbers-versus-technology",
-      "title": "Why a numbers race made Germany different",
-      "kind": "notable_point",
-      "start": "1:53:51",
+      "title": "How removing Tirpitz could change the Anglo-German naval race",
+      "kind": "qa",
+      "start": "1:52:25",
       "end": "1:55:51",
       "topics": [
         "royal-navy",
         "naval-procurement",
         "battleships",
-        "imperial-german-navy"
+        "imperial-german-navy",
+        "naval-strategy"
       ],
-      "summary": "A counterfactual contrasts a limited battleship technology competition with the Anglo-German numerical race that Britain treated as a strategic threat.",
-      "body": "Dr. Clarke distinguishes competition over gun size and individual ship quality from a fleet-building race over total numbers. Britain could answer a technology contest with a better next design, but German numerical expansion forced planners to preserve a decisive margin while sustaining a globally operational fleet, creating heavier economic pressure and sharper political danger.",
+      "summary": "A Tirpitz counterfactual contrasts the historical numerical race with a smaller German fleet competing mainly through battleship technology.",
+      "body": "Dr. Clarke argues that no obvious replacement would have driven German naval expansion on Tirpitz's scale. A leader such as Henning von Holtzendorff would still have built a navy, but a different one. The likely competition with Britain would center more on the quality, armament, and technology of individual battleships than on matching fleet numbers. Britain could answer that kind of contest with its next design, whereas Tirpitz's numerical program forced it to preserve a decisive margin while also maintaining a globally operational fleet. The distinction explains why the historical race created heavier economic pressure and became a sharper political threat.",
+      "question": "How large might the Imperial German Navy have become if Alfred von Tirpitz had been removed from power?",
+      "answerShort": "It would probably have been smaller and different, with an Anglo-German technology competition replacing much of Tirpitz's destabilizing race in fleet numbers.",
       "sourcePath": "src/transcripts/txt/2022-11-20_T19-04-52_bruships-92-new-books-naval-chat-and-late-19th-century-warships_bMexXL_da6o.txt",
       "evidence": [
+        {
+          "start": "1:52:25",
+          "end": "1:53:37",
+          "note": "The prompt removes Tirpitz, and the answer says another chief such as Holtzendorff would have built a substantially different and smaller navy."
+        },
         {
           "start": "1:53:51",
           "end": "1:55:51",
@@ -1035,6 +1045,258 @@
           "start": "3:28:07",
           "end": "3:29:16",
           "note": "The answer distinguishes blockaded German trade from battlecruiser roles in counter-raider, Mediterranean, and Ottoman operations."
+        }
+      ]
+    },
+    {
+      "id": "midway-guide-to-us-naval-strategy",
+      "videoId": "bMexXL_da6o",
+      "slug": "midway-guide-to-us-naval-strategy",
+      "title": "A Midway reader as an introduction to U.S. naval strategy",
+      "kind": "qa",
+      "start": "1:00:45",
+      "end": "1:02:39",
+      "topics": [
+        "naval-history-books",
+        "united-states-navy",
+        "battle-of-midway",
+        "naval-strategy",
+        "interwar-period"
+      ],
+      "summary": "A reading recommendation uses a Naval Institute guide to the Battle of Midway to connect interwar U.S. Navy planning with wartime execution.",
+      "body": "Asked for an accessible strategy title from the U.S. Naval Institute, Dr. Clarke recommends the Battle of Midway volume edited by Thomas C. Hone. He presents it as more than a battle narrative. The collection offers a route into how the U.S. Navy thought about strategy during the 1920s and 1930s and how those ideas met the conditions of the Second World War. It is therefore a useful starting point for readers who want to connect plans, doctrine, and a decisive operation.",
+      "question": "Which U.S. Naval Institute book offers a useful introduction to American naval strategy?",
+      "answerShort": "Dr. Clarke recommends Thomas C. Hone's Battle of Midway guide for linking interwar U.S. Navy strategy to the Second World War.",
+      "sourcePath": "src/transcripts/txt/2022-11-20_T19-04-52_bruships-92-new-books-naval-chat-and-late-19th-century-warships_bMexXL_da6o.txt",
+      "evidence": [
+        {
+          "start": "1:00:45",
+          "end": "1:02:39",
+          "note": "The viewer asks for a USNI strategy book, and the answer recommends Thomas C. Hone's Midway guide as an introduction to 1920s and 1930s U.S. naval strategy and its wartime development."
+        }
+      ]
+    },
+    {
+      "id": "normandie-machinery-and-french-industry",
+      "videoId": "bMexXL_da6o",
+      "slug": "normandie-machinery-and-french-industry",
+      "title": "Why better British machinery was not a simple answer for the Normandies",
+      "kind": "qa",
+      "start": "1:11:46",
+      "end": "1:11:56",
+      "topics": [
+        "french-navy",
+        "normandie-class",
+        "ship-propulsion",
+        "naval-procurement",
+        "naval-industrial-base"
+      ],
+      "summary": "A short procurement answer separates the technical attraction of British machinery from its financial and industrial costs to France.",
+      "body": "Dr. Clarke agrees that buying British engines could have given the Normandie class a better machinery option. He immediately qualifies that technical answer with two institutional costs: the purchase would require foreign expenditure and would not sustain French industry. The exchange is a compact reminder that naval procurement decisions serve budgets and industrial policy as well as ship performance.",
+      "question": "Would France have been better off buying British engines for the Normandie-class battleships?",
+      "answerShort": "Technically perhaps, but imported machinery would cost money abroad and fail to support France's own industrial base.",
+      "sourcePath": "src/transcripts/txt/2022-11-20_T19-04-52_bruships-92-new-books-naval-chat-and-late-19th-century-warships_bMexXL_da6o.txt",
+      "evidence": [
+        {
+          "start": "1:11:46",
+          "end": "1:11:56",
+          "note": "The answer says British engines could be better but would cost money and would not support French industry."
+        }
+      ]
+    },
+    {
+      "id": "deutschland-armament-and-design-purpose",
+      "videoId": "bMexXL_da6o",
+      "slug": "deutschland-armament-and-design-purpose",
+      "title": "How the Deutschland design changes with its intended purpose",
+      "kind": "qa",
+      "start": "1:56:24",
+      "end": "1:57:08",
+      "topics": [
+        "deutschland-class",
+        "kriegsmarine",
+        "naval-gunnery",
+        "naval-treaties",
+        "ship-design"
+      ],
+      "summary": "A German cruiser counterfactual contrasts an efficient nine-gun 8-inch design with a more heavily armed replacement for treaty-bound pre-dreadnoughts.",
+      "body": "Dr. Clarke first sketches a more efficient Deutschland-type cruiser with nine 8-inch guns rather than the historical six 11-inch weapons. That answer changes if Germany keeps the class's political role as a nominal replacement for old pre-dreadnoughts while already exceeding treaty limits. Under those assumptions, he argues that designers might as well exploit the displacement and fit nine 11-inch guns. The moment shows that the preferred armament follows the ship's intended mission and legal fiction rather than calibre alone.",
+      "question": "What armament would make a better follow-on to the Deutschland class?",
+      "answerShort": "For an efficient cruiser, nine 8-inch guns; for a treaty-stretching pre-dreadnought replacement, Dr. Clarke would use nine 11-inch guns.",
+      "sourcePath": "src/transcripts/txt/2022-11-20_T19-04-52_bruships-92-new-books-naval-chat-and-late-19th-century-warships_bMexXL_da6o.txt",
+      "evidence": [
+        {
+          "start": "1:56:24",
+          "end": "1:57:08",
+          "note": "The answer contrasts a nine-gun 8-inch cruiser with a nine-gun 11-inch ship if Germany continues using treaty evasion and pre-dreadnought replacement as the design framework."
+        }
+      ]
+    },
+    {
+      "id": "super-battleship-gun-calibre-hierarchy",
+      "videoId": "bMexXL_da6o",
+      "slug": "super-battleship-gun-calibre-hierarchy",
+      "title": "Why 20-inch guns would belong to exceptional flagships",
+      "kind": "notable_point",
+      "start": "2:00:36",
+      "end": "2:01:15",
+      "topics": [
+        "battleships",
+        "naval-gunnery",
+        "ship-design",
+        "super-battleships",
+        "alternate-history"
+      ],
+      "summary": "A speculative gun-calibre hierarchy reserves 20-inch weapons for one or two prestige super-battleships while 16- and 18-inch ships perform most fleet work.",
+      "body": "Dr. Clarke treats 18 inches as a plausible practical ceiling for battleship guns while expecting at least one navy to test a still larger 20-inch weapon. He does not imagine whole battle lines built at that scale. Instead, such ships would be rare fleet flagships or prestige super-battleships, perhaps one or two per navy. The majority of capital-ship work would remain with more numerous 16- and 18-inch designs. The distinction separates technological possibility from a sustainable force structure.",
+      "sourcePath": "src/transcripts/txt/2022-11-20_T19-04-52_bruships-92-new-books-naval-chat-and-late-19th-century-warships_bMexXL_da6o.txt",
+      "evidence": [
+        {
+          "start": "2:00:36",
+          "end": "2:01:15",
+          "note": "The discussion calls 18 inches practical, predicts an attempted 20-inch ship, and places only one or two such super-battleships in each fleet while smaller capital ships do most of the work."
+        }
+      ]
+    },
+    {
+      "id": "ralph-edwards-royal-navy-career-and-papers",
+      "videoId": "bMexXL_da6o",
+      "slug": "ralph-edwards-royal-navy-career-and-papers",
+      "title": "Ralph Edwards from Bismarck operations to Third Sea Lord",
+      "kind": "qa",
+      "start": "2:05:41",
+      "end": "2:08:16",
+      "topics": [
+        "royal-navy",
+        "naval-leadership",
+        "naval-biography",
+        "bismarck",
+        "eastern-fleet",
+        "hms-gambia",
+        "hms-illustrious"
+      ],
+      "summary": "A source question traces Ralph Edwards through operational planning, sea command, fleet staff work, procurement leadership, and a surviving archival collection.",
+      "body": "Dr. Clarke identifies Ralph Edwards as a Royal Navy officer whose papers are held by the Churchill Archives Centre. Edwards served in the Home Fleet operations division connected with the pursuit of Bismarck, then became chief of staff to the Eastern Fleet. His sea appointments included HMNZS Gambia and HMS Illustrious, followed by command of the First Cruiser Squadron and senior Mediterranean responsibilities. He later served as Third Sea Lord and Controller before a final training and NATO command. The career outline helps readers follow how one officer moved between operations, command, staff work, and naval administration.",
+      "question": "What is known about Ralph Edwards's Royal Navy career, and where can researchers find his papers?",
+      "answerShort": "His career ran from Bismarck operations and Eastern Fleet staff work through command of Gambia and Illustrious to Third Sea Lord, and his papers are at the Churchill Archives Centre.",
+      "sourcePath": "src/transcripts/txt/2022-11-20_T19-04-52_bruships-92-new-books-naval-chat-and-late-19th-century-warships_bMexXL_da6o.txt",
+      "evidence": [
+        {
+          "start": "2:05:41",
+          "end": "2:08:16",
+          "note": "The answer identifies Edwards's archive and summarizes his Home Fleet, Eastern Fleet, Gambia, Illustrious, First Cruiser Squadron, Third Sea Lord, training, and NATO appointments."
+        }
+      ]
+    },
+    {
+      "id": "county-and-town-class-reading-guide",
+      "videoId": "bMexXL_da6o",
+      "slug": "county-and-town-class-reading-guide",
+      "title": "Books for the County and Town classes",
+      "kind": "qa",
+      "start": "2:21:01",
+      "end": "2:22:41",
+      "topics": [
+        "naval-history-books",
+        "royal-navy",
+        "county-class-cruisers",
+        "town-class-cruisers",
+        "hms-london"
+      ],
+      "summary": "A paired reading recommendation points to Ian Valentine's HMS London for a County-class study and Neil McCart for the Town class.",
+      "body": "The viewer asks both which cruiser class was better and what to read about each. Dr. Clarke answers the book half of the question rather than forcing a quick verdict between unlike designs. He recommends Ian Valentine's HMS London as a strong profile of a County-class cruiser. For the Town class, he selects Neil McCart's class history. Together the suggestions give readers a ship-level study and a class-wide counterpart.",
+      "question": "Which books does Dr. Clarke recommend for the Royal Navy's County- and Town-class cruisers?",
+      "answerShort": "Ian Valentine's HMS London for the County class and Neil McCart's Town-class cruiser history for the Towns.",
+      "sourcePath": "src/transcripts/txt/2022-11-20_T19-04-52_bruships-92-new-books-naval-chat-and-late-19th-century-warships_bMexXL_da6o.txt",
+      "evidence": [
+        {
+          "start": "2:21:01",
+          "end": "2:22:41",
+          "note": "The answer recommends Ian Valentine's HMS London for the County class and Neil McCart's Town-class cruiser book."
+        }
+      ]
+    },
+    {
+      "id": "royal-navy-destroyer-reading-guide",
+      "videoId": "bMexXL_da6o",
+      "slug": "royal-navy-destroyer-reading-guide",
+      "title": "Two routes into Royal Navy destroyer operations",
+      "kind": "qa",
+      "start": "3:00:57",
+      "end": "3:01:44",
+      "topics": [
+        "naval-history-books",
+        "royal-navy",
+        "destroyers",
+        "second-world-war",
+        "naval-operations"
+      ],
+      "summary": "A reading answer pairs a study of early Second World War destroyer actions with a commander's memoir for an operational and personal view.",
+      "body": "For Royal Navy destroyers in the Second World War, Dr. Clarke first recommends Harry Plevy's Destroyer Actions. He notes that it covers the opening campaign from September 1939 into June 1940. He then adds In Action with Destroyers 1939-1945, the wartime memoir of Commander J. A. J. Dennis. Read together, the books offer both an account of operations and the perspective of an officer who served in destroyers.",
+      "question": "Which books are useful for studying Royal Navy destroyers in the Second World War?",
+      "answerShort": "Harry Plevy's Destroyer Actions and Commander J. A. J. Dennis's memoir In Action with Destroyers 1939-1945.",
+      "sourcePath": "src/transcripts/txt/2022-11-20_T19-04-52_bruships-92-new-books-naval-chat-and-late-19th-century-warships_bMexXL_da6o.txt",
+      "evidence": [
+        {
+          "start": "3:00:57",
+          "end": "3:01:44",
+          "note": "The answer recommends Destroyer Actions for September 1939 to June 1940 and In Action with Destroyers 1939-1945, the memoir of Commander J. A. J. Dennis."
+        }
+      ]
+    },
+    {
+      "id": "warship-machinery-reading-guide",
+      "videoId": "bMexXL_da6o",
+      "slug": "warship-machinery-reading-guide",
+      "title": "Where to begin reading about steam machinery in warships",
+      "kind": "qa",
+      "start": "3:01:53",
+      "end": "3:03:45",
+      "topics": [
+        "naval-history-books",
+        "marine-engineering",
+        "steam-power",
+        "pre-dreadnoughts",
+        "ship-design"
+      ],
+      "summary": "A machinery bibliography points readers toward broad warship-design histories because few books isolate boilers as their sole subject.",
+      "body": "Asked for books devoted to steam boilers and engines, Dr. Clarke says he cannot identify a strong boiler-only volume from his shelves. Instead, he recommends design histories that include machinery in context. His examples are Warren Berry's The Pre-Dreadnought Revolution, D. K. Brown's Warrior to Dreadnought, and the relevant works of Norman Friedman. This route lets readers see propulsion alongside hull form, armour, armament, and the wider evolution of sea power.",
+      "question": "Which books help explain steam boilers and machinery in warship design?",
+      "answerShort": "Start with broader design histories such as The Pre-Dreadnought Revolution, D. K. Brown's Warrior to Dreadnought, and Norman Friedman's works.",
+      "sourcePath": "src/transcripts/txt/2022-11-20_T19-04-52_bruships-92-new-books-naval-chat-and-late-19th-century-warships_bMexXL_da6o.txt",
+      "evidence": [
+        {
+          "start": "3:01:53",
+          "end": "3:03:45",
+          "note": "The answer finds no boiler-only recommendation and instead names The Pre-Dreadnought Revolution, Warrior to Dreadnought, and works by Norman Friedman."
+        }
+      ]
+    },
+    {
+      "id": "late-nineteenth-century-italian-navy-reading",
+      "videoId": "bMexXL_da6o",
+      "slug": "late-nineteenth-century-italian-navy-reading",
+      "title": "A starting book for the late nineteenth-century Italian Navy",
+      "kind": "qa",
+      "start": "3:17:05",
+      "end": "3:18:19",
+      "topics": [
+        "naval-history-books",
+        "italian-navy",
+        "battle-of-lissa",
+        "ironclads",
+        "nineteenth-century"
+      ],
+      "summary": "A bibliography question directs English-language readers to Quintin Barry's Battle of Lissa 1866 and its source trail into the Italian Navy.",
+      "body": "The viewer notes that English-language studies of the late nineteenth-century Italian Navy are difficult to find. Dr. Clarke recommends Quintin Barry's Battle of Lissa 1866 as the best starting point he can offer. The book provides a focused account of the campaign and battle while also supplying sources that lead further into the Italian fleet. That makes it useful as both a narrative introduction and a bridge to deeper research.",
+      "question": "What English-language book is a good starting point for the late nineteenth-century Italian Navy?",
+      "answerShort": "Quintin Barry's Battle of Lissa 1866, especially because it points readers toward further sources.",
+      "sourcePath": "src/transcripts/txt/2022-11-20_T19-04-52_bruships-92-new-books-naval-chat-and-late-19th-century-warships_bMexXL_da6o.txt",
+      "evidence": [
+        {
+          "start": "3:17:05",
+          "end": "3:18:19",
+          "note": "The response recommends Quintin Barry's Battle of Lissa 1866 as a starting point and notes that it contains useful sources."
         }
       ]
     }

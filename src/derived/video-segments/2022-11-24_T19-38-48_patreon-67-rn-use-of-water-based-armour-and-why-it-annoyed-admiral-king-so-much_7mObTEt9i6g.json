@@ -16,9 +16,102 @@
     "interwar-navy",
     "washington-naval-treaty",
     "g3-battlecruiser",
-    "n3-battleship"
+    "n3-battleship",
+    "naval-industrial-base",
+    "naval-logistics",
+    "naval-gunnery"
   ],
   "segments": [
+    {
+      "id": "treaty-openness-water-armour",
+      "videoId": "7mObTEt9i6g",
+      "slug": "treaty-openness-water-armour",
+      "title": "Why secret water armour challenged the treaties' spirit of openness",
+      "kind": "chapter",
+      "start": "7:04",
+      "end": "16:30",
+      "topics": [
+        "royal-navy",
+        "us-navy",
+        "naval-treaties",
+        "naval-diplomacy",
+        "underwater-protection"
+      ],
+      "summary": "Admiral King's complaint becomes a dispute over information sharing: Britain followed the treaty rules but withheld knowledge that could have changed how other powers understood displacement and protection.",
+      "body": "Dr. Clarke distinguishes literal treaty compliance from the wider promise of openness surrounding the naval agreements. Britain was not obliged to hand over technical drawings, but its extensive testing had shown that floodable spaces could provide protection without counting as standard displacement. Even a broad warning could have informed both treaty drafting and American ship design without revealing the engineering details. Withholding that insight made the British solution look like an exploitation of definitions agreed among powers that were supposed to be building a more cooperative naval order.",
+      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
+      "evidence": [
+        {
+          "start": "7:04",
+          "end": "16:30",
+          "note": "The introduction explains King's grievance through treaty definitions, British test knowledge, and the expectation that the agreements would create greater openness among naval powers."
+        }
+      ]
+    },
+    {
+      "id": "qa-water-armour-in-hood",
+      "videoId": "7mObTEt9i6g",
+      "slug": "qa-water-armour-in-hood",
+      "title": "Could HMS Hood have pioneered water armour?",
+      "kind": "qa",
+      "start": "11:54",
+      "end": "15:38",
+      "topics": [
+        "royal-navy",
+        "hood",
+        "underwater-protection",
+        "ship-design"
+      ],
+      "question": "Should the Royal Navy have introduced water armour in HMS Hood so later ships could benefit from the experience?",
+      "answerShort": "Only if the system had matured in time for Hood's design and construction; Dr. Clarke suggests the technology was still developing and may instead have been relevant to later Admiral-class ships.",
+      "summary": "A viewer's proposal exposes the timing problem behind fitting a promising protective system to a capital ship already moving through design and construction.",
+      "body": "Dr. Clarke agrees that operational experience in Hood could have helped later development, but he does not treat the choice as available on demand. A protective scheme has to be ready early enough to shape internal volume, structure, and displacement before construction is too advanced. He suggests the system was still developing and might have become practical for one of the later projected Admiral-class ships rather than Hood herself. The exchange is a useful reminder that a sound technology can miss a particular ship because its engineering timetable does not match the shipbuilding timetable.",
+      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
+      "evidence": [
+        {
+          "start": "11:54",
+          "end": "12:05",
+          "note": "A viewer proposes pioneering water armour in Hood, and Dr. Clarke says the system was still developing and Hood may have been too early."
+        },
+        {
+          "start": "15:27",
+          "end": "15:38",
+          "note": "The follow-up answer makes readiness during the ship's design and construction the decisive constraint."
+        }
+      ]
+    },
+    {
+      "id": "qa-hood-steel-crushing-tubes",
+      "videoId": "7mObTEt9i6g",
+      "slug": "qa-hood-steel-crushing-tubes",
+      "title": "How did Hood's steel crushing tubes absorb blast energy?",
+      "kind": "qa",
+      "start": "17:54",
+      "end": "20:03",
+      "topics": [
+        "hood",
+        "underwater-protection",
+        "damage-control",
+        "ship-design"
+      ],
+      "question": "How heavy were Hood's steel crushing tubes, and was the system practical as underwater protection?",
+      "answerShort": "The exact weight depended on tube thickness and packing density but ran to hundreds of tons, with the tubes absorbing explosive energy by deforming like a car's crumple zone.",
+      "summary": "The exchange explains the physical logic behind a protection system that can look wasteful until deformation is understood as deliberate energy absorption.",
+      "body": "Dr. Clarke cannot give one universal weight because the total depends on the thickness of steel and the density with which the tubes are packed. He nevertheless describes the installation as weighing hundreds of tons. The tubes were meant to crush under an underwater explosion and consume energy before the blast reached vital structure. His comparison is a car's crumple zone: deformation is the mechanism, not evidence that the component has failed to do its job. The system was therefore practical in principle even though later water-filled arrangements could use the protective volume more efficiently.",
+      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
+      "evidence": [
+        {
+          "start": "17:54",
+          "end": "18:07",
+          "note": "The answer says tube thickness and packing density determine weight and places the complete system in the hundreds of tons."
+        },
+        {
+          "start": "19:47",
+          "end": "20:03",
+          "note": "A practicality challenge prompts the comparison with automotive crumple zones that remove energy through controlled deformation."
+        }
+      ]
+    },
     {
       "id": "post-jutland-battlecruiser-strategy",
       "videoId": "7mObTEt9i6g",
@@ -26,21 +119,27 @@
       "title": "Why Jutland did not end the Royal Navy's battlecruiser strategy",
       "kind": "chapter",
       "start": "23:58",
-      "end": "31:28",
+      "end": "34:23",
       "topics": [
         "royal-navy",
         "battlecruisers",
         "naval-strategy",
+        "naval-industrial-base",
         "naval-history"
       ],
-      "summary": "Dr. Clarke challenges the idea that Jutland made battlecruisers obsolete and connects Britain's postwar capital-ship choices to worldwide commitments rather than a single North Sea battle.",
-      "body": "The losses at Jutland are presented as the result of cruisers being used in a battleship fight, not proof that speed and global reach had lost their value. Renown, Repulse, Hood, and the projected G3s followed because Britain still had to consider distant threats, imperial communications, and a future in which the German fleet no longer defined every capital-ship requirement.",
+      "summary": "Dr. Clarke challenges the idea that Jutland made battlecruisers obsolete and connects Britain's postwar capital-ship choices to worldwide commitments, likely rivals, and an industrial preference for technological competition.",
+      "body": "The losses at Jutland are presented as cruisers being used in a battleship fight, not proof that speed and global reach had lost their value. Renown, Repulse, Hood, and the projected G3s followed because Britain still had to consider distant threats and imperial communications after Germany ceased to define every capital-ship requirement. Planners watched both the United States and expansionist Japan, while treating France and Italy as less immediate postwar dangers. Dr. Clarke argues that Britain could manage a technology race more readily than a numbers race because a small annual building program preserved shipyard work and design experience without requiring a politically explosive mass expansion.",
       "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
       "evidence": [
         {
           "start": "23:58",
           "end": "31:28",
-          "note": "Dr. Clarke contrasts the familiar Jutland narrative with the Royal Navy's continuing battlecruiser construction and its postwar assessment of global threats."
+          "note": "Dr. Clarke contrasts the familiar Jutland narrative with the Royal Navy's continuing battlecruiser construction and its assessment of global threats."
+        },
+        {
+          "start": "31:28",
+          "end": "34:23",
+          "note": "The discussion distinguishes a manageable technology race from a costly numbers race and links low-rate construction to industrial continuity."
         }
       ]
     },
@@ -58,8 +157,8 @@
         "deterrence",
         "naval-diplomacy"
       ],
-      "summary": "Hood's size, speed, armament, and public image made the ship a traveling demonstration of British power whose real purpose extended beyond winning a fleet engagement.",
-      "body": "A foreign observer could see a ship comparable to the strongest vessels in service and then be told that it was not Britain's most powerful capital ship. Dr. Clarke frames that contrast as conflict management: Hood encouraged rivals to imagine the strength held back at home and to reconsider the risks of confrontation.",
+      "summary": "Hood's size, speed, armament, and public image made the ship a traveling demonstration of British power whose purpose extended beyond winning a fleet engagement.",
+      "body": "A foreign observer could see a ship comparable to the strongest vessels in service and then be told that it was not Britain's most powerful capital ship. Hood's eight 15-inch guns, speed, size, crew, and elegant profile made that message visually convincing before any technical comparison began. The uncertainty encouraged observers to imagine that still stronger battleships waited with the Home Fleet. Dr. Clarke therefore frames Hood's cruises as conflict management: visible capability was intended to make rivals reconsider the costs of confrontation.",
       "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
       "evidence": [
         {
@@ -70,13 +169,103 @@
       ]
     },
     {
+      "id": "qa-no-treaty-british-battlecruisers",
+      "videoId": "7mObTEt9i6g",
+      "slug": "qa-no-treaty-british-battlecruisers",
+      "title": "Would Britain keep building battlecruisers without the Washington Treaty?",
+      "kind": "qa",
+      "start": "38:39",
+      "end": "38:57",
+      "topics": [
+        "royal-navy",
+        "battlecruisers",
+        "washington-naval-treaty",
+        "g3-battlecruiser",
+        "naval-procurement"
+      ],
+      "question": "Without the Washington Naval Treaty, would the Royal Navy have shifted from battleships toward battlecruisers?",
+      "answerShort": "It would certainly have continued building battlecruisers for a time, with Renown, the Admiral class, and G3 forming three successive fast-capital-ship classes.",
+      "summary": "The brief answer uses the actual design sequence to show that British confidence in the battlecruiser survived Jutland and would have shaped the immediate postwar program.",
+      "body": "Dr. Clarke answers that battlecruiser construction would have continued at least through the immediate postwar sequence. Renown and Repulse were followed by the Admiral class, and G3 was the next ordered fast-capital-ship design. Three successive classes show that the Royal Navy had not accepted the simple claim that Jutland made the type obsolete. The answer does not mean Britain would abandon battleships, because the lecture also pairs the G3 program with the heavily armed N3. It instead identifies the fast ship as a continuing and deliberate part of a mixed capital-ship force.",
+      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
+      "evidence": [
+        {
+          "start": "38:39",
+          "end": "38:57",
+          "note": "A viewer asks about a no-treaty fleet, and Dr. Clarke identifies Renown, the Admirals, and G3 as three successive British battlecruiser classes."
+        }
+      ]
+    },
+    {
+      "id": "john-brown-transatlantic-shipbuilding-links",
+      "videoId": "7mObTEt9i6g",
+      "slug": "john-brown-transatlantic-shipbuilding-links",
+      "title": "How John Brown's American links informed British shipbuilding",
+      "kind": "notable_point",
+      "start": "40:28",
+      "end": "43:16",
+      "topics": [
+        "royal-navy",
+        "us-navy",
+        "shipbuilding",
+        "naval-industrial-base",
+        "marine-engineering"
+      ],
+      "summary": "Stephen Piggott's career at John Brown illustrates how people, turbine technology, and informal industrial knowledge crossed the Atlantic around Hood's construction.",
+      "body": "American engineer Stephen Piggott joined John Brown in 1908 to help build Curtis turbines under the Brown-Curtis name and later rose to managing director at Clydebank. The yard's machinery expertise and unusually strong American connections both mattered when it was selected to build Hood. Dr. Clarke says no formal secrets had to change hands for the yard to give the Admiralty insight into American shipbuilding and American contacts a view of British standards. He then contrasts Britain's flexible ordering habits with longer American and Japanese programs: a deep industrial base allowed British planners to delay final commitments until technology had moved closer to the point of construction.",
+      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
+      "evidence": [
+        {
+          "start": "40:28",
+          "end": "42:02",
+          "note": "The passage traces Piggott's career, John Brown's turbine work, Hood's yard selection, and informal Anglo-American knowledge exchange."
+        },
+        {
+          "start": "42:36",
+          "end": "43:16",
+          "note": "Dr. Clarke links Britain's shorter planning horizon to confidence in its shipbuilding industrial base."
+        }
+      ]
+    },
+    {
+      "id": "g3-global-basing-infrastructure",
+      "videoId": "7mObTEt9i6g",
+      "slug": "g3-global-basing-infrastructure",
+      "title": "The dockyards and basing logic behind a global G3 force",
+      "kind": "chapter",
+      "start": "45:18",
+      "end": "50:19",
+      "topics": [
+        "royal-navy",
+        "g3-battlecruiser",
+        "naval-logistics",
+        "naval-infrastructure",
+        "singapore-naval-base"
+      ],
+      "summary": "Building very large battlecruisers was only the first step; using them globally required graving docks, forward bases, and a deliberate distribution between the Atlantic, Mediterranean, and Singapore.",
+      "body": "The wartime Admirals could be justified as ships for British and North Sea waters, but postwar deployment would require expensive overseas infrastructure. Dr. Clarke imagines the Admiralty using the completed ships to argue for larger docks and support facilities at Hong Kong or Singapore. The later G3 design was shaped to fit available graving docks around the world and to act as a recurring presence rather than remain tied to home waters. In a seven-ship fast-capital-ship force, he suggests Hood and two G3s in the Atlantic, Renown and Repulse in the Mediterranean, and two G3s based at Singapore, with regular global visits and maintenance rotations.",
+      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
+      "evidence": [
+        {
+          "start": "45:18",
+          "end": "46:20",
+          "note": "The discussion explains how very large ships would generate requirements for overseas graving docks and support facilities."
+        },
+        {
+          "start": "47:04",
+          "end": "50:19",
+          "note": "Dr. Clarke describes G3 global-presence design and a possible Atlantic, Mediterranean, and Singapore distribution."
+        }
+      ]
+    },
+    {
       "id": "g3-n3-procurement-disruption",
       "videoId": "7mObTEt9i6g",
       "slug": "g3-n3-procurement-disruption",
       "title": "How G3 and N3 designs could disrupt rival procurement",
       "kind": "notable_point",
       "start": "52:21",
-      "end": "57:58",
+      "end": "58:58",
       "topics": [
         "royal-navy",
         "naval-procurement",
@@ -85,165 +274,13 @@
         "deterrence"
       ],
       "summary": "The unconventional G3 battlecruisers and N3 battleships were intended to force rival navies to question their own designs, estimates, and building programs.",
-      "body": "Their unfamiliar layout advertised that the navy with the greatest recent capital-ship experience had reached different design conclusions. A fast G3 shown abroad could make the nominally slower, heavily armed N3 at home seem even more formidable, turning uncertainty about British performance into pressure on foreign procurement decisions.",
+      "body": "Their unfamiliar all-forward layouts advertised that the navy with the greatest recent capital-ship experience had reached different conclusions from its rivals. A 33-knot G3 with nine 16.5-inch guns would already make contemporary programs look conventional and possibly obsolete. The slower N3 then raised the stakes with nine 18-inch guns and very heavy armour, while uncertainty about its reported performance encouraged foreign staffs to assume that British figures might conceal still greater capability. Dr. Clarke treats the pair as a procurement weapon: even before combat, the designs could force other navies to revisit estimates, defend existing orders, and spend money responding to a British standard they did not fully understand.",
       "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
       "evidence": [
         {
           "start": "52:21",
-          "end": "57:58",
+          "end": "58:58",
           "note": "Dr. Clarke explains how the G3 and N3 designs' appearance, speed, guns, and uncertain published performance could force other navies to reassess construction."
-        }
-      ]
-    },
-    {
-      "id": "nelson-all-forward-layout",
-      "videoId": "7mObTEt9i6g",
-      "slug": "nelson-all-forward-layout",
-      "title": "Why Nelson concentrated its main guns forward",
-      "kind": "chapter",
-      "start": "1:37:24",
-      "end": "1:40:29",
-      "topics": [
-        "battleships",
-        "ship-design",
-        "naval-architecture",
-        "naval-treaties"
-      ],
-      "summary": "The Nelson class's all-forward armament reduced the armored length while separating magazines from the hottest machinery spaces.",
-      "body": "Keeping the guns and magazines together forward and the engines aft made the armored citadel more compact, saving weight under the treaty displacement limit. The arrangement also kept boiler heat away from propellant and shells, while Nelson and Rodney accepted lower speed because Hood and the Renowns could cover the fast-capital-ship role.",
-      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
-      "evidence": [
-        {
-          "start": "1:37:24",
-          "end": "1:40:29",
-          "note": "The design explanation links magazine temperature, armored length, machinery placement, and the division of roles between Nelson, Hood, and the Renowns."
-        }
-      ]
-    },
-    {
-      "id": "nelson-water-armour-torpedo-tests",
-      "videoId": "7mObTEt9i6g",
-      "slug": "nelson-water-armour-torpedo-tests",
-      "title": "Nelson's water-filled protection and full-scale torpedo test",
-      "kind": "chapter",
-      "start": "1:54:50",
-      "end": "1:57:18",
-      "topics": [
-        "battleships",
-        "damage-control",
-        "naval-architecture",
-        "ship-design"
-      ],
-      "summary": "Nelson and Rodney used layered air and buoyancy spaces that could be flooded in wartime, with trials indicating protection against a thousand-pound underwater charge.",
-      "body": "The internal bulge placed a protective bulkhead well inboard and used nearly 2,870 tons of water when the buoyancy spaces were flooded. A full-scale explosion tore a large opening in the outer plating but produced little leakage into the hull proper, supporting the conclusion that the ship could remain in action after a heavy torpedo hit; later results also led designers to seal ineffective venting plates.",
-      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
-      "evidence": [
-        {
-          "start": "1:54:50",
-          "end": "1:57:18",
-          "note": "Dr. Clarke reads the dimensions, flooding arrangement, model trials, full-scale thousand-pound-charge result, and subsequent design changes."
-        }
-      ]
-    },
-    {
-      "id": "nelson-concentrated-armour-endurance",
-      "videoId": "7mObTEt9i6g",
-      "slug": "nelson-concentrated-armour-endurance",
-      "title": "Why Nelson and Rodney were difficult opponents to disable",
-      "kind": "notable_point",
-      "start": "2:04:20",
-      "end": "2:08:49",
-      "topics": [
-        "battleships",
-        "second-world-war",
-        "ship-design",
-        "damage-control"
-      ],
-      "summary": "Nelson and Rodney traded speed for a dense armored citadel, making a direct engagement costly even for newer or faster capital ships.",
-      "body": "Dr. Clarke describes them as scaled-down N3s whose heavy guns and concentrated protection made opponents prefer avoidance, air attack, or submarine attack to a gun duel. Water carried for protection added roughly two thousand tons of defensive mass without counting toward standard displacement, while compact machinery freed still more weight for armor.",
-      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
-      "evidence": [
-        {
-          "start": "2:04:20",
-          "end": "2:08:49",
-          "note": "The analysis connects their battle-line role, concentrated armor, protected steering spaces, water weight, and the operational cost of engaging them."
-        }
-      ]
-    },
-    {
-      "id": "admiral-king-water-armour-reaction",
-      "videoId": "7mObTEt9i6g",
-      "slug": "admiral-king-water-armour-reaction",
-      "title": "Why Nelson's water armour frustrated Admiral King",
-      "kind": "chapter",
-      "start": "2:12:05",
-      "end": "2:14:05",
-      "topics": [
-        "us-navy",
-        "royal-navy",
-        "battleships",
-        "naval-procurement"
-      ],
-      "summary": "Admiral King learned of the British system after American wartime ship designs were largely fixed, leaving little opportunity to copy a protection scheme demonstrated against heavy torpedo charges.",
-      "body": "The irritation is explained as both practical and institutional. King faced a fleet already committed to existing construction while an ally revealed a mature protective system that American designers could no longer incorporate widely, and the discovery also challenged his conviction that the United States should lead in naval capability.",
-      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
-      "evidence": [
-        {
-          "start": "2:12:05",
-          "end": "2:14:05",
-          "note": "Dr. Clarke links King's reaction to locked-in American designs, the demonstrated thousand-pound-charge protection, alliance expectations, and institutional pride."
-        }
-      ]
-    },
-    {
-      "id": "british-capital-ship-design-continuity",
-      "videoId": "7mObTEt9i6g",
-      "slug": "british-capital-ship-design-continuity",
-      "title": "The design experience behind Britain's treaty battleships",
-      "kind": "notable_point",
-      "start": "2:15:23",
-      "end": "2:18:22",
-      "topics": [
-        "royal-navy",
-        "naval-industrial-base",
-        "ship-design",
-        "interwar-navy",
-        "naval-treaties"
-      ],
-      "summary": "Britain's treaty-era innovations drew on continuous battleship construction, experienced design teams, operational knowledge, and years of underwater-protection testing.",
-      "body": "The Nelson class was not an improvised response created only after the Washington Naval Treaty. Dr. Clarke traces its features through decades of British capital-ship work and the concentrated development that led from wartime experiments through the G3 and N3 studies, with the treaty limit imposing a new weight ceiling on an already mature body of engineering knowledge.",
-      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
-      "evidence": [
-        {
-          "start": "2:15:23",
-          "end": "2:18:22",
-          "note": "The discussion credits long production continuity, experienced designers and operators, and sustained G3/N3 and underwater-protection research before the treaty limit was applied."
-        }
-      ]
-    },
-    {
-      "id": "treaty-openness-water-armour",
-      "videoId": "7mObTEt9i6g",
-      "slug": "treaty-openness-water-armour",
-      "title": "Why secret water armour challenged the treaties' spirit of openness",
-      "kind": "chapter",
-      "start": "7:04",
-      "end": "16:30",
-      "topics": [
-        "royal-navy",
-        "us-navy",
-        "naval-treaties",
-        "naval-diplomacy",
-        "underwater-protection"
-      ],
-      "summary": "The opening frames Admiral King's complaint as a dispute over information sharing: Britain followed the treaty rules but withheld knowledge that could have changed how other powers understood displacement and protection.",
-      "body": "Dr. Clarke distinguishes literal compliance from the wider promise of openness surrounding the naval treaties. Britain was not obliged to hand over technical drawings, but its extensive testing had shown that floodable spaces could provide protection without counting as standard displacement. From the American perspective, even a broad warning could have informed both treaty drafting and ship design; withholding it made the British solution look like an exploitation of definitions agreed among supposed partners.",
-      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
-      "evidence": [
-        {
-          "start": "7:04",
-          "end": "16:30",
-          "note": "The introduction explains King's grievance in terms of treaty definitions, British test knowledge, and the expectation that the agreements would create greater openness among naval powers."
         }
       ]
     },
@@ -263,13 +300,40 @@
         "interwar-navy"
       ],
       "summary": "The treaty cancelled the oversized G3 and N3 programs, but Dr. Clarke argues that a total building holiday also froze design experience and encouraged later powers to stretch old ships and treaty definitions.",
-      "body": "The 35,000-ton ceiling removed designs of roughly 46,500 to 48,500 tons and relieved rivals facing an expensive British challenge. Dr. Clarke nevertheless questions the construction holiday itself: a small, regular replacement allowance could have kept yards, designers, and technology moving while preserving agreed fleet ratios. In his account, stopping capital-ship construction made navies fixate on inherited fleets and later pursue abrupt, aggressive workarounds when they realized their designs had fallen behind.",
+      "body": "The 35,000-ton ceiling removed designs of roughly 46,500 to 48,500 tons and relieved rivals facing an expensive British challenge. Dr. Clarke nevertheless questions the construction holiday rather than the agreed fleet ratios. A small, regular replacement allowance could have kept yards, designers, propulsion technology, and armour development moving while each new ship displaced an old one. In his account, stopping capital-ship construction made navies fixate on inherited fleets, modify existing ships, and later pursue abrupt workarounds when they realized that their design experience had fallen behind. Low-rate construction would have redirected rivalry into incremental technology rather than storing pressure for a later displacement and armament race.",
       "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
       "evidence": [
         {
           "start": "59:37",
           "end": "1:12:36",
-          "note": "The discussion moves from the treaty's 35,000-ton limit to an alternative system of low-rate replacement construction and the industrial and design effects of a building holiday."
+          "note": "The discussion moves from the treaty's 35,000-ton limit to an alternative system of low-rate replacement construction and the industrial effects of a building holiday."
+        }
+      ]
+    },
+    {
+      "id": "qa-japanese-g3-n3-arms-race",
+      "videoId": "7mObTEt9i6g",
+      "slug": "qa-japanese-g3-n3-arms-race",
+      "title": "Could Japan afford a capital-ship race against G3 and N3?",
+      "kind": "qa",
+      "start": "1:08:56",
+      "end": "1:09:24",
+      "topics": [
+        "japanese-navy",
+        "naval-procurement",
+        "naval-industrial-base",
+        "capital-ships"
+      ],
+      "question": "Could Japan afford to build ships large enough to compete in a world where the British G3 and N3 classes entered service?",
+      "answerShort": "Japanese leaders might have attempted it politically, but Dr. Clarke argues that the cost could have broken the Japanese economy.",
+      "summary": "A short counterfactual answer connects escalating gun calibre and displacement to the unequal economic capacity behind an interwar naval race.",
+      "body": "A British N3 with 18-inch guns would move the benchmark that Japan's next battleship had to meet or exceed. Dr. Clarke says the political will to continue might still have existed, especially in a prestige-driven naval competition. The financial base was the limiting factor: sustaining such a response would have been deeply problematic and might have broken the Japanese economy. The exchange separates the ability to draw a larger design from the ability to fund a fleet program around it.",
+      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
+      "evidence": [
+        {
+          "start": "1:08:56",
+          "end": "1:09:24",
+          "note": "The audience asks about Japanese affordability in an N3 world, and the answer distinguishes political willingness from severe economic limits."
         }
       ]
     },
@@ -289,14 +353,75 @@
         "naval-architecture",
         "naval-treaties"
       ],
-      "summary": "An unusually experienced British design team explored the F2 and F3 as 35,000-ton fast capital ships, establishing the all-forward arrangement and testing what could be retained from G3 and N3 thinking.",
-      "body": "Dr. Clarke identifies Eustace Tennyson d'Eyncourt, Stanley Goodall, William Berry, and Edward Attwood as the experienced designers behind the treaty studies. The F2 and F3 concentrated their guns forward, paired substantial protection with speeds around 28.5 to 29.5 knots, and considered new 15-inch/50-calibre weapons. F2 was closer to an all-forward Renown, while F3 offered the more attractive combination of nine guns, range, protection, and speed; both show that Nelson's arrangement emerged from a sequence of fast-ship studies rather than an isolated novelty.",
+      "summary": "An unusually experienced British team explored F2 and F3 as 35,000-ton fast capital ships, establishing the all-forward arrangement and testing what could be retained from G3 and N3 thinking.",
+      "body": "Dr. Clarke identifies Eustace Tennyson d'Eyncourt, Stanley Goodall, William Berry, and Edward Attwood as the experienced designers behind the treaty studies. F2 and F3 concentrated their guns forward, paired substantial protection with speeds around 28.5 to 29.5 knots, and considered new 15-inch/50-calibre weapons. F2 resembled an all-forward Renown, while F3 offered the more attractive combination of nine guns, range, protection, and speed. Both designs show that Nelson's arrangement emerged from a sequence of fast-ship studies rather than appearing as an isolated novelty after the treaty. The exercise also demonstrates what a veteran design team could preserve when a political limit abruptly removed more than ten thousand tons from the preceding G3 and N3 concepts.",
       "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
       "evidence": [
         {
           "start": "1:13:34",
           "end": "1:28:21",
-          "note": "The transcript names the design team, introduces F2 and F3, and compares their armament, armor, speed, range, and relationship to earlier British capital ships."
+          "note": "The transcript names the design team, introduces F2 and F3, and compares their armament, armour, speed, range, and relationship to earlier British capital ships."
+        }
+      ]
+    },
+    {
+      "id": "qa-german-rearmament-g3-n3-world",
+      "videoId": "7mObTEt9i6g",
+      "slug": "qa-german-rearmament-g3-n3-world",
+      "title": "Would G3 and N3 have changed German naval rearmament?",
+      "kind": "qa",
+      "start": "1:21:52",
+      "end": "1:23:55",
+      "topics": [
+        "german-navy",
+        "naval-procurement",
+        "capital-ships",
+        "interwar-navy",
+        "alternate-history"
+      ],
+      "question": "Would completed G3 and N3 classes have pushed Germany toward a more sensible capital-ship program?",
+      "answerShort": "Probably not: prestige and gun-size politics would still encourage an attempted response, while faster British treaty designs could have made early German surface losses more likely.",
+      "summary": "The counterfactual combines procurement culture with an operational example of how a faster British capital ship might have altered German confidence before Bismarck.",
+      "body": "Dr. Clarke doubts that the British designs would automatically produce a restrained German fleet. He emphasizes dictatorship, prestige, and the political fixation on very large guns as forces that could override a balanced assessment of resources. Operationally, an F3-type ship could also have maintained contact with Scharnhorst where Rodney could not, making a German loss more plausible. Losing such a ship early might then have changed the assumptions behind later sorties, including the confidence attached to Bismarck. The answer therefore separates rational procurement pressure from the political system that would have interpreted it.",
+      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
+      "evidence": [
+        {
+          "start": "1:21:52",
+          "end": "1:23:55",
+          "note": "A viewer asks whether G3 and N3 would rationalize German naval design, and Dr. Clarke answers through prestige politics and an F3-versus-Scharnhorst operational example."
+        }
+      ]
+    },
+    {
+      "id": "qa-royal-navy-fifteen-inch-fifty-refit",
+      "videoId": "7mObTEt9i6g",
+      "slug": "qa-royal-navy-fifteen-inch-fifty-refit",
+      "title": "Would a 15-inch/50 weapon have spread across the Royal Navy?",
+      "kind": "qa",
+      "start": "1:27:51",
+      "end": "1:28:21",
+      "topics": [
+        "royal-navy",
+        "naval-gunnery",
+        "ship-modernization",
+        "naval-logistics",
+        "f3-battlecruiser-design"
+      ],
+      "question": "If the 15-inch/50 had entered service with F2 or F3, would the Royal Navy have regunned much of its existing capital-ship fleet?",
+      "answerShort": "More than likely; adopting the new weapon would have created a strong operational and logistical case for extending it to older 15-inch ships and later battleship designs.",
+      "summary": "The answer links one treaty-era gun choice to a much wider modernization path for Warspite, the Queen Elizabeth and Revenge classes, and future British battleships.",
+      "body": "Dr. Clarke treats F2 and F3 as the likely entry point for a new 15-inch/50 rather than a one-class experiment. Earlier in the lecture he imagines the weapon moving into rebuilt 15-inch ships and then shaping the armament of later battleships. Common calibre would preserve familiar shell diameter while offering substantially greater barrel length and performance. The viewer's question turns that counterfactual into a fleet-level consequence: once the weapon and its supply system existed, refitting compatible ships would become much more attractive. The result could have been a more uniform British heavy-gun inventory than the later mix of 14-, 15-, and 16-inch weapons.",
+      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
+      "evidence": [
+        {
+          "start": "1:18:53",
+          "end": "1:19:49",
+          "note": "The lecture outlines how an F2 or F3 15-inch/50 could lead to regunning older British capital ships and influence later classes."
+        },
+        {
+          "start": "1:27:51",
+          "end": "1:28:21",
+          "note": "A viewer directly asks about a fleet-wide refit, and Dr. Clarke answers that it is more than likely."
         }
       ]
     },
@@ -316,13 +441,99 @@
         "naval-treaties"
       ],
       "summary": "A new 15-inch/50 offered logistical and ballistic advantages, but 16-inch guns better preserved the intended contrast between fast ships shown abroad and a visibly heavier battle fleet held at home.",
-      "body": "Using the 15-inch/50 could have reduced some weights, reused proven shell stocks, and encouraged a common calibre across older and future British battleships. The drawback was strategic presentation: a fast F3 with nine advanced 15-inch guns would appear to be the navy's strongest ship, weakening the claim that still more powerful battleships waited with the Home Fleet. Dr. Clarke therefore treats the 16-inch choice as part of a deterrent concept of operations, not merely a gun-performance calculation.",
+      "body": "Using the 15-inch/50 could have reduced some weights, reused proven shell stocks, and encouraged a common calibre across older and future British battleships. The longer barrel promised a meaningful performance increase without abandoning the established 15-inch projectile family. The drawback was strategic presentation: an F3 with nine advanced 15-inch guns would appear to be the navy's strongest ship, weakening the claim that still more powerful battleships waited with the Home Fleet. Choosing 16-inch guns for the home-force ships restored a visible hierarchy between the traveling fast squadron and the battle line. Dr. Clarke therefore treats calibre as part of a deterrent concept of operations, not merely a gun-performance calculation.",
       "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
       "evidence": [
         {
           "start": "1:30:44",
           "end": "1:37:18",
           "note": "Dr. Clarke weighs common ammunition and performance against the need for the ships retained at home to look more powerful than the fast squadron displayed overseas."
+        }
+      ]
+    },
+    {
+      "id": "nelson-all-forward-layout",
+      "videoId": "7mObTEt9i6g",
+      "slug": "nelson-all-forward-layout",
+      "title": "Why Nelson concentrated its main guns forward",
+      "kind": "chapter",
+      "start": "1:37:24",
+      "end": "1:40:38",
+      "topics": [
+        "battleships",
+        "ship-design",
+        "naval-architecture",
+        "naval-treaties"
+      ],
+      "summary": "The Nelson class's all-forward armament reduced the armoured length, separated magazines from the hottest machinery spaces, and accepted lower speed because other ships covered the fast role.",
+      "body": "Keeping the guns and magazines together forward and the engines aft made the armoured citadel more compact, saving weight under the treaty displacement limit. The layout also placed cooler engine rooms and other spaces between the magazines and the hottest boiler rooms, reducing the thermal burden on propellant and shells. Nelson and Rodney did not need G3 speed because Hood and the Renowns could continue to perform the fast-capital-ship role. This division of labour let the new battleships spend scarce displacement on protection and heavy guns instead of machinery. The unusual silhouette was therefore the visible result of magazine safety, armour economy, and fleet-level role allocation working together.",
+      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
+      "evidence": [
+        {
+          "start": "1:37:24",
+          "end": "1:40:38",
+          "note": "The design explanation links magazine temperature, armoured length, machinery placement, and the division of roles between Nelson, Hood, and the Renowns."
+        }
+      ]
+    },
+    {
+      "id": "qa-battleship-protection-cruiser-speed",
+      "videoId": "7mObTEt9i6g",
+      "slug": "qa-battleship-protection-cruiser-speed",
+      "title": "Can one capital ship combine battleship protection with cruiser speed?",
+      "kind": "qa",
+      "start": "1:41:37",
+      "end": "1:42:16",
+      "topics": [
+        "ship-design",
+        "naval-architecture",
+        "battleships",
+        "battlecruisers",
+        "cruisers"
+      ],
+      "question": "Did any design truly combine battleship-grade protection and firepower with cruiser speed and range?",
+      "answerShort": "Not completely; speed and range demand hull volume and machinery, so the cruiser role historically tended to produce a larger ship rather than a battleship with every advantage added.",
+      "summary": "The answer uses historical cruiser size to explain why protection, armament, speed, and endurance resist being maximized in one hull.",
+      "body": "Dr. Clarke does not identify a ship that fully solved the four-way tradeoff. Cruisers needed machinery, fuel, and hull length for speed and range, which could make them physically larger than contemporary battleships even when their armour was lighter. Adding battleship protection and firepower to those requirements drives displacement upward rather than creating a cost-free hybrid. Ships such as Vanguard and New Jersey came close in some respects, but the answer remains a design compromise rather than a perfect combination. The exchange gives a compact explanation for why battlecruisers and fast battleships occupy a spectrum instead of one universally optimal type.",
+      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
+      "evidence": [
+        {
+          "start": "1:41:37",
+          "end": "1:42:16",
+          "note": "The audience asks about combining battleship and cruiser qualities, and Dr. Clarke answers through the size required for cruiser speed and range."
+        }
+      ]
+    },
+    {
+      "id": "qa-machinery-space-survivability",
+      "videoId": "7mObTEt9i6g",
+      "slug": "qa-machinery-space-survivability",
+      "title": "How can machinery spaces survive underwater damage?",
+      "kind": "qa",
+      "start": "1:42:26",
+      "end": "1:43:28",
+      "topics": [
+        "marine-engineering",
+        "damage-control",
+        "compartmentalization",
+        "turbo-electric-drive",
+        "ship-design"
+      ],
+      "question": "Can machinery spaces be protected from hull breaches, and does turbo-electric drive improve compartmentalization?",
+      "answerShort": "Designers can add buffers and subdivision, while turbo-electric drive can separate functions, but survivability still depends on redundant generation and power distribution that remains usable after damage.",
+      "summary": "Two linked questions show why propulsion survivability depends on the entire machinery and electrical architecture rather than the drive type alone.",
+      "body": "Machinery spaces sit low in the ship and remain inherently exposed to flooding from underwater damage. Dr. Clarke points to designs that place compartments or protective structure between the hull and vital spaces, reducing but not eliminating the risk. Turbo-electric drive can offer more freedom to separate generation from propulsion motors, yet that advantage only matters if multiple generators and power routes survive. A ship also needs enough ring-main or equivalent distribution paths to carry electricity around damaged sections. The answer treats redundancy and layout as the real damage-control system, with propulsion technology only one part of it.",
+      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
+      "evidence": [
+        {
+          "start": "1:42:26",
+          "end": "1:42:58",
+          "note": "A viewer asks about protecting machinery from underwater hull breaches, and the answer points to buffer spaces and protective layout."
+        },
+        {
+          "start": "1:43:05",
+          "end": "1:43:28",
+          "note": "The turbo-electric follow-up emphasizes redundant generation and multiple power paths as the conditions for improved survivability."
         }
       ]
     },
@@ -342,13 +553,67 @@
         "naval-treaties"
       ],
       "summary": "Compressing Nelson's main battery and citadel saved treaty weight, but the chosen superfiring arrangement crowded the bridge and pushed the secondary battery aft.",
-      "body": "Earlier studies offered arrangements that spread the secondary guns more effectively, but the final ship was made as short and compact as possible. Blast from B turret firing too far abaft the beam could break bridge windows and send glass through the command spaces, so the theoretically broad firing arc was undesirable outside an emergency. The limitation illustrates how treaty displacement pressure affected not only armor and speed but also practical weapon arcs and topside layout.",
+      "body": "Earlier studies offered arrangements that spread the secondary guns more effectively around the ship. The final design was made as short and compact as possible, concentrating the main battery and moving the secondaries aft. Blast from B turret firing too far abaft the beam could break bridge windows and send glass through the command spaces, so the broad theoretical arc was undesirable outside an emergency. The Royal Navy later improved the bridge protection, but crews still preferred not to use that firing position. The limitation shows how treaty displacement pressure affected practical weapon arcs and topside layout, not only armour thickness and speed.",
       "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
       "evidence": [
         {
           "start": "1:43:42",
           "end": "1:46:48",
           "note": "The comparison of alternative turret arrangements explains secondary-battery placement, bridge blast damage during trials, and the drive to shorten the protected ship."
+        }
+      ]
+    },
+    {
+      "id": "qa-three-fifteen-inch-versus-two-sixteen-inch",
+      "videoId": "7mObTEt9i6g",
+      "slug": "qa-three-fifteen-inch-versus-two-sixteen-inch",
+      "title": "Could Britain trade gun calibre for a third treaty battleship?",
+      "kind": "qa",
+      "start": "1:47:04",
+      "end": "1:48:04",
+      "topics": [
+        "royal-navy",
+        "naval-treaties",
+        "naval-gunnery",
+        "capital-ships",
+        "f3-battlecruiser-design"
+      ],
+      "question": "Could Britain have accepted 15-inch guns in exchange for permission to build three new treaty ships instead of two 16-inch battleships?",
+      "answerShort": "Probably not, because the proposed 15-inch/50 would have been too close to a 16-inch weapon in practical power for other treaty powers to treat it as a meaningful concession.",
+      "summary": "The answer shows why nominal calibre alone could not disguise the combat value of an advanced long-barrel gun during treaty bargaining.",
+      "body": "A 15-inch label might appear to be a concession when other powers were adopting 16-inch guns. Dr. Clarke argues that the 15-inch/50's penetration and hitting power would undermine that case because foreign negotiators would judge capability rather than diameter alone. Permission for a third ship would therefore be difficult to obtain. If Britain had secured three ships at the full 35,000-ton limit, he thinks the faster F3 concept would have been the likely beneficiary. The exchange connects weapons performance directly to the credibility of a naval-arms-control bargain.",
+      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
+      "evidence": [
+        {
+          "start": "1:47:04",
+          "end": "1:48:04",
+          "note": "The audience proposes exchanging calibre for a third ship, and Dr. Clarke explains why the 15-inch/50's real power would make that bargain unlikely."
+        }
+      ]
+    },
+    {
+      "id": "nelson-water-armour-torpedo-tests",
+      "videoId": "7mObTEt9i6g",
+      "slug": "nelson-water-armour-torpedo-tests",
+      "title": "Nelson's water-filled protection and full-scale torpedo test",
+      "kind": "chapter",
+      "start": "1:54:50",
+      "end": "1:57:18",
+      "topics": [
+        "battleships",
+        "damage-control",
+        "naval-architecture",
+        "underwater-protection",
+        "ship-design"
+      ],
+      "summary": "Nelson and Rodney used layered air and buoyancy spaces that could be flooded in wartime, with a full-scale trial indicating protection against a thousand-pound underwater charge.",
+      "body": "The internal bulge placed a protective bulkhead twelve feet inboard behind an outer airspace and a buoyancy space. Flooding the system required about 2,870 tons of water, increased draft, and reduced speed, so the buoyancy spaces normally remained dry in peacetime. Model trials at Chatham led to a full-scale test in which a thousand-pound charge tore a large opening in the outer plating but produced negligible leakage into the hull proper. The result supported the conclusion that a protected ship could continue in action at reasonable speed after such a hit. Later evidence also led designers to seal venting plates that did not relieve pressure at the decisive moment, showing how the scheme continued to evolve through destructive testing.",
+      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
+      "evidence": [
+        {
+          "start": "1:54:50",
+          "end": "1:57:18",
+          "note": "Dr. Clarke reads the dimensions, flooding arrangement, model trials, full-scale thousand-pound-charge result, and subsequent design changes."
         }
       ]
     },
@@ -368,13 +633,256 @@
         "ship-design"
       ],
       "summary": "Designers compared machinery layouts, shafts, revolutions, materials, and even equipment stored ashore in an effort to hold Nelson's propulsion plant near two thousand tons.",
-      "body": "The machinery study considered engines forward of boilers, the reverse arrangement, and turbo-electric drive before settling on a compact two-shaft plant. As calculations matured, the estimated weight repeatedly rose above the desired 2,000 tons, prompting proposals for higher propeller revolutions, lighter fittings, aluminum components, and shore storage of lifting gear and fuel-heating equipment. Nelson's completed machinery still weighed about 2,150 tons, but Dr. Clarke emphasizes how unusually low that remained for a 45,000-shaft-horsepower battleship plant.",
+      "body": "The machinery study considered engines forward of boilers, the reverse arrangement, and turbo-electric drive before settling on a compact two-shaft plant. As calculations matured, the estimated weight repeatedly rose above the desired 2,000 tons. Designers considered higher propeller revolutions, lighter fittings, aluminium components, reduced spares, and shore storage of lifting gear and fuel-heating equipment. Each proposal carried an operational cost, such as reduced propeller efficiency or limits on usable fuel oil, so the board did not accept every saving. Nelson's completed machinery still weighed about 2,150 tons, but Dr. Clarke emphasizes how unusually low that remained for a 45,000-shaft-horsepower battleship plant.",
       "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
       "evidence": [
         {
           "start": "1:57:20",
           "end": "2:01:14",
           "note": "The quoted design history follows competing machinery plans and successive attempts to reduce calculated and completed machinery weight."
+        }
+      ]
+    },
+    {
+      "id": "qa-deck-armour-versus-belt-armour",
+      "videoId": "7mObTEt9i6g",
+      "slug": "qa-deck-armour-versus-belt-armour",
+      "title": "Why is deck armour usually thinner than belt armour?",
+      "kind": "qa",
+      "start": "2:01:43",
+      "end": "2:02:18",
+      "topics": [
+        "naval-architecture",
+        "ship-design",
+        "armour",
+        "naval-gunnery",
+        "naval-aviation"
+      ],
+      "question": "Why does deck armour often look thin compared with the belt, especially once aircraft become a threat?",
+      "answerShort": "The deck covers a much larger area and its weight sits high in the hull, so each added inch creates a greater displacement and stability penalty than the same local increase along the belt.",
+      "summary": "The answer turns a simple armour-thickness comparison into a lesson about protected area, topweight, and shell impact angle.",
+      "body": "A ship's deck spans far more area than its vertical belt, making uniform thickness expensive in total weight. That mass also sits high in the hull, where it imposes a larger stability penalty than armour distributed down the ship's side. Designers therefore cannot compare deck and belt inches without considering location and area. Dr. Clarke also notes that long-range shells often meet the deck at a shallow angle, so effective protection depends on geometry as well as nominal plate thickness. Aircraft increase the importance of overhead protection, but they do not remove the underlying weight and stability constraints.",
+      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
+      "evidence": [
+        {
+          "start": "2:01:43",
+          "end": "2:02:18",
+          "note": "A viewer asks about thin deck armour, and the answer cites protected area, high weight, and shallow shell impact angles."
+        }
+      ]
+    },
+    {
+      "id": "nelson-rodney-fleet-insurance",
+      "videoId": "7mObTEt9i6g",
+      "slug": "nelson-rodney-fleet-insurance",
+      "title": "Why Nelson and Rodney remained fleet insurance in World War II",
+      "kind": "chapter",
+      "start": "2:03:03",
+      "end": "2:07:45",
+      "topics": [
+        "nelson-class",
+        "second-world-war",
+        "home-fleet",
+        "tirpitz",
+        "deterrence"
+      ],
+      "summary": "Nelson and Rodney could not chase every faster opponent, but their guns and concentrated protection made them valuable finishers against a slowed German capital ship and dangerous opponents in the Mediterranean.",
+      "body": "Home Fleet commanders wanted at least one of the sisters available even after Bismarck sank because Tirpitz or another German heavy ship might still sortie. Nelson and Rodney lacked the speed to conduct the pursuit alone, but once another force slowed the target their 16-inch guns could finish the engagement. Their armour made a direct battle costly enough that an opponent such as Yamato might win yet suffer damage that exposed it to follow-on attacks. Italian commanders likewise had little reason to accept a gunfight with both ships when aircraft or submarines offered safer ways to attack them. The pair therefore acted as fleet insurance: other units found and constrained the enemy, while the slow battleships supplied an enduring concentration of firepower and protection.",
+      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
+      "evidence": [
+        {
+          "start": "2:03:03",
+          "end": "2:07:45",
+          "note": "The wartime discussion explains their Home Fleet value, the need to slow faster enemies, the cost of a direct battle, and protected steering spaces."
+        }
+      ]
+    },
+    {
+      "id": "qa-nelson-rodney-endurance",
+      "videoId": "7mObTEt9i6g",
+      "slug": "qa-nelson-rodney-endurance",
+      "title": "Why were Nelson and Rodney unusually hard to disable?",
+      "kind": "qa",
+      "start": "2:07:58",
+      "end": "2:09:20",
+      "topics": [
+        "nelson-class",
+        "battleships",
+        "ship-design",
+        "damage-control",
+        "all-or-nothing-armour"
+      ],
+      "question": "Why does Dr. Clarke describe Nelson and Rodney as more endurable than many other battleships?",
+      "answerShort": "They used compact machinery, low speed, and an all-or-nothing layout to concentrate an unusually large share of displacement into thick protection around a short vital core.",
+      "summary": "The answer isolates the design choices behind the sisters' dense protection rather than treating endurance as a vague national characteristic.",
+      "body": "Most battleships spend substantial displacement on the machinery needed for higher speed and then spread protection over a longer hull. Nelson and Rodney used highly weight-efficient engines to obtain only the speed required for the battle line. Their all-or-nothing scheme then concentrated armour around a compact block of magazines, machinery, and command functions instead of thinning it across the full ship. Water carried in the underwater-protection system added further defensive mass outside standard displacement. The result did not make either ship invulnerable, but it meant an enemy needed sustained damage or a fortunate hit to stop one decisively.",
+      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
+      "evidence": [
+        {
+          "start": "2:07:58",
+          "end": "2:09:20",
+          "note": "A viewer asks about endurance, and Dr. Clarke answers through machinery weight, speed, concentrated all-or-nothing armour, and the effort required to sink the ships."
+        }
+      ]
+    },
+    {
+      "id": "admiral-king-water-armour-reaction",
+      "videoId": "7mObTEt9i6g",
+      "slug": "admiral-king-water-armour-reaction",
+      "title": "Why Nelson's water armour frustrated Admiral King",
+      "kind": "chapter",
+      "start": "2:10:30",
+      "end": "2:14:05",
+      "topics": [
+        "us-navy",
+        "royal-navy",
+        "battleships",
+        "naval-procurement",
+        "underwater-protection"
+      ],
+      "summary": "Admiral King learned of the British system after American wartime ship designs were largely fixed, leaving little opportunity to copy a protection scheme demonstrated against heavy torpedo charges.",
+      "body": "Dr. Clarke first places King's anger alongside the structural problems he inherited, including a shortage of escorts and major commitments in the Pacific. King is presented as combative but technically engaged, an admiral who learned to fly when commanding carriers rather than relying only on rank. Discovering a British scheme tested against a thousand-pound charge was therefore especially frustrating because most American designs and construction were already locked in. He could not incorporate the idea widely at the moment it became available, even though Britain was now an ally. The revelation also challenged his conviction that the United States should lead in naval capability, making the reaction practical, institutional, and personal at once.",
+      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
+      "evidence": [
+        {
+          "start": "2:10:30",
+          "end": "2:14:05",
+          "note": "Dr. Clarke links King's reaction to inherited US Navy problems, locked-in designs, alliance expectations, the demonstrated protection, and institutional pride."
+        }
+      ]
+    },
+    {
+      "id": "british-capital-ship-design-continuity",
+      "videoId": "7mObTEt9i6g",
+      "slug": "british-capital-ship-design-continuity",
+      "title": "The design experience behind Britain's treaty battleships",
+      "kind": "notable_point",
+      "start": "2:15:23",
+      "end": "2:18:22",
+      "topics": [
+        "royal-navy",
+        "naval-industrial-base",
+        "ship-design",
+        "interwar-navy",
+        "naval-treaties"
+      ],
+      "summary": "Britain's treaty-era innovations drew on continuous battleship construction, experienced design teams, operational knowledge, and years of underwater-protection testing.",
+      "body": "The Nelson class was not an improvised response created only after the Washington Naval Treaty. Britain could assemble designers who had each worked on many capital ships and consult officers who had operated the world's largest recent battle fleet. Testing and design work on underwater protection continued from wartime experiments through the G3 and N3 programs. The treaty imposed a new weight ceiling on an already mature body of engineering knowledge rather than creating that knowledge. Dr. Clarke therefore describes Nelson and Rodney as the product of roughly two decades of construction experience and five concentrated years of development compressed into a politically imposed limit.",
+      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
+      "evidence": [
+        {
+          "start": "2:15:23",
+          "end": "2:18:22",
+          "note": "The discussion credits long production continuity, experienced designers and operators, and sustained G3, N3, and underwater-protection research before the treaty limit was applied."
+        }
+      ]
+    },
+    {
+      "id": "qa-capital-ship-fire-control-protection",
+      "videoId": "7mObTEt9i6g",
+      "slug": "qa-capital-ship-fire-control-protection",
+      "title": "Why was battleship fire control so difficult to armour?",
+      "kind": "qa",
+      "start": "2:20:15",
+      "end": "2:21:34",
+      "topics": [
+        "fire-control",
+        "naval-gunnery",
+        "ship-design",
+        "damage-control",
+        "nelson-class"
+      ],
+      "question": "Why were fire-control systems, including those on Bismarck, so difficult to protect against battle damage?",
+      "answerShort": "Directors need a high, unobstructed view, which leaves them exposed above the main armour; designers can protect the transmitting paths and plotting spaces below, but not turn the upper director into a fully armoured citadel.",
+      "summary": "The answer explains the unavoidable tension between a director's field of view and its physical protection.",
+      "body": "Primary and secondary fire-control positions sit high because they need long sight lines over the ship and horizon. That elevation places them outside the thick central armour and exposes them to shellfire and splinters. Designers can run protected tubes down to plotting rooms and place more of the calculation system below decks, preserving part of the chain after upper damage. Nelson's tall bridge structure also tried to move directors away from the line at which enemy guns were expected to aim. The superstructure itself could still be hit, so fire-control survivability depended on redundancy and protected connections rather than making every director invulnerable.",
+      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
+      "evidence": [
+        {
+          "start": "2:20:15",
+          "end": "2:21:34",
+          "note": "A viewer asks about protecting Bismarck's fire control, and Dr. Clarke explains director height, exposed positions, protected trunks, and Nelson's tall bridge."
+        }
+      ]
+    },
+    {
+      "id": "qa-nelson-armour-big-seven",
+      "videoId": "7mObTEt9i6g",
+      "slug": "qa-nelson-armour-big-seven",
+      "title": "How did Nelson's armour compare with the other Big Seven?",
+      "kind": "qa",
+      "start": "2:24:46",
+      "end": "2:25:34",
+      "topics": [
+        "nelson-class",
+        "big-seven-battleships",
+        "armour",
+        "ship-design",
+        "king-george-v-class"
+      ],
+      "question": "How did Nelson and Rodney's armour scheme compare with the other so-called Big Seven battleships?",
+      "answerShort": "It was on the heavy side of competitive and unusually concentrated, whereas other ships tended to distribute a similar armour weight over more of the hull.",
+      "summary": "The comparison distinguishes total armour weight from the way that protection is concentrated and maintained.",
+      "body": "Dr. Clarke places Nelson and Rodney toward the heavily protected end of the Big Seven rather than outside the competitive range altogether. Their distinction was concentration: a large share of available armour covered a compact vital block. Other designs could carry comparable armour weight but spread it over a longer or more extensive area, reducing local density. He contrasts this with the later King George V approach of mounting more plate externally, where battle damage could be reached and replaced more readily at a distant yard. The answer shows why armour schemes must be compared by distribution, maintenance, and protected volume as well as raw tonnage.",
+      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
+      "evidence": [
+        {
+          "start": "2:24:46",
+          "end": "2:25:34",
+          "note": "The audience asks about the Big Seven, and the answer compares heavy concentrated protection with more distributed schemes and external replacement."
+        }
+      ]
+    },
+    {
+      "id": "queen-annes-mansion-flagship-space",
+      "videoId": "7mObTEt9i6g",
+      "slug": "queen-annes-mansion-flagship-space",
+      "title": "How Queen Anne's Mansion made Nelson a fleet flagship",
+      "kind": "notable_point",
+      "start": "2:25:54",
+      "end": "2:26:44",
+      "topics": [
+        "nelson-class",
+        "naval-command",
+        "command-and-control",
+        "flagships",
+        "naval-architecture"
+      ],
+      "summary": "Nelson's large enclosed bridge gave commanders protected working space in northern waters and enough accommodation for a substantial admiral's staff.",
+      "body": "The block-like bridge nicknamed Queen Anne's Mansion provided more than a distinctive silhouette. Its enclosed volume was useful in North Atlantic weather and created extensive space for command work. Dr. Clarke says the ships could take roughly 347 additional personnel, enough to embark a commander-in-chief and staff rather than merely a small flag party. That capacity helps explain why the class was intended for flagship duties. The watch point connects superstructure design to the human and organizational requirements of directing a fleet.",
+      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
+      "evidence": [
+        {
+          "start": "2:25:54",
+          "end": "2:26:44",
+          "note": "The discussion links the enclosed bridge to northern operations, large staff accommodation, and commander-in-chief flagship use."
+        }
+      ]
+    },
+    {
+      "id": "qa-admiral-ego-decision-making",
+      "videoId": "7mObTEt9i6g",
+      "slug": "qa-admiral-ego-decision-making",
+      "title": "When does an admiral's ego become an operational problem?",
+      "kind": "qa",
+      "start": "2:28:12",
+      "end": "2:28:51",
+      "topics": [
+        "naval-command",
+        "leadership",
+        "decision-making",
+        "naval-history"
+      ],
+      "question": "At what point does an admiral's ego become a dangerous influence on command?",
+      "answerShort": "It becomes a problem when the commander makes a decision because of ego rather than evidence, which is different from ego merely influencing an otherwise evidence-based choice.",
+      "summary": "A concise leadership test separates ordinary personality from command failure by asking what actually controls the decision.",
+      "body": "Dr. Clarke does not treat confidence or a strong personality as automatically disqualifying. Admirals such as King, Beatty, and Halsey could all make choices influenced by pride while still responding to operational evidence. The critical threshold is causal: ego becomes dangerous when it replaces the evidence rather than simply forming part of the commander's temperament. That distinction gives viewers a practical way to assess contentious historical decisions without reducing them to personality labels. It also explains why the lecture can criticize King's reaction while still taking his professional constraints seriously.",
+      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
+      "evidence": [
+        {
+          "start": "2:28:12",
+          "end": "2:28:51",
+          "note": "A viewer asks when ego reaches a critical point, and Dr. Clarke distinguishes decisions influenced by ego from decisions made because of ego instead of evidence."
         }
       ]
     },
@@ -394,14 +902,69 @@
       ],
       "question": "How important is ship speed at the strategic level, and what difference does 28 knots versus 32 knots make?",
       "answerShort": "Speed determines which operational roles a capital ship can perform: roughly 32 knots supports independent pursuit, 28 knots can suit a carrier group, and about 23 knots confines a ship more closely to the battle line.",
-      "summary": "Dr. Clarke explains speed as operational utility rather than an isolated performance statistic, then connects it to the armor-speed-firepower tradeoff.",
-      "body": "A faster ship can pursue independently and gives commanders more choices, while a 28-knot ship can still operate effectively with a carrier force. A slower battleship may instead gain the protection needed to enter a heavily contested area and sustain gunfire. Range and cruising efficiency remain important, but they do not compensate if one ship forces the rest of its formation to slow down; the useful answer is therefore a balance among speed, armor, firepower, and the assigned role.",
+      "summary": "Dr. Clarke explains speed as operational utility rather than an isolated performance statistic, then connects it to the armour-speed-firepower tradeoff.",
+      "body": "A faster ship can pursue independently and gives commanders more choices about where and when to engage. A 28-knot ship can still operate effectively with a carrier force, while a 23-knot battleship belongs more naturally in the battle line. Lower speed may buy the protection needed to enter a heavily contested area and sustain gunfire, so the slower design is not automatically inferior. Range and cruising efficiency remain important, but they do not compensate if one ship forces the rest of its formation to slow down. The useful answer is therefore a balance among speed, armour, firepower, endurance, and the assigned role.",
       "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
       "evidence": [
         {
           "start": "2:30:22",
           "end": "2:33:29",
           "note": "An audience question prompts a direct comparison of pursuit ships, carrier-group ships, battle-line ships, cruising range, and design tradeoffs."
+        }
+      ]
+    },
+    {
+      "id": "qa-guadalcanal-standard-battleships-oilers",
+      "videoId": "7mObTEt9i6g",
+      "slug": "qa-guadalcanal-standard-battleships-oilers",
+      "title": "Would more fleet oilers have brought US battleships to Guadalcanal?",
+      "kind": "qa",
+      "start": "2:36:54",
+      "end": "2:37:24",
+      "topics": [
+        "us-navy",
+        "guadalcanal-campaign",
+        "standard-type-battleships",
+        "fleet-logistics",
+        "carrier-operations"
+      ],
+      "question": "Would Nimitz have used the Standard-type battleships around Guadalcanal if six Cimarron-class oilers had been available instead of two?",
+      "answerShort": "Probably yes; adequate oilers would make the ships deployable, add operational options, and provide heavily armed, well-protected units near the carrier force.",
+      "summary": "The answer makes tanker availability, rather than battleship gun power alone, the key to a different Guadalcanal force mix.",
+      "body": "Dr. Clarke answers that the extra oilers would make taking the battleships forward much more plausible. Fuel support determines whether a slow, thirsty capital ship can remain useful in a distant and fast-moving campaign. Once supplied, the Standards could add anti-aircraft fire, heavy guns, and protected hulls that complicated Japanese targeting of the carriers. He describes them bluntly as ships capable of absorbing fire otherwise aimed at more operationally valuable units. The counterfactual therefore turns on logistics first and tactical employment second.",
+      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
+      "evidence": [
+        {
+          "start": "2:36:54",
+          "end": "2:37:24",
+          "note": "A viewer asks whether more Cimarron-class oilers would enable Standard-type battleship use, and the answer emphasizes deployability, options, and carrier protection."
+        }
+      ]
+    },
+    {
+      "id": "qa-dodging-battleship-shells",
+      "videoId": "7mObTEt9i6g",
+      "slug": "qa-dodging-battleship-shells",
+      "title": "Can a battleship dodge incoming shells?",
+      "kind": "qa",
+      "start": "2:37:25",
+      "end": "2:37:46",
+      "topics": [
+        "naval-gunnery",
+        "fire-control",
+        "battleships",
+        "fleet-tactics"
+      ],
+      "question": "Is there a range at which a battleship can see incoming shells early enough to manoeuvre out of their path?",
+      "answerShort": "At less than roughly 8,000 yards in World War II conditions, a battleship is not going to dodge correctly aimed heavy shells before impact.",
+      "summary": "A short gunnery answer sets a practical lower-range limit on evasive manoeuvre against correctly aimed battleship fire.",
+      "body": "Heavy shells take time to travel, but a battleship also takes time and distance to change course. Dr. Clarke says that inside about 8,000 yards the geometry leaves too little opportunity to manoeuvre clear of a correct solution. A miss at that distance is more likely to come from an aiming error than a successful last-second dodge. The answer explains why close-range capital-ship combat gives fire-control quality and the opening salvo such importance. Manoeuvre can still disrupt an enemy's solution over time, but it does not make a battleship agile enough to evade each visible shell group.",
+      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
+      "evidence": [
+        {
+          "start": "2:37:25",
+          "end": "2:37:46",
+          "note": "The audience asks about dodging shells, and Dr. Clarke says correctly aimed fire inside roughly 8,000 yards cannot realistically be evaded."
         }
       ]
     },
@@ -423,13 +986,41 @@
       "question": "Did Nelson and Rodney reach the Pacific during the Second World War?",
       "answerShort": "Nelson served as a flagship with the Eastern Fleet in the Indian Ocean, while Rodney remained nearer home as insurance against Tirpitz or another German sortie.",
       "summary": "The answer contrasts Nelson's Eastern Fleet deployment with Rodney's continued strategic role against the German surface threat.",
-      "body": "Nelson traveled to the Indian Ocean and served as an Eastern Fleet flagship. Rodney did not follow the same path; after supporting the invasion period, she remained available nearer Britain because the Home Fleet still needed a heavy ship in case Tirpitz or another German capital ship emerged. The contrast shows how threat coverage, not simply ship capability, governed where the two sisters were employed.",
+      "body": "Nelson traveled to the Indian Ocean and served as an Eastern Fleet flagship, placing her much closer to the Pacific theatre without actually entering it in the sense posed by the question. Rodney did not follow the same path. After supporting the invasion period and other duties, she remained available nearer Britain because the Home Fleet still needed a heavy ship in case Tirpitz or another German capital ship emerged. The sisters' different locations reflect threat coverage rather than a simple judgment that one ship was fit for distant service and the other was not. Their deployments also reinforce the earlier point that a slow battleship could retain strategic value by anchoring a particular theatre.",
       "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
       "evidence": [
         {
           "start": "2:38:40",
           "end": "2:40:03",
           "note": "The audience asks about Pacific service; Dr. Clarke identifies Nelson's Eastern Fleet role and Rodney's retention against the German battleship threat."
+        }
+      ]
+    },
+    {
+      "id": "qa-hood-crushing-tubes-fuel-tanks",
+      "videoId": "7mObTEt9i6g",
+      "slug": "qa-hood-crushing-tubes-fuel-tanks",
+      "title": "Would fuel tanks improve Hood's crushing-tube protection?",
+      "kind": "qa",
+      "start": "2:42:28",
+      "end": "2:43:22",
+      "topics": [
+        "hood",
+        "underwater-protection",
+        "marine-engineering",
+        "damage-control",
+        "naval-logistics"
+      ],
+      "question": "What would Hood gain by replacing steel crushing tubes with fuel tanks in the same protective space?",
+      "answerShort": "The clear benefit would be greater range, but fuel would not necessarily absorb an explosion as effectively as water and a hit could contaminate the fuel system with seawater.",
+      "summary": "The answer weighs extra endurance against uncertain blast behaviour and the risk of losing usable fuel after underwater damage.",
+      "body": "Replacing the crushing tubes with tanks would turn protective volume into fuel capacity and extend Hood's cruising range. That does not make fuel an automatic improvement as armour. Its response depends on fuel type and tank condition, and a partly filled or contaminated space can behave differently from a deliberately flooded water layer. An underwater hit could also drive seawater into the fuel system, creating a propulsion problem even if the fuel did not ignite. Dr. Clarke closes by noting that crushing tubes were less efficient than water, but the best replacement still has to be judged as both protection and an operating system.",
+      "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
+      "evidence": [
+        {
+          "start": "2:42:28",
+          "end": "2:43:22",
+          "note": "A viewer proposes fuel tanks in Hood's crushing-tube space, and the answer covers range, uncertain explosive behaviour, water contamination, and the relative efficiency of water."
         }
       ]
     },
@@ -450,13 +1041,13 @@
       "question": "Were there problems with the 16-inch guns, and why did the Royal Navy not use them on the next battleship class?",
       "answerShort": "Dr. Clarke points chiefly to Admiral Chatfield's preference for 14-inch guns and to design conclusions drawn from contemporary gun testing, rather than describing the Nelson weapon as simply unusable.",
       "summary": "A closing question separates the Nelson class's 16-inch armament from the policy and design choices that produced the later King George V class's 14-inch guns.",
-      "body": "The answer does not reduce the change of calibre to a single technical failure. Dr. Clarke highlights Admiral Chatfield's strong attachment to the 14-inch weapon and says British designers also considered data from German testing when choosing the later gun. He adds that his own preferred alternative would have been a 15-inch/50, underscoring that the interwar decision involved institutional preference and competing design judgments.",
+      "body": "The answer does not reduce the change of calibre to a single technical failure. Dr. Clarke highlights Admiral Chatfield's strong attachment to the 14-inch weapon and says British designers also considered contemporary German test results when choosing the later gun. Institutional preference and the evidence available to the design staff therefore mattered alongside experience with Nelson's armament. He adds that his own preferred alternative would have been a 15-inch/50, underscoring that capable designers could draw different conclusions from the same interwar constraints. The exchange is brief, but it prevents the later 14-inch choice from being misread as proof that the 16-inch system was simply unusable.",
       "sourcePath": "src/transcripts/txt/2022-11-24_T19-38-48_patreon-67-rn-use-of-water-based-armour-and-why-it-annoyed-admiral-king-so-much_7mObTEt9i6g.txt",
       "evidence": [
         {
           "start": "2:45:17",
           "end": "2:45:37",
-          "note": "The closing exchange attributes the later calibre decision to Chatfield's preference and contemporary test evidence, with the presenter favoring a 15-inch/50 alternative."
+          "note": "The closing exchange attributes the later calibre decision to Chatfield's preference and contemporary test evidence, with the presenter favouring a 15-inch/50 alternative."
         }
       ]
     }

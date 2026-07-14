@@ -9,6 +9,7 @@
     "naval-strategy",
     "naval-logistics",
     "naval-leadership",
+    "civil-military-relations",
     "naval-professional-reading"
   ],
   "segments": [
@@ -61,6 +62,31 @@
           "start": "8:30",
           "end": "11:45",
           "note": "They compare YouTube interaction signals, Amazon ratings and advertising, and the goal of reaching readers or viewers."
+        }
+      ]
+    },
+    {
+      "id": "ship-maneuver-modeling-behind-fiction",
+      "videoId": "3IO87agm85s",
+      "slug": "ship-maneuver-modeling-behind-fiction",
+      "title": "The calculations behind fictional ship maneuvers",
+      "kind": "notable_point",
+      "start": "14:32",
+      "end": "15:01",
+      "topics": [
+        "military-science-fiction",
+        "research-methods",
+        "warship-maneuvering",
+        "naval-tactics"
+      ],
+      "summary": "Stewart describes the large mathematical spreadsheet he uses to keep fictional ship maneuvers internally consistent, even though editors rarely need to inspect it.",
+      "body": "Stewart keeps both prose notes and a large spreadsheet of calculations for ship maneuvers. His editors may consult the character list, but he doubts they examine the underlying mathematics. The exchange shows that technical military science fiction can depend on extensive quantitative modeling that remains invisible in the finished narrative. It also separates the author's responsibility for tactical consistency from an editor's focus on characters and readable prose.",
+      "sourcePath": "src/transcripts/txt/2025-12-03_T19-30-06_chatting-books-amazon-and-youtube-with-glynn-stewart-2historians-scifi_3IO87agm85s.txt",
+      "evidence": [
+        {
+          "start": "14:32",
+          "end": "15:01",
+          "note": "Stewart contrasts the notes and character list his editors may read with his large mathematical spreadsheet for ship maneuvers."
         }
       ]
     },
@@ -191,7 +217,7 @@
         "military-science-fiction"
       ],
       "summary": "A naval concept becomes a science-fiction design problem whose answer depends on travel time, wormholes, refueling, and the ability to control enormous planetary systems.",
-      "body": "The speakers test freedom of navigation against several possible forms of interstellar travel. Slow voyages make diversion impractical, wormholes create defensible chokepoints, and point-to-point travel shifts attention toward refueling access. Jupiter demonstrates the enforcement problem: its scale, moons, and complex orbital geometry would require far more surveillance infrastructure than a simple analogy with Earth suggests.",
+      "body": "The speakers test freedom of navigation against several possible forms of interstellar travel. Slow voyages make diversion impractical, wormholes create defensible chokepoints, and point-to-point travel shifts attention toward refueling access. Jupiter demonstrates the enforcement problem: its scale, moons, and complex orbital geometry would require far more surveillance infrastructure than a simple analogy with Earth suggests. Stewart estimates that the relevant Jovian moons could create roughly forty Lagrange points to monitor, with multi-body interactions making those positions more complicated than the familiar Earth-Moon case.",
       "sourcePath": "src/transcripts/txt/2025-12-03_T19-30-06_chatting-books-amazon-and-youtube-with-glynn-stewart-2historians-scifi_3IO87agm85s.txt",
       "evidence": [
         {
@@ -218,7 +244,7 @@
         "military-science-fiction"
       ],
       "summary": "Clarke explains why the sparse law of space often borrows maritime concepts, then tests arms-control promises against naval-treaty history and anti-satellite weapons.",
-      "body": "Clarke characterizes maritime law as heavily dependent on precedent and argues that even thinner space law may inherit its concepts for activity beyond national territory. The Martian's joke about piracy provides a fictional example of that reasoning. They then question how confidently anyone should treat the peaceful-use language surrounding space when reconnaissance and anti-satellite capabilities already exist, recalling how warships complied imperfectly with naval treaty limits.",
+      "body": "Clarke characterizes maritime law as heavily dependent on precedent and argues that even thinner space law may inherit its concepts for activity beyond national territory. He summarizes the field provocatively as mostly unwritten, with precedent rather than statute supplying most of what has been established. The Martian's joke about piracy provides a fictional example of that reasoning. They then question how confidently anyone should treat the peaceful-use language surrounding space when reconnaissance and anti-satellite capabilities already exist, recalling how warships complied imperfectly with naval treaty limits.",
       "sourcePath": "src/transcripts/txt/2025-12-03_T19-30-06_chatting-books-amazon-and-youtube-with-glynn-stewart-2historians-scifi_3IO87agm85s.txt",
       "evidence": [
         {
@@ -343,7 +369,7 @@
       "title": "When does a one-way drone become a missile?",
       "kind": "notable_point",
       "start": "53:29",
-      "end": "56:15",
+      "end": "57:15",
       "topics": [
         "drones",
         "missiles",
@@ -352,14 +378,14 @@
         "military-technology",
         "space-warfare"
       ],
-      "summary": "Clarke and Stewart test possible distinctions between explosive one-way drones and missiles as propulsion, autonomy, and practitioner terminology converge.",
-      "body": "A fictional attack leads to a real classification problem: an uncrewed vehicle carrying explosives may function like a missile even when people call it a drone. Propulsion and control systems offer possible distinctions, but the speakers note that autonomous guidance is narrowing the gap. Clarke ultimately points toward operational usage and practitioner language while acknowledging that fictional terminology, such as Star Trek's torpedoes, follows its own conventions.",
+      "summary": "Clarke and Stewart test distinctions between explosive one-way drones, missiles, and fictional torpedoes as propulsion, autonomy, and maneuvering rules converge.",
+      "body": "A fictional attack leads to a real classification problem: an uncrewed vehicle carrying explosives may function like a missile even when people call it a drone. Propulsion and control systems offer possible distinctions, but the speakers note that autonomous guidance is narrowing the gap. Clarke ultimately points toward operational usage and practitioner language while acknowledging that fictional terminology follows its own conventions. He illustrates the difference with Starfleet Command, where torpedoes are constrained by launcher arcs while missiles can turn toward targets elsewhere and support shoot-and-withdraw tactics.",
       "sourcePath": "src/transcripts/txt/2025-12-03_T19-30-06_chatting-books-amazon-and-youtube-with-glynn-stewart-2historians-scifi_3IO87agm85s.txt",
       "evidence": [
         {
           "start": "53:29",
-          "end": "56:15",
-          "note": "They compare one-way drones and missiles through propulsion, autonomy, terminology, and fictional weapons."
+          "end": "57:15",
+          "note": "They compare one-way drones and missiles through propulsion, autonomy, practitioner terminology, and the different maneuvering rules for fictional missiles and torpedoes."
         }
       ]
     },
@@ -422,26 +448,76 @@
       "id": "heroes-trust-and-hard-decision-cynicism",
       "videoId": "3IO87agm85s",
       "slug": "heroes-trust-and-hard-decision-cynicism",
-      "title": "Heroism, trust, and the limits of hard-decision cynicism",
+      "title": "Classical heroes and modern demands for moral purity",
       "kind": "chapter",
       "start": "1:14:22",
-      "end": "1:18:12",
+      "end": "1:15:17",
       "topics": [
         "heroism",
-        "trust",
-        "leadership",
         "military-ethics",
         "military-science-fiction",
         "character-writing"
       ],
-      "summary": "The speakers contrast imperfect classical heroes with modern demands for moral purity and argue that trust can be more realistic than fashionable military cynicism.",
-      "body": "Clarke notes that Greek heroes could perform heroic acts while remaining subject to ego and personal failure, whereas modern audiences often expect heroes to be nearly perfect. Stewart describes characters whose moral rigidity can itself become a flaw. They then turn to historical examples of loyalty built by extending trust and reject the assumption that the cynical 'hard man making hard decisions' must be correct.",
+      "summary": "The speakers contrast imperfect classical heroes with modern demands for moral purity and consider how inflexible virtue can itself become a character flaw.",
+      "body": "Clarke notes that Greek heroes could perform heroic acts while remaining subject to ego and personal failure. Modern audiences, by contrast, often expect a hero to be nearly perfect. Stewart describes an upcoming protagonist who is genuinely good but still traumatized and fallible. He also points to earlier characters whose refusal to compromise their moral rules becomes their central weakness.",
       "sourcePath": "src/transcripts/txt/2025-12-03_T19-30-06_chatting-books-amazon-and-youtube-with-glynn-stewart-2historians-scifi_3IO87agm85s.txt",
       "evidence": [
         {
           "start": "1:14:22",
+          "end": "1:15:17",
+          "note": "They contrast fallible Greek heroes with modern moral expectations and discuss rigidity as a flaw in otherwise good characters."
+        }
+      ]
+    },
+    {
+      "id": "unauthorized-fleet-and-civilian-authority",
+      "videoId": "3IO87agm85s",
+      "slug": "unauthorized-fleet-and-civilian-authority",
+      "title": "An unauthorized fleet expedition and the civil-military boundary",
+      "kind": "notable_point",
+      "start": "1:15:24",
+      "end": "1:16:24",
+      "topics": [
+        "civil-military-relations",
+        "naval-command",
+        "military-authority",
+        "fleet-operations",
+        "military-science-fiction"
+      ],
+      "summary": "A joking description of 'hijacking a fleet' reveals the material, personnel, and political steps behind an unauthorized fictional naval expedition.",
+      "body": "Stewart clarifies that the fictional admiral did not seize an active fleet. He took ships awaiting decommissioning, recruited inactive officers and crews, and led the improvised force beyond the border. The deployment entered a region where government approval was specifically required, turning possession of ships into a question of lawful military authority. The example offers a compact way to examine how personnel status, control of matériel, and civilian authorization combine to define an unauthorized naval operation.",
+      "sourcePath": "src/transcripts/txt/2025-12-03_T19-30-06_chatting-books-amazon-and-youtube-with-glynn-stewart-2historians-scifi_3IO87agm85s.txt",
+      "evidence": [
+        {
+          "start": "1:15:24",
+          "end": "1:16:24",
+          "note": "Stewart explains that the admiral used decommissioning ships and inactive crews for a cross-border deployment without required government approval."
+        }
+      ]
+    },
+    {
+      "id": "trust-and-hard-decision-cynicism",
+      "videoId": "3IO87agm85s",
+      "slug": "trust-and-hard-decision-cynicism",
+      "title": "Trust, loyalty, and the limits of hard-decision cynicism",
+      "kind": "chapter",
+      "start": "1:16:34",
+      "end": "1:18:12",
+      "topics": [
+        "trust",
+        "leadership",
+        "military-ethics",
+        "military-science-fiction",
+        "decision-making"
+      ],
+      "summary": "Clarke and Stewart argue that extending trust can build genuine loyalty and may be more realistic than fashionable military cynicism.",
+      "body": "Clarke introduces a historical observation about building loyalty in a society where trust is scarce: someone may have to offer trust first. Stewart agrees with the principle but notes that readers accustomed to cynical military fiction may find it implausible. He argues that the genre often treats the ruthless 'hard man making hard decisions' as automatically correct. In his own work, those figures are frequently mistaken or villainous because cynicism can be as unrealistic as naïve optimism.",
+      "sourcePath": "src/transcripts/txt/2025-12-03_T19-30-06_chatting-books-amazon-and-youtube-with-glynn-stewart-2historians-scifi_3IO87agm85s.txt",
+      "evidence": [
+        {
+          "start": "1:16:34",
           "end": "1:18:12",
-          "note": "They discuss imperfect heroes, moral rigidity, trust as a basis for loyalty, and unrealistic cynicism in military fiction."
+          "note": "They discuss trust as a way to build loyalty and reject the assumption that cynical hard-decision characters are necessarily correct."
         }
       ]
     },
