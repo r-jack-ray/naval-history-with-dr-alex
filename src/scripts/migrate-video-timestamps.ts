@@ -115,7 +115,7 @@ async function buildMigrationPlan(
         `Cannot migrate curated transcript ${videoId}: ${state.reason} (${state.diagnostic})`,
       );
     }
-    const oldDate = optionalString(transcript.videoDateAt) ?? optionalString(transcript.videoPublishedAt);
+    const oldDate = optionalString(transcript.videoDateAt);
     if (oldDate !== state.videoDateAt) {
       manifestDateCorrections += 1;
     }

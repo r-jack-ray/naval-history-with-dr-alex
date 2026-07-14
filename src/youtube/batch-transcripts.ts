@@ -244,8 +244,8 @@ export async function readTranscriptBatchEpisodes(path: string): Promise<Transcr
     const title = readString(record, "title");
     const publishedAt = readString(record, "publishedAt");
     const scheduledStartAt = readString(record, "scheduledStartAt");
-    const actualStartAt = readString(record, "actualStartAt") ?? readString(record, "streamStartAt");
-    const actualEndAt = readString(record, "actualEndAt") ?? readString(record, "streamEndAt");
+    const actualStartAt = readString(record, "actualStartAt");
+    const actualEndAt = readString(record, "actualEndAt");
     const videoDateAt = readString(record, "videoDateAt");
     const videoDateKind = readVideoDateKind(record?.videoDateKind);
     const channelOrder = integerValue(record?.channelOrder);

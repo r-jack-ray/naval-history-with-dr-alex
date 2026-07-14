@@ -493,6 +493,9 @@ function normalizeTranscriptManifest(value: unknown): TranscriptManifest {
   if (!object || !Array.isArray(object.transcripts)) {
     return emptyTranscriptManifest();
   }
+  if (object.schemaVersion !== 3) {
+    throw new Error(`Transcript manifest schemaVersion must be 3.`);
+  }
 
   return {
     ...emptyTranscriptManifest(),
@@ -560,9 +563,7 @@ function transcriptManifestRecordFromJson(value: unknown): TranscriptManifestRec
   const paths = asRecord(object?.paths);
   const videoId = object ? readString(object, "videoId") : undefined;
   const videoTitle = object ? readString(object, "videoTitle") : undefined;
-  const videoDateAt = object
-    ? readString(object, "videoDateAt") ?? readString(object, "videoPublishedAt")
-    : undefined;
+  const videoDateAt = object ? readString(object, "videoDateAt") : undefined;
   const videoDateKind = object ? readVideoDateKind(object.videoDateKind) : undefined;
   const source = object ? readTranscriptSource(object) : undefined;
   const fetchedAt = object ? readString(object, "fetchedAt") : undefined;
@@ -913,7 +914,7 @@ export function parseVideoTranscriptJson(value: unknown, sourceName = "transcrip
   if (videoTitle !== undefined) {
     transcript.videoTitle = videoTitle;
   }
-  const videoDateAt = readString(object, "videoDateAt") ?? readString(object, "videoPublishedAt");
+  const videoDateAt = readString(object, "videoDateAt");
   if (videoDateAt !== undefined) {
     transcript.videoDateAt = videoDateAt;
   }

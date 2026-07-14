@@ -29,9 +29,6 @@ export interface ChannelVideoLink {
   viewCountText?: string;
   publishedAt?: string;
   publishDate?: string;
-  uploadDate?: string;
-  streamStartAt?: string;
-  streamEndAt?: string;
   scheduledStartAt?: string;
   actualStartAt?: string;
   actualEndAt?: string;
@@ -485,7 +482,7 @@ function channelEpisodeRecord(
   const stored = options.storedTranscripts?.get(link.videoId);
   const title = metadata?.snippet?.title ?? link.title;
   const normalizedDate = state.state === "ready" ? state.videoDateAt : undefined;
-  const fallbackDate = link.videoDateAt ?? link.actualStartAt ?? link.streamStartAt ?? link.publishedAt;
+  const fallbackDate = link.videoDateAt ?? link.actualStartAt ?? link.publishedAt;
   const videoKind = metadata === undefined
     ? link.videoKind ?? (link.tabs.includes("streams") ? "stream" : "upload")
     : state.videoKind;
@@ -548,8 +545,8 @@ function copyAuthoritativeEpisodeDates(
 ): void {
   const publishedAt = metadata?.snippet?.publishedAt ?? link.publishedAt;
   const scheduledStartAt = metadata?.liveStreamingDetails?.scheduledStartTime ?? link.scheduledStartAt;
-  const actualStartAt = metadata?.liveStreamingDetails?.actualStartTime ?? link.actualStartAt ?? link.streamStartAt;
-  const actualEndAt = metadata?.liveStreamingDetails?.actualEndTime ?? link.actualEndAt ?? link.streamEndAt;
+  const actualStartAt = metadata?.liveStreamingDetails?.actualStartTime ?? link.actualStartAt;
+  const actualEndAt = metadata?.liveStreamingDetails?.actualEndTime ?? link.actualEndAt;
   if (publishedAt !== undefined) {
     record.publishedAt = publishedAt;
   }
@@ -674,15 +671,6 @@ function mergeLinks(records: ChannelVideoLink[]): ChannelVideoLink[] {
     }
     if (existing.publishDate === undefined && record.publishDate !== undefined) {
       existing.publishDate = record.publishDate;
-    }
-    if (existing.uploadDate === undefined && record.uploadDate !== undefined) {
-      existing.uploadDate = record.uploadDate;
-    }
-    if (existing.streamStartAt === undefined && record.streamStartAt !== undefined) {
-      existing.streamStartAt = record.streamStartAt;
-    }
-    if (existing.streamEndAt === undefined && record.streamEndAt !== undefined) {
-      existing.streamEndAt = record.streamEndAt;
     }
   }
 
