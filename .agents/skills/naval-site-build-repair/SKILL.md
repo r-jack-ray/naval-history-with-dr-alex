@@ -22,6 +22,8 @@ Repair site-pipeline failures without widening scope or destabilizing establishe
 
 - Inspect every occurrence reported by `npm run diagnose:site-content-duplicates`.
 - Preserve both substantive watch points unless transcript evidence proves one is accidental duplication.
+- Treat a collision involving a transcript-visible answered exchange as a route-key collision, not permission to delete, merge, downgrade, or reclassify the `kind: qa` segment. Preserve each substantive Q&A as a separate segment in its owning video, including its `question` and `answerShort`, even when it collides with a chapter, notable point, or Q&A in another video.
+- Resolve every preserved Q&A as a separate route. When a Q&A occurrence needs a replacement `id` and `slug`, derive them from the exchange's learner-facing subject and append a concise `-qa` qualifier when the subject alone would still collide. Remove a Q&A occurrence only when the `videoId`, timestamp/evidence window, question, and answer establish that it is the same accidental duplicate within the same video.
 - Rank occurrences by comparative confidence that each segment is accurate and complete; do not invent a numeric probability when the evidence supports only a qualitative judgment. Do not treat diagnostic order, creation date, filename date, Git age or status, or prior generated-output order as content-quality evidence. Use Git state only to protect unrelated work.
 - Apply evidence in this order:
   1. **Accuracy gate:** verify the `videoId`, `sourcePath`, timestamp, evidence note, and public claims against the transcript. An unsupported or contradicted occurrence must not keep the contested route.
