@@ -4,317 +4,891 @@
   "topics": [
     "alternate-history",
     "royal-navy",
+    "hms-hermes",
     "naval-aviation",
-    "carrier-groups",
     "light-carriers",
-    "naval-treaties",
+    "carrier-design",
+    "washington-naval-treaty",
+    "london-naval-treaty",
     "interwar-navy",
     "force-structure",
-    "naval-architecture",
-    "ship-design",
     "naval-procurement",
+    "trade-protection",
     "japanese-navy",
+    "united-states-navy",
     "second-world-war"
   ],
   "segments": [
     {
-      "id": "hermes-small-carrier-prompt-and-feasibility",
+      "id": "hermes-ten-carrier-swarm-feasibility",
       "videoId": "lLPfmYWw0W8",
-      "slug": "hermes-small-carrier-prompt-and-feasibility",
-      "title": "Hermes makes the small-carrier prompt plausible",
-      "kind": "notable_point",
-      "start": "0:00",
+      "slug": "hermes-ten-carrier-swarm-feasibility",
+      "title": "Could Britain build ten sub-10,000-ton Hermes carriers?",
+      "kind": "qa",
+      "start": "0:18",
       "end": "3:59",
       "topics": [
         "alternate-history",
         "royal-navy",
-        "naval-aviation",
-        "ship-design"
+        "hms-hermes",
+        "carrier-design",
+        "naval-architecture"
       ],
-      "summary": "The opening turns a ten-carrier patron prompt into a design question about whether Hermes could be brought under the treaty's 10,000-ton line.",
-      "body": "Dr. Clarke starts by asking how Britain could plausibly build a swarm of sub-10,000-ton Hermes-style carriers between 1926 and 1930. He points to Hermes's heavy 5.5-inch gun battery, armor, machinery, and older construction choices as weight that a follow-on design could trim. The value of the moment is that it treats the scenario as naval architecture and treaty practice, not just a wish for more decks.",
+      "summary": "The patron prompt asks what follows if the Admiralty builds ten small Hermes-style carriers between 1926 and 1930, beginning with whether such a design is plausible.",
+      "question": "What would be the impact of the Admiralty building ten sub-10,000-ton Hermes-style aircraft carriers between 1926 and 1930?",
+      "answerShort": "The premise is plausible if Britain treats Hermes as a starting point and removes heavy guns, excess armor, topweight, and outdated machinery until the design can credibly be declared at the treaty's 10,000-ton threshold.",
+      "body": "Dr. Clarke begins with the design work required before considering the strategic consequences. Hermes displaced about 11,000 tons standard, but her six 5.5-inch guns, ammunition, crews, supporting structure, armor, and early machinery all offer opportunities to save weight. Later boilers, limited welding, and different approaches to protection could bring a successor close enough to the treaty threshold for contemporary naval constructors to claim 10,000 tons. He notes that the treaty powers already tolerated creative displacement accounting, with Lexington and Saratoga providing conspicuous precedents. The answer therefore rests on a historically plausible redesign rather than simply imagining ten unchanged copies of Hermes.",
       "sourcePath": "src/transcripts/txt/2026-06-06_T18-30-06_what-if-hms-hermes-was-the-first-of-a-class-of-cruiser-carriers_lLPfmYWw0W8.txt",
       "evidence": [
         {
           "start": "0:18",
           "end": "0:52",
-          "note": "Introduces the prompt about ten small Hermes carriers and says a historically viable option exists."
+          "note": "States the patron's ten-carrier prompt and says a historically viable route exists."
         },
         {
           "start": "1:00",
-          "end": "3:38",
-          "note": "Lists Hermes's displacement, guns, armor, machinery, and possible weight-saving changes."
+          "end": "2:59",
+          "note": "Identifies Hermes's guns, armor, machinery, and construction methods as sources of removable weight."
+        },
+        {
+          "start": "3:01",
+          "end": "3:59",
+          "note": "Explains how contemporary displacement accounting could support a 10,000-ton declaration."
         }
       ]
     },
     {
-      "id": "washington-treaty-carrier-tonnage-problem",
+      "id": "carrier-tonnage-versus-operational-numbers",
       "videoId": "lLPfmYWw0W8",
-      "slug": "washington-treaty-carrier-tonnage-problem",
-      "title": "Washington Treaty tonnage favors smaller carrier numbers",
+      "slug": "carrier-tonnage-versus-operational-numbers",
+      "title": "Carrier tonnage limits turn ship size into an availability problem",
       "kind": "chapter",
       "start": "4:08",
-      "end": "15:59",
+      "end": "5:48",
       "topics": [
-        "naval-treaties",
-        "light-carriers",
-        "interwar-navy",
-        "force-structure"
+        "washington-naval-treaty",
+        "aircraft-carriers",
+        "force-structure",
+        "fleet-readiness"
       ],
-      "summary": "The treaty section explains why total carrier tonnage, experimental-carrier replacement rules, and the 10,000-ton warship threshold make small carriers attractive.",
-      "body": "This watch point lays out the legal machinery behind the scenario. The Washington Naval Treaty gives Britain 135,000 tons of carrier allowance, but a fleet of 27,000-ton carriers would leave too few ships for global operations and maintenance cycles. Hermes also falls into the experimental-carrier replacement logic, while ships at or below about 10,000 tons avoid the later cruiser-style cumulative limits that would make a cruiser-carrier category harder to exploit.",
+      "summary": "Article 7's aggregate carrier allowance means that individually powerful carriers can leave a global navy with too few operational decks.",
+      "body": "This watch point explains why cumulative tonnage, rather than the maximum size of one ship, is the central constraint on interwar carrier fleets. The Washington Naval Treaty allotted Britain and the United States 135,000 tons each, Japan 81,000, and France and Italy 60,000 apiece. A navy could build a formidable 27,000-ton carrier, but five such ships would consume the entire British or American allowance. Maintenance and training cycles would then leave only about two normally available, or three to four if wartime demands forced deferred upkeep. The calculation makes smaller carriers attractive because hull numbers determine how many stations and tasks the navy can cover at once.",
       "sourcePath": "src/transcripts/txt/2026-06-06_T18-30-06_what-if-hms-hermes-was-the-first-of-a-class-of-cruiser-carriers_lLPfmYWw0W8.txt",
       "evidence": [
         {
           "start": "4:21",
+          "end": "4:56",
+          "note": "Quotes the national carrier tonnage allowances in Article 7."
+        },
+        {
+          "start": "4:56",
           "end": "5:48",
-          "note": "Explains the 135,000-ton carrier allowance and why five large carriers would not be enough."
-        },
-        {
-          "start": "5:50",
-          "end": "7:18",
-          "note": "Uses Article 8 to show that Hermes and other British carriers counted as experimental and could be replaced."
-        },
-        {
-          "start": "13:51",
-          "end": "15:59",
-          "note": "Explains the lack of cumulative limits for ships at or below the 10,000-ton threshold."
+          "note": "Shows how five 27,000-ton carriers translate into too few operational ships."
         }
       ]
     },
     {
-      "id": "hermes-and-county-hull-design-path",
+      "id": "experimental-carrier-replacement-advantage",
       "videoId": "lLPfmYWw0W8",
-      "slug": "hermes-and-county-hull-design-path",
-      "title": "Hermes and County-class features shape a cruiser-carrier design",
+      "slug": "experimental-carrier-replacement-advantage",
+      "title": "Experimental-carrier rules give Britain an early replacement advantage",
+      "kind": "notable_point",
+      "start": "5:50",
+      "end": "7:18",
+      "topics": [
+        "washington-naval-treaty",
+        "royal-navy",
+        "hms-hermes",
+        "carrier-procurement"
+      ],
+      "summary": "Article 8 classifies existing or already-building carriers as experimental, allowing Britain to replace Hermes and several conversions without waiting for normal age limits.",
+      "body": "Dr. Clarke highlights a treaty provision that makes the alternate building programme easier to start. Aircraft-carrier tonnage in existence or building on 12 November 1921 counted as experimental and could be replaced within the national allowance regardless of age. Hermes clearly qualified because she was ordered in 1917, laid down in 1918, launched in 1919, and commissioned only in 1924. Furious, Eagle, Argus, and potentially Courageous and Glorious gave Britain a wider pool of replaceable experimental tonnage. The opportunity was real, although actual construction still depended on government budgets.",
+      "sourcePath": "src/transcripts/txt/2026-06-06_T18-30-06_what-if-hms-hermes-was-the-first-of-a-class-of-cruiser-carriers_lLPfmYWw0W8.txt",
+      "evidence": [
+        {
+          "start": "5:50",
+          "end": "6:20",
+          "note": "Quotes Article 8 and applies its experimental status to Hermes."
+        },
+        {
+          "start": "6:22",
+          "end": "7:18",
+          "note": "Lists the British carriers that could benefit from the replacement provision."
+        }
+      ]
+    },
+    {
+      "id": "large-conversions-and-admiral-class-caveat",
+      "videoId": "lLPfmYWw0W8",
+      "slug": "large-conversions-and-admiral-class-caveat",
+      "title": "Large carrier conversions expose the cost of using scarce tonnage",
+      "kind": "notable_point",
+      "start": "7:22",
+      "end": "11:18",
+      "topics": [
+        "washington-naval-treaty",
+        "aircraft-carriers",
+        "admiral-class",
+        "naval-historiography"
+      ],
+      "summary": "Article 9 permits two 33,000-ton conversions, but Dr. Clarke treats a possible British Admiral-class conversion as a carefully qualified archival inference.",
+      "body": "Article 9 allowed each treaty power to convert up to two otherwise-scrapped capital-ship hulls into carriers of no more than 33,000 tons, producing ships such as Lexington, Saratoga, Akagi, and Kaga. Britain could therefore have considered a G3 or Admiral-class hull, and Dr. Clarke describes archival clues that a large hull near Cammell Laird was examined. He is explicit that the surviving context does not include a document naming the hull, so the Admiral-class identification remains a strong suspicion rather than a demonstrated fact. The passage is a useful lesson in separating circumstantial archival evidence from claims suitable for publication as certainty. It also shows the strategic cost: two 33,000-ton conversions would consume almost half Britain's carrier allowance before the navy built ships for its worldwide commitments.",
+      "sourcePath": "src/transcripts/txt/2026-06-06_T18-30-06_what-if-hms-hermes-was-the-first-of-a-class-of-cruiser-carriers_lLPfmYWw0W8.txt",
+      "evidence": [
+        {
+          "start": "7:22",
+          "end": "8:47",
+          "note": "Explains the two-ship conversion allowance and names American and Japanese examples."
+        },
+        {
+          "start": "8:47",
+          "end": "10:47",
+          "note": "Presents and carefully qualifies the circumstantial case for a British Admiral-class conversion study."
+        },
+        {
+          "start": "10:50",
+          "end": "11:18",
+          "note": "Calculates the tonnage left after two 33,000-ton conversions."
+        }
+      ]
+    },
+    {
+      "id": "global-carrier-coverage-calculus",
+      "videoId": "lLPfmYWw0W8",
+      "slug": "global-carrier-coverage-calculus",
+      "title": "Global commitments reward six smaller carriers over a few giants",
+      "kind": "chapter",
+      "start": "10:50",
+      "end": "12:18",
+      "topics": [
+        "royal-navy",
+        "force-structure",
+        "carrier-deployment",
+        "naval-logistics"
+      ],
+      "summary": "The Royal Navy's need to cover several oceans makes carrier count, refit capacity, and training cycles as important as individual ship power.",
+      "body": "Dr. Clarke turns treaty arithmetic into a deployment problem for a global navy. Two 33,000-ton conversions would leave only 69,000 tons, enough for three more 23,000-ton carriers and a fleet of only five. Building around 22,500 tons could produce six ships, with further reductions offering still more hulls. Britain had to contemplate the Far East, Indian Ocean, Mediterranean, North Atlantic, and South Atlantic at the same time. Because refit, maintenance, and work-up periods remove ships from operations, the number in commission must substantially exceed the number on station.",
+      "sourcePath": "src/transcripts/txt/2026-06-06_T18-30-06_what-if-hms-hermes-was-the-first-of-a-class-of-cruiser-carriers_lLPfmYWw0W8.txt",
+      "evidence": [
+        {
+          "start": "10:50",
+          "end": "11:48",
+          "note": "Compares five-carrier and six-carrier uses of the 135,000-ton allowance."
+        },
+        {
+          "start": "11:50",
+          "end": "12:18",
+          "note": "Lists global stations and explains the extra hulls required for maintenance and training."
+        }
+      ]
+    },
+    {
+      "id": "ten-thousand-ton-warship-loophole",
+      "videoId": "lLPfmYWw0W8",
+      "slug": "ten-thousand-ton-warship-loophole",
+      "title": "The 10,000-ton threshold opens an uncapped cruiser-carrier route",
+      "kind": "chapter",
+      "start": "12:18",
+      "end": "15:59",
+      "topics": [
+        "washington-naval-treaty",
+        "cruisers",
+        "light-carriers",
+        "treaty-displacement"
+      ],
+      "summary": "Articles 10 through 12 regulate armament and ship size but leave no aggregate limit for warships at or below 10,000 tons, creating the scenario's key opening.",
+      "body": "This section separates individual ship restrictions from aggregate fleet limits. The treaty constrained carrier armament and barred most non-capital warships above 10,000 tons, yet it did not cap the combined tonnage of cruisers at or below that threshold. Later London treaties introduced cumulative cruiser limits, but the original Washington framework allowed a navy to build as many qualifying ships as it could fund. Dr. Clarke therefore treats 10,000 tons as the decisive number for a cruiser-carrier category outside the carrier allowance. He also explains that modest construction error would likely be tolerated, while a design drifting toward 10,500 tons would become politically difficult to defend.",
+      "sourcePath": "src/transcripts/txt/2026-06-06_T18-30-06_what-if-hms-hermes-was-the-first-of-a-class-of-cruiser-carriers_lLPfmYWw0W8.txt",
+      "evidence": [
+        {
+          "start": "12:18",
+          "end": "13:48",
+          "note": "Reviews treaty limits on carrier guns and non-capital warships."
+        },
+        {
+          "start": "13:51",
+          "end": "14:36",
+          "note": "Identifies the absence of cumulative limits for ships at or below 10,000 tons."
+        },
+        {
+          "start": "14:40",
+          "end": "15:59",
+          "note": "Discusses the practical margin around a declared 10,000-ton displacement."
+        }
+      ]
+    },
+    {
+      "id": "hermes-performance-and-light-fleet-carrier-potential",
+      "videoId": "lLPfmYWw0W8",
+      "slug": "hermes-performance-and-light-fleet-carrier-potential",
+      "title": "Hermes already contains the outline of a light fleet carrier",
       "kind": "chapter",
       "start": "16:01",
-      "end": "29:54",
+      "end": "20:29",
       "topics": [
-        "naval-architecture",
-        "ship-design",
-        "light-carriers",
-        "cruisers"
+        "hms-hermes",
+        "colossus-class",
+        "light-fleet-carriers",
+        "carrier-design"
       ],
-      "summary": "The design discussion compares Hermes, Colossus, and County-class dimensions to show how Britain might make a useful small carrier.",
-      "body": "The design section checks the idea against real hulls, machinery, fuel, flight-deck length, air group limits, and seakeeping. Dr. Clarke treats Hermes as a good starting point but not a finished pattern: later boilers, fewer guns, simpler topweight, and a County-class-style hull could produce a stronger cruiser carrier. The comparison matters because it shows how a small carrier could support cruiser reconnaissance without needing fleet-carrier speed or size.",
+      "summary": "A comparison of Hermes with the later Colossus class shows that her size, speed, and machinery were credible foundations for a family of useful small carriers.",
+      "body": "Dr. Clarke places Hermes's specifications beside those of the wartime Colossus class to test whether the earlier ship was truly too small to matter. Hermes displaced 10,850 long tons standard, measured 600 feet overall, and made 25 knots from 40,000 shaft horsepower. Colossus was longer and heavier but used the same nominal power and speed, showing that Hermes was not an absurd starting point for a light fleet carrier. Her shortcomings in the Second World War were magnified by age and by being a singleton. A class operating in pairs or threes could instead have handled convoy support, surface-raider searches, and secondary tasks that otherwise consumed scarce fleet carriers.",
       "sourcePath": "src/transcripts/txt/2026-06-06_T18-30-06_what-if-hms-hermes-was-the-first-of-a-class-of-cruiser-carriers_lLPfmYWw0W8.txt",
       "evidence": [
         {
           "start": "16:01",
-          "end": "20:27",
-          "note": "Reviews Hermes's displacement, dimensions, machinery, speed, range, and possible light-fleet-carrier significance."
+          "end": "18:44",
+          "note": "Compares Hermes's dimensions and displacement with the Colossus class."
         },
         {
-          "start": "21:23",
-          "end": "26:53",
-          "note": "Identifies first-generation carrier design features that could be changed in later small carriers."
+          "start": "18:49",
+          "end": "19:47",
+          "note": "Reviews machinery, speed, and range."
         },
         {
-          "start": "26:53",
-          "end": "29:13",
-          "note": "Uses the County-class hull and machinery comparison to describe a plausible cruiser-carrier design route."
+          "start": "19:47",
+          "end": "20:29",
+          "note": "Explains how multiple Hermes-type ships could perform light-fleet-carrier tasks."
         }
       ]
     },
     {
-      "id": "beatty-fleet-air-arm-and-interwar-naval-power",
+      "id": "first-generation-hermes-design-lessons",
       "videoId": "lLPfmYWw0W8",
-      "slug": "beatty-fleet-air-arm-and-interwar-naval-power",
-      "title": "Beatty and Fleet Air Arm politics explain why the route was missed",
+      "slug": "first-generation-hermes-design-lessons",
+      "title": "Hermes's first-generation features reveal where a successor could improve",
+      "kind": "notable_point",
+      "start": "20:36",
+      "end": "26:10",
+      "topics": [
+        "hms-hermes",
+        "carrier-design",
+        "seakeeping",
+        "aviation-fuel-safety"
+      ],
+      "summary": "Air-group demands, unnecessary topweight, deck geometry, seakeeping, and aviation-fuel arrangements all offer concrete lessons for a second-generation design.",
+      "body": "Hermes carried about twenty aircraft, with the maintenance burden changing according to aircraft type and desired sortie rate. As a first-generation purpose-built carrier, she also inherited a heavy tripod and fire-control position for guns that a successor would not need. Her rounded flight-deck ends and bow geometry shortened the usable deck, while later experience showed that these features were not worth their complexity. A healthy metacentric height helped her in heavy weather, although her large side area still demanded substantial helm at low speed in crosswinds. The ship also introduced post-First World War aviation-fuel controls intended to keep petrol out of exposed lines after the navy had seen how severely a fuel fire could gut a ship. Because fuel and reserve feed water were excluded from standard displacement, a successor could also carry more endurance without consuming treaty tonnage.",
+      "sourcePath": "src/transcripts/txt/2026-06-06_T18-30-06_what-if-hms-hermes-was-the-first-of-a-class-of-cruiser-carriers_lLPfmYWw0W8.txt",
+      "evidence": [
+        {
+          "start": "20:36",
+          "end": "21:23",
+          "note": "Describes crew, changing aircraft maintenance demands, and the twenty-aircraft group."
+        },
+        {
+          "start": "21:23",
+          "end": "23:23",
+          "note": "Identifies unnecessary topweight and first-generation flight-deck geometry."
+        },
+        {
+          "start": "23:27",
+          "end": "25:00",
+          "note": "Covers seakeeping, windage, and aviation-fuel safety arrangements."
+        },
+        {
+          "start": "25:03",
+          "end": "26:10",
+          "note": "Explains trial speed, fuel capacity, and the treaty definition of standard displacement."
+        }
+      ]
+    },
+    {
+      "id": "county-class-cruiser-carrier-design-route",
+      "videoId": "lLPfmYWw0W8",
+      "slug": "county-class-cruiser-carrier-design-route",
+      "title": "A County-class hull offers a practical route to the cruiser carrier",
+      "kind": "chapter",
+      "start": "26:11",
+      "end": "29:52",
+      "topics": [
+        "county-class-cruisers",
+        "hms-hermes",
+        "carrier-design",
+        "cruiser-aviation"
+      ],
+      "summary": "Later boilers, lighter armament, and County-class proportions could create a faster Hermes successor while freeing cruisers from carrying their own seaplanes.",
+      "body": "Dr. Clarke's preferred design route combines Hermes as the carrier template with a County-class cruiser hull. Removing the 5.5-inch battery, using 4-inch or dual-purpose weapons, and replacing six Yarrow boilers with four Admiralty three-drum units could save weight without sacrificing the required 40,000 shaft horsepower. The County hull was longer than Hermes but had a broadly comparable beam, offering a finer and potentially more efficient basis for a flight deck. About 26 knots would not let the carrier lead the cruiser line, but it would allow continued contact while providing reconnaissance and air cover. Cruiser-carrier support could then remove seaplane hangars, fuel, and handling equipment from the Counties, releasing their tonnage for armor, subdivision, or anti-aircraft weapons.",
+      "sourcePath": "src/transcripts/txt/2026-06-06_T18-30-06_what-if-hms-hermes-was-the-first-of-a-class-of-cruiser-carriers_lLPfmYWw0W8.txt",
+      "evidence": [
+        {
+          "start": "26:11",
+          "end": "26:53",
+          "note": "Lists armament, boiler, and armor changes for a sub-10,000-ton successor."
+        },
+        {
+          "start": "26:58",
+          "end": "28:57",
+          "note": "Compares County-class length, beam, machinery, and hull efficiency with Hermes."
+        },
+        {
+          "start": "28:59",
+          "end": "29:52",
+          "note": "Connects carrier reconnaissance with weight savings aboard the cruisers."
+        }
+      ]
+    },
+    {
+      "id": "beatty-raf-and-fleet-air-arm-barrier",
+      "videoId": "lLPfmYWw0W8",
+      "slug": "beatty-raf-and-fleet-air-arm-barrier",
+      "title": "Beatty and RAF control block an otherwise plausible carrier policy",
       "kind": "notable_point",
       "start": "29:54",
-      "end": "34:47",
+      "end": "32:16",
       "topics": [
-        "royal-navy",
-        "naval-aviation",
-        "naval-procurement",
-        "interwar-navy"
+        "david-beatty",
+        "fleet-air-arm",
+        "royal-air-force",
+        "naval-procurement"
       ],
-      "summary": "The episode links the absence of a Hermes follow-on class to Beatty's conservatism, RAF control of naval aviation, and Britain's interwar budget assumptions.",
-      "body": "Dr. Clarke argues that the small-carrier path runs into institutional politics as much as design feasibility. Beatty's confidence that the Royal Air Force could be made to meet naval needs, along with his caution about provoking another naval race, helps explain why the Royal Navy did not push the carrier-cruiser idea harder. The same passage also frames Britain's wider gamble: paper parity with the United States mattered less if Congress would not fund the US Navy to match the Royal Navy in practice.",
+      "summary": "Institutional confidence and procurement conservatism help explain why Britain did not turn a plausible small-carrier design into a sustained programme.",
+      "body": "The scenario's main obstacle is political rather than technical. Dr. Clarke argues that David Beatty remained preoccupied with First World War problems and believed his influence could compel the new Royal Air Force to meet naval requirements. That confidence helped make the transfer of the Royal Naval Air Service, including carrier aviation and long-range patrol duties, seem manageable. Beatty also wanted to save money and avoid provoking another naval race, limiting the freedom of later First Sea Lords to innovate. The caution was understandable, but it conflicted with Britain's dependence on maritime power and overseas access.",
       "sourcePath": "src/transcripts/txt/2026-06-06_T18-30-06_what-if-hms-hermes-was-the-first-of-a-class-of-cruiser-carriers_lLPfmYWw0W8.txt",
       "evidence": [
         {
           "start": "29:54",
           "end": "31:20",
-          "note": "Connects the missed small-carrier route to Beatty and the transfer of naval aviation to the Royal Air Force."
+          "note": "Connects Beatty's outlook and political confidence to RAF control of naval aviation."
         },
         {
           "start": "31:20",
-          "end": "34:47",
-          "note": "Explains Beatty's procurement caution and the Royal Navy's assumption that America would not fully fund treaty parity."
+          "end": "32:16",
+          "note": "Describes conservative procurement, fear of a new naval race, and the cost of not investing."
         }
       ]
     },
     {
-      "id": "cruiser-station-deployment-model",
+      "id": "british-maritime-power-and-american-paper-parity",
       "videoId": "lLPfmYWw0W8",
-      "slug": "cruiser-station-deployment-model",
-      "title": "Cruiser carriers spread aviation across imperial stations",
+      "slug": "british-maritime-power-and-american-paper-parity",
+      "title": "British maritime power depends on more than treaty parity",
+      "kind": "chapter",
+      "start": "32:18",
+      "end": "34:47",
+      "topics": [
+        "royal-navy",
+        "united-states-navy",
+        "maritime-trade",
+        "interwar-navy"
+      ],
+      "summary": "Britain's shipping, finance, and global information networks made naval reach essential, while the Admiralty gambled that Congress would not fund the US Navy to its paper entitlement.",
+      "body": "Dr. Clarke links fleet strength to the commercial system that sustained Britain's international position. Shipping, insurance, trading information, and financial decisions clustered in London because maritime traffic generated the information on which money moved. A large navy protected that network and the overseas infrastructure supporting it. The Washington settlement granted the United States paper parity, but the Royal Navy expected Congress not to fund enough cruisers, destroyers, carriers, and supporting ships to realize that equality. According to the passage, the wager held throughout the interwar period, leaving the British advantage larger in practice than treaty ratios alone suggest.",
+      "sourcePath": "src/transcripts/txt/2026-06-06_T18-30-06_what-if-hms-hermes-was-the-first-of-a-class-of-cruiser-carriers_lLPfmYWw0W8.txt",
+      "evidence": [
+        {
+          "start": "32:18",
+          "end": "33:45",
+          "note": "Explains how naval strength supported shipping, trade information, insurance, and finance."
+        },
+        {
+          "start": "33:46",
+          "end": "34:47",
+          "note": "Describes Britain's gamble that Congress would not finance practical US naval parity."
+        }
+      ]
+    },
+    {
+      "id": "cruiser-carriers-on-imperial-stations",
+      "videoId": "lLPfmYWw0W8",
+      "slug": "cruiser-carriers-on-imperial-stations",
+      "title": "Cruiser carriers spread naval aviation across distant stations",
       "kind": "chapter",
       "start": "39:53",
-      "end": "45:24",
+      "end": "43:59",
       "topics": [
-        "carrier-groups",
-        "force-structure",
-        "royal-navy",
-        "light-carriers"
+        "carrier-deployment",
+        "cruiser-squadrons",
+        "trade-protection",
+        "imperial-defence"
       ],
-      "summary": "The deployment model attaches cruiser carriers to squadrons on the China, East Indies, South Atlantic, and home stations for trade protection and presence.",
-      "body": "This section turns the extra ships into an operating pattern. Rather than concentrating every carrier with the battle fleet, Dr. Clarke imagines cruiser-carrier pairs or divisions working with cruiser squadrons on distant stations. The payoff is practical: Britain gains scouting, trade-protection reach, and forward aviation in places where a few fleet carriers based at home or in the Mediterranean cannot always cover.",
+      "summary": "Pairs of small carriers attached to cruiser squadrons could maintain scouting and trade-protection coverage from the South Atlantic through the East Indies to China.",
+      "body": "The alternate deployment model assigns small carriers to the stations least easily reinforced by fleet carriers based at home or in the Mediterranean. Dr. Clarke imagines one carrier with four cruisers or a larger squadron divided into two groups, each combining three cruisers with a carrier under a rear admiral. Roughly six British ships, plus a possible Australian carrier, could sustain one operational carrier on the South Atlantic, East Indies, and China stations while their partners refitted. Local facilities at Durban or Freetown, in India, at Singapore, and in Australia would support minor maintenance. The structure gives commanders organic reconnaissance and protects commerce without tying every carrier to the battle fleet.",
       "sourcePath": "src/transcripts/txt/2026-06-06_T18-30-06_what-if-hms-hermes-was-the-first-of-a-class-of-cruiser-carriers_lLPfmYWw0W8.txt",
       "evidence": [
         {
           "start": "39:53",
-          "end": "42:47",
-          "note": "Describes attaching small carriers to cruiser squadrons on China, East Indies, South Atlantic, and related stations."
+          "end": "41:47",
+          "note": "Places carriers in cruiser squadrons and sketches alternative command arrangements."
         },
         {
-          "start": "42:52",
-          "end": "45:08",
-          "note": "Explains how station coverage, refit cycles, and Mediterranean air-threat assumptions shape the deployment model."
+          "start": "41:52",
+          "end": "43:01",
+          "note": "Distributes the force across South Atlantic, East Indies, China, and Australian needs."
+        },
+        {
+          "start": "43:01",
+          "end": "43:59",
+          "note": "Explains refit allocation and the available overseas maintenance bases."
         }
       ]
     },
     {
-      "id": "light-carrier-category-and-empire-building-plan",
+      "id": "mediterranean-threat-and-armoured-carrier-doctrine",
       "videoId": "lLPfmYWw0W8",
-      "slug": "light-carrier-category-and-empire-building-plan",
-      "title": "A light-carrier treaty category changes the building plan",
+      "slug": "mediterranean-threat-and-armoured-carrier-doctrine",
+      "title": "Land-based air threats preserve the need for armoured fleet carriers",
+      "kind": "notable_point",
+      "start": "44:02",
+      "end": "45:22",
+      "topics": [
+        "armoured-carriers",
+        "mediterranean-fleet",
+        "carrier-design",
+        "air-defence"
+      ],
+      "summary": "Small station carriers do not replace heavily protected fleet carriers in waters where the Royal Navy expects repeated attack by land-based aircraft.",
+      "body": "Dr. Clarke distinguishes the cruiser carrier's station role from the demands of the Mediterranean and South China Sea. British planners expected land-based aircraft to penetrate a carrier's fighter screen eventually, however large its air group. That assumption encouraged armored flight decks and damage resistance so a carrier could remain usable on the second or third day of operations. A small Hermes derivative would therefore be poorly suited to the most intense air-threat environment. If separate light-carrier tonnage later allowed full-size fleet carriers to grow toward 27,000 tons, Britain could seek both a large air group and armor instead of choosing between them.",
+      "sourcePath": "src/transcripts/txt/2026-06-06_T18-30-06_what-if-hms-hermes-was-the-first-of-a-class-of-cruiser-carriers_lLPfmYWw0W8.txt",
+      "evidence": [
+        {
+          "start": "44:02",
+          "end": "45:05",
+          "note": "Explains British expectations of land-based air attack and the logic of armored carriers."
+        },
+        {
+          "start": "45:05",
+          "end": "45:22",
+          "note": "Argues that larger fleet-carrier allowances could combine armor with a bigger air group."
+        }
+      ]
+    },
+    {
+      "id": "carrier-programme-shipyards-and-dominions",
+      "videoId": "lLPfmYWw0W8",
+      "slug": "carrier-programme-shipyards-and-dominions",
+      "title": "A cruiser-carrier programme keeps shipyards and Dominion procurement active",
       "kind": "chapter",
       "start": "45:24",
-      "end": "1:08:38",
+      "end": "48:38",
       "topics": [
-        "naval-treaties",
-        "light-carriers",
-        "naval-procurement",
-        "force-structure"
+        "naval-shipbuilding",
+        "county-class-cruisers",
+        "royal-australian-navy",
+        "naval-procurement"
       ],
-      "summary": "The scenario shows how more cruiser-size carriers could sustain shipyard work, draw in Australia, and lead to a 13,500-ton light-carrier category.",
-      "body": "The middle of the episode follows the industrial and treaty consequences of normalizing small carriers. More cruiser-size hulls would give British yards extra work alongside Counties and Nelsons, with Australia and possibly New Zealand helping expand the imperial carrier force. Dr. Clarke then proposes a later light-carrier category around 13,500 tons, which would let navies preserve fleet-carrier tonnage while using lighter carriers for presence, reconnaissance, and station work.",
+      "summary": "Four to eight extra cruiser-size carriers could sustain yards, lower repeated-build costs, and attract Australian or New Zealand funding.",
+      "body": "The building programme matters as an industrial policy as well as a force-structure choice. Adding four to eight cruiser-size carriers to the Counties and Nelsons could increase major-warship work by roughly half during a lean period for British yards. Repeated construction might keep more facilities viable and reduce unit costs, perhaps allowing all sixteen intended Counties to be completed without cut-price variants. Dr. Clarke contrasts about thirty-four cumulative yard-years for seventeen ships with roughly fifty-two for a twenty-six-ship programme. Australia is the likeliest Dominion customer, while New Zealand might finance construction without operating the ship, as it had done with a battlecruiser. Those extra orders would reinforce both industrial capacity and imperial naval reach.",
       "sourcePath": "src/transcripts/txt/2026-06-06_T18-30-06_what-if-hms-hermes-was-the-first-of-a-class-of-cruiser-carriers_lLPfmYWw0W8.txt",
       "evidence": [
         {
           "start": "45:24",
-          "end": "48:31",
-          "note": "Explains the added yard work, County-class interaction, and possible Australian or New Zealand involvement."
+          "end": "46:42",
+          "note": "Adds four to eight carriers to the interwar British construction programme."
         },
         {
-          "start": "1:00:01",
-          "end": "1:02:06",
-          "note": "Suggests a light carrier category built around 13,500 tons and separate cumulative limits."
+          "start": "46:44",
+          "end": "47:31",
+          "note": "Calculates the increase in cumulative yard work."
         },
         {
-          "start": "1:05:04",
-          "end": "1:08:30",
-          "note": "Works through British and Australian carrier numbers and forward-station deployment."
+          "start": "47:36",
+          "end": "48:38",
+          "note": "Assesses Australian, New Zealand, and Canadian procurement possibilities."
         }
       ]
     },
     {
-      "id": "international-reactions-to-cruiser-carriers",
+      "id": "american-and-japanese-cruiser-carrier-reactions",
       "videoId": "lLPfmYWw0W8",
-      "slug": "international-reactions-to-cruiser-carriers",
-      "title": "Japan, America, France, and Italy all get reasons to study cruiser carriers",
+      "slug": "american-and-japanese-cruiser-carrier-reactions",
+      "title": "American reconnaissance and Japanese numbers make cruiser carriers contagious",
       "kind": "notable_point",
       "start": "48:41",
-      "end": "56:51",
+      "end": "51:24",
       "topics": [
+        "united-states-navy",
         "japanese-navy",
-        "naval-aviation",
-        "light-carriers",
-        "naval-strategy"
+        "carrier-reconnaissance",
+        "deck-edge-lifts"
       ],
-      "summary": "The international section explains why British small carriers could push other navies toward reconnaissance, amphibious support, or regional-presence carriers.",
-      "body": "Dr. Clarke broadens the scenario beyond Britain by asking how rival and allied navies would react to a working cruiser-carrier pattern. The United States has reconnaissance and fleet-exercise reasons to experiment, while Japan could adapt the idea for numbers, scouting, amphibious support, and offsetting larger powers. France and Italy also become candidates because smaller carriers fit their tighter carrier allowances and regional commitments better than expensive full-size fleet carriers.",
+      "summary": "A successful British pattern gives the United States and Japan different but compelling reasons to revisit their own small-carrier experiments.",
+      "body": "Japan's attempt to build a sub-10,000-ton fleet carrier struggled to produce an adequate air group, but a British cruiser-carrier model would demonstrate a less ambitious and more attainable mission. Dr. Clarke expects later British examples to carry roughly thirty-six to forty aircraft rather than Hermes's twenty. Repeated construction could also accelerate features such as deck-edge lifts, particularly if Britain wanted the option to armor the flight deck later. The United States would value small carriers for fleet reconnaissance and for stretching the tonnage left after Lexington and Saratoga. Japan would value greater numbers and another way to offset the infrastructure and quantitative advantages of Britain and America.",
       "sourcePath": "src/transcripts/txt/2026-06-06_T18-30-06_what-if-hms-hermes-was-the-first-of-a-class-of-cruiser-carriers_lLPfmYWw0W8.txt",
       "evidence": [
         {
           "start": "48:41",
+          "end": "50:13",
+          "note": "Discusses Japanese small-carrier limits, larger British air groups, and possible deck-edge lifts."
+        },
+        {
+          "start": "50:14",
           "end": "51:24",
-          "note": "Discusses Japanese and American reasons to look at British cruiser-carrier practice."
-        },
-        {
-          "start": "51:24",
-          "end": "52:27",
-          "note": "Connects Japanese carrier interest to offset strategy, amphibious operations, and spotting roles."
-        },
-        {
-          "start": "54:33",
-          "end": "56:51",
-          "note": "Adds French and Italian incentives for smaller carriers under limited carrier allowances."
+          "note": "Gives American reconnaissance and Japanese numerical-offset reasons for adopting the type."
         }
       ]
     },
     {
-      "id": "small-carriers-drive-aviation-experimentation",
+      "id": "amphibious-support-and-aerial-spotting",
       "videoId": "lLPfmYWw0W8",
-      "slug": "small-carriers-drive-aviation-experimentation",
-      "title": "Small carriers become laboratories for naval aviation",
+      "slug": "amphibious-support-and-aerial-spotting",
+      "title": "Small carriers extend amphibious support and naval gunfire spotting",
+      "kind": "chapter",
+      "start": "51:24",
+      "end": "52:51",
+      "topics": [
+        "amphibious-warfare",
+        "naval-gunfire-support",
+        "fairey-swordfish",
+        "carrier-reconnaissance"
+      ],
+      "summary": "Japan and Britain could use cruiser carriers for shore support and for aircraft spotting that extends the effective range of naval gunfire.",
+      "body": "Dr. Clarke connects the small-carrier concept to missions below the level of fleet air combat. Japan's experience at Tsingtao and in the Russo-Japanese War sustained an interest in amphibious operations, where carrier aircraft could strike targets ashore and support landing forces. Britain could use the same class as a spotting carrier. Before radar, an aircraft above the formation could observe the fall of shot and correct gunfire beyond the horizon visible from a ship. The Fairey Swordfish designation—torpedo, spotter, reconnaissance—captures this mixed mission set and explains why a modest air group could still contribute directly to surface combat.",
+      "sourcePath": "src/transcripts/txt/2026-06-06_T18-30-06_what-if-hms-hermes-was-the-first-of-a-class-of-cruiser-carriers_lLPfmYWw0W8.txt",
+      "evidence": [
+        {
+          "start": "51:24",
+          "end": "52:23",
+          "note": "Links Japanese carrier interest to amphibious support and British interest to spotting."
+        },
+        {
+          "start": "52:23",
+          "end": "52:51",
+          "note": "Explains aerial spotting and the Fairey Swordfish TSR designation."
+        }
+      ]
+    },
+    {
+      "id": "french-and-italian-regional-carrier-incentives",
+      "videoId": "lLPfmYWw0W8",
+      "slug": "french-and-italian-regional-carrier-incentives",
+      "title": "France and Italy gain a politically manageable carrier option",
+      "kind": "notable_point",
+      "start": "54:33",
+      "end": "55:34",
+      "topics": [
+        "french-navy",
+        "italian-navy",
+        "light-carriers",
+        "mediterranean-strategy"
+      ],
+      "summary": "A small carrier fits limited national tonnage allowances and can be justified as an organic scouting platform rather than a full fleet carrier.",
+      "body": "France and Italy also have reasons to copy a proven cruiser-carrier design. Their treaty allowances were much smaller than the British or American totals, making full-size carriers especially expensive in opportunity cost. For the Italian navy, a limited scouting mission and a small fighter group might also be easier to defend politically against an air force protective of its role. The ship could keep reconnaissance aircraft with the fleet instead of relying on land bases. A smaller hull, air group, and mission statement therefore offer both a budgetary and an institutional path into carrier aviation.",
+      "sourcePath": "src/transcripts/txt/2026-06-06_T18-30-06_what-if-hms-hermes-was-the-first-of-a-class-of-cruiser-carriers_lLPfmYWw0W8.txt",
+      "evidence": [
+        {
+          "start": "54:33",
+          "end": "55:05",
+          "note": "Identifies French and Italian interest and their constrained carrier allowances."
+        },
+        {
+          "start": "55:05",
+          "end": "55:34",
+          "note": "Shows how an Italian scouting justification could ease interservice resistance."
+        }
+      ]
+    },
+    {
+      "id": "london-treaty-cruiser-carrier-crisis",
+      "videoId": "lLPfmYWw0W8",
+      "slug": "london-treaty-cruiser-carrier-crisis",
+      "title": "Cruiser carriers force a different 1930 London Treaty bargain",
+      "kind": "chapter",
+      "start": "55:36",
+      "end": "59:58",
+      "topics": [
+        "london-naval-treaty",
+        "ryujo",
+        "naval-diplomacy",
+        "trade-protection"
+      ],
+      "summary": "British investment in sub-10,000-ton carriers removes support for counting the type against carrier tonnage and could put the treaty conference at risk.",
+      "body": "Historically, Britain and the United States supported bringing sub-10,000-ton carriers into the carrier category, a move that made Japan's Ryujo count against its allowance. In this alternate path Britain would own many such ships and would oppose that rule alongside Japan. A hard American position could therefore threaten the London conference, although all three governments faced strong economic reasons to restrain naval competition. Britain would also regard the carriers as instruments of trade protection rather than expendable treaty curiosities. Because maritime trade underpinned imperial power, restrictions on the type could be perceived as a direct strategic challenge. Dr. Clarke concludes that a negotiated category is more likely than outright collapse, but the route to agreement would differ sharply from history.",
+      "sourcePath": "src/transcripts/txt/2026-06-06_T18-30-06_what-if-hms-hermes-was-the-first-of-a-class-of-cruiser-carriers_lLPfmYWw0W8.txt",
+      "evidence": [
+        {
+          "start": "55:36",
+          "end": "56:24",
+          "note": "Explains the historical rule aimed at Ryujo."
+        },
+        {
+          "start": "56:27",
+          "end": "57:16",
+          "note": "Describes British and Japanese opposition and the possibility of treaty collapse."
+        },
+        {
+          "start": "57:18",
+          "end": "59:58",
+          "note": "Connects the bargaining position to trade protection and wider economic pressure."
+        }
+      ]
+    },
+    {
+      "id": "thirteen-thousand-five-hundred-ton-light-carrier-category",
+      "videoId": "lLPfmYWw0W8",
+      "slug": "thirteen-thousand-five-hundred-ton-light-carrier-category",
+      "title": "A 13,500-ton category separates light and fleet carrier missions",
+      "kind": "chapter",
+      "start": "1:00:01",
+      "end": "1:04:54",
+      "topics": [
+        "london-naval-treaty",
+        "light-carriers",
+        "fleet-carriers",
+        "naval-force-structure"
+      ],
+      "summary": "A treaty category at half the fleet-carrier maximum lets navies build light carriers for presence and reconnaissance while spending fleet-carrier tonnage on larger combat ships.",
+      "body": "Dr. Clarke proposes a light-carrier category analogous to the treaty division between heavy and light cruisers. Halving the 27,000-ton carrier maximum produces a 13,500-ton individual limit and, in his model, a separate cumulative allowance. Britain and America could build ten, Japan six, while France and Italy receive smaller totals according to treaty ratios. The distinction lets light carriers supply hull numbers, presence, and scouting without forcing fleet carriers to remain undersized. America gains a depression-era shipbuilding and employment opportunity, while France and Italy can operate several ships from smaller yards. Infrastructure, not paper allowance alone, would still limit how many each navy could complete and support.",
+      "sourcePath": "src/transcripts/txt/2026-06-06_T18-30-06_what-if-hms-hermes-was-the-first-of-a-class-of-cruiser-carriers_lLPfmYWw0W8.txt",
+      "evidence": [
+        {
+          "start": "1:00:01",
+          "end": "1:00:58",
+          "note": "Defines a 13,500-ton light-carrier category and national ratios."
+        },
+        {
+          "start": "1:01:01",
+          "end": "1:02:06",
+          "note": "Separates light-carrier presence missions from larger fleet-carrier design."
+        },
+        {
+          "start": "1:02:11",
+          "end": "1:04:54",
+          "note": "Explores American employment incentives, French and Italian numbers, and infrastructure limits."
+        }
+      ]
+    },
+    {
+      "id": "british-light-carrier-numbers-and-unicorn-lineage",
+      "videoId": "lLPfmYWw0W8",
+      "slug": "british-light-carrier-numbers-and-unicorn-lineage",
+      "title": "A twelve-carrier imperial force reshapes deployment and HMS Unicorn",
+      "kind": "chapter",
+      "start": "1:05:04",
+      "end": "1:08:38",
+      "topics": [
+        "hms-unicorn",
+        "royal-australian-navy",
+        "light-fleet-carriers",
+        "carrier-logistics"
+      ],
+      "summary": "The proposed treaty allowance can yield ten British and two Australian light carriers, while an established production line changes the development of an aviation support ship.",
+      "body": "The 13,500-ton ceiling nearly matches the later Colossus class, demonstrating how much capability the category could eventually contain. Dr. Clarke estimates that Britain might initially build six smaller carriers and later reach ten, with Australia operating two more. Pairs would serve China, the Indian Ocean, and the South Atlantic, while four ships remained in home waters for operations, work-up, or refit. Hermes could be replaced at any time under the experimental-carrier rule, freeing additional allowance. HMS Unicorn, historically conceived as a forward aviation support ship, might then grow from the established small-carrier lineage and serve as the logistical partner that widely deployed groups required.",
+      "sourcePath": "src/transcripts/txt/2026-06-06_T18-30-06_what-if-hms-hermes-was-the-first-of-a-class-of-cruiser-carriers_lLPfmYWw0W8.txt",
+      "evidence": [
+        {
+          "start": "1:05:04",
+          "end": "1:06:40",
+          "note": "Relates the category to Colossus size and calculates later British construction options."
+        },
+        {
+          "start": "1:06:48",
+          "end": "1:07:40",
+          "note": "Distributes ten British and two Australian carriers across overseas and home stations."
+        },
+        {
+          "start": "1:07:50",
+          "end": "1:08:38",
+          "note": "Connects the small-carrier production line to HMS Unicorn and aviation support."
+        }
+      ]
+    },
+    {
+      "id": "shipbuilding-employment-and-political-procurement",
+      "videoId": "lLPfmYWw0W8",
+      "slug": "shipbuilding-employment-and-political-procurement",
+      "title": "Employment politics can protect an interwar carrier programme",
+      "kind": "notable_point",
+      "start": "1:08:38",
+      "end": "1:11:13",
+      "topics": [
+        "naval-shipbuilding",
+        "naval-procurement",
+        "town-class-cruisers",
+        "british-politics"
+      ],
+      "summary": "Interwar naval orders could be distributed and named to make cancellation costly for constituency MPs, tying fleet construction to employment policy.",
+      "body": "Dr. Clarke argues that 1930s British rearmament was inseparable from employment and constituency politics. Town-class cruisers were named for important places and, where possible, built where the order would support politically valuable jobs. Admiral Henderson could therefore make cancellation immediately visible to the affected electorate, raising the political price for an MP who opposed a ship. The example follows an older pattern illustrated by the 'We Want Eight and We Won't Wait' campaign, where public pressure helped produce eight dreadnoughts after the navy asked for six and the Treasury preferred four. A steady light-carrier programme could use the same political economy to preserve shipyards and procurement momentum. The passage also warns against reading the interwar period backward through assumptions formed after Britain's post-1950 decline.",
+      "sourcePath": "src/transcripts/txt/2026-06-06_T18-30-06_what-if-hms-hermes-was-the-first-of-a-class-of-cruiser-carriers_lLPfmYWw0W8.txt",
+      "evidence": [
+        {
+          "start": "1:08:38",
+          "end": "1:09:44",
+          "note": "Connects ship names, yard allocation, employment, and constituency pressure."
+        },
+        {
+          "start": "1:09:46",
+          "end": "1:10:02",
+          "note": "Uses the 'We Want Eight' campaign as a precedent for naval-political pressure."
+        },
+        {
+          "start": "1:10:09",
+          "end": "1:11:13",
+          "note": "Cautions against projecting later British conditions backward onto the 1930s."
+        }
+      ]
+    },
+    {
+      "id": "light-carriers-reshape-fleet-carrier-designs",
+      "videoId": "lLPfmYWw0W8",
+      "slug": "light-carriers-reshape-fleet-carrier-designs",
+      "title": "Separate light-carrier tonnage removes compromises from fleet carriers",
       "kind": "chapter",
       "start": "1:11:17",
-      "end": "1:19:56",
+      "end": "1:16:08",
       "topics": [
-        "naval-aviation",
-        "ship-design",
-        "light-carriers",
-        "naval-architecture"
+        "hms-ark-royal",
+        "illustrious-class",
+        "yorktown-class",
+        "fleet-carriers"
       ],
-      "summary": "The later design section argues that repeated small-carrier construction could accelerate deck-edge lifts, flight-deck strength choices, and fleet-carrier lessons.",
-      "body": "This watch point is useful for understanding how hardware learning happens before computer simulation. Dr. Clarke argues that building more small carriers would give navies more chances to test ideas such as deck-edge lifts, flight-deck arrangements, armored-deck options, and aviation support ships. Because a small carrier is one of many rather than one of a handful of fleet carriers, it can absorb more design risk and feed lessons into the larger ships.",
+      "summary": "With scouting and presence covered by light carriers, Britain and America can spend their main allowances on larger, more capable fleet-carrier classes.",
+      "body": "Removing experimental ships such as Argus, Hermes, and potentially Furious from the active allowance creates room for a different British fleet-carrier programme. Ark Royal might be ordered as a pair and grow from 22,000 tons toward 25,000 or even 27,000 tons, gaining stronger torpedo protection, an armored deck, and deck-edge lifts. The result would not be the historically compromised Ark Royal, although the precise design remains speculative. In the United States, Ranger and Wasp no longer fit a force structure with a separate small-carrier category. Their tonnage and construction effort could instead produce a fourth or fifth Yorktown alongside the two Lexington conversions. By the outbreak of war, the US Navy might therefore combine several Yorktowns with a group of smaller scouting carriers.",
       "sourcePath": "src/transcripts/txt/2026-06-06_T18-30-06_what-if-hms-hermes-was-the-first-of-a-class-of-cruiser-carriers_lLPfmYWw0W8.txt",
       "evidence": [
         {
           "start": "1:11:17",
-          "end": "1:15:03",
-          "note": "Explains how extra light-carrier tonnage could change Ark Royal, Ranger, Wasp, and Yorktown-style decisions."
+          "end": "1:13:19",
+          "note": "Calculates British allowance after experimental carriers leave service."
         },
         {
-          "start": "1:16:16",
-          "end": "1:18:29",
-          "note": "Uses deck-edge lift development and British experience to show how carrier technology could advance through testing."
+          "start": "1:13:19",
+          "end": "1:14:59",
+          "note": "Explores a larger, less compromised Ark Royal design."
         },
         {
-          "start": "1:19:00",
-          "end": "1:19:56",
-          "note": "States that smaller carriers would likely carry more design experimentation than scarce fleet carriers."
+          "start": "1:14:59",
+          "end": "1:16:08",
+          "note": "Replaces Ranger and Wasp with additional Yorktowns and small scouting carriers."
         }
       ]
     },
     {
-      "id": "naval-aviation-density-changes-wwii-opening",
+      "id": "small-carriers-as-design-laboratories",
       "videoId": "lLPfmYWw0W8",
-      "slug": "naval-aviation-density-changes-wwii-opening",
-      "title": "Denser naval aviation changes early Second World War problems",
-      "kind": "notable_point",
-      "start": "1:20:02",
-      "end": "1:30:48",
+      "slug": "small-carriers-as-design-laboratories",
+      "title": "Small carriers become practical laboratories for deck-edge lifts",
+      "kind": "chapter",
+      "start": "1:16:16",
+      "end": "1:19:56",
       "topics": [
-        "second-world-war",
-        "naval-aviation",
-        "light-carriers",
-        "japanese-navy",
-        "royal-navy"
+        "deck-edge-lifts",
+        "carrier-design",
+        "royal-naval-air-service",
+        "naval-innovation"
       ],
-      "summary": "The conclusion asks how more light carriers and pilots would change 1930s exercises, Southeast Asian defenses, raider hunts, and early wartime carrier losses.",
-      "body": "The final substantive section tests the scenario against wartime consequences without pretending the whole war can be cleanly rerun. More carriers mean more pilots, more exercises, and earlier evidence about air attack and air defence, especially around capital ships and cruisers. Dr. Clarke then points to Southeast Asia, the River Plate, Deutschland, Courageous, Glorious, and Norway as examples where additional light carriers might change the choices available to British and Japanese commanders.",
+      "summary": "Without computer simulation, a numerous light-carrier force gives navies affordable hulls on which to test lifts, hangar arrangements, and other design choices.",
+      "body": "Interwar designers could not rely on computer-aided design or simulation, so building a ship was the surest way to test a carrier concept. Wasp's port-side outrigger lift illustrates the space and weight advantages of moving an elevator out of the flight deck. British designers had considered similar ideas but remained wary because North Sea weather had swept many Royal Naval Air Service aircraft from exposed decks during the First World War. A small carrier intended for distant stations could accept that risk and gain more hangar room within a tight displacement. With ten or twelve hulls, a disappointing experiment could become a training ship instead of crippling the fleet. Lessons from these cheaper ships would then inform the five or six high-value fleet carriers on which designers had to be more conservative.",
+      "sourcePath": "src/transcripts/txt/2026-06-06_T18-30-06_what-if-hms-hermes-was-the-first-of-a-class-of-cruiser-carriers_lLPfmYWw0W8.txt",
+      "evidence": [
+        {
+          "start": "1:16:16",
+          "end": "1:17:16",
+          "note": "Explains build-to-test design practice and Wasp's deck-edge elevator."
+        },
+        {
+          "start": "1:17:18",
+          "end": "1:18:29",
+          "note": "Connects British reluctance to North Sea aircraft losses and small-carrier hangar needs."
+        },
+        {
+          "start": "1:19:00",
+          "end": "1:19:56",
+          "note": "Shows why numerous small carriers can absorb more experimental risk than scarce fleet carriers."
+        }
+      ]
+    },
+    {
+      "id": "japanese-carriers-confidence-and-pilot-depth",
+      "videoId": "lLPfmYWw0W8",
+      "slug": "japanese-carriers-confidence-and-pilot-depth",
+      "title": "More Japanese carriers force a deeper naval pilot system",
+      "kind": "chapter",
+      "start": "1:20:02",
+      "end": "1:25:36",
+      "topics": [
+        "japanese-navy",
+        "naval-aviation-training",
+        "force-structure",
+        "russo-japanese-war"
+      ],
+      "summary": "A larger light-carrier fleet could strengthen Japanese strategic confidence while compelling the navy to recruit and develop more than a tiny elite of aviators.",
+      "body": "Japan's main constraint would be shipyard infrastructure, although political pressure could bring underused yards into the programme. Dr. Clarke argues that more carriers might also reinforce Japan's traditional search for a minimum force large enough to make intervention prohibitively demanding. He traces that logic through the Anglo-Japanese alliance and the Russo-Japanese War, when an opponent had to deploy enormous strength across difficult logistics. Carrier aviation would add another layer to that deterrent calculation. More decks, however, require more pilots, forcing the navy to relax a selection system focused on only the very best candidates. A broader pipeline would provide wingmen, depth, and aircrew able to improve with experience instead of leaving the force dependent on a narrow prewar elite.",
       "sourcePath": "src/transcripts/txt/2026-06-06_T18-30-06_what-if-hms-hermes-was-the-first-of-a-class-of-cruiser-carriers_lLPfmYWw0W8.txt",
       "evidence": [
         {
           "start": "1:20:02",
-          "end": "1:24:16",
-          "note": "Discusses Japanese infrastructure, carrier numbers, pilot recruitment, and training depth."
+          "end": "1:20:45",
+          "note": "Identifies Japanese yard and political constraints and a possible increase in national confidence."
         },
         {
+          "start": "1:20:45",
+          "end": "1:23:24",
+          "note": "Explains Japan's minimum-force strategy through alliance and Russo-Japanese War examples."
+        },
+        {
+          "start": "1:23:25",
+          "end": "1:25:36",
+          "note": "Connects more carriers to broader pilot recruitment, wingmen, and training depth."
+        }
+      ]
+    },
+    {
+      "id": "industrial-power-limits-alternate-carrier-war",
+      "videoId": "lLPfmYWw0W8",
+      "slug": "industrial-power-limits-alternate-carrier-war",
+      "title": "Extra carriers do not erase the Allies' industrial advantage",
+      "kind": "notable_point",
+      "start": "1:25:39",
+      "end": "1:27:14",
+      "topics": [
+        "second-world-war",
+        "war-production",
+        "british-empire",
+        "japanese-navy"
+      ],
+      "summary": "The alternate force changes campaigns and losses but not the overwhelming production imbalance if Japan still fights both the British Empire and the United States.",
+      "body": "Dr. Clarke places a firm limit on the scenario's strategic effects. A broader Japanese carrier force and pilot pipeline would not overturn the outcome of a war against both Britain and America. The comparison must include the British Empire rather than Britain alone, because Canada, India, Australia, New Zealand, South Africa, and other imperial resources formed a coordinated production and logistics network. American industrial output added another enormous source of ships, aircraft, and matériel. Extra light carriers could change choices and battles, but they could not remove that structural disparity.",
+      "sourcePath": "src/transcripts/txt/2026-06-06_T18-30-06_what-if-hms-hermes-was-the-first-of-a-class-of-cruiser-carriers_lLPfmYWw0W8.txt",
+      "evidence": [
+        {
+          "start": "1:25:39",
+          "end": "1:26:17",
+          "note": "States that the scenario does not overcome British and American industrial power."
+        },
+        {
+          "start": "1:26:19",
+          "end": "1:27:14",
+          "note": "Explains why the British Empire, not Britain in isolation, is the relevant comparison."
+        }
+      ]
+    },
+    {
+      "id": "extra-carriers-change-exercises-and-early-war-options",
+      "videoId": "lLPfmYWw0W8",
+      "slug": "extra-carriers-change-exercises-and-early-war-options",
+      "title": "Denser carrier forces rewrite exercises and early-war choices",
+      "kind": "chapter",
+      "start": "1:27:17",
+      "end": "1:31:35",
+      "topics": [
+        "second-world-war",
+        "naval-exercises",
+        "battle-of-the-river-plate",
+        "commerce-raiding"
+      ],
+      "summary": "More carriers and air groups could expose flawed air-defence assumptions earlier and alter Southeast Asian defence, raider hunts, and the employment of Britain's large fleet carriers.",
+      "body": "A denser carrier force would put more aircraft into 1930s exercises, creating additional evidence about attacks on capital ships, cruisers, carriers, and destroyers. In Southeast Asia, British, Australian, French, and possibly Dutch light carriers could complicate a Japanese advance even though they could not defeat a concentrated fleet-carrier force alone. At the River Plate, Swordfish approaching from another bearing might slow Admiral Graf Spee before she reached Uruguay. Additional light carriers in the North Atlantic might tighten the hunt for Deutschland and take antisubmarine duties that historically exposed Courageous or diverted larger carriers. Those substitutions could have cumulative consequences for Norway and for Glorious. Germany would still struggle to accelerate its own carrier programme because internal politics, infrastructure, and construction problems remain. French carriers would introduce further uncertainty depending on whether they later served Free French or Vichy forces.",
+      "sourcePath": "src/transcripts/txt/2026-06-06_T18-30-06_what-if-hms-hermes-was-the-first-of-a-class-of-cruiser-carriers_lLPfmYWw0W8.txt",
+      "evidence": [
+        {
           "start": "1:27:17",
-          "end": "1:29:20",
-          "note": "Asks how more naval aviation would affect 1930s exercises, Southeast Asia, light-carrier defenses, and air attack assumptions."
+          "end": "1:28:00",
+          "note": "Connects more carrier exercises to earlier testing of air-defence assumptions."
+        },
+        {
+          "start": "1:28:10",
+          "end": "1:29:24",
+          "note": "Explores a multi-national light-carrier presence in Southeast Asia."
         },
         {
           "start": "1:29:27",
           "end": "1:30:48",
-          "note": "Uses River Plate, Deutschland, Courageous, Glorious, and Norway as examples of changed wartime carrier employment."
+          "note": "Applies the scenario to River Plate, Deutschland, Courageous, Glorious, and Norway."
+        },
+        {
+          "start": "1:30:48",
+          "end": "1:31:35",
+          "note": "Assesses German constraints and the uncertain role of French carriers."
         }
       ]
     }

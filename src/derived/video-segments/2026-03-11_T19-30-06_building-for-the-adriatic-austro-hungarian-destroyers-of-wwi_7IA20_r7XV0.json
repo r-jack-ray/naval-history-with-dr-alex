@@ -8,7 +8,9 @@
     "ship-design",
     "naval-procurement",
     "naval-mines",
-    "naval-doctrine"
+    "naval-doctrine",
+    "force-structure",
+    "naval-industrial-capacity"
   ],
   "segments": [
     {
@@ -24,10 +26,13 @@
         "destroyers",
         "pre-world-war-i",
         "naval-procurement",
-        "naval-doctrine"
+        "naval-doctrine",
+        "force-structure",
+        "naval-personnel",
+        "naval-industrial-capacity"
       ],
       "summary": "The opening explains why destroyers suited Adriatic defence but fitted awkwardly into a navy expected to bind a multinational empire together.",
-      "body": "From an external perspective, the Adriatic made destroyers an attractive investment for the Kaiserliche und Koenigliche Kriegsmarine. Internally, the navy also needed larger ships and larger crews that could bring people and industries across the empire together. That tension helps explain why the destroyer programme began late, with Huszar launched in 1905.",
+      "body": "From an external perspective, the confined Adriatic made destroyers an attractive investment for the Kaiserliche und Koenigliche Kriegsmarine. Internally, however, the navy also served as one of the empire's few institutions that mixed national groups rather than separating them into local formations. Large warships gathered bigger crews and technically trained people who could build professional and industrial connections across the imperial divide. Destroyers cost enough to require political justification but carried too few people to deliver the same nation-building return, while much cheaper torpedo boats remained easier to fund. That tension helps explain why the destroyer programme began late, with Huszar launched only in 1905.",
       "sourcePath": "src/transcripts/txt/2026-03-11_T19-30-06_building-for-the-adriatic-austro-hungarian-destroyers-of-wwi_7IA20_r7XV0.txt",
       "evidence": [
         {
@@ -54,7 +59,7 @@
         "naval-mines"
       ],
       "summary": "Small early destroyers supported raids and pursuits, but their modest displacement and 66 mm guns exposed the limits of the Austro-Hungarian force.",
-      "body": "The Huszar class entered service as a roughly 420-ton, 28-knot design whose light gun battery looked dated by 1905. Warasdin, a Chinese order seized by Austria-Hungary, showed what speed could achieve in Adriatic raiding: it operated against the Italian coast, sank the grounded submarine Fresnel, and escaped a Franco-Italian pursuit. The discussion also stresses that 66 mm guns were a poor fit for destructive shore bombardment, while mines caused many of the class's wartime losses.",
+      "body": "The Huszar class entered service as a roughly 420-ton, 28-knot design whose light gun battery and expansion machinery already looked conservative in 1905. Yarrow built the first ship, which was lost in 1908 and replaced in 1910 with salvaged equipment and armament. The programme ultimately encompassed thirteen Huszars plus Warasdin, a faster Chinese order seized when war began. A typical Huszar carried one 66 mm gun, seven 47 mm guns, and two 450 mm torpedo tubes, an awkward battery for a destroyer expected to fight peers and raid coastlines. The class fought hard against Italian destroyers, yet mines rather than gunfire accounted for much of its wartime attrition. Warasdin's different gun and torpedo arrangement points toward a more capable design path, but it did not solve the fleet's shortage of modern destroyers.",
       "sourcePath": "src/transcripts/txt/2026-03-11_T19-30-06_building-for-the-adriatic-austro-hungarian-destroyers-of-wwi_7IA20_r7XV0.txt",
       "evidence": [
         {
@@ -70,26 +75,80 @@
       ]
     },
     {
+      "id": "warasdin-adriatic-raids-and-pursuit",
+      "videoId": "7IA20_r7XV0",
+      "slug": "warasdin-adriatic-raids-and-pursuit",
+      "title": "Warasdin used speed to raid and escape in the Adriatic",
+      "kind": "notable_point",
+      "start": "9:03",
+      "end": "12:25",
+      "topics": [
+        "austro-hungarian-navy",
+        "destroyers",
+        "world-war-i",
+        "submarines",
+        "naval-operations",
+        "ship-design"
+      ],
+      "summary": "The seized Chinese destroyer Warasdin combined a heavier uniform gun battery with 30-knot speed that proved useful in coastal raids and disengagements.",
+      "body": "Warasdin had been ordered by China as Lung Tuan before Austria-Hungary seized it at the outbreak of war. Its battery of six 66 mm guns and four 450 mm torpedo tubes was more coherent than the mixed light armament of the Huszars, and its 30-knot speed gave it a practical edge. During a 1915 raid it encountered and sank the grounded French submarine Fresnel. In August 1916, Warasdin and Wildfang bombarded Molfetta and then stayed ahead of pursuing French and Italian destroyers until support near Cattaro discouraged further pursuit. The episode demonstrates the value of speed in the confined Adriatic while also questioning whether 66 mm shells could inflict meaningful damage during shore bombardment.",
+      "sourcePath": "src/transcripts/txt/2026-03-11_T19-30-06_building-for-the-adriatic-austro-hungarian-destroyers-of-wwi_7IA20_r7XV0.txt",
+      "evidence": [
+        {
+          "start": "9:03",
+          "end": "12:25",
+          "note": "The transcript gives Warasdin's Chinese origin, armament and speed, then covers the Fresnel sinking, the Molfetta raid, the Franco-Italian pursuit, and the shore-bombardment limitation of 66 mm guns."
+        }
+      ]
+    },
+    {
+      "id": "austro-hungary-qualitative-naval-race",
+      "videoId": "7IA20_r7XV0",
+      "slug": "austro-hungary-qualitative-naval-race",
+      "title": "Austria-Hungary was an intermittent entrant in the qualitative naval race",
+      "kind": "notable_point",
+      "start": "15:36",
+      "end": "18:28",
+      "topics": [
+        "austro-hungarian-navy",
+        "pre-world-war-i",
+        "naval-procurement",
+        "naval-doctrine",
+        "naval-industrial-capacity"
+      ],
+      "summary": "A wider comparison shows how Britain, the United States, Japan and Italy pursued quality for different strategic reasons, while Austria-Hungary periodically surprised its rivals with advanced work.",
+      "body": "The lecture briefly places Austro-Hungarian destroyer development inside the wider prewar competition for qualitative advantage. Britain could raise warship costs until German naval spending collided with the army's political priority, while the United States used advanced ships to advertise national and industrial status. Japan sought quality to offset numerical inferiority, and Italy needed to balance both French and Austro-Hungarian threats. Austria-Hungary lacked the consistent funding to lead this race, but its naval architects and gun engineers could still produce abrupt advances that forced Italy to pay attention. This comparison explains why a small, unevenly funded navy could move from the conservative Huszars to the much stronger Tatra class.",
+      "sourcePath": "src/transcripts/txt/2026-03-11_T19-30-06_building-for-the-adriatic-austro-hungarian-destroyers-of-wwi_7IA20_r7XV0.txt",
+      "evidence": [
+        {
+          "start": "15:36",
+          "end": "18:28",
+          "note": "The transcript compares the strategic reasons for British, American, Japanese and Italian qualitative competition, then describes Austria-Hungary as an occasional high-quality entrant backed by strong naval architects and gun engineers."
+        }
+      ]
+    },
+    {
       "id": "austro-hungarian-industrial-quality-for-destroyers",
       "videoId": "7IA20_r7XV0",
       "slug": "austro-hungarian-industrial-quality-for-destroyers",
       "title": "Industrial quality gave the navy a destroyer option",
       "kind": "chapter",
-      "start": "16:46",
+      "start": "18:19",
       "end": "19:22",
       "topics": [
         "austro-hungarian-navy",
         "destroyers",
         "pre-world-war-i",
         "ship-design",
-        "naval-procurement"
+        "naval-procurement",
+        "naval-industrial-capacity"
       ],
       "summary": "Austro-Hungarian firms and yards could advance destroyer quality even though land priorities constrained the navy's overall spending.",
-      "body": "The episode places Austria-Hungary among the states capable of making sharp qualitative naval advances when it chose to invest. Firms such as Skoda supplied specialist engineering strength, while the navy's builders could produce a credible torpedo craft for foreign customers as well as its own fleet. This industrial capacity created the basis for the much more capable Tatra class, without removing the political limits on fleet scale.",
+      "body": "Austria-Hungary possessed more naval-industrial depth than the size of its destroyer force might suggest. Firms such as Skoda supplied specialist gun engineering, while imperial yards could produce a credible torpedo craft for a foreign customer as well as for their own fleet. Chinese willingness to order such a vessel illustrates the international reputation of that engineering base. For the Tatras, Daimler-Benz-built Curtis-pattern turbine sets were paired with Yarrow boilers because no suitable German or Austro-Hungarian boiler design could extract the required efficiency. The result was selective use of foreign technology within a capable domestic construction system, creating a much stronger destroyer without removing the political limits on fleet scale.",
       "sourcePath": "src/transcripts/txt/2026-03-11_T19-30-06_building-for-the-adriatic-austro-hungarian-destroyers-of-wwi_7IA20_r7XV0.txt",
       "evidence": [
         {
-          "start": "16:46",
+          "start": "18:19",
           "end": "19:22",
           "note": "The transcript discusses qualitative naval competition, Austrian gun engineers, Chinese interest in a torpedo craft, and the turbine and boiler choices."
         }
@@ -113,7 +172,7 @@
         "naval-procurement"
       ],
       "summary": "The Tatra class replaced Huszar conservatism with 100 mm guns, twin torpedo tubes, 32.5-knot speed and useful endurance.",
-      "body": "The Tatra design paired Daimler-Benz-built Curtis turbines and six Yarrow boilers with two Skoda 100 mm guns, smaller secondary guns, and two twin 450 mm torpedo mounts. A crew of 105, a 32.5-knot top speed, and a 1,600-nautical-mile range made it a much more balanced Adriatic destroyer. Ganz-Danubius completed the six-ship class in time for the opening of the war, giving Austria-Hungary a small but capable modern force.",
+      "body": "The Tatra design was a deliberate break from the conservative Huszars, whose small size had already become contentious by the time they entered service. Daimler-Benz-built Curtis turbines and six Yarrow boilers supported a 32.5-knot top speed and a 1,600-nautical-mile range at 12 knots. Two Skoda 100 mm guns gave the ships useful punch for surface combat and coastal raiding, while six 66 mm guns and two twin 450 mm torpedo mounts completed the battery. Crews often trusted the 100 mm weapons more than the 66 mm guns marketed for anti-torpedo-boat work. A complement of 105 also marked a substantial growth over the roughly 70 to 80 sailors carried by a Huszar. Ganz-Danubius built all six ships at Porto Re, completing them by August 1914 and giving Austria-Hungary a small but capable modern destroyer force at the start of the war.",
       "sourcePath": "src/transcripts/txt/2026-03-11_T19-30-06_building-for-the-adriatic-austro-hungarian-destroyers-of-wwi_7IA20_r7XV0.txt",
       "evidence": [
         {
@@ -124,12 +183,64 @@
       ]
     },
     {
+      "id": "tatra-mixed-fuel-operational-insurance",
+      "videoId": "7IA20_r7XV0",
+      "slug": "tatra-mixed-fuel-operational-insurance",
+      "title": "Mixed-fuel boilers gave the Tatras operational insurance",
+      "kind": "notable_point",
+      "start": "24:55",
+      "end": "25:34",
+      "topics": [
+        "austro-hungarian-navy",
+        "destroyers",
+        "world-war-i",
+        "ship-design",
+        "naval-logistics"
+      ],
+      "summary": "The Tatra class paired strong manoeuvrability with four oil-fired and two coal-fired boilers, preserving flexibility when wartime fuel conditions were uncertain.",
+      "body": "The Tatras are presented as balanced ships whose manoeuvrability matched their speed and armament. Four boilers burned oil while two retained coal firing, rather than committing the class completely to one fuel. The lecture treats that arrangement as insurance against uncertain operational requirements and wartime supply. It is a useful reminder that a destroyer's performance depended not only on headline speed but also on the fuel system supporting sustained deployment. The design choice helped make the class more adaptable than its small numbers might suggest.",
+      "sourcePath": "src/transcripts/txt/2026-03-11_T19-30-06_building-for-the-adriatic-austro-hungarian-destroyers-of-wwi_7IA20_r7XV0.txt",
+      "evidence": [
+        {
+          "start": "24:55",
+          "end": "25:34",
+          "note": "The transcript praises the Tatras' balance and manoeuvrability, then explains that four boilers used oil and two used coal as operational insurance."
+        }
+      ]
+    },
+    {
+      "id": "durazzo-monge-and-fog-harbor-raid",
+      "videoId": "7IA20_r7XV0",
+      "slug": "durazzo-monge-and-fog-harbor-raid",
+      "title": "The Durazzo raid began with the submarine Monge and a fog-bound harbour entry",
+      "kind": "chapter",
+      "start": "26:07",
+      "end": "27:30",
+      "topics": [
+        "austro-hungarian-navy",
+        "destroyers",
+        "world-war-i",
+        "submarines",
+        "naval-operations"
+      ],
+      "summary": "Before mines transformed the mission, Helgoland and five Tatras sank the French submarine Monge and used dense fog to penetrate Durazzo harbour.",
+      "body": "The December 1915 operation sent the cruiser Helgoland and five Tatra-class destroyers south toward Durazzo. En route, Helgoland rammed the French submarine Monge and Balaton finished it with gunfire. The destroyers rescued the surviving submariners, although the French commander chose to remain aboard and died with his boat. Dense fog then helped the Austro-Hungarian force cross the minefield and enter Durazzo harbour while Helgoland engaged the coastal batteries. Finding no enemy destroyers, the raiders sank a steamer and a sailing vessel before beginning their withdrawal.",
+      "sourcePath": "src/transcripts/txt/2026-03-11_T19-30-06_building-for-the-adriatic-austro-hungarian-destroyers-of-wwi_7IA20_r7XV0.txt",
+      "evidence": [
+        {
+          "start": "26:07",
+          "end": "27:30",
+          "note": "The transcript dates the operation, names Helgoland and the five Tatras, recounts the Monge's ramming and sinking with survivor rescue, and describes the fog-assisted entry into Durazzo harbour."
+        }
+      ]
+    },
+    {
       "id": "durazzo-minefield-rescue-problem",
       "videoId": "7IA20_r7XV0",
       "slug": "durazzo-minefield-rescue-problem",
       "title": "At Durazzo, minefields turned a raid into a rescue problem",
       "kind": "chapter",
-      "start": "25:00",
+      "start": "27:32",
       "end": "30:12",
       "topics": [
         "austro-hungarian-navy",
@@ -138,14 +249,41 @@
         "naval-mines",
         "naval-doctrine"
       ],
-      "summary": "The Tatra force entered Durazzo in fog, but mines damaged Lika and Triglav and trapped the survivors in a slow withdrawal.",
-      "body": "At the Battle of Durazzo in December 1915, Helgoland and five Tatra-class destroyers used fog to enter the harbour while the cruiser engaged coastal batteries. On the way out, the marked route through the minefield made the force predictable: Lika was sunk and Triglav was disabled. Rescue work and repeated towing efforts then replaced the planned fast withdrawal with a vulnerable, slow-moving convoy.",
+      "summary": "Leaving Durazzo through a predictable channel, the Tatra force struck mines that sank Lika, disabled Triglav and trapped the survivors in a slow withdrawal.",
+      "body": "Hidden shore guns opened fire as the raiders left Durazzo, and the narrow safe route through the minefield made their course predictable. Tatra's propellers apparently tore a mine loose, after which Lika suffered at least two explosions and sank. Triglav struck another mine while attempting to help, leaving the second destroyer disabled. The force rescued most of Lika's crew and repeatedly shifted the tow as Szigetvar's propeller became fouled and reduced its speed to 20 knots. A mission planned around fast destroyers had become a vulnerable rescue convoy that required the armoured cruiser Kaiser Karl VI to steam out as cover.",
       "sourcePath": "src/transcripts/txt/2026-03-11_T19-30-06_building-for-the-adriatic-austro-hungarian-destroyers-of-wwi_7IA20_r7XV0.txt",
       "evidence": [
         {
-          "start": "25:00",
+          "start": "27:32",
           "end": "30:12",
-          "note": "The transcript introduces the battle, describes the harbour raid and mine strikes, then follows the rescue and towing efforts toward Cattaro."
+          "note": "The transcript describes the predictable exit channel, the mine strikes on Lika and Triglav, crew rescue, the fouled propeller and shifting tow, and the request for a covering force from Cattaro."
+        }
+      ]
+    },
+    {
+      "id": "durazzo-operational-result-and-victory",
+      "videoId": "7IA20_r7XV0",
+      "slug": "durazzo-operational-result-and-victory",
+      "title": "Why Durazzo resists a simple victory or defeat label",
+      "kind": "notable_point",
+      "start": "30:37",
+      "end": "33:40",
+      "topics": [
+        "austro-hungarian-navy",
+        "destroyers",
+        "world-war-i",
+        "naval-operations",
+        "naval-doctrine",
+        "naval-mines"
+      ],
+      "summary": "The Allied pincer threatened the damaged raiders, but judging the battle requires separating mine losses, tactical damage and the Austro-Hungarian objective of withdrawal.",
+      "body": "Allied cruisers and destroyers attempted to place the retreating Austro-Hungarian force between groups led by Dartmouth and Nino Bixio. By the time the fleets converged, Lika had already sunk and Triglav's survival had been decided by mine damage rather than the ensuing gunnery action. The Allies had also lost the submarine Monge, a steamer and a sailing vessel during the raid, while cruisers on both sides would suffer damage. The lecture therefore warns against treating the loss count alone as a complete verdict. If the Austro-Hungarian aim after the mine strikes was to withdraw and the surviving ships did so, the action cannot be reduced to an uncomplicated Allied victory, even though the Allies retained control of the surrounding sea. The passage is a compact lesson in judging naval outcomes by objectives, context and sea control rather than by hull totals alone.",
+      "sourcePath": "src/transcripts/txt/2026-03-11_T19-30-06_building-for-the-adriatic-austro-hungarian-destroyers-of-wwi_7IA20_r7XV0.txt",
+      "evidence": [
+        {
+          "start": "30:37",
+          "end": "33:40",
+          "note": "The transcript outlines the Allied pincer, separates the mine-damaged destroyers from later battle losses, compares damage on both sides, and defines naval success in relation to operational aims and control of the sea."
         }
       ]
     },
@@ -155,23 +293,51 @@
       "slug": "durazzo-speed-and-improvisation-escape",
       "title": "Speed and improvisation let the Durazzo force break contact",
       "kind": "notable_point",
-      "start": "30:37",
+      "start": "34:01",
       "end": "37:15",
       "topics": [
         "austro-hungarian-navy",
         "destroyers",
         "world-war-i",
         "naval-mines",
-        "naval-doctrine"
+        "naval-doctrine",
+        "naval-operations"
       ],
       "summary": "The damaged force survived because a fast destroyer regained mobility, the formation used speed and darkness, and Allied ships failed to seal its route.",
-      "body": "The opposing force tried to trap the retreating ships between cruiser groups, but the Austro-Hungarian formation remained focused on escape rather than a set-piece fight. Szigetvar recovered its mobility after its engineer forced the obstructing cable or wire free at full engine pressure, an expedient the speaker presents as exceptionally risky. With darkness coming, Captain Seitz turned south at speed and looped past the pursuing force, illustrating why the battle's outcome cannot be judged by losses alone.",
+      "body": "The surviving Austro-Hungarian ships fought while remaining focused on escape rather than accepting a set-piece cruiser action. Helgoland traded fire with Dartmouth and Quarto and even launched a stern torpedo when the range became uncomfortably short. Szigetvar's engineer then applied the engine's full power against the rope, wire or cable fouling a shaft, tearing it free at considerable risk to the propeller and machinery. Once the destroyer regained 32 knots, the formation recovered the speed needed to manoeuvre as a group. With dusk approaching, Captain Seitz turned south at full speed and then looped around the Allied force in darkness, passing only a few kilometres away. The escape shows how machinery performance, improvised damage control and timing could reverse an apparently closed pursuit.",
       "sourcePath": "src/transcripts/txt/2026-03-11_T19-30-06_building-for-the-adriatic-austro-hungarian-destroyers-of-wwi_7IA20_r7XV0.txt",
       "evidence": [
         {
-          "start": "30:37",
+          "start": "34:01",
           "end": "37:15",
-          "note": "The transcript covers the Allied interception plan, Szigetvar's recovery to 32 knots, Seitz's dusk manoeuvre, and the operational interpretation of the result."
+          "note": "The transcript covers Helgoland's close action, Szigetvar's risky recovery to 32 knots, and Seitz's dusk turn and loop around the pursuing force."
+        }
+      ]
+    },
+    {
+      "id": "durazzo-covering-force-destroyer-shortage",
+      "videoId": "7IA20_r7XV0",
+      "slug": "durazzo-covering-force-destroyer-shortage",
+      "title": "Durazzo exposed the cost of having no modern destroyer reserve",
+      "kind": "notable_point",
+      "start": "37:17",
+      "end": "38:42",
+      "topics": [
+        "austro-hungarian-navy",
+        "destroyers",
+        "world-war-i",
+        "fleet-screening",
+        "force-structure",
+        "naval-operations"
+      ],
+      "summary": "A pre-arranged covering force might have helped the raiders, but every available modern Tatra was already committed and the older Huszars were poorly suited to the likely fight.",
+      "body": "The lecture treats the mine losses as an accepted operational risk but asks whether a covering force should have been ready before the raid began. Sending that force early could have alerted the Allies, while sending it later might still have created a distraction or a larger fleet action. The deeper constraint was material: all five available Tatras were already with Helgoland. Any destroyers added to the covering group would therefore have been the slower and more lightly armed Huszars. Their crews might have fought well, but the ships themselves were ill suited to a clash with modern Allied destroyers and cruisers. Durazzo thus turns destroyer numbers from an abstract procurement issue into a concrete limit on operational planning.",
+      "sourcePath": "src/transcripts/txt/2026-03-11_T19-30-06_building-for-the-adriatic-austro-hungarian-destroyers-of-wwi_7IA20_r7XV0.txt",
+      "evidence": [
+        {
+          "start": "37:17",
+          "end": "38:42",
+          "note": "The transcript weighs the visibility and timing of a covering force, notes that all five modern Tatras were committed, and explains why adding Huszars would have been operationally unattractive."
         }
       ]
     },
@@ -192,7 +358,7 @@
         "naval-logistics"
       ],
       "summary": "The late Triglav replacement design retained the Tatra's core system while adding capacity and torpedo-handling improvements, but none served Austria-Hungary.",
-      "body": "The four replacement ships were longer and slightly broader than the Tatras, while retaining the Skoda 100 mm weapons, Curtis-pattern turbines, and Yarrow boilers. Their stowage and unloading arrangements for spare torpedoes reflected wartime experience. Although the designs promised a more capable follow-on force, they were unfinished at the end of the war and never entered Austro-Hungarian service.",
+      "body": "The four replacement ships included new vessels named Triglav and Lika after the destroyers lost at Durazzo. They were longer, slightly broader and heavier than the Tatras, with a complement increased to 114. The design retained the Skoda 100 mm weapons, Curtis-pattern turbines and Yarrow boilers rather than discarding a successful machinery and armament combination. Spare torpedoes and arrangements intended to make them easier to unload reflected practical wartime experience. Although the ships promised a more capable follow-on force, none entered Austro-Hungarian service before the empire collapsed, and at least one later passed to France as a reparation.",
       "sourcePath": "src/transcripts/txt/2026-03-11_T19-30-06_building-for-the-adriatic-austro-hungarian-destroyers-of-wwi_7IA20_r7XV0.txt",
       "evidence": [
         {
@@ -209,6 +375,35 @@
       "title": "Adriatic geography made a small destroyer fleet costly",
       "kind": "chapter",
       "start": "40:46",
+      "end": "43:30",
+      "topics": [
+        "austro-hungarian-navy",
+        "destroyers",
+        "world-war-i",
+        "fleet-screening",
+        "naval-procurement",
+        "naval-doctrine",
+        "force-structure",
+        "naval-personnel"
+      ],
+      "summary": "Geography, divided government and land priorities constrained naval funding even though the empire trained capable multilingual personnel and built good ships.",
+      "body": "Austria-Hungary's access to the sea through the Adriatic made the navy strategically necessary but also unusually easy for Italy to contain at the Strait of Otranto. Internal political divisions, the structure of government and heavy land commitments all weakened the navy's claim on imperial funds. Torpedo boats and submarines offered affordable local utility, while destroyers remained awkwardly positioned between cheap craft and prestigious large warships. The result was a force capable of designing good ships but acquiring only a handful of them. Officers and non-commissioned officers were expected to master several languages and meet high professional standards, yet skill could not substitute for missing hulls. This section links geography, institutions, personnel and procurement to explain why destroyers became the fleet's neglected middle tier.",
+      "sourcePath": "src/transcripts/txt/2026-03-11_T19-30-06_building-for-the-adriatic-austro-hungarian-destroyers-of-wwi_7IA20_r7XV0.txt",
+      "evidence": [
+        {
+          "start": "40:46",
+          "end": "43:30",
+          "note": "The transcript links Adriatic geography, governmental and land-war priorities, the preference for torpedo boats and submarines, and the contrast between skilled multilingual personnel and too few ships."
+        }
+      ]
+    },
+    {
+      "id": "more-tatras-operational-not-strategic-effect",
+      "videoId": "7IA20_r7XV0",
+      "slug": "more-tatras-operational-not-strategic-effect",
+      "title": "More Tatras would expand operational freedom, not break the blockade",
+      "kind": "notable_point",
+      "start": "43:35",
       "end": "45:58",
       "topics": [
         "austro-hungarian-navy",
@@ -216,16 +411,17 @@
         "world-war-i",
         "fleet-screening",
         "naval-procurement",
-        "naval-doctrine"
+        "naval-doctrine",
+        "force-structure"
       ],
-      "summary": "The conclusion argues that more Tatras would not overturn Allied Mediterranean superiority but would give Austria-Hungary more freedom in Adriatic operations.",
-      "body": "Austria-Hungary's access to the sea through the Adriatic, combined with its domestic political and land-war commitments, kept naval funding constrained. The lecture argues that torpedo boats and submarines were valued while destroyers remained an underfunded part of the force. A larger Tatra force would still face Italian, French, and British superiority, but it could make blockade and local operations far more difficult for the Allies.",
+      "summary": "A counterfactual force of eighteen Tatras would still face Allied superiority, but it could sustain covering forces and make Adriatic suppression much harder.",
+      "body": "The closing counterfactual asks what would change if Austria-Hungary had ordered eighteen Tatras instead of six or shifted from torpedo boats to destroyers around 1900. Italian numbers, reinforced by French and British support, would still make a decisive strategic breakout unlikely. The difference would appear at the operational level, where losing two modern ships would no longer remove a third of the capable destroyer force. More hulls could support raids with a separate covering group and give commanders greater freedom to manoeuvre inside the Adriatic. They would also make it harder for Italy to suppress Austro-Hungarian naval activity even if the wider blockade remained intact. The scenario distinguishes winning command of the sea from imposing greater costs and preserving useful local options.",
       "sourcePath": "src/transcripts/txt/2026-03-11_T19-30-06_building-for-the-adriatic-austro-hungarian-destroyers-of-wwi_7IA20_r7XV0.txt",
       "evidence": [
         {
-          "start": "40:46",
+          "start": "43:35",
           "end": "45:58",
-          "note": "The conclusion links geography, funding, force mix, destroyer numbers, and a larger-Tatra counterfactual."
+          "note": "The transcript considers eighteen Tatras and an earlier shift from torpedo boats to destroyers, then distinguishes unchanged Allied strategic superiority from greater Austro-Hungarian freedom for Adriatic operations."
         }
       ]
     }

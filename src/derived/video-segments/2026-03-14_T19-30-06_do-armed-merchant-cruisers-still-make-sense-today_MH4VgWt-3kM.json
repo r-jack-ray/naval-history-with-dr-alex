@@ -2,16 +2,19 @@
   "schemaVersion": 1,
   "videoId": "MH4VgWt-3kM",
   "topics": [
-    "current-affairs",
+    "armed-merchant-cruisers",
+    "containerized-weapons",
     "maritime-security",
     "merchant-navy",
-    "missiles",
-    "naval-aviation",
+    "mine-countermeasures",
+    "naval-auxiliaries",
+    "naval-intelligence",
     "naval-logistics",
     "naval-mines",
     "naval-strategy",
     "offshore-patrol-vessels",
-    "surface-warfare",
+    "replenishment-at-sea",
+    "sealift",
     "uncrewed-systems"
   ],
   "segments": [
@@ -24,24 +27,56 @@
       "start": "0:12",
       "end": "5:37",
       "topics": [
-        "current-affairs",
+        "armed-merchant-cruisers",
+        "containerized-weapons",
         "merchant-navy",
         "missiles",
         "naval-strategy"
       ],
-      "summary": "The opening tests a missile-armed container-ship concept against visibility, better major-power strike options, and the difficulty of controlling a civilian crew.",
-      "body": "Dr. Clarke treats the much-shared container-ship weapons imagery as a poor substitute for submarines or regular warships when a major power wants covert strike options. The useful edge case is narrower: a small launcher hidden for a single trip, with the entire crew, manifest, power supply, and loading sequence under control. That crew problem matters because engineers, bridge staff, deck hands, and stewards all become potential sources of disclosure or failure.",
+      "summary": "The opening tests a missile-armed container ship against visibility, better major-power strike options, and the difficulty of controlling a civilian crew.",
+      "body": "Dr. Clarke treats the much-shared container-ship weapons imagery as a poor substitute for submarines or regular warships when a major power wants a covert strike. Visible launchers, radars, unusually new containers, and an implausible cargo pattern would make the ship conspicuous rather than deniable. A smaller launcher hidden for one controlled voyage could have niche value, but only if the operator controls the manifest, power supply, loading sequence, and entire crew. Engineers, bridge staff, deck hands, and stewards all become potential sources of disclosure or failure. Replacing them with naval personnel creates another problem because a merchant ship's machinery and operating practices require experienced commercial mariners.",
       "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
       "evidence": [
         {
           "start": "0:12",
           "end": "3:39",
-          "note": "The opening questions whether a visible container-ship missile fit is an efficient or covert major-power option."
+          "note": "The opening argues that a lightly loaded container ship with visible weapons is neither an efficient nor a covert major-power strike option."
         },
         {
           "start": "3:39",
           "end": "5:37",
-          "note": "The crew-control section explains why engineering, deck, bridge, and steward personnel all matter."
+          "note": "The niche single-launcher case leads into crew loyalty, merchant-engine expertise, communications, and willingness to enter danger."
+        }
+      ]
+    },
+    {
+      "id": "modular-emals-and-uav-handling",
+      "videoId": "MH4VgWt-3kM",
+      "slug": "modular-emals-and-uav-handling",
+      "title": "Why a wheeled modular EMALS is aspirational",
+      "kind": "notable_point",
+      "start": "5:37",
+      "end": "8:39",
+      "topics": [
+        "aircraft-launch-systems",
+        "containerized-weapons",
+        "merchant-navy",
+        "naval-aviation",
+        "uncrewed-aerial-vehicles"
+      ],
+      "summary": "The advertised flight-deck concept runs into alignment, maintenance, deck-clearance, and aircraft-handling problems before it becomes a practical merchant conversion.",
+      "body": "Dr. Clarke focuses on the proposed electromagnetic catapult assembled from several wheeled modules and asks how it could maintain the alignment that EMALS demands. Fixed installations already impose exacting construction, power, and maintenance requirements on purpose-built carriers. A rocket-assisted or single-module launcher would be more credible, but the illustrated multi-vehicle system is presented as aspiration rather than an operational fit. The depicted UAVs also need a crane or another handling arrangement that the promotional image omits. Their launch path appears vulnerable to lateral movement or a dip that could strike the ship's structure.",
+      "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
+      "evidence": [
+        {
+          "start": "5:37",
+          "end": "7:13",
+          "note": "The transcript contrasts a multi-vehicle electromagnetic catapult with the precision and maintenance needs of fixed EMALS installations."
+        },
+        {
+          "start": "7:18",
+          "end": "8:39",
+          "note": "The UAV discussion identifies missing handling gear, unsafe launch geometry, and the gap between an advertisement and a practical system."
         }
       ]
     },
@@ -49,89 +84,157 @@
       "id": "advertised-container-systems-and-loading-risk",
       "videoId": "MH4VgWt-3kM",
       "slug": "advertised-container-systems-and-loading-risk",
-      "title": "Container weapons and loading risk",
+      "title": "A missile container must survive the loading system",
       "kind": "notable_point",
-      "start": "7:43",
+      "start": "8:57",
       "end": "13:13",
       "topics": [
+        "container-shipping",
+        "containerized-weapons",
         "merchant-navy",
         "missiles",
-        "naval-logistics",
-        "surface-warfare"
+        "naval-logistics"
       ],
-      "summary": "A closer look at advertised container weapons highlights why launcher placement, port handling errors, and power needs make the concept harder than the image suggests.",
-      "body": "This section separates the striking image from the practical system behind it. Dr. Clarke argues that a pure missile container might make sense for a smaller power, but only if the launcher is kept on the right ship, in the right place, for the right trip, without another container blocking or damaging it. Port handling, manifest control, and deck services become part of the weapon system rather than background details.",
+      "summary": "A concealed launcher depends on manifest control, one-voyage planning, port handling, and disposal as much as it depends on the missile itself.",
+      "body": "A single missile container may offer a smaller power an unusual strike option, but the container cannot simply join ordinary liner service. The operator must control the crew, manifest, power connection, position in the stack, and route closely enough to prevent another box from blocking or damaging the launcher. Dr. Clarke stresses that even computerized ports sometimes move or stack the wrong container because loading orders, trains, weather, and simultaneous cargo operations introduce errors. A plausible mission therefore looks like one controlled voyage followed by launch and perhaps disposal of the container overboard. The watch point turns routine port logistics into a central part of weapon reliability and operational security.",
       "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
       "evidence": [
         {
-          "start": "7:43",
-          "end": "8:39",
-          "note": "The advertised catapult and missile fit are described as impressive but not a convincing practical system."
+          "start": "8:57",
+          "end": "11:25",
+          "note": "The transcript links launcher viability to crew control, manifest influence, stack position, and the reality of container-handling mistakes."
         },
         {
-          "start": "8:57",
-          "end": "11:45",
-          "note": "The discussion explains launcher placement, crew control, manifest influence, and container-handling errors."
+          "start": "11:25",
+          "end": "13:13",
+          "note": "A single-trip launch and disposal scenario is contrasted with the visually striking but impractical advertised ship."
         }
       ]
     },
     {
-      "id": "merchant-ships-as-sensors-and-auxiliaries",
+      "id": "merchant-auxiliaries-in-the-kill-chain",
       "videoId": "MH4VgWt-3kM",
-      "slug": "merchant-ships-as-sensors-and-auxiliaries",
-      "title": "Merchant hulls as sensors and auxiliaries",
+      "slug": "merchant-auxiliaries-in-the-kill-chain",
+      "title": "Merchant auxiliaries become part of the kill chain",
       "kind": "chapter",
       "start": "13:13",
-      "end": "18:49",
+      "end": "16:24",
       "topics": [
+        "carrier-operations",
+        "kill-chain",
         "merchant-navy",
-        "naval-logistics",
-        "naval-strategy",
-        "uncrewed-systems"
+        "naval-auxiliaries",
+        "naval-intelligence",
+        "naval-strategy"
       ],
-      "summary": "The episode shifts from armed raiders to realistic merchant conversions for lift, depot work, survey, intelligence, minelaying, and drone support.",
-      "body": "Dr. Clarke lists the roles where merchant hulls can genuinely help a navy: strategic lift, helicopter or depot support, patrol work, survey, intelligence, covert operations, minelaying, and drone mothership duties. The common problem is protection, because information-gathering and support ships are part of the kill chain rather than harmless background traffic. The section also explains why modern merchant specialization makes general auxiliary conversion harder than it was in the world wars.",
+      "summary": "Strategic lift, survey, intelligence, depot, patrol, mining, and drone-support ships all need protection because sensors and commanders are targets too.",
+      "body": "Dr. Clarke maps the useful modern roles for merchant hulls: strategic lift, helicopter and depot support, patrol, survey, intelligence, covert work, minelaying, and drone support. These ships cannot rely on distance for safety because long-range warfare makes information-gathering vessels part of the combat zone. An enemy can disrupt a force by attacking its lookers and commanders rather than only its shooters. The discussion uses British carrier operations and F-35B range debates to show why submarines, aircraft, and other assets must suppress hostile reconnaissance. Merchant auxiliaries therefore need escorts or credible self-defence even when their own mission is sensing or support rather than firing weapons.",
       "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
       "evidence": [
         {
           "start": "13:13",
-          "end": "16:24",
-          "note": "The transcript lists plausible merchant-ship roles and ties sensor ships to the looker-shooter kill chain."
+          "end": "14:31",
+          "note": "The transcript lists plausible merchant-ship roles and explains why distant information assets now operate inside the combat zone."
         },
         {
-          "start": "16:28",
-          "end": "18:49",
-          "note": "The discussion explains why both warships and merchant ships have become specialized."
+          "start": "14:31",
+          "end": "16:24",
+          "note": "The looker-shooter discussion connects reconnaissance suppression with the survivability of carrier and auxiliary forces."
         }
       ]
     },
     {
-      "id": "troop-lift-and-defensible-merchant-vessels",
+      "id": "specialized-shipping-and-just-in-time-readiness",
       "videoId": "MH4VgWt-3kM",
-      "slug": "troop-lift-and-defensible-merchant-vessels",
-      "title": "Troop lift needs defensible merchant vessels",
+      "slug": "specialized-shipping-and-just-in-time-readiness",
+      "title": "Specialization shrinks the pool of wartime auxiliaries",
+      "kind": "notable_point",
+      "start": "16:28",
+      "end": "18:49",
+      "topics": [
+        "force-structure",
+        "just-in-time-logistics",
+        "merchant-navy",
+        "mobilization",
+        "naval-auxiliaries",
+        "naval-procurement"
+      ],
+      "summary": "Modern warships and merchant ships are both highly specialized, making the general-purpose auxiliary conversions of earlier wars harder to reproduce.",
+      "body": "Earlier fleets could draw on packet ships and other general-purpose merchant vessels that combined passengers and freight. Modern warships have specialized around sensors, computers, power, personnel, and support needs, while commercial operators have specialized hulls for maximum economic efficiency. That leaves fewer merchant ships able to become general auxiliaries without extensive modification. Dr. Clarke distinguishes commercial just-in-time purchasing from defence procurement, where warships, aircraft, and their spares cannot be bought quickly from an open market. The result is a readiness problem: government reserves and mobilization plans must account for assets whose construction or adaptation takes years rather than weeks.",
+      "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
+      "evidence": [
+        {
+          "start": "16:28",
+          "end": "17:35",
+          "note": "The transcript contrasts historic general-purpose merchant ships with increasingly specialized warships."
+        },
+        {
+          "start": "17:38",
+          "end": "18:49",
+          "note": "Commercial specialization and just-in-time purchasing are compared with the long lead times of defence equipment and spares."
+        }
+      ]
+    },
+    {
+      "id": "brigade-scale-sealift",
+      "videoId": "MH4VgWt-3kM",
+      "slug": "brigade-scale-sealift",
+      "title": "A brigade needs both troops and vehicles",
       "kind": "chapter",
       "start": "18:49",
-      "end": "24:40",
+      "end": "22:18",
       "topics": [
         "merchant-navy",
-        "naval-logistics",
-        "naval-strategy",
-        "surface-warfare"
+        "military-logistics",
+        "roll-on-roll-off-ships",
+        "sealift",
+        "troopships"
       ],
-      "summary": "Large liners and vehicle carriers can move brigade-scale forces, but their value depends on escorts and last-mile self-defence.",
-      "body": "The troop-lift discussion pairs passenger capacity with the harder question of equipment, vehicles, and airlift availability. Dr. Clarke uses large cruise ships and roll-on/roll-off vehicle carriers to show how much force a few merchant hulls could move. The tradeoff is that these ships become tempting targets, so he frames the modern answer as defensible merchant vessels that can protect themselves enough for escorts to defend the convoy or task group.",
+      "summary": "Large cruise ships and vehicle carriers could move a brigade-scale force together while preserving scarce military airlift for other missions.",
+      "body": "Passenger aircraft can move troops quickly, but their vehicles and heavy equipment still require sealift unless everything has been pre-positioned. Dr. Clarke pairs a large roll-on/roll-off vehicle carrier such as Tønsberg with a cruise ship such as Icon of the Seas to illustrate brigade-scale movement. The vehicle ship offers thousands of metres of internal lanes, while the passenger ship can carry more people than a typical NATO brigade and sustain a useful transit speed. Sending personnel by sea also preserves transport aircraft for medical evacuation, replacements, spares, and other urgent tasks. The example shows why strategic lift is a combined capacity problem rather than a choice between air and sea.",
       "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
       "evidence": [
         {
           "start": "18:49",
-          "end": "22:18",
-          "note": "The transcript compares aircraft troop movement with passenger ships and vehicle carriers for brigade-scale lift."
+          "end": "20:38",
+          "note": "The transcript explains why troops flown without heavy equipment still depend on large vehicle carriers."
         },
         {
+          "start": "20:40",
+          "end": "22:18",
+          "note": "Icon of the Seas passenger capacity and speed are combined with roll-on/roll-off lift to outline a brigade-scale movement."
+        }
+      ]
+    },
+    {
+      "id": "defensible-merchant-vessels",
+      "videoId": "MH4VgWt-3kM",
+      "slug": "defensible-merchant-vessels",
+      "title": "From armed merchant cruiser to defensible merchant vessel",
+      "kind": "chapter",
+      "start": "22:18",
+      "end": "24:40",
+      "topics": [
+        "air-defense",
+        "close-in-weapon-systems",
+        "convoy-defense",
+        "merchant-navy",
+        "missile-defense",
+        "torpedo-defense"
+      ],
+      "summary": "Large, scarce transports need enough last-mile defence to let a limited escort force protect the convoy as a whole.",
+      "body": "Concentrating a brigade in a few large merchant hulls creates lucrative targets and exposes the limits of a small escort fleet. Dr. Clarke proposes close-in weapon systems, short-range missiles such as CAMM or ESSM, useful sensors, decoys, and possibly anti-torpedo torpedoes. Unlike the many individually armed merchantmen of the world wars, modern shipping has fewer but much larger ships, so the loss of one hull carries more weight. The goal is not to turn every transport into a cruiser. It is to make each vessel capable of defending the final mile while escorts concentrate on the convoy or task group.",
+      "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
+      "evidence": [
+        {
           "start": "22:18",
+          "end": "23:13",
+          "note": "The transcript proposes close-in weapons, short-range air defence, sensors, torpedo decoys, and anti-torpedo systems for large transports."
+        },
+        {
+          "start": "23:17",
           "end": "24:40",
-          "note": "The discussion turns to CIWS, air-defence missiles, torpedo decoys, and defensible merchant vessels."
+          "note": "Fewer, larger merchant ships lead to the concept of a defensible merchant vessel that supports rather than replaces its escorts."
         }
       ]
     },
@@ -139,33 +242,93 @@
       "id": "tankers-and-strategic-fuel-logistics",
       "videoId": "MH4VgWt-3kM",
       "slug": "tankers-and-strategic-fuel-logistics",
-      "title": "Tankers and wartime fuel movement",
+      "title": "Strategic tankers keep bases supplied",
       "kind": "notable_point",
       "start": "24:42",
-      "end": "32:59",
+      "end": "26:06",
       "topics": [
+        "fuel-logistics",
         "merchant-navy",
+        "naval-auxiliaries",
+        "naval-bases",
         "naval-logistics",
-        "naval-strategy"
+        "tankers"
       ],
-      "summary": "The tanker section explains why fuel movement between bases, improvised replenishment, and environmental risk shape wartime merchant-ship use.",
-      "body": "This watch point uses Second World War tanker practice to explain why slow strategic fuel movement can matter as much as fast fleet replenishment. Dr. Clarke notes that some civilian tankers could be adapted for refuelling ships, even with older stern-to-bow methods, but the fit is slow and awkward compared with modern replenishment ships. He also flags the environmental and damage-control risks that come with putting fuel carriers closer to danger.",
+      "summary": "Slow tankers moving fuel between bases can be as important as fast fleet replenishment ships, but suitable commercial hulls are increasingly specialized.",
+      "body": "The Royal Navy entered the Second World War with many tankers that were not fast because their job was to move fuel between bases rather than accompany the fleet. Those economical voyages kept regional fleets supplied and made the bases themselves usable. Modern commercial economics favors ever-larger or more specialized tankers, and not every tanker can carry the fuel products ships or land forces require. The subset with the right size, tanks, and cargo compatibility would therefore become critical in a long war. This watch point separates strategic fuel distribution from the more familiar image of high-speed underway replenishment.",
       "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
       "evidence": [
         {
           "start": "24:42",
-          "end": "26:06",
-          "note": "The section explains tankers moving fuel between bases and why suitable civilian tankers become important."
+          "end": "25:22",
+          "note": "The transcript explains the use of slower Royal Navy tankers to move fuel between bases during the Second World War."
         },
+        {
+          "start": "25:22",
+          "end": "26:06",
+          "note": "Commercial tanker size and specialization limit the pool able to carry the fuel products a wartime force needs."
+        }
+      ]
+    },
+    {
+      "id": "improvised-stern-to-bow-refuelling",
+      "videoId": "MH4VgWt-3kM",
+      "slug": "improvised-stern-to-bow-refuelling",
+      "title": "Old stern-to-bow refuelling still works",
+      "kind": "chapter",
+      "start": "26:11",
+      "end": "30:59",
+      "topics": [
+        "fuel-logistics",
+        "naval-engineering",
+        "naval-logistics",
+        "replenishment-at-sea",
+        "tankers"
+      ],
+      "summary": "A civilian tanker can refuel warships with a slow stern-to-bow rig whose simplicity is easy to overlook beside modern alongside replenishment gear.",
+      "body": "Suitable commercial tankers can sometimes be adapted to refuel warships without receiving the elaborate rigs of a purpose-built replenishment ship. Dr. Clarke describes the older stern-to-bow method: the receiving ship follows in line while a hose hangs from a cable between the ships. It is slow, awkward, and lower-capacity than modern alongside transfer, but it demands far less structural modification. A modern crew would still need engineers to identify strong attachment points and fit the required rings or hard points. The example illustrates how a superseded method can remain useful in an emergency even when peacetime efficiency has made it unfamiliar.",
+      "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
+      "evidence": [
         {
           "start": "26:11",
-          "end": "30:03",
-          "note": "The transcript describes adapting tankers for stern-to-bow refuelling with minimal modifications."
+          "end": "28:22",
+          "note": "The transcript contrasts minimal stern-to-bow hose transfer with complex modern alongside replenishment rigs."
         },
         {
+          "start": "28:26",
+          "end": "30:59",
+          "note": "The discussion covers improvised strong points, engineering judgment, surviving design standards, and the persistence of old fittings."
+        }
+      ]
+    },
+    {
+      "id": "tanker-damage-and-environmental-risk",
+      "videoId": "MH4VgWt-3kM",
+      "slug": "tanker-damage-and-environmental-risk",
+      "title": "Tankers carry environmental and fire risks forward",
+      "kind": "notable_point",
+      "start": "31:05",
+      "end": "32:59",
+      "topics": [
+        "damage-control",
+        "environmental-risk",
+        "fuel-logistics",
+        "merchant-navy",
+        "tankers"
+      ],
+      "summary": "Bringing fuel carriers toward danger raises spill, tank-layout, vapour, and damage-control questions that a replenishment plan must address.",
+      "body": "A tanker that becomes a critical wartime asset also brings the possibility of a major spill if it is damaged. Dr. Clarke suggests that planners might place ballast rather than fuel in vulnerable outer tanks when operating closer to danger. Heavy ship fuel may not ignite readily on impact, but released fuel still creates an environmental disaster. Empty or partly emptied tanks can be more dangerous when fuel vapour mixes with oxygen and finds an ignition source. Tanker employment must therefore consider cargo arrangement and damage control as well as transfer capacity.",
+      "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
+      "evidence": [
+        {
           "start": "31:05",
+          "end": "31:40",
+          "note": "The transcript raises the environmental consequences of tanker damage and the possibility of using ballast in outer tanks."
+        },
+        {
+          "start": "31:40",
           "end": "32:59",
-          "note": "The discussion adds environmental and empty-tank fume hazards."
+          "note": "Fuel ignition, empty-tank vapour, oxygen, and operational planning are discussed as distinct hazards."
         }
       ]
     },
@@ -173,107 +336,615 @@
       "id": "ocean-trader-and-littoral-support",
       "videoId": "MH4VgWt-3kM",
       "slug": "ocean-trader-and-littoral-support",
-      "title": "Ocean Trader and littoral support",
+      "title": "MV Ocean Trader as a littoral support ship",
       "kind": "chapter",
       "start": "33:05",
-      "end": "40:01",
+      "end": "36:23",
       "topics": [
+        "helicopter-operations",
+        "littoral-operations",
         "merchant-navy",
-        "naval-aviation",
-        "naval-logistics",
+        "military-sealift-command",
+        "naval-auxiliaries",
+        "special-operations",
         "uncrewed-systems"
       ],
-      "summary": "The MV Ocean Trader example shows how a second-hand merchant hull can become a helicopter, boat, drone, and special-operations support ship.",
-      "body": "Dr. Clarke uses MV Ocean Trader to show the more convincing version of a merchant conversion: not a cruiser replacement, but a support ship that carries people, boats, helicopters, and potentially drones. The appeal for medium powers is cost and availability, especially when an older commercial hull is still sound enough for service. The limitations are just as important: it is not a high-threat warship, and buying second-hand means careful inspection, uncertain history, and finite remaining hull life.",
+      "summary": "MV Ocean Trader shows how a second-hand roll-on/roll-off hull can support helicopters, boats, drones, and special forces without pretending to be a high-threat warship.",
+      "body": "Dr. Clarke presents MV Ocean Trader as the convincing form of merchant conversion: a support ship rather than a cruiser replacement. The converted roll-on/roll-off hull offers hangar space, accommodation for special-operations personnel, helicopter facilities, boats, and potential drone support. A medium power could use such a ship to extend the reach of an amphibious or littoral force at lower cost than a new purpose-built combatant. It cannot launch heavy landing craft and should not operate alone in a high-threat environment. Its value lies in spreading presence and carrying useful capabilities around the world while accepting those limits.",
       "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
       "evidence": [
         {
           "start": "33:05",
+          "end": "34:36",
+          "note": "The transcript describes MV Ocean Trader, its Military Sealift Command conversion, and the appeal of a support ship for medium powers."
+        },
+        {
+          "start": "34:40",
           "end": "36:23",
-          "note": "The transcript describes MV Ocean Trader, helicopter facilities, special forces support, and drone possibilities."
-        },
-        {
-          "start": "36:27",
-          "end": "38:15",
-          "note": "The section explains why a second-hand hull can be useful but requires buyer-beware inspection."
-        },
-        {
-          "start": "38:21",
-          "end": "40:01",
-          "note": "The discussion compares merchant-like appearance, AIS visibility, and special-operations utility."
+          "note": "High-threat limitations, defensive options, helicopters, boats, and possible drone launch arrangements define the ship's practical role."
         }
       ]
     },
     {
-      "id": "opv-survey-and-intelligence-conversions",
+      "id": "second-hand-hull-inspection",
       "videoId": "MH4VgWt-3kM",
-      "slug": "opv-survey-and-intelligence-conversions",
-      "title": "OPV, survey, and intelligence conversions",
+      "slug": "second-hand-hull-inspection",
+      "title": "Second-hand conversions begin with buyer beware",
+      "kind": "notable_point",
+      "start": "36:27",
+      "end": "38:15",
+      "topics": [
+        "hull-life",
+        "merchant-navy",
+        "naval-auxiliaries",
+        "naval-procurement",
+        "ship-survey"
+      ],
+      "summary": "A cheap commercial hull is useful only after inspectors establish its service history, condition, and remaining structural life.",
+      "body": "Ocean Trader's attraction begins with its availability as a second-hand commercial vessel rather than a ship built to military order. That advantage depends on the hull retaining enough useful life to justify conversion and service costs. Dr. Clarke compares the purchase with second-hand aircraft and cars because logs and seller disclosures cannot reveal every aspect of past use. The buyer needs a detailed independent inspection of structure, machinery, and records before committing to military modifications. Commercial incentives make that caution part of procurement rather than an optional refinement.",
+      "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
+      "evidence": [
+        {
+          "start": "36:27",
+          "end": "37:14",
+          "note": "The transcript links second-hand acquisition to remaining hull life and the need for a fine-tooth-comb inspection."
+        },
+        {
+          "start": "37:16",
+          "end": "38:15",
+          "note": "Seller disclosure, incomplete use history, records, visual inspection, and financial incentives underpin the buyer-beware warning."
+        }
+      ]
+    },
+    {
+      "id": "ais-and-special-operations-reach",
+      "videoId": "MH4VgWt-3kM",
+      "slug": "ais-and-special-operations-reach",
+      "title": "AIS silence can reveal a special-operations ship",
+      "kind": "notable_point",
+      "start": "38:21",
+      "end": "40:01",
+      "topics": [
+        "automatic-identification-system",
+        "helicopter-operations",
+        "maritime-domain-awareness",
+        "merchant-navy",
+        "special-operations"
+      ],
+      "summary": "A merchant-looking support ship gains range and carrying capacity, yet its AIS pattern can still advertise when operations become sensitive.",
+      "body": "MV Ocean Trader can carry larger boats, possible stealth submersibles, and helicopters, giving special forces more options than submarine insertion alone. At a distance its commercial appearance helps it blend into ordinary traffic. Its Automatic Identification System track is also watched, however, and disappearing from public tracking can itself signal that something unusual is happening. Dr. Clarke notes that warships and auxiliaries can turn AIS off or use generic identities, but those choices do not make their patterns invisible to observers. The segment shows how concealment depends on behavior and information discipline as much as hull shape.",
+      "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
+      "evidence": [
+        {
+          "start": "38:21",
+          "end": "39:08",
+          "note": "The transcript links Ocean Trader tracking and AIS disappearance with special-operations activity, boats, submersibles, and helicopters."
+        },
+        {
+          "start": "39:12",
+          "end": "40:01",
+          "note": "Merchant-like appearance, AIS identification, generic naval identities, and transponder shutdown are explained."
+        }
+      ]
+    },
+    {
+      "id": "opv-requirements-in-a-drone-threat",
+      "videoId": "MH4VgWt-3kM",
+      "slug": "opv-requirements-in-a-drone-threat",
+      "title": "Low-threat patrol waters no longer stay low threat",
       "kind": "chapter",
       "start": "43:00",
-      "end": "1:01:32",
+      "end": "45:00",
       "topics": [
+        "air-defense",
         "maritime-security",
-        "merchant-navy",
-        "naval-logistics",
         "offshore-patrol-vessels",
-        "uncrewed-systems"
+        "uncrewed-aerial-vehicles"
       ],
-      "summary": "Platform supply vessels, survey ships, and trawlers offer patrol, salvage, mapping, sensor, and covert roles, but each brings ownership and survivability limits.",
-      "body": "This long section surveys several merchant-adjacent hull types that can support naval work without becoming classic armed merchant cruisers. Platform supply vessels fit OPV and salvage tasks because they are robust, available in cycles, and have useful deck space for modular weapons. Survey ships and intelligence trawlers show the other side of the problem: they carry valuable sensors and data systems, but their ownership, survivability, and deniable-use questions are often harder than the hull conversion itself.",
+      "summary": "Fishery and offshore patrol vessels need seakeeping, visibility, aviation, and stronger self-defence as drones and missiles spread beyond major powers.",
+      "body": "An offshore patrol vessel needs endurance, rough-weather seakeeping, a small crew, good all-round observation, and preferably a helicopter landing area. Dr. Clarke argues that modern armament should also include a useful gun, short-range missiles such as CAMM or ESSM, and perhaps a close-in weapon system. Drones and accessible missile systems have spread ranged attack beyond the nation-states that once monopolized it. Waters previously classed as low threat may therefore expose patrol ships to weapons they were not designed to face. The changing threat alters what counts as an adequately armed OPV rather than turning every patrol mission into high-end combat.",
       "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
       "evidence": [
         {
           "start": "43:00",
-          "end": "48:44",
-          "note": "The transcript covers OPV requirements, platform supply vessels, salvage roles, and modular weapons on deck space."
+          "end": "44:16",
+          "note": "The transcript sets out patrol-vessel seakeeping, crewing, visibility, helicopter, gun, missile, and close-in-defence requirements."
         },
         {
-          "start": "48:46",
-          "end": "56:21",
-          "note": "The survey-vessel section discusses seabed mapping, submarine recovery, amphibious surveys, government ownership, and military computer needs."
-        },
-        {
-          "start": "56:48",
-          "end": "1:01:32",
-          "note": "The intelligence section moves from Soviet trawlers to modern covert trawler use by state and non-state actors."
+          "start": "44:19",
+          "end": "45:00",
+          "note": "The spread of drones and missiles to more actors is used to explain why formerly low-threat patrol areas have changed."
         }
       ]
     },
     {
-      "id": "reefers-drone-motherships-and-merchant-fleet-slack",
+      "id": "platform-supply-vessels-and-shipyard-policy",
       "videoId": "MH4VgWt-3kM",
-      "slug": "reefers-drone-motherships-and-merchant-fleet-slack",
-      "title": "Reefers, drones, and merchant-fleet slack",
+      "slug": "platform-supply-vessels-and-shipyard-policy",
+      "title": "Platform supply vessels expose an OPV procurement choice",
+      "kind": "notable_point",
+      "start": "45:01",
+      "end": "46:48",
+      "topics": [
+        "naval-industrial-base",
+        "naval-procurement",
+        "offshore-patrol-vessels",
+        "platform-supply-vessels",
+        "shipyards"
+      ],
+      "summary": "Commercial supply vessels often fit patrol needs and become cheap during energy downturns, but new OPV orders may be serving shipyard policy too.",
+      "body": "Platform supply vessels already possess many qualities wanted in an offshore patrol ship and are produced in significant numbers for the energy industry. Market downturns can push relatively young hulls onto the second-hand market when operators cut exploration or support activity. Navies repeatedly consider these ships and often choose a new-build OPV instead. Dr. Clarke notes that the new order may preserve a specialist naval yard between larger warship programs. That explanation forces a policy choice: either the yard is strategically necessary and needs enough work, or the fleet is buying too few warships to sustain the industrial base it claims to require.",
+      "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
+      "evidence": [
+        {
+          "start": "45:01",
+          "end": "46:17",
+          "note": "The transcript connects platform supply vessel availability with their production volume and fluctuations in energy markets."
+        },
+        {
+          "start": "46:17",
+          "end": "46:48",
+          "note": "New OPV construction is discussed as a means of sustaining naval shipyards when warship orders are insufficient."
+        }
+      ]
+    },
+    {
+      "id": "dynamic-positioning-salvage-and-modular-decks",
+      "videoId": "MH4VgWt-3kM",
+      "slug": "dynamic-positioning-salvage-and-modular-decks",
+      "title": "Supply vessels combine station-keeping, salvage, and deck space",
+      "kind": "chapter",
+      "start": "46:54",
+      "end": "48:44",
+      "topics": [
+        "containerized-weapons",
+        "dynamic-positioning",
+        "naval-auxiliaries",
+        "naval-salvage",
+        "platform-supply-vessels"
+      ],
+      "summary": "Dynamic positioning, towing strength, and open working decks make platform supply vessels useful for salvage and rapid modular fits.",
+      "body": "Platform supply vessels are designed to loiter near offshore installations, often with excellent dynamic-positioning systems and some towing ability. Those characteristics transfer well to naval salvage, where damaged or immobilized warships must be pulled clear of danger. Dr. Clarke emphasizes that navies demand salvage tugs quickly once combat begins because mission-killed ships still need recovery. The large open afterdeck also gives a supply vessel room for containerized or modular weapons and support equipment. Such a conversion only works if the modules and their crews have been stockpiled before the crisis rather than invented after it starts.",
+      "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
+      "evidence": [
+        {
+          "start": "46:54",
+          "end": "47:59",
+          "note": "The transcript links station-keeping and tug functions with wartime salvage and removal of damaged ships from danger."
+        },
+        {
+          "start": "48:04",
+          "end": "48:44",
+          "note": "Open deck space is identified as well suited to pre-stockpiled containerized or modular equipment."
+        }
+      ]
+    },
+    {
+      "id": "survey-ships-for-seabed-and-amphibious-work",
+      "videoId": "MH4VgWt-3kM",
+      "slug": "survey-ships-for-seabed-and-amphibious-work",
+      "title": "Survey ships prepare the underwater battlespace",
+      "kind": "chapter",
+      "start": "48:46",
+      "end": "50:00",
+      "topics": [
+        "amphibious-operations",
+        "oceanographic-survey",
+        "submarine-operations",
+        "submarine-rescue",
+        "survey-ships",
+        "undersea-warfare"
+      ],
+      "summary": "Oceanographic survey vessels map the seabed, support submarine recovery, and collect the coastal data needed before amphibious operations.",
+      "body": "The NOAA ship Ronald H. Brown introduces the military value of civilian oceanographic survey vessels. Submarine forces depend on accurate seabed mapping, and damaged submarines may require specialized search and recovery support below the surface. Amphibious forces likewise need hydrographic knowledge of approaches and landing areas before committing the assault force. Existing peacetime surveys can provide some of that foundation, but a crisis may demand fresh work in a specific operating area. These ships are specialized information assets whose data directly shapes undersea and littoral operations.",
+      "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
+      "evidence": [
+        {
+          "start": "48:46",
+          "end": "49:38",
+          "note": "The transcript uses Ronald H. Brown to discuss ocean-floor mapping and recovery of damaged submarines."
+        },
+        {
+          "start": "49:38",
+          "end": "50:00",
+          "note": "Survey work before amphibious operations is contrasted with relying on data gathered through continuing peacetime studies."
+        }
+      ]
+    },
+    {
+      "id": "mobilizing-government-survey-ships",
+      "videoId": "MH4VgWt-3kM",
+      "slug": "mobilizing-government-survey-ships",
+      "title": "Government ownership does not guarantee naval access",
+      "kind": "notable_point",
+      "start": "50:00",
+      "end": "52:40",
+      "topics": [
+        "civil-military-relations",
+        "mobilization",
+        "modular-warship-design",
+        "naval-auxiliaries",
+        "survey-ships"
+      ],
+      "summary": "Civil-agency survey ships are already public assets, yet competing missions, departmental politics, and restoration demands can obstruct wartime transfer.",
+      "body": "Most survey vessels are owned by governments or arm's-length public agencies rather than navies. That can simplify legal access while making practical transfer harder because another department still has missions, political influence, and an expectation that its ship will return in usable condition. Wartime modifications may therefore need to remain reversible. Dr. Clarke argues for planning during procurement instead of negotiating every change after a crisis begins. A Danish example would build in the ability to accept StanFlex modules, giving the civilian ship a predesigned route to temporary military capability.",
+      "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
+      "evidence": [
+        {
+          "start": "50:00",
+          "end": "52:10",
+          "note": "The transcript covers government ownership, departmental rivalry, continuing civilian missions, and demands for reversible changes."
+        },
+        {
+          "start": "52:10",
+          "end": "52:40",
+          "note": "Procurement-time preparation and a Danish StanFlex-compatible survey ship are offered as a practical solution."
+        }
+      ]
+    },
+    {
+      "id": "survey-ship-computers-and-command-systems",
+      "videoId": "MH4VgWt-3kM",
+      "slug": "survey-ship-computers-and-command-systems",
+      "title": "Survey ships already carry the computing a conversion needs",
+      "kind": "chapter",
+      "start": "52:47",
+      "end": "56:21",
+      "topics": [
+        "command-and-control",
+        "containerized-weapons",
+        "information-warfare",
+        "naval-electronics",
+        "survey-ships"
+      ],
+      "summary": "Survey vessels offer computing spaces that ordinary merchant ships lack, but weapons still require command, control, power, and survivability provisions.",
+      "body": "Ordinary merchant ships generally lack warship-standard sensors, electronics, subdivision, and combat survivability. Survey ships are an exception on computing capacity because their scientific mission already makes them floating data centers. Replacing or expanding some computers could create space for military command-and-control functions, especially if spare capacity was designed in from the start. Dr. Clarke warns that a containerized launcher still needs a control system and may need a separate power module when ship connections are incompatible. As the pace of warfare compresses decisions from days to seconds, information must already be collected and synthesized, making those computing spaces operationally valuable.",
+      "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
+      "evidence": [
+        {
+          "start": "52:47",
+          "end": "54:23",
+          "note": "The transcript contrasts merchant survivability and electronics with the large computing installations carried by survey vessels."
+        },
+        {
+          "start": "54:25",
+          "end": "56:21",
+          "note": "Command containers, power compatibility, expansion space, and the accelerating speed of information in warfare are tied together."
+        }
+      ]
+    },
+    {
+      "id": "intelligence-trawlers-and-deniable-operations",
+      "videoId": "MH4VgWt-3kM",
+      "slug": "intelligence-trawlers-and-deniable-operations",
+      "title": "From Soviet intelligence trawlers to proxy-flagged covert craft",
+      "kind": "chapter",
+      "start": "56:48",
+      "end": "1:01:32",
+      "topics": [
+        "automatic-identification-system",
+        "covert-operations",
+        "merchant-navy",
+        "naval-intelligence",
+        "soviet-navy",
+        "trawlers"
+      ],
+      "summary": "Small trawlers can watch naval forces, land covert teams, and hide ownership behind proxy companies and foreign flags.",
+      "body": "NATO carrier groups were once routinely followed by Soviet trawlers whose intelligence role was obvious even when they retained the appearance of fishing vessels. Modern sensors allow less conspicuous trawlers to collect information or support covert insertion with a small boat. Their small crews make control easier than on a container ship, while proxy companies and foreign registration can obscure the state directing them. AIS tools may reveal a vessel operating in an unlikely location, but that clue does not resolve ownership or intent. Dr. Clarke adds that non-state actors also value small, rugged, deniable craft, widening the surveillance and covert-action problem.",
+      "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
+      "evidence": [
+        {
+          "start": "56:48",
+          "end": "58:09",
+          "note": "The transcript recalls Soviet trawlers following NATO carrier groups and USS Texas as acknowledged intelligence assets."
+        },
+        {
+          "start": "58:14",
+          "end": "1:01:32",
+          "note": "Modern covert fits, small-boat insertion, AIS clues, proxy ownership, foreign flags, and non-state use are described."
+        }
+      ]
+    },
+    {
+      "id": "reefer-power-and-drone-support",
+      "videoId": "MH4VgWt-3kM",
+      "slug": "reefer-power-and-drone-support",
+      "title": "Reefers bring power and cranes to drone operations",
       "kind": "chapter",
       "start": "1:01:37",
-      "end": "1:23:50",
+      "end": "1:04:44",
       "topics": [
+        "containerized-weapons",
         "merchant-navy",
-        "missiles",
-        "naval-logistics",
         "naval-mines",
-        "surface-warfare",
-        "uncrewed-systems"
+        "refrigerated-cargo-ships",
+        "uncrewed-surface-vessels",
+        "uncrewed-underwater-vehicles"
       ],
-      "summary": "The conclusion argues that reefers are attractive mine, drone, and modular-system hosts, but modern shipping has too little spare capacity for easy wartime requisition.",
-      "body": "Dr. Clarke closes by treating refrigerated cargo ships as especially interesting because their power distribution, cranes, and deck arrangements suit drones, mines, and containerized systems. He then narrows the answer: modern armed merchant cruisers are not the real requirement, but merchant ships may need pre-planned defensive fits and stockpiled systems for dangerous routes. The largest constraint is economic rather than technical, because just-in-time shipping leaves far less slack than the merchant fleets of the world wars or even the Falklands era.",
+      "summary": "Refrigerated cargo ships already distribute electrical power around their holds and decks, making them strong hosts for drones, mines, and modular systems.",
+      "body": "Dr. Clarke selects a refrigerated cargo ship, or reefer, because powering cold cargo already requires electrical distribution around the ship. A containerized weapon concept either needs that infrastructure or must devote additional containers to generators. Reefer layouts may also include cranes that can recover an uncrewed surface vessel or underwater vehicle for charging and maintenance. The same deck and handling features support minelaying or other modular naval tasks. These built-in services make a reefer a more credible conversion candidate than a generic container ship, even though the result remains an auxiliary rather than a combatant.",
       "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
       "evidence": [
         {
           "start": "1:01:37",
-          "end": "1:09:48",
-          "note": "The reefer section explains power supplies, cranes, USV/UUV support, minelaying potential, and commercial demand."
+          "end": "1:03:10",
+          "note": "The transcript explains reefer power connections, designated refrigerated-container positions, and the alternative of separate generator modules."
         },
+        {
+          "start": "1:03:10",
+          "end": "1:04:44",
+          "note": "Cranes, drone charging, USV and UUV recovery, maintenance, and minelaying make reefers attractive auxiliary candidates."
+        }
+      ]
+    },
+    {
+      "id": "reefer-scarcity-and-dual-use-competition",
+      "videoId": "MH4VgWt-3kM",
+      "slug": "reefer-scarcity-and-dual-use-competition",
+      "title": "The most useful conversion may be the hardest ship to requisition",
+      "kind": "notable_point",
+      "start": "1:04:44",
+      "end": "1:09:48",
+      "topics": [
+        "dual-use-infrastructure",
+        "food-security",
+        "merchant-navy",
+        "mobilization",
+        "naval-mines",
+        "refrigerated-cargo-ships"
+      ],
+      "summary": "Reefers could covertly lay mines and host naval systems, but food and temperature-controlled trade already keep them in exceptional commercial demand.",
+      "body": "Reefers carry much more than food because many goods need a constant temperature rather than simple cooling. Commercial operators already face a persistent shortage of these ships, and wartime supply movements would increase demand further. Their normal port-to-port pattern, self-sufficiency, and handling gear could make covert minelaying difficult to attribute. The same characteristics also make them among the easiest merchant ships to connect to containerized weapons and support systems. Naval planners therefore face a dual-use competition: the hull best suited to conversion may be too essential to remove from civilian logistics.",
+      "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
+      "evidence": [
+        {
+          "start": "1:04:44",
+          "end": "1:06:42",
+          "note": "The transcript emphasizes intense commercial demand for reefers and explains that temperature-controlled cargo extends beyond food."
+        },
+        {
+          "start": "1:06:45",
+          "end": "1:09:48",
+          "note": "Covert minelaying, historic wartime scarcity, rising supply demand, and the value of existing power distribution are connected."
+        }
+      ]
+    },
+    {
+      "id": "modern-armed-merchant-cruiser-verdict",
+      "videoId": "MH4VgWt-3kM",
+      "slug": "modern-armed-merchant-cruiser-verdict",
+      "title": "The modern requirement is auxiliaries, not commerce raiders",
+      "kind": "notable_point",
+      "start": "1:09:53",
+      "end": "1:10:30",
+      "topics": [
+        "armed-merchant-cruisers",
+        "convoy-defense",
+        "merchant-navy",
+        "naval-auxiliaries",
+        "offshore-patrol-vessels"
+      ],
+      "summary": "The episode's answer rejects a broad return of armed merchant cruisers while preserving a case for supply-ship OPVs, auxiliaries, and protected wartime shipping.",
+      "body": "Dr. Clarke's direct answer is that a modern navy does not have a general requirement for armed merchant cruisers. A platform supply vessel converted into an offshore patrol vessel comes closest, but it serves patrol and support needs rather than commerce raiding. Merchant shipping would still be indispensable in a large or prolonged war. Its contribution depends on protection, preparation, and the ability to keep specialized hulls operating under threat. The distinction redirects attention from improvised cruisers toward auxiliaries and defensible logistics.",
+      "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
+      "evidence": [
         {
           "start": "1:09:53",
-          "end": "1:18:12",
-          "note": "The conclusion rejects classic modern armed merchant cruisers while discussing defensive missiles, CIWS, drones, Hormuz, and stockpiles."
+          "end": "1:10:30",
+          "note": "The transcript gives a direct no to a general modern armed-merchant-cruiser tasking and identifies supply-ship OPV conversion as the nearest case."
+        }
+      ]
+    },
+    {
+      "id": "crewed-warships-and-uncrewed-escorts",
+      "videoId": "MH4VgWt-3kM",
+      "slug": "crewed-warships-and-uncrewed-escorts",
+      "title": "A crewed warship can anchor an uncrewed task group",
+      "kind": "chapter",
+      "start": "1:10:30",
+      "end": "1:13:39",
+      "topics": [
+        "air-defense",
+        "anti-submarine-warfare",
+        "distributed-maritime-operations",
+        "naval-maintenance",
+        "satellite-communications",
+        "uncrewed-surface-vessels"
+      ],
+      "summary": "Future frigates and destroyers can coordinate armed uncrewed escorts, but people remain essential for local control and repairs at sea.",
+      "body": "Dr. Clarke describes future destroyers and frigates as the crewed centers of small task groups supported by uncrewed surface vessels carrying extra sensors and missiles. The unmanned craft spread firepower and create layered air defence, while the crewed combatant coordinates surface, air, and anti-submarine warfare much as a cruiser once coordinated smaller escorts. Keeping control local reduces dependence on vulnerable satellite communications. Helicopters and adequately sized crews can also send maintenance parties when an uncrewed vessel breaks down. Robotics may eventually perform those repairs, but fleet plans should exploit that possibility without assuming an unproven technology will arrive on schedule.",
+      "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
+      "evidence": [
+        {
+          "start": "1:10:30",
+          "end": "1:11:46",
+          "note": "The transcript describes destroyers and frigates coordinating armed uncrewed escorts for air, surface, and anti-submarine warfare."
         },
         {
+          "start": "1:11:46",
+          "end": "1:13:39",
+          "note": "Satellite pressure, maintenance parties, limited repair robotics, and the danger of planning around immature technology are explained."
+        }
+      ]
+    },
+    {
+      "id": "rawalpindi-torpedo-counterfactual",
+      "videoId": "MH4VgWt-3kM",
+      "slug": "rawalpindi-torpedo-counterfactual",
+      "title": "Rawalpindi shows the limits of offensive merchant armament",
+      "kind": "notable_point",
+      "start": "1:13:39",
+      "end": "1:14:46",
+      "topics": [
+        "armed-merchant-cruisers",
+        "gneisenau",
+        "hms-rawalpindi",
+        "scharnhorst",
+        "torpedoes",
+        "world-war-two"
+      ],
+      "summary": "HMS Rawalpindi's last fight illustrates how torpedoes might punish a superior enemy without making a converted liner a sensible modern missile carrier.",
+      "body": "The historical counterpoint is HMS Rawalpindi, an armed merchant cruiser lost in an unequal fight with Scharnhorst and Gneisenau. Rawalpindi closed bravely enough that a large torpedo battery could, in Dr. Clarke's counterfactual, have endangered one or both German ships. A ten-torpedo spread at that range would have been difficult to comb even if the British ship were still sunk. The example shows that a cheap merchant conversion can occasionally impose disproportionate risk when armed for a narrow tactical opportunity. It does not establish a case for filling modern container ships with space-inefficient offensive missile batteries.",
+      "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
+      "evidence": [
+        {
+          "start": "1:13:39",
+          "end": "1:14:46",
+          "note": "The transcript considers how four quintuple torpedo launchers on Rawalpindi might have changed her engagement with Scharnhorst and Gneisenau."
+        }
+      ]
+    },
+    {
+      "id": "stockpiled-last-mile-defenses",
+      "videoId": "MH4VgWt-3kM",
+      "slug": "stockpiled-last-mile-defenses",
+      "title": "Last-mile defence must exist before the emergency",
+      "kind": "chapter",
+      "start": "1:14:51",
+      "end": "1:16:25",
+      "topics": [
+        "close-in-weapon-systems",
+        "containerized-weapons",
+        "merchant-navy",
+        "missile-defense",
+        "war-reserves"
+      ],
+      "summary": "Containerized defensive missiles and Phalanx-like systems offer more value than large offensive batteries, provided maritime fits and stockpiles are prepared in advance.",
+      "body": "Large offensive missile loads use merchant deck space poorly, whereas smaller defensive missiles can be containerized in useful numbers. Close-in weapon systems provide another layer of last-mile protection against threats that leak through area defence. Dr. Clarke asks whether land-based Phalanx systems developed for Iraq and Afghanistan were adapted and preserved for salt-water shipboard use. A modular fit still requires tested corrosion protection, power, control, mounting, ammunition, and trained crews. If those systems are not stockpiled and qualified before a crisis, the theoretical ease of bolting them onto a ship has little operational value.",
+      "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
+      "evidence": [
+        {
+          "start": "1:14:51",
+          "end": "1:15:26",
+          "note": "The transcript favors compact defensive missiles and close-in weapons over space-inefficient offensive missile loads."
+        },
+        {
+          "start": "1:15:26",
+          "end": "1:16:25",
+          "note": "Land-based Phalanx use leads to questions about salt-water adaptation, retention, and rapid fitting to merchant vessels."
+        }
+      ]
+    },
+    {
+      "id": "hormuz-drone-and-missile-defense",
+      "videoId": "MH4VgWt-3kM",
+      "slug": "hormuz-drone-and-missile-defense",
+      "title": "Hormuz turns merchant self-defence into a current problem",
+      "kind": "notable_point",
+      "start": "1:16:25",
+      "end": "1:18:12",
+      "topics": [
+        "close-in-weapon-systems",
+        "iran",
+        "maritime-security",
+        "naval-mines",
+        "strait-of-hormuz",
+        "uncrewed-aerial-vehicles"
+      ],
+      "summary": "The Strait of Hormuz case separates the mine threat from drones and missiles that rapidly fitted close-in defences could help merchant ships survive.",
+      "body": "The March 2026 Strait of Hormuz situation makes the preparation problem immediate rather than hypothetical. Mines remain the primary Iranian threat discussed here, and a Phalanx or short-range missile fit cannot solve that hazard. Those systems could, however, give merchant crews greater confidence against missiles and drones. Large attack drones should be visible to airborne warning and regional defences, while smaller low-flying threats may fall within a ship's close-in engagement envelope. The missing capability is not the idea of last-mile defence but the prepared stock of systems needed to fit ships quickly.",
+      "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
+      "evidence": [
+        {
+          "start": "1:16:25",
+          "end": "1:17:44",
+          "note": "The transcript applies merchant-ship Phalanx and missile fits to mines, missiles, and drones in the Strait of Hormuz."
+        },
+        {
+          "start": "1:17:44",
+          "end": "1:18:12",
+          "note": "Modern forces are contrasted with the reserve guns that could arm merchant ships during the world wars."
+        }
+      ]
+    },
+    {
+      "id": "flagging-hardpoints-and-rules-of-engagement",
+      "videoId": "MH4VgWt-3kM",
+      "slug": "flagging-hardpoints-and-rules-of-engagement",
+      "title": "A defensive fit inherits the ship's flag problem",
+      "kind": "chapter",
+      "start": "1:18:23",
+      "end": "1:21:37",
+      "topics": [
+        "armed-guards",
+        "flag-of-convenience",
+        "maritime-law",
+        "merchant-navy",
+        "rules-of-engagement",
+        "war-reserves"
+      ],
+      "summary": "Multinational ownership and flags of convenience complicate hardpoint standards, armed guards, command relationships, and rules of engagement.",
+      "body": "Preparing merchant ships for missile defence requires builders to provide hard points, power, and interfaces before weapons are needed. Earlier British and American systems could incentivize nationally flagged fleets, then draw weapons from government stockpiles during war. Modern ships may be owned, chartered, registered, and flagged in different countries, making any common requirement difficult to impose. Dr. Clarke argues that armed guards and weapon systems should normally operate on a national or allied flag to keep command and rules of engagement intelligible. Because a ship is legally tied to its flag state, economic flagging decisions become security constraints during mobilization.",
+      "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
+      "evidence": [
+        {
           "start": "1:18:23",
+          "end": "1:20:14",
+          "note": "The transcript asks what builders should prepare and contrasts historic national hardpoint programs with multinational ownership and registration."
+        },
+        {
+          "start": "1:20:15",
+          "end": "1:21:37",
+          "note": "Allied flags, armed guards, command, rules of engagement, flag-state territory, and economically driven registration are discussed."
+        }
+      ]
+    },
+    {
+      "id": "offboard-mine-countermeasures-from-merchant-hulls",
+      "videoId": "MH4VgWt-3kM",
+      "slug": "offboard-mine-countermeasures-from-merchant-hulls",
+      "title": "Merchant hulls can deploy off-board mine systems",
+      "kind": "notable_point",
+      "start": "1:21:47",
+      "end": "1:22:32",
+      "topics": [
+        "mine-countermeasures",
+        "merchant-navy",
+        "naval-mines",
+        "refrigerated-cargo-ships",
+        "trawlers",
+        "uncrewed-surface-vessels"
+      ],
+      "summary": "Traditional minesweeping trawlers give way to uncrewed off-board systems, but navies still need suitable ships to carry, launch, and recover them.",
+      "body": "Trawlers were traditionally requisitioned for wartime minesweeping, but modern mine countermeasures increasingly move sensors and clearance tools off board. The Royal Navy example has capable uncrewed systems but too few deployment ships. A merchant conversion could provide the deck, cranes, workshop, and endurance needed to carry those craft into the operating area. Reefers again look attractive because their services suit powered modules and vehicle handling. Their intense commercial demand may nevertheless prevent the navy from obtaining them when a crisis also strains civilian supply.",
+      "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
+      "evidence": [
+        {
+          "start": "1:21:47",
+          "end": "1:22:32",
+          "note": "The transcript moves from historic trawler minesweeping to British off-board systems, deployment-ship shortages, and the appeal but scarcity of reefers."
+        }
+      ]
+    },
+    {
+      "id": "merchant-fleet-slack-and-wartime-requisition",
+      "videoId": "MH4VgWt-3kM",
+      "slug": "merchant-fleet-slack-and-wartime-requisition",
+      "title": "Just-in-time shipping leaves no mobilization cushion",
+      "kind": "chapter",
+      "start": "1:22:36",
+      "end": "1:23:50",
+      "topics": [
+        "falklands-war",
+        "just-in-time-logistics",
+        "merchant-navy",
+        "mobilization",
+        "sealift",
+        "supply-chain-resilience"
+      ],
+      "summary": "Modern trade has too little spare shipping to requisition auxiliaries without economic shock, as the Falklands campaign already demonstrated.",
+      "body": "The largest constraint on wartime conversion is the lack of slack in the merchant fleet. World War I and World War II mobilization could draw on more spare capacity, while even Britain's 1982 Falklands requisitions created major commercial ripples. Just-in-time logistics, procurement, and shipping minimize cost when every link functions normally. The same efficiency removes the reserve capacity that could absorb a war, canal closure, pandemic, or other disruption. A navy cannot plan merchant auxiliaries by counting hulls alone because taking those ships from trade may undermine the economy and military supply chain they are meant to support.",
+      "sourcePath": "src/transcripts/txt/2026-03-14_T19-30-06_do-armed-merchant-cruisers-still-make-sense-today_MH4VgWt-3kM.txt",
+      "evidence": [
+        {
+          "start": "1:22:36",
+          "end": "1:23:13",
+          "note": "The transcript contrasts current merchant-fleet capacity with the world wars and the economic effects of Falklands requisitions."
+        },
+        {
+          "start": "1:23:13",
           "end": "1:23:50",
-          "note": "The final section asks how to prepare merchant ships for defence and emphasizes flagging issues and lack of merchant-fleet slack."
+          "note": "Just-in-time efficiency is identified as particularly vulnerable to disruption because it retains no slack."
         }
       ]
     }

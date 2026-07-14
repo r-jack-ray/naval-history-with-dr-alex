@@ -12,7 +12,10 @@
     "missiles",
     "air-defence",
     "naval-architecture",
-    "naval-industrial-base"
+    "naval-industrial-base",
+    "littoral-combat-ship",
+    "aegis",
+    "requirements-creep"
   ],
   "segments": [
     {
@@ -27,10 +30,11 @@
         "frigates",
         "us-navy",
         "naval-procurement",
-        "ship-design"
+        "ship-design",
+        "requirements-creep"
       ],
       "summary": "The opening frames the Constellation class as a supposedly conservative frigate program that drifted toward destroyer-level cost comparisons.",
-      "body": "This watch point sets up the central procurement puzzle: why an off-the-shelf frigate with minimal-modification ambitions became described as delivering much less than a Burke for a large share of Burke cost. Dr. Clarke links that outcome to US Navy acquisition habits, political risk aversion, and requirements pressure. It is a useful starting point for understanding why the FFG-62 debate is about institutions as much as hull form.",
+      "body": "The central procurement puzzle is how an off-the-shelf frigate with minimal-modification ambitions became described as delivering roughly 60 percent of a Burke's capability for 80 percent of its cost. At that price, decision-makers could reasonably ask why they should not buy another destroyer. Dr. Clarke links the outcome to the drive for technically perfect ships, political fear of losing ships, and acquisition criteria that reward additional safeguards and capabilities. He also stresses that the US Navy had allowed a long gap to open after its last true frigates left service. The FFG-62 problem therefore begins with institutions and lost design practice, not simply with a poor choice of hull.",
       "sourcePath": "src/transcripts/txt/2026-05-31_T18-30-06_the-rise-and-fall-of-the-constellation-class-what-happened-to-the-ffg-62-program_-QT_D3BEqlQ.txt",
       "evidence": [
         {
@@ -57,10 +61,11 @@
         "frigates",
         "us-navy",
         "force-structure",
-        "anti-submarine-warfare"
+        "anti-submarine-warfare",
+        "fleet-escorts"
       ],
       "summary": "The Oliver Hazard Perry class becomes the baseline for what a numerous, utilitarian US Navy frigate could be.",
-      "body": "Dr. Clarke stresses that basic does not mean useless: the Perry class offered a practical hull, a functional weapons fit, and numbers. The key lesson is that a frigate can accept limits outside its core ASW role if the fleet buys enough of them and uses them as escorts. This gives the Constellation story a standard to measure against, not just a predecessor to replace.",
+      "body": "Dr. Clarke stresses that basic does not mean cheap or useless: the Perry class offered a sound hull, a functional weapons fit, and few unnecessary extras. Its consistently important capability was anti-submarine warfare, while the fleet accepted limits in other roles. Those limits were manageable because 51 ships supplied numbers for carrier-group screens, surface-action-group escorts, and convoy protection. A frigate could provide most of the required capability most of the time instead of trying to match a high-end combatant in every circumstance. That combination of specialization, availability, and acceptable performance is the benchmark used throughout the Constellation postmortem.",
       "sourcePath": "src/transcripts/txt/2026-05-31_T18-30-06_the-rise-and-fall-of-the-constellation-class-what-happened-to-the-ffg-62-program_-QT_D3BEqlQ.txt",
       "evidence": [
         {
@@ -71,37 +76,100 @@
         {
           "start": "4:34",
           "end": "5:37",
-          "note": "The discussion emphasizes multiple hulls, 51 Perrys, and their carrier-battle-group escort role."
+          "note": "The discussion emphasizes multiple hulls, 51 Perrys, and their carrier-battle-group, surface-action-group, and convoy escort roles."
         }
       ]
     },
     {
-      "id": "ffgx-specifications-overreach",
+      "id": "post-cold-war-transformation-and-lcs",
       "videoId": "-QT_D3BEqlQ",
-      "slug": "ffgx-specifications-overreach",
-      "title": "FFGX requirements push beyond a simple frigate",
+      "slug": "post-cold-war-transformation-and-lcs",
+      "title": "Post-Cold War transformation displaced the basic frigate",
+      "kind": "chapter",
+      "start": "5:39",
+      "end": "9:23",
+      "topics": [
+        "us-navy",
+        "frigates",
+        "littoral-combat-ship",
+        "military-transformation",
+        "naval-procurement"
+      ],
+      "summary": "The technological ambitions of the post-Cold War era help explain why the Navy moved away from a simple Perry successor and toward the Littoral Combat Ship.",
+      "body": "The Perrys did not fit a post-Cold War preference for highly visible technological transformation. Dr. Clarke connects that preference to Donald Rumsfeld's effort to make US forces so technologically advanced that their capabilities would deter challengers. The Littoral Combat Ship emerged from a genuine desire for a flexible, fast vessel suited to inshore operations, not from a wholly irrational idea. Designs such as Denmark's Absalon and Iver Huitfeldt classes suggested that flexible mission arrangements could be valuable. The strategic mistake was failing to preserve a separate, conventional frigate while developing the specialized littoral ship.",
+      "sourcePath": "src/transcripts/txt/2026-05-31_T18-30-06_the-rise-and-fall-of-the-constellation-class-what-happened-to-the-ffg-62-program_-QT_D3BEqlQ.txt",
+      "evidence": [
+        {
+          "start": "5:39",
+          "end": "7:16",
+          "note": "The transcript contrasts the basic Perry with the post-Cold War pursuit of technological transformation associated with Donald Rumsfeld."
+        },
+        {
+          "start": "8:13",
+          "end": "9:23",
+          "note": "The discussion treats the LCS as an initially plausible flexible inshore concept and argues for separating it from a continued Perry-style frigate mission."
+        }
+      ]
+    },
+    {
+      "id": "lcs-frigate-mission-overload",
+      "videoId": "-QT_D3BEqlQ",
+      "slug": "lcs-frigate-mission-overload",
+      "title": "LCS mission overload sets up the next frigate problem",
       "kind": "chapter",
       "start": "9:27",
       "end": "12:21",
       "topics": [
+        "littoral-combat-ship",
         "frigates",
         "naval-procurement",
         "ship-design",
-        "force-structure"
+        "requirements-creep"
       ],
-      "summary": "The FFGX requirement list shows how a frigate meant to avoid LCS mistakes still gathered too many expectations.",
-      "body": "The segment contrasts a boring, capable Perry continuation with the more ambitious FFGX path. Dr. Clarke argues that the program tried to combine traditional frigate duties with broader screening and independent capabilities, producing overreach rather than a lack of imagination. This time note helps viewers see why the program's apparent prudence could still create an expensive design trap.",
+      "summary": "Trying to make the Littoral Combat Ship perform both close-in rapid-response work and traditional frigate duties produced incompatible demands.",
+      "body": "A modernized Perry could have continued the unglamorous escort work while the LCS concentrated on fast, close-in support for littoral and amphibious operations. Instead, the LCS was also asked to perform traditional frigate duties. A design able to do both mission sets robustly was never likely to remain as small or inexpensive as promised. Repeated compromises then affected both LCS variants without resolving the underlying concept. Dr. Clarke calls this a failure of overreach and over-specification rather than a failure of imagination, a pattern that the FFG(X) program would soon repeat in reverse.",
       "sourcePath": "src/transcripts/txt/2026-05-31_T18-30-06_the-rise-and-fall-of-the-constellation-class-what-happened-to-the-ffg-62-program_-QT_D3BEqlQ.txt",
       "evidence": [
         {
           "start": "9:27",
           "end": "10:30",
-          "note": "The transcript says a Perry continuation would have handled frigate duties, while a ship asked to do more than frigate duties could not do both cheaply."
+          "note": "The transcript says a Perry continuation could have handled frigate duties while the LCS focused on rapid littoral response and amphibious screening."
         },
         {
-          "start": "11:41",
+          "start": "10:34",
           "end": "12:21",
-          "note": "The program is characterized as a failure of overreach and over-specification before the FFGX specification list appears."
+          "note": "The discussion traces repeated LCS compromises and characterizes the result as overreach and over-specification before introducing FFG(X)."
+        }
+      ]
+    },
+    {
+      "id": "ffgx-requirements-leave-no-growth-room",
+      "videoId": "-QT_D3BEqlQ",
+      "slug": "ffgx-requirements-leave-no-growth-room",
+      "title": "FFG(X) requirements leave little room for later growth",
+      "kind": "notable_point",
+      "start": "12:14",
+      "end": "14:40",
+      "topics": [
+        "frigates",
+        "naval-procurement",
+        "requirements-creep",
+        "electronic-warfare",
+        "unmanned-systems"
+      ],
+      "summary": "The FFG(X) capability matrix is already crowded with present-day demands before the weapons and combat system are considered.",
+      "body": "The requirement chart is striking because so much of it is marked as an immediate capability rather than space for future growth. Dr. Clarke questions whether every offensive electronic-warfare function and boat-handling option must be present from the first ship. A crewed MH-60R and an MQ-8 unmanned helicopter make sense for anti-submarine work, but they also require aviation facilities sized for both. Each demand is individually defensible, which is precisely how the overall package becomes difficult to restrain. A frigate intended to be conservative was entering design with little room to defer attractive but nonessential features.",
+      "sourcePath": "src/transcripts/txt/2026-05-31_T18-30-06_the-rise-and-fall-of-the-constellation-class-what-happened-to-the-ffg-62-program_-QT_D3BEqlQ.txt",
+      "evidence": [
+        {
+          "start": "12:14",
+          "end": "13:54",
+          "note": "The transcript reviews the capability matrix and asks why several electronic-warfare functions could not remain growth options."
+        },
+        {
+          "start": "13:59",
+          "end": "14:40",
+          "note": "The discussion covers boat capacity and the planned combination of an MH-60R with an MQ-8 for the ASW role."
         }
       ]
     },
@@ -112,27 +180,95 @@
       "title": "VLS and Aegis expectations raise frigate cost",
       "kind": "notable_point",
       "start": "14:40",
-      "end": "19:12",
+      "end": "20:19",
       "topics": [
         "frigates",
         "missiles",
         "air-defence",
         "naval-procurement",
-        "ship-design"
+        "aegis",
+        "anti-submarine-warfare"
       ],
-      "summary": "The weapons and combat-system discussion explains why a few more missile cells are not the only source of frigate cost.",
-      "body": "The air-warfare section walks through 32 Mark 41 VLS cells, RAM, gun fit, phased-array radar, and an Aegis-derived combat system. Dr. Clarke's point is that the expensive part is often the sensor, computer, and integration ecosystem behind the cells, not just the number of launchers. For a frigate, that means apparently reasonable fleet-common systems can pull the ship toward destroyer-like cost and complexity.",
+      "summary": "The weapons and combat-system discussion explains both why a few more missile cells are not the main cost driver and why the priorities look inverted for an ASW frigate.",
+      "body": "The proposed fit includes 32 Mark 41 VLS cells, RAM, a 57 mm gun, a fixed phased-array radar, and an Aegis-derived combat system. Dr. Clarke emphasizes that much of the cost lies in the sensors, computers, power, and integration needed to make the launchers useful, whether the ship carries a handful of cells or several dozen. Fleet-common systems can therefore pull a frigate toward destroyer-like cost even when each choice sounds prudent in isolation. The priority structure is more troubling: the fixed radar appears in the first tier while variable-depth and towed-array sonars appear in the second. A ship justified by anti-submarine warfare was being defined first by an expensive air-warfare ecosystem.",
       "sourcePath": "src/transcripts/txt/2026-05-31_T18-30-06_the-rise-and-fall-of-the-constellation-class-what-happened-to-the-ffg-62-program_-QT_D3BEqlQ.txt",
       "evidence": [
         {
           "start": "14:40",
           "end": "15:40",
-          "note": "The transcript lists the 32-cell Mark 41 VLS, RAM, gun fit, and the computers and sensors behind VLS cost."
+          "note": "The transcript lists the 32-cell Mark 41 VLS, RAM, gun fit, and the computers and sensors behind missile-system cost."
         },
         {
-          "start": "18:20",
+          "start": "16:26",
           "end": "19:12",
-          "note": "The transcript discusses phased-array radar, an Aegis-derived combat system, helicopter, over-the-horizon weapons, Fire Scout, and sonar equipment."
+          "note": "The Navy's fleet-networking, phased-array radar, Aegis, aviation, weapons, and sonar requirements are reviewed, with ASW sonars placed in tier two."
+        },
+        {
+          "start": "19:30",
+          "end": "20:19",
+          "note": "The transcript contrasts cooperative engagement and traditional surface and ASW roles with an apparent emphasis on air-warfare systems."
+        }
+      ]
+    },
+    {
+      "id": "ffgx-reverses-the-lcs-mission-graft",
+      "videoId": "-QT_D3BEqlQ",
+      "slug": "ffgx-reverses-the-lcs-mission-graft",
+      "title": "FFG(X) reverses the LCS mission graft",
+      "kind": "chapter",
+      "start": "20:22",
+      "end": "23:04",
+      "topics": [
+        "frigates",
+        "littoral-combat-ship",
+        "unmanned-systems",
+        "requirements-creep",
+        "ship-design"
+      ],
+      "summary": "Where LCS had frigate duties added to a littoral ship, FFG(X) added littoral penetration and unmanned-system duties to a frigate.",
+      "body": "The Perry carried Standard missiles with a much simpler radar and fire-control arrangement than the proposed Aegis-family fit. FFG(X) was also expected to deploy unmanned systems into contested environments to gain sensor and weapons advantages. Dr. Clarke argues that this repeats the LCS mistake from the opposite direction. LCS had conventional frigate work attached to its specialized littoral mission, while FFG(X) had the littoral mission attached to an already demanding frigate role. Combining the two sets of requirements forces each to pay for capabilities needed by the other and undermines the intended value of the hull.",
+      "sourcePath": "src/transcripts/txt/2026-05-31_T18-30-06_the-rise-and-fall-of-the-constellation-class-what-happened-to-the-ffg-62-program_-QT_D3BEqlQ.txt",
+      "evidence": [
+        {
+          "start": "20:22",
+          "end": "21:17",
+          "note": "The transcript contrasts the Perry's Standard-missile fit and Mark 92 system with the proposed Aegis-family approach."
+        },
+        {
+          "start": "21:34",
+          "end": "23:04",
+          "note": "The Navy's unmanned-system requirement leads to the argument that FFG(X) attached LCS duties to a frigate just as LCS had attached frigate duties to a littoral ship."
+        }
+      ]
+    },
+    {
+      "id": "parent-design-competition-options",
+      "videoId": "-QT_D3BEqlQ",
+      "slug": "parent-design-competition-options",
+      "title": "The parent-design competition offered several kinds of risk reduction",
+      "kind": "chapter",
+      "start": "24:50",
+      "end": "28:32",
+      "topics": [
+        "frigates",
+        "naval-procurement",
+        "alvaro-de-bazan-class",
+        "meko-a200",
+        "littoral-combat-ship"
+      ],
+      "summary": "The FFG(X) contestants ranged from an American cutter and LCS derivatives to established European frigates with very different strengths.",
+      "body": "The competition was intended to reduce risk by selecting a design that already existed in working form. Dr. Clarke sees Spain's Álvaro de Bazán class as an obvious face-value match because it was already an Aegis frigate, though reputation and size could work against it. The MEKO A-200 offered a highly configurable menu, but that flexibility could invite a politically and administratively difficult fight over options and suppliers. The Freedom and Independence LCS derivatives carried the reputation of the program the Navy was trying to escape. The eventual FREMM choice therefore came from a broad field of real ships, not from a lack of plausible alternatives.",
+      "sourcePath": "src/transcripts/txt/2026-05-31_T18-30-06_the-rise-and-fall-of-the-constellation-class-what-happened-to-the-ffg-62-program_-QT_D3BEqlQ.txt",
+      "evidence": [
+        {
+          "start": "24:50",
+          "end": "26:38",
+          "note": "The transcript introduces the competition, the Legend-class cutter proposal, and the Álvaro de Bazán F100 as an existing Aegis frigate."
+        },
+        {
+          "start": "26:41",
+          "end": "28:32",
+          "note": "The discussion compares the configurable MEKO approach with LCS derivatives whose program reputation made selection unlikely."
         }
       ]
     },
@@ -140,29 +276,218 @@
       "id": "fremm-asw-parent-design-limits",
       "videoId": "-QT_D3BEqlQ",
       "slug": "fremm-asw-parent-design-limits",
-      "title": "FREMM parent design did not settle the ASW question",
+      "title": "FREMM was a sound parent design, not a ready-made US ASW frigate",
       "kind": "chapter",
       "start": "28:40",
-      "end": "30:35",
+      "end": "33:19",
       "topics": [
         "frigates",
         "anti-submarine-warfare",
         "ship-design",
-        "naval-architecture"
+        "fremm",
+        "type-26-frigate"
       ],
-      "summary": "The FREMM comparison separates a multi-mission parent design with strong ASW from a purpose-built US Navy ASW frigate.",
-      "body": "This watch point keeps the Constellation argument from becoming a simple copy-the-parent-design story. Dr. Clarke distinguishes a strong multi-mission FREMM from a purpose-built ASW ship and asks what changes US Navy sensors, standards, and mission priorities impose. The result is a clearer view of how parent-design reuse can narrow risk without eliminating design judgment.",
+      "summary": "The FREMM comparison distinguishes a flexible multi-mission frigate with strong ASW from a purpose-built submarine hunter such as Type 26.",
+      "body": "Dr. Clarke separates two useful but different design philosophies. Type 26 is built around anti-submarine warfare and accepts limitations elsewhere, while FREMM is a general-purpose frigate that performs ASW well alongside other missions. For a US Navy planning to buy many ships, FREMM's greater flexibility could be a sensible advantage over a more specialized hunter. The competition also required functioning ships rather than paper proposals, which made the choice a genuine risk-reduction measure. Selecting a good multi-mission parent, however, did not eliminate the need to decide which American mission and systems would dominate the derivative.",
       "sourcePath": "src/transcripts/txt/2026-05-31_T18-30-06_the-rise-and-fall-of-the-constellation-class-what-happened-to-the-ffg-62-program_-QT_D3BEqlQ.txt",
       "evidence": [
         {
           "start": "28:40",
-          "end": "29:26",
-          "note": "The transcript distinguishes a purpose-built ASW ship from the FREMM as a multi-mission design with strong ASW qualities."
+          "end": "30:35",
+          "note": "The transcript contrasts Type 26 as a purpose-built ASW ship with FREMM as a multi-mission design possessing strong ASW capability."
         },
         {
-          "start": "29:27",
-          "end": "30:35",
-          "note": "The discussion questions how much anti-submarine performance comes from the design versus the chosen sensors and national requirements."
+          "start": "31:03",
+          "end": "33:19",
+          "note": "The discussion explains why FREMM's flexibility and status as a ship already in service made selection reasonable for a large US program."
+        }
+      ]
+    },
+    {
+      "id": "european-crewing-and-systems-integration",
+      "videoId": "-QT_D3BEqlQ",
+      "slug": "european-crewing-and-systems-integration",
+      "title": "European crewing assumptions complicated American adaptation",
+      "kind": "notable_point",
+      "start": "33:22",
+      "end": "37:30",
+      "topics": [
+        "fremm",
+        "crew-requirements",
+        "damage-control",
+        "naval-standards",
+        "naval-architecture"
+      ],
+      "summary": "FREMM's European personnel model, automation, and systems architecture were not neutral features that could simply be retained under US Navy requirements.",
+      "body": "FREMM met NATO standards, but it was designed around European navies' smaller crews and recruitment constraints. Automation and ship-management systems help those crews sustain damage-control and operating functions with fewer people. The much larger US Navy recruits, retains, and structures careers differently, so it approaches crewing and survivability from another institutional baseline. Replacing European sensors with American radars then changes the superstructure and the placement of supporting equipment. A warship is a system of systems, so each major substitution changes relationships throughout the design and makes high commonality progressively less credible.",
+      "sourcePath": "src/transcripts/txt/2026-05-31_T18-30-06_the-rise-and-fall-of-the-constellation-class-what-happened-to-the-ffg-62-program_-QT_D3BEqlQ.txt",
+      "evidence": [
+        {
+          "start": "33:22",
+          "end": "36:23",
+          "note": "The transcript discusses European crewing, automation, damage control, retention, and the different personnel assumptions of the US Navy."
+        },
+        {
+          "start": "36:28",
+          "end": "37:30",
+          "note": "American radars and systems require structural changes, illustrating why a ship's connected systems make broad design substitution difficult."
+        }
+      ]
+    },
+    {
+      "id": "fremm-redesign-and-burke-standards",
+      "videoId": "-QT_D3BEqlQ",
+      "slug": "fremm-redesign-and-burke-standards",
+      "title": "American systems and Burke-derived standards reshape the hull",
+      "kind": "chapter",
+      "start": "44:32",
+      "end": "48:58",
+      "topics": [
+        "frigates",
+        "fremm",
+        "naval-standards",
+        "naval-architecture",
+        "requirements-creep",
+        "weight-growth"
+      ],
+      "summary": "Visible hull changes, added displacement, and high-end technical standards show how the FREMM derivative became a substantially different ship.",
+      "body": "American radar, sonar, and weapons choices changed the superstructure, hull lines, and internal relationships of the parent design. The derivative grew by about 500 tons and was lengthened by 23.6 feet, officially providing margin and room for future growth. Dr. Clarke argues that NAVSEA's approach effectively turns NATO standards up to their maximum level. Because the Navy had not built a true frigate for years, its most recent successful standards baseline was the Arleigh Burke destroyer rather than a restrained escort. That choice reduced the risk of repeating LCS weaknesses but also made Burke comparisons and high-end requirements difficult to escape.",
+      "sourcePath": "src/transcripts/txt/2026-05-31_T18-30-06_the-rise-and-fall-of-the-constellation-class-what-happened-to-the-ffg-62-program_-QT_D3BEqlQ.txt",
+      "evidence": [
+        {
+          "start": "44:32",
+          "end": "46:20",
+          "note": "The transcript identifies changed hull lines, roughly 500 tons of growth, a 23.6-foot length increase, and demanding naval standards."
+        },
+        {
+          "start": "46:25",
+          "end": "48:58",
+          "note": "The discussion links the frigate-construction gap to reliance on the Navy's latest successful destroyer standards and argues for a lower basic-frigate baseline."
+        }
+      ]
+    },
+    {
+      "id": "light-frigate-task-group-versus-picket",
+      "videoId": "-QT_D3BEqlQ",
+      "slug": "light-frigate-task-group-versus-picket",
+      "title": "Task-group frigates and independent pickets need different designs",
+      "kind": "notable_point",
+      "start": "49:01",
+      "end": "51:13",
+      "topics": [
+        "frigates",
+        "destroyers",
+        "force-structure",
+        "fleet-escorts",
+        "naval-doctrine"
+      ],
+      "summary": "A light frigate that works inside a formation should not be specified as if it must stand alone on the fleet's outer screen.",
+      "body": "Dr. Clarke distinguishes a light frigate as a task-group asset from larger frigates and destroyers expected to operate as capable pickets. In this model, the frigate supplies the anti-submarine specialization while the destroyer leads high-end air defence. He compares the light frigate to Arethusa- or Atlanta-class light cruisers: useful formation ships that were not meant to duel larger cruisers or capital ships alone. Historical examples show that such ships could fight effectively without being designed for every possible opponent. Defining where a ship sits in the formation is therefore essential before assigning its sensors, weapons, and survivability standard.",
+      "sourcePath": "src/transcripts/txt/2026-05-31_T18-30-06_the-rise-and-fall-of-the-constellation-class-what-happened-to-the-ffg-62-program_-QT_D3BEqlQ.txt",
+      "evidence": [
+        {
+          "start": "49:01",
+          "end": "49:59",
+          "note": "The transcript distinguishes light-frigate task-group assets from picket-capable frigates and destroyers with different principal warfare roles."
+        },
+        {
+          "start": "50:01",
+          "end": "51:13",
+          "note": "Arethusa and Atlanta light cruisers illustrate useful formation ships that were not expected to fight larger cruisers or capital ships alone."
+        }
+      ]
+    },
+    {
+      "id": "small-combatant-basic-frigate-baseline",
+      "videoId": "-QT_D3BEqlQ",
+      "slug": "small-combatant-basic-frigate-baseline",
+      "title": "The successor frigate needs a deliberately modest baseline",
+      "kind": "chapter",
+      "start": "53:43",
+      "end": "59:10",
+      "topics": [
+        "frigates",
+        "force-structure",
+        "naval-procurement",
+        "legend-class-cutter",
+        "fleet-escorts"
+      ],
+      "summary": "The post-cancellation plan points toward a Legend-class-derived first flight whose main purpose is to establish achievable frigate standards.",
+      "body": "The Congressional Research Service groups frigates, LCS, mine-warfare ships, and patrol craft together as small surface combatants despite their very different jobs. Its fleet plan describes 73 such combatants, including 58 future frigates and modified Flight II ships. Dr. Clarke interprets the initial Legend-class-derived flight as a muscular cutter that can establish a credible baseline before later flights add capability. The Oliver Hazard Perry appears in the report as a reminder that the Navy has previously built a useful, numerous frigate without making it a small destroyer. The successor should be capable, basic, and easy to procure in quantity rather than designed to impress in every mission area.",
+      "sourcePath": "src/transcripts/txt/2026-05-31_T18-30-06_the-rise-and-fall-of-the-constellation-class-what-happened-to-the-ffg-62-program_-QT_D3BEqlQ.txt",
+      "evidence": [
+        {
+          "start": "53:43",
+          "end": "56:37",
+          "note": "The transcript defines small surface combatants, cites the planned total and frigate component, and interprets Flight I as a baseline for Flight II."
+        },
+        {
+          "start": "57:24",
+          "end": "59:10",
+          "note": "The Perry image prompts an argument for a capable, basic, utilitarian frigate that performs its assigned job without unnecessary features."
+        }
+      ]
+    },
+    {
+      "id": "constellation-four-primary-missions",
+      "videoId": "-QT_D3BEqlQ",
+      "slug": "constellation-four-primary-missions",
+      "title": "Four warfare missions turn the frigate into a high-end combatant",
+      "kind": "chapter",
+      "start": "1:00:44",
+      "end": "1:06:45",
+      "topics": [
+        "frigates",
+        "anti-submarine-warfare",
+        "air-defence",
+        "electronic-warfare",
+        "requirements-creep",
+        "force-structure"
+      ],
+      "summary": "Constellation's formal mission list gives anti-air warfare and ASW near-equal weight rather than building the ship around one principal frigate role.",
+      "body": "The class was defined for anti-air, anti-surface, anti-submarine, and electromagnetic warfare in both blue-water and littoral settings, independently or in large formations. Anti-submarine warfare appears third in that list despite being a central reason for buying a frigate. Dr. Clarke distinguishes local self-defence from area air warfare, which requires a ship to protect other units across a wider space. A frigate normally has one principal warfare mission and supports secondary tasks with proportionate systems. Combining destroyer-level air warfare with demanding ASW brings the computers, power generation, space, and integration burden of two primary missions into one hull. For a fleet already rich in Burkes, making every escort Burke-like sacrifices the numbers needed to cover all the fleet's tasks.",
+      "sourcePath": "src/transcripts/txt/2026-05-31_T18-30-06_the-rise-and-fall-of-the-constellation-class-what-happened-to-the-ffg-62-program_-QT_D3BEqlQ.txt",
+      "evidence": [
+        {
+          "start": "1:00:44",
+          "end": "1:02:54",
+          "note": "The transcript lists the four warfare areas and identifies area anti-air warfare as the first destroyer-like requirement."
+        },
+        {
+          "start": "1:03:01",
+          "end": "1:06:45",
+          "note": "The discussion argues for ASW as the primary frigate role and explains the size, power, and cost burden of combining it with high-end air warfare."
+        }
+      ]
+    },
+    {
+      "id": "point-defence-versus-area-air-warfare",
+      "videoId": "-QT_D3BEqlQ",
+      "slug": "point-defence-versus-area-air-warfare",
+      "title": "Point defence and area air warfare are not the same frigate mission",
+      "kind": "notable_point",
+      "start": "1:07:55",
+      "end": "1:10:12",
+      "topics": [
+        "frigates",
+        "air-defence",
+        "aegis",
+        "missiles",
+        "naval-doctrine"
+      ],
+      "summary": "A report footnote clarifies why FFG-62's guided-missile designation carries a more demanding implication than the Perry's Cold War missile fit.",
+      "body": "Point-defence systems protect their own ship at short range, while area systems protect other ships and aircraft across a larger battlespace. The report notes that US ships with area air-defence systems receive a G in their designation, making FFG-62's label significant. The Perry also carried Standard missiles, but it used a single-arm launcher and lacked a complete Aegis package. Constellation paired VLS with an Aegis-derived system intended to participate in area air warfare. Dr. Clarke cautions that modern definitions are sometimes projected backward, obscuring how much the meaning and cost of a guided-missile frigate have changed.",
+      "sourcePath": "src/transcripts/txt/2026-05-31_T18-30-06_the-rise-and-fall-of-the-constellation-class-what-happened-to-the-ffg-62-program_-QT_D3BEqlQ.txt",
+      "evidence": [
+        {
+          "start": "1:07:55",
+          "end": "1:08:35",
+          "note": "The quoted footnote distinguishes short-range point defence from area air defence and explains the guided-missile designation."
+        },
+        {
+          "start": "1:08:49",
+          "end": "1:10:12",
+          "note": "The transcript contrasts the Perry's launcher and fire-control fit with FFG-62's Aegis and VLS package and warns against retroactive definitions."
         }
       ]
     },
@@ -170,30 +495,67 @@
       "id": "burke-standards-creep",
       "videoId": "-QT_D3BEqlQ",
       "slug": "burke-standards-creep",
-      "title": "Burke standards crept into the frigate program",
+      "title": "Burke standards made a mini-Burke comparison inevitable",
       "kind": "notable_point",
       "start": "1:10:21",
-      "end": "1:14:21",
+      "end": "1:16:46",
       "topics": [
         "frigates",
         "destroyers",
         "us-navy",
         "naval-procurement",
-        "air-defence"
+        "air-defence",
+        "cooperative-engagement"
       ],
-      "summary": "The later requirements discussion explains why Constellation invited comparison with Arleigh Burke destroyers even when it was not meant to be a mini-Burke.",
-      "body": "Dr. Clarke argues that standards from the successful Burke program crept into the frigate, making public and political comparisons almost inevitable. The segment is useful because it separates two ideas: the ship was not simply intended as a mini-Burke, but it carried enough Burke-like standards and air-warfare expectations to be judged against one. That dynamic helps explain why a frigate can lose its value case before any combat performance is tested.",
+      "summary": "Constellation was meant to support the fleet's air battle rather than replace a Burke, but its standards and systems made political comparison with the destroyer unavoidable.",
+      "body": "Dr. Clarke describes a widening knowledge gap between naval professionals and political decision-makers who must approve procurement. Within Navy doctrine, FFG-62's missiles could support a cooperative engagement led by another Aegis ship rather than make the frigate a full independent air-defence commander. That distinction is difficult to communicate when the ship carries Burke-derived standards, Aegis, Standard missiles, and a familiar guided-missile label. The class was not conceived simply as a mini-Burke, but the Navy's successful Burke program supplied the obvious technical and political benchmark. Deferring the more expansive air-warfare fit to a later flight could have protected the first ships from that comparison and established a clearer frigate identity.",
       "sourcePath": "src/transcripts/txt/2026-05-31_T18-30-06_the-rise-and-fall-of-the-constellation-class-what-happened-to-the-ffg-62-program_-QT_D3BEqlQ.txt",
       "evidence": [
         {
           "start": "1:10:21",
           "end": "1:11:31",
-          "note": "The transcript discusses political-service gaps and air-warfare capability as a cooperative missile contribution linked to Aegis."
+          "note": "The transcript discusses political-service knowledge gaps and air-warfare capability as a cooperative missile contribution linked to another Aegis ship."
         },
         {
           "start": "1:12:44",
           "end": "1:14:21",
-          "note": "The transcript says the class is not trying to be a mini-Burke but that Burke standards crept in because Burke was the successful program."
+          "note": "The class is not described as an intended mini-Burke, but Burke standards and familiar statistics invite that comparison."
+        },
+        {
+          "start": "1:14:39",
+          "end": "1:16:46",
+          "note": "The Navy's success in sustaining the Burke program makes it hard to differentiate other combatants, and the transcript suggests clearer tiers of air-warfare participation."
+        }
+      ]
+    },
+    {
+      "id": "procurement-drumbeat-undermines-program",
+      "videoId": "-QT_D3BEqlQ",
+      "slug": "procurement-drumbeat-undermines-program",
+      "title": "An unstable procurement drumbeat erodes cost and yard confidence",
+      "kind": "chapter",
+      "start": "1:16:50",
+      "end": "1:21:12",
+      "topics": [
+        "frigates",
+        "naval-procurement",
+        "naval-industrial-base",
+        "shipbuilding",
+        "cost-growth"
+      ],
+      "summary": "Repeatedly changing annual orders left the program below its planned fleet total and made a second production yard increasingly unrealistic.",
+      "body": "The procurement table repeatedly promises higher future orders while buying roughly one ship per year through fiscal 2023. By fiscal 2024, the original trajectory would have placed nine ships on order, but the actual total was six before the fiscal 2025 cancellation. Plans for a second yard only made sense if annual procurement rose above two ships, a rate the program never sustained. Even the existing builder had reason to question whether continued investment in workforce and facilities would be rewarded. The lead ship's roughly $1.5 billion cost includes detailed design and other non-recurring engineering that later hulls should spread across a learning curve. Cutting and shifting the production rhythm prevents that curve and industrial capacity from delivering their intended savings.",
+      "sourcePath": "src/transcripts/txt/2026-05-31_T18-30-06_the-rise-and-fall-of-the-constellation-class-what-happened-to-the-ffg-62-program_-QT_D3BEqlQ.txt",
+      "evidence": [
+        {
+          "start": "1:16:50",
+          "end": "1:19:38",
+          "note": "The transcript follows changing annual plans, compares six actual orders with nine previously planned, and explains why a second yard never became viable."
+        },
+        {
+          "start": "1:19:45",
+          "end": "1:21:12",
+          "note": "The lead ship's cost includes design and non-recurring engineering, while unstable follow-on quantities prevent normal learning-curve reductions."
         }
       ]
     },
@@ -209,21 +571,116 @@
         "frigates",
         "ship-design",
         "naval-architecture",
-        "naval-industrial-base"
+        "fremm",
+        "requirements-creep",
+        "systems-integration"
       ],
-      "summary": "The design-comparison section shows the program moving from high claimed FREMM commonality toward extensive redesign and delay.",
-      "body": "This section tracks the gap between parent-design language and the actual altered ship. Dr. Clarke highlights a quoted fall from about 85 percent commonality toward roughly 15 percent, then uses visible design comparisons, including bridge and layout changes, to show how far Constellation moved away from straightforward FREMM reuse. The learning payoff is seeing how accumulated local changes can erase the schedule and risk advantages that justified buying a parent design.",
+      "summary": "The program moved from claims of high FREMM commonality to a ship that official reporting described as only about 15 percent common.",
+      "body": "The parent-design rationale depended on preserving enough of FREMM to save design time and reduce technical risk. Reporting later described a fall from about 85 percent commonality to roughly 15 percent, a relationship too distant to provide the expected advantage. Dr. Clarke contrasts a 2021 description of a larger but essentially similar house with the 2024 assessment that the Navy had effectively designed a new frigate. Overlay images show that even bridge position and layout changed despite earlier claims that this area would remain substantially intact. Requirements for American-built equipment and new sensors created individually understandable changes that cascaded through structure, internal spaces, and system relationships. By the time officials acknowledged that adapting another navy's design could be harder than starting fresh, Constellation no longer functioned as a modified repeat.",
       "sourcePath": "src/transcripts/txt/2026-05-31_T18-30-06_the-rise-and-fall-of-the-constellation-class-what-happened-to-the-ffg-62-program_-QT_D3BEqlQ.txt",
       "evidence": [
         {
           "start": "1:21:24",
-          "end": "1:21:57",
-          "note": "The transcript introduces the design-comparison graphic and says commonality fell from about 85 percent to around 15 percent."
+          "end": "1:25:39",
+          "note": "The transcript contrasts the original high-commonality premise with later reporting of roughly 15 percent and argues that the Navy had created a new ship."
         },
         {
           "start": "1:26:03",
           "end": "1:30:19",
-          "note": "The discussion compares bridge and layout changes and treats them as evidence that the design was no longer a simple reuse."
+          "note": "Bridge and layout comparisons, American-built systems, and official admissions illustrate how cumulative changes erased the modified-repeat advantage."
+        }
+      ]
+    },
+    {
+      "id": "construction-before-design-stability",
+      "videoId": "-QT_D3BEqlQ",
+      "slug": "construction-before-design-stability",
+      "title": "Construction began before the basic design stabilized",
+      "kind": "chapter",
+      "start": "1:30:03",
+      "end": "1:34:40",
+      "topics": [
+        "frigates",
+        "ship-design",
+        "shipbuilding",
+        "program-management",
+        "naval-industrial-base"
+      ],
+      "summary": "Two years into lead-ship construction, basic drawings were still changing and supposedly mature modules had to stop work for design reasons.",
+      "body": "A June 2025 assessment said the program still had not completed the functional design needed to demonstrate stability more than two years after construction began. The Navy and builder continued revising general-arrangement drawings and structural components on which later design work depended. The lead ship had moved to an April 2029 delivery, three years later than its original contract date. This sequence contradicts leading practice, which completes basic and functional design before cutting steel. The inconsistency becomes visible when modules reported as more than 90 percent designed are the same modules whose construction had to pause because the design changed. Progress percentages cannot compensate for an unsettled baseline.",
+      "sourcePath": "src/transcripts/txt/2026-05-31_T18-30-06_the-rise-and-fall-of-the-constellation-class-what-happened-to-the-ffg-62-program_-QT_D3BEqlQ.txt",
+      "evidence": [
+        {
+          "start": "1:30:03",
+          "end": "1:31:09",
+          "note": "The quoted assessment reports persistent design instability, a three-year delivery delay, and continuing revision of foundational drawings after construction began."
+        },
+        {
+          "start": "1:31:15",
+          "end": "1:34:40",
+          "note": "The discussion explains the importance of general-arrangement drawings and contrasts reported module maturity with pauses caused by design changes."
+        }
+      ]
+    },
+    {
+      "id": "weight-growth-erodes-service-margin",
+      "videoId": "-QT_D3BEqlQ",
+      "slug": "weight-growth-erodes-service-margin",
+      "title": "Weight growth consumes capability reserved for the ship's future",
+      "kind": "notable_point",
+      "start": "1:35:08",
+      "end": "1:36:03",
+      "topics": [
+        "frigates",
+        "weight-growth",
+        "design-margin",
+        "naval-architecture",
+        "requirements-creep"
+      ],
+      "summary": "A reported 759-metric-ton increase did more than enlarge the ship: it reduced the margin available for later weapons and sensors.",
+      "body": "By October 2024, Constellation had gained 759 metric tons over its initial estimate, nearly a 13 percent increase. The report attributed part of that growth to underestimating the effect of US Navy technical requirements on a foreign design. Efforts to reduce weight had not prevented the problem from becoming more pronounced as the design matured. Excess weight at entry into service consumes the allowance intended for upgrades across a decades-long career. The result can be reduced combat capability, less room to answer new threats, and a shorter useful service life even before the first ship is complete.",
+      "sourcePath": "src/transcripts/txt/2026-05-31_T18-30-06_the-rise-and-fall-of-the-constellation-class-what-happened-to-the-ffg-62-program_-QT_D3BEqlQ.txt",
+      "evidence": [
+        {
+          "start": "1:35:08",
+          "end": "1:35:42",
+          "note": "The transcript quotes 759 metric tons of growth, nearly 13 percent, partly caused by underestimated US technical requirements."
+        },
+        {
+          "start": "1:35:44",
+          "end": "1:36:03",
+          "note": "The assessment warns that early weight growth can limit later capabilities, adaptation to threats, and planned service life."
+        }
+      ]
+    },
+    {
+      "id": "requirements-control-needs-a-scrooge",
+      "videoId": "-QT_D3BEqlQ",
+      "slug": "requirements-control-needs-a-scrooge",
+      "title": "Requirements control depends on someone empowered to say no",
+      "kind": "notable_point",
+      "start": "1:36:30",
+      "end": "1:43:47",
+      "topics": [
+        "frigates",
+        "naval-procurement",
+        "requirements-creep",
+        "program-management",
+        "ship-design"
+      ],
+      "summary": "The program's failure is presented as an accumulation of well-intentioned improvements without a leader willing to protect the first flight from them.",
+      "body": "Dr. Clarke rejects conspiracy as the most useful explanation and instead emphasizes many competent people proposing individually sensible improvements. Without a decision-maker empowered to refuse them, small survivability, system, and capability changes accumulate into a different ship. His deliberately sharp metaphor is the Scrooge in the room: the person who defers a good idea to a later flight because the first ships must enter service. The Arleigh Burke program illustrates how future configurations can be studied without loading every improvement into the initial design. After cancellation, the same lesson becomes a question of leadership: someone must distinguish a destroyer requirement from a frigate requirement and accept that the appropriate standards may differ. Program discipline is not opposition to innovation; it is control over when each innovation enters the fleet.",
+      "sourcePath": "src/transcripts/txt/2026-05-31_T18-30-06_the-rise-and-fall-of-the-constellation-class-what-happened-to-the-ffg-62-program_-QT_D3BEqlQ.txt",
+      "evidence": [
+        {
+          "start": "1:36:30",
+          "end": "1:40:02",
+          "note": "The transcript attributes the failure to well-intentioned changes without an effective veto and argues for deferring improvements to later flights."
+        },
+        {
+          "start": "1:42:32",
+          "end": "1:43:47",
+          "note": "The closing leadership critique says the responsible authority needed to reject destroyer specifications and reconsider which survivability standards belonged on a frigate."
         }
       ]
     },
@@ -239,51 +696,82 @@
         "frigates",
         "naval-procurement",
         "naval-industrial-base",
-        "ship-design"
+        "ship-design",
+        "shipbuilding"
       ],
-      "summary": "The cancellation discussion weighs yard delays against the deeper problem that the ship design still did not appear settled.",
-      "body": "Dr. Clarke treats shipyard backlogs and skilled-worker shortages as real but not sufficient explanations, because the Navy knew those issues when it selected the yard. He then points to slow construction progress and continuing design revisions as the stronger warning signs. For viewers tracking procurement failure, this is the point where schedule, industrial capacity, and design discipline converge.",
+      "summary": "Yard constraints contributed to delay, but continuing design revisions and minimal construction progress provide the deeper explanation for cancellation.",
+      "body": "Shipyard backlogs and skilled-worker shortages were real constraints, but the Navy knew about them when it placed the order. Work on Constellation began in April 2024, yet the lead ship was reported only 12 percent complete by November 2025. The second ship, Congress, had not been laid down, while revisions left the final appearance and arrangement of both hulls uncertain. Dr. Clarke therefore treats the lack of an agreed design as more decisive than the yard's condition alone. Cancellation became the point at which the Navy had to stop adding time and money to a program whose basic configuration still had not stabilized.",
       "sourcePath": "src/transcripts/txt/2026-05-31_T18-30-06_the-rise-and-fall-of-the-constellation-class-what-happened-to-the-ffg-62-program_-QT_D3BEqlQ.txt",
       "evidence": [
         {
           "start": "1:40:05",
           "end": "1:41:10",
-          "note": "The transcript discusses cancellation reasons, yard backlogs, worker shortages, 12 percent completion, and skepticism that the design was agreed."
+          "note": "The transcript weighs known yard backlogs and worker shortages against the lead ship's reported 12 percent completion."
         },
         {
-          "start": "1:41:38",
+          "start": "1:41:14",
           "end": "1:42:27",
-          "note": "The transcript says Constellation and Congress may still be built but could look very different, and concludes cancellation reflects lack of design agreement."
+          "note": "Congress had not been laid down, revisions continued, and the conclusion attributes cancellation to the absence of an agreed design."
         }
       ]
     },
     {
-      "id": "parent-design-alternative-perry-two",
+      "id": "successor-frigate-needs-numbers",
       "videoId": "-QT_D3BEqlQ",
-      "slug": "parent-design-alternative-perry-two",
-      "title": "A Perry-style clean-sheet frigate might have fit better",
+      "slug": "successor-frigate-needs-numbers",
+      "title": "A flotilla frigate only works if the Navy buys it in numbers",
       "kind": "notable_point",
+      "start": "1:46:01",
+      "end": "1:47:08",
+      "topics": [
+        "frigates",
+        "force-structure",
+        "fleet-escorts",
+        "shipbuilding",
+        "naval-procurement"
+      ],
+      "summary": "The Legend-derived successor is described as a group operator whose value depends on rapid, sustained production rather than occasional single-ship orders.",
+      "body": "Dr. Clarke hopes the replacement effort learns from Constellation but sees warning signs in its path toward production. The proposed ship is fundamentally a flotilla vessel that contributes as part of a group rather than acting as a solitary high-end combatant. That role is entirely valid, but it requires enough hulls to be present wherever the fleet needs them. Ordering one ship in scattered years would repeat the procurement instability that weakened FFG-62's economics and industrial base. A basic frigate becomes strategically useful through reliable mass, not through a small number of individually impressive ships.",
+      "sourcePath": "src/transcripts/txt/2026-05-31_T18-30-06_the-rise-and-fall-of-the-constellation-class-what-happened-to-the-ffg-62-program_-QT_D3BEqlQ.txt",
+      "evidence": [
+        {
+          "start": "1:46:01",
+          "end": "1:47:08",
+          "note": "The transcript calls the successor a flotilla or group-operating vessel and argues that it must be produced quickly and in large numbers rather than in dribs and drabs."
+        }
+      ]
+    },
+    {
+      "id": "could-the-us-navy-preserve-parent-design-commonality",
+      "videoId": "-QT_D3BEqlQ",
+      "slug": "could-the-us-navy-preserve-parent-design-commonality",
+      "title": "Could the US Navy preserve real parent-design commonality?",
+      "kind": "qa",
       "start": "1:47:44",
       "end": "1:49:42",
       "topics": [
         "frigates",
         "us-navy",
         "naval-procurement",
-        "ship-design"
+        "ship-design",
+        "fremm",
+        "naval-standards"
       ],
-      "summary": "The closing answer suggests that the US Navy might have been better served designing its own frigate around a Perry-like concept instead of chasing parent-design commonality.",
-      "body": "The final substantive answer accepts that FREMM was not a bad design, but argues that 85 percent commonality was probably too ambitious for US Navy needs. Dr. Clarke suggests the service might have been better off designing a frigate for itself while explicitly using the Oliver Hazard Perry concept as the benchmark. That closing idea turns the video from a postmortem into a practical procurement lesson: define the role honestly before choosing the design path.",
+      "summary": "The closing question asks whether any foreign parent design could remain sufficiently unchanged under US Navy systems, standards, and institutional habits.",
+      "question": "Could the US Navy have selected a parent design for Constellation and honestly retained something close to 85 percent commonality with FREMM?",
+      "answerShort": "Probably not at 85 percent; about 60 percent might have been possible with disciplined changes, but a clean-sheet Perry-style frigate may have fit the Navy better.",
+      "body": "FREMM itself is not the problem, and Dr. Clarke suggests that roughly 60 percent commonality might have been realistic if American systems were introduced selectively. Preserving that relationship would also require adapting standards to the frigate instead of importing the assumptions of another successful program. He remains doubtful because the US Navy is institutionally organized to design ships around its own needs and has often done that well. A more honest route may have been to authorize a new American frigate from the outset while treating the Oliver Hazard Perry concept as the governing model. The lesson is to choose between genuine parent-design restraint and a clean-sheet design instead of paying for the first while carrying out the second.",
       "sourcePath": "src/transcripts/txt/2026-05-31_T18-30-06_the-rise-and-fall-of-the-constellation-class-what-happened-to-the-ffg-62-program_-QT_D3BEqlQ.txt",
       "evidence": [
         {
           "start": "1:47:44",
           "end": "1:48:30",
-          "note": "The transcript asks whether the Navy could honestly have used a parent design and kept high FREMM commonality, then argues 60 percent would have been more realistic."
+          "note": "The transcript asks whether 85 percent FREMM commonality was ever honest and proposes about 60 percent as a more plausible target with selective American changes."
         },
         {
           "start": "1:48:38",
           "end": "1:49:42",
-          "note": "The transcript says the US Navy is built around designing its own ships and proposes designing a frigate around the original Perry concept."
+          "note": "The answer emphasizes the Navy's own-design culture and proposes a clean-sheet frigate governed by the original Perry concept."
         }
       ]
     }

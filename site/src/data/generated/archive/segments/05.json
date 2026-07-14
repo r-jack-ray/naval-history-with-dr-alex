@@ -1748,9 +1748,13 @@
     "start": "1:53",
     "startSeconds": 113,
     "youtubeUrl": "https://www.youtube.com/watch?v=2f40BoW2IXA&t=113s",
-    "summary": "The opening watch point explains why ships in the same class still need trials: small build, machinery, and weight differences add up at warship scale.",
-    "body": "Dr. Clarke starts with the practical problem that warships are not assembly-line products. Bulkhead placement, steel thickness, machinery variants, and other small changes can accumulate into tons of difference across a large vessel. This is the foundation for why trials have to test the actual ship rather than only trusting the design intent.",
+    "summary": "The opening watch point explains why ships in the same class still need individual trials: small differences in structure, machinery, and weight add up at warship scale.",
+    "body": "Dr. Clarke starts with the practical problem that warships are not assembly-line products. Even nominal sister ships can leave different yards with bulkheads a few inches apart, locally altered steel thicknesses, or a later and slightly heavier engine variant. A hundred-ton difference in a 10,000-ton design is only one percent, yet it can affect the finished ship's behavior. Many individually modest substitutions can therefore accumulate into tens or hundreds of tons across a large vessel. Trials establish how the ship that was actually built compares with its design and with the rest of its class.",
     "topics": [
+      {
+        "slug": "ship-trials",
+        "title": "Ship Trials"
+      },
       {
         "slug": "ship-design",
         "title": "Ship Design"
@@ -1768,16 +1772,294 @@
       {
         "start": "1:53",
         "end": "2:57",
-        "note": "The transcript describes same-class ships varying by steel, bulkhead placement, and construction choices."
+        "note": "The transcript describes same-class ships varying through steel choice, bulkhead placement, yard practice, and construction decisions."
       },
       {
         "start": "2:59",
         "end": "3:36",
-        "note": "Engine variants and many small system changes are described as adding up to tens or hundreds of tons."
+        "note": "Engine variants and many small system changes are described as accumulating into tens or hundreds of tons."
       }
     ],
-    "end": "4:11",
-    "endSeconds": 251,
+    "end": "3:36",
+    "endSeconds": 216,
+    "sourcePath": "src/transcripts/txt/2026-05-23_T18-30-06_trials-and-tribulations-why-testing-warships-matters_2f40BoW2IXA.txt"
+  },
+  {
+    "id": "fixed-versus-moving-shock-trials",
+    "slug": "fixed-versus-moving-shock-trials",
+    "title": "Fixed versus moving shock trials",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "2f40BoW2IXA",
+    "videoSlug": "trials-and-tribulations-why-testing-warships-matters",
+    "videoTitle": "Trials and Tribulations: Why Testing Warships Matters...",
+    "start": "4:28",
+    "startSeconds": 268,
+    "youtubeUrl": "https://www.youtube.com/watch?v=2f40BoW2IXA&t=268s",
+    "summary": "This early comparison explains why a stationary shock trial gives clean data while a moving ship better represents the variable loads of combat.",
+    "body": "A ship and an explosive charge can be fixed at known positions to produce controlled shock-trial data. Dr. Clarke notes that a warship in combat will normally be moving, so the angle and transmission of the shock will not be perfectly constant. The controlled test supplies a reliable baseline, while an underway test introduces the operational uncertainty his naval-architect father called the X factor. Both are useful, but shock testing is intended to stress and potentially damage a new ship. Builders and governments therefore face repair costs, commissioning delays, and pressure to choose the more economical test program.",
+    "topics": [
+      {
+        "slug": "ship-trials",
+        "title": "Ship Trials"
+      },
+      {
+        "slug": "shock-trials",
+        "title": "Shock Trials"
+      },
+      {
+        "slug": "damage-control",
+        "title": "Damage Control"
+      },
+      {
+        "slug": "naval-procurement",
+        "title": "Naval Procurement"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "4:28",
+        "end": "5:28",
+        "note": "The transcript contrasts clean stationary-trial data with the variable shock angles and effects created by a moving ship."
+      },
+      {
+        "start": "5:32",
+        "end": "6:06",
+        "note": "Shock trials are described as damage-producing tests that can delay service and impose repair costs on builders and governments."
+      }
+    ],
+    "end": "6:06",
+    "endSeconds": 366,
+    "sourcePath": "src/transcripts/txt/2026-05-23_T18-30-06_trials-and-tribulations-why-testing-warships-matters_2f40BoW2IXA.txt"
+  },
+  {
+    "id": "vibration-and-system-interference",
+    "slug": "vibration-and-system-interference",
+    "title": "Vibration and unexpected system interference",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "2f40BoW2IXA",
+    "videoSlug": "trials-and-tribulations-why-testing-warships-matters",
+    "videoTitle": "Trials and Tribulations: Why Testing Warships Matters...",
+    "start": "6:09",
+    "startSeconds": 369,
+    "youtubeUrl": "https://www.youtube.com/watch?v=2f40BoW2IXA&t=369s",
+    "summary": "A systems-check example shows how equipment that works ashore can produce false returns after generators and hull vibration enter the test environment.",
+    "body": "Shore tests cannot reproduce every interaction found in a complete warship. Dr. Clarke describes equipment that functioned correctly on land but began to conflict once another shipboard system introduced vibration through the hull. Early radar sets were particularly vulnerable to false positives caused by interactions that designers had not expected. The source could be a generator rather than the main engines, with imperfect bearings creating small vibrations that reached equipment in the superstructure. Sea trials reveal these installation-specific effects because they test the systems together inside the real structure.",
+    "topics": [
+      {
+        "slug": "systems-integration",
+        "title": "Systems Integration"
+      },
+      {
+        "slug": "naval-electronics",
+        "title": "Naval Electronics"
+      },
+      {
+        "slug": "radar",
+        "title": "Radar"
+      },
+      {
+        "slug": "ship-propulsion",
+        "title": "Ship Propulsion"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "6:09",
+        "end": "6:52",
+        "note": "The transcript describes systems passing shore tests and then interacting through vibration after installation at sea."
+      },
+      {
+        "start": "6:54",
+        "end": "7:35",
+        "note": "Early-radar false positives are linked to generator bearings and vibration transmitted from the hull into the superstructure."
+      }
+    ],
+    "end": "7:35",
+    "endSeconds": 455,
+    "sourcePath": "src/transcripts/txt/2026-05-23_T18-30-06_trials-and-tribulations-why-testing-warships-matters_2f40BoW2IXA.txt"
+  },
+  {
+    "id": "refit-testbeds-de-risk-future-classes",
+    "slug": "refit-testbeds-de-risk-future-classes",
+    "title": "Refit testbeds de-risk future warship classes",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "2f40BoW2IXA",
+    "videoSlug": "trials-and-tribulations-why-testing-warships-matters",
+    "videoTitle": "Trials and Tribulations: Why Testing Warships Matters...",
+    "start": "7:38",
+    "startSeconds": 458,
+    "youtubeUrl": "https://www.youtube.com/watch?v=2f40BoW2IXA&t=458s",
+    "summary": "The Royal Navy's refit strategy shows how next-generation weapons and combat systems can be debugged on serving ships before a new class depends on them.",
+    "body": "Weapons and sensors must be proved before a costly warship is exposed to combat. Dr. Clarke then describes a modern de-risking method: install next-generation equipment in a current ship during refit and learn from its exercises and operations. Type 23 frigate upgrades have tested systems intended for the Type 26 program, giving maintainers and operators practical experience before the new class enters service. He also points to Sea Ceptor installation on Type 45 destroyers as another route for bringing equipment into service and checking how it integrates. This approach moves part of the development risk away from the commissioning schedule of the future ship.",
+    "topics": [
+      {
+        "slug": "naval-weapons",
+        "title": "Naval Weapons"
+      },
+      {
+        "slug": "systems-integration",
+        "title": "Systems Integration"
+      },
+      {
+        "slug": "type-23-frigate",
+        "title": "Type 23 Frigate"
+      },
+      {
+        "slug": "type-26-frigate",
+        "title": "Type 26 Frigate"
+      },
+      {
+        "slug": "type-45-destroyer",
+        "title": "Type 45 Destroyer"
+      },
+      {
+        "slug": "sea-ceptor",
+        "title": "Sea Ceptor"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "7:38",
+        "end": "8:19",
+        "note": "The transcript connects weapons proof and operational exercises with the need to test a warship's fitted systems."
+      },
+      {
+        "start": "8:21",
+        "end": "9:07",
+        "note": "Type 23 testing for Type 26 systems and Sea Ceptor installation on Type 45s are presented as development de-risking."
+      }
+    ],
+    "end": "9:07",
+    "endSeconds": 547,
+    "sourcePath": "src/transcripts/txt/2026-05-23_T18-30-06_trials-and-tribulations-why-testing-warships-matters_2f40BoW2IXA.txt"
+  },
+  {
+    "id": "first-crew-finds-layout-problems",
+    "slug": "first-crew-finds-layout-problems",
+    "title": "First crews find layout and integration problems",
+    "kind": "chapter",
+    "kindLabel": "Chapter",
+    "videoId": "2f40BoW2IXA",
+    "videoSlug": "trials-and-tribulations-why-testing-warships-matters",
+    "videoTitle": "Trials and Tribulations: Why Testing Warships Matters...",
+    "start": "9:10",
+    "startSeconds": 550,
+    "youtubeUrl": "https://www.youtube.com/watch?v=2f40BoW2IXA&t=550s",
+    "summary": "The Queen Elizabeth and Type 45 examples show why early crews are needed to test software interactions, working positions, access, maintenance, and damage-control arrangements.",
+    "body": "A modern warship is a system of systems, and even an ordinary software update can disrupt interfaces among navigation, weapons, and data networks. HMS Queen Elizabeth therefore had assigned personnel years before commissioning, growing from a small advance party into hundreds of sailors who could test systems and influence the ship while changes were still possible. Dr. Clarke uses command-center chairs to show that shock support, access, comfort, and alertness all matter at stations occupied around the clock. Maintenance arrangements likewise have to be tested by the people who must reach the equipment. On the Type 45 program, crew feedback identified firefighting gear placed behind awkward obstacles even though the drawing showed an acceptable location. Correcting such problems during construction is far cheaper than rebuilding command spaces or internal routes after a ship begins a planned multi-decade career.",
+    "topics": [
+      {
+        "slug": "naval-personnel",
+        "title": "Naval Personnel"
+      },
+      {
+        "slug": "ship-design",
+        "title": "Ship Design"
+      },
+      {
+        "slug": "systems-integration",
+        "title": "Systems Integration"
+      },
+      {
+        "slug": "software-integration",
+        "title": "Software Integration"
+      },
+      {
+        "slug": "ship-maintenance",
+        "title": "Ship Maintenance"
+      },
+      {
+        "slug": "damage-control",
+        "title": "Damage Control"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "9:10",
+        "end": "10:27",
+        "note": "Software-update failures introduce the modern warship as a networked system of systems whose interfaces must be retested."
+      },
+      {
+        "start": "10:27",
+        "end": "12:22",
+        "note": "The transcript describes Queen Elizabeth's computing complexity and the expansion of its early assigned crew before commissioning."
+      },
+      {
+        "start": "12:43",
+        "end": "14:24",
+        "note": "Command-center chairs illustrate comfort, access, shock support, and the alertness of personnel at continuously crewed stations."
+      },
+      {
+        "start": "14:27",
+        "end": "16:29",
+        "note": "A Type 45 firefighting-gear placement problem demonstrates why crew testing must influence the ship before internal arrangements become costly to change."
+      }
+    ],
+    "end": "16:29",
+    "endSeconds": 989,
+    "sourcePath": "src/transcripts/txt/2026-05-23_T18-30-06_trials-and-tribulations-why-testing-warships-matters_2f40BoW2IXA.txt"
+  },
+  {
+    "id": "type-23-life-extension-and-frigate-gap",
+    "slug": "type-23-life-extension-and-frigate-gap",
+    "title": "Type 23 life extension and the frigate gap",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "2f40BoW2IXA",
+    "videoSlug": "trials-and-tribulations-why-testing-warships-matters",
+    "videoTitle": "Trials and Tribulations: Why Testing Warships Matters...",
+    "start": "16:32",
+    "startSeconds": 992,
+    "youtubeUrl": "https://www.youtube.com/watch?v=2f40BoW2IXA&t=992s",
+    "summary": "Visible Type 23 hull wear becomes a lesson in the difference between poor construction and extending a lightly built frigate beyond its intended service life.",
+    "body": "Dr. Clarke points to visible framing through Type 23 hull plating as the accumulated effect of the sea on a lightly built frigate. He distinguishes that aging from an original build-quality failure: the class remained in service longer than its early assumptions anticipated. Life extension then required replacing plating and other worn structure. The larger procurement lesson is that repeated decisions to defer a replacement frigate program eventually create pressure on fleet numbers even when the old design was sound. Trials and inspections also catch less dramatic faults such as loose data connections that fail under vibration, heating, cooling, or motion before they become operational embarrassments.",
+    "topics": [
+      {
+        "slug": "type-23-frigate",
+        "title": "Type 23 Frigate"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "life-extension",
+        "title": "Life Extension"
+      },
+      {
+        "slug": "naval-procurement",
+        "title": "Naval Procurement"
+      },
+      {
+        "slug": "ship-maintenance",
+        "title": "Ship Maintenance"
+      },
+      {
+        "slug": "fleet-readiness",
+        "title": "Fleet Readiness"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "16:32",
+        "end": "18:17",
+        "note": "The transcript explains Type 23 light framing, ocean-induced plating deformation, life extension, and delayed replacement decisions."
+      },
+      {
+        "start": "18:22",
+        "end": "19:21",
+        "note": "Testing is said to expose loose electronics and cable connections affected by vibration, temperature cycles, and movement at sea."
+      }
+    ],
+    "end": "19:21",
+    "endSeconds": 1161,
     "sourcePath": "src/transcripts/txt/2026-05-23_T18-30-06_trials-and-tribulations-why-testing-warships-matters_2f40BoW2IXA.txt"
   },
   {
@@ -1792,8 +2074,8 @@
     "start": "19:27",
     "startSeconds": 1167,
     "youtubeUrl": "https://www.youtube.com/watch?v=2f40BoW2IXA&t=1167s",
-    "summary": "A speed-trial discussion uses Seydlitz and British-German practice to show how timing, loading, crew status, and budget politics shape reported performance.",
-    "body": "The segment distinguishes useful trial data from headline-friendly trial numbers. German and British practices differed over whether ships were commissioned before or after trials, and a lightly loaded ship could produce impressive top-speed claims that did not fully match wartime operating conditions. The useful lesson is that speed and efficiency figures are evidence only when the trial conditions are understood.",
+    "summary": "Seydlitz and contrasting British-German practice show how loading, crew status, naval competition, and budget politics shape reported trial performance.",
+    "body": "Seydlitz reached 28 knots on trials but normally operated closer to 26.5 knots, illustrating why the headline number needs its test conditions. German ships could be commissioned and tried before they were fully stocked, producing impressive performance figures during an intense naval race. Those results also helped a navy avoid political pressure from a dominant army by advertising capability without accepting every cost of qualitative competition. A commissioned naval crew might push machinery differently from a civilian trials crew, adding another variable to the comparison. Speed and efficiency trials also expose hull fairness and cruising resistance, including behavior that measurements ashore may miss once water pressure acts on the completed structure.",
     "topics": [
       {
         "slug": "naval-procurement",
@@ -1810,76 +2092,35 @@
       {
         "slug": "naval-history",
         "title": "Naval History"
+      },
+      {
+        "slug": "kaiserliche-marine",
+        "title": "Kaiserliche Marine"
+      },
+      {
+        "slug": "battlecruisers",
+        "title": "Battlecruisers"
       }
     ],
     "evidence": [
       {
         "start": "19:27",
-        "end": "20:09",
-        "note": "The transcript contrasts British and German commissioning and trial practice around Seydlitz."
+        "end": "20:39",
+        "note": "The transcript contrasts British and German commissioning practice and explains how incomplete loading raised Seydlitz's trial speed."
       },
       {
-        "start": "20:14",
-        "end": "22:30",
-        "note": "The transcript explains how loading, budget optics, and civilian or naval crews affect trial statistics."
+        "start": "20:40",
+        "end": "22:27",
+        "note": "Naval-race headlines, German budget politics, operational speed, and civilian-versus-naval trial crews are discussed as performance variables."
       },
       {
-        "start": "22:30",
-        "end": "23:39",
-        "note": "The transcript ties speed and efficiency tests to class similarity, hull quality, and real water behavior."
+        "start": "22:28",
+        "end": "23:49",
+        "note": "The transcript links speed and efficiency to hull shaping, cruising resistance, build quality, scanning limits, and behavior under water pressure."
       }
     ],
-    "end": "23:39",
-    "endSeconds": 1419,
-    "sourcePath": "src/transcripts/txt/2026-05-23_T18-30-06_trials-and-tribulations-why-testing-warships-matters_2f40BoW2IXA.txt"
-  },
-  {
-    "id": "first-crew-finds-layout-problems",
-    "slug": "first-crew-finds-layout-problems",
-    "title": "First crews find layout problems",
-    "kind": "chapter",
-    "kindLabel": "Chapter",
-    "videoId": "2f40BoW2IXA",
-    "videoSlug": "trials-and-tribulations-why-testing-warships-matters",
-    "videoTitle": "Trials and Tribulations: Why Testing Warships Matters...",
-    "start": "10:27",
-    "startSeconds": 627,
-    "youtubeUrl": "https://www.youtube.com/watch?v=2f40BoW2IXA&t=627s",
-    "summary": "The Queen Elizabeth and Type 45 examples show why crew feedback during construction catches usability, safety, and maintenance problems before they become permanent.",
-    "body": "This watch point treats a warship as a working environment, not just a set of drawings. Early crews test whether command-center seats, access routes, firefighting gear, and maintenance spaces actually work for people under pressure. Dr. Clarke's Type 45 example shows how a theoretically acceptable position for firefighting equipment became a practical damage-control problem once crews tested how they would reach it.",
-    "topics": [
-      {
-        "slug": "naval-personnel",
-        "title": "Naval Personnel"
-      },
-      {
-        "slug": "ship-design",
-        "title": "Ship Design"
-      },
-      {
-        "slug": "royal-navy",
-        "title": "Royal Navy"
-      }
-    ],
-    "evidence": [
-      {
-        "start": "10:27",
-        "end": "12:22",
-        "note": "The transcript frames modern ships as systems of systems and describes Queen Elizabeth's early crew involvement."
-      },
-      {
-        "start": "12:43",
-        "end": "14:24",
-        "note": "The transcript uses command-center chairs to explain comfort, access, shock support, and alertness."
-      },
-      {
-        "start": "14:27",
-        "end": "16:29",
-        "note": "The transcript gives the Type 45 firefighting-gear placement example and explains why early crew testing matters."
-      }
-    ],
-    "end": "16:29",
-    "endSeconds": 989,
+    "end": "23:49",
+    "endSeconds": 1429,
     "sourcePath": "src/transcripts/txt/2026-05-23_T18-30-06_trials-and-tribulations-why-testing-warships-matters_2f40BoW2IXA.txt"
   },
   {
@@ -1894,8 +2135,8 @@
     "start": "24:01",
     "startSeconds": 1441,
     "youtubeUrl": "https://www.youtube.com/watch?v=2f40BoW2IXA&t=1441s",
-    "summary": "The maneuvering section connects zigzagging, crash stops, decoy use, and aircraft or torpedo threats to why ships must be tested beyond steady-speed runs.",
-    "body": "Dr. Clarke explains that maneuvering trials are a separate problem from speed and endurance runs. Warships need to change speed, crash stop, zigzag, and make erratic movements because survival can depend on being a harder torpedo, missile, or bombing target. The segment also shows how maneuvering can expose hidden problems inside the ship, such as a carrier fuel-management issue that only appears under motion.",
+    "summary": "Zigzagging, crash stops, decoy use, and a carrier fuel-system problem show why a warship must be tested beyond steady-speed runs.",
+    "body": "Maneuvering trials give the hull, steering gear, and machinery a different workout from constant-speed endurance tests. World War I submarine experience made zigzagging a routine way to disrupt an attacker's range and firing position, while crash stops and rapid speed changes impose their own loads. High speed also provides strategic dash capability and makes a ship a more difficult target as it enters battle. Against aircraft, torpedoes, or missiles, erratic movement can improve the chance that a decoy succeeds even when it cannot guarantee survival. These trials also expose internal failures: one British carrier revealed a problem in a system intended to drain aviation fuel lines back to protected tanks.",
     "topics": [
       {
         "slug": "naval-doctrine",
@@ -1912,23 +2153,27 @@
       {
         "slug": "naval-aviation",
         "title": "Naval Aviation"
+      },
+      {
+        "slug": "damage-control",
+        "title": "Damage Control"
       }
     ],
     "evidence": [
       {
         "start": "24:01",
         "end": "25:17",
-        "note": "The transcript connects zigzagging, steering gear, crash stops, and machinery stress to maneuvering trials."
+        "note": "The transcript connects wartime zigzagging with steering, crash stops, speed changes, and machinery stress in maneuvering trials."
       },
       {
         "start": "25:17",
         "end": "26:34",
-        "note": "The transcript describes high-speed battle movement, erratic maneuvers, decoys, torpedoes, and missiles."
+        "note": "High-speed movement, erratic maneuvers, decoys, bombing, torpedoes, and missiles are linked to a warship's last-ditch survivability."
       },
       {
         "start": "26:36",
         "end": "27:21",
-        "note": "The transcript notes that maneuvering tests can reveal internal system problems such as carrier fuel-management behavior."
+        "note": "The transcript describes maneuvering exposing a British carrier problem in a system that drained aviation fuel lines."
       }
     ],
     "end": "27:21",
@@ -1947,8 +2192,8 @@
     "start": "27:37",
     "startSeconds": 1657,
     "youtubeUrl": "https://www.youtube.com/watch?v=2f40BoW2IXA&t=1657s",
-    "summary": "The HMAS Diamantina and computer-shock examples show why machinery, bearings, rafting, and quieting systems have to be tested as fitted.",
-    "body": "This section moves from the visible simplicity of older steam machinery to the many bearings, components, and interactions that can fail under maneuvering or explosive shock. Dr. Clarke uses computer damage as a familiar analogy for why modern electronics and machinery mounts need shock and vibration checks. The point is especially important for quieting systems: rafting only helps if it still absorbs vibration rather than locking solid.",
+    "summary": "HMAS Diamantina, computer shock damage, and machinery rafting illustrate why bearings, electronics, mounts, and quieting systems must be tested as fitted.",
+    "body": "HMAS Diamantina's triple-expansion machinery demonstrates that an older steam plant is simple only in comparison with still more complicated machinery. Its bearings and interacting components can be misbuilt or disturbed by maneuver and explosive shock. A long production run lets experienced inspectors recognize what looks wrong, but most modern warship classes are too small for that familiarity to replace trials. Dr. Clarke's damaged-computer analogy shows how an impact can propagate beyond the visibly struck component into electronics elsewhere in a system. Machinery and computers are therefore mounted or rafted to absorb vibration, and testing must confirm that the isolators have not locked solid. Effective rafting supports both shock survival and acoustic quieting.",
     "topics": [
       {
         "slug": "ship-propulsion",
@@ -1961,23 +2206,31 @@
       {
         "slug": "anti-submarine-warfare",
         "title": "Anti-Submarine Warfare"
+      },
+      {
+        "slug": "naval-electronics",
+        "title": "Naval Electronics"
+      },
+      {
+        "slug": "ship-trials",
+        "title": "Ship Trials"
       }
     ],
     "evidence": [
       {
         "start": "27:37",
         "end": "29:24",
-        "note": "The transcript uses HMAS Diamantina to explain the complexity of triple-expansion machinery and fitted systems."
+        "note": "The transcript uses HMAS Diamantina to explain machinery complexity, class repetition, inspector familiarity, and bearing faults."
       },
       {
         "start": "29:29",
         "end": "31:24",
-        "note": "The transcript compares computer shock damage with the need to protect shipboard electronics."
+        "note": "A damaged computer illustrates how shock can propagate beyond the visibly affected component."
       },
       {
         "start": "31:27",
         "end": "32:13",
-        "note": "The transcript explains checking rafting and vibration absorption for quieting and survivability."
+        "note": "Rafting is described as vibration isolation that must remain flexible to provide quieting and survivability."
       }
     ],
     "end": "32:13",
@@ -1985,24 +2238,20 @@
     "sourcePath": "src/transcripts/txt/2026-05-23_T18-30-06_trials-and-tribulations-why-testing-warships-matters_2f40BoW2IXA.txt"
   },
   {
-    "id": "sensors-electronics-and-type-45-integration",
-    "slug": "sensors-electronics-and-type-45-integration",
-    "title": "Sensors, electronics, and Type 45 integration",
-    "kind": "chapter",
-    "kindLabel": "Chapter",
+    "id": "stability-calibration-and-weapons-fit",
+    "slug": "stability-calibration-and-weapons-fit",
+    "title": "Stability calibration and weapons fit",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
     "videoId": "2f40BoW2IXA",
     "videoSlug": "trials-and-tribulations-why-testing-warships-matters",
     "videoTitle": "Trials and Tribulations: Why Testing Warships Matters...",
     "start": "36:37",
     "startSeconds": 2197,
     "youtubeUrl": "https://www.youtube.com/watch?v=2f40BoW2IXA&t=2197s",
-    "summary": "The electronics section explains how ship motion, radar interactions, VLS behavior, and Type 45 test facilities reveal integration risks before deployment.",
-    "body": "Modern warships need finely calibrated weapons, sensors, software, and ship-motion data to agree with each other. Dr. Clarke explains how gun stabilization, missile launchers, and radar fits can behave differently once the actual ship's stability and vibration profile is known. The Type 45 discussion shows why shore test facilities such as the Sampson radar setup matter even when final proof still has to come at sea.",
+    "summary": "Gun stabilization and early vertical-launch examples show how the real motion of a completed hull can overturn paper assumptions about a weapon fit.",
+    "body": "Modern opponents try to exploit low-probability failures, so weapons need more than nominal compatibility with a hull. A stabilized gun can lag behind a lively small ship or overcompensate on a large ship that proves steadier than expected. Either mismatch degrades the precision the fire-control system is intended to deliver. Older vertical-launch systems and missiles could likewise encounter problems on ships with unsuitable stability profiles. Trials measure the actual motion and vibration of the completed vessel, allowing calibration changes or, in harder cases, changes to where and on which ships a weapon can be fitted.",
     "topics": [
-      {
-        "slug": "air-defence",
-        "title": "Air Defence"
-      },
       {
         "slug": "ship-design",
         "title": "Ship Design"
@@ -2012,29 +2261,305 @@
         "title": "Naval Weapons"
       },
       {
+        "slug": "naval-electronics",
+        "title": "Naval Electronics"
+      },
+      {
+        "slug": "vertical-launch-systems",
+        "title": "Vertical Launch Systems"
+      },
+      {
+        "slug": "systems-integration",
+        "title": "Systems Integration"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "36:37",
+        "end": "37:52",
+        "note": "The transcript explains undercompensation on lively ships and overcompensation when a ship proves more stable than predicted."
+      },
+      {
+        "start": "37:54",
+        "end": "38:31",
+        "note": "Older vertical-launch and missile fits illustrate how stability trials can change equipment placement and ship-system compatibility."
+      }
+    ],
+    "end": "38:31",
+    "endSeconds": 2311,
+    "sourcePath": "src/transcripts/txt/2026-05-23_T18-30-06_trials-and-tribulations-why-testing-warships-matters_2f40BoW2IXA.txt"
+  },
+  {
+    "id": "type-45-shore-integration-facilities",
+    "slug": "type-45-shore-integration-facilities",
+    "title": "Type 45 shore integration facilities",
+    "kind": "chapter",
+    "kindLabel": "Chapter",
+    "videoId": "2f40BoW2IXA",
+    "videoSlug": "trials-and-tribulations-why-testing-warships-matters",
+    "videoTitle": "Trials and Tribulations: Why Testing Warships Matters...",
+    "start": "38:37",
+    "startSeconds": 2317,
+    "youtubeUrl": "https://www.youtube.com/watch?v=2f40BoW2IXA&t=2317s",
+    "summary": "The Type 45's SAMPSON test installations show how a navy can repeatedly integrate, modify, and endurance-test a combat system ashore before proving it again aboard ship.",
+    "body": "The Type 45 program used large shore facilities to test the SAMPSON radar and its integration with the rest of the combat system. A land installation can be turned off, modified in hardware or software, restarted, and run for long periods without tying up an operational destroyer. Human figures beside the radar also make clear that its compact appearance on the ship disguises a substantial piece of equipment. Passing the shore test is not the final result, because the system must be checked again after it is installed in the ship's own structure and electronic environment. The same facility remains useful for later upgrades and integration work across the class.",
+    "topics": [
+      {
+        "slug": "type-45-destroyer",
+        "title": "Type 45 Destroyer"
+      },
+      {
+        "slug": "sampson-radar",
+        "title": "Sampson Radar"
+      },
+      {
+        "slug": "air-defence",
+        "title": "Air Defence"
+      },
+      {
+        "slug": "systems-integration",
+        "title": "Systems Integration"
+      },
+      {
+        "slug": "naval-electronics",
+        "title": "Naval Electronics"
+      },
+      {
         "slug": "royal-navy",
         "title": "Royal Navy"
       }
     ],
     "evidence": [
       {
-        "start": "36:37",
-        "end": "38:31",
-        "note": "The transcript describes sensors, gun stabilization, VLS behavior, and computer assumptions being challenged by real ship behavior."
-      },
-      {
         "start": "38:37",
         "end": "40:38",
-        "note": "The transcript describes Type 45 Sampson radar test facilities and repeated integration testing."
+        "note": "The transcript describes Type 45 SAMPSON shore facilities, the radar's physical scale, repeated modification, and long-duration testing."
       },
       {
-        "start": "40:41",
-        "end": "44:00",
-        "note": "The transcript links radar history and interference problems to why modern system integration needs careful testing."
+        "start": "43:02",
+        "end": "44:25",
+        "note": "Land and barge testing are followed by renewed integration checks aboard ship, while shore facilities remain available for upgrades."
       }
     ],
-    "end": "44:00",
-    "endSeconds": 2640,
+    "end": "44:25",
+    "endSeconds": 2665,
+    "sourcePath": "src/transcripts/txt/2026-05-23_T18-30-06_trials-and-tribulations-why-testing-warships-matters_2f40BoW2IXA.txt"
+  },
+  {
+    "id": "radar-interference-and-electronic-shielding",
+    "slug": "radar-interference-and-electronic-shielding",
+    "title": "Radar interference and electronic shielding",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "2f40BoW2IXA",
+    "videoSlug": "trials-and-tribulations-why-testing-warships-matters",
+    "videoTitle": "Trials and Tribulations: Why Testing Warships Matters...",
+    "start": "40:41",
+    "startSeconds": 2441,
+    "youtubeUrl": "https://www.youtube.com/watch?v=2f40BoW2IXA&t=2441s",
+    "summary": "World War II radar interference explains why set placement, shielding, frequencies, and final shipboard integration all have to be tested rather than assumed.",
+    "body": "Radar theory predated World War II, but wartime installation at scale exposed interactions that designers had little experience managing. Surface-search and air-search sets could degrade each other's performance or create false returns when placed too close together despite operating on different frequencies. Early remedies included greater physical separation, shielding, and changes in frequencies or equipment combinations. These lessons help explain why particular sets appeared on some ships or larger hulls but not on others. Modern land facilities can test a radar with its intended combat system, yet fitting it to the actual ship still requires another integration check.",
+    "topics": [
+      {
+        "slug": "radar",
+        "title": "Radar"
+      },
+      {
+        "slug": "world-war-ii",
+        "title": "World War II"
+      },
+      {
+        "slug": "naval-electronics",
+        "title": "Naval Electronics"
+      },
+      {
+        "slug": "systems-integration",
+        "title": "Systems Integration"
+      },
+      {
+        "slug": "ship-design",
+        "title": "Ship Design"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "40:41",
+        "end": "41:25",
+        "note": "The transcript distinguishes the long development of radar theory from its rapid wartime implementation."
+      },
+      {
+        "start": "41:28",
+        "end": "42:42",
+        "note": "Surface- and air-search sets are described as interfering or creating false positives until separation, shielding, or frequency changes were applied."
+      },
+      {
+        "start": "42:46",
+        "end": "43:45",
+        "note": "Modern land or sea test facilities cannot remove the need to synchronize and retest equipment after final shipboard installation."
+      }
+    ],
+    "end": "43:45",
+    "endSeconds": 2625,
+    "sourcePath": "src/transcripts/txt/2026-05-23_T18-30-06_trials-and-tribulations-why-testing-warships-matters_2f40BoW2IXA.txt"
+  },
+  {
+    "id": "test-infrastructure-and-fleet-size",
+    "slug": "test-infrastructure-and-fleet-size",
+    "title": "Test infrastructure, class size, and readiness",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "2f40BoW2IXA",
+    "videoSlug": "trials-and-tribulations-why-testing-warships-matters",
+    "videoTitle": "Trials and Tribulations: Why Testing Warships Matters...",
+    "start": "43:49",
+    "startSeconds": 2629,
+    "youtubeUrl": "https://www.youtube.com/watch?v=2f40BoW2IXA&t=2629s",
+    "summary": "The economics of the Type 45 test program show why one-time facilities, planned class size, and a navy's tolerance for delayed ships shape the trial strategy.",
+    "body": "Shore integration facilities are expensive program assets rather than pieces of equipment carried by one destroyer. The Type 45 infrastructure was created for a program planned around twelve hulls, and its cost was included in headline accounts of the wider program. Once built, the same facilities can support repeated ships and later upgrades. A large navy may accept testing more equipment aboard successive ships because a delay to one or two hulls is easier to absorb. A small navy has fewer substitutes, so it has a stronger reason to complete extensive land testing and deliver each ship ready to operate from the start.",
+    "topics": [
+      {
+        "slug": "naval-procurement",
+        "title": "Naval Procurement"
+      },
+      {
+        "slug": "fleet-readiness",
+        "title": "Fleet Readiness"
+      },
+      {
+        "slug": "systems-integration",
+        "title": "Systems Integration"
+      },
+      {
+        "slug": "type-45-destroyer",
+        "title": "Type 45 Destroyer"
+      },
+      {
+        "slug": "naval-policy",
+        "title": "Naval Policy"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "43:49",
+        "end": "44:39",
+        "note": "The transcript links Type 45 shore facilities to a twelve-hull program, reusable infrastructure, upgrade work, and program cost."
+      },
+      {
+        "start": "44:43",
+        "end": "45:29",
+        "note": "Large and small navies are contrasted by their ability to absorb delayed ships and their incentive for pre-service testing."
+      }
+    ],
+    "end": "45:29",
+    "endSeconds": 2729,
+    "sourcePath": "src/transcripts/txt/2026-05-23_T18-30-06_trials-and-tribulations-why-testing-warships-matters_2f40BoW2IXA.txt"
+  },
+  {
+    "id": "gunfire-induced-weapons-and-electronics-failures",
+    "slug": "gunfire-induced-weapons-and-electronics-failures",
+    "title": "Gunfire-induced weapons and electronics failures",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "2f40BoW2IXA",
+    "videoSlug": "trials-and-tribulations-why-testing-warships-matters",
+    "videoTitle": "Trials and Tribulations: Why Testing Warships Matters...",
+    "start": "45:45",
+    "startSeconds": 2745,
+    "youtubeUrl": "https://www.youtube.com/watch?v=2f40BoW2IXA&t=2745s",
+    "summary": "An interwar cruiser that launched torpedoes when its guns fired, followed by postwar radar alignment failures, demonstrates the value of testing systems together under realistic shock.",
+    "body": "An unnamed interwar navy discovered that firing a cruiser's main guns could trigger prepared torpedo launchers. The fault appeared accidentally because the gun and torpedo tests were scheduled close together, reproducing a combat configuration that separate trials might have missed. The remedy was manageable, but only after the interaction had been observed. As postwar radars became more sensitive, repeated heavy-gun salvos could also knock delicate instruments slightly out of alignment without destroying the set outright. Demonstrating these effects through testing gave designers evidence for shock protection and gave funding authorities a concrete reason to pay for it.",
+    "topics": [
+      {
+        "slug": "naval-gunnery",
+        "title": "Naval Gunnery"
+      },
+      {
+        "slug": "torpedoes",
+        "title": "Torpedoes"
+      },
+      {
+        "slug": "naval-electronics",
+        "title": "Naval Electronics"
+      },
+      {
+        "slug": "systems-integration",
+        "title": "Systems Integration"
+      },
+      {
+        "slug": "ship-trials",
+        "title": "Ship Trials"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "45:45",
+        "end": "47:28",
+        "note": "The transcript describes cruiser gunfire accidentally setting off prepared torpedo launchers during closely sequenced trials."
+      },
+      {
+        "start": "47:32",
+        "end": "48:35",
+        "note": "Repeated heavy-gun salvos are said to disturb sensitive postwar radar instruments and create a demonstrable case for shock hardening."
+      }
+    ],
+    "end": "48:35",
+    "endSeconds": 2915,
+    "sourcePath": "src/transcripts/txt/2026-05-23_T18-30-06_trials-and-tribulations-why-testing-warships-matters_2f40BoW2IXA.txt"
+  },
+  {
+    "id": "iowa-gun-shock-and-missile-fits",
+    "slug": "iowa-gun-shock-and-missile-fits",
+    "title": "Iowa gun shock and missile fits",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "2f40BoW2IXA",
+    "videoSlug": "trials-and-tribulations-why-testing-warships-matters",
+    "videoTitle": "Trials and Tribulations: Why Testing Warships Matters...",
+    "start": "48:39",
+    "startSeconds": 2919,
+    "youtubeUrl": "https://www.youtube.com/watch?v=2f40BoW2IXA&t=2919s",
+    "summary": "The Iowa class shows how the blast and shock of a ship's own 16-inch guns constrain radar, vertical-launch, and missile-upgrade choices.",
+    "body": "A weapon can be incompatible with a ship because of the shock produced by another weapon already aboard. Dr. Clarke uses the Iowa class to explain why proposals for Aegis or a vertical-launch-system conversion face more than a question of deck space. Electronics and launch equipment would need protection from the battleship's own 16-inch gunfire. The class instead carried Tomahawk missiles in armored box launchers, where localized shock protection was more practical. The example turns weapons testing into a design constraint that shapes which modernization schemes remain sensible.",
+    "topics": [
+      {
+        "slug": "iowa-class",
+        "title": "Iowa Class"
+      },
+      {
+        "slug": "battleships",
+        "title": "Battleships"
+      },
+      {
+        "slug": "naval-gunnery",
+        "title": "Naval Gunnery"
+      },
+      {
+        "slug": "aegis-combat-system",
+        "title": "Aegis Combat System"
+      },
+      {
+        "slug": "vertical-launch-systems",
+        "title": "Vertical Launch Systems"
+      },
+      {
+        "slug": "tomahawk-missile",
+        "title": "Tomahawk Missile"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "48:39",
+        "end": "49:17",
+        "note": "The transcript connects Iowa-class equipment distribution and rejected Aegis concepts with shock from the ship's 16-inch guns."
+      },
+      {
+        "start": "49:22",
+        "end": "49:58",
+        "note": "Vertical-launch proposals are contrasted with canister missile installations that can receive more practical shock protection."
+      }
+    ],
+    "end": "49:58",
+    "endSeconds": 2998,
     "sourcePath": "src/transcripts/txt/2026-05-23_T18-30-06_trials-and-tribulations-why-testing-warships-matters_2f40BoW2IXA.txt"
   },
   {
@@ -2046,19 +2571,31 @@
     "videoId": "2f40BoW2IXA",
     "videoSlug": "trials-and-tribulations-why-testing-warships-matters",
     "videoTitle": "Trials and Tribulations: Why Testing Warships Matters...",
-    "start": "48:52",
-    "startSeconds": 2932,
-    "youtubeUrl": "https://www.youtube.com/watch?v=2f40BoW2IXA&t=2932s",
-    "summary": "A Jutland-derived lesson explains why navies test guns, shells, torpedoes, and missile systems before trusting them in battle.",
-    "body": "Dr. Clarke argues that Royal Navy experience after Jutland pushed a lasting concern with weapons performance and night-fighting readiness. The key lesson is not only whether a weapon exists, but whether the whole chain of shells, torpedoes, fire-control assumptions, and later missile systems works under operational conditions. This is a useful watch point for understanding why weapon trials are about lives, ships, and national risk rather than box-ticking.",
+    "start": "50:04",
+    "startSeconds": 3004,
+    "youtubeUrl": "https://www.youtube.com/watch?v=2f40BoW2IXA&t=3004s",
+    "summary": "Royal Navy shell failures at Jutland explain why later generations became unusually attentive to proving guns, ammunition, torpedoes, and night-fighting systems.",
+    "body": "A weapon must not only fire; its ammunition must produce the intended effect on the target. Dr. Clarke argues that more realistic prewar armor-penetration testing would have exposed weaknesses in British shells before the Battle of Jutland and accelerated the development of improved ammunition. The gap between hits achieved and shells that performed properly materially limited British results in the battle. Jutland then left the Royal Navy with two lasting preoccupations: the German fleet's escape during the night and the reliability of weapons, shells, and torpedoes. By World War II this experience encouraged extensive proof of weapon systems, a practice that remains necessary whenever missiles, ammunition, or their host ships are upgraded. Lives, ships, and potentially national survival depend on finding failures before combat.",
     "topics": [
       {
         "slug": "battle-of-jutland",
         "title": "Battle Of Jutland"
       },
       {
+        "slug": "world-war-i",
+        "title": "World War I"
+      },
+      {
         "slug": "naval-weapons",
         "title": "Naval Weapons"
+      },
+      {
+        "slug": "naval-gunnery",
+        "title": "Naval Gunnery"
+      },
+      {
+        "slug": "torpedoes",
+        "title": "Torpedoes"
       },
       {
         "slug": "royal-navy",
@@ -2071,14 +2608,19 @@
     ],
     "evidence": [
       {
-        "start": "48:52",
+        "start": "50:04",
+        "end": "50:58",
+        "note": "The transcript links insufficient armor-penetration testing, British shell performance, and the results achieved at Jutland."
+      },
+      {
+        "start": "51:03",
         "end": "51:40",
-        "note": "The transcript links Jutland, night-fighting concerns, and weapons testing to Royal Navy development habits."
+        "note": "Jutland is said to produce Royal Navy preoccupations with night fighting and proof of shells, torpedoes, and other weapons."
       },
       {
         "start": "51:47",
         "end": "52:31",
-        "note": "The transcript explains continuing weapons testing for upgraded missiles, guns, shells, ships, and national survival."
+        "note": "Ongoing testing is tied to weapon upgrades, procurement decisions, crew lives, ship survival, and national risk."
       }
     ],
     "end": "52:31",
@@ -2086,9 +2628,9 @@
     "sourcePath": "src/transcripts/txt/2026-05-23_T18-30-06_trials-and-tribulations-why-testing-warships-matters_2f40BoW2IXA.txt"
   },
   {
-    "id": "shock-trials-and-ship-manuals",
-    "slug": "shock-trials-and-ship-manuals",
-    "title": "Shock trials and ship manuals",
+    "id": "full-ship-shock-trials",
+    "slug": "full-ship-shock-trials",
+    "title": "Full-ship shock trials and modeling limits",
     "kind": "chapter",
     "kindLabel": "Chapter",
     "videoId": "2f40BoW2IXA",
@@ -2097,9 +2639,17 @@
     "start": "52:33",
     "startSeconds": 3153,
     "youtubeUrl": "https://www.youtube.com/watch?v=2f40BoW2IXA&t=3153s",
-    "summary": "The closing chapter shows why physical shock trials, commissioning crews, manuals, refit updates, and exercises turn test data into the ship's operating culture.",
-    "body": "Shock trials are presented as the most punishing proof of whether a warship's design assumptions survive contact with real force. Dr. Clarke argues that computer modeling can help, but the first-in-class ship still needs hard data that crews, funders, and future operators can trust. The later discussion follows that data into manuals, standard procedures, refit updates, and exercises with other ships, aircraft, and auxiliaries.",
+    "summary": "The detailed shock-trial chapter explains why navies push a new ship close to failure and why computer models still need first-of-class physical data.",
+    "body": "A full-ship shock trial aims to approach component failure closely enough to identify weak points without losing the ship. The load path through the real structure can produce surprises, such as resistant glass breaking because a nearby door or reinforcement channels the shock differently than expected. Navies are tempted to substitute computer simulation because a physical trial can damage a new vessel, delay service, and require expensive repairs. Dr. Clarke argues that simulation becomes useful only after it is anchored to hard evidence from a first- or early-in-class ship. The physical result validates the design assumptions, gives crews operational confidence, and shows funders that shock resistance is more than a theoretical claim.",
     "topics": [
+      {
+        "slug": "shock-trials",
+        "title": "Shock Trials"
+      },
+      {
+        "slug": "damage-control",
+        "title": "Damage Control"
+      },
       {
         "slug": "ship-design",
         "title": "Ship Design"
@@ -2109,33 +2659,207 @@
         "title": "Naval Architecture"
       },
       {
-        "slug": "naval-personnel",
-        "title": "Naval Personnel"
-      },
-      {
-        "slug": "naval-doctrine",
-        "title": "Naval Doctrine"
+        "slug": "naval-procurement",
+        "title": "Naval Procurement"
       }
     ],
     "evidence": [
       {
         "start": "52:33",
-        "end": "57:35",
-        "note": "The transcript explains shock trials, their cost, the limits of computer-only testing, and the need for hard data."
+        "end": "55:10",
+        "note": "The transcript defines full-ship shock testing as approaching breaking points and gives structural load paths and broken resistant glass as an example."
       },
+      {
+        "start": "55:36",
+        "end": "56:43",
+        "note": "Computer-only testing is described as cheaper and safer but unable to replace physical data from an early ship in the class."
+      },
+      {
+        "start": "56:43",
+        "end": "57:35",
+        "note": "Hard shock data is linked to crew confidence, funding accountability, and proof that theoretical predictions are correct."
+      }
+    ],
+    "end": "57:35",
+    "endSeconds": 3455,
+    "sourcePath": "src/transcripts/txt/2026-05-23_T18-30-06_trials-and-tribulations-why-testing-warships-matters_2f40BoW2IXA.txt"
+  },
+  {
+    "id": "commissioning-crews-and-operating-manuals",
+    "slug": "commissioning-crews-and-operating-manuals",
+    "title": "Commissioning crews write the operating manual",
+    "kind": "chapter",
+    "kindLabel": "Chapter",
+    "videoId": "2f40BoW2IXA",
+    "videoSlug": "trials-and-tribulations-why-testing-warships-matters",
+    "videoTitle": "Trials and Tribulations: Why Testing Warships Matters...",
+    "start": "57:38",
+    "startSeconds": 3458,
+    "youtubeUrl": "https://www.youtube.com/watch?v=2f40BoW2IXA&t=3458s",
+    "summary": "The commissioning chapter follows trial evidence into the manuals, procedures, and operating culture that guide a class throughout service and after major refits.",
+    "body": "Contractors and test teams supply technical documents, but the first-in-class crew turns them into an operating manual grounded in experience aboard the real ship. The commissioning captain is often unusually senior because that officer must oversee both the crew and a multi-author body of knowledge. The resulting manual defines standard procedures, captures lessons from the trials, and helps establish the ship's working culture. HMS Queen Elizabeth's first commissioning captain is used to illustrate the experience and judgment expected in that role. The document evolves as equipment changes, while a major refit involving machinery, generators, controls, or radars can require what Dr. Clarke calls a new edition. Navies therefore need experienced operators who can also explain and document how the ship should be run.",
+    "topics": [
+      {
+        "slug": "commissioning",
+        "title": "Commissioning"
+      },
+      {
+        "slug": "naval-personnel",
+        "title": "Naval Personnel"
+      },
+      {
+        "slug": "naval-training",
+        "title": "Naval Training"
+      },
+      {
+        "slug": "ship-maintenance",
+        "title": "Ship Maintenance"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "fleet-readiness",
+        "title": "Fleet Readiness"
+      }
+    ],
+    "evidence": [
       {
         "start": "57:38",
-        "end": "1:02:29",
-        "note": "The transcript explains how commissioning crews turn trial data into manuals, procedures, and later refit updates."
+        "end": "59:49",
+        "note": "The transcript describes the first crew and captain combining contractor documents, trial results, and operating experience into the class manual and culture."
       },
       {
+        "start": "59:53",
+        "end": "1:01:12",
+        "note": "HMS Queen Elizabeth's commissioning captain illustrates the seniority, crew knowledge, and editorial responsibility required."
+      },
+      {
+        "start": "1:01:14",
+        "end": "1:03:06",
+        "note": "Manuals are amended through service and substantially revised after major refits by experienced operators who can document technical practice."
+      }
+    ],
+    "end": "1:03:06",
+    "endSeconds": 3786,
+    "sourcePath": "src/transcripts/txt/2026-05-23_T18-30-06_trials-and-tribulations-why-testing-warships-matters_2f40BoW2IXA.txt"
+  },
+  {
+    "id": "fleet-exercises-reveal-integration-problems",
+    "slug": "fleet-exercises-reveal-integration-problems",
+    "title": "Fleet exercises reveal integration problems",
+    "kind": "chapter",
+    "kindLabel": "Chapter",
+    "videoId": "2f40BoW2IXA",
+    "videoSlug": "trials-and-tribulations-why-testing-warships-matters",
+    "videoTitle": "Trials and Tribulations: Why Testing Warships Matters...",
+    "start": "1:03:10",
+    "startSeconds": 3790,
+    "youtubeUrl": "https://www.youtube.com/watch?v=2f40BoW2IXA&t=3790s",
+    "summary": "Exercises with escorts, allies, auxiliaries, and aircraft reveal communications, support, and habitability problems that a ship cannot expose while testing alone.",
+    "body": "A warship that works by itself still has to integrate with destroyers, frigates, allied ships, and replenishment vessels. Fleet exercises can reveal too few communications positions or a layout that places several vocal operators close enough to interfere with one another. Data links reduce some spoken traffic, but command-space acoustics and human coordination still matter. An aircraft carrier adds another system of systems when squadrons, aircraft engineers, magazines, hangars, and aviation support personnel come aboard. Their presence tests accommodation, food service, sanitation, and waste capacity as well as flying operations. Dr. Clarke's humorous curry-night example makes the serious point that real operating loads validate or overturn habitability calculations made on paper.",
+    "topics": [
+      {
+        "slug": "fleet-operations",
+        "title": "Fleet Operations"
+      },
+      {
+        "slug": "naval-training",
+        "title": "Naval Training"
+      },
+      {
+        "slug": "communications",
+        "title": "Communications"
+      },
+      {
+        "slug": "replenishment-at-sea",
+        "title": "Replenishment At Sea"
+      },
+      {
+        "slug": "naval-aviation",
+        "title": "Naval Aviation"
+      },
+      {
+        "slug": "naval-logistics",
+        "title": "Naval Logistics"
+      },
+      {
+        "slug": "habitability",
+        "title": "Habitability"
+      }
+    ],
+    "evidence": [
+      {
         "start": "1:03:10",
+        "end": "1:04:37",
+        "note": "Exercises with escorts, allies, and auxiliaries are said to expose insufficient or badly clustered communications positions."
+      },
+      {
+        "start": "1:04:40",
+        "end": "1:05:28",
+        "note": "Modern data sharing reduces voice traffic but does not remove the need to arrange vocal positions for clear coordination."
+      },
+      {
+        "start": "1:05:31",
         "end": "1:07:29",
-        "note": "The transcript shows exercise and operations revealing integration, communications, aviation, accommodation, and support issues."
+        "note": "Aircraft, squadron personnel, support spaces, sanitation, and waste management demonstrate how real operating loads test a carrier's design."
       }
     ],
     "end": "1:07:29",
     "endSeconds": 4049,
+    "sourcePath": "src/transcripts/txt/2026-05-23_T18-30-06_trials-and-tribulations-why-testing-warships-matters_2f40BoW2IXA.txt"
+  },
+  {
+    "id": "french-navy-moving-shock-trial",
+    "slug": "french-navy-moving-shock-trial",
+    "title": "A French Navy moving shock trial",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "2f40BoW2IXA",
+    "videoSlug": "trials-and-tribulations-why-testing-warships-matters",
+    "videoTitle": "Trials and Tribulations: Why Testing Warships Matters...",
+    "start": "1:12:16",
+    "startSeconds": 4336,
+    "youtubeUrl": "https://www.youtube.com/watch?v=2f40BoW2IXA&t=4336s",
+    "summary": "An appended reaction to French Navy footage lets viewers see a slowly moving ship absorb a near-miss explosion while computers, lighting, screens, and fittings respond in real time.",
+    "body": "The appended footage turns the earlier discussion of shock testing into a visual watch point. The French ship is moving slowly past a large charge rather than remaining completely fixed, introducing some of the operational variation discussed at the start of the video. Crew are aboard and screens have added tape as a precaution against breakage. After the detonation, some computers shut down and need resetting while others remain in operation, and the lights return quickly. The near miss still transmits visible force through the vessel, demonstrating why trials inspect both immediate damage and the ability of essential systems to recover.",
+    "topics": [
+      {
+        "slug": "french-navy",
+        "title": "French Navy"
+      },
+      {
+        "slug": "shock-trials",
+        "title": "Shock Trials"
+      },
+      {
+        "slug": "damage-control",
+        "title": "Damage Control"
+      },
+      {
+        "slug": "naval-electronics",
+        "title": "Naval Electronics"
+      },
+      {
+        "slug": "ship-trials",
+        "title": "Ship Trials"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "1:12:16",
+        "end": "1:13:24",
+        "note": "The transcript introduces French Navy full-shock-trial footage and observes that the ship moves slowly past the charge."
+      },
+      {
+        "start": "1:13:29",
+        "end": "1:14:37",
+        "note": "The reaction notes a crew aboard, taped screens, computers that shut down or stay working, rapid lighting recovery, and visible near-miss shock effects."
+      }
+    ],
+    "end": "1:14:37",
+    "endSeconds": 4477,
     "sourcePath": "src/transcripts/txt/2026-05-23_T18-30-06_trials-and-tribulations-why-testing-warships-matters_2f40BoW2IXA.txt"
   },
   {
@@ -7561,7 +8285,7 @@
     "startSeconds": 704,
     "youtubeUrl": "https://www.youtube.com/watch?v=E_NuOVBreCU&t=704s",
     "summary": "HMS Warrior's frigate designation anchors an argument that familiar ship labels repeatedly expand into larger, more capable vessels.",
-    "body": "Warrior remained a frigate because of her single gun deck and design lineage, even though her combat power dwarfed the fleets of Trafalgar. Her range and prestige created a dramatic British advantage, while her roughly 10,000-ton scale illustrates the enduring space needed for supplies, workshops, redundancy, and independent global deployment.",
+    "body": "Warrior remained a frigate because of her single gun deck and design lineage, even though her combat power dwarfed the fleets of Trafalgar. Her cruising range and prestige let Britain display a capability gap that few rivals could match, creating the kind of decisive lead Dr. Clarke calls a Warrior moment. He uses the ship to show how a label once associated with small scouts and cruising vessels can migrate into the battle line as requirements grow. Modern destroyer growth from roughly 2,000 to 10,000 tons is therefore presented as a recurrence of an older pattern rather than an entirely new phenomenon.",
     "topics": [
       {
         "slug": "hms-warrior",
@@ -7593,6 +8317,57 @@
         "start": "11:44",
         "end": "17:55",
         "note": "The transcript uses Warrior to compare historical frigate growth with modern destroyer growth and worldwide sustainment needs."
+      }
+    ],
+    "end": "17:55",
+    "endSeconds": 1075,
+    "sourcePath": "src/transcripts/txt/2025-12-30_T19-30-06_why-is-a-frigate-a-frigate-and-other-questions-of-modern-navys_E_NuOVBreCU.txt"
+  },
+  {
+    "id": "ten-thousand-ton-global-warship",
+    "slug": "ten-thousand-ton-global-warship",
+    "title": "Why the 10,000-ton global warship keeps returning",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "E_NuOVBreCU",
+    "videoSlug": "why-is-a-frigate-a-frigate-and-other-questions-of-modern-navys",
+    "videoTitle": "Why is a Frigate a Frigate and other questions of modern navys?",
+    "start": "15:52",
+    "startSeconds": 952,
+    "youtubeUrl": "https://www.youtube.com/watch?v=E_NuOVBreCU&t=952s",
+    "summary": "Around 10,000 tons repeatedly provides the stores, workshops, redundancy, and seakeeping needed for an independently deployed prestige warship.",
+    "body": "Dr. Clarke treats the roughly 10,000-ton displacement of HMS Warrior and many modern escorts as a recurring functional threshold, not a uniquely modern excess. A ship sent abroad to demonstrate power must carry stores, workshops, machinery, weapons, and enough redundancy to remain useful far from support. It also has to survive bad weather and repair failures without creating the diplomatic embarrassment of being towed home. This watch point explains why frigates and destroyers can grow into cruiser-sized vessels while retaining politically familiar labels.",
+    "topics": [
+      {
+        "slug": "warship-size",
+        "title": "Warship Size"
+      },
+      {
+        "slug": "naval-logistics",
+        "title": "Naval Logistics"
+      },
+      {
+        "slug": "naval-presence",
+        "title": "Naval Presence"
+      },
+      {
+        "slug": "power-projection",
+        "title": "Power Projection"
+      },
+      {
+        "slug": "damage-control",
+        "title": "Damage Control"
+      },
+      {
+        "slug": "redundancy",
+        "title": "Redundancy"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "15:52",
+        "end": "17:55",
+        "note": "The transcript identifies roughly 10,000 tons as a recurring threshold for stores, workshops, redundancy, seakeeping, and independent global deployment."
       }
     ],
     "end": "17:55",
@@ -7710,7 +8485,7 @@
     "startSeconds": 1810,
     "youtubeUrl": "https://www.youtube.com/watch?v=E_NuOVBreCU&t=1810s",
     "summary": "Royal Navy sloop experiments supplied the data behind Flower-class corvettes, Hunt-class escort destroyers, and Black Swan-class escorts.",
-    "body": "Treaty-exempt sloops tested the smallest viable oceanic ASW escort, including weapons, minesweeping, and presence roles. Admiral Henderson used those lessons to adapt merchant standards for the single-screw Flower class and to divide a related naval hull lineage into Black Swan ASW sloops and Hunt-class escorts for higher-threat waters.",
+    "body": "Treaty-exempt sloops were built to naval standards and served as ASW escorts, minesweepers, and diplomatic vessels. The Royal Navy used them to test the smallest viable oceanic escort, the weapons it needed, and the practical requirements of sustained anti-submarine work. Admiral Henderson then turned that accumulated evidence into several wartime construction paths. Merchant standards enabled mass-produced Flower-class corvettes, while related naval hull work produced Black Swan-class sloops and Hunt-class escort destroyers for more demanding environments.",
     "topics": [
       {
         "slug": "sloops",
@@ -7746,6 +8521,108 @@
     ],
     "end": "33:13",
     "endSeconds": 1993,
+    "sourcePath": "src/transcripts/txt/2025-12-30_T19-30-06_why-is-a-frigate-a-frigate-and-other-questions-of-modern-navys_E_NuOVBreCU.txt"
+  },
+  {
+    "id": "flower-class-merchant-standard-mobilization",
+    "slug": "flower-class-merchant-standard-mobilization",
+    "title": "How merchant standards made the Flower class scalable",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "E_NuOVBreCU",
+    "videoSlug": "why-is-a-frigate-a-frigate-and-other-questions-of-modern-navys",
+    "videoTitle": "Why is a Frigate a Frigate and other questions of modern navys?",
+    "start": "31:21",
+    "startSeconds": 1881,
+    "youtubeUrl": "https://www.youtube.com/watch?v=E_NuOVBreCU&t=1881s",
+    "summary": "Interwar sloop trials let Admiral Henderson specify a single-screw, merchant-standard ASW escort that British industry could build in numbers before war began.",
+    "body": "The Royal Navy entered 1938 with practical evidence from its sloop program about the minimum useful oceanic ASW escort. Admiral Henderson used those results to select an appropriate merchant-derived hull and simplify it to a single shaft and propeller. Building close to civilian standards widened the industrial base, while available guns and a strong depth-charge fit supplied the necessary combat value. The resulting Flower-class corvettes were ordered in 1939, showing that mass escort mobilization rested on prewar experimentation rather than an improvised wartime idea.",
+    "topics": [
+      {
+        "slug": "flower-class-corvettes",
+        "title": "Flower-Class Corvettes"
+      },
+      {
+        "slug": "anti-submarine-warfare",
+        "title": "Anti-Submarine Warfare"
+      },
+      {
+        "slug": "merchant-shipbuilding",
+        "title": "Merchant Shipbuilding"
+      },
+      {
+        "slug": "naval-mobilization",
+        "title": "Naval Mobilization"
+      },
+      {
+        "slug": "convoy-escort",
+        "title": "Convoy Escort"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "31:21",
+        "end": "32:08",
+        "note": "The transcript describes Henderson's use of sloop data, a merchant-derived hull, single-screw machinery, civilian standards, and the 1939 Flower-class orders."
+      }
+    ],
+    "end": "32:08",
+    "endSeconds": 1928,
+    "sourcePath": "src/transcripts/txt/2025-12-30_T19-30-06_why-is-a-frigate-a-frigate-and-other-questions-of-modern-navys_E_NuOVBreCU.txt"
+  },
+  {
+    "id": "black-swan-and-hunt-design-split",
+    "slug": "black-swan-and-hunt-design-split",
+    "title": "One sloop lineage produced Black Swans and Hunts",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "E_NuOVBreCU",
+    "videoSlug": "why-is-a-frigate-a-frigate-and-other-questions-of-modern-navys",
+    "videoTitle": "Why is a Frigate a Frigate and other questions of modern navys?",
+    "start": "32:09",
+    "startSeconds": 1929,
+    "youtubeUrl": "https://www.youtube.com/watch?v=E_NuOVBreCU&t=1929s",
+    "summary": "A common sloop-derived hull lineage divided into Black Swan ASW escorts and Hunt-class escort destroyers for higher-threat waters.",
+    "body": "Dr. Clarke describes the Black Swan and Hunt classes as branches from closely related sloop hull work rather than unrelated escort concepts. Black Swan-class sloops became premier Royal Navy ASW escorts. Modifications produced Hunt-class escort destroyers intended to expand fleet escort numbers and protect routes where surface and air threats were greater. The comparison shows how a common design foundation could be specialized for transatlantic anti-submarine work or more dangerous coastal and fleet environments.",
+    "topics": [
+      {
+        "slug": "black-swan-class",
+        "title": "Black Swan Class"
+      },
+      {
+        "slug": "hunt-class",
+        "title": "Hunt Class"
+      },
+      {
+        "slug": "sloops",
+        "title": "Sloops"
+      },
+      {
+        "slug": "escort-destroyers",
+        "title": "Escort Destroyers"
+      },
+      {
+        "slug": "anti-submarine-warfare",
+        "title": "Anti-Submarine Warfare"
+      },
+      {
+        "slug": "convoy-escort",
+        "title": "Convoy Escort"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "32:09",
+        "end": "33:02",
+        "note": "The transcript links Black Swan sloops and Hunt-class escort destroyers through sloop hull development and distinguishes their intended threat environments."
+      }
+    ],
+    "end": "33:02",
+    "endSeconds": 1982,
     "sourcePath": "src/transcripts/txt/2025-12-30_T19-30-06_why-is-a-frigate-a-frigate-and-other-questions-of-modern-navys_E_NuOVBreCU.txt"
   },
   {
@@ -7867,7 +8744,7 @@
     "startSeconds": 2302,
     "youtubeUrl": "https://www.youtube.com/watch?v=E_NuOVBreCU&t=2302s",
     "summary": "The Cold War alliance system reduced the independent cruiser mission, but renewed multipolar competition increases demand for visible regional command ships.",
-    "body": "In a bipolar alliance system, presence could be signaled by sending another allied ship, reducing the value of a traditional cruiser. The return of multipolar competition makes layered presence useful again: patrol vessels provide the local beat, while a cruiser-sized command ship supplies regional reinforcement, authority, and deterrent weight.",
+    "body": "In a bipolar alliance system, presence could be signaled by sending another allied ship, reducing the value of a traditional cruiser. The return of multipolar competition makes visible national and regional presence more important because alliance membership no longer supplies every signal. Patrol vessels can provide the local beat, while a cruiser-sized command ship supplies regional reinforcement, authority, and deterrent weight. The growth of modern destroyers reflects the pressure to recover that cruiser function without persuading governments to fund a ship carrying the politically heavier cruiser label.",
     "topics": [
       {
         "slug": "naval-presence",
@@ -7907,6 +8784,57 @@
     ],
     "end": "45:49",
     "endSeconds": 2749,
+    "sourcePath": "src/transcripts/txt/2025-12-30_T19-30-06_why-is-a-frigate-a-frigate-and-other-questions-of-modern-navys_E_NuOVBreCU.txt"
+  },
+  {
+    "id": "ticonderoga-cruiser-reclassification",
+    "slug": "ticonderoga-cruiser-reclassification",
+    "title": "Why Ticonderoga became a cruiser on paper",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "E_NuOVBreCU",
+    "videoSlug": "why-is-a-frigate-a-frigate-and-other-questions-of-modern-navys",
+    "videoTitle": "Why is a Frigate a Frigate and other questions of modern navys?",
+    "start": "40:43",
+    "startSeconds": 2443,
+    "youtubeUrl": "https://www.youtube.com/watch?v=E_NuOVBreCU&t=2443s",
+    "summary": "Congressional concern over a perceived Soviet cruiser advantage helped turn a destroyer-leader design into a US cruiser designation.",
+    "body": "The Ticonderoga class is used to show that warship labels respond to institutional politics as well as hull design and mission. Dr. Clarke describes the ships as originating from a large destroyer or destroyer-leader hull rather than a traditional US cruiser lineage. Congress was concerned that the Soviet Navy appeared to possess more cruisers, even though Soviet strategic and diplomatic requirements explained much of that fleet. Redesignating the American ships narrowed the numerical cruiser gap without first creating an entirely new cruiser design.",
+    "topics": [
+      {
+        "slug": "ticonderoga-class",
+        "title": "Ticonderoga Class"
+      },
+      {
+        "slug": "us-navy",
+        "title": "US Navy"
+      },
+      {
+        "slug": "cruisers",
+        "title": "Cruisers"
+      },
+      {
+        "slug": "destroyer-leaders",
+        "title": "Destroyer Leaders"
+      },
+      {
+        "slug": "warship-classification",
+        "title": "Warship Classification"
+      },
+      {
+        "slug": "naval-policy",
+        "title": "Naval Policy"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "40:43",
+        "end": "42:12",
+        "note": "The transcript says the Ticonderoga design came from a large destroyer hull and was redesignated amid congressional concern about Soviet cruiser numbers."
+      }
+    ],
+    "end": "42:12",
+    "endSeconds": 2532,
     "sourcePath": "src/transcripts/txt/2025-12-30_T19-30-06_why-is-a-frigate-a-frigate-and-other-questions-of-modern-navys_E_NuOVBreCU.txt"
   },
   {
@@ -8075,7 +9003,7 @@
     "startSeconds": 3308,
     "youtubeUrl": "https://www.youtube.com/watch?v=E_NuOVBreCU&t=3308s",
     "summary": "Combining sonar, radar, electronic warfare, weapons, and power systems expands ships while shifting recruiting toward technical specialists.",
-    "body": "A one-hull answer to ASW and air defense needs rafted machinery, sonar processing, powerful radars, electronic warfare systems, weapons, and the electrical plant to support them. This produces crews rich in IT and marine-engineering skills, forcing navies to compete with civilian employers through better accommodation, careers, and quality of life.",
+    "body": "A one-hull answer to ASW and air defense needs rafted machinery, extensive sonar processing, powerful radars, electronic-warfare equipment, weapons, and the electrical plant to support them. Each sensor and weapon brings more computing, analysis, cooling, and power demand, so general-purpose capability consumes hull volume even before stores or accommodation are considered. The same integration changes the crew by making IT technicians and marine engineers especially important. Ship size, system architecture, recruiting, and retention therefore form one design problem rather than separate questions.",
     "topics": [
       {
         "slug": "combat-systems",
@@ -8118,6 +9046,57 @@
     "sourcePath": "src/transcripts/txt/2025-12-30_T19-30-06_why-is-a-frigate-a-frigate-and-other-questions-of-modern-navys_E_NuOVBreCU.txt"
   },
   {
+    "id": "technical-crews-and-civilian-competition",
+    "slug": "technical-crews-and-civilian-competition",
+    "title": "Modern navies compete for transferable technical skills",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "E_NuOVBreCU",
+    "videoSlug": "why-is-a-frigate-a-frigate-and-other-questions-of-modern-navys",
+    "videoTitle": "Why is a Frigate a Frigate and other questions of modern navys?",
+    "start": "56:18",
+    "startSeconds": 3378,
+    "youtubeUrl": "https://www.youtube.com/watch?v=E_NuOVBreCU&t=3378s",
+    "summary": "As computing and engineering replace physical labor as the defining crew skills, navies must offer accommodation and careers that can compete with civilian employers.",
+    "body": "Age of Sail crews depended heavily on physical strength, agility, and skilled topmen, but modern combatants depend increasingly on technical judgment. IT technicians and marine engineers operate systems whose skills transfer directly to well-paid civilian work. Navies are therefore competing with technology and engineering firms rather than only with merchant shipping. Accommodation, quality of life, and credible long-term careers become ship-design and force-readiness issues because poor conditions make scarce specialists easier to lose.",
+    "topics": [
+      {
+        "slug": "naval-personnel",
+        "title": "Naval Personnel"
+      },
+      {
+        "slug": "naval-recruitment",
+        "title": "Naval Recruitment"
+      },
+      {
+        "slug": "information-technology",
+        "title": "Information Technology"
+      },
+      {
+        "slug": "marine-engineering",
+        "title": "Marine Engineering"
+      },
+      {
+        "slug": "crew-accommodation",
+        "title": "Crew Accommodation"
+      },
+      {
+        "slug": "workforce-retention",
+        "title": "Workforce Retention"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "56:18",
+        "end": "59:11",
+        "note": "The transcript contrasts Age of Sail physical demands with modern technical aptitude and links transferable IT and engineering skills to accommodation and retention."
+      }
+    ],
+    "end": "59:11",
+    "endSeconds": 3551,
+    "sourcePath": "src/transcripts/txt/2025-12-30_T19-30-06_why-is-a-frigate-a-frigate-and-other-questions-of-modern-navys_E_NuOVBreCU.txt"
+  },
+  {
     "id": "railguns-and-future-escort-growth",
     "slug": "railguns-and-future-escort-growth",
     "title": "Railguns could drive another round of escort growth",
@@ -8130,7 +9109,7 @@
     "startSeconds": 3551,
     "youtubeUrl": "https://www.youtube.com/watch?v=E_NuOVBreCU&t=3551s",
     "summary": "Electromagnetic guns promise useful effects at attractive per-shot costs, but their power, computing, and doctrinal demands may enlarge future warships.",
-    "body": "Dr. Clarke expects crewed escorts to remain near current sizes or grow as hypersonic weapons and electromagnetic guns mature. The limiting question is not only whether railgun technology works, but how navies fit it into doctrine and whether general-purpose frigates and destroyers can absorb the generating and computing requirements.",
+    "body": "Dr. Clarke expects crewed escorts to remain near current sizes or grow as hypersonic weapons and electromagnetic guns mature. Railguns are attractive because naval guns repeatedly retain value through a favorable cost per effect even in missile-centered fleets. He argues that the remaining obstacle is not simply making electromagnetic launch technology function, but defining a useful doctrine for it. A specialist railgun ship and a general-purpose frigate or destroyer impose different force-structure choices, while fitting the weapon to existing escorts may require more generating capacity, computing, and hull volume.",
     "topics": [
       {
         "slug": "railguns",
@@ -8166,6 +9145,61 @@
         "start": "59:11",
         "end": "1:02:56",
         "note": "The transcript discusses railgun development, cost-effectiveness, doctrine, power demand, and the computing footprint of modern combatants."
+      }
+    ],
+    "end": "1:02:56",
+    "endSeconds": 3776,
+    "sourcePath": "src/transcripts/txt/2025-12-30_T19-30-06_why-is-a-frigate-a-frigate-and-other-questions-of-modern-navys_E_NuOVBreCU.txt"
+  },
+  {
+    "id": "computers-define-modern-escort-roles",
+    "slug": "computers-define-modern-escort-roles",
+    "title": "Computing helps define a modern frigate or destroyer",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "E_NuOVBreCU",
+    "videoSlug": "why-is-a-frigate-a-frigate-and-other-questions-of-modern-navys",
+    "videoTitle": "Why is a Frigate a Frigate and other questions of modern navys?",
+    "start": "1:01:42",
+    "startSeconds": 3702,
+    "youtubeUrl": "https://www.youtube.com/watch?v=E_NuOVBreCU&t=3702s",
+    "summary": "The computing suite devoted to sonar or air warfare can distinguish a frigate from a destroyer as clearly as traditional differences in guns or displacement.",
+    "body": "Modern surface combatants devote a significant share of internal space to computing rather than only propulsion and weapons. Sonar processing must filter large volumes of acoustic data, while air-warfare systems analyze radar returns and coordinate missile defense. Dr. Clarke therefore suggests that one practical difference between a frigate and a destroyer can be the computers fitted for ASW or air warfare. This watch point turns classification from a question of size alone into a question of which information problem the ship is optimized to solve.",
+    "topics": [
+      {
+        "slug": "combat-systems",
+        "title": "Combat Systems"
+      },
+      {
+        "slug": "naval-computing",
+        "title": "Naval Computing"
+      },
+      {
+        "slug": "anti-submarine-warfare",
+        "title": "Anti-Submarine Warfare"
+      },
+      {
+        "slug": "air-defense",
+        "title": "Air Defense"
+      },
+      {
+        "slug": "warship-classification",
+        "title": "Warship Classification"
+      },
+      {
+        "slug": "type-26-frigates",
+        "title": "Type 26 Frigates"
+      },
+      {
+        "slug": "arleigh-burke-class",
+        "title": "Arleigh Burke Class"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "1:01:42",
+        "end": "1:02:56",
+        "note": "The transcript says computing occupies substantial hull space and contrasts ASW computers with air-warfare computers as a modern classification distinction."
       }
     ],
     "end": "1:02:56",
@@ -8342,7 +9376,7 @@
     "startSeconds": 611,
     "youtubeUrl": "https://www.youtube.com/watch?v=f59fnSlU-5Q&t=611s",
     "summary": "The K-class case shows why a submarine designed to keep up with a battle fleet could sacrifice the stealth and operating qualities that make submarines useful.",
-    "body": "Dr. Clarke contrasts a submarine's strengths as a stealthy ambush weapon with the surface-speed, scouting, and coordination demands of a fleet unit. Steam propulsion and limited sensors made the compromise especially awkward, while friendly surface ships could mistake a nearby submarine for a threat.",
+    "body": "Dr. Clarke starts from a submarine's core strength: concealment for an ambush. A fleet scout instead had to remain on the surface, keep pace with battleships, detect enemy units at useful range, and coordinate its reporting. Contemporary diesels could not provide the required power, so the K class used steam turbines whose smoke and steam arrangements imposed severe operating penalties. Limited periscopes and hydrophones made the boat a poor observer, while a hull optimized for surface speed handled badly underwater. Coordination introduced another danger because friendly surface ships that saw a large, unfamiliar submarine silhouette often tried to ram it. The K-class case shows why adding speed could not turn a submarine into a scout cruiser without sacrificing the qualities that made it useful.",
     "topics": [
       {
         "slug": "submarines",
@@ -8373,6 +9407,49 @@
     "sourcePath": "src/transcripts/txt/2026-02-26_T20-00-39_top-bottom-5-inventions-adaptations-of-rn-ships-that-came-from-the-ships-themselves-patreon-live_f59fnSlU-5Q.txt"
   },
   {
+    "id": "d-day-danger-landing-craft-and-infantry",
+    "slug": "d-day-danger-landing-craft-and-infantry",
+    "title": "Why D-Day bravery cannot be reduced to one role",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "f59fnSlU-5Q",
+    "videoSlug": "top-bottom-5-inventions-adaptations-of-rn-ships-that-came-from-the-ships-themselves-patreon-live",
+    "videoTitle": "Top/Bottom 5 inventions/adaptations of RN ships that came from the ships themselves...(Patreon Live)",
+    "start": "18:18",
+    "startSeconds": 1098,
+    "youtubeUrl": "https://www.youtube.com/watch?v=f59fnSlU-5Q&t=1098s",
+    "summary": "Landing-craft crews and assault infantry faced different but inseparable hazards on D-Day, making attempts to rank one group's courage over the other's historically unhelpful.",
+    "body": "Dr. Clarke rejects a social-media argument that tried to decide whether D-Day infantry or the people operating their landing craft had the harder or more medal-worthy experience. Landing-craft personnel spent the day moving slowly through artillery and machine-gun fire in exposed vessels. Infantry then had to leave that limited protection and advance across the beach. The two roles formed successive parts of the same amphibious assault rather than competing claims to courage. Opening the video here gives a concise reminder that operational history should explain different forms of risk instead of turning veterans' experiences into a bravery ranking.",
+    "topics": [
+      {
+        "slug": "d-day",
+        "title": "D Day"
+      },
+      {
+        "slug": "amphibious-warfare",
+        "title": "Amphibious Warfare"
+      },
+      {
+        "slug": "naval-personnel",
+        "title": "Naval Personnel"
+      },
+      {
+        "slug": "second-world-war",
+        "title": "Second World War"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "18:18",
+        "end": "19:48",
+        "note": "Dr. Clarke compares the exposure of landing-craft crews with infantry charging off the craft and rejects attempts to rank their bravery."
+      }
+    ],
+    "end": "19:48",
+    "endSeconds": 1188,
+    "sourcePath": "src/transcripts/txt/2026-02-26_T20-00-39_top-bottom-5-inventions-adaptations-of-rn-ships-that-came-from-the-ships-themselves-patreon-live_f59fnSlU-5Q.txt"
+  },
+  {
     "id": "marine-chronometer-shaped-by-shipboard-use",
     "slug": "marine-chronometer-shaped-by-shipboard-use",
     "title": "How shipboard users shaped the marine chronometer",
@@ -8385,7 +9462,7 @@
     "startSeconds": 1214,
     "youtubeUrl": "https://www.youtube.com/watch?v=f59fnSlU-5Q&t=1214s",
     "summary": "The marine chronometer became more useful at sea when navigators, carpenters, and other sailors influenced its case, handling, and practical operation.",
-    "body": "The account credits Harrison's mechanism but stresses the people who had to use and maintain it aboard ship. Stability on a chart table, a protective wooden case, and controls usable with either hand turned precision timekeeping into a workable navigational tool.",
+    "body": "The account credits John Harrison's mechanism while restoring the role of the people who had to use and protect it at sea. Royal Navy officers, navigators, warrant officers, and a ship's master carpenter discussed practical requirements as successive chronometers were developed. The wooden case and stabilized mounting had to keep the instrument safe and usable on a moving chart table. Controls were arranged so a navigator could operate the watch with either hand while the other hand made marks on a chart. A French expedition then helped confirm that the instrument could deliver reliable longitude measurements. The result was not merely a precise clock but a navigational system shaped by shipboard handling, maintenance, and international testing.",
     "topics": [
       {
         "slug": "age-of-sail",
@@ -8424,7 +9501,7 @@
     "startSeconds": 1800,
     "youtubeUrl": "https://www.youtube.com/watch?v=f59fnSlU-5Q&t=1800s",
     "summary": "The rocket-driven Great Panjandrum promised to clear beach obstacles and minefields, but its trials showed why an elaborate solution must remain controllable under real conditions.",
-    "body": "Its two large rocket-powered wheels were meant to carry explosives through wire, mines, and anti-tank obstacles ahead of a landing. Unbalanced rockets, turns back toward spectators, and uncontrolled explosions exposed the danger that a weapon could threaten its own force as readily as the enemy.",
+    "body": "The Great Panjandrum tried to solve several amphibious-assault problems with one rocket-driven device. Two huge wheels were meant to carry roughly a ton of explosive through barbed wire, trigger mines, and blast a ramp through an anti-tank ditch or wall before troops and vehicles landed. More powerful cordite rockets and a heavier charge promised speeds above 60 mph, but the rockets could not be balanced reliably. Trials added a stabilizing third wheel and scores of rockets without making the weapon controllable. During the January 1944 test, rockets broke loose, senior observers dived into cover, and the machine turned back toward the sea before disintegrating. The watch point shows why rigorous trials mattered: an ingenious all-in-one beach-clearing weapon was at least as dangerous to the landing force as to the defenders.",
     "topics": [
       {
         "slug": "amphibious-warfare",
@@ -8467,7 +9544,7 @@
     "startSeconds": 2413,
     "youtubeUrl": "https://www.youtube.com/watch?v=f59fnSlU-5Q&t=2413s",
     "summary": "The Rattler–Alecto comparison shows that propulsion trials measure trained engine-room work as well as hull and propeller design.",
-    "body": "Steam machinery required crews who could read gauges, regulate boilers, and translate a design into reliable output. In the Rattler trial, the engine-room team used a working rhythm drawn from sea shanties, illustrating why operating practice belongs in any assessment of technical performance.",
+    "body": "The Rattler-Alecto comparison was not only a contest between screw propulsion and paddle wheels. Steam machinery required sailors who could read pressure gauges, regulate boilers, maintain propeller-shaft seals, and turn a design into dependable output. Color bands on early gauges helped workers who were not yet fully literate, while the Navy increasingly trained technical ratings to read and write. Those skills improved sailors' bargaining power ashore and helped drive better accommodation and professional status aboard ship. During the trial, Rattler's boiler-room chief used the rhythm of sailing shanties to organize coal handling and raise the team's efficiency. The episode shows that machinery performance depends on trained operators and working practice as well as the hardware being tested.",
     "topics": [
       {
         "slug": "ship-propulsion",
@@ -8498,6 +9575,53 @@
     "sourcePath": "src/transcripts/txt/2026-02-26_T20-00-39_top-bottom-5-inventions-adaptations-of-rn-ships-that-came-from-the-ships-themselves-patreon-live_f59fnSlU-5Q.txt"
   },
   {
+    "id": "repeat-orders-and-naval-purchasing-power",
+    "slug": "repeat-orders-and-naval-purchasing-power",
+    "title": "Why repeat orders give a navy purchasing power",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "f59fnSlU-5Q",
+    "videoSlug": "top-bottom-5-inventions-adaptations-of-rn-ships-that-came-from-the-ships-themselves-patreon-live",
+    "videoTitle": "Top/Bottom 5 inventions/adaptations of RN ships that came from the ships themselves...(Patreon Live)",
+    "start": "45:18",
+    "startSeconds": 2718,
+    "youtubeUrl": "https://www.youtube.com/watch?v=f59fnSlU-5Q&t=2718s",
+    "summary": "A navy gains leverage from sustained production runs and a trained industrial base, not simply from being a large customer in the abstract.",
+    "body": "Dr. Clarke uses the nineteenth-century Royal Navy to explain how purchasing power has to be exercised to remain effective. Large repeat orders for propellers and machinery justified specialized facilities, trained dockyard workers, and sailors able to operate and maintain the equipment. Those skills then flowed into civilian yards and the merchant marine, multiplying the value of naval spending. He contrasts that system with modern fleets that buy small batches, revise requirements, or interrupt production lines, leaving suppliers less reason to prioritize them. The contemporary U.S. Navy retains strong leverage for Arleigh Burke destroyers and Virginia-class submarines because those classes still create large recurring demands. This passage is useful for understanding procurement as a relationship among fleet plans, workforce continuity, spares, and industrial confidence.",
+    "topics": [
+      {
+        "slug": "naval-procurement",
+        "title": "Naval Procurement"
+      },
+      {
+        "slug": "naval-industrial-capacity",
+        "title": "Naval Industrial Capacity"
+      },
+      {
+        "slug": "shipbuilding",
+        "title": "Shipbuilding"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "us-navy",
+        "title": "US Navy"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "45:18",
+        "end": "49:31",
+        "note": "The passage contrasts Royal Navy bulk orders and workforce development with small or interrupted modern procurement runs, while identifying Burkes and Virginias as continuing U.S. sources of buying leverage."
+      }
+    ],
+    "end": "49:31",
+    "endSeconds": 2971,
+    "sourcePath": "src/transcripts/txt/2026-02-26_T20-00-39_top-bottom-5-inventions-adaptations-of-rn-ships-that-came-from-the-ships-themselves-patreon-live_f59fnSlU-5Q.txt"
+  },
+  {
     "id": "dreadnought-and-the-missed-deterrent-lead",
     "slug": "dreadnought-and-the-missed-deterrent-lead",
     "title": "Could Dreadnought have created a stronger deterrent lead?",
@@ -8509,8 +9633,8 @@
     "start": "49:42",
     "startSeconds": 2982,
     "youtubeUrl": "https://www.youtube.com/watch?v=f59fnSlU-5Q&t=2982s",
-    "summary": "A counterfactual examination asks whether Britain could have paired a more powerful Dreadnought design with a larger initial building programme to make its naval lead harder to match.",
-    "body": "Dr. Clarke argues that one Dreadnought was a conservative step rather than an overwhelming strategic shock, particularly when the ship reused familiar guns and omitted several available refinements. He considers a larger, faster, more heavily armed group of ships and the pressure that cost and capability might have placed on rival naval budgets.",
+    "summary": "Building only one HMS Dreadnought advertised British capability but not the confidence or production depth that might have made the new type a durable deterrent.",
+    "body": "Dr. Clarke calls the intended strategic effect a 'Warrior moment': a technological lead large enough to discourage a rival from competing and thereby support a period of peace. HMS Warrior appeared with Black Prince and another related ship, whereas Dreadnought initially stood alone. One ship demonstrated that Britain could build the type, but a group of three or four would have demonstrated repeatable capacity and guaranteed that at least one remained available. A faster and more heavily armed programme would also have raised the entry cost for every rival fleet. Germany's navy had to compete with its own army for a limited defence budget, so a much more expensive standard might have forced it to abandon or reduce the naval race. The watch point frames deterrence as a combination of technical advantage, fleet numbers, and the opponent's budget rather than the fame of a single hull.",
     "topics": [
       {
         "slug": "battleships",
@@ -8536,12 +9660,110 @@
     "evidence": [
       {
         "start": "49:42",
-        "end": "1:18:39",
-        "note": "The stream discusses Dreadnought, Warrior and Black Prince, alternative 13.5-inch guns and 24-knot designs, multiple hulls, fire-control placement, and the possible reaction of Germany and other powers."
+        "end": "55:45",
+        "note": "The stream compares a lone Dreadnought with Warrior and Black Prince, argues that multiple more capable ships would signal confidence, and considers the pressure on Germany's army-dominated defence budget."
       }
     ],
-    "end": "1:18:39",
-    "endSeconds": 4719,
+    "end": "55:45",
+    "endSeconds": 3345,
+    "sourcePath": "src/transcripts/txt/2026-02-26_T20-00-39_top-bottom-5-inventions-adaptations-of-rn-ships-that-came-from-the-ships-themselves-patreon-live_f59fnSlU-5Q.txt"
+  },
+  {
+    "id": "feasible-dreadnought-britain-did-not-build",
+    "slug": "feasible-dreadnought-britain-did-not-build",
+    "title": "The feasible Dreadnought Britain did not build",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "f59fnSlU-5Q",
+    "videoSlug": "top-bottom-5-inventions-adaptations-of-rn-ships-that-came-from-the-ships-themselves-patreon-live",
+    "videoTitle": "Top/Bottom 5 inventions/adaptations of RN ships that came from the ships themselves...(Patreon Live)",
+    "start": "57:26",
+    "startSeconds": 3446,
+    "youtubeUrl": "https://www.youtube.com/watch?v=f59fnSlU-5Q&t=3446s",
+    "summary": "Available 13.5-inch guns, superfiring layouts, better fire-control placement, and a 24-knot target show that a more disruptive 1906 battleship did not require imaginary technology.",
+    "body": "Dr. Clarke describes Dreadnought as conservative because she used familiar 12-inch guns, only a modest speed increase, coal firing, wing turrets, and an awkward relationship between the forward funnel and fire-control position. The Royal Navy already had superfiring studies, while 13.5-inch and Elswick 14-inch weapons were far enough developed to be plausible choices. He favors a 13.5-inch arrangement with more guns bearing ahead and astern, a roughly 12-inch belt, and enough boilers for about 24 knots. Removing wing turrets and adopting centerline superfiring mounts could produce a longer, narrower hull whose length-to-beam ratio helped speed, within structural limits. A ship with the broadside weight of several pre-dreadnoughts and a six-knot advantage could choose its engagement and overwhelm older opponents. The passage also shows the institutional cost of Fisher preferring advisers who agreed with him and excluding junior officers who had identified problems with the layout.",
+    "topics": [
+      {
+        "slug": "dreadnought",
+        "title": "Dreadnought"
+      },
+      {
+        "slug": "battleships",
+        "title": "Battleships"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "ship-design",
+        "title": "Ship Design"
+      },
+      {
+        "slug": "naval-guns",
+        "title": "Naval Guns"
+      },
+      {
+        "slug": "pre-world-war-i",
+        "title": "Pre-World War I"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "57:26",
+        "end": "1:10:50",
+        "note": "Dr. Clarke contrasts Dreadnought's conservative features with available 13.5-inch guns, superfiring arrangements, a 24-knot design, improved fire-control placement, and a narrower centerline-turret hull."
+      }
+    ],
+    "end": "1:10:50",
+    "endSeconds": 4250,
+    "sourcePath": "src/transcripts/txt/2026-02-26_T20-00-39_top-bottom-5-inventions-adaptations-of-rn-ships-that-came-from-the-ships-themselves-patreon-live_f59fnSlU-5Q.txt"
+  },
+  {
+    "id": "stronger-dreadnought-programme-and-naval-race",
+    "slug": "stronger-dreadnought-programme-and-naval-race",
+    "title": "How a stronger 1906 programme might have changed the naval race",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "f59fnSlU-5Q",
+    "videoSlug": "top-bottom-5-inventions-adaptations-of-rn-ships-that-came-from-the-ships-themselves-patreon-live",
+    "videoTitle": "Top/Bottom 5 inventions/adaptations of RN ships that came from the ships themselves...(Patreon Live)",
+    "start": "1:10:56",
+    "startSeconds": 4256,
+    "youtubeUrl": "https://www.youtube.com/watch?v=f59fnSlU-5Q&t=4256s",
+    "summary": "The counterfactual follows the consequences if three or four 24-knot, 13.5-inch-gunned British battleships had made matching the new standard prohibitively costly in 1906.",
+    "body": "A stronger initial class might have driven Germany out of the Anglo-German naval race before eight years of competition reshaped European politics. That would not automatically prevent the First World War, but it could alter Britain's relationship with Germany, Russia, France, and the Entente. The new performance benchmark would also change the qualitative contest involving Japan, Italy, and the United States. Dr. Clarke keeps the design within components available in 1905 because Dreadnought was laid down and completed at exceptional speed; 16-inch guns and 30 knots are therefore rejected as anachronistic. He also notes that a 24-knot battle line would force any later battlecruiser concept toward roughly 30 knots, changing the next generation as well as the immediate race. The passage is a useful worked example of disciplined counterfactual history: change a plausible procurement choice, then trace industrial, diplomatic, and design consequences.",
+    "topics": [
+      {
+        "slug": "anglo-german-naval-race",
+        "title": "Anglo German Naval Race"
+      },
+      {
+        "slug": "naval-diplomacy",
+        "title": "Naval Diplomacy"
+      },
+      {
+        "slug": "deterrence",
+        "title": "Deterrence"
+      },
+      {
+        "slug": "battleships",
+        "title": "Battleships"
+      },
+      {
+        "slug": "pre-world-war-i",
+        "title": "Pre-World War I"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "1:10:56",
+        "end": "1:16:59",
+        "note": "The discussion traces possible German withdrawal, effects on the Entente and other naval powers, the 1905-1906 construction timetable, and the battlecruiser speed implied by a 24-knot battle line."
+      }
+    ],
+    "end": "1:16:59",
+    "endSeconds": 4619,
     "sourcePath": "src/transcripts/txt/2026-02-26_T20-00-39_top-bottom-5-inventions-adaptations-of-rn-ships-that-came-from-the-ships-themselves-patreon-live_f59fnSlU-5Q.txt"
   },
   {
@@ -8557,7 +9779,7 @@
     "startSeconds": 5420,
     "youtubeUrl": "https://www.youtube.com/watch?v=f59fnSlU-5Q&t=5420s",
     "summary": "Copper sheathing reduced fouling and risky hull-cleaning work, helping sailing warships retain speed and spend less time in maintenance.",
-    "body": "The comparison begins with earlier lead sheathing, whose interaction with iron fastenings could damage a hull, before explaining why copper was worth the investment. A clean coppered hull eased handling and helped the Royal Navy operate with fewer sailors devoted to careening and hull work than less well-protected rivals.",
+    "body": "The comparison begins with earlier lead sheathing, whose reaction with iron fastenings could damage a wooden hull. Copper reduced marine growth, but it still required careful fitting, inspection, and periodic replacement with many small copper fastenings. That expense avoided frequent careening, a dangerous process in which a ship hauled onto a beach could fall over, break its structure, and be abandoned. A cleaner hull retained speed, maneuverability, and predictable handling for longer deployments. Because Royal Navy crews spent less time scraping and repairing hulls than less well-protected rivals, ships could operate with fewer sailors and give them more time away from exhausting maintenance. Copper sheathing was therefore an investment in readiness, personnel economy, and operational endurance as well as a material improvement.",
     "topics": [
       {
         "slug": "age-of-sail",
@@ -8626,6 +9848,51 @@
     "endSeconds": 4933,
     "question": "Could battleships ever have used combined steam and gas propulsion?",
     "answerShort": "Yes in a sufficiently prolonged battleship era, but a modern version would more plausibly combine nuclear power with gas turbines.",
+    "sourcePath": "src/transcripts/txt/2026-02-26_T20-00-39_top-bottom-5-inventions-adaptations-of-rn-ships-that-came-from-the-ships-themselves-patreon-live_f59fnSlU-5Q.txt"
+  },
+  {
+    "id": "dreadnought-thirteen-and-a-half-inch-gun-advantage",
+    "slug": "dreadnought-thirteen-and-a-half-inch-gun-advantage",
+    "title": "What 13.5-inch guns would have changed for Dreadnought",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "f59fnSlU-5Q",
+    "videoSlug": "top-bottom-5-inventions-adaptations-of-rn-ships-that-came-from-the-ships-themselves-patreon-live",
+    "videoTitle": "Top/Bottom 5 inventions/adaptations of RN ships that came from the ships themselves...(Patreon Live)",
+    "start": "1:23:53",
+    "startSeconds": 5033,
+    "youtubeUrl": "https://www.youtube.com/watch?v=f59fnSlU-5Q&t=5033s",
+    "summary": "A 13.5-inch main battery would have widened Britain's visible advantage over Germany's 11-inch guns, though it would not by itself solve British shell-fuse problems.",
+    "body": "Dr. Clarke says the Kaiserliche Marine could plausibly argue that a high-velocity 11-inch gun competed with Britain's 12-inch weapon. A 13.5-inch British shell was visibly and materially larger, making that political and technical claim far less convincing. The change would therefore increase the cost and difficulty of Germany's response as well as the ship's direct firepower. He adds the caveat that a larger caliber would not automatically correct unreliable British shell fuses.",
+    "topics": [
+      {
+        "slug": "dreadnought",
+        "title": "Dreadnought"
+      },
+      {
+        "slug": "battleships",
+        "title": "Battleships"
+      },
+      {
+        "slug": "naval-guns",
+        "title": "Naval Guns"
+      },
+      {
+        "slug": "anglo-german-naval-race",
+        "title": "Anglo German Naval Race"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "1:23:53",
+        "end": "1:24:44",
+        "note": "The answer contrasts Germany's claim for its high-powered 11-inch gun with the much larger British 13.5-inch shell and notes that fuse defects would persist."
+      }
+    ],
+    "end": "1:24:44",
+    "endSeconds": 5084,
+    "question": "How much difference would 13.5-inch guns have made to an alternative HMS Dreadnought?",
+    "answerShort": "They would have made Germany's claim that its high-powered 11-inch gun matched Britain's armament much harder to sustain, although British fuse problems would remain.",
     "sourcePath": "src/transcripts/txt/2026-02-26_T20-00-39_top-bottom-5-inventions-adaptations-of-rn-ships-that-came-from-the-ships-themselves-patreon-live_f59fnSlU-5Q.txt"
   },
   {
@@ -8735,7 +10002,7 @@
     "startSeconds": 6047,
     "youtubeUrl": "https://www.youtube.com/watch?v=f59fnSlU-5Q&t=6047s",
     "summary": "Carrying an aircraft could extend a submarine's reach, but launching and recovering it forced the boat to remain visible when concealment mattered most.",
-    "body": "The discussion treats Japan's I-400 as an understandable early long-range strike concept, rather than a good reconnaissance or sea-control platform. For boats such as M2, an aircraft could spot a target that the surfaced submarine then struggled to catch, overtake, and attack from a useful position.",
+    "body": "Operating an aircraft forced a submarine to remain surfaced while the machine was launched or recovered, temporarily surrendering the boat's defining advantage of concealment. Dr. Clarke distinguishes Japan's I-400 concept, which resembles an early guided-missile submarine because its aircraft delivered long-range strikes, from Britain's attempt to use an aircraft for cruiser-style reconnaissance. HMS M2's Parnall Peto might find a target, but the submarine then had to travel faster on the surface, overtake the contact, dive ahead of it, and regain a firing position. That sequence was too slow and exposed for effective sea control. Aircraft handling also created the practical possibility that the scout could not relocate its hidden carrier. The watch point explains why a payload that increases reach can still make the host platform less useful when it conflicts with the platform's core operating method.",
     "topics": [
       {
         "slug": "submarines",
@@ -8778,7 +10045,7 @@
     "startSeconds": 6380,
     "youtubeUrl": "https://www.youtube.com/watch?v=f59fnSlU-5Q&t=6380s",
     "summary": "Commander Nicholas Goodhart's Fresnel lens system gave carrier pilots a simple long-range visual signal for safer approaches at jet landing speeds.",
-    "body": "Goodhart focused on the problem of pilots arriving fast and tired on decks originally built for slower aircraft. The mirror-and-light arrangement showed whether an aircraft was correctly lined up early enough for the pilot to correct, and early trials on HMS Illustrious made its practical value clear.",
+    "body": "Commander Nicholas Goodhart began with the rising losses caused by jets approaching faster than the aircraft for which many surviving carriers had been designed. A tired pilot needed guidance that was visible at long range, easy to interpret, and continuously available without diverting attention from flying. Fresnel optics could project a clear reference while surrounding lights showed whether the aircraft was above, below, or on the correct approach path. The pilot could therefore make corrections earlier instead of relying entirely on a landing signal officer's last-second directions. Seventeen approaches with a Sea Vampire aboard HMS Illustrious demonstrated the system over two days, and a U.S. Navy observer reported how simple it was to fly. British success led to U.S. trials in 1955 and helped make high-speed carrier recovery substantially safer.",
     "topics": [
       {
         "slug": "naval-aviation",
@@ -8800,8 +10067,51 @@
     "evidence": [
       {
         "start": "1:46:20",
+        "end": "1:52:27",
+        "note": "The transcript explains jet landing losses, the need for simple long-range guidance, the mirror-and-light geometry, seventeen Sea Vampire approaches on HMS Illustrious, and rapid U.S. interest."
+      }
+    ],
+    "end": "1:52:27",
+    "endSeconds": 6747,
+    "sourcePath": "src/transcripts/txt/2026-02-26_T20-00-39_top-bottom-5-inventions-adaptations-of-rn-ships-that-came-from-the-ships-themselves-patreon-live_f59fnSlU-5Q.txt"
+  },
+  {
+    "id": "goodhart-desktop-optical-landing-test",
+    "slug": "goodhart-desktop-optical-landing-test",
+    "title": "Goodhart proved the landing aid with a mirror and lipstick",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "f59fnSlU-5Q",
+    "videoSlug": "top-bottom-5-inventions-adaptations-of-rn-ships-that-came-from-the-ships-themselves-patreon-live",
+    "videoTitle": "Top/Bottom 5 inventions/adaptations of RN ships that came from the ships themselves...(Patreon Live)",
+    "start": "1:52:33",
+    "startSeconds": 6753,
+    "youtubeUrl": "https://www.youtube.com/watch?v=f59fnSlU-5Q&t=6753s",
+    "summary": "An improvised desktop experiment let Goodhart test the geometry of an optical approach path before committing the idea to a carrier installation.",
+    "body": "Goodhart borrowed a Wren's pocket mirror and lipstick, drew reference lines on the glass, and used a flashlight to represent the light source. He moved his head down the desk as though it were an approaching aircraft, checking whether the reflection guided his nose and chin to the same point each time. The improvised setup reduced a complicated carrier-landing problem to an experiment that could test the essential geometry immediately. It also kept the design centered on what a pilot would actually see while approaching the deck. Dr. Clarke uses the story to show how operational frustration, personal experience as a test pilot, and a simple physical model could produce a life-saving system.",
+    "topics": [
+      {
+        "slug": "optical-landing-systems",
+        "title": "Optical Landing Systems"
+      },
+      {
+        "slug": "naval-aviation",
+        "title": "Naval Aviation"
+      },
+      {
+        "slug": "carrier-operations",
+        "title": "Carrier Operations"
+      },
+      {
+        "slug": "human-factors",
+        "title": "Human Factors"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "1:52:33",
         "end": "1:54:42",
-        "note": "The transcript explains post-war jet landing losses, Goodhart's simple optical concept, Fresnel lenses, the HMS Illustrious trial, and the landing-safety benefit."
+        "note": "Dr. Clarke describes Goodhart using a Wren's pocket mirror, lipstick, a flashlight, and repeated head movements along a desk to verify the optical-path concept."
       }
     ],
     "end": "1:54:42",
@@ -8821,7 +10131,7 @@
     "startSeconds": 7296,
     "youtubeUrl": "https://www.youtube.com/watch?v=f59fnSlU-5Q&t=7296s",
     "summary": "HMS Captain illustrates why strong armament and firing arcs cannot compensate for inadequate freeboard and poor performance in an open sea.",
-    "body": "Dr. Clarke compares the ship's concept to turning a monitor into an ocean-going warship: attractive when judged by guns alone, but unsuited to the conditions in which a warship must survive. He connects the lesson to modern uncrewed surface vessels, whose usefulness in sheltered water does not guarantee resilience in the Atlantic or Pacific.",
+    "body": "HMS Captain emerged from an officer's politically effective advocacy for a turret ship, but theory and personal relationships outweighed warnings about practical seakeeping. Her very low freeboard and monitor-like form produced excellent arcs for fast-firing guns. Judged only as a fighting platform, the arrangement therefore looked attractive. A seagoing warship, however, also had to remain stable, keep water out, and survive the conditions needed to reach and sustain a battle. Contemporary construction could not give this form enough watertight integrity and structural resilience to make the compromise safe. Captain demonstrates why designers must judge the whole operating environment rather than optimize a single combat measure.",
     "topics": [
       {
         "slug": "ironclads",
@@ -8839,12 +10149,55 @@
     "evidence": [
       {
         "start": "2:01:36",
-        "end": "2:06:37",
-        "note": "The discussion identifies Captain's low freeboard and monitor-like concept, then compares fighting performance with seaworthiness and different sea states for uncrewed craft."
+        "end": "2:04:00",
+        "note": "The discussion identifies Captain's low freeboard, monitor-like concept, strong firing arcs, and the failure to balance fighting performance with the ability to operate safely at sea."
       }
     ],
-    "end": "2:06:37",
-    "endSeconds": 7597,
+    "end": "2:04:00",
+    "endSeconds": 7440,
+    "sourcePath": "src/transcripts/txt/2026-02-26_T20-00-39_top-bottom-5-inventions-adaptations-of-rn-ships-that-came-from-the-ships-themselves-patreon-live_f59fnSlU-5Q.txt"
+  },
+  {
+    "id": "uncrewed-surface-vessels-and-open-ocean-seakeeping",
+    "slug": "uncrewed-surface-vessels-and-open-ocean-seakeeping",
+    "title": "Why Black Sea drones do not prove open-ocean endurance",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "f59fnSlU-5Q",
+    "videoSlug": "top-bottom-5-inventions-adaptations-of-rn-ships-that-came-from-the-ships-themselves-patreon-live",
+    "videoTitle": "Top/Bottom 5 inventions/adaptations of RN ships that came from the ships themselves...(Patreon Live)",
+    "start": "2:04:06",
+    "startSeconds": 7446,
+    "youtubeUrl": "https://www.youtube.com/watch?v=f59fnSlU-5Q&t=7446s",
+    "summary": "Small uncrewed surface vessels can be tactically effective in sheltered waters without possessing the seakeeping needed for routine Atlantic, Pacific, or Indian Ocean operations.",
+    "body": "Dr. Clarke extends HMS Captain's lesson to modern enthusiasm for small uncrewed surface vessels. Their usefulness and future potential do not erase basic hull and wave constraints. Systems that work in the Black Sea face a different wave profile in the North or South Atlantic, Pacific, and Indian oceans. Many small craft can be lost to ordinary waves rather than exceptional storms. Procurement must therefore distinguish a weapon's success in one operating area from proof that it can transit, persist, and fight in another. The comparison makes seakeeping an operational requirement, not a secondary engineering detail.",
+    "topics": [
+      {
+        "slug": "uncrewed-surface-vessels",
+        "title": "Uncrewed Surface Vessels"
+      },
+      {
+        "slug": "seakeeping",
+        "title": "Seakeeping"
+      },
+      {
+        "slug": "black-sea",
+        "title": "Black Sea"
+      },
+      {
+        "slug": "ship-design",
+        "title": "Ship Design"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "2:04:06",
+        "end": "2:05:30",
+        "note": "The passage contrasts small surface-drone performance in the Black Sea with ordinary wave conditions and losses in the Atlantic, Pacific, and Indian oceans."
+      }
+    ],
+    "end": "2:05:30",
+    "endSeconds": 7530,
     "sourcePath": "src/transcripts/txt/2026-02-26_T20-00-39_top-bottom-5-inventions-adaptations-of-rn-ships-that-came-from-the-ships-themselves-patreon-live_f59fnSlU-5Q.txt"
   },
   {
@@ -8859,8 +10212,8 @@
     "start": "2:06:41",
     "startSeconds": 7601,
     "youtubeUrl": "https://www.youtube.com/watch?v=f59fnSlU-5Q&t=7601s",
-    "summary": "A caveated case study considers whether 10th Destroyer Flotilla crews adapted radar displays to help ships hold an effective line-abreast formation at night.",
-    "body": "A plan-position indicator could show relative positions in real time, reducing the burden of station keeping while leaving radar available for the action ahead. Dr. Clarke argues that reports from the flotilla are difficult to explain without some shipboard adaptation, while acknowledging that the documentary proof is incomplete.",
+    "summary": "Equipment records and action reports suggest that 10th Destroyer Flotilla crews may have adapted older radar sets to drive plan-position displays, though no surviving order explicitly confirms the work.",
+    "body": "Type 276 radar could rotate under power and feed a plan-position indicator that displayed contacts around the ship in real time. Some 10th Destroyer Flotilla vessels instead carried older Type 271Q sets with shorter range and a less useful standard display. Yet action reports describe more ships keeping station as though they had PPI information. Dr. Clarke argues that fitting an electric motor to a manually rotatable radar and adapting its display was within a destroyer's technical capacity. Such unauthorized work would rarely be documented, both for security and because the crew might not want to explain where a motor came from. The result is a strong operational inference rather than a proven modification, and the uncertainty is kept explicit.",
     "topics": [
       {
         "slug": "destroyers",
@@ -8886,12 +10239,63 @@
     "evidence": [
       {
         "start": "2:06:41",
-        "end": "2:14:20",
-        "note": "The source explains PPI displays, Type 276 and 271Q radar, 10th Destroyer Flotilla night tactics, and the inferred possibility of crews modifying radar rotation and display arrangements."
+        "end": "2:09:51",
+        "note": "The source compares Type 276 and 271Q radar, explains PPI displays, and presents the caveated inference that some crews motorized or otherwise adapted older installations."
       }
     ],
-    "end": "2:14:20",
-    "endSeconds": 8060,
+    "end": "2:09:51",
+    "endSeconds": 7791,
+    "sourcePath": "src/transcripts/txt/2026-02-26_T20-00-39_top-bottom-5-inventions-adaptations-of-rn-ships-that-came-from-the-ships-themselves-patreon-live_f59fnSlU-5Q.txt"
+  },
+  {
+    "id": "tenth-destroyer-flotilla-line-abreast-night-tactics",
+    "slug": "tenth-destroyer-flotilla-line-abreast-night-tactics",
+    "title": "How radar let the 10th Destroyer Flotilla fight line abreast",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "f59fnSlU-5Q",
+    "videoSlug": "top-bottom-5-inventions-adaptations-of-rn-ships-that-came-from-the-ships-themselves-patreon-live",
+    "videoTitle": "Top/Bottom 5 inventions/adaptations of RN ships that came from the ships themselves...(Patreon Live)",
+    "start": "2:09:53",
+    "startSeconds": 7793,
+    "youtubeUrl": "https://www.youtube.com/watch?v=f59fnSlU-5Q&t=7793s",
+    "summary": "PPI-supported station keeping helped Tribal-class destroyers shift from safe night cruising in line ahead to a broader action formation that maximized forward guns, radar view, and torpedo avoidance.",
+    "body": "Line ahead was comfortable and kept destroyers together at night, but rear ships could contribute little and a torpedo attack was harder to evade. Basil Jones's 10th Destroyer Flotilla instead shifted to line abreast for action, using the Tribals' heavy forward armament, radar, handling, and trained crews. A broad formation kept forecastle guns bearing and let each ship maneuver independently to comb torpedo tracks. PPI displays reduced the strain of holding lateral station in darkness and fog while radars continued searching ahead. Older sets may only have needed a powered 180- or 270-degree sweep to watch the threat sector and neighboring ships rather than a full circle. The passage connects a crew-level technical adaptation with a tactical change that set conditions for the Battle of Ushant.",
+    "topics": [
+      {
+        "slug": "tenth-destroyer-flotilla",
+        "title": "Tenth Destroyer Flotilla"
+      },
+      {
+        "slug": "tribal-class-destroyers",
+        "title": "Tribal-Class Destroyers"
+      },
+      {
+        "slug": "naval-radar",
+        "title": "Naval Radar"
+      },
+      {
+        "slug": "night-fighting",
+        "title": "Night Fighting"
+      },
+      {
+        "slug": "naval-tactics",
+        "title": "Naval Tactics"
+      },
+      {
+        "slug": "second-world-war",
+        "title": "Second World War"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "2:09:53",
+        "end": "2:13:40",
+        "note": "Dr. Clarke describes line-ahead and line-abreast tradeoffs, Tribal-class forward firepower, PPI station keeping, torpedo-combing maneuvers, and a possible limited powered radar sweep."
+      }
+    ],
+    "end": "2:13:40",
+    "endSeconds": 8020,
     "sourcePath": "src/transcripts/txt/2026-02-26_T20-00-39_top-bottom-5-inventions-adaptations-of-rn-ships-that-came-from-the-ships-themselves-patreon-live_f59fnSlU-5Q.txt"
   },
   {
@@ -9042,7 +10446,7 @@
     "startSeconds": 8307,
     "youtubeUrl": "https://www.youtube.com/watch?v=f59fnSlU-5Q&t=8307s",
     "summary": "A methodological aside shows why historians must distinguish a strong operational inference from a claim directly documented in surviving records.",
-    "body": "Dr. Clarke describes books as starting points that necessarily omit knowledge which cannot be supported to publication standards. The 10th Destroyer Flotilla's precise station keeping in darkness and fog strongly implies modified PPI radar, but no surviving source explicitly confirms the alteration. He gives a parallel case in which action accounts imply destroyers fired more torpedoes than their official load, demonstrating how practice can leave evidence without a documentary smoking gun.",
+    "body": "Dr. Clarke describes books and videos as starting points for further research rather than complete downloads of everything an author believes. Publication requires claims that can be referenced, so a historian may omit a persuasive conclusion when the surviving paperwork does not state it directly. The 10th Destroyer Flotilla's precise station keeping in darkness and fog strongly implies modified PPI radar, yet no surviving source explicitly confirms the alteration. A parallel problem appears when action accounts record destroyers firing six, seven, or even eight torpedoes although official fittings list only a four-tube mount and no such full reload. Operational behavior can therefore provide strong evidence that practice differed from regulations without identifying exactly how the crew arranged it. This watch point teaches readers to separate documented fact, constrained inference, and unresolved uncertainty while still using all three to ask better historical questions.",
     "topics": [
       {
         "slug": "naval-historiography",
@@ -9351,6 +10755,55 @@
     "sourcePath": "src/transcripts/txt/2026-02-26_T20-00-39_top-bottom-5-inventions-adaptations-of-rn-ships-that-came-from-the-ships-themselves-patreon-live_f59fnSlU-5Q.txt"
   },
   {
+    "id": "littorio-at-cape-matapan-counterfactual",
+    "slug": "littorio-at-cape-matapan-counterfactual",
+    "title": "What if Littorio had been caught at Cape Matapan?",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "f59fnSlU-5Q",
+    "videoSlug": "top-bottom-5-inventions-adaptations-of-rn-ships-that-came-from-the-ships-themselves-patreon-live",
+    "videoTitle": "Top/Bottom 5 inventions/adaptations of RN ships that came from the ships themselves...(Patreon Live)",
+    "start": "2:31:28",
+    "startSeconds": 9088,
+    "youtubeUrl": "https://www.youtube.com/watch?v=f59fnSlU-5Q&t=9088s",
+    "summary": "Catching the damaged battleship Littorio alongside the Italian cruisers at Cape Matapan could have turned an already severe defeat into a strategic fleet disaster.",
+    "body": "Dr. Clarke argues that the Italians would not abandon a damaged battleship as they might leave a crippled cruiser with only a small escort. Keeping the cruiser force with Littorio would instead concentrate the most valuable ships in the path of the British night action. The result could be the loss of the battleship and most or all of the Italian heavy cruisers involved. Coming after the attack on Taranto, that outcome would sharply reduce Italy's remaining ability to contest the Mediterranean, whatever losses Britain suffered in return.",
+    "topics": [
+      {
+        "slug": "battle-of-cape-matapan",
+        "title": "Battle Of Cape Matapan"
+      },
+      {
+        "slug": "italian-navy",
+        "title": "Italian Navy"
+      },
+      {
+        "slug": "battleships",
+        "title": "Battleships"
+      },
+      {
+        "slug": "mediterranean-war",
+        "title": "Mediterranean War"
+      },
+      {
+        "slug": "second-world-war",
+        "title": "Second World War"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "2:31:28",
+        "end": "2:32:27",
+        "note": "The answer says the Italians would keep cruisers with a damaged Littorio and considers the destruction of the battleship and heavy-cruiser force after Taranto."
+      }
+    ],
+    "end": "2:32:27",
+    "endSeconds": 9147,
+    "question": "What might have happened if the damaged battleship Littorio had been caught with the Italian cruisers at Cape Matapan?",
+    "answerShort": "Britain might have destroyed Littorio along with much of Italy's heavy-cruiser force, compounding Taranto into a devastating strategic loss.",
+    "sourcePath": "src/transcripts/txt/2026-02-26_T20-00-39_top-bottom-5-inventions-adaptations-of-rn-ships-that-came-from-the-ships-themselves-patreon-live_f59fnSlU-5Q.txt"
+  },
+  {
     "id": "ten-thousand-ton-cruiser-carriers",
     "slug": "ten-thousand-ton-cruiser-carriers",
     "title": "How 10,000-ton cruiser-carriers might have served",
@@ -9491,6 +10944,53 @@
     "endSeconds": 9430,
     "question": "How useful would the Great Lakes be for a Canadian reserve fleet?",
     "answerShort": "Potentially useful, provided treaties allow it and Canada funds access, support infrastructure, and icebreaking.",
+    "sourcePath": "src/transcripts/txt/2026-02-26_T20-00-39_top-bottom-5-inventions-adaptations-of-rn-ships-that-came-from-the-ships-themselves-patreon-live_f59fnSlU-5Q.txt"
+  },
+  {
+    "id": "taiwan-operation-and-invasion-terminology",
+    "slug": "taiwan-operation-and-invasion-terminology",
+    "title": "Why a military seizure of Taiwan would still be an invasion",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "f59fnSlU-5Q",
+    "videoSlug": "top-bottom-5-inventions-adaptations-of-rn-ships-that-came-from-the-ships-themselves-patreon-live",
+    "videoTitle": "Top/Bottom 5 inventions/adaptations of RN ships that came from the ships themselves...(Patreon Live)",
+    "start": "2:39:17",
+    "startSeconds": 9557,
+    "youtubeUrl": "https://www.youtube.com/watch?v=f59fnSlU-5Q&t=9557s",
+    "summary": "Competing legal views of Taiwan's status do not change the operational description of armed forces crossing to displace the authority that currently governs the island.",
+    "body": "Dr. Clarke distinguishes disputes over state recognition from the military operation required to seize Taiwan. One reading of international law emphasizes recognition of the People's Republic of China as the government of China, while another emphasizes the self-government of Taiwan's population. Whatever political claim is preferred, armed forces would have to cross into territory controlled by a different governing authority and impose a new one. He therefore argues that 'invasion' remains the correct operational term, just as a government can invade territory it regards as part of its own country during a civil conflict. The point is about using military terminology to describe what forces must physically do, not settling the larger sovereignty dispute. Opening the stream here provides a careful separation of legal framing, political legitimacy, and amphibious action.",
+    "topics": [
+      {
+        "slug": "taiwan",
+        "title": "Taiwan"
+      },
+      {
+        "slug": "china",
+        "title": "China"
+      },
+      {
+        "slug": "amphibious-warfare",
+        "title": "Amphibious Warfare"
+      },
+      {
+        "slug": "international-law",
+        "title": "International Law"
+      },
+      {
+        "slug": "military-terminology",
+        "title": "Military Terminology"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "2:39:17",
+        "end": "2:42:16",
+        "note": "The passage contrasts recognition and self-government arguments, then defines invasion by the military act of entering territory to replace its governing authority."
+      }
+    ],
+    "end": "2:42:16",
+    "endSeconds": 9736,
     "sourcePath": "src/transcripts/txt/2026-02-26_T20-00-39_top-bottom-5-inventions-adaptations-of-rn-ships-that-came-from-the-ships-themselves-patreon-live_f59fnSlU-5Q.txt"
   },
   {
@@ -21488,7 +22988,7 @@
     "startSeconds": 604,
     "youtubeUrl": "https://www.youtube.com/watch?v=T5Hr17-g92I&t=604s",
     "summary": "The 1909 cruiser-squadron plan asked the Dominions to fund local maritime security while Britain continued to carry the wider imperial burden.",
-    "body": "Dr. Clarke places HMAS Australia inside a long British effort to make the self-governing Dominions pay more toward their own defence. Australia uniquely accepted both the capital cost and the continuing burden of crewing and operating its battlecruiser, while other Dominion-funded ships entered Royal Navy service.",
+    "body": "Dr. Clarke places HMAS Australia inside a decades-long British effort to make the self-governing Dominions pay more toward their own local defence. The 1909 cruiser-squadron plan was a division of responsibility: Dominion forces would secure their immediate waters while the Royal Navy continued to carry the wider imperial and maritime-security burden. Australia uniquely accepted both the capital cost and the continuing expense of crewing, supplying, and operating its battlecruiser. New Zealand and Malaya could fund ships up front but left personnel and operating costs to the Royal Navy. The passage therefore shows that Dominion autonomy and imperial cost sharing developed together rather than as separate policies.",
     "topics": [
       {
         "slug": "dominion-navies",
@@ -21535,7 +23035,7 @@
     "startSeconds": 1036,
     "youtubeUrl": "https://www.youtube.com/watch?v=T5Hr17-g92I&t=1036s",
     "summary": "All-up costs narrow the apparent price gap between the faster, harder-hitting Lion and the cruiser-hunting Indefatigable.",
-    "body": "The quoted Indefatigable price omitted weapons while Lion figures included them, making the political comparison misleading. Lion offered a practical eight-gun 13.5-inch broadside and better prospects against enemy battlecruisers, while Indefatigable traded combat power for range and a commerce-security role supported by imperial coaling stations.",
+    "body": "The quoted Indefatigable price omitted weapons while Lion figures included them, making the political comparison misleading. Once guns and equipment are counted, the price gap narrows enough that the choice can be judged as a capability decision rather than a cheap-versus-expensive binary. Lion offered a practical eight-gun 13.5-inch broadside, about 28 knots, and better prospects against enemy battlecruisers. Indefatigable traded combat power and speed for longer range and a cruiser-hunting role. Imperial coaling stations reduced the operational penalty of a shorter-ranged Lion, and Dr. Clarke argues that a modified ship could recover part of the difference if distant service demanded it.",
     "topics": [
       {
         "slug": "lion-class-battlecruisers",
@@ -21586,7 +23086,7 @@
     "startSeconds": 1584,
     "youtubeUrl": "https://www.youtube.com/watch?v=T5Hr17-g92I&t=1584s",
     "summary": "The 1909 ordering sequence shows that the Dominion ships could have joined the Lion program without waiting for a later design generation.",
-    "body": "Lion and Princess Royal were selected before Australia and New Zealand, so the alternate choice becomes a second contemporary batch rather than an anachronistic substitution. Multiple yards built ships in parallel, limiting factory-style learning savings but leaving the price difference small beside the capability gained.",
+    "body": "Lion and Princess Royal were selected before Australia and New Zealand made their conference choice, so the alternate purchase becomes a second contemporary batch rather than an anachronistic substitution. The build table also shows British yards already moving from large-tube to progressively smaller Yarrow-type boilers. Because several yards would work in parallel, ordering more Lions would not create the savings of a modern serial production line. Even so, the all-up figures put New Zealand's ship roughly £320,000 below a Lion and Australia only about £100,000 below one. The watch point makes clear that the industrial timing and price both left a Lion choice open.",
     "topics": [
       {
         "slug": "warship-construction",
@@ -21633,7 +23133,7 @@
     "startSeconds": 1793,
     "youtubeUrl": "https://www.youtube.com/watch?v=T5Hr17-g92I&t=1793s",
     "summary": "A viewer asks why small-tube boilers used in battlecruisers were not immediately adopted in the Queen Elizabeth class.",
-    "body": "Yarrow and other builders had already moved toward smaller tubes, but the Royal Navy limited the number of major innovations introduced together. Higher speed, the eight-gun layout, and 15-inch weapons already consumed the Queen Elizabeth design's tolerance for simultaneous change.",
+    "body": "Yarrow and other builders had already moved toward smaller tubes, so the question is not whether the machinery existed. The Royal Navy limited the number of major innovations introduced together and treated boiler choice as a design risk even after related technology appeared in cruisers and destroyers. Higher speed, the eight-gun layout, and 15-inch weapons already consumed the Queen Elizabeth design's tolerance for simultaneous change. Dr. Clarke's answer explains how institutional risk management, rather than simple technical unavailability, could delay a useful propulsion change.",
     "topics": [
       {
         "slug": "small-tube-boilers",
@@ -21670,6 +23170,57 @@
     "sourcePath": "src/transcripts/txt/2025-12-18_T19-45-45_lions-not-indefatigables-the-dominions-chose-to-build-13-5in-battlecruisers-prior-to-wwi_T5Hr17-g92I.txt"
   },
   {
+    "id": "tiger-cost-and-the-price-of-capability",
+    "slug": "tiger-cost-and-the-price-of-capability",
+    "title": "Tiger's price jump and the cost of choosing Lion",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "T5Hr17-g92I",
+    "videoSlug": "lions-not-indefatigables-the-dominions-chose-to-build-13-5in-battlecruisers-prior-to-wwi",
+    "videoTitle": "Lions not Indefatigables - the Dominions chose to build 13.5in Battlecruisers prior to WWI...",
+    "start": "33:42",
+    "startSeconds": 2022,
+    "youtubeUrl": "https://www.youtube.com/watch?v=T5Hr17-g92I&t=2022s",
+    "summary": "Tiger's price jump marks a real capability transition, while the small difference between Australia and Lion weakens the case that the Dominions had to accept Indefatigables on cost.",
+    "body": "Dr. Clarke points out that Tiger cost roughly half a million pounds more than the preceding 13.5-inch battlecruisers, signalling a design that had become a true battlecruiser rather than simply another step in the cruiser-killer sequence. The more immediate Dominion comparison is smaller: HMAS Australia cost about £2 million, while Lion is shown at roughly £2.09 million. A difference of about £90,000 is not trivial, but it is modest beside the jump in fighting power from a 12-inch Indefatigable to a 13.5-inch Lion. Opening here makes the procurement argument concrete by comparing the numbers the Australian government would actually have faced.",
+    "topics": [
+      {
+        "slug": "hms-tiger",
+        "title": "HMS Tiger"
+      },
+      {
+        "slug": "lion-class-battlecruisers",
+        "title": "Lion Class Battlecruisers"
+      },
+      {
+        "slug": "hmas-australia",
+        "title": "Hmas Australia"
+      },
+      {
+        "slug": "naval-finance",
+        "title": "Naval Finance"
+      },
+      {
+        "slug": "naval-procurement",
+        "title": "Naval Procurement"
+      },
+      {
+        "slug": "battlecruisers",
+        "title": "Battlecruisers"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "33:42",
+        "end": "35:07",
+        "note": "The lecture contrasts Tiger's half-million-pound price increase with the roughly £90,000 gap between HMAS Australia and Lion."
+      }
+    ],
+    "end": "35:07",
+    "endSeconds": 2107,
+    "sourcePath": "src/transcripts/txt/2025-12-18_T19-45-45_lions-not-indefatigables-the-dominions-chose-to-build-13-5in-battlecruisers-prior-to-wwi_T5Hr17-g92I.txt"
+  },
+  {
     "id": "new-zealand-range-and-the-dominion-funding-model",
     "slug": "new-zealand-range-and-the-dominion-funding-model",
     "title": "HMS New Zealand, range, and Dominion funding",
@@ -21682,7 +23233,7 @@
     "startSeconds": 2550,
     "youtubeUrl": "https://www.youtube.com/watch?v=T5Hr17-g92I&t=2550s",
     "summary": "New Zealand's capital contribution bought the empire another battlecruiser while Britain absorbed its personnel and operating costs.",
-    "body": "The arrangement suited a Dominion able to fund construction but not a permanent large-ship establishment. Dr. Clarke also compares fuel endurance across Indefatigable, Lion, Queen Mary, and Tiger to show that a modified Lion could remain credible on distant stations.",
+    "body": "The arrangement suited a Dominion able to fund construction but not a permanent large-ship establishment. New Zealand paid the capital bill, while the Royal Navy supplied the crew and absorbed the continuing operating and logistical burden. Dr. Clarke then compares fuel endurance across Indefatigable, Lion, Queen Mary, and Tiger rather than treating nominal range as a decisive objection to a Lion purchase. Indefatigable's endurance was useful, but British coaling infrastructure and later battlecruiser fuel performance show that a modified Lion could remain credible on distant stations. The result is a practical imperial bargain: New Zealand gains local protection and Britain gains another powerful ship without asking the Dominion to sustain a full battlecruiser organization.",
     "topics": [
       {
         "slug": "hms-new-zealand",
@@ -21780,7 +23331,7 @@
     "startSeconds": 2925,
     "youtubeUrl": "https://www.youtube.com/watch?v=T5Hr17-g92I&t=2925s",
     "summary": "Lion answered the prospect that British battlecruisers would have to defeat enemy battlecruisers rather than merely hunt armored cruisers.",
-    "body": "Von der Tann demonstrated that other powers could build fast armored capital ships, while Moltke and Goeben were plausible successors to Germany's East Asia armored cruisers. Assigning Lion-type ships to Australia and New Zealand would therefore future-proof their cruiser squadrons against the threat most likely to reach the Far East.",
+    "body": "Von der Tann demonstrated that other powers could build fast armored capital ships capable of challenging the first British battlecruisers. Dr. Clarke argues that Lion was not merely a reaction to the later Moltke class; British designers were already responding to the type of German ship that Von der Tann showed would follow. The stationing pattern matters because Germany had sent Scharnhorst and Gneisenau to East Asia, making Moltke and Goeben plausible successors there. Assigning Lion-type ships to Australia and New Zealand would therefore future-proof their cruiser squadrons against the threat most likely to reach the Far East. The historical Indefatigables instead left the Dominions with improved first-generation cruiser killers as the likely opponent moved into the battlecruiser generation.",
     "topics": [
       {
         "slug": "lion-class-battlecruisers",
@@ -21831,7 +23382,7 @@
     "startSeconds": 3459,
     "youtubeUrl": "https://www.youtube.com/watch?v=T5Hr17-g92I&t=3459s",
     "summary": "A viewer asks whether ordering roughly seven similar ships would create meaningful economies of scale.",
-    "body": "The ships would be spread across several yards and built largely in parallel, not repeated sequentially through one production line. Common orders could trim some costs, but the period's construction system would prevent a dramatic unit-price collapse.",
+    "body": "Seven ships would be spread across several yards and built largely in parallel, not repeated sequentially through one production line. Common orders for guns, machinery, and other equipment could trim some costs. Yard-level learning would be limited, however, because each builder was effectively producing a small batch or one-off ship at the same time as its peers. The period's construction system therefore prevents a dramatic unit-price collapse and makes capability, not economies of scale, the stronger reason for ordering Lions.",
     "topics": [
       {
         "slug": "lion-class-battlecruisers",
@@ -21864,6 +23415,59 @@
     "sourcePath": "src/transcripts/txt/2025-12-18_T19-45-45_lions-not-indefatigables-the-dominions-chose-to-build-13-5in-battlecruisers-prior-to-wwi_T5Hr17-g92I.txt"
   },
   {
+    "id": "how-far-can-postwar-treaty-effects-be-predicted",
+    "slug": "how-far-can-postwar-treaty-effects-be-predicted",
+    "title": "Can the extra Lions predict the postwar treaty balance?",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "T5Hr17-g92I",
+    "videoSlug": "lions-not-indefatigables-the-dominions-chose-to-build-13-5in-battlecruisers-prior-to-wwi",
+    "videoTitle": "Lions not Indefatigables - the Dominions chose to build 13.5in Battlecruisers prior to WWI...",
+    "start": "58:29",
+    "startSeconds": 3509,
+    "youtubeUrl": "https://www.youtube.com/watch?v=T5Hr17-g92I&t=3509s",
+    "summary": "The larger Lion force does not by itself determine postwar treaty limits because its wartime effects become increasingly path-dependent after Dogger Bank.",
+    "body": "Dr. Clarke limits the firm counterfactual to Dogger Bank because later force levels depend on which ships fight, survive, and influence subsequent operations. The opening Mediterranean campaign is not automatically transformed: Goeben would still be chased by Indefatigable and Indomitable unless the larger pool of useful 13.5-inch ships changed deployments. A Lion on station could matter, but the transcript does not treat that as certain. The answer is therefore a methodological warning that a procurement change can be traced confidently only until wartime consequences begin compounding.",
+    "topics": [
+      {
+        "slug": "washington-naval-treaty",
+        "title": "Washington Naval Treaty"
+      },
+      {
+        "slug": "battlecruisers",
+        "title": "Battlecruisers"
+      },
+      {
+        "slug": "battle-of-dogger-bank",
+        "title": "Battle Of Dogger Bank"
+      },
+      {
+        "slug": "hms-goeben",
+        "title": "HMS Goeben"
+      },
+      {
+        "slug": "mediterranean-theatre",
+        "title": "Mediterranean Theatre"
+      },
+      {
+        "slug": "alternate-history",
+        "title": "Alternate History"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "58:29",
+        "end": "59:42",
+        "note": "The answer limits confident projection to Dogger Bank and uses the historical chase of Goeben to illustrate contingent deployment effects."
+      }
+    ],
+    "end": "59:42",
+    "endSeconds": 3582,
+    "question": "Would a larger force of 13.5-inch battlecruisers produce higher postwar treaty limits or prevent a treaty altogether?",
+    "answerShort": "Not confidently from the extra Lions alone; the treaty outcome depends on how their wartime service changes Dogger Bank and everything after it.",
+    "sourcePath": "src/transcripts/txt/2025-12-18_T19-45-45_lions-not-indefatigables-the-dominions-chose-to-build-13-5in-battlecruisers-prior-to-wwi_T5Hr17-g92I.txt"
+  },
+  {
     "id": "would-ten-lions-displace-queen-mary-and-tiger",
     "slug": "would-ten-lions-displace-queen-mary-and-tiger",
     "title": "Would ten Lions displace Queen Mary and Tiger?",
@@ -21876,7 +23480,7 @@
     "startSeconds": 3596,
     "youtubeUrl": "https://www.youtube.com/watch?v=T5Hr17-g92I&t=3596s",
     "summary": "A ten-ship Lion class would probably eliminate the rationale for Queen Mary and Tiger unless the international threat rose sharply.",
-    "body": "Ten Lions would nearly equal the combined German and Japanese battlecruiser total and supply more than a full British squadron. Without a matching threat increase, Britain would redirect later money toward the battle fleet instead of buying additional evolutionary battlecruisers.",
+    "body": "Ten Lions would nearly equal the combined German and Japanese battlecruiser total and supply more than a full British squadron. At that scale the Royal Navy would already possess the fast scouting and heavy-cruiser force that Queen Mary and Tiger were meant to develop. Without a matching threat increase, later money would more likely return to the battle fleet than fund additional evolutionary battlecruisers. If an international response did justify Queen Mary and Tiger, parallel construction across multiple yards would still limit any unit-cost reduction.",
     "topics": [
       {
         "slug": "lion-class-battlecruisers",
@@ -21925,7 +23529,7 @@
     "startSeconds": 3737,
     "youtubeUrl": "https://www.youtube.com/watch?v=T5Hr17-g92I&t=3737s",
     "summary": "German publicity, geography, and competition with the army made its fleet more threatening to Britain than comparable American expansion.",
-    "body": "Germany combined a powerful continental army with a nearby fleet explicitly marketed against British sea power. Its industrial base could build advanced ships, but every qualitative jump intensified the political contest with the army for limited funds.",
+    "body": "Germany combined a powerful continental army with a nearby fleet explicitly marketed against British sea power. That mixture of declared intent, geography, and land power made German expansion more alarming than American shipbuilding, which Britain could interpret as another navy taking responsibility for its own waters. German industry could build advanced ships in quantity, but each qualitative jump raised the naval bill. That intensified the political contest with an army facing France and Russia for limited funds. The exchange therefore rejects a simple percentage threshold: threat perception depended on purpose and the whole military balance.",
     "topics": [
       {
         "slug": "imperial-german-navy",
@@ -21974,7 +23578,7 @@
     "startSeconds": 3957,
     "youtubeUrl": "https://www.youtube.com/watch?v=T5Hr17-g92I&t=3957s",
     "summary": "Replacing the Dominion Indefatigables with a second pair of Lions creates a four-ship 13.5-inch program and an extra design iteration.",
-    "body": "Australia and New Zealand would likely be improved second-batch Lions rather than exact copies, just as their historical ships differed from Indefatigable. That intermediate batch could absorb changes earlier and push Queen Mary and Tiger one evolutionary step forward.",
+    "body": "Australia and New Zealand would likely be improved second-batch Lions rather than exact copies, just as their historical ships differed from Indefatigable. Lion and Princess Royal form the first pair, while the later Dominion orders give designers another controlled opportunity to alter machinery, layout, or other features. The Royal Navy's conservative habit of limiting major changes means this extra batch matters: it inserts one more design iteration without demanding untested technology. Queen Mary could then evolve from the Dominion pair, and Tiger could move one step farther again. The counterfactual accelerates design maturity through ordering cadence rather than a sudden technological leap.",
     "topics": [
       {
         "slug": "alternate-history",
@@ -22025,7 +23629,7 @@
     "startSeconds": 4229,
     "youtubeUrl": "https://www.youtube.com/watch?v=T5Hr17-g92I&t=4229s",
     "summary": "Dominion Lions could hasten Japanese and American heavy-gun decisions while confronting Germany with a battlecruiser competition it could not win cheaply.",
-    "body": "Japan might accelerate additional Kongo-type construction and the United States might press earlier for 16-inch weapons because more 13.5- and 14-inch ships would be based in the Pacific. Germany was already near its construction and budget limits, leaving a choice between historical battlecruisers, fast battleships, or conceding British numerical superiority.",
+    "body": "Japan might accelerate additional Kongo-type construction because two 13.5-inch Dominion ships would sit in the same strategic region as its 14-inch battlecruisers. Its Eight-Eight Fleet ambitions were constrained by money and personnel, so the likelier response is faster ordering rather than an unlimited expansion. The United States might press earlier for 16-inch weapons because the Pacific would contain more ships whose gun calibre advertised a new level of capital-ship status. Germany faced a different problem: it was already near its construction and budget limits and could not cheaply match a coherent British squadron of 28-knot ships. Tirpitz and Kaiser Wilhelm might continue the historical battlecruiser program, but the alternatives were to seek fast battleships or concede British numerical superiority.",
     "topics": [
       {
         "slug": "kongo-class",
@@ -22076,7 +23680,7 @@
     "startSeconds": 4701,
     "youtubeUrl": "https://www.youtube.com/watch?v=T5Hr17-g92I&t=4701s",
     "summary": "Earlier design evolution makes Tiger a plausible first 15-inch ship and frees the Queen Elizabeth class to spend its innovation budget on machinery and speed.",
-    "body": "Tiger was laid down after the 15-inch gun decision and commissioned only two months before Queen Elizabeth, so an enlarged turret design was technically plausible. Once the gun was no longer new, the battleships could adopt small-tube boilers and aim for either eight guns at about 28 knots or ten guns at roughly 25-26 knots.",
+    "body": "Tiger's schedule makes the counterfactual technically plausible: the 15-inch gun was authorized before she was laid down, and she commissioned only two months before Queen Elizabeth. British designers could provide a turret large enough for the new weapon while retaining the ability to fall back on a 13.5-inch gun if development failed. A 15-inch Tiger would also remove the gun from Queen Elizabeth's list of wholly new features. The battleships could then spend more of their design-risk allowance on small-tube boilers and speed. Dr. Clarke sketches two outcomes: eight guns at about 28 knots or ten guns at roughly 25-26 knots, either of which moves the Royal Navy toward a fast-battleship battle line.",
     "topics": [
       {
         "slug": "hms-tiger",
@@ -22127,7 +23731,7 @@
     "startSeconds": 5238,
     "youtubeUrl": "https://www.youtube.com/watch?v=T5Hr17-g92I&t=5238s",
     "summary": "A British force built around 28-knot 13.5- and 15-inch ships could close on the German scouting group without older battlecruisers limiting its speed.",
-    "body": "Historically, New Zealand and Indomitable constrained the chase while command signals and squadron choices helped the Germans escape. A faster force, potentially reinforced by Queen Elizabeth and a senior officer such as Alexander Bethell, brings heavier long-range fire and a stronger chance of correcting Beatty's ambiguous orders.",
+    "body": "Historically, New Zealand and Indomitable constrained the British chase to roughly 25 knots while the modern German ships fled toward home. In the counterfactual, four or five 28-knot 13.5-inch ships, perhaps joined by 15-inch Tiger and Queen Elizabeth, can close without abandoning part of the squadron. The opening range would also let the heavier guns and modern fire control matter sooner. Command changes with force composition: a Queen Elizabeth may bring Vice Admiral Alexander Bethell, a former Director of Naval Intelligence who would be more likely than the historical second-squadron commander to challenge or reinterpret Beatty's ambiguous signals. Opening here therefore shows why speed, firepower, and senior command together could turn Dogger Bank from a limited victory into a far more destructive pursuit.",
     "topics": [
       {
         "slug": "battle-of-dogger-bank",
@@ -22178,7 +23782,7 @@
     "startSeconds": 6036,
     "youtubeUrl": "https://www.youtube.com/watch?v=T5Hr17-g92I&t=6036s",
     "summary": "A decisive Dogger Bank victory could remove Germany's raiding and scouting instrument, invite British coastal pressure, and prevent a historical Jutland.",
-    "body": "The Germans would lose not just capital ships but Hipper and other experienced commanders, while Britain could absorb its own losses from a much deeper force. Without the First Scouting Group, later traps and raids become harder, yet the absence of Jutland also means later navies may miss lessons about night fighting and battle-fleet operations.",
+    "body": "The Germans would lose not just capital ships but Hipper and other experienced commanders, while Britain could absorb its own losses from a much deeper force. The imbalance extends below the capital ships: British light cruisers and destroyers can press a damaged German withdrawal and make escape harder once speed is lost. Without the First Scouting Group, later traps, coastal raids, and reconnaissance for the High Seas Fleet become much harder to organize. Britain might then reverse the operational pressure and use its fast ships against the German coast while still retaining a superior battle fleet. Yet the strategic success carries a longer-term cost: if no Jutland-like battle occurs, later navies may miss lessons about night fighting and battle-fleet operations.",
     "topics": [
       {
         "slug": "battle-of-dogger-bank",
@@ -22229,7 +23833,7 @@
     "startSeconds": 7200,
     "youtubeUrl": "https://www.youtube.com/watch?v=T5Hr17-g92I&t=7200s",
     "summary": "A viewer asks whether greater British battlecruiser strength would trigger earlier German army opposition to naval spending.",
-    "body": "Historical spending remains politically tolerable until the same point as before; extra or more expensive ships would provoke conflict earlier. Germany already protected capital-ship numbers by underbuilding cruisers and destroyers, producing the unbalanced fleet visible at Jutland.",
+    "body": "Keeping the historical German plan would postpone the army-navy budget clash to roughly its historical point. Matching extra British capability with more or more expensive capital ships would bring that political collision forward. Germany already protected its battle line by underbuilding cruisers and destroyers, producing the unbalanced fleet visible at Jutland. Britain, by contrast, could field a larger screen while leaving additional ships elsewhere or excluding units whose gunnery was not ready. The answer shows that Germany's constraint was not shipbuilding knowledge but the budgetary tradeoff between a balanced fleet and the army.",
     "topics": [
       {
         "slug": "imperial-german-navy",
@@ -22266,6 +23870,55 @@
     "sourcePath": "src/transcripts/txt/2025-12-18_T19-45-45_lions-not-indefatigables-the-dominions-chose-to-build-13-5in-battlecruisers-prior-to-wwi_T5Hr17-g92I.txt"
   },
   {
+    "id": "can-extra-battlecruisers-simply-offset-jutland-losses",
+    "slug": "can-extra-battlecruisers-simply-offset-jutland-losses",
+    "title": "Can extra battlecruisers simply offset Jutland losses?",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "T5Hr17-g92I",
+    "videoSlug": "lions-not-indefatigables-the-dominions-chose-to-build-13-5in-battlecruisers-prior-to-wwi",
+    "videoTitle": "Lions not Indefatigables - the Dominions chose to build 13.5in Battlecruisers prior to WWI...",
+    "start": "2:04:47",
+    "startSeconds": 7487,
+    "youtubeUrl": "https://www.youtube.com/watch?v=T5Hr17-g92I&t=7487s",
+    "summary": "The larger British force cannot be treated as a simple replacement pool because its first major battle would change whether and how a later Jutland occurred.",
+    "body": "The viewer's arithmetic assumes that the historical sequence of battles and losses remains fixed while extra British ships are added to it. Dr. Clarke rejects that premise because the counterfactual fleet reaches Dogger Bank first, where its speed and firepower could remove German ships that later fought at Jutland. A different Dogger Bank changes German willingness to sortie, British force organization, and the commanders available on both sides. The extra Lions therefore alter the path to Jutland rather than merely compensating for ships lost there.",
+    "topics": [
+      {
+        "slug": "battle-of-jutland",
+        "title": "Battle Of Jutland"
+      },
+      {
+        "slug": "battle-of-dogger-bank",
+        "title": "Battle Of Dogger Bank"
+      },
+      {
+        "slug": "battlecruisers",
+        "title": "Battlecruisers"
+      },
+      {
+        "slug": "force-structure",
+        "title": "Force Structure"
+      },
+      {
+        "slug": "alternate-history",
+        "title": "Alternate History"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "2:04:47",
+        "end": "2:05:15",
+        "note": "The answer says Jutland cannot be evaluated independently because the changed Dogger Bank would alter the path to that battle."
+      }
+    ],
+    "end": "2:05:15",
+    "endSeconds": 7515,
+    "question": "Would one Tiger, one Queen Mary, four Lions, one Indefatigable, and three Invincibles simply negate Britain's historical battlecruiser losses at Jutland?",
+    "answerShort": "No simple subtraction works, because the altered force changes Dogger Bank first and may prevent a historical Jutland from occurring at all.",
+    "sourcePath": "src/transcripts/txt/2025-12-18_T19-45-45_lions-not-indefatigables-the-dominions-chose-to-build-13-5in-battlecruisers-prior-to-wwi_T5Hr17-g92I.txt"
+  },
+  {
     "id": "queen-elizabeth-design-after-a-fifteen-inch-tiger",
     "slug": "queen-elizabeth-design-after-a-fifteen-inch-tiger",
     "title": "How would Queen Elizabeth change after a 15-inch Tiger?",
@@ -22278,7 +23931,7 @@
     "startSeconds": 7554,
     "youtubeUrl": "https://www.youtube.com/watch?v=T5Hr17-g92I&t=7554s",
     "summary": "The likely alternatives are an eight-gun 28-knot Queen Elizabeth or a longer ten-gun ship at roughly 26 knots.",
-    "body": "Small-tube boilers become the major new technology once Tiger has already introduced the 15-inch gun. Either option creates a much faster standard battle line, with large consequences for later reconstruction, the R class, and treaty comparisons with 21-knot American ships.",
+    "body": "Small-tube boilers become the major new technology once Tiger has already introduced the 15-inch gun. An eight-gun design could use the machinery improvement to approach 28 knots, while retaining a fifth twin turret would produce a longer ten-gun ship nearer 26 knots. Dr. Clarke rejects an early triple turret because the Royal Navy preferred to test unfamiliar arrangements before adopting them in capital ships. Either twin-turret option creates a much faster standard battle line and passes the boiler choice into the R class. The speed advantage over a 21-knot American battle fleet would then shape later reconstruction choices and Washington treaty bargaining.",
     "topics": [
       {
         "slug": "queen-elizabeth-class",
@@ -22331,7 +23984,7 @@
     "startSeconds": 7984,
     "youtubeUrl": "https://www.youtube.com/watch?v=T5Hr17-g92I&t=7984s",
     "summary": "Italy has the strongest incentive to accelerate the Francesco Caracciolo fast battleships if Britain demonstrates a 28-knot capital ship by 1914.",
-    "body": "Austria-Hungary remains focused on Italy and France is still recovering from earlier institutional weakness. Italy, however, competes in the qualitative race and gains status and strategic value by becoming the next navy to field a fast battleship after Britain.",
+    "body": "Austria-Hungary remains focused primarily on Italy, while France is still recovering from earlier institutional weakness in naval design and procurement. Italy has the strongest incentive to react because it competes in the qualitative race and already has the Francesco Caracciolo concept available. A British 28-knot capital ship armed with 15-inch guns would make existing 20- to 21-knot battle lines look tactically obsolete. Italy could gain status and strategic value by becoming the next navy to field a fast battleship after Britain. The response would therefore be an acceleration of an available design rather than every European navy copying Britain at the same pace.",
     "topics": [
       {
         "slug": "french-navy",
@@ -22435,7 +24088,7 @@
     "startSeconds": 8414,
     "youtubeUrl": "https://www.youtube.com/watch?v=T5Hr17-g92I&t=8414s",
     "summary": "A decisive North Sea victory probably would not send more capital ships to Gallipoli, but it could increase British willingness to accept losses there.",
-    "body": "Queen Elizabeth and numerous older battleships already gave the Dardanelles force substantial heavy-ship strength. Removing Germany's scouting group would instead reduce risk at home and make commanders more willing to persevere with the force already committed.",
+    "body": "Queen Elizabeth and numerous older battleships already gave the Dardanelles force substantial heavy-ship strength. Removing Germany's scouting group would reduce the need to hold as much risk margin in the North Sea. The likely change is therefore not a larger deployment but greater willingness to persevere with the force already committed and accept losses in pursuit of success.",
     "topics": [
       {
         "slug": "battle-of-dogger-bank",
@@ -22472,6 +24125,55 @@
     "sourcePath": "src/transcripts/txt/2025-12-18_T19-45-45_lions-not-indefatigables-the-dominions-chose-to-build-13-5in-battlecruisers-prior-to-wwi_T5Hr17-g92I.txt"
   },
   {
+    "id": "would-the-high-seas-fleet-still-come-out",
+    "slug": "would-the-high-seas-fleet-still-come-out",
+    "title": "Would the High Seas Fleet still come out?",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "T5Hr17-g92I",
+    "videoSlug": "lions-not-indefatigables-the-dominions-chose-to-build-13-5in-battlecruisers-prior-to-wwi",
+    "videoTitle": "Lions not Indefatigables - the Dominions chose to build 13.5in Battlecruisers prior to WWI...",
+    "start": "2:22:23",
+    "startSeconds": 8543,
+    "youtubeUrl": "https://www.youtube.com/watch?v=T5Hr17-g92I&t=8543s",
+    "summary": "Germany would probably continue limited sorties until a decisive loss removed the First Scouting Group, the force needed to raid, scout, and draw Britain into traps.",
+    "body": "Dr. Clarke expects the Germans to keep trying limited operations while their battlecruiser scouting force remains available. Their plan assumed that British forces would respond aggressively enough to be drawn onto a prepared fleet. When Britain declined to cooperate, the operational concept already struggled. Destruction of the First Scouting Group at Dogger Bank would remove the raiding and scouting instrument needed to make later traps credible, making continued major sorties far less likely.",
+    "topics": [
+      {
+        "slug": "high-seas-fleet",
+        "title": "High Seas Fleet"
+      },
+      {
+        "slug": "first-scouting-group",
+        "title": "First Scouting Group"
+      },
+      {
+        "slug": "naval-strategy",
+        "title": "Naval Strategy"
+      },
+      {
+        "slug": "battle-of-dogger-bank",
+        "title": "Battle Of Dogger Bank"
+      },
+      {
+        "slug": "imperial-german-navy",
+        "title": "Imperial German Navy"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "2:22:23",
+        "end": "2:23:01",
+        "note": "The answer links German willingness to sortie to a doctrine that expected British overaggression and to survival of the First Scouting Group."
+      }
+    ],
+    "end": "2:23:01",
+    "endSeconds": 8581,
+    "question": "Would the Germans still dare to bring the High Seas Fleet out against the stronger British force?",
+    "answerShort": "Probably at first, but not after losing the First Scouting Group that made German raids and traps possible.",
+    "sourcePath": "src/transcripts/txt/2025-12-18_T19-45-45_lions-not-indefatigables-the-dominions-chose-to-build-13-5in-battlecruisers-prior-to-wwi_T5Hr17-g92I.txt"
+  },
+  {
     "id": "battlecruisers-with-the-harwich-force",
     "slug": "battlecruisers-with-the-harwich-force",
     "title": "Would battlecruisers strengthen the Harwich Force?",
@@ -22484,7 +24186,7 @@
     "startSeconds": 8616,
     "youtubeUrl": "https://www.youtube.com/watch?v=T5Hr17-g92I&t=8616s",
     "summary": "Attaching a battlecruiser squadron gives Harwich Force heavy cover but may weaken its effectiveness by displacing Commodore Tyrwhitt's command.",
-    "body": "Large ships arrive with a rear admiral who is unlikely to defer to the commodore already experienced in Harwich operations. Dogger Bank illustrates the institutional cost: the light forces contribute to a battle whose senior battlecruiser commander controls the decisions.",
+    "body": "Attaching a battlecruiser squadron would give Harwich Force heavy cover against German capital ships. The attachment also arrives with a rear admiral who is unlikely to defer to Commodore Reginald Tyrwhitt, the officer already experienced in the force's operations. That seniority problem could change planning and tactical decisions even when the added ships never fire. Dogger Bank illustrates the institutional cost: Harwich light forces contribute to the battle, but the senior battlecruiser commander controls the action. The exchange is a useful reminder that reinforcement can weaken a formation if it displaces the command relationship that made the formation effective.",
     "topics": [
       {
         "slug": "harwich-force",
@@ -22533,7 +24235,7 @@
     "startSeconds": 8702,
     "youtubeUrl": "https://www.youtube.com/watch?v=T5Hr17-g92I&t=8702s",
     "summary": "A viewer asks why modular fuselage stretching is common in airliners but less visible in warship families.",
-    "body": "Modern BAE designs such as Type 26 can include a planned insertion point, but governments remain wary of structural weakness, loading, and stability changes. Unlike a comparatively regular aircraft fuselage, a ship's curved hull changes shape along its length and must be rebalanced for water resistance and displacement.",
+    "body": "Modern BAE designs such as Type 26 can include a planned insertion point, so naval architects can stretch a warship when the requirement is anticipated. Governments remain wary because the joint can raise concerns about longitudinal strength and because added volume changes loading and stability. A ship's hull also curves and changes section along its length, unlike the comparatively regular tube of an airliner fuselage. Moving or inserting a section therefore alters displacement and how the hull passes through water, not just internal floor area. The exchange explains why warship families can share a design without making fuselage-style length variants routine.",
     "topics": [
       {
         "slug": "warship-hulls",
@@ -22582,7 +24284,7 @@
     "startSeconds": 8813,
     "youtubeUrl": "https://www.youtube.com/watch?v=T5Hr17-g92I&t=8813s",
     "summary": "If British battlecruisers and battleships converge at 28 knots, the Admiral class can begin as a protected fast battleship instead of being redesigned after Jutland.",
-    "body": "A mature fast-battleship line could yield four roughly 30-knot Admirals without the historical conversion compromises, perhaps alongside numerous 28-knot 15-inch ships. Such a fleet would reshape postwar negotiations because Britain would enter them with a large speed and firepower advantage.",
+    "body": "If Queen Elizabeths and R-class ships mature into fast battleships, the next capital ship no longer has to choose between a lightly protected battlecruiser and a slow battle line. The Admiral class could be designed from the outset around fast-battleship protection, avoiding the historical need to rework a weaker starting concept. Dr. Clarke estimates that a Tiger-derived protected ship would be substantially larger and suggests a roughly 30-knot target rather than demanding 32 knots. Four such ships are more likely to be completed because wartime lessons would confirm rather than overturn their protection scheme. The transcript also addresses the Fisher factor: visible proof that speed and armor can coexist could persuade Fisher in the same way that demonstrated superfiring arrangements changed his view. A completed fast Admiral class and numerous 15-inch fast battleships would transform postwar treaty bargaining.",
     "topics": [
       {
         "slug": "admiral-class-battlecruisers",
@@ -22612,12 +24314,12 @@
     "evidence": [
       {
         "start": "2:26:53",
-        "end": "2:30:12",
-        "note": "The answer follows battlecruiser-battleship convergence into Admiral-class size, protection, completion, and treaties."
+        "end": "2:30:37",
+        "note": "The answer follows battlecruiser-battleship convergence into Admiral-class size, protection, completion, Fisher's response, and treaties."
       }
     ],
-    "end": "2:30:12",
-    "endSeconds": 9012,
+    "end": "2:30:37",
+    "endSeconds": 9037,
     "question": "How would faster Queen Elizabeth and R classes affect the later Admiral-class design?",
     "answerShort": "The Admirals could be designed from the outset as well-protected fast battleships, making all four more likely to be completed and changing treaty bargaining.",
     "sourcePath": "src/transcripts/txt/2025-12-18_T19-45-45_lions-not-indefatigables-the-dominions-chose-to-build-13-5in-battlecruisers-prior-to-wwi_T5Hr17-g92I.txt"
@@ -22635,7 +24337,7 @@
     "startSeconds": 9083,
     "youtubeUrl": "https://www.youtube.com/watch?v=T5Hr17-g92I&t=9083s",
     "summary": "A German fleet hiding after an early defeat would increase the value of carrier-supported torpedo aircraft able to reach it.",
-    "body": "If the High Seas Fleet stops offering surface engagements, Britain has a stronger incentive to develop weapons that can carry the attack into protected waters. Torpedo bombers and their carrier support could therefore receive earlier or heavier emphasis.",
+    "body": "If the High Seas Fleet stops offering surface engagements, Britain has a stronger incentive to develop weapons that can carry the attack into protected waters. Torpedo aircraft would provide one way to reach ships sheltering behind coastal defenses, while carriers would supply the necessary range and mobility. Dr. Clarke therefore allows an earlier or heavier development emphasis without claiming that a mature force appears automatically.",
     "topics": [
       {
         "slug": "torpedo-bombers",
@@ -22684,7 +24386,7 @@
     "startSeconds": 9109,
     "youtubeUrl": "https://www.youtube.com/watch?v=T5Hr17-g92I&t=9109s",
     "summary": "A larger Dominion capital-ship role might persist, but a completed fast Admiral class could instead drive the United States into recapitalization and prevent treaty agreement.",
-    "body": "The counterfactual leaves room for permanent Dominion flagships as imperial force structures mature. More consequentially, an American battle line made obsolete by British fast capital ships may be politically unwilling to freeze the unfavorable balance at Washington.",
+    "body": "The counterfactual leaves room for permanent Dominion flagships as imperial force structures mature. The more consequential effect comes from the relative speed of the major battle lines. If Britain completes four fast Admirals and retains numerous 15-inch ships capable of 26-28 knots, the United States enters the postwar period with a 21-knot fleet that looks operationally outdated. Washington would then ask the Americans to freeze an unfavorable position rather than merely trade tonnage. They may instead choose rapid recapitalization, preventing the treaty agreement altogether.",
     "topics": [
       {
         "slug": "dominion-navies",
@@ -22733,7 +24435,7 @@
     "startSeconds": 9139,
     "youtubeUrl": "https://www.youtube.com/watch?v=T5Hr17-g92I&t=9139s",
     "summary": "The Royal Navy preferred a shorter 45-calibre weapon when its longer barrel life outweighed the extra range of a 50-calibre gun.",
-    "body": "For a worldwide navy, barrel replacement intervals were a logistical and readiness constraint rather than a laboratory detail. Vickers could improve the established 45-calibre design, while a 50-calibre alternative imposed faster wear for a range advantage the British valued less.",
+    "body": "For a worldwide navy, barrel replacement intervals were a logistical and readiness constraint rather than a laboratory detail. A 50-calibre weapon offered extra performance and range, but it would wear faster and demand more frequent relining or replacement. Vickers could instead continue improving the established 45-calibre 13.5-inch gun. Britain valued having a usable weapon available across distant stations more than a marginal range gain that shortened barrel life. The answer connects gun design directly to the support burden of global naval operations.",
     "topics": [
       {
         "slug": "thirteen-point-five-inch-guns",
@@ -22782,7 +24484,7 @@
     "startSeconds": 9203,
     "youtubeUrl": "https://www.youtube.com/watch?v=T5Hr17-g92I&t=9203s",
     "summary": "Submarine losses would still expose underwater and low-freeboard problems even if a decisive Dogger Bank prevented Jutland.",
-    "body": "The missing lesson would be Jutland's night-fighting experience, not every survivability lesson of the war. Tiger already had better freeboard and underwater protection, and a later Admiral derived from a fast-battleship line would inherit stronger protection than the historical battlecruiser path.",
+    "body": "Submarine attacks would still expose weaknesses below the waterline and problems associated with low freeboard even if no Jutland-like battle occurred. What disappears are lessons unique to the fleet action, especially the night-fighting experience Dr. Clarke emphasizes. Tiger already possessed better freeboard and underwater protection than the earlier battlecruisers. A later Admiral derived from the fast-battleship line would continue from Queen Elizabeth and the R class rather than from a lightly protected Tiger lineage, making stronger protection part of the starting design. The scenario therefore changes the route by which lessons arrive, not the need for underwater survivability.",
     "topics": [
       {
         "slug": "underwater-protection",
@@ -22813,7 +24515,12 @@
       {
         "start": "2:33:23",
         "end": "2:34:34",
-        "note": "The exchange separates submarine-driven protection lessons from Jutland's operational lessons."
+        "note": "The exchange separates submarine-driven protection lessons from Jutland's operational lessons and notes Tiger's improved freeboard and underwater protection."
+      },
+      {
+        "start": "2:35:33",
+        "end": "2:36:38",
+        "note": "The follow-up explains that the alternate Admirals would descend from the protected fast-battleship line rather than the historical battlecruiser line."
       }
     ],
     "end": "2:34:34",

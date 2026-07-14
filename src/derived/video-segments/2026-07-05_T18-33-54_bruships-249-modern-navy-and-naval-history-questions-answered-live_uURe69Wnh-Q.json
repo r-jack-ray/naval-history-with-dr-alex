@@ -3,6 +3,7 @@
   "videoId": "uURe69Wnh-Q",
   "topics": [
     "modern-navy",
+    "defence-investment-plan",
     "naval-history",
     "live-q-and-a",
     "royal-navy",
@@ -19,6 +20,41 @@
     "naval-industrial-base"
   ],
   "segments": [
+    {
+      "id": "bruships-249-dip-communications-foundation",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "bruships-249-dip-communications-foundation",
+      "title": "The communications foundation missing from the Defence Investment Plan",
+      "kind": "notable_point",
+      "start": "3:13",
+      "end": "7:27",
+      "topics": [
+        "defence-investment-plan",
+        "military-communications",
+        "satellites",
+        "satellite-communications",
+        "skynet-6",
+        "istari",
+        "command-and-control",
+        "quantum-computing",
+        "royal-navy"
+      ],
+      "summary": "The opening discussion tests promises of AI- and quantum-enabled forces against omitted reconnaissance satellites, reduced narrowband communications, and the electrical demands of computing at sea.",
+      "body": "Dr. Clarke argues that an information-led force needs communications and sensing infrastructure before fashionable computing terms can carry operational meaning. He points to the absence of the proposed Istari reconnaissance program from the Defence Investment Plan and to Skynet 6 losing narrowband capability. The panel also stresses that shipboard computing consumes space, electrical power, and cooling capacity. The passage is useful for separating a digital-force concept from the physical network and power systems required to make it work.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T18-33-54_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "3:13",
+          "end": "4:02",
+          "note": "The panel questions a plan built around AI and quantum technology without corresponding investment in communications, power, and cooling."
+        },
+        {
+          "start": "5:27",
+          "end": "7:27",
+          "note": "Dr. Clarke identifies the missing Istari reconnaissance program and the reduction of narrowband capability in Skynet 6 as concrete infrastructure gaps."
+        }
+      ]
+    },
     {
       "id": "bruships-249-royal-navy-capital-ship-throughput",
       "videoId": "uURe69Wnh-Q",
@@ -81,6 +117,32 @@
           "start": "18:22",
           "end": "19:17",
           "note": "The transcript names Eagle, Hermes, Argus, and Furious, then compares their rebuild limits and likely value."
+        }
+      ]
+    },
+    {
+      "id": "bruships-249-uncrewed-procurement-cost-reality",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "bruships-249-uncrewed-procurement-cost-reality",
+      "title": "Why headline prices obscure naval procurement costs",
+      "kind": "notable_point",
+      "start": "23:30",
+      "end": "24:50",
+      "topics": [
+        "naval-procurement",
+        "large-uncrewed-surface-vessels",
+        "type-31-frigates",
+        "naval-industrial-base",
+        "royal-navy"
+      ],
+      "summary": "A procurement aside compares the modest funding assigned to large uncrewed vessels with the Type 31 program's movement beyond its original public unit-price claim.",
+      "body": "Dr. Clarke distinguishes support for large uncrewed surface vessels from confidence in the policy intended to deliver them. He doubts that roughly 1.3 to 1.5 billion pounds over four years can create the promised force. The Type 31 frigate illustrates his warning: a celebrated 250-million-pound figure had moved toward roughly 400 million per ship, while Babcock absorbed a substantial program write-down. The larger lesson is that headline unit prices can conceal integration costs, corporate losses, and changes made after a political promise is announced.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T18-33-54_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "23:30",
+          "end": "24:50",
+          "note": "The passage supports buying large uncrewed vessels but challenges the allotted funding and compares the Type 31 headline price with later acknowledged costs and Babcock's write-down."
         }
       ]
     },
@@ -226,6 +288,41 @@
           "start": "40:39",
           "end": "45:25",
           "note": "The answer projects Type 45 service into the 2040s, discusses funding, and compares heavily equipped and weapons-light Type 91 or CCV design variants."
+        }
+      ]
+    },
+    {
+      "id": "bruships-249-floating-server-farms",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "bruships-249-floating-server-farms",
+      "title": "Modern warships as floating server farms",
+      "kind": "notable_point",
+      "start": "45:48",
+      "end": "47:16",
+      "topics": [
+        "ship-design",
+        "command-and-control",
+        "military-communications",
+        "shipboard-computing",
+        "electrical-power",
+        "system-redundancy",
+        "uncrewed-systems",
+        "naval-engineering",
+        "damage-control"
+      ],
+      "summary": "A ship-design explanation connects modern combat-system computing to hull volume, electrical generation, cooling, and extra redundancy aboard uncrewed vessels.",
+      "body": "Dr. Clarke describes a modern warship as a floating server farm because computing hardware, electrical generation, and cooling occupy a large share of the hull. The remaining space must still support the crew, stores, and weapons, so information systems directly compete with combat payload. Uncrewed vessels do not remove that engineering burden. Without sailors available to repair failures, their computers and other critical systems may need three or four redundant paths rather than the two that a crewed ship can often sustain.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T18-33-54_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "45:48",
+          "end": "46:28",
+          "note": "The transcript describes the power, cooling, computing, crew, stores, and weapon-space demands inside a modern warship."
+        },
+        {
+          "start": "46:37",
+          "end": "47:16",
+          "note": "The panel explains why uncrewed vessels need more redundant systems when no crew is present to repair a failed path."
         }
       ]
     },
@@ -651,18 +748,25 @@
         "remote-power-control",
         "six-inch-guns",
         "eight-inch-guns",
+        "swiftsure-class",
+        "ceylon-class",
         "ship-modernization"
       ],
       "question": "Could British 6-inch Mark 23 and 8-inch Mark I or II turrets be adapted for remote power control?",
-      "answerShort": "Not readily in their original form, but modern compact components could replace enough bulky equipment to make a retrofit comparatively straightforward.",
-      "summary": "A gunnery-modernization answer distinguishes turrets designed before remote power control from the space that later electronics could free inside them.",
-      "body": "The original mountings were not naturally suited to remote power control. Their large internal mechanisms nevertheless provide volume that compact modern components could reclaim, making a later conversion technically plausible. The answer is a useful reminder that an old turret's apparent inefficiency can create modernization space as machinery and control equipment shrink.",
+      "answerShort": "Not readily in their original form, but compact replacement equipment and changes to barbettes and power supplies could make a retrofit technically plausible, including aboard Swiftsure- and Ceylon-class cruisers.",
+      "summary": "A gunnery-modernization answer distinguishes turrets designed before remote power control from the machinery space, hull hardpoints, and power changes available for a later conversion.",
+      "body": "The original mountings were not naturally suited to remote power control. Their large internal mechanisms nevertheless provide volume that compact modern components could reclaim, making a later conversion technically plausible. A follow-up applies the same logic to Swiftsure- and Ceylon-class cruisers, while noting that their barbettes and electrical supply arrangements would need reworking. The exchange shows how an old turret's apparent inefficiency can create modernization space as machinery and control equipment shrink.",
       "sourcePath": "src/transcripts/txt/2026-07-05_T18-33-54_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
       "evidence": [
         {
           "start": "1:35:34",
           "end": "1:36:20",
           "note": "The answer says the turrets were not inherently suitable but that their internal volume and replaceable large components make modern conversion feasible."
+        },
+        {
+          "start": "1:43:27",
+          "end": "1:43:57",
+          "note": "A follow-up says Swiftsure- and Ceylon-class cruisers could receive Mark 24 remote-power-control turrets if their barbettes and power-supply positions were reworked."
         }
       ]
     },
@@ -847,6 +951,62 @@
       ]
     },
     {
+      "id": "bruships-249-defense-innovations-in-civilian-life",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "bruships-249-defense-innovations-in-civilian-life",
+      "title": "Military innovations that moved into civilian life",
+      "kind": "qa",
+      "start": "2:10:24",
+      "end": "2:11:50",
+      "topics": [
+        "military-history",
+        "technology-transfer",
+        "naval-medicine",
+        "military-communications",
+        "medical-logistics",
+        "world-war-ii"
+      ],
+      "question": "What military innovations besides GPS and mobile ambulances later became useful in civilian life?",
+      "answerShort": "The panel points to mass-produced penicillin, trauma-surgery methods, communications protocols, safer fuel tanks, and foods adapted for military requirements.",
+      "summary": "A technology-transfer answer ranges from medicine and communications to vehicle safety and military food, showing how wartime scale can accelerate civilian adoption.",
+      "body": "The panel identifies mass production of penicillin and advances in trauma surgery as major medical transfers from military demand. It also names communications protocols and improved vehicle fuel tanks as technologies that spread beyond defence use. M&M's appear as a food designed to resist melting for American forces in the Pacific, while the discussion also credits wartime nutritional concerns with shaping iron-rich chocolate. The examples show that military influence often lies in scaling, packaging, and field reliability rather than inventing an idea from nothing.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T18-33-54_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "2:10:24",
+          "end": "2:11:50",
+          "note": "The answer lists penicillin, trauma medicine, communications, fuel tanks, M&M's, and iron-rich chocolate as defence-linked innovations or products with civilian use."
+        }
+      ]
+    },
+    {
+      "id": "bruships-249-prince-philip-naval-career",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "bruships-249-prince-philip-naval-career",
+      "title": "How far Prince Philip might have risen in the Royal Navy",
+      "kind": "qa",
+      "start": "2:14:33",
+      "end": "2:14:52",
+      "topics": [
+        "royal-navy",
+        "naval-personnel",
+        "admirals",
+        "counterfactual-history"
+      ],
+      "question": "How high might the Duke of Edinburgh have risen if King George VI had lived longer and allowed him a normal naval career?",
+      "answerShort": "Dr. Clarke would not be surprised by promotion into the admiral ranks and considers the service's highest leadership a possible upper limit in that counterfactual.",
+      "summary": "A brief career counterfactual places Prince Philip's interrupted Royal Navy service on a possible path to senior flag rank.",
+      "body": "The question treats Prince Philip's departure from an ordinary naval career as contingent rather than inevitable. Dr. Clarke says an eventual admiral's rank would be unsurprising if the career had continued. He also raises the service's highest leadership as a possible, though necessarily speculative, endpoint. The value of the answer is its distinction between a plausible promotion path and a claim that the highest office was guaranteed.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T18-33-54_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "2:14:33",
+          "end": "2:14:52",
+          "note": "Dr. Clarke says Prince Philip could plausibly have reached admiral and potentially First Sea Lord if his normal naval career had continued."
+        }
+      ]
+    },
+    {
       "id": "bruships-249-lasers-deep-uncrewed-submarines",
       "videoId": "uURe69Wnh-Q",
       "slug": "bruships-249-lasers-deep-uncrewed-submarines",
@@ -900,6 +1060,34 @@
           "start": "2:18:02",
           "end": "2:19:29",
           "note": "The answer compares the contemporary US Navy with the Royal Navy's century of war and identifies combat-driven experience as the deciding factor."
+        }
+      ]
+    },
+    {
+      "id": "bruships-249-world-war-two-aerial-refueling",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "bruships-249-world-war-two-aerial-refueling",
+      "title": "How aerial refueling could have changed World War II bombing",
+      "kind": "qa",
+      "start": "2:19:37",
+      "end": "2:20:04",
+      "topics": [
+        "world-war-ii",
+        "naval-aviation",
+        "royal-air-force",
+        "military-logistics",
+        "counterfactual-history"
+      ],
+      "question": "How might practical aerial refueling at the start of World War II have changed the bombing campaigns?",
+      "answerShort": "It would have made distant strategic targets more accessible, encouraging Britain to concentrate on Axis oil supplies and Germany to reach deeper Soviet industry.",
+      "summary": "A short aviation counterfactual uses extended bomber range to identify the oil and industrial targets each side would likely have prioritized.",
+      "body": "Practical aerial refueling would have changed which strategic targets were reachable from existing airfields. Dr. Clarke expects Britain to focus sustained attacks on the oil fields supporting Germany. He suggests Germany could in turn reach industrial centers deeper inside the Soviet Union. The answer is deliberately narrow: it identifies target priorities rather than claiming that refueling alone would decide either campaign.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T18-33-54_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "2:19:37",
+          "end": "2:20:04",
+          "note": "The answer predicts sustained British attacks on Axis oil fields and German bombing of industrial targets deeper in the Soviet Union."
         }
       ]
     },
@@ -1048,6 +1236,34 @@
       ]
     },
     {
+      "id": "bruships-249-defiant-before-f35-amphibious-ship",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "bruships-249-defiant-before-f35-amphibious-ship",
+      "title": "Defiant before a British F-35 amphibious ship",
+      "kind": "qa",
+      "start": "2:40:44",
+      "end": "2:41:20",
+      "topics": [
+        "royal-navy",
+        "amphibious-warfare",
+        "f-35b",
+        "naval-procurement",
+        "fleet-renewal"
+      ],
+      "question": "Which is likely to appear first, a Defiant-class warship or a Royal Navy amphibious ship able to launch F-35Bs?",
+      "answerShort": "Dr. Clarke chooses Defiant because neither project had reached construction and the current amphibious concepts did not include F-35 operations.",
+      "summary": "A procurement comparison favors the planned surface combatant over an F-35-capable amphibious ship while warning that neither should be treated as real until ordered and under construction.",
+      "body": "Neither a Defiant-class ship nor the proposed amphibious replacement had been laid down when the question was asked. Dr. Clarke nevertheless judges Defiant more likely to arrive first. The decisive point is that the current amphibious concepts did not include F-35 operations, so such a capability would require another design change. The panel's caution is as important as the prediction: concepts remain uncertain until contracts are placed and hulls actually enter construction.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T18-33-54_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "2:40:44",
+          "end": "2:41:20",
+          "note": "The answer selects Defiant, notes that neither option had been laid down, and says the current amphibious plans lacked an F-35 launch requirement."
+        }
+      ]
+    },
+    {
       "id": "bruships-249-wooden-ships-underwater-explosions",
       "videoId": "uURe69Wnh-Q",
       "slug": "bruships-249-wooden-ships-underwater-explosions",
@@ -1101,6 +1317,37 @@
           "start": "2:46:55",
           "end": "2:48:10",
           "note": "The answer gives a displacement range, frigate-grade radar, CAMM or Aster, 76 mm guns, and the mobility tradeoff with land-based air defence."
+        }
+      ]
+    },
+    {
+      "id": "bruships-249-iroquois-class-equivalents",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "bruships-249-iroquois-class-equivalents",
+      "title": "Iroquois-class equivalents and the value of a larger fleet",
+      "kind": "qa",
+      "start": "2:48:18",
+      "end": "2:48:55",
+      "topics": [
+        "royal-canadian-navy",
+        "iroquois-class",
+        "charles-f-adams-class",
+        "daring-class",
+        "destroyers",
+        "us-navy",
+        "royal-navy",
+        "force-structure"
+      ],
+      "question": "What were the US Navy and Royal Navy equivalents of Canada's Iroquois class, and what would building eight to twelve have changed?",
+      "answerShort": "Dr. Clarke tentatively compares them with the Charles F. Adams and Daring classes and says tripling the Canadian class would have produced a much stronger fleet.",
+      "summary": "A compact fleet comparison places Canada's Iroquois-class destroyers beside contemporary American and British types and emphasizes the operational effect of class size.",
+      "body": "Dr. Clarke offers the Charles F. Adams class as the likely American comparison. For Britain he tentatively chooses the Daring class, while acknowledging that the timing makes the comparison debatable. He treats a force of eight to twelve Iroquois-class ships as substantially more useful than the four actually considered in the question. The answer is valuable less as an exact one-for-one match than as a reminder that national categories, dates, and fleet numbers complicate destroyer comparisons.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T18-33-54_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "2:48:18",
+          "end": "2:48:55",
+          "note": "The answer tentatively identifies Charles F. Adams and Daring as comparisons and says three times as many Iroquois-class ships would leave Canada much better off."
         }
       ]
     },
@@ -1163,6 +1410,33 @@
           "start": "2:53:08",
           "end": "2:55:14",
           "note": "The transcript discusses classified submarine tasks, Conqueror, and USS Jimmy Carter as examples of important but often undisclosed missions."
+        }
+      ]
+    },
+    {
+      "id": "bruships-249-modern-warship-hull-life",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "bruships-249-modern-warship-hull-life",
+      "title": "What determines a modern warship hull's service life",
+      "kind": "qa",
+      "start": "2:53:58",
+      "end": "2:54:19",
+      "topics": [
+        "ship-maintenance",
+        "dry-docks",
+        "naval-engineering",
+        "fleet-renewal"
+      ],
+      "question": "Do modern paints and other hull developments let warships remain in service longer?",
+      "answerShort": "They can, but only when the hull is dry-docked regularly and maintained properly; coatings do not compensate for neglected upkeep.",
+      "summary": "A short maintenance answer makes hull longevity depend on sustained dry-docking and preservation rather than on modern coatings alone.",
+      "body": "Modern coatings and construction improvements can help a warship hull remain useful for a long service life. Dr. Clarke makes that benefit conditional on regular dry-docking and proper maintenance. A neglected hull will not last simply because it began with better paint or newer materials. The exchange places through-life support, dock access, and maintenance discipline at the center of fleet longevity.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T18-33-54_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "2:53:58",
+          "end": "2:54:19",
+          "note": "The answer says modern hulls can last when they are dry-docked regularly and properly maintained, but not when upkeep is neglected."
         }
       ]
     },
@@ -1261,6 +1535,62 @@
       ]
     },
     {
+      "id": "bruships-249-hydrofoil-promise-and-limits",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "bruships-249-hydrofoil-promise-and-limits",
+      "title": "Why naval hydrofoils remained a niche technology",
+      "kind": "qa",
+      "start": "3:05:30",
+      "end": "3:05:50",
+      "topics": [
+        "us-navy",
+        "hydrofoils",
+        "naval-engineering",
+        "naval-architecture",
+        "cold-war"
+      ],
+      "question": "Which navy produced the best hydrofoils during and after the Cold War?",
+      "answerShort": "The United States fielded some of the most interesting examples, but navies generally found hydrofoils impressive in concept and limited in practical usefulness.",
+      "summary": "A concise technology answer contrasts the speed and novelty of American hydrofoils with their failure to become a broadly useful naval type.",
+      "body": "Dr. Clarke points to the United States as a source of particularly interesting naval hydrofoils. He immediately separates technical fascination from fleet utility. Across navies, the concept proved impressive without becoming a generally practical answer to ordinary missions. The brief exchange is a useful caution against treating a platform's unusual performance as proof that it fits sustained operations, maintenance, or force structure.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T18-33-54_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "3:05:30",
+          "end": "3:05:50",
+          "note": "The answer credits the United States with interesting hydrofoils but says navies found the idea cool rather than broadly practical or useful."
+        }
+      ]
+    },
+    {
+      "id": "bruships-249-dutch-heavy-cruisers-world-war-two",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "bruships-249-dutch-heavy-cruisers-world-war-two",
+      "title": "Eight Dutch heavy cruisers at the start of World War II",
+      "kind": "qa",
+      "start": "3:06:00",
+      "end": "3:06:18",
+      "topics": [
+        "dutch-navy",
+        "cruisers",
+        "world-war-ii",
+        "mediterranean",
+        "counterfactual-history"
+      ],
+      "question": "What changes if the Netherlands begins World War II with eight operational heavy cruisers?",
+      "answerShort": "If the ships escaped the Netherlands, they would create a major Dutch contribution in the Mediterranean and Far East.",
+      "summary": "A short counterfactual makes the survival and escape of a powerful Dutch cruiser force the condition for influence in two maritime theaters.",
+      "body": "The ships matter only if they are operational and avoid being trapped when the Netherlands falls. Under that condition, Dr. Clarke expects a significant Dutch force to join operations beyond home waters. He identifies the Mediterranean and the Far East as the likely theaters for that contribution. The answer therefore turns on fleet preservation and redeployment rather than assuming that possession alone changes the campaign.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T18-33-54_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "3:06:00",
+          "end": "3:06:18",
+          "note": "The answer conditions the scenario on the cruisers working and escaping, then places their likely contribution in the Mediterranean and Far East."
+        }
+      ]
+    },
+    {
       "id": "bruships-249-afghanistan-naval-medicine",
       "videoId": "uURe69Wnh-Q",
       "slug": "bruships-249-afghanistan-naval-medicine",
@@ -1286,6 +1616,36 @@
           "start": "3:06:23",
           "end": "3:09:33",
           "note": "The panel discusses modular care, improved trauma medicine, uncertainty in peer conflict, bulkhead effects, and maritime supply limitations."
+        }
+      ]
+    },
+    {
+      "id": "bruships-249-bonaventure-successor",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "bruships-249-bonaventure-successor",
+      "title": "How keeping HMCS Bonaventure could reshape Canadian doctrine",
+      "kind": "qa",
+      "start": "3:10:03",
+      "end": "3:10:31",
+      "topics": [
+        "royal-canadian-navy",
+        "hmcs-bonaventure",
+        "harrier",
+        "aircraft-carriers",
+        "landing-helicopter-docks",
+        "naval-aviation",
+        "counterfactual-history"
+      ],
+      "question": "How might Royal Canadian Navy doctrine change if HMCS Bonaventure remained in service?",
+      "answerShort": "Dr. Clarke expects Canada eventually to replace the carrier with an LHD, potentially preserving a naval-air role through Harrier operations.",
+      "summary": "A Canadian carrier counterfactual traces a possible path from Bonaventure to an aviation-capable amphibious ship rather than the complete loss of fixed-wing experience.",
+      "body": "Keeping HMCS Bonaventure would preserve an institutional reason to plan around shipborne aviation. Dr. Clarke suggests that Canada might eventually replace her with a landing helicopter dock rather than abandon the role. If that successor operated Harriers, Canadian doctrine would develop around a very different mix of amphibious and air capability. The answer is brief and speculative, but it identifies continuity of platforms and trained communities as the mechanism that changes doctrine.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T18-33-54_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "3:10:03",
+          "end": "3:10:31",
+          "note": "The answer proposes an LHD replacement for Bonaventure and notes that an LHD with Harriers would produce a very different Canadian naval doctrine."
         }
       ]
     },
@@ -1608,6 +1968,62 @@
       ]
     },
     {
+      "id": "bruships-249-danish-cruiser-force",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "bruships-249-danish-cruiser-force",
+      "title": "A large Danish cruiser force on the eve of World War II",
+      "kind": "qa",
+      "start": "3:53:15",
+      "end": "3:53:49",
+      "topics": [
+        "danish-navy",
+        "free-danish-forces",
+        "cruisers",
+        "world-war-ii",
+        "counterfactual-history",
+        "naval-strategy"
+      ],
+      "question": "What if Denmark began building four heavy cruisers and eight Town-like light cruisers in 1930?",
+      "answerShort": "The force would make Denmark's fate strategically important and increase the chance of a substantial Free Danish Navy if the ships escaped capture.",
+      "summary": "A Danish naval counterfactual centers on whether a powerful cruiser force could escape occupation and continue the war from Allied bases.",
+      "body": "Twelve modern cruisers would give Denmark a fleet large enough that other powers could not ignore its fate. Dr. Clarke expects much greater attention to where the ships went if Denmark fell. If they escaped rather than being captured, they could form the core of a substantial Free Danish Navy. The answer emphasizes political control and evacuation of the fleet more than the tactical details of the individual cruiser designs.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T18-33-54_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "3:53:15",
+          "end": "3:53:49",
+          "note": "The answer says the cruiser force would increase concern over Denmark's fall and could support a larger Free Danish Navy if it reached the Allied side."
+        }
+      ]
+    },
+    {
+      "id": "bruships-249-surface-and-submarine-reactors",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "bruships-249-surface-and-submarine-reactors",
+      "title": "Why carrier and submarine reactors are not interchangeable",
+      "kind": "notable_point",
+      "start": "3:53:58",
+      "end": "3:54:34",
+      "topics": [
+        "nuclear-propulsion",
+        "naval-reactors",
+        "naval-engineering",
+        "aircraft-carriers",
+        "submarines",
+        "indian-navy"
+      ],
+      "summary": "A follow-up to the Indian carrier discussion explains why a successful submarine-reactor program does not automatically supply a suitable power plant for a surface carrier.",
+      "body": "Submarine and surface-ship reactors operate under different physical and mission conditions. Dr. Clarke points to the United States as an example of a navy using different reactor designs for its carrier and submarine programs. India therefore cannot simply transfer its submarine-reactor experience unchanged into a future nuclear carrier. The distinction makes propulsion development a separate institutional and engineering hurdle within the carrier program.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T18-33-54_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "3:53:58",
+          "end": "3:54:34",
+          "note": "The passage says surface ships and submarines use different reactor designs and identifies the absence of an Indian surface-reactor program as a carrier-development problem."
+        }
+      ]
+    },
+    {
       "id": "bruships-249-usn-fdi-frigate-option",
       "videoId": "uURe69Wnh-Q",
       "slug": "bruships-249-usn-fdi-frigate-option",
@@ -1633,6 +2049,35 @@
           "start": "3:54:43",
           "end": "3:55:29",
           "note": "The answer rejects FDI as a close requirements fit and compares the redesign needed for American systems with the Constellation experience."
+        }
+      ]
+    },
+    {
+      "id": "bruships-249-indian-carrier-size",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "bruships-249-indian-carrier-size",
+      "title": "Are India's 45,000-ton carriers too small?",
+      "kind": "qa",
+      "start": "3:56:16",
+      "end": "3:56:45",
+      "topics": [
+        "indian-navy",
+        "aircraft-carriers",
+        "vikrant",
+        "carrier-design",
+        "ship-design",
+        "naval-training"
+      ],
+      "question": "Are India's 45,000-ton aircraft carriers too small compared with Chinese carriers?",
+      "answerShort": "They are not supercarriers, but they are adequate for building fleet experience; roughly 65,000 tons is a more suitable later target.",
+      "summary": "A carrier-size answer treats Vikrant-scale ships as a useful developmental stage rather than the final form of Indian naval aviation.",
+      "body": "Dr. Clarke does not treat India's current carrier size as a failure. A roughly 45,000-ton ship can support the navy while it develops its air groups, deck routines, maintenance system, and escort practices. He suggests that a later design around 65,000 tons would better match India's ambitions without requiring an immediate jump to the largest supercarrier category. The answer frames carrier growth as a sequence of institutional learning as well as displacement.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T18-33-54_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "3:56:16",
+          "end": "3:56:45",
+          "note": "The answer says 45,000-ton carriers are suitable for working up the Indian fleet and identifies roughly 65,000 tons as a more appropriate future aim."
         }
       ]
     },
@@ -1785,6 +2230,34 @@
       ]
     },
     {
+      "id": "bruships-249-flag-officer-senior-rating-teams",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "bruships-249-flag-officer-senior-rating-teams",
+      "title": "Flag officers and their senior enlisted counterparts",
+      "kind": "qa",
+      "start": "4:15:18",
+      "end": "4:15:36",
+      "topics": [
+        "naval-command",
+        "naval-personnel",
+        "senior-ratings",
+        "admirals",
+        "naval-training"
+      ],
+      "question": "Are flag officers paired with senior enlisted advisers in a way comparable to fictional command teams?",
+      "answerShort": "To an extent: senior officer appointments often have a corresponding senior rating, and effective pairs can follow parallel career paths.",
+      "summary": "A brief personnel answer points to the senior enlisted role that often accompanies a flag appointment and the continuity created by an effective command partnership.",
+      "body": "Senior naval commands are not supported by officers alone. Dr. Clarke notes that a senior enlisted appointment often sits alongside a senior officer role. When the partnership works especially well, the two careers can mirror one another across later postings. The exchange offers a compact introduction to the advisory and organizational role that experienced senior ratings provide at flag level.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T18-33-54_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "4:15:18",
+          "end": "4:15:36",
+          "note": "The answer says senior officer roles often have an accompanying senior NCO role and that strong teams can have parallel careers."
+        }
+      ]
+    },
+    {
       "id": "bruships-249-second-rate-honour",
       "videoId": "uURe69Wnh-Q",
       "slug": "bruships-249-second-rate-honour",
@@ -1810,6 +2283,70 @@
           "start": "4:16:30",
           "end": "4:20:58",
           "note": "The answer gives 1794 and 1814 fleet counts, identifies second rates as three-decked flagships, and compares their rarity with the much larger lower-rate force."
+        }
+      ]
+    },
+    {
+      "id": "bruships-249-screw-powered-age-of-sail",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "bruships-249-screw-powered-age-of-sail",
+      "title": "Screw propulsion without the steel warship revolution",
+      "kind": "qa",
+      "start": "4:21:24",
+      "end": "4:21:38",
+      "topics": [
+        "age-of-sail",
+        "screw-propulsion",
+        "naval-engineering",
+        "wooden-warships",
+        "counterfactual-history"
+      ],
+      "question": "Would screw-powered wooden warships dominate if steam and steel did not develop into the familiar ironclad era?",
+      "answerShort": "Yes initially, because screw-powered sailing warships already existed and offered the most obvious line of continued development.",
+      "summary": "A short technology counterfactual starts from the hybrid screw-and-sail ships already in service rather than inventing an entirely new naval type.",
+      "body": "Screw-powered sailing warships were already a proven part of the transition away from pure sail. If the wider steam-and-steel revolution stalled, Dr. Clarke expects that existing hybrid path to continue. He does not claim it would remain dominant indefinitely, because later pressures could still redirect design. The answer demonstrates how a useful counterfactual begins with technology and institutions already present at the point of divergence.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T18-33-54_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "4:21:24",
+          "end": "4:21:38",
+          "note": "The answer says screw-powered sailing warships were already present and were therefore the most likely design path to continue."
+        }
+      ]
+    },
+    {
+      "id": "bruships-249-molten-salt-liquid-metal-reactors",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "bruships-249-molten-salt-liquid-metal-reactors",
+      "title": "Molten-salt and liquid-metal reactors are different naval technologies",
+      "kind": "qa",
+      "start": "4:22:11",
+      "end": "4:31:00",
+      "topics": [
+        "nuclear-propulsion",
+        "naval-reactors",
+        "molten-salt-reactors",
+        "liquid-metal-reactors",
+        "alfa-class",
+        "naval-engineering",
+        "russian-navy",
+        "submarines"
+      ],
+      "question": "Have molten-salt reactors found a practical naval role?",
+      "answerShort": "The discussion finds no clear operational example and corrects an initial confusion with Soviet liquid-metal reactors, whose Alfa-class coolant was lead-bismuth rather than molten salt.",
+      "summary": "A live technical correction separates molten-salt reactors from Soviet liquid-metal submarine plants and explains why reactor terminology and coolant choice matter.",
+      "body": "The panel begins by searching for a naval molten-salt example but repeatedly checks and corrects its recollection. The Soviet K-27 and Alfa discussions lead to the important distinction between molten salt and liquid metal as reactor coolants. By the end, the Alfa class is identified with a lead-bismuth liquid-metal system, not molten salt. Dr. Clarke also notes corrosion as one reason molten-salt concepts have not become an ordinary naval propulsion choice, making the exchange valuable precisely because the correction unfolds in public.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T18-33-54_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "4:22:11",
+          "end": "4:28:30",
+          "note": "The panel tests several Soviet examples, distinguishes molten-salt from liquid-metal reactors, and notes corrosion problems for molten-salt systems."
+        },
+        {
+          "start": "4:30:09",
+          "end": "4:31:00",
+          "note": "The follow-up lists liquid-metal coolant options and identifies lead-bismuth as the Alfa-class reactor coolant."
         }
       ]
     },
@@ -1867,6 +2404,34 @@
           "start": "4:31:25",
           "end": "4:31:48",
           "note": "The answer says current systems are conventionally powered and identifies compact nuclear power and Russian small-submarine experience as the longer-term path."
+        }
+      ]
+    },
+    {
+      "id": "bruships-249-trieste-arresting-wires",
+      "videoId": "uURe69Wnh-Q",
+      "slug": "bruships-249-trieste-arresting-wires",
+      "title": "Why a Trieste-derived LHD does not need arresting wires",
+      "kind": "qa",
+      "start": "4:31:51",
+      "end": "4:32:08",
+      "topics": [
+        "trieste-lhd",
+        "landing-helicopter-docks",
+        "naval-aviation",
+        "f-35b",
+        "ship-design"
+      ],
+      "question": "Could a Trieste-derived LHD be fitted with arresting wires?",
+      "answerShort": "Yes with additional design work, but Dr. Clarke sees little reason when the intended aircraft can use short takeoff and vertical landing.",
+      "summary": "A final design question separates what can be engineered into an LHD from what its STOVL air group actually requires.",
+      "body": "Arresting gear can be added if the design is developed around the necessary deck loads, machinery, and operating spaces. Dr. Clarke therefore treats the modification as possible rather than technically forbidden. He does not regard it as useful for the proposed role because the available aircraft are designed for short takeoff and vertical landing. The exchange closes on a basic design principle: capability should follow the intended air group rather than be added because it is theoretically achievable.",
+      "sourcePath": "src/transcripts/txt/2026-07-05_T18-33-54_bruships-249-modern-navy-and-naval-history-questions-answered-live_uURe69Wnh-Q.txt",
+      "evidence": [
+        {
+          "start": "4:31:51",
+          "end": "4:32:08",
+          "note": "The answer says arresting wires are possible with design work but unnecessary for the STOVL aircraft expected on the LHD."
         }
       ]
     }

@@ -9,9 +9,30 @@
     "naval-logistics",
     "naval-procurement",
     "uncrewed-systems",
-    "force-structure"
+    "force-structure",
+    "science-fiction"
   ],
   "segments": [
+    {
+      "id": "notable-historical-knowledge-balance-probabilities",
+      "videoId": "T4oqYXbn5nE",
+      "slug": "historical-knowledge-balance-probabilities",
+      "title": "Why historical knowledge remains a balance of probabilities",
+      "kind": "notable_point",
+      "start": "7:55",
+      "end": "8:20",
+      "topics": ["historical-method", "naval-historiography", "source-criticism"],
+      "summary": "An opening methodological aside explains why even eyewitness evidence cannot make a historical reconstruction completely certain.",
+      "body": "Historical accounts are assembled from evidence that is incomplete and shaped by each observer's position. Even someone present at an event sees only one perspective, so direct observation does not remove every uncertainty. The responsible approach is to weigh the available sources and express conclusions as a balance of probabilities rather than claiming absolute knowledge.",
+      "sourcePath": "src/transcripts/txt/2026-03-01_T19-30-47_bruships-234-naval-history-questions-answered-live_T4oqYXbn5nE.txt",
+      "evidence": [
+        {
+          "start": "7:55",
+          "end": "8:20",
+          "note": "Dr. Clarke rejects the idea that historians should speak only when they know something with complete certainty, noting that even eyewitnesses have a limited perspective and that history works through balances of probability."
+        }
+      ]
+    },
     {
       "id": "notable-mahan-corbett-shared-sea-power",
       "videoId": "T4oqYXbn5nE",
@@ -207,6 +228,33 @@
       ]
     },
     {
+      "id": "qa-covenant-fusion-reactor-fuel-sources",
+      "videoId": "T4oqYXbn5nE",
+      "slug": "covenant-fusion-reactor-fuel-sources",
+      "title": "Fuel limits on a Covenant-style fusion reactor",
+      "kind": "qa",
+      "start": "44:40",
+      "end": "49:43",
+      "topics": ["science-fiction", "halo", "fusion-power", "spacecraft-propulsion", "energy-systems"],
+      "summary": "A Covenant-inspired reactor could fuse hydrogen into helium, but collecting its fuel from a planet's atmosphere depends on chemistry, extraction energy, and local abundance.",
+      "body": "Earth's atmosphere contains too little free hydrogen for direct harvesting to be useful. Cracking hydrogen from water is possible, but the process consumes energy and therefore has to fit inside the reactor's overall energy balance. Hydrogen is much more abundant around gas giants and stars, making those environments more plausible refuelling locations for the fictional system. The panel treats the design as workable science fiction only if its fuel cycle returns more energy than extraction and handling require.",
+      "question": "Could a Covenant-style pinch-fusion reactor draw hydrogen from a planet's atmosphere, fuse it into helium, and then use the helium as a second-stage fuel?",
+      "answerShort": "Only where hydrogen is sufficiently abundant and cheap to extract; on Earth it would have to be cracked from water, while gas giants offer a more plausible supply.",
+      "sourcePath": "src/transcripts/txt/2026-03-01_T19-30-47_bruships-234-naval-history-questions-answered-live_T4oqYXbn5nE.txt",
+      "evidence": [
+        {
+          "start": "44:40",
+          "end": "46:20",
+          "note": "The panel explains that Earth's atmosphere has too little hydrogen, that water can be cracked at an energy cost, and that the fusion cycle must yield more energy than fuel extraction consumes."
+        },
+        {
+          "start": "49:03",
+          "end": "49:43",
+          "note": "The follow-up identifies stars and gas giants as more credible places to collect large concentrations of hydrogen for the fictional reactor."
+        }
+      ]
+    },
+    {
       "id": "qa-ai-chip-shortage-naval-systems",
       "videoId": "T4oqYXbn5nE",
       "slug": "ai-chip-shortage-naval-systems",
@@ -311,6 +359,28 @@
           "start": "1:06:20",
           "end": "1:08:17",
           "note": "The answer compares predictions about Ukraine and Taiwan with Napoleon, the Kaiser, and Hitler underestimating British willingness to fight, then warns that this historical pattern repeatedly fails."
+        }
+      ]
+    },
+    {
+      "id": "qa-seawater-bone-shipwreck-remains",
+      "videoId": "T4oqYXbn5nE",
+      "slug": "seawater-bone-shipwreck-remains",
+      "title": "Why seawater does not simply dissolve bones in shipwrecks",
+      "kind": "qa",
+      "start": "1:08:24",
+      "end": "1:10:26",
+      "topics": ["maritime-archaeology", "shipwrecks", "hms-prince-of-wales", "hms-repulse", "human-remains"],
+      "summary": "A claim about the wrecks of HMS Prince of Wales and HMS Repulse prompts a distinction between slow chemical change in salt water and biological destruction of human remains.",
+      "body": "Salt water does not rapidly dissolve bone on the timescale relevant to twentieth-century wrecks. The panel notes that bones have survived in marine archaeological contexts for centuries, although their preservation varies. Scavengers, microorganisms, and other biological processes can consume or degrade remains long before brine alone would remove them. The exchange therefore cautions against using the phrase 'universal solvent' as an explanation for why remains may be absent from a shipwreck.",
+      "question": "Would seawater have dissolved every skeleton inside the wrecks of HMS Prince of Wales and HMS Repulse?",
+      "answerShort": "No; salt water does not dissolve bone that quickly, although biological activity can consume or degrade remains over time.",
+      "sourcePath": "src/transcripts/txt/2026-03-01_T19-30-47_bruships-234-naval-history-questions-answered-live_T4oqYXbn5nE.txt",
+      "evidence": [
+        {
+          "start": "1:08:24",
+          "end": "1:10:26",
+          "note": "The panel rejects the claim that seawater quickly dissolves bone, points to much older marine remains that survive, and identifies biological consumption as the more plausible destructive process."
         }
       ]
     },
@@ -447,6 +517,28 @@
       ]
     },
     {
+      "id": "qa-noisy-uncrewed-submarine-decoys",
+      "videoId": "T4oqYXbn5nE",
+      "slug": "noisy-uncrewed-submarine-decoys",
+      "title": "Why very noisy uncrewed submarines make weak decoys",
+      "kind": "qa",
+      "start": "1:30:00",
+      "end": "1:30:20",
+      "topics": ["uncrewed-systems", "submarines", "anti-submarine-warfare", "sonar", "decoys"],
+      "summary": "An uncrewed underwater vehicle could imitate a conspicuously loud submarine, but the same noise that attracts attention also makes the decoy easy to classify and destroy.",
+      "body": "The panel accepts acoustic distraction as a possible tactic but rejects noise alone as a durable form of deception. A contact loud enough to be found immediately is also easy to localize and prosecute, so it is likely to be removed before it protects the real submarine for long. A useful decoy would need to create uncertainty about identity or position rather than merely advertise itself.",
+      "question": "Could uncrewed underwater vehicles imitate very noisy older submarines and distract anti-submarine forces from quieter boats?",
+      "answerShort": "They could act as brief distractions, but extreme noise would make them easy to identify, locate, and destroy.",
+      "sourcePath": "src/transcripts/txt/2026-03-01_T19-30-47_bruships-234-naval-history-questions-answered-live_T4oqYXbn5nE.txt",
+      "evidence": [
+        {
+          "start": "1:30:00",
+          "end": "1:30:20",
+          "note": "The panel calls noisy UUV decoys an option but says their acoustic conspicuousness would let an opponent find and dispose of them quickly."
+        }
+      ]
+    },
+    {
       "id": "qa-indonesia-giuseppe-garibaldi-carrier",
       "videoId": "T4oqYXbn5nE",
       "slug": "indonesia-giuseppe-garibaldi-carrier",
@@ -469,6 +561,50 @@
       ]
     },
     {
+      "id": "qa-iran-strike-telegraphed-buildup",
+      "videoId": "T4oqYXbn5nE",
+      "slug": "iran-strike-telegraphed-buildup",
+      "title": "Why the 2026 strike on Iran was heavily telegraphed",
+      "kind": "qa",
+      "start": "1:34:44",
+      "end": "1:39:43",
+      "topics": ["iran", "middle-east", "current-affairs", "us-military", "military-strategy", "water-security"],
+      "summary": "The panel treats the strike on Iran as the culmination of a conspicuous American regional buildup while remaining cautious about whether leadership change will improve the country's deeper problems.",
+      "body": "Dr. Clarke describes the operation as a decapitation strike preceded by months of visible American deployments to the Middle East. He interprets that buildup as pressure for political and behavioural change rather than a surprise attack emerging without warning. The discussion separates criticism of the Iranian regime from the country's capable population and long-term economic potential. It also highlights the severe water crisis created by depleted groundwater and reservoirs built over salt deposits, a structural problem that any successor leadership would still have to solve.",
+      "question": "What are the panel's thoughts on the current situation in Iran?",
+      "answerShort": "The strike followed a heavily signalled US buildup and pressure for change, but whether new leadership can improve Iran's political and water problems remains uncertain.",
+      "sourcePath": "src/transcripts/txt/2026-03-01_T19-30-47_bruships-234-naval-history-questions-answered-live_T4oqYXbn5nE.txt",
+      "evidence": [
+        {
+          "start": "1:34:44",
+          "end": "1:39:43",
+          "note": "The panel discusses the decapitation strike, the preceding US deployment buildup, hopes for political change, the distinction between Iran's population and regime, and the country's water crisis."
+        }
+      ]
+    },
+    {
+      "id": "qa-covenant-plasma-lance-tactical-limits",
+      "videoId": "T4oqYXbn5nE",
+      "slug": "covenant-plasma-lance-tactical-limits",
+      "title": "The tactical limits of a Covenant plasma lance",
+      "kind": "qa",
+      "start": "1:39:49",
+      "end": "1:42:10",
+      "topics": ["science-fiction", "halo", "space-warfare", "naval-tactics", "weapon-design"],
+      "summary": "The Covenant plasma lance is devastating inside the battle it was designed to shape, but its value falls when an opponent refuses the expected engagement or attacks its supporting assumptions.",
+      "body": "The weapon's reach and power can force human ships to approach on Covenant terms, making it as much a battle-shaping system as a direct killer. The panel compares that advantage with Rome's corvus: a formidable device while opponents accept the geometry it requires, but less decisive once they adapt or avoid it. Covenant leaders also have reason to restrict the weapon because a plasma lance mounted widely across the fleet could be turned against them. The broader lesson is that extreme weapon performance does not remove the need for doctrine, security, and an enemy who behaves as expected.",
+      "question": "How useful is the Covenant plasma lance as a fleet weapon?",
+      "answerShort": "It is devastating when it forces an enemy into the engagement it was built for, but adaptable tactics and the risk of the weapon being turned against the Covenant limit its value.",
+      "sourcePath": "src/transcripts/txt/2026-03-01_T19-30-47_bruships-234-naval-history-questions-answered-live_T4oqYXbn5nE.txt",
+      "evidence": [
+        {
+          "start": "1:39:49",
+          "end": "1:42:10",
+          "note": "The panel discusses the plasma lance's power, Covenant reluctance to distribute it widely, its dependence on opponents fighting as expected, and its role in shaping an engagement."
+        }
+      ]
+    },
+    {
       "id": "qa-royal-navy-unbuilt-design-opportunities",
       "videoId": "T4oqYXbn5nE",
       "slug": "royal-navy-unbuilt-design-opportunities",
@@ -487,6 +623,28 @@
           "start": "1:42:36",
           "end": "1:51:02",
           "note": "Panelists compare unbuilt capital ships, carriers, cruisers, destroyers, and submarines and explain the capability each would have preserved."
+        }
+      ]
+    },
+    {
+      "id": "qa-tagge-battlecruiser-corporate-warship-design",
+      "videoId": "T4oqYXbn5nE",
+      "slug": "tagge-battlecruiser-corporate-warship-design",
+      "title": "Why Tagge-class battlecruisers feel like corporate warships",
+      "kind": "qa",
+      "start": "1:52:08",
+      "end": "1:54:37",
+      "topics": ["science-fiction", "star-wars", "battlecruisers", "auxiliary-warships", "warship-design"],
+      "summary": "The Star Wars Tagge-class battlecruiser is large and serviceable but carries the compromises of a corporate design offered to a government rather than a purpose-built fleet combatant.",
+      "body": "The panel compares the ship to a private yard building a speculative capital ship and then trying to persuade the state to buy it. Its hangar is adequate and its weapons are not useless, yet the armament is surprisingly light for the vessel's scale. That combination makes it more plausible as a corporate or auxiliary battlecruiser than as the best ship a navy could design around its own doctrine. The exchange uses the fictional hull to show how ownership, requirements, and procurement authority shape combat capability.",
+      "question": "Could the Star Wars Tagge-class battlecruiser be considered an auxiliary battlecruiser?",
+      "answerShort": "Yes in the sense that it looks like a workable corporate-built capital ship, but its light armament keeps it below what a navy would probably demand from a vessel of that size.",
+      "sourcePath": "src/transcripts/txt/2026-03-01_T19-30-47_bruships-234-naval-history-questions-answered-live_T4oqYXbn5nE.txt",
+      "evidence": [
+        {
+          "start": "1:52:08",
+          "end": "1:54:37",
+          "note": "The answer describes the Tagge class as a corporation-built vessel with acceptable hangar capacity and weapons but unexpectedly light armament for its size."
         }
       ]
     },
@@ -782,7 +940,7 @@
       "end": "2:47:39",
       "topics": ["royal-navy", "aegis-combat-system", "type-42-destroyers", "broadsword-class", "combat-systems"],
       "summary": "A British Aegis-like system would suit air-defence destroyers, but forcing the same computing and sensor burden into an ASW frigate would turn it into a cruiser-sized ship.",
-      "body": "The panel describes modern combatants as specialized floating server farms: destroyers process radar and air-defence data, while frigates prioritize sonar and anti-submarine warfare. Combining both complete missions demands much more power, cooling, space, and computing, so Type 42 derivatives could receive the system while Broadsword-class frigates would not.",
+      "body": "The panel describes modern combatants as specialized floating server farms: destroyers process radar and air-defence data, while frigates prioritize sonar and anti-submarine warfare. A British Aegis or Sampson-class system therefore belongs naturally in the Type 42 and Type 45 lineage rather than aboard Type 23, Type 26, Type 31, or Type 32 frigates. Combining both complete missions demands much more power, cooling, space, and computing, pushing the result toward a 10,000- to 12,000-ton cruiser. The cost of the air-defence system also makes fitting every escort an inefficient use of a high-end capability.",
       "question": "If Britain developed an Aegis equivalent, would it equip Type 42 destroyers and Broadsword-class frigates?",
       "answerShort": "The destroyers probably would, but the ASW frigates would not because the air-defence computing and sensor burden would require a much larger hull.",
       "sourcePath": "src/transcripts/txt/2026-03-01_T19-30-47_bruships-234-naval-history-questions-answered-live_T4oqYXbn5nE.txt",
@@ -791,6 +949,11 @@
           "start": "2:46:18",
           "end": "2:47:39",
           "note": "The response distinguishes destroyer and frigate combat-system workloads and explains the hull, power, and processing consequences."
+        },
+        {
+          "start": "3:00:18",
+          "end": "3:02:18",
+          "note": "A follow-up names the Type 23, Type 26, Type 31, and Type 32 as ASW frigates, stresses the system's unit cost, and estimates that combining full air-defence and ASW suites produces a 10,000- to 12,000-ton cruiser."
         }
       ]
     },
@@ -813,6 +976,28 @@
           "start": "2:48:09",
           "end": "2:49:01",
           "note": "The answer gives likely British and French order ranges and predicts reduced crewing as a major design change."
+        }
+      ]
+    },
+    {
+      "id": "qa-terra-invicta-solar-system-fleet",
+      "videoId": "T4oqYXbn5nE",
+      "slug": "terra-invicta-solar-system-fleet",
+      "title": "A reaction fleet and positional fleet for Terra Invicta",
+      "kind": "qa",
+      "start": "2:49:55",
+      "end": "2:58:52",
+      "topics": ["science-fiction", "terra-invicta", "space-warfare", "fleet-design", "defence-in-depth", "mine-warfare"],
+      "summary": "A fleet facing a technologically superior alien force should divide between ships that hold indispensable positions and a mobile force able to respond rapidly across the solar system.",
+      "body": "The positional fleet buys time around bases, planets, and other places that cannot be abandoned. A separate reaction fleet then concentrates quickly against incursions rather than dispersing every capable ship across the defence perimeter. Long-range weapons, minefields, and local resources help offset the alien technological advantage by imposing attrition before close combat. The three-dimensional geometry and realistic travel times of the solar system make advance positioning and communications as important as raw firepower. Human political division remains a major constraint because the fleet must defend Earth while competing governments may withhold support or fight one another.",
+      "question": "How would the panel build a fleet for the alien-invasion scenario in Terra Invicta?",
+      "answerShort": "Use a positional fleet to hold vital locations and a fast reaction fleet to counter incursions, supported by long-range weapons, minefields, and the resources of the solar system.",
+      "sourcePath": "src/transcripts/txt/2026-03-01_T19-30-47_bruships-234-naval-history-questions-answered-live_T4oqYXbn5nE.txt",
+      "evidence": [
+        {
+          "start": "2:49:55",
+          "end": "2:58:52",
+          "note": "The panel proposes separate defence and reaction fleets, long-range attrition and minefields, use of solar-system resources, and adaptations to three-dimensional orbital warfare and political fragmentation on Earth."
         }
       ]
     },
@@ -845,10 +1030,10 @@
       "title": "Missile stockpiles need slack and forward bases",
       "kind": "qa",
       "start": "3:02:21",
-      "end": "3:13:19",
+      "end": "3:18:50",
       "topics": ["live-q-and-a", "missiles", "naval-logistics", "naval-industrial-base", "force-structure"],
       "summary": "The answer on wartime missile supply prioritizes dependable output, reserve components, forward stockpiles, and reloading infrastructure over the lowest peacetime cost.",
-      "body": "Dr. Clarke contrasts efficiency measured by price with efficiency measured by a force's ability to keep firing in wartime. He proposes spare capacity throughout the supply chain, auxiliaries and forward bases for distribution, and enough stored missiles to absorb sudden expenditure rather than relying on just-in-time delivery.",
+      "body": "Dr. Clarke contrasts efficiency measured by price with efficiency measured by a force's ability to keep firing in wartime. A resilient industrial system keeps spare components, multiple production lines, and more trained staff than peacetime output alone appears to require. Stockpiled missiles can be rotated through live firing, reconditioned, or sold to allies before they age out, preserving both readiness and production competence. Auxiliaries and forward bases at places such as Diego Garcia, Singapore, Bahrain, and the Falklands distribute reloads closer to likely operations. The historical practice of holding several spare gun barrels for every barrel at sea illustrates the depth of reserve needed when ships may be redirected across several theatres without warning.",
       "question": "How should a navy prepare to produce and distribute missiles at wartime consumption rates?",
       "answerShort": "Build slack into production, stockpile munitions and components, and use auxiliaries and forward bases to reload ships rather than relying on just-in-time supply.",
       "sourcePath": "src/transcripts/txt/2026-03-01_T19-30-47_bruships-234-naval-history-questions-answered-live_T4oqYXbn5nE.txt",
@@ -857,6 +1042,11 @@
           "start": "3:02:21",
           "end": "3:13:19",
           "note": "The detailed answer distinguishes output from cost efficiency and covers production slack, auxiliaries, forward bases, and missile stockpiles."
+        },
+        {
+          "start": "3:13:19",
+          "end": "3:18:50",
+          "note": "The continuation estimates reserve loadouts, discusses dormant production lines and overcrewing, and compares missile reserves with the Royal Navy's historical stocks of replacement gun barrels."
         }
       ]
     },
@@ -1167,6 +1357,28 @@
       ]
     },
     {
+      "id": "qa-panel-world-war-ii-navy-roles",
+      "videoId": "T4oqYXbn5nE",
+      "slug": "panel-world-war-ii-navy-roles",
+      "title": "The panel's preferred roles in a World War II navy",
+      "kind": "qa",
+      "start": "4:21:01",
+      "end": "4:25:04",
+      "topics": ["world-war-ii", "destroyers", "town-class-cruisers", "hms-renown", "operations-research", "naval-personnel"],
+      "summary": "The panel's choices range from destroyer and cruiser command to operational research, illustrating the different ways tactical leadership and analytical staff work shaped a wartime navy.",
+      "body": "Dr. Clarke chooses a destroyer command, a role that offered independent responsibility and frequent operational employment. Another panelist selects a Town-class cruiser, while the analytical choice is work with Patrick Blackett's operational-research group. HMS Renown also appears as a preferred capital-ship assignment. Together the answers point to the variety of naval service beyond the most famous admiral or battleship posts: small-ship command, cruiser operations, capital-ship service, and the quantitative analysis that improved fleet decisions.",
+      "question": "What position or role would each panelist choose in a World War II-era navy?",
+      "answerShort": "Their serious choices include commanding a destroyer or Town-class cruiser, serving in HMS Renown, and working in Patrick Blackett's operational-research organization.",
+      "sourcePath": "src/transcripts/txt/2026-03-01_T19-30-47_bruships-234-naval-history-questions-answered-live_T4oqYXbn5nE.txt",
+      "evidence": [
+        {
+          "start": "4:21:01",
+          "end": "4:25:04",
+          "note": "Panelists choose a destroyer, a Town-class cruiser, HMS Renown, and statistical or administrative work with Patrick Blackett."
+        }
+      ]
+    },
+    {
       "id": "qa-redesign-invincible-class-carriers",
       "videoId": "T4oqYXbn5nE",
       "slug": "redesign-invincible-class-carriers",
@@ -1185,6 +1397,26 @@
           "start": "4:24:30",
           "end": "4:29:26",
           "note": "The answer specifies added displacement, deck-edge lifts, aircraft numbers and roles, Sea Dart and Sea Wolf, close-in weapons, and the Falklands value of AEW."
+        }
+      ]
+    },
+    {
+      "id": "notable-maritime-helicopter-water-landings",
+      "videoId": "T4oqYXbn5nE",
+      "slug": "maritime-helicopter-water-landings",
+      "title": "Why naval helicopters usually avoid water landings",
+      "kind": "notable_point",
+      "start": "4:36:33",
+      "end": "4:38:06",
+      "topics": ["naval-aviation", "search-and-rescue", "helicopters", "royal-navy", "soviet-navy", "north-atlantic"],
+      "summary": "British maritime helicopters rescue people by hovering and winching because landing on the North Sea or Atlantic is usually more dangerous than remaining airborne.",
+      "body": "Royal Navy search-and-rescue helicopters do not normally use floats to settle on the sea. Their crews hover and lower a rescuer or winch because the North Sea, North Atlantic, and South Atlantic rarely offer a safe landing surface. Soviet designers retained floats on some helicopters as a doctrinal inheritance from flying boats, but the panel doubts that pilots often used them operationally. The exchange distinguishes equipment carried because doctrine expects a capability from a procedure crews consider safe in real sea conditions.",
+      "sourcePath": "src/transcripts/txt/2026-03-01_T19-30-47_bruships-234-naval-history-questions-answered-live_T4oqYXbn5nE.txt",
+      "evidence": [
+        {
+          "start": "4:36:33",
+          "end": "4:38:06",
+          "note": "The panel explains British hover-and-winch practice, the hazards of landing on northern waters, and the Soviet float requirement as a likely doctrinal inheritance from flying boats."
         }
       ]
     }

@@ -14,7 +14,9 @@
     "naval-logistics",
     "naval-industrial-base",
     "uncrewed-systems",
-    "maritime-security"
+    "maritime-security",
+    "fleet-readiness",
+    "naval-diplomacy"
   ],
   "segments": [
     {
@@ -31,7 +33,7 @@
         "naval-architecture"
       ],
       "summary": "The opening answer links modern warship growth to recurring displacement bands for presence ships, single-mission vessels, and more flexible combatants.",
-      "body": "Dr. Clarke starts with the obvious drivers: weapons, sensors, geography, threats, risk, and construction. He then argues that navies keep rediscovering practical size bands, with global presence ships clustering around 9,000 to 10,000 tons and smaller single-mission vessels sitting well below that. The comparison reaches back to HMS Warrior, interwar cruiser limits, and modern Arleigh Burke destroyers to show that size reflects mission endurance as much as equipment.",
+      "body": "Dr. Clarke starts with the obvious drivers: weapons, sensors, geography, threats, risk, and construction. He then argues that navies keep rediscovering practical size bands, with global presence ships clustering around 9,000 to 10,000 tons and smaller single-mission vessels sitting well below that. HMS Warrior, squadron leaders, the Hawkins-class cruiser limit, and an Arleigh Burke destroyer anchor the comparison across different eras. Smaller general-purpose and flexible single-mission ships likewise tend to collect around recurring displacement ranges. The point is that propulsion, personnel, weapons, computing, and endurance continue to demand broadly comparable shares of a hull even as the equipment changes.",
       "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
       "evidence": [
         {
@@ -60,7 +62,7 @@
         "modern-navy"
       ],
       "summary": "A force-structure explanation shows how fewer hulls make each ship carry more capability, which raises cost and invites further fleet cuts.",
-      "body": "This watch point is the lecture's core procurement argument. Smaller fleets push more sensors, weapons, and systems onto each surviving hull, making ships larger and more expensive; governments then cut numbers again to save money. Dr. Clarke ties the cycle to post-Cold War optimism, short-term budget choices, and the mistaken belief that navies can keep doing more with less.",
+      "body": "This watch point is the lecture's core procurement argument. Smaller fleets push more sensors, weapons, and systems onto each surviving hull, making ships larger and more expensive. Governments then cut numbers again to save money, beginning the cycle anew. Designing the smallest hull that barely holds today's equipment also makes future alteration harder and more expensive than leaving useful space from the start. Dr. Clarke ties the pattern to post-Cold War optimism, short-term budget choices, and the mistaken belief that navies could keep doing more with less because major conflict had become optional.",
       "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
       "evidence": [
         {
@@ -79,29 +81,54 @@
       "id": "vls-magazine-depth-tradeoff",
       "videoId": "NtXGTWoRZTo",
       "slug": "vls-magazine-depth-tradeoff",
-      "title": "VLS cells as magazine depth",
+      "title": "VLS cells are the ship's combat magazine",
       "kind": "chapter",
       "start": "9:15",
-      "end": "15:53",
+      "end": "11:18",
       "topics": [
         "missiles",
         "air-defence",
         "naval-weapons",
-        "naval-procurement"
+        "naval-logistics"
       ],
       "summary": "The VLS discussion explains why missile cells are not just launchers but the ship's practical combat magazine once underway replenishment is difficult.",
-      "body": "Dr. Clarke contrasts vertical launch systems with older reloadable launchers to show why cell count matters so much. Because reloading VLS at sea is slow, exposed, and sea-state dependent, a ship's installed cells become its real missile depth for air defence and strike. The Type 45 and European frigate examples show how navies can buy the expensive sensors and combat systems, then undercut the ship by fitting too few cells or short-range-only additions.",
+      "body": "Dr. Clarke contrasts vertical launch systems with older reloadable launchers to show why cell count matters so much. Reloading VLS from an auxiliary requires a gantry, stable seas, time, and two ships placed in a vulnerable evolution. Older swing-arm launchers such as Sea Dart were awkward to replenish at sea, but doing so was at least viable. A modern ship that sails with 48 VLS cells therefore carries roughly 48 rounds of practical air-defence magazine depth, apart from any separate deck launchers. The watch point makes installed cell count a logistics and endurance question, not simply a launcher specification.",
       "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
       "evidence": [
         {
           "start": "9:15",
           "end": "11:18",
-          "note": "The transcript explains VLS reload limits at sea and states that the VLS is the ship's entire missile magazine depth."
-        },
+          "note": "The transcript compares difficult VLS replenishment with reloadable Sea Dart launchers and describes installed cells as the ship's entire practical missile magazine."
+        }
+      ]
+    },
+    {
+      "id": "nfr90-vls-cell-cuts",
+      "videoId": "NtXGTWoRZTo",
+      "slug": "nfr90-vls-cell-cuts",
+      "title": "How navies bought the sensors but cut missile cells",
+      "kind": "notable_point",
+      "start": "11:20",
+      "end": "16:00",
+      "topics": [
+        "missiles",
+        "air-defence",
+        "naval-procurement",
+        "modular-warship-design"
+      ],
+      "summary": "NFR-90 and its successor designs show how navies retained expensive combat systems while shrinking the missile magazines those systems were meant to support.",
+      "body": "The NFR-90 studies treated 48 VLS cells as the minimum for numerous single-mission escorts that could support one another. Several successor ships nevertheless emerged with 32 or 40 cells as post-Cold War governments assumed they would choose when and where to fight. The Type 45 example sharpens the lesson: the ship carried the deck space, cabling, and support provision for Mark 41 but sailed without the launcher. Adding separate Sea Ceptor cells improves local air-defence depth, yet it does not provide the strike or ballistic-missile options that a mixed Mark 41 installation could have offered. The result is a procurement choice that pays for sensors and integration while economizing on the weapons that turn those systems into sustained combat power.",
+      "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
+      "evidence": [
         {
           "start": "11:20",
-          "end": "15:53",
-          "note": "The discussion moves through VLS cell-count decisions, NFR-90, Horizon-derived ships, Type 45 space, Sea Ceptor insertion, and Mark 41 alternatives."
+          "end": "13:18",
+          "note": "The transcript compares NFR-90's 48-cell minimum with the smaller magazines fitted to several successor European air-defence ships."
+        },
+        {
+          "start": "13:54",
+          "end": "16:00",
+          "note": "The Type 45 discussion covers fitted-for-not-with Mark 41 space, the Sea Ceptor insertion, and the wider weapons that Mark 41 could have supported."
         }
       ]
     },
@@ -109,29 +136,79 @@
       "id": "containerized-vls-armed-merchant-limits",
       "videoId": "NtXGTWoRZTo",
       "slug": "containerized-vls-armed-merchant-limits",
-      "title": "Containerized missiles and merchant-ship limits",
+      "title": "Why containerized VLS does not fit cleanly",
       "kind": "notable_point",
       "start": "16:05",
-      "end": "24:57",
+      "end": "18:42",
       "topics": [
         "missiles",
         "modular-warship-design",
-        "naval-logistics",
-        "naval-weapons"
+        "naval-architecture",
+        "naval-logistics"
       ],
-      "summary": "Containerized VLS sounds attractive, but the lecture highlights height, power, magazine density, and merchant-shipping constraints that make it a poor substitute for purpose-built warship capacity.",
-      "body": "The container section turns a simple idea into a practical design problem. Standard VLS modules are taller than normal shipping containers, and even visible missile-container concepts provide limited rounds for the size and value of the ship carrying them. Dr. Clarke treats armed merchant concepts as possible niche deterrents for smaller powers, but not as an efficient answer for major navies that need reliable missile capacity and logistics.",
+      "summary": "Standard container dimensions collide with the height and module layout of modern vertical launch systems.",
+      "body": "The container section turns a simple modular-weapons idea into a physical design problem. A high-cube shipping container is about 2.9 metres tall, while even the shortest Mark 41 installation is much taller and strike-length systems approach eight metres. Sylver launchers present the same basic mismatch, and rotating a standard container does not create the required dimensions. Modern missiles and their launch equipment have also tended to grow rather than shrink. Containerized VLS may be an attractive label, but the launcher still demands purpose-designed depth, structure, utilities, and safe integration.",
       "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
       "evidence": [
         {
           "start": "16:05",
           "end": "18:42",
           "note": "The transcript compares container dimensions with Mark 41, Mark 57, and Sylver VLS heights and concludes that the systems do not fit cleanly."
+        }
+      ]
+    },
+    {
+      "id": "rearm-infrastructure-and-rule-of-four",
+      "videoId": "NtXGTWoRZTo",
+      "slug": "rearm-infrastructure-and-rule-of-four",
+      "title": "Reload infrastructure and the rule of four",
+      "kind": "chapter",
+      "start": "18:42",
+      "end": "21:29",
+      "topics": [
+        "naval-logistics",
+        "fleet-readiness",
+        "force-structure",
+        "naval-procurement"
+      ],
+      "summary": "Missile replenishment and ship availability both depend on unglamorous logistics, with four hulls providing a stronger guarantee that one remains at sea.",
+      "body": "Dr. Clarke treats at-sea rearming as a solvable problem whose obstacle is sustained investment in logistics and infrastructure. The same neglect appears in fleet sizing: three ships may often keep one deployed, but four provide a stronger guarantee. Larger fleets are also less likely to wreck maintenance schedules when an exercise, crisis, or surge creates an unexpected demand. Extra hulls will find lower-priority work when they are not covering core missions. It is safer to have a ship seeking useful employment than a national commitment that no available ship can meet.",
+      "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
+      "evidence": [
+        {
+          "start": "18:42",
+          "end": "19:40",
+          "note": "The transcript argues that reload concepts remain underdeveloped because logistics and infrastructure attract less political support than visible weapon systems."
         },
+        {
+          "start": "19:40",
+          "end": "21:29",
+          "note": "The lecture distinguishes the rule of three from using four hulls to guarantee one at sea, then explains how spare capacity protects maintenance and missions."
+        }
+      ]
+    },
+    {
+      "id": "armed-merchant-missile-density",
+      "videoId": "NtXGTWoRZTo",
+      "slug": "armed-merchant-missile-density",
+      "title": "Armed merchant ships trade missile density for valuable hulls",
+      "kind": "notable_point",
+      "start": "21:32",
+      "end": "24:57",
+      "topics": [
+        "missiles",
+        "naval-logistics",
+        "maritime-security",
+        "ship-design"
+      ],
+      "summary": "A container ship carrying visible missile boxes may offer a niche deterrent, but its low magazine density and valuable commercial hull make the bargain unattractive for a major navy.",
+      "body": "Containerized weapons also create an awkward armed-merchant tradeoff. A ship may need the electrical plant of a refrigerated container carrier or additional generator containers, and a visibly uniform deck load gives away the conversion. The illustrated concept provides only about 60 missiles on a very large hull. That might offer a smaller state a deterrent it otherwise lacks, but a major power has less conspicuous ways to move the same number of weapons. Risking a scarce refrigerated cargo ship for such a modest magazine could sacrifice more wartime logistics value than the weapon fit provides.",
+      "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
+      "evidence": [
         {
           "start": "21:32",
           "end": "24:57",
-          "note": "The armed-merchant discussion covers power supply, visible containers, 60-missile density, and the value of refrigerated container ships."
+          "note": "The armed-merchant discussion covers power supply, conspicuous containers, 60-missile density, niche deterrence, and the exceptional wartime value of refrigerated container ships."
         }
       ]
     },
@@ -146,10 +223,11 @@
       "topics": [
         "ship-design",
         "naval-architecture",
-        "modern-navy"
+        "modern-navy",
+        "naval-electronics"
       ],
       "summary": "A sensor-and-computing section shows why better awareness demands more data processing, power generation, cooling, technicians, and protected internal volume.",
-      "body": "This chapter explains that larger sensors do not simply add a radar face; they add data flow, computing load, cooling, technicians, software, redundancy, and shock or electromagnetic protection. Dr. Clarke uses the image of finding one wrong tree in a growing forest of returns to explain why better sensors increase decision burden as well as detection range. The payoff is speed of understanding, but that speed consumes space and electrical power inside the hull.",
+      "body": "This chapter explains that a more capable sensor does not simply add a larger radar face. It creates more returns to classify, more computing load, greater cooling demand, more technicians, continuing software work, and requirements for redundancy. Electronics must also survive salt water, shock, electromagnetic attack, and even interference from the ship's own powerful radar. Dr. Clarke uses the image of finding one wrong tree in a growing forest of returns to explain why better sensing increases the decision burden as well as detection range. The payoff is speed of understanding and engagement, but that speed consumes protected volume and substantial electrical power inside the hull.",
       "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
       "evidence": [
         {
@@ -160,7 +238,7 @@
         {
           "start": "26:56",
           "end": "30:34",
-          "note": "The section links computing, cooling, technicians, salt-water survivability, electromagnetic protection, and electrical power to ship size."
+          "note": "The section links computing, cooling, technicians, salt-water survivability, electromagnetic protection, radar interference, and electrical power to ship size."
         }
       ]
     },
@@ -176,10 +254,11 @@
         "maritime-security",
         "force-structure",
         "modern-navy",
-        "ship-design"
+        "ship-design",
+        "naval-diplomacy"
       ],
-      "summary": "The lecture argues that global trading states still need ships big enough to show up, stay visible, and carry credible capability even when they avoid the word cruiser.",
-      "body": "Dr. Clarke notes that modern navies keep building large surface combatants while calling them destroyers or frigates rather than cruisers. The reason is not just prestige: global trade, maritime insurance, international commitments, and freedom of movement all create demand for ships that can be present far from home. The segment is useful for understanding why political language may shrink, while the physical ship needed for presence does not.",
+      "summary": "Global trading states still need ships big enough to arrive, remain visible, and carry credible capability even when they avoid the word cruiser.",
+      "body": "Dr. Clarke notes that modern navies keep building cruiser-sized surface combatants while calling them destroyers or frigates. The reason is not just prestige: global trade, maritime insurance, international commitments, and freedom of movement create demand for ships that can be present far from home. Britain repeatedly returns east of Suez because its economy and international position remain tied to maritime networks despite political declarations of withdrawal. A presence ship also needs fuel, food, endurance, and enough repair capability to avoid depending on a foreign dockyard at every fault. Political language may shrink, but the physical demands of global representation still produce something much like a cruiser.",
       "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
       "evidence": [
         {
@@ -190,7 +269,124 @@
         {
           "start": "33:20",
           "end": "38:18",
-          "note": "The argument ties global trade, maritime services, and east-of-Suez commitments to the need for visible naval presence."
+          "note": "The argument ties global trade, maritime services, east-of-Suez commitments, endurance, and self-repair to the need for visible naval presence."
+        }
+      ]
+    },
+    {
+      "id": "recurring-threat-panics-and-missing-counters",
+      "videoId": "NtXGTWoRZTo",
+      "slug": "recurring-threat-panics-and-missing-counters",
+      "title": "Recurring threat panics and counters left ashore",
+      "kind": "chapter",
+      "start": "38:23",
+      "end": "40:48",
+      "topics": [
+        "drone-warfare",
+        "naval-guns",
+        "air-defence",
+        "naval-procurement"
+      ],
+      "summary": "Drones, hypersonic missiles, cyberattack, submarines, and earlier torpedo boats illustrate a recurring cycle in which a dramatic threat is treated as the end of the fleet.",
+      "body": "This watch point separates genuine technical threats from claims that one new weapon has made every warship obsolete. Cyberattack, hypersonic missiles, submarines, small drones, and earlier torpedo boats have each occupied that role in public debate. Navies often possess counters, but economy measures leave ships fitted for those systems rather than equipped with them. Dr. Clarke contrasts Type 45's Phalanx fit with the additional 76 mm guns carried by the related French and Italian Horizon ships. Programmable or fragmenting gun ammunition can engage groups of inexpensive drones at greater range and lower cost, showing how an omitted conventional system can matter when an old problem returns in a new form.",
+      "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
+      "evidence": [
+        {
+          "start": "38:23",
+          "end": "39:35",
+          "note": "The transcript lists successive supposedly fleet-ending threats and asks whether known counters were actually fitted to ships."
+        },
+        {
+          "start": "39:38",
+          "end": "40:48",
+          "note": "The Horizon-family comparison highlights the Type 45's lack of the French and Italian ships' additional 76 mm guns and their usefulness against drones."
+        }
+      ]
+    },
+    {
+      "id": "missile-defence-engagement-geometry",
+      "videoId": "NtXGTWoRZTo",
+      "slug": "missile-defence-engagement-geometry",
+      "title": "Missile-defence geometry changes the intercept problem",
+      "kind": "notable_point",
+      "start": "40:48",
+      "end": "42:09",
+      "topics": [
+        "missile-defence",
+        "air-defence",
+        "missiles",
+        "naval-weapons"
+      ],
+      "summary": "An incoming missile aimed at the defended ship can be easier to intercept than a fast target crossing the defender's field of fire.",
+      "body": "Missile defence is not a single yes-or-no capability because engagement geometry matters. A weapon flying toward the defended ship broadly announces where it is going and creates a comparatively direct intercept problem. A crossing target forces the defender to launch early enough for both trajectories to meet inside the engagement basket. Interceptor speed, range, and timing then become much more demanding. The example shows why evolving threats can require larger sensors, weapons, and combat-system margins even when the underlying defensive task is familiar.",
+      "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
+      "evidence": [
+        {
+          "start": "40:48",
+          "end": "42:09",
+          "note": "The transcript contrasts head-on missile defence with a crossing engagement that depends on interceptor speed, lead, range, and timing."
+        }
+      ]
+    },
+    {
+      "id": "guns-lasers-and-shoot-the-archer",
+      "videoId": "NtXGTWoRZTo",
+      "slug": "guns-lasers-and-shoot-the-archer",
+      "title": "Guns, lasers, and shooting the archer",
+      "kind": "chapter",
+      "start": "42:31",
+      "end": "45:48",
+      "topics": [
+        "naval-guns",
+        "directed-energy-weapons",
+        "drone-warfare",
+        "naval-airpower",
+        "carrier-groups"
+      ],
+      "summary": "Deep gun magazines and new lasers complement a broader defensive principle: destroy the launch platform before it releases a harder-to-stop weapon.",
+      "body": "Major wars repeatedly revive interest in naval guns because ships can carry many more shells than large guided missiles. Lasers may add another useful defensive layer, but Dr. Clarke cautions that all-weather performance remains an open practical question and argues for keeping guns as well. He compares proposed drone carriers and underwater attack craft with older torpedo boats to show that the tactical problem is not wholly new. The more efficient response is often to destroy the larger, more visible carrier before it launches its smaller weapons. Cold War F-14 Tomcats carrying long-range Phoenix missiles embodied the same 'shoot the archer, not the arrow' principle against Soviet bombers threatening carrier groups.",
+      "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
+      "evidence": [
+        {
+          "start": "42:31",
+          "end": "43:19",
+          "note": "The transcript contrasts gun magazine depth with missiles and treats lasers as a useful but not yet proven all-weather complement."
+        },
+        {
+          "start": "43:25",
+          "end": "45:48",
+          "note": "The drone-carrier analogy leads to the shoot-the-archer principle and the Cold War example of Tomcats intercepting Soviet missile bombers at long range."
+        }
+      ]
+    },
+    {
+      "id": "uncrewed-command-bandwidth-and-accountability",
+      "videoId": "NtXGTWoRZTo",
+      "slug": "uncrewed-command-bandwidth-and-accountability",
+      "title": "Uncrewed fleets still need bandwidth, computing, and accountability",
+      "kind": "chapter",
+      "start": "45:52",
+      "end": "48:28",
+      "topics": [
+        "uncrewed-systems",
+        "naval-communications",
+        "submarines",
+        "autonomous-systems",
+        "law-of-the-sea"
+      ],
+      "summary": "Underwater communications, control bandwidth, autonomy, and legal responsibility impose real limits on replacing crewed ships with uncrewed systems.",
+      "body": "Very-low-frequency and extremely-low-frequency networks can reach submerged vessels, but they are expensive and carry little data. Surface and airborne drones create their own demand for satellite bandwidth and continuous control links. Giving an uncrewed vessel more autonomy shifts the burden into onboard computing, electrical power, cooling, and software rather than making it disappear. Larger autonomous ships also raise harder questions under the law of the sea about command, collision responsibility, hacking, and escalation after an attack. Uncrewed capability can therefore reproduce many of the size, support, and institutional demands associated with a crewed combatant.",
+      "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
+      "evidence": [
+        {
+          "start": "45:52",
+          "end": "47:45",
+          "note": "The transcript explains the cost and low data capacity of submarine communications, then connects drone control to scarce satellite bandwidth."
+        },
+        {
+          "start": "47:47",
+          "end": "48:28",
+          "note": "The discussion links greater autonomy to onboard computing and power, then raises responsibility, collision, hacking, and escalation questions."
         }
       ]
     },
@@ -200,27 +396,87 @@
       "slug": "uncrewed-assets-make-motherships-larger",
       "title": "Uncrewed assets may make crewed ships larger",
       "kind": "chapter",
-      "start": "45:52",
+      "start": "48:51",
       "end": "52:10",
       "topics": [
         "uncrewed-systems",
         "ship-design",
-        "submarines",
+        "naval-communications",
         "modern-navy"
       ],
-      "summary": "The uncrewed-systems section argues that drones can shift work onto a crewed mothership rather than reducing the size of the main combatant.",
-      "body": "Instead of treating uncrewed vessels as a simple replacement for ships, Dr. Clarke stresses communications, bandwidth, autonomy, legal responsibility, and recovery space. Underwater systems need low-bandwidth acoustic or very-low-frequency links, while surface and air systems may need satellite, laser, relay, or emission-controlled communications. If a crewed ship becomes the center of an uncrewed task group, it may need docks, workshops, launch facilities, and command spaces that push the hull larger.",
+      "summary": "Drones can shift work onto a crewed mothership rather than reducing the size of the main combatant.",
+      "body": "Dr. Clarke expects a crewed warship to become the centre of its own task group of uncrewed assets. That role may require a dock, launch and recovery facilities, workshops, rearming spaces, stores, and enlarged command systems. The carrier in the game Carrier Command supplies an illustrative model: much of its fighting power resides in remote vehicles, but the ship must maintain and control them. Satellite, laser, relay-aircraft, and acoustic links all impose different limits, especially when the warship must remain emission silent. NATO's low-bandwidth Janus acoustic protocol underscores how difficult underwater coordination remains, so the mothership can grow even as individual offboard vehicles remove people from danger.",
       "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
       "evidence": [
         {
-          "start": "45:52",
-          "end": "48:28",
-          "note": "The transcript introduces uncrewed systems, submarine communication limits, bandwidth limits, autonomy, and legal responsibility."
+          "start": "48:51",
+          "end": "50:44",
+          "note": "The transcript says crewed warships may become task-group centres with docking, repair, rearming, and control facilities for uncrewed assets."
         },
         {
-          "start": "48:51",
+          "start": "50:47",
           "end": "52:10",
-          "note": "The section says crewed warships may become task-group centers for uncrewed assets, requiring docking, repair, communications, and control facilities."
+          "note": "The section covers relay, laser, satellite, emission-control, and Janus acoustic communication limits."
+        }
+      ]
+    },
+    {
+      "id": "threats-change-national-risks-endure",
+      "videoId": "NtXGTWoRZTo",
+      "slug": "threats-change-national-risks-endure",
+      "title": "Threats change, but national risks endure",
+      "kind": "chapter",
+      "start": "52:10",
+      "end": "54:23",
+      "topics": [
+        "maritime-security",
+        "defence-policy",
+        "naval-strategy",
+        "force-structure"
+      ],
+      "summary": "A state must size forces for enduring exposure to trade, geography, and limited strategic depth rather than only the adversary that appears most likely today.",
+      "body": "Dr. Clarke distinguishes a changing threat from an enduring national risk. An island state may always depend on imported food, exports, sea trade, and distant territories even when no present opponent appears likely to attack them. A continental state with little room to absorb an invasion likewise faces severe consequences from a low-probability event. The likelihood may be small while the impact remains enormous. Force structure must therefore preserve a constant baseline of capability instead of disappearing whenever the immediate threat assessment looks comfortable.",
+      "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
+      "evidence": [
+        {
+          "start": "52:10",
+          "end": "53:22",
+          "note": "The transcript contrasts temporary threats with enduring dependence on imports, exports, global trade, overseas territories, and geography."
+        },
+        {
+          "start": "53:25",
+          "end": "54:23",
+          "note": "The Switzerland example shows how low probability can coexist with high consequences and justify a persistent defensive capability."
+        }
+      ]
+    },
+    {
+      "id": "naval-presence-turns-capability-into-influence",
+      "videoId": "NtXGTWoRZTo",
+      "slug": "naval-presence-turns-capability-into-influence",
+      "title": "Naval presence turns capability into influence",
+      "kind": "notable_point",
+      "start": "54:26",
+      "end": "58:08",
+      "topics": [
+        "naval-diplomacy",
+        "maritime-security",
+        "coalition-operations",
+        "force-structure"
+      ],
+      "summary": "In a multipolar crisis, the states that bring useful ships to the scene gain a voice in deciding what happens next.",
+      "body": "A navy cannot convert theoretical capacity into influence unless it actually arrives where events are unfolding. Dr. Clarke compares international affairs with a football match: spectators and owners may shout instructions, but the players on the field decide the result. A visible ship must therefore bring enough capability and national identity for allies and rivals to take its presence seriously. Some governments seek command ships that can lead multinational task groups because leadership multiplies political status. That shortcut only works when the nation also provides a credible share of the escorts, logistics, and other forces needed to make the coalition effective.",
+      "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
+      "evidence": [
+        {
+          "start": "54:26",
+          "end": "56:46",
+          "note": "The transcript argues that influence belongs to states that physically show up and uses players on a football pitch to distinguish action from distant advice."
+        },
+        {
+          "start": "56:48",
+          "end": "58:08",
+          "note": "The conclusion links larger representative ships to command roles in multinational task groups and warns that leadership still requires a useful escort contribution."
         }
       ]
     },
@@ -228,34 +484,169 @@
       "id": "construction-maintenance-slack-costs",
       "videoId": "NtXGTWoRZTo",
       "slug": "construction-maintenance-slack-costs",
-      "title": "Construction pace, maintenance slack, and real cost",
+      "title": "Slow construction can cost extra hulls",
       "kind": "chapter",
       "start": "59:00",
-      "end": "1:06:58",
+      "end": "1:00:51",
       "topics": [
         "naval-industrial-base",
-        "naval-logistics",
         "naval-procurement",
+        "shipbuilding",
         "force-structure"
       ],
-      "summary": "The closing procurement section explains how slow construction, reserve-force choices, dry-dock capacity, and spares policy shape both ship cost and fleet availability.",
-      "body": "Dr. Clarke uses the Queen Elizabeth-class carriers, reserve-fleet practice, Zumwalt-to-Burke yard changes, and maintenance schedules to show that apparent efficiency can raise long-term cost. Building slowly may keep yards open but also drains money that could have produced more hulls. A navy also needs slack: reserve ships, dry docks, spares, and predictable maintenance capacity, because ships and parts cannot be acquired quickly in an emergency.",
+      "summary": "Paying yards to stretch a programme can preserve industrial activity while consuming money that might otherwise have bought more ships.",
+      "body": "Construction tempo is itself a strategic and procurement choice. Governments may pay a yard to build slowly because closing the facility is politically and industrially damaging, yet they do not want additional ships entering service. Dr. Clarke uses the Queen Elizabeth-class carrier programme to argue that delay and design-policy changes consumed a sum approaching the cost of another hull. Those extra payments then leave less defence money available for further ships. Preserving shipbuilding capacity by stretching a tiny order can therefore reinforce the same fleet scarcity that made each hull so important.",
       "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
       "evidence": [
         {
           "start": "59:00",
           "end": "1:00:51",
-          "note": "The transcript explains how slow construction can keep yards open while raising total program cost and reducing money available for more ships."
-        },
+          "note": "The transcript explains how slow construction can keep yards open while raising total programme cost and reducing money available for more ships."
+        }
+      ]
+    },
+    {
+      "id": "reserve-fleets-preserve-hull-life",
+      "videoId": "NtXGTWoRZTo",
+      "slug": "reserve-fleets-preserve-hull-life",
+      "title": "Reserve fleets preserve hull life and readiness",
+      "kind": "notable_point",
+      "start": "1:00:51",
+      "end": "1:03:25",
+      "topics": [
+        "naval-reserves",
+        "fleet-readiness",
+        "naval-logistics",
+        "force-structure"
+      ],
+      "summary": "Rotating ships through reserve status can cover long refits, correct early-class faults, conserve hull life, and give reservists specific vessels to train for.",
+      "body": "Older navies often completed a class and then placed some of its early ships in reserve rather than operating every hull continuously. Those vessels could cover a sister ship's extended refit, receive corrections discovered during later construction, or give an overworked hull time away from sea. The practice helps explain how First World War V and W-class destroyers remained usable in the Second World War despite their age. A ship's calendar age is not the same as years of hard sea service. Assigning reserve units to real ships also gives their training a concrete mobilization purpose instead of leaving readiness as an abstract paper plan.",
+      "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
+      "evidence": [
         {
           "start": "1:00:51",
-          "end": "1:04:52",
-          "note": "The section covers reserve ships, hull life, Zumwalt-to-Burke yard changes, and dry-dock requirements when maintenance schedules are disrupted."
+          "end": "1:02:26",
+          "note": "The transcript describes rotating members of a class into reserve to cover refits, repairs, and hull-life limits."
         },
         {
+          "start": "1:02:26",
+          "end": "1:03:25",
+          "note": "V and W-class longevity is linked to time in reserve, wartime strength, and reservists training around assigned ships."
+        }
+      ]
+    },
+    {
+      "id": "yard-switching-and-drydock-bottlenecks",
+      "videoId": "NtXGTWoRZTo",
+      "slug": "yard-switching-and-drydock-bottlenecks",
+      "title": "Yard switching and dry-dock bottlenecks",
+      "kind": "chapter",
+      "start": "1:03:30",
+      "end": "1:04:52",
+      "topics": [
+        "naval-industrial-base",
+        "naval-maintenance",
+        "naval-procurement",
+        "fleet-readiness"
+      ],
+      "summary": "Changing production plans and sizing maintenance capacity for a perfect schedule create large hidden costs when strategy or operations change.",
+      "body": "The Zumwalt-to-Arleigh Burke transition illustrates how changing a shipbuilding plan also means paying to reconfigure yards and production systems. That industrial change can consume money equivalent to complete ships even before a replacement hull is delivered. Maintenance planning creates a parallel risk when a navy provides only enough dry docks for an ideal rotation. A crisis that extends one deployment or ends a refit early pushes several ships off schedule. The accumulated backlog then demands more dock capacity than the supposedly efficient plan ever allowed.",
+      "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
+      "evidence": [
+        {
+          "start": "1:03:30",
+          "end": "1:04:12",
+          "note": "The transcript uses the change from Zumwalt production back to Arleigh Burkes to show the cost of reconfiguring shipyards."
+        },
+        {
+          "start": "1:04:13",
+          "end": "1:04:52",
+          "note": "A six-ship, two-dry-dock example shows how crisis deployments and early exits from maintenance create a larger repair backlog."
+        }
+      ]
+    },
+    {
+      "id": "defence-slack-and-resilient-logistics",
+      "videoId": "NtXGTWoRZTo",
+      "slug": "defence-slack-and-resilient-logistics",
+      "title": "Defence slack makes logistics more resilient",
+      "kind": "notable_point",
+      "start": "1:04:59",
+      "end": "1:06:58",
+      "topics": [
+        "naval-logistics",
+        "naval-maintenance",
+        "fleet-readiness",
+        "naval-procurement"
+      ],
+      "summary": "True just-in-time logistics distinguishes common parts from scarce items, while defence planning needs stores, spare hulls, and maintenance headroom for what cannot be bought quickly.",
+      "body": "Slack is not waste when a navy depends on items that the open market cannot replace during a crisis. The original logic of just-in-time supply retained warehouses for scarce components while maintaining a steady flow of readily available parts. Warships, fleet tankers, stores ships, and specialized spares belong firmly in the difficult-to-acquire category. Additional hulls lower average unit cost, and steadier maintenance demand makes dockyard work more predictable and cheaper. Capacity held in reserve also creates room to complete major work deliberately instead of paying emergency prices after the schedule has collapsed.",
+      "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
+      "evidence": [
+        {
           "start": "1:04:59",
+          "end": "1:06:33",
+          "note": "The transcript contrasts robust just-in-time practice with the assumption that rare spares and whole ships will always be available on the market."
+        },
+        {
+          "start": "1:06:39",
           "end": "1:06:58",
-          "note": "The conclusion argues that slack in spares, hulls, construction, and maintenance lowers average cost and improves operational resilience."
+          "note": "The lecture links extra hulls and consistent maintenance demand to lower average construction and operating costs."
+        }
+      ]
+    },
+    {
+      "id": "cost-of-missing-capacity",
+      "videoId": "NtXGTWoRZTo",
+      "slug": "cost-of-missing-capacity",
+      "title": "The hidden cost of missing capacity",
+      "kind": "chapter",
+      "start": "1:07:00",
+      "end": "1:10:12",
+      "topics": [
+        "defence-policy",
+        "force-structure",
+        "air-defence",
+        "naval-procurement"
+      ],
+      "summary": "Procurement comparisons should include the diplomatic, economic, and security cost of lacking a ship or defensive system when a crisis arrives.",
+      "body": "A narrowly efficient fleet can become expensive when it lacks the capacity to respond. Missing an operation carries diplomatic, economic, and national-security consequences that rarely appear beside a procurement price. Dr. Clarke extends the argument to Britain's reliance on fighters and allies instead of maintaining broad land-based air and ballistic-missile defence. That posture assumes hostile weapons will be intercepted before they reach the country and leaves only short-range systems for any leakers. Every state has comparable force-structure gaps, but recognizing the cost of failure changes what counts as an economical purchase.",
+      "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
+      "evidence": [
+        {
+          "start": "1:07:00",
+          "end": "1:08:12",
+          "note": "The transcript identifies the diplomatic, economic, and security costs of lacking capacity when an operation or crisis occurs."
+        },
+        {
+          "start": "1:08:12",
+          "end": "1:10:12",
+          "note": "The UK air-defence example illustrates how optimistic assumptions about fighters, allies, and short-range defences can create persistent force-structure gaps."
+        }
+      ]
+    },
+    {
+      "id": "technology-cannot-replace-mass-or-diplomacy",
+      "videoId": "NtXGTWoRZTo",
+      "slug": "technology-cannot-replace-mass-or-diplomacy",
+      "title": "Technology cannot replace mass or diplomacy",
+      "kind": "notable_point",
+      "start": "1:11:52",
+      "end": "1:13:24",
+      "topics": [
+        "force-structure",
+        "uncrewed-systems",
+        "naval-diplomacy",
+        "modern-navy"
+      ],
+      "summary": "The conclusion rejects technology as a complete escape from the fleet-size problem because navies still need numbers, mass, and people who can conduct diplomacy.",
+      "body": "The lecture closes by restating the cycle from fewer ships to more equipment, larger hulls, higher cost, and another cut in numbers. More technology may improve capability, but it can also become the next justification for shrinking the fleet. Dr. Clarke argues that maritime power still requires mass as well as sophisticated systems. Uncrewed assets can extend a force, yet they are poorly suited to the human work of visits, negotiation, reassurance, and alliance management. Solving the size problem therefore requires changing procurement and force-structure choices rather than expecting one new technology to remove the need for ships and sailors.",
+      "sourcePath": "src/transcripts/txt/2026-04-02_T18-30-06_why-do-modern-warships-just-keep-getting-bigger_NtXGTWoRZTo.txt",
+      "evidence": [
+        {
+          "start": "1:11:52",
+          "end": "1:13:24",
+          "note": "The conclusion repeats the fleet-cut cycle, warns that technology can justify further cuts, and says navies still need mass and crewed diplomatic presence."
         }
       ]
     }

@@ -13,7 +13,9 @@
     "battleships",
     "world-war-i",
     "naval-industrial-base",
-    "surface-warfare"
+    "surface-warfare",
+    "alfred-thayer-mahan",
+    "torpedo-boats"
   ],
   "segments": [
     {
@@ -29,16 +31,23 @@
         "us-navy",
         "naval-policy",
         "naval-strategy",
-        "pre-world-war-i"
+        "pre-world-war-i",
+        "alfred-thayer-mahan",
+        "naval-preparedness"
       ],
       "summary": "The opening uses Mahan's 1896 warning about naval preparedness to frame why destroyer numbers mattered before a war began.",
-      "body": "This opening is useful for understanding the episode's core argument: ships, yards, crews, and doctrine cannot be improvised at the moment a crisis turns into war. Dr. Clarke links Mahan's emphasis on preparation to the US Navy's destroyer debate, where Congress and naval planners had to decide whether escorts were an essential part of a fighting fleet or a secondary expense. The section sets up destroyers as force enablers rather than small afterthoughts beside battleships.",
+      "body": "Dr. Clarke opens by observing that Alfred Thayer Mahan wrote less about destroyers than about the fleet as a whole. He then reads from Mahan's December 1896 article on preparedness, which warns that modern war material takes too long to create after hostilities become imminent. The battleship example makes the warning concrete: launching a hull is not the same as fitting its battery and making it ready for sea. Dr. Clarke also explains why he finds Mahan's shorter articles especially clear, giving the passage a useful historiographic setting. The argument frames destroyers as part of peacetime readiness and deterrence rather than as small ships that can be improvised after war begins.",
       "sourcePath": "src/transcripts/txt/2026-07-01_T18-30-06_the-usn-pre-wwi-destroyers-never-enough-ordered_yQPnWPw_bho.txt",
       "evidence": [
         {
           "start": "0:00",
           "end": "0:56",
           "note": "The video opens with Mahan, naval war preparedness, and the time required to create modern war material."
+        },
+        {
+          "start": "3:00",
+          "end": "3:43",
+          "note": "Dr. Clarke explains why Mahan's shorter articles can be more direct than his books and places the preparedness quotation in that body of work."
         },
         {
           "start": "3:43",
@@ -60,10 +69,11 @@
         "us-navy",
         "fleet-screening",
         "ship-design",
-        "naval-procurement"
+        "naval-procurement",
+        "torpedo-boats"
       ],
       "summary": "The Farragut example shows why a capable torpedo boat was still not the same thing as the destroyer screen the US fleet needed.",
-      "body": "The discussion contrasts a cheap large torpedo boat with a destroyer suited to preserving and protecting a battle fleet. Farragut's speed, torpedoes, and defensive usefulness are acknowledged, but Dr. Clarke emphasizes that a torpedo boat built around attack and local defense could not fill the wider screening role. The viewer gets a concrete design-and-mission distinction before the video turns to early US destroyer classes.",
+      "body": "Congress considered large torpedo boats a cheaper substitute for destroyers, and Farragut provides the design case study. Dr. Clarke notes her 30-knot speed, 18-inch torpedoes, light guns, and hull built around delivering a torpedo attack. Her later service around the Panama Canal illustrates why she remained a valuable local defensive asset. The limitation was operational: a torpedo boat optimized for attack and coastal defense could not provide the wider screening and force-preservation functions required by the US battle fleet. Opening here gives viewers a clear distinction between similar-looking small combatants whose missions pointed toward different fleet structures.",
       "sourcePath": "src/transcripts/txt/2026-07-01_T18-30-06_the-usn-pre-wwi-destroyers-never-enough-ordered_yQPnWPw_bho.txt",
       "evidence": [
         {
@@ -79,39 +89,72 @@
       ]
     },
     {
-      "id": "bainbridge-truxtun-and-escort-scarcity",
+      "id": "bainbridge-class-design-variations",
       "videoId": "yQPnWPw_bho",
-      "slug": "bainbridge-truxtun-and-escort-scarcity",
-      "title": "Bainbridge and Truxtun classes leave the battle line thinly screened",
+      "slug": "bainbridge-class-design-variations",
+      "title": "Bainbridge-class variations complicate the first mass order",
       "kind": "chapter",
       "start": "6:52",
-      "end": "15:24",
+      "end": "9:23",
       "topics": [
         "destroyers",
         "us-navy",
-        "battleships",
-        "force-structure",
+        "bainbridge-class",
+        "ship-design",
         "naval-procurement",
         "pre-world-war-i"
       ],
-      "summary": "The early Bainbridge and Truxtun destroyers are measured against a much larger battleship program, exposing the imbalance in US fleet construction.",
-      "body": "This section turns hull counts into a force-structure lesson. Dr. Clarke walks through the varied Bainbridge group, the small Truxtun follow-on, and the contemporary battleship construction program to show how quickly prestige units outpaced escorts. The point is not that the destroyers were useless; it is that 16 destroyers for a growing battle fleet made the US Navy look top-heavy and easier for rival navies to discount.",
+      "summary": "The thirteen Bainbridge-class ships provided immediate numbers, but different hull forms, boilers, funnels, and torpedo arrangements made them less uniform than the class label suggests.",
+      "body": "The Bainbridge label covers a related group rather than thirteen identical destroyers. Dr. Clarke points out differences in forecastles and turtle decks, boiler installations, funnel arrangements, and single or twin torpedo-tube layouts among individual ships. Displacement and trial performance also varied, while the shared armament centered on 3-inch and 6-pounder guns with 18-inch torpedoes. The class nevertheless gave the US Navy an immediate body of destroyers after the limitations of large torpedo boats became clear. This watch point is useful for seeing how early mass procurement could add hulls without yet producing a fully standardized design.",
       "sourcePath": "src/transcripts/txt/2026-07-01_T18-30-06_the-usn-pre-wwi-destroyers-never-enough-ordered_yQPnWPw_bho.txt",
       "evidence": [
         {
           "start": "6:52",
-          "end": "9:23",
-          "note": "The transcript introduces the Bainbridge class, variations among ships, speed, guns, torpedoes, and the instant mass they provided."
+          "end": "8:24",
+          "note": "The transcript introduces thirteen Bainbridge-class ships and describes variations in decks, boilers, funnels, torpedo tubes, and trial speed."
         },
+        {
+          "start": "8:35",
+          "end": "9:23",
+          "note": "Dr. Clarke gives the intended displacement, speed, gun, and torpedo characteristics before describing the class as immediate mass for the Navy."
+        }
+      ]
+    },
+    {
+      "id": "battleship-orders-outpace-early-destroyers",
+      "videoId": "yQPnWPw_bho",
+      "slug": "battleship-orders-outpace-early-destroyers",
+      "title": "Nineteen battleships outpace sixteen early destroyers",
+      "kind": "notable_point",
+      "start": "9:23",
+      "end": "15:24",
+      "topics": [
+        "destroyers",
+        "us-navy",
+        "bainbridge-class",
+        "truxtun-class",
+        "battleships",
+        "force-structure",
+        "naval-procurement"
+      ],
+      "summary": "A count of contemporary battleships, Bainbridge and Truxtun destroyers, and large torpedo boats reveals how readily Congress funded prestige units while leaving the battle line thinly supported.",
+      "body": "Dr. Clarke counts nineteen pre-dreadnought battleships begun across the Kearsarge, Illinois, Maine, Virginia, and Connecticut classes during roughly the same period as thirteen Bainbridge destroyers. The three improved Truxtuns raise the destroyer total only to sixteen. He argues that Congress was willing to fund headline capital ships but much harder to persuade about escorts, even though the battleships themselves were capable and well armed. The four large torpedo boats did not repair the imbalance because they were also too few and were designed for a different role. The result was a top-heavy battle line that looked impressive in isolation but less threatening to a rival navy fielding a balanced force.",
+      "sourcePath": "src/transcripts/txt/2026-07-01_T18-30-06_the-usn-pre-wwi-destroyers-never-enough-ordered_yQPnWPw_bho.txt",
+      "evidence": [
         {
           "start": "9:23",
           "end": "12:35",
-          "note": "Dr. Clarke compares 13 Bainbridge-class destroyers and three Truxtuns with 19 contemporary pre-dreadnought battleships."
+          "note": "The transcript compares nineteen contemporary pre-dreadnought battleships with thirteen Bainbridges and three Truxtuns."
         },
         {
           "start": "12:40",
+          "end": "14:31",
+          "note": "Dr. Clarke describes the battleships as capable, then counts only four large torpedo boats and explains why they did not provide adequate support."
+        },
+        {
+          "start": "14:34",
           "end": "15:24",
-          "note": "The transcript argues that good capital ships without enough escorts produced an unsupported battle line."
+          "note": "The passage concludes that an excellent but unsupported battle line remained top-heavy and that construction then paused for six years."
         }
       ]
     },
@@ -129,10 +172,11 @@
         "fleet-screening",
         "naval-logistics",
         "force-structure",
-        "world-war-i"
+        "world-war-i",
+        "smith-class"
       ],
       "summary": "The Smith class improves capability, but five ships cannot screen a battle fleet or provide worldwide security on their own.",
-      "body": "The six-year pause before the Smith class becomes a practical warning about headline fleets without enough supporting hulls. The ships themselves are treated as good destroyers, with turbines, coal capacity, seakeeping improvements, and a role in protecting fleet movements toward the Philippines. Their small number is the issue: five screening assets cannot cover enough positions when an opponent brings a balanced force.",
+      "body": "The six-year pause before the Smith class becomes a practical warning about a headline fleet without enough supporting hulls. Dr. Clarke presents the five ships as capable destroyers, with Parsons turbines, substantial coal capacity, improved seakeeping, five 3-inch guns, and three 18-inch torpedo tubes. Their intended reach mattered because the Navy expected them to help protect fleet movements toward the Philippines and operations across a wide ocean. The problem was arithmetic rather than quality: five destroyers barely screen one four-battleship division and cannot meet threats in more than five places. Against an opponent ordering destroyers by the dozen or by flotilla, even good ships left the American battle fleet vulnerable.",
       "sourcePath": "src/transcripts/txt/2026-07-01_T18-30-06_the-usn-pre-wwi-destroyers-never-enough-ordered_yQPnWPw_bho.txt",
       "evidence": [
         {
@@ -165,10 +209,12 @@
         "naval-strategy",
         "naval-policy",
         "deterrence",
-        "fleet-screening"
+        "fleet-screening",
+        "alfred-thayer-mahan",
+        "naval-preparedness"
       ],
       "summary": "The middle of the episode connects wartime destroyer shortages, balanced force design, and Mahan's warning that preparedness has to happen in peace.",
-      "body": "This watch point is the conceptual bridge between early ship counts and broader naval theory. Dr. Clarke argues that building large numbers after war begins does not prove prewar readiness; it proves that the fleet had to catch up under pressure. He then compares fleet design to combined-arms warfare and returns to Mahan's claim that timely preparation can deter conflict or reduce its cost.",
+      "body": "This watch point is the conceptual bridge between early ship counts and broader naval theory. Dr. Clarke argues that building many good destroyers after war begins demonstrates industrial catch-up, not peacetime preparedness. His combined-arms analogy pairs infantry, armor, drones, and artillery to show why no single platform can supply every capability a force needs. A fleet likewise needs a mission-appropriate balance of capital ships, screens, scouts, and supporting systems. Returning to Mahan, he concludes that timely preparation may deter war and that failing to prepare transfers the cost to lives and treasure once conflict begins.",
       "sourcePath": "src/transcripts/txt/2026-07-01_T18-30-06_the-usn-pre-wwi-destroyers-never-enough-ordered_yQPnWPw_bho.txt",
       "evidence": [
         {
@@ -201,10 +247,13 @@
         "fleet-screening",
         "destroyers",
         "royal-navy",
-        "naval-weapons"
+        "naval-weapons",
+        "jeune-ecole",
+        "jackie-fisher",
+        "submarine-warfare"
       ],
       "summary": "The video uses Jeune Ecole ideas and Jackie Fisher's flotilla defence to show why new weapons work best when absorbed into a balanced fleet.",
-      "body": "This section warns against treating a new weapon as an all-purpose answer. Dr. Clarke describes Jeune Ecole-style hopes that torpedo boats, rapid-fire guns, and other weapons could cheaply strip away a battle fleet, then contrasts that with Fisher's approach of folding new weapons into a fleet system. The takeaway for viewers is that technology changes fleet balance, but it does not remove the need to ask what problem the navy is actually solving.",
+      "body": "This section warns against treating a new weapon as an all-purpose answer. Dr. Clarke describes Jeune Ecole hopes that torpedo boats, torpedoes, rapid-firing guns, and explosive shells could cheaply strip away an enemy battle fleet. He contrasts that shortcut with Jackie Fisher's flotilla defence, which absorbed new weapons into the main fleet and wider force doctrine. The submarine example reinforces the distinction: he argues that German blockade efforts came closer to success in the First World War, but places their practical use within an integrated flotilla strategy rather than a single-weapon theory. The takeaway is to ask whether a technology answers the navy's actual mission and how it changes the balance of the whole force.",
       "sourcePath": "src/transcripts/txt/2026-07-01_T18-30-06_the-usn-pre-wwi-destroyers-never-enough-ordered_yQPnWPw_bho.txt",
       "evidence": [
         {
@@ -218,6 +267,11 @@
           "note": "Dr. Clarke says Fisher evolved the idea into flotilla defence by absorbing new weapon systems into a balanced force."
         },
         {
+          "start": "25:01",
+          "end": "25:46",
+          "note": "The transcript uses German submarine warfare to distinguish an integrated flotilla strategy from claims that a single technology vindicated Jeune Ecole."
+        },
+        {
           "start": "25:50",
           "end": "26:35",
           "note": "The passage asks whether new technology answers the right questions and returns to the need for a balanced force."
@@ -225,81 +279,286 @@
       ]
     },
     {
-      "id": "paulding-class-numbers-still-lag",
+      "id": "capital-ship-to-destroyer-ratios",
       "videoId": "yQPnWPw_bho",
-      "slug": "paulding-class-numbers-still-lag",
-      "title": "Paulding-class numbers still lag behind the battle fleet",
-      "kind": "chapter",
+      "slug": "capital-ship-to-destroyer-ratios",
+      "title": "Fleet ratios expose the Paulding order's limits",
+      "kind": "notable_point",
       "start": "26:35",
-      "end": "33:38",
+      "end": "29:58",
       "topics": [
         "destroyers",
         "us-navy",
+        "paulding-class",
         "battleships",
         "force-structure",
         "fleet-screening",
         "naval-procurement"
       ],
-      "summary": "The Paulding class improves destroyer totals, but the ratio against pre-dreadnoughts and dreadnoughts still leaves the US fleet short of escorts.",
-      "body": "The Paulding discussion shows how a useful class can still be insufficient at fleet scale. Dr. Clarke counts the US battleship force, then compares it with the destroyer inventory to show why 42 destroyers did not provide much margin for 35 capital ships or even for the newer dreadnought force. Details on speed, range, torpedoes, and funnel layouts keep the section grounded in ship design while the larger lesson remains force balance.",
+      "summary": "Adding twenty-one Pauldings and five Smiths raised destroyer strength, but thirty-five capital ships still left the US Navy far short of the screen ratios Dr. Clarke describes.",
+      "body": "The Paulding order looks substantial until Dr. Clarke places it beside the battle fleet it had to support. He counts twenty-five pre-dreadnoughts and ten early dreadnoughts, or thirty-five capital ships in all. A minimum screen of two destroyers per battleship would already require about seventy ships, while a stronger screen could demand four or five per capital ship. The existing Bainbridges, Truxtuns, Smiths, and Pauldings totaled only forty-two destroyers. Even a policy of concentrating exclusively on the ten dreadnoughts offered much less margin than the raw destroyer total first suggests.",
       "sourcePath": "src/transcripts/txt/2026-07-01_T18-30-06_the-usn-pre-wwi-destroyers-never-enough-ordered_yQPnWPw_bho.txt",
       "evidence": [
         {
           "start": "26:35",
+          "end": "28:18",
+          "note": "The transcript adds twenty-one Pauldings and five Smiths, then counts twenty-five pre-dreadnoughts and ten early dreadnoughts."
+        },
+        {
+          "start": "28:24",
           "end": "29:28",
-          "note": "The transcript counts 26 additional destroyers against a much larger battleship force and discusses desired escort ratios."
+          "note": "Dr. Clarke describes minimum and preferred escort ratios before totaling forty-two destroyers against thirty-five capital ships."
         },
         {
           "start": "29:36",
-          "end": "31:04",
-          "note": "Dr. Clarke compares 42 destroyers with 35 capital ships and describes the Paulding class's speed, range, guns, and torpedoes."
-        },
-        {
-          "start": "31:10",
-          "end": "33:38",
-          "note": "The section concludes that the ships were good and useful, but still too few for the US Navy's battle-fleet needs."
+          "end": "29:58",
+          "note": "The passage considers concentrating all destroyers around the ten dreadnoughts and still finds the protection limited."
         }
       ]
     },
     {
-      "id": "thousand-tonners-scouts-and-wartime-catchup",
+      "id": "paulding-design-and-force-enabler-scarcity",
       "videoId": "yQPnWPw_bho",
-      "slug": "thousand-tonners-scouts-and-wartime-catchup",
-      "title": "Thousand-tonners, scout duties, and wartime catch-up",
+      "slug": "paulding-design-and-force-enabler-scarcity",
+      "title": "Paulding design strengths cannot overcome escort scarcity",
       "kind": "chapter",
-      "start": "34:00",
-      "end": "47:44",
+      "start": "29:58",
+      "end": "33:38",
+      "topics": [
+        "destroyers",
+        "us-navy",
+        "paulding-class",
+        "ship-design",
+        "fleet-screening",
+        "force-structure"
+      ],
+      "summary": "Speed, range, lighter twin torpedo launchers, and varied machinery made the Pauldings useful ships, but scarcity made them more precious than the battleships they enabled.",
+      "body": "Dr. Clarke gives the Paulding class roughly 29.5 knots, 3,000 nautical miles of range at 16 knots, five 3-inch guns, and three twin 18-inch torpedo launchers. The twin launchers were lighter than the Smith class's single-launcher design, illustrating a meaningful improvement in weapons installation. Funnel and shaft arrangements varied across the large class, including ships with conjoined funnels and either two or three shafts. He judges the ships good and useful, but returns immediately to the shortage created by continued battleship construction. Because destroyers enabled the battle line while existing in smaller numbers, they had become the scarcer operational resource despite costing far less than battleships.",
+      "sourcePath": "src/transcripts/txt/2026-07-01_T18-30-06_the-usn-pre-wwi-destroyers-never-enough-ordered_yQPnWPw_bho.txt",
+      "evidence": [
+        {
+          "start": "29:58",
+          "end": "31:04",
+          "note": "The transcript gives Paulding speed, range, armament, and the weight advantage of the twin torpedo launchers."
+        },
+        {
+          "start": "31:10",
+          "end": "32:10",
+          "note": "Dr. Clarke describes funnel and shaft variations and calls the Pauldings good, useful ships."
+        },
+        {
+          "start": "32:13",
+          "end": "33:38",
+          "note": "The passage explains that too few destroyers had to enable a much larger battleship force, making the cheaper ships unusually precious."
+        }
+      ]
+    },
+    {
+      "id": "destroyer-acts-cost-cap-procurement",
+      "videoId": "yQPnWPw_bho",
+      "slug": "destroyer-acts-cost-cap-procurement",
+      "title": "Naval acts demand speed inside a fixed destroyer cost cap",
+      "kind": "notable_point",
+      "start": "33:43",
+      "end": "34:44",
       "topics": [
         "destroyers",
         "us-navy",
         "naval-procurement",
-        "surface-warfare",
-        "world-war-i",
-        "naval-industrial-base"
+        "naval-policy",
+        "defense-budgeting"
       ],
-      "summary": "The late section follows Cassin, Aylwin, O'Brien, and later classes to show how limited peacetime orders forced the US Navy into wartime catch-up.",
-      "body": "This extended close is the video's procurement case study. The Cassin and Aylwin classes bring better weapons, oil fuel, and greater stability, while the O'Brien class and later destroyers show the gradual path toward more useful wartime designs. The numbers remain the problem: small batches of four or six could not meet escort and scout needs, so the eventual Wickes order of 111 ships appears as a wartime correction rather than evidence that the prewar program was adequate.",
+      "summary": "The 1908-1910 authorizations pair small destroyer batches with a demand for the highest practical speed at no more than $750,000 per ship.",
+      "body": "The procurement acts show Congress defining destroyers through both performance and an explicit ceiling. Dr. Clarke cites authorizations for five and then six torpedo-boat destroyers, each expected to achieve the highest practical speed while costing no more than $750,000. He accepts the appeal of financial discipline but questions whether the budget was being set by the fleet's actual requirement. This short watch point makes the later class-by-class shortage legible as a policy choice, not a failure to build capable designs.",
       "sourcePath": "src/transcripts/txt/2026-07-01_T18-30-06_the-usn-pre-wwi-destroyers-never-enough-ordered_yQPnWPw_bho.txt",
       "evidence": [
         {
-          "start": "34:00",
-          "end": "36:49",
-          "note": "The transcript discusses 1908-1910 destroyer authorizations, the Cassin class, thousand-tonners, and four-ship batches alongside standard battleships."
+          "start": "33:43",
+          "end": "34:27",
+          "note": "The transcript cites destroyer provisions in the 1908-1910 naval acts and the requirement for maximum practical speed below a $750,000 cost ceiling."
         },
         {
-          "start": "37:20",
-          "end": "38:35",
-          "note": "Dr. Clarke compares small prewar batches with the later Wickes order of 111 and argues that orders followed funds more than need."
+          "start": "34:32",
+          "end": "34:44",
+          "note": "Dr. Clarke describes the rule as understandable finance but questions the budget-first logic."
+        }
+      ]
+    },
+    {
+      "id": "thousand-tonners-to-wickes-catchup",
+      "videoId": "yQPnWPw_bho",
+      "slug": "thousand-tonners-to-wickes-catchup",
+      "title": "Thousand-tonners lead from four-ship batches to 111 Wickes",
+      "kind": "chapter",
+      "start": "34:47",
+      "end": "39:36",
+      "topics": [
+        "destroyers",
+        "us-navy",
+        "cassin-class",
+        "wickes-class",
+        "naval-procurement",
+        "world-war-i",
+        "naval-industrial-base"
+      ],
+      "summary": "The Cassin class begins the thousand-tonners, but a sequence of four- and six-ship orders makes the later 111-ship Wickes program look like wartime correction rather than planned readiness.",
+      "body": "The four Cassin-class destroyers begin the US Navy's thousand-tonners with 4-inch guns and capable machinery, yet they were ordered while the standard battleship program was also beginning. Dr. Clarke then traces the small batches that followed: four Aylwins and six each of the O'Brien, Tucker, Sampson, and Caldwell classes. The abrupt jump to 111 Wickes-class ships exposes the scale of the wartime requirement that peacetime orders had not met. He argues that the earlier quantities followed available appropriations more closely than the number of ships needed for persistent capability. The rule-of-three discussion adds the operational reason: maintenance, fire, salt water, and other realities defeat plans that assume every hull remains continuously available.",
+      "sourcePath": "src/transcripts/txt/2026-07-01_T18-30-06_the-usn-pre-wwi-destroyers-never-enough-ordered_yQPnWPw_bho.txt",
+      "evidence": [
+        {
+          "start": "34:47",
+          "end": "36:49",
+          "note": "The transcript introduces four Cassins as the first thousand-tonners and compares their order with standard-battleship construction."
         },
+        {
+          "start": "36:56",
+          "end": "38:35",
+          "note": "Dr. Clarke lists the small prewar classes and contrasts them with the later order for 111 Wickes-class destroyers."
+        },
+        {
+          "start": "38:38",
+          "end": "39:36",
+          "note": "The passage argues that appropriations drove quantities and invokes the rule of three and maritime maintenance realities."
+        }
+      ]
+    },
+    {
+      "id": "destroyers-double-as-scouts",
+      "videoId": "yQPnWPw_bho",
+      "slug": "destroyers-double-as-scouts",
+      "title": "Destroyers double as scouts when cruisers are scarce",
+      "kind": "notable_point",
+      "start": "39:36",
+      "end": "40:50",
+      "topics": [
+        "destroyers",
+        "us-navy",
+        "cassin-class",
+        "scout-cruisers",
+        "chester-class",
+        "naval-reconnaissance",
+        "force-structure"
+      ],
+      "summary": "The Cassins gain heavier guns and torpedoes partly because too few Chester-class scout cruisers force scarce destroyers to cover another fleet role.",
+      "body": "The Cassins carried four 4-inch guns and four twin 18-inch torpedo launchers, a marked increase in firepower over earlier destroyers. Dr. Clarke explains that the improvement was not only about fighting other small craft. With just three Chester-class scout cruisers, the Navy expected its already scarce destroyers to double as scouts for the battle fleet. Some ships even paired triple-expansion machinery with turbines to improve cruising, although most relied on Parsons turbines. This watch point shows how a shortage in one ship type transferred missions and design pressure onto another.",
+      "sourcePath": "src/transcripts/txt/2026-07-01_T18-30-06_the-usn-pre-wwi-destroyers-never-enough-ordered_yQPnWPw_bho.txt",
+      "evidence": [
         {
           "start": "39:36",
-          "end": "43:26",
-          "note": "The passage covers improved firepower, destroyers doubling as scouts, Aylwin improvements, and O'Brien-class wartime relevance."
+          "end": "40:16",
+          "note": "The transcript gives Cassin armament and says destroyers had to double as scouts because the Chester class numbered only three ships."
         },
         {
+          "start": "40:33",
+          "end": "40:50",
+          "note": "Dr. Clarke notes cruising machinery differences before moving to the Aylwin class."
+        }
+      ]
+    },
+    {
+      "id": "aylwin-oil-fuel-and-gun-stability",
+      "videoId": "yQPnWPw_bho",
+      "slug": "aylwin-oil-fuel-and-gun-stability",
+      "title": "Aylwin refinements improve an oil-fired gun platform",
+      "kind": "notable_point",
+      "start": "40:50",
+      "end": "41:57",
+      "topics": [
+        "destroyers",
+        "us-navy",
+        "aylwin-class",
+        "ship-design",
+        "oil-fuel",
+        "naval-gunnery"
+      ],
+      "summary": "The Aylwin class develops the Cassin family with oil fuel and changes intended to provide a steadier platform for its guns.",
+      "body": "Dr. Clarke presents the Aylwins as evolutionary improvements within the Cassin design family. Their testing and design changes did not create a wholly new type, but they refined a useful thousand-tonner. All used oil fuel, marking an important machinery and endurance choice for the expanding destroyer force. Greater stability for the guns made the ships more useful fighting platforms, even though a class of four still did little to solve the numerical shortage.",
+      "sourcePath": "src/transcripts/txt/2026-07-01_T18-30-06_the-usn-pre-wwi-destroyers-never-enough-ordered_yQPnWPw_bho.txt",
+      "evidence": [
+        {
+          "start": "40:50",
+          "end": "41:19",
+          "note": "The transcript describes the Aylwins as Cassin-derived ships with incremental design and testing changes and all-oil fuel."
+        },
+        {
+          "start": "41:22",
+          "end": "41:57",
+          "note": "Dr. Clarke calls them good, useful ships and emphasizes greater stability for their guns."
+        }
+      ]
+    },
+    {
+      "id": "obrien-class-war-service-and-six-ship-limit",
+      "videoId": "yQPnWPw_bho",
+      "slug": "obrien-class-war-service-and-six-ship-limit",
+      "title": "O'Brien-class war service meets a six-ship limit",
+      "kind": "chapter",
+      "start": "42:03",
+      "end": "43:26",
+      "topics": [
+        "destroyers",
+        "us-navy",
+        "obrien-class",
+        "world-war-i",
+        "anti-submarine-warfare",
+        "naval-procurement"
+      ],
+      "summary": "Four 4-inch guns, eight 21-inch torpedoes, and later action against U-58 show O'Brien-class value, while the six-ship authorization repeats the larger procurement failure.",
+      "body": "The O'Brien class sat at the transition into the war the Navy was supposedly preparing to fight. Each carried four 4-inch guns and eight 21-inch torpedoes, although Dr. Clarke notes that the torpedoes had no reloads. Their later anti-submarine work, including involvement in sinking U-58, shows that the ships were operationally valuable rather than failed designs. Yet the General Board and the political authorization process produced only six of them. The class therefore sharpens the episode's central distinction between building good destroyers and building enough destroyers.",
+      "sourcePath": "src/transcripts/txt/2026-07-01_T18-30-06_the-usn-pre-wwi-destroyers-never-enough-ordered_yQPnWPw_bho.txt",
+      "evidence": [
+        {
+          "start": "42:03",
+          "end": "42:35",
+          "note": "The transcript places the O'Brien class at the opening of war and says that the Navy needed greater numbers than the class could provide."
+        },
+        {
+          "start": "42:38",
+          "end": "43:03",
+          "note": "Dr. Clarke gives the gun and torpedo fit and cites service against U-58 and other submarines."
+        },
+        {
+          "start": "43:08",
+          "end": "43:26",
+          "note": "The passage returns to the General Board, political debate, and the authorization of only six ships."
+        }
+      ]
+    },
+    {
+      "id": "battleship-status-and-supporting-fleet-shortfall",
+      "videoId": "yQPnWPw_bho",
+      "slug": "battleship-status-and-supporting-fleet-shortfall",
+      "title": "Battleship status outpaces the supporting fleet",
+      "kind": "chapter",
+      "start": "43:30",
+      "end": "47:44",
+      "topics": [
+        "destroyers",
+        "us-navy",
+        "battleships",
+        "scout-cruisers",
+        "fleet-screening",
+        "force-structure",
+        "anti-submarine-warfare"
+      ],
+      "summary": "The conclusion balances both sides of the argument: battleships supplied the fighting core and diplomatic status, but too few cruisers and destroyers kept that core from working across American ocean commitments.",
+      "body": "While the Navy obtained six O'Briens, it was laying down or completing Pennsylvania-, Nevada-, New York-, and New Mexico-class battleships. Dr. Clarke calls those capital ships the fighting core, but notes that the same fleet lacked the scout cruisers and destroyers needed to find threats, screen the battle line, and cover distant waters. A destroyer-only navy would have been equally unbalanced because it would lack the heavy force required to fight peer fleets and sustain great-power status. Quality could not erase quantity either: one excellent American destroyer could not reliably replace four comparable foreign ships. US destroyers later performed valuable anti-submarine and other operations from bases such as Cork, but the fleet remained too small for both the battle line and the oceans it had to defend. The closing challenge asks how naval leaders can make the political case for these less glamorous supporting ships before war demonstrates the shortage.",
+      "sourcePath": "src/transcripts/txt/2026-07-01_T18-30-06_the-usn-pre-wwi-destroyers-never-enough-ordered_yQPnWPw_bho.txt",
+      "evidence": [
+        {
           "start": "43:30",
+          "end": "44:59",
+          "note": "The transcript contrasts simultaneous battleship construction with missing cruisers, scout cruisers, and destroyer numbers."
+        },
+        {
+          "start": "45:15",
+          "end": "46:21",
+          "note": "Dr. Clarke explains why a destroyer-only navy would also fail and why quality does not compensate for a four-to-one numerical disadvantage."
+        },
+        {
+          "start": "46:25",
           "end": "47:44",
-          "note": "The conclusion returns to battleship-heavy procurement, thin cruiser and destroyer numbers, and the difficulty of making the case for a balanced fleet."
+          "note": "The conclusion credits US destroyer wartime and anti-submarine work, then returns to ocean coverage and the political challenge of funding a balanced fleet."
         }
       ]
     }

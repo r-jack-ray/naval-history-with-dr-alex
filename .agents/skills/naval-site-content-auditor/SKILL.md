@@ -48,7 +48,7 @@ This audit is repeatable. A prior first, second, third, or later pass is not evi
 
 1. Find thin records with short or label-like `body` text. Useful scans include bodies under 120-160 characters, bodies that begin with "This is", and bodies that mention users/search/browsing instead of the subject.
 2. Read the segment `summary`, `evidence` notes, and the cited transcript passage before expanding a record.
-3. For `chapter` and `notable_point`, aim for 4-8 concise sentences in `body`.
+3. For `chapter` and `notable_point`, aim for 4-10 concise sentences in `body`.
 4. For `qa`, keep the actual prompt in `question`, the direct answer in `answerShort`, and use `body` for context, constraints, and why the answer matters.
 5. Do not invent new facts. If the existing evidence is too thin, either inspect the transcript around the cited time or leave a targeted follow-up note.
 6. Merge duplicate phrasing instead of padding. More text should add substance, not repetition.

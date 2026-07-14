@@ -6,7 +6,9 @@
     "second-world-war",
     "kriegsmarine",
     "royal-navy",
-    "anti-submarine-warfare"
+    "anti-submarine-warfare",
+    "operation-deadlight",
+    "operation-regenbogen"
   ],
   "segments": [
     {
@@ -762,7 +764,7 @@
       "title": "Checking a South American U-boat wreck claim",
       "kind": "qa",
       "start": "1:51:55",
-      "end": "1:53:10",
+      "end": "2:12:59",
       "topics": [
         "submarines",
         "second-world-war",
@@ -770,16 +772,232 @@
         "naval-historiography",
         "south-america"
       ],
-      "summary": "A claimed U-boat wreck in South American mangroves cannot be confirmed from the sources available during the discussion.",
+      "summary": "A claimed U-boat wreck in South American mangroves remains unconfirmed, while a later clarification separates it from a confirmed offshore wreck.",
       "question": "Which U-boat can reportedly be seen in a South American mangrove?",
-      "answerShort": "Dr. Clarke could not identify a confirmed boat from his records and asked for a source before accepting the claim.",
-      "body": "The answer models useful caution around the many stories of German submarines reaching South America. Dr. Clarke distinguishes the broad geographic possibility of mangrove coastlines from evidence for a particular wreck and openly leaves room for a source he has missed. The watch point is valuable as naval historiography: a vivid location claim still needs a traceable vessel identity and supporting record.",
+      "answerShort": "Dr. Clarke could not identify a confirmed mangrove wreck, and the questioner later clarified that an article had conflated an unconfirmed claim with a confirmed wreck offshore.",
+      "body": "The answer models useful caution around the many stories of German submarines reaching South America. Dr. Clarke distinguishes the broad geographic possibility of mangrove coastlines from evidence for a particular wreck and openly leaves room for a source he has missed. A later chat clarification says the article behind the question had combined two alleged Argentine wrecks, only one of which was confirmed and that one lay offshore. The watch point is valuable as naval historiography: a vivid location claim still needs a traceable vessel identity and supporting record.",
       "sourcePath": "src/transcripts/txt/2026-02-12_T19-59-24_operation-deadlight-not-deadbeat-scuttling-u-boats-live_eLeTt0k3ejg.txt",
       "evidence": [
         {
           "start": "1:51:55",
           "end": "1:53:10",
           "note": "Dr. Clarke checks his records, finds no confirmed South American mangrove wreck, and asks for a link so the claim can be investigated."
+        },
+        {
+          "start": "2:12:52",
+          "end": "2:12:59",
+          "note": "The questioner clarifies that the source article conflated two supposed Argentine wrecks, one confirmed offshore and one unconfirmed."
+        }
+      ]
+    },
+    {
+      "id": "why-a-u-boat-only-strategy-could-not-defeat-britain",
+      "videoId": "eLeTt0k3ejg",
+      "slug": "why-a-u-boat-only-strategy-could-not-defeat-britain",
+      "title": "Why a U-boat-only strategy could not defeat Britain",
+      "kind": "notable_point",
+      "start": "15:00",
+      "end": "16:58",
+      "topics": [
+        "submarines",
+        "kriegsmarine",
+        "royal-navy",
+        "battle-of-the-atlantic",
+        "force-structure",
+        "naval-procurement",
+        "war-economy"
+      ],
+      "summary": "Concentrating German construction on submarines from 1937 would have triggered faster British escort production and weakened the surface force needed to seize Norway.",
+      "body": "Dr. Clarke challenges the recurring claim that an earlier all-in German submarine program could have defeated Britain. The Royal Navy was already expanding its escort force and could build frigates, sloops, and destroyers faster than Germany could produce usable U-boats. Abandoning capital ships, cruisers, and destroyers would also have left Germany without the surface strength required to capture Norway. Without Norwegian bases, the U-boat campaign would have faced a less favorable route into the North Atlantic. The argument treats procurement as an interactive contest in which the enemy changes its own building program rather than remaining passive.",
+      "sourcePath": "src/transcripts/txt/2026-02-12_T19-59-24_operation-deadlight-not-deadbeat-scuttling-u-boats-live_eLeTt0k3ejg.txt",
+      "evidence": [
+        {
+          "start": "15:00",
+          "end": "16:10",
+          "note": "The lecture assesses Donitz's attempt to preserve the German Navy and criticizes continuation of a campaign that could not force a decision against Britain."
+        },
+        {
+          "start": "16:11",
+          "end": "16:58",
+          "note": "Dr. Clarke argues that Britain could outbuild German submarine production in escorts and that a submarine-only fleet could not have captured the Norwegian bases needed for the Atlantic campaign."
+        }
+      ]
+    },
+    {
+      "id": "why-surviving-u-boats-headed-for-norway",
+      "videoId": "eLeTt0k3ejg",
+      "slug": "why-surviving-u-boats-headed-for-norway",
+      "title": "Why surviving U-boat crews headed for Norway",
+      "kind": "notable_point",
+      "start": "32:05",
+      "end": "34:49",
+      "topics": [
+        "submarines",
+        "second-world-war",
+        "kriegsmarine",
+        "operation-regenbogen",
+        "naval-personnel",
+        "norway"
+      ],
+      "summary": "Operational crews chose the possibility of survival and an organized surrender in German-held Norway over scuttling at sea and trusting their lives to an Atlantic raft.",
+      "body": "The surviving operational boats were often the ones already at sea when the destruction orders circulated. Dr. Clarke contrasts the risks of combat, which still leave a chance of living, with deliberate scuttling in the Atlantic, which would put a crew into inadequate wartime life rafts. Norway offered reachable ports that remained under German control and were expected to support negotiations longer than Germany itself. When that expectation collapsed, the crews still had more reason to preserve their boats as bargaining assets than to destroy them. This passage explains the human logic behind the surrender map rather than treating the boats' final destinations as a purely technical movement problem.",
+      "sourcePath": "src/transcripts/txt/2026-02-12_T19-59-24_operation-deadlight-not-deadbeat-scuttling-u-boats-live_eLeTt0k3ejg.txt",
+      "evidence": [
+        {
+          "start": "32:05",
+          "end": "32:58",
+          "note": "The transcript explains why operational crews at sea preferred the chance of survival to deliberately sinking their boats and entering Atlantic life rafts."
+        },
+        {
+          "start": "34:03",
+          "end": "34:49",
+          "note": "Dr. Clarke describes Norway as the limited reachable refuge still under German control and expected to retain negotiating value."
+        }
+      ]
+    },
+    {
+      "id": "non-german-submarines-in-regenbogen-scuttlings",
+      "videoId": "eLeTt0k3ejg",
+      "slug": "non-german-submarines-in-regenbogen-scuttlings",
+      "title": "Non-German submarines in the scuttling totals",
+      "kind": "qa",
+      "start": "39:41",
+      "end": "39:52",
+      "topics": [
+        "submarines",
+        "second-world-war",
+        "kriegsmarine",
+        "operation-regenbogen"
+      ],
+      "summary": "The German scuttling total included some submarines that had not originally been built for Germany.",
+      "question": "Were non-German-built submarines among the boats scuttled by Germany?",
+      "answerShort": "Yes, although this brief reply does not identify or count the individual foreign-built boats.",
+      "body": "Dr. Clarke confirms the premise but does not expand it into a list of the captured or foreign-built submarines involved. That limitation matters because the wider totals in the lecture combine boats of different origins, conditions, and operational value. He also corrects the terminology in the prompt: submarines are conventionally called boats rather than ships. The watch point therefore supplies a useful qualification to the headline scuttling numbers without claiming more detail than the exchange provides.",
+      "sourcePath": "src/transcripts/txt/2026-02-12_T19-59-24_operation-deadlight-not-deadbeat-scuttling-u-boats-live_eLeTt0k3ejg.txt",
+      "evidence": [
+        {
+          "start": "39:41",
+          "end": "39:52",
+          "note": "A viewer asks whether non-German-built submarines were included, and Dr. Clarke answers yes before correcting the boats-versus-ships terminology."
+        }
+      ]
+    },
+    {
+      "id": "failed-prefabricated-boats-in-the-home-fleet-total",
+      "videoId": "eLeTt0k3ejg",
+      "slug": "failed-prefabricated-boats-in-the-home-fleet-total",
+      "title": "Failed prefabricated boats in the home-fleet total",
+      "kind": "qa",
+      "start": "57:03",
+      "end": "57:08",
+      "topics": [
+        "submarines",
+        "kriegsmarine",
+        "war-economy",
+        "naval-procurement",
+        "naval-maintenance"
+      ],
+      "summary": "Germany's home-based U-boat count included failed prefabricated boats whose construction tolerances made the paper total look healthier than the usable force.",
+      "question": "Did the home-boat count include failed prefabricated U-boats?",
+      "answerShort": "Yes; Dr. Clarke confirms that such boats were included in the home-based inventory.",
+      "body": "The direct answer ties the later Q&A back to the lecture's warning about paper strength. Some home boats were in training, commissioning, repair, or other non-operational roles, and some would never have been allowed back to sea. Poor construction tolerances could require substantial rebuilding and further reduce a hull's useful dive life. Counting those boats alongside operational submarines therefore obscures the difference between production output and deployable combat power.",
+      "sourcePath": "src/transcripts/txt/2026-02-12_T19-59-24_operation-deadlight-not-deadbeat-scuttling-u-boats-live_eLeTt0k3ejg.txt",
+      "evidence": [
+        {
+          "start": "21:09",
+          "end": "21:25",
+          "note": "The lecture notes that the home inventory included failed prefabricated boats with poor tolerances and examples that had to be rebuilt after delivery."
+        },
+        {
+          "start": "57:03",
+          "end": "57:08",
+          "note": "A viewer asks whether failed prefabricated boats were part of the home-boat count, and Dr. Clarke answers yes."
+        }
+      ]
+    },
+    {
+      "id": "why-norway-attracted-surrendering-u-boats",
+      "videoId": "eLeTt0k3ejg",
+      "slug": "why-norway-attracted-surrendering-u-boats",
+      "title": "Why Norway attracted surrendering U-boats",
+      "kind": "qa",
+      "start": "48:28",
+      "end": "48:54",
+      "topics": [
+        "submarines",
+        "second-world-war",
+        "kriegsmarine",
+        "naval-diplomacy",
+        "norway"
+      ],
+      "summary": "Norway's attraction lay less in distance from Soviet forces than in ports still controlled by a substantial German organization.",
+      "question": "Was Norway attractive to surrendering U-boats because it was farther from Soviet forces?",
+      "answerShort": "Dr. Clarke thinks continued German control was the stronger factor, because crews could enter an organized German-held port instead of going directly into enemy hands.",
+      "body": "The answer rejects a simple geography-of-escape explanation for the concentration of surrendered boats in Norway. German authority, senior officers, and administrative structures still existed there when crews were choosing where to go. Entering that environment promised a more ordered transition than surfacing directly beside an Allied port or patrol. It also helps explain why boats escaping Germany clustered in southern Norwegian ports while operational boats returning from the Atlantic appeared farther north and west.",
+      "sourcePath": "src/transcripts/txt/2026-02-12_T19-59-24_operation-deadlight-not-deadbeat-scuttling-u-boats-live_eLeTt0k3ejg.txt",
+      "evidence": [
+        {
+          "start": "48:28",
+          "end": "48:54",
+          "note": "Asked whether distance from Soviet forces was decisive, Dr. Clarke instead emphasizes continued German control and the presence of a large German organization in Norway."
+        }
+      ]
+    },
+    {
+      "id": "why-battleships-did-not-join-operation-deadlight",
+      "videoId": "eLeTt0k3ejg",
+      "slug": "why-battleships-did-not-join-operation-deadlight",
+      "title": "Why battleships did not join Operation Deadlight",
+      "kind": "qa",
+      "start": "1:29:10",
+      "end": "1:29:27",
+      "topics": [
+        "operation-deadlight",
+        "royal-navy",
+        "polish-navy",
+        "destroyers",
+        "force-structure"
+      ],
+      "summary": "The concentrated Type XXIII sinkings remained destroyer work rather than becoming a gunnery exercise for British battleships.",
+      "question": "Did battleships take part in sinking the surrendered U-boats?",
+      "answerShort": "No; the destroyers conducting this phase did not bring battleships into the action.",
+      "body": "Dr. Clarke answers while discussing the rapid destruction of Type XXIII boats by a British O-class destroyer and a Polish N-class destroyer. His joking formulation that the destroyers would not let battleships close underscores how thoroughly smaller surface combatants handled the task. These ships already had suitable guns, crews, and towing support for disposing of submarines whose hatches had been opened for flooding. The exchange keeps the focus on the smaller warships named in the disposal record rather than on battleship-scale firepower.",
+      "sourcePath": "src/transcripts/txt/2026-02-12_T19-59-24_operation-deadlight-not-deadbeat-scuttling-u-boats-live_eLeTt0k3ejg.txt",
+      "evidence": [
+        {
+          "start": "1:29:10",
+          "end": "1:29:27",
+          "note": "Asked whether battleships joined the sinkings, Dr. Clarke says no and identifies the British O-class and Polish N-class destroyers doing the work."
+        }
+      ]
+    },
+    {
+      "id": "reciprocity-and-postwar-submarine-warfare-prosecutions",
+      "videoId": "eLeTt0k3ejg",
+      "slug": "reciprocity-and-postwar-submarine-warfare-prosecutions",
+      "title": "Reciprocity and postwar submarine-warfare prosecutions",
+      "kind": "notable_point",
+      "start": "2:09:33",
+      "end": "2:11:39",
+      "topics": [
+        "submarines",
+        "second-world-war",
+        "naval-law",
+        "naval-historiography"
+      ],
+      "summary": "A closing legal discussion argues that Allied use of comparable submarine practices made blanket prosecution of German submariners difficult and forced a distinction between warfare and separately prosecutable crimes.",
+      "body": "Dr. Clarke says an Allied defense offer would have made prosecution of German submarine commanders embarrassing because the victors had used comparable forms of warfare. He describes postwar lawyers being reined in when proposed charges would also have criminalized conduct practiced by Allied forces. The point is one of reciprocity and legal consistency, not a claim that every action committed at sea was permissible. He then introduces lawfare as an attempt to use legal rules as a weapon and warns that a courtroom cannot remove every brutal feature inherent in war. This is an interpretive watch point rather than a case-by-case account of the postwar trials.",
+      "sourcePath": "src/transcripts/txt/2026-02-12_T19-59-24_operation-deadlight-not-deadbeat-scuttling-u-boats-live_eLeTt0k3ejg.txt",
+      "evidence": [
+        {
+          "start": "2:09:33",
+          "end": "2:10:38",
+          "note": "The transcript links the absence of blanket submarine-warfare prosecutions to comparable Allied conduct and distinguishes the horrors of warfare from charges that could be applied consistently."
+        },
+        {
+          "start": "2:11:14",
+          "end": "2:11:39",
+          "note": "Dr. Clarke defines lawfare as using law to wage conflict and cautions against treating war as if every contested practice can be resolved as a courtroom case."
         }
       ]
     }
