@@ -312,3 +312,33 @@ pwsh -NoProfile -File .codex/hooks/validate-site.ps1 -SkipRepoCheck
 ## Contributor Notes
 
 See `AGENTS.md` for repository-specific contributor and agent guidance.
+
+## Videos and Live Streams Without Available Transcripts
+
+These completed videos and live streams have saved `no_caption_tracks` failures in `src/transcripts/fetch-status.json`. Upcoming videos and live streams are excluded.
+
+### Videos
+
+| Date | Title |
+| --- | --- |
+| 2020-12-13 | Town Class Part 5 of 7: Southamptons (inadvertent silent movie style...6&7 are ok) |
+| 2020-12-15 | Town Class Part 5 of 7: Southamptons |
+| 2021-08-23 | No Sound??? Battle of the Atlantic: Escort Procurement - Comment Response |
+| 2022-06-28 | Blonde Class: Scout Cruisers of the Royal Navy (Long Patrol) |
+| 2023-04-30 | Amagi Class Battlecruiser: No Sound, but still a Question |
+| 2023-05-31 | Building an R Class to fight a convoy battle vs the Scharnhorsts |
+
+### Live Streams
+
+| Date | Title |
+| --- | --- |
+| 2020-10-27 | Patreon 8 - “The Treaty of London 1930” by Daniel Freedman |
+| 2020-11-03 | Arethusa Class Cruisers |
+| 2021-02-28 | Bruships 39: Books Off the Shelf... |
+| 2021-07-18 | Bruships 53: The Big Gun Era.... bad sound... |
+| 2021-10-14 | Patreon 35: The Naval Career of Jackie Fisher - First Sea Lord Extraordinaire |
+| 2021-10-17 | Bruships 57: Some Cool Books and Naval History Chat |
+| 2021-10-24 | 'The Imperial High Seas Fleet: Tarkin replaces Tirpitz & Thrawn replaces Scheer at Jutland...’ |
+| 2023-09-21 | Patreon 84: The underpaid and underappreciated Merchant Marine of WWII |
+| 2024-11-17 | Bruships 171: Oh Kallax my Kallax, Where art though my Kallax |
+| 2026-02-01 | Bruships 230: Naval History Questions Answered Live...2nd Start |
