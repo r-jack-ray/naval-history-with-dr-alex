@@ -5,7 +5,9 @@
     "naval-aviation",
     "aircraft-carriers",
     "fleet-air-arm",
-    "early-jet-age"
+    "early-jet-age",
+    "fleet-air-defence",
+    "carrier-airpower"
   ],
   "segments": [
     {
@@ -22,7 +24,7 @@
         "airborne-early-warning"
       ],
       "summary": "Dr. Clarke frames 1945-1960 as naval aviation's transition into the jet age and compares jet speed and radar advantages with propeller aircraft endurance.",
-      "body": "The opening establishes a practical baseline: wartime jets were outliers, while the fifteen years after 1945 transformed military aviation. Propeller aircraft retained valuable reliability, payload, and loiter time, but jets offered speed, reach, and a cleaner installation for compact radar. This framing helps explain why navies adopted jets selectively rather than replacing every propeller type at once.",
+      "body": "The opening establishes a practical baseline: wartime jets existed, but they were outliers rather than the main force shaping naval operations. Dr. Clarke treats 1945 to roughly 1960 as the decisive transition into military aviation's jet age. Propeller aircraft retained valuable reliability, payload, and loiter time, making them especially useful when endurance mattered more than speed. Jets offered greater speed and reach, while their unobstructed nose made compact radar installation easier than on propeller aircraft. This comparison explains why navies adopted jets selectively instead of replacing every propeller type at once.",
       "sourcePath": "src/transcripts/txt/2020-11-27_T18-00-00_part-1-of-4-the-effect-of-the-early-jet-age-on-naval-warfare-strategy-tactics_0RPq24lSYrI.txt",
       "evidence": [
         {
@@ -47,7 +49,7 @@
         "pacific-war"
       ],
       "summary": "A Pacific air-defence watch point shows radar pickets directing combat air patrol fighters against incoming Japanese raids before they reached the carrier force.",
-      "body": "Dr. Clarke chooses fleet air defence as the best baseline for measuring jet-age tactical change. He outlines the late-war American system in which radar-equipped destroyers, cruisers, or frigates reported an incoming raid's position and course so fighter controllers could vector the combat air patrol. The system was highly effective, although he cautions against treating it as an entirely unprecedented invention.",
+      "body": "Dr. Clarke chooses fleet air defence as the best baseline for measuring jet-age tactical change because carrier-strike fundamentals remained comparatively recognizable after Taranto and Pearl Harbor. He introduces the late-war American Big Blue Blanket alongside John Thach's better-known Thach Weave as examples of tactical adaptation in the Pacific air war. Radar-equipped destroyers, cruisers, and frigates reported an incoming raid's position and course so fighter controllers could vector the combat air patrol. The interception was intended to destroy Japanese aircraft before they reached the carrier force or another high-value target. The system was highly effective, although the next section cautions against treating coordinated radar direction as an entirely unprecedented American invention.",
       "sourcePath": "src/transcripts/txt/2020-11-27_T18-00-00_part-1-of-4-the-effect-of-the-early-jet-age-on-naval-warfare-strategy-tactics_0RPq24lSYrI.txt",
       "evidence": [
         {
@@ -58,12 +60,38 @@
       ]
     },
     {
+      "id": "fighter-direction-radio-systems",
+      "videoId": "0RPq24lSYrI",
+      "slug": "fighter-direction-radio-systems",
+      "title": "British and American fighter-direction radio systems",
+      "kind": "chapter",
+      "start": "10:17",
+      "end": "12:59",
+      "topics": [
+        "fighter-direction",
+        "radar",
+        "naval-communications",
+        "royal-navy",
+        "us-navy"
+      ],
+      "summary": "A comparison of British and American radio arrangements shows how channel capacity, secrecy, radar reporting, and line-of-sight limits shaped carrier fighter control.",
+      "body": "The British fighter-direction office used a four-channel wireless arrangement that could separate radar reports from other fleet sightings before passing useful information to the combat air patrol. American practice placed heavier demands on radio because Japanese direction finding made surprise and transmission discipline important. VHF imposed a line-of-sight limit, while switching to medium frequency after detecting a raid could add fighter-control traffic to already busy channels. Dr. Clarke uses HMS Victorious's Pacific service as USS Robin to show that both navies possessed working fighter-direction systems before the Big Blue Blanket reached its mature late-war form. The comparison makes communications architecture, not radar alone, part of the air-defence problem.",
+      "sourcePath": "src/transcripts/txt/2020-11-27_T18-00-00_part-1-of-4-the-effect-of-the-early-jet-age-on-naval-warfare-strategy-tactics_0RPq24lSYrI.txt",
+      "evidence": [
+        {
+          "start": "10:17",
+          "end": "12:59",
+          "note": "The transcript compares the British four-channel fighter-direction office with American VHF, medium-frequency, secrecy, and radio-traffic constraints."
+        }
+      ]
+    },
+    {
       "id": "british-and-american-cap-tradeoffs",
       "videoId": "0RPq24lSYrI",
       "slug": "british-and-american-cap-tradeoffs",
       "title": "British and American combat air patrol tradeoffs",
       "kind": "notable_point",
-      "start": "10:17",
+      "start": "12:59",
       "end": "14:00",
       "topics": [
         "combat-air-patrol",
@@ -72,11 +100,11 @@
         "us-navy"
       ],
       "summary": "British long-endurance two-seat fighters and faster-climbing American single-seat fighters produced different combat air patrol strengths and constraints.",
-      "body": "The comparison begins with communications and fighter-direction arrangements already operating before the mature American Pacific system. British two-seat fighters could navigate farther from the carrier and remain aloft longer, allowing the patrol to meet raids farther forward. American single-seat fighters generally climbed faster, so alert aircraft had a better chance of joining an interception after a raid was detected. Each approach therefore traded endurance and forward positioning against reinforcement speed.",
+      "body": "British two-seat fighters paired a pilot with an observer, giving the patrol better navigation, range, and endurance away from the carrier. That allowed the standing combat air patrol to wait farther forward and remain in position longer. American single-seat fighters generally gained altitude faster, so alert aircraft launched after detection still had a chance to join the interception. In the British case, the fighters already airborne were more likely to be the force available when the raid arrived. Each approach therefore traded endurance and forward positioning against reinforcement speed rather than offering a universal advantage.",
       "sourcePath": "src/transcripts/txt/2020-11-27_T18-00-00_part-1-of-4-the-effect-of-the-early-jet-age-on-naval-warfare-strategy-tactics_0RPq24lSYrI.txt",
       "evidence": [
         {
-          "start": "10:17",
+          "start": "12:59",
           "end": "14:00",
           "note": "The transcript compares British and American fighter direction, endurance, navigation, and climb performance."
         }
@@ -97,7 +125,7 @@
         "fleet-air-arm"
       ],
       "summary": "Frequent combat air patrol rotations increased landing wear, making maintenance capacity and aircraft serviceability as important as nominal air-group size.",
-      "body": "Carrier strength on paper did not automatically translate into aircraft available for a strike after weeks at sea. Dr. Clarke emphasizes that arrested landings were especially punishing to airframes, while longer-endurance British patrol aircraft reduced the number of rotations required. Protected, heavy-duty workshops aboard British carriers also supported repairs, helping explain cases in which a smaller nominal air group could generate a larger operational strike.",
+      "body": "Carrier strength on paper did not automatically translate into aircraft available for a strike after weeks at sea. Arrested landings were especially punishing to airframes, so the American need to rotate shorter-endurance combat air patrols more often accelerated wear. British Fireflies and earlier Fulmars could remain aloft longer, reducing the number of damaging landing cycles required for continuous cover. British carriers also contained heavy-duty workshops with some protection, allowing engineers to restore aircraft while the ship remained operational. These differences help explain how a smaller nominal British air group could sometimes generate a larger serviceable strike than a bigger American group after sustained operations.",
       "sourcePath": "src/transcripts/txt/2020-11-27_T18-00-00_part-1-of-4-the-effect-of-the-early-jet-age-on-naval-warfare-strategy-tactics_0RPq24lSYrI.txt",
       "evidence": [
         {
@@ -123,7 +151,7 @@
         "british-defence-policy"
       ],
       "summary": "The postwar Royal Navy remained a major carrier force through Korea and Suez before strategic priorities shifted sharply toward the British Army of the Rhine.",
-      "body": "Dr. Clarke warns against projecting the Royal Navy's later size backward onto the 1945-1960 period. It brought six wartime-started carrier hulls into service during one decade, maintained and refitted others, sustained a carrier station during the Korean War, and sent five carriers to Suez. The steep numerical decline came later, as British defence priorities increasingly centered on the army commitment in Germany.",
+      "body": "Dr. Clarke warns against projecting the Royal Navy's later size backward onto the 1945-1960 period. It brought six wartime-started carrier hulls into service during one decade while maintaining and refitting carriers already in the fleet. The service sustained a carrier station during the Korean War and sent five carriers to the Suez Crisis, demonstrating that postwar British naval aviation still operated at substantial scale. Because the Royal Navy lacked the United States Navy's numerical margin, failed choices carried proportionally greater consequences and encouraged close attention to carrier methods. The steep numerical decline came later in the 1960s as British defence priorities increasingly centered on the British Army of the Rhine.",
       "sourcePath": "src/transcripts/txt/2020-11-27_T18-00-00_part-1-of-4-the-effect-of-the-early-jet-age-on-naval-warfare-strategy-tactics_0RPq24lSYrI.txt",
       "evidence": [
         {
@@ -140,21 +168,49 @@
       "title": "Caspar John as the Royal Navy's aviation advocate",
       "kind": "chapter",
       "start": "19:23",
-      "end": "24:30",
+      "end": "21:42",
       "topics": [
         "caspar-john",
         "fleet-air-arm",
         "royal-navy",
-        "naval-institutions"
+        "naval-institutions",
+        "hms-ocean"
       ],
-      "summary": "Caspar John's flying, carrier, procurement, training, and senior staff appointments made him a central institutional advocate for postwar Royal Navy aviation.",
-      "body": "This biographical watch point follows John from wartime aircraft purchasing and carrier command through naval air training, equipment, squadron, and Whitehall appointments, culminating in his service as First Sea Lord. Dr. Clarke presents him as the postwar counterpart to the officers who had built and expanded the Fleet Air Arm before and during the war. With wartime urgency gone and many experienced advocates retiring, John and Philip Vian had to defend naval aviation through political and budgetary argument as well as operational experience.",
+      "summary": "Caspar John's flying, carrier, procurement, training, and senior staff appointments made him an unusually experienced leader of postwar Royal Navy aviation.",
+      "body": "This biographical watch point follows Caspar John from wartime aircraft purchasing in the United States to command of the escort carrier HMS Pretoria Castle and light fleet carrier HMS Ocean. Ocean later hosted the first jet takeoffs and landings from an aircraft carrier, linking John's command experience directly to the emerging jet era. His later appointments covered naval air stations, air equipment, training, carrier squadrons, the Ministry of Supply, and the Naval Staff. John eventually served as Vice Chief of the Naval Staff and then First Sea Lord from 1960 to 1963. The breadth of that career gave a practicing Fleet Air Arm pilot unusual influence over both operational aviation and Whitehall decision-making.",
       "sourcePath": "src/transcripts/txt/2020-11-27_T18-00-00_part-1-of-4-the-effect-of-the-early-jet-age-on-naval-warfare-strategy-tactics_0RPq24lSYrI.txt",
       "evidence": [
         {
           "start": "19:23",
+          "end": "21:42",
+          "note": "The transcript lists Caspar John's flying, carrier, equipment, training, Ministry of Supply, and senior Naval Staff appointments."
+        }
+      ]
+    },
+    {
+      "id": "postwar-naval-aviation-institutional-advocacy",
+      "videoId": "0RPq24lSYrI",
+      "slug": "postwar-naval-aviation-institutional-advocacy",
+      "title": "Rebuilding the political case for naval aviation after 1945",
+      "kind": "chapter",
+      "start": "21:42",
+      "end": "24:30",
+      "topics": [
+        "fleet-air-arm",
+        "naval-institutions",
+        "naval-procurement",
+        "philip-vian",
+        "caspar-john",
+        "whitehall"
+      ],
+      "summary": "When wartime urgency and many veteran advocates disappeared, Caspar John and Philip Vian had to defend carriers through institutional politics as well as operational evidence.",
+      "body": "Dr. Clarke contrasts postwar advocacy with the conditions under which Reginald Henderson had established the modern Fleet Air Arm and Lumley Lyster had helped drive its wartime expansion. During the war, escort-carrier convoy protection and fleet air cover in the Mediterranean, Indian Ocean, Pacific, and North Atlantic made the requirement for naval aviation difficult to dispute. After 1945 many experienced aviation officers retired, while the immediate operational pressure behind procurement weakened. John Cunningham is presented as less effective in the political battles of Whitehall, leaving Philip Vian and Caspar John to make much of the senior case. Vian argued for both the surface fleet and aviation, while John concentrated on carriers and also treated submarines as their complementary offensive arm.",
+      "sourcePath": "src/transcripts/txt/2020-11-27_T18-00-00_part-1-of-4-the-effect-of-the-early-jet-age-on-naval-warfare-strategy-tactics_0RPq24lSYrI.txt",
+      "evidence": [
+        {
+          "start": "21:42",
           "end": "24:30",
-          "note": "The transcript lists Caspar John's aviation posts and explains the postwar institutional case for carriers."
+          "note": "The transcript contrasts Henderson and Lyster's wartime momentum with the postwar Whitehall advocacy carried by Philip Vian and Caspar John."
         }
       ]
     },
@@ -165,22 +221,49 @@
       "title": "How carrier airpower frees submarines for offensive action",
       "kind": "notable_point",
       "start": "24:30",
-      "end": "29:06",
+      "end": "25:47",
       "topics": [
         "carrier-airpower",
         "submarine-warfare",
         "anti-submarine-warfare",
-        "buccaneer",
-        "cva-01"
+        "maritime-patrol-aircraft"
       ],
       "summary": "Caspar John's force concept paired carrier aircraft with submarines so each arm complicated the enemy's attempt to hunt the other.",
-      "body": "A powerful carrier air group could drive back maritime patrol and anti-submarine aircraft, giving friendly submarines more freedom to operate offensively. An opponent trying to strike the carrier would first face the submarine screen, while forces hunting those submarines would encounter carrier aircraft. Dr. Clarke connects this mutually supporting idea to John's advocacy for long-range strike aircraft, the Buccaneer, CVA-01, and the Phantom.",
+      "body": "Caspar John's force concept treated carriers and submarines as two sides of the same offensive problem. A powerful carrier air group could drive back maritime-patrol and anti-submarine aircraft, giving friendly submarines more freedom to operate. An opponent trying to strike the carrier would first face the submarine screen, while forces hunting those submarines would encounter carrier aircraft. The arrangement created a catch-22 in which concentrating on either arm exposed the attacker to the other. This watch point is useful for understanding carrier aviation as protection for a wider naval system rather than merely an air wing attached to one ship.",
       "sourcePath": "src/transcripts/txt/2020-11-27_T18-00-00_part-1-of-4-the-effect-of-the-early-jet-age-on-naval-warfare-strategy-tactics_0RPq24lSYrI.txt",
       "evidence": [
         {
           "start": "24:30",
-          "end": "29:06",
-          "note": "The transcript explains the carrier-submarine catch-22 and links John to major strike-aircraft and carrier programs."
+          "end": "25:47",
+          "note": "The transcript explains Caspar John's mutually supporting carrier-submarine catch-22."
+        }
+      ]
+    },
+    {
+      "id": "caspar-john-procurement-and-whitehall-influence",
+      "videoId": "0RPq24lSYrI",
+      "slug": "caspar-john-procurement-and-whitehall-influence",
+      "title": "Caspar John's influence on Buccaneer, CVA-01, and Phantom",
+      "kind": "notable_point",
+      "start": "25:56",
+      "end": "28:57",
+      "topics": [
+        "caspar-john",
+        "naval-procurement",
+        "buccaneer",
+        "cva-01",
+        "phantom",
+        "hms-ocean",
+        "eric-brown"
+      ],
+      "summary": "John's long run of operational and Whitehall posts let him press for long-range strike aircraft, new carriers, and practical familiarity with emerging naval aircraft.",
+      "body": "Caspar John favored long-range, fast strike aircraft, and Dr. Clarke credits his influence in the development or adoption of the Buccaneer, CVA-01, and the Phantom as well as earlier naval aircraft. Apart from seagoing commands, John's final sixteen years placed him in or close to Whitehall, where he could be drawn directly into ministerial debates about carriers. His enthusiasm for flying also connected policy leadership with practical aviation culture. Clarke links him closely with test pilot Eric 'Winkle' Brown and HMS Ocean, the carrier used for the first jet takeoffs and landings. He explicitly labels stories of John joining Brown as a senior co-pilot on two-seat test flights as strong but unconfirmed rumors, preserving an important distinction between documented influence and anecdote.",
+      "sourcePath": "src/transcripts/txt/2020-11-27_T18-00-00_part-1-of-4-the-effect-of-the-early-jet-age-on-naval-warfare-strategy-tactics_0RPq24lSYrI.txt",
+      "evidence": [
+        {
+          "start": "25:56",
+          "end": "28:57",
+          "note": "The transcript links John to Buccaneer, CVA-01, Phantom, Whitehall advocacy, HMS Ocean, Eric Brown, and explicitly caveated test-flight stories."
         }
       ]
     },
@@ -191,21 +274,126 @@
       "title": "From gun-fighter performance to radar and missile payload",
       "kind": "chapter",
       "start": "29:06",
-      "end": "32:18",
+      "end": "30:38",
       "topics": [
         "fleet-air-defence",
         "air-to-air-missiles",
         "air-superiority",
-        "blackburn-firebrand"
+        "fighter-aircraft",
+        "airborne-radar"
       ],
       "summary": "Early postwar naval fighters prioritized speed for gun combat until reliable missiles shifted attention toward radar, payload, and weapons-platform quality.",
-      "body": "At the end of the Second World War, naval air superiority still depended on fighters fast enough to defeat enemy aircraft with guns. Reliable air-to-air missiles later weakened the demand for outright performance superiority and increased the value of radar and weapons load. The Blackburn Firebrand illustrates an overlapping wartime ambition: a single-seat carrier aircraft intended to combine torpedo attack with fighter-like power and speed.",
+      "body": "At the end of the Second World War, naval air superiority still depended on fighters fast enough to catch and defeat enemy aircraft with guns. Speed and climb performance therefore carried immediate tactical weight because the fighter itself had to maneuver into a firing position. Once reliable air-to-air missiles appeared, outright performance superiority no longer defined the whole requirement. Radar quality, payload, and the aircraft's stability as a weapons platform became increasingly important measures of combat value. Dr. Clarke presents the argument as an enduring tension between raw air-superiority performance and the capacity to carry and employ effective weapons.",
       "sourcePath": "src/transcripts/txt/2020-11-27_T18-00-00_part-1-of-4-the-effect-of-the-early-jet-age-on-naval-warfare-strategy-tactics_0RPq24lSYrI.txt",
       "evidence": [
         {
           "start": "29:06",
-          "end": "32:18",
+          "end": "30:38",
           "note": "The transcript contrasts gun-era air-superiority requirements with later radar-and-missile weapons-platform priorities."
+        }
+      ]
+    },
+    {
+      "id": "royal-navy-carrier-role-diversity",
+      "videoId": "0RPq24lSYrI",
+      "slug": "royal-navy-carrier-role-diversity",
+      "title": "Fleet carriers, convoy escorts, and strike escort carriers",
+      "kind": "notable_point",
+      "start": "30:42",
+      "end": "31:04",
+      "topics": [
+        "fleet-air-arm",
+        "aircraft-carriers",
+        "escort-carriers",
+        "convoy-defence",
+        "pacific-war"
+      ],
+      "summary": "The wartime Royal Navy employed carrier aviation in distinct fleet-fighting, convoy-protection, and strike roles rather than around one standardized air-group mission.",
+      "body": "Dr. Clarke pauses the technology discussion to show how varied Royal Navy carrier employment already was in 1945. Fleet carriers fought with the British Pacific Fleet, while escort carriers protected convoys across several theatres. Other escort carriers carried air groups configured for offensive strikes rather than routine convoy cover. These missions demanded different combinations of fighters, patrol endurance, and attack aircraft. The comparison matters because the early jet transition had to serve several existing operational systems instead of replacing a single carrier doctrine.",
+      "sourcePath": "src/transcripts/txt/2020-11-27_T18-00-00_part-1-of-4-the-effect-of-the-early-jet-age-on-naval-warfare-strategy-tactics_0RPq24lSYrI.txt",
+      "evidence": [
+        {
+          "start": "30:42",
+          "end": "31:04",
+          "note": "The transcript distinguishes Pacific fleet carriers, convoy-protection escort carriers, and escort carriers configured for strike missions."
+        }
+      ]
+    },
+    {
+      "id": "blackburn-firebrand-multirole-ambition",
+      "videoId": "0RPq24lSYrI",
+      "slug": "blackburn-firebrand-multirole-ambition",
+      "title": "The Blackburn Firebrand's multirole ambition",
+      "kind": "notable_point",
+      "start": "31:06",
+      "end": "31:47",
+      "topics": [
+        "blackburn-firebrand",
+        "carrier-aircraft",
+        "multirole-aircraft",
+        "torpedo-bombers",
+        "naval-procurement"
+      ],
+      "summary": "The Firebrand illustrates an attempt to combine carrier torpedo attack with the power and speed expected of a fighter in one single-seat aircraft.",
+      "body": "The Blackburn Firebrand began as a fighter intended to defend naval air bases before its role shifted toward carrier operations. It became a single-seat attack aircraft capable of carrying a torpedo while retaining fighter-like power and speed. Dr. Clarke uses the design to illustrate the appeal of one aircraft performing both strike and air-combat tasks. That ambition promised flexibility but forced very different mission requirements into the same airframe. The example also shows that multirole carrier-aircraft debates predated the mature jet age.",
+      "sourcePath": "src/transcripts/txt/2020-11-27_T18-00-00_part-1-of-4-the-effect-of-the-early-jet-age-on-naval-warfare-strategy-tactics_0RPq24lSYrI.txt",
+      "evidence": [
+        {
+          "start": "31:06",
+          "end": "31:47",
+          "note": "The transcript traces the Firebrand from naval-base fighter to single-seat carrier torpedo aircraft with fighter-like power and speed."
+        }
+      ]
+    },
+    {
+      "id": "pacific-fleet-without-enemy-battle-fleet",
+      "videoId": "0RPq24lSYrI",
+      "slug": "pacific-fleet-without-enemy-battle-fleet",
+      "title": "Why Britain still needed a Pacific Fleet in 1946",
+      "kind": "chapter",
+      "start": "31:51",
+      "end": "32:18",
+      "topics": [
+        "pacific-fleet",
+        "john-cunningham",
+        "submarine-warfare",
+        "maritime-strategy",
+        "british-interests"
+      ],
+      "summary": "John Cunningham argued that friendly command of the Pacific did not remove hostile submarines, distant British interests, or the need for a versatile fleet presence.",
+      "body": "In 1946 a minister questioned the planned Pacific Fleet because a friendly power rather than a potential enemy battle fleet dominated the ocean. John Cunningham answered that potentially hostile submarines still operated across a vast region containing important British interests. His case rejected the idea that a fleet's purpose could be measured only against an opposing battle line. Anti-submarine work, protection of dispersed interests, and mobile presence could justify naval forces even without an expected fleet battle. This exchange supplies the strategic bridge from wartime carrier tactics to the broader uses of postwar naval aviation.",
+      "sourcePath": "src/transcripts/txt/2020-11-27_T18-00-00_part-1-of-4-the-effect-of-the-early-jet-age-on-naval-warfare-strategy-tactics_0RPq24lSYrI.txt",
+      "evidence": [
+        {
+          "start": "31:51",
+          "end": "32:18",
+          "note": "The transcript quotes Cunningham's 1946 case for a Pacific Fleet despite friendly regional naval dominance."
+        }
+      ]
+    },
+    {
+      "id": "carrier-airpower-coercion-below-war-threshold",
+      "videoId": "0RPq24lSYrI",
+      "slug": "carrier-airpower-coercion-below-war-threshold",
+      "title": "Carrier airpower and coercion below perceived full-scale war",
+      "kind": "notable_point",
+      "start": "32:18",
+      "end": "33:28",
+      "topics": [
+        "aircraft-carriers",
+        "power-projection",
+        "coercive-diplomacy",
+        "limited-war",
+        "naval-strategy"
+      ],
+      "summary": "Carrier aircraft offered punitive and coercive options that governments often treated differently from overt naval bombardment, even though the distinction was politically uneasy.",
+      "body": "A battle fleet is often assessed by the enemy fleet it might fight, but Dr. Clarke argues that naval aviation offered a wider range of politically usable actions. Shelling a target from a warship was readily understood as war, while punitive airstrikes against a sufficiently weak target were sometimes treated as something short of full-scale conflict. Carrier aircraft therefore provided a graduated instrument of coercion as well as a means of fleet battle. The speaker openly questions the logic of the distinction rather than presenting it as morally or legally settled. This passage is useful for understanding how perceptions of escalation can shape the strategic value assigned to carrier airpower.",
+      "sourcePath": "src/transcripts/txt/2020-11-27_T18-00-00_part-1-of-4-the-effect-of-the-early-jet-age-on-naval-warfare-strategy-tactics_0RPq24lSYrI.txt",
+      "evidence": [
+        {
+          "start": "32:18",
+          "end": "33:28",
+          "note": "The transcript contrasts the perception of naval gunfire with punitive carrier airstrikes against weaker targets."
         }
       ]
     },
@@ -215,7 +403,7 @@
       "slug": "carrier-flexibility-beyond-battle-fleets",
       "title": "Carrier flexibility beyond fleet battle",
       "kind": "notable_point",
-      "start": "32:18",
+      "start": "33:36",
       "end": "35:00",
       "topics": [
         "aircraft-carriers",
@@ -224,14 +412,14 @@
         "maritime-surveillance",
         "korean-war"
       ],
-      "summary": "Carrier value extended beyond defeating an enemy battle fleet to anti-submarine patrols, surveillance, coercive strikes, and sustained mobile air operations.",
-      "body": "John Cunningham's 1946 defence of a Pacific Fleet rested on hostile submarines, wide British interests, and the range of tasks naval aviation could perform even without an opposing battle fleet. Carrier aircraft could survey large sea areas, gather intelligence, conduct overflights, support anti-submarine operations, and deliver limited strikes. Unlike aircraft staging briefly through an airfield, a carrier brought its support infrastructure with it and could sustain operations for weeks or months, especially when backed by maintenance carriers such as HMS Unicorn, Pioneer, and Perseus.",
+      "summary": "Carrier value extended beyond fleet battle to anti-submarine patrols, ocean surveillance, overflights, and sustained mobile air operations.",
+      "body": "Carrier aircraft could conduct overflights and support anti-submarine operations in peacetime as well as war. Their reconnaissance and intelligence-gathering capacity let a fleet search or monitor wide areas of ocean beyond the horizon of its ships. Because the carrier could move across much of the world's surface, its air group could appear from directions that fixed land bases could not match. The ship also carried the maintenance, fuel, command, and support infrastructure needed for more than a brief staging stop. Backed by maintenance carriers such as HMS Unicorn, Pioneer, and Perseus, naval aviation could sustain operations for weeks or months rather than make a single dash-and-return strike.",
       "sourcePath": "src/transcripts/txt/2020-11-27_T18-00-00_part-1-of-4-the-effect-of-the-early-jet-age-on-naval-warfare-strategy-tactics_0RPq24lSYrI.txt",
       "evidence": [
         {
-          "start": "32:18",
+          "start": "33:36",
           "end": "35:00",
-          "note": "The transcript describes carrier surveillance, ASW, mobility, coercive options, and sustained operations with maintenance support."
+          "note": "The transcript describes carrier surveillance, ASW, mobility, and sustained operations with maintenance-carrier support."
         }
       ]
     }

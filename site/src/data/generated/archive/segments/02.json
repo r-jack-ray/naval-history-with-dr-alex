@@ -1240,9 +1240,9 @@
     "sourcePath": "src/transcripts/txt/2023-12-19_T19-05-07_patreon-90-how-were-warship-autoloader-turrets-prototyped-a-development-history__-C8n5iaAUI.txt"
   },
   {
-    "id": "jet-speed-and-airborne-early-warning",
-    "slug": "jet-speed-and-airborne-early-warning",
-    "title": "Why jet speed made airborne early warning essential",
+    "id": "radar-horizon-geometry-and-warning-range",
+    "slug": "radar-horizon-geometry-and-warning-range",
+    "title": "How radar-horizon geometry limits fleet warning",
     "kind": "chapter",
     "kindLabel": "Chapter",
     "videoId": "_cve96Ui5BA",
@@ -1251,8 +1251,94 @@
     "start": "1:46",
     "startSeconds": 106,
     "youtubeUrl": "https://www.youtube.com/watch?v=_cve96Ui5BA&t=106s",
-    "summary": "See how faster jet attacks exposed the limits of a ship's radar horizon and made high-altitude airborne sensors increasingly important.",
-    "body": "Dr. Clarke explains that radar range is constrained not only by transmitter power but by the curvature of the Earth and the sensor's height. Faster aircraft compress a fleet's reaction time, so detecting the attacker before weapons reach their terminal phase becomes critical. Airborne early-warning aircraft extend the effective horizon by carrying radar far above a ship's mast, giving fighters and missile defenses more time to respond. He also connects this principle to proposals for tethered radar drones.",
+    "summary": "Start here for the geometry that limits shipboard radar range and makes fast, low-flying threats difficult to detect in time.",
+    "body": "Dr. Clarke begins with the geometry behind naval radar warning. Because the Earth curves away, a radar can detect a very distant target only if that target is high enough to remain above the horizon. Mounting the sensor higher moves the line of sight farther out, which is why an aircraft carrier's tall island gives its radar an advantage over lower ships. Faster jets make this geometric limit operationally dangerous because they consume the fleet's remaining reaction time.",
+    "topics": [
+      {
+        "slug": "radar",
+        "title": "Radar"
+      },
+      {
+        "slug": "fleet-air-defence",
+        "title": "Fleet Air Defence"
+      },
+      {
+        "slug": "sensors",
+        "title": "Sensors"
+      },
+      {
+        "slug": "naval-aviation",
+        "title": "Naval Aviation"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "1:46",
+        "end": "2:53",
+        "note": "The transcript explains how the Earth's curvature, target altitude, and sensor height determine a ship's effective radar horizon."
+      }
+    ],
+    "end": "2:53",
+    "endSeconds": 173,
+    "sourcePath": "src/transcripts/txt/2020-11-27_T21-00-05_part-4-of-4-the-effect-of-the-early-jet-age-on-naval-warfare-strategy-tactics__cve96Ui5BA.txt"
+  },
+  {
+    "id": "layered-fleet-air-defence-before-terminal-range",
+    "slug": "layered-fleet-air-defence-before-terminal-range",
+    "title": "Why fleet air defence must intercept before terminal range",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "_cve96Ui5BA",
+    "videoSlug": "part-4-of-4-the-effect-of-the-early-jet-age-on-naval-warfare-strategy-tactics",
+    "videoTitle": "Part 4 of 4 \"The effect of the early jet age on naval warfare strategy/tactics?\"",
+    "start": "2:53",
+    "startSeconds": 173,
+    "youtubeUrl": "https://www.youtube.com/watch?v=_cve96Ui5BA&t=173s",
+    "summary": "Dr. Clarke maps aircraft, area defence, point defence, and close-in weapons onto the need to stop an attack before its final high-energy approach.",
+    "body": "Dr. Clarke lays out fleet air defence in layers: aircraft and area-defence missiles at distance, point-defence weapons closer in, and close-in weapon systems as a final attempt. He notes that medium-calibre guns formerly filled the point-defence role now associated with missiles. In his description of terminal range, an incoming weapon may retain enough energy to reach the ship even after it has been hit. The preferred response is therefore to destroy the launching aircraft or incoming weapon earlier rather than rely on a last-ditch interception.",
+    "topics": [
+      {
+        "slug": "fleet-air-defence",
+        "title": "Fleet Air Defence"
+      },
+      {
+        "slug": "missile-defence",
+        "title": "Missile Defence"
+      },
+      {
+        "slug": "close-in-weapon-systems",
+        "title": "Close In Weapon Systems"
+      },
+      {
+        "slug": "naval-tactics",
+        "title": "Naval Tactics"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "2:53",
+        "end": "3:50",
+        "note": "The transcript distinguishes aircraft, area, point, and close-in defences and explains why interception should occur before terminal range."
+      }
+    ],
+    "end": "3:50",
+    "endSeconds": 230,
+    "sourcePath": "src/transcripts/txt/2020-11-27_T21-00-05_part-4-of-4-the-effect-of-the-early-jet-age-on-naval-warfare-strategy-tactics__cve96Ui5BA.txt"
+  },
+  {
+    "id": "jet-speed-and-airborne-early-warning",
+    "slug": "jet-speed-and-airborne-early-warning",
+    "title": "Why jet speed made airborne early warning essential",
+    "kind": "chapter",
+    "kindLabel": "Chapter",
+    "videoId": "_cve96Ui5BA",
+    "videoSlug": "part-4-of-4-the-effect-of-the-early-jet-age-on-naval-warfare-strategy-tactics",
+    "videoTitle": "Part 4 of 4 \"The effect of the early jet age on naval warfare strategy/tactics?\"",
+    "start": "3:52",
+    "startSeconds": 232,
+    "youtubeUrl": "https://www.youtube.com/watch?v=_cve96Ui5BA&t=232s",
+    "summary": "See how moving radar into the air expands a fleet's warning horizon and restores reaction time against fast jet attacks.",
+    "body": "Faster jets make the limited horizon of a low shipboard radar increasingly dangerous. Dr. Clarke explains that raising the sensor changes the line-of-sight angle and pushes the point at which the Earth's curvature blocks detection farther away. An airborne early-warning aircraft therefore acts as a mobile high-altitude radar that can reveal threats sooner. Proposals for tethered radar drones apply the same principle while keeping a sensor continuously aloft.",
     "topics": [
       {
         "slug": "airborne-early-warning",
@@ -1273,9 +1359,9 @@
     ],
     "evidence": [
       {
-        "start": "1:46",
+        "start": "3:52",
         "end": "4:38",
-        "note": "The transcript links jet speed, radar-horizon geometry, defensive reaction time, and elevated airborne sensors."
+        "note": "The transcript connects faster aircraft to the need for elevated mobile radar and mentions tethered drones as a future way to extend the horizon."
       }
     ],
     "end": "4:38",
@@ -1295,7 +1381,7 @@
     "startSeconds": 284,
     "youtubeUrl": "https://www.youtube.com/watch?v=_cve96Ui5BA&t=284s",
     "summary": "The Fairey Gannet illustrates how the Royal Navy combined reconnaissance and anti-submarine work in response to Soviet undersea and surface threats.",
-    "body": "The Gannet began as an anti-submarine aircraft, reflecting the urgent need to find and counter Soviet submarines. Dr. Clarke also presents reconnaissance as part of the answer to Soviet surface raiders: the fleet first had to locate a threat before it could engage it. The aircraft therefore represents a broader Cold War shift toward persistent surveillance as well as direct attack capability.",
+    "body": "The Gannet began as an anti-submarine aircraft, reflecting the urgent need to find and counter Soviet submarines. Dr. Clarke also presents reconnaissance as part of the answer to Soviet surface raiders. The fleet had to locate a raider before it could bring other weapons to bear, making search part of the combat problem rather than a separate supporting task. The aircraft therefore represents a broader Cold War shift toward persistent surveillance as well as direct attack capability.",
     "topics": [
       {
         "slug": "fairey-gannet",
@@ -1338,7 +1424,7 @@
     "startSeconds": 348,
     "youtubeUrl": "https://www.youtube.com/watch?v=_cve96Ui5BA&t=348s",
     "summary": "A tour of HMS Bulwark's 40-aircraft group shows how fighters, strike aircraft, ASW planes, airborne radar, helicopters, and rescue aircraft shared one carrier.",
-    "body": "Dr. Clarke uses HMS Bulwark's 1958 complement to show the breadth of tasks expected from a late-1950s Royal Navy carrier. The group included Sea Hawks for fighter-attack work, Sea Venoms for all-weather interception, Gannets for anti-submarine warfare, Skyraiders for airborne warning, and helicopters for utility and rescue duties. Its fall from 42 to 40 aircraft also hints at the space pressure imposed by larger and more specialized postwar aircraft. The mix is a practical snapshot of a carrier becoming a multi-sensor, multi-mission system.",
+    "body": "Dr. Clarke uses HMS Bulwark's 1958 complement to show the breadth of tasks expected from a late-1950s Royal Navy carrier. The group included Sea Hawks for fighter-attack work, Sea Venoms for all-weather interception, Gannets for anti-submarine warfare, Skyraiders for airborne warning, and helicopters for utility and rescue duties. He notes that the total had already fallen from 42 to 40 aircraft. The Gannets were due to leave at the end of 1958 because the navy judged that it had enough escorts and wanted more helicopter space. The changing mix shows how a carrier balanced fighter, strike, surveillance, anti-submarine, and rescue roles within finite capacity.",
     "topics": [
       {
         "slug": "hms-bulwark",
@@ -1414,7 +1500,7 @@
   {
     "id": "royal-navy-multi-carrier-assumptions",
     "slug": "royal-navy-multi-carrier-assumptions",
-    "title": "Royal Navy jet doctrine assumed multiple carriers",
+    "title": "Victorious, Ark Royal, and Hermes embodied multi-carrier doctrine",
     "kind": "notable_point",
     "kindLabel": "Notable Point",
     "videoId": "_cve96Ui5BA",
@@ -1423,8 +1509,8 @@
     "start": "9:46",
     "startSeconds": 586,
     "youtubeUrl": "https://www.youtube.com/watch?v=_cve96Ui5BA&t=586s",
-    "summary": "Royal Navy carrier aviation developed around a fleet with several carriers available, not a lone ship expected to cover the Atlantic by itself.",
-    "body": "The number of carriers in service shaped how the Royal Navy imagined jet operations. Dr. Clarke stresses that planners could expect several carriers to cooperate and did not treat a single Atlantic carrier as the normal case. Those ships also supplied global presence through deployments, port visits, and visible flying, so their value combined combat concentration with peacetime diplomacy. Force size therefore influenced both tactical assumptions and Britain's international posture.",
+    "summary": "A 1961 view of HMS Victorious, HMS Ark Royal, and HMS Hermes illustrates why Royal Navy jet doctrine assumed several carriers could operate together.",
+    "body": "A 1961 image of HMS Victorious, HMS Ark Royal, and HMS Hermes makes the Royal Navy's carrier numbers visible. The surrounding discussion also notes that several aircraft companies competed as naval jets developed. Dr. Clarke stresses that planners could expect multiple carriers to cooperate and did not treat one ship alone in the Atlantic as the normal case. Those carriers also supplied global presence through deployments, port visits, and visible flying. Force size therefore influenced both tactical assumptions and Britain's international posture.",
     "topics": [
       {
         "slug": "aircraft-carriers",
@@ -1441,13 +1527,25 @@
       {
         "slug": "naval-diplomacy",
         "title": "Naval Diplomacy"
+      },
+      {
+        "slug": "hms-victorious",
+        "title": "HMS Victorious"
+      },
+      {
+        "slug": "hms-ark-royal",
+        "title": "HMS Ark Royal"
+      },
+      {
+        "slug": "hms-hermes",
+        "title": "HMS Hermes"
       }
     ],
     "evidence": [
       {
         "start": "9:46",
         "end": "11:07",
-        "note": "The transcript links multi-carrier availability to Royal Navy jet development, operations, presence, and port visits."
+        "note": "The transcript identifies Victorious, Ark Royal, and Hermes in 1961 and links multi-carrier availability to jet development, operations, presence, and port visits."
       }
     ],
     "end": "11:07",
@@ -1493,8 +1591,8 @@
         "note": "The transcript calls the jet age an acceleration of existing factors and emphasizes integration pace and intended function."
       }
     ],
-    "end": "12:30",
-    "endSeconds": 750,
+    "end": "12:04",
+    "endSeconds": 724,
     "sourcePath": "src/transcripts/txt/2020-11-27_T21-00-05_part-4-of-4-the-effect-of-the-early-jet-age-on-naval-warfare-strategy-tactics__cve96Ui5BA.txt"
   },
   {
@@ -1553,7 +1651,7 @@
     "startSeconds": 806,
     "youtubeUrl": "https://www.youtube.com/watch?v=_cve96Ui5BA&t=806s",
     "summary": "As Britain moved from potential global overstretch toward alliance warfare, carriers helped it contribute useful power and shape collective strategy.",
-    "body": "Dr. Clarke connects postwar planning to earlier fears that Britain might face simultaneous wars in several theaters. The later challenge was how to fight from something closer to parity by coordinating with allies while still protecting British interests. Capabilities that supplied power and presence gave the Royal Navy leverage inside an alliance, allowing Britain to influence how collective strength was used. Aircraft carriers filled that role for a long period, though their political standing later rose and fell.",
+    "body": "Dr. Clarke traces postwar alliance planning back to a 1930s nightmare in which Britain might fight Japan while wars also opened in the Mediterranean and North Atlantic. That earlier problem required thinking about how to fight while outnumbered, whereas the later challenge was how to operate closer to parity by coordinating with allies while still protecting British interests. Capabilities that supplied power and presence gave the Royal Navy leverage inside an alliance, allowing Britain to influence how collective strength was used. Aircraft carriers filled that role for a long period, though their political standing later rose and fell.",
     "topics": [
       {
         "slug": "aircraft-carriers",
@@ -1570,6 +1668,10 @@
       {
         "slug": "force-structure",
         "title": "Force Structure"
+      },
+      {
+        "slug": "naval-strategy",
+        "title": "Naval Strategy"
       }
     ],
     "evidence": [
@@ -25457,7 +25559,7 @@
     "startSeconds": 101,
     "youtubeUrl": "https://www.youtube.com/watch?v=VWk3Ekodbis&t=101s",
     "summary": "A naval gun's effectiveness depends on the moving ship, the target, the mounting, and the fire-control problem as much as on the weapon itself.",
-    "body": "Dr. Clarke begins with the central idea of the video: naval gunnery is a linked engineering problem. A well-made barrel and breech are of limited use if a ship is rolling, the mount is moving, or the target is changing course. Ranging and stabilising therefore connect weapons design to hull motion, aiming, and the many mechanisms that turn a shell into a useful hit.",
+    "body": "Dr. Clarke begins with the central idea of the video: naval gunnery is a linked engineering problem. A well-made barrel and breech are of limited use if a ship is rolling, the mount is moving, or the target is changing course. The gun's apparent movement combines the ship's forward motion, pitch and roll, the mounting's angle, and the target's own movement. Ranging and stabilising therefore connect weapons design to hull motion, aiming, and the many mechanisms that turn a shell into a useful hit.",
     "topics": [
       {
         "slug": "naval-gunnery",
@@ -25500,7 +25602,7 @@
     "startSeconds": 422,
     "youtubeUrl": "https://www.youtube.com/watch?v=VWk3Ekodbis&t=422s",
     "summary": "Before the 1860s, metallurgy and reliability improved, but a gunner from the age of sail would still recognise the basic loading and firing practice.",
-    "body": "The video treats older naval guns as a long sequence of refinements rather than a sudden break with the past. Barrels became larger, better made, and safer for their crews, but the basic weapon remained recognisable across centuries. HMS Warrior provides the transition point: her machinery and armour were modern, while her broadside guns still retained much of the earlier gun-deck world.",
+    "body": "The video treats older naval guns as a long sequence of refinements rather than a sudden break with the past. Barrels became larger, better made, and safer for their crews, but the basic weapon remained recognisable across centuries. A gunner familiar with much earlier muzzle-loading cannon could still understand the loading and firing routine of the 1850s. HMS Warrior provides the transition point: her machinery and armour were modern, while her broadside guns still retained much of the earlier gun-deck world.",
     "topics": [
       {
         "slug": "naval-gunnery",
@@ -25543,7 +25645,7 @@
     "startSeconds": 712,
     "youtubeUrl": "https://www.youtube.com/watch?v=VWk3Ekodbis&t=712s",
     "summary": "Ironclad armour and reliable steam power turned gun power into a defining feature of warship design, beginning a new contest among protection, speed, and firepower.",
-    "body": "Warrior's protection meant that many older guns could do little meaningful damage to her, while her engines and heavy armament widened the gap between warships. Dr. Clarke uses that contrast to explain why gun layout, turret arrangement, and fire-control equipment became defining questions after 1860. By the 1960s, self-loading guns with semi-fixed ammunition had replaced the rope-worked broadside cannon of the sailing era with a very different weapons system.",
+    "body": "Warrior's protection meant that many older guns could do little meaningful damage to her, while her engines and heavy armament widened the gap between warships. Reliable steam power also reduced the degree to which speed depended directly on a sailing crew's ability to exploit the wind. Dr. Clarke uses that contrast to explain why gun layout, turret arrangement, and fire-control equipment became defining questions after 1860. Armour, speed, and firepower now had to be balanced together because a weapon that could threaten one ship might be nearly useless against another.",
     "topics": [
       {
         "slug": "hms-warrior",
@@ -25565,8 +25667,51 @@
     "evidence": [
       {
         "start": "11:52",
+        "end": "14:57",
+        "note": "Warrior's armour, speed, and powerful guns are connected to the new competition among protection, propulsion, and firepower."
+      }
+    ],
+    "end": "14:57",
+    "endSeconds": 897,
+    "sourcePath": "src/transcripts/txt/2023-10-03_T20-00-08_ranging-and-stabilising-how-gunnery-evolved-from-1860-to-1960_VWk3Ekodbis.txt"
+  },
+  {
+    "id": "mark-16-self-loading-gun-transformation",
+    "slug": "mark-16-self-loading-gun-transformation",
+    "title": "The Mark 16 self-loading gun shows a century of change",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "VWk3Ekodbis",
+    "videoSlug": "ranging-and-stabilising-how-gunnery-evolved-from-1860-to-1960",
+    "videoTitle": "Ranging & Stabilising: How Gunnery Evolved from 1860 to 1960",
+    "start": "15:01",
+    "startSeconds": 901,
+    "youtubeUrl": "https://www.youtube.com/watch?v=VWk3Ekodbis&t=901s",
+    "summary": "The 8-inch/55 Mark 16 used self-loading machinery and semi-fixed ammunition, offering a sharp contrast with the manually worked broadside cannon of 1860.",
+    "body": "Dr. Clarke uses the 8-inch/55 Mark 16 as the far endpoint of the video's century-long comparison. Its ammunition remained divided into two components, but self-loading machinery handled a process once dominated by human muscle, ropes, and close-range gun drill. The mount could train and elevate while firing different shell types at a rate unimaginable on an age-of-sail gun deck. Opening here gives viewers a compact demonstration of how completely naval gunnery changed between the ironclad and mechanised-gunnery eras.",
+    "topics": [
+      {
+        "slug": "self-loading-guns",
+        "title": "Self Loading Guns"
+      },
+      {
+        "slug": "semi-fixed-ammunition",
+        "title": "Semi Fixed Ammunition"
+      },
+      {
+        "slug": "eight-inch-guns",
+        "title": "Eight Inch Guns"
+      },
+      {
+        "slug": "naval-gunnery",
+        "title": "Naval Gunnery"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "15:01",
         "end": "16:25",
-        "note": "Warrior's armour, speed, and powerful guns are connected to the century-long transformation of gunnery."
+        "note": "The transcript contrasts the 8-inch/55 Mark 16 self-loading gun and semi-fixed ammunition with rope-worked broadside cannon."
       }
     ],
     "end": "16:25",
@@ -25586,7 +25731,7 @@
     "startSeconds": 1068,
     "youtubeUrl": "https://www.youtube.com/watch?v=VWk3Ekodbis&t=1068s",
     "summary": "Officers who began with near-Napoleonic-era systems had to understand weapons and controls that would remain credible into the world-war era.",
-    "body": "The pace of gunnery change created an institutional as well as technical challenge. Dr. Clarke compares it to modern fast-moving technical fields: professionals had to keep learning as chemistry, engineering, and control systems changed around them. That helps explain why early twentieth-century naval officers faced a much wider technological span than the older continuity of the age of sail suggests.",
+    "body": "The pace of gunnery change created an institutional as well as technical challenge. Officers could begin their careers around systems still recognisable from the Napoleonic era and later encounter weapons credible into the Second World War. Dr. Clarke compares this demand to modern fast-moving technical fields: professionals had to keep learning as chemistry, engineering, and control systems changed around them. That helps explain why early twentieth-century naval officers faced a much wider technological span than the older continuity of the age of sail suggests.",
     "topics": [
       {
         "slug": "naval-gunnery",
@@ -25629,7 +25774,7 @@
     "startSeconds": 1273,
     "youtubeUrl": "https://www.youtube.com/watch?v=VWk3Ekodbis&t=1273s",
     "summary": "Layered barrels and wire winding were ways to strengthen a gun around its bore so the barrel contained the propellant blast rather than failing under it.",
-    "body": "A built-up gun uses successive hoops and barrels to support and stress one another around the bore. Wire-wound construction sought a related improvement by wrapping wire around the inner barrel beneath an outer layer. Dr. Clarke presents both as responses to the quality and strength limits of contemporary steel, rather than as isolated tricks of weapons design.",
+    "body": "A built-up gun uses successive hoops and barrels to support and stress one another around the bore. Those layers are arranged so that they reinforce one another and contain the force of the propellant rather than allowing the barrel to fail. Wire-wound construction sought a related improvement by wrapping wire around the inner barrel beneath an outer layer, with the hope of retaining strength at lower weight. Dr. Clarke presents both as responses to the quality and strength limits of contemporary steel, rather than as isolated tricks of weapons design.",
     "topics": [
       {
         "slug": "gun-barrels",
@@ -25672,7 +25817,7 @@
     "startSeconds": 1530,
     "youtubeUrl": "https://www.youtube.com/watch?v=VWk3Ekodbis&t=1530s",
     "summary": "Better casting and steel purity made monobloc barrels possible, but longer barrels and stronger charges still imposed wear and replacement trade-offs.",
-    "body": "Centrifugal casting offered a route to a more uniform barrel as metallurgy and production methods advanced. A longer barrel could use more of a charge's energy and extend range, yet it could also demand more propellant and suffer heavier wear. The useful design question is therefore not simply which barrel is longest, but which combination of material, charge, length, and service life suits the ship's purpose.",
+    "body": "Centrifugal casting offered a route to a more uniform barrel as metallurgy, alloy control, and production methods advanced. A longer barrel could use more of a charge's energy and extend range, yet it could also demand more propellant and suffer heavier wear. Nations and manufacturers adopted built-up, wire-wound, and monobloc construction at different rates, and many experimented with more than one method. The useful design question is therefore not simply which barrel is longest, but which combination of material, charge, length, and service life suits the ship's purpose.",
     "topics": [
       {
         "slug": "monobloc-guns",
@@ -25715,7 +25860,7 @@
     "startSeconds": 1758,
     "youtubeUrl": "https://www.youtube.com/watch?v=VWk3Ekodbis&t=1758s",
     "summary": "A propellant could offer more range or less smoke while still creating unacceptable variation in shell dispersion, making consistency as important as raw power.",
-    "body": "As guns grew larger and fewer, each gun had to hit effectively at greater range. Smoke could hide a ship's own target, while inconsistent charges could spread shells too widely for reliable aiming. The video frames propellant choice as a practical fleet problem: firepower, visibility, accuracy, and ammunition supply all have to work together rather than being optimised separately.",
+    "body": "As guns grew larger and fewer, each gun had to hit effectively at greater range. Smoke could hide a ship's own target more effectively than it concealed the firing ship from an opponent. Inconsistent charges could also spread shells too widely for reliable aiming, even when a propellant promised greater range or less smoke. The video frames propellant choice as a practical fleet problem: firepower, visibility, accuracy, and ammunition supply all have to work together rather than being optimised separately.",
     "topics": [
       {
         "slug": "propellants",
@@ -25758,7 +25903,7 @@
     "startSeconds": 2069,
     "youtubeUrl": "https://www.youtube.com/watch?v=VWk3Ekodbis&t=2069s",
     "summary": "Naval weapons shifted from solid shot to shells whose form, fuzes, and ability to survive firing stresses became central to destructive power.",
-    "body": "The transition involved more than placing explosives inside a projectile. Shells had to survive the accelerating forces inside increasingly powerful guns and then perform predictably in flight and on impact. Dr. Clarke also notes that aerodynamic thinking developed around projectiles before powered flight, with shell shape chosen for consistency and robust handling rather than simply a sharper point.",
+    "body": "The transition involved more than placing explosives inside a projectile. Shells had to survive the accelerating forces inside increasingly powerful guns and then perform predictably in flight and on impact. Fuzes, layered construction, and reliable manufacture therefore became as important as the explosive filling itself. Dr. Clarke also notes that aerodynamic thinking developed around projectiles before powered flight, with shell shape chosen for consistency and robust handling rather than simply a sharper point.",
     "topics": [
       {
         "slug": "naval-shells",
@@ -25789,6 +25934,49 @@
     "sourcePath": "src/transcripts/txt/2023-10-03_T20-00-08_ranging-and-stabilising-how-gunnery-evolved-from-1860-to-1960_VWk3Ekodbis.txt"
   },
   {
+    "id": "mature-designs-and-the-fairey-swordfish",
+    "slug": "mature-designs-and-the-fairey-swordfish",
+    "title": "Mature designs explain cannon reliability and the Fairey Swordfish",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "VWk3Ekodbis",
+    "videoSlug": "ranging-and-stabilising-how-gunnery-evolved-from-1860-to-1960",
+    "videoTitle": "Ranging & Stabilising: How Gunnery Evolved from 1860 to 1960",
+    "start": "36:25",
+    "startSeconds": 2185,
+    "youtubeUrl": "https://www.youtube.com/watch?v=VWk3Ekodbis&t=2185s",
+    "summary": "Long refinement made old cannon dependable, just as decades of incremental naval-aircraft development helped make the Fairey Swordfish stable and reliable.",
+    "body": "Dr. Clarke warns against comparing a mature technology's reliability with the problems of a newly transformed one. Traditional cannon had centuries of incremental improvement behind them, whereas early twentieth-century shells, fuzes, and guns were changing rapidly and inevitably suffered failures. He draws a naval-aviation parallel with the Fairey Swordfish, whose lineage was repeatedly refined around stability, reliability, and night torpedo work. The example helps viewers distinguish the virtues of a long development history from proof that an older technical approach was inherently superior.",
+    "topics": [
+      {
+        "slug": "fairey-swordfish",
+        "title": "Fairey Swordfish"
+      },
+      {
+        "slug": "naval-aviation",
+        "title": "Naval Aviation"
+      },
+      {
+        "slug": "weapon-reliability",
+        "title": "Weapon Reliability"
+      },
+      {
+        "slug": "military-technology",
+        "title": "Military Technology"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "36:25",
+        "end": "38:22",
+        "note": "The transcript compares centuries of cannon refinement with the Fairey Swordfish lineage's emphasis on stability and reliability for night torpedo operations."
+      }
+    ],
+    "end": "38:22",
+    "endSeconds": 2302,
+    "sourcePath": "src/transcripts/txt/2023-10-03_T20-00-08_ranging-and-stabilising-how-gunnery-evolved-from-1860-to-1960_VWk3Ekodbis.txt"
+  },
+  {
     "id": "rifling-as-a-tool-for-predictable-fire",
     "slug": "rifling-as-a-tool-for-predictable-fire",
     "title": "Rifling traded barrel wear for predictable shell flight",
@@ -25801,7 +25989,7 @@
     "startSeconds": 2456,
     "youtubeUrl": "https://www.youtube.com/watch?v=VWk3Ekodbis&t=2456s",
     "summary": "Rifling imposed wear but gave crews a more controllable and predictable shell path when later computing and modelling tools did not yet exist.",
-    "body": "The video explains rifling as a way to reduce uncertainty, not merely a feature of a modern-looking gun. Spin could regularise shell behaviour and make firing results more repeatable, even though it increased barrel wear. Later smoothbore weapons are presented as possible only when designers could predict projectile, propellant, and barrel behaviour well enough to recover accuracy by other means.",
+    "body": "The video explains rifling as a way to reduce uncertainty, not merely a feature of a modern-looking gun. Spin could regularise shell behaviour and make firing results more repeatable, even though it increased barrel wear. That trade made sense when designers lacked the computing power and modelling tools needed to predict every interaction among projectile, propellant, and barrel. Later smoothbore weapons are presented as possible only when other technologies could recover or surpass the required accuracy.",
     "topics": [
       {
         "slug": "rifling",
@@ -25844,7 +26032,7 @@
     "startSeconds": 2594,
     "youtubeUrl": "https://www.youtube.com/watch?v=VWk3Ekodbis&t=2594s",
     "summary": "More powerful guns demanded explosives that could both damage a target and survive the forces of firing, tying naval gunnery to chemical and industrial development.",
-    "body": "As guns gained range and force, their shells needed explosives that remained controllable through the firing process. Dr. Clarke uses nitrocellulose to illustrate how a weapons advance rests on laboratory work, processes, materials, and specialised equipment developed over time. The recurring purpose is control: making each stage of firing dependable enough that the planned solution has a chance to work.",
+    "body": "As guns gained range and force, their shells needed explosives that remained controllable through the firing process. The explosive had to cause more damage at the target without detonating under the greater stresses imposed inside the gun. Dr. Clarke uses nitrocellulose to illustrate how a weapons advance rests on laboratory work, processes, materials, and specialised equipment developed over time. The recurring purpose is control: making each stage of firing dependable enough that the planned solution has a chance to work.",
     "topics": [
       {
         "slug": "explosives",
@@ -25887,7 +26075,7 @@
     "startSeconds": 2866,
     "youtubeUrl": "https://www.youtube.com/watch?v=VWk3Ekodbis&t=2866s",
     "summary": "Naval fire control evolved from a gunport sightline to teams and mechanical computers combining target information with data from across the ship.",
-    "body": "Early fire control could be little more than seeing an enemy through a port and firing. Later systems gathered target and ship data into firing tables, mechanical computers that produced an aiming solution for where the enemy was expected to be when the shell arrived. Electronic assistance reduced some workload but raised the technical demands on specialists who had to distinguish meaningful returns from misleading information.",
+    "body": "Early fire control could be little more than seeing an enemy through a port and firing. Later systems gathered target and ship data into firing tables, mechanical computers that produced an aiming solution for where the enemy was expected to be when the shell arrived. Electronic assistance reduced some workload but raised the technical demands on specialists who had to distinguish meaningful returns from echoes or misleading information. Standardised shells, propellant, barrels, and mechanisms mattered because controlling hardware variation left fewer errors for the human team to absorb.",
     "topics": [
       {
         "slug": "fire-control",
@@ -25930,7 +26118,7 @@
     "startSeconds": 3105,
     "youtubeUrl": "https://www.youtube.com/watch?v=VWk3Ekodbis&t=3105s",
     "summary": "A gun's theoretical reach mattered less than the range at which available fire control could deliver hits, helping explain the Royal Navy's preference for rapid-firing six-inch cruisers.",
-    "body": "In the interwar cruiser debate, an eight-inch gun could reach farther on paper, but the practical range at which it could be aimed accurately was closer to that of a six-inch weapon. A six-inch cruiser could then put more shells into that usable engagement zone, especially against lightly protected treaty cruisers. The point is a useful warning against treating maximum gun range as a complete measure of combat value.",
+    "body": "In the interwar cruiser debate, an eight-inch gun could reach farther on paper, but the practical range at which it could be aimed accurately was closer to that of a six-inch weapon. A six-inch cruiser could then put more shells into that usable engagement zone, especially against lightly protected treaty cruisers. Similar thinking encouraged rapid-fire cruiser concepts built around five-inch or comparable weapons for surface and air-defence work. The point is a useful warning against treating maximum gun range as a complete measure of combat value.",
     "topics": [
       {
         "slug": "cruisers",
@@ -25973,7 +26161,7 @@
     "startSeconds": 3244,
     "youtubeUrl": "https://www.youtube.com/watch?v=VWk3Ekodbis&t=3244s",
     "summary": "Engaging aircraft added rapid elevation changes and high target speed to the ranging problem, demanding faster connections between control systems and gun mechanisms.",
-    "body": "Surface targets already required an answer to movement, but aircraft added speed, altitude, and rapid changes in elevation. The solution had to extend beyond the firing computer: orders and data had to reach mounts capable of moving guns quickly and accurately. Inside a battleship turret, rammers and other powered machinery also became essential because shell and charge weights had exceeded what crews could handle efficiently by hand.",
+    "body": "Surface targets already required an answer to movement, but aircraft added speed, altitude, and rapid changes in elevation. The solution had to extend beyond the firing computer: orders and data had to reach mounts capable of moving guns quickly and accurately. The control problem therefore depended on communication and gun mechanisms as much as on calculating a lead. Inside a battleship turret, rammers and other powered machinery also became essential because shell and charge weights had exceeded what crews could handle efficiently by hand.",
     "topics": [
       {
         "slug": "anti-aircraft-gunnery",
@@ -26016,7 +26204,7 @@
     "startSeconds": 3536,
     "youtubeUrl": "https://www.youtube.com/watch?v=VWk3Ekodbis&t=3536s",
     "summary": "Modern turrets required rollers, cages, machinery, crew roles, armour, and ship support systems that had to be designed together.",
-    "body": "Dr. Clarke traces the scale of change from USS Monitor's early turret to the immense quadruple mountings of the King George V class. A turret has to move, protect its crew, carry ammunition-handling machinery, and connect down through the ship while remaining part of a stable hull. The industrial infrastructure needed to build and install such a unit underscores how gunnery transformed the whole warship, not only its visible weapons.",
+    "body": "Dr. Clarke traces the scale of change from USS Monitor's early turret to the immense quadruple mountings of the King George V class. A turret has to move, protect its crew, carry ammunition-handling machinery, and connect down through the ship while remaining part of a stable hull. Rollers, the below-deck cage, powered handling equipment, and specialised crew positions all had to be developed into one working installation. The industrial infrastructure needed to build, lift, and install such a unit underscores how gunnery transformed the whole warship, not only its visible weapons.",
     "topics": [
       {
         "slug": "turrets",
@@ -26047,6 +26235,49 @@
     "sourcePath": "src/transcripts/txt/2023-10-03_T20-00-08_ranging-and-stabilising-how-gunnery-evolved-from-1860-to-1960_VWk3Ekodbis.txt"
   },
   {
+    "id": "warship-as-a-system-of-systems",
+    "slug": "warship-as-a-system-of-systems",
+    "title": "A warship became a system of supporting systems",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "VWk3Ekodbis",
+    "videoSlug": "ranging-and-stabilising-how-gunnery-evolved-from-1860-to-1960",
+    "videoTitle": "Ranging & Stabilising: How Gunnery Evolved from 1860 to 1960",
+    "start": "59:13",
+    "startSeconds": 3553,
+    "youtubeUrl": "https://www.youtube.com/watch?v=VWk3Ekodbis&t=3553s",
+    "summary": "Guns, engines, sensors, communications, control equipment, and crew support formed an interdependent network whose complexity shaped the entire warship.",
+    "body": "The video pauses inside the turret discussion to define a warship as a system of systems. Weapons, engines, radar, sensors, and communications each require supporting machinery, coordination, power, and trained people. A change to one major component can therefore alter weight, space, stability, workload, and the performance of several other systems. This watch point explains why naval gunnery development cannot be understood by comparing gun barrels alone.",
+    "topics": [
+      {
+        "slug": "warship-systems",
+        "title": "Warship Systems"
+      },
+      {
+        "slug": "naval-infrastructure",
+        "title": "Naval Infrastructure"
+      },
+      {
+        "slug": "naval-engineering",
+        "title": "Naval Engineering"
+      },
+      {
+        "slug": "naval-gunnery",
+        "title": "Naval Gunnery"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "59:13",
+        "end": "1:00:48",
+        "note": "The transcript describes guns, engines, communications, radar, sensors, supporting systems, and crews as an interlaced warship network."
+      }
+    ],
+    "end": "1:00:48",
+    "endSeconds": 3648,
+    "sourcePath": "src/transcripts/txt/2023-10-03_T20-00-08_ranging-and-stabilising-how-gunnery-evolved-from-1860-to-1960_VWk3Ekodbis.txt"
+  },
+  {
     "id": "turret-arc-common-mounts-and-redundancy",
     "slug": "turret-arc-common-mounts-and-redundancy",
     "title": "Turret layouts balanced accuracy, arcs, and redundancy",
@@ -26059,7 +26290,7 @@
     "startSeconds": 3816,
     "youtubeUrl": "https://www.youtube.com/watch?v=VWk3Ekodbis&t=3816s",
     "summary": "Turret designers had to choose between independently elevated guns, common mechanisms, firing arcs, and the risk that one failure could disable a whole mounting.",
-    "body": "A turret's arc of training and the way its barrels are elevated affect both the ship's fighting options and its shell pattern. Common mechanisms can help keep guns closely aligned, but a failure can then remove every barrel using that mechanism; separate controls offer redundancy at the cost of greater complexity. The segment also connects barrel droop and different foundry quality to the same broader demand for standardisation and predictable fire.",
+    "body": "A turret's arc of training and the way its barrels are elevated affect both the ship's fighting options and its shell pattern. Common mechanisms can help keep guns closely aligned, but a failure can then remove every barrel using that mechanism; separate controls offer redundancy at the cost of greater complexity. Designers could compromise by dividing a four-gun mounting between two elevation mechanisms, limiting both alignment differences and the consequences of one failure. The segment also connects barrel droop and different foundry quality to the same broader demand for standardisation and predictable fire.",
     "topics": [
       {
         "slug": "turrets",
@@ -26102,7 +26333,7 @@
     "startSeconds": 4109,
     "youtubeUrl": "https://www.youtube.com/watch?v=VWk3Ekodbis&t=4109s",
     "summary": "Turret weight, ballast, hull shape, and gun position all affected whether a battleship could remain a useful and accurate firing platform.",
-    "body": "Heavy turrets high in a ship require balancing weight lower down, while armour, engines, torpedo defence, and ballast all influence stability. Dr. Clarke uses the Iowa and King George V classes to show why a good sea platform is central to gunnery rather than a separate naval-architecture concern. Wing turrets illustrate the problem especially clearly: their position away from the hull's centre can magnify motion and complicate the interpretation of a gun salvo's fall of shot.",
+    "body": "Heavy turrets high in a ship require balancing weight lower down, while armour, engines, torpedo defence, and ballast all influence stability. Draining liquid from the torpedo-defence spaces of HMS Nelson or HMS Rodney might reduce displacement, but it would also remove low weight and alter the ship's behaviour as a gun platform. Dr. Clarke uses the Iowa and King George V classes to show why a good sea platform is central to gunnery rather than a separate naval-architecture concern. He also recalls fears that HMS Agincourt's full broadside might overturn her, a danger the ship's designers and trials showed she could withstand. Wing turrets illustrate the problem especially clearly: their position away from the hull's centre can magnify motion and complicate the interpretation of a gun salvo's fall of shot. Stability is still a compromise, because an excessively broad hull can sacrifice turning performance, speed, or fuel efficiency.",
     "topics": [
       {
         "slug": "ship-stability",
@@ -26133,6 +26364,49 @@
     "sourcePath": "src/transcripts/txt/2023-10-03_T20-00-08_ranging-and-stabilising-how-gunnery-evolved-from-1860-to-1960_VWk3Ekodbis.txt"
   },
   {
+    "id": "battleship-speed-bow-shape-and-firing-arcs",
+    "slug": "battleship-speed-bow-shape-and-firing-arcs",
+    "title": "Battleship speed and bow shape served the guns",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "VWk3Ekodbis",
+    "videoSlug": "ranging-and-stabilising-how-gunnery-evolved-from-1860-to-1960",
+    "videoTitle": "Ranging & Stabilising: How Gunnery Evolved from 1860 to 1960",
+    "start": "1:14:39",
+    "startSeconds": 4479,
+    "youtubeUrl": "https://www.youtube.com/watch?v=VWk3Ekodbis&t=4479s",
+    "summary": "Practical battleship speed, hull proportions, wet bows, and clear deck space were constrained by the need to keep the main battery stable and able to fire forward.",
+    "body": "Dr. Clarke distinguishes theoretical maximum speed from a speed that a fleet can afford and a battleship can use as a firing platform. Pushing much beyond the mid-thirty-knot range could demand disproportionate engine power, fuel, length, or compromises in the beam needed for stability. Bow shaping could leave a ship's forward deck wet because preserving the main battery's forward firing arc mattered more than keeping water off the deck. The large clear areas around the guns reveal the design priority: scarce deck space was reserved so the ship's principal weapons could train and fire effectively.",
+    "topics": [
+      {
+        "slug": "battleship-design",
+        "title": "Battleship Design"
+      },
+      {
+        "slug": "ship-speed",
+        "title": "Ship Speed"
+      },
+      {
+        "slug": "hull-design",
+        "title": "Hull Design"
+      },
+      {
+        "slug": "firing-arcs",
+        "title": "Firing Arcs"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "1:14:39",
+        "end": "1:17:02",
+        "note": "The transcript links practical battleship speed to beam, engine and fuel costs, then explains wet bows and clear deck space through forward gun arcs."
+      }
+    ],
+    "end": "1:17:02",
+    "endSeconds": 4622,
+    "sourcePath": "src/transcripts/txt/2023-10-03_T20-00-08_ranging-and-stabilising-how-gunnery-evolved-from-1860-to-1960_VWk3Ekodbis.txt"
+  },
+  {
     "id": "dreadnought-and-harnessing-firepower",
     "slug": "dreadnought-and-harnessing-firepower",
     "title": "Dreadnought showed that guns needed control as well as range",
@@ -26145,7 +26419,7 @@
     "startSeconds": 4627,
     "youtubeUrl": "https://www.youtube.com/watch?v=VWk3Ekodbis&t=4627s",
     "summary": "HMS Dreadnought combined existing technologies into a new type of battleship, but it also exposed the next problem: harnessing big-gun fire with adequate control.",
-    "body": "The video presents Dreadnought as a transition rather than an isolated miracle. Her all-big-gun armament and turret mechanisms gathered developments that other powers could in principle have assembled, while her wing turrets retained earlier compromises. What still had to mature was the ability to range, direct, and use that firepower effectively, reinforcing the video’s larger theme that a weapon is only valuable when its whole system can control it.",
+    "body": "The video presents Dreadnought as a transition rather than an isolated miracle. Her all-big-gun armament and turret mechanisms gathered developments that other powers could in principle have assembled, while her wing turrets retained earlier compromises. Britain brought those available technologies together first, much as it had done with HMS Warrior. What still had to mature was the ability to range, direct, and use that firepower effectively, reinforcing the video's larger theme that a weapon is only valuable when its whole system can control it.",
     "topics": [
       {
         "slug": "hms-dreadnought",

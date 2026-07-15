@@ -5,16 +5,68 @@
     "naval-aviation",
     "airborne-early-warning",
     "royal-navy",
-    "cold-war"
+    "cold-war",
+    "fleet-air-defence",
+    "aircraft-carriers"
   ],
   "segments": [
+    {
+      "id": "radar-horizon-geometry-and-warning-range",
+      "videoId": "_cve96Ui5BA",
+      "slug": "radar-horizon-geometry-and-warning-range",
+      "title": "How radar-horizon geometry limits fleet warning",
+      "kind": "chapter",
+      "start": "1:46",
+      "end": "2:53",
+      "topics": [
+        "radar",
+        "fleet-air-defence",
+        "sensors",
+        "naval-aviation"
+      ],
+      "summary": "Start here for the geometry that limits shipboard radar range and makes fast, low-flying threats difficult to detect in time.",
+      "body": "Dr. Clarke begins with the geometry behind naval radar warning. Because the Earth curves away, a radar can detect a very distant target only if that target is high enough to remain above the horizon. Mounting the sensor higher moves the line of sight farther out, which is why an aircraft carrier's tall island gives its radar an advantage over lower ships. Faster jets make this geometric limit operationally dangerous because they consume the fleet's remaining reaction time.",
+      "sourcePath": "src/transcripts/txt/2020-11-27_T21-00-05_part-4-of-4-the-effect-of-the-early-jet-age-on-naval-warfare-strategy-tactics__cve96Ui5BA.txt",
+      "evidence": [
+        {
+          "start": "1:46",
+          "end": "2:53",
+          "note": "The transcript explains how the Earth's curvature, target altitude, and sensor height determine a ship's effective radar horizon."
+        }
+      ]
+    },
+    {
+      "id": "layered-fleet-air-defence-before-terminal-range",
+      "videoId": "_cve96Ui5BA",
+      "slug": "layered-fleet-air-defence-before-terminal-range",
+      "title": "Why fleet air defence must intercept before terminal range",
+      "kind": "notable_point",
+      "start": "2:53",
+      "end": "3:50",
+      "topics": [
+        "fleet-air-defence",
+        "missile-defence",
+        "close-in-weapon-systems",
+        "naval-tactics"
+      ],
+      "summary": "Dr. Clarke maps aircraft, area defence, point defence, and close-in weapons onto the need to stop an attack before its final high-energy approach.",
+      "body": "Dr. Clarke lays out fleet air defence in layers: aircraft and area-defence missiles at distance, point-defence weapons closer in, and close-in weapon systems as a final attempt. He notes that medium-calibre guns formerly filled the point-defence role now associated with missiles. In his description of terminal range, an incoming weapon may retain enough energy to reach the ship even after it has been hit. The preferred response is therefore to destroy the launching aircraft or incoming weapon earlier rather than rely on a last-ditch interception.",
+      "sourcePath": "src/transcripts/txt/2020-11-27_T21-00-05_part-4-of-4-the-effect-of-the-early-jet-age-on-naval-warfare-strategy-tactics__cve96Ui5BA.txt",
+      "evidence": [
+        {
+          "start": "2:53",
+          "end": "3:50",
+          "note": "The transcript distinguishes aircraft, area, point, and close-in defences and explains why interception should occur before terminal range."
+        }
+      ]
+    },
     {
       "id": "jet-speed-and-airborne-early-warning",
       "videoId": "_cve96Ui5BA",
       "slug": "jet-speed-and-airborne-early-warning",
       "title": "Why jet speed made airborne early warning essential",
       "kind": "chapter",
-      "start": "1:46",
+      "start": "3:52",
       "end": "4:38",
       "topics": [
         "airborne-early-warning",
@@ -22,14 +74,14 @@
         "fleet-air-defence",
         "radar"
       ],
-      "summary": "See how faster jet attacks exposed the limits of a ship's radar horizon and made high-altitude airborne sensors increasingly important.",
-      "body": "Dr. Clarke explains that radar range is constrained not only by transmitter power but by the curvature of the Earth and the sensor's height. Faster aircraft compress a fleet's reaction time, so detecting the attacker before weapons reach their terminal phase becomes critical. Airborne early-warning aircraft extend the effective horizon by carrying radar far above a ship's mast, giving fighters and missile defenses more time to respond. He also connects this principle to proposals for tethered radar drones.",
+      "summary": "See how moving radar into the air expands a fleet's warning horizon and restores reaction time against fast jet attacks.",
+      "body": "Faster jets make the limited horizon of a low shipboard radar increasingly dangerous. Dr. Clarke explains that raising the sensor changes the line-of-sight angle and pushes the point at which the Earth's curvature blocks detection farther away. An airborne early-warning aircraft therefore acts as a mobile high-altitude radar that can reveal threats sooner. Proposals for tethered radar drones apply the same principle while keeping a sensor continuously aloft.",
       "sourcePath": "src/transcripts/txt/2020-11-27_T21-00-05_part-4-of-4-the-effect-of-the-early-jet-age-on-naval-warfare-strategy-tactics__cve96Ui5BA.txt",
       "evidence": [
         {
-          "start": "1:46",
+          "start": "3:52",
           "end": "4:38",
-          "note": "The transcript links jet speed, radar-horizon geometry, defensive reaction time, and elevated airborne sensors."
+          "note": "The transcript connects faster aircraft to the need for elevated mobile radar and mentions tethered drones as a future way to extend the horizon."
         }
       ]
     },
@@ -48,7 +100,7 @@
         "soviet-navy"
       ],
       "summary": "The Fairey Gannet illustrates how the Royal Navy combined reconnaissance and anti-submarine work in response to Soviet undersea and surface threats.",
-      "body": "The Gannet began as an anti-submarine aircraft, reflecting the urgent need to find and counter Soviet submarines. Dr. Clarke also presents reconnaissance as part of the answer to Soviet surface raiders: the fleet first had to locate a threat before it could engage it. The aircraft therefore represents a broader Cold War shift toward persistent surveillance as well as direct attack capability.",
+      "body": "The Gannet began as an anti-submarine aircraft, reflecting the urgent need to find and counter Soviet submarines. Dr. Clarke also presents reconnaissance as part of the answer to Soviet surface raiders. The fleet had to locate a raider before it could bring other weapons to bear, making search part of the combat problem rather than a separate supporting task. The aircraft therefore represents a broader Cold War shift toward persistent surveillance as well as direct attack capability.",
       "sourcePath": "src/transcripts/txt/2020-11-27_T21-00-05_part-4-of-4-the-effect-of-the-early-jet-age-on-naval-warfare-strategy-tactics__cve96Ui5BA.txt",
       "evidence": [
         {
@@ -73,7 +125,7 @@
         "royal-navy"
       ],
       "summary": "A tour of HMS Bulwark's 40-aircraft group shows how fighters, strike aircraft, ASW planes, airborne radar, helicopters, and rescue aircraft shared one carrier.",
-      "body": "Dr. Clarke uses HMS Bulwark's 1958 complement to show the breadth of tasks expected from a late-1950s Royal Navy carrier. The group included Sea Hawks for fighter-attack work, Sea Venoms for all-weather interception, Gannets for anti-submarine warfare, Skyraiders for airborne warning, and helicopters for utility and rescue duties. Its fall from 42 to 40 aircraft also hints at the space pressure imposed by larger and more specialized postwar aircraft. The mix is a practical snapshot of a carrier becoming a multi-sensor, multi-mission system.",
+      "body": "Dr. Clarke uses HMS Bulwark's 1958 complement to show the breadth of tasks expected from a late-1950s Royal Navy carrier. The group included Sea Hawks for fighter-attack work, Sea Venoms for all-weather interception, Gannets for anti-submarine warfare, Skyraiders for airborne warning, and helicopters for utility and rescue duties. He notes that the total had already fallen from 42 to 40 aircraft. The Gannets were due to leave at the end of 1958 because the navy judged that it had enough escorts and wanted more helicopter space. The changing mix shows how a carrier balanced fighter, strike, surveillance, anti-submarine, and rescue roles within finite capacity.",
       "sourcePath": "src/transcripts/txt/2020-11-27_T21-00-05_part-4-of-4-the-effect-of-the-early-jet-age-on-naval-warfare-strategy-tactics__cve96Ui5BA.txt",
       "evidence": [
         {
@@ -112,7 +164,7 @@
       "id": "royal-navy-multi-carrier-assumptions",
       "videoId": "_cve96Ui5BA",
       "slug": "royal-navy-multi-carrier-assumptions",
-      "title": "Royal Navy jet doctrine assumed multiple carriers",
+      "title": "Victorious, Ark Royal, and Hermes embodied multi-carrier doctrine",
       "kind": "notable_point",
       "start": "9:46",
       "end": "11:07",
@@ -120,16 +172,19 @@
         "aircraft-carriers",
         "royal-navy",
         "naval-doctrine",
-        "naval-diplomacy"
+        "naval-diplomacy",
+        "hms-victorious",
+        "hms-ark-royal",
+        "hms-hermes"
       ],
-      "summary": "Royal Navy carrier aviation developed around a fleet with several carriers available, not a lone ship expected to cover the Atlantic by itself.",
-      "body": "The number of carriers in service shaped how the Royal Navy imagined jet operations. Dr. Clarke stresses that planners could expect several carriers to cooperate and did not treat a single Atlantic carrier as the normal case. Those ships also supplied global presence through deployments, port visits, and visible flying, so their value combined combat concentration with peacetime diplomacy. Force size therefore influenced both tactical assumptions and Britain's international posture.",
+      "summary": "A 1961 view of HMS Victorious, HMS Ark Royal, and HMS Hermes illustrates why Royal Navy jet doctrine assumed several carriers could operate together.",
+      "body": "A 1961 image of HMS Victorious, HMS Ark Royal, and HMS Hermes makes the Royal Navy's carrier numbers visible. The surrounding discussion also notes that several aircraft companies competed as naval jets developed. Dr. Clarke stresses that planners could expect multiple carriers to cooperate and did not treat one ship alone in the Atlantic as the normal case. Those carriers also supplied global presence through deployments, port visits, and visible flying. Force size therefore influenced both tactical assumptions and Britain's international posture.",
       "sourcePath": "src/transcripts/txt/2020-11-27_T21-00-05_part-4-of-4-the-effect-of-the-early-jet-age-on-naval-warfare-strategy-tactics__cve96Ui5BA.txt",
       "evidence": [
         {
           "start": "9:46",
           "end": "11:07",
-          "note": "The transcript links multi-carrier availability to Royal Navy jet development, operations, presence, and port visits."
+          "note": "The transcript identifies Victorious, Ark Royal, and Hermes in 1961 and links multi-carrier availability to jet development, operations, presence, and port visits."
         }
       ]
     },
@@ -140,7 +195,7 @@
       "title": "The jet age accelerated existing naval change",
       "kind": "chapter",
       "start": "11:17",
-      "end": "12:30",
+      "end": "12:04",
       "topics": [
         "jet-aircraft",
         "naval-strategy",
@@ -195,10 +250,11 @@
         "aircraft-carriers",
         "alliance-strategy",
         "royal-navy",
-        "force-structure"
+        "force-structure",
+        "naval-strategy"
       ],
       "summary": "As Britain moved from potential global overstretch toward alliance warfare, carriers helped it contribute useful power and shape collective strategy.",
-      "body": "Dr. Clarke connects postwar planning to earlier fears that Britain might face simultaneous wars in several theaters. The later challenge was how to fight from something closer to parity by coordinating with allies while still protecting British interests. Capabilities that supplied power and presence gave the Royal Navy leverage inside an alliance, allowing Britain to influence how collective strength was used. Aircraft carriers filled that role for a long period, though their political standing later rose and fell.",
+      "body": "Dr. Clarke traces postwar alliance planning back to a 1930s nightmare in which Britain might fight Japan while wars also opened in the Mediterranean and North Atlantic. That earlier problem required thinking about how to fight while outnumbered, whereas the later challenge was how to operate closer to parity by coordinating with allies while still protecting British interests. Capabilities that supplied power and presence gave the Royal Navy leverage inside an alliance, allowing Britain to influence how collective strength was used. Aircraft carriers filled that role for a long period, though their political standing later rose and fell.",
       "sourcePath": "src/transcripts/txt/2020-11-27_T21-00-05_part-4-of-4-the-effect-of-the-early-jet-age-on-naval-warfare-strategy-tactics__cve96Ui5BA.txt",
       "evidence": [
         {
