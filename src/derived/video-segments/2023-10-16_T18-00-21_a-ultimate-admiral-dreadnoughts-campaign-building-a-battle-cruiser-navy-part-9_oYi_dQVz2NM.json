@@ -6,7 +6,9 @@
     "battlecruisers",
     "battleships",
     "cruisers",
-    "naval-blockade"
+    "naval-blockade",
+    "naval-logistics",
+    "naval-procurement"
   ],
   "segments": [
     {
@@ -19,7 +21,7 @@
       "end": "6:40",
       "topics": ["surface-raiders", "convoys", "convoy-escorts", "battlecruisers"],
       "summary": "A raider attack in the campaign leads into the historical problem of protecting convoys from both submarines and powerful surface ships.",
-      "body": "Clarke uses a cruiser attacking lightly protected merchant shipping to explain why a convoy without a sufficiently strong escort can concentrate targets for a surface raider. He contrasts the escorts needed against submarines with the much heavier forces required when ships such as Bismarck, Tirpitz, Scharnhorst, or Gneisenau may appear. The point is that convoy organization is a force-allocation problem, not an automatic solution to every threat.",
+      "body": "Clarke uses a cruiser attacking lightly protected merchant shipping to explain why a convoy without a sufficiently strong escort can concentrate targets for a surface raider. He contrasts the escorts needed against submarines with the much heavier forces required when ships such as Bismarck, Tirpitz, Scharnhorst, or Gneisenau may appear. Older battleships could provide that protection, but he stresses that there were too few to accompany every convoy. The point is that convoy organization is a force-allocation problem, not an automatic solution to every threat.",
       "sourcePath": "src/transcripts/txt/2023-10-16_T18-00-21_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-9_oYi_dQVz2NM.txt",
       "evidence": [
         {
@@ -39,7 +41,7 @@
       "end": "9:31",
       "topics": ["naval-economics", "logistics", "fleet-expansion"],
       "summary": "Campaign advice on investing early in transport capacity to raise GDP and sustain a large building program.",
-      "body": "Clarke treats transport capacity as an enabling investment rather than a marginal statistic. In his campaign, maintaining it at a high level produces GDP bonuses and helps absorb losses, which in turn supports continued shipbuilding. It is a compact illustration of the logistical base behind an ambitious fleet.",
+      "body": "Clarke treats transport capacity as an enabling investment rather than a marginal statistic. In his campaign, maintaining it at a high level produces GDP bonuses and helps absorb losses, which in turn supports continued shipbuilding. He therefore funds transport from the beginning and keeps the investment at its maximum even after capacity exceeds immediate demand. It is a compact illustration of the logistical base behind an ambitious fleet.",
       "sourcePath": "src/transcripts/txt/2023-10-16_T18-00-21_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-9_oYi_dQVz2NM.txt",
       "evidence": [
         {
@@ -54,18 +56,40 @@
       "videoId": "oYi_dQVz2NM",
       "slug": "royal-navy-carrier-lead-before-war",
       "title": "Royal Navy carrier strength before the Second World War",
-      "kind": "notable_point",
+      "kind": "qa",
       "start": "11:47",
       "end": "13:09",
       "topics": ["royal-navy", "aircraft-carriers", "fleet-air-arm", "second-world-war"],
       "summary": "Clarke challenges the claim that the Royal Navy ignored carriers, stressing its numerical lead in the 1920s and the effect of war on aircraft development.",
-      "body": "Responding to a discussion of Japanese carrier foresight, Clarke says the Royal Navy possessed more carriers than any other navy in the 1920s. He argues that an earlier or different pre-war timeline could have allowed the next generation of British naval aircraft to mature instead of leaving designs such as the Fulmar without a sustained development path. The Swordfish is treated as a notable exception that would likely have remained in service.",
+      "body": "Responding to a viewer's contrast between Japanese carrier foresight and supposedly battleship-bound Royal Navy admirals, Clarke points first to British carrier numbers in the 1920s. He argues that the early start of war redirected development effort and prevented the next generation of Fleet Air Arm aircraft from maturing normally. The Fulmar illustrates the problem because it entered production without the sustained development cycle he thinks it otherwise would have received. The Swordfish is the exception in his answer: its unusual utility would probably have kept it in service regardless.",
+      "question": "Was Japan uniquely farsighted about aircraft carriers while the Royal Navy remained dominated by battleship-minded admirals?",
+      "answerShort": "No. Clarke argues that the Royal Navy led carrier numbers in the 1920s and that wartime disruption, rather than indifference to carriers, damaged the development of its next generation of naval aircraft.",
       "sourcePath": "src/transcripts/txt/2023-10-16_T18-00-21_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-9_oYi_dQVz2NM.txt",
       "evidence": [
         {
           "start": "11:47",
           "end": "13:09",
           "note": "He discusses the Royal Navy's 1920s carrier total, wartime disruption, the Fulmar, and the Swordfish."
+        }
+      ]
+    },
+    {
+      "id": "light-cruiser-numbers-and-global-presence",
+      "videoId": "oYi_dQVz2NM",
+      "slug": "light-cruiser-numbers-and-global-presence",
+      "title": "Why cruiser numbers sustain a global fleet",
+      "kind": "notable_point",
+      "start": "14:28",
+      "end": "15:57",
+      "topics": ["light-cruisers", "fleet-distribution", "naval-presence", "force-structure"],
+      "summary": "Clarke uses a fleet of 116 light cruisers to show how numbers make ships available across distant stations and why a viable cruiser type changes force structure.",
+      "body": "Reviewing widely scattered forces, Clarke repeatedly finds light cruisers already positioned where new tasks arise. He explains that this availability is the purpose of owning 116 of them: geographic presence depends on numbers, not merely on the quality of an individual hull. Earlier in the campaign he had more battleships than light cruisers because the smaller type did not yet perform well enough to justify construction. Once the Chester class became viable, mass cruiser building supplied the distributed fleet that his operations required.",
+      "sourcePath": "src/transcripts/txt/2023-10-16_T18-00-21_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-9_oYi_dQVz2NM.txt",
+      "evidence": [
+        {
+          "start": "14:28",
+          "end": "15:57",
+          "note": "He links 116 light cruisers to worldwide availability and says the Chester class made cruiser construction worthwhile after a battleship-heavy phase."
         }
       ]
     },
@@ -95,6 +119,26 @@
       ]
     },
     {
+      "id": "concentrating-fleet-tonnage-for-amphibious-invasion",
+      "videoId": "oYi_dQVz2NM",
+      "slug": "concentrating-fleet-tonnage-for-amphibious-invasion",
+      "title": "Concentrating naval force for an amphibious invasion",
+      "kind": "notable_point",
+      "start": "40:33",
+      "end": "42:28",
+      "topics": ["naval-invasions", "fleet-concentration", "amphibious-warfare", "joint-operations"],
+      "summary": "An invasion of southern Spain succeeds on paper only after ships are concentrated from the completed northern campaign and the army joins the operation.",
+      "body": "Clarke chooses southern Spain because fleets released from northern France can move around the coast and combine there. He transfers the available ships until the projected chance of success rises from 44 percent to 100 percent. The British Army then appears as a supporting force, making the operation visibly joint rather than a navy-only landing. The sequence shows how amphibious success depends on theater geometry, concentration of naval tonnage, and cooperation with land forces.",
+      "sourcePath": "src/transcripts/txt/2023-10-16_T18-00-21_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-9_oYi_dQVz2NM.txt",
+      "evidence": [
+        {
+          "start": "40:33",
+          "end": "42:28",
+          "note": "He selects southern Spain for ease of fleet concentration, transfers the northern invasion force, reaches a 100 percent estimate, and notes army support."
+        }
+      ]
+    },
+    {
       "id": "standardized-battleship-armament",
       "videoId": "oYi_dQVz2NM",
       "slug": "standardized-battleship-armament",
@@ -104,7 +148,7 @@
       "end": "53:05",
       "topics": ["battleships", "fleet-standardization", "main-battery-guns", "logistics"],
       "summary": "Two different battleship classes share the same 16.5-inch and six-inch armament, showing the campaign's move toward standardized force design.",
-      "body": "While chasing a French capital ship, Clarke notes that vessels from different classes carry the same 16.5-inch main guns and six-inch secondary battery. He presents this as deliberate standardization, in contrast to the opposing ship's collection of disparate gun types. The comparison highlights why a common armament scheme can simplify a fleet's material problem even when hulls differ.",
+      "body": "While chasing a French capital ship, Clarke notes that vessels from different classes carry the same 16.5-inch main guns and six-inch secondary battery. He presents this as deliberate standardization, in contrast to the opposing ship's collection of disparate gun types. That common format lets successive battleship classes share major ammunition and weapon arrangements even when their hulls and ages differ. The comparison highlights why a common armament scheme can simplify a fleet's material problem.",
       "sourcePath": "src/transcripts/txt/2023-10-16_T18-00-21_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-9_oYi_dQVz2NM.txt",
       "evidence": [
         {
@@ -124,7 +168,7 @@
       "end": "57:16",
       "topics": ["naval-tactics", "fleet-speed", "battlecruisers", "light-cruisers", "torpedoes"],
       "summary": "A running battle shows how even a small speed advantage lets capital ships and light cruisers close, coordinate fire, and bring torpedoes into play.",
-      "body": "Clarke measures the pursuing force's closing-rate advantage against an escaping French ship and treats the engagement as inevitable once that margin exists. The battlecruisers keep pressure on the target while the faster light cruisers close with large torpedo salvos. The moment shows why speed matters beyond simply avoiding battle: it determines who can force the range and dictate the engagement.",
+      "body": "Clarke measures the pursuing force's closing-rate advantage against an escaping French ship and treats the engagement as inevitable once that margin exists. A three-knot advantage lets the capital ships reduce the distance slowly, while the light cruisers approach with nearly ten knots in hand. Their large torpedo load turns the faster screen into a second, more immediate threat alongside the heavy gunfire. The moment shows why speed matters beyond simply avoiding battle: it determines who can force the range and dictate the engagement.",
       "sourcePath": "src/transcripts/txt/2023-10-16_T18-00-21_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-9_oYi_dQVz2NM.txt",
       "evidence": [
         {
@@ -144,13 +188,33 @@
       "end": "1:17:21",
       "topics": ["japanese-navy", "torpedo-boats", "schnellboote", "naval-industrial-capacity", "second-world-war"],
       "summary": "Clarke explains why Japanese interest in the German Schnellboot did not translate into building the same type of craft.",
-      "body": "The discussion cautions against treating every Axis torpedo-boat comparison as a question of direct German imitation. Clarke says Japanese designers examined the Schnellboot but lacked time to establish the industrial capacity needed to build it, so they chose other options. The distinction keeps technological influence separate from the ability to reproduce a design at scale.",
+      "body": "The discussion cautions against treating every Axis torpedo-boat comparison as a question of direct German imitation. Clarke says Japanese designers examined the Schnellboot but lacked time to establish the industrial capacity needed to build it, so they chose other options. He later adds that reports of Schnellboot exploits may have made the German craft appear more attractive than the production decision ultimately proved for Japan. The distinction keeps technological influence separate from the ability to reproduce a design at scale.",
       "sourcePath": "src/transcripts/txt/2023-10-16_T18-00-21_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-9_oYi_dQVz2NM.txt",
       "evidence": [
         {
           "start": "1:16:21",
           "end": "1:17:21",
           "note": "He says Japan examined Schnellboot designs but could not establish the necessary industry in time."
+        }
+      ]
+    },
+    {
+      "id": "naval-spending-and-effective-fleet-tonnage",
+      "videoId": "oYi_dQVz2NM",
+      "slug": "naval-spending-and-effective-fleet-tonnage",
+      "title": "Naval spending does not guarantee effective tonnage",
+      "kind": "notable_point",
+      "start": "1:34:30",
+      "end": "1:35:46",
+      "topics": ["naval-budgets", "fleet-tonnage", "naval-economics", "force-structure"],
+      "summary": "A comparison of British and French budgets shows similar annual spending producing very different fleet tonnage and institutional results.",
+      "body": "Clarke compares the campaign's British and French naval accounts while France is losing ground. France is spending slightly more each year and retains substantial unspent naval funds, yet its fleet totals only about one million tons. Britain's fleet is roughly four times larger, while French naval prestige and power ratings have collapsed. The comparison is a useful warning that headline budgets alone do not reveal how effectively a navy converts money into usable force.",
+      "sourcePath": "src/transcripts/txt/2023-10-16_T18-00-21_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-9_oYi_dQVz2NM.txt",
+      "evidence": [
+        {
+          "start": "1:34:30",
+          "end": "1:35:46",
+          "note": "He contrasts similar yearly naval budgets and French cash reserves with roughly one million French tons versus 4.2 million British tons."
         }
       ]
     },
@@ -164,7 +228,7 @@
       "end": "1:43:59",
       "topics": ["naval-blockade", "cruisers", "naval-strategy"],
       "summary": "A gameplay answer explains how port blockades are assigned and why cruisers are especially useful for the task.",
-      "body": "Asked why destroyers spread around the coast are not producing a blockade result, Clarke advises selecting the ports and assigning ships directly to blockade duty. He adds that cruisers make the difference in his experience, reflecting their value as the force that supplies useful blockade capacity. The answer links operational orders to the larger campaign aim of reducing an opponent before an invasion.",
+      "body": "Asked why destroyers spread around the coast are not producing a blockade result, Clarke advises selecting the ports and assigning ships directly to blockade duty. He adds that cruisers make the difference in his experience, reflecting their value as the force that supplies useful blockade capacity. Earlier, he recommends blockading a high-requirement province before attempting invasion so that the target is weakened first. The answer links operational orders to the larger campaign aim of reducing an opponent before committing invasion tonnage.",
       "question": "How do you make coastal blockade missions register in the campaign?",
       "answerShort": "Select individual ports and assign ships to blockade them; cruisers are particularly important for producing enough blockade effect.",
       "sourcePath": "src/transcripts/txt/2023-10-16_T18-00-21_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-9_oYi_dQVz2NM.txt",
@@ -211,7 +275,7 @@
       "end": "2:23:29",
       "topics": ["fleet-screening", "battlecruisers", "light-cruisers", "naval-tactics", "royal-navy"],
       "summary": "Clarke divides his force into screens and heavy groups, then explains the campaign preference for decisive local superiority over a fair fight.",
-      "body": "Before a fight with French light cruisers, Clarke identifies separate screening and heavy formations built around battlecruisers and battleships. He then points out the mismatch created by pairing three battlecruisers and four friendly light cruisers against four opposing cruisers. The joke about the Royal Navy preferring overwhelming firepower captures a serious tactical principle: concentration of force reduces uncertainty and makes a local action easier to control.",
+      "body": "Before a fight with French light cruisers, Clarke identifies separate screening and heavy formations built around battlecruisers and battleships. The Chester-class cruisers cover those groups while other fast formations are sent hunting. He then points out the mismatch created by pairing three battlecruisers and four friendly light cruisers against four opposing cruisers. The joke about the Royal Navy preferring overwhelming firepower captures a serious tactical principle: concentration of force reduces uncertainty and makes a local action easier to control.",
       "sourcePath": "src/transcripts/txt/2023-10-16_T18-00-21_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-9_oYi_dQVz2NM.txt",
       "evidence": [
         {
@@ -231,7 +295,7 @@
       "end": "2:25:07",
       "topics": ["torpedoes", "naval-tactics", "fleet-speed"],
       "summary": "A short tactical aside warns that turning into torpedoes is dangerous unless their approach angle is already known.",
-      "body": "Clarke distinguishes a risky game maneuver from the historical default. Unless a commander is confident about the torpedoes' angle, he says the usual advice was to turn away and outrun them rather than turn toward the threat. The note is useful because it ties an in-game decision to the geometry and uncertainty that governed real torpedo evasion.",
+      "body": "Clarke distinguishes a risky game maneuver from the historical default. Unless a commander is confident about the torpedoes' angle, he says the usual advice was to turn away and outrun them rather than turn toward the threat. Turning toward a spread can work only when its track is understood well enough to cut behind the weapons. The note is useful because it ties an in-game decision to the geometry and uncertainty that governed real torpedo evasion.",
       "sourcePath": "src/transcripts/txt/2023-10-16_T18-00-21_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-9_oYi_dQVz2NM.txt",
       "evidence": [
         {
@@ -251,7 +315,7 @@
       "end": "2:32:23",
       "topics": ["naval-blockade", "naval-invasions", "economic-warfare", "french-colonies"],
       "summary": "The campaign shifts from a difficult French invasion to a strategy of blockade and colonial seizures intended to damage the enemy economy.",
-      "body": "When an invasion window becomes less favorable, Clarke looks for easier colonial objectives such as Cambodia while maintaining the blockade. His reasoning is economic: taking pieces of the empire at the same time as restricting maritime activity should weaken the opponent's ability to continue the war. The discussion shows a campaign-level use of naval power that combines direct conquest with attrition.",
+      "body": "When an invasion window becomes less favorable, Clarke looks for easier colonial objectives such as Cambodia while maintaining the blockade. His reasoning is economic: taking pieces of the empire at the same time as restricting maritime activity should weaken the opponent's ability to continue the war. He selects the least demanding target first, treating colonial geography as a way to keep pressure on France while the main invasion stalls. The discussion shows a campaign-level use of naval power that combines direct conquest with attrition.",
       "sourcePath": "src/transcripts/txt/2023-10-16_T18-00-21_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-9_oYi_dQVz2NM.txt",
       "evidence": [
         {
@@ -262,22 +326,84 @@
       ]
     },
     {
+      "id": "scrapping-young-cruisers-and-fleet-value",
+      "videoId": "oYi_dQVz2NM",
+      "slug": "scrapping-young-cruisers-and-fleet-value",
+      "title": "Why scrapping young cruisers wastes fleet value",
+      "kind": "notable_point",
+      "start": "2:40:01",
+      "end": "2:40:15",
+      "topics": ["cruisers", "fleet-management", "naval-procurement", "warship-service-life"],
+      "summary": "Clarke questions an American disposal program because the cruisers being removed are only six years old rather than obsolete veterans.",
+      "body": "The campaign reports that the United States is scrapping light cruisers and larger cruisers. Clarke initially assumes the decision may be sensible, then reverses course when he sees that the ships are only six years old. Their youth means the fleet is discarding recently purchased hulls rather than clearing genuinely obsolete units. The brief reaction highlights service life and sunk procurement cost as essential context for judging force reductions.",
+      "sourcePath": "src/transcripts/txt/2023-10-16_T18-00-21_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-9_oYi_dQVz2NM.txt",
+      "evidence": [
+        {
+          "start": "2:40:01",
+          "end": "2:40:15",
+          "note": "He first calls American cruiser scrapping sensible, then objects after noticing that the ships are only six years old."
+        }
+      ]
+    },
+    {
       "id": "tonnage-for-naval-invasions",
       "videoId": "oYi_dQVz2NM",
       "slug": "tonnage-for-naval-invasions",
       "title": "Why invasion planning needs tonnage as well as capability",
-      "kind": "notable_point",
+      "kind": "qa",
       "start": "2:56:04",
       "end": "2:56:22",
       "topics": ["naval-invasions", "force-structure", "battleships", "naval-logistics"],
       "summary": "Clarke explains that powerful ships are not enough when a naval invasion has a large displacement requirement.",
-      "body": "Answering a campaign-design point, Clarke emphasizes the balance between individual capability and aggregate tonnage. A 90,000-ton battleship is valuable not only for its combat qualities but because it helps meet a two-million-ton requirement for an invasion. The observation makes force structure a quantitative as well as a qualitative problem.",
+      "body": "Answering a viewer's campaign-design point, Clarke emphasizes the balance between individual capability and aggregate tonnage. A 90,000-ton battleship is valuable not only for its combat qualities but because it contributes a large share of a two-million-ton invasion requirement. A fleet composed only of individually efficient ships may still struggle to assemble the displacement demanded by a major operation. The answer makes force structure a quantitative as well as a qualitative problem.",
+      "question": "How should individual ship capability be balanced against the tonnage required for a naval invasion?",
+      "answerShort": "Maintain capable ships, but also enough aggregate displacement to meet the invasion threshold; very large battleships contribute heavily to both needs.",
       "sourcePath": "src/transcripts/txt/2023-10-16_T18-00-21_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-9_oYi_dQVz2NM.txt",
       "evidence": [
         {
           "start": "2:56:04",
           "end": "2:56:22",
           "note": "He says invasion requirements demand tonnage and explains the value of a 90,000-ton battleship toward a two-million-ton total."
+        }
+      ]
+    },
+    {
+      "id": "fuel-endurance-and-long-range-force-concentration",
+      "videoId": "oYi_dQVz2NM",
+      "slug": "fuel-endurance-and-long-range-force-concentration",
+      "title": "Fuel endurance limits distant force concentration",
+      "kind": "notable_point",
+      "start": "3:01:48",
+      "end": "3:07:51",
+      "topics": ["fleet-logistics", "fuel-endurance", "fleet-concentration", "light-cruisers"],
+      "summary": "An attempted withdrawal shows how fuel limits reduce speed and punish a commander who sends an understrength force on a long transit.",
+      "body": "Clarke orders an outmatched cruiser force to escape at maximum speed, only to find that fuel state limits what the ships can achieve. He writes off both units after remembering that a large French fleet operates in the area. In retrospect, he says a long transit required more concentrated strength before the force was committed. The upgraded Chester cruisers carry more firepower and protection, but their reduced speed cannot solve a deployment mistake compounded by endurance limits.",
+      "sourcePath": "src/transcripts/txt/2023-10-16_T18-00-21_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-9_oYi_dQVz2NM.txt",
+      "evidence": [
+        {
+          "start": "3:01:48",
+          "end": "3:07:51",
+          "note": "He attempts to flee, notes fuel-limited speed, admits the force should have been concentrated for the long transit, and compares upgraded Chester performance."
+        }
+      ]
+    },
+    {
+      "id": "using-and-breaking-tactical-patterns",
+      "videoId": "oYi_dQVz2NM",
+      "slug": "using-and-breaking-tactical-patterns",
+      "title": "Using and breaking patterns against human opponents",
+      "kind": "notable_point",
+      "start": "3:08:16",
+      "end": "3:08:32",
+      "topics": ["naval-tactics", "deception", "command-decision-making"],
+      "summary": "A short tactical aside explains how commanders can exploit human pattern recognition by establishing an expectation and then breaking it.",
+      "body": "Clarke notes that human opponents naturally search for repeated behavior. A commander can deliberately provide a recognizable pattern so the enemy begins planning around it. Breaking that pattern at the chosen moment then turns the opponent's expectation into a vulnerability. He distinguishes this psychological method from fighting a computer opponent, which may not respond to perceived habits in the same way.",
+      "sourcePath": "src/transcripts/txt/2023-10-16_T18-00-21_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-9_oYi_dQVz2NM.txt",
+      "evidence": [
+        {
+          "start": "3:08:16",
+          "end": "3:08:32",
+          "note": "He says humans spot patterns, recommends giving an opponent a pattern to recognize and then breaking it, and contrasts computers."
         }
       ]
     },

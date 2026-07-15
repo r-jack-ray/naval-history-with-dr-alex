@@ -10,7 +10,7 @@
     "replenishment-at-sea",
     "naval-strategy"
   ],
-  "needsFurtherProcessing": true,
+  "needsFurtherProcessing": false,
   "segments": [
     {
       "id": "logistics-is-a-hub-and-spoke-system",
@@ -22,7 +22,7 @@
       "end": "4:50",
       "topics": ["naval-logistics", "force-structure", "naval-strategy"],
       "summary": "Dr. Clarke frames global naval logistics as a chain from industrial centers through theater and forward hubs to the fleet.",
-      "body": "The opening model distinguishes the industrial source of supplies from theater-level and forward hubs. The difficult final leg depends on where the fleet is operating and how far it is from the forward base. This distinction underpins his comparison between British and American replenishment plans.",
+      "body": "The opening model distinguishes the industrial source of supplies from theater-level and forward hubs. The difficult final leg depends on where the fleet is operating and how far it is from the forward base. This distinction underpins his comparison between British and American replenishment plans. It also explains why counting support ships without mapping the route from factory to fighting fleet can give a misleading picture of logistical strength.",
       "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
       "evidence": [
         {"start": "2:49", "end": "4:50", "note": "Defines a global hub-and-spoke logistics chain and its final delivery problem."}
@@ -38,7 +38,7 @@
       "end": "7:04",
       "topics": ["naval-procurement", "defence-industries", "logistics"],
       "summary": "A question about centralized production leads to a comparison between American dispersed procurement politics and British dependence on a single major supplier.",
-      "body": "Dr. Clarke argues that production concentration predates Nixon and points to the long history of politically distributed American arsenals. He contrasts that with the risks of consolidating British defence production into one company: reduced competition and fewer domestic alternatives when a programme goes wrong.",
+      "body": "Dr. Clarke argues that production concentration predates Nixon and points to the long history of politically distributed American arsenals. He contrasts that with the risks of consolidating British defence production into one company. A single supplier reduces competition and leaves fewer domestic alternatives when a programme goes wrong. The exchange connects industrial geography to the resilience of the procurement system that must equip and sustain a navy.",
       "question": "Can modern production centralization be traced back to the Nixon era?",
       "answerShort": "No. The pattern is older, and concentrating a shrinking defence market in one supplier reduces competition and procurement resilience.",
       "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
@@ -56,7 +56,7 @@
       "end": "16:28",
       "topics": ["coal-fired-warships", "royal-navy", "naval-logistics", "naval-bases"],
       "summary": "Coal stations were not evidence that Britain had neglected logistics; they solved the impracticality of coaling a fleet at sea.",
-      "body": "The lecture challenges the idea that logistics was a new interwar concern for Britain. Coaling ships at sea was laborious and hazardous, so a global system of bases was a practical response. The Royal Navy was still transitioning away from coal-fired vessels well into the interwar era.",
+      "body": "The lecture challenges the idea that logistics was a new interwar concern for Britain. Coaling ships at sea was laborious and hazardous, so a global system of bases was a practical response. The Royal Navy was still transitioning away from coal-fired vessels well into the interwar era. Its oil-fuel and replenishment plans therefore developed alongside an inherited network built for coal rather than replacing a complete absence of logistical thought.",
       "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
       "evidence": [
         {"start": "12:31", "end": "16:28", "note": "Explains the constraints of coaling and the fleet's gradual fuel transition."}
@@ -72,7 +72,7 @@
       "end": "18:54",
       "topics": ["replenishment-at-sea", "naval-logistics", "ammunition", "fleet-support"],
       "summary": "The practical difficulty of moving food, stores, and ammunition explains why a protected base could be more useful than fuel transfer at sea.",
-      "body": "Fuel can pass through a hose, but solid stores require boats, wires, and exposed handling. Dr. Clarke stresses that a battleship shell is not a routine underway transfer. His comparison shows why replenishment doctrine has to account for the whole sustainment burden rather than oil alone.",
+      "body": "Fuel can pass through a hose, but solid stores require boats, wires, and exposed handling. Dr. Clarke stresses that a battleship shell is not a routine underway transfer. A protected anchorage can let ships slow down and move heavy stores more safely than they could in open water. His comparison shows why replenishment doctrine has to account for the whole sustainment burden rather than oil alone.",
       "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
       "evidence": [
         {"start": "16:39", "end": "18:54", "note": "Contrasts fuel transfer with moving food, equipment, and ammunition at sea."}
@@ -88,7 +88,7 @@
       "end": "21:50",
       "topics": ["singapore-naval-base", "naval-logistics", "far-east", "royal-navy"],
       "summary": "Singapore made sense as a Far Eastern maintenance and logistics hub, though its inadequate defence weakened the wider strategy.",
-      "body": "The argument is not that Singapore was meant to be the fleet's permanent fighting position. It was a place to collect fuel, stores, maintenance capacity, and repair infrastructure for a whole theater. Dr. Clarke separates that strategic logic from the failure to defend the base adequately.",
+      "body": "The argument is not that Singapore was meant to be the fleet's permanent fighting position. It was a place to collect fuel, stores, maintenance capacity, and repair infrastructure for a whole theater. Fighting forces were expected to move forward while damaged ships and bulk supplies moved through this rearward hub. Dr. Clarke separates that strategic logic from the failure to defend the base adequately.",
       "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
       "evidence": [
         {"start": "19:44", "end": "21:50", "note": "Explains Singapore's intended maintenance and theater-support role."}
@@ -104,12 +104,30 @@
       "end": "22:26",
       "topics": ["convoy-operations", "royal-fleet-auxiliary", "naval-logistics", "interwar-period"],
       "summary": "The Royal Navy kept convoy methods alive in peacetime partly because logistics vessels would need protection in war.",
-      "body": "Dr. Clarke notes that exercises often used Royal Fleet Auxiliary ships as the merchant vessels being convoyed. The practice linked interwar convoy doctrine directly to the problem of moving fuel and stores safely, rather than treating logistics as separate from operations.",
+      "body": "Dr. Clarke notes that exercises often used Royal Fleet Auxiliary ships as the merchant vessels being convoyed. The escorts thereby practised protecting the same kinds of vulnerable vessels on which fleet endurance depended. The practice kept convoy skills alive between the wars. It linked interwar convoy doctrine directly to moving fuel and stores safely rather than treating logistics as separate from operations.",
       "question": "What plans did the Royal Navy have for escorting logistics vessels?",
       "answerShort": "It retained and exercised convoy techniques, often using RFA ships as the vessels that escorts protected.",
       "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
       "evidence": [
         {"start": "21:59", "end": "22:26", "note": "Explains convoy training with RFA ships as the protected merchant element."}
+      ]
+    },
+    {
+      "id": "auxiliaries-stayed-outside-naval-treaty-tonnage",
+      "videoId": "a1SLIX5SzPE",
+      "slug": "auxiliaries-stayed-outside-naval-treaty-tonnage",
+      "title": "Auxiliaries stayed outside naval treaty tonnage",
+      "kind": "qa",
+      "start": "22:33",
+      "end": "22:39",
+      "topics": ["naval-treaties", "royal-fleet-auxiliary", "fleet-support", "interwar-period"],
+      "summary": "Fleet supply trains were excluded from the interwar naval treaty limits that constrained combatant tonnage.",
+      "body": "A short answer establishes an important boundary in treaty-era fleet design. Oilers and other auxiliaries did not consume the tonnage allowances assigned to battleships, cruisers, destroyers, or submarines. Navies could therefore expand support capacity without trading away a treaty-limited combatant. Industrial capacity and budgets still constrained construction even when the diplomatic agreements did not.",
+      "question": "Did fleet supply trains fall under the naval treaties?",
+      "answerShort": "No. Auxiliary supply ships were kept outside the treaty tonnage limits.",
+      "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
+      "evidence": [
+        {"start": "22:33", "end": "22:39", "note": "States that fleet supply trains were excluded from naval treaty limits."}
       ]
     },
     {
@@ -122,7 +140,7 @@
       "end": "29:14",
       "topics": ["fleet-oilers", "replenishment-at-sea", "us-navy", "royal-navy", "naval-procurement"],
       "summary": "The US Navy became the leader in underway replenishment, but its Cimarron-class fast oilers also began construction only in 1938.",
-      "body": "The comparison cautions against judging the 1930s Royal Navy against the US Navy of 1944. Fast oiler technology, equipment, and fleet requirements were maturing late in the decade. British planners also had to choose between machinery for fast support ships and machinery needed for cruisers and destroyers.",
+      "body": "The comparison cautions against judging the 1930s Royal Navy against the US Navy of 1944. Fast oiler technology, transfer equipment, and fleet requirements were still maturing late in the decade. The US Cimarron class began construction in 1938, while Britain already had six 16-knot oilers and expected more time before a Far Eastern war. British planners also had to choose between machinery for specialized support ships and machinery needed immediately for cruisers and destroyers.",
       "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
       "evidence": [
         {"start": "23:03", "end": "29:14", "note": "Discusses Cimarron construction, British fast-oiler capacity, and procurement trade-offs."}
@@ -138,7 +156,7 @@
       "end": "35:01",
       "topics": ["naval-bases", "naval-logistics", "fleet-oilers", "royal-navy"],
       "summary": "A point on a map only becomes a useful naval base when it has fuel, stores, repair capacity, and a workable connection to the fleet.",
-      "body": "The lecture distinguishes a nominal station from a genuine support base such as Cape Town. Slow commercial or naval tankers could move fuel between hubs, leaving the limited fast oilers for the final run to operational forces. This made British needs different from an American fleet crossing the Pacific from Pearl Harbor.",
+      "body": "The lecture distinguishes a nominal station from a genuine support base such as Cape Town. Fuel stocks, stores, repair capacity, and transport links determine whether a dot on a map can sustain major warships. Slow commercial or naval tankers could move fuel between hubs, leaving the limited fast oilers for the final run to operational forces. This layered geography made British needs different from those of an American fleet crossing the Pacific from Pearl Harbor.",
       "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
       "evidence": [
         {"start": "30:25", "end": "35:01", "note": "Separates nominal bases from sustainment hubs and explains tanker roles."}
@@ -154,7 +172,7 @@
       "end": "40:58",
       "topics": ["royal-navy", "imperial-defence", "naval-strategy", "interwar-period"],
       "summary": "Britain's worldwide commitments forced planners to weigh Germany, Italy, and Japan rather than optimize for one ocean.",
-      "body": "The Royal Navy had to protect dominions, colonies, trade routes, and Mediterranean access across the globe. Treaty limits prevented the ideal three-fleet structure, while the likely opponents could combine in several ways. This strategic burden helps explain why British procurement could not follow a single-war blueprint.",
+      "body": "The Royal Navy had to protect dominions, colonies, trade routes, and Mediterranean access across the globe. Treaty limits prevented the ideal three-fleet structure, while Germany, Italy, and Japan could threaten different combinations of theaters. Planners therefore needed a reaction force and a sequence of procurement priorities rather than one fixed campaign fleet. This strategic burden helps explain why British logistics could not follow a single-ocean blueprint.",
       "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
       "evidence": [
         {"start": "36:32", "end": "40:58", "note": "Outlines global commitments and multiple-war planning constraints."}
@@ -170,7 +188,7 @@
       "end": "40:09",
       "topics": ["eastern-fleet", "singapore-naval-base", "indian-ocean", "fleet-support"],
       "summary": "After Singapore fell, the Eastern Fleet fell back on Ceylon and adapted ships and tankers into replacement support facilities.",
-      "body": "The answer shows why losing a forward hub was serious but not identical to losing all sustainment capacity. The fleet could still take food, stores, and repair support at its remaining bases, though its operating geography and options narrowed sharply.",
+      "body": "The answer shows why losing a forward hub was serious but not identical to losing all sustainment capacity. The Eastern Fleet withdrew to Ceylon and used adapted support points and tankers. Ships could still receive food, stores, maintenance, and fuel at the remaining bases. Their operating geography and options nevertheless narrowed sharply once Singapore was gone.",
       "question": "How did the Royal Navy supply its forces after Singapore fell?",
       "answerShort": "It withdrew to Ceylon, adapted additional support points, and used tankers to sustain the Eastern Fleet.",
       "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
@@ -188,7 +206,7 @@
       "end": "44:27",
       "topics": ["world-war-ii", "mediterranean-theatre", "military-logistics", "caucasus"],
       "summary": "Operational ambitions in the Caucasus and around Suez ran into the same constraint: forces could not outrun their supply lines.",
-      "body": "Dr. Clarke uses the German drive toward the Caucasus and repeated approaches toward Suez to make the larger point that logistics constrained every side. Tactical possibilities mattered only if fuel, transport, and sustainment could reach the advancing force.",
+      "body": "Dr. Clarke uses the German drive toward the Caucasus and repeated approaches toward Suez to make the larger point that logistics constrained every side. Each advance lengthened the route over which fuel, food, ammunition, and transport had to move. The defender could exploit the moment when that chain reached its practical limit. Tactical possibilities therefore mattered only if sustainment could reach the advancing force.",
       "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
       "evidence": [
         {"start": "43:50", "end": "44:27", "note": "Links Caucasus and Suez operations to supply-line limits."}
@@ -204,10 +222,44 @@
       "end": "49:03",
       "topics": ["us-navy", "war-plan-orange", "pacific-war", "fleet-oilers", "naval-logistics"],
       "summary": "American fast-oiler requirements grew as War Plan Orange confronted the possibility of losing western Pacific forward bases.",
-      "body": "The US Navy's Pacific focus gave it a clearer logistical problem than Britain's global posture. As planners contemplated operating from Pearl Harbor after losing the Philippines or Guam, more fast oilers became necessary. The comparison clarifies why the two navies could value similar techniques differently.",
+      "body": "The US Navy's Pacific focus gave it a clearer logistical problem than Britain's global posture. Holding the Philippines and Guam would have allowed slow tankers to feed forward bases while a smaller fast group served the fleet. Once War Plan Orange contemplated operating from Pearl Harbor after losing those positions, the final delivery leg became much longer. More fast oilers consequently became necessary, clarifying why the two navies could value similar techniques differently.",
       "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
       "evidence": [
         {"start": "45:24", "end": "49:03", "note": "Compares US Pacific planning with the effects of losing forward bases."}
+      ]
+    },
+    {
+      "id": "reading-on-pacific-logistics",
+      "videoId": "a1SLIX5SzPE",
+      "slug": "reading-on-pacific-logistics",
+      "title": "Reading on Pacific naval logistics",
+      "kind": "qa",
+      "start": "49:31",
+      "end": "50:16",
+      "topics": ["naval-logistics", "pacific-war", "eastern-fleet", "naval-historiography"],
+      "summary": "For further study of wartime Pacific logistics, Dr. Clarke recommends David Hobbs while warning that Eastern Fleet books vary sharply in quality.",
+      "body": "The question asks where to continue reading about the logistical changes required by the Pacific war. Dr. Clarke points viewers toward David Hobbs as the strongest starting place and also mentions Boyd's work and the wider Eastern Fleet literature. He cautions that books on the Eastern Fleet vary greatly in quality. This watch point is useful for following the lecture's argument into the operational history of British and Allied fleet support.",
+      "question": "What are good sources on the logistical changes required in the Pacific during the war?",
+      "answerShort": "David Hobbs is the recommended starting point, alongside careful use of Boyd and Eastern Fleet studies.",
+      "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
+      "evidence": [
+        {"start": "49:31", "end": "50:16", "note": "Recommends David Hobbs and discusses the uneven Eastern Fleet literature."}
+      ]
+    },
+    {
+      "id": "wave-class-could-refuel-three-ships",
+      "videoId": "a1SLIX5SzPE",
+      "slug": "wave-class-could-refuel-three-ships",
+      "title": "Wave-class oilers could service three ships",
+      "kind": "notable_point",
+      "start": "54:49",
+      "end": "55:08",
+      "topics": ["wave-class-oilers", "replenishment-at-sea", "royal-fleet-auxiliary", "fleet-oilers"],
+      "summary": "The Wave-class arrangement could refuel ships astern and on both sides, allowing three receiving ships to be served at once.",
+      "body": "Dr. Clarke uses the Wave class to show how transfer-station layout affects replenishment throughput. One ship could receive fuel astern while vessels came alongside on port and starboard. In principle, the oiler could therefore support three ships at the same time. The detail moves the discussion beyond tanker speed and capacity to the equipment and geometry that determine how quickly a formation can be sustained.",
+      "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
+      "evidence": [
+        {"start": "54:49", "end": "55:08", "note": "Explains the three-ship refuelling arrangement associated with the Wave class."}
       ]
     },
     {
@@ -220,10 +272,62 @@
       "end": "1:12:10",
       "topics": ["secret-bases", "singapore-naval-base", "royal-navy", "naval-logistics", "indian-ocean"],
       "summary": "Cameron Bay, Addu Atoll, and the Nicobars were intended as discreet refuelling points for rapidly reinforcing Singapore, not as battlefleet bases.",
-      "body": "The planned route let the Mediterranean Fleet move through the Red Sea and Indian Ocean without slowing to tanker speed or broadcasting its progress. Tankers and mobile defence units would prepare the stops in advance. Their strategic purpose was deterrence and rapid reinforcement, rather than running a war from the Indian Ocean.",
+      "body": "The planned route let the Mediterranean Fleet move through the Red Sea and Indian Ocean without slowing to tanker speed or broadcasting its progress. Tankers and mobile defence units would prepare the stops in advance. Fixed rendezvous points also reduced radio traffic, drawing on the Royal Navy's First World War experience of using enemy transmissions for tracking. The bases served deterrence and rapid reinforcement rather than an attempt to conduct the war from the Indian Ocean.",
       "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
       "evidence": [
         {"start": "1:00:12", "end": "1:12:10", "note": "Explains Singapore's route of secret refuelling bases and its deterrent purpose."}
+      ]
+    },
+    {
+      "id": "base-x-extended-mediterranean-logistics",
+      "videoId": "a1SLIX5SzPE",
+      "slug": "base-x-extended-mediterranean-logistics",
+      "title": "Base X extended Mediterranean logistics",
+      "kind": "notable_point",
+      "start": "1:03:37",
+      "end": "1:05:25",
+      "topics": ["mediterranean-theatre", "navarino-bay", "forward-operating-bases", "naval-logistics"],
+      "summary": "The planned Base X at Navarino Bay would bridge the distance between Alexandria and operations nearer Italy without relying on exposed refuelling at sea.",
+      "body": "Malta lay close to Italian air power, Gibraltar was too distant, and Alexandria alone left a wide operational gap. The Royal Navy's answer was a forward base at Navarino Bay in Greece. Because Mediterranean sorties rarely required the endurance of a trans-Pacific crossing, a defended intermediate anchorage could be more useful than a large fast-oiler force. This theater-specific plan illustrates how geography determined the balance between bases and replenishment at sea.",
+      "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
+      "evidence": [
+        {"start": "1:03:37", "end": "1:05:25", "note": "Explains Base X at Navarino Bay as a forward operating base from Alexandria."}
+      ]
+    },
+    {
+      "id": "dutch-neutrality-limited-fuel-planning",
+      "videoId": "a1SLIX5SzPE",
+      "slug": "dutch-neutrality-limited-fuel-planning",
+      "title": "Dutch neutrality limited fuel planning",
+      "kind": "qa",
+      "start": "1:16:41",
+      "end": "1:16:53",
+      "topics": ["dutch-east-indies", "naval-logistics", "neutrality", "far-east"],
+      "summary": "Britain discussed access to fuel from the Dutch East Indies but could not build its prewar plan around a state that might remain neutral.",
+      "body": "The exchange separates possible regional resources from supplies that planners could count on. Discussions with the Dutch did not produce a firm prewar agreement for Indonesian fuel. The Netherlands might remain neutral in a conflict involving Britain and Japan, making guaranteed access politically impossible. British stockpiles and tanker plans therefore needed to work without assuming Dutch cooperation.",
+      "question": "Was there a prewar agreement for the Dutch to provide fuel from Indonesia?",
+      "answerShort": "No. There were discussions, but no agreement because the Netherlands might remain neutral.",
+      "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
+      "evidence": [
+        {"start": "1:16:41", "end": "1:16:53", "note": "States that discussions occurred but Dutch neutrality prevented an agreement."}
+      ]
+    },
+    {
+      "id": "carrier-losses-shaped-force-z",
+      "videoId": "a1SLIX5SzPE",
+      "slug": "carrier-losses-shaped-force-z",
+      "title": "Carrier losses shaped Force Z",
+      "kind": "qa",
+      "start": "1:17:06",
+      "end": "1:19:37",
+      "topics": ["force-z", "royal-navy", "aircraft-carriers", "fleet-air-arm", "far-east"],
+      "summary": "Force Z's lack of carrier support reflected the interwar pause in carrier construction and wartime losses rather than a single isolated deployment choice.",
+      "body": "Dr. Clarke connects Force Z to the Royal Navy's wider carrier shortage. Interwar construction pauses reduced the number of new carriers entering service, while Courageous, Glorious, and Ark Royal were lost before the Far Eastern crisis. Illustrious and Formidable had also suffered damage in the Mediterranean. The result was a fleet with too few carriers for simultaneous commitments, leaving the Singapore reinforcement without the air support envisioned in stronger prewar force plans.",
+      "question": "How did these interwar plans affect Force Z?",
+      "answerShort": "Carrier construction pauses, combat damage, and the losses of Courageous, Glorious, and Ark Royal left too few carriers to support the deployment properly.",
+      "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
+      "evidence": [
+        {"start": "1:17:06", "end": "1:19:37", "note": "Links Force Z's carrier shortage to interwar construction decisions, losses, and Mediterranean damage."}
       ]
     },
     {
@@ -236,10 +340,44 @@
       "end": "1:21:40",
       "topics": ["mobile-naval-bases", "naval-logistics", "royal-navy", "fleet-support"],
       "summary": "The secret bases were preselected anchorages that tanker and defence detachments could turn into usable refuelling points at short notice.",
-      "body": "These sites were not hidden permanent naval yards. A base-defence detachment could arrive with the tankers, set up protection, and prepare basic facilities before the fleet reached it. The distinction matters because it shows how mobility and pre-planning substituted for expensive fixed infrastructure.",
+      "body": "These sites were not hidden permanent naval yards. A base-defence detachment could arrive with the tankers, erect anti-aircraft and antisubmarine protection, and prepare the anchorage within about a day. The fleet could then refuel and depart while the support ships remained concealed. The distinction matters because mobility and pre-planning substituted for expensive fixed infrastructure.",
       "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
       "evidence": [
         {"start": "1:19:48", "end": "1:21:40", "note": "Describes the rapid activation and defence of planned refuelling anchorages."}
+      ]
+    },
+    {
+      "id": "secret-base-plans-were-compartmentalized",
+      "videoId": "a1SLIX5SzPE",
+      "slug": "secret-base-plans-were-compartmentalized",
+      "title": "Secret-base plans were compartmentalized",
+      "kind": "notable_point",
+      "start": "1:23:42",
+      "end": "1:25:01",
+      "topics": ["secret-bases", "operational-security", "royal-navy", "singapore-strategy"],
+      "summary": "Only a small circle of senior officers knew what the coded refuelling sites meant, leaving captured naval planning papers deliberately sparse.",
+      "body": "The code letters for the secret bases were closely compartmentalized within the Royal Navy. Even officers who knew that plans existed might not know the locations behind every designation. Dr. Clarke contrasts this with the detailed Malaya plans captured by Japan and notes that the sparse naval files could be mistaken for an absence of planning. Operational security protected the reinforcement route, though it also made the system harder for outsiders and later historians to reconstruct.",
+      "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
+      "evidence": [
+        {"start": "1:23:42", "end": "1:25:01", "note": "Describes the code names, limited distribution, and sparse captured Royal Navy plans."}
+      ]
+    },
+    {
+      "id": "addu-became-a-wartime-fallback",
+      "videoId": "a1SLIX5SzPE",
+      "slug": "addu-became-a-wartime-fallback",
+      "title": "Addu became a wartime fallback",
+      "kind": "qa",
+      "start": "1:25:06",
+      "end": "1:25:50",
+      "topics": ["addu-atoll", "eastern-fleet", "singapore-naval-base", "indian-ocean", "naval-logistics"],
+      "summary": "The Royal Navy adapted the prewar Addu Atoll refuelling concept into a fallback support point as Singapore's position deteriorated.",
+      "body": "Addu's value did not end when the original rapid-reinforcement plan failed. The Royal Navy needed a second supply point in case Ceylon or other established bases came under attack. Work at the atoll was already under way while the Eastern Fleet was forming and Singapore was expected to hold. Its later use shows how a preselected logistics site could be repurposed when the strategic geography changed.",
+      "question": "Why was Addu Atoll developed when the Eastern Fleet arrived?",
+      "answerShort": "It provided a fallback source of fuel and stores after Singapore was lost and in case Ceylon came under attack.",
+      "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
+      "evidence": [
+        {"start": "1:25:06", "end": "1:25:50", "note": "Explains Addu's development as a secondary supply point while the Eastern Fleet formed."}
       ]
     },
     {
@@ -252,10 +390,28 @@
       "end": "1:38:16",
       "topics": ["singapore-naval-base", "naval-repair", "floating-drydocks", "far-east", "royal-navy"],
       "summary": "Singapore's docks, storage, and space for floating repair facilities made it a rearward triage center rather than a safe combat anchorage.",
-      "body": "The base had the infrastructure to assess damaged ships, repair those that could be restored locally, and route others to Australia, Ceylon, or Britain. Its compact layout also made it vulnerable to air attack if the enemy reached it. The planned answer was to keep combat forces and the enemy farther forward.",
+      "body": "The base had the infrastructure to assess damaged ships, repair those that could be restored locally, and route others to Australia, Ceylon, or Britain. Depot ships, storage vessels, and floating dry docks could expand that capacity as the war developed. Its compact layout also made it vulnerable to air attack if the enemy reached it. The planned answer was to keep combat forces and the enemy farther forward while Singapore preserved damaged ships for return to service.",
       "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
       "evidence": [
         {"start": "1:27:42", "end": "1:38:16", "note": "Explains why Singapore was designed for repairs, stores, and theater coordination."}
+      ]
+    },
+    {
+      "id": "far-east-cruisers-used-oilers-and-forward-bases",
+      "videoId": "a1SLIX5SzPE",
+      "slug": "far-east-cruisers-used-oilers-and-forward-bases",
+      "title": "Far East cruisers used oilers and forward bases",
+      "kind": "qa",
+      "start": "1:32:42",
+      "end": "1:33:47",
+      "topics": ["town-class-cruisers", "crown-colony-class", "fleet-oilers", "forward-operating-bases", "far-east"],
+      "summary": "Cruisers operating forward were expected to refuel from fast oilers or advanced bases such as Weihaiwei rather than commute to Singapore for every load.",
+      "body": "A viewer asks how British cruisers with limited radius would be sustained in Far Eastern operations. Dr. Clarke answers that the ships would use fast fleet oilers at sea or refuel from forward bases such as Weihaiwei. He also cautions that the question may be conflating the Town class with the Crown Colony class and notes that cruising speed strongly affects practical range. The exchange makes the forward-hub concept concrete at the level of an individual cruiser force.",
+      "question": "Where were British cruisers expected to refuel during Far Eastern operations?",
+      "answerShort": "From fast fleet oilers at sea or forward bases such as Weihaiwei, not by returning to Singapore each time.",
+      "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
+      "evidence": [
+        {"start": "1:32:42", "end": "1:33:47", "note": "Discusses fast-oiler and forward-base refuelling for cruisers and corrects a possible class-name confusion."}
       ]
     },
     {
@@ -268,7 +424,7 @@
       "end": "1:41:10",
       "topics": ["royal-fleet-auxiliary", "fleet-support", "naval-logistics", "royal-navy"],
       "summary": "The Royal Fleet Auxiliary, founded in 1905, provided the civilian-crewed support organization behind Royal Navy coal, fuel, and stores.",
-      "body": "The answer places the RFA at the center of British fleet sustainment rather than treating support ships as an improvised wartime addition. Its civilian status also mattered because it could enter some ports that were unavailable to warships. The organizational model connected coal-era support to later tanker and replenishment work.",
+      "body": "The answer places the RFA at the center of British fleet sustainment rather than treating support ships as an improvised wartime addition. It supplied coal, fuel, and stores through a permanent organization established in 1905. Its civilian status also mattered because RFA vessels could enter some ports unavailable to commissioned warships. The model connected coal-era support to later tanker and replenishment work.",
       "question": "Who handled Royal Navy logistics in the interwar period?",
       "answerShort": "The Royal Fleet Auxiliary, founded in 1905, supplied the Navy with coaling ships, tankers, and other support vessels.",
       "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
@@ -286,10 +442,62 @@
       "end": "1:52:25",
       "topics": ["mediterranean-theatre", "ammunition", "replenishment-at-sea", "royal-navy"],
       "summary": "In a Mediterranean war, ships could face ammunition shortages before fuel shortages, making a nearby base more valuable than an exposed underway transfer.",
-      "body": "The constrained Mediterranean offered numerous potential bases but little safety for ammunition ships under air attack. Dr. Clarke argues that anti-aircraft ammunition could become the decisive consumable before fuel. This is why a logistics assessment must start with the theater and the expected rate of expenditure, not with a generic oiler count.",
+      "body": "The constrained Mediterranean offered numerous potential bases but little safety for ammunition ships under air attack. Dr. Clarke argues that anti-aircraft ammunition could become the decisive consumable before fuel. The campaigns around Crete gave practical support to that forecast as ships returned with fuel remaining but depleted magazines. A logistics assessment must therefore start with theater geography and expected expenditure rather than a generic oiler count.",
       "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
       "evidence": [
         {"start": "1:48:54", "end": "1:52:25", "note": "Compares Mediterranean fuel needs with the more pressing ammunition problem."}
+      ]
+    },
+    {
+      "id": "vls-rearming-revives-forward-base-problem",
+      "videoId": "a1SLIX5SzPE",
+      "slug": "vls-rearming-revives-forward-base-problem",
+      "title": "VLS rearming revives the forward-base problem",
+      "kind": "notable_point",
+      "start": "1:52:29",
+      "end": "1:54:22",
+      "topics": ["vertical-launch-systems", "missile-logistics", "replenishment-at-sea", "forward-operating-bases", "modern-navies"],
+      "summary": "The difficulty of loading vertical-launch missiles at sea may push modern navies back toward protected forward anchorages and specialist stores ships.",
+      "body": "Dr. Clarke extends the ammunition argument from battleship shells to modern vertical-launch system missiles. A costly missile must move from the supply ship to an escort and then be manoeuvred safely to a cell on a hull with little clear deck space. The handling problem is difficult and risky enough that navies no longer routinely reload VLS cells at sea. He suggests that a Pacific force may need a specialist stores ship working inside a protected bay, recreating the logic of a mobile forward base.",
+      "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
+      "evidence": [
+        {"start": "1:52:29", "end": "1:54:22", "note": "Uses VLS missile handling to explain the continuing need for protected forward rearming points."}
+      ]
+    },
+    {
+      "id": "rfa-loss-totals-depend-on-status",
+      "videoId": "a1SLIX5SzPE",
+      "slug": "rfa-loss-totals-depend-on-status",
+      "title": "RFA loss totals depend on ship status",
+      "kind": "qa",
+      "start": "1:55:21",
+      "end": "1:56:03",
+      "topics": ["royal-fleet-auxiliary", "world-war-ii", "merchant-shipping", "naval-historiography"],
+      "summary": "Counting RFA losses in the Second World War is complicated by ships that were owned, hired, or chartered for different periods.",
+      "body": "Dr. Clarke declines to give a single loss total because the wartime RFA expanded through several legal and administrative routes. Some vessels were permanently procured, others hired for the war, and still others chartered for a particular operation. A ship might sink after its charter had expired, creating disagreement over whether it belonged in the RFA total. The answer is a useful warning that fleet-support statistics depend on definitions as well as wreck records.",
+      "question": "How many RFA ships were lost in the Second World War?",
+      "answerShort": "Many were lost, but an exact total is disputed because owned, hired, and temporarily chartered vessels had different status.",
+      "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
+      "evidence": [
+        {"start": "1:55:21", "end": "1:56:03", "note": "Explains why ownership and charter status make an exact RFA loss count difficult."}
+      ]
+    },
+    {
+      "id": "fast-oiler-force-expanded-during-war",
+      "videoId": "a1SLIX5SzPE",
+      "slug": "fast-oiler-force-expanded-during-war",
+      "title": "The fast-oiler force expanded during the war",
+      "kind": "qa",
+      "start": "1:57:48",
+      "end": "1:57:58",
+      "topics": ["fleet-oilers", "royal-fleet-auxiliary", "world-war-ii", "naval-logistics"],
+      "summary": "The Royal Navy began the war with six high-speed fleet oilers and had approximately twenty by its end.",
+      "body": "The brief comparison gives a useful measure of wartime adaptation. Six fast oilers were available at the beginning of the conflict. Dr. Clarke estimates that the force had grown to nearer twenty by the end. The increase helps distinguish limited prewar specialization from the larger support fleet created as operational demand and industrial capacity expanded.",
+      "question": "How many high-speed fleet oilers did the Royal Navy have at the beginning and end of the war?",
+      "answerShort": "About six at the beginning and closer to twenty by the end of the Second World War.",
+      "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
+      "evidence": [
+        {"start": "1:57:48", "end": "1:57:58", "note": "Estimates six fast oilers at the start of the war and nearer twenty at the end."}
       ]
     },
     {
@@ -302,12 +510,48 @@
       "end": "1:59:03",
       "topics": ["bismarck", "fleet-oilers", "convoy-operations", "royal-navy"],
       "summary": "A question on moving RFA ships shows how the Bismarck pursuit left the Royal Navy short of escorts for a tanker needed to support returning capital ships.",
-      "body": "Support ships could sometimes move independently for speed, but their vulnerability remained central to the operational calculation. Dr. Clarke uses the episode to illustrate how target fixation can make a fleet forget that its supply ship also needs protection.",
+      "body": "Support ships could sometimes move independently for urgent resupply or travel in protected groups. Either method forced commanders to balance speed, escort availability, and the risk of losing fuel capacity. During the Bismarck pursuit, the Royal Navy prepared an oiler for the returning capital ships only to discover that virtually every suitable escort had joined the hunt. Dr. Clarke uses the episode to show how target fixation can make a fleet forget that its supply ship also needs protection.",
       "question": "How were RFA ships moved when an enemy might attack them?",
       "answerShort": "They could sail independently for urgent resupply or in protected groups, but the Bismarck hunt exposed the cost of leaving an oiler without escorts.",
       "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
       "evidence": [
         {"start": "1:58:11", "end": "1:59:03", "note": "Uses the Bismarck pursuit to show the escort problem for an oiler."}
+      ]
+    },
+    {
+      "id": "britain-did-not-need-submersible-supply-ships",
+      "videoId": "a1SLIX5SzPE",
+      "slug": "britain-did-not-need-submersible-supply-ships",
+      "title": "Britain did not need submersible supply ships",
+      "kind": "qa",
+      "start": "1:59:14",
+      "end": "1:59:29",
+      "topics": ["submarine-logistics", "blockade", "royal-navy", "kriegsmarine"],
+      "summary": "German submersible supply ships answered the British blockade, a problem the Royal Navy itself did not face.",
+      "body": "A question about submarine supply vessels highlights the asymmetry between German and British logistics. Germany needed covert carriers that could cross or evade a hostile blockade. Britain controlled the maritime blockade and retained access to surface shipping routes and overseas bases. The Royal Navy therefore had no comparable operational requirement for a submersible fleet train.",
+      "question": "Did Britain consider submersible supply ships like Germany's?",
+      "answerShort": "No. Germany needed them to evade the British blockade, while Britain was the power enforcing that blockade.",
+      "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
+      "evidence": [
+        {"start": "1:59:14", "end": "1:59:29", "note": "Explains why German blockade conditions created a need Britain did not share."}
+      ]
+    },
+    {
+      "id": "fisher-helped-create-the-rfa",
+      "videoId": "a1SLIX5SzPE",
+      "slug": "fisher-helped-create-the-rfa",
+      "title": "Fisher helped create the RFA",
+      "kind": "qa",
+      "start": "2:07:25",
+      "end": "2:07:50",
+      "topics": ["jacky-fisher", "royal-fleet-auxiliary", "dreadnought", "coal-fired-warships", "naval-logistics"],
+      "summary": "Jacky Fisher's reforms helped establish the RFA in 1905 so a coal-fired global fleet, including HMS Dreadnought, could be supplied abroad.",
+      "body": "Dr. Clarke attributes the RFA's creation to the reforming circle around Jacky Fisher and John Jellicoe. The organization was established in 1905 as the Royal Navy still depended on coal. HMS Dreadnought and the wider fleet required stocked coaling stations and ships able to replenish them across the world. The answer connects Fisher's combat-fleet reforms to the support organization needed to make global mobility real.",
+      "question": "Whose idea was it to create the Royal Fleet Auxiliary?",
+      "answerShort": "It was associated with Jacky Fisher, with Jellicoe also involved, and answered the need to supply a coal-powered global fleet.",
+      "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
+      "evidence": [
+        {"start": "2:07:25", "end": "2:07:50", "note": "Credits Fisher and Jellicoe and links the 1905 RFA to coaling a global fleet."}
       ]
     },
     {
@@ -320,7 +564,7 @@
       "end": "2:15:19",
       "topics": ["atlantic-theatre", "anti-submarine-warfare", "naval-procurement", "royal-navy"],
       "summary": "British rearmament had to prioritize escorts and anti-submarine capacity for a German war before it could complete a Far Eastern logistics programme.",
-      "body": "The North Sea and Atlantic blockade scenarios did not demand the same fleet train as a Pacific campaign. Flower-class corvettes and other antisubmarine measures answered the German threat, while fast-oiler expansion could be deferred in a plan that expected more warning before a Far Eastern war. The tension was not ignorance of logistics but prioritization among incompatible risks.",
+      "body": "The North Sea and Atlantic blockade scenarios did not demand the same fleet train as a Pacific campaign. Flower-class corvettes and other antisubmarine measures answered the immediate German threat. Fast-oiler expansion could be sequenced later in a plan that expected more warning before a Far Eastern war. The tension was not ignorance of logistics but prioritization among incompatible risks for scarce yards, engines, boilers, and money.",
       "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
       "evidence": [
         {"start": "2:08:20", "end": "2:15:19", "note": "Sets Far Eastern tanker needs against German-war escort priorities."}
@@ -336,10 +580,62 @@
       "end": "2:32:17",
       "topics": ["washington-naval-treaty", "singapore-naval-base", "naval-bases", "interwar-period"],
       "summary": "Article 19 of the Washington Naval Treaty constrained base expansion in much of the Pacific, while Singapore sat just outside the restricted line.",
-      "body": "The treaty shaped British logistics by limiting new fortifications and enlarged repair facilities across specified possessions. Dr. Clarke explains how the 110° east boundary left room to develop Singapore, even while a broader Pacific base race was restrained. Treaty geography therefore mattered alongside ship construction and fuel stocks.",
+      "body": "The treaty shaped British logistics by limiting new fortifications, enlarged repair facilities, and stronger coastal defences across specified possessions. Dr. Clarke explains how the 110° east boundary left room to develop Singapore even while Hong Kong and much of the Pacific remained restricted. The provision also constrained American and Japanese base development, limiting every fleet's ability to substitute fortifications for mobile forces. Treaty geography therefore mattered alongside ship construction and fuel stocks.",
       "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
       "evidence": [
         {"start": "2:25:09", "end": "2:32:17", "note": "Reads Article 19 and explains Singapore's position relative to the 110° line."}
+      ]
+    },
+    {
+      "id": "without-article-19-bases-join-the-arms-race",
+      "videoId": "a1SLIX5SzPE",
+      "slug": "without-article-19-bases-join-the-arms-race",
+      "title": "Without Article 19, bases join the arms race",
+      "kind": "qa",
+      "start": "2:31:44",
+      "end": "2:32:17",
+      "topics": ["washington-naval-treaty", "naval-bases", "pacific-war", "fortifications", "interwar-period"],
+      "summary": "Without Article 19, Japan, Britain, and the United States would likely have competed to fortify Pacific bases as well as build ships.",
+      "body": "The counterfactual shows what the treaty restriction was intended to prevent. Japan could have strengthened its island bases, prompting Britain and the United States to reinforce their own positions in response. Secure fortifications reduce the number of ships needed for local defence and improve a fleet's ability to operate forward. Removing Article 19 would therefore shift part of the naval arms race from hulls to bases, docks, guns, and supply infrastructure.",
+      "question": "How would the powers have reinforced their Pacific bases if Article 19 had never existed?",
+      "answerShort": "They likely would have entered a fortification race, because stronger bases required fewer fleet units to defend them.",
+      "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
+      "evidence": [
+        {"start": "2:31:44", "end": "2:32:17", "note": "Describes the likely Pacific fortification race without Article 19."}
+      ]
+    },
+    {
+      "id": "singapore-defenders-and-attackers-both-neared-exhaustion",
+      "videoId": "a1SLIX5SzPE",
+      "slug": "singapore-defenders-and-attackers-both-neared-exhaustion",
+      "title": "Both sides neared exhaustion at Singapore",
+      "kind": "qa",
+      "start": "2:37:52",
+      "end": "2:38:35",
+      "topics": ["battle-of-singapore", "malayan-campaign", "military-logistics", "water-supply", "japanese-army"],
+      "summary": "At Singapore, British fear over the reservoir coincided with a Japanese force at the end of its supply line and nearly out of food and other essentials.",
+      "body": "A counterfactual about transferring Hong Kong's defenders leads to the immediate logistics of Singapore's fall. British commanders feared losing the reservoir and the city's water supply. The Japanese attackers, however, had reached the end of their own supply line and were running out of food and other necessities. Dr. Clarke argues that another week of resistance might have forced a Japanese withdrawal, showing how command decisions interacted with exhaustion on both sides.",
+      "question": "Could stronger leadership or reinforcements have changed the fall of Singapore?",
+      "answerShort": "Possibly. The British water situation was dangerous, but the Japanese were also near the end of their supplies and might have had to withdraw if resistance continued.",
+      "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
+      "evidence": [
+        {"start": "2:37:52", "end": "2:38:35", "note": "Contrasts British water concerns with Japanese exhaustion at the end of the supply line."}
+      ]
+    },
+    {
+      "id": "treaty-fuel-exclusion-favored-global-navies",
+      "videoId": "a1SLIX5SzPE",
+      "slug": "treaty-fuel-exclusion-favored-global-navies",
+      "title": "Treaty fuel exclusion favored global navies",
+      "kind": "notable_point",
+      "start": "2:38:56",
+      "end": "2:39:10",
+      "topics": ["naval-treaties", "standard-displacement", "naval-logistics", "british-empire", "french-navy"],
+      "summary": "Excluding fuel and water from treaty displacement protected navies whose ships needed long range to connect overseas possessions.",
+      "body": "Dr. Clarke explains why fuel and water were omitted from treaty displacement calculations. Britain and France needed ships able to travel long distances across imperial and colonial networks. Counting full fuel loads against the tonnage limit would have penalized that global role relative to navies operating nearer home waters. The rule shows how technical definitions in naval treaties could encode logistical geography as well as ship design.",
+      "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
+      "evidence": [
+        {"start": "2:38:56", "end": "2:39:10", "note": "Links the exclusion of fuel and water from displacement to the range needs of Britain and France."}
       ]
     },
     {
@@ -352,10 +648,28 @@
       "end": "2:47:06",
       "topics": ["fuel-storage", "singapore-naval-base", "rangoon", "naval-logistics"],
       "summary": "Large fuel reserves at Singapore, Rangoon, and Australia were intended to give a Far Eastern force time and flexibility to move supplies forward.",
-      "body": "The stored oil was not proof that Singapore would be the frontline anchorage. It was theater-level depth: fuel could be shifted toward a future operating base as conditions changed. Dr. Clarke connects the location and scale of stocks to the intended hub-and-spoke system.",
+      "body": "The stored oil was not proof that Singapore would be the frontline anchorage. Roughly 1.2 million tons there, plus major stocks at Rangoon and in Australia, created theater-level depth. Slow tankers could shift that fuel toward whichever forward operating base the campaign produced. Dr. Clarke connects the location and scale of the reserves to operational freedom within the intended hub-and-spoke system.",
       "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
       "evidence": [
         {"start": "2:43:32", "end": "2:47:06", "note": "Explains the planned fuel stocks at Singapore, Rangoon, and Australia."}
+      ]
+    },
+    {
+      "id": "japan-captured-some-singapore-fuel",
+      "videoId": "a1SLIX5SzPE",
+      "slug": "japan-captured-some-singapore-fuel",
+      "title": "Japan captured some Singapore fuel",
+      "kind": "qa",
+      "start": "2:49:48",
+      "end": "2:49:53",
+      "topics": ["singapore-naval-base", "fuel-storage", "japanese-logistics", "battle-of-singapore"],
+      "summary": "British demolition denied part of Singapore's fuel stockpile, but Japanese forces captured some of the reserves intact.",
+      "body": "The short answer adds an important consequence to the discussion of Singapore's enormous fuel reserves. British forces destroyed part of the stockpile before the base fell. They were unable to deny all of it, and Japan captured some usable fuel. Theater-level reserves could therefore become a valuable prize when the hub they supported was overrun.",
+      "question": "Did Japan capture the British fuel stored at Singapore?",
+      "answerShort": "It captured some of the fuel, although British demolitions destroyed part of the stockpile.",
+      "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
+      "evidence": [
+        {"start": "2:49:48", "end": "2:49:53", "note": "States that Japan captured some Singapore fuel while other stocks were destroyed."}
       ]
     },
     {
@@ -368,7 +682,7 @@
       "end": "2:54:24",
       "topics": ["royal-fleet-auxiliary", "fleet-oilers", "naval-logistics", "interwar-period"],
       "summary": "By 1939 the RFA had roughly forty-nine purpose-built oilers, supplemented by harbour tankers and aviation-fuel ships.",
-      "body": "The lecture rebuts an image of a Royal Navy entering war without a support fleet. Many ships were older, but they remained serviceable while the RFA expanded with Dale-class construction. The figures exclude chartered, captured, and merchant vessels, so they describe a core purpose-built force rather than all available tankers.",
+      "body": "The lecture rebuts an image of a Royal Navy entering war without a support fleet. In the mid-1930s the RFA operated about forty-one tankers, fifteen harbour tankers, and three aviation-fuel carriers, with Dale-class ships expanding the force. Many vessels were older, but they remained serviceable and several 16-knot Leaf-class oilers lasted through the war. The approximate 1939 total excludes chartered, captured, and merchant vessels, so it describes a core purpose-built force rather than every tanker available.",
       "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
       "evidence": [
         {"start": "2:50:46", "end": "2:54:24", "note": "Lists RFA tanker strength, Dale-class additions, and the approximate 1939 total."}
@@ -384,7 +698,7 @@
       "end": "3:08:29",
       "topics": ["fleet-oilers", "naval-procurement", "ship-engines", "royal-fleet-auxiliary"],
       "summary": "Slower replenishment tankers could carry more fuel and avoid competing with destroyers and cruisers for scarce high-performance machinery.",
-      "body": "Dr. Clarke contrasts commercial machinery for the Dale-class with the turbines and Admiralty boilers needed by fast warships and fast oilers. The choice reflects a production sequence: expand the general tanker force first, then use newly available industrial capacity for specialized fleet support. It is an example of logistics planning constrained by the same machinery bottlenecks as combat construction.",
+      "body": "Dr. Clarke contrasts commercial machinery for the Dale class with the turbines and Admiralty boilers needed by fast warships and fast oilers. Slower replenishment ships could carry more fuel and enlarge the support fleet without competing directly with destroyer and cruiser construction. The intended sequence was to expand general tanker capacity first and use later growth in high-performance machinery production for specialized fleet support. Logistics planning was therefore constrained by the same engines, boilers, yards, and skilled labour as combat construction.",
       "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
       "evidence": [
         {"start": "3:04:50", "end": "3:08:29", "note": "Compares tanker machinery choices and their effect on naval production capacity."}
@@ -400,10 +714,46 @@
       "end": "3:17:06",
       "topics": ["eastern-fleet", "addu-atoll", "fleet-oilers", "indian-ocean", "replenishment-at-sea"],
       "summary": "Somerville kept tankers at Addu Atoll so scarce escorts could screen the fighting fleet rather than a slow fuel convoy.",
-      "body": "The approach depended on concealment, a guarded anchorage, and the ability to refuel the combat force without dragging tankers into every movement. Dr. Clarke presents it as a theater-specific solution: sensible in the Bay of Bengal and Indian Ocean, but not a universal substitute for Pacific underway replenishment.",
+      "body": "The approach depended on concealment, a guarded anchorage, and the ability to refuel the combat force without dragging tankers into every movement. Somerville could assign scarce destroyers and cruisers to the fighting fleet instead of a slow tanker convoy. The Leaf-class fast oilers still supported Eastern Fleet operations, but Addu provided a secure point at which to concentrate fuel. Dr. Clarke presents it as a theater-specific solution for the Bay of Bengal and Indian Ocean rather than a universal substitute for Pacific underway replenishment.",
       "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
       "evidence": [
         {"start": "3:10:31", "end": "3:17:06", "note": "Explains Somerville's tanker positioning and the escort economy at Addu Atoll."}
+      ]
+    },
+    {
+      "id": "allied-pacific-fleets-needed-compatible-replenishment",
+      "videoId": "a1SLIX5SzPE",
+      "slug": "allied-pacific-fleets-needed-compatible-replenishment",
+      "title": "Allied Pacific fleets needed compatible replenishment",
+      "kind": "qa",
+      "start": "3:13:11",
+      "end": "3:16:22",
+      "topics": ["british-pacific-fleet", "us-navy", "royal-fleet-auxiliary", "replenishment-at-sea", "allied-interoperability"],
+      "summary": "The United States built an immense Pacific fleet train, but Britain still needed its own oilers and adopted compatible methods so Allied ships could support one another.",
+      "body": "The US Navy produced enough oilers for its vast Pacific operations but still faced tight demand, leaving the British Pacific Fleet responsible for much of its own support. By 1944 American replenishment practice had advanced well beyond its 1941 form. British crews learned from that experience and aligned equipment and procedures so British and American ships could refuel one another when necessary. Dr. Clarke presents this as sensible coalition interoperability rather than evidence that the Royal Navy had previously ignored replenishment.",
+      "question": "Did the United States build enough oilers to sustain Pacific operations?",
+      "answerShort": "Enough for its own system, though demand remained tight, so Britain supplied its fleet and adopted compatible American replenishment methods.",
+      "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
+      "evidence": [
+        {"start": "3:13:11", "end": "3:16:22", "note": "Discusses US oiler demand, British self-support, and compatible Allied replenishment procedures."}
+      ]
+    },
+    {
+      "id": "fast-oiler-size-balanced-risk-and-capacity",
+      "videoId": "a1SLIX5SzPE",
+      "slug": "fast-oiler-size-balanced-risk-and-capacity",
+      "title": "Fast-oiler size balanced risk and capacity",
+      "kind": "qa",
+      "start": "3:17:12",
+      "end": "3:17:41",
+      "topics": ["fleet-oilers", "naval-architecture", "naval-logistics", "survivability"],
+      "summary": "Fast fleet oilers tended to be smaller because speed brought them nearer combat and designers had to limit how much fuel a single loss could remove.",
+      "body": "The size of a support ship reflects exposure as well as carrying efficiency. Fast oilers operate closer to the fighting fleet than slower replenishment tankers. Making them smaller helps speed and limits the quantity of fuel lost with one ship. The design choice balances payload against the tactical risk inherent in the final delivery leg.",
+      "question": "Was there a loss-versus-use calculation in sizing fast fleet oilers?",
+      "answerShort": "Yes. They tended to be smaller because they operated nearer combat and a single loss would remove less fuel.",
+      "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
+      "evidence": [
+        {"start": "3:17:12", "end": "3:17:41", "note": "Links smaller fast-oiler size to combat exposure and limiting fuel loss."}
       ]
     },
     {
@@ -416,10 +766,28 @@
       "end": "3:23:01",
       "topics": ["pacific-war", "far-east", "fleet-oilers", "forward-operating-bases", "naval-strategy"],
       "summary": "In Dr. Clarke's counterfactual, a British Pacific fleet would move forward deliberately, seize usable harbours, and shift fuel from Singapore through new operating bases.",
-      "body": "The proposed campaign is not a dash into Japanese waters. Slow tankers would move bulk fuel to forward hubs, while Leaf- or Wave-class ships carried it onward to the fighting fleet. That layered system aimed to force Japan to operate farther from its own infrastructure while keeping British combat forces mobile.",
+      "body": "The proposed campaign is not a dash into Japanese waters. British forces would advance deliberately, seize usable harbours, and draw Japanese forces away from their own infrastructure. Slow Dale- and War-class tankers would move bulk fuel to forward hubs, while Leaf- or Wave-class ships carried it onward to the fighting fleet when necessary. That layered system sought to preserve mobility without making every support ship fast or exposing the entire fuel train to combat.",
       "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
       "evidence": [
         {"start": "3:19:43", "end": "3:23:01", "note": "Describes a deliberate advance using captured hubs, bulk tankers, and fleet oilers."}
+      ]
+    },
+    {
+      "id": "european-forces-drew-fuel-through-ports",
+      "videoId": "a1SLIX5SzPE",
+      "slug": "european-forces-drew-fuel-through-ports",
+      "title": "European forces drew fuel through ports",
+      "kind": "qa",
+      "start": "3:27:08",
+      "end": "3:27:24",
+      "topics": ["european-theatre", "merchant-tankers", "naval-bases", "naval-logistics"],
+      "summary": "Royal Navy forces in European waters relied chiefly on civilian tankers delivering fuel to ports rather than a large at-sea replenishment train.",
+      "body": "The answer returns to the lecture's central rule that logistical systems must match their theater. British forces in European waters operated near a dense network of friendly ports. Civilian tankers could bring fuel into those bases, where warships replenished under protection. The requirement therefore differed fundamentally from sustaining a mobile fleet across the central Pacific.",
+      "question": "How many tankers were needed to keep Royal Navy forces in Europe moving?",
+      "answerShort": "The fleet did not rely mainly on at-sea tankers there; civilian tankers delivered fuel to nearby ports and bases.",
+      "sourcePath": "src/transcripts/txt/2021-10-28_T17-32-02_patreon-37-interwar-rn-logistics-the-good-the-bad-and-the-singapore_a1SLIX5SzPE.txt",
+      "evidence": [
+        {"start": "3:27:08", "end": "3:27:24", "note": "Explains port-based civilian tanker support for Royal Navy forces in Europe."}
       ]
     }
   ]
