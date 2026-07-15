@@ -10368,7 +10368,7 @@
     "startSeconds": 186,
     "youtubeUrl": "https://www.youtube.com/watch?v=EcsuhcxaQjI&t=186s",
     "summary": "The design begins with geared turbines, very heavy guns, and the first difficult tradeoffs among range, stability, and displacement.",
-    "body": "Dr. Clarke starts from an intentionally ambitious British battleship concept and selects high-end machinery and long-barrel heavy guns. The design immediately demonstrates why a super-battleship cannot maximize every characteristic at once: the ship is thousands of tons overweight, while roll, pitch, range, and ammunition choices all compete for the same displacement. This is a useful opening demonstration of requirements turning into naval-architecture compromises.",
+    "body": "Dr. Clarke starts from an intentionally ambitious British battleship concept and selects geared turbines, long-barrel 18-inch guns, and heavy shells. The design immediately demonstrates why a super-battleship cannot maximize every characteristic at once: the ship is thousands of tons overweight, while roll, pitch, range, and ammunition choices all compete for the same displacement. Cutting the nominal cruising range from 17,000 to 12,000 kilometers saves much of the excess weight, but it does not solve the hull-balance problem. This is a useful opening demonstration of requirements turning into naval-architecture compromises before the ship reaches combat testing.",
     "topics": [
       {
         "slug": "battleships",
@@ -10411,7 +10411,7 @@
     "startSeconds": 928,
     "youtubeUrl": "https://www.youtube.com/watch?v=EcsuhcxaQjI&t=928s",
     "summary": "An overweight 18-inch-gun design retreats to twelve 16.5-inch weapons to preserve firepower within the available displacement.",
-    "body": "The initial gun choice proves too heavy once the rest of the ship is considered. Dr. Clarke compares weapon weights and ranges before settling on 16.5-inch guns as an intermediate solution, then trims protection and other systems until the design fits. The sequence shows that gun caliber is only one part of combat power; barrel count, range, hull balance, and the equipment sacrificed to carry the battery matter as well.",
+    "body": "The initial 18-inch gun choice proves too heavy once the rest of the ship is considered. Dr. Clarke compares weapon weights and ranges before settling on twelve 16.5-inch guns as an intermediate solution, then trims protection and other systems until the design fits. The smaller caliber gives up some maximum range but removes a substantial weight penalty while retaining an exceptionally heavy broadside. The sequence shows that gun caliber is only one part of combat power; barrel count, range, hull balance, and the equipment sacrificed to carry the battery matter as well.",
     "topics": [
       {
         "slug": "battleships",
@@ -10454,7 +10454,7 @@
     "startSeconds": 1138,
     "youtubeUrl": "https://www.youtube.com/watch?v=EcsuhcxaQjI&t=1138s",
     "summary": "The first combat trial pits twelve British 16.5-inch guns against eight Italian 15-inch guns and tests how the design fights at range.",
-    "body": "Dr. Clarke builds an Italian opponent loosely inspired by the Francesco Caracciolo class and compares its eight 15-inch guns with Rodney's twelve 16.5-inch weapons. He deliberately omits British secondary guns to test whether the game's tactical behavior changes. The matchup turns the design screen's numerical choices into an operational question: whether the ship will exploit its heavy battery and preferred engagement distance.",
+    "body": "Dr. Clarke builds an Italian opponent loosely inspired by the Francesco Caracciolo class and compares its eight 15-inch guns with Rodney's twelve 16.5-inch weapons. He gives the ships roughly comparable gun range so the trial tests battery weight and tactical behavior rather than a simple reach advantage. He deliberately omits British secondary guns to see whether the game will keep the ship at long range instead of closing. The matchup turns the design screen's numerical choices into an operational question: whether the ship will exploit its heavy battery and preferred engagement distance.",
     "topics": [
       {
         "slug": "battleships",
@@ -10501,7 +10501,7 @@
     "startSeconds": 1493,
     "youtubeUrl": "https://www.youtube.com/watch?v=EcsuhcxaQjI&t=1493s",
     "summary": "The no-secondary trial suggests that fitting secondary guns may encourage a battleship to close instead of exploiting long-range firepower.",
-    "body": "The British ship appears to hold its distance when it carries only the main battery. Dr. Clarke infers that secondary armament may cause the game's tactical system to seek a range where every weapon can engage. He also notes the real design tension represented by the test: secondary guns remain important against small ships even when closing range is undesirable for the battleship's primary mission.",
+    "body": "The British ship appears to hold its distance when it carries only the main battery. Dr. Clarke infers that secondary armament may cause the game's tactical system to seek a range where every weapon can engage. That behavior would squander the reach of a powerful main battery by bringing the ship into a less favorable tactical envelope. He also notes the real design tension represented by the test: secondary guns remain important against small ships even when closing range is undesirable for the battleship's primary mission.",
     "topics": [
       {
         "slug": "secondary-batteries",
@@ -10544,7 +10544,7 @@
     "startSeconds": 1556,
     "youtubeUrl": "https://www.youtube.com/watch?v=EcsuhcxaQjI&t=1556s",
     "summary": "An audience question prompts an explanation of why a barbette must support the turret and ammunition system without becoming a structural weak point.",
-    "body": "A barbette that is too narrow cannot provide enough protected space for the turret machinery and ammunition supply. Making it disproportionately wide is not a free solution, because the large opening and concentrated loads can create stress around the hull and bulkheads. Dr. Clarke therefore presents barbette diameter as a systems-level compromise among firepower, protection, internal arrangements, and structural continuity.",
+    "body": "A barbette that is too narrow cannot provide enough protected space for the turret machinery and ammunition supply. It must also carry the turret and preserve an armored route for shells and propellant moving upward from the magazines. Making it disproportionately wide is not a free solution, because the large opening and concentrated loads can create stress around the hull and bulkheads. Dr. Clarke therefore presents barbette diameter as a systems-level compromise among firepower, protection, internal arrangements, and structural continuity.",
     "topics": [
       {
         "slug": "barbettes",
@@ -10581,6 +10581,47 @@
     "sourcePath": "src/transcripts/txt/2023-11-21_T20-00-10_building-a-british-super-battleship_EcsuhcxaQjI.txt"
   },
   {
+    "id": "game-physics-as-naval-design-analogue",
+    "slug": "game-physics-as-naval-design-analogue",
+    "title": "How seriously should the game's naval physics be taken?",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "EcsuhcxaQjI",
+    "videoSlug": "building-a-british-super-battleship",
+    "videoTitle": "Building A British Super Battleship!",
+    "start": "27:07",
+    "startSeconds": 1627,
+    "youtubeUrl": "https://www.youtube.com/watch?v=EcsuhcxaQjI&t=1627s",
+    "summary": "Dr. Clarke treats the simulation as a useful design analogue because of its physics work, while stopping short of claiming exact real-world behavior.",
+    "body": "An audience prompt asks whether the game actually represents the structural effects just described for barbettes and hulls. Dr. Clarke says he approaches the design exercise as though it were real because the developers have put substantial effort into the physics engine. His answer is deliberately cautious: he thinks the simulation produces similar effects, not that it reproduces every naval-architecture consequence exactly. This caveat helps viewers distinguish the historical design principles being illustrated from the limits of a game model.",
+    "topics": [
+      {
+        "slug": "ship-design",
+        "title": "Ship Design"
+      },
+      {
+        "slug": "naval-architecture",
+        "title": "Naval Architecture"
+      },
+      {
+        "slug": "warship-protection",
+        "title": "Warship Protection"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "27:07",
+        "end": "27:15",
+        "note": "Dr. Clarke says he treats the game as real-world because of the work put into its physics engine and expects similar effects."
+      }
+    ],
+    "end": "27:15",
+    "endSeconds": 1635,
+    "question": "Does the game model structural effects such as barbette-related hull stress?",
+    "answerShort": "Dr. Clarke thinks its physics engine produces similar effects and therefore treats the design exercise seriously, but he does not claim an exact real-world simulation.",
+    "sourcePath": "src/transcripts/txt/2023-11-21_T20-00-10_building-a-british-super-battleship_EcsuhcxaQjI.txt"
+  },
+  {
     "id": "magazine-explosion-and-turret-loss",
     "slug": "magazine-explosion-and-turret-loss",
     "title": "What an airborne turret implies about magazine damage",
@@ -10593,7 +10634,7 @@
     "startSeconds": 1640,
     "youtubeUrl": "https://www.youtube.com/watch?v=EcsuhcxaQjI&t=1640s",
     "summary": "A dramatic turret loss leads to a distinction between separate magazines and the catastrophic hull damage a true magazine explosion would cause.",
-    "body": "The game depicts one turret being blown clear and all guns losing ammunition. Dr. Clarke questions the shared ammunition failure because separate turrets should have separate magazines, but he also stresses that an explosion powerful enough to throw a turret would probably open a massive hole in the ship. The moment is useful for understanding both magazine separation and the scale of structural damage behind spectacular battle imagery.",
+    "body": "The game depicts one turret being blown clear and all guns losing ammunition. Dr. Clarke questions the shared ammunition failure because separate turrets should have separate magazines. He nevertheless stresses that an explosion powerful enough to throw a turret would probably open a massive hole in the ship and create an immediate sinking risk. The moment is useful for understanding both magazine separation and the scale of structural damage behind spectacular battle imagery.",
     "topics": [
       {
         "slug": "magazines",
@@ -10640,7 +10681,7 @@
     "startSeconds": 1709,
     "youtubeUrl": "https://www.youtube.com/watch?v=EcsuhcxaQjI&t=1709s",
     "summary": "The redesigned battleship gains a huge six-inch broadside, forcing another round of pitch, balance, armor, and displacement compromises.",
-    "body": "The second design iteration adds numerous six-inch guns, briefly producing a broadside of roughly twenty-one secondary weapons. Their placement changes weight distribution and worsens pitch, so Dr. Clarke adjusts hull proportions, armor, and other characteristics to regain balance. The redesign shows why adding a seemingly useful weapon system affects the entire ship rather than only the weapons line in a specification.",
+    "body": "The second design iteration adds numerous six-inch guns, briefly producing a broadside of roughly twenty-one secondary weapons. The battery promises formidable fire against smaller ships and gives the battleship coverage beyond its main turrets. Its placement changes weight distribution and worsens pitch, so Dr. Clarke adjusts hull proportions, armor, and other characteristics to regain balance. The redesign shows why adding a seemingly useful weapon system affects the entire ship rather than only the weapons line in a specification.",
     "topics": [
       {
         "slug": "secondary-batteries",
@@ -10683,7 +10724,7 @@
     "startSeconds": 2186,
     "youtubeUrl": "https://www.youtube.com/watch?v=EcsuhcxaQjI&t=2186s",
     "summary": "Pushing deck and belt armor to absurd thicknesses improves the balance figure but produces a ship whose practicality and buoyancy are doubtful.",
-    "body": "Dr. Clarke explores how much theoretical weight would be needed to correct the ship's pitch. The experiment reaches roughly nineteen inches of deck armor and thirty-five inches of belt armor, figures so extreme that he questions whether the vessel could float. The lesson is that a favorable balance statistic does not make a coherent warship when the solution consumes displacement without regard to realistic construction and buoyancy.",
+    "body": "Dr. Clarke explores how much theoretical weight would be needed to correct the ship's pitch. The experiment reaches roughly nineteen inches of deck armor and thirty-five inches of belt armor, figures so extreme that he questions whether the vessel could float. The absurd protection scheme would intimidate an opponent on paper while creating a ship whose weight and buoyancy make little practical sense. The lesson is that a favorable balance statistic does not make a coherent warship when the solution consumes displacement without regard to realistic construction and buoyancy.",
     "topics": [
       {
         "slug": "armor",
@@ -10730,7 +10771,7 @@
     "startSeconds": 2313,
     "youtubeUrl": "https://www.youtube.com/watch?v=EcsuhcxaQjI&t=2313s",
     "summary": "A fresh hull starts with maximum ambitions and then works downward through gun caliber, protection, speed, and survivability systems.",
-    "body": "The replacement concept, nicknamed Armageddon, begins far overweight and is deliberately treated as a top-down requirements exercise. Dr. Clarke reduces speed, protection systems, armor, and other features, while retaining a powerful 16.5-inch main battery and improving its arrangement. This illustrates a design method in which an unconstrained ideal reveals the cost of each requirement before the designer chooses which capabilities to surrender.",
+    "body": "The replacement concept, nicknamed Armageddon, begins far overweight and is deliberately treated as a top-down requirements exercise. Its initial displacement is so excessive that the design must shed tens of thousands of tons before becoming usable. Dr. Clarke reduces speed, protection systems, armor, and other features, while retaining a powerful 16.5-inch main battery and improving its arrangement. This illustrates a design method in which an unconstrained ideal reveals the cost of each requirement before the designer chooses which capabilities to surrender.",
     "topics": [
       {
         "slug": "battleships",
@@ -10777,7 +10818,7 @@
     "startSeconds": 2191,
     "youtubeUrl": "https://www.youtube.com/watch?v=EcsuhcxaQjI&t=2191s",
     "summary": "A viewer's price challenge forces the design toward the speed and capability needed to confront multiple American Standard-type battleships.",
-    "body": "The audience proposes a price-limited battleship challenge, later clarified as a budget in millions rather than thousands. Dr. Clarke explains that the opponent matters: late US Standard-type battleships are capable ships, so an artificially tiny budget would make the problem meaningless. He begins adapting speed and armament around the corrected financial constraint, demonstrating how cost ceilings must be tied to a defined mission and enemy.",
+    "body": "The audience proposes a price-limited battleship challenge, later clarified as a budget in millions rather than thousands. Dr. Clarke explains that the opponent matters: late US Standard-type battleships are capable ships, so an artificially tiny budget would make the problem meaningless. Because the Standards make about 21 knots, he initially considers a 24-knot design as one way to create a tactical advantage without paying for extreme speed. He begins adapting speed and armament around the corrected financial constraint, demonstrating how cost ceilings must be tied to a defined mission and enemy.",
     "topics": [
       {
         "slug": "battleships",
@@ -10831,7 +10872,7 @@
     "startSeconds": 3057,
     "youtubeUrl": "https://www.youtube.com/watch?v=EcsuhcxaQjI&t=3057s",
     "summary": "A viewer question prompts a cautious assessment of the game's cost model using Queen Elizabeth-class battleships as a comparison.",
-    "body": "Dr. Clarke describes the cost system as a rough guide rather than a historically exact accounting model. Attempts to reproduce ships such as the Queen Elizabeth class do not align precisely with their historical cost, though he considers the model useful enough for broad comparisons. The caveat matters whenever game-based design exercises are used to reason about real procurement choices.",
+    "body": "Dr. Clarke describes the cost system as a rough guide rather than a historically exact accounting model. Attempts to reproduce ships such as the Queen Elizabeth class do not align precisely with their historical cost. He nevertheless considers the estimates good enough to indicate the broad financial consequences of changing a design. The caveat matters whenever game-based design exercises are used to reason about real procurement choices.",
     "topics": [
       {
         "slug": "warship-costs",
@@ -10876,7 +10917,7 @@
     "startSeconds": 3230,
     "youtubeUrl": "https://www.youtube.com/watch?v=EcsuhcxaQjI&t=3230s",
     "summary": "The completed 32-knot design carries twelve 16.5-inch guns and a distributed six-inch battery before another Italian combat trial.",
-    "body": "The final arrangement reaches about 32 knots and carries twelve 16.5-inch guns in three quadruple turrets. Six-inch weapons are distributed to cover forward and broadside arcs, giving the ship a visibly stronger secondary battery. In combat, however, the opponent damages the superstructure and the British ship closes to six-inch range after disrupting long-range fire control, showing that tactical behavior and battle damage can overturn the intended long-range design logic.",
+    "body": "The final arrangement reaches about 32 knots and carries twelve 16.5-inch guns in three quadruple turrets. Six-inch weapons are distributed to cover forward and broadside arcs, giving the ship a visibly stronger secondary battery. The speed, gun layout, and firing arcs make Rodney look like the coherent fast super-battleship that the earlier overweight concepts could not become. In combat, however, the opponent damages the superstructure and the British ship closes to six-inch range after disrupting long-range fire control, showing that tactical behavior and battle damage can overturn the intended long-range design logic.",
     "topics": [
       {
         "slug": "battleships",
@@ -11401,9 +11442,9 @@
     "sourcePath": "src/transcripts/txt/2024-04-01_T18-00-31_check-campaign-11-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_fLOEXrMO0Vo.txt"
   },
   {
-    "id": "dogger-bank-as-a-contested-sea-space",
-    "slug": "dogger-bank-as-a-contested-sea-space",
-    "title": "Why Dogger Bank repeatedly became a naval battleground",
+    "id": "dogger-bank-battles-as-a-change-over-time-series",
+    "slug": "dogger-bank-battles-as-a-change-over-time-series",
+    "title": "Using Dogger Bank to trace centuries of naval change",
     "kind": "chapter",
     "kindLabel": "Chapter",
     "videoId": "g0xO7UPNLMs",
@@ -11412,8 +11453,104 @@
     "start": "1:47",
     "startSeconds": 107,
     "youtubeUrl": "https://www.youtube.com/watch?v=g0xO7UPNLMs&t=107s",
-    "summary": "The opening places the 1696 battle in a longer series of Dogger Bank actions and explains the area's value as fishing and transit grounds.",
-    "body": "Dr. Clarke uses battles carrying the Dogger Bank name to show how naval warfare changed across centuries. The location repeatedly attracted conflict because its fishing grounds and North Sea position mattered to commerce and movement between neighboring coasts.",
+    "summary": "Dr. Clarke introduces the 1696 action as the first of several Dogger Bank episodes chosen to show how fleets, weapons, and combat changed over time.",
+    "body": "The opening explains why Dogger Bank provides a useful chronological thread through naval history. Dr. Clarke limits the series to actions carrying the Dogger Bank name even though nearby battles such as Camperdown and Jutland could broaden the North Sea comparison. He also includes the 1904 Dogger Bank incident, where the Russian fleet fired despite facing no hostile naval opponent. This framing makes the 1696 French attack on a Dutch convoy the starting point for comparing very different forms of maritime violence across centuries.",
+    "topics": [
+      {
+        "slug": "dogger-bank",
+        "title": "Dogger Bank"
+      },
+      {
+        "slug": "north-sea",
+        "title": "North Sea"
+      },
+      {
+        "slug": "naval-warfare",
+        "title": "Naval Warfare"
+      },
+      {
+        "slug": "naval-history",
+        "title": "Naval History"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "1:47",
+        "end": "2:35",
+        "note": "Dr. Clarke introduces the 1696 battle and explains that the Dogger Bank series illustrates how naval battles changed."
+      },
+      {
+        "start": "2:38",
+        "end": "3:15",
+        "note": "The transcript distinguishes named Dogger Bank episodes from other North Sea battles and identifies the first action as a French squadron attacking a Dutch convoy."
+      }
+    ],
+    "end": "3:15",
+    "endSeconds": 195,
+    "sourcePath": "src/transcripts/txt/2021-02-16_T18-00-20_battles-of-dogger-bank-long-patrol-part-1-6-1696_g0xO7UPNLMs.txt"
+  },
+  {
+    "id": "deterrence-and-the-escalation-ladder",
+    "slug": "deterrence-and-the-escalation-ladder",
+    "title": "How nuclear deterrence reshaped escalation choices",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "g0xO7UPNLMs",
+    "videoSlug": "battles-of-dogger-bank-long-patrol-part-1-6-1696",
+    "videoTitle": "Battles of Dogger Bank: Long Patrol Part 1/6 - 1696",
+    "start": "3:26",
+    "startSeconds": 206,
+    "youtubeUrl": "https://www.youtube.com/watch?v=g0xO7UPNLMs&t=206s",
+    "summary": "A strategic aside contrasts the frequent warfare surrounding earlier Dogger Bank actions with modern efforts to keep local violence below an escalatory threshold.",
+    "body": "Dr. Clarke contrasts the repeated wars of the seventeenth through early twentieth centuries with the relative restraint associated with the Cold War nuclear shadow. He uses the contemporary India-China border confrontation as an example of opponents limiting weapons to avoid a lethal step upward. The hypothetical ladder then runs from rifles and artillery through aircraft, submarine-versus-ship combat, shore attack, and ultimately nuclear weapons. The passage is useful for understanding how deterrence can shape naval choices even when the immediate confrontation begins on land.",
+    "topics": [
+      {
+        "slug": "nuclear-deterrence",
+        "title": "Nuclear Deterrence"
+      },
+      {
+        "slug": "escalation-control",
+        "title": "Escalation Control"
+      },
+      {
+        "slug": "cold-war",
+        "title": "Cold War"
+      },
+      {
+        "slug": "naval-strategy",
+        "title": "Naval Strategy"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "3:26",
+        "end": "4:30",
+        "note": "The transcript contrasts earlier centuries of frequent warfare with the restraint encouraged by fear of nuclear exchange."
+      },
+      {
+        "start": "4:34",
+        "end": "5:38",
+        "note": "Dr. Clarke describes deliberate low-level restraint and an escalation ladder that reaches aircraft, submarines, ships, shore attack, and nuclear weapons."
+      }
+    ],
+    "end": "5:38",
+    "endSeconds": 338,
+    "sourcePath": "src/transcripts/txt/2021-02-16_T18-00-20_battles-of-dogger-bank-long-patrol-part-1-6-1696_g0xO7UPNLMs.txt"
+  },
+  {
+    "id": "dogger-bank-as-a-contested-sea-space",
+    "slug": "dogger-bank-as-a-contested-sea-space",
+    "title": "Why Dogger Bank repeatedly became a naval battleground",
+    "kind": "chapter",
+    "kindLabel": "Chapter",
+    "videoId": "g0xO7UPNLMs",
+    "videoSlug": "battles-of-dogger-bank-long-patrol-part-1-6-1696",
+    "videoTitle": "Battles of Dogger Bank: Long Patrol Part 1/6 - 1696",
+    "start": "5:48",
+    "startSeconds": 348,
+    "youtubeUrl": "https://www.youtube.com/watch?v=g0xO7UPNLMs&t=348s",
+    "summary": "Dogger Bank's fishing resources and position on North Sea transit routes explain why fleets repeatedly fought in the same maritime space.",
+    "body": "Dogger Bank was not an arbitrary label attached to unrelated battles. Its productive fishing grounds gave maritime communities and states an economic interest in the area. Its North Sea position also put it across routes used to move between neighboring coasts and wider operating areas. Those combined commercial and strategic qualities help explain why the same sea space repeatedly became a setting for naval confrontation.",
     "topics": [
       {
         "slug": "dogger-bank",
@@ -11433,11 +11570,6 @@
       }
     ],
     "evidence": [
-      {
-        "start": "1:47",
-        "end": "3:15",
-        "note": "The transcript introduces the Dogger Bank series and identifies the 1696 action as a French squadron attacking a Dutch convoy."
-      },
       {
         "start": "5:48",
         "end": "6:06",
@@ -11461,7 +11593,7 @@
     "startSeconds": 369,
     "youtubeUrl": "https://www.youtube.com/watch?v=g0xO7UPNLMs&t=369s",
     "summary": "A guide to first through sixth rates separates gun-count classification from the crew quality and circumstances that decided combat performance.",
-    "body": "The rating system primarily described a ship's size and armament, not a simple ladder of fighting quality. A well-handled third rate could threaten a poorly handled first rate, while navies still needed a mixture of powerful first and second rates and more numerous third rates to build an effective fleet.",
+    "body": "The rating system primarily described a ship's size and armament rather than a simple ladder of fighting quality. A well-handled third rate could theoretically defeat a poorly handled first rate because crew skill and circumstances mattered alongside gun count. First rates remained necessary to meet enemy first rates, while second rates supplied additional heavy force. Successful navies relied on the more numerous third rates to give the battle fleet practical strength in numbers, with smaller rates filling different roles.",
     "topics": [
       {
         "slug": "age-of-sail",
@@ -11513,7 +11645,7 @@
     "startSeconds": 520,
     "youtubeUrl": "https://www.youtube.com/watch?v=g0xO7UPNLMs&t=520s",
     "summary": "The opposing orders of battle reveal a French squadron of fourth- and fifth-rate warships facing five Dutch escorts and 112 merchant ships.",
-    "body": "Jean Bart's force combined the 54-gun Maure with smaller warships, a fireship, boats, and privateers. The Dutch convoy had five escorts—possibly including two armed merchantmen—for 112 merchant vessels, making this a frigate-scale action rather than a clash of major ships of the line.",
+    "body": "Jean Bart's squadron centered on the 54-gun Maure and included several smaller fourth- and fifth-rate warships. A fireship, longboats, and small privateers rounded out a force designed for more than a formal line-of-battle engagement. The Dutch protected 112 merchant vessels with five escorts, two of which may have been armed merchantmen rather than regular warships. The gun counts therefore make Dogger Bank a frigate-scale convoy action rather than a clash between the largest ships of the line.",
     "topics": [
       {
         "slug": "battle-of-dogger-bank-1696",
@@ -11557,6 +11689,54 @@
     "sourcePath": "src/transcripts/txt/2021-02-16_T18-00-20_battles-of-dogger-bank-long-patrol-part-1-6-1696_g0xO7UPNLMs.txt"
   },
   {
+    "id": "merchant-ships-share-convoy-escort-duty",
+    "slug": "merchant-ships-share-convoy-escort-duty",
+    "title": "How merchantmen could be assigned convoy-defense duty",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "g0xO7UPNLMs",
+    "videoSlug": "battles-of-dogger-bank-long-patrol-part-1-6-1696",
+    "videoTitle": "Battles of Dogger Bank: Long Patrol Part 1/6 - 1696",
+    "start": "9:32",
+    "startSeconds": 572,
+    "youtubeUrl": "https://www.youtube.com/watch?v=g0xO7UPNLMs&t=572s",
+    "summary": "Dr. Clarke reconstructs why two unnamed 24-gun escorts may have been merchant ships armed for the voyage and compensated from the convoy's shared profits.",
+    "body": "The two unnamed 24-gun Dutch escorts may have come from within the merchant convoy rather than from the regular navy. Dr. Clarke suggests that merchants drew lots to decide which vessels would carry guns and perform escort duty instead of returning with a normal cargo. Those ships would receive a small share of the profits earned by the rest of the convoy, making the defensive burden commercially worthwhile. Because only 25 merchant ships were captured, surviving records do not clearly reveal which two had served as the armed escorts.",
+    "topics": [
+      {
+        "slug": "convoy-escort",
+        "title": "Convoy Escort"
+      },
+      {
+        "slug": "armed-merchantmen",
+        "title": "Armed Merchantmen"
+      },
+      {
+        "slug": "maritime-commerce",
+        "title": "Maritime Commerce"
+      },
+      {
+        "slug": "dutch-navy",
+        "title": "Dutch Navy"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "9:32",
+        "end": "10:01",
+        "note": "The transcript proposes that two merchant vessels drew escort duty, carried cannon, and received a share of the convoy's profits."
+      },
+      {
+        "start": "10:03",
+        "end": "10:16",
+        "note": "Dr. Clarke explains why the capture records do not allow the two armed merchantmen to be identified by name."
+      }
+    ],
+    "end": "10:16",
+    "endSeconds": 616,
+    "sourcePath": "src/transcripts/txt/2021-02-16_T18-00-20_battles-of-dogger-bank-long-patrol-part-1-6-1696_g0xO7UPNLMs.txt"
+  },
+  {
     "id": "jean-bart-privateer-to-admiral",
     "slug": "jean-bart-privateer-to-admiral",
     "title": "Jean Bart's path from maritime commerce to French command",
@@ -11569,7 +11749,7 @@
     "startSeconds": 656,
     "youtubeUrl": "https://www.youtube.com/watch?v=g0xO7UPNLMs&t=656s",
     "summary": "Dr. Clarke examines Jean Bart's fishing-family background and the education, patronage, and commercial resources behind his rise as a privateer commander.",
-    "body": "Jean Bart is often presented as a commander of exceptionally humble origin, but the transcript argues that his family may have operated several fishing vessels and possessed more resources than that image suggests. His literacy, early backing, and later advancement still made his rise striking within a French naval and court culture strongly shaped by noble birth.",
+    "body": "Jean Bart is often presented as a commander of exceptionally humble origin, but the transcript questions that simplified picture. A fishing family that owned several boats could spread risk, accumulate capital, and occupy a much stronger position than a single-boat operator. Bart's literacy, education, and early patronage also suggest access to resources that the poorest background would not readily provide. His later rise remained remarkable because noble birth strongly shaped opportunity in the French navy and court even if his family was not as destitute as legend implies.",
     "topics": [
       {
         "slug": "jean-bart",
@@ -11621,7 +11801,7 @@
     "startSeconds": 835,
     "youtubeUrl": "https://www.youtube.com/watch?v=g0xO7UPNLMs&t=835s",
     "summary": "The Dutch flagship resisted Jean Bart's Maure until its commander was killed, after which the escort force surrendered ship by ship.",
-    "body": "The Dutch commander's biography is obscure, but the reaction to his death suggests that his leadership held the defense together. After roughly three hours of fighting, the flagship's surviving officers surrendered, and the remaining escorts followed, opening the convoy to French capture and destruction.",
+    "body": "The Dutch commander's biography is obscure, but the reaction to his death suggests that his leadership held the defense together. The flagship resisted Jean Bart's Maure for about three hours from roughly seven in the evening. Once the commander was killed, the surviving flagship officers surrendered. The other four escorts then capitulated in succession, leaving the merchant convoy exposed to capture and burning after ten o'clock at night.",
     "topics": [
       {
         "slug": "battle-of-dogger-bank-1696",
@@ -11673,7 +11853,7 @@
     "startSeconds": 912,
     "youtubeUrl": "https://www.youtube.com/watch?v=g0xO7UPNLMs&t=912s",
     "summary": "The French captured five escorts and 25 merchantmen, then evaded an approaching Royal Navy squadron and returned to Dunkirk with about 1,200 prisoners.",
-    "body": "The approximately 1,200 prisoners taken from 30 captured ships illustrate the relatively small crews carried by many merchantmen compared with their escorts. Rear Admiral John Benbow arrived with 18 Royal Navy ships, but Jean Bart withdrew toward Denmark, sheltered near Copenhagen until the blockade weakened, and eventually reached Dunkirk with his prisoners.",
+    "body": "The approximately 1,200 prisoners taken from five escorts and 25 merchant ships illustrate the relatively small crews carried by many merchantmen. Rear Admiral John Benbow approached with 18 Royal Navy ships after deliberately hunting the French force. Jean Bart escaped toward Denmark and sheltered near Copenhagen while the British blockade gradually lost ships to other demands of the wider war. He returned to Dunkirk in late September with the prisoners, and his success helped carry him toward admiral's rank despite the noble-birth barriers of the French navy.",
     "topics": [
       {
         "slug": "battle-of-dogger-bank-1696",
@@ -24037,7 +24217,7 @@
     "startSeconds": 49,
     "youtubeUrl": "https://www.youtube.com/watch?v=qqou-Qq8liw&t=49s",
     "summary": "Dr. Clarke starts a fresh British campaign to isolate what changed in Ultimate Admiral: Dreadnoughts before returning to his Austro-Hungarian campaign.",
-    "body": "Britain serves as the control case because its historical fleet and capabilities are familiar enough to reveal implausible results. The campaign is explicitly a test bed for learning the revised mechanics, particularly changes intended to make play more historically accurate. He also notes the frustration of major game updates invalidating earlier campaign work.",
+    "body": "Britain serves as the control case because its historical fleet and capabilities are familiar enough to reveal implausible results. The campaign is explicitly a test bed for learning the revised mechanics, particularly changes intended to make play more historically accurate. Dr. Clarke uses what he learns here to avoid damaging the less forgiving Austro-Hungarian campaign. He also notes the frustration of major game updates invalidating earlier campaign work.",
     "topics": [
       {
         "slug": "ultimate-admiral-dreadnoughts",
@@ -24076,7 +24256,7 @@
     "startSeconds": 316,
     "youtubeUrl": "https://www.youtube.com/watch?v=qqou-Qq8liw&t=316s",
     "summary": "A pre-dreadnought-style design balances 12-inch guns, a six-inch secondary battery, torpedo defense, armor, speed, and the revised stability calculation.",
-    "body": "The first Repulse design shows how quickly an early hull runs out of displacement when armor, heavy guns, secondary weapons, and torpedoes are combined. Dr. Clarke sacrifices speed and protection to reduce pitch and roll because instability directly harms aiming. The result resembles HMS Renown more than a Royal Sovereign and illustrates the compromises forced by early technology.",
+    "body": "The first Repulse design shows how quickly an early hull runs out of displacement when armor, heavy guns, secondary weapons, and torpedoes are combined. Dr. Clarke selects 12-inch main guns, six-inch casemates, three-inch anti-torpedo-boat weapons, and broadside torpedo tubes before weight forces reductions elsewhere. He sacrifices speed and protection to reduce pitch and roll because instability directly harms aiming. The result resembles HMS Renown more than a Royal Sovereign and illustrates the compromises forced by early technology.",
     "topics": [
       {
         "slug": "battleships",
@@ -24119,7 +24299,7 @@
     "startSeconds": 687,
     "youtubeUrl": "https://www.youtube.com/watch?v=qqou-Qq8liw&t=687s",
     "summary": "New battleships are divided among Scapa Flow, Gibraltar, Singapore, and Bombay to turn imperial bases into a worldwide presence network.",
-    "body": "The deployment choice treats bases as operational infrastructure rather than labels on a map. Heavy ships are spread among home waters, the Mediterranean, Southeast Asia, and India so the fleet can exert presence across several theaters. Later automatic cruiser distribution reinforces the same tension between concentration and worldwide coverage.",
+    "body": "The deployment choice treats bases as operational infrastructure rather than labels on a map. Pairs of battleships go to Scapa Flow, Gibraltar, Singapore, and Bombay, linking home defense to Mediterranean and imperial stations. Heavy ships are therefore spread across several theaters so the fleet can exert presence worldwide. Later automatic cruiser distribution reinforces the same tension between concentration and global coverage.",
     "topics": [
       {
         "slug": "fleet-basing",
@@ -24162,7 +24342,7 @@
     "startSeconds": 1012,
     "youtubeUrl": "https://www.youtube.com/watch?v=qqou-Qq8liw&t=1012s",
     "summary": "A chat comparison leads to an explanation of Vanguard's greater technical and construction efficiency and Germany's damaged maritime industrial base.",
-    "body": "Dr. Clarke rejects the claim that Tirpitz was superior to Vanguard. Vanguard's reused 15-inch guns can make the ships look more comparable than they were, but its technology and construction were more efficient. He connects the German design ceiling to the maritime-industrial restrictions and disruption imposed after the First World War rather than to a lack of engineering talent.",
+    "body": "Dr. Clarke rejects the claim that Tirpitz was superior to Vanguard. Vanguard's reused 15-inch guns can make the ships look more comparable than they were, but its technology and construction were more efficient. Tirpitz and Bismarck represented the best Germany could build within the political and industrial circumstances of their time, not a universal technical optimum. He connects that design ceiling to the maritime-industrial restrictions and disruption imposed after the First World War rather than to a lack of engineering talent.",
     "topics": [
       {
         "slug": "hms-vanguard",
@@ -24211,7 +24391,7 @@
     "startSeconds": 1951,
     "youtubeUrl": "https://www.youtube.com/watch?v=qqou-Qq8liw&t=1951s",
     "summary": "Adding carriers would require modeling aircraft design and development as well as ships, creating a much larger technical problem than submarines.",
-    "body": "Carrier capability cannot be represented adequately by adding another hull type alone. Aircraft technology, design, and development would need their own progression and would interact with an already very large campaign map. Dr. Clarke therefore sees naval aviation as an additional system whose complexity is qualitatively different from the game's submarine abstraction.",
+    "body": "Carrier capability cannot be represented adequately by adding another hull type alone. Aircraft technology, design, and development would need their own progression alongside the ship-design system. Those air groups would then have to operate across an already very large campaign map. Dr. Clarke therefore sees naval aviation as an additional system whose complexity is qualitatively different from the game's submarine abstraction.",
     "topics": [
       {
         "slug": "aircraft-carriers",
@@ -24254,7 +24434,7 @@
     "startSeconds": 2213,
     "youtubeUrl": "https://www.youtube.com/watch?v=qqou-Qq8liw&t=2213s",
     "summary": "Dr. Clarke accepts a harder opening position in exchange for historically plausible ships of his own design rather than eccentric AI-generated vessels.",
-    "body": "Starting without an automatically generated fleet makes the campaign more difficult because usable hulls must be designed and built before a war begins. The payoff is control over the force's technical logic and historical plausibility. It also avoids inheriting unusual AI designs that would remain embedded in the fleet.",
+    "body": "Starting without an automatically generated fleet makes the campaign more difficult because usable hulls must be designed and built before a war begins. The payoff is control over the force's technical logic and historical plausibility. Dr. Clarke explicitly prefers accepting that early vulnerability to operating ships he regards as implausible. It also avoids inheriting unusual AI designs that would remain embedded in the fleet.",
     "topics": [
       {
         "slug": "ship-design",
@@ -24295,7 +24475,7 @@
     "startSeconds": 2361,
     "youtubeUrl": "https://www.youtube.com/watch?v=qqou-Qq8liw&t=2361s",
     "summary": "Lengthy debate over the perfect design can outlast the crisis that justified it or leave equipment unavailable when crisis becomes war.",
-    "body": "Dr. Clarke draws a general lesson from badly timed naval programs in the 1900s and 1920s. Governments can debate requirements until the political opportunity disappears, or until the anticipated crisis becomes a conflict before new equipment arrives. War must then be fought with the force already in service, whether excellent or flawed, which makes timely procurement a strategic capability in its own right.",
+    "body": "Dr. Clarke draws a general lesson from badly timed naval programs in the 1900s and 1920s. Governments can debate requirements until the political opportunity disappears, or until the anticipated crisis becomes a conflict before new equipment arrives. His prescription is to spend less time contesting the perfect specification and more time securing a usable capability. War must then be fought with the force already in service, whether excellent or flawed, which makes timely procurement a strategic capability in its own right.",
     "topics": [
       {
         "slug": "naval-procurement",
@@ -24338,7 +24518,7 @@
     "startSeconds": 2538,
     "youtubeUrl": "https://www.youtube.com/watch?v=qqou-Qq8liw&t=2538s",
     "summary": "A numerical example compares five excellent platforms with twenty adequate ones and shows why losses hurt the small elite force much more severely.",
-    "body": "The comparison is about resilience as much as combat quality. Losing two of five exceptional platforms removes forty percent of that force, while losing several of a larger adequate force leaves much more capability available. Dr. Clarke links the principle to wartime production and contrasts the fame of the Tiger tank with the Sherman, the mass-produced machine that helped win the war.",
+    "body": "The comparison is about resilience as much as combat quality. Losing two of five exceptional platforms removes forty percent of that force, while losing six of twenty-five adequate platforms leaves most of the larger force intact. Numbers provide operational depth and reduce the strategic impact of each casualty. Dr. Clarke links the principle to wartime production and contrasts the fame of the Tiger tank with the Sherman, the mass-produced machine that helped win the war.",
     "topics": [
       {
         "slug": "force-structure",
@@ -24381,7 +24561,7 @@
     "startSeconds": 2904,
     "youtubeUrl": "https://www.youtube.com/watch?v=qqou-Qq8liw&t=2904s",
     "summary": "The Tiger tank becomes a case study in bespoke parts, inconsistent batches, weak design control, and the operational cost of unnecessary complexity.",
-    "body": "Dr. Clarke argues that impressive paper characteristics did not compensate for the Tiger's logistical and engineering-management problems. Successive batches differed, too many specialists optimized their own sections, and no sufficiently powerful authority simplified the complete system for production and maintenance. He contrasts this with the more practical Panzer IV and treats the episode as a broader warning about complexity without systems-level control.",
+    "body": "Dr. Clarke argues that impressive paper characteristics did not compensate for the Tiger's logistical and engineering-management problems. Successive batches differed, too many specialists optimized their own sections, and no sufficiently powerful authority simplified the complete system for production and maintenance. Interleaved road wheels illustrate a local engineering choice whose maintenance burden became an operational liability. He contrasts this with the more practical Panzer IV and treats the episode as a broader warning about complexity without systems-level control.",
     "topics": [
       {
         "slug": "military-logistics",
@@ -24424,7 +24604,7 @@
     "startSeconds": 3876,
     "youtubeUrl": "https://www.youtube.com/watch?v=qqou-Qq8liw&t=3876s",
     "summary": "Attempts to refit a light cruiser and create new cruisers and torpedo boats reveal extreme pitch, roll, weight, and component-placement penalties.",
-    "body": "The Brisbane-class refit begins with a roll value of roughly sixty-five percent, prompting a complete redesign rather than incremental improvement. New cruiser hulls cannot accept sensible gun layouts without severe balance and displacement problems, and even the automatic torpedo-boat design is unstable. Dr. Clarke contrasts this with earlier game versions, where small early ships were imperfect but usable, and worries that research-poor navies such as Austria-Hungary cannot escape the resulting technology trap.",
+    "body": "The Brisbane-class refit begins with a roll value of roughly sixty-five percent, prompting a complete redesign rather than incremental improvement. New cruiser hulls cannot accept sensible gun layouts without severe balance and displacement problems, and even the automatic torpedo-boat design is unstable. The problem makes early destroyer research unattractive because a new hull remains unusable before later stabilization technology arrives. Dr. Clarke contrasts this with earlier game versions, where small early ships were imperfect but usable, and worries that research-poor navies such as Austria-Hungary cannot escape the resulting technology trap.",
     "topics": [
       {
         "slug": "ship-stability",
@@ -24459,6 +24639,51 @@
     "sourcePath": "src/transcripts/txt/2023-11-13_T19-00-22_check-campaign-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_qqou-Qq8liw.txt"
   },
   {
+    "id": "singapore-defense-through-regional-depth",
+    "slug": "singapore-defense-through-regional-depth",
+    "title": "Defending Singapore through fleet strength and regional depth",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "qqou-Qq8liw",
+    "videoSlug": "check-campaign-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign",
+    "videoTitle": "Check Campaign: UAD has updated & to Learn it's new ways I started another British Campaign",
+    "start": "1:29:19",
+    "startSeconds": 5359,
+    "youtubeUrl": "https://www.youtube.com/watch?v=qqou-Qq8liw&t=5359s",
+    "summary": "A question about a Chinese move against Singapore leads to a defense plan built around a reinforced local squadron, an Indonesian ally, and support across the surrounding region.",
+    "body": "Dr. Clarke does not treat Singapore as an isolated base that must stand alone. Three battleships and three light cruisers provide immediate local strength, while allied Indonesia adds regional depth and is also being reinforced. The answer shows how basing, alliances, and force distribution combine to deter an attack before any battle begins. He is considering moving the light cruisers onward, however, so the posture remains part of a wider theater deployment rather than a permanently concentrated fleet.",
+    "topics": [
+      {
+        "slug": "singapore-naval-base",
+        "title": "Singapore Naval Base"
+      },
+      {
+        "slug": "fleet-basing",
+        "title": "Fleet Basing"
+      },
+      {
+        "slug": "naval-presence",
+        "title": "Naval Presence"
+      },
+      {
+        "slug": "maritime-strategy",
+        "title": "Maritime Strategy"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "1:29:19",
+        "end": "1:30:23",
+        "note": "He answers a concern about China taking Singapore by describing local fleet strength and support from allied Indonesia."
+      }
+    ],
+    "end": "1:30:23",
+    "endSeconds": 5423,
+    "question": "Are you worried about China seizing Singapore?",
+    "answerShort": "Not particularly: Singapore has three battleships and three light cruisers, while allied Indonesia is being heavily reinforced to add regional depth.",
+    "sourcePath": "src/transcripts/txt/2023-11-13_T19-00-22_check-campaign-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_qqou-Qq8liw.txt"
+  },
+  {
     "id": "basic-steam-engine-stability-bug-hypothesis",
     "slug": "basic-steam-engine-stability-bug-hypothesis",
     "title": "Triple-expansion engines reveal a possible stability bug",
@@ -24471,7 +24696,7 @@
     "startSeconds": 5519,
     "youtubeUrl": "https://www.youtube.com/watch?v=qqou-Qq8liw&t=5519s",
     "summary": "A refit with triple-expansion machinery suddenly produces acceptable stability, suggesting the basic steam-engine calculation may be causing the early-design failures.",
-    "body": "The machinery upgrade changes more than propulsion efficiency: the battleship's stability falls into a workable range. That result gives Dr. Clarke a concrete hypothesis for the earlier failures, namely that the basic steam-engine model may be feeding an incorrect value into the stability calculation. The discovery also explains why later technology can rescue designs that appear almost unusable at campaign start.",
+    "body": "The machinery upgrade changes more than propulsion efficiency: the battleship's stability falls into a workable range. Dr. Clarke can then restore armor while keeping the design stable and efficient. That result gives him a concrete hypothesis for the earlier failures, namely that the basic steam-engine model may be feeding an incorrect value into the stability calculation. The discovery also explains why later technology can rescue designs that appear almost unusable at campaign start.",
     "topics": [
       {
         "slug": "marine-engineering",
@@ -34266,7 +34491,7 @@
     "startSeconds": 334,
     "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=334s",
     "summary": "The opening problem: the Washington treaty divides ships into capital ships, carriers, and an \"other\" category, rather than treating battlecruisers as a distinct class.",
-    "body": "Dr. Clarke frames the alternate history around a diplomatic choice rather than a new ship design. Britain and Japan both had reasons to resist folding battlecruisers into the capital-ship category, while the United States had reasons to preserve a simple, restrictive structure. That disagreement changes what each navy may retain, replace, and build in the 1920s.",
+    "body": "Dr. Clarke frames the alternate history around a diplomatic choice rather than a new ship design. Britain and Japan both had reasons to resist folding battlecruisers into the capital-ship category, while the United States had reasons to preserve a simple, restrictive structure. Washington recognized capital ships, aircraft carriers, and an unrestricted residual category, so protecting battlecruisers required writing a fourth category into the agreement. That disagreement changes what each navy may retain, replace, and build in the 1920s.",
     "topics": [
       {
         "slug": "washington-naval-treaty",
@@ -34309,7 +34534,7 @@
     "startSeconds": 683,
     "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=683s",
     "summary": "The historical treaty’s 5:5:3 capital-ship ratio reflected American insistence on a battle line of fifteen ships, a constraint that shapes the alternate settlement.",
-    "body": "The American political minimum was not merely abstract tonnage parity: Congress and the US Navy wanted fifteen battleships. Dr. Clarke argues that a separate battlecruiser allowance would let Britain retain global rapid-reaction forces, but would make Washington demand a corresponding battle-line advantage. Carrier limits also matter because carrier aircraft were expected to spot for capital ships as well as scout.",
+    "body": "The American political minimum was not merely abstract tonnage parity: Congress and the US Navy wanted fifteen battleships. Dr. Clarke argues that a separate battlecruiser allowance would let Britain retain global rapid-reaction forces, but would make Washington demand a corresponding battle-line advantage. The resulting American force would combine a fifteen-ship battle line with a separate fast scouting arm rather than trade one for the other. Carrier limits also matter because carrier aircraft were expected to spot for capital ships as well as scout.",
     "topics": [
       {
         "slug": "washington-naval-treaty",
@@ -34344,6 +34569,55 @@
     "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
   },
   {
+    "id": "why-america-did-not-retain-a-lexington",
+    "slug": "why-america-did-not-retain-a-lexington",
+    "title": "Why the historical treaty gave America no Lexington battlecruiser",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "XfUMLROGG9A",
+    "videoSlug": "patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr",
+    "videoTitle": "Patreon Bonus: Battle Cruisers & Battleships are separate Categories in the Washington Naval Treaty",
+    "start": "20:40",
+    "startSeconds": 1240,
+    "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=1240s",
+    "summary": "A viewer asks why Hood and the Kongōs survived while the United States did not complete a Lexington as a battlecruiser.",
+    "body": "The exchange distinguishes negotiated fleet value from a simple ship-for-ship entitlement. The United States received the Colorado programme while Britain received Nelson and Rodney, preserving the agreed parity in heavy-gun ships. Completing a Lexington as a battlecruiser would have required a special displacement exception comparable to Hood's official 41,000-ton figure. The treaty instead used Lexington and Saratoga as carrier conversions, where official displacement declarations and conversion rules created a different accounting path.",
+    "topics": [
+      {
+        "slug": "washington-naval-treaty",
+        "title": "Washington Naval Treaty"
+      },
+      {
+        "slug": "lexington-class",
+        "title": "Lexington Class"
+      },
+      {
+        "slug": "colorado-class",
+        "title": "Colorado Class"
+      },
+      {
+        "slug": "us-navy",
+        "title": "US Navy"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "20:40",
+        "end": "22:14",
+        "note": "The viewer asks why America could not keep a Lexington, and the answer compares Hood, Colorado, treaty displacement, and carrier conversions."
+      }
+    ],
+    "end": "22:14",
+    "endSeconds": 1334,
+    "question": "Why was the United States not allowed to complete at least one Lexington battlecruiser when Britain retained Hood and Japan retained the Kongōs?",
+    "answerShort": "American negotiators treated Hood as equivalent value to a Colorado, while a 42,000-ton Lexington would have exceeded the treaty's ordinary 35,000-ton capital-ship ceiling.",
+    "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
+  },
+  {
     "id": "separate-battlecruiser-treaty-proposal",
     "slug": "separate-battlecruiser-treaty-proposal",
     "title": "A treaty with battlecruiser tonnage of its own",
@@ -34356,7 +34630,7 @@
     "startSeconds": 1501,
     "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=1501s",
     "summary": "Britain’s worldwide commitments make a separate battlecruiser allowance the central bargaining point in this alternate Washington conference.",
-    "body": "The proposed settlement gives Britain, the United States, and Japan distinct battlecruiser allowances while preserving a hierarchy of capital-ship tonnage. Britain needs fast ships for dispersed imperial commitments; America accepts the compromise to keep the wider treaty alive. The proposal also raises the battleship limit and carrier allowance, while lowering the ceiling for other large warships to keep the categories distinct.",
+    "body": "The proposed settlement gives Britain, the United States, and Japan distinct battlecruiser allowances while preserving a hierarchy of capital-ship tonnage. Britain needs fast ships for dispersed imperial commitments; America accepts the compromise to keep the wider treaty alive. A 5,000-ton gap between the battlecruiser and battleship ceilings would preserve a real protection-and-speed tradeoff instead of making every fast capital ship a fast battleship. The proposal also raises the battleship limit and carrier allowance, while lowering the ceiling for other large warships to keep the categories distinct.",
     "topics": [
       {
         "slug": "battlecruisers",
@@ -34399,7 +34673,7 @@
     "startSeconds": 2343,
     "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=2343s",
     "summary": "France and Italy are better served by moving their theoretical battlecruiser allowance into battleship tonnage for a Mediterranean rivalry.",
-    "body": "Italy’s strategic problem is close to home: it needs ships that can fight France in the Mediterranean rather than roam the oceans as independent raiders. France is constrained by parity with Italy and cannot easily protect both the Mediterranean and its wider empire. Dr. Clarke therefore treats both powers as likely to convert the category into fast-battleship strength, even though that leaves France in the weaker position.",
+    "body": "Italy’s strategic problem is close to home: it needs ships that can fight France in the Mediterranean rather than roam the oceans as independent raiders. France is constrained by parity with Italy and cannot easily protect both the Mediterranean and its wider empire. Transferring the allowance has a later treaty precedent in the British movement of tonnage between heavy- and light-cruiser categories. Dr. Clarke therefore treats both powers as likely to convert the category into fast-battleship strength, even though that leaves France in the weaker position.",
     "topics": [
       {
         "slug": "french-navy",
@@ -34446,7 +34720,7 @@
     "startSeconds": 2855,
     "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=2855s",
     "summary": "Washington imposed no cumulative cruiser tonnage limit, and that loophole complicates both cruiser building and the treatment of small carriers.",
-    "body": "The lecture distinguishes the original Washington regime from the later London limits: ships beneath the proposed size and gun ceilings could be built without a total numerical allowance. That leaves the Royal Navy free, in treaty terms, to replace large numbers of cruisers. It also makes small carriers such as Hermes important, since a carrier beneath the threshold might sit outside the main carrier tonnage account.",
+    "body": "The lecture distinguishes the original Washington regime from the later London limits: ships beneath the proposed size and gun ceilings could be built without a total numerical allowance. That leaves the Royal Navy free, in treaty terms, to replace large numbers of cruisers, even though budgets and government policy could still stop construction. A 12,000-ton, 9.2-inch ceiling might also steer British designs toward larger reconnaissance cruisers rather than the historical County class. It makes small carriers such as Hermes important, since a carrier beneath the threshold might sit outside the main carrier tonnage account.",
     "topics": [
       {
         "slug": "cruisers",
@@ -34477,6 +34751,190 @@
     "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
   },
   {
+    "id": "why-france-would-not-trade-battleships-for-cruisers",
+    "slug": "why-france-would-not-trade-battleships-for-cruisers",
+    "title": "Why French heavy cruisers cannot answer Italian battleships",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "XfUMLROGG9A",
+    "videoSlug": "patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr",
+    "videoTitle": "Patreon Bonus: Battle Cruisers & Battleships are separate Categories in the Washington Naval Treaty",
+    "start": "47:47",
+    "startSeconds": 2867,
+    "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=2867s",
+    "summary": "The answer explains why France would not exchange battleship allowance for heavy cruisers in this version of the treaty.",
+    "body": "French politicians measure naval requirements against Italy, so an Italian capital-ship programme makes battleships the politically decisive answer. Under the Washington system, ships below the cruiser ceiling are not constrained by a cumulative allowance. France therefore gains no extra legal capacity to build cruisers by surrendering battleship tonnage. The trade would weaken the force needed in the Mediterranean without buying a treaty advantage elsewhere.",
+    "topics": [
+      {
+        "slug": "french-navy",
+        "title": "French Navy"
+      },
+      {
+        "slug": "italian-navy",
+        "title": "Italian Navy"
+      },
+      {
+        "slug": "cruisers",
+        "title": "Cruisers"
+      },
+      {
+        "slug": "battleships",
+        "title": "Battleships"
+      },
+      {
+        "slug": "washington-naval-treaty",
+        "title": "Washington Naval Treaty"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "47:47",
+        "end": "49:48",
+        "note": "The answer rejects the trade because French strategy is tied to Italian battleships and Washington has no aggregate cruiser limit."
+      }
+    ],
+    "end": "49:48",
+    "endSeconds": 2988,
+    "question": "Could France convert some battleship tonnage into heavy-cruiser tonnage?",
+    "answerShort": "It could ask, but the exchange would not solve France's central problem because cruisers could not counter Italy's fast battleships and Washington imposed no aggregate cruiser tonnage limit anyway.",
+    "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
+  },
+  {
+    "id": "why-france-accepted-parity-with-italy",
+    "slug": "why-france-accepted-parity-with-italy",
+    "title": "Why France accepted naval parity with Italy",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "XfUMLROGG9A",
+    "videoSlug": "patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr",
+    "videoTitle": "Patreon Bonus: Battle Cruisers & Battleships are separate Categories in the Washington Naval Treaty",
+    "start": "50:05",
+    "startSeconds": 3005,
+    "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=3005s",
+    "summary": "A brief exchange identifies the negotiating pressure that locked France into parity with its main Mediterranean rival.",
+    "body": "Italy's negotiating position was simple: match every French allowance. France could reject parity only by risking the collapse of its own participation in a settlement it needed. Economic weakness reduced Paris's freedom to sustain an unconstrained naval race. The resulting parity tied French force planning to the Mediterranean and made it harder to cover wider imperial commitments.",
+    "topics": [
+      {
+        "slug": "french-navy",
+        "title": "French Navy"
+      },
+      {
+        "slug": "italian-navy",
+        "title": "Italian Navy"
+      },
+      {
+        "slug": "washington-naval-treaty",
+        "title": "Washington Naval Treaty"
+      },
+      {
+        "slug": "naval-diplomacy",
+        "title": "Naval Diplomacy"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "50:05",
+        "end": "50:31",
+        "note": "The question asks why France accepted parity, and the answer cites Italian negotiating demands and French economic weakness."
+      }
+    ],
+    "end": "50:31",
+    "endSeconds": 3031,
+    "question": "Why did France accept parity with Italy at Washington?",
+    "answerShort": "Italy refused to sign for less than France received, while France was economically weak and unwilling to remain outside the treaty.",
+    "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
+  },
+  {
+    "id": "royal-navy-cruiser-after-the-e-class",
+    "slug": "royal-navy-cruiser-after-the-e-class",
+    "title": "The Royal Navy's likely post-E-class cruiser",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "XfUMLROGG9A",
+    "videoSlug": "patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr",
+    "videoTitle": "Patreon Bonus: Battle Cruisers & Battleships are separate Categories in the Washington Naval Treaty",
+    "start": "53:43",
+    "startSeconds": 3223,
+    "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=3223s",
+    "summary": "The proposed 12,000-ton ceiling points toward a larger British reconnaissance cruiser with 9.2-inch guns and an earlier Leander-like light-cruiser branch.",
+    "body": "The historical County class was itself shaped by the actual treaty ceiling, so the alternate limit changes its starting assumptions. British pre-treaty studies already included larger 9.2-inch-gun cruisers. A navy facing more battlecruisers would value a powerful reconnaissance ship, although it still would not be intended to fight capital ships. The lighter branch of protected- and armoured-cruiser replacement could develop toward a Leander-type design sooner.",
+    "topics": [
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "cruisers",
+        "title": "Cruisers"
+      },
+      {
+        "slug": "naval-ship-design",
+        "title": "Naval Ship Design"
+      },
+      {
+        "slug": "washington-naval-treaty",
+        "title": "Washington Naval Treaty"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "53:43",
+        "end": "56:19",
+        "note": "The answer discusses a 9.2-inch British cruiser and an earlier Leander-like development path."
+      }
+    ],
+    "end": "56:19",
+    "endSeconds": 3379,
+    "question": "What cruiser might the Royal Navy build after the E class under this alternate treaty?",
+    "answerShort": "Dr. Clarke expects something like an enlarged County-style reconnaissance cruiser with 9.2-inch guns, alongside an earlier evolution toward a Leander-like light cruiser.",
+    "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
+  },
+  {
+    "id": "hermes-and-the-small-carrier-loophole",
+    "slug": "hermes-and-the-small-carrier-loophole",
+    "title": "How Hermes opens a small-carrier loophole",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "XfUMLROGG9A",
+    "videoSlug": "patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr",
+    "videoTitle": "Patreon Bonus: Battle Cruisers & Battleships are separate Categories in the Washington Naval Treaty",
+    "start": "54:38",
+    "startSeconds": 3278,
+    "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=3278s",
+    "summary": "A viewer's Hermes question reveals how carriers below 12,000 tons might escape the main carrier allowance.",
+    "body": "The answer treats the threshold as a design incentive, not merely an accounting detail. If Hermes does not consume fleet-carrier tonnage, Britain can use small carriers for secondary missions while reserving its allowance for larger ships. Repeated construction could improve the type and create an important light-carrier lineage before the London conference. That possibility is one reason the later treaty might need a separate small-carrier category.",
+    "topics": [
+      {
+        "slug": "hms-hermes",
+        "title": "HMS Hermes"
+      },
+      {
+        "slug": "aircraft-carriers",
+        "title": "Aircraft Carriers"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "washington-naval-treaty",
+        "title": "Washington Naval Treaty"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "54:38",
+        "end": "55:33",
+        "note": "The question asks about Hermes, and the answer explains how sub-threshold carriers could sit outside the main allowance."
+      }
+    ],
+    "end": "55:33",
+    "endSeconds": 3333,
+    "question": "How would the proposed 12,000-ton threshold apply to HMS Hermes?",
+    "answerShort": "Hermes might sit outside the counted carrier tonnage, encouraging navies to build useful small carriers below the threshold.",
+    "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
+  },
+  {
     "id": "royal-navy-continuous-capital-ship-building",
     "slug": "royal-navy-continuous-capital-ship-building",
     "title": "Britain’s construction programme and industrial continuity",
@@ -34489,7 +34947,7 @@
     "startSeconds": 3394,
     "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=3394s",
     "summary": "A separate category lets Britain retain Hood, Renown, and Repulse while building new battleships and battlecruisers before 1930.",
-    "body": "Dr. Clarke calculates that Britain could use the freed treaty allowance for several new battlecruisers and as many as eight new battleships, though he does not expect an unaffordable rush to build every theoretical ship. Spreading orders across the 1920s would sustain shipyards, armour production, gun foundries, and skilled labour. The result is a Royal Navy with more modern fast capital ships and a far healthier industrial base entering the 1930s.",
+    "body": "Dr. Clarke calculates that Britain could use the freed treaty allowance for several new battlecruisers and as many as eight new battleships, though he does not expect an unaffordable rush to build every theoretical ship. A staggered pattern of two battleships in even-numbered years and one battlecruiser in alternating years illustrates how the programme could fit existing capacity. Spreading orders across the 1920s would sustain shipyards, armour production, gun foundries, and skilled labour. The result is a Royal Navy with more modern fast capital ships and a far healthier industrial base entering the 1930s.",
     "topics": [
       {
         "slug": "royal-navy",
@@ -34524,6 +34982,186 @@
     "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
   },
   {
+    "id": "continuous-building-and-high-pressure-boilers",
+    "slug": "continuous-building-and-high-pressure-boilers",
+    "title": "Could continuous construction accelerate British high-pressure boilers?",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "XfUMLROGG9A",
+    "videoSlug": "patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr",
+    "videoTitle": "Patreon Bonus: Battle Cruisers & Battleships are separate Categories in the Washington Naval Treaty",
+    "start": "1:15:55",
+    "startSeconds": 4555,
+    "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=4555s",
+    "summary": "A sustained capital-ship programme could create stronger pressure to improve British boiler technology.",
+    "body": "The answer is deliberately conditional rather than a firm prediction. New battleships and battlecruisers would repeatedly force designers to trade machinery weight, speed, and protection. Continuous orders would also keep boiler firms and naval engineers working on successive generations instead of restarting after a long pause. That environment makes earlier high-pressure development more plausible, even though the treaty change alone does not guarantee adoption.",
+    "topics": [
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "naval-propulsion",
+        "title": "Naval Propulsion"
+      },
+      {
+        "slug": "high-pressure-boilers",
+        "title": "High Pressure Boilers"
+      },
+      {
+        "slug": "naval-industrial-base",
+        "title": "Naval Industrial Base"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "1:15:55",
+        "end": "1:16:02",
+        "note": "The viewer asks about high-pressure boilers and the answer says the alternate programme could increase development pressure."
+      }
+    ],
+    "end": "1:16:02",
+    "endSeconds": 4562,
+    "question": "Would continued capital-ship construction push the Royal Navy toward high-pressure boilers?",
+    "answerShort": "It could, because recurring fast-capital-ship designs would keep machinery efficiency and power density under active development.",
+    "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
+  },
+  {
+    "id": "could-other-powers-build-capital-ships",
+    "slug": "could-other-powers-build-capital-ships",
+    "title": "Why other powers remain unlikely capital-ship builders",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "XfUMLROGG9A",
+    "videoSlug": "patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr",
+    "videoTitle": "Patreon Bonus: Battle Cruisers & Battleships are separate Categories in the Washington Naval Treaty",
+    "start": "1:16:47",
+    "startSeconds": 4607,
+    "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=4607s",
+    "summary": "Treaty permission does not give smaller navies the industrial base or finances needed to join the capital-ship race.",
+    "body": "Britain, the United States, and Japan begin with active yards, specialist workers, and programmes already in motion. A smaller navy would face the much higher cost of creating that ecosystem or buying a ship from one of those powers. South American competition is unlikely to restart at the required scale, and dominion ships would still consume British resources and treaty allowance. Transferring Renown or Repulse to Australia or New Zealand is more plausible because it redistributes existing ships rather than creating a new industrial competitor.",
+    "topics": [
+      {
+        "slug": "naval-shipbuilding",
+        "title": "Naval Shipbuilding"
+      },
+      {
+        "slug": "naval-industrial-base",
+        "title": "Naval Industrial Base"
+      },
+      {
+        "slug": "capital-ships",
+        "title": "Capital Ships"
+      },
+      {
+        "slug": "washington-naval-treaty",
+        "title": "Washington Naval Treaty"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "1:16:47",
+        "end": "1:18:21",
+        "note": "The answer surveys industrial, financial, and strategic barriers facing non-treaty capital-ship builders."
+      }
+    ],
+    "end": "1:18:21",
+    "endSeconds": 4701,
+    "question": "Would powers outside the five treaty navies build battleships or battlecruisers in this scenario?",
+    "answerShort": "Probably not; states without an existing capital-ship industry would have to order abroad, and few had a strategic need or budget strong enough to justify doing so.",
+    "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
+  },
+  {
+    "id": "treaty-rules-for-exported-capital-ships",
+    "slug": "treaty-rules-for-exported-capital-ships",
+    "title": "Washington treaty rules for warships built for export",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "XfUMLROGG9A",
+    "videoSlug": "patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr",
+    "videoTitle": "Patreon Bonus: Battle Cruisers & Battleships are separate Categories in the Washington Naval Treaty",
+    "start": "1:20:10",
+    "startSeconds": 4810,
+    "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=4810s",
+    "summary": "The treaty permitted export construction but required disclosure and barred the builder from quietly taking the ship into its own fleet.",
+    "body": "The rules addressed the fear that an export hull could become a disguised addition to the builder's fleet. A signatory had to provide the other treaty powers with information about the ship under construction. The arrangement still allowed countries without suitable yards to buy abroad. Its practical value depended on peacetime compliance, because wartime emergencies historically led Britain to absorb foreign orders already in its yards.",
+    "topics": [
+      {
+        "slug": "washington-naval-treaty",
+        "title": "Washington Naval Treaty"
+      },
+      {
+        "slug": "naval-shipbuilding",
+        "title": "Naval Shipbuilding"
+      },
+      {
+        "slug": "warship-exports",
+        "title": "Warship Exports"
+      },
+      {
+        "slug": "capital-ships",
+        "title": "Capital Ships"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "1:20:10",
+        "end": "1:21:12",
+        "note": "The answer explains disclosure, ownership, and wartime limits on the export-building rules."
+      }
+    ],
+    "end": "1:21:12",
+    "endSeconds": 4872,
+    "question": "Did the Washington treaty forbid signatories from building capital ships for other nations?",
+    "answerShort": "No; it required disclosure of foreign orders and prevented the builder from taking those ships into its own service.",
+    "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
+  },
+  {
+    "id": "could-russia-build-capital-ships",
+    "slug": "could-russia-build-capital-ships",
+    "title": "Why Russia still struggles to build capital ships",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "XfUMLROGG9A",
+    "videoSlug": "patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr",
+    "videoTitle": "Patreon Bonus: Battle Cruisers & Battleships are separate Categories in the Washington Naval Treaty",
+    "start": "1:22:43",
+    "startSeconds": 4963,
+    "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=4963s",
+    "summary": "Russian ambition remains constrained by industrial weakness and political destruction of naval expertise.",
+    "body": "The counterfactual changes treaty construction among the signatories, not the institutional conditions inside Russia. Capital ships demand sustained design, yard, armour, gun, and management capacity. Soviet naval plans repeatedly exceeded what that base could deliver. Political purges further damaged the specialist leadership required to turn ambition into completed ships.",
+    "topics": [
+      {
+        "slug": "soviet-navy",
+        "title": "Soviet Navy"
+      },
+      {
+        "slug": "naval-shipbuilding",
+        "title": "Naval Shipbuilding"
+      },
+      {
+        "slug": "naval-industrial-base",
+        "title": "Naval Industrial Base"
+      },
+      {
+        "slug": "capital-ships",
+        "title": "Capital Ships"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "1:22:43",
+        "end": "1:22:57",
+        "note": "The brief answer attributes Russian failure to infrastructure limits and the destruction of naval expertise."
+      }
+    ],
+    "end": "1:22:57",
+    "endSeconds": 4977,
+    "question": "Would Russia try to build battleships or battlecruisers in this alternate treaty world?",
+    "answerShort": "It might try, as it did historically, but weak infrastructure and the loss of admirals and engineers would still prevent a successful programme.",
+    "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
+  },
+  {
     "id": "japanese-kongos-and-new-battleships",
     "slug": "japanese-kongos-and-new-battleships",
     "title": "Japan keeps the Kongōs and gains new capital-ship options",
@@ -34536,7 +35174,7 @@
     "startSeconds": 4977,
     "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=4977s",
     "summary": "Japan can retain the four Kongōs within a separate battlecruiser allowance while using capital-ship tonnage for four new battleships.",
-    "body": "The Kongōs are too recent to discard and still provide useful fast reconnaissance and forward-support capability. Japan could complete modified Tosas, redesign an existing project, or build a fresh 16-inch-gun class, perhaps using triple turrets for efficient firepower. Continued capital-ship construction would also compete with cruiser and carrier programmes for limited industrial capacity, making the navy more balanced but less able to pursue every project at once.",
+    "body": "The Kongōs are too recent to discard and still provide useful fast reconnaissance and forward-support capability. Japan could complete modified Tosas, redesign an existing project, or build a fresh 16-inch-gun class, perhaps using triple turrets for efficient firepower. One ship ordered every two years would preserve design and production experience without demanding an unaffordable simultaneous programme. Continued capital-ship construction would also compete with cruiser and carrier programmes for limited industrial capacity, making the navy more balanced but less able to pursue every project at once.",
     "topics": [
       {
         "slug": "imperial-japanese-navy",
@@ -34571,6 +35209,51 @@
     "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
   },
   {
+    "id": "where-capital-ship-workers-went",
+    "slug": "where-capital-ship-workers-went",
+    "title": "What happened to capital-ship workers during the building holiday",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "XfUMLROGG9A",
+    "videoSlug": "patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr",
+    "videoTitle": "Patreon Bonus: Battle Cruisers & Battleships are separate Categories in the Washington Naval Treaty",
+    "start": "1:32:54",
+    "startSeconds": 5574,
+    "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=5574s",
+    "summary": "The answer traces how dormant yards lost specialist labour and why restarting production made later ships more expensive.",
+    "body": "Welders, riveters, fabricators, gunmakers, and armour specialists had transferable skills and could not wait indefinitely for naval orders. Recalling them later required higher wages and relocation, while replacing them meant training a new workforce through an expensive learning curve. Closed or idle foundries added restart costs that do not appear as simple inflation. Dr. Clarke uses the difference between Nelson- and King George V-era costs to show why continuous orders preserve both capability and affordability.",
+    "topics": [
+      {
+        "slug": "naval-industrial-base",
+        "title": "Naval Industrial Base"
+      },
+      {
+        "slug": "naval-shipbuilding",
+        "title": "Naval Shipbuilding"
+      },
+      {
+        "slug": "skilled-labor",
+        "title": "Skilled Labor"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "1:32:54",
+        "end": "1:36:07",
+        "note": "The question asks where workers went, and the answer covers labour dispersal, foundry restart, retraining, and later programme costs."
+      }
+    ],
+    "end": "1:36:07",
+    "endSeconds": 5767,
+    "question": "What happened to the workers, foundries, and industrial capacity behind battleship construction after building stopped?",
+    "answerShort": "Workers retired, died, or moved into other industries, while specialist foundries and production lines closed or went dormant and later had to be rebuilt.",
+    "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
+  },
+  {
     "id": "continuous-building-preserves-design-capability",
     "slug": "continuous-building-preserves-design-capability",
     "title": "Why uninterrupted shipbuilding changes later warship design",
@@ -34583,7 +35266,7 @@
     "startSeconds": 5621,
     "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=5621s",
     "summary": "Keeping orders moving preserves skills and production capacity that are expensive to recreate after a building holiday.",
-    "body": "Shipbuilders, gunmakers, armour producers, and specialist workers disperse when construction stops; restarting them later adds cost and delay. Dr. Clarke uses the gap between Nelson-class and King George V-class costs to illustrate the consequences. A continuous programme would allow successive refinements in hulls, machinery, guns, and fast-battleship design rather than forcing navies to rebuild their industrial ecosystem from scratch.",
+    "body": "Shipbuilders, gunmakers, armour producers, and specialist workers disperse when construction stops; restarting them later adds cost and delay. Dr. Clarke uses the gap between Nelson-class and King George V-class costs to illustrate the consequences. Foundries must be reopened, experienced workers recalled or replaced, and a new labour force moved back up the learning curve. A continuous programme would allow successive refinements in hulls, machinery, guns, and fast-battleship design rather than forcing navies to rebuild their industrial ecosystem from scratch.",
     "topics": [
       {
         "slug": "naval-shipbuilding",
@@ -34614,6 +35297,153 @@
     "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
   },
   {
+    "id": "why-kaga-replaced-amagi-as-a-carrier-conversion",
+    "slug": "why-kaga-replaced-amagi-as-a-carrier-conversion",
+    "title": "Why Kaga replaced Amagi after the earthquake",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "XfUMLROGG9A",
+    "videoSlug": "patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr",
+    "videoTitle": "Patreon Bonus: Battle Cruisers & Battleships are separate Categories in the Washington Naval Treaty",
+    "start": "1:39:56",
+    "startSeconds": 5996,
+    "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=5996s",
+    "summary": "Kaga was selected because the other Amagi-class hulls were less advanced and already further into dismantling when Amagi was damaged.",
+    "body": "Carrier conversion depended on the physical state of available hulls, not simply on which design was theoretically preferable. Amagi's earthquake damage removed the intended battlecruiser conversion. The sister hulls Atago and Takao were not far enough advanced to offer the same shortcut and were already being broken up. Kaga therefore became the viable substitute despite originating as a battleship rather than an Amagi-class battlecruiser.",
+    "topics": [
+      {
+        "slug": "kaga",
+        "title": "Kaga"
+      },
+      {
+        "slug": "amagi-class",
+        "title": "Amagi Class"
+      },
+      {
+        "slug": "aircraft-carriers",
+        "title": "Aircraft Carriers"
+      },
+      {
+        "slug": "imperial-japanese-navy",
+        "title": "Imperial Japanese Navy"
+      },
+      {
+        "slug": "naval-shipbuilding",
+        "title": "Naval Shipbuilding"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "1:39:56",
+        "end": "1:40:19",
+        "note": "The answer says Atago and Takao were less advanced and further into dismantling when Amagi was damaged."
+      }
+    ],
+    "end": "1:40:19",
+    "endSeconds": 6019,
+    "question": "Why did Japan convert Kaga rather than another Amagi-class hull after the earthquake damaged Amagi?",
+    "answerShort": "Atago and Takao were less complete and had already progressed further toward dismantling, making Kaga the more practical replacement hull.",
+    "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
+  },
+  {
+    "id": "pensacola-under-a-twelve-thousand-ton-limit",
+    "slug": "pensacola-under-a-twelve-thousand-ton-limit",
+    "title": "A larger Pensacola remains a scout before a cruiser fighter",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "XfUMLROGG9A",
+    "videoSlug": "patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr",
+    "videoTitle": "Patreon Bonus: Battle Cruisers & Battleships are separate Categories in the Washington Naval Treaty",
+    "start": "1:43:55",
+    "startSeconds": 6235,
+    "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=6235s",
+    "summary": "Extra treaty displacement could improve Pensacola, but its reconnaissance mission would still shape the design more than cruiser combat.",
+    "body": "Additional displacement gives designers more room for protection, structure, fuel, or armament. Mission remains decisive, however, because a cruiser optimized to find and report the enemy makes different compromises from one expected to defeat peer cruisers. The alternate ceiling does not automatically change American scouting doctrine. Pensacola could therefore improve substantially without becoming a balanced close-combat cruiser.",
+    "topics": [
+      {
+        "slug": "pensacola-class",
+        "title": "Pensacola Class"
+      },
+      {
+        "slug": "us-navy",
+        "title": "US Navy"
+      },
+      {
+        "slug": "cruisers",
+        "title": "Cruisers"
+      },
+      {
+        "slug": "naval-reconnaissance",
+        "title": "Naval Reconnaissance"
+      },
+      {
+        "slug": "naval-ship-design",
+        "title": "Naval Ship Design"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "1:43:55",
+        "end": "1:44:08",
+        "note": "The answer distinguishes a good reconnaissance cruiser from a good fighting cruiser under the larger limit."
+      }
+    ],
+    "end": "1:44:08",
+    "endSeconds": 6248,
+    "question": "Would a 12,000-ton, 9.2-inch cruiser ceiling make the Pensacola class a good ship?",
+    "answerShort": "It could produce a different and better ship, but if the design remained reconnaissance-focused it would be a strong scout rather than an ideal cruiser fighter.",
+    "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
+  },
+  {
+    "id": "japanese-cruisers-and-destroyers-under-capital-ship-construction",
+    "slug": "japanese-cruisers-and-destroyers-under-capital-ship-construction",
+    "title": "How new capital ships reshape Japanese cruisers and destroyers",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "XfUMLROGG9A",
+    "videoSlug": "patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr",
+    "videoTitle": "Patreon Bonus: Battle Cruisers & Battleships are separate Categories in the Washington Naval Treaty",
+    "start": "1:44:12",
+    "startSeconds": 6252,
+    "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=6252s",
+    "summary": "More battleships reduce the pressure to make every Japanese cruiser and destroyer carry an extreme share of the battle plan.",
+    "body": "The historical fleet tried to compensate for numerical inferiority by loading exceptional armament and torpedo power onto smaller hulls. Four new battleships would reduce the need for every cruiser and destroyer to serve as an asymmetric answer to the American battle line. The Kongōs would remain useful reconnaissance and forward-support ships rather than being converted or prematurely replaced. Industrial competition also matters, because capital-ship orders consume yard and engineering capacity that otherwise went into cruiser construction.",
+    "topics": [
+      {
+        "slug": "imperial-japanese-navy",
+        "title": "Imperial Japanese Navy"
+      },
+      {
+        "slug": "cruisers",
+        "title": "Cruisers"
+      },
+      {
+        "slug": "destroyers",
+        "title": "Destroyers"
+      },
+      {
+        "slug": "kongo-class",
+        "title": "Kongo Class"
+      },
+      {
+        "slug": "naval-force-structure",
+        "title": "Naval Force Structure"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "1:44:12",
+        "end": "1:46:17",
+        "note": "The answer links capital-ship construction to less top-heavy smaller combatants and explains why the Kongōs remain useful."
+      }
+    ],
+    "end": "1:46:17",
+    "endSeconds": 6377,
+    "question": "How would continued capital-ship construction affect Japanese cruiser and destroyer development?",
+    "answerShort": "Japan might build fewer top-heavy cruisers and destroyers because the new capital ships would already provide strength that smaller types historically had to offset.",
+    "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
+  },
+  {
     "id": "french-fast-battleship-dilemma",
     "slug": "french-fast-battleship-dilemma",
     "title": "France’s need for a credible fast battleship",
@@ -34626,7 +35456,7 @@
     "startSeconds": 6391,
     "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=6391s",
     "summary": "France can build three new battleships, but slow 13.4-inch-gun designs would be badly outmatched by fast Italian capital ships.",
-    "body": "The French legacy fleet is politically difficult to replace even where it is militarily obsolete. Dr. Clarke argues that completing the Normandie or Lyon concepts would leave France with slow ships unable to dictate an engagement against the projected Italian fast battleships. A larger, slower-than-historical Dunkerque-like design with 15-inch guns offers the more credible direction, though it requires a break with entrenched design habits.",
+    "body": "The French legacy fleet is politically difficult to replace even where it is militarily obsolete. Dr. Clarke argues that completing the Normandie or Lyon concepts would leave France with slow ships unable to dictate an engagement against the projected Italian fast battleships. France's attachment to 13.4-inch guns reflects industrial limits as much as tactical preference, so a stronger design might require foreign gun technology. A larger, slower-than-historical Dunkerque-like design with 15-inch guns offers the more credible direction, though it requires a break with entrenched design habits.",
     "topics": [
       {
         "slug": "french-navy",
@@ -34661,6 +35491,96 @@
     "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
   },
   {
+    "id": "submarines-under-the-naval-treaties",
+    "slug": "submarines-under-the-naval-treaties",
+    "title": "Which navy's submarines suffered most under treaty limits",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "XfUMLROGG9A",
+    "videoSlug": "patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr",
+    "videoTitle": "Patreon Bonus: Battle Cruisers & Battleships are separate Categories in the Washington Naval Treaty",
+    "start": "1:47:34",
+    "startSeconds": 6454,
+    "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=6454s",
+    "summary": "Britain surrendered the greatest potential advantage, although no navy was actually pressed hard against the submarine tonnage ceiling.",
+    "body": "The Royal Navy entered the period with substantial numerical and technical strength below the surface. Later London restrictions discouraged investment and growth that might otherwise have continued. Even so, paper limits did not force a dramatic immediate scrapping crisis because fleets remained below their allowances. The main loss was foregone development rather than the elimination of an existing operational force.",
+    "topics": [
+      {
+        "slug": "submarines",
+        "title": "Submarines"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "london-naval-treaty",
+        "title": "London Naval Treaty"
+      },
+      {
+        "slug": "naval-treaties",
+        "title": "Naval Treaties"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "1:47:34",
+        "end": "1:48:03",
+        "note": "The answer identifies Britain's lost submarine momentum but notes that no navy was at its treaty ceiling."
+      }
+    ],
+    "end": "1:48:03",
+    "endSeconds": 6483,
+    "question": "Which navy was most adversely affected in submarines by the naval treaties?",
+    "answerShort": "Britain gave up the most momentum because it had the world's largest and perhaps most advanced submarine arm, but no signatory was close enough to the limit to be severely constrained in actual construction.",
+    "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
+  },
+  {
+    "id": "destroyer-designs-hurt-by-treaty-limits",
+    "slug": "destroyer-designs-hurt-by-treaty-limits",
+    "title": "Treaty pressure and Japan's top-heavy destroyers",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "XfUMLROGG9A",
+    "videoSlug": "patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr",
+    "videoTitle": "Patreon Bonus: Battle Cruisers & Battleships are separate Categories in the Washington Naval Treaty",
+    "start": "1:48:56",
+    "startSeconds": 6536,
+    "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=6536s",
+    "summary": "The answer points to Japanese top-heavy destroyers as the clearest design penalty produced by treaty pressure.",
+    "body": "Treaty competition encouraged Japan to seek qualitative advantage in every permitted ton. Destroyers received unusually heavy weapons and equipment for their displacement. That approach produced impressive paper capability but harmed stability and seaworthiness. The exchange connects fleet-level numerical restrictions to dangerous compromises in smaller combatants.",
+    "topics": [
+      {
+        "slug": "imperial-japanese-navy",
+        "title": "Imperial Japanese Navy"
+      },
+      {
+        "slug": "destroyers",
+        "title": "Destroyers"
+      },
+      {
+        "slug": "naval-treaties",
+        "title": "Naval Treaties"
+      },
+      {
+        "slug": "naval-ship-design",
+        "title": "Naval Ship Design"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "1:48:56",
+        "end": "1:49:09",
+        "note": "The answer identifies Japanese top-heavy destroyers as the worst destroyer-design consequence."
+      }
+    ],
+    "end": "1:49:09",
+    "endSeconds": 6549,
+    "question": "What was the worst treaty effect on destroyer design?",
+    "answerShort": "Japan's top-heavy destroyers were the clearest example, packing excessive capability into constrained hulls.",
+    "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
+  },
+  {
     "id": "italian-francesco-caracciolo-fleet",
     "slug": "italian-francesco-caracciolo-fleet",
     "title": "Italy’s Francesco Caracciolo opportunity",
@@ -34673,7 +35593,7 @@
     "startSeconds": 7060,
     "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=7060s",
     "summary": "Italy is one of the great beneficiaries: it can complete the Francesco Caracciolos and later build a second generation of fast battleships.",
-    "body": "Unlike France, Italy can retire enough old ships to create room for four Francesco Caracciolo-class battleships without a radical redesign. Their speed and armour suit Mediterranean operations, where Italy expects to fight France rather than conduct worldwide commerce warfare. The later Litorio-type generation could then emerge from a much stronger industrial and operational base, although oil supply and shell-quality control remain practical constraints.",
+    "body": "Unlike France, Italy can retire enough old ships to create room for four Francesco Caracciolo-class battleships without a radical redesign. Their speed and armour suit Mediterranean operations, where Italy expects to fight France rather than conduct worldwide commerce warfare. Completion would establish a 28-knot fast-battleship benchmark and give the Regia Marina a prestigious modern battle line while French planning remained trapped by older ships. The later Littorio-type generation could then emerge from a much stronger industrial and operational base, although oil supply and shell-quality control remain practical constraints.",
     "topics": [
       {
         "slug": "italian-navy",
@@ -34708,6 +35628,296 @@
     "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
   },
   {
+    "id": "italian-carrier-from-a-caracciolo-hull",
+    "slug": "italian-carrier-from-a-caracciolo-hull",
+    "title": "Why Italy still may not convert a Caracciolo into a carrier",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "XfUMLROGG9A",
+    "videoSlug": "patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr",
+    "videoTitle": "Patreon Bonus: Battle Cruisers & Battleships are separate Categories in the Washington Naval Treaty",
+    "start": "2:02:59",
+    "startSeconds": 7379,
+    "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=7379s",
+    "summary": "A Caracciolo conversion is technically plausible, but service politics and faith in Mediterranean land-based aviation still work against it.",
+    "body": "The obstacle is not an inability to construct a carrier. Italian naval aviation policy was constrained by an air force that saw the enclosed Mediterranean as reachable from shore bases. The alternate treaty also gives the Regia Marina exactly the battleship programme it wants, making a carrier conversion less attractive. Financial pressure matters, but rivalry with France could still unlock money for visible capital ships more readily than for an unfamiliar carrier concept.",
+    "topics": [
+      {
+        "slug": "italian-navy",
+        "title": "Italian Navy"
+      },
+      {
+        "slug": "francesco-caracciolo-class",
+        "title": "Francesco Caracciolo Class"
+      },
+      {
+        "slug": "aircraft-carriers",
+        "title": "Aircraft Carriers"
+      },
+      {
+        "slug": "regia-aeronautica",
+        "title": "Regia Aeronautica"
+      },
+      {
+        "slug": "mediterranean",
+        "title": "Mediterranean"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "2:02:59",
+        "end": "2:04:21",
+        "note": "The answer distinguishes technical feasibility from Regia Aeronautica opposition, Mediterranean assumptions, and battleship priorities."
+      }
+    ],
+    "end": "2:04:21",
+    "endSeconds": 7461,
+    "question": "Would it make sense for Italy to convert a Francesco Caracciolo-class hull into an aircraft carrier?",
+    "answerShort": "It could work technically, but Italy would probably still prioritize battleships because the Regia Aeronautica argued that land-based aircraft could cover the Mediterranean.",
+    "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
+  },
+  {
+    "id": "italian-oil-for-a-larger-battle-fleet",
+    "slug": "italian-oil-for-a-larger-battle-fleet",
+    "title": "Could Italy fuel its enlarged battle fleet?",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "XfUMLROGG9A",
+    "videoSlug": "patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr",
+    "videoTitle": "Patreon Bonus: Battle Cruisers & Battleships are separate Categories in the Washington Naval Treaty",
+    "start": "2:07:21",
+    "startSeconds": 7641,
+    "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=7641s",
+    "summary": "The ships are buildable, but their wartime usefulness depends on whether Italy invests early in oil stocks and fuel infrastructure.",
+    "body": "Treaty tonnage and shipyard capacity do not automatically produce an operational fleet. Fast capital ships impose a large and continuing fuel demand. Britain responded to similar strategic exposure by investing in storage and supply infrastructure, and Italy could choose the same path. If it did not, the enlarged battle line would remain constrained by the same fuel shortages that limited historical operations.",
+    "topics": [
+      {
+        "slug": "italian-navy",
+        "title": "Italian Navy"
+      },
+      {
+        "slug": "naval-logistics",
+        "title": "Naval Logistics"
+      },
+      {
+        "slug": "oil",
+        "title": "Oil"
+      },
+      {
+        "slug": "fuel-infrastructure",
+        "title": "Fuel Infrastructure"
+      },
+      {
+        "slug": "battleships",
+        "title": "Battleships"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "2:07:21",
+        "end": "2:07:58",
+        "note": "The answer makes Italian fleet use conditional on oil depots, stockpiles, and logistical planning."
+      }
+    ],
+    "end": "2:07:58",
+    "endSeconds": 7678,
+    "question": "Could Italy secure enough oil to operate a much stronger fast-battleship fleet?",
+    "answerShort": "Possibly, but only if it recognized the logistical requirement and built fuel depots and strategic reserves before the war.",
+    "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
+  },
+  {
+    "id": "italian-cruisers-beside-fast-battleships",
+    "slug": "italian-cruisers-beside-fast-battleships",
+    "title": "Fast battleships could shift Italy toward fast light cruisers",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "XfUMLROGG9A",
+    "videoSlug": "patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr",
+    "videoTitle": "Patreon Bonus: Battle Cruisers & Battleships are separate Categories in the Washington Naval Treaty",
+    "start": "2:08:31",
+    "startSeconds": 7711,
+    "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=7711s",
+    "summary": "A strong fast battle line reduces Italy's need for heavy cruisers and changes the ships Britain must modernize to meet it.",
+    "body": "The cruiser force would no longer need to compensate as strongly for the absence of modern fast battleships. Speed, scouting, and support for the battle line become more attractive than reproducing capital-ship firepower on cruiser hulls. The threat also changes British priorities by making 28-knot Queen Elizabeth-class modernizations more valuable than spending heavily on the slower R class. Fleet design on both sides responds to the speed of the Italian battle line rather than to individual ship categories in isolation.",
+    "topics": [
+      {
+        "slug": "italian-navy",
+        "title": "Italian Navy"
+      },
+      {
+        "slug": "cruisers",
+        "title": "Cruisers"
+      },
+      {
+        "slug": "battleships",
+        "title": "Battleships"
+      },
+      {
+        "slug": "naval-force-structure",
+        "title": "Naval Force Structure"
+      },
+      {
+        "slug": "queen-elizabeth-class",
+        "title": "Queen Elizabeth Class"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "2:08:31",
+        "end": "2:09:47",
+        "note": "The answer suggests fast light cruisers and links the Italian battle line to British Queen Elizabeth modernization priorities."
+      }
+    ],
+    "end": "2:09:47",
+    "endSeconds": 7787,
+    "question": "How would four Francesco Caracciolo-class battleships affect Italian cruiser design?",
+    "answerShort": "Italy might place less emphasis on heavy cruisers and favor very fast light cruisers because the battle line already supplies heavy striking power.",
+    "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
+  },
+  {
+    "id": "italian-torpedoes-and-operating-environment",
+    "slug": "italian-torpedoes-and-operating-environment",
+    "title": "Why Italian torpedoes avoided some environmental failures",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "XfUMLROGG9A",
+    "videoSlug": "patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr",
+    "videoTitle": "Patreon Bonus: Battle Cruisers & Battleships are separate Categories in the Washington Naval Treaty",
+    "start": "2:13:02",
+    "startSeconds": 7982,
+    "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=7982s",
+    "summary": "Operating mainly in waters similar to the test environment reduced one source of torpedo failure, though Atlantic submarine operations still exposed problems.",
+    "body": "Weapons tested and tuned for Mediterranean conditions were less likely to encounter the large environmental mismatch that harmed some other navies' torpedoes. Italy also maintained international deployments and testing experience during the interwar years. That did not eliminate defects, especially when submarines operated in the colder and rougher North Atlantic. The exchange shows why weapon reliability must be judged against both engineering quality and the environment in which the weapon is used.",
+    "topics": [
+      {
+        "slug": "italian-navy",
+        "title": "Italian Navy"
+      },
+      {
+        "slug": "torpedoes",
+        "title": "Torpedoes"
+      },
+      {
+        "slug": "submarines",
+        "title": "Submarines"
+      },
+      {
+        "slug": "mediterranean",
+        "title": "Mediterranean"
+      },
+      {
+        "slug": "naval-weapons",
+        "title": "Naval Weapons"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "2:13:02",
+        "end": "2:13:50",
+        "note": "The answer credits familiar operating conditions while noting submarine torpedo problems in the North Atlantic."
+      }
+    ],
+    "end": "2:13:50",
+    "endSeconds": 8030,
+    "question": "Did Italian torpedoes have fewer wartime problems because the navy usually fought near its testing environment?",
+    "answerShort": "Yes, operating conditions helped, although Italian submarines still encountered torpedo problems in the North Atlantic.",
+    "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
+  },
+  {
+    "id": "upgrading-r-class-battleship-speed",
+    "slug": "upgrading-r-class-battleship-speed",
+    "title": "Why new boilers cannot turn the R class into 28-knot ships",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "XfUMLROGG9A",
+    "videoSlug": "patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr",
+    "videoTitle": "Patreon Bonus: Battle Cruisers & Battleships are separate Categories in the Washington Naval Treaty",
+    "start": "2:14:46",
+    "startSeconds": 8086,
+    "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=8086s",
+    "summary": "The R-class hull and machinery spaces make a fast-battle-line conversion far more invasive than a boiler replacement.",
+    "body": "The R class starts around 21 knots, so a 28-knot target demands roughly a one-third increase rather than the smaller gain contemplated for the Queen Elizabeth class. Its shorter, narrower machinery arrangement leaves less room for the additional power plant. Removing a turret to create boiler space would turn the work into a fundamental reconstruction. The better fleet choice is to retain the ships for second-line duties and spend modernization resources on hulls that can join the fast battle line.",
+    "topics": [
+      {
+        "slug": "revenge-class",
+        "title": "Revenge Class"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "naval-propulsion",
+        "title": "Naval Propulsion"
+      },
+      {
+        "slug": "battleship-modernization",
+        "title": "Battleship Modernization"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "2:14:46",
+        "end": "2:16:27",
+        "note": "The answer estimates about 25 knots and explains the machinery, hull, and turret-removal obstacles to reaching 28 knots."
+      }
+    ],
+    "end": "2:16:27",
+    "endSeconds": 8187,
+    "question": "How fast could an upgraded R-class battleship become with small-tube boilers?",
+    "answerShort": "Probably no more than about 25 knots, because reaching 28 knots would require major changes to machinery space, shafts, hull proportions, and possibly armament.",
+    "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
+  },
+  {
+    "id": "italian-gunnery-and-shell-quality-control",
+    "slug": "italian-gunnery-and-shell-quality-control",
+    "title": "Italian gunnery was undermined by shell quality, not aiming",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "XfUMLROGG9A",
+    "videoSlug": "patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr",
+    "videoTitle": "Patreon Bonus: Battle Cruisers & Battleships are separate Categories in the Washington Naval Treaty",
+    "start": "2:16:42",
+    "startSeconds": 8202,
+    "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=8202s",
+    "summary": "Italian fire-control solutions could be excellent, but inconsistent shells made rounds disperse away from the intended point of aim.",
+    "body": "Italian fire-control systems could acquire targets and generate accurate solutions at very long range. The failure came when ammunition varied enough that shells did not fly according to the calculated ballistic pattern. A longer-running 15-inch-gun programme based on the Caracciolos would create more production, testing, and service experience before the next battleship generation. That continuity might expose and reduce quality-control problems, although the transcript presents this as a possibility rather than a certainty.",
+    "topics": [
+      {
+        "slug": "italian-navy",
+        "title": "Italian Navy"
+      },
+      {
+        "slug": "naval-gunnery",
+        "title": "Naval Gunnery"
+      },
+      {
+        "slug": "ammunition",
+        "title": "Ammunition"
+      },
+      {
+        "slug": "quality-control",
+        "title": "Quality Control"
+      },
+      {
+        "slug": "francesco-caracciolo-class",
+        "title": "Francesco Caracciolo Class"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "2:16:42",
+        "end": "2:17:46",
+        "note": "The answer separates accurate targeting from shell-quality dispersion and considers how longer 15-inch production might improve control."
+      }
+    ],
+    "end": "2:17:46",
+    "endSeconds": 8266,
+    "question": "Were Italy's battleship gunnery problems caused by poor targeting?",
+    "answerShort": "No; the principal problem described here was inconsistent shell quality, which made accurately aimed rounds follow unpredictable trajectories.",
+    "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
+  },
+  {
     "id": "us-completes-colorado-and-lexington-programmes",
     "slug": "us-completes-colorado-and-lexington-programmes",
     "title": "America completes its Colorado and Lexington investments",
@@ -34720,7 +35930,7 @@
     "startSeconds": 8302,
     "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=8302s",
     "summary": "Because Congress has already funded them, the United States is likely to complete a fourth Colorado and five Lexington battlecruisers rather than start fresh programmes.",
-    "body": "The completed ships give the US Navy a powerful early 16-inch-gun force and a fast scouting arm designed to find targets for the battle line. One unfinished Lexington hull, USS United States, becomes the plausible carrier conversion under the alternate treaty. The trade-off is that America retains a powerful but slow standard battle fleet, creating political pressure for faster replacements in the next treaty era.",
+    "body": "The completed ships give the US Navy a powerful early 16-inch-gun force and a fast scouting arm designed to find targets for the battle line. Congress has already funded these hulls, so completion avoids the new appropriations battle that an original design would require. One unfinished Lexington hull, USS United States, becomes the plausible carrier conversion under the alternate treaty. The trade-off is that America retains a powerful but slow standard battle fleet, creating political pressure for faster replacements in the next treaty era.",
     "topics": [
       {
         "slug": "us-navy",
@@ -34767,7 +35977,7 @@
     "startSeconds": 9402,
     "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=9402s",
     "summary": "If capital-ship construction continues through the 1920s, a later treaty may regulate replacement and light carriers instead of imposing the historical naval holiday.",
-    "body": "America would seek faster replacements for its slow battle line, Britain would want to replace older R-class ships, and Italy would pursue its next generation. Without a cruiser race driven by a capital-ship holiday, cumulative cruiser limits may be less urgent. Dr. Clarke also sketches a possible light-carrier category, allowing purpose-built carriers larger than Hermes but below the fleet-carrier ceiling.",
+    "body": "America would seek faster replacements for its slow battle line, Britain would want to replace older R-class ships, and Italy would pursue its next generation. The treaty could regulate a known sequence of replacements rather than forbid construction altogether, preserving predictability while maintaining industrial capacity. Without a cruiser race driven by a capital-ship holiday, cumulative cruiser limits may be less urgent. Dr. Clarke also sketches a possible light-carrier category, allowing purpose-built carriers larger than Hermes but below the fleet-carrier ceiling.",
     "topics": [
       {
         "slug": "london-naval-treaty",
@@ -34814,7 +36024,7 @@
     "startSeconds": 9815,
     "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=9815s",
     "summary": "A stronger, faster Royal Navy makes Germany’s small surface raiders and later fast battleships far less useful as an offset strategy.",
-    "body": "In this scenario, 9.2-inch cruisers and numerous British fast capital ships make ships such as the Deutschlands and Scharnhorsts more vulnerable. Germany could concentrate on submarines, but that offers Britain a clearer escort problem and exposes Germany’s weak industrial foundation. The Treaty of Versailles remains in place, so Germany gains none of the construction opportunities enjoyed by the Washington signatories.",
+    "body": "In this scenario, 9.2-inch cruisers and numerous British fast capital ships make ships such as the Deutschlands and Scharnhorsts more vulnerable. Germany could concentrate on submarines, but that offers Britain a clearer escort problem and exposes Germany’s weak industrial foundation. Delaying large surface construction until Bismarck-like ships are possible sacrifices the experience that Scharnhorst historically supplied, while early submarine building risks exposing a Versailles violation. The Treaty of Versailles remains in place, so Germany gains none of the construction opportunities enjoyed by the Washington signatories.",
     "topics": [
       {
         "slug": "german-navy",
@@ -34861,7 +36071,7 @@
     "startSeconds": 10635,
     "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=10635s",
     "summary": "Higher carrier limits could produce earlier, more capable fleet carriers and link them closely to fast battlecruiser scouting forces.",
-    "body": "Britain could build carriers approaching later Implacable-scale capacity, while the United States could move from a USS United States conversion toward Yorktowns much closer to Essex size. Japan would face different choices over Amagi, Kaga, small carriers, and the resources available for capital ships. The shared pressure is speed: carrier groups must keep up with battlecruisers and contribute reconnaissance, spotting, and striking power.",
+    "body": "Britain could build carriers approaching later Implacable-scale capacity, while the United States could move from a USS United States conversion toward Yorktowns much closer to Essex size. A later 16,000-ton light-carrier category might also yield more capable descendants of Hermes, Ranger, or Wasp. Japan would face different choices over Amagi, Kaga, small carriers, and the resources available for capital ships. The shared pressure is speed: carrier groups must keep up with battlecruisers and contribute reconnaissance, spotting, and striking power.",
     "topics": [
       {
         "slug": "aircraft-carriers",
@@ -34908,7 +36118,7 @@
     "startSeconds": 11315,
     "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=11315s",
     "summary": "Giving Japan meaningful construction rights may reduce the insecurity that made the historical treaty order increasingly unstable.",
-    "body": "The proposed system still limits Japan relative to Britain and the United States, but it gives Tokyo visible gains, a continuing building programme, and a stake in enforcing the rules on others. Dr. Clarke treats security perceptions as strategic variables: a navy that feels less cornered may have less incentive to pursue a desperate all-or-nothing fleet. Japan might instead seek a balanced force, cruiser and torpedo advantages, or diplomatic leverage between Britain and America.",
+    "body": "The proposed system still limits Japan relative to Britain and the United States, but it gives Tokyo visible gains, a continuing building programme, and a stake in enforcing the rules on others. Dr. Clarke treats security perceptions as strategic variables: a navy that feels less cornered may have less incentive to pursue a desperate all-or-nothing fleet. The treaty restrains the larger Anglo-American fleets as well, making continued membership a source of security rather than only a humiliation. Japan might instead seek a balanced force, cruiser and torpedo advantages, or diplomatic leverage between Britain and America.",
     "topics": [
       {
         "slug": "imperial-japanese-navy",
@@ -34939,6 +36149,55 @@
     "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
   },
   {
+    "id": "larger-carriers-and-fleet-air-arm-control",
+    "slug": "larger-carriers-and-fleet-air-arm-control",
+    "title": "Why larger carriers do not immediately restore naval control of British aviation",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "XfUMLROGG9A",
+    "videoSlug": "patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr",
+    "videoTitle": "Patreon Bonus: Battle Cruisers & Battleships are separate Categories in the Washington Naval Treaty",
+    "start": "3:09:38",
+    "startSeconds": 11378,
+    "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=11378s",
+    "summary": "More important carriers strengthen the Royal Navy's case, but they do not undo the 1918 political decision that placed naval aviation under the RAF.",
+    "body": "The alternate treaty can make carriers more central to fleet operations, which gives the Admiralty stronger evidence for regaining control. It does not change the wartime political logic that combined the Royal Flying Corps and Royal Naval Air Service into the RAF. That earlier institutional choice remains outside the counterfactual's point of departure. The navy may campaign harder, but Dr. Clarke does not move the formal return appreciably earlier.",
+    "topics": [
+      {
+        "slug": "fleet-air-arm",
+        "title": "Fleet Air Arm"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "naval-aviation",
+        "title": "Naval Aviation"
+      },
+      {
+        "slug": "interservice-rivalry",
+        "title": "Interservice Rivalry"
+      },
+      {
+        "slug": "aircraft-carriers",
+        "title": "Aircraft Carriers"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "3:09:38",
+        "end": "3:10:17",
+        "note": "The answer separates the 1918 service decision from the later treaty and retains the 1937 Inskip timing."
+      }
+    ],
+    "end": "3:10:17",
+    "endSeconds": 11417,
+    "question": "Would larger and more numerous carriers return the Fleet Air Arm to Royal Navy control earlier?",
+    "answerShort": "Probably not; the 1918 decision arose before the treaty divergence, and the transfer back would likely still wait for the 1937 Inskip decision.",
+    "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
+  },
+  {
     "id": "taranto-and-the-alternate-second-world-war",
     "slug": "taranto-and-the-alternate-second-world-war",
     "title": "Taranto, Japan, and a radically different Second World War",
@@ -34951,7 +36210,7 @@
     "startSeconds": 11749,
     "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=11749s",
     "summary": "More and larger carriers could make Taranto far more destructive, while a Japan invested in the treaty system might pursue partnership with Britain rather than the Axis.",
-    "body": "The lecture imagines a much larger British carrier strike at Taranto, potentially reinforced by surviving carriers and even Japanese forces. That prospect threatens Italy’s modern battle line and could transform the Mediterranean balance early in the war. Dr. Clarke follows the diplomatic consequences outward: a Japanese decision to assist Britain against Germany and Italy would alter oil access, American calculations, the Pacific war, and even the post-war great-power order.",
+    "body": "The lecture imagines a much larger British carrier strike at Taranto, potentially reinforced by surviving carriers and even Japanese forces. A larger Illustrious, plus Glorious and Eagle, could produce several waves with many more torpedo and dive bombers than the historical raid. That prospect threatens Italy’s modern battle line and could transform the Mediterranean balance early in the war. Dr. Clarke follows the diplomatic consequences outward: a Japanese decision to assist Britain against Germany and Italy would alter oil access, American calculations, the Pacific war, and even the post-war great-power order.",
     "topics": [
       {
         "slug": "taranto",
@@ -34987,6 +36246,255 @@
     ],
     "end": "3:52:08",
     "endSeconds": 13928,
+    "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
+  },
+  {
+    "id": "japanese-torpedo-destroyers-in-a-balanced-fleet",
+    "slug": "japanese-torpedo-destroyers-in-a-balanced-fleet",
+    "title": "Japan may still pursue torpedo destroyers as an offset",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "XfUMLROGG9A",
+    "videoSlug": "patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr",
+    "videoTitle": "Patreon Bonus: Battle Cruisers & Battleships are separate Categories in the Washington Naval Treaty",
+    "start": "3:31:55",
+    "startSeconds": 12715,
+    "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=12715s",
+    "summary": "A more balanced Japanese battle fleet does not eliminate the appeal of long-range torpedoes and fast destroyers as an asymmetric advantage.",
+    "body": "Treaty satisfaction changes the fleet's balance, but it does not erase the 5:5:3 numerical disadvantage. Conventional 16-inch-gun capital ships leave room for a different asymmetric answer. Long-range torpedoes and specialized destroyers can threaten a stronger enemy without requiring parity in battleship tonnage. The exchange therefore treats Shimakaze-like development as plausible, though not inevitable.",
+    "topics": [
+      {
+        "slug": "imperial-japanese-navy",
+        "title": "Imperial Japanese Navy"
+      },
+      {
+        "slug": "destroyers",
+        "title": "Destroyers"
+      },
+      {
+        "slug": "torpedoes",
+        "title": "Torpedoes"
+      },
+      {
+        "slug": "naval-strategy",
+        "title": "Naval Strategy"
+      },
+      {
+        "slug": "offset-strategy",
+        "title": "Offset Strategy"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "3:31:55",
+        "end": "3:32:16",
+        "note": "The answer presents torpedo destroyers as a possible Japanese offset if Yamato is not the fleet's chosen answer."
+      }
+    ],
+    "end": "3:32:16",
+    "endSeconds": 12736,
+    "question": "Would Japan still build torpedo-focused destroyers such as Shimakaze?",
+    "answerShort": "Possibly; if Japan no longer relies on Yamato-type battleships as its main offset, it may continue seeking advantage through powerful torpedoes and fast destroyers.",
+    "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
+  },
+  {
+    "id": "american-entry-after-japan-joins-britain",
+    "slug": "american-entry-after-japan-joins-britain",
+    "title": "Why an Anglo-Japanese alliance could draw America into the war",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "XfUMLROGG9A",
+    "videoSlug": "patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr",
+    "videoTitle": "Patreon Bonus: Battle Cruisers & Battleships are separate Categories in the Washington Naval Treaty",
+    "start": "3:35:15",
+    "startSeconds": 12915,
+    "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=12915s",
+    "summary": "American leaders could enter the European war to avoid facing a victorious Anglo-Japanese bloc from outside the post-war settlement.",
+    "body": "An Anglo-Japanese victory would create military ties, shared prestige, and a powerful imperial partnership. Remaining neutral would leave the United States with little influence over that alliance or the institutions built after the war. Dr. Clarke therefore expects American entry soon after Japan's declaration, perhaps once diplomatic intercepts reveal Tokyo's move. Participation would let Washington shape the coalition and prevent Britain and Japan from becoming the uncontested architects of victory.",
+    "topics": [
+      {
+        "slug": "us-navy",
+        "title": "US Navy"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "imperial-japanese-navy",
+        "title": "Imperial Japanese Navy"
+      },
+      {
+        "slug": "second-world-war",
+        "title": "Second World War"
+      },
+      {
+        "slug": "naval-diplomacy",
+        "title": "Naval Diplomacy"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "3:35:15",
+        "end": "3:38:09",
+        "note": "The answer argues that America joins to avoid exclusion from an Anglo-Japanese victory and post-war order."
+      }
+    ],
+    "end": "3:38:09",
+    "endSeconds": 13089,
+    "question": "If Japan joined Britain against Germany and Italy, would the United States still enter the war?",
+    "answerShort": "Probably yes; Washington could not comfortably allow Britain and Japan to win together and dominate the post-war order without American participation.",
+    "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
+  },
+  {
+    "id": "japan-china-war-under-anglo-japanese-alignment",
+    "slug": "japan-china-war-under-anglo-japanese-alignment",
+    "title": "China remains the hardest contradiction in an Anglo-Japanese alliance",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "XfUMLROGG9A",
+    "videoSlug": "patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr",
+    "videoTitle": "Patreon Bonus: Battle Cruisers & Battleships are separate Categories in the Washington Naval Treaty",
+    "start": "3:40:23",
+    "startSeconds": 13223,
+    "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=13223s",
+    "summary": "Japan's existing war in China may continue even if Tokyo joins Britain, forcing London to choose between Chinese support and immediate coalition needs.",
+    "body": "This counterfactual does not erase the fighting that began before the European war. Japanese deployments to the Mediterranean or Europe could limit the resources available for a larger offensive in China. British aid routes also ran through imperial territory and could be curtailed if Japan became a crucial ally. Churchill would face a severe strategic tradeoff between condemning Japanese conduct and accepting forces that materially improve Britain's survival prospects.",
+    "topics": [
+      {
+        "slug": "second-sino-japanese-war",
+        "title": "Second Sino Japanese War"
+      },
+      {
+        "slug": "imperial-japanese-navy",
+        "title": "Imperial Japanese Navy"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "naval-diplomacy",
+        "title": "Naval Diplomacy"
+      },
+      {
+        "slug": "second-world-war",
+        "title": "Second World War"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "3:40:23",
+        "end": "3:41:40",
+        "note": "The answer notes the war is already underway and weighs Japanese deployment limits against British coalition priorities and aid to China."
+      }
+    ],
+    "end": "3:41:40",
+    "endSeconds": 13300,
+    "question": "Would Japan still invade China if it aligned with Britain against Germany and Italy?",
+    "answerShort": "The Sino-Japanese War was already underway, so the key uncertainty is whether Japan widens it and whether Britain continues supporting China after accepting Japanese help.",
+    "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
+  },
+  {
+    "id": "cold-war-after-anglo-japanese-victory",
+    "slug": "cold-war-after-anglo-japanese-victory",
+    "title": "A different post-war balance after Anglo-Japanese victory",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "XfUMLROGG9A",
+    "videoSlug": "patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr",
+    "videoTitle": "Patreon Bonus: Battle Cruisers & Battleships are separate Categories in the Washington Naval Treaty",
+    "start": "3:43:19",
+    "startSeconds": 13399,
+    "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=13399s",
+    "summary": "The alternate coalition could place Britain, Japan, America, and the Soviet Union at the center of the post-war order, with China and France in less certain positions.",
+    "body": "Japan would remain a hybrid of parliamentary forms and military rule rather than a liberal democracy. Yet anti-communist strategy could make it useful to Britain and the United States against Moscow and a potentially communist China. The permanent membership of the post-war security system might therefore privilege Japan while diminishing China's role. Territorial settlements in northeast Asia and access to ports would become central sources of tension in the new order.",
+    "topics": [
+      {
+        "slug": "cold-war",
+        "title": "Cold War"
+      },
+      {
+        "slug": "imperial-japanese-navy",
+        "title": "Imperial Japanese Navy"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "us-navy",
+        "title": "US Navy"
+      },
+      {
+        "slug": "soviet-union",
+        "title": "Soviet Union"
+      },
+      {
+        "slug": "naval-diplomacy",
+        "title": "Naval Diplomacy"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "3:43:19",
+        "end": "3:44:42",
+        "note": "The answer sketches a post-war alignment among Britain, Japan, America, and the Soviet Union and questions China's place."
+      }
+    ],
+    "end": "3:44:42",
+    "endSeconds": 13482,
+    "question": "What might the Cold War look like after a powerful British-Japanese alliance wins the Second World War?",
+    "answerShort": "Much depends on the war's outcome, but Japan could become a more acceptable non-communist partner than the Soviet Union and join Britain and America in a radically different great-power settlement.",
+    "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
+  },
+  {
+    "id": "german-norway-campaign-without-surface-fleet",
+    "slug": "german-norway-campaign-without-surface-fleet",
+    "title": "Why a weaker German surface fleet jeopardizes the Norway campaign",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "XfUMLROGG9A",
+    "videoSlug": "patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr",
+    "videoTitle": "Patreon Bonus: Battle Cruisers & Battleships are separate Categories in the Washington Naval Treaty",
+    "start": "3:47:37",
+    "startSeconds": 13657,
+    "youtubeUrl": "https://www.youtube.com/watch?v=XfUMLROGG9A&t=13657s",
+    "summary": "Without a credible surface fleet or political cover for submarine expansion, Germany may be unable to execute the historical Norwegian invasion.",
+    "body": "Continuous British construction leaves the Royal Navy less willing to compromise through an Anglo-German Naval Agreement. German submarine building would then stand out as a direct Versailles violation rather than an activity partially regularized by bilateral agreement. A diminished surface fleet removes much of the transport, escort, and covering power needed for the Norwegian campaign. The strategic consequences extend beyond Norway because early exposure of German rearmament could provoke a stronger Anglo-French response before the wider war.",
+    "topics": [
+      {
+        "slug": "norwegian-campaign",
+        "title": "Norwegian Campaign"
+      },
+      {
+        "slug": "kriegsmarine",
+        "title": "Kriegsmarine"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "treaty-of-versailles",
+        "title": "Treaty Of Versailles"
+      },
+      {
+        "slug": "anglo-german-naval-agreement",
+        "title": "Anglo German Naval Agreement"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "3:47:37",
+        "end": "3:52:08",
+        "note": "The answer connects Germany's weaker fleet to Norway, Versailles enforcement, the Anglo-German Naval Agreement, and British readiness."
+      }
+    ],
+    "end": "3:52:08",
+    "endSeconds": 13928,
+    "question": "Could Germany still take Norway without a strong navy in this alternate timeline?",
+    "answerShort": "It becomes much less likely because Germany lacks the ships, experience, and freedom to build the naval force that supported the historical operation.",
     "sourcePath": "src/transcripts/txt/2023-10-26_T18-02-23_patreon-bonus-battle-cruisers-and-battleships-are-separate-categories-in-the-washington-naval-tr_XfUMLROGG9A.txt"
   },
   {
