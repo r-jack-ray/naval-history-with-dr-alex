@@ -794,6 +794,37 @@ h1 {
   text-transform: uppercase;
 }
 
+.topic-segment-list a {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 7px;
+  padding-block: 12px;
+}
+
+.topic-segment-source {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: baseline;
+}
+
+.topic-segment-source strong {
+  font-size: 13px;
+}
+
+.topic-segment-source time {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.topic-segment-note {
+  display: grid;
+  grid-template-columns: 82px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: start;
+}
+
 .search-panel {
   display: grid;
   gap: 18px;
@@ -1348,6 +1379,14 @@ h1 {
 
   .segment-list small {
     grid-column: 2;
+  }
+
+  .topic-segment-list a {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .topic-segment-note {
+    grid-template-columns: 72px minmax(0, 1fr);
   }
 
   h1 {

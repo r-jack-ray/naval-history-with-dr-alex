@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import {
+  findVideoById,
   getTopicPaths,
   segmentsForTopic,
   videosForTopic,
@@ -14,6 +15,13 @@ export function getStaticPaths() {
 const { topic } = Astro.props as { topic: ArchiveTopic };
 const videos = videosForTopic(topic);
 const segments = segmentsForTopic(topic);
+const segmentEntries = segments.map((segment) => {
+  const video = findVideoById(segment.videoId);
+  if (video === undefined) {
+    throw new Error(`Topic segment ${segment.slug} references missing video ${segment.videoId}.`);
+  }
+  return { segment, video };
+});
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
@@ -41,14 +49,20 @@ const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${c
     <section class="content-grid">
       <article class="prose-panel">
         <h2>Related time notes</h2>
-        <ol class="segment-list">
+        <ol class="segment-list topic-segment-list">
           {
-            segments.map((segment) => (
+            segmentEntries.map(({ segment, video }) => (
               <li>
                 <a href={`${baseUrl}segments/${segment.slug}/`}>
-                  <span>{segment.start}</span>
-                  <strong>{segment.title}</strong>
-                  <small>{segment.kindLabel}</small>
+                  <div class="topic-segment-source">
+                    <strong>{segment.videoTitle}</strong>
+                    <time datetime={video.videoDateAt}>{video.videoDateLabel}</time>
+                  </div>
+                  <div class="topic-segment-note">
+                    <span>{segment.start}</span>
+                    <strong>{segment.title}</strong>
+                    <small>{segment.kindLabel}</small>
+                  </div>
                 </a>
               </li>
             ))
