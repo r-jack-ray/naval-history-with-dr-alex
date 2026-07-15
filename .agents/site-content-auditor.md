@@ -13,10 +13,11 @@ Treat the audit as repeatable, but track saturation per model and effort level. 
 
 ## Site Intent
 
-- Write for someone who wants to learn naval history or understand how navies work, not for another YouTube creator or maintainer.
-- Each segment should act as a pointer to a useful Dr. Clarke video moment: what the viewer will encounter, what naval subject it illuminates, and why it is worth opening.
+- Write for someone who wants to learn naval history, understand how navies work, or explore wider history that materially connects to naval history, not for another YouTube creator or maintainer.
+- Each segment should act as a pointer to a useful Dr. Clarke video moment: what the viewer will encounter, what naval or related historical subject it illuminates, how that subject connects to naval history when the connection is not obvious, and why it is worth opening.
+- Include general history when it materially contextualizes or intersects with naval history. Aircraft and aviation, land battles and campaigns, railways and trains, and land logistics are in scope when they affect maritime strategy, naval operations, sea power, fleets, ports, amphibious warfare, coastal defense, procurement, or naval institutions. Do not require every segment to center on ships, but do not include unrelated general history solely because it appears in the transcript.
 - Favor precise, separate segments when the transcript supports them, so search and topic pages can send readers to exact moments.
-- Keep search breadth in mind by naming ships, classes, navies, battles, weapons, policies, doctrine, logistics, acronyms, and common alternate phrasing when evidence supports it.
+- Keep search breadth in mind by naming ships, classes, navies, aircraft, armies, battles, campaigns, weapons, railways, ports, supply systems, policies, doctrine, logistics, acronyms, and common alternate phrasing when evidence supports it.
 - Let significant topic slugs arise from transcript-backed content rather than a fixed taxonomy or tag quota. Preserve useful specificity in the per-video shard and leave routine registry synchronization to the build script.
 
 ## Public Wording Rules
@@ -30,7 +31,7 @@ Treat the audit as repeatable, but track saturation per model and effort level. 
 ## Substance Rules
 
 - A good `body` usually has 4-10 compact sentences.
-- Name the subject directly: ship, navy, battle, class, policy, technical system, or strategic problem.
+- Name the subject directly: ship, navy, aircraft, army, battle, campaign, class, policy, transport or logistical system, technical system, or strategic problem.
 - Explain the takeaway and learning value, not just why the record exists.
 - For `qa`, make `answerShort` the direct answer and use `body` for reasoning, limits, and context.
 - If the transcript evidence does not support a meatier note, inspect the cited time range before expanding. Do not pad with generic topic language.
@@ -41,7 +42,7 @@ Treat the audit as repeatable, but track saturation per model and effort level. 
 2. Check the worktree, preserve unrelated user changes, and scan only the selected shard for short bodies, scaffold wording, and public workflow terms.
 3. For each candidate, read its `summary`, `topics`, `evidence`, and cited transcript passage when needed.
 4. Edit only the selected `src/derived/video-segments/<manifest.fileStem>.json` shard during an ordinary content audit. Use the exact stored manifest stem for the selected transcript rather than deriving a new name from metadata. Preserve every other shard and all shared or generated outputs. Do not inspect or edit `topics.json`; the repository owner's later build synchronizes the registry.
-5. Add omitted segments and significant topic slugs revealed by the deeper read. Investigate registry records, aliases, synonyms, or near-duplicates only when the repository owner's later synchronization or validation reports a taxonomy problem, or when the user explicitly requests taxonomy work.
+5. Add omitted segments and significant topic slugs revealed by the deeper read. Preserve materially connected aviation, land warfare, transport, industrial, political, and logistical history rather than excluding it merely because its immediate subject is not a navy or ship. Investigate registry records, aliases, synonyms, or near-duplicates only when the repository owner's later synchronization or validation reports a taxonomy problem, or when the user explicitly requests taxonomy work.
 6. Record precise remaining ranges when more substance can still be extracted. On every content-exhaustion review, compare the full transcript against the current shard rather than limiting inspection to existing segment windows. Stop when that model-and-effort configuration produces churn without new transcript-backed substance, and preserve eligibility for a later review under a materially stronger configuration or improved method.
 7. After processing the selected shard, append exactly one result line at the physical bottom of `src/derived/site-content-processing.log` as required by the skill, even when the audit leaves the shard unchanged, finds it saturated, or confirms an intentionally empty shard. Omit the line only when no exact file was supplied or a blocker stopped the audit before the selected file could be processed. Do not run `generate:site-data`, `site:check`, `site:build`, Pagefind, `.codex/hooks/validate-content-pipeline.ps1`, `npm run check`, or any other repository-wide generation, test, build, audit, or validation command. Do not write `topics.json`, the generated archive, `site/dist/`, reports, schedules, package files, tooling, Astro source, or CSS. The repository owner performs shared integration checks before push.
 8. Read-only inspection and `git diff --check` scoped to the owned shard are allowed when useful. A lane-specific automation may additionally run only the private temporary-directory checks explicitly provided by that automation prompt.

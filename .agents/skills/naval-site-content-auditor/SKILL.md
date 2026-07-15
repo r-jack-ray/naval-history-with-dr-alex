@@ -1,6 +1,6 @@
 ---
 name: naval-site-content-auditor
-description: Audit and strengthen transcript-backed study-guide content in one selected per-video shard after transcript curation. Use when asked to add substance to thin segment notes, remove workflow/scaffold wording from public fields, align wording with learner intent, validate transcript-backed claims, improve segment density, or run a high-effort follow-up pass over a manifest-owned file under `src/derived/video-segments/`.
+description: Audit and strengthen transcript-backed study-guide content about naval history and materially related general history in one selected per-video shard after transcript curation. Use when asked to add substance to thin segment notes, remove workflow/scaffold wording from public fields, align wording with learner intent, validate transcript-backed claims, improve segment density, cover related subjects such as aircraft, land battles, railways, and land logistics, or run a high-effort follow-up pass over a manifest-owned file under `src/derived/video-segments/`.
 ---
 
 # Naval Site Content Auditor
@@ -13,9 +13,10 @@ This audit is repeatable. A prior first, second, third, or later pass is not evi
 
 ## Site Intent
 
-- Write for readers learning naval history and how navies work, not for creators, maintainers, or pipeline operators.
-- Treat every segment as a watch point into a Dr. Clarke video: preview what the reader will see or hear, identify the naval subject, and explain the learning payoff.
-- Keep the site highly searchable by using transcript-supported names for ships, classes, navies, battles, weapons, policies, doctrine, logistics, acronyms, and alternate wording.
+- Write for readers learning naval history, its wider historical context, and how navies work, not for creators, maintainers, or pipeline operators.
+- Treat every segment as a watch point into a Dr. Clarke video: preview what the reader will see or hear, identify the naval or related historical subject, explain its connection to naval history when that connection is not obvious, and state the learning payoff.
+- Include general history when it materially contextualizes or intersects with naval history. Aircraft and aviation, land battles and campaigns, railways and trains, and land logistics are in scope when they affect maritime strategy, naval operations, sea power, fleets, ports, amphibious warfare, coastal defense, procurement, or naval institutions. Do not require every segment to center on ships, but do not include unrelated general history solely because it appears in the transcript.
+- Keep the site highly searchable by using transcript-supported names for ships, classes, navies, aircraft, armies, battles, campaigns, weapons, railways, ports, supply systems, policies, doctrine, logistics, acronyms, and alternate wording.
 - Prefer many precise, substantive segments over one sparse video overview when transcript evidence supports more granular coverage.
 - Do not surface YouTube analytics, internal filenames, processing status, or raw inventory details in public pages unless the user asks for an admin/debug view.
 
@@ -55,7 +56,7 @@ This audit is repeatable. A prior first, second, third, or later pass is not evi
 
 ## Deepen Coverage And Topics
 
-1. Re-read the transcript across the audited scope, not only the existing segment windows. Add omitted chapters, notable points, and Q&A exchanges when substantive learning value is still missing from the pages.
+1. Re-read the transcript across the audited scope, not only the existing segment windows. Add omitted chapters, notable points, and Q&A exchanges when substantive learning value is still missing from the pages. Preserve materially connected aviation, land warfare, transport, industrial, political, and logistical history rather than excluding it merely because its immediate subject is not a navy or ship.
 2. Let significant topics arise from the strengthened content. Add transcript-backed topic slugs to the video and segment arrays without targeting a tag count or confining the audit to the existing taxonomy. Do not inspect or edit `topics.json` during an ordinary content audit; the repository owner's later build synchronizes it deterministically.
 3. Keep video-level topics as a concise summary subset of the richer segment-level topics. Investigate registry records, aliases, synonyms, or near-duplicates only when the repository owner's later synchronization or validation reports a taxonomy problem, or when the user explicitly requests taxonomy work.
 4. Treat the audit as iterative rather than terminal. On each content-exhaustion review, independently compare the full transcript against the current shard instead of reviewing only previously selected windows. Leave precise follow-up targets for thin or under-extracted ranges. Stop repeating the same model and effort when a pass produces churn without new transcript-backed substance, but keep the transcript eligible for a future review under a materially stronger configuration or improved method.

@@ -1,8 +1,22 @@
 {
   "schemaVersion": 1,
   "videoId": "5BkzxMqCals",
-  "topics": ["flight-deck-cruisers", "aircraft-carriers", "washington-naval-treaty", "united-states-navy", "imperial-japanese-navy", "ryujo"],
+  "topics": ["flight-deck-cruisers", "aircraft-carriers", "washington-naval-treaty", "united-states-navy", "imperial-japanese-navy", "ryujo", "naval-procurement", "naval-doctrine"],
   "segments": [
+    {
+      "id": "primary-sources-and-research-boundaries",
+      "videoId": "5BkzxMqCals",
+      "slug": "primary-sources-and-research-boundaries",
+      "title": "Primary sources set the limits of responsible naval history",
+      "kind": "notable_point",
+      "start": "7:21",
+      "end": "12:07",
+      "topics": ["naval-historiography", "historical-method", "primary-sources", "naval-archives", "research-methods"],
+      "summary": "Dr. Clarke explains why inaccessible Canadian and Australian archives led him to narrow a book's coverage rather than silently recycle another historian's conclusions.",
+      "body": "The opening discussion offers a practical lesson in naval-historical method. COVID-era travel restrictions prevented planned work in Canadian and Australian archives, so Dr. Clarke limited the depth of sections he could not support with his own primary research. He distinguishes pointing readers toward another scholar's book from rewriting that scholar's findings as if they were independently established. The passage is useful for understanding why responsible histories sometimes leave visible gaps and why repeated archival visits matter even when a project already has extensive secondary literature.",
+      "sourcePath": "src/transcripts/txt/2024-01-10_T20-00-02_conception-of-admiral-moffett-s-flight-deck-cruisers-and-the-ijn-s-construction-of-ryujo_5BkzxMqCals.txt",
+      "evidence": [{"start": "7:21", "end": "12:07", "note": "Dr. Clarke explains how archive access shaped the book's scope and why he would not reproduce another author's research as his own."}]
+    },
     {
       "id": "treaty-loophole-for-small-carriers",
       "videoId": "5BkzxMqCals",
@@ -13,7 +27,7 @@
       "end": "15:13",
       "topics": ["washington-naval-treaty", "aircraft-carriers", "capital-ships", "standard-displacement", "naval-arms-control"],
       "summary": "Treaty definitions explain why sub-10,000-ton carriers promised aviation capacity outside national carrier tonnage limits.",
-      "body": "The treaty counted aircraft carriers and capital ships above 10,000 tons while also defining capital ships by gun caliber. That wording encouraged navies to explore small aviation ships outside cumulative carrier limits, although fitting useful aircraft facilities within the ceiling created severe compromises.",
+      "body": "The Washington Naval Treaty made 10,000 tons a crucial dividing line for aviation experiments. Ships above that displacement entered the aircraft-carrier or capital-ship system, while the capital-ship definition also caught any vessel armed with guns larger than eight inches. A carrier below the displacement threshold did not consume a signatory's cumulative carrier allowance, creating an apparent route to additional flight decks. The attraction was therefore not simply compact design: it was a way to gain aviation capacity outside the tonnage account, provided designers could fit a useful air group, stability, endurance, and protection into the small hull.",
       "sourcePath": "src/transcripts/txt/2024-01-10_T20-00-02_conception-of-admiral-moffett-s-flight-deck-cruisers-and-the-ijn-s-construction-of-ryujo_5BkzxMqCals.txt",
       "evidence": [{"start": "12:16", "end": "15:13", "note": "The lecture explains the treaty definitions and attraction of ships below 10,000 tons."}]
     },
@@ -27,9 +41,23 @@
       "end": "18:27",
       "topics": ["royal-navy", "aircraft-carriers", "ark-royal", "courageous-class", "carrier-conversions"],
       "summary": "Royal Navy experience favored medium-sized carriers numerous enough for global commitments over weak small carriers or a few very large ships.",
-      "body": "The Royal Navy had extensive early carrier experience and found very small carriers of limited use. A few 27,000-ton ships could offer stronger air groups and protection, but too few hulls would cover worldwide commitments; Courageous and Glorious also showed how inherited hulls constrained efficient carrier design.",
+      "body": "The Royal Navy entered the treaty era with more practical carrier experience than its rivals and had already found very small carriers of limited use. Its preferred solution lay between the smallest treaty-avoidance designs and the largest ships permitted under the carrier rules. A 27,000-ton design could combine Ark Royal's strike capacity with armoured-carrier protection, but five such hulls could not maintain Britain's worldwide presence. Courageous and Glorious also showed that a conversion inherits hull proportions and internal arrangements that prevent the most efficient carrier layout. The resulting force-structure choice favored a larger number of purpose-built, medium-sized carriers rather than either weak miniature ships or a handful of exceptional giants.",
       "sourcePath": "src/transcripts/txt/2024-01-10_T20-00-02_conception-of-admiral-moffett-s-flight-deck-cruisers-and-the-ijn-s-construction-of-ryujo_5BkzxMqCals.txt",
       "evidence": [{"start": "15:14", "end": "18:27", "note": "Dr. Clarke contrasts carrier size, hull numbers, global presence, and conversion limits."}]
+    },
+    {
+      "id": "treaty-cruiser-ceiling-and-jutland",
+      "videoId": "5BkzxMqCals",
+      "slug": "treaty-cruiser-ceiling-and-jutland",
+      "title": "Why 10,000 tons also became the cruiser ceiling",
+      "kind": "notable_point",
+      "start": "16:31",
+      "end": "17:15",
+      "topics": ["washington-naval-treaty", "cruiser-design", "battle-of-jutland", "royal-navy", "united-states-navy", "imperial-japanese-navy"],
+      "summary": "The cruiser limit reflected fears that rivals might build powerful ships capable of supporting the battle line, although Jutland had made Britain wary of second-line ships in that role.",
+      "body": "Dr. Clarke connects the familiar 10,000-ton cruiser ceiling to competing views of what such ships might do in a fleet action. American and Japanese planners feared that the other side could use the allowance to produce cruisers strong enough to support the battle line. The Royal Navy approached that prospect with less enthusiasm after seeing what happened to second-line ships at Jutland. This helps explain why the same displacement figure could simultaneously restrain cruiser competition and invite experiments with carriers designed to fall just below it.",
+      "sourcePath": "src/transcripts/txt/2024-01-10_T20-00-02_conception-of-admiral-moffett-s-flight-deck-cruisers-and-the-ijn-s-construction-of-ryujo_5BkzxMqCals.txt",
+      "evidence": [{"start": "16:31", "end": "17:15", "note": "The lecture links the 10,000-ton ceiling to American and Japanese concerns about battle-line cruisers and the Royal Navy's Jutland experience."}]
     },
     {
       "id": "american-hybrid-role-conflict",
@@ -41,9 +69,23 @@
       "end": "22:45",
       "topics": ["united-states-navy", "imperial-japanese-navy", "flight-deck-cruisers", "hybrid-warships", "carrier-task-forces", "light-cruisers"],
       "summary": "American studies mixed gun-cruiser and carrier requirements even as exercises showed that carriers worked best as protected aviation centers.",
-      "body": "A carrier needed freedom to maneuver around its air group, while a cruiser was expected to scout, escort, or fight. Royal Navy exercises commonly paired carriers with light cruisers and multiple destroyers, and Japanese fast battleship modernization likewise supported carrier formations rather than turning the aviation ship itself into a gun-line combatant.",
+      "body": "A carrier and a cruiser imposed fundamentally different priorities on their commanding officers. The carrier needed freedom to turn into the wind, preserve its flight deck, and organize operations around its air group, while the cruiser might be ordered to scout, screen, or fight other surface ships. Combining those missions meant that gun action could interrupt flying just when aviation was most valuable, while flight operations could pull the cruiser out of formation. British practice instead assigned light cruisers and destroyers to protect carriers, and Japanese modernization of the Kongō class similarly supported fast carrier formations. Those examples show that navies were already moving toward task groups in which specialized ships cooperated rather than forcing the aviation ship to fight as its own gun escort.",
       "sourcePath": "src/transcripts/txt/2024-01-10_T20-00-02_conception-of-admiral-moffett-s-flight-deck-cruisers-and-the-ijn-s-construction-of-ryujo_5BkzxMqCals.txt",
       "evidence": [{"start": "18:30", "end": "22:45", "note": "The transcript contrasts hybrid requirements with established carrier escort and task-group practice."}]
+    },
+    {
+      "id": "royal-navy-carrier-escort-doctrine",
+      "videoId": "5BkzxMqCals",
+      "slug": "royal-navy-carrier-escort-doctrine",
+      "title": "Royal Navy exercises defined a carrier's escort",
+      "kind": "notable_point",
+      "start": "21:13",
+      "end": "22:03",
+      "topics": ["royal-navy", "carrier-task-forces", "carrier-doctrine", "light-cruisers", "destroyers", "hms-glorious"],
+      "summary": "Exercises normally placed at least a light cruiser and four destroyers around each carrier, making Glorious's two-destroyer escort an exception to established practice.",
+      "body": "Royal Navy exercises treated the carrier as the center of a protected formation rather than a self-escorting hybrid. Even in peacetime movement, a carrier commonly had four destroyers, while wartime doctrine called for at least those destroyers plus a light cruiser. Multicarrier exercises scaled the pattern into groups with several cruisers and a larger destroyer screen. Dr. Clarke highlights HMS Glorious because her loss while escorted by only two destroyers departed from the navy's own practiced standard. The passage gives a concrete measure of interwar carrier doctrine and explains why a flight-deck cruiser was solving a problem that escort formations already addressed more coherently.",
+      "sourcePath": "src/transcripts/txt/2024-01-10_T20-00-02_conception-of-admiral-moffett-s-flight-deck-cruisers-and-the-ijn-s-construction-of-ryujo_5BkzxMqCals.txt",
+      "evidence": [{"start": "21:13", "end": "22:03", "note": "Dr. Clarke describes the destroyer and light-cruiser screens used in Royal Navy carrier exercises and contrasts them with Glorious's final escort."}]
     },
     {
       "id": "colletts-flying-deck-cruiser-case",
@@ -55,7 +97,7 @@
       "end": "26:16",
       "topics": ["flight-deck-cruisers", "naval-scouting", "united-states-navy", "cruiser-divisions", "carrier-air-groups", "air-superiority"],
       "summary": "A 1934 proposal placed a flying-deck cruiser in each heavy-cruiser division to sustain scouting while preserving fleet carriers for air combat and strike missions.",
-      "body": "Lieutenant John Collett argued that a flight deck would let the van continuously launch and recover scouts without slowing to retrieve floatplanes. Moving scouting squadrons off fleet carriers would allow those protected ships to carry more fighters, torpedo aircraft, and bombers for the decisive engagement.",
+      "body": "Lieutenant John Collett's 1934 Proceedings proposal assigned one flying-deck cruiser as the fourth ship in every heavy-cruiser division. Unlike floatplane cruisers, the division could launch and recover scouts continuously without slowing in rough weather or exposing aircraft on catapults during a surprise attack. Its position in the van would place reconnaissance aircraft closer to the enemy while allowing fleet carriers to remain protected nearer the center or rear. Removing scouting squadrons from those carriers would free space for fighters, torpedo aircraft, and bombers intended to win air control and strike the opposing fleet. The proposal therefore addressed a real conflict between forward reconnaissance and conserving the fleet carrier's offensive strength, even though its solution created new design and tactical problems.",
       "sourcePath": "src/transcripts/txt/2024-01-10_T20-00-02_conception-of-admiral-moffett-s-flight-deck-cruisers-and-the-ijn-s-construction-of-ryujo_5BkzxMqCals.txt",
       "evidence": [{"start": "22:45", "end": "26:16", "note": "Dr. Clarke reads and explains Collett's 1934 Proceedings argument."}]
     },
@@ -66,12 +108,26 @@
       "title": "Why the hybrid inherited both ships' weaknesses",
       "kind": "notable_point",
       "start": "26:26",
-      "end": "30:29",
+      "end": "29:01",
       "topics": ["flight-deck-cruisers", "hybrid-warships", "naval-architecture", "flight-operations", "cruiser-warfare", "command-and-control"],
       "summary": "Large aviation structures, limited fighter capacity, gun-line exposure, and incompatible maneuvering requirements undermined the flight-deck cruiser.",
-      "body": "A hangar and flight deck added weight if armored and vulnerability if left unarmored, while the small air group could not sustain a fleet carrier's defensive and offensive mix. A cruiser division maneuvering in battle also could not continually turn into the wind, and reconnaissance reports routed through separate command chains could delay carrier strikes.",
+      "body": "The large hangar and flight deck imposed a penalty whether designers armoured them or not. Protection added substantial weight high in the ship, while an unarmoured aviation box created a large vulnerable target directly above a cruiser expected to enter surface combat. The limited air group could specialize in scouting but could not sustain the fighter cover, reconnaissance, and strike mix of a fleet carrier. Separating the scouts from the striking carrier also sent reports through several command levels, where delay or small transmission errors could distort the eventual attack order. Finally, a cruiser division fighting in line could not repeatedly turn into the wind without disrupting the formation, so the ship's gun and aviation missions competed at the moment of contact.",
       "sourcePath": "src/transcripts/txt/2024-01-10_T20-00-02_conception-of-admiral-moffett-s-flight-deck-cruisers-and-the-ijn-s-construction-of-ryujo_5BkzxMqCals.txt",
-      "evidence": [{"start": "26:26", "end": "30:29", "note": "The lecture critiques protection, air-group size, battle-line exposure, maneuvering, and communications."}]
+      "evidence": [{"start": "26:26", "end": "29:01", "note": "The lecture critiques protection, air-group size, battle-line exposure, and communications between scouts and striking carriers."}]
+    },
+    {
+      "id": "exercise-evidence-against-the-hybrid",
+      "videoId": "5BkzxMqCals",
+      "slug": "exercise-evidence-against-the-hybrid",
+      "title": "Fleet exercises had already exposed the hybrid's problem",
+      "kind": "notable_point",
+      "start": "29:02",
+      "end": "31:02",
+      "topics": ["fleet-exercises", "united-states-navy", "royal-navy", "imperial-japanese-navy", "flight-deck-cruisers", "lexington-class"],
+      "summary": "American, British, and Japanese exercise experience showed why a scout carrier placed in the cruiser line would inherit carrier vulnerabilities without enough aircraft to gain carrier strengths.",
+      "body": "Dr. Clarke argues that rejecting the hybrid does not require imposing late-war hindsight on interwar planners. American, British, and Japanese exercises had already generated relevant evidence, and observers circulated between at least some of those events. A flying-deck cruiser in the van would expose a carrier-like hangar while lacking enough aircraft to defend itself and scout continuously. Its cruiser division also could not maneuver for gun combat and simultaneously turn for launch and recovery. The reconnaissance concept had deeper roots in Lexington and Saratoga, whose battlecruiser hulls had originally been intended for scouting and raiding, but transferring that role to aviation did not require preserving a cruiser battle-line mission in the same ship.",
+      "sourcePath": "src/transcripts/txt/2024-01-10_T20-00-02_conception-of-admiral-moffett-s-flight-deck-cruisers-and-the-ijn-s-construction-of-ryujo_5BkzxMqCals.txt",
+      "evidence": [{"start": "29:02", "end": "31:02", "note": "The transcript cites multinational exercise experience, maneuvering conflicts, and the Lexington-class reconnaissance lineage."}]
     },
     {
       "id": "a-more-viable-forward-aviation-ship",
@@ -83,7 +139,7 @@
       "end": "34:51",
       "topics": ["flight-deck-cruisers", "light-aircraft-carriers", "dual-purpose-guns", "naval-scouting", "admiral-william-moffett", "london-naval-treaty"],
       "summary": "A full-deck scout carrier with dual-purpose guns might have worked if designers abandoned cruiser combat power and acted before cruiser tonnage limits closed the opportunity.",
-      "body": "Dr. Clarke suggests treating the vessel as a fifth aviation-support ship rather than the fourth gun cruiser in a division. Its best chance came under the Washington system in the 1920s; once later treaty limits made every cruiser ton count, a conventional cruiser offered more reliable value than a weak hybrid.",
+      "body": "Dr. Clarke reconstructs a more credible version by treating the ship as a fifth aviation-support vessel rather than the fourth gun cruiser in a division. A full-length deck and five-inch dual-purpose battery would sacrifice surface-combat ambition to concentrate on scouting and aircraft handling. The arrangement resembles assigning antisubmarine work to destroyers instead of burdening every cruiser with the same equipment: specialization lets each hull support the formation more efficiently. This option had its best chance during the Washington system, when ships under 10,000 tons did not consume a cumulative cruiser allowance. Once later treaties limited total cruiser tonnage, planners had to choose between a weak hybrid and a capable conventional cruiser, making the latter a much safer investment.",
       "sourcePath": "src/transcripts/txt/2024-01-10_T20-00-02_conception-of-admiral-moffett-s-flight-deck-cruisers-and-the-ijn-s-construction-of-ryujo_5BkzxMqCals.txt",
       "evidence": [{"start": "31:12", "end": "34:51", "note": "The transcript proposes a less gun-heavy aviation ship and explains the closing treaty window."}]
     },
@@ -97,7 +153,7 @@
       "end": "36:35",
       "topics": ["interwar-period", "naval-aviation", "military-procurement", "technology-development", "force-planning"],
       "summary": "Interwar planners could see aviation improving but could not safely assume its wartime trajectory or procure every experimental boundary as a fleet standard.",
-      "body": "Dr. Clarke cautions against projecting late-war aircraft performance backward onto 1920s decisions. Armed forces may experiment aggressively while procuring conservatively because an apparent technological trend can flatten or reverse, leaving premature investment to weaken current defense.",
+      "body": "Dr. Clarke cautions against projecting late-war aircraft performance backward onto decisions made in the 1920s. Planners could see aviation improving, but they did not know whether the trend would continue steeply, level off, or be overtaken by another technology. Buying an entire force around the most optimistic curve risked weakening immediate defense if the expected breakthrough failed to arrive. This is why armed forces can push experimental boundaries while remaining conservative about large procurement commitments. The distinction helps explain continued carrier experimentation without assuming that every navy should already have organized itself around the capabilities visible in 1944 or 1945.",
       "sourcePath": "src/transcripts/txt/2024-01-10_T20-00-02_conception-of-admiral-moffett-s-flight-deck-cruisers-and-the-ijn-s-construction-of-ryujo_5BkzxMqCals.txt",
       "evidence": [{"start": "34:55", "end": "36:35", "note": "The transcript distinguishes experimentation from procurement under technological uncertainty."}]
     },
@@ -111,7 +167,7 @@
       "end": "39:09",
       "topics": ["ryujo", "imperial-japanese-navy", "washington-naval-treaty", "carrier-design", "ship-stability", "topweight", "warship-reconstruction"],
       "summary": "Japan built Ryūjō as a fast, long-ranged light carrier, but the effort to fit 48 aircraft into a treaty-light hull produced serious stability problems.",
-      "body": "Ryūjō embodied the direct carrier solution that American studies complicated with surface armament. Her reconstruction added roughly 2,600 tons because the top-heavy ship needed greater stability for flight operations, showing why a genuinely sub-10,000-ton carrier would require a much smaller air group.",
+      "body": "Japan faced the sharpest pressure from the treaty ratios and therefore made the most determined effort to exploit the small-carrier opening. Ryūjō pursued the direct solution: a fast, long-ranged carrier with dual-purpose guns and a nominal capacity of 48 aircraft, without trying to serve as a gun cruiser. The concentration of hangars and flight facilities high in a light hull produced severe topweight and stability problems. Reconstruction between 1931 and 1936 added roughly 2,600 tons even as armament was reduced, because the ship needed weight and structural changes to operate aircraft safely. Her experience suggests that a genuinely sub-10,000-ton carrier was possible only with a far smaller air group than the design's advertised capacity.",
       "sourcePath": "src/transcripts/txt/2024-01-10_T20-00-02_conception-of-admiral-moffett-s-flight-deck-cruisers-and-the-ijn-s-construction-of-ryujo_5BkzxMqCals.txt",
       "evidence": [{"start": "36:36", "end": "39:09", "note": "The lecture introduces Ryūjō's characteristics and links reconstruction weight to stability problems."}]
     },
@@ -125,7 +181,7 @@
       "end": "43:46",
       "topics": ["ryujo", "a6m-zero", "b5n-kate", "carrier-air-groups", "sortie-generation", "pacific-war"],
       "summary": "By August 1942 Ryūjō carried 24 Zeros and nine B5N torpedo bombers, enough for patrol and a limited strike but below her advertised capacity.",
-      "body": "The 33-aircraft complement reflected larger modern aircraft and Japan's dwindling pool of available machines. Dr. Clarke distinguishes an operational air group from disassembled reserve aircraft, estimating that Ryūjō's practical capacity by 1942 was nearer thirty-six than the original forty-eight.",
+      "body": "By August 1942 Ryūjō carried 24 A6M Zeros and nine B5N torpedo bombers. That fighter-heavy force could maintain combat air patrol while retaining a limited strike element, but its 33 aircraft fell well below the original headline figure of 48. Larger modern aircraft and Japan's shrinking pool of available machines both reduced what the ship could actually deploy. Dr. Clarke also separates the flyable air group from disassembled or crated reserve aircraft carried as replacements. On that basis he estimates a practical 1942 capacity nearer 36 aircraft, showing why nominal carrier totals can exaggerate immediate sortie-generating power.",
       "sourcePath": "src/transcripts/txt/2024-01-10_T20-00-02_conception-of-admiral-moffett-s-flight-deck-cruisers-and-the-ijn-s-construction-of-ryujo_5BkzxMqCals.txt",
       "evidence": [{"start": "39:10", "end": "43:46", "note": "The transcript analyzes the 1942 complement and practical versus nominal aircraft capacity."}]
     },
@@ -139,7 +195,7 @@
       "end": "49:41",
       "topics": ["ryujo", "battle-of-the-eastern-solomons", "guadalcanal-campaign", "henderson-field", "uss-saratoga", "uss-enterprise", "sbd-dauntless", "tbf-avenger"],
       "summary": "After Ryūjō's Henderson Field strike suffered losses, Enterprise scouts found her and Saratoga's larger air group delivered fatal bomb and torpedo hits.",
-      "body": "Ryūjō's detached force launched a limited strike that American fighters disrupted, further reducing an already modest air group. Saratoga then sent 31 Dauntlesses and eight Avengers; three bomb hits and a torpedo hit disabled the carrier, and aircraft returning after she capsized had nowhere to land.",
+      "body": "Ryūjō and the reconnaissance cruiser Tone, escorted by only two destroyers, were detached to support the Guadalcanal troop movement and attack Henderson Field if no American carrier appeared. Two waves totaling six B5Ns and 15 Zeros encountered Marine and Army fighters, losing enough aircraft to leave the carrier with very little strike power. Enterprise search aircraft then located the force, while the Japanese did not find the American carriers in return. Saratoga launched 31 SBD Dauntlesses and eight TBF Avengers, whose three bomb hits and one torpedo hit stopped Ryūjō and led to her abandonment. Fourteen aircraft returned after the carrier had sunk and were forced to ditch, with only seven pilots rescued. The episode demonstrates how a small air group could be depleted before the carrier met the larger strike force it was least equipped to resist.",
       "sourcePath": "src/transcripts/txt/2024-01-10_T20-00-02_conception-of-admiral-moffett-s-flight-deck-cruisers-and-the-ijn-s-construction-of-ryujo_5BkzxMqCals.txt",
       "evidence": [{"start": "43:47", "end": "49:41", "note": "The transcript follows the Henderson Field mission, American search, Saratoga strike, and sinking."}]
     },
@@ -153,7 +209,7 @@
       "end": "50:58",
       "topics": ["light-aircraft-carriers", "flight-deck-cruisers", "ryujo", "force-structure", "warship-design"],
       "summary": "A small carrier tends to be used as a fleet carrier when no larger deck is available, while a gun-heavy hybrid risks being employed as a cruiser.",
-      "body": "Ryūjō's history shows how fleet demand can erase the limited role imagined for a compact ship. Dr. Clarke contrasts Japan's imperfect but completed carrier with the American pursuit of a multi-role ideal, arguing that excessive requirements prevented the US Navy from fielding a comparable treaty-loophole vessel.",
+      "body": "Ryūjō's operational history shows how wartime demand can erase the limited role imagined for a compact carrier. When larger decks are unavailable, commanders are likely to use the small ship as a fleet carrier despite its smaller air group, protection, and damage tolerance. A gun-heavy American hybrid faced the opposite danger: cruiser armament could pull it into surface action that disrupted or destroyed its aviation capability. Japan at least produced an imperfect carrier to exploit the treaty opening, after which the United States helped close the loophole. Dr. Clarke contrasts that pragmatic result with an American search for a 10,000-ton ship able to do every job, arguing that pursuit of the perfect hybrid prevented procurement of any useful small carrier at all.",
       "sourcePath": "src/transcripts/txt/2024-01-10_T20-00-02_conception-of-admiral-moffett-s-flight-deck-cruisers-and-the-ijn-s-construction-of-ryujo_5BkzxMqCals.txt",
       "evidence": [{"start": "49:42", "end": "50:58", "note": "The conclusion explains how operational demand pulls small carriers and hybrids into unsuitable roles."}]
     }
