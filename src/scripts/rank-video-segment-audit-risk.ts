@@ -53,6 +53,7 @@ async function main(): Promise<void> {
     .filter((name) => name.endsWith(".json") && name !== "topics.json")
     .sort();
   const rows: VideoSegmentAuditRiskRow[] = [];
+  let excludedSascShards = 0;
 
   for (const shardName of shardNames) {
     const fileStem = shardName.slice(0, -".json".length);
@@ -88,11 +89,15 @@ async function main(): Promise<void> {
     }
 
     const canonicalStem = manifestEntry?.fileStem ?? fileStem;
+    const videoTitle = manifestEntry?.videoTitle ?? fileStem;
+    if (isSascShard(fileStem, canonicalStem, videoTitle)) {
+      excludedSascShards += 1;
+      continue;
+    }
     const transcriptPath = manifestEntry?.paths?.txt
       ? path.join(options.transcriptRoot, path.basename(manifestEntry.paths.txt))
       : path.join(options.transcriptRoot, `${canonicalStem}.txt`);
     const transcriptBytes = await fileSizeOrUndefined(transcriptPath);
-    const videoTitle = manifestEntry?.videoTitle ?? fileStem;
     const state: ProcessingState = processingLog.latestByFileStem.get(canonicalStem)?.needsFurtherProcessing ?? "unknown";
     rows.push(analyzeVideoSegmentRisk({
       fileStem,
@@ -121,6 +126,7 @@ async function main(): Promise<void> {
   console.error([
     "Video segment audit risk ranking:",
     `shards=${rankedRows.length}`,
+    `excluded_sasc_shards=${excludedSascShards}`,
     `repair_required=${routeCounts.get("repair_required") ?? 0}`,
     `follow_up_required=${routeCounts.get("follow_up_required") ?? 0}`,
     `review_candidate=${routeCounts.get("review_candidate") ?? 0}`,
@@ -208,6 +214,10 @@ function isQaExpected(title: string, config: ProcessingConfig): boolean {
     && rule.followUpStage === "exhaustive-live-qa-review");
 }
 
+function isSascShard(...identifiers: string[]): boolean {
+  return identifiers.some((identifier) => /(^|[^a-z0-9])sasc([^a-z0-9]|$)/iu.test(identifier));
+}
+
 function normalizedTitle(value: string): string {
   return value.toLocaleLowerCase("en-US").replace(/[^a-z0-9]+/gu, " ").trim();
 }
@@ -237,6 +247,7 @@ function printHelp(): void {
 
 Ranks existing per-video shards for repair or follow-up audit using processing state,
 shard structure, timestamps, evidence metadata, and inexpensive warning heuristics.
+SASC school-function shards are excluded from the ranking.
 It does not read transcript text, measure semantic completeness, or return calibrated probabilities.
 Manifest transcripts with no shard remain in the existing unprocessed-file/backlog workflow.
 

@@ -23,6 +23,7 @@ test("CLI maps canonical processing states, isolates malformed shards, and emits
       { videoId: "repair1", fileStem: "repair_repair1", videoTitle: "Repair", lastEndSeconds: 600, paths: { txt: "txt/repair_repair1.txt" } },
       { videoId: "follow1", fileStem: "follow_follow1", videoTitle: "Follow", lastEndSeconds: 600, paths: { txt: "txt/follow_follow1.txt" } },
       { videoId: "done1", fileStem: "done_done1", videoTitle: "Done", lastEndSeconds: 600, paths: { txt: "txt/done_done1.txt" } },
+      { videoId: "school1", fileStem: "school-functions_school1", videoTitle: "SASC School Functions", lastEndSeconds: 600, paths: { txt: "txt/school-functions_school1.txt" } },
     ];
     await writeFile(manifestPath, JSON.stringify({ transcripts: records }), "utf8");
     await writeFile(configPath, JSON.stringify({ firstPass: { minimumEvidenceWindows: 1 }, liveStreamExtraction: { explicitQaTitleMarkers: [] }, videoTypeRules: [] }), "utf8");
@@ -34,6 +35,7 @@ test("CLI maps canonical processing states, isolates malformed shards, and emits
     });
     await writeFile(path.join(segments, "follow_follow1.json"), JSON.stringify(shard(records[1]!)), "utf8");
     await writeFile(path.join(segments, "done_done1.json"), JSON.stringify({ schemaVersion: 1, videoId: "done1", segments: [] }), "utf8");
+    await writeFile(path.join(segments, "school-functions_school1.json"), JSON.stringify(shard(records[3]!)), "utf8");
     await writeFile(logPath, [
       "timestamp;shardPath;result;needsFurtherProcessing;notes",
       "2026-07-12T20:00:00;src/derived/video-segments/follow_follow1.json;reviewed;yes;more work",
@@ -42,7 +44,7 @@ test("CLI maps canonical processing states, isolates malformed shards, and emits
     ].join("\n"), "utf8");
 
     const script = path.resolve("dist/scripts/rank-video-segment-audit-risk.js");
-    await execFileAsync(process.execPath, [script, "--manifest", manifestPath, "--segments-input", segments,
+    const result = await execFileAsync(process.execPath, [script, "--manifest", manifestPath, "--segments-input", segments,
       "--transcript-root", transcripts, "--processing-log", logPath, "--processing-config", configPath, "--output", outputPath]);
     const output = await readFile(outputPath, "utf8");
     const lines = output.trimEnd().split("\n");
@@ -60,6 +62,8 @@ test("CLI maps canonical processing states, isolates malformed shards, and emits
     assert.equal(follow?.[processLogEntriesIndex], "2");
     assert.equal(repair?.[processLogEntriesIndex], "0");
     assert.match(output, /\tdone1\tDone\tno\t1\t/u);
+    assert.doesNotMatch(output, /school-functions_school1|SASC School Functions/u);
+    assert.match(result.stderr, /shards=3 excluded_sasc_shards=1/u);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
