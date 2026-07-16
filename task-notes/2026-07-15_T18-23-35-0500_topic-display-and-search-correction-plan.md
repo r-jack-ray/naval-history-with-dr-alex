@@ -2,11 +2,11 @@
 
 Timestamp: 2026-07-15T18:23:35-05:00
 
-Last reviewed: 2026-07-15T19:08:20-05:00
+Last reviewed: 2026-07-15T19:52:27-05:00
 
-Status: Planning only; no topic, formatter, skill-guidance, generator, search, generated-data, or route changes have been implemented by this task.
+Status: Implemented and validated in the working tree. All planned source, guidance, generated-data, rendered-route, topic-directory, and Pagefind checks passed; no staging, commit, or push was performed.
 
-Coordination: The repository owner confirmed that the audit pass is complete and that no further file changes will be made until this plan and its execution are complete. The audit output is committed in `1beaa91`, which is currently `origin/main`. The original plan was then added in local commit `a825cda`, so `main` is one commit ahead; only amendments to this plan remain in the worktree. Treat `1beaa91` as the frozen source/generated-data baseline, subject to one immediate pre-execution recheck.
+Coordination: The repository owner confirmed that the audit pass was complete and paused other file changes through this execution. The audit output remains committed in `1beaa91`, which is still `origin/main`; the reviewed plan is local commit `944f6ea`, so `main` remains one commit ahead. Pre-edit and pre-generation checks found no concurrent topic, shard, generator, or generated-archive changes beyond that baseline. The implementation described below is intentionally unstaged and uncommitted.
 
 ## Purpose
 
@@ -160,15 +160,15 @@ The build-repair skill has a different boundary because it can repair a missing 
 ### Phase 0: Coordinate shared-output ownership
 
 - [x] Record the repository owner's confirmation that the audit pass is complete and file changes are paused through this plan's execution.
-- [x] Record the settled state: audit baseline `1beaa91` equals `origin/main`; local plan commit `a825cda` places `main` one commit ahead; only this plan is modified in the worktree at the latest review.
-- [ ] Immediately before implementation, run `git status --short --branch` and capture the exact changed-file set.
-- [ ] Confirm that no topic, shard, generator, or generated-archive file has changed beyond the committed audit baseline; stop and identify the writer if it has.
-- [ ] Do not stash, revert, or overwrite unrelated changes.
-- [ ] Rerun the 18-item adjacent-numeric scan and the five-item `QF` scan.
-- [ ] If another task already changed any of the 20 mapped records, reconcile that exact record before continuing.
-- [ ] If the numeric candidate set changed, update this inventory and obtain an explicit decision for each new candidate rather than broadening the formatter.
+- [x] Record the settled state: audit baseline `1beaa91` equals `origin/main`; local plan commit `944f6ea` places `main` one commit ahead; the worktree was clean immediately before implementation.
+- [x] Immediately before implementation, run `git status --short --branch` and capture the exact changed-file set.
+- [x] Confirm that no topic, shard, generator, or generated-archive file has changed beyond the committed audit baseline; stop and identify the writer if it has.
+- [x] Do not stash, revert, or overwrite unrelated changes.
+- [x] Rerun the 18-item adjacent-numeric scan and the five-item `QF` scan.
+- [x] If another task already changed any of the 20 mapped records, reconcile that exact record before continuing.
+- [x] If the numeric candidate set changed, update this inventory and obtain an explicit decision for each new candidate rather than broadening the formatter.
 
-During the review, the completed audit pass briefly appeared as dirty topic, shard, and generated-archive output. It was then committed as `1beaa91`, including regenerated archive data, and the initial plan was committed separately as `a825cda`. The audit commit is now a clean historical comparison baseline rather than pending worktree churn.
+During the review, the completed audit pass briefly appeared as dirty topic, shard, and generated-archive output. It was then committed as `1beaa91`, including regenerated archive data, and the reviewed plan was committed separately as `944f6ea`. The audit commit is now a clean historical comparison baseline rather than pending worktree churn.
 
 Acceptance criteria:
 
@@ -178,14 +178,14 @@ Acceptance criteria:
 
 ### Phase 1: Freeze route, title, alias, slug, and workflow rules
 
-- [ ] Confirm that the 20 listed slugs remain stable identifiers and URLs.
-- [ ] Adopt the exact canonical titles and aliases in the verified mapping.
-- [ ] Adopt the Skill and Guidance Contract above as the exact upstream construction and handoff rule.
-- [ ] Confirm `AGENTS.md` as the authoritative location and the two skill/brief pairs plus transcript schema reference as synchronized operative copies.
-- [ ] Confirm that the skill updates do not grant shard workers registry, synchronization, generation, or other shared-output ownership.
-- [ ] Confirm that the build-repair guard applies only when repairing a missing shared topic already referenced by live curated content.
-- [ ] Confirm the `OTO Melara 127/64` evidence in the owning shard; no additional transcript rewrite is needed.
-- [ ] Run the normalized alias-collision check before editing.
+- [x] Confirm that the 20 listed slugs remain stable identifiers and URLs.
+- [x] Adopt the exact canonical titles and aliases in the verified mapping.
+- [x] Adopt the Skill and Guidance Contract above as the exact upstream construction and handoff rule.
+- [x] Confirm `AGENTS.md` as the authoritative location and the two skill/brief pairs plus transcript schema reference as synchronized operative copies.
+- [x] Confirm that the skill updates do not grant shard workers registry, synchronization, generation, or other shared-output ownership.
+- [x] Confirm that the build-repair guard applies only when repairing a missing shared topic already referenced by live curated content.
+- [x] Confirm the `OTO Melara 127/64` evidence in the owning shard; no additional transcript rewrite is needed.
+- [x] Run the normalized alias-collision check before editing.
 
 Acceptance criteria:
 
@@ -198,12 +198,12 @@ Acceptance criteria:
 
 ### Phase 2: Correct the authoritative topic records
 
-- [ ] Edit only the 20 listed records in `src/derived/video-segments/topics.json`.
-- [ ] Apply the exact `title` and `aliases` mappings above.
-- [ ] Replace each generic summary under the summary policy.
-- [ ] Preserve record order and every unrelated topic record.
-- [ ] Do not edit generated archive files directly.
-- [ ] Run a bounded exact mapping check over the 20 source records before generation.
+- [x] Edit only the 20 listed records in `src/derived/video-segments/topics.json`.
+- [x] Apply the exact `title` and `aliases` mappings above.
+- [x] Replace each generic summary under the summary policy.
+- [x] Preserve record order and every unrelated topic record.
+- [x] Do not edit generated archive files directly.
+- [x] Run a bounded exact mapping check over the 20 source records before generation.
 
 Acceptance criteria:
 
@@ -213,21 +213,21 @@ Acceptance criteria:
 
 ### Phase 3: Prevent recurrence and surface unresolved cases
 
-- [ ] Update `AGENTS.md` with the authoritative Skill and Guidance Contract.
-- [ ] Update `.agents/skills/naval-transcript-to-site-content/SKILL.md`, `.agents/transcript-content-curator.md`, and `.agents/skills/naval-transcript-to-site-content/references/segment-seed-schema.md` with the matching construction, preserve-existing-slug, and handoff rules.
-- [ ] Update `.agents/skills/naval-site-content-auditor/SKILL.md` and `.agents/site-content-auditor.md` with the same rules for slugs newly added during an audit.
-- [ ] Update `.agents/skills/naval-site-build-repair/SKILL.md` with the missing-topic registry repair guard; do not broaden its trigger or authority.
-- [ ] Review all seven guidance diffs together and confirm they agree on decimal calibres, `to` ranges, established-slug preservation, explicit-review handoff, and existing ownership boundaries.
-- [ ] Update `topicTitleFromSlug` in `src/site/topic-store.ts` to implement only the documented terminal decimal-inch rule.
-- [ ] Add `qf` to the uppercase token set.
-- [ ] Leave date ranges, designations, and every other adjacent-numeric shape on the ordinary fallback formatter.
-- [ ] Add a persistent `reviewTopics` result, containing at least `slug` and `generatedTitle`, to `SynchronizeTopicStoreResult`.
-- [ ] Compute `reviewTopics` from the effective stored topic list on every run, not only from newly added slugs.
-- [ ] Include only non-decimal adjacent-numeric records whose visible title still equals the generic fallback title. An explicitly curated title suppresses the warning; an intentionally space-separated title needs an explicit formatter exemption and a test.
-- [ ] Keep `changed` tied only to actual file writes.
-- [ ] Have `src/scripts/sync-video-topics.ts` and `src/scripts/generate-site-data.ts` print the unresolved slug and fallback title to stderr on every run until curated.
-- [ ] Keep logging out of the reusable topic-store library and do not turn the warning into a nonzero exit by default.
-- [ ] Ensure synchronization continues to preserve curated titles, summaries, aliases, and record order.
+- [x] Update `AGENTS.md` with the authoritative Skill and Guidance Contract.
+- [x] Update `.agents/skills/naval-transcript-to-site-content/SKILL.md`, `.agents/transcript-content-curator.md`, and `.agents/skills/naval-transcript-to-site-content/references/segment-seed-schema.md` with the matching construction, preserve-existing-slug, and handoff rules.
+- [x] Update `.agents/skills/naval-site-content-auditor/SKILL.md` and `.agents/site-content-auditor.md` with the same rules for slugs newly added during an audit.
+- [x] Update `.agents/skills/naval-site-build-repair/SKILL.md` with the missing-topic registry repair guard; do not broaden its trigger or authority.
+- [x] Review all seven guidance diffs together and confirm they agree on decimal calibres, `to` ranges, established-slug preservation, explicit-review handoff, and existing ownership boundaries.
+- [x] Update `topicTitleFromSlug` in `src/site/topic-store.ts` to implement only the documented terminal decimal-inch rule.
+- [x] Add `qf` to the uppercase token set.
+- [x] Leave date ranges, designations, and every other adjacent-numeric shape on the ordinary fallback formatter.
+- [x] Add a persistent `reviewTopics` result, containing at least `slug` and `generatedTitle`, to `SynchronizeTopicStoreResult`.
+- [x] Compute `reviewTopics` from the effective stored topic list on every run, not only from newly added slugs.
+- [x] Include only non-decimal adjacent-numeric records whose visible title still equals the generic fallback title. An explicitly curated title suppresses the warning; an intentionally space-separated title needs an explicit formatter exemption and a test.
+- [x] Keep `changed` tied only to actual file writes.
+- [x] Have `src/scripts/sync-video-topics.ts` and `src/scripts/generate-site-data.ts` print the unresolved slug and fallback title to stderr on every run until curated.
+- [x] Keep logging out of the reusable topic-store library and do not turn the warning into a nonzero exit by default.
+- [x] Ensure synchronization continues to preserve curated titles, summaries, aliases, and record order.
 
 Acceptance criteria:
 
@@ -240,16 +240,16 @@ Acceptance criteria:
 
 ### Phase 4: Add focused regression coverage
 
-- [ ] Extend `src/site/topic-store.test.ts` with table-driven formatter cases for all eight decimal slugs and both singular/plural endings.
-- [ ] Add generic `QF` capitalization coverage, including a non-decimal `qf-2-pounder` case.
-- [ ] Add a synchronization test proving a newly referenced decimal topic receives the exact title and generated summary.
-- [ ] Assert the exact fallback title for `war-1828-1829` and confirm it appears in `reviewTopics` rather than becoming a decimal.
-- [ ] Assert that handled decimal topics do not appear in `reviewTopics`.
-- [ ] Test that an unresolved review item persists across a no-op second synchronization and disappears after its title is explicitly curated.
-- [ ] Strengthen the existing preservation test to assert title, summary, and aliases.
-- [ ] Compare raw `topics.json` bytes before and after a no-op synchronization.
-- [ ] Add a bounded production-registry assertion for the exact 20-title/alias mapping and canonical-title presence in each summary.
-- [ ] Extend `src/site/archive-data.test.ts` to prove a corrected title reaches video and segment `TopicRef` records while aliases remain on the topic record.
+- [x] Extend `src/site/topic-store.test.ts` with table-driven formatter cases for all eight decimal slugs and both singular/plural endings.
+- [x] Add generic `QF` capitalization coverage, including a non-decimal `qf-2-pounder` case.
+- [x] Add a synchronization test proving a newly referenced decimal topic receives the exact title and generated summary.
+- [x] Assert the exact fallback title for `war-1828-1829` and confirm it appears in `reviewTopics` rather than becoming a decimal.
+- [x] Assert that handled decimal topics do not appear in `reviewTopics`.
+- [x] Test that an unresolved review item persists across a no-op second synchronization and disappears after its title is explicitly curated.
+- [x] Strengthen the existing preservation test to assert title, summary, and aliases.
+- [x] Compare raw `topics.json` bytes before and after a no-op synchronization.
+- [x] Add a bounded production-registry assertion for the exact 20-title/alias mapping and canonical-title presence in each summary.
+- [x] Extend `src/site/archive-data.test.ts` to prove a corrected title reaches video and segment `TopicRef` records while aliases remain on the topic record.
 
 Acceptance criteria:
 
@@ -259,18 +259,18 @@ Acceptance criteria:
 
 ### Phase 5: Regenerate and verify rendered surfaces and search
 
-- [ ] Reconfirm that the owner-frozen baseline has not changed immediately before generation.
-- [ ] Run one explicit `generate:site-data` invocation.
-- [ ] Inspect generated topic records and representative video/segment `TopicRef` records for corrected titles and aliases.
-- [ ] Compare the generated diff with committed baseline `1beaa91`; if unrelated shard/topic changes appear, stop and explain them before continuing.
-- [ ] Run `site:check:generated` against the already generated dataset.
-- [ ] Force `site:build:generated` so Astro and Pagefind rebuild without a second generator pass.
-- [ ] Verify corrected labels on the topic directory, topic detail page, homepage, video directory, Time Notes starter topics, search-page popular topics, and representative video and segment pages.
-- [ ] Verify the topic detail browser title, description, visible summary, aliases, and Pagefind metadata.
-- [ ] Serve the production build with `site:preview` or an equivalent static server; do not use Astro development for Pagefind checks.
-- [ ] For every canonical title and required alias in the mapping, assert that built Pagefind results include the exact expected `/topics/<stable-slug>/` URL.
-- [ ] Run the representative browser query matrix below for both topic-directory filtering and global search where applicable.
-- [ ] If a required alias is not indexed, make the smallest topic-detail indexing adjustment and add a focused regression; do not copy aliases into every video or segment.
+- [x] Reconfirm that the owner-frozen baseline has not changed immediately before generation.
+- [x] Run one explicit `generate:site-data` invocation.
+- [x] Inspect generated topic records and representative video/segment `TopicRef` records for corrected titles and aliases.
+- [x] Compare the generated diff with committed baseline `1beaa91`; if unrelated shard/topic changes appear, stop and explain them before continuing.
+- [x] Run `site:check:generated` against the already generated dataset.
+- [x] Force `site:build:generated` so Astro and Pagefind rebuild without a second generator pass.
+- [x] Verify corrected labels on the topic directory, topic detail page, homepage, video directory, Time Notes starter topics, search-page popular topics, and representative video and segment pages.
+- [x] Verify the topic detail browser title, description, visible summary, aliases, and Pagefind metadata.
+- [x] Serve the production build with `site:preview` or an equivalent static server; do not use Astro development for Pagefind checks.
+- [x] For every canonical title and required alias in the mapping, assert that built Pagefind results include the exact expected `/topics/<stable-slug>/` URL.
+- [x] Run the representative browser query matrix below for both topic-directory filtering and global search where applicable.
+- [x] If a required alias is not indexed, make the smallest topic-detail indexing adjustment and add a focused regression; do not copy aliases into every video or segment.
 
 Representative query matrix:
 
@@ -327,21 +327,35 @@ Then test the production build, not Astro development, against representative ro
 
 ## Final Acceptance Checklist
 
-- [ ] The eight decimal gun topics display correct decimal points, unit hyphenation, plurality, and `QF` capitalization.
-- [ ] The seven date-range topics display the exact canonical punctuation and date ranges.
-- [ ] `Gloster E.28/39`, `Specification M.1/30`, and `OTO Melara 127/64` display exactly and keep their stable legacy slugs.
-- [ ] The two additional QF topics display `QF 2-pounder` terminology correctly.
-- [ ] All 20 affected summaries contain the canonical title and no old lossy or unsupported manufacturer wording.
-- [ ] The exact aliases are present, collision-checked, and remain registry-owned.
-- [ ] `AGENTS.md`, both shard-writing skill/brief pairs, the transcript schema reference, and the build-repair skill carry consistent numeric topic-slug and ownership rules.
-- [ ] Future shard-worker handoffs identify newly introduced non-decimal adjacent-numeric slugs for repository-owner title/alias curation without granting the workers shared-registry access.
-- [ ] Persistent diagnostics report unresolved non-decimal adjacent-numeric defaults through both synchronization and generation.
-- [ ] Topic-directory and built Pagefind searches pass the complete mapping plus representative query matrix.
-- [ ] Corrected labels propagate to all listed rendered surfaces and Pagefind topic filters without changing video/segment browser metadata.
-- [ ] Existing topic URLs and shard references are unchanged.
-- [ ] Generated data was regenerated once through the supported generator, not hand-edited.
-- [ ] TypeScript tests, archive generation, Astro checks, forced Pagefind build, and `git diff --check` pass.
-- [ ] The source and generated diffs are compared with the committed audit baseline, unrelated changes remain untouched, and the handoff credits only this task's work.
+- [x] The eight decimal gun topics display correct decimal points, unit hyphenation, plurality, and `QF` capitalization.
+- [x] The seven date-range topics display the exact canonical punctuation and date ranges.
+- [x] `Gloster E.28/39`, `Specification M.1/30`, and `OTO Melara 127/64` display exactly and keep their stable legacy slugs.
+- [x] The two additional QF topics display `QF 2-pounder` terminology correctly.
+- [x] All 20 affected summaries contain the canonical title and no old lossy or unsupported manufacturer wording.
+- [x] The exact aliases are present, collision-checked, and remain registry-owned.
+- [x] `AGENTS.md`, both shard-writing skill/brief pairs, the transcript schema reference, and the build-repair skill carry consistent numeric topic-slug and ownership rules.
+- [x] Future shard-worker handoffs identify newly introduced non-decimal adjacent-numeric slugs for repository-owner title/alias curation without granting the workers shared-registry access.
+- [x] Persistent diagnostics report unresolved non-decimal adjacent-numeric defaults through both synchronization and generation.
+- [x] Topic-directory and built Pagefind searches pass the complete mapping plus representative query matrix.
+- [x] Corrected labels propagate to all listed rendered surfaces and Pagefind topic filters without changing video/segment browser metadata.
+- [x] Existing topic URLs and shard references are unchanged.
+- [x] Generated data was regenerated once through the supported generator, not hand-edited.
+- [x] TypeScript tests, archive generation, Astro checks, forced Pagefind build, and `git diff --check` pass.
+- [x] The source and generated diffs are compared with the committed audit baseline, unrelated changes remain untouched, and the handoff credits only this task's work.
+
+## Execution Result
+
+Completed on 2026-07-15 against frozen audit baseline `1beaa91`.
+
+- Corrected the exact 20 bounded topic records without changing any slug, shard reference, route, record order, or unrelated registry record. The normalized comparison covered 55 proposed titles and aliases and found zero cross-topic collisions.
+- Added the decimal-inch formatter, `QF` capitalization, persistent unresolved-numeric review result, and stderr reporting in both synchronization and generation commands.
+- Updated the seven planned repository guidance surfaces. The bundled Python validator passed for all three edited skills, and two fresh read-only forward tests followed the decimal, range, handoff, registry-field, and shared-output rules correctly.
+- `npm run check` passed all 111 tests. Standalone synchronization reported the registry already current with no unresolved warnings.
+- Ran `generate:site-data` once. The attributable generated diff contains exactly 26 files: `index.json`, `topics.json`, `videos.json`, and 23 segment buckets. Live assertions verified all 20 topic records, 6 video topic references, and 64 segment topic references.
+- `site:check:generated` reported zero errors, warnings, or hints. The forced generated-data build completed in 6 minutes 37 seconds and Pagefind indexed 65,424 pages.
+- All 20 stable topic routes returned HTTP 200 with the exact canonical title, summary, and aliases. Topic-directory filtering passed all 14 representative queries. The production Pagefind index returned the exact expected stable route for all 55 canonical-title and required-alias queries and all 14 representative queries.
+- Rendered topic, video, and segment checks confirmed corrected visible links and Pagefind topic filters while leaving video and segment browser metadata owned by their respective records. No stale bounded display labels remained in the generated archive or built HTML.
+- `git diff --check` passed. No files were staged, committed, pushed, stashed, reverted, or hand-edited under the generated archive.
 
 ## Recommended Execution Boundary
 

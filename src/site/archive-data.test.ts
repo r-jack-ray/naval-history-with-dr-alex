@@ -35,6 +35,41 @@ test("builds deterministic site archive data from channel metadata and segment s
   assert.equal(archive.topics.find((topic) => topic.slug === "destroyers")?.segmentCount, 2);
 });
 
+test("propagates a curated topic title to video and segment refs while keeping aliases on the topic", () => {
+  const input = sampleInput();
+  const slug = "4-5-inch-gun";
+  const title = "4.5-inch Gun";
+  input.seed.topics = [
+    {
+      slug,
+      title,
+      summary: "4.5-inch Gun watch points and related historical context.",
+      aliases: ["4.5 inch gun", "4 5 inch gun"],
+    },
+  ];
+  input.seed.videos[0]!.topics = [slug];
+  for (const segment of input.seed.segments) {
+    segment.topics = [slug];
+  }
+
+  const archive = buildSiteArchiveData(input);
+  const expectedRef = { slug, title };
+
+  assert.deepEqual(archive.videos[0]?.topics, [expectedRef]);
+  assert.deepEqual(archive.segments.map((segment) => segment.topics), [
+    [expectedRef],
+    [expectedRef],
+  ]);
+  assert.deepEqual(archive.topics.find((topic) => topic.slug === slug), {
+    slug,
+    title,
+    summary: "4.5-inch Gun watch points and related historical context.",
+    aliases: ["4.5 inch gun", "4 5 inch gun"],
+    videoCount: 1,
+    segmentCount: 2,
+  });
+});
+
 test("uses livestream time instead of the advance upload timestamp", () => {
   const input = sampleInput();
   input.metadataStore.videos[0]!.snippet!.publishedAt = "2026-06-14T16:44:14Z";

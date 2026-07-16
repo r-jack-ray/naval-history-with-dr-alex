@@ -10,6 +10,11 @@ try {
   console.error(
     `Synchronized ${inputDirectory}/topics.json: ${action} (${result.usedTopicCount} used, ${result.topicCount} stored).`,
   );
+  for (const topic of result.reviewTopics) {
+    console.error(
+      `Topic title requires review: ${topic.slug} (generated title: ${topic.generatedTitle}).`,
+    );
+  }
 } catch (error) {
   console.error(error instanceof Error ? error.message : String(error));
   process.exitCode = 1;

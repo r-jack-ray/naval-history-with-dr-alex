@@ -37,6 +37,7 @@ Use this brief with `$naval-transcript-to-site-content` when turning stored Dr. 
 13. Compare the canonical title with `liveStreamExtraction.explicitQaTitleMarkers` in the processing config. A matching title makes exhaustive Q&A extraction explicit but does not erase lecture material.
 14. If a live-stream run cannot complete full-duration mixed-content extraction, report `needsFurtherProcessing=yes` and state the remaining coverage in the handoff.
 15. Derive significant segment topic slugs from the transcript without targeting a tag count or restricting the pass to a starter taxonomy. Investigate synonym or taxonomy issues only when the repository owner's later synchronization reports a concrete problem.
+16. When constructing a new topic slug, reserve an exact terminal `<whole>-<fraction>-inch-gun` or `<whole>-<fraction>-inch-guns` shape for a decimal gun calibre, and use `to` for a gun-calibre range, such as `4-to-5-inch-guns`. Preserve established slugs. If a newly introduced non-decimal topic necessarily contains adjacent numeric tokens, keep the evidence-backed slug in the owned shard and flag it in the handoff for repository-owner title and alias review; do not guess punctuation or inspect or edit `topics.json`.
 
 ## Public Wording
 
@@ -65,5 +66,5 @@ Use this brief with `$naval-transcript-to-site-content` when turning stored Dr. 
 
 ## Handoff
 
-- Mention the video ID, transcript path, shard changed, segment count added, topic slugs introduced, transcript coverage status, the processing-log line appended, and remaining ranges. State that shared generation, other logs, schedules, tests, builds, and validation were intentionally not touched.
+- Mention the video ID, transcript path, shard changed, segment count added, topic slugs introduced, transcript coverage status, the processing-log line appended, and remaining ranges. Explicitly identify every newly introduced non-decimal adjacent-numeric topic slug that requires repository-owner title and alias review. State that shared topic synchronization, generation, other logs, schedules, tests, builds, and validation were intentionally not touched.
 - If an invoking automation performed lane-private bookkeeping or temporary checks, report only those prompt-owned results. If a transcript is too noisy or incomplete, report the blocker and inspected windows without creating a shared task note.

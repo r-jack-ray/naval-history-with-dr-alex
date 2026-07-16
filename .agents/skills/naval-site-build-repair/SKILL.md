@@ -37,6 +37,8 @@ Repair site-pipeline failures without widening scope or destabilizing establishe
 
 - Confirm the failing slug and live shard content before editing `topics.json`.
 - Add a missing shared topic only when a curated video or segment actually references it; do not rewrite an unrelated shard to hide a registry problem.
+- Treat an unresolved adjacent-numeric topic diagnostic as a title-review signal, not permission to guess punctuation, rename an established slug, or rewrite referencing shards. An exact terminal `<whole>-<fraction>-inch-gun` or `<whole>-<fraction>-inch-guns` shape is reserved for a decimal gun calibre, and a newly constructed gun-calibre range uses `to`, for example `4-to-5-inch-guns`.
+- For any other newly introduced adjacent-numeric slug, preserve the shard reference and report the exact slug for repository-owner title and alias review. Edit the shared registry only when the user's repair scope explicitly authorizes that topic repair; when authorized, preserve the referenced slug and supply an evidence-backed explicit `title`, `summary`, and `aliases` instead of rewriting shard references merely to make the URL resemble the visible label. Otherwise leave the shard-only worker and shared-output boundaries unchanged.
 - Use `$naval-site-content-auditor` when the repair requires transcript-backed content judgment, public wording changes, or evidence validation.
 
 ### TypeScript, Astro, or Pagefind failures

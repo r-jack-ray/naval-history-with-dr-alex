@@ -12,9 +12,36 @@ import { discoverVideoSegmentShards } from "./video-segment-files.js";
 export interface SynchronizeTopicStoreResult {
   addedSlugs: string[];
   changed: boolean;
+  reviewTopics: TopicReviewItem[];
   topicCount: number;
   usedTopicCount: number;
 }
+
+export interface TopicReviewItem {
+  slug: string;
+  generatedTitle: string;
+}
+
+const uppercaseTokens = new Set([
+  "aew",
+  "ai",
+  "asw",
+  "hms",
+  "hmcs",
+  "nato",
+  "opv",
+  "qf",
+  "raf",
+  "ran",
+  "rcn",
+  "rnas",
+  "uk",
+  "us",
+  "uss",
+  "vls",
+]);
+const romanNumerals = new Set(["i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x"]);
+const adjacentNumericSlugPattern = /(?:^|-)\d+-\d+(?:-|$)/u;
 
 export async function synchronizeCuratedTopicStore(
   inputDirectory: string,
@@ -27,14 +54,13 @@ export async function synchronizeCuratedTopicStore(
 
   const knownSlugs = new Set(topics.map((topic) => topic.slug));
   const addedSlugs = usedSlugs.filter((slug) => !knownSlugs.has(slug));
+  const addedTopics = addedSlugs.map(buildDefaultTopic);
+  const effectiveTopics = [...topics, ...addedTopics];
 
   if (existingStore === undefined || addedSlugs.length > 0) {
     const updatedStore: CuratedTopicStore = {
       schemaVersion: 1,
-      topics: [
-        ...topics,
-        ...addedSlugs.map(buildDefaultTopic),
-      ],
+      topics: effectiveTopics,
     };
     await writeTextAtomically(topicStorePath, `${JSON.stringify(updatedStore, null, 2)}\n`);
   }
@@ -42,7 +68,8 @@ export async function synchronizeCuratedTopicStore(
   return {
     addedSlugs,
     changed: existingStore === undefined || addedSlugs.length > 0,
-    topicCount: topics.length + addedSlugs.length,
+    reviewTopics: collectTopicReviewItems(effectiveTopics),
+    topicCount: effectiveTopics.length,
     usedTopicCount: usedSlugs.length,
   };
 }
@@ -127,31 +154,64 @@ export function topicTitleFromSlug(slug: string): string {
     return specialTitle;
   }
 
-  const uppercaseTokens = new Set([
-    "aew",
-    "ai",
-    "asw",
-    "hms",
-    "hmcs",
-    "nato",
-    "opv",
-    "raf",
-    "ran",
-    "rcn",
-    "rnas",
-    "uk",
-    "us",
-    "uss",
-    "vls",
-  ]);
-  const romanNumerals = new Set(["i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x"]);
+  const decimalTitle = terminalDecimalInchTitleFromSlug(slug);
+  if (decimalTitle !== undefined) {
+    return decimalTitle;
+  }
 
-  return slug.split("-").map((token) => {
+  return genericTopicTitleFromSlug(slug);
+}
+
+function terminalDecimalInchTitleFromSlug(slug: string): string | undefined {
+  const tokens = slug.split("-");
+  if (tokens.length < 4) {
+    return undefined;
+  }
+
+  const [whole, fraction, unit, noun] = tokens.slice(-4);
+  if (
+    whole === undefined
+    || fraction === undefined
+    || !/^\d+$/u.test(whole)
+    || !/^\d+$/u.test(fraction)
+    || unit !== "inch"
+    || (noun !== "gun" && noun !== "guns")
+  ) {
+    return undefined;
+  }
+
+  const prefix = formatTopicTokens(tokens.slice(0, -4));
+  const calibre = `${whole}.${fraction}-inch ${noun === "gun" ? "Gun" : "Guns"}`;
+  return prefix.length > 0 ? `${prefix} ${calibre}` : calibre;
+}
+
+function genericTopicTitleFromSlug(slug: string): string {
+  return formatTopicTokens(slug.split("-"));
+}
+
+function formatTopicTokens(tokens: string[]): string {
+  return tokens.map((token) => {
     if (uppercaseTokens.has(token) || romanNumerals.has(token)) {
       return token.toUpperCase();
     }
     return `${token.slice(0, 1).toUpperCase()}${token.slice(1)}`;
   }).join(" ");
+}
+
+function collectTopicReviewItems(topics: CuratedTopicSeed[]): TopicReviewItem[] {
+  return topics.flatMap((topic) => {
+    if (
+      !adjacentNumericSlugPattern.test(topic.slug)
+      || terminalDecimalInchTitleFromSlug(topic.slug) !== undefined
+    ) {
+      return [];
+    }
+
+    const generatedTitle = genericTopicTitleFromSlug(topic.slug);
+    return topic.title === generatedTitle
+      ? [{ slug: topic.slug, generatedTitle }]
+      : [];
+  });
 }
 
 function errorCode(error: unknown): string | undefined {

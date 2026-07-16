@@ -22,6 +22,8 @@ Do not recreate a monolithic curated-content file. The manifest and shards under
 
 - `videoId` must exist in `src/channel/episodes.json`.
 - `topics` contains stable lowercase, hyphenated slugs. `generate:site-data` synchronizes missing registry records before archive validation.
+- For a newly constructed topic slug, an exact terminal `<whole>-<fraction>-inch-gun` or `<whole>-<fraction>-inch-guns` shape is reserved for a decimal gun calibre. Use `to` for a gun-calibre range, for example `4-to-5-inch-guns`.
+- Preserve established topic slugs. If a newly introduced non-decimal topic necessarily contains adjacent numeric tokens, keep its evidence-backed slug in the owned shard and identify it in the curation handoff for repository-owner title and alias review; do not guess its visible punctuation or edit `topics.json` during shard-only work.
 - `topics` is a curated summary subset for the video page; it does not need to repeat every more-granular segment topic.
 - `segments` contains only records for this `videoId`.
 

@@ -11,7 +11,12 @@ import { synchronizeCuratedTopicStore } from "../site/topic-store.js";
 
 try {
   const options = parseArgs(process.argv.slice(2));
-  await synchronizeCuratedTopicStore(options.segmentsInput);
+  const topicResult = await synchronizeCuratedTopicStore(options.segmentsInput);
+  for (const topic of topicResult.reviewTopics) {
+    console.error(
+      `Topic title requires review: ${topic.slug} (generated title: ${topic.generatedTitle}).`,
+    );
+  }
   const archive = await generateSiteArchiveData(options);
   console.error(
     `Generated site archive data: ${options.outputDir} (${archive.manifest.counts.videos} videos, ${archive.manifest.counts.segments} segments, ${archive.manifest.counts.topics} topics)`,
