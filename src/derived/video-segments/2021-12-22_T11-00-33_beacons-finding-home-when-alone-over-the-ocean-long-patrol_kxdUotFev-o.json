@@ -19,7 +19,7 @@
       "end": "2:27",
       "topics": ["naval-aviation", "aircraft-carriers", "night-fighting", "naval-navigation"],
       "summary": "An introduction to the beacon systems that gave Fleet Air Arm aircraft a way to find a carrier after dark or far out at sea.",
-      "body": "The video frames beacons as the answer to a basic carrier-aviation problem: an aircraft returning alone may have neither a visible ship nor an easy reference point. Clarke uses the subject to connect navigation technology with the practical possibility of sustained night flying and carrier operations.",
+      "body": "The video frames beacons as the answer to a basic carrier-aviation problem: an aircraft returning alone may have neither a visible ship nor an easy reference point. That problem becomes acute at night, in poor visibility, or when the carrier has moved since the aircraft departed. Clarke uses the subject to connect radio navigation with the practical possibility of sustained night flying rather than treating the beacon as an isolated gadget. He also warns that the familiar six-minute explanation compresses several generations of equipment into one introductory model. Opening here therefore gives the conceptual problem first and prepares the viewer for the distinctions among the Type 72X, 72DM, and 72DP systems.",
       "sourcePath": "src/transcripts/txt/2021-12-22_T11-00-33_beacons-finding-home-when-alone-over-the-ocean-long-patrol_kxdUotFev-o.txt",
       "evidence": [{"start": "0:05", "end": "2:27", "note": "Clarke introduces the earlier short explanation and explains why beacon systems deserve a fuller account."}]
     },
@@ -33,7 +33,7 @@
       "end": "5:39",
       "topics": ["type-72x", "fleet-air-arm", "aircraft-carriers", "royal-navy"],
       "summary": "The early Type 72X appears on a carrier in 1936 and becomes the starting point for the wartime beacon family.",
-      "body": "Clarke notes uncertainty over which carrier first received the equipment—Furious, Courageous, or Ark Royal—while arguing that the technology was likely spreading faster than the formal record suggests. The short development interval from early concept to aircraft trials and carrier installation highlights the urgency and practical maturity of naval aviation navigation work before the war.",
+      "body": "Clarke dates the Type 72X's first carrier installation to 1936 but treats the identity of that carrier as unresolved. HMS Furious, HMS Courageous, and HMS Ark Royal all have plausible claims, with Clarke tentatively favoring Ark Royal while acknowledging the evidence for the other two. He argues that installations probably spread more quickly than the official narrative implies. Development began in 1932, aircraft trials were already possible in 1933, and an operational carrier installation followed within roughly three years. The passage is useful both for the technology's rapid maturation and for the caution required when sparse naval records offer several credible firsts.",
       "sourcePath": "src/transcripts/txt/2021-12-22_T11-00-33_beacons-finding-home-when-alone-over-the-ocean-long-patrol_kxdUotFev-o.txt",
       "evidence": [{"start": "2:47", "end": "5:39", "note": "The transcript identifies the 72X, the debated first carrier installation, and its rapid pre-war development."}]
     },
@@ -47,7 +47,7 @@
       "end": "9:03",
       "topics": ["naval-navigation", "naval-aviation", "night-fighting", "aircraft-carriers"],
       "summary": "A one-revolution-per-minute beam and a synchronized watch give an aircraft a reciprocal bearing on its carrier from roughly fifty miles away.",
-      "body": "The original arrangement sweeps a narrow radio beam around the carrier once per minute. By timing the strongest signal against a synchronized watch, aircrew can work out the carrier's direction and narrow their approach as they close range. That guidance also lets the ship restrict visible landing lights to the sternward approach rather than lighting itself for every observer at sea.",
+      "body": "The original arrangement sweeps a narrow radio beam around the carrier once per minute. Aircrew listen for the point at which the signal is strongest and compare that moment with a watch synchronized to the ship's chronometer. Treating the watch face as a circle of bearings gives a reciprocal direction back to the carrier, which can be refined as the aircraft closes from the roughly fifty-mile reception range. Clarke stresses that the method is neither perfectly precise nor effortless, but it is rugged and reliable enough to turn an otherwise invisible moving ship into a usable homing area. That guidance also lets the carrier show hooded landing lights only through a narrow sternward arc instead of advertising the whole ship at night. The watch point links radio direction finding directly to safer, more tactically discreet night carrier operations.",
       "sourcePath": "src/transcripts/txt/2021-12-22_T11-00-33_beacons-finding-home-when-alone-over-the-ocean-long-patrol_kxdUotFev-o.txt",
       "evidence": [{"start": "6:05", "end": "9:03", "note": "Clarke explains the rotating beam, synchronized watch, fifty-mile reception range, and hooded approach lights."}]
     },
@@ -58,12 +58,40 @@
       "title": "From lighthouse-like 72X to Type 72DM",
       "kind": "chapter",
       "start": "11:22",
-      "end": "16:24",
+      "end": "14:59",
       "topics": ["type-72x", "type-72dm", "radar", "aircraft-carriers", "naval-technology"],
       "summary": "The beacon evolved as more carriers operated together and radar demanded the highest position on the mast.",
-      "body": "Clarke compares the early equipment to a lighthouse: a rotating transmitter and reflector, timed by a chronometer. The 72DM moved the aerial arrangement down the mast to leave room for radar and changed the mechanical arrangement around the mast. Expanded frequencies also helped distinguish carriers during multi-carrier operations, where returning aircraft ideally needed to find their own ship.",
+      "body": "Clarke compares the early equipment to a radio lighthouse: a rotating transmitter and parabolic reflector, timed by a precision chronometer. The Type 72X occupied the masthead inside a large wooden cylinder, but wartime radar needed that commanding position and forced a redesign. In the Type 72DM, the radiating equipment, reflector, and transmitter rotated bodily around the lower foremast rather than sitting above it. The change illustrates how adding radar could reshape the physical architecture of a carrier's other electronics. The growing frequency range also helped aircraft distinguish among several carriers operating together, reducing the chance that they would home on the wrong ship. A mistaken landing was manageable, but naval planners still wanted each air group to recover to its own carrier.",
       "sourcePath": "src/transcripts/txt/2021-12-22_T11-00-33_beacons-finding-home-when-alone-over-the-ocean-long-patrol_kxdUotFev-o.txt",
-      "evidence": [{"start": "11:22", "end": "16:24", "note": "The transcript contrasts early and DM arrangements, explains radar's mast priority, and links frequency expansion to multi-carrier operations."}]
+      "evidence": [{"start": "11:22", "end": "14:59", "note": "The transcript contrasts early and DM arrangements, explains radar's mast priority, and links frequency expansion to multi-carrier operations."}]
+    },
+    {
+      "id": "specialist-aircrew-and-beacon-workload",
+      "videoId": "kxdUotFev-o",
+      "slug": "specialist-aircrew-and-beacon-workload",
+      "title": "Why early beacons depended on specialist aircrew",
+      "kind": "notable_point",
+      "start": "15:00",
+      "end": "16:24",
+      "topics": ["fleet-air-arm", "naval-navigation", "human-factors", "naval-training"],
+      "summary": "The Type 72X and 72DM assumed a trained observer or telegraphist air gunner could interpret the signal, an arrangement poorly suited to a busy single-seat fighter pilot.",
+      "body": "The early beacon systems were designed around multi-seat Fleet Air Arm aircraft with specialist crew. A navigation-trained observer normally performed the timing and bearing work, while a telegraphist air gunner could be trained as a substitute. The pilot remained occupied with flying the aircraft and could not be treated as spare capacity for a complicated radio-navigation drill. That division of labor explains why the older equipment could be effective without being simple to use. It also created a serious constraint as single-seat fighters became more important. The later Type 72DP therefore represents a human-factors response to changing aircraft and crew arrangements, not merely a more advanced transmitter.",
+      "sourcePath": "src/transcripts/txt/2021-12-22_T11-00-33_beacons-finding-home-when-alone-over-the-ocean-long-patrol_kxdUotFev-o.txt",
+      "evidence": [{"start": "15:00", "end": "16:24", "note": "Clarke explains that observers or trained telegraphist air gunners handled the older systems and connects DP simplification to single-seat aircraft."}]
+    },
+    {
+      "id": "reading-the-1947-beacon-paper",
+      "videoId": "kxdUotFev-o",
+      "slug": "reading-the-1947-beacon-paper",
+      "title": "Reading the 1947 beacon paper as historical evidence",
+      "kind": "notable_point",
+      "start": "17:55",
+      "end": "20:10",
+      "topics": ["naval-historiography", "naval-technology", "radio-navigation"],
+      "summary": "The principal engineering paper explains the mature Type 72DP first and treats earlier systems in relation to it, forcing historians to reconstruct the development sequence carefully.",
+      "body": "Clarke pauses to explain why the technical history is difficult to present in a simple chronological line. The strongest published source is a 1947 engineering paper whose mathematical organization centers on the mature Type 72DP. It repeatedly moves backward to explain the 72X and 72DM in relation to that final form instead of building from the simplest equipment toward the most complex. That structure makes sense for engineers analyzing system behavior but can obscure development for a historian asking what changed over time. The passage demonstrates how the organization and purpose of a primary technical source shape the history that can be recovered from it. It also helps explain Clarke's caution about gaps and ambiguities in the earlier systems' surviving record.",
+      "sourcePath": "src/transcripts/txt/2021-12-22_T11-00-33_beacons-finding-home-when-alone-over-the-ocean-long-patrol_kxdUotFev-o.txt",
+      "evidence": [{"start": "17:55", "end": "20:10", "note": "Clarke describes the 1947 engineering paper's DP-centered structure and the difficulty of reconstructing a chronological development history from it."}]
     },
     {
       "id": "north-reference-and-the-72dm",
@@ -75,9 +103,23 @@
       "end": "30:35",
       "topics": ["type-72dm", "naval-navigation", "fleet-air-arm", "radar"],
       "summary": "The Type 72DM could synchronize its sweep through north at the minute, making the bearing easier to turn into a course home.",
-      "body": "The earlier 72X demanded more mental geometry from a trained observer because the relationship between the timing signal and the ship's heading was less direct. On the 72DM, a chronometer-controlled system kept the aerial's north reference steady while the rotating installation accommodated radar above it. The resulting system made the signal more dependable for practical homing, even before the later DP simplified operation further.",
+      "body": "The earlier Type 72X demanded substantial mental geometry from a trained observer because signal timing did not translate directly into a compass course. The operator had to treat both the watch dial and the space around the aircraft as circles, calculate the relative angle, and then take the reciprocal bearing toward the ship. On the Type 72DM, a chronometer-controlled mechanism drove the aerial at exactly one revolution per minute and brought the beam through true north at zero seconds. That stable north reference made a signal at fifteen or thirty seconds much easier to interpret as a cardinal direction home. Gearing and motor controls kept the lower, mast-encircling installation aligned even while the ship changed course. The improvement reduced ambiguity before the Type 72DP shifted still more interpretive work away from the aircraft.",
       "sourcePath": "src/transcripts/txt/2021-12-22_T11-00-33_beacons-finding-home-when-alone-over-the-ocean-long-patrol_kxdUotFev-o.txt",
       "evidence": [{"start": "25:23", "end": "30:35", "note": "Clarke contrasts 72X bearing calculation with the north-referenced, chronometer-controlled 72DM."}]
+    },
+    {
+      "id": "type-72dp-encoded-bearing-system",
+      "videoId": "kxdUotFev-o",
+      "slug": "type-72dp-encoded-bearing-system",
+      "title": "How the Type 72DP encoded a usable bearing",
+      "kind": "chapter",
+      "start": "30:40",
+      "end": "36:10",
+      "topics": ["type-72dp", "radio-navigation", "naval-technology", "aircraft-carriers"],
+      "summary": "The Type 72DP modulated its carrier wave with information characteristic of each true bearing and stabilized the rotating aerial against changes in the ship's course.",
+      "body": "The Type 72DP retained a once-per-minute rotating aerial but changed what the aircraft received. As the beam crossed each true bearing, the transmitter added a modulation characteristic of that direction, while stabilization compensated for alterations in the carrier's course. Clarke corrects a slide error to give the practical homing accuracy as about plus or minus seven and a half degrees, adequate for reaching the carrier's vicinity rather than making the final landing approach. The transmitter covered roughly 200 to 250 megahertz and used crystal-controlled carrier and modulation frequencies. Its rotating pedestal, parabolic reflector, dipole, slip rings, and mast-level hut show how much shipboard engineering supported the apparently simple indication in the cockpit. The watch point is useful for seeing that ease of use in the aircraft depended on moving technical complexity into the carrier.",
+      "sourcePath": "src/transcripts/txt/2021-12-22_T11-00-33_beacons-finding-home-when-alone-over-the-ocean-long-patrol_kxdUotFev-o.txt",
+      "evidence": [{"start": "30:40", "end": "36:10", "note": "The transcript describes DP bearing modulation, azimuth stabilization, seven-and-a-half-degree accuracy, transmitter frequencies, and the rotating pedestal installation."}]
     },
     {
       "id": "type-72dp-and-single-seat-aircraft",
@@ -89,7 +131,7 @@
       "end": "40:12",
       "topics": ["type-72dp", "fleet-air-arm", "single-seat-fighters", "naval-aviation", "naval-navigation"],
       "summary": "The later DP system shifted more work to the ship so a pilot—especially in a single-seat aircraft—could receive a simpler homing indication.",
-      "body": "Clarke presents the DP as a human-factors improvement as much as a technical one. Rather than asking aircrew to interpret a watch and directional-finding procedure, the ship transmitted information that could be turned into a simple or automatic on-course indication. This mattered most for single-seat fighters, whose pilots could not spare attention for a complex navigation drill while flying and managing radio traffic.",
+      "body": "Clarke presents the Type 72DP as a human-factors improvement as much as a technical one. Responsibility for producing correct information rested with the carrier, while the aircraft needed only to turn that information into a simple homing vector or on-course indication. The pilot no longer had to perform a separate direction-finding operation or read a synchronized beacon watch. A light, reliable receiver and omnidirectional aerial could carry the beacon audio alongside normal radio-telephone communications. This mattered most for single-seat fighters, whose pilots could not spare attention for mental geometry while flying and managing radio traffic. The system therefore shows how naval electronics evolved by reallocating workload between ship, equipment, and aircrew.",
       "sourcePath": "src/transcripts/txt/2021-12-22_T11-00-33_beacons-finding-home-when-alone-over-the-ocean-long-patrol_kxdUotFev-o.txt",
       "evidence": [{"start": "36:12", "end": "40:12", "note": "The transcript explains why the DP design moved responsibility from aircraft personnel to the ship and simplified pilot use."}]
     },
@@ -103,7 +145,7 @@
       "end": "40:12",
       "topics": ["type-72dp", "naval-aviation", "automatic-pilots", "carrier-operations"],
       "summary": "A visual course display could make beacon guidance continuously available, while the broadcast system could guide many aircraft from different directions at once.",
-      "body": "The video distinguishes broad homing from the separate problem of final approach to a carrier's stern. It also explores how a meter display—and potentially an automatic pilot—could present course information without monopolizing the pilot's attention. Unlike a responder-based arrangement, the rotating beacon's broadcast did not impose the same inherent limit on the number of aircraft homing simultaneously.",
+      "body": "The video distinguishes broad homing to the carrier's vicinity from the separate problem of lining up on the final sternward approach. A centered meter could continuously display both kinds of guidance and present an on-course indication when the pilot chose to look. In principle, the same signal could feed an automatic pilot, further reducing cockpit workload. Clarke notes that visual presentation would demand faster aerial rotation, more complicated airborne equipment, automatic rejection of false bearings, and automatic receiver-gain control as range closed. Those costs show that a clearer cockpit display was not technically free. Unlike a responder-based arrangement, however, the rotating broadcast beacon could guide an effectively unlimited number of aircraft approaching simultaneously from different directions.",
       "sourcePath": "src/transcripts/txt/2021-12-22_T11-00-33_beacons-finding-home-when-alone-over-the-ocean-long-patrol_kxdUotFev-o.txt",
       "evidence": [{"start": "37:34", "end": "40:12", "note": "Clarke discusses visual displays, automatic-pilot potential, separate final-approach systems, and traffic-handling capacity."}]
     },
@@ -117,7 +159,7 @@
       "end": "43:53",
       "topics": ["fleet-air-arm", "naval-navigation", "naval-aviation", "military-watches"],
       "summary": "Precision Fleet Air Arm watches were an essential, easily overlooked part of the earlier beacon method.",
-      "body": "The watch was not a decorative accessory: its accuracy connected the rotating shipboard signal to the bearing calculated in the aircraft. Clarke points to the rarity of surviving 1937–43 navigator watches and to their historical value as material evidence of the navigation system and the aircrew who used it.",
+      "body": "The watch was not a decorative accessory: its precision connected the rotating shipboard signal to the bearing calculated in the aircraft. A timing error translated into a directional error, so the mechanism had to be accurate and carefully maintained. Clarke compares surviving 1937, 1940, 1941, and 1943 Fleet Air Arm navigator watches, noting that the earlier examples are especially scarce. Their rarity reflects both limited issue and the fact that some went to the seabed with the aircrew who wore them. Museums and collectors value them because they preserve the human-scale component of a much larger radio-navigation system. Opening here reveals how a small personal instrument could be operationally inseparable from a carrier's masthead transmitter.",
       "sourcePath": "src/transcripts/txt/2021-12-22_T11-00-33_beacons-finding-home-when-alone-over-the-ocean-long-patrol_kxdUotFev-o.txt",
       "evidence": [{"start": "41:31", "end": "43:53", "note": "The transcript describes the precision and rarity of wartime Fleet Air Arm navigator watches."}]
     },
@@ -131,7 +173,7 @@
       "end": "46:15",
       "topics": ["us-navy", "royal-navy", "ye-yg-beacons", "tacan", "british-pacific-fleet"],
       "summary": "American beacon equipment entered Royal Navy service in the Pacific and was later succeeded by the allied TACAN system.",
-      "body": "Clarke traces the American system from an experimental installation in USS Saratoga in 1938 to HMS Victorious receiving a YB beacon in 1943. In 1944, YE and YG equipment replaced Type 72 sets on many Royal Navy ships, especially those heading for the British Pacific Fleet. TACAN then became the common allied successor, although YG equipment remained useful for aircraft without TACAN into the 1960s.",
+      "body": "Clarke traces the American system from an experimental installation in USS Saratoga in 1938 to HMS Victorious receiving a YB beacon in 1943. Replacing Victorious's British Type 72DM was easier than modifying American aircraft to work with unfamiliar British electronics during her U.S. deployment. Royal Navy experience with the equipment proved favorable, and in 1944 YE and YG beacons replaced Type 72 sets on many ships, especially those intended for the British Pacific Fleet. The adoption therefore reflects operational interoperability as well as technical merit. Victorious received TACAN in 1947 as the newer common allied system. YG nevertheless remained useful into the 1960s for naval aircraft that lacked TACAN, showing how dependable navigation equipment can outlive the system chosen to replace it.",
       "sourcePath": "src/transcripts/txt/2021-12-22_T11-00-33_beacons-finding-home-when-alone-over-the-ocean-long-patrol_kxdUotFev-o.txt",
       "evidence": [{"start": "43:58", "end": "46:15", "note": "The transcript covers Saratoga's experimental system, Victorious, YE/YG replacement, and the later TACAN transition."}]
     }

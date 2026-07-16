@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "videoId": "anLR6d7C8LY",
-  "topics": ["lion-class", "battlecruisers", "battleship-design", "royal-navy", "naval-gunnery"],
+  "topics": ["lion-class", "battlecruisers", "battleship-design", "royal-navy", "naval-gunnery", "naval-procurement"],
   "segments": [
     {
       "id": "yamato-range-and-gun-elevation",
@@ -13,7 +13,7 @@
       "end": "6:09",
       "topics": ["yamato-class", "naval-gunnery", "battleship-design"],
       "summary": "A Yamato-style design shows why theoretical gun range and the range available at a ship's permitted elevation are not the same thing.",
-      "body": "The simulation uses 18.1-inch guns to distinguish a ballistic maximum at roughly 45 degrees from the shorter range available when the mount can elevate only to 30 degrees. It is a useful reminder that a nominal gun calibre or maximum range does not by itself describe a warship's fighting reach. Mount limits, fire control, and the tactical situation shape the range a commander can actually use.",
+      "body": "The simulation uses 18.1-inch guns to distinguish a ballistic maximum at roughly 45 degrees from the shorter range available when the mount can elevate only to 30 degrees. It is a useful reminder that a nominal gun calibre or maximum range does not by itself describe a warship's fighting reach. Mount limits, fire control, and the tactical situation shape the range a commander can actually use. The game value is therefore treated as a model of one permitted elevation, not a correction to the historical gun's greater theoretical reach.",
       "sourcePath": "src/transcripts/txt/2023-07-25_T18-00-01_testing-out-lion-class-and-potential-lion-class-successors-on-uad_anLR6d7C8LY.txt",
       "evidence": [{"start": "2:02", "end": "6:09", "note": "The stream compares the displayed 35.3 km range at 30 degrees with the higher-angle theoretical range."}]
     },
@@ -27,7 +27,7 @@
       "end": "10:19",
       "topics": ["lion-class", "naval-gunnery", "warship-machinery"],
       "summary": "The Lion-class trial uses cruising speed to keep firing steady, contrasting a ship's rated maximum with a tactically useful speed.",
-      "body": "The design is held at 23 knots because that is presented as the speed at which it can maintain regular, accurate fire, despite a much higher theoretical maximum. The point is less about one exact number than about operational margins: machinery condition, sea state, and firing stability can make the headline speed a poor guide to a ship's best fighting speed.",
+      "body": "The design is held at 23 knots because that is presented as the speed at which it can maintain regular, accurate fire, despite a much higher theoretical maximum. The simulation also limits the nominally 30-knot ships to 29 knots to represent engineering contingencies. The point is less about one exact number than about operational margins. Machinery condition, sea state, and firing stability can make the headline speed a poor guide to a ship's best fighting speed.",
       "sourcePath": "src/transcripts/txt/2023-07-25_T18-00-01_testing-out-lion-class-and-potential-lion-class-successors-on-uad_anLR6d7C8LY.txt",
       "evidence": [{"start": "8:46", "end": "10:19", "note": "He explains the 23-knot setting and the difference between it and maximum speed."}]
     },
@@ -41,7 +41,7 @@
       "end": "17:58",
       "topics": ["yamato-class", "royal-navy", "fleet-tactics", "force-structure"],
       "summary": "A two-versus-two scenario challenges the habit of treating capital-ship history as a sequence of isolated duels.",
-      "body": "The discussion argues that British or American forces meeting Japan would normally arrive as formations, not as a single ship accepting a one-on-one contest. That changes what counts as a credible response to Yamato: gun numbers, protection, and the availability of multiple ships matter alongside the quality of an individual battleship. It also frames a possible late Lion modernization as a force-structure choice rather than a purely technical answer.",
+      "body": "The discussion argues that British or American forces meeting Japan would normally arrive as formations, not as a single ship accepting a one-on-one contest. That changes what counts as a credible response to Yamato: gun numbers, protection, and the availability of multiple ships matter alongside the quality of an individual battleship. The trial contrasts eighteen 18.1-inch guns with a much larger aggregate battery of 16-inch weapons, making volume of fire part of the comparison. It also frames a possible late Lion modernization as a force-structure choice rather than a purely technical answer.",
       "sourcePath": "src/transcripts/txt/2023-07-25_T18-00-01_testing-out-lion-class-and-potential-lion-class-successors-on-uad_anLR6d7C8LY.txt",
       "evidence": [{"start": "14:57", "end": "17:58", "note": "The stream contrasts one-on-one assumptions with British and American formation fighting."}]
     },
@@ -55,7 +55,7 @@
       "end": "25:48",
       "topics": ["lion-class", "battleship-design", "naval-procurement", "naval-gunnery"],
       "summary": "A counterfactual British response to Yamato combines proven quadruple mounts, 16-inch guns, and Lion-class speed rather than starting from a clean sheet.",
-      "body": "The proposed follow-on assumes that wartime experience has solved the reliability problems of British quadruple turrets. In that setting, a new ship could use familiar 16-inch weapons and mounts in greater numbers while retaining a fast Lion-derived hull. The example highlights an important procurement question: a navy may respond to a threat by maturing existing equipment instead of pursuing the largest possible new gun.",
+      "body": "The proposed follow-on assumes that wartime experience has solved the reliability problems of British quadruple turrets. In that setting, a new ship could use familiar 16-inch weapons and mounts in greater numbers while retaining a fast Lion-derived hull. Both the guns and the improved mounts would be developments of equipment already in British service, reducing the need for a clean-sheet response. The example highlights an important procurement question: a navy may answer a threat by maturing existing equipment instead of pursuing the largest possible new gun.",
       "sourcePath": "src/transcripts/txt/2023-07-25_T18-00-01_testing-out-lion-class-and-potential-lion-class-successors-on-uad_anLR6d7C8LY.txt",
       "evidence": [{"start": "24:47", "end": "25:48", "note": "He outlines a second-generation quadruple-turret response using 16-inch guns and Lion-class speed."}]
     },
@@ -69,11 +69,41 @@
       "end": "27:29",
       "topics": ["nelson-class", "naval-treaties", "royal-navy", "battleship-design"],
       "summary": "A question about Nelson and Rodney leads to the treaty, infrastructure, and fiscal constraints that shaped their striking layout.",
-      "body": "The answer treats the Nelson class as a concentrated expression of First World War lessons within the limits imposed in the 1920s. Treaty displacement, existing British industrial capacity, and the government's Ten Year Rule all narrowed the available choices. Their unusual appearance is therefore not just eccentricity but the visible result of an unusually constrained design problem.",
+      "body": "The answer treats the Nelson class as a concentrated expression of First World War lessons within the limits imposed in the 1920s. Treaty displacement, existing British industrial capacity, and the government's Ten Year Rule all narrowed the available choices. Other navies studied comparable arrangements, but the Royal Navy had a particular reason to implement one immediately. Their unusual appearance is therefore not just eccentricity but the visible result of an unusually constrained design problem.",
       "question": "Why were Nelson and Rodney so distinctive in design?",
       "answerShort": "They were new 1920s battleships built from First World War experience while constrained by treaty limits, British infrastructure, and limited government spending.",
       "sourcePath": "src/transcripts/txt/2023-07-25_T18-00-01_testing-out-lion-class-and-potential-lion-class-successors-on-uad_anLR6d7C8LY.txt",
       "evidence": [{"start": "26:39", "end": "27:29", "note": "The answer explains the 1920s design context, treaty limits, infrastructure, and Ten Year Rule."}]
+    },
+    {
+      "id": "nelson-speed-and-caracciolo-counterfactual",
+      "videoId": "anLR6d7C8LY",
+      "slug": "nelson-speed-and-caracciolo-counterfactual",
+      "title": "Favourite ships open two revealing design counterfactuals",
+      "kind": "qa",
+      "start": "28:46",
+      "end": "31:25",
+      "topics": ["nelson-class", "orion-class", "francesco-caracciolo-class", "battleship-design", "royal-navy", "italian-navy"],
+      "summary": "A question about favourite ships leads to Nelson-class speed margins, Orion's super-dreadnought importance, and the unrealized promise of the Francesco Caracciolo class.",
+      "body": "Dr. Clarke names Renown as his favourite battlecruiser and highlights Orion as an often-forgotten first super-dreadnought. He argues that Nelson and Rodney had more speed potential than their official figures suggest, and that a modest displacement increase or a third shaft could have changed their performance. He then contrasts Italy's built dreadnoughts with the uncompleted Francesco Caracciolo class. In his counterfactual, Caracciolo matters because it could have delivered much of what the Royal Navy wanted from the Queen Elizabeth concept and thereby influenced later design expectations.",
+      "question": "Do you have a favourite ship?",
+      "answerShort": "Renown is his favourite battlecruiser, while Orion, Nelson and Rodney, and the unbuilt Francesco Caracciolo class each stand out for different design and historical reasons.",
+      "sourcePath": "src/transcripts/txt/2023-07-25_T18-00-01_testing-out-lion-class-and-potential-lion-class-successors-on-uad_anLR6d7C8LY.txt",
+      "evidence": [{"start": "28:46", "end": "31:25", "note": "The answer identifies favourite ships and explains Nelson-class speed potential, Orion's significance, and the Caracciolo counterfactual."}]
+    },
+    {
+      "id": "bismarck-fame-and-royal-navy-war",
+      "videoId": "anLR6d7C8LY",
+      "slug": "bismarck-fame-and-royal-navy-war",
+      "title": "Bismarck's fame can narrow the Royal Navy's wartime story",
+      "kind": "notable_point",
+      "start": "32:49",
+      "end": "34:05",
+      "topics": ["bismarck", "royal-navy", "battle-of-narvik", "battle-of-the-north-cape", "battle-of-the-river-plate", "mediterranean-theater"],
+      "summary": "A rapid survey of Narvik, North Cape, River Plate, and Mediterranean fighting puts Bismarck's two engagements in a much wider Royal Navy war.",
+      "body": "The discussion pushes back against using Bismarck as the default story of the Royal Navy in the Second World War. Dr. Clarke points instead to Narvik, North Cape, the River Plate, and several Mediterranean battles as other major engagements. In operational terms, Bismarck's career occupied only a small part of the navy's war. Its disproportionate prominence is attributed to the publicity and later press attention surrounding those two engagements rather than to a lack of other important actions.",
+      "sourcePath": "src/transcripts/txt/2023-07-25_T18-00-01_testing-out-lion-class-and-potential-lion-class-successors-on-uad_anLR6d7C8LY.txt",
+      "evidence": [{"start": "32:49", "end": "34:05", "note": "He lists other Royal Navy battles and contrasts their breadth with Bismarck's short operational career and later fame."}]
     },
     {
       "id": "fast-battlecruiser-design-brief",
@@ -85,7 +115,7 @@
       "end": "49:26",
       "topics": ["battlecruisers", "battleship-design", "naval-architecture", "naval-gunnery"],
       "summary": "A fast battlecruiser design exercise balances 36-knot speed, 12 15-inch guns, all-or-nothing protection, and stability.",
-      "body": "The design starts with a high-speed requirement and then allocates displacement among machinery, armament, belt and deck protection, anti-flooding, and secondary batteries. The resulting ship is deliberately not a battleship: its speed and heavy firepower are intended to create tactical options rather than permit close-range exchanges on equal terms. The build makes the trade-offs visible, especially the way armour additions and weight distribution affect pitch, roll, and engine efficiency.",
+      "body": "The design starts with a high-speed requirement and then allocates displacement among machinery, armament, belt and deck protection, anti-flooding, and secondary batteries. Twelve 15-inch guns and a 36-knot target make firepower and mobility the defining requirements. The resulting ship is deliberately not a battleship: its speed and heavy battery are intended to create tactical options rather than permit close-range exchanges on equal terms. The build makes the trade-offs visible, especially the way armour additions and weight distribution affect pitch, roll, and engine efficiency.",
       "sourcePath": "src/transcripts/txt/2023-07-25_T18-00-01_testing-out-lion-class-and-potential-lion-class-successors-on-uad_anLR6d7C8LY.txt",
       "evidence": [{"start": "36:22", "end": "49:26", "note": "The stream constructs the fast battlecruiser and explains speed, armour, guns, and stability choices."}]
     },
@@ -99,7 +129,7 @@
       "end": "50:16",
       "topics": ["battle-of-the-river-plate", "graf-spee", "royal-navy", "cruiser-warfare"],
       "summary": "A River Plate counterfactual considers how HMS Cumberland could have widened Harwood's search geometry against Graf Spee.",
-      "body": "The answer suggests splitting the available cruisers into several directions rather than keeping every ship in one concentration. Cumberland and Exeter could approach on separate axes while the Leanders worked behind, making it harder for Graf Spee to choose a safe withdrawal route. The discussion emphasizes the value of dispersed scouting and converging pressure when hunting a faster raider.",
+      "body": "The answer suggests splitting the available cruisers into several directions rather than keeping every ship in one concentration. Cumberland and Exeter could approach on separate axes while the Leanders worked behind. That arrangement would make it harder for Graf Spee to choose a safe withdrawal route whichever direction the raider turned. The discussion emphasizes the value of dispersed scouting and converging pressure when hunting a faster raider.",
       "question": "If Cumberland had joined Harwood, would he have divided his cruisers differently against Graf Spee?",
       "answerShort": "He likely would have split the force more widely, using Cumberland, Exeter, and the Leanders on separate axes to constrain Graf Spee's escape options.",
       "sourcePath": "src/transcripts/txt/2023-07-25_T18-00-01_testing-out-lion-class-and-potential-lion-class-successors-on-uad_anLR6d7C8LY.txt",
@@ -115,9 +145,23 @@
       "end": "55:17",
       "topics": ["battlecruisers", "fleet-tactics", "naval-gunnery"],
       "summary": "The trial demonstrates how even a modest range advantage becomes decisive when a fast battlecruiser maintains separation.",
-      "body": "The ship uses its speed advantage to stay outside an opponent's useful range rather than charging into a close-range exchange. That tactical choice matters because the design's firepower and protection cannot erase the fundamental difference between a battlecruiser and a battleship. The simulation makes a familiar doctrine concrete: speed creates value only if the commander uses it to control the engagement.",
+      "body": "The ship uses its speed advantage to stay outside an opponent's useful range rather than charging into a close-range exchange. Even a range margin of roughly a kilometre can matter when the faster vessel continually preserves it. That tactical choice matters because the design's firepower and protection cannot erase the fundamental difference between a battlecruiser and a battleship. The simulation makes a familiar doctrine concrete: speed creates value only if the commander uses it to control the engagement.",
       "sourcePath": "src/transcripts/txt/2023-07-25_T18-00-01_testing-out-lion-class-and-potential-lion-class-successors-on-uad_anLR6d7C8LY.txt",
       "evidence": [{"start": "54:06", "end": "55:17", "note": "He keeps Alpha at range using its speed and range advantage against the Bismarck-style opponent."}]
+    },
+    {
+      "id": "aft-director-battle-damage-redundancy",
+      "videoId": "anLR6d7C8LY",
+      "slug": "aft-director-battle-damage-redundancy",
+      "title": "An aft director preserves fire control after battle damage",
+      "kind": "notable_point",
+      "start": "1:00:40",
+      "end": "1:02:16",
+      "topics": ["naval-fire-control", "battle-damage", "warship-design", "naval-gunnery"],
+      "summary": "Damage to the forward directors turns the ship's aft director from a secondary fitting into the system responsible for controlling the remaining gunfire.",
+      "body": "The simulated battle leaves the forward fire-control positions apparently destroyed, so the aft director must take over. Dr. Clarke notes that this surviving station should now be oriented toward the target because it has become responsible for directing the guns. The moment illustrates why capital ships carried separated and redundant control positions rather than relying on one exposed center. It also shows how damage to vision and direction systems can suppress an enemy's effective fire even before every gun is physically disabled.",
+      "sourcePath": "src/transcripts/txt/2023-07-25_T18-00-01_testing-out-lion-class-and-potential-lion-class-successors-on-uad_anLR6d7C8LY.txt",
+      "evidence": [{"start": "1:00:40", "end": "1:02:16", "note": "He identifies the aft director as the surviving fire-control position and links lost visibility to reduced return fire."}]
     },
     {
       "id": "armor-distribution-and-stability",
@@ -129,7 +173,7 @@
       "end": "1:10:18",
       "topics": ["naval-architecture", "battleship-design", "armor-protection"],
       "summary": "The design review uses belt and deck weight to show why a warship's protection scheme also influences pitch, roll, and displacement.",
-      "body": "Adding weight to the central belt and main deck improves the simulated ship's pitch and roll, but it can also push the design over its displacement limit. Reducing draught or thinning protection solves some problems while creating others. The useful lesson is that armour is not a single number: where it is placed interacts with hull form, stability, and the rest of the design budget.",
+      "body": "Adding weight to the central belt and main deck improves the simulated ship's pitch and roll, but it can also push the design over its displacement limit. Reducing draught or thinning protection solves some problems while creating others. Turret, barbette, bulkhead, and anti-flooding protection must then compete for the remaining weight. The useful lesson is that armour is not a single number: where it is placed interacts with hull form, stability, and the rest of the design budget.",
       "sourcePath": "src/transcripts/txt/2023-07-25_T18-00-01_testing-out-lion-class-and-potential-lion-class-successors-on-uad_anLR6d7C8LY.txt",
       "evidence": [{"start": "1:05:47", "end": "1:10:18", "note": "He reviews central armour weight, pitch and roll, displacement, draught, and turret protection."}]
     },
@@ -143,7 +187,7 @@
       "end": "1:15:08",
       "topics": ["armor-protection", "naval-gunnery", "battleship-design"],
       "summary": "A ship intended to fight at long range needs a protection scheme that takes plunging fire and deck strength seriously.",
-      "body": "The discussion contrasts a long-range battlecruiser with a ship expected to close and fight at short range. A long-range design benefits from stronger deck protection and the hull strength to carry it, while it may not need the same belt emphasis as a close-action ship. The point is framed as a design question about the range at which a navy expects its vessels to fight, not a simple contest for the thickest armour.",
+      "body": "The discussion contrasts a long-range battlecruiser with a ship expected to close and fight at short range. A long-range design benefits from stronger deck protection and the hull strength to carry it, while it may not need the same belt emphasis as a close-action ship. The distribution also has to preserve stability, engine efficiency, and enough protection for turrets and barbettes. The point is framed as a design question about the range at which a navy expects its vessels to fight, not a simple contest for the thickest armour.",
       "sourcePath": "src/transcripts/txt/2023-07-25_T18-00-01_testing-out-lion-class-and-potential-lion-class-successors-on-uad_anLR6d7C8LY.txt",
       "evidence": [{"start": "1:11:32", "end": "1:15:08", "note": "He links long-range combat to deck armour, belt choices, and the ship's intended fighting range."}]
     },
@@ -157,7 +201,7 @@
       "end": "1:28:18",
       "topics": ["fleet-tactics", "naval-procurement", "armor-protection", "naval-gunnery"],
       "summary": "The stream turns the simulation into a broader lesson: fast ships with long-range guns should be designed and handled to keep the enemy at distance.",
-      "body": "The argument begins with the practical need to understand a fleet's research and the capabilities it produces. If a navy has speed and range, it should avoid donating those advantages by closing to short range. Protection should likewise be proportionate to the mission, while mature technology should be used to build enough ships rather than endlessly delaying production for marginal improvements.",
+      "body": "The argument begins with the practical need to understand a fleet's research and the capabilities it produces. If a navy has speed and range, it should avoid donating those advantages by closing to short range. Protection should likewise be proportionate to the mission, with deck and structural strength emphasized for plunging fire. Once guns and turrets are sufficient for the intended fight, mature technology should be used to build enough ships rather than endlessly delaying production for marginal improvements.",
       "sourcePath": "src/transcripts/txt/2023-07-25_T18-00-01_testing-out-lion-class-and-potential-lion-class-successors-on-uad_anLR6d7C8LY.txt",
       "evidence": [{"start": "1:24:42", "end": "1:28:18", "note": "He connects long-range guns, ship handling, armour choices, and stopping at a sufficient technology level to build ships."}]
     },
@@ -171,7 +215,7 @@
       "end": "1:40:28",
       "topics": ["narvik-class", "destroyers", "kriegsmarine", "naval-gunnery"],
       "summary": "A Narvik-class recreation exposes the compromises required when a game hull and fittings do not match a historical destroyer's layout.",
-      "body": "The attempt starts from the 1936A type's single and twin 5.9-inch guns, quadruple 21-inch torpedo tubes, and light anti-aircraft weapons. The game cannot place the funnel and fittings in their historical positions, so the exercise becomes a comparison between historical dimensions and the abstractions imposed by the simulation. It is useful for separating the real ship's armament and intended layout from the game model used to approximate it.",
+      "body": "The attempt starts from the 1936A type's single and twin 5.9-inch guns, quadruple 21-inch torpedo tubes, and light anti-aircraft weapons. The barrel length is checked against the historical measurement rather than accepted from the game's default fitting. The game cannot place the funnel and fittings in their historical positions, so the exercise becomes a comparison between historical dimensions and the abstractions imposed by the simulation. It is useful for separating the real ship's armament and intended layout from the game model used to approximate it.",
       "sourcePath": "src/transcripts/txt/2023-07-25_T18-00-01_testing-out-lion-class-and-potential-lion-class-successors-on-uad_anLR6d7C8LY.txt",
       "evidence": [{"start": "1:32:49", "end": "1:40:28", "note": "He identifies the 1936A armament and explains where the game's hull arrangement prevents a faithful layout."}]
     },
@@ -185,7 +229,7 @@
       "end": "1:50:16",
       "topics": ["tribal-class", "destroyers", "naval-gunnery", "kriegsmarine", "royal-navy"],
       "summary": "A Tribal-versus-German destroyer test highlights how turret stabilization and game range values can distort historical comparisons.",
-      "body": "The simulation gives German 5.9-inch guns a much larger range advantage over British 4.7-inch weapons than the speaker considers historically plausible. The historical comparison also cannot be reduced to calibre, because the real mounts were largely single and unstabilized, with very different loading and handling characteristics. It is a reminder to treat game combat results as prompts for historical questions rather than as direct evidence of ship performance.",
+      "body": "The simulation gives German 5.9-inch guns a much larger range advantage over British 4.7-inch weapons than the speaker considers historically plausible. The historical comparison also cannot be reduced to calibre, because the real German mounts were largely single and unstabilized, with very different loading and handling characteristics. Reproducing the Tribal's effective range and rate of fire would require ahistorical gun or turret choices inside the game. It is a reminder to treat simulation results as prompts for historical questions rather than as direct evidence of ship performance.",
       "sourcePath": "src/transcripts/txt/2023-07-25_T18-00-01_testing-out-lion-class-and-potential-lion-class-successors-on-uad_anLR6d7C8LY.txt",
       "evidence": [{"start": "1:49:09", "end": "1:50:16", "note": "He contrasts the game's gun-range result with historical 4.7-inch and 5.9-inch mount characteristics."}]
     },
@@ -199,7 +243,7 @@
       "end": "1:54:11",
       "topics": ["destroyers", "cruisers", "warship-recognition", "us-navy", "royal-navy"],
       "summary": "A closing question considers how class layouts and shared visual conventions could make warships harder to identify at distance or from the air.",
-      "body": "The answer notes that Tribal destroyers could resemble cruisers at a distance, while County-class cruisers shared elements of Royal Navy capital-ship appearance. It also points to the repeated three-triple-turret arrangement on later American heavy cruisers and capital ships. Recognition depends on silhouette and viewing conditions, so common design habits could create real uncertainty before detailed identification was possible.",
+      "body": "The answer notes that Tribal destroyers could resemble cruisers at a distance, while County-class cruisers shared elements of Royal Navy capital-ship appearance. It also points to the repeated three-triple-turret arrangement on later American heavy cruisers and capital ships. Similarity could be especially useful against aerial reconnaissance, where observers had limited time and viewing angles. Recognition depends on silhouette and conditions, so common design habits could create real uncertainty before detailed identification was possible.",
       "question": "Did naval designers ever make ships resemble other classes to confuse identification?",
       "answerShort": "Similar silhouettes could complicate recognition even when deliberate deception was not the sole aim, including Tribals, Counties, and recurring American turret layouts.",
       "sourcePath": "src/transcripts/txt/2023-07-25_T18-00-01_testing-out-lion-class-and-potential-lion-class-successors-on-uad_anLR6d7C8LY.txt",

@@ -5,10 +5,31 @@
     "world-war-ii",
     "anti-aircraft-rockets",
     "air-defence",
-    "aerial-minefields"
+    "aerial-minefields",
+    "guided-missiles"
   ],
   "needsFurtherProcessing": false,
   "segments": [
+    {
+      "id": "american-threat-context-and-operation-bumblebee",
+      "videoId": "chX0YIPG0aI",
+      "slug": "american-threat-context-and-operation-bumblebee",
+      "title": "Why the United States moved past barrage rockets",
+      "kind": "chapter",
+      "start": "6:53",
+      "end": "10:01",
+      "topics": ["operation-bumblebee", "united-states-navy", "guided-missiles", "military-innovation", "naval-leadership"],
+      "summary": "Lower immediate air-defence pressure allowed American programs such as Operation Bumblebee to pursue guided missiles instead of rushing barrage rockets into service.",
+      "body": "Clarke contrasts American development conditions with the urgent threats facing Britain, Japan, and Germany. The United States generated many rocket concepts but had less reason to field an improvised wartime system, so its effort could move toward the more demanding missile stage. The later adaptation of Germany's Typhoon concept into an American weather rocket also shows how an unsuccessful weapon could leave a useful technical legacy. He uses Operation Bumblebee to introduce a broader institutional lesson about technical leadership: engineers in naval organizations must persuade superiors, subordinates, and peers who do not sit in a simple chain of command. That sideways leadership can determine whether a promising idea receives the cooperation needed to become a working capability.",
+      "sourcePath": "src/transcripts/txt/2024-08-31_T18-30-06_laying-minefields-in-the-sky-some-wwii-rocketry-and-supersized-t-shirt-cannons_chX0YIPG0aI.txt",
+      "evidence": [
+        {
+          "start": "6:53",
+          "end": "10:01",
+          "note": "Clarke contrasts the American threat environment and missile focus with wartime barrage systems, then discusses leadership inside technical naval organizations."
+        }
+      ]
+    },
     {
       "id": "wwii-anti-aircraft-rockets-and-bomber-threat",
       "videoId": "chX0YIPG0aI",
@@ -19,7 +40,7 @@
       "end": "15:30",
       "topics": ["world-war-ii", "anti-aircraft-rockets", "air-defence", "strategic-bombing"],
       "summary": "British, Japanese, and German rocket projects all sought a way to disrupt large, heavily armed bomber formations.",
-      "body": "Clarke frames these weapons as force multipliers for countries confronting different versions of the same problem: too many attacking aircraft and too little time to stop them. British designers worried about heavy bombers, Japan about the volume of incoming aircraft, and Germany about RAF and USAAF formations. The resulting systems ranged from simple barrages to elaborate guided missiles.",
+      "body": "Clarke frames these weapons as force multipliers for countries confronting different versions of the same problem: too many attacking aircraft and too little time to stop them. British designers worried about heavy bombers, Japan about the volume of incoming aircraft, and Germany about RAF and USAAF formations. Those different threat pictures shaped whether a country emphasized fixed barrages, shipboard flame barriers, or elaborate guided missiles. The comparison is useful because the weapons are not simply eccentric inventions: each reflects an attempt to multiply scarce fighters, guns, crews, or warning time.",
       "sourcePath": "src/transcripts/txt/2024-08-31_T18-30-06_laying-minefields-in-the-sky-some-wwii-rocketry-and-supersized-t-shirt-cannons_chX0YIPG0aI.txt",
       "evidence": [
         {
@@ -39,7 +60,7 @@
       "end": "22:38",
       "topics": ["unrotated-projectile", "royal-navy", "british-weapons-development", "aerial-minefields"],
       "summary": "The Unrotated Projectile emerged from pre-war British rocket research rather than from a single wartime inspiration by Churchill.",
-      "body": "Clarke traces work on rockets, propellants, and air defence back to the early 1930s, including a 1936 argument that rockets could become practical weapons. Churchill's 1939 request for an aerial minefield mattered because it pushed an existing line of research toward deployable equipment. The example distinguishes war-driven fielding from the longer technical development that made fielding possible.",
+      "body": "Clarke traces work on rockets, propellants, and air defence back to the early 1930s, including a 1936 argument that rockets could become practical weapons. Calling rockets practical did not mean they were new: it meant improving an old weapon until its accuracy and performance met twentieth-century expectations. Churchill's 1939 request for an aerial minefield mattered because it pushed an existing line of research toward deployable equipment, with Vickers-Armstrong and Royal Ordnance already involved. The example distinguishes war-driven fielding from the longer technical development that made fielding possible. In Clarke's formulation, major wars often convert accumulated research into usable capability more than they create technology from nothing.",
       "sourcePath": "src/transcripts/txt/2024-08-31_T18-30-06_laying-minefields-in-the-sky-some-wwii-rocketry-and-supersized-t-shirt-cannons_chX0YIPG0aI.txt",
       "evidence": [
         {
@@ -59,7 +80,7 @@
       "end": "24:24",
       "topics": ["unrotated-projectile", "aerial-minefields", "naval-air-defence", "warship-manoeuvre"],
       "summary": "The Unrotated Projectile could put parachute-borne charges into the air, but its defensive pattern was ill suited to a moving ship and an evading aircraft.",
-      "body": "The system's concept was straightforward: launch rockets ahead of an attacker and suspend explosive hazards in its path. Clarke points out that a warship and its attacker are both moving, so the ship may leave its own protective pattern while the aircraft can simply turn around it. A visually impressive barrage was therefore not the same thing as a reliable interception system.",
+      "body": "The system's concept was straightforward: launch rockets ahead of an attacker and suspend explosive hazards in its path. Clarke points out that a warship and its attacker are both moving, so the ship may leave its own protective pattern while the aircraft can simply turn around it. Even multiple projectors on battleships and cruisers could create only several visible sections of temporary minefield, not an enclosing shield. A visually impressive barrage was therefore not the same thing as a reliable interception system.",
       "sourcePath": "src/transcripts/txt/2024-08-31_T18-30-06_laying-minefields-in-the-sky-some-wwii-rocketry-and-supersized-t-shirt-cannons_chX0YIPG0aI.txt",
       "evidence": [
         {
@@ -76,16 +97,56 @@
       "title": "German guided missiles chase a demanding solution",
       "kind": "chapter",
       "start": "25:03",
-      "end": "32:11",
-      "topics": ["feuerlilie", "wasserfall", "guided-missiles", "german-air-defence"],
-      "summary": "Feuerlilie and Wasserfall reveal the appeal and cost of pursuing radio-controlled missiles capable of defeating high-altitude bombers.",
-      "body": "Clarke describes Feuerlilie as a line-of-sight, radio-controlled project that struggled through engine, launch, and control problems from 1940 to 1945. Wasserfall aimed still higher: an anti-aircraft relative of the V-2 with a large warhead, long range, and high speed. Both projects show how German air-defence plans collided with scarce technical expertise, fragile precision manufacturing, and the competing demands of jet aviation.",
+      "end": "26:55",
+      "topics": ["feuerlilie", "guided-missiles", "german-air-defence"],
+      "summary": "Feuerlilie reveals the appeal and cost of pursuing a radio-controlled missile capable of defeating high-altitude bombers.",
+      "body": "Clarke describes Feuerlilie as a line-of-sight, radio-controlled project that struggled through engine, launch, and control problems from 1940 to 1945. Designers debated single- and two-stage arrangements as well as launch from a modified 88 mm gun or an oblique ramp. Numerous iterations never resolved the gap between the project's ambition and a weapon that could enter service. Feuerlilie therefore shows Germany repeatedly pursuing technical perfection while time, expertise, and competing programs narrowed what could realistically be achieved.",
       "sourcePath": "src/transcripts/txt/2024-08-31_T18-30-06_laying-minefields-in-the-sky-some-wwii-rocketry-and-supersized-t-shirt-cannons_chX0YIPG0aI.txt",
       "evidence": [
         {
           "start": "25:03",
+          "end": "26:55",
+          "note": "Clarke discusses Feuerlilie's radio control, engine and launch difficulties, repeated iterations, and failure to enter service."
+        }
+      ]
+    },
+    {
+      "id": "german-guidance-manufacturing-and-coerced-labour",
+      "videoId": "chX0YIPG0aI",
+      "slug": "german-guidance-manufacturing-and-coerced-labour",
+      "title": "Guided weapons depend on people and precision industry",
+      "kind": "notable_point",
+      "start": "26:57",
+      "end": "30:00",
+      "topics": ["guided-missiles", "german-air-defence", "wartime-production", "forced-labour", "military-innovation"],
+      "summary": "German remote-control ambitions collided with competing jet programs, shrinking skilled labor, and a production system unable to sustain fine tolerances.",
+      "body": "The missile-versus-fighter choice was not merely a contest between two designs because both demanded scarce engineers, factories, and precision components. Clarke notes that remote-control equipment had to survive severe acceleration and vibration while German manufacturing capacity deteriorated. He connects that deterioration to the regime's use of coerced labor from occupied territories, concentration camps, and Soviet prisoners of war. That criminal labor system was also poorly suited to the exact setup and consistent tolerances demanded by advanced weapons. The passage makes industrial organization and human expertise as important to guided-missile performance as the aerodynamic idea on paper.",
+      "sourcePath": "src/transcripts/txt/2024-08-31_T18-30-06_laying-minefields-in-the-sky-some-wwii-rocketry-and-supersized-t-shirt-cannons_chX0YIPG0aI.txt",
+      "evidence": [
+        {
+          "start": "26:57",
+          "end": "30:00",
+          "note": "The transcript links remote-control demands and fine manufacturing tolerances to lost industrial capacity and Nazi Germany's coerced-labor system."
+        }
+      ]
+    },
+    {
+      "id": "wasserfall-v2-scale-air-defence-missile",
+      "videoId": "chX0YIPG0aI",
+      "slug": "wasserfall-v2-scale-air-defence-missile",
+      "title": "Wasserfall scales the V-2 idea for air defence",
+      "kind": "chapter",
+      "start": "31:02",
+      "end": "32:11",
+      "topics": ["wasserfall", "v-2", "guided-missiles", "german-air-defence", "strategic-bombing"],
+      "summary": "Wasserfall promised V-2-derived speed, range, and a large warhead against bomber formations but never entered service.",
+      "body": "Clarke presents Wasserfall as an anti-aircraft relative of the V-2 rather than a simple barrage rocket. The 3.7-ton liquid-propelled design was projected to reach about 25 kilometers and roughly 1,700 miles per hour. Its large warhead was meant to destroy a bomber and threaten nearby aircraft in the formation. Those paper capabilities were formidable, but the project never became an operational defence. Wasserfall captures the recurring gap between an advanced specification and a fieldable wartime system.",
+      "sourcePath": "src/transcripts/txt/2024-08-31_T18-30-06_laying-minefields-in-the-sky-some-wwii-rocketry-and-supersized-t-shirt-cannons_chX0YIPG0aI.txt",
+      "evidence": [
+        {
+          "start": "31:02",
           "end": "32:11",
-          "note": "Clarke discusses Feuerlilie's development difficulties and Wasserfall's projected performance without service entry."
+          "note": "Clarke gives Wasserfall's V-2 relationship, mass, liquid propulsion, projected range and speed, large warhead, and lack of service entry."
         }
       ]
     },
@@ -96,16 +157,36 @@
       "title": "Z Batteries make more sense over fixed routes",
       "kind": "chapter",
       "start": "33:39",
-      "end": "37:30",
+      "end": "35:29",
       "topics": ["z-battery", "british-air-defence", "anti-aircraft-rockets", "home-guard"],
       "summary": "Land-based Z Batteries could place danger over predictable approaches to fixed targets, avoiding the naval system's moving-platform problem.",
-      "body": "The value of a rocket barrage improved where aircraft were likely to funnel along an estuary, river, or other navigational feature toward a target. Clarke describes the land weapon's photoelectric proximity-fused high-explosive payload and its use by Royal Artillery and Home Guard units. He also notes its influence on the Canadian Land Mattress and the occasional use of projectors against ground forces in North Africa.",
+      "body": "The value of a rocket barrage improved where aircraft were likely to funnel along an estuary, river, or other navigational feature toward a fixed target. Merseyside illustrates the logic because night bombers could use a river as a navigational guide toward an industrial area. Defenders could launch into that predictable corridor without having their protected position sail away from the barrage. Clarke describes the land weapon's photoelectric proximity-fused high-explosive payload as a more suitable expression of the aerial-minefield idea. He also cautions that passionate advocates and disputed testing still complicate judgments about its value.",
       "sourcePath": "src/transcripts/txt/2024-08-31_T18-30-06_laying-minefields-in-the-sky-some-wwii-rocketry-and-supersized-t-shirt-cannons_chX0YIPG0aI.txt",
       "evidence": [
         {
           "start": "33:39",
+          "end": "35:29",
+          "note": "The transcript contrasts predictable river and estuary approaches to fixed land targets with the moving-platform problem at sea."
+        }
+      ]
+    },
+    {
+      "id": "z-battery-manpower-production-and-land-mattress",
+      "videoId": "chX0YIPG0aI",
+      "slug": "z-battery-manpower-production-and-land-mattress",
+      "title": "Z Batteries turn manpower and rockets toward new roles",
+      "kind": "notable_point",
+      "start": "35:32",
+      "end": "37:30",
+      "topics": ["z-battery", "home-guard", "royal-artillery", "land-mattress", "north-africa-campaign", "wartime-production"],
+      "summary": "Z Batteries traded enormous rocket consumption for less physically demanding crews and helped inspire a surface-to-surface battlefield weapon.",
+      "body": "Clarke questions whether producing roughly 2.4 million rockets a year was justified, but he also identifies institutional advantages. Z Batteries could be crewed by Home Guard personnel up to age sixty, whereas conventional anti-aircraft guns imposed greater physical demands and used younger crews. Projectors sent to North Africa demonstrated that the same rockets could frighten and disrupt exposed ground troops. Canadian experience helped lead to the Land Mattress surface-to-surface system. The sequence shows a weapon finding value through manpower policy and adaptation even when its original air-defence efficiency remained debatable.",
+      "sourcePath": "src/transcripts/txt/2024-08-31_T18-30-06_laying-minefields-in-the-sky-some-wwii-rocketry-and-supersized-t-shirt-cannons_chX0YIPG0aI.txt",
+      "evidence": [
+        {
+          "start": "35:32",
           "end": "37:30",
-          "note": "The transcript contrasts predictable land approaches with sea-based use and covers Z Battery employment."
+          "note": "Clarke discusses annual rocket production, Home Guard age and physical demands, North African ground use, and the Canadian Land Mattress."
         }
       ]
     },
@@ -119,7 +200,7 @@
       "end": "42:41",
       "topics": ["type-4-incendiary-rocket", "japanese-navy", "naval-air-defence", "defensive-depth"],
       "summary": "Japan's Type 4 incendiary rocket tried to buy capital ships space to manoeuvre by confronting attackers with a wall of flame.",
-      "body": "Clarke presents the rocket as an answer to weak anti-aircraft performance and an increasing shortage of pilots. Its intended effect was psychological as well as physical: force aircraft to avoid a bright, fiery barrier and give carriers or battleships room to operate. The comparison with the Type 3 Sanshiki shell highlights the difficulty of turning a spectacular pyrotechnic effect into sustained protection.",
+      "body": "Clarke presents the rocket as an answer to weak anti-aircraft performance and an increasing shortage of pilots. Its intended effect was psychological as well as physical: force aircraft to avoid a bright, fiery barrier and give carriers or battleships room to operate. That space mattered because carriers needed room and wind for flight operations while battleships needed freedom to manoeuvre and use their main armament. The comparison with the Type 3 Sanshiki shell highlights the difficulty of turning a spectacular pyrotechnic effect into sustained protection.",
       "sourcePath": "src/transcripts/txt/2024-08-31_T18-30-06_laying-minefields-in-the-sky-some-wwii-rocketry-and-supersized-t-shirt-cannons_chX0YIPG0aI.txt",
       "evidence": [
         {
@@ -139,7 +220,7 @@
       "end": "45:25",
       "topics": ["type-4-incendiary-rocket", "naval-air-defence", "fire-control", "aerial-minefields"],
       "summary": "Even a full Type 4 salvo created only a short-lived barrier, leaving ships to solve a difficult interception calculation against moving aircraft.",
-      "body": "Each rocket was meant to contribute to a broader pattern that could damage an aircraft passing through it, but the effect ended almost as soon as the charges fired. Clarke emphasizes the timing problem: crews had to predict the future positions of both ship and attacker, then place a barrier that could not persist. The concept was logical on paper but unforgiving in combat conditions.",
+      "body": "Each of the usual twenty-eight rockets was meant to contribute a roughly thirty-meter cone to a broader pattern that could damage an aircraft passing through it. The effect ended almost as soon as the charges fired because an explosion could not remain in place as a persistent obstacle. Clarke emphasizes the timing problem: crews had to predict the future positions of both ship and attacker, then place a barrier that could not persist. The concept was logical on paper but unforgiving in combat conditions.",
       "sourcePath": "src/transcripts/txt/2024-08-31_T18-30-06_laying-minefields-in-the-sky-some-wwii-rocketry-and-supersized-t-shirt-cannons_chX0YIPG0aI.txt",
       "evidence": [
         {
@@ -159,7 +240,7 @@
       "end": "51:27",
       "topics": ["rheintochter", "german-air-defence", "missile-development", "wartime-production"],
       "summary": "Rheintochter's multiple stages and many trials demonstrate that a sound missile concept still depended on materials and production capacity.",
-      "body": "Clarke notes that the project reached dozens of test firings and even considered air launch, yet its plywood control surfaces reveal the limits of what could be built at the time. He uses the missile to make a wider point about wartime material access: Allied powers often struggled to move supplies, while the Axis increasingly struggled to obtain suitable materials at all. Advanced designs could therefore outrun their industrial base.",
+      "body": "Clarke notes that the project reached eighty-two test firings and even considered air launch, yet its plywood control surfaces reveal the limits of what could be built at the time. Plywood could work, but it was a compromise far removed from the materials later designers would prefer for high-performance missiles. He uses Rheintochter to make a wider point about wartime material access: Allied powers often struggled to move supplies through submarine and geographic threats, while the Axis increasingly struggled to obtain suitable materials at all. Advanced designs could therefore outrun both their material science and their industrial base.",
       "sourcePath": "src/transcripts/txt/2024-08-31_T18-30-06_laying-minefields-in-the-sky-some-wwii-rocketry-and-supersized-t-shirt-cannons_chX0YIPG0aI.txt",
       "evidence": [
         {
@@ -179,7 +260,7 @@
       "end": "53:58",
       "topics": ["enzian", "me-163-komet", "hs-117-schmetterling", "german-air-defence"],
       "summary": "The Enzian missile borrowed from the Me 163 concept but was cancelled in favor of the Hs 117 only when Germany's wider weapons programme was already overextended.",
-      "body": "The project attempted to convert ideas from the dangerous Me 163 rocket fighter into a radio-controlled missile. Clarke places its January 1945 cancellation in the larger problem of German weapons policy: competing projects consumed resources long after the strategic situation made simplification urgent. New technology could not compensate for late, fragmented decision-making.",
+      "body": "The project attempted to convert ideas from the dangerous Me 163 rocket fighter into a radio-controlled missile. It eventually lost priority to Herbert Wagner's Hs 117 Schmetterling, following his earlier work on the Hs 293 anti-ship weapon. Clarke places Enzian's January 1945 cancellation in the larger problem of German weapons policy: competing projects consumed resources long after the strategic situation made simplification urgent. New technology could not compensate for late, fragmented decision-making.",
       "sourcePath": "src/transcripts/txt/2024-08-31_T18-30-06_laying-minefields-in-the-sky-some-wwii-rocketry-and-supersized-t-shirt-cannons_chX0YIPG0aI.txt",
       "evidence": [
         {
@@ -199,7 +280,7 @@
       "end": "56:49",
       "topics": ["typhoon-rocket", "german-air-defence", "anti-aircraft-rockets", "mass-production"],
       "summary": "Germany's Typhoon rocket was relatively simple and reliable, but its barrage concept required production on a scale Germany could not sustain.",
-      "body": "Typhoon returned to the aerial-minefield idea by imagining dense forests of rockets rising against bomber streams. Clarke argues that the system was more practical than many elaborate alternatives, but only if it could be fielded in tens of thousands or more. It illustrates how a technically sensible design can fail strategically when quantity is inseparable from its method of use.",
+      "body": "Typhoon returned to the aerial-minefield idea by imagining dense forests of rockets rising against bomber streams. Clarke argues that the system was simple and reliable compared with many elaborate alternatives, but only if it could be fielded in tens of thousands or more. Germany lacked the production line needed to approach the millions of rounds that a sustained barrage defence implied. The surrounding discussion also explains why wartime innovation usually adapts known technology and existing research: states have less capacity to absorb the risk of a wholly new failure during an existential war. Typhoon illustrates how a technically sensible design can fail strategically when quantity is inseparable from its method of use.",
       "sourcePath": "src/transcripts/txt/2024-08-31_T18-30-06_laying-minefields-in-the-sky-some-wwii-rocketry-and-supersized-t-shirt-cannons_chX0YIPG0aI.txt",
       "evidence": [
         {
@@ -219,7 +300,7 @@
       "end": "1:00:46",
       "topics": ["holman-projector", "royal-navy", "small-craft", "naval-air-defence"],
       "summary": "The Holman Projector was a pneumatic mortar that gave small vessels a quick, adaptable, and unsettling response to low-flying attackers.",
-      "body": "Clarke compares the device to a T-shirt cannon: it could use compressed air or steam and was suited to vessels without the fittings for conventional anti-aircraft weapons. It did not account for many aircraft losses, but the sudden barrage could deter or disrupt an attack. Its real strength was fitting a limited defensive role on trawlers, motor boats, and merchant craft quickly.",
+      "body": "Clarke compares the device to a T-shirt cannon: it was a pneumatic mortar powered by compressed air or high-pressure steam. About 4,500 were built, progressing through three marks, and the later version could launch multiple projectiles semi-automatically to roughly 1,000 feet. It suited trawlers, coastal motor boats, and merchant vessels that lacked fittings for conventional anti-aircraft weapons. The projector did not account for many aircraft losses, but a sudden barrage could deter or disrupt a low-level attack. Its strength was a deliberately limited brief that production and iterative improvement could actually satisfy.",
       "sourcePath": "src/transcripts/txt/2024-08-31_T18-30-06_laying-minefields-in-the-sky-some-wwii-rocketry-and-supersized-t-shirt-cannons_chX0YIPG0aI.txt",
       "evidence": [
         {
@@ -239,7 +320,7 @@
       "end": "1:03:51",
       "topics": ["japanese-army", "anti-aircraft-mine-discharger", "mortars", "low-level-air-attack"],
       "summary": "Japan's anti-aircraft mine discharger used mortar rounds that released parachute-borne mines, making most sense as an ambush against a predictable low-level approach.",
-      "body": "The seven mines released at altitude could explode on contact or after a timer, creating a temporary hazard above the launcher. Clarke cautions that it was poorly suited to reacting instantly to a surprise raid. It became more plausible when defenders could anticipate an aircraft route through a valley or along the ground, and it also offered a secondary ground-attack use.",
+      "body": "The mortar round climbed to roughly 600 meters before releasing seven parachute-borne mines that could explode on contact or after a timer. Clarke cautions that it was poorly suited to reacting instantly to a surprise raid. It became more plausible when defenders could anticipate a low-level aircraft route through a valley or close to the ground, turning the weapon into an ambush hazard. Because a standard 70 mm mortar could be adapted to fire it, the discharger also complicated an attacker's estimate of where air defences might appear. Its cluster effect offered a secondary ground-attack use, while modern automatic 120 mm mortars suggest a possible descendant for point or close-in counter-UAV defence rather than wide-area protection.",
       "sourcePath": "src/transcripts/txt/2024-08-31_T18-30-06_laying-minefields-in-the-sky-some-wwii-rocketry-and-supersized-t-shirt-cannons_chX0YIPG0aI.txt",
       "evidence": [
         {
@@ -259,7 +340,7 @@
       "end": "1:05:31",
       "topics": ["hs-297", "german-air-defence", "anti-aircraft-rockets", "wartime-production"],
       "summary": "The Hs 297 offered another trainable rocket barrage, but its limited viability raised the familiar question of whether Germany should have spent resources elsewhere.",
-      "body": "Clarke describes a launcher that could be aimed and fired in hopes that volume would hit an incoming target. Several sets were built and later captured by US forces, preserving much of the visual record. The system becomes a concise example of a wider wartime dilemma: a weapon can be ingenious without being the best use of scarce industrial effort.",
+      "body": "Clarke describes a trainable launcher that fired a barrage in hopes that volume would hit an incoming target. Several secret sets were built and later captured by US forces, which helps explain the surviving photographs and examples. Its concept repeated the appeal of massed rockets without resolving the uncertain relationship between volume, aiming, and actual interception. The system becomes a concise example of a wider wartime dilemma: a weapon can be ingenious without being the best use of scarce industrial effort.",
       "sourcePath": "src/transcripts/txt/2024-08-31_T18-30-06_laying-minefields-in-the-sky-some-wwii-rocketry-and-supersized-t-shirt-cannons_chX0YIPG0aI.txt",
       "evidence": [
         {
@@ -279,7 +360,7 @@
       "end": "1:17:41",
       "topics": ["counter-uav", "mortars", "air-defence", "military-innovation"],
       "summary": "The closing reflection asks whether low-cost mortar or rocket concepts might be adapted for drones where lasers and electronic warfare are impractical.",
-      "body": "Clarke does not argue that WWII systems can simply be revived unchanged. Instead, he points to a recurring force-design problem: low-value or lightly powered units may need defences that are cheaper and less demanding than high-energy weapons. The historical cases invite comparison with modern counter-UAV constraints rather than a direct technical prescription.",
+      "body": "Clarke does not argue that WWII systems can simply be revived unchanged. Instead, he points to a recurring force-design problem: low-value or lightly powered units may need defences that are cheaper and less demanding than high-energy weapons. Lasers and electronic-warfare suites require power generation, storage, and money that not every ship or unit can provide. Mortar- or rocket-derived concepts might therefore deserve reconsideration against UAVs and micro-UAVs if modern guidance and fusing can overcome the older systems' timing problems. The historical cases invite comparison with modern counter-UAV constraints rather than a direct technical prescription.",
       "sourcePath": "src/transcripts/txt/2024-08-31_T18-30-06_laying-minefields-in-the-sky-some-wwii-rocketry-and-supersized-t-shirt-cannons_chX0YIPG0aI.txt",
       "evidence": [
         {

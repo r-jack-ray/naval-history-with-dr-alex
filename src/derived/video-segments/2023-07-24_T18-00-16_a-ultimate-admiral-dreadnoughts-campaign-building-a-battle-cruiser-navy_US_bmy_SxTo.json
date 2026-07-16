@@ -5,7 +5,8 @@
     "battlecruisers",
     "naval-force-structure",
     "warship-design",
-    "royal-navy"
+    "royal-navy",
+    "naval-procurement"
   ],
   "segments": [
     {
@@ -18,9 +19,23 @@
       "end": "2:06",
       "topics": ["cruisers", "torpedo-boats", "fleet-screening"],
       "summary": "The campaign uses heavily armed cruisers to keep fast torpedo boats away from capital ships.",
-      "body": "The opening fleet review distinguishes between ships that look odd in a historical battle and ships that suit a specific fleet duty. Six-inch-gun cruisers are kept close to the battle line because their intended job is to intercept the fast torpedo threats that can endanger heavier ships. It is a useful reminder that a design can be judged by its assigned screen role rather than by its performance in a line-of-battle action.",
+      "body": "The opening fleet review distinguishes between ships that look odd in a historical battle and ships that suit a specific fleet duty. Six-inch-gun cruisers are kept close to the battle line because their intended job is to intercept the fast torpedo threats that can endanger heavier ships. That role explains why the same cruiser might be poorly suited to a Coronel-style engagement yet valuable beside capital ships. It is a useful reminder that a design should be judged by its assigned screen role rather than by its performance in a line-of-battle action.",
       "sourcePath": "src/transcripts/txt/2023-07-24_T18-00-16_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy_US_bmy_SxTo.txt",
       "evidence": [{"start": "1:32", "end": "2:06", "note": "Cruisers with six-inch guns are described as protection against torpedo boats."}]
+    },
+    {
+      "id": "shipyard-capacity-underwrites-fleet-expansion",
+      "videoId": "US_bmy_SxTo",
+      "slug": "shipyard-capacity-underwrites-fleet-expansion",
+      "title": "Shipyard investment underwrites fleet expansion",
+      "kind": "notable_point",
+      "start": "9:30",
+      "end": "10:33",
+      "topics": ["naval-infrastructure", "shipbuilding", "naval-procurement", "industrial-capacity"],
+      "summary": "Repeated investment in shipyard tonnage shows why fleet plans depend on industrial capacity as well as design ambition.",
+      "body": "The campaign repeatedly directs money into enlarging the maximum shipyard size rather than treating construction capacity as a fixed background number. The immediate problem is that available hull designs are already larger than the yards can comfortably build. Later spending pushes the yard limit upward while a large financial reserve supports continued expansion. The sequence makes naval power an industrial problem: a navy may know what it wants to order before its infrastructure can deliver it. Opening here helps connect individual warship designs to the capital investment required to turn them into a fleet.",
+      "sourcePath": "src/transcripts/txt/2023-07-24_T18-00-16_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy_US_bmy_SxTo.txt",
+      "evidence": [{"start": "9:30", "end": "10:33", "note": "The available shipyard tonnage lags behind the desired cruiser size despite continued investment."}, {"start": "40:09", "end": "41:03", "note": "Maximum construction spending and a large reserve are described as supporting fleet growth."}]
     },
     {
       "id": "refit-old-battleships-for-continued-service",
@@ -32,7 +47,7 @@
       "end": "23:21",
       "topics": ["battleships", "warship-modernization", "fleet-readiness"],
       "summary": "A refit discussion shows how survivability upgrades can keep older battleships useful while the fleet avoids immediate war.",
-      "body": "The campaign upgrades old battleships with survivability measures and then considers improvements to existing cruisers. The rationale is not to make every old hull equivalent to a new one, but to keep it usable while no immediate major war demands wholesale replacement. The moment illustrates the recurring fleet-management trade-off between refitting a credible reserve and committing scarce capacity to new construction.",
+      "body": "The campaign upgrades old battleships with anti-torpedo protection, double hulls, and other survivability measures before considering improvements to existing cruisers. The rationale is not to make every old hull equivalent to a new one, but to keep it usable while no immediate major war demands wholesale replacement. Refits also preserve hulls that can cover routine stations while newer construction develops. The moment illustrates the recurring fleet-management trade-off between maintaining a credible reserve and committing scarce capacity to new construction.",
       "sourcePath": "src/transcripts/txt/2023-07-24_T18-00-16_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy_US_bmy_SxTo.txt",
       "evidence": [{"start": "17:15", "end": "18:30", "note": "The transcript explains refitting battleships to improve survivability and retain them longer."}, {"start": "22:36", "end": "23:21", "note": "The fleet is refitted while no imminent war requires new ships."}]
     },
@@ -46,7 +61,7 @@
       "end": "33:02",
       "topics": ["light-cruisers", "naval-mines", "torpedoes", "fleet-screening"],
       "summary": "A new light-cruiser design is shaped around mine warfare, torpedoes, and a broadside for local sea denial.",
-      "body": "The design discussion frames light cruisers as independent-action ships that can complicate an opponent's movements rather than merely add hull numbers. The proposed vessels carry mines and torpedoes, plus a mixed six- and four-inch broadside, and are intended to make an approach costly. Distributing them across imperial ports turns that concept into a wider deterrent: an attacker may have to reckon with a local flotilla wherever it appears.",
+      "body": "The design discussion frames light cruisers as independent-action ships that can complicate an opponent's movements rather than merely add hull numbers. The proposed vessels carry mines and torpedoes, plus a mixed six- and four-inch broadside, and are intended to make an approach costly. Thirty-two ships are ordered and distributed among home, Indian Ocean, Australian, African, Caribbean, and Pacific ports. That dispersion turns the design into a wider sea-denial network: an attacker may have to reckon with a locally based flotilla wherever it appears.",
       "sourcePath": "src/transcripts/txt/2023-07-24_T18-00-16_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy_US_bmy_SxTo.txt",
       "evidence": [{"start": "25:19", "end": "30:00", "note": "The new cruiser is discussed as an independent-action design with mines, torpedoes, and guns."}, {"start": "33:31", "end": "37:12", "note": "The ships are allocated across ports to establish a broad presence."}]
     },
@@ -60,9 +75,23 @@
       "end": "54:26",
       "topics": ["destroyers", "torpedo-boats", "naval-deterrence", "fleet-deployment"],
       "summary": "The campaign builds destroyer flotillas for many ports so an attacker faces losses wherever it tries to operate.",
-      "body": "The destroyer programme is not concentrated in one decisive squadron. Instead, flotillas are assigned around the map to protect approaches and impose local costs on an opponent. The stated logic is deterrence through attrition: if every move risks losing ships, the potential attacker has to reconsider whether the objective is worth pursuing.",
+      "body": "The destroyer programme is not concentrated in one decisive squadron. Instead, flotillas are assigned around the map to protect approaches and impose local costs on an opponent. The large order complements the distributed light-cruiser force and gives distant ports their own fast torpedo defence. The stated logic is deterrence through attrition: if every move risks losing ships, the potential attacker has to reconsider whether the objective is worth pursuing.",
       "sourcePath": "src/transcripts/txt/2023-07-24_T18-00-16_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy_US_bmy_SxTo.txt",
       "evidence": [{"start": "46:45", "end": "53:55", "note": "The transcript orders torpedo-boat destroyer flotillas and distributes them among ports."}, {"start": "53:59", "end": "54:26", "note": "The stated aim is to make attacks costly wherever an enemy appears."}]
+    },
+    {
+      "id": "diplomacy-avoids-simultaneous-naval-theatres",
+      "videoId": "US_bmy_SxTo",
+      "slug": "diplomacy-avoids-simultaneous-naval-theatres",
+      "title": "Diplomacy avoids simultaneous naval theatres",
+      "kind": "notable_point",
+      "start": "57:41",
+      "end": "1:02:48",
+      "topics": ["naval-diplomacy", "naval-strategy", "mediterranean", "atlantic-ocean"],
+      "summary": "Relations with other powers are managed to isolate Germany and reduce the risk of wars in the Atlantic and Mediterranean at once.",
+      "body": "The campaign treats diplomacy as part of fleet disposition rather than as a separate political minigame. Better relations with the United States, Austria-Hungary, and Italy are intended to deny Germany useful partners and limit the number of theatres Britain might have to cover. The speaker explicitly wants to avoid fighting in the Mediterranean and Atlantic simultaneously. This is scenario strategy rather than a claim that real alliances were mechanically controllable, but it illustrates how diplomatic alignment can reduce naval force-structure demands. Opening here is useful for seeing coalition management translated into choices about where ships must be available.",
+      "sourcePath": "src/transcripts/txt/2023-07-24_T18-00-16_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy_US_bmy_SxTo.txt",
+      "evidence": [{"start": "57:41", "end": "57:59", "note": "Relations are cultivated to prevent Germany from gaining American or Austro-Hungarian support."}, {"start": "1:02:42", "end": "1:02:48", "note": "Friendship with Italy is linked to avoiding simultaneous Mediterranean and Atlantic wars."}]
     },
     {
       "id": "battlecruiser-design-speed-firepower-and-growth-margin",
@@ -74,7 +103,7 @@
       "end": "1:16:48",
       "topics": ["battlecruisers", "warship-design", "naval-gunnery", "armour"],
       "summary": "The first battlecruiser design weighs speed, heavy guns, protection, and reserve space for later improvement.",
-      "body": "This design sequence sets out a fast capital ship built around heavy guns, six-inch secondary armament, and enough protection to survive likely threats. The discussion also makes room for future change: deck armour is retained because it affects machinery efficiency, and a two-funnel arrangement is kept to preserve development margin. It shows how a seemingly cosmetic layout choice can be tied to later modernization and operational performance.",
+      "body": "This design sequence sets out a fast capital ship built around twelve-inch guns, six-inch secondary armament, torpedo protection, and enough armour to survive likely threats. Speed, beam, weapon range, and weight are adjusted together rather than treated as independent choices. The discussion also makes room for future change: deck armour is retained because it affects machinery efficiency, and a two-funnel arrangement is kept to preserve development margin. It shows how seemingly cosmetic layout choices can be tied to later modernization and operational performance.",
       "sourcePath": "src/transcripts/txt/2023-07-24_T18-00-16_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy_US_bmy_SxTo.txt",
       "evidence": [{"start": "1:06:49", "end": "1:15:16", "note": "The transcript designs the first battlecruiser around hull, guns, protection, and weight."}, {"start": "1:16:18", "end": "1:16:48", "note": "Deck armour and two funnels are retained for efficiency and future growth."}]
     },
@@ -88,9 +117,23 @@
       "end": "1:25:28",
       "topics": ["naval-force-structure", "battlecruisers", "battleships", "torpedo-boats"],
       "summary": "Older battleships maintain worldwide order while battlecruisers and torpedo boats form the fleet's concentrated fighting force.",
-      "body": "The stream separates presence duties from decisive combat power. Older battleships and other ships keep order in dispersed stations, while battlecruisers and torpedo boats are reserved to destroy an opponent willing to fight. The comparison to a two-power standard turns a game fleet into a clear force-structure question: how much capacity must be held in distributed policing forces before a concentrated battle force is credible?",
+      "body": "The stream separates presence duties from decisive combat power. Older battleships and other ships keep order in dispersed stations, while battlecruisers and torpedo boats are reserved to destroy an opponent willing to fight. A comparison with older Royal Navy battleships in the Mediterranean emphasizes that superseded ships can still secure secondary theatres and communications. The claimed two-power standard turns a game fleet into a clear force-structure question: how much capacity must be held in distributed policing forces before a concentrated battle force is credible?",
       "sourcePath": "src/transcripts/txt/2023-07-24_T18-00-16_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy_US_bmy_SxTo.txt",
       "evidence": [{"start": "1:21:06", "end": "1:23:06", "note": "The transcript claims a two-power standard and separates old ships from battlecruisers and torpedo boats."}, {"start": "1:24:48", "end": "1:24:56", "note": "Old battleships are compared with Royal Navy Mediterranean employment."}]
+    },
+    {
+      "id": "cruiser-research-creates-battlecruiser-lead",
+      "videoId": "US_bmy_SxTo",
+      "slug": "cruiser-research-creates-battlecruiser-lead",
+      "title": "Cruiser research creates an early battlecruiser lead",
+      "kind": "notable_point",
+      "start": "1:43:06",
+      "end": "1:48:30",
+      "topics": ["battlecruisers", "naval-technology", "research-and-development", "naval-procurement"],
+      "summary": "Specializing in cruiser technology unlocks battlecruisers before dreadnought battleships and before rival fleets field comparable ships.",
+      "body": "The campaign delays war until its new battlecruisers enter service, converting a research lead into a planned operational advantage. Because the game's battlecruisers sit in the cruiser technology tree, sustained cruiser research unlocks them before the player obtains a dreadnought battleship hull. A second battlecruiser hull appears before the first generation has even commissioned, while rival construction lists show no comparable type. The sequence is governed by game mechanics, yet it captures a real procurement hazard: concentrated research can create a narrow lead whose value depends on yards, budgets, and timely production. Opening here shows why technological advantage is only the first step toward deployable fleet power.",
+      "sourcePath": "src/transcripts/txt/2023-07-24_T18-00-16_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy_US_bmy_SxTo.txt",
+      "evidence": [{"start": "1:43:06", "end": "1:48:14", "note": "War is deferred until battlecruisers commission, and cruiser-focused research unlocks successive battlecruiser hulls before dreadnought battleships."}, {"start": "1:48:14", "end": "1:48:30", "note": "The speaker checks rival construction and sees no comparable battlecruiser programme."}]
     },
     {
       "id": "battlecruisers-replace-but-do-not-eliminate-battleships",
@@ -102,9 +145,51 @@
       "end": "2:03:39",
       "topics": ["battlecruisers", "battleships", "naval-prestige", "fleet-composition"],
       "summary": "The campaign replaces many battleships with battlecruisers but retains some battleships because prestige mechanics still demand them.",
-      "body": "The player plans to retire many older battleships once battlecruisers enter service, treating the faster ships as the new core of the fleet. Yet the campaign's prestige system still penalizes a navy without battleships, so a residual battle line remains necessary. Even in a simulation, the exchange usefully exposes how institutional expectations can preserve a ship type after a commander believes a different type better suits combat needs.",
+      "body": "The player plans to retire many older battleships once battlecruisers enter service, treating the faster ships as the new core of the fleet. New battlecruisers are allocated to major home and overseas bases before the oldest battle line is discarded. Yet the campaign's prestige system still penalizes a navy without battleships, so a residual battle line remains necessary. Even in a simulation, the exchange usefully exposes how institutional expectations can preserve a ship type after a commander believes a different type better suits combat needs.",
       "sourcePath": "src/transcripts/txt/2023-07-24_T18-00-16_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy_US_bmy_SxTo.txt",
       "evidence": [{"start": "1:59:14", "end": "2:03:39", "note": "Battlecruisers are intended to replace older battleships, but some battleships are retained for prestige."}]
+    },
+    {
+      "id": "design-progress-outpaces-shipyard-capacity",
+      "videoId": "US_bmy_SxTo",
+      "slug": "design-progress-outpaces-shipyard-capacity",
+      "title": "Design progress outpaces shipyard capacity",
+      "kind": "notable_point",
+      "start": "2:11:15",
+      "end": "2:16:36",
+      "topics": ["shipbuilding", "industrial-capacity", "naval-procurement", "battlecruisers"],
+      "summary": "A huge construction programme overwhelms available yard capacity even though shipyard investment has continued throughout the campaign.",
+      "body": "The fleet's design programme has moved faster than its industrial base. Although the campaign repeatedly invests the maximum available amount in shipyards, roughly 900,000 tons of construction is competing for about 200,000 tons of capacity. Commissioning dates stretch out, and older ships are scrapped partly to ease the burden as sixteen battlecruisers finally enter service. The episode distinguishes the ability to design and order ships from the ability to build, equip, and commission them on schedule. It is a useful warning that ambitious force expansion can create its own production bottleneck even when money and technology are abundant.",
+      "sourcePath": "src/transcripts/txt/2023-07-24_T18-00-16_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy_US_bmy_SxTo.txt",
+      "evidence": [{"start": "2:11:15", "end": "2:12:36", "note": "Design development has outpaced shipbuilding, with about 900,000 tons ordered against roughly 200,000 tons of capacity."}, {"start": "2:14:53", "end": "2:16:16", "note": "Older ships are scrapped and sixteen battlecruisers enter service while capacity remains heavily oversubscribed."}]
+    },
+    {
+      "id": "refitting-cruisers-for-mines-and-asw",
+      "videoId": "US_bmy_SxTo",
+      "slug": "refitting-cruisers-for-mines-and-asw",
+      "title": "Refitting cruisers for mines and anti-submarine work",
+      "kind": "notable_point",
+      "start": "2:28:02",
+      "end": "2:32:44",
+      "topics": ["cruisers", "warship-modernization", "anti-submarine-warfare", "naval-mines"],
+      "summary": "An existing cruiser design receives depth charges, improved mines, protection, machinery, and fire-control upgrades instead of being replaced outright.",
+      "body": "Rather than discard a still-viable cruiser design, the campaign revisits it as a modernization package. Depth charges and improved mines broaden its mission set, while anti-flooding protection, a double hull, Harvey armour, forced boilers, and a better rangefinder improve survivability and performance. The refit is constrained by hull space and by missing twin-gun technology, so not every desired improvement is available. This watch point shows modernization as a coordinated change to weapons, sensors, machinery, and protection rather than a simple gun upgrade. It also demonstrates how research priorities can leave an otherwise advanced fleet with uneven capabilities.",
+      "sourcePath": "src/transcripts/txt/2023-07-24_T18-00-16_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy_US_bmy_SxTo.txt",
+      "evidence": [{"start": "2:28:02", "end": "2:30:44", "note": "The existing cruiser is refitted with depth charges, mines, protection, machinery, armour, and rangefinding improvements."}, {"start": "2:32:17", "end": "2:32:44", "note": "Twin-gun options remain unavailable because cruiser research has not unlocked them."}]
+    },
+    {
+      "id": "second-generation-battlecruiser-speed-and-protection",
+      "videoId": "US_bmy_SxTo",
+      "slug": "second-generation-battlecruiser-speed-and-protection",
+      "title": "A second-generation battlecruiser balances speed and protection",
+      "kind": "chapter",
+      "start": "2:33:54",
+      "end": "2:42:15",
+      "topics": ["battlecruisers", "warship-design", "naval-gunnery", "armour"],
+      "summary": "A later battlecruiser design seeks thirty knots and 13.5-inch guns while balancing belt armour, secondary defence, weight, and seakeeping.",
+      "body": "The later battlecruiser begins with a thirty-knot target and 13.5-inch main guns, then works through the protection and weight consequences. Belt armour is emphasized because the expected opponents are more likely to fire on flatter trajectories, while small guns are retained to discourage destroyers at close range. Beam, hull form, torpedo armament, and weight distribution are adjusted as the design evolves. The resulting ship is explicitly a campaign design, but the trade-offs are historically recognizable: speed and striking power consume displacement that cannot also be spent freely on protection and secondary systems. Opening here provides a sustained example of iterative capital-ship design rather than a list of ideal specifications.",
+      "sourcePath": "src/transcripts/txt/2023-07-24_T18-00-16_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy_US_bmy_SxTo.txt",
+      "evidence": [{"start": "2:33:54", "end": "2:38:07", "note": "The design targets thirty knots, 13.5-inch guns, and belt protection suited to expected engagement trajectories."}, {"start": "2:39:00", "end": "2:42:15", "note": "Secondary defence, hull form, torpedoes, weight, and high-seas performance are balanced before ordering the class."}]
     },
     {
       "id": "modern-us-battleship-design-question",
@@ -116,7 +201,7 @@
       "end": "2:45:20",
       "topics": ["us-navy", "battleships", "naval-gunnery", "vertical-launch-systems"],
       "summary": "An audience question prompts a speculative outline of a modern US battleship's guns, armour, automation, and missile cells.",
-      "body": "The answer begins with the cost of rebuilding industrial capabilities such as armour production, but argues that a new hull could be protected against whatever threat designers chose to prioritize. It expects a US design to retain sixteen-inch guns as a familiar calibre, likely in three triple turrets, while using automation and a large vertical-launch missile battery. The proposal is explicitly speculative, but it connects historical battleship layout with present-day weapons and industrial constraints.",
+      "body": "The answer begins with the cost of rebuilding industrial capabilities such as armour production, but argues that a new hull could be protected against whatever threat designers chose to prioritize. It expects a US design to retain sixteen-inch guns as a familiar calibre, likely in three triple turrets, while using automation and a very large vertical-launch missile battery. Existing Iowa-class ships would provide the starting reference because their machinery and weapons are known quantities, even though a new design would update them extensively. The proposal is explicitly speculative, but it connects historical battleship layout with present-day weapons and industrial constraints.",
       "question": "If the United States built a battleship today, how might it arm and protect it?",
       "answerShort": "It would need to rebuild specialist industrial capacity, but could combine heavy armour and likely sixteen-inch guns with extensive automation and a large vertical-launch missile battery.",
       "sourcePath": "src/transcripts/txt/2023-07-24_T18-00-16_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy_US_bmy_SxTo.txt",
@@ -132,7 +217,7 @@
       "end": "2:59:20",
       "topics": ["destroyers", "minesweeping", "depth-charges", "naval-gunnery"],
       "summary": "A final destroyer design balances speed, gunnery, torpedoes, minesweeping, depth charges, and stability.",
-      "body": "The late-session destroyer design combines a double hull, minesweeping gear, depth charges, guns, and torpedo armament. Weight and roll become the limiting problems, forcing compromises in speed and layout before the ship is accepted. This is a compact illustration of why escort and destroyer design cannot be reduced to a single weapon: the hull has to carry several mission systems without losing seaworthiness.",
+      "body": "The late-session destroyer design combines a double hull, minesweeping gear, depth charges, guns, and torpedo armament. It is intended primarily as a gunnery destroyer for close defence, so torpedo numbers are lower than on the campaign's earlier boats. Weight, fore-and-aft balance, and roll become the limiting problems, forcing compromises in speed and layout before the ship is accepted. This is a compact illustration of why escort and destroyer design cannot be reduced to a single weapon: the hull has to carry several mission systems without losing seaworthiness.",
       "sourcePath": "src/transcripts/txt/2023-07-24_T18-00-16_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy_US_bmy_SxTo.txt",
       "evidence": [{"start": "2:51:01", "end": "2:55:25", "note": "The destroyer is fitted with a double hull, minesweeping, depth charges, guns, and torpedoes."}, {"start": "2:57:43", "end": "2:59:20", "note": "The transcript addresses excessive roll and assigns the class to home-water destroyer duty."}]
     }

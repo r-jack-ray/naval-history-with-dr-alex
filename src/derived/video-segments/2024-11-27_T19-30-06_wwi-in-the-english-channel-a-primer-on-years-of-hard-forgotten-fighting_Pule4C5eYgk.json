@@ -7,7 +7,9 @@
     "dover-patrol",
     "royal-navy",
     "kaiserliche-marine",
-    "destroyers"
+    "destroyers",
+    "naval-logistics",
+    "naval-gunfire-support"
   ],
   "segments": [
     {
@@ -17,12 +19,26 @@
       "title": "Tripwire forces and the meaning of victory in the Channel",
       "kind": "chapter",
       "start": "0:00",
-      "end": "6:42",
+      "end": "5:05",
       "topics": ["world-war-i", "english-channel", "dover-patrol", "kaiserliche-marine", "maritime-strategy", "convoy-protection"],
       "summary": "The opening reframes German attacks on the Dover defenses by asking whether tactical damage mattered when the supply traffic behind them kept moving.",
-      "body": "The Channel defenses functioned as a tripwire: light craft could be overwhelmed, but their resistance bought time for stronger Royal Navy forces to arrive. Dr. Clarke distinguishes losses inflicted on patrol vessels from operational success against the protected objective. German torpedo boats could win a local exchange yet fail to interrupt the movement of ammunition, food, medicine, and other supplies to the Western Front.",
+      "body": "The Channel defenses functioned as a tripwire: light craft could be overwhelmed, but their resistance bought time for stronger Royal Navy forces to arrive. Dr. Clarke distinguishes losses inflicted on patrol vessels from operational success against the protected objective. German torpedo boats could win a local exchange yet fail to interrupt the movement of ammunition, food, medicine, and other supplies to the Western Front. In a total war consuming thousands of lives each day, patrol losses remained strategically smaller than even a brief interruption of that supply system.",
       "sourcePath": "src/transcripts/txt/2024-11-27_T19-30-06_wwi-in-the-english-channel-a-primer-on-years-of-hard-forgotten-fighting_Pule4C5eYgk.txt",
       "evidence": [{"start": "1:14", "end": "4:34", "note": "Explains the tripwire role and contrasts patrol losses with failure to disrupt Channel supply traffic."}]
+    },
+    {
+      "id": "high-seas-fleet-channel-escape-trap",
+      "videoId": "Pule4C5eYgk",
+      "slug": "high-seas-fleet-channel-escape-trap",
+      "title": "Why a High Seas Fleet dash through the Channel risked entrapment",
+      "kind": "notable_point",
+      "start": "5:05",
+      "end": "6:42",
+      "topics": ["kaiserliche-marine", "high-seas-fleet", "english-channel", "grand-fleet", "maritime-strategy", "sea-control"],
+      "summary": "A German breakthrough into the Channel still left the High Seas Fleet with no safe return route if British tripwires delayed it until the Grand Fleet closed from behind.",
+      "body": "Dr. Clarke tests the familiar counterfactual of the High Seas Fleet forcing the Dover Strait. Passing the patrol line would not solve the fleet's larger geographic problem because it could not sail home around Britain. A return through the same confined waters would become dangerous once local forces delayed the Germans and the Grand Fleet approached from the north. The argument turns Channel geography into a trap rather than treating a tactical breakthrough as an automatic strategic escape.",
+      "sourcePath": "src/transcripts/txt/2024-11-27_T19-30-06_wwi-in-the-english-channel-a-primer-on-years-of-hard-forgotten-fighting_Pule4C5eYgk.txt",
+      "evidence": [{"start": "5:05", "end": "6:35", "note": "Explains why a German fleet entering the Channel would still have to return through it while the Grand Fleet closed from behind."}]
     },
     {
       "id": "dover-barrage-adaptation-and-submarine-passage",
@@ -34,9 +50,23 @@
       "end": "14:19",
       "topics": ["dover-barrage", "anti-submarine-warfare", "submarines", "naval-mines", "indicator-nets", "english-channel"],
       "summary": "Mines, nets, searchlights, patrol craft, and changing tactics made the Dover Barrage difficult rather than perfectly impermeable to U-boats.",
-      "body": "The barrage concentrated defenses between Dover and Calais, where the Western Front met the sea. German submarines discovered methods of passing it, including surfaced night transits, but each revealed method prompted British countermeasures. Indicator nets laid in 1915 caught U-8, while later sensitive mines and stronger illumination increased losses such as UB-109.",
+      "body": "The barrage concentrated defenses between Dover and Calais, where the Western Front met the sea. German submarines discovered methods of passing it, including surfaced night transits, but each revealed method prompted British countermeasures. Indicator nets laid in 1915 caught U-8, while later sensitive mines and stronger illumination increased losses such as UB-109. The barrier was therefore neither impermeable nor static: its value lay in making passage difficult and adapting whenever a German method became visible.",
       "sourcePath": "src/transcripts/txt/2024-11-27_T19-30-06_wwi-in-the-english-channel-a-primer-on-years-of-hard-forgotten-fighting_Pule4C5eYgk.txt",
       "evidence": [{"start": "7:14", "end": "14:08", "note": "Describes the barrage's permeability, adaptation, indicator nets, mines, and U-boat losses."}]
+    },
+    {
+      "id": "interwar-channel-surveillance-and-1940-barrier-plans",
+      "videoId": "Pule4C5eYgk",
+      "slug": "interwar-channel-surveillance-and-1940-barrier-plans",
+      "title": "The lost interwar surveillance opportunity in the Channel",
+      "kind": "notable_point",
+      "start": "9:44",
+      "end": "11:17",
+      "topics": ["world-war-ii", "english-channel", "anti-submarine-warfare", "hydrophones", "calais", "cherbourg", "interwar-period"],
+      "summary": "Britain considered recreating Channel barriers around Calais and Cherbourg in 1940, but had not preserved a peacetime hydrophone network that could have supported them.",
+      "body": "The First World War barrage suggested a defensive model that Britain tried to revisit as France collapsed in 1940. Holding Calais or Cherbourg might have preserved controlled cross-Channel access and supported a renewed barrier system. Dr. Clarke argues that an interwar hydrophone network on the English side could have monitored submarines and surface traffic while sharing data with France. Its absence illustrates how the belief that the Great War had ended major war allowed specialized surveillance knowledge and infrastructure to lapse.",
+      "sourcePath": "src/transcripts/txt/2024-11-27_T19-30-06_wwi-in-the-english-channel-a-primer-on-years-of-hard-forgotten-fighting_Pule4C5eYgk.txt",
+      "evidence": [{"start": "9:44", "end": "11:15", "note": "Connects 1940 plans to hold Channel ports with the interwar failure to maintain hydrophone surveillance."}]
     },
     {
       "id": "dover-patrol-harwich-force-and-layered-defense",
@@ -48,7 +78,7 @@
       "end": "17:09",
       "topics": ["dover-patrol", "harwich-force", "royal-navy", "submarines", "fleet-screening", "english-channel"],
       "summary": "The Channel defense combined small barrage craft, local warships, British submarines, and the prospect of Harwich Force or the Grand Fleet arriving from another direction.",
-      "body": "The Dover Patrol was only one layer of a wider defensive system. A major German formation entering the Channel risked delay among numerous small targets, attack by local submarines, and interception by heavier forces approaching from more than one direction. That geometry made a thrust through the Channel difficult even when individual British patrol units were weak.",
+      "body": "The Dover Patrol was only one layer of a wider defensive system. A major German formation entering the Channel risked delay among numerous small targets, attack by local submarines, and interception by heavier forces approaching from more than one direction. Harwich Force could approach from the North Sea while the Channel Squadron and other reinforcements gathered beyond the barrage. That geometry made a thrust through the Channel difficult even when individual British patrol units were weak.",
       "sourcePath": "src/transcripts/txt/2024-11-27_T19-30-06_wwi-in-the-english-channel-a-primer-on-years-of-hard-forgotten-fighting_Pule4C5eYgk.txt",
       "evidence": [{"start": "14:19", "end": "16:48", "note": "Sets the Dover Patrol within a layered defense including Harwich Force and British submarines."}]
     },
@@ -62,9 +92,23 @@
       "end": "23:00",
       "topics": ["tribal-class-destroyers", "destroyers", "dover-patrol", "jackie-fisher", "ship-design", "fleet-screening"],
       "summary": "Twelve fast Tribal-class destroyers gave the Dover Patrol a capable reaction force suited to a faster dreadnought-era fleet.",
-      "body": "The 1905 Tribal class brought roughly 33-knot performance and useful gun and torpedo armament to a patrol previously dependent on obsolete or improvised craft. Their speed reflected Jackie Fisher's wider fleet reforms: destroyers had to move ahead of a 20- to 21-knot battle line rather than merely keep pace. Individual builders produced varying details and even funnel counts, but collectively the twelve ships sharply reduced the time needed to reinforce any part of the patrol area.",
+      "body": "The 1905 Tribal class brought roughly 33-knot performance and useful gun and torpedo armament to a patrol previously dependent on obsolete or improvised craft. Their speed reflected Jackie Fisher's wider fleet reforms: destroyers had to move ahead of a 20- to 21-knot battle line rather than merely keep pace. The class could be configured around five 12-pounders for surface fighting or two four-inch guns with torpedo tubes for heavier targets. Collectively the twelve ships sharply reduced the time needed to reinforce any part of the patrol area.",
       "sourcePath": "src/transcripts/txt/2024-11-27_T19-30-06_wwi-in-the-english-channel-a-primer-on-years-of-hard-forgotten-fighting_Pule4C5eYgk.txt",
       "evidence": [{"start": "17:17", "end": "22:55", "note": "Gives Tribal-class characteristics, design context, and their role as a fast Dover reaction force."}]
+    },
+    {
+      "id": "tribal-builder-experimentation-and-coastal-destroyers",
+      "videoId": "Pule4C5eYgk",
+      "slug": "tribal-builder-experimentation-and-coastal-destroyers",
+      "title": "Builder experimentation inside the first Tribal class",
+      "kind": "notable_point",
+      "start": "20:41",
+      "end": "22:19",
+      "topics": ["tribal-class-destroyers", "warship-design", "shipbuilding", "jackie-fisher", "coastal-forces"],
+      "summary": "The Admiralty fixed core requirements but let individual yards vary the details, producing unique ships while developing British destroyer-design expertise.",
+      "body": "No two of the twelve early Tribal-class destroyers were exactly alike because the Royal Navy left detailed design work to individual builders. The policy used a live procurement programme to strengthen yard design teams before wartime mass production. Funnel arrangements ranged from three to six, with HMS Viking becoming the only six-funnel destroyer. The larger fleet destroyers also encouraged a separate lineage of coastal destroyers, torpedo boats, and motor boats for duties that did not require Tribal-class size and speed.",
+      "sourcePath": "src/transcripts/txt/2024-11-27_T19-30-06_wwi-in-the-english-channel-a-primer-on-years-of-hard-forgotten-fighting_Pule4C5eYgk.txt",
+      "evidence": [{"start": "20:41", "end": "22:19", "note": "Explains builder freedom, funnel variation, design-team development, and the parallel coastal-craft lineage."}]
     },
     {
       "id": "dover-patrol-command-and-local-initiative",
@@ -76,9 +120,37 @@
       "end": "29:23",
       "topics": ["dover-patrol", "horace-hood", "reginald-bacon", "roger-keyes", "command-and-control", "maritime-strategy"],
       "summary": "The patrol's command structure placed senior officers around Dover, Dunkirk, Folkestone, and Ramsgate so they could act without waiting for distant instructions.",
-      "body": "Horace Hood, Reginald Bacon, Roger Keyes, and Cecil Dampier are presented as successive leaders of a force whose effectiveness depended on quick decisions. Senior local commanders had rank sufficient to respond on their own cognizance. Dr. Clarke compares the barrage to older tripwire systems: local positions attract and delay an attacker while communications summon a concentrated response.",
+      "body": "Horace Hood, Reginald Bacon, Roger Keyes, and Cecil Dampier are presented as successive leaders of a force whose effectiveness depended on quick decisions. Senior officers were distributed among Dover, Dunkirk, Folkestone, and Ramsgate rather than concentrated at a distant headquarters. Their rank gave them authority to respond on their own cognizance, even though acting independently still exposed them to professional consequences. The system depended on communications turning local contact into a rapid, concentrated response.",
       "sourcePath": "src/transcripts/txt/2024-11-27_T19-30-06_wwi-in-the-english-channel-a-primer-on-years-of-hard-forgotten-fighting_Pule4C5eYgk.txt",
       "evidence": [{"start": "23:14", "end": "29:16", "note": "Profiles patrol commanders and explains why dispersed senior officers and rapid reaction mattered."}]
+    },
+    {
+      "id": "reginald-bacon-adapts-after-night-passage-error",
+      "videoId": "Pule4C5eYgk",
+      "slug": "reginald-bacon-adapts-after-night-passage-error",
+      "title": "Reginald Bacon corrects a failed assumption about U-boats",
+      "kind": "notable_point",
+      "start": "23:38",
+      "end": "25:02",
+      "topics": ["reginald-bacon", "dover-patrol", "submarines", "anti-submarine-warfare", "naval-leadership", "organizational-learning"],
+      "summary": "Bacon responded to evidence that U-boats could navigate the barrage at night by designing a counter-system before handing command to Roger Keyes.",
+      "body": "Reginald Bacon brought both naval command experience and industrial ordnance expertise to the Dover Patrol. He had assumed German submarines could not navigate the barrage effectively in darkness without lights, an assumption that operational evidence disproved. Rather than discipline subordinates for the error, he developed a system intended to close the newly exposed route. He then handed the command to Roger Keyes, making the episode a compact example of institutional learning after a senior leader's premise failed.",
+      "sourcePath": "src/transcripts/txt/2024-11-27_T19-30-06_wwi-in-the-english-channel-a-primer-on-years-of-hard-forgotten-fighting_Pule4C5eYgk.txt",
+      "evidence": [{"start": "23:38", "end": "25:02", "note": "Describes Bacon's industrial background, mistaken night-navigation assumption, corrective system, and handover to Keyes."}]
+    },
+    {
+      "id": "roman-frontier-tripwires-and-dover-patrol",
+      "videoId": "Pule4C5eYgk",
+      "slug": "roman-frontier-tripwires-and-dover-patrol",
+      "title": "Roman frontier forts as an analogy for Dover's tripwires",
+      "kind": "notable_point",
+      "start": "27:29",
+      "end": "29:23",
+      "topics": ["roman-empire", "frontier-defense", "dover-patrol", "military-strategy", "command-and-control"],
+      "summary": "A Roman frontier analogy explains how small local positions could attract and delay an attacker while a governor concentrated mobile forces against the threat.",
+      "body": "Dr. Clarke compares Dover's small patrol stations with Roman frontier forts occupied by limited auxiliary forces. A local fort could tempt rebels into attacking a visible, lightly held objective rather than dispersing or striking deeper targets. Roads and communications then allowed a provincial governor to gather stronger forces and suppress the threat before it expanded. The analogy clarifies that the Dover Barrage was initially intended to reveal and delay mass movement, with the increasingly demanding anti-submarine role added as the war developed.",
+      "sourcePath": "src/transcripts/txt/2024-11-27_T19-30-06_wwi-in-the-english-channel-a-primer-on-years-of-hard-forgotten-fighting_Pule4C5eYgk.txt",
+      "evidence": [{"start": "27:29", "end": "29:16", "note": "Uses Roman auxiliary forts and provincial reaction forces to explain the tripwire concept and its later anti-submarine expansion."}]
     },
     {
       "id": "english-channel-logistics-and-geostrategy",
@@ -90,7 +162,7 @@
       "end": "37:37",
       "topics": ["english-channel", "military-logistics", "western-front", "sea-control", "royal-navy", "scapa-flow"],
       "summary": "Britain's ports and industry made the short Channel crossing a protected logistics bridge for troops, supplies, and wounded personnel.",
-      "body": "Britain combined industrial and agricultural capacity with ports safely removed from the battlefield yet close to northern France. Channel shipping carried supplies to the front and returned wounded personnel for treatment. Strategically, sealing this southern exit from the North Sea also made the Grand Fleet's northern position at Scapa Flow meaningful; leaving the Channel open would leave another route around the blockade.",
+      "body": "Britain combined industrial and agricultural capacity with ports safely removed from the battlefield yet close to northern France. Channel shipping carried supplies to the front and returned wounded personnel for treatment. The short sea route could be more direct than moving the same cargo north through the French transport network. Strategically, sealing this southern exit from the North Sea also made the Grand Fleet's northern position at Scapa Flow meaningful; leaving the Channel open would leave another route around the blockade.",
       "sourcePath": "src/transcripts/txt/2024-11-27_T19-30-06_wwi-in-the-english-channel-a-primer-on-years-of-hard-forgotten-fighting_Pule4C5eYgk.txt",
       "evidence": [{"start": "34:22", "end": "37:24", "note": "Explains the Channel's logistics value and its relationship to North Sea containment."}]
     },
@@ -104,7 +176,7 @@
       "end": "43:53",
       "topics": ["british-expeditionary-force", "royal-navy", "military-logistics", "maritime-strategy", "julian-corbett", "civil-military-relations"],
       "summary": "The rapid crossing of the six-division British Expeditionary Force depended on sea control, even as the Army communicated its plans more effectively to politicians.",
-      "body": "The Royal Navy enabled the original BEF to deploy rapidly and efficiently across the Channel. Dr. Clarke contrasts the Army staff's concise plans and transport timetables with a naval strategic case that was often left implicit or expressed through Julian Corbett's books. Once the Army was committed, protecting and, if necessary, retrieving it became an enduring naval obligation that depended on ships and trained crews already being available.",
+      "body": "The Royal Navy enabled the original six-division BEF to deploy rapidly and efficiently across the Channel. Dr. Clarke contrasts the Army staff's concise plans and transport timetables with a naval strategic case that was often left implicit or expressed through Julian Corbett's books. The difference was partly political communication: ministers were likelier to absorb a short staff summary than reconstruct maritime strategy from a full treatise. Once the Army was committed, protecting and, if necessary, retrieving it became an enduring naval obligation that depended on ships and trained crews already being available.",
       "sourcePath": "src/transcripts/txt/2024-11-27_T19-30-06_wwi-in-the-english-channel-a-primer-on-years-of-hard-forgotten-fighting_Pule4C5eYgk.txt",
       "evidence": [{"start": "37:37", "end": "42:42", "note": "Connects BEF deployment, political communication, and the fleet capacity needed to support the Army."}]
     },
@@ -115,12 +187,26 @@
       "title": "Dover monitors intervene in the Race to the Sea",
       "kind": "chapter",
       "start": "43:53",
-      "end": "52:29",
+      "end": "48:34",
       "topics": ["monitors", "dover-patrol", "race-to-the-sea", "battle-of-the-yser", "siege-of-antwerp", "naval-gunfire-support", "royal-naval-division"],
-      "summary": "The Dover Monitor Squadron and Royal Naval Division helped slow the German advance as the Western Front reached the Belgian coast.",
-      "body": "Tribal destroyers initially supported monitors bombarding German troops and artillery along the Belgian coast. The Royal Naval Division's intervention at Antwerp helped delay German forces and supported the escape of much of the Belgian Army, despite the city's fall. At the Yser, shallow-draft armored monitors delivered rapid naval gunfire that German land forces struggled to answer, helping Belgium retain a surviving portion of its territory.",
+      "summary": "The Dover Monitor Squadron and Royal Naval Division helped delay the German advance through Antwerp as the Western Front raced toward the Belgian coast.",
+      "body": "Tribal destroyers initially supported monitors bombarding German troops and artillery along the Belgian coast. The Royal Marine Brigade reached Antwerp in requisitioned London buses, while the Royal Naval Division and an armored train reinforced the defense. Antwerp still lacked the supplies and strength to survive the German concentration, but holding it delayed that advance and helped roughly 80,000 Belgian troops escape. British losses included men killed, wounded, captured, and nearly 1,500 interned after crossing into neutral Netherlands, showing both the cost and the operational value of the delaying action.",
       "sourcePath": "src/transcripts/txt/2024-11-27_T19-30-06_wwi-in-the-english-channel-a-primer-on-years-of-hard-forgotten-fighting_Pule4C5eYgk.txt",
-      "evidence": [{"start": "44:04", "end": "51:58", "note": "Describes monitor support, Antwerp, the Race to the Sea, and naval fire at the Yser."}]
+      "evidence": [{"start": "44:04", "end": "48:32", "note": "Describes monitor support, the Royal Naval Division at Antwerp, the German delay, Belgian escape, and British losses."}]
+    },
+    {
+      "id": "battle-of-the-yser-naval-fire-and-belgian-survival",
+      "videoId": "Pule4C5eYgk",
+      "slug": "battle-of-the-yser-naval-fire-and-belgian-survival",
+      "title": "Naval gunfire at the Yser helps preserve Belgian territory",
+      "kind": "chapter",
+      "start": "48:34",
+      "end": "52:29",
+      "topics": ["battle-of-the-yser", "belgium", "naval-gunfire-support", "monitors", "hms-mersey", "race-to-the-sea", "king-albert-i"],
+      "summary": "British monitors brought rapid, protected gunfire against German troops at the Yser, helping Belgium hold a remnant of national territory at terrible cost.",
+      "body": "At the Yser, 52,000 Belgian and 6,000 French troops received support from three British monitors, an artillery ship, and auxiliaries. Their rapid-firing naval guns could punish German infantry and artillery while shallow draft, mobility, and armor complicated counterfire from shore. Belgium suffered about 3,500 killed and 15,000 wounded, but German losses were higher and the line held where the Race to the Sea reached the coast. The outcome preserved Belgian-controlled territory and strengthened King Albert I's standing as a national figure during postwar reconstruction. HMS Mersey's protected six-inch and 4.7-inch armament shows how a small 12-knot monitor could deliver disproportionate battlefield effect close inshore.",
+      "sourcePath": "src/transcripts/txt/2024-11-27_T19-30-06_wwi-in-the-english-channel-a-primer-on-years-of-hard-forgotten-fighting_Pule4C5eYgk.txt",
+      "evidence": [{"start": "48:34", "end": "52:24", "note": "Explains the Yser forces and casualties, the monitors' battlefield effect, Belgian territorial survival, King Albert, and HMS Mersey's characteristics."}]
     },
     {
       "id": "battle-of-dover-strait-1916",
@@ -132,9 +218,23 @@
       "end": "59:48",
       "topics": ["battle-of-dover-strait-1916", "dover-patrol", "kaiserliche-marine", "tribal-class-destroyers", "hms-nubian", "night-fighting"],
       "summary": "Twenty-three German torpedo boats struck a quiet, depleted barrage, sank HMS Flirt, and blew off HMS Nubian's bow before British destroyers drove them away.",
-      "body": "Months of quiet had encouraged the removal of Dover Patrol destroyers when two fresh German flotillas arrived and attacked in October 1916. HMS Flirt and then HMS Nubian misidentified approaching torpedo boats in the darkness; Flirt was overwhelmed, while Nubian lost her bow after trying to ram. The episode shows the cost of divided reaction groups, ambiguous identification, and allowing faster ships to outrun mutual support, although restrictions on night merchant traffic limited the raid's strategic payoff.",
+      "body": "Months of quiet had encouraged the removal of Dover Patrol destroyers when two fresh German flotillas arrived and attacked in October 1916. HMS Flirt and then HMS Nubian misidentified approaching torpedo boats in the darkness; Flirt was overwhelmed, while Nubian lost her bow after trying to ram. Admiral Bacon's six Tribal-class destroyers were split into loose groups, allowing the fast Nubian to reach the fighting without close support. The episode shows the cost of divided reaction groups and ambiguous identification, although restrictions on night merchant traffic limited the raid's strategic payoff.",
       "sourcePath": "src/transcripts/txt/2024-11-27_T19-30-06_wwi-in-the-english-channel-a-primer-on-years-of-hard-forgotten-fighting_Pule4C5eYgk.txt",
       "evidence": [{"start": "53:14", "end": "59:44", "note": "Reconstructs the German raid, Flirt's loss, Nubian's damage, and the reaction-force failures."}]
+    },
+    {
+      "id": "dover-1916-lessons-for-1944-destroyer-tactics",
+      "videoId": "Pule4C5eYgk",
+      "slug": "dover-1916-lessons-for-1944-destroyer-tactics",
+      "title": "The Dover raid's lesson for destroyer tactics off Normandy",
+      "kind": "notable_point",
+      "start": "59:07",
+      "end": "59:48",
+      "topics": ["battle-of-dover-strait-1916", "normandy-landings", "destroyers", "fleet-tactics", "night-fighting", "organizational-learning"],
+      "summary": "The dispersed 1916 response helps explain why the 10th Destroyer Flotilla stayed concentrated while protecting the Normandy beaches in 1944.",
+      "body": "Dr. Clarke carries the 1916 Dover lesson forward to the Normandy campaign. The 10th Destroyer Flotilla operated as a coherent group while protecting the invasion beaches rather than sending divisions in different directions. Ships remained within sight and close enough for mutual support until contact with the enemy. That procedure directly avoided Nubian's problem of using superior speed to arrive alone at a confused night action.",
+      "sourcePath": "src/transcripts/txt/2024-11-27_T19-30-06_wwi-in-the-english-channel-a-primer-on-years-of-hard-forgotten-fighting_Pule4C5eYgk.txt",
+      "evidence": [{"start": "59:07", "end": "59:44", "note": "Connects the 1916 divided response to the concentrated tactics of the 10th Destroyer Flotilla off Normandy in 1944."}]
     },
     {
       "id": "battle-of-dover-strait-1917-swift-and-broke",
@@ -146,7 +246,7 @@
       "end": "1:02:35",
       "topics": ["battle-of-dover-strait-1917", "hms-swift", "hms-broke", "destroyers", "kaiserliche-marine", "night-fighting"],
       "summary": "HMS Swift and HMS Broke met six returning German torpedo boats with immediate torpedo, gun, and ramming attacks.",
-      "body": "The 1917 encounter differed sharply from the previous year's hesitation. Swift torpedoed G85 while Broke rammed G42 and fought at close range, leaving two German boats sunk. Both British destroyers suffered damage and 22 men were killed, but their aggressive identification and mutually supporting action prevented the Germans from controlling the engagement.",
+      "body": "The 1917 encounter differed sharply from the previous year's hesitation. Swift torpedoed G85 while Broke rammed G42 and fought at close range, leaving two German boats sunk. Broke became locked to G42 while still engaging other boats, and Swift later helped tow the more heavily damaged British ship home. Both British destroyers suffered damage and 22 men were killed, but immediate, mutually supporting action prevented the Germans from controlling the engagement.",
       "sourcePath": "src/transcripts/txt/2024-11-27_T19-30-06_wwi-in-the-english-channel-a-primer-on-years-of-hard-forgotten-fighting_Pule4C5eYgk.txt",
       "evidence": [{"start": "59:56", "end": "1:02:28", "note": "Details Swift and Broke's torpedo, ramming, and gun actions against German torpedo boats."}]
     },
@@ -160,7 +260,7 @@
       "end": "1:07:00",
       "topics": ["hms-zubian", "hms-nubian", "hms-zulu", "tribal-class-destroyers", "ship-repair", "ostend-raids"],
       "summary": "Chatham Dockyard joined HMS Zulu's bow to HMS Nubian's stern, producing the composite destroyer HMS Zubian despite differences between the original builders' designs.",
-      "body": "Nubian lost her bow to a torpedo in October 1916, and Zulu lost her stern to a mine days later. A Royal Navy constructor judged the surviving halves close enough to combine despite a three-and-a-half-inch difference in beam, and the resulting Zubian commissioned in June 1917. She later attacked UC-50 with ramming and depth charges and joined the bombardment force for the First Ostend Raid.",
+      "body": "Nubian lost her bow to a torpedo in October 1916, and Zulu lost her stern to a mine days later. A Royal Navy constructor judged the surviving halves close enough to combine despite a three-and-a-half-inch difference in beam, and the resulting Zubian commissioned in June 1917. She later attacked UC-50 with ramming and depth charges, with divers confirming the wreck after further charges from HMS P12. Zubian also escorted monitors during the First Ostend Raid, whose bombardment succeeded better than the blockship attempt because both old cruisers grounded outside the harbor entrance.",
       "sourcePath": "src/transcripts/txt/2024-11-27_T19-30-06_wwi-in-the-english-channel-a-primer-on-years-of-hard-forgotten-fighting_Pule4C5eYgk.txt",
       "evidence": [{"start": "1:02:35", "end": "1:06:30", "note": "Explains Zubian's construction, UC-50 attack, and role in the First Ostend Raid."}]
     },
@@ -174,7 +274,7 @@
       "end": "1:10:44",
       "topics": ["dover-barrage", "dover-patrol", "kaiserliche-marine", "drifters", "minesweepers", "convoy-protection"],
       "summary": "Five German destroyers and eight torpedo boats overwhelmed lightly armed drifters and minesweepers while scarce British reaction forces were committed elsewhere.",
-      "body": "The German force held decisive advantages in firepower, speed, size, and gun stability, sinking a trawler, seven drifters, and a paddle minesweeper while damaging six more drifters. British destroyers and heavier support had been drawn away during the peak of the anti-submarine war. The raid inflicted severe casualties but again concentrated on the barrage craft rather than the merchant traffic carrying critical supplies to France.",
+      "body": "The German force held decisive advantages in firepower, speed, size, and gun stability, sinking a trawler, seven drifters, and a paddle minesweeper while damaging six more drifters. British destroyers and heavier support had been drawn away during the peak of the anti-submarine war. The lightly armed patrol crews nevertheless remained at their assigned barrier positions until the attackers moved on or stronger British ships appeared. The raid inflicted severe casualties but again concentrated on replaceable barrage craft rather than the merchant traffic carrying critical supplies to France.",
       "sourcePath": "src/transcripts/txt/2024-11-27_T19-30-06_wwi-in-the-english-channel-a-primer-on-years-of-hard-forgotten-fighting_Pule4C5eYgk.txt",
       "evidence": [{"start": "1:07:02", "end": "1:10:35", "note": "Lists the forces, losses, absent reinforcements, and operational limits of the February 1918 raid."}]
     },
@@ -188,9 +288,23 @@
       "end": "1:15:58",
       "topics": ["hms-swift", "destroyers", "naval-gunnery", "ship-design", "dover-patrol", "anti-submarine-warfare"],
       "summary": "The unusually large and fast HMS Swift received a six-inch gun for Channel fighting, but the weapon's poor performance led to its replacement.",
-      "body": "Swift displaced about 1,854 tons, reached roughly 34 knots, and served first as a torpedo-boat flotilla leader before transferring to Dover. Her forward four-inch weapons were replaced by a single six-inch gun intended to outrange German 105 mm weapons, requiring deck reinforcement but reducing top weight enough for added anti-aircraft guns. Combat experience in 1917 judged the large gun unsatisfactory, and two quick-firing four-inch guns replaced it.",
+      "body": "Swift displaced about 1,854 tons, reached roughly 34 knots, and served first as a torpedo-boat flotilla leader before transferring to Dover. Her forward four-inch weapons were replaced by a single six-inch gun intended to outrange German 105 mm weapons. The heavier weapon required deck reinforcement, yet the refit reduced top weight enough to permit additional anti-aircraft guns near the bridge. Combat experience in 1917 judged the large gun unsatisfactory, and two quick-firing four-inch guns replaced it.",
       "sourcePath": "src/transcripts/txt/2024-11-27_T19-30-06_wwi-in-the-english-channel-a-primer-on-years-of-hard-forgotten-fighting_Pule4C5eYgk.txt",
       "evidence": [{"start": "1:10:46", "end": "1:15:05", "note": "Gives Swift's characteristics, service, six-inch refit, structural changes, and later rearmament."}]
+    },
+    {
+      "id": "hms-swift-recovers-hawk-survivors",
+      "videoId": "Pule4C5eYgk",
+      "slug": "hms-swift-recovers-hawk-survivors",
+      "title": "HMS Swift finds survivors from the torpedoed HMS Hawke",
+      "kind": "notable_point",
+      "start": "1:11:46",
+      "end": "1:12:46",
+      "topics": ["hms-swift", "hms-hawke", "submarines", "anti-submarine-warfare", "cruisers", "ship-losses"],
+      "summary": "Swift's early wartime search recovered an officer and 21 men from HMS Hawke, illustrating how exposed unescorted cruisers were before effective submarine detection.",
+      "body": "Before joining the Dover Patrol, Swift sailed from Scapa Flow in October 1914 to search for the missing cruiser HMS Hawke. She found a raft carrying one officer and 21 men after a U-boat had torpedoed the cruiser. The small survivor group underlined the danger facing cruisers operating without escorts or a means to detect submerged submarines. Dr. Clarke connects Hawke with the losses of Aboukir, Hogue, and Cressy as evidence that forced the Royal Navy to take the vulnerability seriously and influenced later cruiser thinking.",
+      "sourcePath": "src/transcripts/txt/2024-11-27_T19-30-06_wwi-in-the-english-channel-a-primer-on-years-of-hard-forgotten-fighting_Pule4C5eYgk.txt",
+      "evidence": [{"start": "1:11:46", "end": "1:12:45", "note": "Describes Swift's search, the recovered Hawke survivors, and the lesson about cruisers operating without submarine detection."}]
     },
     {
       "id": "barrage-control-and-failure-to-exploit",
@@ -202,7 +316,7 @@
       "end": "1:17:49",
       "topics": ["dover-barrage", "maritime-strategy", "kaiserliche-marine", "maneuver-warfare", "military-logistics", "sea-control"],
       "summary": "The conclusion argues that German forces repeatedly attacked the blockade itself instead of exploiting a breach against the logistics the blockade protected.",
-      "body": "The Dover defenses imposed land-like control on maritime geography partly because German raiders treated destruction of patrol craft as their principal objective. Dr. Clarke contrasts that choice with contemporary cavalry doctrine, which sought to pass through a breach and attack logistics behind the line. Warships are maneuver forces, yet both attackers and defenders could lose that freedom when tied to the barrage, drifters, convoys, or fixed protection duties.",
+      "body": "The Dover defenses imposed land-like control on maritime geography partly because German raiders treated destruction of patrol craft as their principal objective. Dr. Clarke contrasts that choice with contemporary cavalry doctrine, which sought to pass through a breach and attack logistics behind the line. Warships are maneuver forces, yet both attackers and defenders could lose that freedom when tied to the barrage, drifters, convoys, or fixed protection duties. The closing counterfactual asks whether a heavier German force would bypass the Channel Squadron and Harwich Force or become absorbed in another battle over the barrier itself.",
       "sourcePath": "src/transcripts/txt/2024-11-27_T19-30-06_wwi-in-the-english-channel-a-primer-on-years-of-hard-forgotten-fighting_Pule4C5eYgk.txt",
       "evidence": [{"start": "1:15:58", "end": "1:17:44", "note": "Compares attacks on the barrage with exploiting a breakthrough against enemy logistics."}]
     }

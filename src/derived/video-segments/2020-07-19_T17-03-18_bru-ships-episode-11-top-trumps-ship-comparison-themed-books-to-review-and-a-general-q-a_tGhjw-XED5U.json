@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "videoId": "tGhjw-XED5U",
-  "topics": ["live-q-and-a", "naval-book-reviews", "warship-comparison", "naval-history", "warship-design", "naval-strategy"],
+  "topics": ["live-q-and-a", "naval-book-reviews", "warship-comparison", "naval-history", "warship-design", "naval-strategy", "naval-architecture", "amphibious-warfare", "naval-logistics"],
   "needsFurtherProcessing": false,
   "segments": [
     {
@@ -13,9 +13,12 @@
       "start": "3:28",
       "topics": ["naval-book-reviews", "warship-comparison"],
       "summary": "Dr. Clarke explains why data-rich comparison books can be enjoyable reference tools as well as introductions to naval history.",
-      "body": "He uses Top Trumps as a shorthand for books that let a reader compare ships, armour, weapons, and other characteristics quickly. The value is not a claim that a single statistic decides a fight, but that standardized information helps readers ask better comparative questions.",
+      "body": "He uses Top Trumps as a shorthand for books that let a reader compare ships, armour, weapons, and other characteristics quickly. Standardized tables, silhouettes, and specifications create a common baseline for asking why designs differ. They cannot capture decisive human factors such as crew confidence, training, and damage-control performance. The watch point therefore presents comparative data as an entry into naval analysis rather than a mechanical prediction of which ship wins.",
       "sourcePath": "src/transcripts/txt/2020-07-19_T17-03-18_bru-ships-episode-11-top-trumps-ship-comparison-themed-books-to-review-and-a-general-q-a_tGhjw-XED5U.txt",
-      "evidence": [{ "start": "3:28", "note": "He defines the Top Trumps shorthand for comparative books." }]
+      "evidence": [
+        { "start": "3:28", "note": "He defines the Top Trumps shorthand for comparative books." },
+        { "start": "12:26", "note": "He warns that crew confidence and damage control remain an uncaptured variable." }
+      ]
     },
     {
       "id": "norman-friedman-and-comparative-data",
@@ -78,11 +81,15 @@
       "start": "22:04",
       "topics": ["naval-electronic-warfare", "royal-navy", "world-war-ii"],
       "summary": "A question about wartime electronic warfare explains why the documentary record can be thin.",
-      "body": "Dr. Clarke says there is comparatively little published material beyond familiar countermeasures such as jamming Fritz X and Hs 293 guidance. He attributes part of the gap to the Royal Navy’s long-running caution about revealing electronic-warfare capabilities and their technical lineage.",
+      "body": "Dr. Clarke says there is comparatively little published material beyond familiar countermeasures such as jamming Fritz X and Hs 293 guidance. He attributes part of the gap to the Royal Navy’s long-running caution about revealing electronic-warfare capabilities and their technical lineage. He points readers toward a specialist history of radar and electronic systems in the wartime Royal Navy. He also recommends checking American, Australian, and New Zealand records because allied archives may publish British-origin technology that British files still obscure or reclassify.",
       "question": "What resources cover Royal Navy electronic warfare and combat experience beyond jamming Fritz X and Hs 293?",
       "answerShort": "The subject is thinly published, partly because electronic-warfare capabilities and their development have remained closely held.",
       "sourcePath": "src/transcripts/txt/2020-07-19_T17-03-18_bru-ships-episode-11-top-trumps-ship-comparison-themed-books-to-review-and-a-general-q-a_tGhjw-XED5U.txt",
-      "evidence": [{ "start": "22:04", "note": "He answers the electronic-warfare source question." }]
+      "evidence": [
+        { "start": "22:04", "note": "He answers the electronic-warfare source question." },
+        { "start": "32:52", "note": "He names a specialist history of Royal Navy radar and electronic systems." },
+        { "start": "42:23", "note": "He recommends allied archives as another route to British technical records." }
+      ]
     },
     {
       "id": "axis-aircraft-guide-and-second-world-war-biplanes",
@@ -104,13 +111,17 @@
       "title": "Anti-submarine success is more than sinking U-boats",
       "kind": "qa",
       "start": "24:38",
-      "topics": ["anti-submarine-warfare", "convoys", "swordfish", "world-war-ii"],
+      "topics": ["anti-submarine-warfare", "convoys", "swordfish", "bristol-beaufighter", "world-war-ii"],
       "summary": "The answer compares aircraft and escorts while reframing convoy protection as the decisive measure of success.",
-      "body": "Dr. Clarke names Swordfish as a notably successful anti-submarine aircraft and points to Castle-class corvettes and River-class frigates as prolific escorts. He then stresses that the central task was getting merchant ships through, not simply maximizing U-boat kills, which makes convoy protection the more useful test.",
+      "body": "Dr. Clarke names Swordfish as a notably successful anti-submarine aircraft and points to Castle-class corvettes and River-class frigates as prolific escorts. He contrasts the Swordfish’s widespread patrol work with the Bristol Beaufighter’s more concentrated use in high-threat areas. He also cautions that aircraft-loss totals can mix confirmed combat losses with disappearances, weather, and mechanical failure. Above all, the central task was getting merchant ships through, not simply maximizing U-boat kills, which makes convoy protection the more useful measure of success.",
       "question": "Which aircraft or ship class destroyed the most submarines in the Second World War?",
       "answerShort": "Swordfish and escort types were highly successful, but protecting convoy traffic matters more than counting submarine kills alone.",
       "sourcePath": "src/transcripts/txt/2020-07-19_T17-03-18_bru-ships-episode-11-top-trumps-ship-comparison-themed-books-to-review-and-a-general-q-a_tGhjw-XED5U.txt",
-      "evidence": [{ "start": "24:38", "note": "He compares Swordfish, escort classes, and the convoy-protection objective." }]
+      "evidence": [
+        { "start": "24:38", "note": "He compares Swordfish, escort classes, and the convoy-protection objective." },
+        { "start": "26:34", "note": "He contrasts Beaufighter concentration with Swordfish patrols across several theatres." },
+        { "start": "45:49", "note": "He cautions against treating every missing patrol aircraft as a submarine kill." }
+      ]
     },
     {
       "id": "kongo-versus-alaska-in-a-gunnery-duel",
@@ -136,7 +147,7 @@
       "start": "32:12",
       "topics": ["swordfish", "anti-submarine-warfare", "escort-carriers"],
       "summary": "The Swordfish’s low speed supported endurance, equipment carriage, and escort-carrier operations.",
-      "body": "Dr. Clarke agrees that the aircraft’s slow speed contributed to its usefulness, chiefly by allowing it to loiter and carry anti-submarine radar and stores. Its ability to operate readily from escort carriers also made that endurance relevant to convoy warfare across multiple theatres.",
+      "body": "Dr. Clarke agrees that the aircraft’s slow speed contributed to its usefulness by allowing it to loiter over likely submarine positions. The Swordfish could carry anti-submarine radar, weapons, and other stores while remaining easy to operate from escort carriers. Its widespread deployment put it over the Atlantic, Caribbean, and Southeast Asian waters rather than confining it to one high-intensity theatre. The answer shows how endurance, payload, and basing flexibility can matter more than maximum speed in maritime patrol work.",
       "question": "Was the Swordfish’s low speed a factor in its anti-submarine success?",
       "answerShort": "Yes. It could loiter, carry useful anti-submarine equipment and stores, and operate easily from escort carriers.",
       "sourcePath": "src/transcripts/txt/2020-07-19_T17-03-18_bru-ships-episode-11-top-trumps-ship-comparison-themed-books-to-review-and-a-general-q-a_tGhjw-XED5U.txt",
@@ -222,11 +233,14 @@
       "start": "50:16",
       "topics": ["naval-technology", "torpedoes", "anti-submarine-warfare"],
       "summary": "Heavy torpedo concepts may retain value, but most wartime technology would need wholesale modernization.",
-      "body": "Dr. Clarke suggests that large torpedo concepts could be revisited with modern engines and sonar as long-range anti-submarine weapons. He frames this as a narrow possibility rather than a general revival of wartime technology, because most of the technical baseline has moved on.",
+      "body": "Dr. Clarke suggests that large torpedo concepts could be revisited with modern engines and sonar as long-range anti-submarine weapons. He later combines the idea with a rocket boost, dipping sonar carried by unmanned aircraft, and mobile sonar buoys positioned ahead of a formation. The aim would be to turn distant detection into a small number of very destructive attacks rather than merely refurbishing an old weapon. He frames this as a narrow design thought experiment rather than a general revival of wartime technology, because most of the technical baseline has moved on.",
       "question": "What Second World War technology would be worth resurrecting for another fifty years?",
       "answerShort": "Most technology is obsolete, but modernized heavy torpedoes could still offer a powerful long-range anti-submarine option.",
       "sourcePath": "src/transcripts/txt/2020-07-19_T17-03-18_bru-ships-episode-11-top-trumps-ship-comparison-themed-books-to-review-and-a-general-q-a_tGhjw-XED5U.txt",
-      "evidence": [{ "start": "50:16", "note": "He proposes modernizing heavy torpedoes while cautioning that technology has moved on." }]
+      "evidence": [
+        { "start": "50:16", "note": "He proposes modernizing heavy torpedoes while cautioning that technology has moved on." },
+        { "start": "57:49", "note": "He links rocket-assisted heavy torpedoes to unmanned dipping sonar and mobile sonar buoys." }
+      ]
     },
     {
       "id": "modern-warship-and-submarine-comparison-books",
@@ -310,7 +324,7 @@
       "start": "1:16:03",
       "topics": ["royal-marines", "amphibious-warfare", "naval-logistics"],
       "summary": "Changing the Royal Marines into a very light force risks losing the sea-based entry capability other British forces may require.",
-      "body": "Dr. Clarke argues that the Royal Marines are Britain’s force for operating from the sea and opening access for heavier land forces. Removing ships such as Albion and Bulwark makes it harder to move a brigade when an allied airfield or port is unavailable or has been damaged.",
+      "body": "Dr. Clarke argues that the Royal Marines are Britain’s force for operating from the sea and opening access for heavier land forces. Removing ships such as Albion and Bulwark makes it harder to move a brigade when an allied airfield or port is unavailable or has been damaged. He recalls Cold War planning for Norway, where friendly territory did not guarantee that intact ports would still be usable after Soviet attack. The learning point is that amphibious shipping provides an independent route into a theatre when political permission, airfields, and port infrastructure cannot all be assumed.",
       "question": "Should 3 Commando Brigade become a much lighter littoral force while the Army supplies light infantry?",
       "answerShort": "No. Britain still needs sea-based forces and amphibious shipping to create access when ports and airfields cannot be assumed available.",
       "sourcePath": "src/transcripts/txt/2020-07-19_T17-03-18_bru-ships-episode-11-top-trumps-ship-comparison-themed-books-to-review-and-a-general-q-a_tGhjw-XED5U.txt",
@@ -340,7 +354,7 @@
       "start": "1:24:34",
       "topics": ["amphibious-warfare", "naval-reserves", "royal-marines"],
       "summary": "The rarity of major amphibious operations does not remove the need for people, ships, and equipment when one becomes necessary.",
-      "body": "Dr. Clarke recalls that amphibious assaults were dismissed after the First World War, only to become central again in the next conflict. He suggests that reserve crews and periodically exercised equipment can preserve capacity, but the large ships and trained personnel still matter when an operation is unavoidable.",
+      "body": "Dr. Clarke recalls that amphibious assaults were dismissed after the First World War and Gallipoli, only to become central again in the next conflict. Their infrequent use can make ships and specialist equipment look expendable during routine budgeting. He suggests that reserve crews and periodically exercised equipment can reduce the standing cost of preserving capacity. The large ships, trained personnel, and rehearsed organization still have to exist before a crisis makes the requirement urgent.",
       "question": "If amphibious assaults may not happen again, why retain the capability?",
       "answerShort": "They are uncommon until they are essential; reservist-supported readiness can reduce routine cost but cannot replace the underlying ships and trained force.",
       "sourcePath": "src/transcripts/txt/2020-07-19_T17-03-18_bru-ships-episode-11-top-trumps-ship-comparison-themed-books-to-review-and-a-general-q-a_tGhjw-XED5U.txt",
@@ -397,14 +411,14 @@
       "slug": "south-dakota-guns-and-protection-tradeoffs",
       "title": "South Dakota’s guns and the cost of naval tradeoffs",
       "kind": "qa",
-      "start": "1:46:55",
+      "start": "1:46:54",
       "topics": ["battleships", "us-navy", "warship-design", "naval-armor"],
       "summary": "The comparison highlights how armour, speed, and armament compete for limited displacement.",
       "body": "Dr. Clarke answers that protection was one of the prices paid in fitting nine 16-inch guns into the relevant American designs, using deck-armour comparison as an illustration. Designers tried to recover protection through layout and angles, but no battleship can maximize every attribute at once.",
       "question": "What sacrifices did the US Navy make to carry nine 16-inch guns in the South Dakota and North Carolina classes?",
       "answerShort": "Protection was among the tradeoffs; designers used layout and angling to compensate, but displacement could not maximize guns, speed, and armour together.",
       "sourcePath": "src/transcripts/txt/2020-07-19_T17-03-18_bru-ships-episode-11-top-trumps-ship-comparison-themed-books-to-review-and-a-general-q-a_tGhjw-XED5U.txt",
-      "evidence": [{ "start": "1:46:55", "note": "He discusses protection and design compromises around nine 16-inch guns." }]
+      "evidence": [{ "start": "1:46:54", "note": "He discusses protection and design compromises around nine 16-inch guns." }]
     },
     {
       "id": "amphibious-eight-by-eight-force-design",
@@ -415,7 +429,7 @@
       "start": "1:47:48",
       "topics": ["amphibious-warfare", "armoured-vehicles", "force-structure", "royal-marines"],
       "summary": "Rather than buying an amphibious Centauro, the answer favors a common 8×8 vehicle family that can support several brigades.",
-      "body": "Dr. Clarke argues that a US Marine Corps-style 8×8 platform could have provided mobility and amphibious utility across Royal Marine and Army formations. Common chassis variants for personnel, command, medical, fire-support, and anti-tank roles would simplify force design and offer alternatives if fixed infrastructure were disrupted.",
+      "body": "Dr. Clarke argues that a US Marine Corps-style 8×8 platform could have provided mobility and amphibious utility across Royal Marine and Army formations. He imagines three brigades using the same vehicle family, with Royal Marines supplying the amphibious core and two Army brigades sharing the system. Personnel, command, medical, fire-support, and anti-tank variants on one chassis would simplify training, maintenance, and deployment. Genuine amphibious mobility would also reduce reliance on the Channel Tunnel because the vehicles could cross from the coast under their own power.",
       "question": "Should Britain have bought an amphibious Centauro-type vehicle for the Royal Marines?",
       "answerShort": "He would instead build several brigades around a common amphibious 8×8 family with variants for many roles.",
       "sourcePath": "src/transcripts/txt/2020-07-19_T17-03-18_bru-ships-episode-11-top-trumps-ship-comparison-themed-books-to-review-and-a-general-q-a_tGhjw-XED5U.txt",
@@ -460,11 +474,16 @@
       "start": "2:07:31",
       "topics": ["damage-control", "aircraft-carriers", "us-navy"],
       "summary": "A ship in maintenance may have fewer people aboard, open compartments, and unavailable fire-suppression systems.",
-      "body": "Discussing Bonhomme Richard, Dr. Clarke argues that a major fire at sea would have met a more fully manned and closed-up warship. In harbour, maintenance activity, removed doors, contractors, and systems taken offline can make containment much harder.",
+      "body": "Discussing Bonhomme Richard, Dr. Clarke argues that a major fire at sea would have met a more fully manned and closed-up warship. In harbour, maintenance activity, removed doors, contractors, and systems taken offline can make containment much harder. He rejects the idea that US Navy damage control had simply deteriorated, emphasizing that suppression equipment was unavailable during the work period. Later discussion distinguishes fully automatic systems from alarms and remotely triggered deluge systems, whose use may damage aircraft and electronics but preserve the ship.",
       "question": "Would Bonhomme Richard have fought the fire better if it had happened at sea?",
       "answerShort": "Probably. At sea the ship would normally be more fully crewed, closed up, and ready to use its damage-control systems.",
       "sourcePath": "src/transcripts/txt/2020-07-19_T17-03-18_bru-ships-episode-11-top-trumps-ship-comparison-themed-books-to-review-and-a-general-q-a_tGhjw-XED5U.txt",
-      "evidence": [{ "start": "2:07:31", "note": "He contrasts a ship at sea with one undergoing harbour maintenance." }]
+      "evidence": [
+        { "start": "2:07:31", "note": "He contrasts a ship at sea with one undergoing harbour maintenance." },
+        { "start": "2:09:01", "note": "He says the damage-control problem was systems being offline, not a general loss of skill." },
+        { "start": "2:41:01", "note": "He distinguishes alarms and deluge systems from fully automatic suppression." },
+        { "start": "2:45:36", "note": "He explains why saving the ship can justify damage to aircraft and electronics." }
+      ]
     },
     {
       "id": "naval-diplomacy-in-peacetime",
@@ -610,7 +629,7 @@
       "start": "2:45:02",
       "topics": ["force-structure", "warship-design", "surface-combatants"],
       "summary": "A very large multirole surface combatant offers space and flexibility, but concentrates too much capability in too few expensive targets.",
-      "body": "Dr. Clarke understands the attraction of a ship with room for every mission system, but compares the proposed scale to a Second World War battleship or battlecruiser. Its size would make it difficult to build in numbers, base, deploy, and replace, while giving an opponent an unusually valuable target.",
+      "body": "Dr. Clarke understands the attraction of a ship with room for every mission system. A 25,000- to 30,000-ton surface combatant, however, approaches the displacement of a Second World War battleship or battlecruiser. Its size would make it difficult to build in numbers, base, deploy, and replace. Concentrating so much capability in each hull also gives an opponent an unusually valuable target and weakens the fleet-level case for the design.",
       "question": "Would 25,000- to 30,000-ton warships be ideal do-everything ships?",
       "answerShort": "No. They would be extremely capable but too large, costly, concentrated, and difficult to field in useful numbers.",
       "sourcePath": "src/transcripts/txt/2020-07-19_T17-03-18_bru-ships-episode-11-top-trumps-ship-comparison-themed-books-to-review-and-a-general-q-a_tGhjw-XED5U.txt",
@@ -675,6 +694,230 @@
       "answerShort": "Yes, but high pre-war operational demands and international crises made it difficult to release a major ship for the desired refit period.",
       "sourcePath": "src/transcripts/txt/2020-07-19_T17-03-18_bru-ships-episode-11-top-trumps-ship-comparison-themed-books-to-review-and-a-general-q-a_tGhjw-XED5U.txt",
       "evidence": [{ "start": "2:55:00", "note": "He says Hood could have been refitted but discusses the pre-war operational tempo." }]
+    },
+    {
+      "id": "deutschland-class-guns-and-propulsion-tradeoff",
+      "videoId": "tGhjw-XED5U",
+      "slug": "deutschland-class-guns-and-propulsion-tradeoff",
+      "title": "Trading Deutschland-class gun weight for speed",
+      "kind": "notable_point",
+      "start": "31:41",
+      "topics": ["deutschland-class", "heavy-cruisers", "naval-gunnery", "marine-propulsion", "warship-design"],
+      "summary": "A proposed redesign exchanges the Deutschland class’s unusually heavy armament for eight-inch guns and stronger machinery.",
+      "body": "Dr. Clarke suggests replacing the Deutschland-class cruisers’ original armament with eight-inch guns. The saved weight could support more powerful and more capable machinery. Higher speed would make the ships better able to choose engagements and perform a cruiser’s operational work. The watch point is a concise example of redesigning around mission utility rather than preserving the feature that makes a class famous.",
+      "sourcePath": "src/transcripts/txt/2020-07-19_T17-03-18_bru-ships-episode-11-top-trumps-ship-comparison-themed-books-to-review-and-a-general-q-a_tGhjw-XED5U.txt",
+      "evidence": [{ "start": "31:41", "note": "He proposes eight-inch guns and using the saved weight for better engines." }]
+    },
+    {
+      "id": "doug-clarke-naval-architecture-scope",
+      "videoId": "tGhjw-XED5U",
+      "slug": "doug-clarke-naval-architecture-scope",
+      "title": "Doug Clarke’s work across naval architecture",
+      "kind": "qa",
+      "start": "49:54",
+      "topics": ["naval-architecture", "hull-design", "ship-design"],
+      "summary": "A family question identifies hull form and displacement as recurring specialties within a much wider ship-design career.",
+      "body": "Asked whether his father specialized in one branch of naval architecture, Dr. Clarke describes him as a jack of all trades. Hull form and displacement nevertheless appear as substantial recurring areas of work. The answer helps explain why the surrounding images range across carriers, submarines, frigates, ferries, and patrol craft. It also frames naval architecture as an integrative discipline in which a designer may move among platform types and technical problems.",
+      "question": "Did Doug Clarke specialize in a particular area of naval architecture?",
+      "answerShort": "He worked broadly across ship design, with substantial experience in hull form and displacement.",
+      "sourcePath": "src/transcripts/txt/2020-07-19_T17-03-18_bru-ships-episode-11-top-trumps-ship-comparison-themed-books-to-review-and-a-general-q-a_tGhjw-XED5U.txt",
+      "evidence": [{ "start": "49:54", "note": "He describes his father as a generalist with extensive hull-form and displacement work." }]
+    },
+    {
+      "id": "falklands-hf-radio-propagation-anecdote",
+      "videoId": "tGhjw-XED5U",
+      "slug": "falklands-hf-radio-propagation-anecdote",
+      "title": "When Falklands radio traffic reached Germany instead of HMS Fearless",
+      "kind": "notable_point",
+      "start": "1:00:01",
+      "topics": ["falklands-war", "naval-communications", "hms-fearless", "high-frequency-radio"],
+      "summary": "A Falklands anecdote illustrates how high-frequency propagation can send a message far beyond its intended nearby receiver.",
+      "body": "Dr. Clarke recalls a unit ashore trying and failing to reach HMS Fearless by high-frequency radio. The same transmission was reportedly heard clearly in northern Germany because atmospheric conditions carried it along an unintended path. The German receiver then relayed the information to the ship by satellite communication. The story makes radio propagation a concrete operational problem: nominal range does not guarantee that the intended station will hear a signal when and where it is needed.",
+      "sourcePath": "src/transcripts/txt/2020-07-19_T17-03-18_bru-ships-episode-11-top-trumps-ship-comparison-themed-books-to-review-and-a-general-q-a_tGhjw-XED5U.txt",
+      "evidence": [{ "start": "1:00:01", "note": "He recounts Falklands traffic reaching northern Germany and being relayed to Fearless." }]
+    },
+    {
+      "id": "fisher-beresford-feud-reading-guide",
+      "videoId": "tGhjw-XED5U",
+      "slug": "fisher-beresford-feud-reading-guide",
+      "title": "Books for understanding the Fisher–Beresford feud",
+      "kind": "qa",
+      "start": "1:01:14",
+      "topics": ["jackie-fisher", "charles-beresford", "royal-navy", "naval-book-reviews"],
+      "summary": "Two broader histories are recommended because they place the famous Royal Navy quarrel within strategy, politics, and the wider admiralty.",
+      "body": "Dr. Clarke recommends Robert Massie’s Dreadnought and Andrew Lambert’s Admirals for the Fisher–Beresford feud. Massie treats the dispute within the political and naval setting that produced the dreadnought era. Lambert’s approach is especially useful for comparing Fisher and Beresford with other admirals rather than isolating their personalities. The later discussion cautions that prolonged feuds were not unique within senior naval leadership, which helps keep the celebrated quarrel in proportion.",
+      "question": "Which books explain the feud between Jackie Fisher and Charles Beresford in detail?",
+      "answerShort": "Massie’s Dreadnought and Lambert’s Admirals both cover it, with useful political and institutional context.",
+      "sourcePath": "src/transcripts/txt/2020-07-19_T17-03-18_bru-ships-episode-11-top-trumps-ship-comparison-themed-books-to-review-and-a-general-q-a_tGhjw-XED5U.txt",
+      "evidence": [
+        { "start": "1:01:14", "note": "He recommends Massie and Lambert for the feud." },
+        { "start": "1:12:33", "note": "He explains why the broader context of other admirals improves the reading." }
+      ]
+    },
+    {
+      "id": "channel-tunnel-as-a-deployment-bottleneck",
+      "videoId": "tGhjw-XED5U",
+      "slug": "channel-tunnel-as-a-deployment-bottleneck",
+      "title": "The Channel Tunnel as a modern deployment bottleneck",
+      "kind": "notable_point",
+      "start": "1:21:13",
+      "topics": ["channel-tunnel", "military-logistics", "force-structure", "amphibious-warfare"],
+      "summary": "Moving a British strike brigade by rail creates a predictable point where a short disruption can buy an opponent valuable time.",
+      "body": "The discussion treats the Channel Tunnel as a conspicuous dependency in plans to reinforce Poland or the Baltic region. An attacker would not need to destroy it permanently; a mission kill lasting several days could delay a brigade long enough for opposing forces to consolidate. Rail tracks, power, trains, and loading arrangements create several ways to interrupt the route even when the tunnel structure survives. This vulnerability strengthens the case for amphibious vehicles and sea lift that provide an alternate path rather than merely a slower version of the same plan.",
+      "sourcePath": "src/transcripts/txt/2020-07-19_T17-03-18_bru-ships-episode-11-top-trumps-ship-comparison-themed-books-to-review-and-a-general-q-a_tGhjw-XED5U.txt",
+      "evidence": [
+        { "start": "1:21:13", "note": "He explains how a temporary tunnel disruption could delay reinforcement." },
+        { "start": "1:50:17", "note": "He contrasts tunnel dependence with amphibious vehicles able to cross from the coast." }
+      ]
+    },
+    {
+      "id": "defence-reviews-and-extreme-options",
+      "videoId": "tGhjw-XED5U",
+      "slug": "defence-reviews-and-extreme-options",
+      "title": "Why extreme options appear in defence reviews",
+      "kind": "notable_point",
+      "start": "1:28:42",
+      "topics": ["defence-policy", "civil-military-relations", "inter-service-rivalry", "naval-procurement"],
+      "summary": "Leaked proposals may be exploratory cases rather than settled policy, and service-on-service attacks can damage the wider funding argument.",
+      "body": "Dr. Clarke cautions that a defence review is supposed to test a wide range of options, including ideas that will later be rejected as impractical. A leaked study therefore does not by itself prove that ministers intend to carry out its most dramatic proposal. He also refuses to build the Navy’s case by attacking the Army or Royal Air Force. In his view, inter-service point-scoring makes the overall defence case weaker and can undermine funding for everyone.",
+      "sourcePath": "src/transcripts/txt/2020-07-19_T17-03-18_bru-ships-episode-11-top-trumps-ship-comparison-themed-books-to-review-and-a-general-q-a_tGhjw-XED5U.txt",
+      "evidence": [{ "start": "1:28:42", "note": "He explains exploratory review options and rejects inter-service attacks." }]
+    },
+    {
+      "id": "fisheries-survey-vessel-noise-and-procurement",
+      "videoId": "tGhjw-XED5U",
+      "slug": "fisheries-survey-vessel-noise-and-procurement",
+      "title": "Why a noisy engine could ruin a fisheries survey vessel",
+      "kind": "notable_point",
+      "start": "1:29:17",
+      "topics": ["naval-architecture", "acoustic-signatures", "marine-propulsion", "naval-procurement", "survey-ships"],
+      "summary": "A ship-design anecdote connects acoustic requirements, machinery fit, and the danger of committing to equipment before the design is settled.",
+      "body": "Dr. Clarke recounts his father working on a Malaysian fisheries survey or patrol vessel. A diesel engine had already been ordered even though its noise would compromise the ship’s survey work and it did not fit the design properly. Doug Clarke held the objection until senior decision-makers were present, forcing the mismatch into the open and securing a change. The story shows that machinery selection is not an isolated purchasing choice: acoustic purpose, physical integration, and procurement governance all have to align.",
+      "sourcePath": "src/transcripts/txt/2020-07-19_T17-03-18_bru-ships-episode-11-top-trumps-ship-comparison-themed-books-to-review-and-a-general-q-a_tGhjw-XED5U.txt",
+      "evidence": [{ "start": "1:29:17", "note": "He tells the story of an unsuitable diesel engine ordered for a Malaysian survey vessel." }]
+    },
+    {
+      "id": "ballistic-missile-ambiguity-and-escalation",
+      "videoId": "tGhjw-XED5U",
+      "slug": "ballistic-missile-ambiguity-and-escalation",
+      "title": "How ballistic-missile ambiguity raises escalation risk",
+      "kind": "notable_point",
+      "start": "1:39:17",
+      "topics": ["ballistic-missiles", "nuclear-deterrence", "china", "naval-strategy"],
+      "summary": "A conventionally intended ballistic-missile launch can still look nuclear to an opponent that must decide before impact.",
+      "body": "Dr. Clarke argues that nuclear-armed opponents face strong pressure not to initiate a nuclear exchange because retaliation could destroy both sides. He then applies the problem to a Chinese ballistic-missile weapon. A launch intended for conventional attack still resembles a ballistic-missile launch whose warhead cannot be confidently identified in flight. The defender may therefore have to decide whether to retaliate before learning the attacker’s intent, making ambiguity itself a source of escalation risk.",
+      "sourcePath": "src/transcripts/txt/2020-07-19_T17-03-18_bru-ships-episode-11-top-trumps-ship-comparison-themed-books-to-review-and-a-general-q-a_tGhjw-XED5U.txt",
+      "evidence": [{ "start": "1:39:17", "note": "He connects nuclear standoff logic with uncertainty over a Chinese ballistic-missile launch." }]
+    },
+    {
+      "id": "texas-and-south-dakota-comparison-guide",
+      "videoId": "tGhjw-XED5U",
+      "slug": "texas-and-south-dakota-comparison-guide",
+      "title": "What USS Texas and South Dakota reveal in one comparison",
+      "kind": "notable_point",
+      "start": "1:40:22",
+      "topics": ["naval-book-reviews", "warship-comparison", "uss-texas", "south-dakota-class", "battleships"],
+      "summary": "Side-by-side specifications expose how later battleship design redistributed protection, armament, size, and crew rather than improving every number at once.",
+      "body": "A Second World War warship guide places USS Texas beside a South Dakota-class battleship. Dr. Clarke reads out differences in deck and turret armour, length, armament, and complement to show how unlike designs become comparable on the page. The later ship does not simply exceed the dreadnought in every printed statistic, because protection and weight have been redistributed around different threats and requirements. The much larger crew also opens questions about American damage control, habitability, sensors, and manpower rather than serving as a simple measure of combat power.",
+      "sourcePath": "src/transcripts/txt/2020-07-19_T17-03-18_bru-ships-episode-11-top-trumps-ship-comparison-themed-books-to-review-and-a-general-q-a_tGhjw-XED5U.txt",
+      "evidence": [{ "start": "1:40:22", "note": "He compares Texas and South Dakota using the guide’s armour, size, and crew figures." }]
+    },
+    {
+      "id": "early-automation-and-ai-aided-ship-design",
+      "videoId": "tGhjw-XED5U",
+      "slug": "early-automation-and-ai-aided-ship-design",
+      "title": "Automated and AI-aided ship design in the 1980s",
+      "kind": "notable_point",
+      "start": "1:45:09",
+      "topics": ["naval-architecture", "ship-design", "automation", "artificial-intelligence"],
+      "summary": "Doug Clarke’s publication list shows naval architects discussing automated ships and AI-aided design well before those themes became routine public talking points.",
+      "body": "Dr. Clarke pauses over his father’s publication list and highlights papers on AI-aided ship design from 1986 and automated ships from 1987. The dates matter because they place both subjects within practical late-Cold War naval architecture rather than treating them as recent inventions. A further paper on future ship-design issues shows the work continuing into 1990. This watch point gives viewers a compact historiographic reminder that today’s debates about autonomy and digital design have several decades of professional groundwork behind them.",
+      "sourcePath": "src/transcripts/txt/2020-07-19_T17-03-18_bru-ships-episode-11-top-trumps-ship-comparison-themed-books-to-review-and-a-general-q-a_tGhjw-XED5U.txt",
+      "evidence": [{ "start": "1:45:09", "note": "He shows papers on automated ships, computer-aided design, and future ship-design issues." }]
+    },
+    {
+      "id": "ship-side-of-amphibious-warfare",
+      "videoId": "tGhjw-XED5U",
+      "slug": "ship-side-of-amphibious-warfare",
+      "title": "Amphibious warfare needs ships as well as Marines",
+      "kind": "notable_point",
+      "start": "2:01:43",
+      "topics": ["amphibious-warfare", "amphibious-ships", "royal-marines", "naval-logistics"],
+      "summary": "Force-design debates can concentrate on the landing force while overlooking the ships that move, support, and recover it.",
+      "body": "Dr. Clarke observes that contemporary amphibious debate often emphasizes how Marine units should be organized. The ship side receives less attention even though it determines how the force reaches the objective and how much equipment it can bring. Amphibious shipping also supplies command space, aviation, sustainment, and a route back out of the operation. The watch point directs learners to treat landing forces and their naval lift as one operational system rather than two separable budgets.",
+      "sourcePath": "src/transcripts/txt/2020-07-19_T17-03-18_bru-ships-episode-11-top-trumps-ship-comparison-themed-books-to-review-and-a-general-q-a_tGhjw-XED5U.txt",
+      "evidence": [{ "start": "2:01:43", "note": "He says discussion focuses on Marines while neglecting the ship side of amphibious warfare." }]
+    },
+    {
+      "id": "designing-hidden-failures-into-a-1920-navy",
+      "videoId": "tGhjw-XED5U",
+      "slug": "designing-hidden-failures-into-a-1920-navy",
+      "title": "How apparently attractive design choices can cripple a navy",
+      "kind": "qa",
+      "start": "2:15:01",
+      "topics": ["warship-design", "anti-aircraft-warfare", "submarines", "naval-logistics"],
+      "summary": "A playful sabotage question becomes a lesson in how speed, gun elevation, armour, and maintainability can hide long-term weaknesses.",
+      "body": "Asked how a traitorous designer might quietly weaken a northern European navy in 1920, Dr. Clarke chooses defects that could initially look reasonable. He would emphasize speed while stripping protection, producing impressive trials performance but fragile combatants. Anti-aircraft mountings would have limited elevation, leaving them better suited to low torpedo bombers than later dive-bombing threats. Submarine batteries would be difficult to replace and repair, turning an ordinary maintenance burden into a persistent readiness failure.",
+      "question": "How could a designer secretly weaken a new northern European navy in 1920 without being immediately exposed?",
+      "answerShort": "Build fast but lightly protected ships, restrict anti-aircraft elevation, and make submarine batteries hard to maintain or replace.",
+      "sourcePath": "src/transcripts/txt/2020-07-19_T17-03-18_bru-ships-episode-11-top-trumps-ship-comparison-themed-books-to-review-and-a-general-q-a_tGhjw-XED5U.txt",
+      "evidence": [{ "start": "2:15:01", "note": "He answers the sabotage hypothetical with speed, AA-elevation, and battery-maintenance weaknesses." }]
+    },
+    {
+      "id": "why-army-officers-enter-politics-more-often",
+      "videoId": "tGhjw-XED5U",
+      "slug": "why-army-officers-enter-politics-more-often",
+      "title": "Why Army officers may enter politics more often than naval officers",
+      "kind": "qa",
+      "start": "2:22:15",
+      "topics": ["civil-military-relations", "naval-institutions", "royal-navy"],
+      "summary": "Service geography and professional exposure can shape who develops the networks needed for a political career.",
+      "body": "Dr. Clarke attributes part of the difference to where officers spend their working lives. Army officers are more often based in the United Kingdom and exposed to political institutions and networks. Naval officers spend long periods at sea or moving around the world, which creates physical distance from domestic political life. The answer is brief but useful for understanding how service routines can influence civil–military careers without any formal rule excluding sailors.",
+      "question": "Why do more Army officers enter politics than naval officers?",
+      "answerShort": "Army officers tend to have more domestic political exposure, while naval officers spend more of their careers at sea or overseas.",
+      "sourcePath": "src/transcripts/txt/2020-07-19_T17-03-18_bru-ships-episode-11-top-trumps-ship-comparison-themed-books-to-review-and-a-general-q-a_tGhjw-XED5U.txt",
+      "evidence": [{ "start": "2:22:15", "note": "He contrasts Army officers’ UK exposure with naval service at sea and overseas." }]
+    },
+    {
+      "id": "suez-crisis-without-american-economic-pressure",
+      "videoId": "tGhjw-XED5U",
+      "slug": "suez-crisis-without-american-economic-pressure",
+      "title": "What if Britain and France had remained at Suez",
+      "kind": "qa",
+      "start": "2:31:17",
+      "topics": ["suez-crisis", "suez-canal", "royal-navy", "france", "egypt", "cold-war"],
+      "summary": "Removing American economic pressure does not produce a cost-free victory; it trades withdrawal for occupation, insurgency, and a sharper Cold War struggle over Egypt.",
+      "body": "Dr. Clarke accepts that British and French forces had achieved military success before American pressure forced the political reversal. Remaining in Egypt would nevertheless draw them into an ongoing security problem around the Suez Canal. The financial return from controlling the canal would have to outweigh the cost of continued fighting and occupation. Egypt might then move firmly into the Soviet camp or face a Western-backed change of government, making the counterfactual strategically consequential and particularly damaging for Egyptians.",
+      "question": "What might have happened at Suez without Eisenhower’s economic pressure on Britain and France?",
+      "answerShort": "They might have held the canal, but only by accepting an expensive occupation and a greater risk of pushing Egypt toward the Soviet Union or regime change.",
+      "sourcePath": "src/transcripts/txt/2020-07-19_T17-03-18_bru-ships-episode-11-top-trumps-ship-comparison-themed-books-to-review-and-a-general-q-a_tGhjw-XED5U.txt",
+      "evidence": [{ "start": "2:31:17", "note": "He weighs canal revenue, occupation costs, Soviet alignment, and a possible client government." }]
+    },
+    {
+      "id": "ten-thousand-ton-ocean-going-combatants",
+      "videoId": "tGhjw-XED5U",
+      "slug": "ten-thousand-ton-ocean-going-combatants",
+      "title": "Why ocean-going combatants grow toward 10,000 tons",
+      "kind": "notable_point",
+      "start": "2:38:18",
+      "topics": ["warship-design", "surface-combatants", "destroyers", "force-structure"],
+      "summary": "Modern destroyer displacement reflects the volume needed for endurance, sensors, weapons, and future growth rather than a simple return to cruiser labels.",
+      "body": "Correcting an exaggerated figure for the Type 45 destroyer, Dr. Clarke places its full-load displacement at roughly 9,400 tons. He uses about 10,000 tons as a practical scale at which an ocean-going combatant has room for the systems and stores it needs. Burke-class destroyers have grown toward that range, while the Zumwalt class goes well beyond it. The figure is presented as a design rule of thumb, helping explain why modern escorts become larger even before a navy proposes the 25,000-ton do-everything ship discussed later.",
+      "sourcePath": "src/transcripts/txt/2020-07-19_T17-03-18_bru-ships-episode-11-top-trumps-ship-comparison-themed-books-to-review-and-a-general-q-a_tGhjw-XED5U.txt",
+      "evidence": [{ "start": "2:38:18", "note": "He corrects Type 45 figures and gives roughly 10,000 tons as a useful ocean-going scale." }]
+    },
+    {
+      "id": "type-23-flight-deck-and-merlin-undercarriage",
+      "videoId": "tGhjw-XED5U",
+      "slug": "type-23-flight-deck-and-merlin-undercarriage",
+      "title": "Redesigning Type 23 flight-deck strength for Merlin",
+      "kind": "notable_point",
+      "start": "2:49:25",
+      "topics": ["type-23-frigates", "merlin-helicopters", "sea-king-helicopters", "naval-aviation", "naval-architecture"],
+      "summary": "A change in helicopter undercarriage geometry forced naval architects to reconsider where a frigate flight deck carried landing loads.",
+      "body": "Dr. Clarke recalls his father reviewing the Type 23 frigates after production had already begun. Flight-deck strength points had been arranged around the Sea King’s undercarriage and its forward main-wheel loading. Merlin distributed its weight differently and placed the main landing loads in different positions. Supporting the new helicopter therefore required structural changes to the flight deck, showing how an apparently small aviation-interface detail can propagate into a ship-design problem.",
+      "sourcePath": "src/transcripts/txt/2020-07-19_T17-03-18_bru-ships-episode-11-top-trumps-ship-comparison-themed-books-to-review-and-a-general-q-a_tGhjw-XED5U.txt",
+      "evidence": [{ "start": "2:49:25", "note": "He explains how Sea King and Merlin wheel placement changed Type 23 flight-deck loads." }]
     }
   ]
 }

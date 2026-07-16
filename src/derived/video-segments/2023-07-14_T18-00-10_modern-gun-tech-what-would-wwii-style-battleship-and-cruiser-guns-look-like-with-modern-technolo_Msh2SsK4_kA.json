@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "videoId": "Msh2SsK4_kA",
-  "topics": ["battleships", "naval-gunnery", "ship-design", "fire-control", "alternate-history"],
+  "topics": ["battleships", "naval-gunnery", "ship-design", "fire-control", "naval-procurement", "alternate-history"],
   "segments": [
     {
       "id": "modern-guidance-for-large-calibre-shells",
@@ -13,9 +13,23 @@
       "end": "3:06",
       "topics": ["naval-gunnery", "guided-weapons", "battleships"],
       "summary": "Modern guidance could turn a battleship shell into a protected sub-calibre or fin-deploying projectile rather than a simple unguided round.",
-      "body": "The video limits its thought experiment mainly to gun barrels, loading and fire control, but begins with the possibility of guided ammunition. A sabot or discardable outer section could shield guidance fins through launch, allowing a large gun to fire a smaller guided projectile without giving up decisive impact damage.",
+      "body": "The video limits its thought experiment mainly to gun barrels, automatic loading and fire control, but begins with the possibility of guided ammunition. A sabot or discardable outer section could shield delicate guidance fins from the violence of launch. A 16-inch gun might therefore fire a smaller guided projectile inside a protective package, or discard only a rear section before deploying fins. The projectile would sacrifice some mass, yet a much higher hit probability could more than compensate. This opening establishes that modernisation is a system problem involving ammunition, sensors and gun mechanisms rather than barrel size alone.",
       "sourcePath": "src/transcripts/txt/2023-07-14_T18-00-10_modern-gun-tech-what-would-wwii-style-battleship-and-cruiser-guns-look-like-with-modern-technolo_Msh2SsK4_kA.txt",
       "evidence": [{"start": "0:26", "end": "3:06", "note": "The transcript considers laser guidance, fins and sabot-like protection for a large-calibre shell."}]
+    },
+    {
+      "id": "practical-limits-on-gun-elevation",
+      "videoId": "Msh2SsK4_kA",
+      "slug": "practical-limits-on-gun-elevation",
+      "title": "Why extreme battleship-gun elevation offers little value",
+      "kind": "notable_point",
+      "start": "5:23",
+      "end": "7:13",
+      "topics": ["naval-gunnery", "battleship-design", "autoloaders"],
+      "summary": "Modern mechanisms might raise large-gun elevation to about 55 degrees, but steeper mountings would impose major turret and loading costs for little practical naval benefit.",
+      "body": "The simulation can lengthen barrels, automate loading and improve fire control, but it cannot fully reproduce every plausible modern mounting. Dr. Clarke suggests that a large gun might reach roughly 55 degrees with advanced technology, while science-fiction-like elevations near 85 degrees would demand an enormous turret and difficult loading geometry. A seagoing battleship also has little reason to fire its main battery nearly vertically. At the close ranges implied by such a trajectory, direct fire would already have enough energy to defeat much armour. The passage is a useful reminder that engineering capability does not automatically create an operational requirement.",
+      "sourcePath": "src/transcripts/txt/2023-07-14_T18-00-10_modern-gun-tech-what-would-wwii-style-battleship-and-cruiser-guns-look-like-with-modern-technolo_Msh2SsK4_kA.txt",
+      "evidence": [{"start": "5:23", "end": "7:13", "note": "The transcript discusses what the simulation can modernise, a plausible 55-degree limit and why near-vertical elevation would be impractical."}]
     },
     {
       "id": "armour-as-first-round-survivability",
@@ -27,7 +41,7 @@
       "end": "10:37",
       "topics": ["battleship-armour", "naval-gunnery", "damage-control"],
       "summary": "Battleship armour is presented as protection against an initial hit at a designed range, not a guarantee against repeated accurate fire.",
-      "body": "A steep trajectory may threaten deck armour, but at close range a shell can penetrate without it. The key argument is cumulative damage: repeated hits near the same area degrade protection until a later round is far more likely to get through.",
+      "body": "A steep trajectory may threaten deck armour, but at close range a direct shell can penetrate without needing an extreme angle of fall. Dr. Clarke rejects a simple top-trumps reading in which the ship with thicker armour is treated as invulnerable. Armour is designed to provide a measure of first-hit survival against a specified calibre and range. Repeated hits in roughly the same area damage plates and supporting structure, reducing the protection available against later shells. The learning point is therefore endurance under cumulative attack, not a binary distinction between penetrable and impenetrable ships.",
       "sourcePath": "src/transcripts/txt/2023-07-14_T18-00-10_modern-gun-tech-what-would-wwii-style-battleship-and-cruiser-guns-look-like-with-modern-technolo_Msh2SsK4_kA.txt",
       "evidence": [{"start": "7:25", "end": "10:37", "note": "The speaker explains deck penetration, designed immunity and the effect of successive hits."}]
     },
@@ -41,7 +55,7 @@
       "end": "20:29",
       "topics": ["yamato-class", "king-george-v-class", "naval-simulations", "fire-control"],
       "summary": "The simulation pairs a heavily protected Yamato with a King George V using long 14-inch automatic guns, heavy shells and improved fire control.",
-      "body": "The Yamato model is kept close to its historical armament and roughly period-appropriate radar, while the British design explores the automatic 14-inch gun that Chatfield had hoped could be developed. Heavy shells improve range, penetration and damage but also make barrel erosion a real design cost.",
+      "body": "The Yamato model keeps its historical 18.1-inch main battery, roughly period-appropriate radar and very heavy protection, although the game imposes some compromises. The British opponent explores Admiral Chatfield's hope for an automatic 14-inch gun on the King George V design. Its 59-calibre barrels stand in for the still longer weapons that sustained modern development might have produced. Super-heavy shells improve maximum range, penetration and damage. They also accelerate barrel erosion, showing that ammunition performance cannot be separated from maintenance life and fleet logistics.",
       "sourcePath": "src/transcripts/txt/2023-07-14_T18-00-10_modern-gun-tech-what-would-wwii-style-battleship-and-cruiser-guns-look-like-with-modern-technolo_Msh2SsK4_kA.txt",
       "evidence": [{"start": "10:47", "end": "20:29", "note": "The transcript describes both simulated ships, their gun choices and the trade-off in shell weight and barrel wear."}]
     },
@@ -55,7 +69,7 @@
       "end": "31:40",
       "topics": ["naval-tactics", "naval-gunnery", "yamato-class", "king-george-v-class"],
       "summary": "A long-range gun matters only where it can still hit and penetrate, so the simulated King George V tries to stay just outside Yamato's effective 18-inch range.",
-      "body": "The video distinguishes theoretical maximum range from the range at which useful penetrations and accurate hits can be expected. Keeping the engagement near 30 kilometres lets the British ship exploit its reach while avoiding an exchange in which an 18-inch shell can find a vulnerable gap.",
+      "body": "The video distinguishes a gun's theoretical maximum range from the distance at which it can still hit often enough and penetrate effectively. At roughly 45 kilometres the British 14-inch gun can reach Yamato, but useful penetrations are unlikely. Near 30 kilometres it can exploit better accuracy and damaging fire while remaining close to the edge of Yamato's simulated 18.1-inch reach. Speed and manoeuvre matter because the British ship must preserve that narrow range advantage. Storms reduce the reliability of the tactic, and Yamato can win if it closes far enough for a heavy shell to find a vulnerable gap.",
       "sourcePath": "src/transcripts/txt/2023-07-14_T18-00-10_modern-gun-tech-what-would-wwii-style-battleship-and-cruiser-guns-look-like-with-modern-technolo_Msh2SsK4_kA.txt",
       "evidence": [{"start": "20:32", "end": "31:40", "note": "The simulation discussion compares useful engagement range, weather, accuracy and Yamato's 18-inch threat."}]
     },
@@ -69,7 +83,7 @@
       "end": "32:28",
       "topics": ["autoloaders", "naval-gunnery", "naval-personnel", "naval-logistics"],
       "summary": "Automatic loading raises the rate of fire, demanding deeper magazines while shifting crews from loading work toward maintenance and supply.",
-      "body": "The speaker argues that automatic guns consume ammunition quickly, so a plausible ship needs a larger ammunition allowance. The compensating benefit is that fewer people are needed to operate the gun directly, though maintenance and magazine work remain essential.",
+      "body": "Automatic guns consume ammunition much faster, so a plausible ship needs deeper magazines rather than merely a faster loading mechanism. The British studies mentioned in the video already recognised this relationship while pursuing automatic weapons. Automation should reduce the number of people operating each gun directly. It does not eliminate labour, because crews still have to maintain machinery, handle magazine supply and keep the system functioning. The design trade therefore shifts weight and people from repetitive loading toward ammunition endurance and technical support.",
       "sourcePath": "src/transcripts/txt/2023-07-14_T18-00-10_modern-gun-tech-what-would-wwii-style-battleship-and-cruiser-guns-look-like-with-modern-technolo_Msh2SsK4_kA.txt",
       "evidence": [{"start": "31:01", "end": "32:28", "note": "The transcript links automatic loading to ammunition consumption and a changed crew role."}]
     },
@@ -83,9 +97,23 @@
       "end": "39:12",
       "topics": ["king-george-v-class", "battleship-design", "autoloaders", "alternate-history"],
       "summary": "A Duke of York variant tests what the King George V design might have achieved if four automatic quadruple 14-inch turrets had been practical.",
-      "body": "The imagined ship pushes the original design ambition to sixteen rapid-firing guns without discarding armour and displacement constraints. The conclusion is conditional: if the gun mechanism, accuracy and ammunition supply all worked, a ship with this volume of accurate fire would have been exceptionally dangerous in the Second World War.",
+      "body": "The imagined Duke of York pushes the King George V concept to four quadruple turrets and sixteen rapid-firing 14-inch guns. The simulation retains substantial armour and works within displacement and weight compromises rather than treating the extra weapons as free. Dr. Clarke presents this as the capability Chatfield hoped automatic-gun development could unlock. The conclusion remains conditional on reliable loading, consistent accuracy, ammunition supply and acceptable barrel life. If all those supporting systems worked, the volume of long-range fire would have made the ship exceptionally dangerous to any Second World War contemporary.",
       "sourcePath": "src/transcripts/txt/2023-07-14_T18-00-10_modern-gun-tech-what-would-wwii-style-battleship-and-cruiser-guns-look-like-with-modern-technolo_Msh2SsK4_kA.txt",
       "evidence": [{"start": "32:34", "end": "39:12", "note": "The transcript describes the sixteen-gun Duke of York scenario and its assumed technological conditions."}]
+    },
+    {
+      "id": "tirpitz-demonstrates-the-range-mismatch",
+      "videoId": "Msh2SsK4_kA",
+      "slug": "tirpitz-demonstrates-the-range-mismatch",
+      "title": "Tirpitz demonstrates the modernised gun's range mismatch",
+      "kind": "notable_point",
+      "start": "39:13",
+      "end": "41:21",
+      "topics": ["tirpitz", "king-george-v-class", "naval-tactics", "naval-gunnery"],
+      "summary": "Against a simulated Tirpitz with 15-inch guns, the automatic 14-inch ship can fight near 30 kilometres while its opponent remains unable to reply.",
+      "body": "The second engagement replaces Yamato with a simulated Tirpitz and its 15-inch battery. Tirpitz's maximum gun range is about 25 kilometres in the scenario, while the modernised British weapon reaches roughly twice as far as the chosen 30-kilometre engagement distance. Firing at half its theoretical maximum range improves the British ship's chances of accurate hits. Tirpitz has enough speed to try closing while the British ship cruises, so range control still requires tactical attention. The example isolates the value of reach more clearly than the Yamato fight because the German ship begins with no opportunity to return fire.",
+      "sourcePath": "src/transcripts/txt/2023-07-14_T18-00-10_modern-gun-tech-what-would-wwii-style-battleship-and-cruiser-guns-look-like-with-modern-technolo_Msh2SsK4_kA.txt",
+      "evidence": [{"start": "39:13", "end": "41:21", "note": "The transcript pits the sixteen-gun Duke of York against Tirpitz and explains the 25-kilometre versus 30-kilometre range mismatch."}]
     },
     {
       "id": "guided-fire-and-successive-salvos",
@@ -97,7 +125,7 @@
       "end": "44:24",
       "topics": ["guided-weapons", "autoloaders", "naval-fire-control", "naval-gunnery"],
       "summary": "Reliable guidance would make repeated salvos more dangerous because follow-on shells could be launched before the result of the first hit was known.",
-      "body": "The video imagines a protected guidance package that drops away after launch, accepting a lighter projectile in return for a far higher chance of striking the target. Accurate repeat hits could exploit the armour damage caused by earlier rounds, while an autoloader keeps several salvos in flight at once.",
+      "body": "The video imagines a protected guidance package whose casing drops away after launch and exposes control fins. A high aircraft or other designator could illuminate the target beyond the reach of the ship's antiaircraft guns. The resulting projectile would be lighter than a conventional full-calibre shell, reducing its damage per hit. At the same time, reliable guidance at very long range could place successive rounds on the same damaged area of armour. An autoloader magnifies that advantage because the second, third and fourth salvos may already be airborne before the first impact is assessed.",
       "sourcePath": "src/transcripts/txt/2023-07-14_T18-00-10_modern-gun-tech-what-would-wwii-style-battleship-and-cruiser-guns-look-like-with-modern-technolo_Msh2SsK4_kA.txt",
       "evidence": [{"start": "41:23", "end": "44:24", "note": "The speaker links laser-guided shells, discardable protection and rapid successive salvos."}]
     },
@@ -111,23 +139,51 @@
       "end": "49:16",
       "topics": ["naval-procurement", "arms-races", "battleship-design", "naval-strategy"],
       "summary": "A modernised 14-inch ship is powerful only if its supporting technologies mature first; rivals could apply the same advantages to 16-, 18- or 20-inch weapons.",
-      "body": "The discussion cautions against treating one improved calibre as a permanent answer. Defence planning must respond to what an opponent can plausibly field, whether the answer is a superior gun, missiles, carriers or another asymmetric capability.",
+      "body": "Chatfield's 14-inch choice becomes formidable only if the hoped-for automatic loading, long barrel, heavy ammunition and fire-control system all mature together. Historically, those supporting technologies were not ready, leaving the actual weapon without the decisive advantage imagined for it. Even a successful system would not remain unique, because a rival could apply the same advances to 16-, 18- or even 20-inch guns. Defence planners cannot safely dismiss an opponent's claimed capability merely because it looks inefficient or expensive. Their response might be a better gun, missiles, carrier aviation or another asymmetric system, but it must be credible against the threat rather than against an optimistic assumption.",
       "sourcePath": "src/transcripts/txt/2023-07-14_T18-00-10_modern-gun-tech-what-would-wwii-style-battleship-and-cruiser-guns-look-like-with-modern-technolo_Msh2SsK4_kA.txt",
       "evidence": [{"start": "44:24", "end": "49:16", "note": "The transcript contrasts Chatfield's hoped-for system with an adversary applying the same advances to larger guns."}]
+    },
+    {
+      "id": "politics-could-sustain-a-big-gun-arms-race",
+      "videoId": "Msh2SsK4_kA",
+      "slug": "politics-could-sustain-a-big-gun-arms-race",
+      "title": "Politics could sustain a big-gun arms race",
+      "kind": "notable_point",
+      "start": "55:02",
+      "end": "57:10",
+      "topics": ["naval-procurement", "arms-races", "soviet-navy", "alternate-history"],
+      "summary": "Continued Soviet construction of gun-armed battlecruisers could have kept prestige, imitation and threat response behind large naval guns even after missiles became dominant.",
+      "body": "The counterfactual requires political and institutional commitment after the missile age, not merely a technical breakthrough. Dr. Clarke imagines Stalin surviving long enough for the Stalingrad-class battlecruisers to enter service and for later Soviet and Russian ships to retain large guns alongside missiles. Such weapons might offer little rational advantage, yet prestige competition can still drive procurement. Rival states would then face pressure to answer the visible capability, while China might inherit part of the same design tradition. The passage shows how political symbolism and arms-race dynamics can preserve a technological path that a narrow efficiency calculation would abandon.",
+      "sourcePath": "src/transcripts/txt/2023-07-14_T18-00-10_modern-gun-tech-what-would-wwii-style-battleship-and-cruiser-guns-look-like-with-modern-technolo_Msh2SsK4_kA.txt",
+      "evidence": [{"start": "55:02", "end": "57:10", "note": "The transcript imagines Soviet big-gun development persisting through prestige politics and influencing Russian, Chinese and rival naval procurement."}]
+    },
+    {
+      "id": "cruiser-labels-versus-independent-cruising",
+      "videoId": "Msh2SsK4_kA",
+      "slug": "cruiser-labels-versus-independent-cruising",
+      "title": "Cruiser labels versus the independent cruising role",
+      "kind": "notable_point",
+      "start": "57:18",
+      "end": "59:35",
+      "topics": ["cruisers", "ticonderoga-class", "arleigh-burke-class", "force-structure"],
+      "summary": "The Ticonderoga discussion separates an administrative cruiser label from the traditional ability to cruise independently as a global-presence ship.",
+      "body": "The discussion turns from gun technology to what navies mean when they call a ship a cruiser. Dr. Clarke characterises the Ticonderoga class as destroyer leaders whose cruiser designation reflects command and group roles more than the traditional type. A cruiser should also be able to deploy independently for global presence and substitute for a larger task group when necessary. In his assessment, the Arleigh Burke class may fit that independent general-purpose role better despite being unambiguously called a destroyer. The comparison illustrates how classification, institutional status and operational employment can diverge.",
+      "sourcePath": "src/transcripts/txt/2023-07-14_T18-00-10_modern-gun-tech-what-would-wwii-style-battleship-and-cruiser-guns-look-like-with-modern-technolo_Msh2SsK4_kA.txt",
+      "evidence": [{"start": "57:18", "end": "59:35", "note": "The transcript compares the Ticonderoga label, destroyer-leader functions, independent cruising and the Arleigh Burke class."}]
     },
     {
       "id": "big-guns-railguns-and-replenishment",
       "videoId": "Msh2SsK4_kA",
       "slug": "big-guns-railguns-and-replenishment",
-      "title": "A surviving big-gun tradition could reshape railgun development",
+      "title": "A surviving big-gun tradition could reshape railguns and replenishment",
       "kind": "chapter",
-      "start": "55:02",
+      "start": "59:37",
       "end": "1:01:39",
       "topics": ["railguns", "naval-logistics", "replenishment-at-sea", "alternate-history"],
-      "summary": "Keeping large guns in service might have sustained research into long barrels and railguns while offering simpler replenishment than delicate vertical-launch missiles.",
-      "body": "The counterfactual requires political and institutional commitment to capital ships after the missile age, not merely a technical breakthrough. It also suggests that a mature big-gun ecosystem could make railgun barrel wear more tractable and avoid some of the practical difficulty of reloading fragile VLS missiles at sea.",
+      "summary": "A mature large-gun engineering base might make railgun barrel wear more manageable while leaving ammunition easier to replenish at sea than delicate VLS missiles.",
+      "body": "Continued development of very large conventional guns would preserve expertise in long barrels, erosion and the maintenance demands of high-energy firing. In that alternative technological lineage, railgun barrel wear might look less exceptional, especially at 12- to 16-inch scale. The video does not claim that railguns become easy; it argues that the surrounding industrial knowledge and acceptable maintenance baseline would be different. Conventional projectiles could also be more tolerant of the rough handling involved in transfer and reloading at sea. Modern vertical-launch missiles, by contrast, are difficult to move safely between ships and reload into VLS cells while underway, which gives ammunition handling strategic importance.",
       "sourcePath": "src/transcripts/txt/2023-07-14_T18-00-10_modern-gun-tech-what-would-wwii-style-battleship-and-cruiser-guns-look-like-with-modern-technolo_Msh2SsK4_kA.txt",
-      "evidence": [{"start": "55:02", "end": "1:01:39", "note": "The closing discussion connects continued big-gun development with railguns and replenishment at sea."}]
+      "evidence": [{"start": "59:37", "end": "1:01:39", "note": "The transcript connects retained big-gun expertise to railgun barrel wear and contrasts shell handling with VLS replenishment at sea."}]
     },
     {
       "id": "which-navies-might-keep-big-guns",
@@ -139,7 +195,7 @@
       "end": "1:04:06",
       "topics": ["force-structure", "naval-strategy", "aircraft-carriers", "alternate-history"],
       "summary": "The closing thought experiment asks whether some navies would choose radar-rich big-gun ships as a cheaper, simpler alternative to carrier aviation.",
-      "body": "The speaker contrasts full-spectrum fleets with states whose strategic needs and resources might make a missile-and-gun ship more practical than an aircraft carrier. The question is not whether guns replace every capability, but how national geography, budgets and political constraints shape force structure.",
+      "body": "The closing question contrasts full-spectrum fleets with states whose strategic needs and resources might make a missile-and-gun ship more practical than carrier aviation. Britain, France, the United States and perhaps Italy or Brazil are offered as navies likely to seek a broad mix of capabilities. Japan's political constraints might conceivably have made large guns easier to retain than aircraft carriers, while Russia and China would likely pursue the full spectrum. Turkey and Greece illustrate states for which a sensor-rich missile ship with large guns might be cheaper and simpler than a carrier. The point is not that guns replace every capability, but that geography, budgets, political permission and logistical complexity shape different force structures.",
       "sourcePath": "src/transcripts/txt/2023-07-14_T18-00-10_modern-gun-tech-what-would-wwii-style-battleship-and-cruiser-guns-look-like-with-modern-technolo_Msh2SsK4_kA.txt",
       "evidence": [{"start": "1:02:04", "end": "1:04:06", "note": "The transcript compares possible national choices between big-gun ships and aircraft carriers."}]
     }

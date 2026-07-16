@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "videoId": "0WfL6rkIBWs",
-  "topics": ["age-of-sail", "naval-gunnery", "ship-design", "naval-procurement", "naval-logistics"],
+  "topics": ["age-of-sail", "naval-gunnery", "ship-design", "naval-procurement", "naval-logistics", "naval-infrastructure"],
   "segments": [
     {
       "id": "operating-an-age-of-sail-cannon",
@@ -13,7 +13,7 @@
       "end": "9:08",
       "topics": ["age-of-sail", "naval-gunnery", "royal-navy"],
       "summary": "A gun-deck walkthrough shows why loading a naval cannon was a coordinated and hazardous crew task.",
-      "body": "The video follows a gun crew from swabbing the barrel to loading powder, wad, and shot. It explains that the wet swab was both a cleaning tool and a safety measure against embers igniting a fresh charge, while powder monkeys made the ammunition supply a demanding part of the drill.",
+      "body": "The video follows a gun crew from swabbing the barrel to loading powder, wad, and shot. The wet swab cleaned the bore and extinguished embers that might ignite a fresh charge prematurely. Powder could be loaded loose or in a cloth cartridge, while old sail and rope supplied wadding that helped seal the bore and held the ball in place when the muzzle was depressed. A second wad prevented the shot from rolling out before firing. Once loaded, the gun needed a full crew hauling on tackles to run its carriage against the bulwark, showing how much coordinated muscle the drill demanded. The account also highlights powder monkeys, including very young boys for whom naval service offered food, shelter, and a possible career despite its dangers.",
       "sourcePath": "src/transcripts/txt/2023-08-01_T18-00-00_what-cannon-is-right-for-this-ship_0WfL6rkIBWs.txt",
       "evidence": [{"start": "4:47", "end": "9:08", "note": "The transcript describes swabbing, powder, wadding, shot, and running out a cannon."}]
     },
@@ -27,7 +27,7 @@
       "end": "14:26",
       "topics": ["naval-gunnery", "royal-navy", "naval-technology"],
       "summary": "Gun locks let a captain fire from behind the weapon and time the shot with a ship's roll.",
-      "body": "A linstock required a crewman to approach the touch hole and introduced a noticeable delay. The flintlock-style gun lock, adopted by the Royal Navy from about 1745, allowed firing by lanyard from a safer position and made deliberate aiming at rigging or hull more practical. Adoption remained uneven because older guns could not simply be converted and replacement took decades.",
+      "body": "A linstock required a crewman to approach the touch hole with a smouldering match and introduced a noticeable delay between ignition and discharge. On a rolling, smoke-filled gun deck, that delay made precise timing difficult and exposed the firer to the weapon's recoil. The flintlock-style gun lock, adopted by the Royal Navy from about 1745, allowed the gun captain to pull a lanyard from behind the weapon. He could therefore time the shot to the ship's roll and aim more deliberately at an enemy's rigging or hull. Adoption remained uneven because older guns could not simply be converted, so replacement depended on new production, money, and access to British-pattern weapons. Even at Trafalgar, some Royal Navy ships carried a mixture of gun-lock and linstock weapons acquired from older ships or prizes.",
       "sourcePath": "src/transcripts/txt/2023-08-01_T18-00-00_what-cannon-is-right-for-this-ship_0WfL6rkIBWs.txt",
       "evidence": [{"start": "10:07", "end": "14:26", "note": "The transcript contrasts linstocks with gun locks and explains their adoption limits."}]
     },
@@ -41,9 +41,23 @@
       "end": "18:56",
       "topics": ["naval-gunnery", "royal-navy", "naval-training"],
       "summary": "Recoil gear, crew drill, and limited powder stocks shaped how fast a broadside could be repeated.",
-      "body": "The breeching rope restrained a recoiling gun; a failed rope could turn a weapon into a lethal object loose on the deck. The discussion puts a late-eighteenth-century Royal Navy broadside at roughly two to three firings in five minutes, but notes that captains had limited practice powder and sometimes paid for extra training themselves.",
+      "body": "The breeching rope restrained a recoiling gun and transferred its force to strong anchor points in the ship's side. If the rope or fittings failed, the heavy carriage could tear across the deck and kill its own crew. The discussion puts a late-eighteenth-century Royal Navy broadside at roughly two to three firings in five minutes, with especially proficient ships approaching four. A reload slower than about two minutes drew concern because rate of fire partly compensated for the weapon's limited accuracy. Yet crews often rehearsed the movements without firing because ships were allowed to expend only a restricted share of their powder early in a voyage. Wealthy or prize-successful captains could improve practical gunnery by purchasing extra training powder themselves.",
       "sourcePath": "src/transcripts/txt/2023-08-01_T18-00-00_what-cannon-is-right-for-this-ship_0WfL6rkIBWs.txt",
       "evidence": [{"start": "14:53", "end": "18:56", "note": "The transcript covers recoil restraint, broadside rates, and powder limits on practice."}]
+    },
+    {
+      "id": "danger-inside-an-age-of-sail-gun-deck",
+      "videoId": "0WfL6rkIBWs",
+      "slug": "danger-inside-an-age-of-sail-gun-deck",
+      "title": "Danger inside an age-of-sail gun deck",
+      "kind": "notable_point",
+      "start": "19:21",
+      "end": "20:46",
+      "topics": ["age-of-sail", "naval-gunnery", "naval-warfare"],
+      "summary": "Accounts of gun-deck combat reveal a confined machinery of smoke, recoil, enemy shot, and lethal wooden splinters.",
+      "body": "The video pauses the technical explanation to evoke what serving these weapons meant in battle. Crews worked in intense smoke, heat, noise, and confusion while enemy round shot struck the wooden hull around them. Splinters became dangerous projectiles in their own right, and a shot entering through a gun port could smash a carriage across the deck. If it struck a freshly loaded gun, the impact might also set the weapon off unexpectedly. This watch point turns the loading drill from an abstract sequence into an explanation of why contemporary descriptions of gun decks could resemble visions of hell.",
+      "sourcePath": "src/transcripts/txt/2023-08-01_T18-00-00_what-cannon-is-right-for-this-ship_0WfL6rkIBWs.txt",
+      "evidence": [{"start": "19:21", "end": "20:46", "note": "The transcript describes smoke, noise, hull impacts, splinters, and enemy shot striking gun carriages."}]
     },
     {
       "id": "gun-ports-and-crew-space",
@@ -55,7 +69,7 @@
       "end": "22:01",
       "topics": ["ship-design", "naval-gunnery", "age-of-sail"],
       "summary": "Hull strength and the room to work each weapon set a practical limit on a ship's battery.",
-      "body": "Gun ports were not merely places to put more weapons: the hull had to retain its integrity and each gun needed enough working room for its crew. Crowding weapons together could reduce the effective rate of fire across several guns, leaving a nominally powerful battery less useful in action.",
+      "body": "Gun ports were not merely openings for adding more weapons. Every cut into the ship's side affected hull strength, while every carriage needed room for its crew, ropes, recoil, and loading tools. Crowding weapons together could prevent several adjacent crews from completing the drill efficiently. That loss of working space reduced the effective rate of fire across a whole section of the battery, not just one gun. A ship therefore might be pierced for fewer guns than its apparent deck length suggested because usable firepower depended on structure and human movement as well as raw weapon count.",
       "sourcePath": "src/transcripts/txt/2023-08-01_T18-00-00_what-cannon-is-right-for-this-ship_0WfL6rkIBWs.txt",
       "evidence": [{"start": "20:51", "end": "22:01", "note": "The transcript links gun-port count to hull strength and crew operating space."}]
     },
@@ -69,7 +83,7 @@
       "end": "26:07",
       "topics": ["ship-design", "force-structure", "battlecruisers", "frigates"],
       "summary": "A cannon battery reflects a ship's mission, structural strength, and the fleet it must support.",
-      "body": "The choice begins with the ship's rate, role, available hull volume, weight allowance, and armament budget rather than with the largest possible gun. Heavy American 24-pounder frigates illustrate the wider allocation problem: a major navy could direct scarce timber toward ships of the line instead. The same logic helps explain why battlecruisers designed for global trade protection should not be judged solely by battle-line firepower.",
+      "body": "The choice begins with the ship's rate, role, available hull volume, weight allowance, and armament budget rather than with the largest possible gun. Larger and more strongly framed hulls could accept heavier batteries, but the same high-quality timber might instead build a ship of the line. Heavy American 24-pounder frigates illustrate the wider allocation problem: the United States valued a frigate able to overmatch other frigates, while a larger battle-fleet navy could direct scarce resources toward line-of-battle strength. Existing British frigates also could not simply exchange their 18-pounders for heavier weapons because their structures had not been designed for the added load. The same force-structure logic helps explain why battlecruisers intended for global trade protection and high-speed duties should not be judged solely by battle-line firepower. A ship becomes a poor value when it is forced into a contest its role and construction were meant to avoid.",
       "sourcePath": "src/transcripts/txt/2023-08-01_T18-00-00_what-cannon-is-right-for-this-ship_0WfL6rkIBWs.txt",
       "evidence": [{"start": "22:15", "end": "26:07", "note": "The transcript connects ship role, timber, fleet scale, frigates, and battlecruisers to armament choice."}]
     },
@@ -83,9 +97,23 @@
       "end": "30:51",
       "topics": ["naval-procurement", "naval-industry", "naval-gunnery", "age-of-sail"],
       "summary": "Metallurgy, manufacturing capacity, and supply scale could outweigh the appeal of a heavier gun.",
-      "body": "The video uses the long transition to gun locks to show how even wealthy naval powers struggled to modernize a large fleet. It also contrasts reliable mass-produced 18-pounders with a rarer 24-pounder special run: a navy may gain more military value from standard weapons and more hulls than from an exceptional battery it cannot supply consistently.",
+      "body": "The video uses the long transition to gun locks to show how even wealthy naval powers struggled to modernize a large fleet. Britain began adopting the mechanism around 1745 but still had not equipped every gun with it by Trafalgar sixty years later. Metallurgy imposed another constraint: brass guns were expensive enough to limit fleets, while iron became useful only after foundries learned to produce weapons capable of surviving repeated firing. Reliable mass-produced 18-pounders therefore could offer more practical value than a rarer 24-pounder special run. A major navy ordering weapons by the gross faced different choices from a smaller state dependent on boutique production. Standard guns could support more ships, easier replacement, and a steadier supply system even when an exceptional weapon looked stronger in isolation.",
       "sourcePath": "src/transcripts/txt/2023-08-01_T18-00-00_what-cannon-is-right-for-this-ship_0WfL6rkIBWs.txt",
       "evidence": [{"start": "26:37", "end": "30:51", "note": "The transcript discusses gun-lock modernization, iron gun metallurgy, and standard versus special production runs."}]
+    },
+    {
+      "id": "infrastructure-limits-on-gun-production",
+      "videoId": "0WfL6rkIBWs",
+      "slug": "infrastructure-limits-on-gun-production",
+      "title": "Infrastructure limits on gun production",
+      "kind": "notable_point",
+      "start": "29:42",
+      "end": "30:51",
+      "topics": ["naval-infrastructure", "naval-industry", "naval-procurement", "ottoman-navy", "venetian-navy"],
+      "summary": "Venice and the Ottoman Empire show how fleet ambition could outstrip the industrial system needed to sustain standardized weapons.",
+      "body": "The discussion distinguishes major powers ordering cannon at scale from smaller navies that required special production runs. Venice is given as a state that had to account for limited industrial scale when selecting weapons. The Ottoman Empire began with a large fleet and enormous ships, yet often struggled to keep pace because the supporting infrastructure did not develop as quickly as its ambitions. The comparison shows that fleet size alone did not guarantee a dependable supply of modern, standardized cannon. Ship design therefore had to reflect the foundries, dockyards, skilled labour, and replacement capacity that a state could actually maintain.",
+      "sourcePath": "src/transcripts/txt/2023-08-01_T18-00-00_what-cannon-is-right-for-this-ship_0WfL6rkIBWs.txt",
+      "evidence": [{"start": "29:42", "end": "30:51", "note": "The transcript contrasts mass and boutique production, then names Venice and Ottoman infrastructure limits."}]
     },
     {
       "id": "weight-distribution-and-carronades",
@@ -97,7 +125,7 @@
       "end": "35:00",
       "topics": ["ship-design", "carronades", "naval-gunnery", "stability"],
       "summary": "Heavy guns belong low in a ship, while carronades offered lighter short-range firepower where topweight mattered.",
-      "body": "Gun weight, hull form, ballast, and metacentric height constrained where a battery could be installed. The carronade reduced weight and crew requirements, making it useful on merchant vessels and upper works of warships, but its short range prevented it from replacing long guns in a distant engagement. The Mary Rose is used to stress that early losses generated lessons about stability and gun selection.",
+      "body": "Gun weight, hull form, stores, ballast, and metacentric height constrained where a battery could be installed. Heavier long guns normally belonged lower in a large ship because putting them high increased dangerous topweight. The carronade reduced both weapon weight and crew requirements, making it useful on merchant vessels and the upper works of warships. Its low charge and short range, however, prevented it from replacing long guns in a distant engagement; outside its effective range it produced little more than smoke. Designers therefore had to calculate the complete distribution of hull, stores, ballast, and broadside forces rather than apply a standard battery by rate alone. The Mary Rose is used to show that sixteenth-century losses prompted active debate and learning about stability, open gun ports, and weapon selection.",
       "sourcePath": "src/transcripts/txt/2023-08-01_T18-00-00_what-cannon-is-right-for-this-ship_0WfL6rkIBWs.txt",
       "evidence": [{"start": "30:53", "end": "35:00", "note": "The transcript addresses gun weight, carronades, stability, and the Mary Rose."}]
     },
@@ -111,7 +139,7 @@
       "end": "40:26",
       "topics": ["naval-logistics", "frigates", "naval-gunnery", "ship-design"],
       "summary": "A frigate's gun calibre determined how many rounds and broadsides it could carry on distant service.",
-      "body": "An independent frigate had to balance gun power against the powder and shot it could store for a long deployment. The 24-pounder versus 18-pounder comparison shows that equal ammunition weight yields fewer heavier rounds, so endurance and expected access to resupply can matter as much as one-shot firepower.",
+      "body": "An independent frigate had to balance gun power against the powder and shot it could store for a long deployment. Its single main gun deck made calibre choice especially consequential because there was no second full battery to offset a poor decision. The 24-pounder versus 18-pounder comparison shows that equal ammunition weight yields fewer heavier rounds: 2,160 pounds of shot represents ninety 24-pound balls but 120 18-pound balls. For the illustrative broadside in the video, that difference is roughly six broadsides instead of eight. A frigate operating far from friendly stores therefore might value two additional broadsides more than the greater effect of each individual shot. Endurance, cruising station, and access to resupply belonged in the same calculation as one-shot firepower.",
       "sourcePath": "src/transcripts/txt/2023-08-01_T18-00-00_what-cannon-is-right-for-this-ship_0WfL6rkIBWs.txt",
       "evidence": [{"start": "36:03", "end": "40:26", "note": "The transcript calculates how calibre affects ammunition count and broadside endurance."}]
     },
@@ -125,9 +153,23 @@
       "end": "43:44",
       "topics": ["ship-design", "force-structure", "naval-logistics", "naval-procurement"],
       "summary": "The best cannon battery is the one that fits a navy's mission, crew, stores, and operational reach.",
-      "body": "Selecting a battery means matching weapons to the country's requirements, not simply comparing one ship to another on raw firepower. Heavier guns cost more and need larger crews; larger crews consume more food and can shorten range. The video frames these connected compromises as a persistent naval-design problem from the cannon era to modern warships.",
+      "body": "Selecting a battery means matching weapons to the country's requirements, not simply comparing one ship to another on raw firepower. A first rate might mount its heaviest guns low and lighter weapons above, but even that arrangement depended on what industry could produce reliably and affordably. Heavier guns cost more and need larger crews to move and serve them. Larger crews consume more food, reducing the time a ship can remain at sea unless storage or resupply grows with them. Weapon weight also competes with ammunition, stores, structure, and the qualities needed for the assigned mission. The video frames these connected compromises as a persistent naval-design problem from the cannon era to modern warships and imagined spacecraft.",
       "sourcePath": "src/transcripts/txt/2023-08-01_T18-00-00_what-cannon-is-right-for-this-ship_0WfL6rkIBWs.txt",
       "evidence": [{"start": "40:42", "end": "43:44", "note": "The transcript links gun calibre to money, crew size, food, range, and national missions."}]
+    },
+    {
+      "id": "ancient-galleys-and-short-range-endurance",
+      "videoId": "0WfL6rkIBWs",
+      "slug": "ancient-galleys-and-short-range-endurance",
+      "title": "Why ancient galleys faced a different endurance problem",
+      "kind": "notable_point",
+      "start": "42:32",
+      "end": "43:44",
+      "topics": ["ancient-navies", "naval-logistics", "ship-design", "naval-gunnery"],
+      "summary": "Roman-era galleys made short coastal hops and carried little heavy artillery, so cannon-era battery trade-offs did not apply in the same way.",
+      "body": "The closing comparison reaches back before the age of sail to explain why the same design logic changes across technologies. Roman quadriremes, triremes, and quinqueremes commonly moved in short stages from bay to bay, allowing their crews to obtain food ashore. They combined oars and sails but did not carry the mass of heavy artillery found on later gun-armed warships. Although they might mount a few specialized weapons, cannon, powder, shot, and large gun crews did not dominate their internal space and weight. The procurement problem became more tightly interconnected once ships carried whole batteries whose weapons and ammunition competed with provisions, structure, and range.",
+      "sourcePath": "src/transcripts/txt/2023-08-01_T18-00-00_what-cannon-is-right-for-this-ship_0WfL6rkIBWs.txt",
+      "evidence": [{"start": "42:32", "end": "43:44", "note": "The transcript contrasts Roman galleys' coastal logistics and limited artillery with cannon-era warships."}]
     },
     {
       "id": "forensic-design-and-hidden-missions",
@@ -139,7 +181,7 @@
       "end": "47:15",
       "topics": ["ship-design", "naval-procurement", "frigates", "naval-aviation"],
       "summary": "Forensic design compares a ship's equipment with its stated role to reveal the missions its navy expected it to perform.",
-      "body": "The method considers weapons, engines, crew, food, and other design features against the official purpose of the vessel. HMS Unicorn and American 24-pounder frigates serve as examples: their characteristics suggest wider aviation-support or prestige-and-deterrence roles beyond a narrow public description.",
+      "body": "The method considers weapons, engines, crew, food, and other design features against the official purpose of the vessel. Comparing those features with a navy's stated requirement can reveal missions that procurement language obscured or understated. HMS Unicorn is the modern example: although described as a forward aviation support ship, her completed form and capabilities also resembled a prototype light fleet carrier. American 24-pounder frigates provide the age-of-sail parallel. Their exceptional power made them useful not only as ordinary cruisers but also as status ships able to display American strength abroad and overmatch other frigates. The method cautions that a warship's real purpose may be legible in its compromises even when official labels tell only part of the story.",
       "sourcePath": "src/transcripts/txt/2023-08-01_T18-00-00_what-cannon-is-right-for-this-ship_0WfL6rkIBWs.txt",
       "evidence": [{"start": "44:39", "end": "47:15", "note": "The transcript defines forensic design and gives HMS Unicorn and 24-pounder frigates as examples."}]
     }

@@ -1,9 +1,41 @@
 {
   "schemaVersion": 1,
   "videoId": "vkGuspmp92I",
-  "topics": ["pearl-harbor", "kantai-kessen", "imperial-japanese-navy", "naval-strategy", "naval-logistics", "live-q-and-a"],
-  "needsFurtherProcessing": true,
+  "topics": [
+    "pearl-harbor",
+    "kantai-kessen",
+    "imperial-japanese-navy",
+    "naval-strategy",
+    "naval-logistics",
+    "live-q-and-a"
+  ],
+  "needsFurtherProcessing": false,
   "segments": [
+    {
+      "id": "japanese-naval-history-source-guide",
+      "videoId": "vkGuspmp92I",
+      "slug": "japanese-naval-history-source-guide",
+      "title": "A source guide to Imperial Japanese naval strategy",
+      "kind": "notable_point",
+      "start": "8:00",
+      "end": "11:35",
+      "topics": [
+        "imperial-japanese-navy",
+        "naval-history-method",
+        "kantai-kessen",
+        "war-plan-orange"
+      ],
+      "summary": "Dr. Clarke identifies the small group of books he considers essential for studying Japanese naval doctrine, leadership, and the Pacific War.",
+      "body": "The recommended starting point is David Evans and Mark Peattie's Kaigun for Imperial Japanese Navy strategy, tactics, and technology from 1887 to 1941. Richard Fuller's Shokan covers the senior officers whose decisions shaped the service, while Mark Stille supplies a more accessible operational overview of the Pacific War. Benjamin Armstrong's study of William Sims and Alfred Thayer Mahan helps explain how Japanese planners inferred the logic of War Plan Orange from American naval writing and behavior. This watch point is useful for readers who want to move from familiar battle narratives into doctrine, institutions, and primary strategic influences.",
+      "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
+      "evidence": [
+        {
+          "start": "8:00",
+          "end": "11:35",
+          "note": "He recommends Kaigun, Shokan, Stille's Pacific War study, and Armstrong on Sims and Mahan."
+        }
+      ]
+    },
     {
       "id": "kantai-kessen-as-attrition-before-decision",
       "videoId": "vkGuspmp92I",
@@ -12,11 +44,22 @@
       "kind": "chapter",
       "start": "17:46",
       "end": "18:58",
-      "topics": ["kantai-kessen", "naval-strategy", "naval-attrition", "imperial-japanese-navy"],
+      "topics": [
+        "kantai-kessen",
+        "naval-strategy",
+        "naval-attrition",
+        "imperial-japanese-navy"
+      ],
       "summary": "The doctrine sought an early advantage over a stronger American fleet before industry could reverse the balance.",
       "body": "Dr. Clarke frames Kantai Kessen as more than a single fleet clash. Japan needed opening blows to reduce American strength, then time and defended space to make its smaller industrial base less vulnerable. The strategy depended on converting temporary local superiority into a durable defensive position.",
       "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
-      "evidence": [{"start": "17:46", "end": "18:58", "note": "He explains the attritional opening needed before American production could dominate."}]
+      "evidence": [
+        {
+          "start": "17:46",
+          "end": "18:58",
+          "note": "He explains the attritional opening needed before American production could dominate."
+        }
+      ]
     },
     {
       "id": "decisive-battle-had-many-japanese-readings",
@@ -26,11 +69,47 @@
       "kind": "notable_point",
       "start": "23:13",
       "end": "24:57",
-      "topics": ["kantai-kessen", "decisive-battle", "russo-japanese-war", "imperial-japanese-navy"],
+      "topics": [
+        "kantai-kessen",
+        "decisive-battle",
+        "russo-japanese-war",
+        "imperial-japanese-navy"
+      ],
       "summary": "Kantai Kessen drew on Port Arthur and Tsushima, but Japanese commanders did not share one immutable interpretation.",
       "body": "The discussion connects decisive-battle thinking to the Russo-Japanese War, where Japanese success was not confined to Tsushima alone. It also cautions against treating the doctrine as mechanically uniform: successive senior officers brought different priorities, while the actual war steadily altered what was possible.",
       "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
-      "evidence": [{"start": "23:13", "end": "24:57", "note": "The transcript contrasts Port Arthur and Tsushima and notes differing command interpretations."}]
+      "evidence": [
+        {
+          "start": "23:13",
+          "end": "24:57",
+          "note": "The transcript contrasts Port Arthur and Tsushima and notes differing command interpretations."
+        }
+      ]
+    },
+    {
+      "id": "british-and-american-industry-doomed-japanese-strategy",
+      "videoId": "vkGuspmp92I",
+      "slug": "british-and-american-industry-doomed-japanese-strategy",
+      "title": "Japan could not outbuild either maritime rival",
+      "kind": "notable_point",
+      "start": "25:32",
+      "end": "26:14",
+      "topics": [
+        "imperial-japanese-navy",
+        "naval-industry",
+        "royal-navy",
+        "united-states-navy"
+      ],
+      "summary": "Even a one-on-one war left Japan facing an opponent with a much larger industrial and shipbuilding base.",
+      "body": "Dr. Clarke argues that Japan needed repeated operational success while its opponent repeatedly failed. The familiar comparison with American production also applied, in different form, to Britain and the wider British Empire. Either maritime power possessed infrastructure and construction capacity that outweighed Japan's ability to replace losses. Kantai Kessen therefore depended on converting an early victory into a political settlement before industrial arithmetic took control.",
+      "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
+      "evidence": [
+        {
+          "start": "25:32",
+          "end": "26:14",
+          "note": "He compares Japan's replacement capacity unfavorably with both the United States and the British Empire."
+        }
+      ]
     },
     {
       "id": "pearl-harbor-was-not-the-desired-battlefield",
@@ -40,11 +119,22 @@
       "kind": "chapter",
       "start": "26:32",
       "end": "27:59",
-      "topics": ["pearl-harbor", "kantai-kessen", "war-plan-orange", "naval-logistics"],
+      "topics": [
+        "pearl-harbor",
+        "kantai-kessen",
+        "war-plan-orange",
+        "naval-logistics"
+      ],
       "summary": "Earlier Pearl Harbor concepts were spoiling attacks; the preferred decisive encounter was nearer Japan and the end of America’s supply line.",
       "body": "Japan had considered attacking Pearl Harbor before the Pacific Fleet was based there, but that was not the same as expecting the 1941 target set. The preferred battle would catch an American fleet after a long Pacific advance, strain its logistics, and cut its support line before the final engagement.",
       "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
-      "evidence": [{"start": "26:32", "end": "27:59", "note": "He distinguishes a Pearl Harbor spoiling raid from the preferred battle near Japan."}]
+      "evidence": [
+        {
+          "start": "26:32",
+          "end": "27:59",
+          "note": "He distinguishes a Pearl Harbor spoiling raid from the preferred battle near Japan."
+        }
+      ]
     },
     {
       "id": "carriers-missing-at-pearl-harbor",
@@ -54,13 +144,52 @@
       "kind": "qa",
       "start": "31:57",
       "end": "36:20",
-      "topics": ["pearl-harbor", "aircraft-carriers", "doolittle-raid", "coral-sea", "midway"],
+      "topics": [
+        "pearl-harbor",
+        "aircraft-carriers",
+        "doolittle-raid",
+        "coral-sea",
+        "midway"
+      ],
       "summary": "A viewer asks how the Pacific war might have changed if the American carriers had been caught at Pearl Harbor.",
       "body": "Dr. Clarke argues that losing the carriers could have delayed or reshaped early operations such as the Doolittle Raid and Coral Sea. It would not automatically change the final industrial balance, but it could force a more defensive Allied posture and make Britain’s Indian Ocean commitments more important.",
       "question": "How would the early Pacific war change if Pearl Harbor had also disabled the American carriers?",
       "answerShort": "The loss could delay early American operations and force a different Allied allocation, but it would not by itself solve Japan’s long-term industrial problem.",
       "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
-      "evidence": [{"start": "31:57", "end": "36:20", "note": "He traces carrier losses through Doolittle, Coral Sea, Torch, and the wider Allied posture."}]
+      "evidence": [
+        {
+          "start": "31:57",
+          "end": "36:20",
+          "note": "He traces carrier losses through Doolittle, Coral Sea, Torch, and the wider Allied posture."
+        }
+      ]
+    },
+    {
+      "id": "american-sanctions-and-japans-material-crisis",
+      "videoId": "vkGuspmp92I",
+      "slug": "american-sanctions-and-japans-material-crisis",
+      "title": "Sanctions constrained Japanese munitions production",
+      "kind": "qa",
+      "start": "36:45",
+      "end": "37:22",
+      "topics": [
+        "imperial-japanese-navy",
+        "economic-warfare",
+        "sanctions",
+        "war-industry"
+      ],
+      "summary": "The claim that America would have ignored Japanese expansion leaves out sanctions already affecting essential war materials.",
+      "body": "The answer cautions against assuming that American public reluctance for war meant Japanese expansion faced no resistance. Washington was already applying economic sanctions before Pearl Harbor. Scrap-iron restrictions mattered because Japan depended on imported material for ammunition and wider war production. The strategic crisis therefore involved access to resources as well as public opinion and formal declarations of war.",
+      "question": "Would the United States simply have stayed out of the way of Japan's imperial ambitions?",
+      "answerShort": "Not safely: American sanctions were already constraining Japanese access to materials needed for weapons and ammunition.",
+      "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
+      "evidence": [
+        {
+          "start": "36:45",
+          "end": "37:22",
+          "note": "He links prewar American sanctions, especially scrap iron, to Japanese ammunition production."
+        }
+      ]
     },
     {
       "id": "pearl-harbors-repair-and-fuel-system",
@@ -70,13 +199,24 @@
       "kind": "qa",
       "start": "38:20",
       "end": "39:17",
-      "topics": ["pearl-harbor", "naval-logistics", "naval-repair", "fuel-supply"],
+      "topics": [
+        "pearl-harbor",
+        "naval-logistics",
+        "naval-repair",
+        "fuel-supply"
+      ],
       "summary": "The discussion explains why repair facilities and fuel storage were strategically more important than a simple ship count.",
       "body": "Pearl Harbor was already a more capable logistics base than Japanese planners appreciated, even before its rapid wartime expansion. Damaging the repair and fuel network would have pushed the fleet’s operating base much farther east and complicated every subsequent movement.",
       "question": "Would destroying Pearl Harbor’s repair and fuel facilities have been more consequential than the ships hit?",
       "answerShort": "Yes: the base’s repair and storage capacity enabled Pacific operations, and Japan underestimated how much support it contained.",
       "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
-      "evidence": [{"start": "38:20", "end": "39:17", "note": "He describes Pearl Harbor’s underestimated logistics capacity and later expansion."}]
+      "evidence": [
+        {
+          "start": "38:20",
+          "end": "39:17",
+          "note": "He describes Pearl Harbor’s underestimated logistics capacity and later expansion."
+        }
+      ]
     },
     {
       "id": "midway-beyond-the-doolittle-raid",
@@ -86,13 +226,24 @@
       "kind": "qa",
       "start": "40:00",
       "end": "40:35",
-      "topics": ["battle-of-midway", "doolittle-raid", "imperial-japanese-navy", "pacific-war"],
+      "topics": [
+        "battle-of-midway",
+        "doolittle-raid",
+        "imperial-japanese-navy",
+        "pacific-war"
+      ],
       "summary": "The Doolittle Raid accelerated interest in Midway, but the island was strategically attractive in its own right.",
       "body": "The answer pushes back against a single-cause explanation for Midway. The raid mattered politically and operationally, but Midway’s position made it a plausible Japanese objective even without it.",
       "question": "Would Japan still have attacked Midway without the Doolittle Raid?",
       "answerShort": "Probably eventually; the raid accelerated the decision, but Midway was independently attractive to Japanese planners.",
       "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
-      "evidence": [{"start": "40:00", "end": "40:35", "note": "He calls the raid connection partly true but stresses Midway’s inherent value."}]
+      "evidence": [
+        {
+          "start": "40:00",
+          "end": "40:35",
+          "note": "He calls the raid connection partly true but stresses Midway’s inherent value."
+        }
+      ]
     },
     {
       "id": "carrier-priority-at-pearl-harbor",
@@ -102,13 +253,106 @@
       "kind": "qa",
       "start": "41:12",
       "end": "42:03",
-      "topics": ["pearl-harbor", "aircraft-carriers", "kido-butai", "targeting"],
+      "topics": [
+        "pearl-harbor",
+        "aircraft-carriers",
+        "kido-butai",
+        "targeting"
+      ],
       "summary": "Battleships absorbed the strikes because the intended first-priority targets—the American carriers—were absent.",
       "body": "The answer explains otherwise uneven-looking targeting during the two waves. Japanese aircraft continued searching for carriers; when they found none, attacks shifted to other ships, producing both heavy concentration and conspicuous omissions.",
       "question": "Did the absent carriers disrupt Japanese target selection at Pearl Harbor?",
       "answerShort": "Yes. Carriers were the preferred targets, and their absence drove the focus on battleships and improvised hunting by both waves.",
       "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
-      "evidence": [{"start": "41:12", "end": "42:03", "note": "The transcript identifies carriers as first priority and explains target saturation."}]
+      "evidence": [
+        {
+          "start": "41:12",
+          "end": "42:03",
+          "note": "The transcript identifies carriers as first priority and explains target saturation."
+        }
+      ]
+    },
+    {
+      "id": "british-fleet-basing-near-singapore-not-pearl-harbor",
+      "videoId": "vkGuspmp92I",
+      "slug": "british-fleet-basing-near-singapore-not-pearl-harbor",
+      "title": "Why a British fleet belonged nearer Singapore",
+      "kind": "qa",
+      "start": "42:56",
+      "end": "46:01",
+      "topics": [
+        "royal-navy",
+        "pearl-harbor",
+        "singapore",
+        "naval-logistics",
+        "force-z"
+      ],
+      "summary": "Existing British support networks in the Indian Ocean and Australia made Pearl Harbor a poor home for an added Royal Navy force.",
+      "body": "Dr. Clarke rejects the idea that Force Z or another British fleet should routinely have based at Pearl Harbor. The United States already had battleships and carriers there, while the base's limited support capacity and tanker pool would be crowded by ships with different operating ranges. Britain possessed established infrastructure at Trincomalee, Bombay, Singapore, and Australian ports closer to its likely theater. A combined Anglo-American fleet could meet around the Philippines when operations required it without permanently adding British demands to Pearl Harbor.",
+      "question": "Would it have made sense to station a substantial Royal Navy force at Pearl Harbor before the attack?",
+      "answerShort": "No. British bases nearer Singapore and the Indian Ocean offered better support, while Pearl Harbor's limited logistics were already committed to the U.S. fleet.",
+      "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
+      "evidence": [
+        {
+          "start": "42:56",
+          "end": "46:01",
+          "note": "He compares British regional infrastructure with Pearl Harbor's capacity, tanker limits, and operational fit."
+        }
+      ]
+    },
+    {
+      "id": "royal-navy-foresaw-the-form-not-the-target",
+      "videoId": "vkGuspmp92I",
+      "slug": "royal-navy-foresaw-the-form-not-the-target",
+      "title": "The Royal Navy anticipated a surprise blow in principle",
+      "kind": "qa",
+      "start": "48:18",
+      "end": "48:52",
+      "topics": [
+        "royal-navy",
+        "pearl-harbor",
+        "singapore",
+        "naval-intelligence"
+      ],
+      "summary": "British officers could imagine a Japanese surprise strike without possessing intelligence that fixed Pearl Harbor as the target.",
+      "body": "The answer distinguishes strategic imagination from actionable warning. Royal Navy officers considered attacks on both Pearl Harbor and Singapore because a hard opening blow fit their own operational instincts. That did not mean Britain knew where or when Japan would strike. The useful lesson is that identifying a plausible enemy method is not the same as resolving its target, timing, and force allocation.",
+      "question": "How foreseeable was the attack on Pearl Harbor to the Royal Navy?",
+      "answerShort": "The form of a sudden strike was foreseeable, but Britain did not have specific intelligence proving Pearl Harbor was the chosen target.",
+      "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
+      "evidence": [
+        {
+          "start": "48:18",
+          "end": "48:52",
+          "note": "He says British expectations came from considering their own playbook, not definite target intelligence."
+        }
+      ]
+    },
+    {
+      "id": "alaska-was-not-a-pacific-shortcut",
+      "videoId": "vkGuspmp92I",
+      "slug": "alaska-was-not-a-pacific-shortcut",
+      "title": "Why Alaska was not a shortcut to Japan",
+      "kind": "qa",
+      "start": "49:57",
+      "end": "50:12",
+      "topics": [
+        "alaska",
+        "pacific-war",
+        "naval-logistics",
+        "united-states-navy"
+      ],
+      "summary": "A northern route looked shorter on a map but imposed a difficult extra supply chain before forces even entered the Pacific theater.",
+      "body": "Dr. Clarke rejects the map-based assumption that building up Alaska created an efficient direct road to Japan. Moving men and matériel through the region was itself logistically complicated. Once supplies were loaded aboard ships, carrying them toward an operational base was generally more useful than unloading them into another difficult overland system. The exchange illustrates why geographic distance alone is a poor measure of campaign feasibility.",
+      "question": "Why did the United States not build up Alaska and take the apparently shorter route toward Japan?",
+      "answerShort": "Because Alaska was a difficult logistics route, and sea transport could carry the same supplies more directly to operational destinations.",
+      "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
+      "evidence": [
+        {
+          "start": "49:57",
+          "end": "50:12",
+          "note": "He contrasts apparent map distance with the logistical burden of the Alaska route."
+        }
+      ]
     },
     {
       "id": "hawaii-invasion-and-logistics-limits",
@@ -118,13 +362,79 @@
       "kind": "qa",
       "start": "50:30",
       "end": "51:36",
-      "topics": ["pearl-harbor", "hawaii", "amphibious-warfare", "kantai-kessen"],
+      "topics": [
+        "pearl-harbor",
+        "hawaii",
+        "amphibious-warfare",
+        "kantai-kessen"
+      ],
       "summary": "Taking Pearl Harbor after the raid would have imposed a Pacific-first emergency on the United States, but it was a far larger undertaking.",
       "body": "Dr. Clarke notes that an invasion of Hawaii would have made the attack resemble the decisive result Japan wanted. Yet the question also exposes the scale of the missing follow-on operation: landing, supply, and holding forces would have been required after the initial strike.",
       "question": "What if Japan had followed Pearl Harbor with an invasion of Hawaii?",
       "answerShort": "Capturing the base would have been strategically severe for the United States, but it required an enormous additional amphibious operation.",
       "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
-      "evidence": [{"start": "50:30", "end": "51:36", "note": "He describes the strategic effect of landing and taking Pearl Harbor."}]
+      "evidence": [
+        {
+          "start": "50:30",
+          "end": "51:36",
+          "note": "He describes the strategic effect of landing and taking Pearl Harbor."
+        }
+      ]
+    },
+    {
+      "id": "floating-docks-were-critical-pearl-harbor-targets",
+      "videoId": "vkGuspmp92I",
+      "slug": "floating-docks-were-critical-pearl-harbor-targets",
+      "title": "Floating docks were critical missed targets",
+      "kind": "qa",
+      "start": "52:15",
+      "end": "52:28",
+      "topics": [
+        "pearl-harbor",
+        "naval-repair",
+        "floating-dry-docks",
+        "naval-logistics"
+      ],
+      "summary": "Destroying Pearl Harbor's mobile docking capacity could have complicated recovery as much as striking named repair ships.",
+      "body": "The discussion widens the repair-target question beyond USS Vestal and the submarine base. Floating docks allowed damaged ships to be lifted, inspected, and returned to service without relying only on fixed graving docks. Sinking them could obstruct the harbor and remove adaptable repair capacity at the same time. Their survival helped make the physical recovery of the Pacific Fleet faster than Japanese planners expected.",
+      "question": "Which repair assets at Pearl Harbor would have been especially damaging to lose?",
+      "answerShort": "The floating docks were among the most important missed targets because they provided flexible repair capacity and could create obstructions if sunk.",
+      "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
+      "evidence": [
+        {
+          "start": "52:15",
+          "end": "52:28",
+          "note": "He identifies floating docks as the repair assets whose destruction would cause the most trouble."
+        }
+      ]
+    },
+    {
+      "id": "british-1942-offensive-through-singapore",
+      "videoId": "vkGuspmp92I",
+      "slug": "british-1942-offensive-through-singapore",
+      "title": "A British 1942 offensive would begin at Singapore",
+      "kind": "qa",
+      "start": "54:19",
+      "end": "55:14",
+      "topics": [
+        "singapore",
+        "royal-navy",
+        "pacific-war",
+        "amphibious-warfare",
+        "australia"
+      ],
+      "summary": "Retaking Singapore offered the clearest way to relieve Australia and the Indian Ocean before joining an advance through the Philippines.",
+      "body": "Dr. Clarke makes Singapore the first objective of a hypothetical British offensive in November 1942. Recovering the base would reduce pressure on Australia and reopen the strategic balance in the Indian Ocean. British striking forces could then combine with MacArthur's command and move through the Philippines. The answer shows how the value of a base comes from the sea lanes and campaigns it unlocks, not merely from the harbor itself.",
+      "question": "What might a British-led Pacific offensive in late 1942 have looked like?",
+      "answerShort": "It would probably begin by retaking Singapore, then combine with American forces for a northward advance through the Philippines.",
+      "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
+      "evidence": [
+        {
+          "start": "54:19",
+          "end": "55:14",
+          "note": "He identifies Singapore as the first target and sketches a combined advance through the Philippines."
+        }
+      ]
     },
     {
       "id": "fuel-tank-farm-counterfactual",
@@ -134,13 +444,24 @@
       "kind": "qa",
       "start": "55:30",
       "end": "56:24",
-      "topics": ["pearl-harbor", "fuel-supply", "fleet-train", "naval-logistics"],
+      "topics": [
+        "pearl-harbor",
+        "fuel-supply",
+        "fleet-train",
+        "naval-logistics"
+      ],
       "summary": "Destroying Pearl Harbor’s fuel stores would have constrained fast tankers and delayed forward operations.",
       "body": "The answer follows fuel as a system rather than a static stockpile. Without Pearl Harbor’s storage, scarce fast tankers would have had to bridge much longer distances, leaving fewer available to support combat operations farther west.",
       "question": "How damaging would the destruction of Pearl Harbor’s fuel tank farm have been?",
       "answerShort": "It would have badly delayed operations by forcing limited tanker capacity to replace the base’s storage function.",
       "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
-      "evidence": [{"start": "55:30", "end": "56:24", "note": "He explains the trade between using fast tankers for Pearl Harbor and for forward operations."}]
+      "evidence": [
+        {
+          "start": "55:30",
+          "end": "56:24",
+          "note": "He explains the trade between using fast tankers for Pearl Harbor and for forward operations."
+        }
+      ]
     },
     {
       "id": "philippines-as-the-expected-american-response",
@@ -150,13 +471,51 @@
       "kind": "qa",
       "start": "56:42",
       "end": "57:51",
-      "topics": ["philippines", "war-plan-orange", "kantai-kessen", "pacific-war"],
+      "topics": [
+        "philippines",
+        "war-plan-orange",
+        "kantai-kessen",
+        "pacific-war"
+      ],
       "summary": "Japanese planning anticipated an American effort to reinforce the Philippines, where attrition could prepare a decisive engagement.",
       "body": "The discussion argues that political pressure could drive the United States to attempt reinforcement even when the military outlook was poor. That movement was the kind of forward advance Japanese doctrine hoped to punish with submarines, torpedoes, destroyers, cruisers, and the battle line.",
       "question": "Would the United States have tried to reinforce the Philippines if Pearl Harbor had missed the main fleet?",
       "answerShort": "Probably, because political pressure favored reinforcement—and that was close to the Japanese hoped-for operational sequence.",
       "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
-      "evidence": [{"start": "56:42", "end": "57:51", "note": "He outlines a Philippine approach and layered Japanese attrition."}]
+      "evidence": [
+        {
+          "start": "56:42",
+          "end": "57:51",
+          "note": "He outlines a Philippine approach and layered Japanese attrition."
+        }
+      ]
+    },
+    {
+      "id": "spotting-kido-butai-could-delay-the-operation",
+      "videoId": "vkGuspmp92I",
+      "slug": "spotting-kido-butai-could-delay-the-operation",
+      "title": "An early sighting could have postponed Pearl Harbor",
+      "kind": "qa",
+      "start": "58:01",
+      "end": "58:26",
+      "topics": [
+        "kido-butai",
+        "pearl-harbor",
+        "naval-intelligence",
+        "nagumo-chuichi"
+      ],
+      "summary": "Japanese orders allowed the strike force to turn back if discovered early enough, potentially reopening the command decision.",
+      "body": "The answer depends on when the Kido Butai was detected. A sighting well before the attack could trigger Nagumo's call-off message and postpone the operation for months. Japan might later attempt Pearl Harbor again, but delay could also give Yamamoto time to reconsider the force commander. Detection on the morning of the attack was much less likely to stop aircraft already positioned to launch.",
+      "question": "What would happen if the Kido Butai were spotted en route and Nagumo followed his orders?",
+      "answerShort": "An early sighting could call off and postpone the operation, while a same-morning sighting would probably be too late to prevent launch.",
+      "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
+      "evidence": [
+        {
+          "start": "58:01",
+          "end": "58:26",
+          "note": "He explains the call-off option, likely delay, and possible command consequences."
+        }
+      ]
     },
     {
       "id": "spies-and-1941-communications",
@@ -166,13 +525,52 @@
       "kind": "qa",
       "start": "58:33",
       "end": "59:48",
-      "topics": ["pearl-harbor", "naval-intelligence", "communications", "aircraft-carriers"],
+      "topics": [
+        "pearl-harbor",
+        "naval-intelligence",
+        "communications",
+        "aircraft-carriers"
+      ],
       "summary": "A sighting still had to travel through a slow and vulnerable 1941 reporting chain before it could change Japanese targeting.",
       "body": "Dr. Clarke stresses the practical delay between an observer, the intelligence network, headquarters, and the striking fleet. Large radio equipment, interception risk, decoding, and retransmission made real-time carrier tracking much harder than a simple map of presumed spies suggests.",
       "question": "How hard would it have been for a Japanese observer to report American carriers leaving Pearl Harbor?",
       "answerShort": "Very hard: the report had to survive a long communications and analysis loop before the fleet could retarget.",
       "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
-      "evidence": [{"start": "58:33", "end": "59:48", "note": "The transcript details the observer-to-headquarters-to-fleet reporting chain."}]
+      "evidence": [
+        {
+          "start": "58:33",
+          "end": "59:48",
+          "note": "The transcript details the observer-to-headquarters-to-fleet reporting chain."
+        }
+      ]
+    },
+    {
+      "id": "thirty-minutes-warning-could-activate-the-defense",
+      "videoId": "vkGuspmp92I",
+      "slug": "thirty-minutes-warning-could-activate-the-defense",
+      "title": "Thirty minutes could activate Pearl Harbor's defenses",
+      "kind": "qa",
+      "start": "1:01:39",
+      "end": "1:02:16",
+      "topics": [
+        "pearl-harbor",
+        "air-defense",
+        "radar",
+        "b-17-flying-fortress",
+        "naval-readiness"
+      ],
+      "summary": "A half-hour warning was too short to avert the raid but long enough to launch some aircraft and prepare guns, radar, and ships.",
+      "body": "Dr. Clarke emphasizes the warning's system-wide effect rather than the actions of a single informed person. Fighters could begin launching, radars and antiaircraft defenses could be fully manned, and some B-17s might be armed for an improvised search or strike. Battleships could also begin creating more separation along Battleship Row. None of these measures guaranteed interception, but they would make the attackers face an alert base instead of a cold start.",
+      "question": "How useful would thirty minutes of reliable warning have been at Pearl Harbor?",
+      "answerShort": "It could not stop the raid, but it could put fighters and some bombers in the air while activating radar, guns, and shipboard readiness.",
+      "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
+      "evidence": [
+        {
+          "start": "1:01:39",
+          "end": "1:02:16",
+          "note": "He lists fighters, B-17s, radar, air defense, and ship dispersal as possible responses."
+        }
+      ]
     },
     {
       "id": "midway-reversed-kantai-kessen-logic",
@@ -182,13 +580,50 @@
       "kind": "qa",
       "start": "1:07:37",
       "end": "1:08:01",
-      "topics": ["battle-of-midway", "kantai-kessen", "naval-strategy"],
+      "topics": [
+        "battle-of-midway",
+        "kantai-kessen",
+        "naval-strategy"
+      ],
       "summary": "The doctrine required Japan to choose ground where it was strong and the enemy was weak; Midway did the opposite.",
       "body": "This concise answer identifies the strategic inversion at Midway. Instead of drawing an exhausted enemy into Japanese advantages, Japan advanced into a battle where it could not control the conditions in the same way.",
       "question": "Was Midway contrary to the original Kantai Kessen strategy?",
       "answerShort": "Yes. The doctrine aimed to make the enemy come into Japanese strength, not to seek battle under less favorable conditions.",
       "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
-      "evidence": [{"start": "1:07:37", "end": "1:08:01", "note": "He defines the doctrine as fighting at Japanese strength and enemy weakness."}]
+      "evidence": [
+        {
+          "start": "1:07:37",
+          "end": "1:08:01",
+          "note": "He defines the doctrine as fighting at Japanese strength and enemy weakness."
+        }
+      ]
+    },
+    {
+      "id": "japan-could-not-absorb-guadalcanal-scale-losses",
+      "videoId": "vkGuspmp92I",
+      "slug": "japan-could-not-absorb-guadalcanal-scale-losses",
+      "title": "Guadalcanal losses reveal the replacement imbalance",
+      "kind": "qa",
+      "start": "1:11:32",
+      "end": "1:12:17",
+      "topics": [
+        "guadalcanal-campaign",
+        "imperial-japanese-navy",
+        "naval-industry",
+        "naval-attrition"
+      ],
+      "summary": "Equal losses did not create equal consequences because Japan lacked the infrastructure to rebuild at the Allied rate.",
+      "body": "The counterfactual reverses the losses of the Guadalcanal campaign to expose the underlying industrial asymmetry. A Japanese loss on the American scale would remove much of the fleet from effective service for a large part of the war. Japan could replace some ships, but not at the speed or depth available to the United States and its allies. Tactical exchange ratios therefore mattered less than whether each navy could train crews and regenerate complete fighting systems.",
+      "question": "What if Japan had suffered the same level of ship losses that the United States absorbed around Guadalcanal?",
+      "answerShort": "Japan would be largely out of commission because it lacked the industrial infrastructure to replace those losses quickly.",
+      "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
+      "evidence": [
+        {
+          "start": "1:11:32",
+          "end": "1:12:17",
+          "note": "He contrasts Japanese replacement capacity with American and wider Allied rebuilding."
+        }
+      ]
     },
     {
       "id": "warning-time-at-pearl-harbor",
@@ -198,13 +633,24 @@
       "kind": "qa",
       "start": "1:12:53",
       "end": "1:13:19",
-      "topics": ["pearl-harbor", "radar", "air-defense", "naval-readiness"],
+      "topics": [
+        "pearl-harbor",
+        "radar",
+        "air-defense",
+        "naval-readiness"
+      ],
       "summary": "Radar warning could have put fighters in the air, while a submarine sighting alone was less likely to reach decision-makers in time.",
       "body": "The answer separates different forms of warning rather than treating them as interchangeable. A radar contact provided enough time for some air-defense action, but the reporting and command delay attached to a submarine sighting reduced its immediate value.",
       "question": "Would the radar alert and submarine sighting have made a major difference if taken seriously?",
       "answerShort": "Radar likely could have enabled fighters to launch; the submarine sighting probably reached the right commanders too late.",
       "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
-      "evidence": [{"start": "1:12:53", "end": "1:13:19", "note": "He contrasts the operational value of radar and submarine reports."}]
+      "evidence": [
+        {
+          "start": "1:12:53",
+          "end": "1:13:19",
+          "note": "He contrasts the operational value of radar and submarine reports."
+        }
+      ]
     },
     {
       "id": "pearl-harbor-was-not-ready-to-sustain-war",
@@ -214,11 +660,50 @@
       "kind": "notable_point",
       "start": "1:16:45",
       "end": "1:17:17",
-      "topics": ["pearl-harbor", "naval-readiness", "ammunition", "naval-logistics"],
+      "topics": [
+        "pearl-harbor",
+        "naval-readiness",
+        "ammunition",
+        "naval-logistics"
+      ],
       "summary": "Admiral Richardson’s objections included inadequate ammunition and even insufficient targets for training.",
       "body": "Pearl Harbor’s eventual importance should not obscure its 1941 limitations. Dr. Clarke uses Richardson’s complaints to show that a fleet base required munitions, training infrastructure, and sustainment arrangements—not merely berths for capital ships.",
       "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
-      "evidence": [{"start": "1:16:45", "end": "1:17:17", "note": "The transcript cites missing munitions and training targets."}]
+      "evidence": [
+        {
+          "start": "1:16:45",
+          "end": "1:17:17",
+          "note": "The transcript cites missing munitions and training targets."
+        }
+      ]
+    },
+    {
+      "id": "recalling-the-merchant-fleet-signaled-war",
+      "videoId": "vkGuspmp92I",
+      "slug": "recalling-the-merchant-fleet-signaled-war",
+      "title": "Japan's merchant-fleet recall signaled imminent war",
+      "kind": "qa",
+      "start": "1:23:13",
+      "end": "1:23:33",
+      "topics": [
+        "merchant-shipping",
+        "imperial-japan",
+        "naval-intelligence",
+        "soviet-union",
+        "southeast-asia"
+      ],
+      "summary": "The October 1941 shipping recall warned the Allies that Japan was preparing for war without revealing whether it would strike north or south.",
+      "body": "Recalling a worldwide merchant fleet was a major mobilization indicator because shipping was essential to any Japanese campaign. Allied observers recognized that a large operation was coming. The unresolved intelligence problem was direction: Japan could move north against the Soviet Union or south toward Southeast Asian resources and Western possessions. Strategic warning was therefore genuine but still too broad to identify Pearl Harbor as the decisive opening target.",
+      "question": "How much warning did Japan's October 1941 recall of its merchant fleet provide?",
+      "answerShort": "It was a major warning that Japan would move, but it did not resolve whether the attack would go north or south.",
+      "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
+      "evidence": [
+        {
+          "start": "1:23:13",
+          "end": "1:23:33",
+          "note": "He calls the recall a massive warning while stressing the north-versus-south uncertainty."
+        }
+      ]
     },
     {
       "id": "yamato-as-carriers-and-aircrew-system",
@@ -228,13 +713,24 @@
       "kind": "qa",
       "start": "1:28:00",
       "end": "1:31:41",
-      "topics": ["yamato-class", "aircraft-carriers", "japanese-naval-aviation", "pilot-training"],
+      "topics": [
+        "yamato-class",
+        "aircraft-carriers",
+        "japanese-naval-aviation",
+        "pilot-training"
+      ],
       "summary": "Turning Yamato-class hulls into carriers might improve Japanese force structure only if it also changed pilot training and replacement.",
       "body": "The counterfactual is not reduced to deck space. More carriers could compel Japan to expand and professionalize aviator recruitment and training, addressing a shortage that later left ships and aircraft without enough qualified pilots. Even then, the underlying industrial contest remains.",
       "question": "How might the war have changed if the Yamato class had been designed as carriers?",
       "answerShort": "It could improve Japan’s aviation system if it forced earlier pilot expansion, but it would not remove the wider industrial constraints.",
       "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
-      "evidence": [{"start": "1:28:00", "end": "1:31:41", "note": "He links carrier numbers to the supply of trained aviators and long-term limits."}]
+      "evidence": [
+        {
+          "start": "1:28:00",
+          "end": "1:31:41",
+          "note": "He links carrier numbers to the supply of trained aviators and long-term limits."
+        }
+      ]
     },
     {
       "id": "peacetime-doctrine-and-japanese-shipbuilding",
@@ -244,13 +740,105 @@
       "kind": "qa",
       "start": "1:34:12",
       "end": "1:35:42",
-      "topics": ["imperial-japanese-navy", "shipbuilding", "kantai-kessen", "naval-procurement"],
+      "topics": [
+        "imperial-japanese-navy",
+        "shipbuilding",
+        "kantai-kessen",
+        "naval-procurement"
+      ],
       "summary": "Japanese construction followed deterrent and peacetime concepts that did not always fit the war it actually had to fight.",
       "body": "Dr. Clarke argues that ships can serve several doctrines without being equally suitable for all of them. For an attrition strategy against a damaged American fleet, matching every rival ship’s individual capability was less important than building a force suited to the actual operational problem.",
       "question": "Did Japanese construction match its doctrine, or did it lose sight of why it was building ships?",
       "answerShort": "It reflected several doctrines, especially a peacetime deterrent logic, but did not always create the most sensible wartime force.",
       "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
-      "evidence": [{"start": "1:34:12", "end": "1:35:42", "note": "He contrasts deterrent construction with the needs of attritional war."}]
+      "evidence": [
+        {
+          "start": "1:34:12",
+          "end": "1:35:42",
+          "note": "He contrasts deterrent construction with the needs of attritional war."
+        }
+      ]
+    },
+    {
+      "id": "us-prewar-plan-advanced-through-the-philippines",
+      "videoId": "vkGuspmp92I",
+      "slug": "us-prewar-plan-advanced-through-the-philippines",
+      "title": "The prewar American plan advanced through the Philippines",
+      "kind": "qa",
+      "start": "1:46:52",
+      "end": "1:47:14",
+      "topics": [
+        "war-plan-orange",
+        "philippines",
+        "united-states-navy",
+        "royal-navy"
+      ],
+      "summary": "On the eve of war, the broad American concept still called for a forward deployment to secure the Philippines and then press north.",
+      "body": "Dr. Clarke summarizes the large-scale plan rather than the immediate tactical dispositions of 7 December. The United States expected to deploy forward, reinforce or secure the Philippines, and cooperate with British forces there. The combined position would then support an advance north toward Japan. This was close enough to Japanese expectations that Kantai Kessen planners hoped to attrit the arriving fleet along its route.",
+      "question": "What was the United States Navy's big-picture plan for war with Japan on 6 December 1941?",
+      "answerShort": "Deploy forward, secure the Philippines, join British forces, and use that position for an advance north toward Japan.",
+      "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
+      "evidence": [
+        {
+          "start": "1:46:52",
+          "end": "1:47:14",
+          "note": "He outlines the forward deployment, Philippine concentration, British cooperation, and northward advance."
+        }
+      ]
+    },
+    {
+      "id": "japanese-tankers-limited-additional-strike-groups",
+      "videoId": "vkGuspmp92I",
+      "slug": "japanese-tankers-limited-additional-strike-groups",
+      "title": "Converted tankers limited Japanese strike-group scale",
+      "kind": "qa",
+      "start": "1:47:20",
+      "end": "1:47:42",
+      "topics": [
+        "imperial-japanese-navy",
+        "fleet-train",
+        "oil-tankers",
+        "pearl-harbor",
+        "naval-logistics"
+      ],
+      "summary": "Supporting more carrier groups required converting additional civilian tankers and taking fuel capacity from other operations.",
+      "body": "The Kido Butai's reach depended on a limited fleet train, not only on the number of carriers Japan owned. Japanese planners used modified civilian tankers to sustain the Pearl Harbor passage. More simultaneous groups would require finding and converting additional ships. Every tanker assigned to the strike also reduced the capacity available for invasions and operations elsewhere in the opening offensive.",
+      "question": "Did Japan have enough fuel and tanker support to operate multiple Pearl Harbor-scale groups?",
+      "answerShort": "Only with difficulty: extra civilian tankers would need conversion, and using them would constrain other operations.",
+      "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
+      "evidence": [
+        {
+          "start": "1:47:20",
+          "end": "1:47:42",
+          "note": "He describes converted civilian tankers and the opportunity cost imposed on other operations."
+        }
+      ]
+    },
+    {
+      "id": "richardson-argued-readiness-made-deterrence-credible",
+      "videoId": "vkGuspmp92I",
+      "slug": "richardson-argued-readiness-made-deterrence-credible",
+      "title": "Richardson tied deterrence to fleet readiness",
+      "kind": "notable_point",
+      "start": "1:48:31",
+      "end": "1:49:28",
+      "topics": [
+        "james-o-richardson",
+        "pearl-harbor",
+        "naval-deterrence",
+        "naval-readiness",
+        "fleet-train"
+      ],
+      "summary": "Admiral Richardson argued that an undermanned and undersupplied fleet at Hawaii looked like a bluff rather than a credible deterrent.",
+      "body": "The quoted argument treats the fleet's location as less important than its visible ability to fight. Richardson believed Japan's military leadership could see that ships at Pearl Harbor lacked full crews, training, ammunition, and auxiliaries. He preferred returning the fleet to the Pacific coast, completing maintenance and supply, assembling its train, and then deploying it as a force stripped for war. The passage shows deterrence as a performance of usable capability rather than the mere presence of hulls on a map.",
+      "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
+      "evidence": [
+        {
+          "start": "1:48:31",
+          "end": "1:49:28",
+          "note": "He reads Richardson's case for crews, training, auxiliaries, stores, fuel, and a prepared fleet train."
+        }
+      ]
     },
     {
       "id": "taranto-and-pearl-harbor-were-not-the-same-operation",
@@ -260,11 +848,51 @@
       "kind": "chapter",
       "start": "1:55:17",
       "end": "1:57:59",
-      "topics": ["taranto", "pearl-harbor", "royal-navy", "carrier-aviation", "decisive-battle"],
+      "topics": [
+        "taranto",
+        "pearl-harbor",
+        "royal-navy",
+        "carrier-aviation",
+        "decisive-battle"
+      ],
       "summary": "Taranto was a raid intended to create a fleet action; Pearl Harbor was an opening blow within a different strategic design.",
       "body": "The Royal Navy’s Taranto operation was backed by the wider fleet and sought to damage Italian battleships enough to draw the enemy into a decisive engagement. Applying that logic to Pearl Harbor would mean expecting a battle fleet outside the harbor and using air attacks to shape the following fight, not merely inflict a surprise loss.",
       "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
-      "evidence": [{"start": "1:55:17", "end": "1:57:59", "note": "He contrasts Cunningham’s operational purpose with the Japanese attack."}]
+      "evidence": [
+        {
+          "start": "1:55:17",
+          "end": "1:57:59",
+          "note": "He contrasts Cunningham’s operational purpose with the Japanese attack."
+        }
+      ]
+    },
+    {
+      "id": "pearl-harbor-plan-left-two-experienced-carriers-behind",
+      "videoId": "vkGuspmp92I",
+      "slug": "pearl-harbor-plan-left-two-experienced-carriers-behind",
+      "title": "Pearl Harbor left experienced carrier air groups behind",
+      "kind": "qa",
+      "start": "2:07:21",
+      "end": "2:08:19",
+      "topics": [
+        "pearl-harbor",
+        "kido-butai",
+        "aircraft-carriers",
+        "japanese-naval-aviation",
+        "fleet-train"
+      ],
+      "summary": "Leaving the Third Carrier Division behind saved tanker support but also omitted experienced aviators who could enlarge the strike.",
+      "body": "What most surprised Dr. Clarke was how improvised parts of the famous operation remained. Ryūjō and Hōshō were older and smaller, yet their air groups included valuable operational experience. Bringing the division could materially increase strike capacity for the cost of roughly one additional tanker. The tradeoff reveals how logistics, carrier characteristics, and pilot quality interacted in the final force package.",
+      "question": "What feature of Pearl Harbor planning becomes more surprising on closer study?",
+      "answerShort": "Japan left two smaller carriers and experienced aviators behind even though one more tanker might have supported their inclusion.",
+      "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
+      "evidence": [
+        {
+          "start": "2:07:21",
+          "end": "2:08:19",
+          "note": "He calls the operation ad hoc and weighs Third Carrier Division's aviators against one extra tanker."
+        }
+      ]
     },
     {
       "id": "third-strike-decision-at-pearl-harbor",
@@ -274,13 +902,24 @@
       "kind": "qa",
       "start": "2:08:28",
       "end": "2:12:40",
-      "topics": ["pearl-harbor", "kido-butai", "aircraft-carriers", "naval-risk"],
+      "topics": [
+        "pearl-harbor",
+        "kido-butai",
+        "aircraft-carriers",
+        "naval-risk"
+      ],
       "summary": "A third strike promised further damage, but uncertainty about the missing carriers and growing American defenses altered the risk.",
       "body": "The discussion treats the third-wave debate as conditional rather than a simple missed opportunity. Once surprise had gone, Japanese commanders had to consider aircraft losses, the absence of known carrier targets, and the possibility of a counterstrike while their own aircraft were away.",
       "question": "Should Japan have launched a third strike at Pearl Harbor?",
       "answerShort": "It was more understandable before uncertainty set in; with carriers unlocated and defenses mobilizing, the operational risk rose sharply.",
       "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
-      "evidence": [{"start": "2:08:28", "end": "2:12:40", "note": "He weighs the third-wave policy against carrier uncertainty and increased losses."}]
+      "evidence": [
+        {
+          "start": "2:08:28",
+          "end": "2:12:40",
+          "note": "He weighs the third-wave policy against carrier uncertainty and increased losses."
+        }
+      ]
     },
     {
       "id": "repair-ships-are-more-than-specialists",
@@ -290,13 +929,79 @@
       "kind": "qa",
       "start": "2:11:06",
       "end": "2:11:42",
-      "topics": ["naval-repair", "depot-ships", "fleet-train", "imperial-japanese-navy"],
+      "topics": [
+        "naval-repair",
+        "depot-ships",
+        "fleet-train",
+        "imperial-japanese-navy"
+      ],
       "summary": "Counting only specialist repair ships misses depot and stores ships that also carried useful repair facilities.",
       "body": "The answer distinguishes dedicated repair vessels from the wider maintenance capacity of a fleet train. This matters when comparing navies: a narrow count can understate the support provided by depot ships and stores ships, even though specialist repair capacity remains valuable.",
       "question": "How many repair ships did the Imperial Japanese Navy have?",
       "answerShort": "It depends on the definition: Japan had dedicated repair ships, but depot and stores ships also contributed repair capability.",
       "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
-      "evidence": [{"start": "2:11:06", "end": "2:11:42", "note": "He distinguishes specialist repair ships from depot and stores ships with repair facilities."}]
+      "evidence": [
+        {
+          "start": "2:11:06",
+          "end": "2:11:42",
+          "note": "He distinguishes specialist repair ships from depot and stores ships with repair facilities."
+        }
+      ]
+    },
+    {
+      "id": "attacking-only-british-and-dutch-possessions",
+      "videoId": "vkGuspmp92I",
+      "slug": "attacking-only-british-and-dutch-possessions",
+      "title": "Avoiding American targets might only delay U.S. entry",
+      "kind": "qa",
+      "start": "2:15:14",
+      "end": "2:15:35",
+      "topics": [
+        "imperial-japan",
+        "united-states",
+        "british-empire",
+        "dutch-east-indies",
+        "pacific-war"
+      ],
+      "summary": "Restricting Japan's opening attacks to British and Dutch possessions would complicate Roosevelt's case but would not guarantee American neutrality.",
+      "body": "The answer separates congressional politics from the underlying strategic reaction to aggression. Roosevelt would face a harder task if no American territory were attacked. Even so, an assault on British and Dutch possessions would still be an expansion of war against Western interests and resource networks. The administration could plausibly seek entry, meaning Japan could not treat American neutrality as a dependable result of target selection alone.",
+      "question": "Could Japan attack only British and Dutch possessions and keep the United States out of the war?",
+      "answerShort": "It would make American entry harder to secure politically, but Roosevelt could still seek war in response to Japanese aggression against Western territories.",
+      "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
+      "evidence": [
+        {
+          "start": "2:15:14",
+          "end": "2:15:35",
+          "note": "He says Roosevelt's task becomes more difficult but remains possible after attacks on Western possessions."
+        }
+      ]
+    },
+    {
+      "id": "bengal-famine-railways-shipping-and-war",
+      "videoId": "vkGuspmp92I",
+      "slug": "bengal-famine-railways-shipping-and-war",
+      "title": "Bengal's transport network magnified wartime famine",
+      "kind": "notable_point",
+      "start": "2:22:14",
+      "end": "2:24:49",
+      "topics": [
+        "bengal-famine",
+        "british-india",
+        "railways",
+        "merchant-shipping",
+        "submarine-warfare",
+        "logistics"
+      ],
+      "summary": "Export-oriented railways and scarce wartime shipping made it difficult to move rice internally when Bengal's food crisis struck.",
+      "body": "The discussion begins with the value of any surviving merchant hull and broadens into the Bengal famine's transport constraints. British Indian railways were extensive but often directed goods toward ports rather than linking food-producing regions directly with Bengal. That design left internal distribution dependent on coastal shipping just as Allied merchant capacity was overcommitted and Axis submarines operated in the Indian Ocean. Dr. Clarke presents better interregional rail infrastructure as one important way earlier investment could have made the crisis less vulnerable to wartime shipping shortages.",
+      "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
+      "evidence": [
+        {
+          "start": "2:22:14",
+          "end": "2:24:49",
+          "note": "He links merchant scarcity, export-oriented railways, rice distribution, and Axis submarine interdiction."
+        }
+      ]
     },
     {
       "id": "force-z-needs-carriers-cruisers-and-oilers",
@@ -306,13 +1011,25 @@
       "kind": "qa",
       "start": "2:25:12",
       "end": "2:27:20",
-      "topics": ["force-z", "royal-navy", "aircraft-carriers", "battlecruisers", "fleet-train"],
+      "topics": [
+        "force-z",
+        "royal-navy",
+        "aircraft-carriers",
+        "battlecruisers",
+        "fleet-train"
+      ],
       "summary": "A viable Far Eastern force required carriers, fast capital ships, cruisers, destroyers, and oilers rather than battleships alone.",
       "body": "Dr. Clarke’s hypothetical force places armored carriers and battlecruisers alongside Town-class cruisers, Didos, destroyers, and fast oilers. The emphasis is on a task group that can scout, protect itself, move, and sustain operations with American forces—not a symbolic concentration of heavy guns.",
       "question": "What ships would make a stronger British Far Eastern force in 1941–42?",
       "answerShort": "Carriers, fast capital ships, cruisers, destroyers, and fast oilers would create a useful balanced force.",
       "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
-      "evidence": [{"start": "2:25:12", "end": "2:27:20", "note": "He sketches a force built around carriers, battlecruisers, escorts, and fast oilers."}]
+      "evidence": [
+        {
+          "start": "2:25:12",
+          "end": "2:27:20",
+          "note": "He sketches a force built around carriers, battlecruisers, escorts, and fast oilers."
+        }
+      ]
     },
     {
       "id": "japanese-planning-was-deep-but-time-limited",
@@ -322,13 +1039,79 @@
       "kind": "qa",
       "start": "2:29:14",
       "end": "2:29:44",
-      "topics": ["imperial-japanese-navy", "pearl-harbor", "war-gaming", "naval-strategy"],
+      "topics": [
+        "imperial-japanese-navy",
+        "pearl-harbor",
+        "war-gaming",
+        "naval-strategy"
+      ],
       "summary": "The depth and speed of Japanese planning were impressive, but even a better-executed plan could only buy time against American industry.",
       "body": "The answer acknowledges serious Japanese adaptation after Pearl Harbor became a major American base and the extent of its war gaming. Its central caveat is strategic: a devastating opening could postpone the problem, but not eliminate the material imbalance behind it.",
       "question": "What is most impressive about Japanese planning for Pearl Harbor?",
       "answerShort": "Its speed and depth were striking, but success would have bought time rather than delivered a war-winning solution.",
       "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
-      "evidence": [{"start": "2:29:14", "end": "2:29:44", "note": "He praises planning depth while stressing the industrial limit."}]
+      "evidence": [
+        {
+          "start": "2:29:14",
+          "end": "2:29:44",
+          "note": "He praises planning depth while stressing the industrial limit."
+        }
+      ]
+    },
+    {
+      "id": "modern-surprise-attacks-must-defeat-space-surveillance",
+      "videoId": "vkGuspmp92I",
+      "slug": "modern-surprise-attacks-must-defeat-space-surveillance",
+      "title": "Modern surprise attacks must defeat surveillance",
+      "kind": "qa",
+      "start": "2:48:03",
+      "end": "2:48:36",
+      "topics": [
+        "satellites",
+        "cyber-warfare",
+        "naval-surveillance",
+        "cruise-missiles",
+        "deception"
+      ],
+      "summary": "Satellites make a Pearl Harbor-style approach harder, shifting the problem toward cyberattack, spoofing, camouflage, and disguised missile platforms.",
+      "body": "Dr. Clarke does not treat modern surveillance as making surprise impossible. An attacker would first need to suppress, deceive, or evade the satellite and data systems that reveal force movement. Cyberattacks and spoofed tracks could attack the sensor network, while missiles concealed in ordinary-looking container traffic could disguise the striking platform. The modern analogue therefore moves much of the contest from physical distance into information warfare and signature management.",
+      "question": "How does modern satellite technology affect the possibility of a Pearl Harbor-style naval surprise attack?",
+      "answerShort": "It makes surprise much harder, but cyber disruption, spoofing, camouflage, or disguised missile launchers could still attack the surveillance chain.",
+      "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
+      "evidence": [
+        {
+          "start": "2:48:03",
+          "end": "2:48:36",
+          "note": "He lists cyberattack, spoofing, camouflage, and containerized missiles as ways to complicate surveillance."
+        }
+      ]
+    },
+    {
+      "id": "why-pearl-harbor-battleships-were-not-preserved",
+      "videoId": "vkGuspmp92I",
+      "slug": "why-pearl-harbor-battleships-were-not-preserved",
+      "title": "Why the Pearl Harbor battleships were not preserved",
+      "kind": "qa",
+      "start": "2:51:55",
+      "end": "2:52:47",
+      "topics": [
+        "pearl-harbor",
+        "museum-ships",
+        "historic-preservation",
+        "united-states-navy"
+      ],
+      "summary": "The surviving Standards were still seen as obsolete working hardware, while preservation costs competed with newer ships and postwar priorities.",
+      "body": "The answer explains preservation through generational distance and cost rather than a lack of wartime significance. Immediately after the war, the Pearl Harbor veterans were old ships beside a large fleet of newer construction. Institutions tend to recognize historical rarity only after the technology has receded from living operational memory. By then, scrapping decisions are often irreversible, a pattern Dr. Clarke compares with the loss of Britain's battleships.",
+      "question": "Was there a serious effort to preserve a Pearl Harbor battleship as a museum ship?",
+      "answerShort": "There was some consideration, but the ships seemed obsolete rather than historic and their preservation cost was hard to justify beside newer vessels.",
+      "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
+      "evidence": [
+        {
+          "start": "2:51:55",
+          "end": "2:52:47",
+          "note": "He explains the generational preservation rule, newer ships, and cost of retaining the Standards."
+        }
+      ]
     },
     {
       "id": "night-strike-against-kido-butai",
@@ -338,13 +1121,25 @@
       "kind": "qa",
       "start": "2:56:17",
       "end": "2:59:37",
-      "topics": ["royal-navy", "kido-butai", "night-operations", "carrier-aviation", "radar"],
+      "topics": [
+        "royal-navy",
+        "kido-butai",
+        "night-operations",
+        "carrier-aviation",
+        "radar"
+      ],
       "summary": "Even limited night damage to Japanese carriers could create difficult scouting and retaliation decisions for the Kido Butai.",
       "body": "The answer focuses on cumulative operational effects rather than a single decisive hit. A night strike could damage or sink carriers, force Japanese scouting, and let a radar-directed British force intercept search aircraft before the Japanese found the striking force. Uncertainty would shape each following decision.",
       "question": "What if a Royal Navy force intercepted the Pearl Harbor striking force?",
       "answerShort": "A night attack that damaged a few carriers could create serious cumulative problems, especially if Japan then struggled to locate the British force.",
       "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
-      "evidence": [{"start": "2:56:17", "end": "2:59:37", "note": "He explains night attack, scouting, radar interception, and cumulative choices."}]
+      "evidence": [
+        {
+          "start": "2:56:17",
+          "end": "2:59:37",
+          "note": "He explains night attack, scouting, radar interception, and cumulative choices."
+        }
+      ]
     },
     {
       "id": "naval-power-can-decide-limited-wars",
@@ -354,11 +1149,49 @@
       "kind": "chapter",
       "start": "3:04:48",
       "end": "3:09:48",
-      "topics": ["naval-strategy", "limited-war", "amphibious-warfare", "falklands-war", "decisive-battle"],
+      "topics": [
+        "naval-strategy",
+        "limited-war",
+        "amphibious-warfare",
+        "falklands-war",
+        "decisive-battle"
+      ],
       "summary": "The discussion distinguishes limited-war objectives from total-war aims and shows how naval action can be decisive without conquering a state.",
       "body": "Dr. Clarke argues that victory conditions depend on the war’s political aims. Sea control, protected trade, amphibious operations, and the removal of an enemy surface threat can be decisive in a limited war, as illustrated through the Falklands campaign, without requiring the enemy’s national destruction.",
       "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
-      "evidence": [{"start": "3:04:48", "end": "3:09:48", "note": "He explains limited-war victory conditions and the naval character of the Falklands campaign."}]
+      "evidence": [
+        {
+          "start": "3:04:48",
+          "end": "3:09:48",
+          "note": "He explains limited-war victory conditions and the naval character of the Falklands campaign."
+        }
+      ]
+    },
+    {
+      "id": "limited-war-depends-on-geography",
+      "videoId": "vkGuspmp92I",
+      "slug": "limited-war-depends-on-geography",
+      "title": "Geography determines whether war can stay limited",
+      "kind": "notable_point",
+      "start": "3:14:50",
+      "end": "3:16:19",
+      "topics": [
+        "limited-war",
+        "naval-strategy",
+        "julian-corbett",
+        "alfred-thayer-mahan",
+        "carl-von-clausewitz"
+      ],
+      "summary": "Sea power and strategic distance let island states limit some wars in ways unavailable to land powers fighting on their borders.",
+      "body": "Dr. Clarke places Clausewitz, Corbett, and Mahan in the geography of the states they studied. Prussia or Germany could not easily treat a major border conflict as limited because the homeland was immediately exposed. Britain and the United States could use naval power and oceanic distance to keep combat away from their core territory while sustaining trade. Air power narrowed that protection without entirely erasing it, so the feasibility of limited war still depended on where the enemy and objectives lay.",
+      "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
+      "evidence": [
+        {
+          "start": "3:14:50",
+          "end": "3:16:19",
+          "note": "He contrasts land-border vulnerability with the strategic moats available to Britain and the United States."
+        }
+      ]
     },
     {
       "id": "japans-british-problem-and-slow-advance",
@@ -368,13 +1201,78 @@
       "kind": "qa",
       "start": "3:17:37",
       "end": "3:18:55",
-      "topics": ["imperial-japanese-navy", "royal-navy", "naval-logistics", "war-plan-orange"],
+      "topics": [
+        "imperial-japanese-navy",
+        "royal-navy",
+        "naval-logistics",
+        "war-plan-orange"
+      ],
       "summary": "Japan expected Germany and Italy to keep Britain busy while Pearl Harbor bought time against the United States.",
       "body": "The answer contrasts prewar expectations of fighting Britain and the United States with Japan’s wartime assumption that European commitments would constrain Britain. It also describes the alternative British logic of a measured advance that exhausted Japanese supply while friendly logistics remained closer and more reliable.",
       "question": "What was Japan’s plan for dealing with Britain while pursuing Southeast Asian resources?",
       "answerShort": "Japan expected European war to distract Britain; British strategy could instead favor a slow advance that strained Japanese supply lines.",
       "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
-      "evidence": [{"start": "3:17:37", "end": "3:18:55", "note": "He explains Japan’s wartime assumption and the British gradual-advance concept."}]
+      "evidence": [
+        {
+          "start": "3:17:37",
+          "end": "3:18:55",
+          "note": "He explains Japan’s wartime assumption and the British gradual-advance concept."
+        }
+      ]
+    },
+    {
+      "id": "invergordon-was-a-pay-mutiny",
+      "videoId": "vkGuspmp92I",
+      "slug": "invergordon-was-a-pay-mutiny",
+      "title": "Invergordon was a pay mutiny, not an ideological revolt",
+      "kind": "qa",
+      "start": "3:19:21",
+      "end": "3:21:01",
+      "topics": [
+        "invergordon-mutiny",
+        "royal-navy",
+        "naval-personnel",
+        "military-pay",
+        "labor-history"
+      ],
+      "summary": "Sailors resisted pay cuts after divisional officers failed to convey their grievance, while outside movements later tried to claim the event.",
+      "body": "Dr. Clarke rejects attempts to redefine the Invergordon Mutiny as a communist or third-party project. The immediate dispute concerned proposed pay cuts and officers who failed in their duty to hear and report sailors' concerns. Other officers eventually investigated, communicated the grievance to government, and helped resolve the crisis. The episode is useful for understanding how a service's internal representation system can turn an economic dispute into collective disobedience when it breaks down.",
+      "question": "Was the Invergordon Mutiny created by communist or other outside organizations?",
+      "answerShort": "No. It arose from a pay dispute and failed internal representation, though outside groups later tried to associate themselves with it.",
+      "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
+      "evidence": [
+        {
+          "start": "3:19:21",
+          "end": "3:21:01",
+          "note": "He identifies pay cuts and failed divisional leadership as the cause and separates later ideological claims."
+        }
+      ]
+    },
+    {
+      "id": "total-war-mobilization-varies-by-economic-system",
+      "videoId": "vkGuspmp92I",
+      "slug": "total-war-mobilization-varies-by-economic-system",
+      "title": "Total-war mobilization changes with the economy",
+      "kind": "chapter",
+      "start": "3:22:14",
+      "end": "3:24:53",
+      "topics": [
+        "total-war",
+        "industrialization",
+        "agriculture",
+        "war-finance",
+        "military-mobilization"
+      ],
+      "summary": "A state can mobilize fully for its period without assigning the same share of people to armies as an industrial twentieth-century power.",
+      "body": "The discussion defines total war through the maximum strength a society can mobilize without destroying the support system that keeps that strength in the field. Mechanization changes the calculation because tractors and other machinery reduce the skilled agricultural labor needed to feed armies. Earlier states had to leave more people in food production, while commercial powers could also mobilize finance and trade to sustain allied armies. Comparing percentages without accounting for technology, food surplus, taxation, and credit therefore mistakes different economic methods for different levels of commitment.",
+      "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
+      "evidence": [
+        {
+          "start": "3:22:14",
+          "end": "3:24:53",
+          "note": "He connects mobilization limits to agriculture, mechanization, trade revenue, taxes, debt, and allied support."
+        }
+      ]
     },
     {
       "id": "yamato-secrecy-undercut-deterrence",
@@ -384,11 +1282,50 @@
       "kind": "notable_point",
       "start": "3:25:11",
       "end": "3:26:49",
-      "topics": ["yamato-class", "naval-deterrence", "imperial-japanese-navy", "naval-procurement"],
+      "topics": [
+        "yamato-class",
+        "naval-deterrence",
+        "imperial-japanese-navy",
+        "naval-procurement"
+      ],
       "summary": "The Yamato class could not deter opponents effectively while Japan concealed the very capability meant to impress them.",
       "body": "Dr. Clarke describes the ships as deterrent assets built around size and firepower, then identifies the contradiction in keeping them secret. A public demonstration before war could have influenced foreign naval politics and procurement; in wartime, the same ships had to fight under far less favorable strategic conditions.",
       "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
-      "evidence": [{"start": "3:25:11", "end": "3:26:49", "note": "He calls Yamato a deterrent asset whose secrecy prevented deterrent effect."}]
+      "evidence": [
+        {
+          "start": "3:25:11",
+          "end": "3:26:49",
+          "note": "He calls Yamato a deterrent asset whose secrecy prevented deterrent effect."
+        }
+      ]
+    },
+    {
+      "id": "britain-could-support-and-answer-yamato",
+      "videoId": "vkGuspmp92I",
+      "slug": "britain-could-support-and-answer-yamato",
+      "title": "Britain could dock Yamato and design an answer",
+      "kind": "qa",
+      "start": "3:32:01",
+      "end": "3:32:45",
+      "topics": [
+        "yamato-class",
+        "royal-navy",
+        "dry-docks",
+        "lion-class",
+        "naval-procurement"
+      ],
+      "summary": "Home dockyards could accommodate a Yamato-scale ship, while overseas constraints would drive new construction and a revised Lion design.",
+      "body": "Dr. Clarke distinguishes Britain's domestic industrial capacity from the size limits of some overseas bases. Large facilities at Southampton, Portsmouth, and in Scotland could handle a ship of Yamato's displacement. If global support required larger docks, Britain had the engineering capacity to build them. Knowledge of Yamato in 1941 would also encourage a redesigned Lion class, potentially centered on twelve 16-inch guns, as a procurement response to the revealed threat.",
+      "question": "Could the Royal Navy support a Yamato-sized battleship, and how might it answer the design?",
+      "answerShort": "British home yards could dock such a ship, overseas docks could be enlarged, and the Lion design would likely be revised around heavier firepower.",
+      "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
+      "evidence": [
+        {
+          "start": "3:32:01",
+          "end": "3:32:45",
+          "note": "He names suitable British dockyard capacity and proposes a revised twelve-gun Lion response."
+        }
+      ]
     },
     {
       "id": "read-history-forward-not-backward",
@@ -398,11 +1335,21 @@
       "kind": "chapter",
       "start": "3:37:50",
       "end": "3:40:27",
-      "topics": ["historical-method", "total-war", "naval-history"],
+      "topics": [
+        "historical-method",
+        "total-war",
+        "naval-history"
+      ],
       "summary": "The closing discussion argues that historical actors should be understood from the information and capacities available to them at the time.",
       "body": "Dr. Clarke warns against measuring earlier wars only against industrial-age ideas of total war or the knowledge of later outcomes. The useful method is to move forward from what contemporaries knew, their available industry and institutions, and the choices those conditions made rational or dangerous.",
       "sourcePath": "src/transcripts/txt/2021-12-12_T18-33-28_take-2-pearl-harbour-a-product-of-the-kantai-kessen-doctrine-or-something-to-do-live_vkGuspmp92I.txt",
-      "evidence": [{"start": "3:37:50", "end": "3:40:27", "note": "He explicitly states that history should be read forward from contemporary circumstances."}]
+      "evidence": [
+        {
+          "start": "3:37:50",
+          "end": "3:40:27",
+          "note": "He explicitly states that history should be read forward from contemporary circumstances."
+        }
+      ]
     }
   ]
 }
