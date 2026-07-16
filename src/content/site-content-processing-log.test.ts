@@ -23,6 +23,18 @@ test("parses canonical semicolon rows and uses last physical valid occurrence", 
   assert.equal(parsed.unmappedRowCount, 0);
 });
 
+test("preserves semicolons in the final free-text notes field", () => {
+  const parsed = parseSiteContentProcessingLog([
+    SITE_CONTENT_PROCESSING_LOG_HEADER,
+    "2026-07-08T03:45:00;src/derived/video-segments/sample-video_abc123.json;audited;no;full transcript compared; current pass saturated",
+  ].join("\n"), manifest);
+
+  assert.equal(parsed.records.length, 1);
+  assert.equal(parsed.records[0]?.notes, "full transcript compared; current pass saturated");
+  assert.equal(parsed.latestByVideoId.get("abc123")?.needsFurtherProcessing, "no");
+  assert.equal(parsed.malformedRowCount, 0);
+});
+
 test("counts malformed, unmapped, and ignored rows without accepting legacy tabs", () => {
   const parsed = parseSiteContentProcessingLog([
     SITE_CONTENT_PROCESSING_LOG_HEADER,

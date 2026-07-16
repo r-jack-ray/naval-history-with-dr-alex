@@ -75,13 +75,13 @@ export function parseSiteContentProcessingLog(
       ignoredRowCount += 1;
       continue;
     }
-    const fields = line.split(";");
-    if (fields.length !== 5) {
+    const fields = splitCanonicalFields(line);
+    if (fields === undefined) {
       malformedRowCount += 1;
-      problems.push(problem(lineNumber, "processing-log-field-count", "must have exactly 5 semicolon-separated fields", line));
+      problems.push(problem(lineNumber, "processing-log-field-count", "must have at least 5 semicolon-separated fields", line));
       continue;
     }
-    const [timestamp, shardPathRaw, result, needsFurtherProcessing, notes] = fields as [string, string, string, string, string];
+    const [timestamp, shardPathRaw, result, needsFurtherProcessing, notes] = fields;
     const shardPath = normalizeRepoPath(shardPathRaw);
     const shardMatch = CANONICAL_SHARD_PATH.exec(shardPath);
     let message: string | undefined;
@@ -137,6 +137,19 @@ export function parseSiteContentProcessingLog(
     unmappedRowCount,
     ignoredRowCount,
   };
+}
+
+function splitCanonicalFields(line: string): [string, string, string, string, string] | undefined {
+  const fields: string[] = [];
+  let fieldStart = 0;
+  for (let index = 0; index < line.length && fields.length < 4; index += 1) {
+    if (line[index] !== ";") continue;
+    fields.push(line.slice(fieldStart, index));
+    fieldStart = index + 1;
+  }
+  if (fields.length !== 4) return undefined;
+  fields.push(line.slice(fieldStart));
+  return fields as [string, string, string, string, string];
 }
 
 export function manifestFileStem(record: ProcessingLogManifestRecord): string | undefined {

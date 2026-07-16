@@ -12,6 +12,7 @@ import {
   renderVideoSegmentAuditRiskTsv,
   type AuditSegment,
   type ProcessingState,
+  type QaExpectation,
   type VideoSegmentAuditRiskRow,
 } from "../content/video-segment-audit-risk.js";
 
@@ -19,6 +20,7 @@ interface ManifestTranscript {
   videoId: string;
   fileStem: string;
   videoTitle?: string;
+  firstStartSeconds?: number;
   lastEndSeconds?: number;
   paths?: { txt?: string };
 }
@@ -108,11 +110,12 @@ async function main(): Promise<void> {
       processLogEntries: processLogEntriesByFileStem.get(canonicalStem) ?? 0,
       transcriptBytes,
       shardBytes,
+      ...(manifestEntry?.firstStartSeconds === undefined ? {} : { transcriptStartSeconds: manifestEntry.firstStartSeconds }),
       durationSeconds: manifestEntry?.lastEndSeconds,
       segments,
       needsFurtherProcessing: state,
       structuralIssues,
-      qaExpected: isQaExpected(videoTitle, config),
+      qaExpectation: qaExpectationFor(videoTitle, config),
       minimumEvidenceWindows: config.firstPass?.minimumEvidenceWindows ?? 1,
     }));
   }
@@ -180,6 +183,9 @@ function validateManifest(value: unknown): ManifestTranscript[] {
     }
     const record: ManifestTranscript = { videoId: item.videoId, fileStem: item.fileStem };
     if (typeof item.videoTitle === "string") record.videoTitle = item.videoTitle;
+    if (typeof item.firstStartSeconds === "number" && Number.isFinite(item.firstStartSeconds) && item.firstStartSeconds >= 0) {
+      record.firstStartSeconds = item.firstStartSeconds;
+    }
     if (typeof item.lastEndSeconds === "number" && Number.isFinite(item.lastEndSeconds) && item.lastEndSeconds >= 0) {
       record.lastEndSeconds = item.lastEndSeconds;
     }
@@ -204,14 +210,15 @@ function uniqueMap(records: ManifestTranscript[], key: (record: ManifestTranscri
   return result;
 }
 
-function isQaExpected(title: string, config: ProcessingConfig): boolean {
+function qaExpectationFor(title: string, config: ProcessingConfig): QaExpectation {
   const equivalents = ["Q&A", "Q & A", "Q/A", "Q and A", "Questions Answered", "Question and Answer"];
   const markers = [...equivalents, ...(config.liveStreamExtraction?.explicitQaTitleMarkers ?? [])];
-  if (markers.some((marker) => normalizedTitle(title).includes(normalizedTitle(marker)))) return true;
-  return (config.videoTypeRules ?? []).some((rule) =>
+  if (markers.some((marker) => normalizedTitle(title).includes(normalizedTitle(marker)))) return "explicit_title";
+  const configured = (config.videoTypeRules ?? []).some((rule) =>
     typeof rule.matchTitle === "string"
     && normalizedTitle(title).includes(normalizedTitle(rule.matchTitle))
     && rule.followUpStage === "exhaustive-live-qa-review");
+  return configured ? "configured_video_type" : "none";
 }
 
 function isSascShard(...identifiers: string[]): boolean {
@@ -249,6 +256,8 @@ Ranks existing per-video shards for repair or follow-up audit using processing s
 shard structure, timestamps, evidence metadata, and inexpensive warning heuristics.
 SASC school-function shards are excluded from the ranking.
 It does not read transcript text, measure semantic completeness, or return calibrated probabilities.
+The one-decimal audit risk score is an uncalibrated within-route metadata grade.
+Recorded processing-log entry counts are diagnostic only and do not affect the score.
 Manifest transcripts with no shard remain in the existing unprocessed-file/backlog workflow.
 
 Options:
