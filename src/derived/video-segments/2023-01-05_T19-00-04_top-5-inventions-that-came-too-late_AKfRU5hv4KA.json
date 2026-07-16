@@ -13,7 +13,11 @@
     "pacific-war",
     "naval-weapons",
     "american-civil-war",
-    "ship-design"
+    "ship-design",
+    "aero-engines",
+    "airborne-early-warning",
+    "hovercraft",
+    "whitehead-torpedo"
   ],
   "segments": [
     {
@@ -28,10 +32,11 @@
         "naval-aviation",
         "royal-navy",
         "fleet-carriers",
-        "defence-procurement"
+        "defence-procurement",
+        "aero-engines"
       ],
       "summary": "The opening case argues that late high-power aircraft engines held back Royal Navy carrier aircraft and altered wartime fighter possibilities.",
-      "body": "Dr. Clarke uses 2,000 horsepower aero engines to show how a technically plausible improvement can arrive after the decisive procurement window. The Royal Navy wanted stronger engines for carrier aircraft, but wartime production priorities favored improving engines already in manufacture. This moment helps explain why Fleet Air Arm designs such as the Barracuda and naval fighter concepts looked constrained by power-to-weight limits rather than by airframe imagination alone.",
+      "body": "Dr. Clarke uses 2,000 horsepower aero engines to show how a technically plausible improvement can arrive after the decisive procurement window. After regaining control of the Fleet Air Arm, the Royal Navy pressed for a new generation of engines because the roughly 1,000 horsepower designs favored for multi-engine bombers did not suit heavily built carrier aircraft. The Napier Sabre and Rolls-Royce Griffon then lost momentum as wartime production concentrated on refining engines and airframes already being manufactured. More power mattered not only for maximum speed but for accelerating a naval aircraft, with its extra structural and equipment weight, safely into flight. This moment helps explain why the Fairey Barracuda, naval fighter projects, and the idea of a Sabre-powered naval Spitfire looked constrained by engine timing rather than by airframe imagination alone.",
       "sourcePath": "src/transcripts/txt/2023-01-05_T19-00-04_top-5-inventions-that-came-too-late_AKfRU5hv4KA.txt",
       "evidence": [
         {
@@ -66,7 +71,7 @@
         "destroyers"
       ],
       "summary": "The 4.5-inch dual-purpose gun example shows how better shipboard air defense could have changed Royal Navy losses and Axis pilot attrition.",
-      "body": "This watch point is about timing as much as caliber. Dr. Clarke argues that a truly dual-purpose weapon, available in useful upper-deck mounts, could have improved cruisers, destroyers, and carrier or battleship defenses before the early-war air campaigns. He is careful about counterfactual certainty, but the naval lesson is direct: better shipboard anti-air fire changes losses, pilot experience, convoy risk, and the enemy's incentive to move toward standoff weapons.",
+      "body": "This watch point is about timing and mounting arrangements as much as caliber. Dr. Clarke argues that a truly dual-purpose 4.5-inch or 4.7-inch weapon, available in a useful upper-deck mount, could have armed C- and D-class cruisers, Tribal-class destroyers, and other ships without the below-deck installation used by carriers and battleships. Better anti-aircraft fire could have reduced Royal Navy losses in Norway, the Mediterranean, and around Crete while imposing greater attrition and strain on Axis aircrews. Surviving ships would in turn leave more naval options open and make threatened convoys more secure. He keeps the counterfactual conditional, however, and notes that Axis forces might answer effective shipboard guns by accelerating glide bombs and other guided weapons.",
       "sourcePath": "src/transcripts/txt/2023-01-05_T19-00-04_top-5-inventions-that-came-too-late_AKfRU5hv4KA.txt",
       "evidence": [
         {
@@ -93,15 +98,18 @@
       "title": "Airborne early warning and Falklands risk",
       "kind": "chapter",
       "start": "18:10",
-      "end": "27:09",
+      "end": "23:25",
       "topics": [
         "air-defence",
         "naval-aviation",
         "royal-navy",
-        "carrier-groups"
+        "carrier-groups",
+        "airborne-early-warning",
+        "falklands-war",
+        "sea-king"
       ],
-      "summary": "The airborne early warning section argues that Sea King AEW arrived quickly in 1982 because the underlying need had been visible for years.",
-      "body": "Dr. Clarke treats the Falklands air-defense gap as the strongest late-arriving example in the video. He argues that RAF land-based aircraft could not provide global maritime early warning, while ship radar and Sea Harriers were forced to react late against low-level attacks using terrain and the radar horizon. The practical lesson is that carrier groups need look-down warning coverage before a crisis, because even an imperfect helicopter-based AEW system can change carrier positioning, fighter direction, and shipboard missile effectiveness.",
+      "summary": "The airborne early warning section argues that the Sea King conversion completed after the Falklands War answered a maritime requirement that had been visible for years.",
+      "body": "Dr. Clarke treats the Falklands air-defense gap as the strongest late-arriving example in the video. He rejects the idea that RAF Shackletons and Tornados could replace a deployable naval warning system, because land-based coverage in the primary NATO theater did not meet the Royal Navy's worldwide, out-of-area requirement. The conversion of two Sea Kings into airborne early warning aircraft within eleven weeks after the war demonstrates how quickly a partial solution could be fielded once the need became urgent. Without an elevated radar, ship sensors could not see aircraft hidden below the radar horizon or approaching behind land, leaving Sea Harriers to play catch-up. A helicopter system was less capable than an E-2 Hawkeye, but for carriers unable to operate fixed-wing Hawkeyes it offered valuable warning and fighter direction that otherwise did not exist.",
       "sourcePath": "src/transcripts/txt/2023-01-05_T19-00-04_top-5-inventions-that-came-too-late_AKfRU5hv4KA.txt",
       "evidence": [
         {
@@ -113,11 +121,45 @@
           "start": "20:27",
           "end": "23:25",
           "note": "Dr. Clarke links ship losses, low-level attacks, ship-based radar limits, carrier positioning, and the value of Sea King AEW."
-        },
+        }
+      ]
+    },
+    {
+      "id": "sea-king-aew-and-falklands-air-defence",
+      "videoId": "AKfRU5hv4KA",
+      "slug": "sea-king-aew-and-falklands-air-defence",
+      "title": "How Sea King AEW could reshape Falklands air defence",
+      "kind": "notable_point",
+      "start": "23:36",
+      "end": "27:09",
+      "topics": [
+        "air-defence",
+        "naval-aviation",
+        "royal-navy",
+        "airborne-early-warning",
+        "falklands-war",
+        "sea-king",
+        "sea-harrier",
+        "carrier-groups"
+      ],
+      "summary": "An operational counterfactual shows how several Sea King AEW helicopters could improve warning, fighter interception, carrier positioning, and shipboard missile fire in the Falklands.",
+      "body": "This watch point moves from the missing capability to how an airborne early warning detachment might have changed operations. Dr. Clarke imagines enough Sea King AEW aircraft to keep several radars aloft from the two carriers, with additional helicopters potentially operating forward from the Falkland Islands. Looking down from altitude would reveal attackers that ship radar could not see behind terrain or the sea horizon. Earlier warning would let Sea Harriers intercept sooner and give ships time to aim missiles and guns toward the actual threat axis. Argentine forces could still attempt deception and Exocet attacks, but they would have to expend more effort and would likely lose aircraft and pilots faster. He presents a shorter campaign with fewer British and Argentine deaths as a possibility rather than a certainty.",
+      "sourcePath": "src/transcripts/txt/2023-01-05_T19-00-04_top-5-inventions-that-came-too-late_AKfRU5hv4KA.txt",
+      "evidence": [
         {
           "start": "23:36",
+          "end": "24:26",
+          "note": "The transcript defines the requirement as continuous look-down warning that prevents aircraft from hiding behind terrain or the radar horizon."
+        },
+        {
+          "start": "24:32",
+          "end": "26:33",
+          "note": "Dr. Clarke considers a multi-helicopter deployment, earlier Sea Harrier interceptions, better-prepared ship weapons, Argentine countermeasures, and a potentially shorter war."
+        },
+        {
+          "start": "26:42",
           "end": "27:09",
-          "note": "The section argues that multiple AEW helicopters could improve coverage, fighter direction, ship readiness, and the tempo of the Falklands air campaign."
+          "note": "He closes by contrasting the lives and resources at stake with the eleven-week emergency conversion and the four preceding years."
         }
       ]
     },
@@ -128,22 +170,44 @@
       "title": "Hovercraft just miss the amphibious war",
       "kind": "chapter",
       "start": "27:12",
-      "end": "33:17",
+      "end": "30:33",
       "topics": [
         "amphibious-warfare",
-        "pacific-war",
-        "military-logistics",
-        "ship-design"
+        "ship-design",
+        "hovercraft",
+        "air-cushion-vehicles"
       ],
-      "summary": "The hovercraft case traces air-cushion craft ideas before World War II and asks how they might have changed landings, raids, and logistics.",
-      "body": "The hovercraft section turns a familiar postwar technology into a wartime amphibious question. Dr. Clarke runs through early concepts from Swedenborg, Thornycroft, Austro-Hungarian, American, Finnish, Soviet, and British work, then asks what happens if the technology is usable before World War II interrupts development. The payoff is broad: beaches, sandbars, Pacific island landings, Norway, Southeast Asia, Channel raids, and even Soviet logistics all look different when a craft can cross water, shore, and poor ground without needing a conventional landing-craft approach.",
+      "summary": "The hovercraft case traces air-cushion craft from early concepts and experiments to development programs interrupted by World War II.",
+      "body": "The hovercraft section begins by showing that air-cushion vehicles were not simply a postwar invention. Dr. Clarke traces concepts from Emanuel Swedenborg in 1716 and John Isaac Thornycroft's nineteenth-century patent to an Austro-Hungarian air-cushion boat built during World War I. American work by Ford engineer Andrew Kucher and Charles Fletcher followed, alongside Finnish and Soviet designs in the 1930s. The Soviet invasion of Finland and World War II deprived several projects of support or halted their development. Christopher Cockerell's later work helped turn the idea into the familiar hovercraft, but the earlier experiments show how close the underlying technology came to wartime use.",
       "sourcePath": "src/transcripts/txt/2023-01-05_T19-00-04_top-5-inventions-that-came-too-late_AKfRU5hv4KA.txt",
       "evidence": [
         {
           "start": "27:12",
           "end": "30:33",
           "note": "The transcript surveys early air-cushion concepts, Thornycroft's 1870s patent, Luftkissengleitboot, Ford experiments, Finnish work, Soviet craft, and Christopher Cockerell."
-        },
+        }
+      ]
+    },
+    {
+      "id": "hovercraft-in-second-world-war-landings",
+      "videoId": "AKfRU5hv4KA",
+      "slug": "hovercraft-in-second-world-war-landings",
+      "title": "Hovercraft in Second World War amphibious operations",
+      "kind": "notable_point",
+      "start": "30:36",
+      "end": "33:17",
+      "topics": [
+        "amphibious-warfare",
+        "pacific-war",
+        "d-day",
+        "landing-craft",
+        "hovercraft",
+        "us-marine-corps"
+      ],
+      "summary": "Dr. Clarke asks how wartime hovercraft might bypass beaches and sandbars during D-Day, Pacific island fighting, operations in Norway and Southeast Asia, or cross-Channel raids.",
+      "body": "This watch point applies air-cushion vehicles to the amphibious problems of the Second World War. Unlike conventional landing craft, a hovercraft could pass over sandbars, ride onto a beach without digging in, unload, and withdraw across the same difficult shoreline. Dr. Clarke highlights the U.S. Marine Corps island campaigns and D-Day, while also pointing to Norway, Southeast Asia, and possible German raids across the Channel. He compares their potential usefulness with DUKWs and Landing Vehicle Tracked amphibious vehicles already used in the Pacific. The rapid spread of hovercraft research in the 1950s, much of it reviving 1930s work set aside during the war, supports his argument that operational craft arrived only a little too late.",
+      "sourcePath": "src/transcripts/txt/2023-01-05_T19-00-04_top-5-inventions-that-came-too-late_AKfRU5hv4KA.txt",
+      "evidence": [
         {
           "start": "30:36",
           "end": "32:15",
@@ -170,7 +234,7 @@
         "naval-logistics"
       ],
       "summary": "A short logistics aside explains why hovercraft matter beyond assault landings: they can move high-value cargo where roads, rails, and river exits are weak.",
-      "body": "This later hovercraft moment is worth separating because it shifts from landing craft to sustainment. Dr. Clarke imagines Soviet hovercraft moving through difficult terrain and even reverse Lend-Lease technology flows if the Soviet Union had fielded the craft first. The underlying point is that a vehicle able to leave water almost anywhere can be expensive and still useful when the cargo is valuable and the road or rail network is the limiting factor.",
+      "body": "This later hovercraft moment shifts from assault landings to sustainment. Dr. Clarke imagines the Soviet Union fielding the craft first and sending examples west through reverse Lend-Lease while Britain and the United States supplied trucks. A hovercraft would be expensive, but it could still be worthwhile for high-value or urgently needed cargo where terrain and the road network were the limiting factors. Rivers and seas would provide flexible routes because the craft needed little more than a flattened shoreline to enter or leave the water. That flexibility would also make its supply route harder to disable than a fixed road or railway.",
       "sourcePath": "src/transcripts/txt/2023-01-05_T19-00-04_top-5-inventions-that-came-too-late_AKfRU5hv4KA.txt",
       "evidence": [
         {
@@ -197,10 +261,12 @@
         "naval-weapons",
         "american-civil-war",
         "blockades",
-        "naval-industrial-base"
+        "naval-industrial-base",
+        "whitehead-torpedo",
+        "ironclads"
       ],
       "summary": "The Whitehead torpedo case asks how a practical self-propelled torpedo before 1866 might have changed Union blockade warfare and ironclad priorities.",
-      "body": "Dr. Clarke closes the list by moving the Whitehead torpedo earlier than its historical 1866 appearance. He is less interested in whether the Confederacy could build many examples than in how the Union might use an industrially reproducible weapon against armored Confederate ships and blockade targets. The watch point is useful for seeing why torpedoes threatened naval design assumptions: a factory-made weapon could challenge vessels that required shipyards, armor, crews, and long fitting-out timelines.",
+      "body": "Dr. Clarke closes the list by moving the Whitehead torpedo earlier than its historical 1866 appearance. He doubts that the Confederacy possessed enough industrial capacity to manufacture the weapon in quantity, so he concentrates on what the Union might do with it. Northern blockade squadrons had turned to monitors to counter Confederate armored ships, but a self-propelled torpedo with even a modest hit probability offered a different answer. Factories could turn out weapons faster than shipyards could build, launch, and fit out armored vessels. The comparison shows how mass-producible weapons can overturn an expensive warship's apparent protection and redirect naval procurement, even if the imagined result includes an impractical torpedo battleship.",
       "sourcePath": "src/transcripts/txt/2023-01-05_T19-00-04_top-5-inventions-that-came-too-late_AKfRU5hv4KA.txt",
       "evidence": [
         {
@@ -217,35 +283,6 @@
           "start": "36:19",
           "end": "37:43",
           "note": "The section imagines torpedo battleships, then returns to the claim that the early Whitehead torpedo arrived just too late to transform the Civil War."
-        }
-      ]
-    },
-    {
-      "id": "late-inventions-and-whole-system-timing",
-      "videoId": "AKfRU5hv4KA",
-      "slug": "late-inventions-and-whole-system-timing",
-      "title": "Late inventions depend on more than the idea",
-      "kind": "notable_point",
-      "start": "37:43",
-      "end": "40:31",
-      "topics": [
-        "defence-procurement",
-        "naval-history",
-        "ship-design"
-      ],
-      "summary": "The closing reflection invites viewers to judge which late-arriving technologies mattered most and how much impact earlier availability might have had.",
-      "body": "The final minutes pull the list together by asking viewers to compare late and early inventions rather than treating any single technology as inevitable. The examples across the video share the same deeper pattern: a valid idea needs engines, mounts, sensors, industrial support, doctrine, crews, and crisis timing before it changes naval history. This is a useful closing watch point for viewers thinking about why apparently simple inventions often miss the war, campaign, or procurement decision where they would have mattered most.",
-      "sourcePath": "src/transcripts/txt/2023-01-05_T19-00-04_top-5-inventions-that-came-too-late_AKfRU5hv4KA.txt",
-      "evidence": [
-        {
-          "start": "37:43",
-          "end": "38:19",
-          "note": "The transcript says the series is near its end and sets up a comparison with the inventions that came too early."
-        },
-        {
-          "start": "40:11",
-          "end": "40:31",
-          "note": "Dr. Clarke asks viewers which inventions they think came too late or too early and what impact the listed inventions might have had."
         }
       ]
     }

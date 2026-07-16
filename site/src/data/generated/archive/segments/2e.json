@@ -5120,7 +5120,7 @@
     "startSeconds": 324,
     "youtubeUrl": "https://www.youtube.com/watch?v=7HOTtCqFh0I&t=324s",
     "summary": "A design-game test bed introduces turret layout as a choice constrained by the hull and the ship around it.",
-    "body": "Clarke uses a hypothetical 18-inch-gun battleship to frame the problem: a visually attractive arrangement is not automatically a workable warship. Even before comparing layouts, gun size, hull size, reconstruction choices, and the space protected around the magazines set practical limits. The video uses the game model as an illustration, while keeping the discussion focused on the real design trade-offs behind turret distribution.",
+    "body": "Clarke uses a hypothetical 18-inch-gun battleship to frame the problem: a visually attractive arrangement is not automatically a workable warship. He discusses whether the design behind Agincourt represented an eight-gun ship or a step toward a six-gun 18-inch concept, while stressing that the documentary evidence is not conclusive. Even before comparing layouts, gun size, hull size, reconstruction choices, and the space protected around the magazines set practical limits. The game model is only a test bed for examining how those constraints shape a real turret distribution.",
     "topics": [
       {
         "slug": "turret-layout",
@@ -5159,7 +5159,7 @@
     "startSeconds": 575,
     "youtubeUrl": "https://www.youtube.com/watch?v=7HOTtCqFh0I&t=575s",
     "summary": "The first design screen asks how gun caliber, the loss of a turret, and available ship size interact.",
-    "body": "Large multi-gun turrets concentrate enormous firepower, but they also concentrate risk. Clarke contrasts a pair of forward quadruple turrets with layouts that spread guns across more mountings: losing one mounting can remove a much larger share of the battery, and damage near one magazine may threaten another nearby turret. The comparison makes clear why the maximum number of guns is not the only meaningful measure of a battleship's armament.",
+    "body": "Large multi-gun turrets concentrate enormous firepower, but they also concentrate risk. Clarke contrasts a pair of forward quadruple turrets with layouts that spread guns across more mountings. Losing one quadruple mounting removes half of an eight-gun battery, while damage near one closely packed magazine may impair the neighboring turret as well. The comparison makes clear why the maximum number of guns is not the only meaningful measure of a battleship's armament.",
     "topics": [
       {
         "slug": "turret-layout",
@@ -5198,7 +5198,7 @@
     "startSeconds": 731,
     "youtubeUrl": "https://www.youtube.com/watch?v=7HOTtCqFh0I&t=731s",
     "summary": "Six turrets and 24 guns maximize redundancy, but armor, machinery, and speed quickly make the concept extremely heavy.",
-    "body": "A battery divided among many turrets can keep more guns firing after individual hits, which is why Clarke treats an extreme multi-turret design as rational from a firepower-survivability perspective. The cost is displacement: guns alone consume most of the available weight, while armor, barbettes, propulsion, crew requirements, and the superstructure still have to be carried. The resulting ship is a useful lesson in how an apparently simple armament choice cascades through every part of naval architecture.",
+    "body": "A battery divided among many turrets can keep more guns firing after individual hits, which is why Clarke treats an extreme six-turret, twenty-four-gun design as rational from a firepower-survivability perspective. That rationale depends on a navy possessing infrastructure able to build the hull and machinery able to give it useful speed. The cost is displacement: guns alone consume most of the available weight, while armor, barbettes, propulsion, crew requirements, and the superstructure still have to be carried. The resulting ship is a useful lesson in how an apparently simple armament choice cascades through every part of naval architecture.",
     "topics": [
       {
         "slug": "turret-layout",
@@ -5229,6 +5229,57 @@
     "sourcePath": "src/transcripts/txt/2023-03-03_T19-00-04_turret-selection-what-in-what-distribution-makes-sense-for-you_7HOTtCqFh0I.txt"
   },
   {
+    "id": "supporting-systems-deepen-the-weight-spiral",
+    "slug": "supporting-systems-deepen-the-weight-spiral",
+    "title": "The systems needed to make a huge battery useful",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "7HOTtCqFh0I",
+    "videoSlug": "turret-selection-what-in-what-distribution-makes-sense-for-you",
+    "videoTitle": "Turret Selection: What in What Distribution Makes Sense for you",
+    "start": "18:59",
+    "startSeconds": 1139,
+    "youtubeUrl": "https://www.youtube.com/watch?v=7HOTtCqFh0I&t=1139s",
+    "summary": "An enormous main battery also demands advanced controls, sensors, propulsion, and protection, intensifying the displacement problem.",
+    "body": "The guns cannot deliver their theoretical value without the systems needed to aim, operate, and protect the ship. Clarke adds electrical or electro-hydraulic turret machinery, high-quality rangefinders, sonar for detecting torpedo threats, radio direction finding, and radar to the design. Those additions drive the test ship to roughly 70,000 tons before every desired feature is included. Attempts to recover weight by changing beam, draft, machinery, or internal arrangements show that turret selection creates a whole-ship compromise rather than an isolated armament calculation.",
+    "topics": [
+      {
+        "slug": "fire-control",
+        "title": "Fire Control"
+      },
+      {
+        "slug": "radar",
+        "title": "Radar"
+      },
+      {
+        "slug": "sonar",
+        "title": "Sonar"
+      },
+      {
+        "slug": "radio-direction-finding",
+        "title": "Radio Direction Finding"
+      },
+      {
+        "slug": "naval-architecture",
+        "title": "Naval Architecture"
+      },
+      {
+        "slug": "displacement",
+        "title": "Displacement"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "18:59",
+        "end": "22:29",
+        "note": "Clarke adds turret drives, rangefinders, sonar, radio direction finding, radar, and propulsion requirements, then tries hull and component changes to recover weight."
+      }
+    ],
+    "end": "22:29",
+    "endSeconds": 1349,
+    "sourcePath": "src/transcripts/txt/2023-03-03_T19-00-04_turret-selection-what-in-what-distribution-makes-sense-for-you_7HOTtCqFh0I.txt"
+  },
+  {
     "id": "separating-magazines-and-losing-guns",
     "slug": "separating-magazines-and-losing-guns",
     "title": "Magazine separation versus a concentrated battery",
@@ -5241,7 +5292,7 @@
     "startSeconds": 1139,
     "youtubeUrl": "https://www.youtube.com/watch?v=7HOTtCqFh0I&t=1139s",
     "summary": "Spreading 18-inch guns apart can improve magazine separation, but the hull must widen and the battery still consumes scarce weight.",
-    "body": "The design exercise spaces the guns so that magazines are divided, improving the chance that a single damaging event does not silence the entire main battery. Yet the layout has to fit physically, preserve weight balance, and leave room for the rest of the ship. Clarke then highlights the counterargument: losing a large multi-gun turret still removes a significant fraction of the ship's firepower, even when the arrangement has been made more survivable.",
+    "body": "The design exercise spaces the guns so that magazines are divided, improving the chance that a single damaging event does not silence the entire main battery. Yet the layout has to fit physically, preserve weight balance, and leave room for the rest of the ship. A twelve-gun arrangement may therefore look like the sensible maximum that the hull and infrastructure can support. Clarke then highlights the counterargument: losing a large multi-gun turret still removes a significant fraction of the ship's firepower, even when the magazines have been separated.",
     "topics": [
       {
         "slug": "magazine-protection",
@@ -5284,7 +5335,7 @@
     "startSeconds": 1530,
     "youtubeUrl": "https://www.youtube.com/watch?v=7HOTtCqFh0I&t=1530s",
     "summary": "Adding guns to a turret increases not just barrel count but interactions, concussion effects, maintenance burden, and tactical compromise.",
-    "body": "Clarke argues that a quadruple mounting is not simply two twins in one box. More guns bring more mechanisms and more interactions between the guns, including the effects of firing and concussion within the turret. The impressive twelve-gun concept consequently becomes a logistical and maintenance burden, and its 23-knot speed leaves it short of the tactical mobility expected of a fast battleship.",
+    "body": "Clarke argues that a quadruple mounting is not simply two twins in one box. More guns bring more mechanisms and more interactions between the guns, including the effects of firing and concussion within the turret. The impressive twelve-gun concept consequently becomes a logistical and maintenance burden. Its 23-knot speed also leaves it short of the tactical mobility expected of a fast battleship, even though its armor and firepower would remain formidable.",
     "topics": [
       {
         "slug": "turret-mechanisms",
@@ -5327,7 +5378,7 @@
     "startSeconds": 1928,
     "youtubeUrl": "https://www.youtube.com/watch?v=7HOTtCqFh0I&t=1928s",
     "summary": "A five-twin arrangement limits the firepower lost per hit and lets a navy standardize crews, training, and spare support.",
-    "body": "Using an early British-style battleship as the example, Clarke explains that five twin turrets leave 80 percent of the main battery after one turret is lost. He then contrasts a mixed twin-and-triple arrangement with a fully standardized battery. Standard turrets simplify maintenance, crew interchangeability, cross-training, and fleet-wide support, advantages that can outweigh the appeal of squeezing a few additional guns onto a single hull.",
+    "body": "Using a British 13.5-inch-gun battleship as the example, Clarke explains that five twin turrets leave 80 percent of the main battery after one turret is lost. He then contrasts a mixed twin-and-triple arrangement with a fully standardized battery. Mixed mountings introduce different components, maintenance demands, and support requirements across the same class. Standard twins simplify crew interchangeability, cross-training, firing practice, and fleet-wide logistics, advantages that can outweigh squeezing a few additional guns onto one hull.",
     "topics": [
       {
         "slug": "royal-navy",
@@ -5374,7 +5425,7 @@
     "startSeconds": 2539,
     "youtubeUrl": "https://www.youtube.com/watch?v=7HOTtCqFh0I&t=2539s",
     "summary": "Before maximizing armament, ask whether the hull can carry the turret, how many fit, and whether the navy can sustain them.",
-    "body": "Clarke reduces the choice to three linked questions: how large a ship can be built, how many mountings that ship can accommodate, and how the fleet can support them. The second question includes battle damage, because more numerous turrets can leave a ship with usable guns after hits that would cripple a more concentrated battery. He cautions that game mechanics can reward choices that would not make sense under historical World War I or World War II requirements.",
+    "body": "Clarke reduces the choice to three linked questions: how large a ship can be built, how many mountings that ship can accommodate, and how the fleet can support them. The second question includes battle damage, because more numerous turrets can leave a ship with usable guns after hits that would cripple a more concentrated battery. A five-twin ship loses 20 percent of its battery with one turret, whereas a four-triple ship loses 25 percent. He also cautions that game mechanics can reward choices that would not make sense under historical World War I or World War II requirements.",
     "topics": [
       {
         "slug": "force-structure",
@@ -5396,12 +5447,63 @@
     "evidence": [
       {
         "start": "42:19",
-        "end": "46:21",
-        "note": "Clarke sets out the three design questions and distinguishes game-driven armament choices from historical requirements."
+        "end": "44:16",
+        "note": "Clarke sets out the three design questions and compares the surviving batteries of five-twin and four-triple layouts after turret losses."
       }
     ],
-    "end": "46:21",
-    "endSeconds": 2781,
+    "end": "44:16",
+    "endSeconds": 2656,
+    "sourcePath": "src/transcripts/txt/2023-03-03_T19-00-04_turret-selection-what-in-what-distribution-makes-sense-for-you_7HOTtCqFh0I.txt"
+  },
+  {
+    "id": "battery-needs-change-between-world-wars",
+    "slug": "battery-needs-change-between-world-wars",
+    "title": "Why primary and secondary battery priorities change",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "7HOTtCqFh0I",
+    "videoSlug": "turret-selection-what-in-what-distribution-makes-sense-for-you",
+    "videoTitle": "Turret Selection: What in What Distribution Makes Sense for you",
+    "start": "44:19",
+    "startSeconds": 2659,
+    "youtubeUrl": "https://www.youtube.com/watch?v=7HOTtCqFh0I&t=2659s",
+    "summary": "A game-driven swap from a main turret to secondary guns illustrates why the threat environment, not gun count alone, defines a useful battery.",
+    "body": "Clarke uses his Queen Elizabeth Maximus game design to separate game incentives from historical naval requirements. The game rewarded replacing one triple 16.5-inch turret with numerous six-inch secondary guns, but he argues that such a trade would not suit World War I long-range battle conditions. Extra main-battery turrets provided additional bearings and firing angles against an opposing battle line. A World War II reconstruction might sacrifice main-battery capability for anti-aircraft defense, but only because the threat and operational need had changed.",
+    "topics": [
+      {
+        "slug": "long-range-gunnery",
+        "title": "Long Range Gunnery"
+      },
+      {
+        "slug": "secondary-batteries",
+        "title": "Secondary Batteries"
+      },
+      {
+        "slug": "anti-aircraft-defense",
+        "title": "Anti Aircraft Defense"
+      },
+      {
+        "slug": "world-war-i",
+        "title": "World War I"
+      },
+      {
+        "slug": "world-war-ii",
+        "title": "World War II"
+      },
+      {
+        "slug": "turret-layout",
+        "title": "Turret Layout"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "44:19",
+        "end": "46:36",
+        "note": "The transcript contrasts a game-motivated main-turret removal with World War I long-range fire plans and a possible World War II anti-aircraft trade-off."
+      }
+    ],
+    "end": "46:36",
+    "endSeconds": 2796,
     "sourcePath": "src/transcripts/txt/2023-03-03_T19-00-04_turret-selection-what-in-what-distribution-makes-sense-for-you_7HOTtCqFh0I.txt"
   },
   {
@@ -5416,8 +5518,8 @@
     "start": "46:21",
     "startSeconds": 2781,
     "youtubeUrl": "https://www.youtube.com/watch?v=7HOTtCqFh0I&t=2781s",
-    "summary": "The Queen Elizabeth class shows how available twin turrets, boilers, and turbines shaped the practical balance of guns and speed.",
-    "body": "The video returns to the Queen Elizabeth class to show that a turret layout cannot be separated from the technologies actually ready for service. Twin turrets were available and proven while triples were still being tested, and the class's propulsion choices also set limits on what could be carried at the desired speed. The result is a practical explanation for why ten 15-inch guns in five twins could be preferable to a more ambitious but less mature arrangement.",
+    "summary": "The Queen Elizabeth class shows how proven twin turrets and contemporary propulsion shaped the choice between eight guns and a heavier ten-gun alternative.",
+    "body": "The video returns to the Queen Elizabeth class to show that a turret layout cannot be separated from technologies actually ready for service. Twin turrets were available and working while triples were still being tested, so the proven mounting supported rapid construction. The class used regular rather than geared turbines, and contemporary boiler and machinery limits constrained how much armament could be carried at the desired speed. The eight-versus-ten-gun comparison shows why a navy might reject a larger battery that depended on less mature turrets or more advanced propulsion.",
     "topics": [
       {
         "slug": "queen-elizabeth-class",
@@ -5452,6 +5554,57 @@
     "sourcePath": "src/transcripts/txt/2023-03-03_T19-00-04_turret-selection-what-in-what-distribution-makes-sense-for-you_7HOTtCqFh0I.txt"
   },
   {
+    "id": "skoda-witkowitz-and-naval-metallurgy",
+    "slug": "skoda-witkowitz-and-naval-metallurgy",
+    "title": "Škoda guns, Witkowitz armor, and Austro-Hungarian industry",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "7HOTtCqFh0I",
+    "videoSlug": "turret-selection-what-in-what-distribution-makes-sense-for-you",
+    "videoTitle": "Turret Selection: What in What Distribution Makes Sense for you",
+    "start": "50:47",
+    "startSeconds": 3047,
+    "youtubeUrl": "https://www.youtube.com/watch?v=7HOTtCqFh0I&t=3047s",
+    "summary": "A viewer correction separates Škoda's guns and projectiles from Witkowitz armor while showing how closely linked firms supported Austro-Hungarian naval weapons.",
+    "body": "Clarke revisits an earlier suggestion that Germany might have obtained a triple turret through Škoda and accepts a viewer's correction about the industrial division of labor. Škoda built guns and projectiles, while Witkowitz produced armor within the wider Austro-Hungarian steel network. He notes evidence from Austrian museum testing that Witkowitz cemented armor performed strongly when tested with Škoda armor-piercing projectiles. The passage is useful because turret feasibility depended on an industrial system capable of supplying guns, shells, armor, and metallurgical research, not on a mounting design alone.",
+    "topics": [
+      {
+        "slug": "skoda-works",
+        "title": "Skoda Works"
+      },
+      {
+        "slug": "witkowitz",
+        "title": "Witkowitz"
+      },
+      {
+        "slug": "austro-hungarian-naval-industry",
+        "title": "Austro Hungarian Naval Industry"
+      },
+      {
+        "slug": "armor-piercing-shells",
+        "title": "Armor Piercing Shells"
+      },
+      {
+        "slug": "krupp-cemented-armor",
+        "title": "Krupp Cemented Armor"
+      },
+      {
+        "slug": "naval-metallurgy",
+        "title": "Naval Metallurgy"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "50:47",
+        "end": "52:27",
+        "note": "Clarke accepts the correction that Škoda supplied guns and projectiles while Witkowitz made armor, then discusses their close metallurgical and industrial relationship."
+      }
+    ],
+    "end": "52:27",
+    "endSeconds": 3147,
+    "sourcePath": "src/transcripts/txt/2023-03-03_T19-00-04_turret-selection-what-in-what-distribution-makes-sense-for-you_7HOTtCqFh0I.txt"
+  },
+  {
     "id": "designing-to-keep-fighting-after-damage",
     "slug": "designing-to-keep-fighting-after-damage",
     "title": "Designing a battleship to keep fighting after damage",
@@ -5464,7 +5617,7 @@
     "startSeconds": 3074,
     "youtubeUrl": "https://www.youtube.com/watch?v=7HOTtCqFh0I&t=3074s",
     "summary": "The closing argument treats a warship's ability to absorb damage and retain fighting power as the test of a sound turret layout.",
-    "body": "More barrels may look stronger on paper, but putting them into fewer complex turrets can make a ship more vulnerable to the loss of a single mounting. Clarke frames battleships as ships intended to continue fighting after damage, invoking vessels remembered for doing exactly that. Turret weight and position also affect stability and buoyancy, so a designer must ask how the hull will remain afloat and combat-capable after it has been hit.",
+    "body": "More barrels may look stronger on paper, but putting them into fewer complex turrets can make a ship more vulnerable to the loss of a single mounting. Clarke compares eight guns in two turrets with six guns in three: after one turret loss both ships may have four guns, but after two losses only the three-turret ship can still fire. He frames capital ships as vessels intended to continue fighting after damage, invoking Renown, Illustrious, Formidable, Warspite, and Texas as remembered examples. Turret weight and position also affect stability and buoyancy, so a designer must ask how the hull will remain afloat and combat-capable after it has been hit.",
     "topics": [
       {
         "slug": "battle-damage",
@@ -11236,7 +11389,7 @@
     "startSeconds": 51,
     "youtubeUrl": "https://www.youtube.com/watch?v=ixURf_xZW7k&t=51s",
     "summary": "The opening reframes the U-boat campaign from a simple idea of strangling British trade into a problem of logistics, construction time, and torpedo supply.",
-    "body": "Dr. Clarke begins by separating the strategic logic of attacking Britain's trade from the practical limits of doing it with submarines. The useful lesson is that a commerce campaign depends on the number of hulls, weapons, crews, and targets that can actually be brought together across the Atlantic. That makes the Battle of the Atlantic a logistics and industrial contest as much as a tactical submarine war.",
+    "body": "Dr. Clarke begins by separating the strategic logic of attacking Britain's trade from the practical limits of doing it with submarines. The useful lesson is that a commerce campaign depends on the number of hulls, weapons, crews, and targets that can actually be brought together across the Atlantic. Even modern merchant fleets contain fewer but larger ships, yet a submarine force still needs enough boats and torpedoes to find and sink a strategically significant share of them. That makes the Battle of the Atlantic a logistics and industrial contest as much as a tactical submarine war.",
     "topics": [
       {
         "slug": "battle-of-the-atlantic",
@@ -11288,7 +11441,7 @@
     "startSeconds": 159,
     "youtubeUrl": "https://www.youtube.com/watch?v=ixURf_xZW7k&t=159s",
     "summary": "A prewar procurement argument says the Atlantic campaign was shaped by 1938 orders for Flower-class corvettes, Hunt-class escort destroyers, and the escort fleet behind convoys.",
-    "body": "This moment is valuable for readers who want to know why the convoy war was not decided only in 1942 or 1943. Dr. Clarke argues that the Royal Navy's 1938 escort orders built the material base that later protected convoys, while submarines took longer to build and crew than the escorts opposing them. He also points out that firing torpedoes at escorts wasted weapons meant for merchant ships and exposed the submarine to hunting.",
+    "body": "This moment is valuable for readers who want to know why the convoy war was not decided only in 1942 or 1943. Dr. Clarke argues that the Royal Navy's 1938 orders for Flower-class corvettes and Hunt-class escort destroyers built the material base that later protected convoys. Submarines took longer to build and crew than the escorts opposing them, so the prewar construction decision shaped the force ratios years later. He also points out that firing two or three torpedoes at an escorting trawler consumed weapons meant for merchant ships and revealed the submarine's position. ASDIC and depth-charge tactics initially required several escorts to maintain contact and attack, but ahead-throwing weapons improved that exchange while British yards kept producing escort hulls.",
     "topics": [
       {
         "slug": "battle-of-the-atlantic",
@@ -11313,6 +11466,22 @@
       {
         "slug": "naval-industrial-base",
         "title": "Naval Industrial Base"
+      },
+      {
+        "slug": "flower-class-corvettes",
+        "title": "Flower-Class Corvettes"
+      },
+      {
+        "slug": "hunt-class-destroyers",
+        "title": "Hunt Class Destroyers"
+      },
+      {
+        "slug": "asdic",
+        "title": "Asdic"
+      },
+      {
+        "slug": "depth-charges",
+        "title": "Depth Charges"
       }
     ],
     "evidence": [
@@ -11328,8 +11497,64 @@
       },
       {
         "start": "4:30",
+        "end": "5:18",
+        "note": "The transcript discusses ASDIC, depth-charge tactics, the need for several escorts to prosecute one contact, and the value of ahead-throwing ASW weapons."
+      }
+    ],
+    "end": "5:18",
+    "endSeconds": 318,
+    "sourcePath": "src/transcripts/txt/2021-08-15_T16-00-30_battle-of-the-atlantic-original-crackpot-schemes-or-good-ideas-badly-done-p7-7_ixURf_xZW7k.txt"
+  },
+  {
+    "id": "escort-production-through-capital-ship-pauses",
+    "slug": "escort-production-through-capital-ship-pauses",
+    "title": "Escort production through capital-ship pauses",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "ixURf_xZW7k",
+    "videoSlug": "battle-of-the-atlantic-original-crackpot-schemes-or-good-ideas-badly-done-p7-7",
+    "videoTitle": "Battle of the Atlantic (Original): Crackpot Schemes or Good Ideas Badly Done p7/7",
+    "start": "5:22",
+    "startSeconds": 322,
+    "youtubeUrl": "https://www.youtube.com/watch?v=ixURf_xZW7k&t=322s",
+    "summary": "Britain paused some cruiser, battleship, and carrier work, but its 1938 escort program continued and could draw on a broad shipbuilding base even after France fell.",
+    "body": "Dr. Clarke contrasts the interruption of some British capital-ship programs with the continuity of escort construction. Pausing carriers, cruisers, and battleships created delays that could not be recovered instantly when work resumed, whereas the escort orders placed in 1938 remained in production. The loss of French shipbuilding support narrowed the available base but did not remove Britain's many other yards. This distinction helps explain why corvettes and other convoy escorts could arrive in large numbers despite competing wartime procurement demands.",
+    "topics": [
+      {
+        "slug": "battle-of-the-atlantic",
+        "title": "Battle Of The Atlantic"
+      },
+      {
+        "slug": "convoy-warfare",
+        "title": "Convoy Warfare"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "naval-procurement",
+        "title": "Naval Procurement"
+      },
+      {
+        "slug": "naval-industrial-base",
+        "title": "Naval Industrial Base"
+      },
+      {
+        "slug": "fleet-carriers",
+        "title": "Fleet Carriers"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "5:22",
+        "end": "6:14",
+        "note": "The transcript contrasts continued escort production with pauses to carriers, cruisers, and battleships, emphasizing that stopping and restarting capital-ship work lengthened delays."
+      },
+      {
+        "start": "6:18",
         "end": "6:34",
-        "note": "The transcript discusses ASDIC, depth-charge tactics, ahead-throwing weapons, escort production, British naval infrastructure, and continued 1938 escort construction."
+        "note": "The transcript says the 1938 escorts were already well into production and that Britain retained enough shipbuilding infrastructure to turn them out rapidly despite losing French capacity."
       }
     ],
     "end": "6:34",
@@ -11349,7 +11574,7 @@
     "startSeconds": 399,
     "youtubeUrl": "https://www.youtube.com/watch?v=ixURf_xZW7k&t=399s",
     "summary": "The lecture compares German Type VII U-boats with Royal Navy corvettes, trawlers, destroyers, sloops, and four-stackers to show why escort mass mattered.",
-    "body": "Dr. Clarke turns the industrial argument into concrete fleet arithmetic. Germany built hundreds of Type VII submarines, but Britain and its allies completed or converted large numbers of corvettes, trawlers, destroyers, sloops, and acquired old American four-stackers for escort work. The segment highlights the asymmetry: submarines sought merchant ships, while escorts were numerous, easier to build, and increasingly dangerous to experienced U-boat crews.",
+    "body": "Dr. Clarke turns the industrial argument into concrete fleet arithmetic. Germany built roughly 700 Type VII submarines, but their limited submerged speed and endurance made convoy interception and pursuit difficult. Britain and its allies completed or converted large numbers of Flower- and Castle-class corvettes, trawlers, destroyers, Black Swan-class sloops, and old American four-stackers. The escort inventory drew on purpose-built warships, conversions, requisitioned civilian hulls, and transferred ships rather than a single construction program. The segment highlights the asymmetry: U-boats sought merchant ships, while escorts were easier to build, less attractive torpedo targets, and replaceable through several production streams.",
     "topics": [
       {
         "slug": "submarines",
@@ -11378,6 +11603,22 @@
       {
         "slug": "naval-industrial-base",
         "title": "Naval Industrial Base"
+      },
+      {
+        "slug": "type-vii-u-boats",
+        "title": "Type VII U Boats"
+      },
+      {
+        "slug": "flower-class-corvettes",
+        "title": "Flower-Class Corvettes"
+      },
+      {
+        "slug": "castle-class-corvettes",
+        "title": "Castle Class Corvettes"
+      },
+      {
+        "slug": "black-swan-class-sloops",
+        "title": "Black Swan Class Sloops"
       }
     ],
     "evidence": [
@@ -11404,7 +11645,7 @@
   {
     "id": "one-dimensional-submarine-war",
     "slug": "one-dimensional-submarine-war",
-    "title": "One-dimensional submarine war",
+    "title": "Wolfpacks, intelligence, and veteran losses",
     "kind": "notable_point",
     "kindLabel": "Notable Point",
     "videoId": "ixURf_xZW7k",
@@ -11413,8 +11654,8 @@
     "start": "11:56",
     "startSeconds": 716,
     "youtubeUrl": "https://www.youtube.com/watch?v=ixURf_xZW7k&t=716s",
-    "summary": "A strategy section argues that Germany's U-boat offensive was the weaker maritime power's one-dimensional attack against an opponent able to adapt.",
-    "body": "This watch point explains why simply building more submarines is not treated as an automatic answer. Dr. Clarke stresses that wolfpacks had to find convoys across a vast ocean, could be bypassed through intelligence, and risked losing veteran crews when heavily escorted convoys were found. He then argues that an earlier or larger German U-boat program would still have provoked British counterbuilding in escorts and carriers.",
+    "summary": "Wolfpacks had to locate convoys across a vast ocean while Allied routing intelligence could bypass them, and successful contact exposed veteran U-boat crews to concentrated escorts.",
+    "body": "This watch point explains the operational fragility of a one-dimensional submarine offensive. Wolfpacks could spend patrols in the wrong part of the Atlantic and return without ever finding a target. Allied electronic intelligence and decrypted signals could route convoys around known concentrations, wasting German patrol effort without a battle. When a pack did find a convoy, its escorts concentrated anti-submarine power in the same area and threatened the most aggressive, experienced crews. Losing those veterans also destroyed prewar knowledge and institutional memory that replacement crews could not immediately reproduce.",
     "topics": [
       {
         "slug": "battle-of-the-atlantic",
@@ -11441,8 +11682,16 @@
         "title": "Royal Navy"
       },
       {
-        "slug": "alternate-history",
-        "title": "Alternate History"
+        "slug": "wolfpack-tactics",
+        "title": "Wolfpack Tactics"
+      },
+      {
+        "slug": "signals-intelligence",
+        "title": "Signals Intelligence"
+      },
+      {
+        "slug": "naval-training",
+        "title": "Naval Training"
       }
     ],
     "evidence": [
@@ -11450,16 +11699,148 @@
         "start": "11:56",
         "end": "13:12",
         "note": "The transcript describes a one-dimensional commerce attack, the need to place submarine groups correctly, Allied routing around them, and the loss of experienced crews."
+      }
+    ],
+    "end": "13:12",
+    "endSeconds": 792,
+    "sourcePath": "src/transcripts/txt/2021-08-15_T16-00-30_battle-of-the-atlantic-original-crackpot-schemes-or-good-ideas-badly-done-p7-7_ixURf_xZW7k.txt"
+  },
+  {
+    "id": "later-war-strengthens-british-asw",
+    "slug": "later-war-strengthens-british-asw",
+    "title": "A later war strengthens British ASW",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "ixURf_xZW7k",
+    "videoSlug": "battle-of-the-atlantic-original-crackpot-schemes-or-good-ideas-badly-done-p7-7",
+    "videoTitle": "Battle of the Atlantic (Original): Crackpot Schemes or Good Ideas Badly Done p7/7",
+    "start": "13:15",
+    "startSeconds": 795,
+    "youtubeUrl": "https://www.youtube.com/watch?v=ixURf_xZW7k&t=795s",
+    "summary": "Delaying war would give Germany more time to build U-boats, but it would also let Britain and the Commonwealth field more escorts and aircraft carriers from a stronger maritime base.",
+    "body": "Dr. Clarke tests the common assumption that a later war automatically improves Germany's submarine position. Germany entered the conflict earlier than planners expected and would have needed a much larger prewar U-boat stock to overwhelm British defenses quickly. Yet a delay to 1942 would also have put more British carriers, sloops, Hunt-class destroyers, and Flower-class corvettes into service. Commonwealth naval expansion and Britain's larger maritime industry would compound that response. The counterfactual therefore has to advance both sides' preparations rather than granting Germany extra construction time in isolation.",
+    "topics": [
+      {
+        "slug": "battle-of-the-atlantic",
+        "title": "Battle Of The Atlantic"
       },
+      {
+        "slug": "alternate-history",
+        "title": "Alternate History"
+      },
+      {
+        "slug": "anti-submarine-warfare",
+        "title": "Anti-Submarine Warfare"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "kriegsmarine",
+        "title": "Kriegsmarine"
+      },
+      {
+        "slug": "commonwealth-navies",
+        "title": "Commonwealth Navies"
+      },
+      {
+        "slug": "fleet-carriers",
+        "title": "Fleet Carriers"
+      },
+      {
+        "slug": "naval-industrial-base",
+        "title": "Naval Industrial Base"
+      }
+    ],
+    "evidence": [
       {
         "start": "13:15",
-        "end": "14:38",
-        "note": "The transcript calls Germany the weaker maritime power, says it needed far more submarines before war, and notes that a later war could strengthen Royal Navy carriers and escorts."
+        "end": "13:54",
+        "note": "The transcript identifies Germany as the weaker maritime power, says it needed many more submarines before war, and notes that both sides expected conflict later than 1939."
       },
       {
+        "start": "13:56",
+        "end": "14:38",
+        "note": "The transcript argues that a 1942 start would also give the Royal Navy more carriers and escorts while Commonwealth navies grew from Britain's stronger maritime base."
+      },
+      {
+        "start": "14:42",
+        "end": "14:54",
+        "note": "The transcript says Germany either needed enough immediate force to nullify Britain's advantage or had to use the resources elsewhere."
+      }
+    ],
+    "end": "14:54",
+    "endSeconds": 894,
+    "sourcePath": "src/transcripts/txt/2021-08-15_T16-00-30_battle-of-the-atlantic-original-crackpot-schemes-or-good-ideas-badly-done-p7-7_ixURf_xZW7k.txt"
+  },
+  {
+    "id": "more-u-boats-provoke-counterbuilding",
+    "slug": "more-u-boats-provoke-counterbuilding",
+    "title": "More U-boats provoke counterbuilding",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "ixURf_xZW7k",
+    "videoSlug": "battle-of-the-atlantic-original-crackpot-schemes-or-good-ideas-badly-done-p7-7",
+    "videoTitle": "Battle of the Atlantic (Original): Crackpot Schemes or Good Ideas Badly Done p7/7",
+    "start": "15:01",
+    "startSeconds": 901,
+    "youtubeUrl": "https://www.youtube.com/watch?v=ixURf_xZW7k&t=901s",
+    "summary": "Replacing German battleships with more U-boats might improve the opening attack, but geography remains and Britain would answer with more escorts and ASW carriers.",
+    "body": "The familiar fewer-battleships, more-submarines proposal receives a dynamic answer rather than a simple platform comparison. A larger opening U-boat force might have been locally decisive, but it would still need to locate convoys across Atlantic geography. British planners would also see the German construction program and respond with additional escorts and carriers suited to anti-submarine warfare. Royal Navy capital-ship construction would not necessarily disappear because Japan and Italy remained separate fleet threats. The passage shows why a useful naval counterfactual must include enemy adaptation and commitments in other theaters.",
+    "topics": [
+      {
+        "slug": "battle-of-the-atlantic",
+        "title": "Battle Of The Atlantic"
+      },
+      {
+        "slug": "alternate-history",
+        "title": "Alternate History"
+      },
+      {
+        "slug": "submarines",
+        "title": "Submarines"
+      },
+      {
+        "slug": "convoy-warfare",
+        "title": "Convoy Warfare"
+      },
+      {
+        "slug": "anti-submarine-warfare",
+        "title": "Anti-Submarine Warfare"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "kriegsmarine",
+        "title": "Kriegsmarine"
+      },
+      {
+        "slug": "fleet-carriers",
+        "title": "Fleet Carriers"
+      },
+      {
+        "slug": "naval-procurement",
+        "title": "Naval Procurement"
+      }
+    ],
+    "evidence": [
+      {
         "start": "15:01",
+        "end": "15:34",
+        "note": "The transcript considers exchanging German battleships for submarines but says a larger force would still face the geography and target-location problem."
+      },
+      {
+        "start": "15:38",
+        "end": "16:06",
+        "note": "The transcript says visible German submarine expansion would prompt Britain to build more escorts and carriers for anti-submarine warfare."
+      },
+      {
+        "start": "16:08",
         "end": "16:20",
-        "note": "The transcript considers fewer German battleships and more submarines, but says geography, convoy location, and British counterbuilding would still matter."
+        "note": "The transcript notes that Britain would still need capital ships against Japanese and Italian threats."
       }
     ],
     "end": "16:20",
@@ -11479,7 +11860,7 @@
     "startSeconds": 998,
     "youtubeUrl": "https://www.youtube.com/watch?v=ixURf_xZW7k&t=998s",
     "summary": "A counterfactual section weighs whether a German surface group with 15-inch Scharnhorsts and Graf Zeppelin would have posed a more complex Atlantic threat than U-boats alone.",
-    "body": "Dr. Clarke uses a German surface-fleet alternative to show the difference between a single-domain submarine threat and a three-dimensional threat involving surface combatants and carrier aviation. Pre-positioned supply ships could help such a group reach the North Atlantic and threaten convoy routes. He does not argue that it would beat the Royal Navy, but that finding and defeating a carrier-centered raiding group would create a larger operational problem than hunting U-boats alone.",
+    "body": "Dr. Clarke uses a German surface-fleet alternative to show the difference between a single-domain submarine threat and a three-dimensional threat involving surface combatants and carrier aviation. The hypothetical group combines 15-inch-armed Scharnhorsts with Graf Zeppelin, despite his criticism of the carrier's design. Pre-positioned supply ships like those supporting German pocket battleships could help the force reach the North Atlantic and threaten convoy routes. He does not argue that it would beat the Royal Navy, whose numerical superiority would probably prevail in battle. The learning payoff is that finding and defeating a carrier-centered raiding group would create a larger operational problem than hunting U-boats alone.",
     "topics": [
       {
         "slug": "alternate-history",
@@ -11508,6 +11889,18 @@
       {
         "slug": "naval-strategy",
         "title": "Naval Strategy"
+      },
+      {
+        "slug": "graf-zeppelin",
+        "title": "Graf Zeppelin"
+      },
+      {
+        "slug": "scharnhorst-class",
+        "title": "Scharnhorst Class"
+      },
+      {
+        "slug": "naval-aviation",
+        "title": "Naval Aviation"
       }
     ],
     "evidence": [
@@ -11538,7 +11931,7 @@
     "startSeconds": 1084,
     "youtubeUrl": "https://www.youtube.com/watch?v=ixURf_xZW7k&t=1084s",
     "summary": "The Royal Navy carried First World War convoy experience into a growing escort fleet and a pre-existing program of depth-charge throwers, mortars, and ahead-firing ASW weapons.",
-    "body": "This watch point connects the two world wars as a history of institutional adaptation rather than rediscovery. Dr. Clarke argues that Britain had already learned the value of convoys and escorts under Jellicoe, then expanded escort numbers as the Second World War campaign developed. ASDIC encouraged some overconfidence, but the navy was also developing anti-submarine mortars, ahead-firing weapons, and broader depth-charge patterns instead of assuming the submarine problem had been solved.",
+    "body": "This watch point connects the two world wars as a history of institutional adaptation rather than rediscovery. Dr. Clarke argues that Britain had already learned the value of convoys and escorts under Jellicoe, then expanded escort numbers as the Second World War campaign developed. ASDIC encouraged some overconfidence, but the navy did not treat submarine defense as a solved problem. Work continued on anti-submarine mortars, ahead-firing weapons, depth-charge throwers, and wider explosive patterns. The passage is useful for understanding ASW as a continuing combination of doctrine, detection, weapons development, and escort availability.",
     "topics": [
       {
         "slug": "anti-submarine-warfare",
@@ -11559,6 +11952,14 @@
       {
         "slug": "naval-procurement",
         "title": "Naval Procurement"
+      },
+      {
+        "slug": "asdic",
+        "title": "Asdic"
+      },
+      {
+        "slug": "depth-charges",
+        "title": "Depth Charges"
       }
     ],
     "evidence": [
@@ -11590,7 +11991,7 @@
     "startSeconds": 1168,
     "youtubeUrl": "https://www.youtube.com/watch?v=ixURf_xZW7k&t=1168s",
     "summary": "The proposed German carrier-and-battlecruiser threat runs into a shipyard constraint: too few large hulls could be built in parallel after the First World War.",
-    "body": "Dr. Clarke tests the surface-raider counterfactual against Germany's industrial base. The difficulty was not only choosing better designs, but sustaining several large warships under construction at once. He estimates that Germany could normally manage only two or perhaps three large hulls simultaneously, while Britain possessed more shipbuilding infrastructure, economic backing, and capacity for parallel construction. The comparison turns fleet design into a question of production throughput as well as tactical merit.",
+    "body": "Dr. Clarke tests the surface-raider counterfactual against Germany's industrial base. The difficulty was not only choosing better designs, but sustaining several large warships under construction at once. First World War disruption had reduced the German capacity needed to lay down several capital ships in parallel. He estimates that Germany could normally manage only two or perhaps three large hulls simultaneously, beginning the next group after the previous ships left the slips. Britain possessed more shipbuilding infrastructure, economic backing, and capacity for simultaneous construction. The comparison turns fleet design into a question of production throughput as well as tactical merit.",
     "topics": [
       {
         "slug": "kriegsmarine",
@@ -11646,7 +12047,7 @@
     "startSeconds": 1262,
     "youtubeUrl": "https://www.youtube.com/watch?v=ixURf_xZW7k&t=1262s",
     "summary": "Experienced anti-submarine officers and trained crews made escort hulls usable, showing that personnel readiness was part of Britain's maritime advantage.",
-    "body": "The industrial comparison closes with a personnel point: ships and weapons only become effective when trained people can operate them. Dr. Clarke identifies experienced anti-submarine officers and crews already trained for the work as part of the British advantage. This brief moment is useful because it places human expertise alongside shipyards, escort numbers, and weapons in the Battle of the Atlantic's force-generation system.",
+    "body": "The industrial comparison closes with a personnel point: ships and weapons only become effective when trained people can operate them. Dr. Clarke identifies experienced anti-submarine officers and crews already trained for the work as part of the British advantage. Their knowledge could not be expanded without limit or produced as quickly as a simple hull count might imply. This brief moment is useful because it places human expertise alongside shipyards, escort numbers, and weapons in the Battle of the Atlantic's force-generation system.",
     "topics": [
       {
         "slug": "anti-submarine-warfare",
@@ -11693,7 +12094,7 @@
     "startSeconds": 1292,
     "youtubeUrl": "https://www.youtube.com/watch?v=ixURf_xZW7k&t=1292s",
     "summary": "A resource counterfactual asks whether Germany needed enough U-boats to force convoy escorts, rather than 700 boats, and where the saved industrial effort might have gone.",
-    "body": "Dr. Clarke reframes the submarine program as an opportunity-cost problem. A smaller U-boat force could still compel Britain to protect convoys, while resources beyond that threshold might have supported bombers or armored forces. He remains skeptical that simple reallocation would transform German performance, citing a tendency toward complicated, expensive equipment and suggesting incremental Panzer IV modernization as the more practical land example. The naval takeaway is that forcing an opponent to spend defensively may matter more than maximizing one platform count without regard to alternative uses of production.",
+    "body": "Dr. Clarke reframes the submarine program as an opportunity-cost problem. A smaller U-boat force could still compel Britain to commit much of the escort effort it historically required, while resources beyond that threshold might have supported bombers or armored forces. The question is therefore not whether Germany should build no submarines, but how many were needed to impose defensive costs before diminishing returns set in. He remains skeptical that simple reallocation would transform German performance, citing a tendency toward complicated, expensive equipment and suggesting incremental Panzer IV modernization as the more practical land example. The naval takeaway is that forcing an opponent to spend defensively may matter more than maximizing one platform count without regard to alternative uses of production.",
     "topics": [
       {
         "slug": "kriegsmarine",
@@ -11737,9 +12138,9 @@
     "sourcePath": "src/transcripts/txt/2021-08-15_T16-00-30_battle-of-the-atlantic-original-crackpot-schemes-or-good-ideas-badly-done-p7-7_ixURf_xZW7k.txt"
   },
   {
-    "id": "escort-pool-and-operation-torch",
-    "slug": "escort-pool-and-operation-torch",
-    "title": "Escort pool and Operation Torch",
+    "id": "human-cost-and-atlantic-reputation",
+    "slug": "human-cost-and-atlantic-reputation",
+    "title": "Human cost and the Atlantic's reputation",
     "kind": "notable_point",
     "kindLabel": "Notable Point",
     "videoId": "ixURf_xZW7k",
@@ -11748,8 +12149,56 @@
     "start": "23:02",
     "startSeconds": 1382,
     "youtubeUrl": "https://www.youtube.com/watch?v=ixURf_xZW7k&t=1382s",
+    "summary": "The terror and sudden losses experienced by merchant crews gave the Battle of the Atlantic a reputation more desperate than the long-term escort balance alone suggests.",
+    "body": "Dr. Clarke distinguishes the campaign's strategic trajectory from the experience of those caught in individual sinkings. A merchant ship could be destroyed suddenly, leaving survivors to watch friends and crewmates disappear with little warning. That seeming randomness made the Atlantic war emotionally terrifying and helped give it an enduring reputation as a constant near-defeat. Churchill did face frightening periods, but these often came before the large escort programs had completed their eighteen-month to two-year path into service. The watch point is valuable because it holds human danger and strategic capacity in view at the same time instead of using one to erase the other.",
+    "topics": [
+      {
+        "slug": "battle-of-the-atlantic",
+        "title": "Battle Of The Atlantic"
+      },
+      {
+        "slug": "merchant-navy",
+        "title": "Merchant Navy"
+      },
+      {
+        "slug": "convoy-warfare",
+        "title": "Convoy Warfare"
+      },
+      {
+        "slug": "second-world-war",
+        "title": "Second World War"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "23:02",
+        "end": "23:30",
+        "note": "The transcript describes the viciousness, terror, and seeming randomness of individual sinkings as a reason the campaign acquired an especially fraught reputation."
+      },
+      {
+        "start": "23:31",
+        "end": "23:57",
+        "note": "The transcript acknowledges Churchill's sleepless nights but connects many of the most dangerous periods to the time before mass escort construction entered service."
+      }
+    ],
+    "end": "23:57",
+    "endSeconds": 1437,
+    "sourcePath": "src/transcripts/txt/2021-08-15_T16-00-30_battle-of-the-atlantic-original-crackpot-schemes-or-good-ideas-badly-done-p7-7_ixURf_xZW7k.txt"
+  },
+  {
+    "id": "escort-pool-and-operation-torch",
+    "slug": "escort-pool-and-operation-torch",
+    "title": "Escort pool and Operation Torch",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "ixURf_xZW7k",
+    "videoSlug": "battle-of-the-atlantic-original-crackpot-schemes-or-good-ideas-badly-done-p7-7",
+    "videoTitle": "Battle of the Atlantic (Original): Crackpot Schemes or Good Ideas Badly Done p7/7",
+    "start": "23:57",
+    "startSeconds": 1437,
+    "youtubeUrl": "https://www.youtube.com/watch?v=ixURf_xZW7k&t=1437s",
     "summary": "A late section explains why Atlantic danger increased when escorts were diverted to major operations such as Operation Torch.",
-    "body": "This section is useful for seeing convoy protection as a scarce-resource allocation problem. Dr. Clarke notes that the Battle of the Atlantic felt most dangerous before mass escort arrivals and when escorts were pulled toward other missions. Operation Torch becomes the example: troop convoys needed heavier protection, which left regular merchant convoys with a smaller escort pool.",
+    "body": "This section is useful for seeing convoy protection as a scarce-resource allocation problem. Operation Torch becomes the example: its troop convoys received heavier protection because their cargo was strategically and politically irreplaceable. German submariners saw fewer escorts on ordinary Atlantic routes without necessarily knowing why the balance had shifted. Concentrating protection around the invasion therefore left regular merchant convoys with a smaller escort pool. The episode shows how a simultaneous amphibious operation could temporarily change the local conditions of the commerce war without altering long-term escort production.",
     "topics": [
       {
         "slug": "battle-of-the-atlantic",
@@ -11774,14 +12223,13 @@
       {
         "slug": "second-world-war",
         "title": "Second World War"
+      },
+      {
+        "slug": "operation-torch",
+        "title": "Operation Torch"
       }
     ],
     "evidence": [
-      {
-        "start": "23:02",
-        "end": "23:57",
-        "note": "The transcript says the Atlantic's terrifying individual losses gave the campaign a fraught reputation, especially before large escort numbers arrived in bulk."
-      },
       {
         "start": "23:57",
         "end": "24:40",
@@ -11805,7 +12253,7 @@
     "startSeconds": 1483,
     "youtubeUrl": "https://www.youtube.com/watch?v=ixURf_xZW7k&t=1483s",
     "summary": "The closing argument reduces the submarine campaign to geography: close to British ports meant air cover and minefields, while the mid-Atlantic meant too much ocean to search.",
-    "body": "The final argument is a compact guide to the operational tradeoffs behind the U-boat war. Submarines near major British ports faced aircraft, mines, and dense escorts; submarines in the mid-Atlantic avoided some dangers but had far more water to search and more communications problems. Dr. Clarke's conclusion is not that every German decision was foolish, but that every choice carried costs the campaign could not escape.",
+    "body": "The final argument is a compact guide to the operational tradeoffs behind the U-boat war. Stationing submarines near Liverpool and other western British ports made merchant traffic easier to anticipate, but also put the boats under aircraft, near minefields, and among dense escorts. Moving into the mid-Atlantic air gap reduced exposure to land-based aircraft while vastly increasing the water that patrols had to search. Dispersed boats also required more communications, creating another operational burden while packs tried to assemble against convoys. Dr. Clarke's conclusion is not that every German decision was foolish, but that every choice carried costs the campaign could not escape. He judges the campaign broadly as well executed under those constraints while reserving some criticism of Dönitz's decisions.",
     "topics": [
       {
         "slug": "battle-of-the-atlantic",
@@ -11834,6 +12282,10 @@
       {
         "slug": "naval-logistics",
         "title": "Naval Logistics"
+      },
+      {
+        "slug": "air-gap",
+        "title": "Air Gap"
       }
     ],
     "evidence": [
@@ -26278,12 +26730,16 @@
     "start": "0:00",
     "startSeconds": 0,
     "youtubeUrl": "https://www.youtube.com/watch?v=pdffbdPgIrE&t=0s",
-    "summary": "The opening explains why the Ticonderoga class moved from destroyer lineage into the cruiser category once Aegis command facilities mattered.",
-    "body": "This watch point frames the Ticonderoga class as a ship caught between destroyer ancestry and cruiser responsibilities. Dr. Clarke ties the redesignation to command facilities, Aegis air-warfare coordination, and the cancellation of the larger nuclear strike-cruiser idea. The result is a useful guide to why labels such as DDG, CG, and cruiser can follow politics and fleet roles as much as hull size.",
+    "summary": "The opening explains how command facilities and Aegis air-warfare duties moved a destroyer-derived design into the cruiser category.",
+    "body": "This opening frames the Ticonderoga class as a design caught between destroyer ancestry and cruiser responsibilities. Dr. Clarke ties the redesignation to added command facilities and the need to coordinate Aegis air warfare. The ships were initially meant to support much larger nuclear-powered strike cruisers, but cancellation of those ships left the smaller Ticonderogas carrying the cruiser role. Their double-ended missile battery reflects the original air-warfare mission, while the later DDG(X) comparison previews how little the label alone says about size or function.",
     "topics": [
       {
         "slug": "ticonderoga-class",
         "title": "Ticonderoga Class"
+      },
+      {
+        "slug": "aegis-combat-system",
+        "title": "Aegis Combat System"
       },
       {
         "slug": "cruisers",
@@ -26301,17 +26757,22 @@
     "evidence": [
       {
         "start": "0:36",
-        "end": "1:04",
-        "note": "The transcript says the class began as a DDG and became cruisers through command facilities and Aegis needs."
+        "end": "1:19",
+        "note": "The transcript says the class began as a DDG, gained command facilities for Aegis duties, and was intended to support strike cruisers."
       },
       {
-        "start": "1:12",
+        "start": "1:24",
         "end": "2:16",
-        "note": "The discussion contrasts the Ticonderogas with cancelled strike cruisers and later DDG(X) size expectations."
+        "note": "The discussion compares the cancelled strike cruiser with the projected size and naming of DDG(X)."
+      },
+      {
+        "start": "2:30",
+        "end": "2:53",
+        "note": "The transcript identifies air warfare as the class's purpose and explains its double-ended missile layout."
       }
     ],
-    "end": "2:41",
-    "endSeconds": 161,
+    "end": "2:53",
+    "endSeconds": 173,
     "sourcePath": "src/transcripts/txt/2022-12-31_T19-00-17_ticonderoga-1981-class-aegis-covers-it-all_pdffbdPgIrE.txt"
   },
   {
@@ -26326,12 +26787,16 @@
     "start": "5:04",
     "startSeconds": 304,
     "youtubeUrl": "https://www.youtube.com/watch?v=pdffbdPgIrE&t=304s",
-    "summary": "The Spruance-class baseline shows why the Ticonderoga hull had useful machinery and upgrade potential but little spare room once Aegis demands were added.",
-    "body": "Dr. Clarke uses the Spruance class to show what the Ticonderoga design inherited: gas turbines, speed, general-purpose escort utility, and some upgrade capacity. The important comparison is that a roomy destroyer hull becomes far less roomy once it is filled with cruiser-level air-warfare systems. That helps explain both the class's power and the cramped design compromises that appear later in the video.",
+    "summary": "The Spruance-class baseline shows how a roomy general-purpose destroyer became a much tighter platform once cruiser-level air-warfare systems were added.",
+    "body": "Dr. Clarke uses the Spruance class to establish what the Ticonderoga design inherited: gas-turbine machinery, good speed, general-purpose escort utility, and useful upgrade capacity. He notes that many Spruances later received a 61-cell Mark 41 vertical-launch system, demonstrating the baseline hull's available growth margin. That comparison is central to the Ticonderoga story because an adaptable destroyer hull becomes far less adaptable when it is filled from the outset with cruiser-level sensors, command spaces, and weapons. The passage therefore explains both why the common-hull approach was attractive and why later modernization became difficult.",
     "topics": [
       {
         "slug": "ticonderoga-class",
         "title": "Ticonderoga Class"
+      },
+      {
+        "slug": "spruance-class",
+        "title": "Spruance Class"
       },
       {
         "slug": "destroyers",
@@ -26349,13 +26814,13 @@
     "evidence": [
       {
         "start": "5:04",
-        "end": "6:20",
-        "note": "The transcript describes Spruance displacement, gas turbines, speed, and VLS upgrades."
+        "end": "6:37",
+        "note": "The transcript describes Spruance displacement, machinery, speed, general-purpose role, and VLS upgrades."
       },
       {
-        "start": "7:16",
+        "start": "6:48",
         "end": "7:31",
-        "note": "The transcript warns that filling out the design leaves much less space for future growth."
+        "note": "It discusses further Spruance upgrades and warns that filling the baseline design leaves much less growth space."
       }
     ],
     "end": "7:31",
@@ -26374,8 +26839,8 @@
     "start": "7:31",
     "startSeconds": 451,
     "youtubeUrl": "https://www.youtube.com/watch?v=pdffbdPgIrE&t=451s",
-    "summary": "A force-structure aside connects the Ticonderoga redesignation to Cold War cruiser counts and the political appeal of closing a perceived cruiser gap.",
-    "body": "This section is useful for understanding why ship classifications can become arguments about national strength. Dr. Clarke explains that calling the Ticonderogas cruisers helped answer a political cruiser-count problem even when the ships were not much larger than destroyers. The point matters because the same naming dynamic can shape procurement debates long after the technical boundary has blurred.",
+    "summary": "Cold War cruiser counts help explain why redesignating the Ticonderogas offered political value even though their hulls remained close to destroyer size.",
+    "body": "This section shows how warship classifications can become arguments about national strength. Dr. Clarke links the 1980 cruiser redesignation to concern over the apparent Soviet cruiser advantage and to political attention focused on category totals. His hypothetical Chinese redesignation illustrates how a name change can create the appearance of a fleet imbalance without changing a ship's combat capability. The takeaway is that keeping the Ticonderogas in the cruiser column helped close a perceived cruiser gap even as the technical boundary between cruiser and destroyer blurred.",
     "topics": [
       {
         "slug": "ticonderoga-class",
@@ -26392,22 +26857,83 @@
       {
         "slug": "force-structure",
         "title": "Force Structure"
+      },
+      {
+        "slug": "naval-classification",
+        "title": "Naval Classification"
       }
     ],
     "evidence": [
       {
         "start": "7:31",
         "end": "8:50",
-        "note": "The transcript links the 1980 cruiser redesignation to problematic cruiser registers and cruiser-gap rhetoric."
+        "note": "The transcript links the redesignation to problematic cruiser registers and illustrates the politics with a hypothetical Chinese cruiser label."
       },
       {
-        "start": "9:09",
+        "start": "8:53",
         "end": "10:14",
-        "note": "The discussion describes category-count politics and why keeping Ticonderogas as cruisers mattered."
+        "note": "The discussion emphasizes category-count politics and says retaining the Ticonderogas as cruisers helped eliminate the cruiser gap."
       }
     ],
     "end": "10:14",
     "endSeconds": 614,
+    "sourcePath": "src/transcripts/txt/2022-12-31_T19-00-17_ticonderoga-1981-class-aegis-covers-it-all_pdffbdPgIrE.txt"
+  },
+  {
+    "id": "peer-threat-rationale-and-post-cold-war-cuts",
+    "slug": "peer-threat-rationale-and-post-cold-war-cuts",
+    "title": "Why the strike-cruiser case collapsed after the Cold War",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "pdffbdPgIrE",
+    "videoSlug": "ticonderoga-1981-class-aegis-covers-it-all",
+    "videoTitle": "Ticonderoga(1981) Class: Aegis Covers it All",
+    "start": "10:18",
+    "startSeconds": 618,
+    "youtubeUrl": "https://www.youtube.com/watch?v=pdffbdPgIrE&t=618s",
+    "summary": "The end of the Soviet peer threat removed the strategic and budgetary case for a large strike cruiser while an existing ship already carried the cruiser label.",
+    "body": "Dr. Clarke explains that the Soviet peer threat once supplied a geostrategic rationale for both the strike-cruiser program and the Ticonderogas. After 1990-1991, that rationale weakened and expensive programs became much harder to defend. The Ticonderoga could be imagined as a smaller scout cruiser only in relation to the much larger strike cruiser that never entered service. Because the Navy was already building a ship officially called a cruiser, the label also complicated attempts to justify a separate, costlier cruiser program. This is a useful procurement lesson in how threat assumptions, budgets, and classification interact.",
+    "topics": [
+      {
+        "slug": "ticonderoga-class",
+        "title": "Ticonderoga Class"
+      },
+      {
+        "slug": "strike-cruisers",
+        "title": "Strike Cruisers"
+      },
+      {
+        "slug": "naval-procurement",
+        "title": "Naval Procurement"
+      },
+      {
+        "slug": "cold-war",
+        "title": "Cold War"
+      },
+      {
+        "slug": "us-navy",
+        "title": "US Navy"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "10:18",
+        "end": "11:36",
+        "note": "The transcript says the peer threat justified high-end cruiser programs in the 1980s, then describes the post-1990 loss of that case."
+      },
+      {
+        "start": "11:42",
+        "end": "12:14",
+        "note": "It uses the ship's limited Kevlar armor to qualify the scout-cruiser analogy."
+      },
+      {
+        "start": "13:32",
+        "end": "13:49",
+        "note": "The discussion says a separate strike cruiser became difficult to justify when another ship already carried the cruiser name."
+      }
+    ],
+    "end": "13:49",
+    "endSeconds": 829,
     "sourcePath": "src/transcripts/txt/2022-12-31_T19-00-17_ticonderoga-1981-class-aegis-covers-it-all_pdffbdPgIrE.txt"
   },
   {
@@ -26422,20 +26948,24 @@
     "start": "13:49",
     "startSeconds": 829,
     "youtubeUrl": "https://www.youtube.com/watch?v=pdffbdPgIrE&t=829s",
-    "summary": "The video turns to the Aegis combat system and SPY-1 radar, including why powerful 1970s sensor technology still needed environmental tuning.",
-    "body": "This watch point explains the core capability that made the class historically important: Aegis paired with large fixed-panel SPY-1 radars. Dr. Clarke presents the ships as a Spruance-derived hull reshaped above the deck to exploit that sensor and combat-system package. The Lebanon example adds a practical caveat, showing how powerful radars still needed operators and settings adapted to terrain, clutter, and false alarms.",
+    "summary": "The video explains how Aegis and the fixed-panel SPY-1 radar transformed the Spruance-derived hull, then uses operations off Lebanon to show why sensor settings still mattered.",
+    "body": "This watch point covers the capability that made the class historically important: the Aegis combat system paired with large fixed-panel SPY-1 radars. The hull remained Spruance-derived, but the ship above the main deck was arranged around the new sensor and command-system package. Dr. Clarke describes SPY-1 as exceptionally powerful for 1970s technology and gives its publicly stated reach as roughly 200 nautical miles. The Lebanon example supplies the operational caveat: insects, mountainous terrain, and clutter produced false alarms until operators could adjust attenuation, sensitivity, and threat sectors. The lesson is that advanced fleet air defence depended on both hardware and the ability to tune that hardware to local conditions.",
     "topics": [
       {
         "slug": "ticonderoga-class",
         "title": "Ticonderoga Class"
       },
       {
-        "slug": "air-defence",
-        "title": "Air Defence"
+        "slug": "aegis-combat-system",
+        "title": "Aegis Combat System"
       },
       {
-        "slug": "missiles",
-        "title": "Missiles"
+        "slug": "spy-1-radar",
+        "title": "Spy 1 Radar"
+      },
+      {
+        "slug": "air-defence",
+        "title": "Air Defence"
       },
       {
         "slug": "us-navy",
@@ -26450,8 +26980,13 @@
       },
       {
         "start": "15:41",
+        "end": "16:55",
+        "note": "It discusses SPY-1 effectiveness, false alarms off Lebanon, and operator changes to sensitivity and threat sectors."
+      },
+      {
+        "start": "17:10",
         "end": "17:39",
-        "note": "The transcript discusses SPY-1 effectiveness, false alarms off Lebanon, and operator sensitivity changes."
+        "note": "The transcript gives the public range figure and emphasizes the radar's broad coverage."
       }
     ],
     "end": "17:39",
@@ -26470,12 +27005,20 @@
     "start": "17:39",
     "startSeconds": 1059,
     "youtubeUrl": "https://www.youtube.com/watch?v=pdffbdPgIrE&t=1059s",
-    "summary": "The weapons discussion compares early twin Mark 26 launchers with later VLS ships that carried a larger and more flexible missile battery.",
-    "body": "This time note is the clearest missile-system comparison in the video. The early Ticonderogas carried rail launchers with Standard and ASROC loads, while later ships from CG-52 onward gained two 61-cell VLS banks. That difference turns the class from a capable air-defence ship into a much more flexible missile platform with Standard, ESSM, Tomahawk, and ASROC options.",
+    "summary": "The weapons comparison shows how ships from CG-52 onward exchanged twin-arm launchers for two 61-cell VLS banks and a broader missile mix.",
+    "body": "This passage gives the clearest missile-system comparison in the video. The early Ticonderogas used two Mark 26 twin-arm launchers and carried a combined load of Standard surface-to-air missiles and ASROC anti-submarine weapons. Beginning with CG-52, later ships received two 61-cell Mark 41 VLS banks, raising nominal capacity from 88 to 122 weapons. The VLS battery could accept Standard missiles, Evolved Sea Sparrow Missiles, Tomahawk cruise missiles, and ASROC. Besides carrying more weapons, the cell arrangement removed the need to position a missile on a trainable rail before launch and made the class a more flexible strike and escort platform.",
     "topics": [
       {
         "slug": "ticonderoga-class",
         "title": "Ticonderoga Class"
+      },
+      {
+        "slug": "mark-26-launcher",
+        "title": "Mark 26 Launcher"
+      },
+      {
+        "slug": "mark-41-vls",
+        "title": "Mark 41 VLS"
       },
       {
         "slug": "missiles",
@@ -26494,12 +27037,12 @@
       {
         "start": "17:39",
         "end": "19:03",
-        "note": "The transcript describes the original Mark 26 missile launchers and missile load."
+        "note": "The transcript describes the original Mark 26 launchers and their Standard-missile and ASROC load."
       },
       {
         "start": "19:04",
         "end": "20:21",
-        "note": "The transcript explains the VLS change, 122 cells, missile options, and launch flexibility."
+        "note": "It explains the 122-cell VLS fit, compatible missile types, increased capacity, and launch advantage."
       }
     ],
     "end": "20:21",
@@ -26507,9 +27050,57 @@
     "sourcePath": "src/transcripts/txt/2022-12-31_T19-00-17_ticonderoga-1981-class-aegis-covers-it-all_pdffbdPgIrE.txt"
   },
   {
-    "id": "crowded-hull-and-retirement-pressure",
-    "slug": "crowded-hull-and-retirement-pressure",
-    "title": "Crowded hulls, refit cost, and retirement pressure",
+    "id": "guns-torpedoes-and-limited-kevlar-protection",
+    "slug": "guns-torpedoes-and-limited-kevlar-protection",
+    "title": "Guns, torpedoes, and limited Kevlar protection",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "pdffbdPgIrE",
+    "videoSlug": "ticonderoga-1981-class-aegis-covers-it-all",
+    "videoTitle": "Ticonderoga(1981) Class: Aegis Covers it All",
+    "start": "20:21",
+    "startSeconds": 1221,
+    "youtubeUrl": "https://www.youtube.com/watch?v=pdffbdPgIrE&t=1221s",
+    "summary": "The non-missile fit combines two 5-inch guns and torpedo tubes with only limited Kevlar splinter protection around critical spaces.",
+    "body": "The missile battery did not exhaust the class's armament. Dr. Clarke identifies two 5-inch Mark 45 guns and triple torpedo tubes, giving the ships gunfire and close anti-submarine options alongside their missile load. He then contrasts this broad offensive fit with the limited Kevlar splinter protection fitted around critical areas. His discussion treats that protection as mitigation against fragments and spalling rather than conventional cruiser armor. The comparison helps explain why he resists treating the Ticonderogas as direct successors to heavily protected historical cruisers.",
+    "topics": [
+      {
+        "slug": "ticonderoga-class",
+        "title": "Ticonderoga Class"
+      },
+      {
+        "slug": "naval-weapons",
+        "title": "Naval Weapons"
+      },
+      {
+        "slug": "naval-armour",
+        "title": "Naval Armour"
+      },
+      {
+        "slug": "ship-survivability",
+        "title": "Ship Survivability"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "20:21",
+        "end": "20:49",
+        "note": "The transcript lists the two 5-inch Mark 45 guns, torpedo tubes, and limited Kevlar protection."
+      },
+      {
+        "start": "20:54",
+        "end": "22:03",
+        "note": "Dr. Clarke considers what Kevlar could stop and distinguishes splinter or spall protection from resistance to major weapon effects."
+      }
+    ],
+    "end": "22:03",
+    "endSeconds": 1323,
+    "sourcePath": "src/transcripts/txt/2022-12-31_T19-00-17_ticonderoga-1981-class-aegis-covers-it-all_pdffbdPgIrE.txt"
+  },
+  {
+    "id": "modernization-cost-and-retirement-pressure",
+    "slug": "modernization-cost-and-retirement-pressure",
+    "title": "Modernization spending versus early retirement",
     "kind": "chapter",
     "kindLabel": "Chapter",
     "videoId": "pdffbdPgIrE",
@@ -26518,16 +27109,16 @@
     "start": "22:03",
     "startSeconds": 1323,
     "youtubeUrl": "https://www.youtube.com/watch?v=pdffbdPgIrE&t=1323s",
-    "summary": "A lifecycle section connects early retirements and refit disputes to a dense Spruance-derived hull carrying far more cruiser equipment.",
-    "body": "Dr. Clarke moves from the weapons fit to the service-life problem: the class is effective, but the hull is crowded and difficult to keep modern. He compares Spruance and Ticonderoga dimensions to show how much extra displacement and equipment were packed into almost the same length and beam. The active-service and retirement examples then make the design tradeoff concrete, especially for ships facing costly life-extension work.",
+    "summary": "The class's retirement debate turns on whether recently modernized ships justify the cost of keeping crowded, aging hulls in service.",
+    "body": "Dr. Clarke begins the lifecycle discussion with the five early ships that never received VLS and left service in 2004-2005. He then turns to later ships whose modernization history made retirement politically contentious. USS Vicksburg is the key example because Congress could point to a recent, expensive service-life extension when the Navy proposed disposing of the ship. The passage shows why sunk refit costs, current readiness, and future maintenance needs can pull retirement decisions in different directions. It also prepares the later explanation of why the Navy regarded the tightly packed class as expensive to sustain.",
     "topics": [
       {
         "slug": "ticonderoga-class",
         "title": "Ticonderoga Class"
       },
       {
-        "slug": "ship-design",
-        "title": "Ship Design"
+        "slug": "naval-modernization",
+        "title": "Naval Modernization"
       },
       {
         "slug": "naval-procurement",
@@ -26541,18 +27132,113 @@
     "evidence": [
       {
         "start": "22:03",
-        "end": "23:17",
-        "note": "The transcript discusses early non-VLS retirements, Vicksburg, and life-extension spending."
+        "end": "22:27",
+        "note": "The transcript notes that the five non-VLS ships had already been retired in 2004-2005."
       },
+      {
+        "start": "22:31",
+        "end": "23:17",
+        "note": "It discusses refit status, congressional resistance, and USS Vicksburg's recent service-life-extension spending."
+      }
+    ],
+    "end": "23:17",
+    "endSeconds": 1397,
+    "sourcePath": "src/transcripts/txt/2022-12-31_T19-00-17_ticonderoga-1981-class-aegis-covers-it-all_pdffbdPgIrE.txt"
+  },
+  {
+    "id": "spruance-hull-density-and-growth-margin",
+    "slug": "spruance-hull-density-and-growth-margin",
+    "title": "How the Spruance hull lost its growth margin",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "pdffbdPgIrE",
+    "videoSlug": "ticonderoga-1981-class-aegis-covers-it-all",
+    "videoTitle": "Ticonderoga(1981) Class: Aegis Covers it All",
+    "start": "23:17",
+    "startSeconds": 1397,
+    "youtubeUrl": "https://www.youtube.com/watch?v=pdffbdPgIrE&t=1397s",
+    "summary": "Dimension and displacement comparisons reveal how roughly 1,600 extra tons of equipment were packed into a hull scarcely larger than a Spruance destroyer.",
+    "body": "This watch point quantifies the density problem behind the class's modernization limits. Dr. Clarke compares Ticonderoga and Spruance dimensions and finds only about a metre of additional length, the same beam, and greater draft, despite roughly 1,600 more tons at full load. The difference represents sensors, weapons, command spaces, and supporting equipment crowded into nearly the same footprint. He compares that loss of spare volume with later Arleigh Burke flights, where added systems similarly consume the original margin. His conclusion is that a future high-end escort needs a hull in roughly the 13,000-to-15,000-ton range if it is to retain space for development.",
+    "topics": [
+      {
+        "slug": "ticonderoga-class",
+        "title": "Ticonderoga Class"
+      },
+      {
+        "slug": "spruance-class",
+        "title": "Spruance Class"
+      },
+      {
+        "slug": "arleigh-burke-class",
+        "title": "Arleigh Burke Class"
+      },
+      {
+        "slug": "ship-design",
+        "title": "Ship Design"
+      },
+      {
+        "slug": "naval-modernization",
+        "title": "Naval Modernization"
+      }
+    ],
+    "evidence": [
       {
         "start": "23:17",
         "end": "25:10",
-        "note": "The transcript compares Ticonderoga and Spruance dimensions and emphasizes how jam-packed the hull became."
+        "note": "The transcript compares Ticonderoga and Spruance dimensions, displacement, and the density of the cruiser equipment fit."
       },
       {
+        "start": "25:14",
+        "end": "26:12",
+        "note": "It compares disappearing growth space in later Burke flights and argues that DDG(X)-scale displacement creates needed room."
+      }
+    ],
+    "end": "26:12",
+    "endSeconds": 1572,
+    "sourcePath": "src/transcripts/txt/2022-12-31_T19-00-17_ticonderoga-1981-class-aegis-covers-it-all_pdffbdPgIrE.txt"
+  },
+  {
+    "id": "pacific-concentration-and-short-service-lives",
+    "slug": "pacific-concentration-and-short-service-lives",
+    "title": "Pacific concentration and shortened service lives",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "pdffbdPgIrE",
+    "videoSlug": "ticonderoga-1981-class-aegis-covers-it-all",
+    "videoTitle": "Ticonderoga(1981) Class: Aegis Covers it All",
+    "start": "26:24",
+    "startSeconds": 1584,
+    "youtubeUrl": "https://www.youtube.com/watch?v=pdffbdPgIrE&t=1584s",
+    "summary": "The 2022 active list placed roughly two-thirds of the remaining cruisers in the Pacific while several retired ships had served less than three decades.",
+    "body": "Dr. Clarke pauses over the class's force-distribution pattern as it stood when the video was recorded. Eleven of the seventeen ships listed in active service were assigned to the Pacific, including both the oldest and youngest active examples. He then explains how ships could leave service before the nominal 35-year point by not entering another major refit. Two examples had served less than 29 years, although he notes that one had suffered accidents that helped explain its earlier disposal. The passage connects fleet geography, material condition, refit choices, and headline service-life figures.",
+    "topics": [
+      {
+        "slug": "ticonderoga-class",
+        "title": "Ticonderoga Class"
+      },
+      {
+        "slug": "pacific-fleet",
+        "title": "Pacific Fleet"
+      },
+      {
+        "slug": "fleet-readiness",
+        "title": "Fleet Readiness"
+      },
+      {
+        "slug": "us-navy",
+        "title": "US Navy"
+      }
+    ],
+    "evidence": [
+      {
         "start": "26:24",
+        "end": "27:09",
+        "note": "The transcript says eleven of seventeen active ships were assigned to the Pacific and identifies the oldest and youngest active examples."
+      },
+      {
+        "start": "27:18",
         "end": "28:18",
-        "note": "The transcript notes Pacific assignment patterns and examples of early retirement age."
+        "note": "It explains the refit route to retirement and gives examples of ships leaving service before age 29."
       }
     ],
     "end": "28:18",
@@ -26560,9 +27246,9 @@
     "sourcePath": "src/transcripts/txt/2022-12-31_T19-00-17_ticonderoga-1981-class-aegis-covers-it-all_pdffbdPgIrE.txt"
   },
   {
-    "id": "minimal-cruiser-ddgx-high-low-mix",
-    "slug": "minimal-cruiser-ddgx-high-low-mix",
-    "title": "The minimal cruiser and DDG(X) lesson",
+    "id": "bare-minimum-cruiser-role-package",
+    "slug": "bare-minimum-cruiser-role-package",
+    "title": "A cruiser-role package in the minimum hull",
     "kind": "notable_point",
     "kindLabel": "Notable Point",
     "videoId": "pdffbdPgIrE",
@@ -26571,12 +27257,172 @@
     "start": "28:18",
     "startSeconds": 1698,
     "youtubeUrl": "https://www.youtube.com/watch?v=pdffbdPgIrE&t=1698s",
-    "summary": "The closing argument treats the Ticonderogas as bare-minimum cruiser-role ships and links their replacement to a larger DDG(X) high-end escort.",
-    "body": "The final substantive section is a force-design lesson rather than a simple verdict on the class. Dr. Clarke argues that the Ticonderogas were not bad ships; they were a cruiser-role package placed into the smallest practical hull, with consequences for comfort, growth, and institutional affection. The DDG(X) comparison shows why the US Navy is looking back toward larger high-end escorts with more space, even if the future ship carries a destroyer label.",
+    "summary": "The Ticonderoga is presented as a capable cruiser-role package compressed into the smallest practical hull rather than as a bad ship.",
+    "body": "Dr. Clarke is careful to separate criticism of the design constraint from criticism of the ships' performance. His argument is that the Ticonderogas put everything needed for the cruiser role into a bare-minimum hull. He compares that mission-first approach with the Oliver Hazard Perry class, whose compact form was organized around a tightly defined escort role rather than appearance or generous margins. Calling the Ticonderoga the cruiser version of that philosophy highlights both its effectiveness and its lack of space. The watch point offers a concise verdict on why the class could be powerful without being an ideal long-term cruiser platform.",
     "topics": [
       {
         "slug": "ticonderoga-class",
         "title": "Ticonderoga Class"
+      },
+      {
+        "slug": "oliver-hazard-perry-class",
+        "title": "Oliver Hazard Perry Class"
+      },
+      {
+        "slug": "cruisers",
+        "title": "Cruisers"
+      },
+      {
+        "slug": "ship-design",
+        "title": "Ship Design"
+      },
+      {
+        "slug": "force-structure",
+        "title": "Force Structure"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "28:18",
+        "end": "29:37",
+        "note": "The transcript says the ships are not bad, compares them with the Oliver Hazard Perry mission-first design, and calls them the minimum hull for the cruiser role."
+      },
+      {
+        "start": "29:55",
+        "end": "30:00",
+        "note": "Dr. Clarke closes the comparison before turning to the institutional cost of the compromise."
+      }
+    ],
+    "end": "30:00",
+    "endSeconds": 1800,
+    "sourcePath": "src/transcripts/txt/2022-12-31_T19-00-17_ticonderoga-1981-class-aegis-covers-it-all_pdffbdPgIrE.txt"
+  },
+  {
+    "id": "surface-warfare-status-and-institutional-support",
+    "slug": "surface-warfare-status-and-institutional-support",
+    "title": "The surface fleet's missing prestige cruiser",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "pdffbdPgIrE",
+    "videoSlug": "ticonderoga-1981-class-aegis-covers-it-all",
+    "videoTitle": "Ticonderoga(1981) Class: Aegis Covers it All",
+    "start": "30:00",
+    "startSeconds": 1800,
+    "youtubeUrl": "https://www.youtube.com/watch?v=pdffbdPgIrE&t=1800s",
+    "summary": "The class never supplied surface-warfare officers with the prestige flagship imagined in the cancelled nuclear cruiser programs.",
+    "body": "The minimum-hull compromise also carried an institutional cost. Dr. Clarke argues that the Ticonderogas were never the large surface-combatant symbols many officers associated with the cancelled nuclear cruisers and strike cruisers. Aircraft carriers remained the Navy's great public showpieces, but he distinguishes their identity as products of naval aviation from the aspirations of the surface-warfare community. The Ticonderogas survived and performed important work, yet they could still be regarded as substitutes for the ships that community had wanted. This passage helps explain why service enthusiasm is not determined by combat capability alone.",
+    "topics": [
+      {
+        "slug": "ticonderoga-class",
+        "title": "Ticonderoga Class"
+      },
+      {
+        "slug": "strike-cruisers",
+        "title": "Strike Cruisers"
+      },
+      {
+        "slug": "surface-warfare",
+        "title": "Surface Warfare"
+      },
+      {
+        "slug": "naval-aviation",
+        "title": "Naval Aviation"
+      },
+      {
+        "slug": "us-navy",
+        "title": "US Navy"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "30:00",
+        "end": "30:33",
+        "note": "The transcript says the efficient compromise cost the class support because it was not the desired strike cruiser."
+      },
+      {
+        "start": "30:33",
+        "end": "31:35",
+        "note": "It contrasts carrier prestige within naval aviation with the surface officers' loss of nuclear and strike cruisers."
+      }
+    ],
+    "end": "31:35",
+    "endSeconds": 1895,
+    "sourcePath": "src/transcripts/txt/2022-12-31_T19-00-17_ticonderoga-1981-class-aegis-covers-it-all_pdffbdPgIrE.txt"
+  },
+  {
+    "id": "combat-system-layout-at-sea",
+    "slug": "combat-system-layout-at-sea",
+    "title": "When an efficient control-room layout meets a rolling ship",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "pdffbdPgIrE",
+    "videoSlug": "ticonderoga-1981-class-aegis-covers-it-all",
+    "videoTitle": "Ticonderoga(1981) Class: Aegis Covers it All",
+    "start": "31:35",
+    "startSeconds": 1895,
+    "youtubeUrl": "https://www.youtube.com/watch?v=pdffbdPgIrE&t=1895s",
+    "summary": "A control-panel arrangement optimized ashore becomes a lesson in human factors once ship motion can make the same layout uncomfortable at sea.",
+    "body": "Dr. Clarke uses the class's command-panel arrangement to illustrate the difference between a layout that works on land and one that works aboard a moving warship. The panels were positioned for efficient use of computers and electronics, but their orientation could amplify the discomfort produced by rolling and pitching. He describes the result as capable of causing motion sickness even among personnel without a previous susceptibility. The example turns the crowded-hull discussion into a human-factors problem rather than a purely geometric one. It also explains why a technically powerful combat system may still impose daily costs on its operators.",
+    "topics": [
+      {
+        "slug": "ticonderoga-class",
+        "title": "Ticonderoga Class"
+      },
+      {
+        "slug": "combat-information-centers",
+        "title": "Combat Information Centers"
+      },
+      {
+        "slug": "human-factors",
+        "title": "Human Factors"
+      },
+      {
+        "slug": "ship-design",
+        "title": "Ship Design"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "31:35",
+        "end": "32:30",
+        "note": "The transcript describes control panels arranged efficiently on land without sufficient allowance for ship motion and resulting seasickness."
+      },
+      {
+        "start": "32:30",
+        "end": "33:25",
+        "note": "Dr. Clarke qualifies the criticism, notes other class issues, and reiterates the value of SPY-1 and Aegis."
+      }
+    ],
+    "end": "33:25",
+    "endSeconds": 2005,
+    "sourcePath": "src/transcripts/txt/2022-12-31_T19-00-17_ticonderoga-1981-class-aegis-covers-it-all_pdffbdPgIrE.txt"
+  },
+  {
+    "id": "ddgx-and-the-variable-high-low-mix",
+    "slug": "ddgx-and-the-variable-high-low-mix",
+    "title": "DDG(X) and the variable meaning of high-low mix",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "pdffbdPgIrE",
+    "videoSlug": "ticonderoga-1981-class-aegis-covers-it-all",
+    "videoTitle": "Ticonderoga(1981) Class: Aegis Covers it All",
+    "start": "33:25",
+    "startSeconds": 2005,
+    "youtubeUrl": "https://www.youtube.com/watch?v=pdffbdPgIrE&t=2005s",
+    "summary": "The projected 13,000-ton DDG(X) leads into a force-planning lesson: the required high and low ends depend on the threat environment.",
+    "body": "The projected DDG(X) is larger and roomier than the Ticonderogas it is intended to replace, despite carrying a destroyer designation. Dr. Clarke treats that growth as an implicit acknowledgment that the cruiser mission needs more development margin than the Spruance-derived hull provided. He then warns that the familiar high-low mix is only shorthand because both ends change with the threat. An offshore patrol vessel may supply numbers in a permissive environment, whereas even the low end of a high-threat fleet may need to be a frigate. Likewise, a frigate can be the high-capability unit in a quiet setting but cannot substitute for a much more powerful escort where the threat is intense.",
+    "topics": [
+      {
+        "slug": "ticonderoga-class",
+        "title": "Ticonderoga Class"
+      },
+      {
+        "slug": "ddg-x",
+        "title": "Ddg X"
+      },
+      {
+        "slug": "high-low-mix",
+        "title": "High Low Mix"
       },
       {
         "slug": "force-structure",
@@ -26585,35 +27431,117 @@
       {
         "slug": "ship-design",
         "title": "Ship Design"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "33:25",
+        "end": "34:02",
+        "note": "The transcript describes DDG(X) as a much larger replacement and asks whether the Navy has the high-low mix right."
+      },
+      {
+        "start": "34:06",
+        "end": "35:25",
+        "note": "It explains how high- and low-capability requirements change between low- and high-threat environments."
+      }
+    ],
+    "end": "35:25",
+    "endSeconds": 2125,
+    "sourcePath": "src/transcripts/txt/2022-12-31_T19-00-17_ticonderoga-1981-class-aegis-covers-it-all_pdffbdPgIrE.txt"
+  },
+  {
+    "id": "bridge-height-sightlines-and-electronic-sensors",
+    "slug": "bridge-height-sightlines-and-electronic-sensors",
+    "title": "A high bridge trades more motion for longer sightlines",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "pdffbdPgIrE",
+    "videoSlug": "ticonderoga-1981-class-aegis-covers-it-all",
+    "videoTitle": "Ticonderoga(1981) Class: Aegis Covers it All",
+    "start": "35:25",
+    "startSeconds": 2125,
+    "youtubeUrl": "https://www.youtube.com/watch?v=pdffbdPgIrE&t=2125s",
+    "summary": "The class's high bridge increases motion but also improves the conning officer's visual horizon, a tradeoff partly altered by reliance on electronic sensors.",
+    "body": "The bridge position supplies a compact example of competing naval-design priorities. Placing it high increases the movement felt by personnel as the ship rolls, reinforcing the human-factors concern raised in the previous section. The same height also extends the visual horizon and helps officers conning the ship see farther. Dr. Clarke notes that modern navies rely more heavily on electronic sensors than on unaided eyesight, which changes the value assigned to that advantage. The segment is useful because it shows that a seemingly awkward feature can still offer a real operational benefit.",
+    "topics": [
+      {
+        "slug": "ticonderoga-class",
+        "title": "Ticonderoga Class"
+      },
+      {
+        "slug": "ship-design",
+        "title": "Ship Design"
+      },
+      {
+        "slug": "navigation",
+        "title": "Navigation"
+      },
+      {
+        "slug": "naval-sensors",
+        "title": "Naval Sensors"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "35:25",
+        "end": "35:58",
+        "note": "The transcript says the future ships will have larger command spaces and contrasts the Ticonderoga bridge's motion with its longer sightline."
+      },
+      {
+        "start": "36:09",
+        "end": "36:24",
+        "note": "Dr. Clarke notes the increasing reliance on electronic sensors rather than human eyesight."
+      }
+    ],
+    "end": "36:24",
+    "endSeconds": 2184,
+    "sourcePath": "src/transcripts/txt/2022-12-31_T19-00-17_ticonderoga-1981-class-aegis-covers-it-all_pdffbdPgIrE.txt"
+  },
+  {
+    "id": "cruiser-label-to-destroyer-role",
+    "slug": "cruiser-label-to-destroyer-role",
+    "title": "From cruiser labels back to destroyers doing the cruiser job",
+    "kind": "chapter",
+    "kindLabel": "Chapter",
+    "videoId": "pdffbdPgIrE",
+    "videoSlug": "ticonderoga-1981-class-aegis-covers-it-all",
+    "videoTitle": "Ticonderoga(1981) Class: Aegis Covers it All",
+    "start": "36:24",
+    "startSeconds": 2184,
+    "youtubeUrl": "https://www.youtube.com/watch?v=pdffbdPgIrE&t=2184s",
+    "summary": "The conclusion traces an American naming cycle from cruisers to destroyer leaders and back to destroyers that are larger than many ships once called cruisers.",
+    "body": "Dr. Clarke closes the design argument by following the changing labels attached to the cruiser role. Traditional cruisers gave way to large frigates or destroyer leaders that were subsequently called cruisers, while destroyer-derived Ticonderogas inherited the name in turn. As the Ticonderogas leave service, destroyers again assume the cruising and command role. The projected replacements are larger than many of the ships officially called cruisers in preceding decades. The sequence reinforces the video's central lesson that mission, fleet organization, and political context can matter more than the title painted onto a class.",
+    "topics": [
+      {
+        "slug": "ticonderoga-class",
+        "title": "Ticonderoga Class"
+      },
+      {
+        "slug": "cruisers",
+        "title": "Cruisers"
+      },
+      {
+        "slug": "destroyer-leaders",
+        "title": "Destroyer Leaders"
       },
       {
         "slug": "destroyers",
         "title": "Destroyers"
       },
       {
-        "slug": "cruisers",
-        "title": "Cruisers"
+        "slug": "naval-classification",
+        "title": "Naval Classification"
       }
     ],
     "evidence": [
       {
-        "start": "28:18",
-        "end": "29:37",
-        "note": "The transcript describes the ships as everything needed for the cruiser role in a bare-minimum hull."
-      },
-      {
-        "start": "30:00",
-        "end": "33:18",
-        "note": "The transcript discusses the cost in service support and the class's relationship to cancelled strike cruisers."
-      },
-      {
-        "start": "33:25",
-        "end": "36:59",
-        "note": "The transcript connects DDG(X), high-low-mix thinking, larger command spaces, and future cruiser-role destroyers."
+        "start": "36:24",
+        "end": "37:02",
+        "note": "The transcript traces the role from cruisers through destroyer leaders and destroyer-derived cruisers to larger destroyers replacing them."
       }
     ],
-    "end": "36:59",
-    "endSeconds": 2219,
+    "end": "37:02",
+    "endSeconds": 2222,
     "sourcePath": "src/transcripts/txt/2022-12-31_T19-00-17_ticonderoga-1981-class-aegis-covers-it-all_pdffbdPgIrE.txt"
   },
   {
@@ -28378,9 +29306,9 @@
     "sourcePath": "src/transcripts/txt/2023-02-17_T19-00-33_if-the-january-1939-tsingtao-incident-leads-to-war-comment-response_rLzJ8ZeybF4.txt"
   },
   {
-    "id": "tsingtao-mixed-caliber-battleship-gunnery",
-    "slug": "tsingtao-mixed-caliber-battleship-gunnery",
-    "title": "Why mixed main batteries fail at range",
+    "id": "tsingtao-5-25-inch-vs-6-inch-heavy-aa",
+    "slug": "tsingtao-5-25-inch-vs-6-inch-heavy-aa",
+    "title": "Why a 6-inch heavy-AA battery was unlikely",
     "kind": "qa",
     "kindLabel": "Q&A",
     "videoId": "rLzJ8ZeybF4",
@@ -28389,6 +29317,55 @@
     "start": "7:06",
     "startSeconds": 426,
     "youtubeUrl": "https://www.youtube.com/watch?v=rLzJ8ZeybF4&t=426s",
+    "summary": "A brief design answer places a proposed 6-inch anti-aircraft secondary battery against the Royal Navy's existing 5.25-inch development.",
+    "body": "The proposal combines medium and heavy anti-aircraft weapons with a long-barrel 6-inch secondary gun intended to engage bombers as well as cruisers. Dr. Clarke's answer is that the Royal Navy was already developing the 5.25-inch weapon, making a shift to 6-inch heavy AA doubtful. The exchange is a useful reminder that a counterfactual design must account for weapons already moving through the procurement system rather than selecting armament from a blank slate.",
+    "topics": [
+      {
+        "slug": "anti-aircraft-guns",
+        "title": "Anti Aircraft Guns"
+      },
+      {
+        "slug": "5-25-inch-guns",
+        "title": "5.25-inch Guns"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "ship-design",
+        "title": "Ship Design"
+      },
+      {
+        "slug": "naval-gunnery",
+        "title": "Naval Gunnery"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "7:06",
+        "end": "7:35",
+        "note": "The proposal calls for long-barrel 6-inch heavy AA secondaries, and the answer says the existing 5.25-inch development makes that choice unlikely."
+      }
+    ],
+    "end": "7:35",
+    "endSeconds": 455,
+    "question": "Would wartime experience push the Royal Navy toward long-barrel 6-inch secondary guns for high-altitude anti-aircraft fire?",
+    "answerShort": "Probably not. Dr. Clarke points to the 5.25-inch gun already in development and doubts that the Royal Navy would replace that course with a 6-inch heavy-AA weapon.",
+    "sourcePath": "src/transcripts/txt/2023-02-17_T19-00-33_if-the-january-1939-tsingtao-incident-leads-to-war-comment-response_rLzJ8ZeybF4.txt"
+  },
+  {
+    "id": "tsingtao-mixed-caliber-battleship-gunnery",
+    "slug": "tsingtao-mixed-caliber-battleship-gunnery",
+    "title": "Why mixed main batteries fail at range",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "rLzJ8ZeybF4",
+    "videoSlug": "if-the-january-1939-tsingtao-incident-leads-to-war-comment-response",
+    "videoTitle": "If the January 1939 Tsingtao incident leads to war... Comment Response",
+    "start": "7:51",
+    "startSeconds": 471,
+    "youtubeUrl": "https://www.youtube.com/watch?v=rLzJ8ZeybF4&t=471s",
     "summary": "A battleship-design answer explains why using lighter turrets to range for heavier guns defeats the point of dreadnought gunnery.",
     "body": "This watch point is a compact lesson in fire-control logic. Dr. Clarke argues that a 14-inch shell and an 18-inch shell behave too differently for one to provide reliable ranging information for the other, so mixing main armament creates problems rather than solving them. The answer links the specific counterfactual proposal back to the broader dreadnought move toward standardized batteries for long-range fire.",
     "topics": [
@@ -28411,9 +29388,9 @@
     ],
     "evidence": [
       {
-        "start": "7:06",
+        "start": "7:51",
         "end": "8:18",
-        "note": "The prompt proposes high-firepower AA, battlecruiser escorts, rapid-loading lighter turrets, and 18-inch-gun battleships."
+        "note": "The prompt proposes rapid-loading 12- to 14-inch turrets alongside 18-inch guns and suggests using the lighter battery for ranging."
       },
       {
         "start": "8:35",
@@ -28732,7 +29709,7 @@
     "startSeconds": 1589,
     "youtubeUrl": "https://www.youtube.com/watch?v=rLzJ8ZeybF4&t=1589s",
     "summary": "A Tsingtao-war answer weighs prestige deployments against basing, support, ship availability, and Germany's poor January 1939 readiness.",
-    "body": "The answer gives the counterfactual a practical naval constraint: German or Italian ships could appear, but only as supported pieces of an allied task group rather than self-sufficient Far East fleets. Dr. Clarke expects a fast capital ship rather than a Deutschland-class ship if Germany sends anything, and he is skeptical that Germany could seize the European moment in January 1939 because its forces are not ready for a western war. The watch point also touches Renown, Vanguard, the Kongos, cruiser gun depression, and the destructive effect of 6-inch shells at extreme close range.",
+    "body": "The answer gives the counterfactual a practical naval constraint: German or Italian ships could appear, but only as supported pieces of an allied task group rather than self-sufficient Far East fleets. Dr. Clarke expects a fast capital ship rather than a Deutschland-class ship if Germany sends anything, and he is skeptical that Germany could seize the European moment in January 1939 because its forces are not ready for a western war. The final part connects those readiness limits to British battlecruiser deployment, Renown's refit, and the possibility that accelerated King George V- and Lion-class work could prevent Vanguard from emerging in its historical form.",
     "topics": [
       {
         "slug": "kriegsmarine",
@@ -28770,17 +29747,62 @@
         "start": "28:48",
         "end": "29:11",
         "note": "The answer discusses battlecruiser redeployment, Renown's refit, and how King George V or Lion work might change Vanguard's fate."
-      },
-      {
-        "start": "29:13",
-        "end": "30:13",
-        "note": "The answer explains how 6-inch cruiser shells at close range could still cause crippling internal damage."
       }
     ],
-    "end": "31:20",
-    "endSeconds": 1880,
+    "end": "29:11",
+    "endSeconds": 1751,
     "question": "Could Germany and Italy support useful independent fleet deployments to a Far East war, or exploit the distraction in Europe?",
     "answerShort": "Dr. Clarke says their Far East deployments would depend on allied bases and support, while Germany in January 1939 is not ready for a western offensive.",
+    "sourcePath": "src/transcripts/txt/2023-02-17_T19-00-33_if-the-january-1939-tsingtao-incident-leads-to-war-comment-response_rLzJ8ZeybF4.txt"
+  },
+  {
+    "id": "tsingtao-close-range-6-inch-shell-damage",
+    "slug": "tsingtao-close-range-6-inch-shell-damage",
+    "title": "What 6-inch shells do at extreme close range",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "rLzJ8ZeybF4",
+    "videoSlug": "if-the-january-1939-tsingtao-incident-leads-to-war-comment-response",
+    "videoTitle": "If the January 1939 Tsingtao incident leads to war... Comment Response",
+    "start": "29:13",
+    "startSeconds": 1753,
+    "youtubeUrl": "https://www.youtube.com/watch?v=rLzJ8ZeybF4&t=1753s",
+    "summary": "A close-range gunnery answer explains why shallow gun depression would not make 6-inch cruiser fire harmless inside an opposing warship.",
+    "body": "The question tests whether turret depression would keep cruiser shells from reaching a target's vital spaces at an extraordinarily short range. Dr. Clarke answers that the guns could depress only about five degrees, but emphasizes that repeated 6-inch hits would still tear through the ship and destroy its structural integrity. Shells entering the upper structure could ricochet from the inside of the armor belt and detonate within the hull, with unpredictable paths and the possibility of reaching magazines. The key takeaway is that survival afloat would not mean the ship remained repairable or combat-effective.",
+    "topics": [
+      {
+        "slug": "cruisers",
+        "title": "Cruisers"
+      },
+      {
+        "slug": "naval-gunnery",
+        "title": "Naval Gunnery"
+      },
+      {
+        "slug": "armor",
+        "title": "Armor"
+      },
+      {
+        "slug": "ship-design",
+        "title": "Ship Design"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "29:13",
+        "end": "29:37",
+        "note": "The question asks about gun depression at roughly 60 meters, and the answer says 6-inch hits could destroy structural integrity or set off magazines."
+      },
+      {
+        "start": "29:41",
+        "end": "30:13",
+        "note": "The answer describes shells ricocheting from the inside of the armor belt and causing severe internal blast damage."
+      }
+    ],
+    "end": "30:13",
+    "endSeconds": 1813,
+    "question": "At roughly 60 meters, could cruiser 6-inch guns depress far enough to threaten an opposing ship's magazines rather than only its superstructure?",
+    "answerShort": "Even with about five degrees of depression, Dr. Clarke says the shells could wreck structural integrity, ricochet inside the armor belt, and possibly ignite magazines, leaving the target crippled even if it remained afloat.",
     "sourcePath": "src/transcripts/txt/2023-02-17_T19-00-33_if-the-january-1939-tsingtao-incident-leads-to-war-comment-response_rLzJ8ZeybF4.txt"
   },
   {
@@ -29067,6 +30089,60 @@
     "sourcePath": "src/transcripts/txt/2023-02-17_T19-00-33_if-the-january-1939-tsingtao-incident-leads-to-war-comment-response_rLzJ8ZeybF4.txt"
   },
   {
+    "id": "tsingtao-soviet-choice-in-wider-war",
+    "slug": "tsingtao-soviet-choice-in-wider-war",
+    "title": "Why the Soviet Union might attack Japan instead",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "rLzJ8ZeybF4",
+    "videoSlug": "if-the-january-1939-tsingtao-incident-leads-to-war-comment-response",
+    "videoTitle": "If the January 1939 Tsingtao incident leads to war... Comment Response",
+    "start": "47:50",
+    "startSeconds": 2870,
+    "youtubeUrl": "https://www.youtube.com/watch?v=rLzJ8ZeybF4&t=2870s",
+    "summary": "A short alliance counterfactual questions whether the Soviet Union would remain tied to Germany when an anti-Japanese coalition offered another strategic choice.",
+    "body": "The comment imagines Germany and the Soviet Union invading Poland while Britain, France, Italy, and eventually the United States are already engaged against Japan. It asks whether France would be left on the defensive, how Italy and Turkey would react, and what the arrangement would mean for Finland, Norway, India, and the Far East. Dr. Clarke's immediate counterpoint is that the Soviet Union might join the allies in attacking Japan instead. That possibility changes the alliance map and warns against treating the historical German-Soviet partnership as fixed under radically different Asian conditions.",
+    "topics": [
+      {
+        "slug": "alternate-history",
+        "title": "Alternate History"
+      },
+      {
+        "slug": "soviet-union",
+        "title": "Soviet Union"
+      },
+      {
+        "slug": "german-strategy",
+        "title": "German Strategy"
+      },
+      {
+        "slug": "japanese-navy",
+        "title": "Japanese Navy"
+      },
+      {
+        "slug": "naval-diplomacy",
+        "title": "Naval Diplomacy"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "47:50",
+        "end": "48:45",
+        "note": "The comment outlines a German-Soviet invasion of Poland and asks how the wider alliance and Far Eastern war would develop."
+      },
+      {
+        "start": "48:46",
+        "end": "48:54",
+        "note": "The answer suggests the Soviet Union might join the allies against Japan instead, increasing German isolation."
+      }
+    ],
+    "end": "48:54",
+    "endSeconds": 2934,
+    "question": "Could a German-Soviet invasion of Poland widen the Tsingtao war into an alternate Second World War while Britain remained focused on Japan?",
+    "answerShort": "Dr. Clarke suggests the Soviet Union might instead find it advantageous to join the coalition against Japan, leaving Germany more isolated than the proposed German-Soviet alignment assumes.",
+    "sourcePath": "src/transcripts/txt/2023-02-17_T19-00-33_if-the-january-1939-tsingtao-incident-leads-to-war-comment-response_rLzJ8ZeybF4.txt"
+  },
+  {
     "id": "tsingtao-vanguard-emergency-battleship-origin",
     "slug": "tsingtao-vanguard-emergency-battleship-origin",
     "title": "When the Vanguard idea becomes a design",
@@ -29238,6 +30314,60 @@
     "sourcePath": "src/transcripts/txt/2023-02-17_T19-00-33_if-the-january-1939-tsingtao-incident-leads-to-war-comment-response_rLzJ8ZeybF4.txt"
   },
   {
+    "id": "tsingtao-retaining-first-world-war-capital-ships",
+    "slug": "tsingtao-retaining-first-world-war-capital-ships",
+    "title": "Would surviving First World War ships stay in service?",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "rLzJ8ZeybF4",
+    "videoSlug": "if-the-january-1939-tsingtao-incident-leads-to-war-comment-response",
+    "videoTitle": "If the January 1939 Tsingtao incident leads to war... Comment Response",
+    "start": "53:05",
+    "startSeconds": 3185,
+    "youtubeUrl": "https://www.youtube.com/watch?v=rLzJ8ZeybF4&t=3185s",
+    "summary": "A fleet-retention answer balances the escort value of old capital ships against replacement construction, carrier strength, and crew demands.",
+    "body": "The comment argues that disposal takes time and that surviving First World War ships could still escort convoys in a later European conflict. Dr. Clarke accepts retention as possible but makes it conditional on the strategic situation and on how much newer construction the earlier war produced. More available carriers could reduce the need for old battleships, while their large complements could make them costly crew consumers. The exchange shows why an old ship's remaining mechanical life is only one part of a wartime retention decision.",
+    "topics": [
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "battleships",
+        "title": "Battleships"
+      },
+      {
+        "slug": "convoy-escort",
+        "title": "Convoy Escort"
+      },
+      {
+        "slug": "fleet-carriers",
+        "title": "Fleet Carriers"
+      },
+      {
+        "slug": "naval-procurement",
+        "title": "Naval Procurement"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "53:05",
+        "end": "53:17",
+        "note": "The comment proposes retaining surviving First World War ships for capital-ship convoy escort in a later European war."
+      },
+      {
+        "start": "53:17",
+        "end": "53:37",
+        "note": "The answer makes retention conditional on the scenario, replacement construction, carrier availability, and crew demands."
+      }
+    ],
+    "end": "53:37",
+    "endSeconds": 3217,
+    "question": "Would surviving First World War capital ships be retained for convoy escort if a European war followed the conflict with Japan?",
+    "answerShort": "Possibly, but Dr. Clarke says the choice would depend on the later war, how many replacements had been built, carrier availability, and whether the old ships consumed too many crew for the value they provided.",
+    "sourcePath": "src/transcripts/txt/2023-02-17_T19-00-33_if-the-january-1939-tsingtao-incident-leads-to-war-comment-response_rLzJ8ZeybF4.txt"
+  },
+  {
     "id": "tsingtao-soviet-manchuria-intervention",
     "slug": "tsingtao-soviet-manchuria-intervention",
     "title": "Soviet intervention in a collapsing Manchuria",
@@ -29280,10 +30410,55 @@
         "note": "The prompt asks about a Soviet seizure of Manchuria, and the answer makes Britain's reaction contingent on the Republic of China and its alliance relationship."
       }
     ],
-    "end": "54:07",
-    "endSeconds": 3247,
+    "end": "53:57",
+    "endSeconds": 3237,
     "question": "What happens if the Soviet Union attacks Manchuria after blockade pressure begins collapsing Japan's economy?",
     "answerShort": "Britain's response would depend chiefly on the Republic of China's position and whether Britain and China were allied at that point.",
+    "sourcePath": "src/transcripts/txt/2023-02-17_T19-00-33_if-the-january-1939-tsingtao-incident-leads-to-war-comment-response_rLzJ8ZeybF4.txt"
+  },
+  {
+    "id": "tsingtao-admiral-king-royal-navy-cooperation",
+    "slug": "tsingtao-admiral-king-royal-navy-cooperation",
+    "title": "Admiral King would still have to cooperate",
+    "kind": "qa",
+    "kindLabel": "Q&A",
+    "videoId": "rLzJ8ZeybF4",
+    "videoSlug": "if-the-january-1939-tsingtao-incident-leads-to-war-comment-response",
+    "videoTitle": "If the January 1939 Tsingtao incident leads to war... Comment Response",
+    "start": "54:00",
+    "startSeconds": 3240,
+    "youtubeUrl": "https://www.youtube.com/watch?v=rLzJ8ZeybF4&t=3240s",
+    "summary": "A compact answer separates Admiral King's presumed personal frustration from the coalition duty imposed by the war.",
+    "body": "The question uses Admiral King's likely reaction to test the human side of Anglo-American naval cooperation. Dr. Clarke answers humorously that King's blood pressure would be astronomical. The operational conclusion is nevertheless firm: he would have to assist the Royal Navy. This makes the exchange a concise pointer to the difference between a commander's preferences and the demands of coalition strategy.",
+    "topics": [
+      {
+        "slug": "us-navy",
+        "title": "US Navy"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "naval-diplomacy",
+        "title": "Naval Diplomacy"
+      },
+      {
+        "slug": "coalition-warfare",
+        "title": "Coalition Warfare"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "54:00",
+        "end": "54:07",
+        "note": "The question asks about Admiral King's reaction to helping the Royal Navy, and the answer says he would still have to do it despite extreme frustration."
+      }
+    ],
+    "end": "54:07",
+    "endSeconds": 3247,
+    "question": "How would Admiral Ernest King react to helping the Royal Navy in the Far East?",
+    "answerShort": "His blood pressure would be astronomical, Dr. Clarke jokes, but he would still have to cooperate.",
     "sourcePath": "src/transcripts/txt/2023-02-17_T19-00-33_if-the-january-1939-tsingtao-incident-leads-to-war-comment-response_rLzJ8ZeybF4.txt"
   },
   {
@@ -31823,6 +32998,45 @@
     "sourcePath": "src/transcripts/txt/2023-11-23_T03-00-35_hnlms-schorpioen-kss1-s6-comment-response_uaTHX4Bcqvg.txt"
   },
   {
+    "id": "research-investment-versus-fleet-size",
+    "slug": "research-investment-versus-fleet-size",
+    "title": "Naval research must be balanced against ships in service",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "un0NpeT9AqE",
+    "videoSlug": "check-campaign-13-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign",
+    "videoTitle": "Check Campaign 13: UAD has updated & to Learn it's new ways I started another British Campaign",
+    "start": "15:04",
+    "startSeconds": 904,
+    "youtubeUrl": "https://www.youtube.com/watch?v=un0NpeT9AqE&t=904s",
+    "summary": "A review of armor forging, fire control, radar, boilers, and minefields becomes a warning that technical investment is valuable only if enough ships are also built to use it.",
+    "body": "The research screen presents several improvements competing for attention at once, including armor production, torpedo control, rangefinding radar, boilers, and mine warfare. The speaker favors sustained investment because better sensors, machinery, and weapons shape the capability of future ships. He also warns against pursuing technology so aggressively that the fleet lacks the hulls needed for operations. This watch point frames naval modernization as a budget balance between qualitative improvement and deployable force size.",
+    "topics": [
+      {
+        "slug": "naval-procurement",
+        "title": "Naval Procurement"
+      },
+      {
+        "slug": "fleet-readiness",
+        "title": "Fleet Readiness"
+      },
+      {
+        "slug": "shipbuilding",
+        "title": "Shipbuilding"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "15:04",
+        "end": "16:16",
+        "note": "The speaker reviews armor, control stations, radar, boilers, and mine research, then cautions that research spending must be balanced against building a sufficiently large fleet."
+      }
+    ],
+    "end": "16:16",
+    "endSeconds": 976,
+    "sourcePath": "src/transcripts/txt/2024-04-15_T18-00-20_check-campaign-13-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_un0NpeT9AqE.txt"
+  },
+  {
     "id": "convoy-objective-before-escort-destruction",
     "slug": "convoy-objective-before-escort-destruction",
     "title": "A convoy attack succeeds by reaching the merchant ships",
@@ -31878,7 +33092,7 @@
     "startSeconds": 1776,
     "youtubeUrl": "https://www.youtube.com/watch?v=un0NpeT9AqE&t=1776s",
     "summary": "Cruisers are needed in quantity because naval theatres have too many routes and local threats for a fleet to cover from a few concentrated positions.",
-    "body": "The discussion compares the sea to a border with many gaps: hostile forces can approach through almost any route, so a navy needs self-sufficient ships spread across a wide area. Cruisers must be numerous enough to patrol, report contact, and hold out until stronger forces can respond, even when the immediate fight is not decisive.",
+    "body": "The discussion compares the sea to a border with many gaps: hostile forces can approach through almost any route, so a navy needs self-sufficient ships spread across a wide area. Unlike a land frontier, the ocean offers few fixed barriers that funnel every movement through a small number of defended positions. Cruisers must therefore be numerous enough to patrol trade routes, report contact, and hold out until stronger forces can respond. The passage explains why trade defense and interdiction consume cruiser strength even when no single patrol produces a decisive fleet action.",
     "topics": [
       {
         "slug": "cruisers",
@@ -32009,7 +33223,7 @@
     "startSeconds": 3238,
     "youtubeUrl": "https://www.youtube.com/watch?v=un0NpeT9AqE&t=3238s",
     "summary": "Torpedo-tube placement is a hull-design tradeoff: a forward or submerged installation can consume valuable volume, disrupt the bow, and add sealing problems.",
-    "body": "The discussion stresses that a submerged or partially turreted launcher adds complexity below the waterline, including pressure-tight seals, maintenance, and damage vulnerability. Bow installations also compete with the hull form that most affects a ship's movement through the water, so extra firing arcs are not free performance.",
+    "body": "The discussion stresses that a submerged or partially trainable launcher adds complexity below the waterline. Its moving parts and opening must preserve a watertight seal while remaining maintainable and usable after damage. A bow installation also occupies the part of the hull that most strongly shapes movement through the water and is exposed to heavy structural loads when damaged. The extra firing arc is therefore purchased with internal volume, sealing risk, hull-form compromises, and more difficult damage control.",
     "topics": [
       {
         "slug": "ship-design",
@@ -32094,7 +33308,7 @@
     "startSeconds": 4368,
     "youtubeUrl": "https://www.youtube.com/watch?v=un0NpeT9AqE&t=4368s",
     "summary": "A Battle of Jutland comparison shows why fast scouts must deliver usable contact reports to the battle line, not merely find the enemy.",
-    "body": "The speaker uses a fast capital ship keeping contact for a distant force as an illustration of the scouting task intended for Beatty's battlecruisers at Jutland. The point is not simply speed or gunfire: reconnaissance only helps if reporting, signal handling, and the command staff turn contact into a coordinated response by the main fleet.",
+    "body": "The speaker uses a fast capital ship keeping contact for a distant force as an illustration of the scouting task intended for Beatty's battlecruisers at Jutland. The scout's value lies in feeding targeting and position information to the battle line rather than defeating the enemy alone. That cooperation depends on radios, clear reports, competent signal handling, and a staff able to convert contact into coordinated fleet movement. The discussion contrasts Beatty's staff choices with the qualified communications specialist James Somerville, showing that reconnaissance can fail through command organization even when the ships find the enemy.",
     "topics": [
       {
         "slug": "battle-of-jutland",
@@ -32199,6 +33413,45 @@
     "sourcePath": "src/transcripts/txt/2024-04-15_T18-00-20_check-campaign-13-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_un0NpeT9AqE.txt"
   },
   {
+    "id": "withdrawal-before-encirclement-becomes-destruction",
+    "slug": "withdrawal-before-encirclement-becomes-destruction",
+    "title": "A beaten force must use the remaining gap to withdraw",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "un0NpeT9AqE",
+    "videoSlug": "check-campaign-13-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign",
+    "videoTitle": "Check Campaign 13: UAD has updated & to Learn it's new ways I started another British Campaign",
+    "start": "1:45:25",
+    "startSeconds": 6325,
+    "youtubeUrl": "https://www.youtube.com/watch?v=un0NpeT9AqE&t=6325s",
+    "summary": "Once the French light forces are surrounded and unable to hide in smoke, preserving ships and crews depends on recognizing defeat and escaping through the one open sector.",
+    "body": "The battle has shifted from a contested engagement to an encirclement, with British ships on nearly every bearing and too little fog or smoke to break contact. The speaker identifies a remaining gap and argues that the French commander should drive every surviving ship toward it. Continuing to circle inside the enemy formation only invites destruction without changing the result. This watch point shows that tactical judgment includes recognizing when the original mission has failed and preserving the force for future operations.",
+    "topics": [
+      {
+        "slug": "naval-tactics",
+        "title": "Naval Tactics"
+      },
+      {
+        "slug": "fleet-readiness",
+        "title": "Fleet Readiness"
+      },
+      {
+        "slug": "screening-forces",
+        "title": "Screening Forces"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "1:45:25",
+        "end": "1:48:19",
+        "note": "The speaker describes the French force surrounded by British ships, identifies the one open gap, and explains that a commanding officer must recognize when a battle is lost and withdraw."
+      }
+    ],
+    "end": "1:48:19",
+    "endSeconds": 6499,
+    "sourcePath": "src/transcripts/txt/2024-04-15_T18-00-20_check-campaign-13-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_un0NpeT9AqE.txt"
+  },
+  {
     "id": "combat-results-reveal-design-flaws",
     "slug": "combat-results-reveal-design-flaws",
     "title": "Combat results expose warship design flaws",
@@ -32263,7 +33516,7 @@
     "startSeconds": 6503,
     "youtubeUrl": "https://www.youtube.com/watch?v=un0NpeT9AqE&t=6503s",
     "summary": "Even when a battleship's heavy shells are hard to land on a distant destroyer, a penetrating hit can inflict destructive flooding and structural damage.",
-    "body": "The speaker notes that firing a capital ship's main battery at a small, manoeuvring target is inefficient and implies that larger threats have already been addressed. But an oversized shell need not detonate cleanly to be dangerous: the kinetic damage from crossing a lightly built hull can open major holes, flood the ship, or tear apart its structure.",
+    "body": "The speaker notes that firing a capital ship's main battery at a small, manoeuvring destroyer is inefficient because the probability of a long-range hit is low. Doing so also implies that the battleship is confident the enemy's larger threats have already been addressed and can spare its heavy ammunition. An oversized armor-piercing shell may pass through a lightly built hull without detonating as intended, but that does not make the hit harmless. Its kinetic energy can punch large entry and exit holes, admit flooding, and wrench apart the destroyer's structure.",
     "topics": [
       {
         "slug": "battleships",
@@ -32354,7 +33607,7 @@
     "startSeconds": 6734,
     "youtubeUrl": "https://www.youtube.com/watch?v=un0NpeT9AqE&t=6734s",
     "summary": "A fast destroyer can break contact by changing course and stretching a search, but smoke at the wrong range may advertise rather than hide its position.",
-    "body": "The discussion explains that high speed creates options only if a ship uses angles, distance, and uncertainty to escape a pursuer's search pattern. It also warns that smoke is not automatically concealment: at long range, a conspicuous smoke screen can reveal the very position it was meant to obscure.",
+    "body": "The discussion explains that high speed creates options only if a ship uses angles, distance, and uncertainty to escape a pursuer's search pattern. A destroyer capable of roughly 30 to 34 knots can often open enough separation that even a faster pursuer cannot predict every course change. The commander must exploit that freedom by turning away from the expected line of pursuit rather than continuing along an obvious track. Smoke is not automatically concealment either: at long range, a conspicuous screen can reveal the very position it was meant to obscure.",
     "topics": [
       {
         "slug": "destroyers",
@@ -32694,7 +33947,7 @@
     "startSeconds": 12073,
     "youtubeUrl": "https://www.youtube.com/watch?v=un0NpeT9AqE&t=12073s",
     "summary": "Reducing the Royal Navy from four flight decks to two makes even a minor maintenance problem visible at the level of national operations.",
-    "body": "The speaker uses a contemporary readiness problem to make a force-structure point: a two-carrier fleet has very little redundancy when one hull encounters even a modest technical interruption. The issue is not simply whether each carrier is individually capable, but whether the fleet has enough decks to absorb maintenance, training, and unexpected defects while still meeting operational commitments.",
+    "body": "The speaker uses a contemporary readiness problem to make a force-structure point: a two-carrier fleet has very little redundancy when one hull encounters even a modest technical interruption. Replacing four flight decks with two concentrates capability into fewer platforms, so the loss of one deck removes a much larger share of the available force. The issue is not simply whether each carrier is individually capable, but whether the fleet has enough decks to absorb maintenance, training, and unexpected defects. National-level availability can therefore depend on apparently minor problems aboard a single ship.",
     "topics": [
       {
         "slug": "aircraft-carriers",

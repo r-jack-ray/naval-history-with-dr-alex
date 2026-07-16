@@ -1963,11 +1963,15 @@
     "startSeconds": 24,
     "youtubeUrl": "https://www.youtube.com/watch?v=35dX_7S5wD0&t=24s",
     "summary": "The opening frames naval warfare around the ability to move goods across the sea or deny that movement through blockade, mines, submarines, or convoy protection.",
-    "body": "This video moment sets up commerce warfare as part of the basic logic of naval power. Dr. Clarke argues that navies exist because societies need the sea for movement, and that local control, convoy protection, or denial by blockade can matter as much as grand fleet command. It is a useful starting point for understanding why privateering and trade protection shape fleet design rather than sitting outside naval strategy.",
+    "body": "This opening establishes control of movement as the central purpose of naval warfare. A navy need not command every ocean to be useful: local control around a convoy may be enough to move essential goods. Conversely, a blockade, minefield, or submarine can deny an opponent even limited use of the sea. The passage therefore places commerce protection and commerce denial inside the basic logic of sea power rather than treating them as secondary missions.",
     "topics": [
       {
         "slug": "naval-strategy",
         "title": "Naval Strategy"
+      },
+      {
+        "slug": "sea-control",
+        "title": "Sea Control"
       },
       {
         "slug": "blockades",
@@ -2006,12 +2010,20 @@
     "start": "6:13",
     "startSeconds": 373,
     "youtubeUrl": "https://www.youtube.com/watch?v=35dX_7S5wD0&t=373s",
-    "summary": "A privateering overview explains how letters of marque gave privately funded ships legal cover to attack enemy trade and expand wartime naval capacity.",
-    "body": "Dr. Clarke distinguishes privateers from pirates by focusing on the government commission: the ship, crew, weapons, and risk remain private, but the state supplies legal authority. That makes privateering attractive to governments without large standing navies or enough infrastructure to maintain extra warships. The section also shows why merchant wealth and private ownership could become a reserve of wartime naval force.",
+    "summary": "Letters of marque gave privately financed ships legal cover to attack enemy trade and let governments draw wartime naval strength from merchant wealth.",
+    "body": "Dr. Clarke distinguishes a privateer from a pirate through the government commission supplied by a letter of marque. The owner still pays for the ship, crew, weapons, ammunition, and operational risk, while captured prizes provide the hoped-for return. This arrangement gives a government a self-financing auxiliary force and access to large privately owned ships when it lacks a standing navy or the infrastructure to maintain one. The final example also shows that privateering could cross national lines, with American owners offering ships to either Britain or France when wartime employment promised profit.",
     "topics": [
       {
         "slug": "commerce-raiding",
         "title": "Commerce Raiding"
+      },
+      {
+        "slug": "privateers",
+        "title": "Privateers"
+      },
+      {
+        "slug": "letters-of-marque",
+        "title": "Letters Of Marque"
       },
       {
         "slug": "age-of-sail",
@@ -2034,8 +2046,8 @@
       },
       {
         "start": "7:51",
-        "end": "8:58",
-        "note": "Private ships are tied to governments that lack large standing naval capacity."
+        "end": "10:26",
+        "note": "Privately owned ships supplement limited naval capacity, and American privateers later seek British or French employment."
       }
     ],
     "end": "10:26",
@@ -2054,12 +2066,16 @@
     "start": "10:29",
     "startSeconds": 629,
     "youtubeUrl": "https://www.youtube.com/watch?v=35dX_7S5wD0&t=629s",
-    "summary": "The Spanish and Portuguese treasure trades illustrate why rich maritime routes attracted privateers and forced merchants to trade cargo capacity against armament.",
-    "body": "This watch point turns treasure fleets into a practical example of economic warfare. The video treats Spanish and Portuguese global trade as both a source of imperial strength and an exposed vulnerability because the wealth moved across the high seas. It also points out the merchant-ship design problem: more guns can make a ship harder to take, but every gun and crewman reduces profitable cargo space.",
+    "summary": "Spanish and Portuguese treasure trades illustrate why rich maritime routes attracted privateers and forced merchants to trade cargo capacity against armament.",
+    "body": "The treasure fleets make the economic logic of privateering concrete: imperial wealth moving through an international commons resembles a convoy of armoured cars exposed to robbery. Spanish silver and other colonial goods finance military power, so attacking those routes promises both private profit and strategic effect. Dr. Clarke contrasts Portugal's rapid move toward heavily armed merchant ships with Spain's slower reaction. Every gun and extra crewman displaces saleable cargo, while Portugal's smaller population and sailor base also limit its ability simply to increase the number of ships, turning trade protection into a choice among firepower, carrying capacity, and fleet size.",
     "topics": [
       {
         "slug": "commerce-raiding",
         "title": "Commerce Raiding"
+      },
+      {
+        "slug": "treasure-fleets",
+        "title": "Treasure Fleets"
       },
       {
         "slug": "merchant-navy",
@@ -2070,8 +2086,12 @@
         "title": "Naval Strategy"
       },
       {
-        "slug": "spanish-navy",
-        "title": "Spanish Navy"
+        "slug": "spanish-empire",
+        "title": "Spanish Empire"
+      },
+      {
+        "slug": "portuguese-empire",
+        "title": "Portuguese Empire"
       }
     ],
     "evidence": [
@@ -2083,7 +2103,7 @@
       {
         "start": "13:16",
         "end": "14:45",
-        "note": "The transcript describes trade-defense choices and the cargo penalty of carrying more weapons."
+        "note": "The transcript contrasts Spanish and Portuguese responses and explains the cargo and manpower costs of arming trade."
       }
     ],
     "end": "14:45",
@@ -2091,9 +2111,9 @@
     "sourcePath": "src/transcripts/txt/2023-01-11_T19-00-02_privatising-war-guerre-de-course_35dX_7S5wD0.txt"
   },
   {
-    "id": "maritime-law-prize-rules-and-cruiser-rules",
-    "slug": "maritime-law-prize-rules-and-cruiser-rules",
-    "title": "Prize law and cruiser rules constrain commerce warfare",
+    "id": "precedent-flag-law-and-prize-law",
+    "slug": "precedent-flag-law-and-prize-law",
+    "title": "Precedent and flag law govern prizes at sea",
     "kind": "chapter",
     "kindLabel": "Chapter",
     "videoId": "35dX_7S5wD0",
@@ -2102,36 +2122,104 @@
     "start": "15:03",
     "startSeconds": 903,
     "youtubeUrl": "https://www.youtube.com/watch?v=35dX_7S5wD0&t=903s",
-    "summary": "A legal-history section connects Hugo Grotius, Admiralty courts, prize law, flags, and cruiser rules to the practical limits of attacking merchant ships.",
-    "body": "Dr. Clarke uses maritime law to explain why commerce warfare is not just a matter of finding and sinking trade. The discussion moves from precedent-based law and flag-state authority to cruiser rules requiring warning, stop-and-search, and crew safety when merchant ships are seized or destroyed. Submarines show the operational friction in those rules because a boat on the surface cannot easily search, hold crews, or remain safe while following legal expectations.",
+    "summary": "Hugo Grotius, Lord Stowell, William Murray, precedent, and flag-state authority introduce the legal foundations that make commerce warfare more than unrestricted attack.",
+    "body": "Dr. Clarke introduces legal thinkers and judges whose work shaped the rules applied to maritime prizes, including Hugo Grotius, Lord Stowell, and William Murray. Much of the law of the sea is presented as uncodified and precedent-based, closer to common law than to a single comprehensive statute. That matters because the high seas are international space, so rules depend on agreement, enforcement, and accumulated judgments rather than one territorial sovereign. A merchant vessel also carries the jurisdiction of its flag state, meaning interference can become an insult or casus belli instead of a purely commercial act.",
     "topics": [
+      {
+        "slug": "maritime-law",
+        "title": "Maritime Law"
+      },
+      {
+        "slug": "prize-law",
+        "title": "Prize Law"
+      },
       {
         "slug": "commerce-raiding",
         "title": "Commerce Raiding"
       },
       {
-        "slug": "naval-diplomacy",
-        "title": "Naval Diplomacy"
+        "slug": "hugo-grotius",
+        "title": "Hugo Grotius"
       },
       {
-        "slug": "maritime-security",
-        "title": "Maritime Security"
+        "slug": "admiralty-courts",
+        "title": "Admiralty Courts"
       },
       {
-        "slug": "naval-policy",
-        "title": "Naval Policy"
+        "slug": "flag-state-jurisdiction",
+        "title": "Flag State Jurisdiction"
       }
     ],
     "evidence": [
       {
         "start": "15:03",
+        "end": "16:18",
+        "note": "The transcript names Grotius, Stowell, and Murray as foundations for maritime and prize law."
+      },
+      {
+        "start": "16:38",
         "end": "20:11",
-        "note": "The transcript discusses maritime-law precedent, flag-state authority, and casus belli risks."
+        "note": "The transcript explains precedent, international waters, flag-state authority, and the risk that interference can lead to war."
+      }
+    ],
+    "end": "20:11",
+    "endSeconds": 1211,
+    "sourcePath": "src/transcripts/txt/2023-01-11_T19-00-02_privatising-war-guerre-de-course_35dX_7S5wD0.txt"
+  },
+  {
+    "id": "admiralty-courts-and-cruiser-rules",
+    "slug": "admiralty-courts-and-cruiser-rules",
+    "title": "Cruiser rules meet the realities of commerce attack",
+    "kind": "chapter",
+    "kindLabel": "Chapter",
+    "videoId": "35dX_7S5wD0",
+    "videoSlug": "privatising-war-guerre-de-course",
+    "videoTitle": "Privatising War: Guerre de Course",
+    "start": "20:16",
+    "startSeconds": 1216,
+    "youtubeUrl": "https://www.youtube.com/watch?v=35dX_7S5wD0&t=1216s",
+    "summary": "Centuries-old Admiralty courts and modern cruiser rules reveal the gap between legal expectations for stopping merchantmen and the operational limits of raiders and submarines.",
+    "body": "English Admiralty courts reach back to Edward III, giving prize disputes a much deeper history than the comparatively recent cruiser rules. Those rules generally require warning an unarmed ship, permit stop-and-search for contraband, and demand protection for crews when a vessel is seized or destroyed. Dr. Clarke tests the theory against Admiral Graf Spee's treatment of captured crews and the much harder problem facing First World War submarines. A surfaced submarine has little room for prisoners and becomes vulnerable while searching a merchant ship, so practical commerce attack repeatedly produces decisions that later return to Admiralty courts.",
+    "topics": [
+      {
+        "slug": "maritime-law",
+        "title": "Maritime Law"
+      },
+      {
+        "slug": "cruiser-rules",
+        "title": "Cruiser Rules"
+      },
+      {
+        "slug": "admiralty-courts",
+        "title": "Admiralty Courts"
+      },
+      {
+        "slug": "prize-law",
+        "title": "Prize Law"
+      },
+      {
+        "slug": "submarines",
+        "title": "Submarines"
+      },
+      {
+        "slug": "admiral-graf-spee",
+        "title": "Admiral Graf Spee"
+      },
+      {
+        "slug": "commerce-raiding",
+        "title": "Commerce Raiding"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "20:16",
+        "end": "21:44",
+        "note": "The transcript contrasts relatively recent cruiser rules with Admiralty courts and precedents dating to Edward III."
       },
       {
         "start": "21:51",
-        "end": "24:41",
-        "note": "The transcript lays out cruiser rules and then explains why submarines struggle to apply them."
+        "end": "25:41",
+        "note": "The transcript defines warning, search, contraband, and crew-safety rules, then tests them against Graf Spee and submarines."
       }
     ],
     "end": "25:41",
@@ -2139,23 +2227,79 @@
     "sourcePath": "src/transcripts/txt/2023-01-11_T19-00-02_privatising-war-guerre-de-course_35dX_7S5wD0.txt"
   },
   {
-    "id": "cruisers-and-convoys-act-1708",
-    "slug": "cruisers-and-convoys-act-1708",
-    "title": "The 1708 Cruisers and Convoys Act links trade defense to fleet design",
-    "kind": "chapter",
-    "kindLabel": "Chapter",
+    "id": "merchant-losses-vigo-bay-and-prize-farming",
+    "slug": "merchant-losses-vigo-bay-and-prize-farming",
+    "title": "Thousands of merchant losses force a trade-defense response",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
     "videoId": "35dX_7S5wD0",
     "videoSlug": "privatising-war-guerre-de-course",
     "videoTitle": "Privatising War: Guerre de Course",
     "start": "26:00",
     "startSeconds": 1560,
     "youtubeUrl": "https://www.youtube.com/watch?v=35dX_7S5wD0&t=1560s",
-    "summary": "The War of the Spanish Succession shows how heavy merchant losses pushed Britain toward regular naval trade protection and purpose-built convoy escorts.",
-    "body": "This section explains why the 1708 Cruisers and Convoys Act matters for naval development. After large merchant losses in the Nine Years' War and War of the Spanish Succession, Parliament moved beyond ad hoc privateering and directed the Royal Navy to provide regular trade-defense ships. Dr. Clarke connects that legislation to frigate roles, 18-gun vessels suited to privateer threats, and the funding structures that helped modern navies take shape.",
+    "summary": "Vigo Bay, French privateer successes, and the repeated capture and resale of merchantmen show the scale and economic machinery behind Britain's 1708 response.",
+    "body": "The War of the Spanish Succession supplies both a spectacular prize and a sustained trade-defense crisis. An Anglo-Dutch force captured the Spanish treasure fleet at Vigo Bay in 1702, while British merchant losses across this war and the Nine Years' War numbered in the thousands. Those totals included fishing boats and ships that might be condemned, resold, and even returned to their former owners and crews. Dr. Clarke describes that repeated capture-and-resale cycle as a form of farming, showing why commerce warfare could become an enduring business rather than a sequence of isolated raids.",
     "topics": [
+      {
+        "slug": "war-of-the-spanish-succession",
+        "title": "War Of The Spanish Succession"
+      },
+      {
+        "slug": "battle-of-vigo-bay",
+        "title": "Battle Of Vigo Bay"
+      },
       {
         "slug": "commerce-raiding",
         "title": "Commerce Raiding"
+      },
+      {
+        "slug": "privateers",
+        "title": "Privateers"
+      },
+      {
+        "slug": "merchant-navy",
+        "title": "Merchant Navy"
+      },
+      {
+        "slug": "prize-law",
+        "title": "Prize Law"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "26:00",
+        "end": "26:21",
+        "note": "The transcript identifies the Anglo-Dutch capture of the Spanish treasure fleet at Vigo Bay in October 1702."
+      },
+      {
+        "start": "27:27",
+        "end": "28:58",
+        "note": "The transcript gives merchant-loss estimates and explains how captured ships could be sold back into British ownership."
+      }
+    ],
+    "end": "28:58",
+    "endSeconds": 1738,
+    "sourcePath": "src/transcripts/txt/2023-01-11_T19-00-02_privatising-war-guerre-de-course_35dX_7S5wD0.txt"
+  },
+  {
+    "id": "cruisers-and-convoys-act-1708",
+    "slug": "cruisers-and-convoys-act-1708",
+    "title": "The 1708 Cruisers and Convoys Act reshapes fleet design",
+    "kind": "chapter",
+    "kindLabel": "Chapter",
+    "videoId": "35dX_7S5wD0",
+    "videoSlug": "privatising-war-guerre-de-course",
+    "videoTitle": "Privatising War: Guerre de Course",
+    "start": "29:07",
+    "startSeconds": 1747,
+    "youtubeUrl": "https://www.youtube.com/watch?v=35dX_7S5wD0&t=1747s",
+    "summary": "The 1708 Act assigns trade protection to the Royal Navy, encourages suitable escort construction, and makes permanent funding part of modern naval development.",
+    "body": "The 1708 Cruisers and Convoys Act marks a shift from relying on privateers alone toward a regular Royal Navy obligation to defend trade. Existing frigates emphasized speed, scouting, and interdiction, but convoy duty demanded numerous ships sturdy and well armed enough to defeat the more typical privateer. Dr. Clarke uses an 18-gun vessel as the practical answer to raiders carrying roughly ten guns, while noting that larger privateers existed. Once trade protection becomes a continuing mission in peace as well as war, governments must also create the infrastructure and funding that support a modern standing navy.",
+    "topics": [
+      {
+        "slug": "cruisers-and-convoys-act-1708",
+        "title": "Cruisers And Convoys Act 1708"
       },
       {
         "slug": "convoy-warfare",
@@ -2170,20 +2314,24 @@
         "title": "Naval Procurement"
       },
       {
-        "slug": "cruisers",
-        "title": "Cruisers"
+        "slug": "frigates",
+        "title": "Frigates"
+      },
+      {
+        "slug": "naval-finance",
+        "title": "Naval Finance"
       }
     ],
     "evidence": [
       {
-        "start": "26:00",
-        "end": "28:58",
-        "note": "The transcript links War of the Spanish Succession losses to the 1708 Act."
+        "start": "29:07",
+        "end": "30:12",
+        "note": "The transcript assigns trade defense to Royal Navy frigates and explains the role of numerous 18-gun ships against privateers."
       },
       {
-        "start": "29:07",
+        "start": "30:18",
         "end": "30:57",
-        "note": "The transcript explains Royal Navy trade protection requirements, frigates, 18-gun vessels, and funding."
+        "note": "The transcript connects permanent trade protection to peacetime funding, infrastructure, and modern naval development."
       }
     ],
     "end": "30:57",
@@ -2191,23 +2339,27 @@
     "sourcePath": "src/transcripts/txt/2023-01-11_T19-00-02_privatising-war-guerre-de-course_35dX_7S5wD0.txt"
   },
   {
-    "id": "napoleonic-war-privateers-and-alabama-claims",
-    "slug": "napoleonic-war-privateers-and-alabama-claims",
-    "title": "Privateers persist from the Napoleonic Wars to the Alabama claims",
-    "kind": "chapter",
-    "kindLabel": "Chapter",
+    "id": "napoleonic-and-war-of-1812-privateers",
+    "slug": "napoleonic-and-war-of-1812-privateers",
+    "title": "Privateers remain central in the Napoleonic Wars and 1812",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
     "videoId": "35dX_7S5wD0",
     "videoSlug": "privatising-war-guerre-de-course",
     "videoTitle": "Privatising War: Guerre de Course",
     "start": "31:10",
     "startSeconds": 1870,
     "youtubeUrl": "https://www.youtube.com/watch?v=35dX_7S5wD0&t=1870s",
-    "summary": "The video follows commerce raiding through French privateering, armed East Indiamen, the War of 1812, Confederate raiders, and the Alabama arbitration.",
-    "body": "Dr. Clarke shows that privateering did not vanish after the sail-era origins of letters of marque. French attacks on British commerce, heavily armed East Indiamen, and British and American privateers in the War of 1812 all keep commerce raiding central to naval war. The Alabama claims then turn Confederate raiders into a legal and diplomatic precedent, with Britain paying the United States while also gaining a rule it could later use to deter similar support for attacks on British trade.",
+    "summary": "French commerce raiders, armed East Indiamen, and American and British privateers keep privately organized maritime warfare important into the nineteenth century.",
+    "body": "Privateering continues well beyond its sixteenth-century origins. France licenses attacks on British trade during the Napoleonic Wars, but heavily armed East Indiamen can sometimes resist repeated attacks. Dr. Clarke then identifies American and British privateers as a major feature of the War of 1812. The compact comparison shows commerce warfare as a reciprocal contest involving raiders, armed merchantmen, and state policy rather than a uniquely French substitute for battle-fleet operations.",
     "topics": [
       {
         "slug": "commerce-raiding",
         "title": "Commerce Raiding"
+      },
+      {
+        "slug": "privateers",
+        "title": "Privateers"
       },
       {
         "slug": "napoleonic-wars",
@@ -2218,24 +2370,79 @@
         "title": "War Of 1812"
       },
       {
-        "slug": "american-civil-war",
-        "title": "American Civil War"
+        "slug": "east-indiamen",
+        "title": "East Indiamen"
       },
       {
-        "slug": "naval-diplomacy",
-        "title": "Naval Diplomacy"
+        "slug": "merchant-navy",
+        "title": "Merchant Navy"
       }
     ],
     "evidence": [
       {
         "start": "31:10",
-        "end": "32:25",
-        "note": "The transcript discusses French privateering, East Indiamen, War of 1812 privateers, and Confederate raiders."
+        "end": "32:00",
+        "note": "The transcript links French privateering, armed East Indiamen, and British and American privateers in the War of 1812."
+      }
+    ],
+    "end": "32:00",
+    "endSeconds": 1920,
+    "sourcePath": "src/transcripts/txt/2023-01-11_T19-00-02_privatising-war-guerre-de-course_35dX_7S5wD0.txt"
+  },
+  {
+    "id": "alabama-claims-and-international-arbitration",
+    "slug": "alabama-claims-and-international-arbitration",
+    "title": "The Alabama claims turn a raider dispute into international precedent",
+    "kind": "chapter",
+    "kindLabel": "Chapter",
+    "videoId": "35dX_7S5wD0",
+    "videoSlug": "privatising-war-guerre-de-course",
+    "videoTitle": "Privatising War: Guerre de Course",
+    "start": "32:04",
+    "startSeconds": 1924,
+    "youtubeUrl": "https://www.youtube.com/watch?v=35dX_7S5wD0&t=1924s",
+    "summary": "The dispute over British-built Confederate raiders produces compensation for the United States and a precedent that also protects Britain's maritime interests.",
+    "body": "The Confederate raiders change commerce warfare through the legal dispute that follows their construction in Britain. The United States argues that British knowledge of CSS Alabama and similar ships makes Britain responsible, while Britain faces a claim despite not previously accepting the rules applied against it. The Geneva tribunal awards compensation and helps establish international arbitration and the codification of public international law. Dr. Clarke emphasizes the double effect: the United States wins its case, but maritime-dependent Britain gains a powerful precedent for demanding compensation from any future state that enables attacks on British trade.",
+    "topics": [
+      {
+        "slug": "alabama-claims",
+        "title": "Alabama Claims"
       },
       {
-        "start": "32:29",
+        "slug": "css-alabama",
+        "title": "Css Alabama"
+      },
+      {
+        "slug": "american-civil-war",
+        "title": "American Civil War"
+      },
+      {
+        "slug": "international-arbitration",
+        "title": "International Arbitration"
+      },
+      {
+        "slug": "maritime-law",
+        "title": "Maritime Law"
+      },
+      {
+        "slug": "naval-diplomacy",
+        "title": "Naval Diplomacy"
+      },
+      {
+        "slug": "commerce-raiding",
+        "title": "Commerce Raiding"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "32:04",
+        "end": "34:37",
+        "note": "The transcript explains the claim over British-built Confederate raiders and identifies the international Geneva tribunal."
+      },
+      {
+        "start": "34:43",
         "end": "36:08",
-        "note": "The transcript explains the Alabama arbitration and its value as precedent for Britain."
+        "note": "The transcript connects the award to international arbitration and to Britain's future ability to invoke the same precedent."
       }
     ],
     "end": "36:08",
@@ -2243,20 +2450,24 @@
     "sourcePath": "src/transcripts/txt/2023-01-11_T19-00-02_privatising-war-guerre-de-course_35dX_7S5wD0.txt"
   },
   {
-    "id": "world-war-blockade-versus-u-boats",
-    "slug": "world-war-blockade-versus-u-boats",
-    "title": "Blockade and U-boats show two faces of economic warfare",
-    "kind": "notable_point",
-    "kindLabel": "Notable Point",
+    "id": "world-war-i-blockade-versus-u-boats",
+    "slug": "world-war-i-blockade-versus-u-boats",
+    "title": "Blockade and U-boats pursue economic war by different means",
+    "kind": "chapter",
+    "kindLabel": "Chapter",
     "videoId": "35dX_7S5wD0",
     "videoSlug": "privatising-war-guerre-de-course",
     "videoTitle": "Privatising War: Guerre de Course",
     "start": "36:10",
     "startSeconds": 2170,
     "youtubeUrl": "https://www.youtube.com/watch?v=35dX_7S5wD0&t=2170s",
-    "summary": "The World War examples contrast Germany's submarine commerce war with Britain's blockade system, legal stop-and-search, and global control of trade routes.",
-    "body": "This time note is useful for comparing weak-power and strong-power forms of guerre de course. Dr. Clarke argues that the U-boat campaign is less decisive than the British blockade because one tries to interdict trade while the other can cut an enemy off from the wider world. He also emphasizes the legal and geographic advantages of a maritime power that can stop, search, purchase, or confiscate cargo before it reaches Germany.",
+    "summary": "The First World War contrasts Germany's attempt to interdict British trade with Britain's wider ability to isolate Germany through blockade and global stop-and-search.",
+    "body": "Dr. Clarke contrasts the German U-boat campaign with the British blockade of Germany. Submarines try to reduce an enemy's trade, while the stronger maritime power can use geography and worldwide naval presence to cut an opponent off much more completely. Older British warships positioned on routes near South Africa or India can invoke cruiser rules to stop neutral merchantmen, search for war material, and confiscate or purchase it. The decisive point is not necessarily destruction at sea but ensuring that supplies never reach Germany and therefore cannot sustain its war effort.",
     "topics": [
+      {
+        "slug": "world-war-i",
+        "title": "World War I"
+      },
       {
         "slug": "commerce-raiding",
         "title": "Commerce Raiding"
@@ -2266,36 +2477,156 @@
         "title": "Blockades"
       },
       {
-        "slug": "world-war-i",
-        "title": "World War I"
+        "slug": "submarines",
+        "title": "Submarines"
       },
+      {
+        "slug": "u-boats",
+        "title": "U-Boats"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "economic-warfare",
+        "title": "Economic Warfare"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "36:10",
+        "end": "37:29",
+        "note": "The transcript contrasts U-boat interdiction with the more comprehensive British blockade and its geographic advantages."
+      },
+      {
+        "start": "37:35",
+        "end": "39:16",
+        "note": "The transcript explains global stop-and-search, British purchase or confiscation of war material, and the effect of supplies not reaching Germany."
+      }
+    ],
+    "end": "39:16",
+    "endSeconds": 2356,
+    "sourcePath": "src/transcripts/txt/2023-01-11_T19-00-02_privatising-war-guerre-de-course_35dX_7S5wD0.txt"
+  },
+  {
+    "id": "commerce-law-favors-maritime-power",
+    "slug": "commerce-law-favors-maritime-power",
+    "title": "Commerce-war rules favor the stronger maritime power",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "35dX_7S5wD0",
+    "videoSlug": "privatising-war-guerre-de-course",
+    "videoTitle": "Privatising War: Guerre de Course",
+    "start": "39:20",
+    "startSeconds": 2360,
+    "youtubeUrl": "https://www.youtube.com/watch?v=35dX_7S5wD0&t=2360s",
+    "summary": "The comparison between destructive U-boat attack and legalistic blockade explains why guerre de course can serve both weaker raiders and dominant sea powers.",
+    "body": "The U-boat campaign is less comprehensive than blockade and creates additional diplomatic costs because it destroys ships and angers neutral interests. This helps explain why guerre de course is often described as the weaker power's strategy, but Dr. Clarke argues that it can also be a major pillar of a stronger power's war plan. A dominant navy can apply economic pressure through accepted searches, courts, purchases, and confiscations that appear more legalistic than unrestricted destruction. The rules themselves tend to favor established maritime powers because those states possess the Admiralty courts, legal resources, and accumulated precedents that shape the system.",
+    "topics": [
+      {
+        "slug": "commerce-raiding",
+        "title": "Commerce Raiding"
+      },
+      {
+        "slug": "maritime-law",
+        "title": "Maritime Law"
+      },
+      {
+        "slug": "naval-strategy",
+        "title": "Naval Strategy"
+      },
+      {
+        "slug": "u-boats",
+        "title": "U-Boats"
+      },
+      {
+        "slug": "economic-warfare",
+        "title": "Economic Warfare"
+      },
+      {
+        "slug": "sea-power",
+        "title": "Sea Power"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "39:20",
+        "end": "40:14",
+        "note": "The transcript compares the effectiveness and political costs of U-boat attack with economic warfare by a stronger power."
+      },
+      {
+        "start": "40:16",
+        "end": "41:07",
+        "note": "The transcript argues that precedent-based maritime rules are shaped by and favor larger maritime powers."
+      }
+    ],
+    "end": "41:07",
+    "endSeconds": 2467,
+    "sourcePath": "src/transcripts/txt/2023-01-11_T19-00-02_privatising-war-guerre-de-course_35dX_7S5wD0.txt"
+  },
+  {
+    "id": "world-war-ii-commerce-war-beyond-atlantic",
+    "slug": "world-war-ii-commerce-war-beyond-atlantic",
+    "title": "Second World War commerce warfare spans every ocean",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "35dX_7S5wD0",
+    "videoSlug": "privatising-war-guerre-de-course",
+    "videoTitle": "Privatising War: Guerre de Course",
+    "start": "41:09",
+    "startSeconds": 2469,
+    "youtubeUrl": "https://www.youtube.com/watch?v=35dX_7S5wD0&t=2469s",
+    "summary": "The Battle of the Atlantic was only one part of a worldwide struggle over trade involving Allied, Axis, and Japanese submarines from the Arctic to the Pacific.",
+    "body": "The Second World War's economic struggle extends far beyond the Battle of the Atlantic. Dr. Clarke names the Arctic, Black Sea, Mediterranean, Indian Ocean, East and South China Seas, and western Pacific as active trade-war theatres. The examples include American submarines attacking Japanese shipping and German, Italian, and Japanese submarines operating against Dutch commerce in the Indian Ocean. German merchant traffic offers British submarines fewer targets because blockade already prevents much of it from sailing, demonstrating how sea control can suppress commerce before a raider ever encounters a ship.",
+    "topics": [
       {
         "slug": "second-world-war",
         "title": "Second World War"
-      },
-      {
-        "slug": "submarines",
-        "title": "Submarines"
       },
       {
         "slug": "battle-of-the-atlantic",
         "title": "Battle Of The Atlantic"
       },
       {
-        "slug": "royal-navy",
-        "title": "Royal Navy"
+        "slug": "commerce-raiding",
+        "title": "Commerce Raiding"
+      },
+      {
+        "slug": "blockades",
+        "title": "Blockades"
+      },
+      {
+        "slug": "submarines",
+        "title": "Submarines"
+      },
+      {
+        "slug": "arctic-ocean",
+        "title": "Arctic Ocean"
+      },
+      {
+        "slug": "mediterranean-sea",
+        "title": "Mediterranean Sea"
+      },
+      {
+        "slug": "indian-ocean",
+        "title": "Indian Ocean"
+      },
+      {
+        "slug": "pacific-ocean",
+        "title": "Pacific Ocean"
       }
     ],
     "evidence": [
       {
-        "start": "36:10",
-        "end": "39:08",
-        "note": "The transcript contrasts German U-boats with British blockade, stop-and-search, and neutral cargo control."
+        "start": "41:09",
+        "end": "41:50",
+        "note": "The transcript lists global trade-war theatres and gives examples involving American, German, Italian, and Japanese submarines."
       },
       {
-        "start": "39:20",
+        "start": "41:50",
         "end": "42:48",
-        "note": "The transcript compares weaker and stronger power methods and broadens World War II trade warfare beyond the Atlantic."
+        "note": "The transcript explains why blockade leaves fewer German merchant targets and speculates how returning loaded ships would be intercepted."
       }
     ],
     "end": "42:48",
@@ -2303,9 +2634,9 @@
     "sourcePath": "src/transcripts/txt/2023-01-11_T19-00-02_privatising-war-guerre-de-course_35dX_7S5wD0.txt"
   },
   {
-    "id": "commerce-war-shapes-shipbuilding-and-naval-purpose",
-    "slug": "commerce-war-shapes-shipbuilding-and-naval-purpose",
-    "title": "Commerce warfare shapes shipbuilding and the reason for navies",
+    "id": "commerce-war-shapes-shipbuilding",
+    "slug": "commerce-war-shapes-shipbuilding",
+    "title": "Commerce warfare shapes warships and merchant ships",
     "kind": "notable_point",
     "kindLabel": "Notable Point",
     "videoId": "35dX_7S5wD0",
@@ -2314,12 +2645,16 @@
     "start": "42:51",
     "startSeconds": 2571,
     "youtubeUrl": "https://www.youtube.com/watch?v=35dX_7S5wD0&t=2571s",
-    "summary": "The conclusion ties guerre de course to carronades, armed East Indiamen, privateer advertisements, blockade, merchant losses, and the public case for naval funding.",
-    "body": "Dr. Clarke closes by showing how commerce warfare affects both merchant and naval construction. Carronades, East Indiamen built to resemble warships, and advertised privateers in Bermuda all show private trade protection as part of the war effort, not just a French method. The broader strategic point is that merchant losses create a lasting political memory, while protecting friendly trade and closing enemy trade routes helps justify shifting the burden from private fleets to national naval taxation.",
+    "summary": "Carronades, warship-like East Indiamen, Bermudian privateers, and blockade show how commerce attack changes procurement on both sides of a war.",
+    "body": "Because naval strategy drives construction, a navy built around commerce attack needs suitable raiders while merchant shipping must be designed to survive them. Dr. Clarke points to carronades and East Indiamen made to resemble Royal Navy warships from a distance as practical responses. Advertisements for the Bermudian privateers Fortune of War and Princess Royal show privately armed ships participating directly in the British war effort. The example corrects the idea that privateering was only a French method: Britain also attacked enemy trade, while blockade prevented French and Spanish naval forces from protecting their own merchantmen and colonies.",
     "topics": [
       {
         "slug": "commerce-raiding",
         "title": "Commerce Raiding"
+      },
+      {
+        "slug": "privateers",
+        "title": "Privateers"
       },
       {
         "slug": "merchant-navy",
@@ -2334,8 +2669,12 @@
         "title": "Naval Procurement"
       },
       {
-        "slug": "naval-strategy",
-        "title": "Naval Strategy"
+        "slug": "carronades",
+        "title": "Carronades"
+      },
+      {
+        "slug": "east-indiamen",
+        "title": "East Indiamen"
       },
       {
         "slug": "blockades",
@@ -2345,13 +2684,116 @@
     "evidence": [
       {
         "start": "42:51",
-        "end": "45:48",
-        "note": "The transcript connects commerce raiding to procurement, carronades, East Indiamen, privateers, and blockade."
+        "end": "44:21",
+        "note": "The transcript connects commerce-war strategy to carronades, East Indiamen, and two armed Bermudian privateers."
       },
       {
+        "start": "44:26",
+        "end": "45:48",
+        "note": "The transcript presents privateering as a method used by both sides and links blockade to French and Spanish inability to protect trade."
+      }
+    ],
+    "end": "45:48",
+    "endSeconds": 2748,
+    "sourcePath": "src/transcripts/txt/2023-01-11_T19-00-02_privatising-war-guerre-de-course_35dX_7S5wD0.txt"
+  },
+  {
+    "id": "merchant-losses-justify-naval-power",
+    "slug": "merchant-losses-justify-naval-power",
+    "title": "Merchant losses make trade protection a test of naval value",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "35dX_7S5wD0",
+    "videoSlug": "privatising-war-guerre-de-course",
+    "videoTitle": "Privatising War: Guerre de Course",
+    "start": "46:00",
+    "startSeconds": 2760,
+    "youtubeUrl": "https://www.youtube.com/watch?v=35dX_7S5wD0&t=2760s",
+    "summary": "The political memory of lost merchantmen turns protection of maritime movement into a public measure of whether a navy is fulfilling its purpose.",
+    "body": "A lost warship can create an invasion scare, but the financial and social effects of losing thousands of merchant vessels produce a longer political memory. Dr. Clarke frames naval value through direct questions: can the fleet defend friendly commerce, keep its own maritime communications open, and close those available to the enemy? He then cautions that sea lines of communication are not fixed roads, since ships alter their tracks for efficiency, weather, waves, and currents across a broad navigable surface. Concentrating or restricting that freedom creates vulnerabilities that commerce warfare can exploit.",
+    "topics": [
+      {
+        "slug": "merchant-navy",
+        "title": "Merchant Navy"
+      },
+      {
+        "slug": "commerce-raiding",
+        "title": "Commerce Raiding"
+      },
+      {
+        "slug": "sea-lines-of-communication",
+        "title": "Sea Lines Of Communication"
+      },
+      {
+        "slug": "naval-strategy",
+        "title": "Naval Strategy"
+      },
+      {
+        "slug": "naval-policy",
+        "title": "Naval Policy"
+      },
+      {
+        "slug": "sea-control",
+        "title": "Sea Control"
+      }
+    ],
+    "evidence": [
+      {
         "start": "46:00",
+        "end": "47:09",
+        "note": "The transcript contrasts short-lived warship scares with the lasting memory of merchant losses and asks what a navy must protect or deny."
+      },
+      {
+        "start": "47:09",
+        "end": "48:02",
+        "note": "The transcript explains that sea lines of communication are flexible routes across a broad maritime surface, not fixed roadways."
+      }
+    ],
+    "end": "48:02",
+    "endSeconds": 2882,
+    "sourcePath": "src/transcripts/txt/2023-01-11_T19-00-02_privatising-war-guerre-de-course_35dX_7S5wD0.txt"
+  },
+  {
+    "id": "private-fleets-to-national-taxation",
+    "slug": "private-fleets-to-national-taxation",
+    "title": "Private fleets eventually justify national naval taxation",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "35dX_7S5wD0",
+    "videoSlug": "privatising-war-guerre-de-course",
+    "videoTitle": "Privatising War: Guerre de Course",
+    "start": "48:51",
+    "startSeconds": 2931,
+    "youtubeUrl": "https://www.youtube.com/watch?v=35dX_7S5wD0&t=2931s",
+    "summary": "The conclusion traces a reversal from privatizing wartime naval capacity to using the costs and losses of private shipping as a reason to fund a national navy.",
+    "body": "Privateering begins as a way to assemble maritime force without the state paying to build a royal navy. Over time, however, the expense of maintaining private armed ships and the losses suffered by merchant owners strengthen the case for permanent public protection. The burden moves from private capital toward national taxation and a standing fleet. That reversal connects commerce warfare to naval institutions: the same privatized system that supplements weak state capacity can help create political demand for a modern navy.",
+    "topics": [
+      {
+        "slug": "privateers",
+        "title": "Privateers"
+      },
+      {
+        "slug": "naval-finance",
+        "title": "Naval Finance"
+      },
+      {
+        "slug": "naval-policy",
+        "title": "Naval Policy"
+      },
+      {
+        "slug": "naval-procurement",
+        "title": "Naval Procurement"
+      },
+      {
+        "slug": "merchant-navy",
+        "title": "Merchant Navy"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "48:51",
         "end": "49:29",
-        "note": "The transcript links merchant losses, sea communications, and the shift from private fleet burdens to national taxation."
+        "note": "The transcript describes private fleets as an alternative to a royal navy and then as a reason to shift the burden toward national taxation."
       }
     ],
     "end": "49:29",
@@ -34059,6 +34501,63 @@
     "sourcePath": "src/transcripts/txt/2023-03-13_T19-00-12_empire-total-war-twitch-stream-5-march-2023_U8Bx0xiIS3Y.txt"
   },
   {
+    "id": "carrier-design-lag-and-conversion-compromises",
+    "slug": "carrier-design-lag-and-conversion-compromises",
+    "title": "Carrier design could lag behind carrier doctrine",
+    "kind": "chapter",
+    "kindLabel": "Chapter",
+    "videoId": "U9BS9ES3kxk",
+    "videoSlug": "treaty-era-aircraft-carriers-a-discussion",
+    "videoTitle": "Treaty Era Aircraft Carriers: A Discussion",
+    "start": "0:49",
+    "startSeconds": 49,
+    "youtubeUrl": "https://www.youtube.com/watch?v=U9BS9ES3kxk&t=49s",
+    "summary": "Long construction times and compromised conversion hulls could leave a carrier embodying yesterday's doctrine by the time it entered service.",
+    "body": "Dr. Clarke opens by separating carrier specifications from the harder question of why navies chose particular designs. Aircraft-carrier doctrine could change during the years required to design and build a ship, turning a predicted white elephant into a useful carrier or an apparent ideal into a disappointment. Early construction also consumed treaty tonnage when institutional understanding was least mature. Battlecruiser and large-cruiser conversions added another layer of compromise because a gunship's weight distribution, balance, and metacentric height were not designed for hangars and a flight deck.",
+    "topics": [
+      {
+        "slug": "fleet-carriers",
+        "title": "Fleet Carriers"
+      },
+      {
+        "slug": "naval-aviation",
+        "title": "Naval Aviation"
+      },
+      {
+        "slug": "ship-design",
+        "title": "Ship Design"
+      },
+      {
+        "slug": "naval-doctrine",
+        "title": "Naval Doctrine"
+      },
+      {
+        "slug": "carrier-conversions",
+        "title": "Carrier Conversions"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "0:49",
+        "end": "1:46",
+        "note": "The transcript explains that doctrine could change while a carrier was being built, reversing expectations about whether the completed ship would be useful."
+      },
+      {
+        "start": "2:01",
+        "end": "2:20",
+        "note": "The transcript links early carrier construction to consuming treaty tonnage when navies had their least developed understanding of efficient design."
+      },
+      {
+        "start": "2:20",
+        "end": "3:24",
+        "note": "The transcript describes conversion inefficiency and contrasts the weight distribution and metacentric-height requirements of gunnery ships and aircraft carriers."
+      }
+    ],
+    "end": "3:24",
+    "endSeconds": 204,
+    "sourcePath": "src/transcripts/txt/2024-05-08_T18-00-21_treaty-era-aircraft-carriers-a-discussion_U9BS9ES3kxk.txt"
+  },
+  {
     "id": "treaty-carrier-rules-and-uncertainty",
     "slug": "treaty-carrier-rules-and-uncertainty",
     "title": "Treaty rules show carrier uncertainty",
@@ -34088,6 +34587,14 @@
       {
         "slug": "interwar-navy",
         "title": "Interwar Navy"
+      },
+      {
+        "slug": "washington-naval-treaty",
+        "title": "Washington Naval Treaty"
+      },
+      {
+        "slug": "standard-displacement",
+        "title": "Standard Displacement"
       }
     ],
     "evidence": [
@@ -34141,6 +34648,22 @@
       {
         "slug": "naval-doctrine",
         "title": "Naval Doctrine"
+      },
+      {
+        "slug": "hms-furious",
+        "title": "HMS Furious"
+      },
+      {
+        "slug": "hms-courageous",
+        "title": "HMS Courageous"
+      },
+      {
+        "slug": "hms-glorious",
+        "title": "HMS Glorious"
+      },
+      {
+        "slug": "night-carrier-operations",
+        "title": "Night Carrier Operations"
       }
     ],
     "evidence": [
@@ -34156,12 +34679,12 @@
       },
       {
         "start": "17:33",
-        "end": "19:06",
+        "end": "19:04",
         "note": "The transcript connects British carrier use to worldwide doctrine and night strike or night flying development."
       }
     ],
-    "end": "19:06",
-    "endSeconds": 1146,
+    "end": "19:04",
+    "endSeconds": 1144,
     "sourcePath": "src/transcripts/txt/2024-05-08_T18-00-21_treaty-era-aircraft-carriers-a-discussion_U9BS9ES3kxk.txt"
   },
   {
@@ -34194,6 +34717,22 @@
       {
         "slug": "fleet-carriers",
         "title": "Fleet Carriers"
+      },
+      {
+        "slug": "akagi",
+        "title": "Akagi"
+      },
+      {
+        "slug": "kaga",
+        "title": "Kaga"
+      },
+      {
+        "slug": "hms-hermes",
+        "title": "HMS Hermes"
+      },
+      {
+        "slug": "hosho",
+        "title": "Hosho"
       }
     ],
     "evidence": [
@@ -34247,6 +34786,18 @@
       {
         "slug": "ship-design",
         "title": "Ship Design"
+      },
+      {
+        "slug": "uss-lexington",
+        "title": "USS Lexington"
+      },
+      {
+        "slug": "uss-saratoga",
+        "title": "USS Saratoga"
+      },
+      {
+        "slug": "uss-ranger",
+        "title": "USS Ranger"
       }
     ],
     "evidence": [
@@ -34268,6 +34819,67 @@
     ],
     "end": "29:11",
     "endSeconds": 1751,
+    "sourcePath": "src/transcripts/txt/2024-05-08_T18-00-21_treaty-era-aircraft-carriers-a-discussion_U9BS9ES3kxk.txt"
+  },
+  {
+    "id": "flush-deck-carrier-evidence-and-institutional-learning",
+    "slug": "flush-deck-carrier-evidence-and-institutional-learning",
+    "title": "British operating evidence challenges the flush-deck carrier",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "U9BS9ES3kxk",
+    "videoSlug": "treaty-era-aircraft-carriers-a-discussion",
+    "videoTitle": "Treaty Era Aircraft Carriers: A Discussion",
+    "start": "28:38",
+    "startSeconds": 1718,
+    "youtubeUrl": "https://www.youtube.com/watch?v=U9BS9ES3kxk&t=1718s",
+    "summary": "The US Bureau of Aeronautics' attachment to flush-deck carriers illustrates how institutional preferences could resist allied operational evidence.",
+    "body": "This passage uses the US Bureau of Aeronautics to show that carrier development depended on institutions accepting unwelcome evidence. A US naval attaché obtained Royal Navy reports on operating flush-deck carriers, yet advocates could still argue that an American version would avoid the British problems. Dr. Clarke contrasts that theoretical confidence with the fleet experience that made Lexington and Saratoga effective tools for testing and operationalizing US doctrine. The episode is a useful case study in why trials, exercises, and information exchange mattered as much as design-board logic.",
+    "topics": [
+      {
+        "slug": "us-navy",
+        "title": "US Navy"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "naval-aviation",
+        "title": "Naval Aviation"
+      },
+      {
+        "slug": "ship-design",
+        "title": "Ship Design"
+      },
+      {
+        "slug": "naval-doctrine",
+        "title": "Naval Doctrine"
+      },
+      {
+        "slug": "flush-deck-carriers",
+        "title": "Flush Deck Carriers"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "28:38",
+        "end": "29:32",
+        "note": "The transcript describes the Bureau of Aeronautics' preference for flush-deck carriers and a naval attaché obtaining British operating reports."
+      },
+      {
+        "start": "29:32",
+        "end": "30:49",
+        "note": "The transcript says the bureau could discount British experience by assuming an American flush-deck design would work better."
+      },
+      {
+        "start": "31:02",
+        "end": "31:58",
+        "note": "The transcript credits Lexington and Saratoga with confirming and operationalizing doctrine previously developed through war gaming."
+      }
+    ],
+    "end": "31:58",
+    "endSeconds": 1918,
     "sourcePath": "src/transcripts/txt/2024-05-08_T18-00-21_treaty-era-aircraft-carriers-a-discussion_U9BS9ES3kxk.txt"
   },
   {
@@ -34300,6 +34912,18 @@
       {
         "slug": "ship-design",
         "title": "Ship Design"
+      },
+      {
+        "slug": "london-naval-treaty",
+        "title": "London Naval Treaty"
+      },
+      {
+        "slug": "light-carriers",
+        "title": "Light Carriers"
+      },
+      {
+        "slug": "convoy-protection",
+        "title": "Convoy Protection"
       }
     ],
     "evidence": [
@@ -34324,19 +34948,88 @@
     "sourcePath": "src/transcripts/txt/2024-05-08_T18-00-21_treaty-era-aircraft-carriers-a-discussion_U9BS9ES3kxk.txt"
   },
   {
-    "id": "ranger-yorktown-and-american-alpha-strike",
-    "slug": "ranger-yorktown-and-american-alpha-strike",
-    "title": "Ranger and Yorktown clarify the US alpha-strike model",
-    "kind": "chapter",
-    "kindLabel": "Chapter",
+    "id": "light-carrier-treaty-counterfactual",
+    "slug": "light-carrier-treaty-counterfactual",
+    "title": "A separate light-carrier allowance could reshape fleet roles",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "U9BS9ES3kxk",
+    "videoSlug": "treaty-era-aircraft-carriers-a-discussion",
+    "videoTitle": "Treaty Era Aircraft Carriers: A Discussion",
+    "start": "38:49",
+    "startSeconds": 2329,
+    "youtubeUrl": "https://www.youtube.com/watch?v=U9BS9ES3kxk&t=2329s",
+    "summary": "A counterfactual light-carrier category shows how treaty architecture could distribute reconnaissance, convoy, anti-submarine, and fleet-support missions differently.",
+    "body": "Dr. Clarke tests an alternative London Treaty with separate cumulative allowances for fleet carriers and carriers below roughly 15,000 tons. The Royal Navy could then assign reconnaissance, convoy escort, anti-submarine warfare, and fleet-supply duties to smaller ships instead of risking Courageous or Ark Royal. Larger fleet carriers could concentrate on strike power and survivability because they no longer had to cover every cruising mission. He also suggests that legitimizing limited Japanese small-carrier construction might have felt less exclusionary than simply closing the perceived loophole.",
+    "topics": [
+      {
+        "slug": "naval-treaties",
+        "title": "Naval Treaties"
+      },
+      {
+        "slug": "light-carriers",
+        "title": "Light Carriers"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "us-navy",
+        "title": "US Navy"
+      },
+      {
+        "slug": "japanese-navy",
+        "title": "Japanese Navy"
+      },
+      {
+        "slug": "convoy-protection",
+        "title": "Convoy Protection"
+      },
+      {
+        "slug": "anti-submarine-warfare",
+        "title": "Anti-Submarine Warfare"
+      },
+      {
+        "slug": "naval-logistics",
+        "title": "Naval Logistics"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "38:49",
+        "end": "40:42",
+        "note": "The transcript proposes proportional treaty allowances for carriers below about 15,000 tons and considers possible British, American, Japanese, French, and Italian designs."
+      },
+      {
+        "start": "40:52",
+        "end": "41:28",
+        "note": "The transcript suggests that permitting constrained Japanese small-carrier construction might have softened the sense that the treaty simply shut Japan down."
+      },
+      {
+        "start": "41:31",
+        "end": "43:24",
+        "note": "The transcript assigns anti-submarine, reconnaissance, convoy, cruising, and supply roles to hypothetical British light carriers and explores the effect on fleet-carrier design."
+      }
+    ],
+    "end": "43:24",
+    "endSeconds": 2604,
+    "sourcePath": "src/transcripts/txt/2024-05-08_T18-00-21_treaty-era-aircraft-carriers-a-discussion_U9BS9ES3kxk.txt"
+  },
+  {
+    "id": "ranger-infrastructure-and-design-overreach",
+    "slug": "ranger-infrastructure-and-design-overreach",
+    "title": "Ranger exposes infrastructure and innovation limits",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
     "videoId": "U9BS9ES3kxk",
     "videoSlug": "treaty-era-aircraft-carriers-a-discussion",
     "videoTitle": "Treaty Era Aircraft Carriers: A Discussion",
     "start": "45:12",
     "startSeconds": 2712,
     "youtubeUrl": "https://www.youtube.com/watch?v=U9BS9ES3kxk&t=2712s",
-    "summary": "Ranger's compromises and Yorktown's refinement show how the US Navy moved toward large air groups, rapid launch, and stronger carrier structure.",
-    "body": "Dr. Clarke treats Ranger as a serious attempt to turn Sims-era wargaming and Bureau of Aeronautics ideas into a treaty carrier. Her limitations reveal the risk of cramming too many design ideas into one hull and obsessing over weight while aircraft operations were changing. Yorktown and Enterprise then appear as the more mature expression of US doctrine: large air groups, quick offensive or defensive launch, and a stronger structure informed by Lexington, Saratoga, and fleet exercises.",
+    "summary": "Ranger's restrictions reveal that carrier usefulness depended on repair infrastructure and disciplined control of design innovation, not specifications alone.",
+    "body": "Ranger translated Sims-era war gaming and Bureau of Aeronautics ideas into a purpose-built treaty carrier, but operational experience exposed the limits of the paper design. Her return from Pacific to Atlantic duty was partly an infrastructure decision: east-coast facilities could repair recurring problems more readily even though Atlantic seas were rougher. She still proved useful in operations such as Torch, but Dr. Clarke argues that weight pressure and too many new ideas made her ill-suited to the highest-threat work. The discussion turns Ranger into a broader lesson about limiting the number of major untested innovations placed in a single hull.",
     "topics": [
       {
         "slug": "us-navy",
@@ -34357,27 +35050,172 @@
       {
         "slug": "ship-design",
         "title": "Ship Design"
+      },
+      {
+        "slug": "uss-ranger",
+        "title": "USS Ranger"
+      },
+      {
+        "slug": "naval-infrastructure",
+        "title": "Naval Infrastructure"
+      },
+      {
+        "slug": "operation-torch",
+        "title": "Operation Torch"
       }
     ],
     "evidence": [
       {
         "start": "45:12",
         "end": "47:34",
-        "note": "The transcript describes Ranger as a Sims and Bureau of Aeronautics design whose operational limits became clear, including Pacific infrastructure and structural concerns."
+        "note": "The transcript describes Ranger as a Sims and Bureau of Aeronautics design, explains the east-coast repair-infrastructure advantage, and notes her useful Operation Torch service."
       },
       {
+        "start": "47:17",
+        "end": "49:24",
+        "note": "The transcript connects Ranger's weight-saving compromises to a rule of thumb against combining too many revolutionary changes in one ship."
+      }
+    ],
+    "end": "49:24",
+    "endSeconds": 2964,
+    "sourcePath": "src/transcripts/txt/2024-05-08_T18-00-21_treaty-era-aircraft-carriers-a-discussion_U9BS9ES3kxk.txt"
+  },
+  {
+    "id": "american-alpha-strike-raiding-and-yorktown",
+    "slug": "american-alpha-strike-raiding-and-yorktown",
+    "title": "Yorktown embodies the US alpha-strike and raiding doctrine",
+    "kind": "chapter",
+    "kindLabel": "Chapter",
+    "videoId": "U9BS9ES3kxk",
+    "videoSlug": "treaty-era-aircraft-carriers-a-discussion",
+    "videoTitle": "Treaty Era Aircraft Carriers: A Discussion",
+    "start": "49:24",
+    "startSeconds": 2964,
+    "youtubeUrl": "https://www.youtube.com/watch?v=U9BS9ES3kxk&t=2964s",
+    "summary": "Large air groups, fast first punches, fleet exercises, and harbor-raiding practice converge in the Yorktown-class design.",
+    "body": "The US Navy preferred large air groups because its doctrine sought to put the strongest possible first punch into the air, whether attacking or defending. Yorktown and Enterprise refined the lessons of Lexington, Saratoga, Ranger, and the interwar Fleet Problems into stronger, faster treaty carriers. Their more enclosed structure answered Ranger's torsional weakness while their arrangement supported rapid aviation operations. Dr. Clarke then connects the design to a developing carrier-raiding doctrine, including exercises against Pearl Harbor, and explains why ships immobilized in port were attractive air-attack targets despite the difficulty of penetrating the harbor defenses.",
+    "topics": [
+      {
+        "slug": "us-navy",
+        "title": "US Navy"
+      },
+      {
+        "slug": "naval-aviation",
+        "title": "Naval Aviation"
+      },
+      {
+        "slug": "fleet-carriers",
+        "title": "Fleet Carriers"
+      },
+      {
+        "slug": "naval-doctrine",
+        "title": "Naval Doctrine"
+      },
+      {
+        "slug": "yorktown-class",
+        "title": "Yorktown Class"
+      },
+      {
+        "slug": "uss-enterprise",
+        "title": "USS Enterprise"
+      },
+      {
+        "slug": "fleet-problems",
+        "title": "Fleet Problems"
+      },
+      {
+        "slug": "carrier-raids",
+        "title": "Carrier Raids"
+      },
+      {
+        "slug": "pearl-harbor",
+        "title": "Pearl Harbor"
+      }
+    ],
+    "evidence": [
+      {
         "start": "49:24",
-        "end": "51:21",
-        "note": "The transcript explains the US preference for large air groups and the first-punch offensive or defensive doctrine."
+        "end": "51:19",
+        "note": "The transcript explains the US preference for large air groups and a first-punch doctrine for both offensive and defensive action."
       },
       {
         "start": "51:29",
         "end": "54:36",
-        "note": "The transcript presents Yorktown and Enterprise as refined treaty-era carriers shaped by Lexington, Saratoga, Ranger, and fleet problems."
+        "note": "The transcript presents Yorktown and Enterprise as treaty designs refined through Lexington, Saratoga, Ranger, and Fleet Problem experience, including stronger structure."
+      },
+      {
+        "start": "54:58",
+        "end": "56:53",
+        "note": "The transcript traces US carrier-raiding doctrine through fleet exercises, including simulated Pearl Harbor attacks, and explains the attraction of striking ships in port."
       }
     ],
-    "end": "54:36",
-    "endSeconds": 3276,
+    "end": "56:53",
+    "endSeconds": 3413,
+    "sourcePath": "src/transcripts/txt/2024-05-08_T18-00-21_treaty-era-aircraft-carriers-a-discussion_U9BS9ES3kxk.txt"
+  },
+  {
+    "id": "soryu-hiryu-paired-carrier-experiment",
+    "slug": "soryu-hiryu-paired-carrier-experiment",
+    "title": "Sōryū and Hiryū test a paired-carrier island arrangement",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "U9BS9ES3kxk",
+    "videoSlug": "treaty-era-aircraft-carriers-a-discussion",
+    "videoTitle": "Treaty Era Aircraft Carriers: A Discussion",
+    "start": "56:57",
+    "startSeconds": 3417,
+    "youtubeUrl": "https://www.youtube.com/watch?v=U9BS9ES3kxk&t=3417s",
+    "summary": "Opposite-side islands on Sōryū and Hiryū show Japan modifying ship design to support coordinated two-carrier operations.",
+    "body": "Japan explored paired-carrier operations by placing Hiryū's island to port while Sōryū retained the conventional starboard arrangement. Sailing with the islands adjacent could simplify communication between the ships while leaving the outer flight-deck edges open for aviation. The experiment challenged the safety logic behind the normal starboard island, which kept the structure away from the direction pilots were more likely to veer during a failed approach. Dr. Clarke uses the choice to show how far Japan was willing to alter carrier design around a coordinated operating concept.",
+    "topics": [
+      {
+        "slug": "japanese-navy",
+        "title": "Japanese Navy"
+      },
+      {
+        "slug": "naval-aviation",
+        "title": "Naval Aviation"
+      },
+      {
+        "slug": "fleet-carriers",
+        "title": "Fleet Carriers"
+      },
+      {
+        "slug": "naval-doctrine",
+        "title": "Naval Doctrine"
+      },
+      {
+        "slug": "soryu",
+        "title": "Soryu"
+      },
+      {
+        "slug": "hiryu",
+        "title": "Hiryu"
+      },
+      {
+        "slug": "carrier-islands",
+        "title": "Carrier Islands"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "56:57",
+        "end": "57:58",
+        "note": "The transcript describes the paired-carrier concept, with islands on opposite sides so the ships could operate alongside one another with easier communication."
+      },
+      {
+        "start": "58:02",
+        "end": "59:02",
+        "note": "The transcript explains the pilot-response rationale for normally placing a carrier island to starboard and the risk created by a port-side island."
+      },
+      {
+        "start": "59:05",
+        "end": "1:00:00",
+        "note": "The transcript places Soryu and Hiryu's entry into service against Japan's departure from the treaty system and its earlier cumulative-tonnage constraint."
+      }
+    ],
+    "end": "1:00:00",
+    "endSeconds": 3600,
     "sourcePath": "src/transcripts/txt/2024-05-08_T18-00-21_treaty-era-aircraft-carriers-a-discussion_U9BS9ES3kxk.txt"
   },
   {
@@ -34393,7 +35231,7 @@
     "startSeconds": 3604,
     "youtubeUrl": "https://www.youtube.com/watch?v=U9BS9ES3kxk&t=3604s",
     "summary": "The Royal Navy balances strike size, continuous air operations, and survivability by separating Ark Royal's role from the Illustrious-class armored carriers.",
-    "body": "This watch point explains why the Royal Navy did not simply copy US or Japanese carrier priorities. Ark Royal is framed as a strike carrier that still carried more survivability than many foreign designs, while Illustrious sacrifices some alpha-strike size for armored protection and repeated sortie generation. The choice reflects Britain's expected operating areas, including the Mediterranean, South China Sea, and likely land-based air opposition in a war with Japan.",
+    "body": "This watch point explains why the Royal Navy did not simply copy US or Japanese carrier priorities. Ark Royal was a strike carrier with a large air group, yet she retained more survivability than many foreign designs and still had to support continuous operations. Britain expected carriers to face land-based aviation in the Mediterranean and South China Sea while maintaining combat air patrols and smaller recurring waves. Illustrious therefore traded some alpha-strike capacity for protection and sustained sortie generation, dividing priorities that treaty tonnage would not allow one hull to satisfy fully.",
     "topics": [
       {
         "slug": "royal-navy",
@@ -34414,6 +35252,22 @@
       {
         "slug": "ship-design",
         "title": "Ship Design"
+      },
+      {
+        "slug": "hms-ark-royal",
+        "title": "HMS Ark Royal"
+      },
+      {
+        "slug": "illustrious-class",
+        "title": "Illustrious Class"
+      },
+      {
+        "slug": "carrier-air-groups",
+        "title": "Carrier Air Groups"
+      },
+      {
+        "slug": "combat-air-patrol",
+        "title": "Combat Air Patrol"
       }
     ],
     "evidence": [
@@ -34428,9 +35282,143 @@
         "note": "The transcript contrasts British continuous operations and combat air patrol needs with US and Japanese alpha-strike emphasis."
       },
       {
+        "start": "1:03:03",
+        "end": "1:06:20",
+        "note": "The transcript contrasts alpha-strike, continuous-operation, and survivability priorities and presents Implacable as the larger design capable of combining all three."
+      }
+    ],
+    "end": "1:06:20",
+    "endSeconds": 3980,
+    "sourcePath": "src/transcripts/txt/2024-05-08_T18-00-21_treaty-era-aircraft-carriers-a-discussion_U9BS9ES3kxk.txt"
+  },
+  {
+    "id": "wasp-deck-edge-lift-and-carrier-efficiency",
+    "slug": "wasp-deck-edge-lift-and-carrier-efficiency",
+    "title": "Wasp's deck-edge lift creates aviation space",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "U9BS9ES3kxk",
+    "videoSlug": "treaty-era-aircraft-carriers-a-discussion",
+    "videoTitle": "Treaty Era Aircraft Carriers: A Discussion",
+    "start": "1:06:20",
+    "startSeconds": 3980,
+    "youtubeUrl": "https://www.youtube.com/watch?v=U9BS9ES3kxk&t=3980s",
+    "summary": "Wasp's deck-edge elevator shows how one arrangement could improve hangar space and air-group capacity within a constrained hull.",
+    "body": "Wasp becomes the comparison point for a practical carrier innovation that Ranger lacked: the deck-edge elevator. Moving a lift outside the hangar footprint preserved internal working and aircraft-stowage space, helping Wasp carry a large air group despite her limited standard displacement. Dr. Clarke also notes her stronger, more enclosed structure and contrasts her with Ranger's lower speed and fragility. He then considers whether British adoption of deck-edge lifts and deck parking might have raised an Illustrious-class air group from roughly 36 toward 48 aircraft, while acknowledging Royal Navy survivability concerns.",
+    "topics": [
+      {
+        "slug": "us-navy",
+        "title": "US Navy"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "naval-aviation",
+        "title": "Naval Aviation"
+      },
+      {
+        "slug": "ship-design",
+        "title": "Ship Design"
+      },
+      {
+        "slug": "uss-wasp",
+        "title": "USS Wasp"
+      },
+      {
+        "slug": "uss-ranger",
+        "title": "USS Ranger"
+      },
+      {
+        "slug": "deck-edge-elevators",
+        "title": "Deck Edge Elevators"
+      },
+      {
+        "slug": "illustrious-class",
+        "title": "Illustrious Class"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "1:06:20",
+        "end": "1:07:41",
+        "note": "The transcript identifies Wasp as the first carrier with a deck-edge lift and summarizes her displacement, aircraft capacity, elevators, and catapults."
+      },
+      {
+        "start": "1:07:45",
+        "end": "1:09:15",
+        "note": "The transcript compares Wasp with Ranger and explains how deck-edge lifts free hangar and internal hull space."
+      },
+      {
+        "start": "1:09:18",
+        "end": "1:10:22",
+        "note": "The transcript considers a larger Illustrious-class air group using deck-edge lifts and deck parking."
+      }
+    ],
+    "end": "1:10:22",
+    "endSeconds": 4222,
+    "sourcePath": "src/transcripts/txt/2024-05-08_T18-00-21_treaty-era-aircraft-carriers-a-discussion_U9BS9ES3kxk.txt"
+  },
+  {
+    "id": "second-london-treaty-and-illustrious-design",
+    "slug": "second-london-treaty-and-illustrious-design",
+    "title": "The Second London Treaty frames the Illustrious compromise",
+    "kind": "chapter",
+    "kindLabel": "Chapter",
+    "videoId": "U9BS9ES3kxk",
+    "videoSlug": "treaty-era-aircraft-carriers-a-discussion",
+    "videoTitle": "Treaty Era Aircraft Carriers: A Discussion",
+    "start": "1:10:25",
+    "startSeconds": 4225,
+    "youtubeUrl": "https://www.youtube.com/watch?v=U9BS9ES3kxk&t=4225s",
+    "summary": "The nominal 23,000-ton limit and the Illustrious design studies show the Royal Navy deciding what capability it could most afford to sacrifice.",
+    "body": "The Second London Naval Treaty removed cumulative carrier tonnage but imposed a nominal 23,000-ton unit limit and reduced permitted gun caliber. Because Italy and Japan did not join, Dr. Clarke treats the agreement as strategically fragile even while it shaped British design accounting. Royal Navy studies began with larger ideal carriers and then removed the capabilities the service could most afford to lose under the limit. Illustrious prioritized survival under bomb attack and high sortie generation per aircraft, accepting a smaller air group rather than abandoning protection or continuous operations.",
+    "topics": [
+      {
+        "slug": "naval-treaties",
+        "title": "Naval Treaties"
+      },
+      {
+        "slug": "second-london-naval-treaty",
+        "title": "Second London Naval Treaty"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "armoured-carriers",
+        "title": "Armoured Carriers"
+      },
+      {
+        "slug": "illustrious-class",
+        "title": "Illustrious Class"
+      },
+      {
+        "slug": "sortie-generation",
+        "title": "Sortie Generation"
+      },
+      {
+        "slug": "ship-design",
+        "title": "Ship Design"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "1:10:25",
+        "end": "1:12:07",
+        "note": "The transcript explains the treaty's lack of Japanese and Italian participation, its 23,000-ton carrier limit, removal of cumulative limits, and 6.1-inch gun ceiling."
+      },
+      {
         "start": "1:13:31",
+        "end": "1:14:43",
+        "note": "The transcript describes broad British design studies and a process of cutting what the navy could most afford to lose from its ideal carrier."
+      },
+      {
+        "start": "1:14:46",
         "end": "1:17:02",
-        "note": "The transcript describes Illustrious design studies, survivability priorities, damage resistance, sortie generation, and rejected deck-edge lift options."
+        "note": "The transcript emphasizes Illustrious-class damage resistance, survivability, and sortie generation per aircraft, while noting rejected deck-edge-lift studies."
       }
     ],
     "end": "1:17:02",
@@ -34438,9 +35426,9 @@
     "sourcePath": "src/transcripts/txt/2024-05-08_T18-00-21_treaty-era-aircraft-carriers-a-discussion_U9BS9ES3kxk.txt"
   },
   {
-    "id": "unicorn-and-treaty-driven-divergence",
-    "slug": "unicorn-and-treaty-driven-divergence",
-    "title": "Unicorn shows how treaty limits drove carrier divergence",
+    "id": "unicorn-forward-aviation-support",
+    "slug": "unicorn-forward-aviation-support",
+    "title": "Unicorn supplies the armored carrier air group",
     "kind": "notable_point",
     "kindLabel": "Notable Point",
     "videoId": "U9BS9ES3kxk",
@@ -34449,8 +35437,8 @@
     "start": "1:18:08",
     "startSeconds": 4688,
     "youtubeUrl": "https://www.youtube.com/watch?v=U9BS9ES3kxk&t=4688s",
-    "summary": "HMS Unicorn and the closing counterfactual show how treaty limits pushed navies toward different carrier answers rather than one convergent ideal.",
-    "body": "Dr. Clarke ends by connecting carrier design to fleet maintenance and treaty definitions. The armored-carrier choice made spare aircraft, repair capacity, and forward aviation support more important, leading toward HMS Unicorn and later light fleet carrier ideas. The closing argument is that without cumulative limits, or with a separate light-carrier category, British, American, and Japanese designs might have converged more because all three wanted strike power, survivability, and high sortie generation.",
+    "summary": "HMS Unicorn restores spare-aircraft and major-maintenance capacity that armored fleet carriers sacrificed for protection and sortie generation.",
+    "body": "The armored carrier's smaller hangar made external aircraft support especially important when operating far from established bases. HMS Unicorn carried spare aircraft and major repair capacity forward so Illustrious-class ships could keep their operational air groups flying. Her original classification as a forward aviation support ship used the Second London Treaty definition of an auxiliary vessel rather than treating her as an ordinary carrier. Design changes removed the central flight-deck obstruction, and the resulting ship also helped shape Britain's later light fleet carriers.",
     "topics": [
       {
         "slug": "royal-navy",
@@ -34471,6 +35459,22 @@
       {
         "slug": "ship-design",
         "title": "Ship Design"
+      },
+      {
+        "slug": "hms-unicorn",
+        "title": "HMS Unicorn"
+      },
+      {
+        "slug": "forward-aviation-support",
+        "title": "Forward Aviation Support"
+      },
+      {
+        "slug": "aircraft-maintenance",
+        "title": "Aircraft Maintenance"
+      },
+      {
+        "slug": "light-fleet-carriers",
+        "title": "Light Fleet Carriers"
       }
     ],
     "evidence": [
@@ -34482,12 +35486,76 @@
       {
         "start": "1:20:00",
         "end": "1:22:22",
-        "note": "The transcript uses Second London Treaty auxiliary-vessel rules and Unicorn's design features to explain why she was not treated as a normal aircraft carrier."
+        "note": "The transcript uses Second London Treaty auxiliary-vessel rules and Unicorn's speed, armament, protection, and changing flight-deck arrangement to explain her classification and later influence."
+      }
+    ],
+    "end": "1:22:22",
+    "endSeconds": 4942,
+    "sourcePath": "src/transcripts/txt/2024-05-08_T18-00-21_treaty-era-aircraft-carriers-a-discussion_U9BS9ES3kxk.txt"
+  },
+  {
+    "id": "treaty-alternatives-and-carrier-convergence",
+    "slug": "treaty-alternatives-and-carrier-convergence",
+    "title": "Different treaty rules might produce convergent carriers",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "U9BS9ES3kxk",
+    "videoSlug": "treaty-era-aircraft-carriers-a-discussion",
+    "videoTitle": "Treaty Era Aircraft Carriers: A Discussion",
+    "start": "1:23:32",
+    "startSeconds": 5012,
+    "youtubeUrl": "https://www.youtube.com/watch?v=U9BS9ES3kxk&t=5012s",
+    "summary": "Removing cumulative limits, adding a light-carrier category, or ending the treaty system earlier could let navies combine more of the capabilities they all wanted.",
+    "body": "Dr. Clarke closes with three counterfactual treaty paths: remove or greatly raise cumulative carrier limits, create a distinct light-carrier category, or let the system collapse at the 1930 London conference. All three major carrier navies wanted some mixture of alpha strike, continuous sortie generation, and survivability, but the treaties forced different sacrifices. Without those constraints, he expects larger designs to converge because more displacement could accommodate the shared requirements. For the Royal Navy, the likely result resembles an Implacable with Ark Royal-sized hangars, protection for operations near land-based air power, and enough maintenance capacity to reduce the need for a separate Unicorn.",
+    "topics": [
+      {
+        "slug": "naval-treaties",
+        "title": "Naval Treaties"
       },
       {
+        "slug": "fleet-carriers",
+        "title": "Fleet Carriers"
+      },
+      {
+        "slug": "light-carriers",
+        "title": "Light Carriers"
+      },
+      {
+        "slug": "naval-doctrine",
+        "title": "Naval Doctrine"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "us-navy",
+        "title": "US Navy"
+      },
+      {
+        "slug": "japanese-navy",
+        "title": "Japanese Navy"
+      },
+      {
+        "slug": "implacable-class",
+        "title": "Implacable Class"
+      }
+    ],
+    "evidence": [
+      {
         "start": "1:23:32",
+        "end": "1:25:47",
+        "note": "The transcript argues that the navies shared goals but treaty limits forced different sacrifices, then considers removing cumulative limits while retaining a unit limit."
+      },
+      {
+        "start": "1:25:50",
+        "end": "1:27:49",
+        "note": "The transcript explores a separate light-carrier category and parallel graded limits for cruisers and destroyers."
+      },
+      {
+        "start": "1:28:09",
         "end": "1:30:12",
-        "note": "The transcript argues that different treaty choices could have produced more convergence in carrier design by reducing forced tradeoffs."
+        "note": "The transcript considers an earlier treaty collapse and describes a likely British carrier combining Implacable, Ark Royal, and Unicorn capabilities."
       }
     ],
     "end": "1:30:12",
@@ -36191,7 +37259,7 @@
     "startSeconds": 23,
     "youtubeUrl": "https://www.youtube.com/watch?v=vofcSGZJvd8&t=23s",
     "summary": "Dr. Clarke introduces Roger Jordan's catalogue of roughly 6,000 merchant ships and explains its country-and-company arrangement.",
-    "body": "The book is presented as a detailed prewar snapshot rather than a narrative history. Its entries group merchant fleets by nation and then shipping company, making it possible to locate individual commercial vessels within the maritime economy that entered the Second World War.",
+    "body": "The book is presented as a detailed prewar snapshot rather than a narrative history. Roger Jordan's catalogue covers about 6,000 ships and combines photographs with compact factual entries. Its organization moves from nation to shipping company, then lists individual vessels with figures such as tonnage and speed. That structure makes it possible to place a commercial ship within the maritime economy that entered the Second World War. This opening is useful for understanding what the reference contains and how a researcher can navigate it.",
     "topics": [
       {
         "slug": "book-reviews",
@@ -36230,7 +37298,7 @@
     "startSeconds": 221,
     "youtubeUrl": "https://www.youtube.com/watch?v=vofcSGZJvd8&t=221s",
     "summary": "A Standard Oil example shows how the book records builders, displacement, fuel capacity, crew, dimensions, speed, and explanatory keys.",
-    "body": "Dr. Clarke uses the Standard Oil Company of California listings to show the level of detail available for individual tankers. Build dates, builders, cargo capacity, crew, dimensions, speed, and footnotes turn a list of names into material for comparing industrial capacity and the practical capabilities of merchant shipping.",
+    "body": "Dr. Clarke uses the Standard Oil Company of California listings to demonstrate the detail available for individual tankers. He works through two ships completed in 1938, identifying their builders, tonnage, fuel-carrying capacity, and crew figures. The book's key then helps decode their length, beam, and draft, while the entries also give a top speed of about 13.5 knots. Footnotes add another layer of vessel-specific information. Together these specifications turn a list of ship names into evidence for comparing company fleets, industrial output, and the practical capabilities of merchant shipping.",
     "topics": [
       {
         "slug": "merchant-shipping",
@@ -36269,7 +37337,7 @@
     "startSeconds": 444,
     "youtubeUrl": "https://www.youtube.com/watch?v=vofcSGZJvd8&t=444s",
     "summary": "The vessel data expose the limits of assuming that many commercial ships could quickly become armed merchant cruisers or escort carriers.",
-    "body": "The review turns a catalogue feature into a force-design caution. Dr. Clarke argues that the listed speeds make clear why suitable conversion candidates were limited, including for escort carriers whose modest speed requirement still excluded many ordinary merchant hulls.",
+    "body": "The review turns a catalogue feature into a force-design caution. A merchant fleet may look large on paper, but its ships were built for different commercial roles and did not automatically possess useful naval performance. Dr. Clarke points especially to speed, using the vessel listings to challenge the idea that numerous merchantmen could be converted rapidly into armed merchant cruisers. Even escort carriers, despite comparatively modest speed requirements, could not be made from just any available hull. The moment shows how reference data can test broad claims about wartime improvisation and reveal the constraints behind conversion programs.",
     "topics": [
       {
         "slug": "merchant-shipping",
@@ -36308,7 +37376,7 @@
     "startSeconds": 480,
     "youtubeUrl": "https://www.youtube.com/watch?v=vofcSGZJvd8&t=480s",
     "summary": "The book's loss records connect individual merchant ships to marine hazards, wartime attacks, and the submarine responsible where known.",
-    "body": "At the back of the volume, individual losses can be followed through marine or war hazards, often with the attacking submarine identified. Examples from Brazilian, Belgian, Argentine, French, German, and British shipping make the human and economic scale of merchant losses visible across national fleets rather than only through aggregate tonnage figures.",
+    "body": "At the back of the volume, individual losses are classified by marine or war hazard, often with the attacking submarine identified. Dr. Clarke samples Brazilian ships sunk by German U-boats and an Italian submarine, then moves through Belgian, Argentine, French, and German losses. The extensive British and imperial list records only ships already in existence in 1939, excluding wartime new construction. That limitation makes the scale of destruction in the starting fleet especially stark. Rather than advancing an academic argument, the catalogue lets named ships and their fates convey the human, commercial, and logistical damage behind aggregate tonnage statistics.",
     "topics": [
       {
         "slug": "world-war-ii",
@@ -36356,7 +37424,7 @@
     "startSeconds": 774,
     "youtubeUrl": "https://www.youtube.com/watch?v=vofcSGZJvd8&t=774s",
     "summary": "Comparing Cunard-White Star with larger companies demonstrates how a fleet directory can reveal unexpected patterns worth investigating.",
-    "body": "The Cunard-White Star entry shows that familiar passenger-line names were smaller than some less celebrated companies, even while containing famous liners and general-cargo ships. Dr. Clarke treats such anomalies in company names, ownership, and near-identical construction as leads for deeper maritime-history research rather than as answers by themselves.",
+    "body": "The Cunard-White Star entry shows that a famous passenger-line name could represent a smaller fleet than some less celebrated companies. Dr. Clarke reads recognizable liners such as Mauretania, Queen Elizabeth, and Queen Mary alongside less familiar general-cargo vessels. A group of near-identical ships built in 1928 prompts questions about their names, builders, and whether they originated with Cunard or White Star before the companies merged in 1934. The directory does not answer those ownership and naming questions by itself. Its value is that unexpected patterns in a company fleet become concrete leads for deeper maritime-history research.",
     "topics": [
       {
         "slug": "merchant-shipping",
@@ -36383,6 +37451,45 @@
     "sourcePath": "src/transcripts/txt/2021-09-17_T16-00-44_a-book-or-two-to-review-33-the-world-s-merchant-fleets-1939_vofcSGZJvd8.txt"
   },
   {
+    "id": "japanese-merchant-ship-maru-naming-pattern",
+    "slug": "japanese-merchant-ship-maru-naming-pattern",
+    "title": "The recurring Maru suffix in Japanese merchant-ship names",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "vofcSGZJvd8",
+    "videoSlug": "a-book-or-two-to-review-33-the-world-s-merchant-fleets-1939",
+    "videoTitle": "A Book or Two to Review (33): The World's Merchant Fleets 1939",
+    "start": "15:10",
+    "startSeconds": 910,
+    "youtubeUrl": "https://www.youtube.com/watch?v=vofcSGZJvd8&t=910s",
+    "summary": "A scan of the Japanese entries highlights how consistently merchant-ship names use Maru and raises a question about how maritime incidents are labeled.",
+    "body": "The Japanese fleet listings prompt Dr. Clarke to note how rarely a ship appears without the suffix Maru. The repeated naming pattern is obvious when many company fleets are viewed together, which is an advantage of a large directory over isolated ship histories. He then connects that observation to the conventional names used for incidents involving Japanese merchant vessels. The aside does not attempt a complete explanation of the suffix, but it identifies a naming habit that researchers must recognize when following ships through historical sources. Opening the video here shows how a catalogue can expose linguistic and historiographic patterns as well as technical fleet data.",
+    "topics": [
+      {
+        "slug": "merchant-shipping",
+        "title": "Merchant Shipping"
+      },
+      {
+        "slug": "japanese-merchant-shipping",
+        "title": "Japanese Merchant Shipping"
+      },
+      {
+        "slug": "ship-naming-conventions",
+        "title": "Ship Naming Conventions"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "15:10",
+        "end": "15:46",
+        "note": "Dr. Clarke remarks that Japanese ship names in the catalogue almost always include Maru and considers how that convention affects incident naming."
+      }
+    ],
+    "end": "15:46",
+    "endSeconds": 946,
+    "sourcePath": "src/transcripts/txt/2021-09-17_T16-00-44_a-book-or-two-to-review-33-the-world-s-merchant-fleets-1939_vofcSGZJvd8.txt"
+  },
+  {
     "id": "merchant-fleet-catalogue-long-term-value",
     "slug": "merchant-fleet-catalogue-long-term-value",
     "title": "A long-term reference for merchant-shipping research",
@@ -36395,7 +37502,7 @@
     "startSeconds": 957,
     "youtubeUrl": "https://www.youtube.com/watch?v=vofcSGZJvd8&t=957s",
     "summary": "The final recommendation is for a fact-rich reference work that remains useful whenever a historical merchant vessel needs identifying or contextualizing.",
-    "body": "Dr. Clarke's recommendation rests on the book's durability as a reference rather than on a single historical argument. For readers studying wartime logistics, shipping companies, or individual merchant vessels, it provides a structured starting point that can send them to more focused sources.",
+    "body": "Dr. Clarke's recommendation rests on the book's durability as a reference rather than on a single historical argument. The combination of fleet lists, vessel particulars, photographs, and wartime fates makes it useful for repeated consultation. A reader can begin with an individual merchant ship, compare the company fleet around it, and then follow questions raised by construction details or loss records into more focused sources. This is especially valuable for studying wartime logistics because the commercial vessels supporting maritime economies are often less familiar than warships. The closing recommendation therefore explains why a fact-rich catalogue can remain useful long after a single cover-to-cover reading.",
     "topics": [
       {
         "slug": "book-reviews",

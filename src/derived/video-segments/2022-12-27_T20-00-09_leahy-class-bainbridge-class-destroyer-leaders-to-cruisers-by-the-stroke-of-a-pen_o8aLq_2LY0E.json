@@ -14,7 +14,8 @@
     "naval-nuclear-propulsion",
     "carrier-groups",
     "surface-warfare",
-    "naval-procurement"
+    "naval-procurement",
+    "naval-classification"
   ],
   "segments": [
     {
@@ -30,10 +31,11 @@
         "destroyers",
         "us-navy",
         "force-structure",
-        "cold-war"
+        "cold-war",
+        "naval-classification"
       ],
       "summary": "The opening explains why the Leahy and Bainbridge group began as destroyer leaders and became cruisers during the 1975 US Navy reclassification.",
-      "body": "Dr. Clarke uses the Leahy and Bainbridge classes to show how warship labels can reflect politics, doctrine, and comparison with foreign fleets as much as hull construction. He argues that the US Navy's older frigate and destroyer-leader categories made sense in their own vocabulary, but cruiser-gap pressure against Soviet guided-missile cruisers made the labels awkward. This is the best entry point for understanding the video's central distinction between cruiser roles and cruiser-built ships.",
+      "body": "Dr. Clarke uses the Leahy and Bainbridge classes to show how warship labels can reflect politics, doctrine, and comparison with foreign fleets as much as hull construction. He traces the older meaning of frigate through the ironclad era, when ships such as HMS Warrior helped push the term cruiser from a role toward a hull category. The US Navy's later frigate and destroyer-leader vocabulary therefore had its own historical logic, but it compared awkwardly with Soviet guided-missile cruisers. Political pressure to close the apparent cruiser gap helped turn frigates and destroyer leaders into cruisers during the 1975 realignment without rebuilding their hulls. This watch point establishes the video's central distinction between performing cruiser roles and being built to cruiser standards.",
       "sourcePath": "src/transcripts/txt/2022-12-27_T20-00-09_leahy-class-bainbridge-class-destroyer-leaders-to-cruisers-by-the-stroke-of-a-pen_o8aLq_2LY0E.txt",
       "evidence": [
         {
@@ -66,10 +68,11 @@
         "cruisers",
         "destroyers",
         "naval-nuclear-propulsion",
-        "us-navy"
+        "us-navy",
+        "naval-classification"
       ],
       "summary": "A design section compares Leahy and nuclear-powered Bainbridge through construction timing, displacement, sensors, missiles, ASROC, and shipyard origins.",
-      "body": "The video moves from labels into the physical ships, noting that Bainbridge was laid down before Leahy even though she was a modified nuclear version of the design. Leahy's 7,800-ton full-load displacement, Terrier launchers, ASROC, guns, Harpoons, and close-in weapons show a large destroyer-leader hull carrying cruiser-like duties. Bainbridge adds displacement, length, nuclear endurance, and an energy-heavy sensor fit, making the design comparison useful for seeing why the class sat between categories.",
+      "body": "The video moves from labels into the physical ships, noting that Bainbridge was laid down before Leahy even though she was a modified nuclear version of the design. Dr. Clarke defines a destroyer leader as a larger vessel still built with destroyer framing, structure, protection, and design assumptions while being able to perform some cruiser roles. Leahy's 7,800-ton full-load displacement, Terrier launchers, ASROC, guns, later Harpoons, and close-in weapons show what that compromise produced. Bainbridge adds displacement, length, nuclear endurance, and a more energy-intensive sensor fit without abandoning the underlying design family. The comparison explains why capability and size alone do not settle whether a ship is a destroyer or cruiser.",
       "sourcePath": "src/transcripts/txt/2022-12-27_T20-00-09_leahy-class-bainbridge-class-destroyer-leaders-to-cruisers-by-the-stroke-of-a-pen_o8aLq_2LY0E.txt",
       "evidence": [
         {
@@ -131,10 +134,12 @@
         "missiles",
         "shipboard-air-defense",
         "cruisers",
-        "us-navy"
+        "us-navy",
+        "rim-2-terrier",
+        "rim-67-standard-missile"
       ],
       "summary": "The Terrier discussion traces beam-riding early missiles into faster, more capable later versions and explains why Standard replaced Terrier and Talos.",
-      "body": "This watch point is useful for understanding the missile-era logic behind the Leahy class. Dr. Clarke describes Terrier's early limitations against subsonic targets, then follows the missile through tail control, better motors, extended range, Mach 3 performance, and semi-active radar homing. He closes the comparison by explaining why Standard mattered: it offered Talos-like range and capability in a Terrier-sized missile that smaller ships could carry.",
+      "body": "This watch point explains the missile-era logic behind the Leahy class. Dr. Clarke begins with the RIM-2A Terrier's beam riding, wing control, Mach 1.8 speed, and ten-nautical-mile range, then follows later versions through tail control, better motors, extended range, Mach 3 performance, and semi-active radar homing. Terrier mattered because it could fit aboard smaller cruisers and guided-missile frigates that could not readily accommodate the larger and more demanding Talos system. Its Mark 10 launchers normally used forty-round magazines, although larger magazine arrangements also existed. Standard eventually offered Talos-like range and capability in a Terrier-sized missile, making it a comparatively straightforward replacement for the Leahy-class installation.",
       "sourcePath": "src/transcripts/txt/2022-12-27_T20-00-09_leahy-class-bainbridge-class-destroyer-leaders-to-cruisers-by-the-stroke-of-a-pen_o8aLq_2LY0E.txt",
       "evidence": [
         {
@@ -169,7 +174,7 @@
         "us-navy"
       ],
       "summary": "The ASROC section explains why rocket-delivered torpedoes and depth charges helped escorts attack submarines beyond helicopter or shipboard torpedo limits.",
-      "body": "Dr. Clarke treats ASROC as a practical answer to an old anti-submarine warfare problem: a ship or aircraft may locate a submarine without being in the right place to deliver a weapon. The discussion covers the Mark 112 launcher, torpedo and nuclear-depth-charge payloads, later VLS versions, and the related Subroc idea. He then connects ASROC to modern drones and World War II ahead-thrown weapons, arguing that the basic need for remote sensor data plus standoff delivery has not gone away.",
+      "body": "Dr. Clarke treats ASROC as a practical answer to an old anti-submarine warfare problem: a ship or aircraft may locate a submarine without being in the right place to deliver a weapon. The discussion covers the Mark 112 launcher, torpedo and nuclear-depth-charge payloads, later VLS versions, and the related Subroc idea. He proposes separating detection from weapon carriage by using several smaller rotary drones with dipping sonar to triangulate a contact while the ship launches torpedoes toward it. That approach would reserve a crewed helicopter for more distant work and allow several weapons to be delivered against an aggressive submarine. The comparison with World War II depth-charge attacks and Hedgehog shows that ASROC continues the long search for a way to attack without first breaking sonar contact.",
       "sourcePath": "src/transcripts/txt/2022-12-27_T20-00-09_leahy-class-bainbridge-class-destroyer-leaders-to-cruisers-by-the-stroke-of-a-pen_o8aLq_2LY0E.txt",
       "evidence": [
         {
@@ -262,22 +267,23 @@
       ]
     },
     {
-      "id": "ntds-radar-and-combat-system-capacity",
+      "id": "dale-ntds-radar-and-combat-system-capacity",
       "videoId": "o8aLq_2LY0E",
-      "slug": "ntds-radar-and-combat-system-capacity",
-      "title": "Combat systems mattered as much as missiles",
+      "slug": "dale-ntds-radar-and-combat-system-capacity",
+      "title": "Dale showed why combat systems mattered as much as missiles",
       "kind": "notable_point",
       "start": "45:02",
-      "end": "52:42",
+      "end": "46:36",
       "topics": [
         "missiles",
         "shipboard-air-defense",
         "cruisers",
         "us-navy",
-        "surface-warfare"
+        "surface-warfare",
+        "naval-tactical-data-system"
       ],
-      "summary": "Dale, Richmond K. Turner, and Gridley show how NTDS, SPS-49 testing, SM-2ER, and command systems shaped the class's real fighting value.",
-      "body": "Dr. Clarke uses Dale's modernization to make a broader point about missile warfare: a missile is only as useful as the combat system that can detect, assign, launch, and guide it. The Naval Tactical Data System and SPS-49 radar examples show why upgrades could matter as much as a new weapon. Richmond K. Turner and Gridley add the recurring pattern of surveillance, carrier escort, advanced testing, and eventual SM-2ER integration.",
+      "summary": "Dale's NTDS modernization and SPS-49 trials show how sensors, data handling, and engagement capacity shaped the class's real fighting value.",
+      "body": "Dr. Clarke uses Dale's modernization to make a broader point about missile warfare: a missile is only as useful as the combat system that can detect, assign, launch, and guide it. A weapon that is individually superior may be less useful than a slightly less capable design if its ship can guide only one missile while the rival system manages many engagements. Fitting the Naval Tactical Data System therefore increased the ship's flexibility by improving how its weapons and sensor information could be coordinated. Dale's later selection as the operational platform for AN/SPS-49 two-dimensional air-search-radar trials shows the same ship serving as a test bed for fleet-wide improvement. This passage is useful for looking beyond advertised missile range to the engagement capacity of the complete combat system.",
       "sourcePath": "src/transcripts/txt/2022-12-27_T20-00-09_leahy-class-bainbridge-class-destroyer-leaders-to-cruisers-by-the-stroke-of-a-pen_o8aLq_2LY0E.txt",
       "evidence": [
         {
@@ -289,11 +295,69 @@
           "start": "46:22",
           "end": "46:36",
           "note": "The discussion covers Dale's selection for SPS-49 testing and the Caribbean trials used to develop the new radar."
-        },
+        }
+      ]
+    },
+    {
+      "id": "richmond-k-turner-surveillance-and-forward-operations",
+      "videoId": "o8aLq_2LY0E",
+      "slug": "richmond-k-turner-surveillance-and-forward-operations",
+      "title": "Richmond K. Turner shifted from training to surveillance",
+      "kind": "notable_point",
+      "start": "48:44",
+      "end": "50:55",
+      "topics": [
+        "cruisers",
+        "us-navy",
+        "cold-war",
+        "naval-surveillance",
+        "persian-gulf"
+      ],
+      "summary": "Richmond K. Turner's career links Vietnam-era search and rescue, repeated modernization, Soviet surveillance, Persian Gulf operations, and Bosnia service.",
+      "body": "Richmond K. Turner illustrates how a Cold War cruiser moved repeatedly between overhaul, training, surveillance, and forward operations. The transcript begins with search-and-rescue duty in the Gulf of Tonkin and a major 1971 refit during the US Navy's wider NTDS upgrade effort. After later refresher training at Guantanamo Bay, the newly upgraded ship was redirected to monitor Soviet units in the West Indies and then conducted surveillance off Nicaragua after transiting the Panama Canal. Her later career included Persian Gulf operations from 1988, service connected with Bosnia, and eventual disposal in a sink exercise. The sequence shows why modernization was valuable: a ship emerging from training could immediately become a useful sensor and presence asset during an unfolding task.",
+      "sourcePath": "src/transcripts/txt/2022-12-27_T20-00-09_leahy-class-bainbridge-class-destroyer-leaders-to-cruisers-by-the-stroke-of-a-pen_o8aLq_2LY0E.txt",
+      "evidence": [
         {
           "start": "48:44",
+          "end": "49:32",
+          "note": "The transcript describes Gulf of Tonkin search and rescue, the 1971 refit, and NTDS modernization."
+        },
+        {
+          "start": "49:44",
+          "end": "50:39",
+          "note": "The discussion follows refresher training, surveillance of Soviet units and Nicaragua, Persian Gulf operations, and Bosnia service."
+        }
+      ]
+    },
+    {
+      "id": "gridley-carrier-escort-and-standard-missile-upgrade",
+      "videoId": "o8aLq_2LY0E",
+      "slug": "gridley-carrier-escort-and-standard-missile-upgrade",
+      "title": "Gridley paired carrier escort with a Standard Missile upgrade",
+      "kind": "notable_point",
+      "start": "50:56",
+      "end": "52:42",
+      "topics": [
+        "cruisers",
+        "us-navy",
+        "carrier-groups",
+        "fleet-screening",
+        "shipboard-air-defense",
+        "rim-67-standard-missile"
+      ],
+      "summary": "Gridley's repeated carrier assignments and SM-2ER Block III conversion show how the Leahy class supported air groups while renewing its own air-defense reach.",
+      "body": "Gridley's service history is dominated by aircraft-carrier groups, including duty with Ranger, Constellation, Kitty Hawk, Midway, Okinawa, and Independence. Dr. Clarke describes the cruiser as a recurring shotgun escort during Gulf of Tonkin operations and later deployments. Her eventual conversion for the SM-2ER Block III extended-range RIM-67 renewed the air-defense system around that escort role. Because Standard was similar to Terrier in size and shape, replacing the Terrier installation required less work than converting a ship built around the larger Talos system. The watch point connects the class's operational employment with the practical upgrade path that kept it useful around carriers.",
+      "sourcePath": "src/transcripts/txt/2022-12-27_T20-00-09_leahy-class-bainbridge-class-destroyer-leaders-to-cruisers-by-the-stroke-of-a-pen_o8aLq_2LY0E.txt",
+      "evidence": [
+        {
+          "start": "50:56",
+          "end": "51:56",
+          "note": "The transcript lists Gridley's repeated service with carrier and amphibious groups, including Gulf of Tonkin shotgun duty."
+        },
+        {
+          "start": "52:01",
           "end": "52:42",
-          "note": "The transcript summarizes Richmond K. Turner's surveillance and Gulf operations, Gridley's carrier escort role, and SM-2ER Block III upgrade path."
+          "note": "The discussion explains the SM-2ER Block III upgrade and why RIM-67 was easier to substitute for Terrier than for Talos."
         }
       ]
     },
@@ -397,23 +461,23 @@
       ]
     },
     {
-      "id": "bainbridge-sea-orbit-and-nuclear-surface-force",
+      "id": "bainbridge-sea-orbit-and-cold-war-status",
       "videoId": "o8aLq_2LY0E",
-      "slug": "bainbridge-sea-orbit-and-nuclear-surface-force",
-      "title": "Bainbridge linked Sea Orbit to nuclear escort policy",
+      "slug": "bainbridge-sea-orbit-and-cold-war-status",
+      "title": "Bainbridge made Sea Orbit a nuclear status demonstration",
       "kind": "chapter",
       "start": "57:06",
-      "end": "1:09:06",
+      "end": "58:31",
       "topics": [
         "naval-nuclear-propulsion",
         "carrier-groups",
         "cruisers",
         "us-navy",
-        "naval-procurement",
-        "force-structure"
+        "cold-war",
+        "operation-sea-orbit"
       ],
-      "summary": "The closing section uses Bainbridge to connect Operation Sea Orbit, Bosnia air-defense command work, cruiser displacement, and a hypothetical nuclear Arleigh Burke policy.",
-      "body": "Bainbridge gets the last major case study because her nuclear propulsion and long service make the class's logic easiest to see. Dr. Clarke treats Operation Sea Orbit as a US Navy status demonstration that set a benchmark for Soviet nuclear ships, then follows Bainbridge into Sharp Guard and Deny Flight, where her radar and SM-2ER capability supported air-warfare coordination over Bosnia and the Adriatic. The closing argument rejects the idea that a designation change alone made these destroyer-built vessels full cruisers, while still presenting the nuclear modified-member approach as a serious way to preserve surface nuclear experience and carrier escort capacity.",
+      "summary": "Bainbridge's voyage with Enterprise and Long Beach made Operation Sea Orbit a demonstration of nuclear endurance, naval reach, and Cold War status.",
+      "body": "Bainbridge receives the final ship case study because her nuclear propulsion and long service make the design family's ambitions especially clear. She sailed with Enterprise and Long Beach during Operation Sea Orbit, forming part of an all-nuclear group that circumnavigated the world in 1964. Dr. Clarke treats the voyage as more than an endurance exercise: it displayed US naval reach and set a public benchmark for the Soviet Union's later nuclear fleet. He connects it with the Soviet announcement of a nuclear-submarine circumnavigation a few years later as part of the same competition over capability, prestige, and status. This watch point shows nuclear propulsion functioning as strategic theater as well as machinery.",
       "sourcePath": "src/transcripts/txt/2022-12-27_T20-00-09_leahy-class-bainbridge-class-destroyer-leaders-to-cruisers-by-the-stroke-of-a-pen_o8aLq_2LY0E.txt",
       "evidence": [
         {
@@ -422,19 +486,81 @@
           "note": "The transcript describes Bainbridge's role with Enterprise and Long Beach, Operation Sea Orbit, and Cold War nuclear status competition."
         },
         {
+          "start": "57:50",
+          "end": "58:31",
+          "note": "The discussion interprets the 1964 circumnavigation and the later Soviet submarine voyage as Cold War competition, power display, and status."
+        }
+      ]
+    },
+    {
+      "id": "bainbridge-bosnia-air-defense-command",
+      "videoId": "o8aLq_2LY0E",
+      "slug": "bainbridge-bosnia-air-defense-command",
+      "title": "Bainbridge coordinated air defense over Bosnia and the Adriatic",
+      "kind": "notable_point",
+      "start": "58:44",
+      "end": "1:01:12",
+      "topics": [
+        "cruisers",
+        "us-navy",
+        "shipboard-air-defense",
+        "operation-sharp-guard",
+        "operation-deny-flight",
+        "bosnian-war",
+        "rim-67-standard-missile"
+      ],
+      "summary": "Sharp Guard boardings and Red Crown duty during Deny Flight show Bainbridge combining sanctions enforcement with theater-wide air-warfare coordination.",
+      "body": "During Operation Sharp Guard, Bainbridge conducted roughly one hundred merchant-vessel boardings to enforce sanctions against the former Yugoslavia. She also supported Operation Deny Flight as Red Crown, coordinating the air-warfare environment over Bosnia. Her sensor suite provided almost complete radar coverage over Bosnia and the Adriatic, while her SM-2ER system could engage more than sixteen aircraft or cruise missiles simultaneously at ranges beyond seventy-five nautical miles. Dr. Clarke uses that capacity to stress that maximum missile range is only one measure of an air-defense system. The number of targets a ship can track, the missiles it can launch and guide together, and the time required to reach distant targets determine its actual defensive value.",
+      "sourcePath": "src/transcripts/txt/2022-12-27_T20-00-09_leahy-class-bainbridge-class-destroyer-leaders-to-cruisers-by-the-stroke-of-a-pen_o8aLq_2LY0E.txt",
+      "evidence": [
+        {
           "start": "58:44",
-          "end": "1:01:12",
-          "note": "The discussion covers Sharp Guard boardings, Deny Flight, Red Crown air-warfare coordination, radar coverage, SM-2ER capability, and multiple simultaneous engagements."
+          "end": "59:28",
+          "note": "The transcript covers Sharp Guard boardings, Deny Flight, Red Crown coordination, radar coverage, and SM-2ER engagement capacity."
         },
         {
+          "start": "59:31",
+          "end": "1:01:12",
+          "note": "The discussion explains why simultaneous engagements, missile speed, flight time, and practical coverage matter alongside maximum range."
+        }
+      ]
+    },
+    {
+      "id": "destroyer-built-cruisers-and-nuclear-experience",
+      "videoId": "o8aLq_2LY0E",
+      "slug": "destroyer-built-cruisers-and-nuclear-experience",
+      "title": "Destroyer-built cruisers became a bridge to nuclear experience",
+      "kind": "chapter",
+      "start": "1:01:17",
+      "end": "1:09:06",
+      "topics": [
+        "cruisers",
+        "destroyers",
+        "us-navy",
+        "naval-classification",
+        "naval-nuclear-propulsion",
+        "naval-procurement",
+        "force-structure",
+        "arleigh-burke-class"
+      ],
+      "summary": "The conclusion separates cruiser roles from cruiser construction while asking whether nuclear variants of conventional classes could have preserved surface-fleet expertise.",
+      "body": "Dr. Clarke closes by returning to the difference between a destroyer-built ship performing cruiser roles and a vessel designed to cruiser standards. Leahy displaced about 7,800 tons and Bainbridge about 9,100, far below Long Beach and the roughly 17,500-ton Albany conversions, so changing their designation did not change their structural origins. Their value nevertheless extended beyond labels because building a nuclear modified member generated experience with reactors, missile systems, and the operation of nuclear escorts. He presents this as a deliberate learning strategy that could prepare the navy to design later ships when requirements and funding aligned. The final viewer prompt applies that logic to the Arleigh Burke class, asking what seven to nine nuclear-powered variants might have looked like and whether a one-in-ten policy could have preserved a nuclear surface escort force.",
+      "sourcePath": "src/transcripts/txt/2022-12-27_T20-00-09_leahy-class-bainbridge-class-destroyer-leaders-to-cruisers-by-the-stroke-of-a-pen_o8aLq_2LY0E.txt",
+      "evidence": [
+        {
           "start": "1:01:17",
+          "end": "1:03:45",
+          "note": "The transcript distinguishes destroyer construction from cruiser roles and compares Leahy and Bainbridge displacement with Long Beach and Albany conversions."
+        },
+        {
+          "start": "1:03:50",
           "end": "1:05:17",
-          "note": "The transcript compares Leahy and Bainbridge displacement with Long Beach and Albany conversions, then argues the ships built experience for future nuclear and missile cruisers."
+          "note": "The discussion argues that nuclear modified members built experience for future ship construction and operations."
         },
         {
           "start": "1:07:47",
           "end": "1:09:06",
-          "note": "The closing question asks whether the US Navy should have built one nuclear-powered modified member for every eight to ten conventional ships, using Arleigh Burke as the example."
+          "note": "The closing prompt asks whether the US Navy should have built one nuclear-powered modified member for every ten conventional Arleigh Burke-class ships."
         }
       ]
     }

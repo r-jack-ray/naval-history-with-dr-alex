@@ -13,7 +13,10 @@
     "naval-procurement",
     "naval-diplomacy",
     "fleet-screening",
-    "surface-warfare"
+    "surface-warfare",
+    "uss-long-beach",
+    "operation-sea-orbit",
+    "aegis-combat-system"
   ],
   "segments": [
     {
@@ -23,16 +26,19 @@
       "title": "Long Beach as a nuclear cruiser with light-cruiser limits",
       "kind": "chapter",
       "start": "0:01",
-      "end": "6:43",
+      "end": "4:58",
       "topics": [
         "us-navy",
         "cruisers",
         "naval-architecture",
         "naval-nuclear-propulsion",
-        "naval-procurement"
+        "naval-procurement",
+        "uss-long-beach",
+        "des-moines-class",
+        "cleveland-class"
       ],
       "summary": "The opening frames USS Long Beach as a unique nuclear cruiser whose light-cruiser hull lineage limited later growth and upgrade flexibility.",
-      "body": "Dr. Clarke starts by treating Long Beach as a ship that mattered beyond her one-off status, because she pointed toward Aegis-era ideas and nuclear surface escorts. The design argument turns on hull proportions: compared with Des Moines, Long Beach was longer but slimmer, so he reads her as closer to a light-cruiser line than a heavy-cruiser one. That choice made sense for a missile and nuclear experiment in the 1950s, but it also reduced the internal margin that might have made later modernization cheaper and more politically durable.",
+      "body": "Dr. Clarke starts by treating Long Beach as a ship that mattered beyond her one-off status, because she pointed toward Aegis-era ideas and nuclear surface escorts. The design argument turns on hull proportions: compared with the Des Moines class, Long Beach was longer but slimmer, so he reads her as closer to a light-cruiser line than a heavy-cruiser one. That lineage also connected her to the Cleveland-class conversions that gave the US Navy practical guided-missile cruiser experience. The watch point explains why a purpose-built nuclear cruiser could still inherit assumptions from an earlier cruiser type.",
       "sourcePath": "src/transcripts/txt/2022-12-19_T21-48-54_uss-long-beach-cgn-9-the-usn-s-last-cruiser_J1suaJOupiI.txt",
       "evidence": [
         {
@@ -44,47 +50,100 @@
           "start": "2:03",
           "end": "4:52",
           "note": "The hull comparison with Des Moines uses length, beam, and light-cruiser lineage to explain why Dr. Clarke calls Long Beach a light cruiser."
-        },
-        {
-          "start": "5:00",
-          "end": "6:43",
-          "note": "The discussion says a light-cruiser hull made sense at first but reduced longer-term adaptability and made the small nuclear surface fleet easier to discard."
         }
       ]
     },
     {
-      "id": "quincy-yard-and-early-phased-array-radar",
+      "id": "light-cruiser-hull-modernization-margin",
       "videoId": "J1suaJOupiI",
-      "slug": "quincy-yard-and-early-phased-array-radar",
-      "title": "Quincy yard experience and early radar ambition",
+      "slug": "light-cruiser-hull-modernization-margin",
+      "title": "Why hull growth margin mattered to Long Beach's future",
       "kind": "notable_point",
-      "start": "6:43",
-      "end": "10:57",
+      "start": "5:00",
+      "end": "6:43",
       "topics": [
         "us-navy",
         "cruisers",
-        "shipboard-air-defense",
+        "naval-architecture",
         "naval-procurement",
-        "cold-war"
+        "naval-modernization",
+        "uss-long-beach"
       ],
-      "summary": "The shipyard and radar section explains why Long Beach paired an experienced builder with first-generation systems that foreshadowed later combat-system development.",
-      "body": "This watch point is useful for understanding Long Beach as both conservative and experimental. Dr. Clarke notes that the Quincy/Fall River yard had deep cruiser, battleship, and carrier-building experience, making it a logical place to manage the shipbuilding side of a risky nuclear cruiser. He then shifts to the SPS-32 and SPS-33 radar panels, stressing that they were early systems: impressive for their moment, but not comparable with the mature systems they helped lead toward.",
+      "summary": "The hull-choice argument links Long Beach's limited internal margin to harder upgrades and the political fragility of a small nuclear surface fleet.",
+      "body": "This watch point separates the long-term consequence of Long Beach's light-cruiser proportions from the initial design logic. Dr. Clarke argues that a beamier heavy-cruiser form would have offered more internal space for later improvements and made the ship easier to adapt. A more useful and repeatable design might also have produced a larger class rather than a one-off vessel. His wider institutional point is that a tiny specialist force is easy to remove by salami slicing because it lacks both the visibility of carriers and the numbers of submarines.",
+      "sourcePath": "src/transcripts/txt/2022-12-19_T21-48-54_uss-long-beach-cgn-9-the-usn-s-last-cruiser_J1suaJOupiI.txt",
+      "evidence": [
+        {
+          "start": "5:00",
+          "end": "6:14",
+          "note": "The transcript says a heavy-cruiser-shaped hull would have offered more space for improvements and might have encouraged replication."
+        },
+        {
+          "start": "6:14",
+          "end": "6:43",
+          "note": "The small nuclear surface fleet is contrasted with carriers and submarines and described as easy to remove through salami slicing."
+        }
+      ]
+    },
+    {
+      "id": "quincy-yard-nuclear-cruiser-builder",
+      "videoId": "J1suaJOupiI",
+      "slug": "quincy-yard-nuclear-cruiser-builder",
+      "title": "Why Quincy was a logical nuclear-cruiser builder",
+      "kind": "notable_point",
+      "start": "6:43",
+      "end": "8:46",
+      "topics": [
+        "us-navy",
+        "cruisers",
+        "naval-procurement",
+        "shipbuilding",
+        "quincy-shipyard",
+        "bethlehem-steel",
+        "general-dynamics"
+      ],
+      "summary": "The Fore River yard at Quincy had a long record building carriers, cruisers, and battleships, making it a logical builder for an unprecedented nuclear cruiser.",
+      "body": "Dr. Clarke uses the Fore River yard at Quincy to show how the Navy contained some of Long Beach's technical risk. The yard traced its history through Bethlehem Steel and later General Dynamics and remained active for more than a century. Its work included both USS Lexington carriers as well as cruisers and battleships, giving it experience with large, complicated warships. Choosing that builder meant the unfamiliar reactor and combat systems could be added to a shipbuilding program managed by a yard that already understood major naval construction.",
       "sourcePath": "src/transcripts/txt/2022-12-19_T21-48-54_uss-long-beach-cgn-9-the-usn-s-last-cruiser_J1suaJOupiI.txt",
       "evidence": [
         {
           "start": "6:43",
           "end": "8:43",
           "note": "The transcript describes the shipyard's long history, major ships built there, and why it made sense as the builder for a nuclear cruiser."
-        },
+        }
+      ]
+    },
+    {
+      "id": "sps-32-sps-33-radar-aegis-path",
+      "videoId": "J1suaJOupiI",
+      "slug": "sps-32-sps-33-radar-aegis-path",
+      "title": "SPS-32 and SPS-33 on the path toward Aegis",
+      "kind": "notable_point",
+      "start": "8:47",
+      "end": "10:57",
+      "topics": [
+        "us-navy",
+        "cruisers",
+        "shipboard-air-defense",
+        "naval-radar",
+        "aegis-combat-system",
+        "sps-32-radar",
+        "sps-33-radar",
+        "uss-enterprise-cvn-65"
+      ],
+      "summary": "Long Beach's fixed SPS-32 and SPS-33 arrays were limited first-generation systems, but their surveillance and tracking roles foreshadowed later integrated air-defense radars.",
+      "body": "This radar watch point explains why Long Beach's boxlike superstructure mattered to combat-system history. Dr. Clarke compares its four fixed panels with the similar arrangement on the nuclear carrier Enterprise and identifies the AN/SPS-32 and AN/SPS-33. One system provided broad air surveillance while the other handled target tracking, dividing functions that later systems would integrate more effectively. He cautions against comparing these early arrays directly with mature successors, but treats them as an important step on the path toward Aegis.",
+      "sourcePath": "src/transcripts/txt/2022-12-19_T21-48-54_uss-long-beach-cgn-9-the-usn-s-last-cruiser_J1suaJOupiI.txt",
+      "evidence": [
         {
           "start": "8:47",
           "end": "9:58",
-          "note": "The radar section connects Long Beach and Enterprise to early systems that lead toward Aegis, including SPS-32 and SPS-33."
+          "note": "The radar section connects Long Beach and Enterprise to early systems that lead toward Aegis and identifies SPS-32 and SPS-33."
         },
         {
           "start": "10:02",
           "end": "10:57",
-          "note": "The transcript explains the separate air-surveillance and target-tracking antenna roles and notes later replacement in service."
+          "note": "The transcript separates air-surveillance and target-tracking antenna roles and notes their later replacement in service."
         }
       ]
     },
@@ -92,55 +151,81 @@
       "id": "late-1950s-cruiser-design-missing-helicopter",
       "videoId": "J1suaJOupiI",
       "slug": "late-1950s-cruiser-design-missing-helicopter",
-      "title": "A sleek missile cruiser with a missing helicopter answer",
+      "title": "The futuristic missile cruiser missing a helicopter facility",
       "kind": "chapter",
       "start": "11:00",
-      "end": "14:34",
+      "end": "12:50",
       "topics": [
         "us-navy",
         "cruisers",
         "naval-architecture",
         "naval-aviation",
-        "naval-nuclear-propulsion"
+        "helicopters",
+        "uss-long-beach"
       ],
-      "summary": "The design-sketch section contrasts Long Beach's futuristic missile-cruiser look with the absent helicopter facility and the practical realities of nuclear endurance.",
-      "body": "Dr. Clarke pauses over the original design appearance because it shows how the ship was imagined as a clean, missile-age future. The missing helicopter facility matters because aviation had become increasingly important to surface combatants, yet the design still reflected a late-1950s set of priorities. The same section grounds the nuclear-power claim: range is not literally infinite, but the reactor shifts endurance from nautical miles to years while also changing what space the ship must reserve for machinery and fuel.",
+      "summary": "The sleek concept drawing presents a missile-age future, but its absent helicopter facility exposes the late-1950s assumptions built into Long Beach.",
+      "body": "Dr. Clarke pauses over Long Beach's original appearance because its clean lines capture how naval architects imagined a futuristic missile cruiser. He then asks viewers to notice what is missing: there is no helicopter facility. That omission matters because embarked aviation would become increasingly valuable for surface combatants, yet the design preserved an earlier set of priorities. The watch point is therefore a useful reminder that an advanced ship can be revolutionary in one area while remaining bounded by the operational expectations of its design decade.",
       "sourcePath": "src/transcripts/txt/2022-12-19_T21-48-54_uss-long-beach-cgn-9-the-usn-s-last-cruiser_J1suaJOupiI.txt",
       "evidence": [
         {
           "start": "11:00",
           "end": "12:47",
           "note": "The transcript describes the sleek concept image and points out the missing helicopter facility as an important design omission."
-        },
-        {
-          "start": "12:50",
-          "end": "13:38",
-          "note": "The ship is tied to late-1950s procurement and listed with displacement, dimensions, draft, and nuclear reactors."
-        },
-        {
-          "start": "13:53",
-          "end": "14:34",
-          "note": "The nuclear-endurance explanation says range is measured in years rather than nautical miles."
         }
       ]
     },
     {
-      "id": "terrier-talos-guns-and-nuclear-air-defense",
+      "id": "nuclear-endurance-measured-in-years",
       "videoId": "J1suaJOupiI",
-      "slug": "terrier-talos-guns-and-nuclear-air-defense",
-      "title": "Terrier, Talos, guns, and Cold War air defense",
+      "slug": "nuclear-endurance-measured-in-years",
+      "title": "Nuclear endurance measured in years, not nautical miles",
+      "kind": "notable_point",
+      "start": "12:50",
+      "end": "14:34",
+      "topics": [
+        "us-navy",
+        "cruisers",
+        "naval-nuclear-propulsion",
+        "nuclear-powered-warships",
+        "naval-logistics",
+        "uss-long-beach"
+      ],
+      "summary": "Long Beach's reactor plant changed the unit of endurance from nautical miles to years, while machinery, provisions, and maintenance still constrained operations.",
+      "body": "The reactor discussion grounds the common claim that nuclear ships have unlimited range. Dr. Clarke links Long Beach's dimensions and deep draft to the complexity of fitting two C1W reactors into a cruiser hull. Nuclear fuel does not make endurance literally infinite; instead, the relevant fuel interval is measured in years rather than nautical miles. The distinction matters because propulsion fuel largely disappears as an operational constraint while machinery, stores, crew needs, and eventual reactor chemistry still impose limits.",
+      "sourcePath": "src/transcripts/txt/2022-12-19_T21-48-54_uss-long-beach-cgn-9-the-usn-s-last-cruiser_J1suaJOupiI.txt",
+      "evidence": [
+        {
+          "start": "12:50",
+          "end": "13:53",
+          "note": "The ship is tied to late-1950s procurement and its dimensions, deep draft, and two C1W nuclear reactors are listed."
+        },
+        {
+          "start": "13:53",
+          "end": "14:34",
+          "note": "The nuclear-endurance explanation says range is measured in years rather than nautical miles while reactor performance still has a finite life."
+        }
+      ]
+    },
+    {
+      "id": "five-inch-guns-and-missile-age-upgrades",
+      "videoId": "J1suaJOupiI",
+      "slug": "five-inch-guns-and-missile-age-upgrades",
+      "title": "Five-inch guns as a hedge in a missile-age cruiser",
       "kind": "chapter",
       "start": "14:34",
-      "end": "25:24",
+      "end": "17:50",
       "topics": [
         "us-navy",
         "missiles",
-        "shipboard-air-defense",
         "naval-weapons",
-        "cruisers"
+        "cruisers",
+        "five-inch-38-caliber-gun",
+        "tomahawk-missile",
+        "harpoon-missile",
+        "uss-long-beach"
       ],
-      "summary": "The weapons discussion shows Long Beach as a missile-age cruiser that still needed guns and carried air-defense systems shaped by Cold War uncertainty.",
-      "body": "This section moves through Terrier, Talos, later Tomahawk and Harpoon fittings, and the five-inch guns added to the ship. Dr. Clarke treats the guns as a practical hedge against early missile reliability, while also noting that the Navy still chose the old but dependable 5-inch/38. The missile discussion gives the Cold War flavor of the design: long-range, fast weapons with conventional or nuclear warheads compensated for uncertain targeting by making the kill radius much larger.",
+      "summary": "Long Beach's later Tomahawk and Harpoon weapons show continued adaptation, while her 5-inch/38 guns provided a practical backup to immature missile technology.",
+      "body": "This section begins with Long Beach's evolving weapons fit, including later armored-box Tomahawk launchers and Harpoon missiles. Dr. Clarke then focuses on the 5-inch/38 guns reportedly added after President Kennedy questioned a missile-only ship. Guns provided a dependable fallback when early missiles could not be assumed to work in every circumstance. He nevertheless finds the choice revealing: the 5-inch/38 was proven and reliable, but already venerable for such an advanced cruiser.",
       "sourcePath": "src/transcripts/txt/2022-12-19_T21-48-54_uss-long-beach-cgn-9-the-usn-s-last-cruiser_J1suaJOupiI.txt",
       "evidence": [
         {
@@ -152,57 +237,226 @@
           "start": "16:07",
           "end": "17:38",
           "note": "The gun section links President Kennedy to adding guns and describes the five-inch/38 as reliable but venerable."
-        },
-        {
-          "start": "17:50",
-          "end": "21:05",
-          "note": "Talos performance, warhead choices, and nuclear-warhead logic are discussed as part of the missile fit."
-        },
-        {
-          "start": "22:10",
-          "end": "25:24",
-          "note": "The Terrier/Bumblebee discussion gives missile and booster weights and again notes conventional and nuclear warhead options."
         }
       ]
     },
     {
-      "id": "long-beach-early-service-and-sea-orbit",
+      "id": "talos-nuclear-warhead-air-defense",
       "videoId": "J1suaJOupiI",
-      "slug": "long-beach-early-service-and-sea-orbit",
-      "title": "Sea Orbit turns nuclear propulsion into visible strategy",
-      "kind": "chapter",
-      "start": "25:24",
-      "end": "38:56",
+      "slug": "talos-nuclear-warhead-air-defense",
+      "title": "Talos and the nuclear solution to uncertain targeting",
+      "kind": "notable_point",
+      "start": "17:50",
+      "end": "21:05",
       "topics": [
         "us-navy",
-        "naval-nuclear-propulsion",
-        "nuclear-powered-warships",
-        "naval-diplomacy",
-        "fleet-screening"
+        "missiles",
+        "shipboard-air-defense",
+        "rim-8-talos",
+        "nuclear-warheads",
+        "cold-war",
+        "uss-long-beach"
       ],
-      "summary": "Operation Sea Orbit shows Long Beach, Enterprise, and Bainbridge using nuclear endurance for presence, signaling, and rapid global movement.",
-      "body": "The service-history section uses Operation Sea Orbit to turn nuclear propulsion from a technical feature into a strategic claim. Long Beach, Enterprise, and Bainbridge formed an all-nuclear task force, sailed around the world, and used port calls and exercises to show that nuclear-powered surface ships could move without the same fuel constraints as conventional formations. Dr. Clarke connects that demonstration to status politics, Soviet observation, and the practical space tradeoff of carrying food and stores even when reactor fuel is not the limiting factor.",
+      "summary": "Talos combined speed, range, and optional nuclear warheads to compensate for the uncertain long-range targeting of early Cold War fleet air defense.",
+      "body": "Dr. Clarke uses the RIM-8 Talos to explain the scale and logic of early naval surface-to-air missiles. Its speed and mass could damage an aircraft even before considering the conventional explosive payload. The optional W30 nuclear warhead widened the effective kill area against a bomber formation when long-range targeting remained uncertain. The comparison with modern precision thinking is the main learning payoff: designers of the 1950s and 1960s often compensated for imperfect guidance with a much larger destructive radius.",
+      "sourcePath": "src/transcripts/txt/2022-12-19_T21-48-54_uss-long-beach-cgn-9-the-usn-s-last-cruiser_J1suaJOupiI.txt",
+      "evidence": [
+        {
+          "start": "17:50",
+          "end": "19:30",
+          "note": "Talos range, speed, missile mass, conventional explosive, and W30 nuclear-warhead options are described."
+        },
+        {
+          "start": "19:38",
+          "end": "21:05",
+          "note": "The transcript contrasts modern precision logic with Cold War weapons that used large warheads to compensate for uncertain targeting."
+        }
+      ]
+    },
+    {
+      "id": "terrier-project-bumblebee-nuclear-option",
+      "videoId": "J1suaJOupiI",
+      "slug": "terrier-project-bumblebee-nuclear-option",
+      "title": "Terrier, Project Bumblebee, and another nuclear option",
+      "kind": "notable_point",
+      "start": "22:04",
+      "end": "25:24",
+      "topics": [
+        "us-navy",
+        "missiles",
+        "shipboard-air-defense",
+        "rim-2-terrier",
+        "project-bumblebee",
+        "nuclear-warheads",
+        "uss-long-beach"
+      ],
+      "summary": "The Terrier discussion traces Long Beach's shorter-range missile to Project Bumblebee and shows how nuclear warheads permeated early fleet air-defense planning.",
+      "body": "This watch point isolates the RIM-2 Terrier rather than treating Long Beach's missile battery as one undifferentiated system. Dr. Clarke traces Terrier back to the US Navy's Project Bumblebee surface-to-air missile program. The heavy booster and missile again underline the physical scale of early guided weapons. Terrier could carry either a controlled-fragmentation warhead or a one-kiloton nuclear warhead, reinforcing how routinely nuclear options entered Cold War air-defense design.",
+      "sourcePath": "src/transcripts/txt/2022-12-19_T21-48-54_uss-long-beach-cgn-9-the-usn-s-last-cruiser_J1suaJOupiI.txt",
+      "evidence": [
+        {
+          "start": "22:04",
+          "end": "22:43",
+          "note": "The transcript identifies RIM-2 Terrier and connects the Navy's surface-to-air missile development to Project Bumblebee."
+        },
+        {
+          "start": "22:50",
+          "end": "24:25",
+          "note": "Missile and booster weights are followed by controlled-fragmentation and one-kiloton nuclear-warhead options."
+        },
+        {
+          "start": "24:25",
+          "end": "25:24",
+          "note": "The section closes by calling Long Beach nuclear in every sense and contrasting the missiles with the dependable but old five-inch guns."
+        }
+      ]
+    },
+    {
+      "id": "long-beach-designation-cost-and-modernization",
+      "videoId": "J1suaJOupiI",
+      "slug": "long-beach-designation-cost-and-modernization",
+      "title": "Designation, cost growth, and a changing weapons fit",
+      "kind": "chapter",
+      "start": "25:24",
+      "end": "27:48",
+      "topics": [
+        "us-navy",
+        "naval-procurement",
+        "naval-modernization",
+        "phalanx-ciws",
+        "harpoon-missile",
+        "asroc",
+        "uss-long-beach"
+      ],
+      "summary": "Long Beach's changing designations, roughly 30-percent cost growth, and later Phalanx and Harpoon changes reveal the procurement history of a one-off experimental cruiser.",
+      "body": "Dr. Clarke follows Long Beach from the light-cruiser designation CLGN-160 through CGN-160 to CGN-9, showing how the Navy's categories changed around guided-missile ships. Her reported commissioning cost rose from an estimated $250 million to about $320 million. For an unprecedented 1950s nuclear warship, he judges that overrun as surprisingly modest rather than evidence of simple failure. The section also tracks later Phalanx installation and the replacement of the after Talos launcher by Harpoon while ASROC and the 5-inch/38 guns remained, illustrating how the ship's weapons mix evolved over her career.",
       "sourcePath": "src/transcripts/txt/2022-12-19_T21-48-54_uss-long-beach-cgn-9-the-usn-s-last-cruiser_J1suaJOupiI.txt",
       "evidence": [
         {
           "start": "25:24",
+          "end": "26:49",
+          "note": "The transcript traces the ship's CLGN-160, CGN-160, and CGN-9 designations and compares the estimated and reported commissioning costs."
+        },
+        {
+          "start": "27:17",
+          "end": "27:48",
+          "note": "The later fit added Phalanx, replaced the after Talos launcher with Harpoon, and retained ASROC and the five-inch guns."
+        }
+      ]
+    },
+    {
+      "id": "operation-sea-orbit-all-nuclear-task-force",
+      "videoId": "J1suaJOupiI",
+      "slug": "operation-sea-orbit-all-nuclear-task-force",
+      "title": "Operation Sea Orbit assembles an all-nuclear task force",
+      "kind": "chapter",
+      "start": "27:48",
+      "end": "32:27",
+      "topics": [
+        "us-navy",
+        "operation-sea-orbit",
+        "naval-nuclear-propulsion",
+        "uss-long-beach",
+        "uss-enterprise-cvn-65",
+        "uss-bainbridge-cgn-25",
+        "task-force-one",
+        "john-s-mccain-jr"
+      ],
+      "summary": "Long Beach, Enterprise, and Bainbridge formed Task Force One to test an all-nuclear formation and prepare for an unsupported global voyage.",
+      "body": "The opening of Operation Sea Orbit identifies the three ships that made the demonstration possible. Bainbridge began as a nuclear-powered destroyer leader or frigate before later cruiser reclassification, while Long Beach already carried cruiser status. Vice Admiral John S. McCain Jr. promoted a voyage consciously reminiscent of the Great White Fleet. After trials in the Mediterranean, Enterprise, Long Beach, and Bainbridge loaded maximum provisions and departed as Task Force One for a voyage designed to avoid underway replenishment.",
+      "sourcePath": "src/transcripts/txt/2022-12-19_T21-48-54_uss-long-beach-cgn-9-the-usn-s-last-cruiser_J1suaJOupiI.txt",
+      "evidence": [
+        {
+          "start": "27:48",
+          "end": "29:36",
+          "note": "Bainbridge is introduced as the other nuclear escort, including its original destroyer-leader or frigate status and later cruiser reclassification."
+        },
+        {
+          "start": "29:40",
           "end": "31:38",
-          "note": "The transcript moves from Long Beach's commissioning and early assignments into the Enterprise, Long Beach, and Bainbridge nuclear task-force trials."
+          "note": "Operation Sea Orbit is linked to John S. McCain Jr., the Great White Fleet precedent, and all-nuclear exercises with Enterprise."
         },
         {
           "start": "31:45",
-          "end": "35:22",
-          "note": "The task force takes maximum provisions, sails from July to October 1964, and is framed as a global show-the-flag demonstration."
+          "end": "32:27",
+          "note": "The three ships load maximum provisions and begin the July-to-October voyage without planned underway replenishment."
+        }
+      ]
+    },
+    {
+      "id": "sea-orbit-naval-diplomacy-status",
+      "videoId": "J1suaJOupiI",
+      "slug": "sea-orbit-naval-diplomacy-status",
+      "title": "Sea Orbit as naval diplomacy and a global status display",
+      "kind": "notable_point",
+      "start": "32:27",
+      "end": "35:22",
+      "topics": [
+        "us-navy",
+        "operation-sea-orbit",
+        "naval-diplomacy",
+        "showing-the-flag",
+        "soviet-navy",
+        "royal-navy",
+        "great-white-fleet"
+      ],
+      "summary": "The circumnavigation advertised American mobility and nuclear power, while Soviet and British comparisons show why global fleet voyages carry political weight.",
+      "body": "Dr. Clarke reads Sea Orbit as much more than a propulsion trial. A nuclear carrier and escorts sailing around the world without fuel support made a visible statement about American reach and readiness. He compares the display with Royal Navy squadron voyages and notes that the Soviet Navy studied the political impact of American deployments when shaping its own fleet. The learning payoff is that showing the flag converts endurance, weapons, and ship size into diplomatic influence even when no battle is fought.",
+      "sourcePath": "src/transcripts/txt/2022-12-19_T21-48-54_uss-long-beach-cgn-9-the-usn-s-last-cruiser_J1suaJOupiI.txt",
+      "evidence": [
+        {
+          "start": "32:27",
+          "end": "33:17",
+          "note": "The voyage is framed as proof that a nuclear carrier and escorts could move globally without normal support while retaining formidable weapons."
         },
         {
+          "start": "33:17",
+          "end": "34:18",
+          "note": "Port visits and showing the flag are connected to Soviet analysis and the older Royal Navy practice of global squadron voyages."
+        },
+        {
+          "start": "34:18",
+          "end": "35:22",
+          "note": "A modern Royal Navy Far East deployment is used to explain why long-distance task-group voyages function as deliberate statements."
+        }
+      ]
+    },
+    {
+      "id": "sea-orbit-route-provisions-logistics",
+      "videoId": "J1suaJOupiI",
+      "slug": "sea-orbit-route-provisions-logistics",
+      "title": "Sea Orbit's route reveals what nuclear power does and does not solve",
+      "kind": "chapter",
+      "start": "35:22",
+      "end": "38:56",
+      "topics": [
+        "us-navy",
+        "operation-sea-orbit",
+        "naval-logistics",
+        "naval-nuclear-propulsion",
+        "replenishment-at-sea",
+        "uss-long-beach",
+        "uss-enterprise-cvn-65",
+        "uss-bainbridge-cgn-25"
+      ],
+      "summary": "A 30,216-mile voyage without replenishment demonstrated freedom from propulsion fuel, but food, refrigeration, port access, and stores still shaped the task force's route.",
+      "body": "The route section follows Task Force One through exercises, port calls, the Indian Ocean, Australia, New Zealand, Cape Horn, and the South Atlantic. It also exposes the limits hidden by the phrase unlimited range: crews still need food, refrigeration, stores, and safe access to ports. The three ships spent 65 days deployed and steamed 30,216 miles without replenishment. Rear Admiral Bernard M. Strean's assessment supplies the operational lesson: the force could have diverted to another maritime region without propulsion-fuel planning and arrived ready for immediate operations.",
+      "sourcePath": "src/transcripts/txt/2022-12-19_T21-48-54_uss-long-beach-cgn-9-the-usn-s-last-cruiser_J1suaJOupiI.txt",
+      "evidence": [
+        {
           "start": "35:22",
+          "end": "37:35",
+          "note": "The transcript connects nuclear endurance to the need for food and refrigeration, then traces exercises and port calls around the globe."
+        },
+        {
+          "start": "37:39",
           "end": "38:13",
-          "note": "The route, exercises, and port calls are described before the transcript gives the 65-day deployment and 30,216-mile no-replenishment figure."
+          "note": "The voyage is summarized as 65 days, 30,216 miles, and no replenishment, followed by Rear Admiral Strean's diversion and readiness assessment."
         },
         {
           "start": "38:13",
           "end": "38:56",
-          "note": "Rear Admiral Stream's comment is used to explain the operational and logistical advantage of nuclear power."
+          "note": "The transcript explains the logistical advantage of removing propulsion fuel from ship design while acknowledging machinery-space tradeoffs."
         }
       ]
     },
@@ -222,7 +476,7 @@
         "naval-history"
       ],
       "summary": "The Vietnam section treats the Battle of Dong Hoi cautiously, then uses Long Beach's radar capability to explain why she was a harder cruiser target.",
-      "body": "Dr. Clarke is careful with the Battle of Dong Hoi label and the surrounding claims, noting that the official action and later combat ribbon may point to a more complicated sequence than a single neat battle narrative. The useful watch point is the comparison between cruiser targets. Oklahoma City is presented as a converted Cleveland-class missile cruiser, while Long Beach is described as having much more radar capability, making an attack on her a very different proposition.",
+      "body": "Dr. Clarke is careful with the Battle of Dong Hoi label and the surrounding claims because Vietnamese and American accounts disagree over aircraft, boats, damage, and casualties. Long Beach's combat-action ribbon for April 26, 1972, a week after the officially dated action, suggests that the operational sequence may have been more complicated than a single neat battle narrative. He then compares the possible cruiser targets. Oklahoma City was a converted Cleveland-class missile cruiser, while Long Beach had much greater radar capability and posed a very different air-defense problem.",
       "sourcePath": "src/transcripts/txt/2022-12-19_T21-48-54_uss-long-beach-cgn-9-the-usn-s-last-cruiser_J1suaJOupiI.txt",
       "evidence": [
         {
@@ -243,74 +497,132 @@
       ]
     },
     {
-      "id": "aegis-upgrade-and-nuclear-escort-argument",
+      "id": "long-beach-aegis-upgrade-concept",
       "videoId": "J1suaJOupiI",
-      "slug": "aegis-upgrade-and-nuclear-escort-argument",
-      "title": "The unrealized Aegis upgrade and nuclear escort case",
+      "slug": "long-beach-aegis-upgrade-concept",
+      "title": "The unrealized Aegis upgrade for Long Beach",
       "kind": "chapter",
       "start": "42:01",
-      "end": "44:47",
+      "end": "42:44",
       "topics": [
         "us-navy",
-        "naval-nuclear-propulsion",
         "shipboard-air-defense",
-        "fleet-screening",
-        "force-structure"
+        "naval-modernization",
+        "aegis-combat-system",
+        "standard-missile",
+        "helicopters",
+        "uss-long-beach"
       ],
-      "summary": "A proposed Aegis-era Long Beach points to Dr. Clarke's broader argument that each nuclear carrier benefited from at least one nuclear-powered escort.",
-      "body": "The Aegis-upgrade discussion imagines a Long Beach with Aegis radars, a helicopter facility, Standard missiles, and a newer five-inch gun. Dr. Clarke then turns the design sketch into a force-structure argument: if nuclear carriers gain strategic mobility from not needing propulsion fuel, at least one similarly unconstrained escort would add options for rapid movement, picketing, and escorting. The argument does not deny that conventional escorts could keep up for many tasks, but it stresses the flexibility lost when the nuclear surface escort line faded.",
+      "summary": "A proposed modernization replaced Long Beach's early arrays with Aegis radars and paired them with Standard missiles, a helicopter hangar, and a newer five-inch gun.",
+      "body": "This watch point gives the proposed Aegis-era Long Beach its own design focus. The concept replaces the ship's early radar arrangement with Aegis arrays and appears to add a helicopter hangar that the original design lacked. Standard missiles and a newer five-inch gun would have brought the weapons fit closer to contemporary fleet practice. Dr. Clarke's enthusiasm highlights the modernization potential that still existed, while the scale of the superstructure changes hints at why the conversion would be expensive.",
       "sourcePath": "src/transcripts/txt/2022-12-19_T21-48-54_uss-long-beach-cgn-9-the-usn-s-last-cruiser_J1suaJOupiI.txt",
       "evidence": [
         {
           "start": "42:01",
           "end": "42:42",
           "note": "The transcript describes an Aegis-style Long Beach upgrade with new radars, likely hangar facility, Standard missiles, and a new five-inch gun."
-        },
-        {
-          "start": "42:44",
-          "end": "43:36",
-          "note": "Dr. Clarke says he would have liked the US Navy to continue with nuclear-powered cruisers rather than destroyer leaders."
-        },
-        {
-          "start": "43:56",
-          "end": "44:47",
-          "note": "The segment argues that one nuclear escort per carrier would improve rapid movement, picketing, and force-structure options."
         }
       ]
     },
     {
-      "id": "decommissioning-long-beach-and-upgrade-costs",
+      "id": "one-nuclear-escort-per-carrier",
       "videoId": "J1suaJOupiI",
-      "slug": "decommissioning-long-beach-and-upgrade-costs",
-      "title": "Decommissioning Long Beach versus a longer nuclear-cruiser life",
-      "kind": "chapter",
-      "start": "44:47",
-      "end": "50:58",
+      "slug": "one-nuclear-escort-per-carrier",
+      "title": "The case for one nuclear escort per nuclear carrier",
+      "kind": "notable_point",
+      "start": "42:44",
+      "end": "44:47",
       "topics": [
         "us-navy",
         "naval-nuclear-propulsion",
         "nuclear-powered-warships",
-        "naval-procurement",
-        "cruisers"
+        "fleet-screening",
+        "force-structure",
+        "naval-logistics",
+        "picket-ships"
       ],
-      "summary": "The closing assessment weighs Long Beach's Gulf War service and possible upgrade path against the cost logic that pushed her out of service.",
-      "body": "The final Long Beach assessment is sympathetic but not nostalgic. Dr. Clarke says a heavier cruiser-shaped hull might have made Aegis modernization cheaper, especially after her late service in Desert Storm, Provide Comfort, Fiery Vigil, and escorting Missouri. The comparison with Enterprise's much longer service life highlights the core design lesson: nuclear ships can last for decades when they have enough size and modernization margin, but Long Beach's hull and upgrade costs made her easier to retire.",
+      "summary": "One nuclear-powered escort per carrier would preserve fuel-independent mobility, expand picket options, and sustain a larger surface-reactor personnel base.",
+      "body": "Dr. Clarke turns Long Beach's possible survival into a wider force-structure argument. A nuclear carrier can carry aviation fuel rather than propulsion fuel, but conventional escorts still tie the formation to refueling arrangements. Keeping at least one nuclear escort with each carrier would preserve an unencumbered ship for rapid movement and distant picket duties. A larger surface-reactor fleet would also broaden the trained personnel pool and create more command pathways, making nuclear surface capability institutionally harder to lose.",
       "sourcePath": "src/transcripts/txt/2022-12-19_T21-48-54_uss-long-beach-cgn-9-the-usn-s-last-cruiser_J1suaJOupiI.txt",
       "evidence": [
         {
-          "start": "44:47",
+          "start": "42:44",
+          "end": "43:52",
+          "note": "Dr. Clarke argues for at least one nuclear escort per nuclear carrier and connects a larger force to reactor training and senior-post opportunities."
+        },
+        {
+          "start": "43:53",
+          "end": "44:47",
+          "note": "The transcript says a fuel-independent escort would add rapid-movement, picketing, and force-structure options even if most escorts remained conventional."
+        }
+      ]
+    },
+    {
+      "id": "gulf-war-service-aegis-vls-counterfactual",
+      "videoId": "J1suaJOupiI",
+      "slug": "gulf-war-service-aegis-vls-counterfactual",
+      "title": "Gulf War service and the Aegis-VLS counterfactual",
+      "kind": "chapter",
+      "start": "46:33",
+      "end": "49:11",
+      "topics": [
+        "us-navy",
+        "naval-procurement",
+        "naval-modernization",
+        "aegis-combat-system",
+        "vertical-launching-system",
+        "gulf-war",
+        "operation-desert-storm",
+        "operation-provide-comfort",
+        "operation-fiery-vigil",
+        "uss-missouri-bb-63",
+        "uss-long-beach"
+      ],
+      "summary": "Long Beach's recent Gulf War service made retirement debatable, but rebuilding her for Aegis and VLS would have required a costly transformation of the ship.",
+      "body": "Dr. Clarke returns to hull form when assessing the end of Long Beach's career. He argues that a heavy-cruiser-shaped ship might have accepted Aegis more cheaply, especially after Long Beach served in Desert Storm, Provide Comfort, Fiery Vigil, and escorted Missouri. The proposed modernization required a major superstructure rebuild, and adding vertical-launching-system capacity would have pushed the conversion further. His counterfactual cuts both ways: retaining a nuclear Aegis cruiser might have produced a powerful ship, but it could also have compelled the Navy to maintain and eventually replace an exceptionally expensive capability.",
+      "sourcePath": "src/transcripts/txt/2022-12-19_T21-48-54_uss-long-beach-cgn-9-the-usn-s-last-cruiser_J1suaJOupiI.txt",
+      "evidence": [
+        {
+          "start": "46:33",
           "end": "46:54",
-          "note": "The transcript discusses other nuclear cruisers as destroyer-like ships and says a heavy-cruiser-shaped Long Beach might have made Aegis upgrade cheaper."
+          "note": "The transcript says a heavy-cruiser-shaped Long Beach might have made Aegis modernization cheaper."
         },
         {
           "start": "46:54",
           "end": "48:42",
           "note": "The late-service section mentions Desert Storm, Provide Comfort, Fiery Vigil, Missouri escort duty, Aegis costs, and the hypothetical difficulty of retiring a nuclear Aegis cruiser with VLS."
-        },
+        }
+      ]
+    },
+    {
+      "id": "enterprise-comparison-long-beach-service-life",
+      "videoId": "J1suaJOupiI",
+      "slug": "enterprise-comparison-long-beach-service-life",
+      "title": "Enterprise shows the service life Long Beach did not receive",
+      "kind": "notable_point",
+      "start": "49:11",
+      "end": "50:58",
+      "topics": [
+        "us-navy",
+        "naval-nuclear-propulsion",
+        "nuclear-powered-warships",
+        "naval-modernization",
+        "uss-long-beach",
+        "uss-enterprise-cvn-65"
+      ],
+      "summary": "Enterprise's 56-year commissioned-to-stricken span contrasts with Long Beach's roughly 33 years and underlines the value of size and modernization margin.",
+      "body": "The final comparison uses Enterprise to show how long a nuclear-powered ship can remain relevant when it has enough size for repeated modernization. Enterprise entered service in 1961 and was not stricken until 2017, a span of roughly 56 years. Long Beach was also commissioned in 1961 but deactivated in 1994 and decommissioned in 1995 after about 33 years. Dr. Clarke therefore argues that another two decades were technically imaginable, even though the cost and difficulty of the required upgrades explain why the Navy chose retirement.",
+      "sourcePath": "src/transcripts/txt/2022-12-19_T21-48-54_uss-long-beach-cgn-9-the-usn-s-last-cruiser_J1suaJOupiI.txt",
+      "evidence": [
         {
           "start": "49:11",
+          "end": "50:23",
+          "note": "The transcript calls Long Beach useful, accepts the retirement logic, and uses Enterprise's 1961-to-2017 span to illustrate nuclear-ship longevity."
+        },
+        {
+          "start": "50:23",
           "end": "50:58",
-          "note": "The summary compares Long Beach's decommissioning at roughly 33 years with Enterprise's much longer service life and asks what might have replaced a like-for-like nuclear cruiser capability."
+          "note": "Long Beach's 1961 commissioning and 1994-to-1995 deactivation and decommissioning are contrasted with the possibility of another twenty years."
         }
       ]
     }
