@@ -91,9 +91,10 @@ For every first-pass transcript, scan the full duration for substantive transcri
 
 ## Public Content Intent
 
-- `title` and `summary` should work as a watch point: name the naval subject and preview what the reader will learn by opening the video there.
+- `title` and `summary` should work as a watch point: name the naval-history or general-history subject and preview what the reader will learn by opening the video there. A direct naval connection is not required.
 - `body` should add learning value, not workflow status. Explain the historical, technical, strategic, or institutional point in 4-10 compact sentences when evidence supports it.
-- Use transcript-supported names and alternate wording that improve search for ships, classes, navies, battles, weapons, policies, doctrine, logistics, acronyms, and time periods.
+- For historically framed games, simulations, and counterfactuals, distinguish scenario rules and events from actual history and retain only material with substantive historical, strategic, institutional, economic, geographic, or logistical learning value.
+- Use transcript-supported names and alternate wording that improve search for ships, classes, navies, states, empires, peoples, armies, battles, campaigns, leaders, weapons, places, trade routes, policies, doctrine, logistics, acronyms, and time periods.
 - Prefer separate segment records for distinct ideas, examples, Q&A exchanges, or topic shifts so topic pages and search results can point to precise video moments.
 - Do not put creator metrics, internal filenames, processing status, or raw inventory notes in public fields.
 
