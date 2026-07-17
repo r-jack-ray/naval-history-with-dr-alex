@@ -217,6 +217,105 @@ test("production policy consolidates generic inch-gun topics without collapsing 
   }
 });
 
+test("production policy preserves the distinct 11-inch and 1.1-inch gun topics", async () => {
+  const catalog = await loadTopicNormalizationCatalog(
+    "src/derived/topic-normalization-patterns.tsv",
+  );
+
+  assert.equal(resolveTopicCreation(catalog, "11-inch-guns").slug, "11-inch-guns");
+  assert.equal(resolveTopicCreation(catalog, "1-1-inch-guns").slug, "1-1-inch-guns");
+  assert.equal(topicTitleFromSlug("11-inch-guns", catalog), "11-inch Guns");
+  assert.equal(topicTitleFromSlug("1-1-inch-guns", catalog), "1.1-inch Guns");
+  assert.notEqual(
+    resolveTopicCreation(catalog, "11-inch-guns").slug,
+    resolveTopicCreation(catalog, "1-1-inch-guns").slug,
+  );
+});
+
+test("production policy merges reviewed duplicate topics without guessing ambiguous context", async () => {
+  const catalog = await loadTopicNormalizationCatalog(
+    "src/derived/topic-normalization-patterns.tsv",
+  );
+  const expected = [
+    ["aav-7", "aav7", "normalize-duplicate-aav-7"],
+    ["abdacom", "abda-command", "normalize-duplicate-abdacom"],
+    [
+      "uncrewed-combat-aircraft",
+      "ucav",
+      "normalize-duplicate-uncrewed-combat-aircraft",
+    ],
+    ["v-2", "v-2-rocket", "normalize-duplicate-v-2"],
+    ["v-2-rockets", "v-2-rocket", "normalize-duplicate-v-2-rockets"],
+    ["n3-battleship-design", "n3-class-battleships", "normalize-duplicate-n3-battleship-design"],
+    [
+      "queen-elizabeth-class-carrier",
+      "queen-elizabeth-class-aircraft-carriers",
+      "normalize-duplicate-queen-elizabeth-class-carrier",
+    ],
+    [
+      "queen-elizabeth-class-battleship",
+      "queen-elizabeth-class-battleships",
+      "normalize-duplicate-queen-elizabeth-class-battleship",
+    ],
+    ["uss-enterprise-cv6", "uss-enterprise-cv-6", "normalize-duplicate-uss-enterprise-cv6"],
+  ] as const;
+
+  for (const [input, slug, ruleId] of expected) {
+    assert.deepEqual(resolveTopicCreation(catalog, input), {
+      input,
+      slug,
+      changed: true,
+      matchedRuleIds: [ruleId],
+    });
+  }
+  assert.deepEqual(resolveTopicCreation(catalog, "queen-elizabeth-class"), {
+    input: "queen-elizabeth-class",
+    slug: "queen-elizabeth-class",
+    changed: false,
+    matchedRuleIds: ["review-contextual-queen-elizabeth-class"],
+  });
+});
+
+test("production policy uses reviewed official and common display forms", async () => {
+  const catalog = await loadTopicNormalizationCatalog(
+    "src/derived/topic-normalization-patterns.tsv",
+  );
+  const expectedTitles = new Map([
+    ["aav7", "AAV7"],
+    ["abda-command", "ABDA Command"],
+    ["abc-1-staff-talks", "U.S.–British Staff Conference (ABC-1)"],
+    ["aden-cannon", "ADEN Cannon"],
+    ["ub-43", "UB-43"],
+    ["sm-u-21", "SM U-21"],
+    ["type-ub-iii-submarine", "Type UB III Submarine"],
+    ["type-uc-ii-submarine", "Type UC II Submarine"],
+    ["uavs", "UAVs"],
+    ["ucav", "UCAV"],
+    ["uuvs", "UUVs"],
+    ["n3-class-battleships", "N3 Class Battleships"],
+    ["queen-elizabeth-class-aircraft-carriers", "Queen Elizabeth Class Aircraft Carriers"],
+    ["queen-elizabeth-class-battleships", "Queen Elizabeth Class Battleships"],
+    ["u-5", "U-5"],
+    ["vf-2", "VF-2"],
+    ["vfa-2", "VFA-2"],
+    ["vmf-214", "VMF-214"],
+    ["uc-43", "UC-43"],
+    ["uss-enterprise-cv-6", "USS Enterprise (CV-6)"],
+    ["uss-enterprise-cvn-65", "USS Enterprise (CVN-65)"],
+    ["uss-texas-bb-35", "USS Texas (BB-35)"],
+    ["uss-turner-dd-648", "USS Turner (DD-648)"],
+    ["v-1-flying-bomb", "V-1 Flying Bomb"],
+    ["v-2-rocket", "V-2 Rocket"],
+    ["vstol-aircraft", "V/STOL Aircraft"],
+    ["vtol-aircraft", "VTOL Aircraft"],
+    ["vt-fuzes", "VT Fuzes"],
+  ]);
+
+  for (const [slug, title] of expectedTitles) {
+    assert.equal(resolveTopicDisplayTitle(catalog, slug).title, title, slug);
+  }
+});
+
 test("exact review policy suppresses broader active creation rules", () => {
   const catalog = resolutionCatalog();
 
