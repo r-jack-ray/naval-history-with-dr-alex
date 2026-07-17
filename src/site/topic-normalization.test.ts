@@ -146,6 +146,77 @@ test("production policy canonicalizes numeric millimeter gun topics", async () =
   });
 });
 
+test("production policy consolidates the A-6F variant into the A-6 Intruder topic", async () => {
+  const catalog = await loadTopicNormalizationCatalog(
+    "src/derived/topic-normalization-patterns.tsv",
+  );
+
+  assert.deepEqual(resolveTopicCreation(catalog, "a-6f-intruder"), {
+    input: "a-6f-intruder",
+    slug: "a-6-intruder",
+    changed: true,
+    matchedRuleIds: ["normalize-a-6f-intruder"],
+  });
+});
+
+test("production policy consolidates generic inch-gun topics without collapsing named models", async () => {
+  const catalog = await loadTopicNormalizationCatalog(
+    "src/derived/topic-normalization-patterns.tsv",
+  );
+
+  for (const calibre of ["14", "15", "16", "18", "20"]) {
+    assert.deepEqual(resolveTopicCreation(catalog, `${calibre}-inch-gun`), {
+      input: `${calibre}-inch-gun`,
+      slug: `${calibre}-inch-guns`,
+      changed: true,
+      matchedRuleIds: ["create-singular-integer-inch-gun"],
+    });
+  }
+  assert.deepEqual(resolveTopicCreation(catalog, "17-5-inch-gun"), {
+    input: "17-5-inch-gun",
+    slug: "17-5-inch-guns",
+    changed: true,
+    matchedRuleIds: ["create-singular-decimal-inch-gun"],
+  });
+  assert.deepEqual(resolveTopicCreation(catalog, "british-15-inch-gun"), {
+    input: "british-15-inch-gun",
+    slug: "15-inch-guns",
+    changed: true,
+    matchedRuleIds: ["normalize-british-15-inch-gun"],
+  });
+  assert.deepEqual(resolveTopicCreation(catalog, "five-inch-38-caliber-gun"), {
+    input: "five-inch-38-caliber-gun",
+    slug: "5-inch-guns",
+    changed: true,
+    matchedRuleIds: ["normalize-five-inch-38-caliber-gun"],
+  });
+  assert.deepEqual(resolveTopicCreation(catalog, "automatic-eight-inch-guns"), {
+    input: "automatic-eight-inch-guns",
+    slug: "8-inch-guns",
+    changed: true,
+    matchedRuleIds: ["normalize-automatic-eight-inch-guns"],
+  });
+  assert.deepEqual(resolveTopicCreation(catalog, "nine-inch-guns"), {
+    input: "nine-inch-guns",
+    slug: "9-inch-guns",
+    changed: true,
+    matchedRuleIds: ["normalize-nine-inch-guns"],
+  });
+  for (const modelSlug of [
+    "bl-15-inch-mark-i",
+    "qf-4-5-inch-gun",
+    "six-inch-mark-xxiii",
+    "15-inch-gun-mount",
+  ]) {
+    assert.deepEqual(resolveTopicCreation(catalog, modelSlug), {
+      input: modelSlug,
+      slug: modelSlug,
+      changed: false,
+      matchedRuleIds: [],
+    });
+  }
+});
+
 test("exact review policy suppresses broader active creation rules", () => {
   const catalog = resolutionCatalog();
 

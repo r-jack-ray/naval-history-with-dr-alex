@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "videoId": "Q4oywmW8vjk",
-  "topics": ["battleships", "us-navy", "ship-design", "naval-gunnery", "cruisers", "torpedoes", "naval-procurement"],
+  "topics": ["battleships", "tillman-battleships", "yamato-class", "us-navy", "ship-design", "naval-gunnery", "cruisers", "torpedoes", "naval-procurement"],
   "segments": [
     {
       "id": "dreadnought-versus-montana-at-long-range",
@@ -55,9 +55,26 @@
       "end": "29:12",
       "topics": ["tillman-battleships", "us-navy", "ship-design", "naval-gunnery"],
       "summary": "A hypothetical American maximum battleship shows how gun count, armour and stability compete for a finite displacement.",
-      "body": "Working from a Tillman maximum-battleship concept, Clarke tries to build a vessel carrying twenty-four 16-inch guns. He balances a 25-knot requirement, oil firing, all-or-nothing protection, anti-torpedo measures, turret armour and secondary batteries against the game design's weight limits. He identifies A. D. Zinn's 1975 Warship International article on the American maximum-battleship designs as the historical reference behind the exercise and corrects which Tillman variant carried the 16-inch battery. The experiment makes overwhelming firepower look attractive, but also shows that turrets, armour, machinery and stability penalties cannot be treated as separate choices.",
+      "body": "Working from a Tillman maximum-battleship concept, Clarke tries to build a vessel carrying twenty-four 16-inch guns. He balances a 25-knot requirement, oil firing, all-or-nothing protection, anti-torpedo measures, turret armour and secondary batteries against the game design's weight limits. The layout ends with much of its main-battery weight aft, turning fore-and-aft balance and stability into visible constraints before the ship even fights. The experiment makes overwhelming firepower look attractive, but also shows that turrets, armour, machinery and stability penalties cannot be treated as separate choices.",
       "sourcePath": "src/transcripts/txt/2023-08-09_T18-00-11_how-many-guns-does-that-usn-battleship-have_Q4oywmW8vjk.txt",
-      "evidence": [{"start": "12:13", "end": "32:10", "note": "The transcript builds and trials a 24-gun 16-inch Tillman-inspired battleship, distinguishes the Tillman variants and names A. D. Zinn's reference article."}]
+      "evidence": [{"start": "12:13", "end": "29:12", "note": "The transcript builds and trials a 24-gun 16-inch Tillman-inspired battleship while balancing protection, secondary armament and weight."}]
+    },
+    {
+      "id": "tillman-iv-2-fifteen-eighteen-inch-guns",
+      "videoId": "Q4oywmW8vjk",
+      "slug": "tillman-iv-2-fifteen-eighteen-inch-guns",
+      "title": "Tillman IV-2 turns fifteen 18-inch guns into a design problem",
+      "kind": "chapter",
+      "start": "29:20",
+      "end": "37:45",
+      "topics": ["tillman-battleships", "us-navy", "ship-design", "18-inch-guns", "naval-gunnery"],
+      "summary": "Clarke returns to the American maximum-battleship proposals and rebuilds the exercise around Tillman IV-2's fifteen 18-inch guns.",
+      "body": "After the 24-gun experiment, Clarke checks A. D. Zinn's 1975 Warship International article and corrects the selected American maximum-battleship variant. Tillman IV-2 is the proposal with fifteen 18-inch guns, which he models as 18-inch/45 weapons. He then revises the gun arrangement and works through armour, fore-and-aft balance and stability before launching the design against the Yamato scenario. The sequence shows how consulting the underlying design reference changes the exercise and how a headline battery still has to fit within the rest of the ship.",
+      "sourcePath": "src/transcripts/txt/2023-08-09_T18-00-11_how-many-guns-does-that-usn-battleship-have_Q4oywmW8vjk.txt",
+      "evidence": [
+        {"start": "29:50", "end": "32:10", "note": "Clarke corrects the Tillman variant, identifies its fifteen 18-inch guns and cites A. D. Zinn's 1975 article."},
+        {"start": "34:31", "end": "37:45", "note": "He finishes the 18-inch/45 design, checks its balance and stability, and launches the Yamato comparison."}
+      ]
     },
     {
       "id": "tillman-designs-would-change-yamato-context",
@@ -93,13 +110,16 @@
       "slug": "yamato-duels-are-counterfactual-stress-tests",
       "title": "Why these Yamato defeats need a counterfactual caveat",
       "kind": "notable_point",
-      "start": "46:31",
+      "start": "41:37",
       "end": "47:04",
-      "topics": ["yamato-class", "tillman-battleships", "montana-class", "counterfactual-history", "ship-design"],
-      "summary": "Clarke cautions that the simulated Yamato is repeatedly matched against maximum battleships that were never built.",
-      "body": "Clarke rejects the idea that he has deliberately designed the simulated Yamato to fail. Its recurring problem is the opposition selected for these demonstrations: Montana- and Tillman-style ships whose most extreme forms never entered service. The matches are therefore counterfactual stress tests of armour and firepower rather than evidence for how a historical battle would have unfolded. This caveat matters because the scenario isolates extraordinary gun and displacement choices while leaving aside the political, industrial and operational reasons those opponents remained unbuilt.",
+      "topics": ["yamato-class", "tillman-battleships", "montana-class", "counterfactual-history", "ship-design", "armour"],
+      "summary": "Clarke shows that the game's Yamato is heavily armoured, then cautions that it is being tested against unbuilt Montana- and Tillman-style maximum battleships.",
+      "body": "Before answering criticism that his simulated Yamato is designed to fail, Clarke displays its protection settings: an 18-inch main belt, a 9.1-inch main deck, heavy turret and barbette armour, and reinforced bulkheads. Those figures describe the game scenario being demonstrated, so the result still depends on the model and the opponents chosen. Yamato's recurring problem is the opposition selected for these demonstrations: Montana- and Tillman-style ships whose most extreme forms never entered service. The matches are therefore counterfactual stress tests of armour and firepower rather than evidence for how a historical battle would have unfolded. This caveat keeps the lesson focused on design trade-offs and scenario assumptions.",
       "sourcePath": "src/transcripts/txt/2023-08-09_T18-00-11_how-many-guns-does-that-usn-battleship-have_Q4oywmW8vjk.txt",
-      "evidence": [{"start": "46:31", "end": "47:04", "note": "Clarke says Yamato mainly loses because viewers keep matching it against unbuilt Montana- and Tillman-style designs."}]
+      "evidence": [
+        {"start": "41:37", "end": "42:39", "note": "Clarke displays the simulated Yamato's belt, deck, turret and barbette protection while rejecting the claim that it was designed to explode."},
+        {"start": "46:31", "end": "47:04", "note": "He says Yamato mainly loses because viewers keep matching it against unbuilt Montana- and Tillman-style designs."}
+      ]
     },
     {
       "id": "eighteen-inch-tillman-trades-stability-for-firepower",
@@ -151,8 +171,8 @@
       "kind": "qa",
       "start": "1:38:06",
       "end": "1:45:26",
-      "topics": ["naval-history", "battle-of-yalu-river", "naval-surrender"],
-      "summary": "A chat question about warship surrender leads to a cautious comparison with the Battle of the Yalu River and civil-war actions.",
+      "topics": ["naval-history", "naval-surrender"],
+      "summary": "A chat question about warship surrender leads to a cautious comparison with a Chinese-Japanese fleet action and civil-war actions.",
       "body": "Clarke treats the game's cruiser surrender as unusual rather than a routine naval outcome. He says that a fully functioning warship surrendering in battle is rare, distinguishing that case from the capture of a patrol boat or similarly small craft. He points tentatively to a nineteenth-century Chinese-Japanese fleet action as a possible comparison while stressing the poor condition of the Chinese vessels. He also notes that civil-war engagements can produce unusual surrender cases, so the answer remains cautious rather than a definitive last occurrence.",
       "question": "When did a proper warship last surrender in battle?",
       "answerShort": "It is very rare; Clarke tentatively points to a nineteenth-century Chinese-Japanese fleet action and notes that civil-war actions offer unusual cases.",

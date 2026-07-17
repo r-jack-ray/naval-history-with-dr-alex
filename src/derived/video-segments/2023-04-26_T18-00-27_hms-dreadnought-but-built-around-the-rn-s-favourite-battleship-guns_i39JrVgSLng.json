@@ -1,21 +1,55 @@
 {
   "schemaVersion": 1,
   "videoId": "i39JrVgSLng",
-  "topics": ["battleship-design", "naval-gunnery", "destroyers", "aircraft-carriers", "naval-doctrine", "world-war-ii"],
+  "topics": ["hms-dreadnought", "battleship-design", "naval-gunnery", "13-5-inch-guns", "treaty-cruisers", "destroyers", "aircraft-carriers", "naval-doctrine", "world-war-ii"],
   "segments": [
     {
       "id": "dreadnought-with-13-5-inch-guns",
       "videoId": "i39JrVgSLng",
       "slug": "dreadnought-with-13-5-inch-guns",
-      "title": "Could Dreadnought have carried 13.5-inch guns?",
+      "title": "Designing a 13.5-inch-gun HMS Dreadnought",
       "kind": "notable_point",
-      "start": "12:48",
-      "end": "26:56",
-      "topics": ["hms-dreadnought", "battleship-design", "naval-gunnery", "royal-navy"],
-      "summary": "A game-built alternative Dreadnought tests what an immediate British move to 13.5-inch guns might have meant.",
-      "body": "Dr. Clarke treats the larger-gun Dreadnought as a plausible early British choice rather than a simple scale-up. He argues that Fisher would probably have wanted at least ten 13.5-inch guns, then tests how that requirement affects hull dimensions, speed, firing arcs, and weight distribution. Six-inch secondaries and lighter anti-torpedo-boat guns show that the main battery cannot be considered separately from the rest of the armament. The design settles around 24 to 25 knots while repeatedly trading armour against stability and machinery efficiency. He compares the resulting ship with the later Orion class, whose turret and barbette protection shows why the game's default armour values should not be read as historical specifications.",
+      "start": "7:37",
+      "end": "31:30",
+      "topics": ["hms-dreadnought", "battleship-design", "naval-gunnery", "royal-navy", "13-5-inch-guns", "orion-class-battleships"],
+      "summary": "A game-built alternative Dreadnought tests how an immediate British move to 13.5-inch guns would reshape the whole ship.",
+      "body": "Dr. Clarke treats the larger-gun Dreadnought as a plausible early British choice rather than a simple scale-up. He argues that Fisher would probably have wanted at least ten 13.5-inch guns, then tests how that requirement affects hull dimensions, speed, firing arcs, and weight distribution. Six-inch secondaries, lighter anti-torpedo-boat guns, and torpedo tubes show that the main battery cannot be considered separately from the rest of the armament. The design settles around 24 to 25 knots while repeatedly trading armour against stability, pitch, and machinery efficiency. He compares the resulting ship with the later Orion class, whose turret and barbette protection shows why the game's default armour values should not be read as historical specifications. As a counterfactual design exercise, the watch point is most useful for following the linked compromises created by changing one headline characteristic.",
       "sourcePath": "src/transcripts/txt/2023-04-26_T18-00-27_hms-dreadnought-but-built-around-the-rn-s-favourite-battleship-guns_i39JrVgSLng.txt",
-      "evidence": [{"start": "12:48", "end": "26:56", "note": "He explains why Fisher might have preferred a ten-gun 13.5-inch Dreadnought and compares its armour with Orion."}]
+      "evidence": [
+        {"start": "7:37", "end": "12:37", "note": "He establishes the 13.5-inch Dreadnought concept, its secondary battery, torpedoes, and 24-knot target."},
+        {"start": "13:37", "end": "19:37", "note": "Moving the design to 1908 lets him test a wider hull, 25 knots, and a ten-gun centreline arrangement."},
+        {"start": "20:20", "end": "31:30", "note": "He balances armour, pitch, machinery, and lighter weapons while comparing turret and barbette protection with the Orion class."}
+      ]
+    },
+    {
+      "id": "fisher-triple-superfiring-13-5-inch-guns",
+      "videoId": "i39JrVgSLng",
+      "slug": "fisher-triple-superfiring-13-5-inch-guns",
+      "title": "Would Fisher pursue triple, superfiring 13.5-inch guns?",
+      "kind": "qa",
+      "start": "12:48",
+      "end": "14:25",
+      "topics": ["hms-dreadnought", "battleship-design", "royal-navy", "13-5-inch-guns", "superfiring-turrets"],
+      "summary": "The answer separates Fisher's likely demand for a heavy broadside from the exact turret arrangement needed to deliver it.",
+      "body": "The prompt asks whether Fisher would combine triple 13.5-inch mountings with superfiring positions. Dr. Clarke does not settle on one exact turret plan; instead, he argues that Fisher would seek at least ten guns and tests what a 1908 hull could support. Increasing beam and speed while rearranging centreline positions shows that adopting the larger gun requires hull and machinery growth, not a simple weapon substitution. The exercise therefore treats a 13.5-inch Dreadnought as plausible while leaving the precise triple and superfiring arrangement constrained by weight, firing arcs, and contemporary technology.",
+      "question": "Would Fisher have tried triple 13.5-inch guns with superfiring turrets?",
+      "answerShort": "He thinks Fisher would insist on at least ten 13.5-inch guns and that a 1908 design was plausible, although the exact triple and superfiring arrangement remained constrained.",
+      "sourcePath": "src/transcripts/txt/2023-04-26_T18-00-27_hms-dreadnought-but-built-around-the-rn-s-favourite-battleship-guns_i39JrVgSLng.txt",
+      "evidence": [{"start": "12:48", "end": "14:25", "note": "He answers the turret prompt by arguing for at least ten guns and testing whether a 1908 hull can carry the larger battery."}]
+    },
+    {
+      "id": "french-response-to-13-5-inch-dreadnought",
+      "videoId": "i39JrVgSLng",
+      "slug": "french-response-to-13-5-inch-dreadnought",
+      "title": "The French response and the cost of dreadnought design lag",
+      "kind": "notable_point",
+      "start": "31:40",
+      "end": "39:21",
+      "topics": ["french-navy", "dreadnoughts", "battleship-design", "naval-arms-races", "13-inch-guns"],
+      "summary": "A speculative French counterpart illustrates how construction timing could turn one navy's design breakthrough into a wider lead.",
+      "body": "Dr. Clarke follows the British counterfactual with a French 13-inch-gun response. He suggests that such a ship might enter service only when the next British battleship generation was also arriving, making delay as important as the paper specification. The design exercise then struggles to combine machinery, armour, ammunition, torpedoes, and acceptable stability within the available hull. This is a game-built scenario rather than a reconstruction of an actual French proposal, but it usefully illustrates how an arms race rewards construction capacity and design tempo as well as gun calibre.",
+      "sourcePath": "src/transcripts/txt/2023-04-26_T18-00-27_hms-dreadnought-but-built-around-the-rn-s-favourite-battleship-guns_i39JrVgSLng.txt",
+      "evidence": [{"start": "31:40", "end": "39:21", "note": "He builds a speculative French counterpart and argues that its service entry would lag into the next British battleship generation."}]
     },
     {
       "id": "ten-inch-treaty-cruiser-consequences",
@@ -25,13 +59,30 @@
       "kind": "qa",
       "start": "42:59",
       "end": "45:20",
-      "topics": ["treaty-cruisers", "naval-treaties", "cruisers", "battleship-design"],
+      "topics": ["treaty-cruisers", "naval-treaties", "cruisers", "battleship-design", "10-inch-guns", "14-inch-guns", "18-inch-guns"],
       "summary": "A 10-inch cruiser limit would likely force a wider gap between cruiser and capital-ship armament.",
       "body": "The answer treats gun-calibre limits as a connected treaty system rather than an isolated cruiser specification. A 10-inch cruiser would probably need a displacement ceiling around 15,000 tons and enough speed to retain a cruiser role. Dr. Clarke explains that treaty negotiators wanted clear water between cruisers and capital ships, partly to prevent nominal cruisers from becoming auxiliary battleships in the battle line. A higher cruiser ceiling would therefore push the minimum capital-ship calibre toward 14 inches and could encourage an 18-inch upper limit. The thought experiment shows how changing one category can reshape an entire treaty fleet rather than merely producing a larger heavy cruiser.",
       "question": "What might a 9.5- or 10-inch-gun American treaty cruiser look like?",
       "answerShort": "It would probably be a faster, roughly 15,000-ton cruiser, but its larger guns would also push treaty powers to preserve a four-inch calibre gap before capital ships.",
       "sourcePath": "src/transcripts/txt/2023-04-26_T18-00-27_hms-dreadnought-but-built-around-the-rn-s-favourite-battleship-guns_i39JrVgSLng.txt",
       "evidence": [{"start": "42:59", "end": "45:20", "note": "He responds to the cruiser request by tracing the treaty-system consequences of a 10-inch limit."}]
+    },
+    {
+      "id": "american-ten-inch-cruiser-design",
+      "videoId": "i39JrVgSLng",
+      "slug": "american-ten-inch-cruiser-design",
+      "title": "Designing an American 10-inch treaty cruiser",
+      "kind": "notable_point",
+      "start": "46:07",
+      "end": "56:29",
+      "topics": ["treaty-cruisers", "united-states-navy", "10-inch-guns", "warship-design", "naval-sonar", "naval-torpedoes", "panama-canal"],
+      "summary": "The American counterfactual balances a 15,000-ton limit, high speed, shallow draft, and deliberate departures from historical US cruiser practice.",
+      "body": "Dr. Clarke turns the treaty premise into an American cruiser intended to make about 32 knots on oil-fired geared turbines. He keeps the draft shallow for access around the Caribbean and later describes the hull as suited to high-speed movement through the Panama Canal. Ten-inch main guns and five-inch secondaries define the combat role, while armour and deck protection must remain cruiser-scale. He deliberately adds sonar and torpedoes while acknowledging that historical US cruisers did not carry them, so those choices should be read as his preferred counterfactual rather than actual doctrine. The result shows how geography, machinery, protection, and institutional preferences shape a cruiser alongside its headline gun calibre.",
+      "sourcePath": "src/transcripts/txt/2023-04-26_T18-00-27_hms-dreadnought-but-built-around-the-rn-s-favourite-battleship-guns_i39JrVgSLng.txt",
+      "evidence": [
+        {"start": "46:07", "end": "56:29", "note": "He designs the American ship around speed, shallow draft, 10-inch guns, cruiser protection, sonar, and torpedoes."},
+        {"start": "1:11:38", "end": "1:12:16", "note": "He describes the completed vessel as a high-speed design able to pass through Panama, while noting its battleship-like appearance."}
+      ]
     },
     {
       "id": "destroyer-divisions-and-tribal-gunnery",
@@ -41,7 +92,7 @@
       "kind": "notable_point",
       "start": "1:37:44",
       "end": "1:53:42",
-      "topics": ["destroyers", "tribal-class-destroyers", "naval-tactics", "world-war-ii", "royal-navy"],
+      "topics": ["destroyers", "tribal-class-destroyers", "naval-tactics", "world-war-ii", "royal-navy", "battle-of-narvik", "hms-warspite"],
       "summary": "A simulated destroyer action becomes a guide to division tactics and the World War II value of Tribal-class gun power.",
       "body": "Dr. Clarke uses two destroyer divisions converging on an opponent to explain the appeal of crossing fire and aggressive close-range attacks. The simulated formation recalls Narvik, where British destroyer columns and Warspite placed German ships under fire from several directions. He argues that the Tribal class exposed a mismatch between pre-war expectations of torpedo-heavy destroyers and the frequent gun fights of the early war. Torpedoes still mattered for a decisive strike against a major target, but rapid gunfire was often more useful in mobile destroyer engagements. The passage is useful for seeing how a class criticized for reduced torpedo armament could prove well matched to the fighting it actually encountered.",
       "sourcePath": "src/transcripts/txt/2023-04-26_T18-00-27_hms-dreadnought-but-built-around-the-rn-s-favourite-battleship-guns_i39JrVgSLng.txt",
@@ -55,11 +106,14 @@
       "kind": "notable_point",
       "start": "1:53:54",
       "end": "1:59:09",
-      "topics": ["aircraft-carriers", "fleet-air-arm", "naval-logistics", "illustrious-class", "naval-doctrine"],
+      "topics": ["aircraft-carriers", "fleet-air-arm", "naval-logistics", "illustrious-class", "naval-doctrine", "hms-ark-royal", "operation-c", "indian-ocean"],
       "summary": "British carrier protection is explained through treaty limits, distant operations, repair needs, and fleet roles.",
-      "body": "The discussion rejects the idea that British carriers simply accepted small air groups by preference. Treaty tonnage and political constraints required compromises, while likely operations against Japan demanded ships that could survive damage and be repaired far from British industry. The long supply route from Britain and limited forward facilities made the loss of a carrier harder to replace than it would be for a Pacific power with a home coastline on that ocean. Illustrious-class carriers are presented as fleet units meant to sustain combat air patrols, reconnaissance, anti-submarine work, and supporting strikes alongside the battle fleet. Ark Royal is framed as the larger striking asset that could hold aircraft for a concentrated attack once scouting carriers had located the enemy, including the Royal Navy's preferred possibility of a night strike.",
+      "body": "The discussion rejects the idea that British carriers simply accepted small air groups by preference. Treaty tonnage and political constraints required compromises, while likely operations against Japan demanded ships that could survive damage and be repaired far from British industry. The long supply route from Britain and limited forward facilities made the loss of a carrier harder to replace than it would be for a Pacific power with a home coastline on that ocean. Illustrious-class carriers are presented as fleet units meant to sustain combat air patrols, reconnaissance, anti-submarine work, and supporting strikes alongside the battle fleet. Ark Royal is framed as the larger striking asset that could hold aircraft for a concentrated attack once scouting carriers had located the enemy, including the Royal Navy's preferred possibility of a night strike. Dr. Clarke points to Somerville's near interception during Operation C in the Indian Ocean as an example of how that method might have surprised the Japanese if the location intelligence had been correct.",
       "sourcePath": "src/transcripts/txt/2023-04-26_T18-00-27_hms-dreadnought-but-built-around-the-rn-s-favourite-battleship-guns_i39JrVgSLng.txt",
-      "evidence": [{"start": "1:53:54", "end": "1:59:09", "note": "He links carrier size and armour to treaty limits and the need to operate in the Far East."}]
+      "evidence": [
+        {"start": "1:53:54", "end": "1:59:09", "note": "He links carrier size and armour to treaty limits, distant repair needs, fleet roles, and night-strike planning."},
+        {"start": "1:59:59", "end": "2:00:20", "note": "He cites Somerville's near interception during Operation C as a case in which correct location intelligence might have enabled a surprise."}
+      ]
     },
     {
       "id": "swordfish-torpedo-delivery-and-night-flying",
@@ -69,7 +123,7 @@
       "kind": "notable_point",
       "start": "2:00:24",
       "end": "2:06:23",
-      "topics": ["fairey-swordfish", "torpedo-bombers", "fleet-air-arm", "naval-aviation", "night-operations"],
+      "topics": ["fairey-swordfish", "fairey-albacore", "torpedo-bombers", "fleet-air-arm", "naval-aviation", "night-operations"],
       "summary": "The Swordfish's value lay in reliable delivery, shallow-running torpedoes, and a Fleet Air Arm trained for difficult conditions.",
       "body": "Dr. Clarke argues that the Swordfish and Albacore should be judged by the weapon system they delivered, not just their biplane appearance. A tension-wire arrangement made the released torpedo enter the water in a flatter attitude, helping it run shallow enough to improve the chance of a hit. Reliability, repairability, stable low-speed handling, and the ability to operate from short decks all mattered to the complete weapon system. He also connects the aircraft to a Fleet Air Arm in which every squadron was expected to train for night and bad-weather flying, supported by carrier landing aids. That expensive training helps explain both the wider operating envelope of British carriers and their caution about exposing valuable aircraft to deck parking in rough northern waters.",
       "sourcePath": "src/transcripts/txt/2023-04-26_T18-00-27_hms-dreadnought-but-built-around-the-rn-s-favourite-battleship-guns_i39JrVgSLng.txt",
@@ -83,13 +137,16 @@
       "kind": "qa",
       "start": "2:36:11",
       "end": "2:38:40",
-      "topics": ["naval-gunnery", "battleship-design", "warship-maintenance", "triple-turrets"],
+      "topics": ["naval-gunnery", "battleship-design", "warship-maintenance", "triple-turrets", "quadruple-turrets"],
       "summary": "A turret question leads to the practical advantage of three-gun layouts and accessible machinery.",
       "body": "Dr. Clarke says very short differences in firing timing have only a small effect on accuracy, so interrupted fire is not the central problem. Mechanical complexity matters more because each additional gun adds equipment and failure points inside the mounting. By the Second World War, long experience had made triple turrets effective systems, while a quadruple mounting still concentrated many more components in a similar footprint. The spare room around a triple turret improves access, inspection, and preventive maintenance, allowing crews to notice small faults before they become difficult repairs. This makes internal volume a through-life force multiplier even though a larger hull costs more to construct.",
       "question": "Would non-synchronous firing from a turret affect accuracy?",
       "answerShort": "A very short interruption between guns has only a small effect, while turret complexity and access for maintenance are more consequential design issues.",
       "sourcePath": "src/transcripts/txt/2023-04-26_T18-00-27_hms-dreadnought-but-built-around-the-rn-s-favourite-battleship-guns_i39JrVgSLng.txt",
-      "evidence": [{"start": "2:36:11", "end": "2:38:40", "note": "He answers the timing question and contrasts triple- and quadruple-turret access and maintenance."}]
+      "evidence": [
+        {"start": "2:33:56", "end": "2:35:20", "note": "He introduces the rising mechanical complexity of multi-gun mountings and the maturity of triple turrets by World War II."},
+        {"start": "2:36:11", "end": "2:38:40", "note": "He answers the firing-timing question and explains how access space improves inspection and preventive maintenance."}
+      ]
     },
     {
       "id": "night-battle-closing-tactics",
@@ -113,7 +170,7 @@
       "kind": "notable_point",
       "start": "3:38:18",
       "end": "3:39:31",
-      "topics": ["anti-submarine-warfare", "naval-doctrine", "submarines", "royal-navy", "world-war-i"],
+      "topics": ["anti-submarine-warfare", "naval-doctrine", "submarines", "royal-navy", "world-war-i", "hms-aboukir", "hms-cressy", "hms-hogue"],
       "summary": "British zig-zag doctrine grew from the submarine threat, not only from fear of Japanese long-range torpedoes.",
       "body": "The discussion explains why a steady night course can be tactically dangerous even when it seems safe and efficient. Dr. Clarke contrasts American ships steaming predictably through supposedly secure waters with British doctrine that assumed there was no truly safe zone in wartime. Frequent changes of course denied an unseen submarine the steady target it needed for a torpedo solution and incidentally complicated long-range destroyer attacks as well. He traces that caution to the First World War loss of Aboukir, Cressy, and Hogue, an experience that made the Royal Navy especially unwilling to treat old ships or familiar sea lanes as exempt from submarine precautions.",
       "sourcePath": "src/transcripts/txt/2023-04-26_T18-00-27_hms-dreadnought-but-built-around-the-rn-s-favourite-battleship-guns_i39JrVgSLng.txt",
@@ -127,11 +184,14 @@
       "kind": "notable_point",
       "start": "56:31",
       "end": "1:10:22",
-      "topics": ["treaty-cruisers", "imperial-japanese-navy", "takao-class-cruisers", "maya", "naval-treaties", "naval-aviation"],
+      "topics": ["treaty-cruisers", "imperial-japanese-navy", "takao-class-cruisers", "maya", "naval-treaties", "naval-aviation", "10-inch-guns"],
       "summary": "A Japanese counter-design shows how speed, range, aircraft facilities, torpedoes, and thin protection could compete for treaty-cruiser tonnage.",
-      "body": "Dr. Clarke answers the American 10-inch-cruiser design with a Japanese counterpart built for Pacific range and high speed. He expects Japan to press or exceed nominal treaty displacement and to retain powerful torpedo armament, while arranging the after part of the ship around reconnaissance aircraft unless aviation conversion had become the priority. To shed weight, he uses Maya of the Takao class as a reference for a roughly five-inch main belt, very lightly protected turrets, and limited deck armour. The result is a heavily armed but vulnerable cruiser whose offensive power depends on avoiding the punishment its guns and torpedoes can inflict. This counterfactual makes the historical Japanese preference for speed, armament, and long-range striking power visible as a set of design tradeoffs rather than a list of specifications.",
+      "body": "Dr. Clarke answers the American 10-inch-cruiser design with a Japanese counterpart built for Pacific range and high speed. He expects Japan to press or exceed nominal treaty displacement and to retain powerful torpedo armament, while arranging the after part of the ship around reconnaissance aircraft unless aviation conversion had become the priority. To shed weight, he uses Maya of the Takao class as a reference for a roughly five-inch main belt, very lightly protected turrets, and limited deck armour. The resulting ship is a heavily armed but vulnerable cruiser whose offensive power depends on avoiding the punishment its guns and torpedoes can inflict. In the simulated engagement, its larger volume of fire initially makes the glass-cannon approach dangerous despite that vulnerability. This counterfactual makes the historical Japanese preference for speed, armament, and long-range striking power visible as a set of design tradeoffs rather than a list of specifications.",
       "sourcePath": "src/transcripts/txt/2023-04-26_T18-00-27_hms-dreadnought-but-built-around-the-rn-s-favourite-battleship-guns_i39JrVgSLng.txt",
-      "evidence": [{"start": "56:31", "end": "1:10:22", "note": "He constructs the Japanese response and uses Maya and the Takao class to discuss range, torpedoes, aircraft use, armour, and treaty displacement."}]
+      "evidence": [
+        {"start": "56:31", "end": "1:10:22", "note": "He constructs the Japanese response and uses Maya and the Takao class to discuss range, torpedoes, aircraft use, armour, and treaty displacement."},
+        {"start": "1:12:52", "end": "1:16:16", "note": "The simulated comparison tests the Japanese ship's glass-cannon protection and greater volume of fire against the American design."}
+      ]
     },
     {
       "id": "japanese-destroyer-attrition-logic",
@@ -155,7 +215,7 @@
       "kind": "notable_point",
       "start": "1:43:13",
       "end": "1:47:22",
-      "topics": ["william-halsey", "united-states-navy", "naval-command", "admiral-seniority", "world-war-ii"],
+      "topics": ["william-halsey", "united-states-navy", "naval-command", "admiral-seniority", "world-war-ii", "philip-vian", "robert-sherbrooke"],
       "summary": "Critiquing Admiral Halsey requires comparing his decisions with officers who actually had the rank, experience, and institutional credibility to replace him.",
       "body": "Dr. Clarke accepts that Admiral William Halsey's decisions should be criticized, especially where his pronounced aggressiveness produced questionable choices. He also asks viewers to compare him with the replacement candidates who were genuinely available at the required level of seniority. Officers such as Philip Vian or Robert Sherbrooke might appear temperamentally or tactically attractive, but the Admiralty would not yet have regarded them as experienced enough for the largest commands. Replacing Halsey with a less seasoned officer could therefore exchange visible mistakes for worse ones. The passage separates an officer's tactical qualities from the institutional experience and trust needed to command a major fleet formation.",
       "sourcePath": "src/transcripts/txt/2023-04-26_T18-00-27_hms-dreadnought-but-built-around-the-rn-s-favourite-battleship-guns_i39JrVgSLng.txt",
@@ -169,7 +229,7 @@
       "kind": "notable_point",
       "start": "2:07:03",
       "end": "2:25:12",
-      "topics": ["super-battleships", "naval-treaties", "battleship-design", "18-inch-guns", "naval-procurement", "shipbuilding-capacity"],
+      "topics": ["super-battleships", "naval-treaties", "battleship-design", "18-inch-guns", "9-2-inch-guns", "naval-procurement", "shipbuilding-capacity"],
       "summary": "An immense 18-inch-gun design shows how treaty removal could make industrial capacity, not tactical preference, the decisive limit on battleship competition.",
       "body": "Dr. Clarke builds a British super-battleship around twelve 18-inch guns, a heavy 9.2-inch secondary battery, dual-purpose weapons, 28-knot speed, and long-range protection. The exercise exposes the weight penalties of very large turrets, ammunition, machinery, armour, and the internal protection needed to keep the ship viable. Later combat illustrates why the secondary battery could dominate destroyers while the main battery fought at ranges an opponent could not answer. When he identifies the finished concept as roughly 110,000 tons, he argues that only two countries could plausibly have built such a ship with 1920s technology. Without postwar treaties, the arms race could therefore have reached a point where most navies stopped competing because national shipbuilding capacity, infrastructure, and resources mattered more than the desirability of another battleship.",
       "sourcePath": "src/transcripts/txt/2023-04-26_T18-00-27_hms-dreadnought-but-built-around-the-rn-s-favourite-battleship-guns_i39JrVgSLng.txt",
@@ -180,6 +240,37 @@
       ]
     },
     {
+      "id": "closing-an-outranged-battleship-force",
+      "videoId": "i39JrVgSLng",
+      "slug": "closing-an-outranged-battleship-force",
+      "title": "Why an outranged battleship force may need to close early",
+      "kind": "notable_point",
+      "start": "2:43:58",
+      "end": "2:50:42",
+      "topics": ["naval-tactics", "long-range-gunnery", "battleships", "imperial-japanese-navy", "royal-navy", "18-inch-guns", "9-2-inch-guns"],
+      "summary": "A simulated range mismatch shows how staying at maximum distance can preserve neither safety nor combat power when only one side can reply.",
+      "body": "In the simulated battleship action, the Japanese force remains at long range in an attempt to limit damage. That choice leaves it unable to answer the British 18-inch guns while allowing the British ships to concentrate on one target at a time. A damaged survivor eventually charges and reaches 9.2-inch-gun range, but by then the numerical and material position is much worse. Dr. Clarke argues that the force should have closed together at the beginning, when all three ships were still undamaged and could divide the incoming fire. The scenario is not a historical engagement, but it demonstrates the tactical difference between maximizing nominal range and reaching a range at which one's own weapons can influence the fight.",
+      "sourcePath": "src/transcripts/txt/2023-04-26_T18-00-27_hms-dreadnought-but-built-around-the-rn-s-favourite-battleship-guns_i39JrVgSLng.txt",
+      "evidence": [{"start": "2:43:58", "end": "2:50:42", "note": "He criticizes the Japanese force for remaining beyond its own effective range and argues that an early coordinated close was preferable to a late damaged charge."}]
+    },
+    {
+      "id": "destroyer-screens-torpedoes-and-fleet-firepower",
+      "videoId": "i39JrVgSLng",
+      "slug": "destroyer-screens-torpedoes-and-fleet-firepower",
+      "title": "Destroyer screens, torpedoes, and fleet firepower without aircraft",
+      "kind": "notable_point",
+      "start": "3:05:26",
+      "end": "3:18:04",
+      "topics": ["destroyer-screens", "torpedoes", "naval-tactics", "naval-communications", "fleet-actions", "9-2-inch-guns", "counterfactual-history"],
+      "summary": "A no-air-power fleet scenario shows destroyers scouting and screening while torpedoes and heavy secondary guns create sharply different danger zones.",
+      "body": "Dr. Clarke frames the battle as a Second World War counterfactual in which naval aviation has not developed, so battleships and destroyer flotillas must perform the decisive fleet roles themselves. Destroyers scout ahead, screen the battle line, and launch enough torpedoes to score the first capital-ship loss. Once they enter range of the British 9.2-inch secondary batteries, however, even the stronger Japanese destroyers are rapidly overwhelmed. The simulated result shows why a screen is both an offensive torpedo arm and a protective layer whose survival depends on distance, coordination, and supporting gunfire. His later remark that the radio can summon far more firepower than its operator carries makes communications another force multiplier linking the scouts to the heavy ships behind them.",
+      "sourcePath": "src/transcripts/txt/2023-04-26_T18-00-27_hms-dreadnought-but-built-around-the-rn-s-favourite-battleship-guns_i39JrVgSLng.txt",
+      "evidence": [
+        {"start": "3:05:26", "end": "3:13:24", "note": "He sets up scout and screen divisions in a no-naval-aviation scenario, then contrasts a successful torpedo strike with the effect of 9.2-inch secondary fire on destroyers."},
+        {"start": "3:17:50", "end": "3:18:04", "note": "He calls the radio exceptionally dangerous because it can bring in firepower beyond what its operator can withstand."}
+      ]
+    },
+    {
       "id": "roosevelt-forward-basing-and-naval-diplomacy",
       "videoId": "i39JrVgSLng",
       "slug": "roosevelt-forward-basing-and-naval-diplomacy",
@@ -187,7 +278,7 @@
       "kind": "notable_point",
       "start": "1:48:20",
       "end": "1:49:04",
-      "topics": ["franklin-d-roosevelt", "united-states-navy", "pacific-fleet", "hawaii", "naval-diplomacy", "fleet-basing"],
+      "topics": ["franklin-d-roosevelt", "alfred-thayer-mahan", "united-states-navy", "pacific-fleet", "hawaii", "naval-diplomacy", "fleet-basing"],
       "summary": "Forward deployment can signal resolve, but positioning a fleet without adequate support may expose it instead of strengthening diplomacy.",
       "body": "Dr. Clarke contrasts Franklin D. Roosevelt's success in obtaining armed-forces funding with what he regards as weaker handling of naval diplomacy. He imagines Alfred Thayer Mahan objecting that moving a fleet forward is not enough if the position lacks the support needed to sustain it. Hawaii therefore becomes an example of the difference between visible presence and a properly backed operational posture. A forward base can deter or reassure only when logistics, defenses, and reinforcement plans make the ships there credible rather than vulnerable.",
       "sourcePath": "src/transcripts/txt/2023-04-26_T18-00-27_hms-dreadnought-but-built-around-the-rn-s-favourite-battleship-guns_i39JrVgSLng.txt",
