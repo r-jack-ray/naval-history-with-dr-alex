@@ -157,6 +157,35 @@ normalize-jmsdf	active	creation	exact	jmsdf	japan-maritime-self-defense-force	Ja
 normalize-japanese-maritime-self-defense-force	active	creation	exact	japanese-maritime-self-defense-force	japan-maritime-self-defense-force	Japan Maritime Self-Defense Force	["Japanese Maritime Self Defense Force"]	Exact official-name duplicate; source https://www.mod.go.jp/msdf/en/
 normalize-japanese-maritime-self-defence-force	active	creation	exact	japanese-maritime-self-defence-force	japan-maritime-self-defense-force	Japan Maritime Self-Defense Force	["Japanese Maritime Self Defence Force"]	Exact official-name duplicate; source https://www.mod.go.jp/msdf/en/
 normalize-japan-maritime-self-defence-force	active	creation	exact	japan-maritime-self-defence-force	japan-maritime-self-defense-force	Japan Maritime Self-Defense Force	["Japan Maritime Self Defence Force"]	Exact official-name duplicate; source https://www.mod.go.jp/msdf/en/
+normalize-arc-royal	active	creation	exact	arc-royal	ark-royal	Ark Royal	["Arc Royal"]	Repository-owner-approved correction of the ship name Ark Royal
+normalize-arc-royal-class	active	creation	exact	arc-royal-class	ark-royal-class	Ark Royal Class	["Arc Royal Class"]	Repository-owner-approved correction of the ship name Ark Royal
+normalize-arc-royal-series	active	creation	exact	arc-royal-series	ark-royal-series	Ark Royal Series	["Arc Royal Series"]	Repository-owner-approved correction of the ship name Ark Royal
+normalize-hms-arc-royal	active	creation	exact	hms-arc-royal	hms-ark-royal	HMS Ark Royal	["HMS Arc Royal"]	Repository-owner-approved correction of the ship name Ark Royal
+normalize-project-arc-royal	active	creation	exact	project-arc-royal	project-ark-royal	Project Ark Royal	["Project Arc Royal"]	Repository-owner-approved correction of the name Ark Royal
+normalize-uss-arc-royal	active	creation	exact	uss-arc-royal	uss-ark-royal	USS Ark Royal	["USS Arc Royal"]	Repository-owner-approved correction of the name Ark Royal
+normalize-hmnz	active	creation	exact	hmnz	hmnzs	HMNZS	["HMNZ"]	Repository-owner-approved correction to the New Zealand ship prefix HMNZS
+normalize-hmnz-achilles	active	creation	exact	hmnz-achilles	hmnzs-achilles	HMNZS Achilles	["HMNZ Achilles"]	Repository-owner-approved correction to the New Zealand ship prefix HMNZS
+normalize-hmnz-ship-prefix	active	creation	regex	^hmnz-(.+)$	hmnzs-$1		[]	Future HMNZ-prefixed topics resolve to the correct HMNZS ship prefix
+normalize-first-world-war	active	creation	exact	first-world-war	world-war-i	World War I	["First World War"]	Repository-owner-approved consolidation of common First World War names
+normalize-world-war-one	active	creation	exact	world-war-one	world-war-i	World War I	["World War One"]	Repository-owner-approved consolidation of common First World War names
+normalize-world-war-1	active	creation	exact	world-war-1	world-war-i	World War I	["World War 1"]	Repository-owner-approved consolidation of common First World War names
+normalize-1st-world-war	active	creation	exact	1st-world-war	world-war-i	World War I	["1st World War"]	Repository-owner-approved consolidation of common First World War names
+normalize-great-war	active	creation	exact	great-war	world-war-i	World War I	["Great War","The Great War"]	Repository-owner-approved consolidation of common First World War names
+normalize-wwi	active	creation	exact	wwi	world-war-i	World War I	["WWI"]	Repository-owner-approved consolidation of common First World War names
+normalize-ww1	active	creation	exact	ww1	world-war-i	World War I	["WW1"]	Repository-owner-approved consolidation of common First World War names
+normalize-second-world-war	active	creation	exact	second-world-war	world-war-ii	World War II	["Second World War","The Second World War"]	Repository-owner-approved consolidation of common Second World War names
+normalize-world-war-two	active	creation	exact	world-war-two	world-war-ii	World War II	["World War Two"]	Repository-owner-approved consolidation of common Second World War names
+normalize-world-war-2	active	creation	exact	world-war-2	world-war-ii	World War II	["World War 2"]	Repository-owner-approved consolidation of common Second World War names
+normalize-2nd-world-war	active	creation	exact	2nd-world-war	world-war-ii	World War II	["2nd World War"]	Repository-owner-approved consolidation of common Second World War names
+normalize-wwii	active	creation	exact	wwii	world-war-ii	World War II	["WWII"]	Repository-owner-approved consolidation of common Second World War names
+normalize-ww2	active	creation	exact	ww2	world-war-ii	World War II	["WW2"]	Repository-owner-approved consolidation of common Second World War names
+normalize-phony-war	active	creation	exact	phony-war	phoney-war	Phoney War	["Phony War"]	Repository-owner-approved UK-English spelling correction
+normalize-pom-pom	active	creation	exact	pom-pom	pom-pom-guns	Pom Pom Guns	["Pom Pom","Pom-Pom"]	Generic Pom-Pom weapon-family topic consolidated at the repository owner's request
+normalize-pom-pom-gun	active	creation	exact	pom-pom-gun	pom-pom-guns	Pom Pom Guns	["Pom Pom Gun","Pom-Pom Gun"]	Generic Pom-Pom weapon-family topic consolidated at the repository owner's request
+normalize-pom-poms	active	creation	exact	pom-poms	pom-pom-guns	Pom Pom Guns	["Pom Poms","Pom-Poms"]	Generic Pom-Pom weapon-family topic consolidated at the repository owner's request
+normalize-wrens	active	creation	exact	wrens	wrns	WRNS	["Wrens","WRENS"]	Women's Royal Naval Service name consolidation; source https://en.wikipedia.org/wiki/Women%27s_Royal_Naval_Service
+normalize-womens-royal-naval-service	active	creation	exact	womens-royal-naval-service	wrns	WRNS	["Women's Royal Naval Service","Womens Royal Naval Service"]	Women's Royal Naval Service name consolidation; source https://en.wikipedia.org/wiki/Women%27s_Royal_Naval_Service
+normalize-women-s-royal-naval-service	active	creation	exact	women-s-royal-naval-service	wrns	WRNS	["Women's Royal Naval Service"]	Women's Royal Naval Service name consolidation; source https://en.wikipedia.org/wiki/Women%27s_Royal_Naval_Service
 display-live-q-and-a	active	display	exact	live-q-and-a	live-q-and-a	Live Q&A	["questions","q&a"]	Existing curated display and alias policy retained
 display-u-boats	active	display	exact	u-boats	u-boats	U-Boats	["Uboats"]	Existing curated display and alias policy retained; Reviewed duplicate-topic normalization requested by the repository owner
 display-4-7-inch-guns	active	display	exact	4-7-inch-guns	4-7-inch-guns	4.7-inch Guns	["4.7 inch guns","4 7 inch guns"]	Existing curated display and alias policy retained
@@ -821,3 +850,20 @@ token-vp	active	display	token	vp	VP		[]	Reviewed acronym display token requested
 token-vstol	active	display	token	vstol	V/STOL		[]	Reviewed acronym display token requested by the repository owner
 token-vt	active	display	token	vt	VT		[]	Reviewed acronym display token requested by the repository owner
 token-vtol	active	display	token	vtol	VTOL		[]	Reviewed acronym display token requested by the repository owner
+display-3d-printing	active	display	exact	3d-printing	3d-printing	3D Printing	[]	Repository-owner-approved three-dimensional abbreviation casing
+display-fairey-tsr	active	display	exact	fairey-tsr	fairey-tsr	Fairey TSR	[]	TSR abbreviates Torpedo Spotter Reconnaissance
+display-pgm-1-class	active	display	exact	pgm-1-class	pgm-1-class	PGM-1 Class	["PGM 1 Class"]	Repository-owner-approved patrol-gunboat class designation
+display-pgm-9-class	active	display	exact	pgm-9-class	pgm-9-class	PGM-9 Class	["PGM 9 Class"]	Repository-owner-approved patrol-gunboat class designation
+display-pla-air-force	active	display	exact	pla-air-force	pla-air-force	PLA Air Force	[]	PLA abbreviates People's Liberation Army
+display-pla-navy	active	display	exact	pla-navy	pla-navy	PLA Navy	[]	PLA abbreviates People's Liberation Army
+display-world-war-i	active	display	exact	world-war-i	world-war-i	World War I	["WWI","WW1","World War 1","World War One","First World War","1st World War","Great War","The Great War"]	Canonical First World War display and search aliases requested by the repository owner
+display-world-war-ii	active	display	exact	world-war-ii	world-war-ii	World War II	["WWII","WW2","World War 2","World War Two","Second World War","The Second World War","2nd World War"]	Canonical Second World War display and search aliases requested by the repository owner
+display-phoney-war	active	display	exact	phoney-war	phoney-war	Phoney War	["Phony War"]	Canonical UK-English spelling requested by the repository owner
+display-pom-pom-guns	active	display	exact	pom-pom-guns	pom-pom-guns	Pom Pom Guns	["Pom Pom","Pom-Pom","Pom Pom Gun","Pom-Pom Gun","Pom Poms","Pom-Poms"]	Canonical generic Pom-Pom weapon-family display and aliases requested by the repository owner
+display-wrns	active	display	exact	wrns	wrns	WRNS	["Wrens","WRENS","Women's Royal Naval Service","Womens Royal Naval Service"]	Women's Royal Naval Service canonical display and aliases; source https://en.wikipedia.org/wiki/Women%27s_Royal_Naval_Service
+token-3d	active	display	token	3d	3D		[]	Canonical three-dimensional abbreviation display token
+token-hmas	active	display	token	hmas	HMAS		[]	Canonical Australian ship-prefix display token
+token-hmnzs	active	display	token	hmnzs	HMNZS		[]	Canonical New Zealand ship-prefix display token
+token-pla	active	display	token	pla	PLA		[]	Canonical People's Liberation Army abbreviation display token
+token-pq	active	display	token	pq	PQ		[]	Canonical Arctic-convoy series display token
+token-qp	active	display	token	qp	QP		[]	Canonical Arctic-convoy series display token

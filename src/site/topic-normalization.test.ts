@@ -159,6 +159,100 @@ test("production policy consolidates the A-6F variant into the A-6 Intruder topi
   });
 });
 
+test("production policy applies the repository-owner topic normalization batch", async () => {
+  const catalog = await loadTopicNormalizationCatalog(
+    "src/derived/topic-normalization-patterns.tsv",
+  );
+
+  const creationExpected = [
+    ["arc-royal", "ark-royal", "normalize-arc-royal"],
+    ["arc-royal-class", "ark-royal-class", "normalize-arc-royal-class"],
+    ["hms-arc-royal", "hms-ark-royal", "normalize-hms-arc-royal"],
+    ["hmnz-achilles", "hmnzs-achilles", "normalize-hmnz-achilles"],
+    ["hmnz-canterbury", "hmnzs-canterbury", "normalize-hmnz-ship-prefix"],
+    ["first-world-war", "world-war-i", "normalize-first-world-war"],
+    ["world-war-one", "world-war-i", "normalize-world-war-one"],
+    ["great-war", "world-war-i", "normalize-great-war"],
+    ["second-world-war", "world-war-ii", "normalize-second-world-war"],
+    ["world-war-two", "world-war-ii", "normalize-world-war-two"],
+    ["phony-war", "phoney-war", "normalize-phony-war"],
+    ["pom-pom", "pom-pom-guns", "normalize-pom-pom"],
+    ["pom-pom-gun", "pom-pom-guns", "normalize-pom-pom-gun"],
+    ["pom-poms", "pom-pom-guns", "normalize-pom-poms"],
+    ["wrens", "wrns", "normalize-wrens"],
+    [
+      "womens-royal-naval-service",
+      "wrns",
+      "normalize-womens-royal-naval-service",
+    ],
+    ["all-or-nothing-armor", "all-or-nothing-armour", "normalize-all-or-nothing-armor"],
+    ["planetary-defense", "planetary-defence", "normalize-planetary-defense"],
+  ] as const;
+
+  for (const [input, slug, ruleId] of creationExpected) {
+    assert.deepEqual(resolveTopicCreation(catalog, input), {
+      input,
+      slug,
+      changed: true,
+      matchedRuleIds: [ruleId],
+    });
+  }
+
+  for (const namedWeapon of [
+    "qf-2-pounder-pom-pom",
+    "type-91-pom-pom",
+    "vickers-pom-pom",
+  ]) {
+    assert.equal(resolveTopicCreation(catalog, namedWeapon).slug, namedWeapon);
+  }
+
+  const displayExpected = new Map([
+    ["3d-printing", "3D Printing"],
+    ["fairey-tsr", "Fairey TSR"],
+    ["hmas-australia", "HMAS Australia"],
+    ["hmnzs-canterbury", "HMNZS Canterbury"],
+    ["pgm-1-class", "PGM-1 Class"],
+    ["pgm-9-class", "PGM-9 Class"],
+    ["pla-air-force", "PLA Air Force"],
+    ["pla-navy", "PLA Navy"],
+    ["pq-17", "PQ 17"],
+    ["convoy-pq-13", "Convoy PQ 13"],
+    ["qp-11", "QP 11"],
+    ["wrns", "WRNS"],
+    ["world-war-i", "World War I"],
+    ["world-war-ii", "World War II"],
+  ]);
+  for (const [slug, title] of displayExpected) {
+    assert.equal(resolveTopicDisplayTitle(catalog, slug).title, title, slug);
+  }
+
+  assert.deepEqual(
+    catalog.rules.find((rule) => rule.ruleId === "display-world-war-i")?.aliases,
+    [
+      "WWI",
+      "WW1",
+      "World War 1",
+      "World War One",
+      "First World War",
+      "1st World War",
+      "Great War",
+      "The Great War",
+    ],
+  );
+  assert.deepEqual(
+    catalog.rules.find((rule) => rule.ruleId === "display-world-war-ii")?.aliases,
+    [
+      "WWII",
+      "WW2",
+      "World War 2",
+      "World War Two",
+      "Second World War",
+      "The Second World War",
+      "2nd World War",
+    ],
+  );
+});
+
 test("production policy consolidates generic inch-gun topics without collapsing named models", async () => {
   const catalog = await loadTopicNormalizationCatalog(
     "src/derived/topic-normalization-patterns.tsv",

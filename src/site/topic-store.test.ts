@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 import test from "node:test";
 
 import {
@@ -12,7 +13,9 @@ import {
   writeTopicStoreSynchronization,
 } from "./topic-store.js";
 import {
+  loadTopicNormalizationCatalog,
   parseTopicNormalizationCatalog,
+  resolveTopicDisplayTitle,
   topicNormalizationPatternHeader,
 } from "./topic-normalization.js";
 
@@ -268,6 +271,122 @@ test("keeps the bounded production topic titles, aliases, and summaries curated"
       );
     }
   }
+});
+
+test("keeps the repository-owner normalization batch canonical in the production store", async () => {
+  const store = JSON.parse(
+    await readFile(new URL("../../src/derived/video-segments/topics.json", import.meta.url), "utf8"),
+  ) as {
+    topics: Array<{ slug: string; title: string; summary: string; aliases?: string[] }>;
+  };
+  const catalog = await loadTopicNormalizationCatalog(
+    fileURLToPath(new URL("../../src/derived/topic-normalization-patterns.tsv", import.meta.url)),
+  );
+  const topicsBySlug = new Map(store.topics.map((topic) => [topic.slug, topic]));
+
+  for (const deprecated of [
+    "arc-royal",
+    "arc-royal-class",
+    "hms-arc-royal",
+    "hmnz-achilles",
+    "first-world-war",
+    "world-war-one",
+    "second-world-war",
+    "world-war-two",
+    "phony-war",
+    "pom-pom",
+    "pom-pom-gun",
+    "pom-poms",
+    "wrens",
+    "womens-royal-naval-service",
+  ]) {
+    assert.equal(topicsBySlug.has(deprecated), false, deprecated);
+  }
+
+  const expected = new Map<string, { title: string; aliases?: string[]; summary?: string }>([
+    ["3d-printing", { title: "3D Printing" }],
+    ["ark-royal", { title: "Ark Royal", aliases: ["Arc Royal"] }],
+    ["ark-royal-class", { title: "Ark Royal Class", aliases: ["Arc Royal Class"] }],
+    ["fairey-tsr", { title: "Fairey TSR" }],
+    ["hmnzs-achilles", { title: "HMNZS Achilles", aliases: ["HMNZ Achilles"] }],
+    ["hms-ark-royal", { title: "HMS Ark Royal", aliases: ["HMS Arc Royal"] }],
+    ["pgm-1-class", { title: "PGM-1 Class" }],
+    ["pgm-9-class", { title: "PGM-9 Class" }],
+    ["phoney-war", { title: "Phoney War", aliases: ["Phony War"] }],
+    ["pla-air-force", { title: "PLA Air Force" }],
+    ["pla-navy", { title: "PLA Navy" }],
+    ["pom-pom-guns", { title: "Pom Pom Guns", aliases: ["Pom Pom", "Pom Pom Gun", "Pom Poms"] }],
+    [
+      "world-war-i",
+      {
+        title: "World War I",
+        aliases: [
+          "WWI",
+          "First World War",
+          "WW1",
+          "World War 1",
+          "World War One",
+          "1st World War",
+          "Great War",
+          "The Great War",
+        ],
+        summary: "Naval design, operations, and procurement around World War I.",
+      },
+    ],
+    [
+      "world-war-ii",
+      {
+        title: "World War II",
+        aliases: [
+          "WWII",
+          "WW2",
+          "World War 2",
+          "World War Two",
+          "Second World War",
+          "The Second World War",
+          "2nd World War",
+        ],
+      },
+    ],
+    [
+      "wrns",
+      {
+        title: "WRNS",
+        aliases: ["Wrens", "Women's Royal Naval Service", "Womens Royal Naval Service"],
+      },
+    ],
+  ]);
+
+  for (const [slug, expectedTopic] of expected) {
+    const topic = topicsBySlug.get(slug);
+    assert.ok(topic, `Missing production topic ${slug}`);
+    assert.equal(topic.title, expectedTopic.title, `${slug} title`);
+    assert.deepEqual(topic.aliases ?? [], expectedTopic.aliases ?? [], `${slug} aliases`);
+    if (expectedTopic.summary !== undefined) {
+      assert.equal(topic.summary, expectedTopic.summary, `${slug} summary`);
+    }
+  }
+
+  for (const topic of store.topics.filter(({ slug }) => (
+    slug.startsWith("hmas-")
+    || slug.startsWith("hmnzs-")
+    || slug.startsWith("pq-")
+    || slug.startsWith("qp-")
+    || slug.includes("-pq-")
+    || slug.includes("-qp-")
+  ))) {
+    assert.equal(
+      topic.title,
+      resolveTopicDisplayTitle(catalog, topic.slug).title,
+      `${topic.slug} acronym title`,
+    );
+  }
+
+  assert.equal(
+    topicsBySlug.get("mers-el-kebir")?.aliases?.includes("Ark Royal") ?? false,
+    false,
+    "Ark Royal must resolve only to the Ark Royal topic",
+  );
 });
 
 async function makeTopicDirectory(
