@@ -237,7 +237,7 @@ Q&A stays as `kind: qa` inside the segment model rather than a separate question
 
 Transcript curation is shard-only. Each run must be given exactly one stored TXT transcript and must edit only its manifest-owned `src/derived/video-segments/<manifest.fileStem>.json` file. The transcript basename, `manifest.fileStem`, and shard basename must match; do not derive a new shard name from current title metadata.
 
-The curation run reads the full selected transcript, keeps lecture material as chapters or notable points, and creates `kind: qa` records only for substantive transcript-visible prompts and answers. It reads `src/derived/topic-normalization-patterns.tsv`, resolves new slugs through active creation rules, and applies active exact migrations only inside the selected shard. It edits no other shard, leaves review or ambiguous rules unchanged, and appends exactly one required result line to `src/derived/site-content-processing.log` after a successful shard write. It does not edit the normalization catalog or `topics.json`, invoke the corpus-wide normalization apply, or write schedules, reports, generated archives, package/tooling files, or site sources. It also does not run repository-wide audits, generation, tests, or builds.
+The curation run reads the full selected transcript, keeps lecture material as chapters or notable points, and creates `kind: qa` records only for substantive transcript-visible prompts and answers. It reads `src/derived/topic-normalization-patterns.tsv`, resolves new slugs through active creation rules, and preserves established slugs unless the active creation policy canonicalizes them. It edits no other shard, leaves review or ambiguous rules unchanged, and appends exactly one required result line to `src/derived/site-content-processing.log` after a successful shard write. It does not edit the normalization catalog or `topics.json`, perform corpus-wide topic rewrites, or write schedules, reports, generated archives, package/tooling files, or site sources. It also does not run repository-wide audits, generation, tests, or builds.
 
 For agent-driven curation, use `.agents/transcript-content-curator.md` with `.agents/skills/naval-transcript-to-site-content/SKILL.md`. For a follow-up substance and wording pass on one explicitly selected shard, use `.agents/site-content-auditor.md` with `.agents/skills/naval-site-content-auditor/SKILL.md`.
 
@@ -261,24 +261,17 @@ timestamp;shardPath;result;needsFurtherProcessing;notes
 
 Each curator or auditor result is one newline-terminated five-field row appended at the physical bottom. `shardPath` is the selected manifest-owned JSON shard, and `needsFurtherProcessing` is exactly `yes` or `no`. The curator appends after a successful shard write; the auditor appends after every completed selected-file audit, including unchanged, saturated, and intentionally empty results. Neither workflow acquires the shared writer lease for this append.
 
-### Normalize Video Topics
+### Topic Normalization Policy
 
-`src/derived/topic-normalization-patterns.tsv` is the detailed source of truth for normalization-owned construction, exact migrations, display rules, aliases, redirects, and exceptions. `src/derived/video-segments/topics.json` remains authoritative for curated topic metadata unrelated to those rules. Routine synchronization and generation validate normalization state but never rewrite source shards merely because the catalog changed.
+`src/derived/topic-normalization-patterns.tsv` is the detailed source of truth for steady-state topic creation, display names, aliases, and exceptions. `src/derived/video-segments/topics.json` remains authoritative for curated topic metadata unrelated to that policy. Routine synchronization and generation validate policy compliance but never rewrite source shards merely because the catalog changed.
 
-Audit and plan first; both operations are read-only except for an explicitly requested plan artifact:
+Resolve every new shard topic through active creation rules before writing it. Preserve established slugs unless the active creation policy canonicalizes them, and leave `review`, disabled, ambiguous, or inapplicable candidates unchanged. Use the read-only audit to check policy and registry consistency before shared synchronization or integration work:
 
 ```powershell
 npm run audit:topic-normalization
-npm run normalize:video-topics -- --dry-run --plan-output .tmp/topic-normalization-plan.json
 ```
 
-Review the complete plan, catalog digest, input hashes, warnings, blockers, changed shards, registry merges, aliases, and legacy redirects before applying it. Pause transcript and audit shard writers for the apply window. Apply only an explicitly authorized, hash-bound reviewed plan through the shared-writer wrapper:
-
-```powershell
-npm run normalize:video-topics:apply -- --plan .tmp/topic-normalization-plan.json
-```
-
-Do not hand-edit a corpus migration or treat `review` rules as mappings. After apply, rerun the read-only audit, require a fresh dry run with no pending source operations, and continue through supported synchronization, generation, route, and Pagefind validation.
+Shard workers must not edit the catalog, shared registry, or other shards. Changes to shared topic policy or any corpus-wide topic rewrite require a separate, explicitly scoped taxonomy-maintenance task.
 
 Other project workflows are:
 

@@ -54,12 +54,34 @@ test("topic-producing and companion guidance use the shared normalization catalo
   }
 });
 
-test("curator and auditor guidance retain shard-only normalization authority", async () => {
+test("steady-state guidance omits one-time rollout commands and URL compatibility claims", async () => {
+  for (const relativePath of catalogGuidancePaths) {
+    const guidance = await readGuidance(relativePath);
+
+    assert.doesNotMatch(guidance, /\bmigrat(?:e|es|ed|ing|ion|ions)\b/iu, `${relativePath} must be steady-state`);
+    assert.doesNotMatch(
+      guidance,
+      /normalize:video-topics(?::apply)?/iu,
+      `${relativePath} must not retain the completed corpus rollout commands`,
+    );
+    assert.doesNotMatch(
+      guidance,
+      /\b(?:legacy\s+)?redirects?\b/iu,
+      `${relativePath} must not promise compatibility routes for retired topic slugs`,
+    );
+  }
+});
+
+test("curator and auditor guidance retain shard-only steady-state topic authority", async () => {
   for (const relativePath of shardWorkflowPaths) {
     const guidance = await readGuidance(relativePath);
 
     assert.match(guidance, /active[^.]{0,140}creation/iu, `${relativePath} must apply active creation rules`);
-    assert.match(guidance, /active exact[^.]{0,100}migration/iu, `${relativePath} must apply active exact migrations`);
+    assert.match(
+      guidance,
+      /preserve established slugs unless[^.]{0,120}active creation policy canonicalizes/iu,
+      `${relativePath} must preserve established slugs unless creation policy selects a canonical form`,
+    );
     assert.match(guidance, /(?:selected|owned).{0,220}shard/iu, `${relativePath} must retain a selected-shard boundary`);
     assert.match(
       guidance,
@@ -69,8 +91,8 @@ test("curator and auditor guidance retain shard-only normalization authority", a
     assert.match(guidance, /review[^.]{0,180}unchanged/iu, `${relativePath} must keep review rules non-mutating`);
     assert.match(
       guidance,
-      /(?:never|do not|does not|must not).{0,900}normalize:video-topics:apply/iu,
-      `${relativePath} must prohibit the corpus-wide apply command`,
+      /corpus-wide topic rewrit/iu,
+      `${relativePath} must retain the broad topic-rewrite boundary`,
     );
     assert.match(
       guidance,
@@ -94,42 +116,43 @@ test("curator and auditor guidance retain shard-only normalization authority", a
   );
 });
 
-test("companion guidance preserves review no-ops, shard boundaries, and the human apply workflow", async () => {
+test("companion guidance preserves review no-ops, shard boundaries, and steady-state policy", async () => {
   const agents = await readGuidance("AGENTS.md");
   assert.match(agents, /one owned.{0,220}shard/iu);
   assert.match(agents, /append exactly one result line/iu);
+  assert.match(agents, /steady-state topic creation/iu);
+  assert.match(agents, /preserve established slugs unless[^.]{0,120}active creation policy canonicalizes/iu);
   assert.match(agents, /review[^.]{0,180}unchanged/iu);
-  assert.match(agents, /must never[^.]{0,220}normalize:video-topics:apply/iu);
+  assert.match(agents, /must not perform corpus-wide topic rewrites/iu);
 
   const schema = await readGuidance(
     ".agents/skills/naval-transcript-to-site-content/references/segment-seed-schema.md",
   );
   assert.match(schema, /active[^.]{0,140}creation/iu);
-  assert.match(schema, /active exact[^.]{0,100}migration/iu);
+  assert.match(schema, /preserve established slugs unless[^.]{0,120}active creation policy canonicalizes/iu);
   assert.match(schema, /review[^.]{0,180}unchanged/iu);
-  assert.match(schema, /does not invoke[^.]{0,180}normalize:video-topics:apply/iu);
+  assert.match(schema, /does not perform corpus-wide topic rewrites/iu);
 
   const config = await readGuidance("src/derived/site-content-processing.config.json");
   assert.match(config, /active creation rules/iu);
-  assert.match(config, /active exact migration mappings only inside the owned shard/iu);
+  assert.match(config, /preserve established slugs unless the active creation policy canonicalizes them/iu);
   assert.match(config, /leave review or ambiguous candidates unchanged/iu);
-  assert.match(config, /must not.{0,420}normalize:video-topics:apply/iu);
+  assert.match(config, /must not.{0,420}perform corpus-wide topic rewrites/iu);
 
   const readme = await readGuidance("README.md");
+  assert.match(readme, /steady-state topic creation/iu);
   assert.match(readme, /npm run audit:topic-normalization/iu);
-  assert.match(readme, /npm run normalize:video-topics -- --dry-run --plan-output/iu);
-  assert.match(readme, /npm run normalize:video-topics:apply -- --plan/iu);
   assert.match(readme, /timestamp;shardPath;result;needsFurtherProcessing;notes/u);
 });
 
-test("build repair audits active mappings and delegates semantic and site implementation work", async () => {
+test("build repair audits steady-state policy and delegates semantic and site implementation work", async () => {
   const guidance = await readGuidance(buildRepairSkillPath);
 
   assert.match(guidance, /read-only `npm run audit:topic-normalization` before adding a registry record/iu);
   assert.match(guidance, /review[^.]{0,160}does not authorize a mutation/iu);
-  assert.match(guidance, /npm run normalize:video-topics:apply -- --plan <reviewed-plan-path>/iu);
-  assert.match(guidance, /explicit topic-normalization scope/iu);
+  assert.match(guidance, /active `creation` rules[^.]{0,160}canonical slug/iu);
+  assert.match(guidance, /explicit topic-policy scope/iu);
   assert.match(guidance, /\$naval-site-content-auditor/iu);
   assert.match(guidance, /\$naval-video-page-prototype/iu);
-  assert.match(guidance, /legacy redirect/iu);
+  assert.match(guidance, /steady-state policy compliance/iu);
 });

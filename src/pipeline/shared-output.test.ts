@@ -62,9 +62,9 @@ test("validation hooks generate the archive once before their generated-data che
   assert.match(contentHook, /site:check:generated/u);
   assert.match(contentHook, /src\/derived\/topic-normalization-patterns\.tsv/u);
   assert.match(contentHook, /--patterns-input/u);
-  assert.match(contentHook, /dist\/scripts\/normalize-video-topics\.js", "--check"/u);
+  assert.match(contentHook, /dist\/scripts\/audit-topic-normalization\.js", "--patterns-input"/u);
   assert.ok(
-    contentHook.indexOf("dist/scripts/normalize-video-topics.js")
+    contentHook.indexOf("dist/scripts/audit-topic-normalization.js")
       < contentHook.indexOf("dist/scripts/generate-site-data.js"),
   );
   assert.match(contentHook, /\[switch\]\$RetainCallerLease/u);
@@ -72,12 +72,11 @@ test("validation hooks generate the archive once before their generated-data che
   assert.match(siteHook, /site:check:generated/u);
   assert.match(siteHook, /site:build:generated/u);
   assert.match(packageJson.scripts["generate:site-data"] ?? "", /--recover-stale -- node/u);
-  assert.match(siteBuildWrapper, /manifest\?\.schemaVersion !== 4/u);
+  assert.match(siteBuildWrapper, /manifest\?\.schemaVersion !== 5/u);
   assert.match(siteBuildWrapper, /"src\/transcripts\/manifest\.json"/u);
   assert.match(siteBuildWrapper, /"src\/derived\/topic-normalization-patterns\.tsv"/u);
   assert.match(siteBuildWrapper, /manifest\.source\.patternsSha256/u);
   assert.match(siteBuildWrapper, /manifest\.source\.patternsSourceSha256/u);
-  assert.match(siteBuildWrapper, /Array\.isArray\(topic\.legacySlugs\)/u);
   assert.match(
     siteBuildWrapper,
     /async function ensureBuiltSite\(force\) \{[\s\S]*?await validateSiteArchive\(\)/u,

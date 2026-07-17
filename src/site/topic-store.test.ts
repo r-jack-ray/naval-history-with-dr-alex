@@ -190,7 +190,7 @@ test("persists unresolved numeric title review until the stored title is curated
   }
 });
 
-test("refuses pending active migrations without changing the topic store", async () => {
+test("refuses a noncanonical topic without changing the topic store", async () => {
   const directory = await makeTopicDirectory(["57mm-gun"], ["57mm-gun"]);
   const topicStorePath = join(directory, "topics.json");
   const before = `${JSON.stringify({
@@ -237,6 +237,7 @@ test("uses catalog display policy when appending a canonical topic", async () =>
       slug: "57-mm-guns",
       title: "57 mm Guns",
       summary: "Watch points covering 57 mm Guns across Dr. Alex Clarke's videos.",
+      aliases: ["57mm Gun"],
     }]);
   } finally {
     await rm(directory, { recursive: true, force: true });
@@ -251,8 +252,8 @@ test("keeps the bounded production topic titles, aliases, and summaries curated"
   };
   const topicsBySlug = new Map(store.topics.map((topic) => [topic.slug, topic]));
 
-  assert.equal(productionTopicMapping.length, 20);
-  assert.equal(new Set(productionTopicMapping.map(({ slug }) => slug)).size, 20);
+  assert.equal(productionTopicMapping.length, 22);
+  assert.equal(new Set(productionTopicMapping.map(({ slug }) => slug)).size, 22);
   for (const expected of productionTopicMapping) {
     const topic = topicsBySlug.get(expected.slug);
     assert.ok(topic, `Missing production topic ${expected.slug}`);
@@ -306,24 +307,34 @@ function fixturePatternsPath(directory: string): string {
 
 function makeTestCatalogText(): string {
   const rows = [
-    catalogRow("token-hms", "active", "display", "token", "hms", "HMS", "", "[]", "none", "Naval prefix"),
-    catalogRow("token-qf", "active", "display", "token", "qf", "QF", "", "[]", "none", "Gun prefix"),
-    catalogRow("display-live-q-and-a", "active", "display", "exact", "live-q-and-a", "live-q-and-a", "Live Q&A", "[]", "none", "Established title"),
-    catalogRow("display-decimal-inch-gun", "active", "display", "regex", "^([0-9]+)-([0-9]+)-inch-gun$", "$1-$2-inch-gun", "$1.$2-inch Gun", "[]", "none", "Decimal calibre"),
-    catalogRow("display-decimal-inch-guns", "active", "display", "regex", "^([0-9]+)-([0-9]+)-inch-guns$", "$1-$2-inch-guns", "$1.$2-inch Guns", "[]", "none", "Decimal calibre"),
-    catalogRow("display-qf-decimal-inch-gun", "active", "display", "regex", "^qf-([0-9]+)-([0-9]+)-inch-gun$", "qf-$1-$2-inch-gun", "QF $1.$2-inch Gun", "[]", "none", "QF decimal calibre"),
-    catalogRow("display-metric-mm-guns", "active", "display", "regex", "^([0-9]+)-mm-guns$", "$1-mm-guns", "$1 mm Guns", "[]", "none", "Metric calibre"),
-    catalogRow("create-metric-mm-guns", "active", "creation", "regex", "^([0-9]+)mm-guns$", "$1-mm-guns", "$1 mm Guns", "[]", "none", "Future metric construction"),
-    catalogRow("migrate-57mm-gun", "active", "migration", "exact", "57mm-gun", "57-mm-guns", "57 mm Guns", "[\"57mm Gun\"]", "redirect", "Confirmed fixture duplicate"),
+    catalogRow("token-hms", "active", "display", "token", "hms", "HMS", "", "[]", "Naval prefix"),
+    catalogRow("token-qf", "active", "display", "token", "qf", "QF", "", "[]", "Gun prefix"),
+    catalogRow("display-live-q-and-a", "active", "display", "exact", "live-q-and-a", "live-q-and-a", "Live Q&A", "[]", "Established title"),
+    catalogRow("display-decimal-inch-gun", "active", "display", "regex", "^([0-9]+)-([0-9]+)-inch-gun$", "$1-$2-inch-gun", "$1.$2-inch Gun", "[]", "Decimal calibre"),
+    catalogRow("display-decimal-inch-guns", "active", "display", "regex", "^([0-9]+)-([0-9]+)-inch-guns$", "$1-$2-inch-guns", "$1.$2-inch Guns", "[]", "Decimal calibre"),
+    catalogRow("display-qf-decimal-inch-gun", "active", "display", "regex", "^qf-([0-9]+)-([0-9]+)-inch-gun$", "qf-$1-$2-inch-gun", "QF $1.$2-inch Gun", "[]", "QF decimal calibre"),
+    catalogRow("display-metric-mm-guns", "active", "display", "regex", "^([0-9]+)-mm-guns$", "$1-mm-guns", "$1 mm Guns", "[]", "Metric calibre"),
+    catalogRow("create-metric-mm-guns", "active", "creation", "regex", "^([0-9]+)mm-guns$", "$1-mm-guns", "$1 mm Guns", "[]", "Future metric construction"),
+    catalogRow("normalize-57mm-gun", "active", "creation", "exact", "57mm-gun", "57-mm-guns", "57 mm Guns", "[\"57mm Gun\"]", "Confirmed fixture duplicate"),
   ];
   return `${topicNormalizationPatternHeader.join("\t")}\n${rows.join("\n")}\n`;
 }
 
-function catalogRow(...fields: [string, string, string, string, string, string, string, string, string, string]): string {
+function catalogRow(...fields: [string, string, string, string, string, string, string, string, string]): string {
   return fields.join("\t");
 }
 
 const productionTopicMapping = [
+  {
+    slug: "40-mm-guns",
+    title: "40 mm Guns",
+    aliases: ["40 Millimeter Guns", "Forty Millimeter Guns"],
+  },
+  {
+    slug: "120-mm-guns",
+    title: "120 mm Guns",
+    aliases: ["120 Millimeter Guns"],
+  },
   {
     slug: "4-5-inch-guns",
     title: "4.5-inch Guns",

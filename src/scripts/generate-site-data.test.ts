@@ -41,7 +41,7 @@ test("generation rejects pending normalization before changing topic or archive 
         body: "Body.",
       }],
     }), "utf8");
-    await writeFile(fixture.patternsInput, migrationCatalogText(), "utf8");
+    await writeFile(fixture.patternsInput, normalizationCatalogText(), "utf8");
 
     await assert.rejects(
       runGenerator(fixture),
@@ -113,17 +113,16 @@ async function runGenerator(fixture: GeneratorFixture): Promise<unknown> {
   ]);
 }
 
-function migrationCatalogText(): string {
+function normalizationCatalogText(): string {
   const row = [
-    "migrate-old-topic",
+    "normalize-old-topic",
     "active",
-    "migration",
+    "creation",
     "exact",
     "old-topic",
     "canonical-topic",
     "Canonical Topic",
     "[\"Old Topic\"]",
-    "redirect",
     "Confirmed test duplicate",
   ].join("\t");
   return `${topicNormalizationPatternHeader.join("\t")}\n${row}\n`;

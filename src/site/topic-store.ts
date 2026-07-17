@@ -7,13 +7,13 @@ import type {
   CuratedTopicStore,
   CuratedVideoFileSeed,
 } from "./curated-seed.js";
-import { buildTopicNormalizationPlan } from "./topic-normalization-plan.js";
+import { auditTopicNormalization } from "./topic-normalization-audit.js";
 import {
   defaultTopicSummary,
   loadTopicNormalizationCatalog,
-  normalizeTopicSlugArray,
   resolveTopicCreation,
   resolveTopicDisplayTitle,
+  topicCollisionKey,
   topicTitleFromSlug as normalizedTopicTitleFromSlug,
   type TopicNormalizationCatalog,
 } from "./topic-normalization.js";
@@ -50,7 +50,7 @@ export interface TopicStoreSynchronizationPlan extends SynchronizeTopicStoreResu
 
 interface TopicCorpusScan {
   usedSlugs: string[];
-  pendingArrays: string[];
+  policyFindings: string[];
 }
 
 const adjacentNumericSlugPattern = /(?:^|-)\d+-\d+(?:-|$)/u;
@@ -76,7 +76,7 @@ export async function planTopicStoreSynchronization(
 
   const knownSlugs = new Set(topics.map((topic) => topic.slug));
   const addedSlugs = corpus.usedSlugs.filter((slug) => !knownSlugs.has(slug));
-  const preflightFindings = [...corpus.pendingArrays];
+  const preflightFindings = [...corpus.policyFindings];
 
   for (const slug of addedSlugs) {
     const creation = resolveTopicCreation(catalog, slug);
@@ -88,41 +88,30 @@ export async function planTopicStoreSynchronization(
   }
 
   if (existingStore !== undefined) {
-    const normalization = await buildTopicNormalizationPlan({
+    const audit = await auditTopicNormalization({
       patternsInput,
       segmentsInput: options.segmentsInput,
     });
     if (
-      normalization.catalog.sha256 !== catalog.sha256
-      || normalization.catalog.sourceSha256 !== catalog.sourceSha256
+      audit.catalog.sha256 !== catalog.sha256
+      || audit.catalog.sourceSha256 !== catalog.sourceSha256
     ) {
       preflightFindings.push(
         `Topic normalization catalog changed while synchronization was being planned: ${patternsInput}.`,
       );
     }
-
-    for (const operation of normalization.reviewedPlan.operations) {
-      if (operation.kind === "shard") {
-        continue;
-      }
-      const changedSlugs = [
-        ...(operation.removedRegistrySlugs ?? []),
-        ...(operation.addedRegistrySlugs ?? []),
-        ...(operation.changedRegistrySlugs ?? []),
-      ];
-      if (changedSlugs.length > 0) {
-        preflightFindings.push(
-          `Active normalization has pending topic-store changes for ${[...new Set(changedSlugs)].sort().join(", ")}.`,
-        );
-      }
-    }
-
-    const allowedMissingSlugs = new Set(addedSlugs.filter((slug) => (
+    const appendableSlugs = new Set(addedSlugs.filter((slug) => (
       !resolveTopicCreation(catalog, slug).changed
     )));
-    for (const blocker of normalization.reviewedPlan.blockers) {
-      if (!isAppendableMissingTopicBlocker(blocker, allowedMissingSlugs)) {
-        preflightFindings.push(blocker);
+    preflightFindings.push(...audit.blockers.filter((blocker) => (
+      !isAppendableMissingTopicBlocker(blocker, appendableSlugs)
+    )));
+    for (const topic of existingStore.topics) {
+      const creation = resolveTopicCreation(catalog, topic.slug);
+      if (creation.changed) {
+        preflightFindings.push(
+          `Topic registry record ${topic.slug} resolves through active creation rule ${creation.matchedRuleIds.join(", ")} to ${creation.slug}.`,
+        );
       }
     }
   }
@@ -131,7 +120,7 @@ export async function planTopicStoreSynchronization(
     throw new Error([
       "Topic normalization preflight failed before topic-store synchronization:",
       ...[...new Set(preflightFindings)].map((finding) => `- ${finding}`),
-      "Run the read-only normalization audit and apply an explicitly reviewed normalization plan before synchronizing topics.",
+      "Run the read-only topic-normalization audit and update the owning source data before synchronizing topics.",
     ].join("\n"));
   }
 
@@ -194,11 +183,11 @@ async function scanTopicCorpus(
 ): Promise<TopicCorpusScan> {
   const { shards } = await discoverVideoSegmentShards(inputDirectory);
   const slugs = new Set<string>();
-  const pendingArrays: string[] = [];
+  const policyFindings: string[] = [];
 
   for (const { fileName, value } of shards) {
     const video = value as CuratedVideoFileSeed;
-    collectTopicArray(video.topics, `${fileName} video`, slugs, catalog, pendingArrays);
+    collectTopicArray(video.topics, `${fileName} video`, slugs, catalog, policyFindings);
     if (!Array.isArray(video.segments)) {
       throw new Error(`Curated video file ${fileName} must include a segments array.`);
     }
@@ -208,14 +197,14 @@ async function scanTopicCorpus(
         `${fileName} segment ${segment.id}`,
         slugs,
         catalog,
-        pendingArrays,
+        policyFindings,
       );
     }
   }
 
   return {
     usedSlugs: [...slugs].sort((left, right) => left.localeCompare(right)),
-    pendingArrays,
+    policyFindings,
   };
 }
 
@@ -224,7 +213,7 @@ function collectTopicArray(
   source: string,
   slugs: Set<string>,
   catalog: TopicNormalizationCatalog | undefined,
-  pendingArrays: string[],
+  policyFindings: string[],
 ): void {
   if (!Array.isArray(value)) {
     throw new Error(`${source} must include a topics array.`);
@@ -238,11 +227,13 @@ function collectTopicArray(
     topics.push(slug);
   }
   if (catalog !== undefined) {
-    const normalized = normalizeTopicSlugArray(catalog, topics);
-    if (normalized.changed) {
-      pendingArrays.push(
-        `${source} has pending active normalization (${JSON.stringify(topics)} -> ${JSON.stringify(normalized.topics)}).`,
-      );
+    for (const slug of topics) {
+      const creation = resolveTopicCreation(catalog, slug);
+      if (creation.changed) {
+        policyFindings.push(
+          `${source} references noncanonical topic ${slug}; active creation rule ${creation.matchedRuleIds.join(", ")} resolves it to ${creation.slug}.`,
+        );
+      }
     }
   }
 }
@@ -286,12 +277,34 @@ function buildDefaultTopic(
   slug: string,
   catalog: TopicNormalizationCatalog,
 ): CuratedTopicSeed {
-  const title = normalizedTopicTitleFromSlug(slug, catalog);
-  return {
+  const policyRules = catalog.rules.filter((rule) => (
+    rule.status === "active"
+    && rule.matchKind === "exact"
+    && (
+      rule.scopes.includes("creation") && rule.replacement === slug
+      || rule.scopes.includes("display") && rule.match === slug
+    )
+  ));
+  const title = policyRules.find((rule) => rule.canonicalTitle.length > 0)?.canonicalTitle
+    ?? normalizedTopicTitleFromSlug(slug, catalog);
+  const seenAliases = new Set([topicCollisionKey(title)]);
+  const aliases = policyRules.flatMap((rule) => rule.aliases).filter((alias) => {
+    const key = topicCollisionKey(alias);
+    if (key.length === 0 || seenAliases.has(key)) {
+      return false;
+    }
+    seenAliases.add(key);
+    return true;
+  });
+  const topic: CuratedTopicSeed = {
     slug,
     title,
     summary: defaultTopicSummary(title),
   };
+  if (aliases.length > 0) {
+    topic.aliases = aliases;
+  }
+  return topic;
 }
 
 export function topicTitleFromSlug(
@@ -323,7 +336,7 @@ function isAppendableMissingTopicBlocker(
   blocker: string,
   appendableSlugs: ReadonlySet<string>,
 ): boolean {
-  const match = /^(?:Live topic reference|Normalized topic reference) ([a-z0-9]+(?:-[a-z0-9]+)*) (?:has no registry record before normalization|has no canonical registry record)\.$/u.exec(blocker);
+  const match = /^Topic reference ([a-z0-9]+(?:-[a-z0-9]+)*) has no registry record\.$/u.exec(blocker);
   return match?.[1] !== undefined && appendableSlugs.has(match[1]);
 }
 

@@ -193,7 +193,7 @@ async function validateSiteArchive() {
     throw error;
   }
 
-  if (manifest?.schemaVersion !== 4) {
+  if (manifest?.schemaVersion !== 5) {
     return invalidArchive("the archive manifest schema version is unsupported");
   }
   if (manifest?.source?.patternsInput !== defaultTopicNormalizationPatternsPath) {
@@ -317,25 +317,12 @@ async function validateSiteArchive() {
   if (!Array.isArray(generatedTopics) || generatedTopics.length !== topics.count) {
     return invalidArchive("the archive topics file count is inconsistent");
   }
-  const topicRouteSlugs = new Set();
+  const topicSlugs = new Set();
   for (const topic of generatedTopics) {
-    if (!isTopicRouteSlug(topic?.slug) || topicRouteSlugs.has(topic.slug)) {
+    if (!isTopicRouteSlug(topic?.slug) || topicSlugs.has(topic.slug)) {
       return invalidArchive("the archive topics file contains an invalid or duplicate canonical slug");
     }
-    if (!Array.isArray(topic.legacySlugs)) {
-      return invalidArchive(`the archive topic ${topic.slug} has no legacySlugs array`);
-    }
-    topicRouteSlugs.add(topic.slug);
-  }
-  for (const topic of generatedTopics) {
-    for (const legacySlug of topic.legacySlugs) {
-      if (!isTopicRouteSlug(legacySlug) || topicRouteSlugs.has(legacySlug)) {
-        return invalidArchive(
-          `the archive topic ${topic.slug} has an invalid or colliding legacy slug`,
-        );
-      }
-      topicRouteSlugs.add(legacySlug);
-    }
+    topicSlugs.add(topic.slug);
   }
 
   return { valid: true };

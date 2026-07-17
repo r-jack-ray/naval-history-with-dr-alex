@@ -7,22 +7,18 @@ import test from "node:test";
 
 import {
   defaultTopicSummary,
-  getActiveExactMigrationMap,
-  getActiveLegacyRedirects,
   isDefaultTopicSummary,
   loadTopicNormalizationCatalog,
-  normalizeTopicSlugArray,
   parseTopicNormalizationCatalog,
   resolveTopicCreation,
   resolveTopicDisplayTitle,
-  resolveTopicMigration,
   topicCollisionKey,
   topicNormalizationPatternHeader,
   topicTitleFromSlug,
   type TopicNormalizationCatalog,
 } from "./topic-normalization.js";
 
-test("parses strict TSV rows and separates canonical and source hashes", async () => {
+test("parses the strict nine-column TSV and separates canonical and source hashes", async () => {
   const canonical = catalogText([
     row({
       ruleId: "token-mm",
@@ -36,6 +32,7 @@ test("parses strict TSV rows and separates canonical and source hashes", async (
   const crlf = canonical.replaceAll("\n", "\r\n");
   const parsed = parseTopicNormalizationCatalog(crlf, { sourcePath: "patterns.tsv" });
 
+  assert.equal(topicNormalizationPatternHeader.length, 9);
   assert.equal(parsed.sourcePath, "patterns.tsv");
   assert.equal(parsed.rules.length, 1);
   assert.equal(parsed.rules[0]?.lineNumber, 2);
@@ -71,13 +68,13 @@ test("uses exact, regex, token, and fallback rules in deterministic precedence",
     input: "57mm-guns",
     slug: "57-mm-guns",
     changed: true,
-    matchedRuleIds: ["metric-57-exact"],
+    matchedRuleIds: ["normalize-57mm-guns"],
   });
   assert.deepEqual(resolveTopicCreation(catalog, "76mm-guns"), {
     input: "76mm-guns",
     slug: "76-mm-guns",
     changed: true,
-    matchedRuleIds: ["metric-mm-create"],
+    matchedRuleIds: ["create-metric-mm-guns"],
   });
   assert.equal(topicTitleFromSlug("57-mm-guns", catalog), "57 mm Guns");
   assert.equal(topicTitleFromSlug("76-mm-guns", catalog), "76 mm Guns");
@@ -89,8 +86,8 @@ test("uses exact, regex, token, and fallback rules in deterministic precedence",
   assert.deepEqual(resolveTopicDisplayTitle(catalog, "76-mm-guns"), {
     slug: "76-mm-guns",
     title: "76 mm Guns",
-    matchedRuleIds: ["token-mm"],
-    resolution: "token",
+    matchedRuleIds: ["display-metric-mm-guns"],
+    resolution: "regex",
   });
   assert.deepEqual(resolveTopicDisplayTitle(catalog, "plain-topic"), {
     slug: "plain-topic",
@@ -100,72 +97,93 @@ test("uses exact, regex, token, and fallback rules in deterministic precedence",
   });
 });
 
-test("exposes exact migrations and redirect tombstones separately from aliases", () => {
-  const catalog = resolutionCatalog();
-  const migrations = getActiveExactMigrationMap(catalog);
+test("production policy canonicalizes numeric millimeter gun topics", async () => {
+  const catalog = await loadTopicNormalizationCatalog(
+    "src/derived/topic-normalization-patterns.tsv",
+  );
 
-  assert.equal(migrations.get("57mm-gun"), "57-mm-guns");
-  assert.equal(migrations.has("review-only-source"), false);
-  assert.deepEqual(getActiveLegacyRedirects(catalog), [
-    {
-      ruleId: "metric-57-singular",
-      legacySlug: "57mm-gun",
-      canonicalSlug: "57-mm-guns",
-    },
-  ]);
-  assert.deepEqual(resolveTopicMigration(catalog, "57mm-gun"), {
-    input: "57mm-gun",
-    slug: "57-mm-guns",
+  assert.deepEqual(resolveTopicCreation(catalog, "40-millimeter-guns"), {
+    input: "40-millimeter-guns",
+    slug: "40-mm-guns",
     changed: true,
-    matchedRuleIds: ["metric-57-singular"],
-    ruleId: "metric-57-singular",
+    matchedRuleIds: ["normalize-40-millimeter-guns"],
   });
-  assert.deepEqual(resolveTopicMigration(catalog, "review-only-source"), {
-    input: "review-only-source",
-    slug: "review-only-source",
+  assert.deepEqual(resolveTopicCreation(catalog, "120-millimeter-guns"), {
+    input: "120-millimeter-guns",
+    slug: "120-mm-guns",
+    changed: true,
+    matchedRuleIds: ["normalize-120-millimeter-guns"],
+  });
+  assert.deepEqual(resolveTopicCreation(catalog, "90-millimeter-guns"), {
+    input: "90-millimeter-guns",
+    slug: "90-mm-guns",
+    changed: true,
+    matchedRuleIds: ["create-numeric-millimeter-guns"],
+  });
+  assert.deepEqual(resolveTopicCreation(catalog, "90-millimetre-guns"), {
+    input: "90-millimetre-guns",
+    slug: "90-mm-guns",
+    changed: true,
+    matchedRuleIds: ["create-numeric-millimeter-guns"],
+  });
+  assert.deepEqual(resolveTopicCreation(catalog, "forty-millimeter-guns"), {
+    input: "forty-millimeter-guns",
+    slug: "40-mm-guns",
+    changed: true,
+    matchedRuleIds: ["normalize-forty-millimeter-guns"],
+  });
+  assert.deepEqual(resolveTopicCreation(catalog, "x-millimeter-guns"), {
+    input: "x-millimeter-guns",
+    slug: "x-millimeter-guns",
+    changed: false,
+    matchedRuleIds: [],
+  });
+  assert.deepEqual(resolveTopicCreation(catalog, "sixty-millimeter-guns"), {
+    input: "sixty-millimeter-guns",
+    slug: "sixty-millimeter-guns",
     changed: false,
     matchedRuleIds: [],
   });
 });
 
-test("normalizes and deduplicates topic arrays in first-seen order", () => {
-  const result = normalizeTopicSlugArray(resolutionCatalog(), [
-    "destroyers",
-    "57mm-gun",
-    "57-mm-guns",
-    "destroyers",
-  ]);
+test("exact review policy suppresses broader active creation rules", () => {
+  const catalog = resolutionCatalog();
 
-  assert.deepEqual(result.topics, ["destroyers", "57-mm-guns"]);
-  assert.equal(result.changed, true);
-  assert.deepEqual(result.migrations, [
-    { index: 1, from: "57mm-gun", to: "57-mm-guns", ruleId: "metric-57-singular" },
-  ]);
-  assert.deepEqual(result.removedDuplicates, [
-    { index: 2, slug: "57-mm-guns" },
-    { index: 3, slug: "destroyers" },
-  ]);
+  assert.deepEqual(resolveTopicCreation(catalog, "155mm-guns"), {
+    input: "155mm-guns",
+    slug: "155mm-guns",
+    changed: false,
+    matchedRuleIds: ["review-155mm-guns"],
+  });
+  assert.deepEqual(resolveTopicCreation(catalog, "203mm-guns"), {
+    input: "203mm-guns",
+    slug: "203-mm-guns",
+    changed: true,
+    matchedRuleIds: ["create-metric-mm-guns"],
+  });
 });
 
-test("review rows are visible metadata but never resolve data", () => {
+test("disabled exact policy does not suppress an active regex rule", () => {
   const catalog = parseTopicNormalizationCatalog(catalogText([
     row({
-      ruleId: "candidate",
-      status: "review",
-      scope: "creation+migration+display",
-      match: "candidate-topic",
-      replacement: "canonical-topic",
-      canonicalTitle: "Canonical Topic",
-      legacyRoute: "redirect",
-      notes: "Awaiting semantic review",
+      ruleId: "disabled-76mm-guns",
+      status: "disabled",
+      scope: "creation",
+      match: "76mm-guns",
+      replacement: "retired-topic",
+      notes: "Disabled exception",
+    }),
+    row({
+      ruleId: "create-metric-mm-guns",
+      scope: "creation",
+      matchKind: "regex",
+      match: "^([0-9]+)mm-guns$",
+      replacement: "$1-mm-guns",
+      notes: "Generic metric construction",
     }),
   ]));
 
-  assert.equal(catalog.rules[0]?.status, "review");
-  assert.equal(resolveTopicCreation(catalog, "candidate-topic").slug, "candidate-topic");
-  assert.equal(resolveTopicMigration(catalog, "candidate-topic").slug, "candidate-topic");
-  assert.equal(topicTitleFromSlug("candidate-topic", catalog), "Candidate Topic");
-  assert.equal(getActiveLegacyRedirects(catalog).length, 0);
+  assert.equal(resolveTopicCreation(catalog, "76mm-guns").slug, "76-mm-guns");
 });
 
 test("rejects malformed rows and incompatible rule contracts with line numbers", () => {
@@ -187,15 +205,6 @@ test("rejects malformed rows and incompatible rule contracts with line numbers",
       replacement: "QF",
       notes: "Token scope is invalid",
     }),
-    row({
-      ruleId: "bad-review-migration",
-      status: "review",
-      scope: "migration",
-      matchKind: "regex",
-      match: "^(old-topic)$",
-      replacement: "new-topic",
-      notes: "Review rows still obey schema",
-    }),
   ];
 
   assert.throws(
@@ -207,7 +216,6 @@ test("rejects malformed rows and incompatible rule contracts with line numbers",
       assert.match(error.message, /line 3: a regex match must be fully anchored/u);
       assert.match(error.message, /line 3: replacement references missing regex capture \$2/u);
       assert.match(error.message, /line 4: a token rule must use display scope only/u);
-      assert.match(error.message, /line 5: a migration rule must use an exact match/u);
       return true;
     },
   );
@@ -215,15 +223,15 @@ test("rejects malformed rows and incompatible rule contracts with line numbers",
 
 test("rejects duplicate IDs, conflicting titles, mapping chains, and active duplicate matches", () => {
   const invalid = catalogText([
-    row({ ruleId: "duplicate", match: "old-a", replacement: "new-a", scope: "migration", notes: "First" }),
-    row({ ruleId: "duplicate", match: "old-b", replacement: "new-b", scope: "migration", notes: "Second" }),
-    row({ ruleId: "chain-one", match: "chain-a", replacement: "chain-b", scope: "migration", notes: "Chain" }),
-    row({ ruleId: "chain-two", match: "chain-b", replacement: "chain-c", scope: "migration", notes: "Chain" }),
+    row({ ruleId: "duplicate", match: "old-a", replacement: "new-a", scope: "creation", notes: "First" }),
+    row({ ruleId: "duplicate", match: "old-b", replacement: "new-b", scope: "creation", notes: "Second" }),
+    row({ ruleId: "chain-one", match: "chain-a", replacement: "chain-b", scope: "creation", notes: "Chain" }),
+    row({ ruleId: "chain-two", match: "chain-b", replacement: "chain-c", scope: "creation", notes: "Chain" }),
     row({
       ruleId: "title-one",
       match: "title-old-a",
       replacement: "title-target",
-      scope: "migration",
+      scope: "creation",
       canonicalTitle: "Title One",
       notes: "Conflict",
     }),
@@ -231,7 +239,7 @@ test("rejects duplicate IDs, conflicting titles, mapping chains, and active dupl
       ruleId: "title-two",
       match: "title-old-b",
       replacement: "title-target",
-      scope: "migration",
+      scope: "creation",
       canonicalTitle: "Title Two",
       notes: "Conflict",
     }),
@@ -245,7 +253,7 @@ test("rejects duplicate IDs, conflicting titles, mapping chains, and active dupl
       assert.ok(error instanceof Error);
       assert.match(error.message, /duplicate rule_id duplicate/u);
       assert.match(error.message, /active creation exact match/u);
-      assert.match(error.message, /mapping chain or cycle/u);
+      assert.match(error.message, /forms a chain or cycle/u);
       assert.match(error.message, /conflicting titles/u);
       return true;
     },
@@ -292,15 +300,15 @@ test("shares default-summary and collision-key behavior", () => {
 function resolutionCatalog(): TopicNormalizationCatalog {
   return parseTopicNormalizationCatalog(catalogText([
     row({
-      ruleId: "metric-57-exact",
-      scope: "creation+display",
+      ruleId: "normalize-57mm-guns",
+      scope: "creation",
       match: "57mm-guns",
       replacement: "57-mm-guns",
       canonicalTitle: "57 mm Guns",
-      notes: "Exact rule wins over generic regex",
+      notes: "Exact policy wins over generic regex",
     }),
     row({
-      ruleId: "metric-mm-create",
+      ruleId: "create-metric-mm-guns",
       scope: "creation",
       matchKind: "regex",
       match: "^([0-9]+)mm-guns$",
@@ -309,23 +317,22 @@ function resolutionCatalog(): TopicNormalizationCatalog {
       notes: "Generic metric calibre construction",
     }),
     row({
-      ruleId: "metric-57-canonical",
+      ruleId: "display-metric-mm-guns",
       scope: "display",
-      match: "57-mm-guns",
-      replacement: "57-mm-guns",
-      canonicalTitle: "57 mm Guns",
-      aliases: ["57mm guns"],
-      notes: "Canonical generic calibre topic",
+      matchKind: "regex",
+      match: "^([0-9]+)-mm-guns$",
+      replacement: "$1-mm-guns",
+      canonicalTitle: "$1 mm Guns",
+      notes: "Canonical generic calibre title",
     }),
     row({
-      ruleId: "metric-57-singular",
-      scope: "migration",
-      match: "57mm-gun",
-      replacement: "57-mm-guns",
-      canonicalTitle: "57 mm Guns",
-      aliases: ["57mm gun"],
-      legacyRoute: "redirect",
-      notes: "Confirmed exact duplicate",
+      ruleId: "review-155mm-guns",
+      status: "review",
+      scope: "creation",
+      match: "155mm-guns",
+      replacement: "155-mm-guns",
+      canonicalTitle: "155 mm Guns",
+      notes: "Named-system context still requires review",
     }),
     row({
       ruleId: "token-mm",
@@ -360,16 +367,6 @@ function resolutionCatalog(): TopicNormalizationCatalog {
       canonicalTitle: "Live Q&A",
       notes: "Established exact title",
     }),
-    row({
-      ruleId: "review-candidate",
-      status: "review",
-      scope: "creation+migration+display",
-      match: "review-only-source",
-      replacement: "review-only-target",
-      canonicalTitle: "Review Only Target",
-      legacyRoute: "redirect",
-      notes: "Not active until reviewed",
-    }),
   ]));
 }
 
@@ -382,7 +379,6 @@ interface RowOptions {
   replacement?: string;
   canonicalTitle?: string;
   aliases?: string[];
-  legacyRoute?: "redirect" | "none";
   notes: string;
 }
 
@@ -396,7 +392,6 @@ function row(options: RowOptions): string {
     options.replacement ?? options.match ?? "example-topic",
     options.canonicalTitle ?? "",
     JSON.stringify(options.aliases ?? []),
-    options.legacyRoute ?? "none",
     options.notes,
   ].join("\t");
 }

@@ -61,7 +61,7 @@ try {
   $env:CONTENT_PIPELINE_LOCK_TOKEN = $activeLockToken
 
   Invoke-Npm -Arguments @("run", "build")
-  Invoke-Node -Arguments @("dist/scripts/normalize-video-topics.js", "--check", "--patterns-input", $topicPatternsPath)
+  Invoke-Node -Arguments @("dist/scripts/audit-topic-normalization.js", "--patterns-input", $topicPatternsPath)
   Invoke-Node -Arguments @("dist/scripts/audit-site-content.js", "--limit", "$BacklogLimit")
   Invoke-Node -Arguments @("dist/scripts/generate-site-data.js", "--patterns-input", $topicPatternsPath)
   Invoke-Npm -Arguments @("run", "site:check:generated")

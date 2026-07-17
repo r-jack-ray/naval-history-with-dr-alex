@@ -19,7 +19,7 @@ Use this brief with `$naval-transcript-to-site-content` when turning stored Dr. 
 - Curate only the explicitly selected `src/derived/video-segments/<manifest.fileStem>.json` shard. Reuse the selected transcript record's stored `fileStem`: its TXT basename must be exactly `<fileStem>.txt`, and never recompute a shard name from current metadata. Add topic slugs to that shard; the repository owner's later build synchronizes shared records without a routine AI editing step.
 - Use `src/channel/episodes.json` and `src/channel/video-metadata.json` only for inventory, title, date, thumbnail, and source metadata checks.
 - Use `src/derived/site-content-processing.config.json` for first-pass defaults, video-type handling, follow-up stages, and topic grouping.
-- Read `src/derived/topic-normalization-patterns.tsv` as read-only policy for topic construction and exact deprecations.
+- Read `src/derived/topic-normalization-patterns.tsv` as read-only steady-state policy for topic creation, display names, aliases, and exceptions.
 - Do not fetch transcripts or commit `src/transcripts/` changes unless the user explicitly asks for ingestion work.
 
 ## Workflow
@@ -39,7 +39,7 @@ Use this brief with `$naval-transcript-to-site-content` when turning stored Dr. 
 13. Compare the canonical title with `liveStreamExtraction.explicitQaTitleMarkers` in the processing config. A matching title makes exhaustive Q&A extraction explicit but does not erase lecture material.
 14. If a live-stream run cannot complete full-duration mixed-content extraction, report `needsFurtherProcessing=yes` and state the remaining coverage in the handoff.
 15. Derive significant segment topic slugs from the transcript without targeting a tag count or restricting the pass to a starter taxonomy. Outside active normalization rules, investigate synonym or taxonomy issues only when the repository owner's later synchronization reports a concrete problem.
-16. Follow `src/derived/topic-normalization-patterns.tsv` as the detailed naming source. Resolve new slugs through active `creation` rules and apply active exact `migration` mappings only to the selected shard's topic arrays, deduplicating those arrays in first-seen order. Preserve established slugs unless an active shared rule explicitly deprecates them. Leave `review`, disabled, ambiguous, or inapplicable candidates unchanged and report them; never edit the catalog or invoke `normalize:video-topics:apply` from this shard-only workflow.
+16. Follow `src/derived/topic-normalization-patterns.tsv` as the detailed naming source. Resolve new slugs through active `creation` rules and preserve established slugs unless the active creation policy canonicalizes them. Leave `review`, disabled, ambiguous, or inapplicable candidates unchanged and report them; never edit the catalog or perform corpus-wide topic rewrites from this shard-only workflow.
 
 ## Public Wording
 
@@ -68,5 +68,5 @@ Use this brief with `$naval-transcript-to-site-content` when turning stored Dr. 
 
 ## Handoff
 
-- Mention the video ID, transcript path, shard changed, segment count added, topic slugs introduced, active mappings applied, unresolved review or ambiguous candidates, transcript coverage status, the processing-log line appended, and remaining ranges. State that the normalization catalog, shared topic synchronization, corpus-wide normalization apply, generation, other logs, schedules, tests, builds, and validation were intentionally not touched.
+- Mention the video ID, transcript path, shard changed, segment count added, topic slugs introduced, active creation rules used, unresolved review or ambiguous candidates, transcript coverage status, the processing-log line appended, and remaining ranges. State that the normalization catalog, shared topic synchronization, corpus-wide topic rewriting, generation, other logs, schedules, tests, builds, and validation were intentionally not touched.
 - If an invoking automation performed lane-private bookkeeping or temporary checks, report only those prompt-owned results. If a transcript is too noisy or incomplete, report the blocker and inspected windows without creating a shared task note.

@@ -6,7 +6,7 @@ Curated site content lives in `src/derived/video-segments/`.
 
 - `topics.json`: synchronized shared browsing/search topic records, generated from topic usage in the video shards while preserving existing enriched metadata.
 - `<manifest.fileStem>.json`: one file per site-visible video, containing that video's topic slugs and segments. The stored `fileStem` in `src/transcripts/manifest.json` is canonical; the record's `paths.txt` basename must be exactly `<fileStem>.txt`, and the name must not be recomputed from current metadata.
-- `src/derived/topic-normalization-patterns.tsv`: manually curated normalization policy, read-only during shard curation.
+- `src/derived/topic-normalization-patterns.tsv`: manually curated steady-state policy for topic creation, display names, aliases, and exceptions, read-only during shard curation.
 
 Do not recreate a monolithic curated-content file. The manifest and shards under `site/src/data/generated/archive/` are generated output.
 
@@ -23,8 +23,8 @@ Do not recreate a monolithic curated-content file. The manifest and shards under
 
 - `videoId` must exist in `src/channel/episodes.json`.
 - `topics` contains stable lowercase, hyphenated slugs. `generate:site-data` synchronizes missing registry records before archive validation.
-- Resolve new slugs through active `creation` rules in `src/derived/topic-normalization-patterns.tsv`. Apply active exact `migration` mappings only inside the selected shard and deduplicate the affected topic arrays in first-seen order. Preserve established slugs unless an active shared rule explicitly deprecates them.
-- Leave `review`, disabled, ambiguous, or inapplicable candidates unchanged and identify them in the handoff. Shard-only work does not edit the normalization catalog or `topics.json` and does not invoke the corpus-wide `normalize:video-topics:apply` command.
+- Resolve new slugs through active `creation` rules in `src/derived/topic-normalization-patterns.tsv`. Preserve established slugs unless the active creation policy canonicalizes them.
+- Leave `review`, disabled, ambiguous, or inapplicable candidates unchanged and identify them in the handoff. Shard-only work does not edit the normalization catalog or `topics.json` and does not perform corpus-wide topic rewrites.
 - `topics` is a curated summary subset for the video page; it does not need to repeat every more-granular segment topic.
 - `segments` contains only records for this `videoId`.
 

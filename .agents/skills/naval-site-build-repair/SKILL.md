@@ -37,21 +37,21 @@ Repair site-pipeline failures without widening scope or destabilizing establishe
 ### Missing topics or invalid curated shards
 
 - Confirm the failing slug and live shard content before editing `topics.json`.
-- Treat `src/derived/topic-normalization-patterns.tsv` as the detailed source of truth for normalization-owned construction, migration, display, alias, and exception rules. A well-formed `review` rule is diagnostic only and does not authorize a mutation.
-- When an already active exact mapping resolves the failure, create and review the deterministic plan, then use `npm run normalize:video-topics:apply -- --plan <reviewed-plan-path>` instead of an ad hoc multi-file replacement.
-- Require explicit topic-normalization scope before editing the TSV, activating a rule, or performing a broad migration. Leave ambiguous or review-only candidates unchanged rather than guessing.
-- Add a missing shared topic only when a curated video or segment actually references it, no active mapping resolves it, and the user's repair scope authorizes registry work; do not rewrite an unrelated shard to hide a registry problem.
+- Treat `src/derived/topic-normalization-patterns.tsv` as the detailed source of truth for steady-state topic creation, display, alias, and exception rules. A well-formed `review` rule is diagnostic only and does not authorize a mutation.
+- Use active `creation` rules to choose the canonical slug when repairing a newly introduced or invalid topic reference. Preserve established slugs unless the active creation policy canonicalizes them, and do not widen a narrow build repair into a corpus-wide topic rewrite.
+- Require explicit topic-policy scope before editing the TSV or activating or changing a rule. Leave ambiguous or review-only candidates unchanged rather than guessing.
+- Add a missing shared topic only when a curated video or segment actually references it, the active creation policy accepts that slug as canonical, and the user's repair scope authorizes registry work; do not rewrite an unrelated shard to hide a registry problem.
 - Use `$naval-site-content-auditor` when the repair requires transcript-semantic judgment, public wording changes, or evidence validation.
 
 ### TypeScript, Astro, or Pagefind failures
 
 - Trace the first source error before changing generated output.
-- Use `$naval-video-page-prototype` for generated archive contracts, Astro routes, legacy redirect documents, templates, generated-data adapters, or Pagefind behavior changes. Build repair diagnoses and verifies those changes but does not widen itself into their implementation workflow.
+- Use `$naval-video-page-prototype` for generated archive contracts, Astro routes, templates, generated-data adapters, or Pagefind behavior changes. Build repair diagnoses and verifies those changes but does not widen itself into their implementation workflow.
 - Treat writer-lease contention as a stop condition. Do not bypass the repository lock or interfere with scheduled transcript workers.
 
 ## Validation
 
-Run the narrow checks first, then the full pipeline when source data or routes changed. After an authorized topic-normalization repair, verify that the read-only normalization audit reports no pending active source mutation, all references use canonical records, deprecated registry records are consolidated as planned, every retired slug has its legacy redirect, generated data is refreshed, and focused plus full checks pass.
+Run the narrow checks first, then the full pipeline when source data or routes changed. After an authorized topic-policy repair, verify that the read-only normalization audit reports steady-state policy compliance, changed references use the canonical records selected by active creation rules, registry usage is valid, generated data is refreshed, and focused plus full checks pass.
 
 Allow `site:build` at least fifteen minutes to complete. When the shell runner has a command timeout, set it to `900000` milliseconds or longer; do not interpret an earlier runner timeout as a site-build failure.
 

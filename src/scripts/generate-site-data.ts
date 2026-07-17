@@ -8,7 +8,6 @@ import {
   generateSiteArchiveData,
 } from "../site/archive-data.js";
 import { withSiteBuildRepairHint } from "../site/build-repair-guidance.js";
-import { getActiveLegacyRedirects } from "../site/topic-normalization.js";
 import {
   planTopicStoreSynchronization,
   writeTopicStoreSynchronization,
@@ -30,10 +29,6 @@ try {
     ...options,
     patternsSha256: topicPlan.catalog.sha256,
     patternsSourceSha256: topicPlan.catalog.sourceSha256,
-    legacyRedirects: getActiveLegacyRedirects(topicPlan.catalog).map((redirect) => ({
-      legacySlug: redirect.legacySlug,
-      canonicalSlug: redirect.canonicalSlug,
-    })),
   });
   console.error(
     `Generated site archive data: ${options.outputDir} (${archive.manifest.counts.videos} videos, ${archive.manifest.counts.segments} segments, ${archive.manifest.counts.topics} topics)`,

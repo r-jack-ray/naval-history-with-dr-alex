@@ -10,19 +10,16 @@ export const topicNormalizationPatternHeader = [
   "replacement",
   "canonical_title",
   "aliases_json",
-  "legacy_route",
   "notes",
 ] as const;
 
 export const topicNormalizationStatuses = ["active", "review", "disabled"] as const;
-export const topicNormalizationScopes = ["creation", "migration", "display"] as const;
+export const topicNormalizationScopes = ["creation", "display"] as const;
 export const topicNormalizationMatchKinds = ["exact", "regex", "token"] as const;
-export const topicNormalizationLegacyRoutes = ["redirect", "none"] as const;
 
 export type TopicNormalizationStatus = typeof topicNormalizationStatuses[number];
 export type TopicNormalizationScope = typeof topicNormalizationScopes[number];
 export type TopicNormalizationMatchKind = typeof topicNormalizationMatchKinds[number];
-export type TopicNormalizationLegacyRoute = typeof topicNormalizationLegacyRoutes[number];
 
 export interface TopicNormalizationRule {
   ruleId: string;
@@ -33,7 +30,6 @@ export interface TopicNormalizationRule {
   replacement: string;
   canonicalTitle: string;
   aliases: string[];
-  legacyRoute: TopicNormalizationLegacyRoute;
   notes: string;
   lineNumber: number;
 }
@@ -62,35 +58,6 @@ export interface TopicDisplayResolution {
   title: string;
   matchedRuleIds: string[];
   resolution: "exact" | "regex" | "token" | "fallback";
-}
-
-export interface TopicMigrationResolution extends TopicSlugResolution {
-  ruleId?: string;
-}
-
-export interface ActiveLegacyTopicRedirect {
-  ruleId: string;
-  legacySlug: string;
-  canonicalSlug: string;
-}
-
-export interface TopicArrayMigration {
-  index: number;
-  from: string;
-  to: string;
-  ruleId: string;
-}
-
-export interface TopicArrayDuplicateRemoval {
-  index: number;
-  slug: string;
-}
-
-export interface TopicSlugArrayResolution {
-  topics: string[];
-  changed: boolean;
-  migrations: TopicArrayMigration[];
-  removedDuplicates: TopicArrayDuplicateRemoval[];
 }
 
 export class TopicNormalizationCatalogError extends Error {
@@ -129,7 +96,7 @@ export function parseTopicNormalizationCatalog(
 
   const expectedHeader = topicNormalizationPatternHeader.join("\t");
   if (lines[0] !== expectedHeader) {
-    issues.push(`line 1 must be the exact ten-column header ${JSON.stringify(expectedHeader)}.`);
+    issues.push(`line 1 must be the exact nine-column header ${JSON.stringify(expectedHeader)}.`);
   }
 
   const rules: TopicNormalizationRule[] = [];
@@ -142,7 +109,7 @@ export function parseTopicNormalizationCatalog(
     }
     const fields = line.split("\t");
     if (fields.length !== topicNormalizationPatternHeader.length) {
-      issues.push(`line ${lineNumber} must contain exactly ten tab-separated fields; received ${fields.length}.`);
+      issues.push(`line ${lineNumber} must contain exactly nine tab-separated fields; received ${fields.length}.`);
       continue;
     }
 
@@ -155,9 +122,8 @@ export function parseTopicNormalizationCatalog(
       replacementValue,
       canonicalTitleValue,
       aliasesJsonValue,
-      legacyRouteValue,
       notesValue,
-    ] = fields as [string, string, string, string, string, string, string, string, string, string];
+    ] = fields as [string, string, string, string, string, string, string, string, string];
 
     const rowIssues: string[] = [];
     if (!ruleIdPattern.test(ruleIdValue)) {
@@ -169,22 +135,18 @@ export function parseTopicNormalizationCatalog(
     }
     const scopes = parseScopes(scopeValue);
     if (scopes === undefined) {
-      rowIssues.push("scope must contain creation, migration, and/or display once in canonical order");
+      rowIssues.push("scope must contain creation and/or display once in canonical order");
     }
     const matchKind = enumValue(matchKindValue, topicNormalizationMatchKinds);
     if (matchKind === undefined) {
       rowIssues.push(`match_kind must be one of ${topicNormalizationMatchKinds.join(", ")}`);
-    }
-    const legacyRoute = enumValue(legacyRouteValue, topicNormalizationLegacyRoutes);
-    if (legacyRoute === undefined) {
-      rowIssues.push(`legacy_route must be one of ${topicNormalizationLegacyRoutes.join(", ")}`);
     }
     const aliases = parseAliases(aliasesJsonValue, rowIssues);
     if (notesValue.length === 0) {
       rowIssues.push("notes must not be empty");
     }
 
-    if (matchKind !== undefined && scopes !== undefined && legacyRoute !== undefined) {
+    if (matchKind !== undefined && scopes !== undefined) {
       validateRuleFields({
         matchKind,
         scopes,
@@ -192,7 +154,6 @@ export function parseTopicNormalizationCatalog(
         replacement: replacementValue,
         canonicalTitle: canonicalTitleValue,
         aliases,
-        legacyRoute,
       }, rowIssues);
     }
 
@@ -200,7 +161,6 @@ export function parseTopicNormalizationCatalog(
       status === undefined
       || scopes === undefined
       || matchKind === undefined
-      || legacyRoute === undefined
       || aliases === undefined
       || rowIssues.length > 0
     ) {
@@ -217,7 +177,6 @@ export function parseTopicNormalizationCatalog(
       replacement: replacementValue,
       canonicalTitle: canonicalTitleValue,
       aliases,
-      legacyRoute,
       notes: notesValue,
       lineNumber,
     });
@@ -250,7 +209,6 @@ export function serializeTopicNormalizationCatalog(
     rule.replacement,
     rule.canonicalTitle,
     JSON.stringify(rule.aliases),
-    rule.legacyRoute,
     rule.notes,
   ].join("\t"));
   return `${[topicNormalizationPatternHeader.join("\t"), ...rows].join("\n")}\n`;
@@ -260,37 +218,25 @@ export function isTopicSlug(value: string): boolean {
   return topicSlugPattern.test(value);
 }
 
-export function getActiveExactMigrationMap(
-  catalog: TopicNormalizationCatalog,
-): ReadonlyMap<string, string> {
-  return new Map(activeRulesFor(catalog, "migration", "exact").map((rule) => [
-    rule.match,
-    rule.replacement,
-  ]));
-}
-
-export function getActiveLegacyRedirects(
-  catalog: TopicNormalizationCatalog,
-): ActiveLegacyTopicRedirect[] {
-  return activeRulesFor(catalog, "migration", "exact")
-    .filter((rule) => rule.legacyRoute === "redirect")
-    .map((rule) => ({
-      ruleId: rule.ruleId,
-      legacySlug: rule.match,
-      canonicalSlug: rule.replacement,
-    }))
-    .sort((left, right) => (
-      left.legacySlug.localeCompare(right.legacySlug)
-      || left.canonicalSlug.localeCompare(right.canonicalSlug)
-      || left.ruleId.localeCompare(right.ruleId)
-    ));
-}
-
 export function resolveTopicCreation(
   catalog: TopicNormalizationCatalog,
   slug: string,
 ): TopicSlugResolution {
   assertTopicSlug(slug, "creation input");
+  const reviewRules = catalog.rules.filter((rule) => (
+    rule.status === "review"
+    && rule.scopes.includes("creation")
+    && rule.matchKind === "exact"
+    && rule.match === slug
+  ));
+  if (reviewRules.length > 0) {
+    return {
+      input: slug,
+      slug,
+      changed: false,
+      matchedRuleIds: reviewRules.map((rule) => rule.ruleId),
+    };
+  }
   const match = resolveSlugRule(catalog, slug, "creation");
   if (match === undefined) {
     return { input: slug, slug, changed: false, matchedRuleIds: [] };
@@ -301,58 +247,6 @@ export function resolveTopicCreation(
     slug: resolvedSlug,
     changed: resolvedSlug !== slug,
     matchedRuleIds: [match.rule.ruleId],
-  };
-}
-
-export function resolveTopicMigration(
-  catalog: TopicNormalizationCatalog,
-  slug: string,
-): TopicMigrationResolution {
-  assertTopicSlug(slug, "migration input");
-  const rule = activeRulesFor(catalog, "migration", "exact").find((candidate) => candidate.match === slug);
-  if (rule === undefined) {
-    return { input: slug, slug, changed: false, matchedRuleIds: [] };
-  }
-  return {
-    input: slug,
-    slug: rule.replacement,
-    changed: rule.replacement !== slug,
-    matchedRuleIds: [rule.ruleId],
-    ruleId: rule.ruleId,
-  };
-}
-
-export function normalizeTopicSlugArray(
-  catalog: TopicNormalizationCatalog,
-  slugs: readonly string[],
-): TopicSlugArrayResolution {
-  const topics: string[] = [];
-  const migrations: TopicArrayMigration[] = [];
-  const removedDuplicates: TopicArrayDuplicateRemoval[] = [];
-  const seen = new Set<string>();
-
-  for (let index = 0; index < slugs.length; index += 1) {
-    const slug = slugs[index];
-    if (slug === undefined) {
-      continue;
-    }
-    const resolved = resolveTopicMigration(catalog, slug);
-    if (resolved.ruleId !== undefined && resolved.changed) {
-      migrations.push({ index, from: slug, to: resolved.slug, ruleId: resolved.ruleId });
-    }
-    if (seen.has(resolved.slug)) {
-      removedDuplicates.push({ index, slug: resolved.slug });
-      continue;
-    }
-    seen.add(resolved.slug);
-    topics.push(resolved.slug);
-  }
-
-  return {
-    topics,
-    changed: topics.length !== slugs.length || topics.some((slug, index) => slug !== slugs[index]),
-    migrations,
-    removedDuplicates,
   };
 }
 
@@ -432,11 +326,10 @@ function validateRuleFields(
     replacement: string;
     canonicalTitle: string;
     aliases: string[] | undefined;
-    legacyRoute: TopicNormalizationLegacyRoute;
   },
   issues: string[],
 ): void {
-  const { matchKind, scopes, match, replacement, canonicalTitle, legacyRoute } = rule;
+  const { matchKind, scopes, match, replacement, canonicalTitle } = rule;
   if (match.length === 0) {
     issues.push("match must not be empty");
   }
@@ -488,20 +381,6 @@ function validateRuleFields(
     }
   }
 
-  if (scopes.includes("migration") && matchKind !== "exact") {
-    issues.push("a migration rule must use an exact match");
-  }
-  if (legacyRoute === "redirect") {
-    if (matchKind !== "exact" || !scopes.includes("migration")) {
-      issues.push("a redirect must be an exact migration rule");
-    }
-    if (match === replacement) {
-      issues.push("a redirect source and destination must differ");
-    }
-  }
-  if (matchKind !== "exact" && legacyRoute !== "none") {
-    issues.push("regex and token rules cannot create legacy routes");
-  }
 }
 
 function validateCatalogRules(rules: TopicNormalizationRule[], issues: string[]): void {
@@ -530,22 +409,22 @@ function validateCatalogRules(rules: TopicNormalizationRule[], issues: string[])
     }
   }
 
-  const migrationBySource = new Map<string, TopicNormalizationRule>();
-  for (const rule of activeRulesFor({ rules }, "migration", "exact")) {
-    const previous = migrationBySource.get(rule.match);
+  const exactCreationBySource = new Map<string, TopicNormalizationRule>();
+  for (const rule of activeRulesFor({ rules }, "creation", "exact")) {
+    const previous = exactCreationBySource.get(rule.match);
     if (previous !== undefined && previous.replacement !== rule.replacement) {
       issues.push(
-        `line ${rule.lineNumber}: migration source ${rule.match} has destinations ${previous.replacement} and ${rule.replacement}.`,
+        `line ${rule.lineNumber}: exact creation input ${rule.match} has outputs ${previous.replacement} and ${rule.replacement}.`,
       );
     } else {
-      migrationBySource.set(rule.match, rule);
+      exactCreationBySource.set(rule.match, rule);
     }
   }
-  for (const rule of migrationBySource.values()) {
-    const next = migrationBySource.get(rule.replacement);
+  for (const rule of exactCreationBySource.values()) {
+    const next = exactCreationBySource.get(rule.replacement);
     if (next !== undefined) {
       issues.push(
-        `line ${rule.lineNumber}: migration ${rule.match} -> ${rule.replacement} forms a mapping chain or cycle through line ${next.lineNumber}.`,
+        `line ${rule.lineNumber}: exact creation mapping ${rule.match} -> ${rule.replacement} forms a chain or cycle through line ${next.lineNumber}.`,
       );
     }
   }

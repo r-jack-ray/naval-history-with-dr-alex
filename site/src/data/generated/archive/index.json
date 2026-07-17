@@ -1,18 +1,18 @@
 {
-  "schemaVersion": 4,
+  "schemaVersion": 5,
   "source": {
     "episodesInput": "src/channel/episodes.json",
     "metadataInput": "src/channel/video-metadata.json",
     "transcriptsInput": "src/transcripts/manifest.json",
     "segmentsInput": "src/derived/video-segments",
     "patternsInput": "src/derived/topic-normalization-patterns.tsv",
-    "patternsSha256": "465807f1aa78fc2282bbc97b8f6841b8c3a4436fa02dda619e8559e691f49151",
-    "patternsSourceSha256": "465807f1aa78fc2282bbc97b8f6841b8c3a4436fa02dda619e8559e691f49151"
+    "patternsSha256": "41ce4190268be62c3dcacb452f997e988f635b6c33cd5205af86f90a658ed186",
+    "patternsSourceSha256": "41ce4190268be62c3dcacb452f997e988f635b6c33cd5205af86f90a658ed186"
   },
   "counts": {
     "videos": 2061,
     "segments": 50088,
-    "topics": 18807
+    "topics": 18805
   },
   "segmentSharding": {
     "algorithm": "sha256-video-id-mod",
@@ -26,8 +26,8 @@
     },
     "topics": {
       "path": "./topics.json",
-      "count": 18807,
-      "sha256": "5589a4b7d5065ea070beed4ac62d0b67921089f7228455ca1db526981586b67f"
+      "count": 18805,
+      "sha256": "d449563cfc76ec5a6587ce3f8c051bcbca50ac9762f7e2bb8d687fb6100218fe"
     },
     "segmentBuckets": [
       {
@@ -46,13 +46,13 @@
         "id": "02",
         "path": "./segments/02.json",
         "count": 715,
-        "sha256": "3b4b2e8ba5fdb72149d5d5fc8b85410347d4a5c68e36334edcc2cbbf18d830b6"
+        "sha256": "c692dc6b096379a5ec13213a09e35ecb8b477c33cefe153af0a9bf5a5cab19cb"
       },
       {
         "id": "03",
         "path": "./segments/03.json",
         "count": 1078,
-        "sha256": "fbbef1244cc1ea0132623e8b6d1eb6283467134bcc66721d8257afe2035fa533"
+        "sha256": "999febec7da2ab4fb7fde43f93184e06e0a8505d4a68f63cbb803d2f6e59d43e"
       },
       {
         "id": "04",
@@ -76,13 +76,13 @@
         "id": "07",
         "path": "./segments/07.json",
         "count": 1169,
-        "sha256": "a944c599b51b68277611013337ab86b0de40d592e70a6ed21985fd9351e749f4"
+        "sha256": "50557772957e34283ac7713320159471bb6de2232170f11acda51b2c112613a5"
       },
       {
         "id": "08",
         "path": "./segments/08.json",
         "count": 969,
-        "sha256": "824cd5af4fddc0397cbbebfd43e5d45fa5b0fcc2ec69b0fb4c870885f24a4282"
+        "sha256": "2b4affb2a6d2d4076f3237a4340b65352b8317ec33837c5d65aa3bcf76e55df5"
       },
       {
         "id": "09",

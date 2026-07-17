@@ -5,7 +5,7 @@ import { join } from "node:path";
 const expectedPatternsInput = "src/derived/topic-normalization-patterns.tsv";
 
 export interface ArchiveData {
-  schemaVersion: 3;
+  schemaVersion: 4;
   videos: ArchiveVideo[];
   segments: ArchiveSegment[];
   topics: ArchiveTopic[];
@@ -22,7 +22,7 @@ export interface ArchiveSegmentBucketRecord extends ArchiveFileRecord {
 }
 
 export interface ArchiveManifest {
-  schemaVersion: 4;
+  schemaVersion: 5;
   source: {
     episodesInput: string;
     metadataInput: string;
@@ -101,14 +101,13 @@ export interface ArchiveTopic {
   title: string;
   summary: string;
   aliases: string[];
-  legacySlugs: string[];
   videoCount: number;
   segmentCount: number;
 }
 
-export type TopicPathProps =
-  | { kind: "canonical"; topic: ArchiveTopic }
-  | { kind: "redirect"; legacySlug: string; canonicalTopic: ArchiveTopic };
+export interface TopicPathProps {
+  topic: ArchiveTopic;
+}
 
 export interface TopicRef {
   slug: string;
@@ -201,8 +200,8 @@ function bucketIdForVideo(videoId: string): string {
 }
 
 function validateManifestShape(): void {
-  if (!isRecord(manifest) || manifest.schemaVersion !== 4) {
-    archiveError(`manifest schemaVersion must be 4; received ${String(manifest?.schemaVersion)}.`);
+  if (!isRecord(manifest) || manifest.schemaVersion !== 5) {
+    archiveError(`manifest schemaVersion must be 5; received ${String(manifest?.schemaVersion)}.`);
   }
   if (!isRecord(manifest.source)) {
     archiveError("manifest source is missing.");
@@ -400,9 +399,6 @@ for (const segment of shardedSegments) {
 }
 for (const topic of archiveTopics) {
   assertStringField(topic, "slug", "topic record");
-  if (!Array.isArray(topic.legacySlugs)) {
-    archiveError(`topic ${topic.slug} must contain a legacySlugs array.`);
-  }
 }
 
 const videosById = uniqueMap(archiveVideos, (video) => video.videoId, "video ID");
@@ -410,18 +406,6 @@ const videosBySlug = uniqueMap(archiveVideos, (video) => video.slug, "video slug
 uniqueMap(shardedSegments, (segment) => segment.id, "segment ID");
 const shardedSegmentsBySlug = uniqueMap(shardedSegments, (segment) => segment.slug, "segment slug");
 const topicsBySlug = uniqueMap(archiveTopics, (topic) => topic.slug, "topic slug");
-const topicRouteSlugs = new Set(topicsBySlug.keys());
-for (const topic of archiveTopics) {
-  for (const legacySlug of topic.legacySlugs) {
-    if (typeof legacySlug !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/u.test(legacySlug)) {
-      archiveError(`topic ${topic.slug} has an invalid legacy slug ${String(legacySlug)}.`);
-    }
-    if (topicRouteSlugs.has(legacySlug)) {
-      archiveError(`topic legacy slug ${legacySlug} collides with another topic route.`);
-    }
-    topicRouteSlugs.add(legacySlug);
-  }
-}
 
 const orderedSegments: ArchiveSegment[] = [];
 const referencedSegmentSlugs = new Set<string>();
@@ -501,7 +485,7 @@ for (const topic of archiveTopics) {
 }
 
 export const archive: ArchiveData = {
-  schemaVersion: 3,
+  schemaVersion: 4,
   videos: archiveVideos,
   segments: archiveSegments,
   topics: archiveTopics,
@@ -522,16 +506,10 @@ export function getSegmentPaths() {
 }
 
 export function getTopicPaths(): Array<{ params: { slug: string }; props: TopicPathProps }> {
-  return archiveTopics.flatMap((topic) => [
-    {
-      params: { slug: topic.slug },
-      props: { kind: "canonical" as const, topic },
-    },
-    ...topic.legacySlugs.map((legacySlug) => ({
-      params: { slug: legacySlug },
-      props: { kind: "redirect" as const, legacySlug, canonicalTopic: topic },
-    })),
-  ]);
+  return archiveTopics.map((topic) => ({
+    params: { slug: topic.slug },
+    props: { topic },
+  }));
 }
 
 export function findVideoById(videoId: string): ArchiveVideo | undefined {
