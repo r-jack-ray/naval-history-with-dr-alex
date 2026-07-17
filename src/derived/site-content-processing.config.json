@@ -38,9 +38,9 @@
   },
   "topicLifecycle": {
     "mode": "shard-derived-automatic",
-    "contentPass": "Add evidence-backed topic slugs to video and segment topic arrays without targeting a tag count or restricting the pass to a fixed starter taxonomy. Do not inspect or edit topics.json during routine transcript or audit work.",
-    "synchronization": "generate:site-data and site:build collect topic usage from every video shard, preserve existing enriched records, and add deterministic default records for newly referenced slugs.",
-    "exceptionRule": "Use AI attention for topic registry work only when synchronization or validation reports invalid data or a taxonomy conflict, or when the user explicitly requests taxonomy work."
+    "contentPass": "Add evidence-backed topic slugs without a tag quota. Read src/derived/topic-normalization-patterns.tsv as authored policy, resolve new slugs through active creation rules, apply active exact migration mappings only inside the owned shard, and leave review or ambiguous candidates unchanged for the handoff.",
+    "synchronization": "Routine synchronization and generation validate normalization state, collect topic usage from every video shard, preserve existing enriched records, and add deterministic default records for newly referenced slugs. They never rewrite source shards merely because the pattern catalog changed.",
+    "exceptionRule": "Shard-only transcript and audit work must not edit the normalization catalog or topics.json, invoke the corpus-wide normalize:video-topics:apply command, or infer a mapping from a review rule. Outside active rules, investigate registry taxonomy only after validation reports a concrete conflict or the user explicitly requests taxonomy work."
   },
   "contentExhaustion": {
     "mode": "model-effort-saturation",
@@ -77,7 +77,7 @@
     {
       "slug": "topic-diagnostics",
       "title": "Topic Diagnostics",
-      "description": "Investigate topic records only after synchronization or validation reports invalid data, duplicate or conflicting taxonomy, or another concrete registry problem."
+      "description": "Read the normalization catalog and use the read-only normalization audit when validation reports invalid data, duplicate or conflicting taxonomy, or another concrete registry problem."
     }
   ],
   "videoTypeRules": [

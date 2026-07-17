@@ -2,22 +2,39 @@ import {
   defaultSiteArchiveOutputDir,
   defaultSiteEpisodesInput,
   defaultSiteMetadataInput,
+  defaultSitePatternsInput,
   defaultSiteTranscriptsInput,
   defaultSiteSegmentsInput,
   generateSiteArchiveData,
 } from "../site/archive-data.js";
 import { withSiteBuildRepairHint } from "../site/build-repair-guidance.js";
-import { synchronizeCuratedTopicStore } from "../site/topic-store.js";
+import { getActiveLegacyRedirects } from "../site/topic-normalization.js";
+import {
+  planTopicStoreSynchronization,
+  writeTopicStoreSynchronization,
+} from "../site/topic-store.js";
 
 try {
   const options = parseArgs(process.argv.slice(2));
-  const topicResult = await synchronizeCuratedTopicStore(options.segmentsInput);
+  const topicPlan = await planTopicStoreSynchronization({
+    segmentsInput: options.segmentsInput,
+    patternsInput: options.patternsInput,
+  });
+  const topicResult = await writeTopicStoreSynchronization(topicPlan);
   for (const topic of topicResult.reviewTopics) {
     console.error(
       `Topic title requires review: ${topic.slug} (generated title: ${topic.generatedTitle}).`,
     );
   }
-  const archive = await generateSiteArchiveData(options);
+  const archive = await generateSiteArchiveData({
+    ...options,
+    patternsSha256: topicPlan.catalog.sha256,
+    patternsSourceSha256: topicPlan.catalog.sourceSha256,
+    legacyRedirects: getActiveLegacyRedirects(topicPlan.catalog).map((redirect) => ({
+      legacySlug: redirect.legacySlug,
+      canonicalSlug: redirect.canonicalSlug,
+    })),
+  });
   console.error(
     `Generated site archive data: ${options.outputDir} (${archive.manifest.counts.videos} videos, ${archive.manifest.counts.segments} segments, ${archive.manifest.counts.topics} topics)`,
   );
@@ -33,6 +50,7 @@ function parseArgs(args: string[]) {
     metadataInput: defaultSiteMetadataInput,
     transcriptsInput: defaultSiteTranscriptsInput,
     segmentsInput: defaultSiteSegmentsInput,
+    patternsInput: defaultSitePatternsInput,
     outputDir: defaultSiteArchiveOutputDir,
   };
 
@@ -50,6 +68,9 @@ function parseArgs(args: string[]) {
         break;
       case "--segments-input":
         options.segmentsInput = readValue(args, ++index, arg);
+        break;
+      case "--patterns-input":
+        options.patternsInput = readValue(args, ++index, arg);
         break;
       case "--output-dir":
         options.outputDir = readValue(args, ++index, arg);
@@ -83,6 +104,7 @@ Options:
   --metadata-input <path>  YouTube metadata store. Defaults to ${defaultSiteMetadataInput}.
   --transcripts-input <path> Transcript manifest. Defaults to ${defaultSiteTranscriptsInput}.
   --segments-input <path>  Per-video curated content directory. Defaults to ${defaultSiteSegmentsInput}.
+  --patterns-input <path>  Topic normalization catalog. Defaults to ${defaultSitePatternsInput}.
   --output-dir <path>      Astro-facing archive directory. Defaults to ${defaultSiteArchiveOutputDir}.
 `);
 }

@@ -20,6 +20,7 @@ const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), "../..")
 const archiveCachePath = resolve(repositoryRoot, ".tmp/site-archive-cache.json");
 const siteCachePath = resolve(repositoryRoot, ".tmp/site-build-cache.json");
 const archiveOutputSentinels = ["site/src/data/generated/archive/index.json"];
+const defaultTopicNormalizationPatternsPath = "src/derived/topic-normalization-patterns.tsv";
 const siteOutputSentinels = [
   "site/dist/index.html",
   "site/dist/pagefind/pagefind-entry.json",
@@ -33,6 +34,7 @@ const archiveInputPaths = [
   "src/channel/episodes.json",
   "src/channel/video-metadata.json",
   "src/transcripts/manifest.json",
+  defaultTopicNormalizationPatternsPath,
   "src/derived/video-segments",
 ];
 const siteInputPaths = [
@@ -43,9 +45,10 @@ const siteInputPaths = [
   "tsconfig.astro.json",
   "site/public",
   "site/src",
+  defaultTopicNormalizationPatternsPath,
 ];
-const archiveCacheVersion = 2;
-const siteCacheVersion = 3;
+const archiveCacheVersion = 3;
+const siteCacheVersion = 4;
 const runStartedAt = new Date();
 
 async function main() {
@@ -119,6 +122,13 @@ async function ensureSiteArchive(force) {
 }
 
 async function ensureBuiltSite(force) {
+  const archiveValidation = await validateSiteArchive();
+  if (!archiveValidation.valid) {
+    throw new Error(
+      `Generated site archive failed integrity validation: ${archiveValidation.reason}`,
+    );
+  }
+
   const environmentFiles = await existingEnvironmentFiles();
   const fingerprint = await calculateFingerprint(
     "site-build",
@@ -135,6 +145,13 @@ async function ensureBuiltSite(force) {
 
   const reason = buildReason(force, outputsExist, cache, "site inputs changed");
   console.log(`Building Astro site because ${reason}.`);
+
+  const prebuildArchiveValidation = await validateSiteArchive();
+  if (!prebuildArchiveValidation.valid) {
+    throw new Error(
+      `Generated site archive became stale before Astro/Pagefind: ${prebuildArchiveValidation.reason}`,
+    );
+  }
 
   const exitCode = await runNpmScript("site:build:full");
   if (exitCode !== 0) {
@@ -176,8 +193,37 @@ async function validateSiteArchive() {
     throw error;
   }
 
-  if (manifest?.schemaVersion !== 3) {
+  if (manifest?.schemaVersion !== 4) {
     return invalidArchive("the archive manifest schema version is unsupported");
+  }
+  if (manifest?.source?.patternsInput !== defaultTopicNormalizationPatternsPath) {
+    return invalidArchive("the archive manifest has an unsupported topic-normalization catalog path");
+  }
+  if (
+    typeof manifest.source.patternsSha256 !== "string" ||
+    !/^[a-f0-9]{64}$/.test(manifest.source.patternsSha256)
+  ) {
+    return invalidArchive("the archive manifest topic-normalization catalog hash is invalid");
+  }
+  if (
+    typeof manifest.source.patternsSourceSha256 !== "string" ||
+    !/^[a-f0-9]{64}$/.test(manifest.source.patternsSourceSha256)
+  ) {
+    return invalidArchive("the archive manifest topic-normalization source hash is invalid");
+  }
+
+  let patternsBytes;
+  try {
+    patternsBytes = await readFile(resolve(repositoryRoot, defaultTopicNormalizationPatternsPath));
+  } catch (error) {
+    if (error?.code === "ENOENT") {
+      return invalidArchive("the topic-normalization catalog is missing");
+    }
+    throw error;
+  }
+  const patternsSourceSha256 = createHash("sha256").update(patternsBytes).digest("hex");
+  if (patternsSourceSha256 !== manifest.source.patternsSourceSha256) {
+    return invalidArchive("the generated archive topic-normalization provenance is stale");
   }
   if (
     manifest?.segmentSharding?.algorithm !== "sha256-video-id-mod" ||
@@ -225,6 +271,7 @@ async function validateSiteArchive() {
 
   const fileRecords = [videos, topics, ...segmentBuckets];
   const seenPaths = new Set();
+  let generatedTopics;
   for (const fileRecord of fileRecords) {
     if (seenPaths.has(fileRecord.path)) {
       return invalidArchive(`the archive manifest repeats ${fileRecord.path}`);
@@ -255,6 +302,40 @@ async function validateSiteArchive() {
     if (sha256 !== fileRecord.sha256) {
       return invalidArchive(`the archive file hash does not match: ${fileRecord.path}`);
     }
+    if (fileRecord === topics) {
+      try {
+        generatedTopics = JSON.parse(bytes.toString("utf8"));
+      } catch (error) {
+        if (error instanceof SyntaxError) {
+          return invalidArchive("the archive topics file is not valid JSON");
+        }
+        throw error;
+      }
+    }
+  }
+
+  if (!Array.isArray(generatedTopics) || generatedTopics.length !== topics.count) {
+    return invalidArchive("the archive topics file count is inconsistent");
+  }
+  const topicRouteSlugs = new Set();
+  for (const topic of generatedTopics) {
+    if (!isTopicRouteSlug(topic?.slug) || topicRouteSlugs.has(topic.slug)) {
+      return invalidArchive("the archive topics file contains an invalid or duplicate canonical slug");
+    }
+    if (!Array.isArray(topic.legacySlugs)) {
+      return invalidArchive(`the archive topic ${topic.slug} has no legacySlugs array`);
+    }
+    topicRouteSlugs.add(topic.slug);
+  }
+  for (const topic of generatedTopics) {
+    for (const legacySlug of topic.legacySlugs) {
+      if (!isTopicRouteSlug(legacySlug) || topicRouteSlugs.has(legacySlug)) {
+        return invalidArchive(
+          `the archive topic ${topic.slug} has an invalid or colliding legacy slug`,
+        );
+      }
+      topicRouteSlugs.add(legacySlug);
+    }
   }
 
   return { valid: true };
@@ -273,6 +354,10 @@ function isArchiveFileRecord(value) {
 
 function isNonnegativeInteger(value) {
   return Number.isInteger(value) && value >= 0;
+}
+
+function isTopicRouteSlug(value) {
+  return typeof value === "string" && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value);
 }
 
 function invalidArchive(reason) {

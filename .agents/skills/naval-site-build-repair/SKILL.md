@@ -1,6 +1,6 @@
 ---
 name: naval-site-build-repair
-description: Diagnose and safely repair build, archive-generation, Astro, and Pagefind failures in the Naval History with Dr. Alex study-guide repository. Use when `generate:site-data`, `site:check`, or `site:build` fails; when errors report duplicate segment IDs or slugs, missing topics, invalid curated shards, TypeScript or Astro failures, or Pagefind indexing problems; or when the user asks to repair a pasted naval site build error while preserving unrelated worktree changes.
+description: Diagnose and safely repair build, archive-generation, Astro, and Pagefind failures in the Naval History with Dr. Alex study-guide repository. Use when `generate:site-data`, `site:check`, or `site:build` fails; when errors report duplicate segment IDs or slugs, missing topics, duplicate taxonomy, topic-normalization failures, invalid curated shards, TypeScript or Astro failures, or Pagefind indexing problems; or when the user asks to repair a pasted naval site build error while preserving unrelated worktree changes.
 ---
 
 # Naval Site Build Repair
@@ -12,9 +12,10 @@ Repair site-pipeline failures without widening scope or destabilizing establishe
 1. Read `AGENTS.md`, inspect `git status --short --branch`, and preserve unrelated staged, unstaged, and untracked changes.
 2. Reproduce the user's exact failing command when practical. Treat a diagnosis-only request as read-only.
 3. Run `npm run diagnose:site-content-duplicates` for archive uniqueness failures or before changing segment routes. An exit code of 1 means duplicates were found and is an expected diagnostic result.
-4. Classify the first actionable failure and apply the narrowest safe repair. For duplicate routes, rank every occurrence by transcript-backed accuracy and completeness before choosing which occurrence keeps the contested key.
-5. Regenerate the tracked manifest and shards under `site/src/data/generated/archive/` through repository commands; never hand-edit `index.json` or its listed generated archive files.
-6. Validate in proportion to the change and report the exact source and generated files changed.
+4. For topic-title, alias, missing-topic, duplicate-taxonomy, or normalization failures, read `src/derived/topic-normalization-patterns.tsv` and run the read-only `npm run audit:topic-normalization` before adding a registry record or manually changing a topic reference.
+5. Classify the first actionable failure and apply the narrowest safe repair. For duplicate routes, rank every occurrence by transcript-backed accuracy and completeness before choosing which occurrence keeps the contested key.
+6. Regenerate the tracked manifest and shards under `site/src/data/generated/archive/` through repository commands; never hand-edit `index.json` or its listed generated archive files.
+7. Validate in proportion to the change and report the exact source and generated files changed.
 
 ## Repair Rules
 
@@ -36,25 +37,27 @@ Repair site-pipeline failures without widening scope or destabilizing establishe
 ### Missing topics or invalid curated shards
 
 - Confirm the failing slug and live shard content before editing `topics.json`.
-- Add a missing shared topic only when a curated video or segment actually references it; do not rewrite an unrelated shard to hide a registry problem.
-- Treat an unresolved adjacent-numeric topic diagnostic as a title-review signal, not permission to guess punctuation, rename an established slug, or rewrite referencing shards. An exact terminal `<whole>-<fraction>-inch-gun` or `<whole>-<fraction>-inch-guns` shape is reserved for a decimal gun calibre, and a newly constructed gun-calibre range uses `to`, for example `4-to-5-inch-guns`.
-- For any other newly introduced adjacent-numeric slug, preserve the shard reference and report the exact slug for repository-owner title and alias review. Edit the shared registry only when the user's repair scope explicitly authorizes that topic repair; when authorized, preserve the referenced slug and supply an evidence-backed explicit `title`, `summary`, and `aliases` instead of rewriting shard references merely to make the URL resemble the visible label. Otherwise leave the shard-only worker and shared-output boundaries unchanged.
-- Use `$naval-site-content-auditor` when the repair requires transcript-backed content judgment, public wording changes, or evidence validation.
+- Treat `src/derived/topic-normalization-patterns.tsv` as the detailed source of truth for normalization-owned construction, migration, display, alias, and exception rules. A well-formed `review` rule is diagnostic only and does not authorize a mutation.
+- When an already active exact mapping resolves the failure, create and review the deterministic plan, then use `npm run normalize:video-topics:apply -- --plan <reviewed-plan-path>` instead of an ad hoc multi-file replacement.
+- Require explicit topic-normalization scope before editing the TSV, activating a rule, or performing a broad migration. Leave ambiguous or review-only candidates unchanged rather than guessing.
+- Add a missing shared topic only when a curated video or segment actually references it, no active mapping resolves it, and the user's repair scope authorizes registry work; do not rewrite an unrelated shard to hide a registry problem.
+- Use `$naval-site-content-auditor` when the repair requires transcript-semantic judgment, public wording changes, or evidence validation.
 
 ### TypeScript, Astro, or Pagefind failures
 
 - Trace the first source error before changing generated output.
-- Use `$naval-video-page-prototype` for route, template, generated-data adapter, or Pagefind behavior changes.
+- Use `$naval-video-page-prototype` for generated archive contracts, Astro routes, legacy redirect documents, templates, generated-data adapters, or Pagefind behavior changes. Build repair diagnoses and verifies those changes but does not widen itself into their implementation workflow.
 - Treat writer-lease contention as a stop condition. Do not bypass the repository lock or interfere with scheduled transcript workers.
 
 ## Validation
 
-Run the narrow checks first, then the full pipeline when source data or routes changed:
+Run the narrow checks first, then the full pipeline when source data or routes changed. After an authorized topic-normalization repair, verify that the read-only normalization audit reports no pending active source mutation, all references use canonical records, deprecated registry records are consolidated as planned, every retired slug has its legacy redirect, generated data is refreshed, and focused plus full checks pass.
 
-Allow `site:build` at least ten minutes to complete. When the shell runner has a command timeout, set it to `600000` milliseconds or longer; do not interpret an earlier runner timeout as a site-build failure.
+Allow `site:build` at least fifteen minutes to complete. When the shell runner has a command timeout, set it to `900000` milliseconds or longer; do not interpret an earlier runner timeout as a site-build failure.
 
 ```powershell
 npm run diagnose:site-content-duplicates
+npm run audit:topic-normalization
 npm run check
 npm run site:check
 npm run site:build

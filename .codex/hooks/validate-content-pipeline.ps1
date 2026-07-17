@@ -38,6 +38,7 @@ function Invoke-Node {
 
 $projectRoot = Resolve-Path "$PSScriptRoot\..\.."
 $lockTool = Join-Path $projectRoot ".codex\hooks\site-content-pipeline-lock.mjs"
+$topicPatternsPath = "src/derived/topic-normalization-patterns.tsv"
 $previousLockToken = $env:CONTENT_PIPELINE_LOCK_TOKEN
 $activeLockToken = $LockToken
 $callerProvidedLock = -not [string]::IsNullOrWhiteSpace($activeLockToken)
@@ -60,8 +61,9 @@ try {
   $env:CONTENT_PIPELINE_LOCK_TOKEN = $activeLockToken
 
   Invoke-Npm -Arguments @("run", "build")
+  Invoke-Node -Arguments @("dist/scripts/normalize-video-topics.js", "--check", "--patterns-input", $topicPatternsPath)
   Invoke-Node -Arguments @("dist/scripts/audit-site-content.js", "--limit", "$BacklogLimit")
-  Invoke-Node -Arguments @("dist/scripts/generate-site-data.js")
+  Invoke-Node -Arguments @("dist/scripts/generate-site-data.js", "--patterns-input", $topicPatternsPath)
   Invoke-Npm -Arguments @("run", "site:check:generated")
 
   if (-not $SkipRepoCheck) {

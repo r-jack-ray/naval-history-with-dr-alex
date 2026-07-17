@@ -6,6 +6,7 @@ Curated site content lives in `src/derived/video-segments/`.
 
 - `topics.json`: synchronized shared browsing/search topic records, generated from topic usage in the video shards while preserving existing enriched metadata.
 - `<manifest.fileStem>.json`: one file per site-visible video, containing that video's topic slugs and segments. The stored `fileStem` in `src/transcripts/manifest.json` is canonical; the record's `paths.txt` basename must be exactly `<fileStem>.txt`, and the name must not be recomputed from current metadata.
+- `src/derived/topic-normalization-patterns.tsv`: manually curated normalization policy, read-only during shard curation.
 
 Do not recreate a monolithic curated-content file. The manifest and shards under `site/src/data/generated/archive/` are generated output.
 
@@ -22,8 +23,8 @@ Do not recreate a monolithic curated-content file. The manifest and shards under
 
 - `videoId` must exist in `src/channel/episodes.json`.
 - `topics` contains stable lowercase, hyphenated slugs. `generate:site-data` synchronizes missing registry records before archive validation.
-- For a newly constructed topic slug, an exact terminal `<whole>-<fraction>-inch-gun` or `<whole>-<fraction>-inch-guns` shape is reserved for a decimal gun calibre. Use `to` for a gun-calibre range, for example `4-to-5-inch-guns`.
-- Preserve established topic slugs. If a newly introduced non-decimal topic necessarily contains adjacent numeric tokens, keep its evidence-backed slug in the owned shard and identify it in the curation handoff for repository-owner title and alias review; do not guess its visible punctuation or edit `topics.json` during shard-only work.
+- Resolve new slugs through active `creation` rules in `src/derived/topic-normalization-patterns.tsv`. Apply active exact `migration` mappings only inside the selected shard and deduplicate the affected topic arrays in first-seen order. Preserve established slugs unless an active shared rule explicitly deprecates them.
+- Leave `review`, disabled, ambiguous, or inapplicable candidates unchanged and identify them in the handoff. Shard-only work does not edit the normalization catalog or `topics.json` and does not invoke the corpus-wide `normalize:video-topics:apply` command.
 - `topics` is a curated summary subset for the video page; it does not need to repeat every more-granular segment topic.
 - `segments` contains only records for this `videoId`.
 
@@ -40,7 +41,7 @@ Do not recreate a monolithic curated-content file. The manifest and shards under
 
 - Keep slugs lowercase and hyphenated.
 - Routine transcript curation does not create or edit topic records. The synchronizer derives missing records from shard usage and preserves existing enriched titles, summaries, and aliases.
-- Edit aliases or consolidate taxonomy only when validation identifies a problem or the user explicitly requests taxonomy work.
+- Outside active normalization rules, edit aliases or consolidate taxonomy only when validation identifies a problem or the user explicitly requests taxonomy work.
 
 ## Segment Seed
 

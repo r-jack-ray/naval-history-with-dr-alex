@@ -21,6 +21,9 @@
     "audit:transcript-schedules": "npm run build && node dist/scripts/audit-transcript-schedules.js",
     "diagnose:site-content-duplicates": "npm run build && node dist/scripts/diagnose-site-content-duplicates.js",
     "sync:video-topics": "node .codex/hooks/site-content-pipeline-lock.mjs run --build --purpose video-topic-sync --recover-stale -- node dist/scripts/sync-video-topics.js",
+    "audit:topic-normalization": "npm run build && node dist/scripts/normalize-video-topics.js --check",
+    "normalize:video-topics": "npm run build && node dist/scripts/normalize-video-topics.js",
+    "normalize:video-topics:apply": "node .codex/hooks/site-content-pipeline-lock.mjs run --build --purpose topic-normalization --recover-stale -- node dist/scripts/normalize-video-topics.js --apply",
     "generate:site-data": "node .codex/hooks/site-content-pipeline-lock.mjs run --build --purpose site-archive-generation --recover-stale -- node dist/scripts/generate-site-data.js",
     "append:site-content-processing-log": "node .codex/hooks/site-content-pipeline-lock.mjs append-log",
 
@@ -46,6 +49,7 @@
     "site:build:generated": "node .codex/hooks/site-build-if-changed.mjs",
     "site:build:full": "astro build --silent && pagefind --site site/dist",
     "check:rendered-video-dates": "npm run build && node dist/scripts/check-rendered-video-dates.js",
+    "check:rendered-topic-redirects": "npm run build && node dist/scripts/check-rendered-topic-redirects.js",
     "site:preview": "astro preview",
 
     "preaudit:lighthouse:home": "node -e \"require('fs').mkdirSync('reports/lighthouse', { recursive: true })\"",
@@ -57,6 +61,7 @@
     "@astrojs/check": "^0.9.9",
     "@types/node": "^22.10.0",
     "astro": "^7.0.6",
+    "jsonc-parser": "^3.3.1",
     "lighthouse": "^13.4.0",
     "pagefind": "^1.5.2",
     "typescript": "^5.7.0"

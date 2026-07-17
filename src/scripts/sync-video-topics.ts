@@ -1,14 +1,20 @@
-import { synchronizeCuratedTopicStore } from "../site/topic-store.js";
+import {
+  defaultTopicNormalizationPatternsInput,
+  synchronizeCuratedTopicStore,
+} from "../site/topic-store.js";
 
-const inputDirectory = readInputDirectory(process.argv.slice(2));
+const options = parseArgs(process.argv.slice(2));
 
 try {
-  const result = await synchronizeCuratedTopicStore(inputDirectory);
+  const result = await synchronizeCuratedTopicStore(
+    options.segmentsInput,
+    options.patternsInput,
+  );
   const action = result.changed
     ? `added ${result.addedSlugs.length} topic${result.addedSlugs.length === 1 ? "" : "s"}`
     : "already current";
   console.error(
-    `Synchronized ${inputDirectory}/topics.json: ${action} (${result.usedTopicCount} used, ${result.topicCount} stored).`,
+    `Synchronized ${options.segmentsInput}/topics.json: ${action} (${result.usedTopicCount} used, ${result.topicCount} stored).`,
   );
   for (const topic of result.reviewTopics) {
     console.error(
@@ -20,12 +26,38 @@ try {
   process.exitCode = 1;
 }
 
-function readInputDirectory(args: string[]): string {
-  if (args.length === 0) {
-    return "src/derived/video-segments";
+function parseArgs(args: string[]): { segmentsInput: string; patternsInput: string } {
+  const options = {
+    segmentsInput: "src/derived/video-segments",
+    patternsInput: defaultTopicNormalizationPatternsInput,
+  };
+  for (let index = 0; index < args.length; index += 1) {
+    const arg = args[index];
+    if (arg === "--segments-input") {
+      options.segmentsInput = readValue(args, ++index, arg);
+      continue;
+    }
+    if (arg === "--patterns-input") {
+      options.patternsInput = readValue(args, ++index, arg);
+      continue;
+    }
+    if (arg === "--help" || arg === "-h") {
+      console.log(`Usage: npm run sync:video-topics -- [options]
+
+Options:
+  --segments-input <path>  Per-video curated content directory. Defaults to src/derived/video-segments.
+  --patterns-input <path>  Topic normalization catalog. Defaults to ${defaultTopicNormalizationPatternsInput}.`);
+      process.exit(0);
+    }
+    throw new Error(`Unknown argument: ${arg}`);
   }
-  if (args.length === 2 && args[0] === "--segments-input" && args[1] !== undefined) {
-    return args[1];
+  return options;
+}
+
+function readValue(args: string[], index: number, flag: string): string {
+  const value = args[index];
+  if (value === undefined || value.startsWith("--")) {
+    throw new Error(`Missing value for ${flag}`);
   }
-  throw new Error("Usage: npm run sync:video-topics -- [--segments-input <path>]");
+  return value;
 }

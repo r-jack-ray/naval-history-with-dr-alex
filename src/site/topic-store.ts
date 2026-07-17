@@ -7,7 +7,20 @@ import type {
   CuratedTopicStore,
   CuratedVideoFileSeed,
 } from "./curated-seed.js";
+import { buildTopicNormalizationPlan } from "./topic-normalization-plan.js";
+import {
+  defaultTopicSummary,
+  loadTopicNormalizationCatalog,
+  normalizeTopicSlugArray,
+  resolveTopicCreation,
+  resolveTopicDisplayTitle,
+  topicTitleFromSlug as normalizedTopicTitleFromSlug,
+  type TopicNormalizationCatalog,
+} from "./topic-normalization.js";
 import { discoverVideoSegmentShards } from "./video-segment-files.js";
+
+export const defaultTopicNormalizationPatternsInput =
+  "src/derived/topic-normalization-patterns.tsv";
 
 export interface SynchronizeTopicStoreResult {
   addedSlugs: string[];
@@ -22,98 +35,232 @@ export interface TopicReviewItem {
   generatedTitle: string;
 }
 
-const uppercaseTokens = new Set([
-  "aew",
-  "ai",
-  "asw",
-  "hms",
-  "hmcs",
-  "nato",
-  "opv",
-  "qf",
-  "raf",
-  "ran",
-  "rcn",
-  "rnas",
-  "uk",
-  "us",
-  "uss",
-  "vls",
-]);
-const romanNumerals = new Set(["i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x"]);
+export interface PlanTopicStoreSynchronizationOptions {
+  segmentsInput: string;
+  patternsInput?: string;
+}
+
+export interface TopicStoreSynchronizationPlan extends SynchronizeTopicStoreResult {
+  catalog: TopicNormalizationCatalog;
+  patternsInput: string;
+  topicStorePath: string;
+  preimageText: string | undefined;
+  postimageText: string;
+}
+
+interface TopicCorpusScan {
+  usedSlugs: string[];
+  pendingArrays: string[];
+}
+
 const adjacentNumericSlugPattern = /(?:^|-)\d+-\d+(?:-|$)/u;
 
-export async function synchronizeCuratedTopicStore(
-  inputDirectory: string,
-): Promise<SynchronizeTopicStoreResult> {
-  const usedSlugs = await collectUsedTopicSlugs(inputDirectory);
-  const topicStorePath = join(inputDirectory, "topics.json");
-  const existingStore = await readTopicStoreIfPresent(topicStorePath);
+/**
+ * Plans topic-store synchronization without writing source or generated data.
+ * Catalog validation and the full normalization preflight intentionally happen
+ * before the append-only topic-store plan is returned.
+ */
+export async function planTopicStoreSynchronization(
+  options: PlanTopicStoreSynchronizationOptions,
+): Promise<TopicStoreSynchronizationPlan> {
+  const patternsInput = options.patternsInput ?? defaultTopicNormalizationPatternsInput;
+  const catalog = await loadTopicNormalizationCatalog(patternsInput);
+  const corpus = await scanTopicCorpus(options.segmentsInput, catalog);
+  const topicStorePath = join(options.segmentsInput, "topics.json");
+  const preimageText = await readTextIfPresent(topicStorePath);
+  const existingStore = preimageText === undefined
+    ? undefined
+    : parseTopicStore(preimageText, topicStorePath);
   const topics = existingStore?.topics ?? [];
   validateExistingTopics(topics);
 
   const knownSlugs = new Set(topics.map((topic) => topic.slug));
-  const addedSlugs = usedSlugs.filter((slug) => !knownSlugs.has(slug));
-  const addedTopics = addedSlugs.map(buildDefaultTopic);
-  const effectiveTopics = [...topics, ...addedTopics];
+  const addedSlugs = corpus.usedSlugs.filter((slug) => !knownSlugs.has(slug));
+  const preflightFindings = [...corpus.pendingArrays];
 
-  if (existingStore === undefined || addedSlugs.length > 0) {
-    const updatedStore: CuratedTopicStore = {
-      schemaVersion: 1,
-      topics: effectiveTopics,
-    };
-    await writeTextAtomically(topicStorePath, `${JSON.stringify(updatedStore, null, 2)}\n`);
+  for (const slug of addedSlugs) {
+    const creation = resolveTopicCreation(catalog, slug);
+    if (creation.changed) {
+      preflightFindings.push(
+        `New topic ${slug} resolves through active creation rule ${creation.matchedRuleIds.join(", ")} to ${creation.slug}; update the owning shard instead of appending a noncanonical registry record.`,
+      );
+    }
   }
 
+  if (existingStore !== undefined) {
+    const normalization = await buildTopicNormalizationPlan({
+      patternsInput,
+      segmentsInput: options.segmentsInput,
+    });
+    if (
+      normalization.catalog.sha256 !== catalog.sha256
+      || normalization.catalog.sourceSha256 !== catalog.sourceSha256
+    ) {
+      preflightFindings.push(
+        `Topic normalization catalog changed while synchronization was being planned: ${patternsInput}.`,
+      );
+    }
+
+    for (const operation of normalization.reviewedPlan.operations) {
+      if (operation.kind === "shard") {
+        continue;
+      }
+      const changedSlugs = [
+        ...(operation.removedRegistrySlugs ?? []),
+        ...(operation.addedRegistrySlugs ?? []),
+        ...(operation.changedRegistrySlugs ?? []),
+      ];
+      if (changedSlugs.length > 0) {
+        preflightFindings.push(
+          `Active normalization has pending topic-store changes for ${[...new Set(changedSlugs)].sort().join(", ")}.`,
+        );
+      }
+    }
+
+    const allowedMissingSlugs = new Set(addedSlugs.filter((slug) => (
+      !resolveTopicCreation(catalog, slug).changed
+    )));
+    for (const blocker of normalization.reviewedPlan.blockers) {
+      if (!isAppendableMissingTopicBlocker(blocker, allowedMissingSlugs)) {
+        preflightFindings.push(blocker);
+      }
+    }
+  }
+
+  if (preflightFindings.length > 0) {
+    throw new Error([
+      "Topic normalization preflight failed before topic-store synchronization:",
+      ...[...new Set(preflightFindings)].map((finding) => `- ${finding}`),
+      "Run the read-only normalization audit and apply an explicitly reviewed normalization plan before synchronizing topics.",
+    ].join("\n"));
+  }
+
+  const addedTopics = addedSlugs.map((slug) => buildDefaultTopic(slug, catalog));
+  const effectiveTopics = [...topics, ...addedTopics];
+  const updatedStore: CuratedTopicStore = {
+    schemaVersion: 1,
+    topics: effectiveTopics,
+  };
+  const postimageText = `${JSON.stringify(updatedStore, null, 2)}\n`;
+
   return {
+    catalog,
+    patternsInput,
+    topicStorePath,
+    preimageText,
+    postimageText,
     addedSlugs,
     changed: existingStore === undefined || addedSlugs.length > 0,
-    reviewTopics: collectTopicReviewItems(effectiveTopics),
+    reviewTopics: collectTopicReviewItems(effectiveTopics, catalog),
     topicCount: effectiveTopics.length,
-    usedTopicCount: usedSlugs.length,
+    usedTopicCount: corpus.usedSlugs.length,
   };
 }
 
+/** Writes an already validated synchronization plan after checking its preimage. */
+export async function writeTopicStoreSynchronization(
+  plan: TopicStoreSynchronizationPlan,
+): Promise<SynchronizeTopicStoreResult> {
+  const currentText = await readTextIfPresent(plan.topicStorePath);
+  if (currentText !== plan.preimageText) {
+    throw new Error(
+      `Topic store changed after normalization preflight: ${plan.topicStorePath}. Re-plan before writing.`,
+    );
+  }
+  if (plan.changed) {
+    await writeTextAtomically(plan.topicStorePath, plan.postimageText);
+  }
+  return synchronizationResultFromPlan(plan);
+}
+
+export async function synchronizeCuratedTopicStore(
+  inputDirectory: string,
+  patternsInput = defaultTopicNormalizationPatternsInput,
+): Promise<SynchronizeTopicStoreResult> {
+  const plan = await planTopicStoreSynchronization({
+    segmentsInput: inputDirectory,
+    patternsInput,
+  });
+  return writeTopicStoreSynchronization(plan);
+}
+
 export async function collectUsedTopicSlugs(inputDirectory: string): Promise<string[]> {
+  return (await scanTopicCorpus(inputDirectory)).usedSlugs;
+}
+
+async function scanTopicCorpus(
+  inputDirectory: string,
+  catalog?: TopicNormalizationCatalog,
+): Promise<TopicCorpusScan> {
   const { shards } = await discoverVideoSegmentShards(inputDirectory);
   const slugs = new Set<string>();
+  const pendingArrays: string[] = [];
 
   for (const { fileName, value } of shards) {
     const video = value as CuratedVideoFileSeed;
-    collectTopicArray(video.topics, `${fileName} video`, slugs);
+    collectTopicArray(video.topics, `${fileName} video`, slugs, catalog, pendingArrays);
     if (!Array.isArray(video.segments)) {
       throw new Error(`Curated video file ${fileName} must include a segments array.`);
     }
     for (const segment of video.segments) {
-      collectTopicArray(segment.topics, `${fileName} segment ${segment.id}`, slugs);
+      collectTopicArray(
+        segment.topics,
+        `${fileName} segment ${segment.id}`,
+        slugs,
+        catalog,
+        pendingArrays,
+      );
     }
   }
 
-  return [...slugs].sort((left, right) => left.localeCompare(right));
+  return {
+    usedSlugs: [...slugs].sort((left, right) => left.localeCompare(right)),
+    pendingArrays,
+  };
 }
 
-function collectTopicArray(value: unknown, source: string, slugs: Set<string>): void {
+function collectTopicArray(
+  value: unknown,
+  source: string,
+  slugs: Set<string>,
+  catalog: TopicNormalizationCatalog | undefined,
+  pendingArrays: string[],
+): void {
   if (!Array.isArray(value)) {
     throw new Error(`${source} must include a topics array.`);
   }
+  const topics: string[] = [];
   for (const slug of value) {
     if (typeof slug !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/u.test(slug)) {
       throw new Error(`${source} references invalid topic slug: ${JSON.stringify(slug)}`);
     }
     slugs.add(slug);
+    topics.push(slug);
+  }
+  if (catalog !== undefined) {
+    const normalized = normalizeTopicSlugArray(catalog, topics);
+    if (normalized.changed) {
+      pendingArrays.push(
+        `${source} has pending active normalization (${JSON.stringify(topics)} -> ${JSON.stringify(normalized.topics)}).`,
+      );
+    }
   }
 }
 
-async function readTopicStoreIfPresent(path: string): Promise<CuratedTopicStore | undefined> {
+function parseTopicStore(text: string, path: string): CuratedTopicStore {
+  const store = JSON.parse(text) as CuratedTopicStore;
+  if (store.schemaVersion !== 1) {
+    throw new Error(`Curated topic store schemaVersion must be 1: ${path}.`);
+  }
+  if (!Array.isArray(store.topics)) {
+    throw new Error(`Curated topic store must include a topics array: ${path}.`);
+  }
+  return store;
+}
+
+async function readTextIfPresent(path: string): Promise<string | undefined> {
   try {
-    const store = JSON.parse(await readFile(path, "utf8")) as CuratedTopicStore;
-    if (store.schemaVersion !== 1) {
-      throw new Error("Curated topic store schemaVersion must be 1.");
-    }
-    if (!Array.isArray(store.topics)) {
-      throw new Error("Curated topic store must include a topics array.");
-    }
-    return store;
+    return await readFile(path, "utf8");
   } catch (error) {
     if (errorCode(error) === "ENOENT") {
       return undefined;
@@ -135,83 +282,61 @@ function validateExistingTopics(topics: CuratedTopicSeed[]): void {
   }
 }
 
-function buildDefaultTopic(slug: string): CuratedTopicSeed {
-  const title = topicTitleFromSlug(slug);
+function buildDefaultTopic(
+  slug: string,
+  catalog: TopicNormalizationCatalog,
+): CuratedTopicSeed {
+  const title = normalizedTopicTitleFromSlug(slug, catalog);
   return {
     slug,
     title,
-    summary: `Watch points covering ${title} across Dr. Alex Clarke's videos.`,
+    summary: defaultTopicSummary(title),
   };
 }
 
-export function topicTitleFromSlug(slug: string): string {
-  const specialTitles: Readonly<Record<string, string>> = {
-    "live-q-and-a": "Live Q&A",
-    "u-boats": "U-Boats",
-  };
-  const specialTitle = specialTitles[slug];
-  if (specialTitle !== undefined) {
-    return specialTitle;
-  }
-
-  const decimalTitle = terminalDecimalInchTitleFromSlug(slug);
-  if (decimalTitle !== undefined) {
-    return decimalTitle;
-  }
-
-  return genericTopicTitleFromSlug(slug);
+export function topicTitleFromSlug(
+  slug: string,
+  catalog: TopicNormalizationCatalog,
+): string {
+  return normalizedTopicTitleFromSlug(slug, catalog);
 }
 
-function terminalDecimalInchTitleFromSlug(slug: string): string | undefined {
-  const tokens = slug.split("-");
-  if (tokens.length < 4) {
-    return undefined;
-  }
-
-  const [whole, fraction, unit, noun] = tokens.slice(-4);
-  if (
-    whole === undefined
-    || fraction === undefined
-    || !/^\d+$/u.test(whole)
-    || !/^\d+$/u.test(fraction)
-    || unit !== "inch"
-    || (noun !== "gun" && noun !== "guns")
-  ) {
-    return undefined;
-  }
-
-  const prefix = formatTopicTokens(tokens.slice(0, -4));
-  const calibre = `${whole}.${fraction}-inch ${noun === "gun" ? "Gun" : "Guns"}`;
-  return prefix.length > 0 ? `${prefix} ${calibre}` : calibre;
-}
-
-function genericTopicTitleFromSlug(slug: string): string {
-  return formatTopicTokens(slug.split("-"));
-}
-
-function formatTopicTokens(tokens: string[]): string {
-  return tokens.map((token) => {
-    if (uppercaseTokens.has(token) || romanNumerals.has(token)) {
-      return token.toUpperCase();
-    }
-    return `${token.slice(0, 1).toUpperCase()}${token.slice(1)}`;
-  }).join(" ");
-}
-
-function collectTopicReviewItems(topics: CuratedTopicSeed[]): TopicReviewItem[] {
+function collectTopicReviewItems(
+  topics: CuratedTopicSeed[],
+  catalog: TopicNormalizationCatalog,
+): TopicReviewItem[] {
   return topics.flatMap((topic) => {
-    if (
-      !adjacentNumericSlugPattern.test(topic.slug)
-      || terminalDecimalInchTitleFromSlug(topic.slug) !== undefined
-    ) {
+    if (!adjacentNumericSlugPattern.test(topic.slug)) {
       return [];
     }
-
-    const generatedTitle = genericTopicTitleFromSlug(topic.slug);
-    return topic.title === generatedTitle
-      ? [{ slug: topic.slug, generatedTitle }]
+    const display = resolveTopicDisplayTitle(catalog, topic.slug);
+    if (display.resolution === "exact" || display.resolution === "regex") {
+      return [];
+    }
+    return topic.title === display.title
+      ? [{ slug: topic.slug, generatedTitle: display.title }]
       : [];
   });
+}
+
+function isAppendableMissingTopicBlocker(
+  blocker: string,
+  appendableSlugs: ReadonlySet<string>,
+): boolean {
+  const match = /^(?:Live topic reference|Normalized topic reference) ([a-z0-9]+(?:-[a-z0-9]+)*) (?:has no registry record before normalization|has no canonical registry record)\.$/u.exec(blocker);
+  return match?.[1] !== undefined && appendableSlugs.has(match[1]);
+}
+
+function synchronizationResultFromPlan(
+  plan: TopicStoreSynchronizationPlan,
+): SynchronizeTopicStoreResult {
+  return {
+    addedSlugs: [...plan.addedSlugs],
+    changed: plan.changed,
+    reviewTopics: plan.reviewTopics.map((topic) => ({ ...topic })),
+    topicCount: plan.topicCount,
+    usedTopicCount: plan.usedTopicCount,
+  };
 }
 
 function errorCode(error: unknown): string | undefined {

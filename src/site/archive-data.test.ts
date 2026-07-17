@@ -65,9 +65,63 @@ test("propagates a curated topic title to video and segment refs while keeping a
     title,
     summary: "4.5-inch Gun watch points and related historical context.",
     aliases: ["4.5 inch gun", "4 5 inch gun"],
+    legacySlugs: [],
     videoCount: 1,
     segmentCount: 2,
   });
+});
+
+test("attaches fulfilled legacy topic routes without changing canonical relationship counts", () => {
+  const input = sampleInput();
+  input.legacyRedirects = [
+    { legacySlug: "old-destroyers", canonicalSlug: "destroyers" },
+    { legacySlug: "destroyer-topic", canonicalSlug: "destroyers" },
+  ];
+
+  const archive = buildSiteArchiveData(input);
+  const topic = archive.topics[0];
+  const split = splitSiteArchiveData(archive);
+
+  assert.equal(archive.schemaVersion, 3);
+  assert.deepEqual(topic?.legacySlugs, ["destroyer-topic", "old-destroyers"]);
+  assert.equal(topic?.videoCount, 1);
+  assert.equal(topic?.segmentCount, 2);
+  assert.equal(split.manifest.schemaVersion, 4);
+  assert.equal(split.manifest.source.patternsInput, "patterns.tsv");
+  assert.equal(split.manifest.source.patternsSha256, "a".repeat(64));
+  assert.equal(split.manifest.source.patternsSourceSha256, "b".repeat(64));
+  assert.equal(split.manifest.counts.topics, 1);
+});
+
+test("rejects malformed, colliding, duplicate, and orphaned legacy topic routes", () => {
+  for (const [redirect, pattern] of [
+    [
+      { legacySlug: "destroyers", canonicalSlug: "destroyers" },
+      /Duplicate or colliding site topic route slug: destroyers/u,
+    ],
+    [
+      { legacySlug: "Bad Legacy", canonicalSlug: "destroyers" },
+      /Invalid legacy topic slug/u,
+    ],
+    [
+      { legacySlug: "old-destroyers", canonicalSlug: "missing-topic" },
+      /references missing canonical topic/u,
+    ],
+  ] as const) {
+    const input = sampleInput();
+    input.legacyRedirects = [redirect];
+    assert.throws(() => buildSiteArchiveData(input), pattern);
+  }
+
+  const duplicate = sampleInput();
+  duplicate.legacyRedirects = [
+    { legacySlug: "old-destroyers", canonicalSlug: "destroyers" },
+    { legacySlug: "old-destroyers", canonicalSlug: "destroyers" },
+  ];
+  assert.throws(
+    () => buildSiteArchiveData(duplicate),
+    /Duplicate or colliding site topic route slug: old-destroyers/u,
+  );
 });
 
 test("uses livestream time instead of the advance upload timestamp", () => {
@@ -202,7 +256,41 @@ test("rejects schema mismatch, misbucketed records, and damaged shard sets", asy
   (wrongSchema.manifest as { schemaVersion: number }).schemaVersion = 99;
   assert.throws(
     () => validateSiteArchiveSplitData(wrongSchema),
-    /schemaVersion must be 3/u,
+    /schemaVersion must be 4/u,
+  );
+
+  const invalidProvenance = structuredClone(split);
+  invalidProvenance.manifest.source.patternsSha256 = "not-a-sha256";
+  assert.throws(
+    () => validateSiteArchiveSplitData(invalidProvenance),
+    /source\.patternsSha256 must be a lowercase SHA-256/u,
+  );
+
+  const invalidSourceProvenance = structuredClone(split);
+  invalidSourceProvenance.manifest.source.patternsSourceSha256 = "not-a-sha256";
+  assert.throws(
+    () => validateSiteArchiveSplitData(invalidSourceProvenance),
+    /source\.patternsSourceSha256 must be a lowercase SHA-256/u,
+  );
+
+  const missingLegacySlugs = structuredClone(split);
+  delete (missingLegacySlugs.topics[0] as Partial<{ legacySlugs: string[] }>).legacySlugs;
+  missingLegacySlugs.manifest.files.topics.sha256 = siteArchiveSha256(
+    canonicalSiteArchiveJson(missingLegacySlugs.topics),
+  );
+  assert.throws(
+    () => validateSiteArchiveSplitData(missingLegacySlugs),
+    /must include a legacySlugs array/u,
+  );
+
+  const collidingLegacySlug = structuredClone(split);
+  collidingLegacySlug.topics[0]!.legacySlugs = [collidingLegacySlug.topics[0]!.slug];
+  collidingLegacySlug.manifest.files.topics.sha256 = siteArchiveSha256(
+    canonicalSiteArchiveJson(collidingLegacySlug.topics),
+  );
+  assert.throws(
+    () => validateSiteArchiveSplitData(collidingLegacySlug),
+    /Duplicate or colliding site topic route slug/u,
   );
 
   const misbucketed = structuredClone(split);
@@ -459,7 +547,11 @@ function sampleInput(): Parameters<typeof buildSiteArchiveData>[0] {
       metadataInput: "metadata.json",
       transcriptsInput: "manifest.json",
       segmentsInput: "segments.json",
+      patternsInput: "patterns.tsv",
+      patternsSha256: "a".repeat(64),
+      patternsSourceSha256: "b".repeat(64),
     },
+    legacyRedirects: [],
     episodesStore: {
       episodes: [
         {

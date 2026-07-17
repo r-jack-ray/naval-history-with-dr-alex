@@ -39,6 +39,7 @@ src/
   derived/                 Curated site-content sources and curation bookkeeping
     site-content-processing.config.json
     site-content-processing.log
+    topic-normalization-patterns.tsv Manually curated topic normalization policy
     video-segments/        Source-of-truth curated study-guide content
       topics.json          Shared topic records and aliases
       <manifest.fileStem>.json One curated segment shard per video; reuse the stored transcript manifest stem
@@ -236,28 +237,48 @@ Q&A stays as `kind: qa` inside the segment model rather than a separate question
 
 Transcript curation is shard-only. Each run must be given exactly one stored TXT transcript and must edit only its manifest-owned `src/derived/video-segments/<manifest.fileStem>.json` file. The transcript basename, `manifest.fileStem`, and shard basename must match; do not derive a new shard name from current title metadata.
 
-The curation run reads the full selected transcript, keeps lecture material as chapters or notable points, and creates `kind: qa` records only for substantive transcript-visible prompts and answers. It adds evidence-backed topic slugs to the selected shard but does not edit `topics.json`, processing logs, schedules, reports, generated archives, package/tooling files, or site sources. It also does not run repository-wide audits, generation, tests, or builds.
+The curation run reads the full selected transcript, keeps lecture material as chapters or notable points, and creates `kind: qa` records only for substantive transcript-visible prompts and answers. It reads `src/derived/topic-normalization-patterns.tsv`, resolves new slugs through active creation rules, and applies active exact migrations only inside the selected shard. It edits no other shard, leaves review or ambiguous rules unchanged, and appends exactly one required result line to `src/derived/site-content-processing.log` after a successful shard write. It does not edit the normalization catalog or `topics.json`, invoke the corpus-wide normalization apply, or write schedules, reports, generated archives, package/tooling files, or site sources. It also does not run repository-wide audits, generation, tests, or builds.
 
 For agent-driven curation, use `.agents/transcript-content-curator.md` with `.agents/skills/naval-transcript-to-site-content/SKILL.md`. For a follow-up substance and wording pass on one explicitly selected shard, use `.agents/site-content-auditor.md` with `.agents/skills/naval-site-content-auditor/SKILL.md`.
 
 After shard work, the repository owner can synchronize shared topic records and run integration checks:
 
 ```powershell
+npm run audit:topic-normalization
 npm run sync:video-topics
 npm run audit:site-content
 npm run site:check
 npm run site:build
 ```
 
-`npm run audit:site-content` validates curated transcript evidence and writes `reports/site-content-backlog.md`. Reports are ignored by Git. Shared generation, reports, schedules, and processing logs are coordinator-owned outputs rather than shard-worker outputs.
+`npm run audit:site-content` validates curated transcript evidence and writes `reports/site-content-backlog.md`. Reports are ignored by Git. Shared generation, reports, schedules, and logs other than the shard worker's one required `src/derived/site-content-processing.log` append are coordinator-owned outputs.
 
-When the coordinating workflow records a completed transcript in `src/derived/site-content-processing.log`, the log has no header; every non-empty line uses these tab-separated fields:
+The existing processing log has this exact semicolon-separated header:
 
 ```text
-processedAt	sourcePath	videoId	action	needsFurtherProcessing	determination
+timestamp;shardPath;result;needsFurtherProcessing;notes
 ```
 
-Use `yes` or `no` for `needsFurtherProcessing`.
+Each curator or auditor result is one newline-terminated five-field row appended at the physical bottom. `shardPath` is the selected manifest-owned JSON shard, and `needsFurtherProcessing` is exactly `yes` or `no`. The curator appends after a successful shard write; the auditor appends after every completed selected-file audit, including unchanged, saturated, and intentionally empty results. Neither workflow acquires the shared writer lease for this append.
+
+### Normalize Video Topics
+
+`src/derived/topic-normalization-patterns.tsv` is the detailed source of truth for normalization-owned construction, exact migrations, display rules, aliases, redirects, and exceptions. `src/derived/video-segments/topics.json` remains authoritative for curated topic metadata unrelated to those rules. Routine synchronization and generation validate normalization state but never rewrite source shards merely because the catalog changed.
+
+Audit and plan first; both operations are read-only except for an explicitly requested plan artifact:
+
+```powershell
+npm run audit:topic-normalization
+npm run normalize:video-topics -- --dry-run --plan-output .tmp/topic-normalization-plan.json
+```
+
+Review the complete plan, catalog digest, input hashes, warnings, blockers, changed shards, registry merges, aliases, and legacy redirects before applying it. Pause transcript and audit shard writers for the apply window. Apply only an explicitly authorized, hash-bound reviewed plan through the shared-writer wrapper:
+
+```powershell
+npm run normalize:video-topics:apply -- --plan .tmp/topic-normalization-plan.json
+```
+
+Do not hand-edit a corpus migration or treat `review` rules as mappings. After apply, rerun the read-only audit, require a fresh dry run with no pending source operations, and continue through supported synchronization, generation, route, and Pagefind validation.
 
 Other project workflows are:
 
@@ -272,7 +293,7 @@ The process is intentionally segment-first. Use `kind: qa` only for actual Q&A e
 
 The generated manifest and shards under `site/src/data/generated/archive/` remain tracked so Astro can statically import a reviewable archive dataset. `npm run generate:site-data` and `npm run site:check` regenerate it directly; `npm run site:build` regenerates it only when its validated cache requires that stage. Never hand-edit `index.json` or its listed files. The content validation hook builds once, writes the backlog report, regenerates the archive once, and then runs the no-regeneration Astro check.
 
-The archive, backlog report, shared topic registry, and shared processing log are protected by the repository-wide writer lease at `.tmp/site-content-pipeline.lock`. Direct shared-writer commands such as `npm run audit:site-content`, `npm run sync:video-topics`, and `npm run generate:site-data` acquire a short-lived lease automatically. A coordinator that intentionally groups several shared-output operations may acquire one persistent lease and pass its token to the supported commands:
+The archive, backlog report, shared topic registry, and normalization apply are protected by the repository-wide writer lease at `.tmp/site-content-pipeline.lock`. Direct shared-writer commands such as `npm run audit:site-content`, `npm run sync:video-topics`, and `npm run generate:site-data` acquire a short-lived lease automatically. A coordinator that intentionally groups several shared-output operations may acquire one persistent lease and pass its token to the supported commands:
 
 ```powershell
 $lease = node .codex/hooks/site-content-pipeline-lock.mjs acquire --owner "content-coordinator" --purpose "shared-content-integration" --recover-stale | ConvertFrom-Json
@@ -282,7 +303,6 @@ Keep `$lease.lease.token` for the current run and export it before invoking any 
 
 ```powershell
 $env:CONTENT_PIPELINE_LOCK_TOKEN = $lease.lease.token
-npm.cmd run append:site-content-processing-log -- --token $lease.lease.token --processed-at <iso-time> --source-path <transcript-path> --video-id <video-id> --action <action> --needs-further-processing <yes-or-no> --determination <reason>
 pwsh -NoProfile -File .codex/hooks/validate-content-pipeline.ps1 -SkipRepoCheck -LockToken $lease.lease.token
 Remove-Item Env:CONTENT_PIPELINE_LOCK_TOKEN -ErrorAction SilentlyContinue
 ```

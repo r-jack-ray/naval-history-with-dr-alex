@@ -2,9 +2,9 @@
 
 Timestamp: 2026-07-16T17:41:19-05:00
 
-Last reviewed: 2026-07-16T18:23:41-05:00
+Last reviewed: 2026-07-16T19:42:11-05:00
 
-Status: Planning only. No topic patterns, skills, source shards, registry records, generated data, routes, or tests have been changed by this task.
+Status: Implemented. Reviewed source plan `7644230d30237fb6ead15448425183768af3b619b8c1e5e439aa95560df1e8df` was applied under the shared-writer lease, replayed byte-identically, verified with a fresh zero-operation plan, and retired after successful archive, Astro, Pagefind, and rendered-redirect validation. The checklist below is retained as the original execution specification.
 
 Historical baseline: `task-notes/2026-07-15_T18-23-35-0500_topic-display-and-search-correction-plan.md` was already implemented and is retained only as a historical record. Its completed display-title, punctuation, alias-search, and numeric-review work is the starting state for this plan, not unfinished work to repeat.
 

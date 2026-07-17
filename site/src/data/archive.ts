@@ -1,11 +1,14 @@
 import { createHash } from "node:crypto";
+import { readFileSync } from "node:fs";
 
 import archiveManifestJson from "./generated/archive/index.json";
 import archiveTopicsJson from "./generated/archive/topics.json";
 import archiveVideosJson from "./generated/archive/videos.json";
 
+const expectedPatternsInput = "src/derived/topic-normalization-patterns.tsv";
+
 export interface ArchiveData {
-  schemaVersion: 2;
+  schemaVersion: 3;
   videos: ArchiveVideo[];
   segments: ArchiveSegment[];
   topics: ArchiveTopic[];
@@ -22,12 +25,15 @@ export interface ArchiveSegmentBucketRecord extends ArchiveFileRecord {
 }
 
 export interface ArchiveManifest {
-  schemaVersion: 3;
+  schemaVersion: 4;
   source: {
     episodesInput: string;
     metadataInput: string;
     transcriptsInput: string;
     segmentsInput: string;
+    patternsInput: string;
+    patternsSha256: string;
+    patternsSourceSha256: string;
   };
   counts: {
     videos: number;
@@ -98,9 +104,14 @@ export interface ArchiveTopic {
   title: string;
   summary: string;
   aliases: string[];
+  legacySlugs: string[];
   videoCount: number;
   segmentCount: number;
 }
+
+export type TopicPathProps =
+  | { kind: "canonical"; topic: ArchiveTopic }
+  | { kind: "redirect"; legacySlug: string; canonicalTopic: ArchiveTopic };
 
 export interface TopicRef {
   slug: string;
@@ -183,16 +194,48 @@ function bucketIdForVideo(videoId: string): string {
 }
 
 function validateManifestShape(): void {
-  if (!isRecord(manifest) || manifest.schemaVersion !== 3) {
-    archiveError(`manifest schemaVersion must be 3; received ${String(manifest?.schemaVersion)}.`);
+  if (!isRecord(manifest) || manifest.schemaVersion !== 4) {
+    archiveError(`manifest schemaVersion must be 4; received ${String(manifest?.schemaVersion)}.`);
   }
   if (!isRecord(manifest.source)) {
     archiveError("manifest source is missing.");
   }
-  for (const field of ["episodesInput", "metadataInput", "transcriptsInput", "segmentsInput"] as const) {
+  for (const field of [
+    "episodesInput",
+    "metadataInput",
+    "transcriptsInput",
+    "segmentsInput",
+    "patternsInput",
+  ] as const) {
     if (typeof manifest.source[field] !== "string" || manifest.source[field].length === 0) {
       archiveError(`manifest source.${field} must be a non-empty string.`);
     }
+  }
+  if (manifest.source.patternsInput !== expectedPatternsInput) {
+    archiveError(`manifest source.patternsInput must be ${expectedPatternsInput}.`);
+  }
+  if (
+    typeof manifest.source.patternsSha256 !== "string" ||
+    !/^[a-f0-9]{64}$/u.test(manifest.source.patternsSha256)
+  ) {
+    archiveError("manifest source.patternsSha256 must be a lowercase SHA-256 value.");
+  }
+  if (
+    typeof manifest.source.patternsSourceSha256 !== "string" ||
+    !/^[a-f0-9]{64}$/u.test(manifest.source.patternsSourceSha256)
+  ) {
+    archiveError("manifest source.patternsSourceSha256 must be a lowercase SHA-256 value.");
+  }
+  let currentPatternsSourceSha256: string;
+  try {
+    currentPatternsSourceSha256 = createHash("sha256")
+      .update(readFileSync(expectedPatternsInput))
+      .digest("hex");
+  } catch {
+    archiveError(`topic-normalization catalog cannot be read at ${expectedPatternsInput}.`);
+  }
+  if (manifest.source.patternsSourceSha256 !== currentPatternsSourceSha256) {
+    archiveError("manifest topic-normalization provenance is stale.");
   }
   if (!isRecord(manifest.counts)) {
     archiveError("manifest counts are missing.");
@@ -340,6 +383,9 @@ for (const segment of shardedSegments) {
 }
 for (const topic of archiveTopics) {
   assertStringField(topic, "slug", "topic record");
+  if (!Array.isArray(topic.legacySlugs)) {
+    archiveError(`topic ${topic.slug} must contain a legacySlugs array.`);
+  }
 }
 
 const videosById = uniqueMap(archiveVideos, (video) => video.videoId, "video ID");
@@ -347,6 +393,18 @@ const videosBySlug = uniqueMap(archiveVideos, (video) => video.slug, "video slug
 uniqueMap(shardedSegments, (segment) => segment.id, "segment ID");
 const shardedSegmentsBySlug = uniqueMap(shardedSegments, (segment) => segment.slug, "segment slug");
 const topicsBySlug = uniqueMap(archiveTopics, (topic) => topic.slug, "topic slug");
+const topicRouteSlugs = new Set(topicsBySlug.keys());
+for (const topic of archiveTopics) {
+  for (const legacySlug of topic.legacySlugs) {
+    if (typeof legacySlug !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/u.test(legacySlug)) {
+      archiveError(`topic ${topic.slug} has an invalid legacy slug ${String(legacySlug)}.`);
+    }
+    if (topicRouteSlugs.has(legacySlug)) {
+      archiveError(`topic legacy slug ${legacySlug} collides with another topic route.`);
+    }
+    topicRouteSlugs.add(legacySlug);
+  }
+}
 
 const orderedSegments: ArchiveSegment[] = [];
 const referencedSegmentSlugs = new Set<string>();
@@ -426,7 +484,7 @@ for (const topic of archiveTopics) {
 }
 
 export const archive: ArchiveData = {
-  schemaVersion: 2,
+  schemaVersion: 3,
   videos: archiveVideos,
   segments: archiveSegments,
   topics: archiveTopics,
@@ -446,11 +504,17 @@ export function getSegmentPaths() {
   }));
 }
 
-export function getTopicPaths() {
-  return archiveTopics.map((topic) => ({
-    params: { slug: topic.slug },
-    props: { topic },
-  }));
+export function getTopicPaths(): Array<{ params: { slug: string }; props: TopicPathProps }> {
+  return archiveTopics.flatMap((topic) => [
+    {
+      params: { slug: topic.slug },
+      props: { kind: "canonical" as const, topic },
+    },
+    ...topic.legacySlugs.map((legacySlug) => ({
+      params: { slug: legacySlug },
+      props: { kind: "redirect" as const, legacySlug, canonicalTopic: topic },
+    })),
+  ]);
 }
 
 export function findVideoById(videoId: string): ArchiveVideo | undefined {

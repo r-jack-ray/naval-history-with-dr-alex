@@ -23,8 +23,9 @@ export const defaultSiteEpisodesInput = "src/channel/episodes.json";
 export const defaultSiteMetadataInput = "src/channel/video-metadata.json";
 export const defaultSiteTranscriptsInput = "src/transcripts/manifest.json";
 export const defaultSiteSegmentsInput = "src/derived/video-segments";
+export const defaultSitePatternsInput = "src/derived/topic-normalization-patterns.tsv";
 export const defaultSiteArchiveOutputDir = "site/src/data/generated/archive";
-export const siteArchiveSchemaVersion = 3 as const;
+export const siteArchiveSchemaVersion = 4 as const;
 export const siteArchiveSegmentBucketCount = 64;
 export const siteArchiveSegmentShardingAlgorithm = "sha256-video-id-mod" as const;
 
@@ -33,16 +34,23 @@ export interface GenerateSiteArchiveDataOptions {
   metadataInput: string;
   transcriptsInput: string;
   segmentsInput: string;
+  patternsInput: string;
+  patternsSha256: string;
+  patternsSourceSha256: string;
+  legacyRedirects: readonly SiteTopicLegacyRedirect[];
   outputDir: string;
 }
 
 export interface SiteArchiveData {
-  schemaVersion: 2;
+  schemaVersion: 3;
   source: {
     episodesInput: string;
     metadataInput: string;
     transcriptsInput: string;
     segmentsInput: string;
+    patternsInput: string;
+    patternsSha256: string;
+    patternsSourceSha256: string;
   };
   videos: SiteVideo[];
   segments: SiteSegment[];
@@ -143,8 +151,14 @@ export interface SiteTopic {
   title: string;
   summary: string;
   aliases: string[];
+  legacySlugs: string[];
   videoCount: number;
   segmentCount: number;
+}
+
+export interface SiteTopicLegacyRedirect {
+  legacySlug: string;
+  canonicalSlug: string;
 }
 
 export interface TopicRef {
@@ -215,7 +229,11 @@ export async function generateSiteArchiveData(
       metadataInput: options.metadataInput,
       transcriptsInput: options.transcriptsInput,
       segmentsInput: options.segmentsInput,
+      patternsInput: options.patternsInput,
+      patternsSha256: options.patternsSha256,
+      patternsSourceSha256: options.patternsSourceSha256,
     },
+    legacyRedirects: options.legacyRedirects,
   });
 
   const splitData = splitSiteArchiveData(archive);
@@ -229,6 +247,7 @@ export function buildSiteArchiveData(input: {
   transcriptsStore: TranscriptManifestStore;
   seed: CuratedArchiveSeed;
   source: SiteArchiveData["source"];
+  legacyRedirects: readonly SiteTopicLegacyRedirect[];
 }): SiteArchiveData {
   validateSeed(input.seed);
 
@@ -236,6 +255,10 @@ export function buildSiteArchiveData(input: {
   const metadataById = new Map(input.metadataStore.videos.map((metadata) => [metadata.videoId, metadata]));
   const transcriptsById = new Map(input.transcriptsStore.transcripts.map((record) => [record.videoId, record]));
   const topicSeedsBySlug = new Map(input.seed.topics.map((topic) => [topic.slug, topic]));
+  const legacySlugsByCanonical = buildLegacySlugsByCanonical(
+    input.legacyRedirects,
+    topicSeedsBySlug,
+  );
   const videoSeedsById = new Map(input.seed.videos.map((video) => [video.videoId, video]));
   const videoRecordsById = new Map<string, SiteVideo>();
   const usedVideoSlugs = new Set<string>();
@@ -323,13 +346,14 @@ export function buildSiteArchiveData(input: {
       title: topic.title,
       summary: topic.summary,
       aliases: [...(topic.aliases ?? [])],
+      legacySlugs: legacySlugsByCanonical.get(topic.slug) ?? [],
       videoCount: relatedVideos.size,
       segmentCount: relatedSegments.length,
     };
   });
 
   return {
-    schemaVersion: 2,
+    schemaVersion: 3,
     source: input.source,
     videos: [...videoRecordsById.values()],
     segments,
@@ -417,6 +441,20 @@ export function validateSiteArchiveManifest(value: unknown): asserts value is Si
   requireString(source.metadataInput, "Site archive manifest source.metadataInput");
   requireString(source.transcriptsInput, "Site archive manifest source.transcriptsInput");
   requireString(source.segmentsInput, "Site archive manifest source.segmentsInput");
+  requireString(source.patternsInput, "Site archive manifest source.patternsInput");
+  if (typeof source.patternsSha256 !== "string" || !/^[a-f0-9]{64}$/u.test(source.patternsSha256)) {
+    throw new Error(
+      "Site archive manifest source.patternsSha256 must be a lowercase SHA-256 value.",
+    );
+  }
+  if (
+    typeof source.patternsSourceSha256 !== "string" ||
+    !/^[a-f0-9]{64}$/u.test(source.patternsSourceSha256)
+  ) {
+    throw new Error(
+      "Site archive manifest source.patternsSourceSha256 must be a lowercase SHA-256 value.",
+    );
+  }
 
   const counts = requireRecord(value.counts, "Site archive manifest counts");
   requireCount(counts.videos, "Site archive manifest counts.videos");
@@ -641,7 +679,7 @@ function fileRecord(path: string, value: unknown[]): SiteArchiveFileRecord {
 function reconstructSiteArchiveDataUnchecked(splitData: SiteArchiveSplitData): SiteArchiveData {
   const allSegments = splitData.segmentBuckets.flatMap((bucket) => bucket.segments);
   return {
-    schemaVersion: 2,
+    schemaVersion: 3,
     source: splitData.manifest.source,
     videos: splitData.videos,
     segments: reconstructSegments(splitData.videos, allSegments),
@@ -690,6 +728,7 @@ function validateSiteArchiveRelationships(
   assertUnique(segments.map((segment) => segment.id), "segment ID");
   assertUnique(segments.map((segment) => segment.slug), "segment slug");
   assertUnique(topics.map((topic) => topic.slug), "topic slug");
+  assertLegacyTopicRoutes(topics);
 
   const videosById = new Map(videos.map((video) => [video.videoId, video]));
   const topicSlugs = new Set(topics.map((topic) => topic.slug));
@@ -761,6 +800,24 @@ function assertTopicRefsExist(
   for (const reference of references) {
     if (!topicSlugs.has(reference.slug)) {
       throw new Error(`${owner} references missing topic: ${reference.slug}`);
+    }
+  }
+}
+
+function assertLegacyTopicRoutes(topics: SiteTopic[]): void {
+  const routeSlugs = new Set(topics.map((topic) => topic.slug));
+  for (const topic of topics) {
+    if (!Array.isArray(topic.legacySlugs)) {
+      throw new Error(`Site topic ${topic.slug} must include a legacySlugs array.`);
+    }
+    for (const legacySlug of topic.legacySlugs) {
+      if (!isTopicSlug(legacySlug)) {
+        throw new Error(`Site topic ${topic.slug} has an invalid legacy slug: ${String(legacySlug)}`);
+      }
+      if (routeSlugs.has(legacySlug)) {
+        throw new Error(`Duplicate or colliding site topic route slug: ${legacySlug}`);
+      }
+      routeSlugs.add(legacySlug);
     }
   }
 }
@@ -1035,6 +1092,41 @@ function topicRefs(slugs: string[], topicSeedsBySlug: ReadonlyMap<string, Curate
       title: topic.title,
     };
   });
+}
+
+function buildLegacySlugsByCanonical(
+  redirects: readonly SiteTopicLegacyRedirect[],
+  topicSeedsBySlug: ReadonlyMap<string, CuratedTopicSeed>,
+): Map<string, string[]> {
+  const routeSlugs = new Set(topicSeedsBySlug.keys());
+  const result = new Map<string, string[]>();
+
+  for (const redirect of redirects) {
+    if (!isTopicSlug(redirect.legacySlug)) {
+      throw new Error(`Invalid legacy topic slug: ${String(redirect.legacySlug)}`);
+    }
+    if (!isTopicSlug(redirect.canonicalSlug) || !topicSeedsBySlug.has(redirect.canonicalSlug)) {
+      throw new Error(
+        `Legacy topic slug ${redirect.legacySlug} references missing canonical topic: ${String(redirect.canonicalSlug)}`,
+      );
+    }
+    if (routeSlugs.has(redirect.legacySlug)) {
+      throw new Error(`Duplicate or colliding site topic route slug: ${redirect.legacySlug}`);
+    }
+    routeSlugs.add(redirect.legacySlug);
+    const legacySlugs = result.get(redirect.canonicalSlug) ?? [];
+    legacySlugs.push(redirect.legacySlug);
+    result.set(redirect.canonicalSlug, legacySlugs);
+  }
+
+  for (const legacySlugs of result.values()) {
+    legacySlugs.sort();
+  }
+  return result;
+}
+
+function isTopicSlug(value: unknown): value is string {
+  return typeof value === "string" && /^[a-z0-9]+(?:-[a-z0-9]+)*$/u.test(value);
 }
 
 function assertUnique(values: string[], label: string): void {

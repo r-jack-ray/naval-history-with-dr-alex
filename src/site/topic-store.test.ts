@@ -6,9 +6,20 @@ import test from "node:test";
 
 import {
   collectUsedTopicSlugs,
+  planTopicStoreSynchronization,
   synchronizeCuratedTopicStore,
   topicTitleFromSlug,
+  writeTopicStoreSynchronization,
 } from "./topic-store.js";
+import {
+  parseTopicNormalizationCatalog,
+  topicNormalizationPatternHeader,
+} from "./topic-normalization.js";
+
+const testCatalogText = makeTestCatalogText();
+const testCatalog = parseTopicNormalizationCatalog(testCatalogText, {
+  sourcePath: "fixture-patterns.tsv",
+});
 
 test("collects unique topics from video and segment topic arrays", async () => {
   const directory = await makeTopicDirectory();
@@ -26,7 +37,12 @@ test("collects unique topics from video and segment topic arrays", async () => {
 test("creates a topic store from video shards when one does not exist", async () => {
   const directory = await makeTopicDirectory();
   try {
-    const result = await synchronizeCuratedTopicStore(directory);
+    const synchronizationPlan = await planTopicStoreSynchronization({
+      segmentsInput: directory,
+      patternsInput: fixturePatternsPath(directory),
+    });
+    await assert.rejects(readFile(join(directory, "topics.json"), "utf8"), { code: "ENOENT" });
+    const result = await writeTopicStoreSynchronization(synchronizationPlan);
     const store = JSON.parse(await readFile(join(directory, "topics.json"), "utf8")) as {
       topics: Array<{ slug: string; title: string; summary: string }>;
     };
@@ -61,7 +77,7 @@ test("preserves curated and unused topic records while appending missing usage",
       ],
     }, null, 2)}\n`, "utf8");
 
-    const result = await synchronizeCuratedTopicStore(directory);
+    const result = await synchronizeFixture(directory);
     const store = JSON.parse(await readFile(join(directory, "topics.json"), "utf8")) as {
       topics: Array<{ slug: string; title: string; summary: string; aliases?: string[] }>;
     };
@@ -74,7 +90,7 @@ test("preserves curated and unused topic records while appending missing usage",
     assert.deepEqual(store.topics.slice(2).map((topic) => topic.slug), result.addedSlugs);
 
     const beforeSecondSynchronization = await readFile(join(directory, "topics.json"), "utf8");
-    const secondResult = await synchronizeCuratedTopicStore(directory);
+    const secondResult = await synchronizeFixture(directory);
     assert.equal(secondResult.changed, false);
     assert.deepEqual(secondResult.addedSlugs, []);
     assert.equal(
@@ -87,9 +103,9 @@ test("preserves curated and unused topic records while appending missing usage",
 });
 
 test("formats common naval topic acronyms without AI processing", () => {
-  assert.equal(topicTitleFromSlug("hms-warrior"), "HMS Warrior");
-  assert.equal(topicTitleFromSlug("pre-world-war-i"), "Pre World War I");
-  assert.equal(topicTitleFromSlug("live-q-and-a"), "Live Q&A");
+  assert.equal(topicTitleFromSlug("hms-warrior", testCatalog), "HMS Warrior");
+  assert.equal(topicTitleFromSlug("pre-world-war-i", testCatalog), "Pre World War I");
+  assert.equal(topicTitleFromSlug("live-q-and-a", testCatalog), "Live Q&A");
 });
 
 test("formats only terminal decimal-inch gun slugs with calibre punctuation", () => {
@@ -105,17 +121,17 @@ test("formats only terminal decimal-inch gun slugs with calibre punctuation", ()
   ] as const;
 
   for (const [slug, title] of cases) {
-    assert.equal(topicTitleFromSlug(slug), title, slug);
+    assert.equal(topicTitleFromSlug(slug, testCatalog), title, slug);
   }
 
-  assert.equal(topicTitleFromSlug("war-1828-1829"), "War 1828 1829");
-  assert.equal(topicTitleFromSlug("4-5-inch-gun-mount"), "4 5 Inch Gun Mount");
-  assert.equal(topicTitleFromSlug("4-to-5-inch-guns"), "4 To 5 Inch Guns");
+  assert.equal(topicTitleFromSlug("war-1828-1829", testCatalog), "War 1828 1829");
+  assert.equal(topicTitleFromSlug("4-5-inch-gun-mount", testCatalog), "4 5 Inch Gun Mount");
+  assert.equal(topicTitleFromSlug("4-to-5-inch-guns", testCatalog), "4 To 5 Inch Guns");
 });
 
 test("capitalizes QF in generic non-decimal topic titles", () => {
-  assert.equal(topicTitleFromSlug("qf-2-pounder"), "QF 2 Pounder");
-  assert.equal(topicTitleFromSlug("qf-ammunition"), "QF Ammunition");
+  assert.equal(topicTitleFromSlug("qf-2-pounder", testCatalog), "QF 2 Pounder");
+  assert.equal(topicTitleFromSlug("qf-ammunition", testCatalog), "QF Ammunition");
 });
 
 test("creates decimal topic defaults without adding them to title review", async () => {
@@ -124,7 +140,7 @@ test("creates decimal topic defaults without adding them to title review", async
     ["qf-5-25-inch-gun"],
   );
   try {
-    const result = await synchronizeCuratedTopicStore(directory);
+    const result = await synchronizeFixture(directory);
     const store = JSON.parse(await readFile(join(directory, "topics.json"), "utf8")) as {
       topics: Array<{ slug: string; title: string; summary: string }>;
     };
@@ -145,20 +161,20 @@ test("persists unresolved numeric title review until the stored title is curated
   const directory = await makeTopicDirectory(["war-1828-1829"], ["war-1828-1829"]);
   const topicStorePath = join(directory, "topics.json");
   try {
-    const firstResult = await synchronizeCuratedTopicStore(directory);
+    const firstResult = await synchronizeFixture(directory);
     const firstBytes = await readFile(topicStorePath, "utf8");
     const firstStore = JSON.parse(firstBytes) as {
       schemaVersion: 1;
       topics: Array<{ slug: string; title: string; summary: string }>;
     };
 
-    assert.equal(topicTitleFromSlug("war-1828-1829"), "War 1828 1829");
+    assert.equal(topicTitleFromSlug("war-1828-1829", testCatalog), "War 1828 1829");
     assert.equal(firstStore.topics[0]?.title, "War 1828 1829");
     assert.deepEqual(firstResult.reviewTopics, [
       { slug: "war-1828-1829", generatedTitle: "War 1828 1829" },
     ]);
 
-    const secondResult = await synchronizeCuratedTopicStore(directory);
+    const secondResult = await synchronizeFixture(directory);
     assert.equal(secondResult.changed, false);
     assert.deepEqual(secondResult.reviewTopics, firstResult.reviewTopics);
     assert.equal(await readFile(topicStorePath, "utf8"), firstBytes);
@@ -166,9 +182,62 @@ test("persists unresolved numeric title review until the stored title is curated
     firstStore.topics[0]!.title = "Russo-Turkish War (1828–1829)";
     await writeFile(topicStorePath, `${JSON.stringify(firstStore, null, 2)}\n`, "utf8");
 
-    const curatedResult = await synchronizeCuratedTopicStore(directory);
+    const curatedResult = await synchronizeFixture(directory);
     assert.equal(curatedResult.changed, false);
     assert.deepEqual(curatedResult.reviewTopics, []);
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+test("refuses pending active migrations without changing the topic store", async () => {
+  const directory = await makeTopicDirectory(["57mm-gun"], ["57mm-gun"]);
+  const topicStorePath = join(directory, "topics.json");
+  const before = `${JSON.stringify({
+    schemaVersion: 1,
+    topics: [{
+      slug: "57mm-gun",
+      title: "57mm Gun",
+      summary: "Watch points covering 57mm Gun across Dr. Alex Clarke's videos.",
+    }],
+  }, null, 2)}\n`;
+  try {
+    await writeFile(topicStorePath, before, "utf8");
+    await assert.rejects(
+      synchronizeFixture(directory),
+      /Topic normalization preflight failed.*57mm-gun/su,
+    );
+    assert.equal(await readFile(topicStorePath, "utf8"), before);
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+test("refuses a new noncanonical creation slug before creating topics.json", async () => {
+  const directory = await makeTopicDirectory(["90mm-guns"], ["90mm-guns"]);
+  try {
+    await assert.rejects(
+      synchronizeFixture(directory),
+      /90mm-guns resolves through active creation rule create-metric-mm-guns to 90-mm-guns/u,
+    );
+    await assert.rejects(readFile(join(directory, "topics.json"), "utf8"), { code: "ENOENT" });
+  } finally {
+    await rm(directory, { recursive: true, force: true });
+  }
+});
+
+test("uses catalog display policy when appending a canonical topic", async () => {
+  const directory = await makeTopicDirectory(["57-mm-guns"], ["57-mm-guns"]);
+  try {
+    await synchronizeFixture(directory);
+    const store = JSON.parse(await readFile(join(directory, "topics.json"), "utf8")) as {
+      topics: Array<{ slug: string; title: string; summary: string }>;
+    };
+    assert.deepEqual(store.topics, [{
+      slug: "57-mm-guns",
+      title: "57 mm Guns",
+      summary: "Watch points covering 57 mm Guns across Dr. Alex Clarke's videos.",
+    }]);
   } finally {
     await rm(directory, { recursive: true, force: true });
   }
@@ -188,11 +257,15 @@ test("keeps the bounded production topic titles, aliases, and summaries curated"
     const topic = topicsBySlug.get(expected.slug);
     assert.ok(topic, `Missing production topic ${expected.slug}`);
     assert.equal(topic.title, expected.title, `${expected.slug} title`);
-    assert.deepEqual(topic.aliases, expected.aliases, `${expected.slug} aliases`);
-    assert.ok(
-      topic.summary.includes(expected.title),
-      `${expected.slug} summary must include ${JSON.stringify(expected.title)}`,
-    );
+    assert.deepEqual(topic.aliases ?? [], expected.aliases, `${expected.slug} aliases`);
+    if ("summary" in expected) {
+      assert.equal(topic.summary, expected.summary, `${expected.slug} preserved summary`);
+    } else {
+      assert.ok(
+        topic.summary.includes(expected.title),
+        `${expected.slug} summary must include ${JSON.stringify(expected.title)}`,
+      );
+    }
   }
 });
 
@@ -201,6 +274,7 @@ async function makeTopicDirectory(
   segmentTopics = ["destroyers", "airborne-early-warning"],
 ): Promise<string> {
   const directory = await mkdtemp(join(tmpdir(), "naval-topic-store-"));
+  await writeFile(fixturePatternsPath(directory), testCatalogText, "utf8");
   await writeFile(join(directory, "2026-07-08_T00-00-00_topic-fixture_abc123.json"), JSON.stringify({
     schemaVersion: 1,
     videoId: "abc123",
@@ -222,105 +296,134 @@ async function makeTopicDirectory(
   return directory;
 }
 
+async function synchronizeFixture(directory: string) {
+  return synchronizeCuratedTopicStore(directory, fixturePatternsPath(directory));
+}
+
+function fixturePatternsPath(directory: string): string {
+  return join(directory, "patterns.tsv");
+}
+
+function makeTestCatalogText(): string {
+  const rows = [
+    catalogRow("token-hms", "active", "display", "token", "hms", "HMS", "", "[]", "none", "Naval prefix"),
+    catalogRow("token-qf", "active", "display", "token", "qf", "QF", "", "[]", "none", "Gun prefix"),
+    catalogRow("display-live-q-and-a", "active", "display", "exact", "live-q-and-a", "live-q-and-a", "Live Q&A", "[]", "none", "Established title"),
+    catalogRow("display-decimal-inch-gun", "active", "display", "regex", "^([0-9]+)-([0-9]+)-inch-gun$", "$1-$2-inch-gun", "$1.$2-inch Gun", "[]", "none", "Decimal calibre"),
+    catalogRow("display-decimal-inch-guns", "active", "display", "regex", "^([0-9]+)-([0-9]+)-inch-guns$", "$1-$2-inch-guns", "$1.$2-inch Guns", "[]", "none", "Decimal calibre"),
+    catalogRow("display-qf-decimal-inch-gun", "active", "display", "regex", "^qf-([0-9]+)-([0-9]+)-inch-gun$", "qf-$1-$2-inch-gun", "QF $1.$2-inch Gun", "[]", "none", "QF decimal calibre"),
+    catalogRow("display-metric-mm-guns", "active", "display", "regex", "^([0-9]+)-mm-guns$", "$1-mm-guns", "$1 mm Guns", "[]", "none", "Metric calibre"),
+    catalogRow("create-metric-mm-guns", "active", "creation", "regex", "^([0-9]+)mm-guns$", "$1-mm-guns", "$1 mm Guns", "[]", "none", "Future metric construction"),
+    catalogRow("migrate-57mm-gun", "active", "migration", "exact", "57mm-gun", "57-mm-guns", "57 mm Guns", "[\"57mm Gun\"]", "redirect", "Confirmed fixture duplicate"),
+  ];
+  return `${topicNormalizationPatternHeader.join("\t")}\n${rows.join("\n")}\n`;
+}
+
+function catalogRow(...fields: [string, string, string, string, string, string, string, string, string, string]): string {
+  return fields.join("\t");
+}
+
 const productionTopicMapping = [
   {
-    slug: "4-5-inch-gun",
-    title: "4.5-inch Gun",
-    aliases: ["4.5 inch gun", "4 5 inch gun"],
+    slug: "4-5-inch-guns",
+    title: "4.5-inch Guns",
+    aliases: ["4.5-inch Gun", "Four Point Five Inch Gun", "Four Point Five Inch Guns"],
+    summary: "Explore study-guide entries on the 4.5-inch Gun.",
   },
   {
     slug: "4-7-inch-guns",
     title: "4.7-inch Guns",
-    aliases: ["4.7 inch guns", "4 7 inch guns"],
+    aliases: ["Four Point Seven Inch Guns"],
   },
   {
     slug: "5-25-inch-guns",
     title: "5.25-inch Guns",
-    aliases: ["5.25 inch guns", "5 25 inch guns"],
+    aliases: ["Five Point Two Inch Guns", "Five Point Two Five Inch Gun", "Five Point Two Five Inch Guns"],
   },
   {
     slug: "9-2-inch-guns",
     title: "9.2-inch Guns",
-    aliases: ["9.2 inch guns", "9 2 inch guns"],
+    aliases: ["Nine Point Two Inch Guns"],
   },
   {
-    slug: "13-5-inch-gun",
-    title: "13.5-inch Gun",
-    aliases: ["13.5 inch gun", "13 5 inch gun"],
+    slug: "13-5-inch-guns",
+    title: "13.5-inch Guns",
+    aliases: ["13.5-inch Gun", "Thirteen Point Five Inch Guns"],
+    summary: "Explore study-guide entries on the 13.5-inch Gun.",
   },
   {
     slug: "qf-4-5-inch-gun",
     title: "QF 4.5-inch Gun",
-    aliases: ["QF 4.5 inch gun", "QF 4 5 inch gun"],
+    aliases: [],
   },
   {
     slug: "qf-4-7-inch-gun",
     title: "QF 4.7-inch Gun",
-    aliases: ["QF 4.7 inch gun", "QF 4 7 inch gun"],
+    aliases: [],
   },
   {
     slug: "qf-5-25-inch-gun",
     title: "QF 5.25-inch Gun",
-    aliases: ["QF 5.25 inch gun", "QF 5 25 inch gun"],
+    aliases: [],
   },
   {
     slug: "anglo-spanish-war-1654-1660",
     title: "Anglo-Spanish War (1654–1660)",
-    aliases: ["Anglo-Spanish War 1654-1660", "Anglo Spanish War 1654 1660"],
+    aliases: [],
   },
   {
     slug: "russo-swedish-war-1741-1743",
     title: "Russo-Swedish War (1741–1743)",
-    aliases: ["Russo-Swedish War 1741-1743", "Russo Swedish War 1741 1743"],
+    aliases: [],
   },
   {
     slug: "russo-swedish-war-1788-1790",
     title: "Russo-Swedish War (1788–1790)",
-    aliases: ["Russo-Swedish War 1788-1790", "Russo Swedish War 1788 1790"],
+    aliases: [],
   },
   {
     slug: "russo-turkish-war-1828-1829",
     title: "Russo-Turkish War (1828–1829)",
-    aliases: ["Russo-Turkish War 1828-1829", "Russo Turkish War 1828 1829"],
+    aliases: [],
   },
   {
     slug: "russo-turkish-war-1877-1878",
     title: "Russo-Turkish War (1877–1878)",
-    aliases: ["Russo-Turkish War 1877-1878", "Russo Turkish War 1877 1878"],
+    aliases: [],
   },
   {
     slug: "venezuelan-crisis-of-1902-1903",
     title: "Venezuelan Crisis of 1902–1903",
-    aliases: ["Venezuelan Crisis of 1902-1903", "Venezuelan Crisis of 1902 1903"],
+    aliases: [],
   },
   {
     slug: "naval-warfare-1900-1939",
     title: "Naval Warfare, 1900–1939",
-    aliases: ["Naval Warfare 1900-1939", "Naval Warfare 1900 1939"],
+    aliases: [],
   },
   {
     slug: "gloster-e-28-39",
     title: "Gloster E.28/39",
-    aliases: ["Gloster E 28 39"],
+    aliases: [],
   },
   {
     slug: "specification-m-1-30",
     title: "Specification M.1/30",
-    aliases: ["Specification M 1 30"],
+    aliases: [],
   },
   {
     slug: "otobreda-127-64",
     title: "OTO Melara 127/64",
-    aliases: ["OTO Melara 127 64"],
+    aliases: [],
   },
   {
     slug: "qf-2-pounder-pom-pom",
     title: "QF 2-pounder Pom-Pom",
-    aliases: ["QF 2 pounder pom pom"],
+    aliases: [],
   },
   {
     slug: "qf-2-pounder",
     title: "QF 2-pounder",
-    aliases: ["QF 2 pounder"],
+    aliases: [],
   },
 ] as const;
