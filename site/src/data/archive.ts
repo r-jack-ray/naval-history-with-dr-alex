@@ -1,9 +1,6 @@
 import { createHash } from "node:crypto";
-import { readFileSync } from "node:fs";
-
-import archiveManifestJson from "./generated/archive/index.json";
-import archiveTopicsJson from "./generated/archive/topics.json";
-import archiveVideosJson from "./generated/archive/videos.json";
+import { readdirSync, readFileSync } from "node:fs";
+import { join } from "node:path";
 
 const expectedPatternsInput = "src/derived/topic-normalization-patterns.tsv";
 
@@ -124,17 +121,27 @@ export interface SegmentEvidence {
   note: string;
 }
 
-const manifest = archiveManifestJson as unknown as ArchiveManifest;
-const loadedVideos = archiveVideosJson as unknown;
-const loadedTopics = archiveTopicsJson as unknown;
-const loadedSegmentShards = import.meta.glob<ArchiveSegment[]>(
-  "./generated/archive/segments/*.json",
-  { eager: true, import: "default" },
-);
-
 function archiveError(message: string): never {
   throw new Error(`Generated archive validation failed: ${message}`);
 }
+
+const archiveRootDirectory = join(process.cwd(), "site", "src", "data", "generated", "archive");
+
+function readGeneratedArchiveJson(relativePath: string): unknown {
+  try {
+    return JSON.parse(readFileSync(join(archiveRootDirectory, relativePath), "utf8")) as unknown;
+  } catch (error) {
+    const detail = error instanceof Error ? error.message : String(error);
+    return archiveError(`${relativePath} cannot be read as JSON: ${detail}`);
+  }
+}
+
+const archiveManifestJson = readGeneratedArchiveJson("index.json");
+const archiveTopicsJson = readGeneratedArchiveJson("topics.json");
+const archiveVideosJson = readGeneratedArchiveJson("videos.json");
+const manifest = archiveManifestJson as unknown as ArchiveManifest;
+const loadedVideos = archiveVideosJson as unknown;
+const loadedTopics = archiveTopicsJson as unknown;
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value);
@@ -277,7 +284,17 @@ if (manifest.counts.topics !== loadedTopics.length) {
   archiveError(`manifest topic total is ${manifest.counts.topics}; loaded ${loadedTopics.length}.`);
 }
 
-const loadedShardPaths = Object.keys(loadedSegmentShards).sort();
+const loadedShardPaths = (() => {
+  try {
+    return readdirSync(join(archiveRootDirectory, "segments"), { withFileTypes: true })
+      .filter((entry) => entry.isFile() && entry.name.endsWith(".json"))
+      .map((entry) => `./generated/archive/segments/${entry.name}`)
+      .sort();
+  } catch (error) {
+    const detail = error instanceof Error ? error.message : String(error);
+    return archiveError(`segment shard directory cannot be read: ${detail}`);
+  }
+})();
 const expectedShardPaths: string[] = [];
 const shardedSegments: ArchiveSegment[] = [];
 
@@ -292,7 +309,7 @@ for (let index = 0; index < 64; index += 1) {
   }
   expectedShardPaths.push(importPath);
 
-  const shard = loadedSegmentShards[importPath] as unknown;
+  const shard = readGeneratedArchiveJson(`segments/${id}.json`);
   if (!Array.isArray(shard)) {
     archiveError(`${importPath} was not loaded as an array.`);
   }
