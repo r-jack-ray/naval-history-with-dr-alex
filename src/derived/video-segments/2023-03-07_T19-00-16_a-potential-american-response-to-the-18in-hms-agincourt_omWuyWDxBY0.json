@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "videoId": "omWuyWDxBY0",
-  "topics": ["alternate-history", "hms-agincourt", "south-dakota-class", "18-inch-guns", "capital-ships", "naval-design", "us-navy", "battlecruisers", "naval-arms-control"],
+  "topics": ["alternate-history", "hms-agincourt", "south-dakota-class", "18-inch-guns", "capital-ships", "naval-design", "us-navy", "battlecruisers", "naval-arms-control", "naval-wargaming"],
   "segments": [
     {
       "id": "american-response-to-an-18-inch-agincourt",
@@ -108,6 +108,20 @@
       "evidence": [{"start": "34:12", "end": "44:26", "note": "The transcript compares 18-inch and 16-inch broadside weight, ranges, simulated hits, and the effect of a lucky 18-inch shell."}]
     },
     {
+      "id": "british-18-inch-gun-range-assumptions",
+      "videoId": "omWuyWDxBY0",
+      "slug": "british-18-inch-gun-range-assumptions",
+      "title": "Furious and the British 18-inch gun assumption",
+      "kind": "notable_point",
+      "start": "35:33",
+      "end": "36:21",
+      "topics": ["18-inch-guns", "bl-18-inch-mark-i", "hms-furious", "royal-navy", "naval-gunnery"],
+      "summary": "Hear how the stream derives a 45-calibre British weapon from contemporary gun trends and uses it to explain the simulated range advantage over American 16-inch guns.",
+      "body": "Dr. Clarke pauses the duel to explain why he gives Agincourt's 18-inch guns a longer reach than the American 16-inch battery. He treats a 45-calibre 18-inch weapon as a plausible continuation of British gun development, while noting the historical weapon associated with HMS Furious and the compromises made to fit it. In the simulation, that produces an armor-piercing range of about 33.3 kilometers, compared with about 28.3 kilometers for the American 16-inch/50s. The figures belong to the counterfactual game build, but the watch point shows how barrel length and mounting history shape the assumptions behind a paper capital ship.",
+      "sourcePath": "src/transcripts/txt/2023-03-07_T19-00-16_a-potential-american-response-to-the-18in-hms-agincourt_omWuyWDxBY0.txt",
+      "evidence": [{"start": "35:33", "end": "36:21", "note": "Dr. Clarke compares the simulated ranges, selects a 45-calibre British 18-inch gun, and relates that assumption to later British gun development and the weapon fitted to HMS Furious."}]
+    },
+    {
       "id": "18-inch-agincourt-and-the-future-of-hood",
       "videoId": "omWuyWDxBY0",
       "slug": "18-inch-agincourt-and-the-future-of-hood",
@@ -139,13 +153,13 @@
       "id": "pagoda-masts-and-british-tower-bridges",
       "videoId": "omWuyWDxBY0",
       "slug": "pagoda-masts-and-british-tower-bridges",
-      "title": "Pagoda masts and the logic of visual command",
+      "title": "Pagoda masts and the logic of visual identification",
       "kind": "notable_point",
       "start": "1:09:23",
       "end": "1:09:45",
-      "topics": ["pagoda-masts", "fire-control", "naval-design", "nelson-class", "hms-nelson", "hms-rodney"],
-      "summary": "Use Nelson and Rodney to trace the same visual-command logic that produced the Japanese pagoda mast.",
-      "body": "A viewer comment prompts Dr. Clarke to explain why tall, layered pagoda masts made sense in an era dependent on visual identification and observation. He points to HMS Nelson and HMS Rodney as British examples of a comparable design logic rather than treating the Japanese form as an isolated eccentricity. Elevated platforms concentrated lookouts, fire-control positions, and command functions where they had wide fields of view. The comparison helps readers interpret dramatic superstructures as responses to pre-radar information needs.",
+      "topics": ["pagoda-masts", "naval-design", "nelson-class", "hms-nelson", "hms-rodney"],
+      "summary": "Use Nelson and Rodney to see why pagoda-like superstructures made sense when visual identification governed how ships gathered information.",
+      "body": "A viewer comment prompts Dr. Clarke to explain why tall pagoda masts make sense in an era dependent on visual identification. He points to HMS Nelson and HMS Rodney as British examples of the same broad line of thought rather than treating the Japanese form as an isolated eccentricity. The comparison links the height and mass of these superstructures to the need to see and identify other ships at distance. It is a concise reminder that an unusual silhouette can reflect an operational requirement, not merely a national aesthetic.",
       "sourcePath": "src/transcripts/txt/2023-03-07_T19-00-16_a-potential-american-response-to-the-18in-hms-agincourt_omWuyWDxBY0.txt",
       "evidence": [{"start": "1:09:23", "end": "1:09:45", "note": "Dr. Clarke says pagoda masts make sense under visual-identification requirements and points to Nelson and Rodney as showing the same line of thought."}]
     },
@@ -204,6 +218,20 @@
       "body": "Dr. Clarke argues that the relevant constraint is not merely manufacturing a 20-inch barrel. A navy also needs the systems to mount and stabilize it, as well as docks, yards, and industrial capacity able to build a hull large enough to carry the weapon. In this view, the Bismarck class reflects German infrastructure and the legacy of Versailles rather than a simple preference for smaller guns. The comparison distinguishes a paper armament choice from a complete and sustainable capital-ship program.",
       "sourcePath": "src/transcripts/txt/2023-03-07_T19-00-16_a-potential-american-response-to-the-18in-hms-agincourt_omWuyWDxBY0.txt",
       "evidence": [{"start": "1:56:36", "end": "1:58:32", "note": "The transcript explains that a 20-inch German weapon would require mounting, stabilization, shipbuilding, and dockyard capacity beyond just producing a barrel."}]
+    },
+    {
+      "id": "simulation-range-versus-real-capital-ship-combat",
+      "videoId": "omWuyWDxBY0",
+      "slug": "simulation-range-versus-real-capital-ship-combat",
+      "title": "Why the game's knife-fight ranges mislead",
+      "kind": "notable_point",
+      "start": "2:00:58",
+      "end": "2:02:02",
+      "topics": ["naval-wargaming", "naval-gunnery", "range-control", "armour-protection", "capital-ships"],
+      "summary": "Separate the simulation from real-world gunnery: at the close ranges chosen by the AI, heavy shells defeat any plausible capital-ship armor.",
+      "body": "Dr. Clarke explicitly distinguishes the simulation's knife-fight distance from a realistic capital-ship engagement. At such close range, he argues, armor cannot provide meaningful protection against guns of this size. That helps explain why a 15-inch-gun German ship can destroy the much more heavily armed American concept after the AI rushes both ships together. The historical lesson is therefore not the simulated winner but the danger of treating point-blank game outcomes as evidence about real designs.",
+      "sourcePath": "src/transcripts/txt/2023-03-07_T19-00-16_a-potential-american-response-to-the-18in-hms-agincourt_omWuyWDxBY0.txt",
+      "evidence": [{"start": "2:00:58", "end": "2:02:02", "note": "Dr. Clarke calls the distance game-like rather than realistic, says armor cannot protect against such heavy guns at that range, and explains the result as a close-range lucky hit."}]
     },
     {
       "id": "speed-controls-range-and-world-war-one-lessons",
