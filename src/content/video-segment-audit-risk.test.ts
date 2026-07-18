@@ -131,10 +131,76 @@ test("processing state controls route and intentional empty completion stays low
   assert.equal(analyzeVideoSegmentRisk(input({ needsFurtherProcessing: "unknown" })).auditRoute, "review_candidate");
 });
 
-test("processing-log entry count and size diagnostics do not affect the risk grade", () => {
-  const baseline = analyzeVideoSegmentRisk(input({ processLogEntries: 0, shardBytes: 1, transcriptBytes: 100 }));
-  const verbose = analyzeVideoSegmentRisk(input({ processLogEntries: 5, shardBytes: 1_000_000, transcriptBytes: 1_000_000 }));
-  assert.equal(verbose.auditRiskScore, baseline.auditRiskScore);
+test("three recorded passes strongly downweight residual metadata risk", () => {
+  const firstPass = analyzeVideoSegmentRisk(input({ processLogEntries: 1, durationSeconds: 1_200 }));
+  const secondPass = analyzeVideoSegmentRisk(input({ processLogEntries: 2, durationSeconds: 1_200 }));
+  const thirdPass = analyzeVideoSegmentRisk(input({ processLogEntries: 3, durationSeconds: 1_200 }));
+  const laterPass = analyzeVideoSegmentRisk(input({ processLogEntries: 6, durationSeconds: 1_200 }));
+
+  assert.equal(secondPass.auditRiskScore, firstPass.auditRiskScore);
+  assert.ok(thirdPass.auditRiskScore < secondPass.auditRiskScore);
+  assert.ok(thirdPass.auditRiskScore - 5 <= (secondPass.auditRiskScore - 5) * 0.25);
+  assert.equal(laterPass.auditRiskScore, thirdPass.auditRiskScore);
+  assert.match(thirdPass.riskSignals.join(" "), /consume-plus-two-audits threshold/u);
+});
+
+test("three-pass weighting suppresses automatic follow-up promotion but not structural repair", () => {
+  const secondPass = analyzeVideoSegmentRisk(input({ processLogEntries: 2, needsFurtherProcessing: "yes" }));
+  const thirdPass = analyzeVideoSegmentRisk(input({ processLogEntries: 3, needsFurtherProcessing: "yes", durationSeconds: 1_200 }));
+  const warnedThirdPass = analyzeVideoSegmentRisk(input({
+    processLogEntries: 3,
+    needsFurtherProcessing: "yes",
+    durationSeconds: 1_200,
+    qaExpectation: "explicit_title",
+  }));
+  const repair = analyzeVideoSegmentRisk(input({ processLogEntries: 3, structuralIssues: ["bad root"] }));
+
+  assert.equal(secondPass.auditRoute, "follow_up_required");
+  assert.equal(thirdPass.auditRoute, "low_signal");
+  assert.equal(warnedThirdPass.auditRoute, "review_candidate");
+  assert.match(thirdPass.riskSignals.join(" "), /prevents automatic follow-up promotion/u);
+  assert.equal(repair.auditRoute, "repair_required");
+});
+
+test("manual-audio-only follow-up is deprioritized without hiding independent warnings", () => {
+  const actionable = analyzeVideoSegmentRisk(input({
+    videoId: "actionable",
+    processLogEntries: 2,
+    needsFurtherProcessing: "yes",
+    durationSeconds: 1_200,
+  }));
+  const manualAudio = analyzeVideoSegmentRisk(input({
+    videoId: "manual",
+    processLogEntries: 2,
+    needsFurtherProcessing: "yes",
+    manualAudioReviewRemaining: true,
+    durationSeconds: 1_200,
+  }));
+  const warnedManualAudio = analyzeVideoSegmentRisk(input({
+    processLogEntries: 2,
+    needsFurtherProcessing: "yes",
+    manualAudioReviewRemaining: true,
+    durationSeconds: 1_200,
+    qaExpectation: "explicit_title",
+  }));
+  const repair = analyzeVideoSegmentRisk(input({
+    processLogEntries: 2,
+    needsFurtherProcessing: "yes",
+    manualAudioReviewRemaining: true,
+    structuralIssues: ["bad root"],
+  }));
+
+  assert.equal(actionable.auditRoute, "follow_up_required");
+  assert.equal(manualAudio.auditRoute, "low_signal");
+  assert.equal(warnedManualAudio.auditRoute, "review_candidate");
+  assert.equal(repair.auditRoute, "repair_required");
+  assert.match(manualAudio.riskSignals.join(" "), /only manual audio review/u);
+});
+
+test("shard and transcript sizes remain diagnostic only", () => {
+  const compact = analyzeVideoSegmentRisk(input({ shardBytes: 1, transcriptBytes: 100 }));
+  const verbose = analyzeVideoSegmentRisk(input({ shardBytes: 1_000_000, transcriptBytes: 1_000_000 }));
+  assert.equal(verbose.auditRiskScore, compact.auditRiskScore);
 });
 
 test("published grades use non-overlapping route bands", () => {
@@ -158,6 +224,26 @@ test("route precedence beats score and TSV uses risk terminology", () => {
   assert.match(tsv.split("\n")[0] ?? "", /audit_route\taudit_risk_score\trisk_tier/u);
   assert.match(tsv.split("\n")[0] ?? "", /last_segment_position_pct/u);
   assert.match(tsv.split("\n")[0] ?? "", /largest_anchor_gap_minutes/u);
-  assert.match(tsv.split("\n")[0] ?? "", /needs_further_processing\tprocess_log_entries\ttranscript_bytes/u);
+  assert.match(tsv.split("\n")[0] ?? "", /needs_further_processing\tmanual_audio_review_remaining\tprocess_log_entries/u);
   assert.match(tsv.split("\n")[1] ?? "", /\t\d+\.\d\t(?:critical|high|medium|low)\t/u);
+});
+
+test("within a route, three-pass shards sort after less-reviewed shards", () => {
+  const fresh = analyzeVideoSegmentRisk(input({
+    videoId: "fresh",
+    videoTitle: "Fresh",
+    processLogEntries: 2,
+    segments: [],
+  }));
+  const squeezed = analyzeVideoSegmentRisk(input({
+    videoId: "squeezed",
+    videoTitle: "Squeezed",
+    processLogEntries: 3,
+    durationSeconds: 1_740,
+  }));
+
+  assert.equal(fresh.auditRoute, "low_signal");
+  assert.equal(squeezed.auditRoute, "low_signal");
+  assert.ok(squeezed.auditRiskScore > fresh.auditRiskScore);
+  assert.equal(rankVideoSegmentAuditRisks([squeezed, fresh])[0]?.videoId, "fresh");
 });

@@ -32,6 +32,7 @@ export interface VideoSegmentAuditRiskInput {
   durationSeconds: number | undefined;
   segments: AuditSegment[];
   needsFurtherProcessing: ProcessingState;
+  manualAudioReviewRemaining?: boolean;
   structuralIssues?: string[];
   qaExpectation?: QaExpectation;
   minimumEvidenceWindows?: number;
@@ -47,6 +48,7 @@ export interface VideoSegmentAuditRiskRow {
   filePath: string | undefined;
   videoTitle: string;
   needsFurtherProcessing: ProcessingState;
+  manualAudioReviewRemaining: boolean;
   processLogEntries: number;
   transcriptBytes: number | undefined;
   shardBytes: number;
@@ -78,6 +80,8 @@ const ROUTE_ORDER: Record<AuditRoute, number> = {
   low_signal: 3,
 };
 const TIMESTAMP_TOLERANCE_SECONDS = 2;
+const HEAVILY_REVIEWED_PASS_THRESHOLD = 3;
+const DEPRIORITIZED_TEXT_AUDIT_METADATA_WEIGHT = 0.2;
 
 export function analyzeVideoSegmentRisk(input: VideoSegmentAuditRiskInput): VideoSegmentAuditRiskRow {
   const hardIssues = [...(input.structuralIssues ?? [])];
@@ -194,9 +198,12 @@ export function analyzeVideoSegmentRisk(input: VideoSegmentAuditRiskInput): Vide
   }
   if (input.needsFurtherProcessing === "unknown") reviewSignals.push("latest processing state is unknown");
 
+  const heavilyReviewed = input.processLogEntries >= HEAVILY_REVIEWED_PASS_THRESHOLD;
+  const manualAudioReviewRemaining = input.manualAudioReviewRemaining ?? false;
+  const textAuditDeprioritized = heavilyReviewed || manualAudioReviewRemaining;
   const auditRoute: AuditRoute = hardIssues.length > 0
     ? "repair_required"
-    : input.needsFurtherProcessing === "yes"
+    : input.needsFurtherProcessing === "yes" && !textAuditDeprioritized
       ? "follow_up_required"
       : reviewSignals.length > 0
         ? "review_candidate"
@@ -216,12 +223,21 @@ export function analyzeVideoSegmentRisk(input: VideoSegmentAuditRiskInput): Vide
     validQaCount,
     qaTemporalBinsCovered,
   });
-  const score = riskScore(auditRoute, hardIssues.length, reviewSignals.length, metadataRiskIndex);
+  const weightedMetadataRiskIndex = metadataRiskIndex
+    * (textAuditDeprioritized ? DEPRIORITIZED_TEXT_AUDIT_METADATA_WEIGHT : 1);
+  const score = riskScore(auditRoute, hardIssues.length, reviewSignals.length, weightedMetadataRiskIndex);
   const riskSignals = [...hardIssues];
   if (input.needsFurtherProcessing === "yes") {
-    riskSignals.push("recorded processing state explicitly requests further processing");
+    riskSignals.push(manualAudioReviewRemaining
+      ? "latest pass leaves only manual audio review; text-only follow-up promotion is suppressed"
+      : heavilyReviewed
+        ? "latest processing state requests further processing, but the 3+ pass threshold prevents automatic follow-up promotion"
+        : "recorded processing state explicitly requests further processing");
   }
   riskSignals.push(...reviewSignals);
+  if (heavilyReviewed) {
+    riskSignals.push(`${input.processLogEntries} recorded passes meet the consume-plus-two-audits threshold; residual metadata risk is strongly downweighted`);
+  }
   if (riskSignals.length === 0) {
     riskSignals.push("no route-level failure or warning detected; score uses continuous metadata diagnostics only");
   }
@@ -236,6 +252,7 @@ export function analyzeVideoSegmentRisk(input: VideoSegmentAuditRiskInput): Vide
     filePath: input.filePath,
     videoTitle: input.videoTitle,
     needsFurtherProcessing: input.needsFurtherProcessing,
+    manualAudioReviewRemaining,
     processLogEntries: input.processLogEntries,
     transcriptBytes: input.transcriptBytes,
     shardBytes: input.shardBytes,
@@ -264,6 +281,7 @@ export function analyzeVideoSegmentRisk(input: VideoSegmentAuditRiskInput): Vide
 export function rankVideoSegmentAuditRisks(rows: VideoSegmentAuditRiskRow[]): VideoSegmentAuditRiskRow[] {
   return [...rows].sort((left, right) =>
     ROUTE_ORDER[left.auditRoute] - ROUTE_ORDER[right.auditRoute]
+    || textAuditDeprioritizationOrder(left) - textAuditDeprioritizationOrder(right)
     || right.auditRiskScore - left.auditRiskScore
     || left.videoTitle.localeCompare(right.videoTitle)
     || left.videoId.localeCompare(right.videoId))
@@ -273,7 +291,8 @@ export function rankVideoSegmentAuditRisks(rows: VideoSegmentAuditRiskRow[]): Vi
 export function renderVideoSegmentAuditRiskTsv(rows: VideoSegmentAuditRiskRow[]): string {
   const headers = [
     "file_stem", "rank", "audit_route", "audit_risk_score", "risk_tier", "video_id", "video_title",
-    "needs_further_processing", "process_log_entries", "transcript_bytes", "shard_bytes", "shard_to_transcript_ratio", "duration_minutes",
+    "needs_further_processing", "manual_audio_review_remaining", "process_log_entries", "transcript_bytes", "shard_bytes",
+    "shard_to_transcript_ratio", "duration_minutes",
     "segment_count", "qa_count", "valid_qa_count", "qa_temporal_bins_covered", "segments_per_hour",
     "first_segment_position_pct", "last_segment_position_pct", "temporal_bins_covered", "largest_anchor_gap_pct",
     "largest_anchor_gap_minutes",
@@ -282,7 +301,8 @@ export function renderVideoSegmentAuditRiskTsv(rows: VideoSegmentAuditRiskRow[])
   ];
   const body = rows.map((row) => [
     row.filePath ?? row.fileStem, row.rank, row.auditRoute, format(row.auditRiskScore, 1), row.riskTier, row.videoId, row.videoTitle,
-    row.needsFurtherProcessing, row.processLogEntries, row.transcriptBytes ?? "", row.shardBytes, format(row.shardToTranscriptRatio, 4),
+    row.needsFurtherProcessing, row.manualAudioReviewRemaining, row.processLogEntries, row.transcriptBytes ?? "", row.shardBytes,
+    format(row.shardToTranscriptRatio, 4),
     format(row.durationMinutes, 1), row.segmentCount, row.qaCount, row.validQaCount, row.qaTemporalBinsCovered,
     format(row.segmentsPerHour, 2), format(row.firstSegmentPositionPct, 1), format(row.lastSegmentPositionPct, 1),
     row.temporalBinsCovered, format(row.largestAnchorGapPct, 1), format(row.largestAnchorGapMinutes, 1),
@@ -416,6 +436,10 @@ function tierFor(score: number): RiskTier {
   return "low";
 }
 
+function textAuditDeprioritizationOrder(row: VideoSegmentAuditRiskRow): number {
+  return row.manualAudioReviewRemaining || row.processLogEntries >= HEAVILY_REVIEWED_PASS_THRESHOLD ? 1 : 0;
+}
+
 function normalizePath(value: string): string {
   return value.trim().replaceAll("\\", "/").replace(/^\.\//u, "");
 }
@@ -432,7 +456,7 @@ function format(value: number | undefined, digits: number): string {
   return value === undefined ? "" : value.toFixed(digits);
 }
 
-function escapeTsv(value: string | number): string {
+function escapeTsv(value: string | number | boolean): string {
   return String(value).replace(/[\t\r\n]+/gu, " ").trim();
 }
 
