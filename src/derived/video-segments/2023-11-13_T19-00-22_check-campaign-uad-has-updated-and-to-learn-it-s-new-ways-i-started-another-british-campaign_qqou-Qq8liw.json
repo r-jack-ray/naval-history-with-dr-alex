@@ -6,7 +6,8 @@
     "ship-design",
     "naval-procurement",
     "fleet-basing",
-    "naval-logistics"
+    "naval-logistics",
+    "ship-stability"
   ],
   "segments": [
     {
@@ -31,7 +32,7 @@
       "kind": "chapter",
       "start": "5:16",
       "end": "11:24",
-      "topics": ["battleships", "ship-design", "naval-gunnery", "torpedo-boats"],
+      "topics": ["battleships", "pre-dreadnought-battleships", "ship-design", "ship-stability", "naval-gunnery", "12-inch-guns", "6-inch-guns", "3-inch-guns", "torpedo-boats"],
       "summary": "A pre-dreadnought-style design balances 12-inch guns, a six-inch secondary battery, torpedo defense, armor, speed, and the revised stability calculation.",
       "body": "The first Repulse design shows how quickly an early hull runs out of displacement when armor, heavy guns, secondary weapons, and torpedoes are combined. Dr. Clarke selects 12-inch main guns, six-inch casemates, three-inch anti-torpedo-boat weapons, and broadside torpedo tubes before weight forces reductions elsewhere. He sacrifices speed and protection to reduce pitch and roll because instability directly harms aiming. The result resembles HMS Renown more than a Royal Sovereign and illustrates the compromises forced by early technology.",
       "sourcePath": "src/transcripts/txt/2023-11-13_T19-00-22_check-campaign-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_qqou-Qq8liw.txt",
@@ -47,7 +48,7 @@
       "end": "12:41",
       "topics": ["fleet-basing", "naval-presence", "royal-navy", "singapore-naval-base"],
       "summary": "New battleships are divided among Scapa Flow, Gibraltar, Singapore, and Bombay to turn imperial bases into a worldwide presence network.",
-      "body": "The deployment choice treats bases as operational infrastructure rather than labels on a map. Pairs of battleships go to Scapa Flow, Gibraltar, Singapore, and Bombay, linking home defense to Mediterranean and imperial stations. Heavy ships are therefore spread across several theaters so the fleet can exert presence worldwide. Later automatic cruiser distribution reinforces the same tension between concentration and global coverage.",
+      "body": "Pairs of battleships go to Scapa Flow, Gibraltar, Singapore, and Bombay, linking home defense to Mediterranean and imperial stations. The disposition treats bases as a global presence network rather than concentrating every capital ship in home waters. It accepts a less concentrated battle fleet in return for coverage of several theaters. That makes the opening deployment a useful scenario illustration of the tradeoff between concentration and worldwide presence.",
       "sourcePath": "src/transcripts/txt/2023-11-13_T19-00-22_check-campaign-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_qqou-Qq8liw.txt",
       "evidence": [{"start": "11:27", "end": "12:41", "note": "He assigns pairs of battleships to major imperial bases."}]
     },
@@ -59,13 +60,27 @@
       "kind": "qa",
       "start": "16:52",
       "end": "18:20",
-      "topics": ["hms-vanguard", "tirpitz", "bismarck-class", "shipbuilding", "treaty-of-versailles"],
+      "topics": ["hms-vanguard", "tirpitz", "bismarck-class", "shipbuilding", "maritime-industrial-base", "15-inch-guns", "treaty-of-versailles", "world-war-i"],
       "summary": "A chat comparison leads to an explanation of Vanguard's greater technical and construction efficiency and Germany's damaged maritime industrial base.",
       "body": "Dr. Clarke rejects the claim that Tirpitz was superior to Vanguard. Vanguard's reused 15-inch guns can make the ships look more comparable than they were, but its technology and construction were more efficient. Tirpitz and Bismarck represented the best Germany could build within the political and industrial circumstances of their time, not a universal technical optimum. He connects that design ceiling to the maritime-industrial restrictions and disruption imposed after the First World War rather than to a lack of engineering talent.",
       "question": "Was Tirpitz a better battleship than HMS Vanguard?",
       "answerShort": "No. Vanguard was the more efficient and technically advanced design, while Germany's post-First World War maritime constraints limited what its industry could produce.",
       "sourcePath": "src/transcripts/txt/2023-11-13_T19-00-22_check-campaign-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_qqou-Qq8liw.txt",
       "evidence": [{"start": "16:52", "end": "18:20", "note": "He answers a chat claim comparing Tirpitz with Vanguard."}]
+    },
+    {
+      "id": "port-capacity-constrains-capital-ship-basing",
+      "videoId": "qqou-Qq8liw",
+      "slug": "port-capacity-constrains-capital-ship-basing",
+      "title": "Port capacity limits where capital ships can be based",
+      "kind": "notable_point",
+      "start": "20:19",
+      "end": "21:42",
+      "topics": ["fleet-basing", "naval-logistics", "port-infrastructure", "battleships", "royal-navy", "ultimate-admiral-dreadnoughts"],
+      "summary": "A pair of battleships has to be moved when local tonnage limits cannot support them, showing that possession of a port is not the same as useful basing capacity.",
+      "body": "In the campaign, two Repulse-class battleships exceed the capacity of their assigned area, so Dr. Clarke searches for a base able to take roughly 30,000 tons. Bombay has enough capacity, but he ultimately redirects the pair to Plymouth. The constraint turns basing from a map-placement exercise into a question of infrastructure and support for heavy ships. It is a useful scenario illustration of why global presence depends on capable bases as well as favorable geography. The game's numerical capacity values are mechanics, not a claim that every historical port had exactly those limits.",
+      "sourcePath": "src/transcripts/txt/2023-11-13_T19-00-22_check-campaign-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_qqou-Qq8liw.txt",
+      "evidence": [{"start": "20:19", "end": "21:42", "note": "He moves two battleships after comparing their tonnage with the capacity available at several bases."}]
     },
     {
       "id": "aircraft-carriers-add-a-second-design-system",
@@ -115,15 +130,17 @@
       "id": "good-enough-numbers-versus-perfect-platforms",
       "videoId": "qqou-Qq8liw",
       "slug": "good-enough-numbers-versus-perfect-platforms",
-      "title": "Good-enough numbers can outperform a few perfect platforms",
-      "kind": "notable_point",
+      "title": "Are good-enough numbers better than a few perfect platforms?",
+      "kind": "qa",
       "start": "42:18",
       "end": "46:45",
-      "topics": ["force-structure", "attrition", "industrial-warfare", "military-logistics"],
-      "summary": "A numerical example compares five excellent platforms with twenty adequate ones and shows why losses hurt the small elite force much more severely.",
-      "body": "The comparison is about resilience as much as combat quality. Losing two of five exceptional platforms removes forty percent of that force, while losing six of twenty-five adequate platforms leaves most of the larger force intact. Numbers provide operational depth and reduce the strategic impact of each casualty. Dr. Clarke links the principle to wartime production and contrasts the fame of the Tiger tank with the Sherman, the mass-produced machine that helped win the war.",
+      "topics": ["force-structure", "attrition", "industrial-warfare", "military-logistics", "sherman-tank", "tiger-tank", "world-war-ii"],
+      "summary": "A chat question leads to an attrition example showing why losses hurt a small elite force much more severely than a larger force of adequate platforms.",
+      "body": "The answer is about resilience as much as individual combat quality. In Dr. Clarke's illustrative arithmetic, losing two platforms removes forty percent of a five-unit elite force, while losing several platforms from a much larger adequate force leaves most of it available. Numbers create operational depth and reduce the strategic cost of each casualty. He connects this reasoning to Second World War mass production, contrasting the Tiger's fame with the Sherman as the more consequential war-winning system. The point is not that quality never matters, but that a small pursuit of perfection can leave a force brittle.",
+      "question": "Is it better to have many adequate platforms than only a few very good ones?",
+      "answerShort": "Often, yes. A larger adequate force can absorb losses far better than a small elite force and is more likely to be available in useful numbers.",
       "sourcePath": "src/transcripts/txt/2023-11-13_T19-00-22_check-campaign-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_qqou-Qq8liw.txt",
-      "evidence": [{"start": "42:18", "end": "46:45", "note": "He uses force-loss percentages and Second World War tanks to explain the value of adequate numbers."}]
+      "evidence": [{"start": "42:18", "end": "46:45", "note": "He answers a chat comparison with force-loss percentages and Second World War tank production."}]
     },
     {
       "id": "tiger-tank-logistics-and-design-control",
@@ -133,9 +150,9 @@
       "kind": "notable_point",
       "start": "48:24",
       "end": "52:31",
-      "topics": ["military-logistics", "industrial-warfare", "standardization", "systems-engineering"],
+      "topics": ["military-logistics", "industrial-warfare", "standardization", "systems-engineering", "tank-design", "tiger-tank", "panzer-iv", "panther-tank", "world-war-ii"],
       "summary": "The Tiger tank becomes a case study in bespoke parts, inconsistent batches, weak design control, and the operational cost of unnecessary complexity.",
-      "body": "Dr. Clarke argues that impressive paper characteristics did not compensate for the Tiger's logistical and engineering-management problems. Successive batches differed, too many specialists optimized their own sections, and no sufficiently powerful authority simplified the complete system for production and maintenance. Interleaved road wheels illustrate a local engineering choice whose maintenance burden became an operational liability. He contrasts this with the more practical Panzer IV and treats the episode as a broader warning about complexity without systems-level control.",
+      "body": "Dr. Clarke argues that impressive paper characteristics did not compensate for the Tiger's logistical and engineering-management problems. Successive batches differed, too many specialists optimized their own sections, and no sufficiently powerful authority simplified the complete system for production and maintenance. Interleaved road wheels illustrate a local engineering choice whose maintenance burden became an operational liability. He argues that continued refinement of the Panzer IV would have offered a sounder basis for mass production than branching into Panther and Tiger. The episode becomes a broader warning about complexity without systems-level control.",
       "sourcePath": "src/transcripts/txt/2023-11-13_T19-00-22_check-campaign-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_qqou-Qq8liw.txt",
       "evidence": [{"start": "48:24", "end": "52:31", "note": "He details the Tiger's parts, production-control, maintenance, and systems-engineering failures."}]
     },
@@ -143,15 +160,29 @@
       "id": "updated-stability-model-breaks-early-hulls",
       "videoId": "qqou-Qq8liw",
       "slug": "updated-stability-model-breaks-early-hulls",
-      "title": "The revised stability model makes early small ships impractical",
+      "title": "Cruiser trials expose a research-gated stability problem",
       "kind": "chapter",
       "start": "1:04:36",
-      "end": "1:21:33",
-      "topics": ["ship-stability", "cruisers", "destroyers", "torpedo-boats", "ship-design"],
-      "summary": "Attempts to refit a light cruiser and create new cruisers and torpedo boats reveal extreme pitch, roll, weight, and component-placement penalties.",
-      "body": "The Brisbane-class refit begins with a roll value of roughly sixty-five percent, prompting a complete redesign rather than incremental improvement. New cruiser hulls cannot accept sensible gun layouts without severe balance and displacement problems, and even the automatic torpedo-boat design is unstable. The problem makes early destroyer research unattractive because a new hull remains unusable before later stabilization technology arrives. Dr. Clarke contrasts this with earlier game versions, where small early ships were imperfect but usable, and worries that research-poor navies such as Austria-Hungary cannot escape the resulting technology trap.",
+      "end": "1:14:22",
+      "topics": ["ship-stability", "light-cruisers", "cruisers", "ship-design", "naval-architecture", "ultimate-admiral-dreadnoughts"],
+      "summary": "Refitting Brisbane and trying several new cruiser hulls produces extreme roll, pitch, weight, and gun-placement penalties that only later research seems able to solve.",
+      "body": "The Brisbane-class refit begins with a roll value of roughly sixty-five percent, prompting a complete redesign rather than incremental improvement. Fresh light- and armored-cruiser trials cannot combine a plausible armament with acceptable balance and displacement. Dr. Clarke contrasts the update with earlier versions, where small early ships were imperfect but usable. He worries that the mechanic creates a research trap: Britain may be able to fund its way to improved hulls, but Austria-Hungary lacks the same research budget. For the campaign, early cruiser research therefore becomes less a path to improvement than a gate to basic usability.",
       "sourcePath": "src/transcripts/txt/2023-11-13_T19-00-22_check-campaign-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_qqou-Qq8liw.txt",
-      "evidence": [{"start": "1:04:36", "end": "1:21:33", "note": "Multiple cruiser and torpedo-boat designs demonstrate the revised stability and weight problems."}]
+      "evidence": [{"start": "1:04:36", "end": "1:14:22", "note": "A Brisbane refit and several new cruiser trials reveal extreme roll, pitch, displacement, and placement penalties."}]
+    },
+    {
+      "id": "automatic-torpedo-boat-confirms-stability-problem",
+      "videoId": "qqou-Qq8liw",
+      "slug": "automatic-torpedo-boat-confirms-stability-problem",
+      "title": "The automatic torpedo-boat design confirms the stability problem",
+      "kind": "notable_point",
+      "start": "1:14:30",
+      "end": "1:21:33",
+      "topics": ["torpedo-boats", "destroyers", "ship-stability", "ship-design", "naval-architecture", "ultimate-admiral-dreadnoughts"],
+      "summary": "Even the game's own automatic torpedo-boat design has severe pitch and roll, showing that the problem is not merely an eccentric player layout.",
+      "body": "Dr. Clarke tests the torpedo-boat hull after deciding destroyer research looks pointless under the revised early-game rules. The automatic design also produces very poor pitch, roll, and weight margins, so the failure cannot be blamed only on his component placement. Reducing speed and altering beam still does not produce a convincing usable craft. He contrasts this with earlier versions, in which small ships could be imperfect yet remain within workable margins. The mechanic makes the early campaign feel like a technology lock and tempts players to skip the era, at the cost of inheriting implausible AI-generated ships.",
+      "sourcePath": "src/transcripts/txt/2023-11-13_T19-00-22_check-campaign-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_qqou-Qq8liw.txt",
+      "evidence": [{"start": "1:14:30", "end": "1:21:33", "note": "The automatic torpedo-boat design remains unstable despite speed and beam changes, reinforcing his early-game concern."}]
     },
     {
       "id": "singapore-defense-through-regional-depth",
@@ -159,7 +190,7 @@
       "slug": "singapore-defense-through-regional-depth",
       "title": "Defending Singapore through fleet strength and regional depth",
       "kind": "qa",
-      "start": "1:29:19",
+      "start": "1:29:18",
       "end": "1:30:23",
       "topics": ["singapore-naval-base", "fleet-basing", "naval-presence", "maritime-strategy"],
       "summary": "A question about a Chinese move against Singapore leads to a defense plan built around a reinforced local squadron, an Indonesian ally, and support across the surrounding region.",
@@ -167,7 +198,7 @@
       "question": "Are you worried about China seizing Singapore?",
       "answerShort": "Not particularly: Singapore has three battleships and three light cruisers, while allied Indonesia is being heavily reinforced to add regional depth.",
       "sourcePath": "src/transcripts/txt/2023-11-13_T19-00-22_check-campaign-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_qqou-Qq8liw.txt",
-      "evidence": [{"start": "1:29:19", "end": "1:30:23", "note": "He answers a concern about China taking Singapore by describing local fleet strength and support from allied Indonesia."}]
+      "evidence": [{"start": "1:29:18", "end": "1:30:23", "note": "He answers a concern about China taking Singapore by describing local fleet strength and support from allied Indonesia."}]
     },
     {
       "id": "basic-steam-engine-stability-bug-hypothesis",
@@ -175,13 +206,13 @@
       "slug": "basic-steam-engine-stability-bug-hypothesis",
       "title": "Triple-expansion engines reveal a possible stability bug",
       "kind": "notable_point",
-      "start": "1:31:59",
+      "start": "1:32:23",
       "end": "1:36:20",
       "topics": ["marine-engineering", "triple-expansion-engines", "ship-stability", "ship-design"],
       "summary": "A refit with triple-expansion machinery suddenly produces acceptable stability, suggesting the basic steam-engine calculation may be causing the early-design failures.",
       "body": "The machinery upgrade changes more than propulsion efficiency: the battleship's stability falls into a workable range. Dr. Clarke can then restore armor while keeping the design stable and efficient. That result gives him a concrete hypothesis for the earlier failures, namely that the basic steam-engine model may be feeding an incorrect value into the stability calculation. The discovery also explains why later technology can rescue designs that appear almost unusable at campaign start.",
       "sourcePath": "src/transcripts/txt/2023-11-13_T19-00-22_check-campaign-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_qqou-Qq8liw.txt",
-      "evidence": [{"start": "1:31:59", "end": "1:36:20", "note": "After fitting triple-expansion engines, he observes acceptable stability and proposes a basic-engine calculation issue."}]
+      "evidence": [{"start": "1:32:23", "end": "1:36:20", "note": "After fitting triple-expansion engines, he observes acceptable stability and proposes a basic-engine calculation issue."}]
     }
   ]
 }

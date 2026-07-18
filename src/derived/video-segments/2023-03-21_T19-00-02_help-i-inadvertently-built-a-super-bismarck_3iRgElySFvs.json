@@ -7,7 +7,8 @@
     "naval-gunnery",
     "anti-submarine-warfare",
     "naval-strategy",
-    "alternate-history"
+    "alternate-history",
+    "warship-simulations"
   ],
   "needsFurtherProcessing": false,
   "segments": [
@@ -96,6 +97,20 @@
       "evidence": [{ "start": "55:52", "end": "57:21", "note": "The transcript relates the simulated armoured-cruiser result to Japanese thinking about four armoured cruisers supporting four battleships." }]
     },
     {
+      "id": "super-bismarck-denmark-strait-counterfactual-designs",
+      "videoId": "3iRgElySFvs",
+      "slug": "super-bismarck-denmark-strait-counterfactual-designs",
+      "title": "Setting up an alternate Denmark Strait battle",
+      "kind": "chapter",
+      "start": "58:06",
+      "end": "1:04:50",
+      "topics": ["battlecruisers", "battleships", "hms-hood", "hms-agincourt", "scharnhorst-class", "bismarck-class", "18-inch-guns", "alternate-history", "ship-design", "warship-simulations"],
+      "summary": "The setup exposes the counterfactual assumptions before 18-inch British capital ships face a Scharnhorst-style cruiser and an enlarged Bismarck-type battleship.",
+      "body": "The stream rebuilds the force mix of the Battle of the Denmark Strait as a counterfactual design exercise rather than a claim about the historical ships. Britain receives an 18-inch-gun battleship imagined as a larger Agincourt or Queen Elizabeth-type design and an 18-inch-gun battlecruiser based on Hood. Germany receives a heavily protected Scharnhorst-style cruiser alongside an enlarged Bismarck-type battleship, with Dr. Clarke explicitly noting that the cruiser is not a historically accurate reproduction. Opening here makes the assumptions visible before the battle begins, so the later result can be read as a test of roles, range, armour, and game behaviour rather than a replay of 1941.",
+      "sourcePath": "src/transcripts/txt/2023-03-21_T19-00-02_help-i-inadvertently-built-a-super-bismarck_3iRgElySFvs.txt",
+      "evidence": [{ "start": "58:06", "end": "1:04:50", "note": "The transcript sets a Denmark Strait counterfactual, builds an acknowledged non-historical Scharnhorst-style cruiser, and pairs an 18-inch Agincourt or Queen Elizabeth-type battleship with an 18-inch Hood-style battlecruiser." }]
+    },
+    {
       "id": "super-bismarck-battlecruiser-close-range-vulnerability",
       "videoId": "3iRgElySFvs",
       "slug": "super-bismarck-battlecruiser-close-range-vulnerability",
@@ -103,9 +118,9 @@
       "kind": "notable_point",
       "start": "1:05:22",
       "end": "1:10:07",
-      "topics": ["battlecruisers", "battleships", "naval-tactics", "naval-gunnery", "range-control"],
+      "topics": ["battlecruisers", "battleships", "18-inch-guns", "naval-tactics", "naval-gunnery", "range-control"],
       "summary": "A simulated Denmark Strait-style action shows why a battlecruiser should not accept battleship fire at ranges where even its secondary guns can engage.",
-      "body": "The British formation includes an 18-inch-gun battlecruiser inspired by Hood and an enlarged Agincourt-type battleship, while the German side fields strengthened Bismarck-type ships. Automatic control closes the battlecruiser to roughly 6.6 kilometres, where armour and speed no longer compensate for exposure to battleship-calibre fire. Courageous is sunk while the more distant battleship is initially ignored, demonstrating how target concentration can punish the more vulnerable capital ship. The passage is a useful warning that battlecruiser effectiveness depends on preserving tactical choices rather than fighting as a short-range battleship.",
+      "body": "Once the counterfactual fleet enters action, automatic control closes the British 18-inch-gun battlecruiser to roughly 6.6 kilometres. At that distance armour and speed no longer compensate for exposure to battleship-calibre fire and even the secondary batteries are in range. The German force concentrates on Courageous while the British battleship remains farther away, and the battlecruiser is sunk. The passage is a useful warning that battlecruiser effectiveness depends on preserving tactical choices rather than fighting as a short-range battleship.",
       "sourcePath": "src/transcripts/txt/2023-03-21_T19-00-02_help-i-inadvertently-built-a-super-bismarck_3iRgElySFvs.txt",
       "evidence": [{ "start": "1:05:22", "end": "1:10:07", "note": "The transcript criticises closing an 18-inch-gun battlecruiser into secondary-gun range, notes the 6.6-kilometre engagement distance, and observes Courageous being sunk under concentrated fire." }]
     },
@@ -130,14 +145,17 @@
       "title": "Could mass minelaying submarines close British waters?",
       "kind": "qa",
       "start": "1:16:38",
-      "end": "1:19:26",
-      "topics": ["minelaying-submarines", "mine-warfare", "royal-navy", "anti-submarine-warfare"],
+      "end": "1:23:08",
+      "topics": ["minelaying-submarines", "mine-warfare", "minesweepers", "flower-class-corvettes", "royal-navy", "anti-submarine-warfare"],
       "summary": "The answer weighs a German mass-minelaying submarine force against Britain's large minesweeping and patrol capacity.",
-      "body": "Minelaying submarines could be dangerous, but Britain already treated mines as a major threat and maintained a large force of minesweeping trawlers. Those vessels could work from ports for shorter periods than submarines had to remain at sea, easing crew and logistics demands. The attacker must seed a broad area, whereas the defender needs to clear only a usable channel through it. The resulting contest would start earlier, rather than leaving Britain without a response.",
+      "body": "Minelaying submarines could be dangerous, but Britain already treated mines as a major threat and maintained a large force of minesweeping trawlers. Those vessels could work from ports for shorter periods than submarines had to remain at sea, easing crew and logistics demands. The attacker must seed a broad area, whereas the defender needs to clear only a usable channel through it. That expectation also shaped Flower-class corvettes and many destroyers, whose original fits accommodated minesweeping gear. The resulting contest would start earlier, rather than leaving Britain without a response.",
       "question": "Could a mass German force of minelaying submarines close British waters?",
       "answerShort": "It would create serious work, but Britain's established minesweeping and patrol capacity would expand earlier and limit the strategic effect.",
       "sourcePath": "src/transcripts/txt/2023-03-21_T19-00-02_help-i-inadvertently-built-a-super-bismarck_3iRgElySFvs.txt",
-      "evidence": [{ "start": "1:16:38", "end": "1:19:26", "note": "A viewer asks about mass minelaying submarines; the response explains British trawler-based minesweeping and operational endurance." }]
+      "evidence": [
+        { "start": "1:16:38", "end": "1:19:26", "note": "A viewer asks about mass minelaying submarines, and the response explains British trawler-based minesweeping, operational endurance, and the need to clear only a channel." },
+        { "start": "1:21:35", "end": "1:23:08", "note": "The answer resumes by explaining that Flower-class corvettes and many destroyers accommodated minesweeping gear because Britain expected a serious mine threat." }
+      ]
     },
     {
       "id": "super-bismarck-mines-create-denial-not-free-manoeuvre",
@@ -248,12 +266,12 @@
       "title": "Radar quality includes whether it keeps working",
       "kind": "notable_point",
       "start": "1:57:45",
-      "end": "1:58:00",
+      "end": "1:57:59",
       "topics": ["naval-radar", "royal-navy", "kriegsmarine", "fire-control", "military-maintenance"],
       "summary": "British radar's advantage is presented as an operational reliability advantage as well as a nominal technical comparison with German sets.",
       "body": "The stream notes that the British ships have the better radar fit in the scenario and relates that choice to wartime experience. German naval radar could be capable, but its value was reduced when equipment failed or could not be kept operating reliably. A sensor that is unavailable at the decisive moment cannot provide range or target information, regardless of its paper performance. The short passage therefore anticipates the broader discussion of maintainability as a combat capability.",
       "sourcePath": "src/transcripts/txt/2023-03-21_T19-00-02_help-i-inadvertently-built-a-super-bismarck_3iRgElySFvs.txt",
-      "evidence": [{ "start": "1:57:45", "end": "1:58:00", "note": "The transcript says British ships generally had better radar in these scenarios because German radar had a tendency to break down." }]
+      "evidence": [{ "start": "1:57:45", "end": "1:57:59", "note": "The transcript says British ships generally had better radar in these scenarios because German radar had a tendency to break down." }]
     },
     {
       "id": "super-bismarck-maintainable-technology-wins",
@@ -292,12 +310,15 @@
       "title": "What would a 45,000-ton treaty battleship demand?",
       "kind": "notable_point",
       "start": "2:05:43",
-      "end": "2:14:06",
-      "topics": ["washington-naval-treaty", "king-george-v-class", "battleships", "alternate-history", "ship-design"],
+      "end": "2:17:33",
+      "topics": ["washington-naval-treaty", "king-george-v-class", "battleships", "16-inch-guns", "18-inch-guns", "alternate-history", "ship-design"],
       "summary": "An alternate 45,000-ton limit invites a larger King George V-type design with heavier guns, more speed, and a very different treaty balance.",
-      "body": "The design exercise asks how Britain might respond if the acceptable capital-ship limit were 45,000 tons in a world of 18-inch-gun ships. It points toward a faster, more heavily armed King George V-type ship, with twelve 16-inch guns arranged as an eight-gun forward group and a four-gun after turret. Dr. Clarke argues that the United States and Japan would also be pushed toward 18-inch weapons, while British firms might market their 16-inch gun as the export alternative. Treaty limits matter because they set a common international design problem rather than merely placing a number in a naval agreement.",
+      "body": "The design exercise asks how Britain might respond if the acceptable capital-ship limit were 45,000 tons in a world of 18-inch-gun ships. It points toward a faster, more heavily armed King George V-type ship, with twelve 16-inch guns arranged as an eight-gun forward group and a four-gun after turret. Dr. Clarke argues that the United States and Japan would also be pushed toward 18-inch weapons, while Vickers might market its 16-inch gun as the export alternative. Treaty limits matter because they set a common international design problem rather than merely placing a number in a naval agreement.",
       "sourcePath": "src/transcripts/txt/2023-03-21_T19-00-02_help-i-inadvertently-built-a-super-bismarck_3iRgElySFvs.txt",
-      "evidence": [{ "start": "2:05:43", "end": "2:14:06", "note": "The transcript sketches a British response to a 45,000-ton limit and considers 16-inch and 18-inch-gun capital ships under a different treaty framework." }]
+      "evidence": [
+        { "start": "2:05:43", "end": "2:15:00", "note": "The transcript sketches a British response to a 45,000-ton limit and says the United States and Japan would probably build 18-inch-gun ships in that treaty framework." },
+        { "start": "2:17:15", "end": "2:17:33", "note": "The transcript imagines Vickers selling its 16-inch gun in a world where 18-inch weapons have become the leading capital-ship armament." }
+      ]
     },
     {
       "id": "super-bismarck-industry-limited-german-battleships",
@@ -342,6 +363,20 @@
       "evidence": [{ "start": "2:34:03", "end": "2:34:46", "note": "The transcript outlines target identification by fire and illumination, including Tribal-class high-explosive and star-shell use." }]
     },
     {
+      "id": "super-bismarck-two-stage-simulation-method",
+      "videoId": "3iRgElySFvs",
+      "slug": "super-bismarck-two-stage-simulation-method",
+      "title": "Two simulation tools answer different questions",
+      "kind": "notable_point",
+      "start": "2:38:02",
+      "end": "2:38:31",
+      "topics": ["warship-simulations", "naval-wargaming", "ship-design", "alternate-history"],
+      "summary": "Ultimate Admiral is used as a design sandbox before the resulting ship is transferred into a modified Harpoon model for combat testing.",
+      "body": "Dr. Clarke explains that Ultimate Admiral is used to test an idea and work out whether a proposed warship can be built within the design constraints. The resulting ship is then programmed into his adapted version of Harpoon for battle simulations. The two tools therefore answer different questions: one explores whether the machinery, armour, and weapons can fit, while the other explores how the completed design might fight. Opening here clarifies why the on-screen battles are design experiments rather than complete historical verdicts on the ships involved.",
+      "sourcePath": "src/transcripts/txt/2023-03-21_T19-00-02_help-i-inadvertently-built-a-super-bismarck_3iRgElySFvs.txt",
+      "evidence": [{ "start": "2:38:02", "end": "2:38:31", "note": "The transcript says Ultimate Admiral is used to test whether a ship idea can be built, after which the design is programmed into an adapted Harpoon model for combat simulations." }]
+    },
+    {
       "id": "super-bismarck-commanders-wanted-to-see",
       "videoId": "3iRgElySFvs",
       "slug": "super-bismarck-commanders-wanted-to-see",
@@ -353,7 +388,10 @@
       "summary": "Armoured conning towers promised protection, but commanders often preferred a position from which they could actually see the battle.",
       "body": "The stream notes the recurring tension between protection and situational awareness. Conning towers could be heavily armoured, yet captains and admirals often wanted to observe directly rather than command from an enclosed space. The game treats the conning tower as the captain's essential protection, but Dr. Clarke contrasts that assumption with actual command behaviour. The Jutland reference illustrates the point: Jellicoe's staff repeatedly tried to draw him back under cover while he sought a view of the action.",
       "sourcePath": "src/transcripts/txt/2023-03-21_T19-00-02_help-i-inadvertently-built-a-super-bismarck_3iRgElySFvs.txt",
-      "evidence": [{ "start": "2:39:12", "end": "2:39:42", "note": "The transcript discusses British commanders leaving conning towers to see the action and mentions Jellicoe's staff at Jutland." }]
+      "evidence": [
+        { "start": "2:36:51", "end": "2:37:12", "note": "The transcript contrasts the game's assumption that the conning tower keeps the captain alive with Dr. Clarke's objection to that model." },
+        { "start": "2:39:12", "end": "2:39:42", "note": "The transcript discusses British commanders leaving conning towers to see the action and mentions Jellicoe's staff at Jutland." }
+      ]
     },
     {
       "id": "super-bismarck-quadruple-turret-simulation-caveat",
