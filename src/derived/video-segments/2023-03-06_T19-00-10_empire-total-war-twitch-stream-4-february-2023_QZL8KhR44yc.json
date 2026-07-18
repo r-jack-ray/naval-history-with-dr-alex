@@ -6,6 +6,7 @@
     "royal-navy",
     "british-army",
     "military-tactics",
+    "military-strategy",
     "native-american-history",
     "age-of-sail",
     "naval-strategy",
@@ -13,6 +14,20 @@
   ],
   "needsFurtherProcessing": "no",
   "segments": [
+    {
+      "id": "high-ground-and-reverse-slope-cover",
+      "videoId": "QZL8KhR44yc",
+      "slug": "high-ground-and-reverse-slope-cover",
+      "title": "Why high ground is not automatically strong",
+      "kind": "notable_point",
+      "start": "10:29",
+      "end": "11:04",
+      "topics": ["empire-total-war", "military-tactics", "terrain", "artillery-tactics", "defensive-positions"],
+      "summary": "A deployment decision shows why a conspicuous hill can be weaker than a lower position sheltered from long-range artillery.",
+      "body": "Dr. Clarke warns that height alone does not make a strong defensive position. The apparent high ground offers too little room to arrange the force effectively, while occupying it could tempt an attacking army to become fixed in place. He instead deploys just behind a shallow depression so enemy artillery has more difficulty focusing on his troops at long range. The game example illustrates a broader tactical lesson: terrain must be judged by fields of fire, cover, room to maneuver, and the mission, not by elevation alone.",
+      "sourcePath": "src/transcripts/txt/2023-03-06_T19-00-10_empire-total-war-twitch-stream-4-february-2023_QZL8KhR44yc.txt",
+      "evidence": [{"start": "10:29", "end": "11:04", "note": "Dr. Clarke rejects an apparently strong high position because it restricts deployment and instead uses a shallow depression to reduce long-range artillery exposure."}]
+    },
     {
       "id": "british-army-navy-relationship",
       "videoId": "QZL8KhR44yc",
@@ -69,7 +84,7 @@
       "end": "1:14:47",
       "topics": ["rogers-rangers", "colonial-warfare", "special-forces"],
       "summary": "Rogers' Rangers are offered as the closest period comparison to the SAS, with an explicit warning that the game does not model them that way.",
-      "body": "Asked whether the period had anything like the SAS, Dr. Clarke identifies Rogers' Rangers as the nearest comparison available in the game's setting. He immediately qualifies the analogy: Empire: Total War does not let the unit operate in the way that comparison suggests. The answer is therefore a useful starting point for comparing specialist formations, not a claim that an eighteenth-century unit was institutionally equivalent to the modern SAS.",
+      "body": "Asked whether the period had anything like the SAS, Dr. Clarke identifies Rogers' Rangers as the nearest comparison available in the game's setting. Empire: Total War does not let the unit operate in the way that comparison suggests. That limitation keeps the analogy functional and approximate rather than literal. The answer is therefore a useful starting point for comparing specialist formations, not a claim that an eighteenth-century unit was institutionally equivalent to the modern SAS.",
       "question": "Was there an SAS-like unit in this period?",
       "answerShort": "Rogers' Rangers are probably the closest comparison, though they should not be treated as a direct modern equivalent.",
       "sourcePath": "src/transcripts/txt/2023-03-06_T19-00-10_empire-total-war-twitch-stream-4-february-2023_QZL8KhR44yc.txt",
@@ -104,6 +119,20 @@
       "evidence": [{"start": "1:22:07", "end": "1:22:45", "note": "The transcript contrasts colonial dragoons with horse guards and discusses their recruitment backgrounds."}]
     },
     {
+      "id": "recruitment-centers-and-campaign-geography",
+      "videoId": "QZL8KhR44yc",
+      "slug": "recruitment-centers-and-campaign-geography",
+      "title": "Targeting recruitment centers in a continental campaign",
+      "kind": "notable_point",
+      "start": "1:31:58",
+      "end": "1:33:20",
+      "topics": ["empire-total-war", "military-strategy", "force-generation", "military-recruitment", "historical-games"],
+      "summary": "The campaign plan targets Philadelphia, Annapolis, and Virginia to cut the opposing army off from professional troop production.",
+      "body": "Dr. Clarke treats cities and regional buildings as sources of military power rather than merely territory to occupy. His plan is to seize Philadelphia, Annapolis, and Virginia quickly because the game ties those areas to professional soldiers, line infantry, and yeomanry. He also wants to fight the existing American field army while it is displaced from those recruitment centers, forcing it to choose between defended routes and longer movements away from replacements. This is analysis of Empire: Total War's campaign system, not a claim that the real eighteenth-century geography worked according to those exact rules. The durable strategic lesson is that force generation, reinforcement distance, and operational geography can make a production center more valuable than an otherwise larger area of land.",
+      "sourcePath": "src/transcripts/txt/2023-03-06_T19-00-10_empire-total-war-twitch-stream-4-february-2023_QZL8KhR44yc.txt",
+      "evidence": [{"start": "1:31:58", "end": "1:33:20", "note": "Dr. Clarke plans to seize Philadelphia, Annapolis, and Virginia to remove professional recruiting capacity and draw the American field army away from its source of troops."}]
+    },
+    {
       "id": "steamships-in-empire-total-war",
       "videoId": "QZL8KhR44yc",
       "slug": "steamships-in-empire-total-war",
@@ -113,7 +142,7 @@
       "end": "1:37:38",
       "topics": ["steamships", "age-of-sail", "naval-wargaming"],
       "summary": "The game gives steamships tactical advantages, but Dr. Clarke explains why a strong force of third rates can still defeat them.",
-      "body": "Dr. Clarke judges the game's steamships as useful in particular tactical circumstances rather than automatically superior. Their model is essentially frigate-like, so a well-handled battle line of third rates can often beat them. This is a watch point for separating a game's balance choices from a simple story of steam immediately displacing sail.",
+      "body": "Dr. Clarke judges the game's steamships as useful in particular tactical circumstances rather than automatically superior. Their model is essentially frigate-like, so a well-handled battle line of third rates can often beat them. Steam therefore functions as a specialized tactical option within this ruleset rather than a universal upgrade. This is a watch point for separating a game's balance choices from a simple story of steam immediately displacing sail.",
       "question": "Are steamships worth using in Empire: Total War?",
       "answerShort": "They have tactical advantages, but a good fleet of third rates can usually defeat them; the game treats them more like specialized frigates than an automatic replacement for the sailing battle line.",
       "sourcePath": "src/transcripts/txt/2023-03-06_T19-00-10_empire-total-war-twitch-stream-4-february-2023_QZL8KhR44yc.txt",
@@ -196,12 +225,28 @@
       "title": "A navy's cost in a trade-based empire",
       "kind": "notable_point",
       "start": "2:11:01",
-      "end": "2:13:46",
+      "end": "2:11:38",
       "topics": ["naval-strategy", "naval-finance", "trade-warfare", "blockades"],
       "summary": "Campaign play illustrates the strategic cost of underfunding naval power in a trade-dependent empire.",
       "body": "Dr. Clarke explains that he initially prioritized a large army and allowed the navy to decline because no opponent immediately threatened an invasion of Britain. French and Spanish blockades then disrupted a trade-based economy, forcing a naval rebuilding program. Once the economy recovered, it had to carry both the renewed fleet and the large army needed for the North American campaign. The point is a useful strategic model: maritime security is not separate from land power when trade revenues pay for both fleets and armies.",
       "sourcePath": "src/transcripts/txt/2023-03-06_T19-00-10_empire-total-war-twitch-stream-4-february-2023_QZL8KhR44yc.txt",
-      "evidence": [{"start": "2:11:01", "end": "2:13:46", "note": "The stream links inadequate naval strength, blockade-driven trade disruption, economic decline, and rebuilding the fleet."}]
+      "evidence": [{"start": "2:11:01", "end": "2:11:38", "note": "The stream links inadequate naval strength, blockade-driven trade disruption, economic decline, and rebuilding the fleet."}]
+    },
+    {
+      "id": "operational-tempo-and-costly-assaults",
+      "videoId": "QZL8KhR44yc",
+      "slug": "operational-tempo-and-costly-assaults",
+      "title": "When speed justified a costly assault",
+      "kind": "qa",
+      "start": "2:11:56",
+      "end": "2:13:46",
+      "topics": ["empire-total-war", "operational-tempo", "military-strategy", "native-american-armies", "force-generation", "naval-strategy"],
+      "summary": "Asked about committing infantry against elite Native warriors, Dr. Clarke explains why campaign tempo outweighed preserving every unit in this battle.",
+      "body": "The prompt challenges the wisdom of throwing ordinary infantry into an elite Native warrior unit. Dr. Clarke agrees that the move is not automatically sound, but says this battle was governed by speed: he needed to remove the Iroquois threat and turn to other problems. In the game, American forces around Philadelphia were gaining access to higher-quality troops while repeated Iroquois attacks prevented him from concentrating naval power. He therefore accepted a costly local action to improve his wider campaign position and free resources for the American and pirate threats. The answer illustrates operational tempo and competing priorities inside the scenario, while remaining a game-specific judgment rather than a claim about the historical conduct or quality of the peoples represented.",
+      "question": "Was it a good idea to commit infantry against an elite Native warrior unit?",
+      "answerShort": "Not as a general rule, but Dr. Clarke accepted the risk to finish the battle quickly, remove the Iroquois threat, and redirect forces before the American army and other campaign problems grew stronger.",
+      "sourcePath": "src/transcripts/txt/2023-03-06_T19-00-10_empire-total-war-twitch-stream-4-february-2023_QZL8KhR44yc.txt",
+      "evidence": [{"start": "2:11:56", "end": "2:13:46", "note": "The prompt questions the assault, and Dr. Clarke answers in terms of speed, American force growth, repeated Iroquois attacks, naval concentration, piracy, and trade disruption."}]
     },
     {
       "id": "squadron-control-and-wargame-limits",
@@ -227,7 +272,7 @@
       "end": "2:56:57",
       "topics": ["piracy", "royal-navy", "naval-strategy", "maritime-security"],
       "summary": "The campaign plan to seize pirate territories is connected to the real naval logic of denying pirates an infrastructure base.",
-      "body": "Dr. Clarke says the intended campaign solution is to capture the pirate zones and let their system collapse for lack of infrastructure. He connects that directly to the Royal Navy's historical approach: rather than treating piracy solely as a series of ship-to-ship encounters, remove the bases and support that make it sustainable. The note is a compact introduction to maritime security as control of shore infrastructure as well as sea space.",
+      "body": "Dr. Clarke says the intended campaign solution is to capture the pirate zones and let their system collapse for lack of infrastructure. He connects that directly to the Royal Navy's historical approach: rather than treating piracy solely as a series of ship-to-ship encounters, remove the bases and support that make it sustainable. The comparison shifts attention from repeatedly chasing raiders to controlling the shore facilities that allow them to operate. It is a compact introduction to maritime security as control of infrastructure as well as sea space.",
       "sourcePath": "src/transcripts/txt/2023-03-06_T19-00-10_empire-total-war-twitch-stream-4-february-2023_QZL8KhR44yc.txt",
       "evidence": [{"start": "2:56:37", "end": "2:56:57", "note": "Dr. Clarke explicitly connects taking pirate infrastructure to how the Royal Navy dealt with piracy."}]
     },
@@ -241,7 +286,7 @@
       "end": "2:58:33",
       "topics": ["british-army", "royal-artillery", "royal-engineers", "military-professionalism"],
       "summary": "A brief explanation of why the British Army looked to artillery and engineer officers for senior leadership.",
-      "body": "Dr. Clarke contrasts branches in which commissions could be purchased with artillery and engineers, where officers had to pass examinations. That professional requirement made those branches a recurring source of capable senior leaders. It also complements the earlier discussion of the navy's practical relationship with the army's professional institutions.",
+      "body": "Dr. Clarke contrasts branches in which commissions could be purchased with artillery and engineers, where officers had to pass examinations. That professional requirement made those branches a recurring source of capable senior leaders. The example links an institutional rule about officer entry to the army's supply of technical and command expertise. It also complements the earlier discussion of the navy's practical relationship with the army's professional institutions.",
       "sourcePath": "src/transcripts/txt/2023-03-06_T19-00-10_empire-total-war-twitch-stream-4-february-2023_QZL8KhR44yc.txt",
       "evidence": [{"start": "2:58:11", "end": "2:58:33", "note": "The transcript explains that artillery and engineer officers passed examinations rather than buying commissions."}]
     }
