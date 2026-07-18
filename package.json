@@ -14,20 +14,21 @@
     "test": "npm run clean && npm run build && node --test \"dist/**/*.test.js\"",
     "check": "npm run check:types && npm test",
 
-    "list:files-that-need-processing": "node src/scripts/list-files-that-need-processing.js",
+    "list:files-that-need-processing": "tsx src/scripts/list-files-that-need-processing.ts",
+    "rank:video-segment-audit-risk": "tsx src/scripts/rank-video-segment-audit-risk.ts",
 
-    "rank:video-segment-audit-risk": "tsc -p tsconfig.video-segment-audit-risk.json && node .tmp/video-segment-audit-risk-build/scripts/rank-video-segment-audit-risk.js",
     "audit:site-content": "node .codex/hooks/site-content-pipeline-lock.mjs run --build --purpose site-content-audit -- node dist/scripts/audit-site-content.js",
-    "audit:transcript-schedules": "npm run build && node dist/scripts/audit-transcript-schedules.js",
     "diagnose:site-content-duplicates": "npm run build && node dist/scripts/diagnose-site-content-duplicates.js",
     "sync:video-topics": "node .codex/hooks/site-content-pipeline-lock.mjs run --build --purpose video-topic-sync --recover-stale -- node dist/scripts/sync-video-topics.js",
     "audit:topic-normalization": "npm run build && node dist/scripts/audit-topic-normalization.js",
-    "generate:site-data": "node .codex/hooks/site-content-pipeline-lock.mjs run --build --purpose site-archive-generation --recover-stale -- node dist/scripts/generate-site-data.js",
     "append:site-content-processing-log": "node .codex/hooks/site-content-pipeline-lock.mjs append-log",
+
+    "audit:transcript-schedules": "npm run build && node dist/scripts/audit-transcript-schedules.js",
+    "audit:video-timestamp-alignment": "npm run build && node dist/scripts/audit-video-timestamp-alignment.js",
+    "report:transcript-problems": "npm run build && node dist/scripts/report-transcript-problems.js",
 
     "fetch:video-links": "npm run build && node dist/scripts/get-channel-video-links.js --api-key-file reports/youtube-api-key.txt",
     "fetch:video-metadata": "npm run build && node dist/scripts/fetch-video-metadata.js --api-key-file reports/youtube-api-key.txt",
-
     "alternate:extract:saved-channel-html": "npm run build && node dist/scripts/extract-saved-channel-html.js",
     "alternate:extract:live-streams-html": "npm run build && node dist/scripts/extract-live-streams-html.js",
     "alternate:extract:videos-html": "npm run alternate:extract:saved-channel-html -- --tab videos",
@@ -36,18 +37,18 @@
     "alternate:fetch:transcripts": "npm run build && node dist/scripts/fetch-transcript-batch.js",
     "alternate:fetch:transcripts:retry": "npm run alternate:fetch:transcripts -- --retry-failed",
     "alternate:fetch:transcripts:retry:safe": "npm run alternate:fetch:transcripts -- --retry-failed --force --request-delay-ms 60000",
-    "report:transcript-problems": "npm run build && node dist/scripts/report-transcript-problems.js",
-    "migrate:video-timestamps": "npm run build && node dist/scripts/migrate-video-timestamps.js",
-    "audit:video-timestamp-alignment": "npm run build && node dist/scripts/audit-video-timestamp-alignment.js",
 
+    "migrate:video-timestamps": "npm run build && node dist/scripts/migrate-video-timestamps.js",
+
+    "generate:site-data": "node .codex/hooks/site-content-pipeline-lock.mjs run --build --purpose site-archive-generation --recover-stale -- node dist/scripts/generate-site-data.js",
     "site:dev": "astro dev",
+    "site:preview": "astro preview",
     "site:check": "npm run generate:site-data && npm run site:check:generated",
     "site:check:generated": "astro check --tsconfig tsconfig.astro.json",
     "site:build": "node .codex/hooks/site-build-if-changed.mjs --generate",
     "site:build:generated": "node .codex/hooks/site-build-if-changed.mjs",
     "site:build:full": "astro build --silent && pagefind --site site/dist",
     "check:rendered-video-dates": "npm run build && node dist/scripts/check-rendered-video-dates.js",
-    "site:preview": "astro preview",
 
     "preaudit:lighthouse:home": "node -e \"require('fs').mkdirSync('reports/lighthouse', { recursive: true })\"",
     "audit:lighthouse:home": "lighthouse https://r-jack-ray.github.io/naval-history-with-dr-alex/ --output=html --output=json --output-path=reports/lighthouse/home --chrome-flags=\"--headless\"",
@@ -60,6 +61,7 @@
     "astro": "^7.0.6",
     "lighthouse": "^13.4.0",
     "pagefind": "^1.5.2",
+    "tsx": "^4.23.1",
     "typescript": "^5.7.0"
   },
   "dependencies": {
