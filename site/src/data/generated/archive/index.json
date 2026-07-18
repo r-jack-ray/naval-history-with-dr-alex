@@ -11,8 +11,8 @@
   },
   "counts": {
     "videos": 2061,
-    "segments": 51398,
-    "topics": 19385
+    "segments": 51558,
+    "topics": 19500
   },
   "segmentSharding": {
     "algorithm": "sha256-video-id-mod",
@@ -22,19 +22,19 @@
     "videos": {
       "path": "./videos.json",
       "count": 2061,
-      "sha256": "9b49f3084f76a0bfd6a5ed8f974b0d2c053200af4e0c1ea2a8584f0e17c50ce3"
+      "sha256": "c979c706cb148f94d224a3c0297554f27bd99595b325e0b63bab6c1bf64080cc"
     },
     "topics": {
       "path": "./topics.json",
-      "count": 19385,
-      "sha256": "0ac9b8865a2885d9df170084af8661f3751f9c608fd4d0f8dc471a878315d88d"
+      "count": 19500,
+      "sha256": "3e6d86046ee0040d95bdac615c0ed44c02f47b50bbf70a9cb84d3877c7345e9a"
     },
     "segmentBuckets": [
       {
         "id": "00",
         "path": "./segments/00.json",
         "count": 727,
-        "sha256": "572146c96c9ab0a60041d7abd8a4c9596fbad65d0709971e02b55e108bec63d0"
+        "sha256": "a877f202c990fe76cd47a8a2bb61ce603709053af75a5f3457e162e3d029fe20"
       },
       {
         "id": "01",
@@ -45,8 +45,8 @@
       {
         "id": "02",
         "path": "./segments/02.json",
-        "count": 752,
-        "sha256": "0e949d135d11afa2a4b99b23d89a834b80883b1cf3c7333ba878ed18129bb25b"
+        "count": 767,
+        "sha256": "d6bd59a0dba16bd942e066b3cf2c4df3a20d8e6171f9396f339ce4788118ed31"
       },
       {
         "id": "03",
@@ -63,8 +63,8 @@
       {
         "id": "05",
         "path": "./segments/05.json",
-        "count": 785,
-        "sha256": "a63690a33390bf352fb947cd7792e8e418ec0821a9fbc92ef66b8aac1d4f277a"
+        "count": 805,
+        "sha256": "b5c3e69c532d729fd66cbaf9ca34c1caafb477c86c5dfac0e99eb068feb1a0a1"
       },
       {
         "id": "06",
@@ -75,14 +75,14 @@
       {
         "id": "07",
         "path": "./segments/07.json",
-        "count": 1217,
-        "sha256": "638c50f5d9f7b9914748199868894075ef384bde2bc42f39bf793f2b589be793"
+        "count": 1218,
+        "sha256": "63160814247fdfe7e50e132c626fa420f622de7efd752eea1f03821d3c44f39e"
       },
       {
         "id": "08",
         "path": "./segments/08.json",
-        "count": 987,
-        "sha256": "2524c2f149867eb9bf19023a076eb78b7bd093521306aa945777b5af12531ec8"
+        "count": 1006,
+        "sha256": "7a013bdb2de4ffc54964ebd033ec8202ea1f61ec77d8b39af72dd98913cbcceb"
       },
       {
         "id": "09",
@@ -93,8 +93,8 @@
       {
         "id": "0a",
         "path": "./segments/0a.json",
-        "count": 1040,
-        "sha256": "553bc8a71b8f0cd3dfac1c2e1fd5a76a3050839bb3d3fe1b08cd46b90e066ffd"
+        "count": 1048,
+        "sha256": "6d9726a786bf3c94e4f06ddd0dd560843e0dba7a64643e000c3453dcddc0f678"
       },
       {
         "id": "0b",
@@ -129,8 +129,8 @@
       {
         "id": "10",
         "path": "./segments/10.json",
-        "count": 586,
-        "sha256": "6f57607c5c9415aa0aa514fcec768eddc9f190f2a73d5373362e76612f9a62f9"
+        "count": 590,
+        "sha256": "ecdf8831ff870f2c8e9d728a12c6952505a77f9cc83d5bf9ba4a12618066fcc9"
       },
       {
         "id": "11",
@@ -159,8 +159,8 @@
       {
         "id": "15",
         "path": "./segments/15.json",
-        "count": 725,
-        "sha256": "978356a745a535ba57a6583f8f0b9042fc25189b6b358e3ce4c65acb6ba62f33"
+        "count": 728,
+        "sha256": "a351b81c867e81f5d9ade11bffad893f8c3fe9a47594ad774fd450ba2332e0a0"
       },
       {
         "id": "16",
@@ -183,8 +183,8 @@
       {
         "id": "19",
         "path": "./segments/19.json",
-        "count": 766,
-        "sha256": "63d4a77ecf06e74abdea5751f066d0a59e0efdff460b6a5ab5b65d9e873c19db"
+        "count": 771,
+        "sha256": "faadbcefc9463cf8644f3969086e1d08da1e239c210b52f92788c8b2c5b1014d"
       },
       {
         "id": "1a",
@@ -220,7 +220,7 @@
         "id": "1f",
         "path": "./segments/1f.json",
         "count": 1022,
-        "sha256": "c4ddcea6d0b96759b44a9fd10c342e0ad31a35cd6362b7da4dbee01a46765c1c"
+        "sha256": "d3f32a8bcebb52e11b6d9f1902f512a98f7a260ff32ee85c6dc8a8d39caf7014"
       },
       {
         "id": "20",
@@ -255,8 +255,8 @@
       {
         "id": "25",
         "path": "./segments/25.json",
-        "count": 909,
-        "sha256": "791ca0a0ce0745985b38ce62d951265bdfc00fc844f737f51f7166cc38e3a92c"
+        "count": 913,
+        "sha256": "1b0988bc805aa29f7c60c280210655b424095fd1b633ef2145a9d192a6cbc57b"
       },
       {
         "id": "26",
@@ -273,8 +273,8 @@
       {
         "id": "28",
         "path": "./segments/28.json",
-        "count": 758,
-        "sha256": "dcb8c24f5fb2cf5c90b1b5b4d1727885e695dff74aa3b96bac8546b5fddb9225"
+        "count": 763,
+        "sha256": "e63e31b95350ffc3d2bed1c75651cd2338878ae46f4c2cf8876440f5d58a82a5"
       },
       {
         "id": "29",
@@ -291,26 +291,26 @@
       {
         "id": "2b",
         "path": "./segments/2b.json",
-        "count": 762,
-        "sha256": "beead97d748a4eb4138bd6dc2b2fa9f28a49392fcedd6d6adf16d97e21ddb31a"
+        "count": 765,
+        "sha256": "d4652f57ea219d42e6d86175a5b8ea356933f4c9556187b1f5095c268793d40e"
       },
       {
         "id": "2c",
         "path": "./segments/2c.json",
-        "count": 791,
-        "sha256": "7e0ff871bdb44673ae6542010987f9f0e9cffe42250dccacd00566f5d6a0ec38"
+        "count": 808,
+        "sha256": "f8a4c507a13aa5e75bf175511dc475f0713b72507f584dc4a40bf07023e24719"
       },
       {
         "id": "2d",
         "path": "./segments/2d.json",
         "count": 967,
-        "sha256": "e3569eac56cde558a1b106774aceb2db4f53f0d952b0d14c2bafa757f0305381"
+        "sha256": "92c7a8688c2d8978a0f8cd52c5b7fe6ee23a98c233bce1626f4f7afe5d9272d3"
       },
       {
         "id": "2e",
         "path": "./segments/2e.json",
-        "count": 1107,
-        "sha256": "f67e4f405eeb16fa9286ab8f7b68c2bd08a29eacb7286bdb7c5feba8b0190986"
+        "count": 1111,
+        "sha256": "b8b720320ad2081c7bce2da1e73681fa998f7cefd7c2d9b42885fff680bb1274"
       },
       {
         "id": "2f",
@@ -346,13 +346,13 @@
         "id": "34",
         "path": "./segments/34.json",
         "count": 985,
-        "sha256": "901ce0f59d0a4b92b91f6efa6a8c31b1af3f6f40997e8913a4e000b5608ace54"
+        "sha256": "37cf5e7df0170616ffa2cbeab73cb6f7dd5a0af9b717665c91ab15b972827702"
       },
       {
         "id": "35",
         "path": "./segments/35.json",
-        "count": 845,
-        "sha256": "c785b3ee56061a6ca19021f92ade8f6a50693358f2f2cb6bc0464d9af479a922"
+        "count": 850,
+        "sha256": "3e75815eaa4dbd7305c723b2edc3f3ea3881e69efcb262f4495505058901bbb3"
       },
       {
         "id": "36",
@@ -363,8 +363,8 @@
       {
         "id": "37",
         "path": "./segments/37.json",
-        "count": 712,
-        "sha256": "558db65e7980ec8e6b53bbd03c96929568b1638c79e1bb74678d57f0be2da240"
+        "count": 715,
+        "sha256": "052e998c0b895912b3ffc6f816ac3e9b6f7147bad441e34a7a0538f08bd82460"
       },
       {
         "id": "38",
@@ -375,8 +375,8 @@
       {
         "id": "39",
         "path": "./segments/39.json",
-        "count": 987,
-        "sha256": "2745323a489b3043489eaf606a08ca3075116495597135b6a9b45939554ec84b"
+        "count": 997,
+        "sha256": "7ce07d67cc795998e604e245d7879dc7488c1e86d396fc0182188ef8305b20fe"
       },
       {
         "id": "3a",
@@ -393,20 +393,20 @@
       {
         "id": "3c",
         "path": "./segments/3c.json",
-        "count": 753,
-        "sha256": "2e66a4d179664c48da906eb3315d8488b6f9abc523d615d33b053fe83354c0f3"
+        "count": 774,
+        "sha256": "1f18eafe21e6443685a960de587a184992470a7195650051bcb5eb92db450416"
       },
       {
         "id": "3d",
         "path": "./segments/3d.json",
-        "count": 1124,
-        "sha256": "9bc77d579b038277488cf8ffaa33178c3a13f98030154c95f0ca7ef2ffd08407"
+        "count": 1128,
+        "sha256": "c04b68152e53697c4a8ba83097d410ce417f124b775d7a4f74bb98d4896a7248"
       },
       {
         "id": "3e",
         "path": "./segments/3e.json",
-        "count": 626,
-        "sha256": "debd32a4ee3085cd7db6d5fab8e8d89ba5f3faa1a127f8d2e919e4c1628241a5"
+        "count": 635,
+        "sha256": "5e2ebb76c81231cfb8a0a2a3d720fdaeba79e9bf113a3611d3f9c437d459c416"
       },
       {
         "id": "3f",
