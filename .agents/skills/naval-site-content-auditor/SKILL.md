@@ -24,10 +24,10 @@ This audit is repeatable. A prior first, second, third, or later pass is not evi
 ## Start
 
 1. Read `AGENTS.md` and `.agents/site-content-auditor.md`.
-2. Inspect the current diff before edits with `git -c safe.directory=C:/Workspaces/naval-history-with-dr-alex status --short`.
-3. Treat `src/derived/video-segments/` as the source for public segment wording. Treat the manifest and shards under `site/src/data/generated/archive/` as generated output.
-4. Require an explicitly named video ID, transcript, or exact per-video shard. If none was supplied, stop without edits; do not sample or select from the shard directory.
-5. Own only the selected per-video shard. Preserve every other shard and all shared or generated outputs.
+2. Require an explicitly named exact per-video shard. If none was supplied, stop without edits; do not sample or select from the shard directory.
+3. Read the selected shard, then read the transcript TXT named by its `sourcePath`. Treat that TXT as the historical source of record and the exact supplied shard as the only owned public-content file.
+4. Treat `src/derived/video-segments/` as the source for public segment wording. Treat the shards under `site/src/data/generated/archive/` as generated output.
+5. Preserve every other shard and all shared or generated outputs.
 6. Read `src/derived/topic-normalization-patterns.tsv` before evaluating the selected shard's topic arrays. Treat the catalog as read-only authored policy.
 
 ## Transcript Read Safety
@@ -87,7 +87,7 @@ This audit is repeatable. A prior first, second, third, or later pass is not evi
 - Never use `Set-Content`, `WriteAllText`, output redirection, or any read-modify-rewrite operation for routine logging; never truncate, recreate, replace, remove, or reorder existing log content.
 - Apart from the selected shard and that one processing-log append, do not write `src/derived/topic-normalization-patterns.tsv`, `topics.json`, anything under `site/src/data/generated/archive/`, `site/dist/`, `reports/`, schedules, package files, tooling, Astro source, or CSS.
 - The repository owner performs shared generation, tests, Astro/Pagefind builds, and integration validation before push.
-- Read-only inspection and `git diff --check` scoped to the owned shard are allowed when useful. A lane-specific automation may additionally run only the private temporary-directory checks explicitly provided by that automation prompt.
+- Read-only inspection scoped to the owned shard and its transcript TXT is allowed when useful. A lane-specific automation may additionally run only the private temporary-directory checks explicitly provided by that automation prompt.
 
 ## Handoff
 

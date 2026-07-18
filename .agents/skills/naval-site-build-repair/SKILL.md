@@ -1,6 +1,6 @@
 ---
 name: naval-site-build-repair
-description: Diagnose and safely repair build, archive-generation, Astro, and Pagefind failures in the Naval History with Dr. Alex study-guide repository. Use when `generate:site-data`, `site:check`, or `site:build` fails; when errors report duplicate segment IDs or slugs, missing topics, duplicate taxonomy, topic-normalization failures, invalid curated shards, TypeScript or Astro failures, or Pagefind indexing problems; or when the user asks to repair a pasted naval site build error while preserving unrelated worktree changes.
+description: Diagnose and safely repair build, archive-generation, Astro, and Pagefind failures in the Naval History with Dr. Alex study-guide repository. Use when `generate:site-data`, `site:check`, or `site:build` fails; when errors report duplicate segment IDs or slugs, missing topics, duplicate taxonomy, topic-normalization failures, invalid curated shards, TypeScript or Astro failures, or Pagefind indexing problems; or when the user asks to repair a pasted naval site build error while preserving unrelated filesystem changes.
 ---
 
 # Naval Site Build Repair
@@ -9,7 +9,7 @@ Repair site-pipeline failures without widening scope or destabilizing establishe
 
 ## Workflow
 
-1. Read `AGENTS.md`, inspect `git status --short --branch`, and preserve unrelated staged, unstaged, and untracked changes.
+1. Read `AGENTS.md` and preserve unrelated files and changes.
 2. Reproduce the user's exact failing command when practical. Treat a diagnosis-only request as read-only.
 3. Run `npm run diagnose:site-content-duplicates` for archive uniqueness failures or before changing segment routes. An exit code of 1 means duplicates were found and is an expected diagnostic result.
 4. For topic-title, alias, missing-topic, duplicate-taxonomy, or normalization failures, read `src/derived/topic-normalization-patterns.tsv` and run the read-only `npm run audit:topic-normalization` before adding a registry record or manually changing a topic reference.
@@ -25,7 +25,7 @@ Repair site-pipeline failures without widening scope or destabilizing establishe
 - Preserve both substantive watch points unless transcript evidence proves one is accidental duplication.
 - Treat a collision involving a transcript-visible answered exchange as a route-key collision, not permission to delete, merge, downgrade, or reclassify the `kind: qa` segment. Preserve each substantive Q&A as a separate segment in its owning video, including its `question` and `answerShort`, even when it collides with a chapter, notable point, or Q&A in another video.
 - Resolve every preserved Q&A as a separate route. When a Q&A occurrence needs a replacement `id` and `slug`, derive them from the exchange's learner-facing subject and append a concise `-qa` qualifier when the subject alone would still collide. Remove a Q&A occurrence only when the `videoId`, timestamp/evidence window, question, and answer establish that it is the same accidental duplicate within the same video.
-- Rank occurrences by comparative confidence that each segment is accurate and complete; do not invent a numeric probability when the evidence supports only a qualitative judgment. Do not treat diagnostic order, creation date, filename date, Git age or status, or prior generated-output order as content-quality evidence. Use Git state only to protect unrelated work.
+- Rank occurrences by comparative confidence that each segment is accurate and complete; do not invent a numeric probability when the evidence supports only a qualitative judgment. Do not treat diagnostic order, creation date, filename date, file age, or prior generated-output order as content-quality evidence. Judge the current files and transcript evidence directly.
 - Apply evidence in this order:
   1. **Accuracy gate:** verify the `videoId`, `sourcePath`, timestamp, evidence note, and public claims against the transcript. An unsupported or contradicted occurrence must not keep the contested route.
   2. **Segment completeness:** among accurate candidates, prefer the focused occurrence that captures the full exchange or argument, supplies substantive learner-facing fields, uses an appropriate kind and topics, and includes enough evidence for its claims.
@@ -61,7 +61,6 @@ npm run audit:topic-normalization
 npm run check
 npm run site:check
 npm run site:build
-git diff --check
 ```
 
 If only a diagnostic or error-message test changed, run the focused compiled test plus `npm run check`; still run `site:build` when feasible to verify the real failure path.

@@ -2,14 +2,97 @@
   "schemaVersion": 1,
   "videoId": "ejo0Euj-swM",
   "topics": [
+    "engineering-education",
+    "water-management",
+    "infrastructure-planning",
+    "transport-logistics",
     "naval-history",
     "royal-navy",
-    "naval-strategy",
+    "military-command",
     "world-war-i",
     "napoleonic-wars"
   ],
   "needsFurtherProcessing": false,
   "segments": [
+    {
+      "id": "timberborn-watershed-storage-and-expansion",
+      "videoId": "ejo0Euj-swM",
+      "slug": "timberborn-watershed-storage-and-expansion",
+      "title": "Designing a Timberborn watershed for storage and expansion",
+      "kind": "chapter",
+      "start": "2:23",
+      "end": "4:48",
+      "topics": [
+        "timberborn",
+        "water-management",
+        "reservoirs",
+        "infrastructure-planning",
+        "urban-planning"
+      ],
+      "summary": "Clarke explains how springs, deep basins and a deliberately restricted outlet turn the custom map into a long-term water-engineering problem.",
+      "body": "Clarke begins the map tour by placing water sources in deep basins so that each spring creates a small reserve rather than immediately draining away. Most of the map's water has one low outlet, partly concealed by foliage, while narrow channels from the higher sources add controlled losses. The restriction makes the apparently resource-rich map a storage problem: a player can later block the outlets, raise the level and support a much larger settlement. He designed that future capacity into the terrain because he prefers cities that can keep evolving rather than scenarios solved once at the start. The lesson is presented through Timberborn's abstractions, but it is a clear exercise in reading a watershed, reserving capacity and planning infrastructure for later growth.",
+      "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
+      "evidence": [
+        {
+          "start": "2:23",
+          "end": "4:48",
+          "note": "Clarke explains his deep-basin springs, the map's restricted outlets, and the option to impound more water later for a much larger city."
+        }
+      ]
+    },
+    {
+      "id": "railways-for-distributed-resource-logistics",
+      "videoId": "ejo0Euj-swM",
+      "slug": "railways-for-distributed-resource-logistics",
+      "title": "Why distributed resources call for a railway",
+      "kind": "notable_point",
+      "start": "5:19",
+      "end": "6:19",
+      "topics": [
+        "timberborn",
+        "railways",
+        "transport-logistics",
+        "resource-management",
+        "infrastructure-planning"
+      ],
+      "summary": "A desired steam-train modification becomes a compact lesson in moving bulk resources across a large, spatially divided production system.",
+      "body": "Clarke describes another large Timberborn map whose timber, metal and other resources sit in different corners around a central settlement. Ordinary paths can connect them, but the distances make moving bulk material slow and awkward. That geography is why he wants a working steam-train modification: the railway would turn scattered deposits into one usable production system. The passage makes transport capacity part of resource availability rather than treating a deposit as useful merely because it exists. It is a compact logistics lesson in matching infrastructure to distance, volume and spatial distribution, with the caveat that the railway is a desired game modification rather than a feature of the unmodified scenario.",
+      "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
+      "evidence": [
+        {
+          "start": "5:19",
+          "end": "6:19",
+          "note": "Clarke describes a large map with resources in different corners and says rail transport is needed to move them efficiently."
+        }
+      ]
+    },
+    {
+      "id": "flood-drought-feedback-control",
+      "videoId": "ejo0Euj-swM",
+      "slug": "flood-drought-feedback-control",
+      "title": "Balancing floods, droughts and automated water gates",
+      "kind": "chapter",
+      "start": "6:43",
+      "end": "10:00",
+      "topics": [
+        "timberborn",
+        "water-management",
+        "flood-control",
+        "drought-management",
+        "hydraulic-engineering",
+        "control-systems"
+      ],
+      "summary": "The map's apparent abundance exposes a systems problem: flood protection, drought storage and gate-control rules can undermine one another.",
+      "body": "The map looks easy because it contains abundant water and metal, but Clarke explains that too much inflow can be as dangerous as too little. High water levels inundate the obvious cropland, while channels of different depth make the timing and volume of drainage harder to predict. Fixed dams alone can hold water for droughts yet also force later inflows over the banks and across crops. His preferred solution is a gate connected to a flow meter so that the opening changes with water level, making the setup an explicit feedback-control problem. He notes that the middle difficulty can therefore be easier than the nominally easy setting, which floods, while scarce water encourages storage that produces flash-flood cycles when flow returns. Timberborn simplifies real hydraulics, but this passage shows why flood protection, drought reserve and control rules have to be designed together.",
+      "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
+      "evidence": [
+        {
+          "start": "6:43",
+          "end": "10:00",
+          "note": "Clarke explains how excess inflow floods cropland, how storage can create flash-flood cycles, and why he wants water-level-controlled gates."
+        }
+      ]
+    },
     {
       "id": "western-squadron-brest-blockade-reading",
       "videoId": "ejo0Euj-swM",
@@ -22,7 +105,10 @@
         "royal-navy",
         "western-squadron",
         "naval-blockade",
-        "naval-history"
+        "naval-history",
+        "napoleonic-wars",
+        "brest-blockade",
+        "convoys"
       ],
       "summary": "A short reading guide places the Western Squadron's blockade of Brest in the wider story of Royal Navy operations from 1793 to 1815.",
       "body": "Before returning to the game, Clarke previews a forthcoming discussion of the Western Squadron and its blockade of Brest. He emphasizes the extraordinary duration of the Royal Navy's effort, describing it as nearly twenty-two years of blockade between 1793 and 1815 rather than one continuous, unbroken watch. He recommends Roger Knight's Convoys and N. A. M. Rodger's The Command of the Ocean for the wider naval setting, and mentions The Ardent Ships for the Brest blockade itself. Rodger's large survey is presented as a route into British naval history from roughly 1650 to 1850. Together, the recommendations frame blockade as a sustained operational system involving squadrons, convoys, administration, and endurance rather than a single battle.",
@@ -32,6 +118,32 @@
           "start": "16:34",
           "end": "18:31",
           "note": "Clarke introduces naval-history questions, previews a Western Squadron video, and names books on convoys, naval history, and the Brest blockade."
+        }
+      ]
+    },
+    {
+      "id": "road-layout-and-infrastructure-path-dependence",
+      "videoId": "ejo0Euj-swM",
+      "slug": "road-layout-and-infrastructure-path-dependence",
+      "title": "Laying out roads before buildings lock the settlement in",
+      "kind": "notable_point",
+      "start": "19:31",
+      "end": "20:59",
+      "topics": [
+        "timberborn",
+        "infrastructure-planning",
+        "urban-planning",
+        "transport-logistics",
+        "path-dependence"
+      ],
+      "summary": "An early road decision shows how route geometry and later construction costs make infrastructure choices difficult to reverse.",
+      "body": "Before unpausing, Clarke maps a straight road from one side of the settlement to the other because beaver travel time depends on route length. The early network sets the geometry for later buildings and movement between the district centre and work sites. He stresses that roads are cheap to plan at the beginning but expensive to reroute once structures and resource flows depend on them. The watch point turns a small game decision into a lesson about infrastructure path dependence: early alignments create durable constraints even when later needs change.",
+      "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
+      "evidence": [
+        {
+          "start": "19:31",
+          "end": "20:59",
+          "note": "Clarke pauses to establish a straight road network and explains that changing roads after buildings are placed costs time and resources."
         }
       ]
     },
@@ -47,7 +159,9 @@
         "naval-command",
         "naval-strategy",
         "us-navy",
-        "royal-navy"
+        "royal-navy",
+        "world-war-ii",
+        "military-administration"
       ],
       "summary": "A comparison of fictional and historical commanders highlights the difference between personal battlefield skill and senior strategic direction.",
       "body": "Answering a discussion about historical analogies, Clarke places the comparison closer to Eisenhower, Nimitz, Cunningham, and St Vincent than to Grant alone. He stresses strategic thinking, bureaucracy, and organization rather than treating command as individual battlefield skill. Cromwell becomes another possible comparison because he combined military direction with political and administrative ability. Clarke also notes that a senior coordinator needs capable operational subordinates, pairing Grant with Sherman and Eisenhower with Patton. The moment is therefore useful for separating theater-level direction from the work of commanders sent to conduct particular campaigns and battles.",
@@ -57,6 +171,32 @@
           "start": "57:39",
           "end": "1:00:59",
           "note": "Clarke compares the commander to Nimitz, Cunningham, and St Vincent, then discusses strategic thinking, organization, and the division between higher direction and battlefield command."
+        }
+      ]
+    },
+    {
+      "id": "montgomery-macarthur-competence-and-ego",
+      "videoId": "ejo0Euj-swM",
+      "slug": "montgomery-macarthur-competence-and-ego",
+      "title": "Montgomery, MacArthur and the burden of command ego",
+      "kind": "notable_point",
+      "start": "1:01:03",
+      "end": "1:02:47",
+      "topics": [
+        "bernard-montgomery",
+        "douglas-macarthur",
+        "world-war-ii",
+        "military-command",
+        "coalition-warfare"
+      ],
+      "summary": "A deliberately sharp comparison separates Montgomery's competence from MacArthur's uneven record while showing how ego can damage a command system.",
+      "body": "Clarke warns against placing Montgomery and MacArthur in the same command structure, because their egos would make cooperation extraordinarily difficult. He judges Montgomery the more consistently competent officer, while describing MacArthur as capable of occasional brilliance but also serious incompetence. The distinction matters because talent alone does not make a senior subordinate manageable: personality, authority and willingness to coordinate shape whether a coalition strategy survives contact with its commanders. His humorous suggestion of putting Montgomery over MacArthur sharpens the underlying problem of matching formal hierarchy to personal power. The assessment is Clarke's comparative judgment rather than a full evaluation of either general's campaigns.",
+      "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
+      "evidence": [
+        {
+          "start": "1:01:03",
+          "end": "1:02:47",
+          "note": "Clarke compares Montgomery's competence and ego with MacArthur's flashes of brilliance, frequent incompetence, and equally difficult ego."
         }
       ]
     },
@@ -99,7 +239,8 @@
         "napoleonic-wars",
         "military-command",
         "arthur-wellesley-duke-of-wellington",
-        "terrain"
+        "terrain",
+        "world-war-ii"
       ],
       "summary": "Wellington's close study of geography and topography becomes the basis for judging how a historical commander might adjust to modern warfare.",
       "body": "Clarke argues that Wellington is one of the few commanders of his era who might perform competently if placed in the Second World War. The reason is not timeless tactical genius but his habit of studying geography, terrain, and the ground on which an army had to operate. That habit would help him recognize that the parameters of warfare had changed and adjust his decisions accordingly. The comparison offers a way to judge historical commanders by transferable methods of analysis rather than simply carrying their old tactics into a new technological setting.",
@@ -109,6 +250,32 @@
           "start": "1:05:58",
           "end": "1:06:40",
           "note": "Clarke says Wellington might adapt successfully to the Second World War because he studied geography, terrain, and topography and could adjust to new parameters."
+        }
+      ]
+    },
+    {
+      "id": "waterloo-hindsight-and-changing-counterfactuals",
+      "videoId": "ejo0Euj-swM",
+      "slug": "waterloo-hindsight-and-changing-counterfactuals",
+      "title": "Why hindsight would create a different Battle of Waterloo",
+      "kind": "notable_point",
+      "start": "1:09:56",
+      "end": "1:10:31",
+      "topics": [
+        "battle-of-waterloo",
+        "napoleonic-wars",
+        "alternate-history",
+        "counterfactual-history",
+        "military-decision-making"
+      ],
+      "summary": "Knowing Napoleon's attack plan or Blücher's arrival time would change both Wellington's deployment and the opponent's response, not simply improve the historical result.",
+      "body": "Clarke uses Wellington's quip about having won Waterloo to explain a problem with hindsight. If a commander knew in advance where and when Napoleon would attack or when Blücher would arrive, he would deploy differently. Napoleon would then respond to that new deployment, so the supposedly improved version would no longer be the battle whose outcome supplied the hindsight. The passage is a concise warning that counterfactual analysis must model reactions and feedback rather than changing one decision while freezing every other actor.",
+      "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
+      "evidence": [
+        {
+          "start": "1:09:56",
+          "end": "1:10:31",
+          "note": "Clarke explains that foreknowledge of Napoleon's attack or Blücher's arrival would alter Wellington's deployment and therefore change the battle itself."
         }
       ]
     },
@@ -124,7 +291,9 @@
         "world-war-i",
         "royal-navy",
         "naval-gunnery",
-        "alternate-history"
+        "alternate-history",
+        "greenboy-shells",
+        "naval-ammunition"
       ],
       "summary": "Earlier Greenboy shells offer a compact example of how one naval-technology change can reshape wider First World War choices.",
       "body": "Clarke uses the possibility of earlier Greenboy shells to explain why alternate-history questions cannot stop at one altered event. Giving the Royal Navy effective shells earlier in the First World War changes more than the immediate result of a single engagement. Better ammunition would influence later choices and generate a widening chain of operational and strategic consequences. The example shows why a naval counterfactual must follow the responses produced by a technical change rather than holding the rest of history fixed.",
@@ -134,6 +303,34 @@
           "start": "1:10:31",
           "end": "1:11:48",
           "note": "Clarke identifies earlier Greenboy shells as an alternate-history question and explains that better Royal Navy shells would create many further effects."
+        }
+      ]
+    },
+    {
+      "id": "strategy-games-and-basic-needs-sequencing",
+      "videoId": "ejo0Euj-swM",
+      "slug": "strategy-games-and-basic-needs-sequencing",
+      "title": "Thinking three moves ahead by securing basic needs first",
+      "kind": "notable_point",
+      "start": "1:15:25",
+      "end": "1:16:33",
+      "topics": [
+        "strategy-games",
+        "strategic-planning",
+        "resource-management",
+        "infrastructure-planning",
+        "food-supply",
+        "water-supply",
+        "population"
+      ],
+      "summary": "Comparing Victoria 3 with Timberborn, Clarke explains why strategy begins with dependency chains rather than the most visible production goal.",
+      "body": "Clarke contrasts a strategy game with what he calls an empire game: Victoria 3 rewards thinking three or four steps ahead instead of reacting to the latest event. He demonstrates the same method in Timberborn by delaying timber production while securing housing, population growth, water and basic food. More workers are a prerequisite for later industry, and those workers require beds and sustenance before advanced production can scale. The passage is a clear dependency-chain lesson: identify what the desired capability needs, then build those foundations in order. It also shows why an apparently inactive opening can be strategically productive when the player is removing future bottlenecks.",
+      "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
+      "evidence": [
+        {
+          "start": "1:15:25",
+          "end": "1:16:33",
+          "note": "Clarke contrasts reactive play with thinking several steps ahead, then prioritizes housing, population, water, and food before timber production."
         }
       ]
     },
@@ -166,6 +363,32 @@
       ]
     },
     {
+      "id": "great-emu-war-operational-mismatch",
+      "videoId": "ejo0Euj-swM",
+      "slug": "great-emu-war-operational-mismatch",
+      "title": "The Great Emu War as an operational mismatch",
+      "kind": "notable_point",
+      "start": "1:19:23",
+      "end": "1:24:24",
+      "topics": [
+        "great-emu-war",
+        "australian-army",
+        "australia",
+        "military-operations",
+        "mobility"
+      ],
+      "summary": "A comic aside on the Great Emu War points to the mismatch between machine guns and lorries and a dispersed, mobile animal population.",
+      "body": "Clarke turns the Australian campaign against emus into a deliberately comic military vignette. He recalls troops using machine guns and lorries yet failing to stop or redirect birds that scattered and continued moving where they wanted. Beneath the jokes is an operational point: a weapon can be powerful against the wrong sort of target and still produce little useful effect. Mobility, dispersion and the practical task being attempted matter as much as nominal firepower. The stream exaggerates the emus as Australia's 'unvanquished overlords,' so this watch point is best understood as humorous commentary on an historical episode rather than a complete account of the operation.",
+      "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
+      "evidence": [
+        {
+          "start": "1:19:23",
+          "end": "1:24:24",
+          "note": "Clarke jokes about the Great Emu War while describing machine guns, lorries, dispersal, and the operation's failure to redirect the emus."
+        }
+      ]
+    },
+    {
       "id": "busaco-campaign-logistics-withdrawal",
       "videoId": "ejo0Euj-swM",
       "slug": "busaco-campaign-logistics-withdrawal",
@@ -178,7 +401,10 @@
         "peninsular-war",
         "military-logistics",
         "military-command",
-        "lines-of-torres-vedras"
+        "lines-of-torres-vedras",
+        "military-withdrawal",
+        "george-washington",
+        "continental-army"
       ],
       "summary": "A longer return to Buçaco explains Wellington's plan to stretch French logistics and why orderly withdrawal is a demanding measure of generalship.",
       "body": "Clarke places Buçaco inside Wellington's campaign rather than judging it as an isolated battlefield result. Wellington intended to fall back on the Lines of Torres Vedras, extend French supply difficulties until their logistics broke, and preserve his own army while doing so. Clarke identifies withdrawal from contact in good order as a central test of command, since many armies suffered their worst losses after a battle when retreat turned into collapse. He links this skill to Wellington and, more broadly, to Washington's preservation of the Continental Army.",
@@ -240,6 +466,60 @@
           "start": "1:41:30",
           "end": "1:43:56",
           "note": "Clarke distinguishes political, administrative, and public-speaking ability, then explains that selecting advisers, balancing skills, and managing conflicting personalities are leadership skills in their own right."
+        }
+      ]
+    },
+    {
+      "id": "timberborn-as-an-engineering-ecology-simulator",
+      "videoId": "ejo0Euj-swM",
+      "slug": "timberborn-as-an-engineering-ecology-simulator",
+      "title": "Why engineering students treat Timberborn as an ecology simulator",
+      "kind": "notable_point",
+      "start": "1:50:09",
+      "end": "1:51:37",
+      "topics": [
+        "timberborn",
+        "engineering-education",
+        "ecological-simulation",
+        "water-management",
+        "levees",
+        "agriculture"
+      ],
+      "summary": "Clarke connects his students' enthusiasm for Timberborn to the way water, levees, ecology and food production interact inside the game's settlement system.",
+      "body": "Clarke explains that engineering students introduced him to Timberborn because they enjoy its ecological simulation. The game asks players to reshape water, sustain a settlement and use levees to turn suitable ground into farmland. His comment connects their enthusiasm to systems thinking rather than to the beaver theme alone: environmental conditions, infrastructure and food production interact. Timberborn remains a stylized game, but this watch point explains why he presents it as an engineering exercise and why its water-management choices attract students.",
+      "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
+      "evidence": [
+        {
+          "start": "1:50:09",
+          "end": "1:51:37",
+          "note": "Clarke says his engineering students introduced him to the game for its ecological simulation and then points to levees and farming on the custom map."
+        }
+      ]
+    },
+    {
+      "id": "teaching-no-win-decisions-through-history",
+      "videoId": "ejo0Euj-swM",
+      "slug": "teaching-no-win-decisions-through-history",
+      "title": "Teaching no-win decisions through abstraction and history",
+      "kind": "notable_point",
+      "start": "2:09:23",
+      "end": "2:10:45",
+      "topics": [
+        "military-education",
+        "decision-making",
+        "no-win-scenarios",
+        "historical-case-studies",
+        "scenario-based-learning",
+        "kobayashi-maru"
+      ],
+      "summary": "Fiction, historical cases and personal command scenarios become a staged method for teaching people to recognize decisions that cannot produce a clean victory.",
+      "body": "Explaining why he uses fictional settings in teaching, Clarke describes a sequence for helping people recognize a no-win situation. He begins with an abstract scenario in which the learner has no personal stake, because people resist admitting that their own command problem cannot be won. He then introduces an historical case and asks what a real decision-maker did under comparable constraints. Only after those models are understood does he place the learner inside a new scenario without announcing that it is unwinnable. The method uses fiction and history as progressive levels of distance, allowing judgment and self-awareness to develop before ego enters the exercise.",
+      "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
+      "evidence": [
+        {
+          "start": "2:09:23",
+          "end": "2:10:45",
+          "note": "Clarke explains a teaching progression from an abstract no-win scenario to a historical example and finally to a personally involving command problem."
         }
       ]
     }

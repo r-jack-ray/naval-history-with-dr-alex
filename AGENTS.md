@@ -49,13 +49,7 @@ npm run alternate:fetch:transcript -- --video-id uURe69Wnh-Q
 npm run alternate:fetch:transcripts -- --limit 1 --request-delay-ms 5000
 ```
 
-Use normal Git for repository operations:
-
-```powershell
-git status --short --branch
-git diff --check
-git push
-```
+Do not run Git commands as routine preflight, status, boundary, or validation checks. Prefer direct file inspection, targeted searches, parsers, and the relevant project validators so unnecessary Git output does not consume time or context. Run Git only when the user explicitly requests a Git operation or when a specific overlapping edit cannot otherwise be resolved safely. When Git is genuinely needed, use the narrowest read-only command first. Never commit or push unless the user explicitly requests it.
 
 On Windows, do not launch the roaming `npm` shim from repository Node wrappers: on this machine it resolves a missing `C:\Users\JR\AppData\Roaming\npm\node_modules\npm\bin\npm-cli.js`. Direct `spawn()` of `npm.cmd` can also fail with `EINVAL`. Resolve `npm.cmd` beside `process.execPath` and invoke that fixed command through the system shell; for interactive validation, use `C:\Program Files\nodejs\npm.cmd` directly when plain `npm` hits the broken shim.
 

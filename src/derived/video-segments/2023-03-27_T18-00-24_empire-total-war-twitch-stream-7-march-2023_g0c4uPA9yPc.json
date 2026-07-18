@@ -123,16 +123,27 @@
       "topics": [
         "age-of-sail",
         "naval-tactics",
-        "historical-simulation"
+        "historical-simulation",
+        "fleet-composition"
       ],
-      "summary": "Repeatedly awkward fleet actions lead Dr. Clarke to separate historically plausible age-of-sail tactics from tactics that work in the game engine.",
-      "body": "After several naval battles, Dr. Clarke says he has had to relearn how to fight within the game's rules. Applying actual age-of-sail battle principles too literally has produced avoidable problems because the simulated ships do not always maneuver or coordinate as historical formations would. The passage is a useful caution for anyone using a strategy game to think about naval history. A simulation can introduce real ship types and tactical problems while still rewarding behavior that should not be mistaken for period practice.",
+      "summary": "Repeatedly awkward fleet actions lead Dr. Clarke to separate the tactics and fleet composition rewarded by the game from plausible age-of-sail practice.",
+      "body": "After several naval battles, Dr. Clarke says he has had to relearn how to fight within the game's rules. He first notes that a force of one third rate and four fifth rates should make a much weaker enemy surrender quickly, yet the simulated ships collide and fail to coordinate. Later he says the game encourages him to treat a fleet action like a set of individual cavalry engagements, and he contrasts its concentration of third rates with the fourth- and fifth-rate mix he expects historically in this setting. These passages make the distinction between historical plausibility and game mechanics explicit. The watch point is useful because a simulation can introduce real ship categories and tactical problems while still rewarding behavior and force structures that should not be mistaken for period practice.",
       "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
       "evidence": [
+        {
+          "start": "1:26:37",
+          "end": "1:30:21",
+          "note": "Contrasts the expected advantage of one third rate and four fifth rates with ships colliding during the simulated battle."
+        },
         {
           "start": "1:35:17",
           "end": "1:35:47",
           "note": "Explains that successful play requires following game rules rather than actual age-of-sail battle rules."
+        },
+        {
+          "start": "4:03:20",
+          "end": "4:03:50",
+          "note": "Compares the game's individual-ship engagements to cavalry combat and contrasts its third-rate-heavy fleet with the expected historical mix of fourth and fifth rates."
         }
       ]
     },
@@ -370,6 +381,32 @@
           "start": "3:09:15",
           "end": "3:10:53",
           "note": "Answers whether Arctic winter naval actions occurred and distinguishes the Baltic theatre."
+        }
+      ]
+    },
+    {
+      "id": "infantry-squares-firepower-cavalry",
+      "videoId": "g0c4uPA9yPc",
+      "slug": "infantry-squares-firepower-cavalry",
+      "title": "Why infantry squares surrender firepower",
+      "kind": "notable_point",
+      "start": "3:30:53",
+      "end": "3:32:28",
+      "topics": [
+        "infantry-squares",
+        "infantry-tactics",
+        "cavalry",
+        "combined-arms",
+        "napoleonic-warfare"
+      ],
+      "summary": "A game battle makes a combined-arms tradeoff visible: infantry squares deter cavalry but expose fewer muskets to an opposing firing line.",
+      "body": "Two shrinking Spanish squares stand before British line infantry while cavalry waits nearby. Dr. Clarke observes that a square can bring only about a quarter to at most half its muskets to bear in that direction, whereas the line infantry can fire its whole front. The cavalry does not need to charge to influence the fight because its presence forces the opposing infantry to retain the anti-cavalry formation and accept the firepower disadvantage. The exact proportions belong to his commentary on this game battle, but the moment clearly illustrates how combined-arms pressure can make a protective formation tactically costly.",
+      "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
+      "evidence": [
+        {
+          "start": "3:30:53",
+          "end": "3:32:28",
+          "note": "Explains that the square can use only part of its musket strength against the line but must hold formation because cavalry remains nearby."
         }
       ]
     }
