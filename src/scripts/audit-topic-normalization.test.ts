@@ -10,7 +10,7 @@ test("prints read-only audit help", async () => {
   });
 
   assert.equal(code, 0);
-  assert.match(output, /audit-topic-normalization\.js/u);
+  assert.match(output, /npm run audit:topic-normalization/u);
   assert.match(output, /--patterns-input/u);
   assert.doesNotMatch(output, /apply|plan-output/iu);
 });

@@ -78,7 +78,7 @@ function readValue(args: readonly string[], index: number, flag: string): string
 }
 
 function usage(): string {
-  return `Usage: node dist/scripts/audit-topic-normalization.js [options]\n\n`
+  return `Usage: npm run audit:topic-normalization -- [options]\n\n`
     + `Options:\n`
     + `  --patterns-input <path>  Defaults to ${defaultPatternsInput}.\n`
     + `  --segments-input <path>  Defaults to ${defaultSegmentsInput}.\n`

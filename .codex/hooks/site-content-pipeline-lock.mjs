@@ -941,7 +941,7 @@ Examples:
   node .codex/hooks/site-content-pipeline-lock.mjs schedule-claim --schedule-path task-notes/schedule.md --token <token>
   node .codex/hooks/site-content-pipeline-lock.mjs schedule-claim --no-lease --schedule-path task-notes/lane.md
   node .codex/hooks/site-content-pipeline-lock.mjs status
-  node .codex/hooks/site-content-pipeline-lock.mjs run -- node dist/scripts/generate-site-data.js
+  node .codex/hooks/site-content-pipeline-lock.mjs run -- node --import tsx src/scripts/generate-site-data.ts
 `);
 }
 

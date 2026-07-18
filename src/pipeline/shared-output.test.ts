@@ -71,7 +71,18 @@ test("validation hooks generate the archive once before their generated-data che
   assert.match(contentHook, /\$retainActiveLock = \$RetainCallerLease -and \$callerProvidedLock/u);
   assert.match(siteHook, /site:check:generated/u);
   assert.match(siteHook, /site:build:generated/u);
-  assert.match(packageJson.scripts["generate:site-data"] ?? "", /--recover-stale -- node/u);
+  const generateSiteDataScript = packageJson.scripts["generate:site-data"] ?? "";
+  assert.match(
+    generateSiteDataScript,
+    /--recover-stale -- node --import tsx src\/scripts\/generate-site-data\.ts/u,
+  );
+  assert.doesNotMatch(generateSiteDataScript, /--build|dist\/scripts\/generate-site-data\.js/u);
+  const syncVideoTopicsScript = packageJson.scripts["sync:video-topics"] ?? "";
+  assert.match(
+    syncVideoTopicsScript,
+    /run --purpose video-topic-sync --recover-stale -- node --import tsx src\/scripts\/sync-video-topics\.ts/u,
+  );
+  assert.doesNotMatch(syncVideoTopicsScript, /--build|dist\/scripts\/sync-video-topics\.js/u);
   assert.match(siteBuildWrapper, /manifest\?\.schemaVersion !== 5/u);
   assert.match(siteBuildWrapper, /"src\/transcripts\/manifest\.json"/u);
   assert.match(siteBuildWrapper, /"src\/derived\/topic-normalization-patterns\.tsv"/u);
