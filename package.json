@@ -46,6 +46,8 @@
     "site:check:generated": "astro check --tsconfig tsconfig.astro.json",
     "site:build": "node .codex/hooks/site-build-if-changed.mjs --generate",
     "site:build:generated": "node .codex/hooks/site-build-if-changed.mjs",
+    "site:build:astro": "astro build --silent",
+    "site:build:pagefind": "pagefind --site site/dist",
     "site:build:full": "astro build --silent && pagefind --site site/dist",
     "check:rendered-video-dates": "tsx src/scripts/check-rendered-video-dates.ts",
 

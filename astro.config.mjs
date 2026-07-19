@@ -1,4 +1,7 @@
 import { defineConfig } from "astro/config";
+import { parseAstroBuildConcurrency } from "./.codex/hooks/site-build-support.mjs";
+
+const buildConcurrency = parseAstroBuildConcurrency(process.env.ASTRO_BUILD_CONCURRENCY);
 
 export default defineConfig({
   site: "https://r-jack-ray.github.io",
@@ -7,6 +10,9 @@ export default defineConfig({
   srcDir: "./site/src",
   publicDir: "./site/public",
   outDir: "./site/dist",
+  build: {
+    concurrency: buildConcurrency,
+  },
   vite: {
     server: {
       watch: {

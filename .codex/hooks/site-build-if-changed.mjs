@@ -16,6 +16,12 @@ import {
 import { dirname, isAbsolute, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import {
+  captureRequiredSiteAssets,
+  parseAstroBuildConcurrency,
+  validateRequiredSiteAssets,
+} from "./site-build-support.mjs";
+
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const archiveCachePath = resolve(repositoryRoot, ".tmp/site-archive-cache.json");
 const siteCachePath = resolve(repositoryRoot, ".tmp/site-build-cache.json");
@@ -39,6 +45,7 @@ const archiveInputPaths = [
 ];
 const siteInputPaths = [
   ".codex/hooks/site-build-if-changed.mjs",
+  ".codex/hooks/site-build-support.mjs",
   "astro.config.mjs",
   "package.json",
   "package-lock.json",
@@ -48,7 +55,7 @@ const siteInputPaths = [
   defaultTopicNormalizationPatternsPath,
 ];
 const archiveCacheVersion = 3;
-const siteCacheVersion = 4;
+const siteCacheVersion = 5;
 const runStartedAt = new Date();
 
 async function main() {
@@ -60,6 +67,9 @@ async function main() {
   }
 
   const force = args.includes("--force");
+  const buildConcurrency = parseAstroBuildConcurrency(
+    process.env.ASTRO_BUILD_CONCURRENCY,
+  );
   if (args.includes("--generate")) {
     const generationSucceeded = await ensureSiteArchive(force);
     if (!generationSucceeded) {
@@ -67,18 +77,27 @@ async function main() {
     }
   }
 
-  await ensureBuiltSite(force);
+  await ensureBuiltSite(force, buildConcurrency);
 }
 
 async function ensureSiteArchive(force) {
-  const typescriptSources = await findFiles("src", (path) => path.endsWith(".ts"));
-  const fingerprint = await calculateFingerprint(
-    "site-archive",
-    archiveCacheVersion,
-    [...archiveInputPaths, ...typescriptSources],
+  const typescriptSources = await measureStage(
+    "archive input discovery",
+    () => findFiles("src", (path) => path.endsWith(".ts")),
+  );
+  const fingerprint = await measureStage(
+    "archive input fingerprint",
+    () => calculateFingerprint(
+      "site-archive",
+      archiveCacheVersion,
+      [...archiveInputPaths, ...typescriptSources],
+    ),
   );
   const cache = await readCache(archiveCachePath, archiveCacheVersion);
-  const archiveValidation = await validateSiteArchive();
+  const archiveValidation = await measureStage(
+    "archive integrity validation (initial)",
+    validateSiteArchive,
+  );
   const outputsExist = archiveValidation.valid;
 
   if (!force && outputsExist && cache?.fingerprint === fingerprint) {
@@ -95,23 +114,32 @@ async function ensureSiteArchive(force) {
   );
   console.log(`Generating site archive because ${reason}.`);
 
-  const exitCode = await runNpmScript("generate:site-data");
+  const exitCode = await measureStage(
+    "archive generation",
+    () => runNpmScript("generate:site-data"),
+  );
   if (exitCode !== 0) {
     process.exitCode = exitCode;
     return false;
   }
 
-  const completedArchiveValidation = await validateSiteArchive();
+  const completedArchiveValidation = await measureStage(
+    "archive integrity validation (generated)",
+    validateSiteArchive,
+  );
   if (!completedArchiveValidation.valid) {
     throw new Error(
       `Generated site archive failed integrity validation: ${completedArchiveValidation.reason}`,
     );
   }
 
-  const completedFingerprint = await calculateFingerprint(
-    "site-archive",
-    archiveCacheVersion,
-    [...archiveInputPaths, ...typescriptSources],
+  const completedFingerprint = await measureStage(
+    "archive input fingerprint (completed)",
+    () => calculateFingerprint(
+      "site-archive",
+      archiveCacheVersion,
+      [...archiveInputPaths, ...typescriptSources],
+    ),
   );
   await writeCache(archiveCachePath, {
     version: archiveCacheVersion,
@@ -121,49 +149,100 @@ async function ensureSiteArchive(force) {
   return true;
 }
 
-async function ensureBuiltSite(force) {
-  const archiveValidation = await validateSiteArchive();
+async function ensureBuiltSite(force, buildConcurrency) {
+  const archiveValidation = await measureStage(
+    "archive integrity validation (site)",
+    validateSiteArchive,
+  );
   if (!archiveValidation.valid) {
     throw new Error(
       `Generated site archive failed integrity validation: ${archiveValidation.reason}`,
     );
   }
 
-  const environmentFiles = await existingEnvironmentFiles();
-  const fingerprint = await calculateFingerprint(
-    "site-build",
-    siteCacheVersion,
-    [...siteInputPaths, ...environmentFiles],
+  const environmentFiles = await measureStage(
+    "site environment discovery",
+    existingEnvironmentFiles,
+  );
+  const fingerprint = await measureStage(
+    "site input fingerprint",
+    () => calculateFingerprint(
+      "site-build",
+      siteCacheVersion,
+      [...siteInputPaths, ...environmentFiles],
+      [["astro-build-concurrency", String(buildConcurrency)]],
+    ),
   );
   const cache = await readCache(siteCachePath, siteCacheVersion);
-  const outputsExist = await allPathsExist(siteOutputSentinels);
+  const outputValidation = await measureStage(
+    "site output validation",
+    () => validateBuiltSiteOutputs(cache),
+  );
+  const outputsExist = outputValidation.valid;
 
   if (!force && outputsExist && cache?.fingerprint === fingerprint) {
     console.log("Site inputs are unchanged; skipped Astro and Pagefind.");
     return;
   }
 
-  const reason = buildReason(force, outputsExist, cache, "site inputs changed");
+  const reason = buildReason(
+    force,
+    outputsExist,
+    cache,
+    "site inputs changed",
+    outputValidation.reason,
+  );
   console.log(`Building Astro site because ${reason}.`);
 
-  const prebuildArchiveValidation = await validateSiteArchive();
+  const prebuildArchiveValidation = await measureStage(
+    "archive integrity validation (pre-Astro)",
+    validateSiteArchive,
+  );
   if (!prebuildArchiveValidation.valid) {
     throw new Error(
       `Generated site archive became stale before Astro/Pagefind: ${prebuildArchiveValidation.reason}`,
     );
   }
 
-  const exitCode = await runNpmScript("site:build:full");
-  if (exitCode !== 0) {
-    process.exitCode = exitCode;
+  const astroExitCode = await measureStage(
+    "Astro build",
+    () => runNpmScript("site:build:astro", { SITE_BUILD_TIMING: "1" }),
+  );
+  if (astroExitCode !== 0) {
+    process.exitCode = astroExitCode;
+    return;
+  }
+
+  const requiredAssets = await measureStage(
+    "site asset validation (post-Astro)",
+    () => captureRequiredSiteAssets(repositoryRoot),
+  );
+
+  const pagefindExitCode = await measureStage(
+    "Pagefind indexing",
+    () => runNpmScript("site:build:pagefind"),
+  );
+  if (pagefindExitCode !== 0) {
+    process.exitCode = pagefindExitCode;
     return;
   }
 
   await writeCache(siteCachePath, {
     version: siteCacheVersion,
     fingerprint,
+    requiredAssets,
     completedAt: new Date().toISOString(),
   });
+}
+
+async function validateBuiltSiteOutputs(cache) {
+  if (!(await allPathsExist(siteOutputSentinels))) {
+    return invalidArchive("a required site output sentinel is missing");
+  }
+  if (cache === undefined) {
+    return { valid: true };
+  }
+  return validateRequiredSiteAssets(repositoryRoot, cache.requiredAssets);
 }
 
 function buildReason(force, outputsExist, cache, changedReason, missingReason) {
@@ -351,10 +430,14 @@ function invalidArchive(reason) {
   return { valid: false, reason };
 }
 
-async function calculateFingerprint(name, version, paths) {
+async function calculateFingerprint(name, version, paths, virtualEntries = []) {
   const hash = createHash("sha256");
   hash.update(`${name}-cache-v${version}\0`);
   hash.update(`${process.platform}\0${process.arch}\0${process.versions.node}\0`);
+
+  for (const [entryName, entryValue] of virtualEntries) {
+    hash.update(`configuration\0${entryName}\0${entryValue}\0`);
+  }
 
   for (const path of paths) {
     await hashPath(hash, resolve(repositoryRoot, path));
@@ -447,7 +530,7 @@ async function readCache(cachePath, expectedVersion) {
   }
 }
 
-async function runNpmScript(scriptName) {
+async function runNpmScript(scriptName, environment = {}) {
   const npmCommand =
     process.platform === "win32"
       ? `"${resolve(dirname(process.execPath), "npm.cmd")}"`
@@ -455,6 +538,7 @@ async function runNpmScript(scriptName) {
   return await new Promise((resolvePromise, reject) => {
     const child = spawn(`${npmCommand} run ${scriptName}`, {
       cwd: repositoryRoot,
+      env: { ...process.env, ...environment },
       shell: true,
       stdio: "inherit",
     });
@@ -468,6 +552,17 @@ async function runNpmScript(scriptName) {
       resolvePromise(code ?? 1);
     });
   });
+}
+
+async function measureStage(label, operation) {
+  const startedAt = performance.now();
+  console.log(`Stage Start: ${label}`);
+  try {
+    return await operation();
+  } finally {
+    const durationMilliseconds = performance.now() - startedAt;
+    console.log(`Stage Time: ${label}: ${durationMilliseconds.toFixed(3)} ms`);
+  }
 }
 
 async function writeCache(cachePath, cache) {

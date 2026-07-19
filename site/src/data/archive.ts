@@ -1,6 +1,9 @@
 import { createHash } from "node:crypto";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
+import { performance } from "node:perf_hooks";
+
+const archiveInitializationStartedAt = performance.now();
 
 const expectedPatternsInput = "src/derived/topic-normalization-patterns.tsv";
 
@@ -556,4 +559,9 @@ function sortSegmentsByVideoDate(segments: readonly ArchiveSegment[]): ArchiveSe
       || left.startSeconds - right.startSeconds
       || left.slug.localeCompare(right.slug);
   });
+}
+
+if (process.env.SITE_BUILD_TIMING === "1") {
+  const durationMilliseconds = performance.now() - archiveInitializationStartedAt;
+  console.log(`Stage Time: Astro archive adapter initialization: ${durationMilliseconds.toFixed(3)} ms`);
 }

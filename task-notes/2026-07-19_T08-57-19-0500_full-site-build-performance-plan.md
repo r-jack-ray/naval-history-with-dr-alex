@@ -520,3 +520,112 @@ Store benchmark artifacts under `reports/site-build-performance/` and include:
 - the selected Astro concurrency value and cache treatment, or the evidence for retaining `1`;
 - exact changed files, focused validation results, and rollback status;
 - explicitly deferred wrapper, hybrid-index, route-policy, and multi-process decisions.
+
+## Implementation Results (2026-07-19)
+
+Status: The accepted operational changes were implemented and committed as
+`61aa9a7` (`Speed up full site builds`). Rejected experiments were rolled back.
+The benchmark framework, standalone performance tests, and 219 MB of raw benchmark
+artifacts were subsequently removed at the repository owner's request; this section
+is the durable result record.
+
+### Benchmark Basis
+
+The fixed-archive comparisons used generated archive manifest SHA-256
+`8c88240a660584e07ddea2c65d255a019f198aae73238884bed71cc1c9d16340` with:
+
+- 2,138 video detail routes;
+- 52,440 segment detail routes;
+- 19,986 topic detail routes;
+- 75,662 total rendered HTML files before route-family exclusion from Pagefind;
+- 74,564 canonical detail records (`V + S + T`).
+
+The primary control used one warm-up followed by three measured fixed-archive forced
+builds. Its median total time was 404.814 seconds, with a measured range of
+379.646-513.719 seconds. Median Astro time was 235.510 seconds and median Pagefind
+time was 178.373 seconds. The control emitted 933,820,337 Astro bytes and
+145,468,184 Pagefind bytes.
+
+### Candidate Outcomes
+
+| Candidate | Measured result | Decision |
+| --- | --- | --- |
+| Externalize theme interaction | Astro HTML fell by 163,503,563 bytes (17.509%), from 933,820,337 to 770,316,774 bytes. Median total time was 407.914 seconds, a 0.766% change within observed variation. | Accepted. It removed the repeated script weight without a meaningful timing regression. |
+| `compressHTML: true` | One correctness-gate warm-up completed in 372.703 seconds, but Pagefind indexed words fell from 440,169 to 275,644 (37.38%). | Rejected and removed because whitespace/token boundaries were damaged. |
+| Exclude non-detail Pagefind routes | Indexed records fell from 75,662 to exactly 74,564. Median total time fell to 381.067 seconds: 23.747 seconds (5.866%) below the original control and 26.847 seconds (6.582%) below the theme-only series. Pagefind output fell to 144,309,847 bytes. | Accepted. This cleared the predeclared 5% and 10-second gate. |
+| Ignore video relationship lists | One warm-up indexed 434,901 words and completed in 347.314 seconds, but authoritative Queen Elizabeth Class and radar results moved outside the allowed top 20. | Rejected and reverted. |
+| Ignore topic relationship lists | One warm-up indexed 377,534 words and completed in 295.292 seconds, but the Queen Elizabeth Class topic moved outside the allowed top 20. | Rejected and reverted. |
+| Optimize Astro archive loading | Adapter initialization consistently measured only about 1.5-2.1 seconds. | Closed without code churn because the stage was not material. Timing instrumentation was retained. |
+| Astro concurrency `2` | Median total time was 326.215 seconds; median Astro time was 162.202 seconds. This was 54.852 seconds (14.394%) faster than the reduced-workload concurrency-`1` control. | Accepted as evidence, then superseded by concurrency `4`. |
+| Astro concurrency `4` | Median total time was 285.798 seconds; median Astro time was 115.462 seconds and median Pagefind time was 149.932 seconds. The complete pre-Pagefind Astro inventory was byte-identical to concurrency `1`. Median Astro process-tree peak working set was 1,320,706,048 bytes without observed paging or output locks. | Accepted as the default. |
+| Hybrid archive-backed segment records | The isolated Pagefind prototype took 225.7 seconds versus about 150 seconds for the accepted CLI series, lost the authoritative radar result from the allowed top 20, and left 126,994 fragments instead of 74,564 when written over an existing index. Output grew to 256,880,430 bytes. | Rejected. Prototype code and package entry were removed; the CLI path was restored. |
+| Wrapper fingerprint/validation optimization | Each wrapper fingerprint or archive validation stage measured about 0.3 seconds. | Closed without further optimization because the stages were immaterial. |
+
+The final accepted fixed-archive result was 285.798 seconds, 119.016 seconds
+(29.397%) below the original 404.814-second control. Trial variance was substantial,
+so these measurements describe this machine and archive snapshot rather than a
+permanent build-time guarantee.
+
+### Accepted Operational Configuration
+
+- Astro build concurrency defaults to `4`.
+- `ASTRO_BUILD_CONCURRENCY` accepts only exact values `1`, `2`, `3`, or `4`.
+- The normalized concurrency value participates in the site cache fingerprint.
+- Astro and Pagefind are separate named operational stages, with cache writes only
+  after both complete successfully.
+- The small pre-paint theme bootstrap remains inline. The larger theme interaction
+  script is one base-aware, content-hashed external asset.
+- The site cache records and validates the required theme asset's path, size, and
+  SHA-256, preventing a false cache hit when it is missing or corrupt.
+- Pagefind indexes only canonical video, segment, and topic detail pages. Home,
+  search, directory, finder, and paginated browse routes remain rendered but are not
+  Pagefind records.
+- Video and topic relationship lists remain indexed because excluding them failed
+  the representative search-ranking gate.
+- The supported Pagefind command remains `pagefind --site site/dist`; Pagefind 1.5.2
+  exposes no build-concurrency setting.
+
+### Validation Outcomes
+
+- Plain-JavaScript syntax checks passed for the wrapper, support helper, benchmark
+  and regression tools before cleanup, theme interaction asset, and Astro config.
+- Theme behavior tests passed for light, dark, Bruships, system selection, storage
+  failures, `aria-pressed`, and live system-theme changes.
+- Required hashed-asset capture and missing/corrupt-asset validation tests passed.
+- The concurrency-`2` and concurrency-`4` Astro inventories were byte-identical to
+  the concurrency-`1` reduced-workload control.
+- The accepted CLI index passed the 11-query search regression covering ships,
+  classes, navies, battles, radar, logistics, people, acronyms, aliases, Q&A, and
+  an HMS Victory stability case.
+- `npm run check:rendered-video-dates` passed with 2,138 videos, 75,662 HTML files,
+  506,366 semantic dates, and 74,564 Pagefind fragments.
+- `npm run site:check:generated` reported 0 errors, 0 warnings, and 0 hints.
+- After test-framework cleanup, `npm run check` passed all 155 remaining tests.
+- `git diff --cached --check` passed before commit.
+
+### Rollback and Cleanup Record
+
+- Lossless HTML compression, video/topic list exclusions, and hybrid indexing were
+  fully reverted.
+- The performance-only benchmark runner, Pagefind regression runner, three standalone
+  performance test files, two package commands, and 45 benchmark artifacts totaling
+  219,406,549 bytes were removed after decisions were recorded.
+- Runtime configuration, stage timing, concurrency handling, Pagefind route
+  boundaries, theme externalization, and cache-integrity checks were retained.
+- Route-count reduction and true multi-process route sharding were not implemented;
+  they remain product-approval and separate-design decisions respectively.
+
+### Known Limits and Final State
+
+- The final no-override concurrency-`4` measured series was canceled at the repository
+  owner's direction after its warm-up; the completed concurrency-`4` evidence used the
+  equivalent explicit override. The checked-in default resolves to the same value.
+- The requested forced end-to-end and unchanged cache-hit benchmark series were not
+  completed because extended benchmarking was stopped.
+- The canceled final benchmark was interrupted during Pagefind and left
+  `site/dist/pagefind` absent. This ignored output was not committed. The next
+  `npm run site:build` will detect the missing Pagefind sentinel and regenerate the
+  site using the accepted configuration.
+- The observed HMS Victory exact-match ranking issue was not changed by this work.
+  The added stability case prevented performance experiments from making it worse,
+  but exact-title promotion remains a separate search-relevance task.

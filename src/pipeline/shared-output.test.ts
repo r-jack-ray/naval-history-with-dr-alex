@@ -90,7 +90,7 @@ test("validation hooks generate the archive once before their generated-data che
   assert.match(siteBuildWrapper, /manifest\.source\.patternsSourceSha256/u);
   assert.match(
     siteBuildWrapper,
-    /async function ensureBuiltSite\(force\) \{[\s\S]*?await validateSiteArchive\(\)/u,
+    /async function ensureBuiltSite\(force, buildConcurrency\) \{[\s\S]*?"archive integrity validation \(site\)"[\s\S]*?validateSiteArchive/u,
   );
   assert.match(siteBuildWrapper, /became stale before Astro\/Pagefind/u);
   assert.match(archiveAdapter, /readFileSync\(expectedPatternsInput\)/u);
