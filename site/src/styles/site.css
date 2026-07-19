@@ -654,6 +654,15 @@ h1 {
   color: var(--signal-strong);
 }
 
+.channel-link {
+  gap: 7px;
+}
+
+.channel-link span {
+  font-size: 1.1em;
+  line-height: 1;
+}
+
 .video-media {
   overflow: hidden;
   border: 1px solid var(--line);
@@ -1472,6 +1481,12 @@ h1 {
 
   .topic-directory-controls {
     grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .home-page .channel-link {
+    flex-basis: 100%;
   }
 }
 
