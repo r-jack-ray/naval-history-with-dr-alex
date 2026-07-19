@@ -6,7 +6,8 @@
     "naval-gunnery",
     "naval-tactics",
     "naval-logistics",
-    "anti-submarine-warfare"
+    "anti-submarine-warfare",
+    "naval-wargaming"
   ],
   "segments": [
     {
@@ -86,14 +87,20 @@
       "videoId": "fLOEXrMO0Vo",
       "slug": "mark-13-torpedo-testing-and-reputation",
       "title": "How later fixes reshape the Mark 13 torpedo's reputation",
-      "kind": "notable_point",
+      "kind": "qa",
       "start": "31:17",
       "end": "32:17",
       "topics": [
         "naval-weapons",
         "torpedo-bombers",
-        "naval-aviation"
+        "naval-aviation",
+        "mark-13-torpedo",
+        "tbd-devastator",
+        "us-bureau-of-ordnance",
+        "weapons-testing"
       ],
+      "question": "Were U.S. Bureau of Ordnance staff ever suspected of being enemy agents because the Mark 13 torpedo performed so badly?",
+      "answerShort": "No. Dr. Clarke says the failures were treated as incompetence and inadequate testing, not enemy sabotage; once properly tested and corrected, the Mark 13 became effective.",
       "summary": "The Mark 13 became effective after wartime fixes, but its later performance should not obscure the testing failures that handicapped early carrier strikes.",
       "body": "Dr. Clarke distinguishes a weapon's mature performance from the condition in which crews first had to use it. Proper testing could correct the Mark 13's defects, yet its later success can make early aircraft such as the TBD Devastator appear worse when the torpedo and its supporting system were also major parts of the failure. He later returns to the example to stress that an aircraft, its weapon, and the organization operating both must be developed as a working system. Judging one component after the others have been repaired obscures why the original combination failed and why early carrier strikes were handicapped.",
       "sourcePath": "src/transcripts/txt/2024-04-01_T18-00-31_check-campaign-11-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_fLOEXrMO0Vo.txt",
@@ -114,23 +121,79 @@
       "id": "large-battleship-design-balancing-act",
       "videoId": "fLOEXrMO0Vo",
       "slug": "large-battleship-design-balancing-act",
-      "title": "Balancing an 80,000-ton fast battleship",
+      "title": "Setting the requirements for an 80,000-ton counterfactual battleship",
       "kind": "chapter",
       "start": "45:08",
-      "end": "1:10:28",
+      "end": "52:54",
       "topics": [
         "battleships",
         "ship-design",
-        "naval-architecture"
+        "naval-architecture",
+        "16-5-inch-guns",
+        "naval-wargaming"
       ],
-      "summary": "An oversized battleship design exercise trades speed, armor, range, stability, machinery, and sixteen 16.5-inch guns against one another.",
-      "body": "The design sequence shows that extreme displacement does not eliminate naval-architecture constraints. Sixteen 16.5-inch guns and a proposed 30-knot speed consume weight before protection and endurance are settled. Main-deck and belt armor then compete with range and machinery, while turret placement, funnels, torpedo launchers, pitch, and weight offset determine whether the ship can use its firepower effectively. The result is a useful demonstration of why a specification must remain a balanced system even at 80,000 tons.",
+      "summary": "The exercise begins with an 80,000-ton hull, sixteen 16.5-inch guns, and 30 knots, then exposes the constraints hidden inside that extreme specification.",
+      "body": "The counterfactual design begins with an 80,000-ton hull, sixteen 16.5-inch guns, and a proposed speed of 30 knots. Dr. Clarke explicitly distinguishes the game exercise from real procurement by joking that no logisticians have to support its enormous armament. Even this displacement does not remove naval-architecture constraints: the first arrangement produces severe pitch and consumes weight before protection and endurance are settled. A chat exchange during the design also distinguishes choices made against human opponents from those made against the game's artificial intelligence, reinforcing the counterfactual context. Opening here shows how an apparently unlimited specification immediately becomes an interconnected design problem.",
       "sourcePath": "src/transcripts/txt/2024-04-01_T18-00-31_check-campaign-11-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_fLOEXrMO0Vo.txt",
       "evidence": [
         {
           "start": "45:08",
+          "end": "52:54",
+          "note": "The game design begins with an 80,000-ton hull, sixteen 16.5-inch guns, and 30 knots before pitch, logistics, and weight force compromises."
+        }
+      ]
+    },
+    {
+      "id": "battleship-stability-range-and-protection-tradeoffs",
+      "videoId": "fLOEXrMO0Vo",
+      "slug": "battleship-stability-range-and-protection-tradeoffs",
+      "title": "Trading range and speed for battleship stability and protection",
+      "kind": "notable_point",
+      "start": "55:40",
+      "end": "1:02:23",
+      "topics": [
+        "battleships",
+        "ship-design",
+        "naval-architecture",
+        "ship-stability",
+        "armour-protection",
+        "naval-logistics"
+      ],
+      "summary": "Deck and belt protection compete with range, speed, pitch, and weight distribution as the oversized battleship is made capable of firing while under way.",
+      "body": "Dr. Clarke adds main-deck protection, then considers sacrificing operating range to recover roughly 2,000 tons for the rest of the design. Pitch must fall far enough for the ship to fire effectively while moving, so stability becomes an operational requirement rather than a cosmetic game statistic. Simply reducing speed does not solve every problem because changing one parameter can worsen other parts of the design. The resulting heavy belt and deck protection therefore comes at the cost of range and demands further adjustments to machinery and weight distribution. Torpedo launchers are then used as another controlled weight that affects the hull's balance, showing how even secondary fittings alter the complete design.",
+      "sourcePath": "src/transcripts/txt/2024-04-01_T18-00-31_check-campaign-11-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_fLOEXrMO0Vo.txt",
+      "evidence": [
+        {
+          "start": "55:40",
+          "end": "1:02:23",
+          "note": "The speaker trades range and speed against deck and belt protection, pitch, moving-fire stability, and weight offset."
+        }
+      ]
+    },
+    {
+      "id": "battleship-layout-firing-arcs-and-balance",
+      "videoId": "fLOEXrMO0Vo",
+      "slug": "battleship-layout-firing-arcs-and-balance",
+      "title": "How battleship layout links firing arcs to hull balance",
+      "kind": "notable_point",
+      "start": "1:03:48",
+      "end": "1:10:28",
+      "topics": [
+        "battleships",
+        "ship-design",
+        "naval-architecture",
+        "turret-layout",
+        "firing-arcs",
+        "weight-distribution"
+      ],
+      "summary": "Moving turrets, funnels, and machinery improves pitch and weight distribution only if the main battery retains useful forward firing arcs.",
+      "body": "The final design stage turns arrangement into a problem of combat effectiveness rather than appearance. Dr. Clarke experiments with splitting turrets around the funnel, shifting structures, and changing boiler and funnel choices to reduce pitch and offset. He refuses an apparently easy move when it would cost the main battery its ability to fire forward, showing that stability improvements must preserve weapon arcs. Roll is already acceptable, so the remaining work focuses on bringing pitch below the target threshold and using the last displacement carefully. The completed design demonstrates why turret geometry, exhaust arrangements, machinery, and weight distribution have to be solved together.",
+      "sourcePath": "src/transcripts/txt/2024-04-01_T18-00-31_check-campaign-11-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_fLOEXrMO0Vo.txt",
+      "evidence": [
+        {
+          "start": "1:03:48",
           "end": "1:10:28",
-          "note": "The battleship design is developed through armament, armor, speed, range, stability, machinery, and weight-offset choices."
+          "note": "The speaker moves turrets and funnels, compares machinery arrangements, protects forward firing arcs, and fine-tunes pitch and weight offset."
         }
       ]
     },
@@ -145,7 +208,8 @@
       "topics": [
         "naval-treaties",
         "royal-navy",
-        "ship-design"
+        "ship-design",
+        "washington-naval-treaty"
       ],
       "summary": "Nominal treaty compliance could conceal design allowances, accounting choices, and interpretations that followed the letter more closely than the spirit.",
       "body": "Dr. Clarke cautions against treating interwar warship tonnage declarations as simple proof that one navy obeyed while another cheated. Individual designs contained variations and adjustments that complicated a clean compliant-or-noncompliant label. He points to the calculations used by directors of naval construction as evidence that formal limits still left room for interpretation and creative accounting. The Royal Navy is offered as an example of close attention to the treaty's letter rather than uncomplicated acceptance of its spirit.",
@@ -163,14 +227,22 @@
       "videoId": "fLOEXrMO0Vo",
       "slug": "battleship-gun-calibre-tradeoffs",
       "title": "Why bigger battleship guns were not automatically better",
-      "kind": "notable_point",
+      "kind": "qa",
       "start": "1:17:20",
       "end": "1:19:33",
       "topics": [
         "battleships",
         "naval-gunnery",
-        "naval-weapons"
+        "naval-weapons",
+        "16-5-inch-guns",
+        "g3-class-battlecruisers",
+        "n3-class-battleships",
+        "king-george-v-class-battleships",
+        "yamato-class-battleships",
+        "armour-penetration"
       ],
+      "question": "How should battleship gun size be balanced against rate of fire?",
+      "answerShort": "Dr. Clarke argues that the proposed 16.5-inch G3 gun was near a practical sweet spot: larger weapons improved penetration but fired too slowly for effective spotting correction, while smaller guns risked inadequate penetration against heavy armour.",
       "summary": "Battleship gun choice balances penetration and range against rate of fire, fall-of-shot correction, and the chance to land repeated hits on moving targets.",
       "body": "The comparison places the proposed British 16.5-inch G3 gun near a practical middle ground between lighter rapid-firing weapons and very heavy guns. Larger shells gain penetration, but slow fire produces fewer fall-of-shot observations for correcting aim while both ships move. Smaller 12- and 14-inch calibres may fire rapidly yet struggle against the heaviest armor, with Yamato-level protection used as the example. Effective gunnery therefore depends on range, accuracy, penetration, and repeated hits as well as the nominal power of one shell.",
       "sourcePath": "src/transcripts/txt/2024-04-01_T18-00-31_check-campaign-11-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_fLOEXrMO0Vo.txt",
@@ -193,7 +265,8 @@
       "topics": [
         "amphibious-warfare",
         "naval-logistics",
-        "military-logistics"
+        "military-logistics",
+        "sealift"
       ],
       "summary": "Airborne forces can raid or reinforce, but taking and sustaining a defended port demands heavy equipment and supply capacity that normally must arrive by sea.",
       "body": "The discussion separates the value of airborne movement from the mass required for a major amphibious objective. Troops can be delivered or reinforced by air for raids, covert operations, or part of an invasion. A defended port, however, calls for heavy equipment and continuing sustainment on a scale aircraft cannot usually provide. Naval control and sea lift are therefore prerequisites for turning a landing into a durable operational success.",
@@ -309,23 +382,79 @@
       "id": "asw-cruiser-speed-survivability-tradeoffs",
       "videoId": "fLOEXrMO0Vo",
       "slug": "asw-cruiser-speed-survivability-tradeoffs",
-      "title": "Designing a fast anti-submarine cruiser",
+      "title": "Matching a fast anti-submarine cruiser to its battle fleet",
       "kind": "chapter",
       "start": "1:54:13",
-      "end": "2:09:58",
+      "end": "1:56:10",
       "topics": [
         "anti-submarine-warfare",
         "cruisers",
-        "ship-design"
+        "ship-design",
+        "fleet-escorts",
+        "force-structure"
       ],
-      "summary": "A light cruiser intended for anti-submarine work is shaped around speed, machinery efficiency, survivability, torpedoes, and a practical superstructure layout.",
-      "body": "The design treats the ASW cruiser as a large, fast destroyer able to accompany newer battleships, with roughly 33 to 35 knots as a key requirement. That speed is not an abstract performance target; it lets the escort operate with the formation it is meant to protect. The exercise also weighs engine efficiency, damage control, deck protection, stability, and an eight-torpedo broadside rather than optimizing a single statistic. It demonstrates how an escort's intended operating group governs the compromises in its hull and machinery.",
+      "summary": "The next anti-submarine cruiser is conceived as a large destroyer fast enough to accompany the newer battleships it must protect.",
+      "body": "Dr. Clarke begins the next-generation ASW cruiser by defining its place in the fleet rather than choosing weapons in isolation. He treats the light cruiser as a large destroyer whose anti-submarine role requires it to operate alongside newer battleships. A speed of roughly 33 to 35 knots is therefore a compatibility requirement, not a prestige figure. The values belong to the campaign's design system, but the underlying lesson is historical: an escort that cannot keep station with its protected force cannot perform its intended role. Opening here shows how force structure should set a warship's requirements before detailed design begins.",
       "sourcePath": "src/transcripts/txt/2024-04-01_T18-00-31_check-campaign-11-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_fLOEXrMO0Vo.txt",
       "evidence": [
         {
           "start": "1:54:13",
-          "end": "2:09:58",
-          "note": "The speaker designs a next-generation ASW light cruiser and discusses speed, machinery, stability, armor, damage control, torpedoes, and fleet role."
+          "end": "1:56:10",
+          "note": "The speaker defines the next ASW light cruiser as a large destroyer able to accompany newer battleships at roughly 33 to 35 knots."
+        }
+      ]
+    },
+    {
+      "id": "asw-cruiser-machinery-survivability-and-stability",
+      "videoId": "fLOEXrMO0Vo",
+      "slug": "asw-cruiser-machinery-survivability-and-stability",
+      "title": "Balancing machinery, survivability, and torpedoes in an ASW cruiser",
+      "kind": "notable_point",
+      "start": "1:58:59",
+      "end": "2:08:39",
+      "topics": [
+        "anti-submarine-warfare",
+        "cruisers",
+        "ship-design",
+        "machinery",
+        "damage-control",
+        "ship-stability",
+        "torpedoes"
+      ],
+      "summary": "Machinery efficiency, damage control, deck protection, stability, and an eight-torpedo broadside compete inside the fast escort's limited displacement.",
+      "body": "After setting the ASW cruiser's fleet role, Dr. Clarke works through the machinery and survivability needed to make that speed usable. Engine efficiency and damage control compete with deck protection and the weight distribution required for a stable weapons platform. An eight-torpedo broadside adds offensive power, but the launchers and their position also affect the ship's balance. Increasing deck protection likewise changes the remaining displacement instead of providing a free improvement. Although the numbers are game parameters, the exercise demonstrates why a specialist escort still has to be designed as a complete, survivable warship rather than a single-purpose weapon carrier.",
+      "sourcePath": "src/transcripts/txt/2024-04-01_T18-00-31_check-campaign-11-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_fLOEXrMO0Vo.txt",
+      "evidence": [
+        {
+          "start": "1:58:59",
+          "end": "2:08:39",
+          "note": "The design balances engine efficiency, damage control, deck protection, stability, weight offset, and an eight-torpedo broadside."
+        }
+      ]
+    },
+    {
+      "id": "repairs-and-refits-absorb-shipyard-capacity",
+      "videoId": "fLOEXrMO0Vo",
+      "slug": "repairs-and-refits-absorb-shipyard-capacity",
+      "title": "How repairs and refits compete with new ship construction",
+      "kind": "notable_point",
+      "start": "2:11:51",
+      "end": "2:12:07",
+      "topics": [
+        "fleet-maintenance",
+        "ship-repair",
+        "ship-refits",
+        "naval-industrial-base",
+        "naval-procurement"
+      ],
+      "summary": "Five battleships under repair and six more in refit explain why a fleet can have no new hulls building while its shipyards remain heavily committed.",
+      "body": "The campaign economy shows why a navy can have no new ships under construction while its yards remain busy. Five battleships are being repaired and six more refitted, consuming time and capacity that might otherwise support expansion. Those numbers describe the scenario rather than a historical fleet, but the opportunity cost is a durable naval lesson. Construction totals alone can understate industrial effort when existing warships require battle-damage repair, modernization, and return-to-service work.",
+      "sourcePath": "src/transcripts/txt/2024-04-01_T18-00-31_check-campaign-11-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_fLOEXrMO0Vo.txt",
+      "evidence": [
+        {
+          "start": "2:11:51",
+          "end": "2:12:07",
+          "note": "The speaker notes that no new ships are building while five battleships are under repair and six more are being refitted."
         }
       ]
     },
@@ -411,7 +540,7 @@
       "title": "Cradock and the doctrinal pressure not to withdraw",
       "kind": "notable_point",
       "start": "2:22:50",
-      "end": "2:23:18",
+      "end": "2:23:17",
       "topics": [
         "christopher-cradock",
         "battle-of-coronel",
@@ -424,7 +553,7 @@
       "evidence": [
         {
           "start": "2:22:50",
-          "end": "2:23:18",
+          "end": "2:23:17",
           "note": "The speaker says Cradock was sent where he was and could not readily withdraw under his navy's doctrine and training, while lacking battleship support."
         }
       ]

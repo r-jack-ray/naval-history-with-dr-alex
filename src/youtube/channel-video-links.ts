@@ -6,6 +6,8 @@ import { google, type youtube_v3 } from "googleapis";
 import { slugifyVideoTitle, videoFileStem } from "../naming.js";
 import {
   defaultVideoMetadataOutput,
+  isBlockedTranscriptDuration,
+  maxBlockedTranscriptDurationSeconds,
   readVideoMetadataStore,
   resolveVideoState,
   parseYoutubeDurationSeconds,
@@ -377,7 +379,9 @@ export async function fetchChannelVideoLinks(
   const eligibleRecords = records.filter((record) => !isBlockedTranscriptDuration(record.durationSeconds));
   const blockedCount = records.length - eligibleRecords.length;
   if (blockedCount > 0) {
-    options.logger?.(`Blocked ${blockedCount} video(s) with durations of 60 seconds or less.`);
+    options.logger?.(
+      `Blocked ${blockedCount} video(s) at or below the ${maxBlockedTranscriptDurationSeconds}s transcript cutoff.`,
+    );
   }
   if (options.checkpointOutput) {
     await writeVideoLinksOutput(options.checkpointOutput, {
@@ -997,10 +1001,6 @@ export function applyOfficialVideoDuration(link: ChannelVideoLink, video: youtub
   if (durationSeconds !== undefined) {
     link.durationSeconds = durationSeconds;
   }
-}
-
-export function isBlockedTranscriptDuration(durationSeconds: number | undefined): boolean {
-  return durationSeconds !== undefined && durationSeconds > 0 && durationSeconds <= 60;
 }
 
 export function officialVideoStreamStartTime(video: youtube_v3.Schema$Video): string | undefined {

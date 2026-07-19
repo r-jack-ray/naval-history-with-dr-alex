@@ -154,6 +154,9 @@ Options:
   --quiet                 Suppress progress logs.
   --help                  Show this help.
 
+Videos with official durations at or below 61 seconds are never fetched. This
+includes one second of tolerance for nominal 60-second clips reported as 61s.
+
 Examples:
   npm run alternate:fetch:transcripts -- --limit 1 --request-delay-ms 5000
   npm run alternate:fetch:transcripts -- --limit 10 --retry-failed

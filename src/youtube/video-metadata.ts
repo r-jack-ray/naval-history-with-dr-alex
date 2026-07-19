@@ -77,6 +77,8 @@ export type VideoReadinessReason =
   | "metadata_missing"
   | "invalid_metadata";
 
+export const maxBlockedTranscriptDurationSeconds = 61;
+
 export type VideoStateResult =
   | {
       state: "ready";
@@ -287,6 +289,15 @@ export function parseYoutubeDurationSeconds(value: string | undefined): number |
   const seconds = Number(match[4] ?? 0);
   const total = (days * 86_400) + (hours * 3_600) + (minutes * 60) + seconds;
   return Number.isFinite(total) ? total : undefined;
+}
+
+export function isBlockedTranscriptDuration(durationSeconds: number | undefined): boolean {
+  // YouTube can report a nominal 60-second clip as 61 seconds because of
+  // container rounding or padding. Keep the tolerance narrow so eligibility
+  // begins at 62 seconds.
+  return durationSeconds !== undefined &&
+    durationSeconds > 0 &&
+    durationSeconds <= maxBlockedTranscriptDurationSeconds;
 }
 
 function deferredVideoState(

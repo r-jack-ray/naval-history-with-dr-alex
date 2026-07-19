@@ -68,7 +68,7 @@ test("batch fetch skips stored transcripts and writes checkpoint status", async 
             fetchedAt: "2026-07-08T00:00:00.000Z",
             snippet: { title: "Metadata Title", publishedAt: "2026-07-03T18:30:17Z" },
             status: { uploadStatus: "processed" },
-            contentDetails: { duration: "PT1M1S" },
+            contentDetails: { duration: "PT1M2S" },
           },
         ],
       }),
@@ -260,7 +260,7 @@ test("batch skips previous failures until retry is requested", async () => {
   }
 });
 
-test("batch blocks videos with durations of 60 seconds or less", async () => {
+test("batch blocks nominal 60-second videos including one second of metadata padding", async () => {
   const dir = await mkdtemp(join(tmpdir(), "naval-transcript-batch-"));
   const input = join(dir, "episodes.json");
   const metadataInput = join(dir, "metadata.json");
@@ -271,13 +271,15 @@ test("batch blocks videos with durations of 60 seconds or less", async () => {
   try {
     await writeFile(input, JSON.stringify({
       episodes: [
-        { videoId: "short123", title: "Short", tabs: ["videos"] },
+        { videoId: "exact60", title: "Exact 60", tabs: ["videos"] },
+        { videoId: "padded60", title: "Padded 60", tabs: ["videos"] },
         { videoId: "longer123", title: "Longer", tabs: ["videos"] },
       ],
     }), "utf8");
     await writeFile(metadataInput, JSON.stringify({ videos: [
-      readyMetadata("short123", "PT1M"),
-      readyMetadata("longer123", "PT1M1S"),
+      readyMetadata("exact60", "PT1M"),
+      readyMetadata("padded60", "PT1M1S"),
+      readyMetadata("longer123", "PT1M2S"),
     ] }), "utf8");
 
     const status = await fetchAndStoreTranscriptBatch({
@@ -293,7 +295,7 @@ test("batch blocks videos with durations of 60 seconds or less", async () => {
     });
 
     assert.deepEqual(calls, ["longer123"]);
-    assert.equal(status.stats.skippedShortDurationCount, 1);
+    assert.equal(status.stats.skippedShortDurationCount, 2);
     assert.equal(status.stats.fetchedCount, 1);
     assert.equal(status.stats.pendingCount, 0);
   } finally {
@@ -403,7 +405,7 @@ function sampleTranscript(videoId: string): VideoTranscript {
 
 async function writeReadyMetadata(path: string, videoIds: string[]): Promise<void> {
   await writeFile(path, JSON.stringify({
-    videos: videoIds.map((videoId) => readyMetadata(videoId, "PT1M1S")),
+    videos: videoIds.map((videoId) => readyMetadata(videoId, "PT1M2S")),
   }), "utf8");
 }
 

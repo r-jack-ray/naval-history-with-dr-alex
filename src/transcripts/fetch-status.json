@@ -1,28 +1,28 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-07-19T04:30:55.549Z",
+  "updatedAt": "2026-07-19T08:59:57.095Z",
   "inputPath": "src/channel/episodes.json",
   "outputRoot": "src/transcripts",
-  "requestDelayMs": 5000,
+  "requestDelayMs": 60000,
   "retryFailed": false,
   "force": false,
   "stats": {
     "inputVideoCount": 2238,
-    "skippedStoredCount": 2135,
-    "skippedDeferredCount": 7,
+    "skippedStoredCount": 765,
+    "skippedDeferredCount": 6,
     "skippedShortDurationCount": 0,
     "deferredCounts": {
-      "upcoming": 7,
+      "upcoming": 6,
       "live_in_progress": 0,
       "processing": 0,
       "metadata_missing": 0,
       "invalid_metadata": 0
     },
-    "skippedPreviousFailureCount": 15,
-    "attemptedCount": 0,
-    "fetchedCount": 0,
+    "skippedPreviousFailureCount": 1,
+    "attemptedCount": 14,
+    "fetchedCount": 14,
     "failedCount": 0,
-    "pendingCount": 81,
+    "pendingCount": 1452,
     "totalFailureCount": 15
   },
   "failures": [
@@ -207,6 +207,5 @@
       "channelOrder": 1237
     }
   ],
-  "metadataInput": "src/channel/video-metadata.json",
-  "limit": 0
+  "metadataInput": "src/channel/video-metadata.json"
 }

@@ -10,10 +10,11 @@ import {
   type VideoTranscript,
 } from "./transcripts.js";
 import { createRateLimitedFetch } from "./channel-video-links.js";
-import { isBlockedTranscriptDuration } from "./channel-video-links.js";
 import {
   defaultVideoMetadataInput,
   defaultVideoMetadataOutput,
+  isBlockedTranscriptDuration,
+  maxBlockedTranscriptDurationSeconds,
   readVideoMetadataStore,
   resolveVideoState,
   videoNamingMetadata,
@@ -151,7 +152,9 @@ export async function fetchAndStoreTranscriptBatch(
     if (state.state === "ready" && isBlockedTranscriptDuration(state.durationSeconds)) {
       failuresById.delete(episode.videoId);
       counters.skippedShortDurationCount += 1;
-      options.logger?.(`Blocking short video ${episode.videoId}: duration=${state.durationSeconds}s`);
+      options.logger?.(
+        `Blocking short video ${episode.videoId}: duration=${state.durationSeconds}s cutoff=${maxBlockedTranscriptDurationSeconds}s`,
+      );
       continue;
     }
 

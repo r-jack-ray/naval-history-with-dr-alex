@@ -24,7 +24,8 @@
         "us-navy",
         "naval-strategy-games",
         "naval-procurement",
-        "force-structure"
+        "force-structure",
+        "marshall-islands"
       ],
       "summary": "The campaign opens with the United States behind in technology, rich on paper but facing several wars and a difficult capital-ship programme.",
       "body": "Dr. Clarke frames the American position as a balance between financial capacity, technological lag, and immediate wartime commitments against Germany, Austria, and Spain. The United States has substantial cash but is losing money each month, so headline wealth does not translate automatically into deployable strength. The early decisions are therefore not simply about winning a battle: he must choose where to send capital ships, which islands and ports to target, and how to turn economic resources into a more capable fleet. The Marshall Islands become an immediate objective because the available battleships can support a Pacific move. This watch point shows how force structure, geography, and fiscal capacity constrain one another in a naval campaign.",
@@ -52,7 +53,7 @@
         "naval-procurement"
       ],
       "summary": "A bid for battlecruisers makes cruiser design and improved engines central to the American research programme, while a 21-knot battleship is treated as fast for 1900.",
-      "body": "The stream links capital-ship ambitions to the less glamorous work of machinery and cruiser-design research. Battlecruisers cannot simply be ordered because the campaign first requires the relevant hull and engine technologies. While that route remains incomplete, Dr. Clarke develops a fast battleship by shedding weight and balancing armour, guns, and speed. Belt and deck protection become variables in a design that must fit the available displacement rather than abstract ideals. He notes that 21 knots counts as a fast battleship in the campaign's 1900 setting, illustrating how a design judgement depends on period expectations rather than a modern benchmark. By 1902 the battlecruiser technology is still unavailable, so the fastest battleships the current research permits remain the practical substitute.",
+      "body": "The stream links capital-ship ambitions to the less glamorous work of machinery and cruiser-design research. Battlecruisers cannot simply be ordered because the campaign first requires the relevant hull and engine technologies. While that route remains incomplete, Dr. Clarke develops a fast battleship by shedding weight and balancing armour, guns, and speed. Belt and deck protection become variables in a design that must fit the available displacement rather than abstract ideals. He notes that 21 knots counts as a fast battleship in the campaign's 1900 setting, illustrating how a design judgement depends on period expectations rather than a modern benchmark.",
       "sourcePath": "src/transcripts/txt/2024-08-12_T18-00-10_twitch-live-usa-goes-battlecruiser-for-all-their-capital-ships-campaign-2_KjPWOKcpryw.txt",
       "evidence": [
         {
@@ -64,11 +65,6 @@
           "start": "36:21",
           "end": "39:49",
           "note": "Weight is traded among deck and belt protection to produce a 21-knot fast battleship for 1900."
-        },
-        {
-          "start": "1:48:41",
-          "end": "1:48:56",
-          "note": "By 1902 he still wants battlecruisers but has only been able to build the fastest battleships available."
         }
       ]
     },
@@ -78,7 +74,7 @@
       "slug": "merchant-marine-investment-and-us-growth",
       "title": "Funding economic growth before fleet expansion",
       "kind": "notable_point",
-      "start": "45:25",
+      "start": "44:30",
       "end": "45:50",
       "topics": [
         "us-navy",
@@ -150,11 +146,13 @@
         "naval-strategy-games",
         "amphibious-operations",
         "naval-bases",
-        "guantanamo-bay",
-        "caribbean"
+        "caribbean",
+        "cuba",
+        "havana",
+        "blockades"
       ],
       "summary": "A fleet stationed near Havana still cannot begin an invasion of Cuba, exposing the gap between maritime presence and the campaign's political or operational rules.",
-      "body": "Dr. Clarke expects a fleet beside Havana to make Cuba an available invasion target, especially because the port is one of the island's most important maritime facilities. The campaign initially refuses that option, so he shifts ships among Cuban ports and blockades while testing what the rules require. The episode is useful for thinking about the difference between having warships nearby, establishing sea control, and possessing the political and logistical machinery needed for an amphibious operation. After Cuba changes hands, the game treats Guantanamo Bay as a separate conquest, which he explicitly calls historically inaccurate. The American army then takes a long time to begin moving around Guantanamo even after the naval campaign has advanced. These mismatches between operational expectation and available commands expose the abstractions built into the campaign system. They show why strategy-game events must be read as a model of naval problems rather than as a literal historical reconstruction.",
+      "body": "Dr. Clarke expects a fleet beside Havana to make Cuba an available invasion target, especially because the port is one of the island's most important maritime facilities. The campaign initially refuses that option, so he shifts ships among Cuban ports and blockades while testing what the rules require. The episode is useful for thinking about the difference between having warships nearby, establishing sea control, and possessing the political and logistical machinery needed for an amphibious operation. The mismatch between operational expectation and the available command exposes an abstraction built into the campaign system. It shows why the game's events should be read as a model of naval problems rather than as a literal historical reconstruction.",
       "sourcePath": "src/transcripts/txt/2024-08-12_T18-00-10_twitch-live-usa-goes-battlecruiser-for-all-their-capital-ships-campaign-2_KjPWOKcpryw.txt",
       "evidence": [
         {
@@ -166,7 +164,28 @@
           "start": "49:49",
           "end": "50:14",
           "note": "He reiterates that the force off Havana was intended to support an invasion before shifting attention to Puerto Rico and other objectives."
-        },
+        }
+      ]
+    },
+    {
+      "id": "guantanamo-bay-campaign-abstractions",
+      "videoId": "KjPWOKcpryw",
+      "slug": "guantanamo-bay-campaign-abstractions",
+      "title": "Cuba and Guantanamo Bay expose the campaign's abstractions",
+      "kind": "notable_point",
+      "start": "1:17:07",
+      "end": "1:25:00",
+      "topics": [
+        "cuba",
+        "guantanamo-bay",
+        "caribbean",
+        "amphibious-operations",
+        "naval-strategy-games"
+      ],
+      "summary": "The game separates Guantanamo Bay from conquered Cuba and delays American army movement, prompting a warning against treating campaign mechanics as a historical reconstruction.",
+      "body": "After Cuba changes hands, the campaign treats Guantanamo Bay as a separate conquest, which Dr. Clarke explicitly calls historically inaccurate. The American army then takes a long time to begin moving around Guantanamo even though the naval campaign has already advanced. These events reveal how the game separates territorial ownership, naval presence, and land operations into distinct mechanics. The resulting sequence does not map neatly onto the history it loosely evokes. This watch point is therefore useful for seeing both the strategic relationships the simulation tries to represent and the limits of using its scenario events as history.",
+      "sourcePath": "src/transcripts/txt/2024-08-12_T18-00-10_twitch-live-usa-goes-battlecruiser-for-all-their-capital-ships-campaign-2_KjPWOKcpryw.txt",
+      "evidence": [
         {
           "start": "1:17:07",
           "end": "1:17:44",
@@ -359,6 +378,7 @@
         "ship-design",
         "naval-gunnery",
         "harvey-armour",
+        "10-inch-guns",
         "torpedoes"
       ],
       "summary": "A final fast-battleship design trades some range for a more balanced armament, adding torpedoes and four-inch guns alongside ten-inch weapons.",

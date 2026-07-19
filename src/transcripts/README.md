@@ -23,6 +23,9 @@ The timestamp is the video's canonical UTC date: an eligible completed stream's
 actual start when available, its scheduled start only as a completion-proven
 fallback, or the raw YouTube publication time. Upcoming, live, processing, and
 zero-duration videos are deferred and do not receive stored transcript files.
+Videos at or below 61 seconds are also excluded from TXT pulls; the extra second
+prevents nominal 60-second clips reported with YouTube container padding from
+slipping through. The cutoff applies to single, batch, retry, and forced pulls.
 The ID must remain in the filename. Once a record is stored, its manifest
 `fileStem` remains authoritative during refetches even if title or timestamp
 metadata later changes.

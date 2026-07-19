@@ -12,6 +12,8 @@ import {
 import {
   defaultVideoMetadataOutput,
   findVideoMetadataRecord,
+  isBlockedTranscriptDuration,
+  maxBlockedTranscriptDurationSeconds,
   resolveVideoState,
   videoNamingMetadata,
   type VideoMetadataRecord,
@@ -39,6 +41,12 @@ async function main(): Promise<void> {
   }
   if (state.state === "invalid") {
     throw new Error(`Cannot fetch transcript for ${options.videoId}: ${state.reason} (${state.diagnostic})`);
+  }
+  if (isBlockedTranscriptDuration(state.durationSeconds)) {
+    console.error(
+      `Skipping short video ${options.videoId}: duration=${state.durationSeconds}s cutoff=${maxBlockedTranscriptDurationSeconds}s`,
+    );
+    return;
   }
   const namingMetadata = videoNamingMetadata(metadataRecord);
   const fetchOptions: FetchVideoTranscriptOptions = {
@@ -223,6 +231,9 @@ Options:
   --force                  Refetch from YouTube even when the transcript is already stored.
   --quiet                  Suppress progress logs.
   --help                   Show this help.
+
+Videos with official durations at or below 61 seconds are never fetched. This
+includes one second of tolerance for nominal 60-second clips reported as 61s.
 
 Example:
   npm run alternate:fetch:transcript -- --video-id uURe69Wnh-Q

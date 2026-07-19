@@ -46,6 +46,20 @@
       "evidence": [{"start": "15:41", "end": "15:51", "note": "They distinguish air-defense and anti-submarine Fletcher escorts."}, {"start": "17:44", "end": "18:10", "note": "They explain that submarines threaten the cargo ships and propose covering the convoy closely."}]
     },
     {
+      "id": "scouting-versus-strike-allocation",
+      "videoId": "ZgFmbU2uYec",
+      "slug": "scouting-versus-strike-allocation",
+      "title": "Scouting versus strike capacity in carrier operations",
+      "kind": "notable_point",
+      "start": "18:42",
+      "end": "19:01",
+      "topics": ["aircraft-carriers", "carrier-operations", "naval-aviation", "reconnaissance", "strike-aircraft"],
+      "summary": "The decision to search one contact at a time exposes how reconnaissance can consume the same finite aircraft capacity needed for an offensive strike.",
+      "body": "The players are advised to scout one contact or sector at a time rather than launch aircraft across every possible search area. In the simulation, too many scouts leave too few aircraft available to mount a strike. Although the game compresses the problem into a mission limit, the choice makes an important operational tradeoff visible: searching more widely can reduce the force immediately available to exploit a contact. A concentrated search preserves aircraft for a follow-on attack. Opening here helps viewers see scouting and striking as linked parts of one air-group plan rather than independent tasks.",
+      "sourcePath": "src/transcripts/txt/2023-05-17_T18-00-12_ship-shape-special-alex-and-garius-command-a-carrier-how-bad-can-this-be-mission-2_ZgFmbU2uYec.txt",
+      "evidence": [{"start": "18:42", "end": "19:01", "note": "They advise scouting one contact at a time because committing too many scouts prevents the carrier from launching a strike."}]
+    },
+    {
       "id": "carrier-launches-wind-and-catapult-assistance",
       "videoId": "ZgFmbU2uYec",
       "slug": "carrier-launches-wind-and-catapult-assistance",
@@ -167,13 +181,13 @@
       "kind": "qa",
       "start": "1:31:38",
       "end": "1:49:13",
-      "topics": ["uss-franklin", "damage-control", "aircraft-carriers", "us-navy", "world-war-ii", "naval-leadership"],
+      "topics": ["uss-franklin", "uss-johnston", "damage-control", "aircraft-carriers", "us-navy", "world-war-ii", "naval-leadership"],
       "question": "Which American carrier survived devastating fires before its captain tried to punish crew members who had left the ship?",
       "answerShort": "USS Franklin, whose captain Leslie Gehres sought courts-martial even for some men blown overboard during the attack.",
       "summary": "A carrier fire in the game opens into an account of Franklin's survival, rescue work, and the command controversy that followed the 1945 attack.",
-      "body": "The speakers begin with the grim observation that flooding can sometimes check a fire aboard a heavily damaged ship. They then recall sailors repeatedly entering smoke-filled sections of an American carrier to lead trapped crew members out. After the ship survived and returned to harbor, its captain attempted to punish men categorized as having left the ship, even though some had been blown overboard. The speakers identify this as a severe failure of command judgment after extraordinary collective damage-control work. A later message confirms the ship as USS Franklin and the captain as Leslie Gehres, correcting their initial uncertainty about Lexington or Saratoga.",
+      "body": "The discussion begins with USS Johnston, where extreme flooding during a desperate last stand briefly helped suppress fires aboard the ship. The speakers then recall sailors repeatedly entering smoke-filled sections of an American carrier to lead trapped crew members out. After the carrier survived and returned to harbor, its captain attempted to punish men categorized as having left the ship, even though some had been blown overboard. The speakers identify this as a severe failure of command judgment after extraordinary collective damage-control work. A later message confirms the carrier as USS Franklin and the captain as Leslie Gehres, correcting their initial uncertainty about Lexington or Saratoga.",
       "sourcePath": "src/transcripts/txt/2023-05-17_T18-00-12_ship-shape-special-alex-and-garius-command-a-carrier-how-bad-can-this-be-mission-2_ZgFmbU2uYec.txt",
-      "evidence": [{"start": "1:31:38", "end": "1:35:20", "note": "They discuss flooding, rescue work in smoke, survival of the carrier, and the proposed courts-martial."}, {"start": "1:48:56", "end": "1:49:13", "note": "A message identifies USS Franklin and Captain Gehres and notes that even men blown overboard were targeted."}]
+      "evidence": [{"start": "1:31:38", "end": "1:35:20", "note": "They cite flooding briefly checking fire aboard USS Johnston, then discuss carrier rescue work, survival, and the proposed courts-martial."}, {"start": "1:48:56", "end": "1:49:13", "note": "A message identifies USS Franklin and Captain Gehres and notes that even men blown overboard were targeted."}]
     },
     {
       "id": "world-war-one-lessons-in-royal-navy-adaptation",
@@ -230,6 +244,34 @@
       "body": "This sequence is explicitly a game scenario, but it demonstrates why carrier defense is a system rather than a single weapon. The players already have fighters aloft, add combat air patrol from an escort carrier, and call on Fletcher destroyers as another defensive layer. They also launch counter-scouting fighters because remaining undetected affects the enemy's ability to organize attacks. The speakers note that the carrier's own air-defense equipment is still underdeveloped in their campaign, making escort contributions especially important. Their successful strikes disable the opposing carrier group, linking reconnaissance, interception, escort protection, and offensive counter-carrier action into one operational problem.",
       "sourcePath": "src/transcripts/txt/2023-05-17_T18-00-12_ship-shape-special-alex-and-garius-command-a-carrier-how-bad-can-this-be-mission-2_ZgFmbU2uYec.txt",
       "evidence": [{"start": "2:15:14", "end": "2:16:03", "note": "They layer existing CAP, escort-carrier fighters, and Fletcher support against an incoming attack."}, {"start": "2:16:05", "end": "2:17:15", "note": "They prepare counter-scouting and explain that the game's carrier lacks later air-defense upgrades."}, {"start": "2:17:26", "end": "2:18:43", "note": "Their attacks disable the opposing heavy carrier group after losses among the attacking aircraft."}]
+    },
+    {
+      "id": "recovery-range-and-flight-deck-throughput",
+      "videoId": "ZgFmbU2uYec",
+      "slug": "recovery-range-and-flight-deck-throughput",
+      "title": "Recovery range and flight-deck throughput",
+      "kind": "chapter",
+      "start": "2:23:02",
+      "end": "2:30:29",
+      "topics": ["carrier-operations", "naval-aviation", "aircraft-recovery", "flight-deck-operations", "sortie-generation"],
+      "summary": "Two fighters are lost after the carrier overruns their recovery zone and a crowded landing queue consumes the remaining time.",
+      "body": "The scenario turns aircraft recovery into more than a map-radius check. The carrier has moved beyond the returning fighters' recovery zone, so the players reverse course while other aircraft are already queuing to land. Even after they regain position, the existing recovery takes too long and the two fighters run out of time. The game abstracts ship movement, deck handling, and landing intervals, but the failure shows how those constraints interact. A carrier commander must keep the ship in useful recovery geometry and reserve enough deck time to bring aircraft home, or a successful sortie can still end in avoidable losses.",
+      "sourcePath": "src/transcripts/txt/2023-05-17_T18-00-12_ship-shape-special-alex-and-garius-command-a-carrier-how-bad-can-this-be-mission-2_ZgFmbU2uYec.txt",
+      "evidence": [{"start": "2:23:02", "end": "2:24:31", "note": "They begin recovery, then realize the carrier has moved beyond the returning aircraft's recovery zone."}, {"start": "2:26:49", "end": "2:28:42", "note": "They regain range, but the landing queue consumes the remaining time and two fighters are lost."}, {"start": "2:29:12", "end": "2:30:29", "note": "A queued recovery is estimated at one hour and 27 minutes, reinforcing how long landing operations take."}]
+    },
+    {
+      "id": "replenishment-under-air-attack",
+      "videoId": "ZgFmbU2uYec",
+      "slug": "replenishment-under-air-attack",
+      "title": "Why replenishment under air attack is so dangerous",
+      "kind": "notable_point",
+      "start": "2:35:16",
+      "end": "2:39:49",
+      "topics": ["naval-logistics", "carrier-operations", "supply-ships", "force-protection", "combat-air-patrol"],
+      "summary": "A deliberately reckless resupply in the game highlights the danger of placing a carrier beside a fuel-laden support ship while enemy aircraft are inbound.",
+      "body": "The players decide to replenish while an enemy air attack is approaching, explicitly treating the move as something a carrier should not do. They bring a large merchant supply ship alongside a carrier, with both vessels carrying fuel and explosives. Combat air patrol from the carrier and the supporting Saipan is used to cover the evolution, but the speakers still frame the decision as an exercise in inviting disaster. The game makes the resupply sequence unusually compressed, yet it clearly exposes the tension between restoring endurance and preserving freedom of maneuver under threat. Opening here provides a useful logistics lesson: the support ship that sustains a task group also creates a concentrated vulnerability when it must come close.",
+      "sourcePath": "src/transcripts/txt/2023-05-17_T18-00-12_ship-shape-special-alex-and-garius-command-a-carrier-how-bad-can-this-be-mission-2_ZgFmbU2uYec.txt",
+      "evidence": [{"start": "2:35:16", "end": "2:36:26", "note": "They plan to resupply, detect an inbound attack, and launch both their own and Saipan's CAP."}, {"start": "2:37:12", "end": "2:38:09", "note": "They stop during the battle and describe the fuel- and explosives-laden carrier and merchant supply ship alongside one another."}, {"start": "2:39:36", "end": "2:39:49", "note": "They note that removing personnel from air defense reduced the ship's protection, although the layered CAP carried the defense."}]
     },
     {
       "id": "damage-control-manning-and-night-recovery",

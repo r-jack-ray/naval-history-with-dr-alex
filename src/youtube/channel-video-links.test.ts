@@ -10,11 +10,11 @@ import {
   fetchInitWithRequestLabel,
   mergeChannelVideoLinksResults,
   officialVideoStreamStartTime,
-  isBlockedTranscriptDuration,
   resolveChannelVideoLinksMasterOutput,
   splitChannelVideoLinksResult,
   type ChannelVideoLink,
 } from "./channel-video-links.js";
+import { isBlockedTranscriptDuration } from "./video-metadata.js";
 
 test("defaults a full video-link fetch to the canonical episode master", () => {
   assert.equal(resolveChannelVideoLinksMasterOutput({}), "src/channel/episodes.json");
@@ -246,7 +246,7 @@ test("official enrichment keeps raw stream dates separate from the effective dat
   assert.equal(link.publishedText, "2026-07-12");
 });
 
-test("official duration metadata blocks positive durations of 60 seconds or less", () => {
+test("official duration metadata blocks nominal 60-second clips with one second of padding", () => {
   const link: ChannelVideoLink = {
     videoId: "short123",
     url: "https://www.youtube.com/watch?v=short123",
@@ -257,7 +257,8 @@ test("official duration metadata blocks positive durations of 60 seconds or less
   applyOfficialVideoDuration(link, { contentDetails: { duration: "PT1M" } });
   assert.equal(link.durationSeconds, 60);
   assert.equal(isBlockedTranscriptDuration(link.durationSeconds), true);
-  assert.equal(isBlockedTranscriptDuration(61), false);
+  assert.equal(isBlockedTranscriptDuration(61), true);
+  assert.equal(isBlockedTranscriptDuration(62), false);
   assert.equal(isBlockedTranscriptDuration(0), false);
 });
 

@@ -192,7 +192,10 @@ npm run alternate:merge:video-links -- --input reports/dr-alex-videos-html-links
 The transcript puller uses `youtube-transcript-plus` first, falls back to direct
 watch-page caption tracks, and defaults to a 5-second delay between YouTube
 requests. The official YouTube Data API does not provide public transcript
-download by API key. By default this writes TXT and updates
+download by API key. Both single-video and batch pulls skip official durations
+at or below 61 seconds, including one second of YouTube duration padding around
+nominal 60-second clips. The cutoff still applies with `--force`. By default the
+single-video command writes TXT and updates
 `src/transcripts/manifest.json`:
 
 ```powershell
