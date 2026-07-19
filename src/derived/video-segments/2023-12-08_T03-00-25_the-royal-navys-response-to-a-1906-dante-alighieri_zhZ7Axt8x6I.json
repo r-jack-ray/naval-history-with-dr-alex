@@ -4,8 +4,10 @@
   "topics": [
     "royal-navy",
     "italian-navy",
+    "dante-alighieri",
     "dreadnoughts",
     "battleship-design",
+    "fast-battleships",
     "naval-arms-races",
     "alternate-history",
     "naval-procurement"
@@ -33,7 +35,7 @@
       "kind": "chapter",
       "start": "2:42",
       "end": "12:57",
-      "topics": ["dante-alighieri", "battleship-design", "triple-turrets", "naval-artillery", "warship-armour"],
+      "topics": ["dante-alighieri", "battleship-design", "triple-turrets", "naval-artillery", "12-inch-guns", "4-7-inch-guns", "warship-armour"],
       "summary": "A game reconstruction lays out Dante Alighieri's triple 12-inch turrets, 22-knot speed, secondary battery, torpedoes, and armour.",
       "body": "The Italian reference design is assembled from its defining characteristics: twelve 12-inch guns in triple turrets, roughly 22 knots, 4.7-inch secondary guns, torpedoes, and a substantial armour scheme. The reconstruction also preserves the long 46-calibre main guns and 50-calibre secondary weapons as closely as the available game components allow. Game constraints require compromises, especially when balancing the hull, but the exercise identifies the features a British answer would have to surpass. Triple turrets and high speed emerge as signals of a new type rather than optional details.",
       "sourcePath": "src/transcripts/txt/2023-12-08_T03-00-25_the-royal-navys-response-to-a-1906-dante-alighieri_zhZ7Axt8x6I.txt",
@@ -82,20 +84,36 @@
       "evidence": [{"start": "31:46", "end": "33:11", "note": "Dr. Clarke explains why the available Elswick 14-inch/45 proposal is the plausible British overmatch gun in 1904-05."}]
     },
     {
-      "id": "boilers-metallurgy-and-speed",
+      "id": "battlecruiser-speed-escalation",
       "videoId": "zhZ7Axt8x6I",
-      "slug": "boilers-metallurgy-and-speed",
-      "title": "What limits an early 26-knot battleship's boilers?",
+      "slug": "battlecruiser-speed-escalation",
+      "title": "Would 26-knot battleships force 32-knot battlecruisers?",
       "kind": "qa",
       "start": "33:50",
-      "end": "37:28",
-      "topics": ["marine-boilers", "metallurgy", "propulsion", "fast-battleships", "royal-navy"],
-      "summary": "A viewer asks whether boiler metallurgy or feed-water purity is the harder obstacle to the proposed machinery plant.",
-      "body": "Dr. Clarke says feed water can be managed with purification and distillation equipment. The more serious constraints are metallurgy, tube seals, and welding, all of which must withstand the much greater machinery demand. Reaching the target would require either an earlier workable small-tube boiler or a very large conventional boiler plant. Britain possesses relevant theory and engineering capacity, but achieving the speed would be costly and technically aggressive.",
-      "question": "Would boiler metallurgy or feed-water purity be the main obstacle to the proposed high-speed British battleship?",
-      "answerShort": "Metallurgy, tube seals, and welding are the main limits; feed-water purity can be handled with purifiers and distillation plants.",
+      "end": "35:15",
+      "topics": ["battlecruisers", "fast-battleships", "german-navy", "fleet-tactics", "naval-arms-races"],
+      "summary": "A viewer asks whether the proposed 26-knot battleship would push battlecruisers beyond 30 knots almost immediately.",
+      "body": "Dr. Clarke estimates that battlecruisers might need roughly 32 knots if battleships begin the dreadnought era at 26 knots. The scouting type needs a meaningful margin to control contact and escape from the battle line, not merely a different label. Achieving that speed in 1907-08 would pull machinery and hull development forward years before navies historically fielded such ships. German battlecruisers that accepted speeds around 26-28 knots would be especially vulnerable because some older enemy battleships could match them.",
+      "question": "Would a 26-knot British battleship force battlecruisers to aim for speeds above 30 knots?",
+      "answerShort": "Yes; Dr. Clarke estimates a requirement of roughly 32 knots so battlecruisers retain a useful speed margin over the new battleships.",
       "sourcePath": "src/transcripts/txt/2023-12-08_T03-00-25_the-royal-navys-response-to-a-1906-dante-alighieri_zhZ7Axt8x6I.txt",
-      "evidence": [{"start": "33:50", "end": "37:28", "note": "The machinery discussion leads into a direct viewer question and answer about boiler constraints."}]
+      "evidence": [{"start": "33:50", "end": "35:15", "note": "A viewer asks about battlecruiser speed, and Dr. Clarke derives a roughly 32-knot requirement from the proposed 26-knot battleship."}, {"start": "1:14:44", "end": "1:15:40", "note": "The later discussion explains the consequences for 1907-08 construction and for slower German battlecruisers."}]
+    },
+    {
+      "id": "official-versus-real-twenty-six-knots",
+      "videoId": "zhZ7Axt8x6I",
+      "slug": "official-versus-real-twenty-six-knots",
+      "title": "Would it be a real 26 knots or a Royal Navy 26 knots?",
+      "kind": "qa",
+      "start": "35:15",
+      "end": "35:28",
+      "topics": ["fast-battleships", "propulsion", "royal-navy", "naval-engineering"],
+      "summary": "A viewer challenges whether the proposed speed would be proven performance or merely the ship's official rating.",
+      "body": "Dr. Clarke commits only to the ship being officially rated at 26 knots and deliberately leaves its exact service performance uncertain. The target includes a knot of design margin because the tactical requirement is about 25 knots, three faster than Dante Alighieri. Large machinery demands and immature boiler technology make some shortfall plausible even if Britain accepts the cost. The exchange distinguishes a paper requirement from the speed a new ship would actually sustain.",
+      "question": "Would the British response make a real 26 knots or only an official Royal Navy 26 knots?",
+      "answerShort": "It would officially be rated at 26 knots, but Dr. Clarke does not promise that the ship would achieve exactly that in service.",
+      "sourcePath": "src/transcripts/txt/2023-12-08_T03-00-25_the-royal-navys-response-to-a-1906-dante-alighieri_zhZ7Axt8x6I.txt",
+      "evidence": [{"start": "33:50", "end": "35:15", "note": "The preceding answer explains why a 26-knot target gives the design margin needed to deliver about 25 knots."}, {"start": "35:15", "end": "35:28", "note": "The direct viewer exchange contrasts an official Royal Navy figure with real performance."}]
     },
     {
       "id": "gun-rate-of-fire-definitions",
@@ -110,6 +128,22 @@
       "body": "Dr. Clarke uses Rodney's changing output during the battle with Bismarck to show why a single published rate can mislead. Her average output rose above the quoted figure because the closer phase of the action allowed a much faster firing cycle. Some figures measure loading and firing on a level footing, while realistic rates include lowering, reloading, re-elevating, and firing at operational ranges. Any comparison of naval guns therefore has to establish which definition a navy used.",
       "sourcePath": "src/transcripts/txt/2023-12-08_T03-00-25_the-royal-navys-response-to-a-1906-dante-alighieri_zhZ7Axt8x6I.txt",
       "evidence": [{"start": "35:28", "end": "40:38", "note": "The transcript calculates Rodney's average output and distinguishes ideal from realistic rate-of-fire measures."}]
+    },
+    {
+      "id": "boilers-metallurgy-and-speed",
+      "videoId": "zhZ7Axt8x6I",
+      "slug": "boilers-metallurgy-and-speed",
+      "title": "What limits an early 26-knot battleship's boilers?",
+      "kind": "qa",
+      "start": "37:07",
+      "end": "37:28",
+      "topics": ["marine-boilers", "metallurgy", "propulsion", "fast-battleships", "royal-navy"],
+      "summary": "A viewer asks whether boiler metallurgy or feed-water purity is the harder obstacle to the proposed machinery plant.",
+      "body": "Dr. Clarke says feed water can be managed with purification and distillation equipment. The more serious constraints are metallurgy, tube seals, and welding, all of which must withstand the much greater machinery demand. Reaching the target would require either an earlier workable small-tube boiler or a very large conventional boiler plant. Britain possesses relevant theory and engineering capacity, but achieving the speed would be costly and technically aggressive.",
+      "question": "Would boiler metallurgy or feed-water purity be the main obstacle to the proposed high-speed British battleship?",
+      "answerShort": "Metallurgy, tube seals, and welding are the main limits; feed-water purity can be handled with purifiers and distillation plants.",
+      "sourcePath": "src/transcripts/txt/2023-12-08_T03-00-25_the-royal-navys-response-to-a-1906-dante-alighieri_zhZ7Axt8x6I.txt",
+      "evidence": [{"start": "34:34", "end": "35:02", "note": "The speed discussion identifies the need for an early small-tube boiler or a much larger conventional boiler plant."}, {"start": "37:07", "end": "37:28", "note": "The direct viewer question distinguishes metallurgy, tube seals, and welding from manageable feed-water purity."}]
     },
     {
       "id": "triple-turrets-define-new-type",
@@ -140,6 +174,20 @@
       "answerShort": "Possibly, but the required leap could be so large that the United States might struggle to join the competition on equal terms.",
       "sourcePath": "src/transcripts/txt/2023-12-08_T03-00-25_the-royal-navys-response-to-a-1906-dante-alighieri_zhZ7Axt8x6I.txt",
       "evidence": [{"start": "50:19", "end": "50:41", "note": "A viewer asks whether the new paradigm produces US fast battleships and the funding for them, and Dr. Clarke questions whether the US Navy could enter the competition at all."}, {"start": "1:10:10", "end": "1:10:52", "note": "The later answer explains that triple 14-inch turrets and high speed would disrupt the American evolutionary path and require much larger ships."}]
+    },
+    {
+      "id": "deck-armour-simulation-caveat",
+      "videoId": "zhZ7Axt8x6I",
+      "slug": "deck-armour-simulation-caveat",
+      "title": "Why the simulation adds deck armour, not belt armour",
+      "kind": "notable_point",
+      "start": "1:05:42",
+      "end": "1:06:31",
+      "topics": ["battleship-design", "warship-armour", "deck-armour", "plunging-fire", "naval-gunnery"],
+      "summary": "The reconstruction uses extra deck armour as a balancing workaround because early fire is less likely to arrive at steep plunging angles.",
+      "body": "Dr. Clarke identifies the extra deck armour as a game-balancing device rather than a historical feature of Dante Alighieri. With the fire-control and gun technology being modelled, long-range plunging hits are less likely than in later eras, so the artificial deck weight has less effect on the test. Increasing the belt instead would change the ship's resistance in the range band the battle actually uses and create armour implausible for the period. The passage helps viewers separate lessons about design trade-offs from compromises imposed by the simulation's stability system.",
+      "sourcePath": "src/transcripts/txt/2023-12-08_T03-00-25_the-royal-navys-response-to-a-1906-dante-alighieri_zhZ7Axt8x6I.txt",
+      "evidence": [{"start": "1:05:42", "end": "1:06:31", "note": "Dr. Clarke explains why he uses deck armour as the balancing workaround and rejects an ahistorical belt increase."}]
     },
     {
       "id": "russia-and-gangut-response",
@@ -186,20 +234,6 @@
       "evidence": [{"start": "1:13:12", "end": "1:14:36", "note": "The transcript connects main-battery size and cumulative fire to lessons drawn from Tsushima."}]
     },
     {
-      "id": "battlecruiser-speed-escalation",
-      "videoId": "zhZ7Axt8x6I",
-      "slug": "battlecruiser-speed-escalation",
-      "title": "Fast battleships force 32-knot battlecruisers",
-      "kind": "chapter",
-      "start": "1:14:44",
-      "end": "1:15:40",
-      "topics": ["battlecruisers", "fast-battleships", "german-navy", "fleet-tactics", "naval-arms-races"],
-      "summary": "A 26-knot battleship baseline pushes battlecruisers toward roughly 32 knots and makes slower German designs tactically vulnerable.",
-      "body": "Battlecruisers need enough speed to disengage from battleships, so accelerating the battleship to 26 knots drives the scouting type toward an extraordinary 32-knot target in 1907-08. That requirement would pull machinery and hull development forward years before navies historically fielded ships at such speeds. German battlecruisers that historically accepted speeds around 26-28 knots would lose their defining margin. A nominal battlecruiser no faster than older enemy battleships becomes, in Dr. Clarke's phrase, a target rather than a useful operational type.",
-      "sourcePath": "src/transcripts/txt/2023-12-08_T03-00-25_the-royal-navys-response-to-a-1906-dante-alighieri_zhZ7Axt8x6I.txt",
-      "evidence": [{"start": "1:14:44", "end": "1:15:40", "note": "The transcript derives a roughly 32-knot battlecruiser requirement and explains the resulting German problem."}]
-    },
-    {
       "id": "six-inch-secondary-battery-test",
       "videoId": "zhZ7Axt8x6I",
       "slug": "six-inch-secondary-battery-test",
@@ -221,7 +255,7 @@
       "kind": "chapter",
       "start": "1:35:33",
       "end": "1:39:09",
-      "topics": ["royal-navy", "14-inch-guns", "triple-turrets", "fast-battleships", "naval-arms-races"],
+      "topics": ["royal-navy", "14-inch-guns", "triple-turrets", "fast-battleships", "naval-arms-races", "german-navy", "kiel-canal", "naval-infrastructure"],
       "summary": "The mature concept combines five triple 14-inch turrets, about 26 knots, and a much larger 6-inch battery to overmatch Italy decisively.",
       "body": "The preferred ship is more ambitious than the game can comfortably reproduce: fifteen 14-inch guns, roughly 26 knots, and numerous twin 6-inch secondary mountings. Such a battleship would be expensive, enlarge dockyard and canal requirements, and intensify pressure on every competing navy. Germany in particular would face the cost of enlarging the Kiel Canal for a still larger generation of capital ships. The design's purpose is not a narrow tactical edge but a Warrior-over-Gloire demonstration that restores Britain as the unquestioned reference point.",
       "sourcePath": "src/transcripts/txt/2023-12-08_T03-00-25_the-royal-navys-response-to-a-1906-dante-alighieri_zhZ7Axt8x6I.txt",
@@ -294,14 +328,14 @@
       "title": "Does the South American dreadnought race fit this model?",
       "kind": "qa",
       "start": "2:00:48",
-      "end": "2:01:18",
+      "end": "2:01:19",
       "topics": ["south-american-dreadnought-race", "british-shipbuilding", "royal-navy", "naval-arms-races", "technology-transfer"],
       "summary": "A closing viewer comparison points to South American battleship orders as evidence that Britain could build advanced ships for other navies without losing confidence in its own lead.",
       "body": "Dr. Clarke agrees that the South American naval race provides a useful parallel. Foreign ships could be portrayed as superior to some Italian or American designs while Britain remained relatively unconcerned because British yards built many of them and the Royal Navy still measured itself against a higher standard. Building capable ships for other states advertised British industrial strength rather than automatically surrendering naval leadership. The example reinforces the link between industrial supply, prestige, and benchmark status.",
       "question": "Is the South American dreadnought race an example of Britain building strong foreign ships while remaining confident in Royal Navy superiority?",
       "answerShort": "Yes; many of those ships were British-built, and their foreign comparisons did not displace the Royal Navy as the benchmark.",
       "sourcePath": "src/transcripts/txt/2023-12-08_T03-00-25_the-royal-navys-response-to-a-1906-dante-alighieri_zhZ7Axt8x6I.txt",
-      "evidence": [{"start": "2:00:48", "end": "2:01:18", "note": "The closing exchange explicitly identifies the South American naval race as the relevant example."}]
+      "evidence": [{"start": "2:00:48", "end": "2:01:19", "note": "The closing exchange explicitly identifies the South American naval race as the relevant example."}]
     }
   ]
 }

@@ -6,6 +6,7 @@
     "fleet-tactics",
     "naval-doctrine",
     "torpedoes",
+    "naval-wargaming",
     "royal-navy"
   ],
   "segments": [
@@ -14,12 +15,14 @@
       "videoId": "hqEqy48bHZY",
       "slug": "why-independent-battle-squadron-duels-are-unlikely",
       "title": "Why isolated battle-squadron duels are unlikely",
-      "kind": "chapter",
+      "kind": "qa",
       "start": "0:22",
       "end": "1:20",
-      "topics": ["fleet-tactics", "naval-doctrine", "battle-squadrons"],
-      "summary": "The opening question asks what a battle-squadron clash would look like, then explains why equal four-ship formations should rarely meet alone.",
+      "topics": ["fleet-tactics", "naval-doctrine", "battle-squadrons", "naval-wargaming"],
+      "summary": "The opening viewer question asks what a battle-squadron clash would look like, then explains why equal four-ship formations should rarely meet alone.",
       "body": "A fleet action is normally meant to bring larger forces together, so two evenly matched battle squadrons fighting in isolation implies that both sides have mishandled reconnaissance or command. Even an independently operating American squadron accidentally meeting a German formation is presented as only a remote possibility. The video instead uses battlecruisers as a more plausible way to explore a fast-squadron encounter. That framing keeps the tactical game scenario tied to the operational assumptions behind First World War fleet doctrine.",
+      "question": "What would happen if two equally matched battle squadrons met?",
+      "answerShort": "An isolated four-ship-on-four-ship duel is so unlikely that it implies serious operational errors on both sides, so the video turns to a faster battlecruiser encounter instead.",
       "sourcePath": "src/transcripts/txt/2022-03-07_T18-00-11_battle-cruiser-squadron-action-a-uad-infused-discussion-long-patrol_hqEqy48bHZY.txt",
       "evidence": [
         {
@@ -37,7 +40,7 @@
       "kind": "notable_point",
       "start": "1:20",
       "end": "4:13",
-      "topics": ["battlecruisers", "ship-design", "naval-gunnery", "tiger"],
+      "topics": ["battlecruisers", "ship-design", "naval-gunnery", "tiger", "naval-wargaming", "14-inch-guns", "13-5-inch-guns"],
       "summary": "A modified Tiger-class design provides the tactical case study, with armour, heavy guns, and six-inch turrets shaped for fighting peer battlecruisers.",
       "body": "The simulated Tiger differs from the historical ship in several details, including turreted six-inch guns, a game-modelled 14-inch main battery, no torpedoes, and altered funnels. It is used to test the problem of a fast capital ship meeting a comparable opponent rather than to claim a literal reconstruction. The discussion weighs citadel protection, displacement, speed, and armament rather than treating any one statistic as decisive. It also introduces the idea that a battlecruiser intended to fight another battlecruiser needs a different balance from one built chiefly to overwhelm cruisers.",
       "sourcePath": "src/transcripts/txt/2022-03-07_T18-00-11_battle-cruiser-squadron-action-a-uad-infused-discussion-long-patrol_hqEqy48bHZY.txt",
@@ -56,16 +59,36 @@
       "title": "Armour, weight, and speed pull against one another",
       "kind": "notable_point",
       "start": "4:13",
-      "end": "6:15",
-      "topics": ["battlecruisers", "warship-armour", "ship-design", "displacement", "speed"],
+      "end": "6:14",
+      "topics": ["battlecruisers", "warship-armour", "ship-design", "displacement", "speed", "naval-wargaming"],
       "summary": "Building the opposing battlecruiser exposes how extra armour, torpedo equipment, machinery, and speed compete for the same displacement.",
       "body": "The simulated opponent becomes an armoured box with 11-inch guns because the design still has roughly a thousand tons to allocate. Adding protection to the hull, stern, and superstructure makes it much more heavily armoured than its historical counterpart. Torpedo equipment, bulkheads, and other fittings also consume weight, while the desired speed remains about 26.5 knots. The passage is useful as a visible demonstration of why warship characteristics cannot be maximized independently, although the exact values belong to the game model rather than a historical design study.",
       "sourcePath": "src/transcripts/txt/2022-03-07_T18-00-11_battle-cruiser-squadron-action-a-uad-infused-discussion-long-patrol_hqEqy48bHZY.txt",
       "evidence": [
         {
           "start": "4:13",
-          "end": "6:15",
+          "end": "6:14",
           "note": "The speaker allocates armour and equipment while comparing the resulting protection and speed with the historical ship."
+        }
+      ]
+    },
+    {
+      "id": "gun-arcs-and-formation-shape-the-opening-move",
+      "videoId": "hqEqy48bHZY",
+      "slug": "gun-arcs-and-formation-shape-the-opening-move",
+      "title": "Gun arcs make formation the opening tactical problem",
+      "kind": "notable_point",
+      "start": "7:14",
+      "end": "8:45",
+      "topics": ["battlecruisers", "fleet-tactics", "naval-gunnery", "ship-formations", "naval-wargaming"],
+      "summary": "Because their main batteries cannot all fire directly ahead, the four British battlecruisers must turn toward broadside and form a line before using their numerical advantage.",
+      "body": "The numerical advantage cannot be used immediately because the British ships first have to present enough broadside to bring their distributed main batteries to bear. They also have to sort themselves into line while the opposing force approaches on a different heading. The game models the captains closing up formation quickly, but the watch point is the historical relationship between turret arcs, course, and squadron cohesion. A turn made for gun power can squander concentration if the ships have not first organized their line.",
+      "sourcePath": "src/transcripts/txt/2022-03-07_T18-00-11_battle-cruiser-squadron-action-a-uad-infused-discussion-long-patrol_hqEqy48bHZY.txt",
+      "evidence": [
+        {
+          "start": "7:14",
+          "end": "8:45",
+          "note": "The transcript describes the two-to-one numerical advantage, the need to turn distributed guns toward broadside, and the squadron forming into line."
         }
       ]
     },
@@ -77,9 +100,9 @@
       "kind": "chapter",
       "start": "8:53",
       "end": "13:09",
-      "topics": ["battlecruisers", "fleet-tactics", "divisions", "naval-doctrine"],
-      "summary": "Battlecruisers use speed and formation changes to bring guns to bear, while divisions can pair off against an outnumbered opponent.",
-      "body": "The game demonstration shows the practical difficulty of getting a squadron into line while both sides are moving and trying to present broadsides. Two ships normally retain mutual support, while four ships might divide into two pairs when that helps concentrate pressure on the enemy. Each pair can then engage one opposing ship, preventing either enemy from firing without being answered. The advantage is not automatic: formations must remain coherent, and a division that drifts too far can lose the tactical benefit it was meant to create.",
+      "topics": ["battlecruisers", "fleet-tactics", "divisions", "naval-doctrine", "naval-wargaming"],
+      "summary": "Once the squadron is in action, it splits into mutually supporting two-ship divisions so both enemy battlecruisers can be kept under fire.",
+      "body": "Battlecruisers are supposed to maneuver, and the simulation exposes the command work required to divide four ships without losing cohesion. A pair normally stays together for mutual support, while a four-ship squadron can form two divisions when that helps distribute its advantage. Each division is assigned to one opponent, preventing either enemy ship from firing unchecked. The tactic depends on both pairs remaining coherent; a division that separates or takes the wrong course can waste the numerical superiority.",
       "sourcePath": "src/transcripts/txt/2022-03-07_T18-00-11_battle-cruiser-squadron-action-a-uad-infused-discussion-long-patrol_hqEqy48bHZY.txt",
       "evidence": [
         {
@@ -117,7 +140,7 @@
       "kind": "chapter",
       "start": "17:15",
       "end": "20:38",
-      "topics": ["naval-gunnery", "dreadnoughts", "secondary-armament", "destroyers"],
+      "topics": ["naval-gunnery", "dreadnoughts", "pre-dreadnoughts", "secondary-armament", "destroyers", "torpedo-boats", "4-inch-guns"],
       "summary": "The discussion separates pre-dreadnought secondary batteries, once central fighting weapons, from the task-focused secondaries of the dreadnought era.",
       "body": "Pre-dreadnought secondary guns could be the principal weapons expected to destroy an opponent, while the arrival of effective heavy guns changed the main battery into the primary killing system. Smaller guns then became more specialized, particularly for defeating torpedo boats and destroyers before they could approach. Rapid fire could smother lightly protected attackers, disable exposed crews, and produce a mission kill before a torpedo attack developed. The point is functional rather than semantic: calibre choices reflect the targets a ship is expected to handle and the tactical problems its designers expect it to face.",
       "sourcePath": "src/transcripts/txt/2022-03-07_T18-00-11_battle-cruiser-squadron-action-a-uad-infused-discussion-long-patrol_hqEqy48bHZY.txt",
@@ -137,7 +160,7 @@
       "kind": "notable_point",
       "start": "20:41",
       "end": "24:50",
-      "topics": ["naval-gunnery", "secondary-armament", "ship-design", "battlecruisers"],
+      "topics": ["naval-gunnery", "secondary-armament", "ship-design", "battlecruisers", "4-inch-guns", "5-inch-guns", "5-5-inch-guns", "6-inch-guns", "jacky-fisher", "renown-class-battlecruisers"],
       "summary": "The search for an effective five-inch gun reveals the trade-off between rapid fire against small craft and the penetration needed against cruisers or peer battlecruisers.",
       "body": "A four-inch weapon can rapidly smother lightly protected attackers, while a six-inch gun is valued for punching through the protection of a larger cruiser. A well-balanced five-inch weapon appears attractive because it might bridge those roles, but contemporary metallurgy and practical design limited that ambition. Renown is contrasted with Tiger because the former is not presented as a specialist battlecruiser hunter. The discussion uses Tiger's six-inch secondaries to argue that a battlecruiser hunter needs sustained close-range hitting power if an equal opponent prevents it from simply holding the range open.",
       "sourcePath": "src/transcripts/txt/2022-03-07_T18-00-11_battle-cruiser-squadron-action-a-uad-infused-discussion-long-patrol_hqEqy48bHZY.txt",
@@ -157,7 +180,7 @@
       "kind": "notable_point",
       "start": "23:47",
       "end": "25:04",
-      "topics": ["battlecruisers", "ship-design", "naval-architecture", "alternate-history"],
+      "topics": ["battlecruisers", "ship-design", "naval-architecture", "alternate-history", "15-inch-guns", "18-inch-guns"],
       "summary": "An alternate 15-inch battlecruiser design becomes a way to test how armour and high speed constrain gun and turret choices.",
       "body": "The speaker treats a proposed layout as a working hypothesis, not a settled reconstruction. Carrying very large guns in well-protected turrets while retaining battlecruiser speed would impose sharp displacement limits, making a 30-knot design difficult. He contrasts a possible twin 18-inch concept with a conjectural triple 15-inch arrangement for a faster battlecruiser. The proposal illustrates how armament layouts emerge from the combined demands of speed, protection, machinery, and the available historical evidence.",
       "sourcePath": "src/transcripts/txt/2022-03-07_T18-00-11_battle-cruiser-squadron-action-a-uad-infused-discussion-long-patrol_hqEqy48bHZY.txt",
@@ -177,7 +200,7 @@
       "kind": "chapter",
       "start": "25:17",
       "end": "29:23",
-      "topics": ["torpedoes", "battlecruisers", "fleet-tactics", "damage-control"],
+      "topics": ["torpedoes", "battlecruisers", "fleet-tactics", "damage-control", "torpedo-avoidance", "naval-wargaming"],
       "summary": "The simulated action turns when torpedoes sink two battlecruisers, showing why closing and scattering divisions can make a nominal advantage costly.",
       "body": "The game outcome is not offered as a literal historical reconstruction, but it illustrates a real tactical hazard. A squadron that gets drawn into a confused close fight may present repeated torpedo opportunities and lose ships faster than its gun advantage can be converted into results. Britain might accept trading two battlecruisers for two enemy battlecruisers because it has greater numbers, but that arithmetic still makes the encounter a costly victory. The watch point links formation discipline, range control, and torpedo avoidance: splitting into divisions can create useful angles, yet it can also create gaps that the enemy exploits.",
       "sourcePath": "src/transcripts/txt/2022-03-07_T18-00-11_battle-cruiser-squadron-action-a-uad-infused-discussion-long-patrol_hqEqy48bHZY.txt",
@@ -193,19 +216,39 @@
       "id": "why-twenty-four-inch-torpedoes-change-force-design",
       "videoId": "hqEqy48bHZY",
       "slug": "why-twenty-four-inch-torpedoes-change-force-design",
-      "title": "Why a 24-inch torpedo changes force design",
+      "title": "Why Britain did not extend its 24-inch torpedo to destroyers",
       "kind": "chapter",
       "start": "29:29",
-      "end": "36:02",
-      "topics": ["torpedoes", "royal-navy", "destroyers", "naval-procurement"],
-      "summary": "A comparison of British 21- and 24-inch torpedoes asks why a heavier weapon was not carried forward into destroyer development.",
-      "body": "The video notes that Britain already had a heavy 24-inch torpedo associated with Nelson and Rodney, then asks why that capability did not become a destroyer weapon. The existence of a funded weapon weakens a simple claim that the Treasury or government prevented development, though it does not settle why the destroyer fleet retained 21-inch torpedoes. Larger torpedoes promise range and destructive power, but their weight changes handling, launch arrangements, and the manpower or machinery needed aboard ship. Japanese autoloading arrangements are used as a contrast that makes the logistical cost visible rather than reducing the question to warhead size alone.",
+      "end": "32:28",
+      "topics": ["torpedoes", "royal-navy", "destroyers", "naval-procurement", "21-inch-torpedoes", "24-inch-torpedoes", "nelson-class-battleships", "tribal-class-destroyers"],
+      "summary": "Britain already had a 24-inch torpedo for Nelson and Rodney, so the puzzle is why destroyers retained 21-inch weapons instead of extending the heavier system.",
+      "body": "The video notes that Britain already funded a heavy 24-inch torpedo for Nelson and Rodney, making a simple claim about Treasury refusal inadequate. It asks why that capability was not developed into a destroyer weapon when greater range and destructive power could have given Tribal-class ships a harder punch. Aircraft kept an 18-inch weapon and destroyers retained 21-inch torpedoes, but neither fact by itself explains the absence of a heavier surface-force branch. The question remains an institutional and doctrinal one rather than proof that the 24-inch option would automatically have been practical.",
       "sourcePath": "src/transcripts/txt/2022-03-07_T18-00-11_battle-cruiser-squadron-action-a-uad-infused-discussion-long-patrol_hqEqy48bHZY.txt",
       "evidence": [
         {
           "start": "29:29",
+          "end": "32:28",
+          "note": "The transcript asks why Britain's funded 24-inch torpedo for Nelson and Rodney did not lead to a heavier destroyer weapon."
+        }
+      ]
+    },
+    {
+      "id": "handling-and-reloading-heavy-torpedoes",
+      "videoId": "hqEqy48bHZY",
+      "slug": "handling-and-reloading-heavy-torpedoes",
+      "title": "Heavy torpedoes demand handling and reloading machinery",
+      "kind": "notable_point",
+      "start": "32:32",
+      "end": "36:02",
+      "topics": ["torpedoes", "21-inch-torpedoes", "24-inch-torpedoes", "torpedo-reloading", "naval-logistics", "japanese-navy", "cruisers", "town-class-cruisers"],
+      "summary": "Weight, manpower, and reload machinery may explain why 24-inch torpedoes suit larger cruisers better than destroyers, despite their greater range and hitting power.",
+      "body": "A 24-inch torpedo is heavy enough that moving and reloading it imposes machinery and crew demands beyond those of a 21-inch weapon. Japanese practice provides the comparison: large torpedoes made autoloading and other support systems part of ship design. Larger cruisers have more space and displacement for those arrangements, which is why the speaker imagines 24-inch weapons fitting a Town-class cruiser more readily than a destroyer. The extra volume need not all become explosive; it can carry more fuel and power, extending range while still delivering a large warhead. The passage turns a calibre comparison into a logistical lesson about the platform that must store, move, launch, and reload the weapon.",
+      "sourcePath": "src/transcripts/txt/2022-03-07_T18-00-11_battle-cruiser-squadron-action-a-uad-infused-discussion-long-patrol_hqEqy48bHZY.txt",
+      "evidence": [
+        {
+          "start": "32:32",
           "end": "36:02",
-          "note": "The transcript compares British heavy torpedoes, destroyer use, Japanese systems, and handling constraints."
+          "note": "The transcript compares 21- and 24-inch torpedo handling, Japanese autoloading, cruiser space, and the range gained from extra fuel and power."
         }
       ]
     },
@@ -217,7 +260,7 @@
       "kind": "chapter",
       "start": "36:33",
       "end": "38:56",
-      "topics": ["torpedoes", "naval-doctrine", "fleet-tactics", "united-states-navy", "four-stack-destroyers"],
+      "topics": ["torpedoes", "naval-doctrine", "fleet-tactics", "united-states-navy", "four-stack-destroyers", "battle-of-jutland", "bureau-of-ordnance"],
       "summary": "The lesson of Jutland prompts a comparison between long-range massed torpedo attacks and the supporting role assigned to American destroyers.",
       "body": "The lesson of Jutland is presented as more than a question of hits: the threat of a mass torpedo attack can redirect a fleet even before weapons are fired. American four-stack destroyers provided fast platforms, yet their torpedo doctrine treated them mainly as supporting elements once a fleet engagement had already closed. That role helps explain why a 21-inch weapon could fit American practice better than a heavier long-range torpedo. The speaker remains critical of American torpedo development and the Bureau of Ordnance, but frames weapon choice as a doctrinal question rather than a specification contest.",
       "sourcePath": "src/transcripts/txt/2022-03-07_T18-00-11_battle-cruiser-squadron-action-a-uad-infused-discussion-long-patrol_hqEqy48bHZY.txt",
@@ -256,16 +299,36 @@
       "title": "Torpedo characteristics reveal platform missions",
       "kind": "chapter",
       "start": "40:47",
-      "end": "46:05",
-      "topics": ["torpedoes", "naval-doctrine", "force-projection", "cruisers", "t-class-submarines"],
-      "summary": "Range, calibre, and salvo size indicate whether a cruiser or submarine is meant to finish damaged ships, deter stronger forces, join a mass strike, or stage an ambush.",
-      "body": "Guns can serve several target sets, but a torpedo's range and performance more directly indicate how a navy expects its platform to sink ships. Shorter-ranged cruiser torpedoes may be sufficient for finishing damaged opponents, while longer-ranged weapons can deter stronger ships or contribute to a massed strike. The same reasoning applies below the surface: the Royal Navy's T-class boats carried a ten-torpedo forward salvo suited to ambushing a force in confined waters. A pair of boats could attack from different angles, withdraw while the target dealt with the spread, and then move toward another ambush position with fewer weapons remaining.",
+      "end": "44:44",
+      "topics": ["torpedoes", "naval-doctrine", "force-projection", "cruisers", "naval-gunnery", "4-inch-guns", "6-inch-guns", "multi-role-weapons", "torpedo-range"],
+      "summary": "Gun systems can serve several target sets, but torpedo range more directly reveals whether a cruiser is meant to finish crippled ships, deter stronger forces, or join a mass strike.",
+      "body": "Gun labels can hide overlapping missions: a rapid-fire six-inch weapon may hit destroyers effectively while still being intended to overwhelm larger cruisers, and a four-inch anti-aircraft gun can also punish light surface craft. Torpedoes have a narrower purpose in this period—to sink ships—so their range and performance expose doctrine more directly. Shorter-ranged cruiser weapons can finish damaged opponents, while longer-ranged torpedoes can deter a stronger ship by making it fear an attack before the cruiser closes. Very long range suggests participation in a massed strike, where volume creates the chance of a hit rather than a single cruiser relying on one spread. The passage teaches readers to infer platform missions from the whole weapon-system concept rather than one headline calibre.",
       "sourcePath": "src/transcripts/txt/2022-03-07_T18-00-11_battle-cruiser-squadron-action-a-uad-infused-discussion-long-patrol_hqEqy48bHZY.txt",
       "evidence": [
         {
           "start": "40:47",
-          "end": "46:05",
-          "note": "The transcript uses cruiser torpedo range and the T-class forward salvo to infer deterrent, mass-strike, finishing, and ambush missions."
+          "end": "44:44",
+          "note": "The transcript contrasts multi-role gun examples with cruiser torpedo ranges suited to finishing, deterrence, or mass-strike missions."
+        }
+      ]
+    },
+    {
+      "id": "t-class-ten-torpedo-salvo-is-an-ambush-weapon",
+      "videoId": "hqEqy48bHZY",
+      "slug": "t-class-ten-torpedo-salvo-is-an-ambush-weapon",
+      "title": "The T-class ten-torpedo salvo is an ambush weapon",
+      "kind": "notable_point",
+      "start": "44:44",
+      "end": "46:14",
+      "topics": ["t-class-submarines", "submarine-warfare", "torpedoes", "naval-doctrine", "ambush-tactics", "southeast-asia", "south-china-sea"],
+      "summary": "The Royal Navy's ten-torpedo forward salvo points to a submarine designed to ambush forces in confined waters, then withdraw toward another prepared position.",
+      "body": "The T-class forward battery could put ten torpedoes into the water at once, an unusually large spread that the speaker reads as evidence of an ambush mission. Two submarines positioned around straits or island channels in Southeast Asia could attack a task force from different angles with as many as twenty weapons. While the target turns and evades, the boats gain time to leave the firing position rather than remain in a prolonged pursuit. They then move toward another ambush point with fewer torpedoes, ideally reinforcing a refreshed submarine already waiting there. Weapon arrangement therefore reveals the intended operating pattern: concentrated surprise in constrained geography, not high-tempo wolfpack hunting.",
+      "sourcePath": "src/transcripts/txt/2022-03-07_T18-00-11_battle-cruiser-squadron-action-a-uad-infused-discussion-long-patrol_hqEqy48bHZY.txt",
+      "evidence": [
+        {
+          "start": "44:44",
+          "end": "46:14",
+          "note": "The transcript identifies the T-class ten-torpedo bow salvo as an ambush spread for confined waters and contrasts it with wolfpack hunting."
         }
       ]
     },
@@ -277,7 +340,7 @@
       "kind": "notable_point",
       "start": "56:56",
       "end": "58:19",
-      "topics": ["battlecruisers", "capital-ships", "fleet-tactics", "naval-doctrine"],
+      "topics": ["battlecruisers", "capital-ships", "fleet-tactics", "naval-doctrine", "naval-wargaming", "torpedo-avoidance"],
       "summary": "The closing assessment contrasts the successful division that stayed back and fired with the ships lost after getting too close.",
       "body": "Tiger and Penelope survive by hanging back and using their guns, while the ships that mixed into the close fight are exposed to torpedoes. The game does not reproduce every historical condition, but the contrast reinforces a central principle of capital-ship tactics: exploit range, speed, and concentrated fire instead of treating heavy ships as close-combat units. The speaker contrasts Ultimate Admiral: Dreadnoughts' expansive space with other games that compress the battlefield, while noting that simulated ships may still fail to use the available distance. That distinction explains why game incentives or artificial intelligence can produce behavior that would be tactically unsound at sea.",
       "sourcePath": "src/transcripts/txt/2022-03-07_T18-00-11_battle-cruiser-squadron-action-a-uad-infused-discussion-long-patrol_hqEqy48bHZY.txt",
