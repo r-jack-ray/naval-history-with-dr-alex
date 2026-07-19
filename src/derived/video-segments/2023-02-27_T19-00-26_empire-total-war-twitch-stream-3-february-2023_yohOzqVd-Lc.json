@@ -6,27 +6,10 @@
     "age-of-sail",
     "naval-strategy",
     "british-empire",
-    "north-america"
+    "north-america",
+    "war-finance"
   ],
   "segments": [
-    {
-      "id": "empire-total-war-saving-an-isolated-warship",
-      "videoId": "yohOzqVd-Lc",
-      "slug": "empire-total-war-saving-an-isolated-warship",
-      "title": "Saving an isolated warship from the Spanish fleet",
-      "kind": "notable_point",
-      "start": "9:50",
-      "end": "10:15",
-      "topics": ["empire-total-war", "naval-strategy", "spanish-navy"],
-      "summary": "A lone British ship avoids a pursuing Spanish fleet while the main force is occupied elsewhere.",
-      "body": "Clarke treats survival as the immediate objective for an isolated ship rather than seeking an unwinnable action. With the Spanish Navy pursuing, she orders the vessel toward the New World, where the main British fleet is engaged on more important tasks. The ship repeatedly retreats without firing, accepting nominal defeats because remaining afloat is the operational requirement. Its eventual reunion with friendly ships shows why concentration and timely reinforcement matter more than an isolated vessel's battle record.",
-      "sourcePath": "src/transcripts/txt/2023-02-27_T19-00-26_empire-total-war-twitch-stream-3-february-2023_yohOzqVd-Lc.txt",
-      "evidence": [
-        {"start": "9:50", "end": "10:15", "note": "She orders the single ship to run from the Spanish fleet and explains the plan to reach support."},
-        {"start": "25:29", "end": "26:51", "note": "The ship retreats again without firing, and Clarke says survival rather than the nominal battle result is the core requirement."},
-        {"start": "30:34", "end": "33:31", "note": "She sends the vessel to join the rest of the Navy and later confirms that it is safe."}
-      ]
-    },
     {
       "id": "royal-sovereign-first-royal-navy-first-rate",
       "videoId": "yohOzqVd-Lc",
@@ -44,6 +27,37 @@
       "evidence": [{"start": "8:27", "end": "8:54", "note": "A viewer asks for the Royal Navy's first first rate, and Clarke names Royal Sovereign while noting that other early ships make the boundary debatable."}]
     },
     {
+      "id": "empire-total-war-saving-an-isolated-warship",
+      "videoId": "yohOzqVd-Lc",
+      "slug": "empire-total-war-saving-an-isolated-warship",
+      "title": "Saving an isolated warship from the Spanish fleet",
+      "kind": "notable_point",
+      "start": "9:50",
+      "end": "10:15",
+      "topics": ["empire-total-war", "naval-strategy", "spanish-navy", "force-preservation"],
+      "summary": "A lone British ship runs for the New World rather than accept an unwinnable action against the whole Spanish fleet.",
+      "body": "Clarke refuses an unwinnable engagement when the whole Spanish fleet pursues one British ship. She orders the vessel to open the distance and run toward the New World, where the main British naval strength is occupied. The move treats theatre priorities and concentration of force as more important than local honour. This watch point introduces a campaign principle: an isolated ship preserves future utility by avoiding a battle it cannot influence.",
+      "sourcePath": "src/transcripts/txt/2023-02-27_T19-00-26_empire-total-war-twitch-stream-3-february-2023_yohOzqVd-Lc.txt",
+      "evidence": [{"start": "9:50", "end": "10:15", "note": "She orders the isolated ship to run from the entire Spanish fleet and explains that the main British Navy is occupied in the New World."}]
+    },
+    {
+      "id": "empire-total-war-high-ground-and-dragoon-flanking",
+      "videoId": "yohOzqVd-Lc",
+      "slug": "empire-total-war-high-ground-and-dragoon-flanking",
+      "title": "Using high ground and dragoons against citizen militia",
+      "kind": "chapter",
+      "start": "11:52",
+      "end": "16:21",
+      "topics": ["empire-total-war", "terrain", "high-ground", "dragoons", "militia", "cavalry-tactics"],
+      "summary": "An early land battle combines a defensible height with detached dragoons against the game's firelock-armed citizenry.",
+      "body": "Expecting an enemy force with artillery, Clarke chooses high ground that will be difficult to attack. She holds the main formation on the height while sending dragoons around the flank to unsettle the approaching infantry. Once the game's citizen militia and commander become exposed, the mounted troops strike them rather than waiting for a frontal exchange. The sequence is a scenario lesson in combining terrain with mobile forces, not a claim that historical American militia automatically behaved like these game units.",
+      "sourcePath": "src/transcripts/txt/2023-02-27_T19-00-26_empire-total-war-twitch-stream-3-february-2023_yohOzqVd-Lc.txt",
+      "evidence": [
+        {"start": "11:52", "end": "13:48", "note": "Clarke selects high ground against an army expected to have artillery, holds the main force there, and detaches the dragoons."},
+        {"start": "14:48", "end": "16:21", "note": "The dragoons move against the firelock-armed citizenry and enemy general, after which she criticizes bringing that militia into this matchup."}
+      ]
+    },
+    {
       "id": "empire-total-war-wolf-pack-capture-tactics",
       "videoId": "yohOzqVd-Lc",
       "slug": "empire-total-war-wolf-pack-capture-tactics",
@@ -58,21 +72,34 @@
       "evidence": [{"start": "20:59", "end": "24:10", "note": "She calls the maneuver wolf-pack tactics, criticizes the enemy line formation, and orders multiple captures."}]
     },
     {
-      "id": "empire-total-war-trade-routes-and-fleet-building",
+      "id": "empire-total-war-survival-over-nominal-defeat",
       "videoId": "yohOzqVd-Lc",
-      "slug": "empire-total-war-trade-routes-and-fleet-building",
-      "title": "Trade routes as the foundation of fleet expansion",
+      "slug": "empire-total-war-survival-over-nominal-defeat",
+      "title": "Why survival matters more than a nominal defeat",
       "kind": "notable_point",
-      "start": "42:57",
-      "end": "44:00",
-      "topics": ["empire-total-war", "naval-logistics", "maritime-trade", "fleet-building"],
-      "summary": "Trade-route choice is tied directly to financing a fleet of third- and fifth-rate warships in the 1730s.",
-      "body": "Clarke compares the map paths used by East Indies and South American trade, preferring the South American route because she expects fewer interceptions on its approach to Britain. She sends four ships to establish that income while retaining enough strength to protect the trading force. The calculation links route geography, escort requirements, and the risk of enemy raiding. Protected revenue will finance third- and fifth-rate construction, turning maritime commerce into the foundation of fleet expansion during the 1730s campaign.",
+      "start": "25:29",
+      "end": "27:04",
+      "topics": ["empire-total-war", "naval-strategy", "force-preservation", "operational-planning"],
+      "summary": "The isolated ship accepts a defeat without firing because reaching friendly fleet strength matters more than the result label.",
+      "body": "The lone British ship retreats again instead of engaging a force that might catch it. Clarke accepts the game's crushing-defeat label because the ship does not fire and remains afloat. Her explicit core requirement is survival until the vessel can be moved toward a supporting fleet. The distinction between a tactical result and operational success makes this a useful force-preservation watch point.",
+      "sourcePath": "src/transcripts/txt/2023-02-27_T19-00-26_empire-total-war-twitch-stream-3-february-2023_yohOzqVd-Lc.txt",
+      "evidence": [{"start": "25:29", "end": "27:04", "note": "Clarke orders another retreat, accepts a defeat without firing, says survival is the core requirement, and plans to move the ship toward safety."}]
+    },
+    {
+      "id": "empire-total-war-war-finance-and-settlement-growth",
+      "videoId": "yohOzqVd-Lc",
+      "slug": "empire-total-war-war-finance-and-settlement-growth",
+      "title": "Balancing force regeneration against settlement growth",
+      "kind": "notable_point",
+      "start": "28:18",
+      "end": "30:01",
+      "topics": ["empire-total-war", "war-finance", "force-regeneration", "taxation", "settlement-development", "state-capacity"],
+      "summary": "Rebuilding armies competes with restoring trade, while a tax exemption accelerates a settlement's growth and future institutional choices.",
+      "body": "Clarke delays rebuilding damaged armies because restored units will begin consuming money again before the trade problem is solved. She then exempts Churchill from tax, cutting the game's projected settlement-growth time from twenty-eight turns to eleven. Because the region yields little immediate revenue, foregoing that tax is treated as an affordable investment in future capacity. The later choice among a coaching inn, workshop, church school, or regular school shows how the scenario models competition among commerce, industry, religion, and research.",
       "sourcePath": "src/transcripts/txt/2023-02-27_T19-00-26_empire-total-war-twitch-stream-3-february-2023_yohOzqVd-Lc.txt",
       "evidence": [
-        {"start": "30:52", "end": "30:58", "note": "She selects four ships to send to South America to earn money."},
-        {"start": "42:57", "end": "44:00", "note": "She compares trade-route approaches and links trade income to building third- and fifth-rate ships."},
-        {"start": "58:24", "end": "58:37", "note": "She explains that the group is large enough to protect the trade fleet and make the route viable."}
+        {"start": "28:18", "end": "28:30", "note": "She links army rebuilding costs to the need to resolve trade and restore the fleet first."},
+        {"start": "29:24", "end": "30:01", "note": "A tax exemption accelerates settlement growth, after which she considers the institution to build in the new town."}
       ]
     },
     {
@@ -88,6 +115,34 @@
       "body": "The available fifth-rate force gives Clarke useful numbers, but she does not consider it the ideal answer to every enemy fleet. Dutch third rates make a purely numerical comparison misleading because individual ship quality also changes the odds. She therefore frames force assessment as a recurring balance between quantity and quality in war. The moment is a compact lesson in fleet composition: more hulls provide presence and concentration, while heavier ships may be necessary against stronger opponents.",
       "sourcePath": "src/transcripts/txt/2023-02-27_T19-00-26_empire-total-war-twitch-stream-3-february-2023_yohOzqVd-Lc.txt",
       "evidence": [{"start": "39:34", "end": "40:09", "note": "She assesses the fifth-rate fleet and explicitly describes the quantity-quality balance."}]
+    },
+    {
+      "id": "empire-total-war-missionary-mechanics-versus-history",
+      "videoId": "yohOzqVd-Lc",
+      "slug": "empire-total-war-missionary-mechanics-versus-history",
+      "title": "When missionary mechanics conflict with colonial history",
+      "kind": "notable_point",
+      "start": "41:30",
+      "end": "41:58",
+      "topics": ["empire-total-war", "game-history", "colonialism", "missionaries", "religious-conversion", "historical-interpretation"],
+      "summary": "A Protestant missionary is useful under the game's rules, but Clarke explicitly warns that this optimization is not a sound historical judgment.",
+      "body": "The campaign rewards using a Protestant missionary to improve religious alignment and public order. Clarke immediately separates that useful game action from its historical meaning, calling the real practice neither good nor sensible. Her discomfort is the learning point rather than an aside: a historical game's incentives can reward conduct that should not be treated as endorsement or accurate social analysis. The moment gives viewers a concise model for distinguishing scenario logic from colonial history.",
+      "sourcePath": "src/transcripts/txt/2023-02-27_T19-00-26_empire-total-war-twitch-stream-3-february-2023_yohOzqVd-Lc.txt",
+      "evidence": [{"start": "41:30", "end": "41:58", "note": "Clarke says the missionary makes sense under game logic while explicitly rejecting the action as good or sensible history."}]
+    },
+    {
+      "id": "empire-total-war-trade-routes-and-fleet-building",
+      "videoId": "yohOzqVd-Lc",
+      "slug": "empire-total-war-trade-routes-and-fleet-building",
+      "title": "Trade routes as the foundation of fleet expansion",
+      "kind": "notable_point",
+      "start": "42:57",
+      "end": "44:00",
+      "topics": ["empire-total-war", "naval-logistics", "maritime-trade", "fleet-building"],
+      "summary": "Trade-route choice is tied directly to financing a fleet of third- and fifth-rate warships in the 1730s.",
+      "body": "Clarke compares the map paths used by East Indies and South American trade, preferring the South American route because its approach to Britain has been intercepted less often in this campaign. She presents this as a scenario-specific judgment about route geography rather than a universal historical rule. The objective is to establish a protected revenue stream capable of funding third- and fifth-rate construction. The moment links route selection, enemy interception, and fleet expansion during the 1730s campaign.",
+      "sourcePath": "src/transcripts/txt/2023-02-27_T19-00-26_empire-total-war-twitch-stream-3-february-2023_yohOzqVd-Lc.txt",
+      "evidence": [{"start": "42:57", "end": "44:00", "note": "She compares the South American and East Indies approaches to Britain and links the safer revenue stream to building third- and fifth-rate ships."}]
     },
     {
       "id": "empire-total-war-misleading-native-american-tactics",
@@ -176,18 +231,67 @@
       "evidence": [{"start": "1:29:10", "end": "1:29:29", "note": "She assigns research to reformed naval administration and explains that it enables a Naval College and later first-rate construction."}]
     },
     {
+      "id": "empire-total-war-fixing-force-and-hill-artillery",
+      "videoId": "yohOzqVd-Lc",
+      "slug": "empire-total-war-fixing-force-and-hill-artillery",
+      "title": "Fixing an enemy while artillery moves around the hill",
+      "kind": "chapter",
+      "start": "1:31:40",
+      "end": "1:38:21",
+      "topics": ["empire-total-war", "land-warfare", "artillery-tactics", "fixing-force", "manoeuvre-warfare", "terrain"],
+      "summary": "Infantry fixes an enemy on a central height while artillery and cavalry move toward a more favorable approach.",
+      "body": "Clarke correctly predicts that the opposing force will place artillery behind infantry on the central height. Rather than attack that position directly, she brings her own artillery around another approach with cavalry held behind it. The infantry maneuver is explicitly intended to fix the enemy while the guns unlimber elsewhere. When the opposing troops move down the slope, they expose themselves to artillery firing from above. The scenario demonstrates how fixing, turning, and terrain interact without presenting the battle as a reconstruction of a specific historical action.",
+      "sourcePath": "src/transcripts/txt/2023-02-27_T19-00-26_empire-total-war-twitch-stream-3-february-2023_yohOzqVd-Lc.txt",
+      "evidence": [
+        {"start": "1:31:40", "end": "1:33:10", "note": "She predicts the enemy artillery position, avoids the direct approach, and swings her own artillery and cavalry around the hill."},
+        {"start": "1:35:15", "end": "1:35:23", "note": "Clarke says the purpose of the maneuver is to fix the enemy in position before unlimbering."},
+        {"start": "1:38:01", "end": "1:38:21", "note": "The enemy advances downhill while Clarke's artillery occupies the higher ground."}
+      ]
+    },
+    {
       "id": "empire-total-war-pueblo-geography-and-command",
       "videoId": "yohOzqVd-Lc",
       "slug": "empire-total-war-pueblo-geography-and-command",
       "title": "Where the game's Pueblo geography and leadership are ahistorical",
       "kind": "notable_point",
       "start": "1:39:34",
-      "end": "1:40:00",
+      "end": "1:39:59",
       "topics": ["empire-total-war", "pueblo-peoples", "native-american-history", "historical-geography", "game-history"],
       "summary": "A fleeing in-game chief prompts a correction of the game's Pueblo geography and its portrayal of Indigenous commanders abandoning their troops.",
       "body": "Clarke uses the retreat of a game commander to identify two historical distortions in the campaign model. She says the game places the Pueblo peoples chiefly in Texas, which does not match their historical geography. She also rejects its recurring depiction of Pueblo chiefs abandoning their troops, describing that behavior as ahistorical. The moment warns viewers not to treat a strategy game's faction placement or artificial-intelligence behavior as evidence about Indigenous societies and leadership.",
       "sourcePath": "src/transcripts/txt/2023-02-27_T19-00-26_empire-total-war-twitch-stream-3-february-2023_yohOzqVd-Lc.txt",
-      "evidence": [{"start": "1:39:34", "end": "1:40:00", "note": "Clarke says the game's Pueblo nations are misplaced mainly in Texas and that their chiefs did not historically desert their troops."}]
+      "evidence": [{"start": "1:39:34", "end": "1:39:59", "note": "Clarke says the game's Pueblo nations are misplaced mainly in Texas and that their chiefs did not historically desert their troops."}]
+    },
+    {
+      "id": "empire-total-war-newfoundland-liverpool-trade-network",
+      "videoId": "yohOzqVd-Lc",
+      "slug": "empire-total-war-newfoundland-liverpool-trade-network",
+      "title": "Newfoundland, Liverpool, and the North Atlantic trade network",
+      "kind": "notable_point",
+      "start": "1:48:45",
+      "end": "1:49:21",
+      "topics": ["empire-total-war", "maritime-trade", "newfoundland", "liverpool", "irish-sea", "trade-routes"],
+      "summary": "The campaign's North American trade reaches Britain through the Irish Sea while Newfoundland is planned as a base for global trade vessels.",
+      "body": "A stronger enemy fleet off the coast does not threaten every trade flow equally. Clarke notes that most of her North American commerce enters through the Irish Sea to Liverpool, illustrating how route geography distributes vulnerability among ports. She then plans to take Newfoundland and use it to produce trading vessels for destinations around the world. The scenario connects colonial bases, ocean routes, merchant shipping, and home ports without implying that the game's trade map exactly reproduces historical commerce.",
+      "sourcePath": "src/transcripts/txt/2023-02-27_T19-00-26_empire-total-war-twitch-stream-3-february-2023_yohOzqVd-Lc.txt",
+      "evidence": [{"start": "1:48:45", "end": "1:49:21", "note": "She identifies the Irish Sea and Liverpool as the route for most North American trade, then plans to use Newfoundland to produce global trade vessels."}]
+    },
+    {
+      "id": "empire-total-war-preserving-command-and-artillery",
+      "videoId": "yohOzqVd-Lc",
+      "slug": "empire-total-war-preserving-command-and-artillery",
+      "title": "Preserving command and artillery for the next campaign",
+      "kind": "chapter",
+      "start": "1:50:40",
+      "end": "1:52:13",
+      "topics": ["empire-total-war", "operational-planning", "force-preservation", "artillery", "terrain", "philadelphia"],
+      "summary": "A rapid local victory is planned around retaining the general and artillery for a subsequent move on Philadelphia.",
+      "body": "Clarke values speed over minimizing every casualty because this army must soon form the core of an attack on Philadelphia. The general's experience and the artillery are treated as the essential assets, while ordinary troops can be replaced. She also rejects a starting position in what appears to be a ditch or sunken road and selects better attacking ground. The watch point links tactical deployment to operational continuity: win quickly, preserve scarce capabilities, and keep the next campaign objective in view.",
+      "sourcePath": "src/transcripts/txt/2023-02-27_T19-00-26_empire-total-war-twitch-stream-3-february-2023_yohOzqVd-Lc.txt",
+      "evidence": [
+        {"start": "1:50:40", "end": "1:51:09", "note": "She prioritizes a quick victory and identifies the general and artillery as the assets needed for the Philadelphia campaign."},
+        {"start": "1:51:36", "end": "1:52:13", "note": "She rejects the ditch or sunken-road deployment and chooses more favorable attacking ground."}
+      ]
     },
     {
       "id": "empire-total-war-galleons-as-boarding-ships",
@@ -218,6 +322,34 @@
       "evidence": [{"start": "2:05:19", "end": "2:05:55", "note": "She contrasts map Gibraltar with the real narrow approach and says sea control is necessary."}]
     },
     {
+      "id": "empire-total-war-choosing-a-weaker-blockade-squadron",
+      "videoId": "yohOzqVd-Lc",
+      "slug": "empire-total-war-choosing-a-weaker-blockade-squadron",
+      "title": "Choosing the blockade squadron the fleet can defeat",
+      "kind": "notable_point",
+      "start": "2:08:37",
+      "end": "2:09:19",
+      "topics": ["empire-total-war", "blockade", "fleet-deployment", "naval-strategy", "war-finance"],
+      "summary": "Unable to challenge the largest enemy fleet, Clarke redirects her ships toward a weaker blockade whose removal would restore revenue.",
+      "body": "Clarke rejects sending her available squadron against the largest fleet because it is not strong enough for that battle. She instead redirects the ships toward Europe, where they can defeat one of the weaker forces covering British ports. Removing even a single blockade is valuable because it immediately increases campaign income. The decision shows how attainable local sea control can matter more than pursuing the strongest enemy concentration.",
+      "sourcePath": "src/transcripts/txt/2023-02-27_T19-00-26_empire-total-war-twitch-stream-3-february-2023_yohOzqVd-Lc.txt",
+      "evidence": [{"start": "2:08:37", "end": "2:09:19", "note": "She declines battle with the largest fleet, chooses a weaker European squadron, and links its defeat to restoring income."}]
+    },
+    {
+      "id": "empire-total-war-trade-finances-a-third-rate",
+      "videoId": "yohOzqVd-Lc",
+      "slug": "empire-total-war-trade-finances-a-third-rate",
+      "title": "Using restored trade to finance a decisive third rate",
+      "kind": "notable_point",
+      "start": "2:12:15",
+      "end": "2:13:24",
+      "topics": ["empire-total-war", "blockade", "war-finance", "third-rates", "shipbuilding", "naval-investment"],
+      "summary": "French blockades reduce trade revenue to zero, preventing construction of the third rate that could overmatch their separate squadrons.",
+      "body": "The campaign returns to bankruptcy while French blockades reduce expected trade income to zero. Clarke can now build third rates, but each costs roughly two thousand in game currency and therefore depends on restoring revenue first. Her proposed sequence is to bring the fleet home, add one third rate, and use its qualitative advantage against the separate enemy squadrons. The moment exposes a feedback loop between commerce and sea power: blockades prevent naval investment, while naval investment is needed to break the blockades.",
+      "sourcePath": "src/transcripts/txt/2023-02-27_T19-00-26_empire-total-war-twitch-stream-3-february-2023_yohOzqVd-Lc.txt",
+      "evidence": [{"start": "2:12:15", "end": "2:13:24", "note": "She notes bankruptcy and zero French-blockaded trade, gives the third-rate cost, and proposes adding one because none of the separate blockade fleets can match it."}]
+    },
+    {
       "id": "empire-total-war-cromwell-and-prince-rupert-cavalry",
       "videoId": "yohOzqVd-Lc",
       "slug": "empire-total-war-cromwell-and-prince-rupert-cavalry",
@@ -230,6 +362,37 @@
       "body": "When cavalry drifts away from the supporting army, Clarke invokes an English Civil War contrast. She orders the troops to behave as descendants of Oliver Cromwell's cavalry: remain controlled, stay where needed, and avoid breaking off to pillage the baggage train. Prince Rupert's cavalry supplies the negative example of horsemen ranging beyond the commander's immediate purpose. The aside highlights discipline after a cavalry action as an operational advantage, because troops that keep formation remain available for the next task.",
       "sourcePath": "src/transcripts/txt/2023-02-27_T19-00-26_empire-total-war-twitch-stream-3-february-2023_yohOzqVd-Lc.txt",
       "evidence": [{"start": "2:30:59", "end": "2:31:23", "note": "Clarke orders wandering cavalry to emulate Cromwell's disciplined horsemen rather than Prince Rupert's cavalry running off to pillage the baggage train."}]
+    },
+    {
+      "id": "empire-total-war-professional-american-army",
+      "videoId": "yohOzqVd-Lc",
+      "slug": "empire-total-war-professional-american-army",
+      "title": "Why a professional American army threatens colonial control",
+      "kind": "notable_point",
+      "start": "2:39:22",
+      "end": "2:40:20",
+      "topics": ["empire-total-war", "professional-armies", "line-infantry", "american-revolution", "north-america", "game-history"],
+      "summary": "Multiple American line-infantry units turn professionalization into the central threat to British control of North America in the scenario.",
+      "body": "With Montreal reinforced, Clarke considers opening a second front against the Iroquois. That plan is complicated by the appearance of multiple American line-infantry units, evidence that the game's United States is developing a professional army. Preventing that force from maturing becomes a strategic priority if Britain is to control North America. Clarke explicitly separates this in-game objective from her interest in actual history, where she appreciates the American Army rather than treating its development as undesirable.",
+      "sourcePath": "src/transcripts/txt/2023-02-27_T19-00-26_empire-total-war-twitch-stream-3-february-2023_yohOzqVd-Lc.txt",
+      "evidence": [{"start": "2:39:22", "end": "2:40:20", "note": "She considers a second front, identifies multiple American line-infantry units as professionalization, and distinguishes the campaign objective from her view of actual history."}]
+    },
+    {
+      "id": "empire-total-war-peace-before-bankruptcy",
+      "videoId": "yohOzqVd-Lc",
+      "slug": "empire-total-war-peace-before-bankruptcy",
+      "title": "Seeking peace before bankruptcy consumes the campaign",
+      "kind": "notable_point",
+      "start": "2:40:44",
+      "end": "2:43:38",
+      "topics": ["empire-total-war", "diplomacy", "peace-negotiations", "war-finance", "multi-front-war", "territorial-strategy"],
+      "summary": "Negative income and four simultaneous wars force negotiations that trade minor concessions for peace while protecting Maine and Jamaica.",
+      "body": "Facing negative income, Clarke reviews wars with France, Prussia, Spain, and the United States and begins requesting peace. She accepts a minor naval-infrastructure concession to close one front but refuses demands for Maine. France is the most economically important opponent because its blockades are damaging trade, yet Jamaica is also judged too valuable to surrender. The negotiation sequence shows war termination as an exercise in fiscal pressure and territorial priorities rather than a simple test of battlefield success.",
+      "sourcePath": "src/transcripts/txt/2023-02-27_T19-00-26_empire-total-war-twitch-stream-3-february-2023_yohOzqVd-Lc.txt",
+      "evidence": [
+        {"start": "2:40:44", "end": "2:42:26", "note": "She reviews negative income and four wars, seeks peace, rejects a demand for Maine, and uses a naval-infrastructure concession to reduce the number of fronts."},
+        {"start": "2:42:52", "end": "2:43:38", "note": "She refuses to give France Jamaica and hopes the resulting negotiations improve the economic position."}
+      ]
     },
     {
       "id": "empire-total-war-protecting-trade-from-blockade",

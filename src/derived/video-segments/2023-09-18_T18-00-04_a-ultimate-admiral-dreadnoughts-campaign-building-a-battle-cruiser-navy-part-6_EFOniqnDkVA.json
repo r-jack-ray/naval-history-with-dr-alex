@@ -7,7 +7,9 @@
     "warship-design",
     "naval-tactics",
     "naval-force-structure",
-    "naval-procurement"
+    "naval-procurement",
+    "naval-logistics",
+    "naval-industrial-base"
   ],
   "needsFurtherProcessing": false,
   "segments": [
@@ -52,6 +54,20 @@
       "body": "Dr. Clarke accepts the loss of small ships as the price of holding the enemy force in place. The tactical role is not simply to trade destroyers for damage: their interference gives the heavier ships time and manoeuvring room to reach favourable firing positions. The destroyers help compress the French formation while the capital ships work around its flanks. This highlights why a screen can matter even when it is vulnerable to heavier gunfire.",
       "sourcePath": "src/transcripts/txt/2023-09-18_T18-00-04_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-6_EFOniqnDkVA.txt",
       "evidence": [{"start": "36:58", "end": "37:14", "note": "He says the destroyers were used to keep the enemy fleet blocked while capital ships got into position."}]
+    },
+    {
+      "id": "solid-shot-at-extreme-naval-gun-calibres",
+      "videoId": "EFOniqnDkVA",
+      "slug": "solid-shot-at-extreme-naval-gun-calibres",
+      "title": "Would a 20-inch naval shell need explosives?",
+      "kind": "notable_point",
+      "start": "43:20",
+      "end": "44:31",
+      "topics": ["naval-gunnery", "naval-ammunition", "shell-design", "20-inch-guns"],
+      "summary": "Dr. Clarke asks whether a hypothetical 20-inch projectile might rely on a solid steel body and kinetic impact rather than an explosive filler.",
+      "body": "Dr. Clarke pauses the battle to ask whether a hypothetical 20-inch shell would need an explosive filling at all. At that scale, he considers a solid steel projectile whose mass and impact might supply the destructive effect. The point is exploratory rather than a settled engineering judgment, and he does not calculate penetration or terminal effects. A chat suggestion about seawater in railgun projectiles is acknowledged only as an interesting comparison, so the passage should not be read as demonstrating a historical weapon practice.",
+      "sourcePath": "src/transcripts/txt/2023-09-18_T18-00-04_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-6_EFOniqnDkVA.txt",
+      "evidence": [{"start": "43:20", "end": "44:31", "note": "He considers whether a 20-inch shell could be a solid steel projectile without explosive filling, then briefly acknowledges a chat comparison with railgun ammunition."}]
     },
     {
       "id": "fire-control-upgrades-for-fast-capital-ships",
@@ -103,11 +119,11 @@
       "kind": "notable_point",
       "start": "1:12:06",
       "end": "1:12:30",
-      "topics": ["naval-invasions", "force-concentration", "fleet-deployment"],
+      "topics": ["naval-invasions", "force-concentration", "fleet-deployment", "naval-logistics"],
       "summary": "The campaign combines an army operation with naval invasion pressure and then moves more than 55,000 tons to support a conquest of Venezuela.",
-      "body": "Dr. Clarke treats naval invasion as a force-allocation problem: ships must be moved to the theatre and enough tonnage assembled to meet the operation's requirement. He also uses the France operation to show how naval and land pressure can reinforce one another. A second operation requires more than 55,000 tons to be concentrated near Venezuela, illustrating how distant commitments disperse a fleet. The game abstraction makes the mechanics explicit, but the watch point remains useful for thinking about how amphibious plans compete for deployable fleet strength.",
+      "body": "Dr. Clarke treats naval invasion as a force-allocation problem: ships must be moved to the theatre and enough tonnage assembled to meet the operation's requirement. He also uses the France operation to show how naval and land pressure can reinforce one another. A second operation requires more than 55,000 tons to be concentrated near Venezuela, illustrating how distant commitments disperse a fleet. He later refuses to add a third invasion while two are already active, making prioritisation part of the logistical problem. The game abstraction makes the mechanics explicit, but the watch point remains useful for thinking about how amphibious plans compete for deployable fleet strength.",
       "sourcePath": "src/transcripts/txt/2023-09-18_T18-00-04_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-6_EFOniqnDkVA.txt",
-      "evidence": [{"start": "1:12:06", "end": "1:12:30", "note": "He launches a naval invasion of France to reinforce an army operation already under way."}, {"start": "1:24:46", "end": "1:25:15", "note": "He moves more than the required 55,000 tons to support the conquest of Venezuela."}]
+      "evidence": [{"start": "1:12:06", "end": "1:12:30", "note": "He launches a naval invasion of France to reinforce an army operation already under way."}, {"start": "1:24:46", "end": "1:25:15", "note": "He moves more than the required 55,000 tons to support the conquest of Venezuela."}, {"start": "1:43:38", "end": "1:43:39", "note": "He declines to add another invasion while two operations are already active."}]
     },
     {
       "id": "shipyard-capacity-and-warship-construction",
@@ -117,7 +133,7 @@
       "kind": "notable_point",
       "start": "1:27:53",
       "end": "1:28:04",
-      "topics": ["shipbuilding", "naval-procurement", "shipyards", "battleships"],
+      "topics": ["shipbuilding", "naval-procurement", "shipyards", "battleships", "naval-industrial-base", "warship-repair"],
       "summary": "New construction is limited by occupied yards, including foreign orders for British-built ships, rather than by a simple desire to add more hulls.",
       "body": "The campaign's construction queues are crowded even though Dr. Clarke is not personally ordering every ship in them. Export work and battleships for other countries consume the same industrial capacity that a national fleet would need. Later repair demands add another competing burden before fresh construction can begin. It is a compact reminder that naval procurement is constrained by yards, slips, labour, repair work, and competing orders as much as by money or strategic ambition.",
       "sourcePath": "src/transcripts/txt/2023-09-18_T18-00-04_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-6_EFOniqnDkVA.txt",
@@ -131,7 +147,7 @@
       "kind": "notable_point",
       "start": "1:37:51",
       "end": "1:38:02",
-      "topics": ["naval-personnel", "fleet-readiness", "naval-force-structure"],
+      "topics": ["naval-personnel", "fleet-readiness", "naval-force-structure", "naval-logistics"],
       "summary": "A large reserve of trained personnel lets ships be crewed quickly, making manpower an immediate constraint on usable fleet strength.",
       "body": "Dr. Clarke checks which ships are under-crewed and notes that a healthy personnel pool lets him bring them up to strength quickly. The exchange separates ships in an inventory from ships that can actually deploy. Hull numbers alone do not create readiness when trained crews are unavailable or must be spread across too many vessels. A later decision to keep crew training at maximum reinforces the connection between personnel policy and operational fleet size.",
       "sourcePath": "src/transcripts/txt/2023-09-18_T18-00-04_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-6_EFOniqnDkVA.txt",
@@ -145,11 +161,11 @@
       "kind": "notable_point",
       "start": "1:44:15",
       "end": "1:44:59",
-      "topics": ["defence-economics", "naval-finance", "naval-procurement"],
+      "topics": ["defence-economics", "defence-budgeting", "naval-finance", "naval-procurement"],
       "summary": "The campaign connects a growing economy and a large naval allocation with reserves equal to roughly twenty-two months of naval spending.",
-      "body": "The campaign reports roughly four percent economic growth, a naval allocation near twelve percent, and reserves equal to about twenty-two months of naval budget. Those figures are game abstractions, not claims about a particular historical economy. They still make an important state-capacity relationship visible: fleet construction and wartime operations depend on the revenue base, the share assigned to the navy, and accumulated reserves. A navy with many ships and projects can sustain them only while those financial supports remain available.",
+      "body": "The campaign reports roughly four percent economic growth, a naval allocation near twelve percent, and reserves equal to about twenty-two months of naval budget. Earlier, Dr. Clarke notes that simultaneous construction and upgrade work are absorbing the money available despite his desire to allocate more. Those figures are game abstractions, not claims about a particular historical economy. Together they make two related constraints visible: immediate programme cash flow and the broader state capacity supplied by revenue, budget share, and accumulated reserves. A navy with many ships and projects can sustain them only while those financial supports remain available.",
       "sourcePath": "src/transcripts/txt/2023-09-18_T18-00-04_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-6_EFOniqnDkVA.txt",
-      "evidence": [{"start": "1:44:15", "end": "1:44:59", "note": "He reads campaign figures of roughly four percent economic growth, a naval budget near twelve percent, and reserves worth about twenty-two months of naval funding."}]
+      "evidence": [{"start": "54:16", "end": "54:31", "note": "He says current money is flowing into construction and upgrades and that he cannot allocate enough to cover everything wanted."}, {"start": "1:44:15", "end": "1:44:59", "note": "He reads campaign figures of roughly four percent economic growth, a naval budget near twelve percent, and reserves worth about twenty-two months of naval funding."}]
     },
     {
       "id": "risk-management-in-a-battlecruiser-campaign",
@@ -163,7 +179,7 @@
       "summary": "Dr. Clarke compares campaign play to poker: avoid closing with a better-armed battleship when the odds are unfavourable.",
       "body": "The commentary frames operational decision-making as managing risk rather than taking every available fight. A battlecruiser facing a battleship with heavier guns is directed to withdraw, using speed to create space rather than relying on a close-range contest. Dr. Clarke refuses several unfavourable campaign engagements for the same reason, preserving ships for operations where their strengths matter. It is a good watch point for the distinction between a ship's theoretical capability and the situations in which its commander should actually commit it.",
       "sourcePath": "src/transcripts/txt/2023-09-18_T18-00-04_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-6_EFOniqnDkVA.txt",
-      "evidence": [{"start": "1:22:10", "end": "1:22:23", "note": "He declines unfavourable engagements rather than risk ships merely for spectacle."}, {"start": "1:53:58", "end": "1:54:43", "note": "He says he plays the odds and declines a close fight with a heavier-gunned battleship."}]
+      "evidence": [{"start": "1:22:10", "end": "1:22:23", "note": "He declines unfavourable engagements rather than risk ships merely for spectacle."}, {"start": "1:49:42", "end": "1:53:07", "note": "He repeatedly orders the battlecruiser to withdraw and uses its speed to open the distance from a heavier-gunned battleship."}, {"start": "1:53:58", "end": "1:54:43", "note": "He says he plays the odds and declines a close fight with a heavier-gunned battleship."}]
     },
     {
       "id": "research-priorities-shape-fleet-capability",
@@ -177,7 +193,7 @@
       "summary": "Continuous research produces results over time, but emphasis choices decide which naval capabilities mature first.",
       "body": "Dr. Clarke likes the game's model because research proceeds continuously while the player can still favour particular lines of development. That distinction mirrors a real procurement problem: technical progress needs sustained institutional effort, but decisions about which work receives priority affect the fleet available at the moment of crisis. Early choices between rangefinders, guns, destroyer technology, and machinery show that every priority also delays something else. The moment provides context for later choices about guns, machinery, and fire control.",
       "sourcePath": "src/transcripts/txt/2023-09-18_T18-00-04_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-6_EFOniqnDkVA.txt",
-      "evidence": [{"start": "2:06:55", "end": "2:07:12", "note": "He describes continuous research with player choices about what to emphasize."}]
+      "evidence": [{"start": "1:00", "end": "2:38", "note": "He chooses a 16-inch-gun priority over destroyer research in light of what the fleet is currently producing."}, {"start": "1:16:33", "end": "1:18:43", "note": "He moves research emphasis among turret mechanisms, control stations, and explosives according to expected delivery time and fleet needs."}, {"start": "1:47:29", "end": "1:47:39", "note": "He plans to wait for engines, boilers, and special machinery before designing the next battlecruiser."}, {"start": "2:06:55", "end": "2:07:12", "note": "He describes continuous research with player choices about what to emphasize."}]
     },
     {
       "id": "naval-mobilization-and-the-july-crisis",
@@ -227,13 +243,13 @@
       "slug": "why-early-twentieth-century-20-inch-guns-are-difficult",
       "title": "Why a 20-inch gun is more than a scaling problem",
       "kind": "chapter",
-      "start": "2:13:37",
+      "start": "2:13:42",
       "end": "2:16:02",
       "topics": ["naval-gunnery", "warship-design", "metallurgy", "battleships", "20-inch-guns"],
       "summary": "The discussion argues that early-20th-century cranes and facilities could be enlarged, but metallurgy and barrel stiffness make a 20-inch naval gun a far harder proposition.",
       "body": "Dr. Clarke distinguishes problems that can be addressed with larger infrastructure from the deeper problem of producing a very long, heavy gun barrel that will not sag. Bigger cranes and deeper quenching facilities require investment, but the metallurgy and accumulated development behind a workable 20-inch gun could take decades. Money can enlarge plant quickly, but it cannot instantly replace the chain of research and production experience behind a reliable weapon. He therefore regards an 18-inch armed ship as a more plausible contemporary outcome than a six-gun 20-inch design, while noting that he would want to check the Japanese design reference he mentions.",
       "sourcePath": "src/transcripts/txt/2023-09-18_T18-00-04_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-6_EFOniqnDkVA.txt",
-      "evidence": [{"start": "2:13:37", "end": "2:16:02", "note": "He contrasts scalable facilities with barrel metallurgy and argues a 20-inch gun would need decades of development."}]
+      "evidence": [{"start": "2:13:42", "end": "2:16:02", "note": "He contrasts scalable facilities with barrel metallurgy and argues a 20-inch gun would need decades of development."}]
     },
     {
       "id": "scrapping-obsolete-ships-to-renew-the-fleet",
@@ -245,9 +261,9 @@
       "end": "2:35:22",
       "topics": ["fleet-modernization", "naval-force-structure", "naval-procurement", "light-cruisers"],
       "summary": "Old cruisers and battleships are deliberately retired so crews and resources can support a more useful modern fleet.",
-      "body": "Dr. Clarke argues that old iron ships should be sold or scrapped instead of remaining indefinitely on the list. He searches ports for obsolete light cruisers and battleships, then tries to move them to places where disposal is possible. The immediate goal is to free space and resources for a newer cruiser force rather than preserve hull count for its own sake. The sequence illustrates fleet renewal as an institutional choice about manpower, upkeep, and opportunity cost, not simply the arrival of new construction.",
+      "body": "Dr. Clarke begins selling ships even while fighting a large war, acknowledging that fleet renewal carries immediate risk. He argues that old iron ships should be sold or scrapped instead of remaining indefinitely on the list. He searches ports for obsolete light cruisers and battleships, then tries to move them to places where disposal is possible. The immediate goal is to free space and resources for a newer cruiser force rather than preserve hull count for its own sake. The sequence illustrates fleet renewal as an institutional choice about manpower, upkeep, and opportunity cost, not simply the arrival of new construction.",
       "sourcePath": "src/transcripts/txt/2023-09-18_T18-00-04_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-6_EFOniqnDkVA.txt",
-      "evidence": [{"start": "2:25:00", "end": "2:25:09", "note": "He recommends selling old iron ships and stresses the continuing value of shipyard capacity."}, {"start": "2:30:08", "end": "2:35:22", "note": "He searches for obsolete cruisers and battleships to scrap so the fleet can shift toward a modern cruiser force."}]
+      "evidence": [{"start": "2:19:15", "end": "2:19:24", "note": "He says he is selling ships despite the large war and acknowledges that doing so may be risky."}, {"start": "2:25:00", "end": "2:25:09", "note": "He recommends selling old iron ships and stresses the continuing value of shipyard capacity."}, {"start": "2:30:08", "end": "2:35:22", "note": "He searches for obsolete cruisers and battleships to scrap so the fleet can shift toward a modern cruiser force."}]
     },
     {
       "id": "overpenetration-does-not-save-a-light-cruiser",
@@ -292,18 +308,32 @@
       "evidence": [{"start": "2:58:34", "end": "3:06:20", "note": "He sets a 36-knot target, works to reduce an 8,000-ton overweight design, and installs a six-inch battery intended to defeat destroyers."}]
     },
     {
-      "id": "balancing-armour-range-and-fire-arcs",
+      "id": "balancing-armour-range-stability-and-weight",
       "videoId": "EFOniqnDkVA",
-      "slug": "balancing-armour-range-and-fire-arcs",
-      "title": "Balancing armour, range, stability, and fire arcs",
+      "slug": "balancing-armour-range-stability-and-weight",
+      "title": "Balancing armour, range, stability, and weight",
       "kind": "chapter",
       "start": "3:08:16",
-      "end": "3:28:45",
+      "end": "3:23:19",
       "topics": ["battlecruisers", "warship-design", "armour-protection", "naval-gunnery", "secondary-batteries"],
-      "summary": "The final design pass weighs deck and belt armour, pitching, range, speed, and wide six-inch coverage rather than maximizing a single statistic.",
-      "body": "The design is refined through armour thickness, pitch, displacement, and the weight saved by reducing speed. Dr. Clarke chooses long-range accuracy while trying to keep the hull stable and within its weight allowance. Autoloading gives the six-inch battery a high rate of fire, while the heavy guns are configured to engage at maximum practical range. He then checks the practical result in firing arcs: numerous six-inch guns cover a broad sector, while nine 15-inch guns can engage across much of the ship's arc. The moment captures naval architecture as a balance of protection, seakeeping, endurance, and usable firepower.",
+      "summary": "The final design pass trades deck and belt armour, pitching, range, speed, and ammunition choices against a fixed displacement allowance.",
+      "body": "The design is refined through armour thickness, pitch, displacement, and the weight saved by reducing speed. Dr. Clarke selects autoloading for the six-inch battery, configures super-heavy shells, and aims to preserve long-range accuracy. He keeps adding protection and changing hull and propulsion choices while trying to keep pitch tolerable and the ship within its weight allowance. The sequence captures naval architecture as a linked balance of protection, seakeeping, endurance, speed, and usable firepower.",
       "sourcePath": "src/transcripts/txt/2023-09-18_T18-00-04_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-6_EFOniqnDkVA.txt",
-      "evidence": [{"start": "3:08:16", "end": "3:28:45", "note": "He selects autoloading, adjusts armour and stability, saves weight by reducing speed, and assesses the final main- and secondary-battery arcs."}]
+      "evidence": [{"start": "3:08:16", "end": "3:23:19", "note": "He selects autoloading and shell settings, adjusts armour and stability, saves weight by reducing speed, and chooses long-range gun accuracy."}]
+    },
+    {
+      "id": "checking-main-and-secondary-battery-fire-arcs",
+      "videoId": "EFOniqnDkVA",
+      "slug": "checking-main-and-secondary-battery-fire-arcs",
+      "title": "Checking main- and secondary-battery fire arcs",
+      "kind": "notable_point",
+      "start": "3:27:36",
+      "end": "3:28:45",
+      "topics": ["battlecruisers", "warship-design", "naval-gunnery", "secondary-batteries", "fire-arcs", "15-inch-guns", "6-inch-guns"],
+      "summary": "The finished battlecruiser is judged by how many 15-inch and six-inch guns can bear through each sector, not merely by its total battery count.",
+      "body": "Dr. Clarke finishes by checking how many weapons can bear from each direction rather than stopping at the nominal gun totals. The forward and after sectors are covered by numerous six-inch guns, while the broadside can bring eighteen secondary barrels onto a target. Across roughly 270 degrees, nine 15-inch guns can also bear. The check shows why placement and firing arcs matter as much as battery size: a ship may carry many weapons that cannot all engage the same opponent.",
+      "sourcePath": "src/transcripts/txt/2023-09-18_T18-00-04_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-6_EFOniqnDkVA.txt",
+      "evidence": [{"start": "3:27:36", "end": "3:28:45", "note": "He counts the six-inch broadside and notes that nine 15-inch guns can bear through roughly 270 degrees."}]
     }
   ]
 }

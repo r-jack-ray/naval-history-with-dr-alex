@@ -6,7 +6,8 @@
     "turret-layout",
     "naval-architecture",
     "firepower",
-    "force-structure"
+    "force-structure",
+    "naval-logistics"
   ],
   "segments": [
     {
@@ -17,7 +18,7 @@
       "kind": "chapter",
       "start": "5:24",
       "end": "9:32",
-      "topics": ["turret-layout", "battleship-design", "naval-architecture"],
+      "topics": ["turret-layout", "battleship-design", "naval-architecture", "hms-agincourt", "18-inch-guns"],
       "summary": "A design-game test bed introduces turret layout as a choice constrained by the hull and the ship around it.",
       "body": "Clarke uses a hypothetical 18-inch-gun battleship to frame the problem: a visually attractive arrangement is not automatically a workable warship. He discusses whether the design behind Agincourt represented an eight-gun ship or a step toward a six-gun 18-inch concept, while stressing that the documentary evidence is not conclusive. Even before comparing layouts, gun size, hull size, reconstruction choices, and the space protected around the magazines set practical limits. The game model is only a test bed for examining how those constraints shape a real turret distribution.",
       "sourcePath": "src/transcripts/txt/2023-03-03_T19-00-04_turret-selection-what-in-what-distribution-makes-sense-for-you_7HOTtCqFh0I.txt",
@@ -33,13 +34,13 @@
       "id": "three-constraints-on-turret-choice",
       "videoId": "7HOTtCqFh0I",
       "slug": "three-constraints-on-turret-choice",
-      "title": "Gun size, survivability, and displacement",
+      "title": "Why two all-forward quadruple turrets concentrate risk",
       "kind": "notable_point",
       "start": "9:35",
       "end": "11:04",
-      "topics": ["turret-layout", "firepower", "battleship-design"],
-      "summary": "The first design screen asks how gun caliber, the loss of a turret, and available ship size interact.",
-      "body": "Large multi-gun turrets concentrate enormous firepower, but they also concentrate risk. Clarke contrasts a pair of forward quadruple turrets with layouts that spread guns across more mountings. Losing one quadruple mounting removes half of an eight-gun battery, while damage near one closely packed magazine may impair the neighboring turret as well. The comparison makes clear why the maximum number of guns is not the only meaningful measure of a battleship's armament.",
+      "topics": ["turret-layout", "firepower", "battleship-design", "quadruple-turrets", "all-forward-armament", "french-navy", "magazine-protection", "18-inch-guns"],
+      "summary": "A compact eight-gun battery maximizes forward fire within size limits, but one disabled mounting can remove half the ship's firepower.",
+      "body": "Large multi-gun turrets concentrate enormous firepower, but they also concentrate risk. Clarke notes that French ships used two forward quadruple mountings to maximize fire ahead within tonnage and size limits. Losing one mounting removes half of an eight-gun battery, while damage around one closely packed magazine may also impair the neighboring turret. The comparison makes clear why firing arcs and gun count must be weighed against the fraction of the battery exposed to a single hit.",
       "sourcePath": "src/transcripts/txt/2023-03-03_T19-00-04_turret-selection-what-in-what-distribution-makes-sense-for-you_7HOTtCqFh0I.txt",
       "evidence": [
         {
@@ -57,7 +58,7 @@
       "kind": "chapter",
       "start": "12:11",
       "end": "18:42",
-      "topics": ["turret-layout", "displacement", "naval-architecture", "firepower"],
+      "topics": ["turret-layout", "displacement", "naval-architecture", "firepower", "18-inch-guns"],
       "summary": "Six turrets and 24 guns maximize redundancy, but armor, machinery, and speed quickly make the concept extremely heavy.",
       "body": "A battery divided among many turrets can keep more guns firing after individual hits, which is why Clarke treats an extreme six-turret, twenty-four-gun design as rational from a firepower-survivability perspective. That rationale depends on a navy possessing infrastructure able to build the hull and machinery able to give it useful speed. The cost is displacement: guns alone consume most of the available weight, while armor, barbettes, propulsion, crew requirements, and the superstructure still have to be carried. The resulting ship is a useful lesson in how an apparently simple armament choice cascades through every part of naval architecture.",
       "sourcePath": "src/transcripts/txt/2023-03-03_T19-00-04_turret-selection-what-in-what-distribution-makes-sense-for-you_7HOTtCqFh0I.txt",
@@ -77,7 +78,7 @@
       "kind": "notable_point",
       "start": "18:59",
       "end": "22:29",
-      "topics": ["fire-control", "radar", "sonar", "radio-direction-finding", "naval-architecture", "displacement"],
+      "topics": ["fire-control", "radar", "sonar", "radio-direction-finding", "naval-architecture", "displacement", "18-inch-guns"],
       "summary": "An enormous main battery also demands advanced controls, sensors, propulsion, and protection, intensifying the displacement problem.",
       "body": "The guns cannot deliver their theoretical value without the systems needed to aim, operate, and protect the ship. Clarke adds electrical or electro-hydraulic turret machinery, high-quality rangefinders, sonar for detecting torpedo threats, radio direction finding, and radar to the design. Those additions drive the test ship to roughly 70,000 tons before every desired feature is included. Attempts to recover weight by changing beam, draft, machinery, or internal arrangements show that turret selection creates a whole-ship compromise rather than an isolated armament calculation.",
       "sourcePath": "src/transcripts/txt/2023-03-03_T19-00-04_turret-selection-what-in-what-distribution-makes-sense-for-you_7HOTtCqFh0I.txt",
@@ -95,16 +96,16 @@
       "slug": "separating-magazines-and-losing-guns",
       "title": "Magazine separation versus a concentrated battery",
       "kind": "notable_point",
-      "start": "18:59",
-      "end": "25:30",
-      "topics": ["magazine-protection", "turret-layout", "damage-control", "battleship-design"],
+      "start": "22:31",
+      "end": "25:25",
+      "topics": ["magazine-protection", "turret-layout", "damage-control", "battleship-design", "quadruple-turrets", "18-inch-guns"],
       "summary": "Spreading 18-inch guns apart can improve magazine separation, but the hull must widen and the battery still consumes scarce weight.",
       "body": "The design exercise spaces the guns so that magazines are divided, improving the chance that a single damaging event does not silence the entire main battery. Yet the layout has to fit physically, preserve weight balance, and leave room for the rest of the ship. A twelve-gun arrangement may therefore look like the sensible maximum that the hull and infrastructure can support. Clarke then highlights the counterargument: losing a large multi-gun turret still removes a significant fraction of the ship's firepower, even when the magazines have been separated.",
       "sourcePath": "src/transcripts/txt/2023-03-03_T19-00-04_turret-selection-what-in-what-distribution-makes-sense-for-you_7HOTtCqFh0I.txt",
       "evidence": [
         {
           "start": "22:31",
-          "end": "25:30",
+          "end": "25:25",
           "note": "The transcript discusses spacing guns and magazines, fitting the arrangement into the hull, and the firepower lost with a turret."
         }
       ]
@@ -116,8 +117,8 @@
       "title": "The maintenance cost of concentrating guns in one turret",
       "kind": "notable_point",
       "start": "25:30",
-      "end": "29:13",
-      "topics": ["turret-mechanisms", "naval-maintenance", "firepower", "battleship-design"],
+      "end": "28:50",
+      "topics": ["turret-mechanisms", "naval-maintenance", "firepower", "battleship-design", "quadruple-turrets", "18-inch-guns"],
       "summary": "Adding guns to a turret increases not just barrel count but interactions, concussion effects, maintenance burden, and tactical compromise.",
       "body": "Clarke argues that a quadruple mounting is not simply two twins in one box. More guns bring more mechanisms and more interactions between the guns, including the effects of firing and concussion within the turret. The impressive twelve-gun concept consequently becomes a logistical and maintenance burden. Its 23-knot speed also leaves it short of the tactical mobility expected of a fast battleship, even though its armor and firepower would remain formidable.",
       "sourcePath": "src/transcripts/txt/2023-03-03_T19-00-04_turret-selection-what-in-what-distribution-makes-sense-for-you_7HOTtCqFh0I.txt",
@@ -130,22 +131,62 @@
       ]
     },
     {
-      "id": "five-twins-and-royal-navy-standardization",
+      "id": "five-twin-battery-limits-losses",
       "videoId": "7HOTtCqFh0I",
-      "slug": "five-twins-and-royal-navy-standardization",
-      "title": "Why five twin turrets could be a sensible British choice",
-      "kind": "chapter",
+      "slug": "five-twin-battery-limits-losses",
+      "title": "Five twin turrets limit the loss from one hit",
+      "kind": "notable_point",
       "start": "32:08",
-      "end": "42:11",
-      "topics": ["royal-navy", "twin-turrets", "standardization", "fleet-logistics", "battleship-design"],
-      "summary": "A five-twin arrangement limits the firepower lost per hit and lets a navy standardize crews, training, and spare support.",
-      "body": "Using a British 13.5-inch-gun battleship as the example, Clarke explains that five twin turrets leave 80 percent of the main battery after one turret is lost. He then contrasts a mixed twin-and-triple arrangement with a fully standardized battery. Mixed mountings introduce different components, maintenance demands, and support requirements across the same class. Standard twins simplify crew interchangeability, cross-training, firing practice, and fleet-wide logistics, advantages that can outweigh squeezing a few additional guns onto one hull.",
+      "end": "33:49",
+      "topics": ["royal-navy", "twin-turrets", "battle-damage", "firepower", "battleship-design", "13-5-inch-guns"],
+      "summary": "The Royal Navy's five-twin layout keeps four-fifths of its main battery after one turret is disabled and uses a proven mounting.",
+      "body": "Clarke presents the five-twin British layout as a survivability choice rather than simple attachment to an old arrangement. One disabled turret removes two of ten guns, leaving 80 percent of the main battery available. Twin mountings also offered a proven step beyond single-gun turrets, while a workable triple could provide more guns if the hull and weight allowance permitted it. The comparison shows that turret count matters because it controls how sharply a ship's fighting power falls after damage.",
       "sourcePath": "src/transcripts/txt/2023-03-03_T19-00-04_turret-selection-what-in-what-distribution-makes-sense-for-you_7HOTtCqFh0I.txt",
       "evidence": [
         {
           "start": "32:08",
+          "end": "33:49",
+          "note": "Clarke explains the 20-percent firepower loss from one of five twin turrets, then contrasts proven twins with a workable triple mounting."
+        }
+      ]
+    },
+    {
+      "id": "triple-turrets-and-the-iron-duke-weight-benchmark",
+      "videoId": "7HOTtCqFh0I",
+      "slug": "triple-turrets-and-the-iron-duke-weight-benchmark",
+      "title": "Triple turrets against the Iron Duke weight benchmark",
+      "kind": "notable_point",
+      "start": "33:59",
+      "end": "39:34",
+      "topics": ["royal-navy", "triple-turrets", "iron-duke-class-battleships", "13-5-inch-guns", "displacement", "secondary-batteries", "naval-architecture"],
+      "summary": "A 13.5-inch triple-turret concept exceeds Iron Duke's historical displacement once armor, secondary weapons, torpedoes, and ammunition return to the design.",
+      "body": "Clarke builds a 13.5-inch triple-turret concept with contemporary turbines, oil firing, shafts, hydraulics, and armor, then finds it near 32,000 tons. He compares that figure with the Iron Duke class at about 25,000 tons standard and 29,500 tons fully loaded, showing that the concept already exceeds the historical weight scale. Reducing protection and rearranging the hull creates severe forward weight, while adding secondary guns, three-inch weapons, torpedo tubes, and ammunition consumes the remaining margin. The historical benchmark reveals why a main-battery scheme that appears feasible in isolation may fail after the rest of the warship is restored.",
+      "sourcePath": "src/transcripts/txt/2023-03-03_T19-00-04_turret-selection-what-in-what-distribution-makes-sense-for-you_7HOTtCqFh0I.txt",
+      "evidence": [
+        {
+          "start": "33:59",
+          "end": "39:34",
+          "note": "The transcript compares the triple-turret test ship with Iron Duke displacement, then restores armor, secondary guns, torpedoes, and ammunition."
+        }
+      ]
+    },
+    {
+      "id": "five-twins-and-royal-navy-standardization",
+      "videoId": "7HOTtCqFh0I",
+      "slug": "five-twins-and-royal-navy-standardization",
+      "title": "Standardized twin turrets simplify Royal Navy support",
+      "kind": "chapter",
+      "start": "39:48",
+      "end": "42:11",
+      "topics": ["royal-navy", "twin-turrets", "standardization", "fleet-logistics", "naval-logistics", "battleship-design", "13-5-inch-guns"],
+      "summary": "Replacing a mixed twin-and-triple battery with five identical twins trades three guns for simpler maintenance, training, and fleet support.",
+      "body": "To bring the design under its weight limit, Clarke first considers mixing triple and twin turrets, but that creates two mounting types on the same class. He instead drops from thirteen guns to ten in five identical twins. Standard mountings avoid separate component stocks and maintenance requirements while making turret crews interchangeable. The Royal Navy could cross-train personnel, use any turret for firing practice, and support the ships with the same twin mountings already fitted across a larger fleet.",
+      "sourcePath": "src/transcripts/txt/2023-03-03_T19-00-04_turret-selection-what-in-what-distribution-makes-sense-for-you_7HOTtCqFh0I.txt",
+      "evidence": [
+        {
+          "start": "39:48",
           "end": "42:11",
-          "note": "The transcript compares five twins with triples, then explains the logistics, maintenance, and training value of standardized twin turrets."
+          "note": "The transcript reduces a mixed triple-and-twin battery to five identical twins, then explains the logistics, maintenance, and training value of standardization."
         }
       ]
     },
@@ -195,7 +236,7 @@
       "slug": "technology-and-the-queen-elizabeth-layout",
       "title": "Technology choices behind the Queen Elizabeth layout",
       "kind": "notable_point",
-      "start": "46:21",
+      "start": "46:57",
       "end": "50:22",
       "topics": ["queen-elizabeth-class-battleships", "royal-navy", "naval-propulsion", "turret-layout", "naval-technology"],
       "summary": "The Queen Elizabeth class shows how proven twin turrets and contemporary propulsion shaped the choice between eight guns and a heavier ten-gun alternative.",
@@ -203,7 +244,7 @@
       "sourcePath": "src/transcripts/txt/2023-03-03_T19-00-04_turret-selection-what-in-what-distribution-makes-sense-for-you_7HOTtCqFh0I.txt",
       "evidence": [
         {
-          "start": "46:21",
+          "start": "46:57",
           "end": "50:22",
           "note": "The transcript links Queen Elizabeth turret choices to proven twins, tested triples, boilers, turbines, speed, and technological progress."
         }
@@ -235,7 +276,7 @@
       "slug": "designing-to-keep-fighting-after-damage",
       "title": "Designing a battleship to keep fighting after damage",
       "kind": "chapter",
-      "start": "51:14",
+      "start": "52:33",
       "end": "55:37",
       "topics": ["battle-damage", "damage-control", "turret-layout", "battleship-design", "naval-architecture"],
       "summary": "The closing argument treats a warship's ability to absorb damage and retain fighting power as the test of a sound turret layout.",
@@ -243,7 +284,7 @@
       "sourcePath": "src/transcripts/txt/2023-03-03_T19-00-04_turret-selection-what-in-what-distribution-makes-sense-for-you_7HOTtCqFh0I.txt",
       "evidence": [
         {
-          "start": "51:14",
+          "start": "52:33",
           "end": "55:37",
           "note": "The conclusion compares concentrated and distributed batteries, then ties turret weight, buoyancy, battle damage, and continued fighting together."
         }
