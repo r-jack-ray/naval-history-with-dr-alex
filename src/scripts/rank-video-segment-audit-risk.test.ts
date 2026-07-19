@@ -89,11 +89,13 @@ test("CLI maps canonical processing states, isolates malformed shards, and emits
     assert.equal(manual?.[processLogEntriesIndex], "2");
     assert.equal(manual?.[manualAudioReviewIndex], "true");
     assert.equal(manual?.[auditRouteIndex], "low_signal");
-    assert.ok(Number(manual?.[rankIndex]) > Number(done?.[rankIndex]));
+    assert.ok(Number(done?.[rankIndex]) > Number(manual?.[rankIndex]));
+    assert.equal(Number(done?.[rankIndex]), rows.length);
     assert.ok(rows.every((row) => /^\d+\.\d$/u.test(row[auditRiskScoreIndex] ?? "")));
     assert.match(generic?.join("\t") ?? "", /low_signal.*consume-plus-two-audits threshold/u);
     assert.match(explicit?.join("\t") ?? "", /review_candidate/u);
     assert.match(manual?.join("\t") ?? "", /only manual audio review/u);
+    assert.match(done?.join("\t") ?? "", /no history segments after 1 recorded pass/u);
     assert.match(output, /\tdone1\tDone\tno\tfalse\t1\t/u);
     assert.match(output, /recorded processing state explicitly requests further processing/u);
     assert.doesNotMatch(output, /school-functions_school1|SASC School Functions/u);

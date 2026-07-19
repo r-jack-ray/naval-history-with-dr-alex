@@ -35,6 +35,7 @@
     "alternate:merge:video-links": "tsx src/scripts/merge-channel-video-links.ts",
     "alternate:fetch:transcript": "tsx src/scripts/get-video-transcript.ts",
     "alternate:fetch:transcripts": "tsx src/scripts/fetch-transcript-batch.ts",
+    "alternate:fetch:transcripts:safe": "tsx src/scripts/fetch-transcript-batch.ts --request-delay-ms 60000",
     "alternate:fetch:transcripts:retry": "npm run alternate:fetch:transcripts -- --retry-failed",
     "alternate:fetch:transcripts:retry:safe": "npm run alternate:fetch:transcripts -- --retry-failed --force --request-delay-ms 60000",
 

@@ -68,7 +68,7 @@ test("batch fetch skips stored transcripts and writes checkpoint status", async 
             fetchedAt: "2026-07-08T00:00:00.000Z",
             snippet: { title: "Metadata Title", publishedAt: "2026-07-03T18:30:17Z" },
             status: { uploadStatus: "processed" },
-            contentDetails: { duration: "PT1M" },
+            contentDetails: { duration: "PT1M1S" },
           },
         ],
       }),
@@ -260,6 +260,47 @@ test("batch skips previous failures until retry is requested", async () => {
   }
 });
 
+test("batch blocks videos with durations of 60 seconds or less", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "naval-transcript-batch-"));
+  const input = join(dir, "episodes.json");
+  const metadataInput = join(dir, "metadata.json");
+  const outputRoot = join(dir, "transcripts");
+  const statusOutput = join(outputRoot, "fetch-status.json");
+  const calls: string[] = [];
+
+  try {
+    await writeFile(input, JSON.stringify({
+      episodes: [
+        { videoId: "short123", title: "Short", tabs: ["videos"] },
+        { videoId: "longer123", title: "Longer", tabs: ["videos"] },
+      ],
+    }), "utf8");
+    await writeFile(metadataInput, JSON.stringify({ videos: [
+      readyMetadata("short123", "PT1M"),
+      readyMetadata("longer123", "PT1M1S"),
+    ] }), "utf8");
+
+    const status = await fetchAndStoreTranscriptBatch({
+      inputPath: input,
+      metadataInput,
+      outputRoot,
+      statusOutput,
+      requestDelayMs: 5,
+      fetchTranscript: async (options) => {
+        calls.push(options.videoId);
+        return sampleTranscript(options.videoId);
+      },
+    });
+
+    assert.deepEqual(calls, ["longer123"]);
+    assert.equal(status.stats.skippedShortDurationCount, 1);
+    assert.equal(status.stats.fetchedCount, 1);
+    assert.equal(status.stats.pendingCount, 0);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
 test("batch skips published but unstarted videos and clears stale failures", async () => {
   const dir = await mkdtemp(join(tmpdir(), "naval-transcript-batch-"));
   const input = join(dir, "episodes.json");
@@ -362,12 +403,16 @@ function sampleTranscript(videoId: string): VideoTranscript {
 
 async function writeReadyMetadata(path: string, videoIds: string[]): Promise<void> {
   await writeFile(path, JSON.stringify({
-    videos: videoIds.map((videoId) => ({
-      videoId,
-      fetchedAt: "2026-07-08T00:00:00.000Z",
-      snippet: { title: `Metadata ${videoId}`, publishedAt: "2026-07-03T18:30:17Z", liveBroadcastContent: "none" },
-      status: { uploadStatus: "processed" },
-      contentDetails: { duration: "PT1M" },
-    })),
+    videos: videoIds.map((videoId) => readyMetadata(videoId, "PT1M1S")),
   }), "utf8");
+}
+
+function readyMetadata(videoId: string, duration: string) {
+  return {
+    videoId,
+    fetchedAt: "2026-07-08T00:00:00.000Z",
+    snippet: { title: `Metadata ${videoId}`, publishedAt: "2026-07-03T18:30:17Z", liveBroadcastContent: "none" },
+    status: { uploadStatus: "processed" },
+    contentDetails: { duration },
+  };
 }

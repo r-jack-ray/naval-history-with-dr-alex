@@ -10,6 +10,7 @@ import {
   type VideoTranscript,
 } from "./transcripts.js";
 import { createRateLimitedFetch } from "./channel-video-links.js";
+import { isBlockedTranscriptDuration } from "./channel-video-links.js";
 import {
   defaultVideoMetadataInput,
   defaultVideoMetadataOutput,
@@ -69,6 +70,7 @@ export interface TranscriptBatchStatus {
     inputVideoCount: number;
     skippedStoredCount: number;
     skippedDeferredCount: number;
+    skippedShortDurationCount: number;
     deferredCounts: Record<VideoReadinessReason, number>;
     skippedPreviousFailureCount: number;
     attemptedCount: number;
@@ -101,6 +103,7 @@ export interface FetchTranscriptBatchOptions {
 interface TranscriptBatchCounters {
   skippedStoredCount: number;
   skippedDeferredCount: number;
+  skippedShortDurationCount: number;
   deferredCounts: Record<VideoReadinessReason, number>;
   skippedPreviousFailureCount: number;
   attemptedCount: number;
@@ -124,6 +127,7 @@ export async function fetchAndStoreTranscriptBatch(
   const counters: TranscriptBatchCounters = {
     skippedStoredCount: 0,
     skippedDeferredCount: 0,
+    skippedShortDurationCount: 0,
     deferredCounts: emptyDeferredCounts(),
     skippedPreviousFailureCount: 0,
     attemptedCount: 0,
@@ -133,7 +137,8 @@ export async function fetchAndStoreTranscriptBatch(
   };
 
   for (const videoId of failuresById.keys()) {
-    if (resolveVideoState(metadataById.get(videoId)).state === "deferred") {
+    const state = resolveVideoState(metadataById.get(videoId));
+    if (state.state === "deferred" || (state.state === "ready" && isBlockedTranscriptDuration(state.durationSeconds))) {
       failuresById.delete(videoId);
     }
   }
@@ -141,6 +146,15 @@ export async function fetchAndStoreTranscriptBatch(
   await writeTranscriptBatchStatus(options, episodes, counters, failuresById);
 
   for (const episode of episodes) {
+    const metadata = metadataById.get(episode.videoId);
+    const state = resolveVideoState(metadata);
+    if (state.state === "ready" && isBlockedTranscriptDuration(state.durationSeconds)) {
+      failuresById.delete(episode.videoId);
+      counters.skippedShortDurationCount += 1;
+      options.logger?.(`Blocking short video ${episode.videoId}: duration=${state.durationSeconds}s`);
+      continue;
+    }
+
     const stored = options.force
       ? undefined
       : await findStoredTranscriptRecord({
@@ -154,8 +168,6 @@ export async function fetchAndStoreTranscriptBatch(
       continue;
     }
 
-    const metadata = metadataById.get(episode.videoId);
-    const state = resolveVideoState(metadata);
     if (state.state !== "ready") {
       if (state.state === "deferred") {
         failuresById.delete(episode.videoId);
@@ -356,6 +368,7 @@ function buildTranscriptBatchStatus(
 ): TranscriptBatchStatus {
   const processedCount = counters.skippedStoredCount +
     counters.skippedDeferredCount +
+    counters.skippedShortDurationCount +
     counters.skippedPreviousFailureCount +
     counters.fetchedCount +
     counters.failedCount +
@@ -373,6 +386,7 @@ function buildTranscriptBatchStatus(
       inputVideoCount: episodes.length,
       skippedStoredCount: counters.skippedStoredCount,
       skippedDeferredCount: counters.skippedDeferredCount,
+      skippedShortDurationCount: counters.skippedShortDurationCount,
       deferredCounts: { ...counters.deferredCounts },
       skippedPreviousFailureCount: counters.skippedPreviousFailureCount,
       attemptedCount: counters.attemptedCount,
@@ -510,6 +524,7 @@ function emptyTranscriptBatchStatus(): TranscriptBatchStatus {
       inputVideoCount: 0,
       skippedStoredCount: 0,
       skippedDeferredCount: 0,
+      skippedShortDurationCount: 0,
       deferredCounts: emptyDeferredCounts(),
       skippedPreviousFailureCount: 0,
       attemptedCount: 0,

@@ -3,6 +3,7 @@ import {
   defaultEpisodeMasterOutput,
   defaultChannelVideoLinksOptions,
   fetchChannelVideoLinks,
+  resolveChannelVideoLinksMasterOutput,
   writeChannelEpisodeMasterOutput,
   writeSplitVideoLinksOutput,
   writeVideoLinksOutput,
@@ -149,6 +150,11 @@ function parseArgs(args: string[]): CliOptions {
     }
   }
 
+  const masterOutput = resolveChannelVideoLinksMasterOutput(options);
+  if (masterOutput !== undefined) {
+    options.masterOutput = masterOutput;
+  }
+
   return options;
 }
 
@@ -186,7 +192,7 @@ Options:
   --channel-id <id>         Override channel ID resolution.
   --uploads-playlist-id <id> Override uploads playlist resolution.
   --output <path>           Write combined JSON to a file instead of stdout.
-  --master-output <path>    Write canonical source episode list. Defaults by convention to ${defaultEpisodeMasterOutput}.
+  --master-output <path>    Write canonical source episode list. Full fetches default to ${defaultEpisodeMasterOutput}.
   --inventory-completeness <complete|partial|unknown>
                             Completeness flag for --master-output. Defaults to unknown.
   --links-output <path>     Write base video list JSON. Defaults when metadata output is used.
@@ -200,7 +206,7 @@ Options:
   --help                    Show this help.
 
 Examples:
-  npm run fetch:video-links -- --master-output ${defaultEpisodeMasterOutput} --checkpoint-output reports/dr-alex-video-fetch-checkpoint.json
+  npm run fetch:video-links
   npm run fetch:video-links -- --output reports/dr-alex-video-links.json
   npm run fetch:video-links -- --links-output reports/dr-alex-video-list.json --metadata-output reports/dr-alex-video-metadata.json --checkpoint-output reports/dr-alex-video-fetch-checkpoint.json
   npm run fetch:video-links -- --include-video-details --detail-limit 10 --metadata-output reports/dr-alex-video-metadata-probe.json

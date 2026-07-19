@@ -122,12 +122,15 @@ test("a completed audit overrides only a generic configured Q/A expectation", ()
 
 test("processing state controls route and intentional empty completion stays low signal", () => {
   const followUp = analyzeVideoSegmentRisk(input({ needsFurtherProcessing: "yes" }));
-  const intentionalEmpty = analyzeVideoSegmentRisk(input({ segments: [], needsFurtherProcessing: "no" }));
+  const intentionalEmpty = analyzeVideoSegmentRisk(input({ processLogEntries: 1, segments: [], needsFurtherProcessing: "no" }));
+  const unfinishedEmpty = analyzeVideoSegmentRisk(input({ processLogEntries: 1, segments: [], needsFurtherProcessing: "yes" }));
   assert.equal(followUp.auditRoute, "follow_up_required");
   assert.equal(followUp.riskTier, "high");
   assert.match(followUp.riskSignals.join(" "), /explicitly requests further processing/u);
   assert.equal(intentionalEmpty.auditRoute, "low_signal");
   assert.equal(intentionalEmpty.auditRiskScore, 5);
+  assert.match(intentionalEmpty.riskSignals.join(" "), /no history segments after 1 recorded pass/u);
+  assert.equal(unfinishedEmpty.auditRoute, "follow_up_required");
   assert.equal(analyzeVideoSegmentRisk(input({ needsFurtherProcessing: "unknown" })).auditRoute, "review_candidate");
 });
 
@@ -228,12 +231,16 @@ test("route precedence beats score and TSV uses risk terminology", () => {
   assert.match(tsv.split("\n")[1] ?? "", /\t\d+\.\d\t(?:critical|high|medium|low)\t/u);
 });
 
-test("within a route, three-pass shards sort after less-reviewed shards", () => {
+test("within low signal, completed empty shards sort after heavily reviewed nonempty shards", () => {
   const fresh = analyzeVideoSegmentRisk(input({
     videoId: "fresh",
     videoTitle: "Fresh",
     processLogEntries: 2,
-    segments: [],
+    durationSeconds: 300,
+    segments: [{
+      kind: "chapter", start: "0:00", end: "5:00", sourcePath,
+      evidence: [{ start: "0:00", end: "5:00", note: "Complete short clip." }],
+    }],
   }));
   const squeezed = analyzeVideoSegmentRisk(input({
     videoId: "squeezed",
@@ -241,9 +248,19 @@ test("within a route, three-pass shards sort after less-reviewed shards", () => 
     processLogEntries: 3,
     durationSeconds: 1_740,
   }));
+  const completedEmpty = analyzeVideoSegmentRisk(input({
+    videoId: "empty",
+    videoTitle: "Empty",
+    processLogEntries: 1,
+    segments: [],
+  }));
 
   assert.equal(fresh.auditRoute, "low_signal");
   assert.equal(squeezed.auditRoute, "low_signal");
+  assert.equal(completedEmpty.auditRoute, "low_signal");
   assert.ok(squeezed.auditRiskScore > fresh.auditRiskScore);
-  assert.equal(rankVideoSegmentAuditRisks([squeezed, fresh])[0]?.videoId, "fresh");
+  assert.deepEqual(
+    rankVideoSegmentAuditRisks([completedEmpty, squeezed, fresh]).map((row) => row.videoId),
+    ["fresh", "squeezed", "empty"],
+  );
 });

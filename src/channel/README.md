@@ -41,7 +41,7 @@ ID suffix for stable lookup and dedupe.
 Refresh from a channel crawl:
 
 ```powershell
-npm run fetch:video-links -- --master-output src/channel/episodes.json --checkpoint-output reports/dr-alex-video-fetch-checkpoint.json
+npm run fetch:video-links
 ```
 
 Refresh from saved `/videos` and `/streams` HTML:

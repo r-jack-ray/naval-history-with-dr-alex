@@ -50,6 +50,7 @@ async function main(): Promise<void> {
       `Transcript batch complete: fetched=${status.stats.fetchedCount}`,
       `failed=${status.stats.failedCount}`,
       `stored-skipped=${status.stats.skippedStoredCount}`,
+      `short-duration-blocked=${status.stats.skippedShortDurationCount}`,
       `previous-failure-skipped=${status.stats.skippedPreviousFailureCount}`,
       `pending=${status.stats.pendingCount}`,
       `status=${options.statusOutput}`,

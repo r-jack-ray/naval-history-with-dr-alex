@@ -44,7 +44,7 @@ npm run generate:site-data
 npm run site:check
 npm run site:build
 npm run sync:video-topics
-npm run fetch:video-links -- --master-output src/channel/episodes.json --checkpoint-output reports/dr-alex-video-fetch-checkpoint.json
+npm run fetch:video-links
 npm run alternate:fetch:transcript -- --video-id uURe69Wnh-Q
 npm run alternate:fetch:transcripts -- --limit 1 --request-delay-ms 5000
 ```

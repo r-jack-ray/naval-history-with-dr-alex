@@ -8,6 +8,7 @@ import {
   defaultVideoMetadataOutput,
   readVideoMetadataStore,
   resolveVideoState,
+  parseYoutubeDurationSeconds,
   type VideoDateKind,
   type VideoKind,
   type VideoMetadataRecord,
@@ -18,6 +19,33 @@ export type ChannelInventoryCompleteness = "complete" | "partial" | "unknown";
 
 export const defaultChannelSourceRoot = "src/channel";
 export const defaultEpisodeMasterOutput = `${defaultChannelSourceRoot}/episodes.json`;
+
+export interface ResolveChannelVideoLinksMasterOutputOptions {
+  output?: string;
+  masterOutput?: string;
+  linksOutput?: string;
+  metadataOutput?: string;
+  maxPages?: number;
+}
+
+export function resolveChannelVideoLinksMasterOutput(
+  options: ResolveChannelVideoLinksMasterOutputOptions,
+): string | undefined {
+  if (options.masterOutput !== undefined) {
+    return options.masterOutput;
+  }
+
+  if (
+    options.output !== undefined ||
+    options.linksOutput !== undefined ||
+    options.metadataOutput !== undefined ||
+    options.maxPages !== undefined
+  ) {
+    return undefined;
+  }
+
+  return defaultEpisodeMasterOutput;
+}
 export const defaultTranscriptManifestInput = "src/transcripts/manifest.json";
 
 export interface ChannelVideoLink {
@@ -25,6 +53,7 @@ export interface ChannelVideoLink {
   url: string;
   title?: string;
   durationText?: string;
+  durationSeconds?: number;
   publishedText?: string;
   viewCountText?: string;
   publishedAt?: string;
@@ -123,6 +152,7 @@ export interface ChannelEpisodeRecord {
   channelOrder: number;
   title?: string;
   durationText?: string;
+  durationSeconds?: number;
   publishedText?: string;
   viewCountText?: string;
   publishedAt?: string;
@@ -336,8 +366,28 @@ export async function fetchChannelVideoLinks(
     pageToken = response.data.nextPageToken;
   }
 
-  if (options.includeVideoDetails) {
-    await enrichWithOfficialVideoDetails(youtube, records, options.detailLimit, gate, options.logger);
+  await enrichWithOfficialVideoDetails(
+    youtube,
+    records,
+    options.detailLimit,
+    options.includeVideoDetails ?? false,
+    gate,
+    options.logger,
+  );
+  const eligibleRecords = records.filter((record) => !isBlockedTranscriptDuration(record.durationSeconds));
+  const blockedCount = records.length - eligibleRecords.length;
+  if (blockedCount > 0) {
+    options.logger?.(`Blocked ${blockedCount} video(s) with durations of 60 seconds or less.`);
+  }
+  if (options.checkpointOutput) {
+    await writeVideoLinksOutput(options.checkpointOutput, {
+      channelUrl,
+      channelId: channel.channelId,
+      fetchedAt,
+      requestDelayMs: options.requestDelayMs,
+      tabs: tabState,
+      links: eligibleRecords,
+    });
   }
 
   return {
@@ -346,7 +396,7 @@ export async function fetchChannelVideoLinks(
     fetchedAt,
     requestDelayMs: options.requestDelayMs,
     tabs: tabState,
-    links: records,
+    links: eligibleRecords,
   };
 }
 
@@ -508,6 +558,9 @@ function channelEpisodeRecord(
   }
   if (link.durationText !== undefined) {
     record.durationText = link.durationText;
+  }
+  if (link.durationSeconds !== undefined) {
+    record.durationSeconds = link.durationSeconds;
   }
   if (link.publishedText !== undefined) {
     record.publishedText = link.publishedText;
@@ -846,18 +899,39 @@ async function enrichWithOfficialVideoDetails(
   youtube: youtube_v3.Youtube,
   links: ChannelVideoLink[],
   detailLimit: number | undefined,
+  includeVideoDetails: boolean,
   gate: RequestGate,
   logger: ((message: string) => void) | undefined,
 ): Promise<void> {
-  const limitedLinks = detailLimit === undefined ? links : links.slice(0, detailLimit);
-  const linksById = new Map(limitedLinks.map((link) => [link.videoId, link]));
+  if (includeVideoDetails && detailLimit === undefined) {
+    await enrichOfficialVideoBatch(youtube, links, true, gate, logger);
+    return;
+  }
 
-  for (let index = 0; index < limitedLinks.length; index += 50) {
-    const batch = limitedLinks.slice(index, index + 50);
-    logger?.(`Fetching exact video metadata ${index + 1}-${index + batch.length}/${limitedLinks.length}`);
+  await enrichOfficialVideoBatch(youtube, links, false, gate, logger);
+  if (includeVideoDetails) {
+    await enrichOfficialVideoBatch(youtube, links.slice(0, detailLimit), true, gate, logger);
+  }
+}
+
+async function enrichOfficialVideoBatch(
+  youtube: youtube_v3.Youtube,
+  links: ChannelVideoLink[],
+  includeVideoDetails: boolean,
+  gate: RequestGate,
+  logger: ((message: string) => void) | undefined,
+): Promise<void> {
+  const linksById = new Map(links.map((link) => [link.videoId, link]));
+
+  for (let index = 0; index < links.length; index += 50) {
+    const batch = links.slice(index, index + 50);
+    const detailLabel = includeVideoDetails ? "exact video metadata" : "video durations";
+    logger?.(`Fetching ${detailLabel} ${index + 1}-${index + batch.length}/${links.length}`);
     await gate(`videos.list metadata batch ${Math.floor(index / 50) + 1}`);
     const response = await youtube.videos.list({
-      part: ["snippet", "contentDetails", "statistics", "status", "liveStreamingDetails"],
+      part: includeVideoDetails
+        ? ["snippet", "contentDetails", "statistics", "status", "liveStreamingDetails"]
+        : ["contentDetails", "status"],
       id: batch.map((link) => link.videoId),
       maxResults: 50,
     });
@@ -869,12 +943,16 @@ async function enrichWithOfficialVideoDetails(
         continue;
       }
 
-      applyOfficialVideoMetadata(link, video);
+      applyOfficialVideoDuration(link, video);
+      if (includeVideoDetails) {
+        applyOfficialVideoMetadata(link, video);
+      }
     }
   }
 }
 
 export function applyOfficialVideoMetadata(link: ChannelVideoLink, video: youtube_v3.Schema$Video): void {
+  applyOfficialVideoDuration(link, video);
   const snippet = video.snippet;
   const statistics = video.statistics;
   const liveStreamingDetails = video.liveStreamingDetails;
@@ -912,6 +990,17 @@ export function applyOfficialVideoMetadata(link: ChannelVideoLink, video: youtub
     link.publishDate = state.videoDateAt.slice(0, 10);
     link.publishedText = link.publishDate;
   }
+}
+
+export function applyOfficialVideoDuration(link: ChannelVideoLink, video: youtube_v3.Schema$Video): void {
+  const durationSeconds = parseYoutubeDurationSeconds(video.contentDetails?.duration ?? undefined);
+  if (durationSeconds !== undefined) {
+    link.durationSeconds = durationSeconds;
+  }
+}
+
+export function isBlockedTranscriptDuration(durationSeconds: number | undefined): boolean {
+  return durationSeconds !== undefined && durationSeconds > 0 && durationSeconds <= 60;
 }
 
 export function officialVideoStreamStartTime(video: youtube_v3.Schema$Video): string | undefined {

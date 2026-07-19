@@ -118,11 +118,14 @@ The main inventory task uses the official YouTube Data API through `googleapis`.
 
 YouTube Data API quota is tracked by Google project and resets at midnight Pacific Time. The default allocation is 10,000 units per day for most endpoints, with `playlistItems.list` and `videos.list` costing 1 unit per call. `search.list` has its own default limit of 100 calls per day, and `captions.list` costs 50 units per call. Check the official [YouTube Data API quota cost table](https://developers.google.com/youtube/v3/determine_quota_cost) before changing fetch strategy.
 
-Full run into the source master episode list:
+A bare run fetches the full channel inventory and updates the source master episode list:
 
 ```powershell
-npm run fetch:video-links -- --master-output src/channel/episodes.json --checkpoint-output reports/dr-alex-video-fetch-checkpoint.json
+npm run fetch:video-links
 ```
+
+Pass `--master-output` only to select a different master path. Limited `--max-pages` probes and explicit
+`--output`, `--links-output`, or `--metadata-output` modes do not overwrite the canonical master implicitly.
 
 The current master can be partial. Check `inventory.completeness` before using it as the full backlog.
 

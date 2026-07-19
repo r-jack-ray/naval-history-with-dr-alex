@@ -1,28 +1,29 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-07-13T21:29:08.215Z",
+  "updatedAt": "2026-07-19T04:30:55.549Z",
   "inputPath": "src/channel/episodes.json",
   "outputRoot": "src/transcripts",
   "requestDelayMs": 5000,
   "retryFailed": false,
   "force": false,
   "stats": {
-    "inputVideoCount": 2078,
-    "skippedStoredCount": 2057,
-    "skippedPreviousFailureCount": 21,
-    "attemptedCount": 0,
-    "fetchedCount": 0,
-    "failedCount": 0,
-    "pendingCount": 0,
-    "totalFailureCount": 16,
-    "skippedDeferredCount": 0,
+    "inputVideoCount": 2238,
+    "skippedStoredCount": 2135,
+    "skippedDeferredCount": 7,
+    "skippedShortDurationCount": 0,
     "deferredCounts": {
-      "upcoming": 0,
+      "upcoming": 7,
       "live_in_progress": 0,
       "processing": 0,
       "metadata_missing": 0,
       "invalid_metadata": 0
-    }
+    },
+    "skippedPreviousFailureCount": 15,
+    "attemptedCount": 0,
+    "fetchedCount": 0,
+    "failedCount": 0,
+    "pendingCount": 81,
+    "totalFailureCount": 15
   },
   "failures": [
     {
@@ -34,8 +35,8 @@
         "streams"
       ],
       "title": "Patreon 8 - “The Treaty of London 1930” by Daniel Freedman",
-      "channelOrder": 2037,
-      "videoDateAt": "2020-10-27T18:06:35Z"
+      "videoDateAt": "2020-10-27T18:06:35Z",
+      "channelOrder": 2037
     },
     {
       "videoId": "048g_xMLsqo",
@@ -46,8 +47,8 @@
         "streams"
       ],
       "title": "Bruships 57: Some Cool Books and Naval History Chat",
-      "channelOrder": 1933,
-      "videoDateAt": "2021-10-17T17:02:43Z"
+      "videoDateAt": "2021-10-17T17:02:43Z",
+      "channelOrder": 1933
     },
     {
       "videoId": "2FM59LjWsyI",
@@ -58,8 +59,8 @@
         "streams"
       ],
       "title": "Arethusa Class Cruisers",
-      "channelOrder": 2034,
-      "videoDateAt": "2020-11-03T18:05:31Z"
+      "videoDateAt": "2020-11-03T18:05:31Z",
+      "channelOrder": 2034
     },
     {
       "videoId": "8vkrEqP1xUM",
@@ -70,8 +71,8 @@
         "streams"
       ],
       "title": "Bruships 230: Naval History Questions Answered Live...2nd Start",
-      "channelOrder": 1508,
-      "videoDateAt": "2026-02-01T21:10:48Z"
+      "videoDateAt": "2026-02-01T21:10:48Z",
+      "channelOrder": 1508
     },
     {
       "videoId": "cP_PpcABQFQ",
@@ -82,8 +83,8 @@
         "streams"
       ],
       "title": "Patreon 35: The Naval Career of Jackie Fisher - First Sea Lord Extraordinaire",
-      "channelOrder": 1934,
-      "videoDateAt": "2021-10-14T17:31:13Z"
+      "videoDateAt": "2021-10-14T17:31:13Z",
+      "channelOrder": 1934
     },
     {
       "videoId": "dcjjHarz1Ew",
@@ -94,8 +95,8 @@
         "videos"
       ],
       "title": "Amagi Class Battlecruiser: No Sound, but still a Question",
-      "channelOrder": 656,
-      "videoDateAt": "2023-04-30T09:00:30Z"
+      "videoDateAt": "2023-04-30T09:00:30Z",
+      "channelOrder": 656
     },
     {
       "videoId": "hVm0HoGdq-g",
@@ -106,8 +107,8 @@
         "streams"
       ],
       "title": "Bruships 39: Books Off the Shelf...",
-      "channelOrder": 1993,
-      "videoDateAt": "2021-02-28T18:10:33Z"
+      "videoDateAt": "2021-02-28T18:10:33Z",
+      "channelOrder": 1993
     },
     {
       "videoId": "IZui0sFSIdE",
@@ -118,8 +119,8 @@
         "videos"
       ],
       "title": "Blonde Class: Scout Cruisers of the Royal Navy (Long Patrol)",
-      "channelOrder": 862,
-      "videoDateAt": "2022-06-28T18:00:05Z"
+      "videoDateAt": "2022-06-28T18:00:05Z",
+      "channelOrder": 862
     },
     {
       "videoId": "nvCV5fqNkCE",
@@ -130,20 +131,8 @@
         "streams"
       ],
       "title": "Patreon 84: The underpaid and underappreciated Merchant Marine of WWII",
-      "channelOrder": 1749,
-      "videoDateAt": "2023-09-21T18:05:18Z"
-    },
-    {
-      "videoId": "o9DACEN7Sr0",
-      "attemptedAt": "2026-07-09T06:04:29.836Z",
-      "classification": "no_caption_tracks",
-      "error": "No caption tracks found for video: o9DACEN7Sr0.",
-      "tabs": [
-        "streams"
-      ],
-      "title": "Bruships 171: Oh Kallax my Kallax, Where art though my Kallax",
-      "channelOrder": 1650,
-      "videoDateAt": "2024-11-17T19:33:08Z"
+      "videoDateAt": "2023-09-21T18:05:18Z",
+      "channelOrder": 1749
     },
     {
       "videoId": "oD6sV0zuWcU",
@@ -154,8 +143,8 @@
         "streams"
       ],
       "title": "Bruships 53: The Big Gun Era.... bad sound...",
-      "channelOrder": 1957,
-      "videoDateAt": "2021-07-18T16:57:44Z"
+      "videoDateAt": "2021-07-18T16:57:44Z",
+      "channelOrder": 1957
     },
     {
       "videoId": "PLcyjZ29LHA",
@@ -166,8 +155,8 @@
         "streams"
       ],
       "title": "'The Imperial High Seas Fleet: Tarkin replaces Tirpitz & Thrawn replaces Scheer at Jutland...’",
-      "channelOrder": 1931,
-      "videoDateAt": "2021-10-24T17:16:52Z"
+      "videoDateAt": "2021-10-24T17:16:52Z",
+      "channelOrder": 1931
     },
     {
       "videoId": "QJDfypv9XxY",
@@ -178,8 +167,8 @@
         "videos"
       ],
       "title": "Town Class Part 5 of 7: Southamptons",
-      "channelOrder": 1234,
-      "videoDateAt": "2020-12-15T13:42:32Z"
+      "videoDateAt": "2020-12-15T13:42:32Z",
+      "channelOrder": 1234
     },
     {
       "videoId": "s37gUDr_Z9w",
@@ -190,8 +179,8 @@
         "videos"
       ],
       "title": "Building an R Class to fight a convoy battle vs the Scharnhorsts",
-      "channelOrder": 627,
-      "videoDateAt": "2023-05-31T18:00:20Z"
+      "videoDateAt": "2023-05-31T18:00:20Z",
+      "channelOrder": 627
     },
     {
       "videoId": "usSZIzRtuas",
@@ -202,8 +191,8 @@
         "videos"
       ],
       "title": "No Sound??? Battle of the Atlantic: Escort Procurement - Comment Response",
-      "channelOrder": 1068,
-      "videoDateAt": "2021-08-23T16:00:32Z"
+      "videoDateAt": "2021-08-23T16:00:32Z",
+      "channelOrder": 1068
     },
     {
       "videoId": "xsE4uYFn1m0",
@@ -214,10 +203,10 @@
         "videos"
       ],
       "title": "Town Class Part 5 of 7: Southamptons (inadvertent silent movie style...6&7 are ok)",
-      "channelOrder": 1237,
-      "videoDateAt": "2020-12-13T14:00:26Z"
+      "videoDateAt": "2020-12-13T14:00:26Z",
+      "channelOrder": 1237
     }
   ],
   "metadataInput": "src/channel/video-metadata.json",
-  "limit": 1
+  "limit": 0
 }

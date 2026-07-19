@@ -208,6 +208,10 @@ export function analyzeVideoSegmentRisk(input: VideoSegmentAuditRiskInput): Vide
       : reviewSignals.length > 0
         ? "review_candidate"
         : "low_signal";
+  const completedEmptyAfterRecordedPass = auditRoute === "low_signal"
+    && input.needsFurtherProcessing === "no"
+    && input.processLogEntries >= 1
+    && input.segments.length === 0;
   const segmentCount = input.segments.length;
   const durationMinutes = interval === undefined ? undefined : interval.durationSeconds / 60;
   const largestAnchorGapMinutes = distribution.largestGapPct === undefined || durationMinutes === undefined
@@ -237,6 +241,10 @@ export function analyzeVideoSegmentRisk(input: VideoSegmentAuditRiskInput): Vide
   riskSignals.push(...reviewSignals);
   if (heavilyReviewed) {
     riskSignals.push(`${input.processLogEntries} recorded passes meet the consume-plus-two-audits threshold; residual metadata risk is strongly downweighted`);
+  }
+  if (completedEmptyAfterRecordedPass) {
+    const passLabel = input.processLogEntries === 1 ? "pass" : "passes";
+    riskSignals.push(`completed shard has no history segments after ${input.processLogEntries} recorded ${passLabel}; repeated content audits sort at the bottom`);
   }
   if (riskSignals.length === 0) {
     riskSignals.push("no route-level failure or warning detected; score uses continuous metadata diagnostics only");
@@ -281,7 +289,7 @@ export function analyzeVideoSegmentRisk(input: VideoSegmentAuditRiskInput): Vide
 export function rankVideoSegmentAuditRisks(rows: VideoSegmentAuditRiskRow[]): VideoSegmentAuditRiskRow[] {
   return [...rows].sort((left, right) =>
     ROUTE_ORDER[left.auditRoute] - ROUTE_ORDER[right.auditRoute]
-    || textAuditDeprioritizationOrder(left) - textAuditDeprioritizationOrder(right)
+    || auditDeprioritizationOrder(left) - auditDeprioritizationOrder(right)
     || right.auditRiskScore - left.auditRiskScore
     || left.videoTitle.localeCompare(right.videoTitle)
     || left.videoId.localeCompare(right.videoId))
@@ -436,7 +444,9 @@ function tierFor(score: number): RiskTier {
   return "low";
 }
 
-function textAuditDeprioritizationOrder(row: VideoSegmentAuditRiskRow): number {
+function auditDeprioritizationOrder(row: VideoSegmentAuditRiskRow): number {
+  if (row.auditRoute === "low_signal" && row.needsFurtherProcessing === "no"
+    && row.processLogEntries >= 1 && row.segmentCount === 0) return 2;
   return row.manualAudioReviewRemaining || row.processLogEntries >= HEAVILY_REVIEWED_PASS_THRESHOLD ? 1 : 0;
 }
 

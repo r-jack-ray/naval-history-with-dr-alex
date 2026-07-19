@@ -3,15 +3,33 @@ import test from "node:test";
 
 import {
   applyOfficialVideoMetadata,
+  applyOfficialVideoDuration,
   buildChannelEpisodeMaster,
   createRateLimitedFetch,
   extractVideoLink,
   fetchInitWithRequestLabel,
   mergeChannelVideoLinksResults,
   officialVideoStreamStartTime,
+  isBlockedTranscriptDuration,
+  resolveChannelVideoLinksMasterOutput,
   splitChannelVideoLinksResult,
   type ChannelVideoLink,
 } from "./channel-video-links.js";
+
+test("defaults a full video-link fetch to the canonical episode master", () => {
+  assert.equal(resolveChannelVideoLinksMasterOutput({}), "src/channel/episodes.json");
+  assert.equal(
+    resolveChannelVideoLinksMasterOutput({ masterOutput: "reports/custom-episodes.json" }),
+    "reports/custom-episodes.json",
+  );
+});
+
+test("does not implicitly overwrite the episode master for probes or alternate outputs", () => {
+  assert.equal(resolveChannelVideoLinksMasterOutput({ maxPages: 1 }), undefined);
+  assert.equal(resolveChannelVideoLinksMasterOutput({ output: "reports/probe.json" }), undefined);
+  assert.equal(resolveChannelVideoLinksMasterOutput({ linksOutput: "reports/links.json" }), undefined);
+  assert.equal(resolveChannelVideoLinksMasterOutput({ metadataOutput: "reports/metadata.json" }), undefined);
+});
 
 test("extracts video links from YouTube LockupView nodes", () => {
   const record = extractVideoLink(
@@ -226,6 +244,21 @@ test("official enrichment keeps raw stream dates separate from the effective dat
   assert.equal(link.videoKind, "stream");
   assert.equal(link.publishDate, "2026-07-12");
   assert.equal(link.publishedText, "2026-07-12");
+});
+
+test("official duration metadata blocks positive durations of 60 seconds or less", () => {
+  const link: ChannelVideoLink = {
+    videoId: "short123",
+    url: "https://www.youtube.com/watch?v=short123",
+    tabs: ["videos"],
+    tabPositions: { videos: 1 },
+  };
+
+  applyOfficialVideoDuration(link, { contentDetails: { duration: "PT1M" } });
+  assert.equal(link.durationSeconds, 60);
+  assert.equal(isBlockedTranscriptDuration(link.durationSeconds), true);
+  assert.equal(isBlockedTranscriptDuration(61), false);
+  assert.equal(isBlockedTranscriptDuration(0), false);
 });
 
 test("merges channel video link results across tabs", () => {

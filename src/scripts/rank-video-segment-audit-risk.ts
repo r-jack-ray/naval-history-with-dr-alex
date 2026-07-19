@@ -275,6 +275,8 @@ Within each route, these heavily reviewed files also sort after files with fewer
 than three passes. Structural repair and independent review warnings still control routing.
 A latest yes row that explicitly leaves only manual audio review receives the same
 text-audit downweighting and does not force another transcript-only follow-up.
+Completed empty shards with at least one recorded pass sort last within low_signal,
+so non-history or administrative clips do not need two extra audits merely to be downranked.
 Manifest transcripts with no shard remain in the existing unprocessed-file/backlog workflow.
 
 Options:
