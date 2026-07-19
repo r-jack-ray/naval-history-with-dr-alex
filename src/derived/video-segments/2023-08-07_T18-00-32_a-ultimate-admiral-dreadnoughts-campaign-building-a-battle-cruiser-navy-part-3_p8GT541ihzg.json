@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "videoId": "p8GT541ihzg",
-  "topics": ["ultimate-admiral-dreadnoughts", "battlecruisers", "naval-strategy", "ship-design", "force-structure", "naval-procurement"],
+  "topics": ["ultimate-admiral-dreadnoughts", "battlecruisers", "naval-strategy", "ship-design", "force-structure", "naval-procurement", "naval-logistics", "naval-industrial-base"],
   "segments": [
     {
       "id": "campaign-oil-and-global-naval-reach",
@@ -11,7 +11,7 @@
       "kind": "chapter",
       "start": "2:15",
       "end": "7:16",
-      "topics": ["ultimate-admiral-dreadnoughts", "naval-logistics", "oil", "naval-strategy"],
+      "topics": ["ultimate-admiral-dreadnoughts", "naval-logistics", "oil", "naval-strategy", "persia", "pearl-harbor", "overseas-bases"],
       "summary": "The campaign map shows why access to oil and dispersed territories shape where fleets can operate and expand.",
       "body": "Dr. Clarke uses the campaign map to explain his attention to oil-producing regions and distant bases. The game turns possession of places such as Persia and Pearl Harbor into practical naval reach, rather than treating territorial expansion as an abstract score. Oil supply supports sustained operations, while widely placed ports give ships somewhere useful to operate from across several theatres. The scenario therefore offers a compact introduction to how fuel access, geography, and overseas possessions constrain a global fleet.",
       "sourcePath": "src/transcripts/txt/2023-08-07_T18-00-32_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-3_p8GT541ihzg.txt",
@@ -38,12 +38,29 @@
       "title": "Speed and concentration against isolated cruisers",
       "kind": "notable_point",
       "start": "13:23",
-      "end": "16:27",
+      "end": "16:26",
       "topics": ["fleet-tactics", "battlecruisers", "cruisers", "naval-speed"],
       "summary": "A concentrated battlecruiser-and-destroyer force illustrates how badly isolated cruisers fare when outnumbered and outrun.",
       "body": "The game encounter emphasizes force concentration rather than a balanced duel. Six battlecruisers, another heavy ship, and a destroyer screen close on a single cruiser. Their speed margin prevents the target from choosing the terms of contact or escaping once found. It is a watch point on the tactical value of pairing fast heavy ships with smaller escorts and applying overwhelming local strength.",
       "sourcePath": "src/transcripts/txt/2023-08-07_T18-00-32_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-3_p8GT541ihzg.txt",
-      "evidence": [{"start": "13:23", "end": "16:27", "note": "The opposing cruiser faces six battlecruisers, another battlecruiser, and destroyers; Dr. Clarke compares the odds to roughly twenty to one."}]
+      "evidence": [{"start": "13:23", "end": "16:26", "note": "The opposing cruiser faces six battlecruisers, another battlecruiser, and destroyers; Dr. Clarke compares the odds to roughly twenty to one."}]
+    },
+    {
+      "id": "grouping-fast-battlecruisers-against-a-battleship",
+      "videoId": "p8GT541ihzg",
+      "slug": "grouping-fast-battlecruisers-against-a-battleship",
+      "title": "Grouping fast battlecruisers against a battleship",
+      "kind": "notable_point",
+      "start": "19:07",
+      "end": "26:47",
+      "topics": ["battlecruisers", "fleet-tactics", "force-concentration", "naval-speed", "naval-gunnery"],
+      "summary": "Against a battleship, six battlecruisers are reorganized into two groups of three so speed and concentrated fire can be applied without one unwieldy formation.",
+      "body": "Faced with an enemy battleship rather than another isolated cruiser, Dr. Clarke changes how he divides the force. He forms two groups of three battlecruisers instead of three pairs and gives Renown a destroyer escort. The arrangement keeps several heavy ships together while preserving the ability to approach from more than one direction. Because the opposing battleship is limited to about 19.6 knots, the scenario shows how faster capital ships can choose the geometry of an engagement and concentrate their fire.",
+      "sourcePath": "src/transcripts/txt/2023-08-07_T18-00-32_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-3_p8GT541ihzg.txt",
+      "evidence": [
+        {"start": "19:07", "end": "22:03", "note": "He responds to an enemy battleship by dividing six battlecruisers into two groups of three and assigning Renown a destroyer escort."},
+        {"start": "26:31", "end": "26:47", "note": "The opposing battleship's 19.6-knot speed leaves the faster battlecruisers able to dictate the engagement."}
+      ]
     },
     {
       "id": "battle-line-gunnery-and-formation",
@@ -88,18 +105,32 @@
       "evidence": [{"start": "54:30", "end": "57:31", "note": "He assembles a home-defence fleet and reports eighty E-class submarines in service."}]
     },
     {
+      "id": "selective-retirement-and-retained-battlecruisers",
+      "videoId": "p8GT541ihzg",
+      "slug": "selective-retirement-and-retained-battlecruisers",
+      "title": "Scrapping obsolete craft while retaining useful battlecruisers",
+      "kind": "notable_point",
+      "start": "57:51",
+      "end": "59:21",
+      "topics": ["naval-procurement", "warship-modernization", "force-structure", "battlecruisers"],
+      "summary": "A fleet review distinguishes obsolete small craft from older battlecruisers that remain capable enough to justify retention.",
+      "body": "Dr. Clarke sorts the fleet by age and immediately scraps obsolete torpedo boats and other small craft. He does not apply the same rule mechanically to the 1902 battlecruisers, because several have already been modernized and still fill useful roles. The passage distinguishes chronological age from practical obsolescence: a hull is retained when its capabilities and task still justify the cost. It is a concise watch point on selective retirement while newer construction is still catching up with fleet demand.",
+      "sourcePath": "src/transcripts/txt/2023-08-07_T18-00-32_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-3_p8GT541ihzg.txt",
+      "evidence": [{"start": "57:51", "end": "59:21", "note": "He scraps old torpedo boats and small craft but retains modernized battlecruisers from 1902 because they remain useful."}]
+    },
+    {
       "id": "refitting-old-capital-ships-for-tonnage",
       "videoId": "p8GT541ihzg",
       "slug": "refitting-old-capital-ships-for-tonnage",
       "title": "Why refit older capital ships?",
       "kind": "notable_point",
-      "start": "57:51",
-      "end": "1:09:10",
+      "start": "1:00:57",
+      "end": "1:08:52",
       "topics": ["warship-modernization", "capital-ships", "force-structure", "naval-procurement"],
       "summary": "Older battlecruisers and battleships remain useful when refits preserve the tonnage needed for battles and invasions.",
-      "body": "Rather than discard older hulls automatically, Dr. Clarke keeps and refits ships that can still contribute to an operation. He scraps obsolete small craft but judges the older battlecruisers and battleships by whether they can still perform a useful task. A fleet may need raw tonnage to qualify for an invasion or battle even when those ships are not its most valuable units. Improved guns and selective upgrades preserve that capacity without demanding entirely new construction or risking first-line vessels merely to satisfy a tonnage requirement.",
+      "body": "Dr. Clarke argues that older capital ships can be more useful refitted and retained until their role disappears. An upgraded 13.5-inch battery can keep a ship relevant, while its hull supplies the raw tonnage that campaign invasions and battles require. He accepts that such ships need not be first-line units; they only have to be capable enough to contribute without making their loss strategically painful. The refit therefore limits speed, armour, and expense instead of trying to turn an old battleship into a new design.",
       "sourcePath": "src/transcripts/txt/2023-08-07_T18-00-32_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-3_p8GT541ihzg.txt",
-      "evidence": [{"start": "57:51", "end": "1:09:10", "note": "He scraps obsolete small craft but retains older battlecruisers and explains refits as a way to provide needed operational tonnage."}]
+      "evidence": [{"start": "1:00:57", "end": "1:08:52", "note": "He explains that upgraded older ships provide required operational tonnage, then limits the refit's speed, armour, and cost while making the battleships useful again."}]
     },
     {
       "id": "armour-speed-and-big-guns-in-design",
@@ -109,25 +140,11 @@
       "kind": "chapter",
       "start": "1:10:49",
       "end": "1:14:49",
-      "topics": ["ship-design", "battlecruisers", "battleships", "naval-gunnery", "naval-armour"],
+      "topics": ["ship-design", "battlecruisers", "battleships", "naval-gunnery", "naval-armour", "16-5-inch-guns", "15-inch-guns"],
       "summary": "Two campaign designs explore the trade-offs and attractions of high speed, heavy armour, and exceptionally large broadsides.",
       "body": "The King Edward VII design combines 16.5-inch guns, a 17.3-inch belt, and 30 knots, illustrating the appeal of a fast, heavily protected capital ship. Dr. Clarke presents it as a vessel intended to shock any opponent that encounters it. A second design pursues a fifteen-gun main broadside, heavy secondary fire, and twelve-inch belt protection across the ship. The discussion shows how the game turns the familiar triangle of firepower, protection, and speed into a concrete design choice while keeping the extreme specifications clearly within the campaign scenario.",
       "sourcePath": "src/transcripts/txt/2023-08-07_T18-00-32_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-3_p8GT541ihzg.txt",
       "evidence": [{"start": "1:10:49", "end": "1:14:49", "note": "He details the guns, belt armour, speed, and intended shock effect of two new capital-ship designs."}]
-    },
-    {
-      "id": "torpedo-threat-and-destroyer-screening",
-      "videoId": "p8GT541ihzg",
-      "slug": "torpedo-threat-and-destroyer-screening",
-      "title": "Torpedo threats and destroyer screening",
-      "kind": "notable_point",
-      "start": "1:19:59",
-      "end": "1:29:26",
-      "topics": ["destroyers", "torpedoes", "fleet-screening", "battlecruisers"],
-      "summary": "A close action shows why screens matter: destroyers make torpedo runs while fast capital ships exploit damaged arcs and speed.",
-      "body": "Dr. Clarke checks whether his screen is actually between the heavy ship and danger, then notes that the formation also sends destroyers on torpedo runs. His battlecruiser maneuvers toward the enemy's more damaged side rather than seeking a symmetrical exchange. He is willing to cross an enemy torpedo track because he judges the launch ineffective, showing that screening decisions depend on the threat's actual quality as well as its presence. The action also reveals a limitation of his own force: poor torpedo technology weakens destroyer effectiveness even when the tactical opportunity exists.",
-      "sourcePath": "src/transcripts/txt/2023-08-07_T18-00-32_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-3_p8GT541ihzg.txt",
-      "evidence": [{"start": "1:19:59", "end": "1:29:26", "note": "The battle discusses screening, enemy torpedo attacks, firing on the weaker side, and inadequate torpedo technology."}]
     },
     {
       "id": "battlecruisers-for-global-deployment",
@@ -142,6 +159,20 @@
       "body": "Dr. Clarke steps outside the immediate action to explain the strategic logic behind his campaign fleet. Because most fighting occurs around the wider world rather than in the North Sea, he chooses battlecruisers as the principal mobile heavy force. Their speed and capital-ship firepower suit hunting, reinforcement, and concentration across dispersed theatres in the game's alternate history. The passage is useful for understanding that a warship type's value depends on the geography and missions a navy expects, not only on one standard battle-line comparison.",
       "sourcePath": "src/transcripts/txt/2023-08-07_T18-00-32_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-3_p8GT541ihzg.txt",
       "evidence": [{"start": "1:21:19", "end": "1:21:40", "note": "He says the campaign war is being fought outside the North Sea and identifies battlecruisers as his resulting construction choice."}]
+    },
+    {
+      "id": "torpedo-threat-and-destroyer-screening",
+      "videoId": "p8GT541ihzg",
+      "slug": "torpedo-threat-and-destroyer-screening",
+      "title": "Torpedo threats and destroyer screening",
+      "kind": "notable_point",
+      "start": "1:22:02",
+      "end": "1:29:26",
+      "topics": ["destroyers", "torpedoes", "fleet-screening", "battlecruisers"],
+      "summary": "A close action shows destroyers making torpedo runs while a fast battlecruiser exploits damaged arcs and judges an enemy launch by its actual geometry.",
+      "body": "Dr. Clarke treats the enemy torpedo launch as a threat to evaluate rather than a reason to break off automatically. He maneuvers Furious toward the opponent's more damaged side, denying a symmetrical exchange and keeping his best firing position. The destroyer screen also makes torpedo runs, but his own poor torpedo technology limits how much those attacks can achieve. By steering inside an ineffective enemy track, the action shows that torpedo tactics depend on range, geometry, weapon quality, and the condition of the ships involved.",
+      "sourcePath": "src/transcripts/txt/2023-08-07_T18-00-32_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-3_p8GT541ihzg.txt",
+      "evidence": [{"start": "1:22:02", "end": "1:29:26", "note": "The battle covers enemy and destroyer torpedo runs, an approach on the opponent's more damaged side, inadequate British torpedo technology, and a turn inside an ineffective torpedo track."}]
     },
     {
       "id": "fog-formation-and-battlecruiser-scouting",
@@ -179,11 +210,25 @@
       "kind": "notable_point",
       "start": "1:48:21",
       "end": "1:48:49",
-      "topics": ["dreadnoughts", "secondary-batteries", "destroyers", "torpedo-boats"],
+      "topics": ["dreadnoughts", "hms-dreadnought", "secondary-batteries", "3-inch-guns", "destroyers", "torpedo-boats"],
       "summary": "Dr. Clarke explains that rapid-fire secondary guns remain necessary to counter destroyers and torpedo boats.",
       "body": "The game prompt leads to a useful corrective about the all-big-gun battleship. Even HMS Dreadnought retained smaller weapons because destroyers and torpedo boats demanded a faster-firing answer. Dr. Clarke therefore treats the phrase \"all-big-gun\" as advertising shorthand rather than a literal description of every weapon aboard. The segment is a concise reminder that a capital ship's main battery did not replace the need for close-range defence against small, fast attackers.",
       "sourcePath": "src/transcripts/txt/2023-08-07_T18-00-32_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-3_p8GT541ihzg.txt",
       "evidence": [{"start": "1:48:21", "end": "1:48:49", "note": "He cites Dreadnought's smaller guns as protection against destroyers and torpedo boats."}]
+    },
+    {
+      "id": "choosing-indian-ocean-objectives-against-japan",
+      "videoId": "p8GT541ihzg",
+      "slug": "choosing-indian-ocean-objectives-against-japan",
+      "title": "Choosing Indian Ocean objectives against Japan",
+      "kind": "notable_point",
+      "start": "1:57:14",
+      "end": "2:00:00",
+      "topics": ["naval-strategy", "indian-ocean", "japanese-navy", "force-projection"],
+      "summary": "Arabia, Madagascar, and northern Japan are compared as objectives according to the access and regional control they would provide.",
+      "body": "Before moving ships, Dr. Clarke asks which Japanese-held territories would change the campaign's strategic geography. Arabia and Madagascar matter because taking them would remove Japanese positions from the Indian Ocean, while northern Japan offers a larger and more direct objective. The choices are explicitly part of the game's alternate history, yet the reasoning mirrors a real planning problem: objectives are valuable for the access and control they provide, not merely for adding territory. This moment shows political geography being translated into naval priorities before forces are committed.",
+      "sourcePath": "src/transcripts/txt/2023-08-07_T18-00-32_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-3_p8GT541ihzg.txt",
+      "evidence": [{"start": "1:57:14", "end": "2:00:00", "note": "He compares Japanese-held objectives, identifies Arabia and Madagascar as positions to clear from the Indian Ocean, and considers an invasion of Japan itself."}]
     },
     {
       "id": "concentrating-a-fleet-for-northern-japan",
@@ -191,13 +236,13 @@
       "slug": "concentrating-a-fleet-for-northern-japan",
       "title": "Concentrating forces before a northern Japan campaign",
       "kind": "chapter",
-      "start": "1:57:14",
-      "end": "2:12:26",
+      "start": "2:00:21",
+      "end": "2:05:14",
       "topics": ["naval-strategy", "force-concentration", "submarines", "battlecruisers", "japanese-navy"],
-      "summary": "The campaign shifts to the Indian Ocean and northern Japan, where dispersed fleets must be concentrated before conquest is practical.",
-      "body": "Dr. Clarke identifies Japanese colonies and northern Japan as possible objectives, then searches the map for fleets that can be repositioned. He draws capital ships, destroyers, and submarines from several regions while acknowledging that some theatres contain fewer forces than expected. The growing concentration is intended to make an invasion possible and to absorb the losses or repairs generated by continuing engagements. By the time 640,000 tons are assembled, the point is clear: distant operations depend on gathering enough combat power and support before seeking decisive action.",
+      "summary": "Battleships, battlecruisers, destroyers, and submarines are drawn from dispersed stations before an attack on northern Japan becomes practical.",
+      "body": "Dr. Clarke begins moving battleships, battlecruisers, destroyers, and submarines from several regions toward the prospective Japanese campaign. Some stations contain fewer ships than he remembered, so the plan has to be rebuilt from the forces actually available. He contrasts other powers moving thousands of tons with Britain moving millions, then aims to put enough shipping in the area to make an attack on northern Japan feasible. The sequence shows that a distant objective becomes credible only after dispersed forces are gathered into a sustainable local concentration.",
       "sourcePath": "src/transcripts/txt/2023-08-07_T18-00-32_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-3_p8GT541ihzg.txt",
-      "evidence": [{"start": "1:57:14", "end": "2:12:26", "note": "He plans operations against Japanese possessions, gathers ships from multiple regions, and reports concentrating 640,000 tons."}]
+      "evidence": [{"start": "2:00:21", "end": "2:05:14", "note": "He transfers multiple ship types from scattered stations, describes moving millions of tons, and plans enough local strength to attack northern Japan."}]
     },
     {
       "id": "shipyard-capacity-and-asw-research",
@@ -207,7 +252,7 @@
       "kind": "notable_point",
       "start": "2:08:25",
       "end": "2:10:21",
-      "topics": ["naval-procurement", "shipbuilding", "naval-economics", "anti-submarine-warfare", "naval-technology"],
+      "topics": ["naval-procurement", "shipbuilding", "naval-industrial-base", "naval-economics", "anti-submarine-warfare", "naval-technology"],
       "summary": "An overloaded construction program forces attention to industrial capacity and research priorities, including anti-submarine warfare.",
       "body": "Dr. Clarke describes himself as creating both the supply and demand for new warships, then notes that campaign shipbuilding capacity is completely overwhelmed. The fleet may have growing funds and many designs on order, but industrial throughput still limits how quickly those plans become usable ships. He responds by investing in capacity-related technology and chooses an anti-submarine warfare improvement because he has identified a weakness there. The watch point connects procurement ambition to dockyard bottlenecks and shows research priorities following an operational shortfall rather than technology being pursued in isolation.",
       "sourcePath": "src/transcripts/txt/2023-08-07_T18-00-32_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-3_p8GT541ihzg.txt",
@@ -226,6 +271,20 @@
       "body": "After concentrating against Japan, Dr. Clarke explains why he can accept risk elsewhere in the campaign. The alliance with France allows him to give Germany less immediate attention because French military strength is being maintained. That political relationship effectively substitutes allied capacity for forces Britain would otherwise need to hold back. The scenario offers a useful illustration of alliances as force-structure tools that redistribute risk and permit concentration in a chosen theatre.",
       "sourcePath": "src/transcripts/txt/2023-08-07_T18-00-32_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-3_p8GT541ihzg.txt",
       "evidence": [{"start": "2:12:18", "end": "2:12:38", "note": "He says the French alliance lets him ignore Germany for the moment because France is investing in its military."}]
+    },
+    {
+      "id": "reinforcing-a-distant-fleet-after-attrition",
+      "videoId": "p8GT541ihzg",
+      "slug": "reinforcing-a-distant-fleet-after-attrition",
+      "title": "Reinforcing a distant fleet after attrition",
+      "kind": "notable_point",
+      "start": "2:15:46",
+      "end": "2:20:19",
+      "topics": ["naval-logistics", "fleet-readiness", "force-structure", "destroyers", "battlecruisers", "indian-ocean"],
+      "summary": "Repairs and losses force destroyers and battlecruisers to be pulled from Malacca, Cuba, and other stations to sustain the Japanese campaign.",
+      "body": "After the first engagements, Dr. Clarke finds much of the forward force refitting or repairing and starts searching the wider map for replacements. Destroyers are sent from Malacca, while battlecruisers are drawn from other stations, including Cuba. The transfers show that winning battles does not end the operational problem: damaged units create an immediate demand for fresh hulls and escorts. In the campaign's alternate geography, reinforcing one theatre also thins forces elsewhere, making global fleet distribution part of the cost of sustained operations.",
+      "sourcePath": "src/transcripts/txt/2023-08-07_T18-00-32_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-3_p8GT541ihzg.txt",
+      "evidence": [{"start": "2:15:46", "end": "2:20:19", "note": "With much of the forward fleet refitting or repairing, he sends destroyers from Malacca and moves battlecruisers from Cuba and other stations to reinforce the theatre."}]
     }
   ]
 }

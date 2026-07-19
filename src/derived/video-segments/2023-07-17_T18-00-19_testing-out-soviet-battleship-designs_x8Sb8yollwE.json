@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "videoId": "x8Sb8yollwE",
-  "topics": ["soviet-navy", "battleship-design", "naval-gunnery", "naval-procurement", "royal-navy", "alternate-history"],
+  "topics": ["soviet-navy", "battleship-design", "naval-gunnery", "naval-procurement", "royal-navy", "alternate-history", "naval-wargaming"],
   "segments": [
     {
       "id": "soviet-battleship-design-in-a-1935-scenario",
@@ -11,7 +11,7 @@
       "kind": "chapter",
       "start": "2:44",
       "end": "19:11",
-      "topics": ["soviet-navy", "battleship-design", "alternate-history", "naval-procurement"],
+      "topics": ["soviet-navy", "battleship-design", "alternate-history", "naval-procurement", "naval-wargaming", "16-inch-guns"],
       "summary": "The design exercise asks what a Soviet battleship programme might have produced by 1935, using imported ideas and a hull constrained by the available simulated parts.",
       "body": "Dr. Clarke begins with a Soviet-versus-German scenario and tries to make the simulated ship resemble the interwar Soviet naval programme rather than an idealised super-battleship. The exercise exposes how hull form, turret placement, propulsion, armour, and foreign technical assistance constrain a credible design. He selects nine 16-inch guns, geared turbines, mixed secondary weapons, and a roughly 30-knot target while repeatedly adjusting the hull to keep the arrangement workable. His first attempt also shows the limits of using a game’s available parts to represent a historically distinctive Soviet superstructure. The result is therefore a historically informed design exercise, not a claim that this exact ship was planned or built.",
       "sourcePath": "src/transcripts/txt/2023-07-17_T18-00-19_testing-out-soviet-battleship-designs_x8Sb8yollwE.txt",
@@ -29,15 +29,37 @@
       ]
     },
     {
+      "id": "soviet-battleship-superstructure-modeling-limits",
+      "videoId": "x8Sb8yollwE",
+      "slug": "soviet-battleship-superstructure-modeling-limits",
+      "title": "Why the first Soviet silhouette looks wrong",
+      "kind": "notable_point",
+      "start": "19:23",
+      "end": "21:14",
+      "topics": ["soviet-navy", "battleship-design", "naval-architecture", "naval-wargaming", "alternate-history"],
+      "summary": "The first test exposes a modelling limit: the available Soviet hull produces a German-looking silhouette when an Italian-style superstructure would better fit the counterfactual.",
+      "body": "During the first battle view, the available Soviet hull reveals a German-looking superstructure. Dr. Clarke says this would be inappropriate for the vessel he is imagining and that a more Italian-style form would suit a 1935 design. The comment separates the underlying capital-ship concept from the nationality of the game's visual parts. It also cautions viewers not to treat the on-screen silhouette as a reconstruction of an actual Soviet proposal.",
+      "sourcePath": "src/transcripts/txt/2023-07-17_T18-00-19_testing-out-soviet-battleship-designs_x8Sb8yollwE.txt",
+      "evidence": [
+        {
+          "start": "19:23",
+          "end": "21:14",
+          "note": "He calls the displayed German-inspired superstructure inappropriate and says a more Italian-style shape would better suit the 1935 vessel."
+        }
+      ]
+    },
+    {
       "id": "soviet-nco-institutional-memory",
       "videoId": "x8Sb8yollwE",
       "slug": "soviet-nco-institutional-memory",
       "title": "Why Soviet naval NCOs mattered",
-      "kind": "notable_point",
+      "kind": "qa",
       "start": "25:06",
       "end": "25:53",
       "topics": ["soviet-navy", "naval-personnel", "institutional-memory"],
       "summary": "A brief aside links Soviet naval effectiveness to professional NCOs who retained practical experience below a frequently changing leadership.",
+      "question": "Why should the simulated Soviet crew not simply be rated as recruits?",
+      "answerShort": "Because the Soviet Navy retained professional non-commissioned officers in its lower and middle ranks, preserving practical experience despite high turnover at the top.",
       "body": "In answering why the simulated Soviet crews should not simply be treated as recruits, Dr. Clarke distinguishes senior-level turnover from continuity in lower and middle ranks. He argues that the navy retained an unusually professional non-commissioned officer cadre compared with other parts of the Soviet armed forces. In his account, those NCOs preserved practical knowledge even when senior leadership changed. That continuity helps explain why the Soviet Navy cannot be assessed only through purges, admirals, or platform counts. The passage is a compact lesson in how personnel systems and institutional memory can matter as much as a fleet’s headline equipment.",
       "sourcePath": "src/transcripts/txt/2023-07-17_T18-00-19_testing-out-soviet-battleship-designs_x8Sb8yollwE.txt",
       "evidence": [
@@ -49,6 +71,36 @@
       ]
     },
     {
+      "id": "rebuilding-soviet-battleship-around-1930-constraints",
+      "videoId": "x8Sb8yollwE",
+      "slug": "rebuilding-soviet-battleship-around-1930-constraints",
+      "title": "Rebuilding the Soviet battleship around 1930 constraints",
+      "kind": "chapter",
+      "start": "30:07",
+      "end": "39:33",
+      "topics": ["soviet-navy", "battleship-design", "naval-procurement", "naval-wargaming", "naval-armour", "naval-gunnery", "torpedoes", "16-inch-guns", "11-inch-guns", "alternate-history"],
+      "summary": "A second build starts from a 1930 programme and combines a 31-knot target, imported protection, mixed secondaries, torpedoes, and contemporary ammunition and mounting choices.",
+      "body": "Dr. Clarke restarts the Soviet design as a 1930 programme and aims for about 31 knots rather than accepting the first build's compromises. He assumes foreign help with armour and protection technology, then retains the mixed six-inch and four-inch secondary battery and quad torpedo launchers. Electro-hydraulic mountings, a larger shell allowance, heavy shells, and Cordite No. 2 give the ship a coherent interwar equipment fit within the simulation. The exercise repeatedly balances these choices against displacement and fore-and-aft weight. He then builds a stronger German comparison ship with twelve 11-inch guns, making the ensuing battle a test between deliberately constructed counterfactuals rather than historical classes. The sequence shows how speed, protection, weapons, imported technology, and displacement must be reconciled within a capital-ship design.",
+      "sourcePath": "src/transcripts/txt/2023-07-17_T18-00-19_testing-out-soviet-battleship-designs_x8Sb8yollwE.txt",
+      "evidence": [
+        {
+          "start": "30:07",
+          "end": "30:56",
+          "note": "He restarts with a 1930 design, sets a roughly 31-knot target, and assumes imported armour and protection technology."
+        },
+        {
+          "start": "32:26",
+          "end": "34:33",
+          "note": "He selects mixed six-inch and four-inch secondaries, quad torpedoes, electro-hydraulic mountings, more and heavier shells, and Cordite No. 2."
+        },
+        {
+          "start": "38:37",
+          "end": "39:33",
+          "note": "He makes the German comparison ship stronger than the Deutschland or Scharnhorst classes and gives it twelve 11-inch guns."
+        }
+      ]
+    },
+    {
       "id": "realistic-soviet-battleship-scale",
       "videoId": "x8Sb8yollwE",
       "slug": "realistic-soviet-battleship-scale",
@@ -56,7 +108,7 @@
       "kind": "notable_point",
       "start": "40:23",
       "end": "41:25",
-      "topics": ["soviet-navy", "battleship-design", "naval-procurement", "world-war-ii"],
+      "topics": ["soviet-navy", "battleship-design", "naval-procurement", "world-war-ii", "16-inch-guns", "industrial-capacity", "foreign-military-assistance"],
       "summary": "The completed design becomes a way to separate Soviet paper ambitions from the smaller number of capital ships industry might plausibly have delivered.",
       "body": "The simulated Soviet ship carries nine 16-inch guns, substantial secondary armament, torpedoes, and a broad defensive fit. Dr. Clarke treats it as an all-round capital ship rather than an unconstrained super-battleship. He argues that a programme begun in 1930 might plausibly have delivered two or three such ships by the Second World War with British and Italian support, rather than the twenty ships Soviet planning envisaged. Foreign assistance remains part of the feasibility case because the domestic programme would need imported design and industrial knowledge. The contrast turns a design sketch into a question of industrial capacity, technical imports, and realistic procurement scale.",
       "sourcePath": "src/transcripts/txt/2023-07-17_T18-00-19_testing-out-soviet-battleship-designs_x8Sb8yollwE.txt",
@@ -76,7 +128,7 @@
       "kind": "notable_point",
       "start": "42:00",
       "end": "44:08",
-      "topics": ["scharnhorst-class", "german-navy", "battleships", "battlecruisers", "naval-gunnery"],
+      "topics": ["scharnhorst-class", "german-navy", "battleships", "battlecruisers", "naval-gunnery", "11-inch-guns", "warship-classification"],
       "summary": "Gun calibre and speed do not settle a ship’s classification: the Scharnhorsts were built as fast battleships within German industrial limits.",
       "body": "Dr. Clarke rejects the common shortcut of calling Scharnhorst and Gneisenau battlecruisers because of their speed and 11-inch armament. He notes that broadside gun count is not a reliable dividing line, since some battlecruisers mounted more guns than some battleships. Classification should instead begin with what the ships were designed to be and the role their builders intended. In his account, the Scharnhorsts were fast battleships built while Germany’s maritime industry was still recovering. Their 11-inch battery reflected the largest weapon Germany could then build and sustain, not a deliberate decision to create a lesser battlecruiser type.",
       "sourcePath": "src/transcripts/txt/2023-07-17_T18-00-19_testing-out-soviet-battleship-designs_x8Sb8yollwE.txt",
@@ -95,16 +147,16 @@
       "title": "How Soviet 16-inch ships could alter British calibre politics",
       "kind": "notable_point",
       "start": "44:21",
-      "end": "45:37",
-      "topics": ["soviet-navy", "royal-navy", "naval-gunnery", "naval-procurement", "king-george-v-class", "alternate-history"],
+      "end": "45:02",
+      "topics": ["soviet-navy", "royal-navy", "naval-gunnery", "naval-procurement", "king-george-v-class", "alternate-history", "14-inch-guns", "15-inch-guns", "16-inch-guns"],
       "summary": "A Soviet 16-inch programme could have weakened the political case for Britain’s 14-inch King George V armament and made a new 15-inch gun the compromise choice.",
-      "body": "Dr. Clarke links the Soviet counterfactual to British interwar armament politics. If the Soviet Union had visibly begun building 16-inch battleships, he argues, advocates of Britain’s 14-inch King George V design would have faced a harder case. A new 16-inch British programme was one possible response, but he considers a modern 15-inch weapon a plausible compromise for politicians seeking restraint. That compromise could still have produced a nine-gun King George V arrangement with substantially greater individual shell power than the historical battery. The watch point shows how another navy’s construction programme could reshape domestic procurement arguments before any battle occurred.",
+      "body": "Dr. Clarke links the Soviet counterfactual to British interwar armament politics. If the Soviet Union had visibly begun building 16-inch battleships, he argues, advocates of Britain’s 14-inch King George V design would have faced a harder case. A new 16-inch British programme was one possible response, but he considers a modern 15-inch weapon a plausible compromise for politicians seeking restraint. The watch point shows how another navy’s construction programme could reshape domestic procurement arguments before any battle occurred.",
       "sourcePath": "src/transcripts/txt/2023-07-17_T18-00-19_testing-out-soviet-battleship-designs_x8Sb8yollwE.txt",
       "evidence": [
         {
           "start": "44:21",
-          "end": "45:11",
-          "note": "He argues that Soviet 16-inch construction would weaken the British 14-inch case and could make a nine-gun 15-inch King George V a political compromise."
+          "end": "45:02",
+          "note": "He argues that Soviet 16-inch construction would weaken the British 14-inch case and could make a new 15-inch gun the political compromise."
         }
       ]
     },
@@ -116,9 +168,9 @@
       "kind": "notable_point",
       "start": "45:03",
       "end": "47:28",
-      "topics": ["royal-navy", "naval-gunnery", "naval-procurement", "king-george-v-class", "queen-elizabeth-class-battleships", "renown-class", "hms-hood", "alternate-history"],
+      "topics": ["royal-navy", "naval-gunnery", "naval-procurement", "king-george-v-class", "queen-elizabeth-class-battleships", "renown-class", "hms-hood", "alternate-history", "15-inch-guns"],
       "summary": "The hypothetical gun is treated as a fleet-wide development programme that could influence new construction, older capital-ship upgrades, ammunition, and turret reliability.",
-      "body": "Dr. Clarke expands the 15-inch counterfactual beyond a single new battleship class. He suggests that the same development programme might have supported upgrades to Renown, Repulse, Hood, and the Queen Elizabeth class, while even ships retaining older guns could benefit from improved shells. He expects the weapon to evolve toward a longer 15-inch/52 design with useful Second World War range and striking power. Existing British experience with large triple turrets could also reduce the mechanical risks that affected the historical King George V mountings. In this account, calibre choice becomes a fleet-wide industrial and modernisation policy rather than a specification for one class alone.",
+      "body": "Dr. Clarke begins with a nine-gun 15-inch King George V arrangement, then expands the counterfactual beyond a single new battleship class. He suggests that the same development programme might have supported upgrades to Renown, Repulse, Hood, and the Queen Elizabeth class, while even ships retaining older guns could benefit from improved shells. He expects the weapon to evolve toward a longer 15-inch/52 design with useful Second World War range and striking power. Existing British experience with large triple turrets could also reduce the mechanical risks that affected the historical King George V mountings. In this account, calibre choice becomes a fleet-wide industrial and modernisation policy rather than a specification for one class alone.",
       "sourcePath": "src/transcripts/txt/2023-07-17_T18-00-19_testing-out-soviet-battleship-designs_x8Sb8yollwE.txt",
       "evidence": [
         {
@@ -141,9 +193,9 @@
       "kind": "chapter",
       "start": "47:38",
       "end": "1:05:25",
-      "topics": ["royal-navy", "king-george-v-class", "naval-gunnery", "battleship-design", "world-war-ii"],
+      "topics": ["royal-navy", "king-george-v-class", "naval-gunnery", "battleship-design", "world-war-ii", "15-inch-guns", "11-inch-guns", "naval-wargaming"],
       "summary": "The second design test turns the proposed Royal Navy 15-inch gun into a simulated capital ship and compares it with a German opponent.",
-      "body": "After outlining the procurement case, Dr. Clarke builds a Royal Navy ship around a hypothetical 15-inch/52 weapon rather than the historical 14-inch battery. He gives the design nine large guns, roughly 28-knot speed, substantial armour, and contemporary British machinery and fire-control assumptions. Its German opponent carries twelve 11-inch guns, creating a comparison between heavier individual shells and a larger broadside. The exercise frames calibre choice through range, shell performance, production maturity, speed, armour, and turret arrangement. The simulated battle illustrates his preference, but it is scenario evidence rather than proof of how a real design would have performed.",
+      "body": "After outlining the procurement case, Dr. Clarke builds a Royal Navy ship around a hypothetical 15-inch/52 weapon rather than the historical 14-inch battery. He gives the design nine large guns, roughly 28-knot speed, substantial armour, and contemporary British machinery and fire-control assumptions. Oil-fired geared turbines, 4.5-inch secondaries, updated shells, British metallurgy, and layered belt protection fill out the simulated equipment fit. Its German opponent carries twelve 11-inch guns, creating a comparison between heavier individual shells and a larger broadside. The exercise frames calibre choice through range, shell performance, production maturity, speed, armour, and turret arrangement. The simulated battle illustrates his preference, but it is scenario evidence rather than proof of how a real design would have performed.",
       "sourcePath": "src/transcripts/txt/2023-07-17_T18-00-19_testing-out-soviet-battleship-designs_x8Sb8yollwE.txt",
       "evidence": [
         {
