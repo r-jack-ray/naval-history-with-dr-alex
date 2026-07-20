@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import {
   getVideoPaths,
   segmentsForVideo,
@@ -39,6 +40,10 @@ const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${c
   </Fragment>
 
   <main id="content" class="video-page" data-pagefind-body>
+    <Breadcrumbs items={[
+      { name: "Video Guides", path: "videos/" },
+      { name: video.title, path: `videos/${video.slug}/` },
+    ]} />
     <section class="video-hero">
       <div class="video-hero-copy">
         <p class="eyebrow">Video</p>

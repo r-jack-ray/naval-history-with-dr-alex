@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import {
   findVideoById,
   getTopicPaths,
@@ -42,6 +43,10 @@ const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${c
   </Fragment>
 
   <main id="content" class="page-shell" data-pagefind-body>
+    <Breadcrumbs items={[
+      { name: "Topics", path: "topics/" },
+      { name: topic.title, path: `topics/${topic.slug}/` },
+    ]} />
     <section class="section-heading">
       <p class="eyebrow">Topic</p>
       <h1>{topic.title}</h1>

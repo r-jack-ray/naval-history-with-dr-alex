@@ -30,6 +30,7 @@ jobs:
       - run: npm ci
       - run: npm run site:check
       - run: npm run site:build
+      - run: npm run check:site-seo
       - uses: actions/upload-pages-artifact@v4
         with:
           path: site/dist

@@ -2,6 +2,7 @@
 import "../styles/site.css";
 import themeInteractionUrl from "../scripts/theme-interaction.js?url&no-inline";
 import { pageIndexingForPathname } from "../data/page-indexing.js";
+import { canonicalUrlForPath } from "../../../src/site/site-urls.js";
 
 interface Props {
   title: string;
@@ -28,7 +29,7 @@ const indexing = pageIndexingForPathname(currentPath, baseUrl);
 if (Astro.site === undefined) {
   throw new Error("Astro site configuration is required to generate canonical URLs.");
 }
-const canonicalUrl = new URL(currentPath, Astro.site);
+const canonicalUrl = canonicalUrlForPath(Astro.site, currentPath);
 const sitemapUrl = new URL(`${baseUrl}sitemap-index.xml`, Astro.site);
 let socialImage: { url: string; alt: string } | undefined;
 if (socialImageUrl !== undefined) {

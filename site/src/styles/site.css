@@ -532,13 +532,29 @@ h1 {
 }
 
 .breadcrumb {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
   margin-bottom: 28px;
   color: var(--muted);
   font-size: 14px;
   font-weight: 700;
+}
+
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.breadcrumb li {
+  display: flex;
+  gap: 8px;
+}
+
+.breadcrumb li + li::before {
+  color: var(--muted);
+  content: "/";
 }
 
 .breadcrumb a {

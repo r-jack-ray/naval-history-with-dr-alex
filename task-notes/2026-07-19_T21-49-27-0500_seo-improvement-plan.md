@@ -362,6 +362,19 @@ For any implementation item:
 - A complete integration change should normally pass the relevant targeted test, `npm run site:check`, `npm run site:build`, and its rendered-output SEO checks.
 - After deployment, verify representative URLs, sitemap files, canonicals, robots metadata, structured data, Page Indexing, Video Indexing, and Core Web Vitals in the appropriate Google tools.
 
+## Maintenance contract for new episodes and future routes
+
+- SEO behavior must remain generator- and template-driven. Adding an episode, video guide, time note, or referenced topic must not require a separate manual SEO edit for that record.
+- Keep canonical URLs, indexing policy, social metadata, page metadata, sitemap eligibility, visible breadcrumbs, and structured breadcrumbs in shared helpers or components consumed by every applicable route family.
+- Every newly generated video and time-note detail route must automatically receive a unique nonempty title and description, one canonical, the appropriate social metadata, visible hierarchical breadcrumbs, and matching `BreadcrumbList` JSON-LD.
+- Sitemap generation must continue to discover all generated indexable routes, split them below protocol limits, and exclude Search, non-HTML endpoints, and unreferenced topics through the shared eligibility policies.
+- The rendered SEO validator must enumerate actual generated HTML and sitemap files rather than depend on a fixed episode or route list. New episodes therefore become required validation subjects on their first build.
+- Any new route family, indexing exception, structured-data type, pagination contract, or metadata field must update the shared contract, validator, and focused fixtures in the same change.
+- The deployment workflow must run the rendered SEO validator after the site build. Hard structural failures block deployment; advisory content or page-size opportunities remain clearly labeled warnings.
+- After material archive growth or route changes, rerun the representative Lighthouse baseline for Home, a Video page, a Time Note, a Topic page, and the largest directory type.
+- After each deployment that materially changes discovery, record Search Console sitemap processing and indexing changes. Refresh query/impression leaders, video indexing, and Core Web Vitals at least monthly while the archive is actively growing.
+- Keep the Google ownership verification artifact deployed. Do not add repository credentials or automate account actions.
+
 ## Authoritative references checked for this plan
 
 - [Google: build and submit a sitemap](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap)

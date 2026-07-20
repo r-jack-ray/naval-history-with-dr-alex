@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import {
   findVideoById,
   getSegmentPaths,
@@ -51,11 +52,11 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   </Fragment>
 
   <main id="content" class="segment-page" data-pagefind-body>
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <a href={`${baseUrl}segments/`}>Time Notes</a>
-      <span>/</span>
-      <a href={`${baseUrl}videos/${segment.videoSlug}/`}>{segment.videoTitle}</a>
-    </nav>
+    <Breadcrumbs items={[
+      { name: "Time Notes", path: "segments/" },
+      { name: segment.videoTitle, path: `videos/${segment.videoSlug}/` },
+      { name: segment.title, path: `segments/${segment.slug}/` },
+    ]} />
 
     <section class="section-heading">
       <p class="eyebrow">{segment.kindLabel} · {segment.start}{segment.end ? `-${segment.end}` : ""}</p>

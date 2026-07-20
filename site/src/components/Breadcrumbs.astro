@@ -1,0 +1,47 @@
+---
+import { siteUrlForRoute } from "../../../src/site/site-urls.js";
+import {
+  buildBreadcrumbListJsonLd,
+  serializeJsonLd,
+} from "../../../src/site/structured-data.js";
+
+interface BreadcrumbItem {
+  name: string;
+  path: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+}
+
+const site = Astro.site;
+if (site === undefined) {
+  throw new Error("Astro site configuration is required to generate breadcrumb URLs.");
+}
+const { items } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const breadcrumbItems = items.map((item) => ({
+  name: item.name,
+  href: siteUrlForRoute(site, baseUrl, item.path).href,
+}));
+const breadcrumbJsonLd = serializeJsonLd(buildBreadcrumbListJsonLd(
+  breadcrumbItems.map((item) => ({ name: item.name, url: item.href })),
+));
+---
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    {
+      breadcrumbItems.map((item, index) => (
+        <li>
+          {index < breadcrumbItems.length - 1
+            ? <a href={item.href}>{item.name}</a>
+            : <span aria-current="page">{item.name}</span>}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+<script type="application/ld+json" set:html={breadcrumbJsonLd} is:inline></script>
