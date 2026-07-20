@@ -13,20 +13,16 @@
     "check:types": "tsc --noEmit -p tsconfig.json",
     "test": "npm run clean && npm run build && node --test \"dist/**/*.test.js\"",
     "check": "npm run check:types && npm test",
-
     "list:files-that-need-processing": "tsx src/scripts/list-files-that-need-processing.ts",
     "rank:video-segment-audit-risk": "tsx src/scripts/rank-video-segment-audit-risk.ts",
-
     "audit:site-content": "node .codex/hooks/site-content-pipeline-lock.mjs run --purpose site-content-audit -- node --import tsx src/scripts/audit-site-content.ts",
     "diagnose:site-content-duplicates": "tsx src/scripts/diagnose-site-content-duplicates.ts",
     "sync:video-topics": "node .codex/hooks/site-content-pipeline-lock.mjs run --purpose video-topic-sync --recover-stale -- node --import tsx src/scripts/sync-video-topics.ts",
     "audit:topic-normalization": "tsx src/scripts/audit-topic-normalization.ts",
     "append:site-content-processing-log": "node .codex/hooks/site-content-pipeline-lock.mjs append-log",
-
     "audit:transcript-schedules": "tsx src/scripts/audit-transcript-schedules.ts",
     "audit:video-timestamp-alignment": "tsx src/scripts/audit-video-timestamp-alignment.ts",
     "report:transcript-problems": "tsx src/scripts/report-transcript-problems.ts",
-
     "fetch:video-links": "tsx src/scripts/get-channel-video-links.ts --api-key-file reports/youtube-api-key.txt",
     "fetch:video-metadata": "tsx src/scripts/fetch-video-metadata.ts --api-key-file reports/youtube-api-key.txt",
     "alternate:extract:saved-channel-html": "tsx src/scripts/extract-saved-channel-html.ts",
@@ -38,7 +34,6 @@
     "alternate:fetch:transcripts:safe": "tsx src/scripts/fetch-transcript-batch.ts --request-delay-ms 60000",
     "alternate:fetch:transcripts:retry": "npm run alternate:fetch:transcripts -- --retry-failed",
     "alternate:fetch:transcripts:retry:safe": "npm run alternate:fetch:transcripts -- --retry-failed --force --request-delay-ms 60000",
-
     "generate:site-data": "node .codex/hooks/site-content-pipeline-lock.mjs run --purpose site-archive-generation --recover-stale -- node --import tsx src/scripts/generate-site-data.ts",
     "site:dev": "astro dev",
     "site:preview": "astro preview",
@@ -49,8 +44,8 @@
     "site:build:astro": "astro build --silent",
     "site:build:pagefind": "pagefind --site site/dist",
     "site:build:full": "astro build --silent && pagefind --site site/dist",
+    "check:search-ranking": "tsx src/scripts/check-search-ranking.ts",
     "check:rendered-video-dates": "tsx src/scripts/check-rendered-video-dates.ts",
-
     "preaudit:lighthouse:home": "node -e \"require('fs').mkdirSync('reports/lighthouse', { recursive: true })\"",
     "audit:lighthouse:home": "lighthouse https://r-jack-ray.github.io/naval-history-with-dr-alex/ --output=html --output=json --output-path=reports/lighthouse/home --chrome-flags=\"--headless\"",
     "preaudit:lighthouse:local": "node -e \"require('fs').mkdirSync('reports/lighthouse', { recursive: true })\"",
@@ -62,6 +57,7 @@
     "astro": "^7.0.6",
     "lighthouse": "^13.4.0",
     "pagefind": "^1.5.2",
+    "puppeteer-core": "^25.3.0",
     "tsx": "^4.23.1",
     "typescript": "^5.7.0"
   },

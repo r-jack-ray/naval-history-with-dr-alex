@@ -1,0 +1,484 @@
+{
+  "schemaVersion": 1,
+  "cases": [
+    {
+      "stratum": "regression",
+      "query": "HMS Victory",
+      "queryKind": "unique-title",
+      "sourceTopicSlugs": [
+        "hms-victory",
+        "hms-victoria",
+        "hms-victorious"
+      ],
+      "expectedRankedUrls": [
+        {
+          "url": "/topics/hms-victory/",
+          "maxRank": 1
+        },
+        {
+          "url": "/segments/hms-victory-first-rate-institutional-product/",
+          "maxRank": 5
+        }
+      ],
+      "mustRankBefore": [
+        {
+          "better": "/topics/hms-victory/",
+          "worse": "/videos/hms-victoria-1887/"
+        },
+        {
+          "better": "/topics/hms-victory/",
+          "worse": "/segments/victorious-rebuild-found-accumulated-wartime-damage/"
+        },
+        {
+          "better": "/segments/hms-victory-first-rate-institutional-product/",
+          "worse": "/videos/hms-victoria-1887/"
+        },
+        {
+          "better": "/segments/hms-victory-first-rate-institutional-product/",
+          "worse": "/segments/victorious-rebuild-found-accumulated-wartime-damage/"
+        },
+        {
+          "better": "/videos/from-mary-rose-to-victory-how-and-why-construction-of-the-wooden-wall-changed-naval-history-live/",
+          "worse": "/videos/hms-victoria-1887/"
+        },
+        {
+          "better": "/videos/from-mary-rose-to-victory-how-and-why-construction-of-the-wooden-wall-changed-naval-history-live/",
+          "worse": "/segments/victorious-rebuild-found-accumulated-wartime-damage/"
+        }
+      ],
+      "reason": "The exact ship name must lead while Victoria and Victorious remain discoverable later."
+    },
+    {
+      "stratum": "unique-title",
+      "query": "Royal Navy",
+      "queryKind": "unique-title",
+      "sourceTopicSlugs": ["royal-navy"],
+      "expectedRankedUrls": [
+        {
+          "url": "/topics/royal-navy/",
+          "maxRank": 1
+        }
+      ],
+      "reason": "A unique canonical navy title should lead its broader subject results."
+    },
+    {
+      "stratum": "unique-title",
+      "query": "Anti-Submarine Warfare",
+      "queryKind": "unique-title",
+      "sourceTopicSlugs": ["anti-submarine-warfare"],
+      "expectedRankedUrls": [
+        {
+          "url": "/topics/anti-submarine-warfare/",
+          "maxRank": 1
+        }
+      ],
+      "reason": "A hyphenated canonical concept should resolve exactly after punctuation normalization."
+    },
+    {
+      "stratum": "unique-title",
+      "query": "Pre-Dreadnoughts",
+      "queryKind": "unique-title",
+      "sourceTopicSlugs": ["pre-dreadnoughts"],
+      "expectedRankedUrls": [
+        {
+          "url": "/topics/pre-dreadnoughts/",
+          "maxRank": 1
+        }
+      ],
+      "reason": "The exact hyphenated era label should lead morphology variants."
+    },
+    {
+      "stratum": "unique-title",
+      "query": "Battle of Tsushima",
+      "queryKind": "unique-title",
+      "sourceTopicSlugs": ["battle-of-tsushima"],
+      "expectedRankedUrls": [
+        {
+          "url": "/topics/battle-of-tsushima/",
+          "maxRank": 1
+        }
+      ],
+      "reason": "A unique battle title should lead pages that merely mention the battle."
+    },
+    {
+      "stratum": "unique-title",
+      "query": "Queen Elizabeth Class",
+      "queryKind": "unique-title",
+      "sourceTopicSlugs": ["queen-elizabeth-class"],
+      "expectedRankedUrls": [
+        {
+          "url": "/topics/queen-elizabeth-class/",
+          "maxRank": 1
+        }
+      ],
+      "reason": "A unique ship-class title should lead individual-ship references."
+    },
+    {
+      "stratum": "unique-title",
+      "query": "Naval Logistics",
+      "queryKind": "unique-title",
+      "sourceTopicSlugs": ["naval-logistics"],
+      "expectedRankedUrls": [
+        {
+          "url": "/topics/naval-logistics/",
+          "maxRank": 1
+        }
+      ],
+      "reason": "A unique institutional subject should lead its supporting examples."
+    },
+    {
+      "stratum": "unique-title",
+      "query": "Radar",
+      "queryKind": "unique-title",
+      "sourceTopicSlugs": ["radar"],
+      "expectedRankedUrls": [
+        {
+          "url": "/topics/radar/",
+          "maxRank": 1
+        }
+      ],
+      "reason": "A short unique technology title tests exactness without phrase length."
+    },
+    {
+      "stratum": "unique-title",
+      "query": "Battle of the Atlantic",
+      "queryKind": "unique-title",
+      "sourceTopicSlugs": ["battle-of-the-atlantic"],
+      "expectedRankedUrls": [
+        {
+          "url": "/topics/battle-of-the-atlantic/",
+          "maxRank": 1
+        }
+      ],
+      "reason": "A longer unique campaign title should outrank partial Atlantic matches."
+    },
+    {
+      "stratum": "collision",
+      "query": "HMS Victoria",
+      "queryKind": "unique-title",
+      "sourceTopicSlugs": [
+        "hms-victoria",
+        "hms-victory",
+        "hms-victorious",
+        "hms-victoria-1887"
+      ],
+      "expectedRankedUrls": [
+        {
+          "url": "/topics/hms-victoria/",
+          "maxRank": 1
+        }
+      ],
+      "mustRankBefore": [
+        {
+          "better": "/topics/hms-victoria/",
+          "worse": "/topics/hms-victory/"
+        },
+        {
+          "better": "/topics/hms-victoria/",
+          "worse": "/topics/hms-victorious/"
+        },
+        {
+          "better": "/topics/hms-victoria/",
+          "worse": "/topics/hms-victoria-1887/"
+        }
+      ],
+      "reason": "Victoria must not be displaced by Victory, Victorious, or its year-qualified namesake."
+    },
+    {
+      "stratum": "collision",
+      "query": "HMS Victorious",
+      "queryKind": "unique-title",
+      "sourceTopicSlugs": [
+        "hms-victorious",
+        "hms-victory",
+        "hms-victoria"
+      ],
+      "expectedRankedUrls": [
+        {
+          "url": "/topics/hms-victorious/",
+          "maxRank": 1
+        }
+      ],
+      "mustRankBefore": [
+        {
+          "better": "/topics/hms-victorious/",
+          "worse": "/topics/hms-victory/"
+        },
+        {
+          "better": "/topics/hms-victorious/",
+          "worse": "/topics/hms-victoria/"
+        }
+      ],
+      "reason": "Victorious must lead its shared victor-prefix family."
+    },
+    {
+      "stratum": "collision",
+      "query": "HMS Victoria 1887",
+      "queryKind": "unique-title",
+      "sourceTopicSlugs": [
+        "hms-victoria-1887",
+        "hms-victoria",
+        "hms-victory"
+      ],
+      "expectedRankedUrls": [
+        {
+          "url": "/topics/hms-victoria-1887/",
+          "maxRank": 1
+        }
+      ],
+      "mustRankBefore": [
+        {
+          "better": "/topics/hms-victoria-1887/",
+          "worse": "/topics/hms-victoria/"
+        },
+        {
+          "better": "/topics/hms-victoria-1887/",
+          "worse": "/topics/hms-victory/"
+        }
+      ],
+      "reason": "A year-qualified exact title should outrank its generic and morphological neighbors."
+    },
+    {
+      "stratum": "collision",
+      "query": "HMS Hood",
+      "queryKind": "unique-title",
+      "sourceTopicSlugs": [
+        "hms-hood",
+        "hms-hood-1891"
+      ],
+      "expectedRankedUrls": [
+        {
+          "url": "/topics/hms-hood/",
+          "maxRank": 1
+        }
+      ],
+      "mustRankBefore": [
+        {
+          "better": "/topics/hms-hood/",
+          "worse": "/topics/hms-hood-1891/"
+        }
+      ],
+      "reason": "The unqualified canonical ship topic should lead the dated namesake."
+    },
+    {
+      "stratum": "collision",
+      "query": "HMS Hood 1891",
+      "queryKind": "unique-title",
+      "sourceTopicSlugs": [
+        "hms-hood-1891",
+        "hms-hood"
+      ],
+      "expectedRankedUrls": [
+        {
+          "url": "/topics/hms-hood-1891/",
+          "maxRank": 1
+        }
+      ],
+      "mustRankBefore": [
+        {
+          "better": "/topics/hms-hood-1891/",
+          "worse": "/topics/hms-hood/"
+        }
+      ],
+      "reason": "The dated HMS Hood topic should lead the generic ship topic when the year is explicit."
+    },
+    {
+      "stratum": "collision",
+      "query": "HMS Nelson",
+      "queryKind": "unique-title",
+      "sourceTopicSlugs": [
+        "hms-nelson",
+        "hms-nelson-1925",
+        "hms-nelson-1876"
+      ],
+      "expectedRankedUrls": [
+        {
+          "url": "/topics/hms-nelson/",
+          "maxRank": 1
+        }
+      ],
+      "mustRankBefore": [
+        {
+          "better": "/topics/hms-nelson/",
+          "worse": "/topics/hms-nelson-1925/"
+        },
+        {
+          "better": "/topics/hms-nelson/",
+          "worse": "/topics/hms-nelson-1876/"
+        }
+      ],
+      "reason": "The unqualified HMS Nelson topic should lead its dated records."
+    },
+    {
+      "stratum": "collision",
+      "query": "HMS Nelson 1925",
+      "queryKind": "unique-title",
+      "sourceTopicSlugs": [
+        "hms-nelson-1925",
+        "hms-nelson",
+        "hms-nelson-1876"
+      ],
+      "expectedRankedUrls": [
+        {
+          "url": "/topics/hms-nelson-1925/",
+          "maxRank": 1
+        }
+      ],
+      "mustRankBefore": [
+        {
+          "better": "/topics/hms-nelson-1925/",
+          "worse": "/topics/hms-nelson/"
+        },
+        {
+          "better": "/topics/hms-nelson-1925/",
+          "worse": "/topics/hms-nelson-1876/"
+        }
+      ],
+      "reason": "The explicit 1925 topic should beat generic and 1876 HMS Nelson records."
+    },
+    {
+      "stratum": "collision",
+      "query": "HMS Dreadnought",
+      "queryKind": "unique-title",
+      "sourceTopicSlugs": [
+        "hms-dreadnought",
+        "hms-dreadnought-1742",
+        "hms-dreadnought-1906",
+        "hms-dreadnought-s101"
+      ],
+      "expectedRankedUrls": [
+        {
+          "url": "/topics/hms-dreadnought/",
+          "maxRank": 1
+        }
+      ],
+      "mustRankBefore": [
+        {
+          "better": "/topics/hms-dreadnought/",
+          "worse": "/topics/hms-dreadnought-1742/"
+        },
+        {
+          "better": "/topics/hms-dreadnought/",
+          "worse": "/topics/hms-dreadnought-1906/"
+        },
+        {
+          "better": "/topics/hms-dreadnought/",
+          "worse": "/topics/hms-dreadnought-s101/"
+        }
+      ],
+      "reason": "The unqualified HMS Dreadnought topic should lead dated and submarine namesakes."
+    },
+    {
+      "stratum": "unique-alias",
+      "query": "RN",
+      "queryKind": "unique-alias",
+      "sourceTopicSlugs": ["royal-navy"],
+      "expectedRankedUrls": [
+        {
+          "url": "/topics/royal-navy/",
+          "maxRank": 3
+        }
+      ],
+      "reason": "The unique RN abbreviation should surface its Royal Navy topic."
+    },
+    {
+      "stratum": "unique-alias",
+      "query": "Skagerrak",
+      "queryKind": "unique-alias",
+      "sourceTopicSlugs": ["battle-of-jutland"],
+      "expectedRankedUrls": [
+        {
+          "url": "/topics/battle-of-jutland/",
+          "maxRank": 3
+        }
+      ],
+      "reason": "The unique German battle name should find the Battle of Jutland topic."
+    },
+    {
+      "stratum": "unique-alias",
+      "query": "ASW",
+      "queryKind": "unique-alias",
+      "sourceTopicSlugs": ["anti-submarine-warfare"],
+      "expectedRankedUrls": [
+        {
+          "url": "/topics/anti-submarine-warfare/",
+          "maxRank": 3
+        }
+      ],
+      "reason": "The unique acronym should resolve to Anti-Submarine Warfare."
+    },
+    {
+      "stratum": "unique-alias",
+      "query": "Predreadnoughts",
+      "queryKind": "unique-alias",
+      "sourceTopicSlugs": ["pre-dreadnoughts"],
+      "expectedRankedUrls": [
+        {
+          "url": "/topics/pre-dreadnoughts/",
+          "maxRank": 3
+        }
+      ],
+      "reason": "The unique unhyphenated morphology should find the canonical Pre-Dreadnoughts topic."
+    },
+    {
+      "stratum": "ambiguous",
+      "query": "Jutland",
+      "queryKind": "ambiguous",
+      "sourceTopicSlugs": [
+        "battle-of-jutland",
+        "jutland"
+      ],
+      "allowedTopUrls": [
+        "/topics/battle-of-jutland/",
+        "/topics/jutland/"
+      ],
+      "allowedTopRank": 1,
+      "reason": "The registry contains both a canonical battle alias and a separate Jutland title."
+    },
+    {
+      "stratum": "ambiguous",
+      "query": "Marine Nationale",
+      "queryKind": "ambiguous",
+      "sourceTopicSlugs": [
+        "french-navy",
+        "marine-nationale"
+      ],
+      "allowedTopUrls": [
+        "/topics/french-navy/",
+        "/topics/marine-nationale/"
+      ],
+      "allowedTopRank": 1,
+      "reason": "The phrase is both a French Navy alias and its own topic title."
+    },
+    {
+      "stratum": "ambiguous",
+      "query": "Dreadnoughts",
+      "queryKind": "ambiguous",
+      "sourceTopicSlugs": [
+        "battleships",
+        "dreadnoughts"
+      ],
+      "allowedTopUrls": [
+        "/topics/battleships/",
+        "/topics/dreadnoughts/"
+      ],
+      "allowedTopRank": 1,
+      "reason": "The phrase is both a Battleships alias and a separate canonical topic."
+    },
+    {
+      "stratum": "ambiguous",
+      "query": "British Navy",
+      "queryKind": "ambiguous",
+      "sourceTopicSlugs": [
+        "royal-navy",
+        "british-navy"
+      ],
+      "allowedTopUrls": [
+        "/topics/royal-navy/",
+        "/topics/british-navy/"
+      ],
+      "allowedTopRank": 1,
+      "reason": "The phrase is both a Royal Navy alias and a separate canonical topic."
+    }
+  ]
+}
