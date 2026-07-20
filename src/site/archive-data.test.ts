@@ -20,6 +20,7 @@ import {
   findCuratedSegmentDuplicates,
   loadCuratedArchiveSeed,
 } from "./curated-seed.js";
+import { isPublicTopic } from "./public-topic.js";
 
 test("builds deterministic site archive data from channel metadata and segment seeds", () => {
   const archive = buildSiteArchiveData(sampleInput());
@@ -113,6 +114,28 @@ test("excludes upcoming videos and all dependent public records", () => {
   assert.deepEqual(archive.segments, []);
   assert.equal(archive.topics[0]?.videoCount, 0);
   assert.equal(archive.topics[0]?.segmentCount, 0);
+});
+
+test("keeps unreferenced registry topics without publishing topic routes", () => {
+  const input = sampleInput();
+  input.seed.topics.push({
+    slug: "unreferenced-topic",
+    title: "Unreferenced Topic",
+    summary: "A valid registry topic without current public coverage.",
+    aliases: [],
+  });
+
+  const archive = buildSiteArchiveData(input);
+  const unreferencedTopic = archive.topics.find((topic) => topic.slug === "unreferenced-topic");
+
+  assert.ok(unreferencedTopic);
+  assert.equal(unreferencedTopic.videoCount, 0);
+  assert.equal(unreferencedTopic.segmentCount, 0);
+  assert.equal(isPublicTopic(unreferencedTopic), false);
+  assert.deepEqual(
+    archive.topics.filter(isPublicTopic).map((topic) => topic.slug),
+    ["destroyers"],
+  );
 });
 
 test("rejects processed videos with a zero runtime instead of publishing P0D", () => {

@@ -23,6 +23,9 @@ const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${c
   title={`${video.title} | Naval History with Dr. Alex Study Guide`}
   description={`${video.title} video guide for learning naval history with Dr. Alex Clarke.`}
   pageType="video"
+  socialType="video.other"
+  socialImageUrl={video.thumbnailUrl}
+  socialImageAlt={`Thumbnail for ${video.title}`}
 >
   <Fragment slot="head">
     <meta data-pagefind-meta="video[content]" content={video.title} />

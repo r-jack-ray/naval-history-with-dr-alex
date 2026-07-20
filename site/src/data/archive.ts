@@ -3,6 +3,8 @@ import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { performance } from "node:perf_hooks";
 
+import { isPublicTopic } from "../../../src/site/public-topic.js";
+
 const archiveInitializationStartedAt = performance.now();
 
 const expectedPatternsInput = "src/derived/topic-normalization-patterns.tsv";
@@ -347,6 +349,7 @@ if (bucketCountTotal !== manifest.counts.segments || shardedSegments.length !== 
 export const archiveManifest = manifest;
 export const archiveVideos = loadedVideos as ArchiveVideo[];
 export const archiveTopics = loadedTopics as ArchiveTopic[];
+export const publicArchiveTopics = archiveTopics.filter(isPublicTopic);
 
 function uniqueMap<T>(
   values: T[],
@@ -509,7 +512,7 @@ export function getSegmentPaths() {
 }
 
 export function getTopicPaths(): Array<{ params: { slug: string }; props: TopicPathProps }> {
-  return archiveTopics.map((topic) => ({
+  return publicArchiveTopics.map((topic) => ({
     params: { slug: topic.slug },
     props: { topic },
   }));

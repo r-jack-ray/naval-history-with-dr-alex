@@ -12,6 +12,9 @@ export function getStaticPaths() {
 
 const { segment } = Astro.props as { segment: ArchiveSegment };
 const video = findVideoById(segment.videoId);
+if (video === undefined) {
+  throw new Error(`Segment ${segment.slug} references missing video ${segment.videoId}.`);
+}
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
@@ -21,6 +24,8 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   title={`${segment.title} | Naval History with Dr. Alex Study Guide`}
   description={segment.summary}
   pageType="segment"
+  socialImageUrl={video.thumbnailUrl}
+  socialImageAlt={`Thumbnail for ${video.title}`}
 >
   <Fragment slot="head">
     <meta data-pagefind-meta="video[content]" content={segment.videoTitle} />

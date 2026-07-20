@@ -7,9 +7,20 @@ interface Props {
   description: string;
   pageType: string;
   indexing?: "index" | "noindex";
+  socialType?: "website" | "video.other";
+  socialImageUrl?: string;
+  socialImageAlt?: string;
 }
 
-const { title, description, pageType, indexing = "index" } = Astro.props;
+const {
+  title,
+  description,
+  pageType,
+  indexing = "index",
+  socialType = "website",
+  socialImageUrl,
+  socialImageAlt,
+} = Astro.props;
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
@@ -18,6 +29,20 @@ if (Astro.site === undefined) {
   throw new Error("Astro site configuration is required to generate canonical URLs.");
 }
 const canonicalUrl = new URL(currentPath, Astro.site);
+let socialImage: { url: string; alt: string } | undefined;
+if (socialImageUrl !== undefined) {
+  const alt = socialImageAlt?.trim();
+  if (alt === undefined || alt.length === 0) {
+    throw new Error("A meaningful socialImageAlt is required when socialImageUrl is provided.");
+  }
+  const url = new URL(socialImageUrl);
+  if (url.protocol !== "https:" && url.protocol !== "http:") {
+    throw new Error(`Social image URL must use HTTP or HTTPS: ${socialImageUrl}`);
+  }
+  socialImage = { url: url.href, alt };
+} else if (socialImageAlt !== undefined) {
+  throw new Error("socialImageUrl is required when socialImageAlt is provided.");
+}
 const navItems = [
   { label: "Videos", path: "videos/" },
   { label: "Time Notes", path: "segments/" },
@@ -36,6 +61,29 @@ const isActivePath = (path: string) => currentPath.startsWith(`${baseUrl}${path}
     <meta name="description" content={description} />
     {indexing === "noindex" && <meta name="robots" content="noindex" />}
     <link rel="canonical" href={canonicalUrl.href} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl.href} />
+    <meta property="og:type" content={socialType} />
+    {
+      socialImage && (
+        <>
+          <meta property="og:image" content={socialImage.url} />
+          <meta property="og:image:alt" content={socialImage.alt} />
+        </>
+      )
+    }
+    <meta name="twitter:card" content={socialImage ? "summary_large_image" : "summary"} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {
+      socialImage && (
+        <>
+          <meta name="twitter:image" content={socialImage.url} />
+          <meta name="twitter:image:alt" content={socialImage.alt} />
+        </>
+      )
+    }
     <link rel="icon" type="image/png" sizes="160x160" href={`${baseUrl}favicon.png`} />
     <meta data-pagefind-meta="type[content]" content={pageType} />
     <meta data-pagefind-filter="type[content]" content={pageType} />

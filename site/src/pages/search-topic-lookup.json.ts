@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 
-import { archiveTopics } from "../data/archive";
+import { publicArchiveTopics } from "../data/archive";
 
 export const prerender = true;
 
@@ -14,7 +14,7 @@ const normalize = (value: string): string => value
 type LookupTuple = [slug: string, title: string, matchFlags: number];
 
 const entries = new Map<string, Map<string, LookupTuple>>();
-for (const topic of archiveTopics) {
+for (const topic of publicArchiveTopics) {
   addEntry(topic.title, topic.slug, topic.title, 1);
   for (const alias of topic.aliases) {
     addEntry(alias, topic.slug, topic.title, 2);

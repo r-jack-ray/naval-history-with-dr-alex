@@ -1,16 +1,13 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { archiveTopics } from "../../data/archive";
+import { publicArchiveTopics } from "../../data/archive";
 import topicsIndexUrl from "../../scripts/topics-index.js?url";
 
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
-const topicsWithCoverage = archiveTopics.filter(
-  (topic) => topic.videoCount > 0 || topic.segmentCount > 0,
-);
-const featuredTopics = topicsWithCoverage.slice(0, 8);
-const alphabeticalTopics = [...topicsWithCoverage].sort((left, right) =>
+const featuredTopics = publicArchiveTopics.slice(0, 8);
+const alphabeticalTopics = [...publicArchiveTopics].sort((left, right) =>
   left.title.localeCompare(right.title, "en", { sensitivity: "base" }),
 );
 const videoCountLabel = (count: number) => count === 1 ? "1 video" : `${count} videos`;
