@@ -39,11 +39,11 @@
       "kind": "chapter",
       "start": "18:15",
       "end": "27:43",
-      "topics": ["naval-gunnery", "battlefleet-tactics", "dreadnoughts", "spanish-navy"],
+      "topics": ["naval-gunnery", "battlefleet-tactics", "dreadnoughts", "spanish-navy", "shipbuilding-capacity"],
       "summary": "The first simulated battle shows why a broadside and numerical advantage can overwhelm individually formidable ships before close-range weapons matter.",
-      "body": "The British side fields sixty 14-inch guns against a smaller Spanish force with twenty 15-inch weapons, making the exercise a comparison of salvo weight, numbers, and engagement distance. The four British ships remain together while the Spanish pair appears to operate less coherently, so concentration compounds the raw gun-count advantage. Dr. Clarke treats the three-inch battery as anti-destroyer protection rather than a weapon for duelling capital ships, even when the game lets it join the close-range fight. He also cautions that the simulation's firing arcs and hit behaviour can produce implausible results, especially when ships appear to fire while badly heeled or directly into the water. The watch point therefore teaches both a fleet-tactics lesson and the limits of reading a game outcome as a historical test.",
+      "body": "The British side fields sixty 14-inch guns against a smaller Spanish force with twenty 15-inch weapons, making the exercise a comparison of salvo weight, numbers, and engagement distance. The four British ships remain together while the Spanish pair appears to operate less coherently, so concentration compounds the raw gun-count advantage. The Spanish pair's 60,000-ton design also raises a procurement question: Spain fielding such a vessel in 1920 would itself have been an extraordinary industrial achievement. Dr. Clarke separates that force-structure problem from personnel quality, describing Spanish sailors as capable and Spanish ships as generally sound even when their fleet cannot match Royal Navy scale. He treats the three-inch battery as anti-destroyer protection rather than a weapon for duelling capital ships, even when the game lets it join the close-range fight. He also cautions that the simulation's firing arcs and hit behaviour can produce implausible results, especially when ships appear to fire while badly heeled or directly into the water. The watch point therefore teaches both a fleet-tactics lesson and the limits of reading a game outcome as a historical test.",
       "sourcePath": "src/transcripts/txt/2023-07-07_T18-00-00_testing-out-my-spanish-dreadnought-designs_-liXrJvdQkg.txt",
-      "evidence": [{"start": "18:15", "end": "27:43", "note": "The battle comparison covers 15- versus 14-inch guns, numerical superiority, and the intended role of three-inch weapons."}]
+      "evidence": [{"start": "18:15", "end": "27:43", "note": "The battle comparison covers 15- versus 14-inch guns, numerical superiority, Spanish shipbuilding scale and sailor quality, and the intended role of three-inch weapons."}]
     },
     {
       "id": "spanish-modern-battleship-and-national-design-identity",
@@ -79,13 +79,16 @@
       "slug": "long-range-battleship-tactics-versus-ai-closing",
       "title": "Why dreadnoughts should not close like pre-dreadnoughts",
       "kind": "notable_point",
-      "start": "49:52",
+      "start": "45:53",
       "end": "53:02",
       "topics": ["battlefleet-tactics", "dreadnoughts", "naval-gunnery", "naval-wargaming"],
       "summary": "Dr. Clarke criticises the simulation’s tendency to close the range when the ships were designed to exploit long-range heavy-gun fire.",
       "body": "The game's AI repeatedly pulls capital ships toward six-inch range even though their principal advantage is long-range 18-inch gunnery. It also concentrates on one target while leaving three other opponents free to fire, showing how poor target choice can squander a powerful battle line. Dr. Clarke frames the closing manoeuvre as a mismatch between design and tactics: dreadnought-era fleets should use range, fire control, and armour to fight at distance rather than behave like earlier close-range ships. A damaged ship that could withdraw instead remains at point-blank range, further confusing courage with tactical necessity. At roughly ten kilometres, he argues, no plausible amount of armour makes a ship safe from repeated heavy-shell hits.",
       "sourcePath": "src/transcripts/txt/2023-07-07_T18-00-00_testing-out-my-spanish-dreadnought-designs_-liXrJvdQkg.txt",
-      "evidence": [{"start": "49:52", "end": "53:02", "note": "He contrasts long-range dreadnought fighting with the AI's repeated decision to close into secondary-gun range."}]
+      "evidence": [
+        {"start": "45:53", "end": "46:08", "note": "The Spanish pair concentrate on one British ship and leave three opponents free to fire."},
+        {"start": "49:10", "end": "53:02", "note": "He contrasts long-range dreadnought fighting with the AI's repeated decision to close into secondary-gun range and keep a damaged ship engaged."}
+      ]
     },
     {
       "id": "the-colossus-and-the-limits-of-maximum-design",
@@ -108,12 +111,12 @@
       "title": "Building an Italian 1920 battleship",
       "kind": "chapter",
       "start": "1:10:41",
-      "end": "1:27:24",
+      "end": "1:21:55",
       "topics": ["italian-navy", "battleship-design", "naval-armour", "naval-gunnery"],
       "summary": "A second design pass explores an Italian-style 1920 battleship through belt layout, hull form, secondary guns, ammunition, and weight balance.",
       "body": "Working from a 1920 Italian premise, Dr. Clarke experiments with a double hull, heavy belt protection, geared turbines, 15-inch guns, and six-inch secondary armament. A broad beam and comparatively shallow draft help establish an Italian-style hull form, while super-heavy shells and enhanced loading add further weight. The discussion repeatedly returns to the practical penalty of each choice: more armour and guns create pitch, balance, and displacement problems that have to be solved elsewhere. He trims forward protection and adjusts machinery and fittings to recover weight rather than pretending the design has unlimited capacity. He also objects when generic game components make Italian designs look German, because national design traditions are not interchangeable.",
       "sourcePath": "src/transcripts/txt/2023-07-07_T18-00-00_testing-out-my-spanish-dreadnought-designs_-liXrJvdQkg.txt",
-      "evidence": [{"start": "1:10:41", "end": "1:27:24", "note": "He develops an Italian 1920 design, discussing armour, hull form, turbines, 15-inch guns, six-inch secondaries, and weight."}]
+      "evidence": [{"start": "1:10:41", "end": "1:21:55", "note": "He develops an Italian 1920 design, discussing armour, hull form, turbines, 15-inch guns, six-inch secondaries, and weight."}]
     },
     {
       "id": "torpedo-range-fire-control-and-ammunition",
@@ -123,11 +126,11 @@
       "kind": "notable_point",
       "start": "1:30:41",
       "end": "1:41:18",
-      "topics": ["naval-gunnery", "torpedoes", "fire-control", "battleship-design"],
+      "topics": ["naval-gunnery", "torpedoes", "fire-control", "battleship-design", "damage-control"],
       "summary": "The Italian-Spanish trial becomes a discussion of fighting around torpedo range, local control, secondary hits, and ammunition capacity.",
-      "body": "At roughly nine to ten kilometres, the ships are inside both torpedo and six-inch-gun range, a distance Dr. Clarke considers exceptionally close by Jutland standards. He argues that local control alone should make hits much more likely than the simulation suggests, before accounting for the ships' formal fire-control systems. Eight-inch shells produce more visible damage than either the six- or 15-inch weapons in this particular game state, demonstrating that rate of fire and hit frequency can outweigh nominal calibre in a simulation. The prolonged engagement also illustrates why ammunition stowage matters: Dr. Clarke deliberately allocates more 15-inch rounds than the computer-generated opponent because he worries about endurance. A force that exhausts its ammunition must disengage if it can, rather than remaining in a battle where armour and speed can no longer convert into offensive effect.",
+      "body": "At roughly nine to ten kilometres, the ships are inside both torpedo and six-inch-gun range, a distance Dr. Clarke considers exceptionally close by Jutland standards. He argues that local control alone should make hits much more likely than the simulation suggests, before accounting for the ships' formal fire-control systems. Eight-inch shells produce more visible damage than either the six- or 15-inch weapons in this particular game state, demonstrating that rate of fire and hit frequency can outweigh nominal calibre in a simulation. The visible deck fires also prompt him to note that the game lacks fire-suppression systems, so its damage model omits an important layer of ship survivability. The prolonged engagement illustrates why ammunition stowage matters as well: Dr. Clarke deliberately allocates more 15-inch rounds than the computer-generated opponent because he worries about endurance. A force that exhausts its ammunition must disengage if it can, rather than remaining in a battle where armour and speed can no longer convert into offensive effect.",
       "sourcePath": "src/transcripts/txt/2023-07-07_T18-00-00_testing-out-my-spanish-dreadnought-designs_-liXrJvdQkg.txt",
-      "evidence": [{"start": "1:30:41", "end": "1:41:18", "note": "He discusses nine-kilometre torpedo and six-inch range, local control, eight-inch damage, and ammunition endurance."}]
+      "evidence": [{"start": "1:30:41", "end": "1:41:18", "note": "He discusses nine-kilometre torpedo and six-inch range, local control, eight-inch damage, absent fire-suppression systems, and ammunition endurance."}]
     },
     {
       "id": "polish-grom-as-an-export-tribal",
