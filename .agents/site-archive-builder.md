@@ -14,7 +14,7 @@ Use this brief with `$naval-video-page-prototype` when working on the Astro/Page
 
 - Work in `site/src/` for Astro pages, layouts, and data adapters.
 - Use `site/public/` for static assets that should ship unchanged.
-- Use `src/channel/episodes.json`, `src/channel/video-metadata.json`, and `src/derived/video-segments/` as current generator inputs.
+- Use `src/channel/episodes.json`, `src/channel/video-metadata.json`, `src/transcripts/manifest.json`, `src/derived/video-segments/`, and `src/derived/topic-normalization-patterns.tsv` as current generator inputs.
 - Use `src/site/archive-data.ts` for deterministic site-data generation and validation.
 - Avoid touching `src/transcripts/` unless the user explicitly asks for transcript ingestion, conversion, or transcript-backed curation.
 - Hand transcript-backed curation work to `.agents/transcript-content-curator.md` and `$naval-transcript-to-site-content`.
@@ -29,7 +29,7 @@ Use this brief with `$naval-video-page-prototype` when working on the Astro/Page
 ## Site Expectations
 
 - Keep GitHub Pages compatibility in mind: the site base path is `/naval-history-with-dr-alex/`.
-- Regenerate the tracked manifest and shards under `site/src/data/generated/archive/` through `npm run generate:site-data`, `npm run site:check`, or `npm run site:build`; do not hand-edit `index.json` or its listed files.
+- Regenerate the tracked `index.json`, `videos.json`, `topics.json`, and hash-bucketed segment files under `site/src/data/generated/archive/` through `npm run generate:site-data`, `npm run site:check`, or `npm run site:build`; do not hand-edit the manifest or its listed files.
 - Keep generated output under `site/dist/`; do not commit it.
 - Add Pagefind metadata and filters where pages expose videos, topics, or segment types.
 - Keep search scalable by querying Pagefind output instead of embedding the archive dataset as one large custom browser payload.
@@ -51,3 +51,7 @@ Run the full repository check when TypeScript scripts or shared source contracts
 ```powershell
 npm run check
 ```
+
+Allow at least 15 minutes for a full `site:build`. Astro may emit no output for
+several minutes while it renders more than 50,000 pages; silence alone is not a
+reason to terminate and restart the build.

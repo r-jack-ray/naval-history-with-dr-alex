@@ -2,19 +2,23 @@
 
 ## Project Structure & Module Organization
 
-Static reference archive for Dr. Alex Clarke's YouTube channel. Keep source data under `src/`, curated Markdown under `docs/`, site/search output under `site/`, reports under `reports/`, and planning notes under `task-notes/`.
+Static reference archive and learner-facing study guide for Dr. Alex Clarke's YouTube channel. Keep source data, transcripts, and curated JSON under `src/`; Astro source and generated site data under `site/`; reports under `reports/`; and planning notes under `task-notes/`. There is no committed `docs/` content tree.
 
-Planned source layout:
+Current source layout:
 
-- `src/channel/`: channel inventory, playlists, video IDs, dates, and transcript states.
-- `src/transcripts/txt/`: stored timestamped plain-text transcripts, the transcript source of record.
+- `src/channel/`: channel inventory, video IDs, dates, transcript states, and official YouTube metadata.
+- `src/content/`: site-content audit, processing-log, topic, and transcript-problem logic and tests.
 - `src/derived/video-segments/`: source-of-truth curated site content, with `topics.json` plus one `<manifest.fileStem>.json` file per video. Use the stored `fileStem` from `src/transcripts/manifest.json`; do not recompute it from current metadata.
 - `src/derived/topic-normalization-patterns.tsv`: manually curated steady-state policy for topic creation, display names, aliases, and exceptions.
-- `src/derived/`: other generated or supporting derived data.
-- `src/site/`: deterministic site-data generator and tests.
-- `docs/videos/`: one primary Markdown page per video.
-- `site/src/data/generated/archive/`: tracked, generated Astro-facing archive manifest and JSON shards.
+- `src/pipeline/`: atomic-write and transcript-schedule validation helpers and tests.
+- `src/scripts/`: TypeScript CLI entrypoints exposed through `package.json`.
+- `src/site/`: deterministic archive generation, validation, search-ranking cases, and tests.
+- `src/transcripts/txt/`: stored timestamped plain-text transcripts, the transcript source of record.
+- `src/youtube/`: channel, metadata, saved-HTML, and transcript-ingestion logic and tests.
+- `site/src/`: Astro pages, layouts, styles, client scripts, and data adapters.
+- `site/src/data/generated/archive/`: tracked generated `index.json`, `videos.json`, `topics.json`, and hash-bucketed segment JSON files. Never hand-edit them.
 - `site/dist/pagefind/`: generated Pagefind index, ignored by Git.
+- `.agents/` and `.codex/hooks/`: project-local agent briefs, skills, build helpers, validation, and shared-writer coordination.
 
 ## Site Intent
 
@@ -40,10 +44,15 @@ npm run check:types
 npm test
 npm run check
 npm run audit:site-content
+npm run audit:topic-normalization
+npm run audit:video-timestamp-alignment
 npm run generate:site-data
 npm run site:check
 npm run site:build
 npm run sync:video-topics
+npm run rank:video-segment-audit-risk
+npm run check:search-ranking
+npm run check:rendered-video-dates
 npm run fetch:video-links
 npm run alternate:fetch:transcript -- --video-id uURe69Wnh-Q
 npm run alternate:fetch:transcripts -- --limit 1 --request-delay-ms 5000
@@ -51,15 +60,15 @@ npm run alternate:fetch:transcripts -- --limit 1 --request-delay-ms 5000
 
 Do not run Git commands as routine preflight, status, boundary, or validation checks. Prefer direct file inspection, targeted searches, parsers, and the relevant project validators so unnecessary Git output does not consume time or context. Run Git only when the user explicitly requests a Git operation or when a specific overlapping edit cannot otherwise be resolved safely. When Git is genuinely needed, use the narrowest read-only command first. Never commit or push unless the user explicitly requests it.
 
-On Windows, do not launch the roaming `npm` shim from repository Node wrappers: on this machine it resolves a missing `C:\Users\JR\AppData\Roaming\npm\node_modules\npm\bin\npm-cli.js`. Direct `spawn()` of `npm.cmd` can also fail with `EINVAL`. Resolve `npm.cmd` beside `process.execPath` and invoke that fixed command through the system shell; for interactive validation, use `C:\Program Files\nodejs\npm.cmd` directly when plain `npm` hits the broken shim.
+On Windows, do not launch the roaming `npm` shim from repository Node wrappers: on this machine it resolves a missing `%APPDATA%\npm\node_modules\npm\bin\npm-cli.js`. Direct `spawn()` of `npm.cmd` can also fail with `EINVAL`. Resolve `npm.cmd` beside `process.execPath` and invoke that fixed command through the system shell; for interactive validation, use `C:\Program Files\nodejs\npm.cmd` directly when plain `npm` hits the broken shim.
 
-`build` emits `dist/`; `check:types` type-checks only; `test` compiles and runs Node's test runner; `check` combines both. `audit:site-content` validates curated transcript evidence and writes `reports/site-content-backlog.md`. `generate:site-data` writes deterministic Astro data under `site/src/data/generated/archive/`, with `index.json` as the authoritative manifest for the generated files. Never hand-edit that tracked generated dataset. `site:build` fingerprints the generator and site inputs, validates every manifest-listed archive file and SHA-256 before skipping generation, uses ignored `.tmp/` caches to skip unchanged archive, Astro, and Pagefind stages, and performs the required stages when inputs or outputs change; use `npm run site:build -- --force` to bypass both caches. Official YouTube Data API tasks default to one second between requests; alternate transcript fetches default to five seconds.
+`build` emits `dist/`; `check:types` type-checks only; `test` compiles and runs Node's test runner; `check` combines both. `audit:site-content` validates curated transcript evidence and writes `reports/site-content-backlog.md`. `generate:site-data` writes deterministic Astro data under `site/src/data/generated/archive/`, with `index.json` as the authoritative manifest for the generated files. Never hand-edit that tracked generated dataset. `site:build` fingerprints the generator and site inputs, validates every manifest-listed archive file and SHA-256 before skipping generation, uses ignored `.tmp/` caches to skip unchanged archive, Astro, and Pagefind stages, and performs the required stages when inputs or outputs change; use `npm run site:build -- --force` to bypass its caches. Official YouTube Data API tasks default to one second between requests; alternate transcript fetches default to five seconds.
 
 Full `site:build`, `site:build:generated`, and `site:build:full` runs now traverse more than 50,000 HTML pages and can take well over three minutes, especially during Pagefind. Agent-run commands must allow at least 15 minutes (900,000 ms) before timing out and should treat several minutes of silence from `astro build --silent` as normal; do not kill and restart a build solely because it has not emitted recent output.
 
 ## Coding Style & Naming Conventions
 
-Use TypeScript under `src/**/*.ts`, Markdown for curated content, and JSON for inventories. Keep filenames lowercase and hyphenated, for example `docs/videos/battle-of-jutland-overview.md`. Use timestamp-first task notes matching `yyyy-MM-dd_THH-mm-ss-0500_short-topic.md`.
+Use TypeScript under `src/**/*.ts`, JSON for inventories and curated segment shards, and Markdown for durable guidance and task notes. Keep manually named documentation files lowercase and hyphenated. Manifest-owned transcript and shard filenames are the exception: preserve the exact stored `fileStem`, including its timestamp and video-ID suffix. Use timestamp-first task notes matching `yyyy-MM-dd_THH-mm-ss-0500_short-topic.md`.
 
 Transcript and episode file stems should use `timestamp_title-slug_videoId` when an exact timestamp is known, otherwise `title-slug_videoId`; keep the video ID suffix.
 
@@ -68,6 +77,8 @@ The core content model is `segment`, not `question`. Valid segment kinds include
 Keep Q&A as `kind: qa` segment data unless a future layout/search requirement proves a separate collection is needed.
 
 When processing transcripts into site content, use `.agents/transcript-content-curator.md` and `$naval-transcript-to-site-content`. This skill is shard-only except for its required processing-log append: the invoking user or automation must identify exactly one transcript and one owned `src/derived/video-segments/<manifest.fileStem>.json` shard. The selected transcript's manifest record is authoritative: its TXT basename must equal `<fileStem>.txt`, and the shard uses that same stored stem with `.json`; never synthesize a shard name from current title metadata. After a successful shard write, the skill must append exactly one result line at the physical bottom of `src/derived/site-content-processing.log`. It must not select work from a backlog, manifest, report, schedule, or shard directory; acquire or inspect leases; claim or complete schedule rows; install dependencies; write reports, topics, archives, package files, tooling, Astro/CSS sources, or other shards; or run repository-wide generation, tests, builds, audits, or validation. Keep `sourcePath` and transcript evidence on every segment. Video-level `topics` are a concise summary subset for the video page, while segment-level topics may be more granular. Add evidence-backed topic slugs only to the owned shard; the repository owner's later build synchronizes the shared registry and performs integration checks before push. A lane automation may separately own only the atomic claim, lane-private log, video-specific temporary checks, and exact completion/reset defined in its prompt. Scheduled transcript processing remains single-agent work: do not use `ultra`, multi-agent mode, or subagents inside a claimed transcript run.
+
+Keep long transcript reads antivirus-safe. Use separate simple commands with literal paths and fixed numeric `Get-Content | Select-Object -Skip/-First` slices, optionally locating a known timestamp first with `rg -n --fixed-strings`. Do not build inline PowerShell multi-range timestamp extractors, stream a whole transcript through regex-heavy `ForEach-Object`/`foreach` logic, encode equivalent dynamic commands, or retry a blocked pattern in another form.
 
 Schedules, reports, generated archives, and logs other than `src/derived/site-content-processing.log` are coordinator-owned shared outputs, not shard-worker outputs. The transcript consumer appends exactly one result line to the bottom of that processing log after a successful shard write. The content auditor appends exactly one result line after every completed audit of a selected shard, including audits that leave the shard unchanged, find it saturated, or confirm an intentionally empty shard; it omits the line only when no exact file was supplied or a blocker stopped the audit before that file was processed. A lane automation may also write only its explicitly named lane-private log and schedule state. Use `src/derived/site-content-processing.config.json` read-only for first-pass content defaults, video-type handling, follow-up stages, and topic grouping.
 

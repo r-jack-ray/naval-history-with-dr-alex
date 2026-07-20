@@ -16,17 +16,17 @@ The repository currently has:
 - An Astro static site configured for GitHub Pages.
 - Pagefind indexing during site builds.
 - A deployed learner-facing study-guide site with Light, Dark, Bruships, and System theme switching.
-- A generated Astro archive dataset built from channel inventory, YouTube metadata, and curated per-video segment shards.
+- A generated Astro archive dataset built from channel inventory, YouTube metadata, the transcript manifest, curated per-video segment shards, and topic-normalization policy.
 - Static video, segment, and topic pages built from the manifest and stable JSON shards under `site/src/data/generated/archive/`.
 - Deferred Pagefind-backed search across video guides, time notes, and topics, without an inline archive corpus.
 - A subject-focused Time Notes finder with explanation/Q&A filters and a paginated browse-all fallback.
 - A transcript-to-site-content process with curation and audit agent briefs, Codex skills, backlog audit, and validation hooks.
 - A rate-limited YouTube channel link inventory script.
-- A source master episode list under `src/channel/`.
+- A source master episode list under `src/channel/`, with an explicit completeness flag and inventory notes.
 - A local transcript store under `src/transcripts/`.
 - Planning notes under `task-notes/`.
 
-The generated archive already spans hundreds of video guides and thousands of curated segments. Transcript-backed curation and follow-up quality passes are still in progress.
+The generated archive now spans thousands of video guides and tens of thousands of curated segments. Transcript-backed curation and follow-up quality passes are still in progress. The checked-in channel master currently reports `inventory.completeness` as `unknown`, so it must not be treated as the complete channel backlog.
 
 ## Project Layout
 
@@ -43,6 +43,7 @@ src/
     video-segments/        Source-of-truth curated study-guide content
       topics.json          Shared topic records and aliases
       <manifest.fileStem>.json One curated segment shard per video; reuse the stored transcript manifest stem
+  pipeline/                Atomic writes and transcript-schedule validation
   scripts/                 TypeScript CLI entrypoints
   site/                    Site data generator and validation logic
   youtube/                 YouTube inventory helpers
@@ -50,8 +51,12 @@ src/
     manifest.json          Index of stored transcript files
     txt/                   Stored timestamped transcript text; source of record
 site/
-  src/                     Astro pages, layouts, and site data adapters
-    data/generated/archive/ Deterministic generated archive manifest and JSON shards
+  src/                     Astro pages, layouts, styles, client scripts, and data adapters
+    data/generated/archive/ Tracked deterministic archive dataset
+      index.json           Authoritative generated-file manifest
+      videos.json          Generated video-guide records
+      topics.json          Generated topic records
+      segments/            Hash-bucketed generated segment records
   public/                  Static assets copied into the site
   dist/                    Generated GitHub Pages artifact, ignored by Git
 .agents/                   Project-local agent briefs and Codex skills
@@ -80,10 +85,21 @@ npm run check:types
 npm test
 npm run check
 npm run audit:site-content
+npm run audit:topic-normalization
 npm run sync:video-topics
 npm run generate:site-data
 npm run site:check
 npm run site:build
+```
+
+Focused diagnostics and post-build checks:
+
+```powershell
+npm run audit:video-timestamp-alignment
+npm run rank:video-segment-audit-risk
+npm run check:search-ranking
+npm run check:rendered-video-dates
+npm run report:transcript-problems
 ```
 
 On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive commands if plain `npm` resolves the broken roaming shim.
@@ -101,7 +117,7 @@ npm run site:build
 npm run site:preview
 ```
 
-`npm run site:check` regenerates `site/src/data/generated/archive/` before running Astro checks. `npm run site:build` fingerprints the generator and site inputs, validates the manifest-listed generated files and SHA-256 values, and regenerates or rebuilds only when inputs or outputs changed; pass `-- --force` to bypass its caches. A performed build emits `site/dist/` and runs Pagefind against that output. The authoritative generated `index.json` manifest lists the tracked collection files and segment buckets. Do not hand-edit the generated archive dataset, and do not commit generated `site/dist/` files.
+`npm run site:check` regenerates `site/src/data/generated/archive/` before running Astro checks. `npm run site:build` fingerprints the generator and site inputs, validates the manifest-listed generated files and SHA-256 values, and regenerates or rebuilds only when inputs or outputs changed; pass `-- --force` to bypass its caches. A performed build emits `site/dist/` and runs Pagefind against that output. The authoritative generated `index.json` manifest lists the tracked collection files and segment buckets. Full Astro/Pagefind builds traverse more than 50,000 HTML pages, can take several minutes, and may be quiet while Astro runs; allow at least 15 minutes before treating an agent-run build as timed out. Do not hand-edit the generated archive dataset, and do not commit generated `site/dist/` files.
 
 The generated site exposes:
 
@@ -332,32 +348,12 @@ pwsh -NoProfile -File .codex/hooks/validate-site.ps1 -SkipRepoCheck
 
 See `AGENTS.md` for repository-specific contributor and agent guidance.
 
-## Videos and Live Streams Without Available Transcripts
+## Transcript Availability Status
 
-These completed videos and live streams have saved `no_caption_tracks` failures in `src/transcripts/fetch-status.json`. Upcoming videos and live streams are excluded.
+`src/transcripts/manifest.json` is authoritative for stored transcripts, and `src/transcripts/fetch-status.json` is authoritative for resumable ingestion status. The checked-in failure set currently contains completed videos and streams with `no_caption_tracks`; upcoming, live, processing, and otherwise deferred videos are tracked separately, while videos at or below the 61-second cutoff are intentionally skipped.
 
-### Videos
+Generate the current human-readable failure report from saved status without contacting YouTube or retrying anything:
 
-| Date | Title |
-| --- | --- |
-| 2020-12-13 | Town Class Part 5 of 7: Southamptons (inadvertent silent movie style...6&7 are ok) |
-| 2020-12-15 | Town Class Part 5 of 7: Southamptons |
-| 2021-08-23 | No Sound??? Battle of the Atlantic: Escort Procurement - Comment Response |
-| 2022-06-28 | Blonde Class: Scout Cruisers of the Royal Navy (Long Patrol) |
-| 2023-04-30 | Amagi Class Battlecruiser: No Sound, but still a Question |
-| 2023-05-31 | Building an R Class to fight a convoy battle vs the Scharnhorsts |
-
-### Live Streams
-
-| Date | Title |
-| --- | --- |
-| 2020-10-27 | Patreon 8 - “The Treaty of London 1930” by Daniel Freedman |
-| 2020-11-03 | Arethusa Class Cruisers |
-| 2021-02-28 | Bruships 39: Books Off the Shelf... |
-| 2021-07-18 | Bruships 53: The Big Gun Era.... bad sound... |
-| 2021-10-14 | Patreon 35: The Naval Career of Jackie Fisher - First Sea Lord Extraordinaire |
-| 2021-10-17 | Bruships 57: Some Cool Books and Naval History Chat |
-| 2021-10-24 | 'The Imperial High Seas Fleet: Tarkin replaces Tirpitz & Thrawn replaces Scheer at Jutland...’ |
-| 2023-09-21 | Patreon 84: The underpaid and underappreciated Merchant Marine of WWII |
-| 2024-11-17 | Bruships 171: Oh Kallax my Kallax, Where art though my Kallax |
-| 2026-02-01 | Bruships 230: Naval History Questions Answered Live...2nd Start |
+```powershell
+npm run report:transcript-problems
+```

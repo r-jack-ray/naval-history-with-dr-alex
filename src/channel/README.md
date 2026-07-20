@@ -27,6 +27,10 @@ streams. Each episode record stores:
 The file includes an inventory completeness flag. Do not treat a partial master
 list as the full channel backlog.
 
+In the current checked-in master, `inventory.completeness` is `unknown` and the
+inventory notes say the streams tab has not been fetched. Treat those fields as
+the live status source instead of inferring completeness from record counts.
+
 Schema 2 keeps YouTube's raw `publishedAt`, `scheduledStartAt`,
 `actualStartAt`, and `actualEndAt` facts distinct. Completed, processed videos
 also have one normalized `videoDateAt` plus `videoDateKind`; consumers use that
@@ -52,7 +56,9 @@ npm run alternate:extract:saved-channel-html -- --tab streams --links-output rep
 npm run alternate:merge:video-links -- --input reports/dr-alex-videos-html-links.json --input reports/dr-alex-streams-html-links.json --master-output src/channel/episodes.json --inventory-completeness partial
 ```
 
-Populate official metadata with `YOUTUBE_API_KEY`:
+Populate official metadata. The package script defaults to
+`reports/youtube-api-key.txt`; direct CLI use can instead read
+`YOUTUBE_API_KEY`, `--api-key`, or `--api-key-file`:
 
 ```powershell
 npm run fetch:video-metadata

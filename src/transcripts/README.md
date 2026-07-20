@@ -2,6 +2,10 @@
 
 This directory is the local transcript archive. Timestamped TXT files are the transcript source of record.
 
+`manifest.json` is authoritative for what is stored. `fetch-status.json` is the
+live resumable-ingestion status; use its `stats` and `failures` rather than a
+manually maintained transcript count or unavailable-video list.
+
 ## Layout
 
 ```text
