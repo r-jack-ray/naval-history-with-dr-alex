@@ -6,13 +6,18 @@ interface Props {
   title: string;
   description: string;
   pageType: string;
+  indexing?: "index" | "noindex";
 }
 
-const { title, description, pageType } = Astro.props;
+const { title, description, pageType, indexing = "index" } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 const currentPath = Astro.url.pathname.endsWith("/") ? Astro.url.pathname : `${Astro.url.pathname}/`;
+if (Astro.site === undefined) {
+  throw new Error("Astro site configuration is required to generate canonical URLs.");
+}
+const canonicalUrl = new URL(currentPath, Astro.site);
 const navItems = [
   { label: "Videos", path: "videos/" },
   { label: "Time Notes", path: "segments/" },
@@ -29,6 +34,8 @@ const isActivePath = (path: string) => currentPath.startsWith(`${baseUrl}${path}
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {indexing === "noindex" && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonicalUrl.href} />
     <link rel="icon" type="image/png" sizes="160x160" href={`${baseUrl}favicon.png`} />
     <meta data-pagefind-meta="type[content]" content={pageType} />
     <meta data-pagefind-filter="type[content]" content={pageType} />
