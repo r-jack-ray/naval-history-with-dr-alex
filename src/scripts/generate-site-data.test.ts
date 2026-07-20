@@ -76,6 +76,33 @@ test("generation rejects an invalid catalog before changing archive output", asy
   }
 });
 
+test("generation leaves a newly synchronized pending summary and archive output unchanged", async () => {
+  const fixture = await makeFixture();
+  const topicStorePath = join(fixture.segmentsInput, "topics.json");
+  try {
+    await writeFile(fixture.patternsInput, `${topicNormalizationPatternHeader.join("\t")}\n`, "utf8");
+    await writeFile(join(fixture.segmentsInput, "fixture_abc123.json"), JSON.stringify({
+      schemaVersion: 1,
+      videoId: "abc123",
+      topics: ["new-topic"],
+      segments: [],
+    }), "utf8");
+    await assert.rejects(
+      runGenerator(fixture),
+      (error: unknown) => {
+        const stderr = commandStderr(error);
+        assert.match(stderr, /Topic summary preflight failed/u);
+        assert.match(stderr, /new-topic/u);
+        return true;
+      },
+    );
+    await assert.rejects(readFile(topicStorePath, "utf8"), { code: "ENOENT" });
+    assert.equal(await readFile(fixture.sentinelPath, "utf8"), "existing archive bytes\n");
+  } finally {
+    await rm(fixture.root, { recursive: true, force: true });
+  }
+});
+
 interface GeneratorFixture {
   root: string;
   segmentsInput: string;

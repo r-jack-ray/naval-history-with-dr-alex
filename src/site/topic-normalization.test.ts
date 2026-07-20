@@ -6,8 +6,6 @@ import { join } from "node:path";
 import test from "node:test";
 
 import {
-  defaultTopicSummary,
-  isDefaultTopicSummary,
   loadTopicNormalizationCatalog,
   parseTopicNormalizationCatalog,
   resolveTopicCreation,
@@ -17,6 +15,10 @@ import {
   topicTitleFromSlug,
   type TopicNormalizationCatalog,
 } from "./topic-normalization.js";
+import {
+  isLegacyTopicSummary,
+  topicSummaryQualityFindings,
+} from "./topic-summary-quality.js";
 
 test("parses the strict nine-column TSV and separates canonical and source hashes", async () => {
   const canonical = catalogText([
@@ -550,13 +552,16 @@ test("rejects an input that matches multiple active regex rules at resolution ti
   );
 });
 
-test("shares default-summary and collision-key behavior", () => {
+test("detects retired default summaries and shares collision-key behavior", () => {
   const title = "57 mm Guns";
-  const summary = defaultTopicSummary(title);
+  const summary = `Watch points covering ${title} across Dr. Alex Clarke's videos.`;
 
-  assert.equal(summary, "Watch points covering 57 mm Guns across Dr. Alex Clarke's videos.");
-  assert.equal(isDefaultTopicSummary(summary, title), true);
-  assert.equal(isDefaultTopicSummary("A curated summary.", title), false);
+  assert.equal(isLegacyTopicSummary(summary), true);
+  assert.deepEqual(topicSummaryQualityFindings(summary), [
+    "summary uses a legacy creator-oriented default",
+    "summary uses site-oriented or hollow framing",
+  ]);
+  assert.equal(isLegacyTopicSummary("A subject-relative definition."), false);
   assert.equal(topicCollisionKey("  OTO 76/62—SR  "), "oto 76 62 sr");
   assert.equal(topicCollisionKey("ＯＴＯ 76 62 SR"), "oto 76 62 sr");
 });

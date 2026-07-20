@@ -61,6 +61,13 @@ test("time-note descriptions fall back from summary to short answer to body", ()
   assert.match(buildSegmentPageMetadata({ ...common, summary: "", answerShort: "", body: "Body text." }).description, /Body text\./u);
 });
 
+test("topic metadata refuses to invent copy for a pending summary", () => {
+  assert.throws(
+    () => buildTopicPageMetadata({ title: "Pending Topic", summary: " ", videoCount: 1, segmentCount: 1 }),
+    /has no public summary/u,
+  );
+});
+
 test("builds distinct metadata for every paginated archive family and page", () => {
   const metadata = [
     buildTimeNoteBrowseMetadata(1, 4),

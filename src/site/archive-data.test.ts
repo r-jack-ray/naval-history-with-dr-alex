@@ -46,7 +46,7 @@ test("propagates a curated topic title to video and segment refs while keeping a
     {
       slug,
       title,
-      summary: "4.5-inch Gun watch points and related historical context.",
+      summary: "A family of British naval guns whose individual mountings and roles varied across twentieth-century warship designs.",
       aliases: ["4.5 inch gun", "4 5 inch gun"],
     },
   ];
@@ -66,7 +66,7 @@ test("propagates a curated topic title to video and segment refs while keeping a
   assert.deepEqual(archive.topics.find((topic) => topic.slug === slug), {
     slug,
     title,
-    summary: "4.5-inch Gun watch points and related historical context.",
+    summary: "A family of British naval guns whose individual mountings and roles varied across twentieth-century warship designs.",
     aliases: ["4.5 inch gun", "4 5 inch gun"],
     videoCount: 1,
     segmentCount: 2,

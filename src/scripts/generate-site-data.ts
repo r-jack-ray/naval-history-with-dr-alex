@@ -19,6 +19,13 @@ try {
     segmentsInput: options.segmentsInput,
     patternsInput: options.patternsInput,
   });
+  if (topicPlan.summaryReviewSlugs.length > 0) {
+    throw new Error([
+      "Topic summary preflight failed before topic-store synchronization or archive generation:",
+      ...topicPlan.summaryReviewSlugs.map((slug) => `- ${slug}`),
+      "Run npm run audit:topic-summaries and complete corpus-grounded review for every listed slug.",
+    ].join("\n"));
+  }
   const topicResult = await writeTopicStoreSynchronization(topicPlan);
   for (const topic of topicResult.reviewTopics) {
     console.error(

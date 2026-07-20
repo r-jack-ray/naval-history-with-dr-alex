@@ -9,7 +9,6 @@ import type {
 } from "./curated-seed.js";
 import { auditTopicNormalization } from "./topic-normalization-audit.js";
 import {
-  defaultTopicSummary,
   loadTopicNormalizationCatalog,
   resolveTopicCreation,
   resolveTopicDisplayTitle,
@@ -17,6 +16,7 @@ import {
   topicTitleFromSlug as normalizedTopicTitleFromSlug,
   type TopicNormalizationCatalog,
 } from "./topic-normalization.js";
+import { topicSummaryQualityFindings } from "./topic-summary-quality.js";
 import { discoverVideoSegmentShards } from "./video-segment-files.js";
 
 export const defaultTopicNormalizationPatternsInput =
@@ -26,6 +26,7 @@ export interface SynchronizeTopicStoreResult {
   addedSlugs: string[];
   changed: boolean;
   reviewTopics: TopicReviewItem[];
+  summaryReviewSlugs: string[];
   topicCount: number;
   usedTopicCount: number;
 }
@@ -141,6 +142,7 @@ export async function planTopicStoreSynchronization(
     addedSlugs,
     changed: existingStore === undefined || addedSlugs.length > 0,
     reviewTopics: collectTopicReviewItems(effectiveTopics, catalog),
+    summaryReviewSlugs: collectSummaryReviewSlugs(effectiveTopics, corpus.usedSlugs),
     topicCount: effectiveTopics.length,
     usedTopicCount: corpus.usedSlugs.length,
   };
@@ -299,12 +301,23 @@ function buildDefaultTopic(
   const topic: CuratedTopicSeed = {
     slug,
     title,
-    summary: defaultTopicSummary(title),
+    summary: "",
   };
   if (aliases.length > 0) {
     topic.aliases = aliases;
   }
   return topic;
+}
+
+function collectSummaryReviewSlugs(
+  topics: CuratedTopicSeed[],
+  usedSlugs: readonly string[],
+): string[] {
+  const topicsBySlug = new Map(topics.map((topic) => [topic.slug, topic]));
+  return usedSlugs.filter((slug) => {
+    const topic = topicsBySlug.get(slug);
+    return topic === undefined || topicSummaryQualityFindings(topic.summary).length > 0;
+  });
 }
 
 export function topicTitleFromSlug(
@@ -347,6 +360,7 @@ function synchronizationResultFromPlan(
     addedSlugs: [...plan.addedSlugs],
     changed: plan.changed,
     reviewTopics: plan.reviewTopics.map((topic) => ({ ...topic })),
+    summaryReviewSlugs: [...plan.summaryReviewSlugs],
     topicCount: plan.topicCount,
     usedTopicCount: plan.usedTopicCount,
   };

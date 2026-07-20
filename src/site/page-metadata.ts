@@ -119,8 +119,10 @@ export function buildTopicPageMetadata(
   topic: Pick<SiteTopic, "title" | "summary" | "videoCount" | "segmentCount">,
 ): PageMetadata {
   const title = boundText(topic.title, 125);
-  const summary = normalizeMetadataText(topic.summary)
-    || `Explore ${title} across the Dr. Alex Clarke study guide.`;
+  const summary = normalizeMetadataText(topic.summary);
+  if (summary.length === 0) {
+    throw new Error(`Topic ${topic.title} has no public summary.`);
+  }
   return {
     title: `${title} | Naval History Topic Guide`,
     description: boundText(

@@ -194,7 +194,6 @@ function parseTopicStore(text: string, path: string): CuratedTopicStore {
       || typeof candidate.title !== "string"
       || candidate.title.length === 0
       || typeof candidate.summary !== "string"
-      || candidate.summary.length === 0
       || (
         candidate.aliases !== undefined
         && (!Array.isArray(candidate.aliases) || candidate.aliases.some((alias) => typeof alias !== "string"))

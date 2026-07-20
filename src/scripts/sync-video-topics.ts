@@ -21,6 +21,9 @@ try {
       `Topic title requires review: ${topic.slug} (generated title: ${topic.generatedTitle}).`,
     );
   }
+  for (const slug of result.summaryReviewSlugs) {
+    console.error(`Topic summary requires corpus-grounded review: ${slug}.`);
+  }
 } catch (error) {
   console.error(error instanceof Error ? error.message : String(error));
   process.exitCode = 1;

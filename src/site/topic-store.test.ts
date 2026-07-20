@@ -54,7 +54,8 @@ test("creates a topic store from video shards when one does not exist", async ()
     assert.deepEqual(result.addedSlugs, ["airborne-early-warning", "destroyers", "royal-navy"]);
     assert.deepEqual(store.topics.map((topic) => topic.slug), result.addedSlugs);
     assert.equal(store.topics[0]?.title, "Airborne Early Warning");
-    assert.match(store.topics[0]?.summary ?? "", /Watch points covering Airborne Early Warning/u);
+    assert.equal(store.topics[0]?.summary, "");
+    assert.deepEqual(result.summaryReviewSlugs, result.addedSlugs);
   } finally {
     await rm(directory, { recursive: true, force: true });
   }
@@ -153,7 +154,7 @@ test("creates decimal topic defaults without adding them to title review", async
     assert.deepEqual(store.topics[0], {
       slug: "qf-5-25-inch-gun",
       title: "QF 5.25-inch Gun",
-      summary: "Watch points covering QF 5.25-inch Gun across Dr. Alex Clarke's videos.",
+      summary: "",
     });
   } finally {
     await rm(directory, { recursive: true, force: true });
@@ -239,7 +240,7 @@ test("uses catalog display policy when appending a canonical topic", async () =>
     assert.deepEqual(store.topics, [{
       slug: "57-mm-guns",
       title: "57 mm Guns",
-      summary: "Watch points covering 57 mm Guns across Dr. Alex Clarke's videos.",
+      summary: "",
       aliases: ["57mm Gun"],
     }]);
   } finally {
@@ -458,7 +459,7 @@ const productionTopicMapping = [
     slug: "4-5-inch-guns",
     title: "4.5-inch Guns",
     aliases: ["4.5-inch Gun", "Four Point Five Inch Gun", "Four Point Five Inch Guns"],
-    summary: "Explore study-guide entries on the 4.5-inch Gun.",
+    summary: "4.5-inch Guns denotes a weapon-calibre family whose individual designs may differ in ammunition, mounting, rate of fire, and anti-ship, anti-aircraft, or land-combat role.",
   },
   {
     slug: "4-7-inch-guns",
@@ -479,7 +480,7 @@ const productionTopicMapping = [
     slug: "13-5-inch-guns",
     title: "13.5-inch Guns",
     aliases: ["13.5-inch Gun", "Thirteen Point Five Inch Guns"],
-    summary: "Explore study-guide entries on the 13.5-inch Gun.",
+    summary: "13.5-inch Guns denotes a weapon-calibre family whose individual designs may differ in ammunition, mounting, rate of fire, and anti-ship, anti-aircraft, or land-combat role.",
   },
   {
     slug: "qf-4-5-inch-gun",

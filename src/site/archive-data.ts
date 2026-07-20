@@ -20,6 +20,7 @@ import {
   type CuratedTopicSeed,
 } from "./curated-seed.js";
 import { parseVideoDurationSeconds } from "./video-seo.js";
+import { topicSummaryQualityFindings } from "./topic-summary-quality.js";
 
 export const defaultSiteEpisodesInput = "src/channel/episodes.json";
 export const defaultSiteMetadataInput = "src/channel/video-metadata.json";
@@ -1064,12 +1065,16 @@ function validateSeed(seed: CuratedArchiveSeed): void {
   const videoIds = new Set(seed.videos.map((video) => video.videoId));
   const topicSlugs = new Set(seed.topics.map((topic) => topic.slug));
   const allowedKinds = new Set<string>(segmentKinds);
+  const topicLocations = new Map<string, string[]>();
 
   for (const video of seed.videos) {
     for (const topic of video.topics) {
       if (!topicSlugs.has(topic)) {
         throw new Error(`Video ${video.videoId} references missing topic: ${topic}`);
       }
+      const locations = topicLocations.get(topic) ?? [];
+      locations.push(`video:${video.videoId}:${topic}`);
+      topicLocations.set(topic, locations);
     }
   }
 
@@ -1088,6 +1093,21 @@ function validateSeed(seed: CuratedArchiveSeed): void {
       if (!topicSlugs.has(topic)) {
         throw new Error(`Segment ${segment.id} references missing topic: ${topic}`);
       }
+      const locations = topicLocations.get(topic) ?? [];
+      locations.push(`segment:${segment.videoId}:${segment.id}:${topic}`);
+      topicLocations.set(topic, locations);
+    }
+  }
+
+  for (const topic of seed.topics) {
+    const findings = topicSummaryQualityFindings(topic.summary);
+    const locations = topicLocations.get(topic.slug) ?? [];
+    if (locations.length > 0 && findings.length > 0) {
+      throw new Error([
+        `Topic ${topic.slug} cannot enter the public archive: ${findings.join("; ")}.`,
+        "Keyed locations:",
+        ...locations.map((location) => `- ${location}`),
+      ].join("\n"));
     }
   }
 }
