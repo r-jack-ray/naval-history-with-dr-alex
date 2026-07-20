@@ -7,6 +7,7 @@ import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import test from "node:test";
 
+import { siteArchiveSchemaVersion } from "../site/archive-data.js";
 import { replaceFileAtomically } from "./atomic-write.js";
 
 const currentDirectory = dirname(fileURLToPath(import.meta.url));
@@ -48,7 +49,7 @@ test("atomic replacement preserves a complete previous file until replacement su
   }
 });
 
-test("validation hooks generate the archive once before their generated-data checks", async () => {
+test("validation hooks share the split-archive contract and generate once before their generated-data checks", async () => {
   const packageJson = JSON.parse(await readFile(join(repositoryRoot, "package.json"), "utf8")) as {
     scripts: Record<string, string>;
   };
@@ -83,7 +84,18 @@ test("validation hooks generate the archive once before their generated-data che
     /run --purpose video-topic-sync --recover-stale -- node --import tsx src\/scripts\/sync-video-topics\.ts/u,
   );
   assert.doesNotMatch(syncVideoTopicsScript, /--build|dist\/scripts\/sync-video-topics\.js/u);
-  assert.match(siteBuildWrapper, /manifest\?\.schemaVersion !== 5/u);
+  assert.ok(
+    siteBuildWrapper.includes(`manifest?.schemaVersion !== ${siteArchiveSchemaVersion}`),
+    "site build wrapper must validate the current split-archive manifest schema",
+  );
+  assert.ok(
+    archiveAdapter.includes(`schemaVersion: ${siteArchiveSchemaVersion};`),
+    "Astro archive adapter type must use the current split-archive manifest schema",
+  );
+  assert.ok(
+    archiveAdapter.includes(`manifest.schemaVersion !== ${siteArchiveSchemaVersion}`),
+    "Astro archive adapter validator must use the current split-archive manifest schema",
+  );
   assert.match(siteBuildWrapper, /"src\/transcripts\/manifest\.json"/u);
   assert.match(siteBuildWrapper, /"src\/derived\/topic-normalization-patterns\.tsv"/u);
   assert.match(siteBuildWrapper, /manifest\.source\.patternsSha256/u);

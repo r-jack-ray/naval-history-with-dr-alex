@@ -2,15 +2,10 @@
 import type { GetStaticPaths, Page } from "astro";
 
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import { publicArchiveTopics, type ArchiveTopic } from "../../../data/archive";
+import { topicsForBrowse, type ArchiveTopic } from "../../../data/archive";
 import { buildTopicBrowseMetadata } from "../../../../../src/site/page-metadata.js";
 
-const topicsForBrowse = [...publicArchiveTopics].sort((left, right) =>
-  left.title.localeCompare(right.title, "en", { sensitivity: "base" })
-  || left.slug.localeCompare(right.slug),
-);
-
-export const getStaticPaths = (({ paginate }) => paginate(topicsForBrowse, { pageSize: 48 })) satisfies GetStaticPaths;
+export const getStaticPaths = (({ paginate }) => paginate(topicsForBrowse(), { pageSize: 48 })) satisfies GetStaticPaths;
 
 const { page } = Astro.props as { page: Page<ArchiveTopic> };
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")

@@ -3,15 +3,12 @@ import type { GetStaticPaths, Page } from "astro";
 
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import {
-  archiveVideos,
-  compareVideosByDateDescending,
   type ArchiveVideo,
+  videosForBrowse,
 } from "../../../data/archive";
 import { buildVideoBrowseMetadata } from "../../../../../src/site/page-metadata.js";
 
-const videosForBrowse = [...archiveVideos].sort(compareVideosByDateDescending);
-
-export const getStaticPaths = (({ paginate }) => paginate(videosForBrowse, { pageSize: 48 })) satisfies GetStaticPaths;
+export const getStaticPaths = (({ paginate }) => paginate(videosForBrowse(), { pageSize: 48 })) satisfies GetStaticPaths;
 
 const { page } = Astro.props as { page: Page<ArchiveVideo> };
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")

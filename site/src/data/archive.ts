@@ -560,6 +560,17 @@ export function segmentsForBrowse(): ArchiveSegment[] {
   return sortSegmentsByVideoDate(archiveSegments);
 }
 
+export function videosForBrowse(): ArchiveVideo[] {
+  return [...archiveVideos].sort(compareVideosByDateDescending);
+}
+
+export function topicsForBrowse(): ArchiveTopic[] {
+  return [...publicArchiveTopics].sort((left, right) =>
+    left.title.localeCompare(right.title, "en", { sensitivity: "base" })
+    || left.slug.localeCompare(right.slug)
+  );
+}
+
 export function videosForTopic(topic: ArchiveTopic): ArchiveVideo[] {
   return [...(videosByTopicSlug.get(topic.slug) ?? [])].sort(compareVideosByDateDescending);
 }

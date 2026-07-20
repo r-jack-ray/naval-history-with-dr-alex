@@ -26,11 +26,19 @@ Use this brief with `$naval-video-page-prototype` when working on the Astro/Page
 - Do not turn ordinary lecture material into fabricated Q&A.
 - Ground curated claims in video ID, timestamp, source URL, and transcript evidence when transcript-backed content is available.
 
+## Generated Archive Contract
+
+- Treat `siteArchiveSchemaVersion` in `src/site/archive-data.ts` as the authority for the split `archive/index.json` manifest schema.
+- Keep the manifest reader in `site/src/data/archive.ts`, the integrity and cache validator in `.codex/hooks/site-build-if-changed.mjs`, and `src/pipeline/shared-output.test.ts` synchronized with that constant whenever the manifest contract changes.
+- Distinguish the split-manifest schema from the logical reconstructed `SiteArchiveData.schemaVersion`; do not bump or rewrite one merely to make the other agree.
+- Publish and validate generated collection and bucket files through the generator, with `index.json` written last as the commit marker. Never repair a contract mismatch by hand-editing generated JSON.
+
 ## Site Expectations
 
 - Keep GitHub Pages compatibility in mind: the site base path is `/naval-history-with-dr-alex/`.
 - Regenerate the tracked `index.json`, `videos.json`, `topics.json`, and hash-bucketed segment files under `site/src/data/generated/archive/` through `npm run generate:site-data`, `npm run site:check`, or `npm run site:build`; do not hand-edit the manifest or its listed files.
 - Keep generated output under `site/dist/`; do not commit it.
+- Keep exported Astro `getStaticPaths` dependencies inside its isolated scope. Put reusable sorting and lookup logic in imported `site/src/data/archive.ts` helpers instead of frontmatter-local computed constants.
 - Add Pagefind metadata and filters where pages expose videos, topics, or segment types.
 - Keep search scalable by querying Pagefind output instead of embedding the archive dataset as one large custom browser payload.
 - Keep visible copy learner-facing. Prefer "study guide", "video guide", "time note", "watch point", "topic", and "subject" over database or processing language.
@@ -55,3 +63,5 @@ npm run check
 Allow at least 15 minutes for a full `site:build`. Astro may emit no output for
 several minutes while it renders more than 50,000 pages; silence alone is not a
 reason to terminate and restart the build.
+
+Run the full build for paginated or dynamic route changes because `astro check` does not execute prerender path generation.

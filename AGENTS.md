@@ -64,7 +64,11 @@ On Windows, do not launch the roaming `npm` shim from repository Node wrappers: 
 
 `build` emits `dist/`; `check:types` type-checks only; `test` compiles and runs Node's test runner; `check` combines both. `audit:site-content` validates curated transcript evidence and writes `reports/site-content-backlog.md`. `generate:site-data` writes deterministic Astro data under `site/src/data/generated/archive/`, with `index.json` as the authoritative manifest for the generated files. Never hand-edit that tracked generated dataset. `site:build` fingerprints the generator and site inputs, validates every manifest-listed archive file and SHA-256 before skipping generation, uses ignored `.tmp/` caches to skip unchanged archive, Astro, and Pagefind stages, and performs the required stages when inputs or outputs change; use `npm run site:build -- --force` to bypass its caches. Official YouTube Data API tasks default to one second between requests; alternate transcript fetches default to five seconds.
 
+`src/site/archive-data.ts` owns the split-manifest schema through `siteArchiveSchemaVersion`. Any manifest-schema change must update the Astro reader in `site/src/data/archive.ts`, the preflight validator in `.codex/hooks/site-build-if-changed.mjs`, and the cross-consumer assertions in `src/pipeline/shared-output.test.ts` in the same change. Do not confuse the split-manifest version with the logical reconstructed `SiteArchiveData.schemaVersion`; they version different contracts.
+
 Full `site:build`, `site:build:generated`, and `site:build:full` runs now traverse more than 50,000 HTML pages and can take well over three minutes, especially during Pagefind. Agent-run commands must allow at least 15 minutes (900,000 ms) before timing out and should treat several minutes of silence from `astro build --silent` as normal; do not kill and restart a build solely because it has not emitted recent output.
+
+Astro executes exported `getStaticPaths` functions in an isolated scope. Paginated and dynamic routes must obtain computed path data through imported adapter helpers or create it inside the exported function; they must not reference frontmatter-local computed constants. `astro check` does not execute prerender path generation, so any route or `getStaticPaths` change requires a full `site:build` before handoff.
 
 ## Coding Style & Naming Conventions
 

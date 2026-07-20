@@ -1,6 +1,6 @@
 ---
 name: naval-site-build-repair
-description: Diagnose and safely repair build, archive-generation, Astro, and Pagefind failures in the Naval History with Dr. Alex study-guide repository. Use when `generate:site-data`, `site:check`, or `site:build` fails; when errors report duplicate segment IDs or slugs, missing topics, duplicate taxonomy, topic-normalization failures, invalid curated shards, TypeScript or Astro failures, or Pagefind indexing problems; or when the user asks to repair a pasted naval site build error while preserving unrelated filesystem changes.
+description: Diagnose and safely repair build, archive-generation, Astro, and Pagefind failures in the Naval History with Dr. Alex study-guide repository. Use when `generate:site-data`, `site:check`, or `site:build` fails; when errors report an unsupported archive-manifest schema, missing or corrupt generated shards, duplicate segment IDs or slugs, missing topics, duplicate taxonomy, topic-normalization failures, invalid curated shards, TypeScript or Astro failures, or Pagefind indexing problems; or when the user asks to repair a pasted naval site build error while preserving unrelated filesystem changes.
 ---
 
 # Naval Site Build Repair
@@ -43,10 +43,18 @@ Repair site-pipeline failures without widening scope or destabilizing establishe
 - Add a missing shared topic only when a curated video or segment actually references it, the active creation policy accepts that slug as canonical, and the user's repair scope authorizes registry work; do not rewrite an unrelated shard to hide a registry problem.
 - Use `$naval-site-content-auditor` when the repair requires transcript-semantic judgment, public wording changes, or evidence validation.
 
+### Generated archive manifest or integrity failures
+
+- Treat `site/src/data/generated/archive/index.json` and its listed files as generated evidence, never as hand-edit targets.
+- Compare the emitted manifest version with `siteArchiveSchemaVersion` in `src/site/archive-data.ts`, then check the Astro reader in `site/src/data/archive.ts`, the wrapper validator in `.codex/hooks/site-build-if-changed.mjs`, and `src/pipeline/shared-output.test.ts`. These consumers must move together when the split-manifest contract changes.
+- Keep the split-manifest schema distinct from the logical reconstructed `SiteArchiveData.schemaVersion`. Do not downgrade the generator or change the logical schema merely to satisfy a stale manifest consumer.
+- If the generator emits the current valid contract and a stale consumer rejects it, repair that consumer and its cross-consumer test. For missing, extra, corrupt, misbucketed, or stale-provenance files, fix the source contract if necessary and regenerate through repository commands.
+
 ### TypeScript, Astro, or Pagefind failures
 
 - Trace the first source error before changing generated output.
 - Use `$naval-video-page-prototype` for generated archive contracts, Astro routes, templates, generated-data adapters, or Pagefind behavior changes. Build repair diagnoses and verifies those changes but does not widen itself into their implementation workflow.
+- For `getStaticPaths` failures, remember that Astro isolates the exported function from frontmatter-local computed constants. Move reusable route data behind imported adapter helpers, then verify with a full build because `astro check` does not execute prerender path generation.
 - Treat writer-lease contention as a stop condition. Do not bypass the repository lock or interfere with scheduled transcript workers.
 
 ## Validation
