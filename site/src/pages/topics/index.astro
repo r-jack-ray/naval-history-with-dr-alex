@@ -1,16 +1,16 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { publicArchiveTopics } from "../../data/archive";
-import topicsIndexUrl from "../../scripts/topics-index.js?url";
 import { staticPageMetadata } from "../../../../src/site/page-metadata.js";
 
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
-const featuredTopics = publicArchiveTopics.slice(0, 8);
-const alphabeticalTopics = [...publicArchiveTopics].sort((left, right) =>
-  left.title.localeCompare(right.title, "en", { sensitivity: "base" }),
-);
+const featuredTopics = [...publicArchiveTopics]
+  .sort((left, right) => right.segmentCount - left.segmentCount
+    || right.videoCount - left.videoCount
+    || left.title.localeCompare(right.title, "en", { sensitivity: "base" }))
+  .slice(0, 12);
 const videoCountLabel = (count: number) => count === 1 ? "1 video" : `${count} videos`;
 const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${count} time notes`;
 const metadata = staticPageMetadata.topics;
@@ -21,10 +21,6 @@ const metadata = staticPageMetadata.topics;
   description={metadata.description}
   pageType="topic-index"
 >
-  <Fragment slot="head">
-    <script src={topicsIndexUrl} defer is:inline></script>
-  </Fragment>
-
   <main id="content" class="page-shell">
     <section class="section-heading">
       <p class="eyebrow">Topics</p>
@@ -33,6 +29,38 @@ const metadata = staticPageMetadata.topics;
         Trace ships, navies, battles, weapons, doctrine, policy, and strategy across
         related Dr. Clarke video moments.
       </p>
+    </section>
+
+    <section class="home-section" aria-labelledby="topic-finder-heading">
+      <div class="section-title-row">
+        <div>
+          <p class="eyebrow">Find a subject</p>
+          <h2 id="topic-finder-heading">Search by ship, battle, navy, or idea</h2>
+        </div>
+      </div>
+      <div class="search-panel">
+        <form class="search-controls" role="search" action={`${baseUrl}search/`} method="get">
+          <div class="search-control">
+            <label for="topic-query">Search the study guide</label>
+            <input
+              class="search-input"
+              id="topic-query"
+              type="search"
+              name="q"
+              placeholder="Try destroyers, Jutland, logistics, or Royal Navy"
+              autocomplete="off"
+              aria-describedby="topic-query-help"
+            />
+            <p class="search-help" id="topic-query-help">
+              Search topic guides alongside related video guides and precise time notes.
+            </p>
+          </div>
+          <div><button class="primary-link" type="submit">Search the study guide</button></div>
+        </form>
+        <noscript>
+          <p class="search-fallback">Search results need JavaScript. The complete A-Z topic directory below works without it.</p>
+        </noscript>
+      </div>
     </section>
 
     <section class="home-section" aria-labelledby="featured-topics-heading">
@@ -54,74 +82,21 @@ const metadata = staticPageMetadata.topics;
       </div>
     </section>
 
-    <section class="home-section topic-directory" aria-labelledby="all-topics-heading" data-topic-directory>
+    <section class="home-section" aria-labelledby="all-topics-heading">
       <div class="section-title-row">
         <div>
-          <p class="eyebrow">Directory</p>
-          <h2 id="all-topics-heading">All topics</h2>
+          <p class="eyebrow">Complete directory</p>
+          <h2 id="all-topics-heading">Browse every topic A-Z</h2>
         </div>
+        <a class="secondary-link" href={`${baseUrl}topics/browse/`}>Open the complete topic directory</a>
       </div>
-
-      <form class="search-controls topic-directory-controls" role="search" data-topic-controls>
-        <div class="search-control topic-filter-control">
-          <label for="topic-filter">Filter all topics</label>
-          <div class="search-input-shell">
-            <input
-              class="search-input"
-              id="topic-filter"
-              type="search"
-              name="topic"
-              placeholder="Try destroyers, Jutland, logistics, or Royal Navy"
-              autocomplete="off"
-              aria-controls="topic-directory-grid"
-              aria-describedby="topic-directory-help topic-directory-status"
-              data-topic-filter
-            />
-            <button class="search-clear-button" type="button" data-topic-clear hidden>Clear</button>
-          </div>
-        </div>
-        <div class="search-control topic-sort-control">
-          <label for="topic-sort">Sort by</label>
-          <select class="search-select" id="topic-sort" name="sort" data-topic-sort>
-            <option value="alphabetical">A–Z</option>
-            <option value="time-notes">Most time notes</option>
-            <option value="videos">Most videos</option>
-          </select>
-        </div>
-        <p class="search-help" id="topic-directory-help">
-          Matches topic names, alternate names, and descriptions as you type.
-        </p>
-      </form>
-
-      <p class="search-status search-feedback topic-directory-status" id="topic-directory-status" data-topic-status aria-live="polite" aria-atomic="true">
-        Showing {alphabeticalTopics.length.toLocaleString("en-US")} topics.
+      <p>
+        The paginated directory keeps all {publicArchiveTopics.length.toLocaleString("en-US")} covered subjects
+        reachable through ordinary links without loading the full collection on one page.
       </p>
-
-      <section class="record-grid topics topic-directory-grid" id="topic-directory-grid" aria-label="All topics" data-topic-grid>
-      {
-        alphabeticalTopics.map((topic) => (
-          <article
-            class="topic-card"
-            data-topic-card
-            data-topic-title={topic.title}
-            data-topic-search={[topic.title, ...topic.aliases, topic.summary].join(" ")}
-            data-topic-videos={topic.videoCount}
-            data-topic-time-notes={topic.segmentCount}
-          >
-            <span class="label">{videoCountLabel(topic.videoCount)} · {timeNoteCountLabel(topic.segmentCount)}</span>
-            <h2><a href={`${baseUrl}topics/${topic.slug}/`}>{topic.title}</a></h2>
-            <p>{topic.summary}</p>
-            {topic.aliases.length > 0 && <small>Also: {topic.aliases.join(", ")}</small>}
-          </article>
-        ))
-      }
-      </section>
-      <p class="search-empty-state topic-directory-empty" data-topic-empty hidden>
-        No topics match that filter. Try a ship, battle, navy, weapon, or broader subject.
-      </p>
-      <noscript>
-        <p class="search-fallback">Filtering and sorting need JavaScript. The full A–Z topic directory remains available below.</p>
-      </noscript>
+      <div class="action-row">
+        <a class="primary-link" href={`${baseUrl}topics/browse/`}>Browse all topics</a>
+      </div>
     </section>
   </main>
 </BaseLayout>

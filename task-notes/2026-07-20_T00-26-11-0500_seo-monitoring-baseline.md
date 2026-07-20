@@ -10,7 +10,7 @@ The automated validator and repeatable Lighthouse target selection are implement
 
 - Run `npm run check:site-seo` after a complete site build. Errors are deployment-blocking; warnings identify advisory content or page-size work.
 - Run `npm run audit:lighthouse:seo-baseline` after deployment. Set `SEO_AUDIT_BASE_URL` to a local or alternate deployed base URL when needed.
-- The Lighthouse command selects a current Video, Time Note, and Topic from generated episode data, plus Home and the Topic directory. Reports are written under `reports/lighthouse/seo-baseline/`.
+- The Lighthouse command selects a current Video, Time Note, and Topic from generated episode data, plus Home and the first page of the paginated Topic directory at `/topics/browse/`. Reports are written under `reports/lighthouse/seo-baseline/`.
 
 ## Search Console baseline
 

@@ -21,7 +21,8 @@ if (result.diagnostics.length > 200) {
 console.log(
   `SEO validation checked ${result.htmlPages.toLocaleString("en-US")} HTML pages, `
   + `${result.indexablePages.toLocaleString("en-US")} indexable routes, `
-  + `${result.sitemapUrls.toLocaleString("en-US")} sitemap URLs, and ${result.sitemapFiles} child sitemaps.`,
+  + `${result.sitemapUrls.toLocaleString("en-US")} sitemap URLs, ${result.videoSitemapEntries.toLocaleString("en-US")} video records, `
+  + `and ${result.sitemapFiles} child sitemaps (${result.videoSitemapFiles} video).`,
 );
 if (result.largestHtmlPage !== undefined) {
   console.log(`Largest HTML page: ${result.largestHtmlPage.route} (${result.largestHtmlPage.bytes.toLocaleString("en-US")} bytes).`);

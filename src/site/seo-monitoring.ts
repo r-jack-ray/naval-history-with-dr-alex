@@ -26,6 +26,6 @@ export function buildRepresentativeLighthouseTargets(
     { name: "video", route: `videos/${representative.slug}/` },
     { name: "time-note", route: `segments/${segmentSlug}/` },
     { name: "topic", route: `topics/${topicSlug}/` },
-    { name: "largest-directory", route: "topics/" },
+    { name: "largest-directory", route: "topics/browse/" },
   ];
 }

@@ -8,8 +8,12 @@ import {
   MAX_METADATA_DESCRIPTION_LENGTH,
   MAX_METADATA_TITLE_LENGTH,
   buildSegmentPageMetadata,
+  buildTimeNoteBrowseMetadata,
+  buildTopicBrowseMetadata,
   buildTopicPageMetadata,
+  buildVideoBrowseMetadata,
   buildVideoPageMetadata,
+  buildVideoStructuredName,
   segmentDescriptionSource,
 } from "./page-metadata.js";
 import { isPublicTopic } from "./public-topic.js";
@@ -45,6 +49,8 @@ test("builds unique, nonempty metadata for every current public detail page", ()
   metadata.forEach(assertUsefulMetadata);
   assert.equal(new Set(metadata.map((item) => item.title)).size, metadata.length);
   assert.equal(new Set(metadata.map((item) => item.description)).size, metadata.length);
+  const structuredVideoNames = videos.map(buildVideoStructuredName);
+  assert.equal(new Set(structuredVideoNames).size, structuredVideoNames.length);
 });
 
 test("time-note descriptions fall back from summary to short answer to body", () => {
@@ -53,4 +59,19 @@ test("time-note descriptions fall back from summary to short answer to body", ()
   assert.equal(segmentDescriptionSource({ summary: " ", answerShort: " Answer text. ", body: "Body text." }), "Answer text.");
   assert.equal(segmentDescriptionSource({ summary: "", answerShort: "", body: " Body text. " }), "Body text.");
   assert.match(buildSegmentPageMetadata({ ...common, summary: "", answerShort: "", body: "Body text." }).description, /Body text\./u);
+});
+
+test("builds distinct metadata for every paginated archive family and page", () => {
+  const metadata = [
+    buildTimeNoteBrowseMetadata(1, 4),
+    buildTimeNoteBrowseMetadata(2, 4),
+    buildVideoBrowseMetadata(1, 3),
+    buildVideoBrowseMetadata(2, 3),
+    buildTopicBrowseMetadata(1, 12),
+    buildTopicBrowseMetadata(2, 12),
+  ];
+
+  metadata.forEach(assertUsefulMetadata);
+  assert.equal(new Set(metadata.map((item) => item.title)).size, metadata.length);
+  assert.equal(new Set(metadata.map((item) => item.description)).size, metadata.length);
 });

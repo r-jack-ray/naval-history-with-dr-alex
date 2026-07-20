@@ -64,17 +64,26 @@ function meaningfulTopics(video: Pick<SiteVideo, "topics">): string {
 export function buildVideoPageMetadata(
   video: Pick<SiteVideo, "title" | "videoDateLabel" | "videoKind" | "topics" | "segmentSlugs">,
 ): PageMetadata {
+  const structuredName = buildVideoStructuredName(video);
   const title = boundText(video.title, 105);
   const date = boundText(video.videoDateLabel, 35);
   const format = video.videoKind === "stream" ? "stream" : "video";
   const timeNotes = countLabel(video.segmentSlugs.length, "time note");
   return {
-    title: `${title} (${date}; ${timeNotes}) | Dr. Alex Clarke Video Guide`,
+    title: `${structuredName} | Dr. Alex Clarke Video Guide`,
     description: boundText(
       `Study ${title}, a Dr. Alex Clarke ${format} from ${date}, with ${timeNotes}.${meaningfulTopics(video)}`,
       MAX_METADATA_DESCRIPTION_LENGTH,
     ),
   };
+}
+
+export function buildVideoStructuredName(
+  video: Pick<SiteVideo, "title" | "videoDateLabel" | "segmentSlugs">,
+): string {
+  const title = boundText(video.title, 105);
+  const date = boundText(video.videoDateLabel, 35);
+  return `${title} (${date}; ${countLabel(video.segmentSlugs.length, "time note")})`;
 }
 
 export function segmentDescriptionSource(
@@ -125,5 +134,19 @@ export function buildTimeNoteBrowseMetadata(currentPage: number, lastPage: numbe
   return {
     title: `Browse Naval History Time Notes, Page ${currentPage} | ${siteName}`,
     description: `Browse page ${currentPage} of ${lastPage} in the chronological directory of Dr. Alex Clarke video time notes and transcript-backed watch points.`,
+  };
+}
+
+export function buildVideoBrowseMetadata(currentPage: number, lastPage: number): PageMetadata {
+  return {
+    title: `Browse Dr. Alex Clarke Video Guides, Page ${currentPage} | ${siteName}`,
+    description: `Browse page ${currentPage} of ${lastPage} in the complete reverse-chronological directory of Dr. Alex Clarke video guides and their naval-history time notes.`,
+  };
+}
+
+export function buildTopicBrowseMetadata(currentPage: number, lastPage: number): PageMetadata {
+  return {
+    title: `Browse Naval History Topics A-Z, Page ${currentPage} | ${siteName}`,
+    description: `Browse page ${currentPage} of ${lastPage} in the complete A-Z directory of naval-history subjects covered by Dr. Alex Clarke video guides and time notes.`,
   };
 }

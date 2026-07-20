@@ -63,8 +63,7 @@ Every item is intended to be independently shippable. “Interlock” identifies
 | 11 | SEO-11 | Generate a video sitemap | 3-5 days | Medium-to-high video discovery value | Shares the video metadata contract with SEO-10. |
 | 12 | SEO-12 | Curate high-value topic landing pages and consolidate weak taxonomy | First batch 1-2 weeks; ongoing | Very high content-quality value | Search Console can prioritize work; each topic can be handled separately. |
 | 13 | SEO-13 | Add same-page timestamp URLs and video key-moment markup | 1-2 weeks | Potentially high video-result value | Requires SEO-10 and a real local seek/deep-link contract. |
-| 14 | SEO-14 | Optionally migrate to a custom domain | 1-2 weeks plus DNS/crawl transition | Branding and ownership benefits; ranking effect uncertain | Changes every absolute URL signal and should be decided early if imminent. |
-| 15 | SEO-15 | Build an ethical external-link and educator outreach program | Ongoing over months | Potentially very high authority value | Promote stable canonical pages and genuinely useful content assets. |
+| 14 | SEO-14 | Conditionally migrate to a custom domain only if free or fully funded | 1-2 weeks plus DNS/crawl transition | Branding and ownership benefits; ranking effect uncertain | Deferred unless there is no owner cost; changes every absolute URL signal. |
 
 ## Independent work items
 
@@ -295,11 +294,14 @@ Acceptance:
 
 Interlock: SEO-10 is required. Current links jump directly to YouTube and do not satisfy the same-page Clip URL contract by themselves.
 
-### SEO-14 — Optionally migrate to a custom domain
+### SEO-14 — Conditionally migrate to a custom domain
+
+Status: Deferred and out of scope unless the domain, migration, and ongoing renewal costs require no owner spending or are explicitly covered by external funding.
 
 Scope:
 
 - Treat this as a branding, ownership, and operational decision rather than a guaranteed ranking boost.
+- Do not plan or implement the migration while it would create any owner-funded cost.
 - If approved, plan DNS, HTTPS, GitHub Pages configuration, old-origin redirects, canonical/sitemap/social/JSON-LD URL changes, Search Console properties, and post-migration monitoring as one migration.
 - A custom host would allow an authoritative host-root `robots.txt` and domain-level site identity instead of a GitHub Pages project subdirectory.
 
@@ -311,22 +313,6 @@ Acceptance:
 
 Interlock: If a custom domain is likely within the next three months, decide before implementing SEO-02, SEO-05, SEO-10, or SEO-11. Otherwise, ship those improvements now and treat the domain change as a later controlled migration.
 
-### SEO-15 — Earn authoritative external links and referrals
-
-Scope:
-
-- Create a small set of genuinely link-worthy assets: curated campaign guides, ship/class explainers, naval-doctrine reading paths, or educator-friendly collections built from the existing evidence-backed pages.
-- Contact relevant museums, naval-history societies, educators, reading lists, research communities, and creator collaborators with a specific resource that helps their audience.
-- Track referrals and earned links. Do not buy links, automate mass outreach, trade links at scale, or spam forums and directories.
-
-Acceptance:
-
-- Outreach points to stable canonical resources with a clear learner benefit.
-- Every placement is editorially defensible and complies with Google’s spam policies.
-- Results are measured over months rather than judged by immediate rank changes.
-
-Interlock: Technical work is not a hard prerequisite, but SEO-02 and SEO-12 reduce link churn and give outreach stronger destinations.
-
 ## Interlock map
 
 | Shared contract | Consumers | Rule |
@@ -336,19 +322,18 @@ Interlock: Technical work is not a hard prerequisite, but SEO-02 and SEO-12 redu
 | Page metadata builder | SEO-03, SEO-06, SEO-10, SEO-11 | Title and description must not diverge among HTML, social metadata, JSON-LD, and video sitemap output. |
 | Crawlable pagination contract | SEO-05, SEO-08, SEO-09 | Each page is self-canonical, linked with ordinary anchors, included in the sitemap, and small enough to fetch fully. |
 | Video metadata contract | SEO-10, SEO-11, SEO-13 | Preserve ISO duration and use the same title, description, thumbnail, date, embed, and offsets everywhere. |
-| Production origin | SEO-02, SEO-03, SEO-05, SEO-07, SEO-10, SEO-11, SEO-14 | A custom-domain decision changes all absolute URL outputs and must be handled as a migration. |
+| Production origin | SEO-02, SEO-03, SEO-05, SEO-07, SEO-10, SEO-11, SEO-14 | Keep the existing GitHub Pages origin unless a no-cost or fully funded custom-domain migration is explicitly approved. |
 
 ## Recommended delivery order by value
 
 The tasks remain independently shippable, but the best first delivery wave is not the same as the ease ranking:
 
-1. Decide whether a custom domain is imminent. Do not start a migration merely for SEO.
+1. Keep the existing GitHub Pages origin; reconsider SEO-14 only if a no-cost or fully funded migration becomes available.
 2. Ship index hygiene and discovery: SEO-01, SEO-02, SEO-04, and SEO-05.
 3. Fix the largest current crawl defect: SEO-09.
 4. Add regression protection and better snippets: SEO-08 and SEO-06.
 5. Add presentation and video eligibility: SEO-07, SEO-03, SEO-10, and SEO-11.
 6. Run SEO-12 continuously in small topic batches; evaluate SEO-13 only after the base video markup is stable.
-7. Begin SEO-15 with the strongest curated resources and stable URLs.
 
 ## Validation and handoff expectations
 
@@ -368,6 +353,8 @@ For any implementation item:
 - Keep canonical URLs, indexing policy, social metadata, page metadata, sitemap eligibility, visible breadcrumbs, and structured breadcrumbs in shared helpers or components consumed by every applicable route family.
 - Every newly generated video and time-note detail route must automatically receive a unique nonempty title and description, one canonical, the appropriate social metadata, visible hierarchical breadcrumbs, and matching `BreadcrumbList` JSON-LD.
 - Sitemap generation must continue to discover all generated indexable routes, split them below protocol limits, and exclude Search, non-HTML endpoints, and unreferenced topics through the shared eligibility policies.
+- Video and Topic browse directories must paginate the current generated public collections automatically at a bounded page size. New episodes and newly referenced topics must enter those ordinary-link directories without manual route edits, while the reserved `browse` slug and rendered inbound-link coverage check prevent route collisions or silent omissions.
+- Every newly generated video guide must inherit source-preserved `publishedAt` and `durationIso` values, a page-specific `VideoObject`, and exactly one matching video-sitemap record without a route-specific edit. Video sitemaps must rechunk automatically at 45,000 records, stay linked from the public sitemap index, omit only the optional XML duration for videos above Google's eight-hour sitemap limit, and remain covered by rendered metadata-parity validation.
 - The rendered SEO validator must enumerate actual generated HTML and sitemap files rather than depend on a fixed episode or route list. New episodes therefore become required validation subjects on their first build.
 - Any new route family, indexing exception, structured-data type, pagination contract, or metadata field must update the shared contract, validator, and focused fixtures in the same change.
 - The deployment workflow must run the rendered SEO validator after the site build. Hard structural failures block deployment; advisory content or page-size opportunities remain clearly labeled warnings.

@@ -13,6 +13,6 @@ test("derives representative Lighthouse routes from generated episode data", () 
     { name: "video", route: "videos/example-video/" },
     { name: "time-note", route: "segments/example-note/" },
     { name: "topic", route: "topics/destroyers/" },
-    { name: "largest-directory", route: "topics/" },
+    { name: "largest-directory", route: "topics/browse/" },
   ]);
 });

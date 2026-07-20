@@ -6,6 +6,8 @@ Timestamp: 2026-07-20T00:26:11-05:00
 
 - The official `@astrojs/sitemap` integration is configured for the production GitHub Pages origin and project base path.
 - The integration keeps its 45,000-URL default, so a sufficiently large build emits `sitemap-index.xml` plus numbered child sitemap files.
+- Video-guide metadata uses source-preserved publication timestamps and ISO durations to emit `VideoObject` data plus automatically chunked `video-sitemaps/<n>.xml` files. Those files are linked from the same public sitemap index.
+- Video sitemap chunks are capped at 45,000 records. Videos longer than the video-sitemap protocol's eight-hour duration ceiling remain listed without that optional XML duration; their complete ISO duration remains in page structured data.
 - `/search/`, non-HTML endpoints, and topics without related videos or time notes are excluded.
 - Every HTML page advertises the absolute sitemap index URL in its head.
 - No project-subpath `robots.txt` is added because this repository does not control the `github.io` host root.
@@ -15,6 +17,7 @@ Timestamp: 2026-07-20T00:26:11-05:00
 1. Confirm these files exist in `site/dist/` after the owner-run full build:
    - `sitemap-index.xml`
    - Every child sitemap referenced by that index, such as `sitemap-0.xml`
+   - Every referenced video sitemap, such as `video-sitemaps/0.xml`
 2. Deploy the site normally.
 3. Confirm this URL returns the XML sitemap index:
 
@@ -37,6 +40,8 @@ Timestamp: 2026-07-20T00:26:11-05:00
 | Search Console status | Pending |
 | Discovered pages | Pending |
 | Indexed pages baseline | Pending |
+| Video sitemap records discovered | Pending |
+| Video indexing baseline | Pending |
 | Notes or errors | Pending |
 
 ## Representative post-deployment checks
@@ -44,5 +49,6 @@ Timestamp: 2026-07-20T00:26:11-05:00
 - Homepage canonical matches its sitemap URL.
 - `/search/` contains one `noindex` meta tag and is absent from the sitemap.
 - One video guide, one time note, and one topic page appear with the same absolute trailing-slash URL used by their canonical.
+- Representative upload and archived-stream guides each contain one valid `VideoObject` whose thumbnail, description, publication date, duration, and embed URL match their video-sitemap record.
 - An unreferenced topic has neither a public page nor a sitemap entry.
 - Each child sitemap contains fewer than 50,000 URLs.

@@ -6,6 +6,15 @@ import { Parser } from "htmlparser2";
 import { SaxesParser } from "saxes";
 
 import { isIndexablePageUrl } from "../../site/src/data/page-indexing.js";
+import { videoSitemapEntryLimit } from "../../site/src/data/video-sitemap-routing.js";
+import {
+  maxVideoSitemapDurationSeconds,
+  parseVideoDurationSeconds,
+} from "./video-seo.js";
+import {
+  parseVideoSitemapXmlFile,
+  type VideoSitemapEntry,
+} from "./video-sitemap-validation.js";
 
 export type SeoDiagnosticSeverity = "error" | "warning";
 
@@ -25,6 +34,8 @@ export interface HtmlSeoSnapshot {
   robots: Array<{ name: string; content: string }>;
   h1Count: number;
   links: string[];
+  iframeSources: string[];
+  ledes: string[];
   jsonLdBlocks: string[];
   visibleBreadcrumbs: Array<{ name: string; href?: string }>;
 }
@@ -48,6 +59,8 @@ export interface SeoValidationResult {
   indexablePages: number;
   sitemapUrls: number;
   sitemapFiles: number;
+  videoSitemapEntries: number;
+  videoSitemapFiles: number;
   largestHtmlPage: { route: string; bytes: number } | undefined;
 }
 
@@ -60,6 +73,10 @@ interface HtmlParserState {
   robots: Array<{ name: string; content: string }>;
   h1Count: number;
   links: string[];
+  iframeSources: string[];
+  ledeDepth: number;
+  ledeText: string[];
+  ledes: string[];
   jsonLdBlocks: string[];
   inJsonLd: boolean;
   jsonLdText: string[];
@@ -86,6 +103,10 @@ function createHtmlParserState(): HtmlParserState {
     robots: [],
     h1Count: 0,
     links: [],
+    iframeSources: [],
+    ledeDepth: 0,
+    ledeText: [],
+    ledes: [],
     jsonLdBlocks: [],
     inJsonLd: false,
     jsonLdText: [],
@@ -122,6 +143,9 @@ function createHtmlParser(state: HtmlParserState): Parser {
       if (name === "a" && attributes.href !== undefined) {
         state.links.push(attributes.href);
       }
+      if (name === "iframe" && attributes.src !== undefined) {
+        state.iframeSources.push(attributes.src);
+      }
       if (name === "script" && (attributes.type ?? "").toLowerCase() === "application/ld+json") {
         state.inJsonLd = true;
         state.jsonLdText = [];
@@ -134,6 +158,13 @@ function createHtmlParser(state: HtmlParserState): Parser {
         state.breadcrumbDepth = 1;
       } else if (state.breadcrumbDepth > 0) {
         state.breadcrumbDepth += 1;
+      }
+      const isLede = name === "p" && (attributes.class ?? "").split(/\s+/u).includes("lede");
+      if (isLede) {
+        state.ledeDepth = 1;
+        state.ledeText = [];
+      } else if (state.ledeDepth > 0) {
+        state.ledeDepth += 1;
       }
       if (
         state.breadcrumbDepth > 0
@@ -153,6 +184,9 @@ function createHtmlParser(state: HtmlParserState): Parser {
       }
       if (state.activeBreadcrumbTag !== undefined) {
         state.activeBreadcrumbText.push(text);
+      }
+      if (state.ledeDepth > 0) {
+        state.ledeText.push(text);
       }
     },
     onclosetag(name) {
@@ -177,6 +211,13 @@ function createHtmlParser(state: HtmlParserState): Parser {
       if (state.breadcrumbDepth > 0) {
         state.breadcrumbDepth -= 1;
       }
+      if (state.ledeDepth > 0) {
+        state.ledeDepth -= 1;
+        if (state.ledeDepth === 0) {
+          state.ledes.push(normalizeWhitespace(state.ledeText.join("")));
+          state.ledeText = [];
+        }
+      }
     },
   }, { decodeEntities: true, lowerCaseAttributeNames: true, lowerCaseTags: true });
 }
@@ -191,6 +232,8 @@ function snapshotFromState(state: HtmlParserState, bytes: number): HtmlSeoSnapsh
     robots: state.robots,
     h1Count: state.h1Count,
     links: state.links,
+    iframeSources: state.iframeSources,
+    ledes: state.ledes,
     jsonLdBlocks: state.jsonLdBlocks,
     visibleBreadcrumbs: state.visibleBreadcrumbs,
   };
@@ -381,10 +424,23 @@ async function listOutputFiles(root: string): Promise<string[]> {
 function detailRouteKind(urlValue: string, basePath: string): "video" | "segment" | "topic" | undefined {
   const pathname = new URL(urlValue).pathname;
   const relativePath = pathname.slice(normalizeBasePath(basePath).length);
-  if (/^videos\/[^/]+\/$/u.test(relativePath)) return "video";
+  if (/^videos\/(?!browse\/)[^/]+\/$/u.test(relativePath)) return "video";
   if (/^segments\/(?!browse\/)[^/]+\/$/u.test(relativePath)) return "segment";
-  if (/^topics\/[^/]+\/$/u.test(relativePath)) return "topic";
+  if (/^topics\/(?!browse\/)[^/]+\/$/u.test(relativePath)) return "topic";
   return undefined;
+}
+
+function browseDirectoryKind(urlValue: string, basePath: string): "video" | "topic" | undefined {
+  const pathname = new URL(urlValue).pathname;
+  const relativePath = pathname.slice(normalizeBasePath(basePath).length);
+  if (/^videos\/browse\/(?:\d+\/)?$/u.test(relativePath)) return "video";
+  if (/^topics\/browse\/(?:\d+\/)?$/u.test(relativePath)) return "topic";
+  return undefined;
+}
+
+function isDirectoryHubRoute(relativeRoute: string): boolean {
+  return ["videos/", "topics/", "segments/"].includes(relativeRoute)
+    || /^(?:videos|topics|segments)\/browse\/(?:\d+\/)?$/u.test(relativeRoute);
 }
 
 function jsonLdObjectsWithType(value: unknown, type: string): Record<string, unknown>[] {
@@ -393,6 +449,119 @@ function jsonLdObjectsWithType(value: unknown, type: string): Record<string, unk
   const record = value as Record<string, unknown>;
   const own = record["@type"] === type ? [record] : [];
   return [...own, ...jsonLdObjectsWithType(record["@graph"], type)];
+}
+
+interface RenderedVideoObjectRecord extends VideoSitemapEntry {
+  durationSeconds: number;
+  durationIso: string;
+}
+
+function parsedJsonLdValues(snapshot: HtmlSeoSnapshot): unknown[] {
+  const values: unknown[] = [];
+  for (const block of snapshot.jsonLdBlocks) {
+    try {
+      values.push(JSON.parse(block) as unknown);
+    } catch {
+      // JSON parsing diagnostics are emitted by the existing per-page validation path.
+    }
+  }
+  return values;
+}
+
+function videoObjects(snapshot: HtmlSeoSnapshot): Record<string, unknown>[] {
+  return parsedJsonLdValues(snapshot).flatMap((value) => jsonLdObjectsWithType(value, "VideoObject"));
+}
+
+function absoluteHttpUrl(value: unknown): string | undefined {
+  if (typeof value !== "string") return undefined;
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:" || url.protocol === "http:" ? url.href : undefined;
+  } catch {
+    return undefined;
+  }
+}
+
+function validateVideoObject(
+  snapshot: HtmlSeoSnapshot,
+  canonical: string,
+  route: string,
+  diagnostic: (severity: SeoDiagnosticSeverity, rule: string, route: string, message: string) => void,
+): RenderedVideoObjectRecord | undefined {
+  const objects = videoObjects(snapshot);
+  if (objects.length !== 1) {
+    diagnostic("error", "video-object-count", route, `Expected one VideoObject; found ${objects.length}.`);
+    return undefined;
+  }
+  const object = objects[0] ?? {};
+  const name = typeof object.name === "string" ? normalizeWhitespace(object.name) : "";
+  const description = typeof object.description === "string" ? normalizeWhitespace(object.description) : "";
+  const thumbnailUrl = absoluteHttpUrl(object.thumbnailUrl);
+  const pageUrl = absoluteHttpUrl(object.url);
+  const playerUrl = absoluteHttpUrl(object.embedUrl);
+  const publicationDate = typeof object.uploadDate === "string" ? object.uploadDate.trim() : "";
+  const durationIso = typeof object.duration === "string" ? object.duration.trim() : "";
+  const durationSeconds = parseVideoDurationSeconds(durationIso);
+  let valid = true;
+
+  if (object["@context"] !== "https://schema.org" || object["@type"] !== "VideoObject") {
+    diagnostic("error", "video-object-type", route, "VideoObject must use the canonical Schema.org context and type.");
+    valid = false;
+  }
+  if (pageUrl !== canonical || object["@id"] !== `${canonical}#video`) {
+    diagnostic("error", "video-object-url", route, "VideoObject URL and ID must derive from the page canonical.");
+    valid = false;
+  }
+  if (name.length === 0 || !snapshot.title.startsWith(`${name} |`)) {
+    diagnostic("error", "video-object-name", route, "VideoObject name must be nonempty and align with the page title.");
+    valid = false;
+  }
+  if (description.length === 0 || snapshot.descriptions[0] !== description
+    || snapshot.ledes.length !== 1 || snapshot.ledes[0] !== description) {
+    diagnostic("error", "video-object-description", route, "VideoObject description must match the meta description and visible video lede.");
+    valid = false;
+  }
+  if (thumbnailUrl === undefined) {
+    diagnostic("error", "video-object-thumbnail", route, "VideoObject requires an absolute HTTP or HTTPS thumbnailUrl.");
+    valid = false;
+  }
+  if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/u.test(publicationDate)
+    || !Number.isFinite(Date.parse(publicationDate))) {
+    diagnostic("error", "video-object-upload-date", route, "VideoObject requires a canonical UTC uploadDate.");
+    valid = false;
+  }
+  if (durationSeconds === undefined) {
+    diagnostic("error", "video-object-duration", route, "VideoObject requires a positive ISO 8601 duration.");
+    valid = false;
+  }
+  const iframeUrls = snapshot.iframeSources.map((source) => {
+    try { return new URL(source, canonical).href; } catch { return undefined; }
+  }).filter((value): value is string => value !== undefined);
+  if (playerUrl === undefined || iframeUrls.length !== 1 || iframeUrls[0] !== playerUrl) {
+    diagnostic("error", "video-object-player", route, "VideoObject embedUrl must match the page's single visible iframe player.");
+    valid = false;
+  }
+
+  if (!valid || pageUrl === undefined || thumbnailUrl === undefined
+    || playerUrl === undefined || durationSeconds === undefined) {
+    return undefined;
+  }
+  return {
+    pageUrl,
+    thumbnailUrl,
+    title: name,
+    description,
+    playerUrl,
+    durationSeconds,
+    publicationDate,
+    durationIso,
+  };
+}
+
+function isVideoSitemapUrl(value: string, basePath: string): boolean {
+  const pathname = new URL(value).pathname;
+  const relativePath = pathname.slice(normalizeBasePath(basePath).length);
+  return /^video-sitemaps\/\d+\.xml$/u.test(relativePath);
 }
 
 function validateBreadcrumbs(
@@ -471,6 +640,10 @@ export async function validateRenderedSeoSite(options: SeoValidationOptions): Pr
   const indexableRouteUrls = new Set(htmlPages.filter((page) => isIndexablePageUrl(page.url, basePath)).map((page) => page.url));
   const titles = new Map<string, string>();
   const canonicals = new Map<string, string>();
+  const directoryLinkedVideoUrls = new Set<string>();
+  const directoryLinkedTopicUrls = new Set<string>();
+  const renderedVideoObjects = new Map<string, RenderedVideoObjectRecord>();
+  const renderedVideoObjectNames = new Map<string, string>();
   let largestHtmlPage: SeoValidationResult["largestHtmlPage"];
 
   let cursor = 0;
@@ -519,6 +692,7 @@ export async function validateRenderedSeoSite(options: SeoValidationOptions): Pr
       if (snapshot.h1Count !== 1) {
         diagnostic("error", "h1-count", page.url, `Expected one H1; found ${snapshot.h1Count}.`);
       }
+      const sourceDirectoryKind = browseDirectoryKind(page.url, basePath);
       const isSearch = page.url === new URL(`${basePath}search/`, siteOrigin).href;
       if (isSearch) {
         const tokens = snapshot.robots.flatMap((item) => item.content.toLowerCase().split(/[\s,]+/u).filter(Boolean));
@@ -537,6 +711,24 @@ export async function validateRenderedSeoSite(options: SeoValidationOptions): Pr
           }
         }
       }
+      const isVideoPage = detailRouteKind(page.url, basePath) === "video";
+      if (isVideoPage && snapshot.canonicals.length === 1) {
+        const record = validateVideoObject(snapshot, snapshot.canonicals[0] ?? "", page.url, diagnostic);
+        if (record !== undefined) {
+          renderedVideoObjects.set(page.url, record);
+          const priorNameRoute = renderedVideoObjectNames.get(record.title);
+          if (priorNameRoute !== undefined) {
+            diagnostic("error", "video-object-name-duplicate", page.url, `VideoObject name duplicates ${priorNameRoute}: ${record.title}`);
+          } else {
+            renderedVideoObjectNames.set(record.title, page.url);
+          }
+        }
+      } else if (!isVideoPage) {
+        const unexpectedVideoObjects = videoObjects(snapshot);
+        if (unexpectedVideoObjects.length > 0) {
+          diagnostic("error", "video-object-unexpected", page.url, `Non-video page contains ${unexpectedVideoObjects.length} VideoObject record(s).`);
+        }
+      }
       for (const href of snapshot.links) {
         let target: URL;
         try { target = new URL(href, page.url); } catch {
@@ -550,8 +742,15 @@ export async function validateRenderedSeoSite(options: SeoValidationOptions): Pr
           diagnostic("error", "internal-link-base", page.url, `Internal link escapes the project base path: ${href}`);
           continue;
         }
+        const targetUrl = target.href;
+        if (sourceDirectoryKind === "video" && detailRouteKind(targetUrl, basePath) === "video") {
+          directoryLinkedVideoUrls.add(targetUrl);
+        }
+        if (sourceDirectoryKind === "topic" && detailRouteKind(targetUrl, basePath) === "topic") {
+          directoryLinkedTopicUrls.add(targetUrl);
+        }
         let outputPath: string;
-        try { outputPath = outputRelativePathForUrl(target.href, siteOrigin, basePath); }
+        try { outputPath = outputRelativePathForUrl(targetUrl, siteOrigin, basePath); }
         catch (error) {
           diagnostic("error", "internal-link-url", page.url, error instanceof Error ? error.message : String(error));
           continue;
@@ -561,7 +760,7 @@ export async function validateRenderedSeoSite(options: SeoValidationOptions): Pr
         }
       }
       const relativeRoute = new URL(page.url).pathname.slice(basePath.length);
-      if (["videos/", "topics/", "segments/", "segments/browse/"].includes(relativeRoute)
+      if (isDirectoryHubRoute(relativeRoute)
         && snapshot.bytes > (options.hubWarningBytes ?? defaultHubWarningBytes)) {
         diagnostic("warning", "oversized-hub", page.url, `Hub HTML is ${snapshot.bytes.toLocaleString("en-US")} bytes.`);
       }
@@ -569,9 +768,22 @@ export async function validateRenderedSeoSite(options: SeoValidationOptions): Pr
   });
   await Promise.all(workers);
 
+  for (const route of routeUrls) {
+    const detailKind = detailRouteKind(route, basePath);
+    if (detailKind === "video" && !directoryLinkedVideoUrls.has(route)) {
+      diagnostic("error", "directory-inbound-link", route, "Video detail route has no inbound link from the paginated Video Guide directory.");
+    }
+    if (detailKind === "topic" && !directoryLinkedTopicUrls.has(route)) {
+      diagnostic("error", "directory-inbound-link", route, "Topic detail route has no inbound link from the paginated Topic directory.");
+    }
+  }
+
   const sitemapIndexPath = join(distRoot, "sitemap-index.xml");
   const sitemapUrls = new Set<string>();
+  const videoSitemapPages = new Map<string, VideoSitemapEntry>();
+  const referencedVideoSitemapPaths = new Set<string>();
   let sitemapFiles = 0;
+  let videoSitemapFiles = 0;
   try {
     const index = await parseSitemapXmlFile(sitemapIndexPath);
     if (index.root !== "sitemapindex") {
@@ -596,6 +808,55 @@ export async function validateRenderedSeoSite(options: SeoValidationOptions): Pr
         continue;
       }
       try {
+        if (isVideoSitemapUrl(childLocation, basePath)) {
+          referencedVideoSitemapPaths.add(childRelativePath);
+          const child = await parseVideoSitemapXmlFile(childPath);
+          sitemapFiles += 1;
+          videoSitemapFiles += 1;
+          if (child.entries.length === 0 || child.entries.length > videoSitemapEntryLimit) {
+            diagnostic("error", "video-sitemap-size", childLocation, `Video sitemap contains ${child.entries.length} records.`);
+          }
+          for (const entry of child.entries) {
+            const prior = videoSitemapPages.get(entry.pageUrl);
+            if (prior !== undefined) {
+              diagnostic("error", "video-sitemap-page-duplicate", childLocation, `Video guide appears in more than one video sitemap record: ${entry.pageUrl}`);
+              continue;
+            }
+            videoSitemapPages.set(entry.pageUrl, entry);
+            let isRenderedVideoRoute = false;
+            try {
+              isRenderedVideoRoute = routeUrls.has(entry.pageUrl)
+                && detailRouteKind(entry.pageUrl, basePath) === "video"
+                && indexableRouteUrls.has(entry.pageUrl);
+            } catch {
+              isRenderedVideoRoute = false;
+            }
+            if (!isRenderedVideoRoute) {
+              diagnostic("error", "video-sitemap-page-route", childLocation, `Video sitemap record is not an indexable rendered video guide: ${entry.pageUrl}`);
+              continue;
+            }
+            const rendered = renderedVideoObjects.get(entry.pageUrl);
+            if (rendered === undefined) {
+              diagnostic("error", "video-sitemap-video-object", entry.pageUrl, "Video sitemap page has no valid matching VideoObject.");
+              continue;
+            }
+            const expectedDuration = rendered.durationSeconds <= maxVideoSitemapDurationSeconds
+              ? Math.floor(rendered.durationSeconds)
+              : undefined;
+            const mismatches = [
+              entry.thumbnailUrl === rendered.thumbnailUrl,
+              entry.title === rendered.title,
+              entry.description === rendered.description,
+              entry.playerUrl === rendered.playerUrl,
+              entry.publicationDate === rendered.publicationDate,
+              entry.durationSeconds === expectedDuration,
+            ];
+            if (mismatches.some((matches) => !matches)) {
+              diagnostic("error", "video-sitemap-metadata", entry.pageUrl, "Video sitemap metadata does not match the rendered VideoObject.");
+            }
+          }
+          continue;
+        }
         const child = await parseSitemapXmlFile(childPath);
         sitemapFiles += 1;
         if (child.root !== "urlset") diagnostic("error", "sitemap-child-root", childLocation, `Expected urlset root; found ${child.root}.`);
@@ -620,6 +881,17 @@ export async function validateRenderedSeoSite(options: SeoValidationOptions): Pr
   }
   for (const route of sitemapUrls) {
     if (!indexableRouteUrls.has(route)) diagnostic("error", "sitemap-nonindexable-url", route, "Sitemap contains a non-indexable route.");
+  }
+  for (const route of routeUrls) {
+    if (detailRouteKind(route, basePath) === "video" && !videoSitemapPages.has(route)) {
+      diagnostic("error", "video-sitemap-missing-page", route, "Rendered video guide is missing from the video sitemap.");
+    }
+  }
+  for (const outputRelativePath of outputRelativePaths) {
+    if (/^video-sitemaps\/\d+\.xml$/u.test(outputRelativePath)
+      && !referencedVideoSitemapPaths.has(outputRelativePath)) {
+      diagnostic("error", "video-sitemap-unlisted", outputRelativePath, "Generated video sitemap is not linked from sitemap-index.xml.");
+    }
   }
 
   try {
@@ -648,6 +920,8 @@ export async function validateRenderedSeoSite(options: SeoValidationOptions): Pr
     indexablePages: indexableRouteUrls.size,
     sitemapUrls: sitemapUrls.size,
     sitemapFiles,
+    videoSitemapEntries: videoSitemapPages.size,
+    videoSitemapFiles,
     largestHtmlPage,
   };
 }

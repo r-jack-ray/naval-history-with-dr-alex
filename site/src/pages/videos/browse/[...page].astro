@@ -1,0 +1,97 @@
+---
+import type { GetStaticPaths, Page } from "astro";
+
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import {
+  archiveVideos,
+  compareVideosByDateDescending,
+  type ArchiveVideo,
+} from "../../../data/archive";
+import { buildVideoBrowseMetadata } from "../../../../../src/site/page-metadata.js";
+
+const videosForBrowse = [...archiveVideos].sort(compareVideosByDateDescending);
+
+export const getStaticPaths = (({ paginate }) => paginate(videosForBrowse, { pageSize: 48 })) satisfies GetStaticPaths;
+
+const { page } = Astro.props as { page: Page<ArchiveVideo> };
+const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const baseAwareUrl = (path: string | undefined): string | undefined => {
+  if (!path) {
+    return undefined;
+  }
+  const normalizedPath = path.endsWith("/") ? path : `${path}/`;
+  return normalizedPath.startsWith(baseUrl)
+    ? normalizedPath
+    : `${baseUrl}${normalizedPath.replace(/^\/+/, "")}`;
+};
+const previousUrl = baseAwareUrl(page.url.prev);
+const nextUrl = baseAwareUrl(page.url.next);
+const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${count} time notes`;
+const metadata = buildVideoBrowseMetadata(page.currentPage, page.lastPage);
+---
+
+<BaseLayout
+  title={metadata.title}
+  description={metadata.description}
+  pageType="video-archive"
+>
+  <main id="content" class="page-shell">
+    <section class="section-heading">
+      <p class="eyebrow">Complete directory</p>
+      <h1>Browse all video guides: page {page.currentPage}.</h1>
+      <p class="lede">
+        Explore every Dr. Clarke video guide in reverse publication-date order, with subjects and precise time-note counts.
+      </p>
+      <div class="action-row">
+        <a class="secondary-link" href={`${baseUrl}videos/`}>Return to the Video Guides entry page</a>
+      </div>
+    </section>
+
+    <nav class="archive-pagination" aria-label="Video Guide archive pages">
+      <span>Page {page.currentPage} of {page.lastPage}</span>
+      <div>
+        {previousUrl ? <a class="secondary-link" href={previousUrl} rel="prev">Previous page</a> : <span aria-hidden="true"></span>}
+        {nextUrl ? <a class="secondary-link" href={nextUrl} rel="next">Next page</a> : <span aria-hidden="true"></span>}
+      </div>
+    </nav>
+
+    <section class="video-card-grid archive-record-grid" aria-label="Video Guides" data-pagefind-ignore>
+      {
+        page.data.map((video) => (
+          <article class="video-card">
+            <a href={`${baseUrl}videos/${video.slug}/`}>
+              <img
+                src={video.thumbnailUrl}
+                alt={`Thumbnail for ${video.title}`}
+                loading="lazy"
+                width="640"
+                height="360"
+              />
+              <div>
+                <span class="label">{video.videoKind === "stream" ? "stream" : "video"}</span>
+                <h2>{video.title}</h2>
+                <p>
+                  <time datetime={video.videoDateAt}>{video.videoDateLabel}</time> · {video.durationLabel} · {timeNoteCountLabel(video.segmentSlugs.length)}
+                </p>
+                <div class="topic-row compact" aria-label="Topics">
+                  {video.topics.slice(0, 4).map((topic) => <span>{topic.title}</span>)}
+                  {video.topics.length > 4 && <span>+{video.topics.length - 4}</span>}
+                </div>
+              </div>
+            </a>
+          </article>
+        ))
+      }
+    </section>
+
+    <nav class="archive-pagination archive-pagination-bottom" aria-label="More Video Guide archive pages">
+      <span>Page {page.currentPage} of {page.lastPage}</span>
+      <div>
+        {previousUrl ? <a class="secondary-link" href={previousUrl} rel="prev">Previous page</a> : <span aria-hidden="true"></span>}
+        {nextUrl ? <a class="secondary-link" href={nextUrl} rel="next">Next page</a> : <span aria-hidden="true"></span>}
+      </div>
+    </nav>
+  </main>
+</BaseLayout>

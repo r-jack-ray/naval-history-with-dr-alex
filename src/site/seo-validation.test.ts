@@ -11,6 +11,12 @@ import {
   validateRenderedSeoSite,
 } from "./seo-validation.js";
 import { buildBreadcrumbListJsonLd, serializeJsonLd } from "./structured-data.js";
+import {
+  buildVideoObjectJsonLd,
+  buildVideoSeoMetadata,
+  buildVideoSitemapXml,
+  type VideoSeoInput,
+} from "./video-seo.js";
 
 const origin = "https://r-jack-ray.github.io";
 const base = "/naval-history-with-dr-alex/";
@@ -27,13 +33,26 @@ function breadcrumbMarkup(items: Array<{ name: string; route: string }>): string
 function htmlPage(
   route: string,
   title: string,
-  options: { noindex?: boolean; breadcrumbs?: Array<{ name: string; route: string }>; links?: string[] } = {},
+  options: {
+    noindex?: boolean;
+    breadcrumbs?: Array<{ name: string; route: string }>;
+    links?: string[];
+    video?: Omit<VideoSeoInput, "pageUrl">;
+  } = {},
 ): string {
   const canonical = new URL(`${base}${route}`, origin).href;
   const links = (options.links ?? []).map((href) => `<a href="${href}">Link</a>`).join("");
-  return `<!doctype html><html><head><title>${title}</title><meta name="description" content="Description for ${title}.">`
-    + `${options.noindex ? '<meta name="robots" content="noindex">' : ""}<link rel="canonical" href="${canonical}"></head>`
-    + `<body>${options.breadcrumbs ? breadcrumbMarkup(options.breadcrumbs) : ""}<h1>${title}</h1>${links}</body></html>`;
+  const description = options.video?.description ?? `Description for ${title}.`;
+  const video = options.video === undefined ? "" : (() => {
+    const metadata = buildVideoSeoMetadata({ pageUrl: canonical, ...options.video });
+    return `<script type="application/ld+json">${serializeJsonLd(buildVideoObjectJsonLd(metadata))}</script>`;
+  })();
+  const visibleVideo = options.video === undefined
+    ? ""
+    : `<p class="lede">${description}</p><iframe src="${options.video.embedUrl}"></iframe>`;
+  return `<!doctype html><html><head><title>${title}</title><meta name="description" content="${description}">`
+    + `${options.noindex ? '<meta name="robots" content="noindex">' : ""}<link rel="canonical" href="${canonical}">${video}</head>`
+    + `<body>${options.breadcrumbs ? breadcrumbMarkup(options.breadcrumbs) : ""}<h1>${title}</h1>${visibleVideo}${links}</body></html>`;
 }
 
 async function writeRoute(root: string, route: string, html: string): Promise<void> {
@@ -77,13 +96,22 @@ test("validates a rendered fixture and reports actionable hard failures", async 
     const pages = [
       { route: "", title: "Home" },
       { route: "videos/", title: "Videos" },
+      { route: "videos/browse/", title: "Browse Videos", links: [`${base}videos/example/`] },
       {
         route: "videos/example/",
-        title: "Example video",
+        title: "Example video | Dr. Alex Clarke Video Guide",
         breadcrumbs: [
           { name: "Video Guides", route: "videos/" },
           { name: "Example video", route: "videos/example/" },
         ],
+        video: {
+          name: "Example video",
+          description: "Study this example video with its focused time notes.",
+          thumbnailUrl: "https://i.ytimg.com/vi/example/maxresdefault.jpg",
+          publishedAt: "2026-07-20T12:34:56Z",
+          durationIso: "PT1H2M3S",
+          embedUrl: "https://www.youtube-nocookie.com/embed/example",
+        },
       },
       { route: "segments/", title: "Time Notes" },
       {
@@ -96,6 +124,7 @@ test("validates a rendered fixture and reports actionable hard failures", async 
         ],
       },
       { route: "topics/", title: "Topics" },
+      { route: "topics/browse/", title: "Browse Topics", links: [`${base}topics/example/`] },
       {
         route: "topics/example/",
         title: "Example topic",
@@ -110,6 +139,8 @@ test("validates a rendered fixture and reports actionable hard failures", async 
       await writeRoute(root, page.route, htmlPage(page.route, page.title, {
         ...(page.noindex === undefined ? {} : { noindex: page.noindex }),
         ...(page.breadcrumbs === undefined ? {} : { breadcrumbs: page.breadcrumbs }),
+        ...(page.links === undefined ? {} : { links: page.links }),
+        ...(page.video === undefined ? {} : { video: page.video }),
       }));
     }
     const indexableUrls = pages
@@ -117,7 +148,7 @@ test("validates a rendered fixture and reports actionable hard failures", async 
       .map((page) => new URL(`${base}${page.route}`, origin).href);
     await writeFile(
       join(root, "sitemap-index.xml"),
-      `<?xml version="1.0"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><sitemap><loc>${origin}${base}sitemap-0.xml</loc></sitemap></sitemapindex>`,
+      `<?xml version="1.0"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><sitemap><loc>${origin}${base}sitemap-0.xml</loc></sitemap><sitemap><loc>${origin}${base}video-sitemaps/0.xml</loc></sitemap></sitemapindex>`,
       "utf8",
     );
     await writeFile(
@@ -125,10 +156,23 @@ test("validates a rendered fixture and reports actionable hard failures", async 
       `<?xml version="1.0"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${indexableUrls.map((url) => `<url><loc>${url}</loc></url>`).join("")}</urlset>`,
       "utf8",
     );
+    await mkdir(join(root, "video-sitemaps"), { recursive: true });
+    const videoInput = pages.find((page) => page.route === "videos/example/")?.video;
+    assert.ok(videoInput);
+    await writeFile(
+      join(root, "video-sitemaps", "0.xml"),
+      buildVideoSitemapXml([buildVideoSeoMetadata({
+        pageUrl: `${origin}${base}videos/example/`,
+        ...videoInput,
+      })]),
+      "utf8",
+    );
 
     const valid = await validateRenderedSeoSite({ distRoot: root, siteOrigin: origin, basePath: base, concurrency: 2 });
     assert.deepEqual(valid.diagnostics.filter((item) => item.severity === "error"), []);
     assert.equal(valid.indexablePages, indexableUrls.length);
+    assert.equal(valid.videoSitemapEntries, 1);
+    assert.equal(valid.videoSitemapFiles, 1);
 
     await writeRoute(root, "videos/example/", htmlPage("videos/wrong/", "Example video", {
       breadcrumbs: [
@@ -137,9 +181,11 @@ test("validates a rendered fixture and reports actionable hard failures", async 
       ],
       links: [`${base}missing/`],
     }));
+    await writeRoute(root, "videos/browse/", htmlPage("videos/browse/", "Browse Videos"));
     const invalid = await validateRenderedSeoSite({ distRoot: root, siteOrigin: origin, basePath: base, concurrency: 2 });
     assert.ok(invalid.diagnostics.some((item) => item.rule === "canonical-shape" && item.severity === "error"));
     assert.ok(invalid.diagnostics.some((item) => item.rule === "broken-internal-link" && item.severity === "error"));
+    assert.ok(invalid.diagnostics.some((item) => item.rule === "directory-inbound-link" && item.severity === "error"));
   } finally {
     await rm(root, { recursive: true, force: true });
   }

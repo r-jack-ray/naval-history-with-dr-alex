@@ -29,6 +29,8 @@ test("builds deterministic site archive data from channel metadata and segment s
   assert.equal(archive.videos[0]?.slug, "sample-video");
   assert.equal(archive.videos[0]?.videoDateAt, "2026-07-08T00:00:00Z");
   assert.equal(archive.videos[0]?.videoDateLabel, "Jul 8, 2026");
+  assert.equal(archive.videos[0]?.publishedAt, "2026-07-08T00:00:00Z");
+  assert.equal(archive.videos[0]?.durationIso, "PT1H2M3S");
   assert.deepEqual(archive.videos[0]?.segmentSlugs, ["intro", "qa-segment"]);
   assert.equal(archive.segments[1]?.kind, "qa");
   assert.equal(archive.segments[1]?.start, "12:01");
@@ -76,10 +78,10 @@ test("preserves catalog provenance without adding noncanonical topic routes", ()
   const topic = archive.topics[0];
   const split = splitSiteArchiveData(archive);
 
-  assert.equal(archive.schemaVersion, 4);
+  assert.equal(archive.schemaVersion, 5);
   assert.equal(topic?.videoCount, 1);
   assert.equal(topic?.segmentCount, 2);
-  assert.equal(split.manifest.schemaVersion, 5);
+  assert.equal(split.manifest.schemaVersion, 6);
   assert.equal(split.manifest.source.patternsInput, "patterns.tsv");
   assert.equal(split.manifest.source.patternsSha256, "a".repeat(64));
   assert.equal(split.manifest.source.patternsSourceSha256, "b".repeat(64));
@@ -98,7 +100,22 @@ test("uses livestream time instead of the advance upload timestamp", () => {
   const archive = buildSiteArchiveData(input);
 
   assert.equal(archive.videos[0]?.videoDateAt, "2026-07-12T18:33:54Z");
+  assert.equal(archive.videos[0]?.publishedAt, "2026-06-14T16:44:14Z");
   assert.equal(archive.videos[0]?.videoKind, "stream");
+});
+
+test("rejects a publishable stream without a source publication timestamp", () => {
+  const input = sampleInput();
+  delete input.metadataStore.videos[0]!.snippet!.publishedAt;
+  input.metadataStore.videos[0]!.liveStreamingDetails = {
+    actualStartTime: "2026-07-12T18:33:54Z",
+    actualEndTime: "2026-07-12T20:33:54Z",
+  };
+
+  assert.throws(
+    () => buildSiteArchiveData(input),
+    /missing a canonical publishedAt timestamp/u,
+  );
 });
 
 test("excludes upcoming videos and all dependent public records", () => {
@@ -240,7 +257,7 @@ test("rejects schema mismatch, misbucketed records, and damaged shard sets", asy
   (wrongSchema.manifest as { schemaVersion: number }).schemaVersion = 99;
   assert.throws(
     () => validateSiteArchiveSplitData(wrongSchema),
-    /schemaVersion must be 5/u,
+    /schemaVersion must be 6/u,
   );
 
   const invalidProvenance = structuredClone(split);
@@ -336,6 +353,37 @@ test("makes duplicate video title slugs route-unique", () => {
 
   assert.equal(archive.videos[0]?.slug, "sample-video");
   assert.equal(archive.videos[1]?.slug, "sample-video-def456");
+});
+
+test("reserves browse route slugs for paginated archive directories", () => {
+  const videoInput = sampleInput();
+  videoInput.episodesStore.episodes[0]!.slug = "browse";
+  assert.equal(buildSiteArchiveData(videoInput).videos[0]?.slug, "browse-abc123");
+
+  const segmentInput = sampleInput();
+  segmentInput.seed.segments[0]!.slug = "browse";
+  assert.throws(
+    () => buildSiteArchiveData(segmentInput),
+    /Segment slug browse is reserved/u,
+  );
+
+  const topicInput = sampleInput();
+  topicInput.seed.topics[0]!.slug = "browse";
+  topicInput.seed.videos[0]!.topics = ["browse"];
+  for (const segment of topicInput.seed.segments) {
+    segment.topics = ["browse"];
+  }
+  assert.throws(
+    () => buildSiteArchiveData(topicInput),
+    /Topic slug browse is reserved/u,
+  );
+
+  const invalidSplitInput = buildSiteArchiveData(sampleInput());
+  invalidSplitInput.videos[0]!.slug = "browse";
+  assert.throws(
+    () => splitSiteArchiveData(invalidSplitInput),
+    /Video slug browse is reserved/u,
+  );
 });
 
 test("rejects segment references to unknown topics", () => {

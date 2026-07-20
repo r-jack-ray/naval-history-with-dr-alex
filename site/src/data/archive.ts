@@ -4,13 +4,14 @@ import { join } from "node:path";
 import { performance } from "node:perf_hooks";
 
 import { isPublicTopic } from "../../../src/site/public-topic.js";
+import { parseVideoDurationSeconds } from "../../../src/site/video-seo.js";
 
 const archiveInitializationStartedAt = performance.now();
 
 const expectedPatternsInput = "src/derived/topic-normalization-patterns.tsv";
 
 export interface ArchiveData {
-  schemaVersion: 4;
+  schemaVersion: 5;
   videos: ArchiveVideo[];
   segments: ArchiveSegment[];
   topics: ArchiveTopic[];
@@ -27,7 +28,7 @@ export interface ArchiveSegmentBucketRecord extends ArchiveFileRecord {
 }
 
 export interface ArchiveManifest {
-  schemaVersion: 5;
+  schemaVersion: 6;
   source: {
     episodesInput: string;
     metadataInput: string;
@@ -64,6 +65,8 @@ export interface ArchiveVideo {
   videoDateLabel: string;
   videoDateKind: "actual_start" | "scheduled_start" | "published";
   videoKind: "upload" | "stream";
+  publishedAt: string;
+  durationIso: string;
   durationLabel: string;
   viewCountLabel: string;
   transcriptStatus: string;
@@ -205,8 +208,8 @@ function bucketIdForVideo(videoId: string): string {
 }
 
 function validateManifestShape(): void {
-  if (!isRecord(manifest) || manifest.schemaVersion !== 5) {
-    archiveError(`manifest schemaVersion must be 5; received ${String(manifest?.schemaVersion)}.`);
+  if (!isRecord(manifest) || manifest.schemaVersion !== 6) {
+    archiveError(`manifest schemaVersion must be 6; received ${String(manifest?.schemaVersion)}.`);
   }
   if (!isRecord(manifest.source)) {
     archiveError("manifest source is missing.");
@@ -369,7 +372,10 @@ function uniqueMap<T>(
 
 for (const video of archiveVideos) {
   assertStringField(video, "videoId", "video record");
-  assertStringField(video, "slug", `video ${video.videoId}`);
+  const videoSlug = assertStringField(video, "slug", `video ${video.videoId}`);
+  if (videoSlug === "browse") {
+    archiveError("video slug browse is reserved for the static Video Guide archive route.");
+  }
   const videoDateAt = assertStringField(video, "videoDateAt", `video ${video.videoId}`);
   const videoDateLabel = assertStringField(video, "videoDateLabel", `video ${video.videoId}`);
   if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/u.test(videoDateAt) || !Number.isFinite(Date.parse(videoDateAt))) {
@@ -388,6 +394,15 @@ for (const video of archiveVideos) {
   if (video.videoKind !== "upload" && video.videoKind !== "stream") {
     archiveError(`video ${video.videoId} has an invalid videoKind.`);
   }
+  const publishedAt = assertStringField(video, "publishedAt", `video ${video.videoId}`);
+  if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/u.test(publishedAt)
+    || !Number.isFinite(Date.parse(publishedAt))) {
+    archiveError(`video ${video.videoId} must contain a canonical UTC publishedAt.`);
+  }
+  const durationIso = assertStringField(video, "durationIso", `video ${video.videoId}`);
+  if (parseVideoDurationSeconds(durationIso) === undefined) {
+    archiveError(`video ${video.videoId} must contain a positive ISO 8601 durationIso.`);
+  }
   if (!Array.isArray(video.segmentSlugs) || !Array.isArray(video.topics)) {
     archiveError(`video ${video.videoId} must contain segmentSlugs and topics arrays.`);
   }
@@ -404,7 +419,10 @@ for (const segment of shardedSegments) {
   }
 }
 for (const topic of archiveTopics) {
-  assertStringField(topic, "slug", "topic record");
+  const topicSlug = assertStringField(topic, "slug", "topic record");
+  if (topicSlug === "browse") {
+    archiveError("topic slug browse is reserved for the static Topic archive route.");
+  }
 }
 
 const videosById = uniqueMap(archiveVideos, (video) => video.videoId, "video ID");
@@ -491,7 +509,7 @@ for (const topic of archiveTopics) {
 }
 
 export const archive: ArchiveData = {
-  schemaVersion: 4,
+  schemaVersion: 5,
   videos: archiveVideos,
   segments: archiveSegments,
   topics: archiveTopics,

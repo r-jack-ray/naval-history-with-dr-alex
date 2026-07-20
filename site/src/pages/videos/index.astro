@@ -8,6 +8,7 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   : `${import.meta.env.BASE_URL}/`;
 const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${count} time notes`;
 const videosByDate = [...archiveVideos].sort(compareVideosByDateDescending);
+const recentVideos = videosByDate.slice(0, 12);
 const metadata = staticPageMetadata.videos;
 ---
 
@@ -26,33 +27,58 @@ const metadata = staticPageMetadata.videos;
       </p>
     </section>
 
-    <section class="video-card-grid" aria-label="Videos">
-      {
-        videosByDate.map((video) => (
-          <article class="video-card">
-            <a href={`${baseUrl}videos/${video.slug}/`}>
-              <img
-                src={video.thumbnailUrl}
-                alt={`Thumbnail for ${video.title}`}
-                loading="lazy"
-                width="640"
-                height="360"
-              />
-              <div>
-                <span class="label">{video.videoKind === "stream" ? "stream" : "video"}</span>
-                <h2>{video.title}</h2>
-                <p>
-                  <time datetime={video.videoDateAt}>{video.videoDateLabel}</time> · {video.durationLabel} · {timeNoteCountLabel(video.segmentSlugs.length)}
-                </p>
-                <div class="topic-row compact" aria-label="Topics">
-                  {video.topics.slice(0, 4).map((topic) => <span>{topic.title}</span>)}
-                  {video.topics.length > 4 && <span>+{video.topics.length - 4}</span>}
+    <section class="home-section" aria-labelledby="recent-videos-heading">
+      <div class="section-title-row">
+        <div>
+          <p class="eyebrow">Latest guides</p>
+          <h2 id="recent-videos-heading">Start with a recent video</h2>
+        </div>
+        <a class="secondary-link" href={`${baseUrl}videos/browse/`}>Browse all video guides</a>
+      </div>
+      <div class="video-card-grid" aria-label="Recent videos">
+        {
+          recentVideos.map((video) => (
+            <article class="video-card">
+              <a href={`${baseUrl}videos/${video.slug}/`}>
+                <img
+                  src={video.thumbnailUrl}
+                  alt={`Thumbnail for ${video.title}`}
+                  loading="lazy"
+                  width="640"
+                  height="360"
+                />
+                <div>
+                  <span class="label">{video.videoKind === "stream" ? "stream" : "video"}</span>
+                  <h3>{video.title}</h3>
+                  <p>
+                    <time datetime={video.videoDateAt}>{video.videoDateLabel}</time> · {video.durationLabel} · {timeNoteCountLabel(video.segmentSlugs.length)}
+                  </p>
+                  <div class="topic-row compact" aria-label="Topics">
+                    {video.topics.slice(0, 4).map((topic) => <span>{topic.title}</span>)}
+                    {video.topics.length > 4 && <span>+{video.topics.length - 4}</span>}
+                  </div>
                 </div>
-              </div>
-            </a>
-          </article>
-        ))
-      }
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="home-section" aria-labelledby="all-videos-heading">
+      <div class="section-title-row">
+        <div>
+          <p class="eyebrow">Complete directory</p>
+          <h2 id="all-videos-heading">Browse every video guide</h2>
+        </div>
+      </div>
+      <p>
+        The paginated directory keeps all {videosByDate.length.toLocaleString("en-US")} video guides
+        reachable through ordinary links in reverse publication-date order.
+      </p>
+      <div class="action-row">
+        <a class="primary-link" href={`${baseUrl}videos/browse/`}>Browse all video guides</a>
+      </div>
     </section>
   </main>
 </BaseLayout>

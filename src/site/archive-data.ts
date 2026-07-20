@@ -6,6 +6,7 @@ import { formatTimestamp, segmentKinds, type SegmentKind } from "../index.js";
 import { slugifyVideoTitle } from "../naming.js";
 import { writeTextAtomically } from "../pipeline/atomic-write.js";
 import {
+  canonicalVideoTimestamp,
   resolveVideoState,
   type VideoDateKind,
   type VideoKind,
@@ -18,6 +19,7 @@ import {
   type CuratedSegmentSeed,
   type CuratedTopicSeed,
 } from "./curated-seed.js";
+import { parseVideoDurationSeconds } from "./video-seo.js";
 
 export const defaultSiteEpisodesInput = "src/channel/episodes.json";
 export const defaultSiteMetadataInput = "src/channel/video-metadata.json";
@@ -25,9 +27,10 @@ export const defaultSiteTranscriptsInput = "src/transcripts/manifest.json";
 export const defaultSiteSegmentsInput = "src/derived/video-segments";
 export const defaultSitePatternsInput = "src/derived/topic-normalization-patterns.tsv";
 export const defaultSiteArchiveOutputDir = "site/src/data/generated/archive";
-export const siteArchiveSchemaVersion = 5 as const;
+export const siteArchiveSchemaVersion = 6 as const;
 export const siteArchiveSegmentBucketCount = 64;
 export const siteArchiveSegmentShardingAlgorithm = "sha256-video-id-mod" as const;
+const archiveBrowseSlug = "browse";
 
 export interface GenerateSiteArchiveDataOptions {
   episodesInput: string;
@@ -41,7 +44,7 @@ export interface GenerateSiteArchiveDataOptions {
 }
 
 export interface SiteArchiveData {
-  schemaVersion: 4;
+  schemaVersion: 5;
   source: {
     episodesInput: string;
     metadataInput: string;
@@ -108,6 +111,8 @@ export interface SiteVideo {
   videoDateLabel: string;
   videoDateKind: VideoDateKind;
   videoKind: VideoKind;
+  publishedAt: string;
+  durationIso: string;
   durationLabel: string;
   viewCountLabel: string;
   transcriptStatus: string;
@@ -248,7 +253,7 @@ export function buildSiteArchiveData(input: {
   const topicSeedsBySlug = new Map(input.seed.topics.map((topic) => [topic.slug, topic]));
   const videoSeedsById = new Map(input.seed.videos.map((video) => [video.videoId, video]));
   const videoRecordsById = new Map<string, SiteVideo>();
-  const usedVideoSlugs = new Set<string>();
+  const usedVideoSlugs = new Set<string>([archiveBrowseSlug]);
   const deferredVideoIds = new Set<string>();
 
   for (const videoSeed of input.seed.videos) {
@@ -338,8 +343,15 @@ export function buildSiteArchiveData(input: {
     };
   });
 
+  if (segments.some((segment) => segment.slug === archiveBrowseSlug)) {
+    throw new Error("Segment slug browse is reserved for the static Time Notes archive route.");
+  }
+  if (topics.some((topic) => topic.slug === archiveBrowseSlug)) {
+    throw new Error("Topic slug browse is reserved for the static Topic archive route.");
+  }
+
   return {
-    schemaVersion: 4,
+    schemaVersion: 5,
     source: input.source,
     videos: [...videoRecordsById.values()],
     segments,
@@ -665,7 +677,7 @@ function fileRecord(path: string, value: unknown[]): SiteArchiveFileRecord {
 function reconstructSiteArchiveDataUnchecked(splitData: SiteArchiveSplitData): SiteArchiveData {
   const allSegments = splitData.segmentBuckets.flatMap((bucket) => bucket.segments);
   return {
-    schemaVersion: 4,
+    schemaVersion: 5,
     source: splitData.manifest.source,
     videos: splitData.videos,
     segments: reconstructSegments(splitData.videos, allSegments),
@@ -715,6 +727,16 @@ function validateSiteArchiveRelationships(
   assertUnique(segments.map((segment) => segment.slug), "segment slug");
   assertUnique(topics.map((topic) => topic.slug), "topic slug");
 
+  if (videos.some((video) => video.slug === archiveBrowseSlug)) {
+    throw new Error("Video slug browse is reserved for the static Video Guide archive route.");
+  }
+  if (segments.some((segment) => segment.slug === archiveBrowseSlug)) {
+    throw new Error("Segment slug browse is reserved for the static Time Notes archive route.");
+  }
+  if (topics.some((topic) => topic.slug === archiveBrowseSlug)) {
+    throw new Error("Topic slug browse is reserved for the static Topic archive route.");
+  }
+
   const videosById = new Map(videos.map((video) => [video.videoId, video]));
   const topicSlugs = new Set(topics.map((topic) => topic.slug));
   for (const video of videos) {
@@ -734,8 +756,16 @@ function validateSiteArchiveRelationships(
     if (video.videoKind !== "upload" && video.videoKind !== "stream") {
       throw new Error(`Video ${video.videoId} has an invalid videoKind.`);
     }
-    if (video.durationLabel === "0:00" || video.durationLabel === "P0D") {
-      throw new Error(`Video ${video.videoId} has a non-positive public runtime.`);
+    if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/u.test(video.publishedAt)
+      || !Number.isFinite(Date.parse(video.publishedAt))) {
+      throw new Error(`Video ${video.videoId} has a noncanonical publishedAt.`);
+    }
+    const durationSeconds = parseVideoDurationSeconds(video.durationIso);
+    if (durationSeconds === undefined) {
+      throw new Error(`Video ${video.videoId} has an invalid durationIso.`);
+    }
+    if (video.durationLabel !== formatTimestamp(Math.floor(durationSeconds))) {
+      throw new Error(`Video ${video.videoId} has a duration label not derived from durationIso.`);
     }
     assertTopicRefsExist(video.topics, topicSlugs, `Video ${video.videoId}`);
   }
@@ -937,6 +967,18 @@ function buildSiteVideo(input: {
   if (input.episode.fileStem === undefined || input.episode.fileStem.length === 0) {
     throw new Error(`Site video ${input.episode.videoId} is missing its manifest-owned fileStem.`);
   }
+  const publishedAt = canonicalVideoTimestamp(input.metadata.snippet?.publishedAt ?? undefined);
+  if (typeof publishedAt !== "string") {
+    throw new Error(`Site video ${input.episode.videoId} is missing a canonical publishedAt timestamp.`);
+  }
+  const durationIso = input.metadata.contentDetails?.duration?.trim();
+  if (durationIso === undefined) {
+    throw new Error(`Site video ${input.episode.videoId} is missing a source-preserved ISO duration.`);
+  }
+  const durationSeconds = parseVideoDurationSeconds(durationIso);
+  if (durationSeconds === undefined || durationSeconds !== input.state.durationSeconds) {
+    throw new Error(`Site video ${input.episode.videoId} is missing a source-preserved ISO duration.`);
+  }
 
   return {
     title,
@@ -949,7 +991,9 @@ function buildSiteVideo(input: {
     videoDateLabel: formatDate(input.state.videoDateAt),
     videoDateKind: input.state.videoDateKind,
     videoKind: input.state.videoKind,
-    durationLabel: formatTimestamp(Math.floor(input.state.durationSeconds)),
+    publishedAt,
+    durationIso,
+    durationLabel: formatTimestamp(Math.floor(durationSeconds)),
     viewCountLabel: input.episode.viewCountText ?? stats.views ?? "Unknown views",
     transcriptStatus: input.episode.transcript?.status ?? "unknown",
     fileStem: input.episode.fileStem,
