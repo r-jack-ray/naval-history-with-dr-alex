@@ -5,6 +5,7 @@ import {
   segmentsForVideo,
   type ArchiveVideo,
 } from "../../data/archive";
+import { buildVideoPageMetadata } from "../../../../src/site/page-metadata.js";
 
 export function getStaticPaths() {
   return getVideoPaths();
@@ -12,6 +13,7 @@ export function getStaticPaths() {
 
 const { video } = Astro.props as { video: ArchiveVideo };
 const segments = segmentsForVideo(video);
+const metadata = buildVideoPageMetadata(video);
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
@@ -20,8 +22,8 @@ const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${c
 ---
 
 <BaseLayout
-  title={`${video.title} | Naval History with Dr. Alex Study Guide`}
-  description={`${video.title} video guide for learning naval history with Dr. Alex Clarke.`}
+  title={metadata.title}
+  description={metadata.description}
   pageType="video"
   socialType="video.other"
   socialImageUrl={video.thumbnailUrl}

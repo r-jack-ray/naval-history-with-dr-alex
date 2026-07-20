@@ -1,17 +1,19 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { archiveVideos, compareVideosByDateDescending } from "../../data/archive";
+import { staticPageMetadata } from "../../../../src/site/page-metadata.js";
 
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${count} time notes`;
 const videosByDate = [...archiveVideos].sort(compareVideosByDateDescending);
+const metadata = staticPageMetadata.videos;
 ---
 
 <BaseLayout
-  title="Video Guides | Naval History with Dr. Alex Study Guide"
-  description="Browse Dr. Alex Clarke video guides by subject and time note."
+  title={metadata.title}
+  description={metadata.description}
   pageType="video-index"
 >
   <main id="content" class="page-shell">

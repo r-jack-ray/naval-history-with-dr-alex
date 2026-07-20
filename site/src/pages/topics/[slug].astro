@@ -7,6 +7,7 @@ import {
   videosForTopic,
   type TopicPathProps,
 } from "../../data/archive";
+import { buildTopicPageMetadata } from "../../../../src/site/page-metadata.js";
 
 export function getStaticPaths() {
   return getTopicPaths();
@@ -16,6 +17,7 @@ const topicPath = Astro.props as TopicPathProps;
 const topic = topicPath.topic;
 const videos = videosForTopic(topic);
 const segments = segmentsForTopic(topic);
+const metadata = buildTopicPageMetadata(topic);
 const segmentEntries = segments.map((segment) => {
   const video = findVideoById(segment.videoId);
   if (video === undefined) {
@@ -30,8 +32,8 @@ const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${c
 ---
 
 <BaseLayout
-  title={`${topic.title} | Naval History with Dr. Alex Study Guide`}
-  description={topic.summary}
+  title={metadata.title}
+  description={metadata.description}
   pageType="topic"
 >
   <Fragment slot="head">

@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { publicArchiveTopics } from "../../data/archive";
 import timeNotesFinderUrl from "../../scripts/time-notes-finder.js?url";
+import { staticPageMetadata } from "../../../../src/site/page-metadata.js";
 
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
@@ -9,11 +10,12 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
 const starterTopics = [...publicArchiveTopics]
   .sort((left, right) => right.segmentCount - left.segmentCount || right.videoCount - left.videoCount)
   .slice(0, 8);
+const metadata = staticPageMetadata.segments;
 ---
 
 <BaseLayout
-  title="Find Time Notes | Naval History with Dr. Alex Study Guide"
-  description="Find a worthwhile Dr. Alex Clarke video moment by naval subject and explanation type."
+  title={metadata.title}
+  description={metadata.description}
   pageType="segment-index"
 >
   <Fragment slot="head">

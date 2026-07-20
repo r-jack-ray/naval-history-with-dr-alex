@@ -1,12 +1,12 @@
 ---
 import "../styles/site.css";
 import themeInteractionUrl from "../scripts/theme-interaction.js?url&no-inline";
+import { pageIndexingForPathname } from "../data/page-indexing.js";
 
 interface Props {
   title: string;
   description: string;
   pageType: string;
-  indexing?: "index" | "noindex";
   socialType?: "website" | "video.other";
   socialImageUrl?: string;
   socialImageAlt?: string;
@@ -16,7 +16,6 @@ const {
   title,
   description,
   pageType,
-  indexing = "index",
   socialType = "website",
   socialImageUrl,
   socialImageAlt,
@@ -25,10 +24,12 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 const currentPath = Astro.url.pathname.endsWith("/") ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const indexing = pageIndexingForPathname(currentPath, baseUrl);
 if (Astro.site === undefined) {
   throw new Error("Astro site configuration is required to generate canonical URLs.");
 }
 const canonicalUrl = new URL(currentPath, Astro.site);
+const sitemapUrl = new URL(`${baseUrl}sitemap-index.xml`, Astro.site);
 let socialImage: { url: string; alt: string } | undefined;
 if (socialImageUrl !== undefined) {
   const alt = socialImageAlt?.trim();
@@ -61,6 +62,7 @@ const isActivePath = (path: string) => currentPath.startsWith(`${baseUrl}${path}
     <meta name="description" content={description} />
     {indexing === "noindex" && <meta name="robots" content="noindex" />}
     <link rel="canonical" href={canonicalUrl.href} />
+    <link rel="sitemap" type="application/xml" href={sitemapUrl.href} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl.href} />

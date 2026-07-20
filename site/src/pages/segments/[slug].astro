@@ -5,6 +5,10 @@ import {
   getSegmentPaths,
   type ArchiveSegment,
 } from "../../data/archive";
+import {
+  buildSegmentPageMetadata,
+  segmentDescriptionSource,
+} from "../../../../src/site/page-metadata.js";
 
 export function getStaticPaths() {
   return getSegmentPaths();
@@ -15,14 +19,16 @@ const video = findVideoById(segment.videoId);
 if (video === undefined) {
   throw new Error(`Segment ${segment.slug} references missing video ${segment.videoId}.`);
 }
+const metadata = buildSegmentPageMetadata(segment);
+const segmentLead = segmentDescriptionSource(segment);
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 ---
 
 <BaseLayout
-  title={`${segment.title} | Naval History with Dr. Alex Study Guide`}
-  description={segment.summary}
+  title={metadata.title}
+  description={metadata.description}
   pageType="segment"
   socialImageUrl={video.thumbnailUrl}
   socialImageAlt={`Thumbnail for ${video.title}`}
@@ -35,7 +41,7 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
     <meta data-pagefind-meta="timestamp[content]" content={segment.start} />
     <meta data-pagefind-meta="kind[content]" content={segment.kindLabel} />
     <meta data-pagefind-meta="kindKey[content]" content={segment.kind} />
-    <meta data-pagefind-meta="summary[content]" content={segment.summary} />
+    <meta data-pagefind-meta="summary[content]" content={segmentLead} />
     <meta data-pagefind-meta="videoGuideUrl[content]" content={`${baseUrl}videos/${segment.videoSlug}/`} />
     <meta data-pagefind-meta="watchUrl[content]" content={segment.youtubeUrl} />
     <meta data-pagefind-filter="video[content]" content={segment.videoTitle} />
@@ -54,7 +60,7 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
     <section class="section-heading">
       <p class="eyebrow">{segment.kindLabel} · {segment.start}{segment.end ? `-${segment.end}` : ""}</p>
       <h1>{segment.title}</h1>
-      <p class="lede">{segment.summary}</p>
+      <p class="lede">{segmentLead}</p>
       <div class="topic-row" aria-label="Topics">
         {segment.topics.map((topic) => <a href={`${baseUrl}topics/${topic.slug}/`}>{topic.title}</a>)}
       </div>

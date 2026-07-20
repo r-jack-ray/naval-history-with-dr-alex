@@ -3,6 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import { publicArchiveTopics } from "../../data/archive";
 import siteSearchUrl from "../../scripts/site-search.js?url";
 import searchRankingUrl from "../../scripts/search-ranking.js?url";
+import { staticPageMetadata } from "../../../../src/site/page-metadata.js";
 
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
@@ -10,13 +11,13 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
 const popularTopics = [...publicArchiveTopics]
   .sort((left, right) => right.segmentCount - left.segmentCount || right.videoCount - left.videoCount)
   .slice(0, 12);
+const metadata = staticPageMetadata.search;
 ---
 
 <BaseLayout
-  title="Search | Naval History with Dr. Alex Study Guide"
-  description="Search Dr. Alex Clarke videos by subject, topic, and video moment."
+  title={metadata.title}
+  description={metadata.description}
   pageType="search"
-  indexing="noindex"
 >
   <Fragment slot="head">
     <script src={siteSearchUrl} defer is:inline></script>

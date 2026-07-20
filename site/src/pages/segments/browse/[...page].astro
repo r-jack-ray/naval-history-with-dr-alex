@@ -7,6 +7,7 @@ import {
   segmentsForBrowse,
   type ArchiveSegment,
 } from "../../../data/archive";
+import { buildTimeNoteBrowseMetadata } from "../../../../../src/site/page-metadata.js";
 
 export const getStaticPaths = (({ paginate }) => paginate(segmentsForBrowse(), { pageSize: 48 })) satisfies GetStaticPaths;
 
@@ -29,11 +30,12 @@ const datedSegments = page.data.map((segment) => ({
   segment,
   video: findVideoById(segment.videoId),
 }));
+const metadata = buildTimeNoteBrowseMetadata(page.currentPage, page.lastPage);
 ---
 
 <BaseLayout
-  title={`Browse Time Notes${page.currentPage > 1 ? `, Page ${page.currentPage}` : ""} | Naval History with Dr. Alex Study Guide`}
-  description="Browse the complete chronological directory of Dr. Alex Clarke video time notes."
+  title={metadata.title}
+  description={metadata.description}
   pageType="segment-archive"
 >
   <main id="content" class="page-shell">
