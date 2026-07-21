@@ -63,3 +63,11 @@ Populate official metadata. The package script defaults to
 ```powershell
 npm run fetch:video-metadata
 ```
+
+Upcoming and otherwise deferred livestream records retain YouTube's posted
+`scheduledStartTime`. A normal metadata refresh automatically rechecks them
+about 24 hours after the later of that scheduled time or their previous
+metadata fetch. If YouTube postpones a stream, the refreshed record stores the
+new scheduled time and the next automatic check moves to roughly 24 hours after
+that date. Use `--refresh-video-id <id>` when an earlier manual refresh is
+needed; `--force` still refreshes every stored record.

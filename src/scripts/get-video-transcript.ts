@@ -14,7 +14,7 @@ import {
   findVideoMetadataRecord,
   isBlockedTranscriptDuration,
   maxBlockedTranscriptDurationSeconds,
-  resolveVideoState,
+  resolveVideoFetchState,
   videoNamingMetadata,
   type VideoMetadataRecord,
   type VideoNamingMetadata,
@@ -34,15 +34,15 @@ type CliOptions = FetchVideoTranscriptOptions & {
 async function main(): Promise<void> {
   const options = parseArgs(process.argv.slice(2));
   const metadataRecord = await readMetadataRecord(options);
-  const state = resolveVideoState(metadataRecord);
-  if (state.state === "deferred") {
+  const state = resolveVideoFetchState(metadataRecord, options.metadataInput !== undefined);
+  if (state?.state === "deferred") {
     console.error(`Skipping not-ready video ${options.videoId}: ${state.reason} (${state.diagnostic})`);
     return;
   }
-  if (state.state === "invalid") {
+  if (state?.state === "invalid") {
     throw new Error(`Cannot fetch transcript for ${options.videoId}: ${state.reason} (${state.diagnostic})`);
   }
-  if (isBlockedTranscriptDuration(state.durationSeconds)) {
+  if (state?.state === "ready" && isBlockedTranscriptDuration(state.durationSeconds)) {
     console.error(
       `Skipping short video ${options.videoId}: duration=${state.durationSeconds}s cutoff=${maxBlockedTranscriptDurationSeconds}s`,
     );
@@ -222,7 +222,7 @@ Options:
   --language <name>        Optional transcript language code or label.
   --output-root <path>     Local transcript store. Defaults to src/transcripts.
   --metadata-input <path>  Local video metadata JSON. Defaults to src/channel/video-metadata.json.
-  --no-metadata-lookup     Do not read local metadata for title/timestamp naming.
+  --no-metadata-lookup     Bypass local metadata readiness and naming lookup.
   --video-title <title>    Override stored title used for readable file naming.
   --video-timestamp <ts>   Override stored timestamp prefix, e.g. 2026-06-14T05:29:19-05:00.
   --txt-output <path>      Write readable timestamped text instead of using the store.

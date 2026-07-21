@@ -78,6 +78,7 @@ export type VideoReadinessReason =
   | "invalid_metadata";
 
 export const maxBlockedTranscriptDurationSeconds = 61;
+export const defaultDeferredMetadataRetryDelayMs = 24 * 60 * 60 * 1_000;
 
 export type VideoStateResult =
   | {
@@ -260,6 +261,60 @@ export function resolveVideoState(record: VideoMetadataRecord | undefined): Vide
   };
 }
 
+export function resolveVideoFetchState(
+  record: VideoMetadataRecord | undefined,
+  metadataLookupEnabled: boolean,
+): VideoStateResult | undefined {
+  return metadataLookupEnabled ? resolveVideoState(record) : undefined;
+}
+
+export function deferredMetadataRetryAt(
+  record: VideoMetadataRecord,
+  retryDelayMs = defaultDeferredMetadataRetryDelayMs,
+): string | undefined {
+  if (resolveVideoState(record).state !== "deferred") {
+    return undefined;
+  }
+
+  const scheduledStartAt = canonicalVideoTimestamp(record.liveStreamingDetails?.scheduledStartTime ?? undefined);
+  const fetchedAtMs = Date.parse(record.fetchedAt);
+  const retryBases = [
+    ...(typeof scheduledStartAt === "string" ? [Date.parse(scheduledStartAt)] : []),
+    ...(Number.isFinite(fetchedAtMs) ? [fetchedAtMs] : []),
+  ];
+  if (retryBases.length === 0) {
+    return undefined;
+  }
+
+  return new Date(Math.max(...retryBases) + retryDelayMs).toISOString();
+}
+
+export function selectVideoMetadataTargetIds(options: {
+  videoIds: readonly string[];
+  recordsById: ReadonlyMap<string, VideoMetadataRecord>;
+  refreshVideoIds?: readonly string[];
+  force?: boolean;
+  now?: Date;
+  deferredRetryDelayMs?: number;
+}): string[] {
+  if (options.force) {
+    return [...options.videoIds];
+  }
+
+  const refreshIds = new Set(options.refreshVideoIds ?? []);
+  const nowMs = (options.now ?? new Date()).getTime();
+  const retryDelayMs = options.deferredRetryDelayMs ?? defaultDeferredMetadataRetryDelayMs;
+  return options.videoIds.filter((videoId) => {
+    const record = options.recordsById.get(videoId);
+    if (record === undefined || refreshIds.has(videoId)) {
+      return true;
+    }
+
+    const retryAt = deferredMetadataRetryAt(record, retryDelayMs);
+    return retryAt !== undefined && Date.parse(retryAt) <= nowMs;
+  });
+}
+
 export function canonicalVideoTimestamp(value: string | undefined): string | undefined | null {
   if (value === undefined) {
     return undefined;
@@ -332,10 +387,12 @@ export async function fetchAndStoreVideoMetadata(options: FetchVideoMetadataOpti
   );
   const videoIds = mergeVideoIds(inputVideoIds, additionalVideoIds);
   const recordsById = new Map(existing?.videos.map((record) => [record.videoId, record]) ?? []);
-  const refreshIds = new Set(options.refreshVideoIds ?? []);
-  const targetIds = options.force
-    ? videoIds
-    : videoIds.filter((videoId) => !recordsById.has(videoId) || refreshIds.has(videoId));
+  const targetIds = selectVideoMetadataTargetIds({
+    videoIds,
+    recordsById,
+    ...(options.refreshVideoIds !== undefined ? { refreshVideoIds: options.refreshVideoIds } : {}),
+    ...(options.force !== undefined ? { force: options.force } : {}),
+  });
   const pendingIds = options.limit === undefined ? targetIds : targetIds.slice(0, options.limit);
   const youtube = google.youtube({ version: "v3", auth: apiKey });
   const gateOptions: {

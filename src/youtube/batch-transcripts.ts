@@ -16,7 +16,7 @@ import {
   isBlockedTranscriptDuration,
   maxBlockedTranscriptDurationSeconds,
   readVideoMetadataStore,
-  resolveVideoState,
+  resolveVideoFetchState,
   videoNamingMetadata,
   type VideoDateKind,
   type VideoMetadataRecord,
@@ -138,8 +138,8 @@ export async function fetchAndStoreTranscriptBatch(
   };
 
   for (const videoId of failuresById.keys()) {
-    const state = resolveVideoState(metadataById.get(videoId));
-    if (state.state === "deferred" || (state.state === "ready" && isBlockedTranscriptDuration(state.durationSeconds))) {
+    const state = resolveVideoFetchState(metadataById.get(videoId), options.metadataInput !== undefined);
+    if (state?.state === "deferred" || (state?.state === "ready" && isBlockedTranscriptDuration(state.durationSeconds))) {
       failuresById.delete(videoId);
     }
   }
@@ -148,8 +148,8 @@ export async function fetchAndStoreTranscriptBatch(
 
   for (const episode of episodes) {
     const metadata = metadataById.get(episode.videoId);
-    const state = resolveVideoState(metadata);
-    if (state.state === "ready" && isBlockedTranscriptDuration(state.durationSeconds)) {
+    const state = resolveVideoFetchState(metadata, options.metadataInput !== undefined);
+    if (state?.state === "ready" && isBlockedTranscriptDuration(state.durationSeconds)) {
       failuresById.delete(episode.videoId);
       counters.skippedShortDurationCount += 1;
       options.logger?.(
@@ -171,7 +171,7 @@ export async function fetchAndStoreTranscriptBatch(
       continue;
     }
 
-    if (state.state !== "ready") {
+    if (state !== undefined && state.state !== "ready") {
       if (state.state === "deferred") {
         failuresById.delete(episode.videoId);
       }
@@ -223,7 +223,11 @@ export async function fetchAndStoreTranscriptBatch(
       options.logger?.(`Stored transcript TXT: ${paths.txtOutput}`);
     } catch (error) {
       counters.failedCount += 1;
-      const failure = transcriptBatchFailure(episode, error, state.videoDateAt);
+      const failure = transcriptBatchFailure(
+        episode,
+        error,
+        state?.state === "ready" ? state.videoDateAt : episode.videoDateAt,
+      );
       failuresById.set(episode.videoId, failure);
       options.logger?.(`Transcript fetch failed for ${episode.videoId}: ${failure.error}`);
     }
@@ -323,12 +327,13 @@ function applyNamingMetadata(transcript: VideoTranscript, metadata: VideoNamingM
 function namingMetadataForEpisode(
   episode: TranscriptBatchEpisode,
   metadataRecord: VideoMetadataRecord | undefined,
-  state: Extract<VideoStateResult, { state: "ready" }>,
+  state: Extract<VideoStateResult, { state: "ready" }> | undefined,
 ): VideoNamingMetadata {
   const metadata = videoNamingMetadata(metadataRecord);
   const result: VideoNamingMetadata = {};
   const title = metadata.title ?? episode.title;
-  const timestamp = metadata.timestamp ?? state.videoDateAt ?? episode.videoDateAt;
+  const timestamp = metadata.timestamp ?? state?.videoDateAt ?? episode.videoDateAt ?? episode.actualStartAt ??
+    episode.scheduledStartAt ?? episode.publishedAt;
 
   if (title !== undefined) {
     result.title = title;
@@ -336,8 +341,14 @@ function namingMetadataForEpisode(
   if (timestamp !== undefined) {
     result.timestamp = timestamp;
   }
-  result.dateKind = metadata.dateKind ?? state.videoDateKind ?? episode.videoDateKind;
-  result.videoKind = metadata.videoKind ?? state.videoKind;
+  const dateKind = metadata.dateKind ?? state?.videoDateKind ?? episode.videoDateKind;
+  const videoKind = metadata.videoKind ?? state?.videoKind;
+  if (dateKind !== undefined) {
+    result.dateKind = dateKind;
+  }
+  if (videoKind !== undefined) {
+    result.videoKind = videoKind;
+  }
 
   return result;
 }
@@ -417,7 +428,7 @@ function buildTranscriptBatchStatus(
 function transcriptBatchFailure(
   episode: TranscriptBatchEpisode,
   error: unknown,
-  videoDateAt: string,
+  videoDateAt: string | undefined,
 ): TranscriptBatchFailure {
   const message = error instanceof Error ? error.message : String(error);
   const failure: TranscriptBatchFailure = {
@@ -431,7 +442,9 @@ function transcriptBatchFailure(
   if (episode.title !== undefined) {
     failure.title = episode.title;
   }
-  failure.videoDateAt = videoDateAt;
+  if (videoDateAt !== undefined) {
+    failure.videoDateAt = videoDateAt;
+  }
   if (episode.channelOrder !== undefined) {
     failure.channelOrder = episode.channelOrder;
   }

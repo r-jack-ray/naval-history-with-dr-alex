@@ -64,6 +64,13 @@ one shared request limiter, and writes schema-2 `fetch-status.json` after each
 attempt. Deferred videos are not attempts or previous failures. Previous real
 failures are skipped on resume unless `--retry-failed` is provided.
 
+Run `npm run fetch:video-metadata` before the transcript batch. That metadata
+step retains upcoming livestream air dates and automatically refreshes a
+deferred record about 24 hours after its latest scheduled time. A postponed
+stream therefore records its new air date instead of becoming a transcript
+failure; a completed stream becomes eligible for the following transcript
+batch.
+
 Generate a diagnostic report from the saved failures without contacting YouTube
 or retrying any transcript:
 
@@ -78,5 +85,6 @@ confidence level and remain limited to evidence saved by prior fetch runs.
 By default, the fetcher reads `src/channel/video-metadata.json` for title and
 canonical video-date naming. Use `--video-title` and `--video-timestamp` when
 naming metadata needs to be supplied manually, or `--no-metadata-lookup` to use
-only transcript-provided metadata. Use explicit `--txt-output` or `--tsv-output`
-only for ad hoc exports outside the store.
+only transcript- or episode-provided metadata and bypass the readiness and
+short-duration preflight. Use explicit `--txt-output` or `--tsv-output` only for
+ad hoc exports outside the store.

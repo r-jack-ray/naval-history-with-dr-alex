@@ -150,6 +150,10 @@ Options:
   --quiet                 Suppress progress logs.
   --help                  Show this help.
 
+Stored deferred livestreams are automatically refreshed about 24 hours after
+the later of their scheduled start or previous metadata fetch. If YouTube moves
+the stream, the refreshed scheduled time controls the next automatic retry.
+
 Examples:
   npm run fetch:video-metadata
   npm run fetch:video-metadata -- --limit 50 --request-delay-ms 1000

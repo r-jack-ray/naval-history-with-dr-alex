@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "videoId": "VmRNQXeR5Ds",
-  "topics": ["ultimate-admiral-dreadnoughts", "battlecruisers", "battleships", "light-cruisers", "ship-design", "fleet-screening", "naval-procurement"],
+  "topics": ["ultimate-admiral-dreadnoughts", "battlecruisers", "battleships", "light-cruisers", "ship-design", "fleet-screening", "naval-procurement", "force-structure"],
   "segments": [
     {
       "id": "battlecruisers-hunt-light-cruisers",
@@ -83,15 +83,15 @@
       "id": "fast-battleship-and-battlecruiser-design-family",
       "videoId": "VmRNQXeR5Ds",
       "slug": "fast-battleship-and-battlecruiser-design-family",
-      "title": "Fast capital ships combine protection with pursuit speed",
+      "title": "Fast capital ships, allied orders, and class scale",
       "kind": "notable_point",
       "start": "37:02",
       "end": "42:33",
-      "topics": ["battleships", "battlecruisers", "ship-design", "naval-armour", "naval-gunnery"],
-      "summary": "The stream reviews heavily protected, high-speed capital ships and explains the campaign preference for building them in useful groups.",
-      "body": "The new Lord Nelson-class battleships combine nine 16.5-inch guns, heavy belt and deck armor, and a 30-knot speed. A later Hampshire-class battlecruiser design pushes protection and speed even further, reaching 36 knots while retaining a 19-inch belt. The campaign treats these ships as a family of fast, heavily protected capital ships rather than as isolated design trophies. Dr. Clarke's preference to order at least eight ships at a time reflects a force-structure concern: a class must exist in enough numbers to be based and employed in multiple theaters.",
+      "topics": ["battleships", "battlecruisers", "ship-design", "naval-armour", "naval-gunnery", "shipbuilding-capacity", "naval-procurement"],
+      "summary": "The stream reviews heavily protected, high-speed capital ships, allied export orders that consume yard capacity, and the decision to buy each class in useful groups.",
+      "body": "The new Lord Nelson-class battleships combine nine 16.5-inch guns, heavy belt and deck armour, and a 30-knot speed. A later Hampshire-class battlecruiser pushes protection and speed even further, reaching 36 knots while retaining a 19-inch belt. British yards are also building major warships for Portugal and the Netherlands, while allies seek the newest designs, so domestic force planning is entangled with export demand and construction capacity. The campaign treats these ships as a family of fast, heavily protected capital ships rather than as isolated design trophies. Dr. Clarke's preference to order at least eight ships at a time reflects a force-structure concern: a class must exist in enough numbers to be based and employed in multiple theatres.",
       "sourcePath": "src/transcripts/txt/2023-08-28_T18-00-15_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-5_VmRNQXeR5Ds.txt",
-      "evidence": [{"start": "37:02", "end": "42:33", "note": "The Lord Nelson and Hampshire designs' guns, armor, speed, and group ordering are discussed."}]
+      "evidence": [{"start": "37:02", "end": "42:33", "note": "The Lord Nelson and Hampshire designs, allied construction orders, yard capacity, and eight-ship group ordering are discussed."}]
     },
     {
       "id": "djibouti-invasion-and-regional-control",
@@ -100,12 +100,12 @@
       "title": "Choosing Djibouti for regional naval control",
       "kind": "chapter",
       "start": "43:15",
-      "end": "48:21",
+      "end": "47:24",
       "topics": ["naval-invasions", "djibouti", "indian-ocean", "fleet-deployment", "amphibious-operations"],
       "summary": "The campaign selects Djibouti for a naval invasion because its position can expand British control and supports the movement of escorts and capital ships.",
       "body": "Dr. Clarke chooses Djibouti over northern Algeria because of its useful position, then assigns destroyers to escort the four battlecruisers moving toward the operation. She checks that enough force is present and treats the port as a stepping stone for wider regional control. The sequence presents naval invasion as a logistics and basing problem as much as a territorial acquisition: ships must be concentrated, protected, and placed where they can influence a wider region. Her description makes the intended gain broader regional control, not simply ownership of one port.",
       "sourcePath": "src/transcripts/txt/2023-08-28_T18-00-15_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-5_VmRNQXeR5Ds.txt",
-      "evidence": [{"start": "43:15", "end": "48:21", "note": "Djibouti is selected, destroyer escorts are assigned, and its regional-control value is explained."}]
+      "evidence": [{"start": "43:15", "end": "47:24", "note": "Djibouti is selected, destroyer escorts are assigned, and its regional-control value is explained."}]
     },
     {
       "id": "battlecruisers-pressure-american-ports",
@@ -122,18 +122,32 @@
       "evidence": [{"start": "47:53", "end": "49:18", "note": "Battlecruisers are sent toward Pensacola, Tampa, and Miami after port tonnage is compared, with economic damage given as the objective."}]
     },
     {
+      "id": "torpedo-boats-trade-cost-for-disproportionate-risk",
+      "videoId": "VmRNQXeR5Ds",
+      "slug": "torpedo-boats-trade-cost-for-disproportionate-risk",
+      "title": "Cheap torpedo craft can threaten far costlier ships",
+      "kind": "notable_point",
+      "start": "52:13",
+      "end": "52:29",
+      "topics": ["torpedo-boats", "torpedoes", "naval-tactics", "naval-procurement", "capital-ships"],
+      "summary": "Two torpedo boats are unlikely to win outright, but even one hit could inflict damage far beyond the value of the attacking craft.",
+      "body": "Dr. Clarke says the two torpedo boats have little chance of winning the battle outright. Their value lies in the possibility that one hit could cause far more damage than the boats themselves are worth. That makes the craft an asymmetric threat rather than miniature line combatants. In the simulation, risking cheap torpedo boats can therefore be rational even when their survival odds are poor, because a successful attack against a capital ship changes the exchange sharply.",
+      "sourcePath": "src/transcripts/txt/2023-08-28_T18-00-15_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-5_VmRNQXeR5Ds.txt",
+      "evidence": [{"start": "52:13", "end": "52:29", "note": "Dr. Clarke says the torpedo boats are unlikely to win but could still inflict damage far greater than their own value."}]
+    },
+    {
       "id": "speed-turret-standardization-and-forward-fire",
       "videoId": "VmRNQXeR5Ds",
       "slug": "speed-turret-standardization-and-forward-fire",
-      "title": "Speed and forward fire shape the campaign's capital ships",
+      "title": "Useful firing speed and forward fire shape capital ships",
       "kind": "notable_point",
-      "start": "52:00",
+      "start": "53:55",
       "end": "58:45",
       "topics": ["ship-design", "battleships", "battlecruisers", "naval-gunnery", "naval-speed"],
-      "summary": "A battle sequence exposes the value of fast ships, standardized turrets, useful long-range speed, and forward-firing gun arrangements.",
-      "body": "Dr. Clarke describes an earlier design phase focused on making battlecruisers and fast battleships exceptionally quick before rival fleets could match them. In combat, the speed advantage lets the heavy ships catch an 18-knot opponent and keep pressure on it. She distinguishes headline maximum speed from the speed a ship can sustain while firing effectively at long range. She also favors standardized turret arrangements for production and long-range fire, together with all-forward layouts that keep more guns available while chasing or closing the range.",
+      "summary": "A battle sequence distinguishes headline speed from useful long-range firing speed and shows why standardized, all-forward guns suit a pursuing capital ship.",
+      "body": "Dr. Clarke cares less about headline maximum speed than the speed a ship can sustain while firing effectively at long range. The heavy ships can still catch an 18-knot opponent and keep pressure on it, so useful speed translates directly into tactical control. She favours all-forward layouts because more of the main battery remains available while chasing or closing the range. She also standardizes turret arrangements to simplify production and improve consistency in long-range fire. Together, speed, firing arcs, and repeatable armament shape a capital ship that is designed to pursue rather than wait for an opponent to approach.",
       "sourcePath": "src/transcripts/txt/2023-08-28_T18-00-15_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-5_VmRNQXeR5Ds.txt",
-      "evidence": [{"start": "52:00", "end": "58:45", "note": "The transcript covers fast capital ships, pursuit speed, turret standardization, and the appeal of all-forward arrangements."}]
+      "evidence": [{"start": "53:55", "end": "58:45", "note": "The transcript covers useful long-range firing speed, pursuit, turret standardization, and the appeal of all-forward arrangements."}]
     },
     {
       "id": "mediterranean-blockade-and-submarine-escort",
@@ -178,18 +192,60 @@
       "evidence": [{"start": "1:19:37", "end": "1:26:17", "note": "She explains taking key places, needing to secure them, ordering 128 light cruisers, and distributing them among British ports."}]
     },
     {
+      "id": "line-ahead-and-forward-fire",
+      "videoId": "VmRNQXeR5Ds",
+      "slug": "line-ahead-and-forward-fire",
+      "title": "Line ahead turns formation into concentrated fire",
+      "kind": "notable_point",
+      "start": "1:29:23",
+      "end": "1:33:09",
+      "topics": ["fleet-formations", "naval-tactics", "battleships", "naval-gunnery", "secondary-batteries"],
+      "summary": "Before charging lighter ships, Dr. Clarke forms line ahead and weighs the main battery's firing arcs against a shortage of secondary guns.",
+      "body": "In the simulation, Dr. Clarke tells the capital ships to hold course until they are ready to form line ahead, then turn together rather than scatter sideways. The opposing destroyers act as a screen, buying time for their cruisers while the British battleships drive toward them. Her ships lack as many 6-inch secondary guns as she would like, which makes the close approach less comfortable. Their 16.5-inch main guns do have strong fields of fire, showing how formation and firing arcs can partly compensate for an imperfect weapons fit.",
+      "sourcePath": "src/transcripts/txt/2023-08-28_T18-00-15_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-5_VmRNQXeR5Ds.txt",
+      "evidence": [{"start": "1:29:23", "end": "1:33:09", "note": "The ships form line ahead, the enemy destroyers screen their cruisers, and the British battleships' secondary shortage and main-gun arcs are assessed."}]
+    },
+    {
+      "id": "fast-battleship-concept-under-fire",
+      "videoId": "VmRNQXeR5Ds",
+      "slug": "fast-battleship-concept-under-fire",
+      "title": "London demonstrates the fast-battleship concept",
+      "kind": "notable_point",
+      "start": "1:38:15",
+      "end": "1:43:04",
+      "topics": ["battleships", "naval-speed", "naval-armour", "naval-gunnery", "torpedoes"],
+      "summary": "HMS London uses speed, heavy armour, and 16.5-inch guns to drive through lighter opposition, while torpedoes remain the threat that can disrupt the charge.",
+      "body": "London charges through lighter opposition at speed, which Dr. Clarke explicitly presents as proof of the fast-battleship concept. Heavy armour makes the ship difficult for smaller guns to stop, while 16.5-inch fire keeps opponents under severe pressure. She initially uses automatic torpedo avoidance, so the run also exposes how much the tactic depends on manoeuvre and warning. This is a simulation battle rather than a historical engagement, but it gives a clear watch point for how speed, protection, and heavy guns combine in the concept.",
+      "sourcePath": "src/transcripts/txt/2023-08-28_T18-00-15_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-5_VmRNQXeR5Ds.txt",
+      "evidence": [{"start": "1:38:15", "end": "1:43:04", "note": "London is identified as proving the fast-battleship concept while using speed, armour, heavy guns, and automatic torpedo avoidance against lighter ships."}]
+    },
+    {
+      "id": "automatic-torpedo-avoidance-fails",
+      "videoId": "VmRNQXeR5Ds",
+      "slug": "automatic-torpedo-avoidance-fails",
+      "title": "Automatic torpedo avoidance fails HMS London",
+      "kind": "notable_point",
+      "start": "1:48:00",
+      "end": "1:49:42",
+      "topics": ["torpedoes", "ship-handling", "battleships", "damage-control"],
+      "summary": "London is lost after the game's automatic avoidance fails, forcing a shift from delegated control to direct evasive handling.",
+      "body": "London is lost when the game's automatic torpedo-avoidance setting fails to turn her clear. Dr. Clarke immediately stops trusting the automation and takes direct responsibility for evasive manoeuvres in later attacks. The moment separates the design's combat power from the handling system that has to keep it alive. As a simulation example, it illustrates the broader operational point that protection and firepower cannot compensate for a failed response to a torpedo threat.",
+      "sourcePath": "src/transcripts/txt/2023-08-28_T18-00-15_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-5_VmRNQXeR5Ds.txt",
+      "evidence": [{"start": "1:48:00", "end": "1:49:42", "note": "The automatic avoidance setting fails, London is lost, and Dr. Clarke decides to control subsequent torpedo evasion directly."}]
+    },
+    {
       "id": "torpedoes-expose-screening-deficit",
       "videoId": "VmRNQXeR5Ds",
       "slug": "torpedoes-expose-screening-deficit",
-      "title": "Torpedoes expose the cost of a weak screen",
+      "title": "Secondary batteries cannot replace a fleet screen",
       "kind": "chapter",
-      "start": "1:38:15",
+      "start": "1:57:19",
       "end": "2:01:28",
-      "topics": ["torpedoes", "fleet-screening", "destroyers", "light-cruisers", "battleships"],
-      "summary": "A fast battleship can dominate lighter opponents, but a torpedo loss demonstrates why capital ships still require destroyers and light cruisers.",
-      "body": "HMS London initially demonstrates the fast-battleship concept by rushing through the opposing force and frightening smaller ships with heavy armor and guns. A torpedo then sinks her after the automatic avoidance setting fails, prompting Dr. Clarke to take direct control of evasive maneuvers. She also notices that the class lacks enough secondary guns for the swarm of lighter opponents around it. The post-action assessment is clear: destroyers can fight each other while the battleships engage larger targets, and a force without enough light cruisers leaves its capital ships exposed in messy close actions.",
+      "topics": ["torpedoes", "fleet-screening", "destroyers", "light-cruisers", "battleships", "secondary-batteries"],
+      "summary": "Manual evasion and heavier secondary batteries help against torpedo craft, but the battle still exposes the strategic cost of too few destroyers and light cruisers.",
+      "body": "After London's loss, Dr. Clarke turns ships manually to place them in better torpedo-avoidance positions. She concludes that the class needs more 4-inch or 6-inch secondary guns for the lighter attackers surrounding it. Yet she explicitly calls the shortage of destroyers and light cruisers a strategic failure created by concentrating on capital-ship construction. Destroyers could fight opposing destroyers while battleships engage larger targets, and she judges that a dozen light cruisers would have made the battle very different. The lesson is that local self-defence armament can complement a screen, but cannot replace the smaller ships that keep threats away from the battle line.",
       "sourcePath": "src/transcripts/txt/2023-08-28_T18-00-15_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-5_VmRNQXeR5Ds.txt",
-      "evidence": [{"start": "1:38:15", "end": "2:01:28", "note": "London's fast-battleship performance, torpedo loss, manual evasion, and the need for destroyers and light cruisers are described."}]
+      "evidence": [{"start": "1:57:19", "end": "2:01:28", "note": "Manual torpedo evasion, inadequate secondary batteries, destroyer employment, and the strategic shortage of light cruisers are assessed."}]
     },
     {
       "id": "self-escorting-battleship-secondary-battery",
@@ -234,6 +290,22 @@
       "evidence": [{"start": "2:21:48", "end": "2:23:31", "note": "Djibouti's capture is announced, Sardinia is selected as the next invasion target, and the fleet's gathering point is considered."}]
     },
     {
+      "id": "chinese-fleet-shaped-by-foreign-orders",
+      "videoId": "VmRNQXeR5Ds",
+      "slug": "chinese-fleet-shaped-by-foreign-orders",
+      "title": "Foreign orders shape China's campaign fleet",
+      "kind": "qa",
+      "start": "2:25:21",
+      "end": "2:25:39",
+      "topics": ["chinese-navy", "naval-exports", "fleet-composition", "ultimate-admiral-dreadnoughts"],
+      "summary": "A viewer asks what Chinese warships look like in the campaign, revealing a fleet composed mainly of British exports with some French-built cruisers.",
+      "body": "Dr. Clarke says China's campaign fleet uses mostly British designs because Britain has repeatedly sold it ships. She also notes that China has bought some French cruisers, giving the fleet a second foreign source. The answer shows how export orders inside the game can shape another navy's technical appearance and force composition. It describes this Ultimate Admiral: Dreadnoughts campaign state rather than the historical development of the Chinese navy.",
+      "question": "What do Chinese warships look like in this campaign?",
+      "answerShort": "Mostly British designs because Britain has sold ships to China, with some French-built cruisers also present.",
+      "sourcePath": "src/transcripts/txt/2023-08-28_T18-00-15_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-5_VmRNQXeR5Ds.txt",
+      "evidence": [{"start": "2:25:21", "end": "2:25:39", "note": "A viewer asks about Chinese ships, and Dr. Clarke says the campaign fleet is mostly British-built with some French cruiser purchases."}]
+    },
+    {
       "id": "british-freight-train-length-constraints",
       "videoId": "VmRNQXeR5Ds",
       "slug": "british-freight-train-length-constraints",
@@ -243,7 +315,7 @@
       "end": "2:33:50",
       "topics": ["british-railways", "freight-transport", "transport-infrastructure", "regulation"],
       "summary": "A viewer's question about very long American freight trains leads to a comparison with Britain's curvier railway network and regulatory institutions.",
-      "body": "Asked whether Britain faces the operational problems associated with three-mile freight trains in the United States, Dr. Clarke says the British system generally does not need trains of that length. It tends toward somewhat higher frequency, higher speed, and fewer wagons per train. Britain's railway geography also contains many bends and inherited constraints, even on routes intended for higher speeds. She adds that government and regulatory bodies have somewhat more authority to intervene, making the comparison institutional as well as physical.",
+      "body": "Asked whether Britain faces the operational problems associated with three-mile freight trains in the United States, Dr. Clarke says the British system generally does not need trains of that length. It tends toward somewhat higher frequency, higher speed, and fewer wagons per train. She explains that a 650-metre standard associated with interconnected continental routes is not a universal British operating limit, while the rare longer British examples tend to be power-station fuel trains. Britain's railway geography also contains many bends and inherited constraints, even on routes intended for higher speeds. She adds that government and regulatory bodies have somewhat more authority to intervene, making the comparison institutional as well as physical.",
       "question": "Does Britain face the same problems as the United States with freight trains more than three miles long?",
       "answerShort": "Generally no; British freight operations use shorter, somewhat faster and more frequent trains on a network with different physical and regulatory constraints.",
       "sourcePath": "src/transcripts/txt/2023-08-28_T18-00-15_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-5_VmRNQXeR5Ds.txt",
@@ -268,12 +340,14 @@
       "videoId": "VmRNQXeR5Ds",
       "slug": "rail-gauge-myth-and-loading-gauge",
       "title": "Railway limits come from infrastructure, not a horse-width myth",
-      "kind": "notable_point",
+      "kind": "qa",
       "start": "2:39:54",
       "end": "2:44:34",
       "topics": ["british-railways", "rail-gauge", "isambard-kingdom-brunel", "transport-infrastructure", "high-speed-rail"],
       "summary": "A discussion of British railways separates the origin myth about standard gauge from the real tunnel, bridge, and platform constraints on modern trains.",
-      "body": "Dr. Clarke rejects the popular claim that standard railway gauge simply derives from the width of two horses. She notes that the standard changed during railway development and contrasts it with Isambard Kingdom Brunel's broader gauge, which she argues offered better long-term potential for speed and capacity. For modern British trains, the more important inherited constraints are often tunnel and bridge height rather than track width alone. Those loading-gauge and platform-length limits help explain why double-deck trains common elsewhere in Europe are difficult to introduce on much of the British network.",
+      "body": "Dr. Clarke rejects the popular claim that standard railway gauge simply derives from the width of two horses. She notes that the standard changed during railway development and contrasts it with Isambard Kingdom Brunel's broader gauge, which she argues offered better long-term potential for speed and capacity. For modern British trains, the more important inherited constraints are often tunnel and bridge height rather than track width alone. Those loading-gauge and platform-length limits help explain why double-deck trains common elsewhere in Europe are difficult to introduce on much of the British network. She is not certain that the planned HS2 infrastructure will accommodate double-deck trains, so that final point is presented as an open design question rather than a settled specification.",
+      "question": "Do British railway limits ultimately come from the width of two horses, and why are double-deck trains uncommon?",
+      "answerShort": "No; the horse-width story is a myth, while inherited tunnel heights, bridges, and platform lengths constrain the loading gauge available to modern British trains.",
       "sourcePath": "src/transcripts/txt/2023-08-28_T18-00-15_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-5_VmRNQXeR5Ds.txt",
       "evidence": [{"start": "2:39:54", "end": "2:44:34", "note": "Dr. Clarke rejects the horse-width gauge myth, discusses Brunel's broad gauge, and explains British tunnel, bridge, platform, and double-deck constraints."}]
     },
@@ -292,46 +366,46 @@
       "evidence": [{"start": "2:47:21", "end": "2:51:34", "note": "The French Antilles are selected, available tonnage is checked, reinforcements are drawn from scattered ports, and the success chance reaches 100 percent."}]
     },
     {
-      "id": "queen-elizabeth-class-design-compromises",
-      "videoId": "VmRNQXeR5Ds",
-      "slug": "queen-elizabeth-class-design-compromises",
-      "title": "Balancing a survivable Queen Elizabeth-class concept",
-      "kind": "chapter",
-      "start": "2:53:51",
-      "end": "3:16:16",
-      "topics": ["battleships", "queen-elizabeth-class-battleships", "ship-design", "naval-armour", "naval-gunnery"],
-      "summary": "The first Queen Elizabeth-class concept pursues maximum range, heavy guns, and protection, but its weight, pitch, and machinery compromises make the design unacceptable.",
-      "body": "Dr. Clarke begins with a battleship intended to be so survivable that opponents would avoid fighting it, emphasizing long range, a heavy 16.5-inch battery, and substantial secondary armament. The initial concept quickly becomes too heavy and unstable, so she trades among speed, turret count, armour, bulkheads, machinery, and hull dimensions. Reducing speed and protection creates room, but every saving alters the balance she is trying to preserve. By 3:16 she refuses to launch the design and switches hulls rather than accept the accumulation of compromises. The watch point shows that a formidable specification is not useful if the selected hull cannot carry it coherently.",
-      "sourcePath": "src/transcripts/txt/2023-08-28_T18-00-15_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-5_VmRNQXeR5Ds.txt",
-      "evidence": [{"start": "2:53:51", "end": "3:16:16", "note": "The first concept's survivability goal, weight and stability problems, repeated trade-offs, and rejection before a hull change are covered."}]
-    },
-    {
       "id": "scottish-participation-british-empire",
       "videoId": "VmRNQXeR5Ds",
       "slug": "scottish-participation-british-empire",
       "title": "Scottish participation was integral to British imperial expansion",
       "kind": "notable_point",
       "start": "2:55:45",
-      "end": "3:00:04",
+      "end": "2:59:54",
       "topics": ["british-empire", "scottish-history", "british-army", "historical-memory"],
       "summary": "Dr. Clarke challenges narratives that detach Scots from the expansion of the British Empire and points to military service as one route into imperial activity.",
       "body": "Dr. Clarke cautions that translation and national labeling can shape how historical people and institutions are marketed to modern audiences. She then rejects the idea that Scots stood outside the making of the British Empire, emphasizing that large numbers participated in its expansion. Scottish regiments were not merely a device for removing men from Scotland; military service offered pay and attracted people willing and able to serve abroad. The passage is useful for studying empire as a multinational British project rather than attributing it to England alone.",
       "sourcePath": "src/transcripts/txt/2023-08-28_T18-00-15_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-5_VmRNQXeR5Ds.txt",
-      "evidence": [{"start": "2:55:45", "end": "3:00:04", "note": "The transcript discusses translation and national marketing, rejects the exclusion of Scots from imperial expansion, and explains military service as paid work."}]
+      "evidence": [{"start": "2:55:45", "end": "2:59:54", "note": "The transcript discusses translation and national marketing, rejects the exclusion of Scots from imperial expansion, and explains military service as paid work."}]
+    },
+    {
+      "id": "queen-elizabeth-class-design-compromises",
+      "videoId": "VmRNQXeR5Ds",
+      "slug": "queen-elizabeth-class-design-compromises",
+      "title": "Balancing a survivable Queen Elizabeth-class concept",
+      "kind": "chapter",
+      "start": "3:00:04",
+      "end": "3:16:16",
+      "topics": ["battleships", "queen-elizabeth-class-battleships", "ship-design", "naval-armour", "naval-gunnery"],
+      "summary": "The first Queen Elizabeth-class concept pursues maximum range, heavy guns, and protection, but its weight, pitch, and machinery compromises make the design unacceptable.",
+      "body": "Dr. Clarke begins with a battleship intended to be so survivable that opponents would avoid fighting it, emphasizing long range, a heavy 16.5-inch battery, and substantial secondary armament. The initial concept quickly becomes too heavy and unstable, so she trades among speed, turret count, armour, bulkheads, machinery, and hull dimensions. Reducing speed and protection creates room, but every saving alters the balance she is trying to preserve. By 3:16 she refuses to launch the design and switches hulls rather than accept the accumulation of compromises. The watch point shows that a formidable specification is not useful if the selected hull cannot carry it coherently.",
+      "sourcePath": "src/transcripts/txt/2023-08-28_T18-00-15_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-5_VmRNQXeR5Ds.txt",
+      "evidence": [{"start": "3:00:04", "end": "3:16:16", "note": "The first concept's survivability goal, weight and stability problems, repeated trade-offs, and rejection before a hull change are covered."}]
     },
     {
       "id": "queen-elizabeth-modern-hull-restart",
       "videoId": "VmRNQXeR5Ds",
       "slug": "queen-elizabeth-modern-hull-restart",
-      "title": "A modern hull improves stability but not enough",
+      "title": "A modern hull gives the design a better starting point",
       "kind": "chapter",
       "start": "3:16:21",
-      "end": "3:33:16",
+      "end": "3:26:27",
       "topics": ["battleships", "queen-elizabeth-class-battleships", "ship-design", "ship-stability", "naval-armour", "naval-gunnery"],
-      "summary": "Restarting on a modern battleship hull produces a better-balanced starting point, yet secondary guns and protection again push the design beyond acceptable weight and trim.",
-      "body": "Dr. Clarke restarts the Queen Elizabeth concept on a modern battleship hull after rejecting the first version. The new hull initially looks much more stable, so she rebuilds the main battery, armour scheme, machinery, range, and secondary battery around it. Once the secondary guns and protection are added, the ship again becomes badly overweight and develops severe pitch and fore-and-aft imbalance. She continues trimming armour and other choices but concludes that the design is demanding too many compromises. The stream ends with the unfinished class deleted and a plan to start again next time, making this a clear example of iteration rather than a successful final design.",
+      "summary": "Restarting on a modern battleship hull produces a better-balanced baseline, but the main battery, armour, machinery, range, and secondary guns soon consume the available margin.",
+      "body": "Dr. Clarke restarts the Queen Elizabeth concept on a modern battleship hull after rejecting the first version. The new hull initially looks much more stable, so she rebuilds the main battery, armour scheme, machinery, range, and secondary battery around it. Once the secondary guns and protection are added, the ship again becomes badly overweight and develops severe pitch and fore-and-aft imbalance. This first half of the restart shows that choosing a more suitable hull can improve the baseline without removing the competition among armament, protection, speed, and stability.",
       "sourcePath": "src/transcripts/txt/2023-08-28_T18-00-15_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-5_VmRNQXeR5Ds.txt",
-      "evidence": [{"start": "3:16:21", "end": "3:33:16", "note": "The modern-hull restart, improved initial stability, renewed weight and trim problems, and final deletion are shown."}]
+      "evidence": [{"start": "3:16:21", "end": "3:26:27", "note": "The modern-hull restart, improved initial stability, and renewed weight and trim problems after fitting the armament are shown."}]
     },
     {
       "id": "vertical-launchers-and-ship-stability",
@@ -348,6 +422,20 @@
       "answerShort": "No; Dr. Clarke says vertical launch systems can create similar stability complications.",
       "sourcePath": "src/transcripts/txt/2023-08-28_T18-00-15_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-5_VmRNQXeR5Ds.txt",
       "evidence": [{"start": "3:26:35", "end": "3:26:43", "note": "A viewer asks about VLS and stability, and Dr. Clarke says VLS can cause similar problems."}]
+    },
+    {
+      "id": "queen-elizabeth-modern-hull-rejected",
+      "videoId": "VmRNQXeR5Ds",
+      "slug": "queen-elizabeth-modern-hull-rejected",
+      "title": "Weight and trim defeat the second Queen Elizabeth design",
+      "kind": "chapter",
+      "start": "3:27:30",
+      "end": "3:33:16",
+      "topics": ["battleships", "queen-elizabeth-class-battleships", "ship-design", "ship-stability", "naval-armour", "naval-gunnery"],
+      "summary": "The modern-hull restart remains thousands of tons overweight and badly unbalanced, so further cuts produce too many compromises and the unfinished class is deleted.",
+      "body": "After the brief VLS question, the modern-hull concept remains about 4,000 tons overweight with a severe fore-and-aft imbalance. Dr. Clarke trims speed, armour, and other choices but worries that the accumulating compromises will leave a design she cannot accept. By the final minutes, the aft end is still much heavier than intended and the cause is not clear enough to resolve during the stream. She deletes the unfinished class and plans another restart, making the endpoint an example of rejecting an incoherent design rather than forcing it into production.",
+      "sourcePath": "src/transcripts/txt/2023-08-28_T18-00-15_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-5_VmRNQXeR5Ds.txt",
+      "evidence": [{"start": "3:27:30", "end": "3:33:16", "note": "The ship remains overweight and badly trimmed, repeated cuts create too many compromises, and the unfinished class is deleted for a future restart."}]
     }
   ]
 }

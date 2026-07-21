@@ -4,11 +4,14 @@ import test from "node:test";
 import {
   buildVideoMetadataStore,
   canonicalVideoTimestamp,
+  deferredMetadataRetryAt,
   mergeVideoIds,
   parseYoutubeDurationSeconds,
   readVideoIdsFromEpisodeMaster,
   resolveVideoState,
   resolveAdditionalVideoIds,
+  resolveVideoFetchState,
+  selectVideoMetadataTargetIds,
   videoNamingMetadata,
   type VideoMetadataRecord,
 } from "./video-metadata.js";
@@ -118,6 +121,77 @@ test("does not produce naming metadata before a scheduled livestream completes",
     videoKind: "stream",
     reason: "upcoming",
     diagnostic: "The video is scheduled but has not started.",
+  });
+});
+
+test("automatically refreshes deferred livestream metadata one day after its latest scheduled start", () => {
+  const upcoming: VideoMetadataRecord = {
+    videoId: "upcoming123",
+    fetchedAt: "2026-07-08T02:35:14.944Z",
+    snippet: {
+      title: "Upcoming Naval History Live",
+      publishedAt: "2026-06-14T16:44:14Z",
+      liveBroadcastContent: "upcoming",
+    },
+    liveStreamingDetails: {
+      scheduledStartTime: "2026-07-19T18:30:00Z",
+    },
+  };
+
+  assert.equal(deferredMetadataRetryAt(upcoming), "2026-07-20T18:30:00.000Z");
+  assert.deepEqual(selectVideoMetadataTargetIds({
+    videoIds: [upcoming.videoId],
+    recordsById: new Map([[upcoming.videoId, upcoming]]),
+    now: new Date("2026-07-20T18:29:59Z"),
+  }), []);
+  assert.deepEqual(selectVideoMetadataTargetIds({
+    videoIds: [upcoming.videoId],
+    recordsById: new Map([[upcoming.videoId, upcoming]]),
+    now: new Date("2026-07-20T18:30:00Z"),
+  }), [upcoming.videoId]);
+});
+
+test("a postponed livestream uses the newly stored air date for its next automatic refresh", () => {
+  const postponed: VideoMetadataRecord = {
+    videoId: "postponed123",
+    fetchedAt: "2026-07-20T18:31:00.123Z",
+    snippet: { liveBroadcastContent: "upcoming" },
+    liveStreamingDetails: {
+      scheduledStartTime: "2026-07-23T18:30:00Z",
+    },
+  };
+
+  assert.equal(deferredMetadataRetryAt(postponed), "2026-07-24T18:30:00.000Z");
+  assert.deepEqual(selectVideoMetadataTargetIds({
+    videoIds: [postponed.videoId],
+    recordsById: new Map([[postponed.videoId, postponed]]),
+    now: new Date("2026-07-21T18:31:00Z"),
+  }), []);
+});
+
+test("explicit refreshes still override the deferred retry date", () => {
+  const upcoming: VideoMetadataRecord = {
+    videoId: "upcoming123",
+    fetchedAt: "2026-07-20T00:00:00Z",
+    snippet: { liveBroadcastContent: "upcoming" },
+    liveStreamingDetails: { scheduledStartTime: "2026-07-30T18:30:00Z" },
+  };
+
+  assert.deepEqual(selectVideoMetadataTargetIds({
+    videoIds: [upcoming.videoId],
+    recordsById: new Map([[upcoming.videoId, upcoming]]),
+    refreshVideoIds: [upcoming.videoId],
+    now: new Date("2026-07-20T01:00:00Z"),
+  }), [upcoming.videoId]);
+});
+
+test("metadata lookup can be explicitly bypassed for direct transcript fetches", () => {
+  assert.equal(resolveVideoFetchState(undefined, false), undefined);
+  assert.deepEqual(resolveVideoFetchState(undefined, true), {
+    state: "invalid",
+    videoKind: "upload",
+    reason: "metadata_missing",
+    diagnostic: "Video metadata is missing.",
   });
 });
 

@@ -108,6 +108,46 @@ test("batch fetch skips stored transcripts and writes checkpoint status", async 
   }
 });
 
+test("batch can fetch without a metadata lookup when explicitly requested", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "naval-transcript-batch-"));
+  const input = join(dir, "episodes.json");
+  const outputRoot = join(dir, "transcripts");
+  const statusOutput = join(outputRoot, "fetch-status.json");
+  const calls: string[] = [];
+
+  try {
+    await writeFile(input, JSON.stringify({
+      episodes: [{
+        videoId: "abc123",
+        title: "Metadata-free transcript",
+        publishedAt: "2026-07-03T18:30:17Z",
+        tabs: ["videos"],
+      }],
+    }), "utf8");
+
+    const status = await fetchAndStoreTranscriptBatch({
+      inputPath: input,
+      outputRoot,
+      statusOutput,
+      requestDelayMs: 5,
+      fetchTranscript: async (options) => {
+        calls.push(options.videoId);
+        return sampleTranscript(options.videoId);
+      },
+    });
+
+    assert.deepEqual(calls, ["abc123"]);
+    assert.equal(status.stats.skippedDeferredCount, 0);
+    assert.equal(status.stats.fetchedCount, 1);
+    assert.equal(
+      await readFile(join(outputRoot, "txt", "2026-07-03_T18-30-17_metadata-free-transcript_abc123.txt"), "utf8"),
+      "[0:00] Hello\n",
+    );
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
 test("batch refetches a manifest record whose TXT file is missing", async () => {
   const dir = await mkdtemp(join(tmpdir(), "naval-transcript-batch-"));
   const input = join(dir, "episodes.json");

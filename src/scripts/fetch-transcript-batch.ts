@@ -144,7 +144,7 @@ Options:
   --output-root <path>    Local transcript store. Defaults to src/transcripts.
   --status-output <path>  Resume/status JSON. Defaults to src/transcripts/fetch-status.json.
   --metadata-input <path> Local video metadata JSON. Defaults to src/channel/video-metadata.json.
-  --no-metadata-lookup    Do not read local metadata for title/timestamp naming.
+  --no-metadata-lookup    Bypass local metadata readiness and naming lookup.
   --language <name>       Optional transcript language code or label.
   --limit <count>         Maximum number of new transcript fetch attempts.
   --request-delay-ms <ms> Delay between YouTube requests. Defaults to 5000.
