@@ -6,9 +6,11 @@
     "punic-wars",
     "naval-command",
     "naval-gunnery",
+    "naval-logistics",
     "roman-military-history",
     "historical-games",
-    "military-strategy"
+    "military-strategy",
+    "siege-warfare"
   ],
   "segments": [
     {
@@ -22,7 +24,10 @@
       "topics": [
         "naval-gunnery",
         "battleships",
-        "warship-design"
+        "warship-design",
+        "14-inch-guns",
+        "16-inch-guns",
+        "barrel-length"
       ],
       "summary": "A viewer's battle report prompts a compact explanation of how barrel length can let a smaller-calibre naval gun outrange a larger but shorter weapon.",
       "body": "The discussion warns against comparing naval guns by bore diameter alone. Dr. Clarke asks whether the opposing 14-inch weapons are long-barrel 55-calibre guns and contrasts them with potentially shorter 16-inch guns. A longer barrel can change muzzle performance and effective reach enough to reverse the result suggested by calibre alone. This is a useful watch point for understanding why gun length, ammunition, and fire-control conditions matter alongside shell diameter in battleship design.",
@@ -193,33 +198,55 @@
       ]
     },
     {
+      "id": "equipment-quality-and-outnumbered-defenders",
+      "videoId": "FxhGWIhRLsU",
+      "slug": "equipment-quality-and-outnumbered-defenders",
+      "title": "Outnumbered defenders still need comparable weapons",
+      "kind": "notable_point",
+      "start": "1:11:44",
+      "end": "1:13:06",
+      "topics": [
+        "military-history",
+        "world-war-ii",
+        "militia",
+        "force-quality",
+        "historical-games"
+      ],
+      "summary": "A hopeless city defense prompts a distinction between outnumbered formations with comparable weapons and farmers facing armoured professional troops.",
+      "body": "The hundred-man garrison is willing to fight, but Dr. Clarke separates courage from combat capability. Its farmers carry improvised implements while the attacking troops have armour and purpose-built weapons. He contrasts that mismatch with Second World War formations that fought while equipped to roughly the same standard as their opponents. The scene makes a useful force-quality point: numerical inferiority can sometimes be overcome, but bravery does not erase a severe equipment gap.",
+      "sourcePath": "src/transcripts/txt/2023-04-24_T18-00-06_can-cathage-take-rome-with-a-naval-historian-in-charge-rome-total-war-1-april-2023_FxhGWIhRLsU.txt",
+      "evidence": [
+        {
+          "start": "1:11:44",
+          "end": "1:13:06",
+          "note": "He contrasts 100 defenders with farming implements against armoured troops, then says historical outnumbered units with comparable weapons faced a different problem."
+        }
+      ]
+    },
+    {
       "id": "fleet-control-and-overseas-defense",
       "videoId": "FxhGWIhRLsU",
       "slug": "fleet-control-and-overseas-defense",
-      "title": "Fleet control decides whether armies can answer overseas threats",
+      "title": "A Roman landing exposes Carthage's naval mobility gap",
       "kind": "chapter",
       "start": "1:16:14",
-      "end": "1:19:31",
+      "end": "1:16:36",
       "topics": [
         "naval-logistics",
         "sea-control",
         "troop-transport",
         "triremes",
-        "carthage"
+        "carthage",
+        "amphibious-warfare"
       ],
-      "summary": "Roman landings and a failed naval interception show why Carthage needs triremes, transport capacity, and secure docks to defend separated territories.",
-      "body": "A Roman force lands in Carthaginian territory while the available army is elsewhere, turning sea movement into an immediate strategic problem. Dr. Clarke responds by planning a stronger army and navy and notes that Carthage can build triremes. When a small fleet loses an interception, he orders an attack on the enemy docks and commits to further fleet construction. The passage shows that overseas possessions cannot be defended by land strength alone: sea control determines whether reinforcements move, invasions are intercepted, and ports remain usable.",
+      "summary": "A Roman landing in an exposed territory makes the need for stronger local land forces, triremes, and maritime interception immediately visible.",
+      "body": "A Roman force lands in Carthaginian territory while the available defenses are weak. Dr. Clarke responds by planning both a stronger local army and a better navy, noting that triremes are available. The reaction shows how an overseas attack can create a problem that land recruitment alone cannot solve. Fleet presence matters because it can contest the route before an enemy army turns a landing into a sustained campaign.",
       "sourcePath": "src/transcripts/txt/2023-04-24_T18-00-06_can-cathage-take-rome-with-a-naval-historian-in-charge-rome-total-war-1-april-2023_FxhGWIhRLsU.txt",
       "evidence": [
         {
           "start": "1:16:14",
           "end": "1:16:36",
           "note": "He reacts to a Roman landing by planning a stronger army and navy and notes that triremes are available."
-        },
-        {
-          "start": "1:18:52",
-          "end": "1:19:31",
-          "note": "After a three-ship fleet is defeated, he orders the enemy docks attacked and says he will build much more fleet strength."
         }
       ]
     },
@@ -248,38 +275,54 @@
       ]
     },
     {
+      "id": "failed-naval-interception-drives-fleet-expansion",
+      "videoId": "FxhGWIhRLsU",
+      "slug": "failed-naval-interception-drives-fleet-expansion",
+      "title": "A failed interception turns dock control into the next objective",
+      "kind": "notable_point",
+      "start": "1:18:52",
+      "end": "1:19:31",
+      "topics": [
+        "sea-control",
+        "naval-command",
+        "naval-force-structure",
+        "ports",
+        "carthage"
+      ],
+      "summary": "After a tiny fleet loses at sea, Dr. Clarke targets the enemy docks and commits to building enough ships to contest future crossings.",
+      "body": "A three-ship force fails to stop the enemy at sea. Rather than treat the loss as an isolated tactical setback, Dr. Clarke immediately links it to the port system that sustains hostile movement. He orders an attack on the docks and says a much larger fleet will be built. The watch point connects sea control to force structure and infrastructure: interception depends on having enough ships, while enemy ports determine whether opposing naval power can keep returning.",
+      "sourcePath": "src/transcripts/txt/2023-04-24_T18-00-06_can-cathage-take-rome-with-a-naval-historian-in-charge-rome-total-war-1-april-2023_FxhGWIhRLsU.txt",
+      "evidence": [
+        {
+          "start": "1:18:52",
+          "end": "1:19:31",
+          "note": "After a three-ship fleet is defeated, he orders the enemy docks attacked and says he will build much more fleet strength."
+        }
+      ]
+    },
+    {
       "id": "walled-flank-and-local-cavalry-superiority",
       "videoId": "FxhGWIhRLsU",
       "slug": "walled-flank-and-local-cavalry-superiority",
-      "title": "A walled flank creates local cavalry superiority",
+      "title": "Reading the line reveals where to seek local cavalry superiority",
       "kind": "notable_point",
       "start": "1:25:11",
-      "end": "1:33:03",
+      "end": "1:25:27",
       "topics": [
         "carthage",
         "cavalry",
         "military-strategy",
-        "unit-cohesion",
+        "battlefield-analysis",
         "missile-troops"
       ],
-      "summary": "Dr. Clarke uses a fortified town to secure one wing, concentrate cavalry on the other, and disrupt an opponent that keeps reorganizing its formation.",
-      "body": "Reading the opposing formation, Dr. Clarke identifies skirmishers in the center and cavalry on both flanks. Because he lacks enough cavalry to match both wings, he uses the walled town to anchor one side and concentrates his mounted force elsewhere. The walls and their missile fire reduce the need to mirror the enemy symmetrically. Repeated enemy shifts cost cohesion, opening a chance to blunt the disordered troops with better infantry at close quarters. The gamble cuts enemy numbers but fails when his general falls, showing that useful local geometry cannot guarantee success across the whole battle.",
+      "summary": "Dr. Clarke identifies skirmishers in the center and cavalry on both flanks, then looks for a way to create local mounted superiority without matching the line symmetrically.",
+      "body": "Before moving, Dr. Clarke reads the opposing deployment as skirmishers in the center with cavalry on both wings. He immediately frames the problem as one of local rather than total superiority. The Carthaginian force does not need to mirror every enemy unit if it can mass mounted strength at the decisive point. This short watch point shows battlefield analysis beginning with formation, troop type, and the location where concentration can matter most.",
       "sourcePath": "src/transcripts/txt/2023-04-24_T18-00-06_can-cathage-take-rome-with-a-naval-historian-in-charge-rome-total-war-1-april-2023_FxhGWIhRLsU.txt",
       "evidence": [
         {
           "start": "1:25:11",
           "end": "1:25:27",
           "note": "He reads the enemy's skirmisher-and-cavalry formation and looks for a way to create local cavalry superiority."
-        },
-        {
-          "start": "1:28:11",
-          "end": "1:30:07",
-          "note": "He anchors one wing on a walled town whose missile fire helps compensate for not having cavalry on both sides."
-        },
-        {
-          "start": "1:31:40",
-          "end": "1:33:03",
-          "note": "He exploits the enemy's loss of cohesion, but the gamble ultimately fails after his general is killed and the army runs."
         }
       ]
     },
@@ -294,7 +337,8 @@
       "topics": [
         "naval-technology",
         "submarines",
-        "ship-construction"
+        "ship-construction",
+        "titanium"
       ],
       "summary": "A chat question prompts a concise explanation of why titanium was considered for warships but saw specialist use, especially in submarines.",
       "body": "The answer distinguishes theoretical interest in titanium from practical shipbuilding. Dr. Clarke says plans and ideas existed for broader use, but cost and manufacturing difficulty made ordinary surface-warship construction unattractive. Submarine applications could justify a specialist material choice that fleet-scale surface construction could not. The exchange is a useful reminder that a material's technical promise must be weighed against fabrication demands, price, and the number of hulls a navy needs.",
@@ -306,6 +350,32 @@
           "start": "1:27:21",
           "end": "1:27:34",
           "note": "He answers that titanium was used in submarines and describes cost and manufacturing difficulty."
+        }
+      ]
+    },
+    {
+      "id": "walled-town-anchors-the-open-flank",
+      "videoId": "FxhGWIhRLsU",
+      "slug": "walled-town-anchors-the-open-flank",
+      "title": "A walled town anchors the flank that cavalry cannot cover",
+      "kind": "notable_point",
+      "start": "1:28:11",
+      "end": "1:28:35",
+      "topics": [
+        "carthage",
+        "cavalry",
+        "fortifications",
+        "local-superiority",
+        "military-strategy"
+      ],
+      "summary": "Unable to match enemy cavalry on both wings, Dr. Clarke uses the town wall to secure one side and concentrates mounted strength on the other.",
+      "body": "The Carthaginian force lacks enough cavalry to contest both enemy wings symmetrically. Dr. Clarke compensates by placing one flank against the walled town, letting terrain and fortification substitute for mounted coverage. That frees his available cavalry to concentrate elsewhere and pursue a local advantage. The enemy's repeated movement from side to side shows the uncertainty created when a fixed obstacle changes the geometry of the line.",
+      "sourcePath": "src/transcripts/txt/2023-04-24_T18-00-06_can-cathage-take-rome-with-a-naval-historian-in-charge-rome-total-war-1-april-2023_FxhGWIhRLsU.txt",
+      "evidence": [
+        {
+          "start": "1:28:11",
+          "end": "1:28:35",
+          "note": "He explains that the walled town can secure one wing when he lacks cavalry for both, while the enemy keeps shifting its mounted troops."
         }
       ]
     },
@@ -331,6 +401,31 @@
           "start": "1:29:24",
           "end": "1:29:42",
           "note": "He says Scipio's father's army was too mercenary-dominated and that the experience explains Scipio's hostility to mercenary reliance."
+        }
+      ]
+    },
+    {
+      "id": "repeated-redeployment-erodes-unit-cohesion",
+      "videoId": "FxhGWIhRLsU",
+      "slug": "repeated-redeployment-erodes-unit-cohesion",
+      "title": "Repeated redeployment creates a temporary opening",
+      "kind": "notable_point",
+      "start": "1:31:40",
+      "end": "1:33:03",
+      "topics": [
+        "unit-cohesion",
+        "military-command",
+        "combined-arms",
+        "battlefield-maneuver"
+      ],
+      "summary": "Enemy units lose cohesion while repeatedly reorganizing, creating an opening for better infantry, but the gamble collapses when the Carthaginian general dies.",
+      "body": "Dr. Clarke sees the opposing force repeatedly reorganize and judges that the movement has reduced its cohesion. He commits his better infantry at close quarters to blunt the disordered troops and rapidly cut their numbers. He presents the move as a worthwhile gamble rather than a guaranteed solution. The general's death then sends the army running, showing how a temporary tactical opening can be overturned by command loss and morale failure.",
+      "sourcePath": "src/transcripts/txt/2023-04-24_T18-00-06_can-cathage-take-rome-with-a-naval-historian-in-charge-rome-total-war-1-april-2023_FxhGWIhRLsU.txt",
+      "evidence": [
+        {
+          "start": "1:31:40",
+          "end": "1:33:03",
+          "note": "He exploits cohesion lost through repeated reorganization, but the gamble fails after his general is killed and the army runs."
         }
       ]
     },
@@ -375,16 +470,20 @@
         "hms-dreadnought",
         "royal-navy",
         "battleships",
-        "naval-gunnery"
+        "naval-gunnery",
+        "12-inch-guns",
+        "13-5-inch-guns",
+        "14-inch-guns",
+        "lord-nelson-class"
       ],
-      "summary": "A discussion of British heavy guns explains why Dr. Clarke finds HMS Dreadnought's adoption of a standardized 12-inch main battery striking.",
-      "body": "The passage begins with British 9.2-inch and 13.5-inch weapons before turning to HMS Dreadnought. Dr. Clarke says her 12-inch battery surprises him because he associates Royal Navy heavy battleship practice with the 13.5-inch gun and notes that a 14-inch weapon was also available from Elswick. He presents standardization around the 12-inch weapon as the immediate design logic behind the choice. The moment is useful for considering how a revolutionary ship can still depend on existing guns, industrial supply, and a navy's desire for a common calibre.",
+      "summary": "British gun-calibre discussion turns to Dreadnought's 12-inch battery, the Lord Nelson class, standardization, and an available 14-inch alternative.",
+      "body": "The discussion ranges over British 9.2-inch and 13.5-inch guns before turning to HMS Dreadnought's 12-inch main battery. Dr. Clarke finds the choice surprising, then points to the Lord Nelson class and a desire to standardize around an existing 12-inch weapon. He also mentions a 14-inch alternative available from an Elswick-associated firm. The watch point is useful for thinking about how an apparently revolutionary design still reflects inherited guns, industrial options, and standardization decisions.",
       "sourcePath": "src/transcripts/txt/2023-04-24_T18-00-06_can-cathage-take-rome-with-a-naval-historian-in-charge-rome-total-war-1-april-2023_FxhGWIhRLsU.txt",
       "evidence": [
         {
           "start": "1:42:02",
           "end": "1:43:52",
-          "note": "He moves from British heavy-gun calibres to Dreadnought's 12-inch battery, standardization, the 13.5-inch tradition he describes, and an available 14-inch gun."
+          "note": "He contrasts 9.2-inch and 13.5-inch guns with Dreadnought's 12-inch battery, cites Lord Nelson and standardization, and mentions an available 14-inch alternative."
         }
       ]
     },
@@ -440,7 +539,9 @@
         "naval-gunnery",
         "battlecruisers",
         "light-cruisers",
-        "naval-tactics"
+        "naval-tactics",
+        "10-inch-guns",
+        "12-inch-guns"
       ],
       "summary": "A viewer's imagined engagement prompts Dr. Clarke to compare broadside weight and the tactical value of a battlecruiser's expected speed advantage.",
       "body": "The proposed fight pits fifteen 12-inch guns in five triple turrets against two light cruisers carrying ten-inch weapons. Dr. Clarke rejects the idea that this should be a close match, treating the heavier broadside as a decisive disparity rather than a small numerical edge. When the comparison is reduced to one battlecruiser, he still expects that ship to benefit from superior speed. The discussion shows how gun power and mobility combine: a faster capital ship can seek a favourable range, disengage, or prevent weaker cruisers from dictating the encounter.",
@@ -462,40 +563,26 @@
       "id": "naval-transport-enables-the-attack-on-rome",
       "videoId": "FxhGWIhRLsU",
       "slug": "naval-transport-enables-the-attack-on-rome",
-      "title": "A navy turns Sicily into a springboard for Rome",
+      "title": "Why Syracuse needs a fleet to project power",
       "kind": "chapter",
       "start": "2:18:34",
-      "end": "3:30:04",
+      "end": "2:19:05",
       "topics": [
         "naval-logistics",
         "troop-transport",
         "amphibious-warfare",
         "sicily",
-        "carthage"
+        "carthage",
+        "syracuse"
       ],
-      "summary": "The campaign makes naval lift the link between conquering Syracuse, consolidating Sicily, and embarking the army for an assault on Rome.",
-      "body": "After winning in Sicily, Dr. Clarke says he needs a navy because otherwise the army cannot leave the island. Syracuse can support the campaign as a major Carthaginian base, while control of Sicily creates a concentrated center in place of scattered holdings. Later, once the transport fleet is in service, he embarks the army and moves directly toward Rome. The sequence gives a clear operational lesson: territorial conquest matters only when ports, ships, and transport capacity can convert it into movement across the sea.",
+      "summary": "After taking Syracuse, Dr. Clarke notes that the army remains trapped on Sicily until naval transport exists, even if the city becomes a strong Carthaginian base.",
+      "body": "Control of Syracuse does not by itself give the army freedom of action. Dr. Clarke says he needs a navy because otherwise the troops cannot leave Sicily, and he considers the city as a possible capital and base. This distinguishes territorial possession from operational reach: ports and ships must convert land power into movement. Within the game scenario, Syracuse is valuable not just for its resources but as a base from which Carthage can project force across the sea.",
       "sourcePath": "src/transcripts/txt/2023-04-24_T18-00-06_can-cathage-take-rome-with-a-naval-historian-in-charge-rome-total-war-1-april-2023_FxhGWIhRLsU.txt",
       "evidence": [
         {
           "start": "2:18:34",
           "end": "2:19:05",
           "note": "He says a navy is required to move the army off Sicily and considers Syracuse as a possible capital and base."
-        },
-        {
-          "start": "3:04:00",
-          "end": "3:04:22",
-          "note": "He contrasts losing a scattered Spanish holding with taking Sicily and creating a solid Carthaginian center."
-        },
-        {
-          "start": "3:19:57",
-          "end": "3:20:05",
-          "note": "He says that once the naval force is in service he will take an army north and seize Rome."
-        },
-        {
-          "start": "3:29:56",
-          "end": "3:30:04",
-          "note": "He embarks the general and army and begins the attack on Rome."
         }
       ]
     },
@@ -585,6 +672,58 @@
       ]
     },
     {
+      "id": "smaller-besiegers-still-need-a-quality-advantage",
+      "videoId": "FxhGWIhRLsU",
+      "slug": "smaller-besiegers-still-need-a-quality-advantage",
+      "title": "When can a smaller army besiege a larger one?",
+      "kind": "notable_point",
+      "start": "2:59:07",
+      "end": "2:59:51",
+      "topics": [
+        "siege-warfare",
+        "force-quality",
+        "militia",
+        "heavy-infantry",
+        "historical-games"
+      ],
+      "summary": "A smaller force can contain a larger peasant army when troop quality compensates, but the same gamble becomes disastrous against competent heavy infantry.",
+      "body": "Dr. Clarke distinguishes raw headcount from the quality of the troops conducting and resisting a siege. A smaller army may still contain a much larger peasant force if its soldiers are markedly better. That logic fails when the smaller besieger faces hastati and other capable troops while the defender also has respectable units. The scene turns an implausible game deployment into a concise warning that numerical inferiority requires a real qualitative advantage, not wishful thinking.",
+      "sourcePath": "src/transcripts/txt/2023-04-24_T18-00-06_can-cathage-take-rome-with-a-naval-historian-in-charge-rome-total-war-1-april-2023_FxhGWIhRLsU.txt",
+      "evidence": [
+        {
+          "start": "2:59:07",
+          "end": "2:59:51",
+          "note": "He says a smaller army can contain a large peasant force when quality compensates, but not capable troops backed by decent defenders."
+        }
+      ]
+    },
+    {
+      "id": "sicily-replaces-scattered-holdings-with-a-strategic-center",
+      "videoId": "FxhGWIhRLsU",
+      "slug": "sicily-replaces-scattered-holdings-with-a-strategic-center",
+      "title": "Sicily replaces scattered holdings with a strategic center",
+      "kind": "notable_point",
+      "start": "3:04:00",
+      "end": "3:04:22",
+      "topics": [
+        "carthage",
+        "sicily",
+        "strategic-geography",
+        "territorial-consolidation",
+        "historical-games"
+      ],
+      "summary": "Losing an isolated Spanish possession matters less once control of Sicily gives the campaign a compact, defensible center near the main Roman objective.",
+      "body": "Dr. Clarke contrasts the loss of a scattered holding in Spain with the capture of Sicily. In the campaign, the island creates a more solid Carthaginian center instead of leaving strength dispersed across disconnected territories. The point is explicitly about the game's strategic map, but it illustrates a wider problem of imperial geography: not every possession contributes equally to concentration or defense. A compact base near the decisive theater can be more valuable than a distant outpost that consumes attention and cannot support the main effort.",
+      "sourcePath": "src/transcripts/txt/2023-04-24_T18-00-06_can-cathage-take-rome-with-a-naval-historian-in-charge-rome-total-war-1-april-2023_FxhGWIhRLsU.txt",
+      "evidence": [
+        {
+          "start": "3:04:00",
+          "end": "3:04:22",
+          "note": "He contrasts losing a scattered Spanish holding with taking Sicily and creating a solid Carthaginian center."
+        }
+      ]
+    },
+    {
       "id": "when-town-militia-signal-desperation",
       "videoId": "FxhGWIhRLsU",
       "slug": "when-town-militia-signal-desperation",
@@ -647,6 +786,60 @@
       ]
     },
     {
+      "id": "retreat-routes-fail-when-reinforcements-block-the-exit",
+      "videoId": "FxhGWIhRLsU",
+      "slug": "retreat-routes-fail-when-reinforcements-block-the-exit",
+      "title": "Retreat fails when reinforcements block the exit",
+      "kind": "notable_point",
+      "start": "3:25:17",
+      "end": "3:26:49",
+      "topics": [
+        "military-strategy",
+        "reinforcements",
+        "retreat",
+        "battlefield-maneuver",
+        "historical-games"
+      ],
+      "summary": "The game lets an enemy withdraw through arriving Carthaginian troops, while Dr. Clarke explains why a real force retreating into that route would be destroyed piecemeal.",
+      "body": "The opposing army tries to retreat through the same ground occupied by arriving Carthaginian reinforcements. Rome: Total War allows the movement to continue, but Dr. Clarke says the route would not work in reality. Troops filtering back in small groups would meet a fresh force facing the other way and be defeated in detail. The watch point highlights why withdrawal routes, reinforcement timing, and control of the enemy's rear matter as much as pressure on the front line.",
+      "sourcePath": "src/transcripts/txt/2023-04-24_T18-00-06_can-cathage-take-rome-with-a-naval-historian-in-charge-rome-total-war-1-april-2023_FxhGWIhRLsU.txt",
+      "evidence": [
+        {
+          "start": "3:25:17",
+          "end": "3:26:49",
+          "note": "He says retreating through the arriving enemy reinforcements would fail in reality because troops would be caught and destroyed in small groups."
+        }
+      ]
+    },
+    {
+      "id": "carthaginian-embarkation-turns-sicily-into-a-springboard",
+      "videoId": "FxhGWIhRLsU",
+      "slug": "carthaginian-embarkation-turns-sicily-into-a-springboard",
+      "title": "Embarkation turns Sicily into a springboard for Rome",
+      "kind": "chapter",
+      "start": "3:29:42",
+      "end": "3:30:04",
+      "topics": [
+        "naval-logistics",
+        "troop-transport",
+        "amphibious-warfare",
+        "sicily",
+        "rome",
+        "carthage",
+        "punic-wars"
+      ],
+      "summary": "Dr. Clarke frames the crossing as an attempt to accomplish what historical Carthage did not, then embarks the army for an assault on Rome.",
+      "body": "With the transport force ready, Dr. Clarke asks whether he can take Rome, something Carthage did not accomplish in real history. He embarks the general and army to begin the move from Sicily toward the Italian mainland. The action shows why Sicily is more than a prize: it becomes a forward base close to the campaign's decisive objective. The game counterfactual depends on maritime logistics, because victory on the island cannot threaten Rome until ships can carry the land force onward.",
+      "sourcePath": "src/transcripts/txt/2023-04-24_T18-00-06_can-cathage-take-rome-with-a-naval-historian-in-charge-rome-total-war-1-april-2023_FxhGWIhRLsU.txt",
+      "evidence": [
+        {
+          "start": "3:29:42",
+          "end": "3:30:04",
+          "note": "He asks whether he can achieve what Carthage did not, then embarks the general and army to begin the attack on Rome."
+        }
+      ]
+    },
+    {
       "id": "missile-screen-and-cavalry-reserve",
       "videoId": "FxhGWIhRLsU",
       "slug": "missile-screen-and-cavalry-reserve",
@@ -702,6 +895,32 @@
           "start": "3:47:03",
           "end": "3:47:27",
           "note": "He says real troops would form up at the siege-tower exit before jumping onto the wall rather than crossing in ones and twos."
+        }
+      ]
+    },
+    {
+      "id": "historical-tactics-and-game-engine-limits",
+      "videoId": "FxhGWIhRLsU",
+      "slug": "historical-tactics-and-game-engine-limits",
+      "title": "When the game engine punishes realistic siege tactics",
+      "kind": "notable_point",
+      "start": "3:48:07",
+      "end": "3:48:18",
+      "topics": [
+        "historical-games",
+        "game-design",
+        "siege-warfare",
+        "military-strategy",
+        "simulation"
+      ],
+      "summary": "As the assault begins to fail, Dr. Clarke explicitly stops treating it like a real battle and switches to tactics that exploit Rome: Total War's mechanics.",
+      "body": "The assault reaches a point where historical logic and game logic diverge. Dr. Clarke says he will stop playing it as an actual battle and instead play it as a Rome: Total War battle. The remark is brief but important because a strategy game's incentives can reward behavior that would not make sense under real command, terrain, or cohesion constraints. It gives viewers a clear caveat for reading the surrounding siege as a demonstration of engine mechanics rather than a reconstruction of ancient warfare.",
+      "sourcePath": "src/transcripts/txt/2023-04-24_T18-00-06_can-cathage-take-rome-with-a-naval-historian-in-charge-rome-total-war-1-april-2023_FxhGWIhRLsU.txt",
+      "evidence": [
+        {
+          "start": "3:48:07",
+          "end": "3:48:18",
+          "note": "He says he will stop treating the assault like a real battle and instead play it according to Rome: Total War's mechanics."
         }
       ]
     },
