@@ -4,7 +4,7 @@ Curated site content lives in `src/derived/video-segments/`.
 
 ## Files
 
-- `topics.json`: synchronized shared browsing/search topic records, generated from topic usage in the video shards while preserving existing enriched metadata.
+- `topics.json`: synchronized shared browsing/search topic records, generated from topic usage in the video shards while preserving existing enriched metadata. New registry records start with a blank description. Topic descriptions are optional manual metadata: do not generate, infer, refresh, normalize, or clear them, and preserve any nonblank description a person adds later.
 - `<manifest.fileStem>.json`: one file per site-visible video, containing that video's topic slugs and segments. The stored `fileStem` in `src/transcripts/manifest.json` is canonical; the record's `paths.txt` basename must be exactly `<fileStem>.txt`, and the name must not be recomputed from current metadata.
 - `src/derived/topic-normalization-patterns.tsv`: manually curated steady-state policy for topic creation, display names, aliases, and exceptions, read-only during shard curation.
 

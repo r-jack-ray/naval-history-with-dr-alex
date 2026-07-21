@@ -19,7 +19,7 @@ export interface CuratedVideoSeed {
 export interface CuratedTopicSeed {
   slug: string;
   title: string;
-  summary: string;
+  summary?: string;
   aliases?: string[];
 }
 

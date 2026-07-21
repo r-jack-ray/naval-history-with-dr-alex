@@ -306,14 +306,6 @@ export function topicTitleFromSlug(
   return resolveTopicDisplayTitle(catalog, slug).title;
 }
 
-export function defaultTopicSummary(title: string): string {
-  return `Watch points covering ${title} across Dr. Alex Clarke's videos.`;
-}
-
-export function isDefaultTopicSummary(summary: string, title: string): boolean {
-  return summary === defaultTopicSummary(title);
-}
-
 export function topicCollisionKey(value: string): string {
   return value.normalize("NFKC").toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
 }

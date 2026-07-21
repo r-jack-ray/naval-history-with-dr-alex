@@ -20,7 +20,7 @@ test("generation rejects pending normalization before changing topic or archive 
     topics: [{
       slug: "old-topic",
       title: "Old Topic",
-      summary: "Watch points covering Old Topic across Dr. Alex Clarke's videos.",
+      summary: "Manually curated fixture description.",
     }],
   }, null, 2)}\n`;
   try {

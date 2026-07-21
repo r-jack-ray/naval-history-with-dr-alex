@@ -116,6 +116,33 @@ test("curator and auditor guidance retain shard-only steady-state topic authorit
   );
 });
 
+test("topic creation guidance keeps descriptions blank and preserves manual text", async () => {
+  for (const relativePath of [
+    "AGENTS.md",
+    curatorSkillPath,
+    auditorSkillPath,
+    ".agents/skills/naval-transcript-to-site-content/references/segment-seed-schema.md",
+  ]) {
+    const guidance = await readGuidance(relativePath);
+
+    assert.match(
+      guidance,
+      /(?:new registry records?|topic creation|synchroniz\w*)[^.]{0,180}blank description/iu,
+      `${relativePath} must require blank descriptions for new topics`,
+    );
+    assert.match(
+      guidance,
+      /topic descriptions? (?:are|is) optional manual metadata/iu,
+      `${relativePath} must reserve descriptions for manual metadata`,
+    );
+    assert.match(
+      guidance,
+      /(?:never|do not|must never)[^.]{0,120}(?:generate|infer)[^.]{0,140}(?:clear|description)/iu,
+      `${relativePath} must prohibit automated description generation and clearing`,
+    );
+  }
+});
+
 test("companion guidance preserves review no-ops, shard boundaries, and steady-state policy", async () => {
   const agents = await readGuidance("AGENTS.md");
   assert.match(agents, /one owned.{0,220}shard/iu);

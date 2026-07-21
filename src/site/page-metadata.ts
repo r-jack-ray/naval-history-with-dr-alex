@@ -119,12 +119,14 @@ export function buildTopicPageMetadata(
   topic: Pick<SiteTopic, "title" | "summary" | "videoCount" | "segmentCount">,
 ): PageMetadata {
   const title = boundText(topic.title, 125);
-  const summary = normalizeMetadataText(topic.summary)
-    || `Explore ${title} across the Dr. Alex Clarke study guide.`;
+  const summary = normalizeMetadataText(topic.summary ?? "");
+  const descriptionLead = summary.length > 0
+    ? summary
+    : `Explore ${title} across the Dr. Alex Clarke study guide.`;
   return {
     title: `${title} | Naval History Topic Guide`,
     description: boundText(
-      `${summary} Includes ${countLabel(topic.videoCount, "video guide")} and ${countLabel(topic.segmentCount, "time note")}.`,
+      `${descriptionLead} Includes ${countLabel(topic.videoCount, "video guide")} and ${countLabel(topic.segmentCount, "time note")}.`,
       MAX_METADATA_DESCRIPTION_LENGTH,
     ),
   };

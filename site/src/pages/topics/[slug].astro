@@ -50,7 +50,7 @@ const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${c
     <section class="section-heading">
       <p class="eyebrow">Topic</p>
       <h1>{topic.title}</h1>
-      <p class="lede">{topic.summary}</p>
+      {topic.summary && <p class="lede">{topic.summary}</p>}
       {topic.aliases.length > 0 && <p class="alias-line">Also searchable as {topic.aliases.join(", ")}.</p>}
     </section>
 

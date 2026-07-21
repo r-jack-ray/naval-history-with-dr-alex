@@ -11,7 +11,7 @@ const archiveInitializationStartedAt = performance.now();
 const expectedPatternsInput = "src/derived/topic-normalization-patterns.tsv";
 
 export interface ArchiveData {
-  schemaVersion: 5;
+  schemaVersion: 6;
   videos: ArchiveVideo[];
   segments: ArchiveSegment[];
   topics: ArchiveTopic[];
@@ -28,7 +28,7 @@ export interface ArchiveSegmentBucketRecord extends ArchiveFileRecord {
 }
 
 export interface ArchiveManifest {
-  schemaVersion: 6;
+  schemaVersion: 7;
   source: {
     episodesInput: string;
     metadataInput: string;
@@ -107,7 +107,7 @@ export interface ArchiveSegment {
 export interface ArchiveTopic {
   slug: string;
   title: string;
-  summary: string;
+  summary?: string;
   aliases: string[];
   videoCount: number;
   segmentCount: number;
@@ -208,8 +208,8 @@ function bucketIdForVideo(videoId: string): string {
 }
 
 function validateManifestShape(): void {
-  if (!isRecord(manifest) || manifest.schemaVersion !== 6) {
-    archiveError(`manifest schemaVersion must be 6; received ${String(manifest?.schemaVersion)}.`);
+  if (!isRecord(manifest) || manifest.schemaVersion !== 7) {
+    archiveError(`manifest schemaVersion must be 7; received ${String(manifest?.schemaVersion)}.`);
   }
   if (!isRecord(manifest.source)) {
     archiveError("manifest source is missing.");
@@ -509,7 +509,7 @@ for (const topic of archiveTopics) {
 }
 
 export const archive: ArchiveData = {
-  schemaVersion: 5,
+  schemaVersion: 6,
   videos: archiveVideos,
   segments: archiveSegments,
   topics: archiveTopics,

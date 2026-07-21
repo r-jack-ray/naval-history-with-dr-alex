@@ -61,6 +61,19 @@ test("time-note descriptions fall back from summary to short answer to body", ()
   assert.match(buildSegmentPageMetadata({ ...common, summary: "", answerShort: "", body: "Body text." }).description, /Body text\./u);
 });
 
+test("topic metadata uses manual descriptions only when supplied", () => {
+  const counts = { videoCount: 2, segmentCount: 3 };
+  const withoutDescription = buildTopicPageMetadata({ title: "Destroyers", ...counts });
+  const withDescription = buildTopicPageMetadata({
+    title: "Destroyers",
+    summary: "A manually curated topic description.",
+    ...counts,
+  });
+
+  assert.match(withoutDescription.description, /^Explore Destroyers across/u);
+  assert.match(withDescription.description, /^A manually curated topic description\./u);
+});
+
 test("builds distinct metadata for every paginated archive family and page", () => {
   const metadata = [
     buildTimeNoteBrowseMetadata(1, 4),

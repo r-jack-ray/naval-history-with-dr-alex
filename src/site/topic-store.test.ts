@@ -47,14 +47,14 @@ test("creates a topic store from video shards when one does not exist", async ()
     await assert.rejects(readFile(join(directory, "topics.json"), "utf8"), { code: "ENOENT" });
     const result = await writeTopicStoreSynchronization(synchronizationPlan);
     const store = JSON.parse(await readFile(join(directory, "topics.json"), "utf8")) as {
-      topics: Array<{ slug: string; title: string; summary: string }>;
+      topics: Array<{ slug: string; title: string; summary?: string }>;
     };
 
     assert.equal(result.changed, true);
     assert.deepEqual(result.addedSlugs, ["airborne-early-warning", "destroyers", "royal-navy"]);
     assert.deepEqual(store.topics.map((topic) => topic.slug), result.addedSlugs);
     assert.equal(store.topics[0]?.title, "Airborne Early Warning");
-    assert.match(store.topics[0]?.summary ?? "", /Watch points covering Airborne Early Warning/u);
+    assert.equal(store.topics[0]?.summary, "");
   } finally {
     await rm(directory, { recursive: true, force: true });
   }
@@ -82,7 +82,7 @@ test("preserves curated and unused topic records while appending missing usage",
 
     const result = await synchronizeFixture(directory);
     const store = JSON.parse(await readFile(join(directory, "topics.json"), "utf8")) as {
-      topics: Array<{ slug: string; title: string; summary: string; aliases?: string[] }>;
+      topics: Array<{ slug: string; title: string; summary?: string; aliases?: string[] }>;
     };
 
     assert.deepEqual(result.addedSlugs, ["airborne-early-warning", "royal-navy"]);
@@ -145,7 +145,7 @@ test("creates decimal topic defaults without adding them to title review", async
   try {
     const result = await synchronizeFixture(directory);
     const store = JSON.parse(await readFile(join(directory, "topics.json"), "utf8")) as {
-      topics: Array<{ slug: string; title: string; summary: string }>;
+      topics: Array<{ slug: string; title: string; summary?: string }>;
     };
 
     assert.deepEqual(result.addedSlugs, ["qf-5-25-inch-gun"]);
@@ -153,7 +153,7 @@ test("creates decimal topic defaults without adding them to title review", async
     assert.deepEqual(store.topics[0], {
       slug: "qf-5-25-inch-gun",
       title: "QF 5.25-inch Gun",
-      summary: "Watch points covering QF 5.25-inch Gun across Dr. Alex Clarke's videos.",
+      summary: "",
     });
   } finally {
     await rm(directory, { recursive: true, force: true });
@@ -168,7 +168,7 @@ test("persists unresolved numeric title review until the stored title is curated
     const firstBytes = await readFile(topicStorePath, "utf8");
     const firstStore = JSON.parse(firstBytes) as {
       schemaVersion: 1;
-      topics: Array<{ slug: string; title: string; summary: string }>;
+      topics: Array<{ slug: string; title: string; summary?: string }>;
     };
 
     assert.equal(topicTitleFromSlug("war-1828-1829", testCatalog), "War 1828 1829");
@@ -201,7 +201,7 @@ test("refuses a noncanonical topic without changing the topic store", async () =
     topics: [{
       slug: "57mm-gun",
       title: "57mm Gun",
-      summary: "Watch points covering 57mm Gun across Dr. Alex Clarke's videos.",
+      summary: "Manually curated fixture description.",
     }],
   }, null, 2)}\n`;
   try {
@@ -234,12 +234,12 @@ test("uses catalog display policy when appending a canonical topic", async () =>
   try {
     await synchronizeFixture(directory);
     const store = JSON.parse(await readFile(join(directory, "topics.json"), "utf8")) as {
-      topics: Array<{ slug: string; title: string; summary: string }>;
+      topics: Array<{ slug: string; title: string; summary?: string }>;
     };
     assert.deepEqual(store.topics, [{
       slug: "57-mm-guns",
       title: "57 mm Guns",
-      summary: "Watch points covering 57 mm Guns across Dr. Alex Clarke's videos.",
+      summary: "",
       aliases: ["57mm Gun"],
     }]);
   } finally {
@@ -247,11 +247,11 @@ test("uses catalog display policy when appending a canonical topic", async () =>
   }
 });
 
-test("keeps the bounded production topic titles, aliases, and summaries curated", async () => {
+test("keeps the bounded production topic titles and aliases curated without descriptions", async () => {
   const store = JSON.parse(
     await readFile(new URL("../../src/derived/video-segments/topics.json", import.meta.url), "utf8"),
   ) as {
-    topics: Array<{ slug: string; title: string; summary: string; aliases?: string[] }>;
+    topics: Array<{ slug: string; title: string; summary?: string; aliases?: string[] }>;
   };
   const topicsBySlug = new Map(store.topics.map((topic) => [topic.slug, topic]));
 
@@ -262,14 +262,7 @@ test("keeps the bounded production topic titles, aliases, and summaries curated"
     assert.ok(topic, `Missing production topic ${expected.slug}`);
     assert.equal(topic.title, expected.title, `${expected.slug} title`);
     assert.deepEqual(topic.aliases ?? [], expected.aliases, `${expected.slug} aliases`);
-    if ("summary" in expected) {
-      assert.equal(topic.summary, expected.summary, `${expected.slug} preserved summary`);
-    } else {
-      assert.ok(
-        topic.summary.includes(expected.title),
-        `${expected.slug} summary must include ${JSON.stringify(expected.title)}`,
-      );
-    }
+    assert.equal(topic.summary, undefined, `${expected.slug} description removed`);
   }
 });
 
@@ -277,7 +270,7 @@ test("keeps the repository-owner normalization batch canonical in the production
   const store = JSON.parse(
     await readFile(new URL("../../src/derived/video-segments/topics.json", import.meta.url), "utf8"),
   ) as {
-    topics: Array<{ slug: string; title: string; summary: string; aliases?: string[] }>;
+    topics: Array<{ slug: string; title: string; summary?: string; aliases?: string[] }>;
   };
   const catalog = await loadTopicNormalizationCatalog(
     fileURLToPath(new URL("../../src/derived/topic-normalization-patterns.tsv", import.meta.url)),
@@ -303,7 +296,7 @@ test("keeps the repository-owner normalization batch canonical in the production
     assert.equal(topicsBySlug.has(deprecated), false, deprecated);
   }
 
-  const expected = new Map<string, { title: string; aliases?: string[]; summary?: string }>([
+  const expected = new Map<string, { title: string; aliases?: string[] }>([
     ["3d-printing", { title: "3D Printing" }],
     ["ark-royal", { title: "Ark Royal", aliases: ["Arc Royal"] }],
     ["ark-royal-class", { title: "Ark Royal Class", aliases: ["Arc Royal Class"] }],
@@ -330,7 +323,6 @@ test("keeps the repository-owner normalization batch canonical in the production
           "Great War",
           "The Great War",
         ],
-        summary: "Naval design, operations, and procurement around World War I.",
       },
     ],
     [
@@ -362,9 +354,7 @@ test("keeps the repository-owner normalization batch canonical in the production
     assert.ok(topic, `Missing production topic ${slug}`);
     assert.equal(topic.title, expectedTopic.title, `${slug} title`);
     assert.deepEqual(topic.aliases ?? [], expectedTopic.aliases ?? [], `${slug} aliases`);
-    if (expectedTopic.summary !== undefined) {
-      assert.equal(topic.summary, expectedTopic.summary, `${slug} summary`);
-    }
+    assert.equal(topic.summary, undefined, `${slug} description removed`);
   }
 
   for (const topic of store.topics.filter(({ slug }) => (
@@ -458,7 +448,6 @@ const productionTopicMapping = [
     slug: "4-5-inch-guns",
     title: "4.5-inch Guns",
     aliases: ["4.5-inch Gun", "Four Point Five Inch Gun", "Four Point Five Inch Guns"],
-    summary: "Explore study-guide entries on the 4.5-inch Gun.",
   },
   {
     slug: "4-7-inch-guns",
@@ -479,7 +468,6 @@ const productionTopicMapping = [
     slug: "13-5-inch-guns",
     title: "13.5-inch Guns",
     aliases: ["13.5-inch Gun", "Thirteen Point Five Inch Guns"],
-    summary: "Explore study-guide entries on the 13.5-inch Gun.",
   },
   {
     slug: "qf-4-5-inch-gun",

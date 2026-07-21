@@ -9,7 +9,6 @@ import type {
 } from "./curated-seed.js";
 import { auditTopicNormalization } from "./topic-normalization-audit.js";
 import {
-  defaultTopicSummary,
   loadTopicNormalizationCatalog,
   resolveTopicCreation,
   resolveTopicDisplayTitle,
@@ -299,7 +298,7 @@ function buildDefaultTopic(
   const topic: CuratedTopicSeed = {
     slug,
     title,
-    summary: defaultTopicSummary(title),
+    summary: "",
   };
   if (aliases.length > 0) {
     topic.aliases = aliases;

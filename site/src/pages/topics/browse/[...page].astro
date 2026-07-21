@@ -58,7 +58,7 @@ const metadata = buildTopicBrowseMetadata(page.currentPage, page.lastPage);
           <article class="topic-card">
             <span class="label">{videoCountLabel(topic.videoCount)} · {timeNoteCountLabel(topic.segmentCount)}</span>
             <h2><a href={`${baseUrl}topics/${topic.slug}/`}>{topic.title}</a></h2>
-            <p>{topic.summary}</p>
+            {topic.summary && <p>{topic.summary}</p>}
             {topic.aliases.length > 0 && <small>Also: {topic.aliases.join(", ")}</small>}
           </article>
         ))

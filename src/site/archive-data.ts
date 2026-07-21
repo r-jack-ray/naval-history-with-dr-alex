@@ -27,7 +27,7 @@ export const defaultSiteTranscriptsInput = "src/transcripts/manifest.json";
 export const defaultSiteSegmentsInput = "src/derived/video-segments";
 export const defaultSitePatternsInput = "src/derived/topic-normalization-patterns.tsv";
 export const defaultSiteArchiveOutputDir = "site/src/data/generated/archive";
-export const siteArchiveSchemaVersion = 6 as const;
+export const siteArchiveSchemaVersion = 7 as const;
 export const siteArchiveSegmentBucketCount = 64;
 export const siteArchiveSegmentShardingAlgorithm = "sha256-video-id-mod" as const;
 const archiveBrowseSlug = "browse";
@@ -44,7 +44,7 @@ export interface GenerateSiteArchiveDataOptions {
 }
 
 export interface SiteArchiveData {
-  schemaVersion: 5;
+  schemaVersion: 6;
   source: {
     episodesInput: string;
     metadataInput: string;
@@ -153,7 +153,7 @@ export interface SiteSegment {
 export interface SiteTopic {
   slug: string;
   title: string;
-  summary: string;
+  summary?: string;
   aliases: string[];
   videoCount: number;
   segmentCount: number;
@@ -333,14 +333,17 @@ export function buildSiteArchiveData(input: {
       relatedVideos.add(segment.videoId);
     }
 
-    return {
+    const siteTopic: SiteTopic = {
       slug: topic.slug,
       title: topic.title,
-      summary: topic.summary,
       aliases: [...(topic.aliases ?? [])],
       videoCount: relatedVideos.size,
       segmentCount: relatedSegments.length,
     };
+    if (typeof topic.summary === "string" && topic.summary.trim().length > 0) {
+      siteTopic.summary = topic.summary;
+    }
+    return siteTopic;
   });
 
   if (segments.some((segment) => segment.slug === archiveBrowseSlug)) {
@@ -351,7 +354,7 @@ export function buildSiteArchiveData(input: {
   }
 
   return {
-    schemaVersion: 5,
+    schemaVersion: 6,
     source: input.source,
     videos: [...videoRecordsById.values()],
     segments,
@@ -677,7 +680,7 @@ function fileRecord(path: string, value: unknown[]): SiteArchiveFileRecord {
 function reconstructSiteArchiveDataUnchecked(splitData: SiteArchiveSplitData): SiteArchiveData {
   const allSegments = splitData.segmentBuckets.flatMap((bucket) => bucket.segments);
   return {
-    schemaVersion: 5,
+    schemaVersion: 6,
     source: splitData.manifest.source,
     videos: splitData.videos,
     segments: reconstructSegments(splitData.videos, allSegments),

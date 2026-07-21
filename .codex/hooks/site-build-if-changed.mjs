@@ -272,7 +272,7 @@ async function validateSiteArchive() {
     throw error;
   }
 
-  if (manifest?.schemaVersion !== 6) {
+  if (manifest?.schemaVersion !== 7) {
     return invalidArchive("the archive manifest schema version is unsupported");
   }
   if (manifest?.source?.patternsInput !== defaultTopicNormalizationPatternsPath) {

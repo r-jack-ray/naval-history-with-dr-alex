@@ -38,7 +38,7 @@ test("builds deterministic site archive data from channel metadata and segment s
   assert.equal(archive.topics.find((topic) => topic.slug === "destroyers")?.segmentCount, 2);
 });
 
-test("propagates a curated topic title to video and segment refs while keeping aliases on the topic", () => {
+test("propagates manually curated topic metadata while keeping topic refs compact", () => {
   const input = sampleInput();
   const slug = "4-5-inch-gun";
   const title = "4.5-inch Gun";
@@ -78,10 +78,10 @@ test("preserves catalog provenance without adding noncanonical topic routes", ()
   const topic = archive.topics[0];
   const split = splitSiteArchiveData(archive);
 
-  assert.equal(archive.schemaVersion, 5);
+  assert.equal(archive.schemaVersion, 6);
   assert.equal(topic?.videoCount, 1);
   assert.equal(topic?.segmentCount, 2);
-  assert.equal(split.manifest.schemaVersion, 6);
+  assert.equal(split.manifest.schemaVersion, 7);
   assert.equal(split.manifest.source.patternsInput, "patterns.tsv");
   assert.equal(split.manifest.source.patternsSha256, "a".repeat(64));
   assert.equal(split.manifest.source.patternsSourceSha256, "b".repeat(64));
@@ -138,7 +138,6 @@ test("keeps unreferenced registry topics without publishing topic routes", () =>
   input.seed.topics.push({
     slug: "unreferenced-topic",
     title: "Unreferenced Topic",
-    summary: "A valid registry topic without current public coverage.",
     aliases: [],
   });
 
@@ -257,7 +256,7 @@ test("rejects schema mismatch, misbucketed records, and damaged shard sets", asy
   (wrongSchema.manifest as { schemaVersion: number }).schemaVersion = 99;
   assert.throws(
     () => validateSiteArchiveSplitData(wrongSchema),
-    /schemaVersion must be 6/u,
+    /schemaVersion must be 7/u,
   );
 
   const invalidProvenance = structuredClone(split);
@@ -405,7 +404,6 @@ test("loads curated site content from per-video files", async () => {
         {
           slug: "destroyers",
           title: "Destroyers",
-          summary: "Destroyer discussions.",
         },
       ],
     }));

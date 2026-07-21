@@ -342,7 +342,6 @@ function sampleSeed(): Parameters<typeof buildSiteContentAudit>[0]["seed"] {
       {
         slug: "destroyers",
         title: "Destroyers",
-        summary: "Destroyer discussions.",
       },
     ],
     segments: [

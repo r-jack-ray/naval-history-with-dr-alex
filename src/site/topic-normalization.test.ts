@@ -6,8 +6,6 @@ import { join } from "node:path";
 import test from "node:test";
 
 import {
-  defaultTopicSummary,
-  isDefaultTopicSummary,
   loadTopicNormalizationCatalog,
   parseTopicNormalizationCatalog,
   resolveTopicCreation,
@@ -550,13 +548,7 @@ test("rejects an input that matches multiple active regex rules at resolution ti
   );
 });
 
-test("shares default-summary and collision-key behavior", () => {
-  const title = "57 mm Guns";
-  const summary = defaultTopicSummary(title);
-
-  assert.equal(summary, "Watch points covering 57 mm Guns across Dr. Alex Clarke's videos.");
-  assert.equal(isDefaultTopicSummary(summary, title), true);
-  assert.equal(isDefaultTopicSummary("A curated summary.", title), false);
+test("shares collision-key behavior", () => {
   assert.equal(topicCollisionKey("  OTO 76/62—SR  "), "oto 76 62 sr");
   assert.equal(topicCollisionKey("ＯＴＯ 76 62 SR"), "oto 76 62 sr");
 });
