@@ -298,14 +298,14 @@ export function rankVideoSegmentAuditRisks(rows: VideoSegmentAuditRiskRow[]): Vi
 
 export function renderVideoSegmentAuditRiskTsv(rows: VideoSegmentAuditRiskRow[]): string {
   const headers = [
-    "file_stem", "rank", "audit_route", "audit_risk_score", "risk_tier", "video_id", "video_title",
-    "needs_further_processing", "manual_audio_review_remaining", "process_log_entries", "transcript_bytes", "shard_bytes",
-    "shard_to_transcript_ratio", "duration_minutes",
-    "segment_count", "qa_count", "valid_qa_count", "qa_temporal_bins_covered", "segments_per_hour",
-    "first_segment_position_pct", "last_segment_position_pct", "temporal_bins_covered", "largest_anchor_gap_pct",
-    "largest_anchor_gap_minutes",
-    "valid_anchor_count", "invalid_anchor_count", "missing_source_path_segments", "wrong_source_path_segments",
-    "missing_evidence_segments", "invalid_evidence_segments", "risk_signals",
+    "file stem", "rank", "audit route", "audit risk score", "risk tier", "video id", "video title",
+    "needs further processing", "manual audio review remaining", "process log entries", "transcript bytes", "shard bytes",
+    "shard to transcript ratio", "duration minutes",
+    "segment count", "qa count", "valid qa count", "qa temporal bins covered", "segments per hour",
+    "first segment position pct", "last segment position pct", "temporal bins covered", "largest anchor gap pct",
+    "largest anchor gap minutes",
+    "valid anchor count", "invalid anchor count", "missing source path segments", "wrong source path segments",
+    "missing evidence segments", "invalid evidence segments", "risk signals",
   ];
   const body = rows.map((row) => [
     row.filePath ?? row.fileStem, row.rank, row.auditRoute, format(row.auditRiskScore, 1), row.riskTier, row.videoId, row.videoTitle,

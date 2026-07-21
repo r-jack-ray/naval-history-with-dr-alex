@@ -224,10 +224,11 @@ test("route precedence beats score and TSV uses risk terminology", () => {
   const ranked = rankVideoSegmentAuditRisks([followUp, repair]);
   const tsv = renderVideoSegmentAuditRiskTsv(ranked);
   assert.equal(ranked[0]?.auditRoute, "repair_required");
-  assert.match(tsv.split("\n")[0] ?? "", /audit_route\taudit_risk_score\trisk_tier/u);
-  assert.match(tsv.split("\n")[0] ?? "", /last_segment_position_pct/u);
-  assert.match(tsv.split("\n")[0] ?? "", /largest_anchor_gap_minutes/u);
-  assert.match(tsv.split("\n")[0] ?? "", /needs_further_processing\tmanual_audio_review_remaining\tprocess_log_entries/u);
+  assert.match(tsv.split("\n")[0] ?? "", /audit route\taudit risk score\trisk tier/u);
+  assert.match(tsv.split("\n")[0] ?? "", /last segment position pct/u);
+  assert.match(tsv.split("\n")[0] ?? "", /largest anchor gap minutes/u);
+  assert.match(tsv.split("\n")[0] ?? "", /needs further processing\tmanual audio review remaining\tprocess log entries/u);
+  assert.doesNotMatch(tsv.split("\n")[0] ?? "", /_/u);
   assert.match(tsv.split("\n")[1] ?? "", /\t\d+\.\d\t(?:critical|high|medium|low)\t/u);
 });
 

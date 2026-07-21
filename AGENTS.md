@@ -74,6 +74,8 @@ Astro executes exported `getStaticPaths` functions in an isolated scope. Paginat
 
 Use TypeScript under `src/**/*.ts`, JSON for inventories and curated segment shards, and Markdown for durable guidance and task notes. Keep manually named documentation files lowercase and hyphenated. Manifest-owned transcript and shard filenames are the exception: preserve the exact stored `fileStem`, including its timestamp and video-ID suffix. Use timestamp-first task notes matching `yyyy-MM-dd_THH-mm-ss-0500_short-topic.md`.
 
+Use human-readable column headers with spaces in every TSV written under `reports/`; do not use underscores in report headers. This convention applies to both new reports and their generators. It does not apply to source-data TSV contracts elsewhere in the repository, such as `src/derived/topic-normalization-patterns.tsv`, whose machine-readable schemas must remain stable.
+
 Transcript and episode file stems should use `timestamp_title-slug_videoId` when an exact timestamp is known, otherwise `title-slug_videoId`; keep the video ID suffix.
 
 The core content model is `segment`, not `question`. Valid segment kinds include `chapter`, `notable_point`, `qa`, and optional `transcript_excerpt`. Do not force ordinary lecture segments into fabricated Q&A.
