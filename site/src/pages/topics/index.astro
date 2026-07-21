@@ -88,14 +88,14 @@ const metadata = staticPageMetadata.topics;
           <p class="eyebrow">Complete directory</p>
           <h2 id="all-topics-heading">Browse every topic A-Z</h2>
         </div>
-        <a class="secondary-link" href={`${baseUrl}topics/browse/`}>Open the complete topic directory</a>
       </div>
       <p>
         The paginated directory keeps all {publicArchiveTopics.length.toLocaleString("en-US")} covered subjects
-        reachable through ordinary links without loading the full collection on one page.
+        reachable through ordinary links. You can also load the full A-Z collection when you want everything on one page.
       </p>
       <div class="action-row">
-        <a class="primary-link" href={`${baseUrl}topics/browse/`}>Browse all topics</a>
+        <a class="primary-link" href={`${baseUrl}topics/browse/`}>Browse paginated topics</a>
+        <a class="secondary-link" href={`${baseUrl}topics/browse/all/`}>Show all topics</a>
       </div>
     </section>
   </main>

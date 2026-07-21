@@ -125,6 +125,7 @@ test("validates a rendered fixture and reports actionable hard failures", async 
       },
       { route: "topics/", title: "Topics" },
       { route: "topics/browse/", title: "Browse Topics", links: [`${base}topics/example/`] },
+      { route: "topics/browse/all/", title: "All Topics", noindex: true },
       {
         route: "topics/example/",
         title: "Example topic",

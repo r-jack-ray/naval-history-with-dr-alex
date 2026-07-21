@@ -14,7 +14,11 @@ function normalizePathname(pathname) {
 export function pageIndexingForPathname(pathname, basePath) {
   const normalizedBasePath = normalizeBasePath(basePath);
   const searchPath = `${normalizedBasePath === "/" ? "/" : normalizedBasePath}search/`;
-  return normalizePathname(pathname) === searchPath ? NON_INDEXABLE : INDEXABLE;
+  const allTopicsPath = `${normalizedBasePath === "/" ? "/" : normalizedBasePath}topics/browse/all/`;
+  const normalizedPathname = normalizePathname(pathname);
+  return normalizedPathname === searchPath || normalizedPathname === allTopicsPath
+    ? NON_INDEXABLE
+    : INDEXABLE;
 }
 
 export function isIndexablePageUrl(pageUrl, basePath) {

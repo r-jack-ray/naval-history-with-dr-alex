@@ -15,14 +15,16 @@ async function loadPageIndexing(): Promise<PageIndexingModule> {
   return import(moduleUrl) as Promise<PageIndexingModule>;
 }
 
-test("shares Search noindex policy with sitemap URL filtering", async () => {
+test("shares noindex policy with sitemap URL filtering", async () => {
   const { isIndexablePageUrl, pageIndexingForPathname } = await loadPageIndexing();
   const base = "/naval-history-with-dr-alex";
   const origin = "https://r-jack-ray.github.io";
 
   assert.equal(pageIndexingForPathname(`${base}/search/`, base), "noindex");
+  assert.equal(pageIndexingForPathname(`${base}/topics/browse/all/`, base), "noindex");
   assert.equal(pageIndexingForPathname(`${base}/videos/`, base), "index");
   assert.equal(isIndexablePageUrl(`${origin}${base}/search/`, base), false);
+  assert.equal(isIndexablePageUrl(`${origin}${base}/topics/browse/all/`, base), false);
   assert.equal(isIndexablePageUrl(`${origin}${base}/videos/example/`, base), true);
   assert.equal(isIndexablePageUrl(`${origin}${base}/search-topic-lookup.json`, base), false);
 });

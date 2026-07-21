@@ -694,10 +694,16 @@ export async function validateRenderedSeoSite(options: SeoValidationOptions): Pr
       }
       const sourceDirectoryKind = browseDirectoryKind(page.url, basePath);
       const isSearch = page.url === new URL(`${basePath}search/`, siteOrigin).href;
-      if (isSearch) {
+      const isIndexable = isIndexablePageUrl(page.url, basePath);
+      if (!isIndexable) {
         const tokens = snapshot.robots.flatMap((item) => item.content.toLowerCase().split(/[\s,]+/u).filter(Boolean));
         if (snapshot.robots.length !== 1 || snapshot.robots[0]?.name !== "robots" || tokens.length !== 1 || tokens[0] !== "noindex") {
-          diagnostic("error", "robots-search", page.url, "Search must contain exactly one robots meta element with only noindex.");
+          diagnostic(
+            "error",
+            isSearch ? "robots-search" : "robots-noindex",
+            page.url,
+            "Non-indexable pages must contain exactly one robots meta element with only noindex.",
+          );
         }
       } else if (snapshot.robots.length > 0) {
         diagnostic("error", "robots-indexable", page.url, "Indexable pages must not emit restrictive robots metadata.");

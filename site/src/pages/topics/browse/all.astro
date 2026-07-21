@@ -1,0 +1,76 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { topicsForBrowse } from "../../../data/archive";
+
+const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const topics = topicsForBrowse();
+const groupKeyForTitle = (title: string): string => {
+  const firstCharacter = title.trim().charAt(0).toLocaleUpperCase("en");
+  return /^[A-Z]$/u.test(firstCharacter) ? firstCharacter : "0–9 & other";
+};
+const groupedTopics = topics.reduce((groups, topic) => {
+  const groupKey = groupKeyForTitle(topic.title);
+  const existingGroup = groups.get(groupKey);
+  if (existingGroup) {
+    existingGroup.push(topic);
+  } else {
+    groups.set(groupKey, [topic]);
+  }
+  return groups;
+}, new Map<string, (typeof topics)[number][]>());
+const groups = [...groupedTopics].map(([label, values]) => ({
+  id: label === "0–9 & other" ? "other" : label.toLocaleLowerCase("en"),
+  label,
+  topics: values,
+}));
+const countLabel = (videoCount: number, segmentCount: number): string => {
+  const videos = videoCount === 1 ? "1 video" : `${videoCount} videos`;
+  const timeNotes = segmentCount === 1 ? "1 time note" : `${segmentCount} time notes`;
+  return `${videos} · ${timeNotes}`;
+};
+const metadata = {
+  title: "All Naval History Topics A-Z | Naval History with Dr. Alex Study Guide",
+  description: `Open all ${topics.length.toLocaleString("en-US")} naval-history subjects in one compact A-Z directory, with links to related Dr. Alex Clarke video guides and time notes.`,
+};
+---
+
+<BaseLayout title={metadata.title} description={metadata.description} pageType="topic-archive-all">
+  <main id="content" class="page-shell">
+    <section class="section-heading">
+      <p class="eyebrow">Complete directory</p>
+      <h1>All topics A-Z, on one page.</h1>
+      <p class="lede">
+        Browse all {topics.length.toLocaleString("en-US")} covered subjects in a compact directory. This page is large by design;
+        use the paginated view for faster loading.
+      </p>
+      <div class="action-row">
+        <a class="primary-link" href={`${baseUrl}topics/browse/`}>Use paginated view</a>
+        <a class="secondary-link" href={`${baseUrl}topics/`}>Return to the Topics finder</a>
+      </div>
+    </section>
+
+    <nav class="topic-letter-nav" aria-label="Jump to topics by first letter">
+      {groups.map((group) => <a href={`#topics-${group.id}`}>{group.label}</a>)}
+    </nav>
+
+    <div class="all-topics-directory" data-pagefind-ignore>
+      {
+        groups.map((group) => (
+          <section class="all-topics-group" aria-labelledby={`topics-${group.id}`}>
+            <h2 id={`topics-${group.id}`}>{group.label}</h2>
+            <ul class="all-topics-list">
+              {group.topics.map((topic) => (
+                <li>
+                  <a href={`${baseUrl}topics/${topic.slug}/`}>{topic.title}</a>
+                  <small>{countLabel(topic.videoCount, topic.segmentCount)}</small>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))
+      }
+    </div>
+  </main>
+</BaseLayout>

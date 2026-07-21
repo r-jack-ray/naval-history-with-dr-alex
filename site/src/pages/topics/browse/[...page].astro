@@ -1,8 +1,10 @@
 ---
 import type { GetStaticPaths, Page } from "astro";
 
+import TopicArchivePagination from "../../../components/TopicArchivePagination.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { topicsForBrowse, type ArchiveTopic } from "../../../data/archive";
+import topicPageJumpUrl from "../../../scripts/topic-page-jump.js?url&no-inline";
 import { buildTopicBrowseMetadata } from "../../../../../src/site/page-metadata.js";
 
 export const getStaticPaths = (({ paginate }) => paginate(topicsForBrowse(), { pageSize: 48 })) satisfies GetStaticPaths;
@@ -22,6 +24,9 @@ const baseAwareUrl = (path: string | undefined): string | undefined => {
 };
 const previousUrl = baseAwareUrl(page.url.prev);
 const nextUrl = baseAwareUrl(page.url.next);
+const topicCount = page.total;
+const topicStart = page.start + 1;
+const topicEnd = page.end + 1;
 const videoCountLabel = (count: number) => count === 1 ? "1 video" : `${count} videos`;
 const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${count} time notes`;
 const metadata = buildTopicBrowseMetadata(page.currentPage, page.lastPage);
@@ -40,17 +45,22 @@ const metadata = buildTopicBrowseMetadata(page.currentPage, page.lastPage);
         Explore every covered naval-history subject through small, crawlable pages that work without JavaScript.
       </p>
       <div class="action-row">
+        <a class="primary-link" href={`${baseUrl}topics/browse/all/`}>Show all topics</a>
         <a class="secondary-link" href={`${baseUrl}topics/`}>Return to the Topics finder</a>
       </div>
     </section>
 
-    <nav class="archive-pagination" aria-label="Topic archive pages">
-      <span>Page {page.currentPage} of {page.lastPage}</span>
-      <div>
-        {previousUrl ? <a class="secondary-link" href={previousUrl} rel="prev">Previous page</a> : <span aria-hidden="true"></span>}
-        {nextUrl ? <a class="secondary-link" href={nextUrl} rel="next">Next page</a> : <span aria-hidden="true"></span>}
-      </div>
-    </nav>
+    <TopicArchivePagination
+      baseUrl={baseUrl}
+      currentPage={page.currentPage}
+      lastPage={page.lastPage}
+      previousUrl={previousUrl}
+      nextUrl={nextUrl}
+      position="top"
+      topicCount={topicCount}
+      topicStart={topicStart}
+      topicEnd={topicEnd}
+    />
 
     <section class="record-grid topics archive-record-grid" aria-label="Topics" data-pagefind-ignore>
       {
@@ -65,12 +75,17 @@ const metadata = buildTopicBrowseMetadata(page.currentPage, page.lastPage);
       }
     </section>
 
-    <nav class="archive-pagination archive-pagination-bottom" aria-label="More Topic archive pages">
-      <span>Page {page.currentPage} of {page.lastPage}</span>
-      <div>
-        {previousUrl ? <a class="secondary-link" href={previousUrl} rel="prev">Previous page</a> : <span aria-hidden="true"></span>}
-        {nextUrl ? <a class="secondary-link" href={nextUrl} rel="next">Next page</a> : <span aria-hidden="true"></span>}
-      </div>
-    </nav>
+    <TopicArchivePagination
+      baseUrl={baseUrl}
+      currentPage={page.currentPage}
+      lastPage={page.lastPage}
+      previousUrl={previousUrl}
+      nextUrl={nextUrl}
+      position="bottom"
+      topicCount={topicCount}
+      topicStart={topicStart}
+      topicEnd={topicEnd}
+    />
   </main>
+  <script src={topicPageJumpUrl} defer is:inline></script>
 </BaseLayout>
