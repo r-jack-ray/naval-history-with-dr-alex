@@ -39,21 +39,16 @@
       "title": "Building a usable coastal battleship from limited technology",
       "kind": "notable_point",
       "start": "3:58",
-      "end": "12:57",
+      "end": "10:37",
       "topics": ["battleships", "ship-design", "naval-procurement"],
-      "summary": "Early American construction compromises on speed, armament, and protection while research is directed toward boilers, cruisers, and hull construction.",
-      "body": "The initial design is a small coastal battleship because the available technology cannot yet support the desired fast capital ship. Dr. Clarke trades an 18-knot aspiration down to 15 knots and works around limited gun placements, stability, and weight. He treats the design as a temporary platform while putting research into boilers, cruiser development, and hull construction. The watch point shows how an interim fleet can preserve numbers while research works toward a different long-term force structure.",
+      "summary": "Early American construction compromises on speed, armament, protection, and stability to produce a usable capital ship from limited technology.",
+      "body": "The initial design is a small coastal battleship because the available technology cannot yet support the desired fast capital ship. Dr. Clarke trades an 18-knot aspiration down to 15 knots and works around limited gun placements, stability, and weight. Twelve-inch main guns and smaller weapons give the ship some fighting value, but he repeatedly describes the result as a basic model rather than the fleet's destination. The watch point shows how an interim hull can preserve capital-ship numbers while a navy waits for the machinery and cruiser technology needed for a different force structure.",
       "sourcePath": "src/transcripts/txt/2024-08-05_T18-00-15_twitch-live-usa-goes-battlecruiser-for-all-their-capital-ships-campaign-1_Kcr7ODrkLXw.txt",
       "evidence": [
         {
           "start": "3:58",
           "end": "10:31",
           "note": "The stream builds a small coastal battleship, reduces its speed, and names it West Virginia."
-        },
-        {
-          "start": "12:42",
-          "end": "13:06",
-          "note": "Research priorities are boilers, cruisers, and hull construction."
         }
       ]
     },
@@ -168,32 +163,22 @@
       ]
     },
     {
-      "id": "distributed-torpedo-boat-port-defense",
+      "id": "defensive-torpedo-boat-design",
       "videoId": "Kcr7ODrkLXw",
-      "slug": "distributed-torpedo-boat-port-defense",
-      "title": "Distributing torpedo boats for local port defense",
+      "slug": "defensive-torpedo-boat-design",
+      "title": "A gun-heavy torpedo boat limited to defensive work",
       "kind": "notable_point",
       "start": "1:12:48",
-      "end": "1:28:18",
-      "topics": [
-        "torpedo-boats",
-        "coastal-defence",
-        "fleet-deployment",
-        "naval-readiness"
-      ],
-      "summary": "A heavily armed small-craft design becomes a dispersed defensive force stationed across American ports.",
-      "body": "Dr. Clarke designs a small, gun-heavy vessel with poor roll characteristics and explicitly limits it to defensive work. Fifty torpedo boats are then spread across the country's ports, usually in pairs or small groups, to give each base some local protection. The deployment sacrifices concentration in exchange for immediate presence across a geographically vast coastline. The resulting force is useful for examining the difference between harbor defense, reinforcement, and a concentrated battle fleet.",
+      "end": "1:14:58",
+      "topics": ["torpedo-boats", "ship-design", "coastal-defence", "secondary-batteries"],
+      "summary": "Severe roll and a heavy gun fit produce a small craft intended for local defense rather than independent operations.",
+      "body": "The campaign's small-craft design carries unusually heavy gun armament for its size, but its roll characteristics remain severe. Dr. Clarke accepts the imbalance because he does not intend the boats to range far from supporting bases and larger ships. He explicitly limits them to defensive employment, where immediate local firepower matters more than seakeeping or endurance. The design illustrates how a narrow mission can make an otherwise compromised hull useful without pretending it is a general-purpose warship.",
       "sourcePath": "src/transcripts/txt/2024-08-05_T18-00-15_twitch-live-usa-goes-battlecruiser-for-all-their-capital-ships-campaign-1_Kcr7ODrkLXw.txt",
       "evidence": [
         {
           "start": "1:12:48",
           "end": "1:14:58",
           "note": "The small design is heavily gun-armed, has severe roll, and is intended entirely for defensive employment."
-        },
-        {
-          "start": "1:24:04",
-          "end": "1:28:18",
-          "note": "Fifty torpedo boats are distributed among ports, with local groups supporting battleships and guarding exposed bases."
         }
       ]
     },
@@ -204,7 +189,7 @@
       "title": "Why early torpedoes resist rapid automated reloading",
       "kind": "qa",
       "start": "1:17:16",
-      "end": "1:18:06",
+      "end": "1:20:15",
       "topics": ["torpedoes", "torpedo-launchers", "naval-technology"],
       "summary": "A question about semi-automatic torpedo turrets leads to an explanation of the weight and manual-setting burden of early torpedo systems.",
       "body": "Dr. Clarke notes that a mechanically assisted loading arrangement is possible, but a torpedo is large and must be prepared with firing settings. Modern systems can use a data link between weapon and ship systems, whereas early-period settings had to be entered manually. That preparation makes a rapid automatic cycle much harder than a simple comparison with shell ammunition suggests. He later points to a Soviet rotating-carousel submarine arrangement as evidence that mechanized handling was possible, while still stressing the difficulty of moving and preparing the weapons.",
@@ -221,6 +206,51 @@
           "start": "1:19:50",
           "end": "1:20:15",
           "note": "Submarine loading remains difficult, although a Soviet rotating-carousel torpedo system is recalled as a mechanized example."
+        }
+      ]
+    },
+    {
+      "id": "distributed-torpedo-boat-port-defense",
+      "videoId": "Kcr7ODrkLXw",
+      "slug": "distributed-torpedo-boat-port-defense",
+      "title": "Distributing torpedo boats for local port defense",
+      "kind": "notable_point",
+      "start": "1:24:04",
+      "end": "1:28:18",
+      "topics": [
+        "torpedo-boats",
+        "coastal-defence",
+        "fleet-deployment",
+        "naval-readiness"
+      ],
+      "summary": "Fifty torpedo boats become a dispersed defensive force stationed across American ports.",
+      "body": "Fifty torpedo boats are spread across the country's ports, usually in pairs or small groups, so exposed bases receive immediate local protection. Some detachments support battleships while others provide the only naval presence at a port. The deployment sacrifices concentration in exchange for coverage across a geographically vast coastline. It is useful for examining the difference between harbor defense, reinforcement, and a battle fleet that remains massed for decisive action.",
+      "sourcePath": "src/transcripts/txt/2024-08-05_T18-00-15_twitch-live-usa-goes-battlecruiser-for-all-their-capital-ships-campaign-1_Kcr7ODrkLXw.txt",
+      "evidence": [
+        {
+          "start": "1:24:04",
+          "end": "1:28:18",
+          "note": "Fifty torpedo boats are distributed among ports, with local groups supporting battleships and guarding exposed bases."
+        }
+      ]
+    },
+    {
+      "id": "naval-dominance-and-campaign-deterrence",
+      "videoId": "Kcr7ODrkLXw",
+      "slug": "naval-dominance-and-campaign-deterrence",
+      "title": "Naval dominance can suppress the battles a campaign seeks",
+      "kind": "notable_point",
+      "start": "1:30:55",
+      "end": "1:31:30",
+      "topics": ["naval-deterrence", "naval-strategy", "naval-wargaming", "sea-power"],
+      "summary": "The game's late-campaign lull is connected to a strategic paradox: overwhelming strength can leave opponents unwilling to fight.",
+      "body": "Dr. Clarke describes the game as slow while a fleet is being built, most active in its competitive middle, and slow again once one navy becomes overwhelmingly strong. He connects that final lull to a historically recognizable deterrent effect: weaker opponents stop offering battles to a dominant fleet. In campaign terms, strategic success can reduce opportunities for action rather than increase them. The point is a useful warning against measuring naval power only by the number of battles a navy fights.",
+      "sourcePath": "src/transcripts/txt/2024-08-05_T18-00-15_twitch-live-usa-goes-battlecruiser-for-all-their-capital-ships-campaign-1_Kcr7ODrkLXw.txt",
+      "evidence": [
+        {
+          "start": "1:30:55",
+          "end": "1:31:30",
+          "note": "The previous campaign became quiet once the fleet was so strong that no opponent wanted to fight it."
         }
       ]
     },
@@ -254,7 +284,7 @@
       "end": "1:42:58",
       "topics": ["air-power", "military-logistics", "billy-mitchell", "military-doctrine"],
       "summary": "A discussion of Billy Mitchell is used to show how an appealing military idea changes once aircraft capability and logistical support are considered.",
-      "body": "Dr. Clarke contrasts the elegance of a single decisive idea with the messy constraints of practice. He uses the claim that air power will win future wars to illustrate the gap between a persuasive slogan and the realities of operating, sustaining, and employing aircraft. A comparison with Henry VIII's diverse collection of weapons shows how adopting every promising system can produce an incoherent logistical burden. The wider point is that military doctrine must survive contact with logistics and actual capabilities.",
+      "body": "Dr. Clarke contrasts the elegance of a single decisive idea with the messy constraints of practice. He uses the claim that air power will win future wars to illustrate the gap between a persuasive slogan and the realities of operating, sustaining, and employing aircraft. A comparison with a Tudor ruler's diverse collection of weapons shows how adopting every promising system can produce an incoherent logistical burden. The wider point is that military doctrine must survive contact with logistics and actual capabilities.",
       "sourcePath": "src/transcripts/txt/2024-08-05_T18-00-15_twitch-live-usa-goes-battlecruiser-for-all-their-capital-ships-campaign-1_Kcr7ODrkLXw.txt",
       "evidence": [
         {
@@ -266,6 +296,66 @@
           "start": "1:42:19",
           "end": "1:42:58",
           "note": "Henry VII's diverse weapons are cited as a logistical support problem."
+        }
+      ]
+    },
+    {
+      "id": "transitional-american-heavy-cruiser-design",
+      "videoId": "Kcr7ODrkLXw",
+      "slug": "transitional-american-heavy-cruiser-design",
+      "title": "A heavy cruiser bridges the path to battlecruisers",
+      "kind": "notable_point",
+      "start": "1:43:30",
+      "end": "1:48:25",
+      "topics": ["heavy-cruisers", "ship-design", "naval-gunnery", "us-navy"],
+      "summary": "A long, narrow American heavy cruiser combines 9-inch guns with battle-fleet speed while larger cruiser technology is still developing.",
+      "body": "The campaign turns from improvised coastal battleships to a long, narrow heavy-cruiser hull. Dr. Clarke favors 9-inch guns, protects key zones within the available weight, and keeps the design at the same 18-knot speed as the newer battleships. He identifies the result as recognizably American while accepting that research and available hull size still constrain it. The design serves as a transitional step, giving the fleet a more capable cruiser before the desired battlecruiser technology arrives.",
+      "sourcePath": "src/transcripts/txt/2024-08-05_T18-00-15_twitch-live-usa-goes-battlecruiser-for-all-their-capital-ships-campaign-1_Kcr7ODrkLXw.txt",
+      "evidence": [
+        {
+          "start": "1:43:30",
+          "end": "1:48:25",
+          "note": "A long, narrow heavy cruiser is designed around 9-inch guns, 18-knot speed, and available armour weight."
+        }
+      ]
+    },
+    {
+      "id": "tudor-weapons-and-coastal-forts",
+      "videoId": "Kcr7ODrkLXw",
+      "slug": "tudor-weapons-and-coastal-forts",
+      "title": "Tudor weapons need doctrine and delegated execution",
+      "kind": "notable_point",
+      "start": "1:48:32",
+      "end": "1:50:09",
+      "topics": ["tudor-england", "military-logistics", "military-doctrine", "coastal-fortifications"],
+      "summary": "A mixed Tudor arsenal is contrasted with coastal artillery forts to show how innovation becomes useful only through coherent implementation.",
+      "body": "The stream describes a Tudor military establishment mixing older longbows and billmen with newer pikes, handgunners, artillery, and multiple cannon types. Dr. Clarke's criticism is not that variety is useless, but that collecting many promising systems does not itself create a cohesive strategy. He contrasts that mixture with the coastal artillery forts around the British Isles, where a broad royal idea became more effective after others translated it into an organized defensive program. The example extends the preceding air-power discussion from logistics into command, doctrine, and delegated execution.",
+      "sourcePath": "src/transcripts/txt/2024-08-05_T18-00-15_twitch-live-usa-goes-battlecruiser-for-all-their-capital-ships-campaign-1_Kcr7ODrkLXw.txt",
+      "evidence": [
+        {
+          "start": "1:48:32",
+          "end": "1:50:09",
+          "note": "The mixed Tudor arsenal is described as strategically incoherent, while delegated coastal artillery forts are presented as a more successful program."
+        }
+      ]
+    },
+    {
+      "id": "heavy-cruisers-for-a-national-port-network",
+      "videoId": "Kcr7ODrkLXw",
+      "slug": "heavy-cruisers-for-a-national-port-network",
+      "title": "Heavy cruisers for a national port network",
+      "kind": "notable_point",
+      "start": "1:50:51",
+      "end": "1:55:09",
+      "topics": ["heavy-cruisers", "fleet-deployment", "coastal-defence", "naval-procurement"],
+      "summary": "Eighteen heavy cruisers are ordered after a count of seventeen ports, turning production quantity into a basing decision.",
+      "body": "After counting seventeen ports, Dr. Clarke orders eighteen heavy cruisers so the national base network can receive more than token local protection. This extends the earlier torpedo-boat distribution with ships able to contribute heavier gunfire and accompany the battle fleet. The choice gains geographical presence but disperses a class that could otherwise be massed into a concentrated cruiser squadron. It turns procurement quantity into a basing decision rather than treating the design as an isolated technical exercise.",
+      "sourcePath": "src/transcripts/txt/2024-08-05_T18-00-15_twitch-live-usa-goes-battlecruiser-for-all-their-capital-ships-campaign-1_Kcr7ODrkLXw.txt",
+      "evidence": [
+        {
+          "start": "1:50:51",
+          "end": "1:55:09",
+          "note": "The stream counts seventeen ports, discusses placing cruisers among them, and orders eighteen hulls."
         }
       ]
     },
@@ -374,6 +464,26 @@
       ]
     },
     {
+      "id": "ship-names-and-changing-language",
+      "videoId": "Kcr7ODrkLXw",
+      "slug": "ship-names-and-changing-language",
+      "title": "Ship names change meaning with their audience",
+      "kind": "notable_point",
+      "start": "2:22:25",
+      "end": "2:24:24",
+      "topics": ["ship-naming", "royal-navy", "language-change", "naval-traditions"],
+      "summary": "Cowslip, Pansy, the Flower class, and the Gay class prompt a discussion of how changing language alters the tone of inherited ship names.",
+      "body": "A reaction to the name Cowslip opens a discussion of names such as Pansy and of the Royal Navy's Flower and Gay classes. Dr. Clarke uses them to show how ordinary words can acquire new associations after a ship is named. A term that was innocuous in its original setting may later sound comic, weak, or distracting to a different audience, regardless of its earlier meaning. The passage turns the humor into a point about naming traditions, semantic change, and the public image a navy expects a warship name to carry.",
+      "sourcePath": "src/transcripts/txt/2024-08-05_T18-00-15_twitch-live-usa-goes-battlecruiser-for-all-their-capital-ships-campaign-1_Kcr7ODrkLXw.txt",
+      "evidence": [
+        {
+          "start": "2:22:25",
+          "end": "2:24:24",
+          "note": "Cowslip, Pansy, the Flower class, and the Gay class are used to discuss changing word meanings and the tone of warship names."
+        }
+      ]
+    },
+    {
       "id": "gibraltar-coal-and-forward-refueling",
       "videoId": "Kcr7ODrkLXw",
       "slug": "gibraltar-coal-and-forward-refueling",
@@ -407,24 +517,59 @@
       "id": "balearic-islands-as-a-mediterranean-logistics-base",
       "videoId": "Kcr7ODrkLXw",
       "slug": "balearic-islands-as-a-mediterranean-logistics-base",
-      "title": "The Balearic Islands as a Mediterranean supply base",
+      "title": "Planning a Balearic supply base",
       "kind": "notable_point",
       "start": "2:35:13",
-      "end": "2:47:31",
+      "end": "2:36:01",
       "topics": ["naval-logistics", "mediterranean", "basing", "fleet-operations"],
-      "summary": "An invasion of the Balearic Islands is justified as a way to establish an American supply network for operations in the Mediterranean.",
-      "body": "The strategic value of the islands is not territory for its own sake but a support position in the Mediterranean. Dr. Clarke expects that possession would allow the fleet to sustain operations against Austria-Hungary rather than relying on a distant home network. The following action captures the islands and sends torpedo boats there to refuel and recover. The scenario demonstrates how an island base can convert a transient naval presence into a force able to remain in theatre.",
+      "summary": "An invasion of the Balearic Islands is proposed to establish an American supply network for operations in the Mediterranean.",
+      "body": "The strategic value of the islands is not territory for its own sake but a support position in the Mediterranean. Dr. Clarke expects possession to help sustain operations against Austria-Hungary rather than leaving the fleet dependent on a distant home network. The proposed invasion therefore treats access and resupply as prerequisites for a durable naval presence. The scenario makes island seizure part of a logistics plan rather than an isolated territorial objective.",
       "sourcePath": "src/transcripts/txt/2024-08-05_T18-00-15_twitch-live-usa-goes-battlecruiser-for-all-their-capital-ships-campaign-1_Kcr7ODrkLXw.txt",
       "evidence": [
         {
           "start": "2:35:20",
           "end": "2:35:54",
           "note": "The Balearic Islands are selected to create a Mediterranean supply network."
-        },
+        }
+      ]
+    },
+    {
+      "id": "massed-torpedo-boats-overwhelm-cruisers",
+      "videoId": "Kcr7ODrkLXw",
+      "slug": "massed-torpedo-boats-overwhelm-cruisers",
+      "title": "Massed torpedo boats overwhelm isolated cruisers",
+      "kind": "notable_point",
+      "start": "2:43:26",
+      "end": "2:44:58",
+      "topics": ["torpedo-boats", "swarm-tactics", "force-concentration", "fleet-tactics", "naval-wargaming"],
+      "summary": "Costly small-craft attacks and converging formations turn numerical mass into an effective answer to larger Spanish cruisers.",
+      "body": "The campaign sends torpedo boats into a converging action knowing that the small-craft screen will take disproportionate losses. An enemy heavy cruiser stalls inside two American formations, allowing many attackers and supporting ships to concentrate on it before attention shifts to a light cruiser. Dr. Clarke calls the resulting mob rule effective, even though individual torpedo runs miss and the method is costly. Because this is a game battle, the watch point illustrates the tactical logic of numbers and converging geometry rather than claiming a specific historical engagement.",
+      "sourcePath": "src/transcripts/txt/2024-08-05_T18-00-15_twitch-live-usa-goes-battlecruiser-for-all-their-capital-ships-campaign-1_Kcr7ODrkLXw.txt",
+      "evidence": [
+        {
+          "start": "2:43:26",
+          "end": "2:44:58",
+          "note": "Torpedo boats and two converging American formations concentrate on a heavy cruiser before pursuing the remaining light cruiser."
+        }
+      ]
+    },
+    {
+      "id": "balearic-base-supports-refueling-and-recovery",
+      "videoId": "Kcr7ODrkLXw",
+      "slug": "balearic-base-supports-refueling-and-recovery",
+      "title": "The Balearic base immediately supports recovery",
+      "kind": "notable_point",
+      "start": "2:47:30",
+      "end": "2:48:04",
+      "topics": ["naval-logistics", "mediterranean", "basing", "torpedo-boats"],
+      "summary": "After the islands are captured, torpedo boats move into the new base to refuel and recover inside the Mediterranean theatre.",
+      "body": "The Balearic invasion succeeds, and the new position immediately receives torpedo boats for refueling and recovery. That movement turns the earlier strategic rationale into practical support for ships already operating in the theatre. The islands add an American logistics point inside the Mediterranean instead of leaving every deployment dependent on distant bases or diplomatic access. In the campaign model, territorial acquisition becomes operationally useful when it shortens the sustainment chain.",
+      "sourcePath": "src/transcripts/txt/2024-08-05_T18-00-15_twitch-live-usa-goes-battlecruiser-for-all-their-capital-ships-campaign-1_Kcr7ODrkLXw.txt",
+      "evidence": [
         {
           "start": "2:47:30",
           "end": "2:48:04",
-          "note": "After gaining the islands, torpedo boats are moved there for refuelling and recovery."
+          "note": "After gaining the islands, torpedo boats are moved there for refueling and recovery."
         }
       ]
     },
@@ -465,10 +610,10 @@
       "title": "Concentrating a battle fleet against Austria-Hungary",
       "kind": "chapter",
       "start": "3:11:09",
-      "end": "3:28:32",
+      "end": "3:23:18",
       "topics": ["fleet-tactics", "austro-hungarian-navy", "battleships", "torpedo-boats"],
-      "summary": "A late action shows the campaign fleet using its faster and heavier units to turn an Austrian pursuit into a concentrated engagement.",
-      "body": "The fleet is reorganized so faster ships can operate separately from slower formations, while the battleships remain the decisive striking element. Torpedo boats are expected to take severe losses, but the main line turns back toward pursuing enemy ships and brings its heavier guns into range. Enemy cruisers that chase the screen are drawn toward the returning American battle line and become boxed in by concentrated formations. The battle ends with the Austrian force beaten and a peace offer accepted, illustrating the campaign's preference for concentration over dispersed skirmishing.",
+      "summary": "The campaign fleet uses separate speed groups and a sacrificial screen to turn an Austrian pursuit into a concentrated engagement.",
+      "body": "The fleet is reorganized so faster ships can operate separately from slower formations, while the battleships remain the decisive striking element. Torpedo boats screen the fleet and are expected to take severe losses; when the screen buys time to disengage, those losses also expose the need for forward replacement capacity. Enemy cruisers that chase the screen are drawn toward the returning American battle line. The main force then turns back, bringing five battleships against the pursuers and converting a retreat into a concentrated engagement.",
       "sourcePath": "src/transcripts/txt/2024-08-05_T18-00-15_twitch-live-usa-goes-battlecruiser-for-all-their-capital-ships-campaign-1_Kcr7ODrkLXw.txt",
       "evidence": [
         {
@@ -477,14 +622,14 @@
           "note": "The force is reorganized into fast and slower squadrons before the battle."
         },
         {
+          "start": "3:14:42",
+          "end": "3:16:23",
+          "note": "The torpedo-boat screen suffers heavily, buys time to disengage, and prompts a plan for replacement boats near the theatre."
+        },
+        {
           "start": "3:19:39",
           "end": "3:20:07",
           "note": "The fleet turns to bring its five battleships against the Austrian formation."
-        },
-        {
-          "start": "3:28:28",
-          "end": "3:29:07",
-          "note": "The battle is judged won and peace with Austria is accepted."
         }
       ]
     },
@@ -509,6 +654,31 @@
           "start": "3:23:29",
           "end": "3:24:47",
           "note": "Many heavy guns bracket a boxed-in target, but most are manually aimed and only a few ships have centralized directors."
+        }
+      ]
+    },
+    {
+      "id": "austrian-fleet-defeat-and-peace",
+      "videoId": "Kcr7ODrkLXw",
+      "slug": "austrian-fleet-defeat-and-peace",
+      "title": "Austrian fleet defeat opens the way to peace",
+      "kind": "notable_point",
+      "start": "3:25:02",
+      "end": "3:29:07",
+      "topics": ["austro-hungarian-navy", "fleet-tactics", "naval-diplomacy", "peace-treaties"],
+      "summary": "The remaining Austrian ships are boxed in and destroyed before the campaign immediately accepts a peace treaty.",
+      "body": "After the fire-control aside, the American line continues closing around the remaining Austrian ships. South Dakota's position denies a cruiser an easy escape route, while secondary gunfire, torpedoes, and converging ships finish isolated targets. Dr. Clarke judges the opposing navy annihilated and accepts a peace treaty immediately after the battle. The conclusion links tactical concentration to political effect: removing one enemy fleet also removes one active war and frees attention for the continuing conflict with Spain.",
+      "sourcePath": "src/transcripts/txt/2024-08-05_T18-00-15_twitch-live-usa-goes-battlecruiser-for-all-their-capital-ships-campaign-1_Kcr7ODrkLXw.txt",
+      "evidence": [
+        {
+          "start": "3:25:02",
+          "end": "3:28:30",
+          "note": "The final Austrian cruisers are trapped by converging American ships and the battle is judged won."
+        },
+        {
+          "start": "3:28:55",
+          "end": "3:29:07",
+          "note": "The Austrian navy is described as annihilated and the offered peace treaty is accepted."
         }
       ]
     },

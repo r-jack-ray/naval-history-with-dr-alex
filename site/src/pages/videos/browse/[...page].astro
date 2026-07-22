@@ -1,11 +1,13 @@
 ---
 import type { GetStaticPaths, Page } from "astro";
 
+import ArchivePagination from "../../../components/ArchivePagination.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import {
   type ArchiveVideo,
   videosForBrowse,
 } from "../../../data/archive";
+import archivePageJumpUrl from "../../../scripts/archive-page-jump.js?url&no-inline";
 import { buildVideoBrowseMetadata } from "../../../../../src/site/page-metadata.js";
 
 export const getStaticPaths = (({ paginate }) => paginate(videosForBrowse(), { pageSize: 48 })) satisfies GetStaticPaths;
@@ -25,6 +27,9 @@ const baseAwareUrl = (path: string | undefined): string | undefined => {
 };
 const previousUrl = baseAwareUrl(page.url.prev);
 const nextUrl = baseAwareUrl(page.url.next);
+const videoCount = page.total;
+const videoStart = page.start + 1;
+const videoEnd = page.end + 1;
 const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${count} time notes`;
 const metadata = buildVideoBrowseMetadata(page.currentPage, page.lastPage);
 ---
@@ -46,13 +51,21 @@ const metadata = buildVideoBrowseMetadata(page.currentPage, page.lastPage);
       </div>
     </section>
 
-    <nav class="archive-pagination" aria-label="Video Guide archive pages">
-      <span>Page {page.currentPage} of {page.lastPage}</span>
-      <div>
-        {previousUrl ? <a class="secondary-link" href={previousUrl} rel="prev">Previous page</a> : <span aria-hidden="true"></span>}
-        {nextUrl ? <a class="secondary-link" href={nextUrl} rel="next">Next page</a> : <span aria-hidden="true"></span>}
-      </div>
-    </nav>
+    <ArchivePagination
+      archiveLabel="Video Guide"
+      baseUrl={baseUrl}
+      browsePath="videos/browse/"
+      currentPage={page.currentPage}
+      itemCount={videoCount}
+      itemEnd={videoEnd}
+      itemLabel="Videos"
+      itemStart={videoStart}
+      lastPage={page.lastPage}
+      previousUrl={previousUrl}
+      nextUrl={nextUrl}
+      pageLabel="video guide"
+      position="top"
+    />
 
     <section class="video-card-grid archive-record-grid" aria-label="Video Guides" data-pagefind-ignore>
       {
@@ -83,12 +96,21 @@ const metadata = buildVideoBrowseMetadata(page.currentPage, page.lastPage);
       }
     </section>
 
-    <nav class="archive-pagination archive-pagination-bottom" aria-label="More Video Guide archive pages">
-      <span>Page {page.currentPage} of {page.lastPage}</span>
-      <div>
-        {previousUrl ? <a class="secondary-link" href={previousUrl} rel="prev">Previous page</a> : <span aria-hidden="true"></span>}
-        {nextUrl ? <a class="secondary-link" href={nextUrl} rel="next">Next page</a> : <span aria-hidden="true"></span>}
-      </div>
-    </nav>
+    <ArchivePagination
+      archiveLabel="Video Guide"
+      baseUrl={baseUrl}
+      browsePath="videos/browse/"
+      currentPage={page.currentPage}
+      itemCount={videoCount}
+      itemEnd={videoEnd}
+      itemLabel="Videos"
+      itemStart={videoStart}
+      lastPage={page.lastPage}
+      previousUrl={previousUrl}
+      nextUrl={nextUrl}
+      pageLabel="video guide"
+      position="bottom"
+    />
   </main>
+  <script src={archivePageJumpUrl} defer is:inline></script>
 </BaseLayout>

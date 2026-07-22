@@ -1,28 +1,43 @@
 ---
+interface ShowAllLink {
+  href: string;
+  label: string;
+}
+
 interface Props {
+  archiveLabel: string;
   baseUrl: string;
+  browsePath: string;
   currentPage: number;
+  itemCount: number;
+  itemEnd: number;
+  itemLabel: string;
+  itemStart: number;
   lastPage: number;
   nextUrl?: string;
+  pageLabel: string;
   position: "top" | "bottom";
   previousUrl?: string;
-  topicCount: number;
-  topicEnd: number;
-  topicStart: number;
+  showAllLink?: ShowAllLink;
 }
 
 const {
+  archiveLabel,
   baseUrl,
+  browsePath,
   currentPage,
+  itemCount,
+  itemEnd,
+  itemLabel,
+  itemStart,
   lastPage,
   nextUrl,
+  pageLabel,
   position,
   previousUrl,
-  topicCount,
-  topicEnd,
-  topicStart,
+  showAllLink,
 } = Astro.props;
-const browseUrl = `${baseUrl}topics/browse/`;
+const browseUrl = `${baseUrl}${browsePath}`;
 const pageUrl = (pageNumber: number): string => pageNumber === 1
   ? browseUrl
   : `${browseUrl}${pageNumber}/`;
@@ -37,30 +52,30 @@ const visiblePageNumbers = [...new Set([
 ])]
   .filter((pageNumber) => pageNumber >= 1 && pageNumber <= lastPage)
   .sort((left, right) => left - right);
-const pageInputId = `topic-page-${position}`;
+const pageInputId = `${pageLabel.replaceAll(" ", "-")}-page-${position}`;
 ---
 
 <nav
   class:list={["archive-pagination", position === "bottom" && "archive-pagination-bottom"]}
-  aria-label={position === "top" ? "Topic archive pages" : "More topic archive pages"}
+  aria-label={position === "top" ? `${archiveLabel} archive pages` : `More ${archiveLabel} archive pages`}
 >
   <div class="archive-pagination-status">
     <strong>Page {currentPage} of {lastPage}</strong>
-    <small>Topics {topicStart.toLocaleString("en-US")}–{topicEnd.toLocaleString("en-US")} of {topicCount.toLocaleString("en-US")}</small>
+    <small>{itemLabel} {itemStart.toLocaleString("en-US")}–{itemEnd.toLocaleString("en-US")} of {itemCount.toLocaleString("en-US")}</small>
   </div>
   <div class="archive-pagination-controls">
     {previousUrl ? <a class="secondary-link" href={previousUrl} rel="prev">Previous</a> : <span class="archive-pagination-disabled" aria-hidden="true">Previous</span>}
     <details class="archive-page-picker">
       <summary class="secondary-link">Choose page</summary>
       <div class="archive-page-picker-panel">
-        <div class="archive-page-links" role="group" aria-label="Nearby topic pages">
+        <div class="archive-page-links" role="group" aria-label={`Nearby ${pageLabel} pages`}>
           {
             visiblePageNumbers.map((pageNumber, index) => (
               <>
                 {index > 0 && pageNumber > (visiblePageNumbers[index - 1] ?? 0) + 1 && <span aria-hidden="true">…</span>}
                 {pageNumber === currentPage
                   ? <span class="archive-page-current" aria-current="page">{pageNumber}</span>
-                  : <a href={pageUrl(pageNumber)} aria-label={`Go to topic page ${pageNumber}`}>{pageNumber}</a>}
+                  : <a href={pageUrl(pageNumber)} aria-label={`Go to ${pageLabel} page ${pageNumber}`}>{pageNumber}</a>}
               </>
             ))
           }
@@ -69,7 +84,7 @@ const pageInputId = `topic-page-${position}`;
           class="archive-page-jump"
           action={browseUrl}
           method="get"
-          data-topic-page-jump
+          data-archive-page-jump
           data-browse-url={browseUrl}
           data-last-page={lastPage}
         >
@@ -79,7 +94,7 @@ const pageInputId = `topic-page-${position}`;
             <button class="secondary-link" type="submit">Go</button>
           </div>
         </form>
-        <a class="archive-show-all-link" href={`${browseUrl}all/`}>Show all topics on one page</a>
+        {showAllLink && <a class="archive-show-all-link" href={showAllLink.href}>{showAllLink.label}</a>}
       </div>
     </details>
     {nextUrl ? <a class="secondary-link" href={nextUrl} rel="next">Next</a> : <span class="archive-pagination-disabled" aria-hidden="true">Next</span>}

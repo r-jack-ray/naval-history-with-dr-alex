@@ -22,6 +22,7 @@
     "append:site-content-processing-log": "node .codex/hooks/site-content-pipeline-lock.mjs append-log",
     "audit:transcript-schedules": "tsx src/scripts/audit-transcript-schedules.ts",
     "audit:video-timestamp-alignment": "tsx src/scripts/audit-video-timestamp-alignment.ts",
+    "report:video-topic-usage": "tsx src/scripts/report-video-topic-usage.ts",
     "report:transcript-problems": "tsx src/scripts/report-transcript-problems.ts",
     "fetch:video-links": "tsx src/scripts/get-channel-video-links.ts --api-key-file reports/youtube-api-key.txt",
     "fetch:video-metadata": "tsx src/scripts/fetch-video-metadata.ts --api-key-file reports/youtube-api-key.txt",

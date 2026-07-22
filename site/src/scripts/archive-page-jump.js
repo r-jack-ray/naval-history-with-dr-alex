@@ -1,4 +1,4 @@
-for (const form of document.querySelectorAll("[data-topic-page-jump]")) {
+for (const form of document.querySelectorAll("[data-archive-page-jump]")) {
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     if (!(form instanceof HTMLFormElement) || !form.reportValidity()) {

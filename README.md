@@ -2,7 +2,7 @@
 
 [Main site](https://r-jack-ray.github.io/naval-history-with-dr-alex/)
 
-Static reference archive tooling for [Naval History with Dr Alex](https://www.youtube.com/@DrAlexClarke).
+Static reference archive and learner-facing study guide for [Naval History with Dr Alex](https://www.youtube.com/@DrAlexClarke).
 
 The archive uses a segment-first model. The core curated unit is a video segment: a chapter, notable point, actual Q&A exchange, or optional transcript excerpt.
 
@@ -10,8 +10,7 @@ The archive uses a segment-first model. The core curated unit is a video segment
 
 The repository currently has:
 
-- Node 22+ and TypeScript project scaffolding.
-- Strict TypeScript compilation.
+- A Node 22+ and strict TypeScript toolchain.
 - Node's built-in test runner.
 - An Astro static site configured for GitHub Pages.
 - Pagefind indexing during site builds.
@@ -20,7 +19,7 @@ The repository currently has:
 - Static video, segment, and topic pages built from the manifest and stable JSON shards under `site/src/data/generated/archive/`.
 - Deferred Pagefind-backed search across video guides, time notes, and topics, without an inline archive corpus.
 - A subject-focused Time Notes finder with explanation/Q&A filters and a paginated browse-all fallback.
-- A transcript-to-site-content process with curation and audit agent briefs, Codex skills, backlog audit, and validation hooks.
+- A transcript-to-site-content process with shard-local curation and audit workflows, backlog reporting, and validation hooks.
 - A rate-limited YouTube channel link inventory script.
 - A source master episode list under `src/channel/`, with an explicit completeness flag and inventory notes.
 - A local transcript store under `src/transcripts/`.
@@ -35,18 +34,18 @@ src/
   channel/                 Canonical channel inventory
     episodes.json          Master episode list
     video-metadata.json    YouTube Data API metadata store
-  content/                 Site-content audit logic
+  content/                 Site-content audits, reports, and processing-log logic
   derived/                 Curated site-content sources and curation bookkeeping
     site-content-processing.config.json
     site-content-processing.log
-    topic-normalization-patterns.tsv Manually curated topic normalization policy
+    topic-normalization-patterns.tsv  Manually curated topic normalization policy
     video-segments/        Source-of-truth curated study-guide content
       topics.json          Shared topic records and aliases
       <manifest.fileStem>.json One curated segment shard per video; reuse the stored transcript manifest stem
   pipeline/                Atomic writes and transcript-schedule validation
   scripts/                 TypeScript CLI entrypoints
-  site/                    Site data generator and validation logic
-  youtube/                 YouTube inventory helpers
+  site/                    Archive generation, search, SEO, and site validation logic
+  youtube/                 YouTube inventory, metadata, and transcript-ingestion logic
   transcripts/             Local transcript archive
     manifest.json          Index of stored transcript files
     txt/                   Stored timestamped transcript text; source of record
@@ -77,32 +76,93 @@ Install dependencies:
 npm install
 ```
 
-Useful checks:
+The normal repository check compiles, type-checks, and runs the Node test suite:
 
 ```powershell
-npm run build
-npm run check:types
-npm test
 npm run check
-npm run audit:site-content
-npm run audit:topic-normalization
-npm run sync:video-topics
-npm run generate:site-data
+```
+
+The normal site path regenerates shared archive data when needed, checks the Astro project, and performs the cached Astro/Pagefind build:
+
+```powershell
 npm run site:check
 npm run site:build
 ```
 
-Focused diagnostics and post-build checks:
-
-```powershell
-npm run audit:video-timestamp-alignment
-npm run rank:video-segment-audit-risk
-npm run check:search-ranking
-npm run check:rendered-video-dates
-npm run report:transcript-problems
-```
-
 On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive commands if plain `npm` resolves the broken roaming shim.
+
+## npm Script Reference
+
+`package.json` is authoritative. Pass script-specific arguments after `--`; most TypeScript CLI scripts also support `--help`.
+
+### Build and Test
+
+| Script | Purpose |
+| --- | --- |
+| `clean` | Remove compiled `dist/` output. |
+| `build` | Compile the TypeScript tools into `dist/`. |
+| `check:types` | Type-check without emitting files. |
+| `test` | Clean, compile, and run all compiled `*.test.js` files with Node's test runner. |
+| `check` | Run `check:types` followed by `test`. |
+
+### Curated Content and Reports
+
+| Script | Purpose |
+| --- | --- |
+| `list:files-that-need-processing` | Write transcript paths without matching shards to `task-notes/files-that-need-processing.txt`. |
+| `rank:video-segment-audit-risk` | Rank curated shards for follow-up and write `reports/video-segment-audit-risk.tsv`. |
+| `audit:site-content` | Validate current-schema shards and transcript evidence, then write the backlog report. This command uses the shared writer lease. |
+| `diagnose:site-content-duplicates` | Check curated shards for duplicate segment IDs and slugs. |
+| `sync:video-topics` | Add missing shared topic records derived from shard usage and normalization policy. This command writes `topics.json` under the shared writer lease. |
+| `audit:topic-normalization` | Read-only validation of topic-normalization policy against curated shards. |
+| `append:site-content-processing-log` | Low-level validated append to the site-content processing log. |
+| `audit:transcript-schedules` | Audit one or more explicitly supplied transcript schedules; at least one `--schedule <path>` is required. |
+| `audit:video-timestamp-alignment` | Check timestamp and video-state consistency across source, transcript, shard, and generated data. |
+| `report:video-topic-usage` | Write topic usage and normalization review data to `reports/video-topic-usage.tsv`. |
+| `report:transcript-problems` | Build the human-readable transcript failure report from saved status without contacting YouTube. |
+
+### Channel Inventory and Transcripts
+
+| Script | Purpose |
+| --- | --- |
+| `fetch:video-links` | Fetch the channel uploads inventory through the YouTube Data API, using `reports/youtube-api-key.txt` by default. |
+| `fetch:video-metadata` | Populate or resume the official per-video metadata store. |
+| `alternate:extract:saved-channel-html` | Parse a saved `/videos` or `/streams` channel page offline. |
+| `alternate:extract:live-streams-html` | Parse the specialized saved live-stream HTML format offline. |
+| `alternate:extract:videos-html` | Alias the generic saved-channel extractor with `--tab videos`. |
+| `alternate:merge:video-links` | Merge saved channel-tab link files into an episode inventory. |
+| `alternate:fetch:transcript` | Fetch and store one transcript. |
+| `alternate:fetch:transcripts` | Batch-fetch missing transcripts with resumable status. |
+| `alternate:fetch:transcripts:safe` | Batch-fetch with a 60-second request delay. |
+| `alternate:fetch:transcripts:retry` | Retry entries recorded as failed. |
+| `alternate:fetch:transcripts:retry:safe` | Force-retry failed entries with a 60-second request delay. |
+
+### Generated Site and Search
+
+| Script | Purpose |
+| --- | --- |
+| `generate:site-data` | Regenerate the tracked split archive under the shared writer lease. |
+| `site:dev` | Start Astro's development server using the existing generated archive. |
+| `site:preview` | Preview an existing `site/dist/` build. |
+| `site:check` | Regenerate archive data, then run the Astro check. |
+| `site:check:generated` | Run the Astro check against existing generated data without regeneration. |
+| `site:build` | Cached end-to-end generation, Astro build, output validation, and Pagefind indexing. |
+| `site:build:generated` | Cached Astro/Pagefind build using an already valid generated archive. |
+| `site:build:astro` | Run the raw Astro production build only. |
+| `site:build:pagefind` | Run Pagefind against `site/dist/` only. |
+| `site:build:full` | Run raw Astro and Pagefind stages without archive generation or the fingerprint cache. |
+| `check:search-ranking` | Exercise the built Pagefind index and rendered search UI against ranking cases. |
+| `check:rendered-video-dates` | Validate dates and video state in the built HTML and Pagefind output. |
+
+### SEO and Lighthouse
+
+| Script | Purpose |
+| --- | --- |
+| `check:site-seo` | Compile the tools and validate SEO metadata, sitemaps, and rendered `site/dist/` pages. |
+| `audit:lighthouse:home` | Audit the deployed home page and write HTML/JSON results under `reports/lighthouse/`. |
+| `audit:lighthouse:local` | Audit the local preview home page at port 4321. |
+| `audit:lighthouse:seo-baseline` | Audit representative production pages, or `SEO_AUDIT_BASE_URL` when set. |
+| `preaudit:lighthouse:home`, `preaudit:lighthouse:local` | npm lifecycle helpers that create the Lighthouse report directory automatically. |
 
 ## Website
 
@@ -111,28 +171,31 @@ The public site is deployed from GitHub Actions to [r-jack-ray.github.io/naval-h
 Local site commands:
 
 ```powershell
+npm run generate:site-data
 npm run site:dev
 npm run site:check
 npm run site:build
 npm run site:preview
 ```
 
-`npm run site:check` regenerates `site/src/data/generated/archive/` before running Astro checks. `npm run site:build` fingerprints the generator and site inputs, validates the manifest-listed generated files and SHA-256 values, and regenerates or rebuilds only when inputs or outputs changed; pass `-- --force` to bypass its caches. A performed build emits `site/dist/` and runs Pagefind against that output. The authoritative generated `index.json` manifest lists the tracked collection files and segment buckets. Full Astro/Pagefind builds traverse more than 50,000 HTML pages, can take several minutes, and may be quiet while Astro runs; allow at least 15 minutes before treating an agent-run build as timed out. Do not hand-edit the generated archive dataset, and do not commit generated `site/dist/` files.
+`npm run site:dev` uses the generated archive already on disk; run `generate:site-data` first when source data changed. `npm run site:check` regenerates `site/src/data/generated/archive/` before running Astro checks. `npm run site:build` fingerprints the generator and site inputs, validates the manifest-listed generated files and SHA-256 values, and regenerates or rebuilds only when inputs or outputs changed; pass `-- --force` to bypass its caches. A performed build emits `site/dist/` and runs Pagefind against that output. Run `site:preview` after a build when you want to inspect that production output locally.
+
+The authoritative generated `index.json` manifest lists the tracked collection files and segment buckets. Full Astro/Pagefind builds traverse more than 50,000 HTML pages, can take several minutes, and may be quiet while Astro runs; allow at least 15 minutes before treating an agent-run build as timed out. Do not hand-edit the generated archive dataset, and do not commit generated `site/dist/` files.
 
 The generated site exposes:
 
-- `/videos/` and `/videos/<slug>/`: the video-guide directory and individual guides with curated time-note links.
+- `/videos/`, `/videos/browse/`, `/videos/browse/<page>/`, and `/videos/<slug>/`: the video-guide directory, complete paginated browse view, and individual guides with curated time-note links.
 - `/segments/`: a Pagefind-backed subject finder for explanations and transcript-visible Q&A.
 - `/segments/browse/` and `/segments/browse/<page>/`: the complete paginated time-note directory.
 - `/segments/<slug>/`: independently addressable chapters, notable points, Q&A, and transcript excerpts with direct video-time links.
-- `/topics/` and `/topics/<slug>/`: the topic directory and subject pages listing related videos and time notes.
+- `/topics/`, `/topics/browse/`, `/topics/browse/<page>/`, `/topics/browse/all/`, and `/topics/<slug>/`: the topic directory, browse views, and subject pages listing related videos and time notes.
 - `/search/`: deferred full-text search across video guides, time notes, and topics through the generated Pagefind index.
 
 ## Fetch Channel Video Links
 
 The main inventory task uses the official YouTube Data API through `googleapis`. It defaults to reading the API key from `reports/youtube-api-key.txt`; alternatively pass `--api-key` or `--api-key-file` after `--`. Direct CLI use can also read `YOUTUBE_API_KEY`. Official API calls default to a one-second delay between requests.
 
-YouTube Data API quota is tracked by Google project and resets at midnight Pacific Time. The default allocation is 10,000 units per day for most endpoints, with `playlistItems.list` and `videos.list` costing 1 unit per call. `search.list` has its own default limit of 100 calls per day, and `captions.list` costs 50 units per call. Check the official [YouTube Data API quota cost table](https://developers.google.com/youtube/v3/determine_quota_cost) before changing fetch strategy.
+YouTube Data API quota is tracked by Google project and resets at midnight Pacific Time. The default allocation is 10,000 units per day combined for most endpoints, with `playlistItems.list` and `videos.list` costing 1 unit per call. `search.list` has a separate default limit of 100 calls per day, while `captions.list` costs 50 units from the general allocation. Check the official [YouTube Data API quota cost table](https://developers.google.com/youtube/v3/determine_quota_cost) before changing fetch strategy.
 
 A bare run fetches the full channel inventory and updates the source master episode list:
 
@@ -228,9 +291,7 @@ npm run alternate:fetch:transcripts -- --limit 1 --request-delay-ms 5000
 npm run alternate:fetch:transcripts
 ```
 
-Use `--request-delay-ms 60000` if YouTube starts rate-limiting or blocking
-transcript requests. Use `--retry-failed` to retry videos recorded in the status
-file.
+Use `alternate:fetch:transcripts:safe` if YouTube starts rate-limiting or blocking transcript requests. Use `alternate:fetch:transcripts:retry` to retry videos recorded in the status file, or `alternate:fetch:transcripts:retry:safe` for the forced 60-second-delay retry path.
 
 TXT is the stored transcript source of record. Stored transcript files use `timestamp_title-slug_videoId.txt` when exact timing is known, otherwise `title-slug_videoId.txt`.
 
@@ -308,7 +369,7 @@ The process is intentionally segment-first. Use `kind: qa` only for actual Q&A e
 
 The generated manifest and shards under `site/src/data/generated/archive/` remain tracked so Astro can statically import a reviewable archive dataset. `npm run generate:site-data` and `npm run site:check` regenerate it directly; `npm run site:build` regenerates it only when its validated cache requires that stage. Never hand-edit `index.json` or its listed files. The content validation hook builds once, writes the backlog report, regenerates the archive once, and then runs the no-regeneration Astro check.
 
-The archive, backlog report, shared topic registry, and normalization apply are protected by the repository-wide writer lease at `.tmp/site-content-pipeline.lock`. Direct shared-writer commands such as `npm run audit:site-content`, `npm run sync:video-topics`, and `npm run generate:site-data` acquire a short-lived lease automatically. A coordinator that intentionally groups several shared-output operations may acquire one persistent lease and pass its token to the supported commands:
+The generated archive, backlog report, and shared topic registry are protected by the repository-wide writer lease at `.tmp/site-content-pipeline.lock`. Direct shared-writer commands such as `npm run audit:site-content`, `npm run sync:video-topics`, and `npm run generate:site-data` acquire a short-lived lease automatically. A coordinator that intentionally groups several shared-output operations may acquire one persistent lease and pass its token to the supported commands:
 
 ```powershell
 $lease = node .codex/hooks/site-content-pipeline-lock.mjs acquire --owner "content-coordinator" --purpose "shared-content-integration" --recover-stale | ConvertFrom-Json
@@ -331,8 +392,8 @@ Lane-isolated transcript automations follow their prompt-owned atomic claim, lan
 - `.agents/site-archive-builder.md`: project-local brief for agents working on Astro/Pagefind site pages.
 - `.agents/transcript-content-curator.md`: project-local brief for transcript-backed segment curation.
 - `.agents/site-content-auditor.md`: project-local brief for follow-up transcript-backed content audits.
-- `.agents/skills/naval-video-page-prototype/SKILL.md`: reusable Codex skill for extending the prototype video-page workflow.
-- `.agents/skills/naval-transcript-to-site-content/SKILL.md`: reusable Codex skill for processing transcripts into segment seed data.
+- `.agents/skills/naval-video-page-prototype/SKILL.md`: reusable Codex skill for extending the Astro/Pagefind study-guide site.
+- `.agents/skills/naval-transcript-to-site-content/SKILL.md`: reusable Codex skill for processing one transcript into curated site content.
 - `.agents/skills/naval-site-content-auditor/SKILL.md`: reusable Codex skill for strengthening one selected video shard.
 - `.agents/skills/naval-site-build-repair/SKILL.md`: reusable Codex skill for diagnosing and repairing site-pipeline failures.
 - `.codex/hooks/validate-site.ps1`: optional validation helper for site checks and the full repository check.

@@ -1,10 +1,10 @@
 ---
 import type { GetStaticPaths, Page } from "astro";
 
-import TopicArchivePagination from "../../../components/TopicArchivePagination.astro";
+import ArchivePagination from "../../../components/ArchivePagination.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { topicsForBrowse, type ArchiveTopic } from "../../../data/archive";
-import topicPageJumpUrl from "../../../scripts/topic-page-jump.js?url&no-inline";
+import archivePageJumpUrl from "../../../scripts/archive-page-jump.js?url&no-inline";
 import { buildTopicBrowseMetadata } from "../../../../../src/site/page-metadata.js";
 
 export const getStaticPaths = (({ paginate }) => paginate(topicsForBrowse(), { pageSize: 48 })) satisfies GetStaticPaths;
@@ -50,16 +50,21 @@ const metadata = buildTopicBrowseMetadata(page.currentPage, page.lastPage);
       </div>
     </section>
 
-    <TopicArchivePagination
+    <ArchivePagination
+      archiveLabel="Topic"
       baseUrl={baseUrl}
+      browsePath="topics/browse/"
       currentPage={page.currentPage}
+      itemCount={topicCount}
+      itemEnd={topicEnd}
+      itemLabel="Topics"
+      itemStart={topicStart}
       lastPage={page.lastPage}
       previousUrl={previousUrl}
       nextUrl={nextUrl}
+      pageLabel="topic"
       position="top"
-      topicCount={topicCount}
-      topicStart={topicStart}
-      topicEnd={topicEnd}
+      showAllLink={{ href: `${baseUrl}topics/browse/all/`, label: "Show all topics on one page" }}
     />
 
     <section class="record-grid topics archive-record-grid" aria-label="Topics" data-pagefind-ignore>
@@ -75,17 +80,22 @@ const metadata = buildTopicBrowseMetadata(page.currentPage, page.lastPage);
       }
     </section>
 
-    <TopicArchivePagination
+    <ArchivePagination
+      archiveLabel="Topic"
       baseUrl={baseUrl}
+      browsePath="topics/browse/"
       currentPage={page.currentPage}
+      itemCount={topicCount}
+      itemEnd={topicEnd}
+      itemLabel="Topics"
+      itemStart={topicStart}
       lastPage={page.lastPage}
       previousUrl={previousUrl}
       nextUrl={nextUrl}
+      pageLabel="topic"
       position="bottom"
-      topicCount={topicCount}
-      topicStart={topicStart}
-      topicEnd={topicEnd}
+      showAllLink={{ href: `${baseUrl}topics/browse/all/`, label: "Show all topics on one page" }}
     />
   </main>
-  <script src={topicPageJumpUrl} defer is:inline></script>
+  <script src={archivePageJumpUrl} defer is:inline></script>
 </BaseLayout>

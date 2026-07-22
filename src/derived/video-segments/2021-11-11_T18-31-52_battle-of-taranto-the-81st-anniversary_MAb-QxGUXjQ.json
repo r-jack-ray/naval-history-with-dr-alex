@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "videoId": "MAb-QxGUXjQ",
-  "topics": ["battle-of-taranto", "operation-mb8", "fleet-air-arm", "swordfish", "regia-marina", "mediterranean-theatre"],
+  "topics": ["battle-of-taranto", "operation-mb8", "fleet-air-arm", "swordfish", "regia-marina", "mediterranean-theater", "carrier-operations", "naval-strategy"],
   "segments": [
     {
       "id": "taranto-and-the-changing-balance-of-sea-power",
@@ -55,13 +55,16 @@
       "kind": "qa",
       "start": "7:45",
       "end": "8:54",
-      "topics": ["aerial-torpedoes", "naval-bombs", "fleet-air-arm", "battle-of-taranto"],
+      "topics": ["aerial-torpedoes", "naval-bombs", "fleet-air-arm", "battle-of-taranto", "14-inch-guns"],
       "summary": "A question about improvised heavy bombs leads to the raid's preference for aerial torpedoes and its bomb-quality problem.",
-      "body": "Dr. Clarke says that adapting a naval shell into a bomb was technically possible, but it was not the weapon the Royal Navy preferred for this mission. A torpedo was expected to make a hull breach below the waterline and either sink or disable the target. A bomb had to penetrate decks and function correctly before it could deliver a comparable effect against a battleship. He also notes serious quality-control problems with the bombs supplied to the Fleet Air Arm at Taranto. Reliability improved after responsibility for supply moved to the Ministry of Supply.",
+      "body": "Dr. Clarke says that adapting a naval shell into a bomb was technically possible, and a Swordfish could carry the roughly 1,590-pound British 14-inch shell because it already lifted an approximately 1,800-pound torpedo. It was not the weapon the Royal Navy preferred for this mission. A torpedo was expected to make a hull breach below the waterline and either sink or disable the target. A bomb had to penetrate decks and function correctly before it could deliver a comparable effect against a battleship. He also notes serious quality-control problems with the bombs supplied to the Fleet Air Arm at Taranto. Reliability improved after responsibility for supply moved to the Ministry of Supply.",
       "question": "Could the Swordfish have used a battleship shell as a bomb, and would it have helped at Taranto?",
       "answerShort": "It was technically possible, but the Royal Navy trusted torpedoes more for disabling ships and had poor confidence in its bombs' quality control.",
       "sourcePath": "src/transcripts/txt/2021-11-11_T18-31-52_battle-of-taranto-the-81st-anniversary_MAb-QxGUXjQ.txt",
-      "evidence": [{"start": "7:45", "end": "8:54", "note": "Bomb conversion question and explanation of torpedo preference."}]
+      "evidence": [
+        {"start": "7:45", "end": "8:54", "note": "Bomb conversion question and bomb quality-control problems."},
+        {"start": "14:13", "end": "15:58", "note": "Swordfish load comparison and the Royal Navy's preference for underwater torpedo damage."}
+      ]
     },
     {
       "id": "rebuilding-royal-navy-institutional-memory",
@@ -94,6 +97,38 @@
       "answerShort": "It could have used roughly twice as many Swordfish, supported by Mediterranean deck parking and either an early homing beacon or a prearranged searchlight navigation aid.",
       "sourcePath": "src/transcripts/txt/2021-11-11_T18-31-52_battle-of-taranto-the-81st-anniversary_MAb-QxGUXjQ.txt",
       "evidence": [{"start": "10:50", "end": "13:09", "note": "Glorious air-group capacity, deck parking, and navigation aids."}]
+    },
+    {
+      "id": "shipboard-and-shore-guns-at-taranto",
+      "videoId": "MAb-QxGUXjQ",
+      "slug": "shipboard-and-shore-guns-at-taranto",
+      "title": "Shipboard and shore guns in Taranto's defence",
+      "kind": "qa",
+      "start": "16:23",
+      "end": "16:56",
+      "topics": ["anti-aircraft-defence", "regia-marina", "harbour-defence", "coastal-artillery", "76-mm-guns", "90-mm-guns", "100-mm-guns"],
+      "summary": "Taranto's mixed anti-aircraft ammunition reflects a defence assembled from shipboard weapons and land-based guns around the harbour.",
+      "body": "The prompt notes that Italian warships carried 100 mm and 90 mm anti-aircraft guns, with some older 76 mm weapons still present. Dr. Clarke says the harbour defence was not limited to standard shipboard armament. Land-based guns around Taranto were also turned against the attacking aircraft, helping to explain the mixed calibres in ammunition records. The answer shows that the raiders faced a combined defensive system of ships, shore positions, and locally available weapons rather than one uniform battery.",
+      "question": "Why do accounts of Taranto list such a mixed set of Italian anti-aircraft calibres?",
+      "answerShort": "Because the defence included both shipboard guns and land-based weapons around the harbour, including older calibres pressed into the barrage.",
+      "sourcePath": "src/transcripts/txt/2021-11-11_T18-31-52_battle-of-taranto-the-81st-anniversary_MAb-QxGUXjQ.txt",
+      "evidence": [{"start": "16:23", "end": "16:56", "note": "Italian shipboard calibres and land-based guns used against the raid."}]
+    },
+    {
+      "id": "minelaying-against-italian-harbours",
+      "videoId": "MAb-QxGUXjQ",
+      "slug": "minelaying-against-italian-harbours",
+      "title": "Minelaying against Italian harbours",
+      "kind": "qa",
+      "start": "17:13",
+      "end": "17:20",
+      "topics": ["naval-mines", "minelaying", "italian-harbours", "naval-planning"],
+      "summary": "The Royal Navy considered mine warfare against Italian harbours and carried out such operations at points during the war.",
+      "body": "A viewer asks whether minelaying schemes considered around French forces were also applied to Italian harbours. Dr. Clarke confirms that the idea was considered and says such operations were carried out at certain points. The answer places mine warfare alongside direct air attack as another way to constrain fleets protected in port. Because the brief exchange names no specific harbour or date, it supports the general planning point but not a more detailed operational claim.",
+      "question": "Did the Royal Navy consider laying mines around Italian harbours?",
+      "answerShort": "Yes. Minelaying was considered and was carried out against Italian harbours at some points.",
+      "sourcePath": "src/transcripts/txt/2021-11-11_T18-31-52_battle-of-taranto-the-81st-anniversary_MAb-QxGUXjQ.txt",
+      "evidence": [{"start": "17:13", "end": "17:20", "note": "Confirmation that Italian-harbour minelaying was considered and sometimes carried out."}]
     },
     {
       "id": "cunningham-and-confidence-in-fleet-air-arm",
@@ -177,6 +212,22 @@
       "evidence": [{"start": "24:16", "end": "24:46", "note": "Civilian-risk question and caution about available Italian sources."}]
     },
     {
+      "id": "earlier-raids-and-the-origins-of-the-taranto-plan",
+      "videoId": "MAb-QxGUXjQ",
+      "slug": "earlier-raids-and-the-origins-of-the-taranto-plan",
+      "title": "Earlier raids did not create the Taranto plan",
+      "kind": "qa",
+      "start": "24:50",
+      "end": "25:15",
+      "topics": ["battle-of-taranto", "harbour-strikes", "naval-planning", "mediterranean-fleet", "interwar-period"],
+      "summary": "Attacks on Dunkerque and Richelieu were not the source of Operation Judgment; British planning already reached back to the mid-1930s.",
+      "body": "A viewer asks whether earlier British attacks on Dunkerque and Richelieu helped planners prepare Taranto. Dr. Clarke answers that they did not play a major role because the Taranto concept had already been assembled around 1933 or 1934. The idea continued to evolve for as long as the Mediterranean Fleet had a carrier available to develop and practise it. The exchange places Operation Judgment within sustained interwar naval planning rather than treating it as an improvised lesson from recent attacks on French ships.",
+      "question": "Did the British attacks on Dunkerque and Richelieu help plan the raid on Taranto?",
+      "answerShort": "Not significantly. The Taranto plan already dated to about 1933–34 and evolved with the Mediterranean Fleet's carrier experience.",
+      "sourcePath": "src/transcripts/txt/2021-11-11_T18-31-52_battle-of-taranto-the-81st-anniversary_MAb-QxGUXjQ.txt",
+      "evidence": [{"start": "24:50", "end": "25:15", "note": "Question about recent French targets and the plan's mid-1930s origins."}]
+    },
+    {
       "id": "why-taranto-was-vulnerable",
       "videoId": "MAb-QxGUXjQ",
       "slug": "why-taranto-was-vulnerable",
@@ -214,7 +265,7 @@
       "kind": "notable_point",
       "start": "32:23",
       "end": "37:43",
-      "topics": ["battle-of-taranto", "naval-strategy", "regia-marina", "mediterranean-theatre"],
+      "topics": ["battle-of-taranto", "naval-strategy", "regia-marina", "mediterranean-theater"],
       "summary": "Taranto damaged the Italian battle line, but neither lured it into battle nor removed it permanently from the war.",
       "body": "The Royal Navy hoped a sharp blow might provoke the Italians into an unfavourable fleet action. Yet the strike did not inflict enough permanent damage to remove the battle line as a continuing threat. More torpedo aircraft could have disabled additional battleships and reduced the heavy escort required for British convoys. That in turn might have allowed Illustrious to carry more fighters and released capital ships for other theatres. Dr. Clarke uses this tension to explain why Taranto was a major operational success without being a complete strategic solution for the Mediterranean.",
       "sourcePath": "src/transcripts/txt/2021-11-11_T18-31-52_battle-of-taranto-the-81st-anniversary_MAb-QxGUXjQ.txt",
@@ -419,7 +470,7 @@
       "kind": "chapter",
       "start": "1:02:14",
       "end": "1:12:21",
-      "topics": ["operation-mb8", "malta-convoys", "mediterranean-theatre", "naval-deception"],
+      "topics": ["operation-mb8", "malta-convoys", "mediterranean-theater", "naval-deception"],
       "summary": "Taranto was one striking element in Operation MB8's wider pattern of convoys, reinforcements, and distracting moves.",
       "body": "The video places Operation Judgment alongside convoys to Greece and Malta, Operation Coat's reinforcements, and Ark Royal's strike on Cagliari. Returning traffic from Malta also allowed Cunningham to send the slower Ramillies away and retain four Queen Elizabeth-class battleships in a more homogeneous battle line. Across MB8, more than thirty destroyers, numerous cruisers, a monitor, carriers, and battleships supported several simultaneous purposes. These movements complicated Italian assessments of where the real danger lay while reconnaissance kept watch over Taranto. The air attack and the cruiser sortie into the Strait of Otranto were also bait for a fleet action in which Cunningham expected his concentrated battle line to hold the advantage.",
       "sourcePath": "src/transcripts/txt/2021-11-11_T18-31-52_battle-of-taranto-the-81st-anniversary_MAb-QxGUXjQ.txt",
@@ -427,6 +478,22 @@
         {"start": "1:02:14", "end": "1:04:08", "note": "Operation MB8 components and psychological purpose."},
         {"start": "1:10:28", "end": "1:12:21", "note": "Fleet scale, battle-line composition, and layered trap."}
       ]
+    },
+    {
+      "id": "latecoere-pl-7-versus-swordfish",
+      "videoId": "MAb-QxGUXjQ",
+      "slug": "latecoere-pl-7-versus-swordfish",
+      "title": "Why the Latécoère PL.7 and Swordfish resist comparison",
+      "kind": "qa",
+      "start": "1:04:49",
+      "end": "1:05:04",
+      "topics": ["latecoere-pl-7", "swordfish", "french-naval-aviation", "aircraft-comparison", "source-criticism"],
+      "summary": "The French Latécoère PL.7 can be compared with the Swordfish on paper, but it lacks an equivalent operational record.",
+      "body": "A viewer asks how the French Latécoère PL.7 compared with the Fairey Swordfish. Dr. Clarke says the comparison can only be made on paper because the French aircraft did not see enough effective operational use. Specifications can show intended performance and capacity, but they cannot establish how a type would behave through sustained carrier service. The answer is a useful warning against treating design figures as equivalent to evidence about reliability, maintenance, crew experience, or combat employment.",
+      "question": "How did the Latécoère PL.7 compare with the Fairey Swordfish?",
+      "answerShort": "Only on paper; the PL.7 did not build a comparable operational record from which to judge it.",
+      "sourcePath": "src/transcripts/txt/2021-11-11_T18-31-52_battle-of-taranto-the-81st-anniversary_MAb-QxGUXjQ.txt",
+      "evidence": [{"start": "1:04:49", "end": "1:05:04", "note": "Paper comparison limited by the PL.7's lack of meaningful operational use."}]
     },
     {
       "id": "would-deep-water-have-made-taranto-more-costly",
@@ -461,6 +528,38 @@
       "evidence": [{"start": "1:06:44", "end": "1:07:31", "note": "Littorio's three hits, protection, and fortunate damage locations."}]
     },
     {
+      "id": "royal-navy-aerial-torpedo-options-in-1940",
+      "videoId": "MAb-QxGUXjQ",
+      "slug": "royal-navy-aerial-torpedo-options-in-1940",
+      "title": "The Royal Navy's single aerial-torpedo option",
+      "kind": "qa",
+      "start": "1:07:39",
+      "end": "1:07:44",
+      "topics": ["aerial-torpedoes", "fleet-air-arm", "weapons-procurement", "standardization"],
+      "summary": "For practical carrier operations in 1940, the Fleet Air Arm had essentially one aerial-torpedo option.",
+      "body": "A viewer asks how many aerial-torpedo choices the Royal Navy possessed at the time of Taranto. Dr. Clarke answers that, in practical terms, it had one. Carrier planners therefore optimized aircraft handling, release technique, training, and target approach around the available weapon rather than selecting among several operational torpedoes. Because the exchange is brief, it supports a statement about practical wartime choice without excluding experimental designs or weapons outside the carrier force.",
+      "question": "How many aerial-torpedo options did the Royal Navy have in 1940?",
+      "answerShort": "Practically one, so Fleet Air Arm tactics and training were built around that available weapon.",
+      "sourcePath": "src/transcripts/txt/2021-11-11_T18-31-52_battle-of-taranto-the-81st-anniversary_MAb-QxGUXjQ.txt",
+      "evidence": [{"start": "1:07:39", "end": "1:07:44", "note": "Brief answer that the Royal Navy effectively had one aerial-torpedo option."}]
+    },
+    {
+      "id": "carrier-command-after-admiral-lister",
+      "videoId": "MAb-QxGUXjQ",
+      "slug": "carrier-command-after-admiral-lister",
+      "title": "Carrier command after Admiral Lister",
+      "kind": "qa",
+      "start": "1:08:38",
+      "end": "1:09:58",
+      "topics": ["denis-boyd", "clement-moody", "fleet-air-arm", "naval-leadership", "carrier-operations", "naval-institutions"],
+      "summary": "Denis Boyd and then Clement Moody succeeded Lister in the Royal Navy's senior carrier command structure during the war.",
+      "body": "A viewer asks who followed Rear Admiral Lister when he moved to the Admiralty. After checking his notes, Dr. Clarke identifies Denis Boyd for 1941–42 and Clement Moody for 1942–43. He places those officers within a broader succession of capable admirals appointed to carrier commands after Admiral Henderson's foundational work. The answer highlights how the Royal Navy had institutionalized senior leadership for carrier aviation rather than treating air groups as an improvised wartime attachment.",
+      "question": "Who succeeded Rear Admiral Lister in senior Royal Navy carrier command?",
+      "answerShort": "Denis Boyd followed Lister in 1941–42, and Clement Moody held the role in 1942–43.",
+      "sourcePath": "src/transcripts/txt/2021-11-11_T18-31-52_battle-of-taranto-the-81st-anniversary_MAb-QxGUXjQ.txt",
+      "evidence": [{"start": "1:08:38", "end": "1:09:58", "note": "Lister's successors and the quality of the carrier-command appointments."}]
+    },
+    {
       "id": "why-a-second-taranto-strike-was-not-flown",
       "videoId": "MAb-QxGUXjQ",
       "slug": "why-a-second-taranto-strike-was-not-flown",
@@ -468,13 +567,16 @@
       "kind": "qa",
       "start": "1:15:17",
       "end": "1:18:30",
-      "topics": ["battle-of-taranto", "carrier-operations", "naval-risk"],
+      "topics": ["battle-of-taranto", "carrier-operations", "naval-risk", "naval-mines", "aerial-minelaying"],
       "summary": "A proposed follow-up strike faced weather, stronger defences, and the recognition that surprise would not return.",
-      "body": "The Royal Navy considered attacking again the following night, but the weather forecast was poor and crews had just completed an exceptionally hazardous mission. Dr. Clarke explains that the Italians had removed some nets and failed to replace storm-lost balloons before the first attack; a repeat would face a more alert and fortified harbour. British avoidance of the area before 11 November had helped create that temporary complacency, which could not be reproduced. Planners also considered sending Ark Royal past Sardinia and then doubling back against the ships moved to Naples. Submarine danger to a carrier the Italians already regarded as a prime target made that alternative too risky.",
+      "body": "The Royal Navy considered attacking again the following night, but the weather forecast was poor and crews had just completed an exceptionally hazardous mission. Dr. Clarke explains that the Italians had removed some nets and failed to replace storm-lost balloons before the first attack; a repeat would face a more alert and fortified harbour. British avoidance of the area before 11 November had helped create that temporary complacency, which could not be reproduced. He also notes a later suggestion that some Swordfish might have laid mines during the original raid to obstruct salvage, an option not used in the executed plan. Planners considered sending Ark Royal past Sardinia and then doubling back against the ships moved to Naples. Submarine danger to a carrier the Italians already regarded as a prime target made that alternative too risky.",
       "question": "Why was there no immediate follow-up attack while the damaged Italian ships were being salvaged?",
       "answerShort": "A second strike was considered, but weather, renewed defences, and the loss of surprise made it far less attractive; Naples offered a different but risky option.",
       "sourcePath": "src/transcripts/txt/2021-11-11_T18-31-52_battle-of-taranto-the-81st-anniversary_MAb-QxGUXjQ.txt",
-      "evidence": [{"start": "1:15:17", "end": "1:18:30", "note": "Follow-up debate, defensive changes, and Naples option."}]
+      "evidence": [
+        {"start": "1:15:17", "end": "1:18:30", "note": "Follow-up debate, defensive changes, and Naples option."},
+        {"start": "2:19:42", "end": "2:19:50", "note": "Suggestion that mines could have impeded Italian salvage work."}
+      ]
     },
     {
       "id": "italian-public-reaction-and-information-control",
@@ -654,6 +756,22 @@
       "evidence": [{"start": "1:43:41", "end": "1:43:58", "note": "Aircraft and ships used for aircrew recovery."}]
     },
     {
+      "id": "blackout-and-night-visibility-at-taranto",
+      "videoId": "MAb-QxGUXjQ",
+      "slug": "blackout-and-night-visibility-at-taranto",
+      "title": "Blackout and night visibility at Taranto",
+      "kind": "qa",
+      "start": "1:44:23",
+      "end": "1:44:55",
+      "topics": ["battle-of-taranto", "blackout", "air-raid-precautions", "night-operations", "harbour-defence"],
+      "summary": "Taranto appears to have used air-defence lighting restrictions, but the evidence does not support claiming a complete harbour blackout.",
+      "body": "Dr. Clarke gives a qualified answer rather than describing the Gulf of Taranto as completely blacked out. Some form of air-defence lighting discipline appears to have been in use, but he is unsure that every light was extinguished. He also cautions that the 1940 city produced much less ambient light than modern Taranto because the surrounding region was less developed. The exchange helps viewers picture a night target that was naturally darker than its modern equivalent without assuming perfect blackout conditions.",
+      "question": "Was the Gulf of Taranto completely blacked out during the raid?",
+      "answerShort": "Probably not completely. Some air-defence restrictions were in place, and the city was naturally much darker than modern Taranto.",
+      "sourcePath": "src/transcripts/txt/2021-11-11_T18-31-52_battle-of-taranto-the-81st-anniversary_MAb-QxGUXjQ.txt",
+      "evidence": [{"start": "1:44:23", "end": "1:44:55", "note": "Qualified assessment of blackout measures and ambient urban light."}]
+    },
+    {
       "id": "why-italy-could-not-split-the-battle-fleet",
       "videoId": "MAb-QxGUXjQ",
       "slug": "why-italy-could-not-split-the-battle-fleet",
@@ -661,7 +779,7 @@
       "kind": "qa",
       "start": "1:45:44",
       "end": "1:46:36",
-      "topics": ["regia-marina", "fleet-concentration", "force-structure", "royal-navy", "mediterranean-theatre"],
+      "topics": ["regia-marina", "fleet-concentration", "force-structure", "royal-navy", "mediterranean-theater"],
       "summary": "Separate Taranto and Naples squadrons would have eased basing risk but left each too weak against concentrated British forces.",
       "body": "Dr. Clarke says the Regia Marina would have liked major squadrons at both Taranto and Naples, but lacked enough capital ships to make the division safe. Halving the force could expose either group to four British battleships from the Mediterranean Fleet, while Force H remained a second strategic pressure. Even a damaged Italian battle fleet retained value by tying down large British resources. The answer captures the classic dilemma between dispersing against surprise attack and concentrating enough strength to contest command of the sea.",
       "question": "Why did Italy not maintain two major battle squadrons at Taranto and Naples?",
@@ -682,6 +800,41 @@
       "body": "Dr. Clarke places a First World War Sopwith Cuckoo beside a Swordfish to challenge the claim that British naval aviation barely advanced. The Cuckoo was a single-purpose torpedo aircraft expected to strike within comparatively limited conditions. The Swordfish combined torpedo, spotting, reconnaissance, and bombing roles with a highly reliable engine. Its tension-wire and fin system controlled torpedo entry, while easy handling helped a pilot hold the precise height, speed, and attitude needed under fire at night. Iterative development mattered even when the two airframes shared a superficially old-fashioned biplane form. The comparison teaches viewers to judge a weapon system by its mission equipment and operating qualities rather than silhouette alone.",
       "sourcePath": "src/transcripts/txt/2021-11-11_T18-31-52_battle-of-taranto-the-81st-anniversary_MAb-QxGUXjQ.txt",
       "evidence": [{"start": "1:48:33", "end": "1:50:32", "note": "Cuckoo and Swordfish roles, torpedo control, reliability, and handling."}]
+    },
+    {
+      "id": "fuel-drainage-in-swordfish-auxiliary-tanks",
+      "videoId": "MAb-QxGUXjQ",
+      "slug": "fuel-drainage-in-swordfish-auxiliary-tanks",
+      "title": "Fuel drainage and seal failures in a Swordfish",
+      "kind": "qa",
+      "start": "1:51:14",
+      "end": "1:51:25",
+      "topics": ["swordfish", "auxiliary-fuel-tanks", "aircraft-safety", "aircraft-maintenance", "night-operations"],
+      "summary": "Fuel around a Swordfish observer was supposed to drain back into the tank; dangerous pooling reflected seal trouble rather than normal operation.",
+      "body": "A joking question asks whether the observer needed a funnel and bucket to return leaked fuel to the tank. Dr. Clarke explains that the system was designed to drain fuel back without manual handling. The liquid and vapour described by Taranto crews resulted mainly from seal problems around the long-range installation. The answer turns a vivid cockpit anecdote into a maintenance lesson about how a small sealing fault could create fumes, discomfort, and serious fire risk during a night strike.",
+      "question": "How was fuel around the Swordfish observer supposed to return to the auxiliary tank?",
+      "answerShort": "It should have drained back automatically; pooling and fumes were mainly the result of seal problems.",
+      "sourcePath": "src/transcripts/txt/2021-11-11_T18-31-52_battle-of-taranto-the-81st-anniversary_MAb-QxGUXjQ.txt",
+      "evidence": [{"start": "1:51:14", "end": "1:51:25", "note": "Automatic drainage and seal problems around the fuel installation."}]
+    },
+    {
+      "id": "why-taranto-lacks-pearl-harbors-attack-imagery",
+      "videoId": "MAb-QxGUXjQ",
+      "slug": "why-taranto-lacks-pearl-harbors-attack-imagery",
+      "title": "Why Taranto lacks Pearl Harbor's attack imagery",
+      "kind": "qa",
+      "start": "1:51:31",
+      "end": "1:51:41",
+      "topics": ["battle-of-taranto", "pearl-harbor", "war-photography", "historical-sources", "historical-memory"],
+      "summary": "Photographs survive from after the raid, but Taranto lacks the contemporaneous attack imagery that made Pearl Harbor visually familiar.",
+      "body": "Asked whether Taranto has photographs comparable to those from Pearl Harbor, Dr. Clarke says images survive from after the attack but he does not know of pictures taken during it. Later in the presentation he contrasts Pearl Harbor's attack imagery with photographs of Conte di Cavour after Taranto. The gap leaves historians more dependent on damage photographs, operational records, and participants' accounts for reconstructing the action. It also helps explain why a tactically dramatic raid can be less visually prominent in public memory without being less important to naval history.",
+      "question": "Are there photographs of the Taranto raid comparable to the images of Pearl Harbor under attack?",
+      "answerShort": "There are post-raid photographs, but Dr. Clarke does not know of images taken during the attack itself.",
+      "sourcePath": "src/transcripts/txt/2021-11-11_T18-31-52_battle-of-taranto-the-81st-anniversary_MAb-QxGUXjQ.txt",
+      "evidence": [
+        {"start": "1:51:31", "end": "1:51:41", "note": "Answer distinguishing post-raid photographs from attack imagery."},
+        {"start": "3:13:52", "end": "3:14:15", "note": "Visual comparison between Pearl Harbor footage and post-attack Taranto photographs."}
+      ]
     },
     {
       "id": "abyssinia-crisis-and-the-taranto-plan",
@@ -710,6 +863,52 @@
       "body": "The flare aircraft approached over Cape San Vito and dropped their lights beyond the target rather than directly above it. This placement silhouetted the Italian battleships for torpedo crews attacking from the darker direction. The bright curtain also attracted gunners' attention and interfered with their ability to pick out aircraft against the darkness. Bombing near the fuel and seaplane facilities added fires, smoke, gun flashes, and visual confusion. The tactic joined illumination and deception so the same supporting aircraft could improve target identification while making defence harder.",
       "sourcePath": "src/transcripts/txt/2021-11-11_T18-31-52_battle-of-taranto-the-81st-anniversary_MAb-QxGUXjQ.txt",
       "evidence": [{"start": "1:56:27", "end": "1:57:50", "note": "Flare placement, backlighting, distraction, and visual confusion."}]
+    },
+    {
+      "id": "regia-marina-at-its-1940-peak",
+      "videoId": "MAb-QxGUXjQ",
+      "slug": "regia-marina-at-its-1940-peak",
+      "title": "The Regia Marina near its peak in 1940",
+      "kind": "qa",
+      "start": "1:58:51",
+      "end": "1:58:57",
+      "topics": ["regia-marina", "italian-navy", "world-war-ii", "fleet-strength", "battle-of-taranto"],
+      "summary": "Dr. Clarke identifies 1940 as probably the high point of Italian naval power, placing Taranto near the fleet's wartime apex.",
+      "body": "A viewer asks when the Italian navy was at its most powerful. Dr. Clarke answers that 1940 was probably its high point. Taranto therefore struck the Regia Marina near the beginning of its wartime effort, when the concentrated battle fleet still represented Italy's strongest naval instrument. That timing matters because the raid's effect should be measured against a force near its peak rather than against a navy already exhausted by years of war.",
+      "question": "When was the Italian navy at its most powerful?",
+      "answerShort": "Probably in 1940, placing the Battle of Taranto near the Regia Marina's wartime high point.",
+      "sourcePath": "src/transcripts/txt/2021-11-11_T18-31-52_battle-of-taranto-the-81st-anniversary_MAb-QxGUXjQ.txt",
+      "evidence": [{"start": "1:58:51", "end": "1:58:57", "note": "Identification of 1940 as probably the Italian navy's strongest point."}]
+    },
+    {
+      "id": "allied-norway-air-range-and-swedish-iron",
+      "videoId": "MAb-QxGUXjQ",
+      "slug": "allied-norway-air-range-and-swedish-iron",
+      "title": "An Allied Norway counterfactual: air range and Swedish iron",
+      "kind": "notable_point",
+      "start": "1:59:38",
+      "end": "2:01:47",
+      "topics": ["norwegian-campaign", "raf", "strategic-bombing", "swedish-iron-ore", "neutrality", "alternate-history", "industrial-capacity"],
+      "summary": "A hypothetical Allied victory in Norway connects northern air bases, Swedish neutrality, iron-ore purchases, and shorter routes to German targets.",
+      "body": "Dr. Clarke treats this explicitly as a counterfactual rather than a claim about the war that occurred. If the Allies had held Norway, he expects attacks on German territory to rely mainly on land-based RAF aircraft instead of a carrier raid against a Swedish port. Britain might also have bought as much Swedish iron ore as possible, giving Sweden an economic path to maintain neutrality while denying that material to Germany. Such purchases would matter only if British industry used the ore for ships and other war production rather than merely stockpiling it. Norwegian bases would greatly shorten the distance to northern German targets, showing how geography, neutral trade, and industrial capacity interact in strategic planning.",
+      "sourcePath": "src/transcripts/txt/2021-11-11_T18-31-52_battle-of-taranto-the-81st-anniversary_MAb-QxGUXjQ.txt",
+      "evidence": [{"start": "1:59:38", "end": "2:01:47", "note": "Counterfactual Allied Norway, Swedish iron purchases, and shorter RAF routes to Germany."}]
+    },
+    {
+      "id": "tarantos-postwar-fleet-base-role",
+      "videoId": "MAb-QxGUXjQ",
+      "slug": "tarantos-postwar-fleet-base-role",
+      "title": "Taranto's postwar fleet-base role",
+      "kind": "qa",
+      "start": "2:00:34",
+      "end": "2:00:43",
+      "topics": ["taranto", "naval-basing", "regia-marina", "postwar-navies"],
+      "summary": "Taranto continued to see naval use after the war but no longer held the same position as the fleet's principal hub.",
+      "body": "A viewer asks what happened to Taranto's naval role after the war. Dr. Clarke says the navy still used the base on occasion. It was no longer the dominant fleet hub that it had been before the conflict. The brief answer distinguishes continued naval activity from the strategic concentration and institutional importance that made Taranto such a consequential target in 1940.",
+      "question": "What happened to Taranto as a naval base after World War II?",
+      "answerShort": "It remained in occasional naval use but was no longer the major fleet hub it had been before the war.",
+      "sourcePath": "src/transcripts/txt/2021-11-11_T18-31-52_battle-of-taranto-the-81st-anniversary_MAb-QxGUXjQ.txt",
+      "evidence": [{"start": "2:00:34", "end": "2:00:43", "note": "Postwar use of Taranto and its reduced status as a fleet hub."}]
     },
     {
       "id": "operation-judgment-force-and-strike-plan",
@@ -754,6 +953,22 @@
       "body": "Illustrious accelerated to about thirty knots because the natural wind was too light to lift heavily laden Swordfish safely. Crews ranged and started the aircraft in darkness before launching the two waves. A deck collision damaged one aircraft, while another lost its long-range fuel tank and had to return. The carrier briefly opened fire on that unexpected returning aircraft before recognizing it. These incidents show how deck handling, aircraft condition, identification, and recovery could endanger a night operation before the enemy was reached.",
       "sourcePath": "src/transcripts/txt/2021-11-11_T18-31-52_battle-of-taranto-the-81st-anniversary_MAb-QxGUXjQ.txt",
       "evidence": [{"start": "2:12:03", "end": "2:18:46", "note": "Launch sequence, collision, fuel-tank loss, and night-operation risks."}]
+    },
+    {
+      "id": "swordfish-empty-and-loaded-weight",
+      "videoId": "MAb-QxGUXjQ",
+      "slug": "swordfish-empty-and-loaded-weight",
+      "title": "How much a loaded Swordfish weighed",
+      "kind": "qa",
+      "start": "2:19:00",
+      "end": "2:19:31",
+      "topics": ["swordfish", "aircraft-weight", "carrier-operations", "aerial-torpedoes", "flight-deck-operations"],
+      "summary": "A Swordfish weighed about 4,195 pounds empty and roughly 7,580 pounds at full operating weight.",
+      "body": "Dr. Clarke gives the Swordfish an empty weight of about 4,195 pounds, or just under 1.9 tons. Its full operating weight was roughly 7,580 pounds, about 3.4 tons. The difference represents the crew, fuel, weapon, and other stores that turned a light airframe into a heavily laden strike aircraft. Those figures help quantify why Illustrious needed maximum wind over the deck and careful handling to launch torpedo-armed Swordfish at night.",
+      "question": "How much did a Fairey Swordfish weigh?",
+      "answerShort": "About 4,195 pounds empty and approximately 7,580 pounds at full operating weight.",
+      "sourcePath": "src/transcripts/txt/2021-11-11_T18-31-52_battle-of-taranto-the-81st-anniversary_MAb-QxGUXjQ.txt",
+      "evidence": [{"start": "2:19:00", "end": "2:19:31", "note": "Swordfish empty and full operating weights."}]
     },
     {
       "id": "why-the-strike-used-two-waves",
@@ -812,6 +1027,22 @@
       "body": "The returning carrier needed a broad replenishment of aircraft spares and maintenance material. Dr. Clarke stresses that air operations impose attrition even when enemy weapons miss: three Swordfish were lost from the available force through contaminated oil, more than were lost to enemy action in the raid itself. Night handling, fuel systems, engine wear, and battle damage all consumed maintenance capacity. The comparison is a compact lesson in why aircraft numbers on paper differ from the force a carrier can actually launch.",
       "sourcePath": "src/transcripts/txt/2021-11-11_T18-31-52_battle-of-taranto-the-81st-anniversary_MAb-QxGUXjQ.txt",
       "evidence": [{"start": "2:48:55", "end": "2:49:36", "note": "Spares demand and non-combat aircraft attrition."}]
+    },
+    {
+      "id": "john-wellums-career-after-taranto",
+      "videoId": "MAb-QxGUXjQ",
+      "slug": "john-wellums-career-after-taranto",
+      "title": "John Wellum's career after Taranto",
+      "kind": "qa",
+      "start": "2:49:50",
+      "end": "2:51:10",
+      "topics": ["john-wellum", "fleet-air-arm", "pacific-war", "escort-carriers", "f6f-hellcat", "tbf-avenger", "supermarine-seafire"],
+      "summary": "Wellum survived the raid and later served in the Far East, operated from escort carriers, and flew several newer Fleet Air Arm types.",
+      "body": "Asked whether the officer whose account anchors the raid narrative survived, Dr. Clarke confirms that John Wellum went on to a long and varied career. He later served in the Far East against Japan and spent time on escort carriers. His subsequent flying included Hellcats and Avengers, and he also attempted carrier landings in Seafires. Taranto was therefore an early wartime episode in a career that followed Fleet Air Arm aviation across changing theatres, ships, and aircraft generations.",
+      "question": "Did John Wellum survive Taranto and continue serving in the Fleet Air Arm?",
+      "answerShort": "Yes. He later served against Japan, operated from escort carriers, and flew Hellcats, Avengers, and Seafires.",
+      "sourcePath": "src/transcripts/txt/2021-11-11_T18-31-52_battle-of-taranto-the-81st-anniversary_MAb-QxGUXjQ.txt",
+      "evidence": [{"start": "2:49:50", "end": "2:51:10", "note": "Wellum's survival, Far East service, escort-carrier work, and later aircraft."}]
     },
     {
       "id": "battle-damage-and-the-limits-of-victory",
@@ -924,9 +1155,9 @@
       "kind": "notable_point",
       "start": "3:27:00",
       "end": "3:35:38",
-      "topics": ["hms-eagle", "hms-illustrious", "swordfish", "alternate-history", "battle-of-taranto"],
+      "topics": ["hms-eagle", "hms-illustrious", "swordfish", "alternate-history", "battle-of-taranto", "tobruk", "aerial-minelaying", "naval-mines"],
       "summary": "Eagle's fuel-system failure removed a second carrier whose Swordfish could have made the raid far more destructive.",
-      "body": "Eagle was damaged by near misses in October but continued operating because the resulting aviation-fuel leak was not immediately apparent. Inspectors identified the problem on 5 November, only six days before Operation Judgment, and some of her Swordfish transferred to Illustrious. Dr. Clarke contrasts the actual twenty-aircraft attack with a plausible two-carrier force of roughly thirty to thirty-six Swordfish and sixteen to twenty-four torpedo aircraft. Informal simulations illustrate how those extra attacks might have spread damage across more battleships or cruisers, but they are presented as exploration rather than prediction. Eagle returned to other duties soon afterward, showing how narrowly timing excluded her. The counterfactual therefore remains grounded in aircraft readiness, maintenance, and the difference between paper strength and a launchable force.",
+      "body": "Eagle was damaged by near misses in October but continued operating because the resulting aviation-fuel leak was not immediately apparent. Her Swordfish also supported an October attack on Tobruk in which bombing distracted the defences while other aircraft laid mines, showing that the Fleet Air Arm already combined diversion and minelaying before Taranto. Inspectors identified Eagle's fuel-system problem on 5 November, only six days before Operation Judgment, and some of her Swordfish transferred to Illustrious. Dr. Clarke contrasts the actual twenty-aircraft attack with a plausible two-carrier force of roughly thirty to thirty-six Swordfish and sixteen to twenty-four torpedo aircraft. Informal simulations illustrate how those extra attacks might have spread damage across more battleships or cruisers, but they are presented as exploration rather than prediction. Eagle returned to other duties soon afterward, showing how narrowly timing excluded her. The counterfactual therefore remains grounded in aircraft readiness, maintenance, and the difference between paper strength and a launchable force.",
       "sourcePath": "src/transcripts/txt/2021-11-11_T18-31-52_battle-of-taranto-the-81st-anniversary_MAb-QxGUXjQ.txt",
       "evidence": [{"start": "3:27:00", "end": "3:35:38", "note": "Eagle's fuel issue and two-carrier strike comparison."}]
     },
@@ -938,13 +1169,35 @@
       "kind": "qa",
       "start": "3:35:55",
       "end": "3:36:34",
-      "topics": ["andrew-cunningham", "hms-eagle", "operation-judgment", "greece", "operational-timing"],
+      "topics": ["andrew-cunningham", "hms-eagle", "operation-judgment", "greece", "operational-timing", "weather", "night-operations"],
       "summary": "The fleet had already delayed once and needed to strike while the Italian battleships remained concentrated and before operations against Greece intensified.",
-      "body": "Dr. Clarke describes Taranto as an opportunity that could disappear if Cunningham waited for a perfect force. The original 21 October date had already slipped after a fire aboard Illustrious, and Eagle's readiness remained uncertain. British planners wanted to hit while the Italian battle fleet was still gathered and before it could interfere more heavily with the war around Greece. The decision demonstrates the difference between maximizing a hypothetical attack and using the available force inside a narrowing operational window.",
+      "body": "Dr. Clarke describes Taranto as an opportunity that could disappear if Cunningham waited for a perfect force. The original 21 October date had already slipped after a fire aboard Illustrious, and Eagle's readiness remained uncertain. British planners wanted to hit while the Italian battle fleet was still gathered and before it could interfere more heavily with the war around Greece. Worsening Mediterranean weather mattered, but postponement also meant waiting for the next full-moon window needed for the night attack. The decision demonstrates the difference between maximizing a hypothetical force and using the ships and aircraft actually available inside a narrowing operational window.",
       "question": "Why not postpone Taranto until HMS Eagle or more forces were available?",
       "answerShort": "The attack had already been delayed, and Cunningham wanted to strike the concentrated fleet before it dispersed or intervened more strongly around Greece.",
       "sourcePath": "src/transcripts/txt/2021-11-11_T18-31-52_battle-of-taranto-the-81st-anniversary_MAb-QxGUXjQ.txt",
-      "evidence": [{"start": "3:35:55", "end": "3:36:34", "note": "Reasons for attacking within the available operational window."}]
+      "evidence": [
+        {"start": "3:35:55", "end": "3:36:34", "note": "Reasons for attacking within the available operational window."},
+        {"start": "3:39:13", "end": "3:39:26", "note": "Weather and the importance of the next full-moon opportunity."}
+      ]
+    },
+    {
+      "id": "why-raf-bombers-did-not-support-or-mine-taranto",
+      "videoId": "MAb-QxGUXjQ",
+      "slug": "why-raf-bombers-did-not-support-or-mine-taranto",
+      "title": "Why RAF bombers did not support or mine Taranto",
+      "kind": "qa",
+      "start": "3:36:39",
+      "end": "3:39:11",
+      "topics": ["raf", "aerial-minelaying", "naval-mines", "operational-logistics", "interservice-cooperation", "battle-of-taranto"],
+      "summary": "The RAF could mine effectively in principle, but the theatre lacked enough suitable bombers in range and free from other demands.",
+      "body": "Viewers ask whether RAF bombers from North Africa could have provided a diversion or mined Taranto's entrance during the carrier raid. Dr. Clarke says very few suitable bombers were available, and those aircraft were already needed for other tasks. Moving a force into position would also create support-logistics and operational-security problems. He considers the RAF capable of effective aerial minelaying in principle, but says no aircraft with the necessary range and availability were positioned to do it that night. The answer distinguishes a service's general technical capability from the force actually available inside a specific theatre and timetable.",
+      "question": "Why were RAF bombers not used to support the raid or mine the entrance to Taranto?",
+      "answerShort": "Too few suitable bombers were available in range, and logistics, security, and competing missions prevented moving a force into position.",
+      "sourcePath": "src/transcripts/txt/2021-11-11_T18-31-52_battle-of-taranto-the-81st-anniversary_MAb-QxGUXjQ.txt",
+      "evidence": [
+        {"start": "3:36:39", "end": "3:36:58", "note": "Bomber scarcity, competing tasks, security, and support logistics."},
+        {"start": "3:38:46", "end": "3:39:11", "note": "RAF minelaying capability versus the lack of aircraft in range."}
+      ]
     },
     {
       "id": "taranto-and-royal-navy-force-allocation",
@@ -954,11 +1207,15 @@
       "kind": "notable_point",
       "start": "3:39:46",
       "end": "3:44:49",
-      "topics": ["naval-strategy", "mediterranean-theatre", "royal-navy", "force-structure"],
+      "topics": ["naval-strategy", "mediterranean-theater", "royal-navy", "force-structure", "eastern-fleet", "bismarck", "fleet-modernization", "alternate-history"],
       "summary": "Removing more Italian battleships could have freed British capital ships and carriers for other theatres, including the Indian Ocean.",
-      "body": "The closing strategic argument is that war plans must use the ships actually available, not an ideal force that might arrive later. Italian battleships forced Britain to keep modern capital ships in the Mediterranean and expose them to aircraft, wear, and repeated convoy work. If Taranto had removed more of that threat, older R-class battleships might have covered the remaining surface risk while carriers concentrated more heavily on air defence. Modern battleships and possibly Ark Royal could then have reinforced the Indian Ocean or deterred Japan in the Far East. The real raid damaged ships and bought time, but it did not create that wider freedom of action.",
+      "body": "The closing strategic argument is that war plans must use the ships actually available, not an ideal force that might arrive later. Italian battleships forced Britain to keep modern capital ships in the Mediterranean and expose them to aircraft, wear, and repeated convoy work. If Taranto had removed more of that threat, older R-class battleships might have covered the remaining surface risk while carriers concentrated more heavily on air defence. Modern battleships and possibly Ark Royal could then have reinforced the Indian Ocean or deterred Japan in the Far East. Dr. Clarke extends the counterfactual to Warspite and Malaya potentially being available when Bismarck sortied, while Hood might instead have received a long-delayed refit. Capital ships released nearer British or American yards could also have received stronger anti-aircraft fits before Far East service, increasing the force available to the Eastern Fleet. These branches are possibilities rather than predictions, but they show how one operational result can alter maintenance, convoy escort, and global deployment choices. The real raid damaged ships and bought time, but it did not create that wider freedom of action.",
       "sourcePath": "src/transcripts/txt/2021-11-11_T18-31-52_battle-of-taranto-the-81st-anniversary_MAb-QxGUXjQ.txt",
-      "evidence": [{"start": "3:39:46", "end": "3:44:49", "note": "Available-force lesson and implications for British deployments."}]
+      "evidence": [
+        {"start": "3:39:46", "end": "3:44:49", "note": "Available-force lesson and implications for British deployments."},
+        {"start": "3:51:29", "end": "3:54:19", "note": "Possible Bismarck response, Hood refit, and Indian Ocean force changes."},
+        {"start": "3:58:26", "end": "4:01:41", "note": "Anti-aircraft modernization and a stronger Eastern Fleet if Mediterranean demands fell."}
+      ]
     },
     {
       "id": "illustrious-torpedo-magazine-and-reloads",
