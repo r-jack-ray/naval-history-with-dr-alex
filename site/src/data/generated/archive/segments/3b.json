@@ -983,8 +983,8 @@
         "title": "Naval Architecture"
       },
       {
-        "slug": "ship-conversions",
-        "title": "Ship Conversions"
+        "slug": "ship-conversion",
+        "title": "Ship Conversion"
       }
     ],
     "evidence": [
@@ -2493,8 +2493,8 @@
         "title": "Science Fiction"
       },
       {
-        "slug": "grey-zone-conflict",
-        "title": "Grey Zone Conflict"
+        "slug": "gray-zone-conflict",
+        "title": "Gray Zone Conflict"
       },
       {
         "slug": "naval-diplomacy",
@@ -6120,8 +6120,8 @@
         "title": "Light Fleet Carriers"
       },
       {
-        "slug": "united-states-navy",
-        "title": "United States Navy"
+        "slug": "us-navy",
+        "title": "US Navy"
       },
       {
         "slug": "royal-navy",
@@ -10814,7 +10814,7 @@
     "startSeconds": 20,
     "youtubeUrl": "https://www.youtube.com/watch?v=aV1G55FHv7Y&t=20s",
     "summary": "The opening frames forward-concentrated main batteries as a question of infrastructure, machinery layout, and fighting method rather than treaty compliance alone.",
-    "body": "The discussion begins by challenging the usual split between treaty-driven and efficiency-driven explanations. A forward battery can affect how machinery, magazines, funnels, and fire-control positions are arranged, as well as how a ship fights. Infrastructure matters because a compact hull can deliver more combat power without first enlarging dockyards and building slips. The later examples use those connected constraints rather than treating gun position as an isolated stylistic choice.",
+    "body": "The opening rejects the idea that forward-concentrated batteries belong only to treaty compliance or abstract efficiency. Dr Clarke asks viewers to consider dockyard limits and the military method a ship is meant to use. Those factors connect gun position to machinery, magazines, funnels, fire control, and the target aspect presented in combat. The rest of the video therefore tests the arrangement as a whole-ship and fleet-level choice rather than a visual fashion.",
     "topics": [
       {
         "slug": "all-forward-armament",
@@ -10827,17 +10827,25 @@
       {
         "slug": "naval-treaties",
         "title": "Naval Treaties"
+      },
+      {
+        "slug": "naval-infrastructure",
+        "title": "Naval Infrastructure"
+      },
+      {
+        "slug": "naval-doctrine",
+        "title": "Naval Doctrine"
       }
     ],
     "evidence": [
       {
         "start": "0:20",
-        "end": "4:07",
+        "end": "1:06",
         "note": "Introduces infrastructure and military method as reasons for concentrating the main armament forward."
       }
     ],
-    "end": "4:07",
-    "endSeconds": 247,
+    "end": "1:06",
+    "endSeconds": 66,
     "sourcePath": "src/transcripts/txt/2022-02-26_T18-00-00_all-forward-main-guns-patreon-46-nelsons-dunkerques-tones-and-battles-long-patrol_aV1G55FHv7Y.txt"
   },
   {
@@ -10853,7 +10861,7 @@
     "startSeconds": 284,
     "youtubeUrl": "https://www.youtube.com/watch?v=aV1G55FHv7Y&t=284s",
     "summary": "The G3 design shows how grouping main turrets can save hull space, separate vulnerable magazines from boiler heat, and fit more combat power into existing British infrastructure.",
-    "body": "Main-gun magazines, shells, and propellant charges needed separation from the heat of boiler rooms, adding insulation and protected space to the hull. Concentrating the main battery reduced the need to duplicate that separation at both ends of the machinery spaces. The Royal Navy also expected its dockyard and building infrastructure to remain constrained for years after the First World War. The G3 therefore illustrates how a compact arrangement could seek more capability without waiting for larger facilities, although the video criticizes the restricted arcs and funnel trunking created by its middle turret position.",
+    "body": "Main-gun magazines, shells, and propellant charges needed separation from boiler heat, adding insulation and protected space to the hull. The passage treats explosives as a caged danger rather than a harmless system, invoking wartime magazine losses to explain why designers controlled heat so carefully. Concentrating the main battery reduced the need to duplicate that separation at both ends of the machinery spaces. The Royal Navy also expected its dockyard and building infrastructure to remain constrained until roughly 1928. A G3 shorter than Hood could therefore deliver much greater fighting power without first rebuilding every facility that had to construct or support it.",
     "topics": [
       {
         "slug": "g3-battlecruisers",
@@ -10874,13 +10882,64 @@
       {
         "slug": "magazines",
         "title": "Magazines"
+      },
+      {
+        "slug": "naval-safety",
+        "title": "Naval Safety"
       }
     ],
     "evidence": [
       {
         "start": "4:44",
-        "end": "11:50",
+        "end": "8:58",
         "note": "Explains magazine heat risks, G3 space economy, and the limits of British infrastructure."
+      }
+    ],
+    "end": "8:58",
+    "endSeconds": 538,
+    "sourcePath": "src/transcripts/txt/2022-02-26_T18-00-00_all-forward-main-guns-patreon-46-nelsons-dunkerques-tones-and-battles-long-patrol_aV1G55FHv7Y.txt"
+  },
+  {
+    "id": "g3-middle-turret-and-funnel-trunking",
+    "slug": "g3-middle-turret-and-funnel-trunking",
+    "title": "Why the G3's middle turret and funnel trunking draw criticism",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "aV1G55FHv7Y",
+    "videoSlug": "all-forward-main-guns-patreon-46-nelsons-dunkerques-tones-and-battles-long-patrol",
+    "videoTitle": "All Forward Main Guns: Patreon 46 Nelsons, Dunkerques, Tones and Battles (Long Patrol)",
+    "start": "9:01",
+    "startSeconds": 541,
+    "youtubeUrl": "https://www.youtube.com/watch?v=aV1G55FHv7Y&t=541s",
+    "summary": "The G3's amidships turret preserved familiar capital-ship thinking but restricted useful arcs and forced a less direct funnel arrangement.",
+    "body": "Dr Clarke reads the G3's middle turret as an extension of the familiar practice of placing a heavy turret amidships. He proposes moving the three turrets into a fully forward arrangement, reversing the third mounting, and bringing the superstructure aft. That change could place the forward funnel more directly over its boilers instead of relying on trunking from the forward boiler room. The existing turret has generous arcs to either side, yet it cannot cover the stern and has only limited forward fire. The example shows how a locally familiar arrangement can create engineering and operational penalties elsewhere in the ship.",
+    "topics": [
+      {
+        "slug": "g3-battlecruisers",
+        "title": "G3 Battlecruisers"
+      },
+      {
+        "slug": "turret-layout",
+        "title": "Turret Layout"
+      },
+      {
+        "slug": "funnel-design",
+        "title": "Funnel Design"
+      },
+      {
+        "slug": "boiler-rooms",
+        "title": "Boiler Rooms"
+      },
+      {
+        "slug": "ship-design",
+        "title": "Ship Design"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "9:01",
+        "end": "11:50",
+        "note": "Critiques the G3 middle turret's arcs and the funnel trunking required by the machinery arrangement."
       }
     ],
     "end": "11:50",
@@ -10900,7 +10959,7 @@
     "startSeconds": 838,
     "youtubeUrl": "https://www.youtube.com/watch?v=aV1G55FHv7Y&t=838s",
     "summary": "A bow-on ship with its heavy guns forward can concentrate fire quickly while exposing less hull and making a hit on its machinery spaces harder to obtain.",
-    "body": "Using a simulated battlecruiser engagement, the video shows the tactical attraction of keeping the bow pointed toward an opponent. The ship can bring its main battery to bear without turning broadside, reducing its visible profile and helping protect centrally located machinery. Keeping guns and directors ahead of funnel smoke can also improve their view of the target. The advantage is strongest when a fast ship can choose the geometry of an engagement rather than being forced into a melee, because a battleship in a multi-directional fight may still need heavy fire aft.",
+    "body": "A deliberately contrived battlecruiser simulation makes the target-aspect argument visible. Both all-forward ships can point their bows toward one another while keeping their heavy batteries bearing. Neither needs to expose the full side of its hull merely to use its principal weapons, so the target presented is narrower and centrally located machinery is harder to reach. The game setup is illustrative rather than evidence about a historical battle, but it clearly demonstrates the geometry the later historical examples depend upon.",
     "topics": [
       {
         "slug": "all-forward-armament",
@@ -10922,8 +10981,59 @@
     "evidence": [
       {
         "start": "13:58",
+        "end": "15:23",
+        "note": "The simulation shows two all-forward battlecruisers concentrating fire while presenting narrow bow aspects."
+      }
+    ],
+    "end": "15:23",
+    "endSeconds": 923,
+    "sourcePath": "src/transcripts/txt/2022-02-26_T18-00-00_all-forward-main-guns-patreon-46-nelsons-dunkerques-tones-and-battles-long-patrol_aV1G55FHv7Y.txt"
+  },
+  {
+    "id": "three-efficiencies-of-all-forward-armament",
+    "slug": "three-efficiencies-of-all-forward-armament",
+    "title": "Three efficiencies behind an all-forward battery",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "aV1G55FHv7Y",
+    "videoSlug": "all-forward-main-guns-patreon-46-nelsons-dunkerques-tones-and-battles-long-patrol",
+    "videoTitle": "All Forward Main Guns: Patreon 46 Nelsons, Dunkerques, Tones and Battles (Long Patrol)",
+    "start": "24:32",
+    "startSeconds": 1472,
+    "youtubeUrl": "https://www.youtube.com/watch?v=aV1G55FHv7Y&t=1472s",
+    "summary": "The layout combines space economy, cleaner fire-control sightlines, and the ability to aim heavy guns while shielding machinery behind a narrow aspect.",
+    "body": "Concentrating the main magazines at one end avoids duplicating protected separation on both sides of the machinery spaces. Keeping heavy guns and directors ahead of funnel smoke gives fire-control positions a clearer view. A bow-on or slightly angled orientation lets the main battery bear without exposing the full broadside and central machinery to enemy aim. That geometry especially suits battlecruisers, which should use speed to avoid multi-directional melees. Battleships may still need heavy fire aft when forced into a Jutland-like fight, so the arrangement remains conditional on intended fighting method.",
+    "topics": [
+      {
+        "slug": "all-forward-armament",
+        "title": "All Forward Armament"
+      },
+      {
+        "slug": "ship-design",
+        "title": "Ship Design"
+      },
+      {
+        "slug": "fire-control",
+        "title": "Fire Control"
+      },
+      {
+        "slug": "machinery-spaces",
+        "title": "Machinery Spaces"
+      },
+      {
+        "slug": "naval-tactics",
+        "title": "Naval Tactics"
+      },
+      {
+        "slug": "battlecruisers",
+        "title": "Battlecruisers"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "24:32",
         "end": "27:28",
-        "note": "Demonstration connects forward arcs, narrow presentation, engine protection, and battlecruiser tactics."
+        "note": "Summarizes space, fire-control, target-aspect, machinery-protection, and battlecruiser-role advantages."
       }
     ],
     "end": "27:28",
@@ -10943,7 +11053,7 @@
     "startSeconds": 1652,
     "youtubeUrl": "https://www.youtube.com/watch?v=aV1G55FHv7Y&t=1652s",
     "summary": "Treaty limits made a compact capital-ship design especially attractive to France, whose fleet allocation had to cover several competing threats.",
-    "body": "The Washington and London treaty limits made every ton and every replacement decision politically consequential. France's 175,000-ton capital-ship allocation had to account for an ageing battle fleet as well as potential Italian and German competition. Replacement ages and dates further limited how quickly that force could be renewed. The video treats a forward armament layout as one way to concentrate useful fighting power inside those fleet-level limits, not as a universal answer for every navy.",
+    "body": "The Washington and London treaty limits made every ton and every replacement decision politically consequential. France's 175,000-ton capital-ship allocation had to account for an ageing battle fleet, Italian competition, and a wider balance of naval power. Replacement ages and dates further limited how quickly that force could be renewed. The London negotiations also concentrated on aircraft-carrier definitions and loopholes left by Washington. The video treats a forward armament layout as one way to concentrate useful fighting power inside those fleet-level limits, not as a universal answer for every navy.",
     "topics": [
       {
         "slug": "naval-treaties",
@@ -10965,12 +11075,12 @@
     "evidence": [
       {
         "start": "27:32",
-        "end": "32:00",
+        "end": "31:56",
         "note": "Discusses treaty limits, French tonnage, replacement rules, and the resulting design pressures."
       }
     ],
-    "end": "32:00",
-    "endSeconds": 1920,
+    "end": "31:56",
+    "endSeconds": 1916,
     "sourcePath": "src/transcripts/txt/2022-02-26_T18-00-00_all-forward-main-guns-patreon-46-nelsons-dunkerques-tones-and-battles-long-patrol_aV1G55FHv7Y.txt"
   },
   {
@@ -10985,8 +11095,8 @@
     "start": "32:03",
     "startSeconds": 1923,
     "youtubeUrl": "https://www.youtube.com/watch?v=aV1G55FHv7Y&t=1923s",
-    "summary": "The proposed N3 battleships and G3 battlecruisers make more sense as complementary fleet roles than as isolated answers to Jutland.",
-    "body": "The planned British pair of classes combined four heavily protected N3 battleships with four faster G3 battlecruisers. In this reading, their forward armament and protection were part of a force structure intended to set difficult choices for an opponent: outrun the stronger ship or outfight the faster one. The video suggests the N3s could anchor home or Mediterranean commitments while the G3s served the more distant Indian Ocean and Far East roles suited to their speed. The design logic is therefore linked to global Royal Navy commitments and a postwar fleet doctrine, not simply to one battle's lessons.",
+    "summary": "The proposed four N3 battleships and four G3 battlecruisers formed a complementary force intended to make rivals choose between outrunning British strength and outgunning British speed.",
+    "body": "The planned British programme paired four heavily protected, 18-inch-gun N3 battleships with four faster, 16-inch-gun G3 battlecruisers. Dr Clarke classifies G3 as a post-World War I battlecruiser rather than a proto-fast battleship, because its protection reflected the contemporary standard for that role. Together the classes set a difficult design problem for an opponent: a ship strong enough to fight the G3 might not escape the N3, while a ship fast enough to avoid the N3 might not defeat the G3. Both classes also sought the most capability that existing British infrastructure could construct and support. Dr Clarke argues that delaying the treaty settlement to another election cycle could have put all eight ships into service and provoked a much sharper international response. The programme therefore appears as fleet doctrine and competitive standard-setting rather than two isolated capital-ship designs.",
     "topics": [
       {
         "slug": "n3-class-battleships",
@@ -11007,17 +11117,88 @@
       {
         "slug": "naval-doctrine",
         "title": "Naval Doctrine"
+      },
+      {
+        "slug": "capital-ship-programs",
+        "title": "Capital Ship Programs"
+      },
+      {
+        "slug": "naval-arms-race",
+        "title": "Naval Arms Race"
       }
     ],
     "evidence": [
       {
         "start": "32:03",
-        "end": "39:04",
-        "note": "Contrasts N3 and G3 roles, infrastructure constraints, and their intended fleet employment."
+        "end": "37:22",
+        "note": "Explains the planned four-ship N3 and G3 classes, their complementary threat, and a delayed-treaty counterfactual."
       }
     ],
-    "end": "39:04",
-    "endSeconds": 2344,
+    "end": "37:22",
+    "endSeconds": 2242,
+    "sourcePath": "src/transcripts/txt/2022-02-26_T18-00-00_all-forward-main-guns-patreon-46-nelsons-dunkerques-tones-and-battles-long-patrol_aV1G55FHv7Y.txt"
+  },
+  {
+    "id": "world-war-i-maritime-mobility-and-global-fleet-roles",
+    "slug": "world-war-i-maritime-mobility-and-global-fleet-roles",
+    "title": "World War I's maritime lesson shaped global fleet roles",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "aV1G55FHv7Y",
+    "videoSlug": "all-forward-main-guns-patreon-46-nelsons-dunkerques-tones-and-battles-long-patrol",
+    "videoTitle": "All Forward Main Guns: Patreon 46 Nelsons, Dunkerques, Tones and Battles (Long Patrol)",
+    "start": "37:27",
+    "startSeconds": 2247,
+    "youtubeUrl": "https://www.youtube.com/watch?v=aV1G55FHv7Y&t=2247s",
+    "summary": "Britain's wartime movement of imperial resources and trade supported a postwar fleet plan in which N3s guarded nearer theatres and fast G3s served distant stations.",
+    "body": "Britain's mass army dominates much later memory of World War I, but the passage stresses how political leaders also understood the conflict as a global maritime war. Moving imperial resources and trade depended on naval strength and strategic mobility. Postwar commitments were more geographically diffuse than the confrontation with Germany had been. Dr Clarke therefore places the heavily protected N3s with the Home or Mediterranean fleets and the faster G3s in the Indian Ocean or Far East. The hypothetical deployment connects capital-ship characteristics to the worldwide system the Royal Navy expected the fleet to sustain.",
+    "topics": [
+      {
+        "slug": "world-war-i",
+        "title": "World War I"
+      },
+      {
+        "slug": "maritime-trade",
+        "title": "Maritime Trade"
+      },
+      {
+        "slug": "global-strategy",
+        "title": "Global Strategy"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "british-empire",
+        "title": "British Empire"
+      },
+      {
+        "slug": "home-fleet",
+        "title": "Home Fleet"
+      },
+      {
+        "slug": "mediterranean-fleet",
+        "title": "Mediterranean Fleet"
+      },
+      {
+        "slug": "far-east-fleet",
+        "title": "Far East Fleet"
+      },
+      {
+        "slug": "indian-ocean",
+        "title": "Indian Ocean"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "37:27",
+        "end": "38:52",
+        "note": "Links Britain's global wartime resource movement to proposed N3 and G3 fleet assignments."
+      }
+    ],
+    "end": "38:52",
+    "endSeconds": 2332,
     "sourcePath": "src/transcripts/txt/2022-02-26_T18-00-00_all-forward-main-guns-patreon-46-nelsons-dunkerques-tones-and-battles-long-patrol_aV1G55FHv7Y.txt"
   },
   {
@@ -11029,11 +11210,11 @@
     "videoId": "aV1G55FHv7Y",
     "videoSlug": "all-forward-main-guns-patreon-46-nelsons-dunkerques-tones-and-battles-long-patrol",
     "videoTitle": "All Forward Main Guns: Patreon 46 Nelsons, Dunkerques, Tones and Battles (Long Patrol)",
-    "start": "39:04",
-    "startSeconds": 2344,
-    "youtubeUrl": "https://www.youtube.com/watch?v=aV1G55FHv7Y&t=2344s",
-    "summary": "Because the Royal Navy could build only Nelson and Rodney, their designers concentrated firepower and protection into two scarce capital ships.",
-    "body": "The Nelson class is presented as an efficient use of the tonnage available when only two new capital ships could be obtained. Treaty rules had combined battleship and battlecruiser needs within a limited capital-ship category, encouraging a versatile compromise. A larger class might have justified a different balance of speed, armour, and firing arcs. With only two, the priority became preserving an irreplaceable capability while retaining a powerful forward battery and a difficult bow-on target.",
+    "start": "39:05",
+    "startSeconds": 2345,
+    "youtubeUrl": "https://www.youtube.com/watch?v=aV1G55FHv7Y&t=2345s",
+    "summary": "Because the Royal Navy could build only Nelson and Rodney, it sought maximum protected fighting power in each scarce capital ship rather than the balance appropriate to a larger class.",
+    "body": "The Nelson design is praised as an efficient use of available tonnage precisely because only two units would be built. Scarcity made each hull disproportionately important to the Royal Navy's heavy-gun force. Dr Clarke argues that a programme of four or six ships could have justified a faster battleship balance instead. This short watch point introduces class size as a design input, a theme the conclusion develops through availability and acceptable loss.",
     "topics": [
       {
         "slug": "nelson-class",
@@ -11058,13 +11239,13 @@
     ],
     "evidence": [
       {
-        "start": "39:04",
-        "end": "44:03",
-        "note": "Links the two-ship limit to the Nelson class's armour, armament, and tactical geometry."
+        "start": "39:05",
+        "end": "39:30",
+        "note": "States that the Nelson balance made sense for two units but not for a four- or six-ship programme."
       }
     ],
-    "end": "44:03",
-    "endSeconds": 2643,
+    "end": "39:30",
+    "endSeconds": 2370,
     "sourcePath": "src/transcripts/txt/2022-02-26_T18-00-00_all-forward-main-guns-patreon-46-nelsons-dunkerques-tones-and-battles-long-patrol_aV1G55FHv7Y.txt"
   },
   {
@@ -11115,9 +11296,60 @@
     "sourcePath": "src/transcripts/txt/2022-02-26_T18-00-00_all-forward-main-guns-patreon-46-nelsons-dunkerques-tones-and-battles-long-patrol_aV1G55FHv7Y.txt"
   },
   {
+    "id": "nelson-bow-on-geometry-and-three-design-efficiencies",
+    "slug": "nelson-bow-on-geometry-and-three-design-efficiencies",
+    "title": "Nelson's bow-on geometry and three kinds of efficiency",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "aV1G55FHv7Y",
+    "videoSlug": "all-forward-main-guns-patreon-46-nelsons-dunkerques-tones-and-battles-long-patrol",
+    "videoTitle": "All Forward Main Guns: Patreon 46 Nelsons, Dunkerques, Tones and Battles (Long Patrol)",
+    "start": "41:11",
+    "startSeconds": 2471,
+    "youtubeUrl": "https://www.youtube.com/watch?v=aV1G55FHv7Y&t=2471s",
+    "summary": "Nelson could fire a strong forward salvo from a narrow angle, complicating an opponent's range judgement while illustrating hull, internal-space, and firing-arc efficiency.",
+    "body": "By angling only modestly toward an opponent, Nelson could use six heavy guns and sometimes more while presenting a narrow target. The comparison with the King George V class shows how a conventional layout requires more broadside exposure to bring its battery to bear. A narrow aspect also makes the fore-and-aft distance of the target harder to judge and leaves machinery less exposed near the centre of aim. Dr Clarke then separates efficiency into the hull power needed for speed, the utility of internal space, and the coverage supplied by weapon arcs. The watch point turns a visual arrangement into three concrete criteria for judging a warship design.",
+    "topics": [
+      {
+        "slug": "nelson-class",
+        "title": "Nelson Class"
+      },
+      {
+        "slug": "naval-tactics",
+        "title": "Naval Tactics"
+      },
+      {
+        "slug": "fire-control",
+        "title": "Fire Control"
+      },
+      {
+        "slug": "ship-design",
+        "title": "Ship Design"
+      },
+      {
+        "slug": "target-aspect",
+        "title": "Target Aspect"
+      },
+      {
+        "slug": "king-george-v-class",
+        "title": "King George V Class"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "41:11",
+        "end": "44:03",
+        "note": "Explains Nelson's narrow firing aspect and identifies hull, internal-space, and firing-arc efficiency."
+      }
+    ],
+    "end": "44:03",
+    "endSeconds": 2643,
+    "sourcePath": "src/transcripts/txt/2022-02-26_T18-00-00_all-forward-main-guns-patreon-46-nelsons-dunkerques-tones-and-battles-long-patrol_aV1G55FHv7Y.txt"
+  },
+  {
     "id": "nelson-layout-magazines-boilers-and-secondary-guns",
     "slug": "nelson-layout-magazines-boilers-and-secondary-guns",
-    "title": "Nelson's machinery layout and secondary battery",
+    "title": "Nelson's magazine, machinery, and two-shaft sequence",
     "kind": "notable_point",
     "kindLabel": "Notable Point",
     "videoId": "aV1G55FHv7Y",
@@ -11126,8 +11358,8 @@
     "start": "44:25",
     "startSeconds": 2665,
     "youtubeUrl": "https://www.youtube.com/watch?v=aV1G55FHv7Y&t=2665s",
-    "summary": "The Nelson layout placed magazines, engines, boilers, and funnels in a deliberate sequence, while its six-inch guns handled targets not worth a main-battery salvo.",
-    "body": "The layout separated hotter boiler spaces from magazines through the intervening machinery and insulation, while keeping the funnels near the boilers. Its two shafts and compact machinery plant helped the short hull reach about 23 knots with 45,000 shaft horsepower. The discussion also distinguishes six-inch secondaries from purely anti-aircraft weapons: they gave the battleship a way to engage cruisers and other smaller surface targets without spending scarce heavy-gun ammunition. These details show why a compact armament arrangement still depended on the whole internal plan of the ship.",
+    "summary": "Nelson's diagram sequences magazines, insulation, engines, boilers, funnels, and two shafts to control heat while keeping the machinery plant compact.",
+    "body": "The main magazines sit forward of insulation and the relatively cooler engine rooms. Hotter boiler rooms lie farther aft, directly beneath the funnels that need to draw air and exhaust efficiently. This sequence reduces heat transfer toward the explosives while avoiding unnecessarily long uptakes. The two-shaft arrangement completes a compact internal plan in which protection and propulsion are designed together. The diagram makes clear that an all-forward battery succeeds only when the rest of the machinery layout supports it.",
     "topics": [
       {
         "slug": "nelson-class",
@@ -11142,23 +11374,27 @@
         "title": "Naval Engineering"
       },
       {
-        "slug": "secondary-batteries",
-        "title": "Secondary Batteries"
+        "slug": "propulsion",
+        "title": "Propulsion"
       },
       {
         "slug": "magazines",
         "title": "Magazines"
+      },
+      {
+        "slug": "boiler-rooms",
+        "title": "Boiler Rooms"
       }
     ],
     "evidence": [
       {
         "start": "44:25",
-        "end": "53:57",
-        "note": "Explains Nelson's internal arrangement, proposed alterations, and the role of six-inch secondary guns."
+        "end": "45:02",
+        "note": "Walks through Nelson's magazine, insulation, engine-room, boiler-room, funnel, and two-shaft sequence."
       }
     ],
-    "end": "53:57",
-    "endSeconds": 3237,
+    "end": "45:02",
+    "endSeconds": 2702,
     "sourcePath": "src/transcripts/txt/2022-02-26_T18-00-00_all-forward-main-guns-patreon-46-nelsons-dunkerques-tones-and-battles-long-patrol_aV1G55FHv7Y.txt"
   },
   {
@@ -11173,8 +11409,8 @@
     "start": "45:03",
     "startSeconds": 2703,
     "youtubeUrl": "https://www.youtube.com/watch?v=aV1G55FHv7Y&t=2703s",
-    "summary": "A proposed lengthened Nelson shows how extra boilers, a third shaft, and a revised turret arrangement might have traded some concentrated protection for speed and wider firing arcs.",
-    "body": "The video sketches an alternative Nelson about fourteen metres longer, with space for more machinery and a third shaft. Increasing the plant from eight to roughly ten boilers could, in this estimate, move the class toward 28 or 29 knots while remaining shorter than Hood. Reversing and raising the third turret could also improve forward fire and bring high weight closer to the hull's centre, although the angles would still impose limits. The proposal is presented as a plausible choice for a larger class, whereas the actual two-ship programme made armour and survivability the safer priority.",
+    "summary": "A lengthened Nelson with extra boilers, a third shaft, and revised turret geometry could have traded some concentrated protection for speed and wider forward fire.",
+    "body": "Dr Clarke sketches an alternative Nelson about fourteen metres longer, still far shorter than Hood and usable within existing infrastructure. The added volume could support more boilers, a third shaft, and a machinery plant capable of moving the ship toward 28 or 29 knots. Reversing and raising the third turret could improve forward fire, although blast and elevation limits would remain. The Royal Navy had used three-shaft arrangements elsewhere, so the propulsion proposal was not alien to British practice. The passage also explains why six-inch secondaries sat near the boiler spaces: with insulation, they supplied cruiser-killing fire without wasting scarce 16-inch ammunition. The counterfactual is therefore a connected redesign of machinery, armament, and tactical role rather than a simple request for more speed.",
     "topics": [
       {
         "slug": "nelson-class",
@@ -11195,17 +11431,21 @@
       {
         "slug": "fast-battleships",
         "title": "Fast Battleships"
+      },
+      {
+        "slug": "secondary-batteries",
+        "title": "Secondary Batteries"
       }
     ],
     "evidence": [
       {
         "start": "45:03",
-        "end": "55:57",
-        "note": "Develops a lengthened, three-shaft Nelson alternative and explains its speed, firing-arc, stability, armour, and class-size trade-offs."
+        "end": "50:30",
+        "note": "Develops a fourteen-metre extension, third shaft, revised turret geometry, and the surface role of six-inch secondaries."
       }
     ],
-    "end": "55:57",
-    "endSeconds": 3357,
+    "end": "50:30",
+    "endSeconds": 3030,
     "sourcePath": "src/transcripts/txt/2022-02-26_T18-00-00_all-forward-main-guns-patreon-46-nelsons-dunkerques-tones-and-battles-long-patrol_aV1G55FHv7Y.txt"
   },
   {
@@ -11243,12 +11483,114 @@
     "evidence": [
       {
         "start": "50:35",
-        "end": "55:57",
+        "end": "51:53",
         "note": "Uses crossing the T to explain the protection and firing-arc trade-off of Nelson's layout."
+      }
+    ],
+    "end": "51:53",
+    "endSeconds": 3113,
+    "sourcePath": "src/transcripts/txt/2022-02-26_T18-00-00_all-forward-main-guns-patreon-46-nelsons-dunkerques-tones-and-battles-long-patrol_aV1G55FHv7Y.txt"
+  },
+  {
+    "id": "nelson-compartmentalization-and-design-tradeoffs",
+    "slug": "nelson-compartmentalization-and-design-tradeoffs",
+    "title": "Nelson's compartmentalization made alternative tradeoffs visible",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "aV1G55FHv7Y",
+    "videoSlug": "all-forward-main-guns-patreon-46-nelsons-dunkerques-tones-and-battles-long-patrol",
+    "videoTitle": "All Forward Main Guns: Patreon 46 Nelsons, Dunkerques, Tones and Battles (Long Patrol)",
+    "start": "52:03",
+    "startSeconds": 3123,
+    "youtubeUrl": "https://www.youtube.com/watch?v=aV1G55FHv7Y&t=3123s",
+    "summary": "Nelson's clearly divided internal sections make it possible to trace how extra length, a transom stern, altered armour, and a revised third turret would exchange protection for speed and arcs.",
+    "body": "The counterfactual uses the class's remaining treaty margin and suggests a more uniform belt if extra machinery demanded weight elsewhere. Nelson's compartmentalized internal arrangement makes it comparatively easy to see where a hull extension could be inserted. A G3-style transom stern might recover some hydrodynamic efficiency while reducing the net increase in length. Reversing and raising the third turret could widen forward fire and move high weight nearer the hull's centre. The actual two-ship programme instead chose armour and survivability over speed and the broadest possible arcs. The passage shows that these alternatives are coherent packages of gains and costs, not cost-free corrections to an obvious mistake.",
+    "topics": [
+      {
+        "slug": "nelson-class",
+        "title": "Nelson Class"
+      },
+      {
+        "slug": "ship-design",
+        "title": "Ship Design"
+      },
+      {
+        "slug": "naval-engineering",
+        "title": "Naval Engineering"
+      },
+      {
+        "slug": "compartmentalization",
+        "title": "Compartmentalization"
+      },
+      {
+        "slug": "propulsion",
+        "title": "Propulsion"
+      },
+      {
+        "slug": "ship-stability",
+        "title": "Ship Stability"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "52:03",
+        "end": "55:57",
+        "note": "Uses Nelson's compartmentalization to assess extra length, a transom stern, armour, turret arcs, and stability."
       }
     ],
     "end": "55:57",
     "endSeconds": 3357,
+    "sourcePath": "src/transcripts/txt/2022-02-26_T18-00-00_all-forward-main-guns-patreon-46-nelsons-dunkerques-tones-and-battles-long-patrol_aV1G55FHv7Y.txt"
+  },
+  {
+    "id": "jutland-was-not-the-only-naval-design-lesson",
+    "slug": "jutland-was-not-the-only-naval-design-lesson",
+    "title": "Jutland was not the Royal Navy's only design lesson",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "aV1G55FHv7Y",
+    "videoSlug": "all-forward-main-guns-patreon-46-nelsons-dunkerques-tones-and-battles-long-patrol",
+    "videoTitle": "All Forward Main Guns: Patreon 46 Nelsons, Dunkerques, Tones and Battles (Long Patrol)",
+    "start": "56:00",
+    "startSeconds": 3360,
+    "youtubeUrl": "https://www.youtube.com/watch?v=aV1G55FHv7Y&t=3360s",
+    "summary": "The continued pursuit of the fast G3 challenges the claim that Jutland taught a simple protection-over-speed lesson for every postwar British capital ship.",
+    "body": "If Jutland had proved that protection and firepower always outweighed speed, the Royal Navy could have pursued only heavily protected N3-like ships. Its commitment to the fast G3 shows that manoeuvre remained central to postwar thinking. Dr Clarke points to Dogger Bank and the wider operational record as battles and campaigns of naval movement. Jutland was the war's great set-piece fleet battle, but it was not the whole experience of war at sea. The passage cautions against treating Nelson as a knee-jerk response to one engagement when class size and complementary fleet roles also shaped the design.",
+    "topics": [
+      {
+        "slug": "battle-of-jutland",
+        "title": "Battle Of Jutland"
+      },
+      {
+        "slug": "battle-of-dogger-bank",
+        "title": "Battle Of Dogger Bank"
+      },
+      {
+        "slug": "world-war-i",
+        "title": "World War I"
+      },
+      {
+        "slug": "naval-manoeuvre",
+        "title": "Naval Manoeuvre"
+      },
+      {
+        "slug": "historiography",
+        "title": "Historiography"
+      },
+      {
+        "slug": "g3-battlecruisers",
+        "title": "G3 Battlecruisers"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "56:00",
+        "end": "57:13",
+        "note": "Contrasts Jutland-focused interpretations with G3, Dogger Bank, and the wider importance of naval manoeuvre."
+      }
+    ],
+    "end": "57:13",
+    "endSeconds": 3433,
     "sourcePath": "src/transcripts/txt/2022-02-26_T18-00-00_all-forward-main-guns-patreon-46-nelsons-dunkerques-tones-and-battles-long-patrol_aV1G55FHv7Y.txt"
   },
   {
@@ -11260,11 +11602,11 @@
     "videoId": "aV1G55FHv7Y",
     "videoSlug": "all-forward-main-guns-patreon-46-nelsons-dunkerques-tones-and-battles-long-patrol",
     "videoTitle": "All Forward Main Guns: Patreon 46 Nelsons, Dunkerques, Tones and Battles (Long Patrol)",
-    "start": "56:00",
-    "startSeconds": 3360,
-    "youtubeUrl": "https://www.youtube.com/watch?v=aV1G55FHv7Y&t=3360s",
+    "start": "57:22",
+    "startSeconds": 3442,
+    "youtubeUrl": "https://www.youtube.com/watch?v=aV1G55FHv7Y&t=3442s",
     "summary": "Nelson and Rodney show how fleet availability changes design priorities: losing or refitting one of two ships sharply reduces a navy's usable heavy capability.",
-    "body": "The video argues that the class's unusually protection-focused balance followed from scarcity as much as from tactical theory. A single ship in refit leaves only one available, and the loss of one of two creates a much larger force-structure problem than the loss of one from a sizeable class. This also qualifies claims that Nelson was simply a knee-jerk response to Jutland: the wider First World War at sea had emphasized maneuver, trade, and global resource movement as well as set-piece battle. That availability calculation helps explain the choice to value survivability over the speed that a longer, more powerful machinery plant might have offered.",
+    "body": "Nelson and Rodney alternated as the Royal Navy's most powerful available battleship and Home Fleet flagship, because a refit to one left only the other in service. Hood supplied speed and imposing presence, but not the same armour and 16-inch-gun fighting power. Nelson's efficient hull still made about 23 knots from two shafts and 45,000 shaft horsepower, leaving room for a plausible faster alternative if the class had been larger. Within the planned N3-G3 system, however, the scarce Nelsons inherited the role of heavily protected hammers while cruisers and surviving battlecruisers supplied speed. Losing either ship would erase half the capability, so survivability carried more weight than it would in a numerous class.",
     "topics": [
       {
         "slug": "nelson-class",
@@ -11275,8 +11617,16 @@
         "title": "Force Structure"
       },
       {
+        "slug": "fleet-readiness",
+        "title": "Fleet Readiness"
+      },
+      {
         "slug": "royal-navy",
         "title": "Royal Navy"
+      },
+      {
+        "slug": "home-fleet",
+        "title": "Home Fleet"
       },
       {
         "slug": "capital-ships",
@@ -11289,9 +11639,9 @@
     ],
     "evidence": [
       {
-        "start": "56:00",
+        "start": "57:22",
         "end": "1:01:58",
-        "note": "Relates Nelson's design to the Royal Navy's limited number of 16-inch-gun capital ships."
+        "note": "Relates refit availability, Hood's distinct role, efficient propulsion, and the loss risk of only two 16-inch-gun battleships."
       }
     ],
     "end": "1:01:58",
@@ -11311,7 +11661,7 @@
     "startSeconds": 3721,
     "youtubeUrl": "https://www.youtube.com/watch?v=aV1G55FHv7Y&t=3721s",
     "summary": "Dunkerque used an all-forward 330 mm battery to produce a fast, comparatively compact response to German and Italian surface threats.",
-    "body": "The French design combined eight 330 mm guns, a speed of roughly 29.5 knots, and a concentrated forward battery within a lower standard displacement than a full treaty battleship. The presentation links this to the need to counter ships such as the Deutschland class, older Italian capital ships, and anticipated German successors while preserving French fleet resources. Fuel, feed water, ballast, and other liquid spaces helped insulate the magazines from the boiler rooms. The arrangement also created a modern-looking division of roles, with heavy weapons forward and aviation facilities aft.",
+    "body": "The French design combined eight 330 mm guns, a speed of roughly 29.5 knots, and a concentrated forward battery within a lower standard displacement than a full treaty battleship. A discarded 36,000-ton proposal makes the saving visible: Dr Clarke attributes roughly 9,500 tons of the difference to the omitted aft-gun arrangement and the hull it required. The presentation links Dunkerque to the need to counter ships such as the Deutschland class, older Italian capital ships, and anticipated German successors while preserving French fleet resources. Fuel, feed water, ballast, and other liquid spaces helped insulate the magazines from the boiler rooms. The arrangement also created a modern-looking division of roles, with heavy weapons forward and aviation facilities aft.",
     "topics": [
       {
         "slug": "dunkerque-class",
@@ -11405,7 +11755,7 @@
     "startSeconds": 4218,
     "youtubeUrl": "https://www.youtube.com/watch?v=aV1G55FHv7Y&t=4218s",
     "summary": "The Battle class used forward main turrets while reserving valuable aft space for anti-aircraft weapons, torpedoes, and anti-submarine equipment.",
-    "body": "The destroyers were not simply stripped down to an empty stern after moving their main guns forward. Their twin 4.5-inch mountings required substantial below-deck support, making concentration in one part of the hull useful. The aft areas carried a dense 40 mm anti-aircraft fit, while the ships also retained torpedoes and depth-charge capability for broader escort duties. The arrangement illustrates how an all-forward primary battery can create room for a deliberately layered defensive and general-purpose outfit.",
+    "body": "The destroyers were not simply stripped down to an empty stern after moving their main guns forward. HMS Savage had tested the multi-deck support required by the twin 4.5-inch mountings, making concentration in one part of the hull useful. An additional aft mounting would have been expensive and would have displaced much of the dense 40 mm anti-aircraft fit. The ships also retained torpedoes and depth-charge capability for broader escort duties. The arrangement illustrates how an all-forward primary battery can create room for a deliberately layered defensive and general-purpose outfit.",
     "topics": [
       {
         "slug": "battle-class-destroyers",
@@ -11451,12 +11801,16 @@
     "start": "1:13:27",
     "startSeconds": 4407,
     "youtubeUrl": "https://www.youtube.com/watch?v=aV1G55FHv7Y&t=4407s",
-    "summary": "Type 42 and Type 45 designs retain forward weapon concentration, while Type 26 and Type 31 illustrate how cooling, crew reductions, and defensive systems enable more distribution.",
-    "body": "The modern comparison carries the old magazine-and-heat problem into the missile age: missiles still require protected, controlled spaces away from machinery heat and seawater. British ships such as the Type 42, Type 23, and Type 45 preserve a forward concentration, including a return to that pattern once vertical-launch Sea Wolf became available. Newer Type 26 and Type 31 designs can distribute some weapons as ship size, cooling technology, smaller crews, and internal volume change. The important distinction is between concentrated offensive systems and defensive weapons spread to protect the ship.",
+    "summary": "Type 42, Type 23, and Type 45 preserve forward weapon concentration, while Type 26 and Type 31 begin redistributing systems as cooling, volume, and crew demands change.",
+    "body": "The modern comparison carries the old magazine-and-heat problem into the missile age, because missiles still need protected and temperature-controlled spaces. Type 42 placed its gun and missile system forward, and Type 23 returned to forward concentration once vertical-launch Sea Wolf became available. Type 45 continues that pattern. Type 26 and Type 31 can distribute more systems as ship size, cooling technology, internal volume, and reduced crew requirements change. The progression is an adaptation of whole-ship constraints rather than a simple abandonment of the all-forward idea.",
     "topics": [
       {
         "slug": "type-42-destroyer",
         "title": "Type 42 Destroyer"
+      },
+      {
+        "slug": "type-23-frigate",
+        "title": "Type 23 Frigate"
       },
       {
         "slug": "type-45-destroyer",
@@ -11465,6 +11819,10 @@
       {
         "slug": "type-26-frigate",
         "title": "Type 26 Frigate"
+      },
+      {
+        "slug": "type-31-frigate",
+        "title": "Type 31 Frigate"
       },
       {
         "slug": "missile-warfare",
@@ -11478,12 +11836,12 @@
     "evidence": [
       {
         "start": "1:13:27",
-        "end": "1:20:57",
-        "note": "Compares Type 42, Type 45, Type 26, and Type 31 arrangements and their technical constraints."
+        "end": "1:15:03",
+        "note": "Compares forward concentration in Type 42, Type 23, and Type 45 with growing distribution in Type 26 and Type 31."
       }
     ],
-    "end": "1:20:57",
-    "endSeconds": 4857,
+    "end": "1:15:03",
+    "endSeconds": 4503,
     "sourcePath": "src/transcripts/txt/2022-02-26_T18-00-00_all-forward-main-guns-patreon-46-nelsons-dunkerques-tones-and-battles-long-patrol_aV1G55FHv7Y.txt"
   },
   {
@@ -11534,6 +11892,57 @@
     "sourcePath": "src/transcripts/txt/2022-02-26_T18-00-00_all-forward-main-guns-patreon-46-nelsons-dunkerques-tones-and-battles-long-patrol_aV1G55FHv7Y.txt"
   },
   {
+    "id": "missile-support-seawater-and-ship-zoning",
+    "slug": "missile-support-seawater-and-ship-zoning",
+    "title": "Missile support, seawater protection, and ship zoning",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "aV1G55FHv7Y",
+    "videoSlug": "all-forward-main-guns-patreon-46-nelsons-dunkerques-tones-and-battles-long-patrol",
+    "videoTitle": "All Forward Main Guns: Patreon 46 Nelsons, Dunkerques, Tones and Battles (Long Patrol)",
+    "start": "1:18:34",
+    "startSeconds": 4714,
+    "youtubeUrl": "https://www.youtube.com/watch?v=aV1G55FHv7Y&t=4714s",
+    "summary": "Grouped missile systems share cooling and maintenance needs, while raised launch cells and separate aft aviation spaces protect vulnerable equipment from heat and seawater.",
+    "body": "Grouped weapons can share the temperature control, maintenance access, and other support their magazines require. Missile cells also need protection from seawater, a concern the passage identifies as especially important in British design practice. Type 45's forward vertical-launch area is raised and enclosed even though the surrounding structure complicates the effort to reduce radar signature. Aft space is assigned to 30 mm guns, Phalanx, the hangar, flight deck, and aviation-fuel arrangements. The resulting zoning separates offensive, close-defence, and aviation functions according to their support and hazard relationships rather than firing arcs alone.",
+    "topics": [
+      {
+        "slug": "missile-magazines",
+        "title": "Missile Magazines"
+      },
+      {
+        "slug": "vertical-launch-systems",
+        "title": "Vertical Launch Systems"
+      },
+      {
+        "slug": "type-45-destroyer",
+        "title": "Type 45 Destroyer"
+      },
+      {
+        "slug": "ship-design",
+        "title": "Ship Design"
+      },
+      {
+        "slug": "naval-aviation",
+        "title": "Naval Aviation"
+      },
+      {
+        "slug": "damage-control",
+        "title": "Damage Control"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "1:18:34",
+        "end": "1:20:57",
+        "note": "Explains missile support, seawater protection, Type 45 launch-cell placement, and aft defensive and aviation zones."
+      }
+    ],
+    "end": "1:20:57",
+    "endSeconds": 4857,
+    "sourcePath": "src/transcripts/txt/2022-02-26_T18-00-00_all-forward-main-guns-patreon-46-nelsons-dunkerques-tones-and-battles-long-patrol_aV1G55FHv7Y.txt"
+  },
+  {
     "id": "weapons-placement-is-a-whole-ship-problem",
     "slug": "weapons-placement-is-a-whole-ship-problem",
     "title": "Weapons placement is a whole-ship problem",
@@ -11542,10 +11951,10 @@
     "videoId": "aV1G55FHv7Y",
     "videoSlug": "all-forward-main-guns-patreon-46-nelsons-dunkerques-tones-and-battles-long-patrol",
     "videoTitle": "All Forward Main Guns: Patreon 46 Nelsons, Dunkerques, Tones and Battles (Long Patrol)",
-    "start": "1:20:57",
-    "startSeconds": 4857,
-    "youtubeUrl": "https://www.youtube.com/watch?v=aV1G55FHv7Y&t=4857s",
-    "summary": "The closing design lesson is that weapon placement must account for magazines, cooling, safety, access, and the effects of heat and seawater across the whole ship.",
+    "start": "1:21:03",
+    "startSeconds": 4863,
+    "youtubeUrl": "https://www.youtube.com/watch?v=aV1G55FHv7Y&t=4863s",
+    "summary": "The closing design lesson is that weapon placement must account for magazines, cooling, safety, access, and the effects of heat across the whole ship.",
     "body": "Weapons cannot be positioned by firing arc alone, because machinery, magazines, cooling, access, and safety requirements interact across the hull. The video compares the task to seating guests at a table: individually sensible placements can create trouble when incompatible systems are put next to each other. Heat can expand a shell enough to affect the fine tolerances needed for rifling, accuracy, and safe movement through the gun. Even if a blocked barrel or breech accident is unlikely, the consequences justify avoiding the risk through careful internal arrangement.",
     "topics": [
       {
@@ -11571,7 +11980,7 @@
     ],
     "evidence": [
       {
-        "start": "1:20:57",
+        "start": "1:21:03",
         "end": "1:25:22",
         "note": "Connects internal arrangement to machinery heat, shell tolerances, barrel safety, and the value of avoiding small but catastrophic risks."
       }
@@ -11662,12 +12071,12 @@
     "evidence": [
       {
         "start": "1:33:06",
-        "end": "1:35:46",
+        "end": "1:35:43",
         "note": "Concludes that forward armament depends on command, geometry, and the ability to preserve speed while damaging an opponent's machinery."
       }
     ],
-    "end": "1:35:46",
-    "endSeconds": 5746,
+    "end": "1:35:43",
+    "endSeconds": 5743,
     "sourcePath": "src/transcripts/txt/2022-02-26_T18-00-00_all-forward-main-guns-patreon-46-nelsons-dunkerques-tones-and-battles-long-patrol_aV1G55FHv7Y.txt"
   },
   {
@@ -11679,9 +12088,9 @@
     "videoId": "aV1G55FHv7Y",
     "videoSlug": "all-forward-main-guns-patreon-46-nelsons-dunkerques-tones-and-battles-long-patrol",
     "videoTitle": "All Forward Main Guns: Patreon 46 Nelsons, Dunkerques, Tones and Battles (Long Patrol)",
-    "start": "1:35:46",
-    "startSeconds": 5746,
-    "youtubeUrl": "https://www.youtube.com/watch?v=aV1G55FHv7Y&t=5746s",
+    "start": "1:35:55",
+    "startSeconds": 5755,
+    "youtubeUrl": "https://www.youtube.com/watch?v=aV1G55FHv7Y&t=5755s",
     "summary": "The conclusion turns the Nelson example into a procurement lesson: a two-ship class must protect each hull more heavily because one loss can erase an available capability.",
     "body": "One ship is often unavailable during refit, so a singleton capability may disappear whenever maintenance is required. Two ships usually keep one available, but damage or loss immediately reduces the force to that fragile condition. With four, five, or six ships, a navy can sustain deployments, maintenance, and surge capacity while accepting somewhat more risk in each individual design. The video therefore argues that a larger Nelson class could rationally have traded some armour for speed, because losing one of six would be serious rather than strategically devastating.",
     "topics": [
@@ -11708,7 +12117,7 @@
     ],
     "evidence": [
       {
-        "start": "1:35:46",
+        "start": "1:35:55",
         "end": "1:38:15",
         "note": "Explains how one- through six-ship force sizes change availability, surge capacity, and the acceptable balance between armour and speed."
       }
@@ -11885,12 +12294,12 @@
     "body": "This section explains why Dr. Clarke treats Norway as a war-lengthening strategic failure rather than a local Scandinavian episode. German access to Norway changed the geography of the North Atlantic, Arctic convoy routes, and anti-submarine warfare patrols. The point gives viewers a map-based reason to care about the Altmark aftermath: the problem was not only neutral rights, but the future operating space of the Kriegsmarine.",
     "topics": [
       {
-        "slug": "norway-campaign",
-        "title": "Norway Campaign"
+        "slug": "norwegian-campaign",
+        "title": "Norwegian Campaign"
       },
       {
         "slug": "battle-of-the-atlantic",
-        "title": "Battle Of The Atlantic"
+        "title": "Battle of the Atlantic"
       },
       {
         "slug": "anti-submarine-warfare",
@@ -11942,8 +12351,8 @@
     "body": "Dr. Clarke presents the British mining delay as the most concrete execution failure in the crisis. If the Royal Navy had moved when originally planned, British forces might have been off Norway as German ships approached, creating engagements along the coast rather than allowing the invasion to unfold on German timing. He illustrates the stakes with the expected presence of carriers, battleships, Renown, and the German Scharnhorsts, turning the counterfactual into a fleet-contact problem.",
     "topics": [
       {
-        "slug": "norway-campaign",
-        "title": "Norway Campaign"
+        "slug": "norwegian-campaign",
+        "title": "Norwegian Campaign"
       },
       {
         "slug": "naval-mine-warfare",
@@ -11999,8 +12408,8 @@
     "body": "This watch point is valuable for viewers who want the order-of-battle logic behind the argument. Dr. Clarke lists battleships, battlecruisers, carriers, cruisers, Tribal-class destroyers, other destroyers, sloops, submarines, and Allied vessels available around the Norway campaign. His conclusion is that such a force, if already positioned earlier, could probably have produced a much more successful battle for the British.",
     "topics": [
       {
-        "slug": "norway-campaign",
-        "title": "Norway Campaign"
+        "slug": "norwegian-campaign",
+        "title": "Norwegian Campaign"
       },
       {
         "slug": "royal-navy",
@@ -12056,8 +12465,8 @@
     "body": "After describing the force available, Dr. Clarke turns to command appointments. He argues that Churchill's selection of Admiral Cork and Orrery created problems because the admiral did not get on well with the army and, in Clarke's judgment, should not have been sent. This makes the Norway case more than a timing failure: it also becomes a study in matching commanders to coalition and joint-operational demands.",
     "topics": [
       {
-        "slug": "norway-campaign",
-        "title": "Norway Campaign"
+        "slug": "norwegian-campaign",
+        "title": "Norwegian Campaign"
       },
       {
         "slug": "winston-churchill",
@@ -12113,8 +12522,8 @@
     "body": "This section turns the Altmark Incident into a diplomatic and readiness problem. Dr. Clarke says Britain should have publicly guaranteed Norway against German retaliation, kept a force ready in Scotland, and proceeded with the planned mining of Norwegian waters. He contrasts the well-run rescue with what he calls atrocious management of the relationship with Norway afterward, especially given the Allied ability to deploy substantial forces once Germany invaded.",
     "topics": [
       {
-        "slug": "norway-campaign",
-        "title": "Norway Campaign"
+        "slug": "norwegian-campaign",
+        "title": "Norwegian Campaign"
       },
       {
         "slug": "winston-churchill",
@@ -12170,8 +12579,8 @@
     "body": "Dr. Clarke places Norway inside Britain's expected strategy of distant blockade rather than treating it as an isolated campaign. Containing German naval forces and protecting British trade had to be achieved economically because planners also expected Italy to enter the war and watched Franco's Spain closely. That wider resource problem made Norwegian intelligence, readiness, and political engagement especially important. The watch point shows why failing to cultivate Norway was inconsistent with Britain's own long-term maritime strategy.",
     "topics": [
       {
-        "slug": "norway-campaign",
-        "title": "Norway Campaign"
+        "slug": "norwegian-campaign",
+        "title": "Norwegian Campaign"
       },
       {
         "slug": "distant-blockade",
@@ -12226,8 +12635,8 @@
     "body": "This section explains Norway's importance through operational geography. Control or reliable neutrality would help protect Arctic convoys and strengthen Britain's hold on the North Atlantic approaches. German U-boats based in France would still need to reach those bases or pass through an anti-submarine barrier between Britain and Norway before circling into the Atlantic. Without Norwegian bases, Germany would also lose air attack and scouting opportunities over northern waters. The passage turns the Norway counterfactual into a concrete argument about submarine attrition and convoy defense.",
     "topics": [
       {
-        "slug": "norway-campaign",
-        "title": "Norway Campaign"
+        "slug": "norwegian-campaign",
+        "title": "Norwegian Campaign"
       },
       {
         "slug": "arctic-convoys",
@@ -12235,7 +12644,7 @@
       },
       {
         "slug": "battle-of-the-atlantic",
-        "title": "Battle Of The Atlantic"
+        "title": "Battle of the Atlantic"
       },
       {
         "slug": "anti-submarine-warfare",
@@ -12282,8 +12691,8 @@
     "body": "Dr. Clarke argues that keeping Norway neutral or defeating a German attack would reshape more than the Norwegian coast. Britain might no longer need to occupy Iceland because Germany would have a much harder route to the island. A secure Norway could also support a better Allied relationship with Sweden and obstruct the use of Swedish territory for German troop movements toward the Eastern Front. Swedish iron ore might flow to Britain rather than support Germany. The segment is a useful reminder that northern maritime geography connected naval operations to continental resources and campaigns.",
     "topics": [
       {
-        "slug": "norway-campaign",
-        "title": "Norway Campaign"
+        "slug": "norwegian-campaign",
+        "title": "Norwegian Campaign"
       },
       {
         "slug": "iceland",
@@ -12338,8 +12747,8 @@
     "body": "The video briefly explores an air-power consequence of a successful defense of Norway. Dr. Clarke suggests that heavy bombers might have operated from Norwegian bases if German forces had attacked and been defeated. Norway could provide some supplies, while the United Kingdom remained close enough to sustain the force by sea and air. Such bases would radically alter the set of German targets within bomber range. This focused counterfactual links control of the Norwegian coast to Allied logistics and strategic bombing.",
     "topics": [
       {
-        "slug": "norway-campaign",
-        "title": "Norway Campaign"
+        "slug": "norwegian-campaign",
+        "title": "Norwegian Campaign"
       },
       {
         "slug": "strategic-bombing",
@@ -12393,8 +12802,8 @@
         "title": "Altmark Incident"
       },
       {
-        "slug": "norway-campaign",
-        "title": "Norway Campaign"
+        "slug": "norwegian-campaign",
+        "title": "Norwegian Campaign"
       },
       {
         "slug": "naval-leadership",
@@ -12706,8 +13115,8 @@
         "title": "Naval Procurement"
       },
       {
-        "slug": "battle-of-atlantic",
-        "title": "Battle Of Atlantic"
+        "slug": "battle-of-the-atlantic",
+        "title": "Battle of the Atlantic"
       },
       {
         "slug": "aircraft-carriers",
@@ -18807,8 +19216,8 @@
     "body": "The United States could ultimately enlarge its battleship program, but its political system cannot react on the British timetable. Congressional authorization and funding take time, and the decision would arrive after the immediate North Carolina-class construction opportunity had passed. Britain can accelerate more quickly because the relevant ships and programs are already inside an established parliamentary rearmament policy. The answer makes political lead time, not American industrial potential, the limiting factor.",
     "topics": [
       {
-        "slug": "united-states-navy",
-        "title": "United States Navy"
+        "slug": "us-navy",
+        "title": "US Navy"
       },
       {
         "slug": "naval-procurement",
@@ -19096,8 +19505,8 @@
         "title": "Japanese Navy"
       },
       {
-        "slug": "united-states-navy",
-        "title": "United States Navy"
+        "slug": "us-navy",
+        "title": "US Navy"
       }
     ],
     "evidence": [
@@ -23192,8 +23601,8 @@
         "title": "Naval Aviation"
       },
       {
-        "slug": "warship-conversions",
-        "title": "Warship Conversions"
+        "slug": "warship-conversion",
+        "title": "Warship Conversion"
       }
     ],
     "evidence": [
@@ -27187,8 +27596,8 @@
         "title": "Ship Design"
       },
       {
-        "slug": "united-states-navy",
-        "title": "United States Navy"
+        "slug": "us-navy",
+        "title": "US Navy"
       }
     ],
     "evidence": [
@@ -29677,7 +30086,7 @@
       },
       {
         "slug": "battle-of-the-atlantic",
-        "title": "Battle Of The Atlantic"
+        "title": "Battle of the Atlantic"
       },
       {
         "slug": "p-700-granit",
@@ -30811,7 +31220,7 @@
       },
       {
         "slug": "battle-of-the-atlantic",
-        "title": "Battle Of The Atlantic"
+        "title": "Battle of the Atlantic"
       }
     ],
     "evidence": [
@@ -32416,7 +32825,7 @@
     "topics": [
       {
         "slug": "battle-of-the-atlantic",
-        "title": "Battle Of The Atlantic"
+        "title": "Battle of the Atlantic"
       },
       {
         "slug": "convoys",
@@ -32728,8 +33137,8 @@
         "title": "Royal Netherlands Navy"
       },
       {
-        "slug": "royal-danish-navy",
-        "title": "Royal Danish Navy"
+        "slug": "danish-navy",
+        "title": "Danish Navy"
       },
       {
         "slug": "copenhagen",
@@ -36765,7 +37174,7 @@
       },
       {
         "slug": "battle-of-the-atlantic",
-        "title": "Battle Of The Atlantic"
+        "title": "Battle of the Atlantic"
       },
       {
         "slug": "anti-submarine-warfare",
@@ -37137,7 +37546,7 @@
     "topics": [
       {
         "slug": "battle-of-the-atlantic",
-        "title": "Battle Of The Atlantic"
+        "title": "Battle of the Atlantic"
       },
       {
         "slug": "german-navy",

@@ -6,22 +6,31 @@
     "ship-design",
     "naval-treaties",
     "royal-navy",
-    "damage-control"
+    "damage-control",
+    "standard-displacement",
+    "naval-gunnery"
   ],
   "segments": [
     {
       "id": "four-destroyer-tonnage-design-briefs",
       "videoId": "nC76s-l8WOI",
       "slug": "four-destroyer-tonnage-design-briefs",
-      "title": "Four destroyer tonnage briefs frame the design problem",
-      "kind": "chapter",
+      "title": "What do four destroyer tonnage briefs reveal?",
+      "kind": "qa",
       "start": "1:50",
-      "end": "3:03",
-      "topics": ["destroyers", "ship-design", "ultimate-admiral-dreadnoughts", "standard-displacement"],
-      "summary": "The video turns four proposed standard displacements into a practical 1940 gun-destroyer design exercise.",
-      "body": "Dr. Clarke sets out to compare gun destroyers nominally limited to 1,500, 1,750, 2,250, and 2,500 tons. He immediately distinguishes standard displacement from a ship's heavier operational condition, establishing why the in-game hull must carry more than the quoted treaty figure. His working approximation adds roughly one-third to represent the fuel, stores, and other operating loads excluded from the standard figure. This opening makes the later compromises intelligible as naval-architecture choices rather than mere game optimization.",
+      "end": "29:55",
+      "topics": ["destroyers", "ship-design", "naval-treaties", "ultimate-admiral-dreadnoughts", "standard-displacement"],
+      "summary": "A Patreon design prompt reveals why treaty standard displacement cannot be treated as a destroyer's complete seagoing weight.",
+      "question": "What would 1,500-, 1,750-, 2,250-, and 2,500-ton gun destroyers look like, and how would their design choices compare with historical examples?",
+      "answerShort": "Once standard displacement is translated into operational weight, the smallest briefs cannot carry a credible 1940 gun-destroyer fit, while larger hulls ease but do not eliminate the tradeoffs.",
+      "body": "A Patreon prompt asks Dr. Clarke to compare gun destroyers nominally limited to 1,500, 1,750, 2,250, and 2,500 tons. He treats those figures as standard displacement and adds roughly one-third for fuel, stores, and other operating loads. The 1,500-ton brief cannot combine credible machinery, guns, and torpedoes even after capability is cut, while the 1,750-ton version remains constrained by arrangement and combat systems. Around 2,000 tons standard, a larger hull can balance a strong gun battery, one quintuple torpedo launcher, light weapons, and modest protection. The in-game hull limit prevents him from representing the full-load weights implied by the 2,250- and 2,500-ton briefs. The exercise shows that a treaty number is only the starting point for understanding a destroyer's real design envelope.",
       "sourcePath": "src/transcripts/txt/2022-06-12_T06-00-11_a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video_nC76s-l8WOI.txt",
-      "evidence": [{"start": "1:50", "end": "3:03", "note": "The transcript states the four requested tonnages and explains the standard-displacement assumption."}]
+      "evidence": [
+        {"start": "1:50", "end": "3:03", "note": "The transcript states the Patreon prompt and explains the standard-displacement assumption."},
+        {"start": "8:56", "end": "10:30", "note": "The smallest brief remains under the weight required for a credible gun-destroyer fit even after capability reductions."},
+        {"start": "13:18", "end": "18:12", "note": "The 1,750-ton brief gains hull volume but remains constrained by torpedo arrangement, firing arcs, sensors, and weight."},
+        {"start": "21:49", "end": "29:55", "note": "The larger design becomes workable, while the two highest standard-displacement briefs exceed the available hull limit after operational weight is added."}
+      ]
     },
     {
       "id": "machinery-consumes-small-destroyer-weight",
@@ -92,6 +101,20 @@
       "body": "Gun destroyers are harder to balance than torpedo-centered designs because their weapons need broad arcs and often superfiring positions. Torpedo launchers sit low on the hull, whereas gun positions and their supporting structures impose weight higher up and may crowd the bow. Concentrating guns forward produces an undesirable weight distribution even after machinery is shifted aft. Dr. Clarke connects balance directly to high-speed maneuvering, which both gun and torpedo destroyers need to close the enemy and bring weapons to bear.",
       "sourcePath": "src/transcripts/txt/2022-06-12_T06-00-11_a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video_nC76s-l8WOI.txt",
       "evidence": [{"start": "18:17", "end": "21:40", "note": "The transcript contrasts gun and torpedo installation demands and explains why balance matters to maneuver."}]
+    },
+    {
+      "id": "torpedo-reloads-expose-treaty-accounting-gap",
+      "videoId": "nC76s-l8WOI",
+      "slug": "torpedo-reloads-expose-treaty-accounting-gap",
+      "title": "Torpedo reloads expose a treaty-accounting gap",
+      "kind": "notable_point",
+      "start": "19:20",
+      "end": "20:03",
+      "topics": ["torpedo-reloads", "naval-treaties", "standard-displacement", "torpedoes", "destroyers"],
+      "summary": "Reload torpedoes could sit outside standard displacement even though their real weight and handling systems still burdened the ship.",
+      "body": "The treaty definition allowed reload torpedoes to sit outside standard displacement even though the ship still had to carry their real weight at sea. Dr. Clarke notes that a navy could exploit this by fitting reloads and their associated systems while understating the total burden. That accounting choice helps explain why a destroyer's operational displacement could exceed the figure used to judge compliance. It also sharpens the design lesson: nominal tonnage limits cannot be evaluated without knowing which weapons, stores, and systems the rules excluded.",
+      "sourcePath": "src/transcripts/txt/2022-06-12_T06-00-11_a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video_nC76s-l8WOI.txt",
+      "evidence": [{"start": "19:20", "end": "20:03", "note": "The transcript says reload torpedoes were excluded from standard displacement and discusses hiding reload systems within declared tonnage."}]
     },
     {
       "id": "two-thousand-ton-gun-destroyer-balance",

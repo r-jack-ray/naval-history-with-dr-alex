@@ -6,7 +6,9 @@
     "fleet-exercises",
     "royal-navy",
     "deterrence",
-    "amphibious-warfare"
+    "amphibious-warfare",
+    "naval-air-defence",
+    "naval-wargaming"
   ],
   "segments": [
     {
@@ -115,9 +117,9 @@
       "kind": "chapter",
       "start": "17:25",
       "end": "19:50",
-      "topics": ["fleet-exercises", "naval-air-defence", "anti-aircraft-guns", "destroyers", "dual-purpose-guns", "4-7-inch-guns", "4-5-inch-guns"],
+      "topics": ["fleet-exercises", "naval-air-defence", "anti-aircraft-guns", "destroyers", "dual-purpose-guns", "4-7-inch-guns", "4-5-inch-guns", "naval-procurement"],
       "summary": "Peacetime exercises aimed attackers at prestigious capital ships, understating the danger to escorts and distorting anti-aircraft gun choices.",
-      "body": "Exercise participants preferred attacking battleships, carriers, and cruisers because those were the prestigious targets. In war, an attacker could still claim a useful success by destroying an exposed destroyer, so the exercise incentives produced a false picture of escort vulnerability. That bias made a 4.7-inch low-angle gun appear adequate when it could engage aircraft attacking a nearby capital ship but could not protect its own destroyer as effectively. The lecture argues that more realistic exercises might have accelerated adoption of the 4.5-inch dual-purpose gun across the fleet.",
+      "body": "Exercise participants preferred attacking battleships, carriers, and cruisers because those were the prestigious targets. In war, an attacker could still claim a useful success by destroying an exposed destroyer, so the exercise incentives produced a false picture of escort vulnerability. That bias made a 4.7-inch low-angle gun appear adequate when it could engage aircraft attacking a nearby capital ship but could not protect its own destroyer as effectively. The lecture argues that more realistic exercises might have accelerated adoption of the 4.5-inch dual-purpose gun across the fleet. Even after the Third Sea Lord pushed the weapon, understanding, approval, and installation took years, so distorted exercise lessons compounded an already slow procurement cycle.",
       "sourcePath": "src/transcripts/txt/2020-06-16_T14-00-16_an-introduction-to-what-was-paid-for-in-blood-in-sweat-in-tears-and-so-much-money-part-3-of-3_vQesTddeFXc.txt",
       "evidence": [{"start": "17:45", "end": "19:44", "note": "Exercise target selection is tied to destroyer vulnerability and delayed adoption of a dual-purpose gun."}]
     },
@@ -125,15 +127,29 @@
       "id": "falklands-air-defence-is-a-system",
       "videoId": "vQesTddeFXc",
       "slug": "falklands-air-defence-is-a-system",
-      "title": "Falklands air defence required detection and disruption",
+      "title": "Falklands air defence depended on sensor distance",
       "kind": "chapter",
       "start": "19:50",
-      "end": "23:27",
-      "topics": ["falklands-war", "naval-air-defence", "airborne-early-warning", "fighter-direction", "san-carlos-water", "anti-aircraft-guns", "40-mm-guns"],
-      "summary": "The Falklands example treats air defence as a layered system that finds attackers early and disrupts their runs even when it does not destroy them.",
-      "body": "The lecture argues that preparation for a North Atlantic missile threat did not remove the need for long-range sensors and gunfire in the Falklands. Airborne early warning would have extended detection and fighter direction beyond what shipboard radar alone could provide. Around San Carlos Water, additional 40 mm and other medium-caliber guns could have forced Argentine pilots to evade, lose aim, or become more vulnerable to missiles and decoys. Air defence is therefore judged not only by aircraft destroyed but also by attacks broken up before they hit ships.",
+      "end": "20:55",
+      "topics": ["falklands-war", "naval-air-defence", "airborne-early-warning", "fighter-direction", "radar"],
+      "summary": "Airborne early warning extended the fleet's detection horizon and made long-range fighter direction possible in the 1982 campaign.",
+      "body": "Prewar planning emphasized a North Atlantic missile threat, but the fleet still had to find an attacker before any weapon could be brought to bear. Shipboard radar alone could not provide the sensor distance needed in 1982, making airborne early warning essential. That extended picture also enabled fighter direction at useful range, a function the lecture links to both the Second World War and the Falklands. The watch point shows that naval air defence begins as a detection and command problem before it becomes a missile or gun problem.",
       "sourcePath": "src/transcripts/txt/2020-06-16_T14-00-16_an-introduction-to-what-was-paid-for-in-blood-in-sweat-in-tears-and-so-much-money-part-3-of-3_vQesTddeFXc.txt",
-      "evidence": [{"start": "19:50", "end": "20:46", "note": "The transcript identifies airborne early warning and fighter direction as critical sensor functions."}, {"start": "20:55", "end": "23:07", "note": "It explains how medium-caliber fire and other defensive layers can disrupt an attack without necessarily destroying the aircraft."}]
+      "evidence": [{"start": "19:50", "end": "20:46", "note": "The transcript identifies airborne early warning and fighter direction as critical sensor functions."}]
+    },
+    {
+      "id": "san-carlos-gunfire-disrupts-attacks",
+      "videoId": "vQesTddeFXc",
+      "slug": "san-carlos-gunfire-disrupts-attacks",
+      "title": "San Carlos gunfire mattered even without a kill",
+      "kind": "notable_point",
+      "start": "20:55",
+      "end": "23:27",
+      "topics": ["falklands-war", "san-carlos-water", "naval-air-defence", "anti-aircraft-guns", "40-mm-guns", "decoys"],
+      "summary": "Medium-calibre weapons could spoil Argentine attack runs, consume fuel, and make aircraft easier for missiles or decoys to defeat.",
+      "body": "At San Carlos Water, Dr Clarke argues for more 40 mm and other medium-calibre guns around the anchorage. Their value was not limited to shooting aircraft down: evasive flying could spoil aim, consume fuel, and break an attack's geometry. An attacker forced to manoeuvre and reacquire its target could instead be caught by another defensive layer or distracted by chaff and decoys. This changes the peacetime evaluation of a weapon, because disruption and survival count even when no kill is credited. The watch point presents layered air defence as a system of detection, evasive pressure, decoys, and destruction.",
+      "sourcePath": "src/transcripts/txt/2020-06-16_T14-00-16_an-introduction-to-what-was-paid-for-in-blood-in-sweat-in-tears-and-so-much-money-part-3-of-3_vQesTddeFXc.txt",
+      "evidence": [{"start": "20:55", "end": "23:07", "note": "Medium-calibre fire is valued for forcing evasive manoeuvres and helping other defensive layers defeat an attack."}]
     },
     {
       "id": "midway-wargame-results-overruled",
@@ -178,12 +194,26 @@
       "evidence": [{"start": "27:41", "end": "29:44", "note": "The speaker presents Hawaii as a difficult counterfactual that could channel the American return and support operations against the West Coast."}, {"start": "29:49", "end": "30:19", "note": "Recent costly evacuations are used to challenge the assumption that an isolated force could simply withdraw."}]
     },
     {
+      "id": "norway-command-lost-the-ground-picture",
+      "videoId": "vQesTddeFXc",
+      "slug": "norway-command-lost-the-ground-picture",
+      "title": "British command lacked a common picture in Norway",
+      "kind": "notable_point",
+      "start": "30:44",
+      "end": "31:39",
+      "topics": ["norwegian-campaign", "military-command", "situational-awareness", "coalition-warfare"],
+      "summary": "The Norway example distinguishes capable individual officers from a command system able to understand changing conditions ashore.",
+      "body": "The lecture introduces the Norwegian campaign as a case of British command undergoing a major transition while failing to grasp events on the ground. Capable individual officers were present, but talent did not automatically produce a shared operational picture. Without that understanding, choices about withdrawal, reinforcement, and the relationship between the central and northern fronts became harder to judge coherently. The moment is useful for seeing why professional command depends on situational awareness and organization as well as on the quality of particular leaders.",
+      "sourcePath": "src/transcripts/txt/2020-06-16_T14-00-16_an-introduction-to-what-was-paid-for-in-blood-in-sweat-in-tears-and-so-much-money-part-3-of-3_vQesTddeFXc.txt",
+      "evidence": [{"start": "31:06", "end": "31:24", "note": "The speaker describes a major command transition and a failure to understand conditions on the ground in Norway."}]
+    },
+    {
       "id": "norway-1940-central-front-counterfactual",
       "videoId": "vQesTddeFXc",
       "slug": "norway-1940-central-front-counterfactual",
       "title": "A defensive central front might have preserved Allied Norway",
       "kind": "chapter",
-      "start": "30:44",
+      "start": "31:39",
       "end": "34:34",
       "topics": ["norwegian-campaign", "royal-navy", "amphibious-warfare", "arctic-convoys", "sea-control"],
       "summary": "A Norway 1940 counterfactual argues for holding the center while consolidating Allied strength in the north.",
@@ -200,8 +230,8 @@
       "start": "34:34",
       "end": "37:04",
       "topics": ["falklands-war", "amphibious-warfare", "hms-fearless", "hms-intrepid", "royal-marines", "force-structure"],
-      "summary": "Fearless and Intrepid illustrate why a navy must retain the shipping and trained force needed for a rare large amphibious operation.",
-      "body": "The threatened withdrawal of HMS Fearless and HMS Intrepid reflected doubts within the Royal Navy about the future need for major amphibious warfare. The Falklands force ultimately approached a light division rather than a small raiding party, creating demands far beyond those of routine commando operations. Shipping taken from trade could help, but it could not replace purpose-built amphibious capacity and the trained organization needed to land and support brigades ashore. Rare contingencies are precisely the ones for which improvisation becomes most costly and painful when preparation has been discarded.",
+      "summary": "The Nott Review's threatened loss of Fearless and Intrepid illustrates why a navy must retain the shipping and trained force needed for a rare large amphibious operation.",
+      "body": "The Nott Review nearly removed HMS Fearless and HMS Intrepid, and the lecture credits Clapp and Thompson with arguing for their retention amid doubts about whether the Navy fully understood amphibious warfare. The Falklands force ultimately approached a light division rather than a small raiding party, creating demands far beyond those of routine commando operations. Shipping taken from trade could help, but it could not replace purpose-built amphibious capacity and the trained organization needed to land and support brigades ashore. Rare contingencies are precisely the ones for which improvisation becomes most costly and painful when preparation has been discarded.",
       "sourcePath": "src/transcripts/txt/2020-06-16_T14-00-16_an-introduction-to-what-was-paid-for-in-blood-in-sweat-in-tears-and-so-much-money-part-3-of-3_vQesTddeFXc.txt",
       "evidence": [{"start": "34:34", "end": "35:03", "note": "The transcript notes the threatened loss of Fearless and Intrepid and command doubts about amphibious warfare."}, {"start": "35:17", "end": "36:59", "note": "It explains the scale of the landed force and why major capacity must exist before the crisis."}]
     },

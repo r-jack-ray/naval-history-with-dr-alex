@@ -7,6 +7,8 @@
     "bismarck",
     "dreadnoughts",
     "naval-gunnery",
+    "fire-control",
+    "naval-architecture",
     "warship-design",
     "naval-wargaming",
     "alternate-history"
@@ -54,6 +56,26 @@
       ]
     },
     {
+      "id": "main-tower-loss-and-fire-control-redundancy",
+      "videoId": "wS8JaBxUbq4",
+      "slug": "main-tower-loss-and-fire-control-redundancy",
+      "title": "How one main-tower hit erases a fifteen-gun advantage",
+      "kind": "notable_point",
+      "start": "23:35",
+      "end": "25:49",
+      "topics": ["queen-elizabeth-class-battleships", "battleships", "fire-control", "naval-gunnery", "battle-damage", "fire-control-redundancy"],
+      "summary": "The fifteen-gun Queen Elizabeth derivative has theoretical volume of fire, but an early hit destroys its main tower and leaves it unable to exploit that advantage.",
+      "body": "The first battle test begins with fifteen British barrels against eight German ones, giving the Queen Elizabeth derivative a theoretical advantage in shell volume. A hit then destroys the main tower, and Dr. Clarke notes that the ship can no longer see the enemy properly even though the hull still reports about 95 percent structural integrity. The contrast exposes why observation and fire-control positions matter as much as the number of guns mounted. A battleship can remain buoyant yet lose the arrangements needed to turn its battery into effective fire. Opening here shows the design failure that drives the later rebuild.",
+      "sourcePath": "src/transcripts/txt/2023-03-29_T18-00-21_still-trying-to-deal-with-the-inadvertently-created-super-bismarck_wS8JaBxUbq4.txt",
+      "evidence": [
+        {
+          "start": "23:35",
+          "end": "25:49",
+          "note": "He contrasts the fifteen-gun British broadside with Bismarck's eight guns, then loses the main tower and observes that the ship can no longer see the enemy despite retaining about 95 percent structural integrity."
+        }
+      ]
+    },
+    {
       "id": "pre-dreadnought-convoy-escort",
       "videoId": "wS8JaBxUbq4",
       "slug": "pre-dreadnought-convoy-escort",
@@ -61,9 +83,9 @@
       "kind": "qa",
       "start": "28:01",
       "end": "28:36",
-      "topics": ["pre-dreadnoughts", "convoy-operations", "battleships"],
+      "topics": ["pre-dreadnoughts", "convoy-operations", "battleships", "lord-nelson-class-battleships", "panzerschiffe"],
       "summary": "A 23- to 25-knot pre-dreadnought may be useful for convoy escort, but not for fighting a modern battle fleet.",
-      "body": "The answer separates a ship's escort value from its suitability for a line-of-battle fight. An early pre-dreadnought would be outclassed, while a later Lord Nelson-like design could still defeat a Deutschland/Panzerschiff type in the right circumstances. It is a useful reminder that speed, mission, and opponent matter more than a simple old-versus-new label.",
+      "body": "The answer separates a ship's escort value from its suitability for a line-of-battle fight. An early pre-dreadnought would be outclassed, while a later Lord Nelson-like design could still defeat a Deutschland/Panzerschiff type in the right circumstances. A speed of 23 to 25 knots could therefore be useful for convoy duty without making the ship suitable against an enemy battle fleet. Opening here shows why an old warship must be judged against its assigned mission and likely opponent rather than age alone.",
       "sourcePath": "src/transcripts/txt/2023-03-29_T18-00-21_still-trying-to-deal-with-the-inadvertently-created-super-bismarck_wS8JaBxUbq4.txt",
       "evidence": [
         {
@@ -74,6 +96,26 @@
       ],
       "question": "Could a pre-dreadnought making 23 to 25 knots serve in the Second World War?",
       "answerShort": "Potentially as a convoy escort; an early type would not beat a modern battle fleet, but a later Lord Nelson-like ship could handle a Panzerschiff-type opponent."
+    },
+    {
+      "id": "hull-beam-topweight-and-fire-control-rebuild",
+      "videoId": "wS8JaBxUbq4",
+      "slug": "hull-beam-topweight-and-fire-control-rebuild",
+      "title": "Rebuilding beam, topweight, and fire control after the first duel",
+      "kind": "notable_point",
+      "start": "29:52",
+      "end": "32:37",
+      "topics": ["queen-elizabeth-class-battleships", "naval-architecture", "warship-design", "ship-stability", "weight-distribution", "fire-control"],
+      "summary": "The failed first duel sends the design back to the yard, where a wider hull and a stronger main tower must be balanced against machinery efficiency and forward weight.",
+      "body": "Dr. Clarke abandons the first test once the vulnerable main tower and zero hit probability make the result uninformative. He widens the hull so a more substantial tower can fit, then works back through beam, machinery efficiency, and component placement. Moving equipment reduces the forward weight offset to roughly two percent, which he expects to improve accuracy. The sequence shows that fire-control protection cannot be added independently: extra superstructure changes topweight, stability, propulsion efficiency, and the space available for secondary weapons. Opening here turns the first battle's failure into a compact lesson in iterative naval architecture.",
+      "sourcePath": "src/transcripts/txt/2023-03-29_T18-00-21_still-trying-to-deal-with-the-inadvertently-created-super-bismarck_wS8JaBxUbq4.txt",
+      "evidence": [
+        {
+          "start": "29:52",
+          "end": "32:37",
+          "note": "He stops the failed test, widens the hull to fit a stronger main tower, and adjusts beam, machinery efficiency, component position, and forward weight offset to improve the rebuilt ship's accuracy and balance."
+        }
+      ]
     },
     {
       "id": "bismarck-model-and-historical-allowance",
@@ -96,22 +138,22 @@
       ]
     },
     {
-      "id": "weight-of-fire-versus-hit-probability",
+      "id": "central-turret-retention-and-aircraft-handling",
       "videoId": "wS8JaBxUbq4",
-      "slug": "weight-of-fire-versus-hit-probability",
-      "title": "When fewer guns make a stronger battleship design",
+      "slug": "central-turret-retention-and-aircraft-handling",
+      "title": "Keeping the fifth turret complicates aircraft handling",
       "kind": "notable_point",
-      "start": "48:55",
-      "end": "50:33",
-      "topics": ["battleships", "warship-design", "naval-gunnery", "fire-control"],
-      "summary": "A conversion that removes a turret may be preferable when it frees weight for fire control, protection, and a more accurate ship.",
-      "body": "The design experiment weighs a 15-gun ship that cannot hit reliably against a 12-gun alternative that can. The comparison treats main-battery count as only one part of fighting power: fire-control arrangements, stability, armour, and the ability to keep firing all shape the useful weight of fire. It makes the trade-off behind reconstruction schemes easier to see.",
+      "start": "38:44",
+      "end": "40:14",
+      "topics": ["queen-elizabeth-class-battleships", "battleships", "warship-conversion", "turret-layout", "naval-aviation", "aircraft-handling"],
+      "summary": "Retaining all five triple turrets preserves the fifteen-gun battery, but it crowds the refit and leaves the modeled hangar doors without a practical aircraft-launch arrangement.",
+      "body": "The counterfactual assumes that the modernized ship keeps all five triple 16.5-inch turrets rather than following the Italian practice of removing a central turret during reconstruction. Dr. Clarke points out hangar doors in the standardized superstructure even though the ship has no aircraft-launch system fitted. In principle the adjacent turret could be trained away to clear space, but that would make every launch or recovery depend on moving the main battery. The moment shows how a retained turret can conflict with aviation facilities, funnels, secondary armament, and other refit requirements. It also explains why preserving maximum gun count may make a modernization less operationally coherent.",
       "sourcePath": "src/transcripts/txt/2023-03-29_T18-00-21_still-trying-to-deal-with-the-inadvertently-created-super-bismarck_wS8JaBxUbq4.txt",
       "evidence": [
         {
-          "start": "48:55",
-          "end": "50:33",
-          "note": "He considers removing the central turret for more superstructure and explains why twelve hitting guns can be better than fifteen missing guns."
+          "start": "38:44",
+          "end": "40:14",
+          "note": "He keeps all five triple turrets, contrasts that choice with Italian removal of a fifth turret during upgrades, and explains why the hangar-door position would require moving the main battery to handle aircraft."
         }
       ]
     },
@@ -132,6 +174,26 @@
           "start": "43:03",
           "end": "43:58",
           "note": "He attributes the German ship's apparent immunity to the turtleback model and considers applying the same scheme to the British design as a test."
+        }
+      ]
+    },
+    {
+      "id": "weight-of-fire-versus-hit-probability",
+      "videoId": "wS8JaBxUbq4",
+      "slug": "weight-of-fire-versus-hit-probability",
+      "title": "When fewer guns make a stronger battleship design",
+      "kind": "notable_point",
+      "start": "48:55",
+      "end": "50:33",
+      "topics": ["battleships", "warship-design", "naval-gunnery", "fire-control", "gunnery-accuracy", "ammunition-management", "range-control"],
+      "summary": "A conversion that removes a turret may be preferable when it frees weight for fire control, protection, and a more accurate ship.",
+      "body": "The design experiment weighs a fifteen-gun ship that cannot hit reliably against a twelve-gun alternative that can. The comparison treats main-battery count as only one part of fighting power: fire-control arrangements, stability, armour, and the ability to keep firing all shape the useful weight of fire. Dr. Clarke also notes that Bismarck should close toward secondary range while its remaining 15-inch ammunition can still support the approach, making range control part of the endurance problem. The passage makes the reconstruction trade-off easier to see: fewer barrels can be more valuable when the ship can find the target, stay intact, and use its ammunition under favourable tactical conditions.",
+      "sourcePath": "src/transcripts/txt/2023-03-29_T18-00-21_still-trying-to-deal-with-the-inadvertently-created-super-bismarck_wS8JaBxUbq4.txt",
+      "evidence": [
+        {
+          "start": "48:55",
+          "end": "50:33",
+          "note": "He considers removing the central turret for more superstructure, explains why twelve hitting guns can be better than fifteen missing guns, and argues that Bismarck should close before exhausting its 15-inch ammunition."
         }
       ]
     },
@@ -163,7 +225,7 @@
       "kind": "notable_point",
       "start": "1:02:29",
       "end": "1:07:44",
-      "topics": ["battleships", "naval-gunnery", "ammunition", "fire-control", "naval-wargaming"],
+      "topics": ["battleships", "naval-gunnery", "ammunition", "ammunition-management", "fire-control", "range-control", "secondary-batteries", "naval-wargaming"],
       "summary": "The first duel becomes a lesson in ammunition endurance when Bismarck expends its main-battery shells before destroying the badly damaged British ship.",
       "body": "Dr. Clarke tracks the German ammunition count as it falls to only a few salvos and then reaches zero. The British ship can close after the danger from the 15-inch battery disappears and inflict damage with its remaining weapons. He is explicit that this is not proof of a superior design: the result comes from the opponent's expenditure and the British ship's ability to keep firing. The sequence adds ammunition capacity and fire discipline to the stream's wider comparison of nominal firepower, accuracy, protection, and endurance.",
       "sourcePath": "src/transcripts/txt/2023-03-29_T18-00-21_still-trying-to-deal-with-the-inadvertently-created-super-bismarck_wS8JaBxUbq4.txt",
@@ -182,20 +244,20 @@
       "title": "The 14-inch gun Dreadnought that might have changed the arms race",
       "kind": "qa",
       "start": "1:14:19",
-      "end": "1:19:37",
-      "topics": ["hms-dreadnought", "john-fisher", "naval-arms-race", "naval-gunnery", "alternate-history"],
-      "summary": "An Elswick 14-inch Dreadnought could have widened Britain's initial lead and forced a more difficult German response.",
-      "body": "The answer notes that Elswick's 14-inch/45-calibre gun was available when Dreadnought was being planned, while the real ship reused 12-inch Lord Nelson machinery and turrets to save time and money. A 14-inch opening move would have made contemporary 12-inch ships look obsolete sooner and made the German 11-inch response less credible. Dr. Clarke argues that the resulting gap might have altered both the pace of the naval arms race and Fisher's hope that naval superiority could deter war.",
+      "end": "1:15:11",
+      "topics": ["hms-dreadnought", "john-fisher", "elswick-ordnance-company", "14-inch-guns", "naval-gunnery", "naval-procurement", "alternate-history"],
+      "summary": "Elswick's 14-inch gun was available when Dreadnought was planned, but the historical ship reused Lord Nelson 12-inch turrets to save time and money.",
+      "body": "The answer begins with the industrial choice available in 1905: Elswick's 14-inch/45-calibre weapon existed while Dreadnought was being planned. The real design reused 12-inch gun and turret machinery associated with the Lord Nelson class, reducing cost and protecting the rapid construction schedule. Choosing the larger weapon might have delayed entry into service, although Dr. Clarke does not treat that delay as certain. This watch point separates the immediate procurement trade-off from the wider arms-race consequences developed in the following discussion.",
       "sourcePath": "src/transcripts/txt/2023-03-29_T18-00-21_still-trying-to-deal-with-the-inadvertently-created-super-bismarck_wS8JaBxUbq4.txt",
       "evidence": [
         {
           "start": "1:14:19",
-          "end": "1:19:37",
-          "note": "He discusses Elswick 14-inch guns, the real use of Lord Nelson turrets, and the potential effect on German construction and deterrence."
+          "end": "1:15:11",
+          "note": "He says Elswick's 14-inch/45-calibre gun was available during Dreadnought's planning, contrasts it with the reused Lord Nelson 12-inch turrets, and notes the possible construction delay."
         }
       ],
       "question": "What if Britain had begun the dreadnought era with a 14-inch-gun design rather than the historical Dreadnought?",
-      "answerShort": "It could have increased Britain's initial qualitative lead, forced Germany to seek a faster and larger response, and changed the early naval-arms-race arithmetic."
+      "answerShort": "The larger gun was available and would have made Dreadnought more powerful, but adopting it traded the proven Lord Nelson turret shortcut for possible cost and schedule delay."
     },
     {
       "id": "superfiring-triple-turret-dreadnought",
@@ -204,16 +266,16 @@
       "title": "A five-triple-turret Dreadnought before the dreadnought race",
       "kind": "notable_point",
       "start": "1:16:00",
-      "end": "1:18:48",
-      "topics": ["hms-dreadnought", "superfiring-turrets", "naval-arms-race", "warship-design", "alternate-history"],
-      "summary": "Combining superfiring turrets with 14-inch guns would have made the first Dreadnought resemble an Orion-era ship years early.",
-      "body": "Dr. Clarke notes that Fisher initially doubted whether one turret could fire safely over another, but later accepted that the arrangement was possible. He explores the consequences of a 1905–06 Dreadnought with five triple 14-inch turrets: a fifteen-gun broadside, six guns ahead, and a standard that would rapidly redefine what counted as a capital ship. The thought experiment shows how one layout decision can cascade into battlecruiser design, foreign procurement, and deterrence.",
+      "end": "1:19:37",
+      "topics": ["hms-dreadnought", "john-fisher", "superfiring-turrets", "14-inch-guns", "naval-arms-race", "naval-deterrence", "naval-procurement", "warship-design", "alternate-history"],
+      "summary": "Combining superfiring turrets with 14-inch guns would have made the first Dreadnought resemble an Orion-era ship years early and widened Britain's opening lead.",
+      "body": "Dr. Clarke notes that Fisher initially doubted whether one turret could fire safely over another, but later accepted that the arrangement was possible. He explores a 1905–06 Dreadnought with five triple 14-inch turrets, giving it a fifteen-gun broadside and six guns able to fire ahead. Such a ship would resemble an Orion-generation design years early and make twin-turret 12-inch contemporaries look obsolete before they entered service. Germany would have to answer a 14-inch standard rather than justify its 11-inch guns as equivalent to British 12-inch weapons, slowing any matching construction while Britain began follow-on ships. Dr. Clarke argues that this enlarged lead might have taken heat out of the arms race and better served Fisher's deterrent purpose, while treating that result as a counterfactual rather than a prediction.",
       "sourcePath": "src/transcripts/txt/2023-03-29_T18-00-21_still-trying-to-deal-with-the-inadvertently-created-super-bismarck_wS8JaBxUbq4.txt",
       "evidence": [
         {
           "start": "1:16:00",
-          "end": "1:18:48",
-          "note": "He discusses Fisher's view of superfiring and imagines a five-triple-14-inch Dreadnought built in 1905–06."
+          "end": "1:19:37",
+          "note": "He discusses Fisher's view of superfiring, imagines a five-triple-14-inch Dreadnought built in 1905–06, and follows its effects through German construction, Britain's building lead, and deterrence."
         }
       ]
     },
@@ -245,9 +307,9 @@
       "kind": "notable_point",
       "start": "1:27:19",
       "end": "1:30:08",
-      "topics": ["hms-argincourt", "naval-treaties", "battleships", "naval-gunnery", "alternate-history"],
+      "topics": ["hms-argincourt", "naval-treaties", "naval-arms-race", "battleships", "naval-gunnery", "18-inch-guns", "alternate-history"],
       "summary": "An 18-inch-gun Argincourt would likely provoke American and Japanese replies and make later treaty limits far harder to negotiate.",
-      "body": "The discussion treats an 18-inch Argincourt as a technology shock rather than simply a stronger British ship. If it entered service before the end of the First World War, American and Japanese designers would have strong incentives to pursue comparable ships. Later capital-ship choices might then revolve around an 18-inch super-heavy, a rapid-fire 16-inch ship, or a 14-inch quad-turret alternative, changing the background to naval limitation agreements.",
+      "body": "The discussion treats an 18-inch Argincourt as a technology shock rather than simply a stronger British ship. Dr. Clarke imagines it entering service around 1914–16, after German construction had ceased matching Britain's pace, and therefore appearing as a new global benchmark. American and Japanese designers would then have strong incentives to pursue comparable ships of their own. Later capital-ship choices might revolve around an 18-inch super-heavy, a rapid-fire 16-inch ship, or a 14-inch quad-turret alternative, changing the background to naval limitation agreements.",
       "sourcePath": "src/transcripts/txt/2023-03-29_T18-00-21_still-trying-to-deal-with-the-inadvertently-created-super-bismarck_wS8JaBxUbq4.txt",
       "evidence": [
         {
@@ -287,9 +349,9 @@
       "kind": "notable_point",
       "start": "1:42:17",
       "end": "1:42:33",
-      "topics": ["naval-logistics", "oilers", "pacific-war", "war-in-the-pacific"],
+      "topics": ["naval-logistics", "fleet-replenishment", "oilers", "pacific-war", "war-in-the-pacific"],
       "summary": "Fleet oilers matter so much in the Pacific that losing them can be more damaging to operations than losing a carrier.",
-      "body": "The short exchange makes logistics the decisive issue in a Pacific operational game. A damaged or lost carrier is serious, but an oiler shortage can prevent the force from reaching, sustaining, or withdrawing from its intended area of operations. It is a compact illustration of why naval power depends on replenishment ships as well as combatants.",
+      "body": "The short exchange makes logistics the decisive issue in a Pacific operational game. A damaged or lost carrier is serious, but an oiler shortage can prevent the force from reaching, sustaining, or withdrawing from its intended area of operations. Combat power therefore cannot be separated from the fuel network that lets a fleet move across the theatre. It is a compact illustration of why naval power depends on replenishment ships as well as combatants.",
       "sourcePath": "src/transcripts/txt/2023-03-29_T18-00-21_still-trying-to-deal-with-the-inadvertently-created-super-bismarck_wS8JaBxUbq4.txt",
       "evidence": [
         {
@@ -300,15 +362,40 @@
       ]
     },
     {
+      "id": "twelve-gun-eighteen-inch-conqueror-design",
+      "videoId": "wS8JaBxUbq4",
+      "slug": "twelve-gun-eighteen-inch-conqueror-design",
+      "title": "Designing Conqueror as a twelve-gun 18-inch fast battleship",
+      "kind": "chapter",
+      "start": "1:45:37",
+      "end": "1:57:52",
+      "topics": ["battleships", "alternate-history", "warship-design", "naval-wargaming", "18-inch-guns", "naval-architecture", "ship-stability", "all-or-nothing-armour"],
+      "summary": "A second counterfactual turns the 18-inch concept into a 28-knot, twelve-gun design whose hull form, gun length, protection, and loading system must fit one displacement budget.",
+      "body": "After Argincourt's erratic test, Dr. Clarke builds a separate Conqueror concept with twelve 18-inch guns. He narrows beam and draft around a 28-knot requirement, watching pitch, roll, and fore-and-aft weight shift as the hull changes. The gun model is reduced from an implausible 48- or 49-calibre length toward 45 calibres, while armour and internal protection absorb the tonnage recovered elsewhere. Enhanced or semi-automatic loading offers more firepower but creates another weight choice, and he explicitly tests an all-or-nothing protection scheme. The chapter is useful as a counterfactual design exercise rather than a claim that such a ship existed: each improvement forces a concession in stability, protection, machinery, or weapons.",
+      "sourcePath": "src/transcripts/txt/2023-03-29_T18-00-21_still-trying-to-deal-with-the-inadvertently-created-super-bismarck_wS8JaBxUbq4.txt",
+      "evidence": [
+        {
+          "start": "1:45:37",
+          "end": "1:50:11",
+          "note": "He starts the Conqueror test with twelve 18-inch guns, a 28-knot target, and repeated beam, draft, pitch, roll, and weight-distribution adjustments."
+        },
+        {
+          "start": "1:51:11",
+          "end": "1:57:52",
+          "note": "He settles the gun model toward 45 calibres, trades armour and loading arrangements against weight, and selects all-or-nothing protection before launching the test."
+        }
+      ]
+    },
+    {
       "id": "harpoon-versus-uad-testing-caveat",
       "videoId": "wS8JaBxUbq4",
       "slug": "harpoon-versus-uad-testing-caveat",
       "title": "Why the stream treats UAD as exploration rather than a precision test",
-      "kind": "notable_point",
+      "kind": "qa",
       "start": "1:58:33",
       "end": "1:59:13",
-      "topics": ["naval-wargaming", "warship-design", "simulation", "harpoon-naval-wargame"],
-      "summary": "Dr. Clarke distinguishes the quick, visual experimentation of Ultimate Admiral: Dreadnoughts from the Harpoon system he uses for more accuracy-focused testing.",
+      "topics": ["naval-wargaming", "warship-design", "simulation", "ultimate-admiral-dreadnoughts", "harpoon-naval-wargame"],
+      "summary": "Asked about sharing designs, Dr. Clarke distinguishes the quick visual experiments of Ultimate Admiral: Dreadnoughts from the Harpoon system he uses for accuracy-focused testing.",
       "body": "A viewer asks about sharing ship designs, prompting Dr. Clarke to explain what the game contributes to his historical experiments. Ultimate Admiral: Dreadnoughts is enjoyable and fast enough for building counterfactual ships and seeing their trade-offs play out on screen. He nevertheless calls it a quick-and-dirty tool and reserves Harpoon for accuracy testing. This caveat matters for every battle result in the stream: the simulations are prompts for design analysis, not controlled historical proof.",
       "sourcePath": "src/transcripts/txt/2023-03-29_T18-00-21_still-trying-to-deal-with-the-inadvertently-created-super-bismarck_wS8JaBxUbq4.txt",
       "evidence": [
@@ -317,7 +404,9 @@
           "end": "1:59:13",
           "note": "While discussing shared designs, he says he uses Harpoon for accuracy testing and Ultimate Admiral: Dreadnoughts because it is fun and quick-and-dirty."
         }
-      ]
+      ],
+      "question": "Are the ship designs from these streams available to share or review?",
+      "answerShort": "He is investigating how to share UAD designs; the game is useful for quick visual experiments, while Harpoon remains his tool for accuracy-focused testing."
     },
     {
       "id": "german-radar-procurement-problem",
@@ -366,16 +455,21 @@
       "title": "Why a floating battleship may no longer be a fighting battleship",
       "kind": "notable_point",
       "start": "2:16:38",
-      "end": "2:22:49",
-      "topics": ["battleships", "battle-damage", "damage-control", "naval-wargaming", "warship-survivability"],
+      "end": "2:27:58",
+      "topics": ["battleships", "battle-damage", "damage-control", "naval-wargaming", "warship-survivability", "naval-architecture", "n3-class-battleships", "gunnery-accuracy"],
       "summary": "Severe flooding, list, machinery damage, and ammunition loss should destroy combat effectiveness well before a battleship finally sinks.",
-      "body": "The damaged German ship remains fast and able to fire despite a heavy list, water sweeping over the hull, damaged engines, and the loss of much of its ammunition. Dr. Clarke distinguishes merely staying afloat from retaining useful fighting power, noting that firing heavy guns at such an angle would worsen the list and that machinery damage should reduce speed. His criticism exposes an important survivability distinction: structural buoyancy, mobility, weapon operation, and combat effectiveness are separate thresholds. Opening here gives viewers a concrete warning against reading a game's final sinking time as a complete measure of historical resilience.",
+      "body": "The damaged German ship remains fast and able to fire despite a heavy list, water sweeping over the hull, damaged engines, and the loss of much of its ammunition. Dr. Clarke distinguishes merely staying afloat from retaining useful fighting power, noting that firing heavy guns at such an angle would worsen the list and that machinery damage should reduce speed. He later compares the design's quantity of steel with the N3 concept, then watches it absorb repeated 18-inch hits while continuing to score improbably accurate broadsides in a tight turn. His criticism exposes an important survivability distinction: structural buoyancy, mobility, weapon operation, and combat effectiveness are separate thresholds. The eventual sinking does not validate the combat behaviour that preceded it. Opening here gives viewers a concrete warning against reading a game's final sinking time as a complete measure of historical resilience.",
       "sourcePath": "src/transcripts/txt/2023-03-29_T18-00-21_still-trying-to-deal-with-the-inadvertently-created-super-bismarck_wS8JaBxUbq4.txt",
       "evidence": [
         {
           "start": "2:16:38",
           "end": "2:22:49",
           "note": "He explains why the flooding, list, ammunition loss, and damaged engines should prevent the ship from fighting or maintaining speed even if it remains afloat."
+        },
+        {
+          "start": "2:24:19",
+          "end": "2:27:58",
+          "note": "He compares the design's steel with N3, then criticizes its ability to absorb repeated 18-inch hits, remain afloat, and keep scoring broadsides while turning under a severe list."
         }
       ]
     }

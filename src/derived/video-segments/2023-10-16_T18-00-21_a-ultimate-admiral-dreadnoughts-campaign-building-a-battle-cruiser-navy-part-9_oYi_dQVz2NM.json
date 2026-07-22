@@ -6,7 +6,9 @@
     "battlecruisers",
     "battleships",
     "cruisers",
+    "force-structure",
     "naval-blockade",
+    "naval-diplomacy",
     "naval-logistics",
     "naval-procurement"
   ],
@@ -28,6 +30,26 @@
           "start": "5:15",
           "end": "6:40",
           "note": "He explains that surface raiders can exploit poorly escorted convoys and names the heavy German surface threat."
+        }
+      ]
+    },
+    {
+      "id": "fleet-growth-manpower-and-shipyard-bottlenecks",
+      "videoId": "oYi_dQVz2NM",
+      "slug": "fleet-growth-manpower-and-shipyard-bottlenecks",
+      "title": "When fleet growth outruns crews and shipyard capacity",
+      "kind": "notable_point",
+      "start": "7:22",
+      "end": "8:42",
+      "topics": ["fleet-expansion", "naval-personnel", "shipyard-capacity", "shipbuilding", "force-structure", "battleships"],
+      "summary": "A rapidly expanding capital fleet creates crew shortages and leaves maximum shipyard capacity behind the demands of the building program.",
+      "body": "Clarke reviews a fleet expansion that briefly created a crew shortage and left maximum shipyard size behind the demands of his building program. The active force already includes 29 battleships, 40 battlecruisers, 116 light cruisers, 42 destroyers, and 93 submarines. Those figures make the constraint visible: ordering progressively larger fast battleships consumes both people and construction capacity. The campaign therefore illustrates why fleet size cannot be separated from manpower and industrial infrastructure.",
+      "sourcePath": "src/transcripts/txt/2023-10-16_T18-00-21_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-9_oYi_dQVz2NM.txt",
+      "evidence": [
+        {
+          "start": "7:22",
+          "end": "8:42",
+          "note": "He recalls a crew shortage, says shipyard capacity lags his building program, and inventories the capital ships, cruisers, destroyers, and submarines already in service."
         }
       ]
     },
@@ -100,10 +122,10 @@
       "title": "Balancing a fast heavy-gun battleship design",
       "kind": "chapter",
       "start": "20:59",
-      "end": "34:48",
-      "topics": ["battleship-design", "naval-architecture", "main-battery-guns", "armour", "speed"],
-      "summary": "The design screen becomes a lesson in trading speed, armor, machinery, and secondary armament to fit fifteen 16.5-inch guns on a fast battleship.",
-      "body": "Clarke starts with the desire for a fifteen-gun capital ship, then works through the displacement penalties of machinery, armor, hull protection, and weapons. Reducing the design speed to 32 knots brings the ship under weight while still promising a practical 30-knot performance. He accepts an American-looking all-forward arrangement and a less-than-ideal belt because the resulting vessel combines speed with an unusually heavy main battery. The completed Thunder design is intended as the next generation of battleship for his campaign.",
+      "end": "26:48",
+      "topics": ["battleship-design", "naval-architecture", "main-battery-guns", "armour", "speed", "weight-distribution"],
+      "summary": "Clarke works backward from a fifteen-gun main battery, reducing machinery, protection, and nominal speed until the fast battleship fits its displacement limit.",
+      "body": "Clarke begins with an operational requirement rather than a finished hull: a second battleship mounting fifteen 16.5-inch guns. He works down the overweight design by reducing machinery and protection settings, then drops nominal speed to 32 knots so the ship should still make 30 knots in practice. An American-looking forward concentration of triple turrets improves the foreweight balance while preserving the very heavy battery. The sequence shows how a desired armament fixes the rest of a capital ship's compromises before secondary guns and final armor are added.",
       "sourcePath": "src/transcripts/txt/2023-10-16_T18-00-21_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-9_oYi_dQVz2NM.txt",
       "evidence": [
         {
@@ -112,9 +134,34 @@
           "note": "He reduces weight through machinery, armor, and speed changes while retaining the desired main battery."
         },
         {
-          "start": "29:01",
+          "start": "24:29",
+          "end": "26:48",
+          "note": "He accepts the American-looking turret arrangement, improves the weight offset, and confirms a 32-knot ship with fifteen 16.5-inch guns."
+        }
+      ]
+    },
+    {
+      "id": "thunder-secondary-armament-and-protection",
+      "videoId": "oYi_dQVz2NM",
+      "slug": "thunder-secondary-armament-and-protection",
+      "title": "Finishing Thunder's secondary battery and protection",
+      "kind": "chapter",
+      "start": "28:59",
+      "end": "34:48",
+      "topics": ["battleship-design", "secondary-armament", "6-inch-guns", "main-battery-guns", "armour", "torpedo-defence"],
+      "summary": "The Thunder design is completed by balancing six-inch secondaries, belt armor, range, and defenses against small craft around its fifteen-gun main battery.",
+      "body": "Clarke equips each side with the equivalent of a light cruiser's battery of six-inch guns because their range better suits the fighting distances he expects. Weight pressure forces a choice between an adequate 14-inch belt and the 18 inches he would prefer. The fifteen 16.5-inch guns remain the defining feature; without quad turrets, five triples provide the volume he wants. He also notes that the game's lack of aircraft removes one real-world design pressure, although torpedo boats and submarines still justify sonar and lighter defenses. The completed Thunder becomes the planned next generation after the battleships already under construction enter service.",
+      "sourcePath": "src/transcripts/txt/2023-10-16_T18-00-21_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-9_oYi_dQVz2NM.txt",
+      "evidence": [
+        {
+          "start": "28:59",
+          "end": "30:56",
+          "note": "He chooses six-inch secondaries, weighs belt thickness against displacement, and explains why five triple turrets carry the main battery."
+        },
+        {
+          "start": "32:02",
           "end": "34:48",
-          "note": "He selects six-inch secondaries, weighs armor choices, and saves Thunder as the next battleship design."
+          "note": "He adjusts range and protection, notes the small-craft and submarine threat, and saves Thunder as the next battleship design."
         }
       ]
     },
@@ -145,16 +192,16 @@
       "title": "Standardizing the battle line around heavy guns",
       "kind": "notable_point",
       "start": "48:50",
-      "end": "53:05",
+      "end": "49:10",
       "topics": ["battleships", "fleet-standardization", "main-battery-guns", "logistics"],
       "summary": "Two different battleship classes share the same 16.5-inch and six-inch armament, showing the campaign's move toward standardized force design.",
-      "body": "While chasing a French capital ship, Clarke notes that vessels from different classes carry the same 16.5-inch main guns and six-inch secondary battery. He presents this as deliberate standardization, in contrast to the opposing ship's collection of disparate gun types. That common format lets successive battleship classes share major ammunition and weapon arrangements even when their hulls and ages differ. The comparison highlights why a common armament scheme can simplify a fleet's material problem.",
+      "body": "While chasing a French capital ship, Clarke notes that vessels from different British classes carry the same 16.5-inch main guns and six-inch secondary battery. He presents that repetition as a deliberate standard format rather than an accidental resemblance. Common weapons let successive classes share major ammunition types and simplify the fleet's supply burden even when their hulls and ages differ. The brief comparison makes standardization part of fleet design rather than merely a feature of one ship.",
       "sourcePath": "src/transcripts/txt/2023-10-16_T18-00-21_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-9_oYi_dQVz2NM.txt",
       "evidence": [
         {
           "start": "48:50",
-          "end": "53:05",
-          "note": "He identifies the standardized British armament and calls the enemy ship's mixed guns a logistician's nightmare."
+          "end": "49:10",
+          "note": "He identifies the common 16.5-inch and six-inch armament as the standard format for different British battleship classes."
         }
       ]
     },
@@ -195,6 +242,26 @@
           "start": "1:16:21",
           "end": "1:17:21",
           "note": "He says Japan examined Schnellboot designs but could not establish the necessary industry in time."
+        }
+      ]
+    },
+    {
+      "id": "diplomacy-deterrence-and-distributed-forces",
+      "videoId": "oYi_dQVz2NM",
+      "slug": "diplomacy-deterrence-and-distributed-forces",
+      "title": "Diplomacy protects a globally dispersed fleet",
+      "kind": "notable_point",
+      "start": "1:28:38",
+      "end": "1:31:26",
+      "topics": ["naval-diplomacy", "alliance-politics", "deterrence", "submarines", "light-cruisers", "fleet-distribution"],
+      "summary": "Clarke avoids reopening the Canal Zone dispute and keeps improving U.S. relations while submarines and grouped cruisers provide insurance against a wider war.",
+      "body": "In the campaign, Egypt controls the Canal Zone but is allied to China, whose relations with Britain are good, so Clarke chooses not to create another conflict. He similarly improves relations with the United States even while its naval counterpart seeks a war that could unlock more funding. The military hedge is already in place: submarines and numerous light cruisers sit near American waters. He groups isolated cruisers into at least pairs so they can operate as useful local forces. The episode distinguishes the game's counterfactual map from real history while illustrating how diplomacy, deterrence, and distributed force posture interact.",
+      "sourcePath": "src/transcripts/txt/2023-10-16_T18-00-21_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-9_oYi_dQVz2NM.txt",
+      "evidence": [
+        {
+          "start": "1:28:38",
+          "end": "1:31:26",
+          "note": "He leaves the China-aligned Canal Zone alone, improves U.S. relations despite the other navy's funding incentive for war, and groups nearby submarines and light cruisers."
         }
       ]
     },
@@ -244,24 +311,64 @@
       "id": "chester-class-survivability-refit",
       "videoId": "oYi_dQVz2NM",
       "slug": "chester-class-survivability-refit",
-      "title": "Refitting light cruisers for firepower and torpedo survival",
-      "kind": "chapter",
+      "title": "Why the Chester class needed a survivability refit",
+      "kind": "notable_point",
       "start": "2:00:10",
-      "end": "2:16:30",
-      "topics": ["light-cruisers", "warship-refits", "torpedo-defence", "firepower", "speed"],
-      "summary": "The Chester-class refit gives up three knots to gain heavier armament, larger torpedoes, more subdivision, and better protection against flooding.",
-      "body": "Repeated torpedo losses drive a refit of the Chester-class light cruisers. Clarke adds stronger anti-flooding protection, double hulls, reinforced bulkheads, greater gun power, and 22-inch torpedoes, then accepts a reduction from 36 to 33 knots to make the weight work. He considers the trade worthwhile because the ships gain far more firepower and a better chance of surviving the damage that had been defeating them. The design episode makes the usual warship compromise explicit: speed is valuable, but resilience and weapons can be worth more in the campaign's tactical environment.",
+      "end": "2:00:39",
+      "topics": ["light-cruisers", "warship-refits", "torpedo-defence", "damage-control"],
+      "summary": "Repeated torpedo hits show that avoidance systems are not enough when campaign-controlled cruisers fail to take effective evasive action.",
+      "body": "Repeated torpedo losses push Clarke to reconsider the Chester class rather than accept its high speed as sufficient protection. The ships already carry systems intended to help them avoid torpedoes, but in the campaign they still get hit because they fail to maneuver effectively. He therefore shifts the design problem from avoidance alone to surviving the hit and controlling flooding. The passage establishes the operational failure that drives the detailed refit later in the episode.",
       "sourcePath": "src/transcripts/txt/2023-10-16_T18-00-21_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-9_oYi_dQVz2NM.txt",
       "evidence": [
         {
           "start": "2:00:10",
+          "end": "2:00:39",
+          "note": "He says the Chester class still gets hit despite its torpedo-avoidance systems because the ships do not take the needed evasive action."
+        }
+      ]
+    },
+    {
+      "id": "repair-base-capacity-and-damaged-ships",
+      "videoId": "oYi_dQVz2NM",
+      "slug": "repair-base-capacity-and-damaged-ships",
+      "title": "Damaged ships need ports able to repair them",
+      "kind": "notable_point",
+      "start": "2:03:19",
+      "end": "2:03:30",
+      "topics": ["naval-bases", "ship-repair", "port-infrastructure", "naval-logistics", "fleet-readiness"],
+      "summary": "A complaint about damaged ships choosing small ports becomes a concise lesson in matching casualties to bases with adequate maintenance capacity.",
+      "body": "Clarke criticizes a campaign behavior that sends damaged ships to the smallest available ports. He argues that casualties should instead move to larger bases able to maintain and repair them. The distinction matters because reaching shelter does not restore a hull without suitable dockyard capacity. The brief observation connects basing geography and repair infrastructure to a fleet's operational availability after battle.",
+      "sourcePath": "src/transcripts/txt/2023-10-16_T18-00-21_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-9_oYi_dQVz2NM.txt",
+      "evidence": [
+        {
+          "start": "2:03:19",
+          "end": "2:03:30",
+          "note": "He asks why damaged ships choose the smallest ports and says they should move to larger ports capable of maintaining and repairing them."
+        }
+      ]
+    },
+    {
+      "id": "chester-class-protection-and-firepower-refit",
+      "videoId": "oYi_dQVz2NM",
+      "slug": "chester-class-protection-and-firepower-refit",
+      "title": "Trading speed for a tougher, harder-hitting Chester class",
+      "kind": "chapter",
+      "start": "2:07:12",
+      "end": "2:16:30",
+      "topics": ["light-cruisers", "warship-refits", "torpedo-defence", "damage-control", "6-inch-guns", "torpedoes", "fleet-modernization"],
+      "summary": "The revised Chester class sacrifices three knots for stronger flooding protection, heavier guns, larger torpedoes, and a fleet-wide survivability standard.",
+      "body": "Clarke adds stronger anti-flooding protection, double hulls, reinforced bulkheads, heavier guns, and 22-inch torpedoes. The protection and weapons push the design overweight, so reducing maximum speed from 36 to 33 knots becomes the decisive trade. He calculates a roughly 50 percent increase in gun firepower and accepts the speed loss because the revised ships should survive flooding better. Range improves as well, while the refit can be applied to roughly half the light-cruiser fleet. The result shows how operational losses can turn into a fleet-wide modernization standard rather than a one-off repair.",
+      "sourcePath": "src/transcripts/txt/2023-10-16_T18-00-21_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-9_oYi_dQVz2NM.txt",
+      "evidence": [
+        {
+          "start": "2:07:12",
           "end": "2:12:57",
-          "note": "He introduces the need for better torpedo resistance and details the new armor, flooding protection, weapons, and speed trade-off."
+          "note": "He adds double hulls, reinforced bulkheads, anti-flooding protection, heavier weapons, and larger torpedoes, then reduces speed to make the weight work."
         },
         {
-          "start": "2:15:47",
+          "start": "2:13:38",
           "end": "2:16:30",
-          "note": "He summarizes the sacrifice of three knots for a substantial firepower increase while refitting much of the light-cruiser fleet."
+          "note": "He reviews gun range and rate of fire, accepts three knots less speed for roughly 50 percent more gun power, and begins refitting about half the cruiser fleet."
         }
       ]
     },
@@ -346,6 +453,26 @@
       ]
     },
     {
+      "id": "battlecruiser-heavy-fleet-evolution",
+      "videoId": "oYi_dQVz2NM",
+      "slug": "battlecruiser-heavy-fleet-evolution",
+      "title": "How an all-battlecruiser phase shaped the later fleet",
+      "kind": "notable_point",
+      "start": "2:45:28",
+      "end": "2:47:54",
+      "topics": ["battlecruisers", "battleships", "light-cruisers", "force-structure", "fleet-expansion", "long-range-gunnery"],
+      "summary": "Clarke contrasts an earlier almost all-battlecruiser force with a later fleet of roughly forty battlecruisers, nearly forty battleships, and a large light-cruiser arm.",
+      "body": "Clarke explains that the fleet's large ship count is concentrated in capital ships and light cruisers, with relatively few destroyers. Earlier in the campaign he had stopped building anything below battlecruisers and at one point fielded an almost entirely battlecruiser force. He recalls meeting two enemy battleships with roughly a dozen battlecruisers and destroying them at range. By this stage, the capital-ship core is accompanied by a much larger light-cruiser arm rather than a proportionate destroyer force. The comparison shows how a successful tactical preference can shape an unusual force structure over time.",
+      "sourcePath": "src/transcripts/txt/2023-10-16_T18-00-21_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-9_oYi_dQVz2NM.txt",
+      "evidence": [
+        {
+          "start": "2:45:28",
+          "end": "2:47:54",
+          "note": "He inventories the capital-ship-heavy fleet, notes its small destroyer arm, and recalls an earlier battlecruiser-only phase and long-range victory."
+        }
+      ]
+    },
+    {
       "id": "tonnage-for-naval-invasions",
       "videoId": "oYi_dQVz2NM",
       "slug": "tonnage-for-naval-invasions",
@@ -404,6 +531,26 @@
           "start": "3:08:16",
           "end": "3:08:32",
           "note": "He says humans spot patterns, recommends giving an opponent a pattern to recognize and then breaking it, and contrasts computers."
+        }
+      ]
+    },
+    {
+      "id": "colonial-seizures-and-bay-of-bengal-control",
+      "videoId": "oYi_dQVz2NM",
+      "slug": "colonial-seizures-and-bay-of-bengal-control",
+      "title": "Using colonial seizures to secure the Bay of Bengal",
+      "kind": "notable_point",
+      "start": "3:08:56",
+      "end": "3:11:11",
+      "topics": ["alliance-warfare", "colonial-warfare", "bay-of-bengal", "sea-control", "naval-strategy", "french-colonies", "japanese-navy"],
+      "summary": "After Japan enters the campaign war, Clarke targets Cambodia and Thailand to secure the Bay of Bengal while Japan pressures French colonies elsewhere.",
+      "body": "Japan's entry against France changes the counterfactual campaign's division of effort. Clarke is content to let Japan take remaining French colonies after Britain has selected the Asian positions it values most. Capturing Cambodia and then Thailand would, in his scenario, make the Bay of Bengal a secure British waterway. He expects Japan's holdings around Aden to steer it toward French African colonies instead. The passage illustrates how colonial geography, alliance behavior, and sea-control objectives shape theater priorities without presenting the game's outcome as real history.",
+      "sourcePath": "src/transcripts/txt/2023-10-16_T18-00-21_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-9_oYi_dQVz2NM.txt",
+      "evidence": [
+        {
+          "start": "3:08:56",
+          "end": "3:11:11",
+          "note": "Japan joins the war, Clarke links Cambodia and Thailand to control of the Bay of Bengal, and he predicts Japanese pressure on French African colonies."
         }
       ]
     },
