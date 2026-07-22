@@ -185,6 +185,11 @@ test("production policy applies the repository-owner topic normalization batch",
     ],
     ["all-or-nothing-armor", "all-or-nothing-armour", "normalize-all-or-nothing-armor"],
     ["planetary-defense", "planetary-defence", "normalize-planetary-defense"],
+    [
+      "model-1924-203-mm-gun",
+      "203-mm-guns",
+      "normalize-model-1924-203-mm-gun",
+    ],
   ] as const;
 
   for (const [input, slug, ruleId] of creationExpected) {

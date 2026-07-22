@@ -292,6 +292,7 @@ test("keeps the repository-owner normalization batch canonical in the production
     "pom-poms",
     "wrens",
     "womens-royal-naval-service",
+    "model-1924-203-mm-gun",
   ]) {
     assert.equal(topicsBySlug.has(deprecated), false, deprecated);
   }

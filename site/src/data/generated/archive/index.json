@@ -6,13 +6,13 @@
     "transcriptsInput": "src/transcripts/manifest.json",
     "segmentsInput": "src/derived/video-segments",
     "patternsInput": "src/derived/topic-normalization-patterns.tsv",
-    "patternsSha256": "f4f923f476c1d23fb96bd555ecdccb1d57147f3d5eb5043bfd2ac669a11a9550",
-    "patternsSourceSha256": "f4f923f476c1d23fb96bd555ecdccb1d57147f3d5eb5043bfd2ac669a11a9550"
+    "patternsSha256": "2fb0495cae272decb4438a65c935bf52a44b5d54b88ad94bfff4d904b0bf6d61",
+    "patternsSourceSha256": "2fb0495cae272decb4438a65c935bf52a44b5d54b88ad94bfff4d904b0bf6d61"
   },
   "counts": {
     "videos": 2133,
     "segments": 53662,
-    "topics": 21085
+    "topics": 21084
   },
   "segmentSharding": {
     "algorithm": "sha256-video-id-mod",
@@ -26,8 +26,8 @@
     },
     "topics": {
       "path": "./topics.json",
-      "count": 21085,
-      "sha256": "682f7eea49ad74b469892c7a4bf6dd4df3d7f76b3ec8fd111d92184443701be2"
+      "count": 21084,
+      "sha256": "2a2a74e4597b4f808ec8cb1d12a173070d05d0c5e80fbc05dc1ecf8f69cca14d"
     },
     "segmentBuckets": [
       {
@@ -304,7 +304,7 @@
         "id": "2d",
         "path": "./segments/2d.json",
         "count": 1027,
-        "sha256": "3cb224c20fc26fdaa82b749e7b1f1950ba25f726b02abdbb083f57f287655c70"
+        "sha256": "41947105399a38275946b413d69e02a4928815223659cc31b07cadca32f23cb0"
       },
       {
         "id": "2e",
