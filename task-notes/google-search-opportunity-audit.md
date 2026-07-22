@@ -1,24 +1,44 @@
-# Google Search opportunity audit
+# Google Search opportunity audit — usability-first revision
 
 Date: 2026-07-22  
 Scope: the deployed learner-facing site and the current generated `site/dist` build  
-Goal: identify realistic changes that may improve Google discovery, indexing, result presentation, and page experience for a site maintained by one person with AI assistance
+Goal: identify realistic improvements for a reference and learning site based on Dr. Clarke's YouTube videos and live streams, while treating Google discovery and presentation as supporting concerns rather than the product goal
 
 ## Executive summary
 
-The site's basic Google Search implementation is already unusually strong. It emits static HTML, self-canonicals, unique metadata, crawlable pagination, breadcrumbs, `VideoObject` data, an ordinary XML sitemap, a video sitemap, and deliberate `noindex` rules. The live homepage, sitemap index, verification file, and video sitemap all returned HTTP 200 during this audit. The rendered-site validator found no structural SEO errors or warnings across 78,451 HTML pages.
+The site's basic learner flow and Google Search implementation are already strong. A visitor can search a subject, open a concise transcript-backed time note, see its source video and timestamp, inspect the longer parent guide, and jump to the original YouTube moment. The site also emits static HTML, self-canonicals, breadcrumbs, `VideoObject` data, ordinary and video sitemaps, and deliberate `noindex` rules. The live homepage, sitemap index, verification file, and video sitemap returned HTTP 200 during this audit. The rendered-site validator found no structural SEO errors or warnings across 78,451 HTML pages.
 
-The remaining opportunities are narrower and more practical than a general SEO rebuild:
+The priorities should therefore be chosen by asking whether a change makes Dr. Clarke's work easier to find, understand, verify, and watch. Google requirements matter when they expose a real technical defect or support that experience; they should not dictate the site's information architecture.
 
-1. **Paginate oversized topic detail pages.** Two indexable topic pages exceed Googlebot's current 2 MB uncompressed fetch limit. Google cannot see thousands of their later links.
-2. **Shorten video and time-note title templates.** Their median `<title>` lengths are 123 and 129 characters. Google has no fixed character limit, but explicitly recommends concise titles and warns against verbose boilerplate.
-3. **Use Search Console as the prioritization source.** The verification file and sitemaps exist, but private Search Console submission and indexing status could not be inspected. Confirming those is more valuable than adding more generic SEO tags.
-4. **Index fewer low-value topic landing pages and improve a small selected set.** Almost 47% of public topic pages lead to only one video and one time note, and none currently has a custom topic introduction.
-5. **Add one public About/Methodology page.** A concise explanation of who maintains the guide, how transcript-backed notes are produced, how AI is used, and how corrections work would add a practical trust signal.
-6. **Permit large image previews where high-resolution thumbnails exist.** This is an easy search-presentation improvement, not a ranking change.
-7. **Treat video-player performance and key-moment markup as measured pilots.** Both may help, but they have implementation and video-indexing tradeoffs and should not become blanket changes without Search Console evidence.
+The recommended order is:
+
+1. **Make very large topic collections usable.** Royal Navy currently contains 12,562 time notes and 1,663 video guides on one page. Pagination is necessary, but the learner need is broader: clear starting points, topic-local filtering, manageable result sets, and stable shareable pages.
+2. **Improve broad search-result journeys.** A live search for `Jutland` returned 1,838 matches, showing 24 initially. Exact subject results are useful, but visitors need lightweight filtering and clearer distinctions between topics, time notes, and full videos when a query is broad.
+3. **Improve topic coherence before reducing index coverage.** `Jutland` and `Battle Of Jutland` both appear as topic results without explaining whether they are aliases or distinct subjects. Merge true synonyms and clearly disambiguate genuinely different concepts. Do not automatically treat a one-note topic as low value; rare ships, people, and technical terms are legitimate reference entries.
+4. **Reduce the number of steps from discovery to watching.** On a video guide, each time-note card should offer a clear `Watch from 2:45` action as well as the link to the deeper note. Same-page timestamp URLs would serve learners first and could support Google key-moment markup secondarily.
+5. **Add a concise About/Methodology page.** This should explain the source relationship, how notes and timestamps are produced, how AI assists, the limitations of transcript interpretation, and how corrections are handled.
+6. **Shorten browser-title templates for human scanning.** The visible headings already serve visitors well and should not be rewritten merely to insert search phrases. Shorter `<title>` values would improve browser tabs, bookmarks, history, and search-result readability.
+7. **Use Search Console and performance data as diagnostic evidence.** They can reveal discovery, indexing, demand, and real-user performance problems, but they should not outrank the reference site's learner needs.
+
+Large image previews and Google `Clip` enhancements remain reasonable low-priority opportunities. They should follow the improvements above.
 
 No ranking is guaranteed. Google states that meeting its requirements and best practices does not guarantee crawling, indexing, or serving a page in results. See [Google Search Essentials](https://developers.google.com/search/docs/essentials).
+
+## Product decision rule
+
+The site exists to help someone answer four questions:
+
+1. What did Dr. Clarke say about this subject?
+2. In which video or live stream did he say it?
+3. At what moment can I watch the explanation?
+4. What related material should I study next?
+
+A recommendation should be accepted when it improves one or more of those tasks without weakening source fidelity, completeness, accessibility, or maintainability for one person working with AI. A Google-only change should be deferred when it adds complexity without a clear learner benefit.
+
+This rule changes two conclusions from the first draft:
+
+- A topic with one precise time note is not automatically thin or unhelpful. Reference works need coverage of rare subjects. Topic accuracy, disambiguation, and usefulness matter more than item count.
+- The existing friendly H1 text should not be replaced solely to make it more keyword-literal. Search wording belongs in supporting copy and metadata when the current heading is clearer for people.
 
 ## Audit basis
 
@@ -62,9 +82,28 @@ These are single mobile lab runs against production, not field Core Web Vitals a
 
 The Royal Navy audit ended with a DevTools timeout after collecting the performance data. Its local uncompressed HTML is 5.90 MB; Googlebot's limit applies to uncompressed data, so the smaller compressed transfer size does not remove the crawl problem.
 
+### Rendered usability walkthrough
+
+The deployed site was also exercised as a visitor rather than only inspected as generated HTML:
+
+- The homepage states the study-guide purpose, offers direct routes to videos, time notes, topics, and search, and provides featured watch points and subject starting points.
+- Search preserves the query in a shareable URL such as `/search/?q=Jutland`.
+- The `Jutland` search produced 1,838 matches and initially displayed 24. It placed an exact topic first and then supplied specific time notes with source videos, dates, timestamps, kinds, summaries, and matched subjects.
+- The same results also exposed a navigation problem: `Jutland` and `Battle Of Jutland` appeared as separate topics without a visible explanation of whether they mean a place, the battle, or two aliases.
+- A time-note page provides a focused summary, a substantive explanatory note, topic links, source video, date, timestamp range, evidence passage, `Watch at this time`, and `Full video guide`.
+- A video guide provides an embedded player and a chronological list of descriptive time notes. Opening a listed moment for its explanation is easy; watching that moment requires opening the time-note page first or manually seeking in the embedded player.
+
+These observations make search refinement, topic coherence, collection navigation, and watch-path efficiency more important than additional generic SEO markup.
+
 ## What is already correct
 
 These areas should be maintained, not rebuilt:
+
+- The site clearly presents itself as a study guide rather than a transcript dump or creator-analytics site.
+- Time notes explain both what Dr. Clarke covers and why the moment is worth watching.
+- Source provenance is visible on time-note pages through the video, date, timestamp range, kind, and evidence passage.
+- Video guides turn long videos and live streams into chronological, descriptive learning paths.
+- Search queries are shareable and results expose useful distinctions such as topic, chapter, notable point, and Q&A.
 
 - Substantive content is server-rendered as static HTML rather than hidden behind client-side search.
 - Every expected indexable route is represented in the ordinary sitemap, and video pages also appear in a dedicated video sitemap.
@@ -80,33 +119,120 @@ These areas should be maintained, not rebuilt:
 
 ## Prioritized findings
 
-### P0 — Paginate oversized topic detail pages and enforce an HTML size ceiling
+### P0 — Turn very large topic pages into usable subject collections
 
-Googlebot currently processes only the first 2 MB of an HTML response. Bytes after the cutoff are not fetched, rendered, or indexed. Google recommends lean HTML and putting critical metadata early. See [Googlebot file-size behavior](https://developers.google.com/search/docs/crawling-indexing/googlebot) and Google's [crawler byte-limit explanation](https://developers.google.com/search/blog/2026/03/crawler-blog-post).
+The problem is not merely that Googlebot cannot process all of the HTML. A learner who opens a topic containing thousands of moments is presented with a collection too large to scan or understand as a learning path.
 
-Two indexable pages currently exceed that limit:
+| Topic page | Uncompressed HTML | Time notes | Video guides | Links visible to Google before 2 MB cutoff |
+| --- | ---: | ---: | ---: | --- |
+| Royal Navy | 5,896,933 bytes | 12,562 | 1,663 | 4,566 time notes; 0 videos |
+| Naval Procurement | 2,380,909 bytes | 4,595 | 1,268 | 4,587 time notes; 0 videos |
 
-| Topic page | Uncompressed HTML | Full segment links | Segment links in first 2,000,000 bytes | Full video links | Video links in first 2,000,000 bytes |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Royal Navy | 5,896,933 bytes | 12,562 | 4,566 | 1,663 | 0 |
-| Naval Procurement | 2,380,909 bytes | 4,595 | 4,587 | 1,268 | 0 |
-
-`naval-aviation` is already close at 1,920,186 bytes. The non-indexable `topics/browse/all/` page is also 2,735,687 bytes, but it is a user-experience issue rather than an indexing priority.
+`naval-aviation` is close to Google's limit at 1,920,186 bytes. The non-indexable `topics/browse/all/` page is 2,735,687 bytes and presents the same human-scale problem even though indexing is not its purpose.
 
 Recommended change:
 
-- Paginate the related time-note and video-guide collections on large topic pages.
-- Give each pagination page a unique URL, ordinary previous/next anchors, and a self-canonical.
-- Do not canonicalize every page in a sequence back to page 1.
-- Keep every pagination URL in the sitemap if it remains indexable.
-- Preserve the topic heading and any eventual introduction on page 1.
-- Add a rendered-output failure for any indexable HTML page over approximately 1.5 MB, leaving margin for HTTP headers and future growth; add an earlier warning around 1 MB.
+- Show a manageable first page rather than the complete collection.
+- Keep time notes and full video guides visibly distinct and show their result counts.
+- Add topic-local search and lightweight filters for content type, time-note kind, and date. Do not build an elaborate faceted-search system before testing the small set that directly supports learning.
+- For the most-used broad topics, add a small reviewed `Start here` group or overview. Do not manually curate thousands of topic pages.
+- Use stable, shareable pagination URLs with ordinary previous/next links. Preserve full reference coverage across the sequence.
+- Make each pagination page self-canonical rather than pointing every page to page 1.
+- Add a rendered-output warning around 1 MB and a failure around 1.5 MB for any indexable HTML page so future growth cannot recreate the cutoff.
 
-Google's pagination guidance explicitly recommends unique URLs, sequential `<a href>` links, and self-canonicals for each page. See [Pagination best practices](https://developers.google.com/search/docs/specialty/ecommerce/pagination-and-incremental-page-loading).
+The Google requirement supports the same design: Googlebot processes only the first 2 MB of an HTML response, and Google recommends unique pagination URLs, sequential links, and self-canonicals. See [Googlebot file-size behavior](https://developers.google.com/search/docs/crawling-indexing/googlebot), the [crawler byte-limit explanation](https://developers.google.com/search/blog/2026/03/crawler-blog-post), and [pagination best practices](https://developers.google.com/search/docs/specialty/ecommerce/pagination-and-incremental-page-loading).
 
-Expected effect: **high confidence technical improvement**. It makes currently invisible links and text available to Google and materially improves the largest topic pages for users.
+Expected effect: **high learner and technical value**. Visitors get a navigable subject reference, and Google can reach material that is currently beyond its fetch limit.
 
-### P1 — Shorten title templates and make static H1s more literal
+### P0 — Make broad searches easier to narrow and compare
+
+The search experience already has good foundations: the query is stored in the URL, exact topic matches appear early, results identify their type and source, and each time note has a descriptive title and summary.
+
+The live `Jutland` test also shows the scale problem. It returned 1,838 matches and displayed 24 initially. A researcher looking for the battle generally, a specific ship, a Q&A answer, or a full lecture has to interpret one mixed stream.
+
+Recommended change:
+
+- Add simple content-type controls: `All`, `Time notes`, `Videos`, and `Topics`.
+- When time notes are selected, allow `Chapter`, `Notable point`, and `Q&A` filtering.
+- Consider a compact source-format distinction between edited videos and live streams only if visitors actually need it.
+- Keep exact canonical topics first, followed by the strongest time-note matches and then broader video matches.
+- Show enough source context to compare results without repeating long metadata blocks.
+- Preserve the query and selected filters in the URL so a research result can be bookmarked or shared.
+- Add focused ranking cases for real reference queries such as a battle, ship, class, person, acronym, weapon, and doctrine term.
+
+The Search page is deliberately `noindex`, so this work should be judged by findability and successful navigation, not by whether Google can index the result screen.
+
+Expected effect: **high learner value**. It shortens the path from a broad historical question to the right explanation.
+
+### P1 — Strengthen topic coherence before changing index coverage
+
+Current public-topic distribution provides scale context, not a quality verdict:
+
+| Topic condition | Count | Share of public topics |
+| --- | ---: | ---: |
+| Custom topic introduction present | 0 | 0% |
+| Exactly 1 video and 1 time note | 9,886 | 47.0% |
+| 2 or fewer time notes | 13,289 | 63.1% |
+| 10 or more time notes | 2,919 | 13.9% |
+
+A rare ship, officer, treaty clause, weapon, or design term may deserve a precise topic path even when only one strong time note exists. Automatically applying `noindex` to singleton topics would optimize a number rather than the reference purpose.
+
+The rendered `Jutland` search offers a better quality signal: `Jutland` and `Battle Of Jutland` appear as separate topics without explaining whether they are synonyms or whether the first means the geographic region. That can fragment a learner's path or make the taxonomy look unreliable.
+
+Recommended change:
+
+- Use the existing normalization policy to merge true aliases and near-duplicates into one canonical topic.
+- Redirect retired alias routes when practical; use canonical or `noindex` treatment only when a route must remain accessible.
+- Disambiguate genuinely different concepts in their display names, for example a geographic place versus a battle.
+- Audit broad or surprising topic associations for subject accuracy. The question is whether the linked note teaches that topic, not merely whether the transcript contains the word.
+- Add reviewed introductions only to high-use or easily misunderstood topics. Do not bulk-generate 21,048 descriptions.
+- Keep a precise singleton topic indexable when it is a useful reference entry. Exclude empty, erroneous, duplicate, or irreducibly ambiguous pages—not pages based only on a low item count.
+
+Google's people-first and scaled-content guidance supports accuracy and unique value, but it does not supply an item-count threshold. See [helpful-content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content), [generative-AI guidance](https://developers.google.com/search/docs/fundamentals/using-gen-ai-content), and [scaled content abuse](https://developers.google.com/search/docs/essentials/spam-policies#scaled-content).
+
+Expected effect: **high reference-integrity value** and a likely secondary indexing benefit from reducing duplicate or confusing landing pages.
+
+### P1 — Let visitors watch a discovered moment in one action
+
+The current pages separate two useful actions:
+
+- a time-note card opens the full explanation;
+- the time-note detail page then offers `Watch at this time` and `Full video guide`.
+
+That is appropriate for reading, but a learner scanning a video guide must take an extra page navigation before watching the selected moment.
+
+Recommended change:
+
+- Give each video-guide time-note card two clearly distinguished actions: open the full note and `Watch from <timestamp>`.
+- Prefer a shareable same-page timestamp URL such as `/videos/<slug>/?t=165` that seeks the embedded player. A direct timestamped YouTube link is a simpler acceptable first version.
+- Keep the base video URL canonical while preserving the timestamp parameter for sharing and browser navigation.
+- Change the generic detail-page label to a descriptive action such as `Watch “Jutland's fleets were decades in the making” at 2:45 on YouTube` when it remains readable.
+- Consider previous/next links between time notes from the same video so a learner can continue through the guide without returning to the full list.
+
+If local timestamp URLs are implemented well for visitors, they can later be reused for Google `Clip` markup. Structured data is a by-product, not the reason for the control.
+
+Expected effect: **high purpose alignment**. The site's central promise is to help someone find and watch the relevant moment.
+
+### P1 — Add one public About/Methodology page for reference transparency
+
+The public site explains its learner purpose and each note exposes source information, but it does not currently explain the editorial method in one place.
+
+One concise static page is enough. It should explain:
+
+- that the site is an independent reference and study guide based on Dr. Alex Clarke's published YouTube videos and live streams;
+- that Dr. Clarke's recordings and transcript-visible statements are the source material;
+- how timestamps, summaries, longer notes, evidence windows, segment kinds, and topic links are produced and checked;
+- how AI assists and where transcription or interpretation can still be wrong;
+- who maintains the site and how to report a factual, transcription, timestamp, or linking error;
+- that the original video remains authoritative for tone and full context.
+
+Link the page from the footer and optionally from the time-note source panel. A separate byline on every generated note would add clutter without improving the reference workflow.
+
+This is useful to learners independently of Google. It also aligns with Google's recommendation to explain who created content, how it was produced, and why it should be trusted. See [Google's who/how/why guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content#who-how-why).
+
+Expected effect: **medium-to-high trust value** with low ongoing maintenance.
+
+### P2 — Shorten browser titles for human scanning; retain useful visible headings
 
 Current detail-page title distribution:
 
@@ -116,99 +242,54 @@ Current detail-page title distribution:
 | Time note | 53,662 | 129 | 143 | 51,465 | 159 |
 | Topic | 21,048 | 43 | 51 | 0 | 77 |
 
-Google does not impose a fixed title-character limit, so this should not become a simplistic 60-character rule. It does, however, recommend descriptive, concise titles and warns against unnecessarily long and repetitive boilerplate. See [Influencing title links](https://developers.google.com/search/docs/appearance/title-link).
-
-The current video title template adds the publication date, time-note count, and `Dr. Alex Clarke Video Guide` to an already long source title. Time notes add a long parent-video title, timestamp, and `Time Note` suffix.
+Long browser titles make tabs, bookmarks, history entries, and search results harder to distinguish. The visible headings are a separate concern: the homepage's `Find the Dr. Clarke answer you're looking for` is clear, memorable, and immediately supported by literal explanatory copy. It does not need to be rewritten merely for keyword placement.
 
 Recommended change:
 
-- Put the unique subject first.
-- Remove the time-note count from video `<title>` text.
-- Add a date only when it is needed to distinguish duplicate video titles.
-- For time notes, use the segment title plus only the shortest useful parent/timestamp discriminator.
-- Keep the full visible video H1 unchanged when it is the truthful source title.
-- Keep title uniqueness tests, but do not satisfy uniqueness by adding opaque IDs or large boilerplate blocks.
-- Decouple the browser title from `VideoObject.name` if necessary; each should remain truthful and consistent, but they need not be character-for-character identical.
+- Put the unique subject first in `<title>`.
+- Remove the time-note count from video titles.
+- Include the date only when it distinguishes otherwise duplicate source titles.
+- For time notes, use the segment title plus the shortest useful parent or timestamp discriminator.
+- Keep full, truthful source titles as visible video H1 text.
+- Retain title-uniqueness tests without using opaque IDs or long repeated boilerplate.
 
-The main static H1s are friendly but less literal than the corresponding metadata. Easy improvements include:
+Google has no fixed title-character limit, so this should not become a 60-character rule. Its guidance to use concise, descriptive titles happens to match the human scanning benefit. See [title-link guidance](https://developers.google.com/search/docs/appearance/title-link).
 
-| Route | Current H1 | More search-descriptive direction |
-| --- | --- | --- |
-| Home | Find the Dr. Clarke answer you're looking for. | Search Dr. Alex Clarke's naval-history videos and time notes. |
-| Videos | Video guides. | Dr. Alex Clarke video guides. |
-| Time Notes | Find a useful moment to watch. | Find naval-history time notes. |
-| Topics | Follow a naval subject. | Explore naval-history topics. |
+Expected effect: **medium usability and result-presentation value**.
 
-The exact wording can retain the site's voice. The goal is to put the terms visitors actually use in the title and main heading, as recommended by [Search Essentials](https://developers.google.com/search/docs/essentials).
+### P2 — Investigate real video-page loading experience before changing the player
 
-Expected effect: **medium confidence result-presentation and relevance improvement**. It may reduce title rewrites and makes the useful subject visible before truncation.
+The representative video page scored 61 for Lighthouse performance with an 8.4-second LCP. Its own document and CSS were small; most transfer weight came from the YouTube player, including roughly 862 KiB of player scripts in that run. The page already uses `youtube-nocookie.com` and `loading="lazy"`.
 
-### P1 — Confirm Search Console submission and use its reports to choose work
+Recommended sequence:
 
-The site has a deployed verification file and a valid sitemap index. The remaining high-value step is account-side confirmation, not more sitemap code.
+1. Check real video-route Core Web Vitals and, if possible, test on an ordinary phone and connection.
+2. If visitors really experience a slow heading or unresponsive page, prototype automatic post-load or viewport-based iframe activation on a small set.
+3. Keep the video obviously available and do not make the primary watch action depend on an obscure interaction.
+4. Retain the stable `embedUrl`, source link, `VideoObject`, and video-sitemap record.
+5. Confirm Video Indexing does not regress before broad rollout.
 
-Recommended owner checklist:
+Do not rewrite a working player based on one lab run. Google's video and page-experience guidance is relevant, but the decision should be whether the page becomes faster and clearer for learners. See [Video SEO best practices](https://developers.google.com/search/docs/appearance/video) and [Page experience](https://developers.google.com/search/docs/appearance/page-experience).
+
+Expected effect: **conditional medium learner value**. Do nothing if field behavior is already good.
+
+### P2 — Use Search Console as a diagnostic, not as the product roadmap
+
+The site has a deployed verification file and valid sitemaps. The remaining account-side checks are worthwhile but should diagnose the public surface rather than decide which naval-history material deserves coverage.
+
+Recommended lightweight checklist:
 
 1. Confirm the URL-prefix property for `https://r-jack-ray.github.io/naval-history-with-dr-alex/` is verified.
-2. Submit `https://r-jack-ray.github.io/naval-history-with-dr-alex/sitemap-index.xml` once if it is not already listed.
-3. Confirm all three child sitemaps were read without errors.
-4. Review Page Indexing totals by route family: videos, segments, topics, and browse pages.
-5. Review Video Indexing and Video rich-result reports for representative watch pages.
-6. Review Performance by query and page to identify topics already earning impressions but weak click-through rates.
-7. Review Core Web Vitals before spending time on speculative performance changes.
+2. Submit the sitemap index once if it is not already listed, and confirm all three child sitemaps were read.
+3. Review Page Indexing by route family and Video Indexing for representative guides.
+4. Use query and page impressions to identify language visitors use and subjects they struggle to find.
+5. Use Core Web Vitals to decide whether the video-player experiment is warranted.
 
-Google says sitemap submission may speed discovery and makes sitemap processing monitorable, but a sitemap does not guarantee indexing or improve ranking by itself. See [Search Console setup guidance](https://developers.google.com/search/docs/monitor-debug/search-console-start) and [asking Google to recrawl](https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl).
+Search data can reveal a naming or findability problem, but it should not cause the guide to abandon rare, useful reference subjects. Google also states that sitemap submission helps discovery and monitoring but does not guarantee indexing or improve ranking by itself. See [Search Console setup](https://developers.google.com/search/docs/monitor-debug/search-console-start) and [recrawl guidance](https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl).
 
-This can be a brief manual check after material deployments and roughly monthly while the archive is growing. Repository credentials or automated account access are unnecessary.
+Expected effect: **high diagnostic value, low direct learner value**.
 
-Expected effect: **high decision value**. It reveals whether the actual constraint is discovery, canonical selection, content quality, video eligibility, or user demand.
-
-### P1 — Separate “public topic” from “indexable topic”
-
-Current public-topic distribution:
-
-| Topic condition | Count | Share of public topics |
-| --- | ---: | ---: |
-| Custom topic introduction present | 0 | 0% |
-| Exactly 1 video and 1 time note | 9,886 | 47.0% |
-| 2 or fewer time notes | 13,289 | 63.1% |
-| 5 or fewer time notes | 16,703 | 79.4% |
-| 10 or more time notes | 2,919 | 13.9% |
-
-A one-item topic page is generally an intermediate list that points to a richer time-note page. It can remain useful for navigation without necessarily becoming its own Google landing page. There is no Google rule that says a topic needs a specific item count; the thresholds above are local evidence for a quality decision, not Google requirements.
-
-Recommended change:
-
-- Define index eligibility separately from route/public visibility.
-- As a conservative first pass, apply `noindex` and sitemap exclusion to topics with exactly one video and one time note unless the topic is explicitly approved as a useful landing page.
-- Keep those pages accessible to users if the taxonomy navigation benefits from them.
-- Use Search Console impressions and learner importance to select a small batch of strong topic pages for real introductions and useful grouping.
-- Keep final topic-description prose intentionally authored and reviewed; do not bulk-generate 21,048 introductions.
-- Consolidate aliases and near-duplicate topic concepts through the existing normalization policy rather than creating pages for query variants.
-
-This is not a claim that the current site violates a spam policy. The time notes are transcript-backed and add value. It is a precaution against making thousands of minimally distinct landing pages the public search surface. Google emphasizes substantial, people-first value and warns against scaled pages that add little value regardless of whether automation or humans produced them. See [Creating helpful, reliable, people-first content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content), [guidance on generative AI content](https://developers.google.com/search/docs/fundamentals/using-gen-ai-content), and [scaled content abuse](https://developers.google.com/search/docs/essentials/spam-policies#scaled-content).
-
-Expected effect: **medium-to-high confidence index-quality improvement**, especially if Search Console shows many discovered-but-not-indexed or crawled-but-not-indexed topic URLs.
-
-### P2 — Add one public About/Methodology page
-
-The public site explains the learner purpose but does not currently provide an About or editorial-method page. Google recommends making it clear who created content, how it was produced, and why users should trust it. It specifically mentions clear sourcing, author or site background, and About pages. See [Creating helpful, reliable, people-first content](https://developers.google.com/search/docs/fundamentals/creating-helpful-content#who-how-why).
-
-One concise static page is enough for this project's scale. It should explain:
-
-- that the site is an independent learner-oriented study guide;
-- that Dr. Alex Clarke's videos and transcript-visible statements are the source material;
-- how timestamps, notes, evidence windows, and topic links are produced and checked;
-- the role of AI assistance and the limits of automated interpretation;
-- who maintains the site;
-- how a factual, transcription, or linking error can be reported;
-- that the original video remains authoritative for context.
-
-Link it from the footer and, optionally, from the source panel on time-note pages. A separate byline on all 53,662 generated notes is unnecessary if the shared methodology and maintainer information are clear.
-
-Expected effect: **medium trust and user-value improvement** with low maintenance cost.
-
-### P2 — Permit large image previews for high-resolution video thumbnails
+### P3 — Permit large image previews for genuine high-resolution thumbnails
 
 Current thumbnail sources:
 
@@ -218,60 +299,25 @@ Current thumbnail sources:
 | YouTube `sddefault.jpg` | 100 |
 | YouTube `hqdefault.jpg` | 82 |
 
-Video and time-note pages already emit `og:image`, but indexable pages do not explicitly allow large image previews. Google supports:
+Video and time-note pages already emit `og:image`. Adding `<meta name="robots" content="max-image-preview:large">` where the selected thumbnail is genuinely high resolution may improve result presentation, but it does not improve the learning experience after arrival and is not a ranking change. See [robots preview controls](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag#max-image-preview).
 
-```html
-<meta name="robots" content="max-image-preview:large">
-```
+If implemented, preserve `noindex` on non-indexable pages, update the validator to allow the positive preview directive, and do not upscale the smaller thumbnails.
 
-This allows, but does not guarantee, a larger image preview in web results, Google Images, Discover, and other surfaces. See [robots preview controls](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag#max-image-preview).
+Expected effect: **low-priority search-presentation value**.
 
-Recommended change:
+### P3 — Add Google `Clip` markup only after timestamp URLs help visitors
 
-- Emit `max-image-preview:large` on indexable video and time-note pages when the selected thumbnail is genuinely high resolution.
-- Preserve `noindex` as the controlling directive on non-indexable pages.
-- Update the rendered SEO validator, which currently assumes indexable pages have no robots meta element, to allow this positive preview directive.
-- Do not upscale the 182 smaller thumbnails merely to satisfy a nominal dimension.
+The archive already contains curated segment titles and `startSeconds`. If same-page timestamp URLs are added for the watch workflow, a bounded set of those moments could be exposed as `Clip` records under `VideoObject`.
 
-Expected effect: **low ranking effect, potentially useful click-through and Discover presentation effect**. This is a search-appearance improvement rather than a content or indexing fix.
+Start with a small set of well-covered videos, keep the base page canonical, and validate deployed results before expanding. Google requires each `Clip.url` to use the same watch-page path with a time parameter. See [`Clip` structured data](https://developers.google.com/search/docs/appearance/structured-data/video#clip).
 
-### P2 — Investigate video-page Core Web Vitals before changing the player
-
-The representative video page scored 61 for Lighthouse performance with an 8.4-second LCP. Its own document and CSS were small; most transfer weight came from the YouTube player, including roughly 862 KiB of player scripts in that run. The page already uses `youtube-nocookie.com` and `loading="lazy"`.
-
-Recommended sequence:
-
-1. Check real video-route Core Web Vitals in Search Console. A single Lighthouse result is not enough to justify a risky player rewrite.
-2. If field data is poor, prototype automatic post-load or viewport-based iframe activation on a small test set.
-3. Ensure the iframe appears in rendered HTML without requiring a click, swipe, or other user action.
-4. Retain the stable `embedUrl`, `VideoObject`, video sitemap, and visible watch-page prominence.
-5. Verify the rendered player through URL Inspection and confirm Video Indexing does not regress before broad rollout.
-
-Do not use a purely click-to-load facade without testing. Google's video guidance says not to rely on user actions to load a video and requires an embedded video on the watch page. See [Video SEO best practices](https://developers.google.com/search/docs/appearance/video). Google also advises treating Core Web Vitals as one part of overall page experience, not as a standalone ranking target. See [Page experience](https://developers.google.com/search/docs/appearance/page-experience).
-
-Expected effect: **conditional medium page-experience improvement**. Do nothing if field data is already good.
-
-### P3 — Pilot same-page timestamp URLs and `Clip` key moments
-
-The archive already contains curated segment titles and `startSeconds`, which makes it unusually well suited to video key-moment markup. The missing prerequisite is a local watch-page URL that actually seeks the embedded player.
-
-Recommended pilot:
-
-- Add a same-path parameter such as `/videos/<slug>/?t=120` that starts the embedded video at 120 seconds.
-- Keep the canonical URL on the base video page without the timestamp parameter.
-- Verify direct loading, back/forward navigation, and mobile behavior.
-- Add a bounded set of high-quality `Clip` records under the page's `VideoObject`, using existing segment titles and offsets.
-- Start with a small set of videos that already earn impressions or have especially strong time-note coverage.
-- Validate the deployed page with Google's Rich Results Test and Video Indexing report before expansion.
-
-Google requires each `Clip.url` to use the same video-page path with time parameters and requires the page to be a place where users can watch the video. See [`Clip` structured data](https://developers.google.com/search/docs/appearance/structured-data/video#clip).
-
-Expected effect: **possible video-result enhancement**, not a guaranteed ranking improvement. It is lower priority because Google may already infer key moments from YouTube.
+Expected effect: **possible video-result enhancement**. It is not a reason to build timestamp URLs that are not useful to visitors.
 
 ## Small optional cleanups
 
-- Replace repeated `Watch at this time` text with a more descriptive visible label where it remains readable, for example `Watch “Royal Navy cruiser limits” at 2:34:26 on YouTube`. Google uses anchor text as a relevance and discovery signal. This is a minor clarity improvement because the current links already sit beside descriptive context. See [link best practices](https://developers.google.com/search/docs/crawling-indexing/links-crawlable).
-- Consider adding a representative `og:image` only to selected, substantial topic pages after their index-quality policy is settled. Do not assign arbitrary thumbnails across all topics.
+- Review search-result excerpts for repeated or run-together taxonomy text. The result title, learning summary, source video, timestamp, and a small number of matched subjects should remain visually distinct.
+- Use `Video` and `Live stream` consistently where the distinction helps visitors choose a source; do not add it everywhere merely as metadata.
+- Consider adding a representative `og:image` only to selected, substantial topic pages after their subject scope is settled. Do not assign arbitrary thumbnails across all topics.
 - If accurate per-page modification dates are introduced later, add truthful sitemap `lastmod` values. Do not use every build time or the original video publication date as a false content-modification date.
 
 ## Suggestions intentionally excluded
@@ -282,6 +328,8 @@ The following are not recommended for this project now:
 - **A project-path `robots.txt`.** The site is under a GitHub Pages subdirectory; robots rules are authoritative only at the hostname root. The missing root file permits crawling.
 - **A domain-level `WebSite` site-name campaign or favicon migration.** Google treats a hostname, not a subdirectory, as a site for these features. This is not worth changing the hosting model to obtain.
 - **Bulk AI-written topic introductions or pages for query variants.** Quantity is not a substitute for unique value and could create scaled-content risk.
+- **Blanket `noindex` treatment based only on topic item count.** A single precise note about a rare subject can be a valuable reference destination.
+- **Replacing clear visible headings solely with search phrases.** Metadata can be concise without flattening the site's learner-facing voice.
 - **`FAQPage` or `QAPage` markup for ordinary transcript Q&A.** Those segment types do not match Google's supported page contracts.
 - **Fake sitemap freshness fields.** Do not add build-time `lastmod`, `changefreq`, or `priority` values merely to appear active.
 - **Alt attributes on every link.** `alt` belongs on images; ordinary links need descriptive visible anchor text.
@@ -289,24 +337,32 @@ The following are not recommended for this project now:
 
 ## Recommended implementation order
 
-1. Paginate oversized topic detail pages and add the rendered HTML size gate.
-2. Shorten video/time-note title templates and make the four static H1s more literal.
-3. Confirm Search Console sitemap, Page Indexing, Video Indexing, and Core Web Vitals status.
-4. Use those reports to define topic index eligibility; begin with singleton topics if evidence supports it.
+1. Redesign oversized topic detail pages as manageable collections with pagination, basic filtering, and the rendered HTML size gate.
+2. Add search content-type and time-note-kind filters, preserve them in the URL, and strengthen representative ranking tests.
+3. Resolve or disambiguate high-impact topic collisions and aliases, beginning with cases exposed by real searches rather than singleton counts.
+4. Add a direct `Watch from <timestamp>` action to video-guide time notes and make the timestamp URL shareable.
 5. Add the About/Methodology page and footer link.
-6. Add conditional large-image-preview permission.
-7. Run a bounded video-player performance experiment only if field data is poor.
-8. Pilot same-page timestamps and `Clip` markup on a small set of strong videos.
+6. Shorten video and time-note browser-title templates while retaining useful visible headings.
+7. Check real video-page loading behavior and Search Console diagnostics; experiment with player loading only if visitor evidence warrants it.
+8. Add large-image-preview permission and pilot `Clip` markup only after the higher-purpose work is complete.
 
 ## Verification for future changes
 
-For each implemented item:
+Verify the visitor tasks first:
+
+- a broad search can be narrowed to the appropriate topic, time note, or source video;
+- a selected time note can be watched at the stated timestamp in one clear action;
+- topic filtering and pagination preserve full reference coverage and shareable state;
+- aliases lead to one coherent subject path while distinct concepts are visibly disambiguated;
+- keyboard and mobile use remain practical on search, topic, video, and time-note pages.
+
+Then run the proportional technical checks:
 
 - run focused tests for the affected helper or route contract;
 - run `npm run site:check`;
 - run the full `npm run site:build` with the repository's 15-minute timeout allowance;
 - run `npm run check:site-seo` against the resulting `site/dist`;
-- spot-check production canonicals, sitemap membership, robots directives, and rendered HTML;
+- spot-check production links, URL state, canonicals, sitemap membership, robots directives, and rendered HTML;
 - use URL Inspection or Rich Results Test when changing video rendering or structured data;
 - compare Search Console results only after Google has had time to recrawl.
 
@@ -330,4 +386,3 @@ For each implemented item:
 - [Video sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/video-sitemaps)
 - [Robots preview controls](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag)
 - [Page experience](https://developers.google.com/search/docs/appearance/page-experience)
-
