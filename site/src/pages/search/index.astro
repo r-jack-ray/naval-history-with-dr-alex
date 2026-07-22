@@ -92,10 +92,17 @@ const metadata = staticPageMetadata.search;
       <div class="topic-cloud" aria-label="Common searches">
         {
           popularTopics.map((topic) => (
-            <a href={`${baseUrl}topics/${topic.slug}/`}>
+            <article>
               <strong>{topic.title}</strong>
               <span>{topic.videoCount} videos · {topic.segmentCount} time notes</span>
-            </a>
+              <a
+                class="topic-cloud-link"
+                href={`${baseUrl}topics/${topic.slug}/`}
+                aria-label={`Explore ${topic.title}`}
+              >
+                Explore subject
+              </a>
+            </article>
           ))
         }
       </div>

@@ -73,10 +73,17 @@ const metadata = staticPageMetadata.topics;
       <div class="topic-cloud" aria-label="Featured topics">
         {
           featuredTopics.map((topic) => (
-            <a href={`${baseUrl}topics/${topic.slug}/`}>
+            <article>
               <strong>{topic.title}</strong>
               <span>{videoCountLabel(topic.videoCount)} · {timeNoteCountLabel(topic.segmentCount)}</span>
-            </a>
+              <a
+                class="topic-cloud-link"
+                href={`${baseUrl}topics/${topic.slug}/`}
+                aria-label={`Explore ${topic.title}`}
+              >
+                Explore subject
+              </a>
+            </article>
           ))
         }
       </div>

@@ -89,6 +89,16 @@
   box-sizing: border-box;
 }
 
+/* Keep control labels pressable while leaving research and reference text selectable. */
+button,
+[role="button"],
+.primary-link,
+.secondary-link,
+.topic-cloud-link {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
 html {
   min-height: 100%;
   background: var(--page-background);
@@ -1256,15 +1266,15 @@ h1 {
   gap: 12px;
 }
 
-.topic-cloud a {
+.topic-cloud article {
   display: grid;
   gap: 6px;
-  min-height: 88px;
+  align-content: start;
+  min-height: 120px;
   padding: 15px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: var(--panel);
-  text-decoration: none;
 }
 
 .topic-cloud strong {
@@ -1279,13 +1289,26 @@ h1 {
   font-weight: 800;
 }
 
+.topic-cloud .topic-cloud-link {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  min-height: 44px;
+  margin-top: 4px;
+  color: var(--signal-strong);
+  font-size: 14px;
+  font-weight: 800;
+  text-underline-offset: 3px;
+}
+
 .feature-card:hover,
 .status-card:hover,
 .status-card:focus-visible,
 .video-card:hover,
 .segment-card:hover,
 .topic-card:hover,
-.topic-cloud a:hover {
+.topic-cloud article:hover,
+.topic-cloud article:focus-within {
   border-color: color-mix(in srgb, var(--signal) 54%, var(--line));
 }
 
@@ -1493,7 +1516,7 @@ h1 {
     display: block;
   }
 
-  .topic-cloud a + a {
+  .topic-cloud article + article {
     margin-top: 12px;
   }
 
