@@ -344,6 +344,10 @@ timestamp;shardPath;result;needsFurtherProcessing;notes
 
 Each curator or auditor result is one newline-terminated five-field row appended at the physical bottom. `shardPath` is the selected manifest-owned JSON shard, and `needsFurtherProcessing` is exactly `yes` or `no`. The curator appends after a successful shard write; the auditor appends after every completed selected-file audit, including unchanged, saturated, and intentionally empty results. Neither workflow acquires the shared writer lease for this append.
 
+Write new timestamps as local `yyyy-MM-ddTHH:mm:ss` values without a timezone suffix. The reader still accepts older ISO timestamps with `Z` or a numeric UTC offset, so an offset such as `-05:00` is not an unmapped-row cause and does not need manual removal for parsing. The required final newline is also not a data row.
+
+Curator and auditor runs append rather than rewriting earlier rows. Repository-level video removal is the exception: when a video is removed from the episode inventory, transcript manifest, and shard set, remove every processing-log row for that video's former canonical shard path in the same cleanup. Otherwise those historical rows correctly appear as `unmapped_log_rows` because their shard can no longer map through the current manifest.
+
 ### Topic Normalization Policy
 
 `src/derived/topic-normalization-patterns.tsv` is the detailed source of truth for steady-state topic creation, display names, aliases, and exceptions. `src/derived/video-segments/topics.json` remains authoritative for curated topic metadata unrelated to that policy. Routine synchronization and generation validate policy compliance but never rewrite source shards merely because the catalog changed.

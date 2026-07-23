@@ -72,7 +72,9 @@ export function parseSiteContentProcessingLog(
     const line = lines[index] ?? "";
     const lineNumber = index + 1;
     if (line.trim().length === 0) {
-      ignoredRowCount += 1;
+      // A newline-terminated text file produces one final empty split item. It
+      // is the expected line terminator, not an ignored log row.
+      if (index !== lines.length - 1 || line !== "") ignoredRowCount += 1;
       continue;
     }
     const fields = splitCanonicalFields(line);

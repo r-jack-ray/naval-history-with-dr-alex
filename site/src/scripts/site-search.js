@@ -26,7 +26,7 @@
   const promotionCacheLimit = 32;
   const searchResultCacheLimit = 5;
   const searchResultCacheHandleLimit = 5000;
-  const debounceDelayMs = 180;
+  const debounceDelayMs = 400;
   const pagefindRanking = {
     termSimilarity: 1,
     metaWeights: {
@@ -37,6 +37,8 @@
   let searchRankingPromise;
   let topicLookupPromise;
   let debounceTimer;
+  let activeSearchPromise;
+  let pendingSearch;
   let latestSearchId = 0;
   let isEditingHistory = false;
   let activeResults = [];
@@ -179,6 +181,20 @@
       });
 
     return pagefindPromise;
+  };
+
+  const preloadSearch = (query, searchId) => {
+    void loadPagefind()
+      .then((pagefind) => {
+        if (
+          !currentSearchMatches(searchId, query) ||
+          typeof pagefind.preload !== "function"
+        ) {
+          return;
+        }
+        return pagefind.preload(query);
+      })
+      .catch(() => undefined);
   };
 
   const loadSearchRanking = () => {
@@ -676,26 +692,29 @@
       const pagefind = await loadPagefind();
       const cacheKey = searchResultCacheKey(query);
       const cachedSearch = searchResultCache.get(cacheKey);
+      let nextResultTotal;
+      let nextResults;
       if (cachedSearch) {
         searchResultCache.delete(cacheKey);
         searchResultCache.set(cacheKey, cachedSearch);
-        activeResultTotal = cachedSearch.total;
-        activeResults = cachedSearch.results;
+        nextResultTotal = cachedSearch.total;
+        nextResults = cachedSearch.results;
       } else {
-        const response = await pagefind.search(query, {
-          filters: { type: { any: detailTypes } },
-        });
+        const response = await pagefind.search(query);
         if (!currentSearchMatches(searchId, query)) {
           return;
         }
 
         const generalResults = Array.isArray(response?.results) ? response.results : [];
-        activeResultTotal = generalResults.length;
-        activeResults = await rerankSearchResults(pagefind, query, generalResults, searchId);
+        nextResultTotal = generalResults.length;
+        nextResults = await rerankSearchResults(pagefind, query, generalResults, searchId);
+        if (!currentSearchMatches(searchId, query)) {
+          return;
+        }
         if (generalResults.length <= searchResultCacheHandleLimit) {
           searchResultCache.set(cacheKey, {
-            total: activeResultTotal,
-            results: activeResults,
+            total: nextResultTotal,
+            results: nextResults,
           });
           if (searchResultCache.size > searchResultCacheLimit) {
             const oldestKey = searchResultCache.keys().next().value;
@@ -708,6 +727,8 @@
       if (!currentSearchMatches(searchId, query)) {
         return;
       }
+      activeResultTotal = nextResultTotal;
+      activeResults = nextResults;
       batchOffset = 0;
       renderedUrls = new Set();
       results.replaceChildren();
@@ -730,6 +751,26 @@
     }
   };
 
+  const queueSearch = (query, searchId) => {
+    pendingSearch = { query, searchId };
+    if (activeSearchPromise) {
+      return;
+    }
+
+    const nextSearch = pendingSearch;
+    pendingSearch = undefined;
+    if (!currentSearchMatches(nextSearch.searchId, nextSearch.query)) {
+      return;
+    }
+
+    activeSearchPromise = runSearch(nextSearch.query, nextSearch.searchId).finally(() => {
+      activeSearchPromise = undefined;
+      if (pendingSearch) {
+        queueSearch(pendingSearch.query, pendingSearch.searchId);
+      }
+    });
+  };
+
   const startSearch = ({ immediate = false, history = "replace", updateHistory = true } = {}) => {
     const query = input.value.trim();
     clearButton.hidden = query.length === 0;
@@ -739,6 +780,7 @@
     latestSearchId += 1;
     const searchId = latestSearchId;
     window.clearTimeout(debounceTimer);
+    pendingSearch = undefined;
     resetResultState();
 
     if (!query) {
@@ -749,9 +791,10 @@
     setBusy(true);
     status.textContent = `Searching for "${query}"…`;
     if (immediate) {
-      void runSearch(query, searchId);
+      queueSearch(query, searchId);
     } else {
-      debounceTimer = window.setTimeout(() => void runSearch(query, searchId), debounceDelayMs);
+      preloadSearch(query, searchId);
+      debounceTimer = window.setTimeout(() => queueSearch(query, searchId), debounceDelayMs);
     }
   };
 

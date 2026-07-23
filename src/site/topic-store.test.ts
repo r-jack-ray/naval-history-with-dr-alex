@@ -380,6 +380,124 @@ test("keeps the repository-owner normalization batch canonical in the production
   );
 });
 
+test("keeps the dc950 topic audit canonical while retaining function and type topics", async () => {
+  const store = JSON.parse(
+    await readFile(new URL("../../src/derived/video-segments/topics.json", import.meta.url), "utf8"),
+  ) as {
+    topics: Array<{ slug: string; title: string; summary?: string; aliases?: string[] }>;
+  };
+  const catalog = await loadTopicNormalizationCatalog(
+    fileURLToPath(new URL("../../src/derived/topic-normalization-patterns.tsv", import.meta.url)),
+  );
+  const topicsBySlug = new Map(store.topics.map((topic) => [topic.slug, topic]));
+  const auditRules = catalog.rules.filter(({ ruleId }) =>
+    ruleId.startsWith("normalize-dc950-"),
+  );
+
+  assert.equal(auditRules.length, 110);
+  for (const rule of auditRules) {
+    assert.equal(topicsBySlug.has(rule.match), false, `Retired topic remains: ${rule.match}`);
+    assert.equal(
+      topicsBySlug.has(rule.replacement),
+      true,
+      `Canonical topic missing: ${rule.replacement}`,
+    );
+  }
+
+  const expected = new Map<string, { title: string; aliases?: string[] }>([
+    [
+      "fiction-spacecraft-engineering",
+      {
+        title: "Spacecraft Engineering (Fiction)",
+        aliases: [
+          "Fictional Spacecraft Engineering",
+          "Science Fiction Spacecraft Engineering",
+        ],
+      },
+    ],
+    [
+      "fiction-star-wars-grand-admiral-thrawn",
+      {
+        title: "Grand Admiral Thrawn (Star Wars Fiction)",
+        aliases: ["Grand Admiral Thrawn"],
+      },
+    ],
+    [
+      "fiction-hms-thunder-child",
+      {
+        title: "HMS Thunder Child (Fiction)",
+        aliases: ["HMS Thunder Child", "HMS Thunderchild", "Thunder Child"],
+      },
+    ],
+    [
+      "fiction-world-of-warships-fundra",
+      {
+        title: "Fundra (World of Warships Fiction)",
+        aliases: ["HMS Fundra", "World of Warships Fundra"],
+      },
+    ],
+    [
+      "fiction-halo-united-nations-space-command",
+      {
+        title: "United Nations Space Command (Halo Fiction)",
+        aliases: ["UNSC", "Halo UNSC", "United Nations Space Command"],
+      },
+    ],
+    [
+      "united-nations-security-council",
+      {
+        title: "United Nations Security Council",
+        aliases: ["UN Security Council"],
+      },
+    ],
+    [
+      "rrs-sir-david-attenborough",
+      {
+        title: "RRS Sir David Attenborough",
+        aliases: ["RFA Sir David Attenborough", "RSS Sir David Attenborough"],
+      },
+    ],
+    [
+      "puget-sound-naval-shipyard",
+      {
+        title: "Puget Sound Naval Shipyard",
+        aliases: ["Bremerton Naval Shipyard"],
+      },
+    ],
+    [
+      "mount-pleasant",
+      {
+        title: "Mount Pleasant",
+        aliases: ["Mount Pleasant Airfield", "RAF Mount Pleasant"],
+      },
+    ],
+  ]);
+  for (const [slug, expectedTopic] of expected) {
+    const topic = topicsBySlug.get(slug);
+    assert.ok(topic, `Missing production topic ${slug}`);
+    assert.equal(topic.title, expectedTopic.title, `${slug} title`);
+    assert.deepEqual(topic.aliases ?? [], expectedTopic.aliases ?? [], `${slug} aliases`);
+  }
+
+  for (const retainedTopic of [
+    "submarine-fleet",
+    "fleet-submarines",
+    "destroyer-fleet",
+    "fleet-destroyers",
+    "cruiser-scouting",
+    "scouting-cruisers",
+    "hms-oak",
+    "ammunition-stowage",
+    "air-launched-torpedoes",
+    "sea-lightning",
+  ]) {
+    assert.equal(topicsBySlug.has(retainedTopic), true, `Distinct topic missing: ${retainedTopic}`);
+  }
+  assert.equal(topicsBySlug.has("uss-texas"), false, "Reviewed bare USS Texas topic remains");
+  assert.equal(topicsBySlug.has("uss-texas-1892"), true);
+  assert.equal(topicsBySlug.has("uss-texas-bb-35"), true);
+});
+
 async function makeTopicDirectory(
   videoTopics = ["royal-navy", "destroyers"],
   segmentTopics = ["destroyers", "airborne-early-warning"],

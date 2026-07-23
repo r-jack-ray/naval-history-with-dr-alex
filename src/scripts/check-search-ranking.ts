@@ -9,6 +9,8 @@ import { extname, join, relative, resolve, sep } from "node:path";
 
 import puppeteer, { type Browser, type Page } from "puppeteer-core";
 
+import { isPublicTopic } from "../site/public-topic.js";
+
 const siteDist = resolve("site/dist");
 const fixturePath = "src/site/search-ranking-cases.json";
 const sourceTopicsPath = "src/derived/video-segments/topics.json";
@@ -19,12 +21,11 @@ const siteBase = "/naval-history-with-dr-alex/";
 const sitePrefix = siteBase.slice(0, -1);
 const inspectLimit = 50;
 const batchSize = 24;
-const detailTypes = ["video", "segment", "topic"] as const;
 const benchmarkQueries = ["HMS Victory", "HMS Victoria", "RN", "Skagerrak", "Radar"] as const;
 const stratumCounts = {
   regression: 1,
   "unique-title": 8,
-  collision: 8,
+  collision: 6,
   "unique-alias": 4,
   ambiguous: 4,
 } as const;
@@ -137,7 +138,7 @@ async function main(): Promise<void> {
   const options = parseCli(process.argv.slice(2));
   const fixture = await readFixture();
   const topics = await readSourceTopics();
-  await validateFixture(fixture, topics);
+  const publicTopicSlugs = await validateFixture(fixture, topics);
   await access(pagefindEntryPath);
 
   const indexBytes = await directoryBytes(join(siteDist, "pagefind"));
@@ -239,7 +240,8 @@ async function main(): Promise<void> {
     failIfAssessmentsFail(assessments, "Rendered search ranking");
 
     if (options.observeTopicSample > 0) {
-      const observationCases = buildTopicObservationCases(topics, fixture, options.observeTopicSample);
+      const publicTopics = topics.filter((topic) => publicTopicSlugs.has(topic.slug));
+      const observationCases = buildTopicObservationCases(publicTopics, fixture, options.observeTopicSample);
       console.log(
         `Topic observation sample (${observationCases.length}): ` +
         observationCases.map((rankingCase) => rankingCase.query).join(" | "),
@@ -416,7 +418,10 @@ async function readSourceTopics(): Promise<SourceTopic[]> {
   });
 }
 
-async function validateFixture(fixture: RankingFixture, topics: readonly SourceTopic[]): Promise<void> {
+async function validateFixture(
+  fixture: RankingFixture,
+  topics: readonly SourceTopic[],
+): Promise<ReadonlySet<string>> {
   const expectedCaseCount = Object.values(stratumCounts).reduce((sum, count) => sum + count, 0);
   if (fixture.cases.length !== expectedCaseCount) {
     throw new Error(`The ranking fixture must contain exactly ${expectedCaseCount} cases.`);
@@ -443,7 +448,22 @@ async function validateFixture(fixture: RankingFixture, topics: readonly SourceT
   const generatedTopicSlugs = new Set<string>();
   for (const [index, entry] of generatedTopicValue.entries()) {
     const topic = asRecord(entry, `${generatedTopicsPath} topic ${index + 1}`);
-    generatedTopicSlugs.add(requiredString(topic.slug, "generated topic slug", index));
+    const slug = requiredString(topic.slug, "generated topic slug", index);
+    const videoCount = topic.videoCount;
+    const segmentCount = topic.segmentCount;
+    if (
+      typeof videoCount !== "number" ||
+      !Number.isInteger(videoCount) ||
+      videoCount < 0 ||
+      typeof segmentCount !== "number" ||
+      !Number.isInteger(segmentCount) ||
+      segmentCount < 0
+    ) {
+      throw new Error(`${generatedTopicsPath} topic ${slug} has invalid relationship counts.`);
+    }
+    if (isPublicTopic({ videoCount, segmentCount })) {
+      generatedTopicSlugs.add(slug);
+    }
   }
 
   const generatedVideoValue = JSON.parse(await readFile(generatedVideosPath, "utf8")) as unknown;
@@ -484,7 +504,8 @@ async function validateFixture(fixture: RankingFixture, topics: readonly SourceT
       }
     }
 
-    const exactMatches = matchesByNormalizedValue.get(normalizedQuery) ?? [];
+    const exactMatches = (matchesByNormalizedValue.get(normalizedQuery) ?? [])
+      .filter((match) => generatedTopicSlugs.has(match.slug));
     const exactSlugs = [...new Set(exactMatches.map((match) => match.slug))].sort();
     const expectedUrls = rankingCase.expectedRankedUrls ?? [];
     const allowedUrls = rankingCase.allowedTopUrls ?? [];
@@ -548,6 +569,7 @@ async function validateFixture(fixture: RankingFixture, topics: readonly SourceT
       validateGeneratedRoute(route, generatedTopicSlugs, videoRoutes, segmentRoutes, rankingCase.query);
     }
   }
+  return generatedTopicSlugs;
 }
 
 function buildTopicObservationCases(
@@ -699,7 +721,7 @@ async function runDirectQuery(
       createInstance?: (options: Record<string, unknown>) => {
         options?: (options: Record<string, unknown>) => Promise<void>;
         init?: () => Promise<void>;
-        search: (query: string, options: Record<string, unknown>) => Promise<{
+        search: (query: string, options?: Record<string, unknown>) => Promise<{
           results?: Array<{
             id?: unknown;
             score?: unknown;
@@ -731,9 +753,7 @@ async function runDirectQuery(
       });
       await instance.init?.();
       const startedAt = performance.now();
-      const response = await instance.search(input.query, {
-        filters: { type: { any: input.detailTypes } },
-      });
+      const response = await instance.search(input.query);
       const elapsedMs = performance.now() - startedAt;
       const handles = Array.isArray(response?.results) ? response.results : [];
       const inspected = handles.slice(0, input.inspectLimit);
@@ -767,7 +787,6 @@ async function runDirectQuery(
     termSimilarity: options.termSimilarity,
     titleWeight: options.titleWeight,
     query,
-    detailTypes: [...detailTypes],
     inspectLimit,
   });
 
@@ -813,7 +832,9 @@ async function runUiQuery(page: Page, query: string, maxResults: number): Promis
       const startedAt = performance.now();
       while (!predicate()) {
         if (performance.now() - startedAt > timeoutMs) {
-          throw new Error(`Timed out with search status: ${status.textContent ?? "unknown"}`);
+          throw new Error(
+            `Timed out for "${input.query}" with search status: ${status.textContent ?? "unknown"}`,
+          );
         }
         await new Promise((resolvePromise) => window.setTimeout(resolvePromise, 10));
       }

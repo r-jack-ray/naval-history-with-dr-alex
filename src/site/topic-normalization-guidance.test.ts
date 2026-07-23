@@ -31,6 +31,16 @@ const catalogGuidancePaths = [
   ...companionGuidancePaths,
 ] as const;
 
+const fictionGuidancePaths = [
+  "AGENTS.md",
+  curatorSkillPath,
+  auditorSkillPath,
+  ".agents/transcript-content-curator.md",
+  ".agents/site-content-auditor.md",
+  ".agents/skills/naval-transcript-to-site-content/references/segment-seed-schema.md",
+  "src/derived/site-content-processing.config.json",
+] as const;
+
 async function readGuidance(relativePath: string): Promise<string> {
   const repositoryRoot = new URL("../../", import.meta.url);
   const content = await readFile(new URL(relativePath, repositoryRoot), "utf8");
@@ -143,6 +153,28 @@ test("topic creation guidance keeps descriptions blank and preserves manual text
   }
 });
 
+test("topic-producing guidance separates fictional referents from real lessons", async () => {
+  for (const relativePath of fictionGuidancePaths) {
+    const guidance = await readGuidance(relativePath);
+
+    assert.match(
+      guidance,
+      /fiction-\.\.\./u,
+      `${relativePath} must require the fiction topic namespace`,
+    );
+    assert.match(
+      guidance,
+      /counterfactual[^.]{0,220}(?:proposed|unbuilt)/iu,
+      `${relativePath} must keep real counterfactual and proposed subjects outside fiction`,
+    );
+    assert.match(
+      guidance,
+      /fiction(?:al)?[^.]{0,260}(?:tag|add|retain|include)[^.]{0,80}both/iu,
+      `${relativePath} must retain both a fictional example and its real-world lesson`,
+    );
+  }
+});
+
 test("companion guidance preserves review no-ops, shard boundaries, and steady-state policy", async () => {
   const agents = await readGuidance("AGENTS.md");
   assert.match(agents, /one owned.{0,220}shard/iu);
@@ -196,5 +228,30 @@ test("build repair audits steady-state policy and delegates semantic and site im
     guidance,
     /if the user explicitly authorizes a full site build/iu,
     "the skill must retain an explicit-permission path for full validation",
+  );
+  assert.match(
+    guidance,
+    /`npm run site:check` already runs `npm run generate:site-data`/iu,
+    "the skill must explain that site:check already includes archive generation",
+  );
+  assert.match(
+    guidance,
+    /commands are alternatives, not a checklist/iu,
+    "the skill must not present overlapping pipeline commands as a sequence",
+  );
+  assert.match(
+    guidance,
+    /do not run `npm run generate:site-data` immediately before `npm run site:check` or `npm run site:build`/iu,
+    "the skill must prevent repeated archive generation",
+  );
+  assert.match(
+    guidance,
+    /if a command is interrupted[^.]{0,240}process tree[^.]{0,240}writer lease/iu,
+    "the skill must require interrupted writer cleanup before another pipeline command",
+  );
+  assert.match(
+    guidance,
+    /when the user says they will build[^.]{0,240}leave those commands to the user/iu,
+    "the skill must preserve user-owned integration commands",
   );
 });

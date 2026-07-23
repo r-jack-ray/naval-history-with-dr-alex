@@ -14,8 +14,8 @@ Repair site-pipeline failures without widening scope or destabilizing establishe
 3. Run `npm run diagnose:site-content-duplicates` for archive uniqueness failures or before changing segment routes. An exit code of 1 means duplicates were found and is an expected diagnostic result.
 4. For topic-title, alias, missing-topic, duplicate-taxonomy, or normalization failures, read `src/derived/topic-normalization-patterns.tsv` and run the read-only `npm run audit:topic-normalization` before adding a registry record or manually changing a topic reference.
 5. Classify the first actionable failure and apply the narrowest safe repair. For duplicate routes, rank every occurrence by transcript-backed accuracy and completeness before choosing which occurrence keeps the contested key.
-6. Regenerate the tracked manifest and shards under `site/src/data/generated/archive/` through repository commands; never hand-edit `index.json` or its listed generated archive files.
-7. Validate in proportion to the change, stop after narrow validation unless the user explicitly authorized a full site build, and report the exact source and generated files changed.
+6. Choose exactly one terminal site-pipeline path from **Command Selection**. If the user says they will run integration commands or forbids generation, checks, or builds, stop after the narrow source validator and report that the generated archive was intentionally left for their command. Otherwise refresh generated data through the selected repository command; never hand-edit `index.json` or its listed generated archive files.
+7. Validate in proportion to the change, treat pipeline commands as alternatives rather than a checklist, and report the exact source and generated files changed.
 
 ## Repair Rules
 
@@ -57,20 +57,40 @@ Repair site-pipeline failures without widening scope or destabilizing establishe
 - For `getStaticPaths` failures, remember that Astro isolates the exported function from frontmatter-local computed constants. Move reusable route data behind imported adapter helpers. A full build is the only complete prerender-path check because `astro check` does not execute path generation; run it only after explicit user authorization, otherwise report that validation gap without running it.
 - Treat writer-lease contention as a stop condition. Do not bypass the repository lock or interfere with scheduled transcript workers.
 
+## Command Selection
+
+Run at most one archive-generation path per repair. The current package scripts overlap:
+
+- `npm run site:check` already runs `npm run generate:site-data` before `site:check:generated`.
+- `npm run site:build` uses the fingerprint-aware wrapper to generate the archive when needed, then runs changed Astro/Pagefind stages.
+- `site:check:generated` and `site:build:generated` intentionally consume the existing archive without generating it.
+- A standalone `generate:site-data` run does not update the wrapper's archive fingerprint cache, so following it with `site:build` can generate the same archive again.
+
+Choose the smallest applicable outcome:
+
+| Requested proof | Command |
+| --- | --- |
+| Duplicate-route source repair only | `npm run diagnose:site-content-duplicates` |
+| Topic-policy diagnosis only | `npm run audit:topic-normalization` |
+| TypeScript and unit tests only | `npm run check` |
+| Archive refresh only | `npm run generate:site-data` |
+| Archive refresh plus Astro diagnostics | `npm run site:check` |
+| Astro diagnostics after archive generation already completed in this task | `npm run site:check:generated` |
+| Explicitly authorized production build with cache-aware generation | `npm run site:build` |
+| Explicitly authorized production build after archive generation already completed in this task | `npm run site:build:generated` |
+
+- Do not run `npm run generate:site-data` immediately before `npm run site:check` or `npm run site:build`.
+- Do not run `npm run site:check` immediately before `npm run site:build`. A successful full build normally supersedes the site check; if both are specifically required, run `site:build` once and then `site:check:generated`.
+- Do not start another writer while a pipeline command is running. If a command is interrupted, verify its exact process tree has exited and its writer lease has been released before starting another command; never delete an active lease.
+- Honor user-owned validation literally. When the user says they will build or asks Codex not to run checks, generation, or builds, leave those commands to the user.
+
 ## Validation
 
-Run narrow checks first and stop after the appropriate focused checks and `site:check` validation by default. Do not run `npm run site:build`, `npm run site:build:generated`, `npm run site:build:full`, or another full Astro/Pagefind render unless the user explicitly says a full site build is allowed for the current task. A pasted build failure, a request to repair the build, or a general request to validate does not grant that permission.
+Run only the relevant row from **Command Selection**. These commands are alternatives, not a checklist. Stop after the narrow validator when it proves the reported source failure is repaired and the user retains integration-command ownership. Do not run `npm run site:build`, `npm run site:build:generated`, `npm run site:build:full`, or another full Astro/Pagefind render unless the user explicitly says a full site build is allowed for the current task. A pasted build failure, a request to repair the build, or a general request to validate does not grant that permission.
 
-After an authorized topic-policy repair, verify that the read-only normalization audit reports steady-state policy compliance, changed references use the canonical records selected by active creation rules, registry usage is valid, generated data is refreshed, and the appropriate focused checks pass.
+After an authorized topic-policy repair, verify that the read-only normalization audit reports steady-state policy compliance and changed references use the canonical records selected by active creation rules. Refresh generated data only through the one selected terminal pipeline path when Codex owns that integration step.
 
-```powershell
-npm run diagnose:site-content-duplicates
-npm run audit:topic-normalization
-npm run check
-npm run site:check
-```
-
-If the user explicitly authorizes a full site build, run it after the narrow checks and allow at least fifteen minutes to complete. When the shell runner has a command timeout, set it to `900000` milliseconds or longer; do not interpret an earlier runner timeout as a site-build failure.
+If the user explicitly authorizes a full site build, use `npm run site:build` as the single site-pipeline command and allow at least fifteen minutes to complete. Do not precede it with standalone generation or `site:check`; if archive generation already completed in the same task, use `site:build:generated` instead. When the shell runner has a command timeout, set it to `900000` milliseconds or longer; do not interpret an earlier runner timeout as a site-build failure.
 
 ```powershell
 npm run site:build

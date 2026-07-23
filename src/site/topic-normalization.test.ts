@@ -256,6 +256,82 @@ test("production policy applies the repository-owner topic normalization batch",
   );
 });
 
+test("production policy encodes the dc950 topic audit without collapsing semantic distinctions", async () => {
+  const catalog = await loadTopicNormalizationCatalog(
+    "src/derived/topic-normalization-patterns.tsv",
+  );
+  const auditRules = catalog.rules.filter(({ ruleId }) =>
+    ruleId.startsWith("normalize-dc950-"),
+  );
+
+  assert.equal(auditRules.length, 110);
+  for (const rule of auditRules) {
+    assert.equal(rule.status, "active", rule.ruleId);
+    assert.deepEqual(rule.scopes, ["creation"], rule.ruleId);
+    assert.equal(rule.matchKind, "exact", rule.ruleId);
+    assert.deepEqual(resolveTopicCreation(catalog, rule.match), {
+      input: rule.match,
+      slug: rule.replacement,
+      changed: true,
+      matchedRuleIds: [rule.ruleId],
+    });
+  }
+
+  const highRiskMappings = new Map([
+    ["flooding-control", "damage-control"],
+    ["warship-repairs", "warship-repair"],
+    ["european-defense", "european-defence"],
+    ["ship-artifacts", "warship-artifacts"],
+    ["c-class-light-cruisers", "c-class-cruisers"],
+    ["j-class", "j-class-destroyers"],
+    ["k-class", "k-class-destroyers"],
+    ["uss-john-f-kennedy", "uss-john-f-kennedy-cv-67"],
+    ["second-naval-lord", "second-sea-lord"],
+    ["rfa-sir-david-attenborough", "rrs-sir-david-attenborough"],
+    ["rss-sir-david-attenborough", "rrs-sir-david-attenborough"],
+    ["bremerton-naval-shipyard", "puget-sound-naval-shipyard"],
+    ["port-stanley-airport", "stanley-airport"],
+    ["ship-engineering", "fiction-spacecraft-engineering"],
+    ["grand-admiral-thrawn", "fiction-star-wars-grand-admiral-thrawn"],
+    ["hms-thunderchild", "fiction-hms-thunder-child"],
+    ["hms-fundra", "fiction-world-of-warships-fundra"],
+    ["unsc", "fiction-halo-united-nations-space-command"],
+    ["un-security-council", "united-nations-security-council"],
+  ]);
+  for (const [input, expected] of highRiskMappings) {
+    assert.equal(resolveTopicCreation(catalog, input).slug, expected, input);
+  }
+
+  for (const distinctTopic of [
+    "submarine-fleet",
+    "fleet-submarines",
+    "destroyer-fleet",
+    "fleet-destroyers",
+    "cruiser-scouting",
+    "scouting-cruisers",
+    "hms-oak",
+    "ammunition-stowage",
+    "air-launched-torpedoes",
+    "sea-lightning",
+    "science-fiction",
+    "alternate-history",
+  ]) {
+    assert.deepEqual(resolveTopicCreation(catalog, distinctTopic), {
+      input: distinctTopic,
+      slug: distinctTopic,
+      changed: false,
+      matchedRuleIds: [],
+    });
+  }
+
+  assert.deepEqual(resolveTopicCreation(catalog, "uss-texas"), {
+    input: "uss-texas",
+    slug: "uss-texas",
+    changed: false,
+    matchedRuleIds: ["review-contextual-uss-texas"],
+  });
+});
+
 test("production policy consolidates generic inch-gun topics without collapsing named models", async () => {
   const catalog = await loadTopicNormalizationCatalog(
     "src/derived/topic-normalization-patterns.tsv",

@@ -39,6 +39,7 @@
   "topicLifecycle": {
     "mode": "shard-derived-automatic",
     "contentPass": "Add evidence-backed topic slugs without a tag quota. Read src/derived/topic-normalization-patterns.tsv as authored steady-state policy, resolve new slugs through active creation rules, preserve established slugs unless the active creation policy canonicalizes them, and leave review or ambiguous candidates unchanged for the handoff.",
+    "fictionPolicy": "Use fiction-... for referents that exist only inside fictional works. Counterfactual real history, real proposed or unbuilt designs, possible future systems, and genre or format topics stay outside that namespace. When fiction illustrates a real-world point, include both the fictional referent and ordinary transcript-backed topics for the real doctrine, engineering, logistics, institution, or other lesson.",
     "synchronization": "Routine synchronization and generation validate topic-policy compliance, collect topic usage from every video shard, preserve existing enriched records, and add deterministic default records for newly referenced slugs. They never rewrite source shards merely because the pattern catalog changed.",
     "exceptionRule": "Shard-only transcript and audit work must not edit the normalization catalog or topics.json, perform corpus-wide topic rewrites, or infer a canonical slug from a review rule. Outside active rules, investigate registry taxonomy only after validation reports a concrete conflict or the user explicitly requests taxonomy work."
   },

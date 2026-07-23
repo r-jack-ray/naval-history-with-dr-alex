@@ -42,6 +42,7 @@ Use this brief with `$naval-transcript-to-site-content` when turning stored Dr. 
 14. If a live-stream run cannot complete full-duration mixed-content extraction, report `needsFurtherProcessing=yes` and state the remaining coverage in the handoff.
 15. Derive significant segment topic slugs from the transcript without targeting a tag count or restricting the pass to a starter taxonomy. Outside active normalization rules, investigate synonym or taxonomy issues only when the repository owner's later synchronization reports a concrete problem.
 16. Follow `src/derived/topic-normalization-patterns.tsv` as the detailed naming source. Resolve new slugs through active `creation` rules and preserve established slugs unless the active creation policy canonicalizes them. Leave `review`, disabled, ambiguous, or inapplicable candidates unchanged and report them; never edit the catalog or perform corpus-wide topic rewrites from this shard-only workflow.
+17. Prefix a topic with `fiction-` when its referent exists only inside a fictional work, such as a fictional vessel, person, faction, event, technology, or in-universe system. Counterfactual real history, real proposed or unbuilt designs, possible future systems, and genre/format topics remain outside that namespace. When fiction illustrates a real-world point, add both the `fiction-...` referent and the ordinary transcript-backed topics for the real doctrine, engineering, logistics, institution, or other lesson.
 
 ## Public Wording
 

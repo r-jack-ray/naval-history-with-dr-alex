@@ -23,7 +23,7 @@
       "mustRankBefore": [
         {
           "better": "/topics/hms-victory/",
-          "worse": "/videos/hms-victoria-1887/"
+          "worse": "/topics/hms-victoria/"
         },
         {
           "better": "/topics/hms-victory/",
@@ -31,7 +31,7 @@
         },
         {
           "better": "/segments/hms-victory-first-rate-institutional-product/",
-          "worse": "/videos/hms-victoria-1887/"
+          "worse": "/topics/hms-victoria/"
         },
         {
           "better": "/segments/hms-victory-first-rate-institutional-product/",
@@ -39,7 +39,7 @@
         },
         {
           "better": "/videos/from-mary-rose-to-victory-how-and-why-construction-of-the-wooden-wall-changed-naval-history-live/",
-          "worse": "/videos/hms-victoria-1887/"
+          "worse": "/topics/hms-victoria/"
         },
         {
           "better": "/videos/from-mary-rose-to-victory-how-and-why-construction-of-the-wooden-wall-changed-naval-history-live/",
@@ -159,8 +159,7 @@
       "sourceTopicSlugs": [
         "hms-victoria",
         "hms-victory",
-        "hms-victorious",
-        "hms-victoria-1887"
+        "hms-victorious"
       ],
       "expectedRankedUrls": [
         {
@@ -176,13 +175,9 @@
         {
           "better": "/topics/hms-victoria/",
           "worse": "/topics/hms-victorious/"
-        },
-        {
-          "better": "/topics/hms-victoria/",
-          "worse": "/topics/hms-victoria-1887/"
         }
       ],
-      "reason": "Victoria must not be displaced by Victory, Victorious, or its year-qualified namesake."
+      "reason": "Victoria must not be displaced by Victory or Victorious."
     },
     {
       "stratum": "collision",
@@ -210,33 +205,6 @@
         }
       ],
       "reason": "Victorious must lead its shared victor-prefix family."
-    },
-    {
-      "stratum": "collision",
-      "query": "HMS Victoria 1887",
-      "queryKind": "unique-title",
-      "sourceTopicSlugs": [
-        "hms-victoria-1887",
-        "hms-victoria",
-        "hms-victory"
-      ],
-      "expectedRankedUrls": [
-        {
-          "url": "/topics/hms-victoria-1887/",
-          "maxRank": 1
-        }
-      ],
-      "mustRankBefore": [
-        {
-          "better": "/topics/hms-victoria-1887/",
-          "worse": "/topics/hms-victoria/"
-        },
-        {
-          "better": "/topics/hms-victoria-1887/",
-          "worse": "/topics/hms-victory/"
-        }
-      ],
-      "reason": "A year-qualified exact title should outrank its generic and morphological neighbors."
     },
     {
       "stratum": "collision",
@@ -288,7 +256,6 @@
       "queryKind": "unique-title",
       "sourceTopicSlugs": [
         "hms-nelson",
-        "hms-nelson-1925",
         "hms-nelson-1876"
       ],
       "expectedRankedUrls": [
@@ -300,41 +267,10 @@
       "mustRankBefore": [
         {
           "better": "/topics/hms-nelson/",
-          "worse": "/topics/hms-nelson-1925/"
-        },
-        {
-          "better": "/topics/hms-nelson/",
           "worse": "/topics/hms-nelson-1876/"
         }
       ],
-      "reason": "The unqualified HMS Nelson topic should lead its dated records."
-    },
-    {
-      "stratum": "collision",
-      "query": "HMS Nelson 1925",
-      "queryKind": "unique-title",
-      "sourceTopicSlugs": [
-        "hms-nelson-1925",
-        "hms-nelson",
-        "hms-nelson-1876"
-      ],
-      "expectedRankedUrls": [
-        {
-          "url": "/topics/hms-nelson-1925/",
-          "maxRank": 1
-        }
-      ],
-      "mustRankBefore": [
-        {
-          "better": "/topics/hms-nelson-1925/",
-          "worse": "/topics/hms-nelson/"
-        },
-        {
-          "better": "/topics/hms-nelson-1925/",
-          "worse": "/topics/hms-nelson-1876/"
-        }
-      ],
-      "reason": "The explicit 1925 topic should beat generic and 1876 HMS Nelson records."
+      "reason": "The unqualified HMS Nelson topic should lead its dated 1876 record."
     },
     {
       "stratum": "collision",
@@ -437,18 +373,18 @@
     },
     {
       "stratum": "ambiguous",
-      "query": "Marine Nationale",
+      "query": "Austrian Navy",
       "queryKind": "ambiguous",
       "sourceTopicSlugs": [
-        "french-navy",
-        "marine-nationale"
+        "austro-hungarian-navy",
+        "austrian-navy"
       ],
       "allowedTopUrls": [
-        "/topics/french-navy/",
-        "/topics/marine-nationale/"
+        "/topics/austro-hungarian-navy/",
+        "/topics/austrian-navy/"
       ],
       "allowedTopRank": 1,
-      "reason": "The phrase is both a French Navy alias and its own topic title."
+      "reason": "The phrase is both an Austro-Hungarian Navy alias and its own topic title."
     },
     {
       "stratum": "ambiguous",
@@ -467,18 +403,18 @@
     },
     {
       "stratum": "ambiguous",
-      "query": "British Navy",
+      "query": "Aircraft Carriers",
       "queryKind": "ambiguous",
       "sourceTopicSlugs": [
-        "royal-navy",
-        "british-navy"
+        "fleet-carriers",
+        "aircraft-carriers"
       ],
       "allowedTopUrls": [
-        "/topics/royal-navy/",
-        "/topics/british-navy/"
+        "/topics/fleet-carriers/",
+        "/topics/aircraft-carriers/"
       ],
       "allowedTopRank": 1,
-      "reason": "The phrase is both a Royal Navy alias and a separate canonical topic."
+      "reason": "The phrase is both a Fleet Carriers alias and its own topic title."
     }
   ]
 }

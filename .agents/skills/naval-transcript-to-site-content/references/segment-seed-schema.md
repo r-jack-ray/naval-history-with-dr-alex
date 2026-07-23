@@ -25,6 +25,7 @@ Do not recreate a monolithic curated-content file. The manifest and shards under
 - `topics` contains stable lowercase, hyphenated slugs. `generate:site-data` synchronizes missing registry records before archive validation.
 - Resolve new slugs through active `creation` rules in `src/derived/topic-normalization-patterns.tsv`. Preserve established slugs unless the active creation policy canonicalizes them.
 - Leave `review`, disabled, ambiguous, or inapplicable candidates unchanged and identify them in the handoff. Shard-only work does not edit the normalization catalog or `topics.json` and does not perform corpus-wide topic rewrites.
+- Use `fiction-...` for referents that exist only inside a fictional work. Counterfactual real history, real proposed or unbuilt designs, possible future systems, and genre/format topics do not use that prefix. When fiction illustrates a real-world point, include both the fictional referent and the ordinary transcript-backed topics for the real lesson.
 - `topics` is a curated summary subset for the video page; it does not need to repeat every more-granular segment topic.
 - `segments` contains only records for this `videoId`.
 
