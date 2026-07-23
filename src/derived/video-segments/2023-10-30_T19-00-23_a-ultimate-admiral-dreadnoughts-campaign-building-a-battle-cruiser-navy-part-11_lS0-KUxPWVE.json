@@ -9,7 +9,9 @@
     "naval-wargaming",
     "naval-procurement",
     "amphibious-operations",
-    "fleet-modernization"
+    "fleet-modernization",
+    "fleet-readiness",
+    "naval-technology"
   ],
   "segments": [
     {
@@ -55,6 +57,20 @@
       "evidence": [{"start": "19:23", "end": "21:32", "note": "He counts incoming ships and explains that about 700,000 tons of additions are needed toward the two-million-ton invasion requirement."}]
     },
     {
+      "id": "ultimate-admiral-damaged-cruiser-disengagement",
+      "videoId": "lS0-KUxPWVE",
+      "slug": "ultimate-admiral-damaged-cruiser-disengagement",
+      "title": "Disengaging a damaged cruiser from a torpedo threat",
+      "kind": "notable_point",
+      "start": "24:18",
+      "end": "26:02",
+      "topics": ["ultimate-admiral-dreadnoughts", "light-cruisers", "damage-control", "fleet-readiness", "threat-assessment", "torpedo-warfare", "fleet-modernization", "withdrawal"],
+      "summary": "Cape Town's isolation and damage state make escape safer than a drive-by attack, especially when a destroyer's torpedoes may be more dangerous than the accompanying heavy cruiser.",
+      "body": "Cape Town enters the encounter badly damaged and alone. Dr. Clarke initially considers a high-speed drive-by against a heavy cruiser and destroyer, but judges the destroyer potentially more dangerous because of its torpedoes. Cape Town is also an old Chester-class cruiser that has not been brought up to the fleet's modern standard, so he prioritizes speed and withdrawal over an unnecessary exchange. The watch point shows how damage state, modernization, and the enemy's weapon mix should determine whether a nominally possible engagement is worth taking.",
+      "sourcePath": "src/transcripts/txt/2023-10-30_T19-00-23_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-11_lS0-KUxPWVE.txt",
+      "evidence": [{"start": "24:18", "end": "26:02", "note": "The damaged Cape Town runs at full speed, weighs a drive-by against a heavy cruiser and destroyer, identifies the destroyer as the greater threat, and is described as an unmodernized Chester."}]
+    },
+    {
       "id": "ultimate-admiral-commissioning-and-crew-bottleneck",
       "videoId": "lS0-KUxPWVE",
       "slug": "ultimate-admiral-commissioning-and-crew-bottleneck",
@@ -72,29 +88,71 @@
       "id": "ultimate-admiral-eagle-super-battleship-trial",
       "videoId": "lS0-KUxPWVE",
       "slug": "ultimate-admiral-eagle-super-battleship-trial",
-      "title": "Testing Eagle, a heavily armed and armored capital ship",
+      "title": "Introducing Eagle's heavily armored capital-ship design",
       "kind": "chapter",
       "start": "34:10",
-      "end": "42:24",
-      "topics": ["ultimate-admiral-dreadnoughts", "battleships", "naval-gunnery", "armour-protection", "battle-squadrons", "16-5-inch-guns", "6-inch-guns", "secondary-batteries", "naval-architecture"],
-      "summary": "Eagle demonstrates the campaign's capital-ship philosophy: very heavy armor and 16.5-inch guns used as the centerpiece of a battle squadron.",
-      "body": "Eagle is presented as a new capital ship carrying nine 16.5-inch guns and 20 inches of armor, with a future upgrade path to 18-inch weapons. She can make 30 knots even though the accompanying division is limited to about 27 knots, so Dr. Clarke detaches and rearranges ships to test her properly. Her secondary battery is unusually heavy as well, with twenty-seven six-inch guns and eighteen available on a broadside. The encounter against an isolated French cruiser is deliberately one-sided, but it reveals how concentrated firepower, armor, speed, and supporting screens define the intended capital-ship role.",
+      "end": "36:21",
+      "topics": ["ultimate-admiral-dreadnoughts", "battleships", "naval-gunnery", "armour-protection", "battle-squadrons", "16-5-inch-guns", "18-inch-guns", "naval-architecture", "capital-ship-design", "fleet-modernization"],
+      "summary": "Eagle embodies the campaign's capital-ship philosophy: nine 16.5-inch guns, twenty inches of armor, and a planned path to an 18-inch main battery.",
+      "body": "Dr. Clarke introduces Eagle as a new capital ship with nine 16.5-inch guns and twenty inches of armor. The hull is intended to accept 18-inch guns later, so the present armament forms part of a deliberate upgrade path. Four more powerful ships are available at Bombay, giving the regional invasion force a substantial reinforcement. This watch point establishes Eagle's design concept before the later combat trial: a heavily protected battleship intended to anchor a battle squadron.",
       "sourcePath": "src/transcripts/txt/2023-10-30_T19-00-23_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-11_lS0-KUxPWVE.txt",
-      "evidence": [{"start": "34:10", "end": "42:24", "note": "The transcript gives Eagle's gun and armor fit, intended upgrade, squadron assignment, and trial against a French cruiser."}]
+      "evidence": [{"start": "34:10", "end": "36:21", "note": "The transcript introduces Eagle, gives her nine 16.5-inch guns and twenty inches of armor, notes the intended 18-inch upgrade, and identifies additional capital ships at Bombay."}]
+    },
+    {
+      "id": "ultimate-admiral-research-before-next-design",
+      "videoId": "lS0-KUxPWVE",
+      "slug": "ultimate-admiral-research-before-next-design",
+      "title": "Sequencing research before the next ship design",
+      "kind": "notable_point",
+      "start": "36:24",
+      "end": "37:13",
+      "topics": ["ultimate-admiral-dreadnoughts", "naval-research", "naval-technology", "naval-procurement", "rangefinders", "naval-machinery", "shell-design", "torpedo-development"],
+      "summary": "A technology review favors machinery, shells, and torpedoes that can alter the next design while deferring rangefinder work that offers no immediate change.",
+      "body": "Before opening the next design, Dr. Clarke checks which research branches can actually change the ship he is about to build. Further rangefinder work will not alter the immediate design, whereas special machinery and shells may do so. He then directs attention to torpedo research, treating technological progress as a sequence of choices rather than an automatic accumulation of bonuses. The moment illustrates procurement timing in the campaign: research has the greatest operational value when its results arrive before a class is fixed and ordered.",
+      "sourcePath": "src/transcripts/txt/2023-10-30_T19-00-23_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-11_lS0-KUxPWVE.txt",
+      "evidence": [{"start": "36:24", "end": "37:13", "note": "He checks research before designing, judges that rangefinders will not change the current design, identifies machinery and shells as potentially useful, and selects torpedo work."}]
+    },
+    {
+      "id": "ultimate-admiral-eagle-combat-trial",
+      "videoId": "lS0-KUxPWVE",
+      "slug": "ultimate-admiral-eagle-combat-trial",
+      "title": "Trialing Eagle against an obsolete isolated cruiser",
+      "kind": "notable_point",
+      "start": "37:59",
+      "end": "43:55",
+      "topics": ["ultimate-admiral-dreadnoughts", "battleships", "battle-squadrons", "naval-gunnery", "armour-protection", "16-5-inch-guns", "18-inch-guns", "6-inch-guns", "secondary-batteries", "fleet-screening", "formation-tactics", "warship-testing"],
+      "summary": "Eagle's trial combines thirty-knot speed, heavy armor, a layered gun battery, and screening ships against a lone French cruiser whose design appears decades out of date.",
+      "body": "Eagle is detached so her performance can be observed instead of hidden within a mixed division. She makes thirty knots while the supporting division is limited to roughly twenty-seven, carries twenty inches of armor, and is designed for a later 18-inch-gun upgrade. Her twenty-seven six-inch guns can place eighteen weapons on a broadside, giving the ship a formidable secondary battery as well as its main armament. Destroyers and other ships screen the capital ship while the force closes on a lone French cruiser that looks as though it came from the 1890s. The matchup is deliberately one-sided, but it demonstrates how speed, protection, screening, and layered firepower combine in the intended battle-squadron role.",
+      "sourcePath": "src/transcripts/txt/2023-10-30_T19-00-23_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-11_lS0-KUxPWVE.txt",
+      "evidence": [{"start": "37:59", "end": "43:55", "note": "Eagle is detached for the trial, makes thirty knots with twenty inches of armor, carries a twenty-seven-gun six-inch battery with eighteen on the broadside, receives screening support, and engages an obsolete-looking lone cruiser."}]
     },
     {
       "id": "ultimate-admiral-super-battleship-gun-tradeoffs",
       "videoId": "lS0-KUxPWVE",
       "slug": "ultimate-admiral-super-battleship-gun-tradeoffs",
-      "title": "Balancing gun caliber, range, rate of fire, armor, and speed",
+      "title": "Why mature 16.5-inch turrets beat newer 17-inch guns",
       "kind": "chapter",
       "start": "46:17",
-      "end": "59:53",
-      "topics": ["ultimate-admiral-dreadnoughts", "ship-design", "naval-gunnery", "armour-protection", "damage-control", "16-5-inch-guns", "17-inch-guns", "rate-of-fire", "shell-design", "armour-penetration", "bulkheads", "naval-radar", "naval-architecture"],
-      "summary": "A new super-battleship design shows why a larger gun is not always the best choice when its turret technology sacrifices range and rate of fire.",
-      "body": "Dr. Clarke begins with an overweight super-battleship hull and tests the trade between 16.5-inch and 17-inch weapons. The larger weapons use early Mark I turrets with poor range and only about two rounds per minute, while the smaller guns offer superior reach and a much higher rate of fire. He then compares standard and super-heavy shells by range and long-distance penetration rather than assuming the heaviest projectile is automatically best. Weight saved on the armament can support armor, additional bulkheads, radar, and a 32-knot speed, illustrating how several interacting choices determine whether a capital ship is effective.",
+      "end": "54:04",
+      "topics": ["ultimate-admiral-dreadnoughts", "ship-design", "naval-gunnery", "16-5-inch-guns", "17-inch-guns", "rate-of-fire", "turret-design", "capital-ship-design", "displacement", "naval-technology"],
+      "summary": "A new super-battleship design rejects a nominally larger gun because its immature Mark I turret sacrifices the range and firing cycle delivered by the established 16.5-inch weapon.",
+      "body": "Dr. Clarke starts from the largest super-battleship hull available and finds the design roughly three hundred tons overweight. Moving from 16.5-inch to 17-inch guns looks attractive, but the available 17-inch mount is only a Mark I turret. Its poor range and slow firing cycle compare badly with the more mature smaller weapon. The design therefore retains 16.5-inch guns, demonstrating that turret generation, rate of fire, and useful range can matter more than nominal caliber. Avoiding the immature gun also releases weight for other systems without sacrificing the battery that can put the most effective fire on target.",
       "sourcePath": "src/transcripts/txt/2023-10-30_T19-00-23_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-11_lS0-KUxPWVE.txt",
-      "evidence": [{"start": "46:17", "end": "59:53", "note": "The design discussion compares gun sizes, turret range and firing rate, shell range, armor penetration, bulkheads, and top speed."}]
+      "evidence": [{"start": "46:17", "end": "54:04", "note": "The super-battleship begins overweight, and the design comparison rejects 17-inch Mark I turrets because their range and firing rate are inferior to the mature 16.5-inch mounts."}]
+    },
+    {
+      "id": "ultimate-admiral-shell-weight-protection-and-speed",
+      "videoId": "lS0-KUxPWVE",
+      "slug": "ultimate-admiral-shell-weight-protection-and-speed",
+      "title": "Spending saved gun weight on shells, protection, speed, and radar",
+      "kind": "chapter",
+      "start": "54:38",
+      "end": "59:53",
+      "topics": ["ultimate-admiral-dreadnoughts", "ship-design", "naval-gunnery", "armour-protection", "damage-control", "16-5-inch-guns", "rate-of-fire", "shell-design", "armour-penetration", "bulkheads", "naval-radar", "naval-architecture", "capital-ship-design", "displacement", "naval-technology"],
+      "summary": "The design converts roughly two thousand tons released by the gun choice into decisions about shell performance, bulkheads, armor, a thirty-two-knot speed, and first-generation radar.",
+      "body": "Keeping the smaller main battery leaves roughly two thousand tons available for the rest of the ship. Dr. Clarke compares standard and super-heavy shells by maximum range, rate of fire, and long-range belt and deck penetration rather than assuming the heavier projectile is best. He then spends weight on additional bulkheads and adjusts armor while testing whether the ship can reach thirty-three knots before settling at thirty-two. A first-generation radar is added because no better set is available. The sequence shows capital-ship design as an allocation problem in which ammunition, protection, damage resistance, speed, and sensors all compete for the displacement saved by one armament decision.",
+      "sourcePath": "src/transcripts/txt/2023-10-30_T19-00-23_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-11_lS0-KUxPWVE.txt",
+      "evidence": [{"start": "54:38", "end": "59:53", "note": "With about two thousand tons released, the transcript compares shell range and penetration, adds bulkheads, adjusts protection and speed, and fits the available first-generation radar."}]
     },
     {
       "id": "ultimate-admiral-hood-battle-line-and-torpedo-screen",
@@ -212,15 +270,43 @@
       "id": "ultimate-admiral-blockade-and-submarine-deterrence",
       "videoId": "lS0-KUxPWVE",
       "slug": "ultimate-admiral-blockade-and-submarine-deterrence",
-      "title": "Blockade, diplomacy, and a submarine-based deterrent",
+      "title": "Turning blockade and power projection into strategic dominance",
       "kind": "chapter",
       "start": "1:46:39",
-      "end": "1:50:44",
-      "topics": ["ultimate-admiral-dreadnoughts", "blockade", "power-projection", "submarines", "naval-deterrence", "sea-control", "naval-diplomacy", "alliance-politics", "submarine-warfare", "port-defence", "sea-denial", "imperial-defence"],
-      "summary": "A huge victory-point lead, blockade, and power projection define the campaign's sea-control advantage; diplomacy and a 260-boat submarine force extend it across the empire.",
-      "body": "Dr. Clarke compares roughly 223,000 French victory points with a British total above 3.5 million and observes that blockade and power projection heavily favor his empire. That disparity shows how accumulated sea control can become a strategic condition extending far beyond one successful engagement. He also pursues better political relationships with Germany and other potential partners rather than assuming naval strength alone settles the diplomatic picture. The decision to build enough submarines for more than 260 in service creates a distributed deterrent intended to give every imperial port some underwater protection.",
+      "end": "1:47:49",
+      "topics": ["ultimate-admiral-dreadnoughts", "blockade", "power-projection", "sea-control", "naval-strategy", "fleet-economics"],
+      "summary": "A victory-point lead above three million is reinforced by overwhelming blockade and power-projection advantages, turning repeated engagements into campaign-wide sea control.",
+      "body": "Dr. Clarke compares roughly 223,000 French victory points with a British total above 3.5 million and then looks beyond the score to blockade and power projection. Both strategic indicators overwhelmingly favor his empire, showing that repeated victories have produced a campaign condition rather than a collection of isolated tactical wins. French naval power can no longer contest the British force on comparable terms across the map. The watch point illustrates how sea control compounds: once blockade and global projection reinforce one another, the stronger navy can shape operations far from the site of any single battle.",
       "sourcePath": "src/transcripts/txt/2023-10-30_T19-00-23_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-11_lS0-KUxPWVE.txt",
-      "evidence": [{"start": "1:46:39", "end": "1:50:44", "note": "The transcript compares victory points, blockade and projection, diplomacy with Germany, and a plan for more than 260 submarines across imperial ports."}]
+      "evidence": [{"start": "1:46:39", "end": "1:47:49", "note": "The transcript compares roughly 223,000 French victory points with more than 3.5 million British points and says British blockade and power projection completely dwarf France."}]
+    },
+    {
+      "id": "ultimate-admiral-alliance-management",
+      "videoId": "lS0-KUxPWVE",
+      "slug": "ultimate-admiral-alliance-management",
+      "title": "Maintaining minor allies after achieving naval superiority",
+      "kind": "notable_point",
+      "start": "1:48:32",
+      "end": "1:49:19",
+      "topics": ["ultimate-admiral-dreadnoughts", "naval-diplomacy", "alliance-politics", "international-relations", "germany", "italy", "japan", "republic-of-china", "united-states", "sea-control"],
+      "summary": "Even with a dominant fleet, the campaign still spends political capital on Germany while noting especially close relationships with Japan, China, and the United States.",
+      "body": "After reviewing the naval advantage, Dr. Clarke turns to the empire's network of minor allies. Relations with Japan and the Republic of China are already near their practical maximum, and the United States is also very friendly. Italy remains a possible diplomatic target, but he chooses to improve relations with Germany. The sequence keeps naval power in political context: control of the seas creates leverage, but coalition management still determines which states may support or complicate the wider war.",
+      "sourcePath": "src/transcripts/txt/2023-10-30_T19-00-23_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-11_lS0-KUxPWVE.txt",
+      "evidence": [{"start": "1:48:32", "end": "1:49:19", "note": "He reviews minor allies and relationships with Italy, Japan, the Republic of China, and America before choosing to improve relations with Germany."}]
+    },
+    {
+      "id": "ultimate-admiral-distributed-submarine-deterrent",
+      "videoId": "lS0-KUxPWVE",
+      "slug": "ultimate-admiral-distributed-submarine-deterrent",
+      "title": "Distributing more than 260 submarines across imperial ports",
+      "kind": "notable_point",
+      "start": "1:49:58",
+      "end": "1:50:44",
+      "topics": ["ultimate-admiral-dreadnoughts", "submarines", "submarine-warfare", "submarine-strategy", "port-defence", "sea-denial", "naval-deterrence", "imperial-defence", "distributed-basing", "force-structure"],
+      "summary": "An order for roughly eighteen more boats pushes the fleet beyond 260 submarines, enough to give every imperial port an underwater defense and reinforce the threat of rapid sea control.",
+      "body": "Dr. Clarke orders roughly eighteen additional submarines, taking the fleet beyond 260 boats in service. The stated aim is to place some submarine protection at every port across the empire rather than concentrate the force in a few bases. That distribution turns a large inventory into a widespread sea-denial and port-defense network. In the campaign's strategic logic, the boats reinforce deterrence by warning opponents that a war would meet both surface sea control and underwater opposition throughout the imperial system.",
+      "sourcePath": "src/transcripts/txt/2023-10-30_T19-00-23_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-11_lS0-KUxPWVE.txt",
+      "evidence": [{"start": "1:49:58", "end": "1:50:44", "note": "He orders about eighteen submarines to pass 260 boats in service, explains that every imperial port should then have submarine protection, and frames the force as a warning against war."}]
     },
     {
       "id": "ultimate-admiral-1915-battlecruiser-command-succession",
@@ -229,14 +315,14 @@
       "title": "Who would replace an injured battlecruiser commander in 1915?",
       "kind": "qa",
       "start": "1:52:45",
-      "end": "1:54:27",
+      "end": "1:55:47",
       "topics": ["royal-navy", "battlecruisers", "world-war-i", "john-jellicoe", "winston-churchill", "david-beatty", "doveton-sturdee", "naval-leadership", "naval-command"],
       "summary": "A historical aside argues that the Royal Navy would quickly appoint the senior vice admiral with battlecruiser experience rather than leave the formation without command.",
       "question": "Who would replace David Beatty if he were too badly injured to command the Royal Navy's battlecruiser force in late 1915?",
       "answerShort": "Doveton Sturdee is the likely replacement because the Sea Lords and Jellicoe would need a senior vice admiral with battlecruiser experience, while Churchill was already out of office.",
-      "body": "Responding to comments on an alternate scenario, Dr. Clarke rejects the idea that the battlecruiser force could remain without a commander while Beatty recovered. He places the appointment with the First Sea Lord and the other Sea Lords in consultation with Jellicoe, emphasizing that it would have to be made quickly. Doveton Sturdee is identified as the likely senior vice admiral with relevant battlecruiser experience and therefore the strongest available candidate. Churchill would not control the choice because he had resigned as First Lord in November 1915, sharply limiting any role he could play in the command succession.",
+      "body": "Responding to comments on an alternate scenario, Dr. Clarke rejects the idea that the battlecruiser force could remain without a commander while Beatty recovered. He places the appointment with the First Sea Lord and the other Sea Lords in consultation with Jellicoe, emphasizing that it would have to be made quickly. Doveton Sturdee is identified as the likely senior vice admiral with relevant battlecruiser experience and therefore the strongest available candidate. Churchill would not control the choice because he had resigned as First Lord in November 1915, sharply limiting any role he could play in the command succession. The closing aside adds that Churchill was in France by 1916 and could only meddle so far in the naval command structure.",
       "sourcePath": "src/transcripts/txt/2023-10-30_T19-00-23_a-ultimate-admiral-dreadnoughts-campaign-building-a-battle-cruiser-navy-part-11_lS0-KUxPWVE.txt",
-      "evidence": [{"start": "1:52:45", "end": "1:54:27", "note": "He discusses replacing an injured Beatty, identifies the First Sea Lord and Jellicoe as key to the decision, names Sturdee, and dates Churchill's resignation to November 1915."}]
+      "evidence": [{"start": "1:52:45", "end": "1:55:47", "note": "He discusses replacing an injured Beatty, identifies the First Sea Lord and Jellicoe as key to the decision, names Sturdee, dates Churchill's resignation to November 1915, and notes Churchill's limited influence from France in 1916."}]
     }
   ]
 }

@@ -10,12 +10,12 @@ Repair site-pipeline failures without widening scope or destabilizing establishe
 ## Workflow
 
 1. Read `AGENTS.md` and preserve unrelated files and changes.
-2. Reproduce the user's exact failing command when practical. Treat a diagnosis-only request as read-only.
+2. Reproduce the narrow failing stage when practical. Do not rerun `npm run site:build` or any other full-site build unless the user explicitly authorizes a full site build in the current request. A pasted `site:build` log is evidence, not authorization. Treat a diagnosis-only request as read-only.
 3. Run `npm run diagnose:site-content-duplicates` for archive uniqueness failures or before changing segment routes. An exit code of 1 means duplicates were found and is an expected diagnostic result.
 4. For topic-title, alias, missing-topic, duplicate-taxonomy, or normalization failures, read `src/derived/topic-normalization-patterns.tsv` and run the read-only `npm run audit:topic-normalization` before adding a registry record or manually changing a topic reference.
 5. Classify the first actionable failure and apply the narrowest safe repair. For duplicate routes, rank every occurrence by transcript-backed accuracy and completeness before choosing which occurrence keeps the contested key.
 6. Regenerate the tracked manifest and shards under `site/src/data/generated/archive/` through repository commands; never hand-edit `index.json` or its listed generated archive files.
-7. Validate in proportion to the change and report the exact source and generated files changed.
+7. Validate in proportion to the change, stop after narrow validation unless the user explicitly authorized a full site build, and report the exact source and generated files changed.
 
 ## Repair Rules
 
@@ -54,21 +54,26 @@ Repair site-pipeline failures without widening scope or destabilizing establishe
 
 - Trace the first source error before changing generated output.
 - Use `$naval-video-page-prototype` for generated archive contracts, Astro routes, templates, generated-data adapters, or Pagefind behavior changes. Build repair diagnoses and verifies those changes but does not widen itself into their implementation workflow.
-- For `getStaticPaths` failures, remember that Astro isolates the exported function from frontmatter-local computed constants. Move reusable route data behind imported adapter helpers, then verify with a full build because `astro check` does not execute prerender path generation.
+- For `getStaticPaths` failures, remember that Astro isolates the exported function from frontmatter-local computed constants. Move reusable route data behind imported adapter helpers. A full build is the only complete prerender-path check because `astro check` does not execute path generation; run it only after explicit user authorization, otherwise report that validation gap without running it.
 - Treat writer-lease contention as a stop condition. Do not bypass the repository lock or interfere with scheduled transcript workers.
 
 ## Validation
 
-Run the narrow checks first, then the full pipeline when source data or routes changed. After an authorized topic-policy repair, verify that the read-only normalization audit reports steady-state policy compliance, changed references use the canonical records selected by active creation rules, registry usage is valid, generated data is refreshed, and focused plus full checks pass.
+Run narrow checks first and stop after the appropriate focused checks and `site:check` validation by default. Do not run `npm run site:build`, `npm run site:build:generated`, `npm run site:build:full`, or another full Astro/Pagefind render unless the user explicitly says a full site build is allowed for the current task. A pasted build failure, a request to repair the build, or a general request to validate does not grant that permission.
 
-Allow `site:build` at least fifteen minutes to complete. When the shell runner has a command timeout, set it to `900000` milliseconds or longer; do not interpret an earlier runner timeout as a site-build failure.
+After an authorized topic-policy repair, verify that the read-only normalization audit reports steady-state policy compliance, changed references use the canonical records selected by active creation rules, registry usage is valid, generated data is refreshed, and the appropriate focused checks pass.
 
 ```powershell
 npm run diagnose:site-content-duplicates
 npm run audit:topic-normalization
 npm run check
 npm run site:check
+```
+
+If the user explicitly authorizes a full site build, run it after the narrow checks and allow at least fifteen minutes to complete. When the shell runner has a command timeout, set it to `900000` milliseconds or longer; do not interpret an earlier runner timeout as a site-build failure.
+
+```powershell
 npm run site:build
 ```
 
-If only a diagnostic or error-message test changed, run the focused compiled test plus `npm run check`; still run `site:build` when feasible to verify the real failure path.
+If only a diagnostic or error-message test changed, run the focused compiled test plus `npm run check`. Do not add a full site build unless the user explicitly authorizes it.

@@ -9,7 +9,9 @@
     "alternate-history",
     "naval-diplomacy",
     "naval-logistics",
-    "naval-procurement"
+    "naval-procurement",
+    "naval-doctrine",
+    "british-empire"
   ],
   "segments": [
     {
@@ -22,9 +24,13 @@
       "end": "16:38",
       "topics": ["pearl-harbor", "imperial-japanese-navy", "naval-strategy", "strategic-planning"],
       "summary": "Why attacking the Pacific Fleet's principal base conflicted with Japan's need to lure American forces into an unfavorable advance.",
-      "body": "The lecture opens by treating alternative targets as a way to test the logic behind Japan's choice. Pearl Harbor was an obvious geostrategic asset and the hub of American Pacific operations, but disabling the fleet there could prevent the rash advance Japanese planners hoped to exploit. The base had extensive harbor and airfield capacity, yet it was still developing the infrastructure needed to sustain the fleet fully. The case illustrates how planners can become fixed on an impressive target without checking whether its destruction serves the larger strategy.",
+      "body": "The lecture uses alternative targets to test the logic behind Japan's choice rather than treating Pearl Harbor as inevitable. Pearl Harbor was an obvious geostrategic asset and the hub of American Pacific operations, but disabling the fleet there could prevent the rash advance Japanese planners hoped to exploit. The base already had extensive harbor and airfield capacity, yet in 1941 it was still developing the fuel, support, and other infrastructure needed to sustain the fleet fully. The much larger wartime complex should not be projected backward, because additional facilities were completed after the attack. The case illustrates how planners can become fixed on an impressive target without checking whether its destruction serves the larger strategy.",
       "sourcePath": "src/transcripts/txt/2023-12-07_T20-59-52_if-not-pearl-harbour_vYGZfLJZeCo.txt",
-      "evidence": [{"start": "6:19", "end": "16:38", "note": "The lecture frames the alternatives exercise, Pearl Harbor's importance, and the danger of target fixation."}]
+      "evidence": [
+        {"start": "6:19", "end": "9:19", "note": "The lecture frames the alternatives exercise, the strategic contradiction, and the danger of target fixation."},
+        {"start": "13:10", "end": "14:31", "note": "Dr. Clarke explains Pearl Harbor's geostrategic value, incomplete support infrastructure, and tendency to put the United States on the defensive."},
+        {"start": "2:03:23", "end": "2:03:35", "note": "The later discussion notes that much of Pearl Harbor's wartime infrastructure was completed after the attack."}
+      ]
     },
     {
       "id": "panama-canal-commando-alternative",
@@ -87,32 +93,79 @@
       "evidence": [{"start": "18:09", "end": "18:23", "note": "A viewer asks about the Japanese threat assessment and Dr. Clarke says the American carriers were regarded mainly as defensive assets."}]
     },
     {
+      "id": "japanese-doctrine-planning-framework",
+      "videoId": "vYGZfLJZeCo",
+      "slug": "japanese-doctrine-planning-framework",
+      "title": "Japanese doctrine was a planning system, not one battle slogan",
+      "kind": "notable_point",
+      "start": "20:20",
+      "end": "22:07",
+      "topics": ["imperial-japanese-navy", "naval-doctrine", "kantai-kessen", "strategic-planning"],
+      "summary": "The decisive-battle idea sat within annual operations plans and imperial-defense policy, while Pearl Harbor drew on different ambush and attrition concepts.",
+      "body": "Dr. Clarke places kantai kessen within a hierarchy of Japanese operational and imperial-defense documents rather than treating it as a free-floating slogan. The decisive-battle idea appeared in annual operations plans and informed national-defense strength requirements, policy, and doctrine. Pearl Harbor itself should not be labeled the decisive battle, because the relevant opening ideas were ambush and interception-attrition operations intended to shape a later clash. That distinction matters because each doctrinal phase required a different balance between surprise, damage, and leaving an enemy fleet able to advance. The passage shows how formal planning language can expose contradictions inside an operational choice.",
+      "sourcePath": "src/transcripts/txt/2023-12-07_T20-59-52_if-not-pearl-harbour_vYGZfLJZeCo.txt",
+      "evidence": [{"start": "20:20", "end": "22:07", "note": "Dr. Clarke locates decisive battle in Japanese planning documents and distinguishes it from the ambush and interception-attrition concepts relevant to Pearl Harbor."}]
+    },
+    {
       "id": "attrition-before-decisive-battle",
       "videoId": "vYGZfLJZeCo",
       "slug": "attrition-before-decisive-battle",
       "title": "Attrition before the decisive battle",
       "kind": "chapter",
-      "start": "20:20",
+      "start": "22:07",
       "end": "25:22",
       "topics": ["kantai-kessen", "imperial-japanese-navy", "naval-doctrine", "battle-of-tsushima"],
       "summary": "Japanese doctrine expected an advancing enemy to be worn down before a decisive battle close to the home islands.",
-      "body": "The decisive-battle concept was not simply a search for one immediate fleet clash. Japanese plans envisioned submarines, destroyers, and other forces attriting a stronger opponent across a long advance before the battle fleet engaged near Japan. This interception-and-attrition sequence aimed to create parity or superiority where Japanese support was strongest and American logistics weakest. Tsushima supplied the historical model for an exhausted enemy arriving at the chosen battlefield.",
+      "body": "The decisive-battle concept was not simply a search for one immediate fleet clash. Ambush operations attacked where an opponent least expected, while interception-and-attrition operations used submarines, destroyers, and other forces to wear down a stronger fleet across its advance. The battle fleet would engage only after the exchange created parity or superiority close to Japan, where Japanese support was strongest and American logistics weakest. Tsushima supplied the historical model because the Russian fleet had exhausted itself on the voyage before reaching the chosen battlefield. Pearl Harbor therefore has to be judged by whether it helped create that sequence, not merely by how many ships it damaged on the first day.",
       "sourcePath": "src/transcripts/txt/2023-12-07_T20-59-52_if-not-pearl-harbour_vYGZfLJZeCo.txt",
-      "evidence": [{"start": "20:20", "end": "25:22", "note": "The lecture distinguishes interception and attrition operations from the final decisive battle."}]
+      "evidence": [{"start": "22:07", "end": "25:22", "note": "The lecture distinguishes ambush and interception-attrition operations from the final battle and uses Tsushima to explain the preferred geography and logistics."}]
     },
     {
       "id": "pearl-harbor-undercuts-attrition-strategy",
       "videoId": "vYGZfLJZeCo",
       "slug": "pearl-harbor-undercuts-attrition-strategy",
-      "title": "How Pearl Harbor undercut the attrition strategy",
-      "kind": "chapter",
+      "title": "Didn't Pearl Harbor undermine Japan's attrition plan?",
+      "kind": "qa",
       "start": "25:25",
-      "end": "31:58",
-      "topics": ["pearl-harbor", "naval-strategy", "us-navy", "doolittle-raid"],
+      "end": "27:06",
+      "topics": ["pearl-harbor", "naval-strategy", "us-navy", "attrition-warfare", "naval-doctrine"],
       "summary": "The raid enraged the United States but damaged its fleet too heavily to produce the immediate advance Japan supposedly wanted.",
-      "body": "American admirals were unlikely to continue a suicidal advance once losses mounted, yet political anger might have forced an early offensive if a viable battle fleet remained. Pearl Harbor created the emotional pressure while removing much of the force that could act on it. A pre-attack declaration of war might even have placed defenders on alert and left enough survivors with confidence to sail, strengthening the lure. The discussion also explains why further Japanese waves could serve a crippling ambush strategy but would make an attritional lure even less coherent.",
+      "body": "A viewer identifies the core contradiction before the lecture develops it in detail. American admirals were unlikely to continue a suicidal advance once losses mounted, yet political anger might have forced an early offensive if a viable battle fleet remained. Pearl Harbor created the emotional pressure while removing much of the force that could act on it. The United States therefore had to repair, rebuild, and adopt a more deliberate campaign instead of immediately charging west. The raid achieved spectacular damage while frustrating the movement that Japan's interception-and-attrition strategy required.",
+      "question": "Didn't attacking Pearl Harbor force the US fleet to remain in port and undermine Japan's plan to wear it down during an advance?",
+      "answerShort": "Yes. The strike created the anger Japan wanted but removed the intact battle fleet that could have made the rash advance its attrition doctrine required.",
       "sourcePath": "src/transcripts/txt/2023-12-07_T20-59-52_if-not-pearl-harbour_vYGZfLJZeCo.txt",
-      "evidence": [{"start": "25:25", "end": "31:58", "note": "The transcript contrasts American caution, political anger, strike damage, and the competing logic of additional waves."}]
+      "evidence": [
+        {"start": "14:42", "end": "14:58", "note": "The viewer asks whether Pearl Harbor kept the fleet in port and made Japan's planned attrition harder."},
+        {"start": "25:25", "end": "27:06", "note": "Dr. Clarke answers that the attack produced anger but damaged the fleet too heavily to make the desired immediate advance."}
+      ]
+    },
+    {
+      "id": "nagumo-between-ambush-and-lure",
+      "videoId": "vYGZfLJZeCo",
+      "slug": "nagumo-between-ambush-and-lure",
+      "title": "Nagumo's two waves sat between incompatible strategies",
+      "kind": "notable_point",
+      "start": "27:08",
+      "end": "29:08",
+      "topics": ["pearl-harbor", "chuichi-nagumo", "kido-butai", "naval-strategy", "battleships"],
+      "summary": "Stopping after two waves had already done too much damage for a lure, yet not enough for an attempt to cripple the Pacific Fleet completely.",
+      "body": "Dr. Clarke interprets Nagumo's decision to stop after two waves through the raid's conflicting strategic aims. The damage exceeded many Japanese expectations and removed too much American strength for an immediate westward charge. Additional waves could have delayed American operations by months and better served an ambush strategy intended to cripple the fleet in detail, but they would have made an attritional lure still less coherent. He also notes a political paradox: destroying every battleship could make the lost ships seem like the decisive weapons Japan had feared. That perception might accelerate Iowa- and Montana-class construction instead of teaching the United States to abandon the battle line.",
+      "sourcePath": "src/transcripts/txt/2023-12-07_T20-59-52_if-not-pearl-harbour_vYGZfLJZeCo.txt",
+      "evidence": [{"start": "27:08", "end": "29:08", "note": "The lecture connects Nagumo's halt, the competing ambush and lure concepts, possible operational delay from further waves, and the political prestige of destroyed battleships."}]
+    },
+    {
+      "id": "declaration-warning-reverses-surprise",
+      "videoId": "vYGZfLJZeCo",
+      "slug": "declaration-warning-reverses-surprise",
+      "title": "A timely declaration would trade surprise for a stronger lure",
+      "kind": "notable_point",
+      "start": "29:59",
+      "end": "31:06",
+      "topics": ["pearl-harbor", "declaration-of-war", "military-readiness", "naval-strategy", "imperial-japanese-navy"],
+      "summary": "Warning the United States before the strike would weaken an ambush but might leave more confident survivors able to sail west.",
+      "body": "The intended delivery of Japan's declaration before the attack creates another test of strategic purpose. A timely warning would order Pearl Harbor to maximum alert, reducing surprise and making a crippling ambush less likely. More defenders and ships might survive, however, and successful resistance could give the fleet confidence to launch the advance Japan wanted to attrit. The same warning was therefore harmful to a destruction strategy but potentially useful to a lure, exposing the unresolved choice between them.",
+      "sourcePath": "src/transcripts/txt/2023-12-07_T20-59-52_if-not-pearl-harbour_vYGZfLJZeCo.txt",
+      "evidence": [{"start": "29:59", "end": "31:06", "note": "Dr. Clarke contrasts the intended pre-strike declaration's effect on surprise with its possible value in leaving a confident American fleet able to advance."}]
     },
     {
       "id": "pearl-harbor-fuel-storage-third-wave",
@@ -167,12 +220,16 @@
       "title": "San Francisco as a political target",
       "kind": "chapter",
       "start": "38:28",
-      "end": "45:32",
+      "end": "44:36",
       "topics": ["san-francisco", "united-states", "naval-strategy", "home-front"],
       "summary": "A strike on San Francisco could create greater political outrage than a more valuable attack on the naval facilities at San Diego.",
-      "body": "San Francisco combined a major port and industrial center with cultural importance on the continental United States. The lecture argues that political outrage could push Roosevelt to demand a rapid naval response and replace commanders who resisted. The target mattered because an attack on the continental homeland could reach political decision-makers more directly than a strike on an overseas base. San Diego might offer better military targets, but San Francisco better served the aim of provoking an emotional advance, potentially through submarine ambushes outside Pearl Harbor as the fleet sortied.",
+      "body": "San Francisco combined a major port and industrial center with cultural importance on the continental United States. The lecture argues that political outrage could push Roosevelt to demand a rapid naval response and replace commanders who resisted. Seattle and Portland later became more important, but in the 1940–41 planning context San Francisco offered the stronger political target. San Diego might offer better military objectives, yet San Francisco better served the aim of provoking an emotional advance. Japanese submarines outside Pearl Harbor could then begin attrition as the Pacific Fleet sortied to intercept the raiders.",
       "sourcePath": "src/transcripts/txt/2023-12-07_T20-59-52_if-not-pearl-harbour_vYGZfLJZeCo.txt",
-      "evidence": [{"start": "38:28", "end": "45:32", "note": "The transcript compares San Francisco and San Diego and emphasizes political pressure on American naval command."}]
+      "evidence": [
+        {"start": "38:28", "end": "42:55", "note": "The transcript explains San Francisco's 1941 industrial, cultural, and political importance and the pressure an attack could place on American naval command."},
+        {"start": "44:14", "end": "44:36", "note": "Dr. Clarke contrasts San Francisco's political value with San Diego's stronger military targets."},
+        {"start": "1:15:32", "end": "1:15:57", "note": "The later discussion explains how submarines around Pearl Harbor could attack the fleet as it sailed to intercept the San Francisco raiders."}
+      ]
     },
     {
       "id": "could-japan-damage-san-francisco-dams",
@@ -197,12 +254,15 @@
       "title": "Anchorage as a low-risk provocation",
       "kind": "chapter",
       "start": "45:32",
-      "end": "55:23",
+      "end": "53:09",
       "topics": ["alaska", "anchorage", "aleutian-islands-campaign", "amphibious-warfare"],
       "summary": "Anchorage offered an easy strike on American territory, but its remoteness and limited military value weakened the political effect.",
-      "body": "Alaska was closer to Japan than Pearl Harbor and had little force capable of resisting a raid or landing in 1941. A smaller carrier force could therefore create an outsized diversion without the range and target burden of San Francisco. An attack could divert American resources, provoke anger, and suggest Japanese weakness, yet Anchorage was so remote that news and political reaction might be delayed. A landing would make the affront harder to ignore but add occupation and Canadian intervention risks.",
+      "body": "Alaska was closer to Japan than Pearl Harbor and had little force capable of resisting a raid or landing in 1941. A smaller carrier force could therefore create an outsized diversion without the range and target burden of San Francisco. The strike might divert American resources to northern defense, provoke anger on the continental homeland, and suggest that Japan was too weak to attack a harder objective. Anchorage's remoteness was also a liability because news of the damage might take days to produce the desired political reaction. A landing would make the affront harder to ignore but add occupation, reinforcement, and Canadian intervention risks.",
       "sourcePath": "src/transcripts/txt/2023-12-07_T20-59-52_if-not-pearl-harbour_vYGZfLJZeCo.txt",
-      "evidence": [{"start": "45:32", "end": "55:23", "note": "The lecture weighs Alaska's distance, defenses, political value, reinforcement problems, and landing option."}]
+      "evidence": [
+        {"start": "45:32", "end": "46:22", "note": "The lecture explains Alaska's weak defenses, difficult American reinforcement, and the Canadian risk created by a landing."},
+        {"start": "51:16", "end": "53:09", "note": "Dr. Clarke sets out the diversion, provocation, and apparent-weakness effects, then weighs Anchorage's remoteness and a possible landing."}
+      ]
     },
     {
       "id": "bouncing-bombs-and-torpedo-nets",
@@ -360,6 +420,20 @@
       ]
     },
     {
+      "id": "samurai-and-bushi-are-not-synonyms",
+      "videoId": "vYGZfLJZeCo",
+      "slug": "samurai-and-bushi-are-not-synonyms",
+      "title": "Samurai and bushi are not exact synonyms",
+      "kind": "notable_point",
+      "start": "1:12:16",
+      "end": "1:13:57",
+      "topics": ["samurai", "bushi", "japanese-history", "military-culture"],
+      "summary": "A short language lesson shows how translating both social status and military function as warrior can flatten Japanese history.",
+      "body": "Dr. Clarke uses a terminology correction to warn against treating samurai and bushi as interchangeable labels. Popular usage often makes samurai simply mean warrior, but not every samurai was a bushi warrior and not every bushi held samurai status. He links the distinction to a Japanese colleague whose family served the imperial household rather than a clan, illustrating how affiliation and service complicate the categories. The moment is a compact reminder that translated labels can conceal important differences in Japanese social and military history.",
+      "sourcePath": "src/transcripts/txt/2023-12-07_T20-59-52_if-not-pearl-harbour_vYGZfLJZeCo.txt",
+      "evidence": [{"start": "1:12:16", "end": "1:13:57", "note": "Dr. Clarke distinguishes samurai status from bushi military function and uses an imperial-household service example to show why the terms do not map exactly."}]
+    },
+    {
       "id": "diplomatic-contacts-not-peace-negotiations",
       "videoId": "vYGZfLJZeCo",
       "slug": "diplomatic-contacts-not-peace-negotiations",
@@ -383,11 +457,15 @@
       "kind": "chapter",
       "start": "1:17:39",
       "end": "1:27:28",
-      "topics": ["singapore", "british-empire", "united-states", "dutch-east-indies", "far-east-strategy"],
+      "topics": ["singapore", "british-empire", "united-states", "dutch-east-indies", "far-east-strategy", "force-z", "wartime-diplomacy"],
       "summary": "A strike on Britain could leave Washington debating entry while Japan seized resource areas and isolated the Philippines.",
-      "body": "Singapore offered few fleet targets and would not directly enrage the United States, but that weakness could become a strategic advantage. Japan might attack British, Dutch, and French possessions while avoiding American territory, leaving Congress without an immediate cause for war. Hitler would also lack Pearl Harbor's prompt for an immediate German declaration of war on the United States. Months of American indecision could allow Japan to seize and fortify Malaya and the Dutch East Indies while encircling the Philippines and delaying American submarine operations.",
+      "body": "Singapore offered few fleet targets and would not directly enrage the United States, but that weakness could become a strategic advantage. A six-carrier, four-capital-ship attack on the two British capital ships there would also recast Force Z's loss as the result of overwhelming fleet action rather than land-based aviation alone. Japan might attack British, Dutch, and French possessions while avoiding American territory, leaving Congress without an immediate cause for war. Hitler would also lack Pearl Harbor's prompt for an immediate German declaration of war on the United States. The 1942 midterm elections would become an important political deadline, and Dr. Clarke suggests American entry might slip to mid-1942 or even mid-1943. That delay could let Japan seize and fortify Malaya and the Dutch East Indies, encircle the Philippines, begin extracting resources, and postpone American submarine operations against its new perimeter.",
       "sourcePath": "src/transcripts/txt/2023-12-07_T20-59-52_if-not-pearl-harbour_vYGZfLJZeCo.txt",
-      "evidence": [{"start": "1:17:39", "end": "1:27:28", "note": "The lecture explores attacking Singapore and the resource area without directly attacking the United States."}]
+      "evidence": [
+        {"start": "1:17:39", "end": "1:20:36", "note": "The lecture weighs Singapore's limited targets, the overwhelming-force interpretation of Force Z, and the problem of American involvement."},
+        {"start": "1:22:07", "end": "1:23:50", "note": "Dr. Clarke explains why the absence of Pearl Harbor and an immediate German declaration could delay American entry through the 1942 political cycle."},
+        {"start": "1:25:24", "end": "1:27:28", "note": "The scenario lets Japan seize the European resource areas, encircle the untouched Philippines, and delay American submarine pressure."}
+      ]
     },
     {
       "id": "selective-american-isolationism",
@@ -457,11 +535,11 @@
       "kind": "notable_point",
       "start": "1:32:39",
       "end": "1:36:00",
-      "topics": ["royal-navy", "naval-procurement", "capital-ships", "escort-vessels", "winston-churchill"],
+      "topics": ["royal-navy", "naval-procurement", "capital-ships", "escort-vessels", "winston-churchill", "third-sea-lord"],
       "summary": "An attack on Australia would magnify the cost of pausing capital ships when escort production was already established on continuing lines.",
-      "body": "The Sydney scenario leads into a critique of Britain's decision to pause capital-ship and carrier construction in favor of escorts. Dr. Clarke argues that the policy leaned too heavily on First World War experience, when escort production had not already been organized. By the Second World War, continuing escort programs meant Britain could emphasize escorts without wholly stopping larger warships. The Pacific demand would expose the shortage, while the institutional problem was finding a sufficiently authoritative Third Sea Lord and naval leadership able to make the production case against Churchill.",
+      "body": "The Sydney scenario leads into a critique of Britain's decision to pause capital-ship and carrier construction in favor of escorts. Dr. Clarke argues that the policy leaned too heavily on First World War experience, when escort production had not already been organized. By the Second World War, continuing escort programs meant Britain could emphasize escorts without wholly stopping larger warships. The Pacific demand would expose the shortage at exactly the moment when senior naval leadership was least able to contest Churchill's priorities. Pound was overloaded, other strong candidates were dead or serving elsewhere, and Fraser was still new in the Third Sea Lord post responsible for making the Navy's production case.",
       "sourcePath": "src/transcripts/txt/2023-12-07_T20-59-52_if-not-pearl-harbour_vYGZfLJZeCo.txt",
-      "evidence": [{"start": "1:32:39", "end": "1:36:00", "note": "Dr. Clarke criticizes the capital-ship pause, contrasts World War I and II escort production, and identifies the leadership needed to argue the Navy's construction case."}]
+      "evidence": [{"start": "1:32:39", "end": "1:35:59", "note": "Dr. Clarke criticizes the capital-ship pause, contrasts World War I and II escort production, and identifies the leadership needed to argue the Navy's construction case."}]
     },
     {
       "id": "south-african-and-african-mobilization",
@@ -563,7 +641,7 @@
       "end": "1:56:41",
       "topics": ["us-navy", "naval-convoys", "zigzagging", "long-lance-torpedo", "royal-navy"],
       "summary": "Even a navy reluctant to convoy merchant traffic would escort troop and supply movements into a war zone, creating predictable targets.",
-      "body": "The viewer notes American reluctance to adopt convoying and limited knowledge of Japanese night torpedo tactics. Dr. Clarke distinguishes merchant-shipping policy from the need to escort troopships and military stores into an active war zone. Concentrated formations sailing predictable tracks, especially without habitual zigzagging, would present excellent targets for Japanese night attacks. He contrasts that vulnerability with the Royal Navy's continued practice of zigzag maneuvers, illustrating how inherited fleet routines can matter immediately in a new theater.",
+      "body": "The viewer notes American reluctance to adopt convoying and limited knowledge of Japanese night torpedo tactics. Dr. Clarke distinguishes merchant-shipping policy from the need to escort troopships and military stores into an active war zone. Concentrated formations sailing predictable tracks, especially without habitual zigzagging, would present excellent targets for Japanese night attacks. He contrasts that vulnerability with the Royal Navy's continued practice of zigzag maneuvers, illustrating how inherited fleet routines can matter immediately in a new theater. As a modern continuity example, he recalls the Queen Elizabeth carrier task group using zigzagging during early group-maneuver exercises with allied ships.",
       "question": "Would American reluctance to use convoys prevent Japan from ambushing reinforcement formations?",
       "answerShort": "No; troop and military-supply movements would still need escorts, and predictable tracks without strong zigzag habits could make them vulnerable to Japanese night torpedo attacks.",
       "sourcePath": "src/transcripts/txt/2023-12-07_T20-59-52_if-not-pearl-harbour_vYGZfLJZeCo.txt",
@@ -644,9 +722,12 @@
       "end": "2:07:16",
       "topics": ["pearl-harbor", "doolittle-raid", "us-navy", "naval-strategy", "battleships"],
       "summary": "The attack produced spectacular immediate damage but forced the United States to adopt a slower, more effective method of war.",
-      "body": "Pearl Harbor inflamed American public opinion while removing the intact battle fleet that political leaders might otherwise have sent forward too quickly. The Doolittle Raid demonstrates the emotional demand to strike back even at substantial operational cost. Had an American fleet advanced and been destroyed at sea, Japan could have gained years, though American industry would eventually build a second and third force. A carrier-led destruction would validate naval aviation, while a Japanese battle-line finish could accelerate Iowa- and Montana-class construction and preserve battleship prestige. Pearl Harbor was therefore a tactical success whose damage pushed the United States toward a slower and ultimately more effective method of war.",
+      "body": "Pearl Harbor inflamed American public opinion while removing the intact battle fleet that political leaders might otherwise have sent forward too quickly. The Doolittle Raid demonstrates the emotional demand to strike back: the United States committed half of its then-available carrier force, with one carrier largely serving as a B-25 launch platform, for limited direct damage but enormous symbolic value. Had an American fleet advanced and been destroyed at sea, Japan could have gained years, though American industry would eventually build a second and third force. A carrier-led destruction would validate naval aviation, while a Japanese battle-line finish could accelerate Iowa- and Montana-class construction and preserve battleship prestige. Pearl Harbor was therefore a tactical success whose damage pushed the United States toward a slower and ultimately more effective method of war.",
       "sourcePath": "src/transcripts/txt/2023-12-07_T20-59-52_if-not-pearl-harbour_vYGZfLJZeCo.txt",
-      "evidence": [{"start": "1:59:24", "end": "2:07:16", "note": "The conclusion contrasts tactical damage with strategic effects, using the Doolittle Raid and future shipbuilding as examples."}]
+      "evidence": [
+        {"start": "1:59:24", "end": "2:03:14", "note": "The conclusion contrasts tactical damage with strategic effects and uses the Doolittle Raid's carrier commitment and symbolic purpose as evidence of emotional pressure."},
+        {"start": "2:03:46", "end": "2:07:16", "note": "Dr. Clarke explains how the mechanism of an American fleet defeat could validate either carriers or renewed battleship construction."}
+      ]
     },
     {
       "id": "american-fleet-loss-shapes-force-design",

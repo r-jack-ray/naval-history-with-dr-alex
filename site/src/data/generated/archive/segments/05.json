@@ -27152,7 +27152,7 @@
     "startSeconds": 110,
     "youtubeUrl": "https://www.youtube.com/watch?v=nC76s-l8WOI&t=110s",
     "summary": "A Patreon design prompt reveals why treaty standard displacement cannot be treated as a destroyer's complete seagoing weight.",
-    "body": "A Patreon prompt asks Dr. Clarke to compare gun destroyers nominally limited to 1,500, 1,750, 2,250, and 2,500 tons. He treats those figures as standard displacement and adds roughly one-third for fuel, stores, and other operating loads. The 1,500-ton brief cannot combine credible machinery, guns, and torpedoes even after capability is cut, while the 1,750-ton version remains constrained by arrangement and combat systems. Around 2,000 tons standard, a larger hull can balance a strong gun battery, one quintuple torpedo launcher, light weapons, and modest protection. The in-game hull limit prevents him from representing the full-load weights implied by the 2,250- and 2,500-ton briefs. The exercise shows that a treaty number is only the starting point for understanding a destroyer's real design envelope.",
+    "body": "A Patreon prompt asks Dr. Clarke to compare gun destroyers nominally limited to 1,500, 1,750, 2,250, and 2,500 tons. He first decides how to interpret those numbers instead of treating them as ready-to-sail weights. He assumes standard displacement, then adds operating loads such as fuel before choosing a hull. The rest of the exercise uses that conversion to expose why nominal treaty tonnage cannot be mapped directly onto a fighting destroyer.",
     "topics": [
       {
         "slug": "destroyers",
@@ -27179,28 +27179,13 @@
       {
         "start": "1:50",
         "end": "3:03",
-        "note": "The transcript states the Patreon prompt and explains the standard-displacement assumption."
-      },
-      {
-        "start": "8:56",
-        "end": "10:30",
-        "note": "The smallest brief remains under the weight required for a credible gun-destroyer fit even after capability reductions."
-      },
-      {
-        "start": "13:18",
-        "end": "18:12",
-        "note": "The 1,750-ton brief gains hull volume but remains constrained by torpedo arrangement, firing arcs, sensors, and weight."
-      },
-      {
-        "start": "21:49",
-        "end": "29:55",
-        "note": "The larger design becomes workable, while the two highest standard-displacement briefs exceed the available hull limit after operational weight is added."
+        "note": "The transcript states the Patreon prompt, identifies the four tonnage briefs, and explains the standard-displacement assumption."
       }
     ],
-    "end": "29:55",
-    "endSeconds": 1795,
+    "end": "3:03",
+    "endSeconds": 183,
     "question": "What would 1,500-, 1,750-, 2,250-, and 2,500-ton gun destroyers look like, and how would their design choices compare with historical examples?",
-    "answerShort": "Once standard displacement is translated into operational weight, the smallest briefs cannot carry a credible 1940 gun-destroyer fit, while larger hulls ease but do not eliminate the tradeoffs.",
+    "answerShort": "He treats the figures as standard displacement and first adds the fuel, stores, and other operating loads needed to approximate a ship ready for service.",
     "sourcePath": "src/transcripts/txt/2022-06-12_T06-00-11_a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video_nC76s-l8WOI.txt"
   },
   {
@@ -27394,7 +27379,7 @@
   {
     "id": "gun-layout-topweight-and-balance",
     "slug": "gun-layout-topweight-and-balance",
-    "title": "Gun layout creates topweight and balance penalties",
+    "title": "Gun layout creates forward-weight and stability penalties",
     "kind": "notable_point",
     "kindLabel": "Notable Point",
     "videoId": "nC76s-l8WOI",
@@ -27404,7 +27389,7 @@
     "startSeconds": 1097,
     "youtubeUrl": "https://www.youtube.com/watch?v=nC76s-l8WOI&t=1097s",
     "summary": "Good firing arcs place guns high and forward, while torpedo mountings sit lower and impose a different arrangement problem.",
-    "body": "Gun destroyers are harder to balance than torpedo-centered designs because their weapons need broad arcs and often superfiring positions. Torpedo launchers sit low on the hull, whereas gun positions and their supporting structures impose weight higher up and may crowd the bow. Concentrating guns forward produces an undesirable weight distribution even after machinery is shifted aft. Dr. Clarke connects balance directly to high-speed maneuvering, which both gun and torpedo destroyers need to close the enemy and bring weapons to bear.",
+    "body": "On the 1,750-ton design, the guns and superstructure force too much weight forward even after machinery has shifted aft. Gun destroyers face this problem more often than torpedo-led ships because their guns need elevated positions and good arcs. Torpedo launchers sit lower and closer to the hull, while superfiring guns push weight upward and toward the bow. The moment illustrates how weapons arrangement can make an apparently acceptable displacement unusable by upsetting trim and stability.",
     "topics": [
       {
         "slug": "naval-gunnery",
@@ -27430,18 +27415,18 @@
     "evidence": [
       {
         "start": "18:17",
-        "end": "21:40",
-        "note": "The transcript contrasts gun and torpedo installation demands and explains why balance matters to maneuver."
+        "end": "19:20",
+        "note": "The transcript identifies excessive forward weight and contrasts the placement demands of gun and torpedo armament."
       }
     ],
-    "end": "21:40",
-    "endSeconds": 1300,
+    "end": "19:20",
+    "endSeconds": 1160,
     "sourcePath": "src/transcripts/txt/2022-06-12_T06-00-11_a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video_nC76s-l8WOI.txt"
   },
   {
     "id": "torpedo-reloads-expose-treaty-accounting-gap",
     "slug": "torpedo-reloads-expose-treaty-accounting-gap",
-    "title": "Torpedo reloads expose a treaty-accounting gap",
+    "title": "Concealed torpedo reloads undermine declared tonnage",
     "kind": "notable_point",
     "kindLabel": "Notable Point",
     "videoId": "nC76s-l8WOI",
@@ -27450,8 +27435,8 @@
     "start": "19:20",
     "startSeconds": 1160,
     "youtubeUrl": "https://www.youtube.com/watch?v=nC76s-l8WOI&t=1160s",
-    "summary": "Reload torpedoes could sit outside standard displacement even though their real weight and handling systems still burdened the ship.",
-    "body": "The treaty definition allowed reload torpedoes to sit outside standard displacement even though the ship still had to carry their real weight at sea. Dr. Clarke notes that a navy could exploit this by fitting reloads and their associated systems while understating the total burden. That accounting choice helps explain why a destroyer's operational displacement could exceed the figure used to judge compliance. It also sharpens the design lesson: nominal tonnage limits cannot be evaluated without knowing which weapons, stores, and systems the rules excluded.",
+    "summary": "Fitting reload torpedoes and their associated systems beyond the declared allowance turns standard-displacement compliance into a credibility problem.",
+    "body": "The transcript treats extra torpedo reloads as something a designer or navy could conceal, not as free equipment. Reloads and their associated systems still add real seagoing weight even if the declared figure ignores them. Carrying them therefore widens the gap between the ship presented on paper and the ship that sails. The example reinforces the broader lesson that standard-displacement numbers require scrutiny of what was actually installed.",
     "topics": [
       {
         "slug": "torpedo-reloads",
@@ -27466,6 +27451,10 @@
         "title": "Standard Displacement"
       },
       {
+        "slug": "treaty-compliance",
+        "title": "Treaty Compliance"
+      },
+      {
         "slug": "torpedoes",
         "title": "Torpedoes"
       },
@@ -27478,11 +27467,58 @@
       {
         "start": "19:20",
         "end": "20:03",
-        "note": "The transcript says reload torpedoes were excluded from standard displacement and discusses hiding reload systems within declared tonnage."
+        "note": "The transcript describes fitting reloads and their systems while concealing the resulting increase in overall tonnage."
       }
     ],
     "end": "20:03",
     "endSeconds": 1203,
+    "sourcePath": "src/transcripts/txt/2022-06-12_T06-00-11_a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video_nC76s-l8WOI.txt"
+  },
+  {
+    "id": "high-speed-manoeuvre-requires-balanced-destroyers",
+    "slug": "high-speed-manoeuvre-requires-balanced-destroyers",
+    "title": "High-speed manoeuvre requires a balanced destroyer",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "nC76s-l8WOI",
+    "videoSlug": "a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video",
+    "videoTitle": "A Treaty Inspired Destroyer Design Discussion: UAD & Patreon Infused video",
+    "start": "20:17",
+    "startSeconds": 1217,
+    "youtubeUrl": "https://www.youtube.com/watch?v=nC76s-l8WOI&t=1217s",
+    "summary": "Forward weight and restricted firing arcs matter because destroyers must turn hard at speed to bring guns or torpedoes onto useful attack geometry.",
+    "body": "Dr. Clarke rejects the heavily bow-loaded arrangement even though its machinery is already as far aft as possible. A destroyer must remain balanced because it has to manoeuvre rapidly at high speed, not merely make a high straight-line speed. Gun destroyers need that agility to bring their battery onto a target, while torpedo destroyers need it to close and improve the chance of a hit. The passage connects weight distribution to tactics, showing why an armed hull that meets a tonnage figure can still be a poor fighting design.",
+    "topics": [
+      {
+        "slug": "destroyers",
+        "title": "Destroyers"
+      },
+      {
+        "slug": "ship-stability",
+        "title": "Ship Stability"
+      },
+      {
+        "slug": "naval-manoeuvre",
+        "title": "Naval Manoeuvre"
+      },
+      {
+        "slug": "destroyer-tactics",
+        "title": "Destroyer Tactics"
+      },
+      {
+        "slug": "torpedo-tactics",
+        "title": "Torpedo Tactics"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "20:17",
+        "end": "21:40",
+        "note": "The transcript connects forward weight, firing arcs, high-speed manoeuvre, and the attack geometry needed by gun and torpedo destroyers."
+      }
+    ],
+    "end": "21:40",
+    "endSeconds": 1300,
     "sourcePath": "src/transcripts/txt/2022-06-12_T06-00-11_a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video_nC76s-l8WOI.txt"
   },
   {
@@ -27533,6 +27569,53 @@
     "sourcePath": "src/transcripts/txt/2022-06-12_T06-00-11_a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video_nC76s-l8WOI.txt"
   },
   {
+    "id": "fuse-keeping-clock-multiplies-destroyer-firepower",
+    "slug": "fuse-keeping-clock-multiplies-destroyer-firepower",
+    "title": "The fuse-keeping clock multiplies destroyer firepower",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "nC76s-l8WOI",
+    "videoSlug": "a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video",
+    "videoTitle": "A Treaty Inspired Destroyer Design Discussion: UAD & Patreon Infused video",
+    "start": "30:46",
+    "startSeconds": 1846,
+    "youtubeUrl": "https://www.youtube.com/watch?v=nC76s-l8WOI&t=1846s",
+    "summary": "Tribal-class fire-control equipment lets a small ship engage with accuracy out of proportion to its size.",
+    "body": "The destroyer design discussion turns from raw armament to the quality of its fire-control system. Dr. Clarke identifies the fuse-keeping clock introduced in the Tribal class as a particularly powerful tool. Its value lies in making a small ship much more accurate and therefore more effective against its targets. This watch point shows why weapon count alone cannot measure a destroyer's fighting power.",
+    "topics": [
+      {
+        "slug": "destroyers",
+        "title": "Destroyers"
+      },
+      {
+        "slug": "fire-control",
+        "title": "Fire Control"
+      },
+      {
+        "slug": "fuse-keeping-clock",
+        "title": "Fuse Keeping Clock"
+      },
+      {
+        "slug": "tribal-class-destroyers",
+        "title": "Tribal-Class Destroyers"
+      },
+      {
+        "slug": "naval-gunnery",
+        "title": "Naval Gunnery"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "30:46",
+        "end": "31:21",
+        "note": "The transcript identifies the Tribal-class fuse-keeping clock and explains the accuracy it gives a small warship."
+      }
+    ],
+    "end": "31:21",
+    "endSeconds": 1881,
+    "sourcePath": "src/transcripts/txt/2022-06-12_T06-00-11_a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video_nC76s-l8WOI.txt"
+  },
+  {
     "id": "destroyer-design-is-navy-specific",
     "slug": "destroyer-design-is-navy-specific",
     "title": "Destroyer balance depends on the navy's mission",
@@ -27541,11 +27624,11 @@
     "videoId": "nC76s-l8WOI",
     "videoSlug": "a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video",
     "videoTitle": "A Treaty Inspired Destroyer Design Discussion: UAD & Patreon Infused video",
-    "start": "30:43",
-    "startSeconds": 1843,
-    "youtubeUrl": "https://www.youtube.com/watch?v=nC76s-l8WOI&t=1843s",
-    "summary": "Firepower, speed, stability, fire control, and fleet role produce different answers for different navies.",
-    "body": "A destroyer is presented as a balance among firepower, speed, maneuverability, and stability rather than a universal recipe. Fire-control equipment such as the fuse-keeping clock can make a small ship unusually accurate and effective for its size. The desired balance still follows national requirements rather than a single optimal formula. For the Royal Navy, Dr. Clarke emphasizes a gun destroyer able to take on some cruiser-like work, comparing the ten-gun, five-turret concept to a destroyer-sized Dido.",
+    "start": "31:43",
+    "startSeconds": 1903,
+    "youtubeUrl": "https://www.youtube.com/watch?v=nC76s-l8WOI&t=1903s",
+    "summary": "The Royal Navy's desired gun destroyer could undertake some light-cruiser work, but another navy's mission would produce a different balance.",
+    "body": "Dr. Clarke stresses that the preferred compromise between guns, torpedoes, speed, and stability depends on the navy and mission. The Royal Navy's gun destroyer is expected to cover some duties otherwise assigned to light cruisers. In the game, ten 5-inch guns in five twin mounts create an intentionally gun-heavy answer to that requirement. He likens it to a destroyer-sized Dido, making the design a force-structure choice rather than a universal optimum.",
     "topics": [
       {
         "slug": "destroyers",
@@ -27570,9 +27653,9 @@
     ],
     "evidence": [
       {
-        "start": "30:43",
+        "start": "31:43",
         "end": "32:30",
-        "note": "The transcript explains the balancing act, the fuse-keeping clock, and the Royal Navy's cruiser-role expectation."
+        "note": "The transcript explains why national requirements produce different balances and compares the Royal Navy design with a destroyer-sized Dido."
       }
     ],
     "end": "32:30",
@@ -27665,12 +27748,12 @@
     "evidence": [
       {
         "start": "37:25",
-        "end": "40:22",
+        "end": "39:17",
         "note": "The transcript explains subdivision, longitudinal bulkheads, machinery arrangement, and the porous boundary with small cruisers."
       }
     ],
-    "end": "40:22",
-    "endSeconds": 2422,
+    "end": "39:17",
+    "endSeconds": 2357,
     "sourcePath": "src/transcripts/txt/2022-06-12_T06-00-11_a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video_nC76s-l8WOI.txt"
   },
   {
@@ -27686,7 +27769,7 @@
     "startSeconds": 2357,
     "youtubeUrl": "https://www.youtube.com/watch?v=nC76s-l8WOI&t=2357s",
     "summary": "Guns demand deck penetration, ammunition handling, foundations, and topweight that torpedo launchers largely avoid.",
-    "body": "Torpedo launchers sit on deck without the same below-deck path required by many gun installations, and their reloads need not sit directly beneath the mount. Larger twin or triple gun mounts may pierce the deck and bring ammunition-handling arrangements, foundations, and structural reinforcement. Those hidden requirements drive displacement upward even before armor or additional subdivision is considered. Because a destroyer cannot protect itself against equivalent gunfire without becoming much heavier, its survivability still rests heavily on speed, maneuver, and avoiding vital hits.",
+    "body": "Torpedo launchers can sit on deck without the same below-deck path required by gun mounts. Their reloads do not have to sit directly beneath the launcher, giving designers more freedom over internal arrangement. Twin or triple gun mounts may pierce the deck and require ammunition handling, foundations, and structural reinforcement. Those hidden demands increase displacement before armour or extra subdivision enters the calculation.",
     "topics": [
       {
         "slug": "naval-gunnery",
@@ -27712,8 +27795,55 @@
     "evidence": [
       {
         "start": "39:17",
+        "end": "40:22",
+        "note": "The transcript contrasts torpedo and gun installations and identifies the internal and structural demands of larger gun mounts."
+      }
+    ],
+    "end": "40:22",
+    "endSeconds": 2422,
+    "sourcePath": "src/transcripts/txt/2022-06-12_T06-00-11_a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video_nC76s-l8WOI.txt"
+  },
+  {
+    "id": "destroyers-survive-by-avoiding-vital-hits",
+    "slug": "destroyers-survive-by-avoiding-vital-hits",
+    "title": "Destroyers survive by avoiding vital hits",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "nC76s-l8WOI",
+    "videoSlug": "a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video",
+    "videoTitle": "A Treaty Inspired Destroyer Design Discussion: UAD & Patreon Infused video",
+    "start": "40:22",
+    "startSeconds": 2422,
+    "youtubeUrl": "https://www.youtube.com/watch?v=nC76s-l8WOI&t=2422s",
+    "summary": "Like a battlecruiser facing equivalent firepower, a destroyer cannot absorb the hits its own guns can deliver without becoming much heavier.",
+    "body": "Dr. Clarke compares the design problem with a battlecruiser that is not meant to trade equivalent-calibre hits at normal battle range. A destroyer likewise cannot be protected against destroyer-gun fire without giving up the lightness that supplies its speed and role. Non-vital hits may be survivable, but a shell reaching machinery or another critical space can be decisive. Armour, subdivision, and the supports for larger mounts all drive weight sharply upward, so survival depends heavily on not being hit where it matters.",
+    "topics": [
+      {
+        "slug": "destroyers",
+        "title": "Destroyers"
+      },
+      {
+        "slug": "ship-survivability",
+        "title": "Ship Survivability"
+      },
+      {
+        "slug": "battlecruisers",
+        "title": "Battlecruisers"
+      },
+      {
+        "slug": "warship-armour",
+        "title": "Warship Armour"
+      },
+      {
+        "slug": "damage-control",
+        "title": "Damage Control"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "40:22",
         "end": "41:43",
-        "note": "The transcript contrasts torpedo and gun installations and describes the structural and protection penalties of larger mounts."
+        "note": "The transcript compares destroyer and battlecruiser protection logic and explains why armour, subdivision, and larger gun supports rapidly increase weight."
       }
     ],
     "end": "41:43",
@@ -27733,7 +27863,7 @@
     "startSeconds": 2511,
     "youtubeUrl": "https://www.youtube.com/watch?v=nC76s-l8WOI&t=2511s",
     "summary": "A classroom counterfactual produces mass torpedo destroyers and much larger gun-armed leaders that displace light cruisers.",
-    "body": "Dr. Clarke describes an exercise in which naval treaties fail and very light cruiser types disappear. One tier consists of fast, roughly 2,000-ton mass-produced torpedo destroyers carrying only the guns needed for their basic work. The other reaches about 3,500 tons, commonly with nine guns, two quintuple torpedo launchers, and improved subdivision. These larger ships serve as gun destroyers and leaders, killing enemy destroyers while covering light-cruiser duties. Their arrival weakens the case for retaining older C-class cruisers and can alter the requirements that historically produced the Dido class.",
+    "body": "Dr. Clarke describes a classroom exercise in which naval limitation treaties fail and very light cruiser types disappear. One tier consists of fast, roughly 2,000-ton full-load torpedo destroyers carrying only the guns needed for their basic work. The other reaches about 3,500 tons full load, commonly with nine guns in triple mounts and two quintuple torpedo launchers. Resembling enlarged Darings, the larger ships use their extra volume for internal protection as well as weapons. The counterfactual shows how removing treaty ceilings could separate mass-produced torpedo craft from much more capable gun destroyers.",
     "topics": [
       {
         "slug": "naval-treaties",
@@ -27763,12 +27893,12 @@
     "evidence": [
       {
         "start": "41:51",
-        "end": "47:24",
-        "note": "The transcript lays out the no-treaty exercise, its two destroyer tiers, their armament and subdivision, and the effect on cruiser roles."
+        "end": "44:44",
+        "note": "The transcript lays out the no-treaty exercise, its two destroyer tiers, and their contrasting displacement and armament."
       }
     ],
-    "end": "47:24",
-    "endSeconds": 2844,
+    "end": "44:44",
+    "endSeconds": 2684,
     "sourcePath": "src/transcripts/txt/2022-06-12_T06-00-11_a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video_nC76s-l8WOI.txt"
   },
   {
@@ -27819,6 +27949,61 @@
     "sourcePath": "src/transcripts/txt/2022-06-12_T06-00-11_a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video_nC76s-l8WOI.txt"
   },
   {
+    "id": "large-destroyers-displace-light-cruiser-roles",
+    "slug": "large-destroyers-displace-light-cruiser-roles",
+    "title": "Large destroyers displace light-cruiser roles",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "nC76s-l8WOI",
+    "videoSlug": "a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video",
+    "videoTitle": "A Treaty Inspired Destroyer Design Discussion: UAD & Patreon Infused video",
+    "start": "46:24",
+    "startSeconds": 2784,
+    "youtubeUrl": "https://www.youtube.com/watch?v=nC76s-l8WOI&t=2784s",
+    "summary": "A two-tier destroyer force uses large gun leaders to kill enemy destroyers and absorb duties that otherwise justify small cruisers.",
+    "body": "The counterfactual settles into two complementary types: a mass torpedo destroyer and a large gun destroyer. The gun ships kill opposing destroyers, lead the lighter flotillas, and cover duties otherwise assigned to light cruisers. That change weakens the case for retaining elderly C-class cruisers and affects the requirement that historically produced the Dido class. Crew can then be reassigned elsewhere, demonstrating how a new ship type reshapes force structure as well as individual designs.",
+    "topics": [
+      {
+        "slug": "destroyers",
+        "title": "Destroyers"
+      },
+      {
+        "slug": "fleet-leaders",
+        "title": "Fleet Leaders"
+      },
+      {
+        "slug": "force-structure",
+        "title": "Force Structure"
+      },
+      {
+        "slug": "light-cruisers",
+        "title": "Light Cruisers"
+      },
+      {
+        "slug": "c-class-cruisers",
+        "title": "C Class Cruisers"
+      },
+      {
+        "slug": "dido-class-cruisers",
+        "title": "Dido Class Cruisers"
+      },
+      {
+        "slug": "naval-personnel",
+        "title": "Naval Personnel"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "46:24",
+        "end": "47:24",
+        "note": "The transcript assigns large gun destroyers leader and light-cruiser duties, then traces the consequences for C-class retention, Dido requirements, and crew use."
+      }
+    ],
+    "end": "47:24",
+    "endSeconds": 2844,
+    "sourcePath": "src/transcripts/txt/2022-06-12_T06-00-11_a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video_nC76s-l8WOI.txt"
+  },
+  {
     "id": "museum-visits-build-public-support",
     "slug": "museum-visits-build-public-support",
     "title": "Museum visits build visible support for preserved ships",
@@ -27842,6 +28027,14 @@
         "title": "Naval Heritage"
       },
       {
+        "slug": "public-history",
+        "title": "Public History"
+      },
+      {
+        "slug": "heritage-funding",
+        "title": "Heritage Funding"
+      },
+      {
         "slug": "hmcs-haida",
         "title": "HMCS Haida"
       },
@@ -27852,6 +28045,14 @@
       {
         "slug": "the-sullivans",
         "title": "The Sullivans"
+      },
+      {
+        "slug": "royal-canadian-navy",
+        "title": "Royal Canadian Navy"
+      },
+      {
+        "slug": "naval-reserves",
+        "title": "Naval Reserves"
       }
     ],
     "evidence": [
@@ -29130,7 +29331,7 @@
   {
     "id": "warspite-grand-old-lady-and-interwar-flagship",
     "slug": "warspite-grand-old-lady-and-interwar-flagship",
-    "title": "Warspite becomes the Royal Navy's Grand Old Lady",
+    "title": "How Warspite became the Royal Navy's Grand Old Lady",
     "kind": "chapter",
     "kindLabel": "Chapter",
     "videoId": "Om_7L-pL61w",
@@ -29139,8 +29340,63 @@
     "start": "0:26",
     "startSeconds": 26,
     "youtubeUrl": "https://www.youtube.com/watch?v=Om_7L-pL61w&t=26s",
-    "summary": "Warspite's long career and Mediterranean flagship service explain how a Jutland veteran became the Royal Navy's most conspicuous capital ship.",
-    "body": "Commissioned in 1915 and retained until 1945, Warspite acquired an exceptional public and professional reputation as the Grand Old Lady. The video traces her early postwar cruises, her 1920s flagship role, and the way a familiar battleship became a visible instrument of British naval presence. Her first interwar modernization combined the funnels, added torpedo bulges, changed the anti-aircraft battery, and removed some torpedo tubes. It also places later commanders such as James Somerville in the ship's interwar story, including the 1927 grounding that sent her back to Portsmouth.",
+    "summary": "Warspite's thirty-year career and unusual flagship reputation explain why the Jutland veteran became the Royal Navy's Grand Old Lady.",
+    "body": "Commissioned in March 1915 and retained until February 1945, Warspite served as a front-line capital ship across both world wars. The video explains how that unusually long career made her a recurring reference point in naval-history teaching and in Dr. Clarke's own study of interwar deterrence. During the 1920s and 1930s, Warspite became the Royal Navy's Mediterranean and North Atlantic presence ship while Hood made the more distant prestige cruises. She had not been designed as the class flagship, yet repeated command service and her association with Andrew Cunningham gave her a status that newer capital ships did not displace. This opening is useful for understanding the institutional reputation behind the Grand Old Lady nickname before the chronology turns to individual refits and operations.",
+    "topics": [
+      {
+        "slug": "hms-warspite",
+        "title": "HMS Warspite"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "world-war-i",
+        "title": "World War I"
+      },
+      {
+        "slug": "world-war-ii",
+        "title": "World War II"
+      },
+      {
+        "slug": "interwar-period",
+        "title": "Interwar Period"
+      },
+      {
+        "slug": "naval-diplomacy",
+        "title": "Naval Diplomacy"
+      },
+      {
+        "slug": "andrew-cunningham",
+        "title": "Andrew Cunningham"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "0:26",
+        "end": "6:16",
+        "note": "The transcript gives Warspite's service dates, nickname, historical importance, presence role, and rise as Cunningham's flagship."
+      }
+    ],
+    "end": "6:16",
+    "endSeconds": 376,
+    "sourcePath": "src/transcripts/txt/2023-06-11_T18-00-09_hms-warspite-key-ships-series-3-ship-3_Om_7L-pL61w.txt"
+  },
+  {
+    "id": "warspite-1920s-modernization-and-flagship-service",
+    "slug": "warspite-1920s-modernization-and-flagship-service",
+    "title": "Modernization turns Warspite into an interwar flagship",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "Om_7L-pL61w",
+    "videoSlug": "hms-warspite-key-ships-series-3-ship-3",
+    "videoTitle": "HMS Warspite: Key Ships Series 3, Ship 3",
+    "start": "6:31",
+    "startSeconds": 391,
+    "youtubeUrl": "https://www.youtube.com/watch?v=Om_7L-pL61w&t=391s",
+    "summary": "Warspite's 1924-26 refit and command appointments show how a wartime battleship became the Atlantic Fleet's working flagship.",
+    "body": "Warspite joined the Second Battle Squadron in 1919, made Mediterranean cruises, and appeared at the 1924 Spithead fleet review before entering a major modernization. The refit trunked her two funnels into one, added torpedo bulges, changed the anti-aircraft armament, and removed half of her torpedo tubes. When she emerged in 1926, she assumed the Atlantic Fleet commander-in-chief's flagship role rather than merely returning as another ship of the line. James Somerville commanded her during this period, linking the ship's interwar development to one of the Royal Navy's important Second World War admirals. His 1927 grounding of Warspite on an uncharted Aegean rock also shows that a prestige flagship could still suffer ordinary navigational mishaps and return to Portsmouth for repair.",
     "topics": [
       {
         "slug": "hms-warspite",
@@ -29155,15 +29411,23 @@
         "title": "Interwar Period"
       },
       {
+        "slug": "battleship-modernization",
+        "title": "Battleship Modernization"
+      },
+      {
         "slug": "naval-diplomacy",
         "title": "Naval Diplomacy"
+      },
+      {
+        "slug": "james-somerville",
+        "title": "James Somerville"
       }
     ],
     "evidence": [
       {
-        "start": "0:26",
+        "start": "6:31",
         "end": "8:20",
-        "note": "The transcript gives Warspite's service dates, nickname, early modernization, and flagship service."
+        "note": "The transcript follows Warspite from the Second Battle Squadron through her first interwar modernization, flagship appointment, Somerville's command, and the 1927 grounding."
       }
     ],
     "end": "8:20",
@@ -29209,12 +29473,59 @@
     "evidence": [
       {
         "start": "8:27",
-        "end": "10:09",
+        "end": "9:37",
         "note": "The transcript links Warspite to Invergordon and explains the unequal base-pay dispute behind the mutiny."
       }
     ],
-    "end": "10:09",
-    "endSeconds": 609,
+    "end": "9:37",
+    "endSeconds": 577,
+    "sourcePath": "src/transcripts/txt/2023-06-11_T18-00-09_hms-warspite-key-ships-series-3-ship-3_Om_7L-pL61w.txt"
+  },
+  {
+    "id": "warspite-romanian-passenger-ship-collision",
+    "slug": "warspite-romanian-passenger-ship-collision",
+    "title": "A fog collision shows Warspite's physical resilience",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "Om_7L-pL61w",
+    "videoSlug": "hms-warspite-key-ships-series-3-ship-3",
+    "videoTitle": "HMS Warspite: Key Ships Series 3, Ship 3",
+    "start": "9:45",
+    "startSeconds": 585,
+    "youtubeUrl": "https://www.youtube.com/watch?v=Om_7L-pL61w&t=585s",
+    "summary": "Warspite's 1933 collision with a Romanian passenger ship caused far more difficulty for the civilian vessel than for the battleship.",
+    "body": "In March 1933, a Romanian passenger ship rammed Warspite in fog off Portugal. The battleship did not require major repair, while the passenger vessel needed considerably more work. The brief episode illustrates the collision risks faced by large warships during routine peacetime movement. It also provides a small but telling example of Warspite's robust construction before the much more extensive reconstruction that followed.",
+    "topics": [
+      {
+        "slug": "hms-warspite",
+        "title": "HMS Warspite"
+      },
+      {
+        "slug": "interwar-period",
+        "title": "Interwar Period"
+      },
+      {
+        "slug": "maritime-collisions",
+        "title": "Maritime Collisions"
+      },
+      {
+        "slug": "maritime-safety",
+        "title": "Maritime Safety"
+      },
+      {
+        "slug": "naval-survivability",
+        "title": "Naval Survivability"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "9:45",
+        "end": "10:08",
+        "note": "The transcript records the fog collision off Portugal and contrasts the limited damage to Warspite with the passenger ship's repair needs."
+      }
+    ],
+    "end": "10:08",
+    "endSeconds": 608,
     "sourcePath": "src/transcripts/txt/2023-06-11_T18-00-09_hms-warspite-key-ships-series-3-ship-3_Om_7L-pL61w.txt"
   },
   {
@@ -29229,8 +29540,8 @@
     "start": "10:10",
     "startSeconds": 610,
     "youtubeUrl": "https://www.youtube.com/watch?v=Om_7L-pL61w&t=610s",
-    "summary": "Warspite's 1934-37 reconstruction traded old machinery for efficiency, subdivision, armour, improved gunnery, and flagship facilities.",
-    "body": "The reconstruction replaced boilers and turbines, improved fuel economy, and used weight savings to strengthen protection around vital spaces. Fuel consumption at roughly 24 knots fell from 41 to 27 tons per hour, turning two hours of high-speed steaming into about three for the same fuel. Greater subdivision made the machinery spaces more resilient, while revised armament and fire control made the ship more useful against both surface and air threats. The rebuilt bridge and protected command spaces also formalized a flagship role Warspite had already performed for years.",
+    "summary": "Warspite's 1934-37 reconstruction replaced old machinery, cut fuel consumption, and converted saved weight into protection and subdivision.",
+    "body": "The Portsmouth reconstruction replaced Warspite's boilers and turbines and extensively rearranged her internal structure. Fuel consumption at roughly 24 knots fell from 41 to 27 tons per hour, turning two hours of high-speed steaming into about three for the same fuel. The new machinery delivered about 80,000 shaft horsepower while saving roughly 1,500 tons. About 1,100 tons of that saving went into protection over turrets, magazines, boiler rooms, and machinery. Additional subdivision and hull strengthening made the rebuilt ship more resistant to flooding and helped explain her later survival under severe damage.",
     "topics": [
       {
         "slug": "hms-warspite",
@@ -29247,17 +29558,25 @@
       {
         "slug": "armour-protection",
         "title": "Armour Protection"
+      },
+      {
+        "slug": "fuel-economy",
+        "title": "Fuel Economy"
+      },
+      {
+        "slug": "damage-control",
+        "title": "Damage Control"
       }
     ],
     "evidence": [
       {
         "start": "10:10",
-        "end": "19:45",
-        "note": "The transcript details the Portsmouth reconstruction, machinery, protection, armament, and fire-control changes."
+        "end": "13:35",
+        "note": "The transcript details the Portsmouth reconstruction's new machinery, fuel savings, weight allocation, armour, subdivision, and hull strengthening."
       }
     ],
-    "end": "19:45",
-    "endSeconds": 1185,
+    "end": "13:35",
+    "endSeconds": 815,
     "sourcePath": "src/transcripts/txt/2023-06-11_T18-00-09_hms-warspite-key-ships-series-3-ship-3_Om_7L-pL61w.txt"
   },
   {
@@ -29305,6 +29624,61 @@
     ],
     "end": "17:34",
     "endSeconds": 1054,
+    "sourcePath": "src/transcripts/txt/2023-06-11_T18-00-09_hms-warspite-key-ships-series-3-ship-3_Om_7L-pL61w.txt"
+  },
+  {
+    "id": "warspite-gunnery-fire-control-and-flagship-rebuild",
+    "slug": "warspite-gunnery-fire-control-and-flagship-rebuild",
+    "title": "New guns, fire control, and command spaces complete the rebuild",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "Om_7L-pL61w",
+    "videoSlug": "hms-warspite-key-ships-series-3-ship-3",
+    "videoTitle": "HMS Warspite: Key Ships Series 3, Ship 3",
+    "start": "17:38",
+    "startSeconds": 1058,
+    "youtubeUrl": "https://www.youtube.com/watch?v=Om_7L-pL61w&t=1058s",
+    "summary": "Warspite's reconstruction raised main-gun elevation, modernized surface and anti-aircraft control, added aircraft facilities, and enclosed the bridge for fleet command.",
+    "body": "The rebuild removed Warspite's remaining torpedo tubes, altered the six-inch battery, and added high-angle four-inch guns, pom-poms, and machine guns for air defence. Raising the 15-inch guns to 30 degrees increased their maximum range by about 9,000 yards, to roughly 32,300 yards. A High Angle Control System and Admiralty Fire Control Table Mark VII improved the direction of anti-aircraft and surface fire. Cranes and a hangar allowed the ship to carry up to four aircraft, although she normally operated two Swordfish floatplanes and later Walrus amphibians. Replacing the tripod mast with an armoured command structure also gave the long-serving flagship protected space for an admiral and staff.",
+    "topics": [
+      {
+        "slug": "hms-warspite",
+        "title": "HMS Warspite"
+      },
+      {
+        "slug": "battleship-modernization",
+        "title": "Battleship Modernization"
+      },
+      {
+        "slug": "15-inch-guns",
+        "title": "15-inch Guns"
+      },
+      {
+        "slug": "anti-aircraft-warfare",
+        "title": "Anti-Aircraft Warfare"
+      },
+      {
+        "slug": "fire-control",
+        "title": "Fire Control"
+      },
+      {
+        "slug": "naval-aviation",
+        "title": "Naval Aviation"
+      },
+      {
+        "slug": "flagships",
+        "title": "Flagships"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "17:38",
+        "end": "19:45",
+        "note": "The transcript lists the armament changes, increased 15-inch-gun elevation, HACS and Admiralty fire control, aircraft facilities, and armoured flagship bridge."
+      }
+    ],
+    "end": "19:45",
+    "endSeconds": 1185,
     "sourcePath": "src/transcripts/txt/2023-06-11_T18-00-09_hms-warspite-key-ships-series-3-ship-3_Om_7L-pL61w.txt"
   },
   {
@@ -29393,12 +29767,67 @@
     "evidence": [
       {
         "start": "23:00",
-        "end": "24:18",
+        "end": "24:11",
         "note": "The transcript describes the Istanbul talks, the visible power of Warspite and the Tribals, and the deterrence cost of her recall."
       }
     ],
-    "end": "24:18",
-    "endSeconds": 1458,
+    "end": "24:11",
+    "endSeconds": 1451,
+    "sourcePath": "src/transcripts/txt/2023-06-11_T18-00-09_hms-warspite-key-ships-series-3-ship-3_Om_7L-pL61w.txt"
+  },
+  {
+    "id": "julian-corbett-russo-japanese-war-and-british-naval-thought",
+    "slug": "julian-corbett-russo-japanese-war-and-british-naval-thought",
+    "title": "Corbett turns the Russo-Japanese War into British naval lessons",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "Om_7L-pL61w",
+    "videoSlug": "hms-warspite-key-ships-series-3-ship-3",
+    "videoTitle": "HMS Warspite: Key Ships Series 3, Ship 3",
+    "start": "24:31",
+    "startSeconds": 1471,
+    "youtubeUrl": "https://www.youtube.com/watch?v=Om_7L-pL61w&t=1471s",
+    "summary": "Julian Corbett's official study of the Russo-Japanese War provided a strategic context for British thinking as the Queen Elizabeth class was conceived.",
+    "body": "The video pauses Warspite's biography to show how the Royal Navy learned from recent war. Julian Corbett prepared the official British study of maritime operations in the Russo-Japanese War, a report that remained restricted for years. The same historian later published Some Principles of Maritime Strategy, connecting operational history to a broader theory of sea power and naval diplomacy. Dr. Clarke presents the Queen Elizabeth class as a considered response by institutions digesting those lessons, rather than as a purely technical leap. This passage is a useful entry point into how official history, professional education, and ship design can influence one another.",
+    "topics": [
+      {
+        "slug": "julian-corbett",
+        "title": "Julian Corbett"
+      },
+      {
+        "slug": "russo-japanese-war",
+        "title": "Russo Japanese War"
+      },
+      {
+        "slug": "official-histories",
+        "title": "Official Histories"
+      },
+      {
+        "slug": "naval-strategy",
+        "title": "Naval Strategy"
+      },
+      {
+        "slug": "naval-education",
+        "title": "Naval Education"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "naval-diplomacy",
+        "title": "Naval Diplomacy"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "24:31",
+        "end": "25:26",
+        "note": "The transcript identifies Corbett's Russo-Japanese War official report, Some Principles of Maritime Strategy, and his role in teaching naval diplomacy."
+      }
+    ],
+    "end": "25:26",
+    "endSeconds": 1526,
     "sourcePath": "src/transcripts/txt/2023-06-11_T18-00-09_hms-warspite-key-ships-series-3-ship-3_Om_7L-pL61w.txt"
   },
   {
@@ -29410,15 +29839,19 @@
     "videoId": "Om_7L-pL61w",
     "videoSlug": "hms-warspite-key-ships-series-3-ship-3",
     "videoTitle": "HMS Warspite: Key Ships Series 3, Ship 3",
-    "start": "24:31",
-    "startSeconds": 1471,
-    "youtubeUrl": "https://www.youtube.com/watch?v=Om_7L-pL61w&t=1471s",
-    "summary": "The Queen Elizabeth class combined 15-inch guns and speed to make rival capital-ship competition more costly and politically difficult.",
-    "body": "The video frames the class as part of a wider international contest, not simply a British-German race. Britain could use qualitative advances to raise the industrial and fiscal price of matching its battleships, especially for Germany's navy competing with the army for resources. British yards and designers also supplied contenders to Japan, Australia, South America, Greece, and the Ottoman Empire, making qualitative competition commercially useful. Warspite's later modernization shows how refitting could preserve that edge when new construction was constrained.",
+    "start": "25:32",
+    "startSeconds": 1532,
+    "youtubeUrl": "https://www.youtube.com/watch?v=Om_7L-pL61w&t=1532s",
+    "summary": "The Queen Elizabeth class combined 15-inch guns and speed to raise the technical and financial stakes of international capital-ship competition.",
+    "body": "The video frames the Queen Elizabeth class as part of a wider international contest involving Britain, the United States, Italy, Japan, France, Russia, Germany, and South American powers. Its 15-inch guns and intended speed leapfrogged the 14-inch designs appearing abroad and forced rivals to consider another expensive step in size and infrastructure. For Germany, that qualitative escalation reinforced a quantitative problem because matching Britain's ships could not erase Britain's numerical lead. Geography made the Anglo-German race especially threatening to Britain, since the Royal Navy sat across Germany's access to the wider world. This passage explains why the same technological competition could have different strategic meanings for geographically distant powers such as the United States.",
     "topics": [
       {
         "slug": "queen-elizabeth-class-battleships",
         "title": "Queen Elizabeth Class Battleships"
+      },
+      {
+        "slug": "15-inch-guns",
+        "title": "15-inch Guns"
       },
       {
         "slug": "dreadnoughts",
@@ -29431,17 +29864,186 @@
       {
         "slug": "naval-procurement",
         "title": "Naval Procurement"
+      },
+      {
+        "slug": "arms-races",
+        "title": "Arms Races"
       }
     ],
     "evidence": [
       {
-        "start": "24:31",
+        "start": "25:32",
+        "end": "28:39",
+        "note": "The transcript explains the class's 15-inch-gun and speed ambitions, the multinational qualitative race, and the distinct strategic pressures on Germany and the United States."
+      }
+    ],
+    "end": "28:39",
+    "endSeconds": 1719,
+    "sourcePath": "src/transcripts/txt/2023-06-11_T18-00-09_hms-warspite-key-ships-series-3-ship-3_Om_7L-pL61w.txt"
+  },
+  {
+    "id": "british-and-american-institutions-approach-warship-risk",
+    "slug": "british-and-american-institutions-approach-warship-risk",
+    "title": "Why British and American institutions approached warship risk differently",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "Om_7L-pL61w",
+    "videoSlug": "hms-warspite-key-ships-series-3-ship-3",
+    "videoTitle": "HMS Warspite: Key Ships Series 3, Ship 3",
+    "start": "28:42",
+    "startSeconds": 1722,
+    "youtubeUrl": "https://www.youtube.com/watch?v=Om_7L-pL61w&t=1722s",
+    "summary": "Congressional oversight encouraged conservative American battleship proposals, while Warrior and Dreadnought gave the Royal Navy political confidence to attempt another leap.",
+    "body": "The United States had a long coastline, a new overseas empire, and growing naval ambitions, but ship proposals still had to survive a cautious Congress. Dr. Clarke argues that this pressure made the US Navy unusually conservative when asking legislators to authorize new designs. The Royal Navy could point to HMS Warrior and HMS Dreadnought as earlier technological risks that had strengthened deterrence and temporarily secured peace. Those precedents gave British institutions more freedom to gamble on the Queen Elizabeth class. The comparison shows that warship design is shaped not only by engineering knowledge but also by the political record that a navy can present to its funders.",
+    "topics": [
+      {
+        "slug": "naval-procurement",
+        "title": "Naval Procurement"
+      },
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "us-navy",
+        "title": "US Navy"
+      },
+      {
+        "slug": "us-congress",
+        "title": "US Congress"
+      },
+      {
+        "slug": "hms-warrior",
+        "title": "HMS Warrior"
+      },
+      {
+        "slug": "hms-dreadnought",
+        "title": "HMS Dreadnought"
+      },
+      {
+        "slug": "technological-risk",
+        "title": "Technological Risk"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "28:42",
+        "end": "30:56",
+        "note": "The transcript contrasts US congressional caution with Royal Navy risk-taking justified by the Warrior and Dreadnought precedents."
+      }
+    ],
+    "end": "30:56",
+    "endSeconds": 1856,
+    "sourcePath": "src/transcripts/txt/2023-06-11_T18-00-09_hms-warspite-key-ships-series-3-ship-3_Om_7L-pL61w.txt"
+  },
+  {
+    "id": "warspite-refit-economics-and-british-industrial-leverage",
+    "slug": "warspite-refit-economics-and-british-industrial-leverage",
+    "title": "Refit economics preserve Britain's qualitative advantage",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "Om_7L-pL61w",
+    "videoSlug": "hms-warspite-key-ships-series-3-ship-3",
+    "videoTitle": "HMS Warspite: Key Ships Series 3, Ship 3",
+    "start": "30:58",
+    "startSeconds": 1858,
+    "youtubeUrl": "https://www.youtube.com/watch?v=Om_7L-pL61w&t=1858s",
+    "summary": "Successive Warspite refits cost less than rebuilding from an obsolete baseline while Britain used industrial and political leverage to keep rivals behind.",
+    "body": "Warspite illustrates the compounding value of modernization: once a ship has been brought from one technical standard to the next, a later upgrade can be cheaper than raising an untouched sister from the original baseline. The Queen Elizabeth class also forced Germany to meet higher ship and infrastructure costs while its navy competed with the army for national resources. Dr. Clarke argues that the army would win that political contest inside Germany even if the Royal Navy never had to settle the issue in battle. Britain could meanwhile profit from the wider qualitative race because British designers and yards supplied capital ships to Japan, Australia, South American states, Greece, and the Ottoman Empire. The passage links refit policy, interservice politics, and export capacity to the maintenance of naval advantage.",
+    "topics": [
+      {
+        "slug": "hms-warspite",
+        "title": "HMS Warspite"
+      },
+      {
+        "slug": "battleship-modernization",
+        "title": "Battleship Modernization"
+      },
+      {
+        "slug": "naval-procurement",
+        "title": "Naval Procurement"
+      },
+      {
+        "slug": "anglo-german-naval-race",
+        "title": "Anglo German Naval Race"
+      },
+      {
+        "slug": "british-shipbuilding",
+        "title": "British Shipbuilding"
+      },
+      {
+        "slug": "arms-exports",
+        "title": "Arms Exports"
+      },
+      {
+        "slug": "civil-military-relations",
+        "title": "Civil Military Relations"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "30:58",
         "end": "33:48",
-        "note": "The transcript explains the Queen Elizabeth class's 15-inch guns, qualitative competition, and modernization logic."
+        "note": "The transcript explains sequential-refit economics, German army-navy resource competition, and Britain's role designing or building ships for other naval powers."
       }
     ],
     "end": "33:48",
     "endSeconds": 2028,
+    "sourcePath": "src/transcripts/txt/2023-06-11_T18-00-09_hms-warspite-key-ships-series-3-ship-3_Om_7L-pL61w.txt"
+  },
+  {
+    "id": "warspite-rawalpindi-interception-and-speed-uncertainty",
+    "slug": "warspite-rawalpindi-interception-and-speed-uncertainty",
+    "title": "Warspite races north after Rawalpindi is sunk",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "Om_7L-pL61w",
+    "videoSlug": "hms-warspite-key-ships-series-3-ship-3",
+    "videoTitle": "HMS Warspite: Key Ships Series 3, Ship 3",
+    "start": "34:17",
+    "startSeconds": 2057,
+    "youtubeUrl": "https://www.youtube.com/watch?v=Om_7L-pL61w&t=2057s",
+    "summary": "A failed attempt to catch Scharnhorst and Gneisenau after they sank Rawalpindi raises useful uncertainty about Warspite's actual speed and recorded track.",
+    "body": "Warspite began her Second World War service escorting a convoy from Nova Scotia before being diverted north after Scharnhorst and Gneisenau sank the armed merchant cruiser HMS Rawalpindi. She failed to locate the German ships, but the speed with which she reached the search area attracts Dr. Clarke's attention. Her passage appears faster than the commonly stated top speed unless weather, an earlier northward movement, or an inaccurate track chart accounts for the difference. The episode is useful both as an early operational deployment and as a reminder that apparently precise performance claims can remain uncertain when the surviving movement record is incomplete.",
+    "topics": [
+      {
+        "slug": "hms-warspite",
+        "title": "HMS Warspite"
+      },
+      {
+        "slug": "hms-rawalpindi",
+        "title": "HMS Rawalpindi"
+      },
+      {
+        "slug": "scharnhorst",
+        "title": "Scharnhorst"
+      },
+      {
+        "slug": "gneisenau",
+        "title": "Gneisenau"
+      },
+      {
+        "slug": "north-atlantic",
+        "title": "North Atlantic"
+      },
+      {
+        "slug": "convoy-escort",
+        "title": "Convoy Escort"
+      },
+      {
+        "slug": "naval-intelligence",
+        "title": "Naval Intelligence"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "34:17",
+        "end": "35:33",
+        "note": "The transcript describes the convoy diversion after Rawalpindi's loss, the unsuccessful search, and alternative explanations for Warspite's apparently rapid arrival."
+      }
+    ],
+    "end": "35:33",
+    "endSeconds": 2133,
     "sourcePath": "src/transcripts/txt/2023-06-11_T18-00-09_hms-warspite-key-ships-series-3-ship-3_Om_7L-pL61w.txt"
   },
   {
@@ -29453,11 +30055,11 @@
     "videoId": "Om_7L-pL61w",
     "videoSlug": "hms-warspite-key-ships-series-3-ship-3",
     "videoTitle": "HMS Warspite: Key Ships Series 3, Ship 3",
-    "start": "34:17",
-    "startSeconds": 2057,
-    "youtubeUrl": "https://www.youtube.com/watch?v=Om_7L-pL61w&t=2057s",
+    "start": "35:36",
+    "startSeconds": 2136,
+    "youtubeUrl": "https://www.youtube.com/watch?v=Om_7L-pL61w&t=2136s",
     "summary": "At Narvik, Warspite's floatplane found targets and sank U-64 while the battleship supported destroyers in the confined fjord.",
-    "body": "Warspite entered Ofotfjord with destroyers after the German invasion of Norway and used her Swordfish floatplane for reconnaissance and gunnery spotting. The aircraft's sinking of U-64 and its reports on concealed destroyers show how aviation could extend a capital ship's awareness even in restricted waters. Those reports let British destroyers approach ambush positions with their weapons already trained, after which Warspite's heavy guns overwhelmed German destroyers at close range. The episode links the ship's heavy guns to a destroyer action rather than treating her as an independent duelist.",
+    "body": "Warspite entered Ofotfjord with nine destroyers after the German invasion of Norway and used her Swordfish floatplane for reconnaissance and gunnery spotting. The aircraft's sinking of U-64 and its reports on concealed destroyers show how aviation could extend a capital ship's awareness even in restricted waters. Those reports let British destroyers approach ambush positions with their weapons already trained, after which Warspite's heavy guns overwhelmed German destroyers at close range. The episode links the ship's heavy guns to a destroyer action rather than treating her as an independent duelist. Later short bombardments in Norwegian waters proved ineffective, but they gave the crew experience for the much larger shore-support role Warspite would perform later in the war.",
     "topics": [
       {
         "slug": "hms-warspite",
@@ -29482,9 +30084,9 @@
     ],
     "evidence": [
       {
-        "start": "34:17",
+        "start": "35:36",
         "end": "38:34",
-        "note": "The transcript covers the Narvik force, U-64, spotting reports, and fire against German destroyers."
+        "note": "The transcript covers the Narvik force, U-64, spotting reports, fire against German destroyers, and subsequent short shore bombardments."
       }
     ],
     "end": "38:34",
@@ -29577,18 +30179,18 @@
     "evidence": [
       {
         "start": "43:47",
-        "end": "45:52",
+        "end": "45:34",
         "note": "The transcript connects Taranto, the hoped-for Italian response, Formidable, and the battleship destruction of three cruisers at Matapan."
       }
     ],
-    "end": "45:52",
-    "endSeconds": 2752,
+    "end": "45:34",
+    "endSeconds": 2734,
     "sourcePath": "src/transcripts/txt/2023-06-11_T18-00-09_hms-warspite-key-ships-series-3-ship-3_Om_7L-pL61w.txt"
   },
   {
-    "id": "warspite-crete-damage-and-bremerton-repair",
-    "slug": "warspite-crete-damage-and-bremerton-repair",
-    "title": "Crete damage and repair in the United States",
+    "id": "warspite-crete-air-attack-and-casualties",
+    "slug": "warspite-crete-air-attack-and-casualties",
+    "title": "Air attack at Crete exposes the cost of fleet defence",
     "kind": "chapter",
     "kindLabel": "Chapter",
     "videoId": "Om_7L-pL61w",
@@ -29597,8 +30199,8 @@
     "start": "45:52",
     "startSeconds": 2752,
     "youtubeUrl": "https://www.youtube.com/watch?v=Om_7L-pL61w&t=2752s",
-    "summary": "A bomb damaged Warspite during the Crete campaign, sending her to Bremerton for repairs and a further anti-aircraft upgrade.",
-    "body": "At Crete, air attack damaged Warspite's secondary batteries and killed 38 men, underscoring the pressure aircraft placed on Mediterranean surface forces. The ship then crossed the Indian and Pacific oceans to Bremerton, where new gun barrels, anti-aircraft weapons, bridge changes, and radar work restored her for further service. She was still in the yard during the Pearl Harbor attack, when her anti-aircraft armament was considered useful to local defence. After recommissioning and trials near Vancouver, she continued to Sydney and joined the Eastern Fleet in March 1942.",
+    "summary": "A 500-pound bomb tore into Warspite's starboard secondary battery during the Crete campaign and killed 38 men.",
+    "body": "During the Crete campaign, Warspite's dense anti-aircraft battery made her valuable in defending the fleet under sustained air attack. A 500-pound bomb damaged the four-inch and six-inch batteries on the starboard side and ripped open part of the hull. Thirty-eight men were killed, demonstrating that even a heavily protected battleship could pay a high price while operating beneath enemy air superiority. The damage was serious enough to send Warspite away from the Mediterranean for repair on the west coast of the United States.",
     "topics": [
       {
         "slug": "hms-warspite",
@@ -29613,19 +30215,82 @@
         "title": "Air Attack"
       },
       {
+        "slug": "anti-aircraft-warfare",
+        "title": "Anti-Aircraft Warfare"
+      },
+      {
+        "slug": "damage-control",
+        "title": "Damage Control"
+      },
+      {
+        "slug": "mediterranean-fleet",
+        "title": "Mediterranean Fleet"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "45:52",
+        "end": "46:26",
+        "note": "The transcript describes Warspite's anti-aircraft role at Crete, the bomb damage to her secondary battery and hull, and the 38 fatalities."
+      }
+    ],
+    "end": "46:26",
+    "endSeconds": 2786,
+    "sourcePath": "src/transcripts/txt/2023-06-11_T18-00-09_hms-warspite-key-ships-series-3-ship-3_Om_7L-pL61w.txt"
+  },
+  {
+    "id": "warspite-bremerton-repair-and-pacific-transit",
+    "slug": "warspite-bremerton-repair-and-pacific-transit",
+    "title": "Bremerton repairs prepare Warspite for the Eastern Fleet",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "Om_7L-pL61w",
+    "videoSlug": "hms-warspite-key-ships-series-3-ship-3",
+    "videoTitle": "HMS Warspite: Key Ships Series 3, Ship 3",
+    "start": "46:34",
+    "startSeconds": 2794,
+    "youtubeUrl": "https://www.youtube.com/watch?v=Om_7L-pL61w&t=2794s",
+    "summary": "American repairs renewed Warspite's guns, anti-aircraft armament, bridge, and radar before she crossed the Pacific to join the Eastern Fleet.",
+    "body": "Warspite travelled through the Suez Canal and across the Indian and Pacific oceans to reach Bremerton Naval Shipyard in August 1941. The yard replaced her 15-inch gun barrels, added anti-aircraft weapons, altered the bridge, and installed new surface and air-warning radar. She remained at Bremerton during the attack on Pearl Harbor and went on alert because her anti-aircraft battery could contribute if the Pacific Northwest were attacked. After recommissioning in December and completing trials near Vancouver, she sailed down the American coast, crossed the equator, and reached Sydney. The repair and transit placed a rebuilt British battleship in position to join the Eastern Fleet in March 1942.",
+    "topics": [
+      {
+        "slug": "hms-warspite",
+        "title": "HMS Warspite"
+      },
+      {
+        "slug": "bremerton-naval-shipyard",
+        "title": "Bremerton Naval Shipyard"
+      },
+      {
         "slug": "naval-repair",
         "title": "Naval Repair"
       },
       {
         "slug": "us-navy",
         "title": "US Navy"
+      },
+      {
+        "slug": "pearl-harbor",
+        "title": "Pearl Harbor"
+      },
+      {
+        "slug": "anti-aircraft-warfare",
+        "title": "Anti-Aircraft Warfare"
+      },
+      {
+        "slug": "radar",
+        "title": "Radar"
+      },
+      {
+        "slug": "eastern-fleet",
+        "title": "Eastern Fleet"
       }
     ],
     "evidence": [
       {
-        "start": "45:52",
+        "start": "46:34",
         "end": "48:10",
-        "note": "The transcript covers bomb damage at Crete, Bremerton repairs, and Pearl Harbor alert status."
+        "note": "The transcript follows Warspite to Bremerton, lists her gun, anti-aircraft, bridge, and radar work, notes her Pearl Harbor alert, and traces her onward voyage to Sydney."
       }
     ],
     "end": "48:10",
@@ -29671,12 +30336,12 @@
     "evidence": [
       {
         "start": "48:22",
-        "end": "51:49",
+        "end": "51:46",
         "note": "The transcript develops the Ark Royal scenario from British fast-capital-ship escort doctrine and Warspite's regional availability."
       }
     ],
-    "end": "51:49",
-    "endSeconds": 3109,
+    "end": "51:46",
+    "endSeconds": 3106,
     "sourcePath": "src/transcripts/txt/2023-06-11_T18-00-09_hms-warspite-key-ships-series-3-ship-3_Om_7L-pL61w.txt"
   },
   {
@@ -29692,7 +30357,7 @@
     "startSeconds": 3109,
     "youtubeUrl": "https://www.youtube.com/watch?v=Om_7L-pL61w&t=3109s",
     "summary": "As Somerville's flagship in the Indian Ocean, Warspite supported a carrier force that sought a night attack rather than a daylight fight with Japan.",
-    "body": "The Eastern Fleet's fast group centred on Warspite and two carriers, but it faced a Japanese force with five carriers and four battleships. Somerville's plan relied on night torpedo-bomber operations, where his force could offset the daylight advantage of the larger Japanese carrier arm. Failed communications and misdirected information prevented the intended interception from becoming a strike. Somerville then avoided a direct daylight engagement because Japan's numerical advantage outweighed his confidence in British fighters, radar crews, and night-flying skill.",
+    "body": "The Eastern Fleet's fast group centred on Warspite, Formidable, and Indomitable, but it faced a Japanese force with five carriers and four battleships. Somerville's plan relied on night torpedo-bomber operations, where Fleet Air Arm skill could offset the daylight advantage of the larger Japanese carrier force. Miscommunicated and misdirected information prevented the intended interception from becoming a strike. Somerville then avoided a direct daylight engagement because numerical odds outweighed his confidence in British fighters and radar crews. He could also withdraw because the Japanese force was operating at the far end of its logistical reach and could not remain indefinitely.",
     "topics": [
       {
         "slug": "hms-warspite",
@@ -29707,23 +30372,90 @@
         "title": "Indian Ocean Raid"
       },
       {
+        "slug": "operation-c",
+        "title": "Operation C"
+      },
+      {
         "slug": "carrier-warfare",
         "title": "Carrier Warfare"
       },
       {
         "slug": "fleet-air-arm",
         "title": "Fleet Air Arm"
+      },
+      {
+        "slug": "night-operations",
+        "title": "Night Operations"
+      },
+      {
+        "slug": "naval-logistics",
+        "title": "Naval Logistics"
       }
     ],
     "evidence": [
       {
         "start": "51:49",
-        "end": "57:52",
-        "note": "The transcript discusses Warspite's Eastern Fleet role, Operation C, the planned night strike, and carrier imbalance."
+        "end": "55:09",
+        "note": "The transcript discusses Warspite's Eastern Fleet role, Operation C, the planned night strike, the failed interception, carrier imbalance, and Japanese logistical limits."
       }
     ],
-    "end": "57:52",
-    "endSeconds": 3472,
+    "end": "55:09",
+    "endSeconds": 3309,
+    "sourcePath": "src/transcripts/txt/2023-06-11_T18-00-09_hms-warspite-key-ships-series-3-ship-3_Om_7L-pL61w.txt"
+  },
+  {
+    "id": "warspite-sydney-intelligence-and-auxiliary-cruiser-hunt",
+    "slug": "warspite-sydney-intelligence-and-auxiliary-cruiser-hunt",
+    "title": "Mistaken intelligence puts Warspite behind a Sydney attack",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "Om_7L-pL61w",
+    "videoSlug": "hms-warspite-key-ships-series-3-ship-3",
+    "videoTitle": "HMS Warspite: Key Ships Series 3, Ship 3",
+    "start": "55:14",
+    "startSeconds": 3314,
+    "youtubeUrl": "https://www.youtube.com/watch?v=Om_7L-pL61w&t=3314s",
+    "summary": "Japan's mistaken belief that Warspite remained at Sydney helps explain the harbour attack, while the battleship was actually hunting auxiliary cruisers elsewhere.",
+    "body": "Dr. Clarke links the Japanese decision to attack Sydney Harbour with a belief that Warspite was still there. The battleship had already left, making the episode a compact example of operational decisions formed around outdated or mistaken intelligence. In June 1942, Warspite instead searched unsuccessfully for the Japanese auxiliary cruisers Aikoku Maru and Hōkoku Maru. The contrast shows how a capital ship could influence enemy planning even when absent and then spend its own time on a fruitless commerce-warfare hunt.",
+    "topics": [
+      {
+        "slug": "hms-warspite",
+        "title": "HMS Warspite"
+      },
+      {
+        "slug": "sydney-harbour-attack",
+        "title": "Sydney Harbour Attack"
+      },
+      {
+        "slug": "japanese-midget-submarines",
+        "title": "Japanese Midget Submarines"
+      },
+      {
+        "slug": "military-intelligence",
+        "title": "Military Intelligence"
+      },
+      {
+        "slug": "japanese-auxiliary-cruisers",
+        "title": "Japanese Auxiliary Cruisers"
+      },
+      {
+        "slug": "aikoku-maru",
+        "title": "Aikoku Maru"
+      },
+      {
+        "slug": "hokoku-maru",
+        "title": "Hokoku Maru"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "55:14",
+        "end": "55:48",
+        "note": "The transcript says Japan believed Warspite remained in Sydney, connects that belief to the harbour attack, and records her unsuccessful June search for two Japanese auxiliary cruisers."
+      }
+    ],
+    "end": "55:48",
+    "endSeconds": 3348,
     "sourcePath": "src/transcripts/txt/2023-06-11_T18-00-09_hms-warspite-key-ships-series-3-ship-3_Om_7L-pL61w.txt"
   },
   {
@@ -29812,12 +30544,67 @@
     "evidence": [
       {
         "start": "57:59",
-        "end": "59:04",
+        "end": "58:39",
         "note": "The transcript describes Operation Stab as a Guadalcanal diversion and Warspite's support for the Madagascar landings."
       }
     ],
-    "end": "59:04",
-    "endSeconds": 3544,
+    "end": "58:39",
+    "endSeconds": 3519,
+    "sourcePath": "src/transcripts/txt/2023-06-11_T18-00-09_hms-warspite-key-ships-series-3-ship-3_Om_7L-pL61w.txt"
+  },
+  {
+    "id": "warspite-durban-refits-and-force-h-return",
+    "slug": "warspite-durban-refits-and-force-h-return",
+    "title": "A 160,000-mile service cycle sends Warspite back to Force H",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "Om_7L-pL61w",
+    "videoSlug": "hms-warspite-key-ships-series-3-ship-3",
+    "videoTitle": "HMS Warspite: Key Ships Series 3, Ship 3",
+    "start": "58:42",
+    "startSeconds": 3522,
+    "youtubeUrl": "https://www.youtube.com/watch?v=Om_7L-pL61w&t=3522s",
+    "summary": "Repeated Durban and British refits followed an extraordinary wartime mileage before Warspite rejoined a powerful Force H concentration.",
+    "body": "Warspite received equipment work at Durban in October 1942, and Captain Victor Packer took command in January 1943 after having served aboard her at Jutland. Another Durban refit followed in April before she returned to Britain in May. By then the battleship had steamed roughly 160,000 miles since the war began, making further maintenance and another attempt to correct her steering problems unsurprising. She then joined Force H at Scapa Flow for the voyage to Gibraltar alongside five other battleships, two carriers, and twelve destroyers. The sequence shows the repair and concentration effort required to move a heavily used capital ship from the Indian Ocean back into the Mediterranean war.",
+    "topics": [
+      {
+        "slug": "hms-warspite",
+        "title": "HMS Warspite"
+      },
+      {
+        "slug": "durban",
+        "title": "Durban"
+      },
+      {
+        "slug": "naval-maintenance",
+        "title": "Naval Maintenance"
+      },
+      {
+        "slug": "naval-logistics",
+        "title": "Naval Logistics"
+      },
+      {
+        "slug": "force-h",
+        "title": "Force H"
+      },
+      {
+        "slug": "scapa-flow",
+        "title": "Scapa Flow"
+      },
+      {
+        "slug": "victor-packer",
+        "title": "Victor Packer"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "58:42",
+        "end": "59:34",
+        "note": "The transcript records Durban work, Packer's command, Warspite's 160,000 wartime miles, further steering attention, and the Force H concentration at Scapa Flow."
+      }
+    ],
+    "end": "59:34",
+    "endSeconds": 3574,
     "sourcePath": "src/transcripts/txt/2023-06-11_T18-00-09_hms-warspite-key-ships-series-3-ship-3_Om_7L-pL61w.txt"
   },
   {
@@ -29829,11 +30616,11 @@
     "videoId": "Om_7L-pL61w",
     "videoSlug": "hms-warspite-key-ships-series-3-ship-3",
     "videoTitle": "HMS Warspite: Key Ships Series 3, Ship 3",
-    "start": "1:00:06",
-    "startSeconds": 3606,
-    "youtubeUrl": "https://www.youtube.com/watch?v=Om_7L-pL61w&t=3606s",
+    "start": "59:41",
+    "startSeconds": 3581,
+    "youtubeUrl": "https://www.youtube.com/watch?v=Om_7L-pL61w&t=3581s",
     "summary": "Warspite's return to Malta and bombardments in Sicily and Italy show how a battleship delivered both political reassurance and army support.",
-    "body": "Her arrival at Malta in July 1943 was symbolically important after years in which no battleship had visited the island. Warspite then bombarded Catania, covered the Strait of Messina and Salerno landings, and demonstrated the value of heavy naval guns in amphibious campaigns. Persistent steering trouble briefly delayed her Catania firing position, but the army advance was delayed still further. Cunningham's nickname for the Old Lady followed her unexpectedly rapid return from the operation despite repeated air attacks.",
+    "body": "Warspite reunited with Valiant and Formidable before returning to Alexandria for Operation Husky. Her arrival at Malta in July 1943 was symbolically important after years in which no battleship had visited the island. Warspite then bombarded Catania, covered the Strait of Messina and Salerno landings, and demonstrated the value of heavy naval guns in amphibious campaigns. Persistent steering trouble briefly delayed her Catania firing position, but the army advance was delayed still further. Cunningham's nickname for the Old Lady followed her unexpectedly rapid return from the operation despite repeated air attacks.",
     "topics": [
       {
         "slug": "hms-warspite",
@@ -29858,13 +30645,13 @@
     ],
     "evidence": [
       {
-        "start": "1:00:06",
-        "end": "1:02:15",
-        "note": "The transcript covers Malta, Catania, Messina, Salerno, and Cunningham's nickname."
+        "start": "59:41",
+        "end": "1:02:09",
+        "note": "The transcript covers Warspite's reunion with Valiant and Formidable, return to Alexandria, Malta, Catania, Messina, Salerno, and Cunningham's nickname."
       }
     ],
-    "end": "1:02:15",
-    "endSeconds": 3735,
+    "end": "1:02:09",
+    "endSeconds": 3729,
     "sourcePath": "src/transcripts/txt/2023-06-11_T18-00-09_hms-warspite-key-ships-series-3-ship-3_Om_7L-pL61w.txt"
   },
   {
@@ -29906,17 +30693,17 @@
     "evidence": [
       {
         "start": "1:02:16",
-        "end": "1:05:11",
+        "end": "1:05:10",
         "note": "The transcript describes the Fritz X strike, casualty figures, towing, emergency repair, and remaining armament."
       }
     ],
-    "end": "1:05:11",
-    "endSeconds": 3911,
+    "end": "1:05:10",
+    "endSeconds": 3910,
     "sourcePath": "src/transcripts/txt/2023-06-11_T18-00-09_hms-warspite-key-ships-series-3-ship-3_Om_7L-pL61w.txt"
   },
   {
-    "id": "warspite-normandy-and-channel-bombardment",
-    "slug": "warspite-normandy-and-channel-bombardment",
+    "id": "warspite-d-day-beach-bombardments",
+    "slug": "warspite-d-day-beach-bombardments",
     "title": "Warspite's D-Day bombardment mission",
     "kind": "chapter",
     "kindLabel": "Chapter",
@@ -29926,8 +30713,8 @@
     "start": "1:05:12",
     "startSeconds": 3912,
     "youtubeUrl": "https://www.youtube.com/watch?v=Om_7L-pL61w&t=3912s",
-    "summary": "With reduced machinery and armament, Warspite still delivered heavy fire support on D-Day and in the campaign along the Channel coast.",
-    "body": "Warspite joined the Normandy bombardment force with six operational 15-inch guns and opened fire in support of Sword Beach, possibly before the formal order. She then supported Utah and Gold Beach before worn gun barrels and a mine strike forced repairs. With only three shafts afterward, her speed fell to about 15 knots, but that mattered less in a specialized bombardment role. Her later missions against coastal batteries around Brest and Le Havre show how the Admiralty extracted useful fire support from a ship no longer fit for fleet pursuit.",
+    "summary": "With only six operational 15-inch guns, Warspite supported Sword, Utah, and Gold beaches and may have been the first battleship to open fire on D-Day.",
+    "body": "Warspite joined Bombardment Force D with six operational 15-inch guns and opened fire from about 26,000 yards in support of the 3rd Division at Sword Beach. She may have been the first battleship to fire on D-Day, in part because she may have begun before receiving the formal order. After firing roughly 300 shells, she crossed to Portsmouth to replenish ammunition. Warspite returned to support American forces at Utah Beach and then the British 69th Infantry Brigade near Gold Beach. The sequence shows how a damaged veteran could still sustain repeated heavy-gun missions across several invasion sectors.",
     "topics": [
       {
         "slug": "hms-warspite",
@@ -29953,18 +30740,81 @@
     "evidence": [
       {
         "start": "1:05:12",
-        "end": "1:08:12",
-        "note": "The transcript covers D-Day fire support, resupply, mine damage, and later coastal bombardments."
+        "end": "1:06:35",
+        "note": "The transcript covers Bombardment Force D, the possible first battleship fire on D-Day, support for Sword Beach, ammunition replenishment, and later missions at Utah and Gold beaches."
       }
     ],
-    "end": "1:08:12",
-    "endSeconds": 4092,
+    "end": "1:06:35",
+    "endSeconds": 3995,
     "sourcePath": "src/transcripts/txt/2023-06-11_T18-00-09_hms-warspite-key-ships-series-3-ship-3_Om_7L-pL61w.txt"
   },
   {
-    "id": "warspite-final-guns-and-scrapping",
-    "slug": "warspite-final-guns-and-scrapping",
-    "title": "Warspite's final guns and troubled preservation",
+    "id": "warspite-mine-damage-and-channel-coast-bombardments",
+    "slug": "warspite-mine-damage-and-channel-coast-bombardments",
+    "title": "Mine damage reshapes Warspite into a slow bombardment ship",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "Om_7L-pL61w",
+    "videoSlug": "hms-warspite-key-ships-series-3-ship-3",
+    "videoTitle": "HMS Warspite: Key Ships Series 3, Ship 3",
+    "start": "1:06:38",
+    "startSeconds": 3998,
+    "youtubeUrl": "https://www.youtube.com/watch?v=Om_7L-pL61w&t=3998s",
+    "summary": "A mine reduced Warspite to three shafts and about 15 knots, but the Admiralty kept using her heavy guns against Brest and Le Havre.",
+    "body": "Worn gun barrels sent Warspite back toward repair after the Normandy missions, and she passed German coastal batteries with help from luck and radar jamming. On 13 June, she struck a mine off Harwich, damaging propulsion and extending the work needed on her guns and shafts. The repaired ship retained only three functional shafts and a top speed of roughly 15 knots. That loss mattered less once the Admiralty treated her primarily as a bombardment vessel rather than a fleet-pursuit battleship. In August she attacked coastal batteries around Brest and then joined HMS Erebus in preparatory fire against targets near Le Havre.",
+    "topics": [
+      {
+        "slug": "hms-warspite",
+        "title": "HMS Warspite"
+      },
+      {
+        "slug": "naval-mines",
+        "title": "Naval Mines"
+      },
+      {
+        "slug": "radar-jamming",
+        "title": "Radar Jamming"
+      },
+      {
+        "slug": "naval-repair",
+        "title": "Naval Repair"
+      },
+      {
+        "slug": "naval-gunfire-support",
+        "title": "Naval Gunfire Support"
+      },
+      {
+        "slug": "battle-of-brest",
+        "title": "Battle Of Brest"
+      },
+      {
+        "slug": "le-havre",
+        "title": "Le Havre"
+      },
+      {
+        "slug": "hms-erebus",
+        "title": "HMS Erebus"
+      },
+      {
+        "slug": "coastal-artillery",
+        "title": "Coastal Artillery"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "1:06:38",
+        "end": "1:08:11",
+        "note": "The transcript follows worn-gun repair, the Dover passage, mine damage, the three-shaft speed limit, and subsequent bombardments around Brest and Le Havre."
+      }
+    ],
+    "end": "1:08:11",
+    "endSeconds": 4091,
+    "sourcePath": "src/transcripts/txt/2023-06-11_T18-00-09_hms-warspite-key-ships-series-3-ship-3_Om_7L-pL61w.txt"
+  },
+  {
+    "id": "warspite-final-guns-at-walcheren",
+    "slug": "warspite-final-guns-at-walcheren",
+    "title": "Warspite fires her final guns at Walcheren",
     "kind": "chapter",
     "kindLabel": "Chapter",
     "videoId": "Om_7L-pL61w",
@@ -29973,8 +30823,8 @@
     "start": "1:08:15",
     "startSeconds": 4095,
     "youtubeUrl": "https://www.youtube.com/watch?v=Om_7L-pL61w&t=4095s",
-    "summary": "After her final bombardment in 1944, Warspite was sold for scrap, grounded in Cornwall, and dismantled after failed salvage attempts.",
-    "body": "Warspite's final shooting supported Operation Infatuate and the opening of Antwerp, after which proposals to preserve her as a museum gave way to postwar economy. Officials assumed another battleship in better condition could be preserved later, shifting the expense to a future government that never made the choice. On the way to the breakers in 1947, she grounded in Mount's Bay and resisted repeated attempts to refloat her, producing an exceptionally large British salvage effort. The ship was dismantled on site, although artefacts and material from her remain in Cornwall and her nameplate went to Narvik.",
+    "summary": "Warspite's last bombardment supported Operation Infatuate by attacking German positions on Walcheren and helping open Antwerp's approaches.",
+    "body": "Warspite's final combat mission supported the Anglo-Canadian Operation Infatuate. Although Antwerp had been captured, German strongpoints and gun positions still controlled the Scheldt estuary and blocked effective use of the port. Warspite worked with the monitors HMS Erebus and HMS Roberts to bombard targets on Walcheren Island on 1 November 1944. She returned to Deal the following day after firing her guns for the last time. The mission closes her operational career with the same shore-bombardment role that had kept a slow and damaged battleship useful through the final European campaigns.",
     "topics": [
       {
         "slug": "hms-warspite",
@@ -29985,6 +30835,65 @@
         "title": "Operation Infatuate"
       },
       {
+        "slug": "scheldt-estuary",
+        "title": "Scheldt Estuary"
+      },
+      {
+        "slug": "walcheren",
+        "title": "Walcheren"
+      },
+      {
+        "slug": "antwerp",
+        "title": "Antwerp"
+      },
+      {
+        "slug": "naval-gunfire-support",
+        "title": "Naval Gunfire Support"
+      },
+      {
+        "slug": "monitors",
+        "title": "Monitors"
+      },
+      {
+        "slug": "hms-erebus",
+        "title": "HMS Erebus"
+      },
+      {
+        "slug": "hms-roberts",
+        "title": "HMS Roberts"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "1:08:15",
+        "end": "1:08:47",
+        "note": "The transcript describes Operation Infatuate, the need to clear the Scheldt, Warspite's work with Erebus and Roberts off Walcheren, and her final firing."
+      }
+    ],
+    "end": "1:08:47",
+    "endSeconds": 4127,
+    "sourcePath": "src/transcripts/txt/2023-06-11_T18-00-09_hms-warspite-key-ships-series-3-ship-3_Om_7L-pL61w.txt"
+  },
+  {
+    "id": "warspite-museum-proposal-and-postwar-scrapping",
+    "slug": "warspite-museum-proposal-and-postwar-scrapping",
+    "title": "Postwar economy defeats the Warspite museum proposal",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "Om_7L-pL61w",
+    "videoSlug": "hms-warspite-key-ships-series-3-ship-3",
+    "videoTitle": "HMS Warspite: Key Ships Series 3, Ship 3",
+    "start": "1:08:57",
+    "startSeconds": 4137,
+    "youtubeUrl": "https://www.youtube.com/watch?v=Om_7L-pL61w&t=4137s",
+    "summary": "Officials rejected preserving Warspite and assumed a later government would save a better battleship, leaving Britain without the promised representative.",
+    "body": "Warspite remained the subject of museum-ship proposals after her guns fell silent. Dr. Clarke contrasts preservation planning under Churchill with the incoming government's reluctance to accept the expense. Officials reasoned that another battleship in better condition could be retained later to represent the type or the class. That choice transferred both cost and responsibility to a future administration, which never made the expected preservation decision. Approval to sell Warspite for scrap followed in July 1946, and her guns were removed at Portsmouth before the tow to the breakers began in April 1947.",
+    "topics": [
+      {
+        "slug": "hms-warspite",
+        "title": "HMS Warspite"
+      },
+      {
         "slug": "naval-heritage",
         "title": "Naval Heritage"
       },
@@ -29993,15 +30902,196 @@
         "title": "Ship Preservation"
       },
       {
-        "slug": "royal-navy",
-        "title": "Royal Navy"
+        "slug": "museum-ships",
+        "title": "Museum Ships"
+      },
+      {
+        "slug": "postwar-austerity",
+        "title": "Postwar Austerity"
+      },
+      {
+        "slug": "heritage-policy",
+        "title": "Heritage Policy"
+      },
+      {
+        "slug": "ship-breaking",
+        "title": "Ship Breaking"
       }
     ],
     "evidence": [
       {
-        "start": "1:08:15",
+        "start": "1:08:57",
+        "end": "1:10:15",
+        "note": "The transcript explains the competing preservation decisions, the assumption that a better battleship would be saved later, the 1946 sale approval, and gun removal before scrapping."
+      }
+    ],
+    "end": "1:10:15",
+    "endSeconds": 4215,
+    "sourcePath": "src/transcripts/txt/2023-06-11_T18-00-09_hms-warspite-key-ships-series-3-ship-3_Om_7L-pL61w.txt"
+  },
+  {
+    "id": "warspite-tow-parting-grounding-and-penlee-rescue",
+    "slug": "warspite-tow-parting-grounding-and-penlee-rescue",
+    "title": "A broken tow drives Warspite ashore in Cornwall",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "Om_7L-pL61w",
+    "videoSlug": "hms-warspite-key-ships-series-3-ship-3",
+    "videoTitle": "HMS Warspite: Key Ships Series 3, Ship 3",
+    "start": "1:10:24",
+    "startSeconds": 4224,
+    "youtubeUrl": "https://www.youtube.com/watch?v=Om_7L-pL61w&t=4224s",
+    "summary": "A severe storm broke Warspite's tow, defeated her anchor, and left the battleship grounded while the Penlee lifeboat rescued seven caretakers.",
+    "body": "Warspite encountered a severe storm while being towed from Portsmouth toward the breakers. One tow connection parted and another tug slipped its line, leaving the unmanned hulk dependent on an anchor dropped in Mount's Bay. The anchor failed to hold, and the storm drove the battleship onto Mount Mopus Ledge near Cudden Point before she shifted and grounded harder in Prussia Cove. Seven members of the skeleton crew remained aboard during the emergency. The Penlee lifeboat brought all seven safely ashore, turning a scrapping voyage into a major Cornish wreck and salvage problem.",
+    "topics": [
+      {
+        "slug": "hms-warspite",
+        "title": "HMS Warspite"
+      },
+      {
+        "slug": "ship-towing",
+        "title": "Ship Towing"
+      },
+      {
+        "slug": "shipwrecks",
+        "title": "Shipwrecks"
+      },
+      {
+        "slug": "mounts-bay",
+        "title": "Mounts Bay"
+      },
+      {
+        "slug": "prussia-cove",
+        "title": "Prussia Cove"
+      },
+      {
+        "slug": "cornwall",
+        "title": "Cornwall"
+      },
+      {
+        "slug": "penlee-lifeboat",
+        "title": "Penlee Lifeboat"
+      },
+      {
+        "slug": "maritime-safety",
+        "title": "Maritime Safety"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "1:10:24",
+        "end": "1:12:15",
+        "note": "The transcript recounts the parted tow, failed anchor in Mount's Bay, successive groundings near Cudden Point and Prussia Cove, and the Penlee lifeboat rescue of seven crew."
+      }
+    ],
+    "end": "1:12:15",
+    "endSeconds": 4335,
+    "sourcePath": "src/transcripts/txt/2023-06-11_T18-00-09_hms-warspite-key-ships-series-3-ship-3_Om_7L-pL61w.txt"
+  },
+  {
+    "id": "warspite-cornwall-salvage-engineering-and-onsite-scrapping",
+    "slug": "warspite-cornwall-salvage-engineering-and-onsite-scrapping",
+    "title": "Compressors, tugs, and jet engines struggle to move the wreck",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "Om_7L-pL61w",
+    "videoSlug": "hms-warspite-key-ships-series-3-ship-3",
+    "videoTitle": "HMS Warspite: Key Ships Series 3, Ship 3",
+    "start": "1:12:18",
+    "startSeconds": 4338,
+    "youtubeUrl": "https://www.youtube.com/watch?v=Om_7L-pL61w&t=4338s",
+    "summary": "Repeated salvage attempts used compressed air, tugs, and experimental jet engines before Warspite was shifted closer to shore and dismantled in place.",
+    "body": "Warspite's damaged hull and the shallow water around the reef frustrated repeated attempts to refloat her. In 1950, salvors used 24 compressor tanks, but could not create enough buoyancy or depth to clear the wreck, and the guard vessel Barnet was itself damaged and drifted ashore. Further work moved Warspite toward St Michael's Mount, where Falmouth tugs continued trying to shift her. Compressors aided by two jet engines from experimental aircraft eventually moved the hulk about 130 feet closer to shore. By summer 1955, on-site cutting had disposed of the wreck in what Dr. Clarke describes as probably the largest salvage operation undertaken in British waters.",
+    "topics": [
+      {
+        "slug": "hms-warspite",
+        "title": "HMS Warspite"
+      },
+      {
+        "slug": "maritime-salvage",
+        "title": "Maritime Salvage"
+      },
+      {
+        "slug": "ship-breaking",
+        "title": "Ship Breaking"
+      },
+      {
+        "slug": "tugboats",
+        "title": "Tugboats"
+      },
+      {
+        "slug": "jet-engines",
+        "title": "Jet Engines"
+      },
+      {
+        "slug": "st-michaels-mount",
+        "title": "St Michaels Mount"
+      },
+      {
+        "slug": "cornwall",
+        "title": "Cornwall"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "1:12:18",
+        "end": "1:14:31",
+        "note": "The transcript details the shallow-water problem, 24 compressor tanks, damage to Barnet, Falmouth tugs, experimental jet engines, the 130-foot movement, and final on-site scrapping."
+      }
+    ],
+    "end": "1:14:31",
+    "endSeconds": 4471,
+    "sourcePath": "src/transcripts/txt/2023-06-11_T18-00-09_hms-warspite-key-ships-series-3-ship-3_Om_7L-pL61w.txt"
+  },
+  {
+    "id": "warspite-cornish-material-and-narvik-nameplate",
+    "slug": "warspite-cornish-material-and-narvik-nameplate",
+    "title": "Warspite survives in Cornish material and a Narvik nameplate",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "Om_7L-pL61w",
+    "videoSlug": "hms-warspite-key-ships-series-3-ship-3",
+    "videoTitle": "HMS Warspite: Key Ships Series 3, Ship 3",
+    "start": "1:14:40",
+    "startSeconds": 4480,
+    "youtubeUrl": "https://www.youtube.com/watch?v=Om_7L-pL61w&t=4480s",
+    "summary": "Metal and teak from Warspite remain in Cornwall, while her nameplate travelled through the Norwegian royal family to Narvik City Hall.",
+    "body": "Dismantling did not erase Warspite completely from the landscape or the historical record. Pieces of her metal still appear around Cornwall, and teak from her deck was made into surviving objects such as barrels. Her nameplate remained for years at Lamorna before being sold at auction. King George VI presented it to King Haakon VII of Norway in 1947, and the Norwegian king gave it to Narvik. Its place in Narvik City Hall ties the ship's physical memory to the 1940 battle in which her aircraft, destroyers, and heavy guns played a decisive role.",
+    "topics": [
+      {
+        "slug": "hms-warspite",
+        "title": "HMS Warspite"
+      },
+      {
+        "slug": "naval-heritage",
+        "title": "Naval Heritage"
+      },
+      {
+        "slug": "warship-artifacts",
+        "title": "Warship Artifacts"
+      },
+      {
+        "slug": "cornwall",
+        "title": "Cornwall"
+      },
+      {
+        "slug": "narvik",
+        "title": "Narvik"
+      },
+      {
+        "slug": "king-george-vi",
+        "title": "King George VI"
+      },
+      {
+        "slug": "haakon-vii",
+        "title": "Haakon VII"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "1:14:40",
         "end": "1:15:33",
-        "note": "The transcript recounts her last bombardment, preservation decision, grounding, salvage attempts, and surviving artefacts."
+        "note": "The transcript identifies surviving Cornish metal and teak objects, the nameplate's transfer from King George VI to King Haakon VII, and its preservation at Narvik City Hall."
       }
     ],
     "end": "1:15:33",
@@ -32279,11 +33369,15 @@
     "startSeconds": 192,
     "youtubeUrl": "https://www.youtube.com/watch?v=rJmiSW1x2nU&t=192s",
     "summary": "A fast heavy-cruiser design uses a battlecruiser hull to combine 33-knot speed with a layered 9.2-inch, 6-inch, and 3-inch battery.",
-    "body": "Clarke starts with a battlecruiser hull but keeps the intended role firmly in the cruiser category. He reduces beam, draft, and displacement while retaining 33-knot speed, oil fuel, geared turbines, and auxiliary machinery. The armament combines triple 9.2-inch main guns with 6-inch and 3-inch batteries, giving the ship different tools for long-range and lighter targets. Armor and stability then consume the remaining weight, showing how a nominal hull category matters less than the mission and final balance of capabilities.",
+    "body": "Within the Ultimate Admiral: Dreadnoughts campaign, Clarke starts with a battlecruiser hull but keeps the intended role firmly in the cruiser category. He reduces beam, draft, and displacement while retaining 33-knot speed, oil fuel, geared turbines, and auxiliary machinery. The armament combines triple 9.2-inch main guns with 6-inch and 3-inch batteries, giving the ship different tools for long-range and lighter targets. Armour and stability then consume the remaining weight. The result is not a historical class, but the exercise makes mission-led classification visible: a nominal battlecruiser hull becomes a heavy cruiser because of how it is equipped and intended to fight.",
     "topics": [
       {
         "slug": "cruisers",
         "title": "Cruisers"
+      },
+      {
+        "slug": "heavy-cruisers",
+        "title": "Heavy Cruisers"
       },
       {
         "slug": "battlecruisers",
@@ -32296,6 +33390,34 @@
       {
         "slug": "naval-gunnery",
         "title": "Naval Gunnery"
+      },
+      {
+        "slug": "9-2-inch-guns",
+        "title": "9.2-inch Guns"
+      },
+      {
+        "slug": "6-inch-guns",
+        "title": "6-inch Guns"
+      },
+      {
+        "slug": "3-inch-guns",
+        "title": "3-inch Guns"
+      },
+      {
+        "slug": "geared-turbines",
+        "title": "Geared Turbines"
+      },
+      {
+        "slug": "oil-fired-boilers",
+        "title": "Oil Fired Boilers"
+      },
+      {
+        "slug": "armour-protection",
+        "title": "Armour Protection"
+      },
+      {
+        "slug": "ship-stability",
+        "title": "Ship Stability"
       }
     ],
     "evidence": [
@@ -32322,7 +33444,7 @@
     "startSeconds": 906,
     "youtubeUrl": "https://www.youtube.com/watch?v=rJmiSW1x2nU&t=906s",
     "summary": "The heavy cruiser balances boiler efficiency, endurance, shell weight, firing rate, gun range, deck armor, and the absence of anti-submarine equipment.",
-    "body": "Clarke compares natural, induced, and forced boiler arrangements by their effects on engine efficiency, displacement, and cruising range. He also acknowledges that the large cruiser lacks the anti-submarine equipment carried by some smaller designs, making the omission part of its role specialization. Standard and super-heavy shells create another tradeoff between firing rate and maximum armor-piercing range. Because he expects the ship to fight at long range, he keeps the standard ammunition choice and spends recovered weight on protection above the guns.",
+    "body": "Clarke compares natural, induced, and forced boiler arrangements by their effects on engine efficiency, displacement, and cruising range. He also acknowledges that the large cruiser lacks the anti-submarine equipment carried by some smaller designs, making the omission part of its role specialization. Standard and super-heavy shells create another tradeoff between firing rate and maximum armour-piercing range. Because he expects the ship to fight at long range, he keeps the standard ammunition choice and spends recovered weight on protection above the guns. The exact percentages belong to the simulation, but the sequence neatly exposes how propulsion, endurance, ammunition, range, and protection compete for the same displacement.",
     "topics": [
       {
         "slug": "heavy-cruisers",
@@ -32343,6 +33465,26 @@
       {
         "slug": "ammunition-logistics",
         "title": "Ammunition Logistics"
+      },
+      {
+        "slug": "boilers",
+        "title": "Boilers"
+      },
+      {
+        "slug": "engine-efficiency",
+        "title": "Engine Efficiency"
+      },
+      {
+        "slug": "cruising-range",
+        "title": "Cruising Range"
+      },
+      {
+        "slug": "deck-armour",
+        "title": "Deck Armour"
+      },
+      {
+        "slug": "super-heavy-shells",
+        "title": "Super Heavy Shells"
       }
     ],
     "evidence": [
@@ -32369,7 +33511,7 @@
     "startSeconds": 1255,
     "youtubeUrl": "https://www.youtube.com/watch?v=rJmiSW1x2nU&t=1255s",
     "summary": "A cruiser much cheaper and lighter than the battleships turns 300,000 tons of spare construction capacity into an order for ten hulls.",
-    "body": "After completing the design, Clarke compares its cost and displacement with the much more expensive battleships already in the program. The campaign shows about 300,000 tons of unused construction capacity, enough to order ten of the roughly 30,000-ton cruisers at once. This turns an individual design exercise into a force-structure decision about how many capable hulls the industrial base can deliver. The watch point illustrates why unit cost and yard capacity can make a cruiser attractive even when a battleship remains individually more powerful.",
+    "body": "After completing the design, Clarke compares its cost and displacement with the much more expensive battleships already in the program. The campaign shows about 300,000 tons of unused construction capacity, enough to order ten of the roughly 30,000-ton cruisers at once. This turns an individual design exercise into a force-structure decision about how many capable hulls the industrial base can deliver. The figures are scenario values rather than historical production data. Their learning value lies in showing why unit cost, displacement, and yard capacity can make a cruiser attractive even when a battleship remains individually more powerful.",
     "topics": [
       {
         "slug": "heavy-cruisers",
@@ -32390,6 +33532,18 @@
       {
         "slug": "naval-industrial-base",
         "title": "Naval Industrial Base"
+      },
+      {
+        "slug": "shipyard-capacity",
+        "title": "Shipyard Capacity"
+      },
+      {
+        "slug": "fleet-expansion",
+        "title": "Fleet Expansion"
+      },
+      {
+        "slug": "serial-production",
+        "title": "Serial Production"
       }
     ],
     "evidence": [
@@ -32416,7 +33570,7 @@
     "startSeconds": 1531,
     "youtubeUrl": "https://www.youtube.com/watch?v=rJmiSW1x2nU&t=1531s",
     "summary": "The campaign's designs blur formal categories as battlecruiser hulls serve as heavy cruisers and light cruisers perform destroyer work.",
-    "body": "Clarke pauses over a fleet in which nominal ship types no longer match their operational roles. Battlecruiser hulls are filling the heavy-cruiser niche, battleships cover both capital-ship categories, and light cruisers substitute for destroyers. The moment is a useful reminder that force structure is defined by missions and capabilities as much as by labels.",
+    "body": "Clarke pauses over a fleet in which nominal ship types no longer match their operational roles. Battlecruiser hulls are filling the heavy-cruiser niche, battleships cover both capital-ship categories, and light cruisers substitute for destroyers. The moment is a useful reminder that force structure is defined by missions and capabilities as much as by labels. These are campaign assignments rather than historical reclassifications, but they demonstrate how operational demand can outrun a neat taxonomy.",
     "topics": [
       {
         "slug": "force-structure",
@@ -32431,12 +33585,24 @@
         "title": "Cruisers"
       },
       {
+        "slug": "heavy-cruisers",
+        "title": "Heavy Cruisers"
+      },
+      {
+        "slug": "light-cruisers",
+        "title": "Light Cruisers"
+      },
+      {
         "slug": "destroyers",
         "title": "Destroyers"
       },
       {
         "slug": "ship-design",
         "title": "Ship Design"
+      },
+      {
+        "slug": "ship-classification",
+        "title": "Ship Classification"
       }
     ],
     "evidence": [
@@ -32463,7 +33629,7 @@
     "startSeconds": 1864,
     "youtubeUrl": "https://www.youtube.com/watch?v=rJmiSW1x2nU&t=1864s",
     "summary": "Destroyers draw long-range torpedo attacks so that heavy cruisers can close after the opposing torpedo force has spent its ammunition.",
-    "body": "Clarke deliberately lets enemy torpedoes chase his destroyers, judging that long-range shots against small, maneuverable targets are a poor use of a finite weapon. Once the launchers are empty, his heavy cruisers advance as the battle line without facing the same concentrated underwater threat. The sequence demonstrates how ammunition state and timing can matter as much as the ships' nominal armament.",
+    "body": "Clarke deliberately lets enemy torpedoes chase his destroyers, judging that long-range shots against small, manoeuvrable targets are a poor use of a finite weapon. Once the launchers are empty, his heavy cruisers advance as the battle line without facing the same concentrated underwater threat. The sequence demonstrates how ammunition state and timing can matter as much as the ships' nominal armament. It is a tactic inside the simulation, not evidence about a particular historical action, but it clearly illustrates threat exhaustion and the protective work of a screen.",
     "topics": [
       {
         "slug": "torpedoes",
@@ -32484,6 +33650,22 @@
       {
         "slug": "ammunition-logistics",
         "title": "Ammunition Logistics"
+      },
+      {
+        "slug": "torpedo-ammunition",
+        "title": "Torpedo Ammunition"
+      },
+      {
+        "slug": "torpedo-evasion",
+        "title": "Torpedo Evasion"
+      },
+      {
+        "slug": "battle-line",
+        "title": "Battle Line"
+      },
+      {
+        "slug": "screening",
+        "title": "Screening"
       }
     ],
     "evidence": [
@@ -32510,7 +33692,7 @@
     "startSeconds": 2709,
     "youtubeUrl": "https://www.youtube.com/watch?v=rJmiSW1x2nU&t=2709s",
     "summary": "A battle line succeeds through the combined performance of its ships, not simply the heaviest guns on one hull.",
-    "body": "Clarke contrasts a compact force of fast battleships with an opposing line that has a nominally heavier-gunned ship but weaker supporting firepower. The key lesson is that a battle line must be evaluated as a coordinated system of armour, guns, speed, and supporting ships. Torpedo forces are especially vulnerable when they cannot close under the cover of their heavier units.",
+    "body": "Within the campaign battle, Clarke's three fast battleships face a French line built around one 15.5-inch-gunned battleship and two 14.2-inch-gunned battlecruisers. The French battleship has the largest individual calibre, but its supporting ships cannot bring enough effective fire into the action. Clarke's line combines armour, 15-inch firepower, and concentration well enough to destroy the lighter torpedo carriers before they can close. The watch point therefore evaluates a battle line as a coordinated system rather than a collection of headline specifications. The engagement is simulated, but the tactical lesson is clear: heavy units must help their torpedo force survive long enough to deliver its attack.",
     "topics": [
       {
         "slug": "fleet-tactics",
@@ -32527,6 +33709,34 @@
       {
         "slug": "battleships",
         "title": "Battleships"
+      },
+      {
+        "slug": "fast-battleships",
+        "title": "Fast Battleships"
+      },
+      {
+        "slug": "battle-line",
+        "title": "Battle Line"
+      },
+      {
+        "slug": "torpedo-attack",
+        "title": "Torpedo Attack"
+      },
+      {
+        "slug": "15-inch-guns",
+        "title": "15-inch Guns"
+      },
+      {
+        "slug": "15-5-inch-guns",
+        "title": "15.5-inch Guns"
+      },
+      {
+        "slug": "14-2-inch-guns",
+        "title": "14.2-inch Guns"
+      },
+      {
+        "slug": "combined-fleet-operations",
+        "title": "Combined Fleet Operations"
       }
     ],
     "evidence": [
@@ -32570,6 +33780,22 @@
       {
         "slug": "royal-navy",
         "title": "Royal Navy"
+      },
+      {
+        "slug": "naval-architecture",
+        "title": "Naval Architecture"
+      },
+      {
+        "slug": "design-efficiency",
+        "title": "Design Efficiency"
+      },
+      {
+        "slug": "institutional-learning",
+        "title": "Institutional Learning"
+      },
+      {
+        "slug": "continuous-shipbuilding",
+        "title": "Continuous Shipbuilding"
       }
     ],
     "evidence": [
@@ -32586,7 +33812,7 @@
   {
     "id": "rjmisw1x2nu-r-class-convoy-singapore-role",
     "slug": "rjmisw1x2nu-r-class-convoy-singapore-role",
-    "title": "The R class: armored defender rather than fast hunter",
+    "title": "The R class: armoured defender rather than fast hunter",
     "kind": "notable_point",
     "kindLabel": "Notable Point",
     "videoId": "rJmiSW1x2nU",
@@ -32596,7 +33822,7 @@
     "startSeconds": 3358,
     "youtubeUrl": "https://www.youtube.com/watch?v=rJmiSW1x2nU&t=3358s",
     "summary": "The R-class battleships' armour could suit convoy protection and Singapore defence better than a high-speed hunt for Bismarck.",
-    "body": "Clarke treats the Revenge class as conventional battleships of the line whose virtues were protection and accumulated refinement rather than exceptional speed. In his counterfactual, modernized R-class ships could be useful against Bismarck in a defensive convoy role, while their 22-knot speed makes them a poor fit for the Prince of Wales and Repulse pursuit model. Stationed at Singapore, two R-class ships would more naturally serve as a fixed deterrent than hunt Japanese forces up the Malayan coast. The same distinction could preserve Prince of Wales and Repulse for Somerville's faster Eastern Fleet group while the slower R class reinforces it as a separate force.",
+    "body": "Clarke treats the Revenge class as conventional battleships of the line whose virtues were protection and accumulated refinement rather than exceptional speed. In his counterfactual, modernized R-class ships could be useful against Bismarck in a defensive convoy role, while their 22-knot speed makes them a poor fit for the Prince of Wales and Repulse pursuit model. Stationed at Singapore, two R-class ships would more naturally serve as a fixed deterrent than hunt Japanese forces up the Malayan coast. He then imagines Warspite, Prince of Wales, and Repulse forming Somerville's faster Eastern Fleet group while modernized R-class ships follow as a separate force. Radar-directed gunnery and experienced crews would make a night encounter with the Kongō-class battlecruisers dangerous, but Clarke presents the whole sequence as a counterfactual employment argument rather than a claim about what would certainly have happened.",
     "topics": [
       {
         "slug": "r-class-battleships",
@@ -32617,17 +33843,61 @@
       {
         "slug": "world-war-ii",
         "title": "World War II"
+      },
+      {
+        "slug": "bismarck",
+        "title": "Bismarck"
+      },
+      {
+        "slug": "force-z",
+        "title": "Force Z"
+      },
+      {
+        "slug": "singapore",
+        "title": "Singapore"
+      },
+      {
+        "slug": "eastern-fleet",
+        "title": "Eastern Fleet"
+      },
+      {
+        "slug": "hms-prince-of-wales",
+        "title": "HMS Prince Of Wales"
+      },
+      {
+        "slug": "hms-repulse",
+        "title": "HMS Repulse"
+      },
+      {
+        "slug": "hms-warspite",
+        "title": "HMS Warspite"
+      },
+      {
+        "slug": "kongo-class-battlecruisers",
+        "title": "Kongo Class Battlecruisers"
+      },
+      {
+        "slug": "radar-directed-gunnery",
+        "title": "Radar Directed Gunnery"
+      },
+      {
+        "slug": "convoy-escort",
+        "title": "Convoy Escort"
+      },
+      {
+        "slug": "armour-protection",
+        "title": "Armour Protection"
       }
     ],
     "evidence": [
       {
         "start": "55:58",
-        "end": "1:00:58",
-        "note": "Clarke compares R-class armor and speed with Bismarck hunting, Force Z, Singapore, and Eastern Fleet employment."
+        "end": "1:01:23",
+        "note": "Clarke compares R-class armour and speed with Bismarck hunting, Force Z, Singapore, Eastern Fleet employment, and a radar-assisted night action against the Kongō class."
       }
     ],
-    "end": "1:00:58",
-    "endSeconds": 3658,
+    "end": "1:01:23",
+    "endSeconds": 3683,
     "sourcePath": "src/transcripts/txt/2024-05-06_T18-00-33_check-campaign-16-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_rJmiSW1x2nU.txt"
   },
   {
@@ -32643,7 +33913,7 @@
     "startSeconds": 3865,
     "youtubeUrl": "https://www.youtube.com/watch?v=rJmiSW1x2nU&t=3865s",
     "summary": "Choosing 5.5-inch guns for destroyers could enlarge the destroyer and, in turn, force a larger light cruiser to retain an advantage.",
-    "body": "Using Hood's 5.5-inch guns as a hypothetical destroyer standard, Clarke follows the resulting chain of design pressures. Larger mounts would push destroyers toward roughly 3,000 tons, while the light cruiser intended to overmatch them would also need to grow. It is a compact example of how an armament choice propagates across an entire fleet's force structure.",
+    "body": "Using Hood's 5.5-inch guns as a hypothetical destroyer standard, Clarke follows the resulting chain of design pressures. Larger mounts would push destroyers toward roughly 3,000 tons. A light cruiser intended to overmatch those destroyers would then also need to grow, potentially shifting the boundary between the two categories. The proposal is counterfactual, but it is a compact example of how one armament choice can propagate across an entire fleet's force structure.",
     "topics": [
       {
         "slug": "destroyers",
@@ -32654,12 +33924,32 @@
         "title": "Cruisers"
       },
       {
+        "slug": "light-cruisers",
+        "title": "Light Cruisers"
+      },
+      {
         "slug": "ship-design",
         "title": "Ship Design"
       },
       {
         "slug": "naval-gunnery",
         "title": "Naval Gunnery"
+      },
+      {
+        "slug": "5-5-inch-guns",
+        "title": "5.5-inch Guns"
+      },
+      {
+        "slug": "hms-hood",
+        "title": "HMS Hood"
+      },
+      {
+        "slug": "naval-arms-race",
+        "title": "Naval Arms Race"
+      },
+      {
+        "slug": "ship-classification",
+        "title": "Ship Classification"
       }
     ],
     "evidence": [
@@ -32686,7 +33976,7 @@
     "startSeconds": 4267,
     "youtubeUrl": "https://www.youtube.com/watch?v=rJmiSW1x2nU&t=4267s",
     "summary": "An 18-inch-turret question opens into British 45-calibre practice, industrial limits, and the value of nine-gun ranging salvos.",
-    "body": "Clarke argues that British preference for 45-calibre guns was a practical balance between performance, weapon weight, mechanical reliability, and operation in difficult weather. He frames the unfinished 18-inch twin-turret work as an issue of engineering maturity and available infrastructure, not simply a preference for a larger shell. G3 could not combine the desired speed, armor, and armament within existing infrastructure unless gun size fell or the design accepted twin 18-inch mountings. The selection of nine 16-inch guns also illustrates why a useful ranging-salvo pattern could matter more than pursuing the largest possible calibre.",
+    "body": "Clarke argues that British preference for 45-calibre guns was a practical balance between performance, weapon weight, mechanical reliability, and operation in difficult weather. He frames the unfinished 18-inch twin-turret work as an issue of engineering maturity and available infrastructure, not simply a preference for a larger shell. G3 could not combine the desired speed, armour, and armament within existing infrastructure unless gun size fell or the design accepted twin 18-inch mountings. The selection of nine 16-inch guns also illustrates why a useful ranging-salvo pattern could matter more than pursuing the largest possible calibre. When the subject returns later, he calls twelve guns ideal but notes that nine became a practical American pattern because it divides cleanly into ranging salvos.",
     "topics": [
       {
         "slug": "naval-gunnery",
@@ -32703,17 +33993,49 @@
       {
         "slug": "battleships",
         "title": "Battleships"
+      },
+      {
+        "slug": "18-inch-guns",
+        "title": "18-inch Guns"
+      },
+      {
+        "slug": "16-inch-guns",
+        "title": "16-inch Guns"
+      },
+      {
+        "slug": "16-5-inch-guns",
+        "title": "16.5-inch Guns"
+      },
+      {
+        "slug": "g3-battlecruisers",
+        "title": "G3 Battlecruisers"
+      },
+      {
+        "slug": "45-calibre-guns",
+        "title": "45 Calibre Guns"
+      },
+      {
+        "slug": "ranging-salvos",
+        "title": "Ranging Salvos"
+      },
+      {
+        "slug": "naval-infrastructure",
+        "title": "Naval Infrastructure"
+      },
+      {
+        "slug": "naval-weapon-design",
+        "title": "Naval Weapon Design"
       }
     ],
     "evidence": [
       {
         "start": "1:11:07",
-        "end": "1:13:55",
-        "note": "Clarke discusses the British 18-inch turret, 45-calibre practice, G3 constraints, and the advantages of nine-gun salvos."
+        "end": "1:17:17",
+        "note": "Clarke discusses the British 18-inch turret, 45-calibre practice, G3 constraints, and why nine- or twelve-gun arrangements support ranging salvos."
       }
     ],
-    "end": "1:13:55",
-    "endSeconds": 4435,
+    "end": "1:17:17",
+    "endSeconds": 4637,
     "question": "What happened to the British 18-inch turret?",
     "answerShort": "Clarke argues that the twin 18-inch mounting had not matured into a readily available ship installation, while infrastructure and design constraints pushed the G3 battlecruisers toward nine 16-inch guns instead.",
     "sourcePath": "src/transcripts/txt/2024-05-06_T18-00-33_check-campaign-16-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_rJmiSW1x2nU.txt"
@@ -32731,7 +34053,7 @@
     "startSeconds": 4914,
     "youtubeUrl": "https://www.youtube.com/watch?v=rJmiSW1x2nU&t=4914s",
     "summary": "Very large guns offer enormous shells, but a slow rate of fire gives the target time to maneuver and delays correction of the firing solution.",
-    "body": "Considering a ship with three twin 20-inch turrets, Clarke emphasizes the penalty attached to such extreme calibre. Long intervals between salvos make the first fire-control solution unusually important because the target can maneuver before the next correction arrives. The segment shows why practical hit probability depends on firing cycle as well as shell size.",
+    "body": "Considering a ship with three twin 20-inch turrets, Clarke emphasizes the penalty attached to such extreme calibre. Long intervals between salvos make the first fire-control solution unusually important because the target can manoeuvre before the next correction arrives. Each shot supplies less timely information for the following correction, weakening continuity in the ranging process. The design is hypothetical, but the segment shows why practical hit probability depends on firing cycle as well as shell size.",
     "topics": [
       {
         "slug": "naval-gunnery",
@@ -32748,6 +34070,22 @@
       {
         "slug": "ship-design",
         "title": "Ship Design"
+      },
+      {
+        "slug": "20-inch-guns",
+        "title": "20-inch Guns"
+      },
+      {
+        "slug": "firing-cycle",
+        "title": "Firing Cycle"
+      },
+      {
+        "slug": "target-manoeuvre",
+        "title": "Target Manoeuvre"
+      },
+      {
+        "slug": "ranging-salvos",
+        "title": "Ranging Salvos"
       }
     ],
     "evidence": [
@@ -32774,7 +34112,7 @@
     "startSeconds": 5328,
     "youtubeUrl": "https://www.youtube.com/watch?v=rJmiSW1x2nU&t=5328s",
     "summary": "Soviet preference for large destroyers raises a brief question about how their designs might have affected interwar treaty categories.",
-    "body": "Clarke notes that the Soviet Navy produced capable and comparatively large destroyers in the late 1930s and early 1940s. He then speculates that a stronger Soviet voice favoring such ships could have complicated the destroyer limits discussed around the Washington and London naval-treaty systems. The point is framed as a possibility rather than a claim about an actual negotiation outcome.",
+    "body": "Clarke notes that the Soviet Navy produced capable and comparatively large destroyers in the late 1930s and early 1940s. He then speculates that a stronger Soviet voice favouring such ships could have complicated destroyer limits within the interwar treaty system. Larger Soviet requirements might have put pressure on the category boundaries associated with the Washington and London agreements. The point is explicitly a possibility raised during the campaign, not a claim about an actual negotiation outcome.",
     "topics": [
       {
         "slug": "soviet-navy",
@@ -32795,6 +34133,26 @@
       {
         "slug": "ship-design",
         "title": "Ship Design"
+      },
+      {
+        "slug": "soviet-destroyers",
+        "title": "Soviet Destroyers"
+      },
+      {
+        "slug": "large-destroyers",
+        "title": "Large Destroyers"
+      },
+      {
+        "slug": "washington-naval-treaty",
+        "title": "Washington Naval Treaty"
+      },
+      {
+        "slug": "london-naval-treaty",
+        "title": "London Naval Treaty"
+      },
+      {
+        "slug": "naval-treaty-system",
+        "title": "Naval Treaty System"
       }
     ],
     "evidence": [
@@ -32838,6 +34196,34 @@
       {
         "slug": "naval-logistics",
         "title": "Naval Logistics"
+      },
+      {
+        "slug": "grog",
+        "title": "Grog"
+      },
+      {
+        "slug": "potable-water",
+        "title": "Potable Water"
+      },
+      {
+        "slug": "wardroom",
+        "title": "Wardroom"
+      },
+      {
+        "slug": "officer-conduct",
+        "title": "Officer Conduct"
+      },
+      {
+        "slug": "naval-discipline",
+        "title": "Naval Discipline"
+      },
+      {
+        "slug": "shipboard-life",
+        "title": "Shipboard Life"
+      },
+      {
+        "slug": "wooden-warships",
+        "title": "Wooden Warships"
       }
     ],
     "evidence": [
@@ -32885,6 +34271,30 @@
       {
         "slug": "cruisers",
         "title": "Cruisers"
+      },
+      {
+        "slug": "armed-merchant-ships",
+        "title": "Armed Merchant Ships"
+      },
+      {
+        "slug": "merchant-shipping",
+        "title": "Merchant Shipping"
+      },
+      {
+        "slug": "maritime-trade",
+        "title": "Maritime Trade"
+      },
+      {
+        "slug": "trade-protection",
+        "title": "Trade Protection"
+      },
+      {
+        "slug": "french-economy",
+        "title": "French Economy"
+      },
+      {
+        "slug": "convoys",
+        "title": "Convoys"
       }
     ],
     "evidence": [
@@ -32911,7 +34321,7 @@
     "startSeconds": 6812,
     "youtubeUrl": "https://www.youtube.com/watch?v=rJmiSW1x2nU&t=6812s",
     "summary": "Giving heavy cruisers the same 11-inch calibre once used by the battleships lets them serve as a cheaper second line of heavy firepower.",
-    "body": "Clarke explains the campaign logic behind arming both early battleships and heavy cruisers with 11-inch guns. The cruisers were intended to reinforce the capital ships as a second line, trading the protection of a battleship for additional hulls carrying compatible heavy firepower. It is a compact example of designing a cruiser around its place in the whole fleet rather than in isolation.",
+    "body": "Clarke explains the campaign logic behind arming both early battleships and heavy cruisers with 11-inch guns. The cruisers were intended to reinforce the capital ships as a second line, trading the protection of a battleship for additional hulls carrying compatible heavy firepower. Common calibre also makes the relationship between the two lines immediately visible, even though the cruiser remains a different protection and cost proposition. The scheme belongs to the simulated fleet, but it is a compact example of designing a cruiser around its place in fleet doctrine rather than in isolation.",
     "topics": [
       {
         "slug": "heavy-cruisers",
@@ -32928,6 +34338,26 @@
       {
         "slug": "naval-gunnery",
         "title": "Naval Gunnery"
+      },
+      {
+        "slug": "11-inch-guns",
+        "title": "11-inch Guns"
+      },
+      {
+        "slug": "battle-line",
+        "title": "Battle Line"
+      },
+      {
+        "slug": "fleet-doctrine",
+        "title": "Fleet Doctrine"
+      },
+      {
+        "slug": "gun-standardization",
+        "title": "Gun Standardization"
+      },
+      {
+        "slug": "cruiser-doctrine",
+        "title": "Cruiser Doctrine"
       }
     ],
     "evidence": [
@@ -32954,7 +34384,7 @@
     "startSeconds": 6896,
     "youtubeUrl": "https://www.youtube.com/watch?v=rJmiSW1x2nU&t=6896s",
     "summary": "A nine-gun battleship controls the engagement through radar, gun range, and speed before a lucky salvo reaches the enemy magazine.",
-    "body": "Against an opponent mounting fifteen 15.5-inch guns, Clarke's nine-gun battleship gains the practical advantage through radar-controlled gunnery, longer range, and enough speed to prevent the enemy from closing. Even the 6-inch secondary battery begins firing before the opposing main battery, illustrating how fire control and engagement geometry can outweigh nominal broadside size. The battle ends with a sudden magazine hit, which Clarke distinguishes from the sustained damage that had been accumulating beforehand.",
+    "body": "Against an opponent mounting fifteen 15.5-inch guns, Clarke's nine-gun battleship gains the practical advantage through radar-controlled gunnery, longer range, and enough speed to prevent the enemy from closing. Even the 6-inch secondary battery begins firing before the opposing main battery, illustrating how fire control and engagement geometry can outweigh nominal broadside size. The enemy must increase speed to close, which Clarke notes will further disrupt its gunnery. High-explosive secondary hits add damage while the main battery maintains range control. The simulated battle ends with a sudden magazine hit, which Clarke distinguishes from the sustained damage that had been accumulating beforehand.",
     "topics": [
       {
         "slug": "battleships",
@@ -32975,6 +34405,38 @@
       {
         "slug": "magazine-explosions",
         "title": "Magazine Explosions"
+      },
+      {
+        "slug": "radar-directed-gunnery",
+        "title": "Radar Directed Gunnery"
+      },
+      {
+        "slug": "engagement-range",
+        "title": "Engagement Range"
+      },
+      {
+        "slug": "15-inch-guns",
+        "title": "15-inch Guns"
+      },
+      {
+        "slug": "15-5-inch-guns",
+        "title": "15.5-inch Guns"
+      },
+      {
+        "slug": "high-explosive-shells",
+        "title": "High Explosive Shells"
+      },
+      {
+        "slug": "magazine-protection",
+        "title": "Magazine Protection"
+      },
+      {
+        "slug": "ship-speed",
+        "title": "Ship Speed"
+      },
+      {
+        "slug": "gunnery-accuracy",
+        "title": "Gunnery Accuracy"
       }
     ],
     "evidence": [
@@ -33030,6 +34492,34 @@
       {
         "slug": "destroyers",
         "title": "Destroyers"
+      },
+      {
+        "slug": "fleet-divisions",
+        "title": "Fleet Divisions"
+      },
+      {
+        "slug": "formation-speed",
+        "title": "Formation Speed"
+      },
+      {
+        "slug": "screening-forces",
+        "title": "Screening Forces"
+      },
+      {
+        "slug": "independent-operations",
+        "title": "Independent Operations"
+      },
+      {
+        "slug": "line-ahead",
+        "title": "Line Ahead"
+      },
+      {
+        "slug": "command-and-control",
+        "title": "Command And Control"
+      },
+      {
+        "slug": "task-force-organization",
+        "title": "Task Force Organization"
       }
     ],
     "evidence": [
@@ -33052,11 +34542,11 @@
     "videoId": "rJmiSW1x2nU",
     "videoSlug": "check-campaign-16-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign",
     "videoTitle": "Check Campaign 16: UAD has updated & to Learn it's new ways I started another British Campaign",
-    "start": "2:26:57",
-    "startSeconds": 8817,
-    "youtubeUrl": "https://www.youtube.com/watch?v=rJmiSW1x2nU&t=8817s",
+    "start": "2:26:02",
+    "startSeconds": 8762,
+    "youtubeUrl": "https://www.youtube.com/watch?v=rJmiSW1x2nU&t=8762s",
     "summary": "Comparing two enormous navies shows why total hulls, displacement, crew demand, budgets, and ship-type mix must be read together.",
-    "body": "Clarke's British fleet has far more hulls than its American ally but less total tonnage, reflecting a force with many destroyers and submarines against heavier American capital ships and cruisers. The comparison also brings crew-pool pressure and annual naval budgets into the picture. The useful lesson is that a navy's scale cannot be reduced to a single number: personnel, displacement, industrial replacement, and mission mix all matter.",
+    "body": "In the campaign, Clarke first compares territorial holdings and then turns to the resources behind two enormous allied fleets. His British force has 1,286 hulls against 617 American ships, but the American fleet has greater total tonnage because it contains more battleships, battlecruisers, heavy cruisers, and light cruisers, while Britain fields more destroyers and submarines. Crew pools, naval and army budgets, home and overseas population, and army strength add further dimensions to the comparison. These are scenario statistics rather than historical measurements of Britain and the United States. They demonstrate why hull count, displacement, personnel, budgets, industrial replacement, and fleet mix answer different questions, and why Clarke responds to the cruiser gap by ordering more heavy cruisers.",
     "topics": [
       {
         "slug": "force-structure",
@@ -33081,13 +34571,61 @@
       {
         "slug": "submarines",
         "title": "Submarines"
+      },
+      {
+        "slug": "us-navy",
+        "title": "US Navy"
+      },
+      {
+        "slug": "naval-personnel",
+        "title": "Naval Personnel"
+      },
+      {
+        "slug": "naval-budget",
+        "title": "Naval Budget"
+      },
+      {
+        "slug": "army-budget",
+        "title": "Army Budget"
+      },
+      {
+        "slug": "fleet-composition",
+        "title": "Fleet Composition"
+      },
+      {
+        "slug": "naval-tonnage",
+        "title": "Naval Tonnage"
+      },
+      {
+        "slug": "submarine-fleet",
+        "title": "Submarine Fleet"
+      },
+      {
+        "slug": "destroyer-fleet",
+        "title": "Destroyer Fleet"
+      },
+      {
+        "slug": "strategic-simulation",
+        "title": "Strategic Simulation"
+      },
+      {
+        "slug": "state-capacity",
+        "title": "State Capacity"
+      },
+      {
+        "slug": "population",
+        "title": "Population"
+      },
+      {
+        "slug": "imperial-power",
+        "title": "Imperial Power"
       }
     ],
     "evidence": [
       {
-        "start": "2:26:57",
+        "start": "2:26:02",
         "end": "2:28:52",
-        "note": "Clarke compares British and American ship counts, tonnage, type mix, crew pools, and budgets before deciding to expand cruiser production."
+        "note": "Clarke compares campaign territory, population, armies, British and American ship counts, tonnage, fleet mix, crew pools, and budgets before deciding to expand cruiser production."
       }
     ],
     "end": "2:28:52",
@@ -33107,7 +34645,7 @@
     "startSeconds": 8951,
     "youtubeUrl": "https://www.youtube.com/watch?v=rJmiSW1x2nU&t=8951s",
     "summary": "A viewer's 12.5-inch dreadnought prompts a discussion of marginal shell gains, design costs, national calibre patterns, and technology quality.",
-    "body": "Clarke notes that a half-inch increase brings somewhat more shell weight, but asks whether that modest improvement compensates for its effects elsewhere in the design. He compares the choice with his own British-style 13.5- and 16.5-inch steps and with a recent duel in which superior technology on 15-inch guns mattered more than the opponent's nominal 15.5-inch calibre. The answer therefore emphasizes the complete weapon system rather than calibre alone.",
+    "body": "Clarke notes that a half-inch increase brings somewhat more shell weight, but asks whether that modest improvement compensates for its effects elsewhere in the design. He compares the choice with his own British-style 13.5- and 16.5-inch steps and with a recent duel in which superior technology on 15-inch guns mattered more than the opponent's nominal 15.5-inch calibre. Within the game, such half-inch steps may offer an advantage, but he also treats them as matters of national flavour and personal preference. The answer therefore emphasizes the complete weapon system and technology level rather than calibre alone.",
     "topics": [
       {
         "slug": "naval-gunnery",
@@ -33124,6 +34662,42 @@
       {
         "slug": "fire-control",
         "title": "Fire Control"
+      },
+      {
+        "slug": "12-inch-guns",
+        "title": "12-inch Guns"
+      },
+      {
+        "slug": "12-5-inch-guns",
+        "title": "12.5-inch Guns"
+      },
+      {
+        "slug": "13-5-inch-guns",
+        "title": "13.5-inch Guns"
+      },
+      {
+        "slug": "15-inch-guns",
+        "title": "15-inch Guns"
+      },
+      {
+        "slug": "15-5-inch-guns",
+        "title": "15.5-inch Guns"
+      },
+      {
+        "slug": "16-inch-guns",
+        "title": "16-inch Guns"
+      },
+      {
+        "slug": "16-5-inch-guns",
+        "title": "16.5-inch Guns"
+      },
+      {
+        "slug": "gun-calibre",
+        "title": "Gun Calibre"
+      },
+      {
+        "slug": "weapons-technology",
+        "title": "Weapons Technology"
       }
     ],
     "evidence": [
@@ -33173,6 +34747,46 @@
       {
         "slug": "torpedo-defence",
         "title": "Torpedo Defence"
+      },
+      {
+        "slug": "hms-revenge",
+        "title": "HMS Revenge"
+      },
+      {
+        "slug": "ship-refit",
+        "title": "Ship Refit"
+      },
+      {
+        "slug": "displacement",
+        "title": "Displacement"
+      },
+      {
+        "slug": "hydraulic-steering",
+        "title": "Hydraulic Steering"
+      },
+      {
+        "slug": "propeller-shafts",
+        "title": "Propeller Shafts"
+      },
+      {
+        "slug": "double-hull",
+        "title": "Double Hull"
+      },
+      {
+        "slug": "16-5-inch-guns",
+        "title": "16.5-inch Guns"
+      },
+      {
+        "slug": "quadruple-turrets",
+        "title": "Quadruple Turrets"
+      },
+      {
+        "slug": "armour-protection",
+        "title": "Armour Protection"
+      },
+      {
+        "slug": "ship-stability",
+        "title": "Ship Stability"
       }
     ],
     "evidence": [
@@ -33184,6 +34798,61 @@
     ],
     "end": "2:45:40",
     "endSeconds": 9940,
+    "sourcePath": "src/transcripts/txt/2024-05-06_T18-00-33_check-campaign-16-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_rJmiSW1x2nU.txt"
+  },
+  {
+    "id": "rjmisw1x2nu-radar-refit-production-standard",
+    "slug": "rjmisw1x2nu-radar-refit-production-standard",
+    "title": "Making the radar refit the next production standard",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "rJmiSW1x2nU",
+    "videoSlug": "check-campaign-16-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign",
+    "videoTitle": "Check Campaign 16: UAD has updated & to Learn it's new ways I started another British Campaign",
+    "start": "2:45:42",
+    "startSeconds": 9942,
+    "youtubeUrl": "https://www.youtube.com/watch?v=rJmiSW1x2nU&t=9942s",
+    "summary": "After improving the heavy cruiser's radar, Clarke copies the refitted design as the standard for the next planned batch of ten ships.",
+    "body": "The campaign's heavy-cruiser program does not stop with the first batch. Clarke opens the commissioned design, improves its radar fit, and saves the updated configuration as a Mark 2. He then considers ordering another ten ships from that copied refit while balancing the yard demand of battleship modernization. The sequence is scenario planning rather than an account of a historical class. Its learning value lies in showing how a limited electronics refit can become the common production standard for later hulls instead of leaving each batch at a different capability level.",
+    "topics": [
+      {
+        "slug": "heavy-cruisers",
+        "title": "Heavy Cruisers"
+      },
+      {
+        "slug": "radar",
+        "title": "Radar"
+      },
+      {
+        "slug": "ship-refit",
+        "title": "Ship Refit"
+      },
+      {
+        "slug": "serial-production",
+        "title": "Serial Production"
+      },
+      {
+        "slug": "fleet-standardization",
+        "title": "Fleet Standardization"
+      },
+      {
+        "slug": "naval-industrial-base",
+        "title": "Naval Industrial Base"
+      },
+      {
+        "slug": "naval-procurement",
+        "title": "Naval Procurement"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "2:45:42",
+        "end": "2:48:14",
+        "note": "Clarke improves the heavy cruiser's radar, copies the refitted Mark 2 design, and weighs another ten-ship order against battleship refit capacity."
+      }
+    ],
+    "end": "2:48:14",
+    "endSeconds": 10094,
     "sourcePath": "src/transcripts/txt/2024-05-06_T18-00-33_check-campaign-16-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_rJmiSW1x2nU.txt"
   },
   {
@@ -36713,7 +38382,7 @@
     "startSeconds": 1425,
     "youtubeUrl": "https://www.youtube.com/watch?v=tEItwHTyl80&t=1425s",
     "summary": "Large armored cruisers could supply numerous heavy units between cruisers and increasingly expensive capital ships.",
-    "body": "The proposed 9.2- to 11-inch-gun ships fill a third-rate role beneath battlecruisers and battleships. Their purpose is to provide numerous heavy units after dreadnoughts become too expensive to supply fleet-wide mass. Dr. Clarke argues that the United States, Royal Navy, and Japan could all have used that layer. He closes by warning that force structure should be designed to a known budget, because salami-slicing individual ships after budgets change produces an incoherent fleet.",
+    "body": "The proposed 9.2- to 11-inch-gun ships fill a third-rate role beneath battlecruisers and battleships. Their purpose is to provide numerous heavy units after dreadnoughts become too expensive to supply fleet-wide mass. The treaty system then froze that missing layer for roughly two decades, World War II gave little opportunity to rebuild it, and Cold War planning emphasized major North Atlantic fleet actions rather than a flexible middle tier. Dr. Clarke argues that the United States, Royal Navy, and Japan could all have used that layer. He closes by warning that force structure should be designed to a known budget, because salami-slicing individual ships after budgets change produces an incoherent fleet.",
     "topics": [
       {
         "slug": "armored-cruisers",
@@ -37052,7 +38721,7 @@
     "startSeconds": 3071,
     "youtubeUrl": "https://www.youtube.com/watch?v=tEItwHTyl80&t=3071s",
     "summary": "The appeal of uncrewed combat rests on avoiding casualties, but lethal decisions still raise unavoidable questions of human authorization.",
-    "body": "Dr. Clarke begins with the attraction of uncrewed combat: it promises to keep service personnel out of danger. He then separates present missiles from autonomous decision-makers. A missile follows a human launch order and reacts within parameters designed into a weapon system; it does not generate its own kill order. The harder issue arrives when a machine may independently decide to kill, so removing the crew does not remove responsibility or command judgment.",
+    "body": "Dr. Clarke begins with the attraction of uncrewed combat: it promises to keep service personnel out of danger. He then separates present missiles from autonomous decision-makers. A missile follows a human launch order and reacts within parameters designed into a weapon system; it does not generate its own kill order. Even networked missiles that divide eligible targets among themselves are following limits set by designers and launchers rather than authoring a new kill decision. The harder issue arrives when a machine may independently decide to kill, so removing the crew does not remove responsibility or command judgment.",
     "topics": [
       {
         "slug": "uncrewed-systems",
@@ -37080,6 +38749,11 @@
         "start": "51:11",
         "end": "52:26",
         "note": "The answer contrasts the promise of uncrewed warfare with human launch authority and autonomous lethal decisions."
+      },
+      {
+        "start": "1:22:38",
+        "end": "1:22:47",
+        "note": "A later follow-up says missile swarms can prioritize eligible targets, but designers and launchers still determine the action."
       }
     ],
     "end": "52:26",
@@ -38009,12 +39683,64 @@
         "start": "1:45:37",
         "end": "1:49:20",
         "note": "The answer contrasts open-ocean conditions with archipelagic geography and assesses defensive weapon deployment."
+      },
+      {
+        "start": "1:51:14",
+        "end": "1:51:40",
+        "note": "A later follow-up notes that full-power naval radars can damage some small drones."
       }
     ],
     "end": "1:49:20",
     "endSeconds": 6560,
     "question": "Have Western navies learned enough for a future major-power battle around the Indonesian archipelago?",
     "answerShort": "No; confined island waters make small drones and shore-based threats much more relevant, while promised close-in and laser defenses remain insufficiently deployed.",
+    "sourcePath": "src/transcripts/txt/2025-11-17_T12-59-03_historiophon-2025-part-1-of-9-national-museum-of-the-royal-navy-i_tEItwHTyl80.txt"
+  },
+  {
+    "id": "naval-big-gun-logic-land-artillery",
+    "slug": "naval-big-gun-logic-land-artillery",
+    "title": "Why naval big-gun logic misled land artillery planning",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "tEItwHTyl80",
+    "videoSlug": "historiophon-2025-part-1-of-9-national-museum-of-the-royal-navy-i",
+    "videoTitle": "Historiophon 2025: part 1 of 9 - National Museum of the Royal Navy I",
+    "start": "1:46:07",
+    "startSeconds": 6367,
+    "youtubeUrl": "https://www.youtube.com/watch?v=tEItwHTyl80&t=6367s",
+    "summary": "The self-contained support of a warship made naval gun growth a poor model for land artillery, where every increase in size deepened transport and sustainment burdens.",
+    "body": "Dr. Clarke uses early-twentieth-century gun growth to show why lessons do not transfer cleanly between warfare domains. Navies could absorb heavier weapons because a ship carried its ammunition, power, structural reinforcement, and supply system while the sea helped absorb firing shock. Land forces had to move, emplace, aim, and sustain the same increasingly heavy artillery without that mobile platform. The naval prestige of bigger guns nevertheless shaped the era's default answer to firepower, helping land warfare become fixated on size. He places Douglas Haig inside that intellectual environment, cautioning that commanders inherited the solutions available to their period rather than choosing from modern alternatives.",
+    "topics": [
+      {
+        "slug": "world-war-i",
+        "title": "World War I"
+      },
+      {
+        "slug": "artillery",
+        "title": "Artillery"
+      },
+      {
+        "slug": "military-logistics",
+        "title": "Military Logistics"
+      },
+      {
+        "slug": "naval-gunnery",
+        "title": "Naval Gunnery"
+      },
+      {
+        "slug": "douglas-haig",
+        "title": "Douglas Haig"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "1:46:07",
+        "end": "1:47:54",
+        "note": "The passage contrasts shipborne structural and logistical support with the burden of moving and sustaining increasingly heavy land artillery, then applies the point to Haig."
+      }
+    ],
+    "end": "1:47:54",
+    "endSeconds": 6474,
     "sourcePath": "src/transcripts/txt/2025-11-17_T12-59-03_historiophon-2025-part-1-of-9-national-museum-of-the-royal-navy-i_tEItwHTyl80.txt"
   },
   {
@@ -38357,6 +40083,57 @@
     "sourcePath": "src/transcripts/txt/2025-11-17_T12-59-03_historiophon-2025-part-1-of-9-national-museum-of-the-royal-navy-i_tEItwHTyl80.txt"
   },
   {
+    "id": "royal-navy-feedwater-tanks-fuel-range",
+    "slug": "royal-navy-feedwater-tanks-fuel-range",
+    "title": "How feedwater tanks became a wartime fuel reserve",
+    "kind": "notable_point",
+    "kindLabel": "Notable Point",
+    "videoId": "tEItwHTyl80",
+    "videoSlug": "historiophon-2025-part-1-of-9-national-museum-of-the-royal-navy-i",
+    "videoTitle": "Historiophon 2025: part 1 of 9 - National Museum of the Royal Navy I",
+    "start": "2:07:53",
+    "startSeconds": 7673,
+    "youtubeUrl": "https://www.youtube.com/watch?v=tEItwHTyl80&t=7673s",
+    "summary": "Some Royal Navy ships apparently gained wartime range when feedwater tanks were rerouted to carry several hundred additional tons of fuel.",
+    "body": "Dr. Clarke offers this as another case where surviving paperwork may not explain how quickly a useful adaptation appeared. Within days of World War II beginning, some Royal Navy water tanks could apparently be rerouted to carry extra fuel. The ships then operated successfully without the feedwater capacity those tanks had provided. The change offered several hundred additional tons of fuel and therefore more range without altering the hull. His wording remains cautious, making the point valuable as both a logistics lesson and an example of evidentiary limits.",
+    "topics": [
+      {
+        "slug": "royal-navy",
+        "title": "Royal Navy"
+      },
+      {
+        "slug": "world-war-ii",
+        "title": "World War II"
+      },
+      {
+        "slug": "naval-logistics",
+        "title": "Naval Logistics"
+      },
+      {
+        "slug": "ship-fuel",
+        "title": "Ship Fuel"
+      },
+      {
+        "slug": "feedwater",
+        "title": "Feedwater"
+      },
+      {
+        "slug": "warship-range",
+        "title": "Warship Range"
+      }
+    ],
+    "evidence": [
+      {
+        "start": "2:07:53",
+        "end": "2:08:19",
+        "note": "The passage says some water tanks were quickly rerouted for several hundred tons of extra fuel and that the ships worked without the displaced feedwater capacity."
+      }
+    ],
+    "end": "2:08:19",
+    "endSeconds": 7699,
+    "sourcePath": "src/transcripts/txt/2025-11-17_T12-59-03_historiophon-2025-part-1-of-9-national-museum-of-the-royal-navy-i_tEItwHTyl80.txt"
+  },
+  {
     "id": "project-habakkuk-three",
     "slug": "project-habakkuk-three",
     "title": "Habakkuk III as a smaller faster berg ship",
@@ -38418,7 +40195,7 @@
     "startSeconds": 8560,
     "youtubeUrl": "https://www.youtube.com/watch?v=tEItwHTyl80&t=8560s",
     "summary": "Making Wilhelm II both German Kaiser and Russian Tsar would combine immense manpower, industry, coastline, and political authority into a power no rival would readily attack.",
-    "body": "France would lose the Russian counterweight to Germany, while Britain and Japan would confront a much larger Eurasian bloc. German officers and troops could reinforce the new ruler in Russia, reducing his dependence on Russian elites and making revolution less likely. Control of both shores would turn the Baltic into a German-Russian lake, and Russian ambitions toward Constantinople would gain German infrastructure and industrial support. The union would need years to integrate, but rivals would hesitate to start a preventive war against it. Dr. Clarke also suggests that the threat could push Britain toward deeper imperial cost sharing and perhaps a federated empire rather than the later Commonwealth path.",
+    "body": "France would lose the Russian counterweight to Germany, while Britain and Japan would confront a much larger Eurasian bloc. German officers and troops could reinforce the new ruler in Russia, reducing his dependence on Russian elites and making revolution less likely. Control of both shores would turn the Baltic into a German-Russian lake, and Russian ambitions toward Constantinople would gain German infrastructure and industrial support. The union would need years to integrate, but rivals would hesitate to start a preventive war against it. Hostile Habsburg treatment of an heir's family might even let Wilhelm claim the Austro-Hungarian dual monarchy and enlarge the bloc again. Poland would sit inside the combined empire with little chance of independence. Dr. Clarke also suggests that the threat could push Britain toward deeper imperial cost sharing and perhaps a federated empire rather than the later Commonwealth path.",
     "topics": [
       {
         "slug": "alternate-history",
@@ -38443,6 +40220,14 @@
       {
         "slug": "british-empire",
         "title": "British Empire"
+      },
+      {
+        "slug": "austro-hungarian-empire",
+        "title": "Austro Hungarian Empire"
+      },
+      {
+        "slug": "poland",
+        "title": "Poland"
       }
     ],
     "evidence": [

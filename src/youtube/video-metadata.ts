@@ -409,7 +409,7 @@ export async function fetchAndStoreVideoMetadata(options: FetchVideoMetadataOpti
 
   for (let index = 0; index < pendingIds.length; index += options.batchSize) {
     const batch = pendingIds.slice(index, index + options.batchSize);
-    await gate(`videos.list ${index + 1}-${index + batch.length}/${pendingIds.length}`);
+    await gate(`videos.list full metadata ${index + 1}-${index + batch.length}/${pendingIds.length}`);
     const response = await youtube.videos.list({
       part: [...defaultVideoMetadataParts],
       id: batch,

@@ -182,4 +182,19 @@ test("build repair audits steady-state policy and delegates semantic and site im
   assert.match(guidance, /\$naval-site-content-auditor/iu);
   assert.match(guidance, /\$naval-video-page-prototype/iu);
   assert.match(guidance, /steady-state policy compliance/iu);
+  assert.match(
+    guidance,
+    /do not run `npm run site:build`[^.]{0,300}unless the user explicitly/iu,
+    "the build-repair skill must keep full site builds opt-in",
+  );
+  assert.match(
+    guidance,
+    /pasted `site:build` log[^.]{0,120}not authorization/iu,
+    "a pasted failure log must not authorize an expensive full build",
+  );
+  assert.match(
+    guidance,
+    /if the user explicitly authorizes a full site build/iu,
+    "the skill must retain an explicit-permission path for full validation",
+  );
 });

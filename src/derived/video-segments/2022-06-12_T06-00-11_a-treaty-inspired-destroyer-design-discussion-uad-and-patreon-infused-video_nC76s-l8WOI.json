@@ -8,7 +8,8 @@
     "royal-navy",
     "damage-control",
     "standard-displacement",
-    "naval-gunnery"
+    "naval-gunnery",
+    "ship-survivability"
   ],
   "segments": [
     {
@@ -18,18 +19,15 @@
       "title": "What do four destroyer tonnage briefs reveal?",
       "kind": "qa",
       "start": "1:50",
-      "end": "29:55",
+      "end": "3:03",
       "topics": ["destroyers", "ship-design", "naval-treaties", "ultimate-admiral-dreadnoughts", "standard-displacement"],
       "summary": "A Patreon design prompt reveals why treaty standard displacement cannot be treated as a destroyer's complete seagoing weight.",
       "question": "What would 1,500-, 1,750-, 2,250-, and 2,500-ton gun destroyers look like, and how would their design choices compare with historical examples?",
-      "answerShort": "Once standard displacement is translated into operational weight, the smallest briefs cannot carry a credible 1940 gun-destroyer fit, while larger hulls ease but do not eliminate the tradeoffs.",
-      "body": "A Patreon prompt asks Dr. Clarke to compare gun destroyers nominally limited to 1,500, 1,750, 2,250, and 2,500 tons. He treats those figures as standard displacement and adds roughly one-third for fuel, stores, and other operating loads. The 1,500-ton brief cannot combine credible machinery, guns, and torpedoes even after capability is cut, while the 1,750-ton version remains constrained by arrangement and combat systems. Around 2,000 tons standard, a larger hull can balance a strong gun battery, one quintuple torpedo launcher, light weapons, and modest protection. The in-game hull limit prevents him from representing the full-load weights implied by the 2,250- and 2,500-ton briefs. The exercise shows that a treaty number is only the starting point for understanding a destroyer's real design envelope.",
+      "answerShort": "He treats the figures as standard displacement and first adds the fuel, stores, and other operating loads needed to approximate a ship ready for service.",
+      "body": "A Patreon prompt asks Dr. Clarke to compare gun destroyers nominally limited to 1,500, 1,750, 2,250, and 2,500 tons. He first decides how to interpret those numbers instead of treating them as ready-to-sail weights. He assumes standard displacement, then adds operating loads such as fuel before choosing a hull. The rest of the exercise uses that conversion to expose why nominal treaty tonnage cannot be mapped directly onto a fighting destroyer.",
       "sourcePath": "src/transcripts/txt/2022-06-12_T06-00-11_a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video_nC76s-l8WOI.txt",
       "evidence": [
-        {"start": "1:50", "end": "3:03", "note": "The transcript states the Patreon prompt and explains the standard-displacement assumption."},
-        {"start": "8:56", "end": "10:30", "note": "The smallest brief remains under the weight required for a credible gun-destroyer fit even after capability reductions."},
-        {"start": "13:18", "end": "18:12", "note": "The 1,750-ton brief gains hull volume but remains constrained by torpedo arrangement, firing arcs, sensors, and weight."},
-        {"start": "21:49", "end": "29:55", "note": "The larger design becomes workable, while the two highest standard-displacement briefs exceed the available hull limit after operational weight is added."}
+        {"start": "1:50", "end": "3:03", "note": "The transcript states the Patreon prompt, identifies the four tonnage briefs, and explains the standard-displacement assumption."}
       ]
     },
     {
@@ -92,29 +90,43 @@
       "id": "gun-layout-topweight-and-balance",
       "videoId": "nC76s-l8WOI",
       "slug": "gun-layout-topweight-and-balance",
-      "title": "Gun layout creates topweight and balance penalties",
+      "title": "Gun layout creates forward-weight and stability penalties",
       "kind": "notable_point",
       "start": "18:17",
-      "end": "21:40",
+      "end": "19:20",
       "topics": ["naval-gunnery", "ship-stability", "destroyers", "torpedoes", "ship-design"],
       "summary": "Good firing arcs place guns high and forward, while torpedo mountings sit lower and impose a different arrangement problem.",
-      "body": "Gun destroyers are harder to balance than torpedo-centered designs because their weapons need broad arcs and often superfiring positions. Torpedo launchers sit low on the hull, whereas gun positions and their supporting structures impose weight higher up and may crowd the bow. Concentrating guns forward produces an undesirable weight distribution even after machinery is shifted aft. Dr. Clarke connects balance directly to high-speed maneuvering, which both gun and torpedo destroyers need to close the enemy and bring weapons to bear.",
+      "body": "On the 1,750-ton design, the guns and superstructure force too much weight forward even after machinery has shifted aft. Gun destroyers face this problem more often than torpedo-led ships because their guns need elevated positions and good arcs. Torpedo launchers sit lower and closer to the hull, while superfiring guns push weight upward and toward the bow. The moment illustrates how weapons arrangement can make an apparently acceptable displacement unusable by upsetting trim and stability.",
       "sourcePath": "src/transcripts/txt/2022-06-12_T06-00-11_a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video_nC76s-l8WOI.txt",
-      "evidence": [{"start": "18:17", "end": "21:40", "note": "The transcript contrasts gun and torpedo installation demands and explains why balance matters to maneuver."}]
+      "evidence": [{"start": "18:17", "end": "19:20", "note": "The transcript identifies excessive forward weight and contrasts the placement demands of gun and torpedo armament."}]
     },
     {
       "id": "torpedo-reloads-expose-treaty-accounting-gap",
       "videoId": "nC76s-l8WOI",
       "slug": "torpedo-reloads-expose-treaty-accounting-gap",
-      "title": "Torpedo reloads expose a treaty-accounting gap",
+      "title": "Concealed torpedo reloads undermine declared tonnage",
       "kind": "notable_point",
       "start": "19:20",
       "end": "20:03",
-      "topics": ["torpedo-reloads", "naval-treaties", "standard-displacement", "torpedoes", "destroyers"],
-      "summary": "Reload torpedoes could sit outside standard displacement even though their real weight and handling systems still burdened the ship.",
-      "body": "The treaty definition allowed reload torpedoes to sit outside standard displacement even though the ship still had to carry their real weight at sea. Dr. Clarke notes that a navy could exploit this by fitting reloads and their associated systems while understating the total burden. That accounting choice helps explain why a destroyer's operational displacement could exceed the figure used to judge compliance. It also sharpens the design lesson: nominal tonnage limits cannot be evaluated without knowing which weapons, stores, and systems the rules excluded.",
+      "topics": ["torpedo-reloads", "naval-treaties", "standard-displacement", "treaty-compliance", "torpedoes", "destroyers"],
+      "summary": "Fitting reload torpedoes and their associated systems beyond the declared allowance turns standard-displacement compliance into a credibility problem.",
+      "body": "The transcript treats extra torpedo reloads as something a designer or navy could conceal, not as free equipment. Reloads and their associated systems still add real seagoing weight even if the declared figure ignores them. Carrying them therefore widens the gap between the ship presented on paper and the ship that sails. The example reinforces the broader lesson that standard-displacement numbers require scrutiny of what was actually installed.",
       "sourcePath": "src/transcripts/txt/2022-06-12_T06-00-11_a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video_nC76s-l8WOI.txt",
-      "evidence": [{"start": "19:20", "end": "20:03", "note": "The transcript says reload torpedoes were excluded from standard displacement and discusses hiding reload systems within declared tonnage."}]
+      "evidence": [{"start": "19:20", "end": "20:03", "note": "The transcript describes fitting reloads and their systems while concealing the resulting increase in overall tonnage."}]
+    },
+    {
+      "id": "high-speed-manoeuvre-requires-balanced-destroyers",
+      "videoId": "nC76s-l8WOI",
+      "slug": "high-speed-manoeuvre-requires-balanced-destroyers",
+      "title": "High-speed manoeuvre requires a balanced destroyer",
+      "kind": "notable_point",
+      "start": "20:17",
+      "end": "21:40",
+      "topics": ["destroyers", "ship-stability", "naval-manoeuvre", "destroyer-tactics", "torpedo-tactics"],
+      "summary": "Forward weight and restricted firing arcs matter because destroyers must turn hard at speed to bring guns or torpedoes onto useful attack geometry.",
+      "body": "Dr. Clarke rejects the heavily bow-loaded arrangement even though its machinery is already as far aft as possible. A destroyer must remain balanced because it has to manoeuvre rapidly at high speed, not merely make a high straight-line speed. Gun destroyers need that agility to bring their battery onto a target, while torpedo destroyers need it to close and improve the chance of a hit. The passage connects weight distribution to tactics, showing why an armed hull that meets a tonnage figure can still be a poor fighting design.",
+      "sourcePath": "src/transcripts/txt/2022-06-12_T06-00-11_a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video_nC76s-l8WOI.txt",
+      "evidence": [{"start": "20:17", "end": "21:40", "note": "The transcript connects forward weight, firing arcs, high-speed manoeuvre, and the attack geometry needed by gun and torpedo destroyers."}]
     },
     {
       "id": "two-thousand-ton-gun-destroyer-balance",
@@ -131,18 +143,32 @@
       "evidence": [{"start": "21:49", "end": "29:55", "note": "The transcript develops the larger design through propulsion, torpedo, gun, ammunition, armor, and stability choices."}]
     },
     {
+      "id": "fuse-keeping-clock-multiplies-destroyer-firepower",
+      "videoId": "nC76s-l8WOI",
+      "slug": "fuse-keeping-clock-multiplies-destroyer-firepower",
+      "title": "The fuse-keeping clock multiplies destroyer firepower",
+      "kind": "notable_point",
+      "start": "30:46",
+      "end": "31:21",
+      "topics": ["destroyers", "fire-control", "fuse-keeping-clock", "tribal-class-destroyers", "naval-gunnery"],
+      "summary": "Tribal-class fire-control equipment lets a small ship engage with accuracy out of proportion to its size.",
+      "body": "The destroyer design discussion turns from raw armament to the quality of its fire-control system. Dr. Clarke identifies the fuse-keeping clock introduced in the Tribal class as a particularly powerful tool. Its value lies in making a small ship much more accurate and therefore more effective against its targets. This watch point shows why weapon count alone cannot measure a destroyer's fighting power.",
+      "sourcePath": "src/transcripts/txt/2022-06-12_T06-00-11_a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video_nC76s-l8WOI.txt",
+      "evidence": [{"start": "30:46", "end": "31:21", "note": "The transcript identifies the Tribal-class fuse-keeping clock and explains the accuracy it gives a small warship."}]
+    },
+    {
       "id": "destroyer-design-is-navy-specific",
       "videoId": "nC76s-l8WOI",
       "slug": "destroyer-design-is-navy-specific",
       "title": "Destroyer balance depends on the navy's mission",
       "kind": "notable_point",
-      "start": "30:43",
+      "start": "31:43",
       "end": "32:30",
       "topics": ["destroyers", "royal-navy", "force-structure", "fire-control", "dido-class-cruisers"],
-      "summary": "Firepower, speed, stability, fire control, and fleet role produce different answers for different navies.",
-      "body": "A destroyer is presented as a balance among firepower, speed, maneuverability, and stability rather than a universal recipe. Fire-control equipment such as the fuse-keeping clock can make a small ship unusually accurate and effective for its size. The desired balance still follows national requirements rather than a single optimal formula. For the Royal Navy, Dr. Clarke emphasizes a gun destroyer able to take on some cruiser-like work, comparing the ten-gun, five-turret concept to a destroyer-sized Dido.",
+      "summary": "The Royal Navy's desired gun destroyer could undertake some light-cruiser work, but another navy's mission would produce a different balance.",
+      "body": "Dr. Clarke stresses that the preferred compromise between guns, torpedoes, speed, and stability depends on the navy and mission. The Royal Navy's gun destroyer is expected to cover some duties otherwise assigned to light cruisers. In the game, ten 5-inch guns in five twin mounts create an intentionally gun-heavy answer to that requirement. He likens it to a destroyer-sized Dido, making the design a force-structure choice rather than a universal optimum.",
       "sourcePath": "src/transcripts/txt/2022-06-12_T06-00-11_a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video_nC76s-l8WOI.txt",
-      "evidence": [{"start": "30:43", "end": "32:30", "note": "The transcript explains the balancing act, the fuse-keeping clock, and the Royal Navy's cruiser-role expectation."}]
+      "evidence": [{"start": "31:43", "end": "32:30", "note": "The transcript explains why national requirements produce different balances and compares the Royal Navy design with a destroyer-sized Dido."}]
     },
     {
       "id": "engine-spaces-destroyer-achilles-heel",
@@ -165,12 +191,12 @@
       "title": "Subdivision blurs the destroyer-cruiser boundary",
       "kind": "notable_point",
       "start": "37:25",
-      "end": "40:22",
+      "end": "39:17",
       "topics": ["damage-control", "watertight-subdivision", "destroyers", "light-cruisers", "ship-design"],
       "summary": "Adding compartments and longitudinal bulkheads improves survival but demands the space and machinery efficiency of a larger hull.",
       "body": "Subdivision is identified as the best protection against sinking, yet small destroyers lack the volume to add it freely. More compartments restrict the spread of flooding, but every additional bulkhead and rearranged space carries structural and machinery consequences. Designers must ask whether engines and boilers can be organized around longitudinal bulkheads without losing the horsepower per ton needed for destroyer speed. As survivability measures accumulate, the destroyer begins to acquire cruiser-like size and internal structure, making the boundary between the two types increasingly porous.",
       "sourcePath": "src/transcripts/txt/2022-06-12_T06-00-11_a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video_nC76s-l8WOI.txt",
-      "evidence": [{"start": "37:25", "end": "40:22", "note": "The transcript explains subdivision, longitudinal bulkheads, machinery arrangement, and the porous boundary with small cruisers."}]
+      "evidence": [{"start": "37:25", "end": "39:17", "note": "The transcript explains subdivision, longitudinal bulkheads, machinery arrangement, and the porous boundary with small cruisers."}]
     },
     {
       "id": "gun-mounts-impose-hidden-structural-costs",
@@ -179,12 +205,26 @@
       "title": "Gun mounts impose hidden structural costs",
       "kind": "notable_point",
       "start": "39:17",
-      "end": "41:43",
+      "end": "40:22",
       "topics": ["naval-gunnery", "ship-structure", "destroyers", "torpedoes", "ship-survivability"],
       "summary": "Guns demand deck penetration, ammunition handling, foundations, and topweight that torpedo launchers largely avoid.",
-      "body": "Torpedo launchers sit on deck without the same below-deck path required by many gun installations, and their reloads need not sit directly beneath the mount. Larger twin or triple gun mounts may pierce the deck and bring ammunition-handling arrangements, foundations, and structural reinforcement. Those hidden requirements drive displacement upward even before armor or additional subdivision is considered. Because a destroyer cannot protect itself against equivalent gunfire without becoming much heavier, its survivability still rests heavily on speed, maneuver, and avoiding vital hits.",
+      "body": "Torpedo launchers can sit on deck without the same below-deck path required by gun mounts. Their reloads do not have to sit directly beneath the launcher, giving designers more freedom over internal arrangement. Twin or triple gun mounts may pierce the deck and require ammunition handling, foundations, and structural reinforcement. Those hidden demands increase displacement before armour or extra subdivision enters the calculation.",
       "sourcePath": "src/transcripts/txt/2022-06-12_T06-00-11_a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video_nC76s-l8WOI.txt",
-      "evidence": [{"start": "39:17", "end": "41:43", "note": "The transcript contrasts torpedo and gun installations and describes the structural and protection penalties of larger mounts."}]
+      "evidence": [{"start": "39:17", "end": "40:22", "note": "The transcript contrasts torpedo and gun installations and identifies the internal and structural demands of larger gun mounts."}]
+    },
+    {
+      "id": "destroyers-survive-by-avoiding-vital-hits",
+      "videoId": "nC76s-l8WOI",
+      "slug": "destroyers-survive-by-avoiding-vital-hits",
+      "title": "Destroyers survive by avoiding vital hits",
+      "kind": "notable_point",
+      "start": "40:22",
+      "end": "41:43",
+      "topics": ["destroyers", "ship-survivability", "battlecruisers", "warship-armour", "damage-control"],
+      "summary": "Like a battlecruiser facing equivalent firepower, a destroyer cannot absorb the hits its own guns can deliver without becoming much heavier.",
+      "body": "Dr. Clarke compares the design problem with a battlecruiser that is not meant to trade equivalent-calibre hits at normal battle range. A destroyer likewise cannot be protected against destroyer-gun fire without giving up the lightness that supplies its speed and role. Non-vital hits may be survivable, but a shell reaching machinery or another critical space can be decisive. Armour, subdivision, and the supports for larger mounts all drive weight sharply upward, so survival depends heavily on not being hit where it matters.",
+      "sourcePath": "src/transcripts/txt/2022-06-12_T06-00-11_a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video_nC76s-l8WOI.txt",
+      "evidence": [{"start": "40:22", "end": "41:43", "note": "The transcript compares destroyer and battlecruiser protection logic and explains why armour, subdivision, and larger gun supports rapidly increase weight."}]
     },
     {
       "id": "no-treaty-two-tier-destroyer-fleet",
@@ -193,12 +233,12 @@
       "title": "Without treaties, a two-tier destroyer fleet emerges",
       "kind": "chapter",
       "start": "41:51",
-      "end": "47:24",
+      "end": "44:44",
       "topics": ["naval-treaties", "destroyers", "alternate-history", "fleet-leaders", "light-cruisers", "daring-class-destroyers"],
       "summary": "A classroom counterfactual produces mass torpedo destroyers and much larger gun-armed leaders that displace light cruisers.",
-      "body": "Dr. Clarke describes an exercise in which naval treaties fail and very light cruiser types disappear. One tier consists of fast, roughly 2,000-ton mass-produced torpedo destroyers carrying only the guns needed for their basic work. The other reaches about 3,500 tons, commonly with nine guns, two quintuple torpedo launchers, and improved subdivision. These larger ships serve as gun destroyers and leaders, killing enemy destroyers while covering light-cruiser duties. Their arrival weakens the case for retaining older C-class cruisers and can alter the requirements that historically produced the Dido class.",
+      "body": "Dr. Clarke describes a classroom exercise in which naval limitation treaties fail and very light cruiser types disappear. One tier consists of fast, roughly 2,000-ton full-load torpedo destroyers carrying only the guns needed for their basic work. The other reaches about 3,500 tons full load, commonly with nine guns in triple mounts and two quintuple torpedo launchers. Resembling enlarged Darings, the larger ships use their extra volume for internal protection as well as weapons. The counterfactual shows how removing treaty ceilings could separate mass-produced torpedo craft from much more capable gun destroyers.",
       "sourcePath": "src/transcripts/txt/2022-06-12_T06-00-11_a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video_nC76s-l8WOI.txt",
-      "evidence": [{"start": "41:51", "end": "47:24", "note": "The transcript lays out the no-treaty exercise, its two destroyer tiers, their armament and subdivision, and the effect on cruiser roles."}]
+      "evidence": [{"start": "41:51", "end": "44:44", "note": "The transcript lays out the no-treaty exercise, its two destroyer tiers, and their contrasting displacement and armament."}]
     },
     {
       "id": "longitudinal-bulkhead-flooding-tradeoff",
@@ -215,6 +255,20 @@
       "evidence": [{"start": "44:44", "end": "46:19", "note": "The transcript explains how centerline and deck subdivision reinforce the ship, confine torpedo flooding, preserve buoyancy and machinery, and support damage control."}]
     },
     {
+      "id": "large-destroyers-displace-light-cruiser-roles",
+      "videoId": "nC76s-l8WOI",
+      "slug": "large-destroyers-displace-light-cruiser-roles",
+      "title": "Large destroyers displace light-cruiser roles",
+      "kind": "notable_point",
+      "start": "46:24",
+      "end": "47:24",
+      "topics": ["destroyers", "fleet-leaders", "force-structure", "light-cruisers", "c-class-cruisers", "dido-class-cruisers", "naval-personnel"],
+      "summary": "A two-tier destroyer force uses large gun leaders to kill enemy destroyers and absorb duties that otherwise justify small cruisers.",
+      "body": "The counterfactual settles into two complementary types: a mass torpedo destroyer and a large gun destroyer. The gun ships kill opposing destroyers, lead the lighter flotillas, and cover duties otherwise assigned to light cruisers. That change weakens the case for retaining elderly C-class cruisers and affects the requirement that historically produced the Dido class. Crew can then be reassigned elsewhere, demonstrating how a new ship type reshapes force structure as well as individual designs.",
+      "sourcePath": "src/transcripts/txt/2022-06-12_T06-00-11_a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video_nC76s-l8WOI.txt",
+      "evidence": [{"start": "46:24", "end": "47:24", "note": "The transcript assigns large gun destroyers leader and light-cruiser duties, then traces the consequences for C-class retention, Dido requirements, and crew use."}]
+    },
+    {
       "id": "museum-visits-build-public-support",
       "videoId": "nC76s-l8WOI",
       "slug": "museum-visits-build-public-support",
@@ -222,7 +276,7 @@
       "kind": "notable_point",
       "start": "50:17",
       "end": "53:03",
-      "topics": ["museum-ships", "naval-heritage", "hmcs-haida", "hmcs-sackville", "the-sullivans"],
+      "topics": ["museum-ships", "naval-heritage", "public-history", "heritage-funding", "hmcs-haida", "hmcs-sackville", "the-sullivans", "royal-canadian-navy", "naval-reserves"],
       "summary": "Sharing visits to museum ships can increase attendance and show public funders that naval heritage attracts sustained interest.",
       "body": "The closing appeal argues that online attention and in-person visits materially help preserved ships. Dr. Clarke highlights HMCS Haida, HMCS Sackville, and The Sullivans, stressing the work of veterans, reservists, and parks staff. He singles out Haida as the last surviving Tribal-class destroyer and connects preservation to the public's willingness to visit and talk about the ship. Publicly sharing museum visits functions as both promotion and visible evidence to governments that these sites attract interest and merit funding.",
       "sourcePath": "src/transcripts/txt/2022-06-12_T06-00-11_a-treaty-inspired-destroyer-design-discussion-uad-and-patreon-infused-video_nC76s-l8WOI.txt",

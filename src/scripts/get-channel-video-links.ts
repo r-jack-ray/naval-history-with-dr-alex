@@ -10,6 +10,10 @@ import {
   type ChannelInventoryCompleteness,
   type FetchChannelVideoLinksOptions,
 } from "../youtube/channel-video-links.js";
+import {
+  defaultVideoMetadataOutput,
+  fetchAndStoreVideoMetadata,
+} from "../youtube/video-metadata.js";
 import { resolveYoutubeApiKey } from "./youtube-api-key-file.js";
 
 type CliOptions = FetchChannelVideoLinksOptions & {
@@ -64,6 +68,21 @@ async function main(): Promise<void> {
       completeness: options.inventoryCompleteness,
     });
     console.error(`Wrote ${result.links.length} episodes to ${options.masterOutput}`);
+
+    if (apiKey !== undefined) {
+      console.error(`Synchronizing missing or due full metadata records into ${defaultVideoMetadataOutput}`);
+      const metadata = await fetchAndStoreVideoMetadata({
+        apiKey,
+        inputPath: options.masterOutput,
+        outputPath: defaultVideoMetadataOutput,
+        requestDelayMs: options.requestDelayMs,
+        batchSize: 50,
+        ...(!options.quiet ? { logger: (message: string) => console.error(message) } : {}),
+      });
+      console.error(
+        `Stored metadata for ${metadata.stats.storedVideoCount}/${metadata.stats.inputVideoCount} videos in ${defaultVideoMetadataOutput}`,
+      );
+    }
     return;
   }
 

@@ -929,9 +929,14 @@ async function enrichOfficialVideoBatch(
 
   for (let index = 0; index < links.length; index += 50) {
     const batch = links.slice(index, index + 50);
-    const detailLabel = includeVideoDetails ? "exact video metadata" : "video durations";
+    const detailLabel = includeVideoDetails
+      ? "full video metadata"
+      : "video duration/status eligibility";
     logger?.(`Fetching ${detailLabel} ${index + 1}-${index + batch.length}/${links.length}`);
-    await gate(`videos.list metadata batch ${Math.floor(index / 50) + 1}`);
+    const requestLabel = includeVideoDetails
+      ? "videos.list full metadata batch"
+      : "videos.list duration/status eligibility batch";
+    await gate(`${requestLabel} ${Math.floor(index / 50) + 1}`);
     const response = await youtube.videos.list({
       part: includeVideoDetails
         ? ["snippet", "contentDetails", "statistics", "status", "liveStreamingDetails"]
