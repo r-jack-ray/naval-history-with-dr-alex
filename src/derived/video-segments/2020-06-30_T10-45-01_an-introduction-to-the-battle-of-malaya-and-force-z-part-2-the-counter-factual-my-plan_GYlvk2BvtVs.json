@@ -6,7 +6,9 @@
     "force-z",
     "alternate-history",
     "malayan-campaign",
-    "royal-navy"
+    "royal-navy",
+    "joint-operations",
+    "military-logistics"
   ],
   "needsFurtherProcessing": false,
   "segments": [
@@ -18,11 +20,16 @@
       "kind": "chapter",
       "start": "0:03",
       "end": "3:32",
-      "topics": ["battle-of-malaya", "force-z", "alternate-history", "far-east-command"],
+      "topics": ["battle-of-malaya", "force-z", "alternate-history", "far-east-command", "historical-method"],
       "summary": "The counterfactual begins in April 1941 with the existing forces only, no foreknowledge of Japan's attack, and a mission to prevent Singapore's fall.",
-      "body": "Dr. Clarke frames the exercise as a command problem rather than a chance to import better ships or divisions. The new commander may move available personnel and forces, but must work with the theatre's historical starting strength. Planning also proceeds under the uncertainty contemporary leaders faced, without knowing where Japan will attack. The scenario stops in February 1942 because a different outcome at Singapore would change the subsequent campaign.",
+      "body": "Dr. Clarke presents writing a war plan as a way to expose gaps in the underlying research before he lays down the scenario rules. The new supreme commander arrives on 1 April 1941 and may move existing personnel and formations within the Far East. The exercise does not permit importing better ships, extra divisions, or forces that were not historically available to the theatre. Planning proceeds under the uncertainty contemporary leaders faced, without advance knowledge of where Japan will attack. The simulation ends on 28 February 1942 because a different outcome at Singapore would alter the campaigns that followed. The watch point establishes a constrained command problem rather than a hindsight-driven search for an ideal order of battle.",
       "sourcePath": "src/transcripts/txt/2020-06-30_T10-45-01_an-introduction-to-the-battle-of-malaya-and-force-z-part-2-the-counter-factual-my-plan_GYlvk2BvtVs.txt",
       "evidence": [
+        {
+          "start": "0:29",
+          "end": "0:49",
+          "note": "The speaker explains that constructing a war plan can reveal gaps in the supporting research."
+        },
         {
           "start": "1:15",
           "end": "3:32",
@@ -40,7 +47,7 @@
       "end": "8:45",
       "topics": ["roger-keyes", "far-east-command", "royal-navy", "coalition-warfare"],
       "summary": "Roger Keyes is presented as a politically credible, energetic naval commander able to coordinate British, Australian, Dutch, and American interests.",
-      "body": "The episode compares Keyes with Percy Noble and Andrew Cunningham, who are tied to vital Atlantic and Mediterranean responsibilities. It also explains why the army and RAF cannot easily supply a comparably prominent coalition commander from their limited Far Eastern establishments. Keyes's standing with Churchill and Curtin, combined-operations experience, and willingness to take decisive action make him the proposed supreme commander. His scheduled replacement at Combined Operations by Louis Mountbatten makes an April 1941 transfer more plausible. The appointment would also advertise British commitment to the region while giving the command an officer accustomed to working with allied governments and several services.",
+      "body": "The episode first rules out Percy Noble because he is occupied with Atlantic preparations and Andrew Cunningham because he is fighting in the Mediterranean. It also explains that the army's strongest officers and formations are needed in North Africa and Britain, while the small Far East RAF establishment lacks a similarly prominent candidate. Keyes combines parliamentary experience, personal access to Churchill, Curtin's trust, and Combined Operations work across several services. His proposal to seize Trondheim with old battleships illustrates his appetite for direct solutions, while his later proximity to a bombed American landing ship reinforces the picture of an officer who stayed close to combat. That forceful temperament and his relationships with allied governments make him the proposed supreme commander. His scheduled replacement at Combined Operations by Louis Mountbatten makes an April 1941 transfer more plausible. Sending an admiral of the fleet would also advertise British commitment to a region whose partners doubted how seriously London took its defence.",
       "sourcePath": "src/transcripts/txt/2020-06-30_T10-45-01_an-introduction-to-the-battle-of-malaya-and-force-z-part-2-the-counter-factual-my-plan_GYlvk2BvtVs.txt",
       "evidence": [
         {
@@ -57,16 +64,16 @@
       "title": "A unified Far East defence posture",
       "kind": "chapter",
       "start": "9:11",
-      "end": "12:41",
-      "topics": ["malayan-campaign", "force-structure", "jungle-warfare", "naval-strategy"],
-      "summary": "The proposed command concentrates training, air power, and the most important defensive assets around Singapore while assigning naval forces distinct missions.",
-      "body": "The plan calls for jungle-warfare and artillery-control training, a coherent land defence, and naval dispositions that cover approaches rather than simply waiting at Singapore. Modern cruisers and submarines would protect key routes, while convoy escorts and sloops could help lay defensive minefields. Aircraft and heavy land units are concentrated where their stores, command arrangements, and support weapons can be protected. A senior commander is intended to break down the service-level compartmentalization that limited the historical defence. The watch point is useful for seeing the proposal as one joint campaign design rather than a collection of separate army, navy, and air measures.",
+      "end": "10:03",
+      "topics": ["malayan-campaign", "joint-operations", "jungle-warfare", "mine-warfare", "air-power", "unified-command"],
+      "summary": "The initial disposition combines jungle training, a concentrated air group, a prepared land defence, and distinct naval missions under one Far East command.",
+      "body": "The initial scheme orders as much jungle-warfare and artillery-control training as the available forces can absorb. Modern cruisers and submarines operate from Singapore, while the capital ships and Indian Ocean convoy escorts are directed toward a Ceylon concentration. Sloops continue routine escort work and can also seed defensive minefields on the approaches. Aircraft, stores, and the heaviest land equipment are drawn toward positions where they can be protected and controlled. This overview turns the army, navy, and air measures into one joint disposition before the episode examines each part in detail.",
       "sourcePath": "src/transcripts/txt/2020-06-30_T10-45-01_an-introduction-to-the-battle-of-malaya-and-force-z-part-2-the-counter-factual-my-plan_GYlvk2BvtVs.txt",
       "evidence": [
         {
           "start": "9:11",
-          "end": "12:41",
-          "note": "The speaker lays out the initial land, naval, and air dispositions and the need for unified command."
+          "end": "10:03",
+          "note": "The speaker lays out the initial training, land, naval, and air dispositions."
         }
       ]
     },
@@ -74,19 +81,39 @@
       "id": "deception-infrastructure-and-political-command",
       "videoId": "GYlvk2BvtVs",
       "slug": "deception-infrastructure-and-political-command",
-      "title": "Conceal the plan and build defensible lines",
+      "title": "Conceal the plan behind cover schemes and road work",
       "kind": "notable_point",
       "start": "10:13",
-      "end": "12:41",
-      "topics": ["military-deception", "fortifications", "civil-military-relations", "malayan-campaign"],
-      "summary": "Keyes's proposed command uses cover plans, seemingly routine infrastructure work, and political influence to make a limited defence workable.",
-      "body": "Dr. Clarke argues that Japanese intelligence should face multiple plausible British plans, drawing on Keyes's experience with cover operations. Road building and other works can be presented as ordinary wartime infrastructure while creating fortified positions across Malaya and Johore. The deception would conceal which of several plans is real rather than trying to hide every military preparation. The commander also needs to manage London and local politics, so subordinate commanders can focus on the forces and ground they can actually defend. This joins intelligence security, civil engineering, and political authority into the same defensive problem.",
+      "end": "11:26",
+      "topics": ["military-deception", "fortifications", "military-engineering", "roads", "malayan-campaign"],
+      "summary": "Keyes's proposed command hides the real defence among several plausible schemes and presents fortified road construction as routine wartime infrastructure.",
+      "body": "Dr. Clarke expects Japanese intelligence to look for British preparations, so the answer is to create several credible plans rather than hope every movement remains secret. Keyes's use of alternative cover schemes around Operation Claymore provides the model for making the same units appear connected to different operations. Road building and other works can be presented as ordinary wartime infrastructure while creating fortified positions across Malaya and Johore. The deception depends on an observer finding several believable possibilities without knowing which one will be executed. Civil engineering therefore serves both as a cover story and as the physical basis of the proposed defensive lines.",
       "sourcePath": "src/transcripts/txt/2020-06-30_T10-45-01_an-introduction-to-the-battle-of-malaya-and-force-z-part-2-the-counter-factual-my-plan_GYlvk2BvtVs.txt",
       "evidence": [
         {
           "start": "10:13",
+          "end": "11:26",
+          "note": "The transcript links Keyes's cover operations with road building and fortified positions across Malaya and Johore."
+        }
+      ]
+    },
+    {
+      "id": "unified-command-and-managing-up",
+      "videoId": "GYlvk2BvtVs",
+      "slug": "unified-command-and-managing-up",
+      "title": "Give subordinates political cover to defend what they can",
+      "kind": "notable_point",
+      "start": "11:33",
+      "end": "12:41",
+      "topics": ["unified-command", "civil-military-relations", "roger-keyes", "arthur-percival", "tom-phillips"],
+      "summary": "A politically experienced supreme commander could manage London while letting Percival, Phillips, and the RAF commander solve one joint campaign instead of separate service tasks.",
+      "body": "The Far East commander must spend time managing communications with London as well as directing operations in theatre. Keyes's parliamentary career and place in the House of Lords make him more credible when pushing back against political pressure. Percival needs authority to say that the available army cannot defend every part of Malaya, while Phillips needs permission to reject a station that exposes his ships to an unsuitable mission. Without a superior joint command, the army, navy, and RAF commanders can each follow their own service instructions in isolation. The proposal uses supreme command to shield those officers while converting their separate responsibilities into one defensible campaign.",
+      "sourcePath": "src/transcripts/txt/2020-06-30_T10-45-01_an-introduction-to-the-battle-of-malaya-and-force-z-part-2-the-counter-factual-my-plan_GYlvk2BvtVs.txt",
+      "evidence": [
+        {
+          "start": "11:33",
           "end": "12:41",
-          "note": "The transcript links cover operations, defensive-road construction, and managing higher command."
+          "note": "The speaker contrasts Keyes's ability to manage upward with the service-bound positions of Percival, Phillips, and the RAF commander."
         }
       ]
     },
@@ -98,7 +125,7 @@
       "kind": "notable_point",
       "start": "12:57",
       "end": "14:26",
-      "topics": ["malayan-campaign", "delaying-action", "gurkhas", "jungle-warfare"],
+      "topics": ["malayan-campaign", "delaying-action", "gurkhas", "jungle-warfare", "intelligence-gathering"],
       "summary": "A mobile Gurkha reserve and small beach-watch forces would identify the invasion axis while avoiding a ruinous attempt to hold every landing area.",
       "body": "The plan places the 28th Gurkha Infantry Brigade under direct command as a mobile reaction force rather than dispersing it. Independent companies and battalions watch likely landing beaches, identify the invasion axis, and offer only limited resistance. Their orders are to ambush, withdraw, and repeat the process instead of defending ground until they are outflanked. This approach seeks information and delay while denying the Japanese easy opportunities to surround isolated defenders. The northern campaign therefore becomes a controlled screen for the prepared position farther south.",
       "sourcePath": "src/transcripts/txt/2020-06-30_T10-45-01_an-introduction-to-the-battle-of-malaya-and-force-z-part-2-the-counter-factual-my-plan_GYlvk2BvtVs.txt",
@@ -117,16 +144,16 @@
       "title": "Build a prepared line across Malaya",
       "kind": "chapter",
       "start": "14:35",
-      "end": "17:14",
-      "topics": ["fortifications", "malayan-campaign", "australian-army", "indian-army"],
-      "summary": "Australian and Indian formations, artillery, anti-aircraft units, and engineers are concentrated around a defensible line instead of being consumed piecemeal in the north.",
-      "body": "The defensive line is assigned a dedicated corps commander and combines the Australian 8th Division, Indian 9th Division, the 11th Indian Division, artillery, and coastal and anti-aircraft units. Engineers, tanks, and artillery removed from the northern screen are concentrated here rather than risked in small detachments. Ivan Simson becomes the senior engineer responsible for creating substantial field works. Singapore remains important, but the proposal treats the mainland line as the place to impose a costly, organized fight on the invader. The concentration is meant to preserve command cohesion and heavy equipment before the decisive battle.",
+      "end": "15:24",
+      "topics": ["fortifications", "malayan-campaign", "australian-army", "indian-army", "military-engineering"],
+      "summary": "Australian and Indian formations, artillery, anti-aircraft units, and engineers are concentrated around a mainland line instead of being consumed piecemeal in the north.",
+      "body": "The main position receives a dedicated corps commander and combines the Australian 8th Division, Indian 9th Division, 11th Indian Division, and the line-of-communications brigade. Anti-aircraft regiments, coastal artillery, engineers, tanks, and other heavy support are concentrated there rather than risked in small northern detachments. Giving one commander responsibility for the position is intended to preserve cohesion across formations drawn from several armies. Ivan Simson becomes the senior engineer responsible to supreme command for building substantial field works. Singapore remains important, but this mainland line is where the plan intends to impose an organized battle on the invader.",
       "sourcePath": "src/transcripts/txt/2020-06-30_T10-45-01_an-introduction-to-the-battle-of-malaya-and-force-z-part-2-the-counter-factual-my-plan_GYlvk2BvtVs.txt",
       "evidence": [
         {
           "start": "14:35",
-          "end": "17:14",
-          "note": "The transcript lists the proposed line's formations, artillery, and engineering responsibility."
+          "end": "15:24",
+          "note": "The transcript lists the proposed line's formations, support units, command arrangement, and engineering responsibility."
         }
       ]
     },
@@ -134,19 +161,19 @@
       "id": "reinforce-singapore-with-depth",
       "videoId": "GYlvk2BvtVs",
       "slug": "reinforce-singapore-with-depth",
-      "title": "Use arriving troops to create depth at Singapore",
+      "title": "Use arriving troops to deepen the mainland line",
       "kind": "notable_point",
       "start": "15:32",
-      "end": "17:14",
-      "topics": ["singapore", "force-structure", "reserve-forces", "malayan-campaign"],
-      "summary": "January reinforcements would strengthen the mainland line while leaving several brigades at Singapore as a formed reserve against a flanking or amphibious move.",
-      "body": "The plan brings the 18th Infantry Division and the 44th and 45th Brigades into the defence, assigning the 18th Division forward while retaining several brigades at Singapore. The 28th Gurkha Brigade and two Indian brigades could form a reserve division able to reinforce the mainland line or meet an amphibious turning movement. This gives the supreme commander a formed reaction force instead of leaving every unit fixed to one locality. The aim is to avoid treating Singapore as either an empty rear area or a static fortress disconnected from the Malayan campaign.",
+      "end": "16:27",
+      "topics": ["singapore", "force-concentration", "malayan-campaign", "indian-army", "australian-army"],
+      "summary": "January reinforcements would put the 18th Infantry Division into the prepared position while retaining the arriving Indian brigades at Singapore.",
+      "body": "The plan assumes the historically scheduled January arrival of the 18th Infantry Division and the 44th and 45th Indian Infantry Brigades. The 18th Division moves forward to reinforce the prepared position alongside the Australian 8th, Indian 9th, and hopefully intact 11th Indian Divisions. The two Indian brigades remain at Singapore rather than being fed directly into the line. This allocation makes the mainland formation substantially stronger without stripping the island of troops against a bypass or amphibious move. Reinforcement is therefore used to deepen the existing design instead of starting a new northern defence.",
       "sourcePath": "src/transcripts/txt/2020-06-30_T10-45-01_an-introduction-to-the-battle-of-malaya-and-force-z-part-2-the-counter-factual-my-plan_GYlvk2BvtVs.txt",
       "evidence": [
         {
           "start": "15:32",
-          "end": "17:14",
-          "note": "The speaker allocates expected January reinforcements between the line and Singapore reserve."
+          "end": "16:27",
+          "note": "The speaker allocates the expected January reinforcements between the prepared mainland line and Singapore."
         }
       ]
     },
@@ -157,7 +184,7 @@
       "title": "Singapore's coastal guns still face an ammunition limit",
       "kind": "notable_point",
       "start": "16:29",
-      "end": "16:46",
+      "end": "16:47",
       "topics": ["singapore", "coastal-artillery", "ammunition", "amphibious-warfare"],
       "summary": "The counterfactual cannot simply turn Singapore's heavy coastal batteries into ideal land-defence weapons because high-explosive ammunition remains scarce.",
       "body": "Dr. Clarke keeps a material constraint that is often lost in counterfactual planning: Singapore's large coastal guns have much more armour-piercing ammunition than high explosive. A politically stronger supreme commander might obtain additional high-explosive rounds, but the plan cannot assume that request succeeds. The batteries would therefore remain best suited to punishing ships approaching an amphibious assault rather than providing unlimited fire against troops ashore. This watch point shows how ammunition type, not just gun calibre or emplacement, determines what a fortress weapon can accomplish.",
@@ -165,8 +192,28 @@
       "evidence": [
         {
           "start": "16:29",
-          "end": "16:46",
+          "end": "16:47",
           "note": "The transcript distinguishes scarce high-explosive ammunition from plentiful armour-piercing rounds for Singapore's heavy batteries."
+        }
+      ]
+    },
+    {
+      "id": "singapore-mobile-reserve-division",
+      "videoId": "GYlvk2BvtVs",
+      "slug": "singapore-mobile-reserve-division",
+      "title": "Form a mobile reserve division at Singapore",
+      "kind": "notable_point",
+      "start": "16:50",
+      "end": "17:14",
+      "topics": ["singapore", "reserve-forces", "gurkhas", "indian-army", "amphibious-warfare"],
+      "summary": "The Gurkha brigade and arriving Indian formations could be organized into a reserve division able to reinforce the line or oppose a move around it.",
+      "body": "Keyes keeps several brigades at Singapore rather than committing every available formation to the mainland position. The 28th Gurkha Brigade and arriving Indian formations could be organized into another division under direct command. That force can reinforce the prepared line or respond if the Japanese bypass it and attack Singapore. The proposal gives the theatre an operational reserve with its own structure instead of scattering spare brigades among static localities.",
+      "sourcePath": "src/transcripts/txt/2020-06-30_T10-45-01_an-introduction-to-the-battle-of-malaya-and-force-z-part-2-the-counter-factual-my-plan_GYlvk2BvtVs.txt",
+      "evidence": [
+        {
+          "start": "16:50",
+          "end": "17:14",
+          "note": "The speaker proposes grouping the Gurkha and Indian brigades into a reserve division for Singapore or the mainland line."
         }
       ]
     },
@@ -194,19 +241,39 @@
       "id": "ceylon-battle-fleet-and-cruiser-raiding",
       "videoId": "GYlvk2BvtVs",
       "slug": "ceylon-battle-fleet-and-cruiser-raiding",
-      "title": "Hold the battle fleet at Ceylon and raid behind the advance",
+      "title": "Concentrate the battle fleet and convoy escorts at Ceylon",
       "kind": "chapter",
       "start": "20:00",
-      "end": "22:06",
-      "topics": ["force-z", "ceylon", "cruiser-warfare", "commerce-raiding", "royal-navy"],
-      "summary": "The main British battle force waits at Ceylon while cruisers based from Singapore threaten Japanese communications instead of charging directly into the invasion force.",
-      "body": "The counterfactual places three battleships, a battlecruiser, light cruisers, and destroyers under a fleet concentration at Ceylon, with Tom Phillips commanding the force. Cruisers and destroyers employed on Indian Ocean convoy duty would assemble there once war with Japan begins, leaving the routine escorts to sloops. Heavy and modern light cruisers near Singapore would avoid a head-on charge, work around Japanese forces, and attack their communications from the rear. Dr. Clarke's premise is that this exploits Japanese weakness in convoy defence and forces the invader to search for dispersed surface raiders. The disposition also removes the immediate pressure on Phillips to sail Force Z against the first landing report.",
+      "end": "20:43",
+      "topics": ["force-z", "ceylon", "fleet-concentration", "convoy-escort", "tom-phillips", "royal-navy"],
+      "summary": "Tom Phillips's capital ships wait at Ceylon, where Indian Ocean cruisers and destroyers are ordered to assemble once war with Japan begins.",
+      "body": "Instead of leaving Phillips at Singapore, the counterfactual places three battleships, a battlecruiser, eight light cruisers, and eleven destroyers in a Ceylon concentration. Two R-class battleships strengthen the capital-ship force already available to him. Light cruisers and destroyers employed on Indian Ocean convoy duty have orders to assemble when war with Japan begins, leaving routine escort work to sloops. The arrangement prioritizes fleet mass over distributing major warships among peacetime tasks. It also removes the immediate pressure on Phillips to sail Force Z against the first report of a landing in Malaya.",
       "sourcePath": "src/transcripts/txt/2020-06-30_T10-45-01_an-introduction-to-the-battle-of-malaya-and-force-z-part-2-the-counter-factual-my-plan_GYlvk2BvtVs.txt",
       "evidence": [
         {
           "start": "20:00",
+          "end": "20:43",
+          "note": "The speaker assigns the battle fleet to Ceylon and orders convoy-escort cruisers and destroyers to concentrate there when war begins."
+        }
+      ]
+    },
+    {
+      "id": "south-china-sea-cruiser-raiders",
+      "videoId": "GYlvk2BvtVs",
+      "slug": "south-china-sea-cruiser-raiders",
+      "title": "Use cruisers as South China Sea surface raiders",
+      "kind": "notable_point",
+      "start": "20:49",
+      "end": "22:06",
+      "topics": ["cruiser-warfare", "commerce-raiding", "south-china-sea", "japanese-convoys", "naval-strategy"],
+      "summary": "Three heavy cruisers and a modern light cruiser would avoid the invasion force, move behind it, and attack Japanese communications.",
+      "body": "The cruisers operating from Singapore are not supposed to charge directly at the strongest Japanese formation. Three heavy cruisers and a modern light cruiser instead disperse through the South China Sea and try to reach the rear of the advance. With Japan's principal fleet attacking Pearl Harbor, local Japanese strength is expected to be concentrated around particular objectives rather than spread everywhere. Individual British surface raiders would force the invasion command to search for them and divert warships to protect its rear. Dr. Clarke presents weak Japanese convoy defence as the vulnerability that turns communications and supply shipping into more useful targets than the invasion fleet itself.",
+      "sourcePath": "src/transcripts/txt/2020-06-30_T10-45-01_an-introduction-to-the-battle-of-malaya-and-force-z-part-2-the-counter-factual-my-plan_GYlvk2BvtVs.txt",
+      "evidence": [
+        {
+          "start": "20:49",
           "end": "22:06",
-          "note": "The speaker assigns the battle fleet to Ceylon and explains the cruisers' rear-area raiding mission."
+          "note": "The speaker sends individual cruisers behind Japanese formations to raid communications while the main Japanese fleet is committed elsewhere."
         }
       ]
     },
@@ -214,19 +281,39 @@
       "id": "mines-submarines-and-a-delayed-fleet-commitment",
       "videoId": "GYlvk2BvtVs",
       "slug": "mines-submarines-and-a-delayed-fleet-commitment",
-      "title": "Use mines and submarines while delaying the fleet battle",
+      "title": "Layer mines and keep submarines at Singapore",
       "kind": "notable_point",
       "start": "22:06",
-      "end": "25:40",
-      "topics": ["mine-warfare", "submarines", "force-z", "naval-reserves"],
-      "summary": "Submarines, torpedo boats, and minefields defend Singapore while the major fleet is held back until reinforcements and perhaps carrier support arrive.",
-      "body": "The plan retains the submarines Otus and Proteus rather than allowing their scheduled departures, giving Singapore six submarines and six torpedo boats for local defence. Sloops begin laying minefields around the approaches months before Japan attacks. Keyes restrains the impulse to send the main fleet forward too early, buying time for another battleship, more destroyers, and possibly a carrier. A successful stand at Singapore might also make American and Commonwealth assistance more plausible, although the episode presents those gains as contingent rather than guaranteed. The central tradeoff is accepting pressure on the land defence so the naval reserve can become materially stronger before it intervenes.",
+      "end": "22:58",
+      "topics": ["mine-warfare", "submarines", "torpedo-boats", "singapore", "naval-base-defence"],
+      "summary": "Retaining Otus and Proteus and laying mines from April would give Singapore a local defence of six submarines, six torpedo boats, and obstructed approaches.",
+      "body": "Keyes uses the authority of supreme command to cancel the scheduled departures of the submarines Otus and Proteus. Their retention gives Singapore six submarines and six torpedo boats for local defence. Four sloops can spend the months from April laying substantial minefields around the approaches. Japanese ships coming directly to Singapore would therefore meet a layered threat from mines, submarines, and small torpedo craft. These forces provide local sea denial while the major surface fleet remains concentrated elsewhere.",
       "sourcePath": "src/transcripts/txt/2020-06-30_T10-45-01_an-introduction-to-the-battle-of-malaya-and-force-z-part-2-the-counter-factual-my-plan_GYlvk2BvtVs.txt",
       "evidence": [
         {
           "start": "22:06",
-          "end": "25:40",
-          "note": "The transcript retains submarines, describes defensive mining, and delays major fleet intervention for reinforcements."
+          "end": "22:58",
+          "note": "The transcript retains Otus and Proteus, counts the local submarines and torpedo boats, and describes defensive mining from April."
+        }
+      ]
+    },
+    {
+      "id": "hold-the-fleet-and-bargain-for-reinforcements",
+      "videoId": "GYlvk2BvtVs",
+      "slug": "hold-the-fleet-and-bargain-for-reinforcements",
+      "title": "Hold the fleet and bargain for reinforcements",
+      "kind": "notable_point",
+      "start": "23:03",
+      "end": "24:20",
+      "topics": ["naval-reserves", "naval-reinforcements", "aircraft-carriers", "coalition-warfare", "philippines", "force-z"],
+      "summary": "A controlled land withdrawal gives Keyes time to hold the Ceylon fleet until January and argue that defending Singapore also protects the Philippines and Australia.",
+      "body": "Because the army deliberately retires toward a prepared position, Keyes can restrain the navy's urge to answer the first crisis immediately. Holding the fleet at Ceylon until January could bring another battleship and possibly an aircraft carrier, with Formidable mentioned as a difficult but conceivable addition. A surviving Singapore base might persuade American and Commonwealth leaders that reinforcing the theatre also helps protect the Philippines and Australia. Dr. Clarke even imagines using that argument to ask MacArthur for spare brigades. Those reinforcements remain contingent, but the durable strategic point is that preserving the base creates time and coalition leverage that a premature fleet sortie would surrender.",
+      "sourcePath": "src/transcripts/txt/2020-06-30_T10-45-01_an-introduction-to-the-battle-of-malaya-and-force-z-part-2-the-counter-factual-my-plan_GYlvk2BvtVs.txt",
+      "evidence": [
+        {
+          "start": "23:03",
+          "end": "24:20",
+          "note": "The speaker delays the Ceylon fleet, considers carrier and allied reinforcements, and links Singapore's defence to the Philippines and Australia."
         }
       ]
     },
@@ -257,7 +344,7 @@
       "title": "Apply a Torres Vedras model in Malaya",
       "kind": "notable_point",
       "start": "26:07",
-      "end": "27:46",
+      "end": "27:10",
       "topics": ["wellington", "lines-of-torres-vedras", "delaying-action", "air-power"],
       "summary": "The defence borrows from Wellington's Lines of Torres Vedras: draw the attacker onto prepared positions while reconnaissance and night bombing wear down the advance.",
       "body": "Light forces retreating through Malaya would report Japanese positions and delay the advance rather than seek a decisive early battle. Their reports would guide night bombers toward the advancing columns. The bombing is valued less for accuracy than for fatigue, disruption, and the psychological pressure imposed on troops moving through difficult country. As with Wellington's Lines of Torres Vedras, the attacker is drawn toward ground deliberately prepared for the decisive defence. The fortified line is therefore the centre of the plan, not an afterthought once the northern defence collapses.",
@@ -265,7 +352,7 @@
       "evidence": [
         {
           "start": "26:07",
-          "end": "27:46",
+          "end": "27:10",
           "note": "The speaker invokes the Lines of Torres Vedras and explains reconnaissance, night bombing, and delaying forces."
         }
       ]
@@ -276,7 +363,7 @@
       "slug": "ceylon-fleet-transit-and-reserve-timing",
       "title": "Ceylon keeps the fleet distant but still responsive",
       "kind": "notable_point",
-      "start": "27:15",
+      "start": "27:17",
       "end": "27:39",
       "topics": ["ceylon", "force-z", "naval-reserves", "operational-logistics"],
       "summary": "A fleet at Ceylon can remain outside the immediate crisis yet still reach Malaya in under eight days at economical cruising speed.",
@@ -284,7 +371,7 @@
       "sourcePath": "src/transcripts/txt/2020-06-30_T10-45-01_an-introduction-to-the-battle-of-malaya-and-force-z-part-2-the-counter-factual-my-plan_GYlvk2BvtVs.txt",
       "evidence": [
         {
-          "start": "27:15",
+          "start": "27:17",
           "end": "27:39",
           "note": "The transcript estimates the Ceylon fleet's passage at under eight days while cruising at twelve to thirteen knots."
         }
@@ -297,7 +384,7 @@
       "title": "Make a prepared defence absorb the invasion",
       "kind": "chapter",
       "start": "27:46",
-      "end": "30:28",
+      "end": "29:58",
       "topics": ["fortifications", "military-logistics", "morale", "malayan-campaign"],
       "summary": "The counterfactual expects stretched Japanese logistics to meet rested troops, concentrated support weapons, and deliberately harsh terrain around a prepared line.",
       "body": "Dr. Clarke stresses that a defensive position can compensate for troops that are not individually superior if they retain cohesion, reserves, and confidence in their works. Japanese formations would arrive after a tiring advance and with the same stretched logistics that troubled the historical campaign. Artillery, tanks, aircraft, commanders, and trained personnel are concentrated so they are not lost one piece at a time during the retreat. Units can rotate through the line to restore morale while reserves answer local penetrations. The proposal also accepts scorched-earth measures to deny cover and resources, arguing that Keyes would prioritize winning the campaign over the political reluctance that constrained other leaders.",
@@ -305,7 +392,7 @@
       "evidence": [
         {
           "start": "27:46",
-          "end": "30:28",
+          "end": "29:58",
           "note": "The transcript connects prepared positions, concentrated equipment, Japanese logistics, troop morale, and scorched-earth measures."
         }
       ]
@@ -334,19 +421,39 @@
       "id": "counterfactual-limit-personality-and-authority",
       "videoId": "GYlvk2BvtVs",
       "slug": "counterfactual-limit-personality-and-authority",
-      "title": "The key counterfactual is command authority",
+      "title": "Treat the plan as an untested counterfactual",
       "kind": "notable_point",
       "start": "30:41",
-      "end": "34:58",
-      "topics": ["roger-keyes", "tom-phillips", "civil-military-relations", "counterfactual-history"],
-      "summary": "Dr. Clarke acknowledges that the plan is unmodelled, then argues that a politically powerful commander could make decisions that Tom Phillips could not.",
-      "body": "The closing reflection does not claim a computer-tested or tabletop-tested solution; it presents a reasoned alternative built around a different commander and chain of authority. Dr. Clarke explicitly invites criticism of the design and identifies his own greater familiarity with sea command than land command as a limitation. Phillips is described as an officer with useful qualities but an exceptionally difficult position and insufficient political leverage. Keyes matters because he could manage upward to Churchill as well as downward through the Far East command, making restraint, concentration, and refusal of unsuitable orders more believable. The exercise therefore argues that personalities and authority can determine whether an otherwise available operational choice is politically possible.",
+      "end": "31:29",
+      "topics": ["counterfactual-history", "historical-method", "wargaming", "uncertainty"],
+      "summary": "Dr. Clarke marks the scheme as a reasoned but unmodelled proposal and invites criticism rather than claiming that it guarantees victory.",
+      "body": "The closing reflection makes explicit that the plan has not been tested by computer simulation or a tabletop exercise. It is a reasoned design worked through in the speaker's head, and he invites constructive criticism of its assumptions. Dr. Clarke also identifies his greater familiarity with sea command than land command as a limitation. Instead of claiming inevitability, he asks whether changing the senior personality could make historically available choices cohere into a better campaign. That caveat makes the episode a testable counterfactual argument rather than a victory narrative built on hindsight.",
       "sourcePath": "src/transcripts/txt/2020-06-30_T10-45-01_an-introduction-to-the-battle-of-malaya-and-force-z-part-2-the-counter-factual-my-plan_GYlvk2BvtVs.txt",
       "evidence": [
         {
           "start": "30:41",
-          "end": "34:58",
-          "note": "The conclusion qualifies the plan and contrasts Keyes's authority with Phillips's constrained position."
+          "end": "31:29",
+          "note": "The speaker states that the plan is unmodelled, invites criticism, and acknowledges his stronger background in sea command."
+        }
+      ]
+    },
+    {
+      "id": "phillips-keyes-and-political-authority",
+      "videoId": "GYlvk2BvtVs",
+      "slug": "phillips-keyes-and-political-authority",
+      "title": "Political authority separates Keyes from Phillips",
+      "kind": "notable_point",
+      "start": "33:40",
+      "end": "34:49",
+      "topics": ["roger-keyes", "tom-phillips", "winston-churchill", "civil-military-relations", "command-authority"],
+      "summary": "The counterfactual does not simply call Phillips incompetent; it asks what a more senior and politically connected commander could refuse or delay.",
+      "body": "Dr. Clarke returns to why the historical Force Z problem cannot be reduced to Tom Phillips's personal competence. Phillips is described as having the makings of a good officer but being placed in an impossible position without enough seniority or political strength to reject it. Roger Keyes could plausibly tell Churchill that the ships would remain at Ceylon until they could appear as a full fleet. Managing upward as well as downward would let the commander align strategic concentration with political expectations. The counterfactual pivot is therefore command authority rather than miraculous new hardware or foreknowledge.",
+      "sourcePath": "src/transcripts/txt/2020-06-30_T10-45-01_an-introduction-to-the-battle-of-malaya-and-force-z-part-2-the-counter-factual-my-plan_GYlvk2BvtVs.txt",
+      "evidence": [
+        {
+          "start": "33:40",
+          "end": "34:49",
+          "note": "The speaker reassesses Phillips and explains how Keyes could manage Churchill and hold the ships until they formed a full fleet."
         }
       ]
     }
