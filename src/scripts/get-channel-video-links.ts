@@ -82,6 +82,11 @@ async function main(): Promise<void> {
       console.error(
         `Stored metadata for ${metadata.stats.storedVideoCount}/${metadata.stats.inputVideoCount} videos in ${defaultVideoMetadataOutput}`,
       );
+      await writeChannelEpisodeMasterOutput(options.masterOutput, result, {
+        completeness: options.inventoryCompleteness,
+        metadataRecords: new Map(metadata.videos.map((record) => [record.videoId, record])),
+      });
+      console.error(`Reconciled ${result.links.length} episodes with stored transcripts and refreshed metadata`);
     }
     return;
   }

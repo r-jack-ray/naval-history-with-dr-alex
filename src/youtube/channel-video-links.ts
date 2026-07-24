@@ -1,4 +1,4 @@
-import { dirname } from "node:path";
+import { dirname, join } from "node:path";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 
 import { google, type youtube_v3 } from "googleapis";
@@ -644,7 +644,10 @@ export async function readStoredTranscriptEpisodeRecords(
     if (videoId === undefined || fileStem === undefined || txtPath === undefined) {
       continue;
     }
-    const record: StoredTranscriptEpisodeRecord = { fileStem, txtPath };
+    const record: StoredTranscriptEpisodeRecord = {
+      fileStem,
+      txtPath: resolveStoredTranscriptTxtPath(path, txtPath),
+    };
     const segmentCount = transcript.segmentCount;
     const selectedLanguage = readString(transcript, "selectedLanguage");
     const fetchedAt = readString(transcript, "fetchedAt");
@@ -660,6 +663,10 @@ export async function readStoredTranscriptEpisodeRecords(
     records.set(videoId, record);
   }
   return records;
+}
+
+export function resolveStoredTranscriptTxtPath(manifestPath: string, txtPath: string): string {
+  return join(dirname(manifestPath), txtPath).replaceAll("\\", "/");
 }
 
 function videoToResolverRecord(videoId: string, video: youtube_v3.Schema$Video): VideoMetadataRecord {

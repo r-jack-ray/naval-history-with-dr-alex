@@ -11,6 +11,7 @@ import {
   mergeChannelVideoLinksResults,
   officialVideoStreamStartTime,
   resolveChannelVideoLinksMasterOutput,
+  resolveStoredTranscriptTxtPath,
   splitChannelVideoLinksResult,
   type ChannelVideoLink,
 } from "./channel-video-links.js";
@@ -29,6 +30,13 @@ test("does not implicitly overwrite the episode master for probes or alternate o
   assert.equal(resolveChannelVideoLinksMasterOutput({ output: "reports/probe.json" }), undefined);
   assert.equal(resolveChannelVideoLinksMasterOutput({ linksOutput: "reports/links.json" }), undefined);
   assert.equal(resolveChannelVideoLinksMasterOutput({ metadataOutput: "reports/metadata.json" }), undefined);
+});
+
+test("resolves manifest-relative transcript paths for episode records", () => {
+  assert.equal(
+    resolveStoredTranscriptTxtPath("src/transcripts/manifest.json", "txt/example-video.txt"),
+    "src/transcripts/txt/example-video.txt",
+  );
 });
 
 test("extracts video links from YouTube LockupView nodes", () => {
