@@ -190,6 +190,11 @@ test("production policy applies the repository-owner topic normalization batch",
       "203-mm-guns",
       "normalize-model-1924-203-mm-gun",
     ],
+    [
+      "qf-2-pounder-pom-pom",
+      "2-pounder-guns",
+      "normalize-qf-2-pounder-pom-pom",
+    ],
   ] as const;
 
   for (const [input, slug, ruleId] of creationExpected) {
@@ -202,7 +207,6 @@ test("production policy applies the repository-owner topic normalization batch",
   }
 
   for (const namedWeapon of [
-    "qf-2-pounder-pom-pom",
     "type-91-pom-pom",
     "vickers-pom-pom",
   ]) {
@@ -264,7 +268,7 @@ test("production policy encodes the dc950 topic audit without collapsing semanti
     ruleId.startsWith("normalize-dc950-"),
   );
 
-  assert.equal(auditRules.length, 110);
+  assert.equal(auditRules.length, 109);
   for (const rule of auditRules) {
     assert.equal(rule.status, "active", rule.ruleId);
     assert.deepEqual(rule.scopes, ["creation"], rule.ruleId);
@@ -403,6 +407,88 @@ test("production policy preserves the distinct 11-inch and 1.1-inch gun topics",
     resolveTopicCreation(catalog, "11-inch-guns").slug,
     resolveTopicCreation(catalog, "1-1-inch-guns").slug,
   );
+});
+
+test("production policy normalizes pounder, metric, and rapid-firing gun variants", async () => {
+  const catalog = await loadTopicNormalizationCatalog(
+    "src/derived/topic-normalization-patterns.tsv",
+  );
+  const expected = [
+    ["6-pounder-gun", "6-pounder-guns", "normalize-numeric-pounder-gun"],
+    ["2-pounder-gun", "2-pounder-guns", "normalize-numeric-pounder-gun"],
+    ["12-pounder-gun", "12-pounder-guns", "normalize-numeric-pounder-gun"],
+    ["two-pounder", "2-pounder-guns", "normalize-written-two-pounder"],
+    ["two-pounder-guns", "2-pounder-guns", "normalize-written-two-pounder"],
+    ["six-pounder", "6-pounder-guns", "normalize-written-six-pounder"],
+    ["seventeen-pounder", "17-pounder-guns", "normalize-written-seventeen-pounder"],
+    ["forty-eight-pounder", "48-pounder-guns", "normalize-written-forty-eight-pounder"],
+    ["sixty-eight-pounder", "68-pounder-guns", "normalize-written-sixty-eight-pounder"],
+    ["long-nine-pounder", "9-pounder-guns", "normalize-long-nine-pounder"],
+    ["hotchkiss-3-pounder", "3-pounder-guns", "normalize-hotchkiss-3-pounder"],
+    ["two-pounder-pom-pom", "2-pounder-guns", "normalize-two-pounder-pom-pom"],
+    ["qf-2-pounder", "2-pounder-guns", "normalize-qf-2-pounder"],
+    ["qf-2-pounder-pom-pom", "2-pounder-guns", "normalize-qf-2-pounder-pom-pom"],
+    ["qf-17-pounder", "17-pounder-guns", "normalize-qf-17-pounder"],
+    ["pounder-guns", "gun-nomenclature", "normalize-pounder-guns"],
+    [
+      "forty-two-centimeter-guns",
+      "420-mm-guns",
+      "normalize-forty-two-centimeter-guns",
+    ],
+    ["35-centimeter-guns", "350-mm-guns", "normalize-35-centimeter-guns"],
+    ["rapid-fire-guns", "quick-firing-guns", "normalize-rapid-fire-guns"],
+    ["rapid-firing-guns", "quick-firing-guns", "normalize-rapid-firing-guns"],
+  ] as const;
+
+  for (const [input, slug, ruleId] of expected) {
+    assert.deepEqual(resolveTopicCreation(catalog, input), {
+      input,
+      slug,
+      changed: true,
+      matchedRuleIds: [ruleId],
+    });
+  }
+});
+
+test("production policy applies the reviewed full-corpus singular and plural consolidation", async () => {
+  const catalog = await loadTopicNormalizationCatalog(
+    "src/derived/topic-normalization-patterns.tsv",
+  );
+  const fullScanRules = catalog.rules.filter(({ ruleId }) =>
+    ruleId.startsWith("normalize-full-scan-"),
+  );
+
+  assert.equal(fullScanRules.length, 155);
+  for (const rule of fullScanRules) {
+    assert.equal(rule.status, "active", rule.ruleId);
+    assert.deepEqual(rule.scopes, ["creation"], rule.ruleId);
+    assert.equal(rule.matchKind, "exact", rule.ruleId);
+    assert.deepEqual(resolveTopicCreation(catalog, rule.match), {
+      input: rule.match,
+      slug: rule.replacement,
+      changed: true,
+      matchedRuleIds: [rule.ruleId],
+    });
+  }
+
+  const expected = [
+    ["leander-class-cruiser", "leander-class-cruisers"],
+    ["leander-class-frigate", "leander-class-frigates"],
+    ["zumwalt-class", "zumwalt-class-destroyers"],
+    ["zumwalt-class-destroyer", "zumwalt-class-destroyers"],
+    ["alaska-class", "alaska-class-large-cruisers"],
+    ["alaska-class-cruisers", "alaska-class-large-cruisers"],
+  ] as const;
+  for (const [input, slug] of expected) {
+    assert.equal(resolveTopicCreation(catalog, input).slug, slug, input);
+  }
+
+  assert.deepEqual(resolveTopicCreation(catalog, "leander-class"), {
+    input: "leander-class",
+    slug: "leander-class",
+    changed: false,
+    matchedRuleIds: ["review-contextual-leander-class"],
+  });
 });
 
 test("production policy merges reviewed duplicate topics without guessing ambiguous context", async () => {

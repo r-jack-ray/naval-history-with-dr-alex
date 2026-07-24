@@ -255,8 +255,8 @@ test("keeps the bounded production topic titles and aliases curated without desc
   };
   const topicsBySlug = new Map(store.topics.map((topic) => [topic.slug, topic]));
 
-  assert.equal(productionTopicMapping.length, 22);
-  assert.equal(new Set(productionTopicMapping.map(({ slug }) => slug)).size, 22);
+  assert.equal(productionTopicMapping.length, 21);
+  assert.equal(new Set(productionTopicMapping.map(({ slug }) => slug)).size, 21);
   for (const expected of productionTopicMapping) {
     const topic = topicsBySlug.get(expected.slug);
     assert.ok(topic, `Missing production topic ${expected.slug}`);
@@ -380,6 +380,43 @@ test("keeps the repository-owner normalization batch canonical in the production
   );
 });
 
+test("keeps the reviewed singular/plural and Leander split canonical in the production store", async () => {
+  const store = JSON.parse(
+    await readFile(new URL("../../src/derived/video-segments/topics.json", import.meta.url), "utf8"),
+  ) as {
+    topics: Array<{ slug: string; title: string; summary?: string; aliases?: string[] }>;
+  };
+  const topicsBySlug = new Map(store.topics.map((topic) => [topic.slug, topic]));
+
+  for (const retired of [
+    "leander-class",
+    "leander-class-cruiser",
+    "leander-class-frigate",
+    "zumwalt-class",
+    "zumwalt-class-destroyer",
+    "alaska-class",
+    "alaska-class-cruisers",
+  ]) {
+    assert.equal(topicsBySlug.has(retired), false, retired);
+  }
+
+  assert.equal(topicsBySlug.has("leander-class-1882"), true);
+  assert.equal(topicsBySlug.has("leander-class-cruisers"), true);
+  assert.equal(topicsBySlug.has("leander-class-frigates"), true);
+  assert.equal(
+    topicsBySlug.get("fiction-sojourn-leander-class")?.title,
+    "Leander Class (Sojourn Fiction)",
+  );
+  assert.equal(
+    topicsBySlug.get("zumwalt-class-destroyers")?.aliases?.includes("Zumwalt Class"),
+    true,
+  );
+  assert.equal(
+    topicsBySlug.get("alaska-class-large-cruisers")?.aliases?.includes("Alaska Class"),
+    true,
+  );
+});
+
 test("keeps the dc950 topic audit canonical while retaining function and type topics", async () => {
   const store = JSON.parse(
     await readFile(new URL("../../src/derived/video-segments/topics.json", import.meta.url), "utf8"),
@@ -394,7 +431,7 @@ test("keeps the dc950 topic audit canonical while retaining function and type to
     ruleId.startsWith("normalize-dc950-"),
   );
 
-  assert.equal(auditRules.length, 110);
+  assert.equal(auditRules.length, 109);
   for (const rule of auditRules) {
     assert.equal(topicsBySlug.has(rule.match), false, `Retired topic remains: ${rule.match}`);
     assert.equal(
@@ -654,13 +691,15 @@ const productionTopicMapping = [
     aliases: [],
   },
   {
-    slug: "qf-2-pounder-pom-pom",
-    title: "QF 2-pounder Pom-Pom",
-    aliases: [],
-  },
-  {
-    slug: "qf-2-pounder",
-    title: "QF 2-pounder",
-    aliases: [],
+    slug: "2-pounder-guns",
+    title: "2-Pounder Guns",
+    aliases: [
+      "2-Pounder Gun",
+      "Two Pounder",
+      "Two Pounder Guns",
+      "QF 2-pounder",
+      "QF 2-pounder Pom-Pom",
+      "Two Pounder Pom Pom",
+    ],
   },
 ] as const;
