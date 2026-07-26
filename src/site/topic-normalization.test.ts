@@ -267,10 +267,22 @@ test("production policy encodes the dc950 topic audit without collapsing semanti
   const auditRules = catalog.rules.filter(({ ruleId }) =>
     ruleId.startsWith("normalize-dc950-"),
   );
+  const activeAuditRules = auditRules.filter(({ status }) => status === "active");
 
   assert.equal(auditRules.length, 109);
-  for (const rule of auditRules) {
-    assert.equal(rule.status, "active", rule.ruleId);
+  assert.equal(activeAuditRules.length, 103);
+  assert.deepEqual(
+    auditRules.filter(({ status }) => status !== "active").map(({ ruleId }) => ruleId),
+    [
+      "normalize-dc950-admiral-lord-cork",
+      "normalize-dc950-lord-cork",
+      "normalize-dc950-rear-admiral-montagu",
+      "normalize-dc950-alexander-hood",
+      "normalize-dc950-lord-chatfield",
+      "normalize-dc950-kongo-class-battlecruisers",
+    ],
+  );
+  for (const rule of activeAuditRules) {
     assert.deepEqual(rule.scopes, ["creation"], rule.ruleId);
     assert.equal(rule.matchKind, "exact", rule.ruleId);
     assert.deepEqual(resolveTopicCreation(catalog, rule.match), {
@@ -285,7 +297,7 @@ test("production policy encodes the dc950 topic audit without collapsing semanti
     ["flooding-control", "damage-control"],
     ["warship-repairs", "warship-repair"],
     ["european-defense", "european-defence"],
-    ["ship-artifacts", "warship-artifacts"],
+    ["ship-artifacts", "warship-artefacts"],
     ["c-class-light-cruisers", "c-class-cruisers"],
     ["j-class", "j-class-destroyers"],
     ["k-class", "k-class-destroyers"],
@@ -296,7 +308,7 @@ test("production policy encodes the dc950 topic audit without collapsing semanti
     ["bremerton-naval-shipyard", "puget-sound-naval-shipyard"],
     ["port-stanley-airport", "stanley-airport"],
     ["ship-engineering", "fiction-spacecraft-engineering"],
-    ["grand-admiral-thrawn", "fiction-star-wars-grand-admiral-thrawn"],
+    ["grand-admiral-thrawn", "fiction-star-wars-thrawn"],
     ["hms-thunderchild", "fiction-hms-thunder-child"],
     ["hms-fundra", "fiction-world-of-warships-fundra"],
     ["unsc", "fiction-halo-united-nations-space-command"],
@@ -379,9 +391,20 @@ test("production policy consolidates generic inch-gun topics without collapsing 
     changed: true,
     matchedRuleIds: ["normalize-nine-inch-guns"],
   });
+  for (const [modelSlug, genericSlug] of [
+    ["qf-4-5-inch-gun", "4-5-inch-guns"],
+    ["qf-4-7-inch-gun", "4-7-inch-guns"],
+    ["qf-5-25-inch-gun", "5-25-inch-guns"],
+  ] as const) {
+    assert.deepEqual(resolveTopicCreation(catalog, modelSlug), {
+      input: modelSlug,
+      slug: genericSlug,
+      changed: true,
+      matchedRuleIds: [`normalize-global-curation-${modelSlug}`],
+    });
+  }
   for (const modelSlug of [
     "bl-15-inch-mark-i",
-    "qf-4-5-inch-gun",
     "six-inch-mark-xxiii",
     "15-inch-gun-mount",
   ]) {

@@ -255,8 +255,8 @@ test("keeps the bounded production topic titles and aliases curated without desc
   };
   const topicsBySlug = new Map(store.topics.map((topic) => [topic.slug, topic]));
 
-  assert.equal(productionTopicMapping.length, 21);
-  assert.equal(new Set(productionTopicMapping.map(({ slug }) => slug)).size, 21);
+  assert.equal(productionTopicMapping.length, 18);
+  assert.equal(new Set(productionTopicMapping.map(({ slug }) => slug)).size, 18);
   for (const expected of productionTopicMapping) {
     const topic = topicsBySlug.get(expected.slug);
     assert.ok(topic, `Missing production topic ${expected.slug}`);
@@ -430,9 +430,11 @@ test("keeps the dc950 topic audit canonical while retaining function and type to
   const auditRules = catalog.rules.filter(({ ruleId }) =>
     ruleId.startsWith("normalize-dc950-"),
   );
+  const activeAuditRules = auditRules.filter(({ status }) => status === "active");
 
   assert.equal(auditRules.length, 109);
-  for (const rule of auditRules) {
+  assert.equal(activeAuditRules.length, 103);
+  for (const rule of activeAuditRules) {
     assert.equal(topicsBySlug.has(rule.match), false, `Retired topic remains: ${rule.match}`);
     assert.equal(
       topicsBySlug.has(rule.replacement),
@@ -440,6 +442,11 @@ test("keeps the dc950 topic audit canonical while retaining function and type to
       `Canonical topic missing: ${rule.replacement}`,
     );
   }
+  assert.deepEqual(topicsBySlug.get("alexander-hood"), {
+    slug: "alexander-hood",
+    title: "Alexander Hood",
+    aliases: ["Lord Bridport", "1st Viscount Bridport"],
+  });
 
   const expected = new Map<string, { title: string; aliases?: string[] }>([
     [
@@ -453,10 +460,10 @@ test("keeps the dc950 topic audit canonical while retaining function and type to
       },
     ],
     [
-      "fiction-star-wars-grand-admiral-thrawn",
+      "fiction-star-wars-thrawn",
       {
-        title: "Grand Admiral Thrawn (Star Wars Fiction)",
-        aliases: ["Grand Admiral Thrawn"],
+        title: "Thrawn (Star Wars Fiction)",
+        aliases: ["Grand Admiral Thrawn", "Grand Admiral Thrawn (Star Wars Fiction)"],
       },
     ],
     [
@@ -603,17 +610,41 @@ const productionTopicMapping = [
   {
     slug: "4-5-inch-guns",
     title: "4.5-inch Guns",
-    aliases: ["4.5-inch Gun", "Four Point Five Inch Gun", "Four Point Five Inch Guns"],
+    aliases: [
+      "4.5-inch Gun",
+      "Four Point Five Inch Gun",
+      "Four Point Five Inch Guns",
+      "QF 4.5-inch Gun",
+      "QF 4.5-inch Guns",
+      "QF 4.5 inch gun",
+      "QF 4 5 inch gun",
+    ],
   },
   {
     slug: "4-7-inch-guns",
     title: "4.7-inch Guns",
-    aliases: ["Four Point Seven Inch Guns"],
+    aliases: [
+      "Four Point Seven Inch Guns",
+      "QF 4.7-inch Gun",
+      "4.7-inch Gun",
+      "QF 4.7-inch Guns",
+      "QF 4.7 inch gun",
+      "QF 4 7 inch gun",
+    ],
   },
   {
     slug: "5-25-inch-guns",
     title: "5.25-inch Guns",
-    aliases: ["Five Point Two Inch Guns", "Five Point Two Five Inch Gun", "Five Point Two Five Inch Guns"],
+    aliases: [
+      "Five Point Two Inch Guns",
+      "Five Point Two Five Inch Gun",
+      "Five Point Two Five Inch Guns",
+      "QF 5.25-inch Gun",
+      "5.25-inch Gun",
+      "QF 5.25-inch Guns",
+      "QF 5.25 inch gun",
+      "QF 5 25 inch gun",
+    ],
   },
   {
     slug: "9-2-inch-guns",
@@ -624,21 +655,6 @@ const productionTopicMapping = [
     slug: "13-5-inch-guns",
     title: "13.5-inch Guns",
     aliases: ["13.5-inch Gun", "Thirteen Point Five Inch Guns"],
-  },
-  {
-    slug: "qf-4-5-inch-gun",
-    title: "QF 4.5-inch Gun",
-    aliases: [],
-  },
-  {
-    slug: "qf-4-7-inch-gun",
-    title: "QF 4.7-inch Gun",
-    aliases: [],
-  },
-  {
-    slug: "qf-5-25-inch-gun",
-    title: "QF 5.25-inch Gun",
-    aliases: [],
   },
   {
     slug: "anglo-spanish-war-1654-1660",

@@ -79,6 +79,21 @@
   const setBusy = (busy) => {
     results.setAttribute("aria-busy", String(busy));
     showMoreButton.disabled = busy;
+    if (busy) {
+      status.dataset.searchState = "loading";
+    } else {
+      status.removeAttribute("data-search-state");
+    }
+  };
+
+  const setLoadingStatus = (message) => {
+    const dots = document.createElement("span");
+    dots.className = "search-progress-dots";
+    dots.setAttribute("aria-hidden", "true");
+    for (let index = 0; index < 3; index += 1) {
+      dots.appendChild(document.createElement("span"));
+    }
+    status.replaceChildren(document.createTextNode(message), dots);
   };
 
   const resetResultState = () => {
@@ -413,7 +428,7 @@
 
     blankState.hidden = true;
     setBusy(true);
-    status.textContent = `Searching for "${query}"…`;
+    setLoadingStatus(`Searching for "${query}"`);
     if (immediate) {
       void runSearch(query, mode, searchId);
     } else {
@@ -497,7 +512,7 @@
       return;
     }
     const searchId = latestSearchId;
-    status.textContent = `Loading more matches for "${query}"…`;
+    setLoadingStatus(`Loading more matches for "${query}"`);
     void loadNextBatch(searchId, query, mode).catch((error) => {
       if (!currentSearchMatches(searchId, query, mode)) {
         return;

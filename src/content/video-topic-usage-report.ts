@@ -3,33 +3,12 @@ import type { TopicNormalizationRule } from "../site/topic-normalization.js";
 
 export const videoTopicUsageReportHeaderKeys = [
   "topic_slug",
-  "piped_name",
   "display_name",
   "usage_count",
-  "usage_group_rank",
-  "usage_band",
-  "registry_status",
   "general_subject",
   "entity_type",
-  "classification_confidence",
-  "classification_basis",
-  "top_level_video_count",
-  "segment_video_count",
-  "top_level_only_video_count",
-  "segment_only_video_count",
-  "segment_count",
-  "reference_count",
-  "video_coverage_pct",
-  "chapter_count",
-  "notable_point_count",
-  "qa_count",
-  "transcript_excerpt_count",
-  "other_segment_kind_count",
-  "alias_count",
   "topic_aliases",
-  "normalization_input_count",
   "normalization_inputs",
-  "similar_topic_count",
   "similar_topics",
   "frequent_co_topics",
   "potential_duplicate_review",
@@ -66,12 +45,6 @@ interface TopicDefinition {
 
 interface TopicMetrics {
   anyVideoIds: Set<string>;
-  topLevelVideoIds: Set<string>;
-  segmentVideoIds: Set<string>;
-  topLevelReferenceCount: number;
-  segmentReferenceCount: number;
-  segmentCount: number;
-  kindCounts: Map<string, number>;
 }
 
 interface SimilarTopic {
@@ -89,8 +62,6 @@ interface CoTopic {
 interface TopicClassification {
   entityType: string;
   generalSubject: string;
-  confidence: "high" | "low";
-  basis: string;
 }
 
 export function renderVideoTopicUsageReport(
@@ -110,12 +81,6 @@ export function renderVideoTopicUsageReport(
     if (existing !== undefined) return existing;
     const created: TopicMetrics = {
       anyVideoIds: new Set(),
-      topLevelVideoIds: new Set(),
-      segmentVideoIds: new Set(),
-      topLevelReferenceCount: 0,
-      segmentReferenceCount: 0,
-      segmentCount: 0,
-      kindCounts: new Map(),
     };
     metricsBySlug.set(slug, created);
     return created;
@@ -125,8 +90,6 @@ export function renderVideoTopicUsageReport(
     for (const slug of uniqueStrings(video.topics)) {
       const metrics = getMetrics(slug);
       metrics.anyVideoIds.add(video.videoId);
-      metrics.topLevelVideoIds.add(video.videoId);
-      metrics.topLevelReferenceCount += 1;
     }
   }
 
@@ -135,10 +98,6 @@ export function renderVideoTopicUsageReport(
     for (const slug of segmentTopics) {
       const metrics = getMetrics(slug);
       metrics.anyVideoIds.add(segment.videoId);
-      metrics.segmentVideoIds.add(segment.videoId);
-      metrics.segmentCount += 1;
-      metrics.segmentReferenceCount += 1;
-      metrics.kindCounts.set(segment.kind, (metrics.kindCounts.get(segment.kind) ?? 0) + 1);
     }
     for (let leftIndex = 0; leftIndex < segmentTopics.length; leftIndex += 1) {
       for (let rightIndex = leftIndex + 1; rightIndex < segmentTopics.length; rightIndex += 1) {
@@ -164,9 +123,6 @@ export function renderVideoTopicUsageReport(
   }
 
   const nameAnalysis = buildNameAnalysis(allTopics);
-  const usageCountsDescending = [...new Set(allTopics.map((topic) => getMetrics(topic.slug).anyVideoIds.size))]
-    .sort((left, right) => right - left);
-  const denseRankByUsage = new Map(usageCountsDescending.map((count, index) => [count, index + 1]));
 
   const topCoTopics = (slug: string, limit: number): CoTopic[] => (
     [...(coTopicCounts.get(slug) ?? new Map()).entries()]
@@ -196,37 +152,12 @@ export function renderVideoTopicUsageReport(
 
     return {
       usage_count: usageCount,
-      usage_group_rank: denseRankByUsage.get(usageCount) ?? 0,
-      usage_band: usageBand(usageCount),
       topic_slug: topic.slug,
-      piped_name: `${topic.slug}|${topic.title}`,
       display_name: topic.title,
-      registry_status: registryBySlug.has(topic.slug) ? "registered" : "missing_from_registry",
       general_subject: classification.generalSubject,
       entity_type: classification.entityType,
-      classification_confidence: classification.confidence,
-      classification_basis: classification.basis,
-      top_level_video_count: metrics.topLevelVideoIds.size,
-      segment_video_count: metrics.segmentVideoIds.size,
-      top_level_only_video_count: differenceSize(metrics.topLevelVideoIds, metrics.segmentVideoIds),
-      segment_only_video_count: differenceSize(metrics.segmentVideoIds, metrics.topLevelVideoIds),
-      segment_count: metrics.segmentCount,
-      reference_count: metrics.topLevelReferenceCount + metrics.segmentReferenceCount,
-      video_coverage_pct: seed.videos.length === 0
-        ? 0
-        : Number(((usageCount / seed.videos.length) * 100).toFixed(4)),
-      chapter_count: metrics.kindCounts.get("chapter") ?? 0,
-      notable_point_count: metrics.kindCounts.get("notable_point") ?? 0,
-      qa_count: metrics.kindCounts.get("qa") ?? 0,
-      transcript_excerpt_count: metrics.kindCounts.get("transcript_excerpt") ?? 0,
-      other_segment_kind_count: [...metrics.kindCounts.entries()]
-        .filter(([kind]) => !["chapter", "notable_point", "qa", "transcript_excerpt"].includes(kind))
-        .reduce((sum, [, count]) => sum + count, 0),
-      alias_count: topic.aliases.length,
       topic_aliases: topic.aliases.join(" | "),
-      normalization_input_count: normalizationInputs.length,
       normalization_inputs: normalizationInputs.join(" | "),
-      similar_topic_count: similar.length,
       similar_topics: similar.map((entry) => (
         `${entry.slug}|${entry.title} [${entry.score.toFixed(2)}]`
       )).join(" ; "),
@@ -258,7 +189,9 @@ export function renderVideoTopicUsageReport(
       videoCount: seed.videos.length,
       usedTopicCount: rows.filter((row) => Number(row.usage_count) > 0).length,
       unusedTopicCount: rows.filter((row) => Number(row.usage_count) === 0).length,
-      unregisteredUsedTopicCount: rows.filter((row) => row.registry_status !== "registered").length,
+      unregisteredUsedTopicCount: allTopics.filter((topic) => (
+        !registryBySlug.has(topic.slug) && getMetrics(topic.slug).anyVideoIds.size > 0
+      )).length,
       highestUsageCount: Number(rows[0]?.usage_count ?? 0),
       potentialDuplicateReviewCount: rows.filter((row) => row.potential_duplicate_review === "yes").length,
     },
@@ -386,10 +319,6 @@ function classifyTopic(topic: TopicDefinition): TopicClassification {
   return {
     entityType,
     generalSubject: generalSubjectFor(text, entityType),
-    confidence: matched === undefined ? "low" : "high",
-    basis: matched === undefined
-      ? "name heuristic: no specific pattern matched"
-      : `name heuristic: ${matched[2]}`,
   };
 }
 
@@ -459,23 +388,6 @@ function uniqueStrings(values: readonly string[]): string[] {
 
 function titleFromSlug(slug: string): string {
   return slug.split("-").map((word) => word ? `${word[0]!.toUpperCase()}${word.slice(1)}` : word).join(" ");
-}
-
-function differenceSize(left: ReadonlySet<string>, right: ReadonlySet<string>): number {
-  let count = 0;
-  for (const value of left) if (!right.has(value)) count += 1;
-  return count;
-}
-
-function usageBand(count: number): string {
-  if (count === 0) return "unused";
-  if (count === 1) return "1";
-  if (count <= 4) return "2-4";
-  if (count <= 9) return "5-9";
-  if (count <= 24) return "10-24";
-  if (count <= 49) return "25-49";
-  if (count <= 99) return "50-99";
-  return "100+";
 }
 
 function tsvValue(value: ReportValue): string {

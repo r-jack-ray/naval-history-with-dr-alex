@@ -39,22 +39,29 @@ test("topic usage TSV uses spaced headers and counts unique videos across both t
   }];
 
   const report = renderVideoTopicUsageReport(seed, rules);
-  assert.equal(videoTopicUsageReportHeaders.length, 31);
-  assert.deepEqual(videoTopicUsageReportHeaders.slice(0, 3), ["topic slug", "piped name", "display name"]);
+  assert.deepEqual(videoTopicUsageReportHeaders, [
+    "topic slug",
+    "display name",
+    "usage count",
+    "general subject",
+    "entity type",
+    "topic aliases",
+    "normalization inputs",
+    "similar topics",
+    "frequent co topics",
+    "potential duplicate review",
+  ]);
   assert.ok(videoTopicUsageReportHeaders.every((header) => !header.includes("_")));
   assert.equal(report.rows.length, 3);
   assert.equal(report.rows[0]?.topic_slug, "destroyers");
   assert.equal(report.rows[0]?.usage_count, 2);
-  assert.equal(report.rows[0]?.top_level_video_count, 1);
-  assert.equal(report.rows[0]?.segment_video_count, 2);
-  assert.equal(report.rows[0]?.piped_name, "destroyers|Destroyers");
   assert.equal(report.rows[0]?.topic_aliases, "tin cans");
   assert.equal(report.rows[0]?.normalization_inputs, "exact:destroyer");
   assert.match(String(report.rows[0]?.frequent_co_topics), /surface-combatants\|Surface Combatants \[1\]/u);
   assert.equal(report.rows[2]?.topic_slug, "unused-topic");
   assert.equal(report.rows[2]?.usage_count, 0);
-  assert.match(report.tsv, /^topic slug\tpiped name\tdisplay name\tusage count\t/u);
-  assert.deepEqual(new Set(report.tsv.trimEnd().split("\n").map((line) => line.split("\t").length)), new Set([31]));
+  assert.match(report.tsv, /^topic slug\tdisplay name\tusage count\t/u);
+  assert.deepEqual(new Set(report.tsv.trimEnd().split("\n").map((line) => line.split("\t").length)), new Set([10]));
 });
 
 function segment(
