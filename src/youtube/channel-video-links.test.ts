@@ -324,6 +324,41 @@ test("merges channel video link results across tabs", () => {
   assert.deepEqual(merged.links[0]?.tabPositions, { videos: 1, streams: 1 });
 });
 
+test("excludes ignored videos from merged links and the canonical episode master", () => {
+  const ignoredVideoIds = new Set(["ts331iLYWlc"]);
+  const result = {
+    channelUrl: "https://www.youtube.com/@DrAlexClarke",
+    channelId: "UCE2x09tU0GwAGiSbFPEhIwQ",
+    fetchedAt: "2026-07-26T18:00:00.000Z",
+    requestDelayMs: 0,
+    tabs: {
+      videos: { url: "https://www.youtube.com/@DrAlexClarke/videos", pagesFetched: 1, rawCount: 2 },
+      streams: { url: "https://www.youtube.com/@DrAlexClarke/streams", pagesFetched: 0, rawCount: 0 },
+    },
+    links: [
+      {
+        videoId: "ts331iLYWlc",
+        url: "https://www.youtube.com/watch?v=ts331iLYWlc",
+        tabs: ["videos" as const],
+        tabPositions: { videos: 1 },
+      },
+      {
+        videoId: "keep-video1",
+        url: "https://www.youtube.com/watch?v=keep-video1",
+        tabs: ["videos" as const],
+        tabPositions: { videos: 2 },
+      },
+    ],
+  };
+
+  const merged = mergeChannelVideoLinksResults([result], ignoredVideoIds);
+  const master = buildChannelEpisodeMaster(result, { ignoredVideoIds });
+
+  assert.deepEqual(merged.links.map((link) => link.videoId), ["keep-video1"]);
+  assert.deepEqual(master.episodes.map((episode) => episode.videoId), ["keep-video1"]);
+  assert.equal(master.episodes[0]?.channelOrder, 1);
+});
+
 test("spaces fetch calls through a serial rate limiter", async () => {
   let currentTime = 1_000;
   const waits: number[] = [];

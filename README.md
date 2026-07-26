@@ -33,6 +33,7 @@ The generated archive now spans thousands of video guides and tens of thousands 
 src/
   channel/                 Canonical channel inventory
     episodes.json          Master episode list
+    ignored-videos.json    Full-video exclusions applied before ingestion
     video-metadata.json    YouTube Data API metadata store
   content/                 Site-content audits, reports, models, and processing logic
     schemas/               Runtime schemas for content-owned persisted formats
@@ -417,6 +418,8 @@ pwsh -NoProfile -File .codex/hooks/validate-site.ps1 -SkipRepoCheck
 See `AGENTS.md` for repository-specific contributor and agent guidance.
 
 ## Transcript Availability Status
+
+`src/channel/ignored-videos.json` is authoritative for videos excluded from the project in full. Channel refreshes, metadata refreshes, saved-HTML ingestion, and direct or batch transcript fetches apply it before downstream work.
 
 `src/transcripts/manifest.json` is authoritative for stored transcripts, and `src/transcripts/fetch-status.json` is authoritative for resumable ingestion status. The checked-in failure set currently contains completed videos and streams with `no_caption_tracks`; upcoming, live, processing, and otherwise deferred videos are tracked separately, while videos at or below the 61-second cutoff are intentionally skipped.
 

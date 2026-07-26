@@ -7,6 +7,7 @@ import {
   extractLiveStreamsHtml,
   type ExtractLiveStreamsHtmlOptions,
 } from "../youtube/live-streams-html.js";
+import { readIgnoredVideos } from "../youtube/ignored-videos.js";
 
 interface CliOptions {
   input: string;
@@ -19,10 +20,12 @@ interface CliOptions {
 
 async function main(): Promise<void> {
   const options = parseArgs(process.argv.slice(2));
+  const ignoredVideos = await readIgnoredVideos();
   const html = await readFile(options.input, "utf8");
   const savedAt = options.fetchedAt ?? await fileModifiedAt(options.input);
   const extractionOptions: ExtractLiveStreamsHtmlOptions = {
     sourcePath: options.input,
+    ignoredVideoIds: new Set(ignoredVideos.keys()),
   };
 
   if (options.channelUrl !== undefined) {

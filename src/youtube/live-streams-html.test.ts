@@ -66,6 +66,15 @@ test("throws a clear error when ytInitialData is missing", () => {
   );
 });
 
+test("omits ignored videos from live-stream HTML extraction", () => {
+  const extraction = extractLiveStreamsHtml(fixtureHtml(), {
+    ignoredVideoIds: new Set(["uURe69Wnh-Q"]),
+  });
+
+  assert.equal(extraction.stats.extractedStreamCount, 1);
+  assert.deepEqual(extraction.result.links.map((record) => record.videoId), ["Nfv-qSf9wLs"]);
+});
+
 function fixtureHtml(): string {
   return `<!-- saved from url=(0045)https://www.youtube.com/@DrAlexClarke/streams -->
 <script>

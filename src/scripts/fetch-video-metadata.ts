@@ -5,6 +5,7 @@ import {
   fetchAndStoreVideoMetadata,
   type FetchVideoMetadataOptions,
 } from "../youtube/video-metadata.js";
+import { readIgnoredVideos } from "../youtube/ignored-videos.js";
 import { resolveYoutubeApiKey } from "./youtube-api-key-file.js";
 
 type CliOptions = Omit<FetchVideoMetadataOptions, "apiKey"> & {
@@ -19,6 +20,7 @@ async function main(): Promise<void> {
   if (!apiKey) {
     throw new Error("Set YOUTUBE_API_KEY, pass --api-key, or pass --api-key-file.");
   }
+  const ignoredVideos = await readIgnoredVideos();
 
   const fetchOptions: FetchVideoMetadataOptions = {
     apiKey,
@@ -26,6 +28,7 @@ async function main(): Promise<void> {
     outputPath: options.outputPath,
     requestDelayMs: options.requestDelayMs,
     batchSize: options.batchSize,
+    ignoredVideoIds: new Set(ignoredVideos.keys()),
   };
   if (options.limit !== undefined) {
     fetchOptions.limit = options.limit;
@@ -153,6 +156,8 @@ Options:
 Stored deferred livestreams are automatically refreshed about 24 hours after
 the later of their scheduled start or previous metadata fetch. If YouTube moves
 the stream, the refreshed scheduled time controls the next automatic retry.
+IDs in src/channel/ignored-videos.json remain excluded even when passed with
+--video-id or --refresh-video-id.
 
 Examples:
   npm run fetch:video-metadata

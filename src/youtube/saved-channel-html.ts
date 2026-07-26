@@ -16,6 +16,7 @@ export interface ExtractSavedChannelHtmlOptions {
   channelId?: string;
   fetchedAt?: string;
   sourcePath?: string;
+  ignoredVideoIds?: ReadonlySet<string>;
 }
 
 export interface SavedChannelHtmlExtraction {
@@ -53,7 +54,8 @@ export function extractSavedChannelHtml(
   const renderedRecords = extractRenderedLockupRecords(html, options.tab);
   const initialDataRecords = initialData ? extractInitialDataLockupRecords(initialData, options.tab) : [];
   const extractionMethod = renderedRecords.length > 0 ? "rendered-lockups" : "yt-initial-data";
-  const records = dedupeByVideoId(extractionMethod === "rendered-lockups" ? renderedRecords : initialDataRecords);
+  const records = dedupeByVideoId(extractionMethod === "rendered-lockups" ? renderedRecords : initialDataRecords)
+    .filter((record) => !options.ignoredVideoIds?.has(record.videoId));
   const channelUrl = normalizeChannelUrl(options.channelUrl ?? savedFromUrl(html) ?? defaultChannelUrl);
   const channelId = options.channelId ?? (initialData ? findChannelId(initialData) : undefined) ?? defaultChannelId;
   const extractedAt = options.fetchedAt ?? new Date().toISOString();

@@ -157,6 +157,46 @@ test("production policy consolidates the A-6F variant into the A-6 Intruder topi
   });
 });
 
+test("production policy canonicalizes AW101 Merlin aircraft naming", async () => {
+  const catalog = await loadTopicNormalizationCatalog(
+    "src/derived/topic-normalization-patterns.tsv",
+  );
+  const expected = [
+    ["agustawestland-merlin", "normalize-agustawestland-merlin"],
+    ["agustawestland-aw101-merlin", "normalize-agustawestland-aw101-merlin"],
+    ["eh101-merlin", "normalize-eh101-merlin"],
+    ["merlin-helicopter", "normalize-global-curation-merlin-helicopter"],
+    ["merlin-helicopters", "normalize-global-curation-merlin-helicopters"],
+  ] as const;
+
+  for (const [input, ruleId] of expected) {
+    assert.deepEqual(resolveTopicCreation(catalog, input), {
+      input,
+      slug: "aw101-merlin",
+      changed: true,
+      matchedRuleIds: [ruleId],
+    });
+  }
+  assert.deepEqual(resolveTopicDisplayTitle(catalog, "aw101-merlin"), {
+    slug: "aw101-merlin",
+    title: "AW101 Merlin",
+    matchedRuleIds: ["display-aw101-merlin"],
+    resolution: "exact",
+  });
+  assert.deepEqual(
+    catalog.rules.find((rule) => rule.ruleId === "display-aw101-merlin")?.aliases,
+    [
+      "AgustaWestland AW101",
+      "AgustaWestland AW101 Merlin",
+      "AgustaWestland Merlin",
+      "EH101",
+      "EH101 Merlin",
+      "Merlin Helicopter",
+      "Merlin Helicopters",
+    ],
+  );
+});
+
 test("production policy applies the repository-owner topic normalization batch", async () => {
   const catalog = await loadTopicNormalizationCatalog(
     "src/derived/topic-normalization-patterns.tsv",

@@ -10,6 +10,7 @@ import {
   type ChannelInventoryCompleteness,
   type ChannelVideoLinksResult,
 } from "../youtube/channel-video-links.js";
+import { readIgnoredVideos } from "../youtube/ignored-videos.js";
 
 interface CliOptions {
   inputs: string[];
@@ -23,7 +24,9 @@ interface CliOptions {
 async function main(): Promise<void> {
   const options = parseArgs(process.argv.slice(2));
   const results = await Promise.all(options.inputs.map((input) => readChannelVideoLinksResult(input)));
-  const merged = mergeChannelVideoLinksResults(results);
+  const ignoredVideos = await readIgnoredVideos();
+  const ignoredVideoIds = new Set(ignoredVideos.keys());
+  const merged = mergeChannelVideoLinksResults(results, ignoredVideoIds);
 
   if (options.output !== undefined) {
     await writeVideoLinksOutput(options.output, merged);
@@ -31,6 +34,7 @@ async function main(): Promise<void> {
   if (options.masterOutput !== undefined) {
     await writeChannelEpisodeMasterOutput(options.masterOutput, merged, {
       completeness: options.inventoryCompleteness,
+      ignoredVideoIds,
     });
   }
   if (options.linksOutput !== undefined || options.metadataOutput !== undefined) {

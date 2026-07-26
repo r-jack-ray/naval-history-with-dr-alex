@@ -64,6 +64,10 @@ one shared request limiter, and writes schema-2 `fetch-status.json` after each
 attempt. Deferred videos are not attempts or previous failures. Previous real
 failures are skipped on resume unless `--retry-failed` is provided.
 
+Videos in `src/channel/ignored-videos.json` are excluded before batch accounting
+and are also blocked by the direct transcript command. They do not belong in
+the transcript failure list because the whole video is outside project scope.
+
 Run `npm run fetch:video-metadata` before the transcript batch. That metadata
 step retains upcoming livestream air dates and automatically refreshes a
 deferred record about 24 hours after its latest scheduled time. A postponed

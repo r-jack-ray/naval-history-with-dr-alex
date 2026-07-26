@@ -12,6 +12,7 @@ export interface ExtractLiveStreamsHtmlOptions {
   channelId?: string;
   fetchedAt?: string;
   sourcePath?: string;
+  ignoredVideoIds?: ReadonlySet<string>;
 }
 
 export interface LiveStreamsHtmlExtraction {
@@ -45,7 +46,9 @@ export function extractLiveStreamsHtml(
   const lockups = collectValuesForKey(initialData, "lockupViewModel");
   const records = lockups
     .map((lockup, index) => extractLiveStreamRecord(lockup, index + 1))
-    .filter((record): record is ChannelVideoLink => record !== undefined);
+    .filter((record): record is ChannelVideoLink => (
+      record !== undefined && !options.ignoredVideoIds?.has(record.videoId)
+    ));
   const channelUrl = normalizeChannelUrl(options.channelUrl ?? savedFromUrl(html) ?? defaultChannelUrl);
   const channelId = options.channelId ?? findChannelId(initialData) ?? defaultChannelId;
   const extractedAt = options.fetchedAt ?? new Date().toISOString();

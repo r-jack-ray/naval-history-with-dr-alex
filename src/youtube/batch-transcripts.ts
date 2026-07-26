@@ -97,6 +97,7 @@ export interface FetchTranscriptBatchOptions {
   retryFailed?: boolean;
   force?: boolean;
   dryRun?: boolean;
+  ignoredVideoIds?: ReadonlySet<string>;
   logger?: (message: string) => void;
   fetchTranscript?: (options: FetchVideoTranscriptOptions) => Promise<VideoTranscript>;
 }
@@ -116,9 +117,20 @@ interface TranscriptBatchCounters {
 export async function fetchAndStoreTranscriptBatch(
   options: FetchTranscriptBatchOptions,
 ): Promise<TranscriptBatchStatus> {
-  const episodes = await readTranscriptBatchEpisodes(options.inputPath);
+  const inputEpisodes = await readTranscriptBatchEpisodes(options.inputPath);
+  const ignoredVideoIds = options.ignoredVideoIds ?? new Set<string>();
+  const episodes = inputEpisodes.filter((episode) => !ignoredVideoIds.has(episode.videoId));
+  if (episodes.length !== inputEpisodes.length) {
+    options.logger?.(
+      `Excluded ${inputEpisodes.length - episodes.length} video(s) from transcripts using the channel-wide ignore list.`,
+    );
+  }
   const existingStatus = await readTranscriptBatchStatus(options.statusOutput);
-  const failuresById = new Map(existingStatus.failures.map((failure) => [failure.videoId, failure]));
+  const failuresById = new Map(
+    existingStatus.failures
+      .filter((failure) => !ignoredVideoIds.has(failure.videoId))
+      .map((failure) => [failure.videoId, failure]),
+  );
   const metadataById = await readVideoMetadataById(options.metadataInput);
   const sharedFetch = createRateLimitedFetch({
     delayMs: options.requestDelayMs,

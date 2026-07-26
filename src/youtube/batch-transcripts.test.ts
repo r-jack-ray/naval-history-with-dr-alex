@@ -148,6 +148,52 @@ test("batch can fetch without a metadata lookup when explicitly requested", asyn
   }
 });
 
+test("batch fully excludes ignored videos and clears their stale failures", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "naval-transcript-batch-"));
+  const input = join(dir, "episodes.json");
+  const outputRoot = join(dir, "transcripts");
+  const statusOutput = join(outputRoot, "fetch-status.json");
+  const calls: string[] = [];
+
+  try {
+    await writeFile(input, JSON.stringify({
+      episodes: [
+        { videoId: "ts331iLYWlc", title: "Ignored error", tabs: ["streams"] },
+        { videoId: "keep-video1", title: "Keep", tabs: ["videos"] },
+      ],
+    }), "utf8");
+    await mkdir(outputRoot, { recursive: true });
+    await writeFile(statusOutput, JSON.stringify({
+      failures: [{
+        videoId: "ts331iLYWlc",
+        attemptedAt: "2026-07-26T00:00:00.000Z",
+        classification: "fetch_failed",
+        error: "Old failure.",
+        tabs: ["streams"],
+      }],
+    }), "utf8");
+
+    const status = await fetchAndStoreTranscriptBatch({
+      inputPath: input,
+      outputRoot,
+      statusOutput,
+      requestDelayMs: 5,
+      ignoredVideoIds: new Set(["ts331iLYWlc"]),
+      fetchTranscript: async (options) => {
+        calls.push(options.videoId);
+        return sampleTranscript(options.videoId);
+      },
+    });
+
+    assert.deepEqual(calls, ["keep-video1"]);
+    assert.equal(status.stats.inputVideoCount, 1);
+    assert.equal(status.stats.totalFailureCount, 0);
+    assert.deepEqual(status.failures, []);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
 test("batch refetches a manifest record whose TXT file is missing", async () => {
   const dir = await mkdtemp(join(tmpdir(), "naval-transcript-batch-"));
   const input = join(dir, "episodes.json");

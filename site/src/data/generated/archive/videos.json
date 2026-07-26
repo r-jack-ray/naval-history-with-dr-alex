@@ -73,6 +73,7 @@
       "carriers-did-not-instantly-end-capital-ship-development",
       "iowa-assisted-loading-versus-full-autoloader",
       "loaded-shells-cannot-be-switched-instantly",
+      "autoloaders-and-maximum-loading-angle",
       "powered-turrets-and-emergency-power",
       "why-loaded-shells-cannot-return-to-ready-racks",
       "why-big-guns-lost-ready-ammunition",
@@ -81,6 +82,7 @@
       "des-moines-magazine-handling-was-not-fully-automatic",
       "tiger-class-mark-26-six-inch-mounting",
       "sixteen-inch-airburst-against-drone-swarms",
+      "uss-salem-preserved-autoloader",
       "des-moines-mark-16-autoloading-eight-inch-guns",
       "autoloading-eight-inch-town-class-counterfactual",
       "nuclear-powered-royal-navy-capital-ships",
@@ -1939,6 +1941,14 @@
       {
         "slug": "solas",
         "title": "Solas"
+      },
+      {
+        "slug": "damage-control",
+        "title": "Damage Control"
+      },
+      {
+        "slug": "maritime-radio",
+        "title": "Maritime Radio"
       }
     ],
     "segmentSlugs": [
@@ -1972,7 +1982,13 @@
       "bulkheads-versus-armour",
       "why-caribbean-cruise-ships-differ-from-liners",
       "moskva-hood-and-sheffield-comparison",
-      "political-will-and-the-g3-battlecruisers"
+      "political-will-and-the-g3-battlecruisers",
+      "titanic-myths-radio-and-command-reality",
+      "lifeboats-as-ferries-was-not-a-workable-plan",
+      "how-many-people-full-lifeboats-could-have-saved",
+      "why-pump-access-and-low-bulkheads-failed",
+      "solas-radio-watch-and-distress-signals",
+      "modern-cruise-ships-as-wartime-troop-transports"
     ],
     "stats": {
       "views": "1,065 views",
@@ -2931,6 +2947,7 @@
       "voyage-into-darkness-after-earths-defeat",
       "laser-range-as-a-damage-and-timing-problem",
       "empire-rising-space-naval-statecraft",
+      "missile-exchange-after-loss-is-inevitable",
       "space-carriers-and-general-purpose-cruisers",
       "space-battlecruiser-as-carrier-battleship-hybrid",
       "albion-lost-wild-space-fleet-surprise",
@@ -3849,6 +3866,8 @@
       "german-invasion-gamble-and-british-mobilisation",
       "norwegian-slow-mobilization-and-denmark-logistics",
       "germanys-strategic-case-for-norway",
+      "norwegian-coast-patrol-and-flying-boat-losses",
+      "independent-companies-moved-by-sea-in-norway",
       "small-landings-and-air-power-in-norway",
       "lord-cork-and-command-under-pressure",
       "published-archives-as-research-guides"
@@ -5568,12 +5587,14 @@
     ],
     "segmentSlugs": [
       "hunt-class-escort-destroyer-classification",
+      "royal-navy-seven-layer-escort-ladder",
       "hunt-class-earlier-ordering-counterfactual",
       "hms-berkeley-type-i-capabilities",
       "hms-berkeley-rapid-wartime-cycle",
       "hms-berkeley-channel-dash-role",
       "hms-holderness-east-coast-convoys",
       "hunt-type-ii-increased-escort-weaponry",
+      "hunt-egret-propulsion-treaty-question",
       "orp-slazak-polish-hunt-service",
       "hunt-class-aft-gunnery-escort-logic",
       "escort-construction-workforce-friction",
@@ -5585,7 +5606,11 @@
       "hunt-type-iv-thornycroft-experiment",
       "hunt-type-iv-escort-capability-tradeoff",
       "hunt-type-iv-range-divergence",
+      "hunt-class-allied-navy-service",
+      "hunt-type-iii-surface-raider-rationale",
       "hunt-class-adaptable-all-rounder",
+      "hunt-black-swan-generalist-specialist-comparison",
+      "hunt-class-routine-escort-presence",
       "hunt-class-earlier-escort-force-question"
     ],
     "stats": {
@@ -6575,7 +6600,7 @@
         "title": "Altmark"
       },
       {
-        "slug": "admiral-graf-spee",
+        "slug": "admiral-graf-spee-ship",
         "title": "Admiral Graf Spee"
       },
       {
@@ -7919,6 +7944,7 @@
       "defining-the-early-jet-age-transition",
       "big-blue-blanket-fighter-direction",
       "fighter-direction-radio-systems",
+      "carrier-radar-height-and-fighter-direction",
       "british-and-american-cap-tradeoffs",
       "carrier-air-group-serviceability",
       "royal-navy-carrier-power-before-the-late-1960s",
@@ -8883,17 +8909,26 @@
       }
     ],
     "segmentSlugs": [
+      "fleet-stories-test-the-fit-between-mission-ships-and-people",
       "battlecruiser-labels-follow-mission-and-defenses",
       "fleet-design-begins-with-setting-and-purpose",
+      "peacetime-service-creates-different-readiness-and-firing-habits",
       "practical-ships-defenses-and-missile-physics",
       "culture-economics-and-naval-naming",
+      "diaspora-languages-reflect-founder-power-and-media",
       "starfighters-capital-ship-economics-and-fragility",
       "cheap-hull-count-politics-locks-in-obsolescence",
+      "fighter-capacity-can-displace-dedicated-escort-ships",
       "established-rules-tactics-and-command-personalities",
+      "alliance-trust-can-be-worth-more-than-preserved-warships",
       "constitutional-monarchies-balance-symbolism-and-veto-power",
       "politics-cost-and-interstellar-war-limits",
       "forecasts-guide-judgment-without-predicting-the-future",
+      "experienced-captains-carry-tacit-technical-knowledge",
       "shuttles-orbital-infrastructure-and-cargo-scale",
+      "television-production-constraints-shaped-star-trek-technology",
+      "cargo-standards-and-thermal-budgets-make-scale-concrete",
+      "unconventional-commanders-turn-known-ships-into-capability",
       "technology-diffusion-economics-and-secrecy",
       "hegemonic-peace-serves-the-hegemon-first",
       "broad-frameworks-history-and-human-behavior",
@@ -9187,7 +9222,7 @@
         "title": "Battle Of The River Plate"
       },
       {
-        "slug": "admiral-graf-spee",
+        "slug": "admiral-graf-spee-ship",
         "title": "Admiral Graf Spee"
       },
       {
@@ -12594,6 +12629,10 @@
         "title": "Floating Docks"
       },
       {
+        "slug": "bermuda-dockyard",
+        "title": "Royal Naval Dockyard, Bermuda"
+      },
+      {
         "slug": "ship-maintenance",
         "title": "Ship Maintenance"
       },
@@ -12612,17 +12651,22 @@
       "commercial-docks-and-strategic-geography",
       "anglo-american-naval-rivalry-in-perspective",
       "canadian-distance-and-invasion-logistics",
+      "floating-dock-subdivision-and-survivability",
       "bermuda-floating-dock-mobility",
       "towing-admiralty-floating-dock-to-bermuda",
       "preventive-maintenance-makes-a-fleet-real",
       "floating-docks-and-mulberry-harbor-engineering",
+      "versatility-built-the-case-for-bermuda-dock",
       "preventive-maintenance-defines-real-fleet-strength",
       "allied-repair-capacity-limits-global-operations",
       "floating-docks-maintenance-cost-and-capacity",
+      "bermuda-dock-lift-growth-and-service-life",
       "bermuda-dock-upgrades-and-modularity",
+      "medway-testing-created-immediate-capacity",
       "a-worldwide-ladder-of-dock-capacity",
       "infrastructure-marks-enduring-maritime-power",
       "repair-resilience-and-carrier-availability",
+      "floating-dock-as-shipbuilding-platform",
       "infrastructure-constrains-capital-ship-design",
       "mobile-infrastructure-sustains-maritime-power",
       "spacecraft-still-require-maintenance-infrastructure"
@@ -13927,7 +13971,7 @@
         "title": "Henry Harwood"
       },
       {
-        "slug": "admiral-graf-spee",
+        "slug": "admiral-graf-spee-ship",
         "title": "Admiral Graf Spee"
       }
     ],
@@ -14287,7 +14331,7 @@
         "title": "Battle Of The River Plate"
       },
       {
-        "slug": "admiral-graf-spee",
+        "slug": "admiral-graf-spee-ship",
         "title": "Admiral Graf Spee"
       },
       {
@@ -15286,7 +15330,7 @@
     "description": "A little bit of an overview and discussion of the cruise of the Admiral Graf Spee",
     "topics": [
       {
-        "slug": "admiral-graf-spee",
+        "slug": "admiral-graf-spee-ship",
         "title": "Admiral Graf Spee"
       },
       {
@@ -15428,26 +15472,49 @@
       }
     ],
     "segmentSlugs": [
+      "alaska-benchmark-and-british-studies",
       "global-cruiser-requirement",
+      "postwar-britain-cash-shortage",
+      "gold-standard-and-economic-orthodoxy",
       "six-inch-volume-of-fire",
       "five-point-two-five-compromise",
+      "battlecruiser-fleet-gunnery-lessons",
+      "river-plate-town-class-counterfactual",
       "six-inch-anti-aircraft-barrage",
+      "us-and-british-cruiser-firepower",
       "night-fighting-six-inch-choice",
+      "dockyard-limits-on-five-turret-cruisers",
+      "county-and-york-turret-tradeoff",
+      "six-inch-loading-technology-sweet-spot",
       "torpedo-aiming-by-firelight",
       "surrey-balanced-heavy-cruiser",
       "surrey-cancellation-treaty-leverage",
       "commonwealth-one-navy-doctrine",
       "tribal-destroyer-elite-culture",
+      "eight-inch-anti-aircraft-fuzes",
+      "tribal-destroyer-damage-and-aggression",
+      "british-battleship-downsizing-and-cruisers",
+      "japanese-exposure-to-british-cruisers",
+      "county-class-design-ancestry",
       "super-town-quadruple-six-inch",
+      "naval-treaty-ratios-and-status",
+      "king-george-v-fourteen-inch-choice",
       "super-town-split-quadruple-turrets",
       "twenty-thousand-ton-heavy-cruiser",
       "five-point-two-five-versus-five-inch-guns",
+      "union-jack-aerial-identification",
+      "crown-colony-quadruple-turret-layout",
+      "battleship-size-without-treaties",
       "super-town-treaty-expectations",
+      "pom-pom-versus-bofors",
+      "arms-race-rhetoric-and-cruiser-policy",
+      "town-class-wartime-experience",
       "neptune-large-light-cruiser",
       "light-carriers-replacing-cruisers",
       "automatic-loading-and-cruiser-manning",
       "neptune-postwar-service-life",
       "minotaur-british-layout-priorities",
+      "minotaur-name-across-cruiser-projects",
       "minotaur-three-inch-secondary-battery",
       "royal-navy-four-point-five-inch-inertia",
       "town-class-adaptability-blocked-successors",
@@ -16201,23 +16268,34 @@
       }
     ],
     "segmentSlugs": [
+      "specialised-steel-reveals-industrial-depth",
       "carrier-as-mobile-air-base-and-system-of-systems",
       "mobile-carriers-and-fixed-air-base-defense",
       "carrier-services-air-group-and-hull-scale",
       "personnel-recruitment-retention-and-public-support",
       "public-legitimacy-pride-and-long-term-defense-support",
+      "shipyard-concentration-and-obsolete-competition-rules",
       "shipyards-workforce-and-modular-construction",
+      "strategic-control-of-carrier-capable-shipyards",
       "dry-docks-maintenance-and-operational-readiness",
+      "merchant-and-warship-maintenance-demands",
+      "floating-dry-docks-and-forward-repair-access",
       "warship-maintenance-multi-role-training-and-workup",
       "shaft-seal-damage-and-emergency-dry-docking",
       "plant-supply-chains-and-single-source-risk",
       "wartime-turbines-fuzes-and-industrial-dependence",
       "emals-allied-priority-and-component-sourcing",
       "electronics-integration-and-skilled-workforce",
+      "allied-technology-standards-versus-common-hulls",
       "jetties-dredging-and-base-resilience",
+      "temporary-carrier-visits-versus-sustaining-bases",
       "carrier-self-defense-and-flight-deck-tradeoffs",
+      "interceptor-costs-follow-the-value-defended",
+      "national-carrier-weapon-fits-and-readiness",
       "shore-air-bases-training-and-retention",
+      "training-experience-and-professional-judgement",
       "specialist-administration-and-carrier-program-coordination",
+      "specialists-generalists-and-defence-institutional-memory",
       "fleet-scale-and-sustainment-economies"
     ],
     "stats": {
@@ -18601,6 +18679,7 @@
       "mussolini-monarchy-neutral-italy-divergence",
       "neutral-italy-removes-mediterranean-war",
       "royal-navy-concentrates-home-fleet",
+      "graf-spee-reaches-indian-ocean",
       "stronger-home-fleet-norway-campaign",
       "french-troops-italian-border-ardennes",
       "french-fleet-without-mers-el-kebir",
@@ -19451,7 +19530,7 @@
       },
       {
         "slug": "duquesne-class",
-        "title": "Duquesne Class"
+        "title": "Duquesne Class Cruisers"
       },
       {
         "slug": "heavy-cruisers",
@@ -20457,23 +20536,33 @@
     ],
     "segmentSlugs": [
       "malta-at-the-mediterranean-crossroads",
+      "royal-navy-1954-medium-fleet-carrier-study",
       "island-bases-and-maritime-control",
       "anthony-achilles-great-siege-epic",
       "trade-routes-make-malta-strategic",
       "british-naval-base-and-maltese-autonomy",
       "mediterranean-chokepoints-and-malta",
+      "trade-networks-before-modern-globalisation",
       "medina-and-long-maltese-occupation",
       "first-siege-and-unrecorded-command",
+      "female-defence-command-candidates",
+      "saints-and-memory-of-maltas-first-siege",
       "gozo-citadel-before-1551",
       "women-and-civilians-in-siege-defense",
+      "ransoms-and-surrender-terms",
       "gozo-1551-and-the-cost-of-defeat",
       "fourteen-years-of-maltese-preparation",
+      "castle-spiral-stairs-limit-attackers",
       "surrender-and-enslavement-in-siege-warfare",
+      "storming-stair-defended-castles",
       "fort-st-angelo-controls-grand-harbour",
       "great-siege-1565-scale-and-civilian-defense",
+      "great-siege-casualties-and-hidden-defenders",
       "fort-st-michael-medina-and-the-great-relief",
       "french-occupation-and-maltese-siege-1798",
+      "claire-norton-ottoman-history-reading",
       "anglo-portuguese-blockade-and-hms-alexander",
+      "civilian-defenders-military-experience-and-labour",
       "fort-st-elmo-and-the-cost-of-assault",
       "world-war-two-siege-of-malta",
       "malta-striking-base-force-k-submarines-aircraft",
@@ -20481,7 +20570,10 @@
       "submarines-submerged-in-grand-harbour",
       "wwii-malta-fortification-plans",
       "malta-strategy-and-the-forgotten-population",
-      "medium-bombers-and-limits-of-axis-air-power"
+      "hannibal-withdrawal-from-italy",
+      "medium-bombers-and-limits-of-axis-air-power",
+      "german-capital-ship-losses-norway-counterfactual",
+      "british-destruction-of-german-surface-fleet"
     ],
     "stats": {
       "views": "791 views",
@@ -23450,7 +23542,7 @@
     "description": "The strategic issues both facing a surface raider and those seeking to oppose it.",
     "topics": [
       {
-        "slug": "admiral-graf-spee",
+        "slug": "admiral-graf-spee-ship",
         "title": "Admiral Graf Spee"
       },
       {
@@ -23504,7 +23596,7 @@
         "title": "Battle Of The River Plate"
       },
       {
-        "slug": "admiral-graf-spee",
+        "slug": "admiral-graf-spee-ship",
         "title": "Admiral Graf Spee"
       },
       {
@@ -24149,39 +24241,89 @@
       {
         "slug": "naval-procurement",
         "title": "Naval Procurement"
+      },
+      {
+        "slug": "book-recommendations",
+        "title": "Book Recommendations"
+      },
+      {
+        "slug": "armoured-warfare",
+        "title": "Armoured Warfare"
+      },
+      {
+        "slug": "norman-conquest",
+        "title": "Norman Conquest"
+      },
+      {
+        "slug": "anglo-saxon-england",
+        "title": "Anglo Saxon England"
+      },
+      {
+        "slug": "roman-army",
+        "title": "Roman Army"
       }
     ],
     "segmentSlugs": [
       "devastator-replacement-before-avenger",
       "failed-pearl-harbor-and-pacific-war",
+      "panzer-iii-versus-matilda-early-war",
       "slow-swordfish-awkward-zero-target",
       "german-response-to-british-carrier-strength",
       "guppy-submarines-sent-to-1941",
       "courageous-glorious-survive-war",
+      "battle-of-the-bulge-book-bastogne",
       "rugged-aircraft-and-royal-navy-procurement",
       "submarine-technology-versus-crew-knowledge",
+      "early-seventeen-pounder-chassis-limits",
+      "smashing-hitlers-panzers-veterans",
+      "vt-fuze-battle-of-the-bulge",
+      "patton-counterattack-when-ready",
       "carrier-doctrine-alpha-strike-versus-tempo",
       "german-predreadnought-carrier-conversions",
       "rb106-sea-vixen-scimitar",
       "swordfish-lancaster-pilot-rivalry",
       "british-carriers-for-different-pacific",
+      "centurion-as-early-allied-standard",
       "first-general-purpose-destroyer",
       "replace-blackburn-roc-supermarine",
+      "centaurus-engine-development-time",
+      "panzer-iii-north-africa-book",
+      "centurion-1939-combat-mismatch",
       "japanese-raiders-economic-war",
       "warship-types-public-memory",
       "balloons-in-napoleonic-naval-warfare",
       "last-world-war-one-warships-in-1948",
+      "chieftain-maintenance-and-mobility",
       "royal-navy-air-group-commanders",
+      "chieftain-with-merlin-engines",
       "six-lexingtons-and-british-response",
+      "pirate-records-and-historical-evidence",
+      "six-lexington-conversions-diverge",
       "major-refit-as-reconstruction",
       "better-first-french-carrier",
+      "early-carrier-definition-before-combat",
+      "french-carrier-design-and-propulsion",
+      "bearn-convoy-escort-role",
       "bearn-coal-bunkers-torpedo-defense",
+      "panther-quality-versus-quantity",
       "kaiten-submarine-defense",
+      "panthers-in-italy-operational-readiness",
       "armored-carrier-lifts-hard-to-target",
+      "successful-market-garden-race-to-berlin",
+      "war-in-1939-hitler-miscalculation",
       "royal-navy-postwar-carrier-replacements",
+      "barbarossa-sacrificed-strategic-resources",
       "cheap-ships-versus-cheapened-ships",
+      "wales-most-transformed-by-normans",
+      "landscapes-of-norman-conquest-book",
+      "norman-monumental-power-and-wales",
+      "parish-churches-reshape-landscape",
+      "hundred-years-war-french-civil-war",
+      "william-norman-with-norse-roots",
       "eagle-secondary-role-limited-refit",
+      "church-reform-before-and-after-1066",
       "argus-retirement-reversed-by-deck-demand",
+      "norman-english-way-of-war",
       "hermes-dual-purpose-gun-refit",
       "revenge-versus-renown-carrier-conversion",
       "naval-victoria-cross-cases-second-world-war",
@@ -24190,23 +24332,31 @@
       "g3-carrier-conversion-problems",
       "falklands-naval-victoria-cross-timing",
       "best-1920s-carrier-conversions",
+      "fortress-kingdom-chester-burh",
+      "anglo-saxon-burhs-and-professional-soldiers",
       "old-cruisers-worth-retaining",
       "courageous-lower-tonnage-benefit",
+      "falklands-naval-bravery-and-witnesses",
       "treasury-limited-british-carrier-refits",
       "eagle-kamikaze-survivability",
       "engine-that-changed-world-book",
       "favorite-second-world-war-ships-by-role",
       "british-carrier-onboard-delivery-options",
       "fairey-gannet-endurance-design",
+      "romes-warriors-book-overview",
+      "etruscan-roman-hoplite-army",
       "british-led-f35-design-priorities",
+      "historical-clothing-cost-and-climate",
       "naval-eyewitnesses-book-overview",
       "carrier-deck-landing-eyewitness",
+      "argus-mess-deck-accounting",
       "argus-eagle-wartime-eyewitnesses",
       "buccaneer-subsonic-low-level-design",
       "old-weapons-in-new-wars",
       "fifteen-inch-gun-evolution-not-clean-sheet",
       "type-82-malta-falklands-counterfactual",
-      "named-classes-resist-cancellation"
+      "named-classes-resist-cancellation",
+      "harrier-carrier-aircraft-gamble"
     ],
     "stats": {
       "views": "507 views",
@@ -26955,22 +27105,32 @@
     ],
     "segmentSlugs": [
       "standardization-rather-than-paper-perfection",
+      "deutschlands-and-scharnhorsts-classified",
       "common-hull-fleet-benefits-and-limits",
+      "narvik-destroyer-firepower-tradeoffs",
       "scharnhorst-hull-design-parameters",
+      "h-class-escalation-versus-repeat-builds",
       "kriegsmarine-third-in-procurement-line",
       "goeben-breslau-distant-capital-ship-lesson",
       "repeated-construction-lowers-cost",
       "japanese-inspired-german-carrier",
       "three-yard-construction-program",
+      "royal-navy-aa-and-industrial-response",
       "destroyer-prestige-and-standardization",
       "french-response-hunting-groups",
-      "royal-navy-aa-and-industrial-response",
+      "tribal-aa-exercise-lessons",
+      "british-shipyard-capacity-accelerates-response",
       "gullwing-seafire-program-survives",
       "accelerated-british-fast-fleet",
+      "german-fleet-readiness-and-british-intelligence",
+      "british-multi-carrier-hunting-groups",
       "norway-campaign-fleet-concentration",
+      "continuous-carrier-strikes-reduce-german-raiders",
+      "free-french-naval-leadership-counterfactual",
       "operation-berlin-interception",
       "surface-fleet-collapse-or-double-down",
       "visible-threat-unlocks-british-overmatch",
+      "naval-treaty-enforcement-and-legitimacy",
       "italian-carrier-rivalry-closing-question"
     ],
     "stats": {
@@ -27860,7 +28020,7 @@
     "description": "On the 12th of December 1939, one of the most critical components of the Panzerschiff, the Admiral Graf Spee, arsenal broke down. From this point on she didn't have a scout, in battle on the 13th Captain Langsdorff would command the battle from the flying bridge to try and get the best possible view of what was going on.",
     "topics": [
       {
-        "slug": "admiral-graf-spee",
+        "slug": "admiral-graf-spee-ship",
         "title": "Admiral Graf Spee"
       },
       {
@@ -32107,7 +32267,7 @@
         "title": "Battle Of The River Plate"
       },
       {
-        "slug": "admiral-graf-spee",
+        "slug": "admiral-graf-spee-ship",
         "title": "Admiral Graf Spee"
       },
       {
@@ -32988,7 +33148,7 @@
         "title": "Battle Of The River Plate"
       },
       {
-        "slug": "admiral-graf-spee",
+        "slug": "admiral-graf-spee-ship",
         "title": "Admiral Graf Spee"
       },
       {
@@ -45472,7 +45632,7 @@
         "title": "Battle Of The River Plate"
       },
       {
-        "slug": "admiral-graf-spee",
+        "slug": "admiral-graf-spee-ship",
         "title": "Admiral Graf Spee"
       },
       {
@@ -47532,6 +47692,7 @@
       "why-modern-thinking-discounts-reserves",
       "bramble-class-and-rattler-service-life",
       "crewing-old-ships-and-retaining-hulls",
+      "hms-protector-secondary-roles-across-three-wars",
       "mobilization-as-deterrence-and-convoy-depth",
       "type-45-production-and-reserve-economics",
       "ships-in-ordinary-as-operational-buffer",
@@ -47539,14 +47700,20 @@
       "old-battleships-free-the-grand-fleet",
       "presence-and-world-war-ii-reserve-shortfall",
       "old-hulls-as-training-infrastructure",
+      "kriegsmarine-entered-war-before-its-fleet-was-ready",
       "german-fleet-lacked-depth",
-      "reserve-personnel-sources-and-jutland",
+      "brandenburg-class-mission-fit",
+      "royal-navy-reserve-personnel-sources",
+      "army-navy-competition-for-technical-reservists",
+      "germanys-jutland-force-structure-gap",
+      "brandenburg-guns-outlive-the-hulls",
       "hulks-tenders-and-mine-storage",
       "austro-hungarian-readiness-and-mission-fit",
       "austro-hungarian-river-monitors",
       "marceau-as-mobile-workshop",
       "standardization-and-french-logistics",
       "italian-second-fleet-blockade-depth",
+      "italian-navy-professionalism-beyond-the-stereotype",
       "reserve-insignia-and-service-identity",
       "reserve-fleets-enable-wartime-mass",
       "type-23-role-specialization-and-force-release"
@@ -51732,6 +51899,7 @@
       "uss-pomfret-operational-apprenticeship",
       "reading-presidential-naval-career-sources",
       "operational-versus-staff-officer-careers",
+      "carter-naval-skills-without-hagiography",
       "uss-barracuda-sonar-development",
       "rickover-recruits-carter",
       "chalk-river-nuclear-safety-lessons",
@@ -51739,6 +51907,7 @@
       "seawolf-career-ended-by-family-duty",
       "naval-training-applied-to-farming",
       "naval-integration-and-public-service",
+      "pragmatic-public-service-in-georgia-senate",
       "education-as-capability-development",
       "civil-rights-and-electoral-compromise",
       "georgia-administrative-consolidation",
@@ -52691,7 +52860,7 @@
     "description": "The Admiral Graf Spee is of course synonymous with disguising herself, the actual process took several days and a lot of supplies from the Altmark",
     "topics": [
       {
-        "slug": "admiral-graf-spee",
+        "slug": "admiral-graf-spee-ship",
         "title": "Admiral Graf Spee"
       },
       {
@@ -53221,7 +53390,7 @@
     "topics": [
       {
         "slug": "majestic-class-carriers",
-        "title": "Majestic Class Carriers"
+        "title": "Majestic Class Aircraft Carriers"
       },
       {
         "slug": "aircraft-carriers",
@@ -55034,7 +55203,7 @@
         "title": "Ss Africa Shell"
       },
       {
-        "slug": "admiral-graf-spee",
+        "slug": "admiral-graf-spee-ship",
         "title": "Admiral Graf Spee"
       },
       {
@@ -56332,7 +56501,8 @@
       "formidable-sinking-by-u-24",
       "bayly-command-accountability-and-adaptation",
       "formidable-anti-submarine-escort-lesson",
-      "formidable-history-without-hindsight"
+      "formidable-history-without-hindsight",
+      "formidable-treaty-future-for-sovereign-battleships"
     ],
     "stats": {
       "views": "1,433 views",
@@ -57494,7 +57664,7 @@
     "description": "the meeting up with the Altmark on the 24th of November, combined with the Sunday Update which was a feature of the #RiverPlate80 tweet event on @AC_NavalHistory",
     "topics": [
       {
-        "slug": "admiral-graf-spee",
+        "slug": "admiral-graf-spee-ship",
         "title": "Admiral Graf Spee"
       },
       {
@@ -57883,6 +58053,7 @@
       "malaya-ground-defence-and-logistics",
       "zigzagging-against-submarine-attack",
       "adrian-carton-de-wiart-career",
+      "la-galissonniere-and-de-grasse-designs",
       "submarine-firing-solutions-and-zigzagging",
       "fast-liners-and-submarine-threat",
       "carton-de-wiart-victoria-cross-command",
@@ -58785,7 +58956,8 @@
       "royal-navy-war-at-sea-reference",
       "soviet-wartime-carrier-ranger-baseline",
       "hms-victory-fixed-drydock-preservation",
-      "naval-skills-civilian-accreditation"
+      "naval-skills-civilian-accreditation",
+      "convoy-sc122-hx229-not-a-turning-point"
     ],
     "stats": {
       "views": "557 views",
@@ -61900,6 +62072,7 @@
     ],
     "segmentSlugs": [
       "indicated-versus-brake-horsepower",
+      "capital-ship-interiors-supported-peacetime-duties",
       "modern-role-for-a-roman-trireme",
       "akagi-best-peacetime-carrier-career",
       "stereoscopic-versus-coincidence-rangefinders",
@@ -61910,6 +62083,8 @@
       "modular-warship-construction-not-yet-delivered",
       "courageous-heavy-cruisers-change-treaty-system",
       "early-dante-prompts-austrian-dreadnought-response",
+      "lion-offered-better-underwater-protection-than-courageous",
+      "tiger-class-needed-more-than-four-six-inch-guns",
       "graf-zeppelin-removing-six-inch-guns",
       "nimrod-mr4-airframe-variation",
       "canaris-and-preserving-postwar-germany",
@@ -61917,10 +62092,13 @@
       "royal-navy-flagship-interior-design",
       "design-sketch-to-built-warship",
       "norman-friedman-destroyer-research",
+      "unusual-materials-used-for-boats",
       "h3a-versus-g3-speed-and-firepower",
       "alaska-sixteen-inch-guns-defeat-large-cruiser-purpose",
       "keeping-kuznetsov-signals-russian-fleet-weakness",
       "large-cruiser-upper-limit-without-treaties",
+      "kuznetsov-sister-carriers-differed-in-dimensions",
+      "h3-treaty-design-undermined-by-six-gun-battery",
       "alaska-resources-for-kentucky",
       "making-kuznetsov-class-carriers-viable",
       "india-with-six-soviet-carriers",
@@ -61935,6 +62113,7 @@
       "twelve-fifteen-inch-versus-eight-sixteen-half-inch-guns",
       "british-sixteen-half-inch-guns-for-lion-class",
       "vanguard-with-sixteen-inch-mark-two-guns",
+      "trimaran-carrier-deck-motion",
       "two-carrier-islands-and-visual-assurance",
       "battleship-gun-barrel-life",
       "larger-minotaur-hull-for-tiger-helicopter-cruisers",
@@ -61943,6 +62122,7 @@
       "audacious-class-yard-and-dock-limits",
       "vanguard-guns-in-tiger-class",
       "surviving-as-a-1945-u-boat-captain",
+      "vanguard-would-not-guarantee-falklands-deterrence",
       "minotaur-1947-autoloading-gun-battery",
       "modern-return-of-large-naval-guns",
       "modern-royal-navy-heavy-cruiser-layout",
@@ -61952,7 +62132,8 @@
       "heavy-cruiser-definition-guns-and-ceiling",
       "best-french-battleship-name",
       "regina-elena-lines-for-british-thirteen-half-inch-ships",
-      "fourteen-twelve-inch-guns-require-longer-hull"
+      "fourteen-twelve-inch-guns-require-longer-hull",
+      "dunkerque-name-carried-a-troubled-ship-legacy"
     ],
     "stats": {
       "views": "642 views",
@@ -62746,9 +62927,12 @@
       "early-thousand-horsepower-engine-tradeoffs",
       "folding-biplane-wing-stol-uav",
       "janes-and-brasseys-as-reference-works",
+      "australian-and-canadian-postwar-carriers",
       "midway-reading-and-source-criticism",
       "carrier-air-group-size-follows-mission",
+      "nabob-puncher-lend-lease-commissioning",
       "uss-wolverine-name-and-training-role",
+      "medium-power-carrier-air-group-size",
       "fighter-cap-layering",
       "canadian-navy-reading-starting-point",
       "janes-fighting-aircraft-reference-guide",
@@ -62764,6 +62948,7 @@
       "arctic-convoy-force-against-tirpitz",
       "wartime-brasseys-publication-controls",
       "researching-raf-radio-navigation-losses",
+      "independent-scotland-fleet-basing-and-fiscal-constraints",
       "fisher-era-leadership-counterfactual",
       "air-war-at-sea-postwar-lessons",
       "naval-readiness-reference-sources",
@@ -62771,7 +62956,10 @@
       "brasseys-1949-fleet-diplomacy-and-unification",
       "type-26-and-type-31-different-escort-jobs",
       "modern-belfast-and-electric-propulsion",
+      "modern-warship-gunfights-and-survivability",
       "top-gun-and-vietnam-doctrinal-learning",
+      "azimuth-pod-layout-manoeuvring-and-maintenance",
+      "specialist-naval-books-and-small-print-runs",
       "maritime-drones-in-peace-and-major-war",
       "pod-propulsion-and-torpedo-damage",
       "kirov-as-missile-cruiser",
@@ -62780,8 +62968,7 @@
       "defence-spending-and-electoral-incentives",
       "canadian-navy-high-north-and-lhd-role",
       "layering-reference-works-and-histories",
-      "falklands-warning-chain-and-ark-royal-myth",
-      "canadian-navy-small-medium-navy-study"
+      "falklands-warning-chain-and-ark-royal-myth"
     ],
     "stats": {
       "views": "507 views",
@@ -63027,19 +63214,23 @@
       }
     ],
     "segmentSlugs": [
+      "sloops-evolved-from-escorts-into-presence-ships",
       "flower-names-and-crew-identity",
       "fishery-protection-as-command-school",
       "continuous-presence-prevents-conflict",
       "fisher-reforms-and-presence-gap",
+      "presence-ships-need-diplomatic-facilities",
       "frequency-multiplies-presence-value",
       "qa-coronel-force-concentration",
       "media-magnifies-physical-presence",
       "world-war-one-escort-shortage",
+      "navalized-merchant-standards",
       "mission-profile-over-first-rate-status",
       "qa-submarine-ramming-doctrine",
       "sloops-as-task-group-security",
       "qa-firing-deck-guns-in-roll",
       "flower-sloop-design-lineage",
+      "qa-world-war-one-flower-sloops-in-world-war-two",
       "hms-president-surviving-flower-sloop",
       "bomb-hit-location-and-small-ship-survival",
       "mass-production-as-industrial-deterrence",
@@ -63047,17 +63238,21 @@
       "qa-sloop-command-rank",
       "qa-naval-officers-in-diplomatic-service",
       "qa-sustained-interwar-sloop-building",
+      "royal-indian-navy-and-interwar-sloop-revival",
       "qa-sloops-and-destroyer-development",
       "qa-perisher-and-ssk-command-training",
       "singtao-incident-sloop-diplomacy",
       "river-class-presence-squadrons",
       "qa-why-sloops-lacked-torpedoes",
       "qa-upgunning-river-class",
+      "river-batch-two-maritime-security-capacity",
       "qa-uncrewed-modern-flower",
       "qa-opv-gun-caliber-by-fleet",
       "off-the-shelf-sloop-logistics",
       "stanflex-requires-fleetwide-commitment",
       "reserve-ships-and-long-war-resilience",
+      "nuclear-stalemate-and-conflict-management",
+      "long-war-vls-replenishment",
       "qa-river-derived-avenger-corvette",
       "hull-numbers-and-force-generation",
       "qa-ssk-or-ssgn-force-multipliers",
@@ -67075,6 +67270,7 @@
       "sarajevo-demilitarization-dilemma",
       "unprofor-checkpoint-confrontation",
       "wesley-clark-mladic-coercive-diplomacy",
+      "mladic-clark-media-trap",
       "fuller-european-alliance-system",
       "german-naval-expansion-british-response",
       "royal-navy-innovation-1930-2000",
@@ -72613,6 +72809,7 @@
       "withdrawal-night-action-and-damaged-ships",
       "war-ending-consequences-of-a-decisive-jutland",
       "fast-battleships-and-the-post-jutland-arms-race",
+      "earlier-peace-russia-and-austria-hungary",
       "beatty-staff-accountability-beyond-seymour",
       "defeat-could-rewrite-german-naval-doctrine",
       "german-fleet-action-with-working-british-shells",
@@ -72623,7 +72820,11 @@
       "uboats-after-decisive-jutland-question",
       "battlecruisers-not-inherently-a-failure",
       "british-shell-failures-beyond-fuzes",
-      "milne-versus-beatty-command-question"
+      "milne-versus-beatty-command-question",
+      "austro-hungarian-fleet-and-goeben-question",
+      "cpc-shell-terminology-question",
+      "washington-treaty-administration-question",
+      "german-naval-rebuilding-after-peace-question"
     ],
     "stats": {
       "views": "27,955 views",
@@ -73698,6 +73899,7 @@
       "second-london-naval-treaty-safeguards",
       "technical-admirals-as-naval-observers",
       "japanese-war-diverts-china-station-ships",
+      "kuomintang-criminal-code-defines-piracy",
       "treaty-port-authority-and-landing-rules",
       "selective-protection-and-the-bias-bay-problem",
       "shung-tam-kwan-piracy-prosecution",
@@ -75620,11 +75822,16 @@
       {
         "slug": "naval-historiography",
         "title": "Naval Historiography"
+      },
+      {
+        "slug": "political-institutions",
+        "title": "Political Institutions"
       }
     ],
     "segmentSlugs": [
       "south-china-sea-coercion-and-sea-lanes",
       "american-impressment-and-cultural-memory",
+      "austro-hungarian-navy-as-underrated",
       "british-carrier-conversions-as-lexingtons",
       "king-george-v-class-naming-after-the-abdication",
       "pearl-harbor-night-bombardment-delay",
@@ -75634,8 +75841,11 @@
       "independent-philippines-and-japanese-expansion",
       "invincible-class-deck-edge-lifts",
       "planned-retirement-of-the-old-british-battle-fleet",
+      "suez-gibraltar-legal-status-and-practical-closure",
+      "eastern-fleet-for-red-sea-and-persian-gulf-reading",
       "modernizing-a-medieval-cog",
       "favorite-twin-engine-maritime-attack-aircraft",
+      "chilean-battleship-choices-and-finance",
       "kanto-earthquake-and-japanese-carrier-conversions",
       "hermes-eagle-and-purpose-built-carrier-development",
       "keep-launching-aircraft-before-a-carrier-gun-duel",
@@ -75649,16 +75859,21 @@
       "ship-standard-turrets-in-coastal-batteries",
       "restoring-uss-olympia",
       "overestimating-the-german-capital-ship-fleet",
+      "royal-navy-lightweight-torpedo-asroc-development",
       "merged-german-battleship-battlecruiser-line",
       "littorio-class-as-mediterranean-specialists",
+      "littoral-combat-ship-design-by-committee",
       "g3-n3-performance-remains-unknowable",
       "modern-martello-tower-as-layered-coastal-defense",
       "andrew-lambert-on-the-victorian-navy",
+      "second-trump-term-and-us-institutional-checks",
       "fixed-hydrophones-before-sosus",
       "axis-battleship-gunnery-limitations",
+      "political-obstacles-to-a-codified-uk-constitution",
       "preserving-the-tarantul-class-hiddensee",
       "choosing-a-global-seakeeping-design-point",
       "carrier-development-without-battlecruiser-conversions",
+      "uk-uncodified-constitution-and-parliamentary-authority",
       "british-priorities-after-a-1930-treaty-walkout",
       "jutland-reading-across-competing-accounts",
       "strike-cruisers-and-escalation-signaling",
@@ -75685,25 +75900,35 @@
       "channel-dash-and-royal-navy-coastal-command-coordination",
       "british-french-italian-treaty-balance",
       "trento-versus-belfast",
+      "continuing-london-negotiations-after-japans-walkout",
+      "adriatic-world-war-ii-reading-and-language-access",
       "modern-cruisers-descend-from-light-and-scout-lines",
+      "most-numerous-cruiser-class-remains-uncertain",
       "vickers-radar-carriers-and-naval-aircraft-in-1930",
       "radar-as-the-defining-wartime-innovation",
+      "british-small-arms-and-doctrinal-fit",
+      "britain-and-the-interwar-gold-standard",
       "cloning-ark-royal-frees-british-shipyards",
       "cloned-ark-royals-reshape-british-shipbuilding",
       "queen-elizabeth-and-revenge-wartime-completion",
       "a-saboteurs-late-1930s-naval-shopping-list",
+      "first-oil-fired-cruiser-requires-chronology-research",
       "battery-resources-limited-japanese-submarine-numbers",
       "dutch-three-axis-fire-control-stabilization",
+      "fifty-calibre-british-heavy-gun-development",
+      "surcouf-versus-m-class-cruiser-submarines",
       "japanese-long-range-minelaying-submarines",
       "crewing-new-jersey-for-a-dry-dock-move",
       "type-26-refits-in-technological-transition",
       "diesel-replaces-petrol-electric-submarines",
       "royal-navy-reuses-names-with-difficult-histories",
       "cruiser-submarine-concept-flaws",
+      "historical-eras-of-technological-transition",
       "american-naval-names-for-continuous-service",
       "interwar-response-to-future-u-boat-numbers",
       "why-only-twelve-r-class-submarines",
-      "interwar-submarine-development-with-larger-inheritance"
+      "interwar-submarine-development-with-larger-inheritance",
+      "commanding-a-ship-named-for-an-ancestor"
     ],
     "stats": {
       "views": "594 views",
@@ -76407,6 +76632,7 @@
       "fulmar-strengths-limitations-and-successors",
       "cunningham-eighteen-fighter-requirement",
       "taranto-rocket-distraction-plan",
+      "sea-gladiators-and-cr-42-context",
       "formidable-spares-workshops-and-tiger-convoy",
       "churchill-tripoli-blockship-proposal",
       "crete-pressure-and-the-scarpanto-decision",
@@ -76414,6 +76640,7 @@
       "formidable-diversion-operations-and-scarpanto-plan",
       "formidable-scarpanto-strike-failure",
       "crete-covering-operations-historiography",
+      "illustrious-formidable-post-repair-collision",
       "formidable-scouting-pressure-and-thin-cap",
       "formidable-one-ton-bomb-forensics",
       "formidable-damage-control-and-flight-operations",
@@ -77268,32 +77495,62 @@
     ],
     "segmentSlugs": [
       "archer-class-torpedo-cruiser",
+      "archer-classification-and-sloop-role",
       "archer-torpedo-limitations",
+      "archer-sponsons-and-forward-fire",
+      "archer-cruiser-and-pair-operations",
       "anti-torpedo-boat-gun-calibre",
+      "archer-torpedo-load-and-reloads",
       "technology-and-iterative-shipbuilding",
+      "iterative-procurement-and-open-architecture",
       "odin-class-proto-dreadnought",
       "powerful-class-and-rurik",
+      "rapid-change-and-fleet-planning",
+      "turtleback-bows-and-hull-requirements",
       "nine-point-two-inch-cruiser-guns",
+      "nine-point-two-inch-emergency-cruisers",
+      "aircraft-versus-warship-risk",
       "second-pacific-squadron-logistics",
+      "underwater-torpedo-tube-results",
+      "admiralty-fleet-tracking-maps",
+      "duke-of-edinburgh-versus-chester",
       "dreadnought-as-bookmark",
+      "heligoland-strategic-leverage",
+      "deutschland-class-industrial-compromise",
+      "tennessee-class-versus-british-cruisers",
       "dutch-1913-battleships",
       "ocean-liners-and-naval-rivalry",
       "imperial-defense-underinvestment",
       "propulsion-redundancy-and-maintenance",
       "chinese-cruisers-as-testbeds",
+      "cruisers-for-smaller-navies",
       "french-submarines-and-distant-blockade",
       "treaty-sloops-and-convoy-escorts",
+      "sloop-mine-and-depth-charge-adaptability",
+      "fairey-swordfish-night-attacks",
+      "flower-class-late-start",
       "escort-carrier-conversion-plans",
       "nelson-class-operational-compromise",
+      "nelson-superfiring-turret-tradeoffs",
       "early-dual-purpose-four-point-five-inch-guns",
       "carrier-design-follows-strategy",
+      "royal-navy-battle-fleet-organization",
+      "hood-armour-scheme",
+      "treaty-gun-upgrade-workaround",
+      "malta-class-postwar-carrier-force",
+      "carrier-learning-does-not-take-a-century",
       "floating-maintenance-ships",
+      "fast-fleet-destroyer-roles",
       "wartime-production-bottlenecks",
       "guns-and-zumwalt-design",
       "greek-shipping-bribery-myth",
       "submarine-abolition-counterfactual",
       "ssks-and-regional-defence",
-      "underwater-sonic-pulse"
+      "zumwalt-aegis-air-defence",
+      "ssks-for-regional-waters",
+      "underwater-sonic-pulse",
+      "donitz-versus-us-pacific-submarines",
+      "japanese-submarine-commerce-raiding"
     ],
     "stats": {
       "views": "1,169 views",
@@ -78522,6 +78779,7 @@
     ],
     "segmentSlugs": [
       "winchelsea-as-medieval-naval-history",
+      "edward-iii-succession-and-child-kings",
       "gascony-and-the-anglo-french-conflict",
       "naval-war-and-edwardian-propaganda",
       "gascon-wine-trade-and-sea-power",
@@ -78532,6 +78790,7 @@
       "castilian-privateering-after-the-truce",
       "ship-towns-and-sandwich-rendezvous",
       "edward-iii-intelligence-advantage",
+      "john-chandos-and-the-rounded-warrior",
       "english-half-moon-and-controlled-overtaking",
       "longbows-ladders-and-ship-exchange",
       "ransom-and-captured-crews",
@@ -86230,24 +86489,35 @@
       {
         "slug": "naval-historiography",
         "title": "Naval Historiography"
+      },
+      {
+        "slug": "joint-command",
+        "title": "Joint Command"
       }
     ],
     "segmentSlugs": [
+      "electoral-short-termism-and-imperial-strategy",
       "counterfactual-history-needs-grounded-levers",
       "singapore-as-theater-entry-base",
+      "army-dominance-in-british-indian-defence",
       "far-east-base-alternatives",
+      "colonial-administration-and-singapore-defence",
       "imperial-conference-and-pacific-alliances",
       "domestic-politics-and-singapore-funding",
+      "beatty-peacetime-infrastructure-and-alliance-deterrence",
       "australian-cost-sharing-counterfactual",
       "sydney-distance-and-fleet-arrival",
       "range-driven-warship-design",
       "sydney-dockyard-and-force-generation",
+      "fixed-guns-preserve-mobile-battleships",
       "defending-two-strategic-nodes",
       "battleships-destroyers-and-carriers-for-sydney",
       "japanese-options-against-sydney",
+      "sydney-headquarters-keeps-theater-command-ashore",
       "australian-repair-base-changes-force-z",
       "malaya-campaign-with-delayed-fleet",
       "joint-far-east-command",
+      "force-z-air-support-message-failure",
       "sydney-strategy-verdict"
     ],
     "stats": {
@@ -86480,6 +86750,8 @@
       "dukw-british-american-development",
       "forward-presence-local-knowledge",
       "rebuilding-amphibious-capability",
+      "company-landing-teams-organic-capability",
+      "usmc-mixed-landing-ship-fleet",
       "normandy-over-southern-france-logistics",
       "usmc-tanks-and-amphibious-cavalry",
       "chinese-overseas-naval-bases",
@@ -86487,13 +86759,14 @@
       "absalon-hybrid-ship-limits",
       "defence-budget-stability",
       "modern-arsenal-ship-role",
-      "graf-spee-commerce-raiding-choice",
+      "maximilian-von-spee-light-cruisers",
       "future-peer-threats-and-long-service-life",
       "army-tanks-and-marine-commitments",
       "lst-versus-hovercraft-preparation",
       "unmanned-armoured-vehicles",
       "pla-navy-strength-in-numbers",
       "hovercraft-and-minefields",
+      "italian-unification-and-merchant-power",
       "naval-stealth-and-surprise",
       "cruise-missiles-versus-dumb-bombs",
       "h-4-hercules-wartime-airlift-role",
@@ -86512,6 +86785,7 @@
       "unmanned-mine-countermeasures",
       "renewing-old-naval-bases",
       "beatty-and-small-ship-command",
+      "south-china-sea-artificial-islands-presence",
       "chagos-and-diego-garcia-strategy",
       "modernising-tribal-and-daring-destroyers",
       "destroyer-specialists-at-flag-rank",
@@ -86522,6 +86796,7 @@
       "royal-navy-culture-in-successor-navies",
       "shipboard-desalination-and-water",
       "fast-landing-craft-tradeoffs",
+      "shipboard-animals-and-morale",
       "forward-base-royal-marines-detachment",
       "counter-piracy-and-private-maritime-security",
       "boudicca-and-historical-judgment"
@@ -86985,6 +87260,7 @@
       "jet-aircraft-outrange-battleship-guns",
       "secondary-battleship-roles-lose-value",
       "stalins-death-ended-soviet-battleship-rivalry",
+      "militaries-relearn-doctrine-in-war",
       "cheap-missiles-threaten-expensive-armour",
       "battleship-surface-action-group-escort-cost",
       "defence-share-and-battleship-affordability",
@@ -87076,7 +87352,7 @@
     "description": "The events of the 2nd of December 1939 in the South Atlantic campaign put into context, what Captain Langsdorff & the Admiral Graf Spee were doing and what the British were doing.",
     "topics": [
       {
-        "slug": "admiral-graf-spee",
+        "slug": "admiral-graf-spee-ship",
         "title": "Admiral Graf Spee"
       },
       {
@@ -87655,8 +87931,10 @@
     ],
     "segmentSlugs": [
       "bruships-165-forward-or-aft-turret-safety",
+      "bruships-165-hms-eskimo-lost-a-turret",
       "bruships-165-libyan-oil-and-italian-capital-ships",
       "bruships-165-star-wars-counterinsurgency-fleet",
+      "bruships-165-how-many-shades-of-navy-grey",
       "bruships-165-2000-ton-royal-navy-sloops",
       "bruships-165-lutjens-as-carrier-commander",
       "bruships-165-heat-rocks-and-russo-japanese-war",
@@ -87674,12 +87952,15 @@
       "bruships-165-barracuda-class-interim-ssk",
       "bruships-165-large-1930s-destroyers",
       "bruships-165-falklands-war-in-1987",
+      "bruships-165-queen-elizabeth-class-speed-shortfall",
+      "bruships-165-ranger-wasp-light-fleet-carriers",
       "bruships-165-armed-trawlers-versus-u-boats",
       "bruships-165-why-navies-left-treaty-tonnage-unused",
       "bruships-165-awacs-in-world-war-ii",
       "bruships-165-chinese-muscle-powered-paddle-ships",
       "bruships-165-hood-style-9-inch-cruisers",
       "bruships-165-battlestar-galactica-carrier-analogy",
+      "bruships-165-british-empire-nazism-and-imperial-history",
       "bruships-165-battleships-versus-carriers",
       "bruships-165-british-guided-missile-cruiser",
       "bruships-165-anti-aircraft-guns-on-cranes",
@@ -87689,6 +87970,7 @@
       "bruships-165-expanded-fast-wing-at-jutland",
       "bruships-165-nimitz-flight-deck-cruiser",
       "bruships-165-us-neutral-in-world-war-i",
+      "bruships-165-hood-museum-ship-and-imperial-history",
       "bruships-165-north-vietnamese-battleship",
       "bruships-165-american-carrier-group-falklands",
       "bruships-165-uss-maine-in-british-colony",
@@ -87697,12 +87979,14 @@
       "bruships-165-malta-carriers-in-falklands",
       "bruships-165-belfast-helicopter-cruiser",
       "bruships-165-purpose-built-british-helicopter-cruiser",
+      "bruships-165-clipper-and-windjammer-reading",
       "bruships-165-containerized-air-defence",
       "bruships-165-which-royal-navy-ships-get-preserved",
       "bruships-165-modern-coastal-batteries",
       "bruships-165-napoleonic-shipbuilders-in-1936",
       "bruships-165-ohio-submarine-before-pearl-harbor",
       "bruships-165-earlier-battleship-escalation",
+      "bruships-165-undersea-guided-weapon-replacement-cycle",
       "bruships-165-seawolf-style-successor-ssn",
       "bruships-165-tsushima-reading-recommendation",
       "bruships-165-diego-garcia-sovereignty-and-strategy",
@@ -87710,9 +87994,12 @@
       "bruships-165-long-beach-ballistic-missiles",
       "bruships-165-nuclear-merchant-ships",
       "bruships-165-nuclear-aegis-cruisers-and-zumwalt",
+      "bruships-165-five-inch-aa-on-hipper-and-m-class",
       "bruships-165-japanese-submarine-minelaying",
       "bruships-165-replacing-turret-fighters",
-      "bruships-165-alaska-and-british-equivalent"
+      "bruships-165-enterprise-museum-ship-location",
+      "bruships-165-alaska-and-british-equivalent",
+      "bruships-165-alternate-history-as-historical-method"
     ],
     "stats": {
       "views": "797 views",
@@ -87921,7 +88208,7 @@
     "description": "So this video is the story of the Admiral Graf Spee last victim, the SS Streonhalh - plus has a small issue of me saying Henderson rather than Harwood, which I could have recorded over... but I think sometimes it is important to show that we all make mistakes, I know when I started out in History, as a Dyslexic I was conscious of all the efforts to be perfect, I worried I would never be able to match... now I know its more important to try your best to do justice to the History.",
     "topics": [
       {
-        "slug": "admiral-graf-spee",
+        "slug": "admiral-graf-spee-ship",
         "title": "Admiral Graf Spee"
       },
       {
@@ -89115,9 +89402,12 @@
       "paul-i-and-the-credibility-of-the-second-league",
       "winter-ice-and-the-second-league-s-vulnerability",
       "yamouth-fleet-and-the-baltic-timetable",
+      "could-britain-simply-block-the-baltic",
       "hyde-parker-and-nelson-as-a-command-pair",
+      "could-an-1800-era-state-build-the-kiel-canal",
       "olfert-fischer-and-command-disruption",
       "crown-prince-frederick-and-strategic-realism",
+      "bille-s-gunboats-as-asymmetric-strategy",
       "steen-andersen-bille-s-officer-formation",
       "copenhagen-s-unprepared-fleet-and-command-post",
       "forces-at-copenhagen-and-bomb-vessels",
@@ -89126,18 +89416,23 @@
       "nelson-s-creeping-anchored-attack",
       "danish-reserves-and-gunnery-under-pressure",
       "nelson-ignores-the-recall-signal",
+      "why-parker-kept-his-reserve-back",
       "ceasefire-and-the-cost-of-copenhagen",
       "armistice-tsar-paul-and-the-league-s-collapse",
       "holstein-becomes-hms-nassau",
       "baltic-campaign-after-copenhagen",
       "what-a-strange-sail-told-an-experienced-command-team",
+      "why-first-rates-resisted-mass-production",
       "danish-lessons-from-1801-and-1807",
       "britain-or-japan-and-the-history-of-preemptive-strikes",
       "what-copenhagening-means",
       "trafalgar-boarding-party-counterfactual",
       "fast-liners-and-the-cost-of-escort",
       "gurkhas-and-the-demands-of-shipboard-fighting",
-      "medieval-armour-in-age-of-sail-boarding"
+      "postwar-airliners-as-a-prestige-and-technology-race",
+      "medieval-armour-in-age-of-sail-boarding",
+      "could-british-industry-build-rmmv-oceanic",
+      "comet-4-as-luxury-style-and-image"
     ],
     "stats": {
       "views": "651 views",
@@ -89632,7 +89927,7 @@
     "description": "The compilation of all the Sunday updates from September through to December - a snapshot look at the course of the South Atlantic Campaign and the climatic Battle which is it's conclusion.",
     "topics": [
       {
-        "slug": "admiral-graf-spee",
+        "slug": "admiral-graf-spee-ship",
         "title": "Admiral Graf Spee"
       },
       {
@@ -92570,6 +92865,7 @@
       "sfax-in-the-french-maneuver-and-reserve-cycle",
       "sfax-refits-and-rapid-technological-obsolescence",
       "levant-bombardment-trial-and-coastal-defense-cycle",
+      "1895-france-italy-exercise-and-contingent-alliances",
       "sfax-refits-fleet-planning-and-dreyfus-mission",
       "sfax-legacy-and-protected-cruiser-taxonomy",
       "sfax-versus-leander-and-jeune-ecole-commerce-war"
@@ -96086,7 +96382,7 @@
       "first-generation-nuclear-submarines",
       "italian-carriers-mediterranean-war",
       "catapult-hurricanes-force-z",
-      "malta-class-postwar-carrier-force",
+      "malta-class-carriers-postwar-british-strategy",
       "queen-mary-wartime-command-and-transport",
       "mosquito-six-pounder-versus-pom-poms",
       "world-war-ii-boarding-actions",
@@ -96117,7 +96413,12 @@
       "royal-navy-captain-command-culture",
       "oto-melara-mission-kills-kongo",
       "russian-empire-restored-in-modern-world",
-      "historical-memory-debt-political-union"
+      "historical-memory-debt-political-union",
+      "indian-defence-procurement-independence",
+      "f136-alternate-engine-industrial-competition",
+      "british-m45-to-m51-deterrent",
+      "queen-elizabeth-stol-loyal-wingman",
+      "empire-cruiser-command-ship-1920s"
     ],
     "stats": {
       "views": "1,091 views",
@@ -96760,7 +97061,7 @@
       },
       {
         "slug": "surcouf",
-        "title": "Surcouf"
+        "title": "Surcouf (Submarine)"
       },
       {
         "slug": "t-class-submarines",
@@ -100668,18 +100969,25 @@
       }
     ],
     "segmentSlugs": [
+      "g3-main-battery-calibre",
       "trento-triple-turret-counterfactual",
       "italian-military-power-behind-fascism",
       "postwar-demobilization-versus-capital-ships",
+      "fascist-movements-were-not-one-model",
       "mediterranean-geography-shapes-cruiser-role",
       "treaties-turn-cruisers-into-status-units",
+      "caracciolo-carrier-conversion-rejected",
       "captured-zara-class-in-royal-navy-service",
+      "italy-austria-and-german-expansion",
       "industrial-dependence-limits-fleet-design",
       "italian-propulsion-technology-transfer",
       "mare-nostrum-and-unstable-policy",
       "italian-carriers-change-british-planning",
+      "italian-submarine-fleet-in-1940",
       "trento-speed-firepower-and-glass-jaw",
+      "mussolini-combined-ministries-without-joint-command",
       "longitudinal-arrestor-wires",
+      "trento-torpedo-and-aa-armament",
       "condottieri-a-as-enlarged-destroyers",
       "renown-oerlikon-armament",
       "how-cruiser-floatplanes-were-recovered",
@@ -100688,15 +100996,23 @@
       "radar-versus-italian-small-ship-attacks",
       "italian-atlanta-style-cruiser",
       "bolzano-industrial-politics-and-speed",
+      "high-speed-cruiser-fuel-penalty",
       "foreign-steel-sales-reveal-italian-plans",
+      "etna-class-never-entered-service",
       "cadorna-politics-and-fragile-design",
       "cape-bon-demonstrates-fragility",
       "italian-six-inch-gun-dispersion",
+      "italian-six-inch-loading-system",
       "duca-daosta-incremental-protection",
+      "why-italian-cruisers-survived-postwar",
+      "special-grease-for-italian-gun-mounts",
       "abruzzi-class-balanced-light-cruiser",
+      "duke-of-abruzzi-navy-diplomacy-industry",
+      "wine-taps-and-ashtrays-aboard-italian-warships",
       "capitani-romani-fast-minelayer-destroyers",
       "abdiel-versus-capitani-romani-protection",
       "italian-cruiser-doctrine-between-two-worlds",
+      "naval-treaty-violations-and-us-sanctions",
       "build-zaras-and-capitani-romani"
     ],
     "stats": {
@@ -102097,19 +102413,30 @@
       {
         "slug": "naval-aviation",
         "title": "Naval Aviation"
+      },
+      {
+        "slug": "eastern-fleet",
+        "title": "Eastern Fleet"
+      },
+      {
+        "slug": "historiography",
+        "title": "Historiography"
       }
     ],
     "segmentSlugs": [
       "chasing-actions-and-interwar-naval-language",
       "in-harms-way-uss-indianapolis",
+      "wartime-orders-and-indianapolis-conspiracy-theories",
       "coastal-forces-book-and-mtb-718",
       "winkle-brown-wings-weird-wonderful",
       "qa-eric-brown-private-test-flying",
       "gathering-storm-early-u-boat-war",
       "qa-doenitz-three-hundred-u-boats",
+      "qa-reginald-henderson-biography",
       "u-boats-at-war-in-100-objects",
       "qa-royal-navy-cats-to-stovl",
       "empire-wide-sloop-production-and-asw-experience",
+      "italian-submarine-quality-basing-and-exports",
       "qa-american-equivalent-of-henderson",
       "royal-navy-covert-imperial-submarine-building",
       "amphibious-assault-falklands-command-logistics",
@@ -102120,15 +102447,21 @@
       "qa-delaying-second-world-war-naval-buildup",
       "eastern-fleet-book-critical-review",
       "somerville-night-strike-and-eastern-fleet-readiness",
+      "churchill-north-sumatra-operation-strategy-dispute",
       "qa-best-prepared-power-1939",
+      "qa-synthesized-references-and-source-disclosure",
       "qa-books-on-interwar-naval-treaties",
+      "qa-flower-class-corvettes-greatest-impact",
       "trafalgar-chronicle-cornwallis",
+      "qa-japanese-commerce-raiding-pacific-indian-ocean",
+      "park-and-fort-ships-canadian-liberty-equivalents",
       "qa-italian-and-royal-navy-stereotypes",
       "united-states-navy-destroyers-images-of-war",
       "destroyer-turret-weight-and-blowout-risk",
       "royal-navy-global-operations-in-1942",
       "qa-fast-liners-submarine-risk",
       "qa-british-pacific-fleet-1946",
+      "project-habakkuk-pykrete-carrier-counterfactual",
       "junks-and-sampans-yangtze",
       "qa-canadian-battleships-between-wars",
       "lepanto-1571-ottoman-bow",
@@ -104720,7 +105053,10 @@
       "military-capability-underwrites-diplomatic-status",
       "reserves-for-p8-and-mine-warfare",
       "war-timing-and-reserve-capacity",
+      "reserves-as-a-civil-military-bridge",
       "mobilisation-and-maintaining-capability",
+      "amphibious-forces-need-heavy-equipment",
+      "reserve-call-up-as-a-deterrent-signal",
       "harrier-as-a-reserve-capability-lesson",
       "grey-zone-conflict-renews-case-for-reserves",
       "tiered-reserve-model-for-fleet-readiness"
@@ -106747,6 +107083,7 @@
       "american-light-hulls-and-heavy-demands",
       "ranger-growth-margin-and-wartime-role",
       "sims-class-too-many-leaps",
+      "texas-and-maine-as-formative-near-examples",
       "british-cruiser-and-submarine-compromises",
       "k-class-steam-submarine-burden",
       "york-and-king-george-v-compromises",
@@ -110777,6 +111114,7 @@
       "japan-needed-a-cheaper-escort-design",
       "yamato-and-the-opportunity-cost-of-megaprojects",
       "wartime-losses-shaped-asw-institutional-memory",
+      "class-labels-conceal-standardised-destroyer-families",
       "oiler-protection-is-fleet-survival",
       "midway-force-balance-and-replaceability",
       "more-targets-could-dilute-carrier-strikes",
@@ -113656,6 +113994,7 @@
       }
     ],
     "segmentSlugs": [
+      "surrey-oak-collection-and-inland-logistics",
       "treaty-cancelled-battlecruisers-and-fleet-groups",
       "woolwich-arsenal-to-chatham-dockyard",
       "wooden-warship-design-and-state-direction",
@@ -113665,36 +114004,52 @@
       "st-lawrence-seaway-and-war-of-1812-sea-power",
       "victory-lower-gun-deck-freeboard",
       "lost-senior-officers-and-royal-navy-leadership",
+      "furious-shortened-eighteen-inch-gun",
       "shipwrights-as-skilled-strategic-labour",
+      "company-of-shipwrights-professional-welfare",
+      "royal-dockyard-labour-pay-and-promotion",
       "tools-and-caulking-in-wooden-hull-work",
       "dockyard-standardization-and-artisan-finish",
       "test-gun-barrels-and-relining",
+      "st-lawrence-seaway-amphibious-operations",
+      "british-army-and-royal-navy-senior-officer-losses",
       "north-american-timber-in-the-war-of-1812",
       "post-treaty-nine-point-two-inch-cruisers",
       "uss-chesapeake-construction-quality",
       "ships-and-buildings-share-structural-logic",
+      "where-to-see-shipwright-tools",
       "steam-bending-before-industrial-shipbuilding",
       "turreted-light-cruisers-and-design-escalation",
+      "viking-shipbuilders-heat-and-steam-bending",
       "seasoning-oak-as-long-range-naval-procurement",
       "dockyard-wood-stores-and-fire-risk",
       "hms-victory-and-the-portsmouth-blitz",
       "why-not-season-naval-timber-in-north-africa",
       "copper-sheathing-and-iron-corrosion",
+      "oak-forestry-and-two-century-fleet-planning",
+      "replacing-a-worn-gun-barrel-liner",
       "teak-and-imperial-dockyards",
       "steel-production-as-strategic-industry",
       "oak-delivered-two-centuries-after-copenhagen",
       "eighteenth-century-three-decker-evolution",
+      "french-three-decker-revival-after-seven-years-war",
+      "santisima-trinidad-and-upward-growth",
       "oak-selection-for-curved-framing",
       "world-war-two-wooden-craft-and-plywood",
       "hood-mark-two-turret-modernization",
+      "protected-british-oak-as-a-building-reserve",
       "cross-bracing-and-hull-rigidity",
       "victory-as-a-first-rate-design-model",
+      "continuous-superpower-britain-and-carrier-design",
+      "naval-infrastructure-and-larger-post-hood-designs",
       "why-hood-could-not-take-audacious-machinery",
       "k3-l3-and-the-pressure-for-a-treaty",
+      "commonwealth-frigate-industrial-cooperation",
       "g3-under-a-forty-five-thousand-ton-limit",
       "k3-battlecruiser-versus-fast-battleship",
       "carrier-procurement-and-fleet-air-arm-scale",
       "limits-of-super-sized-ships-of-the-line",
+      "queen-elizabeth-class-speed-and-public-figures",
       "expanded-fighter-force-at-taranto",
       "making-k3-match-g3-speed",
       "naval-infrastructure-bills-and-workforce-training",
@@ -113703,7 +114058,10 @@
       "using-bugged-rooms-at-washington",
       "british-service-life-for-the-sbd-dauntless",
       "battleship-design-under-a-tonnage-budget",
-      "naval-gunfire-support-and-shore-parties"
+      "unaligned-pacific-naval-power-and-treaty-ratios",
+      "single-battleship-under-a-hundred-thousand-ton-budget",
+      "naval-gunfire-support-and-shore-parties",
+      "brazilian-destroyers-and-us-naval-balance"
     ],
     "stats": {
       "views": "890 views",
@@ -117394,6 +117752,7 @@
       "850psi-technology-and-brown-curtis",
       "warspite-850psi-modernization",
       "1934-fleet-construction-divergence",
+      "barham-recent-refit-adoption-constraint",
       "lion-class-design-and-construction",
       "c-class-aa-conversion-machinery",
       "ark-royal-illustrious-air-groups",
@@ -117401,13 +117760,16 @@
       "older-capital-ship-refit-program",
       "courageous-carrier-machinery-testbed",
       "boiler-standardization-path-dependence",
+      "renown-speed-protection-tradeoff",
       "high-speed-cruiser-fleet",
       "arethusa-and-abdiel-speed-effects",
       "american-carriers-and-treaty-tradeoffs",
       "yamato-littorio-speed-response",
       "fleetwide-deterrence-and-destroyer-effects",
+      "tribal-class-power-survivability-tradeoff",
       "wartime-operational-ripple-effects",
       "french-fleet-and-mers-el-kebir-risk",
+      "taranto-surface-bombardment-window",
       "nelson-refits-and-dockyard-opportunity-cost",
       "deutschland-class-and-diesel-competition"
     ],
@@ -120242,6 +120604,7 @@
     ],
     "segmentSlugs": [
       "cold-war-theory-and-institutional-memory",
+      "cold-war-spending-and-procurement-quality",
       "defence-by-matrix-and-unquantifiable-risk",
       "continuous-shipbuilding-and-industrial-capacity",
       "bipolar-world-and-specialised-forces",
@@ -120258,6 +120621,7 @@
       "grey-zone-friction-and-force-availability",
       "redundancy-losses-and-falklands-air-defence",
       "falklands-losses-and-airborne-early-warning",
+      "hms-invincible-secret-replacement-claim",
       "four-submarines-five-flight-decks-and-contingency",
       "norway-reinforcement-and-disposable-amphibious-ships",
       "war-is-not-a-mathematical-certainty",
@@ -122030,7 +122394,7 @@
         "title": "Battle Of The River Plate"
       },
       {
-        "slug": "admiral-graf-spee",
+        "slug": "admiral-graf-spee-ship",
         "title": "Admiral Graf Spee"
       },
       {
@@ -124574,6 +124938,7 @@
     "segmentSlugs": [
       "coastal-defense-as-cost-imposition",
       "castles-become-state-forts",
+      "henrician-forts-secure-fleet-anchorages",
       "martello-towers-imperial-network",
       "forts-control-terrain-and-logistics",
       "fortifications-evolve-with-weapon-range",
@@ -124582,6 +124947,7 @@
       "british-anti-invasion-defense-in-depth",
       "amphibious-operation-selection-bias",
       "home-guard-local-delay-network",
+      "sea-lion-required-air-and-sea-control",
       "atlantic-wall-uneven-strength",
       "dieppe-force-without-support",
       "d-day-carriers-and-minesweeping-space",
@@ -124593,11 +124959,13 @@
       "german-raiding-limits-against-britain",
       "dieppe-planning-and-mountbatten",
       "japanese-island-defense-attrition",
+      "dieppe-political-timetable-casualties",
       "treasury-islands-local-superiority",
       "eniwetok-rushed-defense-overwhelmed",
       "fortified-islands-and-bypass-choice",
       "peleliu-cave-defense-system",
       "pacific-defense-command-and-depth",
+      "japanese-plan-z-to-ground-attrition",
       "destroyers-responsive-amphibious-fire-support",
       "amphibious-success-risk-and-reward",
       "peleliu-starvation-versus-tempo",
@@ -124614,6 +124982,7 @@
       "macarthur-inchon-and-credit",
       "isolationist-america-changes-treaty-system",
       "tracked-battleship-dead-zone",
+      "american-autarky-economic-tradeoffs",
       "british-credit-financed-naval-war",
       "post-cold-war-royal-navy-procurement-gap"
     ],
@@ -124809,6 +125178,10 @@
         "title": "Aviation History"
       },
       {
+        "slug": "christmas-traditions",
+        "title": "Christmas Traditions"
+      },
+      {
         "slug": "air-defence",
         "title": "Air Defence"
       },
@@ -124825,10 +125198,14 @@
       "the-1823-poem-as-the-sleighs-source-text",
       "santas-sleigh-as-an-aviation-system",
       "population-growth-and-sleigh-logistics",
-      "reindeer-propulsion-and-team-development",
+      "magical-reindeer-as-the-sleighs-propulsion-system",
+      "dunder-and-blixem-as-a-reindeer-team-change",
       "reading-historical-speed-descriptions-in-context",
+      "radar-and-the-changing-risk-to-santas-flight",
       "conad-and-norad-santa-tracking",
-      "rudolph-as-an-aviation-safety-adaptation"
+      "route-secrecy-and-worldwide-protection-of-santas-flight",
+      "rudolph-as-an-aviation-safety-adaptation",
+      "gift-giving-and-the-gift-of-time-at-christmas"
     ],
     "stats": {
       "views": "693 views",
@@ -126780,7 +127157,7 @@
     "durationIso": "PT1H2M55S",
     "durationLabel": "1:02:55",
     "viewCountLabel": "196 views",
-    "transcriptStatus": "not_checked",
+    "transcriptStatus": "stored",
     "fileStem": "2026-07-25_T18-30-06_the-perils-of-standardisation-can-navy-s-standardise-too-much-patreon-premier_qnPjSQ-1qpM",
     "description": "Book \nTribals, Battles & Darings; The Genesis of the Modern Destroyer https://amzn.to/2H2yVvb\n\nShip Shape Naval History Colaborative with @Drachinifel, @GariusTheBrit, @TheFleetOfOceans & @TheDoctorMonkey  \nhttps://www.ship-shape.org.uk/\n\nSupport This Channel\nPatreon: https://www.patreon.com/ACNavalHistory\nPaypal https://paypal.me/ACHistory?country.x=GB&locale.x=en_GB \nJoin this channel to get access to perks:\nhttps://www.youtube.com/channel/UCE2x09tU0GwAGiSbFPEhIwQ/join\nKo-Fi (If you just want to buy me a bottle of Irn Bru) https://ko-fi.com/acnavalhistory\nSpreadshirt Store: https://acnavalhistorystore.myspreadshop.co.uk/\nAmazon Affiliate Store https://www.amazon.co.uk/shop/dralexanderclarke\n\nBilgepumps / Social Media Links \nBilgepumps: https://the-bilgepumps.simplecast.com/episodes\nDiscord: https://discord.gg/xjsHGkq \nTwitter: https://twitter.com/AC_NavalHistory\n\nOther Places to Find Dr Alex Clarke\nGlobal Maritime History: http://globalmaritimehistory.com/tag/alex-clarke/\nAcademia.edu: https://alexanderclarke.academia.edu/\nTV Agent: https://pastpreservers.com/portfolio/dr-alexander-clarke-military-naval-historian/",
     "topics": [
@@ -129186,6 +129563,7 @@
     "segmentSlugs": [
       "uss-texas-why-an-old-battleship-mattered",
       "uss-texas-battleship-firepower-for-amphibious-war",
+      "uss-texas-range-magazine-depth-and-precision-fire",
       "uss-texas-twin-turrets-and-upgrade-potential",
       "uss-texas-tampico-and-early-service",
       "uss-texas-rotterdam-rescue-and-wardroom-gift",
@@ -132669,6 +133047,7 @@
       "buccaneer-low-level-exercise-attacks",
       "vulcan-red-flag-altitude-and-jamming",
       "japanese-british-fact-finding-1940",
+      "korean-war-un-action-not-declared-war",
       "tiger-class-guided-missile-conversion",
       "renown-repulse-as-admiral-class",
       "british-plans-to-retake-singapore",
@@ -132702,6 +133081,7 @@
       "fletcher-machinery-in-canadian-tribal",
       "russian-nuclear-stobar-carrier-logic",
       "raf-heavy-bomber-option",
+      "britain-at-gibraltar-for-three-centuries",
       "war-of-1812-asymmetrical-war-aims",
       "ambassadors-and-ministers-who-ignore-warnings",
       "british-reinforcements-after-napoleon",
@@ -132713,10 +133093,13 @@
       "type-45-ballistic-missile-defense",
       "redesigning-bismarck-for-a-given-tonnage",
       "nelson-with-850-psi-boilers",
+      "royal-navy-mississippi-route-to-st-louis",
       "swordfish-with-a-1942-engine",
       "buccaneer-wave-damage-in-exercises",
       "landing-craft-versus-landing-ships",
+      "british-2000-horsepower-aero-engine-programmes",
       "controlled-alcohol-rations-at-sea",
+      "most-useful-carrier-scout-is-available-one",
       "navalizing-the-f104-starfighter",
       "salamis-and-the-shape-of-ancient-history",
       "malta-class-carrier-decision",
@@ -132733,9 +133116,11 @@
       "if-constellation-is-cancelled",
       "deltic-powered-ekranoplan",
       "american-lancasters-instead-of-heavy-bombers",
+      "postwar-royal-navy-high-pressure-steam",
       "us-standards-become-vermont-designs",
       "lightning-protection-on-sailing-ships",
       "twin-phalanx-with-ram-launcher",
+      "daylight-bombing-depended-on-doctrine-not-airframe",
       "dreadnought-becomes-prince-of-wales",
       "modern-uncrewed-pt-boat",
       "royal-navy-global-carrier-deployment",
@@ -134718,6 +135103,9 @@
       "washington-treaty-eight-five-three-ratio",
       "no-treaty-hawkins-successor",
       "empire-cruiser-program-yard-capacity",
+      "us-two-ocean-force-ratio-pressure",
+      "nelson-tactics-against-spanish-armada",
+      "nelson-elizabethan-power-and-legitimacy",
       "avro-shackleton-reliability-and-development",
       "soviet-naval-treaty-tonnage-allocation",
       "all-aft-battleship-battery",
@@ -136622,9 +137010,11 @@
     ],
     "segmentSlugs": [
       "three-percent-defence-budget",
+      "independent-royal-air-force",
       "common-airframe-carrier-logistics",
       "indonesian-confrontation-carrier-deterrence",
       "fleet-air-arm-borneo-helicopters",
+      "specialist-naval-correspondents",
       "carrier-saturation-strike-defense",
       "queen-elizabeth-sortie-surge",
       "f35-numbers-and-loyal-wingmen",
@@ -136637,7 +137027,9 @@
       "escort-carrier-life-and-operations",
       "tethered-aew-platform",
       "modern-merchant-escort-carrier",
+      "ever-given-canal-handling",
       "asw-helicopter-ripple-cycle",
+      "listed-building-conservation-tradeoffs",
       "fulmar-improvement",
       "angled-deck-timing",
       "808-naval-air-squadron-history",
@@ -136664,11 +137056,15 @@
       "doctrine-over-aircraft-top-trumps",
       "kido-butai-replacement-depth",
       "allied-pilot-rotation",
+      "pearl-harbor-armour-piercing-bomb-source-check",
+      "political-skill-versus-strategic-judgment",
+      "interwar-anti-tank-aircraft-development",
       "escort-carrier-land-support",
       "shallow-water-aerial-torpedoes",
       "torpedo-bombers-break-formations",
       "hundred-aircraft-carrier-strike-capability-qa",
       "ideal-world-war-two-carrier-air-group",
+      "daring-class-electrical-experiment",
       "america-class-light-carrier",
       "tribal-class-turbine-maintenance",
       "1935-fleet-air-arm-fighter-requirement",
@@ -138300,10 +138696,19 @@
       {
         "slug": "naval-history",
         "title": "Naval History"
+      },
+      {
+        "slug": "main-battle-tanks",
+        "title": "Main Battle Tanks"
+      },
+      {
+        "slug": "falkland-islands",
+        "title": "Falkland Islands"
       }
     ],
     "segmentSlugs": [
       "nine-sailed-star-duty-and-honor",
+      "nelson-rodney-diminished-german-fleet",
       "unlimited-1900-us-navy-budget",
       "postwar-royal-navy-budget-boom",
       "fisher-nuclear-autoloading-capital-ships",
@@ -138321,24 +138726,31 @@
       "bulwark-falklands-commando-carrier",
       "naval-aviation-mutual-development",
       "hms-roberts-falklands-fire-support",
+      "canadian-super-dreadnoughts-northern-patrol",
       "stalin-postwar-battleship-ambitions",
+      "british-italian-alliance-war-geography",
+      "italian-capital-ships-treaty-tonnage",
       "charts-surveys-interwar-hydrography",
       "royal-sovereign-soviet-loan-choice",
       "haida-preservation-and-tribal-cachet",
       "museum-ships-wet-dry-docks",
       "ocean-class-merchant-ship-logistics",
+      "dreadnought-ends-predreadnought-era",
       "destroyer-design-radar-guns-torpedoes",
       "hubert-de-burgh-battle-of-sandwich",
       "war-plans-not-proof-of-war",
       "ocean-liberty-victory-design-tradeoffs",
       "royal-navy-art-visual-history",
       "hood-bayern-range-and-reinforcement",
+      "warsaw-pact-t72-production-and-export",
+      "t80-gas-turbine-engineering-tradeoffs",
       "canadian-navy-dieppe-combined-operations",
       "amphibious-combined-arms-requirement",
       "rcn-reserve-wartime-expansion",
       "us-marine-corps-tanks-island-warfare",
       "constellation-class-57mm-role",
       "cruisers-as-peacetime-tools",
+      "mount-pleasant-defended-air-base",
       "little-rock-flexible-mission-spaces",
       "battleship-peacetime-diplomacy",
       "falklands-south-atlantic-base",
@@ -141731,7 +142143,19 @@
       "qa-french-cruisers-by-world-war-i",
       "qa-dardanelles-expendable-pre-dreadnoughts",
       "qa-dardanelles-minefield-reconnaissance",
-      "qa-wooden-hulled-warships-in-modern-navies"
+      "qa-wooden-hulled-warships-in-modern-navies",
+      "qa-military-history-academic-marginality",
+      "ajax-procurement-requirements-mismatch",
+      "qa-source-caution-french-admirals",
+      "qa-dardanelles-joint-force-availability",
+      "qa-russian-type-45-information-war",
+      "qa-bretagne-queen-elizabeth-turret-comparison",
+      "qa-french-criticism-accountability-not-nationality",
+      "qa-french-empire-fleet-requirements",
+      "qa-operation-safari-danish-fleet",
+      "qa-banking-engines-steep-grades",
+      "qa-british-submarine-sinking-tonnage",
+      "qa-us-navy-world-war-i-asw-contribution"
     ],
     "stats": {
       "views": "1,559 views",
@@ -142649,8 +143073,11 @@
       "speak-softly-as-deterrence",
       "monroe-doctrine-and-roosevelt-corollary",
       "spanish-american-war-and-credibility-gap",
+      "edith-roosevelt-and-the-first-ladyship",
       "roosevelt-naval-career-and-statecraft",
+      "roosevelt-rough-riders-and-medal-of-honor",
       "roosevelt-builds-naval-coalition",
+      "roosevelt-conservation-and-federal-regulation",
       "roosevelt-follows-fleet-aboard-mayflower",
       "experienced-leadership-for-great-white-fleet",
       "world-voyage-as-operational-training",
@@ -143002,6 +143429,7 @@
       "cross-channel-navigation-and-arrival",
       "manual-timber-work-behind-the-fleet",
       "where-the-invasion-fleet-went",
+      "preservation-economics-and-historic-warships",
       "later-ship-lists-and-source-limits"
     ],
     "stats": {
@@ -144444,7 +144872,7 @@
       "queen-elizabeth-ats-driver",
       "london-black-cab-knowledge",
       "royal-navy-answer-to-alaska-class",
-      "battleship-size-without-treaties",
+      "hundred-thousand-ton-battleship-limit-without-treaties",
       "royal-navy-sacrifice-defending-australia",
       "world-war-two-submarine-drydocks",
       "erwin-rommel-after-world-war-one",
@@ -146411,7 +146839,9 @@
       "hms-dreadnought-speed-and-long-range-advantage",
       "hms-dreadnought-design-network-behind-the-ship",
       "hms-dreadnought-turbines-as-a-defining-feature",
-      "hms-dreadnought-physical-design-and-defensive-armament",
+      "hms-dreadnought-displacement-machinery-speed-and-range",
+      "hms-dreadnought-main-secondary-and-torpedo-armament",
+      "hms-dreadnought-armour-and-electrical-auxiliaries",
       "hms-dreadnought-a-capability-not-just-a-label",
       "hms-dreadnought-deterrence-and-the-naval-arms-race",
       "hms-dreadnought-weight-of-fire-changes-the-world"
@@ -149144,6 +149574,8 @@
       "glowworm-rams-admiral-hipper",
       "hara-memoir-as-personal-naval-history",
       "tameichi-hara-japanese-destroyer-captain",
+      "hara-warns-hirohito-about-technology-gap",
+      "hara-survives-yahagi-operation-ten-go",
       "destroyer-officer-training-decisive-action",
       "harry-dewolf-hmcs-haida",
       "ernest-evans-alden-abda-experience",
@@ -149152,11 +149584,14 @@
       "ernest-evans-uss-johnston-samar",
       "commissioning-captain-ship-relationship",
       "hms-ardent-name-and-sacrifice",
+      "scharnhorst-gneisenau-capital-ship-classification",
       "philip-vian-adaptable-aggression",
+      "philip-vian-adaptability-and-fifth-sea-lord",
       "plawski-builds-polish-naval-institutions",
       "eugeniusz-plawski-orp-piorun-bismarck",
       "sherbrooke-cossack-narvik-harbor",
       "robert-sherbrooke-battle-barents-sea",
+      "hms-somali-baked-bean-cans-oral-history",
       "william-hank-uss-laffey-guadalcanal",
       "friedrich-bonte-narvik-destroyers",
       "modern-navies-missing-riskable-destroyer"
@@ -150676,17 +151111,28 @@
       "operation-berlin-success-and-strategic-cost",
       "revisionist-history-and-missing-admiralty-records",
       "why-operation-berlin-was-not-a-british-trap",
+      "u-class-submarines-and-the-malta-target-environment",
+      "spotlight-not-revisionism-at-narvik",
       "capital-ship-concentration-and-convoy-deterrence",
+      "surface-raider-secondary-batteries-and-escort-risk",
+      "destroying-a-convoy-could-undermine-the-convoy-system",
+      "hx-convoys-demonstrate-systemic-success",
+      "earlier-damage-delayed-operation-berlin",
+      "escort-delay-and-traffic-analysis-reveal-breakout",
       "early-breakout-and-british-interception-problem",
       "hx-106-and-the-value-of-a-single-old-battleship",
       "ramillies-victory-condition-was-denial-not-destruction",
       "storm-damage-as-operational-attrition",
       "surface-raiders-shift-to-dispersed-shipping",
+      "sl-convoy-figures-and-source-limits",
       "sl-67-and-hms-malaya",
       "extended-raiding-wore-down-german-machinery",
       "rodney-nearly-catches-gneisenau",
       "ark-royal-sighting-and-missed-strike",
+      "repair-clock-blocked-april-rheinubung-concentration",
       "operation-berlin-tour-de-force-and-farce",
+      "berlin-made-rheinubung-harder",
+      "dreadnought-kiel-canal-revisionist-story",
       "qa-how-could-britain-bait-the-raiders",
       "qa-german-radar-capability-in-1941",
       "qa-what-force-would-spring-a-convoy-ambush",
@@ -150711,7 +151157,12 @@
       "qa-what-if-italy-sortied-with-the-german-battleships",
       "qa-could-four-german-battleships-sortie-in-december-1941",
       "qa-would-enigma-change-a-concentrated-german-sortie",
-      "qa-could-german-headquarters-direct-surface-raiders-like-u-boats"
+      "qa-could-german-headquarters-direct-surface-raiders-like-u-boats",
+      "qa-would-graf-zeppelin-and-aquila-overstretch-british-carriers",
+      "qa-would-bismarck-and-the-twins-be-trapped-in-brest",
+      "qa-would-hx-106-be-attacked-by-day-or-night",
+      "qa-can-both-sides-lose-a-campaign",
+      "qa-who-could-command-the-second-german-battleship-pair"
     ],
     "stats": {
       "views": "1,247 views",
@@ -152208,7 +152659,7 @@
         "title": "Ss Tairoa"
       },
       {
-        "slug": "admiral-graf-spee",
+        "slug": "admiral-graf-spee-ship",
         "title": "Admiral Graf Spee"
       },
       {
@@ -155575,7 +156026,7 @@
         "title": "Battle Of The River Plate"
       },
       {
-        "slug": "admiral-graf-spee",
+        "slug": "admiral-graf-spee-ship",
         "title": "Admiral Graf Spee"
       },
       {
@@ -157395,6 +157846,7 @@
       }
     ],
     "segmentSlugs": [
+      "published-royal-navy-operational-reports",
       "montecuccoli-class-corrects-condottieri-protection",
       "oni-assessment-and-montecuccoli-machinery",
       "montecuccoli-aa-layout-and-high-weight",
@@ -157411,6 +157863,7 @@
       "operation-harpoon-cruiser-convoy-attack",
       "operation-pedestal-submarine-ambush",
       "naples-st-barbaras-day-raid",
+      "saint-barbara-and-december-fourth",
       "montecuccoli-class-transitional-design-lesson"
     ],
     "stats": {
@@ -161063,14 +161516,20 @@
       "four-random-books-medieval-reading-guide",
       "norman-cavalry-fortifications-and-crusading",
       "feudal-armies-and-the-hastings-transition",
+      "william-the-conqueror-command-before-1066",
       "norman-invasion-channel-patrols-and-mobilization",
       "acre-venice-and-crusader-maritime-power",
+      "mediterranean-framework-for-medieval-history",
       "sicilian-vespers-mediterranean-power-struggle",
       "mongol-alliance-diplomacy-for-the-holy-land",
       "tripoli-acre-and-failed-maritime-relief",
+      "richard-ii-truce-and-the-politics-of-peace",
       "henry-v-and-frances-political-fracture",
+      "henry-v-warrior-kingship-and-war-preparation",
       "henry-v-invasion-fleet-and-harfleur-landing",
-      "harfleur-attrition-and-the-road-to-agincourt"
+      "henry-v-campaign-discipline-at-harfleur",
+      "harfleur-attrition-and-the-road-to-agincourt",
+      "blocked-crossings-and-the-march-to-agincourt"
     ],
     "stats": {
       "views": "300 views",
@@ -163566,9 +164025,11 @@
       "canada-and-an-anglo-american-war",
       "empire-to-commonwealth-transition",
       "anglosphere-shared-language-and-different-contexts",
-      "amagi-class-funnel-and-design-differences",
+      "tosa-rear-structure-not-second-funnel",
       "purpose-built-carriers-without-treaty-conversions",
       "royal-navy-g3-n3-response-to-amagi",
+      "amagi-g3-n3-construction-sequence",
+      "royal-navy-benchmark-design-practice",
       "amagi-versus-akagi-carrier-conversion",
       "hms-agincourt-plan-evidence-gap",
       "us-navy-post-south-dakota-designs",
@@ -164445,6 +164906,10 @@
         "title": "Naval Arms Control"
       },
       {
+        "slug": "naval-diplomacy",
+        "title": "Naval Diplomacy"
+      },
+      {
         "slug": "naval-strategy",
         "title": "Naval Strategy"
       },
@@ -164478,6 +164943,7 @@
       "south-africa-and-the-neglected-cape-sea-route",
       "india-navy-building-and-national-institutions",
       "french-coalitions-and-fragmented-shipbuilding",
+      "french-disarmament-required-german-weakness",
       "france-italy-parity-and-colonial-commitments",
       "italian-parity-and-mediterranean-concentration",
       "japans-seven-to-ten-risk-fleet-logic",
@@ -167371,7 +167837,7 @@
       },
       {
         "slug": "tosa-class",
-        "title": "Tosa Class"
+        "title": "Tosa Class Battleships"
       },
       {
         "slug": "interwar-navy",
@@ -169377,6 +169843,7 @@
       "soviet-northern-fleet-arctic-origins",
       "baltic-fleet-revolution-and-leningrad",
       "black-sea-fleet-imperial-soviet-continuity",
+      "perry-opens-japan-before-russia",
       "pacific-fleet-from-port-arthur-to-1945",
       "missile-battleship-counterfactual-fleet-reaction",
       "soviet-cruiser-centered-fleet-logic",
@@ -169392,7 +169859,8 @@
       "surface-raiders-multiply-commerce-threat",
       "capital-ships-political-cover-for-cruisers",
       "ocean-control-rhetoric-versus-diplomatic-fleet",
-      "sverdlov-class-refines-project-68"
+      "sverdlov-class-refines-project-68",
+      "stated-missions-versus-warfighting-fleets"
     ],
     "stats": {
       "views": "1,965 views",

@@ -14,6 +14,7 @@ import {
   type ChannelInventoryCompleteness,
   type ChannelVideoTab,
 } from "../youtube/channel-video-links.js";
+import { readIgnoredVideos } from "../youtube/ignored-videos.js";
 
 interface CliOptions {
   input?: string;
@@ -31,12 +32,15 @@ interface CliOptions {
 
 async function main(): Promise<void> {
   const options = parseArgs(process.argv.slice(2));
+  const ignoredVideos = await readIgnoredVideos();
+  const ignoredVideoIds = new Set(ignoredVideos.keys());
   const input = options.input ?? (options.tab === "videos" ? defaultSavedVideosHtmlInput : defaultSavedStreamsHtmlInput);
   const html = await readFile(input, "utf8");
   const savedAt = options.fetchedAt ?? await fileModifiedAt(input);
   const extractionOptions: ExtractSavedChannelHtmlOptions = {
     tab: options.tab,
     sourcePath: input,
+    ignoredVideoIds,
   };
 
   if (options.channelUrl !== undefined) {
@@ -60,6 +64,7 @@ async function main(): Promise<void> {
   if (options.masterOutput !== undefined) {
     await writeChannelEpisodeMasterOutput(options.masterOutput, extraction.result, {
       completeness: options.inventoryCompleteness,
+      ignoredVideoIds,
     });
   }
   if (options.baseOutput !== undefined || options.metadataOutput !== undefined) {

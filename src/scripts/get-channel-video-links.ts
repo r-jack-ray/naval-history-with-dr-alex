@@ -14,6 +14,7 @@ import {
   defaultVideoMetadataOutput,
   fetchAndStoreVideoMetadata,
 } from "../youtube/video-metadata.js";
+import { readIgnoredVideos } from "../youtube/ignored-videos.js";
 import { resolveYoutubeApiKey } from "./youtube-api-key-file.js";
 
 type CliOptions = FetchChannelVideoLinksOptions & {
@@ -30,9 +31,12 @@ type CliOptions = FetchChannelVideoLinksOptions & {
 async function main(): Promise<void> {
   const options = parseArgs(process.argv.slice(2));
   const apiKey = await resolveYoutubeApiKey(options);
+  const ignoredVideos = await readIgnoredVideos();
+  const ignoredVideoIds = new Set(ignoredVideos.keys());
   const fetchOptions: FetchChannelVideoLinksOptions = {
     channelUrl: options.channelUrl,
     requestDelayMs: options.requestDelayMs,
+    ignoredVideoIds,
   };
   if (apiKey !== undefined) {
     fetchOptions.apiKey = apiKey;
@@ -66,6 +70,7 @@ async function main(): Promise<void> {
   if (options.masterOutput) {
     await writeChannelEpisodeMasterOutput(options.masterOutput, result, {
       completeness: options.inventoryCompleteness,
+      ignoredVideoIds,
     });
     console.error(`Wrote ${result.links.length} episodes to ${options.masterOutput}`);
 
@@ -77,6 +82,7 @@ async function main(): Promise<void> {
         outputPath: defaultVideoMetadataOutput,
         requestDelayMs: options.requestDelayMs,
         batchSize: 50,
+        ignoredVideoIds,
         ...(!options.quiet ? { logger: (message: string) => console.error(message) } : {}),
       });
       console.error(
@@ -84,6 +90,7 @@ async function main(): Promise<void> {
       );
       await writeChannelEpisodeMasterOutput(options.masterOutput, result, {
         completeness: options.inventoryCompleteness,
+        ignoredVideoIds,
         metadataRecords: new Map(metadata.videos.map((record) => [record.videoId, record])),
       });
       console.error(`Reconciled ${result.links.length} episodes with stored transcripts and refreshed metadata`);

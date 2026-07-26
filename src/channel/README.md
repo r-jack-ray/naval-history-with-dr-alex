@@ -8,8 +8,17 @@ curation, and search workflows.
 ```text
 src/channel/
   episodes.json  Master episode list for the channel.
+  ignored-videos.json  Full-video exclusions applied before downstream work.
   video-metadata.json  Official YouTube Data API metadata store.
 ```
+
+## ignored-videos.json
+
+`ignored-videos.json` is the canonical full-video exclusion list. Records in it
+are omitted from channel inventory outputs, official metadata refreshes, saved
+HTML extraction, transcript batches, and direct transcript fetches. Use it only
+when the complete YouTube video should remain outside the project; transcript
+availability failures belong in `src/transcripts/fetch-status.json` instead.
 
 ## episodes.json
 
@@ -47,6 +56,9 @@ Refresh from a channel crawl:
 ```powershell
 npm run fetch:video-links
 ```
+
+The refresh automatically applies `ignored-videos.json`, so an excluded video
+found in a later channel crawl is not reintroduced to `episodes.json`.
 
 Refresh from saved `/videos` and `/streams` HTML:
 

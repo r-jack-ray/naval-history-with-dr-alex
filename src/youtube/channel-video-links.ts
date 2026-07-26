@@ -15,6 +15,10 @@ import {
   type VideoKind,
   type VideoMetadataRecord,
 } from "./video-metadata.js";
+import {
+  defaultIgnoredVideosInput,
+  readIgnoredVideos,
+} from "./ignored-videos.js";
 
 export type ChannelVideoTab = "videos" | "streams";
 export type ChannelInventoryCompleteness = "complete" | "partial" | "unknown";
@@ -89,6 +93,7 @@ export interface FetchChannelVideoLinksOptions {
   includeVideoDetails?: boolean;
   detailLimit?: number;
   checkpointOutput?: string;
+  ignoredVideoIds?: ReadonlySet<string>;
   logger?: (message: string) => void;
 }
 
@@ -189,6 +194,8 @@ export interface BuildChannelEpisodeMasterOptions {
   metadataRecords?: ReadonlyMap<string, VideoMetadataRecord>;
   transcriptsManifestPath?: string;
   videoMetadataPath?: string;
+  ignoredVideoIds?: ReadonlySet<string>;
+  ignoredVideosPath?: string;
 }
 
 export interface StoredTranscriptEpisodeRecord {
@@ -315,6 +322,7 @@ export async function fetchChannelVideoLinks(
   const records: ChannelVideoLink[] = [];
   let pagesFetched = 0;
   let rawCount = 0;
+  let ignoredCount = 0;
   let pageToken: string | undefined;
 
   while (true) {
@@ -336,6 +344,10 @@ export async function fetchChannelVideoLinks(
     for (const item of items) {
       const record = playlistItemToVideoLink(item, records.length + 1);
       if (record !== undefined) {
+        if (options.ignoredVideoIds?.has(record.videoId)) {
+          ignoredCount += 1;
+          continue;
+        }
         records.push(record);
       }
     }
@@ -383,6 +395,9 @@ export async function fetchChannelVideoLinks(
       `Blocked ${blockedCount} video(s) at or below the ${maxBlockedTranscriptDurationSeconds}s transcript cutoff.`,
     );
   }
+  if (ignoredCount > 0) {
+    options.logger?.(`Excluded ${ignoredCount} video(s) from the channel-wide ignore list.`);
+  }
   if (options.checkpointOutput) {
     await writeVideoLinksOutput(options.checkpointOutput, {
       channelUrl,
@@ -426,6 +441,10 @@ export async function writeChannelEpisodeMasterOutput(
   result: ChannelVideoLinksResult,
   options: BuildChannelEpisodeMasterOptions = {},
 ): Promise<void> {
+  const ignoredVideos = options.ignoredVideoIds === undefined
+    ? await readIgnoredVideos(options.ignoredVideosPath ?? defaultIgnoredVideosInput)
+    : undefined;
+  const ignoredVideoIds = options.ignoredVideoIds ?? new Set(ignoredVideos?.keys() ?? []);
   const storedTranscripts = options.storedTranscripts ??
     await readStoredTranscriptEpisodeRecords(options.transcriptsManifestPath ?? defaultTranscriptManifestInput);
   const metadataStore = options.metadataRecords === undefined
@@ -435,6 +454,7 @@ export async function writeChannelEpisodeMasterOutput(
     new Map(metadataStore?.videos.map((record) => [record.videoId, record]) ?? []);
   await writeJsonFile(path, buildChannelEpisodeMaster(result, {
     ...options,
+    ignoredVideoIds,
     storedTranscripts,
     metadataRecords,
   }));
@@ -445,6 +465,9 @@ export function buildChannelEpisodeMaster(
   options: BuildChannelEpisodeMasterOptions = {},
 ): ChannelEpisodeMasterResult {
   const notes = [...(options.notes ?? [])];
+  const links = options.ignoredVideoIds === undefined
+    ? result.links
+    : result.links.filter((link) => !options.ignoredVideoIds?.has(link.videoId));
   if (result.tabs.streams.pagesFetched === 0) {
     notes.push("Streams tab has not been fetched in this inventory.");
   }
@@ -463,7 +486,7 @@ export function buildChannelEpisodeMaster(
     storage: {
       transcriptsManifest: "src/transcripts/manifest.json",
     },
-    episodes: result.links.map((link, index) => channelEpisodeRecord(link, index + 1, options)),
+    episodes: links.map((link, index) => channelEpisodeRecord(link, index + 1, options)),
   };
 }
 
@@ -503,7 +526,10 @@ export function splitChannelVideoLinksResult(result: ChannelVideoLinksResult): {
   };
 }
 
-export function mergeChannelVideoLinksResults(results: ChannelVideoLinksResult[]): ChannelVideoLinksResult {
+export function mergeChannelVideoLinksResults(
+  results: ChannelVideoLinksResult[],
+  ignoredVideoIds: ReadonlySet<string> = new Set(),
+): ChannelVideoLinksResult {
   if (results.length === 0) {
     throw new Error("At least one channel video link result is required.");
   }
@@ -522,7 +548,8 @@ export function mergeChannelVideoLinksResults(results: ChannelVideoLinksResult[]
       videos: mergeTabState(results, "videos"),
       streams: mergeTabState(results, "streams"),
     },
-    links: mergeLinks(results.flatMap((result) => result.links)),
+    links: mergeLinks(results.flatMap((result) => result.links))
+      .filter((link) => !ignoredVideoIds.has(link.videoId)),
   };
 }
 

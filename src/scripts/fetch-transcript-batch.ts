@@ -7,6 +7,7 @@ import {
 } from "../youtube/batch-transcripts.js";
 import { defaultTranscriptStorageRoot } from "../youtube/transcripts.js";
 import { defaultVideoMetadataOutput } from "../youtube/video-metadata.js";
+import { readIgnoredVideos } from "../youtube/ignored-videos.js";
 
 type CliOptions = Omit<FetchTranscriptBatchOptions, "logger" | "metadataInput"> & {
   metadataInput: string | undefined;
@@ -15,11 +16,13 @@ type CliOptions = Omit<FetchTranscriptBatchOptions, "logger" | "metadataInput"> 
 
 async function main(): Promise<void> {
   const options = parseArgs(process.argv.slice(2));
+  const ignoredVideos = await readIgnoredVideos();
   const fetchOptions: FetchTranscriptBatchOptions = {
     inputPath: options.inputPath,
     outputRoot: options.outputRoot,
     statusOutput: options.statusOutput,
     requestDelayMs: options.requestDelayMs,
+    ignoredVideoIds: new Set(ignoredVideos.keys()),
   };
 
   if (options.metadataInput !== undefined) {
@@ -156,6 +159,8 @@ Options:
 
 Videos with official durations at or below 61 seconds are never fetched. This
 includes one second of tolerance for nominal 60-second clips reported as 61s.
+Videos in src/channel/ignored-videos.json are excluded from every batch even if
+they are present in a custom episode input.
 
 Examples:
   npm run alternate:fetch:transcripts -- --limit 1 --request-delay-ms 5000

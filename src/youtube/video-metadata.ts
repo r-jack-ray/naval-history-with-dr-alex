@@ -58,6 +58,7 @@ export interface FetchVideoMetadataOptions {
   force?: boolean;
   additionalVideoIds?: string[];
   refreshVideoIds?: string[];
+  ignoredVideoIds?: ReadonlySet<string>;
   logger?: (message: string) => void;
 }
 
@@ -379,13 +380,20 @@ export async function fetchAndStoreVideoMetadata(options: FetchVideoMetadataOpti
 
   const input = JSON.parse(await readFile(options.inputPath, "utf8")) as unknown;
   const existing = await readExistingStore(options.outputPath);
-  const inputVideoIds = readVideoIdsFromEpisodeMaster(input);
+  const ignoredVideoIds = options.ignoredVideoIds ?? new Set<string>();
+  const discoveredInputVideoIds = readVideoIdsFromEpisodeMaster(input);
+  const inputVideoIds = discoveredInputVideoIds.filter((videoId) => !ignoredVideoIds.has(videoId));
   const additionalVideoIds = resolveAdditionalVideoIds(
     inputVideoIds,
     existing?.source.additionalVideoIds,
     options.additionalVideoIds,
-  );
+  ).filter((videoId) => !ignoredVideoIds.has(videoId));
   const videoIds = mergeVideoIds(inputVideoIds, additionalVideoIds);
+  const ignoredCount = discoveredInputVideoIds.length - inputVideoIds.length +
+    (options.additionalVideoIds?.filter((videoId) => ignoredVideoIds.has(videoId)).length ?? 0);
+  if (ignoredCount > 0) {
+    options.logger?.(`Excluded ${ignoredCount} video ID(s) from metadata using the channel-wide ignore list.`);
+  }
   const recordsById = new Map(existing?.videos.map((record) => [record.videoId, record]) ?? []);
   const targetIds = selectVideoMetadataTargetIds({
     videoIds,

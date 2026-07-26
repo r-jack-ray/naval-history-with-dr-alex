@@ -59,6 +59,16 @@ test("falls back to ytInitialData lockups when rendered lockups are absent", () 
   assert.equal(extraction.result.links[0]?.videoId, "uURe69Wnh-Q");
 });
 
+test("omits ignored videos from saved channel HTML extraction", () => {
+  const extraction = extractSavedChannelHtml(renderedFixtureHtml(), {
+    tab: "videos",
+    ignoredVideoIds: new Set(["--l6rRIfksQ"]),
+  });
+
+  assert.equal(extraction.stats.extractedVideoCount, 1);
+  assert.deepEqual(extraction.result.links.map((record) => record.videoId), ["eYhGE7TDlHQ"]);
+});
+
 function renderedFixtureHtml(): string {
   return `<!-- saved from url=(0044)https://www.youtube.com/@DrAlexClarke/videos -->
 <yt-lockup-view-model>

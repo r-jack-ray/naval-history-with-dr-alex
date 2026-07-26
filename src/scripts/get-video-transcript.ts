@@ -19,6 +19,7 @@ import {
   type VideoMetadataRecord,
   type VideoNamingMetadata,
 } from "../youtube/video-metadata.js";
+import { readIgnoredVideos } from "../youtube/ignored-videos.js";
 
 type CliOptions = FetchVideoTranscriptOptions & {
   txtOutput?: string;
@@ -33,6 +34,12 @@ type CliOptions = FetchVideoTranscriptOptions & {
 
 async function main(): Promise<void> {
   const options = parseArgs(process.argv.slice(2));
+  const ignoredVideos = await readIgnoredVideos();
+  const ignoredVideo = ignoredVideos.get(options.videoId);
+  if (ignoredVideo !== undefined) {
+    console.error(`Skipping fully ignored video ${options.videoId}: ${ignoredVideo.reason}`);
+    return;
+  }
   const metadataRecord = await readMetadataRecord(options);
   const state = resolveVideoFetchState(metadataRecord, options.metadataInput !== undefined);
   if (state?.state === "deferred") {
@@ -234,6 +241,8 @@ Options:
 
 Videos with official durations at or below 61 seconds are never fetched. This
 includes one second of tolerance for nominal 60-second clips reported as 61s.
+Videos in src/channel/ignored-videos.json are never fetched, including with
+--force or --no-metadata-lookup.
 
 Example:
   npm run alternate:fetch:transcript -- --video-id uURe69Wnh-Q
