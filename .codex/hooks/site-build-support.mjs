@@ -2,13 +2,14 @@ import { createHash } from "node:crypto";
 import { readFile, readdir, stat } from "node:fs/promises";
 import { relative, resolve } from "node:path";
 
-export const defaultAstroBuildConcurrency = 4;
 const themeAssetDirectory = "site/dist/_astro";
 const themeAssetNamePattern = /^theme-interaction\.[A-Za-z0-9_-]+\.js$/u;
 
 export function parseAstroBuildConcurrency(value) {
   if (value === undefined) {
-    return defaultAstroBuildConcurrency;
+    throw new Error(
+      "ASTRO_BUILD_CONCURRENCY must be set through site-build.properties or the calling environment.",
+    );
   }
   if (!/^[1-4]$/u.test(value)) {
     throw new Error(

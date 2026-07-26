@@ -1,11 +1,15 @@
 #!/usr/bin/env node
 
+import { parseSiteSeoValidationConcurrency } from "../site/concurrency-settings.js";
 import { validateRenderedSeoSite } from "../site/seo-validation.js";
 
 const result = await validateRenderedSeoSite({
   distRoot: "site/dist",
   siteOrigin: "https://r-jack-ray.github.io",
   basePath: "/naval-history-with-dr-alex/",
+  concurrency: parseSiteSeoValidationConcurrency(
+    process.env.SITE_SEO_VALIDATION_CONCURRENCY,
+  ),
 });
 const errors = result.diagnostics.filter((item) => item.severity === "error");
 const warnings = result.diagnostics.filter((item) => item.severity === "warning");

@@ -27,6 +27,7 @@ const archiveCachePath = resolve(repositoryRoot, ".tmp/site-archive-cache.json")
 const siteCachePath = resolve(repositoryRoot, ".tmp/site-build-cache.json");
 const archiveOutputSentinels = ["site/src/data/generated/archive/index.json"];
 const defaultTopicNormalizationPatternsPath = "src/derived/topic-normalization-patterns.tsv";
+const siteBuildPropertiesPath = "site-build.properties";
 const siteOutputSentinels = [
   "site/dist/index.html",
   "site/dist/pagefind/pagefind-entry.json",
@@ -36,6 +37,7 @@ const archiveInputPaths = [
   ".codex/hooks/site-content-pipeline-lock.mjs",
   "package.json",
   "package-lock.json",
+  siteBuildPropertiesPath,
   "tsconfig.json",
   "src/channel/episodes.json",
   "src/channel/video-metadata.json",
@@ -49,6 +51,7 @@ const siteInputPaths = [
   "astro.config.mjs",
   "package.json",
   "package-lock.json",
+  siteBuildPropertiesPath,
   "tsconfig.astro.json",
   "site/public",
   "site/src",

@@ -180,6 +180,8 @@ npm run site:preview
 
 `npm run site:dev` uses the generated archive already on disk; run `generate:site-data` first when source data changed. `npm run site:check` regenerates `site/src/data/generated/archive/` before running Astro checks. `npm run site:build` fingerprints the generator and site inputs, validates the manifest-listed generated files and SHA-256 values, and regenerates or rebuilds only when inputs or outputs changed; pass `-- --force` to bypass its caches. A performed build emits `site/dist/` and runs Pagefind against that output. Run `site:preview` after a build when you want to inspect that production output locally.
 
+Site generation, Astro/Pagefind build, preview, check, and rendered-SEO validation commands load the shared `site-build.properties` file. It uses commentable `KEY=value` settings in the style of an application properties file. `ASTRO_BUILD_CONCURRENCY` controls parallel Astro page rendering and accepts `1` through `4`; `SITE_SEO_VALIDATION_CONCURRENCY` controls rendered-HTML validation workers and accepts `1` through `32`. A value already present in the calling environment takes precedence. Pagefind 1.5.2 exposes no build-concurrency setting.
+
 The authoritative generated `index.json` manifest lists the tracked collection files and segment buckets. Full Astro/Pagefind builds traverse more than 50,000 HTML pages, can take several minutes, and may be quiet while Astro runs; allow at least 15 minutes before treating an agent-run build as timed out. Do not hand-edit the generated archive dataset, and do not commit generated `site/dist/` files.
 
 The generated site exposes:
