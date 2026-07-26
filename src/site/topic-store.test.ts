@@ -64,7 +64,6 @@ test("preserves curated and unused topic records while appending missing usage",
   const directory = await makeTopicDirectory();
   try {
     await writeFile(join(directory, "topics.json"), `${JSON.stringify({
-      schemaVersion: 1,
       topics: [
         {
           slug: "destroyers",
@@ -167,7 +166,6 @@ test("persists unresolved numeric title review until the stored title is curated
     const firstResult = await synchronizeFixture(directory);
     const firstBytes = await readFile(topicStorePath, "utf8");
     const firstStore = JSON.parse(firstBytes) as {
-      schemaVersion: 1;
       topics: Array<{ slug: string; title: string; summary?: string }>;
     };
 
@@ -197,7 +195,6 @@ test("refuses a noncanonical topic without changing the topic store", async () =
   const directory = await makeTopicDirectory(["57mm-gun"], ["57mm-gun"]);
   const topicStorePath = join(directory, "topics.json");
   const before = `${JSON.stringify({
-    schemaVersion: 1,
     topics: [{
       slug: "57mm-gun",
       title: "57mm Gun",
@@ -549,7 +546,6 @@ async function makeTopicDirectory(
   const directory = await mkdtemp(join(tmpdir(), "naval-topic-store-"));
   await writeFile(fixturePatternsPath(directory), testCatalogText, "utf8");
   await writeFile(join(directory, "2026-07-08_T00-00-00_topic-fixture_abc123.json"), JSON.stringify({
-    schemaVersion: 1,
     videoId: "abc123",
     topics: videoTopics,
     segments: [
@@ -563,6 +559,11 @@ async function makeTopicDirectory(
         topics: segmentTopics,
         summary: "Summary.",
         body: "Body.",
+        sourcePath: "src/transcripts/txt/topic-fixture_abc123.txt",
+        evidence: [{
+          start: "0:00",
+          note: "Fixture evidence.",
+        }],
       },
     ],
   }), "utf8");

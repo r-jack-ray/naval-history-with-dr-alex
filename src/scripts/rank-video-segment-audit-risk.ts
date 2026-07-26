@@ -3,6 +3,11 @@ import { mkdir, readFile, readdir, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 import {
+  parseSiteContentProcessingConfig,
+  validateCuratedVideoFile,
+  type SiteContentProcessingConfig,
+} from "../content/schemas/index.js";
+import {
   DEFAULT_SITE_CONTENT_PROCESSING_LOG,
   parseSiteContentProcessingLog,
   type SiteContentProcessingLogRecord,
@@ -26,12 +31,6 @@ interface ManifestTranscript {
   paths?: { txt?: string };
 }
 
-interface ProcessingConfig {
-  firstPass?: { minimumEvidenceWindows?: number };
-  liveStreamExtraction?: { explicitQaTitleMarkers?: string[] };
-  videoTypeRules?: Array<{ matchTitle?: string; followUpStage?: string }>;
-}
-
 interface CliOptions {
   manifest: string;
   segmentsInput: string;
@@ -44,7 +43,10 @@ interface CliOptions {
 async function main(): Promise<void> {
   const options = parseArgs(process.argv.slice(2));
   const manifest = validateManifest(JSON.parse(await readFile(options.manifest, "utf8")) as unknown);
-  const config = validateProcessingConfig(JSON.parse(await readFile(options.processingConfig, "utf8")) as unknown);
+  const config = parseSiteContentProcessingConfig(
+    JSON.parse(await readFile(options.processingConfig, "utf8")) as unknown,
+    `Processing config ${options.processingConfig}`,
+  );
   const manifestByStem = uniqueMap(manifest, (item) => item.fileStem, "file stem");
   const manifestByVideoId = uniqueMap(manifest, (item) => item.videoId, "video ID");
   const processingLog = parseSiteContentProcessingLog(await readFile(options.processingLog, "utf8"), manifest);
@@ -72,13 +74,16 @@ async function main(): Promise<void> {
 
     const root = isRecord(parsed) ? parsed : undefined;
     if (parsed !== undefined && root === undefined) structuralIssues.push("shard root must be a non-null object");
-    if (root !== undefined && root.schemaVersion !== 1) structuralIssues.push("shard schemaVersion must be 1");
+    if (root !== undefined) {
+      const schemaValidation = validateCuratedVideoFile(root);
+      if (!schemaValidation.success) {
+        structuralIssues.push(...schemaValidation.issues.map((issue) => `shard schema ${issue}`));
+      }
+    }
     const shardVideoId = root !== undefined && typeof root.videoId === "string" && /^[A-Za-z0-9_-]+$/u.test(root.videoId)
       ? root.videoId
       : undefined;
-    if (root !== undefined && shardVideoId === undefined) structuralIssues.push("shard videoId must be a safe nonempty string");
     const segments = root !== undefined && Array.isArray(root.segments) ? root.segments as AuditSegment[] : [];
-    if (root !== undefined && !Array.isArray(root.segments)) structuralIssues.push("shard segments must be an array");
 
     let manifestEntry = manifestByStem.get(fileStem);
     if (manifestEntry === undefined) {
@@ -119,7 +124,7 @@ async function main(): Promise<void> {
       manualAudioReviewRemaining: hasManualAudioReviewRemaining(latestProcessingRecord),
       structuralIssues,
       qaExpectation: qaExpectationFor(videoTitle, config),
-      minimumEvidenceWindows: config.firstPass?.minimumEvidenceWindows ?? 1,
+      minimumEvidenceWindows: config.firstPass.minimumEvidenceWindows,
     }));
   }
 
@@ -200,11 +205,6 @@ function validateManifest(value: unknown): ManifestTranscript[] {
   return records;
 }
 
-function validateProcessingConfig(value: unknown): ProcessingConfig {
-  if (!isRecord(value)) throw new Error("Processing config must be a non-null object.");
-  return value as ProcessingConfig;
-}
-
 function uniqueMap(records: ManifestTranscript[], key: (record: ManifestTranscript) => string, label: string): Map<string, ManifestTranscript> {
   const result = new Map<string, ManifestTranscript>();
   for (const record of records) {
@@ -215,13 +215,12 @@ function uniqueMap(records: ManifestTranscript[], key: (record: ManifestTranscri
   return result;
 }
 
-function qaExpectationFor(title: string, config: ProcessingConfig): QaExpectation {
+function qaExpectationFor(title: string, config: SiteContentProcessingConfig): QaExpectation {
   const equivalents = ["Q&A", "Q & A", "Q/A", "Q and A", "Questions Answered", "Question and Answer"];
-  const markers = [...equivalents, ...(config.liveStreamExtraction?.explicitQaTitleMarkers ?? [])];
+  const markers = [...equivalents, ...config.liveStreamExtraction.explicitQaTitleMarkers];
   if (markers.some((marker) => normalizedTitle(title).includes(normalizedTitle(marker)))) return "explicit_title";
-  const configured = (config.videoTypeRules ?? []).some((rule) =>
-    typeof rule.matchTitle === "string"
-    && normalizedTitle(title).includes(normalizedTitle(rule.matchTitle))
+  const configured = config.videoTypeRules.some((rule) =>
+    normalizedTitle(title).includes(normalizedTitle(rule.matchTitle))
     && rule.followUpStage === "exhaustive-live-qa-review");
   return configured ? "configured_video_type" : "none";
 }

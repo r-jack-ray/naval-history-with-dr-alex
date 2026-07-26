@@ -1,7 +1,11 @@
 import path from "node:path";
 
-export const SITE_CONTENT_PROCESSING_LOG_HEADER =
-  "timestamp;shardPath;result;needsFurtherProcessing;notes";
+import {
+  SITE_CONTENT_PROCESSING_LOG_HEADER,
+  siteContentProcessingLogShardPathPattern,
+  validateSiteContentProcessingLogRow,
+} from "./schemas/index.js";
+
 export const DEFAULT_SITE_CONTENT_PROCESSING_LOG = "src/derived/site-content-processing.log";
 
 export interface ProcessingLogManifestRecord {
@@ -37,9 +41,6 @@ export interface SiteContentProcessingLogParseResult {
   unmappedRowCount: number;
   ignoredRowCount: number;
 }
-
-const CANONICAL_SHARD_PATH = /^src\/derived\/video-segments\/([^/]+)\.json$/u;
-const SAFE_STEM = /^[A-Za-z0-9][A-Za-z0-9._-]*$/u;
 
 export function parseSiteContentProcessingLog(
   text: string,
@@ -83,21 +84,26 @@ export function parseSiteContentProcessingLog(
       problems.push(problem(lineNumber, "processing-log-field-count", "must have at least 5 semicolon-separated fields", line));
       continue;
     }
-    const [timestamp, shardPathRaw, result, needsFurtherProcessing, notes] = fields;
-    const shardPath = normalizeRepoPath(shardPathRaw);
-    const shardMatch = CANONICAL_SHARD_PATH.exec(shardPath);
-    let message: string | undefined;
-    if (!validTimestamp(timestamp)) message = "has an invalid timestamp";
-    else if (shardPathRaw !== shardPath || shardMatch === null || !SAFE_STEM.test(shardMatch[1] ?? "")) {
-      message = "must use a canonical repo-relative video-segment shard path";
-    } else if (result.trim().length === 0) message = "must include a nonempty result";
-    else if (needsFurtherProcessing !== "yes" && needsFurtherProcessing !== "no") message = "must use yes or no for needsFurtherProcessing";
-    else if (notes.trim().length === 0) message = "must include nonempty notes";
-    if (message !== undefined) {
+    const [timestamp, shardPath, result, needsFurtherProcessing, notes] = fields;
+    const rowValidation = validateSiteContentProcessingLogRow({
+      timestamp,
+      shardPath,
+      result,
+      needsFurtherProcessing,
+      notes,
+    });
+    if (!rowValidation.success) {
       malformedRowCount += 1;
-      problems.push(problem(lineNumber, "processing-log-invalid-row", message, line));
+      problems.push(problem(
+        lineNumber,
+        "processing-log-invalid-row",
+        `is invalid: ${rowValidation.issues.join("; ")}`,
+        line,
+      ));
       continue;
     }
+    const row = rowValidation.data;
+    const shardMatch = siteContentProcessingLogShardPathPattern.exec(row.shardPath)!;
 
     const fileStem = shardMatch![1]!;
     const manifestRecord = manifestByStem.get(fileStem);
@@ -116,13 +122,13 @@ export function parseSiteContentProcessingLog(
 
     const record: SiteContentProcessingLogRecord = {
       lineNumber,
-      timestamp,
-      shardPath,
+      timestamp: row.timestamp,
+      shardPath: row.shardPath,
       fileStem,
       videoId: manifestRecord.videoId,
-      result: result.trim(),
-      needsFurtherProcessing: needsFurtherProcessing as "yes" | "no",
-      notes: notes.trim(),
+      result: row.result.trim(),
+      needsFurtherProcessing: row.needsFurtherProcessing,
+      notes: row.notes.trim(),
     };
     records.push(record);
     // The file is append-only and local timestamps may be equal or out of order.
@@ -159,24 +165,6 @@ export function manifestFileStem(record: ProcessingLogManifestRecord): string | 
   const txt = record.paths?.txt;
   if (typeof txt !== "string" || txt.length === 0) return undefined;
   return path.posix.basename(txt.replaceAll("\\", "/"), ".txt");
-}
-
-function normalizeRepoPath(value: string): string {
-  return value.replaceAll("\\", "/");
-}
-
-function validTimestamp(value: string): boolean {
-  const match = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})(?:\.\d{1,3})?(?:Z|([+-])(\d{2}):(\d{2}))?$/u.exec(value);
-  if (match === null) return false;
-  const [year, month, day, hour, minute, second, offsetHour, offsetMinute] = [
-    match[1], match[2], match[3], match[4], match[5], match[6], match[8], match[9],
-  ].map(Number);
-  if (hour! > 23 || minute! > 59 || second! > 59 || (offsetHour !== 0 && offsetHour! > 23) || (offsetMinute !== 0 && offsetMinute! > 59)) {
-    return false;
-  }
-  const date = new Date(Date.UTC(year!, month! - 1, day!));
-  return date.getUTCFullYear() === year && date.getUTCMonth() === month! - 1 && date.getUTCDate() === day
-    && Number.isFinite(Date.parse(value));
 }
 
 function problem(lineNumber: number, code: string, message: string, line: string): SiteContentProcessingLogProblem {

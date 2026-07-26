@@ -87,7 +87,7 @@ test("transcript temporal metrics use the manifest transcript interval rather th
 
 test("structural and evidence defects route to repair", () => {
   const row = analyzeVideoSegmentRisk(input({
-    structuralIssues: ["unsupported shard schemaVersion"],
+    structuralIssues: ["unknown shard root property"],
     segments: [{ kind: "qa", start: "0:70", sourcePath: "wrong.txt", evidence: [{}] }],
   }));
   assert.equal(row.auditRoute, "repair_required");

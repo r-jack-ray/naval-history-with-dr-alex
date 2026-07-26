@@ -3,8 +3,8 @@ import test from "node:test";
 
 import {
   parseSiteContentProcessingLog,
-  SITE_CONTENT_PROCESSING_LOG_HEADER,
 } from "./site-content-processing-log.js";
+import { SITE_CONTENT_PROCESSING_LOG_HEADER } from "./schemas/index.js";
 
 const manifest = [
   { videoId: "abc123", fileStem: "sample-video_abc123", paths: { txt: "txt/sample-video_abc123.txt" } },

@@ -69,7 +69,6 @@ async function makeFixture(topics: string[]): Promise<{
   await mkdir(segmentsInput);
   await writeFile(patternsInput, catalogText(), "utf8");
   await writeFile(join(segmentsInput, "topics.json"), `${JSON.stringify({
-    schemaVersion: 1,
     topics: [
       {
         slug: "57-mm-guns",
@@ -85,10 +84,24 @@ async function makeFixture(topics: string[]): Promise<{
     ],
   }, null, 2)}\n`, "utf8");
   await writeFile(shardPath, `${JSON.stringify({
-    schemaVersion: 1,
     videoId: "abc123",
     topics,
-    segments: [{ id: "one", topics }],
+    segments: [{
+      id: "one",
+      videoId: "abc123",
+      slug: "one",
+      title: "Fixture segment",
+      kind: "chapter",
+      start: "0:00",
+      topics,
+      summary: "Fixture summary.",
+      body: "Fixture body.",
+      sourcePath: "src/transcripts/txt/fixture-video_abc123.txt",
+      evidence: [{
+        start: "0:00",
+        note: "Fixture evidence.",
+      }],
+    }],
   }, null, 2)}\n`, "utf8");
   return { root, patternsInput, segmentsInput, shardPath };
 }

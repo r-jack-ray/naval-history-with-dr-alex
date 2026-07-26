@@ -214,6 +214,8 @@ test("keeps existing bucket filenames and assignments stable when records are ap
     topics: ["destroyers"],
     summary: "Second intro segment.",
     body: "Second intro body.",
+    sourcePath: "src/transcripts/txt/second-video_def456.txt",
+    evidence: [{ start: "0:00", note: "Fixture evidence." }],
   });
 
   const appended = splitSiteArchiveData(buildSiteArchiveData(input));
@@ -399,7 +401,6 @@ test("loads curated site content from per-video files", async () => {
   const directory = await mkdtemp(join(tmpdir(), "naval-site-content-"));
   try {
     await writeFile(join(directory, "topics.json"), JSON.stringify({
-      schemaVersion: 1,
       topics: [
         {
           slug: "destroyers",
@@ -408,7 +409,6 @@ test("loads curated site content from per-video files", async () => {
       ],
     }));
     await writeFile(join(directory, "2026-07-08_T00-00-00_sample-video_abc123.json"), JSON.stringify({
-      schemaVersion: 1,
       videoId: "abc123",
       topics: ["destroyers"],
       segments: [
@@ -422,6 +422,8 @@ test("loads curated site content from per-video files", async () => {
           topics: ["destroyers"],
           summary: "Intro segment.",
           body: "Intro body.",
+          sourcePath: "src/transcripts/txt/sample-video_abc123.txt",
+          evidence: [{ start: "0:00", note: "Fixture evidence." }],
         },
       ],
     }));
@@ -440,17 +442,14 @@ test("reports every source shard for duplicate segment IDs and slugs", async () 
   const directory = await mkdtemp(join(tmpdir(), "naval-site-content-duplicates-"));
   try {
     await writeFile(join(directory, "topics.json"), JSON.stringify({
-      schemaVersion: 1,
       topics: [],
     }));
     await writeFile(join(directory, "2026-07-08_T00-00-00_first-video_abc123.json"), JSON.stringify({
-      schemaVersion: 1,
       videoId: "abc123",
       topics: [],
       segments: [sampleCuratedSegment("abc123", "First title")],
     }));
     await writeFile(join(directory, "2026-07-07_T00-00-00_second-video_def456.json"), JSON.stringify({
-      schemaVersion: 1,
       videoId: "def456",
       topics: [],
       segments: [sampleCuratedSegment("def456", "Second title")],
@@ -484,15 +483,13 @@ test("reports every source shard for duplicate segment IDs and slugs", async () 
 test("loads readable shard filenames in video-ID order rather than filename order", async () => {
   const directory = await mkdtemp(join(tmpdir(), "naval-site-content-order-"));
   try {
-    await writeFile(join(directory, "topics.json"), JSON.stringify({ schemaVersion: 1, topics: [] }));
+    await writeFile(join(directory, "topics.json"), JSON.stringify({ topics: [] }));
     await writeFile(join(directory, "z-readable-name_abc123.json"), JSON.stringify({
-      schemaVersion: 1,
       videoId: "abc123",
       topics: [],
       segments: [sampleCuratedSegment("abc123", "First")],
     }));
     await writeFile(join(directory, "a-readable-name_def456.json"), JSON.stringify({
-      schemaVersion: 1,
       videoId: "def456",
       topics: [],
       segments: [{
@@ -513,15 +510,13 @@ test("loads readable shard filenames in video-ID order rather than filename orde
 test("rejects duplicate video identities across readable shard filenames", async () => {
   const directory = await mkdtemp(join(tmpdir(), "naval-site-content-duplicate-video-"));
   try {
-    await writeFile(join(directory, "topics.json"), JSON.stringify({ schemaVersion: 1, topics: [] }));
+    await writeFile(join(directory, "topics.json"), JSON.stringify({ topics: [] }));
     await writeFile(join(directory, "first-readable-name_abc123.json"), JSON.stringify({
-      schemaVersion: 1,
       videoId: "abc123",
       topics: [],
       segments: [],
     }));
     await writeFile(join(directory, "second-readable-name_abc123.json"), JSON.stringify({
-      schemaVersion: 1,
       videoId: "abc123",
       topics: [],
       segments: [],
@@ -547,6 +542,8 @@ function sampleCuratedSegment(videoId: string, title: string) {
     topics: [],
     summary: "Summary.",
     body: "Body.",
+    sourcePath: `src/transcripts/txt/sample-video_${videoId}.txt`,
+    evidence: [{ start: "1:23", note: "Fixture evidence." }],
   };
 }
 
@@ -601,7 +598,6 @@ function sampleInput(): Parameters<typeof buildSiteArchiveData>[0] {
       ],
     },
     seed: {
-      schemaVersion: 1,
       videos: [
         {
           videoId: "abc123",
@@ -626,6 +622,8 @@ function sampleInput(): Parameters<typeof buildSiteArchiveData>[0] {
           topics: ["destroyers"],
           summary: "Intro segment.",
           body: "Intro body.",
+          sourcePath: "src/transcripts/txt/sample-video_abc123.txt",
+          evidence: [{ start: "0:00", note: "Fixture evidence." }],
         },
         {
           id: "qa",
@@ -639,6 +637,8 @@ function sampleInput(): Parameters<typeof buildSiteArchiveData>[0] {
           answerShort: "Answer.",
           summary: "Q&A segment.",
           body: "Q&A body.",
+          sourcePath: "src/transcripts/txt/sample-video_abc123.txt",
+          evidence: [{ start: "12:01", note: "Fixture evidence." }],
         },
       ],
     },

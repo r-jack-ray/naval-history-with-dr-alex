@@ -2,15 +2,19 @@ import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { dirname, isAbsolute, join } from "node:path";
 
-import { segmentKinds, type SegmentKind } from "../index.js";
+import { segmentKinds } from "../index.js";
 import { writeTextAtomically } from "../pipeline/atomic-write.js";
+import type { CuratedArchiveSeed } from "./curated-archive-model.js";
+import {
+  validateSiteContentProcessingConfig,
+  type CuratedSegmentSeed,
+  type SiteContentProcessingConfig,
+} from "./schemas/index.js";
 import {
   parseSiteContentProcessingLog,
 } from "./site-content-processing-log.js";
 import {
   loadCuratedArchiveSeed,
-  type CuratedArchiveSeed,
-  type CuratedSegmentSeed,
 } from "../site/curated-seed.js";
 
 export const defaultSiteContentAuditManifest = "src/transcripts/manifest.json";
@@ -26,57 +30,6 @@ export interface AuditSiteContentOptions {
   processingConfig?: string;
   output?: string;
   limit: number;
-}
-
-export interface SiteContentProcessingConfig {
-  schemaVersion: 1;
-  firstPass: {
-    defaultAction: string;
-    defaultNeedsFurtherProcessing: boolean;
-    processingMode: "full-file-best-effort";
-    minimumEvidenceWindows: number;
-    preferredSegmentKinds: SegmentKind[];
-    requiredContentScans: Array<"subject-segments" | "qa-exchanges">;
-    guidance: string;
-  };
-  videoLevelTopics: {
-    mode: "curated-summary-subset";
-    requireAllSegmentTopics: false;
-  };
-  liveStreamExtraction: {
-    mode: "full-duration-mixed-content";
-    explicitQaTitleMarkers: string[];
-    requiredQaFields: Array<"start" | "question" | "answerShort">;
-    guidance: string;
-  };
-  topicLifecycle: {
-    mode: "shard-derived-automatic";
-    contentPass: string;
-    synchronization: string;
-    exceptionRule: string;
-  };
-  contentExhaustion: {
-    mode: "model-effort-saturation";
-    comparisonScope: string;
-    stopRule: string;
-    reopenRule: string;
-  };
-  followUpStages: Array<{
-    slug: string;
-    title: string;
-    description: string;
-  }>;
-  videoTypeRules: Array<{
-    matchTitle: string;
-    defaultKind: SegmentKind;
-    defaultTopics: string[];
-    followUpStage: string;
-  }>;
-  topicGroups: Array<{
-    slug: string;
-    title: string;
-    topics: string[];
-  }>;
 }
 
 export interface SiteContentAudit {
@@ -177,11 +130,10 @@ export function buildSiteContentAudit(input: {
   const allowedKinds = new Set<string>(segmentKinds);
   const processingConfig = input.processingConfig === undefined
     ? undefined
-    : validateProcessingConfig(
+    : processingConfigForAudit(
       input.processingConfig,
       input.processingConfigPath ?? defaultSiteContentProcessingConfig,
       issues,
-      allowedKinds,
     );
   const minimumEvidenceWindows = processingConfig?.firstPass.minimumEvidenceWindows ?? 1;
   const processingLog = validateProcessingLog(input, issues);
@@ -504,7 +456,10 @@ function validateEvidence(
 }
 
 function validateQuestionFields(segment: CuratedSegmentSeed, issues: SiteContentAuditIssue[]): void {
-  if (segment.kind === "qa" && (segment.question === undefined || segment.answerShort === undefined)) {
+  const hasQuestion = "question" in segment && segment.question !== undefined;
+  const hasAnswerShort = "answerShort" in segment && segment.answerShort !== undefined;
+
+  if (segment.kind === "qa" && (!hasQuestion || !hasAnswerShort)) {
     issues.push({
       severity: "error",
       code: "qa-missing-question-fields",
@@ -514,7 +469,7 @@ function validateQuestionFields(segment: CuratedSegmentSeed, issues: SiteContent
     });
   }
 
-  if (segment.kind !== "qa" && (segment.question !== undefined || segment.answerShort !== undefined)) {
+  if (segment.kind !== "qa" && (hasQuestion || hasAnswerShort)) {
     issues.push({
       severity: "warning",
       code: "non-qa-question-fields",
@@ -525,327 +480,24 @@ function validateQuestionFields(segment: CuratedSegmentSeed, issues: SiteContent
   }
 }
 
-function validateProcessingConfig(
+function processingConfigForAudit(
   value: unknown,
   path: string,
   issues: SiteContentAuditIssue[],
-  allowedKinds: ReadonlySet<string>,
 ): SiteContentProcessingConfig | undefined {
-  const issueCountBeforeValidation = issues.length;
-  const report = (message: string): void => {
+  const result = validateSiteContentProcessingConfig(value);
+  if (result.success) {
+    return result.data;
+  }
+  for (const schemaIssue of result.issues) {
     issues.push({
       severity: "error",
       code: "processing-config-invalid",
-      message,
+      message: `Site content processing config ${schemaIssue}.`,
       path,
     });
-  };
-
-  if (!isRecord(value)) {
-    report("Site content processing config must be a JSON object.");
-    return undefined;
   }
-
-  if (value.schemaVersion !== 1) {
-    report("Site content processing config schemaVersion must be 1.");
-  }
-
-  const firstPass = value.firstPass;
-  if (!isRecord(firstPass)) {
-    report("Site content processing config must include a firstPass object.");
-  } else {
-    validateNonEmptyString(firstPass.defaultAction, "firstPass.defaultAction", report);
-    if (typeof firstPass.defaultNeedsFurtherProcessing !== "boolean") {
-      report("firstPass.defaultNeedsFurtherProcessing must be a boolean.");
-    }
-    if (firstPass.processingMode !== "full-file-best-effort") {
-      report('firstPass.processingMode must be "full-file-best-effort".');
-    }
-    if (!Number.isInteger(firstPass.minimumEvidenceWindows) || Number(firstPass.minimumEvidenceWindows) < 1) {
-      report("firstPass.minimumEvidenceWindows must be a positive integer.");
-    }
-    validateSegmentKindArray(firstPass.preferredSegmentKinds, "firstPass.preferredSegmentKinds", report, allowedKinds, true);
-    validateRequiredFirstPassContentScans(firstPass.requiredContentScans, report);
-    validateNonEmptyString(firstPass.guidance, "firstPass.guidance", report);
-  }
-
-  const videoLevelTopics = value.videoLevelTopics;
-  if (!isRecord(videoLevelTopics)) {
-    report("Site content processing config must include a videoLevelTopics object.");
-  } else {
-    if (videoLevelTopics.mode !== "curated-summary-subset") {
-      report('videoLevelTopics.mode must be "curated-summary-subset".');
-    }
-    if (videoLevelTopics.requireAllSegmentTopics !== false) {
-      report("videoLevelTopics.requireAllSegmentTopics must be false for curated summary topics.");
-    }
-  }
-
-  validateLiveStreamExtraction(value.liveStreamExtraction, report);
-  validateTopicLifecycle(value.topicLifecycle, report);
-  validateContentExhaustion(value.contentExhaustion, report);
-
-  const followUpStageSlugs = validateFollowUpStages(value.followUpStages, report);
-  validateVideoTypeRules(value.videoTypeRules, report, allowedKinds, followUpStageSlugs);
-  validateTopicGroups(value.topicGroups, report);
-
-  if (issues.length !== issueCountBeforeValidation) {
-    return undefined;
-  }
-  return value as unknown as SiteContentProcessingConfig;
-}
-
-function validateRequiredFirstPassContentScans(
-  value: unknown,
-  report: (message: string) => void,
-): void {
-  const expectedScans = new Set(["subject-segments", "qa-exchanges"]);
-  if (
-    !Array.isArray(value)
-    || value.length !== expectedScans.size
-    || value.some((scan) => typeof scan !== "string" || !expectedScans.has(scan))
-    || new Set(value).size !== expectedScans.size
-  ) {
-    report("firstPass.requiredContentScans must contain subject-segments and qa-exchanges exactly once.");
-  }
-}
-
-function validateContentExhaustion(
-  value: unknown,
-  report: (message: string) => void,
-): void {
-  if (!isRecord(value)) {
-    report("Site content processing config must include a contentExhaustion object.");
-    return;
-  }
-
-  if (value.mode !== "model-effort-saturation") {
-    report('contentExhaustion.mode must be "model-effort-saturation".');
-  }
-  validateNonEmptyString(value.comparisonScope, "contentExhaustion.comparisonScope", report);
-  validateNonEmptyString(value.stopRule, "contentExhaustion.stopRule", report);
-  validateNonEmptyString(value.reopenRule, "contentExhaustion.reopenRule", report);
-}
-
-function validateTopicLifecycle(
-  value: unknown,
-  report: (message: string) => void,
-): void {
-  if (!isRecord(value)) {
-    report("Site content processing config must include a topicLifecycle object.");
-    return;
-  }
-
-  if (value.mode !== "shard-derived-automatic") {
-    report('topicLifecycle.mode must be "shard-derived-automatic".');
-  }
-  validateNonEmptyString(value.contentPass, "topicLifecycle.contentPass", report);
-  validateNonEmptyString(value.synchronization, "topicLifecycle.synchronization", report);
-  validateNonEmptyString(value.exceptionRule, "topicLifecycle.exceptionRule", report);
-}
-
-function validateLiveStreamExtraction(
-  value: unknown,
-  report: (message: string) => void,
-): void {
-  if (!isRecord(value)) {
-    report("Site content processing config must include a liveStreamExtraction object.");
-    return;
-  }
-
-  if (value.mode !== "full-duration-mixed-content") {
-    report('liveStreamExtraction.mode must be "full-duration-mixed-content".');
-  }
-
-  validateUniqueNonEmptyStringArray(
-    value.explicitQaTitleMarkers,
-    "liveStreamExtraction.explicitQaTitleMarkers",
-    report,
-  );
-
-  const requiredQaFields = value.requiredQaFields;
-  const expectedFields = new Set(["start", "question", "answerShort"]);
-  if (
-    !Array.isArray(requiredQaFields)
-    || requiredQaFields.length !== expectedFields.size
-    || requiredQaFields.some((field) => typeof field !== "string" || !expectedFields.has(field))
-    || new Set(requiredQaFields).size !== expectedFields.size
-  ) {
-    report("liveStreamExtraction.requiredQaFields must contain start, question, and answerShort exactly once.");
-  }
-
-  validateNonEmptyString(value.guidance, "liveStreamExtraction.guidance", report);
-}
-
-function validateUniqueNonEmptyStringArray(
-  value: unknown,
-  field: string,
-  report: (message: string) => void,
-): void {
-  if (!Array.isArray(value) || value.length === 0) {
-    report(`${field} must be a non-empty array.`);
-    return;
-  }
-
-  const seen = new Set<string>();
-  for (const [index, item] of value.entries()) {
-    const marker = validateNonEmptyString(item, `${field}[${index}]`, report);
-    if (marker === undefined) {
-      continue;
-    }
-    const normalizedMarker = marker.toLocaleLowerCase("en-US");
-    if (seen.has(normalizedMarker)) {
-      report(`${field}[${index}] duplicates another marker when matched case-insensitively.`);
-    }
-    seen.add(normalizedMarker);
-  }
-}
-
-function validateFollowUpStages(value: unknown, report: (message: string) => void): Set<string> {
-  const slugs = new Set<string>();
-  if (!Array.isArray(value)) {
-    report("followUpStages must be an array.");
-    return slugs;
-  }
-
-  for (const [index, stage] of value.entries()) {
-    const prefix = `followUpStages[${index}]`;
-    if (!isRecord(stage)) {
-      report(`${prefix} must be an object.`);
-      continue;
-    }
-    const slug = validateSlug(stage.slug, `${prefix}.slug`, report);
-    if (slug !== undefined) {
-      if (slugs.has(slug)) {
-        report(`${prefix}.slug duplicates follow-up stage ${slug}.`);
-      }
-      slugs.add(slug);
-    }
-    validateNonEmptyString(stage.title, `${prefix}.title`, report);
-    validateNonEmptyString(stage.description, `${prefix}.description`, report);
-  }
-  return slugs;
-}
-
-function validateVideoTypeRules(
-  value: unknown,
-  report: (message: string) => void,
-  allowedKinds: ReadonlySet<string>,
-  followUpStageSlugs: ReadonlySet<string>,
-): void {
-  if (!Array.isArray(value)) {
-    report("videoTypeRules must be an array.");
-    return;
-  }
-
-  const normalizedTitleMatches = new Set<string>();
-  for (const [index, rule] of value.entries()) {
-    const prefix = `videoTypeRules[${index}]`;
-    if (!isRecord(rule)) {
-      report(`${prefix} must be an object.`);
-      continue;
-    }
-
-    const matchTitle = validateNonEmptyString(rule.matchTitle, `${prefix}.matchTitle`, report);
-    if (matchTitle !== undefined) {
-      const normalizedMatch = matchTitle.toLocaleLowerCase("en-US");
-      if (normalizedTitleMatches.has(normalizedMatch)) {
-        report(`${prefix}.matchTitle duplicates another rule when matched case-insensitively.`);
-      }
-      normalizedTitleMatches.add(normalizedMatch);
-    }
-
-    if (typeof rule.defaultKind !== "string" || !allowedKinds.has(rule.defaultKind)) {
-      report(`${prefix}.defaultKind must be a supported segment kind.`);
-    }
-    validateSlugArray(rule.defaultTopics, `${prefix}.defaultTopics`, report);
-    const followUpStage = validateSlug(rule.followUpStage, `${prefix}.followUpStage`, report);
-    if (followUpStage !== undefined && !followUpStageSlugs.has(followUpStage)) {
-      report(`${prefix}.followUpStage must reference a configured follow-up stage.`);
-    }
-  }
-}
-
-function validateTopicGroups(value: unknown, report: (message: string) => void): void {
-  if (!Array.isArray(value)) {
-    report("topicGroups must be an array.");
-    return;
-  }
-
-  const slugs = new Set<string>();
-  for (const [index, group] of value.entries()) {
-    const prefix = `topicGroups[${index}]`;
-    if (!isRecord(group)) {
-      report(`${prefix} must be an object.`);
-      continue;
-    }
-    const slug = validateSlug(group.slug, `${prefix}.slug`, report);
-    if (slug !== undefined) {
-      if (slugs.has(slug)) {
-        report(`${prefix}.slug duplicates topic group ${slug}.`);
-      }
-      slugs.add(slug);
-    }
-    validateNonEmptyString(group.title, `${prefix}.title`, report);
-    validateSlugArray(group.topics, `${prefix}.topics`, report);
-  }
-}
-
-function validateSegmentKindArray(
-  value: unknown,
-  field: string,
-  report: (message: string) => void,
-  allowedKinds: ReadonlySet<string>,
-  requireNonEmpty: boolean,
-): void {
-  if (!Array.isArray(value) || (requireNonEmpty && value.length === 0)) {
-    report(`${field} must be ${requireNonEmpty ? "a non-empty" : "an"} array.`);
-    return;
-  }
-  if (value.some((item) => typeof item !== "string" || !allowedKinds.has(item))) {
-    report(`${field} must contain only supported segment kinds.`);
-  }
-}
-
-function validateSlugArray(value: unknown, field: string, report: (message: string) => void): void {
-  if (!Array.isArray(value)) {
-    report(`${field} must be an array.`);
-    return;
-  }
-  const seen = new Set<string>();
-  for (const [index, item] of value.entries()) {
-    const slug = validateSlug(item, `${field}[${index}]`, report);
-    if (slug !== undefined) {
-      if (seen.has(slug)) {
-        report(`${field} must not contain duplicate slug ${slug}.`);
-      }
-      seen.add(slug);
-    }
-  }
-}
-
-function validateSlug(value: unknown, field: string, report: (message: string) => void): string | undefined {
-  if (typeof value !== "string" || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/u.test(value)) {
-    report(`${field} must be a lowercase hyphenated slug.`);
-    return undefined;
-  }
-  return value;
-}
-
-function validateNonEmptyString(
-  value: unknown,
-  field: string,
-  report: (message: string) => void,
-): string | undefined {
-  if (typeof value !== "string" || value.trim().length === 0) {
-    report(`${field} must be a non-empty string.`);
-    return undefined;
-  }
-  return value;
-}
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return typeof value === "object" && value !== null && !Array.isArray(value);
+  return undefined;
 }
 
 interface ProcessingLogAudit {

@@ -1,7 +1,10 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
-import type { CuratedTopicSeed, CuratedTopicStore, CuratedVideoFileSeed } from "./curated-seed.js";
+import {
+  parseCuratedTopicStore,
+  type CuratedTopicSeed,
+} from "../content/schemas/index.js";
 import {
   isTopicSlug,
   loadTopicNormalizationCatalog,
@@ -41,12 +44,8 @@ export async function auditTopicNormalization(
   const reviews = new Set<string>();
 
   for (const shard of shards) {
-    const video = shard.value as CuratedVideoFileSeed;
-    auditTopicArray(video.topics, `${shard.fileName} video`, catalog, usedSlugs, blockers, reviews);
-    if (!Array.isArray(video.segments)) {
-      throw new Error(`Curated video file ${shard.fileName} must include a segments array.`);
-    }
-    for (const segment of video.segments) {
+    auditTopicArray(shard.value.topics, `${shard.fileName} video`, catalog, usedSlugs, blockers, reviews);
+    for (const segment of shard.value.segments) {
       auditTopicArray(
         segment.topics,
         `${shard.fileName} segment ${String(segment.id)}`,
@@ -178,33 +177,8 @@ function auditExactPolicyTargets(
   }
 }
 
-function parseTopicStore(text: string, path: string): CuratedTopicStore {
-  const value = JSON.parse(text) as unknown;
-  if (!isRecord(value) || value.schemaVersion !== 1 || !Array.isArray(value.topics)) {
-    throw new Error(`Curated topic store must use schemaVersion 1 and contain topics: ${path}.`);
-  }
-  const topics: CuratedTopicSeed[] = [];
-  const slugs = new Set<string>();
-  for (const candidate of value.topics) {
-    if (
-      !isRecord(candidate)
-      || typeof candidate.slug !== "string"
-      || !isTopicSlug(candidate.slug)
-      || slugs.has(candidate.slug)
-      || typeof candidate.title !== "string"
-      || candidate.title.length === 0
-      || (candidate.summary !== undefined && typeof candidate.summary !== "string")
-      || (
-        candidate.aliases !== undefined
-        && (!Array.isArray(candidate.aliases) || candidate.aliases.some((alias) => typeof alias !== "string"))
-      )
-    ) {
-      throw new Error(`Curated topic store has an invalid or duplicate record: ${path}.`);
-    }
-    slugs.add(candidate.slug);
-    topics.push(candidate as unknown as CuratedTopicSeed);
-  }
-  return { schemaVersion: 1, topics };
+function parseTopicStore(text: string, path: string) {
+  return parseCuratedTopicStore(JSON.parse(text) as unknown, `Curated topic store ${path}`);
 }
 
 function countCrossTopicCollisions(topics: readonly CuratedTopicSeed[]): number {
@@ -226,8 +200,4 @@ function countCrossTopicCollisions(topics: readonly CuratedTopicSeed[]): number 
 
 function uniqueSorted(values: readonly string[]): string[] {
   return [...new Set(values)].sort((left, right) => left.localeCompare(right));
-}
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return typeof value === "object" && value !== null && !Array.isArray(value);
 }

@@ -1,4 +1,5 @@
-import type { CuratedArchiveSeed, CuratedTopicSeed } from "../site/curated-seed.js";
+import type { CuratedArchiveSeed } from "./curated-archive-model.js";
+import type { CuratedTopicSeed } from "./schemas/index.js";
 import type { TopicNormalizationRule } from "../site/topic-normalization.js";
 
 export const videoTopicUsageReportHeaderKeys = [

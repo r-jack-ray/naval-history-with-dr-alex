@@ -14,7 +14,7 @@
     "test": "npm run clean && npm run build && node --test \"dist/**/*.test.js\"",
     "check": "npm run check:types && npm test",
     "list:files-that-need-processing": "tsx src/scripts/list-files-that-need-processing.ts",
-    "rank:video-segment-audit-risk": "tsx src/scripts/rank-video-segment-audit-risk.ts",
+    "report:video-segment-audit-risk": "tsx src/scripts/rank-video-segment-audit-risk.ts",
     "audit:site-content": "node .codex/hooks/site-content-pipeline-lock.mjs run --purpose site-content-audit -- node --import tsx src/scripts/audit-site-content.ts",
     "diagnose:site-content-duplicates": "tsx src/scripts/diagnose-site-content-duplicates.ts",
     "sync:video-topics": "node .codex/hooks/site-content-pipeline-lock.mjs run --purpose video-topic-sync --recover-stale -- node --import tsx src/scripts/sync-video-topics.ts",
@@ -69,7 +69,8 @@
   },
   "dependencies": {
     "googleapis": "^173.0.0",
-    "youtube-transcript-plus": "^2.0.0"
+    "youtube-transcript-plus": "^2.0.0",
+    "zod": "^4.4.3"
   },
   "allowScripts": {
     "esbuild@0.28.1": true

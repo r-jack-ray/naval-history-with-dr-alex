@@ -1,6 +1,11 @@
 # Segment Seed Schema
 
-Curated site content lives in `src/derived/video-segments/`.
+Curated site content lives in `src/derived/video-segments/`. Its canonical
+runtime definitions live in `src/content/schemas/`:
+
+- `video-segment.ts` defines per-video shards and segment/evidence records.
+- `topic-store.ts` defines `topics.json` and individual topic records.
+- `curated-content.ts` defines the reconstructed in-memory archive shape.
 
 ## Files
 
@@ -14,7 +19,6 @@ Do not recreate a monolithic curated-content file. The manifest and shards under
 
 ```json
 {
-  "schemaVersion": 1,
   "videoId": "uURe69Wnh-Q",
   "topics": ["modern-navy", "live-q-and-a"],
   "segments": []
@@ -78,7 +82,7 @@ Required fields:
 - `kind`: one of `chapter`, `notable_point`, `qa`, or `transcript_excerpt`.
 - `start`: timestamp label, `m:ss` or `h:mm:ss`.
 - `topics`: topic slugs.
-- `summary`: short search/result summary.
+- `summary`: short search/result summary; required unless `kind` is `qa`.
 - `body`: human-readable segment note.
 - `sourcePath`: repo-relative TXT transcript path.
 - `evidence`: one or more timestamp windows from the transcript.
@@ -86,6 +90,7 @@ Required fields:
 Optional fields:
 
 - `end`: segment end timestamp.
+- `summary`: optional when `kind` is `qa`; `answerShort` supplies the concise result text.
 - `question`: required when `kind` is `qa`.
 - `answerShort`: required when `kind` is `qa`.
 
@@ -102,6 +107,10 @@ For every first-pass transcript, scan the full duration for substantive transcri
 
 ## Validation Expectations
 
+- Source shards and `topics.json` do not carry a custom `schemaVersion`.
+- Source shards do not carry `needsFurtherProcessing`; processing state belongs
+  in `src/derived/site-content-processing.log`.
+- Unknown root and record properties are rejected by the canonical runtime schemas.
 - `sourcePath` must exist and should match the TXT path in `src/transcripts/manifest.json`.
 - Segment and evidence timestamps must be within the stored transcript duration.
 - `end` must be after `start`.

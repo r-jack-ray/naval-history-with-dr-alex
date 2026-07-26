@@ -16,7 +16,6 @@ test("generation rejects pending normalization before changing topic or archive 
   const fixture = await makeFixture();
   const topicStorePath = join(fixture.segmentsInput, "topics.json");
   const topicStoreText = `${JSON.stringify({
-    schemaVersion: 1,
     topics: [{
       slug: "old-topic",
       title: "Old Topic",
@@ -26,7 +25,6 @@ test("generation rejects pending normalization before changing topic or archive 
   try {
     await writeFile(topicStorePath, topicStoreText, "utf8");
     await writeFile(join(fixture.segmentsInput, "fixture_abc123.json"), JSON.stringify({
-      schemaVersion: 1,
       videoId: "abc123",
       topics: ["old-topic"],
       segments: [{
@@ -39,6 +37,11 @@ test("generation rejects pending normalization before changing topic or archive 
         topics: ["old-topic"],
         summary: "Summary.",
         body: "Body.",
+        sourcePath: "src/transcripts/txt/fixture_abc123.txt",
+        evidence: [{
+          start: "0:00",
+          note: "Fixture evidence.",
+        }],
       }],
     }), "utf8");
     await writeFile(fixture.patternsInput, normalizationCatalogText(), "utf8");

@@ -4,8 +4,8 @@ import test from "node:test";
 import {
   buildSiteContentAudit,
   renderSiteContentAuditReport,
-  type SiteContentProcessingConfig,
 } from "./site-content-audit.js";
+import type { SiteContentProcessingConfig } from "./schemas/index.js";
 
 test("audits curated transcript-backed segments and reports uncurated transcripts", () => {
   const audit = buildSiteContentAudit({
@@ -28,7 +28,7 @@ test("audits curated transcript-backed segments and reports uncurated transcript
 
 test("flags missing transcript evidence and source paths", () => {
   const seed = sampleSeed();
-  delete seed.segments[0]!.sourcePath;
+  delete (seed.segments[0]! as { sourcePath?: string }).sourcePath;
   seed.segments[0]!.evidence = [];
 
   const audit = buildSiteContentAudit({
@@ -85,7 +85,7 @@ test("validates the processing config video-level topic policy", () => {
 
   const configIssue = audit.issues.find((issue) => issue.code === "processing-config-invalid");
   assert.equal(configIssue?.severity, "error");
-  assert.match(configIssue?.message ?? "", /videoLevelTopics object/u);
+  assert.match(configIssue?.message ?? "", /videoLevelTopics: Invalid input: expected object/u);
   assert.equal(configIssue?.path, "src/derived/site-content-processing.config.json");
 });
 
@@ -106,7 +106,7 @@ test("requires the live-stream mixed-content extraction policy", () => {
 
   const configIssue = audit.issues.find((issue) => issue.code === "processing-config-invalid");
   assert.equal(configIssue?.severity, "error");
-  assert.match(configIssue?.message ?? "", /liveStreamExtraction object/u);
+  assert.match(configIssue?.message ?? "", /liveStreamExtraction: Invalid input: expected object/u);
 });
 
 test("requires first-pass subject and Q&A content scans", () => {
@@ -127,7 +127,7 @@ test("requires first-pass subject and Q&A content scans", () => {
 
   const configIssue = audit.issues.find((issue) => issue.code === "processing-config-invalid");
   assert.equal(configIssue?.severity, "error");
-  assert.match(configIssue?.message ?? "", /requiredContentScans must contain subject-segments and qa-exchanges/u);
+  assert.match(configIssue?.message ?? "", /firstPass\.requiredContentScans: must contain subject-segments and qa-exchanges/u);
 });
 
 test("requires full-file best-effort first-pass processing", () => {
@@ -148,7 +148,7 @@ test("requires full-file best-effort first-pass processing", () => {
 
   const configIssue = audit.issues.find((issue) => issue.code === "processing-config-invalid");
   assert.equal(configIssue?.severity, "error");
-  assert.match(configIssue?.message ?? "", /processingMode must be "full-file-best-effort"/u);
+  assert.match(configIssue?.message ?? "", /firstPass\.processingMode: Invalid input: expected "full-file-best-effort"/u);
 });
 
 test("requires the shard-derived automatic topic lifecycle", () => {
@@ -168,7 +168,7 @@ test("requires the shard-derived automatic topic lifecycle", () => {
 
   const configIssue = audit.issues.find((issue) => issue.code === "processing-config-invalid");
   assert.equal(configIssue?.severity, "error");
-  assert.match(configIssue?.message ?? "", /topicLifecycle object/u);
+  assert.match(configIssue?.message ?? "", /topicLifecycle: Invalid input: expected object/u);
 });
 
 test("requires model-and-effort scoped content-exhaustion saturation", () => {
@@ -188,7 +188,7 @@ test("requires model-and-effort scoped content-exhaustion saturation", () => {
 
   const configIssue = audit.issues.find((issue) => issue.code === "processing-config-invalid");
   assert.equal(configIssue?.severity, "error");
-  assert.match(configIssue?.message ?? "", /contentExhaustion object/u);
+  assert.match(configIssue?.message ?? "", /contentExhaustion: Invalid input: expected object/u);
 });
 
 test("flags segment timestamps outside the stored transcript range", () => {
@@ -331,7 +331,6 @@ function sampleManifest(): Parameters<typeof buildSiteContentAudit>[0]["manifest
 
 function sampleSeed(): Parameters<typeof buildSiteContentAudit>[0]["seed"] {
   return {
-    schemaVersion: 1,
     videos: [
       {
         videoId: "abc123",
@@ -371,7 +370,6 @@ function sampleSeed(): Parameters<typeof buildSiteContentAudit>[0]["seed"] {
 
 function sampleProcessingConfig(): SiteContentProcessingConfig {
   return {
-    schemaVersion: 1,
     firstPass: {
       defaultAction: "curated granular first-pass segments",
       defaultNeedsFurtherProcessing: true,
@@ -394,6 +392,7 @@ function sampleProcessingConfig(): SiteContentProcessingConfig {
     topicLifecycle: {
       mode: "shard-derived-automatic",
       contentPass: "Add evidence-backed topic slugs to video shards.",
+      fictionPolicy: "Use fiction-prefixed slugs for fictional referents.",
       synchronization: "Synchronize the topic registry from shard usage.",
       exceptionRule: "Investigate only reported topic problems.",
     },

@@ -6,6 +6,8 @@ import { execFile } from "node:child_process";
 import { promisify } from "node:util";
 import test from "node:test";
 
+import type { SiteContentProcessingConfig } from "../content/schemas/index.js";
+
 const execFileAsync = promisify(execFile);
 
 test("CLI maps canonical processing states, isolates malformed shards, and emits renamed headers", async () => {
@@ -29,19 +31,33 @@ test("CLI maps canonical processing states, isolates malformed shards, and emits
       { videoId: "school1", fileStem: "school-functions_school1", videoTitle: "SASC School Functions", lastEndSeconds: 600, paths: { txt: "txt/school-functions_school1.txt" } },
     ];
     await writeFile(manifestPath, JSON.stringify({ transcripts: records }), "utf8");
-    await writeFile(configPath, JSON.stringify({
-      firstPass: { minimumEvidenceWindows: 1 },
-      liveStreamExtraction: { explicitQaTitleMarkers: [] },
-      videoTypeRules: [{ matchTitle: "Bruships", followUpStage: "exhaustive-live-qa-review" }],
-    }), "utf8");
+    await writeFile(configPath, JSON.stringify(processingConfigFixture()), "utf8");
     for (const record of records) await writeFile(path.join(transcripts, `${record.fileStem}.txt`), "transcript", "utf8");
     await writeFile(path.join(segments, "repair_repair1.json"), "null", "utf8");
     const source = (stem: string) => path.relative(process.cwd(), path.join(transcripts, `${stem}.txt`)).replaceAll(path.sep, "/");
     const shard = (record: typeof records[number]) => ({
-      schemaVersion: 1, videoId: record.videoId, segments: [{ kind: "chapter", start: "0:00", sourcePath: source(record.fileStem), evidence: [{ start: "0:00", note: "Evidence." }] }],
+      videoId: record.videoId,
+      topics: ["destroyers"],
+      segments: [{
+        id: `${record.videoId}-segment`,
+        videoId: record.videoId,
+        slug: `${record.videoId}-segment`,
+        title: "Fixture segment",
+        kind: "chapter",
+        start: "0:00",
+        topics: ["destroyers"],
+        summary: "Fixture summary.",
+        body: "Fixture body.",
+        sourcePath: source(record.fileStem),
+        evidence: [{ start: "0:00", note: "Evidence." }],
+      }],
     });
     await writeFile(path.join(segments, "follow_follow1.json"), JSON.stringify(shard(records[1]!)), "utf8");
-    await writeFile(path.join(segments, "done_done1.json"), JSON.stringify({ schemaVersion: 1, videoId: "done1", segments: [] }), "utf8");
+    await writeFile(path.join(segments, "done_done1.json"), JSON.stringify({
+      videoId: "done1",
+      topics: [],
+      segments: [],
+    }), "utf8");
     await writeFile(path.join(segments, "generic_generic1.json"), JSON.stringify(shard(records[3]!)), "utf8");
     await writeFile(path.join(segments, "explicit_explicit1.json"), JSON.stringify(shard(records[4]!)), "utf8");
     await writeFile(path.join(segments, "manual_manual1.json"), JSON.stringify(shard(records[5]!)), "utf8");
@@ -105,3 +121,52 @@ test("CLI maps canonical processing states, isolates malformed shards, and emits
     await rm(root, { recursive: true, force: true });
   }
 });
+
+function processingConfigFixture(): SiteContentProcessingConfig {
+  return {
+    firstPass: {
+      defaultAction: "curate transcript-backed segments",
+      defaultNeedsFurtherProcessing: true,
+      processingMode: "full-file-best-effort",
+      minimumEvidenceWindows: 1,
+      preferredSegmentKinds: ["chapter", "notable_point", "qa", "transcript_excerpt"],
+      requiredContentScans: ["subject-segments", "qa-exchanges"],
+      guidance: "Inspect the full transcript.",
+    },
+    videoLevelTopics: {
+      mode: "curated-summary-subset",
+      requireAllSegmentTopics: false,
+    },
+    liveStreamExtraction: {
+      mode: "full-duration-mixed-content",
+      explicitQaTitleMarkers: ["Q&A"],
+      requiredQaFields: ["start", "question", "answerShort"],
+      guidance: "Capture every substantive exchange.",
+    },
+    topicLifecycle: {
+      mode: "shard-derived-automatic",
+      contentPass: "Add evidence-backed topics.",
+      fictionPolicy: "Prefix fictional referents.",
+      synchronization: "Synchronize topics deterministically.",
+      exceptionRule: "Review ambiguous candidates.",
+    },
+    contentExhaustion: {
+      mode: "model-effort-saturation",
+      comparisonScope: "Compare the full transcript.",
+      stopRule: "Stop when no substance is added.",
+      reopenRule: "Reopen for stronger evidence or methods.",
+    },
+    followUpStages: [{
+      slug: "exhaustive-live-qa-review",
+      title: "Exhaustive Live Q&A Review",
+      description: "Review every substantive exchange.",
+    }],
+    videoTypeRules: [{
+      matchTitle: "Bruships",
+      defaultKind: "chapter",
+      defaultTopics: ["live-q-and-a"],
+      followUpStage: "exhaustive-live-qa-review",
+    }],
+    topicGroups: [],
+  };
+}

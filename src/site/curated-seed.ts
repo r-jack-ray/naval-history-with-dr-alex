@@ -1,62 +1,30 @@
 import { readFile, stat } from "node:fs/promises";
 import { join } from "node:path";
 
-import type { SegmentKind } from "../index.js";
+import type {
+  CuratedArchiveSeed,
+  CuratedVideoSeed,
+} from "../content/curated-archive-model.js";
+import {
+  parseCuratedTopicStore,
+  type CuratedSegmentSeed,
+  type CuratedTopicSeed,
+  type CuratedTopicStore,
+  type CuratedVideoFileSeed,
+} from "../content/schemas/index.js";
 import { discoverVideoSegmentShards } from "./video-segment-files.js";
 
-export interface CuratedArchiveSeed {
-  schemaVersion: 1;
-  videos: CuratedVideoSeed[];
-  topics: CuratedTopicSeed[];
-  segments: CuratedSegmentSeed[];
-}
-
-export interface CuratedVideoSeed {
-  videoId: string;
-  topics: string[];
-}
-
-export interface CuratedTopicSeed {
-  slug: string;
-  title: string;
-  summary?: string;
-  aliases?: string[];
-}
-
-export interface CuratedSegmentSeed {
-  id: string;
-  videoId: string;
-  slug: string;
-  title: string;
-  kind: SegmentKind;
-  start: string;
-  end?: string;
-  topics: string[];
-  summary: string;
-  body: string;
-  question?: string;
-  answerShort?: string;
-  sourcePath?: string;
-  evidence?: CuratedSegmentEvidenceSeed[];
-}
-
-export interface CuratedSegmentEvidenceSeed {
-  start: string;
-  end?: string;
-  note: string;
-}
-
-export interface CuratedTopicStore {
-  schemaVersion: 1;
-  topics: CuratedTopicSeed[];
-}
-
-export interface CuratedVideoFileSeed {
-  schemaVersion: 1;
-  videoId: string;
-  topics: string[];
-  segments: CuratedSegmentSeed[];
-}
+export type {
+  CuratedArchiveSeed,
+  CuratedVideoSeed,
+} from "../content/curated-archive-model.js";
+export type {
+  CuratedSegmentEvidenceSeed,
+  CuratedSegmentSeed,
+  CuratedTopicSeed,
+  CuratedTopicStore,
+  CuratedVideoFileSeed,
+} from "../content/schemas/index.js";
 
 export interface CuratedSegmentOccurrence {
   filePath: string;
@@ -77,13 +45,11 @@ interface LoadedCuratedVideoFile {
 
 export async function loadCuratedArchiveSeed(inputDirectory: string): Promise<CuratedArchiveSeed> {
   await validateInputDirectory(inputDirectory);
-  const topicStore = await readJson<CuratedTopicStore>(join(inputDirectory, "topics.json"));
-  if (topicStore.schemaVersion !== 1) {
-    throw new Error("Curated topic store schemaVersion must be 1.");
-  }
-  if (!Array.isArray(topicStore.topics)) {
-    throw new Error("Curated topic store must include a topics array.");
-  }
+  const topicStorePath = join(inputDirectory, "topics.json");
+  const topicStore = parseCuratedTopicStore(
+    await readJson(topicStorePath),
+    `Curated topic store ${topicStorePath}`,
+  );
 
   const loadedVideos = await loadCuratedVideoFiles(inputDirectory);
   const duplicates = collectCuratedSegmentDuplicates(loadedVideos);
@@ -92,7 +58,6 @@ export async function loadCuratedArchiveSeed(inputDirectory: string): Promise<Cu
   }
 
   return {
-    schemaVersion: 1,
     videos: loadedVideos.map(({ video }) => ({
       videoId: video.videoId,
       topics: [...video.topics],
@@ -117,27 +82,6 @@ export function formatCuratedSegmentDuplicate(duplicate: CuratedSegmentDuplicate
   return [`Duplicate segment ${label}: ${duplicate.value}`, ...occurrences].join("\n");
 }
 
-function validateVideoFileSeed(video: CuratedVideoFileSeed, fileName: string): void {
-  if (video.schemaVersion !== 1) {
-    throw new Error(`Curated video file ${fileName} schemaVersion must be 1.`);
-  }
-  if (typeof video.videoId !== "string" || !/^[A-Za-z0-9_-]+$/u.test(video.videoId)) {
-    throw new Error(`Curated video file ${fileName} must include a valid videoId.`);
-  }
-  if (!Array.isArray(video.topics)) {
-    throw new Error(`Curated video file ${fileName} must include a topics array.`);
-  }
-  if (!Array.isArray(video.segments)) {
-    throw new Error(`Curated video file ${fileName} must include a segments array.`);
-  }
-
-  for (const segment of video.segments) {
-    if (segment.videoId !== video.videoId) {
-      throw new Error(`Segment ${segment.id} in ${fileName} must use videoId ${video.videoId}.`);
-    }
-  }
-}
-
 async function validateInputDirectory(inputDirectory: string): Promise<void> {
   const inputStats = await stat(inputDirectory);
   if (!inputStats.isDirectory()) {
@@ -148,9 +92,7 @@ async function validateInputDirectory(inputDirectory: string): Promise<void> {
 async function loadCuratedVideoFiles(inputDirectory: string): Promise<LoadedCuratedVideoFile[]> {
   const { shards } = await discoverVideoSegmentShards(inputDirectory);
   return shards.map(({ fileName, filePath, value }) => {
-    const video = value as CuratedVideoFileSeed;
-    validateVideoFileSeed(video, fileName);
-    return { filePath, video };
+    return { filePath, video: value };
   });
 }
 
@@ -181,6 +123,6 @@ function collectCuratedSegmentDuplicates(
   ));
 }
 
-async function readJson<T>(path: string): Promise<T> {
-  return JSON.parse(await readFile(path, "utf8")) as T;
+async function readJson(path: string): Promise<unknown> {
+  return JSON.parse(await readFile(path, "utf8")) as unknown;
 }

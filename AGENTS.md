@@ -7,7 +7,7 @@ Static reference archive and learner-facing study guide for Dr. Alex Clarke's Yo
 Current source layout:
 
 - `src/channel/`: channel inventory, video IDs, dates, transcript states, and official YouTube metadata.
-- `src/content/`: site-content audit, processing-log, topic, and transcript-problem logic and tests.
+- `src/content/`: site-content audit, processing-log, topic, transcript-problem, and report logic and tests. Runtime schemas for content-owned persisted formats live under `src/content/schemas/`; derived in-memory archive types live in `src/content/curated-archive-model.ts`.
 - `src/derived/video-segments/`: source-of-truth curated site content, with `topics.json` plus one `<manifest.fileStem>.json` file per video. Use the stored `fileStem` from `src/transcripts/manifest.json`; do not recompute it from current metadata.
 - `src/derived/topic-normalization-patterns.tsv`: manually curated steady-state policy for topic creation, display names, aliases, and exceptions.
 - `src/pipeline/`: atomic-write and transcript-schedule validation helpers and tests.

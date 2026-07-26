@@ -1,13 +1,18 @@
 import { readdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
 
+import {
+  parseCuratedVideoFile,
+  type CuratedVideoFileSeed,
+} from "../content/schemas/index.js";
+
 export const curatedTopicStoreFileName = "topics.json";
 
 export interface VideoSegmentShard {
   fileName: string;
   filePath: string;
   videoId: string;
-  value: unknown;
+  value: CuratedVideoFileSeed;
 }
 
 export interface VideoSegmentShardIndex {
@@ -26,8 +31,8 @@ export function canonicalVideoSegmentFileName(fileStem: string): string {
 
 /**
  * Reads every regular JSON shard except the shared topic store once, validates
- * its JSON video identity, and exposes deterministic video-ID ordering plus a
- * reusable lookup index.
+ * it against the canonical curated-video schema, and exposes deterministic
+ * video-ID ordering plus a reusable lookup index.
  */
 export async function discoverVideoSegmentShards(
   inputDirectory: string,
@@ -44,15 +49,13 @@ export async function discoverVideoSegmentShards(
 
   const loaded = await Promise.all(fileNames.map(async (fileName) => {
     const filePath = join(inputDirectory, fileName);
-    let value: unknown;
+    let parsed: unknown;
     try {
-      value = JSON.parse(await readFile(filePath, "utf8")) as unknown;
+      parsed = JSON.parse(await readFile(filePath, "utf8")) as unknown;
     } catch (error) {
       throw new Error(`Could not parse curated video shard ${filePath}.`, { cause: error });
     }
-    if (!isRecord(value) || typeof value.videoId !== "string" || !isSafeVideoId(value.videoId)) {
-      throw new Error(`Curated video shard ${filePath} must contain a safe string videoId.`);
-    }
+    const value = parseCuratedVideoFile(parsed, `Curated video shard ${filePath}`);
     return { fileName, filePath, videoId: value.videoId, value };
   }));
 
@@ -69,12 +72,4 @@ export async function discoverVideoSegmentShards(
 
   const shards = [...loaded].sort((left, right) => left.videoId.localeCompare(right.videoId));
   return { shards, byVideoId };
-}
-
-function isSafeVideoId(value: string): boolean {
-  return /^[A-Za-z0-9_-]+$/u.test(value);
-}
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return typeof value === "object" && value !== null && !Array.isArray(value);
 }

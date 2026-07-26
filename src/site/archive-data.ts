@@ -5,6 +5,11 @@ import { join } from "node:path";
 import { formatTimestamp, segmentKinds, type SegmentKind } from "../index.js";
 import { slugifyVideoTitle } from "../naming.js";
 import { writeTextAtomically } from "../pipeline/atomic-write.js";
+import type { CuratedArchiveSeed } from "../content/curated-archive-model.js";
+import type {
+  CuratedSegmentSeed,
+  CuratedTopicSeed,
+} from "../content/schemas/index.js";
 import {
   canonicalVideoTimestamp,
   resolveVideoState,
@@ -15,9 +20,6 @@ import {
 } from "../youtube/video-metadata.js";
 import {
   loadCuratedArchiveSeed,
-  type CuratedArchiveSeed,
-  type CuratedSegmentSeed,
-  type CuratedTopicSeed,
 } from "./curated-seed.js";
 import { parseVideoDurationSeconds } from "./video-seo.js";
 
@@ -1031,34 +1033,35 @@ function buildSiteSegment(input: {
     start: formatTimestamp(startSeconds),
     startSeconds,
     youtubeUrl: `${input.video.youtubeUrl}&t=${startSeconds}s`,
-    summary: input.seed.summary,
+    summary: curatedSegmentSummary(input.seed),
     body: input.seed.body,
     topics: input.topics,
-    evidence: input.seed.evidence ?? [],
+    evidence: input.seed.evidence.map((evidence) => evidence.end === undefined
+      ? {
+          start: evidence.start,
+          note: evidence.note,
+        }
+      : {
+          start: evidence.start,
+          end: evidence.end,
+          note: evidence.note,
+        }),
+    sourcePath: input.seed.sourcePath,
   };
 
   if (input.seed.end !== undefined && endSeconds !== undefined) {
     segment.end = formatTimestamp(endSeconds);
     segment.endSeconds = endSeconds;
   }
-  if (input.seed.question !== undefined) {
+  if (input.seed.kind === "qa") {
     segment.question = input.seed.question;
-  }
-  if (input.seed.answerShort !== undefined) {
     segment.answerShort = input.seed.answerShort;
-  }
-  if (input.seed.sourcePath !== undefined) {
-    segment.sourcePath = input.seed.sourcePath;
   }
 
   return segment;
 }
 
 function validateSeed(seed: CuratedArchiveSeed): void {
-  if (seed.schemaVersion !== 1) {
-    throw new Error("Curated archive seed schemaVersion must be 1.");
-  }
-
   assertUnique(seed.videos.map((video) => video.videoId), "video ID");
   assertUnique(seed.topics.map((topic) => topic.slug), "topic slug");
   assertUnique(seed.segments.map((segment) => segment.id), "segment ID");
@@ -1093,6 +1096,12 @@ function validateSeed(seed: CuratedArchiveSeed): void {
       }
     }
   }
+}
+
+function curatedSegmentSummary(segment: CuratedSegmentSeed): string {
+  return segment.kind === "qa"
+    ? segment.summary ?? segment.answerShort
+    : segment.summary;
 }
 
 function topicRefs(slugs: string[], topicSeedsBySlug: ReadonlyMap<string, CuratedTopicSeed>): TopicRef[] {

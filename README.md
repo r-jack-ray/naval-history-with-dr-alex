@@ -34,7 +34,8 @@ src/
   channel/                 Canonical channel inventory
     episodes.json          Master episode list
     video-metadata.json    YouTube Data API metadata store
-  content/                 Site-content audits, reports, and processing-log logic
+  content/                 Site-content audits, reports, models, and processing logic
+    schemas/               Runtime schemas for content-owned persisted formats
   derived/                 Curated site-content sources and curation bookkeeping
     site-content-processing.config.json
     site-content-processing.log
@@ -66,7 +67,7 @@ reports/                   Generated reports and smoke-test output, ignored by G
 dist/                      Compiled JavaScript, ignored by Git
 ```
 
-Curated public content currently lives in `src/derived/video-segments/`. There is no committed `docs/` tree at the moment; the public site is generated through Astro routes and the split dataset under `site/src/data/generated/archive/`.
+Content-owned persisted contracts live under `src/content/schemas/`. This includes the curated video shards, `topics.json`, the site-content processing config, and processing-log rows. Their source files do not carry custom schema-version fields. Audit, scoring, report-generation, and log-parsing behavior remains in the surrounding `src/content/` modules, while derived in-memory archive types live in `src/content/curated-archive-model.ts`. There is no committed `docs/` tree at the moment; the public site is generated through Astro routes and the split dataset under `site/src/data/generated/archive/`.
 
 ## Setup
 

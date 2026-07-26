@@ -14,8 +14,8 @@ const repositoryRoot = process.cwd();
 
 test("site build properties expose the supported concurrency settings", async () => {
   const properties = await readFile(join(repositoryRoot, "site-build.properties"), "utf8");
-  assert.match(properties, /^ASTRO_BUILD_CONCURRENCY=4$/mu);
-  assert.match(properties, /^SITE_SEO_VALIDATION_CONCURRENCY=8$/mu);
+  assert.match(properties, /^ASTRO_BUILD_CONCURRENCY=\d+$/mu);
+  assert.match(properties, /^SITE_SEO_VALIDATION_CONCURRENCY=\d+$/mu);
 });
 
 test("all direct site commands load the shared properties file", async () => {

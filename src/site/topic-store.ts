@@ -1,12 +1,12 @@
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 
+import {
+  parseCuratedTopicStore,
+  type CuratedTopicSeed,
+  type CuratedTopicStore,
+} from "../content/schemas/index.js";
 import { writeTextAtomically } from "../pipeline/atomic-write.js";
-import type {
-  CuratedTopicSeed,
-  CuratedTopicStore,
-  CuratedVideoFileSeed,
-} from "./curated-seed.js";
 import { auditTopicNormalization } from "./topic-normalization-audit.js";
 import {
   loadTopicNormalizationCatalog,
@@ -126,7 +126,6 @@ export async function planTopicStoreSynchronization(
   const addedTopics = addedSlugs.map((slug) => buildDefaultTopic(slug, catalog));
   const effectiveTopics = [...topics, ...addedTopics];
   const updatedStore: CuratedTopicStore = {
-    schemaVersion: 1,
     topics: effectiveTopics,
   };
   const postimageText = `${JSON.stringify(updatedStore, null, 2)}\n`;
@@ -185,12 +184,8 @@ async function scanTopicCorpus(
   const policyFindings: string[] = [];
 
   for (const { fileName, value } of shards) {
-    const video = value as CuratedVideoFileSeed;
-    collectTopicArray(video.topics, `${fileName} video`, slugs, catalog, policyFindings);
-    if (!Array.isArray(video.segments)) {
-      throw new Error(`Curated video file ${fileName} must include a segments array.`);
-    }
-    for (const segment of video.segments) {
+    collectTopicArray(value.topics, `${fileName} video`, slugs, catalog, policyFindings);
+    for (const segment of value.segments) {
       collectTopicArray(
         segment.topics,
         `${fileName} segment ${segment.id}`,
@@ -238,14 +233,7 @@ function collectTopicArray(
 }
 
 function parseTopicStore(text: string, path: string): CuratedTopicStore {
-  const store = JSON.parse(text) as CuratedTopicStore;
-  if (store.schemaVersion !== 1) {
-    throw new Error(`Curated topic store schemaVersion must be 1: ${path}.`);
-  }
-  if (!Array.isArray(store.topics)) {
-    throw new Error(`Curated topic store must include a topics array: ${path}.`);
-  }
-  return store;
+  return parseCuratedTopicStore(JSON.parse(text) as unknown, `Curated topic store ${path}`);
 }
 
 async function readTextIfPresent(path: string): Promise<string | undefined> {

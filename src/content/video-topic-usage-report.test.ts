@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import type { CuratedArchiveSeed } from "../site/curated-seed.js";
+import type { CuratedArchiveSeed } from "./curated-archive-model.js";
 import type { TopicNormalizationRule } from "../site/topic-normalization.js";
 import {
   renderVideoTopicUsageReport,
@@ -10,7 +10,6 @@ import {
 
 test("topic usage TSV uses spaced headers and counts unique videos across both topic levels", () => {
   const seed: CuratedArchiveSeed = {
-    schemaVersion: 1,
     topics: [
       { slug: "destroyers", title: "Destroyers", aliases: ["tin cans"] },
       { slug: "surface-combatants", title: "Surface Combatants" },
@@ -70,15 +69,19 @@ function segment(
   kind: "chapter" | "qa",
   topics: string[],
 ): CuratedArchiveSeed["segments"][number] {
-  return {
+  const base = {
     id,
     videoId,
     slug: id,
     title: id,
-    kind,
     start: "0:00",
     topics,
     summary: "Summary.",
     body: "Body.",
+    sourcePath: `src/transcripts/txt/${videoId}.txt`,
+    evidence: [{ start: "0:00", note: "Fixture evidence." }],
   };
+  return kind === "qa"
+    ? { ...base, kind, question: "Fixture question?", answerShort: "Fixture answer." }
+    : { ...base, kind };
 }
