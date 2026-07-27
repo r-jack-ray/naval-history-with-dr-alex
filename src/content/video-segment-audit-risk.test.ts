@@ -218,18 +218,40 @@ test("published grades use non-overlapping route bands", () => {
   assert.ok(repair.auditRiskScore >= 85 && repair.auditRiskScore <= 99);
 });
 
-test("route precedence beats score and TSV uses risk terminology", () => {
+test("route precedence beats score while TSV exposes only retained audit metrics", () => {
   const repair = analyzeVideoSegmentRisk(input({ videoTitle: "Z repair", structuralIssues: ["bad root"] }));
   const followUp = analyzeVideoSegmentRisk(input({ videoTitle: "A follow up", needsFurtherProcessing: "yes" }));
   const ranked = rankVideoSegmentAuditRisks([followUp, repair]);
   const tsv = renderVideoSegmentAuditRiskTsv(ranked);
+  const lines = tsv.trimEnd().split("\n");
+  const header = (lines[0] ?? "").split("\t");
   assert.equal(ranked[0]?.auditRoute, "repair_required");
-  assert.match(tsv.split("\n")[0] ?? "", /audit route\taudit risk score\trisk tier/u);
-  assert.match(tsv.split("\n")[0] ?? "", /last segment position pct/u);
-  assert.match(tsv.split("\n")[0] ?? "", /largest anchor gap minutes/u);
-  assert.match(tsv.split("\n")[0] ?? "", /needs further processing\tmanual audio review remaining\tprocess log entries/u);
-  assert.doesNotMatch(tsv.split("\n")[0] ?? "", /_/u);
-  assert.match(tsv.split("\n")[1] ?? "", /\t\d+\.\d\t(?:critical|high|medium|low)\t/u);
+  assert.deepEqual(header, [
+    "file stem",
+    "rank",
+    "audit risk score",
+    "manual audio review remaining",
+    "process log entries",
+    "transcript bytes",
+    "shard bytes",
+    "shard to transcript ratio",
+    "duration minutes",
+    "segment count",
+    "qa count",
+    "valid qa count",
+    "qa temporal bins covered",
+    "segments per hour",
+    "first segment position pct",
+    "last segment position pct",
+    "temporal bins covered",
+    "largest anchor gap pct",
+    "largest anchor gap minutes",
+    "valid anchor count",
+  ]);
+  const firstRow = (lines[1] ?? "").split("\t");
+  assert.equal(firstRow.length, header.length);
+  assert.match(firstRow[header.indexOf("audit risk score")] ?? "", /^\d+\.\d$/u);
+  assert.doesNotMatch(lines[0] ?? "", /_/u);
 });
 
 test("within low signal, completed empty shards sort after heavily reviewed nonempty shards", () => {

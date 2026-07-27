@@ -298,25 +298,21 @@ export function rankVideoSegmentAuditRisks(rows: VideoSegmentAuditRiskRow[]): Vi
 
 export function renderVideoSegmentAuditRiskTsv(rows: VideoSegmentAuditRiskRow[]): string {
   const headers = [
-    "file stem", "rank", "audit route", "audit risk score", "risk tier", "video id", "video title",
-    "needs further processing", "manual audio review remaining", "process log entries", "transcript bytes", "shard bytes",
+    "file stem", "rank", "audit risk score", "manual audio review remaining", "process log entries", "transcript bytes", "shard bytes",
     "shard to transcript ratio", "duration minutes",
     "segment count", "qa count", "valid qa count", "qa temporal bins covered", "segments per hour",
     "first segment position pct", "last segment position pct", "temporal bins covered", "largest anchor gap pct",
     "largest anchor gap minutes",
-    "valid anchor count", "invalid anchor count", "missing source path segments", "wrong source path segments",
-    "missing evidence segments", "invalid evidence segments", "risk signals",
+    "valid anchor count",
   ];
   const body = rows.map((row) => [
-    row.filePath ?? row.fileStem, row.rank, row.auditRoute, format(row.auditRiskScore, 1), row.riskTier, row.videoId, row.videoTitle,
-    row.needsFurtherProcessing, row.manualAudioReviewRemaining, row.processLogEntries, row.transcriptBytes ?? "", row.shardBytes,
+    row.filePath ?? row.fileStem, row.rank, format(row.auditRiskScore, 1),
+    row.manualAudioReviewRemaining, row.processLogEntries, row.transcriptBytes ?? "", row.shardBytes,
     format(row.shardToTranscriptRatio, 4),
     format(row.durationMinutes, 1), row.segmentCount, row.qaCount, row.validQaCount, row.qaTemporalBinsCovered,
     format(row.segmentsPerHour, 2), format(row.firstSegmentPositionPct, 1), format(row.lastSegmentPositionPct, 1),
     row.temporalBinsCovered, format(row.largestAnchorGapPct, 1), format(row.largestAnchorGapMinutes, 1),
-    row.validAnchorCount, row.invalidAnchorCount,
-    row.missingSourcePathSegments, row.wrongSourcePathSegments, row.missingEvidenceSegments,
-    row.invalidEvidenceSegments, row.riskSignals.join("; "),
+    row.validAnchorCount,
   ].map(escapeTsv).join("\t"));
   return `${headers.join("\t")}\n${body.join("\n")}\n`;
 }

@@ -10,7 +10,7 @@ import type { SiteContentProcessingConfig } from "../content/schemas/index.js";
 
 const execFileAsync = promisify(execFile);
 
-test("CLI maps canonical processing states, isolates malformed shards, and emits renamed headers", async () => {
+test("CLI maps canonical processing states, isolates malformed shards, and emits reduced report columns", async () => {
   const root = await mkdtemp(path.join(tmpdir(), "video-segment-audit-risk-"));
   try {
     const segments = path.join(root, "segments");
@@ -80,18 +80,35 @@ test("CLI maps canonical processing states, isolates malformed shards, and emits
       "--transcript-root", transcripts, "--processing-log", logPath, "--processing-config", configPath, "--output", outputPath]);
     const output = await readFile(outputPath, "utf8");
     const lines = output.trimEnd().split("\n");
-    assert.match(lines[0] ?? "", /audit route\taudit risk score\trisk tier/u);
-    assert.match(lines[0] ?? "", /needs further processing\tmanual audio review remaining\tprocess log entries/u);
-    assert.doesNotMatch(lines[0] ?? "", /_/u);
-    assert.doesNotMatch(lines[0] ?? "", /probability/u);
-    assert.match(lines[1] ?? "", /repair_required/u);
-    assert.match(output, /follow_up_required/u);
     const header = (lines[0] ?? "").split("\t");
+    assert.deepEqual(header, [
+      "file stem",
+      "rank",
+      "audit risk score",
+      "manual audio review remaining",
+      "process log entries",
+      "transcript bytes",
+      "shard bytes",
+      "shard to transcript ratio",
+      "duration minutes",
+      "segment count",
+      "qa count",
+      "valid qa count",
+      "qa temporal bins covered",
+      "segments per hour",
+      "first segment position pct",
+      "last segment position pct",
+      "temporal bins covered",
+      "largest anchor gap pct",
+      "largest anchor gap minutes",
+      "valid anchor count",
+    ]);
+    assert.doesNotMatch(lines[0] ?? "", /_|probability/u);
     const rows = lines.slice(1).map((line) => line.split("\t"));
+    assert.ok(rows.every((row) => row.length === header.length));
     const fileStemIndex = header.indexOf("file stem");
     const rankIndex = header.indexOf("rank");
     const auditRiskScoreIndex = header.indexOf("audit risk score");
-    const auditRouteIndex = header.indexOf("audit route");
     const manualAudioReviewIndex = header.indexOf("manual audio review remaining");
     const processLogEntriesIndex = header.indexOf("process log entries");
     const follow = rows.find((row) => row[fileStemIndex]?.endsWith("follow_follow1.json"));
@@ -105,18 +122,17 @@ test("CLI maps canonical processing states, isolates malformed shards, and emits
     assert.equal(generic?.[processLogEntriesIndex], "3");
     assert.equal(manual?.[processLogEntriesIndex], "2");
     assert.equal(manual?.[manualAudioReviewIndex], "true");
-    assert.equal(manual?.[auditRouteIndex], "low_signal");
+    assert.equal(repair?.[rankIndex], "1");
     assert.ok(Number(done?.[rankIndex]) > Number(manual?.[rankIndex]));
     assert.equal(Number(done?.[rankIndex]), rows.length);
     assert.ok(rows.every((row) => /^\d+\.\d$/u.test(row[auditRiskScoreIndex] ?? "")));
-    assert.match(generic?.join("\t") ?? "", /low_signal.*consume-plus-two-audits threshold/u);
-    assert.match(explicit?.join("\t") ?? "", /review_candidate/u);
-    assert.match(manual?.join("\t") ?? "", /only manual audio review/u);
-    assert.match(done?.join("\t") ?? "", /no history segments after 1 recorded pass/u);
-    assert.match(output, /\tdone1\tDone\tno\tfalse\t1\t/u);
-    assert.match(output, /recorded processing state explicitly requests further processing/u);
+    assert.ok(Number(follow?.[rankIndex]) < Number(explicit?.[rankIndex]));
+    assert.ok(Number(explicit?.[rankIndex]) < Number(generic?.[rankIndex]));
+    assert.doesNotMatch(output, /repair_required|follow_up_required|review_candidate|low_signal/u);
+    assert.doesNotMatch(output, /consume-plus-two-audits threshold|only manual audio review|no history segments after/u);
     assert.doesNotMatch(output, /school-functions_school1|SASC School Functions/u);
-    assert.match(result.stderr, /shards=6 excluded_sasc_shards=1.*manual_audio_review_remaining=1/u);
+    assert.match(result.stderr, /shards=6 excluded_sasc_shards=1 repair_required=1 follow_up_required=1 review_candidate=1 low_signal=3/u);
+    assert.match(result.stderr, /unknown_processing_states=1 manual_audio_review_remaining=1/u);
   } finally {
     await rm(root, { recursive: true, force: true });
   }
