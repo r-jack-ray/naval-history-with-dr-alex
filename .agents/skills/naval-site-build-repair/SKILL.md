@@ -40,6 +40,7 @@ Repair site-pipeline failures without widening scope or destabilizing establishe
 - Treat `src/derived/topic-normalization-patterns.tsv` as the detailed source of truth for steady-state topic creation, display, alias, and exception rules. A well-formed `review` rule is diagnostic only and does not authorize a mutation.
 - Use active `creation` rules to choose the canonical slug when repairing a newly introduced or invalid topic reference. Preserve established slugs unless the active creation policy canonicalizes them, and do not widen a narrow build repair into a corpus-wide topic rewrite.
 - Require explicit topic-policy scope before editing the TSV or activating or changing a rule. Leave ambiguous or review-only candidates unchanged rather than guessing.
+- When the user explicitly requests taxonomy maintenance rather than one narrow build repair, run `npm run report:video-topic-usage` and use `reports/topic-normalization-review.tsv` as the actionable review queue. It lists exact rule matches, title/alias collision owners, current sources, and recommended actions; routine site builds intentionally omit that backlog.
 - Add a missing shared topic only when a curated video or segment actually references it, the active creation policy accepts that slug as canonical, and the user's repair scope authorizes registry work; do not rewrite an unrelated shard to hide a registry problem.
 - Use `$naval-site-content-auditor` when the repair requires transcript-semantic judgment, public wording changes, or evidence validation.
 

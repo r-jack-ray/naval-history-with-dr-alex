@@ -111,6 +111,21 @@ test("validation hooks share the split-archive contract and generate once before
   assert.doesNotMatch(packageJson.scripts["site:build:generated"] ?? "", /generate:site-data/u);
 });
 
+test("topic curation reports consume exact normalization audit findings outside the site build", async () => {
+  const reportScript = await readFile(
+    join(repositoryRoot, "src", "scripts", "report-video-topic-usage.ts"),
+    "utf8",
+  );
+
+  assert.match(reportScript, /auditTopicNormalization/u);
+  assert.match(
+    reportScript,
+    /renderTopicNormalizationReviewReport\(normalizationAudit\.reviewFindings\)/u,
+  );
+  assert.match(reportScript, /reports\/topic-normalization-review\.tsv/u);
+  assert.match(reportScript, /normalization_reviews=/u);
+});
+
 test("Astro dev does not watch generated production output", async () => {
   const astroConfig = await readFile(join(repositoryRoot, "astro.config.mjs"), "utf8");
 

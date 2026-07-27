@@ -21,6 +21,34 @@ export interface AuditTopicNormalizationOptions {
   segmentsInput: string;
 }
 
+export interface TopicNormalizationRuleReviewFinding {
+  kind: "rule";
+  ruleId: string;
+  slug: string;
+  replacement: string;
+  canonicalTitle: string;
+  notes: string;
+  sources: string[];
+  action: string;
+}
+
+export interface TopicNormalizationCollisionOwner {
+  slug: string;
+  values: string[];
+  sources: string[];
+}
+
+export interface TopicNormalizationCollisionReviewFinding {
+  kind: "collision";
+  collisionKey: string;
+  owners: [TopicNormalizationCollisionOwner, TopicNormalizationCollisionOwner];
+  action: string;
+}
+
+export type TopicNormalizationReviewFinding =
+  | TopicNormalizationRuleReviewFinding
+  | TopicNormalizationCollisionReviewFinding;
+
 export interface TopicNormalizationAuditResult {
   catalog: TopicNormalizationCatalog;
   shardCount: number;
@@ -28,6 +56,13 @@ export interface TopicNormalizationAuditResult {
   usedTopicCount: number;
   blockers: string[];
   reviews: string[];
+  reviewFindings: TopicNormalizationReviewFinding[];
+}
+
+interface MutableRuleReview {
+  rule: TopicNormalizationRule;
+  slug: string;
+  sources: Set<string>;
 }
 
 /** Audits the steady-state topic policy without writing source or generated data. */
@@ -41,10 +76,19 @@ export async function auditTopicNormalization(
   const topicsBySlug = new Map(store.topics.map((topic) => [topic.slug, topic]));
   const usedSlugs = new Set<string>();
   const blockers: string[] = [];
-  const reviews = new Set<string>();
+  const ruleReviews = new Map<string, MutableRuleReview>();
+  const sourcesBySlug = new Map<string, Set<string>>();
 
   for (const shard of shards) {
-    auditTopicArray(shard.value.topics, `${shard.fileName} video`, catalog, usedSlugs, blockers, reviews);
+    auditTopicArray(
+      shard.value.topics,
+      `${shard.fileName} video`,
+      catalog,
+      usedSlugs,
+      blockers,
+      ruleReviews,
+      sourcesBySlug,
+    );
     for (const segment of shard.value.segments) {
       auditTopicArray(
         segment.topics,
@@ -52,13 +96,16 @@ export async function auditTopicNormalization(
         catalog,
         usedSlugs,
         blockers,
-        reviews,
+        ruleReviews,
+        sourcesBySlug,
       );
     }
   }
 
   for (const topic of store.topics) {
-    auditCreationInput(`Topic registry record ${topic.slug}`, topic.slug, catalog, blockers, reviews);
+    const source = `Topic registry record ${topic.slug}`;
+    addTopicSource(sourcesBySlug, topic.slug, source);
+    auditCreationInput(source, topic.slug, catalog, blockers, ruleReviews);
     const display = resolveTopicDisplayTitle(catalog, topic.slug);
     if (
       (display.resolution === "exact" || display.resolution === "regex")
@@ -77,10 +124,11 @@ export async function auditTopicNormalization(
   }
 
   auditExactPolicyTargets(catalog, topicsBySlug, blockers);
-  const collisionCount = countCrossTopicCollisions(store.topics);
-  if (collisionCount > 0) {
-    reviews.add(`Topic title/alias collision pairs retained for review: ${collisionCount}.`);
-  }
+  const reviewFindings = [
+    ...collectRuleReviewFindings(ruleReviews),
+    ...collectCollisionReviewFindings(store.topics, sourcesBySlug),
+  ].sort(compareReviewFindings);
+  const reviews = reviewFindings.map(formatTopicNormalizationReviewFinding);
 
   return {
     catalog,
@@ -88,7 +136,8 @@ export async function auditTopicNormalization(
     topicCount: store.topics.length,
     usedTopicCount: usedSlugs.size,
     blockers: uniqueSorted(blockers),
-    reviews: uniqueSorted([...reviews]),
+    reviews,
+    reviewFindings,
   };
 }
 
@@ -98,7 +147,8 @@ function auditTopicArray(
   catalog: TopicNormalizationCatalog,
   usedSlugs: Set<string>,
   blockers: string[],
-  reviews: Set<string>,
+  ruleReviews: Map<string, MutableRuleReview>,
+  sourcesBySlug: Map<string, Set<string>>,
 ): void {
   if (!Array.isArray(value)) {
     throw new Error(`${source} must include a topics array.`);
@@ -113,7 +163,8 @@ function auditTopicArray(
     }
     seen.add(valueSlug);
     usedSlugs.add(valueSlug);
-    auditCreationInput(source, valueSlug, catalog, blockers, reviews);
+    addTopicSource(sourcesBySlug, valueSlug, source);
+    auditCreationInput(source, valueSlug, catalog, blockers, ruleReviews);
   }
 }
 
@@ -122,7 +173,7 @@ function auditCreationInput(
   slug: string,
   catalog: TopicNormalizationCatalog,
   blockers: string[],
-  reviews: Set<string>,
+  ruleReviews: Map<string, MutableRuleReview>,
 ): void {
   const resolution = resolveTopicCreation(catalog, slug);
   if (resolution.changed) {
@@ -134,7 +185,14 @@ function auditCreationInput(
   for (const ruleId of resolution.matchedRuleIds) {
     const rule = catalog.rules.find((candidate) => candidate.ruleId === ruleId);
     if (rule?.status === "review") {
-      reviews.add(`Review rule ${rule.ruleId} remains unresolved for ${slug}: ${rule.notes}.`);
+      const key = `${rule.ruleId}\u0000${slug}`;
+      const review = ruleReviews.get(key) ?? {
+        rule,
+        slug,
+        sources: new Set<string>(),
+      };
+      review.sources.add(source);
+      ruleReviews.set(key, review);
     }
   }
 }
@@ -181,21 +239,123 @@ function parseTopicStore(text: string, path: string) {
   return parseCuratedTopicStore(JSON.parse(text) as unknown, `Curated topic store ${path}`);
 }
 
-function countCrossTopicCollisions(topics: readonly CuratedTopicSeed[]): number {
-  const ownersByKey = new Map<string, Set<string>>();
+function collectRuleReviewFindings(
+  reviews: ReadonlyMap<string, MutableRuleReview>,
+): TopicNormalizationRuleReviewFinding[] {
+  return [...reviews.values()].map(({ rule, slug, sources }) => ({
+    kind: "rule",
+    ruleId: rule.ruleId,
+    slug,
+    replacement: rule.replacement,
+    canonicalTitle: rule.canonicalTitle,
+    notes: rule.notes,
+    sources: [...sources].sort((left, right) => left.localeCompare(right)),
+    action: rule.replacement === slug
+      ? `Replace ${slug} with context-specific topic slug(s), or retain it only through an explicitly approved contextual exception.`
+      : `Inspect every source before mapping ${slug} to ${rule.replacement}; promote the rule to active only if one global mapping is valid.`,
+  }));
+}
+
+function collectCollisionReviewFindings(
+  topics: readonly CuratedTopicSeed[],
+  sourcesBySlug: ReadonlyMap<string, ReadonlySet<string>>,
+): TopicNormalizationCollisionReviewFinding[] {
+  const ownersByKey = new Map<string, Map<string, Set<string>>>();
   for (const topic of topics) {
     for (const value of [topic.title, ...(topic.aliases ?? [])]) {
       const key = topicCollisionKey(value);
-      const owners = ownersByKey.get(key) ?? new Set<string>();
-      owners.add(topic.slug);
+      const owners = ownersByKey.get(key) ?? new Map<string, Set<string>>();
+      const values = owners.get(topic.slug) ?? new Set<string>();
+      values.add(value);
+      owners.set(topic.slug, values);
       ownersByKey.set(key, owners);
     }
   }
-  let count = 0;
-  for (const owners of ownersByKey.values()) {
-    count += owners.size * (owners.size - 1) / 2;
+
+  const findings: TopicNormalizationCollisionReviewFinding[] = [];
+  for (const [collisionKey, owners] of ownersByKey) {
+    const slugs = [...owners.keys()].sort((left, right) => left.localeCompare(right));
+    for (let leftIndex = 0; leftIndex < slugs.length; leftIndex += 1) {
+      for (let rightIndex = leftIndex + 1; rightIndex < slugs.length; rightIndex += 1) {
+        const leftSlug = slugs[leftIndex]!;
+        const rightSlug = slugs[rightIndex]!;
+        findings.push({
+          kind: "collision",
+          collisionKey,
+          owners: [
+            collisionOwner(leftSlug, owners.get(leftSlug), sourcesBySlug),
+            collisionOwner(rightSlug, owners.get(rightSlug), sourcesBySlug),
+          ],
+          action: "Choose one canonical topic and migrate the other slug, or rename/remove the conflicting title or alias when the topics are intentionally distinct.",
+        });
+      }
+    }
   }
-  return count;
+  return findings;
+}
+
+function collisionOwner(
+  slug: string,
+  values: ReadonlySet<string> | undefined,
+  sourcesBySlug: ReadonlyMap<string, ReadonlySet<string>>,
+): TopicNormalizationCollisionOwner {
+  return {
+    slug,
+    values: [...(values ?? [])].sort((left, right) => left.localeCompare(right)),
+    sources: [...(sourcesBySlug.get(slug) ?? [])].sort((left, right) => left.localeCompare(right)),
+  };
+}
+
+function addTopicSource(
+  sourcesBySlug: Map<string, Set<string>>,
+  slug: string,
+  source: string,
+): void {
+  const sources = sourcesBySlug.get(slug) ?? new Set<string>();
+  sources.add(source);
+  sourcesBySlug.set(slug, sources);
+}
+
+function compareReviewFindings(
+  left: TopicNormalizationReviewFinding,
+  right: TopicNormalizationReviewFinding,
+): number {
+  if (left.kind !== right.kind) {
+    return left.kind === "rule" ? -1 : 1;
+  }
+  if (left.kind === "rule" && right.kind === "rule") {
+    return left.ruleId.localeCompare(right.ruleId) || left.slug.localeCompare(right.slug);
+  }
+  if (left.kind === "collision" && right.kind === "collision") {
+    return left.collisionKey.localeCompare(right.collisionKey)
+      || left.owners[0].slug.localeCompare(right.owners[0].slug)
+      || left.owners[1].slug.localeCompare(right.owners[1].slug);
+  }
+  return 0;
+}
+
+export function formatTopicNormalizationReviewFinding(
+  finding: TopicNormalizationReviewFinding,
+): string {
+  if (finding.kind === "rule") {
+    const candidate = finding.replacement === finding.slug
+      ? ""
+      : `\n  Candidate: ${finding.slug} -> ${finding.replacement}`
+        + (finding.canonicalTitle.length > 0 ? ` (${JSON.stringify(finding.canonicalTitle)})` : "");
+    return `Rule ${finding.ruleId} matched ${finding.slug}.${candidate}\n`
+      + `  Notes: ${finding.notes}\n`
+      + `  Sources (${finding.sources.length}):\n`
+      + `${finding.sources.map((source) => `    - ${source}`).join("\n")}\n`
+      + `  Action: ${finding.action}`;
+  }
+
+  const [left, right] = finding.owners;
+  return `Title/alias collision ${JSON.stringify(finding.collisionKey)}.\n`
+    + `  Topic: ${left.slug} via ${left.values.map((value) => JSON.stringify(value)).join(", ")}\n`
+    + `    Sources (${left.sources.length}): ${left.sources.join(" | ")}\n`
+    + `  Topic: ${right.slug} via ${right.values.map((value) => JSON.stringify(value)).join(", ")}\n`
+    + `    Sources (${right.sources.length}): ${right.sources.join(" | ")}\n`
+    + `  Action: ${finding.action}`;
 }
 
 function uniqueSorted(values: readonly string[]): string[] {

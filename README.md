@@ -120,7 +120,7 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 | `append:site-content-processing-log` | Low-level validated append to the site-content processing log. |
 | `audit:transcript-schedules` | Audit one or more explicitly supplied transcript schedules; at least one `--schedule <path>` is required. |
 | `audit:video-timestamp-alignment` | Check timestamp and video-state consistency across source, transcript, shard, and generated data. |
-| `report:video-topic-usage` | Write topic usage and normalization review data to `reports/video-topic-usage.tsv`. |
+| `report:video-topic-usage` | Write topic usage to `reports/video-topic-usage.tsv` and exact actionable normalization findings to `reports/topic-normalization-review.tsv`. |
 | `report:transcript-problems` | Build the human-readable transcript failure report from saved status without contacting YouTube. |
 
 ### Channel Inventory and Transcripts
@@ -361,6 +361,14 @@ Resolve every new shard topic through active creation rules before writing it. P
 ```powershell
 npm run audit:topic-normalization
 ```
+
+For an explicitly scoped taxonomy-maintenance pass, generate the topic-curation reports:
+
+```powershell
+npm run report:video-topic-usage
+```
+
+Use `reports/video-topic-usage.tsv` for corpus-wide usage, similarity, and co-topic context. Use `reports/topic-normalization-review.tsv` as the exact work queue for normalization review rules and title/alias collisions; it identifies the affected topic slugs, candidate mapping where one is recorded, every current shard or registry source, and the recommended resolution action. These review details are intentionally kept out of routine site-build output.
 
 Shard workers must not edit the catalog, shared registry, or other shards. Changes to shared topic policy or any corpus-wide topic rewrite require a separate, explicitly scoped taxonomy-maintenance task.
 

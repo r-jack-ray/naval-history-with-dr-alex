@@ -19,12 +19,57 @@ test("audits canonical source data without writing and reports exact review poli
     assert.equal(result.shardCount, 1);
     assert.equal(result.topicCount, 2);
     assert.equal(result.usedTopicCount, 2);
-    assert.deepEqual(result.reviews, [
-      "Review rule review-155mm-guns remains unresolved for 155mm-guns: Named-system context still requires review.",
-    ]);
+    assert.equal(result.reviewFindings.length, 1);
+    const review = result.reviewFindings[0];
+    assert.equal(review?.kind, "rule");
+    if (review?.kind === "rule") {
+      assert.equal(review.ruleId, "review-155mm-guns");
+      assert.equal(review.slug, "155mm-guns");
+      assert.equal(review.replacement, "155-mm-guns");
+      assert.equal(review.notes, "Named-system context still requires review");
+      assert.deepEqual(new Set(review.sources), new Set([
+        "Topic registry record 155mm-guns",
+        "fixture-video_abc123.json video",
+        "fixture-video_abc123.json segment one",
+      ]));
+    }
+    assert.match(result.reviews[0] ?? "", /Sources \(3\):/u);
+    assert.match(result.reviews[0] ?? "", /Action:/u);
     assert.equal(await readFile(fixture.patternsInput, "utf8"), beforePatterns);
     assert.equal(await readFile(join(fixture.segmentsInput, "topics.json"), "utf8"), beforeRegistry);
     assert.equal(await readFile(fixture.shardPath, "utf8"), beforeShard);
+  } finally {
+    await rm(fixture.root, { recursive: true, force: true });
+  }
+});
+
+test("reports exact title and alias collision owners, values, and sources", async () => {
+  const fixture = await makeFixture(["57-mm-guns", "155mm-guns"]);
+  try {
+    const registryPath = join(fixture.segmentsInput, "topics.json");
+    const registry = JSON.parse(await readFile(registryPath, "utf8")) as {
+      topics: Array<{ slug: string; title: string; summary: string; aliases?: string[] }>;
+    };
+    registry.topics[1]!.aliases = ["57 mm Guns"];
+    await writeFile(registryPath, `${JSON.stringify(registry, null, 2)}\n`, "utf8");
+
+    const result = await auditTopicNormalization(fixture);
+    const collision = result.reviewFindings.find((finding) => finding.kind === "collision");
+    assert.equal(collision?.kind, "collision");
+    if (collision?.kind === "collision") {
+      assert.equal(collision.collisionKey, "57 mm guns");
+      assert.deepEqual(collision.owners.map((owner) => owner.slug), [
+        "155mm-guns",
+        "57-mm-guns",
+      ]);
+      assert.deepEqual(collision.owners[0].values, ["57 mm Guns"]);
+      assert.deepEqual(collision.owners[1].values, ["57 mm Guns"]);
+      assert.ok(collision.owners.every((owner) => owner.sources.length > 0));
+    }
+    assert.match(
+      result.reviews.find((finding) => finding.includes("Title/alias collision")) ?? "",
+      /155mm-guns[\s\S]*57-mm-guns/u,
+    );
   } finally {
     await rm(fixture.root, { recursive: true, force: true });
   }

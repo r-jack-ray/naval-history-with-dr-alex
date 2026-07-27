@@ -19,6 +19,7 @@ import {
 import {
   findCuratedSegmentDuplicates,
   loadCuratedArchiveSeed,
+  loadCuratedTopicUsageSeed,
 } from "./curated-seed.js";
 import { isPublicTopic } from "./public-topic.js";
 
@@ -475,6 +476,10 @@ test("reports every source shard for duplicate segment IDs and slugs", async () 
         return true;
       },
     );
+
+    const topicUsageSeed = await loadCuratedTopicUsageSeed(directory);
+    assert.equal(topicUsageSeed.videos.length, 2);
+    assert.equal(topicUsageSeed.segments.length, 2);
   } finally {
     await rm(directory, { recursive: true, force: true });
   }

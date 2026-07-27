@@ -183,6 +183,8 @@ test("companion guidance preserves review no-ops, shard boundaries, and steady-s
   assert.match(agents, /preserve established slugs unless[^.]{0,120}active creation policy canonicalizes/iu);
   assert.match(agents, /review[^.]{0,180}unchanged/iu);
   assert.match(agents, /must not perform corpus-wide topic rewrites/iu);
+  assert.match(agents, /report:video-topic-usage[\s\S]{0,500}topic-normalization-review\.tsv/iu);
+  assert.match(agents, /do not expect routine site builds[^.]{0,140}curation backlog/iu);
 
   const schema = await readGuidance(
     ".agents/skills/naval-transcript-to-site-content/references/segment-seed-schema.md",
@@ -201,6 +203,8 @@ test("companion guidance preserves review no-ops, shard boundaries, and steady-s
   const readme = await readGuidance("README.md");
   assert.match(readme, /steady-state topic creation/iu);
   assert.match(readme, /npm run audit:topic-normalization/iu);
+  assert.match(readme, /report:video-topic-usage[\s\S]{0,500}topic-normalization-review\.tsv/iu);
+  assert.match(readme, /review details are intentionally kept out of routine site-build output/iu);
   assert.match(readme, /timestamp;shardPath;result;needsFurtherProcessing;notes/u);
 });
 
@@ -211,6 +215,7 @@ test("build repair audits steady-state policy and delegates semantic and site im
   assert.match(guidance, /review[^.]{0,160}does not authorize a mutation/iu);
   assert.match(guidance, /active `creation` rules[^.]{0,160}canonical slug/iu);
   assert.match(guidance, /explicit topic-policy scope/iu);
+  assert.match(guidance, /report:video-topic-usage[\s\S]{0,500}topic-normalization-review\.tsv/iu);
   assert.match(guidance, /\$naval-site-content-auditor/iu);
   assert.match(guidance, /\$naval-video-page-prototype/iu);
   assert.match(guidance, /steady-state policy compliance/iu);

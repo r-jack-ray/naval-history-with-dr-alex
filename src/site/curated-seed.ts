@@ -44,6 +44,29 @@ interface LoadedCuratedVideoFile {
 }
 
 export async function loadCuratedArchiveSeed(inputDirectory: string): Promise<CuratedArchiveSeed> {
+  const { seed, loadedVideos } = await loadCuratedSeedFiles(inputDirectory);
+  const duplicates = collectCuratedSegmentDuplicates(loadedVideos);
+  if (duplicates.length > 0) {
+    throw new Error(duplicates.map(formatCuratedSegmentDuplicate).join("\n\n"));
+  }
+  return seed;
+}
+
+/**
+ * Loads topic-report inputs without applying archive route-uniqueness checks.
+ * Topic usage depends on video/topic relationships, so an unrelated duplicate
+ * segment ID or slug must not prevent taxonomy curation.
+ */
+export async function loadCuratedTopicUsageSeed(
+  inputDirectory: string,
+): Promise<CuratedArchiveSeed> {
+  return (await loadCuratedSeedFiles(inputDirectory)).seed;
+}
+
+async function loadCuratedSeedFiles(inputDirectory: string): Promise<{
+  seed: CuratedArchiveSeed;
+  loadedVideos: LoadedCuratedVideoFile[];
+}> {
   await validateInputDirectory(inputDirectory);
   const topicStorePath = join(inputDirectory, "topics.json");
   const topicStore = parseCuratedTopicStore(
@@ -52,18 +75,16 @@ export async function loadCuratedArchiveSeed(inputDirectory: string): Promise<Cu
   );
 
   const loadedVideos = await loadCuratedVideoFiles(inputDirectory);
-  const duplicates = collectCuratedSegmentDuplicates(loadedVideos);
-  if (duplicates.length > 0) {
-    throw new Error(duplicates.map(formatCuratedSegmentDuplicate).join("\n\n"));
-  }
-
   return {
-    videos: loadedVideos.map(({ video }) => ({
-      videoId: video.videoId,
-      topics: [...video.topics],
-    })),
-    topics: topicStore.topics,
-    segments: loadedVideos.flatMap(({ video }) => video.segments),
+    seed: {
+      videos: loadedVideos.map(({ video }) => ({
+        videoId: video.videoId,
+        topics: [...video.topics],
+      })),
+      topics: topicStore.topics,
+      segments: loadedVideos.flatMap(({ video }) => video.segments),
+    },
+    loadedVideos,
   };
 }
 
