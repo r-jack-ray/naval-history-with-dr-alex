@@ -5,7 +5,10 @@
     "hms-indomitable",
     "royal-navy",
     "naval-aviation",
-    "alternate-history"
+    "alternate-history",
+    "singapore",
+    "abda-command",
+    "carrier-warfare"
   ],
   "segments": [
     {
@@ -28,15 +31,29 @@
       "id": "carrier-shortage-behind-force-z",
       "videoId": "wBB295qzyq8",
       "slug": "carrier-shortage-behind-force-z",
-      "title": "Why the Royal Navy had no carrier ready for Force Z",
+      "title": "Construction pauses delayed the Royal Navy's carrier program",
       "kind": "chapter",
       "start": "3:21",
-      "end": "10:33",
-      "topics": ["force-z", "royal-navy", "fleet-air-arm", "hms-ark-royal", "hms-courageous", "hms-glorious"],
-      "summary": "Construction delays, wartime losses, damage, and overuse left the Royal Navy without a carrier available when Force Z formed.",
-      "body": "Dr. Clarke traces the shortage to the wartime pause in carrier and capital-ship construction and the losses of Courageous, Glorious, and Ark Royal. He distinguishes the treaty-era Illustrious design from later post-treaty carriers and argues that pausing construction delayed urgently needed replacement hulls. With too few carriers, surviving ships were worked hard and Ark Royal could not receive an adequate refit before her loss. Damage to Illustrious and Formidable and Indomitable's grounding then narrowed the choices further, leaving a fleet whose carrier commitments exceeded its available ships rather than one that doctrinally dismissed carrier support.",
+      "end": "6:25",
+      "topics": ["royal-navy", "fleet-air-arm", "naval-procurement", "naval-treaties", "illustrious-class-aircraft-carriers", "implacable-class-aircraft-carriers", "essex-class-aircraft-carriers"],
+      "summary": "Churchill's early wartime pause slowed the carriers Britain expected to enter service by 1942 and encouraged further redesign around the end of treaty limits.",
+      "body": "Britain had planned its naval rearmament around a war beginning in 1942, but war arrived in 1939 and Churchill temporarily paused carriers, capital ships, and cruisers to emphasize escorts. Dr. Clarke argues that the escort program was already extensive, so halting carrier construction sacrificed time the Fleet Air Arm could not easily recover. The pause also invited designers to absorb wartime experience and the end of treaty limits instead of driving existing hulls into service. He places the Illustrious and Yorktown classes at the end of treaty design, the Essex class in the transition beyond it, and the Implacable class as the Royal Navy's 27,000-ton treaty-study maximum. That distinction matters because the Implacables were intended to combine Ark Royal's strike role with the armoured fleet-carrier role, but the delayed program left those capabilities unavailable when Force Z formed.",
       "sourcePath": "src/transcripts/txt/2025-03-08_T19-30-06_an-indomitable-force-z_wBB295qzyq8.txt",
-      "evidence": [{"start": "3:21", "end": "10:33", "note": "The transcript connects construction pauses, carrier losses, overwork, damage, and Indomitable's grounding to the shortage."}]
+      "evidence": [{"start": "3:21", "end": "6:25", "note": "The transcript connects the early wartime construction pause with treaty-era carrier design, later redesign, and delayed entry into service."}]
+    },
+    {
+      "id": "carrier-losses-and-overwork-behind-force-z",
+      "videoId": "wBB295qzyq8",
+      "slug": "carrier-losses-and-overwork-behind-force-z",
+      "title": "Losses and overwork exhausted Britain's available carriers",
+      "kind": "notable_point",
+      "start": "6:28",
+      "end": "10:33",
+      "topics": ["force-z", "royal-navy", "fleet-air-arm", "hms-ark-royal", "hms-courageous", "hms-glorious", "anti-submarine-warfare", "naval-maintenance"],
+      "summary": "Courageous and Glorious were lost on very different missions, while Ark Royal's workload and damage to newer ships left no carrier ready for Force Z.",
+      "body": "The carrier shortage compounded once wartime operations consumed the limited fleet. Courageous was used for anti-submarine patrols because Britain lacked smaller and escort carriers, whereas Dr. Clarke calls Glorious's Norway employment a departure from normal Royal Navy doctrine and operating standards. Ark Royal then remained so heavily worked that she could not receive the refit needed to address accumulating problems before her loss. Battle damage to Illustrious and Formidable, Indomitable's grounding off Jamaica, and other commitments removed the remaining candidates when Force Z assembled. His point is institutional rather than doctrinal blindness: Britain understood the need for carriers but had too few hulls to cover the jobs its prewar doctrine already assigned them.",
+      "sourcePath": "src/transcripts/txt/2025-03-08_T19-30-06_an-indomitable-force-z_wBB295qzyq8.txt",
+      "evidence": [{"start": "6:28", "end": "10:33", "note": "The transcript distinguishes the losses of Courageous and Glorious, Ark Royal's overwork, damage to newer carriers, and Indomitable's grounding."}]
     },
     {
       "id": "force-z-deterrence-and-forward-deployment",
@@ -48,7 +65,7 @@
       "end": "15:26",
       "topics": ["force-z", "singapore", "deterrence", "eastern-fleet", "royal-navy"],
       "summary": "Sending two capital ships directly to Singapore exposed the limits of British strength instead of preserving uncertainty about a larger reinforcing fleet.",
-      "body": "The proposed deterrent advertised nearly everything Britain could immediately spare and placed it at a front-line base. A small visible force also removed uncertainty about whether a larger British battle fleet might still arrive. Dr. Clarke contrasts this with concentrating the ships alongside the R-class battleships, Hermes, cruisers, and destroyers already in the Indian Ocean, which would at least look like a substantial fleet. Global commitments in the Atlantic and Mediterranean explain the shortage, but they also made the isolated Singapore deployment strategically brittle.",
+      "body": "The proposed deterrent advertised nearly everything Britain could immediately spare and placed it at a front-line base. A small visible force also removed uncertainty about whether a larger British battle fleet might still arrive. Dr. Clarke contrasts this with concentrating the ships alongside the R-class battleships, Hermes, cruisers, and destroyers already in the Indian Ocean, which would at least look like a substantial fleet. Global commitments in the Atlantic and Mediterranean explain the shortage, but they also made the isolated Singapore deployment strategically brittle. His broader lesson is that long wars are contests of infrastructure and equipment: construction decisions made before the crisis determine which credible forces remain available when deterrence is tested.",
       "sourcePath": "src/transcripts/txt/2025-03-08_T19-30-06_an-indomitable-force-z_wBB295qzyq8.txt",
       "evidence": [{"start": "10:35", "end": "15:26", "note": "The discussion compares exposing two ships at Singapore with concentrating a larger force in the Indian Ocean."}]
     },
@@ -73,12 +90,40 @@
       "title": "Indomitable would probably bring a much larger destroyer screen",
       "kind": "chapter",
       "start": "16:38",
-      "end": "23:35",
-      "topics": ["force-z", "destroyers", "fleet-screening", "hms-indomitable", "us-navy"],
+      "end": "20:43",
+      "topics": ["force-z", "destroyers", "fleet-screening", "hms-indomitable", "us-navy", "tribal-class-destroyers-1936", "j-class-destroyers"],
       "summary": "Carrier escort requirements and possible American reinforcement could expand the historical four-destroyer screen to a far stronger formation.",
-      "body": "The historical force mixed two modern destroyers with older First World War designs after Encounter and Jupiter became unavailable through maintenance problems. Dr. Clarke notes that older destroyers remained useful for anti-submarine and anti-aircraft work and could receive displaced early radar sets when newer ships were upgraded. Because carriers received priority for scarce escorts, Indomitable would likely bring Tribal- and J-class destroyers of her own. Admiral Thomas Hart might also be more willing to attach the US Navy's Destroyer Division 57 to a formation with organic fighter defense, raising the possible screen to roughly eleven destroyers rather than four.",
+      "body": "The historical force mixed two modern destroyers with older First World War designs after Encounter and Jupiter became unavailable through maintenance problems. Indomitable would change that screen because carriers received priority for scarce modern escorts even while working up. Dr. Clarke expects at least a 1936 Tribal-class and another J-class destroyer to follow the carrier, with a second Tribal also possible. Admiral Thomas Hart might also be more willing to attach the US Navy's Destroyer Division 57 to a formation with organic fighter defense. Those reinforcements could raise the screen from four ships to roughly eleven without inventing vessels: they were escorts already associated with the carrier or nearby Allied forces.",
       "sourcePath": "src/transcripts/txt/2025-03-08_T19-30-06_an-indomitable-force-z_wBB295qzyq8.txt",
-      "evidence": [{"start": "16:38", "end": "23:35", "note": "The historical destroyer mix, carrier escort priority, and possible attachment of Destroyer Division 57 are described."}]
+      "evidence": [{"start": "16:38", "end": "20:43", "note": "The historical destroyer mix, carrier escort priority, and possible attachment of Destroyer Division 57 are described."}]
+    },
+    {
+      "id": "king-george-v-gun-calibre-procurement",
+      "videoId": "wBB295qzyq8",
+      "slug": "king-george-v-gun-calibre-procurement",
+      "title": "The King George V class and the case for updated 15-inch guns",
+      "kind": "notable_point",
+      "start": "21:09",
+      "end": "22:04",
+      "topics": ["king-george-v-class-1939-battleships", "14-inch-guns", "15-inch-guns", "naval-procurement", "warship-design"],
+      "summary": "Dr. Clarke treats the class's 14-inch battery as a political compromise and asks whether modernized 15-inch guns could have offered a more economical alternative.",
+      "body": "The armament digression uses Prince of Wales to show how politics and program economics shape battleship design. Dr. Clarke accepts that 16-inch guns would be desirable but doubts a new 16-inch program could be justified when Britain had only two ships using that calibre. He proposes an upgraded 15-inch/45 program serving the much larger existing 15-inch fleet and a possible three-triple-turret King George V design. The counterfactual is not presented as settled engineering, but as a procurement alternative that could spread development cost across a much larger fleet.",
+      "sourcePath": "src/transcripts/txt/2025-03-08_T19-30-06_an-indomitable-force-z_wBB295qzyq8.txt",
+      "evidence": [{"start": "21:09", "end": "22:04", "note": "The transcript contrasts the political 14-inch choice with a proposed updated 15-inch program shared across existing and new ships."}]
+    },
+    {
+      "id": "older-destroyers-as-asw-aa-assets",
+      "videoId": "wBB295qzyq8",
+      "slug": "older-destroyers-as-asw-aa-assets",
+      "title": "Older destroyers remained useful ASW and AA assets",
+      "kind": "notable_point",
+      "start": "22:07",
+      "end": "23:35",
+      "topics": ["destroyers", "anti-submarine-warfare", "anti-aircraft-warfare", "naval-radar", "royal-navy", "naval-readiness"],
+      "summary": "Before new Hunt-class escorts arrived in numbers, First World War destroyers still covered anti-submarine and anti-aircraft duties and could receive older radar sets.",
+      "body": "Force Z's mixed-age screen reflected what Britain could supply before Hunt-class and other wartime escorts entered service in large numbers. Dr. Clarke cautions against treating First World War destroyers as useless simply because of their age. They could still perform anti-submarine and anti-aircraft work after modernization. Radar also cascaded through the fleet: a newer destroyer might receive the latest set, allowing its first-generation unit to be installed aboard an older ship. The arrangement was imperfect, but it turned scarce electronics and veteran hulls into usable defensive capacity.",
+      "sourcePath": "src/transcripts/txt/2025-03-08_T19-30-06_an-indomitable-force-z_wBB295qzyq8.txt",
+      "evidence": [{"start": "22:07", "end": "23:35", "note": "The transcript explains the interim value of older destroyers for ASW and AA duties and the cascading reuse of radar sets."}]
     },
     {
       "id": "tom-phillips-air-defense-doctrine",
@@ -129,12 +174,26 @@
       "title": "An ambiguous air-support message hid available fighters",
       "kind": "notable_point",
       "start": "35:04",
-      "end": "38:48",
-      "topics": ["force-z", "royal-australian-air-force", "interservice-coordination", "anti-aircraft-warfare", "tom-phillips"],
+      "end": "37:46",
+      "topics": ["force-z", "royal-australian-air-force", "interservice-coordination", "anti-aircraft-warfare", "fleet-air-defence", "tom-phillips"],
       "summary": "Force Z was told that air support was unavailable even though Australian fighters had been assigned to fleet defense.",
-      "body": "The negative answer referred to offensive bombers, but naval officers understood it to include fighter protection. An Australian fighter squadron had in fact been assigned to fleet defense. Believing no fighters were available, Phillips chose radio silence and surprise as his best defense. Dr. Clarke treats the failure as an interoperability problem: the Navy did not ask separately about strike and fighter support, while the air staff did not clarify that defensive aircraft remained available.",
+      "body": "The negative answer referred to offensive bombers, but naval officers understood it to include fighter protection. An Australian fighter squadron had in fact been assigned to fleet defense. Believing no fighters were available, Phillips chose radio silence and surprise as his best defense, and his force was found only as both it and the Japanese bombers were turning back from unsuccessful searches. Dr. Clarke treats the failure as an interoperability problem: the Navy did not ask separately about strike and fighter support, while the air staff did not clarify that defensive aircraft remained available.",
       "sourcePath": "src/transcripts/txt/2025-03-08_T19-30-06_an-indomitable-force-z_wBB295qzyq8.txt",
-      "evidence": [{"start": "35:04", "end": "38:48", "note": "The transcript distinguishes unavailable offensive aircraft from an assigned Australian fighter squadron and follows Phillips's response."}]
+      "evidence": [{"start": "35:04", "end": "37:46", "note": "The transcript distinguishes unavailable offensive aircraft from an assigned Australian fighter squadron and follows Phillips's radio-silence response."}]
+    },
+    {
+      "id": "aa-cruisers-could-not-replace-fighters",
+      "videoId": "wBB295qzyq8",
+      "slug": "aa-cruisers-could-not-replace-fighters",
+      "title": "Why AA cruisers could not replace the fighter layer",
+      "kind": "notable_point",
+      "start": "37:50",
+      "end": "38:48",
+      "topics": ["force-z", "anti-aircraft-warfare", "dido-class-cruisers", "fleet-air-defence", "naval-aviation"],
+      "summary": "One Dido-class anti-aircraft cruiser might add fire, but dozens of attackers and limited firing arcs still demanded fighters or several heavy-AA ships.",
+      "body": "Once the bombers arrived, Force Z could not produce enough fire to break their formations before the attack runs. Dr. Clarke considers whether a Dido-class anti-aircraft cruiser might have helped, but judges that a single ship probably would not supply the necessary volume. Only the weapons on the engaged side of each ship could bear, while dozens of aircraft approached from chosen directions. Several AA cruisers might begin to substitute for the missing outer defensive layer, but one extra gun platform would not solve the absence of fighters.",
+      "sourcePath": "src/transcripts/txt/2025-03-08_T19-30-06_an-indomitable-force-z_wBB295qzyq8.txt",
+      "evidence": [{"start": "37:50", "end": "38:48", "note": "The transcript weighs a Dido-class AA cruiser against the volume, firing arcs, and formation-breaking demands of the Japanese attack."}]
     },
     {
       "id": "indomitable-would-complete-layered-defense",
@@ -216,7 +275,7 @@
       "end": "1:09:03",
       "topics": ["singapore", "malayan-campaign", "amphibious-logistics", "submarine-warfare", "abda-command"],
       "summary": "Carrier strikes, battleship-caliber gunfire, and submarines could exhaust Japanese supplies before the advance reached Singapore.",
-      "body": "The argument does not require an implausible Allied land victory. Force Z need only damage the merchant convoys sustaining the advance until Japanese food, ammunition, and water run short farther north in Malaya. A longer defense creates time to reinforce Singapore, base more submarines there, and attract major Allied ships to a line that appears capable of holding. Singapore would remain a dangerous forward operating base even under regular air attack, with major refits shifted to India or Australia.",
+      "body": "The argument does not require an implausible Allied land victory. Force Z need only damage the merchant convoys sustaining the advance until Japanese food, ammunition, and water run short farther north in Malaya. Dr. Clarke compares the resulting stall to North African advances that petered out at the limit of their supply systems. Delaying the conquest of Malaya would also disrupt the timetable for movement into the Java Sea because Japan could not push south as freely while a hostile fleet threatened its flank and convoys. A longer defense creates time to reinforce Singapore, base more submarines there, and attract major Allied ships to a line that appears capable of holding. Singapore would remain a dangerous forward operating base even under regular air attack, with major refits shifted to India or Australia.",
       "sourcePath": "src/transcripts/txt/2025-03-08_T19-30-06_an-indomitable-force-z_wBB295qzyq8.txt",
       "evidence": [{"start": "1:04:18", "end": "1:09:03", "note": "The transcript connects attacks on invasion supply, a stalled Malayan advance, submarine reinforcement, and Singapore's survival."}]
     },
@@ -227,12 +286,40 @@
       "title": "Operation C could become a major Allied-Japanese carrier battle",
       "kind": "chapter",
       "start": "1:09:07",
-      "end": "1:17:05",
-      "topics": ["indian-ocean-raid-1942", "carrier-warfare", "eastern-fleet", "imperial-japanese-navy", "night-operations"],
+      "end": "1:11:16",
+      "topics": ["indian-ocean-raid-1942", "carrier-warfare", "eastern-fleet", "imperial-japanese-navy", "night-operations", "land-based-aviation"],
       "summary": "A reinforced Singapore fleet could force Japan's Indian Ocean operation into a contested carrier action in the South China Sea or Java Sea.",
-      "body": "If Indomitable's survival helps hold Malaya, Allied success is likely to attract Formidable, Warspite, an American carrier, Dutch ships, and Australian forces. Japan would then need Operation C to neutralize a real fleet rather than raid an exposed ocean. Dr. Clarke sketches a combined doctrine in which British carriers launch night strikes and emphasize daytime air defense while American carriers deliver dawn and daylight attacks. The outcome would depend on reconnaissance, timing, and luck, and a Japanese daylight counterattack would remain extremely dangerous.",
+      "body": "If Indomitable's survival helps hold Malaya, Allied success is likely to attract Formidable, Warspite, an American carrier, Dutch ships, and Australian forces. Japan would then need Operation C to neutralize a real fleet rather than raid an exposed ocean. Phillips's destroyer background and Royal Navy practice point toward a night strike, supported by air-to-surface-vessel radar and shadowing through darkness. Fighting nearer Southeast Asia would also expose the Japanese carriers to land-based aviation from several directions rather than the open spaces of the Indian Ocean. The result is a compelled fleet battle whose location and reconnaissance problem differ sharply from the historical raid.",
       "sourcePath": "src/transcripts/txt/2025-03-08_T19-30-06_an-indomitable-force-z_wBB295qzyq8.txt",
-      "evidence": [{"start": "1:09:07", "end": "1:17:05", "note": "Possible Allied reinforcement, a major regional fleet action, and British-night/American-day carrier roles are developed."}]
+      "evidence": [{"start": "1:09:07", "end": "1:11:16", "note": "Possible Allied reinforcement, a major regional fleet action, night attack, radar shadowing, and land-based air exposure are developed."}]
+    },
+    {
+      "id": "singapore-submarine-base-dutch-east-indies",
+      "videoId": "wBB295qzyq8",
+      "slug": "singapore-submarine-base-dutch-east-indies",
+      "title": "Singapore as a submarine base could reshape the Dutch East Indies campaign",
+      "kind": "chapter",
+      "start": "1:11:18",
+      "end": "1:13:54",
+      "topics": ["singapore", "submarine-warfare", "abda-command", "dutch-east-indies-campaign", "naval-bases", "fleet-logistics"],
+      "summary": "Holding Singapore would put Allied submarines astride Japanese routes and make Borneo and the Dutch East Indies contested ground rather than automatic follow-on conquests.",
+      "body": "Singapore's survival matters beyond the Malayan land front because it is a central submarine base near Japanese movement routes. American, British, and Dutch boats operating from there would spend less time transiting from Australia or more distant bases and more time attacking supply traffic. Dr. Clarke compares the geography to Malta: a fortified base in the middle of the enemy's operational system can impose repeated attrition from a central position. That pressure could make Borneo and the Dutch East Indies continuing battlegrounds rather than places Japan overruns on the historical timetable. Success would also concentrate Eastern Fleet, American, Dutch, and Australian assets around the base, reinforcing a position that proved it could hold.",
+      "sourcePath": "src/transcripts/txt/2025-03-08_T19-30-06_an-indomitable-force-z_wBB295qzyq8.txt",
+      "evidence": [{"start": "1:11:18", "end": "1:13:54", "note": "The transcript presents Singapore as a Malta-like submarine base affecting Borneo, the Dutch East Indies, and Allied fleet concentration."}]
+    },
+    {
+      "id": "allied-night-and-day-carrier-doctrine",
+      "videoId": "wBB295qzyq8",
+      "slug": "allied-night-and-day-carrier-doctrine",
+      "title": "British night strikes and American daylight attacks could complement each other",
+      "kind": "notable_point",
+      "start": "1:14:09",
+      "end": "1:17:05",
+      "topics": ["carrier-warfare", "night-operations", "royal-navy", "us-navy", "imperial-japanese-navy", "abda-command"],
+      "summary": "A three- or four-carrier Allied force could divide work between British night attack and daytime air defense and American dawn and daylight strikes.",
+      "body": "Once Operation C is aimed at a surviving Allied fleet, both sides have reasons to reinforce and accept a major carrier battle. Dr. Clarke regards six Allied fleet carriers as an upper extreme and considers three or four plus a light carrier more plausible. His doctrinal sketch assigns British carriers night strikes and daytime fighter defense while American carriers launch at dawn and continue offensive sorties by day. Japanese survivors would answer with their own dawn strike, so reconnaissance, timing, and luck would govern the exchange rather than raw carrier count alone. He also leaves open whether Japan would send heavier battleships than the Kongo class once it faced Allied capital ships as well as carriers.",
+      "sourcePath": "src/transcripts/txt/2025-03-08_T19-30-06_an-indomitable-force-z_wBB295qzyq8.txt",
+      "evidence": [{"start": "1:14:09", "end": "1:17:05", "note": "The transcript estimates Allied carrier strength, divides British and American roles, and considers Japanese carrier and battleship reinforcement."}]
     },
     {
       "id": "logistics-and-trained-aircrew-compound-effects",
