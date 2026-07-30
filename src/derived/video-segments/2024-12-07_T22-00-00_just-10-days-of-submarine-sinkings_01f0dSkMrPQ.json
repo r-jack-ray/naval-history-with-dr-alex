@@ -4,7 +4,8 @@
     "submarine-warfare",
     "naval-history",
     "damage-control",
-    "anti-submarine-warfare"
+    "anti-submarine-warfare",
+    "historical-method"
   ],
   "segments": [
     {
@@ -17,7 +18,7 @@
       "end": "1:13",
       "topics": ["submarine-warfare", "naval-history", "naval-operations"],
       "summary": "A ten-day sample frames a comparative study of submarine targets, attack methods, and the later fates of the attacking boats.",
-      "body": "Dr. Clarke selects 21-30 November across multiple years as a compact way to test what submarines actually accomplished. The sample goes beyond famous losses to compare mines, torpedoes, target behavior, escort screens, and submarine survival. This opening explains why a narrow calendar window can expose recurring operational patterns without pretending to be a complete history of the submarine war.",
+      "body": "Dr. Clarke selects 21-30 November across multiple years as a compact way to test what submarines actually accomplished. The sample goes beyond famous losses to compare mines, torpedoes, target behavior, escort screens, and submarine survival. The date range is intentionally arbitrary, so its value lies in comparison rather than statistical representativeness. This opening explains why a narrow calendar window can expose recurring operational patterns without pretending to be a complete history of the submarine war.",
       "sourcePath": "src/transcripts/txt/2024-12-07_T22-00-00_just-10-days-of-submarine-sinkings_01f0dSkMrPQ.txt",
       "evidence": [{"start": "0:21", "end": "1:13", "note": "The lecture defines the ten-day sample and the operational questions it will compare."}]
     },
@@ -84,12 +85,40 @@
       "title": "Where Kongō sits between battlecruiser and fast battleship",
       "kind": "notable_point",
       "start": "29:11",
-      "end": "37:44",
-      "topics": ["ijn-kongo", "battlecruisers", "fast-battleships", "capital-ships", "ship-design", "armour-protection"],
-      "summary": "A design comparison places the modernized Kongō near the fuzzy boundary between battlecruisers and fast battleships.",
-      "body": "The distinction rests on protection coverage, subdivision, machinery power density, and speed rather than speed alone. Dr. Clarke treats capital-ship types as a spectrum: improved machinery can release displacement for armor and subdivision, while modernization can move an older ship toward a different category. Kongō's upgrades made her much more capable, but classification remained a judgment about the whole protection scheme rather than a single performance number.",
+      "end": "32:07",
+      "topics": ["ijn-kongo", "battlecruisers", "fast-battleships", "capital-ships", "ship-design", "armour-protection", "subdivision"],
+      "summary": "A design comparison places Kongō on a spectrum defined by armor coverage and subdivision rather than treating speed as a complete classification rule.",
+      "body": "Dr. Clarke treats capital-ship types as a spectrum rather than three rigid boxes. A two-word battle cruiser such as Invincible has cruiser-level subdivision and limited armor coverage, while a one-word battlecruiser carries broader protection and a fast battleship retains battleship-level coverage. Thickness alone is not decisive because a very heavy plate over a small area leaves the rest of the ship exposed. Kongō began on the battlecruiser side of that spectrum, and later modernization has to be judged by how much protection and subdivision it added.",
       "sourcePath": "src/transcripts/txt/2024-12-07_T22-00-00_just-10-days-of-submarine-sinkings_01f0dSkMrPQ.txt",
-      "evidence": [{"start": "29:11", "end": "37:44", "note": "The transcript compares battlecruiser and battleship protection, subdivision, speed, and Kongō's modernization."}]
+      "evidence": [{"start": "29:11", "end": "32:07", "note": "The transcript defines the capital-ship spectrum through armor coverage and subdivision, then locates Kongō toward the protected end of battlecruiser design."}]
+    },
+    {
+      "id": "capital-ship-power-density-speed-tradeoff",
+      "videoId": "01f0dSkMrPQ",
+      "slug": "capital-ship-power-density-speed-tradeoff",
+      "title": "Machinery power density turns speed into a protection choice",
+      "kind": "notable_point",
+      "start": "32:07",
+      "end": "34:39",
+      "topics": ["capital-ships", "fast-battleships", "battlecruisers", "naval-propulsion", "power-density", "naval-architecture", "ship-design", "armour-protection"],
+      "summary": "The diminishing return from ever-higher speed explains why efficient machinery can free displacement for armor coverage and subdivision.",
+      "body": "Dr. Clarke treats machinery power density as the technology that can shift a capital ship along the battlecruiser-battleship spectrum. Moving from 21 to 28 knots can transform what a fleet can do, while gaining only a few knots beyond the mid-thirties offers a smaller operational return. Designers can spend the same displacement on additional armor coverage and subdivision instead of maximum speed. The Iowa comparison illustrates a fast battleship whose machinery does not require abandoning a battleship-level protection scheme. This watch point is useful for understanding why speed alone cannot define a warship type.",
+      "sourcePath": "src/transcripts/txt/2024-12-07_T22-00-00_just-10-days-of-submarine-sinkings_01f0dSkMrPQ.txt",
+      "evidence": [{"start": "32:07", "end": "34:39", "note": "The transcript compares the operational return from different speed increases and explains how machinery power density can release displacement for protection."}]
+    },
+    {
+      "id": "kongo-modernization-capital-ship-labels",
+      "videoId": "01f0dSkMrPQ",
+      "slug": "kongo-modernization-capital-ship-labels",
+      "title": "Modernization can move a ship without erasing its lineage",
+      "kind": "notable_point",
+      "start": "34:43",
+      "end": "37:44",
+      "topics": ["ijn-kongo", "capital-ship-classification", "battlecruisers", "fast-battleships", "royal-navy", "hms-hood", "admiral-class-battlecruisers", "g3-class-battlecruisers", "naval-architecture"],
+      "summary": "Kongō, Hood, the Admiral-class lineage, and the G3 design illustrate why classification follows protection and development history rather than speed alone.",
+      "body": "Kongō's interwar rebuilds added enough subdivision that Dr. Clarke places some of the class close to, or just across, the boundary into fast-battleship territory. He stresses that modernization can move a ship along the spectrum without making historical labels meaningless. Hood and the Admiral-class lineage provide his Royal Navy comparison: later protection ambitions became so expensive that building new ships offered a cleaner answer. He likewise treats the planned G3 class as battlecruisers despite their improved machinery and formidable capability. The watch point shows classification as a judgment about the entire design and its development history, not a nickname derived from speed.",
+      "sourcePath": "src/transcripts/txt/2024-12-07_T22-00-00_just-10-days-of-submarine-sinkings_01f0dSkMrPQ.txt",
+      "evidence": [{"start": "34:43", "end": "37:44", "note": "The transcript traces Kongō's modernization and uses Hood, the Admiral lineage, and G3 to argue that protection layout and design history govern classification."}]
     },
     {
       "id": "kongo-sealion-radar-torpedo-attack",
@@ -154,12 +183,26 @@
       "title": "How U-331 penetrated the screen and sank HMS Barham",
       "kind": "chapter",
       "start": "53:34",
-      "end": "1:00:58",
-      "topics": ["hms-barham", "u-331", "royal-navy", "queen-elizabeth-class-battleships", "battleships", "anti-submarine-warfare", "operation-torch"],
+      "end": "58:57",
+      "topics": ["hms-barham", "u-331", "royal-navy", "queen-elizabeth-class-battleships", "battleships", "anti-submarine-warfare"],
       "summary": "An oversized sonar contact is dismissed, allowing U-331 through a powerful screen for a point-blank torpedo attack on Barham.",
-      "body": "U-331 happened onto a British force of battleships, cruisers, and eight destroyers operating from Alexandria. HMS Jervis obtained an ASDIC contact but rejected it as too large to be a submarine, letting the boat pass inside the screen and fire four torpedoes at only a few hundred meters. Three struck Barham almost together; she capsized and suffered a catastrophic magazine explosion minutes later. U-331 escaped an uncontrolled deep dive, but was sunk during Operation Torch after aircraft attacked despite surrender signals not reaching them.",
+      "body": "U-331 happened onto a British force of battleships, cruisers, and eight destroyers operating from Alexandria. HMS Jervis obtained an ASDIC contact but rejected it as too large to be a submarine, letting the boat pass inside the screen and fire four torpedoes at only a few hundred meters. Three struck Barham almost together; she capsized and suffered a catastrophic magazine explosion minutes later. Rescue ships recovered hundreds, but Captain Geoffrey Cooke and 861 others were lost. The Admiralty briefly delayed announcing the sinking so Germany would not receive immediate confirmation while British dispositions were adjusted.",
       "sourcePath": "src/transcripts/txt/2024-12-07_T22-00-00_just-10-days-of-submarine-sinkings_01f0dSkMrPQ.txt",
-      "evidence": [{"start": "53:34", "end": "57:16", "note": "The force encounter, rejected ASDIC contact, screen penetration, close-range salvo, and hits are described."}, {"start": "57:16", "end": "1:00:58", "note": "Barham's capsizing, casualties, news delay, and U-331's later destruction are covered."}]
+      "evidence": [{"start": "53:34", "end": "57:16", "note": "The force encounter, rejected ASDIC contact, screen penetration, close-range salvo, and hits are described."}, {"start": "57:16", "end": "58:57", "note": "Barham's capsizing, magazine explosion, rescue, casualties, and delayed public announcement are covered."}]
+    },
+    {
+      "id": "u331-operation-torch-surrender-confusion",
+      "videoId": "01f0dSkMrPQ",
+      "slug": "u331-operation-torch-surrender-confusion",
+      "title": "U-331's surrender signals fail to stop an air attack",
+      "kind": "notable_point",
+      "start": "59:15",
+      "end": "1:00:58",
+      "topics": ["u-331", "operation-torch", "hms-wilton", "lockheed-hudson", "fairey-albacore", "f4f-wildcat", "carrier-aviation", "submarine-warfare", "military-communications"],
+      "summary": "During Operation Torch, damage forces U-331 to the surface, but aircraft attack before the submarine's surrender signals reach them.",
+      "body": "On her tenth patrol during Operation Torch, U-331 was damaged by an escort and then by a No. 500 Squadron RAF Lockheed Hudson, which jammed the forward hatch open and prevented diving. HMS Wilton was sent to seize the surfaced submarine. Fairey Albacores from HMS Furious, covered by Martlets from HMS Formidable, attacked before the surrender signals reached them. The strike killed 32 crew members, while 17, including the commander, survived. The episode shows how broken communications and mixed air-surface forces can turn an attempted capture into a lethal attack.",
+      "sourcePath": "src/transcripts/txt/2024-12-07_T22-00-00_just-10-days-of-submarine-sinkings_01f0dSkMrPQ.txt",
+      "evidence": [{"start": "59:15", "end": "1:00:58", "note": "The transcript follows U-331's damage, inability to dive, planned seizure by HMS Wilton, unreceived surrender signals, carrier-aircraft attack, and casualties."}]
     },
     {
       "id": "nova-scotia-u177-laconia-order",
@@ -169,11 +212,25 @@
       "kind": "chapter",
       "start": "1:01:01",
       "end": "1:05:57",
-      "topics": ["rms-nova-scotia", "u-177", "merchant-shipping", "prisoners-of-war", "laconia-order", "indian-ocean", "world-war-ii"],
+      "topics": ["rms-nova-scotia", "u-177", "merchant-shipping", "prisoners-of-war", "laconia-order", "indian-ocean", "world-war-ii", "consolidated-b-24-liberator", "uss-omaha"],
       "summary": "U-177 sinks the unescorted Nova Scotia in the Mozambique Channel, leaving prisoners and civilians exposed while rescue is delayed by orders not to assist.",
-      "body": "Nova Scotia carried Italian prisoners of war, civilian internees, guards, and crew toward Durban when U-177 struck her with three torpedoes. The ship rolled, burned, and sank within ten minutes, leaving most people on rafts or wreckage in shark-filled water. After surfacing to identify survivors, U-177 sought instructions and was ordered under the recently issued Laconia policy to leave the scene. A Portuguese vessel arrived the next day, but 858 people died before the surviving groups were recovered.",
+      "body": "Nova Scotia carried Italian prisoners of war, civilian internees, guards, and crew toward Durban when U-177 struck her with three torpedoes. The ship rolled, burned, and sank within ten minutes, leaving most people on rafts or wreckage in shark-filled water. After surfacing to identify survivors, U-177 sought instructions and was ordered under the recently issued Laconia policy to leave the scene. A Portuguese vessel arrived the next day, but 858 people died before the surviving groups were recovered. U-177's own third major patrol ended in February 1944 when an American Liberator sank her and USS Omaha recovered the surviving crew.",
       "sourcePath": "src/transcripts/txt/2024-12-07_T22-00-00_just-10-days-of-submarine-sinkings_01f0dSkMrPQ.txt",
       "evidence": [{"start": "1:01:01", "end": "1:03:42", "note": "The ship's passengers, torpedoing, rapid sinking, and exposure of survivors are described."}, {"start": "1:03:47", "end": "1:05:57", "note": "The Laconia Order decision, delayed Portuguese rescue, death toll, and U-177's fate are covered."}]
+    },
+    {
+      "id": "high-casualty-source-selection-method",
+      "videoId": "01f0dSkMrPQ",
+      "slug": "high-casualty-source-selection-method",
+      "title": "A casualty threshold shapes the ten-day sample",
+      "kind": "notable_point",
+      "start": "1:05:57",
+      "end": "1:07:15",
+      "topics": ["historical-method", "source-criticism", "selection-bias", "naval-history", "submarine-warfare", "casualties"],
+      "summary": "The lecture turns an online list of sinkings with more than 150 deaths into a research question while keeping the list's selection rule visible.",
+      "body": "The lecture's case list began with a Wikipedia table limited to sinkings that killed more than 150 people. Dr. Clarke used the coincidence of Britannic and Kongō falling within the same ten November days to investigate the other qualifying losses and verify the entries. That method produces a manageable comparative survey and exposes recurring operational patterns. It also selects for catastrophic casualties, so the sample cannot represent every successful submarine attack or patrol. The passage is a useful example of turning an online list into a research question while keeping its selection rule visible.",
+      "sourcePath": "src/transcripts/txt/2024-12-07_T22-00-00_just-10-days-of-submarine-sinkings_01f0dSkMrPQ.txt",
+      "evidence": [{"start": "1:05:57", "end": "1:07:15", "note": "The transcript identifies the greater-than-150-deaths Wikipedia list, describes further verification, and explains how it became the ten-day survey."}]
     },
     {
       "id": "gilbert-islands-submarine-attrition",
@@ -202,6 +259,20 @@
       "body": "During operations around the Gilbert Islands, Liscome Bay served as guide in a formation that prioritized collision avoidance over zigzagging. When USS Franks left to investigate a beacon, the screen was not rearranged, and the formation's turn presented the escort carrier broadside to I-175. A torpedo struck beside the after engine room and detonated the bomb magazine, destroying the stern, igniting aircraft and fuel, and sinking the ship in twenty-three minutes. The 702 dead included Rear Admiral Henry Mullinnix and Pearl Harbor hero Doris Miller.",
       "sourcePath": "src/transcripts/txt/2024-12-07_T22-00-00_just-10-days-of-submarine-sinkings_01f0dSkMrPQ.txt",
       "evidence": [{"start": "1:08:20", "end": "1:10:25", "note": "The task group, decision not to zigzag, and destroyer-created screen gap are explained."}, {"start": "1:11:03", "end": "1:15:02", "note": "The torpedo attack, magazine explosion, fires, sinking, and casualties are described."}]
+    },
+    {
+      "id": "liscome-bay-rescue-i175-fate",
+      "videoId": "01f0dSkMrPQ",
+      "slug": "liscome-bay-rescue-i175-fate",
+      "title": "Rescue under threat and I-175's later loss",
+      "kind": "notable_point",
+      "start": "1:15:07",
+      "end": "1:16:18",
+      "topics": ["uss-liscome-bay", "i-175", "rescue-operations", "anti-submarine-warfare", "uss-new-jersey", "radar", "gilbert-islands", "marshall-islands"],
+      "summary": "Destroyers interrupt rescue to answer fresh torpedo warnings, while I-175 escapes the Gilberts only to be lost after a radar detection on its tenth patrol.",
+      "body": "Destroyers began recovering Liscome Bay survivors but had to react when torpedo wakes and another contact suggested I-175 might still be nearby. The screen returned to anti-submarine work, showing how a submarine could complicate rescue even after its target had sunk. I-175 survived the Gilbert and Marshall Islands campaign despite the wider Japanese submarine losses. Dr. Clarke follows the boat to its tenth patrol, when a radar detection by USS New Jersey preceded its loss on 4 February 1944. The aftermath supports the lecture's method of tracking attacking submarines beyond their best-known successes.",
+      "sourcePath": "src/transcripts/txt/2024-12-07_T22-00-00_just-10-days-of-submarine-sinkings_01f0dSkMrPQ.txt",
+      "evidence": [{"start": "1:15:07", "end": "1:16:18", "note": "The transcript describes rescue interrupted by renewed submarine warnings, I-175's survival of the campaign, and the radar contact preceding its loss on the tenth patrol."}]
     },
     {
       "id": "suez-maru-bonefish-war-crime",
@@ -280,12 +351,40 @@
       "title": "Shinano's unfinished systems cannot contain progressive flooding",
       "kind": "chapter",
       "start": "1:29:49",
-      "end": "1:37:49",
+      "end": "1:35:15",
       "topics": ["shinano", "uss-archerfish", "aircraft-carriers", "yamato-class-battleships", "damage-control", "ship-construction", "counterflooding"],
       "summary": "Four torpedo hits overwhelm engineering and damage-control spaces, while incomplete testing, lost propulsion, and failed towing prevent Shinano's crew from arresting the list.",
-      "body": "The four hits flooded an aviation-fuel space, engineering compartments, boiler rooms, magazines, and a damage-control station while killing personnel needed for the response. Counterflooding thousands of tons briefly reduced the list, but spreading water soon put trim-tank valves out of reach and eliminated propulsion. Two destroyers lacked the power to tow the increasingly heavy carrier, and open flight-deck spaces pulled escaping sailors back into the hull as she capsized. Dr. Clarke weighs theories about torpedoes striking an armor joint but emphasizes rushed construction and compartments that had not been air-tested for leaks. Four hits would strain any ship, yet Shinano entered that crisis without a fully proven watertight system.",
+      "body": "The four hits flooded an aviation-fuel space, engineering compartments, boiler rooms, magazines, and a damage-control station while killing personnel needed for the response. Counterflooding thousands of tons briefly reduced the list, but spreading water soon put trim-tank valves out of reach and eliminated propulsion. Two destroyers lacked the power to tow the increasingly heavy carrier. Water entering open flight-deck spaces pulled escaping sailors back into the hull as she capsized. Four hits would strain any ship, but the worsening list shows how damaged engineering, inaccessible valves, lost propulsion, and inadequate towing capacity combined.",
       "sourcePath": "src/transcripts/txt/2024-12-07_T22-00-00_just-10-days-of-submarine-sinkings_01f0dSkMrPQ.txt",
-      "evidence": [{"start": "1:29:49", "end": "1:35:48", "note": "The hit locations, personnel losses, progressive flooding, counterflooding, towing failure, evacuation, and sinking are traced."}, {"start": "1:36:41", "end": "1:37:49", "note": "The transcript weighs armor-joint theories against rushed construction, missing leak tests, and the scale of four torpedo hits."}]
+      "evidence": [{"start": "1:29:49", "end": "1:35:15", "note": "The hit locations, personnel losses, progressive flooding, counterflooding, towing failure, evacuation, and capsize are traced."}]
+    },
+    {
+      "id": "shinano-loss-secrecy-intelligence",
+      "videoId": "01f0dSkMrPQ",
+      "slug": "shinano-loss-secrecy-intelligence",
+      "title": "Japan's secrecy obscures Shinano's loss",
+      "kind": "notable_point",
+      "start": "1:35:15",
+      "end": "1:36:34",
+      "topics": ["shinano", "uss-archerfish", "operational-security", "us-naval-intelligence", "imperial-japanese-navy", "battle-damage-assessment", "naval-intelligence"],
+      "summary": "Japanese isolation of Shinano's survivors suppresses confirmation so effectively that US Naval Intelligence initially doubts Archerfish's claim.",
+      "body": "Shinano capsized at about 1100 with her captain and both navigators remaining aboard. The transcript counts 55 officers, 993 enlisted and petty officers, and 32 civilians among the survivors, then notes that Japanese authorities isolated them to suppress news of the loss. That secrecy was effective enough that US Naval Intelligence initially doubted Archerfish had sunk a carrier because it intercepted no confirming traffic. Shinano was not formally struck from the Japanese naval register until August 1945. The episode links personnel control and communications silence to the difficulty of wartime battle-damage assessment.",
+      "sourcePath": "src/transcripts/txt/2024-12-07_T22-00-00_just-10-days-of-submarine-sinkings_01f0dSkMrPQ.txt",
+      "evidence": [{"start": "1:35:15", "end": "1:36:34", "note": "The transcript gives the sinking and survivor figures, describes Japanese isolation of survivors, and explains why US intelligence initially doubted Archerfish's claim."}]
+    },
+    {
+      "id": "shinano-rushed-construction-watertightness",
+      "videoId": "01f0dSkMrPQ",
+      "slug": "shinano-rushed-construction-watertightness",
+      "title": "Rushed construction leaves Shinano's watertightness unproven",
+      "kind": "notable_point",
+      "start": "1:36:41",
+      "end": "1:37:49",
+      "topics": ["shinano", "ship-construction", "damage-control", "watertight-integrity", "torpedo-protection", "naval-engineering"],
+      "summary": "The armor-joint theory matters less than the combination of four torpedo hits and compartments that had never been properly leak-tested.",
+      "body": "Dr. Clarke weighs the theory that Archerfish's torpedoes exploited the joint between Shinano's waterline armor and anti-torpedo bulge. He gives greater weight to rushed construction and compartments that had not been air-tested for leaks. Four torpedo hits would impose severe structural and flooding loads even on a finished carrier. The lesson is not that one armor seam alone doomed Shinano, but that an unproven watertight system faced damage on a scale that left little margin for recovery.",
+      "sourcePath": "src/transcripts/txt/2024-12-07_T22-00-00_just-10-days-of-submarine-sinkings_01f0dSkMrPQ.txt",
+      "evidence": [{"start": "1:36:41", "end": "1:37:49", "note": "The transcript weighs armor-joint theories against rushed construction, missing air tests, and the severe load imposed by four torpedo hits."}]
     },
     {
       "id": "submarine-sinking-patterns-across-ten-days",
@@ -297,7 +396,7 @@
       "end": "1:38:51",
       "topics": ["submarine-warfare", "naval-history", "naval-operations", "historical-method"],
       "summary": "The closing comparison shows how a narrow date sample can reveal repeated links among surprise, screening, maneuver, damage control, and survival.",
-      "body": "The lecture closes by treating the selected dates as an overview rather than a complete statistical survey. Across different wars and navies, the cases repeatedly turn on whether targets maneuvered, traveled with effective screens, absorbed concentrated flooding, or could organize damage control and evacuation. The method also follows the attacking submarines beyond their famous successes, keeping the risk to submarine crews visible alongside the ships they sank.",
+      "body": "The lecture closes by treating the selected dates as an overview rather than a complete statistical survey. Across different wars and navies, the cases repeatedly turn on whether targets maneuvered, traveled with effective screens, absorbed concentrated flooding, or could organize damage control and evacuation. The method also follows the attacking submarines beyond their famous successes, keeping the risk to submarine crews visible alongside the ships they sank. Dr. Clarke presents the exercise as a reusable research method: bound the question, verify the cases, and compare them without mistaking the survey for a complete dataset.",
       "sourcePath": "src/transcripts/txt/2024-12-07_T22-00-00_just-10-days-of-submarine-sinkings_01f0dSkMrPQ.txt",
       "evidence": [{"start": "1:37:55", "end": "1:38:51", "note": "Dr. Clarke summarizes the ten-day historical survey and its value as a comparative overview."}]
     }

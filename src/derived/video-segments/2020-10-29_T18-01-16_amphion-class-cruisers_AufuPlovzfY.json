@@ -7,7 +7,11 @@
     "royal-navy",
     "world-war-ii",
     "warship-survivability",
-    "naval-history-method"
+    "naval-history-method",
+    "hmas-perth",
+    "hmas-hobart",
+    "hmas-sydney",
+    "kormoran"
   ],
   "segments": [
     {
@@ -32,9 +36,9 @@
       "kind": "chapter",
       "start": "13:31",
       "end": "18:09",
-      "topics": ["amphion-class-cruisers", "leander-class-light-cruisers-1931", "warship-survivability", "naval-engineering", "light-cruisers"],
-      "summary": "The two-funnel Amphion layout used unit machinery, better range, and targeted protection to make a distinct and more survivable cruiser design.",
-      "body": "Rather than treating the Amphions as merely improved Leanders, Dr. Clarke calls them an evolution of the trade-protection cruiser. Their separated boiler and turbine groups meant that one torpedo hit was less likely to remove all propulsion, although the arrangement made the ships longer and produced their characteristic two funnels. He also contrasts their higher-pressure machinery, long cruising range, and concentrated magazine protection with the earlier class. The design accepted a larger hull footprint to gain endurance and a better chance of retaining power after damage.",
+      "topics": ["amphion-class-cruisers", "leander-class-light-cruisers-1931", "warship-survivability", "naval-engineering", "light-cruisers", "unit-machinery", "admiralty-three-drum-boilers", "magazine-protection", "naval-armour"],
+      "summary": "The two-funnel Amphion layout used unit machinery, better range, and concentrated protection to make a distinct and more survivable cruiser design.",
+      "body": "Rather than treating the Amphions as merely improved Leanders, Dr. Clarke calls them an evolution of the trade-protection cruiser. Their separated boiler and turbine groups meant that one torpedo hit was less likely to remove all propulsion, although the arrangement made the ships longer and produced their characteristic two funnels. Four higher-pressure Admiralty three-drum boilers generated the same 72,000 shaft horsepower as the Leanders' six boilers, while the revised hull extended cruising range to about 7,000 nautical miles at 16 knots. Although slightly longer and broader than a Leander, an Amphion displaced less while carrying eight six-inch guns, four four-inch anti-aircraft guns, machine guns, and eight 21-inch torpedoes. Magazine protection concentrated three-and-a-half inches of armour over the likeliest impact areas, two inches elsewhere, and added armoured deck and turret protection. The design accepted a larger hull footprint to gain endurance and a better chance of retaining power after damage.",
       "sourcePath": "src/transcripts/txt/2020-10-29_T18-01-16_amphion-class-cruisers_AufuPlovzfY.txt",
       "evidence": [{"start": "13:31", "end": "18:09", "note": "Dr. Clarke compares the Amphion and Leander hull, machinery, range, armament, and protection arrangements."}]
     },
@@ -83,6 +87,22 @@
       "evidence": [{"start": "22:22", "end": "25:18", "note": "The transcript maps cruiser types onto distant blockade lines, central-Pacific raiding, fleet scouting, and rear-area coverage."}]
     },
     {
+      "id": "royal-navy-cruiser-attrition",
+      "videoId": "AufuPlovzfY",
+      "slug": "royal-navy-cruiser-attrition",
+      "title": "Could any Royal Navy cruiser avoid serious wartime damage?",
+      "kind": "qa",
+      "start": "25:42",
+      "end": "26:58",
+      "topics": ["royal-navy", "light-cruisers", "world-war-ii", "cruiser-attrition", "hms-birmingham", "naval-history-method"],
+      "summary": "The difficulty of naming an untouched Royal Navy cruiser conveys how continuously the force was exposed during the Second World War.",
+      "body": "A viewer asks whether any Royal Navy cruiser passed through the Second World War without being sunk or seriously damaged. Dr. Clarke cannot give a firm example from memory. He initially considers Birmingham before recalling that she was torpedoed. The hesitation is useful because it conveys the cruiser force's global exposure while keeping the historical claim appropriately bounded.",
+      "question": "Were any Royal Navy cruisers neither sunk nor seriously damaged during the Second World War?",
+      "answerShort": "Dr. Clarke could not name one with certainty; Birmingham initially came to mind, but he then recalled that she had been torpedoed.",
+      "sourcePath": "src/transcripts/txt/2020-10-29_T18-01-16_amphion-class-cruisers_AufuPlovzfY.txt",
+      "evidence": [{"start": "25:42", "end": "26:58", "note": "The response considers Birmingham, Devonshire, and Enterprise but explicitly remains uncertain about a cruiser that escaped serious wartime damage."}]
+    },
+    {
       "id": "mediterranean-cruiser-aircraft-tradeoff",
       "videoId": "AufuPlovzfY",
       "slug": "mediterranean-cruiser-aircraft-tradeoff",
@@ -106,9 +126,9 @@
       "kind": "chapter",
       "start": "28:47",
       "end": "38:03",
-      "topics": ["hmas-perth", "battle-of-cape-matapan", "mediterranean-campaign", "royal-australian-navy", "naval-aviation"],
+      "topics": ["hmas-perth", "battle-of-cape-matapan", "mediterranean-campaign", "royal-australian-navy", "naval-aviation", "seventh-cruiser-squadron", "fairey-swordfish", "hms-formidable", "radar-gunnery"],
       "summary": "A first-person account follows Perth as the cruiser force draws Italian ships toward the British battle fleet at Cape Matapan.",
-      "body": "Using an account preserved by the Naval Historical Society of Australia, the video follows Perth during the dangerous daylight chase. The cruiser squadron tried to keep contact with heavier Italian ships while avoiding their longer-ranged guns, then unexpectedly encountered Vittorio Veneto and escaped under smoke at high speed. The account also shows how carrier-borne Swordfish attacks helped redirect the Italian battle fleet before the radar-directed night action. Its first-person detail links machinery, smoke making, air attack, and radar gunnery into one fleet action.",
+      "body": "Using an account preserved by the Naval Historical Society of Australia, the video follows Perth during the dangerous daylight chase. The Seventh Cruiser Squadron tried to keep contact with heavier Italian ships while avoiding their longer-ranged guns, then unexpectedly encountered Vittorio Veneto and escaped under smoke at high speed. Carrier-borne Swordfish attacks helped redirect the Italian battle fleet before British battleships opened radar-directed fire at about 5,000 yards during the night action. A later Junkers 88 attack concentrated on Formidable but was disrupted by fighters and the fleet's anti-aircraft barrage. The first-person detail links machinery, smoke making, air attack, and radar gunnery into one fleet action.",
       "sourcePath": "src/transcripts/txt/2020-10-29_T18-01-16_amphion-class-cruisers_AufuPlovzfY.txt",
       "evidence": [{"start": "28:47", "end": "38:03", "note": "The transcript reads and discusses a first-person Perth account of the Matapan action."}]
     },
@@ -226,9 +246,9 @@
       "kind": "chapter",
       "start": "57:24",
       "end": "1:02:28",
-      "topics": ["hmas-hobart", "submarine-warfare", "damage-control", "warship-survivability", "south-pacific"],
-      "summary": "A Japanese submarine torpedoed Hobart in 1943, but damage control and improvised steering kept the cruiser afloat.",
-      "body": "The account describes a hit that disabled machinery, damaged the stern, and killed or wounded members of the crew. Emergency work restored enough power for Hobart to move at about seven knots by varying the revolutions of its remaining propellers, while temporary measures stabilised the damaged stern. The torpedo had narrowly missed the after magazine, and American repair teams later used underwater cutting and welding to make the ship safe. The inquiry credited the ship's engineering and damage-control parties with limiting a much worse outcome.",
+      "topics": ["hmas-hobart", "submarine-warfare", "damage-control", "warship-survivability", "south-pacific", "task-force-74", "japanese-submarine-i-11", "underwater-welding", "emergency-steering"],
+      "summary": "A long-range torpedo from Japanese submarine I-11 struck Hobart in 1943, but damage control and improvised steering kept the cruiser afloat.",
+      "body": "The account places Hobart in Task Force 74 when Japanese submarine I-11 fired a spread at extreme range toward the leading cruiser, Australia, and one torpedo instead found Hobart. The explosion disabled machinery, blew away the rudder and two propellers, damaged the stern, and killed or wounded members of the crew. Emergency work restored enough power for Hobart to move at about seven knots by holding one surviving propeller at fixed revolutions and varying the other to steer. The torpedo had missed the after magazine by only six feet, avoiding a far more dangerous detonation. Repair-ship teams later used then-novel underwater cutting and welding to remove and replace torn plating. The inquiry credited the ship's engineering and damage-control parties with limiting a much worse outcome.",
       "sourcePath": "src/transcripts/txt/2020-10-29_T18-01-16_amphion-class-cruisers_AufuPlovzfY.txt",
       "evidence": [{"start": "57:24", "end": "1:02:28", "note": "The transcript reads a detailed account of the torpedo strike, recovery, and subsequent inquiry."}]
     },
@@ -283,12 +303,12 @@
       "title": "Sydney's aggressive intervention at Cape Spada",
       "kind": "chapter",
       "start": "1:16:56",
-      "end": "1:23:00",
-      "topics": ["hmas-sydney", "battle-of-cape-spada", "mediterranean-campaign", "royal-australian-navy", "light-cruisers", "condottieri-class-cruisers", "cruiser-doctrine"],
+      "end": "1:23:40",
+      "topics": ["hmas-sydney", "battle-of-cape-spada", "mediterranean-campaign", "royal-australian-navy", "light-cruisers", "condottieri-class-cruisers", "cruiser-doctrine", "john-collins", "andrew-cunningham", "stormy-petrel", "australian-home-front"],
       "summary": "HMAS Sydney arrived where the Italian cruisers did not expect her, saving British destroyers and winning an important Mediterranean action.",
-      "body": "At Cape Spada, Sydney intercepted Italian light cruisers that had been pursuing British destroyers. The Condottieri-family opponents were ultra-light cruisers built chiefly to defeat French destroyers, and Sydney exposed how badly that specialization could fare against a full light cruiser. Dr. Clarke emphasises Captain John Collins's decision to alter course and use speed to be in position at dawn, turning a dangerous situation into a decisive advantage. Sydney fired 956 six-inch rounds, sank Bartolomeo Colleoni, and badly damaged the other Italian cruiser. Cunningham's praise and the subsequent absence of Italian surface forces near the Aegean illustrate both the intensity and strategic effect of the action.",
+      "body": "At Cape Spada, Sydney intercepted Italian light cruisers that had been pursuing British destroyers. The Condottieri-family opponents were ultra-light cruisers built chiefly to defeat French destroyers, and Sydney exposed how badly that specialization could fare against a full light cruiser. Dr. Clarke emphasises Captain John Collins's decision to alter course and use speed to be in position at dawn, turning a dangerous situation into a decisive advantage. Sydney fired 956 six-inch rounds, sank Bartolomeo Colleoni, and badly damaged the other Italian cruiser. Andrew Cunningham's praise and the subsequent absence of Italian surface forces near the Aegean illustrate both the intensity and strategic effect of the action. Collins received the Companion of the Bath, while Australian newspapers linked the victory to the earlier Sydney's destruction of Emden. The passage also notes that Cunningham's praise may have helped produce Sydney's \"Stormy Petrel\" nickname.",
       "sourcePath": "src/transcripts/txt/2020-10-29_T18-01-16_amphion-class-cruisers_AufuPlovzfY.txt",
-      "evidence": [{"start": "1:16:56", "end": "1:23:00", "note": "The transcript explains the Italian ultra-light cruisers' anti-destroyer role, Sydney's intervention and gunfire, and contemporary praise for the victory."}]
+      "evidence": [{"start": "1:16:56", "end": "1:23:40", "note": "The transcript explains the Italian ultra-light cruisers' anti-destroyer role, Sydney's intervention and gunfire, Cunningham's praise, Collins's honour, the nickname, and Australian press reaction."}]
     },
     {
       "id": "anzac-naval-spending",
@@ -305,6 +325,20 @@
       "answerShort": "Treaty restrictions were not the main obstacle; the dominions chose limited defence spending while relying on British naval protection.",
       "sourcePath": "src/transcripts/txt/2020-10-29_T18-01-16_amphion-class-cruisers_AufuPlovzfY.txt",
       "evidence": [{"start": "1:24:17", "end": "1:25:21", "note": "The response contrasts treaty allowances with the political choice not to fund larger dominion fleets."}]
+    },
+    {
+      "id": "sydney-final-convoy-escort",
+      "videoId": "AufuPlovzfY",
+      "slug": "sydney-final-convoy-escort",
+      "title": "Sydney's final convoy escort",
+      "kind": "notable_point",
+      "start": "1:27:19",
+      "end": "1:27:47",
+      "topics": ["hmas-sydney", "convoy-escort", "troopships", "zealandia", "hms-durban", "sunda-strait", "world-war-ii"],
+      "summary": "Sydney disappeared on the return leg after handing the troopship Zealandia to HMS Durban near Sunda Strait.",
+      "body": "Sydney left Fremantle on 11 November 1941 escorting the troopship Zealandia toward Sunda Strait. HMS Durban relieved her for Zealandia's final leg to Singapore on 17 November. Sydney then turned back toward Fremantle and was expected there on the afternoon of 20 November. Her failure to arrive is the immediate operational setting for the encounter with Kormoran.",
+      "sourcePath": "src/transcripts/txt/2020-10-29_T18-01-16_amphion-class-cruisers_AufuPlovzfY.txt",
+      "evidence": [{"start": "1:27:19", "end": "1:27:47", "note": "The transcript dates Sydney's escort of Zealandia, the handover to Durban, and the cruiser’s expected return to Fremantle."}]
     },
     {
       "id": "amphion-leander-design-differences",
@@ -445,6 +479,36 @@
       "evidence": [{"start": "1:53:19", "end": "1:54:38", "note": "The response describes the class's redundant fire-control arrangements and relates them to the reported action."}]
     },
     {
+      "id": "sydney-japanese-submarine-theory",
+      "videoId": "AufuPlovzfY",
+      "slug": "sydney-japanese-submarine-theory",
+      "title": "Why a Japanese submarine is unlikely",
+      "kind": "qa",
+      "start": "1:56:33",
+      "end": "1:57:07",
+      "topics": ["hmas-sydney", "kormoran", "japanese-submarines", "naval-history-mysteries", "historical-evidence"],
+      "summary": "Dr. Clarke rejects an unsupported Japanese-submarine intervention while retaining questions about Sydney's final loss.",
+      "body": "Some conspiracy accounts insert a Japanese submarine into the Sydney–Kormoran action. Dr. Clarke acknowledges that the story exists but regards it as unlikely because the proposed submarine would not plausibly have been in the relevant area and range. He also says he does not think Kormoran's crew were lying; his difficulty is reconciling their account with Sydney's later disappearance and loss of all hands. The exchange keeps the historical problem focused on unexplained damage and survival rather than an unsupported second attacker.",
+      "question": "Could a Japanese submarine have been involved in Sydney's loss?",
+      "answerShort": "Dr. Clarke regards that theory as unlikely because a Japanese submarine would not plausibly have been in the relevant area and range.",
+      "sourcePath": "src/transcripts/txt/2020-10-29_T18-01-16_amphion-class-cruisers_AufuPlovzfY.txt",
+      "evidence": [{"start": "1:56:33", "end": "1:57:07", "note": "The response acknowledges the submarine story, rejects it as unlikely on location and range grounds, and reiterates that the Kormoran crew need not have lied."}]
+    },
+    {
+      "id": "hmas-sydney-national-symbol",
+      "videoId": "AufuPlovzfY",
+      "slug": "hmas-sydney-national-symbol",
+      "title": "Why Sydney mattered to Australia",
+      "kind": "notable_point",
+      "start": "1:58:10",
+      "end": "1:59:12",
+      "topics": ["hmas-sydney", "royal-australian-navy", "national-identity", "australian-home-front", "naval-commemoration"],
+      "summary": "Sydney's modern appearance, victories, and public profile made her a national symbol before her disappearance.",
+      "body": "Dr. Clarke stresses that Sydney was more than one cruiser among several Australian acquisitions: she had become the pride of the nation. She was the newer, modern-looking ship, while Perth and Hobart entered Australian service later. Her victories and national cruise made her a particularly visible symbol of the Royal Australian Navy. That public standing helps explain why her all-hands loss remains such a prominent Australian historical mystery.",
+      "sourcePath": "src/transcripts/txt/2020-10-29_T18-01-16_amphion-class-cruisers_AufuPlovzfY.txt",
+      "evidence": [{"start": "1:58:10", "end": "1:59:12", "note": "The transcript calls Sydney the pride of the nation, contrasts her with the later purchases, and mentions her national cruise."}]
+    },
+    {
       "id": "sydney-possible-damaged-course",
       "videoId": "AufuPlovzfY",
       "slug": "sydney-possible-damaged-course",
@@ -535,6 +599,22 @@
       "evidence": [{"start": "2:29:48", "end": "2:30:23", "note": "Dr. Clarke uses the trained turrets and torpedoes to infer action stations and strong suspicion despite the close approach."}]
     },
     {
+      "id": "sydney-stern-first-descent",
+      "videoId": "AufuPlovzfY",
+      "slug": "sydney-stern-first-descent",
+      "title": "What a stern-first descent could mean",
+      "kind": "qa",
+      "start": "2:36:36",
+      "end": "2:37:31",
+      "topics": ["hmas-sydney", "naval-archaeology", "buoyancy", "flooding", "wreck-analysis", "warship-survivability"],
+      "summary": "Sydney's reported stern-first seabed impact may point to stern flooding and surviving bow buoyancy, although the damaged bow complicates the inference.",
+      "body": "A viewer asks why Sydney would have struck the seabed stern first. Dr. Clarke explains that this attitude could indicate a flooded stern while the bow still retained enough air and buoyancy to remain higher during the descent. He immediately notes that the missing and damaged bow makes that simple explanation difficult to reconcile with the wreck. The exchange shows how seabed orientation can suggest a flooding sequence without settling it.",
+      "question": "What might Sydney's stern-first impact on the seabed indicate?",
+      "answerShort": "It could indicate a flooded stern while the bow retained buoyancy, but the bow damage makes that interpretation uncertain.",
+      "sourcePath": "src/transcripts/txt/2020-10-29_T18-01-16_amphion-class-cruisers_AufuPlovzfY.txt",
+      "evidence": [{"start": "2:36:36", "end": "2:37:31", "note": "The response relates a stern-first descent to flooding and trapped air, then notes the difficulty created by the damaged bow."}]
+    },
+    {
       "id": "kormoran-signals-and-sydney-interpretation",
       "videoId": "AufuPlovzfY",
       "slug": "kormoran-signals-and-sydney-interpretation",
@@ -556,9 +636,9 @@
       "kind": "notable_point",
       "start": "2:43:38",
       "end": "2:54:29",
-      "topics": ["hmas-sydney", "naval-archaeology", "kormoran", "warship-survivability", "naval-history-mysteries"],
+      "topics": ["hmas-sydney", "naval-archaeology", "kormoran", "warship-survivability", "naval-history-mysteries", "air-sea-search"],
       "summary": "The wreck's separation from Kormoran and the location of Sydney's bow keep open questions about her final hours, without proving an alternative story.",
-      "body": "The video notes the approximate distance between the wrecks and the bow's position within a relatively compact debris field. A bow lying close to the main hull may have separated during the descent rather than at the battle site. Dr. Clarke weighs whether lights seen by Kormoran might have been distress signals and whether undiscovered damage-control failures could explain the loss. He closes by calling the accepted account plausible while remaining unconvinced that every part of Sydney's final loss is understood.",
+      "body": "The video notes the approximate distance between the wrecks and the bow's position within a relatively compact debris field. A bow lying close to the main hull may have separated during the descent rather than at the battle site. Dr. Clarke weighs whether lights seen by Kormoran might have been distress signals and whether undiscovered damage-control failures could explain the loss. The first air search mentioned began on 24 November, making search timing part of the survivor question even though it cannot explain the entire outcome. He closes by calling the accepted account plausible while remaining unconvinced that every part of Sydney's final loss is understood.",
       "sourcePath": "src/transcripts/txt/2020-10-29_T18-01-16_amphion-class-cruisers_AufuPlovzfY.txt",
       "evidence": [{"start": "2:43:38", "end": "2:54:29", "note": "The discussion considers wreck positions, bow separation, possible distress signals, and the limits of the available evidence."}]
     }

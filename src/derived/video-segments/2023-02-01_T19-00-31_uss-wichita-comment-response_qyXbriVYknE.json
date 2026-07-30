@@ -10,7 +10,10 @@
     "naval-weapons",
     "naval-logistics",
     "naval-aviation",
-    "submarines"
+    "submarines",
+    "uss-wichita",
+    "heavy-cruisers",
+    "asdic"
   ],
   "segments": [
     {
@@ -26,10 +29,19 @@
         "anti-submarine-warfare",
         "royal-navy",
         "us-navy",
-        "naval-doctrine"
+        "naval-doctrine",
+        "asdic",
+        "hydrophones",
+        "torpedo-defence",
+        "destroyer-screens",
+        "treaty-displacement",
+        "hms-aboukir",
+        "hms-cressy",
+        "hms-hogue",
+        "torpedo-warning"
       ],
       "summary": "A comment-thread dispute turns into a detailed comparison of cruiser sonar, hydrophones, treaty weight, and anti-submarine doctrine.",
-      "body": "This long answer is the best place to understand why cruiser underwater sensors were not a simple yes-or-no measure of quality. Dr. Clarke contrasts Royal Navy fear of torpedo warning after Aboukir, Cressy, and Hogue with the U.S. Navy's choice to spend scarce treaty displacement elsewhere when destroyers usually screened task groups. The section also separates warning and coordination from true submarine hunting, which remained a job for escorts and aircraft rather than heavy cruisers acting alone.",
+      "body": "Open this long answer for a layered explanation of why cruiser underwater sensors were not a simple yes-or-no measure of quality. Dr. Clarke distinguishes passive hydrophones used chiefly for torpedo warning from full ASDIC sets and from the destroyers or aircraft expected to prosecute submarines. The Royal Navy's losses of Aboukir, Cressy, and Hogue made underwater warning a durable design priority, while treaty displacement forced every navy to trade that protection against other capabilities. When a cruiser carried ASDIC, it could maintain contact so a destroyer attacked without revealing itself through continuous transmissions. U.S. cruisers more often operated inside destroyer screens and relied on visual torpedo wakes, making cruiser-mounted sonar less valuable to their doctrine. The argument therefore turns on mission, formation, and weight allocation rather than a universal ranking of cruiser quality.",
       "sourcePath": "src/transcripts/txt/2023-02-01_T19-00-31_uss-wichita-comment-response_qyXbriVYknE.txt",
       "evidence": [
         {
@@ -54,18 +66,25 @@
       "videoId": "qyXbriVYknE",
       "slug": "hood-torpedo-evidence-and-source-language",
       "title": "Hood torpedo evidence and source language",
-      "kind": "notable_point",
+      "kind": "qa",
       "start": "6:17",
-      "end": "10:58",
+      "end": "12:52",
       "topics": [
         "battlecruisers",
         "royal-navy",
         "kriegsmarine",
         "naval-weapons",
-        "naval-history"
+        "naval-history",
+        "hms-hood",
+        "prinz-eugen",
+        "battle-of-the-denmark-strait",
+        "torpedoes",
+        "source-criticism"
       ],
       "summary": "The Hood and Prinz Eugen torpedo discussion shows how German and British source traditions can leave a combat detail disputed.",
-      "body": "Dr. Clarke pauses on the claim that Hood fired torpedoes during the Denmark Strait action. The useful point is not just the torpedoes themselves, but how the evidence sits unevenly across German and English-language accounts and how missed signals or fragmentary survivor evidence can keep a tactical detail unsettled. It is a compact example of source handling inside a familiar capital-ship action.",
+      "body": "Dr. Clarke pauses on a viewer's question about what Prinz Eugen detected during the Denmark Strait action and whether Hood fired torpedoes. German accounts and torpedo-related evidence support the possibility, but British and English-language sources do not clearly record a launch. He also notes that combat signals could be missed and that the very small number of Hood survivors limits British testimony. A submarine is mentioned as an alternative source, although he regards its ability to join the fast-moving action as unlikely. The exchange is useful as a source-criticism case: the evidence makes the claim plausible without turning it into certainty.",
+      "question": "What torpedo-related evidence did Prinz Eugen encounter at Denmark Strait, and does it prove that Hood fired?",
+      "answerShort": "German evidence supports the possibility that Hood fired torpedoes, but British sources are silent and the claim remains disputed.",
       "sourcePath": "src/transcripts/txt/2023-02-01_T19-00-31_uss-wichita-comment-response_qyXbriVYknE.txt",
       "evidence": [
         {
@@ -86,6 +105,41 @@
       ]
     },
     {
+      "id": "royal-navy-pink-lists-and-cruiser-readiness-codes",
+      "videoId": "qyXbriVYknE",
+      "slug": "royal-navy-pink-lists-and-cruiser-readiness-codes",
+      "title": "Royal Navy pink lists and cruiser readiness codes",
+      "kind": "notable_point",
+      "start": "14:27",
+      "end": "16:22",
+      "topics": [
+        "royal-navy",
+        "naval-records",
+        "fleet-administration",
+        "operational-readiness",
+        "primary-sources",
+        "pink-lists",
+        "home-fleet",
+        "town-class-light-cruisers-1936",
+        "asdic"
+      ],
+      "summary": "A wartime pink-list page turns ASDIC abbreviations into a lesson on how the Admiralty tracked ship locations, crews, and fitted equipment.",
+      "body": "Dr. Clarke displays one of the Royal Navy's regularly updated pink lists to show how the Admiralty tracked the location and readiness of ships around the world. He explains that a new working list appeared roughly every three days and fed into the harder-copy war diary record. Letter codes beside each ship identified fittings and administrative details, including ASDIC, catapults, aircraft, bulges, anti-aircraft roles, and home-port crews. The 18th Cruiser Squadron entries for Sheffield, Belfast, and Newcastle demonstrate how a compact page can answer a technical question that general ship summaries obscure. This is a useful watch point for understanding both fleet administration and the evidentiary value of operational records.",
+      "sourcePath": "src/transcripts/txt/2023-02-01_T19-00-31_uss-wichita-comment-response_qyXbriVYknE.txt",
+      "evidence": [
+        {
+          "start": "14:27",
+          "end": "15:12",
+          "note": "The transcript explains that Royal Navy pink lists tracked every ship's location, were refreshed roughly every three days, and fed into war diary records."
+        },
+        {
+          "start": "15:12",
+          "end": "16:22",
+          "note": "The transcript decodes ASDIC, catapult, aircraft, bulge, anti-aircraft, and crew-location abbreviations and applies them to the 18th Cruiser Squadron."
+        }
+      ]
+    },
+    {
       "id": "wichita-as-heavy-cruiser-transition",
       "videoId": "qyXbriVYknE",
       "slug": "wichita-as-heavy-cruiser-transition",
@@ -97,10 +151,14 @@
         "cruisers",
         "us-navy",
         "ship-design",
-        "naval-treaties"
+        "naval-treaties",
+        "uss-wichita",
+        "heavy-cruisers",
+        "brooklyn-class-cruisers",
+        "treaty-cruisers"
       ],
       "summary": "A Wichita classification question explains why a Brooklyn-influenced hull can still be a true heavy cruiser.",
-      "body": "This short exchange clarifies the category problem at the heart of Wichita. Dr. Clarke treats the ship as a heavy cruiser because of her armor, firepower, and capability, even though the design borrows from light-cruiser hull thinking. The answer is useful for readers trying to separate treaty labels, hull lineage, and actual fighting role.",
+      "body": "This short exchange clarifies the category problem at the heart of Wichita. Dr. Clarke separates the ship's Brooklyn-influenced hull lineage from the category established by its completed capabilities. Wichita's armor, 8-inch firepower, and fighting role put her squarely in the heavy-cruiser category. Open here to see why mixed design ancestry does not require inventing a middle classification.",
       "question": "Is Wichita a heavy light cruiser, a light heavy cruiser, or a medium cruiser?",
       "answerShort": "Wichita is a heavy cruiser: she uses light-cruiser hull influence, but her armor, firepower, and capability put her in the heavy-cruiser category.",
       "sourcePath": "src/transcripts/txt/2023-02-01_T19-00-31_uss-wichita-comment-response_qyXbriVYknE.txt",
@@ -130,10 +188,16 @@
         "us-navy",
         "air-defence",
         "ship-design",
-        "missiles"
+        "missiles",
+        "uss-wichita",
+        "anti-aircraft-cruisers",
+        "atlanta-class-cruisers",
+        "dido-class-cruisers",
+        "missile-conversions",
+        "5-inch-guns"
       ],
       "summary": "A speculative Atlanta-on-Wichita idea explores what a larger armored anti-air cruiser might gain and what it would give up.",
-      "body": "The answer uses a commenter's Wichita-hull anti-air cruiser to show how design purpose narrows a ship. A battery of many 5-inch/38 mounts on an armored hull could have been formidable against air attack and attractive for later missile conversion, but Dr. Clarke stresses that it would be a dedicated anti-aircraft platform rather than a balanced cruiser. The comparison with Atlanta, Dido, Crown Colony, and Town-class choices keeps the idea tied to real wartime production tradeoffs.",
+      "body": "The answer uses a commenter's Wichita-hull anti-air cruiser to show how design purpose narrows a ship. A battery of fourteen to eighteen 5-inch/38 guns on an armored hull could have been formidable against air attack. Dr. Clarke nevertheless stresses that the result would be a dedicated anti-aircraft platform rather than a balanced cruiser, a specialization he calls a one-trick pony. The same large hull and proven weapons could also have made the ship attractive for postwar missile conversion. Comparisons with Atlanta, Dido, Crown Colony, and Town-class choices keep the proposal tied to real production and force-structure tradeoffs.",
       "sourcePath": "src/transcripts/txt/2023-02-01_T19-00-31_uss-wichita-comment-response_qyXbriVYknE.txt",
       "evidence": [
         {
@@ -145,6 +209,82 @@
           "start": "27:25",
           "end": "29:47",
           "note": "The transcript compares the idea with French, Atlanta, Dido, Crown Colony, Arethusa, and Town-class production choices."
+        }
+      ]
+    },
+    {
+      "id": "royal-navy-light-cruiser-production-tradeoffs",
+      "videoId": "qyXbriVYknE",
+      "slug": "royal-navy-light-cruiser-production-tradeoffs",
+      "title": "Royal Navy light-cruiser production tradeoffs",
+      "kind": "notable_point",
+      "start": "27:25",
+      "end": "29:47",
+      "topics": [
+        "royal-navy",
+        "light-cruisers",
+        "naval-shipbuilding",
+        "wartime-production",
+        "naval-procurement",
+        "dido-class-cruisers",
+        "crown-colony-class-cruisers",
+        "arethusa-class-light-cruisers-1934",
+        "town-class-light-cruisers-1936",
+        "tribal-class-destroyers-1936",
+        "hms-belfast",
+        "dual-purpose-guns",
+        "treaty-displacement"
+      ],
+      "summary": "Comparisons among Dido, Crown Colony, Arethusa, and Town designs show why wartime cruiser quantity could conflict with long-term capability.",
+      "body": "The discussion broadens from the Wichita anti-air proposal into Royal Navy light-cruiser production. Dr. Clarke treats Dido and Crown Colony ships as wartime or treaty-driven attempts to obtain numbers quickly, but argues that cutting down a Town-class design yielded less benefit than expected. Under treaty limits, smaller Arethusas could be justified to maximize cruiser numbers; without those limits he would prefer a more capable triple-turret variant or full Town-class ships. He even favors a dual-purpose-gun Tribal destroyer over a Dido for some tasks, illustrating how anti-aircraft specialization competed with general cruiser utility. Belfast's long service becomes evidence for the reserve topweight and growth margin created when a hull designed for quadruple turrets received triples. Open here for a compact procurement lesson about construction speed, treaty arithmetic, specialization, and modernization capacity.",
+      "sourcePath": "src/transcripts/txt/2023-02-01_T19-00-31_uss-wichita-comment-response_qyXbriVYknE.txt",
+      "evidence": [
+        {
+          "start": "27:25",
+          "end": "28:30",
+          "note": "The transcript compares French, Atlanta, Dido, Crown Colony, and Town-class choices and questions the value of producing stripped-down Town-class cruisers."
+        },
+        {
+          "start": "28:36",
+          "end": "29:47",
+          "note": "The transcript weighs dual-purpose Tribals and Arethusas against larger Towns, then links Belfast's longevity to unused topweight and growth margin."
+        }
+      ]
+    },
+    {
+      "id": "japanese-caribbean-counterfactual-logistics",
+      "videoId": "qyXbriVYknE",
+      "slug": "japanese-caribbean-counterfactual-logistics",
+      "title": "Could the Imperial Japanese Navy reach the Caribbean?",
+      "kind": "qa",
+      "start": "32:07",
+      "end": "34:16",
+      "topics": [
+        "imperial-japanese-navy",
+        "caribbean",
+        "panama-canal",
+        "naval-logistics",
+        "strategic-geography",
+        "force-projection",
+        "alternate-history",
+        "sea-lines-of-communication",
+        "local-defence-forces"
+      ],
+      "summary": "A joke about a wartime greeting prompts a geographic and logistical test of any Japanese deployment to the Caribbean.",
+      "body": "Dr. Clarke treats the scenario as a counterfactual rather than a real Japanese operational plan. A fleet using the Panama Canal would first have to overcome American control of that chokepoint, an outcome he says would imply a much wider U.S. collapse. The alternative—crossing the Pacific, rounding South America, and sailing north—would leave ships at the end of an immense voyage and in poor condition. He then notes that Caribbean defence forces would remain a local obstacle even after the oceanic transit. The exchange is useful for seeing how chokepoints, distance, maintenance, and regional forces constrain imaginative force-projection claims.",
+      "question": "How plausible would it be for the Imperial Japanese Navy to reach the Caribbean during the Second World War?",
+      "answerShort": "Only in an extreme counterfactual: either U.S. control of the Panama Canal has collapsed, or the fleet has made an exhausting voyage around South America.",
+      "sourcePath": "src/transcripts/txt/2023-02-01_T19-00-31_uss-wichita-comment-response_qyXbriVYknE.txt",
+      "evidence": [
+        {
+          "start": "32:07",
+          "end": "33:20",
+          "note": "The transcript says a Japanese Caribbean deployment would require either passage through a lost Panama Canal or a voyage across the Pacific and around South America."
+        },
+        {
+          "start": "33:26",
+          "end": "34:16",
+          "note": "The transcript adds that the arriving ships would be badly worn and that capable Caribbean defence forces would still oppose them."
         }
       ]
     },
@@ -161,7 +301,10 @@
         "armoured-cruisers",
         "royal-netherlands-navy",
         "ship-design",
-        "naval-weapons"
+        "naval-weapons",
+        "9-4-inch-guns",
+        "unbuilt-warships",
+        "naval-procurement"
       ],
       "summary": "A brief Dutch design comment points to the continuing appeal of an armored cruiser larger and more heavily armed than treaty-standard heavy cruisers.",
       "body": "This watch point introduces a proposed Dutch modern armored cruiser with somewhat stronger protection and 9.4-inch guns instead of the usual 8-inch heavy-cruiser battery. Dr. Clarke treats it as evidence that the armored-cruiser concept remained attractive even when many promising designs never reached construction. The proposal sits between ordinary treaty cruisers and the much larger cruiser types discussed later in the video. Open here for a compact example of how navies continued exploring the force-structure gap between cruisers and capital ships.",
@@ -192,7 +335,12 @@
         "us-navy",
         "ship-design",
         "naval-weapons",
-        "5-inch-guns"
+        "5-inch-guns",
+        "uss-wichita",
+        "heavy-cruisers",
+        "treaty-cruisers",
+        "8-inch-guns",
+        "dual-purpose-guns"
       ],
       "summary": "A secondary-battery discussion shows how treaty weight and firing arcs shaped Wichita, then imagines the much heavier cruiser another 5,000 tons could have produced.",
       "body": "Dr. Clarke says he would have preferred six twin 5-inch/38 mounts, but explains that Wichita's actual arrangement offered useful options within treaty displacement and preceded the later standard layout. The single mounts could engage in eight directions, while twins concentrated more guns into fewer arcs. Adding 5,000 tons opens a different design space: eight twin 5-inch mounts could accompany twelve 8-inch guns in four triple turrets. The counterfactual makes the treaty constraint tangible by showing what armament had to be excluded from the historical ship.",
@@ -223,7 +371,12 @@
         "aircraft-carriers",
         "flight-deck-operations",
         "naval-safety",
-        "naval-history"
+        "naval-history",
+        "naval-films",
+        "historical-accuracy",
+        "crash-barriers",
+        "carrier-landings",
+        "deck-park"
       ],
       "summary": "A criticism of the film Devotion explains why an aircraft carrier's raised crash barrier protected parked aircraft and flight-deck personnel during landings.",
       "body": "The discussion moves from film errors to the practical purpose of a carrier crash barrier. A barrier could spoil a clean camera angle, but omitting it during a landing removed the last protection against an aircraft overrunning the landing area. It was meant either to let a safely climbing aircraft pass above or to stop an overshooting aircraft before it struck people and parked machines forward. Dr. Clarke uses the example to warn that cinematic images can misteach the routines that made naval aviation survivable.",
@@ -259,7 +412,11 @@
         "u-boats",
         "naval-personnel",
         "ship-habitability",
-        "naval-history"
+        "naval-history",
+        "submarine-operations",
+        "ventilation",
+        "sanitation",
+        "crew-health"
       ],
       "summary": "A call for more realistic naval drama turns to the sanitation, foul air, and confined living conditions that submarine films often omit.",
       "body": "Dr. Clarke argues that screen portrayals rarely convey the physical discomfort of submarine service. In some boats, submerged toilet arrangements were troublesome enough that crews used open buckets until they could dispose of the waste after surfacing. He describes returning U-boats whose accumulated fumes could overwhelm dockworkers entering the hull and require procedures to clear the air. The example shows why habitability and ventilation belong in any serious account of submarine operations, not merely as colorful background but as conditions crews had to endure while keeping an airtight vessel functioning.",
@@ -282,7 +439,7 @@
       "videoId": "qyXbriVYknE",
       "slug": "treaty-heavy-cruiser-size-gap",
       "title": "Treaty heavy-cruiser size gap",
-      "kind": "notable_point",
+      "kind": "qa",
       "start": "41:28",
       "end": "46:36",
       "topics": [
@@ -290,10 +447,20 @@
         "naval-treaties",
         "ship-design",
         "battlecruisers",
-        "naval-strategy"
+        "naval-strategy",
+        "heavy-cruisers",
+        "armoured-cruisers",
+        "des-moines-class-cruisers",
+        "alaska-class-large-cruisers",
+        "deutschland-class-cruisers",
+        "naval-presence",
+        "treaty-cruisers",
+        "force-structure"
       ],
       "summary": "The heavy-cruiser category discussion argues that treaty limits left a large gap between 10,000-ton cruisers and capital ships.",
-      "body": "This watch point explains why the 10,000-ton cruiser limit could feel too small for traditional cruiser work. Dr. Clarke argues that cruisers historically needed speed, range, presence facilities, and response capacity, so they could be as large as or larger than battleships in some eras. His counterfactual treaty ladder, with destroyers, cruisers, armored cruisers, and capital ships separated by gun and tonnage bands, shows the force-structure problem created by the interwar compromise.",
+      "body": "A viewer's question about what counts as a heavy cruiser leads Dr. Clarke to put Des Moines near the lower bound and suggest roughly 20,000 tons for a fuller version of the type. He explains that cruisers need speed, range, rapid-response capacity, personnel, and facilities for worldwide presence missions, while a battleship can concentrate more narrowly on protection and heavy firepower. The treaty system's jump from 10,000-ton cruisers to 35,000-ton capital ships therefore left a force-structure gap. His counterfactual ladder inserts 20,000-ton, 12-inch-gun armoured cruisers between ordinary cruisers and battleships. Alaska comes closest to this idea of a proper heavy cruiser, while Deutschland is neither a coastal-defence ship nor a convincing example because of its protection, speed, and overall compromises. Open here to see classification treated as a combination of mission, size, protection, and armament rather than an official label alone.",
+      "question": "What would count as a true heavy cruiser beyond the treaty-era 10,000-ton type?",
+      "answerShort": "Dr. Clarke suggests roughly 17,500 to 20,000 tons, with Alaska closest to the role and the treaty system having left an artificial gap below capital ships.",
       "sourcePath": "src/transcripts/txt/2023-02-01_T19-00-31_uss-wichita-comment-response_qyXbriVYknE.txt",
       "evidence": [
         {
@@ -326,10 +493,16 @@
         "royal-navy",
         "naval-logistics",
         "naval-personnel",
-        "naval-strategy"
+        "naval-strategy",
+        "hms-exeter",
+        "battle-of-the-river-plate",
+        "naval-training",
+        "work-up",
+        "ship-refits",
+        "far-east"
       ],
       "summary": "A shakedown-cruise comment becomes a lesson in why refitted ships and new crews needed safe waters before combat.",
-      "body": "Dr. Clarke uses Caribbean shakedown practice to explain the hidden work behind combat readiness. HMS Exeter's post-River Plate refit meant new equipment, a rebuilt ship with changed handling, a dispersed old crew, and a new crew that had not yet learned to operate together. The section is a useful reminder that ship capability depends on work-up time, crew cohesion, and theater assumptions as much as hardware.",
+      "body": "Dr. Clarke uses Caribbean shakedown practice to explain the hidden work behind combat readiness. HMS Exeter's post-River Plate refit meant new equipment, a rebuilt ship with changed handling, a dispersed old crew, and a new crew that had not yet learned to operate together. His football-team analogy shows why individually trained sailors still need time to learn one another's routines before facing an experienced opponent. The prewar assumption that Southeast Asia, the South Pacific, and the Indian Ocean offered relatively safe work-up waters helps explain Exeter's deployment, even though war overturned that assumption. Open here for a reminder that ship capability depends on work-up time, crew cohesion, refit effects, and theatre expectations as much as hardware.",
       "sourcePath": "src/transcripts/txt/2023-02-01_T19-00-31_uss-wichita-comment-response_qyXbriVYknE.txt",
       "evidence": [
         {
@@ -341,6 +514,38 @@
           "start": "48:30",
           "end": "50:10",
           "note": "The transcript lists new equipment, rebuilt-ship nuances, a new crew, and the need to practice together before combat."
+        }
+      ]
+    },
+    {
+      "id": "court-of-st-jamess-diplomatic-protocol",
+      "videoId": "qyXbriVYknE",
+      "slug": "court-of-st-jamess-diplomatic-protocol",
+      "title": "The Court of St James's in diplomatic protocol",
+      "kind": "notable_point",
+      "start": "50:15",
+      "end": "51:11",
+      "topics": [
+        "diplomacy",
+        "diplomatic-protocol",
+        "ambassadors",
+        "court-of-st-jamess",
+        "united-kingdom",
+        "monarchy"
+      ],
+      "summary": "A brief aside explains why diplomatic language points to the Court of St James's rather than Parliament, Downing Street, or the Foreign Office.",
+      "body": "A listener's wording about the United States ambassador prompts a short explanation of the Court of St James's in British diplomatic custom. Dr. Clarke distinguishes the court from the House of Commons, Downing Street, and the Foreign Office as the formal point named in diplomatic language. He notes that the receiving ceremony can take place at Buckingham Palace even while the traditional court title remains in use. Open here for a compact example of older monarchical language persisting inside modern state diplomacy.",
+      "sourcePath": "src/transcripts/txt/2023-02-01_T19-00-31_uss-wichita-comment-response_qyXbriVYknE.txt",
+      "evidence": [
+        {
+          "start": "50:15",
+          "end": "50:46",
+          "note": "The transcript discusses the United States ambassador's Court of St James's title and identifies the court rather than the government offices as the formal reference."
+        },
+        {
+          "start": "50:51",
+          "end": "51:11",
+          "note": "The transcript contrasts the Court of St James's with Parliament, Downing Street, and the Foreign Office and notes that reception can occur at Buckingham Palace."
         }
       ]
     },
@@ -357,7 +562,11 @@
         "us-navy",
         "naval-weapons",
         "naval-logistics",
-        "field-modifications"
+        "field-modifications",
+        "pt-109",
+        "37-mm-guns",
+        "improvised-armament",
+        "informal-logistics"
       ],
       "summary": "PT-109's scrounged Army anti-tank gun illustrates how wartime crews informally acquired and fitted extra firepower.",
       "body": "A commenter points to PT-109's improvised 37 mm anti-tank gun as a famous example of sailors adding equipment outside a boat's standard fit. The crew acquired the Army weapon and attached it to the foredeck, turning logistical initiative into extra combat power. Dr. Clarke notes that similar practices appeared across the U.S. armed services, although each service had its own vocabulary for obtaining the needed gear. The short passage is useful for understanding how field modification and informal supply networks could alter a small warship's actual armament.",
@@ -376,6 +585,40 @@
       ]
     },
     {
+      "id": "technology-gaps-and-cost-driven-follow-on-warships",
+      "videoId": "qyXbriVYknE",
+      "slug": "technology-gaps-and-cost-driven-follow-on-warships",
+      "title": "Technology gaps and cost-driven follow-on warships",
+      "kind": "notable_point",
+      "start": "52:04",
+      "end": "53:08",
+      "topics": [
+        "naval-procurement",
+        "naval-economics",
+        "cost-control",
+        "technological-change",
+        "ship-design",
+        "alaska-class-large-cruisers",
+        "queen-elizabeth-class-battleships",
+        "revenge-class-battleships"
+      ],
+      "summary": "Alaska and two Royal Navy battleship generations illustrate why technology and cost complicate claims that one warship class was simply better than another.",
+      "body": "A comparison between Alaska and early treaty cruisers cautions against treating better performance as proof of exceptional design. Dr. Clarke notes that roughly a decade of technological and shipbuilding learning separates them, so a later and much larger ship should outperform its predecessors. He then points to the Queen Elizabeth and Revenge or R classes as an example of a navy following an excellent class with a less capable one. That reversal is not unique to the Royal Navy; he identifies cost as a common reason navies accept reduced capability. The passage is a useful reminder to compare warships within their design generation and budget rather than by headline performance alone.",
+      "sourcePath": "src/transcripts/txt/2023-02-01_T19-00-31_uss-wichita-comment-response_qyXbriVYknE.txt",
+      "evidence": [
+        {
+          "start": "52:04",
+          "end": "52:19",
+          "note": "The transcript says Alaska benefits from roughly ten years of technological advance, building knowledge, and greater mass over the first treaty cruisers."
+        },
+        {
+          "start": "52:21",
+          "end": "53:08",
+          "note": "The transcript uses the Queen Elizabeth and R classes to show that navies can follow a highly capable design with a weaker one, commonly because of cost."
+        }
+      ]
+    },
+    {
       "id": "wichita-service-record-and-baltimore-successor",
       "videoId": "qyXbriVYknE",
       "slug": "wichita-service-record-and-baltimore-successor",
@@ -388,10 +631,18 @@
         "us-navy",
         "ship-design",
         "ship-modernisation",
-        "naval-weapons"
+        "naval-weapons",
+        "uss-wichita",
+        "baltimore-class-cruisers",
+        "new-orleans-class-cruisers",
+        "brooklyn-class-cruisers",
+        "8-inch-guns",
+        "battle-stars",
+        "missile-conversions",
+        "naval-traditions"
       ],
       "summary": "The closing Wichita comments connect the ship's design bridge to Baltimore, individual-gun elevation, battle stars, and missile-conversion choices.",
-      "body": "The final naval section circles back to Wichita as a bridge between New Orleans, Brooklyn, and Baltimore thinking. Dr. Clarke suggests that a larger Wichita might have carried twelve 8-inch guns and influenced even bigger Baltimores, while a listener's service details highlight individual gun elevation, battle stars, and why a hard-used wartime cruiser was not the preferred missile-conversion hull. It gives readers a compact service-and-design wrap-up for the ship named after Wichita, Kansas.",
+      "body": "The final naval section circles back to Wichita as a bridge between New Orleans, Brooklyn, and Baltimore thinking. Dr. Clarke suggests that a larger Wichita might have carried twelve 8-inch guns and influenced even bigger Baltimores with the same battery. A listener's service details highlight individual gun elevation, beam, and thirteen battle stars. Because Wichita had seen hard wartime use, the Navy preferred other Baltimore and Cleveland hulls for missile conversions. The Kansas namesake and Wicked Witch nickname close the discussion, although Dr. Clarke treats the absence of visible witch artwork as a reason to remain cautious about the unofficial tradition.",
       "sourcePath": "src/transcripts/txt/2023-02-01_T19-00-31_uss-wichita-comment-response_qyXbriVYknE.txt",
       "evidence": [
         {
