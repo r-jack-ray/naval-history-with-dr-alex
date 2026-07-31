@@ -37,8 +37,17 @@ export function canonicalVideoSegmentFileName(fileStem: string): string {
 export async function discoverVideoSegmentShards(
   inputDirectory: string,
 ): Promise<VideoSegmentShardIndex> {
+  const fileNames = await listVideoSegmentShardFileNames(inputDirectory);
+  return buildVideoSegmentShardIndex(
+    await loadVideoSegmentShardFiles(inputDirectory, fileNames),
+  );
+}
+
+export async function listVideoSegmentShardFileNames(
+  inputDirectory: string,
+): Promise<string[]> {
   const entries = await readdir(inputDirectory, { withFileTypes: true });
-  const fileNames = entries
+  return entries
     .filter((entry) => (
       entry.isFile()
       && entry.name.endsWith(".json")
@@ -46,8 +55,13 @@ export async function discoverVideoSegmentShards(
     ))
     .map((entry) => entry.name)
     .sort((left, right) => left.localeCompare(right));
+}
 
-  const loaded = await Promise.all(fileNames.map(async (fileName) => {
+export async function loadVideoSegmentShardFiles(
+  inputDirectory: string,
+  fileNames: readonly string[],
+): Promise<VideoSegmentShard[]> {
+  return await Promise.all(fileNames.map(async (fileName) => {
     const filePath = join(inputDirectory, fileName);
     let parsed: unknown;
     try {
@@ -58,7 +72,11 @@ export async function discoverVideoSegmentShards(
     const value = parseCuratedVideoFile(parsed, `Curated video shard ${filePath}`);
     return { fileName, filePath, videoId: value.videoId, value };
   }));
+}
 
+export function buildVideoSegmentShardIndex(
+  loaded: readonly VideoSegmentShard[],
+): VideoSegmentShardIndex {
   const byVideoId = new Map<string, VideoSegmentShard>();
   for (const shard of loaded) {
     const existing = byVideoId.get(shard.videoId);

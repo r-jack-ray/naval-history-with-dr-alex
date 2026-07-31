@@ -15,8 +15,12 @@ import {
   topicCollisionKey,
   topicTitleFromSlug as normalizedTopicTitleFromSlug,
   type TopicNormalizationCatalog,
+  type TopicSlugResolution,
 } from "./topic-normalization.js";
-import { discoverVideoSegmentShards } from "./video-segment-files.js";
+import {
+  discoverVideoSegmentShards,
+  type VideoSegmentShardIndex,
+} from "./video-segment-files.js";
 
 export const defaultTopicNormalizationPatternsInput =
   "src/derived/topic-normalization-patterns.tsv";
@@ -37,6 +41,9 @@ export interface TopicReviewItem {
 export interface PlanTopicStoreSynchronizationOptions {
   segmentsInput: string;
   patternsInput?: string;
+  precomputedCreationResolutions?: ReadonlyMap<string, TopicSlugResolution>;
+  preloadedCatalog?: TopicNormalizationCatalog;
+  preloadedShardIndex?: VideoSegmentShardIndex;
 }
 
 export interface TopicStoreSynchronizationPlan extends SynchronizeTopicStoreResult {
@@ -63,8 +70,12 @@ export async function planTopicStoreSynchronization(
   options: PlanTopicStoreSynchronizationOptions,
 ): Promise<TopicStoreSynchronizationPlan> {
   const patternsInput = options.patternsInput ?? defaultTopicNormalizationPatternsInput;
-  const catalog = await loadTopicNormalizationCatalog(patternsInput);
-  const corpus = await scanTopicCorpus(options.segmentsInput, catalog);
+  const [catalog, shardIndex] = await Promise.all([
+    options.preloadedCatalog ?? loadTopicNormalizationCatalog(patternsInput),
+    options.preloadedShardIndex ?? discoverVideoSegmentShards(options.segmentsInput),
+  ]);
+  const creationResolutions = new Map(options.precomputedCreationResolutions ?? []);
+  const corpus = scanTopicCorpus(shardIndex, catalog, creationResolutions);
   const topicStorePath = join(options.segmentsInput, "topics.json");
   const preimageText = await readTextIfPresent(topicStorePath);
   const existingStore = preimageText === undefined
@@ -78,7 +89,7 @@ export async function planTopicStoreSynchronization(
   const preflightFindings = [...corpus.policyFindings];
 
   for (const slug of addedSlugs) {
-    const creation = resolveTopicCreation(catalog, slug);
+    const creation = resolveTopicCreationCached(catalog, slug, creationResolutions);
     if (creation.changed) {
       preflightFindings.push(
         `New topic ${slug} resolves through active creation rule ${creation.matchedRuleIds.join(", ")} to ${creation.slug}; update the owning shard instead of appending a noncanonical registry record.`,
@@ -87,26 +98,36 @@ export async function planTopicStoreSynchronization(
   }
 
   if (existingStore !== undefined) {
-    const audit = await auditTopicNormalization({
-      patternsInput,
-      segmentsInput: options.segmentsInput,
-    });
+    const [audit, currentCatalog] = await Promise.all([
+      auditTopicNormalization({
+        patternsInput,
+        precomputedCreationResolutions: creationResolutions,
+        preloadedCatalog: catalog,
+        preloadedShardIndex: shardIndex,
+        segmentsInput: options.segmentsInput,
+      }),
+      loadTopicNormalizationCatalog(patternsInput),
+    ]);
     if (
-      audit.catalog.sha256 !== catalog.sha256
-      || audit.catalog.sourceSha256 !== catalog.sourceSha256
+      currentCatalog.sha256 !== catalog.sha256
+      || currentCatalog.sourceSha256 !== catalog.sourceSha256
     ) {
       preflightFindings.push(
         `Topic normalization catalog changed while synchronization was being planned: ${patternsInput}.`,
       );
     }
     const appendableSlugs = new Set(addedSlugs.filter((slug) => (
-      !resolveTopicCreation(catalog, slug).changed
+      !resolveTopicCreationCached(catalog, slug, creationResolutions).changed
     )));
     preflightFindings.push(...audit.blockers.filter((blocker) => (
       !isAppendableMissingTopicBlocker(blocker, appendableSlugs)
     )));
     for (const topic of existingStore.topics) {
-      const creation = resolveTopicCreation(catalog, topic.slug);
+      const creation = resolveTopicCreationCached(
+        catalog,
+        topic.slug,
+        creationResolutions,
+      );
       if (creation.changed) {
         preflightFindings.push(
           `Topic registry record ${topic.slug} resolves through active creation rule ${creation.matchedRuleIds.join(", ")} to ${creation.slug}.`,
@@ -172,25 +193,34 @@ export async function synchronizeCuratedTopicStore(
 }
 
 export async function collectUsedTopicSlugs(inputDirectory: string): Promise<string[]> {
-  return (await scanTopicCorpus(inputDirectory)).usedSlugs;
+  const shardIndex = await discoverVideoSegmentShards(inputDirectory);
+  return scanTopicCorpus(shardIndex).usedSlugs;
 }
 
-async function scanTopicCorpus(
-  inputDirectory: string,
+function scanTopicCorpus(
+  shardIndex: VideoSegmentShardIndex,
   catalog?: TopicNormalizationCatalog,
-): Promise<TopicCorpusScan> {
-  const { shards } = await discoverVideoSegmentShards(inputDirectory);
+  creationResolutions = new Map<string, TopicSlugResolution>(),
+): TopicCorpusScan {
   const slugs = new Set<string>();
   const policyFindings: string[] = [];
 
-  for (const { fileName, value } of shards) {
-    collectTopicArray(value.topics, `${fileName} video`, slugs, catalog, policyFindings);
+  for (const { fileName, value } of shardIndex.shards) {
+    collectTopicArray(
+      value.topics,
+      `${fileName} video`,
+      slugs,
+      catalog,
+      creationResolutions,
+      policyFindings,
+    );
     for (const segment of value.segments) {
       collectTopicArray(
         segment.topics,
         `${fileName} segment ${segment.id}`,
         slugs,
         catalog,
+        creationResolutions,
         policyFindings,
       );
     }
@@ -207,6 +237,7 @@ function collectTopicArray(
   source: string,
   slugs: Set<string>,
   catalog: TopicNormalizationCatalog | undefined,
+  creationResolutions: Map<string, TopicSlugResolution>,
   policyFindings: string[],
 ): void {
   if (!Array.isArray(value)) {
@@ -222,7 +253,11 @@ function collectTopicArray(
   }
   if (catalog !== undefined) {
     for (const slug of topics) {
-      const creation = resolveTopicCreation(catalog, slug);
+      const creation = resolveTopicCreationCached(
+        catalog,
+        slug,
+        creationResolutions,
+      );
       if (creation.changed) {
         policyFindings.push(
           `${source} references noncanonical topic ${slug}; active creation rule ${creation.matchedRuleIds.join(", ")} resolves it to ${creation.slug}.`,
@@ -230,6 +265,20 @@ function collectTopicArray(
       }
     }
   }
+}
+
+function resolveTopicCreationCached(
+  catalog: TopicNormalizationCatalog,
+  slug: string,
+  cache: Map<string, TopicSlugResolution>,
+): TopicSlugResolution {
+  const cached = cache.get(slug);
+  if (cached !== undefined) {
+    return cached;
+  }
+  const resolution = resolveTopicCreation(catalog, slug);
+  cache.set(slug, resolution);
+  return resolution;
 }
 
 function parseTopicStore(text: string, path: string): CuratedTopicStore {

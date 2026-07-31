@@ -12,7 +12,9 @@
     "maritime-industry",
     "destroyers",
     "battleships",
-    "naval-strategy"
+    "naval-strategy",
+    "naval-books",
+    "historical-method"
   ],
   "segments": [
     {
@@ -57,7 +59,7 @@
       "end": "11:06",
       "topics": ["anti-ship-missiles", "naval-gunnery", "surface-warfare", "falklands-war"],
       "summary": "Guided weapons offered gun-like reach with their own terminal guidance, while submarines and aircraft bridged the transition to missile warfare.",
-      "body": "Dr. Clarke frames missiles as very long-ranged gunfire that can guide itself onto a target. He notes that submarines and aircraft dominated ship-killing for part of the transition, while the Falklands War made missile strike and missile defence especially prominent in naval thinking.",
+      "body": "Missiles gave surface ships gun-like reach while carrying their own guidance to the target. Dr. Clarke places their rise within a transitional period when submarines and aircraft remained the principal ship-killing systems. Missile advocacy predated the Falklands War, but that conflict made missile strike and missile defence much more prominent in naval thinking. The answer therefore describes a gradual shift driven by range, guidance, and combat experience rather than a single date when guns became obsolete.",
       "question": "When did missiles become more viable than guns as a warship's main armament?",
       "answerShort": "Their range and guidance made them increasingly useful, with missile warfare becoming especially prominent by and after the Falklands War.",
       "sourcePath": "src/transcripts/txt/2022-11-06_T19-02-19_bruships-90-books-from-the-road_EE4W1gQYG0g.txt",
@@ -73,11 +75,14 @@
       "end": "14:44",
       "topics": ["ship-design", "ship-modernisation", "type-23-frigate", "type-45-destroyer", "type-26-frigate"],
       "summary": "A ship can remain viable for decades if its hull, weight reserve, and internal volume can accept new systems.",
-      "body": "Service life is not governed by one universal age limit: some navies replace ships near thirty years, while others keep refitting as long as the hull remains sound. The deeper constraint is growth margin, illustrated by the Type 23's longevity and the deliberate reserve space in the Type 45 and Type 26 designs.",
+      "body": "Service life is not governed by one universal age limit: some navies replace ships near thirty years, while others keep refitting as long as the hull remains sound. Hull condition and operating cost matter, but new capabilities also require spare weight and internal volume. The Type 23 outlasted the Type 22 partly because it was cheaper to operate and retained room for change. Type 45 and Type 26 designs carry deliberate growth space, although later national variants can consume that reserve by adding systems at construction. A brief follow-up gives roughly twenty-five years as a plausible span for repeatedly refitting a pre-dreadnought under generous assumptions, reinforcing that viability depends on the hull and the modernization plan rather than age alone.",
       "question": "At what age does a steel warship stop being viable?",
       "answerShort": "There is no fixed age; viability depends heavily on hull condition, operating cost, and spare weight and space for future upgrades.",
       "sourcePath": "src/transcripts/txt/2022-11-06_T19-02-19_bruships-90-books-from-the-road_EE4W1gQYG0g.txt",
-      "evidence": [{"start": "12:51", "end": "14:44", "note": "The answer contrasts nominal service lives with the decisive value of weight and space for refits."}]
+      "evidence": [
+        {"start": "12:51", "end": "14:44", "note": "The answer contrasts nominal service lives with the decisive value of operating cost, weight, and space for refits."},
+        {"start": "28:47", "end": "29:05", "note": "A later follow-up gives roughly twenty-five years as a possible repeated-refit span for a pre-dreadnought."}
+      ]
     },
     {
       "id": "modernizing-hms-tiger-for-war",
@@ -138,7 +143,7 @@
       "end": "39:59",
       "topics": ["iver-huitfeldt-class", "danish-navy", "frigates", "stanflex", "modular-warship-design", "nato"],
       "summary": "Denmark's frigates combine a balanced hull with StanFlex modularity, though the modular ecosystem also creates supplier lock-in.",
-      "body": "Dr. Clarke praises the class as a capable design tailored to Denmark's small fleet and valuable to NATO. StanFlex improves adaptability and maintenance, but its interfaces also limit buyers to compatible modules or require them to pay for integration.",
+      "body": "Dr. Clarke praises the class as a capable, balanced design tailored to Denmark's small fleet. More ships of the type would add useful capacity to NATO, and the design offers a model worth considering for other small navies. StanFlex supports adaptation and maintenance by allowing compatible modules to be exchanged. The same interfaces can lock an owner into the StanFlex ecosystem or make outside equipment expensive to integrate. The class therefore illustrates how a successful modular warship must balance mission fit and affordability against long-term compatibility choices.",
       "question": "Are the Iver Huitfeldt-class frigates good ships, and what makes them successful?",
       "answerShort": "They are well-balanced ships for Denmark, with useful modularity and NATO value, though StanFlex compatibility can constrain future choices.",
       "sourcePath": "src/transcripts/txt/2022-11-06_T19-02-19_bruships-90-books-from-the-road_EE4W1gQYG0g.txt",
@@ -154,7 +159,7 @@
       "end": "44:52",
       "topics": ["hms-gannet", "forbin-class", "french-navy", "royal-navy", "cruisers", "jeune-ecole"],
       "summary": "A comparison shows how superficially similar cruisers served different British and French strategic concepts.",
-      "body": "Gannet is presented as a clear imperial-presence cruiser, while the French Forbin design emerged from a more muddled mix of missions under Jeune École influence. Britain might have used Forbin as a larger Gannet, but that was not the role French policy had in mind.",
+      "body": "Gannet is presented as a clear imperial-presence cruiser with a recognizable British mission. The French Forbin design emerged from a more muddled mix of purposes under Jeune École influence. Britain might have employed a Forbin-like ship as a larger Gannet, but that was not the role French policy had in mind. The comparison shows why similar-looking hulls cannot be understood without the strategic ideas and imperial requirements behind them.",
       "question": "How do HMS Gannet and the French Forbin class compare?",
       "answerShort": "They look comparable, but Gannet had a clearer imperial-presence purpose while Forbin reflected different and less coherent French priorities.",
       "sourcePath": "src/transcripts/txt/2022-11-06_T19-02-19_bruships-90-books-from-the-road_EE4W1gQYG0g.txt",
@@ -186,7 +191,7 @@
       "end": "46:53",
       "topics": ["yamato-class-battleships", "japanese-navy", "naval-treaties", "battleships", "naval-industrial-base"],
       "summary": "A 42,000-ton Anglo-American standard could drive Japan toward a twelve-gun 18-inch design too large to finish economically.",
-      "body": "Japanese qualitative superiority depended on building ships intended to face more than one American opponent. If the baseline opponent grew to a fast twelve-gun battleship, Japan's answer might become so large that industrial and wartime constraints left unfinished hulls rather than usable ships.",
+      "body": "Japanese qualitative superiority depended on building ships intended to face more than one American opponent. A 42,000-ton British or American standard with twelve 16-inch guns would raise the baseline that Japanese designers were expected to defeat. Dr. Clarke therefore projects an answer carrying twelve 18-inch guns, a ship larger and more demanding than Yamato. Japan's industrial and wartime constraints might leave such vessels as unfinished hulls rather than usable battleships. The counterfactual shows that a higher treaty ceiling changes rival design responses and construction risk, not just the dimensions of one British class.",
       "question": "How would 42,000-ton British and American battleships affect the Yamato class?",
       "answerShort": "Japan would likely seek an even larger twelve-gun 18-inch design, risking ships too costly and complex to complete.",
       "sourcePath": "src/transcripts/txt/2022-11-06_T19-02-19_bruships-90-books-from-the-road_EE4W1gQYG0g.txt",
@@ -202,7 +207,7 @@
       "end": "49:03",
       "topics": ["grom-class", "tribal-class-destroyers-1936", "polish-navy", "royal-navy", "destroyers", "battle-class-destroyers"],
       "summary": "The Groms paralleled the Tribal concept and helped bridge the shortage before Commonwealth Tribals and Battle-class ships arrived.",
-      "body": "Dr. Clarke treats the Polish ships as equivalent to one part of Royal Navy destroyer policy rather than categorically superior designs. Their practical value lay in filling the interval between early British Tribals and later Canadian, Australian, and Battle-class reinforcements.",
+      "body": "Dr. Clarke treats the Polish ships as equivalents to one part of Royal Navy destroyer policy rather than categorically superior designs. The Grom class occupied much the same heavily armed destroyer niche as the Tribals. Its practical value lay in filling a shortage after the first British Tribals proved useful but before Canadian and Australian Tribals and the Battle class arrived in strength. Only one Battle-class destroyer reached the Pacific before the war ended, which makes the timing of the Polish reinforcement especially important. The comparison shows that a ship's value can depend as much on when it joins a fleet as on whether its paper characteristics exceed a contemporary design.",
       "question": "Were the Polish Grom-class destroyers better Royal Navy destroyers than Britain's own contemporaries?",
       "answerShort": "They closely matched the Tribal heavy-destroyer role and were especially valuable because Britain had too few ships in that category.",
       "sourcePath": "src/transcripts/txt/2022-11-06_T19-02-19_bruships-90-books-from-the-road_EE4W1gQYG0g.txt",
@@ -237,7 +242,7 @@
       "end": "1:01:03",
       "topics": ["royal-navy", "interwar-navy", "fleet-carriers", "ship-modernisation", "naval-gunnery"],
       "summary": "Replacing experimental carriers and modernizing 15-inch ships offers a practical route to a stronger interwar fleet.",
-      "body": "With hindsight, Dr. Clarke would phase out Argus, Eagle, Furious, and perhaps Hermes in favor of larger purpose-built carriers near Ark Royal's scale. He would also improve the 15-inch gun and turrets, boilers, speed, and protection across the existing battle fleet rather than pivot to the 14-inch weapon.",
+      "body": "Dr. Clarke treats naval aviation as the Royal Navy's fastest-growing area in 1930 and would favor larger purpose-built carriers near Ark Royal's scale. With hindsight, Argus, Eagle, and Furious would be phased out in that order, with Hermes a possible later retirement. The answer also identifies a disconnect between officials negotiating treaty limits and those conceiving the fleet's future requirements. For the battle line, he would improve the existing 15-inch gun and its turrets rather than divert effort into a new 14-inch weapon. Boiler, speed, and protection upgrades would then extract more capability from existing capital ships while the carrier force expanded.",
       "question": "How would you change the Royal Navy starting in 1930?",
       "answerShort": "Build larger purpose-built carriers and modernize existing 15-inch capital ships through improved guns, turrets, machinery, and armour.",
       "sourcePath": "src/transcripts/txt/2022-11-06_T19-02-19_bruships-90-books-from-the-road_EE4W1gQYG0g.txt",
@@ -249,15 +254,18 @@
       "slug": "rainbow-warrior-and-imperial-britain",
       "title": "Rainbow Warrior would trigger a diplomatic crisis, not an Anglo-French war",
       "kind": "qa",
-      "start": "1:01:58",
-      "end": "1:02:31",
+      "start": "35:46",
+      "end": "36:04",
       "topics": ["rainbow-warrior", "france", "british-empire", "new-zealand", "maritime-security", "diplomatic-history"],
       "summary": "A surviving British imperial framework would intensify anger over the French attack, but the dispute would remain diplomatic rather than become a war.",
       "body": "The counterfactual asks how the 1985 sinking of Rainbow Warrior would play out if British imperial power had not declined. Dr. Clarke expects a much larger Anglo-French diplomatic dispute because Britain would react more forcefully on behalf of New Zealand. He nevertheless draws a firm line between serious anger and a declaration of war over the destruction of a Greenpeace ship. The answer is useful for separating the political gravity of state action against a civilian vessel from the much higher threshold for interstate war.",
       "question": "How would France's sinking of Rainbow Warrior affect relations if the British Empire had remained powerful?",
       "answerShort": "It would cause a much more serious diplomatic confrontation with Britain, but not a war.",
       "sourcePath": "src/transcripts/txt/2022-11-06_T19-02-19_bruships-90-books-from-the-road_EE4W1gQYG0g.txt",
-      "evidence": [{"start": "1:01:58", "end": "1:02:31", "note": "The response predicts major diplomatic trouble but rejects war over the sinking."}]
+      "evidence": [
+        {"start": "35:46", "end": "36:04", "note": "The initial answer says an undiminished British Empire would react more strongly to the French attack on Rainbow Warrior."},
+        {"start": "1:01:58", "end": "1:02:31", "note": "The follow-up predicts major diplomatic trouble but rejects war over the sinking."}
+      ]
     },
     {
       "id": "eez-fishing-bans-and-license-disputes",
@@ -274,6 +282,22 @@
       "answerShort": "It would cause a dispute over fishing licenses and access, with neighboring states likely seeking negotiated exceptions.",
       "sourcePath": "src/transcripts/txt/2022-11-06_T19-02-19_bruships-90-books-from-the-road_EE4W1gQYG0g.txt",
       "evidence": [{"start": "1:11:28", "end": "1:12:13", "note": "The response frames the issue as EEZ licensing and anticipates a North American accommodation."}]
+    },
+    {
+      "id": "p-38s-in-the-doolittle-raid-counterfactual",
+      "videoId": "EE4W1gQYG0g",
+      "slug": "p-38s-in-the-doolittle-raid-counterfactual",
+      "title": "P-38s could attempt the Doolittle Raid, but B-25s remain the better choice",
+      "kind": "qa",
+      "start": "1:12:30",
+      "end": "1:12:38",
+      "topics": ["doolittle-raid", "p-38-lightning", "b-25-mitchell", "naval-aviation", "world-war-ii"],
+      "summary": "A very short counterfactual accepts P-38 feasibility while retaining the B-25 Mitchell as the preferable aircraft for the raid.",
+      "body": "The counterfactual substitutes P-38 Lightnings for the B-25 Mitchells used in the Doolittle Raid. Dr. Clarke says the mission could have been attempted with P-38s but regards the B-25 as the better choice. He does not explain range, payload, launch, or recovery constraints in this short reply. The watch point therefore preserves the comparative judgment while making clear that it is not a complete feasibility analysis.",
+      "question": "Could the Doolittle Raid have been conducted with P-38s instead of B-25s?",
+      "answerShort": "It could have been attempted with P-38s, but the B-25 was the better choice.",
+      "sourcePath": "src/transcripts/txt/2022-11-06_T19-02-19_bruships-90-books-from-the-road_EE4W1gQYG0g.txt",
+      "evidence": [{"start": "1:12:30", "end": "1:12:38", "note": "The answer says P-38s could have been used but that B-25s were preferable."}]
     },
     {
       "id": "fleet-construction-preserves-shipyard-skills",
@@ -321,6 +345,20 @@
       "body": "The book first illustrates the value of period annuals through contemporary drawings and technical articles. Its Bullfinch account reconstructs the fatal 1899 machinery failure after a high-pressure connecting rod broke during a high-speed trial. Eleven men died in the steam-filled engine room, while the surviving engineer escaped by staying low and reaching a ladder. The analysis explains why hot steam collected overhead and why quickly reversing loads were more punishing than a simple static calculation suggested. Investigators could not isolate one cause, instead dividing responsibility among steel quality, rod geometry, weight-saving choices, and the stresses of nearly four hundred revolutions per minute.",
       "sourcePath": "src/transcripts/txt/2022-11-06_T19-02-19_bruships-90-books-from-the-road_EE4W1gQYG0g.txt",
       "evidence": [{"start": "1:18:27", "end": "1:27:21", "note": "The transcript displays Brassey's 1900 and reads its detailed Bullfinch casualty and engineering analysis."}]
+    },
+    {
+      "id": "chemical-and-biological-weapons-non-use",
+      "videoId": "EE4W1gQYG0g",
+      "slug": "chemical-and-biological-weapons-non-use",
+      "title": "Large chemical and biological arsenals did not guarantee wartime use",
+      "kind": "notable_point",
+      "start": "1:27:31",
+      "end": "1:28:00",
+      "topics": ["chemical-warfare", "biological-warfare", "world-war-ii", "deterrence"],
+      "summary": "Britain and Germany possessed major chemical and biological weapon stockpiles during the Second World War yet did not employ them against one another.",
+      "body": "Dr. Clarke uses the Second World War to challenge an automatic link between possessing a weapon and employing it. He describes Britain and Germany as holding the two largest available chemical and biological weapon stockpiles, yet neither used them against the other. Germany also refrained from using those weapons against the Soviet Union. Because the brief comparison does not identify the reasons for non-use, it establishes an example of restraint without offering a complete theory of deterrence.",
+      "sourcePath": "src/transcripts/txt/2022-11-06_T19-02-19_bruships-90-books-from-the-road_EE4W1gQYG0g.txt",
+      "evidence": [{"start": "1:27:31", "end": "1:28:00", "note": "The response notes major British and German chemical and biological stockpiles and their non-use during the Second World War."}]
     },
     {
       "id": "warspite-name-and-shipboard-fighting-spirit",
@@ -399,6 +437,20 @@
       "evidence": [{"start": "2:10:02", "end": "2:13:36", "note": "The book passage recounts the mistaken engagement and subsequent fatal Schnellboot attack."}]
     },
     {
+      "id": "james-fennell-grounding-and-rescue",
+      "videoId": "EE4W1gQYG0g",
+      "slug": "james-fennell-grounding-and-rescue",
+      "title": "A 1920 trawler grounding ended in a complete crew rescue",
+      "kind": "notable_point",
+      "start": "2:12:51",
+      "end": "2:13:36",
+      "topics": ["british-warship-losses", "maritime-rescue", "shipwrecks", "interwar-navy"],
+      "summary": "James Fennell was ultimately lost after grounding near Portland, but local rescuer Albert Saunders helped all seventeen people aboard escape.",
+      "body": "The book's 1920 entry follows the trawler James Fennell returning from Gibraltar to Portsmouth when thick fog drove her ashore near Portland. Distress rockets alerted local resident Albert Saunders, who helped catch and secure a line from the vessel. All seventeen people aboard were rescued. Saunders subsequently received the Royal Humane Society's bronze medal for his part in the operation. The ship remained aground until March, when efforts to haul her off ended with her capsizing and sinking, separating the successful rescue of the crew from the eventual loss of the vessel.",
+      "sourcePath": "src/transcripts/txt/2022-11-06_T19-02-19_bruships-90-books-from-the-road_EE4W1gQYG0g.txt",
+      "evidence": [{"start": "2:12:51", "end": "2:13:36", "note": "The loss account describes James Fennell's grounding, Albert Saunders's rescue work, the survival of all seventeen aboard, and the vessel's later sinking."}]
+    },
+    {
       "id": "fisher-and-an-all-in-dreadnought",
       "videoId": "EE4W1gQYG0g",
       "slug": "fisher-and-an-all-in-dreadnought",
@@ -408,7 +460,7 @@
       "end": "2:16:14",
       "topics": ["john-fisher", "hms-dreadnought", "dreadnought-race", "naval-gunnery", "battleships"],
       "summary": "Future knowledge could push Fisher toward a 24-knot ship with fifteen 14-inch guns in five triple turrets and a large opening class.",
-      "body": "The counterfactual deliberately rejects an incremental Dreadnought. Ordering eight exceptionally fast and heavily armed ships at once would confront every rival with an industrial and technical standard far beyond the historical starting point.",
+      "body": "The counterfactual deliberately rejects an incremental Dreadnought. Dr. Clarke proposes a 24-knot ship with five triple 14-inch turrets, giving the design fifteen heavy guns. He would order eight hulls rather than rely on a single technological demonstrator. That opening class would confront every rival with an industrial and technical standard far beyond the historical starting point. The watch point shows how changing the scale of the first order could alter the arms race as much as changing the specifications of the individual ship.",
       "question": "What would you tell Admiral Fisher if you could advise him before Dreadnought?",
       "answerShort": "Build a much faster ship with five triple 14-inch turrets and order enough hulls to establish overwhelming superiority immediately.",
       "sourcePath": "src/transcripts/txt/2022-11-06_T19-02-19_bruships-90-books-from-the-road_EE4W1gQYG0g.txt",
@@ -440,7 +492,7 @@
       "end": "2:26:00",
       "topics": ["battlecruisers", "naval-gunnery", "ship-design", "naval-infrastructure", "hms-hood"],
       "summary": "Broader ships with triple turrets could carry nine or twelve heavy guns and create hulls better suited to later carrier conversion.",
-      "body": "Changing the turret arrangement alters beam, length, weight distribution, and the infrastructure needed to build and support the ships. Renown and Repulse become nine-gun ships, Hood a twelve-gun ship, and the resulting dockyard investment leaves Britain better prepared for later construction.",
+      "body": "Changing the turret arrangement alters beam, length, weight distribution, and the infrastructure needed to build and support the ships. Renown and Repulse become nine-gun ships rather than six-gun ships, while Hood becomes a twelve-gun design. Broader hulls would also be better starting points for later carrier conversion. The larger ships would force investment in docks and yards capable of handling them. One armament decision therefore propagates through firepower, hull form, conversion potential, and the industrial base available for later construction.",
       "question": "What single change would most improve Fisher's battlecruiser line with hindsight?",
       "answerShort": "Adopt triple turrets and broader hulls, gaining heavier broadsides, better conversion potential, and larger supporting infrastructure.",
       "sourcePath": "src/transcripts/txt/2022-11-06_T19-02-19_bruships-90-books-from-the-road_EE4W1gQYG0g.txt",
@@ -456,7 +508,7 @@
       "end": "2:27:39",
       "topics": ["john-fisher", "hyman-rickover", "us-navy", "royal-navy", "naval-leadership", "naval-institutions"],
       "summary": "Both admirals were divisive reformers, but Rickover more completely shaped the enduring structure and capabilities of his navy.",
-      "body": "The comparison distinguishes dramatic reform from institutional persistence. Fisher achieved enormous change, but Rickover's influence on the size, scope, technical culture, and organization of the modern U.S. Navy appears more durable.",
+      "body": "The comparison distinguishes dramatic reform from institutional persistence. Fisher achieved enormous change in the Royal Navy, but the durability of every part of his program remains open to question. Rickover's influence on the size, scope, capabilities, technical culture, and organization of the modern U.S. Navy appears more enduring. Dr. Clarke also points to Henderson as an example of an admiral with stronger political skills, reminding viewers that reform depends on persuading governments as well as directing a service. The watch point separates a leader's immediate innovations from the institutions that remain after that leader has gone.",
       "question": "Did Fisher affect the Royal Navy more than Rickover affected the U.S. Navy?",
       "answerShort": "Probably not; Rickover's influence on the modern U.S. Navy's structure and capabilities proved more enduring.",
       "sourcePath": "src/transcripts/txt/2022-11-06_T19-02-19_bruships-90-books-from-the-road_EE4W1gQYG0g.txt",
@@ -472,7 +524,7 @@
       "end": "2:31:10",
       "topics": ["hmas-canberra", "battle-of-savo-island", "royal-australian-navy", "damage-control", "scuttling"],
       "summary": "Canberra might have been towed for emergency repairs, but operational orders and fear of renewed Japanese attack drove the decision to sink her.",
-      "body": "The answer acknowledges the salvage counterfactual while keeping the commanders' wartime information in view. Admiral Turner's deadline, Canberra's immobility, the risk of capture, and the danger of remaining nearby in daylight made scuttling understandable even if hindsight favors towing.",
+      "body": "The answer acknowledges that Canberra might theoretically have been towed to Tulagi for emergency repairs. Admiral Turner's order imposed a deadline for restoring mobility, while the damaged cruiser remained unable to move under her own power. Commanders also had to weigh capture, another Japanese attack, and the danger of keeping other ships nearby in daylight. Those immediate risks made scuttling understandable even if hindsight favors attempting a tow. The exchange is a useful example of judging a damage-control decision from the information and time pressure available to wartime commanders.",
       "question": "Could HMAS Canberra have survived instead of being scuttled after Savo Island?",
       "answerShort": "Possibly, but the deadline to restore mobility and the immediate Japanese threat made scuttling a defensible wartime decision.",
       "sourcePath": "src/transcripts/txt/2022-11-06_T19-02-19_bruships-90-books-from-the-road_EE4W1gQYG0g.txt",
@@ -488,7 +540,7 @@
       "end": "2:32:25",
       "topics": ["historical-method", "primary-sources", "the-national-archives", "hms-furious", "hms-ark-royal"],
       "summary": "Good naval-history research compares primary records and asks why expected files or routine documents are absent.",
-      "body": "Dr. Clarke recommends comparison rather than trust in a single document. Gaps in the archival record for ships such as Furious and Ark Royal can expose hidden decisions, lost files, or subjects that require a different evidentiary route.",
+      "body": "Dr. Clarke recommends comparing primary sources rather than trusting a single document. Researchers should identify routine or obvious records that ought to exist and then ask why they are absent. Gaps in the archival files for ships such as Furious and Ark Royal can point toward hidden decisions, lost material, or subjects that require a different evidentiary route. An absence is not proof of one preferred explanation, but it can direct the next stage of research. The answer turns missing paperwork from a dead end into a question that must be tested against other sources.",
       "question": "What advice would you give someone writing papers and making videos on Project Orion?",
       "answerShort": "Compare primary sources and investigate expected information that is missing, because archival gaps can reveal as much as surviving content.",
       "sourcePath": "src/transcripts/txt/2022-11-06_T19-02-19_bruships-90-books-from-the-road_EE4W1gQYG0g.txt",
@@ -553,6 +605,22 @@
       "evidence": [{"start": "3:03:31", "end": "3:05:47", "note": "The transcript uses plans of small ships to explain Hunt-class importance and the escort machinery bottleneck."}]
     },
     {
+      "id": "naval-ramming-as-counterintuitive-tactic",
+      "videoId": "EE4W1gQYG0g",
+      "slug": "naval-ramming-as-counterintuitive-tactic",
+      "title": "Naval ramming can work despite endangering the attacking ship",
+      "kind": "qa",
+      "start": "3:17:29",
+      "end": "3:17:58",
+      "topics": ["naval-tactics", "ramming", "close-quarters-combat", "warship-damage"],
+      "summary": "Deliberately colliding with an enemy looks irrational because the attacker may also be disabled, yet the tactic can still achieve its immediate purpose.",
+      "body": "Dr. Clarke chooses naval ramming as his example of a tactic that appears foolish but can work. Deliberately crashing into another vessel resembles hazardous dodgems at sea and exposes the attacking ship to severe damage. The collision can nevertheless produce the intended tactical result. The answer does not present ramming as normally prudent; it illustrates how immediate battlefield effect and the attacker's ability to return safely can point in opposite directions.",
+      "question": "What naval-history example best fits the idea that a tactic is not foolish if it works?",
+      "answerShort": "Ramming, because a deliberate collision can decide an action even though it may leave the attacking ship unable to return safely.",
+      "sourcePath": "src/transcripts/txt/2022-11-06_T19-02-19_bruships-90-books-from-the-road_EE4W1gQYG0g.txt",
+      "evidence": [{"start": "3:17:29", "end": "3:17:58", "note": "The response selects ramming and emphasizes both its apparent absurdity and the danger that the attacker may not get home."}]
+    },
+    {
       "id": "lambert-drawings-of-escort-weapons",
       "videoId": "EE4W1gQYG0g",
       "slug": "lambert-drawings-of-escort-weapons",
@@ -565,6 +633,20 @@
       "body": "The volume is recommended for readers interested in engineering, model building, and precise arrangements rather than a continuous narrative. John Lambert's drawings preserve the dimensions and layout of guns, depth-charge throwers, minesweeper equipment, and other British and American systems. The plans allow a reader to see how individual fittings occupied scarce space aboard escorts and coastal craft. Norman Friedman's introduction supplies interpretive context, but most of the learning value comes from studying the drawings themselves. Dr. Clarke also places the book inside a wider series covering destroyers, escorts, and coastal forces, with another volume still anticipated.",
       "sourcePath": "src/transcripts/txt/2022-11-06_T19-02-19_bruships-90-books-from-the-road_EE4W1gQYG0g.txt",
       "evidence": [{"start": "3:18:03", "end": "3:24:59", "note": "The transcript presents the Lambert collection and explains its use for technical study and modeling."}]
+    },
+    {
+      "id": "historical-interpretation-requires-disagreement",
+      "videoId": "EE4W1gQYG0g",
+      "slug": "historical-interpretation-requires-disagreement",
+      "title": "A strong book recommendation does not require agreement with every argument",
+      "kind": "notable_point",
+      "start": "3:19:19",
+      "end": "3:19:54",
+      "topics": ["historical-method", "historiography", "naval-books"],
+      "summary": "Disagreement among historians is normal, so readers should treat recommended books as contributions to an argument rather than uniform verdicts.",
+      "body": "Dr. Clarke praises Norman Friedman's introduction while explicitly saying that he does not agree with everything Friedman writes. He jokes that two historians will generate many opinions because researchers often draw different conclusions. In his framing, claims of total agreement should invite skepticism: either someone is not being candid or has not developed an independent interpretation. The watch point explains why recommending a naval-history book need not mean endorsing every argument inside it.",
+      "sourcePath": "src/transcripts/txt/2022-11-06_T19-02-19_bruships-90-books-from-the-road_EE4W1gQYG0g.txt",
+      "evidence": [{"start": "3:19:19", "end": "3:19:54", "note": "The discussion uses disagreement with parts of Norman Friedman's introduction to explain why historians commonly reach different conclusions."}]
     },
     {
       "id": "n3-layout-and-no-treaty-battleship-case",
@@ -592,7 +674,7 @@
       "end": "3:55:53",
       "topics": ["bismarck", "kriegsmarine", "naval-deterrence", "plan-z", "nelson-class-battleships", "force-structure"],
       "summary": "Germany lacked enough ships with enough combat power to make Britain fear a fleet engagement rather than merely hunt individual raiders.",
-      "body": "At the start of the war Germany's operational capital ships carried 11-inch guns, and Bismarck arrived too late to shape the initial deterrence calculation. A credible fleet deterrent would need multiple ships able to challenge Nelson and Rodney and survive against the wider British battle line.",
+      "body": "At the start of the war Germany's operational capital ships, Scharnhorst and Gneisenau, carried 11-inch guns. Bismarck entered service too late to shape the initial deterrence calculation, and one 15-inch battleship could not substitute for a balanced fleet. A credible German fleet deterrent would need multiple ships able to challenge Nelson and Rodney and survive against the wider British battle line. Dr. Clarke contrasts that weakness with the hypothetical effect of Italy fielding a much larger group of Littorio-class battleships. The answer treats deterrence as a property of usable force structure rather than the reputation of one famous ship.",
       "question": "Did Bismarck demonstrate the failure of public naval deterrence?",
       "answerShort": "No; one late 15-inch battleship did not constitute the balanced, powerful fleet required to deter the Royal Navy.",
       "sourcePath": "src/transcripts/txt/2022-11-06_T19-02-19_bruships-90-books-from-the-road_EE4W1gQYG0g.txt",
@@ -622,7 +704,7 @@
       "end": "4:06:31",
       "topics": ["kriegsmarine", "carrier-task-forces", "bismarck", "scharnhorst-class-battleships", "naval-logistics", "north-atlantic"],
       "summary": "A viable German task force would need a carrier and several capital ships merely to break out and remain operational in the Atlantic.",
-      "body": "Pairs such as Bismarck and Prinz Eugen or Scharnhorst and Gneisenau could attempt raids, but they lacked the depth to fight through opposition and stay at sea as a balanced formation. Dr. Clarke's minimum sketch adds a carrier and at least three capital ships, underscoring Germany's force-structure gap.",
+      "body": "Pairs such as Bismarck and Prinz Eugen or Scharnhorst and Gneisenau could attempt raids, but a sortie was not the same as sustained task-force operations. A balanced formation would have to break into the North Atlantic under observation, fight through opposition, and retain enough strength to remain at sea. Dr. Clarke's minimum sketch adds a carrier and at least three capital ships merely to give the force a chance of breaking out. Germany also lacked the escort, logistical, and reserve depth needed to keep such a formation operational. The distinction exposes the gap between possessing individual raiders and maintaining a fleet able to campaign as a task force.",
       "question": "Why did Germany operate individual major ships rather than true naval task forces?",
       "answerShort": "It lacked the carrier, capital ships, escorts, and depth needed to break into the Atlantic and sustain a balanced force there.",
       "sourcePath": "src/transcripts/txt/2022-11-06_T19-02-19_bruships-90-books-from-the-road_EE4W1gQYG0g.txt",
@@ -771,6 +853,22 @@
       "answerShort": "Probably not; the later gun's much greater length and mounting requirements would exceed the old installation's limits.",
       "sourcePath": "src/transcripts/txt/2022-11-06_T19-02-19_bruships-90-books-from-the-road_EE4W1gQYG0g.txt",
       "evidence": [{"start": "50:07", "end": "50:46", "note": "The response identifies gun length and platform constraints as the incompatibility."}]
+    },
+    {
+      "id": "nineteenth-century-warspite-museum-choice",
+      "videoId": "EE4W1gQYG0g",
+      "slug": "nineteenth-century-warspite-museum-choice",
+      "title": "The nineteenth-century Warspite would be a revealing museum ship",
+      "kind": "qa",
+      "start": "50:57",
+      "end": "51:34",
+      "topics": ["hms-warspite", "museum-ships", "royal-navy", "naval-history"],
+      "summary": "Recovering the earlier HMS Warspite would make an interesting lost design available for direct study and preservation.",
+      "body": "Asked which nineteenth-century warship he would recover for study and preservation, Dr. Clarke chooses HMS Warspite. His first reason is the ship's interesting design and the chance to examine her more closely. He then jokes that restoring an earlier Warspite rather than the better-known later ship would leave a fellow historian both pleased and frustrated. The answer is a personal preservation choice, not a claim that this vessel was the single most historically important possible survivor.",
+      "question": "Which nineteenth-century warship would you bring into the present as a museum ship?",
+      "answerShort": "HMS Warspite, because the earlier ship's design would reward direct study and preservation.",
+      "sourcePath": "src/transcripts/txt/2022-11-06_T19-02-19_bruships-90-books-from-the-road_EE4W1gQYG0g.txt",
+      "evidence": [{"start": "50:57", "end": "51:34", "note": "The answer chooses the nineteenth-century HMS Warspite for her interesting design and the opportunity to study her."}]
     },
     {
       "id": "county-class-guided-missile-conversions",
@@ -959,6 +1057,36 @@
       "body": "The problem was not merely choosing the wrong hull. German leadership lacked a stable account of what the navy was meant to achieve in foreign policy. Heavy cruisers, commerce raiders, and Plan Z's fleet ambitions therefore answered different implied missions while competing for the same limited resources. Without a political objective, ship types and construction schedules could not be measured against a coherent strategic task. The watch point links the earlier procurement mismatch to the more fundamental question every navy must answer: what national outcome is the fleet supposed to produce?",
       "sourcePath": "src/transcripts/txt/2022-11-06_T19-02-19_bruships-90-books-from-the-road_EE4W1gQYG0g.txt",
       "evidence": [{"start": "4:10:59", "end": "4:11:35", "note": "The transcript explicitly questions whether Germany understood what it wanted its navy to do."}]
+    },
+    {
+      "id": "hood-design-versus-as-built-displacement",
+      "videoId": "EE4W1gQYG0g",
+      "slug": "hood-design-versus-as-built-displacement",
+      "title": "Hood's as-built displacement is not the same as the Admiral-class design figure",
+      "kind": "qa",
+      "start": "4:20:40",
+      "end": "4:21:00",
+      "topics": ["hms-hood", "battlecruisers", "ship-design", "naval-architecture", "displacement"],
+      "summary": "Discussions commonly use Hood's completed 41,200-ton figure rather than the earlier 36,500-ton design target because the built ship is the historical vessel that entered service.",
+      "body": "The question contrasts the Admiral-class design figure of roughly 36,500 tons with Hood's completed displacement of about 41,200 tons. Dr. Clarke explains that most discussions use the built version because that is the ship that actually existed. A paper design and the completed vessel are therefore different reference points even when they share a class lineage. The watch point cautions readers to label design-stage and as-built figures instead of treating them as interchangeable specifications.",
+      "question": "Why is Hood usually described by her 41,200-ton displacement rather than the Admiral-class design figure of about 36,500 tons?",
+      "answerShort": "Because the 41,200-ton figure describes the ship as built, while the smaller number belongs to an earlier design state.",
+      "sourcePath": "src/transcripts/txt/2022-11-06_T19-02-19_bruships-90-books-from-the-road_EE4W1gQYG0g.txt",
+      "evidence": [{"start": "4:20:40", "end": "4:21:00", "note": "The response distinguishes the Admiral-class design displacement from the larger figure associated with Hood as completed."}]
+    },
+    {
+      "id": "history-as-interlocking-human-systems",
+      "videoId": "EE4W1gQYG0g",
+      "slug": "history-as-interlocking-human-systems",
+      "title": "Narrow historical fields reveal parts of a larger human system",
+      "kind": "notable_point",
+      "start": "4:21:35",
+      "end": "4:22:30",
+      "topics": ["historical-method", "systems-thinking", "naval-history", "deterrence"],
+      "summary": "Humankind is too large and interconnected to study all at once, so naval history and deterrence provide manageable views into wider human behavior.",
+      "body": "Dr. Clarke links historical study to systems thinking. Humankind forms a system too large and complicated to understand all at once, so historians examine smaller subjects and periods. His own focus on naval history is one such manageable slice, joined to work on conventional and strategic deterrence. The closing reflection explains how a narrow specialty can illuminate connections within the wider human story without claiming to explain the whole of it.",
+      "sourcePath": "src/transcripts/txt/2022-11-06_T19-02-19_bruships-90-books-from-the-road_EE4W1gQYG0g.txt",
+      "evidence": [{"start": "4:21:35", "end": "4:22:30", "note": "The transcript describes humankind as a vast interlocking system and explains naval history and deterrence as narrower fields for studying it."}]
     }
   ]
 }

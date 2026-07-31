@@ -1,7 +1,26 @@
 {
   "videoId": "ztvamZToNzk",
-  "topics": ["imperial-japanese-navy", "naval-history-books", "live-q-and-a", "warship-design", "royal-navy", "naval-industrial-base", "washington-naval-treaty"],
+  "topics": ["imperial-japanese-navy", "naval-history-books", "live-q-and-a", "warship-design", "royal-navy", "naval-industrial-base", "washington-naval-treaty", "naval-aviation", "heavy-cruisers"],
   "segments": [
+    {
+      "id": "warspite-swordfish-beyond-spotting",
+      "videoId": "ztvamZToNzk",
+      "slug": "warspite-swordfish-beyond-spotting",
+      "title": "Warspite's Swordfish fought beyond spotting",
+      "kind": "qa",
+      "start": "4:57",
+      "end": "5:51",
+      "topics": ["hms-warspite", "fairey-swordfish", "naval-aviation", "norwegian-campaign", "battles-of-narvik"],
+      "summary": "Warspite's elderly Swordfish spotter aircraft could do much more than correct gunfire, including a probable fighter kill in Norway and a submarine attack at Narvik.",
+      "body": "Warspite's spotter Swordfish was a 1933 design that had received little modernization, yet it remained a capable operational aircraft. Dr. Clarke says it probably shot down a Bf 109 during the Norwegian campaign, while cautioning that other stories about its exploits remain unconfirmed. The aircraft also sank a submarine at Narvik, although ship-launched aircraft had already achieved submarine kills during World War I. The exchange shows how a battleship's aircraft could extend the ship's reach into reconnaissance and combat rather than serving only as a passive gunnery aid.",
+      "question": "Was Warspite's spotter aircraft involved in combat beyond directing the battleship's guns?",
+      "answerShort": "Yes. Its Swordfish probably shot down a Bf 109 in Norway and sank a submarine at Narvik, though some other reported exploits remain unconfirmed.",
+      "sourcePath": "src/transcripts/txt/2024-01-07_T19-16-08_bruships-134-imperial-japanese-navy-books_ztvamZToNzk.txt",
+      "evidence": [
+        {"start": "4:57", "end": "5:51", "note": "Dr. Clarke describes Warspite's barely modernized Swordfish as a capable aircraft and says it probably shot down a Bf 109 during the Norwegian campaign."},
+        {"start": "1:17:39", "end": "1:17:50", "note": "The follow-up says Warspite's Swordfish sank a submarine at Narvik but was not the first ship-launched aircraft to do so."}
+      ]
+    },
     {
       "id": "high-speed-n3-g3-treaty-response",
       "videoId": "ztvamZToNzk",
@@ -118,6 +137,38 @@
       "evidence": [{"start": "31:33", "end": "34:42", "note": "The answer contrasts US screening assumptions with British pre-emptive zigzagging and onboard underwater-detection equipment."}]
     },
     {
+      "id": "lighter-nelson-design-speed",
+      "videoId": "ztvamZToNzk",
+      "slug": "lighter-nelson-design-speed",
+      "title": "How a lighter Nelson design could reach 28 knots",
+      "kind": "qa",
+      "start": "35:43",
+      "end": "36:25",
+      "topics": ["nelson-class-battleships", "fast-battleships", "steam-turbines", "torpedoes", "warship-design"],
+      "summary": "Removing torpedo equipment, reducing the belt, and replacing the 6-inch battery with 4.7-inch guns could free enough weight and hull volume for a four-shaft Nelson capable of roughly 28 knots.",
+      "body": "The proposed Nelson retains its 16-inch main battery but trades away torpedo equipment, some belt thickness, and the heavier 6-inch secondary battery. Those changes release both displacement and internal volume for machinery. Dr. Clarke expects a four-shaft arrangement rather than the historical machinery layout. With that redistribution, the ship could plausibly exceed 28 knots while remaining near the 35,000-ton standard.",
+      "question": "How fast could a 35,000-ton Nelson be with a 12-inch belt, 4.7-inch secondary guns, and no torpedoes?",
+      "answerShort": "A four-shaft design could probably make at least 28 knots because the lighter protection, secondary battery, and deleted torpedoes free space and weight for machinery.",
+      "sourcePath": "src/transcripts/txt/2024-01-07_T19-16-08_bruships-134-imperial-japanese-navy-books_ztvamZToNzk.txt",
+      "evidence": [{"start": "35:43", "end": "36:25", "note": "The answer proposes four shafts and estimates more than 28 knots after removing torpedoes and substituting lighter armor and secondary guns."}]
+    },
+    {
+      "id": "bismarck-zigzag-submarine-risk",
+      "videoId": "ztvamZToNzk",
+      "slug": "bismarck-zigzag-submarine-risk",
+      "title": "Why Bismarck might zigzag against an unlikely submarine",
+      "kind": "qa",
+      "start": "38:08",
+      "end": "38:50",
+      "topics": ["bismarck", "kriegsmarine", "submarine-warfare", "royal-navy", "naval-intelligence"],
+      "summary": "Bismarck's zigzagging could reflect uncertainty about British submarines as well as an attempt to shake shadowing cruisers, even though most Royal Navy boats guarded ports and return routes.",
+      "body": "The maneuver need not have served only to lose the British cruisers following Bismarck. Dr. Clarke considers it plausible that German officers also allowed for a Royal Navy submarine threat. A British boat waiting in the mid-Atlantic was unlikely, but Bismarck's command could not know that none was present. Most British submarines were positioned nearer French and German ports and the routes back to them, showing how the real deployment and the threat perceived aboard the target could differ.",
+      "question": "Was Bismarck zigzagging only to lose the shadowing cruisers, or might the Germans also have feared Royal Navy submarines?",
+      "answerShort": "They could have feared a submarine even though one in the mid-Atlantic was unlikely, because Bismarck could not know the actual British deployment.",
+      "sourcePath": "src/transcripts/txt/2024-01-07_T19-16-08_bruships-134-imperial-japanese-navy-books_ztvamZToNzk.txt",
+      "evidence": [{"start": "38:08", "end": "38:50", "note": "Dr. Clarke says German officers could have considered a British submarine even though most Royal Navy boats covered ports and return routes."}]
+    },
+    {
       "id": "queen-mary-survives-turret-hit",
       "videoId": "ztvamZToNzk",
       "slug": "queen-mary-survives-turret-hit",
@@ -162,6 +213,22 @@
       "answerShort": "It would introduce hazardous emergency flight paths and major expense, with little advantage over building two carriers.",
       "sourcePath": "src/transcripts/txt/2024-01-07_T19-16-08_bruships-134-imperial-japanese-navy-books_ztvamZToNzk.txt",
       "evidence": [{"start": "50:04", "end": "50:54", "note": "The answer discusses emergency turns toward the island and the design's cost and complexity."}]
+    },
+    {
+      "id": "west-german-g3-baltic-role",
+      "videoId": "ztvamZToNzk",
+      "slug": "west-german-g3-baltic-role",
+      "title": "What a surviving G3 could do in the Cold War Baltic",
+      "kind": "qa",
+      "start": "53:59",
+      "end": "55:24",
+      "topics": ["g3-class-battlecruisers", "battlecruisers", "west-german-navy", "baltic-sea", "cold-war"],
+      "summary": "A magically intact G3 in 1960s West German service would be most useful as an intimidating Baltic presence, while its proper classification still depends on comparison with contemporary battleships.",
+      "body": "Dr. Clarke expects West Germany to use the unexpected ship because a heavily armed capital ship would be an imposing presence in the Baltic. Its value would lie more in deterrent appearance than in matching a purpose-built 1960s fleet. He still classifies the G3 as a battlecruiser because ship types must be compared with the battleships of their own design generation, not older ships that technology has overtaken. For a British design closer to a fast battleship, he points instead toward the F3 line of development.",
+      "question": "How would the West German Navy use a fully intact G3 that appeared in the 1960s, and should the design count as a battleship?",
+      "answerShort": "It would probably serve as an intimidating Baltic presence, but the G3 remains a battlecruiser when compared with the battleships of its own generation.",
+      "sourcePath": "src/transcripts/txt/2024-01-07_T19-16-08_bruships-134-imperial-japanese-navy-books_ztvamZToNzk.txt",
+      "evidence": [{"start": "53:59", "end": "55:24", "note": "The answer assigns the hypothetical ship a Baltic role and explains why G3 remains a battlecruiser while F3 better represents a fast-battleship direction."}]
     },
     {
       "id": "naval-retention-critical-mass",
@@ -311,20 +378,69 @@
       "evidence": [{"start": "1:22:09", "end": "1:22:27", "note": "The answer attributes the coal assumption to political confidence that Britain would not enter the war."}]
     },
     {
+      "id": "captured-tirpitz-prize-and-transfer",
+      "videoId": "ztvamZToNzk",
+      "slug": "captured-tirpitz-prize-and-transfer",
+      "title": "What Britain might do with a captured Tirpitz",
+      "kind": "qa",
+      "start": "1:22:29",
+      "end": "1:23:42",
+      "topics": ["tirpitz", "tribal-class-destroyers-1936", "captured-warships", "prize-law", "soviet-navy", "arctic-convoys", "royal-sovereign-class-battleships"],
+      "summary": "Destroyer crews capturing Tirpitz would earn prize money, but Britain would probably exploit the ship for intelligence and transfer the maintenance burden to the Soviet Union.",
+      "body": "An independently captured Tirpitz would qualify as a prize, with the crew's award tied to the ship's assessed value. Britain had little need for a German battleship that required unfamiliar machinery, ammunition, and support, and might otherwise prefer to sink it. Dr. Clarke therefore suggests dismantling enough of the ship to collect technical intelligence and then handing it to the Soviet Union. That transfer could satisfy the Soviet request for a battleship on Arctic-convoy duty without sending Royal Sovereign. The scenario turns capture into a question of logistics and alliance management rather than assuming that possession automatically makes the ship useful to the Royal Navy.",
+      "question": "What would happen if Tribal-class destroyers captured Tirpitz and brought her back to Britain?",
+      "answerShort": "The crews would receive prize money, Britain would study the ship, and the most practical disposition might be transfer to the Soviet Union rather than Royal Navy service.",
+      "sourcePath": "src/transcripts/txt/2024-01-07_T19-16-08_bruships-134-imperial-japanese-navy-books_ztvamZToNzk.txt",
+      "evidence": [
+        {"start": "1:22:29", "end": "1:23:42", "note": "The answer discusses prize money, British lack of need for Tirpitz, technical exploitation, and transfer to the Soviet Union."},
+        {"start": "1:24:34", "end": "1:25:13", "note": "The follow-up connects the transfer with the Soviet request for a battleship to escort Arctic convoys and Britain's historical loan of Royal Sovereign."}
+      ]
+    },
+    {
+      "id": "german-five-inch-dual-purpose-battery",
+      "videoId": "ztvamZToNzk",
+      "slug": "german-five-inch-dual-purpose-battery",
+      "title": "Why a German 5-inch dual-purpose battery was unlikely",
+      "kind": "qa",
+      "start": "1:23:42",
+      "end": "1:24:22",
+      "topics": ["kriegsmarine", "scharnhorst-class-battleships", "bismarck-class-battleships", "dual-purpose-guns", "anti-aircraft-warfare", "naval-gunnery"],
+      "summary": "A workable German 5-inch dual-purpose gun could replace separate secondary and anti-aircraft batteries, but the Kriegsmarine's committee system made adoption doubtful.",
+      "body": "A successful 5-inch dual-purpose weapon could combine work otherwise divided between separate secondary and anti-aircraft guns. Dr. Clarke would begin by adding the historical mount totals from those two batteries to estimate the new battery size. He might reduce that number slightly if fewer mounts produced better individual firing arcs. The technical simplification is plausible, but he doubts the Kriegsmarine's committee structure would approve and implement it in time for Scharnhorst or Bismarck.",
+      "question": "Would Scharnhorst and Bismarck receive a German 5-inch dual-purpose gun if it were available before World War II?",
+      "answerShort": "They should replace much of the separate secondary and anti-aircraft battery with it, but German committee decisions make that outcome unlikely.",
+      "sourcePath": "src/transcripts/txt/2024-01-07_T19-16-08_bruships-134-imperial-japanese-navy-books_ztvamZToNzk.txt",
+      "evidence": [{"start": "1:23:42", "end": "1:24:22", "note": "The answer proposes replacing the separate secondary and antiaircraft totals with dual-purpose mounts while warning that the committee system would resist the change."}]
+    },
+    {
       "id": "japan-enters-war-1939",
       "videoId": "ztvamZToNzk",
       "slug": "japan-enters-war-1939",
       "title": "Japan joins Germany in September 1939",
       "kind": "qa",
       "start": "1:26:16",
-      "end": "1:31:39",
+      "end": "1:31:12",
       "topics": ["imperial-japanese-navy", "world-war-ii", "far-east", "us-navy", "italian-navy", "scharnhorst-class-battleships"],
       "summary": "An early Japanese attack is more likely to bring the United States immediately into the war than to prevent Britain reinforcing the Far East.",
       "body": "Germany had only Scharnhorst and Gneisenau, both still working through trials and modifications, so its surface fleet was not the chief constraint on British deployment. Britain and France still had their full Far Eastern garrisons, while Japan lacked the later forward bases in French Indochina. Attacking British and French possessions would also require Japan to move past the Philippines and probably bring the United States into the conflict immediately. Dr. Clarke argues that Italy's six battleships mattered more to Mediterranean force allocation; visible American entry in 1939 might persuade Mussolini to remain neutral. The resulting coalition is therefore more dangerous to Japan and Germany than the early attack is to Britain.",
       "question": "What happens if Japan attacks British and French Far Eastern possessions in September 1939?",
       "answerShort": "The attack likely brings the United States into the war immediately, while Germany's tiny operational surface fleet does little to stop Britain sending forces east unless Italy also enters.",
       "sourcePath": "src/transcripts/txt/2024-01-07_T19-16-08_bruships-134-imperial-japanese-navy-books_ztvamZToNzk.txt",
-      "evidence": [{"start": "1:26:16", "end": "1:31:39", "note": "The answer assesses German readiness, Allied Far Eastern strength, Japanese basing, Italian fleet pressure, and American entry."}]
+      "evidence": [{"start": "1:26:16", "end": "1:31:12", "note": "The answer assesses German readiness, Allied Far Eastern strength, Japanese basing, Italian fleet pressure, and American entry."}]
+    },
+    {
+      "id": "british-armoured-doctrine-before-north-africa",
+      "videoId": "ztvamZToNzk",
+      "slug": "british-armoured-doctrine-before-north-africa",
+      "title": "British armoured doctrine before the North African campaign",
+      "kind": "notable_point",
+      "start": "1:31:15",
+      "end": "1:31:50",
+      "topics": ["british-army", "armoured-warfare", "north-african-campaign", "fall-of-france", "military-doctrine"],
+      "summary": "North Africa gave British armoured forces confidence and forced implementation, but many of the ideas had already been exercised during the 1920s and 1930s.",
+      "body": "Dr. Clarke rejects the simple claim that the North African campaign taught Britain how to deal with tanks from scratch. British forces had conducted armoured exercises and developed relevant ideas throughout the 1920s and 1930s. Some of those concepts were already being applied during the fighting in northern France. North Africa mattered because wartime conditions forced broader implementation and built confidence, illustrating the difference between inventing doctrine and making an existing doctrine work in operations.",
+      "sourcePath": "src/transcripts/txt/2024-01-07_T19-16-08_bruships-134-imperial-japanese-navy-books_ztvamZToNzk.txt",
+      "evidence": [{"start": "1:31:15", "end": "1:31:50", "note": "The discussion distinguishes interwar British armoured exercises and ideas from their wartime implementation in France and North Africa."}]
     },
     {
       "id": "captured-russian-warships-japan",
@@ -357,6 +473,22 @@
       "answerShort": "Twenty is the best total in this account: eighteen were picked up by the British and two by the Germans, while smaller figures often count only one rescue ship's survivors.",
       "sourcePath": "src/transcripts/txt/2024-01-07_T19-16-08_bruships-134-imperial-japanese-navy-books_ztvamZToNzk.txt",
       "evidence": [{"start": "1:32:54", "end": "1:33:51", "note": "The answer gives the twenty-survivor total and explains how destroyer-specific counts create lower figures."}]
+    },
+    {
+      "id": "channel-islands-mid-channel-geography",
+      "videoId": "ztvamZToNzk",
+      "slug": "channel-islands-mid-channel-geography",
+      "title": "If the Channel Islands sat in the middle of the English Channel",
+      "kind": "qa",
+      "start": "1:34:03",
+      "end": "1:34:40",
+      "topics": ["channel-islands", "english-channel", "world-war-ii", "military-geography", "coastal-defence"],
+      "summary": "Moving the Channel Islands into the center of the English Channel would make their control strategically urgent and make British abandonment much less likely.",
+      "body": "A central position would turn the islands from an exposed outpost into terrain directly affecting movement through the English Channel. Britain would therefore fight much harder to retain them during World War II. Evacuation would be planned more carefully because surrendering the position could threaten the surrounding sea route. The islands would also be more exposed to weather and attack, so their greater strategic value would come with a more demanding defence problem.",
+      "question": "What changes if the Channel Islands are located in the middle of the English Channel?",
+      "answerShort": "Britain would be much less willing to abandon them and would defend and evacuate them more carefully because control of a central position would directly affect the Channel.",
+      "sourcePath": "src/transcripts/txt/2024-01-07_T19-16-08_bruships-134-imperial-japanese-navy-books_ztvamZToNzk.txt",
+      "evidence": [{"start": "1:34:03", "end": "1:34:40", "note": "The answer says Britain would fight harder to retain centrally placed islands, evacuate them more carefully, and face a more exposed defence problem."}]
     },
     {
       "id": "admiralty-staff-formation-1912",
@@ -438,6 +570,25 @@
       "evidence": [{"start": "2:07:08", "end": "2:08:31", "note": "The answer describes a roughly 50-percent British firepower increase and the German industrial and political dilemma it creates."}]
     },
     {
+      "id": "hawkins-twin-seven-five-inch-turrets",
+      "videoId": "ztvamZToNzk",
+      "slug": "hawkins-twin-seven-five-inch-turrets",
+      "title": "Why twin 7.5-inch turrets make Hawkins much heavier",
+      "kind": "qa",
+      "start": "2:08:31",
+      "end": "2:09:46",
+      "topics": ["hawkins-class-cruisers", "7-5-inch-guns", "twin-turrets", "heavy-cruisers", "warship-design", "naval-gunnery"],
+      "summary": "Replacing Hawkins's single 7.5-inch guns with six or seven twin turrets would improve the battery arrangement but push the cruiser toward roughly 12,000 tons.",
+      "body": "A six-turret battery would carry twelve 7.5-inch guns and require much more weight for rotating structures, ammunition handling, and hull support than the historical single mounts. Fitting the turrets fore, aft, and on the wings would also complicate the layout and firing arcs. Dr. Clarke suggests that a seventh twin mount might better preserve the desired broadside arrangement. Whichever exact layout is chosen, the ship grows toward about 12,000 tons, although the turreted battery could make later conversion to a more useful configuration easier.",
+      "question": "Would replacing Hawkins's single 7.5-inch guns with six twin turrets better prepare Britain for the next generation of cruisers?",
+      "answerShort": "It would create a more powerful turreted cruiser, but the mounts and supporting structure would probably raise displacement to around 12,000 tons.",
+      "sourcePath": "src/transcripts/txt/2024-01-07_T19-16-08_bruships-134-imperial-japanese-navy-books_ztvamZToNzk.txt",
+      "evidence": [
+        {"start": "2:08:31", "end": "2:09:46", "note": "The answer considers six or seven twin 7.5-inch turrets, their layout, and a displacement near 12,000 tons."},
+        {"start": "2:12:26", "end": "2:12:47", "note": "The follow-up says a turreted Hawkins arrangement would be easier to convert into something better."}
+      ]
+    },
+    {
       "id": "warship-steel-foundry-bottleneck",
       "videoId": "ztvamZToNzk",
       "slug": "warship-steel-foundry-bottleneck",
@@ -517,6 +668,41 @@
       "answerShort": "Partly, but the deeper difference was strategic: the United States and Japan focused on each other in the Pacific, while Britain had to cover several theaters and missions simultaneously.",
       "sourcePath": "src/transcripts/txt/2024-01-07_T19-16-08_bruships-134-imperial-japanese-navy-books_ztvamZToNzk.txt",
       "evidence": [{"start": "2:27:06", "end": "2:27:45", "note": "The answer contrasts the Pacific focus of the US and Japanese navies with Britain's global commitments."}]
+    },
+    {
+      "id": "hood-boat-deck-fire-uncertainty",
+      "videoId": "ztvamZToNzk",
+      "slug": "hood-boat-deck-fire-uncertainty",
+      "title": "Why Hood's boat-deck fire cannot be judged from timing alone",
+      "kind": "qa",
+      "start": "2:28:11",
+      "end": "2:29:15",
+      "topics": ["hms-hood", "damage-control", "battle-of-the-denmark-strait", "naval-ammunition", "historical-sources", "naval-operations"],
+      "summary": "The loss of Hood's damage-control reports makes it impossible to know how quickly crews reached the boat-deck fire or what other emergencies competed for their attention.",
+      "body": "No surviving damage-control account explains when Hood's crew reached the boat-deck fire, what else they were fighting, or how the local command made its decisions. Reaching the fire also required men to work on an exposed deck during battle. Dr. Clarke therefore refuses to criticize the response speed from the surviving evidence alone. A reconstructed Hood would still need boats on deck and protection beneath them, but the exact redesign would depend on knowing how the historical fire spread. The exchange is a useful example of treating missing testimony as a real limit on technical judgment rather than filling the gap with confidence.",
+      "question": "How quickly could Hood's damage-control crews have responded to the boat-deck ammunition fire, and what would a surviving rebuild change?",
+      "answerShort": "The evidence is insufficient to judge the crew's response, while any later redesign would depend on the fire's actual path rather than simply removing the boats.",
+      "sourcePath": "src/transcripts/txt/2024-01-07_T19-16-08_bruships-134-imperial-japanese-navy-books_ztvamZToNzk.txt",
+      "evidence": [
+        {"start": "2:28:11", "end": "2:29:15", "note": "Dr. Clarke explains that no crew reports survive to show their arrival time, competing damage, or decision process."},
+        {"start": "2:29:43", "end": "2:30:15", "note": "The follow-up says boats still need deck space and protection beneath them, while the refit response depends on what actually happened."}
+      ]
+    },
+    {
+      "id": "st-lawrence-seaway-before-world-war-two",
+      "videoId": "ztvamZToNzk",
+      "slug": "st-lawrence-seaway-before-world-war-two",
+      "title": "What an early St. Lawrence Seaway changes in World War II",
+      "kind": "qa",
+      "start": "2:31:19",
+      "end": "2:32:19",
+      "topics": ["st-lawrence-seaway", "transport-infrastructure", "canadian-industrial-base", "military-logistics", "war-production", "world-war-ii"],
+      "summary": "A Panamax-scale St. Lawrence Seaway completed by 1930 would improve access to the continental interior and let wartime industry disperse, with many marginal gains accumulating across production.",
+      "body": "Opening the seaway before World War II would give ocean shipping easier access to the North American interior. Industry could spread across more locations while moving raw materials and finished goods more efficiently. Dr. Clarke does not identify one decisive campaign transformed by the project. Instead, he expects many small changes in transport and production to accumulate into a larger result that is difficult to isolate in a simple counterfactual. The answer shows why infrastructure often changes war through system-wide margins rather than one dramatic event.",
+      "question": "How might World War II change if a Panamax-scale St. Lawrence Seaway were completed by 1930?",
+      "answerShort": "It would improve inland access, industrial dispersal, and transport efficiency, producing many small gains whose combined wartime effect would be substantial but hard to isolate.",
+      "sourcePath": "src/transcripts/txt/2024-01-07_T19-16-08_bruships-134-imperial-japanese-navy-books_ztvamZToNzk.txt",
+      "evidence": [{"start": "2:31:19", "end": "2:32:19", "note": "The answer links an early seaway with access to the interior, dispersed industry, and cumulative marginal efficiencies."}]
     },
     {
       "id": "repulse-anti-aircraft-upgrade",
@@ -615,6 +801,25 @@
       "evidence": [{"start": "2:38:56", "end": "2:39:55", "note": "The answer explains boiler state, six-hour preparation, and one- or three-hour readiness conditions."}]
     },
     {
+      "id": "admiral-class-heavy-cruiser-batch",
+      "videoId": "ztvamZToNzk",
+      "slug": "admiral-class-heavy-cruiser-batch",
+      "title": "How many 1941 Admiral-class heavy cruisers Britain might build",
+      "kind": "qa",
+      "start": "2:41:40",
+      "end": "2:42:14",
+      "topics": ["admiral-class-cruisers", "heavy-cruisers", "royal-navy", "naval-procurement", "imperial-japanese-navy", "italian-navy", "crown-colony-class-cruisers"],
+      "summary": "If large cruisers were the quickest way to put heavy firepower at sea against Italy and Japan, Britain would probably seek a six- to eight-ship batch but still rank other wartime needs first.",
+      "body": "The size of the program depends on why Britain has chosen the 1941 heavy cruiser and which threats the ships must answer. If the type is the quickest way to place substantial gun power at sea against Italy and Japan, Dr. Clarke expects an order of roughly six to eight. That batch resembles the scale used for Crown Colony-class construction rather than an unlimited new cruiser fleet. A later follow-up adds that Britain would want the ships but could still defer them behind more urgent requirements, separating an attractive design from an affordable procurement priority.",
+      "question": "How many 1941 Admiral-class heavy cruisers would the Royal Navy build?",
+      "answerShort": "Probably six to eight if they were needed quickly against the Italian and Japanese fleets, although more urgent programs could still take priority.",
+      "sourcePath": "src/transcripts/txt/2024-01-07_T19-16-08_bruships-134-imperial-japanese-navy-books_ztvamZToNzk.txt",
+      "evidence": [
+        {"start": "2:41:40", "end": "2:42:14", "note": "The answer estimates six to eight ships if heavy cruisers provide the quickest needed firepower against Italy and Japan."},
+        {"start": "3:00:01", "end": "3:00:27", "note": "The follow-up says Britain would like the design but had other requirements to fund first."}
+      ]
+    },
+    {
       "id": "carrier-eight-inch-gun-tradeoffs",
       "videoId": "ztvamZToNzk",
       "slug": "carrier-eight-inch-gun-tradeoffs",
@@ -633,6 +838,22 @@
         {"start": "2:47:28", "end": "2:49:13", "note": "The discussion describes the turrets' height, off-center position, and stability effects."},
         {"start": "2:57:34", "end": "2:58:07", "note": "The follow-up assigns the recovered space and weight to aircraft, stores, handling, and 5-inch guns."}
       ]
+    },
+    {
+      "id": "britain-early-lvt-dukw-designs",
+      "videoId": "ztvamZToNzk",
+      "slug": "britain-early-lvt-dukw-designs",
+      "title": "If Britain received LVT and DUKW designs in 1938",
+      "kind": "qa",
+      "start": "2:46:52",
+      "end": "2:47:26",
+      "topics": ["lvt", "dukw", "amphibious-warfare", "british-army", "royal-navy", "norwegian-campaign", "commandos"],
+      "summary": "Useful LVT and DUKW designs arriving in 1938 could give the British Army and Royal Navy practical amphibious vehicles early enough for commando operations in Norway.",
+      "body": "Possession of drawings would matter only if British evaluators found the vehicles useful and placed them with organizations able to develop them. Dr. Clarke expects the Army to value the wheeled DUKW concept and the Navy to value the tracked LVT family. Starting in 1938 leaves time for limited production and doctrine before the Norwegian campaign. The vehicles might then support commando and amphibious operations there, making institutional adoption as important as obtaining the design itself.",
+      "question": "What changes if Britain receives workable LVT and DUKW designs in 1938?",
+      "answerShort": "The Army and Navy would probably develop them, potentially making amphibious vehicles available for commando operations during the Norwegian campaign.",
+      "sourcePath": "src/transcripts/txt/2024-01-07_T19-16-08_bruships-134-imperial-japanese-navy-books_ztvamZToNzk.txt",
+      "evidence": [{"start": "2:46:52", "end": "2:47:26", "note": "The answer assigns the DUKW concept to Army interest, the LVT concept to Navy interest, and suggests possible commando use in Norway."}]
     },
     {
       "id": "imperial-japanese-naval-air-service-book",
@@ -665,6 +886,22 @@
       "evidence": [{"start": "3:00:27", "end": "3:01:14", "note": "The answer distinguishes brief operations near deep ocean water from persistent Mediterranean shallows."}]
     },
     {
+      "id": "fifteen-thousand-ton-nine-two-inch-cruiser-limit",
+      "videoId": "ztvamZToNzk",
+      "slug": "fifteen-thousand-ton-nine-two-inch-cruiser-limit",
+      "title": "Who benefits from a 15,000-ton, 9.2-inch cruiser limit",
+      "kind": "qa",
+      "start": "3:04:12",
+      "end": "3:04:42",
+      "topics": ["treaty-cruisers", "9-2-inch-guns", "heavy-cruisers", "us-navy", "imperial-japanese-navy", "naval-industrial-base", "washington-naval-treaty"],
+      "summary": "The United States might prefer a larger 9.2-inch cruiser standard, but Britain and Japan would gain the same permission and Japanese industrial limits would shape how many ships actually appeared.",
+      "body": "A 15,000-ton ceiling with 9.2-inch guns would give the United States a more powerful cruiser than the historical treaty type. The same rule would also benefit Britain and Japan, so it is not a unilateral American advantage. Japan's yards and industrial capacity might prevent it from building as many large cruisers as the paper allowance permitted. The exchange shows that an arms-control limit changes both design possibilities and the relative value of each navy's ability to turn authorized tonnage into completed ships.",
+      "question": "Would the United States have been better off accepting a British cruiser limit of 15,000 tons and 9.2-inch guns?",
+      "answerShort": "Possibly, but Britain and Japan would benefit too, and Japan's industrial capacity would determine whether it could exploit the larger design in equal numbers.",
+      "sourcePath": "src/transcripts/txt/2024-01-07_T19-16-08_bruships-134-imperial-japanese-navy-books_ztvamZToNzk.txt",
+      "evidence": [{"start": "3:04:12", "end": "3:04:42", "note": "The answer says the larger standard would benefit all three navies and notes that Japanese infrastructure could limit construction."}]
+    },
+    {
       "id": "british-stacked-carrier-hangars",
       "videoId": "ztvamZToNzk",
       "slug": "british-stacked-carrier-hangars",
@@ -688,13 +925,16 @@
       "kind": "qa",
       "start": "3:08:29",
       "end": "3:11:18",
-      "topics": ["county-class-cruisers", "royal-navy", "london-naval-treaty", "heavy-cruisers", "kriegsmarine", "imperial-japanese-navy", "cruiser-warfare"],
-      "summary": "A completed forty-ship County program would set a much higher treaty baseline, create strong mixed cruiser groups, and make German surface raiding far more difficult.",
-      "body": "If forty County-class ships existed before the London negotiations, their tonnage would become the practical ceiling the British sought to preserve. The United States would claim comparable heavy- and light-cruiser totals, with Japan receiving its negotiated fraction. German raiders would then face mixed groups containing several heavy and light cruisers instead of isolated opponents. France and Italy might be allowed more ships on paper, but their industrial and financial capacity would determine how many appeared. The scenario also makes solitary carrier movements such as Glorious's final voyage less likely because enough cruisers exist to provide escorts.",
+      "topics": ["county-class-cruisers", "royal-navy", "london-naval-treaty", "heavy-cruisers", "kriegsmarine", "imperial-japanese-navy", "cruiser-warfare", "plan-z", "naval-industrial-base"],
+      "summary": "A completed forty-ship County program would set a much higher treaty baseline, create strong mixed cruiser groups, make German surface raiding far more difficult, and deepen Plan Z's industrial impossibility.",
+      "body": "If forty County-class ships existed before the London negotiations, their tonnage would become the practical ceiling the British sought to preserve. The United States would claim comparable heavy- and light-cruiser totals, with Japan receiving its negotiated fraction. German raiders would then face mixed groups containing several heavy and light cruisers instead of isolated opponents. France and Italy might be allowed more ships on paper, but their industrial and financial capacity would determine how many appeared. The scenario also makes solitary carrier movements such as Glorious's final voyage less likely because enough cruisers exist to provide escorts. Plan Z would have to expand massively to answer the larger British cruiser force, even though German maritime infrastructure already made the historical plan infeasible and left Britain able to outbuild it repeatedly.",
       "question": "How would a forty-ship County-class program change treaty limits and Axis naval strategy?",
-      "answerShort": "It would raise cruiser allowances, give Britain denser escort and hunting groups, and make German raiding much harder even if other navies received higher paper limits.",
+      "answerShort": "It would raise cruiser allowances, give Britain denser escort and hunting groups, make German raiding much harder, and force an already infeasible Plan Z to grow further.",
       "sourcePath": "src/transcripts/txt/2024-01-07_T19-16-08_bruships-134-imperial-japanese-navy-books_ztvamZToNzk.txt",
-      "evidence": [{"start": "3:08:29", "end": "3:11:18", "note": "The answer calculates treaty tonnage effects and discusses German raiders, other navies' capacity, and carrier escort availability."}]
+      "evidence": [
+        {"start": "3:08:29", "end": "3:11:18", "note": "The answer calculates treaty tonnage effects and discusses German raiders, other navies' capacity, and carrier escort availability."},
+        {"start": "3:43:14", "end": "3:43:53", "note": "The follow-up says Plan Z would need massive expansion even though German maritime infrastructure already made it infeasible against British construction."}
+      ]
     },
     {
       "id": "australian-county-class-industrial-capacity",
@@ -741,11 +981,14 @@
       "kind": "notable_point",
       "start": "3:18:00",
       "end": "3:26:14",
-      "topics": ["uss-long-beach-cgn-9", "nuclear-powered-cruisers", "us-navy", "ship-classification", "virginia-class-cruisers", "destroyer-leaders"],
+      "topics": ["uss-long-beach-cgn-9", "nuclear-powered-cruisers", "us-navy", "ship-classification", "virginia-class-cruisers", "destroyer-leaders", "des-moines-class-cruisers"],
       "summary": "A classification dispute distinguishes Long Beach's cruiser design lineage from later nuclear ships developed from destroyer-leader or frigate specifications.",
-      "body": "Dr. Clarke's claim concerns design lineage rather than the quality, role, or crews of later nuclear ships. Long Beach began as a cruiser specification, while Bainbridge, Truxtun, California, and Virginia emerged from destroyer-leader or frigate families. The 1975 US Navy realignment renamed many of those ships as cruisers for NATO alignment and to close a perceived cruiser gap with the Soviet Navy. Those labels had real consequences, but they did not retroactively change the hull standards, subdivision, spacing, and construction assumptions with which a ship began. A destroyer leader could perform a cruiser role, just as a Tribal-class destroyer sometimes did, without being designed from the outset as a cruiser.",
+      "body": "Dr. Clarke's claim concerns design lineage rather than the quality, role, or crews of later nuclear ships. Long Beach began as a cruiser specification, while Bainbridge, Truxtun, California, and Virginia emerged from destroyer-leader or frigate families. The 1975 US Navy realignment renamed many of those ships as cruisers for NATO alignment and to close a perceived cruiser gap with the Soviet Navy. Those labels had real consequences, but they did not retroactively change the hull standards, subdivision, spacing, and construction assumptions with which a ship began. A destroyer leader could perform a cruiser role, just as a Tribal-class destroyer sometimes did, without being designed from the outset as a cruiser. A follow-up comparison notes that Long Beach and the Des Moines class still shared broadly similar mature US cruiser hull shaping and framing, with nuclear versus steam propulsion creating the major divergence.",
       "sourcePath": "src/transcripts/txt/2024-01-07_T19-16-08_bruships-134-imperial-japanese-navy-books_ztvamZToNzk.txt",
-      "evidence": [{"start": "3:18:00", "end": "3:26:14", "note": "The transcript explains cruiser, destroyer-leader, and frigate design lineages, the 1975 reclassification, and the distinction between role and specification."}]
+      "evidence": [
+        {"start": "3:18:00", "end": "3:26:14", "note": "The transcript explains cruiser, destroyer-leader, and frigate design lineages, the 1975 reclassification, and the distinction between role and specification."},
+        {"start": "3:26:28", "end": "3:27:09", "note": "The follow-up compares Long Beach with the Des Moines hull family and identifies nuclear versus steam propulsion as the main difference."}
+      ]
     },
     {
       "id": "amphibious-ship-committee-tradeoffs",
@@ -827,6 +1070,38 @@
       "answerShort": "The model is mounted on a powered rig that turns it at a scale-correct rate while its behavior is observed in the tank.",
       "sourcePath": "src/transcripts/txt/2024-01-07_T19-16-08_bruships-134-imperial-japanese-navy-books_ztvamZToNzk.txt",
       "evidence": [{"start": "3:46:03", "end": "3:46:29", "note": "The answer describes a motorized mounting that turns the model in proportion to the full-sized ship."}]
+    },
+    {
+      "id": "french-fleet-counter-plan-z",
+      "videoId": "ztvamZToNzk",
+      "slug": "french-fleet-counter-plan-z",
+      "title": "Why France could not answer Plan Z alone",
+      "kind": "qa",
+      "start": "3:47:30",
+      "end": "3:48:08",
+      "topics": ["french-navy", "plan-z", "kriegsmarine", "italian-navy", "royal-navy", "naval-strategy", "alliance-warfare"],
+      "summary": "France would want enough ships to balance the German and Italian fleets together, but could not build that force and would depend on the Royal Navy for most of the counterweight.",
+      "body": "A 198-ship German program cannot be answered by counting French ships against Germany alone because Italy also shapes the Mediterranean balance. French planners would ideally want numbers equivalent to the German and Italian fleets combined. Dr. Clarke does not consider that force obtainable. France would therefore have to rely on Britain to provide most of the naval counterweight, making alliance force allocation more important than nominal one-for-one parity.",
+      "question": "How large a French fleet would be needed to counter a 198-ship German Plan Z force?",
+      "answerShort": "France would want a force comparable to Germany and Italy combined but could not obtain it, so the Royal Navy would have to provide most of the balance.",
+      "sourcePath": "src/transcripts/txt/2024-01-07_T19-16-08_bruships-134-imperial-japanese-navy-books_ztvamZToNzk.txt",
+      "evidence": [{"start": "3:47:30", "end": "3:48:08", "note": "The answer says France would seek parity with Germany and Italy together but would depend on Britain because that force was unattainable."}]
+    },
+    {
+      "id": "iowa-quadruple-turret-infrastructure-limits",
+      "videoId": "ztvamZToNzk",
+      "slug": "iowa-quadruple-turret-infrastructure-limits",
+      "title": "Iowa's quadruple turrets collide with canal and dock limits",
+      "kind": "qa",
+      "start": "3:49:07",
+      "end": "3:49:41",
+      "topics": ["iowa-class-battleships", "quadruple-turrets", "panama-canal", "dry-docks", "naval-architecture", "ship-stability", "warship-design"],
+      "summary": "Three quadruple main turrets would demand a broader or longer Iowa, but the Panama Canal limits beam while existing docks limit length.",
+      "body": "Quadruple turrets require more beam and supporting structure than Iowa's historical triple mounts. Making the hull wider would intensify stability and fitting problems while colliding with the Panama Canal limit. Lengthening the ship could recover the necessary proportions without more beam, but might make the hull too long for available dry docks. The design problem therefore cannot be solved by changing the gunhouse alone: canal and dock infrastructure constrain the battleship's entire geometry.",
+      "question": "How would the Iowa class change if it carried three quadruple main-gun turrets?",
+      "answerShort": "The ship would need more beam or length, but Panama Canal width and dry-dock length would make either solution difficult.",
+      "sourcePath": "src/transcripts/txt/2024-01-07_T19-16-08_bruships-134-imperial-japanese-navy-books_ztvamZToNzk.txt",
+      "evidence": [{"start": "3:49:07", "end": "3:49:41", "note": "The answer connects the wider turret battery with beam, stability, Panama Canal, hull length, and dry-dock constraints."}]
     },
     {
       "id": "treaty-withdrawal-escalator-clause",

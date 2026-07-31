@@ -74,6 +74,35 @@ export interface ChannelVideoLink {
   tabPositions: Partial<Record<ChannelVideoTab, number>>;
 }
 
+/**
+ * Select stored deferred metadata that conflicts with fresh channel inventory.
+ *
+ * The lightweight channel fetch always requests current video duration/status.
+ * A transcript-eligible duration is not by itself readiness proof, but it is
+ * enough to justify refreshing a stale upcoming/live/processing record instead
+ * of waiting for that record's possibly obsolete scheduled retry date.
+ */
+export function selectMetadataRefreshVideoIdsFromChannelLinks(
+  links: readonly ChannelVideoLink[],
+  recordsById: ReadonlyMap<string, VideoMetadataRecord>,
+): string[] {
+  const refreshIds = new Set<string>();
+
+  for (const link of links) {
+    const record = recordsById.get(link.videoId);
+    if (
+      record !== undefined &&
+      resolveVideoState(record).state !== "ready" &&
+      link.durationSeconds !== undefined &&
+      link.durationSeconds > maxBlockedTranscriptDurationSeconds
+    ) {
+      refreshIds.add(link.videoId);
+    }
+  }
+
+  return [...refreshIds];
+}
+
 export interface ChannelVideoLinksResult {
   channelUrl: string;
   channelId: string;

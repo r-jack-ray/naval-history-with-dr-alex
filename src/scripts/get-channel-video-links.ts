@@ -4,6 +4,7 @@ import {
   defaultChannelVideoLinksOptions,
   fetchChannelVideoLinks,
   resolveChannelVideoLinksMasterOutput,
+  selectMetadataRefreshVideoIdsFromChannelLinks,
   writeChannelEpisodeMasterOutput,
   writeSplitVideoLinksOutput,
   writeVideoLinksOutput,
@@ -13,6 +14,7 @@ import {
 import {
   defaultVideoMetadataOutput,
   fetchAndStoreVideoMetadata,
+  readVideoMetadataStore,
 } from "../youtube/video-metadata.js";
 import { readIgnoredVideos } from "../youtube/ignored-videos.js";
 import { resolveYoutubeApiKey } from "./youtube-api-key-file.js";
@@ -75,6 +77,16 @@ async function main(): Promise<void> {
     console.error(`Wrote ${result.links.length} episodes to ${options.masterOutput}`);
 
     if (apiKey !== undefined) {
+      const existingMetadata = await readVideoMetadataStore(defaultVideoMetadataOutput);
+      const metadataRefreshVideoIds = selectMetadataRefreshVideoIdsFromChannelLinks(
+        result.links,
+        new Map(existingMetadata?.videos.map((record) => [record.videoId, record]) ?? []),
+      );
+      if (metadataRefreshVideoIds.length > 0) {
+        console.error(
+          `Refreshing ${metadataRefreshVideoIds.length} deferred metadata record(s) contradicted by current channel duration.`,
+        );
+      }
       console.error(`Synchronizing missing or due full metadata records into ${defaultVideoMetadataOutput}`);
       const metadata = await fetchAndStoreVideoMetadata({
         apiKey,
@@ -83,6 +95,7 @@ async function main(): Promise<void> {
         requestDelayMs: options.requestDelayMs,
         batchSize: 50,
         ignoredVideoIds,
+        ...(metadataRefreshVideoIds.length > 0 ? { refreshVideoIds: metadataRefreshVideoIds } : {}),
         ...(!options.quiet ? { logger: (message: string) => console.error(message) } : {}),
       });
       console.error(

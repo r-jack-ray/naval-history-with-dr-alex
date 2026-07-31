@@ -3,11 +3,21 @@ import { mkdir, writeFile } from "node:fs/promises";
 import { dirname } from "node:path";
 
 import { renderTopicNormalizationReviewReport } from "../content/topic-normalization-review-report.js";
-import { renderVideoTopicUsageReport } from "../content/video-topic-usage-report.js";
+import {
+  renderVideoTopicUsageReport,
+  type VideoTopicUsageReport,
+} from "../content/video-topic-usage-report.js";
 import { loadCuratedTopicUsageSeed } from "../site/curated-seed.js";
-import { auditTopicNormalization } from "../site/topic-normalization-audit.js";
+import {
+  auditTopicNormalization,
+  type TopicNormalizationAuditResult,
+} from "../site/topic-normalization-audit.js";
+import {
+  isDirectExecution,
+  printRunTime,
+} from "./console-run-timer.js";
 
-interface CliOptions {
+export interface VideoTopicUsageCliOptions {
   segmentsInput: string;
   normalizationPatterns: string;
   output: string;
@@ -16,7 +26,7 @@ interface CliOptions {
 }
 
 async function main(): Promise<void> {
-  const options = parseArgs(process.argv.slice(2));
+  const options = parseVideoTopicUsageArgs(process.argv.slice(2));
   const [seed, normalizationAudit] = await Promise.all([
     loadCuratedTopicUsageSeed(options.segmentsInput),
     auditTopicNormalization({
@@ -25,6 +35,15 @@ async function main(): Promise<void> {
     }),
   ]);
   const report = renderVideoTopicUsageReport(seed, normalizationAudit.catalog.rules);
+  await writeVideoTopicUsageReports(options, report, normalizationAudit);
+}
+
+export async function writeVideoTopicUsageReports(
+  options: VideoTopicUsageCliOptions,
+  report: VideoTopicUsageReport,
+  normalizationAudit: TopicNormalizationAuditResult,
+  extraSummaryFields: readonly string[] = [],
+): Promise<void> {
   const reviewReport = renderTopicNormalizationReviewReport(normalizationAudit.reviewFindings);
   await Promise.all([
     mkdir(dirname(options.output), { recursive: true }),
@@ -45,14 +64,15 @@ async function main(): Promise<void> {
       `duplicate_review=${report.stats.potentialDuplicateReviewCount}`,
       `normalization_blockers=${normalizationAudit.blockers.length}`,
       `normalization_reviews=${reviewReport.stats.findingCount}`,
+      ...extraSummaryFields,
       `output=${options.output}`,
       `review_output=${options.reviewOutput}`,
     ].join(" "));
   }
 }
 
-function parseArgs(args: string[]): CliOptions {
-  const options: CliOptions = {
+export function parseVideoTopicUsageArgs(args: string[]): VideoTopicUsageCliOptions {
+  const options: VideoTopicUsageCliOptions = {
     segmentsInput: "src/derived/video-segments",
     normalizationPatterns: "src/derived/topic-normalization-patterns.tsv",
     output: "reports/video-topic-usage.tsv",
@@ -62,26 +82,38 @@ function parseArgs(args: string[]): CliOptions {
   for (let index = 0; index < args.length; index += 1) {
     const arg = args[index];
     switch (arg) {
-      case "--segments-input": options.segmentsInput = readValue(args, ++index, arg); break;
-      case "--normalization-patterns": options.normalizationPatterns = readValue(args, ++index, arg); break;
-      case "--output": options.output = readValue(args, ++index, arg); break;
-      case "--review-output": options.reviewOutput = readValue(args, ++index, arg); break;
+      case "--segments-input":
+        options.segmentsInput = readVideoTopicUsageArgValue(args, ++index, arg);
+        break;
+      case "--normalization-patterns":
+        options.normalizationPatterns = readVideoTopicUsageArgValue(args, ++index, arg);
+        break;
+      case "--output":
+        options.output = readVideoTopicUsageArgValue(args, ++index, arg);
+        break;
+      case "--review-output":
+        options.reviewOutput = readVideoTopicUsageArgValue(args, ++index, arg);
+        break;
       case "--quiet": options.quiet = true; break;
       case "--help":
-      case "-h": printHelp(); process.exit(0);
+      case "-h": printVideoTopicUsageHelp(); process.exit(0);
       default: throw new Error(`Unknown argument: ${arg ?? ""}`);
     }
   }
   return options;
 }
 
-function readValue(args: string[], index: number, name: string): string {
+export function readVideoTopicUsageArgValue(
+  args: string[],
+  index: number,
+  name: string,
+): string {
   const value = args[index];
   if (!value) throw new Error(`Missing value for ${name}.`);
   return value;
 }
 
-function printHelp(): void {
+export function printVideoTopicUsageHelp(): void {
   console.log(`Usage: npm run report:video-topic-usage -- [options]
 
 Generates the topic-usage TSV plus an exact normalization-review TSV for taxonomy curation.
@@ -91,12 +123,17 @@ Options:
   --normalization-patterns <path>  Topic normalization TSV. Defaults to src/derived/topic-normalization-patterns.tsv.
   --output <path>                  TSV output. Defaults to reports/video-topic-usage.tsv.
   --review-output <path>           Actionable exact-review TSV. Defaults to reports/topic-normalization-review.tsv.
-  --quiet                          Suppress the one-line summary.
+  --quiet                          Suppress the one-line summary; run time is still printed.
   --help                           Show this help.
 `);
 }
 
-main().catch((error: unknown) => {
-  console.error(`Failed to report video topic usage: ${error instanceof Error ? error.message : String(error)}`);
-  process.exitCode = 1;
-});
+if (isDirectExecution(import.meta.url)) {
+  const runStartedAt = Date.now();
+  main().catch((error: unknown) => {
+    console.error(`Failed to report video topic usage: ${error instanceof Error ? error.message : String(error)}`);
+    process.exitCode = 1;
+  }).finally(() => {
+    printRunTime(runStartedAt);
+  });
+}

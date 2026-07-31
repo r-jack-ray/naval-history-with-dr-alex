@@ -12,7 +12,10 @@ import {
   type CuratedTopicStore,
   type CuratedVideoFileSeed,
 } from "../content/schemas/index.js";
-import { discoverVideoSegmentShards } from "./video-segment-files.js";
+import {
+  discoverVideoSegmentShards,
+  type VideoSegmentShardIndex,
+} from "./video-segment-files.js";
 
 export type {
   CuratedArchiveSeed,
@@ -43,8 +46,14 @@ interface LoadedCuratedVideoFile {
   video: CuratedVideoFileSeed;
 }
 
-export async function loadCuratedArchiveSeed(inputDirectory: string): Promise<CuratedArchiveSeed> {
-  const { seed, loadedVideos } = await loadCuratedSeedFiles(inputDirectory);
+export async function loadCuratedArchiveSeed(
+  inputDirectory: string,
+  preloadedShardIndex?: VideoSegmentShardIndex,
+): Promise<CuratedArchiveSeed> {
+  const { seed, loadedVideos } = await loadCuratedSeedFiles(
+    inputDirectory,
+    preloadedShardIndex,
+  );
   const duplicates = collectCuratedSegmentDuplicates(loadedVideos);
   if (duplicates.length > 0) {
     throw new Error(duplicates.map(formatCuratedSegmentDuplicate).join("\n\n"));
@@ -59,11 +68,15 @@ export async function loadCuratedArchiveSeed(inputDirectory: string): Promise<Cu
  */
 export async function loadCuratedTopicUsageSeed(
   inputDirectory: string,
+  preloadedShardIndex?: VideoSegmentShardIndex,
 ): Promise<CuratedArchiveSeed> {
-  return (await loadCuratedSeedFiles(inputDirectory)).seed;
+  return (await loadCuratedSeedFiles(inputDirectory, preloadedShardIndex)).seed;
 }
 
-async function loadCuratedSeedFiles(inputDirectory: string): Promise<{
+async function loadCuratedSeedFiles(
+  inputDirectory: string,
+  preloadedShardIndex?: VideoSegmentShardIndex,
+): Promise<{
   seed: CuratedArchiveSeed;
   loadedVideos: LoadedCuratedVideoFile[];
 }> {
@@ -74,7 +87,7 @@ async function loadCuratedSeedFiles(inputDirectory: string): Promise<{
     `Curated topic store ${topicStorePath}`,
   );
 
-  const loadedVideos = await loadCuratedVideoFiles(inputDirectory);
+  const loadedVideos = await loadCuratedVideoFiles(inputDirectory, preloadedShardIndex);
   return {
     seed: {
       videos: loadedVideos.map(({ video }) => ({
@@ -110,8 +123,11 @@ async function validateInputDirectory(inputDirectory: string): Promise<void> {
   }
 }
 
-async function loadCuratedVideoFiles(inputDirectory: string): Promise<LoadedCuratedVideoFile[]> {
-  const { shards } = await discoverVideoSegmentShards(inputDirectory);
+async function loadCuratedVideoFiles(
+  inputDirectory: string,
+  preloadedShardIndex?: VideoSegmentShardIndex,
+): Promise<LoadedCuratedVideoFile[]> {
+  const { shards } = preloadedShardIndex ?? await discoverVideoSegmentShards(inputDirectory);
   return shards.map(({ fileName, filePath, value }) => {
     return { filePath, video: value };
   });

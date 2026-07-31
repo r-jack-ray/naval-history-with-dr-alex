@@ -5,12 +5,18 @@
     "naval-aviation",
     "fleet-carriers",
     "seaplane-tenders",
+    "bearn-aircraft-carrier",
+    "joffre-class-aircraft-carriers",
     "naval-policy",
     "naval-doctrine",
     "naval-treaties",
+    "washington-naval-treaty",
+    "london-naval-treaty",
     "naval-industrial-base",
     "interwar-navy",
     "world-war-i",
+    "french-third-republic",
+    "maginot-line",
     "fortifications",
     "air-defence",
     "alternate-history",
@@ -25,16 +31,26 @@
       "title": "French innovation versus carrier weakness",
       "kind": "chapter",
       "start": "2:20",
-      "end": "8:17",
+      "end": "6:21",
       "topics": [
         "french-navy",
         "naval-aviation",
         "seaplane-tenders",
         "fleet-carriers",
-        "interwar-navy"
+        "interwar-navy",
+        "jeune-ecole",
+        "whitehead-torpedo",
+        "torpedoes",
+        "submarines",
+        "destroyers",
+        "fast-battleships",
+        "dunkerque-class-battleships",
+        "military-innovation",
+        "bearn-aircraft-carrier",
+        "carrier-air-groups"
       ],
       "summary": "The opening frames the puzzle: a navy willing to pursue submarines, destroyers, and fast battleships still entered the interwar carrier era with little more than Bearn and seaplanes.",
-      "body": "Dr. Clarke starts by stressing that French carrier weakness cannot be explained by a general hostility to new technology. He contrasts French enthusiasm for torpedoes, submarines, destroyers, and fast battleships with the small aircraft capacity and limited carrier force built around Bearn. France possessed both inventive naval designers and treaty room for more than one carrier, so technical conservatism alone does not solve the puzzle. This opening directs attention toward institutions, politics, operational experience, and momentum rather than a simple claim that France disliked aviation.",
+      "body": "Dr. Clarke starts by stressing that French carrier weakness cannot be explained by a general hostility to new technology. He traces a line from the Jeune Ecole's embrace of the Whitehead torpedo through strong submarine and destroyer forces to the Dunkerque class, which he treats as the first fully realized fast battleships. That record of innovation sits awkwardly beside a naval air arm largely limited to Bearn, a few seaplane tenders, and roughly 27 carrier aircraft. The contrast directs attention toward institutions, politics, operational experience, and momentum rather than a simple claim that France disliked aviation.",
       "sourcePath": "src/transcripts/txt/2023-01-23_T19-00-13_why-did-the-french-navy-not-more-fully-embrace-carrier-aviation-after-wwi_dqYPipKy6-E.txt",
       "evidence": [
         {
@@ -46,11 +62,6 @@
           "start": "5:02",
           "end": "6:21",
           "note": "The transcript describes French naval aviation as largely Bearn, seaplane tenders, and a small number of operational aircraft."
-        },
-        {
-          "start": "7:36",
-          "end": "8:17",
-          "note": "The transcript says France had more carrier allowance but made little effort beyond Bearn."
         }
       ]
     },
@@ -68,7 +79,11 @@
         "land-based-aircraft",
         "fleet-integration",
         "submarines",
-        "destroyers"
+        "destroyers",
+        "carrier-doctrine",
+        "force-structure",
+        "combined-arms",
+        "mediterranean-theatre"
       ],
       "summary": "Land-based aircraft could develop flying skill, but they did not give the French Navy the shipboard integration and force-level experience needed for true naval aviation.",
       "body": "Dr. Clarke distinguishes access to land-based aircraft from the ability to operate aviation as part of a fleet. Shore-based units could improve aerial tactics and general flying capability, yet they did not teach a navy how to coordinate aircraft with ships at sea. He also argues that emphasizing land-based air power could threaten established submarine and destroyer priorities inside the French force structure. This passage is useful because it explains why counting French aircraft ashore does not answer the carrier question.",
@@ -87,34 +102,103 @@
       ]
     },
     {
+      "id": "unused-carrier-tonnage-and-the-scale-of-the-gap",
+      "videoId": "dqYPipKy6-E",
+      "slug": "unused-carrier-tonnage-and-the-scale-of-the-gap",
+      "title": "Unused carrier tonnage sharpened the French puzzle",
+      "kind": "notable_point",
+      "start": "7:36",
+      "end": "8:17",
+      "topics": [
+        "french-navy",
+        "naval-aviation",
+        "fleet-carriers",
+        "naval-treaties",
+        "carrier-tonnage",
+        "naval-procurement",
+        "bearn-aircraft-carrier"
+      ],
+      "summary": "France had room for another carrier and could treat Bearn as an experiment, so treaty limits alone cannot explain the absence of a follow-on program.",
+      "body": "France's carrier weakness was not simply imposed by treaty tonnage. Dr. Clarke notes that the navy could have built another carrier and that Bearn's early origins made it reasonable to regard her as an experimental starting point. A follow-on ship could therefore have converted lessons from the experimental carrier into a practical fleet capability. The lack of such an effort, despite French innovation elsewhere, makes institutional momentum and procurement continuity central to the answer.",
+      "sourcePath": "src/transcripts/txt/2023-01-23_T19-00-13_why-did-the-french-navy-not-more-fully-embrace-carrier-aviation-after-wwi_dqYPipKy6-E.txt",
+      "evidence": [
+        {
+          "start": "7:36",
+          "end": "8:17",
+          "note": "The transcript says France had allowance beyond Bearn, could have treated the conversion as experimental, and nevertheless made little follow-on effort."
+        }
+      ]
+    },
+    {
+      "id": "interservice-competition-and-naval-aviation-momentum",
+      "videoId": "dqYPipKy6-E",
+      "slug": "interservice-competition-and-naval-aviation-momentum",
+      "title": "How interservice competition sustained naval aviation",
+      "kind": "notable_point",
+      "start": "8:24",
+      "end": "12:25",
+      "topics": [
+        "naval-aviation",
+        "interservice-rivalry",
+        "institutional-learning",
+        "carrier-doctrine",
+        "imperial-japanese-army",
+        "imperial-japanese-navy",
+        "us-army-air-corps",
+        "us-navy",
+        "royal-navy",
+        "royal-air-force",
+        "fleet-air-arm",
+        "air-ministry",
+        "thomas-inskip"
+      ],
+      "summary": "Competition between services forced Japanese, American, and British institutions to argue about naval aviation, refine doctrine, and preserve organizational momentum that France lacked.",
+      "body": "Dr. Clarke treats institutional competition as one source of technological and doctrinal momentum. Rivalry between the Imperial Japanese Army and Navy, and between the US Army Air Corps and Navy, kept aviation roles contested and visible. In Britain, Royal Air Force control of the Fleet Air Arm forced the Royal Navy to explain why carrier aviation had to remain integrated with the fleet. An Air Ministry proposal to use carriers to ferry RAF aircraft east before returning for naval aircraft inadvertently strengthened the Navy's case that the ministry misunderstood carrier warfare. Thomas Inskip's rejection of that plan illustrates how external pressure could make a service articulate and improve a capability rather than let it stagnate.",
+      "sourcePath": "src/transcripts/txt/2023-01-23_T19-00-13_why-did-the-french-navy-not-more-fully-embrace-carrier-aviation-after-wwi_dqYPipKy6-E.txt",
+      "evidence": [
+        {
+          "start": "8:24",
+          "end": "9:41",
+          "note": "The transcript introduces institutional momentum and compares Japanese and American army-navy competition over aviation."
+        },
+        {
+          "start": "9:44",
+          "end": "10:12",
+          "note": "The transcript says the Fleet Air Arm dispute forced the Royal Navy to justify regaining control of naval aviation."
+        },
+        {
+          "start": "10:13",
+          "end": "12:25",
+          "note": "The transcript describes the Air Ministry ferry plan, the naval objection, and Thomas Inskip's rejection of the idea."
+        }
+      ]
+    },
+    {
       "id": "bearn-and-lost-carrier-momentum",
       "videoId": "dqYPipKy6-E",
       "slug": "bearn-and-lost-carrier-momentum",
       "title": "Bearn and lost carrier momentum",
       "kind": "notable_point",
-      "start": "8:24",
+      "start": "12:27",
       "end": "14:45",
       "topics": [
         "french-navy",
         "naval-aviation",
         "fleet-carriers",
         "naval-doctrine",
-        "interwar-navy"
+        "interwar-navy",
+        "bearn-aircraft-carrier",
+        "normandie-class-battleships",
+        "institutional-memory",
+        "naval-propulsion",
+        "steam-turbines",
+        "triple-expansion-engines",
+        "naval-procurement"
       ],
       "summary": "Bearn becomes both symptom and cause: a slow conversion that could not generate the carrier-operating knowledge needed to make naval aviation self-reinforcing.",
-      "body": "The argument here is that institutions need momentum, competition, and repeated experience to develop new capabilities. Dr. Clarke compares Japan, the United States, and Britain, where rival services or the Fleet Air Arm dispute forced navies to keep justifying and refining naval aviation. France lacked a comparable external contest and had only Bearn from which to build internal expertise. The converted battleship's 21.5-knot speed, mixed propulsion, and prolonged development made it a poor foundation for operational confidence. Bearn was therefore both a product of unstable decision-making and a cause of the weak momentum that followed.",
+      "body": "France had only Bearn from which to build internal carrier expertise, and the ship could not generate enough repeated operational experience to make naval aviation self-reinforcing. The incomplete Normandie-class battleship conversion combined turbines on two shafts with triple-expansion engines on the other two, an arrangement intended to balance speed and endurance. Its resulting 21.5-knot maximum was already inadequate when the carrier commissioned in 1927. The long, unstable design process made Bearn a poor foundation for confidence in carrier operations. She was therefore both a product of changing decisions and a cause of the weak institutional momentum that followed.",
       "sourcePath": "src/transcripts/txt/2023-01-23_T19-00-13_why-did-the-french-navy-not-more-fully-embrace-carrier-aviation-after-wwi_dqYPipKy6-E.txt",
       "evidence": [
-        {
-          "start": "8:24",
-          "end": "9:41",
-          "note": "The transcript introduces momentum and compares aviation competition in Japan and the United States."
-        },
-        {
-          "start": "9:44",
-          "end": "12:25",
-          "note": "The transcript explains how Britain's Fleet Air Arm dispute forced the Royal Navy to justify and think through naval aviation."
-        },
         {
           "start": "12:27",
           "end": "14:45",
@@ -134,7 +218,14 @@
         "world-war-i",
         "french-navy",
         "naval-policy",
-        "naval-industrial-base"
+        "naval-industrial-base",
+        "world-war-i-casualties",
+        "war-trauma",
+        "demography",
+        "institutional-memory",
+        "public-administration",
+        "national-leadership",
+        "civil-military-relations"
       ],
       "summary": "The answer roots France's interwar decision-making problems in the human and institutional losses left by the First World War.",
       "body": "This section widens the carrier question into a national-capacity problem. Dr. Clarke lays out French dead, wounded, psychological trauma, and demographic loss after the First World War. He connects those losses to weakened institutional memory and smaller pools of experienced public servants, engineers, officers, and political leaders. His wider argument is that the volunteers most inclined toward public service had also endured especially long exposure to the war. The point is not that casualties mechanically caused carrier weakness, but that postwar France had to make complicated naval-aviation decisions with a damaged leadership and technical base.",
@@ -164,16 +255,23 @@
       "title": "Ministerial churn and carrier decisions",
       "kind": "notable_point",
       "start": "22:05",
-      "end": "33:17",
+      "end": "30:05",
       "topics": [
         "french-navy",
         "naval-policy",
         "naval-treaties",
         "fleet-carriers",
-        "interwar-navy"
+        "interwar-navy",
+        "french-third-republic",
+        "cabinet-instability",
+        "ministry-of-marine",
+        "london-naval-treaty",
+        "bearn-aircraft-carrier",
+        "georges-leygues",
+        "pierre-laval"
       ],
       "summary": "A rapid turnover of French governments and naval ministers made sustained carrier policy difficult during the same years Bearn and treaty decisions needed continuity.",
-      "body": "Dr. Clarke uses the Third Republic's cabinet turnover to explain why French naval aviation struggled to hold a stable direction. He compares Britain's five prime ministers with France's 19, spread across 34 ministries between 1918 and 1939. The preparations for the 1930 London Naval Treaty crossed several governments, while Bearn's path from launch to commissioning crossed repeated changes of minister of marine. Such turnover could shift budgets, foreign policy, organization, and technical decisions before a minister had mastered the department. Carrier development needed long-term political ownership and ministers who remained long enough to test the advice they received.",
+      "body": "Dr. Clarke uses the Third Republic's cabinet turnover to explain why French naval aviation struggled to hold a stable direction. He compares Britain's five prime ministers with France's 19, spread across 34 ministries between 1918 and 1939. The preparations for the 1930 London Naval Treaty crossed several governments, while Bearn's path from launch to commissioning crossed repeated changes of minister of marine. Rapid turnover might make bribery impractical because a purchased decision-maker could leave office immediately, yet it also made reversals by each successor much easier. Such churn could shift budgets, foreign policy, organization, and technical decisions before a minister had mastered the department. Carrier development needed long-term political ownership and ministers who remained long enough to test the advice they received.",
       "sourcePath": "src/transcripts/txt/2023-01-23_T19-00-13_why-did-the-french-navy-not-more-fully-embrace-carrier-aviation-after-wwi_dqYPipKy6-E.txt",
       "evidence": [
         {
@@ -190,11 +288,45 @@
           "start": "26:15",
           "end": "29:57",
           "note": "The transcript gives minister of marine churn and applies it to Bearn's construction and commissioning."
-        },
+        }
+      ]
+    },
+    {
+      "id": "ministerial-learning-and-strategic-continuity",
+      "videoId": "dqYPipKy6-E",
+      "slug": "ministerial-learning-and-strategic-continuity",
+      "title": "Why ministerial learning mattered to defence policy",
+      "kind": "notable_point",
+      "start": "30:05",
+      "end": "33:17",
+      "topics": [
+        "defence-ministers",
+        "strategic-continuity",
+        "departmental-expertise",
+        "civil-military-relations",
+        "public-administration",
+        "government-accountability",
+        "defence-policy",
+        "post-cold-war"
+      ],
+      "summary": "Rapid turnover denied ministers the time to master departmental language, test expert advice, and provide the informed continuity that complex defence programs required.",
+      "body": "Dr. Clarke widens the French example into a lesson about ministerial tenure and departmental learning. He notes that defence portfolios became posts for rising politicians or allies in parts of the post-Cold War era, encouraging rapid turnover. A minister does not need to arrive as a strategist, but does need time to learn the department's vocabulary, read its briefings, and understand its expert advice. Experience then allows the minister to distinguish a sound recommendation from an official explanation offered because no better answer is available. Carrier policy suffered when French ministers changed before acquiring that knowledge or the confidence to challenge their departments.",
+      "sourcePath": "src/transcripts/txt/2023-01-23_T19-00-13_why-did-the-french-navy-not-more-fully-embrace-carrier-aviation-after-wwi_dqYPipKy6-E.txt",
+      "evidence": [
         {
           "start": "30:05",
+          "end": "31:37",
+          "note": "The transcript connects policy instability to frequent ministerial change and uses post-Cold War defence portfolios as a comparison."
+        },
+        {
+          "start": "31:40",
+          "end": "32:26",
+          "note": "The transcript explains that ministers need time to learn departmental language, briefings, and specialist advice."
+        },
+        {
+          "start": "32:26",
           "end": "33:17",
-          "note": "The transcript explains why short ministerial terms damage departmental learning and stable decision-making."
+          "note": "The transcript argues that experienced ministers can better judge expert claims and ask useful questions."
         }
       ]
     },
@@ -202,21 +334,26 @@
       "id": "changing-threats-and-the-french-navys-political-voice",
       "videoId": "dqYPipKy6-E",
       "slug": "changing-threats-and-the-french-navys-political-voice",
-      "title": "Changing threats and the French Navy's political voice",
+      "title": "Changing threats and repeated strategic relearning",
       "kind": "chapter",
       "start": "33:17",
-      "end": "42:22",
+      "end": "38:01",
       "topics": [
         "french-navy",
-        "naval-leadership",
         "naval-policy",
         "naval-strategy",
         "interwar-navy",
-        "submarines",
-        "battleships"
+        "strategic-assessment",
+        "geopolitics",
+        "japan",
+        "italy",
+        "germany",
+        "anglo-japanese-alliance",
+        "london-naval-treaty",
+        "french-third-republic"
       ],
-      "summary": "Rapidly changing threats and comparatively weak naval leadership made it harder to argue for a new carrier capability in interwar France.",
-      "body": "Dr. Clarke stresses that returning ministers had to relearn a strategic picture that changed markedly across the 1920s and 1930s. Japan and Italy mattered before Germany again became an immediate threat, while French possessions created demands far beyond Europe. The French Navy's chiefs were usually vice admirals competing in national debates with politically weightier army marshals and generals. Established submarines and battleships were easier to defend because they had prewar infrastructure or wartime experience behind them. Carrier aviation, by contrast, required leaders to make a new institutional case while French shipbuilding also struggled with standardization.",
+      "summary": "Returning ministers had to relearn a strategic picture in which Japan and Italy mattered before Germany again became an immediate threat, complicating long-term naval choices.",
+      "body": "Dr. Clarke stresses that a returning minister could not simply resume the strategic assumptions held during a previous term. Japan and Italy were serious concerns in the 1920s, while Germany took time to rebuild enough military power to become an immediate threat in the 1930s. French overseas possessions also created obligations far beyond Europe, so no minister could plan against only one opponent. The continuing diplomatic legacy of the Anglo-Japanese Alliance coexisted with British and Japanese fleets pointing weapons at one another, illustrating the difference between friendly relations and prudent force planning. Repeated ministerial change therefore imposed repeated strategic relearning during a period of unusually rapid technological and geopolitical change.",
       "sourcePath": "src/transcripts/txt/2023-01-23_T19-00-13_why-did-the-french-navy-not-more-fully-embrace-carrier-aviation-after-wwi_dqYPipKy6-E.txt",
       "evidence": [
         {
@@ -225,14 +362,54 @@
           "note": "The transcript explains why returning ministers had to relearn changing threats and why Germany was not the only interwar concern."
         },
         {
-          "start": "37:51",
-          "end": "41:13",
-          "note": "The transcript compares French naval chiefs' political position with senior army and Royal Navy leadership."
+          "start": "37:08",
+          "end": "38:01",
+          "note": "The transcript returns to turnover among ministers responsible for preparing and implementing the London Naval Treaty."
+        }
+      ]
+    },
+    {
+      "id": "french-naval-rank-and-political-weight",
+      "videoId": "dqYPipKy6-E",
+      "slug": "french-naval-rank-and-political-weight",
+      "title": "French naval rank and political weight",
+      "kind": "notable_point",
+      "start": "38:12",
+      "end": "42:22",
+      "topics": [
+        "french-navy",
+        "naval-leadership",
+        "naval-rank",
+        "civil-military-relations",
+        "french-army",
+        "royal-navy",
+        "francois-darlan",
+        "submarines",
+        "battleships",
+        "dunkerque-class-battleships",
+        "richelieu-class-battleships",
+        "naval-industrial-base",
+        "shipbuilding",
+        "standardisation"
+      ],
+      "summary": "French naval chiefs usually entered national funding debates as vice admirals facing army marshals, generals, and more politically established British naval leaders.",
+      "body": "Dr. Clarke distinguishes French substantive naval rank from the US practice of linking higher acting rank to a particular post. Although France possessed full admirals, most interwar chiefs of naval staff were vice admirals, with Francois Darlan the important exception. They had to compete for funding and attention with French army marshals and generals, while Royal Navy First Sea Lords carried both higher rank and greater political weight. Submarines and battleships were easier to defend because they already had prewar institutions or wartime experience behind them. A new carrier arm and the standardisation of French shipbuilding demanded political authority that this naval leadership structure struggled to supply.",
+      "sourcePath": "src/transcripts/txt/2023-01-23_T19-00-13_why-did-the-french-navy-not-more-fully-embrace-carrier-aviation-after-wwi_dqYPipKy6-E.txt",
+      "evidence": [
+        {
+          "start": "38:12",
+          "end": "39:22",
+          "note": "The transcript contrasts French substantive admiral ranks with the US practice of rank attached to an appointment."
+        },
+        {
+          "start": "39:37",
+          "end": "41:03",
+          "note": "The transcript compares French naval chiefs with army leaders and politically weightier Royal Navy First Sea Lords."
         },
         {
           "start": "41:03",
           "end": "42:22",
-          "note": "The transcript contrasts established submarine and battleship cases with the difficulty of standardizing new French naval construction."
+          "note": "The transcript contrasts established submarine and battleship cases with the political effort needed for new capabilities and standardised construction."
         }
       ]
     },
@@ -243,27 +420,61 @@
       "title": "The Maginot Line's budget gravity",
       "kind": "chapter",
       "start": "42:31",
-      "end": "46:35",
+      "end": "44:03",
       "topics": [
         "french-navy",
         "naval-policy",
         "fortifications",
         "naval-aviation",
-        "naval-strategy"
+        "naval-strategy",
+        "maginot-line",
+        "battle-of-verdun",
+        "defence-policy",
+        "military-fortifications",
+        "public-opinion"
       ],
-      "summary": "French land-defense politics pulled attention and money toward the Maginot Line, leaving naval aviation outside the main defense debate.",
-      "body": "This watch point explains why a technically innovative navy still had trouble selling an expensive new air-sea capability. Dr. Clarke presents the Maginot Line as the public center of postwar French defense policy because fortified positions had appeared to work during the First World War. Once land fortification dominated the national debate, forces and operations outside that framework became harder to justify. Veterans could also interpret future procurement through the narrow lens of their own experience or reject that experience too completely. Aircraft carriers could therefore look peripheral even when they had real maritime utility, especially amid rapid political turnover and shallow ministerial familiarity with naval problems.",
+      "summary": "French land-defence politics pulled attention and money toward the Maginot Line, leaving naval aviation outside the main defence debate.",
+      "body": "This watch point explains why a technically innovative navy still had trouble selling an expensive new air-sea capability. Dr. Clarke presents the Maginot Line as the public center of postwar French defence policy because fortified positions around Verdun and elsewhere had appeared to work during the First World War. Once land fortification dominated political discussion, forces and operations outside that framework became harder to justify. Public understanding followed the same debate, making aircraft carriers look peripheral even when they offered real maritime utility. The comparison with Cold War concentration on the central European front shows how one dominant scenario can pull procurement attention away from other regions and services.",
       "sourcePath": "src/transcripts/txt/2023-01-23_T19-00-13_why-did-the-french-navy-not-more-fully-embrace-carrier-aviation-after-wwi_dqYPipKy6-E.txt",
       "evidence": [
         {
           "start": "42:31",
           "end": "44:03",
-          "note": "The transcript presents the Maginot Line as a postwar defense focus that sucked up national defense debate."
-        },
+          "note": "The transcript presents the Maginot Line as a postwar defence focus that sucked up national defence debate."
+        }
+      ]
+    },
+    {
+      "id": "veteran-experience-and-procurement-bias",
+      "videoId": "dqYPipKy6-E",
+      "slug": "veteran-experience-and-procurement-bias",
+      "title": "Veteran experience and procurement bias",
+      "kind": "notable_point",
+      "start": "44:18",
+      "end": "46:35",
+      "topics": [
+        "veterans",
+        "military-procurement",
+        "lessons-learned",
+        "cognitive-bias",
+        "defence-ministers",
+        "civil-military-relations",
+        "world-war-i",
+        "naval-aviation"
+      ],
+      "summary": "Personal combat experience could distort procurement either by making one wartime role seem universally decisive or by encouraging leaders to reject painful lessons too completely.",
+      "body": "Dr. Clarke identifies two opposite ways that veteran experience can distort defence policy. One leader may treat a personal wartime role as the only valid prism for future procurement and dismiss capabilities that were irrelevant to that experience. Another may recoil from the horror of the same war and pursue alternatives while disregarding lessons that remain useful. The rare ideal lies between those poles and listens to advisers able to correct personal bias. Carrier aviation could lose out when ministers interpreted maritime utility through land-war experience or rejected inherited lessons without a balanced assessment.",
+      "sourcePath": "src/transcripts/txt/2023-01-23_T19-00-13_why-did-the-french-navy-not-more-fully-embrace-carrier-aviation-after-wwi_dqYPipKy6-E.txt",
+      "evidence": [
         {
           "start": "44:18",
+          "end": "45:24",
+          "note": "The transcript describes veterans either universalising their own experience or rejecting its lessons because of the war's horror."
+        },
+        {
+          "start": "45:27",
           "end": "46:35",
-          "note": "The transcript discusses how veterans' own experience could shape procurement priorities and skepticism toward other force needs."
+          "note": "The transcript argues that balanced judgment and advisers are needed to moderate personal bias in defence decisions."
         }
       ]
     },
@@ -282,10 +493,15 @@
         "english-channel",
         "convoy-operations",
         "mediterranean-theatre",
-        "gallipoli-campaign"
+        "gallipoli-campaign",
+        "royal-navy",
+        "french-army",
+        "sea-power",
+        "defence-in-depth",
+        "naval-coalition-warfare"
       ],
       "summary": "France's navy had served globally in the First World War, but its necessary position behind the much larger Royal Navy weakened its interwar political prominence.",
-      "body": "Dr. Clarke rejects the idea that the French Navy had been absent from the First World War. He points to operations in the Bay of Biscay and English Channel, convoy work, the Mediterranean campaign, and support for the Gallipoli effort. France nevertheless operated behind the much larger Royal Navy while also carrying the burden of major land borders and an army-centered defense problem. That wartime hierarchy helps explain why French naval claims entered the interwar debate with less political weight. This passage provides useful context for the institutional argument without diminishing the French fleet's actual wartime service.",
+      "body": "Dr. Clarke rejects the idea that the French Navy had been absent from the First World War. He points to operations in the Bay of Biscay and English Channel, convoy work, the Mediterranean campaign, and support for the Gallipoli effort. France nevertheless operated behind the much larger Royal Navy while also carrying the burden of major land borders and an army-centered defence problem. That wartime hierarchy helps explain why French naval claims entered the interwar debate with less political weight. In Britain, the sea and air approaches could reinforce one another as a defence-in-depth argument, which sometimes left the army politically outmanoeuvred. This passage provides useful context for the institutional argument without diminishing the French fleet's actual wartime service.",
       "sourcePath": "src/transcripts/txt/2023-01-23_T19-00-13_why-did-the-french-navy-not-more-fully-embrace-carrier-aviation-after-wwi_dqYPipKy6-E.txt",
       "evidence": [
         {
@@ -296,7 +512,7 @@
         {
           "start": "47:17",
           "end": "48:15",
-          "note": "The transcript explains France's land-defense burden and the Royal Navy's geographic advantage."
+          "note": "The transcript explains France's land-defence burden and the Royal Navy's geographic advantage."
         }
       ]
     },
@@ -307,16 +523,30 @@
       "title": "Treaty tonnage and missed fast carriers",
       "kind": "notable_point",
       "start": "48:24",
-      "end": "57:07",
+      "end": "55:23",
       "topics": [
         "french-navy",
         "naval-treaties",
         "fleet-carriers",
         "naval-strategy",
-        "interwar-navy"
+        "interwar-navy",
+        "washington-naval-treaty",
+        "london-naval-treaty",
+        "carrier-tonnage",
+        "8-inch-guns",
+        "french-colonial-empire",
+        "caribbean",
+        "indian-ocean",
+        "pacific-ocean",
+        "south-china-sea",
+        "dunkerque-class-battleships",
+        "richelieu-class-battleships",
+        "surface-raiders",
+        "fast-task-groups",
+        "war-to-end-all-wars"
       ],
       "summary": "France had carrier tonnage and global commitments, yet chose battleship construction while leaving fast carriers until the Joffre class was too late.",
-      "body": "Dr. Clarke uses treaty arithmetic to show that French carrier absence was not simply forced by the rules. France shared a treaty level with Italy despite having Mediterranean and Atlantic coasts plus possessions in the Caribbean, Indian Ocean, Pacific, and South China Sea. The London settlement left France considerable freedom in cruisers, destroyers, and submarines, while Bearn did not consume the full carrier allowance. Fast carriers paired with Dunkirk-style capital ships could have supported surface-raider hunting, Far Eastern reinforcement, and alliance tasks. Instead, France built several modern capital ships before laying down Joffre in late 1938, markedly later than Britain's renewed carrier program.",
+      "body": "Dr. Clarke uses treaty arithmetic to show that French carrier absence was not simply forced by the rules. France shared a treaty level with Italy despite having Mediterranean and Atlantic coasts plus possessions in the Caribbean, Indian Ocean, Pacific, and South China Sea. He argues that some treaty thinking still reflected the hope that the First World War had made another great-power conflict unthinkable, reducing defence to a force that merely looked adequate. The London settlement left France considerable freedom in cruisers, destroyers, and submarines, even allowing already-built French submarines to retain their 8-inch guns. Bearn did not consume the full 60,000-ton carrier allowance, so fast carriers paired with the Dunkerque class could have hunted surface raiders, reinforced the Far East, and supported alliance tasks. Instead, France built the Dunkerques and three Richelieu-class battleships before laying down Joffre in November 1938.",
       "sourcePath": "src/transcripts/txt/2023-01-23_T19-00-13_why-did-the-french-navy-not-more-fully-embrace-carrier-aviation-after-wwi_dqYPipKy6-E.txt",
       "evidence": [
         {
@@ -331,8 +561,44 @@
         },
         {
           "start": "54:48",
+          "end": "55:23",
+          "note": "The transcript dates the Joffre laying-down to November 1938 after five modern French capital ships had entered construction."
+        }
+      ]
+    },
+    {
+      "id": "royal-navy-carrier-program-and-french-delay",
+      "videoId": "dqYPipKy6-E",
+      "slug": "royal-navy-carrier-program-and-french-delay",
+      "title": "Britain's carrier program and the scale of French delay",
+      "kind": "notable_point",
+      "start": "55:48",
+      "end": "57:07",
+      "topics": [
+        "royal-navy",
+        "fleet-carriers",
+        "naval-aviation",
+        "carrier-doctrine",
+        "naval-procurement",
+        "reginald-henderson",
+        "hms-ark-royal",
+        "illustrious-class-aircraft-carriers",
+        "hms-unicorn",
+        "joffre-class-aircraft-carriers"
+      ],
+      "summary": "The Royal Navy's Ark Royal, Illustrious, Unicorn, and later carrier designs show that French delay did not merely follow a British battleship-first example.",
+      "body": "Dr. Clarke rejects the idea that the Royal Navy of this period was simply a battleship navy that France naturally copied. Rear Admiral Aircraft Carriers Reginald Henderson became Third Sea Lord and used that procurement post to drive Ark Royal forward. His work continued into the Illustrious class, the order for Unicorn, and later design development extending through Indefatigable. British ships followed a different geostrategic and operational logic from American or Japanese carriers, but they still represented sustained carrier construction. France's wait until Joffre was laid down in 1938 therefore stands out as a French institutional choice rather than an inevitable reflection of British priorities.",
+      "sourcePath": "src/transcripts/txt/2023-01-23_T19-00-13_why-did-the-french-navy-not-more-fully-embrace-carrier-aviation-after-wwi_dqYPipKy6-E.txt",
+      "evidence": [
+        {
+          "start": "55:48",
+          "end": "56:36",
+          "note": "The transcript describes Henderson's move from carrier command to Third Sea Lord and the resulting Ark Royal, Illustrious, Unicorn, and later design work."
+        },
+        {
+          "start": "56:37",
           "end": "57:07",
-          "note": "The transcript notes the late 1938 Joffre laying-down date and contrasts French delay with British carrier construction."
+          "note": "The transcript distinguishes British carrier design from American and Japanese practice and returns to the lateness of French construction."
         }
       ]
     },
@@ -349,10 +615,18 @@
         "fleet-carriers",
         "naval-architecture",
         "naval-aviation",
-        "naval-doctrine"
+        "naval-doctrine",
+        "bearn-aircraft-carrier",
+        "aircraft-elevators",
+        "aircraft-hangars",
+        "aircraft-handling",
+        "hms-eagle",
+        "maintenance-and-repair",
+        "naval-engineering",
+        "carrier-operations"
       ],
       "summary": "Bearn's over-engineered lifts and hangar layout show how a poor experimental carrier could teach the wrong lessons and slow operational learning.",
-      "body": "The detailed Bearn discussion is useful for seeing how design choices shape naval doctrine. Dr. Clarke describes three different electric lift types, aircraft-specific hangar silos, suspended gantry movement, and slow clamshell doors. A raised forward lift also obstructed the flight deck, preventing simultaneous aircraft movement and flying operations. HMS Eagle offers a revealing comparison because a similarly sized converted battleship entered carrier service three years earlier with simpler arrangements and comparable aircraft capacity. France therefore possessed a carrier, but not a practical fleet platform capable of generating repeated deck-handling and air-group experience.",
+      "body": "The detailed Bearn discussion is useful for seeing how design choices shape naval doctrine. Dr. Clarke describes three different electric lift types, aircraft-specific hangar silos, suspended gantry movement, and slow clamshell doors. A raised forward lift also obstructed the flight deck, preventing simultaneous aircraft movement and flying operations. HMS Eagle offers a revealing comparison because a similarly sized converted battleship entered carrier service three years earlier with simpler arrangements and comparable aircraft capacity. Bearn's separate lower maintenance hangar was a sound idea that appeared in Ark Royal and could still have value in modern carrier design, but it could not overcome the wider handling system's inefficiency. France therefore possessed a carrier, but not a practical fleet platform capable of generating repeated deck-handling and air-group experience.",
       "sourcePath": "src/transcripts/txt/2023-01-23_T19-00-13_why-did-the-french-navy-not-more-fully-embrace-carrier-aviation-after-wwi_dqYPipKy6-E.txt",
       "evidence": [
         {
@@ -369,6 +643,11 @@
           "start": "1:00:49",
           "end": "1:03:34",
           "note": "The transcript says Bearn tried too many lift technologies and could not efficiently operate, recover, and move aircraft."
+        },
+        {
+          "start": "1:02:22",
+          "end": "1:02:58",
+          "note": "The transcript identifies the lower maintenance hangar as a useful feature despite the carrier's broader handling problems."
         }
       ]
     },
@@ -387,10 +666,23 @@
         "naval-aviation",
         "continuous-air-operations",
         "naval-doctrine",
-        "anti-submarine-warfare"
+        "anti-submarine-warfare",
+        "carrier-operations",
+        "multi-carrier-operations",
+        "alpha-strike",
+        "royal-navy",
+        "us-navy",
+        "imperial-japanese-navy",
+        "armoured-flight-decks",
+        "reconnaissance-aviation",
+        "aircraft-carrier-islands",
+        "flight-decks",
+        "aircraft-capacity",
+        "south-china-sea",
+        "mediterranean-theatre"
       ],
       "summary": "Joffre's design reflected a need to launch and recover aircraft continuously for Mediterranean, reconnaissance, and anti-submarine work.",
-      "body": "Dr. Clarke reads Joffre as an American-influenced hull arranged around a more British style of sustained flying operations. British doctrine could assemble multi-carrier strikes while still valuing the ability to cycle smaller groups repeatedly. That flexibility mattered in the Mediterranean and South China Sea, where land air bases created persistent threats, and in anti-submarine or reconnaissance patrols that could not wait for one large deck-load strike. A useful carrier therefore had to change rapidly between launching and recovery. Joffre's offset arrangements attempted to support that rhythm, though the design did not adopt the British armored-carrier answer to operating under land-based air attack.",
+      "body": "Dr. Clarke reads Joffre as an American-influenced hull arranged around a more British style of sustained flying operations. British doctrine could assemble multi-carrier strikes while still valuing the ability to cycle smaller groups repeatedly. That flexibility mattered in the Mediterranean and South China Sea, where land air bases created persistent threats, and in anti-submarine or reconnaissance patrols that could not wait for one large deck-load strike. A useful carrier therefore had to change rapidly between launching and recovery. Joffre kept the island flush with the hull while canting the flight deck outward, an unusual attempt to support that operating rhythm. Its projected 40-aircraft group and awkward lift placement still left practical questions. The design also did not adopt the British armoured-carrier answer to operating under land-based air attack.",
       "sourcePath": "src/transcripts/txt/2023-01-23_T19-00-13_why-did-the-french-navy-not-more-fully-embrace-carrier-aviation-after-wwi_dqYPipKy6-E.txt",
       "evidence": [
         {
@@ -417,7 +709,7 @@
       "title": "Fast carriers, global commitments, and task groups",
       "kind": "notable_point",
       "start": "1:06:39",
-      "end": "1:13:08",
+      "end": "1:11:00",
       "topics": [
         "french-navy",
         "fleet-carriers",
@@ -426,10 +718,16 @@
         "anti-surface-warfare",
         "anti-submarine-warfare",
         "far-east",
-        "colonial-defence"
+        "colonial-defence",
+        "dunkerque-class-battleships",
+        "richelieu-class-battleships",
+        "carrier-operations",
+        "surface-raiders",
+        "allied-naval-operations",
+        "french-colonial-empire"
       ],
       "summary": "A French carrier needed enough speed to conduct flying operations with capital ships and enough reach to support anti-surface, anti-submarine, and Far Eastern commitments.",
-      "body": "This passage connects carrier speed to the mechanics of a fast task group. A carrier had to turn into the wind to launch or recover aircraft, then regain its position with capital ships that continued along their operational track. Joffre's margin over Dunkirk might have been workable, while its smaller margin over Richelieu would have constrained the group. France also needed anti-surface and anti-submarine forces across a geographically dispersed empire, and British carriers filled part of the gap when war came. Dr. Clarke further argues that a French presence in the Far East protected national interests because allied help from Britain or the United States would not necessarily be politically free.",
+      "body": "This passage connects carrier speed to the mechanics of a fast task group. A carrier had to turn into the wind to launch or recover aircraft, then regain its position with capital ships that continued along their operational track. Joffre's margin over the Dunkerque class might have been workable, while its smaller margin over the Richelieus would have constrained the whole group. France also needed anti-surface and anti-submarine forces across a geographically dispersed empire, and British carriers filled part of that missing role when war came.",
       "sourcePath": "src/transcripts/txt/2023-01-23_T19-00-13_why-did-the-french-navy-not-more-fully-embrace-carrier-aviation-after-wwi_dqYPipKy6-E.txt",
       "evidence": [
         {
@@ -441,11 +739,42 @@
           "start": "1:09:04",
           "end": "1:10:38",
           "note": "The transcript links carriers to French global presence and anti-surface and anti-submarine task groups."
-        },
+        }
+      ]
+    },
+    {
+      "id": "far-east-alliance-aid-and-national-interests",
+      "videoId": "dqYPipKy6-E",
+      "slug": "far-east-alliance-aid-and-national-interests",
+      "title": "Far Eastern alliance aid was not politically free",
+      "kind": "notable_point",
+      "start": "1:11:00",
+      "end": "1:13:08",
+      "topics": [
+        "french-navy",
+        "far-east",
+        "colonial-defence",
+        "french-colonial-empire",
+        "british-empire",
+        "united-states",
+        "alliance-politics",
+        "great-power-competition",
+        "imperial-interests",
+        "naval-presence"
+      ],
+      "summary": "Britain and the United States would likely oppose a Japanese attack on French possessions, but France still needed forces present to protect its postwar political position.",
+      "body": "Dr. Clarke argues that a Japanese attack on French interests in the Far East would probably draw in both Britain and the United States. Neither Anglo-American power could comfortably let the other defeat Japan alone and emerge as the sole dominant outside power in the region. That convergence did not make their assistance politically free, because both states had interests and protected positions they might seek to expand. If France contributed little to its own defence, Britain could claim that French territories required British custody or protection. A French carrier presence therefore mattered not only for combat power but also for preserving sovereignty and bargaining weight inside an alliance.",
+      "sourcePath": "src/transcripts/txt/2023-01-23_T19-00-13_why-did-the-french-navy-not-more-fully-embrace-carrier-aviation-after-wwi_dqYPipKy6-E.txt",
+      "evidence": [
         {
           "start": "1:11:00",
+          "end": "1:11:46",
+          "note": "The transcript argues that Britain and the United States could not allow the other to win a Far Eastern war against Japan alone."
+        },
+        {
+          "start": "1:11:51",
           "end": "1:13:08",
-          "note": "The transcript discusses Far Eastern commitments and the political cost of relying entirely on British or American assistance."
+          "note": "The transcript explains that allied help would serve British and American interests and might weaken France's control if it contributed no forces."
         }
       ]
     },
@@ -464,10 +793,17 @@
         "airborne-early-warning",
         "fighter-aircraft",
         "anti-aircraft-warfare",
-        "mediterranean-theatre"
+        "mediterranean-theatre",
+        "blackburn-blackburn",
+        "royal-navy",
+        "naval-exercises",
+        "air-defence-in-depth",
+        "human-factors",
+        "missile-defence",
+        "radar"
       ],
       "summary": "Carrier fighters and airborne observers could warn and disrupt Mediterranean air attacks before layered anti-aircraft fire broke them into smaller, less coordinated groups.",
-      "body": "Dr. Clarke argues that French fleets in the Mediterranean needed organic fighter protection even when friendly shore bases were available. Before radar, the Royal Navy placed observers high in aircraft such as the Blackburn Blackburn to watch for incoming raids and signal the fleet. Fighters were valuable not only for destroying attackers but for breaking a coordinated air wing into smaller formations. Heavy and medium anti-aircraft fire could fragment those groups further, leaving individual aircraft to evade or face light weapons. The resulting layered defense worked partly by imposing fear, confusion, and coordination costs on human aircrews, which is why missile defense later required a different emphasis on physically destroying the target.",
+      "body": "Dr. Clarke argues that French fleets in the Mediterranean needed organic fighter protection even when friendly shore bases were available. Before radar, the Royal Navy placed observers high in aircraft such as the Blackburn Blackburn to watch for incoming raids and signal the fleet. Fighters were valuable not only for destroying attackers but for breaking a coordinated air wing into smaller formations. Heavy and medium anti-aircraft fire could fragment those groups further, leaving individual aircraft to evade or face light weapons. The resulting layered defence worked partly by imposing fear, confusion, and coordination costs on human aircrews, which is why missile defence later required a different emphasis on physically destroying the target.",
       "sourcePath": "src/transcripts/txt/2023-01-23_T19-00-13_why-did-the-french-navy-not-more-fully-embrace-carrier-aviation-after-wwi_dqYPipKy6-E.txt",
       "evidence": [
         {
@@ -478,7 +814,7 @@
         {
           "start": "1:14:35",
           "end": "1:16:39",
-          "note": "The transcript explains layered naval air defense as disrupting formations and aircrews rather than only shooting aircraft down."
+          "note": "The transcript explains layered naval air defence as disrupting formations and aircrews rather than only shooting aircraft down."
         },
         {
           "start": "1:16:44",
@@ -502,7 +838,14 @@
         "twin-engine-aircraft",
         "carrier-air-groups",
         "alternate-history",
-        "naval-procurement"
+        "naval-procurement",
+        "technology-diffusion",
+        "aviation-procurement",
+        "dunkerque-class-battleships",
+        "royal-navy",
+        "us-navy",
+        "imperial-japanese-navy",
+        "air-ministry"
       ],
       "summary": "The closing counterfactual asks how two earlier Joffre-like carriers and French twin-engine aircraft might have changed international carrier-air-group development.",
       "body": "Dr. Clarke closes by returning to the chain from the First World War and the unfinished Normandie class to Bearn's weak institutional legacy. He argues that France could plausibly design a useful carrier around 18,000 tons, close to Joffre's planned displacement. Had two such ships entered service alongside the Dunkirks with French twin-engine aircraft, other carrier navies might have reacted to the new combination. Multi-role twin-engine machines able to serve as fighters and bombers could have influenced British, American, and Japanese procurement before the Second World War. The passage is explicitly a counterfactual invitation, not a claim that this outcome was inevitable, and it asks viewers to weigh how institutional choices can suppress otherwise promising technical innovation.",

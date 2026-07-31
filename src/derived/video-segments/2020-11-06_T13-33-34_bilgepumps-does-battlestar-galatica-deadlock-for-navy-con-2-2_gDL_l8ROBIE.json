@@ -2,9 +2,13 @@
   "videoId": "gDL_l8ROBIE",
   "topics": [
     "science-fiction",
+    "battlestar-galactica-deadlock",
     "naval-air-defence",
     "missile-defence",
-    "naval-technology"
+    "naval-technology",
+    "electromagnetic-pulse",
+    "critical-infrastructure",
+    "naval-logistics"
   ],
   "segments": [
     {
@@ -79,12 +83,13 @@
       "kind": "chapter",
       "start": "12:15",
       "end": "25:05",
-      "topics": ["chaff", "electronic-warfare", "missile-defence", "stealth", "machine-learning"],
-      "summary": "This section explores chaff as both radar deception and a physical hazard, then considers whether changing returns could make autonomous missile guidance overreact.",
-      "body": "The conversation revisits Second World War Window and suggests that very small radar contacts may become harder to distinguish when stealth aircraft also present a small radar cross-section. Chaff or other particles could interfere physically with a cruise missile's sensors, control surfaces, or engine, especially when the missile is moving at very high speed. Combining chaff with flak could create misleading radar blooms or conceal the target behind a cluttered field. The speakers also speculate that a rapidly reacting guidance computer might make damaging corrections to transient returns, showing why speed of decision is not automatically an advantage.",
+      "topics": ["chaff", "electronic-warfare", "missile-defence", "stealth", "machine-learning", "anti-ship-missiles", "missile-guidance", "missile-manoeuvrability", "soviet-anti-ship-missiles", "zircon-missile"],
+      "summary": "This section explores chaff as radar deception, a physical hazard to high-speed missiles, and a source of false returns that could make autonomous guidance overreact.",
+      "body": "The conversation revisits Second World War Window and suggests that very small radar contacts may become harder to distinguish when stealth aircraft also present a small radar cross-section. Chaff or other particles could interfere physically with a cruise missile's sensors, control surfaces, or engine, especially when the missile is moving at very high speed. An early Soviet anti-ship missile is contrasted with a Zircon-type weapon: the slower, aircraft-like missile might shrug off light debris unless it struck something vital, while the faster weapon magnifies even a small impact. Combining chaff with flak could create misleading radar blooms, conceal the target, or tempt an incoming missile into an avoidance manoeuvre that consumes distance and imposes dangerous structural loads. The speakers also speculate that a rapidly reacting guidance computer might make damaging corrections to transient returns, showing why speed of decision is not automatically an advantage.",
       "sourcePath": "src/transcripts/txt/2020-11-06_T13-33-34_bilgepumps-does-battlestar-galatica-deadlock-for-navy-con-2-2_gDL_l8ROBIE.txt",
       "evidence": [
-        {"start": "12:15", "end": "21:08", "note": "The transcript discusses Window, stealth-sized radar returns, foil and flak effects, and radar-image blooms."},
+        {"start": "12:15", "end": "16:43", "note": "The transcript discusses Window, stealth-sized radar returns, and the countermeasure cycle between radar, chaff, and infrared detection."},
+        {"start": "16:46", "end": "21:08", "note": "The speakers compare debris effects on slower and high-speed anti-ship missiles, then combine chaff, flak, radar blooms, and forced avoidance manoeuvres."},
         {"start": "21:44", "end": "25:05", "note": "The speakers consider how a fast-reacting missile guidance computer could overcorrect while traversing flak and decoys."}
       ]
     },
@@ -128,9 +133,9 @@
       "kind": "chapter",
       "start": "25:18",
       "end": "30:16",
-      "topics": ["torpedoes", "anti-ship-missiles", "naval-tactics", "ship-design", "anti-submarine-warfare", "air-launched-torpedoes", "falklands-war"],
+      "topics": ["torpedoes", "anti-ship-missiles", "naval-tactics", "ship-design", "anti-submarine-warfare", "air-launched-torpedoes", "falklands-war", "ikara-missile"],
       "summary": "A speculative cruise missile carrying a torpedo becomes a way to force defenders to choose between their best anti-missile posture and their best torpedo-avoidance manoeuvres.",
-      "body": "The speakers imagine a large anti-ship missile releasing a torpedo before entering a dense close-in defensive zone, while the missile itself remains a dangerous decoy or kinetic threat. A ship that turns broadside to bring maximum guns and missiles to bear may expose itself to the worst possible geometry against the torpedo. Avoiding the torpedo through turns, speed changes, and decoys could in turn disrupt its anti-aircraft arcs. They use the idea to illustrate how a new weapon can impose costly changes on tactics and survivability even before it is widely fielded.",
+      "body": "The real Ikara anti-submarine missile supplies a precedent for delivering a torpedo by missile, which the speakers repurpose as a speculative weapon against surface ships. Their large anti-ship missile releases its torpedo before entering a dense close-in defensive zone, while the missile itself remains a dangerous decoy or kinetic threat. They note that late-war American practice showed a torpedo could survive release from greater speed and altitude, with a parachute or other braking method available if needed. A ship that turns broadside to bring maximum guns and missiles to bear may expose itself to the worst possible geometry against the torpedo. Avoiding the torpedo through turns, speed changes, and decoys could in turn disrupt its anti-aircraft arcs. The idea illustrates how a new weapon can impose costly changes on tactics and survivability even before it is widely fielded.",
       "sourcePath": "src/transcripts/txt/2020-11-06_T13-33-34_bilgepumps-does-battlestar-galatica-deadlock-for-navy-con-2-2_gDL_l8ROBIE.txt",
       "evidence": [
         {"start": "25:18", "end": "30:16", "note": "The transcript proposes a torpedo-carrying cruise missile and explains the resulting missile-versus-torpedo defensive trade-off."}
@@ -183,6 +188,22 @@
       "evidence": [
         {"start": "30:26", "end": "33:12", "note": "The speakers reject treating carriers or submarines as the sole future platform and compare successive changes in naval warfare."},
         {"start": "34:58", "end": "35:34", "note": "They contrast Pacific War attention with Atlantic operations and the Royal Navy's deterrence of German surface sorties."}
+      ]
+    },
+    {
+      "id": "stealth-battlestars-and-submarine-tradeoffs",
+      "videoId": "gDL_l8ROBIE",
+      "slug": "stealth-battlestars-and-submarine-tradeoffs",
+      "title": "Stealth battlestars and the submarine trade-off",
+      "kind": "notable_point",
+      "start": "33:14",
+      "end": "33:57",
+      "topics": ["science-fiction", "battlestar-galactica-deadlock", "fiction-stealth-battlestars", "submarines", "submarine-warfare", "warship-stealth", "surprise-attack", "naval-doctrine"],
+      "summary": "The game's stealth battlestars become an analogy for submarines: effective when hidden and launching the first strike, but disadvantaged once located and forced into a stand-up fight.",
+      "body": "The speakers separate the value of concealment from the ability to survive a sustained surface action. In Battlestar Galactica: Deadlock, stealth battlestars are described as effective strike platforms, but unable to respond like light or full battlestars once an opponent finds them and closes for battle. That fictional specialization is compared with submarines, whose operational strength lies in uncertainty, ambush, and choosing the engagement rather than trading blows after detection. The moment is useful for thinking about platform roles: a weapon can be highly effective within its intended tactical geometry without becoming a universal replacement for a balanced force.",
+      "sourcePath": "src/transcripts/txt/2020-11-06_T13-33-34_bilgepumps-does-battlestar-galatica-deadlock-for-navy-con-2-2_gDL_l8ROBIE.txt",
+      "evidence": [
+        {"start": "33:14", "end": "33:57", "note": "The speakers compare the game's stealth battlestars with submarines, emphasizing first-strike value and vulnerability after detection."}
       ]
     },
     {
@@ -308,12 +329,45 @@
       "kind": "chapter",
       "start": "1:04:43",
       "end": "1:11:38",
-      "topics": ["science-fiction", "military-innovation", "naval-technology", "anti-aircraft-artillery", "m247-sergeant-york", "seaslug-missile", "type-3-anti-aircraft-shells", "unrotated-projectile"],
+      "topics": ["science-fiction", "military-innovation", "naval-technology", "anti-aircraft-artillery", "m247-sergeant-york", "seaslug-missile", "type-3-anti-aircraft-shells", "unrotated-projectile", "scientific-expertise", "military-personnel", "stargate-sg-1"],
       "summary": "The conclusion argues that fictional warfare can broaden military thinking, provided its ideas are tested against real engineering, operations, and the long history of failed weapon schemes.",
-      "body": "The speakers conclude that science fiction is valuable when it opens unfamiliar questions about how technology might be used, rather than when it is treated as a forecast. Fictional weapons and settings can expose assumptions that military institutions have stopped questioning, but they also encourage designs that work only on screen. Examples of troubled real systems—including Sergeant York, Sea Slug, Japanese Type 3 shells, and unrotated projectile launchers—reinforce that military pedigree is no guarantee of success. The useful habit is to carry a fresh idea back to physical constraints, doctrine, and implementation before accepting it as a practical answer.",
+      "body": "The speakers conclude that science fiction is valuable when it opens unfamiliar questions about how technology might be used, rather than when it is treated as a forecast. Fictional weapons and settings can expose assumptions that military institutions have stopped questioning, but they also encourage designs that work only on screen. Fiction can likewise compress many scientific specialties into one field-going genius, and Samantha Carter from Stargate SG-1 illustrates how a real institution would probably protect uniquely broad expertise rather than risk it on every mission. Examples of troubled real systems—including Sergeant York, Sea Slug, Japanese Type 3 shells, and unrotated projectile launchers—reinforce that military pedigree is no guarantee of success. The useful habit is to carry a fresh idea back to physical constraints, doctrine, personnel, and implementation before accepting it as a practical answer.",
       "sourcePath": "src/transcripts/txt/2020-11-06_T13-33-34_bilgepumps-does-battlestar-galatica-deadlock-for-navy-con-2-2_gDL_l8ROBIE.txt",
       "evidence": [
-        {"start": "1:04:43", "end": "1:11:38", "note": "The conclusion weighs science fiction as a source of fresh thinking against historical examples of failed or limited military systems."}
+        {"start": "1:04:43", "end": "1:09:17", "note": "The conclusion weighs science fiction as a source of fresh thinking against historical examples of failed or limited military systems."},
+        {"start": "1:09:20", "end": "1:10:18", "note": "The speakers use Samantha Carter to contrast fictional all-purpose scientists with the institutional value and risk of uniquely broad real expertise."}
+      ]
+    },
+    {
+      "id": "m247-sergeant-york-sensor-integration-failure",
+      "videoId": "gDL_l8ROBIE",
+      "slug": "m247-sergeant-york-sensor-integration-failure",
+      "title": "M247 Sergeant York and sensor-integration failure",
+      "kind": "notable_point",
+      "start": "1:07:18",
+      "end": "1:07:48",
+      "topics": ["m247-sergeant-york", "anti-aircraft-artillery", "weapons-testing", "sensor-integration", "military-procurement", "military-innovation"],
+      "summary": "The M247 Sergeant York's notorious test behaviour illustrates how an anti-aircraft concept can fail when sensors and system integration cannot distinguish the intended target.",
+      "body": "The speakers use M247 Sergeant York as a compact example of a military programme that looked plausible on paper but behaved disastrously in testing. They jokingly recall the system trying to engage a portable toilet's ventilation fan and then slewing toward the senior officers observing it. The anecdote makes sensor discrimination and integration, rather than merely gun calibre or rate of fire, the decisive problem. It also reinforces the wider warning that an official programme and an expert design team do not guarantee an operationally reliable weapon.",
+      "sourcePath": "src/transcripts/txt/2020-11-06_T13-33-34_bilgepumps-does-battlestar-galatica-deadlock-for-navy-con-2-2_gDL_l8ROBIE.txt",
+      "evidence": [
+        {"start": "1:07:18", "end": "1:07:48", "note": "The transcript recounts Sergeant York reacting to a portable toilet fan and then traversing toward the reviewing officers."}
+      ]
+    },
+    {
+      "id": "seaslug-type-3-and-unrotated-projectile-failures",
+      "videoId": "gDL_l8ROBIE",
+      "slug": "seaslug-type-3-and-unrotated-projectile-failures",
+      "title": "Sea Slug, Type 3 shells, and unrotated projectiles",
+      "kind": "notable_point",
+      "start": "1:08:00",
+      "end": "1:09:17",
+      "topics": ["seaslug-missile", "type-3-anti-aircraft-shells", "unrotated-projectile", "anti-aircraft-artillery", "naval-air-defence", "weapons-testing", "royal-navy", "imperial-japanese-navy"],
+      "summary": "Sea Slug, Japan's Type 3 shells, and the unrotated projectile show how spectacular or clever air-defence schemes could reach service without delivering their promised battlefield effect.",
+      "body": "The speakers move from the failed M247 to three naval air-defence examples that looked better in concept than in practice. Sea Slug's enormous launch signature may have intimidated observers, but they treat it as an ineffective weapon. Japanese Type 3 anti-aircraft shells are described as excellent in principle and useless in practice. The unrotated projectile adds a darker failure mode because its aerial mines could threaten the ship that fired them. Together these examples make the conclusion concrete: military sponsorship cannot substitute for testing a system's real engagement mechanics and hazards.",
+      "sourcePath": "src/transcripts/txt/2020-11-06_T13-33-34_bilgepumps-does-battlestar-galatica-deadlock-for-navy-con-2-2_gDL_l8ROBIE.txt",
+      "evidence": [
+        {"start": "1:08:00", "end": "1:09:17", "note": "The speakers describe Sea Slug's launch spectacle, Type 3 shells' practical failure, and unrotated projectiles endangering their own mothership."}
       ]
     }
   ]

@@ -21,6 +21,7 @@ import {
 import {
   loadCuratedArchiveSeed,
 } from "./curated-seed.js";
+import type { VideoSegmentShardIndex } from "./video-segment-files.js";
 import { parseVideoDurationSeconds } from "./video-seo.js";
 
 export const defaultSiteEpisodesInput = "src/channel/episodes.json";
@@ -42,6 +43,7 @@ export interface GenerateSiteArchiveDataOptions {
   patternsInput: string;
   patternsSha256: string;
   patternsSourceSha256: string;
+  preloadedShardIndex?: VideoSegmentShardIndex;
   outputDir: string;
 }
 
@@ -217,7 +219,7 @@ export async function generateSiteArchiveData(
     readJson<EpisodeStore>(options.episodesInput),
     readJson<VideoMetadataStore>(options.metadataInput),
     readJson<TranscriptManifestStore>(options.transcriptsInput),
-    loadCuratedArchiveSeed(options.segmentsInput),
+    loadCuratedArchiveSeed(options.segmentsInput, options.preloadedShardIndex),
   ]);
   const archive = buildSiteArchiveData({
     episodesStore,
@@ -322,25 +324,19 @@ export function buildSiteArchiveData(input: {
     }
   }
 
+  const topicRelationships = collectTopicRelationships(
+    videoRecordsById.values(),
+    segments,
+  );
   const topics = input.seed.topics.map((topic) => {
-    const relatedVideos = new Set<string>();
-    const relatedSegments = segments.filter((segment) => segment.topics.some((ref) => ref.slug === topic.slug));
-
-    for (const video of videoRecordsById.values()) {
-      if (video.topics.some((ref) => ref.slug === topic.slug)) {
-        relatedVideos.add(video.videoId);
-      }
-    }
-    for (const segment of relatedSegments) {
-      relatedVideos.add(segment.videoId);
-    }
+    const relationship = topicRelationships.get(topic.slug);
 
     const siteTopic: SiteTopic = {
       slug: topic.slug,
       title: topic.title,
       aliases: [...(topic.aliases ?? [])],
-      videoCount: relatedVideos.size,
-      segmentCount: relatedSegments.length,
+      videoCount: relationship?.videoIds.size ?? 0,
+      segmentCount: relationship?.segmentCount ?? 0,
     };
     if (typeof topic.summary === "string" && topic.summary.trim().length > 0) {
       siteTopic.summary = topic.summary;
@@ -362,6 +358,35 @@ export function buildSiteArchiveData(input: {
     segments,
     topics,
   };
+}
+
+function collectTopicRelationships(
+  videos: Iterable<SiteVideo>,
+  segments: readonly SiteSegment[],
+): Map<string, { segmentCount: number; videoIds: Set<string> }> {
+  const relationships = new Map<string, { segmentCount: number; videoIds: Set<string> }>();
+  for (const video of videos) {
+    for (const slug of new Set(video.topics.map((topic) => topic.slug))) {
+      const relationship = relationships.get(slug) ?? {
+        segmentCount: 0,
+        videoIds: new Set<string>(),
+      };
+      relationship.videoIds.add(video.videoId);
+      relationships.set(slug, relationship);
+    }
+  }
+  for (const segment of segments) {
+    for (const slug of new Set(segment.topics.map((topic) => topic.slug))) {
+      const relationship = relationships.get(slug) ?? {
+        segmentCount: 0,
+        videoIds: new Set<string>(),
+      };
+      relationship.segmentCount += 1;
+      relationship.videoIds.add(segment.videoId);
+      relationships.set(slug, relationship);
+    }
+  }
+  return relationships;
 }
 
 export function siteArchiveSegmentBucketId(videoId: string): string {

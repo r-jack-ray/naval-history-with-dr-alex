@@ -1,33 +1,70 @@
 import {
   defaultTopicNormalizationPatternsInput,
-  synchronizeCuratedTopicStore,
+  planTopicStoreSynchronization,
+  writeTopicStoreSynchronization,
 } from "../site/topic-store.js";
+import type {
+  TopicNormalizationCatalog,
+  TopicSlugResolution,
+} from "../site/topic-normalization.js";
+import type { VideoSegmentShardIndex } from "../site/video-segment-files.js";
+import {
+  isDirectExecution,
+  printRunTime,
+} from "./console-run-timer.js";
 
-const options = parseArgs(process.argv.slice(2));
+export interface SyncVideoTopicsCliOptions {
+  help: boolean;
+  patternsInput: string;
+  segmentsInput: string;
+}
 
-try {
-  const result = await synchronizeCuratedTopicStore(
-    options.segmentsInput,
-    options.patternsInput,
-  );
+export interface SyncVideoTopicsRuntime {
+  precomputedCreationResolutions?: ReadonlyMap<string, TopicSlugResolution>;
+  preloadedCatalog?: TopicNormalizationCatalog;
+  preloadedShardIndex?: VideoSegmentShardIndex;
+  summaryFields?: readonly string[];
+}
+
+export async function runSyncVideoTopics(
+  options: SyncVideoTopicsCliOptions,
+  runtime: SyncVideoTopicsRuntime = {},
+): Promise<void> {
+  const plan = await planTopicStoreSynchronization({
+    patternsInput: options.patternsInput,
+    segmentsInput: options.segmentsInput,
+    ...(runtime.precomputedCreationResolutions === undefined
+      ? {}
+      : { precomputedCreationResolutions: runtime.precomputedCreationResolutions }),
+    ...(runtime.preloadedCatalog === undefined
+      ? {}
+      : { preloadedCatalog: runtime.preloadedCatalog }),
+    ...(runtime.preloadedShardIndex === undefined
+      ? {}
+      : { preloadedShardIndex: runtime.preloadedShardIndex }),
+  });
+  const result = await writeTopicStoreSynchronization(plan);
   const action = result.changed
     ? `added ${result.addedSlugs.length} topic${result.addedSlugs.length === 1 ? "" : "s"}`
     : "already current";
   console.error(
-    `Synchronized ${options.segmentsInput}/topics.json: ${action} (${result.usedTopicCount} used, ${result.topicCount} stored).`,
+    [
+      `Synchronized ${options.segmentsInput}/topics.json:`,
+      action,
+      `(${result.usedTopicCount} used, ${result.topicCount} stored).`,
+      ...(runtime.summaryFields ?? []),
+    ].join(" "),
   );
   for (const topic of result.reviewTopics) {
     console.error(
       `Topic title requires review: ${topic.slug} (generated title: ${topic.generatedTitle}).`,
     );
   }
-} catch (error) {
-  console.error(error instanceof Error ? error.message : String(error));
-  process.exitCode = 1;
 }
 
-function parseArgs(args: string[]): { segmentsInput: string; patternsInput: string } {
-  const options = {
+export function parseSyncVideoTopicsArgs(args: readonly string[]): SyncVideoTopicsCliOptions {
+  const options: SyncVideoTopicsCliOptions = {
+    help: false,
     segmentsInput: "src/derived/video-segments",
     patternsInput: defaultTopicNormalizationPatternsInput,
   };
@@ -42,22 +79,50 @@ function parseArgs(args: string[]): { segmentsInput: string; patternsInput: stri
       continue;
     }
     if (arg === "--help" || arg === "-h") {
-      console.log(`Usage: npm run sync:video-topics -- [options]
-
-Options:
-  --segments-input <path>  Per-video curated content directory. Defaults to src/derived/video-segments.
-  --patterns-input <path>  Topic normalization catalog. Defaults to ${defaultTopicNormalizationPatternsInput}.`);
-      process.exit(0);
+      options.help = true;
+      continue;
     }
     throw new Error(`Unknown argument: ${arg}`);
   }
   return options;
 }
 
-function readValue(args: string[], index: number, flag: string): string {
+function readValue(args: readonly string[], index: number, flag: string): string {
   const value = args[index];
   if (value === undefined || value.startsWith("--")) {
     throw new Error(`Missing value for ${flag}`);
   }
   return value;
+}
+
+export function syncVideoTopicsUsage(
+  command = "npm run sync:video-topics",
+  includeWorkers = false,
+): string {
+  return `Usage: ${command} -- [options]
+
+Options:
+  --segments-input <path>  Per-video curated content directory. Defaults to src/derived/video-segments.
+  --patterns-input <path>  Topic normalization catalog. Defaults to ${defaultTopicNormalizationPatternsInput}.
+${includeWorkers ? "  --workers <count>        Worker count. Defaults to min(8, available CPUs).\n" : ""}  --help                    Show this help.
+`;
+}
+
+async function main(): Promise<void> {
+  const options = parseSyncVideoTopicsArgs(process.argv.slice(2));
+  if (options.help) {
+    process.stdout.write(syncVideoTopicsUsage());
+    return;
+  }
+  await runSyncVideoTopics(options);
+}
+
+if (isDirectExecution(import.meta.url)) {
+  const runStartedAt = Date.now();
+  main().catch((error: unknown) => {
+    console.error(error instanceof Error ? error.message : String(error));
+    process.exitCode = 1;
+  }).finally(() => {
+    printRunTime(runStartedAt);
+  });
 }

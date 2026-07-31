@@ -5,7 +5,12 @@ import { join } from "node:path";
 import test from "node:test";
 
 import { auditTopicNormalization } from "./topic-normalization-audit.js";
-import { topicNormalizationPatternHeader } from "./topic-normalization.js";
+import {
+  loadTopicNormalizationCatalog,
+  resolveTopicCreation,
+  topicNormalizationPatternHeader,
+} from "./topic-normalization.js";
+import { discoverVideoSegmentShards } from "./video-segment-files.js";
 
 test("audits canonical source data without writing and reports exact review policy", async () => {
   const fixture = await makeFixture(["57-mm-guns", "155mm-guns"]);
@@ -96,6 +101,30 @@ test("rejects active noncanonical inputs and missing policy aliases", async () =
       && finding.includes("normalize-57mm-gun")
     )));
     assert.ok(result.blockers.includes("Topic 57-mm-guns does not represent policy alias \"57mm Gun\"."));
+  } finally {
+    await rm(fixture.root, { recursive: true, force: true });
+  }
+});
+
+test("precomputed Bun-style creation resolutions preserve audit output", async () => {
+  const fixture = await makeFixture(["57-mm-guns", "155mm-guns"]);
+  try {
+    const [expected, catalog, shardIndex] = await Promise.all([
+      auditTopicNormalization(fixture),
+      loadTopicNormalizationCatalog(fixture.patternsInput),
+      discoverVideoSegmentShards(fixture.segmentsInput),
+    ]);
+    const slugs = ["57-mm-guns", "155mm-guns"];
+    const actual = await auditTopicNormalization({
+      ...fixture,
+      precomputedCreationResolutions: new Map(
+        slugs.map((slug) => [slug, resolveTopicCreation(catalog, slug)]),
+      ),
+      preloadedCatalog: catalog,
+      preloadedShardIndex: shardIndex,
+    });
+
+    assert.deepEqual(actual, expected);
   } finally {
     await rm(fixture.root, { recursive: true, force: true });
   }

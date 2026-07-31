@@ -73,7 +73,10 @@ step retains upcoming livestream air dates and automatically refreshes a
 deferred record about 24 hours after its latest scheduled time. A postponed
 stream therefore records its new air date instead of becoming a transcript
 failure; a completed stream becomes eligible for the following transcript
-batch.
+batch. A full `npm run fetch:video-links` also forces a targeted metadata
+refresh when its current duration data contradicts a stored non-ready record,
+so an obsolete future schedule cannot keep an already completed stream
+deferred.
 
 Generate a diagnostic report from the saved failures without contacting YouTube
 or retrying any transcript:

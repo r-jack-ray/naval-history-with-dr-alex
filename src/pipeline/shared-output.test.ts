@@ -78,12 +78,20 @@ test("validation hooks share the split-archive contract and generate once before
     /--recover-stale -- node --import tsx src\/scripts\/generate-site-data\.ts/u,
   );
   assert.doesNotMatch(generateSiteDataScript, /--build|dist\/scripts\/generate-site-data\.js/u);
+  assert.match(
+    packageJson.scripts["generate:site-data:bun"] ?? "",
+    /run --purpose site-archive-generation --recover-stale -- bun run src\/scripts\/generate-site-data-bun\.ts/u,
+  );
   const syncVideoTopicsScript = packageJson.scripts["sync:video-topics"] ?? "";
   assert.match(
     syncVideoTopicsScript,
     /run --purpose video-topic-sync --recover-stale -- node --import tsx src\/scripts\/sync-video-topics\.ts/u,
   );
   assert.doesNotMatch(syncVideoTopicsScript, /--build|dist\/scripts\/sync-video-topics\.js/u);
+  assert.match(
+    packageJson.scripts["sync:video-topics:bun"] ?? "",
+    /run --purpose video-topic-sync --recover-stale -- bun run src\/scripts\/sync-video-topics-bun\.ts/u,
+  );
   assert.ok(
     siteBuildWrapper.includes(`manifest?.schemaVersion !== ${siteArchiveSchemaVersion}`),
     "site build wrapper must validate the current split-archive manifest schema",
@@ -111,11 +119,63 @@ test("validation hooks share the split-archive contract and generate once before
   assert.doesNotMatch(packageJson.scripts["site:build:generated"] ?? "", /generate:site-data/u);
 });
 
-test("topic curation reports consume exact normalization audit findings outside the site build", async () => {
-  const reportScript = await readFile(
-    join(repositoryRoot, "src", "scripts", "report-video-topic-usage.ts"),
-    "utf8",
+test("parallel Bun maintenance commands reuse canonical writers and report run time", async () => {
+  const [
+    packageJsonText,
+    auditNode,
+    auditBun,
+    generateNode,
+    generateBun,
+    syncNode,
+    syncBun,
+    parallelPreparation,
+  ] = await Promise.all([
+    readFile(join(repositoryRoot, "package.json"), "utf8"),
+    readFile(join(repositoryRoot, "src", "scripts", "audit-topic-normalization.ts"), "utf8"),
+    readFile(join(repositoryRoot, "src", "scripts", "audit-topic-normalization-bun.ts"), "utf8"),
+    readFile(join(repositoryRoot, "src", "scripts", "generate-site-data.ts"), "utf8"),
+    readFile(join(repositoryRoot, "src", "scripts", "generate-site-data-bun.ts"), "utf8"),
+    readFile(join(repositoryRoot, "src", "scripts", "sync-video-topics.ts"), "utf8"),
+    readFile(join(repositoryRoot, "src", "scripts", "sync-video-topics-bun.ts"), "utf8"),
+    readFile(join(repositoryRoot, "src", "scripts", "bun-topic-normalization.ts"), "utf8"),
+  ]);
+  const packageJson = JSON.parse(packageJsonText) as {
+    scripts: Record<string, string>;
+  };
+
+  assert.equal(
+    packageJson.scripts["audit:topic-normalization:bun"],
+    "bun run src/scripts/audit-topic-normalization-bun.ts",
   );
+  for (const source of [auditNode, auditBun, generateNode, generateBun, syncNode, syncBun]) {
+    assert.match(source, /printRunTime\(runStartedAt\)/u);
+  }
+  for (const source of [auditBun, generateBun, syncBun]) {
+    assert.match(source, /prepareParallelTopicNormalizationInputs/u);
+    assert.match(source, /runtime=bun/u);
+  }
+  assert.match(parallelPreparation, /discoverVideoSegmentShardsWithBunWorkers/u);
+  assert.match(parallelPreparation, /bun-topic-normalization-worker\.ts/u);
+  assert.match(generateBun, /runGenerateSiteData/u);
+  assert.match(syncBun, /runSyncVideoTopics/u);
+  assert.match(auditBun, /executeTopicNormalizationAudit/u);
+});
+
+test("topic curation reports consume exact normalization audit findings outside the site build", async () => {
+  const [packageJsonText, reportScript, bunReportScript] = await Promise.all([
+    readFile(join(repositoryRoot, "package.json"), "utf8"),
+    readFile(
+      join(repositoryRoot, "src", "scripts", "report-video-topic-usage.ts"),
+      "utf8",
+    ),
+    readFile(
+      join(repositoryRoot, "src", "scripts", "report-video-topic-usage-bun.ts"),
+      "utf8",
+    ),
+  ]);
+  const packageJson = JSON.parse(packageJsonText) as {
+    scripts: Record<string, string>;
+  };
 
   assert.match(reportScript, /auditTopicNormalization/u);
   assert.match(
@@ -124,6 +184,17 @@ test("topic curation reports consume exact normalization audit findings outside 
   );
   assert.match(reportScript, /reports\/topic-normalization-review\.tsv/u);
   assert.match(reportScript, /normalization_reviews=/u);
+  assert.match(reportScript, /printRunTime\(runStartedAt\)/u);
+  assert.equal(
+    packageJson.scripts["report:video-topic-usage:bun"],
+    "bun run src/scripts/report-video-topic-usage-bun.ts",
+  );
+  assert.match(bunReportScript, /new Worker\(new URL\(import\.meta\.url\)/u);
+  assert.match(bunReportScript, /Math\.min\(8, availableParallelism\(\)\)/u);
+  assert.match(bunReportScript, /preloadedShardIndex: shardIndex/u);
+  assert.match(bunReportScript, /buildParallelNameAnalysis\(topics, workerCount\)/u);
+  assert.match(bunReportScript, /isDirectExecution\(import\.meta\.url\)/u);
+  assert.match(bunReportScript, /printRunTime\(runStartedAt\)/u);
 });
 
 test("Astro dev does not watch generated production output", async () => {

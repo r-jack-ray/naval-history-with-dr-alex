@@ -12,10 +12,11 @@ import {
   officialVideoStreamStartTime,
   resolveChannelVideoLinksMasterOutput,
   resolveStoredTranscriptTxtPath,
+  selectMetadataRefreshVideoIdsFromChannelLinks,
   splitChannelVideoLinksResult,
   type ChannelVideoLink,
 } from "./channel-video-links.js";
-import { isBlockedTranscriptDuration } from "./video-metadata.js";
+import { isBlockedTranscriptDuration, type VideoMetadataRecord } from "./video-metadata.js";
 
 test("defaults a full video-link fetch to the canonical episode master", () => {
   assert.equal(resolveChannelVideoLinksMasterOutput({}), "src/channel/episodes.json");
@@ -30,6 +31,56 @@ test("does not implicitly overwrite the episode master for probes or alternate o
   assert.equal(resolveChannelVideoLinksMasterOutput({ output: "reports/probe.json" }), undefined);
   assert.equal(resolveChannelVideoLinksMasterOutput({ linksOutput: "reports/links.json" }), undefined);
   assert.equal(resolveChannelVideoLinksMasterOutput({ metadataOutput: "reports/metadata.json" }), undefined);
+});
+
+test("refreshes deferred metadata when the current channel fetch reports a transcript-eligible duration", () => {
+  const staleUpcoming: VideoMetadataRecord = {
+    videoId: "staleUpcoming",
+    fetchedAt: "2026-07-08T02:35:14.944Z",
+    snippet: { liveBroadcastContent: "upcoming" },
+    contentDetails: { duration: "P0D" },
+    status: { uploadStatus: "uploaded" },
+    liveStreamingDetails: { scheduledStartTime: "2026-08-13T18:30:00Z" },
+  };
+  const ready: VideoMetadataRecord = {
+    videoId: "alreadyReady",
+    fetchedAt: "2026-07-31T12:42:52.632Z",
+    snippet: { publishedAt: "2026-07-30T18:34:15Z", liveBroadcastContent: "none" },
+    contentDetails: { duration: "PT2H34M5S" },
+    status: { uploadStatus: "processed" },
+  };
+
+  assert.deepEqual(
+    selectMetadataRefreshVideoIdsFromChannelLinks(
+      [
+        {
+          videoId: "staleUpcoming",
+          url: "https://www.youtube.com/watch?v=staleUpcoming",
+          durationSeconds: 9_245,
+          tabs: ["videos"],
+          tabPositions: { videos: 1 },
+        },
+        {
+          videoId: "stillUnresolved",
+          url: "https://www.youtube.com/watch?v=stillUnresolved",
+          tabs: ["videos"],
+          tabPositions: { videos: 2 },
+        },
+        {
+          videoId: "alreadyReady",
+          url: "https://www.youtube.com/watch?v=alreadyReady",
+          durationSeconds: 9_245,
+          tabs: ["videos"],
+          tabPositions: { videos: 3 },
+        },
+      ],
+      new Map([
+        [staleUpcoming.videoId, staleUpcoming],
+        [ready.videoId, ready],
+      ]),
+    ),
+    ["staleUpcoming"],
+  );
 });
 
 test("resolves manifest-relative transcript paths for episode records", () => {

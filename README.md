@@ -116,7 +116,9 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 | `audit:site-content` | Validate current-schema shards and transcript evidence, then write the backlog report. This command uses the shared writer lease. |
 | `diagnose:site-content-duplicates` | Check curated shards for duplicate segment IDs and slugs. |
 | `sync:video-topics` | Add missing shared topic records derived from shard usage and normalization policy. This command writes `topics.json` under the shared writer lease. |
+| `sync:video-topics:bun` | Run the same locked topic synchronization with parallel Bun shard and normalization workers. |
 | `audit:topic-normalization` | Read-only validation of topic-normalization policy against curated shards. |
+| `audit:topic-normalization:bun` | Run the same read-only normalization audit with parallel Bun workers. |
 | `append:site-content-processing-log` | Low-level validated append to the site-content processing log. |
 | `audit:transcript-schedules` | Audit one or more explicitly supplied transcript schedules; at least one `--schedule <path>` is required. |
 | `audit:video-timestamp-alignment` | Check timestamp and video-state consistency across source, transcript, shard, and generated data. |
@@ -144,6 +146,7 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 | Script | Purpose |
 | --- | --- |
 | `generate:site-data` | Regenerate the tracked split archive under the shared writer lease. |
+| `generate:site-data:bun` | Regenerate the same split archive under the same lease with parallel Bun workers. |
 | `site:dev` | Start Astro's development server using the existing generated archive. |
 | `site:preview` | Preview an existing `site/dist/` build. |
 | `site:check` | Regenerate archive data, then run the Astro check. |
@@ -174,6 +177,8 @@ Local site commands:
 
 ```powershell
 npm run generate:site-data
+# Faster equivalent when Bun is installed:
+npm run generate:site-data:bun
 npm run site:dev
 npm run site:check
 npm run site:build
@@ -181,6 +186,8 @@ npm run site:preview
 ```
 
 `npm run site:dev` uses the generated archive already on disk; run `generate:site-data` first when source data changed. `npm run site:check` regenerates `site/src/data/generated/archive/` before running Astro checks. `npm run site:build` fingerprints the generator and site inputs, validates the manifest-listed generated files and SHA-256 values, and regenerates or rebuilds only when inputs or outputs changed; pass `-- --force` to bypass its caches. A performed build emits `site/dist/` and runs Pagefind against that output. Run `site:preview` after a build when you want to inspect that production output locally.
+
+The `:bun` maintenance commands use `--workers <count>` with a default of the smaller of eight or the available CPUs. They preserve the Node commands' output paths and writer leases, and both versions print `Run Time: HH:MM:SS.mmm` for direct comparison.
 
 Site generation, Astro/Pagefind build, preview, check, and rendered-SEO validation commands load the shared `site-build.properties` file. It uses commentable `KEY=value` settings in the style of an application properties file. `ASTRO_BUILD_CONCURRENCY` controls parallel Astro page rendering and accepts `1` through `4`; `SITE_SEO_VALIDATION_CONCURRENCY` controls rendered-HTML validation workers and accepts `1` through `32`. A value already present in the calling environment takes precedence. Pagefind 1.5.2 exposes no build-concurrency setting.
 

@@ -38,7 +38,7 @@ export interface VideoTopicUsageReport {
   };
 }
 
-interface TopicDefinition {
+export interface VideoTopicNameDefinition {
   slug: string;
   title: string;
   aliases: string[];
@@ -48,10 +48,16 @@ interface TopicMetrics {
   anyVideoIds: Set<string>;
 }
 
-interface SimilarTopic {
+export interface VideoTopicSimilarity {
   slug: string;
   title: string;
   score: number;
+}
+
+export type VideoTopicNameAnalysisEntry = [string, VideoTopicSimilarity[]];
+
+export interface RenderVideoTopicUsageReportOptions {
+  nameAnalysis?: ReadonlyMap<string, readonly VideoTopicSimilarity[]>;
 }
 
 interface CoTopic {
@@ -68,12 +74,9 @@ interface TopicClassification {
 export function renderVideoTopicUsageReport(
   seed: CuratedArchiveSeed,
   normalizationRules: readonly TopicNormalizationRule[],
+  options: RenderVideoTopicUsageReportOptions = {},
 ): VideoTopicUsageReport {
-  const registryTopics = seed.topics.map(topicDefinition);
-  const registryBySlug = new Map(registryTopics.map((topic) => [topic.slug, topic]));
-  if (registryBySlug.size !== registryTopics.length) {
-    throw new Error("Topic registry contains duplicate slugs.");
-  }
+  const { allTopics, registryBySlug, registryTopics } = collectTopicDefinitions(seed);
 
   const metricsBySlug = new Map<string, TopicMetrics>();
   const coTopicCounts = new Map<string, Map<string, number>>();
@@ -108,13 +111,6 @@ export function renderVideoTopicUsageReport(
     }
   }
 
-  const allTopics = [...registryTopics];
-  for (const slug of [...metricsBySlug.keys()].sort()) {
-    if (!registryBySlug.has(slug)) {
-      allTopics.push({ slug, title: titleFromSlug(slug), aliases: [] });
-    }
-  }
-
   const normalizationByReplacement = new Map<string, TopicNormalizationRule[]>();
   for (const rule of normalizationRules) {
     if (rule.status !== "active" || !rule.scopes.includes("creation")) continue;
@@ -123,7 +119,12 @@ export function renderVideoTopicUsageReport(
     normalizationByReplacement.set(rule.replacement, target);
   }
 
-  const nameAnalysis = buildNameAnalysis(allTopics);
+  const nameAnalysis = options.nameAnalysis ?? buildVideoTopicNameAnalysisPartition(allTopics, 0, 1);
+  for (const topic of allTopics) {
+    if (!nameAnalysis.has(topic.slug)) {
+      throw new Error(`Topic name analysis is missing ${topic.slug}.`);
+    }
+  }
 
   const topCoTopics = (slug: string, limit: number): CoTopic[] => (
     [...(coTopicCounts.get(slug) ?? new Map()).entries()]
@@ -199,7 +200,37 @@ export function renderVideoTopicUsageReport(
   };
 }
 
-function topicDefinition(topic: CuratedTopicSeed): TopicDefinition {
+export function collectVideoTopicNameDefinitions(
+  seed: CuratedArchiveSeed,
+): VideoTopicNameDefinition[] {
+  return collectTopicDefinitions(seed).allTopics;
+}
+
+function collectTopicDefinitions(seed: CuratedArchiveSeed): {
+  allTopics: VideoTopicNameDefinition[];
+  registryBySlug: Map<string, VideoTopicNameDefinition>;
+  registryTopics: VideoTopicNameDefinition[];
+} {
+  const registryTopics = seed.topics.map(topicDefinition);
+  const registryBySlug = new Map(registryTopics.map((topic) => [topic.slug, topic]));
+  if (registryBySlug.size !== registryTopics.length) {
+    throw new Error("Topic registry contains duplicate slugs.");
+  }
+
+  const usedSlugs = new Set([
+    ...seed.videos.flatMap((video) => video.topics),
+    ...seed.segments.flatMap((segment) => segment.topics),
+  ]);
+  const allTopics = [...registryTopics];
+  for (const slug of [...usedSlugs].sort()) {
+    if (!registryBySlug.has(slug)) {
+      allTopics.push({ slug, title: titleFromSlug(slug), aliases: [] });
+    }
+  }
+  return { allTopics, registryBySlug, registryTopics };
+}
+
+function topicDefinition(topic: CuratedTopicSeed): VideoTopicNameDefinition {
   return { slug: topic.slug, title: topic.title, aliases: [...(topic.aliases ?? [])] };
 }
 
@@ -209,7 +240,22 @@ function incrementPair(counts: Map<string, Map<string, number>>, slug: string, o
   counts.set(slug, related);
 }
 
-function buildNameAnalysis(topics: readonly TopicDefinition[]): Map<string, SimilarTopic[]> {
+export function buildVideoTopicNameAnalysisPartition(
+  topics: readonly VideoTopicNameDefinition[],
+  partitionIndex: number,
+  partitionCount: number,
+): Map<string, VideoTopicSimilarity[]> {
+  if (
+    !Number.isInteger(partitionCount)
+    || partitionCount < 1
+    || !Number.isInteger(partitionIndex)
+    || partitionIndex < 0
+    || partitionIndex >= partitionCount
+  ) {
+    throw new Error(
+      `Invalid topic name-analysis partition ${partitionIndex} of ${partitionCount}.`,
+    );
+  }
   const bySlug = new Map(topics.map((topic) => [topic.slug, topic]));
   const formsBySlug = new Map<string, string[]>();
   const tokenSetsBySlug = new Map<string, Set<string>>();
@@ -243,8 +289,13 @@ function buildNameAnalysis(topics: readonly TopicDefinition[]): Map<string, Simi
     }
   }
 
-  const results = new Map<string, SimilarTopic[]>();
-  for (const topic of topics) {
+  const results = new Map<string, VideoTopicSimilarity[]>();
+  for (
+    let topicIndex = partitionIndex;
+    topicIndex < topics.length;
+    topicIndex += partitionCount
+  ) {
+    const topic = topics[topicIndex]!;
     const candidates = new Set<string>();
     for (const token of tokenSetsBySlug.get(topic.slug) ?? []) {
       for (const candidate of tokenIndex.get(token) ?? []) candidates.add(candidate);
@@ -253,7 +304,7 @@ function buildNameAnalysis(topics: readonly TopicDefinition[]): Map<string, Simi
     for (const candidate of prefixIndex.get(prefix) ?? []) candidates.add(candidate);
     candidates.delete(topic.slug);
 
-    const scored: SimilarTopic[] = [];
+    const scored: VideoTopicSimilarity[] = [];
     for (const candidateSlug of candidates) {
       const candidate = bySlug.get(candidateSlug);
       if (candidate === undefined) continue;
@@ -295,7 +346,7 @@ function topicSimilarity(leftForms: readonly string[], rightForms: readonly stri
   return best;
 }
 
-function classifyTopic(topic: TopicDefinition): TopicClassification {
+function classifyTopic(topic: VideoTopicNameDefinition): TopicClassification {
   const text = normalizeName(topic.title);
   const entityRules: Array<readonly [string, RegExp, string]> = [
     ["fictional_topic", /\b(science fiction|star trek|star wars|warhammer|fictional|space navy|spaceship|spaceships)\b/u, "fictional or science-fiction terms"],

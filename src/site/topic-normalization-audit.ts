@@ -13,11 +13,18 @@ import {
   topicCollisionKey,
   type TopicNormalizationCatalog,
   type TopicNormalizationRule,
+  type TopicSlugResolution,
 } from "./topic-normalization.js";
-import { discoverVideoSegmentShards } from "./video-segment-files.js";
+import {
+  discoverVideoSegmentShards,
+  type VideoSegmentShardIndex,
+} from "./video-segment-files.js";
 
 export interface AuditTopicNormalizationOptions {
   patternsInput: string;
+  precomputedCreationResolutions?: ReadonlyMap<string, TopicSlugResolution>;
+  preloadedCatalog?: TopicNormalizationCatalog;
+  preloadedShardIndex?: VideoSegmentShardIndex;
   segmentsInput: string;
 }
 
@@ -69,15 +76,18 @@ interface MutableRuleReview {
 export async function auditTopicNormalization(
   options: AuditTopicNormalizationOptions,
 ): Promise<TopicNormalizationAuditResult> {
-  const catalog = await loadTopicNormalizationCatalog(options.patternsInput);
+  const catalog = options.preloadedCatalog
+    ?? await loadTopicNormalizationCatalog(options.patternsInput);
   const registryPath = join(options.segmentsInput, "topics.json");
   const store = parseTopicStore(await readFile(registryPath, "utf8"), registryPath);
-  const { shards } = await discoverVideoSegmentShards(options.segmentsInput);
+  const { shards } = options.preloadedShardIndex
+    ?? await discoverVideoSegmentShards(options.segmentsInput);
   const topicsBySlug = new Map(store.topics.map((topic) => [topic.slug, topic]));
   const usedSlugs = new Set<string>();
   const blockers: string[] = [];
   const ruleReviews = new Map<string, MutableRuleReview>();
   const sourcesBySlug = new Map<string, Set<string>>();
+  const creationResolutions = new Map(options.precomputedCreationResolutions ?? []);
 
   for (const shard of shards) {
     auditTopicArray(
@@ -88,6 +98,7 @@ export async function auditTopicNormalization(
       blockers,
       ruleReviews,
       sourcesBySlug,
+      creationResolutions,
     );
     for (const segment of shard.value.segments) {
       auditTopicArray(
@@ -98,6 +109,7 @@ export async function auditTopicNormalization(
         blockers,
         ruleReviews,
         sourcesBySlug,
+        creationResolutions,
       );
     }
   }
@@ -105,7 +117,14 @@ export async function auditTopicNormalization(
   for (const topic of store.topics) {
     const source = `Topic registry record ${topic.slug}`;
     addTopicSource(sourcesBySlug, topic.slug, source);
-    auditCreationInput(source, topic.slug, catalog, blockers, ruleReviews);
+    auditCreationInput(
+      source,
+      topic.slug,
+      catalog,
+      blockers,
+      ruleReviews,
+      creationResolutions,
+    );
     const display = resolveTopicDisplayTitle(catalog, topic.slug);
     if (
       (display.resolution === "exact" || display.resolution === "regex")
@@ -149,6 +168,7 @@ function auditTopicArray(
   blockers: string[],
   ruleReviews: Map<string, MutableRuleReview>,
   sourcesBySlug: Map<string, Set<string>>,
+  creationResolutions: Map<string, TopicSlugResolution>,
 ): void {
   if (!Array.isArray(value)) {
     throw new Error(`${source} must include a topics array.`);
@@ -164,7 +184,14 @@ function auditTopicArray(
     seen.add(valueSlug);
     usedSlugs.add(valueSlug);
     addTopicSource(sourcesBySlug, valueSlug, source);
-    auditCreationInput(source, valueSlug, catalog, blockers, ruleReviews);
+    auditCreationInput(
+      source,
+      valueSlug,
+      catalog,
+      blockers,
+      ruleReviews,
+      creationResolutions,
+    );
   }
 }
 
@@ -174,8 +201,11 @@ function auditCreationInput(
   catalog: TopicNormalizationCatalog,
   blockers: string[],
   ruleReviews: Map<string, MutableRuleReview>,
+  creationResolutions: Map<string, TopicSlugResolution>,
 ): void {
-  const resolution = resolveTopicCreation(catalog, slug);
+  const resolution = creationResolutions.get(slug)
+    ?? resolveTopicCreation(catalog, slug);
+  creationResolutions.set(slug, resolution);
   if (resolution.changed) {
     blockers.push(
       `${source} uses noncanonical topic ${slug}; active creation rule ${resolution.matchedRuleIds.join(", ")} resolves it to ${resolution.slug}.`,
