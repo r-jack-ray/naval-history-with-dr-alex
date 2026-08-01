@@ -60,16 +60,32 @@ const siteInputPaths = [
 const archiveCacheVersion = 3;
 const siteCacheVersion = 5;
 const runStartedAt = new Date();
+const defaultPagefindScript = "site:build:pagefind";
+const workspacePagefindScript = "site:build:pagefind:workspace";
+const workspacePagefindBinaryPath = `../pagefind/target/release/${
+  process.platform === "win32" ? "pagefind.exe" : "pagefind"
+}`;
 
 async function main() {
   const args = process.argv.slice(2);
   for (const arg of args) {
-    if (arg !== "--force" && arg !== "--generate") {
+    if (
+      arg !== "--force" &&
+      arg !== "--generate" &&
+      arg !== "--workspace-pagefind"
+    ) {
       throw new Error(`Unknown argument: ${arg}`);
     }
   }
 
   const force = args.includes("--force");
+  const useWorkspacePagefind = args.includes("--workspace-pagefind");
+  const pagefindScript = useWorkspacePagefind
+    ? workspacePagefindScript
+    : defaultPagefindScript;
+  const pagefindInputPaths = useWorkspacePagefind
+    ? [workspacePagefindBinaryPath]
+    : [];
   const buildConcurrency = parseAstroBuildConcurrency(
     process.env.ASTRO_BUILD_CONCURRENCY,
   );
@@ -80,7 +96,12 @@ async function main() {
     }
   }
 
-  await ensureBuiltSite(force, buildConcurrency);
+  await ensureBuiltSite(
+    force,
+    buildConcurrency,
+    pagefindScript,
+    pagefindInputPaths,
+  );
 }
 
 async function ensureSiteArchive(force) {
@@ -152,7 +173,12 @@ async function ensureSiteArchive(force) {
   return true;
 }
 
-async function ensureBuiltSite(force, buildConcurrency) {
+async function ensureBuiltSite(
+  force,
+  buildConcurrency,
+  pagefindScript,
+  pagefindInputPaths,
+) {
   const archiveValidation = await measureStage(
     "archive integrity validation (site)",
     validateSiteArchive,
@@ -172,8 +198,11 @@ async function ensureBuiltSite(force, buildConcurrency) {
     () => calculateFingerprint(
       "site-build",
       siteCacheVersion,
-      [...siteInputPaths, ...environmentFiles],
-      [["astro-build-concurrency", String(buildConcurrency)]],
+      [...siteInputPaths, ...environmentFiles, ...pagefindInputPaths],
+      [
+        ["astro-build-concurrency", String(buildConcurrency)],
+        ["pagefind-script", pagefindScript],
+      ],
     ),
   );
   const cache = await readCache(siteCachePath, siteCacheVersion);
@@ -223,7 +252,7 @@ async function ensureBuiltSite(force, buildConcurrency) {
 
   const pagefindExitCode = await measureStage(
     "Pagefind indexing",
-    () => runNpmScript("site:build:pagefind"),
+    () => runNpmScript(pagefindScript),
   );
   if (pagefindExitCode !== 0) {
     process.exitCode = pagefindExitCode;
