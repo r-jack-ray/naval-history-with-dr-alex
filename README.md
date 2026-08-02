@@ -129,7 +129,7 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 
 | Script | Purpose |
 | --- | --- |
-| `fetch:video-links` | Fetch the channel uploads inventory through the YouTube Data API, using `reports/youtube-api-key.txt` by default. |
+| `fetch:video-links` | Fetch the channel uploads inventory through the YouTube Data API, using `.local/youtube-api-key.txt` by default. |
 | `fetch:video-metadata` | Populate or resume the official per-video metadata store. |
 | `alternate:extract:saved-channel-html` | Parse a saved `/videos` or `/streams` channel page offline. |
 | `alternate:extract:live-streams-html` | Parse the specialized saved live-stream HTML format offline. |
@@ -204,7 +204,7 @@ The generated site exposes:
 
 ## Fetch Channel Video Links
 
-The main inventory task uses the official YouTube Data API through `googleapis`. It defaults to reading the API key from `reports/youtube-api-key.txt`; alternatively pass `--api-key` or `--api-key-file` after `--`. Direct CLI use can also read `YOUTUBE_API_KEY`. Official API calls default to a one-second delay between requests.
+The main inventory task uses the official YouTube Data API through `googleapis`. It defaults to reading the API key from `.local/youtube-api-key.txt`; alternatively pass `--api-key` or `--api-key-file` after `--`. Direct CLI use can also read `YOUTUBE_API_KEY`. Official API calls default to a one-second delay between requests.
 
 YouTube Data API quota is tracked by Google project and resets at midnight Pacific Time. The default allocation is 10,000 units per day combined for most endpoints, with `playlistItems.list` and `videos.list` costing 1 unit per call. `search.list` has a separate default limit of 100 calls per day, while `captions.list` costs 50 units from the general allocation. Check the official [YouTube Data API quota cost table](https://developers.google.com/youtube/v3/determine_quota_cost) before changing fetch strategy.
 

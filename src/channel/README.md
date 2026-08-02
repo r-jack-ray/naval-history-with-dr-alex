@@ -69,7 +69,7 @@ npm run alternate:merge:video-links -- --input reports/dr-alex-videos-html-links
 ```
 
 Populate official metadata. The package script defaults to
-`reports/youtube-api-key.txt`; direct CLI use can instead read
+`.local/youtube-api-key.txt`; direct CLI use can instead read
 `YOUTUBE_API_KEY`, `--api-key`, or `--api-key-file`:
 
 ```powershell

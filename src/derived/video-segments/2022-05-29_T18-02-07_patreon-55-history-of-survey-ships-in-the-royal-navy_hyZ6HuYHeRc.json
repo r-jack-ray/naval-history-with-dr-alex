@@ -6,9 +6,30 @@
     "survey-ships",
     "naval-navigation",
     "anti-submarine-warfare",
-    "maritime-trade"
+    "maritime-trade",
+    "undersea-cables",
+    "mine-countermeasures"
   ],
   "segments": [
+    {
+      "id": "cruise-missile-torpedo-hybrid-tradeoffs",
+      "videoId": "hyZ6HuYHeRc",
+      "slug": "cruise-missile-torpedo-hybrid-tradeoffs",
+      "title": "Why cruise-missile torpedo hybrids remain a niche weapon",
+      "kind": "qa",
+      "start": "11:09",
+      "end": "11:47",
+      "topics": ["torpedoes", "anti-submarine-warfare", "anti-ship-missiles", "close-in-weapon-systems"],
+      "summary": "A missile can carry a torpedo toward a distant target, but the payload and targeting penalties often outweigh its advantages.",
+      "body": "Clarke explains that several navies have explored weapons that fly like cruise missiles before delivering a torpedo. The anti-submarine version still depends on a sufficiently accurate long-range contact, so the hybrid does not solve the hardest part of ASW. Against surface ships, diving below a close-in weapon system is attractive, but torpedo countermeasures still apply. The weight devoted to the torpedo and its delivery machinery can instead buy more missile fuel or a larger conventional warhead.",
+      "question": "Will navies field a cruise-missile and torpedo hybrid for attacking submarines, ships, or shore targets?",
+      "answerShort": "The idea has been tested, but uncertain long-range submarine targeting and inefficient payload tradeoffs have kept it from becoming a broadly useful weapon.",
+      "sourcePath": "src/transcripts/txt/2022-05-29_T18-02-07_patreon-55-history-of-survey-ships-in-the-royal-navy_hyZ6HuYHeRc.txt",
+      "evidence": [
+        {"start": "11:09", "end": "11:47", "note": "The original question and first answer explain that a missile-delivered torpedo still requires a sufficiently accurate long-range submarine contact."},
+        {"start": "24:26", "end": "25:19", "note": "Clarke's follow-up discusses anti-ship use, close-in defenses, torpedo countermeasures, and payload tradeoffs."}
+      ]
+    },
     {
       "id": "william-white-royal-sovereign-and-renown",
       "videoId": "hyZ6HuYHeRc",
@@ -24,6 +45,25 @@
       "answerShort": "The Royal Sovereigns were his most important class, but HMS Renown is Clarke's favorite individual ship.",
       "sourcePath": "src/transcripts/txt/2022-05-29_T18-02-07_patreon-55-history-of-survey-ships-in-the-royal-navy_hyZ6HuYHeRc.txt",
       "evidence": [{"start": "12:31", "end": "14:03", "note": "Clarke contrasts the Royal Sovereign class's pre-dreadnought influence with his personal preference for Renown."}]
+    },
+    {
+      "id": "hms-echo-low-readiness-survey-fleet-risk",
+      "videoId": "hyZ6HuYHeRc",
+      "slug": "hms-echo-low-readiness-survey-fleet-risk",
+      "title": "Why placing HMS Echo in low readiness worried Clarke",
+      "kind": "qa",
+      "start": "16:28",
+      "end": "16:39",
+      "topics": ["hms-echo", "echo-class", "fleet-readiness", "force-structure", "hydrography"],
+      "summary": "Mothballing a flexible survey ship removes scarce geographic presence and specialist search capacity from an already small force.",
+      "body": "Asked about HMS Echo going into mothballs, Clarke says he had noticed and did not consider the move sensible. Later in the talk he notes that she entered low-readiness status in May 2022 despite recent work supporting Ukraine, fishery protection, and the search for MH370. With the survey fleet already contracted, losing access to one flexible hull reduces both geographic presence and specialist search capacity. The answer treats reserve status as a force-structure decision rather than a merely administrative change.",
+      "question": "Was placing HMS Echo in mothballs or low readiness a sensible decision?",
+      "answerShort": "No. Clarke argues that an already small survey force could not readily spare such a flexible and recently active ship.",
+      "sourcePath": "src/transcripts/txt/2022-05-29_T18-02-07_patreon-55-history-of-survey-ships-in-the-royal-navy_hyZ6HuYHeRc.txt",
+      "evidence": [
+        {"start": "16:28", "end": "16:39", "note": "Clarke confirms Echo is going into mothballs and says he does not consider the decision sensible."},
+        {"start": "2:49:59", "end": "2:50:56", "note": "The later Echo section identifies her May 2022 low-readiness status and recent Ukraine, fishery-protection, and MH370 work."}
+      ]
     },
     {
       "id": "survey-ships-maritime-trade-and-naval-operations",
@@ -43,33 +83,33 @@
       "id": "survey-ships-versus-expedition-ships",
       "videoId": "hyZ6HuYHeRc",
       "slug": "survey-ships-versus-expedition-ships",
-      "title": "Survey ship or expedition ship?",
+      "title": "Why an Antarctic expedition ship is not a survey ship",
       "kind": "qa",
       "start": "23:16",
-      "end": "25:50",
-      "topics": ["survey-ships", "hydrography", "polar-exploration", "rrs-sir-david-attenborough"],
-      "summary": "The vessel's primary mission, rather than whether it gathers measurements, separates a naval survey ship from an expeditionary science ship.",
-      "body": "Clarke distinguishes ships dedicated to hydrography from expedition vessels that conduct surveys as one part of a wider scientific mission. RSS Sir David Attenborough is highly capable, but belongs to the civilian British Antarctic Survey rather than the Royal Navy's charting and operational hydrography service. The distinction matters because naval survey ships continuously support navigation, mine warfare, submarines, and fleet planning. A polar research ship can contribute useful data without being interchangeable with that force.",
-      "question": "Do Antarctic expedition vessels and RSS Sir David Attenborough count as Royal Navy survey ships?",
-      "answerShort": "No: they can perform survey work, but their main role is civilian scientific exploration rather than the Royal Navy's hydrographic mission.",
+      "end": "23:34",
+      "topics": ["survey-ships", "hydrography", "polar-exploration", "antarctic"],
+      "summary": "Conducting measurements during an Antarctic expedition does not make the vessel a dedicated hydrographic survey ship.",
+      "body": "Clarke distinguishes a ship's primary mission from individual tasks it performs during a voyage. The vessels used for Britain's 1946 Antarctic expedition gathered survey data as part of a wider expeditionary purpose. A dedicated survey ship instead exists principally to collect recurring navigational and operational hydrography. The distinction prevents every scientific or exploratory vessel that takes measurements from being treated as part of the naval survey service.",
+      "question": "Did the ships used for Britain's 1946 Antarctic expedition count as survey ships?",
+      "answerShort": "No: they performed survey work, but their primary role was expeditionary rather than dedicated hydrography.",
       "sourcePath": "src/transcripts/txt/2022-05-29_T18-02-07_patreon-55-history-of-survey-ships-in-the-royal-navy_hyZ6HuYHeRc.txt",
-      "evidence": [{"start": "23:16", "end": "25:50", "note": "Clarke separates expeditionary survey work from dedicated naval hydrography and places Sir David Attenborough on the civilian Antarctic side."}]
+      "evidence": [{"start": "23:16", "end": "23:34", "note": "Clarke classifies the 1946 Antarctic vessels as expedition ships that performed survey work rather than dedicated survey ships."}]
     },
     {
-      "id": "cruise-missile-torpedo-hybrid-tradeoffs",
+      "id": "rrs-sir-david-attenborough-civilian-science-mission",
       "videoId": "hyZ6HuYHeRc",
-      "slug": "cruise-missile-torpedo-hybrid-tradeoffs",
-      "title": "Why cruise-missile torpedo hybrids remain a niche weapon",
+      "slug": "rrs-sir-david-attenborough-civilian-science-mission",
+      "title": "Where RRS Sir David Attenborough fits beside naval survey ships",
       "kind": "qa",
-      "start": "24:26",
-      "end": "25:19",
-      "topics": ["torpedoes", "anti-submarine-warfare", "anti-ship-missiles", "close-in-weapon-systems"],
-      "summary": "A missile can carry a torpedo toward a distant target, but the payload and targeting penalties often outweigh its advantages.",
-      "body": "Clarke explains that several navies have explored weapons that fly like cruise missiles before delivering a torpedo. The anti-submarine version still depends on a sufficiently accurate long-range contact, so the hybrid does not solve the hardest part of ASW. Against surface ships, diving below a close-in weapon system is attractive, but torpedo countermeasures still apply. The weight devoted to the torpedo and its delivery machinery can instead buy more missile fuel or a larger conventional warhead.",
-      "question": "Will navies field a cruise-missile and torpedo hybrid for attacking submarines, ships, or shore targets?",
-      "answerShort": "The idea has been tested, but uncertain long-range submarine targeting and inefficient payload tradeoffs have kept it from becoming a broadly useful weapon.",
+      "start": "25:21",
+      "end": "25:50",
+      "topics": ["rrs-sir-david-attenborough", "british-antarctic-survey", "polar-research", "hydrography"],
+      "summary": "The polar research vessel can conduct sophisticated surveys without belonging to the Royal Navy's operational hydrographic force.",
+      "body": "RRS Sir David Attenborough is highly capable of collecting oceanographic and hydrographic data. Clarke places her with the civilian British Antarctic Survey rather than the Royal Navy's dedicated survey service. Her measurements support a broad polar-science mission, whereas naval survey ships continuously support charting, navigation, mine warfare, submarines, and fleet planning. The comparison shows why technical capability alone does not determine a ship's institutional role.",
+      "question": "Where does RRS Sir David Attenborough fit in relation to survey ships?",
+      "answerShort": "She is a civilian British Antarctic Survey research vessel that can perform surveys, not a Royal Navy hydrographic ship.",
       "sourcePath": "src/transcripts/txt/2022-05-29_T18-02-07_patreon-55-history-of-survey-ships-in-the-royal-navy_hyZ6HuYHeRc.txt",
-      "evidence": [{"start": "24:26", "end": "25:19", "note": "Clarke discusses missile-delivered torpedoes, ASW targeting limits, close-in defenses, torpedo countermeasures, and payload tradeoffs."}]
+      "evidence": [{"start": "25:21", "end": "25:50", "note": "Clarke describes Sir David Attenborough as a capable civilian British Antarctic vessel rather than part of Royal Navy hydrography."}]
     },
     {
       "id": "chart-sales-and-hydrographic-public-service",
@@ -95,14 +135,28 @@
       "kind": "chapter",
       "start": "27:35",
       "end": "32:28",
-      "topics": ["hydrography", "sonar", "survey-ships", "undersea-cables"],
+      "topics": ["hydrography", "sonar", "survey-ships", "undersea-cables", "anti-submarine-warfare", "world-war-ii"],
       "summary": "A technology comparison shows how sonar changed seabed surveys from isolated soundings into wide-area maps.",
-      "body": "Lead lines produced a single depth measurement and could miss hazards immediately beside the weight. Their working depth also depended on how much rope the ship could carry and whether a windlass could recover it. Single-beam sonar improved the process, while modern multibeam systems greatly expand both coverage and detail. The comparison makes clear that more sophisticated sensors change not only accuracy but the area a survey ship can examine in useful time. Clarke connects that improved picture to navigation, submarine routes, and the placement and protection of fragile undersea data cables.",
+      "body": "Lead lines produced a single depth measurement and could miss hazards immediately beside the weight. Their working depth also depended on how much rope the ship could carry and whether a windlass could recover it. After the Second World War, sonar-equipped anti-submarine escorts provided an interim pool of survey vessels while the Royal Navy retained hulls against the emerging Soviet threat. Single-beam sonar improved the process, while modern multibeam systems greatly expand both coverage and detail. The comparison makes clear that more sophisticated sensors change not only accuracy but the area a survey ship can examine in useful time. Clarke connects that improved picture to navigation, submarine routes, and the placement and protection of fragile undersea data cables.",
       "sourcePath": "src/transcripts/txt/2022-05-29_T18-02-07_patreon-55-history-of-survey-ships-in-the-royal-navy_hyZ6HuYHeRc.txt",
       "evidence": [
         {"start": "27:35", "end": "32:28", "note": "The transcript compares lead-line, single-beam, and multibeam survey coverage and connects modern surveys to cable security."},
         {"start": "37:03", "end": "37:22", "note": "Clarke explains that lead-line depth depended on rope capacity and sometimes windlass assistance."}
       ]
+    },
+    {
+      "id": "undersea-cables-data-economy-and-grey-zone-security",
+      "videoId": "hyZ6HuYHeRc",
+      "slug": "undersea-cables-data-economy-and-grey-zone-security",
+      "title": "Undersea cables make hydrography part of grey-zone security",
+      "kind": "notable_point",
+      "start": "30:49",
+      "end": "32:28",
+      "topics": ["undersea-cables", "critical-infrastructure", "maritime-communications", "grey-zone-warfare", "hydrography"],
+      "summary": "Surveying cable routes protects the high-capacity links that carry international communications and expose fragile infrastructure to interference.",
+      "body": "Clarke says roughly 99 percent of data moving between the United Kingdom and Europe and the wider world travels by sea rather than by satellite. Modern fibre-optic cables carry far more capacity than space links, but they are fragile and expensive, so route selection affects cost as well as resilience. Survey ships can map safe corridors, inspect the seabed, and check whether someone has interfered with a cable. Hydrography therefore contributes to grey-zone security and economic continuity as well as safe navigation.",
+      "sourcePath": "src/transcripts/txt/2022-05-29_T18-02-07_patreon-55-history-of-survey-ships-in-the-royal-navy_hyZ6HuYHeRc.txt",
+      "evidence": [{"start": "30:49", "end": "32:28", "note": "Clarke contrasts cable and satellite data capacity, describes cables as fragile strategic assets, and assigns survey ships a role in checking interference."}]
     },
     {
       "id": "undersea-cables-and-high-speed-finance",
@@ -320,6 +374,22 @@
       "evidence": [{"start": "1:24:22", "end": "1:25:05", "note": "Clarke describes a standard refit as inspection, repair, repainting, renewal, and upgrading on nearly rebuild scale."}]
     },
     {
+      "id": "survey-ship-merchant-hulls-and-flower-class-development",
+      "videoId": "hyZ6HuYHeRc",
+      "slug": "survey-ship-merchant-hulls-and-flower-class-development",
+      "title": "How survey ships informed Flower-class merchant-hull thinking",
+      "kind": "qa",
+      "start": "1:25:24",
+      "end": "1:28:24",
+      "topics": ["hms-challenger-1931-survey-ship", "flower-class-corvettes", "merchant-style-hulls", "anti-submarine-warfare", "naval-procurement", "world-war-ii"],
+      "summary": "Experience with merchant-style survey and trial hulls supported the Royal Navy's search for economical anti-submarine escorts before wartime corvette orders.",
+      "body": "Clarke says survey ships were among the vessels that gave the Royal Navy practical experience with merchant-style hulls before the Flower-class orders. The service already had a small-ship program refining anti-submarine armament, but its purpose-built sloops generally used warship-style hulls. Ships such as the 1931 HMS Challenger, together with other trial vessels, showed how cheaper commercial forms behaved in naval service. That experience supported rather than replaced the formal 1938-39 development and ordering of the Flower-class corvettes.",
+      "question": "Did using merchant-style hulls for survey ships help the Royal Navy develop the Flower-class corvette?",
+      "answerShort": "Yes. Survey and trial vessels provided relevant hull experience while the Royal Navy developed its small anti-submarine-warship program.",
+      "sourcePath": "src/transcripts/txt/2022-05-29_T18-02-07_patreon-55-history-of-survey-ships-in-the-royal-navy_hyZ6HuYHeRc.txt",
+      "evidence": [{"start": "1:25:24", "end": "1:28:24", "note": "Clarke links survey ships and other merchant-style trial hulls to the prewar small-ASW program and Flower-class development."}]
+    },
+    {
       "id": "hms-protector-netlayer-to-polar-patrol",
       "videoId": "hyZ6HuYHeRc",
       "slug": "hms-protector-netlayer-to-polar-patrol",
@@ -382,20 +452,39 @@
       "evidence": [{"start": "1:33:52", "end": "1:52:12", "note": "Clarke explains satellite-sensing limits, false positives such as wildlife and surface traffic, a high contact burden in testing, and the need for follow-up investigation."}]
     },
     {
+      "id": "hms-merlin-most-influential-survey-ship",
+      "videoId": "hyZ6HuYHeRc",
+      "slug": "hms-merlin-most-influential-survey-ship",
+      "title": "Why HMS Merlin is Clarke's most influential survey ship",
+      "kind": "qa",
+      "start": "1:35:22",
+      "end": "1:35:48",
+      "topics": ["hms-merlin", "grenville-collins", "hydrography", "coastal-survey", "royal-navy"],
+      "summary": "Merlin's importance rests on establishing a durable Royal Navy surveying process rather than possessing the most advanced equipment.",
+      "body": "Clarke separates the famous Challenger expedition from the narrower question of influence within the dedicated survey service. He chooses HMS Merlin because her long employment by Grenville Collins helped establish the process followed by later Royal Navy survey ships. Her seventeenth-century work turned systematic coastal measurement into a sustained naval assignment. The answer judges influence by institutional precedent rather than by the scale, fame, or technology of a later vessel.",
+      "question": "Which Royal Navy survey ship was the most influential?",
+      "answerShort": "HMS Merlin, because her work with Grenville Collins established processes that later Royal Navy survey ships followed.",
+      "sourcePath": "src/transcripts/txt/2022-05-29_T18-02-07_patreon-55-history-of-survey-ships-in-the-royal-navy_hyZ6HuYHeRc.txt",
+      "evidence": [
+        {"start": "1:00:32", "end": "1:04:23", "note": "The earlier chapter supplies the history of Merlin's twelve-year coastal survey under Grenville Collins."},
+        {"start": "1:35:22", "end": "1:35:48", "note": "Clarke explicitly selects Merlin as the most influential survey ship because she established the process."}
+      ]
+    },
+    {
       "id": "uuvs-and-future-survey-ship-sensor-networks",
       "videoId": "hyZ6HuYHeRc",
       "slug": "uuvs-and-future-survey-ship-sensor-networks",
       "title": "How uncrewed systems could extend a survey ship",
       "kind": "qa",
       "start": "1:39:56",
-      "end": "1:41:49",
+      "end": "1:40:56",
       "topics": ["uncrewed-systems", "survey-ships", "hydrography", "uuvs", "uavs"],
       "summary": "A future survey ship is sketched as a mothership for surface, aerial, and underwater sensors rather than a single sonar platform.",
       "body": "Submarines and long-endurance underwater vehicles have useful survey roles, but underwater transmission can reveal position and complicate sensing. Clarke instead favors a surface ship coordinating multiple uncrewed surface vessels, UAVs, and UUVs alongside hull-mounted sensors. The ship would provide the communications, processing capacity, and human oversight needed to combine their data. The model distributes sensors without forcing every small vehicle to duplicate the mothership's expensive command and support functions.",
       "question": "Would a submarine or long-endurance UUV make a good survey ship?",
       "answerShort": "UUVs are valuable auxiliaries, but a surface mothership is better suited to coordinate communications, processing, and a mixed family of sensors.",
       "sourcePath": "src/transcripts/txt/2022-05-29_T18-02-07_patreon-55-history-of-survey-ships-in-the-royal-navy_hyZ6HuYHeRc.txt",
-      "evidence": [{"start": "1:39:56", "end": "1:41:49", "note": "The answer proposes combining a survey ship's own sensors with USVs, UAVs, and UUVs."}]
+      "evidence": [{"start": "1:39:56", "end": "1:40:56", "note": "The answer proposes combining a survey ship's own sensors with USVs, UAVs, and UUVs."}]
     },
     {
       "id": "submarine-sonar-under-ice-survey-risk",
@@ -539,12 +628,14 @@
       "videoId": "hyZ6HuYHeRc",
       "slug": "survey-fleet-contraction-and-resilient-processing",
       "title": "Why fewer survey ships create a resilience problem",
-      "kind": "notable_point",
+      "kind": "qa",
       "start": "2:20:03",
       "end": "2:26:56",
       "topics": ["survey-ships", "fleet-readiness", "mine-countermeasures", "data-processing", "satellite-communications"],
       "summary": "Shrinking a ten-ship hydrographic force to a handful of hulls reduces geographic presence and makes remote processing a wartime vulnerability.",
       "body": "Clarke contrasts the Royal Navy's late-1980s survey force with the much smaller fleet available by 2022. Better sensors cannot place one hull in several regions at once, and survey ships also support mine warfare, amphibious routes, and submarine access. Sending raw data home may reduce platform cost, but in a peer conflict satellite links can be jammed or denied. Onboard processing therefore has operational value as well as technical cost, because a ship that cannot return or interpret its observations may be unable to support the force around it.",
+      "question": "Why did the Royal Navy build only two Echo-class multi-role survey ships?",
+      "answerShort": "Cost-driven consolidation replaced work once spread across roughly ten survey and patrol vessels with only a few hulls, sacrificing geographic presence and resilience.",
       "sourcePath": "src/transcripts/txt/2022-05-29_T18-02-07_patreon-55-history-of-survey-ships-in-the-royal-navy_hyZ6HuYHeRc.txt",
       "evidence": [{"start": "2:20:03", "end": "2:26:56", "note": "Clarke compares historical and current ship numbers and argues for local processing when communications are contested."}]
     },
@@ -607,6 +698,22 @@
       "answerShort": "No: the ship's symbolic value does not justify the escalation risk, and even a negotiated return could carry difficult political conditions.",
       "sourcePath": "src/transcripts/txt/2022-05-29_T18-02-07_patreon-55-history-of-survey-ships-in-the-royal-navy_hyZ6HuYHeRc.txt",
       "evidence": [{"start": "2:29:59", "end": "2:33:31", "note": "Clarke weighs Pueblo's symbolic importance against military escalation and the possibility of a politically costly negotiated return."}]
+    },
+    {
+      "id": "why-ijn-shinano-wreck-remains-unfound",
+      "videoId": "hyZ6HuYHeRc",
+      "slug": "why-ijn-shinano-wreck-remains-unfound",
+      "title": "Why IJN Shinano's wreck remains unfound",
+      "kind": "qa",
+      "start": "2:30:56",
+      "end": "2:31:15",
+      "topics": ["ijn-shinano", "shipwrecks", "maritime-search", "underwater-archaeology"],
+      "summary": "A famous wreck can remain undiscovered simply because no expedition has funded and mounted a sufficiently capable search.",
+      "body": "Clarke begins with the practical question of whether anyone is seriously searching for IJN Shinano. Finding a wreck at sea requires money, a suitable vessel, capable sensors, and enough search time. If no expedition has assembled those resources, the absence of a discovery does not itself indicate an unusual technical mystery. The exchange redirects attention from the ship's fame to the logistics of maritime search.",
+      "question": "Why has the wreck of IJN Shinano not been found?",
+      "answerShort": "A sufficiently funded search with the right ships and systems may not yet have been mounted.",
+      "sourcePath": "src/transcripts/txt/2022-05-29_T18-02-07_patreon-55-history-of-survey-ships-in-the-royal-navy_hyZ6HuYHeRc.txt",
+      "evidence": [{"start": "2:30:56", "end": "2:31:15", "note": "Asked about IJN Shinano's unfound wreck, Clarke asks whether anyone is looking with enough money, vessels, and systems."}]
     },
     {
       "id": "hms-scott-atlantic-submarine-routes",
@@ -697,11 +804,14 @@
       "kind": "chapter",
       "start": "2:46:04",
       "end": "2:53:58",
-      "topics": ["echo-class", "hydrography", "mine-countermeasures", "amphibious-warfare", "maritime-safety"],
+      "topics": ["echo-class", "hydrography", "mine-countermeasures", "amphibious-warfare", "maritime-safety", "beach-reconnaissance", "world-war-ii", "falklands-war", "naval-aviation"],
       "summary": "Echo-class sensors support submarines, amphibious forces, mine warfare, chart updates, and the prevention of maritime disasters.",
-      "body": "Echo and Enterprise carry multibeam and single-beam sounders, side-scan sonar, current profilers, bottom samplers, and onboard planning and processing systems. They can embark a mine-countermeasures command team and provide tailored environmental information for submarines and amphibious forces. Repeated surveys matter because seabeds, currents, and hazards continue to change after a chart is first published. Clarke closes the section by stressing prevention: current charts keep ships away from danger before lifesaving equipment is ever needed.",
+      "body": "Echo and Enterprise carry multibeam and single-beam sounders, side-scan sonar, current profilers, bottom samplers, and onboard planning and processing systems. They can embark a mine-countermeasures command team and provide tailored environmental information for submarines and amphibious forces. Clarke points to Second World War beach-reconnaissance teams and miniature submarines, followed by comparable survey work in the Falklands, as historical precedents for collecting approach data before an amphibious force arrives. He also argues that a hangar would extend the ships' reach, while acknowledging the extra hull size and crew such aviation support would require. Repeated surveys matter because seabeds, currents, and hazards continue to change after a chart is first published. Clarke closes the section by stressing prevention: current charts keep ships away from danger before lifesaving equipment is ever needed.",
       "sourcePath": "src/transcripts/txt/2022-05-29_T18-02-07_patreon-55-history-of-survey-ships-in-the-royal-navy_hyZ6HuYHeRc.txt",
-      "evidence": [{"start": "2:46:04", "end": "2:53:58", "note": "Clarke describes Echo-class sensors, operational support roles, recurring chart updates, and accident prevention."}]
+      "evidence": [
+        {"start": "1:39:30", "end": "1:39:45", "note": "Clarke notes beach-reconnaissance assets and miniature submarines in the Second World War and related work in the Falklands."},
+        {"start": "2:46:04", "end": "2:53:58", "note": "Clarke describes Echo-class sensors, operational support roles, the aviation-facility tradeoff, recurring chart updates, and accident prevention."}
+      ]
     },
     {
       "id": "hms-echo-ukraine-mh370-and-flexible-presence",
@@ -783,6 +893,25 @@
       "evidence": [{"start": "3:03:50", "end": "3:04:28", "note": "Clarke explains that travel restrictions blocked archive work and that he would not replace original research with rephrasing other scholars."}]
     },
     {
+      "id": "rotary-wing-uavs-still-need-hangar-space",
+      "videoId": "hyZ6HuYHeRc",
+      "slug": "rotary-wing-uavs-still-need-hangar-space",
+      "title": "Why rotary-wing UAVs do not eliminate the hangar",
+      "kind": "qa",
+      "start": "3:05:34",
+      "end": "3:05:52",
+      "topics": ["uavs", "naval-aviation", "aircraft-hangars", "hms-protector", "polar-operations"],
+      "summary": "Large uncrewed helicopters still need protected maintenance space, making a mixed crewed-and-uncrewed air group more practical than deleting aviation facilities.",
+      "body": "Clarke agrees that large rotary-wing UAVs still require hangar space for storage and maintenance. A hangar sized for two crewed helicopters could instead divide its bays between several UAVs and one crewed aircraft. Uncrewed systems can take over some routine tasks, but they do not remove the shipboard infrastructure needed to operate aviation safely. Keeping one crewed helicopter would also preserve the personnel-transport reach that Protector lacks.",
+      "question": "Would large rotary-wing UAVs still require a hangar aboard a survey or polar ship?",
+      "answerShort": "Yes. Clarke proposes using one hangar bay for several rotary-wing UAVs and the other for a crewed helicopter.",
+      "sourcePath": "src/transcripts/txt/2022-05-29_T18-02-07_patreon-55-history-of-survey-ships-in-the-royal-navy_hyZ6HuYHeRc.txt",
+      "evidence": [
+        {"start": "2:59:32", "end": "3:00:21", "note": "Clarke argues for a crewed helicopter alongside rotary-wing UAVs to restore personnel movement and reach."},
+        {"start": "3:05:34", "end": "3:05:52", "note": "He agrees that large rotary-wing UAVs still need hangar space and proposes splitting the bays between three UAVs and one crewed helicopter."}
+      ]
+    },
+    {
       "id": "hms-magpie-ports-carriers-and-uncrewed-future",
       "videoId": "hyZ6HuYHeRc",
       "slug": "hms-magpie-ports-carriers-and-uncrewed-future",
@@ -836,9 +965,9 @@
       "kind": "chapter",
       "start": "3:16:50",
       "end": "3:25:02",
-      "topics": ["survey-ships", "undersea-cables", "uncrewed-systems", "force-structure", "hydrography"],
+      "topics": ["survey-ships", "undersea-cables", "uncrewed-systems", "force-structure", "hydrography", "hms-challenger-1983-diving-vessel", "deep-sea-diving", "seabed-surveillance"],
       "summary": "The closing argument favors several crew-efficient ocean-surveillance ships rather than another one-for-many replacement.",
-      "body": "Survey ships are described as national and naval force enablers whose value appears in trade, supply, communications, exploration, and military movement. Clarke examines the planned multi-role ocean surveillance ship, intended to combine seabed sensing with remotely operated and autonomous systems for protecting cables and energy infrastructure. A small standard complement could make several hulls affordable to operate while their uncrewed systems distribute the actual search effort. His preferred outcome is a class of several ships able to cover the Scott, Echo, and Enterprise missions with resilient availability, rather than a single hull replacing multiple capabilities.",
+      "body": "Survey ships are described as national and naval force enablers whose value appears in trade, supply, communications, exploration, and military movement. At the time of the 2022 talk, Clarke examines the planned multi-role ocean surveillance ship, intended to combine seabed sensing with remotely operated and autonomous systems for protecting cables and energy infrastructure. The proposal was also presented as a replacement for the specialist diving vessel HMS Challenger, extending the consolidation beyond Scott, Echo, and Enterprise's hydrographic work. A small standard complement could make several hulls affordable to operate while their uncrewed systems distribute the actual search effort. His preferred outcome is a class of several ships with resilient availability, rather than a single hull replacing multiple capabilities.",
       "sourcePath": "src/transcripts/txt/2022-05-29_T18-02-07_patreon-55-history-of-survey-ships-in-the-royal-navy_hyZ6HuYHeRc.txt",
       "evidence": [{"start": "3:16:50", "end": "3:25:02", "note": "The conclusion summarizes survey-ship value and discusses a multi-ship MROSS force for seabed infrastructure and hydrography."}]
     },
@@ -857,6 +986,25 @@
       "answerShort": "Chickens could consume scraps and provide fresh eggs, combining companionship with a useful supplement to preserved rations.",
       "sourcePath": "src/transcripts/txt/2022-05-29_T18-02-07_patreon-55-history-of-survey-ships-in-the-royal-navy_hyZ6HuYHeRc.txt",
       "evidence": [{"start": "3:27:17", "end": "3:27:38", "note": "Clarke says shipboard chickens were common, could eat stale bread, and supplied welcome fresh eggs."}]
+    },
+    {
+      "id": "survey-ships-detect-seabed-devices",
+      "videoId": "hyZ6HuYHeRc",
+      "slug": "survey-ships-detect-seabed-devices",
+      "title": "How survey ships expose devices placed on the seabed",
+      "kind": "qa",
+      "start": "3:28:44",
+      "end": "3:28:52",
+      "topics": ["hms-scott", "seabed-surveillance", "multibeam-sonar", "undersea-infrastructure", "hydrography"],
+      "summary": "HMS Scott's wide-area deep-ocean mapping also makes her valuable for finding objects deliberately placed on the seabed.",
+      "body": "HMS Scott's powerful multibeam system is designed to survey large areas of deep ocean floor. The same detailed coverage can reveal devices or other anomalous objects against a mapped seabed. Clarke says Scott has proved very useful for that work. The answer links routine hydrography to seabed surveillance and the security of undersea infrastructure.",
+      "question": "Are modern survey ships useful for detecting devices that navies place on the seabed?",
+      "answerShort": "Yes. Clarke identifies HMS Scott as especially capable and says she has proved useful in that role.",
+      "sourcePath": "src/transcripts/txt/2022-05-29_T18-02-07_patreon-55-history-of-survey-ships-in-the-royal-navy_hyZ6HuYHeRc.txt",
+      "evidence": [
+        {"start": "2:35:22", "end": "2:39:41", "note": "The main Scott section explains her high-resolution multibeam sonar and deep-ocean survey role."},
+        {"start": "3:28:44", "end": "3:28:52", "note": "Clarke directly answers that Scott is very good at detecting seabed devices and has proved useful for the role."}
+      ]
     }
   ]
 }

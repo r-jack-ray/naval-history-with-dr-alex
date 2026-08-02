@@ -37,6 +37,7 @@ task-notes/**
 /site/resources/_gen/
 
 # Never commit the YouTube API key to the repository.
+.local/
 youtube-api-key.txt
 
 /src/transcripts/tsv/
@@ -44,3 +45,4 @@ youtube-api-key.txt
 
 # Local CodeGraph index
 .codegraph/
+
