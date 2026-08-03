@@ -260,7 +260,7 @@ function readValue(args: string[], index: number, name: string | undefined): str
 function message(error: unknown): string { return error instanceof Error ? error.message : String(error); }
 
 function printHelp(): void {
-  console.log(`Usage: npm run rank:video-segment-audit-risk -- [options]
+  console.log(`Usage: npm run report:video-segment-audit-risk -- [options]
 
 Ranks existing per-video shards for repair or follow-up audit using processing state,
 shard structure, timestamps, evidence metadata, and inexpensive warning heuristics.

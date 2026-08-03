@@ -2,9 +2,9 @@
 
 Timestamp: 2026-08-02T14:31:45-05:00
 
-Reviewed: 2026-08-02T23:31:05-05:00
+Reviewed: 2026-08-03T00:07:05-05:00
 
-Status: Phases 0-5 are complete. Phases 1 and 2 were committed together at `5915a0a8`; Phase 3 was committed separately at `444987db` and is recorded in `task-notes/2026-08-02_T21-46-22-0500_repository-trim-phase-3-generated-archive-untracking.md`. The 67 deterministic archive files are absent from the current index but remain present as ignored working files. Phase 4 was committed separately at `faf770a5` and is recorded in `task-notes/2026-08-02_T22-16-36-0500_repository-trim-phase-4-acquisition-curation-handoff.md`. Phase 5 is recorded in `task-notes/2026-08-02_T23-10-51-0500_repository-trim-phase-5-youtube-data-api-client.md` and remains uncommitted for owner review. The six pre-existing topic-policy failures and one pre-existing ranking fixture remain recorded baseline exceptions outside Phase 3; they were not fixed or rerun. Phases 6-7 remain untouched. Implement phases strictly in numeric order, update only the authorized phase's checkpoint, and do not continue automatically.
+Status: Phases 0-6 are complete. Phases 1 and 2 were committed together at `5915a0a8`; Phase 3 was committed separately at `444987db` and is recorded in `task-notes/2026-08-02_T21-46-22-0500_repository-trim-phase-3-generated-archive-untracking.md`. The 67 deterministic archive files are absent from the current index but remain present as ignored working files. Phase 4 was committed separately at `faf770a5` and is recorded in `task-notes/2026-08-02_T22-16-36-0500_repository-trim-phase-4-acquisition-curation-handoff.md`. Phase 5 is recorded in `task-notes/2026-08-02_T23-10-51-0500_repository-trim-phase-5-youtube-data-api-client.md` and remains uncommitted for owner review. Phase 6 is recorded in `task-notes/2026-08-03_T00-01-32-0500_repository-trim-phase-6-topic-curation-workflow.md` and remains uncommitted for owner review. The six pre-existing topic-policy failures and one pre-existing ranking fixture remain recorded baseline exceptions outside Phase 6; they were not fixed or rerun as a broader cleanup. Phase 7 remains untouched. Implement phases strictly in numeric order, update only the authorized phase's checkpoint, and do not continue automatically.
 
 ## Purpose
 
@@ -417,7 +417,7 @@ At the Phase 0 baseline, the dependency occupied 197.87 MiB and 1,851 installed 
 
 ## Phase 6: Preserve the Codex Topic-Curation Workflow and Clarify Report Lifecycle
 
-Status: partially satisfied by independent topic-curation work completed after this plan's original snapshot. The corpus migration and zero-finding report/audit baseline are complete. Remaining Phase 6 scope is limited to current workflow documentation, focused regression fixtures, and report-owner/lifecycle documentation.
+Status: completed on 2026-08-03. Checkpoint: `task-notes/2026-08-03_T00-01-32-0500_repository-trim-phase-6-topic-curation-workflow.md`. Current workflow and report ownership are documented, the retained report-command name is corrected, and focused Type-designation fixtures preserve the already-reviewed corpus direction. The canonical topic report and read-only audit both completed with zero normalization blockers or review findings. No taxonomy/corpus source, generated archive, Astro/Pagefind surface, or Phase 7 work was changed.
 
 ### Mandatory Keep Records
 

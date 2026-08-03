@@ -638,6 +638,58 @@ test("production policy uses reviewed official and common display forms", async 
   }
 });
 
+test("production policy preserves reviewed Type-designation referents and distinct variants", async () => {
+  const catalog = await loadTopicNormalizationCatalog(
+    "src/derived/topic-normalization-patterns.tsv",
+  );
+  const reviewedCases = [
+    ["bare", "type-212", "type-212-submarine", "normalize-topic-curation-20260802-type-212"],
+    ["class", "type-212-class", "type-212-submarine", "normalize-topic-curation-20260802-type-212-class"],
+    ["plural", "type-212-submarines", "type-212-submarine", "normalize-topic-curation-20260802-type-212-submarines"],
+    ["alphanumeric", "type-052c", "type-052c-destroyer", "normalize-topic-curation-20260802-type-052c"],
+    ["distinct alphanumeric variant", "type-212cd", "type-212cd-submarine", "normalize-topic-curation-20260802-type-212cd"],
+    ["Roman numeral", "type-ix-submarines", "type-ix-u-boat", "normalize-topic-curation-20260802-type-ix-submarines"],
+    ["non-ship missile", "type-12-missile", "type-12-surface-to-ship-missile", "normalize-topic-curation-20260802-type-12-missile"],
+  ] as const;
+
+  for (const [label, input, slug, ruleId] of reviewedCases) {
+    assert.deepEqual(resolveTopicCreation(catalog, input), {
+      input,
+      slug,
+      changed: true,
+      matchedRuleIds: [ruleId],
+    }, label);
+  }
+
+  for (const canonicalSlug of [
+    "type-212-submarine",
+    "type-212cd-submarine",
+    "type-ix-u-boat",
+    "type-267-radar",
+  ]) {
+    assert.deepEqual(resolveTopicCreation(catalog, canonicalSlug), {
+      input: canonicalSlug,
+      slug: canonicalSlug,
+      changed: false,
+      matchedRuleIds: [],
+    }, canonicalSlug);
+  }
+
+  assert.equal(topicTitleFromSlug("type-212cd-submarine", catalog), "Type 212CD Submarine");
+  assert.equal(topicTitleFromSlug("type-ix-u-boat", catalog), "Type IX U-Boat");
+  assert.equal(topicTitleFromSlug("type-267-radar", catalog), "Type 267 Radar");
+  assert.notEqual(
+    resolveTopicCreation(catalog, "type-212").slug,
+    resolveTopicCreation(catalog, "type-212cd").slug,
+  );
+  assert.deepEqual(resolveTopicCreation(catalog, "type-212a"), {
+    input: "type-212a",
+    slug: "type-212a",
+    changed: false,
+    matchedRuleIds: [],
+  }, "Type 212A remains intentionally unresolved without reviewed source evidence");
+});
+
 test("exact review policy suppresses broader active creation rules", () => {
   const catalog = resolutionCatalog();
 

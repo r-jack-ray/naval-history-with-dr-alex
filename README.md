@@ -120,7 +120,7 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 | Script | Purpose |
 | --- | --- |
 | `list:files-that-need-processing` | Write transcript paths without matching shards to `task-notes/files-that-need-processing.txt`. |
-| `rank:video-segment-audit-risk` | Rank curated shards for follow-up and write `reports/video-segment-audit-risk.tsv`. |
+| `report:video-segment-audit-risk` | Rank curated shards for follow-up and write `reports/video-segment-audit-risk.tsv`. |
 | `audit:site-content` | Validate current-schema shards and transcript evidence, then write the backlog report. This command uses the shared writer lease. |
 | `diagnose:site-content-duplicates` | Check curated shards for duplicate segment IDs and slugs. |
 | `sync:video-topics` | Add missing shared topic records derived from shard usage and normalization policy with parallel Bun workers. This command writes `topics.json` under the shared writer lease. |
@@ -402,13 +402,45 @@ Resolve every new shard topic through active creation rules before writing it. P
 npm run audit:topic-normalization
 ```
 
-For an explicitly scoped taxonomy-maintenance pass, generate the topic-curation reports:
+For an explicitly scoped taxonomy-maintenance pass, a typical owner authorization is:
 
-```powershell
-npm run report:video-topic-usage
+```text
+Curate the topics. In that cleanup/curation, make sure to clean up and specify any
+"type-<number>" to what it is related to.
 ```
 
-Use `reports/video-topic-usage.tsv` for corpus-wide usage, similarity, and co-topic context. Use `reports/topic-normalization-review.tsv` as the exact work queue for normalization review rules and title/alias collisions; it identifies the affected topic slugs, candidate mapping where one is recorded, every current shard or registry source, and the recommended resolution action. These review details are intentionally kept out of routine site-build output.
+That authorization starts this supported topic-curation workflow:
+
+1. Run `npm run report:video-topic-usage`, the report-only discovery command that always emits both companion inputs:
+
+   ```powershell
+   npm run report:video-topic-usage
+   ```
+
+   Use `reports/video-topic-usage.tsv` for corpus-wide usage, subject/entity classification, aliases, normalization inputs, similarity, and co-topic context. Use `reports/topic-normalization-review.tsv` as the exact work queue for normalization review rules and title/alias collisions; it identifies affected slugs, candidate replacements, every current shard or registry source, and the recommended action. Neither file is canonical source. These review details are intentionally kept out of routine site-build output.
+2. Review every listed source before choosing an old-to-canonical slug mapping. Similar strings do not prove identical referents; use transcript context first and authoritative nomenclature sources when a standard name needs confirmation.
+3. Update authored source coherently: active policy in `src/derived/topic-normalization-patterns.tsv`, each reviewed video-level or segment-level topic reference in `src/derived/video-segments/*.json`, and the corresponding tracked record in `src/derived/video-segments/topics.json`. Preserve manual descriptions and aliases, and do not rewrite unrelated segment prose.
+4. Run `npm run sync:video-topics` to append only genuinely missing canonical registry records. It is not a corpus-rewrite or obsolete-record-removal command. Regenerate both companion reports and inspect the resulting rows.
+5. Run the read-only `npm run audit:topic-normalization`. Resolve only findings inside the authorized mapping; record unrelated findings for a separate task.
+6. After authored topic changes are approved, hand them to the repository-owner integration flow beginning with `npm run generate:site-data`. The generated archive is noncanonical output and must never be hand-edited.
+
+Type-designated ship topics use `type-<designation>-<singular-vessel-kind>` when the reviewed evidence identifies the referent, such as `type-26-frigate` or `type-212-submarine`. Apply the same referent-bearing rule to non-ship subjects such as missiles, radar, weapons, and uncrewed systems. Bare, generic `-class`, plural, Roman-numeral, alphanumeric, and distinct-variant inputs require reviewed mappings; do not infer a Type 212A record or merge Type 212, Type 212A, and Type 212CD from string similarity.
+
+### Report Ownership and Lifecycle
+
+Everything under `reports/` is ignored local output, never canonical source or public site data. Supported report paths retain these owners and lifecycles:
+
+| Report/output | Generator | Owner and use | Lifecycle |
+| --- | --- | --- | --- |
+| `reports/video-segment-audit-risk.tsv` | `report:video-segment-audit-risk` | Repository owner manually prioritizes shard repair and follow-up review. | Mandatory keep; ignored, on-demand, and replaced by each run. |
+| `reports/video-topic-usage.tsv` | `report:video-topic-usage` | Repository owner and Codex inspect usage, aliases, similarity, normalization inputs, and co-topic context. | Mandatory keep; ignored, on-demand companion output, and replaced by each run. |
+| `reports/topic-normalization-review.tsv` | `report:video-topic-usage` | Repository owner and Codex review exact policy matches, collisions, source locations, and recommended actions. | Mandatory keep; ignored, on-demand companion output, and replaced by each run even when it contains only the header. |
+| `reports/site-content-backlog.md` | `audit:site-content` | Repository owner or integration coordinator reviews transcript-evidence and shard-quality findings. | Ignored, on-demand validator output; regenerated rather than edited as source. |
+| `reports/transcript-problems.md` | `report:transcript-problems` | Transcript-maintenance operator reviews saved acquisition failures and probable causes. | Ignored, on-demand diagnostic output; regenerated from saved state without network access. |
+| `reports/lighthouse/**` | `audit:lighthouse:home`, `audit:lighthouse:local`, or `audit:lighthouse:seo-baseline` | Site maintainer compares explicit performance and SEO audits. | Ignored, opt-in smoke-test output; the named run owns its output prefix. |
+| Acquisition probe/extraction JSON under `reports/` | Explicit output flags on inventory or saved-HTML commands | Acquisition operator inspects a bounded probe or reconciles alternate inputs before a canonical apply. | Ignored, opt-in scratch output; retention is operator-managed and it never replaces `src/channel/episodes.json` or `src/channel/video-metadata.json`. |
+
+One-off manual analyses may also remain in the ignored directory. Without a documented generator and owner they are not a supported command contract; this lifecycle review does not delete them.
 
 Shard workers must not edit the catalog, shared registry, or other shards. Changes to shared topic policy or any corpus-wide topic rewrite require a separate, explicitly scoped taxonomy-maintenance task.
 

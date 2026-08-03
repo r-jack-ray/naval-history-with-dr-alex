@@ -208,6 +208,59 @@ test("companion guidance preserves review no-ops, shard boundaries, and steady-s
   assert.match(readme, /timestamp;shardPath;result;needsFurtherProcessing;notes/u);
 });
 
+test("current guidance and CLI use the retained video-segment report command", async () => {
+  for (const relativePath of [
+    "README.md",
+    "AGENTS.md",
+    "src/scripts/rank-video-segment-audit-risk.ts",
+  ]) {
+    const guidance = await readGuidance(relativePath);
+    assert.match(
+      guidance,
+      /report:video-segment-audit-risk/u,
+      `${relativePath} must name the retained package command`,
+    );
+    assert.doesNotMatch(
+      guidance,
+      /rank:video-segment-audit-risk/u,
+      `${relativePath} must not name the stale package command`,
+    );
+  }
+});
+
+test("README documents the complete topic-curation and report lifecycle contract", async () => {
+  const readme = await readGuidance("README.md");
+
+  assert.match(readme, /Curate the topics.{0,220}type-<number>/isu);
+  assert.match(readme, /report:video-topic-usage[^.]{0,260}always emits both companion inputs/iu);
+  assert.match(readme, /reports\/video-topic-usage\.tsv[^.]{0,500}reports\/topic-normalization-review\.tsv/iu);
+  assert.match(readme, /src\/derived\/topic-normalization-patterns\.tsv/iu);
+  assert.match(readme, /src\/derived\/video-segments\/\*\.json/iu);
+  assert.match(readme, /src\/derived\/video-segments\/topics\.json/iu);
+  assert.match(readme, /sync:video-topics[^.]{0,220}genuinely missing canonical registry records/iu);
+  assert.match(readme, /read-only `npm run audit:topic-normalization`/iu);
+  assert.match(readme, /repository-owner integration flow[^.]{0,180}generate:site-data/iu);
+  assert.match(readme, /Type 212A[^.]{0,120}Type 212CD[^.]{0,160}string similarity/iu);
+
+  for (const reportPath of [
+    "reports/video-segment-audit-risk.tsv",
+    "reports/video-topic-usage.tsv",
+    "reports/topic-normalization-review.tsv",
+  ]) {
+    const escapedPath = reportPath.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&");
+    assert.match(
+      readme,
+      new RegExp(`${escapedPath}.{0,500}Mandatory keep`, "iu"),
+      `${reportPath} must retain its owner and lifecycle`,
+    );
+  }
+  assert.match(readme, /reports\/site-content-backlog\.md/iu);
+  assert.match(readme, /reports\/transcript-problems\.md/iu);
+  assert.match(readme, /reports\/lighthouse\/\*\*/iu);
+  assert.match(readme, /Acquisition probe\/extraction JSON under `reports\/`/iu);
+  assert.match(readme, /One-off manual analyses.{0,300}does not delete them/isu);
+});
+
 test("build repair audits steady-state policy and delegates semantic and site implementation work", async () => {
   const guidance = await readGuidance(buildRepairSkillPath);
 

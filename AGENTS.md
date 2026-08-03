@@ -52,7 +52,7 @@ npm run site:check
 npm run site:build
 npm run sync:video-topics
 npm run check:ci
-npm run rank:video-segment-audit-risk
+npm run report:video-segment-audit-risk
 npm run check:search-ranking
 npm run check:rendered-video-dates
 npm run fetch:video-links
@@ -118,7 +118,9 @@ Topic descriptions are optional manual metadata. Deterministic topic creation mu
 
 Use `src/derived/topic-normalization-patterns.tsv` as the detailed source of truth for steady-state topic creation, display, alias, and exception policy. The curator and auditor read it but do not edit it: they resolve new slugs through active `creation` rules, preserve established slugs unless the active creation policy canonicalizes them, and leave `review`, disabled, or ambiguous candidates unchanged for the handoff. They must not edit `topics.json`, another shard, generated data, or shared validation output, and must not perform corpus-wide topic rewrites from a shard-only workflow.
 
-For a separately authorized taxonomy-maintenance task, run `npm run report:video-topic-usage` and consume both generated reports. Use `reports/video-topic-usage.tsv` for usage, similarity, and co-topic context; use `reports/topic-normalization-review.tsv` as the actionable queue for exact review-rule matches and title/alias collisions, including their current shard or registry sources and recommended action. Do not expect routine site builds to print this curation backlog. After the selected taxonomy findings are resolved, run the read-only `npm run audit:topic-normalization` validator.
+For a separately authorized taxonomy-maintenance task, run `npm run report:video-topic-usage` and consume both generated reports. Use `reports/video-topic-usage.tsv` for usage, similarity, aliases, normalization inputs, and co-topic context; use `reports/topic-normalization-review.tsv` as the actionable queue for exact review-rule matches and title/alias collisions, including their current shard or registry sources and recommended action. The command is report-only and must always emit both ignored, on-demand companion files. Do not expect routine site builds to print this curation backlog.
+
+Before changing authored topics, review every listed source and record the intended old-to-canonical slug mapping. Then update the active rules in `src/derived/topic-normalization-patterns.tsv`, each affected video-level or segment-level topic reference in `src/derived/video-segments/*.json`, and the corresponding tracked registry records in `src/derived/video-segments/topics.json` without rewriting unrelated content prose. Preserve manual registry descriptions and aliases. Run `npm run sync:video-topics` only to append genuinely missing canonical records; it is not a corpus-rewrite or obsolete-record-removal command. Regenerate both reports, run the read-only `npm run audit:topic-normalization`, and hand approved authored changes to the repository owner for `npm run generate:site-data`. Generated archive files are noncanonical output and must never be hand-edited.
 
 Do not treat a pass number as proof of completion. Each high-effort content-exhaustion review must independently compare the full transcript with the current shard and add genuinely missing chapters, arguments, examples, Q&A exchanges, context, and topics. If a pass only churns wording or structure without adding transcript-backed substance, mark that specific model-and-effort configuration as saturated and stop repeating it. Saturation is not permanent completion: keep the transcript eligible for another review when a materially stronger model, higher effort level, improved method, or new evidence becomes available. Configure model and effort in the invoking runtime rather than pinning a version here.
 
