@@ -181,6 +181,32 @@ export async function writeTopicStoreSynchronization(
   return synchronizationResultFromPlan(plan);
 }
 
+/**
+ * Verifies that the canonical topic registry already covers every authored
+ * topic reference. This path is deliberately read-only so archive generation,
+ * site checks, and builds cannot repair tracked source as a side effect.
+ */
+export function assertTopicStoreSynchronized(
+  plan: TopicStoreSynchronizationPlan,
+): SynchronizeTopicStoreResult {
+  if (plan.changed) {
+    const state = plan.preimageText === undefined
+      ? `the registry file is missing at ${plan.topicStorePath}`
+      : [
+          `${plan.addedSlugs.length} topic record${plan.addedSlugs.length === 1 ? " is" : "s are"} missing from ${plan.topicStorePath}`,
+          ...(plan.addedSlugs.length === 0
+            ? []
+            : [`missing topics: ${plan.addedSlugs.join(", ")}`]),
+        ].join("; ");
+    throw new Error([
+      `Topic registry synchronization is required: ${state}.`,
+      "Run `npm run sync:video-topics`, review the canonical topic-store change, and retry.",
+      "Archive generation and site entrypoints do not write src/derived/video-segments/topics.json.",
+    ].join("\n"));
+  }
+  return synchronizationResultFromPlan(plan);
+}
+
 export async function synchronizeCuratedTopicStore(
   inputDirectory: string,
   patternsInput = defaultTopicNormalizationPatternsInput,

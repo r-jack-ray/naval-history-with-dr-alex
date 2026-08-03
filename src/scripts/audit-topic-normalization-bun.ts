@@ -17,7 +17,7 @@ async function main(): Promise<number> {
   const options = parseTopicNormalizationAuditArgs(bunOptions.commandArgs);
   if (options.help) {
     process.stdout.write(
-      topicNormalizationAuditUsage("npm run audit:topic-normalization:bun")
+      topicNormalizationAuditUsage("npm run audit:topic-normalization")
         .replace(
           "  --help",
           "  --workers <count>       Worker count. Defaults to min(8, available CPUs).\n"
@@ -46,7 +46,7 @@ if (isDirectExecution(import.meta.url)) {
     process.exitCode = exitCode;
   }).catch((error: unknown) => {
     console.error(
-      `Failed to audit topic normalization with Bun: ${
+      `Failed to run npm run audit:topic-normalization: ${
         error instanceof Error ? error.message : String(error)
       }`,
     );

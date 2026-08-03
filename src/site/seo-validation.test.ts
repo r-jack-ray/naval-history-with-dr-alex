@@ -93,6 +93,12 @@ test("maps generated index files to production trailing-slash routes", () => {
 test("validates a rendered fixture and reports actionable hard failures", async () => {
   const root = await mkdtemp(join(tmpdir(), "naval-seo-validation-"));
   try {
+    const topicsPath = join(root, "topics-source.json");
+    await writeFile(
+      topicsPath,
+      JSON.stringify([{ slug: "example", videoCount: 1, segmentCount: 1 }]),
+      "utf8",
+    );
     const pages = [
       { route: "", title: "Home" },
       { route: "videos/", title: "Videos" },
@@ -169,7 +175,13 @@ test("validates a rendered fixture and reports actionable hard failures", async 
       "utf8",
     );
 
-    const valid = await validateRenderedSeoSite({ distRoot: root, siteOrigin: origin, basePath: base, concurrency: 2 });
+    const valid = await validateRenderedSeoSite({
+      distRoot: root,
+      siteOrigin: origin,
+      basePath: base,
+      topicsPath,
+      concurrency: 2,
+    });
     assert.deepEqual(valid.diagnostics.filter((item) => item.severity === "error"), []);
     assert.equal(valid.indexablePages, indexableUrls.length);
     assert.equal(valid.videoSitemapEntries, 1);
@@ -183,7 +195,13 @@ test("validates a rendered fixture and reports actionable hard failures", async 
       links: [`${base}missing/`],
     }));
     await writeRoute(root, "videos/browse/", htmlPage("videos/browse/", "Browse Videos"));
-    const invalid = await validateRenderedSeoSite({ distRoot: root, siteOrigin: origin, basePath: base, concurrency: 2 });
+    const invalid = await validateRenderedSeoSite({
+      distRoot: root,
+      siteOrigin: origin,
+      basePath: base,
+      topicsPath,
+      concurrency: 2,
+    });
     assert.ok(invalid.diagnostics.some((item) => item.rule === "canonical-shape" && item.severity === "error"));
     assert.ok(invalid.diagnostics.some((item) => item.rule === "broken-internal-link" && item.severity === "error"));
     assert.ok(invalid.diagnostics.some((item) => item.rule === "directory-inbound-link" && item.severity === "error"));

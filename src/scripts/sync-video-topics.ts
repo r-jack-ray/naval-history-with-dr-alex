@@ -1,4 +1,5 @@
 import {
+  assertTopicStoreSynchronized,
   defaultTopicNormalizationPatternsInput,
   planTopicStoreSynchronization,
   writeTopicStoreSynchronization,
@@ -8,10 +9,6 @@ import type {
   TopicSlugResolution,
 } from "../site/topic-normalization.js";
 import type { VideoSegmentShardIndex } from "../site/video-segment-files.js";
-import {
-  isDirectExecution,
-  printRunTime,
-} from "./console-run-timer.js";
 
 export interface SyncVideoTopicsCliOptions {
   help: boolean;
@@ -51,6 +48,38 @@ export async function runSyncVideoTopics(
     [
       `Synchronized ${options.segmentsInput}/topics.json:`,
       action,
+      `(${result.usedTopicCount} used, ${result.topicCount} stored).`,
+      ...(runtime.summaryFields ?? []),
+    ].join(" "),
+  );
+  for (const topic of result.reviewTopics) {
+    console.error(
+      `Topic title requires review: ${topic.slug} (generated title: ${topic.generatedTitle}).`,
+    );
+  }
+}
+
+export async function runCheckVideoTopics(
+  options: SyncVideoTopicsCliOptions,
+  runtime: SyncVideoTopicsRuntime = {},
+): Promise<void> {
+  const plan = await planTopicStoreSynchronization({
+    patternsInput: options.patternsInput,
+    segmentsInput: options.segmentsInput,
+    ...(runtime.precomputedCreationResolutions === undefined
+      ? {}
+      : { precomputedCreationResolutions: runtime.precomputedCreationResolutions }),
+    ...(runtime.preloadedCatalog === undefined
+      ? {}
+      : { preloadedCatalog: runtime.preloadedCatalog }),
+    ...(runtime.preloadedShardIndex === undefined
+      ? {}
+      : { preloadedShardIndex: runtime.preloadedShardIndex }),
+  });
+  const result = assertTopicStoreSynchronized(plan);
+  console.error(
+    [
+      `Topic registry is current: ${plan.topicStorePath}`,
       `(${result.usedTopicCount} used, ${result.topicCount} stored).`,
       ...(runtime.summaryFields ?? []),
     ].join(" "),
@@ -106,23 +135,4 @@ Options:
   --patterns-input <path>  Topic normalization catalog. Defaults to ${defaultTopicNormalizationPatternsInput}.
 ${includeWorkers ? "  --workers <count>        Worker count. Defaults to min(8, available CPUs).\n" : ""}  --help                    Show this help.
 `;
-}
-
-async function main(): Promise<void> {
-  const options = parseSyncVideoTopicsArgs(process.argv.slice(2));
-  if (options.help) {
-    process.stdout.write(syncVideoTopicsUsage());
-    return;
-  }
-  await runSyncVideoTopics(options);
-}
-
-if (isDirectExecution(import.meta.url)) {
-  const runStartedAt = Date.now();
-  main().catch((error: unknown) => {
-    console.error(error instanceof Error ? error.message : String(error));
-    process.exitCode = 1;
-  }).finally(() => {
-    printRunTime(runStartedAt);
-  });
 }

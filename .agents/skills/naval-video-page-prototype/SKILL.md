@@ -23,7 +23,7 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` when working on
 - Use `src/transcripts/manifest.json` for stored transcript identity and manifest-owned `fileStem` references.
 - Use `src/derived/video-segments/` for current curated video, segment, and topic source data.
 - Use `src/derived/topic-normalization-patterns.tsv` for the generated archive's topic-normalization policy and provenance.
-- Use `src/site/archive-data.ts` and `npm run generate:site-data` to produce the tracked manifest and JSON shards under `site/src/data/generated/archive/`; `index.json` is the authoritative generated-file manifest.
+- Use `src/site/archive-data.ts` and the source-read-only `npm run generate:site-data` boundary to produce the tracked manifest and JSON shards under `site/src/data/generated/archive/`; `index.json` is the authoritative generated-file manifest. Run `npm run sync:video-topics` explicitly when registry records are missing.
 - Use `site/src/data/archive.ts` as the build-time split-manifest reader and `.codex/hooks/site-build-if-changed.mjs` as the cache and preflight integrity validator.
 - Use the manifest-owned `src/transcripts/txt/` file as the transcript source of record when a task explicitly asks for transcript-backed curation.
 
@@ -35,7 +35,7 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` when working on
 4. Preserve the segment-first model: `chapter`, `notable_point`, `qa`, and `transcript_excerpt`.
 5. Add Pagefind metadata and filters for type, video title, video ID, timestamp, topic, and segment kind when present.
 6. Keep exported Astro `getStaticPaths` dependencies in its isolated scope. Put reusable sorting and lookup work in imported `site/src/data/archive.ts` helpers instead of frontmatter-local computed constants.
-7. Regenerate generated site data through `npm run generate:site-data`, `npm run site:check`, or `npm run site:build`; do not hand-edit `site/src/data/generated/archive/index.json` or any manifest-listed shard.
+7. Verify topic coverage with `npm run check:video-topics`, then regenerate generated site data through `npm run generate:site-data`, `npm run site:check`, or `npm run site:build`. These entrypoints never write the canonical topic registry; do not hand-edit `site/src/data/generated/archive/index.json` or any manifest-listed shard.
 8. When changing the split-manifest schema, treat `siteArchiveSchemaVersion` in `src/site/archive-data.ts` as authoritative and update `site/src/data/archive.ts`, `.codex/hooks/site-build-if-changed.mjs`, and `src/pipeline/shared-output.test.ts` together. Keep the logical reconstructed `SiteArchiveData.schemaVersion` separate.
 9. Avoid staging or committing transcript fetch outputs unless the user explicitly includes them.
 10. Keep visible copy learner-facing. Prefer "study guide", "video guide", "time note", "watch point", "topic", and "subject" over processing, inventory, or metadata language.
@@ -45,11 +45,11 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` when working on
 Run:
 
 ```powershell
-npm run generate:site-data
-npm run site:check
-npm run site:build
+npm run check:video-topics
+npm run check
+npm run check:production
 ```
 
-Run `npm run check` when changing TypeScript tooling under `src/` or shared data contracts.
+`check` owns the one archive-generation stage; `check:production` consumes that archive for Astro, official Pagefind, SEO, search-ranking, and rendered-date validation.
 
 Do not treat `site:check` as sufficient for paginated or dynamic route changes; only the full build executes prerender path generation.

@@ -25,13 +25,14 @@ test("all direct site commands load the shared properties file", async () => {
   for (const scriptName of [
     "generate:site-data",
     "site:dev",
+    "site:dev:generated",
     "site:preview",
     "site:check:generated",
     "site:build",
     "site:build:generated",
     "site:build:astro",
     "site:build:pagefind",
-    "check:site-seo",
+    "check:site-seo:built",
   ]) {
     assert.match(
       packageJson.scripts[scriptName] ?? "",
@@ -39,6 +40,10 @@ test("all direct site commands load the shared properties file", async () => {
       `${scriptName} must load site-build.properties`,
     );
   }
+  assert.equal(
+    packageJson.scripts["check:site-seo"],
+    "npm run build && npm run check:site-seo:built",
+  );
   assert.equal(
     packageJson.scripts["site:build:full"],
     "npm run site:build:astro && npm run site:build:pagefind",

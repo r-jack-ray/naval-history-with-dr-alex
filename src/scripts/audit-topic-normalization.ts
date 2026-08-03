@@ -1,13 +1,9 @@
-import { resolve } from "node:path";
-import { fileURLToPath } from "node:url";
-
 import { auditTopicNormalization } from "../site/topic-normalization-audit.js";
 import type {
   TopicNormalizationCatalog,
   TopicSlugResolution,
 } from "../site/topic-normalization.js";
 import type { VideoSegmentShardIndex } from "../site/video-segment-files.js";
-import { printRunTime } from "./console-run-timer.js";
 
 const defaultPatternsInput = "src/derived/topic-normalization-patterns.tsv";
 const defaultSegmentsInput = "src/derived/video-segments";
@@ -119,19 +115,4 @@ export function topicNormalizationAuditUsage(
     + `  --patterns-input <path>  Defaults to ${defaultPatternsInput}.\n`
     + `  --segments-input <path>  Defaults to ${defaultSegmentsInput}.\n`
     + "  --help                   Show this help.\n";
-}
-
-const isMain = process.argv[1] !== undefined
-  && resolve(process.argv[1]) === resolve(fileURLToPath(import.meta.url));
-
-if (isMain) {
-  const runStartedAt = Date.now();
-  try {
-    process.exitCode = await runAuditTopicNormalization(process.argv.slice(2));
-  } catch (error) {
-    console.error(error instanceof Error ? error.message : String(error));
-    process.exitCode = 1;
-  } finally {
-    printRunTime(runStartedAt);
-  }
 }

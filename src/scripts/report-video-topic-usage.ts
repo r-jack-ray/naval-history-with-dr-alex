@@ -1,21 +1,9 @@
-#!/usr/bin/env node
 import { mkdir, writeFile } from "node:fs/promises";
 import { dirname } from "node:path";
 
 import { renderTopicNormalizationReviewReport } from "../content/topic-normalization-review-report.js";
-import {
-  renderVideoTopicUsageReport,
-  type VideoTopicUsageReport,
-} from "../content/video-topic-usage-report.js";
-import { loadCuratedTopicUsageSeed } from "../site/curated-seed.js";
-import {
-  auditTopicNormalization,
-  type TopicNormalizationAuditResult,
-} from "../site/topic-normalization-audit.js";
-import {
-  isDirectExecution,
-  printRunTime,
-} from "./console-run-timer.js";
+import type { VideoTopicUsageReport } from "../content/video-topic-usage-report.js";
+import type { TopicNormalizationAuditResult } from "../site/topic-normalization-audit.js";
 
 export interface VideoTopicUsageCliOptions {
   segmentsInput: string;
@@ -23,19 +11,6 @@ export interface VideoTopicUsageCliOptions {
   output: string;
   reviewOutput: string;
   quiet: boolean;
-}
-
-async function main(): Promise<void> {
-  const options = parseVideoTopicUsageArgs(process.argv.slice(2));
-  const [seed, normalizationAudit] = await Promise.all([
-    loadCuratedTopicUsageSeed(options.segmentsInput),
-    auditTopicNormalization({
-      patternsInput: options.normalizationPatterns,
-      segmentsInput: options.segmentsInput,
-    }),
-  ]);
-  const report = renderVideoTopicUsageReport(seed, normalizationAudit.catalog.rules);
-  await writeVideoTopicUsageReports(options, report, normalizationAudit);
 }
 
 export async function writeVideoTopicUsageReports(
@@ -126,14 +101,4 @@ Options:
   --quiet                          Suppress the one-line summary; run time is still printed.
   --help                           Show this help.
 `);
-}
-
-if (isDirectExecution(import.meta.url)) {
-  const runStartedAt = Date.now();
-  main().catch((error: unknown) => {
-    console.error(`Failed to report video topic usage: ${error instanceof Error ? error.message : String(error)}`);
-    process.exitCode = 1;
-  }).finally(() => {
-    printRunTime(runStartedAt);
-  });
 }

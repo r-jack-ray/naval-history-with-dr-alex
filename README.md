@@ -78,7 +78,8 @@ Install dependencies:
 npm install
 ```
 
-The normal repository check compiles, type-checks, and runs the Node test suite:
+The normal network-free repository check runs quick TypeScript checks,
+functional tests, source/topic validation, and generated-data/Astro validation:
 
 ```powershell
 npm run check
@@ -105,7 +106,14 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 | `build` | Compile the TypeScript tools into `dist/`. |
 | `check:types` | Type-check without emitting files. |
 | `test` | Clean, compile, and run all compiled `*.test.js` files with Node's test runner. |
-| `check` | Run `check:types` followed by `test`. |
+| `check:quick` | Run the fast TypeScript type/syntax layer. |
+| `check:functional` | Run the clean compiled Node test suite. |
+| `check:source` | Run the read-only topic audit/check, content audit, and complete two-report topic-curation canary. |
+| `check:generated` | Generate the archive once and run Astro diagnostics without regeneration. |
+| `check` | Run all network-free quick, functional, source, and generated-data layers. |
+| `check:production` | Build Astro and official Pagefind from the existing archive, then run SEO, search-ranking, and rendered-date validation. |
+| `check:repository-policy` | Reject whitespace errors or tracked files changed by the validation graph. |
+| `check:ci` | Run `check`, the official production layer, and repository policy as the one-pass Pages graph. |
 
 ### Curated Content and Reports
 
@@ -115,10 +123,9 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 | `rank:video-segment-audit-risk` | Rank curated shards for follow-up and write `reports/video-segment-audit-risk.tsv`. |
 | `audit:site-content` | Validate current-schema shards and transcript evidence, then write the backlog report. This command uses the shared writer lease. |
 | `diagnose:site-content-duplicates` | Check curated shards for duplicate segment IDs and slugs. |
-| `sync:video-topics` | Add missing shared topic records derived from shard usage and normalization policy. This command writes `topics.json` under the shared writer lease. |
-| `sync:video-topics:bun` | Run the same locked topic synchronization with parallel Bun shard and normalization workers. |
-| `audit:topic-normalization` | Read-only validation of topic-normalization policy against curated shards. |
-| `audit:topic-normalization:bun` | Run the same read-only normalization audit with parallel Bun workers. |
+| `sync:video-topics` | Add missing shared topic records derived from shard usage and normalization policy with parallel Bun workers. This command writes `topics.json` under the shared writer lease. |
+| `check:video-topics` | Verify registry completeness without writing source and name the explicit synchronization command when records are missing. |
+| `audit:topic-normalization` | Read-only validation of topic-normalization policy against curated shards with parallel Bun workers. |
 | `append:site-content-processing-log` | Low-level validated append to the site-content processing log. |
 | `audit:transcript-schedules` | Audit one or more explicitly supplied transcript schedules; at least one `--schedule <path>` is required. |
 | `audit:video-timestamp-alignment` | Check timestamp and video-state consistency across source, transcript, shard, and generated data. |
@@ -145,9 +152,9 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 
 | Script | Purpose |
 | --- | --- |
-| `generate:site-data` | Regenerate the tracked split archive under the shared writer lease. |
-| `generate:site-data:bun` | Regenerate the same split archive under the same lease with parallel Bun workers. |
-| `site:dev` | Start Astro's development server using the existing generated archive. |
+| `generate:site-data` | Validate registry completeness and regenerate the tracked split archive under the generated-output writer lease. It never writes `src/derived/video-segments/topics.json`. |
+| `site:dev` | Validate/generate the archive, then start Astro without changing canonical source. |
+| `site:dev:generated` | Internal Astro development stage using an existing generated archive. |
 | `site:preview` | Preview an existing `site/dist/` build. |
 | `site:check` | Regenerate archive data, then run the Astro check. |
 | `site:check:generated` | Run the Astro check against existing generated data without regeneration. |
@@ -155,7 +162,11 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 | `site:build:generated` | Cached Astro/Pagefind build using an already valid generated archive. |
 | `site:build:astro` | Run the raw Astro production build only. |
 | `site:build:pagefind` | Run Pagefind against `site/dist/` only. |
+| `site:build:pagefind:workspace` | Run the explicitly supported sibling Pagefind binary, with a clear prerequisite error when it is unavailable. |
 | `site:build:full` | Run raw Astro and Pagefind stages without archive generation or the fingerprint cache. |
+| `site:build:workspace-pagefind` | Cached end-to-end build using the sibling Pagefind binary. |
+| `check:workspace-pagefind` | Build with the sibling binary and run the same search/page-count and rendered-date contracts used for official output. |
+| `check:pagefind-contract` | Verify Pagefind manifest/fragment counts and the five representative Phase 0 searches for either implementation. |
 | `check:search-ranking` | Exercise the built Pagefind index and rendered search UI against ranking cases. |
 | `check:rendered-video-dates` | Validate dates and video state in the built HTML and Pagefind output. |
 
@@ -164,6 +175,7 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 | Script | Purpose |
 | --- | --- |
 | `check:site-seo` | Compile the tools and validate SEO metadata, sitemaps, and rendered `site/dist/` pages. |
+| `check:site-seo:built` | Validate rendered SEO using existing compiled tools and site output without recompiling. |
 | `audit:lighthouse:home` | Audit the deployed home page and write HTML/JSON results under `reports/lighthouse/`. |
 | `audit:lighthouse:local` | Audit the local preview home page at port 4321. |
 | `audit:lighthouse:seo-baseline` | Audit representative production pages, or `SEO_AUDIT_BASE_URL` when set. |
@@ -177,17 +189,15 @@ Local site commands:
 
 ```powershell
 npm run generate:site-data
-# Faster equivalent when Bun is installed:
-npm run generate:site-data:bun
 npm run site:dev
 npm run site:check
 npm run site:build
 npm run site:preview
 ```
 
-`npm run site:dev` uses the generated archive already on disk; run `generate:site-data` first when source data changed. `npm run site:check` regenerates `site/src/data/generated/archive/` before running Astro checks. `npm run site:build` fingerprints the generator and site inputs, validates the manifest-listed generated files and SHA-256 values, and regenerates or rebuilds only when inputs or outputs changed; pass `-- --force` to bypass its caches. A performed build emits `site/dist/` and runs Pagefind against that output. Run `site:preview` after a build when you want to inspect that production output locally.
+`npm run site:dev` and `npm run site:check` both generate `site/src/data/generated/archive/` before Astro starts, so a fresh clone does not require a remembered manual generation step. `npm run site:build` fingerprints the generator and site inputs, validates the manifest-listed generated files and SHA-256 values, and regenerates or rebuilds only when inputs or outputs changed; pass `-- --force` to bypass its caches. All three paths are read-only with respect to canonical inputs. If a shard references a missing registry record, run `npm run sync:video-topics`, review the source change, and retry. A performed build emits `site/dist/` and runs Pagefind against that output. Run `site:preview` after a build when you want to inspect that production output locally.
 
-The `:bun` maintenance commands use `--workers <count>` with a default of the smaller of eight or the available CPUs. They preserve the Node commands' output paths and writer leases, and both versions print `Run Time: HH:MM:SS.mmm` for direct comparison.
+The four promoted Bun-backed maintenance commands (`report:video-topic-usage`, `sync:video-topics`, `audit:topic-normalization`, and `generate:site-data`) plus the read-only `check:video-topics` command use `--workers <count>` with a default of the smaller of eight or the available CPUs. Bun `1.3.14` is pinned in `.bun-version`; each command preserves its output path and ownership contract and reports `runtime=bun` in its summary.
 
 Site generation, Astro/Pagefind build, preview, check, and rendered-SEO validation commands load the shared `site-build.properties` file. It uses commentable `KEY=value` settings in the style of an application properties file. `ASTRO_BUILD_CONCURRENCY` controls parallel Astro page rendering and accepts `1` through `4`; `SITE_SEO_VALIDATION_CONCURRENCY` controls rendered-HTML validation workers and accepts `1` through `32`. A value already present in the calling environment takes precedence. Pagefind 1.5.2 exposes no build-concurrency setting.
 
@@ -340,6 +350,7 @@ After shard work, the repository owner can synchronize shared topic records and 
 ```powershell
 npm run audit:topic-normalization
 npm run sync:video-topics
+npm run check:video-topics
 npm run audit:site-content
 npm run site:check
 npm run site:build
@@ -361,7 +372,7 @@ Curator and auditor runs append rather than rewriting earlier rows. Repository-l
 
 ### Topic Normalization Policy
 
-`src/derived/topic-normalization-patterns.tsv` is the detailed source of truth for steady-state topic creation, display names, aliases, and exceptions. `src/derived/video-segments/topics.json` remains authoritative for curated topic metadata unrelated to that policy. Routine synchronization and generation validate policy compliance but never rewrite source shards merely because the catalog changed.
+`src/derived/topic-normalization-patterns.tsv` is the detailed source of truth for steady-state topic creation, display names, aliases, and exceptions. `src/derived/video-segments/topics.json` remains authoritative for curated topic metadata unrelated to that policy. Routine synchronization validates policy compliance and may append missing blank-description registry records. Generation uses the same planning path only as a read-only completeness check; neither command rewrites source shards merely because the catalog changed.
 
 Resolve every new shard topic through active creation rules before writing it. Preserve established slugs unless the active creation policy canonicalizes them, and leave `review`, disabled, ambiguous, or inapplicable candidates unchanged. Use the read-only audit to check policy and registry consistency before shared synchronization or integration work:
 
@@ -390,7 +401,7 @@ The process is intentionally segment-first. Use `kind: qa` only for actual Q&A e
 
 ### Shared Content-Pipeline Writes
 
-The generated manifest and shards under `site/src/data/generated/archive/` remain tracked so Astro can statically import a reviewable archive dataset. `npm run generate:site-data` and `npm run site:check` regenerate it directly; `npm run site:build` regenerates it only when its validated cache requires that stage. Never hand-edit `index.json` or its listed files. The content validation hook builds once, writes the backlog report, regenerates the archive once, and then runs the no-regeneration Astro check.
+The generated manifest and shards under `site/src/data/generated/archive/` remain tracked through Phase 2 so Astro can statically import a reviewable archive dataset. `npm run generate:site-data`, `npm run site:dev`, and `npm run site:check` regenerate it directly; `npm run site:build` regenerates it only when its validated cache requires that stage. These commands fail with an actionable `npm run sync:video-topics` instruction rather than editing the canonical registry. Never hand-edit `index.json` or its listed files. The one-pass CI graph generates the archive once through `site:check`, then uses `site:build:generated` for Astro and official Pagefind.
 
 The generated archive, backlog report, and shared topic registry are protected by the repository-wide writer lease at `.tmp/site-content-pipeline.lock`. Direct shared-writer commands such as `npm run audit:site-content`, `npm run sync:video-topics`, and `npm run generate:site-data` acquire a short-lived lease automatically. A coordinator that intentionally groups several shared-output operations may acquire one persistent lease and pass its token to the supported commands:
 

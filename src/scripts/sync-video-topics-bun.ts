@@ -17,7 +17,7 @@ async function main(): Promise<void> {
   const options = parseSyncVideoTopicsArgs(bunOptions.commandArgs);
   if (options.help) {
     process.stdout.write(
-      syncVideoTopicsUsage("npm run sync:video-topics:bun", true),
+      syncVideoTopicsUsage("npm run sync:video-topics", true),
     );
     return;
   }
@@ -39,7 +39,7 @@ if (isDirectExecution(import.meta.url)) {
   const runStartedAt = Date.now();
   main().catch((error: unknown) => {
     console.error(
-      `Failed to synchronize video topics with Bun: ${
+      `Failed to run npm run sync:video-topics: ${
         error instanceof Error ? error.message : String(error)
       }`,
     );

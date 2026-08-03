@@ -16,6 +16,7 @@ Use this brief with `$naval-video-page-prototype` when working on the Astro/Page
 - Use `site/public/` for static assets that should ship unchanged.
 - Use `src/channel/episodes.json`, `src/channel/video-metadata.json`, `src/transcripts/manifest.json`, `src/derived/video-segments/`, and `src/derived/topic-normalization-patterns.tsv` as current generator inputs.
 - Use `src/site/archive-data.ts` for deterministic site-data generation and validation.
+- Keep archive generation source-read-only. `npm run sync:video-topics` is the explicit canonical registry writer; generation and public site entrypoints must fail with that instruction when registry records are missing.
 - Avoid touching `src/transcripts/` unless the user explicitly asks for transcript ingestion, conversion, or transcript-backed curation.
 - Hand transcript-backed curation work to `.agents/transcript-content-curator.md` and `$naval-transcript-to-site-content`.
 
@@ -36,7 +37,7 @@ Use this brief with `$naval-video-page-prototype` when working on the Astro/Page
 ## Site Expectations
 
 - Keep GitHub Pages compatibility in mind: the site base path is `/naval-history-with-dr-alex/`.
-- Regenerate the tracked `index.json`, `videos.json`, `topics.json`, and hash-bucketed segment files under `site/src/data/generated/archive/` through `npm run generate:site-data`, `npm run site:check`, or `npm run site:build`; do not hand-edit the manifest or its listed files.
+- Verify registry completeness with `npm run check:video-topics`, then regenerate the tracked `index.json`, `videos.json`, `topics.json`, and hash-bucketed segment files under `site/src/data/generated/archive/` through `npm run generate:site-data`, `npm run site:check`, or `npm run site:build`; do not hand-edit the manifest or its listed files.
 - Keep generated output under `site/dist/`; do not commit it.
 - Keep exported Astro `getStaticPaths` dependencies inside its isolated scope. Put reusable sorting and lookup logic in imported `site/src/data/archive.ts` helpers instead of frontmatter-local computed constants.
 - Add Pagefind metadata and filters where pages expose videos, topics, or segment types.
@@ -48,19 +49,14 @@ Use this brief with `$naval-video-page-prototype` when working on the Astro/Page
 Run focused site checks before handing off:
 
 ```powershell
-npm run generate:site-data
-npm run audit:site-content
-npm run site:check
-npm run site:build
-```
-
-Run the full repository check when TypeScript scripts or shared source contracts change:
-
-```powershell
+npm run check:video-topics
 npm run check
+npm run check:production
 ```
 
-Allow at least 15 minutes for a full `site:build`. Astro may emit no output for
+`check` includes the content audit and owns the one archive-generation stage; `check:production` consumes that archive for Astro, official Pagefind, SEO, search-ranking, and rendered-date validation.
+
+Allow at least 15 minutes for `check:production` or a full `site:build`. Astro may emit no output for
 several minutes while it renders more than 50,000 pages; silence alone is not a
 reason to terminate and restart the build.
 

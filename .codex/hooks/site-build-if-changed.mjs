@@ -37,6 +37,7 @@ const archiveInputPaths = [
   ".codex/hooks/site-content-pipeline-lock.mjs",
   "package.json",
   "package-lock.json",
+  ".bun-version",
   siteBuildPropertiesPath,
   "tsconfig.json",
   "src/channel/episodes.json",
@@ -57,7 +58,7 @@ const siteInputPaths = [
   "site/src",
   defaultTopicNormalizationPatternsPath,
 ];
-const archiveCacheVersion = 3;
+const archiveCacheVersion = 4;
 const siteCacheVersion = 5;
 const runStartedAt = new Date();
 const defaultPagefindScript = "site:build:pagefind";

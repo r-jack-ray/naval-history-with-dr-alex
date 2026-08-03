@@ -36,7 +36,7 @@ Public pages should privilege subject discovery, direct video jumps, and learnin
 
 ## Build, Test, and Development Commands
 
-Use Node 22+ and TypeScript.
+Use Node 22+ and TypeScript. Bun `1.3.14` is pinned in `.bun-version` for the canonical `report:video-topic-usage`, `sync:video-topics`, `audit:topic-normalization`, and `generate:site-data` maintenance commands; npm and `package-lock.json` remain the install contract.
 
 ```bash
 npm run build
@@ -47,9 +47,11 @@ npm run audit:site-content
 npm run audit:topic-normalization
 npm run audit:video-timestamp-alignment
 npm run generate:site-data
+npm run check:video-topics
 npm run site:check
 npm run site:build
 npm run sync:video-topics
+npm run check:ci
 npm run rank:video-segment-audit-risk
 npm run check:search-ranking
 npm run check:rendered-video-dates
@@ -62,7 +64,7 @@ Do not run Git commands as routine preflight, status, boundary, or validation ch
 
 On Windows, do not launch the roaming `npm` shim from repository Node wrappers: on this machine it resolves a missing `%APPDATA%\npm\node_modules\npm\bin\npm-cli.js`. Direct `spawn()` of `npm.cmd` can also fail with `EINVAL`. Resolve `npm.cmd` beside `process.execPath` and invoke that fixed command through the system shell; for interactive validation, use `C:\Program Files\nodejs\npm.cmd` directly when plain `npm` hits the broken shim.
 
-`build` emits `dist/`; `check:types` type-checks only; `test` compiles and runs Node's test runner; `check` combines both. `audit:site-content` validates curated transcript evidence and writes `reports/site-content-backlog.md`. `generate:site-data` writes deterministic Astro data under `site/src/data/generated/archive/`, with `index.json` as the authoritative manifest for the generated files. Never hand-edit that tracked generated dataset. `site:build` fingerprints the generator and site inputs, validates every manifest-listed archive file and SHA-256 before skipping generation, uses ignored `.tmp/` caches to skip unchanged archive, Astro, and Pagefind stages, and performs the required stages when inputs or outputs change; use `npm run site:build -- --force` to bypass its caches. Official YouTube Data API tasks default to one second between requests; alternate transcript fetches default to five seconds.
+`build` emits `dist/`; `check:types` type-checks only; `test` compiles and runs Node's test runner. `check` is the canonical network-free graph over quick TypeScript checks, functional tests, source/topic validation, one archive generation, Astro diagnostics, and generated-data validation; `check:ci` adds the already-generated production Astro/Pagefind build, SEO, ranking, rendered-date, whitespace, and clean-worktree policy. `audit:site-content` validates curated transcript evidence and writes `reports/site-content-backlog.md`. `generate:site-data` writes deterministic Astro data under `site/src/data/generated/archive/`, with `index.json` as the authoritative manifest for the generated files, but it never writes canonical topic source. Run `sync:video-topics` explicitly when `check:video-topics`, generation, or a site entrypoint reports missing registry records. `site:dev` and `site:check` generate before Astro; `site:build` fingerprints the generator and site inputs, validates every manifest-listed archive file and SHA-256 before skipping generation, uses ignored `.tmp/` caches to skip unchanged archive, Astro, and Pagefind stages, and performs the required stages when inputs or outputs change; use `npm run site:build -- --force` to bypass its caches. Never hand-edit the tracked generated dataset. Keep `audit:video-timestamp-alignment` as an explicit source-maintenance audit; rendered production dates are checked after Pagefind by `check:production`. Official YouTube Data API tasks default to one second between requests; alternate transcript fetches default to five seconds.
 
 `src/site/archive-data.ts` owns the split-manifest schema through `siteArchiveSchemaVersion`. Any manifest-schema change must update the Astro reader in `site/src/data/archive.ts`, the preflight validator in `.codex/hooks/site-build-if-changed.mjs`, and the cross-consumer assertions in `src/pipeline/shared-output.test.ts` in the same change. Do not confuse the split-manifest version with the logical reconstructed `SiteArchiveData.schemaVersion`; they version different contracts.
 

@@ -7,23 +7,18 @@ import {
   defaultSiteSegmentsInput,
   generateSiteArchiveData,
 } from "../site/archive-data.js";
-import { withSiteBuildRepairHint } from "../site/build-repair-guidance.js";
 import type {
   TopicNormalizationCatalog,
   TopicSlugResolution,
 } from "../site/topic-normalization.js";
 import {
+  assertTopicStoreSynchronized,
   planTopicStoreSynchronization,
-  writeTopicStoreSynchronization,
 } from "../site/topic-store.js";
 import {
   discoverVideoSegmentShards,
   type VideoSegmentShardIndex,
 } from "../site/video-segment-files.js";
-import {
-  isDirectExecution,
-  printRunTime,
-} from "./console-run-timer.js";
 
 export interface GenerateSiteDataCliOptions {
   episodesInput: string;
@@ -59,7 +54,7 @@ export async function runGenerateSiteData(
       : { preloadedCatalog: runtime.preloadedCatalog }),
     preloadedShardIndex: shardIndex,
   });
-  const topicResult = await writeTopicStoreSynchronization(topicPlan);
+  const topicResult = assertTopicStoreSynchronized(topicPlan);
   for (const topic of topicResult.reviewTopics) {
     console.error(
       `Topic title requires review: ${topic.slug} (generated title: ${topic.generatedTitle}).`,
@@ -149,24 +144,4 @@ Options:
   --output-dir <path>      Astro-facing archive directory. Defaults to ${defaultSiteArchiveOutputDir}.
 ${includeWorkers ? "  --workers <count>        Worker count. Defaults to min(8, available CPUs).\n" : ""}  --help                    Show this help.
 `;
-}
-
-async function main(): Promise<void> {
-  const options = parseGenerateSiteDataArgs(process.argv.slice(2));
-  if (options.help) {
-    process.stdout.write(generateSiteDataUsage());
-    return;
-  }
-  await runGenerateSiteData(options);
-}
-
-if (isDirectExecution(import.meta.url)) {
-  const runStartedAt = Date.now();
-  main().catch((error: unknown) => {
-    const message = error instanceof Error ? error.message : String(error);
-    console.error(withSiteBuildRepairHint(message));
-    process.exitCode = 1;
-  }).finally(() => {
-    printRunTime(runStartedAt);
-  });
 }

@@ -2,9 +2,9 @@
 
 Timestamp: 2026-08-02T14:31:45-05:00
 
-Reviewed: 2026-08-02T15:53:43-05:00
+Reviewed: 2026-08-02T20:33:25-05:00
 
-Status: Reviewed implementation plan only. No repository-trim phase has been authorized or implemented by creating or reviewing this file. A separate topic-curation run completed part of the Phase 6 subject-matter baseline after the original snapshot; that verified current state is recorded below but does not authorize any remaining phase. Implement one phase at a time when explicitly requested, update only that phase's checkpoint, and do not continue automatically.
+Status: Phase 0 was completed on 2026-08-02 as a measurement-only checkpoint; its baseline and repeatable canary are recorded in `task-notes/2026-08-02_T16-50-00-0500_repository-trim-phase-0-baseline.md`. Phase 1 was completed on 2026-08-02 after its reviewed generator callers, writer-lease help example, and archive-integrity assertion were corrected and the full Phase 1 gate was rerun; see `task-notes/2026-08-02_T18-03-44-0500_repository-trim-phase-1-bun-command-promotion.md`. Phase 2 implementation completed on 2026-08-02 and is recorded in `task-notes/2026-08-02_T20-24-59-0500_repository-trim-phase-2-source-read-only-build-graph.md`; its source-read-only, missing-archive, topic-canary, and Pagefind gates passed, but its complete validation gate remains blocked by the previously recorded topic-policy and ranking fixtures. Phase 3 remains unauthorized and blocked. A separate topic-curation run completed part of the Phase 6 subject-matter baseline after the original snapshot; that verified current state is recorded below but does not authorize any remaining phase. Implement phases strictly in numeric order, update only the authorized phase's checkpoint, and do not continue automatically.
 
 ## Purpose
 
@@ -242,13 +242,15 @@ Current build observations:
 
 ## Phase 0: Establish Baselines and Invariants
 
-Status: not started.
+Status: completed 2026-08-02. Checkpoint: `task-notes/2026-08-02_T16-50-00-0500_repository-trim-phase-0-baseline.md`.
+
+Owner correction: Node/Bun equivalence and performance proof predated this plan. The Phase 0 Node/Bun measurements are retained only as historical checkpoint evidence; they are not an instruction to compare the runtimes again in Phase 2 or any later phase.
 
 ### Tasks
 
 - Record the current source revision, current-tree file counts/sizes, Git object/pack measurements, dependency/install measurements, script count, and build timings.
-- Record logical archive counts from `index.json` and representative hashes for the Node and Bun generator outputs.
-- Run the four existing Node/Bun pairs against isolated temporary outputs or read-only operations and prove equivalent results before removing a public path. For `sync:video-topics` and the currently source-writing generator, use a complete isolated copy of the segment directory so Phase 0 cannot modify canonical `topics.json`.
+- Retain the logical archive counts and representative hashes recorded in the completed checkpoint. Do not produce new Node/Bun generator comparisons.
+- Historical completed check only: the four then-existing Node/Bun pairs were run against isolated temporary outputs or read-only operations. Do not repeat this runtime comparison in later phases.
 - Record official Pagefind build/index size, page count, representative search rankings, and runtime.
 - When the sibling custom Pagefind binary is available, record the same measurements for the workspace path in an isolated/sequential run. Absence of the sibling binary must not fail the official baseline.
 - Record the exact files read and written by the supported weekly commands without making live network requests during ordinary baseline validation.
@@ -264,9 +266,11 @@ Status: not started.
 
 ## Phase 1: Promote the Proven Bun Paths to Canonical Commands
 
-Status: not started.
+Status: completed 2026-08-02. Checkpoint: `task-notes/2026-08-02_T18-03-44-0500_repository-trim-phase-1-bun-command-promotion.md`. The reviewed generator callers and writer-lease help example now invoke the Bun CLI, the build-wrapper test structurally couples `ensureBuiltSite` to archive-integrity validation, and the full Phase 1 gate was rerun. No later repository-trim phase is authorized or implemented.
 
-The four current pairs are:
+The Bun migration is closed. Phases 2-7 validate the unsuffixed canonical Bun commands only. They must not execute retired Node CLI variants, rerun Node/Bun output comparisons, or add Node/Bun performance benchmarks. Runtime-neutral TypeScript modules may remain as implementation details where they still have callers.
+
+The four completed migrations were:
 
 | Canonical name to retain | Duplicate name to retire after migration |
 | --- | --- |
@@ -289,7 +293,7 @@ The four current pairs are:
 
 ### Validation Gate
 
-- Each canonical command reports `runtime=bun` and produces byte/logically equivalent output to the Phase 0 baseline.
+- Completed historical gate: each canonical command reports `runtime=bun` and matched the retained logical/byte contracts. Later phases validate those canonical commands directly and do not rerun Node/Bun comparisons.
 - The Bun report command preserves both topic TSV schemas, row/source/action semantics, ordering, and deterministic output; the Bun audit and synchronization paths preserve the complete critical contract, not only their exit codes.
 - Topic synchronization still joins the shared lease and atomically updates only `topics.json` when needed.
 - Archive generation still validates every manifest-listed file and SHA-256.
@@ -298,7 +302,7 @@ The four current pairs are:
 
 ## Phase 2: Build Once and Make Missing Generated Data a Supported State
 
-Status: not started.
+Status: implementation completed 2026-08-02; checkpoint: `task-notes/2026-08-02_T20-24-59-0500_repository-trim-phase-2-source-read-only-build-graph.md`. The full gate remains blocked by six pre-existing topic-policy test expectations and the pre-existing `queen-elizabeth-class` ranking fixture. Phase 3 remains unauthorized and blocked. Do not rerun the full Phase 2 validation campaign; any authorized correction must target only the named blocker or a changed code path and reuse the retained Phase 2 evidence.
 
 Complete this phase before untracking the archive.
 
@@ -321,7 +325,7 @@ Complete this phase before untracking the archive.
 - Generate the archive once per clean CI job. After `site:check` generates it, use the existing generated-data build path or a new single orchestrator rather than calling a cache path that regenerates solely because no local cache exists.
 - Split `check:site-seo` into build-owning and already-built layers, or otherwise prevent redundant TypeScript compilation in the canonical CI sequence.
 - Run `check:search-ranking` and `check:rendered-video-dates` after the production Pagefind build.
-- Keep the official Pagefind command as the Pages default. Keep the custom workspace commands as explicit local/workspace alternatives with parity checks for manifest/page count and representative searches when the sibling binary exists.
+- Keep the official Pagefind command as the Pages default. Keep the custom workspace commands as explicit local/workspace alternatives. The official/custom manifest, page-count, and representative-search comparison was a one-time Phase 2 gate and must not become a routine later-phase benchmark unless a later change affects either Pagefind path.
 - Preserve the current 15-minute-or-greater timeout guidance for full Astro/Pagefind builds.
 - Add a fresh-clone test that begins with no `site/src/data/generated/archive/`, runs only documented public commands, and succeeds through Astro and official Pagefind.
 - Include the topic-curation canary in the fresh-clone job before any generated archive is untracked: both topic reports, the read-only audit, and the non-writing synchronization check must work without relying on an old checkout's ignored files or caches.
@@ -345,7 +349,7 @@ Status: not started.
 - Remove the 67 generated files from the Git index in one ordinary cleanup change while allowing local regeneration to recreate ignored working files.
 - Add a cross-platform repository-policy command for Git checkouts that fails if `git ls-files -- site/src/data/generated/archive` returns any path and fails if an archive probe is not ignored. Keep this out of ordinary library unit tests; non-Git source packages must receive a clear not-applicable result rather than an unrelated test failure.
 - Preserve generator support for `--output-dir` so tests can generate into isolated directories.
-- Add or retain a deterministic comparison that generates twice from the same canonical inputs and compares the complete manifest-listed file set, counts, paths, and hashes.
+- Retain the deterministic generation comparison already proven in Phase 2. Because Phase 3 changes tracking and ignore policy rather than generator behavior, do not rerun that comparison unless Phase 3 also changes generator code or output.
 - Update current contracts in README, AGENTS, `.agents/site-archive-builder.md`, `$naval-video-page-prototype`, `$naval-site-build-repair`, and relevant shared-output tests:
   - the archive is generated and ignored
   - it is never hand-edited
@@ -354,7 +358,7 @@ Status: not started.
   - `index.json` remains the runtime manifest even though it is no longer Git-tracked
 - Do not rewrite completed historical task notes merely because they record the former tracked policy. Add a short superseding note to current guidance instead.
 - Do not remove the archive manifest, integrity validation, 64-bucket contract, source provenance, atomic replacement, cache sentinels, or writer lease.
-- Record before/after index size, working-tree size, normal content-commit diff size, clone checkout size, archive build time, Astro time, and Pagefind time. Report current-tree savings separately from unchanged historical Git object size.
+- Reuse the Phase 0 baseline and the Phase 2 build evidence. Record one post-untracking impact snapshot for tracked archive bytes, checkout size, and representative content-diff size. Capture archive, Astro, and Pagefind timing only from the single already-required validation build; do not add a benchmark harness, repeat builds for timing, or rerun Node/Bun comparisons. Report current-tree savings separately from unchanged historical Git object size.
 
 ### Validation Gate
 
@@ -525,15 +529,17 @@ Possible later questions:
 
 These are not authorized by this plan. Do not move canonical TXT, curated shards, manifests, logs, or topic policy; do not add Git LFS; and do not rewrite history without a separate owner-approved design and recovery plan.
 
-## Recommended Implementation Order
+## Implementation Order
+
+Implement the phases strictly in numeric order. Do not advance a later-numbered phase ahead of an unfinished earlier-numbered phase.
 
 1. Phase 0: measurements, invariants, and a repeatable full topic-curation canary.
-2. Phase 1: make the proven Bun variants canonical while proving complete topic-report/sync/audit parity.
-3. Phase 6: preserve the completed Type-designation baseline, add its regression/route evidence, and finish topic-workflow plus report-lifecycle documentation.
-4. Phase 2: separate source-writing topic synchronization from source-read-only archive generation, then make fresh-clone generation and one-pass CI reliable with the topic-curation canary.
-5. Phase 3: untrack and ignore the deterministic split archive only after that canary passes from a clone where the archive starts absent.
-6. Phase 4: simplify the acquisition/curation handoff without changing its ownership boundaries.
-7. Phase 5: replace `googleapis` after parity tests.
+2. Phase 1: make the already-proven Bun variants canonical and retire the duplicate public aliases.
+3. Phase 2: separate source-writing topic synchronization from source-read-only archive generation, then make fresh-clone generation and one-pass CI reliable with the topic-curation canary.
+4. Phase 3: untrack and ignore the deterministic split archive only after that canary passes from a clone where the archive starts absent.
+5. Phase 4: simplify the acquisition/curation handoff without changing its ownership boundaries.
+6. Phase 5: replace `googleapis` after parity tests.
+7. Phase 6: preserve the completed Type-designation baseline, add its regression/route evidence, and finish topic-workflow plus report-lifecycle documentation.
 8. Phase 7: retire only the now-proven command and migration residue; the critical topic-curation surfaces are excluded from retirement.
 
 Do not combine phases merely because adjacent files overlap. A later request for `implement Phase N` authorizes only that phase and its checkpoint update. Phase 3 remains hard-blocked until Phase 2 proves that every archive/build entrypoint leaves tracked canonical inputs byte-identical.
@@ -545,13 +551,13 @@ Use `C:\Program Files\nodejs\npm.cmd` when the roaming npm shim is broken. Full 
 | Area | Required proof |
 | --- | --- |
 | TypeScript | Type check, clean compile, unused-code checks, complete Node test suite. |
-| Bun parity | Canonical four Bun commands pass and reproduce Phase 0 logical/byte outputs. |
+| Canonical Bun commands | The canonical four Bun commands pass their supported workflows. Node/Bun comparison and performance benchmarking are closed and must not be repeated. |
 | Canonical data | Episode, metadata, manifest, TXT, shard, topic, processing-log, and normalization validators pass without network; explicit topic synchronization is the only archive-adjacent canonical writer. |
 | Generated archive | Clean generation from absent output; manifest/schema/path/count/hash/provenance checks; second generation is deterministic; incomplete topic state fails without source mutation. |
 | Git policy | Generated archive has no tracked paths and is ignored; generation and all site entrypoints dirty no tracked file. |
 | Astro | `site:check` and a forced production build pass from a fresh clone. |
 | Official Pagefind | Default build, representative queries, filters, ranking, output integrity, dates, and SEO checks pass. |
-| Custom Pagefind | Workspace build passes the same representative contract when the sibling binary is available. |
+| Custom Pagefind | Keep the workspace path available. Reuse the completed Phase 2 evidence unless a later change affects this path or the owner explicitly requests another comparison. |
 | Reports | All three mandatory keep TSVs regenerate and remain available for manual/Codex use; the two topic reports remain companion outputs. |
 | Topic curation | Reports, normalization catalog, registry, authored shard references, sync, and read-only audit agree; selected Type designations use an evidence-backed singular referent and preserve distinct variants. |
 | Acquisition | Offline fixtures prove inventory/metadata, safe transcript selection, retry/recovery, pacing, checkpoints, and handoff behavior. |
@@ -561,7 +567,7 @@ Use `C:\Program Files\nodejs\npm.cmd` when the roaming npm shim is broken. Full 
 ## Rollback Principles
 
 - Land each phase as a coherent ordinary change so it can be reverted without mixing later work.
-- Before removing a Node public task, retain the proven implementation until the canonical Bun command passes in a fresh clone and GitHub.
+- The Bun migration is closed. Later-phase rollback checks validate the canonical public commands and stable output contracts; they do not restore retired Node public aliases merely to rerun Node/Bun comparisons.
 - If separating topic synchronization from generation breaks a supported path, restore the generator/check behavior coherently and keep Phase 3 blocked; do not compensate by allowing only one site entrypoint to mutate `topics.json`.
 - If untracked generated data breaks a consumer, repair that consumer's generation boundary first. Temporarily reverting the coherent Phase 3 commit is safer than hand-adding selected generated shards.
 - If the custom Pagefind path fails, the official packaged Pagefind path remains the deployment fallback by design. If official Pagefind fails, do not silently switch production to the custom binary without owner approval.

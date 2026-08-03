@@ -161,10 +161,10 @@ function runWorker(): void {
 }
 
 function printBunHelp(): void {
-  console.log(`Usage: bun run report:video-topic-usage:bun -- [options]
+  console.log(`Usage: npm run report:video-topic-usage -- [options]
 
-Generates the same topic-usage and normalization-review TSV files as the Node
-command while parallelizing topic similarity analysis with Bun workers.
+Generates topic-usage and normalization-review TSV files while parallelizing
+topic similarity analysis with Bun workers.
 
 Options:
   --workers <count>                Worker count. Defaults to min(8, available CPUs).
@@ -183,7 +183,7 @@ if (!isMainThread) {
   const runStartedAt = Date.now();
   main().catch((error: unknown) => {
     console.error(
-      `Failed to report video topic usage with Bun: ${
+      `Failed to run npm run report:video-topic-usage: ${
         error instanceof Error ? error.message : String(error)
       }`,
     );

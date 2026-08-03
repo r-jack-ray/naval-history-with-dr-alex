@@ -49,6 +49,7 @@ export interface SeoValidationOptions {
   distRoot: string;
   siteOrigin: string;
   basePath: string;
+  topicsPath?: string;
   hubWarningBytes?: number;
   concurrency?: number;
 }
@@ -901,7 +902,11 @@ export async function validateRenderedSeoSite(options: SeoValidationOptions): Pr
   }
 
   try {
-    const topics = JSON.parse(await readFile(join(process.cwd(), "site", "src", "data", "generated", "archive", "topics.json"), "utf8")) as unknown;
+    const topicsPath = resolve(
+      options.topicsPath
+        ?? join(process.cwd(), "site", "src", "data", "generated", "archive", "topics.json"),
+    );
+    const topics = JSON.parse(await readFile(topicsPath, "utf8")) as unknown;
     if (Array.isArray(topics)) {
       for (const topic of topics) {
         if (typeof topic === "object" && topic !== null) {

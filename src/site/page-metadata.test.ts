@@ -1,9 +1,12 @@
 import assert from "node:assert/strict";
-import { readdirSync, readFileSync } from "node:fs";
-import { join } from "node:path";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-import type { SiteSegment, SiteTopic, SiteVideo } from "./archive-data.js";
+import {
+  buildSiteArchiveData,
+  type SiteArchiveData,
+} from "./archive-data.js";
+import { loadCuratedArchiveSeed } from "./curated-seed.js";
 import {
   MAX_METADATA_DESCRIPTION_LENGTH,
   MAX_METADATA_TITLE_LENGTH,
@@ -17,11 +20,41 @@ import {
   segmentDescriptionSource,
 } from "./page-metadata.js";
 import { isPublicTopic } from "./public-topic.js";
+import { loadTopicNormalizationCatalog } from "./topic-normalization.js";
 
-const generatedArchiveRoot = join(process.cwd(), "site", "src", "data", "generated", "archive");
+const episodesInput = "src/channel/episodes.json";
+const metadataInput = "src/channel/video-metadata.json";
+const transcriptsInput = "src/transcripts/manifest.json";
+const segmentsInput = "src/derived/video-segments";
+const patternsInput = "src/derived/topic-normalization-patterns.tsv";
 
-function readJson<T>(path: string): T {
-  return JSON.parse(readFileSync(path, "utf8")) as T;
+async function readJson<T>(path: string): Promise<T> {
+  return JSON.parse(await readFile(path, "utf8")) as T;
+}
+
+async function buildCurrentArchive(): Promise<SiteArchiveData> {
+  const [episodesStore, metadataStore, transcriptsStore, seed, catalog] = await Promise.all([
+    readJson<Parameters<typeof buildSiteArchiveData>[0]["episodesStore"]>(episodesInput),
+    readJson<Parameters<typeof buildSiteArchiveData>[0]["metadataStore"]>(metadataInput),
+    readJson<Parameters<typeof buildSiteArchiveData>[0]["transcriptsStore"]>(transcriptsInput),
+    loadCuratedArchiveSeed(segmentsInput),
+    loadTopicNormalizationCatalog(patternsInput),
+  ]);
+  return buildSiteArchiveData({
+    episodesStore,
+    metadataStore,
+    transcriptsStore,
+    seed,
+    source: {
+      episodesInput,
+      metadataInput,
+      transcriptsInput,
+      segmentsInput,
+      patternsInput,
+      patternsSha256: catalog.sha256,
+      patternsSourceSha256: catalog.sourceSha256,
+    },
+  });
 }
 
 function assertUsefulMetadata(metadata: { title: string; description: string }): void {
@@ -33,13 +66,11 @@ function assertUsefulMetadata(metadata: { title: string; description: string }):
   assert.doesNotMatch(metadata.description, /\s{2,}/u);
 }
 
-test("builds unique, nonempty metadata for every current public detail page", () => {
-  const videos = readJson<SiteVideo[]>(join(generatedArchiveRoot, "videos.json"));
-  const topics = readJson<SiteTopic[]>(join(generatedArchiveRoot, "topics.json")).filter(isPublicTopic);
-  const segments = readdirSync(join(generatedArchiveRoot, "segments"))
-    .filter((name) => name.endsWith(".json"))
-    .sort()
-    .flatMap((name) => readJson<SiteSegment[]>(join(generatedArchiveRoot, "segments", name)));
+test("builds unique, nonempty metadata for every current public detail page", async () => {
+  const archive = await buildCurrentArchive();
+  const videos = archive.videos;
+  const topics = archive.topics.filter(isPublicTopic);
+  const segments = archive.segments;
   const metadata = [
     ...videos.map(buildVideoPageMetadata),
     ...segments.map(buildSegmentPageMetadata),

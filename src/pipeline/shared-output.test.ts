@@ -49,7 +49,7 @@ test("atomic replacement preserves a complete previous file until replacement su
   }
 });
 
-test("validation hooks share the split-archive contract and generate once before their generated-data checks", async () => {
+test("Phase 2 commands keep topic writes explicit and generate the split archive once", async () => {
   const packageJson = JSON.parse(await readFile(join(repositoryRoot, "package.json"), "utf8")) as {
     scripts: Record<string, string>;
   };
@@ -57,41 +57,51 @@ test("validation hooks share the split-archive contract and generate once before
   const siteHook = await readFile(join(repositoryRoot, ".codex", "hooks", "validate-site.ps1"), "utf8");
   const siteBuildWrapper = await readFile(join(repositoryRoot, ".codex", "hooks", "site-build-if-changed.mjs"), "utf8");
   const archiveAdapter = await readFile(join(repositoryRoot, "site", "src", "data", "archive.ts"), "utf8");
+  const generateSiteDataSource = await readFile(join(repositoryRoot, "src", "scripts", "generate-site-data.ts"), "utf8");
+  const checkVideoTopicsSource = await readFile(join(repositoryRoot, "src", "scripts", "check-video-topics-bun.ts"), "utf8");
+  const workflow = await readFile(join(repositoryRoot, ".github", "workflows", "deploy-site.yml"), "utf8");
+  const workspacePagefindRunner = await readFile(join(repositoryRoot, ".codex", "hooks", "run-workspace-pagefind.mjs"), "utf8");
+  const siteDevWrapper = await readFile(join(repositoryRoot, ".codex", "hooks", "site-dev.mjs"), "utf8");
 
-  assert.equal((contentHook.match(/dist\/scripts\/generate-site-data\.js/gu) ?? []).length, 1);
-  assert.equal((siteHook.match(/dist\/scripts\/generate-site-data\.js/gu) ?? []).length, 1);
+  assert.match(
+    contentHook,
+    /Invoke-Npm -Arguments @\("run", "audit:topic-normalization", "--", "--patterns-input", \$topicPatternsPath\)/u,
+  );
+  assert.match(
+    contentHook,
+    /Invoke-Npm -Arguments @\("run", "generate:site-data", "--", "--patterns-input", \$topicPatternsPath\)/u,
+  );
+  assert.match(siteHook, /Invoke-Npm -Arguments @\("run", "generate:site-data"\)/u);
+  assert.doesNotMatch(contentHook, /dist\/scripts\/(audit-topic-normalization|generate-site-data)\.js/u);
+  assert.doesNotMatch(siteHook, /dist\/scripts\/generate-site-data\.js/u);
   assert.match(contentHook, /site:check:generated/u);
   assert.match(contentHook, /src\/derived\/topic-normalization-patterns\.tsv/u);
-  assert.match(contentHook, /--patterns-input/u);
-  assert.match(contentHook, /dist\/scripts\/audit-topic-normalization\.js", "--patterns-input"/u);
-  assert.ok(
-    contentHook.indexOf("dist/scripts/audit-topic-normalization.js")
-      < contentHook.indexOf("dist/scripts/generate-site-data.js"),
-  );
   assert.match(contentHook, /\[switch\]\$RetainCallerLease/u);
   assert.match(contentHook, /\$retainActiveLock = \$RetainCallerLease -and \$callerProvidedLock/u);
   assert.match(siteHook, /site:check:generated/u);
   assert.match(siteHook, /site:build:generated/u);
   const generateSiteDataScript = packageJson.scripts["generate:site-data"] ?? "";
-  assert.match(
+  assert.equal(
     generateSiteDataScript,
-    /--recover-stale -- node --import tsx src\/scripts\/generate-site-data\.ts/u,
+    "node --env-file=site-build.properties .codex/hooks/site-content-pipeline-lock.mjs run --purpose site-archive-generation --recover-stale -- bun run src/scripts/generate-site-data-bun.ts",
   );
-  assert.doesNotMatch(generateSiteDataScript, /--build|dist\/scripts\/generate-site-data\.js/u);
-  assert.match(
-    packageJson.scripts["generate:site-data:bun"] ?? "",
-    /run --purpose site-archive-generation --recover-stale -- bun run src\/scripts\/generate-site-data-bun\.ts/u,
-  );
+  assert.equal(packageJson.scripts["generate:site-data:bun"], undefined);
   const syncVideoTopicsScript = packageJson.scripts["sync:video-topics"] ?? "";
-  assert.match(
+  assert.equal(
     syncVideoTopicsScript,
-    /run --purpose video-topic-sync --recover-stale -- node --import tsx src\/scripts\/sync-video-topics\.ts/u,
+    "node .codex/hooks/site-content-pipeline-lock.mjs run --purpose video-topic-sync --recover-stale -- bun run src/scripts/sync-video-topics-bun.ts",
   );
-  assert.doesNotMatch(syncVideoTopicsScript, /--build|dist\/scripts\/sync-video-topics\.js/u);
-  assert.match(
-    packageJson.scripts["sync:video-topics:bun"] ?? "",
-    /run --purpose video-topic-sync --recover-stale -- bun run src\/scripts\/sync-video-topics-bun\.ts/u,
+  assert.equal(packageJson.scripts["sync:video-topics:bun"], undefined);
+  assert.equal(
+    packageJson.scripts["check:video-topics"],
+    "bun run src/scripts/check-video-topics-bun.ts",
   );
+  assert.match(checkVideoTopicsSource, /runCheckVideoTopics/u);
+  assert.match(checkVideoTopicsSource, /prepareParallelTopicNormalizationInputs/u);
+  assert.match(generateSiteDataSource, /assertTopicStoreSynchronized/u);
+  assert.doesNotMatch(generateSiteDataSource, /writeTopicStoreSynchronization/u);
+  assert.match(generateSiteDataSource, /patternsSha256: topicPlan\.catalog\.sha256/u);
+  assert.match(generateSiteDataSource, /patternsSourceSha256: topicPlan\.catalog\.sourceSha256/u);
   assert.ok(
     siteBuildWrapper.includes(`manifest?.schemaVersion !== ${siteArchiveSchemaVersion}`),
     "site build wrapper must validate the current split-archive manifest schema",
@@ -106,26 +116,67 @@ test("validation hooks share the split-archive contract and generate once before
   );
   assert.match(siteBuildWrapper, /"src\/transcripts\/manifest\.json"/u);
   assert.match(siteBuildWrapper, /"src\/derived\/topic-normalization-patterns\.tsv"/u);
+  assert.match(siteBuildWrapper, /"\.bun-version"/u);
   assert.match(siteBuildWrapper, /manifest\.source\.patternsSha256/u);
   assert.match(siteBuildWrapper, /manifest\.source\.patternsSourceSha256/u);
   assert.match(
     siteBuildWrapper,
-    /async function ensureBuiltSite\(force, buildConcurrency\) \{[\s\S]*?"archive integrity validation \(site\)"[\s\S]*?validateSiteArchive/u,
+    /async function ensureBuiltSite\(\s*force,\s*buildConcurrency,\s*pagefindScript,\s*pagefindInputPaths,\s*\)\s*\{\s*const archiveValidation = await measureStage\(\s*"archive integrity validation \(site\)",\s*validateSiteArchive,\s*\);/u,
   );
   assert.match(siteBuildWrapper, /became stale before Astro\/Pagefind/u);
   assert.match(archiveAdapter, /readFileSync\(expectedPatternsInput\)/u);
   assert.match(archiveAdapter, /manifest\.source\.patternsSourceSha256 !== currentPatternsSourceSha256/u);
   assert.doesNotMatch(packageJson.scripts["site:check:generated"] ?? "", /generate:site-data/u);
   assert.doesNotMatch(packageJson.scripts["site:build:generated"] ?? "", /generate:site-data/u);
+  assert.equal(
+    packageJson.scripts["site:dev"],
+    "node --env-file=site-build.properties .codex/hooks/site-dev.mjs",
+  );
+  assert.match(siteDevWrapper, /runNpmScript\("generate:site-data"\)/u);
+  assert.match(siteDevWrapper, /\[astroCli, "dev", \.\.\.process\.argv\.slice\(2\)\]/u);
+  assert.match(siteDevWrapper, /ASTRO_DEV_BACKGROUND: "0"/u);
+  assert.equal(
+    packageJson.scripts["check"],
+    "npm run check:quick && npm run check:functional && npm run check:source && npm run check:generated",
+  );
+  assert.equal(
+    packageJson.scripts["check:generated"],
+    "npm run site:check",
+  );
+  assert.equal(
+    packageJson.scripts["check:production"],
+    "npm run site:build:generated && npm run check:site-seo:built && npm run check:pagefind-contract && npm run check:search-ranking && npm run check:rendered-video-dates",
+  );
+  assert.equal(
+    packageJson.scripts["check:ci"],
+    "npm run check && npm run check:production && npm run check:repository-policy",
+  );
+  assert.equal(
+    packageJson.scripts["check:site-seo"],
+    "npm run build && npm run check:site-seo:built",
+  );
+  assert.equal(
+    packageJson.scripts["check:workspace-pagefind"],
+    "npm run site:build:workspace-pagefind && npm run check:pagefind-contract && npm run check:search-ranking && npm run check:rendered-video-dates",
+  );
+  assert.match(workspacePagefindRunner, /Workspace Pagefind prerequisite is unavailable/u);
+  assert.match(workspacePagefindRunner, /portable official package/u);
+  assert.match(workflow, /rmSync\('site\/src\/data\/generated\/archive'/u);
+  assert.match(workflow, /run: npm run check:ci/u);
+  assert.doesNotMatch(workflow, /run: npm run site:check\s*$/mu);
+  assert.doesNotMatch(workflow, /run: npm run site:build\s*$/mu);
+  assert.doesNotMatch(workflow, /run: npm run check:site-seo\s*$/mu);
 });
 
-test("parallel Bun maintenance commands reuse canonical writers and report run time", async () => {
+test("canonical Bun maintenance commands reuse runtime-neutral implementations and report run time", async () => {
   const [
     packageJsonText,
     auditNode,
     auditBun,
     generateNode,
     generateBun,
+    reportNode,
+    reportBun,
     syncNode,
     syncBun,
     parallelPreparation,
@@ -135,6 +186,8 @@ test("parallel Bun maintenance commands reuse canonical writers and report run t
     readFile(join(repositoryRoot, "src", "scripts", "audit-topic-normalization-bun.ts"), "utf8"),
     readFile(join(repositoryRoot, "src", "scripts", "generate-site-data.ts"), "utf8"),
     readFile(join(repositoryRoot, "src", "scripts", "generate-site-data-bun.ts"), "utf8"),
+    readFile(join(repositoryRoot, "src", "scripts", "report-video-topic-usage.ts"), "utf8"),
+    readFile(join(repositoryRoot, "src", "scripts", "report-video-topic-usage-bun.ts"), "utf8"),
     readFile(join(repositoryRoot, "src", "scripts", "sync-video-topics.ts"), "utf8"),
     readFile(join(repositoryRoot, "src", "scripts", "sync-video-topics-bun.ts"), "utf8"),
     readFile(join(repositoryRoot, "src", "scripts", "bun-topic-normalization.ts"), "utf8"),
@@ -143,12 +196,22 @@ test("parallel Bun maintenance commands reuse canonical writers and report run t
     scripts: Record<string, string>;
   };
 
-  assert.equal(
-    packageJson.scripts["audit:topic-normalization:bun"],
-    "bun run src/scripts/audit-topic-normalization-bun.ts",
-  );
-  for (const source of [auditNode, auditBun, generateNode, generateBun, syncNode, syncBun]) {
+  assert.equal(packageJson.scripts["audit:topic-normalization"], "bun run src/scripts/audit-topic-normalization-bun.ts");
+  assert.equal(packageJson.scripts["report:video-topic-usage"], "bun run src/scripts/report-video-topic-usage-bun.ts");
+  for (const alias of [
+    "audit:topic-normalization:bun",
+    "report:video-topic-usage:bun",
+    "sync:video-topics:bun",
+    "generate:site-data:bun",
+  ]) {
+    assert.equal(packageJson.scripts[alias], undefined, `${alias} must be retired after Bun promotion`);
+  }
+  for (const source of [auditBun, generateBun, reportBun, syncBun]) {
     assert.match(source, /printRunTime\(runStartedAt\)/u);
+    assert.doesNotMatch(source, /:bun/u);
+  }
+  for (const source of [auditNode, generateNode, reportNode, syncNode]) {
+    assert.doesNotMatch(source, /isDirectExecution|process\.argv\.slice\(2\)/u);
   }
   for (const source of [auditBun, generateBun, syncBun]) {
     assert.match(source, /prepareParallelTopicNormalizationInputs/u);
@@ -159,6 +222,7 @@ test("parallel Bun maintenance commands reuse canonical writers and report run t
   assert.match(generateBun, /runGenerateSiteData/u);
   assert.match(syncBun, /runSyncVideoTopics/u);
   assert.match(auditBun, /executeTopicNormalizationAudit/u);
+  assert.match(reportBun, /npm run report:video-topic-usage/u);
 });
 
 test("topic curation reports consume exact normalization audit findings outside the site build", async () => {
@@ -177,18 +241,17 @@ test("topic curation reports consume exact normalization audit findings outside 
     scripts: Record<string, string>;
   };
 
-  assert.match(reportScript, /auditTopicNormalization/u);
   assert.match(
     reportScript,
     /renderTopicNormalizationReviewReport\(normalizationAudit\.reviewFindings\)/u,
   );
   assert.match(reportScript, /reports\/topic-normalization-review\.tsv/u);
   assert.match(reportScript, /normalization_reviews=/u);
-  assert.match(reportScript, /printRunTime\(runStartedAt\)/u);
   assert.equal(
-    packageJson.scripts["report:video-topic-usage:bun"],
+    packageJson.scripts["report:video-topic-usage"],
     "bun run src/scripts/report-video-topic-usage-bun.ts",
   );
+  assert.equal(packageJson.scripts["report:video-topic-usage:bun"], undefined);
   assert.match(bunReportScript, /new Worker\(new URL\(import\.meta\.url\)/u);
   assert.match(bunReportScript, /Math\.min\(8, availableParallelism\(\)\)/u);
   assert.match(bunReportScript, /preloadedShardIndex: shardIndex/u);
@@ -201,6 +264,25 @@ test("Astro dev does not watch generated production output", async () => {
   const astroConfig = await readFile(join(repositoryRoot, "astro.config.mjs"), "utf8");
 
   assert.match(astroConfig, /ignored:\s*\["\*\*\/site\/dist\/\*\*"\]/u);
+});
+
+test("GitHub Pages installs Bun, removes the archive, and runs the one-pass CI graph", async () => {
+  const [workflow, bunVersion] = await Promise.all([
+    readFile(join(repositoryRoot, ".github", "workflows", "deploy-site.yml"), "utf8"),
+    readFile(join(repositoryRoot, ".bun-version"), "utf8"),
+  ]);
+
+  assert.equal(bunVersion.trim(), "1.3.14");
+  assert.match(workflow, /uses: oven-sh\/setup-bun@v2/u);
+  assert.match(workflow, /bun-version: 1\.3\.14/u);
+  assert.ok(
+    workflow.indexOf("oven-sh/setup-bun@v2") < workflow.indexOf("npm run check:ci"),
+    "GitHub Pages must install Bun before the canonical Bun-backed CI graph.",
+  );
+  assert.ok(
+    workflow.indexOf("rmSync('site/src/data/generated/archive'") < workflow.indexOf("npm run check:ci"),
+    "GitHub Pages must prove the absent-archive bootstrap before CI.",
+  );
 });
 
 test("two overlapping writer processes serialize complete archive, report, and log output", async () => {

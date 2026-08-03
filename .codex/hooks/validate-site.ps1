@@ -56,7 +56,7 @@ try {
 
   $env:CONTENT_PIPELINE_LOCK_TOKEN = $activeLockToken
   Invoke-Npm -Arguments @("run", "build")
-  Invoke-Node -Arguments @("dist/scripts/generate-site-data.js")
+  Invoke-Npm -Arguments @("run", "generate:site-data")
   Invoke-Npm -Arguments @("run", "site:check:generated")
   Invoke-Npm -Arguments @("run", "site:build:generated")
 
