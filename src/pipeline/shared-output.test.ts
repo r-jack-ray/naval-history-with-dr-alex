@@ -137,15 +137,17 @@ test("Phase 2 commands keep topic writes explicit and generate the split archive
   assert.match(siteDevWrapper, /ASTRO_DEV_BACKGROUND: "0"/u);
   assert.equal(
     packageJson.scripts["check"],
-    "npm run check:quick && npm run check:functional && npm run check:source && npm run check:generated",
+    "npm run check:types && npm test && npm run check:source && npm run check:generated",
   );
+  assert.equal(packageJson.scripts["check:quick"], undefined);
+  assert.equal(packageJson.scripts["check:functional"], undefined);
   assert.equal(
     packageJson.scripts["check:generated"],
     "npm run site:check",
   );
   assert.equal(
     packageJson.scripts["check:production"],
-    "npm run site:build:generated && npm run check:site-seo:built && npm run check:pagefind-contract && npm run check:search-ranking && npm run check:rendered-video-dates",
+    "npm run site:build:generated && npm run check:site-seo:built && npm run check:search-ranking && npm run check:rendered-video-dates",
   );
   assert.equal(
     packageJson.scripts["check:ci"],

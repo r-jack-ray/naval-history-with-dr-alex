@@ -63,7 +63,7 @@ found in a later channel crawl is not reintroduced to `episodes.json`.
 Refresh from saved `/videos` and `/streams` HTML:
 
 ```powershell
-npm run alternate:extract:videos-html -- --links-output reports/dr-alex-videos-html-links.json
+npm run alternate:extract:saved-channel-html -- --tab videos --links-output reports/dr-alex-videos-html-links.json
 npm run alternate:extract:saved-channel-html -- --tab streams --links-output reports/dr-alex-streams-html-links.json
 npm run alternate:merge:video-links -- --input reports/dr-alex-videos-html-links.json --input reports/dr-alex-streams-html-links.json --master-output src/channel/episodes.json --inventory-completeness partial
 ```

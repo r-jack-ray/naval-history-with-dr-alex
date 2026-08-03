@@ -2,9 +2,9 @@
 
 Timestamp: 2026-08-02T14:31:45-05:00
 
-Reviewed: 2026-08-03T00:07:05-05:00
+Reviewed: 2026-08-03T00:42:14-05:00
 
-Status: Phases 0-6 are complete. Phases 1 and 2 were committed together at `5915a0a8`; Phase 3 was committed separately at `444987db` and is recorded in `task-notes/2026-08-02_T21-46-22-0500_repository-trim-phase-3-generated-archive-untracking.md`. The 67 deterministic archive files are absent from the current index but remain present as ignored working files. Phase 4 was committed separately at `faf770a5` and is recorded in `task-notes/2026-08-02_T22-16-36-0500_repository-trim-phase-4-acquisition-curation-handoff.md`. Phase 5 is recorded in `task-notes/2026-08-02_T23-10-51-0500_repository-trim-phase-5-youtube-data-api-client.md` and remains uncommitted for owner review. Phase 6 is recorded in `task-notes/2026-08-03_T00-01-32-0500_repository-trim-phase-6-topic-curation-workflow.md` and remains uncommitted for owner review. The six pre-existing topic-policy failures and one pre-existing ranking fixture remain recorded baseline exceptions outside Phase 6; they were not fixed or rerun as a broader cleanup. Phase 7 remains untouched. Implement phases strictly in numeric order, update only the authorized phase's checkpoint, and do not continue automatically.
+Status: Phases 0-7 are complete. Phases 1 and 2 were committed together at `5915a0a8`; Phase 3 was committed separately at `444987db` and is recorded in `task-notes/2026-08-02_T21-46-22-0500_repository-trim-phase-3-generated-archive-untracking.md`. The 67 deterministic archive files are absent from the current index but remain present as ignored working files. Phase 4 was committed separately at `faf770a5` and is recorded in `task-notes/2026-08-02_T22-16-36-0500_repository-trim-phase-4-acquisition-curation-handoff.md`. Phase 5 was committed separately at `c439ab88` and is recorded in `task-notes/2026-08-02_T23-10-51-0500_repository-trim-phase-5-youtube-data-api-client.md`. Phase 6 was committed separately at `ac5a7d03` and is recorded in `task-notes/2026-08-03_T00-01-32-0500_repository-trim-phase-6-topic-curation-workflow.md`. Phase 7 is recorded in `task-notes/2026-08-03_T00-42-14-0500_repository-trim-phase-7-command-and-residue-consolidation.md` and remains uncommitted for owner review. The six pre-existing topic-policy failures and one pre-existing ranking fixture remain recorded baseline exceptions outside Phase 7; they were not fixed or rerun as a broader cleanup. The plan is complete; do not continue into deferred repository-weight work without separate authorization.
 
 ## Purpose
 
@@ -474,7 +474,7 @@ Phase 6 must freeze that direction with fixtures for bare, `-class`, plural, sin
 
 ## Phase 7: Consolidate Validation, Commands, and Migration Residue
 
-Status: not started.
+Status: completed on 2026-08-03. Checkpoint: `task-notes/2026-08-03_T00-42-14-0500_repository-trim-phase-7-command-and-residue-consolidation.md`. Four exact aliases or zero-caller helper surfaces were retired, all 53 remaining package commands were classified, and focused command/help validation passed without changing a distinct workflow boundary.
 
 ### Tasks
 

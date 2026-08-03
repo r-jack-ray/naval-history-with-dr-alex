@@ -106,11 +106,9 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 | `build` | Compile the TypeScript tools into `dist/`. |
 | `check:types` | Type-check without emitting files. |
 | `test` | Clean, compile, and run all compiled `*.test.js` files with Node's test runner. |
-| `check:quick` | Run the fast TypeScript type/syntax layer. |
-| `check:functional` | Run the clean compiled Node test suite. |
 | `check:source` | Run the read-only topic audit/check, content audit, and complete two-report topic-curation canary. |
 | `check:generated` | Generate the archive once and run Astro diagnostics without regeneration. |
-| `check` | Run all network-free quick, functional, source, and generated-data layers. |
+| `check` | Run the canonical network-free type, test, source, and generated-data layers. |
 | `check:production` | Build Astro and official Pagefind from the existing archive, then run SEO, search-ranking, and rendered-date validation. |
 | `check:repository-policy` | Require the generated archive to be untracked and ignored, and reject whitespace errors or tracked files changed by the validation graph. |
 | `check:ci` | Run `check`, the official production layer, and repository policy as the one-pass Pages graph. |
@@ -119,7 +117,6 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 
 | Script | Purpose |
 | --- | --- |
-| `list:files-that-need-processing` | Write transcript paths without matching shards to `task-notes/files-that-need-processing.txt`. |
 | `report:video-segment-audit-risk` | Rank curated shards for follow-up and write `reports/video-segment-audit-risk.tsv`. |
 | `audit:site-content` | Validate current-schema shards and transcript evidence, then write the backlog report. This command uses the shared writer lease. |
 | `diagnose:site-content-duplicates` | Check curated shards for duplicate segment IDs and slugs. |
@@ -138,9 +135,8 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 | --- | --- |
 | `fetch:video-links` | Fetch the channel uploads inventory through the YouTube Data API, using `.local/youtube-api-key.txt` by default. |
 | `fetch:video-metadata` | Populate or resume the official per-video metadata store. |
-| `alternate:extract:saved-channel-html` | Parse a saved `/videos` or `/streams` channel page offline. |
+| `alternate:extract:saved-channel-html` | Parse a saved `/videos` or `/streams` channel page offline; select the tab with `--tab videos` or `--tab streams`. |
 | `alternate:extract:live-streams-html` | Parse the specialized saved live-stream HTML format offline. |
-| `alternate:extract:videos-html` | Alias the generic saved-channel extractor with `--tab videos`. |
 | `alternate:merge:video-links` | Merge saved channel-tab link files into an episode inventory. |
 | `alternate:fetch:transcript` | Fetch and store one transcript. |
 | `alternate:fetch:transcripts` | Batch-fetch missing transcripts with resumable status; use it for bounded/manual runs. |
@@ -268,7 +264,7 @@ The output is `src/channel/video-metadata.json`. Existing records are skipped un
 If a channel tab page is saved from a browser, parse its rendered lockup markup offline without making YouTube requests:
 
 ```powershell
-npm run alternate:extract:videos-html -- --output reports/dr-alex-videos-html-extraction.json --links-output reports/dr-alex-videos-html-links.json --base-output reports/dr-alex-video-list-from-html.json --metadata-output reports/dr-alex-video-metadata-from-html.json --master-output src/channel/episodes.json --inventory-completeness partial
+npm run alternate:extract:saved-channel-html -- --tab videos --output reports/dr-alex-videos-html-extraction.json --links-output reports/dr-alex-videos-html-links.json --base-output reports/dr-alex-video-list-from-html.json --metadata-output reports/dr-alex-video-metadata-from-html.json --master-output src/channel/episodes.json --inventory-completeness partial
 ```
 
 Use the generic command for other saved channel tabs:
@@ -378,7 +374,7 @@ npm run site:check
 npm run site:build
 ```
 
-`npm run audit:site-content` validates curated transcript evidence and writes `reports/site-content-backlog.md`. Reports are ignored by Git. Shared generation, reports, schedules, and logs other than the shard worker's one required `src/derived/site-content-processing.log` append are coordinator-owned outputs.
+`npm run audit:site-content` validates curated transcript evidence and writes `reports/site-content-backlog.md`, including manifest transcripts that still have no curated segments. Reports are ignored by Git. Shared generation, reports, schedules, and logs other than the shard worker's one required `src/derived/site-content-processing.log` append are coordinator-owned outputs.
 
 The existing processing log has this exact semicolon-separated header:
 

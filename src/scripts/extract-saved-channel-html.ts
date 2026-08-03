@@ -210,7 +210,7 @@ Options:
   --help                   Show this help.
 
 Examples:
-  npm run alternate:extract:saved-channel-html -- --output reports/dr-alex-videos-html-extraction.json
+  npm run alternate:extract:saved-channel-html -- --tab videos --output reports/dr-alex-videos-html-extraction.json
   npm run alternate:extract:saved-channel-html -- --tab streams --input "${defaultSavedStreamsHtmlInput}"
 `);
 }
