@@ -474,7 +474,7 @@ Phase 6 must freeze that direction with fixtures for bare, `-class`, plural, sin
 
 ## Phase 7: Consolidate Validation, Commands, and Migration Residue
 
-Status: completed on 2026-08-03. Checkpoint: `task-notes/2026-08-03_T00-42-14-0500_repository-trim-phase-7-command-and-residue-consolidation.md`. Four exact aliases or zero-caller helper surfaces were retired, all 53 remaining package commands were classified, and focused command/help validation passed without changing a distinct workflow boundary.
+Status: completed on 2026-08-03. Checkpoint: `task-notes/2026-08-03_T00-42-14-0500_repository-trim-phase-7-command-and-residue-consolidation.md`. Five exact aliases or zero-caller helper surfaces were retired, all 52 remaining package commands were classified, the safe weekly batch no longer retries saved failures implicitly, and focused command/help validation passed without changing a distinct workflow boundary.
 
 ### Tasks
 

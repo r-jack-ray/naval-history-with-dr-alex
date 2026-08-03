@@ -252,8 +252,8 @@ test("keeps the bounded production topic titles and aliases curated without desc
   };
   const topicsBySlug = new Map(store.topics.map((topic) => [topic.slug, topic]));
 
-  assert.equal(productionTopicMapping.length, 18);
-  assert.equal(new Set(productionTopicMapping.map(({ slug }) => slug)).size, 18);
+  assert.equal(productionTopicMapping.length, 17);
+  assert.equal(new Set(productionTopicMapping.map(({ slug }) => slug)).size, 17);
   for (const expected of productionTopicMapping) {
     const topic = topicsBySlug.get(expected.slug);
     assert.ok(topic, `Missing production topic ${expected.slug}`);
@@ -387,7 +387,9 @@ test("keeps the reviewed singular/plural and Leander split canonical in the prod
 
   for (const retired of [
     "leander-class",
+    "leander-class-1882",
     "leander-class-cruiser",
+    "leander-class-cruisers",
     "leander-class-frigate",
     "zumwalt-class",
     "zumwalt-class-destroyer",
@@ -397,8 +399,8 @@ test("keeps the reviewed singular/plural and Leander split canonical in the prod
     assert.equal(topicsBySlug.has(retired), false, retired);
   }
 
-  assert.equal(topicsBySlug.has("leander-class-1882"), true);
-  assert.equal(topicsBySlug.has("leander-class-cruisers"), true);
+  assert.equal(topicsBySlug.has("leander-class-protected-cruisers-1882"), true);
+  assert.equal(topicsBySlug.has("leander-class-light-cruisers-1931"), true);
   assert.equal(topicsBySlug.has("leander-class-frigates"), true);
   assert.equal(
     topicsBySlug.get("fiction-sojourn-leander-class")?.title,
@@ -430,7 +432,7 @@ test("keeps the dc950 topic audit canonical while retaining function and type to
   const activeAuditRules = auditRules.filter(({ status }) => status === "active");
 
   assert.equal(auditRules.length, 109);
-  assert.equal(activeAuditRules.length, 103);
+  assert.equal(activeAuditRules.length, 102);
   for (const rule of activeAuditRules) {
     assert.equal(topicsBySlug.has(rule.match), false, `Retired topic remains: ${rule.match}`);
     assert.equal(
@@ -601,12 +603,7 @@ const productionTopicMapping = [
   {
     slug: "40-mm-guns",
     title: "40 mm Guns",
-    aliases: ["40 Millimeter Guns", "Forty Millimeter Guns"],
-  },
-  {
-    slug: "120-mm-guns",
-    title: "120 mm Guns",
-    aliases: ["120 Millimeter Guns"],
+    aliases: ["40 Millimeter Guns", "Forty Millimeter Guns", "40 mm Cannon"],
   },
   {
     slug: "4-5-inch-guns",
@@ -617,8 +614,6 @@ const productionTopicMapping = [
       "Four Point Five Inch Guns",
       "QF 4.5-inch Gun",
       "QF 4.5-inch Guns",
-      "QF 4.5 inch gun",
-      "QF 4 5 inch gun",
     ],
   },
   {
@@ -629,8 +624,8 @@ const productionTopicMapping = [
       "QF 4.7-inch Gun",
       "4.7-inch Gun",
       "QF 4.7-inch Guns",
-      "QF 4.7 inch gun",
-      "QF 4 7 inch gun",
+      "120 mm Guns",
+      "120 Millimeter Guns",
     ],
   },
   {
@@ -643,8 +638,6 @@ const productionTopicMapping = [
       "QF 5.25-inch Gun",
       "5.25-inch Gun",
       "QF 5.25-inch Guns",
-      "QF 5.25 inch gun",
-      "QF 5 25 inch gun",
     ],
   },
   {
@@ -717,6 +710,7 @@ const productionTopicMapping = [
       "QF 2-pounder",
       "QF 2-pounder Pom-Pom",
       "Two Pounder Pom Pom",
+      "2 Pounder Pom Pom",
     ],
   },
 ] as const;

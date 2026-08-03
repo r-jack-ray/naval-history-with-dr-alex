@@ -1,28 +1,31 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-07-31T22:07:22.804Z",
+  "updatedAt": "2026-08-03T06:34:02.562Z",
   "inputPath": "src/channel/episodes.json",
   "outputRoot": "src/transcripts",
   "requestDelayMs": 60000,
-  "retryFailed": false,
+  "retryFailed": true,
   "force": false,
+  "pendingHandoffTxtPaths": [
+    "src/transcripts/txt/2026-08-02_T18-34-01_bruships-253-science-fiction-and-naval-history-questions-answered-live_U5LfsnBSt8w.txt"
+  ],
   "stats": {
     "inputVideoCount": 2164,
-    "skippedStoredCount": 2141,
-    "skippedDeferredCount": 7,
+    "skippedStoredCount": 899,
+    "skippedDeferredCount": 5,
     "skippedShortDurationCount": 0,
     "deferredCounts": {
-      "upcoming": 7,
+      "upcoming": 5,
       "live_in_progress": 0,
       "processing": 0,
       "metadata_missing": 0,
       "invalid_metadata": 0
     },
-    "skippedPreviousFailureCount": 15,
-    "attemptedCount": 1,
+    "skippedPreviousFailureCount": 0,
+    "attemptedCount": 3,
     "fetchedCount": 1,
-    "failedCount": 0,
-    "pendingCount": 0,
+    "failedCount": 2,
+    "pendingCount": 1257,
     "totalFailureCount": 15
   },
   "failures": [
@@ -64,15 +67,15 @@
     },
     {
       "videoId": "8vkrEqP1xUM",
-      "attemptedAt": "2026-07-09T06:04:14.579Z",
+      "attemptedAt": "2026-08-03T06:31:02.751Z",
       "classification": "no_caption_tracks",
       "error": "No caption tracks found for video: 8vkrEqP1xUM.",
       "tabs": [
-        "streams"
+        "videos"
       ],
       "title": "Bruships 230: Naval History Questions Answered Live...2nd Start",
       "videoDateAt": "2026-02-01T21:10:48Z",
-      "channelOrder": 1508
+      "channelOrder": 125
     },
     {
       "videoId": "cP_PpcABQFQ",
@@ -124,15 +127,15 @@
     },
     {
       "videoId": "nvCV5fqNkCE",
-      "attemptedAt": "2026-07-09T06:05:14.857Z",
+      "attemptedAt": "2026-08-03T06:34:02.562Z",
       "classification": "no_caption_tracks",
       "error": "No caption tracks found for video: nvCV5fqNkCE.",
       "tabs": [
-        "streams"
+        "videos"
       ],
       "title": "Patreon 84: The underpaid and underappreciated Merchant Marine of WWII",
       "videoDateAt": "2023-09-21T18:05:18Z",
-      "channelOrder": 1749
+      "channelOrder": 907
     },
     {
       "videoId": "oD6sV0zuWcU",

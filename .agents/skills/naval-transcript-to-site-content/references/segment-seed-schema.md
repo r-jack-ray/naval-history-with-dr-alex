@@ -9,7 +9,7 @@ runtime definitions live in `src/content/schemas/`:
 
 ## Files
 
-- `topics.json`: synchronized shared browsing/search topic records, generated from topic usage in the video shards while preserving existing enriched metadata. New registry records start with a blank description. Topic descriptions are optional manual metadata: do not generate, infer, refresh, normalize, or clear them, and preserve any nonblank description a person adds later.
+- `topics.json`: synchronized shared browsing/search topic records, generated from topic usage in the video shards while preserving existing enriched metadata. New registry records start with a blank description. Topic descriptions are optional manual metadata: do not generate, infer, refresh, normalize, or clear them, and preserve any nonblank description a person adds later. Curators and auditors never hand-edit this file; their required same-run synchronizer is its only routine writer.
 - `<manifest.fileStem>.json`: one file per site-visible video, containing that video's topic slugs and segments. The stored `fileStem` in `src/transcripts/manifest.json` is canonical; the record's `paths.txt` basename must be exactly `<fileStem>.txt`, and the name must not be recomputed from current metadata.
 - `src/derived/topic-normalization-patterns.tsv`: manually curated steady-state policy for topic creation, display names, aliases, and exceptions, read-only during shard curation.
 
@@ -26,9 +26,9 @@ Do not recreate a monolithic curated-content file. The manifest and shards under
 ```
 
 - `videoId` must exist in `src/channel/episodes.json`.
-- `topics` contains stable lowercase, hyphenated slugs. The repository owner runs `sync:video-topics` explicitly to add missing registry records; `generate:site-data` checks completeness without writing canonical source.
+- `topics` contains stable lowercase, hyphenated slugs. After a selected-shard write, the curator or auditor runs `npm run sync:video-topics` under the same finalization lease before appending its completion row. `generate:site-data` checks completeness without writing canonical source.
 - Resolve new slugs through active `creation` rules in `src/derived/topic-normalization-patterns.tsv`. Preserve established slugs unless the active creation policy canonicalizes them.
-- Leave `review`, disabled, ambiguous, or inapplicable candidates unchanged and identify them in the handoff. Shard-only work does not edit the normalization catalog or `topics.json` and does not perform corpus-wide topic rewrites.
+- Treat `review`, disabled, ambiguous, or inapplicable candidates affecting the selected shard as finalization blockers and identify them in the handoff. Selected-shard work does not edit the normalization catalog, hand-edit `topics.json`, or perform corpus-wide topic rewrites; the deterministic synchronizer is the only registry writer.
 - Use `fiction-...` for referents that exist only inside a fictional work. Counterfactual real history, real proposed or unbuilt designs, possible future systems, and genre/format topics do not use that prefix. When fiction illustrates a real-world point, include both the fictional referent and the ordinary transcript-backed topics for the real lesson.
 - `topics` is a curated summary subset for the video page; it does not need to repeat every more-granular segment topic.
 - `segments` contains only records for this `videoId`.
@@ -45,7 +45,7 @@ Do not recreate a monolithic curated-content file. The manifest and shards under
 ```
 
 - Keep slugs lowercase and hyphenated.
-- Routine transcript curation does not create or edit topic records. The synchronizer derives missing records from shard usage and preserves existing enriched titles, summaries, and aliases.
+- Routine transcript curation does not manually create or edit topic records. Before the run records success, the lease-protected synchronizer derives missing records from shard usage and preserves existing enriched titles, summaries, and aliases.
 - Outside active normalization rules, edit aliases or consolidate taxonomy only when validation identifies a problem or the user explicitly requests taxonomy work.
 
 ## Segment Seed

@@ -108,7 +108,7 @@ test("production policy canonicalizes numeric millimeter gun topics", async () =
   });
   assert.deepEqual(resolveTopicCreation(catalog, "120-millimeter-guns"), {
     input: "120-millimeter-guns",
-    slug: "120-mm-guns",
+    slug: "4-7-inch-guns",
     changed: true,
     matchedRuleIds: ["normalize-120-millimeter-guns"],
   });
@@ -227,7 +227,7 @@ test("production policy applies the repository-owner topic normalization batch",
     ["planetary-defense", "planetary-defence", "normalize-planetary-defense"],
     [
       "model-1924-203-mm-gun",
-      "203-mm-guns",
+      "8-inch-guns",
       "normalize-model-1924-203-mm-gun",
     ],
     [
@@ -246,12 +246,16 @@ test("production policy applies the repository-owner topic normalization batch",
     });
   }
 
-  for (const namedWeapon of [
-    "type-91-pom-pom",
+  assert.deepEqual(resolveTopicCreation(catalog, "type-91-pom-pom"), {
+    input: "type-91-pom-pom",
+    slug: "type-91-40-mm-anti-aircraft-gun",
+    changed: true,
+    matchedRuleIds: ["normalize-topic-curation-20260802-type-91-pom-pom"],
+  });
+  assert.equal(
+    resolveTopicCreation(catalog, "vickers-pom-pom").slug,
     "vickers-pom-pom",
-  ]) {
-    assert.equal(resolveTopicCreation(catalog, namedWeapon).slug, namedWeapon);
-  }
+  );
 
   const displayExpected = new Map([
     ["3d-printing", "3D Printing"],
@@ -310,10 +314,11 @@ test("production policy encodes the dc950 topic audit without collapsing semanti
   const activeAuditRules = auditRules.filter(({ status }) => status === "active");
 
   assert.equal(auditRules.length, 109);
-  assert.equal(activeAuditRules.length, 103);
+  assert.equal(activeAuditRules.length, 102);
   assert.deepEqual(
     auditRules.filter(({ status }) => status !== "active").map(({ ruleId }) => ruleId),
     [
+      "normalize-dc950-midway-class-aircraft-carriers",
       "normalize-dc950-admiral-lord-cork",
       "normalize-dc950-lord-cork",
       "normalize-dc950-rear-admiral-montagu",
@@ -443,8 +448,13 @@ test("production policy consolidates generic inch-gun topics without collapsing 
       matchedRuleIds: [`normalize-global-curation-${modelSlug}`],
     });
   }
+  assert.deepEqual(resolveTopicCreation(catalog, "bl-15-inch-mark-i"), {
+    input: "bl-15-inch-mark-i",
+    slug: "bl-15-inch-mark-i-naval-gun",
+    changed: true,
+    matchedRuleIds: ["normalize-20260803-curation-bl-15-inch-mark-i"],
+  });
   for (const modelSlug of [
-    "bl-15-inch-mark-i",
     "six-inch-mark-xxiii",
     "15-inch-gun-mount",
   ]) {
@@ -495,10 +505,10 @@ test("production policy normalizes pounder, metric, and rapid-firing gun variant
     ["pounder-guns", "gun-nomenclature", "normalize-pounder-guns"],
     [
       "forty-two-centimeter-guns",
-      "420-mm-guns",
+      "16-5-inch-guns",
       "normalize-forty-two-centimeter-guns",
     ],
-    ["35-centimeter-guns", "350-mm-guns", "normalize-35-centimeter-guns"],
+    ["35-centimeter-guns", "13-8-inch-guns", "normalize-35-centimeter-guns"],
     ["rapid-fire-guns", "quick-firing-guns", "normalize-rapid-fire-guns"],
     ["rapid-firing-guns", "quick-firing-guns", "normalize-rapid-firing-guns"],
   ] as const;
@@ -520,10 +530,18 @@ test("production policy applies the reviewed full-corpus singular and plural con
   const fullScanRules = catalog.rules.filter(({ ruleId }) =>
     ruleId.startsWith("normalize-full-scan-"),
   );
+  const activeFullScanRules = fullScanRules.filter(({ status }) => status === "active");
 
-  assert.equal(fullScanRules.length, 155);
-  for (const rule of fullScanRules) {
-    assert.equal(rule.status, "active", rule.ruleId);
+  assert.equal(fullScanRules.length, 144);
+  assert.equal(activeFullScanRules.length, 142);
+  assert.deepEqual(
+    fullScanRules.filter(({ status }) => status !== "active").map(({ ruleId }) => ruleId),
+    [
+      "normalize-full-scan-tiger-class-battlecruiser",
+      "normalize-full-scan-tiger-class-cruiser",
+    ],
+  );
+  for (const rule of activeFullScanRules) {
     assert.deepEqual(rule.scopes, ["creation"], rule.ruleId);
     assert.equal(rule.matchKind, "exact", rule.ruleId);
     assert.deepEqual(resolveTopicCreation(catalog, rule.match), {
@@ -535,7 +553,7 @@ test("production policy applies the reviewed full-corpus singular and plural con
   }
 
   const expected = [
-    ["leander-class-cruiser", "leander-class-cruisers"],
+    ["leander-class-cruiser", "leander-class-light-cruisers-1931"],
     ["leander-class-frigate", "leander-class-frigates"],
     ["zumwalt-class", "zumwalt-class-destroyers"],
     ["zumwalt-class-destroyer", "zumwalt-class-destroyers"],
@@ -609,11 +627,11 @@ test("production policy uses reviewed official and common display forms", async 
     ["aden-cannon", "ADEN Cannon"],
     ["ub-43", "UB-43"],
     ["sm-u-21", "SM U-21"],
-    ["type-ub-iii-submarine", "Type UB III Submarine"],
-    ["type-uc-ii-submarine", "Type UC II Submarine"],
-    ["uavs", "UAVs"],
+    ["type-ub-iii-u-boat", "Type UB III U-Boat"],
+    ["type-uc-ii-u-boat", "Type UC II U-Boat"],
+    ["uavs", "Uncrewed Aircraft"],
     ["ucav", "UCAV"],
-    ["uuvs", "UUVs"],
+    ["uuvs", "Uncrewed Underwater Vehicles"],
     ["n3-class-battleships", "N3 Class Battleships"],
     ["queen-elizabeth-class-aircraft-carriers", "Queen Elizabeth Class Aircraft Carriers"],
     ["queen-elizabeth-class-battleships", "Queen Elizabeth Class Battleships"],

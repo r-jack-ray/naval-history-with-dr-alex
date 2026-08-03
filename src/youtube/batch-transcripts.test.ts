@@ -41,15 +41,20 @@ test("reads unique transcript batch episodes from the channel master list", asyn
   }
 });
 
-test("safe transcript command keeps cautious pacing, retries missing failures, and replaces retry aliases", async () => {
-  const packageJson = JSON.parse(
-    await readFile(new URL("../../package.json", import.meta.url), "utf8"),
-  ) as { scripts: Record<string, string> };
+test("safe transcript command keeps cautious pacing, preserves failed-record skips, and leaves retry explicit", async () => {
+  const [packageJsonText, cliHelpSource] = await Promise.all([
+    readFile(new URL("../../package.json", import.meta.url), "utf8"),
+    readFile(new URL("../../src/scripts/fetch-transcript-batch.ts", import.meta.url), "utf8"),
+  ]);
+  const packageJson = JSON.parse(packageJsonText) as { scripts: Record<string, string> };
 
   assert.equal(
     packageJson.scripts["alternate:fetch:transcripts:safe"],
-    "tsx src/scripts/fetch-transcript-batch.ts --request-delay-ms 60000 --retry-failed",
+    "tsx src/scripts/fetch-transcript-batch.ts --request-delay-ms 60000",
   );
+  assert.doesNotMatch(packageJson.scripts["alternate:fetch:transcripts:safe"] ?? "", /--retry-failed/u);
+  assert.match(cliHelpSource, /--retry-failed\s+Explicitly retry[^\n]+never implied by the safe command/u);
+  assert.doesNotMatch(cliHelpSource, /included by the safe command/u);
   assert.equal(packageJson.scripts["alternate:fetch:transcripts:retry"], undefined);
   assert.equal(packageJson.scripts["alternate:fetch:transcripts:retry:safe"], undefined);
 });

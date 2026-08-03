@@ -172,7 +172,7 @@ Options:
   --language <name>       Optional transcript language code or label.
   --limit <count>         Maximum number of new transcript fetch attempts.
   --request-delay-ms <ms> Delay between requests; base default 5000, safe command sets 60000.
-  --retry-failed          Retry videos listed in the status failure file (included by the safe command).
+  --retry-failed          Explicitly retry videos in the status failure file; never implied by the safe command.
   --force                 Refetch even when the transcript is already stored.
   --dry-run               Write status for pending work without calling YouTube.
   --quiet                 Suppress progress logs.

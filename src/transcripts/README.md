@@ -29,7 +29,7 @@ fallback, or the raw YouTube publication time. Upcoming, live, processing, and
 zero-duration videos are deferred and do not receive stored transcript files.
 Videos at or below 61 seconds are also excluded from TXT pulls; the extra second
 prevents nominal 60-second clips reported with YouTube container padding from
-slipping through. The cutoff applies to single, batch, retry, and forced pulls.
+slipping through. The cutoff applies to batch, explicit retry, and forced pulls.
 The ID must remain in the filename. Once a record is stored, its manifest
 `fileStem` remains authoritative during refetches even if title or timestamp
 metadata later changes.
@@ -39,23 +39,16 @@ Manifest schema 3 stores the normalized value as `videoDateAt` and its source as
 
 ## Workflow
 
-Fetch and store a transcript:
-
-```powershell
-npm run alternate:fetch:transcript -- --video-id uURe69Wnh-Q
-```
-
-The default store root is `src/transcripts`. The fetcher writes TXT and updates
-`manifest.json`. A manifest record plus its TXT file is sufficient for the
-command to exit without calling YouTube; pass `--force` only when you
-intentionally want to refetch. Transcript requests default to a 5-second delay;
-pass `--request-delay-ms 60000` for cautious runs.
-
-Use the base batch command for a bounded manual probe:
+Use the base batch command for a bounded manual pull:
 
 ```powershell
 npm run alternate:fetch:transcripts -- --limit 1 --request-delay-ms 5000
 ```
+
+The default store root is `src/transcripts`. The batch fetcher writes canonical
+TXT and updates `manifest.json`, skips records with valid stored TXT, and writes
+resumable status after each attempt. Pass `--force` only when you intentionally
+want to refetch a valid transcript.
 
 Use the cautious batch for the supported weekly run:
 
@@ -66,10 +59,10 @@ npm run alternate:fetch:transcripts:safe
 The weekly command reads `src/channel/episodes.json`, skips valid stored
 transcripts, defers videos whose metadata does not yet prove completion and
 processing, uses one shared 60-second request limiter, and writes schema-2
-`fetch-status.json` after each attempt. It supplies retry behavior automatically,
-so every ready record that still lacks valid TXT is eligible even when an older
-failure is saved. It does not force-refetch valid TXT. The lower-level base
-command retains `--retry-failed` for explicit recovery runs.
+`fetch-status.json` after each attempt. It preserves saved failures instead of
+automatically retrying unavailable transcripts, and it does not force-refetch
+valid TXT. The lower-level base command retains `--retry-failed` for explicit
+recovery runs.
 
 At completion the command prints a deterministic handoff containing new TXT
 paths, deferred records, failures from the run, and still-pending ready records.
@@ -86,7 +79,9 @@ For each new TXT in the handoff, run one separate single-agent
 `$naval-transcript-to-site-content` task. Then run at least two independent,
 sequential single-agent `$naval-site-content-auditor` tasks for the resulting
 exact shard. These file-scoped curation stages remain separate from acquisition
-and from one another.
+and from one another. Each task finalizes its canonical shard write,
+lease-protected `npm run sync:video-topics`, and processing-log append before
+the next task begins.
 
 Videos in `src/channel/ignored-videos.json` are excluded before batch accounting
 and are also blocked by the direct transcript command. They do not belong in
@@ -115,9 +110,8 @@ The command reads `fetch-status.json` and writes
 `reports/transcript-problems.md`. Its probable reasons are labeled with a
 confidence level and remain limited to evidence saved by prior fetch runs.
 
-By default, the fetcher reads `src/channel/video-metadata.json` for title and
-canonical video-date naming. Use `--video-title` and `--video-timestamp` when
-naming metadata needs to be supplied manually, or `--no-metadata-lookup` to use
-only transcript- or episode-provided metadata and bypass the readiness and
-short-duration preflight. Use explicit `--txt-output` or `--tsv-output` only for
-ad hoc exports outside the store.
+By default, the batch fetcher reads `src/channel/video-metadata.json` for title
+and canonical video-date naming. Correct incomplete naming in the canonical
+episode or metadata source before retrying. `--no-metadata-lookup` remains a
+deliberate recovery option that uses episode-provided metadata and bypasses the
+readiness and short-duration preflight.

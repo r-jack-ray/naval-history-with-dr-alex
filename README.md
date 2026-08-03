@@ -138,9 +138,8 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 | `alternate:extract:saved-channel-html` | Parse a saved `/videos` or `/streams` channel page offline; select the tab with `--tab videos` or `--tab streams`. |
 | `alternate:extract:live-streams-html` | Parse the specialized saved live-stream HTML format offline. |
 | `alternate:merge:video-links` | Merge saved channel-tab link files into an episode inventory. |
-| `alternate:fetch:transcript` | Fetch and store one transcript. |
 | `alternate:fetch:transcripts` | Batch-fetch missing transcripts with resumable status; use it for bounded/manual runs. |
-| `alternate:fetch:transcripts:safe` | Run the supported weekly batch with a 60-second delay and retry every eligible record that still lacks valid TXT. |
+| `alternate:fetch:transcripts:safe` | Run the supported weekly batch with a 60-second delay while preserving valid-TXT and saved-failure skips. |
 
 ### Generated Site and Search
 
@@ -283,23 +282,16 @@ npm run alternate:merge:video-links -- --input reports/dr-alex-videos-html-links
 
 ## Store Video Transcripts Locally
 
-The transcript puller uses `youtube-transcript-plus` first, falls back to direct
+The transcript batch puller uses `youtube-transcript-plus` first, falls back to direct
 watch-page caption tracks, and defaults to a 5-second delay between YouTube
 requests. The official YouTube Data API does not provide public transcript
-download by API key. Both single-video and batch pulls skip official durations
-at or below 61 seconds, including one second of YouTube duration padding around
-nominal 60-second clips. The cutoff still applies with `--force`. By default the
-single-video command writes TXT and updates
-`src/transcripts/manifest.json`:
-
-```powershell
-npm run alternate:fetch:transcript -- --video-id uURe69Wnh-Q
-```
-
-For a bounded manual probe, use the base batch runner. It skips transcripts
-already in `src/transcripts/manifest.json`, uses
-`src/channel/video-metadata.json` for timestamped naming, and checkpoints
-failures/progress to `src/transcripts/fetch-status.json`:
+download by API key. Batch pulls skip official durations at or below 61 seconds,
+including one second of YouTube duration padding around nominal 60-second clips.
+The cutoff still applies with `--force`. For a bounded manual pull, use the base
+batch runner. It skips transcripts already in `src/transcripts/manifest.json`,
+uses `src/channel/video-metadata.json` for timestamped naming, writes canonical
+TXT and manifest records, and checkpoints failures/progress to
+`src/transcripts/fetch-status.json`:
 
 ```powershell
 npm run alternate:fetch:transcripts -- --limit 1 --request-delay-ms 5000
@@ -312,9 +304,9 @@ The supported weekly acquisition-to-curation sequence is:
    rerunnable metadata repair path; official inventory/metadata and caption
    scraping remain separate failure domains.
 2. Run `npm run alternate:fetch:transcripts:safe`. It waits 60 seconds between
-   YouTube requests and automatically retries each ready record that still lacks
-   a valid TXT, including records saved as failures by an earlier run. It never
-   force-refetches a valid stored TXT.
+   YouTube requests, skips valid stored TXT, and preserves records already saved
+   as failures. It never force-refetches a valid stored TXT. Use the lower-level
+   batch command with `--retry-failed` only for a deliberate recovery run.
 3. For each path under `New transcript TXT paths` in the final handoff, start
    one separate single-agent task using
    `<exact TXT path> process with $naval-transcript-to-site-content`.
@@ -327,18 +319,16 @@ deferred records, failures from that run, and ready records still pending. A
 rate-limit or blocking failure opens the circuit breaker for the remainder of
 the run, so later eligible records are listed as pending instead of generating
 more YouTube requests. Progress and failures remain checkpointed after each
-attempt for a later safe run to recover. Newly stored TXT paths also remain in
+attempt for diagnosis or an explicitly requested recovery run. Newly stored TXT paths also remain in
 the schema-2 checkpoint until the handoff is successfully written to standard
 output. If the command is interrupted before that acknowledgement, the next run
 re-emits those paths instead of silently treating their curation work as done.
 
 TXT is the stored transcript source of record. Stored transcript files use `timestamp_title-slug_videoId.txt` when exact timing is known, otherwise `title-slug_videoId.txt`.
 
-When the transcript backend does not provide enough naming metadata, pass explicit values:
-
-```powershell
-npm run alternate:fetch:transcript -- --video-id uURe69Wnh-Q --video-title "Video Title" --video-timestamp 2026-06-14T05:29:19-05:00
-```
+When transcript naming metadata is incomplete, repair the canonical episode or
+video-metadata source before retrying. The public transcript workflow no longer
+maintains a separate one-video command with ad hoc naming or output overrides.
 
 See `src/transcripts/README.md` for the storage layout.
 
@@ -357,17 +347,16 @@ Q&A stays as `kind: qa` inside the segment model rather than a separate question
 
 ## Process Transcripts Into Site Content
 
-Transcript curation is shard-only. Each run must be given exactly one stored TXT transcript and must edit only its manifest-owned `src/derived/video-segments/<manifest.fileStem>.json` file. The transcript basename, `manifest.fileStem`, and shard basename must match; do not derive a new shard name from current title metadata.
+Transcript curation has one selected semantic-edit shard plus one deterministic shared-registry finalization. Each run must be given exactly one stored TXT transcript and must edit only its manifest-owned `src/derived/video-segments/<manifest.fileStem>.json` file. The transcript basename, `manifest.fileStem`, and shard basename must match; do not derive a new shard name from current title metadata.
 
-The curation run reads the full selected transcript, keeps lecture material as chapters or notable points, and creates `kind: qa` records only for substantive transcript-visible prompts and answers. It reads `src/derived/topic-normalization-patterns.tsv`, resolves new slugs through active creation rules, and preserves established slugs unless the active creation policy canonicalizes them. It edits no other shard, leaves review or ambiguous rules unchanged, and appends exactly one required result line to `src/derived/site-content-processing.log` after a successful shard write. It does not edit the normalization catalog or `topics.json`, perform corpus-wide topic rewrites, or write schedules, reports, generated archives, package/tooling files, or site sources. It also does not run repository-wide audits, generation, tests, or builds.
+The curation run reads the full selected transcript, keeps lecture material as chapters or notable points, and creates `kind: qa` records only for substantive transcript-visible prompts and answers. It reads `src/derived/topic-normalization-patterns.tsv`, resolves new slugs through active creation rules, and preserves established slugs unless the active creation policy canonicalizes them. After transcript review and draft preparation, it acquires the repository writer lease immediately before the canonical shard write, runs `npm run sync:video-topics` under that same lease, and only then appends exactly one required result line to `src/derived/site-content-processing.log`. A lease, drift, or synchronization failure prevents the completion row. The run edits no other shard, never manually edits the normalization catalog or `topics.json`, performs no corpus-wide topic rewrite, and writes no schedules, reports, generated archives, package/tooling files, or site sources. It also does not run repository-wide audits, generation, tests, or builds.
 
 For agent-driven curation, use `.agents/transcript-content-curator.md` with `.agents/skills/naval-transcript-to-site-content/SKILL.md`. For a follow-up substance and wording pass on one explicitly selected shard, use `.agents/site-content-auditor.md` with `.agents/skills/naval-site-content-auditor/SKILL.md`.
 
-After shard work, the repository owner can synchronize shared topic records and run integration checks:
+After curator and auditor tasks have synchronized their shared topic records, the repository owner can run the remaining integration checks:
 
 ```powershell
 npm run audit:topic-normalization
-npm run sync:video-topics
 npm run check:video-topics
 npm run audit:site-content
 npm run site:check
@@ -382,7 +371,7 @@ The existing processing log has this exact semicolon-separated header:
 timestamp;shardPath;result;needsFurtherProcessing;notes
 ```
 
-Each curator or auditor result is one newline-terminated five-field row appended at the physical bottom. `shardPath` is the selected manifest-owned JSON shard, and `needsFurtherProcessing` is exactly `yes` or `no`. The curator appends after a successful shard write; the auditor appends after every completed selected-file audit, including unchanged, saturated, and intentionally empty results. Neither workflow acquires the shared writer lease for this append.
+Each curator or auditor result is one newline-terminated five-field row appended at the physical bottom. `shardPath` is the selected manifest-owned JSON shard, and `needsFurtherProcessing` is exactly `yes` or `no`. Both workflows keep the shared writer lease from immediately before the canonical shard write through deterministic topic synchronization and the append. The curator appends only after its shard write and synchronization succeed; the auditor does the same after every completed selected-file audit, including unchanged, saturated, and intentionally empty results. A synchronization failure is reported without a completion row.
 
 Write new timestamps as local `yyyy-MM-ddTHH:mm:ss` values without a timezone suffix. The reader still accepts older ISO timestamps with `Z` or a numeric UTC offset, so an offset such as `-05:00` is not an unmapped-row cause and does not need manual removal for parsing. The required final newline is also not a data row.
 
@@ -469,7 +458,7 @@ Remove-Item Env:CONTENT_PIPELINE_LOCK_TOKEN -ErrorAction SilentlyContinue
 
 The hook releases the lease in `finally` on success or failure; the caller clears its own environment variable after the child PowerShell process returns. If a run stops before reaching validation, release it explicitly with `node .codex/hooks/site-content-pipeline-lock.mjs release --token $lease.lease.token`. Leases expire after 90 minutes unless renewed; use `status` to inspect a blocker, and `acquire --recover-stale` to quarantine an expired lease with its owner metadata before continuing.
 
-Lane-isolated transcript automations follow their prompt-owned atomic claim, lane-private log, video-specific temporary checks, and exact completion/reset procedure. They remain single-agent, do not acquire or inspect the repository lease, and do not write shared topics, reports, or generated archives.
+Lane-isolated transcript automations follow their prompt-owned atomic claim, lane-private log, video-specific temporary checks, and exact completion/reset procedure. They remain single-agent. After transcript review and draft preparation, each one acquires the short repository finalization lease for its canonical shard write, deterministic topic synchronization, and processing-log append, then releases it before lane completion. They do not manually edit shared topics or write reports or generated archives.
 
 ## Project Helpers
 

@@ -82,7 +82,7 @@ test("steady-state guidance omits one-time rollout commands and URL compatibilit
   }
 });
 
-test("curator and auditor guidance retain shard-only steady-state topic authority", async () => {
+test("curator and auditor guidance retain shard-scoped authority and finalize topic synchronization", async () => {
   for (const relativePath of shardWorkflowPaths) {
     const guidance = await readGuidance(relativePath);
 
@@ -98,7 +98,7 @@ test("curator and auditor guidance retain shard-only steady-state topic authorit
       /(?:append(?:s|ing)? exactly one|one required result line)/iu,
       `${relativePath} must retain the one-log-append contract`,
     );
-    assert.match(guidance, /review[^.]{0,180}unchanged/iu, `${relativePath} must keep review rules non-mutating`);
+    assert.match(guidance, /review[^.]{0,220}block/iu, `${relativePath} must block unresolved review candidates`);
     assert.match(
       guidance,
       /corpus-wide topic rewrit/iu,
@@ -106,22 +106,42 @@ test("curator and auditor guidance retain shard-only steady-state topic authorit
     );
     assert.match(
       guidance,
-      /(?:never|do not|does not|must not).{0,520}topics\.json/iu,
-      `${relativePath} must prohibit shared topic-registry edits`,
+      /(?:never|do not|does not|must not)[^.]{0,180}(?:manually|hand)[^.]{0,180}topics\.json/iu,
+      `${relativePath} must prohibit manual shared topic-registry edits`,
+    );
+    assert.match(
+      guidance,
+      /npm run sync:video-topics/iu,
+      `${relativePath} must run the canonical topic synchronizer`,
+    );
+    assert.match(
+      guidance,
+      /writer lease/iu,
+      `${relativePath} must finalize under the repository writer lease`,
+    );
+    assert.match(
+      guidance,
+      /(?:shard write|canonical shard write)[\s\S]{0,700}sync:video-topics[\s\S]{0,700}(?:append|completion row)/iu,
+      `${relativePath} must order shard write, synchronization, and completion append`,
+    );
+    assert.match(
+      guidance,
+      /synchronization failure[^.]{0,240}(?:do not append|prevents? the completion row|blocker)/iu,
+      `${relativePath} must not log completion after failed synchronization`,
     );
   }
 
   const curatorSkill = await readGuidance(curatorSkillPath);
   assert.match(
     curatorSkill,
-    /After successfully writing the selected shard, append exactly one/iu,
-    "the curator must append only after a successful selected-shard write",
+    /Run `?npm run sync:video-topics`? after the canonical shard write and before appending exactly one/iu,
+    "the curator must synchronize after the shard write and before its completion row",
   );
 
   const auditorSkill = await readGuidance(auditorSkillPath);
   assert.match(
     auditorSkill,
-    /Append this result line whenever the selected file was processed[^.]{0,220}unchanged[^.]{0,160}saturated[^.]{0,160}intentionally empty/iu,
+    /Append this result line for every completed selected-file audit[^.]{0,220}unchanged[^.]{0,160}saturated[^.]{0,160}intentionally empty/iu,
     "the auditor must append for every completed selected-file audit result",
   );
 });
@@ -175,14 +195,15 @@ test("topic-producing guidance separates fictional referents from real lessons",
   }
 });
 
-test("companion guidance preserves review no-ops, shard boundaries, and steady-state policy", async () => {
+test("companion guidance preserves review blockers, shard boundaries, and finalization policy", async () => {
   const agents = await readGuidance("AGENTS.md");
   assert.match(agents, /one owned.{0,220}shard/iu);
   assert.match(agents, /append exactly one result line/iu);
   assert.match(agents, /steady-state topic creation/iu);
   assert.match(agents, /preserve established slugs unless[^.]{0,120}active creation policy canonicalizes/iu);
-  assert.match(agents, /review[^.]{0,180}unchanged/iu);
+  assert.match(agents, /review[^.]{0,220}block/iu);
   assert.match(agents, /must not perform corpus-wide topic rewrites/iu);
+  assert.match(agents, /writer lease[^.]{0,300}sync:video-topics[^.]{0,300}processing-log append/iu);
   assert.match(agents, /report:video-topic-usage[\s\S]{0,500}topic-normalization-review\.tsv/iu);
   assert.match(agents, /do not expect routine site builds[^.]{0,140}curation backlog/iu);
 
@@ -191,14 +212,16 @@ test("companion guidance preserves review no-ops, shard boundaries, and steady-s
   );
   assert.match(schema, /active[^.]{0,140}creation/iu);
   assert.match(schema, /preserve established slugs unless[^.]{0,120}active creation policy canonicalizes/iu);
-  assert.match(schema, /review[^.]{0,180}unchanged/iu);
-  assert.match(schema, /does not perform corpus-wide topic rewrites/iu);
+  assert.match(schema, /review[^.]{0,220}block/iu);
+  assert.match(schema, /does not[\s\S]{0,300}perform corpus-wide topic rewrites/iu);
+  assert.match(schema, /sync:video-topics[^.]{0,240}completion row/iu);
 
   const config = await readGuidance("src/derived/site-content-processing.config.json");
   assert.match(config, /active creation rules/iu);
   assert.match(config, /preserve established slugs unless the active creation policy canonicalizes them/iu);
-  assert.match(config, /leave review or ambiguous candidates unchanged/iu);
+  assert.match(config, /review, ambiguous[^.]{0,220}blocks? the completion row/iu);
   assert.match(config, /must not.{0,420}perform corpus-wide topic rewrites/iu);
+  assert.match(config, /writer lease[^.]{0,240}sync:video-topics[^.]{0,240}processing-log append/iu);
 
   const readme = await readGuidance("README.md");
   assert.match(readme, /steady-state topic creation/iu);
