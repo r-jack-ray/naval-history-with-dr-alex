@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 import {
+  acknowledgeTranscriptBatchHandoff,
   defaultTranscriptBatchInput,
   defaultTranscriptBatchStatusOutput,
   fetchAndStoreTranscriptBatch,
+  formatTranscriptBatchHandoff,
   type FetchTranscriptBatchOptions,
 } from "../youtube/batch-transcripts.js";
 import { defaultTranscriptStorageRoot } from "../youtube/transcripts.js";
@@ -47,18 +49,35 @@ async function main(): Promise<void> {
     fetchOptions.logger = (message) => console.error(message);
   }
 
-  const status = await fetchAndStoreTranscriptBatch(fetchOptions);
+  const result = await fetchAndStoreTranscriptBatch(fetchOptions);
   console.error(
     [
-      `Transcript batch complete: fetched=${status.stats.fetchedCount}`,
-      `failed=${status.stats.failedCount}`,
-      `stored-skipped=${status.stats.skippedStoredCount}`,
-      `short-duration-blocked=${status.stats.skippedShortDurationCount}`,
-      `previous-failure-skipped=${status.stats.skippedPreviousFailureCount}`,
-      `pending=${status.stats.pendingCount}`,
+      `Transcript batch complete: fetched=${result.stats.fetchedCount}`,
+      `failed=${result.stats.failedCount}`,
+      `stored-skipped=${result.stats.skippedStoredCount}`,
+      `short-duration-blocked=${result.stats.skippedShortDurationCount}`,
+      `previous-failure-skipped=${result.stats.skippedPreviousFailureCount}`,
+      `pending=${result.stats.pendingCount}`,
       `status=${options.statusOutput}`,
     ].join(" "),
   );
+  await writeStdout(`${formatTranscriptBatchHandoff(result.handoff)}\n`);
+  await acknowledgeTranscriptBatchHandoff(
+    options.statusOutput,
+    result.handoff.newlyStoredTxtPaths,
+  );
+}
+
+async function writeStdout(value: string): Promise<void> {
+  await new Promise<void>((resolve, reject) => {
+    process.stdout.write(value, (error) => {
+      if (error) {
+        reject(error);
+        return;
+      }
+      resolve();
+    });
+  });
 }
 
 function parseArgs(args: string[]): CliOptions {
@@ -140,7 +159,9 @@ function readPositiveInteger(value: string, name: string): number {
 }
 
 function printHelp(): void {
-  console.log(`Usage: npm run alternate:fetch:transcripts -- [options]
+  console.log(`Usage:
+  npm run alternate:fetch:transcripts:safe -- [options]
+  npm run alternate:fetch:transcripts -- [options]
 
 Options:
   --input <path>          Episode master JSON. Defaults to src/channel/episodes.json.
@@ -150,8 +171,8 @@ Options:
   --no-metadata-lookup    Bypass local metadata readiness and naming lookup.
   --language <name>       Optional transcript language code or label.
   --limit <count>         Maximum number of new transcript fetch attempts.
-  --request-delay-ms <ms> Delay between YouTube requests. Defaults to 5000.
-  --retry-failed          Retry videos listed in the status failure file.
+  --request-delay-ms <ms> Delay between requests; base default 5000, safe command sets 60000.
+  --retry-failed          Retry videos listed in the status failure file (included by the safe command).
   --force                 Refetch even when the transcript is already stored.
   --dry-run               Write status for pending work without calling YouTube.
   --quiet                 Suppress progress logs.
@@ -163,8 +184,8 @@ Videos in src/channel/ignored-videos.json are excluded from every batch even if
 they are present in a custom episode input.
 
 Examples:
+  npm run alternate:fetch:transcripts:safe
   npm run alternate:fetch:transcripts -- --limit 1 --request-delay-ms 5000
-  npm run alternate:fetch:transcripts -- --limit 10 --retry-failed
 `);
 }
 

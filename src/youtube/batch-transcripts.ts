@@ -67,6 +67,7 @@ export interface TranscriptBatchStatus {
   requestDelayMs: number;
   retryFailed: boolean;
   force: boolean;
+  pendingHandoffTxtPaths: string[];
   stats: {
     inputVideoCount: number;
     skippedStoredCount: number;
@@ -84,6 +85,41 @@ export interface TranscriptBatchStatus {
   metadataInput?: string;
   language?: string;
   limit?: number;
+}
+
+export interface TranscriptBatchDeferredRecord {
+  videoId: string;
+  reason: VideoReadinessReason;
+  diagnostic: string;
+  title?: string;
+  channelOrder?: number;
+  tabs: string[];
+}
+
+export type TranscriptBatchPendingReason =
+  | "circuit_breaker"
+  | "dry_run"
+  | "limit_reached"
+  | "previous_failure";
+
+export interface TranscriptBatchPendingRecord {
+  videoId: string;
+  reason: TranscriptBatchPendingReason;
+  title?: string;
+  channelOrder?: number;
+  tabs: string[];
+}
+
+export interface TranscriptBatchHandoff {
+  newlyStoredTxtPaths: string[];
+  deferredRecords: TranscriptBatchDeferredRecord[];
+  failedRecords: TranscriptBatchFailure[];
+  pendingRecords: TranscriptBatchPendingRecord[];
+  circuitBreakerTripped: boolean;
+}
+
+export interface TranscriptBatchResult extends TranscriptBatchStatus {
+  handoff: TranscriptBatchHandoff;
 }
 
 export interface FetchTranscriptBatchOptions {
@@ -116,7 +152,7 @@ interface TranscriptBatchCounters {
 
 export async function fetchAndStoreTranscriptBatch(
   options: FetchTranscriptBatchOptions,
-): Promise<TranscriptBatchStatus> {
+): Promise<TranscriptBatchResult> {
   const inputEpisodes = await readTranscriptBatchEpisodes(options.inputPath);
   const ignoredVideoIds = options.ignoredVideoIds ?? new Set<string>();
   const episodes = inputEpisodes.filter((episode) => !ignoredVideoIds.has(episode.videoId));
@@ -148,6 +184,11 @@ export async function fetchAndStoreTranscriptBatch(
     failedCount: 0,
     pendingCount: 0,
   };
+  const pendingHandoffTxtPaths = [...existingStatus.pendingHandoffTxtPaths];
+  const deferredRecords: TranscriptBatchDeferredRecord[] = [];
+  const failedRecords: TranscriptBatchFailure[] = [];
+  const pendingRecords: TranscriptBatchPendingRecord[] = [];
+  let circuitBreakerTripped = false;
 
   for (const videoId of failuresById.keys()) {
     const state = resolveVideoFetchState(metadataById.get(videoId), options.metadataInput !== undefined);
@@ -156,7 +197,7 @@ export async function fetchAndStoreTranscriptBatch(
     }
   }
 
-  await writeTranscriptBatchStatus(options, episodes, counters, failuresById);
+  await writeTranscriptBatchStatus(options, episodes, counters, failuresById, pendingHandoffTxtPaths);
 
   for (const episode of episodes) {
     const metadata = metadataById.get(episode.videoId);
@@ -178,6 +219,7 @@ export async function fetchAndStoreTranscriptBatch(
         ...(options.language !== undefined ? { language: options.language } : {}),
       });
     if (stored !== undefined) {
+      failuresById.delete(episode.videoId);
       counters.skippedStoredCount += 1;
       options.logger?.(`Skipping stored transcript: ${episode.videoId}`);
       continue;
@@ -189,27 +231,39 @@ export async function fetchAndStoreTranscriptBatch(
       }
       counters.skippedDeferredCount += 1;
       counters.deferredCounts[state.reason] += 1;
+      deferredRecords.push(transcriptBatchDeferredRecord(episode, state));
       options.logger?.(`Skipping not-ready video ${episode.videoId}: ${state.reason} (${state.diagnostic})`);
+      continue;
+    }
+
+    if (circuitBreakerTripped) {
+      counters.pendingCount += 1;
+      pendingRecords.push(transcriptBatchPendingRecord(episode, "circuit_breaker"));
+      options.logger?.(`Leaving transcript pending after circuit breaker: ${episode.videoId}`);
       continue;
     }
 
     const previousFailure = failuresById.get(episode.videoId);
     if (previousFailure !== undefined && !options.retryFailed) {
       counters.skippedPreviousFailureCount += 1;
+      counters.pendingCount += 1;
+      pendingRecords.push(transcriptBatchPendingRecord(episode, "previous_failure"));
       options.logger?.(`Skipping previous transcript failure: ${episode.videoId}`);
       continue;
     }
 
     if (options.limit !== undefined && counters.attemptedCount >= options.limit) {
       counters.pendingCount += 1;
+      pendingRecords.push(transcriptBatchPendingRecord(episode, "limit_reached"));
       continue;
     }
 
     counters.attemptedCount += 1;
     if (options.dryRun) {
       counters.pendingCount += 1;
+      pendingRecords.push(transcriptBatchPendingRecord(episode, "dry_run"));
       options.logger?.(`Dry run would fetch transcript: ${episode.videoId}`);
-      await writeTranscriptBatchStatus(options, episodes, counters, failuresById);
+      await writeTranscriptBatchStatus(options, episodes, counters, failuresById, pendingHandoffTxtPaths);
       continue;
     }
 
@@ -232,6 +286,7 @@ export async function fetchAndStoreTranscriptBatch(
       const paths = await writeTranscriptStorage(transcript, options.outputRoot);
       failuresById.delete(episode.videoId);
       counters.fetchedCount += 1;
+      pendingHandoffTxtPaths.push(portablePath(paths.txtOutput));
       options.logger?.(`Stored transcript TXT: ${paths.txtOutput}`);
     } catch (error) {
       counters.failedCount += 1;
@@ -241,13 +296,72 @@ export async function fetchAndStoreTranscriptBatch(
         state?.state === "ready" ? state.videoDateAt : episode.videoDateAt,
       );
       failuresById.set(episode.videoId, failure);
+      failedRecords.push(failure);
+      if (failure.classification === "rate_limited_or_blocked") {
+        circuitBreakerTripped = true;
+        options.logger?.("Transcript circuit breaker opened; later eligible videos will remain pending.");
+      }
       options.logger?.(`Transcript fetch failed for ${episode.videoId}: ${failure.error}`);
     }
 
-    await writeTranscriptBatchStatus(options, episodes, counters, failuresById);
+    await writeTranscriptBatchStatus(options, episodes, counters, failuresById, pendingHandoffTxtPaths);
   }
 
-  return writeTranscriptBatchStatus(options, episodes, counters, failuresById);
+  const status = await writeTranscriptBatchStatus(
+    options,
+    episodes,
+    counters,
+    failuresById,
+    pendingHandoffTxtPaths,
+  );
+  return {
+    ...status,
+    handoff: buildTranscriptBatchHandoff({
+      newlyStoredTxtPaths: status.pendingHandoffTxtPaths,
+      deferredRecords,
+      failedRecords,
+      pendingRecords,
+      circuitBreakerTripped,
+    }),
+  };
+}
+
+export function formatTranscriptBatchHandoff(handoff: TranscriptBatchHandoff): string {
+  const normalized = buildTranscriptBatchHandoff(handoff);
+  const lines = [
+    "Transcript acquisition handoff",
+    `Circuit breaker: ${normalized.circuitBreakerTripped ? "tripped" : "clear"}`,
+  ];
+
+  appendHandoffSection(lines, "New transcript TXT paths", normalized.newlyStoredTxtPaths);
+  appendHandoffSection(
+    lines,
+    "Deferred records",
+    normalized.deferredRecords.map((record) =>
+      `${record.videoId} [${record.reason}]${record.title ? ` ${singleLine(record.title)}` : ""}: ${singleLine(record.diagnostic)}`
+    ),
+  );
+  appendHandoffSection(
+    lines,
+    "Failed records",
+    normalized.failedRecords.map((record) =>
+      `${record.videoId} [${record.classification}]${record.title ? ` ${singleLine(record.title)}` : ""}: ${singleLine(record.error)}`
+    ),
+  );
+  appendHandoffSection(
+    lines,
+    "Still-pending records",
+    normalized.pendingRecords.map((record) =>
+      `${record.videoId} [${record.reason}]${record.title ? ` ${singleLine(record.title)}` : ""}`
+    ),
+  );
+  lines.push(
+    "Curation next steps:",
+    "- Run one single-agent $naval-transcript-to-site-content task for each new TXT path.",
+    "- Run at least two independent sequential single-agent $naval-site-content-auditor tasks for each resulting shard.",
+  );
+
+  return lines.join("\n");
 }
 
 export async function readTranscriptBatchEpisodes(path: string): Promise<TranscriptBatchEpisode[]> {
@@ -324,6 +438,32 @@ export async function readTranscriptBatchStatus(path: string): Promise<Transcrip
   }
 }
 
+export async function acknowledgeTranscriptBatchHandoff(
+  path: string,
+  acknowledgedTxtPaths: readonly string[],
+): Promise<void> {
+  const acknowledged = new Set(normalizeTranscriptTxtPaths(acknowledgedTxtPaths));
+  if (acknowledged.size === 0) {
+    return;
+  }
+
+  const value = JSON.parse(await readFile(path, "utf8")) as unknown;
+  const object = asRecord(value);
+  if (object === undefined || integerValue(object.schemaVersion) !== 2 || !Array.isArray(object.failures)) {
+    throw new Error(`Transcript batch status is not a supported schema-2 checkpoint: ${path}`);
+  }
+
+  const pending = normalizeTranscriptTxtPaths(readStringArray(object.pendingHandoffTxtPaths));
+  const remaining = pending.filter((txtPath) => !acknowledged.has(txtPath));
+  if (remaining.length === pending.length) {
+    return;
+  }
+
+  object.pendingHandoffTxtPaths = remaining;
+  object.updatedAt = new Date().toISOString();
+  await writeFile(path, `${JSON.stringify(object, null, 2)}\n`, "utf8");
+}
+
 function applyNamingMetadata(transcript: VideoTranscript, metadata: VideoNamingMetadata): void {
   if (metadata.title !== undefined) {
     transcript.videoTitle = metadata.title;
@@ -379,8 +519,15 @@ async function writeTranscriptBatchStatus(
   episodes: TranscriptBatchEpisode[],
   counters: TranscriptBatchCounters,
   failuresById: ReadonlyMap<string, TranscriptBatchFailure>,
+  pendingHandoffTxtPaths: readonly string[],
 ): Promise<TranscriptBatchStatus> {
-  const status = buildTranscriptBatchStatus(options, episodes, counters, failuresById);
+  const status = buildTranscriptBatchStatus(
+    options,
+    episodes,
+    counters,
+    failuresById,
+    pendingHandoffTxtPaths,
+  );
   await mkdir(dirname(options.statusOutput), { recursive: true });
   await writeFile(options.statusOutput, `${JSON.stringify(status, null, 2)}\n`, "utf8");
   return status;
@@ -391,11 +538,11 @@ function buildTranscriptBatchStatus(
   episodes: TranscriptBatchEpisode[],
   counters: TranscriptBatchCounters,
   failuresById: ReadonlyMap<string, TranscriptBatchFailure>,
+  pendingHandoffTxtPaths: readonly string[],
 ): TranscriptBatchStatus {
   const processedCount = counters.skippedStoredCount +
     counters.skippedDeferredCount +
     counters.skippedShortDurationCount +
-    counters.skippedPreviousFailureCount +
     counters.fetchedCount +
     counters.failedCount +
     counters.pendingCount;
@@ -408,6 +555,7 @@ function buildTranscriptBatchStatus(
     requestDelayMs: options.requestDelayMs,
     retryFailed: options.retryFailed ?? false,
     force: options.force ?? false,
+    pendingHandoffTxtPaths: normalizeTranscriptTxtPaths(pendingHandoffTxtPaths),
     stats: {
       inputVideoCount: episodes.length,
       skippedStoredCount: counters.skippedStoredCount,
@@ -435,6 +583,75 @@ function buildTranscriptBatchStatus(
   }
 
   return status;
+}
+
+function buildTranscriptBatchHandoff(handoff: TranscriptBatchHandoff): TranscriptBatchHandoff {
+  return {
+    newlyStoredTxtPaths: normalizeTranscriptTxtPaths(handoff.newlyStoredTxtPaths),
+    deferredRecords: [...handoff.deferredRecords].sort(compareHandoffRecords),
+    failedRecords: [...handoff.failedRecords].sort(compareHandoffRecords),
+    pendingRecords: [...handoff.pendingRecords].sort(compareHandoffRecords),
+    circuitBreakerTripped: handoff.circuitBreakerTripped,
+  };
+}
+
+function transcriptBatchDeferredRecord(
+  episode: TranscriptBatchEpisode,
+  state: Exclude<VideoStateResult, { state: "ready" }>,
+): TranscriptBatchDeferredRecord {
+  return {
+    videoId: episode.videoId,
+    reason: state.reason,
+    diagnostic: state.diagnostic,
+    ...(episode.title === undefined ? {} : { title: episode.title }),
+    ...(episode.channelOrder === undefined ? {} : { channelOrder: episode.channelOrder }),
+    tabs: [...episode.tabs],
+  };
+}
+
+function transcriptBatchPendingRecord(
+  episode: TranscriptBatchEpisode,
+  reason: TranscriptBatchPendingReason,
+): TranscriptBatchPendingRecord {
+  return {
+    videoId: episode.videoId,
+    reason,
+    ...(episode.title === undefined ? {} : { title: episode.title }),
+    ...(episode.channelOrder === undefined ? {} : { channelOrder: episode.channelOrder }),
+    tabs: [...episode.tabs],
+  };
+}
+
+function compareHandoffRecords(
+  left: { videoId: string },
+  right: { videoId: string },
+): number {
+  return left.videoId.localeCompare(right.videoId);
+}
+
+function appendHandoffSection(lines: string[], label: string, entries: string[]): void {
+  lines.push(`${label} (${entries.length}):`);
+  if (entries.length === 0) {
+    lines.push("- (none)");
+    return;
+  }
+  lines.push(...entries.map((entry) => `- ${entry}`));
+}
+
+function singleLine(value: string): string {
+  return value.replace(/\s+/gu, " ").trim();
+}
+
+function portablePath(path: string): string {
+  return path.replaceAll("\\", "/");
+}
+
+function normalizeTranscriptTxtPaths(paths: readonly string[]): string[] {
+  return [...new Set(
+    paths
+      .map((path) => portablePath(path).trim())
+      .filter((path) => path.length > 0),
+  )].sort((left, right) => left.localeCompare(right));
 }
 
 function transcriptBatchFailure(
@@ -489,6 +706,7 @@ function normalizeTranscriptBatchStatus(value: unknown): TranscriptBatchStatus {
 
   return {
     ...emptyTranscriptBatchStatus(),
+    pendingHandoffTxtPaths: normalizeTranscriptTxtPaths(readStringArray(object.pendingHandoffTxtPaths)),
     failures: object.failures
       .map((failure) => transcriptBatchFailureFromJson(failure))
       .filter((failure): failure is TranscriptBatchFailure => failure !== undefined),
@@ -548,6 +766,7 @@ function emptyTranscriptBatchStatus(): TranscriptBatchStatus {
     requestDelayMs: 5_000,
     retryFailed: false,
     force: false,
+    pendingHandoffTxtPaths: [],
     stats: {
       inputVideoCount: 0,
       skippedStoredCount: 0,

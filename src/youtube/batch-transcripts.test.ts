@@ -5,7 +5,9 @@ import { join } from "node:path";
 import { tmpdir } from "node:os";
 
 import {
+  acknowledgeTranscriptBatchHandoff,
   fetchAndStoreTranscriptBatch,
+  formatTranscriptBatchHandoff,
   readTranscriptBatchEpisodes,
   type TranscriptBatchStatus,
 } from "./batch-transcripts.js";
@@ -39,6 +41,19 @@ test("reads unique transcript batch episodes from the channel master list", asyn
   }
 });
 
+test("safe transcript command keeps cautious pacing, retries missing failures, and replaces retry aliases", async () => {
+  const packageJson = JSON.parse(
+    await readFile(new URL("../../package.json", import.meta.url), "utf8"),
+  ) as { scripts: Record<string, string> };
+
+  assert.equal(
+    packageJson.scripts["alternate:fetch:transcripts:safe"],
+    "tsx src/scripts/fetch-transcript-batch.ts --request-delay-ms 60000 --retry-failed",
+  );
+  assert.equal(packageJson.scripts["alternate:fetch:transcripts:retry"], undefined);
+  assert.equal(packageJson.scripts["alternate:fetch:transcripts:retry:safe"], undefined);
+});
+
 test("batch fetch skips stored transcripts and writes checkpoint status", async () => {
   const dir = await mkdtemp(join(tmpdir(), "naval-transcript-batch-"));
   const input = join(dir, "episodes.json");
@@ -59,6 +74,15 @@ test("batch fetch skips stored transcripts and writes checkpoint status", async 
       }),
       "utf8",
     );
+    await writeFile(statusOutput, JSON.stringify({
+      failures: [{
+        videoId: "abc123",
+        attemptedAt: "2026-07-08T00:00:00.000Z",
+        classification: "fetch_failed",
+        error: "Stale failure for an already stored TXT.",
+        tabs: ["videos"],
+      }],
+    }), "utf8");
     await writeFile(
       metadataInput,
       JSON.stringify({
@@ -91,6 +115,13 @@ test("batch fetch skips stored transcripts and writes checkpoint status", async 
     assert.equal(status.stats.skippedStoredCount, 1);
     assert.equal(status.stats.fetchedCount, 1);
     assert.equal(status.stats.pendingCount, 0);
+    assert.equal(status.stats.totalFailureCount, 0);
+    assert.deepEqual(status.handoff.newlyStoredTxtPaths, [
+      join(outputRoot, "txt", "2026-07-03_T18-30-17_metadata-title_def456.txt").replaceAll("\\", "/"),
+    ]);
+    assert.deepEqual(status.handoff.deferredRecords, []);
+    assert.deepEqual(status.handoff.failedRecords, []);
+    assert.deepEqual(status.handoff.pendingRecords, []);
 
     const checkpoint = JSON.parse(await readFile(statusOutput, "utf8")) as TranscriptBatchStatus;
     assert.equal(checkpoint.stats.fetchedCount, 1);
@@ -323,7 +354,12 @@ test("batch skips previous failures until retry is requested", async () => {
 
     assert.equal(calls.length, 0);
     assert.equal(skipped.stats.skippedPreviousFailureCount, 1);
+    assert.equal(skipped.stats.pendingCount, 1);
     assert.equal(skipped.stats.totalFailureCount, 1);
+    assert.deepEqual(
+      skipped.handoff.pendingRecords.map((record) => ({ videoId: record.videoId, reason: record.reason })),
+      [{ videoId: "abc123", reason: "previous_failure" }],
+    );
 
     const retried = await fetchAndStoreTranscriptBatch({
       inputPath: input,
@@ -341,6 +377,7 @@ test("batch skips previous failures until retry is requested", async () => {
     assert.deepEqual(calls, ["abc123"]);
     assert.equal(retried.stats.fetchedCount, 1);
     assert.equal(retried.stats.totalFailureCount, 0);
+    assert.deepEqual(retried.handoff.pendingRecords, []);
   } finally {
     await rm(dir, { recursive: true, force: true });
   }
@@ -450,9 +487,246 @@ test("batch skips published but unstarted videos and clears stale failures", asy
     assert.equal(status.stats.pendingCount, 0);
     assert.equal(status.stats.totalFailureCount, 0);
     assert.deepEqual(status.failures, []);
+    assert.deepEqual(
+      status.handoff.deferredRecords.map((record) => ({ videoId: record.videoId, reason: record.reason })),
+      [{ videoId: "upcoming123", reason: "upcoming" }],
+    );
   } finally {
     await rm(dir, { recursive: true, force: true });
   }
+});
+
+test("batch checkpoints partial failures and a later retry fetches only the missing TXT", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "naval-transcript-batch-"));
+  const input = join(dir, "episodes.json");
+  const metadataInput = join(dir, "metadata.json");
+  const outputRoot = join(dir, "transcripts");
+  const statusOutput = join(outputRoot, "fetch-status.json");
+  const calls: string[] = [];
+  let observedFailureCheckpoint = false;
+
+  try {
+    await writeFile(input, JSON.stringify({ episodes: [
+      { videoId: "aaa111", title: "First", tabs: ["videos"] },
+      { videoId: "bbb222", title: "Second", tabs: ["videos"] },
+      { videoId: "ccc333", title: "Third", tabs: ["videos"] },
+    ] }), "utf8");
+    await writeReadyMetadata(metadataInput, ["aaa111", "bbb222", "ccc333"]);
+
+    const firstRun = await fetchAndStoreTranscriptBatch({
+      inputPath: input,
+      metadataInput,
+      outputRoot,
+      statusOutput,
+      requestDelayMs: 5,
+      retryFailed: true,
+      fetchTranscript: async (options) => {
+        calls.push(options.videoId);
+        if (options.videoId === "bbb222") {
+          throw new Error("Socket closed unexpectedly.");
+        }
+        if (options.videoId === "ccc333") {
+          const checkpoint = JSON.parse(await readFile(statusOutput, "utf8")) as TranscriptBatchStatus;
+          assert.equal(checkpoint.stats.fetchedCount, 1);
+          assert.equal(checkpoint.stats.failedCount, 1);
+          assert.deepEqual(checkpoint.failures.map((failure) => failure.videoId), ["bbb222"]);
+          observedFailureCheckpoint = true;
+        }
+        return sampleTranscript(options.videoId);
+      },
+    });
+
+    assert.equal(observedFailureCheckpoint, true);
+    assert.deepEqual(calls, ["aaa111", "bbb222", "ccc333"]);
+    assert.equal(firstRun.stats.fetchedCount, 2);
+    assert.equal(firstRun.stats.failedCount, 1);
+    assert.equal(firstRun.stats.pendingCount, 0);
+    assert.deepEqual(firstRun.handoff.failedRecords.map((failure) => failure.videoId), ["bbb222"]);
+    assert.deepEqual(firstRun.handoff.newlyStoredTxtPaths.map((path) => path.endsWith(".txt")), [true, true]);
+    await acknowledgeTranscriptBatchHandoff(statusOutput, firstRun.handoff.newlyStoredTxtPaths);
+
+    const recoveryCalls: string[] = [];
+    const recovered = await fetchAndStoreTranscriptBatch({
+      inputPath: input,
+      metadataInput,
+      outputRoot,
+      statusOutput,
+      requestDelayMs: 5,
+      retryFailed: true,
+      fetchTranscript: async (options) => {
+        recoveryCalls.push(options.videoId);
+        return sampleTranscript(options.videoId);
+      },
+    });
+
+    assert.deepEqual(recoveryCalls, ["bbb222"]);
+    assert.equal(recovered.stats.skippedStoredCount, 2);
+    assert.equal(recovered.stats.fetchedCount, 1);
+    assert.equal(recovered.stats.totalFailureCount, 0);
+    assert.equal(recovered.handoff.newlyStoredTxtPaths[0]?.endsWith("_bbb222.txt"), true);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("batch re-emits checkpointed TXT handoff paths after interruption until acknowledged", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "naval-transcript-batch-"));
+  const input = join(dir, "episodes.json");
+  const metadataInput = join(dir, "metadata.json");
+  const outputRoot = join(dir, "transcripts");
+  const statusOutput = join(outputRoot, "fetch-status.json");
+
+  try {
+    await writeFile(input, JSON.stringify({ episodes: [
+      { videoId: "abc123", title: "Recovered handoff", tabs: ["videos"] },
+    ] }), "utf8");
+    await writeReadyMetadata(metadataInput, ["abc123"]);
+
+    const firstRun = await fetchAndStoreTranscriptBatch({
+      inputPath: input,
+      metadataInput,
+      outputRoot,
+      statusOutput,
+      requestDelayMs: 5,
+      fetchTranscript: async (options) => sampleTranscript(options.videoId),
+    });
+    const expectedPaths = firstRun.handoff.newlyStoredTxtPaths;
+    assert.equal(expectedPaths.length, 1);
+
+    const interruptedCheckpoint = JSON.parse(await readFile(statusOutput, "utf8")) as TranscriptBatchStatus;
+    assert.deepEqual(interruptedCheckpoint.pendingHandoffTxtPaths, expectedPaths);
+
+    const resumeCalls: string[] = [];
+    const resumed = await fetchAndStoreTranscriptBatch({
+      inputPath: input,
+      metadataInput,
+      outputRoot,
+      statusOutput,
+      requestDelayMs: 5,
+      fetchTranscript: async (options) => {
+        resumeCalls.push(options.videoId);
+        return sampleTranscript(options.videoId);
+      },
+    });
+
+    assert.deepEqual(resumeCalls, []);
+    assert.equal(resumed.stats.skippedStoredCount, 1);
+    assert.deepEqual(resumed.handoff.newlyStoredTxtPaths, expectedPaths);
+
+    await acknowledgeTranscriptBatchHandoff(statusOutput, resumed.handoff.newlyStoredTxtPaths);
+    const acknowledgedCheckpoint = JSON.parse(await readFile(statusOutput, "utf8")) as TranscriptBatchStatus;
+    assert.deepEqual(acknowledgedCheckpoint.pendingHandoffTxtPaths, []);
+
+    const afterAcknowledgement = await fetchAndStoreTranscriptBatch({
+      inputPath: input,
+      metadataInput,
+      outputRoot,
+      statusOutput,
+      requestDelayMs: 5,
+      fetchTranscript: async (options) => sampleTranscript(options.videoId),
+    });
+    assert.deepEqual(afterAcknowledgement.handoff.newlyStoredTxtPaths, []);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("batch circuit breaker stops later eligible fetches and leaves them pending", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "naval-transcript-batch-"));
+  const input = join(dir, "episodes.json");
+  const metadataInput = join(dir, "metadata.json");
+  const outputRoot = join(dir, "transcripts");
+  const statusOutput = join(outputRoot, "fetch-status.json");
+  const calls: string[] = [];
+
+  try {
+    await writeFile(input, JSON.stringify({ episodes: [
+      { videoId: "aaa111", title: "Blocked", tabs: ["videos"] },
+      { videoId: "bbb222", title: "Pending B", tabs: ["videos"] },
+      { videoId: "ccc333", title: "Pending C", tabs: ["videos"] },
+    ] }), "utf8");
+    await writeReadyMetadata(metadataInput, ["aaa111", "bbb222", "ccc333"]);
+
+    const status = await fetchAndStoreTranscriptBatch({
+      inputPath: input,
+      metadataInput,
+      outputRoot,
+      statusOutput,
+      requestDelayMs: 60_000,
+      retryFailed: true,
+      fetchTranscript: async (options) => {
+        calls.push(options.videoId);
+        throw new Error("Watch page request failed with status 429: Too Many Requests");
+      },
+    });
+
+    assert.deepEqual(calls, ["aaa111"]);
+    assert.equal(status.stats.attemptedCount, 1);
+    assert.equal(status.stats.failedCount, 1);
+    assert.equal(status.stats.pendingCount, 2);
+    assert.equal(status.handoff.circuitBreakerTripped, true);
+    assert.deepEqual(
+      status.handoff.failedRecords.map((failure) => ({ videoId: failure.videoId, classification: failure.classification })),
+      [{ videoId: "aaa111", classification: "rate_limited_or_blocked" }],
+    );
+    assert.deepEqual(
+      status.handoff.pendingRecords.map((record) => ({ videoId: record.videoId, reason: record.reason })),
+      [
+        { videoId: "bbb222", reason: "circuit_breaker" },
+        { videoId: "ccc333", reason: "circuit_breaker" },
+      ],
+    );
+
+    const checkpoint = JSON.parse(await readFile(statusOutput, "utf8")) as TranscriptBatchStatus;
+    assert.equal(checkpoint.stats.pendingCount, 2);
+    assert.deepEqual(checkpoint.failures.map((failure) => failure.videoId), ["aaa111"]);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("formats a deterministic acquisition-to-curation handoff", () => {
+  const output = formatTranscriptBatchHandoff({
+    newlyStoredTxtPaths: ["src\\transcripts\\txt\\z-video.txt", "src/transcripts/txt/a-video.txt"],
+    deferredRecords: [{
+      videoId: "deferred222",
+      reason: "processing",
+      diagnostic: "Still\nprocessing",
+      title: "Deferred video",
+      tabs: ["streams"],
+    }],
+    failedRecords: [{
+      videoId: "failed111",
+      attemptedAt: "2026-08-02T00:00:00.000Z",
+      classification: "fetch_failed",
+      error: "Socket\nclosed",
+      title: "Failed video",
+      tabs: ["videos"],
+    }],
+    pendingRecords: [
+      { videoId: "pending999", reason: "limit_reached", title: "Later", tabs: ["videos"] },
+      { videoId: "pending111", reason: "circuit_breaker", title: "Sooner", tabs: ["videos"] },
+    ],
+    circuitBreakerTripped: true,
+  });
+
+  assert.equal(output, [
+    "Transcript acquisition handoff",
+    "Circuit breaker: tripped",
+    "New transcript TXT paths (2):",
+    "- src/transcripts/txt/a-video.txt",
+    "- src/transcripts/txt/z-video.txt",
+    "Deferred records (1):",
+    "- deferred222 [processing] Deferred video: Still processing",
+    "Failed records (1):",
+    "- failed111 [fetch_failed] Failed video: Socket closed",
+    "Still-pending records (2):",
+    "- pending111 [circuit_breaker] Sooner",
+    "- pending999 [limit_reached] Later",
+    "Curation next steps:",
+    "- Run one single-agent $naval-transcript-to-site-content task for each new TXT path.",
+    "- Run at least two independent sequential single-agent $naval-site-content-auditor tasks for each resulting shard.",
+  ].join("\n"));
 });
 
 test("started livestream remains deferred until completion is proven", () => {

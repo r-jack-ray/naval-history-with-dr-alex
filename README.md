@@ -143,10 +143,8 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 | `alternate:extract:videos-html` | Alias the generic saved-channel extractor with `--tab videos`. |
 | `alternate:merge:video-links` | Merge saved channel-tab link files into an episode inventory. |
 | `alternate:fetch:transcript` | Fetch and store one transcript. |
-| `alternate:fetch:transcripts` | Batch-fetch missing transcripts with resumable status. |
-| `alternate:fetch:transcripts:safe` | Batch-fetch with a 60-second request delay. |
-| `alternate:fetch:transcripts:retry` | Retry entries recorded as failed. |
-| `alternate:fetch:transcripts:retry:safe` | Force-retry failed entries with a 60-second request delay. |
+| `alternate:fetch:transcripts` | Batch-fetch missing transcripts with resumable status; use it for bounded/manual runs. |
+| `alternate:fetch:transcripts:safe` | Run the supported weekly batch with a 60-second delay and retry every eligible record that still lacks valid TXT. |
 
 ### Generated Site and Search
 
@@ -302,17 +300,41 @@ single-video command writes TXT and updates
 npm run alternate:fetch:transcript -- --video-id uURe69Wnh-Q
 ```
 
-For unattended ingestion, use the batch runner. It skips transcripts already in
-`src/transcripts/manifest.json`, uses `src/channel/video-metadata.json` for
-timestamped naming, and checkpoints failures/progress to
-`src/transcripts/fetch-status.json`:
+For a bounded manual probe, use the base batch runner. It skips transcripts
+already in `src/transcripts/manifest.json`, uses
+`src/channel/video-metadata.json` for timestamped naming, and checkpoints
+failures/progress to `src/transcripts/fetch-status.json`:
 
 ```powershell
 npm run alternate:fetch:transcripts -- --limit 1 --request-delay-ms 5000
-npm run alternate:fetch:transcripts
 ```
 
-Use `alternate:fetch:transcripts:safe` if YouTube starts rate-limiting or blocking transcript requests. Use `alternate:fetch:transcripts:retry` to retry videos recorded in the status file, or `alternate:fetch:transcripts:retry:safe` for the forced 60-second-delay retry path.
+The supported weekly acquisition-to-curation sequence is:
+
+1. Run `npm run fetch:video-links` to reconcile the official channel inventory
+   and metadata. Keep `npm run fetch:video-metadata` as the independently
+   rerunnable metadata repair path; official inventory/metadata and caption
+   scraping remain separate failure domains.
+2. Run `npm run alternate:fetch:transcripts:safe`. It waits 60 seconds between
+   YouTube requests and automatically retries each ready record that still lacks
+   a valid TXT, including records saved as failures by an earlier run. It never
+   force-refetches a valid stored TXT.
+3. For each path under `New transcript TXT paths` in the final handoff, start
+   one separate single-agent task using
+   `<exact TXT path> process with $naval-transcript-to-site-content`.
+4. For each resulting exact shard, run at least two independent, sequential
+   single-agent tasks using
+   `<exact shard path> process with $naval-site-content-auditor`.
+
+Every batch prints one deterministic handoff with newly stored TXT paths,
+deferred records, failures from that run, and ready records still pending. A
+rate-limit or blocking failure opens the circuit breaker for the remainder of
+the run, so later eligible records are listed as pending instead of generating
+more YouTube requests. Progress and failures remain checkpointed after each
+attempt for a later safe run to recover. Newly stored TXT paths also remain in
+the schema-2 checkpoint until the handoff is successfully written to standard
+output. If the command is interrupted before that acknowledgement, the next run
+re-emits those paths instead of silently treating their curation work as done.
 
 TXT is the stored transcript source of record. Stored transcript files use `timestamp_title-slug_videoId.txt` when exact timing is known, otherwise `title-slug_videoId.txt`.
 

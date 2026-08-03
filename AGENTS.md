@@ -56,9 +56,25 @@ npm run rank:video-segment-audit-risk
 npm run check:search-ranking
 npm run check:rendered-video-dates
 npm run fetch:video-links
+npm run fetch:video-metadata
 npm run alternate:fetch:transcript -- --video-id uURe69Wnh-Q
-npm run alternate:fetch:transcripts -- --limit 1 --request-delay-ms 5000
+npm run alternate:fetch:transcripts:safe
 ```
+
+The supported weekly handoff is `fetch:video-links`, then
+`alternate:fetch:transcripts:safe`, then one separate single-agent
+`$naval-transcript-to-site-content` task for each newly stored exact TXT, then
+at least two independent, sequential single-agent
+`$naval-site-content-auditor` tasks for each resulting exact shard. Keep
+`fetch:video-metadata` as the independently rerunnable official-metadata repair
+command. Inventory/metadata and caption
+scraping remain separate stages. The safe transcript command retries ready
+records that still lack valid TXT, preserves valid-TXT skips and checkpoints,
+and prints the exact acquisition-to-curation handoff. Newly stored TXT paths
+remain in the schema-2 checkpoint until that handoff has been flushed to
+standard output, so an interrupted run re-emits rather than loses pending
+curation work. The command does not authorize batching the file-scoped curation
+stages or using subagents for them.
 
 Do not run Git commands as routine preflight, status, boundary, or validation checks. Prefer direct file inspection, targeted searches, parsers, and the relevant project validators so unnecessary Git output does not consume time or context. Run Git only when the user explicitly requests a Git operation or when a specific overlapping edit cannot otherwise be resolved safely. When Git is genuinely needed, use the narrowest read-only command first. Never commit or push unless the user explicitly requests it.
 

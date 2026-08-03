@@ -2,9 +2,9 @@
 
 Timestamp: 2026-08-02T14:31:45-05:00
 
-Reviewed: 2026-08-02T21:46:22-05:00
+Reviewed: 2026-08-02T22:54:15-05:00
 
-Status: Phases 0-3 are complete. Phases 1 and 2 were committed together at `5915a0a8`; Phase 3 is recorded in `task-notes/2026-08-02_T21-46-22-0500_repository-trim-phase-3-generated-archive-untracking.md` and remains uncommitted for owner review. The 67 deterministic archive files are absent from the current index but remain present as ignored working files. The six pre-existing topic-policy failures and one pre-existing ranking fixture remain recorded baseline exceptions outside Phase 3; they were not fixed or rerun. Phases 4-7 remain untouched. Implement phases strictly in numeric order, update only the authorized phase's checkpoint, and do not continue automatically.
+Status: Phases 0-4 are complete. Phases 1 and 2 were committed together at `5915a0a8`; Phase 3 was committed separately at `444987db` and is recorded in `task-notes/2026-08-02_T21-46-22-0500_repository-trim-phase-3-generated-archive-untracking.md`. The 67 deterministic archive files are absent from the current index but remain present as ignored working files. Phase 4 is recorded in `task-notes/2026-08-02_T22-16-36-0500_repository-trim-phase-4-acquisition-curation-handoff.md` and remains uncommitted for owner review. The six pre-existing topic-policy failures and one pre-existing ranking fixture remain recorded baseline exceptions outside Phase 3; they were not fixed or rerun. Phases 5-7 remain untouched. Implement phases strictly in numeric order, update only the authorized phase's checkpoint, and do not continue automatically.
 
 ## Purpose
 
@@ -341,7 +341,7 @@ Complete this phase before untracking the archive.
 
 ## Phase 3: Stop Tracking the Deterministic Split Archive
 
-Status: completed 2026-08-02. Checkpoint: `task-notes/2026-08-02_T21-46-22-0500_repository-trim-phase-3-generated-archive-untracking.md`. Exactly 67 deterministic archive removals are staged; the ignored working files remain present. No later phase is authorized or implemented.
+Status: completed 2026-08-02 and committed separately at `444987db`. Checkpoint: `task-notes/2026-08-02_T21-46-22-0500_repository-trim-phase-3-generated-archive-untracking.md`. Exactly 67 deterministic archive paths were removed from tracking; the ignored working files remain present. Phase 3 itself did not authorize or implement later work.
 
 Starting baseline: committed Phase 1/2 state at `5915a0a8`. Keep Phase 3 as one coherent, separately reviewable change so the owner can revert it without disturbing that baseline.
 
@@ -374,7 +374,7 @@ Starting baseline: committed Phase 1/2 state at `5915a0a8`. Keep Phase 3 as one 
 
 ## Phase 4: Preserve and Simplify the Weekly Acquisition/Curation Handoff
 
-Status: not started.
+Status: completed and corrected after review on 2026-08-02; uncommitted for owner review. Checkpoint: `task-notes/2026-08-02_T22-16-36-0500_repository-trim-phase-4-acquisition-curation-handoff.md`. The cautious weekly command now retries every eligible missing TXT without forcing valid stored transcripts, opens a circuit breaker on blocking/rate-limit evidence, and prints the deterministic file-scoped curation handoff. Newly stored TXT paths remain checkpointed until successful handoff delivery, so an interrupted run re-emits them. The two explicit retry aliases are retired. No Phase 5 or later work is authorized or implemented.
 
 ### Tasks
 
@@ -388,6 +388,7 @@ Status: not started.
 ### Validation Gate
 
 - Focused offline fixtures cover stored TXT, deferred/failed records, retry eligibility, checkpoint recovery, circuit breaking, and deterministic handoff output.
+- An interruption/resume fixture proves that a stored TXT remains checkpointed and is re-emitted until successful handoff delivery acknowledges it, after which later runs do not duplicate it.
 - CLI help and current guidance name the supported owner commands.
 - Do not make live YouTube requests, run repository-wide tests, or build the site for Phase 4.
 
@@ -536,7 +537,7 @@ Each phase runs only its own gate. Do not run this entire table after every phas
 ## Rollback Principles
 
 - Land each phase as a coherent ordinary change so it can be reverted without mixing later work.
-- Commit `5915a0a8` is the Phase 3 starting baseline. Keep Phase 3 separate; if it fails after commit, revert only that Phase 3 change rather than resetting or rewriting the Phase 1/2 baseline.
+- Commit `5915a0a8` is the Phase 3 starting baseline, and Phase 3 was committed separately at `444987db`. If Phase 3 must be rolled back, revert that coherent commit rather than resetting or rewriting the Phase 1/2 baseline.
 - The Bun migration is closed. Later-phase rollback checks validate the canonical public commands and stable output contracts; they do not restore retired Node public aliases merely to rerun Node/Bun comparisons.
 - If a later phase regresses the source-read-only topic/generation boundary, revert that later phase coherently; do not compensate by allowing any site entrypoint to mutate `topics.json`.
 - If untracked generated data breaks a consumer, repair that consumer's generation boundary first. Temporarily reverting the coherent Phase 3 commit is safer than hand-adding selected generated shards.
