@@ -1,8 +1,6 @@
 import { dirname, join } from "node:path";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 
-import { google, type youtube_v3 } from "googleapis";
-
 import { slugifyVideoTitle, videoFileStem } from "../naming.js";
 import {
   defaultVideoMetadataOutput,
@@ -19,6 +17,13 @@ import {
   defaultIgnoredVideosInput,
   readIgnoredVideos,
 } from "./ignored-videos.js";
+import {
+  createYoutubeDataApiClient,
+  type ListPlaylistItemsParams,
+  type YoutubeDataApiClient,
+  type YoutubePlaylistItem,
+  type YoutubeVideo,
+} from "./youtube-data-api.js";
 
 export type ChannelVideoTab = "videos" | "streams";
 export type ChannelInventoryCompleteness = "complete" | "partial" | "unknown";
@@ -124,6 +129,8 @@ export interface FetchChannelVideoLinksOptions {
   checkpointOutput?: string;
   ignoredVideoIds?: ReadonlySet<string>;
   logger?: (message: string) => void;
+  apiClient?: YoutubeDataApiClient;
+  clock?: () => Date;
 }
 
 export interface ChannelVideoListResult {
@@ -243,7 +250,6 @@ export interface RateLimitedFetchOptions {
   sleep?: (ms: number) => Promise<void>;
 }
 
-type RequestGate = (label: string) => Promise<void>;
 type FetchInit = NonNullable<Parameters<typeof fetch>[1]>;
 type LabeledFetchInit = FetchInit & { [fetchRequestLabel]?: string };
 
@@ -302,30 +308,22 @@ export async function fetchChannelVideoLinks(
   options: FetchChannelVideoLinksOptions,
 ): Promise<ChannelVideoLinksResult> {
   const channelUrl = normalizeChannelUrl(options.channelUrl);
-  const apiKey = options.apiKey;
-  if (!apiKey) {
+  const apiKey = options.apiKey?.trim();
+  if (!apiKey && options.apiClient === undefined) {
     throw new Error("A YouTube Data API key is required. Pass --api-key or set YOUTUBE_API_KEY.");
   }
 
-  const youtube = google.youtube({ version: "v3", auth: apiKey });
-  const gateOptions: {
-    delayMs: number;
-    logger?: (message: string) => void;
-  } = {
-    delayMs: options.requestDelayMs,
-  };
-  if (options.logger !== undefined) {
-    gateOptions.logger = options.logger;
-  }
-  const gate = createRequestGate(gateOptions);
+  const youtube = options.apiClient ?? createYoutubeDataApiClient({
+    apiKey: apiKey ?? "",
+    requestDelayMs: options.requestDelayMs,
+    ...(options.logger !== undefined ? { logger: options.logger } : {}),
+  });
   const resolveOptions: {
     channelUrl: string;
     channelId?: string;
     uploadsPlaylistId?: string;
-    gate: RequestGate;
   } = {
     channelUrl,
-    gate,
   };
   if (options.channelId !== undefined) {
     resolveOptions.channelId = options.channelId;
@@ -334,7 +332,7 @@ export async function fetchChannelVideoLinks(
     resolveOptions.uploadsPlaylistId = options.uploadsPlaylistId;
   }
   const channel = await resolveOfficialChannel(youtube, resolveOptions);
-  const fetchedAt = new Date().toISOString();
+  const fetchedAt = (options.clock?.() ?? new Date()).toISOString();
   const tabState: ChannelVideoLinksResult["tabs"] = {
     videos: {
       url: `${channelUrl}/videos`,
@@ -356,8 +354,7 @@ export async function fetchChannelVideoLinks(
 
   while (true) {
     pagesFetched += 1;
-    await gate(`playlistItems.list uploads page ${pagesFetched}`);
-    const params: youtube_v3.Params$Resource$Playlistitems$List = {
+    const params: ListPlaylistItemsParams = {
       part: ["snippet", "contentDetails", "status"],
       playlistId: channel.uploadsPlaylistId,
       maxResults: 50,
@@ -366,8 +363,11 @@ export async function fetchChannelVideoLinks(
       params.pageToken = pageToken;
     }
 
-    const response = await youtube.playlistItems.list(params);
-    const items = response.data.items ?? [];
+    const response = await youtube.listPlaylistItems(
+      params,
+      `playlistItems.list uploads page ${pagesFetched}`,
+    );
+    const items = response.items;
     rawCount += items.length;
 
     for (const item of items) {
@@ -403,10 +403,10 @@ export async function fetchChannelVideoLinks(
       );
     }
 
-    if (!response.data.nextPageToken || (options.maxPages !== undefined && pagesFetched >= options.maxPages)) {
+    if (!response.nextPageToken || (options.maxPages !== undefined && pagesFetched >= options.maxPages)) {
       break;
     }
-    pageToken = response.data.nextPageToken;
+    pageToken = response.nextPageToken;
   }
 
   await enrichWithOfficialVideoDetails(
@@ -414,7 +414,6 @@ export async function fetchChannelVideoLinks(
     records,
     options.detailLimit,
     options.includeVideoDetails ?? false,
-    gate,
     options.logger,
   );
   const eligibleRecords = records.filter((record) => !isBlockedTranscriptDuration(record.durationSeconds));
@@ -725,7 +724,7 @@ export function resolveStoredTranscriptTxtPath(manifestPath: string, txtPath: st
   return join(dirname(manifestPath), txtPath).replaceAll("\\", "/");
 }
 
-function videoToResolverRecord(videoId: string, video: youtube_v3.Schema$Video): VideoMetadataRecord {
+function videoToResolverRecord(videoId: string, video: YoutubeVideo): VideoMetadataRecord {
   const record: VideoMetadataRecord = { videoId, fetchedAt: new Date(0).toISOString() };
   if (video.snippet !== undefined && video.snippet !== null) {
     record.snippet = video.snippet;
@@ -858,39 +857,12 @@ export function defaultChannelVideoLinksOptions(): FetchChannelVideoLinksOptions
   };
 }
 
-function createRequestGate(options: {
-  delayMs: number;
-  logger?: (message: string) => void;
-  now?: () => number;
-  sleep?: (ms: number) => Promise<void>;
-}): RequestGate {
-  const sleep = options.sleep ?? ((ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms)));
-  const now = options.now ?? (() => Date.now());
-  let lastStartMs: number | undefined;
-  let requestCount = 0;
-
-  return async (label: string) => {
-    if (lastStartMs !== undefined) {
-      const waitMs = Math.max(0, lastStartMs + options.delayMs - now());
-      if (waitMs > 0) {
-        options.logger?.(`Waiting ${Math.ceil(waitMs / 1000)}s before the next YouTube request.`);
-        await sleep(waitMs);
-      }
-    }
-
-    lastStartMs = now();
-    requestCount += 1;
-    options.logger?.(`YouTube Data API request ${requestCount}: ${label}`);
-  };
-}
-
 async function resolveOfficialChannel(
-  youtube: youtube_v3.Youtube,
+  youtube: YoutubeDataApiClient,
   options: {
     channelUrl: string;
     channelId?: string;
     uploadsPlaylistId?: string;
-    gate: RequestGate;
   },
 ): Promise<OfficialChannelInfo> {
   const channelId = options.channelId ?? channelIdFromUrl(options.channelUrl);
@@ -901,7 +873,11 @@ async function resolveOfficialChannel(
     };
   }
 
-  const params: youtube_v3.Params$Resource$Channels$List = {
+  const params: {
+    part: readonly string[];
+    id?: readonly string[];
+    forHandle?: string;
+  } = {
     part: ["contentDetails"],
   };
 
@@ -915,9 +891,8 @@ async function resolveOfficialChannel(
     params.forHandle = handle;
   }
 
-  await options.gate("channels.list contentDetails");
-  const response = await youtube.channels.list(params);
-  const channel = response.data.items?.[0];
+  const response = await youtube.listChannels(params, "channels.list contentDetails");
+  const channel = response.items[0];
   const resolvedChannelId = channel?.id ?? channelId;
   const uploadsPlaylistId =
     options.uploadsPlaylistId ?? channel?.contentDetails?.relatedPlaylists?.uploads ?? undefined;
@@ -933,7 +908,7 @@ async function resolveOfficialChannel(
 }
 
 function playlistItemToVideoLink(
-  item: youtube_v3.Schema$PlaylistItem,
+  item: YoutubePlaylistItem,
   tabPosition: number,
 ): ChannelVideoLink | undefined {
   const videoId = item.contentDetails?.videoId ?? item.snippet?.resourceId?.videoId ?? undefined;
@@ -963,29 +938,27 @@ function playlistItemToVideoLink(
 }
 
 async function enrichWithOfficialVideoDetails(
-  youtube: youtube_v3.Youtube,
+  youtube: YoutubeDataApiClient,
   links: ChannelVideoLink[],
   detailLimit: number | undefined,
   includeVideoDetails: boolean,
-  gate: RequestGate,
   logger: ((message: string) => void) | undefined,
 ): Promise<void> {
   if (includeVideoDetails && detailLimit === undefined) {
-    await enrichOfficialVideoBatch(youtube, links, true, gate, logger);
+    await enrichOfficialVideoBatch(youtube, links, true, logger);
     return;
   }
 
-  await enrichOfficialVideoBatch(youtube, links, false, gate, logger);
+  await enrichOfficialVideoBatch(youtube, links, false, logger);
   if (includeVideoDetails) {
-    await enrichOfficialVideoBatch(youtube, links.slice(0, detailLimit), true, gate, logger);
+    await enrichOfficialVideoBatch(youtube, links.slice(0, detailLimit), true, logger);
   }
 }
 
 async function enrichOfficialVideoBatch(
-  youtube: youtube_v3.Youtube,
+  youtube: YoutubeDataApiClient,
   links: ChannelVideoLink[],
   includeVideoDetails: boolean,
-  gate: RequestGate,
   logger: ((message: string) => void) | undefined,
 ): Promise<void> {
   const linksById = new Map(links.map((link) => [link.videoId, link]));
@@ -999,16 +972,18 @@ async function enrichOfficialVideoBatch(
     const requestLabel = includeVideoDetails
       ? "videos.list full metadata batch"
       : "videos.list duration/status eligibility batch";
-    await gate(`${requestLabel} ${Math.floor(index / 50) + 1}`);
-    const response = await youtube.videos.list({
-      part: includeVideoDetails
-        ? ["snippet", "contentDetails", "statistics", "status", "liveStreamingDetails"]
-        : ["contentDetails", "status"],
-      id: batch.map((link) => link.videoId),
-      maxResults: 50,
-    });
+    const response = await youtube.listVideos(
+      {
+        part: includeVideoDetails
+          ? ["snippet", "contentDetails", "statistics", "status", "liveStreamingDetails"]
+          : ["contentDetails", "status"],
+        id: batch.map((link) => link.videoId),
+        maxResults: 50,
+      },
+      `${requestLabel} ${Math.floor(index / 50) + 1}`,
+    );
 
-    for (const video of response.data.items ?? []) {
+    for (const video of response.items) {
       const videoId = video.id;
       const link = videoId ? linksById.get(videoId) : undefined;
       if (!link) {
@@ -1023,7 +998,7 @@ async function enrichOfficialVideoBatch(
   }
 }
 
-export function applyOfficialVideoMetadata(link: ChannelVideoLink, video: youtube_v3.Schema$Video): void {
+export function applyOfficialVideoMetadata(link: ChannelVideoLink, video: YoutubeVideo): void {
   applyOfficialVideoDuration(link, video);
   const snippet = video.snippet;
   const statistics = video.statistics;
@@ -1064,14 +1039,14 @@ export function applyOfficialVideoMetadata(link: ChannelVideoLink, video: youtub
   }
 }
 
-export function applyOfficialVideoDuration(link: ChannelVideoLink, video: youtube_v3.Schema$Video): void {
+export function applyOfficialVideoDuration(link: ChannelVideoLink, video: YoutubeVideo): void {
   const durationSeconds = parseYoutubeDurationSeconds(video.contentDetails?.duration ?? undefined);
   if (durationSeconds !== undefined) {
     link.durationSeconds = durationSeconds;
   }
 }
 
-export function officialVideoStreamStartTime(video: youtube_v3.Schema$Video): string | undefined {
+export function officialVideoStreamStartTime(video: YoutubeVideo): string | undefined {
   const videoId = video.id ?? "metadata-record";
   const state = resolveVideoState(videoToResolverRecord(videoId, video));
   return state.state === "ready" && state.videoKind === "stream" && state.videoDateKind !== "published"

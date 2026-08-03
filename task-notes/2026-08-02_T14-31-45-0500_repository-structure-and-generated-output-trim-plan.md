@@ -2,9 +2,9 @@
 
 Timestamp: 2026-08-02T14:31:45-05:00
 
-Reviewed: 2026-08-02T22:54:15-05:00
+Reviewed: 2026-08-02T23:31:05-05:00
 
-Status: Phases 0-4 are complete. Phases 1 and 2 were committed together at `5915a0a8`; Phase 3 was committed separately at `444987db` and is recorded in `task-notes/2026-08-02_T21-46-22-0500_repository-trim-phase-3-generated-archive-untracking.md`. The 67 deterministic archive files are absent from the current index but remain present as ignored working files. Phase 4 is recorded in `task-notes/2026-08-02_T22-16-36-0500_repository-trim-phase-4-acquisition-curation-handoff.md` and remains uncommitted for owner review. The six pre-existing topic-policy failures and one pre-existing ranking fixture remain recorded baseline exceptions outside Phase 3; they were not fixed or rerun. Phases 5-7 remain untouched. Implement phases strictly in numeric order, update only the authorized phase's checkpoint, and do not continue automatically.
+Status: Phases 0-5 are complete. Phases 1 and 2 were committed together at `5915a0a8`; Phase 3 was committed separately at `444987db` and is recorded in `task-notes/2026-08-02_T21-46-22-0500_repository-trim-phase-3-generated-archive-untracking.md`. The 67 deterministic archive files are absent from the current index but remain present as ignored working files. Phase 4 was committed separately at `faf770a5` and is recorded in `task-notes/2026-08-02_T22-16-36-0500_repository-trim-phase-4-acquisition-curation-handoff.md`. Phase 5 is recorded in `task-notes/2026-08-02_T23-10-51-0500_repository-trim-phase-5-youtube-data-api-client.md` and remains uncommitted for owner review. The six pre-existing topic-policy failures and one pre-existing ranking fixture remain recorded baseline exceptions outside Phase 3; they were not fixed or rerun. Phases 6-7 remain untouched. Implement phases strictly in numeric order, update only the authorized phase's checkpoint, and do not continue automatically.
 
 ## Purpose
 
@@ -374,7 +374,7 @@ Starting baseline: committed Phase 1/2 state at `5915a0a8`. Keep Phase 3 as one 
 
 ## Phase 4: Preserve and Simplify the Weekly Acquisition/Curation Handoff
 
-Status: completed and corrected after review on 2026-08-02; uncommitted for owner review. Checkpoint: `task-notes/2026-08-02_T22-16-36-0500_repository-trim-phase-4-acquisition-curation-handoff.md`. The cautious weekly command now retries every eligible missing TXT without forcing valid stored transcripts, opens a circuit breaker on blocking/rate-limit evidence, and prints the deterministic file-scoped curation handoff. Newly stored TXT paths remain checkpointed until successful handoff delivery, so an interrupted run re-emits them. The two explicit retry aliases are retired. No Phase 5 or later work is authorized or implemented.
+Status: completed, corrected after review, and committed at `faf770a5` on 2026-08-02. Checkpoint: `task-notes/2026-08-02_T22-16-36-0500_repository-trim-phase-4-acquisition-curation-handoff.md`. The cautious weekly command now retries every eligible missing TXT without forcing valid stored transcripts, opens a circuit breaker on blocking/rate-limit evidence, and prints the deterministic file-scoped curation handoff. Newly stored TXT paths remain checkpointed until successful handoff delivery, so an interrupted run re-emits them. The two explicit retry aliases are retired. Phase 4 did not authorize or include Phase 5 or later work.
 
 ### Tasks
 
@@ -394,9 +394,9 @@ Status: completed and corrected after review on 2026-08-02; uncommitted for owne
 
 ## Phase 5: Replace the Broad `googleapis` Dependency
 
-Status: not started.
+Status: completed and corrected after review on 2026-08-02. Checkpoint: `task-notes/2026-08-02_T23-10-51-0500_repository-trim-phase-5-youtube-data-api-client.md`. The channels, playlist-items, and videos calls now use one typed Node 22 `fetch` client with injected offline-test dependencies, bounded attempts and retry delays, pacing, response validation, and secret-safe failures. Both supported workflows retain pagination, batching, filtering, checkpoints, and CLI contracts. `googleapis` and its unreachable lockfile closure are removed. No live canary or Phase 6/7 work was authorized or performed.
 
-The dependency currently occupies 197.87 MiB and 1,851 installed files. Only `src/youtube/channel-video-links.ts` and `src/youtube/video-metadata.ts` import it.
+At the Phase 0 baseline, the dependency occupied 197.87 MiB and 1,851 installed files. Before Phase 5, only `src/youtube/channel-video-links.ts` and `src/youtube/video-metadata.ts` imported it.
 
 ### Tasks
 

@@ -1,7 +1,16 @@
 import { dirname } from "node:path";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 
-import { google, type youtube_v3 } from "googleapis";
+import {
+  createYoutubeDataApiClient,
+  type YoutubeDataApiClient,
+  type YoutubeVideo,
+  type YoutubeVideoContentDetails,
+  type YoutubeVideoLiveStreamingDetails,
+  type YoutubeVideoSnippet,
+  type YoutubeVideoStatistics,
+  type YoutubeVideoStatus,
+} from "./youtube-data-api.js";
 
 export const defaultVideoMetadataInput = "src/channel/episodes.json";
 export const defaultVideoMetadataOutput = "src/channel/video-metadata.json";
@@ -41,11 +50,11 @@ export interface VideoMetadataRecord {
   fetchedAt: string;
   etag?: string;
   kind?: string;
-  snippet?: youtube_v3.Schema$VideoSnippet;
-  contentDetails?: youtube_v3.Schema$VideoContentDetails;
-  statistics?: youtube_v3.Schema$VideoStatistics;
-  status?: youtube_v3.Schema$VideoStatus;
-  liveStreamingDetails?: youtube_v3.Schema$VideoLiveStreamingDetails;
+  snippet?: YoutubeVideoSnippet;
+  contentDetails?: YoutubeVideoContentDetails;
+  statistics?: YoutubeVideoStatistics;
+  status?: YoutubeVideoStatus;
+  liveStreamingDetails?: YoutubeVideoLiveStreamingDetails;
 }
 
 export interface FetchVideoMetadataOptions {
@@ -60,6 +69,8 @@ export interface FetchVideoMetadataOptions {
   refreshVideoIds?: string[];
   ignoredVideoIds?: ReadonlySet<string>;
   logger?: (message: string) => void;
+  apiClient?: YoutubeDataApiClient;
+  clock?: () => Date;
 }
 
 export interface VideoNamingMetadata {
@@ -374,7 +385,7 @@ function invalidVideoState(
 
 export async function fetchAndStoreVideoMetadata(options: FetchVideoMetadataOptions): Promise<VideoMetadataStore> {
   const apiKey = options.apiKey.trim();
-  if (!apiKey) {
+  if (!apiKey && options.apiClient === undefined) {
     throw new Error("A YouTube Data API key is required. Pass --api-key or set YOUTUBE_API_KEY.");
   }
 
@@ -398,35 +409,32 @@ export async function fetchAndStoreVideoMetadata(options: FetchVideoMetadataOpti
   const targetIds = selectVideoMetadataTargetIds({
     videoIds,
     recordsById,
+    ...(options.clock !== undefined ? { now: options.clock() } : {}),
     ...(options.refreshVideoIds !== undefined ? { refreshVideoIds: options.refreshVideoIds } : {}),
     ...(options.force !== undefined ? { force: options.force } : {}),
   });
   const pendingIds = options.limit === undefined ? targetIds : targetIds.slice(0, options.limit);
-  const youtube = google.youtube({ version: "v3", auth: apiKey });
-  const gateOptions: {
-    delayMs: number;
-    logger?: (message: string) => void;
-  } = {
-    delayMs: options.requestDelayMs,
-  };
-  if (options.logger !== undefined) {
-    gateOptions.logger = options.logger;
-  }
-  const gate = createRequestGate(gateOptions);
+  const youtube = options.apiClient ?? createYoutubeDataApiClient({
+    apiKey,
+    requestDelayMs: options.requestDelayMs,
+    ...(options.logger !== undefined ? { logger: options.logger } : {}),
+  });
   let batchesFetched = 0;
 
   for (let index = 0; index < pendingIds.length; index += options.batchSize) {
     const batch = pendingIds.slice(index, index + options.batchSize);
-    await gate(`videos.list full metadata ${index + 1}-${index + batch.length}/${pendingIds.length}`);
-    const response = await youtube.videos.list({
-      part: [...defaultVideoMetadataParts],
-      id: batch,
-      maxResults: batch.length,
-    });
-    const fetchedAt = new Date().toISOString();
+    const response = await youtube.listVideos(
+      {
+        part: [...defaultVideoMetadataParts],
+        id: batch,
+        maxResults: batch.length,
+      },
+      `videos.list full metadata ${index + 1}-${index + batch.length}/${pendingIds.length}`,
+    );
+    const fetchedAt = (options.clock?.() ?? new Date()).toISOString();
     batchesFetched += 1;
 
-    for (const video of response.data.items ?? []) {
+    for (const video of response.items) {
       const record = videoToMetadataRecord(video, fetchedAt);
       if (record !== undefined) {
         recordsById.set(record.videoId, record);
@@ -440,6 +448,7 @@ export async function fetchAndStoreVideoMetadata(options: FetchVideoMetadataOpti
       videoIds,
       recordsById,
       batchesFetched,
+      generatedAt: (options.clock?.() ?? new Date()).toISOString(),
       ...(additionalVideoIds.length > 0 ? { additionalVideoIds } : {}),
     }));
     options.logger?.(`Stored metadata for ${recordsById.size}/${videoIds.length} videos.`);
@@ -452,6 +461,7 @@ export async function fetchAndStoreVideoMetadata(options: FetchVideoMetadataOpti
     videoIds,
     recordsById,
     batchesFetched,
+    generatedAt: (options.clock?.() ?? new Date()).toISOString(),
     ...(additionalVideoIds.length > 0 ? { additionalVideoIds } : {}),
   });
   if (batchesFetched === 0) {
@@ -467,6 +477,7 @@ export function buildVideoMetadataStore(options: {
   videoIds: string[];
   recordsById: ReadonlyMap<string, VideoMetadataRecord>;
   batchesFetched: number;
+  generatedAt?: string;
   additionalVideoIds?: string[];
 }): VideoMetadataStore {
   const videos = options.videoIds
@@ -477,7 +488,7 @@ export function buildVideoMetadataStore(options: {
 
   return {
     schemaVersion: 1,
-    generatedAt: new Date().toISOString(),
+    generatedAt: options.generatedAt ?? new Date().toISOString(),
     source: {
       api: "youtube-data-api-v3",
       inputPath: options.inputPath,
@@ -516,7 +527,7 @@ async function writeVideoMetadataStore(path: string, store: VideoMetadataStore):
 }
 
 function videoToMetadataRecord(
-  video: youtube_v3.Schema$Video,
+  video: YoutubeVideo,
   fetchedAt: string,
 ): VideoMetadataRecord | undefined {
   const videoId = video.id ?? undefined;
@@ -552,32 +563,6 @@ function videoToMetadataRecord(
   }
 
   return record;
-}
-
-function createRequestGate(options: {
-  delayMs: number;
-  logger?: (message: string) => void;
-  now?: () => number;
-  sleep?: (ms: number) => Promise<void>;
-}): (label: string) => Promise<void> {
-  const sleep = options.sleep ?? ((ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms)));
-  const now = options.now ?? (() => Date.now());
-  let lastStartMs: number | undefined;
-  let requestCount = 0;
-
-  return async (label: string) => {
-    if (lastStartMs !== undefined) {
-      const waitMs = Math.max(0, lastStartMs + options.delayMs - now());
-      if (waitMs > 0) {
-        options.logger?.(`Waiting ${Math.ceil(waitMs / 1000)}s before the next YouTube Data API request.`);
-        await sleep(waitMs);
-      }
-    }
-
-    lastStartMs = now();
-    requestCount += 1;
-    options.logger?.(`YouTube Data API request ${requestCount}: ${label}`);
-  };
 }
 
 function readString(object: Record<string, unknown> | undefined, key: string): string | undefined {
