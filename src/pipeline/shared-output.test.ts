@@ -268,13 +268,14 @@ test("Astro dev does not watch generated production output", async () => {
   assert.match(astroConfig, /ignored:\s*\["\*\*\/site\/dist\/\*\*"\]/u);
 });
 
-test("GitHub Pages installs Bun, removes the archive, and runs the one-pass CI graph", async () => {
+test("GitHub Pages configures Chrome and Bun before running the one-pass CI graph", async () => {
   const [workflow, bunVersion] = await Promise.all([
     readFile(join(repositoryRoot, ".github", "workflows", "deploy-site.yml"), "utf8"),
     readFile(join(repositoryRoot, ".bun-version"), "utf8"),
   ]);
 
   assert.equal(bunVersion.trim(), "1.3.14");
+  assert.match(workflow, /CHROME_PATH:\s*\/usr\/bin\/google-chrome/u);
   assert.match(workflow, /uses: oven-sh\/setup-bun@v2/u);
   assert.match(workflow, /bun-version: 1\.3\.14/u);
   assert.ok(
