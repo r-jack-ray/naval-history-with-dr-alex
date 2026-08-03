@@ -102,12 +102,12 @@
     },
     {
       "stratum": "unique-title",
-      "query": "Queen Elizabeth Class",
+      "query": "Queen Elizabeth Class Battleships",
       "queryKind": "unique-title",
-      "sourceTopicSlugs": ["queen-elizabeth-class"],
+      "sourceTopicSlugs": ["queen-elizabeth-class-battleships"],
       "expectedRankedUrls": [
         {
-          "url": "/topics/queen-elizabeth-class/",
+          "url": "/topics/queen-elizabeth-class-battleships/",
           "maxRank": 1
         }
       ],
@@ -357,64 +357,56 @@
       "reason": "The unique unhyphenated morphology should find the canonical Pre-Dreadnoughts topic."
     },
     {
-      "stratum": "ambiguous",
+      "stratum": "unique-alias",
       "query": "Jutland",
-      "queryKind": "ambiguous",
-      "sourceTopicSlugs": [
-        "battle-of-jutland",
-        "jutland"
+      "queryKind": "unique-alias",
+      "sourceTopicSlugs": ["battle-of-jutland"],
+      "expectedRankedUrls": [
+        {
+          "url": "/topics/battle-of-jutland/",
+          "maxRank": 3
+        }
       ],
-      "allowedTopUrls": [
-        "/topics/battle-of-jutland/",
-        "/topics/jutland/"
-      ],
-      "allowedTopRank": 1,
-      "reason": "The registry contains both a canonical battle alias and a separate Jutland title."
+      "reason": "The unique historical alias should find the canonical Battle of Jutland topic."
     },
     {
-      "stratum": "ambiguous",
+      "stratum": "unique-title",
       "query": "Austrian Navy",
-      "queryKind": "ambiguous",
-      "sourceTopicSlugs": [
-        "austro-hungarian-navy",
-        "austrian-navy"
+      "queryKind": "unique-title",
+      "sourceTopicSlugs": ["austrian-navy"],
+      "expectedRankedUrls": [
+        {
+          "url": "/topics/austrian-navy/",
+          "maxRank": 1
+        }
       ],
-      "allowedTopUrls": [
-        "/topics/austro-hungarian-navy/",
-        "/topics/austrian-navy/"
-      ],
-      "allowedTopRank": 1,
-      "reason": "The phrase is both an Austro-Hungarian Navy alias and its own topic title."
+      "reason": "The exact title should find the distinct Austrian Navy topic."
     },
     {
-      "stratum": "ambiguous",
+      "stratum": "unique-title",
       "query": "Dreadnoughts",
-      "queryKind": "ambiguous",
-      "sourceTopicSlugs": [
-        "battleships",
-        "dreadnoughts"
+      "queryKind": "unique-title",
+      "sourceTopicSlugs": ["dreadnoughts"],
+      "expectedRankedUrls": [
+        {
+          "url": "/topics/dreadnoughts/",
+          "maxRank": 1
+        }
       ],
-      "allowedTopUrls": [
-        "/topics/battleships/",
-        "/topics/dreadnoughts/"
-      ],
-      "allowedTopRank": 1,
-      "reason": "The phrase is both a Battleships alias and a separate canonical topic."
+      "reason": "The exact title should find the canonical Dreadnoughts topic."
     },
     {
-      "stratum": "ambiguous",
+      "stratum": "unique-title",
       "query": "Aircraft Carriers",
-      "queryKind": "ambiguous",
-      "sourceTopicSlugs": [
-        "fleet-carriers",
-        "aircraft-carriers"
+      "queryKind": "unique-title",
+      "sourceTopicSlugs": ["aircraft-carriers"],
+      "expectedRankedUrls": [
+        {
+          "url": "/topics/aircraft-carriers/",
+          "maxRank": 1
+        }
       ],
-      "allowedTopUrls": [
-        "/topics/fleet-carriers/",
-        "/topics/aircraft-carriers/"
-      ],
-      "allowedTopRank": 1,
-      "reason": "The phrase is both a Fleet Carriers alias and its own topic title."
+      "reason": "The exact title should find the canonical Aircraft Carriers topic."
     }
   ]
 }

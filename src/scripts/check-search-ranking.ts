@@ -24,10 +24,10 @@ const batchSize = 24;
 const benchmarkQueries = ["HMS Victory", "HMS Victoria", "RN", "Skagerrak", "Radar"] as const;
 const stratumCounts = {
   regression: 1,
-  "unique-title": 8,
+  "unique-title": 11,
   collision: 6,
-  "unique-alias": 4,
-  ambiguous: 4,
+  "unique-alias": 5,
+  ambiguous: 0,
 } as const;
 
 type Mode = "baseline" | "candidate" | "final";
@@ -422,7 +422,7 @@ async function validateFixture(
   fixture: RankingFixture,
   topics: readonly SourceTopic[],
 ): Promise<ReadonlySet<string>> {
-  const expectedCaseCount = Object.values(stratumCounts).reduce((sum, count) => sum + count, 0);
+  const expectedCaseCount = Object.values(stratumCounts).reduce<number>((sum, count) => sum + count, 0);
   if (fixture.cases.length !== expectedCaseCount) {
     throw new Error(`The ranking fixture must contain exactly ${expectedCaseCount} cases.`);
   }
