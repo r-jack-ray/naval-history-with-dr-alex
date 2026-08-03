@@ -23,7 +23,7 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` when working on
 - Use `src/transcripts/manifest.json` for stored transcript identity and manifest-owned `fileStem` references.
 - Use `src/derived/video-segments/` for current curated video, segment, and topic source data.
 - Use `src/derived/topic-normalization-patterns.tsv` for the generated archive's topic-normalization policy and provenance.
-- Use `src/site/archive-data.ts` and the source-read-only `npm run generate:site-data` boundary to produce the tracked manifest and JSON shards under `site/src/data/generated/archive/`; `index.json` is the authoritative generated-file manifest. Run `npm run sync:video-topics` explicitly when registry records are missing.
+- Use `src/site/archive-data.ts` and the source-read-only `npm run generate:site-data` boundary to produce the ignored manifest and JSON shards under `site/src/data/generated/archive/`; `index.json` is the authoritative runtime manifest even though Git does not track it. Run `npm run sync:video-topics` explicitly when registry records are missing.
 - Use `site/src/data/archive.ts` as the build-time split-manifest reader and `.codex/hooks/site-build-if-changed.mjs` as the cache and preflight integrity validator.
 - Use the manifest-owned `src/transcripts/txt/` file as the transcript source of record when a task explicitly asks for transcript-backed curation.
 

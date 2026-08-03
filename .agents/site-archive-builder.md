@@ -37,7 +37,7 @@ Use this brief with `$naval-video-page-prototype` when working on the Astro/Page
 ## Site Expectations
 
 - Keep GitHub Pages compatibility in mind: the site base path is `/naval-history-with-dr-alex/`.
-- Verify registry completeness with `npm run check:video-topics`, then regenerate the tracked `index.json`, `videos.json`, `topics.json`, and hash-bucketed segment files under `site/src/data/generated/archive/` through `npm run generate:site-data`, `npm run site:check`, or `npm run site:build`; do not hand-edit the manifest or its listed files.
+- Verify registry completeness with `npm run check:video-topics`, then regenerate the ignored `index.json`, `videos.json`, `topics.json`, and hash-bucketed segment files under `site/src/data/generated/archive/` through `npm run generate:site-data`, `npm run site:check`, or `npm run site:build`; do not hand-edit or commit the manifest or its listed files. `index.json` remains the runtime manifest.
 - Keep generated output under `site/dist/`; do not commit it.
 - Keep exported Astro `getStaticPaths` dependencies inside its isolated scope. Put reusable sorting and lookup logic in imported `site/src/data/archive.ts` helpers instead of frontmatter-local computed constants.
 - Add Pagefind metadata and filters where pages expose videos, topics, or segment types.

@@ -53,7 +53,7 @@ src/
     txt/                   Stored timestamped transcript text; source of record
 site/
   src/                     Astro pages, layouts, styles, client scripts, and data adapters
-    data/generated/archive/ Tracked deterministic archive dataset
+    data/generated/archive/ Ignored deterministic archive dataset
       index.json           Authoritative generated-file manifest
       videos.json          Generated video-guide records
       topics.json          Generated topic records
@@ -112,7 +112,7 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 | `check:generated` | Generate the archive once and run Astro diagnostics without regeneration. |
 | `check` | Run all network-free quick, functional, source, and generated-data layers. |
 | `check:production` | Build Astro and official Pagefind from the existing archive, then run SEO, search-ranking, and rendered-date validation. |
-| `check:repository-policy` | Reject whitespace errors or tracked files changed by the validation graph. |
+| `check:repository-policy` | Require the generated archive to be untracked and ignored, and reject whitespace errors or tracked files changed by the validation graph. |
 | `check:ci` | Run `check`, the official production layer, and repository policy as the one-pass Pages graph. |
 
 ### Curated Content and Reports
@@ -152,7 +152,7 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 
 | Script | Purpose |
 | --- | --- |
-| `generate:site-data` | Validate registry completeness and regenerate the tracked split archive under the generated-output writer lease. It never writes `src/derived/video-segments/topics.json`. |
+| `generate:site-data` | Validate registry completeness and regenerate the ignored split archive under the generated-output writer lease. It never writes `src/derived/video-segments/topics.json`. |
 | `site:dev` | Validate/generate the archive, then start Astro without changing canonical source. |
 | `site:dev:generated` | Internal Astro development stage using an existing generated archive. |
 | `site:preview` | Preview an existing `site/dist/` build. |
@@ -195,13 +195,13 @@ npm run site:build
 npm run site:preview
 ```
 
-`npm run site:dev` and `npm run site:check` both generate `site/src/data/generated/archive/` before Astro starts, so a fresh clone does not require a remembered manual generation step. `npm run site:build` fingerprints the generator and site inputs, validates the manifest-listed generated files and SHA-256 values, and regenerates or rebuilds only when inputs or outputs changed; pass `-- --force` to bypass its caches. All three paths are read-only with respect to canonical inputs. If a shard references a missing registry record, run `npm run sync:video-topics`, review the source change, and retry. A performed build emits `site/dist/` and runs Pagefind against that output. Run `site:preview` after a build when you want to inspect that production output locally.
+`npm run site:dev` and `npm run site:check` both generate the ignored `site/src/data/generated/archive/` dataset before Astro starts, so a fresh clone does not require a remembered manual generation step. `npm run site:build` fingerprints the generator and site inputs, validates the manifest-listed generated files and SHA-256 values, and regenerates or rebuilds only when inputs or outputs changed; pass `-- --force` to bypass its caches. All three paths are read-only with respect to canonical inputs. If a shard references a missing registry record, run `npm run sync:video-topics`, review the source change, and retry. A performed build emits `site/dist/` and runs Pagefind against that output. Run `site:preview` after a build when you want to inspect that production output locally.
 
 The four promoted Bun-backed maintenance commands (`report:video-topic-usage`, `sync:video-topics`, `audit:topic-normalization`, and `generate:site-data`) plus the read-only `check:video-topics` command use `--workers <count>` with a default of the smaller of eight or the available CPUs. Bun `1.3.14` is pinned in `.bun-version`; each command preserves its output path and ownership contract and reports `runtime=bun` in its summary.
 
 Site generation, Astro/Pagefind build, preview, check, and rendered-SEO validation commands load the shared `site-build.properties` file. It uses commentable `KEY=value` settings in the style of an application properties file. `ASTRO_BUILD_CONCURRENCY` controls parallel Astro page rendering and accepts `1` through `4`; `SITE_SEO_VALIDATION_CONCURRENCY` controls rendered-HTML validation workers and accepts `1` through `32`. A value already present in the calling environment takes precedence. Pagefind 1.5.2 exposes no build-concurrency setting.
 
-The authoritative generated `index.json` manifest lists the tracked collection files and segment buckets. Full Astro/Pagefind builds traverse more than 50,000 HTML pages, can take several minutes, and may be quiet while Astro runs; allow at least 15 minutes before treating an agent-run build as timed out. Do not hand-edit the generated archive dataset, and do not commit generated `site/dist/` files.
+The authoritative generated `index.json` runtime manifest lists the collection files and segment buckets. Full Astro/Pagefind builds traverse more than 50,000 HTML pages, can take several minutes, and may be quiet while Astro runs; allow at least 15 minutes before treating an agent-run build as timed out. Do not hand-edit or commit the generated archive dataset, and do not commit generated `site/dist/` files.
 
 The generated site exposes:
 
@@ -401,7 +401,7 @@ The process is intentionally segment-first. Use `kind: qa` only for actual Q&A e
 
 ### Shared Content-Pipeline Writes
 
-The generated manifest and shards under `site/src/data/generated/archive/` remain tracked through Phase 2 so Astro can statically import a reviewable archive dataset. `npm run generate:site-data`, `npm run site:dev`, and `npm run site:check` regenerate it directly; `npm run site:build` regenerates it only when its validated cache requires that stage. These commands fail with an actionable `npm run sync:video-topics` instruction rather than editing the canonical registry. Never hand-edit `index.json` or its listed files. The one-pass CI graph generates the archive once through `site:check`, then uses `site:build:generated` for Astro and official Pagefind.
+The deterministic manifest and shards under `site/src/data/generated/archive/` are ignored build output, not canonical source. `npm run generate:site-data`, `npm run site:dev`, and `npm run site:check` regenerate them directly; `npm run site:build` regenerates them only when its validated cache requires that stage. These commands fail with an actionable `npm run sync:video-topics` instruction rather than editing the canonical registry. Never hand-edit or commit `index.json` or its listed files; `index.json` remains the runtime manifest even though Git does not track it. The one-pass CI graph generates the archive once through `site:check`, then uses `site:build:generated` for Astro and official Pagefind.
 
 The generated archive, backlog report, and shared topic registry are protected by the repository-wide writer lease at `.tmp/site-content-pipeline.lock`. Direct shared-writer commands such as `npm run audit:site-content`, `npm run sync:video-topics`, and `npm run generate:site-data` acquire a short-lived lease automatically. A coordinator that intentionally groups several shared-output operations may acquire one persistent lease and pass its token to the supported commands:
 

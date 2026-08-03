@@ -2,9 +2,9 @@
 
 Timestamp: 2026-08-02T14:31:45-05:00
 
-Reviewed: 2026-08-02T20:33:25-05:00
+Reviewed: 2026-08-02T21:46:22-05:00
 
-Status: Phase 0 was completed on 2026-08-02 as a measurement-only checkpoint; its baseline and repeatable canary are recorded in `task-notes/2026-08-02_T16-50-00-0500_repository-trim-phase-0-baseline.md`. Phase 1 was completed on 2026-08-02 after its reviewed generator callers, writer-lease help example, and archive-integrity assertion were corrected and the full Phase 1 gate was rerun; see `task-notes/2026-08-02_T18-03-44-0500_repository-trim-phase-1-bun-command-promotion.md`. Phase 2 implementation completed on 2026-08-02 and is recorded in `task-notes/2026-08-02_T20-24-59-0500_repository-trim-phase-2-source-read-only-build-graph.md`; its source-read-only, missing-archive, topic-canary, and Pagefind gates passed, but its complete validation gate remains blocked by the previously recorded topic-policy and ranking fixtures. Phase 3 remains unauthorized and blocked. A separate topic-curation run completed part of the Phase 6 subject-matter baseline after the original snapshot; that verified current state is recorded below but does not authorize any remaining phase. Implement phases strictly in numeric order, update only the authorized phase's checkpoint, and do not continue automatically.
+Status: Phases 0-3 are complete. Phases 1 and 2 were committed together at `5915a0a8`; Phase 3 is recorded in `task-notes/2026-08-02_T21-46-22-0500_repository-trim-phase-3-generated-archive-untracking.md` and remains uncommitted for owner review. The 67 deterministic archive files are absent from the current index but remain present as ignored working files. The six pre-existing topic-policy failures and one pre-existing ranking fixture remain recorded baseline exceptions outside Phase 3; they were not fixed or rerun. Phases 4-7 remain untouched. Implement phases strictly in numeric order, update only the authorized phase's checkpoint, and do not continue automatically.
 
 ## Purpose
 
@@ -179,7 +179,7 @@ Reusable conclusions:
 
 ## Measured Naval Repository Baseline
 
-Snapshot originally taken 2026-08-02 before this plan was written and refreshed for directly measurable volatile rows during the 15:53 review. These values are evidence, not permanent acceptance constants; Phase 0 must remeasure them from a coordinated quiet state and clean validation clone.
+Snapshot originally taken 2026-08-02 before this plan was written and refreshed for directly measurable volatile rows during the 15:53 review. These rows are historical evidence. The completed Phase 0 checkpoint and committed Phase 1/2 state supersede them; do not remeasure or treat them as current requirements.
 
 | Item | Measured value | Consequence |
 | --- | ---: | --- |
@@ -196,7 +196,7 @@ Snapshot originally taken 2026-08-02 before this plan was written and refreshed 
 | Installed `googleapis` directory | 1,851 files, 197.87 MiB | Only two source modules import it; this is a high-value parity replacement candidate. |
 | Current local Bun | 1.3.14 | Record and pin an explicitly tested Bun version before making Bun mandatory in CI. |
 
-Current report policy and observed files:
+Original report policy and observed files:
 
 - `reports/` is ignored by `.gitignore`; the tracking baseline records all three owner-kept TSVs as untracked on-demand output.
 - `reports/video-segment-audit-risk.tsv` exists locally and is 443,270 bytes.
@@ -207,7 +207,7 @@ Current report policy and observed files:
 - The read-only `audit:topic-normalization` review on 2026-08-02 covered 2,142 shards, 25,258 registry topics, and 25,212 used topics with 0 blockers and 0 review findings. Phase 6 must preserve this completed baseline and add durable documentation/regression coverage rather than redoing the corpus migration without new evidence.
 - Other existing reports require the Phase 6 consumer/lifecycle review before retention or retirement.
 
-Current build observations:
+Original build observations, superseded where noted by the committed Phase 1/2 checkpoints:
 
 - `generate:site-data` writes the manifest plus 64 segment buckets, videos, and topics into `site/src/data/generated/archive/`. The reviewed `index.json` uses split-manifest schema version 7 and declares 2,142 videos, 58,958 segments, and 25,258 topics; the reconstructed logical archive remains schema version 6.
 - The archive writer is deterministic and lease-guarded. It writes each JSON file atomically, verifies data-file hashes, publishes `index.json` after the data files, removes extra JSON, and validates the complete directory.
@@ -266,7 +266,7 @@ Owner correction: Node/Bun equivalence and performance proof predated this plan.
 
 ## Phase 1: Promote the Proven Bun Paths to Canonical Commands
 
-Status: completed 2026-08-02. Checkpoint: `task-notes/2026-08-02_T18-03-44-0500_repository-trim-phase-1-bun-command-promotion.md`. The reviewed generator callers and writer-lease help example now invoke the Bun CLI, the build-wrapper test structurally couples `ensureBuiltSite` to archive-integrity validation, and the full Phase 1 gate was rerun. No later repository-trim phase is authorized or implemented.
+Status: completed 2026-08-02 and committed with Phase 2 at `5915a0a8`. Checkpoint: `task-notes/2026-08-02_T18-03-44-0500_repository-trim-phase-1-bun-command-promotion.md`. The reviewed generator callers and writer-lease help example invoke the Bun CLI, and the build-wrapper test structurally couples `ensureBuiltSite` to archive-integrity validation.
 
 The Bun migration is closed. Phases 2-7 validate the unsuffixed canonical Bun commands only. They must not execute retired Node CLI variants, rerun Node/Bun output comparisons, or add Node/Bun performance benchmarks. Runtime-neutral TypeScript modules may remain as implementation details where they still have callers.
 
@@ -302,7 +302,7 @@ The four completed migrations were:
 
 ## Phase 2: Build Once and Make Missing Generated Data a Supported State
 
-Status: implementation completed 2026-08-02; checkpoint: `task-notes/2026-08-02_T20-24-59-0500_repository-trim-phase-2-source-read-only-build-graph.md`. The full gate remains blocked by six pre-existing topic-policy test expectations and the pre-existing `queen-elizabeth-class` ranking fixture. Phase 3 remains unauthorized and blocked. Do not rerun the full Phase 2 validation campaign; any authorized correction must target only the named blocker or a changed code path and reuse the retained Phase 2 evidence.
+Status: completed 2026-08-02 and committed at `5915a0a8`. Checkpoint: `task-notes/2026-08-02_T20-24-59-0500_repository-trim-phase-2-source-read-only-build-graph.md`. The source-read-only, missing-archive, single-generation, topic-canary, and Pagefind evidence required for Phase 3 passed. Six pre-existing topic-policy expectations and the pre-existing `queen-elizabeth-class` ranking fixture remain known non-Phase-2 failures; this tightened plan classifies them as non-blocking baseline exceptions for Phase 3 sequencing, not as correct or resolved. Do not rerun the full Phase 2 campaign. Recheck only a path changed by a later authorized phase.
 
 Complete this phase before untracking the archive.
 
@@ -341,35 +341,36 @@ Complete this phase before untracking the archive.
 
 ## Phase 3: Stop Tracking the Deterministic Split Archive
 
-Status: not started.
+Status: completed 2026-08-02. Checkpoint: `task-notes/2026-08-02_T21-46-22-0500_repository-trim-phase-3-generated-archive-untracking.md`. Exactly 67 deterministic archive removals are staged; the ignored working files remain present. No later phase is authorized or implemented.
+
+Starting baseline: committed Phase 1/2 state at `5915a0a8`. Keep Phase 3 as one coherent, separately reviewable change so the owner can revert it without disturbing that baseline.
 
 ### Tasks
 
 - Add an anchored ignore rule for `/site/src/data/generated/archive/`.
-- Remove the 67 generated files from the Git index in one ordinary cleanup change while allowing local regeneration to recreate ignored working files.
-- Add a cross-platform repository-policy command for Git checkouts that fails if `git ls-files -- site/src/data/generated/archive` returns any path and fails if an archive probe is not ignored. Keep this out of ordinary library unit tests; non-Git source packages must receive a clear not-applicable result rather than an unrelated test failure.
-- Preserve generator support for `--output-dir` so tests can generate into isolated directories.
-- Retain the deterministic generation comparison already proven in Phase 2. Because Phase 3 changes tracking and ignore policy rather than generator behavior, do not rerun that comparison unless Phase 3 also changes generator code or output.
-- Update current contracts in README, AGENTS, `.agents/site-archive-builder.md`, `$naval-video-page-prototype`, `$naval-site-build-repair`, and relevant shared-output tests:
+- Remove exactly the 67 generated archive files from the Git index while leaving the working files present and recoverable by generation.
+- Because index removal is the purpose of this phase, staging those 67 deletions is expected. Stage no other path; the owner controls the final commit.
+- Extend the existing `check:repository-policy` command so a Git checkout fails when any archive path is tracked or the anchored ignore rule does not cover an archive probe. Preserve its clear not-applicable result outside a Git checkout.
+- Update only current guidance or focused policy tests that still state the archive is tracked. The current contract is:
   - the archive is generated and ignored
   - it is never hand-edited
   - `generate:site-data`, `site:dev`, `site:check`, and `site:build` own or invoke source-read-only regeneration
   - file-scoped transcript/content skills do not write it
   - `index.json` remains the runtime manifest even though it is no longer Git-tracked
-- Do not rewrite completed historical task notes merely because they record the former tracked policy. Add a short superseding note to current guidance instead.
-- Do not remove the archive manifest, integrity validation, 64-bucket contract, source provenance, atomic replacement, cache sentinels, or writer lease.
-- Reuse the Phase 0 baseline and the Phase 2 build evidence. Record one post-untracking impact snapshot for tracked archive bytes, checkout size, and representative content-diff size. Capture archive, Astro, and Pagefind timing only from the single already-required validation build; do not add a benchmark harness, repeat builds for timing, or rerun Node/Bun comparisons. Report current-tree savings separately from unchanged historical Git object size.
+- Do not change generator, Astro, Pagefind, topic, report, acquisition, dependency, or canonical-content behavior. If such a change appears necessary, stop Phase 3 and request separate scope.
+- Do not rewrite completed historical notes. Do not remove the manifest, integrity checks, 64-bucket layout, provenance, atomic publication, cache sentinels, or writer lease.
+- Record one post-change snapshot: tracked archive path count/bytes, ignore-rule proof, and the fact that historical Git objects are unchanged. Reuse all Phase 0/2 timing and parity evidence.
 
 ### Validation Gate
 
 - `git ls-files -- site/src/data/generated/archive` is empty.
 - `git check-ignore -v --no-index -- site/src/data/generated/archive/index.json` identifies the intended anchored rule.
-- A fresh clone contains no generated archive before generation and passes the complete Phase 2 validation through official Pagefind afterward.
-- Archive untracking changes no topic-curation input, report schema, command behavior, exact-source traceability, policy catalog, registry, or authored shard reference.
-- Regeneration changes no tracked file when canonical source is unchanged.
-- Missing canonical topic records fail with the Phase 2 actionable error; regeneration never repairs `topics.json` implicitly.
-- A representative source change produces only authored-source diffs; the regenerated 67-file archive remains ignored.
-- Both Pagefind paths remain present and supported.
+- The 67 working files remain present immediately after index removal, including `index.json`.
+- The staged path set contains exactly those 67 archive removals and nothing else.
+- `check:repository-policy`, its focused test, and `git diff --check` pass.
+- Do not regenerate the archive in Phase 3. Index-only removal must leave the existing 67 working files intact; if it does not, stop and restore them before continuing.
+- Do not run `npm ci`, a fresh-clone campaign, the complete test suite, Astro, official/custom Pagefind, Node/Bun comparisons, or performance benchmarks in Phase 3.
+- The Phase 3 diff contains only the ignore/index policy, the focused policy implementation/test, current guidance, and its checkpoint. No Phase 4 work is included.
 
 ## Phase 4: Preserve and Simplify the Weekly Acquisition/Curation Handoff
 
@@ -377,25 +378,18 @@ Status: not started.
 
 ### Tasks
 
-- Keep `fetch:video-links` as the supported full channel inventory plus missing/due metadata synchronization command.
-- Keep `fetch:video-metadata` as an explicit refresh/repair command unless a concrete consumer audit proves it redundant.
-- Keep `alternate:fetch:transcripts:safe` with its 60-second pacing as the owner's routine transcript command.
-- Preserve valid-TXT skips, short-video policy, ignored-video policy, deferred readiness states, timestamped manifest-owned naming, checkpoints, partial-failure durability, and safe reruns.
-- Correct the current failure-eligibility mismatch deliberately:
-  - recommended behavior is for an ordinary later safe run to retry every ready record that still lacks valid TXT, while retaining backoff/circuit-break protection for blocking evidence
-  - if previous failures are intentionally sticky instead, retain one clearly documented safe recovery command
-  - retire `alternate:fetch:transcripts:retry` and `:retry:safe` only after one of those recovery contracts is implemented and fixture-tested
-- Print one deterministic end-of-run handoff listing newly stored TXT paths, deferred records, failed records, and still-pending records so the owner can launch exactly one curator and at least two auditors per file.
-- Audit the single-video transcript command and saved-HTML inventory commands for real repair/offline-fallback consumers. Do not delete them merely because they are absent from the routine weekly sequence.
-- Keep official API inventory/metadata and public-caption scraping separate; do not wrap them in one transaction or make a caption failure roll back accepted inventory.
-- Keep the two named content skills single-file, single-agent, and outside deterministic repository generation.
+- Preserve the owner's supported sequence: `fetch:video-links`, `alternate:fetch:transcripts:safe`, one curator per new TXT, and at least two auditor passes per resulting shard.
+- Keep `fetch:video-metadata` as the explicit metadata repair command and keep inventory/metadata separate from caption scraping.
+- Make an ordinary later safe transcript run retry every ready record that still lacks valid TXT while preserving pacing, checkpoints, valid-TXT skips, ignored/short-video policy, deferred states, partial-failure durability, and circuit-break protection.
+- Retire the two explicit retry aliases only if the ordinary safe command now provides that exact recovery behavior and focused fixtures prove it.
+- Print one deterministic end-of-run handoff listing newly stored TXT paths, deferred records, failed records, and still-pending records.
+- Do not delete single-video or saved-HTML repair commands in this phase. Do not change content skills, generated archives, topic policy, dependencies, or site code.
 
 ### Validation Gate
 
-- Fixture tests cover no additions, multiple additions, missing/due metadata, stored TXT, deferred videos, previous failures, rate-limit/CAPTCHA circuit breaking, partial checkpoints, rerun recovery, and deterministic handoff output.
-- No ordinary validation makes a live YouTube request.
-- Any live report-only/API or transcript canary is separately authorized and does not overwrite canonical data unexpectedly.
-- The exact owner workflow commands remain documented and supported.
+- Focused offline fixtures cover stored TXT, deferred/failed records, retry eligibility, checkpoint recovery, circuit breaking, and deterministic handoff output.
+- CLI help and current guidance name the supported owner commands.
+- Do not make live YouTube requests, run repository-wide tests, or build the site for Phase 4.
 
 ## Phase 5: Replace the Broad `googleapis` Dependency
 
@@ -406,23 +400,23 @@ The dependency currently occupies 197.87 MiB and 1,851 installed files. Only `sr
 ### Tasks
 
 - Implement one narrow typed YouTube Data API client on Node 22 built-in `fetch` for the endpoints actually used by inventory and metadata: channels, playlist items, and videos.
-- Preserve API-key precedence and redaction, uploads-playlist discovery, pagination, optional page limits, 50-ID video batches, one-second default pacing, checkpoint behavior, response normalization, ignored-video filtering, and guarded canonical writes.
-- Inject fetch, sleep, and clock dependencies for offline fixtures.
-- Preserve or explicitly implement bounded transient retries for transport failures, unreadable retryable responses, HTTP 408/429, and 5xx responses. Fail permanent 4xx and malformed successful payloads without leaking the API key.
-- Reuse metadata returned by channel discovery where safe; keep the standalone metadata refresh/repair path for later state changes.
-- Remove `googleapis` and its transitive lockfile closure only after fixture and live report-only parity gates pass.
-- Record dependency count, installed files/bytes, clean `npm ci` time, type-check time, and command behavior before and after.
+- Preserve API-key precedence/redaction, uploads-playlist discovery, pagination, optional page limits, 50-ID batches, one-second pacing, checkpoints, ignored-video filtering, guarded writes, and bounded retry behavior.
+- Inject fetch, sleep, and clock dependencies and prove the supported responses and failures with focused offline fixtures.
+- Keep the standalone metadata repair path and keep transcript scraping unchanged.
+- Remove `googleapis` and its lockfile closure only after the offline contract passes. A bounded report-only live canary requires a separate explicit user request.
+- Record only the resulting dependency/package-lock delta; do not run install-time or runtime benchmarks.
 
 ### Validation Gate
 
-- Offline fixtures cover channels, playlist pagination, videos batching, empty/partial/malformed responses, transient retry success/exhaustion, permanent errors, timing, checkpointing, and secret redaction.
+- Offline fixtures cover channels, playlist pagination, videos batching, empty/partial/malformed responses, transient retry success/exhaustion, permanent errors, pacing, checkpointing, and secret redaction.
 - `fetch:video-links` and `fetch:video-metadata` help/output contracts remain compatible.
-- A separately authorized report-only bounded canary succeeds before canonical apply is considered.
+- If separately authorized, one bounded report-only canary succeeds before any live canonical apply.
 - Transcript fetching remains on its separate caption-scraping implementation.
+- Do not run Astro, Pagefind, topic-report, or full repository validation for Phase 5.
 
 ## Phase 6: Preserve the Codex Topic-Curation Workflow and Clarify Report Lifecycle
 
-Status: partially satisfied by independent topic-curation work completed after this plan's original snapshot. The Type-designation corpus migration and zero-finding report/audit baseline are complete; durable workflow documentation, regression coverage, route-compatibility evidence, and the unrelated-report lifecycle review remain not started.
+Status: partially satisfied by independent topic-curation work completed after this plan's original snapshot. The corpus migration and zero-finding report/audit baseline are complete. Remaining Phase 6 scope is limited to current workflow documentation, focused regression fixtures, and report-owner/lifecycle documentation.
 
 ### Mandatory Keep Records
 
@@ -462,29 +456,20 @@ Phase 6 must freeze that direction with fixtures for bare, `-class`, plural, sin
 
 - Correct the stale `rank:video-segment-audit-risk` name in current README/AGENTS guidance and the CLI usage string to the retained `report:video-segment-audit-risk` package command. Do not rewrite completed historical notes.
 - Document the example Codex prompt, both report inputs, the normalization catalog, registry, shard-reference migration, sync command, read-only audit, and generated-data handoff as one supported topic-curation workflow.
-- Preserve the refreshed two-report baseline and record its headers/counts/hashes in the Phase 0 canary; ignored report files may later be regenerated, but their contract may not drift silently.
-- Create a durable completion ledger for the already applied Type-designation mappings with old slug, canonical slug, referent, exact sources inspected, official nomenclature source when needed, aliases retained, collision/route impact, and decision. Reconstruct missing rationale from the current catalog and exact authored sources; do not remigrate the corpus merely to create the ledger.
-- Add fixture tests that preserve the completed creation/display direction and distinguish bare, `-class`, plural, singular, alphanumeric, Roman-numeral, non-ship, distinct-variant, and intentionally unresolved Type designations. Include a regression scan that rejects contradictory active rules pointing a canonical singular ship topic back to a plural.
-- Verify the catalog, registry, and all affected video-level/segment-level references agree with the completed mapping. Change authored state only if that verification finds a concrete regression; preserve nonblank human-written descriptions.
-- Check the former public topic slugs against the generated redirect/route contract and record the compatibility result. A search alias is not automatically an HTTP redirect.
-- After documentation/tests or any evidence-backed repair, regenerate both topic reports, run explicit `sync:video-topics`, regenerate the reports again if synchronization adds records, and run `audit:topic-normalization`. Resolve selected findings without claiming that unrelated future findings were fixed.
-- Regenerate the archive through its canonical command and validate topic pages, duplicate routes/titles, representative searches, the official Pagefind contract, and the custom contract when its sibling binary is available. Record an unavailable custom binary as a prerequisite gap rather than failing the portable official path. The archive remains tracked until Phase 3 and is ignored afterward, and it is never patched directly.
-- Inventory every other report and record: generator, human/machine consumer, generation trigger, clean-success behavior, failure behavior, retention period, and cleanup method.
-- Prefer console status for ephemeral summaries, failure-only diagnostics for validators, and explicit `--report` output for optional detailed artifacts.
-- Retire a generator/report only when current repository references, history origin, and owner review show no consumer. Preserve historical task notes that explain a retired report.
-- Keep credentials and local configuration under ignored `.local/`, never under `reports/`.
-- Keep all reports outside site archive generation and public pages unless explicitly designed as public content.
+- Add focused fixtures for the already-completed Type-designation direction: bare, `-class`, plural, singular, alphanumeric, Roman-numeral, distinct-variant, and intentionally unresolved cases.
+- Record report owners and lifecycle for the three mandatory keep reports. Inventory unrelated reports without retiring them in this phase.
+- Run `report:video-topic-usage` once and the read-only `audit:topic-normalization` once after the documentation/test changes. Do not run `sync:video-topics` or change taxonomy/corpus data unless a separately authorized targeted correction is required.
+- Do not reconstruct a historical migration ledger, repeat the corpus migration, regenerate the site archive, or run Astro/custom Pagefind in Phase 6.
+- Keep credentials/local configuration outside reports and keep reports outside public site generation.
 
 ### Validation Gate
 
-- All three mandatory keep reports regenerate successfully with stable human-readable TSV headers; the two topic reports are produced together by the canonical command.
-- Their files are not deleted by cleanup helpers and are not accidentally staged by normal Git operations.
-- Every reviewed Type-designation topic has a specific evidence-backed singular referent, or remains explicitly queued as unresolved; no selected bare, generic `-class`, or plural ship-form canonical slug survives silently.
-- The policy catalog, registry, and every affected shard agree on each approved canonical slug, and repeat synchronization does not recreate a retired form.
-- Official nomenclature sources and aliases are recorded for ambiguous cases, with Type 212/212A/212CD distinctions preserved where the evidence requires them.
-- The completed 0-blocker/0-review baseline is covered by fixtures and a durable mapping/route-compatibility ledger, not merely by the current ignored report files.
+- All three mandatory keep reports retain documented owners/paths; the canonical topic report command still emits both topic reports with stable headers.
+- Focused fixtures preserve the completed Type-designation direction and the Type 212/212A/212CD distinctions.
+- The read-only normalization audit completes; any unrelated finding is recorded rather than silently repaired.
 - Every retained report has a documented owner and lifecycle.
 - No report is made canonical source merely to justify keeping it.
+- No archive, Pagefind, taxonomy, registry, or shard change is included.
 
 ## Phase 7: Consolidate Validation, Commands, and Migration Residue
 
@@ -492,29 +477,18 @@ Status: not started.
 
 ### Tasks
 
-- Recount the public script surface after Phases 1-6 and classify every remaining command as routine, repair, low-level internal, local audit, or CI/build stage.
-- Keep separate commands when they represent genuinely different boundaries, especially:
-  - official versus custom Pagefind
-  - inventory/metadata versus caption scraping
-  - source-read-only archive generation versus `:generated` no-regeneration stages
-  - local Lighthouse audit versus production SEO contract validation
-- Remove aliases only when the base command exposes the same safe capability and all callers are migrated.
-- Replace direct implementation restatements in `.codex/hooks/*.ps1` with canonical repository commands where lease ownership and error behavior remain correct. Retain a thin PowerShell wrapper if it still serves Windows/agent orchestration; do not keep a second command graph inside it.
-- Verify whether `list:files-that-need-processing`, `report:transcript-problems`, the single-video fetcher, saved-HTML extraction commands, raw build commands, and Lighthouse preaudit aliases have active consumers before retaining or retiring them.
-- Remove deprecated exported helpers such as `isPublishedButUnstarted` only after CodeGraph and repository searches prove no caller.
-- Enable `noUnusedLocals` and `noUnusedParameters` in normal TypeScript validation here, then remove only compiler-confirmed dead locals/imports. Keep this broad compiler cleanup out of the Phase 2 fresh-clone/build-boundary change.
-- Pin the actual supported Node/npm/Bun toolchain and add a version file so clean machines and GitHub use the tested versions.
-- Ensure every build/test path removes or invalidates stale `dist` output before executing compiled tests.
-- Add line-ending policy only where it resolves demonstrated churn in append-only logs or schedules; do not rewrite those files as a side effect.
-- Keep package scripts readable. Do not introduce a general CLI framework unless two or more commands truly share argument and error semantics.
-- Do not move source directories, schemas, canonical datasets, the topic registry, the processing log, or the credential directory under this phase. Those are July 26 source-structure-plan concerns and remain separately authorized.
+- Inventory the remaining public commands and classify them as routine, repair, internal build stage, or local audit.
+- Before editing, name the exact aliases/helpers proposed for removal. If no zero-caller residue is proven, make no removal.
+- Remove only an alias whose canonical command provides the same safe behavior and whose callers are already migrated; remove only a helper with CodeGraph and repository evidence of zero callers.
+- Update only directly affected current docs, hooks, tests, and CLI help. Preserve distinct boundaries such as official/custom Pagefind, acquisition/caption scraping, and generation/`:generated` stages.
+- Do not introduce compiler-wide unused-code flags, toolchain changes, line-ending rewrites, a CLI framework, source moves, or canonical-data changes in Phase 7. Those require separate plans if still wanted.
 
 ### Validation Gate
 
-- All current authoritative docs, skills, hooks, package scripts, workflows, and live CLI help name existing commands. Completed historical task notes may retain the command/path names that were accurate when written.
-- One canonical CI command graph covers type checks, unit tests, source validation, generated archive validation, official Astro/Pagefind production output, SEO, ranking, dates, and whitespace/worktree policy.
-- Custom Pagefind remains an additional supported path, not a replacement for official Pagefind.
-- No canonical source, mandatory report, recovery capability, or historical task note was removed without recorded evidence.
+- The checkpoint lists every removed name, its replacement, and zero-caller evidence.
+- Type-check and only the focused tests for changed command/help/hook surfaces pass.
+- Current authoritative guidance names existing commands; completed historical notes remain untouched.
+- No canonical source, mandatory report, recovery capability, or distinct command boundary is removed.
 
 ## Deferred Repository-Weight Review
 
@@ -536,39 +510,35 @@ Implement the phases strictly in numeric order. Do not advance a later-numbered 
 1. Phase 0: measurements, invariants, and a repeatable full topic-curation canary.
 2. Phase 1: make the already-proven Bun variants canonical and retire the duplicate public aliases.
 3. Phase 2: separate source-writing topic synchronization from source-read-only archive generation, then make fresh-clone generation and one-pass CI reliable with the topic-curation canary.
-4. Phase 3: untrack and ignore the deterministic split archive only after that canary passes from a clone where the archive starts absent.
+4. Phase 3: untrack and ignore the deterministic split archive using the already-passed, committed Phase 2 prerequisite evidence.
 5. Phase 4: simplify the acquisition/curation handoff without changing its ownership boundaries.
-6. Phase 5: replace `googleapis` after parity tests.
-7. Phase 6: preserve the completed Type-designation baseline, add its regression/route evidence, and finish topic-workflow plus report-lifecycle documentation.
-8. Phase 7: retire only the now-proven command and migration residue; the critical topic-curation surfaces are excluded from retirement.
+6. Phase 5: replace `googleapis` with a narrow fixture-backed client.
+7. Phase 6: preserve the completed Type-designation direction with focused fixtures and document report/workflow ownership.
+8. Phase 7: remove only an explicitly named, proven zero-caller residue set.
 
-Do not combine phases merely because adjacent files overlap. A later request for `implement Phase N` authorizes only that phase and its checkpoint update. Phase 3 remains hard-blocked until Phase 2 proves that every archive/build entrypoint leaves tracked canonical inputs byte-identical.
+Do not combine phases merely because adjacent files overlap. A later request for `implement Phase N` authorizes only that phase and its checkpoint update. The committed Phase 2 checkpoint satisfies Phase 3's source-read-only prerequisite; its seven unrelated recorded fixture failures are non-blocking exceptions and remain out of Phase 3 scope.
 
-## Final Validation Matrix
+## Validation Policy
 
-Use `C:\Program Files\nodejs\npm.cmd` when the roaming npm shim is broken. Full site builds must receive at least 900,000 ms.
+Each phase runs only its own gate. Do not run this entire table after every phase. Reuse committed Phase 1/2 evidence for unchanged surfaces. Use `C:\Program Files\nodejs\npm.cmd` when the roaming npm shim is broken.
 
-| Area | Required proof |
+| Surface | Required evidence and rerun rule |
 | --- | --- |
-| TypeScript | Type check, clean compile, unused-code checks, complete Node test suite. |
-| Canonical Bun commands | The canonical four Bun commands pass their supported workflows. Node/Bun comparison and performance benchmarking are closed and must not be repeated. |
-| Canonical data | Episode, metadata, manifest, TXT, shard, topic, processing-log, and normalization validators pass without network; explicit topic synchronization is the only archive-adjacent canonical writer. |
-| Generated archive | Clean generation from absent output; manifest/schema/path/count/hash/provenance checks; second generation is deterministic; incomplete topic state fails without source mutation. |
-| Git policy | Generated archive has no tracked paths and is ignored; generation and all site entrypoints dirty no tracked file. |
-| Astro | `site:check` and a forced production build pass from a fresh clone. |
-| Official Pagefind | Default build, representative queries, filters, ranking, output integrity, dates, and SEO checks pass. |
-| Custom Pagefind | Keep the workspace path available. Reuse the completed Phase 2 evidence unless a later change affects this path or the owner explicitly requests another comparison. |
-| Reports | All three mandatory keep TSVs regenerate and remain available for manual/Codex use; the two topic reports remain companion outputs. |
-| Topic curation | Reports, normalization catalog, registry, authored shard references, sync, and read-only audit agree; selected Type designations use an evidence-backed singular referent and preserve distinct variants. |
-| Acquisition | Offline fixtures prove inventory/metadata, safe transcript selection, retry/recovery, pacing, checkpoints, and handoff behavior. |
-| GitHub Pages | Clean runner installs Node/npm/Bun, generates once, validates, builds with official Pagefind, uploads, and deploys the exact tested output. |
-| Hygiene | `git diff --check` passes and a clean validation clone ends clean apart from intentionally ignored generated/report/build artifacts. |
+| Committed Phase 1/2 baseline | Reuse commit `5915a0a8` and the two checkpoints. Do not rerun Node/Bun comparisons, the Phase 2 fresh-clone campaign, or official/custom Pagefind comparison unless a later change touches that exact path. |
+| Phase 3 Git policy | Prove zero tracked archive paths, the anchored ignore match, preserved working files, the focused repository-policy check, and whitespace. No site build. |
+| Phase 4 acquisition | Run only focused offline acquisition/recovery/handoff fixtures. No network or site build. |
+| Phase 5 API client | Run focused offline client fixtures and type-check. A live report-only canary requires explicit authorization. No performance benchmark. |
+| Phase 6 reports/topics | Run the canonical topic report once, the read-only audit once, and focused Type-designation fixtures. Do not sync or rebuild the site without separate scope. |
+| Phase 7 residue | Run type-check and focused tests for the exact removals. If the removal list is empty, do not manufacture cleanup work. |
+| Production site | Reuse Phase 2 evidence unless a later phase changes generator, Astro, Pagefind, or a runtime data adapter. If one of those paths changes, run one official production build with at least 900,000 ms. Run custom Pagefind only when its path changed or the owner explicitly requests it. |
+| Hygiene | Run `git diff --check` for every phase and preserve user-managed staging. |
 
 ## Rollback Principles
 
 - Land each phase as a coherent ordinary change so it can be reverted without mixing later work.
+- Commit `5915a0a8` is the Phase 3 starting baseline. Keep Phase 3 separate; if it fails after commit, revert only that Phase 3 change rather than resetting or rewriting the Phase 1/2 baseline.
 - The Bun migration is closed. Later-phase rollback checks validate the canonical public commands and stable output contracts; they do not restore retired Node public aliases merely to rerun Node/Bun comparisons.
-- If separating topic synchronization from generation breaks a supported path, restore the generator/check behavior coherently and keep Phase 3 blocked; do not compensate by allowing only one site entrypoint to mutate `topics.json`.
+- If a later phase regresses the source-read-only topic/generation boundary, revert that later phase coherently; do not compensate by allowing any site entrypoint to mutate `topics.json`.
 - If untracked generated data breaks a consumer, repair that consumer's generation boundary first. Temporarily reverting the coherent Phase 3 commit is safer than hand-adding selected generated shards.
 - If the custom Pagefind path fails, the official packaged Pagefind path remains the deployment fallback by design. If official Pagefind fails, do not silently switch production to the custom binary without owner approval.
 - Remove `googleapis` only after parity gates; restore the dependency and prior adapter together if the native client fails.
@@ -581,17 +551,18 @@ This plan is complete when:
 
 - `site/src/data/generated/archive/` is deterministic, generated on demand, ignored, and absent from Git's tracked current tree
 - `sync:video-topics` is the sole canonical topic-registry writer, while archive generation and every site build/dev/check entrypoint are source-read-only and fail clearly on incomplete topic state
-- fresh local and GitHub builds succeed when that directory starts absent
+- the committed Phase 2 missing-archive build evidence remains valid, or one later official build replaces it only when a later phase changes a production path
 - routine source changes no longer produce 67-file generated archive diffs
 - the four proven Bun maintenance paths are canonical and their duplicate public aliases are gone
 - the official and custom Pagefind paths both remain supported, with official Pagefind still the portable deployment default
 - the owner-supplied inventory, safe transcript, one-curator, and at-least-two-auditor workflow remains documented and functional
 - `reports/video-segment-audit-risk.tsv`, `reports/video-topic-usage.tsv`, and `reports/topic-normalization-review.tsv` remain supported manual/Codex reports
 - the Codex topic-curation workflow remains documented and functional, including both report inputs, normalization policy, source review, registry/shard migration, synchronization, audit, and generated-site handoff
-- every cleanup phase has passed the topic-curation non-regression canary; no report field, exact-source pointer, policy capability, manual metadata, command boundary, or Codex handoff needed by the workflow was lost
+- the Phase 2 topic-curation canary is reused for unchanged surfaces; a later phase reruns only the portion it actually changes
+- no report field, exact-source pointer, policy capability, manual metadata, command boundary, or Codex handoff needed by the workflow was lost
 - Type-designation topics use `type-<designation>-<singular-referent>` when the referent is known; bare, generic `-class`, plural ship forms, and distinct variants are reviewed rather than blindly merged
 - GitHub runs one canonical network-free validation/build graph without redundant archive generation
-- the broad Google dependency is removed only if parity, retry, pacing, and live report-only gates succeed
+- the broad Google dependency is removed only after the focused offline response, retry, pacing, checkpoint, and redaction contract passes; any live canary remains separately authorized
 - every retired report, command, dependency, projection, or migration helper has recorded consumer evidence
 - current-tree savings and unchanged historical Git size are reported honestly
 - the separate July 26 source-tree rationalization plan remains unimplemented unless independently authorized and rebaselined

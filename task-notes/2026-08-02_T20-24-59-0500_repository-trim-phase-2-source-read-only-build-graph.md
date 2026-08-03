@@ -2,7 +2,7 @@
 
 Timestamp: 2026-08-02T20:24:59-05:00
 
-Status: Phase 2 implementation is complete, but the complete Phase 2 validation gate remains blocked by six pre-existing topic-policy test expectations and one pre-existing search-ranking fixture. The source-read-only generation boundary, missing-archive workflow, topic-curation canary, official/custom Pagefind parity, and downstream rendered-date checks passed. Phase 3 remains unauthorized and must not start while this gate is unresolved.
+Status: Phase 2 implementation is complete and committed at `5915a0a8`. The source-read-only generation boundary, missing-archive workflow, topic-curation canary, official/custom Pagefind comparison, and downstream rendered-date checks passed. Six pre-existing topic-policy expectations and one pre-existing search-ranking fixture remain recorded exceptions outside Phase 2. The tightened implementation plan classifies them as non-blocking for Phase 3 sequencing; they are not declared correct or resolved and remain out of Phase 3 scope.
 
 ## Canonical Topic Boundary
 
@@ -99,7 +99,7 @@ The six full-suite failures predate Phase 2 and remain intentionally untouched b
 
 The standalone `audit:video-timestamp-alignment` continues to report an unrelated pre-existing state mismatch for video `XnCpZF88pjE`: the episode record says the transcript is stored while the transcript manifest record is `not_checked`. Correcting that canonical source state was not authorized in Phase 2.
 
-Because these recorded failures prevent a fully green `check:ci`, Phase 3 archive untracking remains blocked pending a separately authorized correction or explicit owner acceptance of the gate exceptions.
+These recorded failures prevent a fully green `check:ci`, but they do not test the source-read-only or missing-archive boundary. After Phases 1/2 were committed at `5915a0a8`, the tightened implementation plan classified them as non-blocking baseline exceptions for Phase 3 sequencing. Phase 3 must not repair, hide, or rerun them.
 
 ## Boundaries Preserved
 
