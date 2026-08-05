@@ -33,8 +33,8 @@ const siteOutputSentinels = [
   "site/dist/pagefind/pagefind-entry.json",
 ];
 const archiveInputPaths = [
-  ".codex/hooks/site-build-if-changed.mjs",
-  ".codex/hooks/site-content-pipeline-lock.mjs",
+  "src/scripts/site-build-if-changed.mjs",
+  "src/scripts/site-content-pipeline-lock.mjs",
   "package.json",
   "package-lock.json",
   ".bun-version",
@@ -47,8 +47,8 @@ const archiveInputPaths = [
   "src/derived/video-segments",
 ];
 const siteInputPaths = [
-  ".codex/hooks/site-build-if-changed.mjs",
-  ".codex/hooks/site-build-support.mjs",
+  "src/scripts/site-build-if-changed.mjs",
+  "src/scripts/site-build-support.mjs",
   "astro.config.mjs",
   "package.json",
   "package-lock.json",

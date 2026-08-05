@@ -18,7 +18,7 @@ const syncScriptPath = fileURLToPath(
   new URL("../../src/scripts/sync-video-topics-bun.ts", import.meta.url),
 );
 const lockToolPath = fileURLToPath(
-  new URL("../../.codex/hooks/site-content-pipeline-lock.mjs", import.meta.url),
+  new URL("../../src/scripts/site-content-pipeline-lock.mjs", import.meta.url),
 );
 
 test("generation rejects pending normalization before changing topic or archive output", async () => {

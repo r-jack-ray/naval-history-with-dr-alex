@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
-import { parseAstroBuildConcurrency } from "./.codex/hooks/site-build-support.mjs";
+import { parseAstroBuildConcurrency } from "./src/scripts/site-build-support.mjs";
 import { isIndexablePageUrl } from "./site/src/data/page-indexing.js";
 import {
   videoSitemapChunkCount,

@@ -24,7 +24,7 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` when working on
 - Use `src/derived/video-segments/` for current curated video, segment, and topic source data.
 - Use `src/derived/topic-normalization-patterns.tsv` for the generated archive's topic-normalization policy and provenance.
 - Use `src/site/archive-data.ts` and the source-read-only `npm run generate:site-data` boundary to produce the ignored manifest and JSON shards under `site/src/data/generated/archive/`; `index.json` is the authoritative runtime manifest even though Git does not track it. Run `npm run sync:video-topics` explicitly when registry records are missing.
-- Use `site/src/data/archive.ts` as the build-time split-manifest reader and `.codex/hooks/site-build-if-changed.mjs` as the cache and preflight integrity validator.
+- Use `site/src/data/archive.ts` as the build-time split-manifest reader and `src/scripts/site-build-if-changed.mjs` as the cache and preflight integrity validator.
 - Use the manifest-owned `src/transcripts/txt/` file as the transcript source of record when a task explicitly asks for transcript-backed curation.
 
 ## Workflow
@@ -36,7 +36,7 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` when working on
 5. Add Pagefind metadata and filters for type, video title, video ID, timestamp, topic, and segment kind when present.
 6. Keep exported Astro `getStaticPaths` dependencies in its isolated scope. Put reusable sorting and lookup work in imported `site/src/data/archive.ts` helpers instead of frontmatter-local computed constants.
 7. Verify topic coverage with `npm run check:video-topics`, then regenerate generated site data through `npm run generate:site-data`, `npm run site:check`, or `npm run site:build`. These entrypoints never write the canonical topic registry; do not hand-edit `site/src/data/generated/archive/index.json` or any manifest-listed shard.
-8. When changing the split-manifest schema, treat `siteArchiveSchemaVersion` in `src/site/archive-data.ts` as authoritative and update `site/src/data/archive.ts`, `.codex/hooks/site-build-if-changed.mjs`, and `src/pipeline/shared-output.test.ts` together. Keep the logical reconstructed `SiteArchiveData.schemaVersion` separate.
+8. When changing the split-manifest schema, treat `siteArchiveSchemaVersion` in `src/site/archive-data.ts` as authoritative and update `site/src/data/archive.ts`, `src/scripts/site-build-if-changed.mjs`, and `src/pipeline/shared-output.test.ts` together. Keep the logical reconstructed `SiteArchiveData.schemaVersion` separate.
 9. Avoid staging or committing transcript fetch outputs unless the user explicitly includes them.
 10. Keep visible copy learner-facing. Prefer "study guide", "video guide", "time note", "watch point", "topic", and "subject" over processing, inventory, or metadata language.
 

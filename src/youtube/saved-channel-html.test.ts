@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
+import { mergeChannelVideoLinksResults } from "./channel-video-links.js";
 import { extractSavedChannelHtml } from "./saved-channel-html.js";
 
 test("extracts rendered channel video lockups with exact publish timestamps", () => {
@@ -48,15 +49,84 @@ test("extracts rendered channel video lockups with exact publish timestamps", ()
   ]);
 });
 
-test("falls back to ytInitialData lockups when rendered lockups are absent", () => {
+test("matches the retired streams parser on ytInitialData lockups", () => {
   const extraction = extractSavedChannelHtml(initialDataFixtureHtml(), {
     tab: "streams",
     fetchedAt: "2026-07-08T01:05:38.000Z",
+    sourcePath: "reports/live_streams.html",
   });
 
   assert.equal(extraction.source.extractionMethod, "yt-initial-data");
-  assert.equal(extraction.stats.initialDataLockupCount, 1);
-  assert.equal(extraction.result.links[0]?.videoId, "uURe69Wnh-Q");
+  assert.equal(extraction.source.savedFromUrl, "https://www.youtube.com/@DrAlexClarke/streams");
+  assert.equal(extraction.source.hasContinuation, true);
+  assert.equal(extraction.source.continuationTokenCount, 1);
+  assert.equal(extraction.stats.renderedLockupCount, 0);
+  assert.equal(extraction.stats.initialDataLockupCount, 4);
+  assert.equal(extraction.stats.extractedVideoCount, 3);
+  assert.deepEqual(extraction.stats.fieldCounts, {
+    title: 3,
+    durationText: 2,
+    publishedText: 3,
+    viewCountText: 2,
+    publishedAt: 0,
+    publishDate: 0,
+  });
+  assert.deepEqual(extraction.result, {
+    channelUrl: "https://www.youtube.com/@DrAlexClarke",
+    channelId: "UCE2x09tU0GwAGiSbFPEhIwQ",
+    fetchedAt: "2026-07-08T01:05:38.000Z",
+    requestDelayMs: 0,
+    tabs: {
+      videos: {
+        url: "https://www.youtube.com/@DrAlexClarke/videos",
+        pagesFetched: 0,
+        rawCount: 0,
+      },
+      streams: {
+        url: "https://www.youtube.com/@DrAlexClarke/streams",
+        pagesFetched: 1,
+        rawCount: 4,
+      },
+    },
+    links: [
+      {
+        videoId: "Nfv-qSf9wLs",
+        url: "https://www.youtube.com/watch?v=Nfv-qSf9wLs",
+        title: "The Press Gang, myth and reality...",
+        publishedText: "Scheduled for 8/13/26, 1:30 PM",
+        tabs: ["streams"],
+        tabPositions: { streams: 2 },
+      },
+      {
+        videoId: "uURe69Wnh-Q",
+        url: "https://www.youtube.com/watch?v=uURe69Wnh-Q",
+        title: "Bruships 249: Modern Navy & Naval History Questions Answered Live...",
+        durationText: "4:36:43",
+        publishedText: "Streamed 2 days ago",
+        viewCountText: "1K views",
+        tabs: ["streams"],
+        tabPositions: { streams: 3 },
+      },
+      {
+        videoId: "AbCdEfGhI12",
+        url: "https://www.youtube.com/watch?v=AbCdEfGhI12",
+        title: "Endpoint fallback stream",
+        durationText: "12:34",
+        publishedText: "Premiered Jul 1, 2026",
+        viewCountText: "22 views",
+        tabs: ["streams"],
+        tabPositions: { streams: 4 },
+      },
+    ],
+  });
+
+  const merged = mergeChannelVideoLinksResults([extraction.result]);
+  assert.equal(merged.tabs.streams.rawCount, 4);
+  assert.deepEqual(merged.links.map((record) => record.videoId), [
+    "Nfv-qSf9wLs",
+    "uURe69Wnh-Q",
+    "AbCdEfGhI12",
+  ]);
 });
 
 test("omits ignored videos from saved channel HTML extraction", () => {
@@ -67,6 +137,23 @@ test("omits ignored videos from saved channel HTML extraction", () => {
 
   assert.equal(extraction.stats.extractedVideoCount, 1);
   assert.deepEqual(extraction.result.links.map((record) => record.videoId), ["eYhGE7TDlHQ"]);
+});
+
+test("omits ignored streams while preserving raw counts and source positions", () => {
+  const extraction = extractSavedChannelHtml(initialDataFixtureHtml(), {
+    tab: "streams",
+    ignoredVideoIds: new Set(["uURe69Wnh-Q"]),
+  });
+
+  assert.equal(extraction.stats.extractedVideoCount, 2);
+  assert.equal(extraction.result.tabs.streams.rawCount, 4);
+  assert.deepEqual(
+    extraction.result.links.map((record) => [record.videoId, record.tabPositions.streams]),
+    [
+      ["Nfv-qSf9wLs", 2],
+      ["AbCdEfGhI12", 4],
+    ],
+  );
 });
 
 function renderedFixtureHtml(): string {
@@ -98,59 +185,209 @@ function renderedFixtureHtml(): string {
 }
 
 function initialDataFixtureHtml(): string {
-  return `<script>
+  return `<!-- saved from url=(0045)https://www.youtube.com/@DrAlexClarke/streams -->
+<script>
 var ytInitialData = {
+  "metadata": {
+    "channelMetadataRenderer": {
+      "externalId": "UCE2x09tU0GwAGiSbFPEhIwQ"
+    }
+  },
   "contents": {
-    "richItemRenderer": {
-      "content": {
-        "lockupViewModel": {
-          "metadata": {
-            "lockupMetadataViewModel": {
-              "title": {
-                "content": "Bruships 249"
-              },
-              "metadata": {
-                "contentMetadataViewModel": {
-                  "metadataRows": [
-                    {
-                      "metadataParts": [
-                        {
-                          "text": {
-                            "content": "1K views"
-                          }
-                        },
-                        {
-                          "text": {
-                            "content": "Streamed 2 days ago"
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                }
-              }
-            }
-          },
-          "contentId": "uURe69Wnh-Q",
-          "contentImage": {
-            "thumbnailViewModel": {
-              "overlays": [
-                {
-                  "thumbnailBottomOverlayViewModel": {
-                    "badges": [
-                      {
-                        "thumbnailBadgeViewModel": {
-                          "text": "4:36:43"
+    "twoColumnBrowseResultsRenderer": {
+      "tabs": [
+        {
+          "tabRenderer": {
+            "content": {
+              "richGridRenderer": {
+                "contents": [
+                  {
+                    "richItemRenderer": {
+                      "content": {
+                        "lockupViewModel": {
+                          "contentId": "PL-not-a-video",
+                          "contentType": "LOCKUP_CONTENT_TYPE_PLAYLIST"
                         }
                       }
-                    ]
+                    }
+                  },
+                  {
+                    "richItemRenderer": {
+                      "content": {
+                        "lockupViewModel": {
+                          "metadata": {
+                            "lockupMetadataViewModel": {
+                              "title": {
+                                "content": "The Press Gang, myth and reality..."
+                              },
+                              "metadata": {
+                                "contentMetadataViewModel": {
+                                  "metadataRows": [
+                                    {
+                                      "metadataParts": [
+                                        {
+                                          "text": {
+                                            "content": "Scheduled for 8/13/26, 1:30 PM"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          },
+                          "contentId": "Nfv-qSf9wLs",
+                          "contentType": "LOCKUP_CONTENT_TYPE_VIDEO"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "richItemRenderer": {
+                      "content": {
+                        "lockupViewModel": {
+                          "contentImage": {
+                            "thumbnailViewModel": {
+                              "overlays": [
+                                {
+                                  "thumbnailBottomOverlayViewModel": {
+                                    "badges": [
+                                      {
+                                        "thumbnailBadgeViewModel": {
+                                          "text": "4:36:43"
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "metadata": {
+                            "lockupMetadataViewModel": {
+                              "title": {
+                                "content": "Bruships 249: Modern Navy & Naval History Questions Answered Live..."
+                              },
+                              "metadata": {
+                                "contentMetadataViewModel": {
+                                  "metadataRows": [
+                                    {
+                                      "metadataParts": [
+                                        {
+                                          "text": {
+                                            "content": "1K views"
+                                          }
+                                        },
+                                        {
+                                          "text": {
+                                            "content": "Streamed 2 days ago"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          },
+                          "contentType": "LOCKUP_CONTENT_TYPE_VIDEO",
+                          "rendererContext": {
+                            "commandContext": {
+                              "onTap": {
+                                "innertubeCommand": {
+                                  "watchEndpoint": {
+                                    "videoId": "uURe69Wnh-Q"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "richItemRenderer": {
+                      "content": {
+                        "lockupViewModel": {
+                          "contentImage": {
+                            "thumbnailViewModel": {
+                              "overlays": [
+                                {
+                                  "thumbnailBottomOverlayViewModel": {
+                                    "badges": [
+                                      {
+                                        "thumbnailBadgeViewModel": {
+                                          "text": "12:34"
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          "metadata": {
+                            "lockupMetadataViewModel": {
+                              "metadata": {
+                                "contentMetadataViewModel": {
+                                  "metadataRows": [
+                                    {
+                                      "metadataParts": [
+                                        {
+                                          "text": {
+                                            "content": "22 views"
+                                          }
+                                        },
+                                        {
+                                          "text": {
+                                            "content": "Premiered Jul 1, 2026"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          },
+                          "contentType": "LOCKUP_CONTENT_TYPE_VIDEO",
+                          "rendererContext": {
+                            "accessibilityContext": {
+                              "label": "Endpoint fallback stream"
+                            },
+                            "commandContext": {
+                              "onTap": {
+                                "innertubeCommand": {
+                                  "commandMetadata": {
+                                    "webCommandMetadata": {
+                                      "url": "/watch?v=AbCdEfGhI12&list=PL-example"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "continuationItemRenderer": {
+                      "continuationEndpoint": {
+                        "continuationCommand": {
+                          "token": "next-page"
+                        }
+                      }
+                    }
                   }
-                }
-              ]
+                ]
+              }
             }
           }
         }
-      }
+      ]
     }
   }
 };

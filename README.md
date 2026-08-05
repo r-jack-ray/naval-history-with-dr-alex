@@ -45,7 +45,7 @@ src/
       topics.json          Shared topic records and aliases
       <manifest.fileStem>.json One curated segment shard per video; reuse the stored transcript manifest stem
   pipeline/                Atomic writes and transcript-schedule validation
-  scripts/                 TypeScript CLI entrypoints
+  scripts/                 JavaScript/TypeScript CLIs, build helpers, and validation coordinators
   site/                    Archive generation, search, SEO, and site validation logic
   youtube/                 YouTube inventory, metadata, and transcript-ingestion logic
   transcripts/             Local transcript archive
@@ -62,7 +62,6 @@ site/
   dist/                    Generated GitHub Pages artifact, ignored by Git
 .agents/                   Project-local agent briefs and Codex skills
 .agents/skills/            Project-local Codex skills
-.codex/hooks/              Project-local validation helper scripts
 task-notes/                Temporary planning and handoff notes
 reports/                   Generated reports and smoke-test output, ignored by Git
 dist/                      Compiled JavaScript, ignored by Git
@@ -78,8 +77,8 @@ Install dependencies:
 npm install
 ```
 
-The normal network-free repository check runs quick TypeScript checks,
-functional tests, source/topic validation, and generated-data/Astro validation:
+The normal network-free repository check compiles and type-checks once, then
+runs functional tests, source/topic validation, and generated-data/Astro validation:
 
 ```powershell
 npm run check
@@ -107,11 +106,9 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 | `check:types` | Type-check without emitting files. |
 | `test` | Clean, compile, and run all compiled `*.test.js` files with Node's test runner. |
 | `check:source` | Run the read-only topic audit/check, content audit, and complete two-report topic-curation canary. |
-| `check:generated` | Generate the archive once and run Astro diagnostics without regeneration. |
-| `check` | Run the canonical network-free type, test, source, and generated-data layers. |
+| `check` | Run the canonical network-free compiled-test, source, and generated-data layers; `test` performs the TypeScript build/type check once. |
 | `check:production` | Build Astro and official Pagefind from the existing archive, then run SEO, search-ranking, and rendered-date validation. |
-| `check:repository-policy` | Require the generated archive to be untracked and ignored, and reject whitespace errors or tracked files changed by the validation graph. |
-| `check:ci` | Run `check`, the official production layer, and repository policy as the one-pass Pages graph. |
+| `check:ci` | Run `check` and the official production layer as the one-pass Pages graph. |
 
 ### Curated Content and Reports
 
@@ -123,7 +120,6 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 | `sync:video-topics` | Add missing shared topic records derived from shard usage and normalization policy with parallel Bun workers. This command writes `topics.json` under the shared writer lease. |
 | `check:video-topics` | Verify registry completeness without writing source and name the explicit synchronization command when records are missing. |
 | `audit:topic-normalization` | Read-only validation of topic-normalization policy against curated shards with parallel Bun workers. |
-| `append:site-content-processing-log` | Low-level validated append to the site-content processing log. |
 | `audit:transcript-schedules` | Audit one or more explicitly supplied transcript schedules; at least one `--schedule <path>` is required. |
 | `audit:video-timestamp-alignment` | Check timestamp and video-state consistency across source, transcript, shard, and generated data. |
 | `report:video-topic-usage` | Write topic usage to `reports/video-topic-usage.tsv` and exact actionable normalization findings to `reports/topic-normalization-review.tsv`. |
@@ -136,7 +132,6 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 | `fetch:video-links` | Fetch the channel uploads inventory through the YouTube Data API, using `.local/youtube-api-key.txt` by default. |
 | `fetch:video-metadata` | Populate or resume the official per-video metadata store. |
 | `alternate:extract:saved-channel-html` | Parse a saved `/videos` or `/streams` channel page offline; select the tab with `--tab videos` or `--tab streams`. |
-| `alternate:extract:live-streams-html` | Parse the specialized saved live-stream HTML format offline. |
 | `alternate:merge:video-links` | Merge saved channel-tab link files into an episode inventory. |
 | `alternate:fetch:transcripts` | Batch-fetch missing transcripts with resumable status; use it for bounded/manual runs. |
 | `alternate:fetch:transcripts:safe` | Run the supported weekly batch with a 60-second delay while preserving valid-TXT and saved-failure skips. |
@@ -147,7 +142,6 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 | --- | --- |
 | `generate:site-data` | Validate registry completeness and regenerate the ignored split archive under the generated-output writer lease. It never writes `src/derived/video-segments/topics.json`. |
 | `site:dev` | Validate/generate the archive, then start Astro without changing canonical source. |
-| `site:dev:generated` | Internal Astro development stage using an existing generated archive. |
 | `site:preview` | Preview an existing `site/dist/` build. |
 | `site:check` | Regenerate archive data, then run the Astro check. |
 | `site:check:generated` | Run the Astro check against existing generated data without regeneration. |
@@ -156,7 +150,6 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 | `site:build:astro` | Run the raw Astro production build only. |
 | `site:build:pagefind` | Run Pagefind against `site/dist/` only. |
 | `site:build:pagefind:workspace` | Run the explicitly supported sibling Pagefind binary, with a clear prerequisite error when it is unavailable. |
-| `site:build:full` | Run raw Astro and Pagefind stages without archive generation or the fingerprint cache. |
 | `site:build:workspace-pagefind` | Cached end-to-end build using the sibling Pagefind binary. |
 | `check:workspace-pagefind` | Build with the sibling binary and run the same search/page-count and rendered-date contracts used for official output. |
 | `check:pagefind-contract` | Verify Pagefind manifest/fragment counts and the five representative Phase 0 searches for either implementation. |
@@ -169,10 +162,15 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 | --- | --- |
 | `check:site-seo` | Compile the tools and validate SEO metadata, sitemaps, and rendered `site/dist/` pages. |
 | `check:site-seo:built` | Validate rendered SEO using existing compiled tools and site output without recompiling. |
-| `audit:lighthouse:home` | Audit the deployed home page and write HTML/JSON results under `reports/lighthouse/`. |
-| `audit:lighthouse:local` | Audit the local preview home page at port 4321. |
-| `audit:lighthouse:seo-baseline` | Audit representative production pages, or `SEO_AUDIT_BASE_URL` when set. |
-| `preaudit:lighthouse:home`, `preaudit:lighthouse:local` | npm lifecycle helpers that create the Lighthouse report directory automatically. |
+| `audit:lighthouse` | Run one parameterized Lighthouse audit; defaults to the representative five-route production baseline and creates its report directory. |
+
+Use `--mode home` for a quick single-page audit, `--base-url` for a local or caller-supplied site root, and `--output-prefix` to choose the report location. The runner still accepts `SEO_AUDIT_BASE_URL`, with an explicit flag taking precedence:
+
+```powershell
+npm run audit:lighthouse
+npm run audit:lighthouse -- --mode home --output-prefix reports/lighthouse/home
+npm run audit:lighthouse -- --mode home --base-url http://127.0.0.1:4321/naval-history-with-dr-alex/ --output-prefix reports/lighthouse/local-home
+```
 
 ## Website
 
@@ -422,7 +420,7 @@ Everything under `reports/` is ignored local output, never canonical source or p
 | `reports/topic-normalization-review.tsv` | `report:video-topic-usage` | Repository owner and Codex review exact policy matches, collisions, source locations, and recommended actions. | Mandatory keep; ignored, on-demand companion output, and replaced by each run even when it contains only the header. |
 | `reports/site-content-backlog.md` | `audit:site-content` | Repository owner or integration coordinator reviews transcript-evidence and shard-quality findings. | Ignored, on-demand validator output; regenerated rather than edited as source. |
 | `reports/transcript-problems.md` | `report:transcript-problems` | Transcript-maintenance operator reviews saved acquisition failures and probable causes. | Ignored, on-demand diagnostic output; regenerated from saved state without network access. |
-| `reports/lighthouse/**` | `audit:lighthouse:home`, `audit:lighthouse:local`, or `audit:lighthouse:seo-baseline` | Site maintainer compares explicit performance and SEO audits. | Ignored, opt-in smoke-test output; the named run owns its output prefix. |
+| `reports/lighthouse/**` | `audit:lighthouse` | Site maintainer compares explicit performance and SEO audits. | Ignored, opt-in smoke-test output; the named run owns its output prefix. |
 | Acquisition probe/extraction JSON under `reports/` | Explicit output flags on inventory or saved-HTML commands | Acquisition operator inspects a bounded probe or reconciles alternate inputs before a canonical apply. | Ignored, opt-in scratch output; retention is operator-managed and it never replaces `src/channel/episodes.json` or `src/channel/video-metadata.json`. |
 
 One-off manual analyses may also remain in the ignored directory. Without a documented generator and owner they are not a supported command contract; this lifecycle review does not delete them.
@@ -434,7 +432,7 @@ Other project workflows are:
 - `.agents/site-archive-builder.md`: role brief for Astro/Pagefind pages, routes, search, and generated-data adapters.
 - `.agents/skills/naval-video-page-prototype/SKILL.md`: reusable workflow for Astro/Pagefind study-guide implementation.
 - `.agents/skills/naval-site-build-repair/SKILL.md`: reusable workflow for diagnosing and repairing site-pipeline failures.
-- `.codex/hooks/validate-content-pipeline.ps1`: audit, regenerate generated site data, run Astro checks, and optionally run the full repository check.
+- `src/scripts/validate-content-pipeline.ts`: audit, regenerate generated site data, run Astro checks, and optionally run the full repository check.
 
 The process is intentionally segment-first. Use `kind: qa` only for actual Q&A exchanges; keep lecture material as `chapter`, `notable_point`, or `transcript_excerpt`.
 
@@ -445,18 +443,18 @@ The deterministic manifest and shards under `site/src/data/generated/archive/` a
 The generated archive, backlog report, shared topic registry, and processing log are protected by the repository-wide writer lease at `.tmp/site-content-pipeline.lock`; independently owned per-video shards are not. Direct shared-writer commands such as `npm run audit:site-content`, `npm run sync:video-topics`, and `npm run generate:site-data` acquire a short-lived lease automatically. A coordinator that intentionally groups several shared-output operations may acquire one persistent lease and pass its token to the supported commands:
 
 ```powershell
-$lease = node .codex/hooks/site-content-pipeline-lock.mjs acquire --owner "content-coordinator" --purpose "shared-content-integration" --recover-stale | ConvertFrom-Json
+$lease = node src/scripts/site-content-pipeline-lock.mjs acquire --owner "content-coordinator" --purpose "shared-content-integration" --recover-stale | ConvertFrom-Json
 ```
 
 Keep `$lease.lease.token` for the current run and export it before invoking any normal pipeline npm command, so that command joins the existing lease:
 
 ```powershell
 $env:CONTENT_PIPELINE_LOCK_TOKEN = $lease.lease.token
-pwsh -NoProfile -File .codex/hooks/validate-content-pipeline.ps1 -SkipRepoCheck -LockToken $lease.lease.token
+node --import tsx src/scripts/validate-content-pipeline.ts --skip-repo-check --lock-token $lease.lease.token
 Remove-Item Env:CONTENT_PIPELINE_LOCK_TOKEN -ErrorAction SilentlyContinue
 ```
 
-The hook releases the lease in `finally` on success or failure; the caller clears its own environment variable after the child PowerShell process returns. If a run stops before reaching validation, release it explicitly with `node .codex/hooks/site-content-pipeline-lock.mjs release --token $lease.lease.token`. Leases expire after 90 minutes unless renewed; use `status` to inspect a blocker, and `acquire --recover-stale` to quarantine an expired lease with its owner metadata before continuing.
+The TypeScript validator releases the lease in `finally` on success or failure; the caller clears its own environment variable after the child process returns. If a run stops before reaching validation, release it explicitly with `node src/scripts/site-content-pipeline-lock.mjs release --token $lease.lease.token`. Leases expire after 90 minutes unless renewed; use `status` to inspect a blocker, and `acquire --recover-stale` to quarantine an expired lease with its owner metadata before continuing.
 
 Lane-isolated transcript automations follow their prompt-owned atomic claim, lane-private log, video-specific temporary checks, and exact completion/reset procedure. They remain single-agent. Each one writes and validates its independently owned canonical shard without acquiring or waiting on the repository lease. It then acquires the short shared-output lease only for deterministic topic synchronization and the processing-log append, releasing it before lane completion. They do not manually edit shared topics or write reports or generated archives.
 
@@ -469,13 +467,13 @@ Lane-isolated transcript automations follow their prompt-owned atomic claim, lan
 - `.agents/skills/naval-transcript-to-site-content/SKILL.md`: reusable Codex skill for processing one transcript into curated site content.
 - `.agents/skills/naval-site-content-auditor/SKILL.md`: reusable Codex skill for strengthening one selected video shard.
 - `.agents/skills/naval-site-build-repair/SKILL.md`: reusable Codex skill for diagnosing and repairing site-pipeline failures.
-- `.codex/hooks/validate-site.ps1`: optional validation helper for site checks and the full repository check.
-- `.codex/hooks/validate-content-pipeline.ps1`: optional validation helper for transcript curation plus generated site checks.
+- `src/scripts/validate-site.ts`: optional validation coordinator for site checks and the full repository check.
+- `src/scripts/validate-content-pipeline.ts`: optional validation coordinator for transcript curation plus generated site checks.
 
 Run the helper directly when you want a site-focused validation pass:
 
 ```powershell
-pwsh -NoProfile -File .codex/hooks/validate-site.ps1 -SkipRepoCheck
+node --import tsx src/scripts/validate-site.ts --skip-repo-check
 ```
 
 ## Contributor Notes

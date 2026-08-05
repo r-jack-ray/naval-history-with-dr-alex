@@ -46,15 +46,23 @@ export interface SavedChannelHtmlExtraction {
   result: ChannelVideoLinksResult;
 }
 
+interface LockupExtraction {
+  lockupCount: number;
+  records: ChannelVideoLink[];
+}
+
 export function extractSavedChannelHtml(
   html: string,
   options: ExtractSavedChannelHtmlOptions,
 ): SavedChannelHtmlExtraction {
   const initialData = tryParseInitialData(html);
-  const renderedRecords = extractRenderedLockupRecords(html, options.tab);
-  const initialDataRecords = initialData ? extractInitialDataLockupRecords(initialData, options.tab) : [];
-  const extractionMethod = renderedRecords.length > 0 ? "rendered-lockups" : "yt-initial-data";
-  const records = dedupeByVideoId(extractionMethod === "rendered-lockups" ? renderedRecords : initialDataRecords)
+  const rendered = extractRenderedLockupRecords(html, options.tab);
+  const fromInitialData = initialData
+    ? extractInitialDataLockupRecords(initialData, options.tab)
+    : { lockupCount: 0, records: [] };
+  const extractionMethod = rendered.records.length > 0 ? "rendered-lockups" : "yt-initial-data";
+  const selected = extractionMethod === "rendered-lockups" ? rendered : fromInitialData;
+  const records = dedupeByVideoId(selected.records)
     .filter((record) => !options.ignoredVideoIds?.has(record.videoId));
   const channelUrl = normalizeChannelUrl(options.channelUrl ?? savedFromUrl(html) ?? defaultChannelUrl);
   const channelId = options.channelId ?? (initialData ? findChannelId(initialData) : undefined) ?? defaultChannelId;
@@ -65,8 +73,8 @@ export function extractSavedChannelHtml(
     schemaVersion: 1,
     source: buildSourceMetadata(html, extractedAt, continuationTokenCount, extractionMethod, options.sourcePath),
     stats: {
-      renderedLockupCount: renderedRecords.length,
-      initialDataLockupCount: initialDataRecords.length,
+      renderedLockupCount: rendered.lockupCount,
+      initialDataLockupCount: fromInitialData.lockupCount,
       extractedVideoCount: records.length,
       fieldCounts: fieldCounts(records),
     },
@@ -75,20 +83,20 @@ export function extractSavedChannelHtml(
       channelId,
       fetchedAt: extractedAt,
       requestDelayMs: 0,
-      tabs: tabState(channelUrl, options.tab, records.length),
+      tabs: tabState(channelUrl, options.tab, selected.lockupCount),
       links: records,
     },
   };
 }
 
-function extractRenderedLockupRecords(html: string, tab: ChannelVideoTab): ChannelVideoLink[] {
+function extractRenderedLockupRecords(html: string, tab: ChannelVideoTab): LockupExtraction {
   const blocks = html
     .split(/<yt-lockup-view-model\b/iu)
     .slice(1)
     .map((block) => `<yt-lockup-view-model${block.split(/<\/yt-lockup-view-model>/iu)[0] ?? ""}</yt-lockup-view-model>`);
   const records: ChannelVideoLink[] = [];
 
-  for (const block of blocks) {
+  for (const [index, block] of blocks.entries()) {
     const videoId = firstMatch(block, /href="https:\/\/www\.youtube\.com\/watch\?v=([A-Za-z0-9_-]+)/iu);
     if (videoId === undefined) {
       continue;
@@ -98,7 +106,7 @@ function extractRenderedLockupRecords(html: string, tab: ChannelVideoTab): Chann
       videoId,
       url: `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}`,
       tabs: [tab],
-      tabPositions: { [tab]: records.length + 1 },
+      tabPositions: { [tab]: index + 1 },
     };
     const title = renderedTitle(block);
     const durationText = renderedDuration(block);
@@ -127,19 +135,33 @@ function extractRenderedLockupRecords(html: string, tab: ChannelVideoTab): Chann
     records.push(record);
   }
 
-  return records;
+  return { lockupCount: blocks.length, records };
 }
 
-function extractInitialDataLockupRecords(initialData: unknown, tab: ChannelVideoTab): ChannelVideoLink[] {
+function extractInitialDataLockupRecords(initialData: unknown, tab: ChannelVideoTab): LockupExtraction {
   const lockups = collectValuesForKey(initialData, "lockupViewModel");
   const records: ChannelVideoLink[] = [];
 
-  for (const lockupValue of lockups) {
+  for (const [index, lockupValue] of lockups.entries()) {
     const lockup = asRecord(lockupValue);
     if (!lockup) {
       continue;
     }
 
+    const contentType = readString(lockup, "contentType");
+    if (contentType !== undefined && !contentType.includes("VIDEO")) {
+      continue;
+    }
+
+    const endpointUrl = readStringPath(lockup, [
+      "rendererContext",
+      "commandContext",
+      "onTap",
+      "innertubeCommand",
+      "commandMetadata",
+      "webCommandMetadata",
+      "url",
+    ]);
     const videoId =
       readString(lockup, "contentId") ??
       readStringPath(lockup, [
@@ -149,7 +171,8 @@ function extractInitialDataLockupRecords(initialData: unknown, tab: ChannelVideo
         "innertubeCommand",
         "watchEndpoint",
         "videoId",
-      ]);
+      ]) ??
+      videoIdFromUrl(endpointUrl);
     if (videoId === undefined) {
       continue;
     }
@@ -160,7 +183,7 @@ function extractInitialDataLockupRecords(initialData: unknown, tab: ChannelVideo
       videoId,
       url: `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}`,
       tabs: [tab],
-      tabPositions: { [tab]: records.length + 1 },
+      tabPositions: { [tab]: index + 1 },
     };
     const title =
       textValue(readPath(metadataObject, ["title"])) ??
@@ -185,7 +208,7 @@ function extractInitialDataLockupRecords(initialData: unknown, tab: ChannelVideo
     records.push(record);
   }
 
-  return records;
+  return { lockupCount: lockups.length, records };
 }
 
 function renderedTitle(block: string): string | undefined {
@@ -403,16 +426,8 @@ function dedupeByVideoId(records: ChannelVideoLink[]): ChannelVideoLink[] {
     if (seen.has(record.videoId)) {
       continue;
     }
-    const tab = record.tabs[0];
-    if (tab === undefined) {
-      continue;
-    }
-
     seen.add(record.videoId);
-    deduped.push({
-      ...record,
-      tabPositions: { [tab]: deduped.length + 1 },
-    });
+    deduped.push(record);
   }
 
   return deduped;
@@ -493,6 +508,19 @@ function savedFromUrl(html: string): string | undefined {
 
 function normalizeChannelUrl(channelUrl: string): string {
   return channelUrl.replace(/\/(?:videos|streams)\/?$/u, "").replace(/\/$/u, "");
+}
+
+function videoIdFromUrl(url: string | undefined): string | undefined {
+  if (url === undefined) {
+    return undefined;
+  }
+
+  const normalizedUrl = url.startsWith("/") ? `https://www.youtube.com${url}` : url;
+  try {
+    return new URL(normalizedUrl).searchParams.get("v") ?? undefined;
+  } catch {
+    return undefined;
+  }
 }
 
 function looksLikePublishedText(text: string): boolean {

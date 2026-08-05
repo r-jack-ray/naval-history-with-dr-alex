@@ -905,7 +905,7 @@ function sleep(milliseconds) {
 }
 
 function printUsage() {
-  console.log(`Usage: node .codex/hooks/site-content-pipeline-lock.mjs <command> [options]
+  console.log(`Usage: node src/scripts/site-content-pipeline-lock.mjs <command> [options]
 
 Commands:
   acquire      Create a persistent writer lease and print its owner token.
@@ -937,11 +937,11 @@ Common options:
   --build                  Compile TypeScript before the run command while holding the lease.
 
 Examples:
-  node .codex/hooks/site-content-pipeline-lock.mjs acquire --owner schedule-1 --recover-stale
-  node .codex/hooks/site-content-pipeline-lock.mjs schedule-claim --schedule-path task-notes/schedule.md --token <token>
-  node .codex/hooks/site-content-pipeline-lock.mjs schedule-claim --no-lease --schedule-path task-notes/lane.md
-  node .codex/hooks/site-content-pipeline-lock.mjs status
-  node .codex/hooks/site-content-pipeline-lock.mjs run -- bun run src/scripts/generate-site-data-bun.ts
+  node src/scripts/site-content-pipeline-lock.mjs acquire --owner schedule-1 --recover-stale
+  node src/scripts/site-content-pipeline-lock.mjs schedule-claim --schedule-path task-notes/schedule.md --token <token>
+  node src/scripts/site-content-pipeline-lock.mjs schedule-claim --no-lease --schedule-path task-notes/lane.md
+  node src/scripts/site-content-pipeline-lock.mjs status
+  node src/scripts/site-content-pipeline-lock.mjs run -- bun run src/scripts/generate-site-data-bun.ts
 `);
 }
 

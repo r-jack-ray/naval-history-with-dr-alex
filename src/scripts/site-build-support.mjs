@@ -1,3 +1,4 @@
+// Shared by the site build CLI and Astro configuration.
 import { createHash } from "node:crypto";
 import { readFile, readdir, stat } from "node:fs/promises";
 import { relative, resolve } from "node:path";

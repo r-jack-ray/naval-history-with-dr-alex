@@ -25,7 +25,6 @@ test("all direct site commands load the shared properties file", async () => {
   for (const scriptName of [
     "generate:site-data",
     "site:dev",
-    "site:dev:generated",
     "site:preview",
     "site:check:generated",
     "site:build",
@@ -44,15 +43,11 @@ test("all direct site commands load the shared properties file", async () => {
     packageJson.scripts["check:site-seo"],
     "npm run build && npm run check:site-seo:built",
   );
-  assert.equal(
-    packageJson.scripts["site:build:full"],
-    "npm run site:build:astro && npm run site:build:pagefind",
-  );
 });
 
 test("site concurrency values are bounded and validated", async () => {
   const supportUrl = pathToFileURL(
-    join(repositoryRoot, ".codex", "hooks", "site-build-support.mjs"),
+    join(repositoryRoot, "src", "scripts", "site-build-support.mjs"),
   ).href;
   const support = await import(supportUrl) as SiteBuildSupportModule;
 

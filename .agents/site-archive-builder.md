@@ -30,7 +30,7 @@ Use this brief with `$naval-video-page-prototype` when working on the Astro/Page
 ## Generated Archive Contract
 
 - Treat `siteArchiveSchemaVersion` in `src/site/archive-data.ts` as the authority for the split `archive/index.json` manifest schema.
-- Keep the manifest reader in `site/src/data/archive.ts`, the integrity and cache validator in `.codex/hooks/site-build-if-changed.mjs`, and `src/pipeline/shared-output.test.ts` synchronized with that constant whenever the manifest contract changes.
+- Keep the manifest reader in `site/src/data/archive.ts`, the integrity and cache validator in `src/scripts/site-build-if-changed.mjs`, and `src/pipeline/shared-output.test.ts` synchronized with that constant whenever the manifest contract changes.
 - Distinguish the split-manifest schema from the logical reconstructed `SiteArchiveData.schemaVersion`; do not bump or rewrite one merely to make the other agree.
 - Publish and validate generated collection and bucket files through the generator, with `index.json` written last as the commit marker. Never repair a contract mismatch by hand-editing generated JSON.
 

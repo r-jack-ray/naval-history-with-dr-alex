@@ -1,3 +1,4 @@
+// Run the optional sibling Pagefind binary for workspace-parity builds.
 import { spawn } from "node:child_process";
 import { access, constants } from "node:fs/promises";
 import { dirname, relative, resolve } from "node:path";

@@ -47,7 +47,7 @@ Repair site-pipeline failures without widening scope or destabilizing establishe
 ### Generated archive manifest or integrity failures
 
 - Treat `site/src/data/generated/archive/index.json` and its listed files as generated evidence, never as hand-edit targets.
-- Compare the emitted manifest version with `siteArchiveSchemaVersion` in `src/site/archive-data.ts`, then check the Astro reader in `site/src/data/archive.ts`, the wrapper validator in `.codex/hooks/site-build-if-changed.mjs`, and `src/pipeline/shared-output.test.ts`. These consumers must move together when the split-manifest contract changes.
+- Compare the emitted manifest version with `siteArchiveSchemaVersion` in `src/site/archive-data.ts`, then check the Astro reader in `site/src/data/archive.ts`, the wrapper validator in `src/scripts/site-build-if-changed.mjs`, and `src/pipeline/shared-output.test.ts`. These consumers must move together when the split-manifest contract changes.
 - Keep the split-manifest schema distinct from the logical reconstructed `SiteArchiveData.schemaVersion`. Do not downgrade the generator or change the logical schema merely to satisfy a stale manifest consumer.
 - If the generator emits the current valid contract and a stale consumer rejects it, repair that consumer and its cross-consumer test. For missing, extra, corrupt, misbucketed, or stale-provenance files, fix the source contract if necessary and regenerate through repository commands.
 
@@ -87,7 +87,7 @@ Choose the smallest applicable outcome:
 
 ## Validation
 
-Run only the relevant row from **Command Selection**. These commands are alternatives, not a checklist. Stop after the narrow validator when it proves the reported source failure is repaired and the user retains integration-command ownership. Do not run `npm run site:build`, `npm run site:build:generated`, `npm run site:build:full`, or another full Astro/Pagefind render unless the user explicitly says a full site build is allowed for the current task. A pasted build failure, a request to repair the build, or a general request to validate does not grant that permission.
+Run only the relevant row from **Command Selection**. These commands are alternatives, not a checklist. Stop after the narrow validator when it proves the reported source failure is repaired and the user retains integration-command ownership. Do not run `npm run site:build`, `npm run site:build:generated`, or another full Astro/Pagefind render unless the user explicitly says a full site build is allowed for the current task. A pasted build failure, a request to repair the build, or a general request to validate does not grant that permission.
 
 After an authorized topic-policy repair, verify that the read-only normalization audit reports steady-state policy compliance and changed references use the canonical records selected by active creation rules. Refresh generated data only through the one selected terminal pipeline path when Codex owns that integration step.
 

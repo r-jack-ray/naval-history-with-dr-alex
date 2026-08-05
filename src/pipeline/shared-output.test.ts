@@ -12,7 +12,7 @@ import { replaceFileAtomically } from "./atomic-write.js";
 
 const currentDirectory = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(currentDirectory, "..", "..");
-const lockTool = join(repositoryRoot, ".codex", "hooks", "site-content-pipeline-lock.mjs");
+const lockTool = join(repositoryRoot, "src", "scripts", "site-content-pipeline-lock.mjs");
 const worker = join(currentDirectory, "test-support", "shared-output-worker.js");
 
 test("atomic replacement preserves a complete previous file until replacement succeeds", async () => {
@@ -53,43 +53,46 @@ test("Phase 2 commands keep topic writes explicit and generate the split archive
   const packageJson = JSON.parse(await readFile(join(repositoryRoot, "package.json"), "utf8")) as {
     scripts: Record<string, string>;
   };
-  const contentHook = await readFile(join(repositoryRoot, ".codex", "hooks", "validate-content-pipeline.ps1"), "utf8");
-  const siteHook = await readFile(join(repositoryRoot, ".codex", "hooks", "validate-site.ps1"), "utf8");
-  const siteBuildWrapper = await readFile(join(repositoryRoot, ".codex", "hooks", "site-build-if-changed.mjs"), "utf8");
+  const contentValidator = await readFile(join(repositoryRoot, "src", "scripts", "validate-content-pipeline.ts"), "utf8");
+  const siteValidator = await readFile(join(repositoryRoot, "src", "scripts", "validate-site.ts"), "utf8");
+  const validationWorkflow = await readFile(join(repositoryRoot, "src", "scripts", "validation-workflow.ts"), "utf8");
+  const siteBuildWrapper = await readFile(join(repositoryRoot, "src", "scripts", "site-build-if-changed.mjs"), "utf8");
   const archiveAdapter = await readFile(join(repositoryRoot, "site", "src", "data", "archive.ts"), "utf8");
   const generateSiteDataSource = await readFile(join(repositoryRoot, "src", "scripts", "generate-site-data.ts"), "utf8");
   const checkVideoTopicsSource = await readFile(join(repositoryRoot, "src", "scripts", "check-video-topics-bun.ts"), "utf8");
   const workflow = await readFile(join(repositoryRoot, ".github", "workflows", "deploy-site.yml"), "utf8");
-  const workspacePagefindRunner = await readFile(join(repositoryRoot, ".codex", "hooks", "run-workspace-pagefind.mjs"), "utf8");
-  const siteDevWrapper = await readFile(join(repositoryRoot, ".codex", "hooks", "site-dev.mjs"), "utf8");
+  const workspacePagefindRunner = await readFile(join(repositoryRoot, "src", "scripts", "run-workspace-pagefind.mjs"), "utf8");
+  const siteDevWrapper = await readFile(join(repositoryRoot, "src", "scripts", "site-dev.mjs"), "utf8");
 
   assert.match(
-    contentHook,
-    /Invoke-Npm -Arguments @\("run", "audit:topic-normalization", "--", "--patterns-input", \$topicPatternsPath\)/u,
+    contentValidator,
+    /args:\s*\["run", "audit:topic-normalization", "--", "--patterns-input", topicPatternsPath\]/u,
   );
   assert.match(
-    contentHook,
-    /Invoke-Npm -Arguments @\("run", "generate:site-data", "--", "--patterns-input", \$topicPatternsPath\)/u,
+    contentValidator,
+    /args:\s*\["run", "generate:site-data", "--", "--patterns-input", topicPatternsPath\]/u,
   );
-  assert.match(siteHook, /Invoke-Npm -Arguments @\("run", "generate:site-data"\)/u);
-  assert.doesNotMatch(contentHook, /dist\/scripts\/(audit-topic-normalization|generate-site-data)\.js/u);
-  assert.doesNotMatch(siteHook, /dist\/scripts\/generate-site-data\.js/u);
-  assert.match(contentHook, /site:check:generated/u);
-  assert.match(contentHook, /src\/derived\/topic-normalization-patterns\.tsv/u);
-  assert.match(contentHook, /\[switch\]\$RetainCallerLease/u);
-  assert.match(contentHook, /\$retainActiveLock = \$RetainCallerLease -and \$callerProvidedLock/u);
-  assert.match(siteHook, /site:check:generated/u);
-  assert.match(siteHook, /site:build:generated/u);
+  assert.match(siteValidator, /args: \["run", "generate:site-data"\]/u);
+  assert.doesNotMatch(contentValidator, /dist\/scripts\/(audit-topic-normalization|generate-site-data)\.js/u);
+  assert.doesNotMatch(siteValidator, /dist\/scripts\/generate-site-data\.js/u);
+  assert.match(contentValidator, /dist\/scripts\/audit-site-content\.js/u);
+  assert.match(contentValidator, /site:check:generated/u);
+  assert.match(contentValidator, /src\/derived\/topic-normalization-patterns\.tsv/u);
+  assert.match(contentValidator, /retainCallerLease: true/u);
+  assert.match(validationWorkflow, /config\.options\.retainCallerLease && callerProvidedLock/u);
+  assert.match(validationWorkflow, /CONTENT_PIPELINE_LOCK_TOKEN/u);
+  assert.match(siteValidator, /site:check:generated/u);
+  assert.match(siteValidator, /site:build:generated/u);
   const generateSiteDataScript = packageJson.scripts["generate:site-data"] ?? "";
   assert.equal(
     generateSiteDataScript,
-    "node --env-file=site-build.properties .codex/hooks/site-content-pipeline-lock.mjs run --purpose site-archive-generation --recover-stale -- bun run src/scripts/generate-site-data-bun.ts",
+    "node --env-file=site-build.properties src/scripts/site-content-pipeline-lock.mjs run --purpose site-archive-generation --recover-stale -- bun run src/scripts/generate-site-data-bun.ts",
   );
   assert.equal(packageJson.scripts["generate:site-data:bun"], undefined);
   const syncVideoTopicsScript = packageJson.scripts["sync:video-topics"] ?? "";
   assert.equal(
     syncVideoTopicsScript,
-    "node .codex/hooks/site-content-pipeline-lock.mjs run --purpose video-topic-sync --recover-stale -- bun run src/scripts/sync-video-topics-bun.ts",
+    "node src/scripts/site-content-pipeline-lock.mjs run --purpose video-topic-sync --recover-stale -- bun run src/scripts/sync-video-topics-bun.ts",
   );
   assert.equal(packageJson.scripts["sync:video-topics:bun"], undefined);
   assert.equal(
@@ -130,28 +133,25 @@ test("Phase 2 commands keep topic writes explicit and generate the split archive
   assert.doesNotMatch(packageJson.scripts["site:build:generated"] ?? "", /generate:site-data/u);
   assert.equal(
     packageJson.scripts["site:dev"],
-    "node --env-file=site-build.properties .codex/hooks/site-dev.mjs",
+    "node --env-file=site-build.properties src/scripts/site-dev.mjs",
   );
   assert.match(siteDevWrapper, /runNpmScript\("generate:site-data"\)/u);
   assert.match(siteDevWrapper, /\[astroCli, "dev", \.\.\.process\.argv\.slice\(2\)\]/u);
   assert.match(siteDevWrapper, /ASTRO_DEV_BACKGROUND: "0"/u);
   assert.equal(
     packageJson.scripts["check"],
-    "npm run check:types && npm test && npm run check:source && npm run check:generated",
+    "npm test && npm run check:source && npm run site:check",
   );
   assert.equal(packageJson.scripts["check:quick"], undefined);
   assert.equal(packageJson.scripts["check:functional"], undefined);
-  assert.equal(
-    packageJson.scripts["check:generated"],
-    "npm run site:check",
-  );
+  assert.equal(packageJson.scripts["check:generated"], undefined);
   assert.equal(
     packageJson.scripts["check:production"],
     "npm run site:build:generated && npm run check:site-seo:built && npm run check:search-ranking && npm run check:rendered-video-dates",
   );
   assert.equal(
     packageJson.scripts["check:ci"],
-    "npm run check && npm run check:production && npm run check:repository-policy",
+    "npm run check && npm run check:production",
   );
   assert.equal(
     packageJson.scripts["check:site-seo"],
