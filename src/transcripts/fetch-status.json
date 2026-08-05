@@ -1,31 +1,29 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-08-03T06:34:02.562Z",
+  "updatedAt": "2026-08-05T01:00:47.105Z",
   "inputPath": "src/channel/episodes.json",
   "outputRoot": "src/transcripts",
   "requestDelayMs": 60000,
-  "retryFailed": true,
+  "retryFailed": false,
   "force": false,
-  "pendingHandoffTxtPaths": [
-    "src/transcripts/txt/2026-08-02_T18-34-01_bruships-253-science-fiction-and-naval-history-questions-answered-live_U5LfsnBSt8w.txt"
-  ],
+  "pendingHandoffTxtPaths": [],
   "stats": {
-    "inputVideoCount": 2164,
-    "skippedStoredCount": 899,
-    "skippedDeferredCount": 5,
+    "inputVideoCount": 2165,
+    "skippedStoredCount": 2143,
+    "skippedDeferredCount": 6,
     "skippedShortDurationCount": 0,
     "deferredCounts": {
-      "upcoming": 5,
+      "upcoming": 6,
       "live_in_progress": 0,
       "processing": 0,
       "metadata_missing": 0,
       "invalid_metadata": 0
     },
-    "skippedPreviousFailureCount": 0,
-    "attemptedCount": 3,
+    "skippedPreviousFailureCount": 15,
+    "attemptedCount": 1,
     "fetchedCount": 1,
-    "failedCount": 2,
-    "pendingCount": 1257,
+    "failedCount": 0,
+    "pendingCount": 15,
     "totalFailureCount": 15
   },
   "failures": [

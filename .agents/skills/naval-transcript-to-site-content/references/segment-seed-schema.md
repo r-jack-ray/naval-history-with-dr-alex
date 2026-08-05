@@ -26,7 +26,7 @@ Do not recreate a monolithic curated-content file. The manifest and shards under
 ```
 
 - `videoId` must exist in `src/channel/episodes.json`.
-- `topics` contains stable lowercase, hyphenated slugs. After a selected-shard write, the curator or auditor runs `npm run sync:video-topics` under the same finalization lease before appending its completion row. `generate:site-data` checks completeness without writing canonical source.
+- `topics` contains stable lowercase, hyphenated slugs. The selected shard is written without the repository lease. After that write, the curator or auditor acquires the shared-output lease, runs `npm run sync:video-topics`, and appends its completion row before releasing the lease. `generate:site-data` checks completeness without writing canonical source.
 - Resolve new slugs through active `creation` rules in `src/derived/topic-normalization-patterns.tsv`. Preserve established slugs unless the active creation policy canonicalizes them.
 - Treat `review`, disabled, ambiguous, or inapplicable candidates affecting the selected shard as finalization blockers and identify them in the handoff. Selected-shard work does not edit the normalization catalog, hand-edit `topics.json`, or perform corpus-wide topic rewrites; the deterministic synchronizer is the only registry writer.
 - Use `fiction-...` for referents that exist only inside a fictional work. Counterfactual real history, real proposed or unbuilt designs, possible future systems, and genre/format topics do not use that prefix. When fiction illustrates a real-world point, include both the fictional referent and the ordinary transcript-backed topics for the real lesson.

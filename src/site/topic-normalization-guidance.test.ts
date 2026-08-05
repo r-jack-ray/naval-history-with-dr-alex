@@ -82,7 +82,7 @@ test("steady-state guidance omits one-time rollout commands and URL compatibilit
   }
 });
 
-test("curator and auditor guidance retain shard-scoped authority and finalize topic synchronization", async () => {
+test("curator and auditor guidance keep shard writes lock-free and serialize shared finalization", async () => {
   for (const relativePath of shardWorkflowPaths) {
     const guidance = await readGuidance(relativePath);
 
@@ -116,13 +116,28 @@ test("curator and auditor guidance retain shard-scoped authority and finalize to
     );
     assert.match(
       guidance,
-      /writer lease/iu,
-      `${relativePath} must finalize under the repository writer lease`,
+      /shared-output lease/iu,
+      `${relativePath} must retain a lease for shared-output finalization`,
+    );
+    assert.match(
+      guidance,
+      /(?:selected|canonical)[^.]{0,100}shard[^.]{0,220}without[^.]{0,120}(?:writer |repository )?lease/iu,
+      `${relativePath} must write the independently owned shard without the repository lease`,
     );
     assert.match(
       guidance,
       /(?:shard write|canonical shard write)[\s\S]{0,700}sync:video-topics[\s\S]{0,700}(?:append|completion row)/iu,
       `${relativePath} must order shard write, synchronization, and completion append`,
+    );
+    assert.doesNotMatch(
+      guidance,
+      /acquire[^.]{0,180}(?:writer )?lease[^.]{0,180}(?:before|immediately before)[^.]{0,100}(?:shard write|canonical shard write)/iu,
+      `${relativePath} must not acquire the repository lease for a shard write`,
+    );
+    assert.doesNotMatch(
+      guidance,
+      /(?:re-read[^.]{0,180}(?:detect|unexpected)[^.]{0,80}drift|stop on unexpected drift)/iu,
+      `${relativePath} must not require a pre-write shard drift check`,
     );
     assert.match(
       guidance,
@@ -134,7 +149,12 @@ test("curator and auditor guidance retain shard-scoped authority and finalize to
   const curatorSkill = await readGuidance(curatorSkillPath);
   assert.match(
     curatorSkill,
-    /Run `?npm run sync:video-topics`? after the canonical shard write and before appending exactly one/iu,
+    /After the selected shard write is complete[\s\S]{0,260}acquire[\s\S]{0,180}site-content-pipeline\.lock/iu,
+    "the curator must acquire the shared-output lease only after its shard write",
+  );
+  assert.match(
+    curatorSkill,
+    /Keep the lease only across topic synchronization and the processing-log append/iu,
     "the curator must synchronize after the shard write and before its completion row",
   );
 
@@ -203,7 +223,8 @@ test("companion guidance preserves review blockers, shard boundaries, and finali
   assert.match(agents, /preserve established slugs unless[^.]{0,120}active creation policy canonicalizes/iu);
   assert.match(agents, /review[^.]{0,220}block/iu);
   assert.match(agents, /must not perform corpus-wide topic rewrites/iu);
-  assert.match(agents, /writer lease[^.]{0,300}sync:video-topics[^.]{0,300}processing-log append/iu);
+  assert.match(agents, /selected shard[^.]{0,260}without[^.]{0,120}writer lease/iu);
+  assert.match(agents, /After the shard write is complete[^.]{0,240}sync:video-topics[^.]{0,180}processing-log/iu);
   assert.match(agents, /report:video-topic-usage[\s\S]{0,500}topic-normalization-review\.tsv/iu);
   assert.match(agents, /do not expect routine site builds[^.]{0,140}curation backlog/iu);
 
@@ -219,9 +240,10 @@ test("companion guidance preserves review blockers, shard boundaries, and finali
   const config = await readGuidance("src/derived/site-content-processing.config.json");
   assert.match(config, /active creation rules/iu);
   assert.match(config, /preserve established slugs unless the active creation policy canonicalizes them/iu);
-  assert.match(config, /review, ambiguous[^.]{0,220}blocks? the completion row/iu);
+  assert.match(config, /review or ambiguous[^.]{0,220}before shared-output finalization/iu);
   assert.match(config, /must not.{0,420}perform corpus-wide topic rewrites/iu);
-  assert.match(config, /writer lease[^.]{0,240}sync:video-topics[^.]{0,240}processing-log append/iu);
+  assert.match(config, /selected canonical shard without the repository writer lease/iu);
+  assert.match(config, /After the shard write[^.]{0,180}shared-output lease[^.]{0,180}sync:video-topics[^.]{0,180}processing-log append/iu);
 
   const readme = await readGuidance("README.md");
   assert.match(readme, /steady-state topic creation/iu);
