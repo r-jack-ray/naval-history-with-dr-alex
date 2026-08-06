@@ -24,7 +24,7 @@ jobs:
       CHROME_PATH: /usr/bin/google-chrome
     steps:
       - uses: actions/checkout@v6
-      - uses: actions/configure-pages@v5
+      - uses: actions/configure-pages@v6
       - uses: actions/setup-node@v6
         with:
           node-version: 22
@@ -37,7 +37,7 @@ jobs:
         run: >-
           node -e "require('node:fs').rmSync('site/src/data/generated/archive', { recursive: true, force: true })"
       - run: npm run check:ci
-      - uses: actions/upload-pages-artifact@v4
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: site/dist
 
@@ -46,9 +46,15 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url || steps.deployment_retry_1.outputs.page_url || steps.deployment_retry_2.outputs.page_url }}
     steps:
       - id: deployment
         uses: actions/deploy-pages@v5
-        with:
-          timeout: 1800000
+        continue-on-error: true
+      - id: deployment_retry_1
+        if: steps.deployment.outcome == 'failure'
+        uses: actions/deploy-pages@v5
+        continue-on-error: true
+      - id: deployment_retry_2
+        if: steps.deployment_retry_1.outcome == 'failure'
+        uses: actions/deploy-pages@v5
