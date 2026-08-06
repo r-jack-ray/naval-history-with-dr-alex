@@ -12,9 +12,9 @@ export function parseAstroBuildConcurrency(value) {
       "ASTRO_BUILD_CONCURRENCY must be set through site-build.properties or the calling environment.",
     );
   }
-  if (!/^[1-4]$/u.test(value)) {
+  if (!/^[1-8]$/u.test(value)) {
     throw new Error(
-      "ASTRO_BUILD_CONCURRENCY must be exactly one of 1, 2, 3, or 4.",
+      "ASTRO_BUILD_CONCURRENCY must be an integer from 1 through 8.",
     );
   }
   return Number(value);

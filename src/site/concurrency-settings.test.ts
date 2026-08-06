@@ -52,8 +52,8 @@ test("site concurrency values are bounded and validated", async () => {
   const support = await import(supportUrl) as SiteBuildSupportModule;
 
   assert.equal(support.parseAstroBuildConcurrency("1"), 1);
-  assert.equal(support.parseAstroBuildConcurrency("4"), 4);
-  for (const invalid of [undefined, "", "0", "5", "1.5", "four"]) {
+  assert.equal(support.parseAstroBuildConcurrency("8"), 8);
+  for (const invalid of [undefined, "", "0", "9", "1.5", "eight"]) {
     assert.throws(() => support.parseAstroBuildConcurrency(invalid));
   }
 
