@@ -3,6 +3,9 @@
   "topics": [
     "ship-design",
     "naval-architecture",
+    "institutional-memory",
+    "buoyancy",
+    "ship-stability",
     "naval-doctrine",
     "naval-procurement",
     "naval-treaties",
@@ -43,6 +46,41 @@
       ]
     },
     {
+      "id": "rope-accounts-and-missing-practical-knowledge",
+      "videoId": "l5U9Y0WFtbs",
+      "slug": "rope-accounts-and-missing-practical-knowledge",
+      "title": "Rope accounts and missing practical knowledge",
+      "kind": "notable_point",
+      "start": "3:05",
+      "end": "6:39",
+      "topics": [
+        "historical-method",
+        "institutional-memory",
+        "naval-administration",
+        "naval-logistics",
+        "rigging",
+        "age-of-sail",
+        "royal-navy",
+        "spanish-navy",
+        "ship-design"
+      ],
+      "summary": "Aggregate rope orders, wastage, corruption, and adapted Spanish rigging show why tacit naval knowledge is difficult to reconstruct from surviving records.",
+      "body": "Dr. Clarke pauses over a problem historians meet in routine naval supply records. An eighteenth-century rope order might survive only as a government aggregate because sailors and dockyard officials already knew the standard load for each rig and had no reason to spell it out. Reconstructing an individual ship's needs means combining incidental measurements with assumptions about wastage, corruption, and variations between nominally similar vessels. The problem becomes sharper when a captured Spanish ship receives Royal Navy rigging adapted to different fittings and operating practice. This watch point shows how tacit knowledge shaped both ship design and the record historians inherit.",
+      "sourcePath": "src/transcripts/txt/2023-02-10_T19-00-17_ship-design_l5U9Y0WFtbs.txt",
+      "evidence": [
+        {
+          "start": "3:12",
+          "end": "4:56",
+          "note": "The transcript explains why aggregate rope orders force historians to infer per-ship loads, wastage, corruption, and differences between nominally similar rigs."
+        },
+        {
+          "start": "5:03",
+          "end": "6:39",
+          "note": "The transcript uses Royal Navy adaptation of captured Spanish ships to show how construction and operating practice changed the required rigging."
+        }
+      ]
+    },
+    {
       "id": "buoyancy-density-and-stability-basics",
       "videoId": "l5U9Y0WFtbs",
       "slug": "buoyancy-density-and-stability-basics",
@@ -53,7 +91,10 @@
       "topics": [
         "ship-design",
         "naval-architecture",
-        "marine-engineering"
+        "marine-engineering",
+        "buoyancy",
+        "ship-stability",
+        "watertight-compartments"
       ],
       "summary": "A rubber-duck demonstration introduces buoyancy, self-righting stability, top weight, hull density, and watertight volume.",
       "body": "This section turns basic hydrostatic ideas into a watchable rubber-duck demonstration before moving back to ships. The duck's broad, self-righting form shows that maximum buoyancy alone is not enough: top weight, the height at which a hull rides, and the distribution of submerged volume also govern stability. Dr. Clarke then connects displacement to average vessel density, explaining that a hull floats by enclosing enough air-filled space to remain less dense than the water it displaces. Seasoned wood, caulking, and later watertight bulkheads are therefore not isolated construction details but different ways of preserving that buoyant volume. The demonstration also reinforces the lecture's larger point that working technology accumulates layer by layer rather than appearing fully formed.",
@@ -83,10 +124,15 @@
         "ship-design",
         "naval-procurement",
         "naval-treaties",
-        "naval-architecture"
+        "naval-architecture",
+        "cva-01",
+        "queen-elizabeth-class-aircraft-carriers",
+        "shipyards",
+        "dry-docks",
+        "naval-infrastructure"
       ],
       "summary": "The design-process section contrasts role-driven ship design with treaty, cost, yard, and infrastructure constraints.",
-      "body": "Dr. Clarke describes the ideal naval-architecture sequence: decide the ship's duties, equipment, crew, range, and speed, then design the hull around those requirements. This approach can produce a more expensive ship, but one better matched to its service and more likely to remain useful for a long career. He contrasts it with the more common fixed-criteria process, where treaty tonnage, price, yard limits, or dry-dock size are imposed first. Designers must then remove capability, accept risk, misstate displacement, or persuade decision-makers to invest in larger infrastructure. His recurring estimate that the unconstrained answer may be roughly twenty percent larger illustrates how a seemingly modest limit can reshape an entire warship.",
+      "body": "Dr. Clarke describes the ideal naval-architecture sequence: decide the ship's duties, equipment, crew, range, and speed, then design the hull around those requirements. This approach can produce a more expensive ship, but one better matched to its service and more likely to remain useful for a long career. He contrasts it with the more common fixed-criteria process, where treaty tonnage, price, yard limits, or dry-dock size are imposed first. Designers must then remove capability, accept risk, misstate displacement, or persuade decision-makers to invest in larger infrastructure. His recurring estimate that the unconstrained answer may be roughly twenty percent larger illustrates how a seemingly modest limit can reshape an entire warship. The modern Queen Elizabeth class and the CVA-01 studies make the infrastructure constraint concrete: a larger carrier required Britain to fund additional shipbuilding capacity first.",
       "sourcePath": "src/transcripts/txt/2023-02-10_T19-00-17_ship-design_l5U9Y0WFtbs.txt",
       "evidence": [
         {
@@ -140,10 +186,12 @@
         "naval-architecture",
         "naval-history",
         "carvel-construction",
-        "clinker-construction"
+        "clinker-construction",
+        "ancient-shipbuilding",
+        "mortise-and-tenon-joints"
       ],
       "summary": "Carvel, mortise-and-tenon, and clinker methods show how construction technique governed hull strength, speed, rigging, and visible form.",
-      "body": "Dr. Clarke explains that the earliest boat designs probably existed in builders' minds before writing materials made formal plans practical. By the Roman period, however, shipbuilders were already using more deliberate design methods. Shell-first Carvel construction joined smooth planking with mortise-and-tenon joints, producing strong hulls suited to demanding uses such as ramming and more complicated rigs. Lapstrake or clinker construction overlapped planks to create a lighter, faster, and more quickly built hull, but with different strength and rigging limits. The comparison shows that a ship's appearance and performance grew directly from the skills, time, and resources available to its builders.",
+      "body": "Dr. Clarke explains that the earliest boat designs probably existed in builders' minds before writing materials made formal plans practical. By the Roman period, however, shipbuilders were already using more deliberate design methods. Shell-first Carvel construction joined smooth planking with mortise-and-tenon joints, producing strong hulls suited to demanding uses such as ramming and more complicated rigs. The wreck evidence he cites places that tradition well before its later Greek, Roman, and Carthaginian use. Lapstrake or clinker construction overlapped planks to create a lighter, faster, and more quickly built hull, but with different strength and rigging limits. The comparison shows that a ship's appearance and performance grew directly from the skills, time, and resources available to its builders.",
       "sourcePath": "src/transcripts/txt/2023-02-10_T19-00-17_ship-design_l5U9Y0WFtbs.txt",
       "evidence": [
         {
@@ -196,7 +244,10 @@
         "ship-design",
         "naval-architecture",
         "naval-industrial-base",
-        "marine-engineering"
+        "marine-engineering",
+        "mould-lofting",
+        "chatham-dockyard",
+        "shipwrights"
       ],
       "summary": "The Chatham drawing floor shows how hereditary shipwright knowledge, paper plans, and full-scale lofting turned a design into shaped timbers.",
       "body": "Ship design first rested with specialist shipwrights whose family firms could preserve knowledge across generations. At Chatham Dockyard, increasingly formal paper plans were expanded into full-scale drawings on a mould loft floor. Those lines guided the forms used to shape individual pieces of timber, translating a small drawing into components that would fit together at ship size. The sequence makes clear that naval architecture was not only conceptual calculation: the design had to be communicated precisely enough for a workforce to build it. This watch point offers a concrete bridge between the designer's drawing and the physical hull.",
@@ -252,7 +303,12 @@
         "naval-industrial-base",
         "ship-design",
         "marine-engineering",
-        "naval-architecture"
+        "naval-architecture",
+        "shipbuilding-timber",
+        "forest-management",
+        "river-transport",
+        "timber-seasoning",
+        "naval-logistics"
       ],
       "summary": "Managed forests, rivers, carts, seasoning, and experience-based testing reveal the logistical system behind wooden warship construction.",
       "body": "Dr. Clarke ties wooden ship design to a national supply system that began far from the dockyard. Britain managed forests and even rivers so that suitable timber could move continually by water and cart toward shipbuilding centres. Felling, shaping, transporting, and seasoning the wood provided steady work because construction consumed material in a constant flow. Without modern laboratories, builders judged unfamiliar timber through grain, resemblance to proven species, and long experience of how earlier structures survived. The section shows that a wooden fleet depended as much on inland logistics and accumulated materials knowledge as on the shipwrights assembling hulls at the coast.",
@@ -278,7 +334,8 @@
         "shipyards",
         "iron-hulled-warships",
         "steel-hulled-warships",
-        "naval-architecture"
+        "naval-architecture",
+        "naval-infrastructure"
       ],
       "summary": "The transition from wooden to metal hulls forced designers to relearn materials and punished yards that sold supposedly redundant land too quickly.",
       "body": "The move from composite construction to iron and then steel did more than substitute one hull material for another. Naval architects had to relearn how the materials behaved and alter hull shaping to use metal efficiently. Shipyards could initially regard their large timber-seasoning areas as obsolete and sell the land. Metalworking then demanded new facilities and space of its own, leaving yards that had pursued quick land savings unable to adapt. Dr. Clarke uses the episode to show how an apparently rational efficiency decision can critically weaken long-term shipbuilding capacity.",
@@ -310,7 +367,10 @@
         "queen-elizabeth-class-aircraft-carriers",
         "ship-design",
         "naval-architecture",
-        "marine-engineering"
+        "marine-engineering",
+        "gas-turbines",
+        "dry-docks",
+        "naval-infrastructure"
       ],
       "summary": "The Queen Elizabeth class carriers show why an unfamiliar silhouette can still rest on a credible hull form and coherent engineering choices.",
       "body": "The closing section returns to the idea that an unusual feature does not automatically make a ship look wrong. The Queen Elizabeth class carriers' two islands look novel, but their hull form remains continuous with generations of successful ships. Dr. Clarke notes that the carriers are shorter and smaller than an unconstrained British requirement might have produced because infrastructure and dry-dock investment limited the design. The twin-island arrangement also follows a logical engineering choice involving the gas turbines rather than arbitrary styling. Naval architects and marine engineers made the stability work beneath those visible compromises, which is why the ships can look distinctive without appearing unsafe.",
@@ -337,7 +397,9 @@
         "marine-engineering",
         "plimsoll-line",
         "ship-safety",
-        "institutional-memory"
+        "institutional-memory",
+        "buoyancy",
+        "ship-stability"
       ],
       "summary": "Visual experience can flag an overloaded or implausible hull, but naval architects and marine engineers still have to prove the design with mathematics and physics.",
       "body": "Dr. Clarke argues that accumulated visual experience lets even non-specialists notice when a vessel rides suspiciously low or its Plimsoll line has disappeared beneath the water. That instinct reflects generations of exposure to ships that returned safely to port, not a substitute for calculation. Naval architects and marine engineers still use complex mathematics and physics to establish buoyancy, stability, and structural soundness. The historical sequence began with builders enlarging successful river craft, testing them on broader waters, and preserving forms that worked. Judging by eye is therefore most useful as an early warning grounded in cultural memory, while technical design determines whether the ship will actually remain afloat.",
