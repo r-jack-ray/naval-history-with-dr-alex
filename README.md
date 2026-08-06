@@ -145,12 +145,12 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 | `site:preview` | Preview an existing `site/dist/` build. |
 | `site:check` | Regenerate archive data, then run the Astro check. |
 | `site:check:generated` | Run the Astro check against existing generated data without regeneration. |
-| `site:build` | Cached end-to-end generation, Astro build, output validation, and Pagefind indexing. |
+| `site:build` | Source-validated, cached end-to-end generation, Astro build, output validation, and official Pagefind indexing. |
 | `site:build:generated` | Cached Astro/Pagefind build using an already valid generated archive. |
 | `site:build:astro` | Run the raw Astro production build only. |
 | `site:build:pagefind` | Run Pagefind against `site/dist/` only. |
 | `site:build:pagefind:workspace` | Run the explicitly supported sibling Pagefind binary, with a clear prerequisite error when it is unavailable. |
-| `site:build:workspace-pagefind` | Cached end-to-end build using the sibling Pagefind binary. |
+| `site:build:workspace-pagefind` | Source-validated, cached end-to-end build using the sibling Pagefind binary. |
 | `check:workspace-pagefind` | Build with the sibling binary and run the same search/page-count and rendered-date contracts used for official output. |
 | `check:pagefind-contract` | Verify Pagefind manifest/fragment counts and the five representative Phase 0 searches for either implementation. |
 | `check:search-ranking` | Exercise the built Pagefind index and rendered search UI against ranking cases. |
@@ -186,7 +186,7 @@ npm run site:build
 npm run site:preview
 ```
 
-`npm run site:dev` and `npm run site:check` both generate the ignored `site/src/data/generated/archive/` dataset before Astro starts, so a fresh clone does not require a remembered manual generation step. `npm run site:build` fingerprints the generator and site inputs, validates the manifest-listed generated files and SHA-256 values, and regenerates or rebuilds only when inputs or outputs changed; pass `-- --force` to bypass its caches. All three paths are read-only with respect to canonical inputs. If a shard references a missing registry record, run `npm run sync:video-topics`, review the source change, and retry. A performed build emits `site/dist/` and runs Pagefind against that output. Run `site:preview` after a build when you want to inspect that production output locally.
+`npm run site:dev` and `npm run site:check` both generate the ignored `site/src/data/generated/archive/` dataset before Astro starts, so a fresh clone does not require a remembered manual generation step. `npm run site:build` and `npm run site:build:workspace-pagefind` both run `check:source` before consulting their caches, so topic, registry, content, and processing-log failures cannot be hidden by unchanged generated output. They then share the same archive generation, integrity validation, Astro, and cache logic; the workspace variant changes only the Pagefind implementation and its fingerprint input. The wrapper regenerates or rebuilds only when inputs or outputs changed; pass `-- --force` to bypass its caches, not the source gate. Both paths are read-only with respect to canonical inputs. If a shard references a missing registry record, run `npm run sync:video-topics`, review the source change, and retry. A performed build emits `site/dist/` and runs Pagefind against that output. Run `site:preview` after a build when you want to inspect that production output locally.
 
 The four promoted Bun-backed maintenance commands (`report:video-topic-usage`, `sync:video-topics`, `audit:topic-normalization`, and `generate:site-data`) plus the read-only `check:video-topics` command use `--workers <count>` with a default of the smaller of eight or the available CPUs. Bun `1.3.14` is pinned in `.bun-version`; each command preserves its output path and ownership contract and reports `runtime=bun` in its summary.
 

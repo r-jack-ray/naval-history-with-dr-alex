@@ -122,6 +122,19 @@ test("Phase 2 commands keep topic writes explicit and generate the split archive
   assert.match(siteBuildWrapper, /"\.bun-version"/u);
   assert.match(siteBuildWrapper, /manifest\.source\.patternsSha256/u);
   assert.match(siteBuildWrapper, /manifest\.source\.patternsSourceSha256/u);
+  const sourceValidationIndex = siteBuildWrapper.indexOf('runNpmScript("check:source")');
+  const archiveGenerationIndex = siteBuildWrapper.indexOf("ensureSiteArchive(force)");
+  assert.ok(sourceValidationIndex >= 0, "generated production builds must run check:source");
+  assert.ok(
+    sourceValidationIndex < archiveGenerationIndex,
+    "source validation must run before archive generation and cache decisions",
+  );
+  assert.equal(
+    siteBuildWrapper.match(/runNpmScript\("check:source"\)/gu)?.length,
+    1,
+    "the shared build wrapper must own one source-validation gate",
+  );
+  assert.match(siteBuildWrapper, /if \(sourceValidationExitCode !== 0\)/u);
   assert.match(
     siteBuildWrapper,
     /async function ensureBuiltSite\(\s*force,\s*buildConcurrency,\s*pagefindScript,\s*pagefindInputPaths,\s*\)\s*\{\s*const archiveValidation = await measureStage\(\s*"archive integrity validation \(site\)",\s*validateSiteArchive,\s*\);/u,
@@ -152,6 +165,14 @@ test("Phase 2 commands keep topic writes explicit and generate the split archive
   assert.equal(
     packageJson.scripts["check:ci"],
     "npm run check && npm run check:production",
+  );
+  assert.equal(
+    packageJson.scripts["site:build"],
+    "node --env-file=site-build.properties src/scripts/site-build-if-changed.mjs --generate",
+  );
+  assert.equal(
+    packageJson.scripts["site:build:workspace-pagefind"],
+    "node --env-file=site-build.properties src/scripts/site-build-if-changed.mjs --generate --workspace-pagefind",
   );
   assert.equal(
     packageJson.scripts["check:site-seo"],

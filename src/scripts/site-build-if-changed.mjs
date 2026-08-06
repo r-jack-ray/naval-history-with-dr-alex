@@ -91,6 +91,15 @@ async function main() {
     process.env.ASTRO_BUILD_CONCURRENCY,
   );
   if (args.includes("--generate")) {
+    const sourceValidationExitCode = await measureStage(
+      "source validation",
+      () => runNpmScript("check:source"),
+    );
+    if (sourceValidationExitCode !== 0) {
+      process.exitCode = sourceValidationExitCode;
+      return;
+    }
+
     const generationSucceeded = await ensureSiteArchive(force);
     if (!generationSucceeded) {
       return;
