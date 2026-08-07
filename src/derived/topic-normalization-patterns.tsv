@@ -2692,6 +2692,7 @@ normalize-global-curation-aircraft-spares	active	creation	exact	aircraft-spares	
 normalize-global-curation-ajax	active	creation	exact	ajax	ajax-armoured-vehicle	Ajax Armoured Vehicle	["Ajax Armored Vehicle","Ajax"]	Corpus-wide similar-topic and potential-duplicate review; current references identify one canonical topic
 normalize-global-curation-alexandria-raid	active	creation	exact	alexandria-raid	raid-on-alexandria	Raid On Alexandria	["Alexandria Raid"]	Corpus-wide similar-topic and potential-duplicate review; current references identify one canonical topic
 normalize-global-curation-an-spy-1	active	creation	exact	an-spy-1	spy-1-radar	AN/SPY-1 Radar	["An Spy 1","Spy 1","AN/SPY-1","SPY-1"]	Corpus-wide similar-topic and potential-duplicate review; current references identify one canonical topic
+normalize-global-curation-an-spy-1-radar	active	creation	exact	an-spy-1-radar	spy-1-radar	AN/SPY-1 Radar	["An Spy 1 Radar"]	Title and alias collision review consolidated the same AN/SPY-1 radar family.
 normalize-global-curation-apollo-program	disabled	creation	exact	apollo-program	apollo-program	Apollo Program	[]	Disabled after review confirmed this is the official US programme name
 normalize-global-curation-armour-decks	active	creation	exact	armour-decks	deck-armour	Deck Armour	["Deck Armor","Armour Decks","Armor Decks"]	Corpus-wide similar-topic and potential-duplicate review; current references identify one canonical topic
 normalize-global-curation-atlantic-battle	active	creation	exact	atlantic-battle	battle-of-the-atlantic	Battle of the Atlantic	["Atlantic campaign","Battle of Atlantic","Atlantic Campaigns","Atlantic Battle"]	Corpus-wide similar-topic and potential-duplicate review; current references identify one canonical topic
@@ -3026,7 +3027,8 @@ normalize-batch-audit-la-galissonniere-class-cruisers	active	creation	exact	la-g
 normalize-batch-audit-fieseler-fi-167	active	creation	exact	fieseler-fi-167	fi-167	Fieseler Fi 167	[]	Batch audit consolidated the full manufacturer label into the established aircraft route.
 normalize-batch-audit-h3-class-battlecruisers	active	creation	exact	h3-class-battlecruisers	h3-battlecruiser	H3 Battlecruiser	[]	Batch audit consolidated the same paper design.
 normalize-batch-audit-surcouf-submarine	active	creation	exact	surcouf-submarine	surcouf	Surcouf (Submarine)	[]	Batch audit consolidated the qualified ship label into the established submarine route.
-normalize-batch-audit-halcyon-class-sloops	active	creation	exact	halcyon-class-sloops	halcyon-class	Halcyon Class Minesweepers	[]	Batch audit consolidated the same Halcyon class.
+normalize-batch-audit-halcyon-class-sloops	active	creation	exact	halcyon-class-sloops	halcyon-class-minesweepers	Halcyon Class Minesweepers	[]	Batch audit consolidated the same Halcyon class.
+normalize-batch-audit-halcyon-class	active	creation	exact	halcyon-class	halcyon-class-minesweepers	Halcyon Class Minesweepers	["Halcyon Class","Halcyon Class Sloops"]	Title and alias collision review standardized the class topic with its minesweeper type.
 normalize-batch-audit-royal-naval-dockyard-bermuda	active	creation	exact	royal-naval-dockyard-bermuda	bermuda-dockyard	Royal Naval Dockyard, Bermuda	[]	Batch audit consolidated the full institutional place name into the established dockyard route.
 normalize-batch-audit-naval-paint-schemes	active	creation	exact	naval-paint-schemes	warship-paint-schemes	Warship Paint Schemes	[]	Batch audit consolidated an exact subject synonym.
 normalize-batch-audit-fiction-star-trek	active	creation	exact	fiction-star-trek	star-trek	Star Trek	[]	The franchise is a real media work, not an in-universe fictional referent.
@@ -3081,7 +3083,7 @@ display-batch-audit-two-ocean-navy	active	display	exact	two-ocean-navy	two-ocean
 display-batch-audit-l2-design	active	display	exact	l2-design	l2-design	L2 Battleship Design	["L2 Design","L2 Battleship"]	Clarifies the paper design and ship type.
 display-batch-audit-duquesne-class	active	display	exact	duquesne-class	duquesne-class	Duquesne Class Cruisers	["Duquesne Class"]	Names the ship type explicitly.
 display-batch-audit-la-galissonniere-class	active	display	exact	la-galissonniere-class	la-galissonniere-class	La Galissonnière Class Cruisers	["La Galissonniere Class"]	Restores the proper accent and names the ship type.
-display-batch-audit-halcyon-class	active	display	exact	halcyon-class	halcyon-class	Halcyon Class Minesweepers	["Halcyon Class","Halcyon Class Sloops"]	Names the class by its primary minesweeping role.
+display-batch-audit-halcyon-class-minesweepers	active	display	exact	halcyon-class-minesweepers	halcyon-class-minesweepers	Halcyon Class Minesweepers	["Halcyon Class","Halcyon Class Sloops"]	Names the class by its primary minesweeping role.
 display-batch-audit-anzac-class-frigate	active	display	exact	anzac-class-frigate	anzac-class-frigate	Anzac Class Frigates	["Anzac Class","Anzac Class Frigate"]	Uses a plural display title for the full class.
 display-batch-audit-built-up-guns	active	display	exact	built-up-guns	built-up-guns	Built-Up Guns	[]	Uses conventional compound styling.
 display-batch-audit-tennessee-class-cruisers	active	display	exact	tennessee-class-cruisers	tennessee-class-cruisers	Tennessee Class Armoured Cruisers	["Tennessee Class Cruisers","Tennessee Class Armored Cruisers"]	Names the ship type and follows UK spelling.
