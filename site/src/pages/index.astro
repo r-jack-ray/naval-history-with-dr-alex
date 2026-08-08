@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { archiveSegments, archiveVideos, compareVideosByDateDescending, publicArchiveTopics } from "../data/archive";
+import type { ArchiveSegment } from "../data/archive";
+import featuredWatchPointsUrl from "../scripts/featured-watch-points.js?url&no-inline";
 import { staticPageMetadata } from "../../../src/site/page-metadata.js";
 
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
@@ -10,7 +12,53 @@ const latestVideo = [...archiveVideos]
   .filter((video) => video.segmentSlugs.length > 0)
   .sort(compareVideosByDateDescending)[0];
 const latestVideoUrl = `${baseUrl}videos/${latestVideo.slug}/`;
-const featuredSegments = archiveSegments.slice(0, 4);
+const featuredCandidateLimit = 256;
+const featuredKindCycle = ["chapter", "notable_point", "qa"] as const;
+const segmentsByVideoId = new Map<string, ArchiveSegment[]>();
+for (const segment of archiveSegments) {
+  if (segment.kind === "transcript_excerpt") {
+    continue;
+  }
+  const videoSegments = segmentsByVideoId.get(segment.videoId) ?? [];
+  videoSegments.push(segment);
+  segmentsByVideoId.set(segment.videoId, videoSegments);
+}
+
+const candidateVideos = [...archiveVideos]
+  .filter((video) => segmentsByVideoId.has(video.videoId))
+  .sort(compareVideosByDateDescending);
+const sampledVideos = candidateVideos.length <= featuredCandidateLimit
+  ? candidateVideos
+  : Array.from({ length: featuredCandidateLimit }, (_, index) => (
+      candidateVideos[Math.floor(index * (candidateVideos.length - 1) / (featuredCandidateLimit - 1))]
+    )).filter((video) => video !== undefined);
+const featuredCandidates = sampledVideos.flatMap((video, index) => {
+  const videoSegments = segmentsByVideoId.get(video.videoId) ?? [];
+  const preferredKind = featuredKindCycle[index % featuredKindCycle.length] ?? "chapter";
+  const preferredSegments = videoSegments.filter((segment) => segment.kind === preferredKind);
+  const segment = [...(preferredSegments.length > 0 ? preferredSegments : videoSegments)]
+    .sort((left, right) => (
+      Math.min(right.topics.length, 6) - Math.min(left.topics.length, 6)
+      || Math.abs(left.summary.length - 180) - Math.abs(right.summary.length - 180)
+      || left.startSeconds - right.startSeconds
+      || left.slug.localeCompare(right.slug, "en")
+    ))[0];
+  if (segment === undefined) {
+    return [];
+  }
+  return [{
+    slug: segment.slug,
+    title: segment.title,
+    summary: segment.summary,
+    kind: segment.kind,
+    kindLabel: segment.kindLabel,
+    start: segment.start,
+    videoId: segment.videoId,
+    topics: segment.topics.map((topic) => topic.slug),
+  }];
+});
+const fallbackFeaturedSegments = featuredCandidates.slice(0, 4);
+const featuredCandidateJson = JSON.stringify(featuredCandidates).replace(/</gu, "\\u003c");
 const activeTopics = [...publicArchiveTopics]
   .sort((left, right) => right.segmentCount - left.segmentCount || right.videoCount - left.videoCount)
   .slice(0, 10);
@@ -77,14 +125,18 @@ const metadata = staticPageMetadata.home;
     <section class="home-section" aria-labelledby="featured-segments-heading">
       <div class="section-title-row">
         <div>
-          <p class="eyebrow">Time notes</p>
+          <p class="eyebrow">Time notes · Daily selection</p>
           <h2 id="featured-segments-heading">Featured watch points</h2>
         </div>
         <a class="secondary-link" href={`${baseUrl}segments/`}>Find time notes</a>
       </div>
-      <div class="record-grid compact-grid">
+      <div
+        class="record-grid compact-grid"
+        data-featured-watch-points
+        data-base-url={baseUrl}
+      >
         {
-          featuredSegments.map((segment) => (
+          fallbackFeaturedSegments.map((segment) => (
             <article class="segment-card">
               <span class="label">{segment.kindLabel} · {segment.start}</span>
               <h3><a href={`${baseUrl}segments/${segment.slug}/`}>{segment.title}</a></h3>
@@ -121,5 +173,12 @@ const metadata = staticPageMetadata.home;
         }
       </div>
     </section>
+    <script
+      type="application/json"
+      data-featured-watch-points-candidates
+      set:html={featuredCandidateJson}
+      is:inline
+    ></script>
+    <script type="module" src={featuredWatchPointsUrl} is:inline></script>
   </main>
 </BaseLayout>
