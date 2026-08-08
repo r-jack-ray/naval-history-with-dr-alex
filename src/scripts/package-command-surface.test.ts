@@ -2,8 +2,8 @@ import assert from "node:assert/strict";
 import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
 import test from "node:test";
+import { fileURLToPath } from "node:url";
 
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
 
@@ -30,8 +30,8 @@ test("Phase 7 keeps canonical commands and retires zero-caller scripts", async (
   const packageJson = JSON.parse(packageJsonText) as { scripts: Record<string, string> };
 
   assert.equal(
-    packageJson.scripts["check"],
-    "npm test && npm run check:source && npm run site:check",
+      packageJson.scripts["check"],
+      "npm test && npm run check:source && npm run site:check",
   );
   for (const retiredName of [
     "check:quick",
@@ -54,12 +54,12 @@ test("Phase 7 keeps canonical commands and retires zero-caller scripts", async (
     assert.equal(packageJson.scripts[retiredName], undefined, `${retiredName} must stay retired`);
   }
   assert.equal(
-    existsSync(join(repositoryRoot, "src", "scripts", "list-files-that-need-processing.ts")),
-    false,
+      existsSync(join(repositoryRoot, "src", "scripts", "list-files-that-need-processing.ts")),
+      false,
   );
   assert.equal(
-    existsSync(join(repositoryRoot, "src", "scripts", "get-video-transcript.ts")),
-    false,
+      existsSync(join(repositoryRoot, "src", "scripts", "get-video-transcript.ts")),
+      false,
   );
   for (const retiredPath of [
     join(repositoryRoot, "src", "scripts", "extract-live-streams-html.ts"),
@@ -103,26 +103,26 @@ test("Phase 7 keeps canonical commands and retires zero-caller scripts", async (
     assert.doesNotMatch(currentGuidance, /(?:pre)?audit:lighthouse:(?:home|local|seo-baseline)/u);
   }
   assert.match(
-    readme,
-    /npm run alternate:extract:saved-channel-html -- --tab videos/u,
+      readme,
+      /npm run alternate:extract:saved-channel-html -- --tab videos/u,
   );
   assert.match(
-    channelReadme,
-    /npm run alternate:extract:saved-channel-html -- --tab videos/u,
+      channelReadme,
+      /npm run alternate:extract:saved-channel-html -- --tab videos/u,
   );
   assert.match(
-    savedHtmlCli,
-    /npm run alternate:extract:saved-channel-html -- --tab videos/u,
+      savedHtmlCli,
+      /npm run alternate:extract:saved-channel-html -- --tab videos/u,
   );
   for (const streamsGuidance of [readme, channelReadme, savedHtmlCli]) {
     assert.match(
-      streamsGuidance,
-      /npm run alternate:extract:saved-channel-html -- --tab streams/u,
+        streamsGuidance,
+        /npm run alternate:extract:saved-channel-html -- --tab streams/u,
     );
   }
   assert.equal(
-    packageJson.scripts["audit:lighthouse"],
-    "tsx src/scripts/audit-seo-lighthouse.ts",
+      packageJson.scripts["audit:lighthouse"],
+      "tsx src/scripts/audit-seo-lighthouse.ts",
   );
   assert.match(readme, /npm run audit:lighthouse/u);
   assert.match(lighthouseCli, /npm run audit:lighthouse -- \[options\]/u);
@@ -157,9 +157,9 @@ test("Phase 7 keeps canonical commands and retires zero-caller scripts", async (
     "validation-workflow.ts",
   ]) {
     assert.equal(
-      existsSync(join(repositoryRoot, "src", "scripts", retainedScriptPath)),
-      true,
-      `${retainedScriptPath} must remain under src/scripts`,
+        existsSync(join(repositoryRoot, "src", "scripts", retainedScriptPath)),
+        true,
+        `${retainedScriptPath} must remain under src/scripts`,
     );
   }
 });

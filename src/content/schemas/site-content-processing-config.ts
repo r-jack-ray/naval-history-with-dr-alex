@@ -1,61 +1,55 @@
 import { z } from "zod";
 
 import { segmentKinds } from "../../index.js";
-import {
-  nonEmptyStringSchema,
-  parseSchema,
-  topicSlugSchema,
-  validateSchema,
-  type SchemaValidationResult,
-} from "./shared.js";
+import { nonEmptyStringSchema, parseSchema, type SchemaValidationResult, topicSlugSchema, validateSchema, } from "./shared.js";
 
 const segmentKindSchema = z.enum(segmentKinds);
 const requiredContentScanSchema = z.enum(["subject-segments", "qa-exchanges"]);
 const requiredQaFieldSchema = z.enum(["start", "question", "answerShort"]);
 
 const requiredContentScansSchema = z.array(requiredContentScanSchema).superRefine(
-  (values, context) => {
-    if (
-      values.length !== requiredContentScanSchema.options.length
-      || new Set(values).size !== requiredContentScanSchema.options.length
-    ) {
-      context.addIssue({
-        code: "custom",
-        message: "must contain subject-segments and qa-exchanges exactly once",
-      });
-    }
-  },
+    (values, context) => {
+      if (
+          values.length !== requiredContentScanSchema.options.length
+          || new Set(values).size !== requiredContentScanSchema.options.length
+      ) {
+        context.addIssue({
+          code: "custom",
+          message: "must contain subject-segments and qa-exchanges exactly once",
+        });
+      }
+    },
 );
 
 const requiredQaFieldsSchema = z.array(requiredQaFieldSchema).superRefine(
-  (values, context) => {
-    if (
-      values.length !== requiredQaFieldSchema.options.length
-      || new Set(values).size !== requiredQaFieldSchema.options.length
-    ) {
-      context.addIssue({
-        code: "custom",
-        message: "must contain start, question, and answerShort exactly once",
-      });
-    }
-  },
+    (values, context) => {
+      if (
+          values.length !== requiredQaFieldSchema.options.length
+          || new Set(values).size !== requiredQaFieldSchema.options.length
+      ) {
+        context.addIssue({
+          code: "custom",
+          message: "must contain start, question, and answerShort exactly once",
+        });
+      }
+    },
 );
 
 const uniqueTopicSlugArraySchema = z.array(topicSlugSchema).superRefine(
-  (values, context) => {
-    addDuplicateIssues(values, context, (value) => value, "duplicates topic slug");
-  },
+    (values, context) => {
+      addDuplicateIssues(values, context, (value) => value, "duplicates topic slug");
+    },
 );
 
 const explicitQaTitleMarkersSchema = z.array(nonEmptyStringSchema).min(1).superRefine(
-  (values, context) => {
-    addDuplicateIssues(
-      values,
-      context,
-      (value) => value.toLocaleLowerCase("en-US"),
-      "duplicates another marker when matched case-insensitively",
-    );
-  },
+    (values, context) => {
+      addDuplicateIssues(
+          values,
+          context,
+          (value) => value.toLocaleLowerCase("en-US"),
+          "duplicates another marker when matched case-insensitively",
+      );
+    },
 );
 
 const followUpStageSchema = z.strictObject({
@@ -115,25 +109,25 @@ export const siteContentProcessingConfigSchema = z.strictObject({
   topicGroups: z.array(topicGroupSchema),
 }).superRefine((config, context) => {
   addDuplicateIssues(
-    config.followUpStages,
-    context,
-    (stage) => stage.slug,
-    "duplicates follow-up stage",
-    ["followUpStages"],
+      config.followUpStages,
+      context,
+      (stage) => stage.slug,
+      "duplicates follow-up stage",
+      ["followUpStages"],
   );
   addDuplicateIssues(
-    config.videoTypeRules,
-    context,
-    (rule) => rule.matchTitle.toLocaleLowerCase("en-US"),
-    "duplicates another rule when matched case-insensitively",
-    ["videoTypeRules"],
+      config.videoTypeRules,
+      context,
+      (rule) => rule.matchTitle.toLocaleLowerCase("en-US"),
+      "duplicates another rule when matched case-insensitively",
+      ["videoTypeRules"],
   );
   addDuplicateIssues(
-    config.topicGroups,
-    context,
-    (group) => group.slug,
-    "duplicates topic group",
-    ["topicGroups"],
+      config.topicGroups,
+      context,
+      (group) => group.slug,
+      "duplicates topic group",
+      ["topicGroups"],
   );
 
   const followUpStageSlugs = new Set(config.followUpStages.map((stage) => stage.slug));
@@ -151,24 +145,24 @@ export const siteContentProcessingConfigSchema = z.strictObject({
 export type SiteContentProcessingConfig = z.infer<typeof siteContentProcessingConfigSchema>;
 
 export function parseSiteContentProcessingConfig(
-  value: unknown,
-  label = "Site content processing config",
+    value: unknown,
+    label = "Site content processing config",
 ): SiteContentProcessingConfig {
   return parseSchema(siteContentProcessingConfigSchema, value, label);
 }
 
 export function validateSiteContentProcessingConfig(
-  value: unknown,
+    value: unknown,
 ): SchemaValidationResult<SiteContentProcessingConfig> {
   return validateSchema(siteContentProcessingConfigSchema, value);
 }
 
 function addDuplicateIssues<T>(
-  values: readonly T[],
-  context: z.RefinementCtx,
-  keyFor: (value: T) => string,
-  message: string,
-  pathPrefix: PropertyKey[] = [],
+    values: readonly T[],
+    context: z.RefinementCtx,
+    keyFor: (value: T) => string,
+    message: string,
+    pathPrefix: PropertyKey[] = [],
 ): void {
   const seen = new Set<string>();
   for (const [index, value] of values.entries()) {

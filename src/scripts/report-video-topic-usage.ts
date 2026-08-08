@@ -14,22 +14,22 @@ export interface VideoTopicUsageCliOptions {
 }
 
 export async function writeVideoTopicUsageReports(
-  options: VideoTopicUsageCliOptions,
-  report: VideoTopicUsageReport,
-  normalizationAudit: TopicNormalizationAuditResult,
-  extraSummaryFields: readonly string[] = [],
+    options: VideoTopicUsageCliOptions,
+    report: VideoTopicUsageReport,
+    normalizationAudit: TopicNormalizationAuditResult,
+    extraSummaryFields: readonly string[] = [],
 ): Promise<void> {
   const reviewReport = renderTopicNormalizationReviewReport(normalizationAudit.reviewFindings);
   await Promise.all([
-    mkdir(dirname(options.output), { recursive: true }),
-    mkdir(dirname(options.reviewOutput), { recursive: true }),
+    mkdir(dirname(options.output), {recursive: true}),
+    mkdir(dirname(options.reviewOutput), {recursive: true}),
   ]);
   await Promise.all([
     writeFile(options.output, report.tsv, "utf8"),
     writeFile(options.reviewOutput, reviewReport.tsv, "utf8"),
   ]);
   if (!options.quiet) {
-    console.error([
+    console.log([
       "Video topic usage report:",
       `topics=${report.stats.reportTopicCount}`,
       `videos=${report.stats.videoCount}`,
@@ -57,34 +57,41 @@ export function parseVideoTopicUsageArgs(args: string[]): VideoTopicUsageCliOpti
   for (let index = 0; index < args.length; index += 1) {
     const arg = args[index];
     switch (arg) {
-      case "--segments-input":
-        options.segmentsInput = readVideoTopicUsageArgValue(args, ++index, arg);
-        break;
-      case "--normalization-patterns":
-        options.normalizationPatterns = readVideoTopicUsageArgValue(args, ++index, arg);
-        break;
-      case "--output":
-        options.output = readVideoTopicUsageArgValue(args, ++index, arg);
-        break;
-      case "--review-output":
-        options.reviewOutput = readVideoTopicUsageArgValue(args, ++index, arg);
-        break;
-      case "--quiet": options.quiet = true; break;
-      case "--help":
-      case "-h": printVideoTopicUsageHelp(); process.exit(0);
-      default: throw new Error(`Unknown argument: ${arg ?? ""}`);
+    case "--segments-input":
+      options.segmentsInput = readVideoTopicUsageArgValue(args, ++index, arg);
+      break;
+    case "--normalization-patterns":
+      options.normalizationPatterns = readVideoTopicUsageArgValue(args, ++index, arg);
+      break;
+    case "--output":
+      options.output = readVideoTopicUsageArgValue(args, ++index, arg);
+      break;
+    case "--review-output":
+      options.reviewOutput = readVideoTopicUsageArgValue(args, ++index, arg);
+      break;
+    case "--quiet":
+      options.quiet = true;
+      break;
+    case "--help":
+    case "-h":
+      printVideoTopicUsageHelp();
+      process.exit(0);
+    default:
+      throw new Error(`Unknown argument: ${arg ?? ""}`);
     }
   }
   return options;
 }
 
 export function readVideoTopicUsageArgValue(
-  args: string[],
-  index: number,
-  name: string,
+    args: string[],
+    index: number,
+    name: string,
 ): string {
   const value = args[index];
-  if (!value) throw new Error(`Missing value for ${name}.`);
+  if (!value) {
+    throw new Error(`Missing value for ${name}.`);
+  }
   return value;
 }
 

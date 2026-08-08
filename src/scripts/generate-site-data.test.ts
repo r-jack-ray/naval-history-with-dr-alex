@@ -1,24 +1,24 @@
 import assert from "node:assert/strict";
 import { execFile } from "node:child_process";
 import { existsSync } from "node:fs";
-import { mkdir, mkdtemp, readFile, readdir, rm, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, readdir, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import test from "node:test";
 import { fileURLToPath } from "node:url";
 import { promisify } from "node:util";
-import test from "node:test";
 
 import { topicNormalizationPatternHeader } from "../site/topic-normalization.js";
 
 const execFileAsync = promisify(execFile);
 const generateScriptPath = fileURLToPath(
-  new URL("../../src/scripts/generate-site-data-bun.ts", import.meta.url),
+    new URL("../../src/scripts/generate-site-data-bun.ts", import.meta.url),
 );
 const syncScriptPath = fileURLToPath(
-  new URL("../../src/scripts/sync-video-topics-bun.ts", import.meta.url),
+    new URL("../../src/scripts/sync-video-topics-bun.ts", import.meta.url),
 );
 const lockToolPath = fileURLToPath(
-  new URL("../../src/scripts/site-content-pipeline-lock.mjs", import.meta.url),
+    new URL("../../src/scripts/site-content-pipeline-lock.mjs", import.meta.url),
 );
 
 test("generation rejects pending normalization before changing topic or archive output", async () => {
@@ -56,18 +56,18 @@ test("generation rejects pending normalization before changing topic or archive 
     await writeFile(fixture.patternsInput, normalizationCatalogText(), "utf8");
 
     await assert.rejects(
-      runGenerator(fixture),
-      (error: unknown) => {
-        const stderr = commandStderr(error);
-        assert.match(stderr, /Topic normalization preflight failed/u);
-        assert.match(stderr, /old-topic/u);
-        return true;
-      },
+        runGenerator(fixture),
+        (error: unknown) => {
+          const stderr = commandStderr(error);
+          assert.match(stderr, /Topic normalization preflight failed/u);
+          assert.match(stderr, /old-topic/u);
+          return true;
+        },
     );
     assert.equal(await readFile(topicStorePath, "utf8"), topicStoreText);
     assert.equal(await readFile(fixture.sentinelPath, "utf8"), "existing archive bytes\n");
   } finally {
-    await rm(fixture.root, { recursive: true, force: true });
+    await rm(fixture.root, {recursive: true, force: true});
   }
 });
 
@@ -76,15 +76,15 @@ test("generation rejects an invalid catalog before changing archive output", asy
   try {
     await writeFile(fixture.patternsInput, "not\ta\tvalid\tcatalog\n", "utf8");
     await assert.rejects(
-      runGenerator(fixture),
-      (error: unknown) => {
-        assert.match(commandStderr(error), /Invalid topic normalization catalog/u);
-        return true;
-      },
+        runGenerator(fixture),
+        (error: unknown) => {
+          assert.match(commandStderr(error), /Invalid topic normalization catalog/u);
+          return true;
+        },
     );
     assert.equal(await readFile(fixture.sentinelPath, "utf8"), "existing archive bytes\n");
   } finally {
-    await rm(fixture.root, { recursive: true, force: true });
+    await rm(fixture.root, {recursive: true, force: true});
   }
 });
 
@@ -96,14 +96,14 @@ test("missing topics require leased synchronization while generation remains sou
     const beforeGeneration = await readTextSnapshot(canonicalPaths);
 
     await assert.rejects(
-      runGenerator(fixture),
-      (error: unknown) => {
-        const stderr = commandStderr(error);
-        assert.match(stderr, /Topic registry synchronization is required/u);
-        assert.match(stderr, /missing topics: royal-navy/u);
-        assert.match(stderr, /npm run sync:video-topics/u);
-        return true;
-      },
+        runGenerator(fixture),
+        (error: unknown) => {
+          const stderr = commandStderr(error);
+          assert.match(stderr, /Topic registry synchronization is required/u);
+          assert.match(stderr, /missing topics: royal-navy/u);
+          assert.match(stderr, /npm run sync:video-topics/u);
+          return true;
+        },
     );
     assert.deepEqual(await readTextSnapshot(canonicalPaths), beforeGeneration);
     assert.equal(await readFile(fixture.sentinelPath, "utf8"), "existing archive bytes\n");
@@ -146,7 +146,7 @@ test("missing topics require leased synchronization while generation remains sou
     assert.deepEqual(await readTextSnapshot(canonicalPaths), afterSynchronization);
     assert.deepEqual(await readArchiveSnapshot(fixture.outputDir), firstArchive);
   } finally {
-    await rm(fixture.root, { recursive: true, force: true });
+    await rm(fixture.root, {recursive: true, force: true});
   }
 });
 
@@ -228,7 +228,7 @@ async function writeCompleteArchiveInputs(fixture: GeneratorFixture): Promise<st
         url: "https://www.youtube.com/watch?v=abc123",
         fileStem,
         tabs: ["streams"],
-        transcript: { status: "stored" },
+        transcript: {status: "stored"},
       }],
     }, null, 2)}\n`, "utf8"),
     writeFile(metadataPath, `${JSON.stringify({
@@ -239,17 +239,17 @@ async function writeCompleteArchiveInputs(fixture: GeneratorFixture): Promise<st
           title: "Sample Video",
           publishedAt: "2026-07-08T00:00:00Z",
           liveBroadcastContent: "none",
-          thumbnails: { high: { url: "https://example.test/thumb.jpg" } },
+          thumbnails: {high: {url: "https://example.test/thumb.jpg"}},
         },
-        contentDetails: { duration: "PT1H2M3S" },
-        status: { uploadStatus: "processed" },
+        contentDetails: {duration: "PT1H2M3S"},
+        status: {uploadStatus: "processed"},
       }],
     }, null, 2)}\n`, "utf8"),
     writeFile(transcriptsPath, `${JSON.stringify({
       transcripts: [{
         videoId: "abc123",
         fileStem,
-        paths: { txt: `txt/${fileStem}.txt` },
+        paths: {txt: `txt/${fileStem}.txt`},
       }],
     }, null, 2)}\n`, "utf8"),
     writeFile(shardPath, `${JSON.stringify({
@@ -266,7 +266,7 @@ async function writeCompleteArchiveInputs(fixture: GeneratorFixture): Promise<st
         summary: "Intro segment.",
         body: "Intro body.",
         sourcePath: `src/transcripts/txt/${fileStem}.txt`,
-        evidence: [{ start: "0:00", note: "Fixture evidence." }],
+        evidence: [{start: "0:00", note: "Fixture evidence."}],
       }],
     }, null, 2)}\n`, "utf8"),
     writeFile(topicStorePath, `${JSON.stringify({
@@ -289,7 +289,7 @@ async function writeCompleteArchiveInputs(fixture: GeneratorFixture): Promise<st
 
 async function readTextSnapshot(paths: readonly string[]): Promise<Record<string, string>> {
   return Object.fromEntries(await Promise.all(paths.map(async (path) => (
-    [path, await readFile(path, "utf8")] as const
+      [path, await readFile(path, "utf8")] as const
   ))));
 }
 
@@ -299,11 +299,11 @@ async function readArchiveSnapshot(root: string): Promise<Record<string, string>
   return snapshot;
 
   async function visit(directory: string, relativeDirectory: string): Promise<void> {
-    for (const entry of await readdir(directory, { withFileTypes: true })) {
+    for (const entry of await readdir(directory, {withFileTypes: true})) {
       const path = join(directory, entry.name);
       const relativePath = relativeDirectory.length === 0
-        ? entry.name
-        : `${relativeDirectory}/${entry.name}`;
+          ? entry.name
+          : `${relativeDirectory}/${entry.name}`;
       if (entry.isDirectory()) {
         await visit(path, relativePath);
       } else if (entry.isFile() && entry.name.endsWith(".json")) {

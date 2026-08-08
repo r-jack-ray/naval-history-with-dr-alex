@@ -197,7 +197,7 @@ export function createYoutubeDataApiClient(options: YoutubeDataApiClientOptions)
             attempt,
             maxRetryDelayMs,
           );
-          options.logger?.(
+          console.warn(
             `YouTube Data API ${label} failed before receiving a response; retrying in ${retryDelayMs}ms.`,
           );
           await sleep(retryDelayMs);
@@ -218,7 +218,7 @@ export function createYoutubeDataApiClient(options: YoutubeDataApiClientOptions)
             boundedExponentialDelay(retryBaseDelayMs, attempt, maxRetryDelayMs),
             maxRetryDelayMs,
           );
-          options.logger?.(
+          console.warn(
             `YouTube Data API ${label} returned HTTP ${response.status}; retrying in ${retryDelayMs}ms.`,
           );
           await sleep(retryDelayMs);

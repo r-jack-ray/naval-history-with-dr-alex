@@ -4,10 +4,7 @@ import { readdir, readFile } from "node:fs/promises";
 import { join, relative } from "node:path";
 import { gunzipSync } from "node:zlib";
 
-import {
-  readVideoMetadataStore,
-  resolveVideoState,
-} from "../youtube/video-metadata.js";
+import { readVideoMetadataStore, resolveVideoState, } from "../youtube/video-metadata.js";
 
 const siteDist = "site/dist";
 const generatedVideosPath = "site/src/data/generated/archive/videos.json";
@@ -164,11 +161,11 @@ async function main(): Promise<void> {
   }
 
   const latestVideo = videos
-    .filter((video) => video.segmentSlugs.length > 0)
-    .sort((left, right) => (
-      Date.parse(right.videoDateAt) - Date.parse(left.videoDateAt)
-      || left.videoId.localeCompare(right.videoId)
-    ))[0];
+      .filter((video) => video.segmentSlugs.length > 0)
+      .sort((left, right) => (
+          Date.parse(right.videoDateAt) - Date.parse(left.videoDateAt)
+          || left.videoId.localeCompare(right.videoId)
+      ))[0];
   if (latestVideo === undefined) {
     throw new Error("The home page has no dated video guide to feature.");
   }
@@ -182,8 +179,8 @@ async function main(): Promise<void> {
   validateBruships250(videos, fragmentsByUrl);
 
   console.log(
-    `Rendered video-date regression passed: ${videos.length} videos, ${htmlPaths.length} HTML files, ` +
-    `${timeCount} semantic dates, ${fragments.length} Pagefind fragments.`,
+      `Rendered video-date regression passed: ${videos.length} videos, ${htmlPaths.length} HTML files, ` +
+      `${timeCount} semantic dates, ${fragments.length} Pagefind fragments.`,
   );
 }
 
@@ -197,13 +194,13 @@ async function readGeneratedVideos(): Promise<GeneratedVideo[]> {
 
 function validateGeneratedVideo(video: GeneratedVideo): void {
   if (
-    typeof video.videoId !== "string" ||
-    typeof video.slug !== "string" ||
-    !canonicalTimestampPattern.test(video.videoDateAt) ||
-    !canonicalDatePattern.test(video.videoDateLabel) ||
-    video.durationLabel === "P0D" ||
-    video.durationLabel === "0:00" ||
-    !Array.isArray(video.segmentSlugs)
+      typeof video.videoId !== "string" ||
+      typeof video.slug !== "string" ||
+      !canonicalTimestampPattern.test(video.videoDateAt) ||
+      !canonicalDatePattern.test(video.videoDateLabel) ||
+      video.durationLabel === "P0D" ||
+      video.durationLabel === "0:00" ||
+      !Array.isArray(video.segmentSlugs)
   ) {
     throw new Error(`Generated video has an invalid public date/runtime contract: ${video.videoId ?? "unknown"}`);
   }
@@ -211,16 +208,16 @@ function validateGeneratedVideo(video: GeneratedVideo): void {
 
 function hasSourceDateField(html: string, video: GeneratedVideo): boolean {
   const pattern = new RegExp(
-    `<dt>Date</dt>\\s*<dd>\\s*<time datetime="${video.videoDateAt}">${video.videoDateLabel}</time>\\s*</dd>`,
-    "u",
+      `<dt>Date</dt>\\s*<dd>\\s*<time datetime="${video.videoDateAt}">${video.videoDateLabel}</time>\\s*</dd>`,
+      "u",
   );
   return pattern.test(html);
 }
 
 function validateSegmentDateCoverage(
-  surface: string,
-  renderedSlugs: ReadonlySet<string>,
-  videosBySegmentSlug: ReadonlyMap<string, GeneratedVideo>,
+    surface: string,
+    renderedSlugs: ReadonlySet<string>,
+    videosBySegmentSlug: ReadonlyMap<string, GeneratedVideo>,
 ): void {
   if (renderedSlugs.size === videosBySegmentSlug.size) {
     return;
@@ -233,8 +230,8 @@ function validateSegmentDateCoverage(
     }
   }
   throw new Error(
-    `Rendered segment ${surface} contain ${renderedSlugs.size} of ${videosBySegmentSlug.size} canonical dates; ` +
-    `first missing segment: ${missingSlug}.`,
+      `Rendered segment ${surface} contain ${renderedSlugs.size} of ${videosBySegmentSlug.size} canonical dates; ` +
+      `first missing segment: ${missingSlug}.`,
   );
 }
 
@@ -249,8 +246,8 @@ function pagefindMetaText(fragment: PagefindFragment, key: string): string {
 
 function validatePagefindDateMeta(fragment: PagefindFragment, video: GeneratedVideo): void {
   if (
-    pagefindMetaText(fragment, "videoDateAt") !== video.videoDateAt ||
-    pagefindMetaText(fragment, "videoDateLabel") !== video.videoDateLabel
+      pagefindMetaText(fragment, "videoDateAt") !== video.videoDateAt ||
+      pagefindMetaText(fragment, "videoDateLabel") !== video.videoDateLabel
   ) {
     throw new Error(`Pagefind has no canonical video-date metadata for ${fragment.url}.`);
   }
@@ -291,8 +288,8 @@ async function validateNotReadyVideosAreAbsent(videos: readonly GeneratedVideo[]
     throw new Error("Video metadata is required for the public eligibility regression.");
   }
   const notReadyIds = metadataStore.videos
-    .filter((metadata) => resolveVideoState(metadata).state !== "ready")
-    .map((metadata) => metadata.videoId);
+      .filter((metadata) => resolveVideoState(metadata).state !== "ready")
+      .map((metadata) => metadata.videoId);
   const exposed = notReadyIds.filter((videoId) => publicIds.has(videoId));
   if (exposed.length > 0) {
     throw new Error(`Not-ready videos appear in the generated public archive: ${exposed.join(", ")}`);
@@ -300,37 +297,39 @@ async function validateNotReadyVideosAreAbsent(videos: readonly GeneratedVideo[]
 }
 
 function validateBruships250(
-  videos: readonly GeneratedVideo[],
-  fragmentsByUrl: ReadonlyMap<string, PagefindFragment>,
+    videos: readonly GeneratedVideo[],
+    fragmentsByUrl: ReadonlyMap<string, PagefindFragment>,
 ): void {
   const video = videos.find((candidate) => candidate.videoId === "670r43jZo5o");
   if (video === undefined) {
     throw new Error("Bruships 250 is absent after its metadata refresh proved completion.");
   }
   if (
-    video.videoDateAt !== "2026-07-12T18:30:05Z" ||
-    video.videoDateLabel !== "Jul 12, 2026" ||
-    video.durationLabel !== "4:32:47" ||
-    video.videoKind !== "stream"
+      video.videoDateAt !== "2026-07-12T18:30:05Z" ||
+      video.videoDateLabel !== "Jul 12, 2026" ||
+      video.durationLabel !== "4:32:47" ||
+      video.videoKind !== "stream"
   ) {
     throw new Error("Bruships 250 does not have the refreshed canonical date/runtime contract.");
   }
   const fragment = fragmentsByUrl.get(`/videos/${video.slug}/`);
   if (
-    fragment === undefined ||
-    !fragment.content.includes("DateJul 12, 2026") ||
-    !fragment.content.includes("Runtime4:32:47") ||
-    !fragment.content.includes("FormatStream")
+      fragment === undefined ||
+      !fragment.content.includes("DateJul 12, 2026") ||
+      !fragment.content.includes("Runtime4:32:47") ||
+      !fragment.content.includes("FormatStream")
   ) {
     throw new Error("Bruships 250 Pagefind content does not contain the refreshed public metadata.");
   }
 }
 
 async function listFiles(root: string, include: (path: string) => boolean): Promise<string[]> {
-  const entries = await readdir(root, { withFileTypes: true });
+  const entries = await readdir(root, {withFileTypes: true});
   const nested = await Promise.all(entries.map(async (entry) => {
     const path = join(root, entry.name);
-    if (entry.isDirectory()) return listFiles(path, include);
+    if (entry.isDirectory()) {
+      return listFiles(path, include);
+    }
     return include(path) ? [path] : [];
   }));
   return nested.flat().sort((left, right) => left.localeCompare(right));

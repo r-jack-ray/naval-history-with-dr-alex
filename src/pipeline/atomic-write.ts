@@ -3,18 +3,18 @@ import { mkdir, rename, rm, writeFile } from "node:fs/promises";
 import { basename, dirname, join } from "node:path";
 
 export async function replaceFileAtomically(
-  destination: string,
-  writeTemporary: (temporaryPath: string) => Promise<void>,
+    destination: string,
+    writeTemporary: (temporaryPath: string) => Promise<void>,
 ): Promise<void> {
   const directory = dirname(destination);
   const temporaryPath = join(directory, `.${basename(destination)}.${process.pid}.${randomUUID()}.tmp`);
 
-  await mkdir(directory, { recursive: true });
+  await mkdir(directory, {recursive: true});
   try {
     await writeTemporary(temporaryPath);
     await renameWithRetry(temporaryPath, destination);
   } finally {
-    await rm(temporaryPath, { force: true });
+    await rm(temporaryPath, {force: true});
   }
 }
 
@@ -45,8 +45,8 @@ async function renameWithRetry(source: string, destination: string): Promise<voi
 
 function errorCode(error: unknown): string | undefined {
   return typeof error === "object" && error !== null && "code" in error
-    ? String((error as { code?: unknown }).code)
-    : undefined;
+      ? String((error as { code?: unknown }).code)
+      : undefined;
 }
 
 function sleep(milliseconds: number): Promise<void> {

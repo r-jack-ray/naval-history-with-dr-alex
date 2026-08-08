@@ -1,11 +1,7 @@
 import { readFile } from "node:fs/promises";
 
 import { writeTextAtomically } from "../pipeline/atomic-write.js";
-import type {
-  TranscriptBatchFailure,
-  TranscriptBatchStatus,
-  TranscriptFailureClassification,
-} from "../youtube/batch-transcripts.js";
+import type { TranscriptBatchFailure, TranscriptBatchStatus, TranscriptFailureClassification, } from "../youtube/batch-transcripts.js";
 
 export const defaultTranscriptProblemStatusInput = "src/transcripts/fetch-status.json";
 export const defaultTranscriptProblemReportOutput = "reports/transcript-problems.md";
@@ -13,13 +9,13 @@ export const defaultTranscriptProblemReportOutput = "reports/transcript-problems
 export type TranscriptProblemConfidence = "high" | "medium" | "low";
 
 export type TranscriptProblemReasonCode =
-  | "source-audio-absent"
-  | "source-audio-quality"
-  | "caption-track-unavailable"
-  | "requested-language-unavailable"
-  | "empty-caption-track"
-  | "request-limited-or-blocked"
-  | "undetermined-fetch-failure";
+    | "source-audio-absent"
+    | "source-audio-quality"
+    | "caption-track-unavailable"
+    | "requested-language-unavailable"
+    | "empty-caption-track"
+    | "request-limited-or-blocked"
+    | "undetermined-fetch-failure";
 
 export interface TranscriptProblemDiagnosis {
   reasonCode: TranscriptProblemReasonCode;
@@ -53,12 +49,12 @@ export async function generateTranscriptProblemReport(options: {
 }
 
 export function buildTranscriptProblemReport(
-  status: Pick<TranscriptBatchStatus, "updatedAt" | "failures">,
-  sourcePath: string,
+    status: Pick<TranscriptBatchStatus, "updatedAt" | "failures">,
+    sourcePath: string,
 ): TranscriptProblemReport {
   const problems = status.failures
-    .map((failure) => ({ ...failure, diagnosis: diagnoseTranscriptFailure(failure) }))
-    .sort(compareProblems);
+      .map((failure) => ({...failure, diagnosis: diagnoseTranscriptFailure(failure)}))
+      .sort(compareProblems);
   const classificationCounts = emptyClassificationCounts();
   const reasonCounts: Partial<Record<TranscriptProblemReasonCode, number>> = {};
 
@@ -67,41 +63,41 @@ export function buildTranscriptProblemReport(
     reasonCounts[problem.diagnosis.reasonCode] = (reasonCounts[problem.diagnosis.reasonCode] ?? 0) + 1;
   }
 
-  return { sourcePath, sourceUpdatedAt: status.updatedAt, problems, classificationCounts, reasonCounts };
+  return {sourcePath, sourceUpdatedAt: status.updatedAt, problems, classificationCounts, reasonCounts};
 }
 
 export function diagnoseTranscriptFailure(failure: TranscriptBatchFailure): TranscriptProblemDiagnosis {
   switch (failure.classification) {
-    case "language_unavailable":
-      return {
-        reasonCode: "requested-language-unavailable",
-        probableReason: "Caption tracks existed, but none matched the requested language.",
-        confidence: "high",
-        evidence: failure.error,
-      };
-    case "empty_transcript":
-      return {
-        reasonCode: "empty-caption-track",
-        probableReason: "The selected caption track contained no usable transcript segments.",
-        confidence: "high",
-        evidence: failure.error,
-      };
-    case "rate_limited_or_blocked":
-      return {
-        reasonCode: "request-limited-or-blocked",
-        probableReason: "The prior request was rate-limited, temporarily blocked, or challenged by YouTube.",
-        confidence: "high",
-        evidence: failure.error,
-      };
-    case "fetch_failed":
-      return {
-        reasonCode: "undetermined-fetch-failure",
-        probableReason: "The prior fetch failed for a reason that the fetcher could not classify more specifically.",
-        confidence: "low",
-        evidence: failure.error,
-      };
-    case "no_caption_tracks":
-      return diagnoseMissingCaptionTrack(failure);
+  case "language_unavailable":
+    return {
+      reasonCode: "requested-language-unavailable",
+      probableReason: "Caption tracks existed, but none matched the requested language.",
+      confidence: "high",
+      evidence: failure.error,
+    };
+  case "empty_transcript":
+    return {
+      reasonCode: "empty-caption-track",
+      probableReason: "The selected caption track contained no usable transcript segments.",
+      confidence: "high",
+      evidence: failure.error,
+    };
+  case "rate_limited_or_blocked":
+    return {
+      reasonCode: "request-limited-or-blocked",
+      probableReason: "The prior request was rate-limited, temporarily blocked, or challenged by YouTube.",
+      confidence: "high",
+      evidence: failure.error,
+    };
+  case "fetch_failed":
+    return {
+      reasonCode: "undetermined-fetch-failure",
+      probableReason: "The prior fetch failed for a reason that the fetcher could not classify more specifically.",
+      confidence: "low",
+      evidence: failure.error,
+    };
+  case "no_caption_tracks":
+    return diagnoseMissingCaptionTrack(failure);
   }
 }
 
@@ -121,7 +117,9 @@ export function renderTranscriptProblemReport(report: TranscriptProblemReport): 
   ];
 
   for (const [classification, count] of Object.entries(report.classificationCounts)) {
-    if (count > 0) lines.push(`- Fetch classification \`${classification}\`: ${count}`);
+    if (count > 0) {
+      lines.push(`- Fetch classification \`${classification}\`: ${count}`);
+    }
   }
 
   lines.push("", "### Probable reasons", "");

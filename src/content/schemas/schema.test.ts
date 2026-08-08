@@ -1,13 +1,13 @@
 import assert from "node:assert/strict";
 import { readdir, readFile } from "node:fs/promises";
 import { join } from "node:path";
-import { fileURLToPath } from "node:url";
 import test from "node:test";
+import { fileURLToPath } from "node:url";
 
 import {
-  parseSiteContentProcessingConfig,
   parseCuratedTopicStore,
   parseCuratedVideoFile,
+  parseSiteContentProcessingConfig,
   SITE_CONTENT_PROCESSING_LOG_HEADER,
   validateCuratedVideoFile,
   validateSiteContentProcessingConfig,
@@ -50,7 +50,7 @@ test("allows Q&A answerShort to serve as the concise result when summary is abse
 });
 
 test("requires summaries for non-Q&A segments", () => {
-  const { summary: _summary, ...segmentWithoutSummary } = sampleVideo().segments[0]!;
+  const {summary: _summary, ...segmentWithoutSummary} = sampleVideo().segments[0]!;
   const result = validateCuratedVideoFile({
     ...sampleVideo(),
     segments: [segmentWithoutSummary],
@@ -73,19 +73,19 @@ test("validates the topic store without custom version metadata", () => {
 
   assert.equal(store.topics[0]?.slug, "destroyers");
   assert.throws(
-    () => parseCuratedTopicStore({
-      topics: [
-        { slug: "destroyers", title: "Destroyers" },
-        { slug: "destroyers", title: "Duplicate" },
-      ],
-    }, "duplicate topic store"),
-    /duplicates topic slug destroyers/u,
+      () => parseCuratedTopicStore({
+        topics: [
+          {slug: "destroyers", title: "Destroyers"},
+          {slug: "destroyers", title: "Duplicate"},
+        ],
+      }, "duplicate topic store"),
+      /duplicates topic slug destroyers/u,
   );
 });
 
 test("validates the processing config from its canonical schema without version metadata", async () => {
   const configPath = fileURLToPath(
-    new URL("../../../src/derived/site-content-processing.config.json", import.meta.url),
+      new URL("../../../src/derived/site-content-processing.config.json", import.meta.url),
   );
   const value = JSON.parse(await readFile(configPath, "utf8")) as unknown;
   const config = parseSiteContentProcessingConfig(value, "production processing config");
@@ -106,8 +106,8 @@ test("validates the processing config from its canonical schema without version 
 
 test("validates processing-log rows independently from log parsing", () => {
   assert.equal(
-    SITE_CONTENT_PROCESSING_LOG_HEADER,
-    "timestamp;shardPath;result;needsFurtherProcessing;notes",
+      SITE_CONTENT_PROCESSING_LOG_HEADER,
+      "timestamp;shardPath;result;needsFurtherProcessing;notes",
   );
   assert.equal(validateSiteContentProcessingLogRow({
     timestamp: "2026-07-26T12:00:00-05:00",
@@ -127,11 +127,11 @@ test("validates processing-log rows independently from log parsing", () => {
 
 test("all production curated-content files match the canonical schemas", async () => {
   const directory = fileURLToPath(
-    new URL("../../../src/derived/video-segments", import.meta.url),
+      new URL("../../../src/derived/video-segments", import.meta.url),
   );
   const fileNames = (await readdir(directory))
-    .filter((fileName) => fileName.endsWith(".json"))
-    .sort();
+      .filter((fileName) => fileName.endsWith(".json"))
+      .sort();
 
   for (const fileName of fileNames) {
     const value = JSON.parse(await readFile(join(directory, fileName), "utf8")) as unknown;

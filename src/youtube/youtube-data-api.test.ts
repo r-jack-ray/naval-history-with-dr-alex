@@ -68,7 +68,6 @@ test("retries transient responses with bounded backoff and then succeeds", async
   let currentTime = 1_000;
   let requests = 0;
   const sleeps: number[] = [];
-  const logs: string[] = [];
   const client = createYoutubeDataApiClient({
     apiKey: "fixture-key",
     requestDelayMs: 1_000,
@@ -79,7 +78,6 @@ test("retries transient responses with bounded backoff and then succeeds", async
       sleeps.push(ms);
       currentTime += ms;
     },
-    logger: (message) => logs.push(message),
     fetch: async () => {
       requests += 1;
       return requests === 1
@@ -93,7 +91,6 @@ test("retries transient responses with bounded backoff and then succeeds", async
   assert.deepEqual(response.items.map((item) => item.id), ["retry000001"]);
   assert.equal(requests, 2);
   assert.deepEqual(sleeps, [2_000]);
-  assert.ok(logs.some((message) => message.includes("returned HTTP 503; retrying in 2000ms")));
 });
 
 test("caps server Retry-After delays at the configured retry maximum", async () => {

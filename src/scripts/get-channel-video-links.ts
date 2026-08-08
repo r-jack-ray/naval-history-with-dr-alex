@@ -1,22 +1,18 @@
 #!/usr/bin/env node
 import {
-  defaultEpisodeMasterOutput,
+  type ChannelInventoryCompleteness,
   defaultChannelVideoLinksOptions,
+  defaultEpisodeMasterOutput,
   fetchChannelVideoLinks,
+  type FetchChannelVideoLinksOptions,
   resolveChannelVideoLinksMasterOutput,
   selectMetadataRefreshVideoIdsFromChannelLinks,
   writeChannelEpisodeMasterOutput,
   writeSplitVideoLinksOutput,
   writeVideoLinksOutput,
-  type ChannelInventoryCompleteness,
-  type FetchChannelVideoLinksOptions,
 } from "../youtube/channel-video-links.js";
-import {
-  defaultVideoMetadataOutput,
-  fetchAndStoreVideoMetadata,
-  readVideoMetadataStore,
-} from "../youtube/video-metadata.js";
 import { readIgnoredVideos } from "../youtube/ignored-videos.js";
+import { defaultVideoMetadataOutput, fetchAndStoreVideoMetadata, readVideoMetadataStore, } from "../youtube/video-metadata.js";
 import { resolveYoutubeApiKey } from "./youtube-api-key-file.js";
 
 type CliOptions = FetchChannelVideoLinksOptions & {
@@ -55,7 +51,7 @@ async function main(): Promise<void> {
   }
 
   if (!options.quiet) {
-    fetchOptions.logger = (message) => console.error(message);
+    fetchOptions.logger = (message) => console.log(message);
   }
   if (options.includeVideoDetails !== undefined) {
     fetchOptions.includeVideoDetails = options.includeVideoDetails;
@@ -74,20 +70,20 @@ async function main(): Promise<void> {
       completeness: options.inventoryCompleteness,
       ignoredVideoIds,
     });
-    console.error(`Wrote ${result.links.length} episodes to ${options.masterOutput}`);
+    console.log(`Wrote ${result.links.length} episodes to ${options.masterOutput}`);
 
     if (apiKey !== undefined) {
       const existingMetadata = await readVideoMetadataStore(defaultVideoMetadataOutput);
       const metadataRefreshVideoIds = selectMetadataRefreshVideoIdsFromChannelLinks(
-        result.links,
-        new Map(existingMetadata?.videos.map((record) => [record.videoId, record]) ?? []),
+          result.links,
+          new Map(existingMetadata?.videos.map((record) => [record.videoId, record]) ?? []),
       );
       if (metadataRefreshVideoIds.length > 0) {
-        console.error(
-          `Refreshing ${metadataRefreshVideoIds.length} deferred metadata record(s) contradicted by current channel duration.`,
+        console.warn(
+            `Refreshing ${metadataRefreshVideoIds.length} deferred metadata record(s) contradicted by current channel duration.`,
         );
       }
-      console.error(`Synchronizing missing or due full metadata records into ${defaultVideoMetadataOutput}`);
+      console.log(`Synchronizing missing or due full metadata records into ${defaultVideoMetadataOutput}`);
       const metadata = await fetchAndStoreVideoMetadata({
         apiKey,
         inputPath: options.masterOutput,
@@ -95,18 +91,18 @@ async function main(): Promise<void> {
         requestDelayMs: options.requestDelayMs,
         batchSize: 50,
         ignoredVideoIds,
-        ...(metadataRefreshVideoIds.length > 0 ? { refreshVideoIds: metadataRefreshVideoIds } : {}),
-        ...(!options.quiet ? { logger: (message: string) => console.error(message) } : {}),
+        ...(metadataRefreshVideoIds.length > 0 ? {refreshVideoIds: metadataRefreshVideoIds} : {}),
+        ...(!options.quiet ? {logger: (message: string) => console.log(message)} : {}),
       });
-      console.error(
-        `Stored metadata for ${metadata.stats.storedVideoCount}/${metadata.stats.inputVideoCount} videos in ${defaultVideoMetadataOutput}`,
+      console.log(
+          `Stored metadata for ${metadata.stats.storedVideoCount}/${metadata.stats.inputVideoCount} videos in ${defaultVideoMetadataOutput}`,
       );
       await writeChannelEpisodeMasterOutput(options.masterOutput, result, {
         completeness: options.inventoryCompleteness,
         ignoredVideoIds,
         metadataRecords: new Map(metadata.videos.map((record) => [record.videoId, record])),
       });
-      console.error(`Reconciled ${result.links.length} episodes with stored transcripts and refreshed metadata`);
+      console.log(`Reconciled ${result.links.length} episodes with stored transcripts and refreshed metadata`);
     }
     return;
   }
@@ -115,14 +111,14 @@ async function main(): Promise<void> {
     const linksPath = options.linksOutput ?? "reports/dr-alex-video-list.json";
     const metadataPath = options.metadataOutput ?? "reports/dr-alex-video-metadata.json";
     await writeSplitVideoLinksOutput(linksPath, metadataPath, result);
-    console.error(`Wrote ${result.links.length} base video links to ${linksPath}`);
-    console.error(`Wrote ${result.links.length} video metadata records to ${metadataPath}`);
+    console.log(`Wrote ${result.links.length} base video links to ${linksPath}`);
+    console.log(`Wrote ${result.links.length} video metadata records to ${metadataPath}`);
     return;
   }
 
   if (options.output) {
     await writeVideoLinksOutput(options.output, result);
-    console.error(`Wrote ${result.links.length} unique video links to ${options.output}`);
+    console.log(`Wrote ${result.links.length} unique video links to ${options.output}`);
     return;
   }
 
@@ -131,66 +127,66 @@ async function main(): Promise<void> {
 
 function parseArgs(args: string[]): CliOptions {
   const defaults = defaultChannelVideoLinksOptions();
-  const options: CliOptions = { ...defaults, inventoryCompleteness: "unknown", quiet: false };
+  const options: CliOptions = {...defaults, inventoryCompleteness: "unknown", quiet: false};
 
   for (let index = 0; index < args.length; index += 1) {
     const arg = args[index];
 
     switch (arg) {
-      case "--channel-url":
-        options.channelUrl = readValue(args, ++index, arg);
-        break;
-      case "--api-key":
-        options.apiKey = readValue(args, ++index, arg);
-        break;
-      case "--api-key-file":
-        options.apiKeyFile = readValue(args, ++index, arg);
-        break;
-      case "--channel-id":
-        options.channelId = readValue(args, ++index, arg);
-        break;
-      case "--uploads-playlist-id":
-        options.uploadsPlaylistId = readValue(args, ++index, arg);
-        break;
-      case "--output":
-        options.output = readValue(args, ++index, arg);
-        break;
-      case "--master-output":
-        options.masterOutput = readValue(args, ++index, arg);
-        break;
-      case "--inventory-completeness":
-        options.inventoryCompleteness = readInventoryCompleteness(readValue(args, ++index, arg));
-        break;
-      case "--links-output":
-        options.linksOutput = readValue(args, ++index, arg);
-        break;
-      case "--metadata-output":
-        options.metadataOutput = readValue(args, ++index, arg);
-        break;
-      case "--checkpoint-output":
-        options.checkpointOutput = readValue(args, ++index, arg);
-        break;
-      case "--request-delay-ms":
-        options.requestDelayMs = readPositiveInteger(readValue(args, ++index, arg), arg);
-        break;
-      case "--max-pages":
-        options.maxPages = readPositiveInteger(readValue(args, ++index, arg), arg);
-        break;
-      case "--include-video-details":
-        options.includeVideoDetails = true;
-        break;
-      case "--detail-limit":
-        options.detailLimit = readPositiveInteger(readValue(args, ++index, arg), arg);
-        break;
-      case "--quiet":
-        options.quiet = true;
-        break;
-      case "--help":
-      case "-h":
-        printHelp();
-        process.exit(0);
-      default:
-        throw new Error(`Unknown argument: ${arg ?? ""}`);
+    case "--channel-url":
+      options.channelUrl = readValue(args, ++index, arg);
+      break;
+    case "--api-key":
+      options.apiKey = readValue(args, ++index, arg);
+      break;
+    case "--api-key-file":
+      options.apiKeyFile = readValue(args, ++index, arg);
+      break;
+    case "--channel-id":
+      options.channelId = readValue(args, ++index, arg);
+      break;
+    case "--uploads-playlist-id":
+      options.uploadsPlaylistId = readValue(args, ++index, arg);
+      break;
+    case "--output":
+      options.output = readValue(args, ++index, arg);
+      break;
+    case "--master-output":
+      options.masterOutput = readValue(args, ++index, arg);
+      break;
+    case "--inventory-completeness":
+      options.inventoryCompleteness = readInventoryCompleteness(readValue(args, ++index, arg));
+      break;
+    case "--links-output":
+      options.linksOutput = readValue(args, ++index, arg);
+      break;
+    case "--metadata-output":
+      options.metadataOutput = readValue(args, ++index, arg);
+      break;
+    case "--checkpoint-output":
+      options.checkpointOutput = readValue(args, ++index, arg);
+      break;
+    case "--request-delay-ms":
+      options.requestDelayMs = readPositiveInteger(readValue(args, ++index, arg), arg);
+      break;
+    case "--max-pages":
+      options.maxPages = readPositiveInteger(readValue(args, ++index, arg), arg);
+      break;
+    case "--include-video-details":
+      options.includeVideoDetails = true;
+      break;
+    case "--detail-limit":
+      options.detailLimit = readPositiveInteger(readValue(args, ++index, arg), arg);
+      break;
+    case "--quiet":
+      options.quiet = true;
+      break;
+    case "--help":
+    case "-h":
+      printHelp();
+      process.exit(0);
+    default:
+      throw new Error(`Unknown argument: ${arg ?? ""}`);
     }
   }
 

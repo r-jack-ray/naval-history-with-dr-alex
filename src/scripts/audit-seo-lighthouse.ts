@@ -4,12 +4,7 @@ import { spawn } from "node:child_process";
 import { mkdir, readFile } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
 
-import {
-  buildLighthouseAuditTargets,
-  defaultLighthouseVideosPath,
-  parseLighthouseAuditArgs,
-  type LighthouseVideoCandidate,
-} from "../site/seo-monitoring.js";
+import { buildLighthouseAuditTargets, defaultLighthouseVideosPath, type LighthouseVideoCandidate, parseLighthouseAuditArgs, } from "../site/seo-monitoring.js";
 
 async function main(): Promise<void> {
   const options = parseLighthouseAuditArgs(process.argv.slice(2), process.env.SEO_AUDIT_BASE_URL);
@@ -19,13 +14,13 @@ async function main(): Promise<void> {
   }
 
   const videos = options.mode === "representative"
-    ? JSON.parse(await readFile(defaultLighthouseVideosPath, "utf8")) as LighthouseVideoCandidate[]
-    : undefined;
+      ? JSON.parse(await readFile(defaultLighthouseVideosPath, "utf8")) as LighthouseVideoCandidate[]
+      : undefined;
   const targets = buildLighthouseAuditTargets(options.mode, videos);
   const outputPrefix = resolve(options.outputPrefix);
   const outputDirectory = options.mode === "home" ? dirname(outputPrefix) : outputPrefix;
   const lighthouseCli = resolve("node_modules", "lighthouse", "cli", "index.js");
-  await mkdir(outputDirectory, { recursive: true });
+  await mkdir(outputDirectory, {recursive: true});
 
   for (const target of targets) {
     const targetUrl = new URL(target.route, options.baseUrl).href;

@@ -1,13 +1,5 @@
-import {
-  assertTopicStoreSynchronized,
-  defaultTopicNormalizationPatternsInput,
-  planTopicStoreSynchronization,
-  writeTopicStoreSynchronization,
-} from "../site/topic-store.js";
-import type {
-  TopicNormalizationCatalog,
-  TopicSlugResolution,
-} from "../site/topic-normalization.js";
+import type { TopicNormalizationCatalog, TopicSlugResolution, } from "../site/topic-normalization.js";
+import { assertTopicStoreSynchronized, defaultTopicNormalizationPatternsInput, planTopicStoreSynchronization, writeTopicStoreSynchronization, } from "../site/topic-store.js";
 import type { VideoSegmentShardIndex } from "../site/video-segment-files.js";
 
 export interface SyncVideoTopicsCliOptions {
@@ -24,69 +16,69 @@ export interface SyncVideoTopicsRuntime {
 }
 
 export async function runSyncVideoTopics(
-  options: SyncVideoTopicsCliOptions,
-  runtime: SyncVideoTopicsRuntime = {},
+    options: SyncVideoTopicsCliOptions,
+    runtime: SyncVideoTopicsRuntime = {},
 ): Promise<void> {
   const plan = await planTopicStoreSynchronization({
     patternsInput: options.patternsInput,
     segmentsInput: options.segmentsInput,
     ...(runtime.precomputedCreationResolutions === undefined
-      ? {}
-      : { precomputedCreationResolutions: runtime.precomputedCreationResolutions }),
+        ? {}
+        : {precomputedCreationResolutions: runtime.precomputedCreationResolutions}),
     ...(runtime.preloadedCatalog === undefined
-      ? {}
-      : { preloadedCatalog: runtime.preloadedCatalog }),
+        ? {}
+        : {preloadedCatalog: runtime.preloadedCatalog}),
     ...(runtime.preloadedShardIndex === undefined
-      ? {}
-      : { preloadedShardIndex: runtime.preloadedShardIndex }),
+        ? {}
+        : {preloadedShardIndex: runtime.preloadedShardIndex}),
   });
   const result = await writeTopicStoreSynchronization(plan);
   const action = result.changed
-    ? `added ${result.addedSlugs.length} topic${result.addedSlugs.length === 1 ? "" : "s"}`
-    : "already current";
-  console.error(
-    [
-      `Synchronized ${options.segmentsInput}/topics.json:`,
-      action,
-      `(${result.usedTopicCount} used, ${result.topicCount} stored).`,
-      ...(runtime.summaryFields ?? []),
-    ].join(" "),
+      ? `added ${result.addedSlugs.length} topic${result.addedSlugs.length === 1 ? "" : "s"}`
+      : "already current";
+  console.log(
+      [
+        `Synchronized ${options.segmentsInput}/topics.json:`,
+        action,
+        `(${result.usedTopicCount} used, ${result.topicCount} stored).`,
+        ...(runtime.summaryFields ?? []),
+      ].join(" "),
   );
   for (const topic of result.reviewTopics) {
-    console.error(
-      `Topic title requires review: ${topic.slug} (generated title: ${topic.generatedTitle}).`,
+    console.warn(
+        `Topic title requires review: ${topic.slug} (generated title: ${topic.generatedTitle}).`,
     );
   }
 }
 
 export async function runCheckVideoTopics(
-  options: SyncVideoTopicsCliOptions,
-  runtime: SyncVideoTopicsRuntime = {},
+    options: SyncVideoTopicsCliOptions,
+    runtime: SyncVideoTopicsRuntime = {},
 ): Promise<void> {
   const plan = await planTopicStoreSynchronization({
     patternsInput: options.patternsInput,
     segmentsInput: options.segmentsInput,
     ...(runtime.precomputedCreationResolutions === undefined
-      ? {}
-      : { precomputedCreationResolutions: runtime.precomputedCreationResolutions }),
+        ? {}
+        : {precomputedCreationResolutions: runtime.precomputedCreationResolutions}),
     ...(runtime.preloadedCatalog === undefined
-      ? {}
-      : { preloadedCatalog: runtime.preloadedCatalog }),
+        ? {}
+        : {preloadedCatalog: runtime.preloadedCatalog}),
     ...(runtime.preloadedShardIndex === undefined
-      ? {}
-      : { preloadedShardIndex: runtime.preloadedShardIndex }),
+        ? {}
+        : {preloadedShardIndex: runtime.preloadedShardIndex}),
   });
   const result = assertTopicStoreSynchronized(plan);
-  console.error(
-    [
-      `Topic registry is current: ${plan.topicStorePath}`,
-      `(${result.usedTopicCount} used, ${result.topicCount} stored).`,
-      ...(runtime.summaryFields ?? []),
-    ].join(" "),
+  console.log(
+      [
+        `Topic registry is current: ${plan.topicStorePath}`,
+        `(${result.usedTopicCount} used, ${result.topicCount} stored).`,
+        ...(runtime.summaryFields ?? []),
+      ].join(" "),
   );
   for (const topic of result.reviewTopics) {
-    console.error(
-      `Topic title requires review: ${topic.slug} (generated title: ${topic.generatedTitle}).`,
+    console.warn(
+        `Topic title requires review: ${topic.slug} (generated title: ${topic.generatedTitle}).`,
     );
   }
 }
@@ -125,8 +117,8 @@ function readValue(args: readonly string[], index: number, flag: string): string
 }
 
 export function syncVideoTopicsUsage(
-  command = "npm run sync:video-topics",
-  includeWorkers = false,
+    command = "npm run sync:video-topics",
+    includeWorkers = false,
 ): string {
   return `Usage: ${command} -- [options]
 

@@ -1,9 +1,5 @@
 #!/usr/bin/env node
-import {
-  parseValidationCliOptions,
-  runValidationWorkflow,
-  type ValidationStep,
-} from "./validation-workflow.js";
+import { parseValidationCliOptions, runValidationWorkflow, type ValidationStep, } from "./validation-workflow.js";
 
 const topicPatternsPath = "src/derived/topic-normalization-patterns.tsv";
 
@@ -18,7 +14,7 @@ async function main(): Promise<void> {
   }
 
   const steps: ValidationStep[] = [
-    { command: "npm", args: ["run", "build"] },
+    {command: "npm", args: ["run", "build"]},
     {
       command: "npm",
       args: ["run", "audit:topic-normalization", "--", "--patterns-input", topicPatternsPath],
@@ -31,10 +27,10 @@ async function main(): Promise<void> {
       command: "npm",
       args: ["run", "generate:site-data", "--", "--patterns-input", topicPatternsPath],
     },
-    { command: "npm", args: ["run", "site:check:generated"] },
+    {command: "npm", args: ["run", "site:check:generated"]},
   ];
   if (!options.skipRepoCheck) {
-    steps.push({ command: "npm", args: ["run", "check"] });
+    steps.push({command: "npm", args: ["run", "check"]});
   }
 
   await runValidationWorkflow({

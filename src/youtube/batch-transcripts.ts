@@ -232,14 +232,16 @@ export async function fetchAndStoreTranscriptBatch(
       counters.skippedDeferredCount += 1;
       counters.deferredCounts[state.reason] += 1;
       deferredRecords.push(transcriptBatchDeferredRecord(episode, state));
-      options.logger?.(`Skipping not-ready video ${episode.videoId}: ${state.reason} (${state.diagnostic})`);
+      const message = `Skipping not-ready video ${episode.videoId}: ${state.reason} (${state.diagnostic})`;
+      if (state.state === "invalid") console.warn(message);
+      else options.logger?.(message);
       continue;
     }
 
     if (circuitBreakerTripped) {
       counters.pendingCount += 1;
       pendingRecords.push(transcriptBatchPendingRecord(episode, "circuit_breaker"));
-      options.logger?.(`Leaving transcript pending after circuit breaker: ${episode.videoId}`);
+      console.warn(`Leaving transcript pending after circuit breaker: ${episode.videoId}`);
       continue;
     }
 
@@ -299,9 +301,9 @@ export async function fetchAndStoreTranscriptBatch(
       failedRecords.push(failure);
       if (failure.classification === "rate_limited_or_blocked") {
         circuitBreakerTripped = true;
-        options.logger?.("Transcript circuit breaker opened; later eligible videos will remain pending.");
+        console.warn("Transcript circuit breaker opened; later eligible videos will remain pending.");
       }
-      options.logger?.(`Transcript fetch failed for ${episode.videoId}: ${failure.error}`);
+      console.error(`Transcript fetch failed for ${episode.videoId}: ${failure.error}`);
     }
 
     await writeTranscriptBatchStatus(options, episodes, counters, failuresById, pendingHandoffTxtPaths);

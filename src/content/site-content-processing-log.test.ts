@@ -1,13 +1,11 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-
-import {
-  parseSiteContentProcessingLog,
-} from "./site-content-processing-log.js";
 import { SITE_CONTENT_PROCESSING_LOG_HEADER } from "./schemas/index.js";
 
+import { parseSiteContentProcessingLog, } from "./site-content-processing-log.js";
+
 const manifest = [
-  { videoId: "abc123", fileStem: "sample-video_abc123", paths: { txt: "txt/sample-video_abc123.txt" } },
+  {videoId: "abc123", fileStem: "sample-video_abc123", paths: {txt: "txt/sample-video_abc123.txt"}},
 ];
 
 test("parses canonical semicolon rows and uses last physical valid occurrence", () => {

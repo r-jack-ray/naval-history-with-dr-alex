@@ -1,8 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
+import type { TopicNormalizationRule } from "../site/topic-normalization.js";
 
 import type { CuratedArchiveSeed } from "./curated-archive-model.js";
-import type { TopicNormalizationRule } from "../site/topic-normalization.js";
 import {
   buildVideoTopicNameAnalysisPartition,
   collectVideoTopicNameDefinitions,
@@ -13,13 +13,13 @@ import {
 test("topic usage TSV uses spaced headers and counts unique videos across both topic levels", () => {
   const seed: CuratedArchiveSeed = {
     topics: [
-      { slug: "destroyers", title: "Destroyers", aliases: ["tin cans"] },
-      { slug: "surface-combatants", title: "Surface Combatants" },
-      { slug: "unused-topic", title: "Unused Topic" },
+      {slug: "destroyers", title: "Destroyers", aliases: ["tin cans"]},
+      {slug: "surface-combatants", title: "Surface Combatants"},
+      {slug: "unused-topic", title: "Unused Topic"},
     ],
     videos: [
-      { videoId: "video1", topics: ["destroyers"] },
-      { videoId: "video2", topics: ["surface-combatants"] },
+      {videoId: "video1", topics: ["destroyers"]},
+      {videoId: "video2", topics: ["surface-combatants"]},
     ],
     segments: [
       segment("one", "video1", "qa", ["destroyers", "surface-combatants"]),
@@ -68,13 +68,13 @@ test("topic usage TSV uses spaced headers and counts unique videos across both t
 test("partitioned topic name analysis reproduces the single-threaded report", () => {
   const seed: CuratedArchiveSeed = {
     topics: [
-      { slug: "destroyers", title: "Destroyers", aliases: ["tin cans"] },
-      { slug: "destroyer-design", title: "Destroyer Design" },
-      { slug: "cruiser-design", title: "Cruiser Design" },
-      { slug: "unused-topic", title: "Unused Topic" },
+      {slug: "destroyers", title: "Destroyers", aliases: ["tin cans"]},
+      {slug: "destroyer-design", title: "Destroyer Design"},
+      {slug: "cruiser-design", title: "Cruiser Design"},
+      {slug: "unused-topic", title: "Unused Topic"},
     ],
     videos: [
-      { videoId: "video1", topics: ["destroyers", "unregistered-topic"] },
+      {videoId: "video1", topics: ["destroyers", "unregistered-topic"]},
     ],
     segments: [
       segment("one", "video1", "chapter", ["destroyer-design", "cruiser-design"]),
@@ -97,10 +97,10 @@ test("partitioned topic name analysis reproduces the single-threaded report", ()
 });
 
 function segment(
-  id: string,
-  videoId: string,
-  kind: "chapter" | "qa",
-  topics: string[],
+    id: string,
+    videoId: string,
+    kind: "chapter" | "qa",
+    topics: string[],
 ): CuratedArchiveSeed["segments"][number] {
   const base = {
     id,
@@ -112,9 +112,9 @@ function segment(
     summary: "Summary.",
     body: "Body.",
     sourcePath: `src/transcripts/txt/${videoId}.txt`,
-    evidence: [{ start: "0:00", note: "Fixture evidence." }],
+    evidence: [{start: "0:00", note: "Fixture evidence."}],
   };
   return kind === "qa"
-    ? { ...base, kind, question: "Fixture question?", answerShort: "Fixture answer." }
-    : { ...base, kind };
+      ? {...base, kind, question: "Fixture question?", answerShort: "Fixture answer."}
+      : {...base, kind};
 }

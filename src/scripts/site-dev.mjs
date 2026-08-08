@@ -1,7 +1,7 @@
 // Start Astro development after generating the archive.
-import { spawn } from "node:child_process";
-import { dirname, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
+import {spawn} from "node:child_process";
+import {dirname, resolve} from "node:path";
+import {fileURLToPath} from "node:url";
 
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const astroCli = resolve(repositoryRoot, "node_modules/astro/bin/astro.mjs");
@@ -11,22 +11,25 @@ if (generationExitCode !== 0) {
   process.exitCode = generationExitCode;
 } else {
   process.exitCode = await runCommand(
-    process.execPath,
-    [astroCli, "dev", ...process.argv.slice(2)],
-    {
-      // Astro auto-backgrounds inside detected agent environments and abandons
-      // large archives after a fixed 30-second readiness window. Presence of
-      // this variable keeps the normal foreground server path.
-      env: { ...process.env, ASTRO_DEV_BACKGROUND: "0" },
-    },
+      process.execPath,
+      [astroCli, "dev", ...process.argv.slice(2)],
+      {
+        // Astro auto-backgrounds inside detected agent environments and abandons
+        // large archives after a fixed 30-second readiness window. Presence of
+        // this variable keeps the normal foreground server path.
+        env: {
+          ...process.env,
+          ASTRO_DEV_BACKGROUND: "0"
+        },
+      },
   );
 }
 
 async function runNpmScript(scriptName) {
   const npmCommand = process.platform === "win32"
-    ? `"${resolve(dirname(process.execPath), "npm.cmd")}"`
-    : "npm";
-  return await runCommand(`${npmCommand} run ${scriptName}`, [], { shell: true });
+      ? `"${resolve(dirname(process.execPath), "npm.cmd")}"`
+      : "npm";
+  return await runCommand(`${npmCommand} run ${scriptName}`, [], {shell: true});
 }
 
 async function runCommand(command, arguments_, options = {}) {

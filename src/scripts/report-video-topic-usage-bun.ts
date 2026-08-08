@@ -1,12 +1,7 @@
 #!/usr/bin/env bun
 
 import { availableParallelism } from "node:os";
-import {
-  isMainThread,
-  parentPort,
-  Worker,
-  workerData,
-} from "node:worker_threads";
+import { isMainThread, parentPort, Worker, workerData, } from "node:worker_threads";
 
 import {
   buildVideoTopicNameAnalysisPartition,
@@ -18,15 +13,8 @@ import {
 import { loadCuratedTopicUsageSeed } from "../site/curated-seed.js";
 import { auditTopicNormalization } from "../site/topic-normalization-audit.js";
 import { discoverVideoSegmentShards } from "../site/video-segment-files.js";
-import {
-  isDirectExecution,
-  printRunTime,
-} from "./console-run-timer.js";
-import {
-  parseVideoTopicUsageArgs,
-  readVideoTopicUsageArgValue,
-  writeVideoTopicUsageReports,
-} from "./report-video-topic-usage.js";
+import { isDirectExecution, printRunTime, } from "./console-run-timer.js";
+import { parseVideoTopicUsageArgs, readVideoTopicUsageArgValue, writeVideoTopicUsageReports, } from "./report-video-topic-usage.js";
 
 interface WorkerTask {
   partitionCount: number;
@@ -60,22 +48,22 @@ async function main(): Promise<void> {
   const workerCount = Math.min(bunOptions.workers, Math.max(1, topics.length));
   const nameAnalysis = await buildParallelNameAnalysis(topics, workerCount);
   const report = renderVideoTopicUsageReport(
-    seed,
-    normalizationAudit.catalog.rules,
-    { nameAnalysis },
+      seed,
+      normalizationAudit.catalog.rules,
+      {nameAnalysis},
   );
   await writeVideoTopicUsageReports(
-    options,
-    report,
-    normalizationAudit,
-    [`runtime=bun`, `workers=${workerCount}`],
+      options,
+      report,
+      normalizationAudit,
+      [`runtime=bun`, `workers=${workerCount}`],
   );
 }
 
 function parseBunArgs(args: string[]): BunCliOptions {
   const defaultWorkers = Math.max(1, Math.min(8, availableParallelism()));
   if (args.includes("--help") || args.includes("-h")) {
-    return { help: true, reportArgs: [], workers: defaultWorkers };
+    return {help: true, reportArgs: [], workers: defaultWorkers};
   }
 
   const reportArgs: string[] = [];
@@ -89,48 +77,48 @@ function parseBunArgs(args: string[]): BunCliOptions {
     const value = readVideoTopicUsageArgValue(args, ++index, arg);
     workers = Number(value);
     if (
-      !Number.isInteger(workers)
-      || workers < 1
-      || workers > availableParallelism()
+        !Number.isInteger(workers)
+        || workers < 1
+        || workers > availableParallelism()
     ) {
       throw new Error(
-        `--workers must be an integer from 1 to ${availableParallelism()}; received ${JSON.stringify(value)}.`,
+          `--workers must be an integer from 1 to ${availableParallelism()}; received ${JSON.stringify(value)}.`,
       );
     }
   }
-  return { help: false, reportArgs, workers };
+  return {help: false, reportArgs, workers};
 }
 
 async function buildParallelNameAnalysis(
-  topics: VideoTopicNameDefinition[],
-  workerCount: number,
+    topics: VideoTopicNameDefinition[],
+    workerCount: number,
 ): Promise<Map<string, VideoTopicNameAnalysisEntry[1]>> {
   if (workerCount === 1) {
     return buildVideoTopicNameAnalysisPartition(topics, 0, 1);
   }
   const partitions = await Promise.all(Array.from(
-    { length: workerCount },
-    (_, partitionIndex) => runNameAnalysisWorker({
-      partitionCount: workerCount,
-      partitionIndex,
-      topics,
-    }),
+      {length: workerCount},
+      (_, partitionIndex) => runNameAnalysisWorker({
+        partitionCount: workerCount,
+        partitionIndex,
+        topics,
+      }),
   ));
   const entries = partitions.flat();
   const analysis = new Map(entries);
   if (entries.length !== topics.length || analysis.size !== topics.length) {
     throw new Error(
-      `Parallel topic name analysis returned ${entries.length} entries for ${topics.length} topics.`,
+        `Parallel topic name analysis returned ${entries.length} entries for ${topics.length} topics.`,
     );
   }
   return analysis;
 }
 
 async function runNameAnalysisWorker(
-  task: WorkerTask,
+    task: WorkerTask,
 ): Promise<VideoTopicNameAnalysisEntry[]> {
   return await new Promise((resolve, reject) => {
-    const worker = new Worker(new URL(import.meta.url), { workerData: task });
+    const worker = new Worker(new URL(import.meta.url), {workerData: task});
     let receivedResult = false;
     worker.once("message", (message: VideoTopicNameAnalysisEntry[]) => {
       receivedResult = true;
@@ -150,9 +138,9 @@ async function runNameAnalysisWorker(
 function runWorker(): void {
   const task = workerData as WorkerTask;
   const result = buildVideoTopicNameAnalysisPartition(
-    task.topics,
-    task.partitionIndex,
-    task.partitionCount,
+      task.topics,
+      task.partitionIndex,
+      task.partitionCount,
   );
   if (parentPort === null) {
     throw new Error("Topic name-analysis worker has no parent message port.");
@@ -183,9 +171,9 @@ if (!isMainThread) {
   const runStartedAt = Date.now();
   main().catch((error: unknown) => {
     console.error(
-      `Failed to run npm run report:video-topic-usage: ${
-        error instanceof Error ? error.message : String(error)
-      }`,
+        `Failed to run npm run report:video-topic-usage: ${
+            error instanceof Error ? error.message : String(error)
+        }`,
     );
     process.exitCode = 1;
   }).finally(() => {

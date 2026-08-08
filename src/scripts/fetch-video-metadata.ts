@@ -1,11 +1,6 @@
 #!/usr/bin/env node
-import {
-  defaultVideoMetadataInput,
-  defaultVideoMetadataOutput,
-  fetchAndStoreVideoMetadata,
-  type FetchVideoMetadataOptions,
-} from "../youtube/video-metadata.js";
 import { readIgnoredVideos } from "../youtube/ignored-videos.js";
+import { defaultVideoMetadataInput, defaultVideoMetadataOutput, fetchAndStoreVideoMetadata, type FetchVideoMetadataOptions, } from "../youtube/video-metadata.js";
 import { resolveYoutubeApiKey } from "./youtube-api-key-file.js";
 
 type CliOptions = Omit<FetchVideoMetadataOptions, "apiKey"> & {
@@ -43,12 +38,12 @@ async function main(): Promise<void> {
     fetchOptions.force = options.force;
   }
   if (!options.quiet) {
-    fetchOptions.logger = (message) => console.error(message);
+    fetchOptions.logger = (message) => console.log(message);
   }
 
   const store = await fetchAndStoreVideoMetadata(fetchOptions);
-  console.error(
-    `Stored metadata for ${store.stats.storedVideoCount}/${store.stats.inputVideoCount} videos in ${options.outputPath}`,
+  console.log(
+      `Stored metadata for ${store.stats.storedVideoCount}/${store.stats.inputVideoCount} videos in ${options.outputPath}`,
   );
 }
 
@@ -65,47 +60,47 @@ function parseArgs(args: string[]): CliOptions {
     const arg = args[index];
 
     switch (arg) {
-      case "--input":
-        options.inputPath = readValue(args, ++index, arg);
-        break;
-      case "--output":
-        options.outputPath = readValue(args, ++index, arg);
-        break;
-      case "--api-key":
-        options.apiKey = readValue(args, ++index, arg);
-        break;
-      case "--api-key-file":
-        options.apiKeyFile = readValue(args, ++index, arg);
-        break;
-      case "--request-delay-ms":
-        options.requestDelayMs = readPositiveInteger(readValue(args, ++index, arg), arg);
-        break;
-      case "--batch-size":
-        options.batchSize = readBatchSize(readValue(args, ++index, arg));
-        break;
-      case "--limit":
-        options.limit = readPositiveInteger(readValue(args, ++index, arg), arg);
-        break;
-      case "--video-id":
-        options.additionalVideoIds ??= [];
-        options.additionalVideoIds.push(readValue(args, ++index, arg));
-        break;
-      case "--refresh-video-id":
-        options.refreshVideoIds ??= [];
-        options.refreshVideoIds.push(readValue(args, ++index, arg));
-        break;
-      case "--force":
-        options.force = true;
-        break;
-      case "--quiet":
-        options.quiet = true;
-        break;
-      case "--help":
-      case "-h":
-        printHelp();
-        process.exit(0);
-      default:
-        throw new Error(`Unknown argument: ${arg ?? ""}`);
+    case "--input":
+      options.inputPath = readValue(args, ++index, arg);
+      break;
+    case "--output":
+      options.outputPath = readValue(args, ++index, arg);
+      break;
+    case "--api-key":
+      options.apiKey = readValue(args, ++index, arg);
+      break;
+    case "--api-key-file":
+      options.apiKeyFile = readValue(args, ++index, arg);
+      break;
+    case "--request-delay-ms":
+      options.requestDelayMs = readPositiveInteger(readValue(args, ++index, arg), arg);
+      break;
+    case "--batch-size":
+      options.batchSize = readBatchSize(readValue(args, ++index, arg));
+      break;
+    case "--limit":
+      options.limit = readPositiveInteger(readValue(args, ++index, arg), arg);
+      break;
+    case "--video-id":
+      options.additionalVideoIds ??= [];
+      options.additionalVideoIds.push(readValue(args, ++index, arg));
+      break;
+    case "--refresh-video-id":
+      options.refreshVideoIds ??= [];
+      options.refreshVideoIds.push(readValue(args, ++index, arg));
+      break;
+    case "--force":
+      options.force = true;
+      break;
+    case "--quiet":
+      options.quiet = true;
+      break;
+    case "--help":
+    case "-h":
+      printHelp();
+      process.exit(0);
+    default:
+      throw new Error(`Unknown argument: ${arg ?? ""}`);
     }
   }
 

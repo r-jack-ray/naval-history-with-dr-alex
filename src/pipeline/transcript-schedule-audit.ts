@@ -86,10 +86,10 @@ export async function auditTranscriptSchedules(options: TranscriptScheduleAuditO
   const processingLogPaths = options.processingLogPaths ?? [options.processingLogPath];
   const [manifestText, scheduleTexts, processingLogTexts] = await Promise.all([
     readFile(options.manifestPath, "utf8"),
-    Promise.all(options.schedulePaths.map(async (path) => ({ path, text: await readFile(path, "utf8") }))),
+    Promise.all(options.schedulePaths.map(async (path) => ({path, text: await readFile(path, "utf8")}))),
     options.checkArtifacts
-      ? Promise.all(processingLogPaths.map((path) => readFile(path, "utf8")))
-      : Promise.resolve(undefined),
+        ? Promise.all(processingLogPaths.map((path) => readFile(path, "utf8")))
+        : Promise.resolve(undefined),
   ]);
 
   return buildTranscriptScheduleAudit({
@@ -99,7 +99,7 @@ export async function auditTranscriptSchedules(options: TranscriptScheduleAuditO
     rootDir: process.cwd(),
     fileExists: existsSync,
     checkArtifacts: options.checkArtifacts,
-    ...(processingLogTexts === undefined ? {} : { processingLogText: processingLogTexts.join("\n") }),
+    ...(processingLogTexts === undefined ? {} : {processingLogText: processingLogTexts.join("\n")}),
     processingLogPath: processingLogPaths.join(", "),
     segmentsInput: options.segmentsInput,
   });
@@ -230,7 +230,9 @@ function parseSchedule(source: ScheduleSource, issues: TranscriptScheduleAuditIs
   const rowPattern = /^- \[([^\]]*)\] (src\/transcripts\/txt\/\S+\.txt) \| (\S+) \| (\S+) \| rows=(\d+) \| durationSeconds=(\d+) \| (.*)$/u;
 
   source.text.split(/\r?\n/u).forEach((line, index) => {
-    if (!line.startsWith("- [")) return;
+    if (!line.startsWith("- [")) {
+      return;
+    }
     const match = rowPattern.exec(line);
     if (!match) {
       addIssue(issues, "error", "invalid-schedule-row", `Malformed schedule row at ${source.path}:${index + 1}.`, source.path, index + 1);
@@ -249,17 +251,17 @@ function parseSchedule(source: ScheduleSource, issues: TranscriptScheduleAuditIs
       durationSeconds: Number(match[6]),
       title: match[7] ?? "",
       schedulePath: source.path,
-      ...(timestampMs === undefined || Number.isNaN(timestampMs) ? {} : { scheduleTimestampMs: timestampMs }),
+      ...(timestampMs === undefined || Number.isNaN(timestampMs) ? {} : {scheduleTimestampMs: timestampMs}),
       line: index + 1,
     });
   });
 
   return {
     path: source.path,
-    ...(scheduleHeader ? { scheduleNumber: Number(scheduleHeader[1]), scheduleCount: Number(scheduleHeader[2]) } : {}),
-    ...(declaredFileCount === undefined ? {} : { declaredFileCount }),
-    ...(declaredTotalCount === undefined ? {} : { declaredTotalCount }),
-    ...(timestampMs === undefined || Number.isNaN(timestampMs) ? {} : { timestampMs }),
+    ...(scheduleHeader ? {scheduleNumber: Number(scheduleHeader[1]), scheduleCount: Number(scheduleHeader[2])} : {}),
+    ...(declaredFileCount === undefined ? {} : {declaredFileCount}),
+    ...(declaredTotalCount === undefined ? {} : {declaredTotalCount}),
+    ...(timestampMs === undefined || Number.isNaN(timestampMs) ? {} : {timestampMs}),
     entries,
   };
 }
@@ -287,18 +289,18 @@ function validateManifestMetadata(entry: ScheduleEntry, record: TranscriptManife
   }
   validateScheduleSourcePathContract(entry, record, issues);
   const metadataMatches = record.videoDateAt === entry.videoDateAt
-    && record.segmentCount === entry.rows
-    && record.lastEndSeconds === entry.durationSeconds
-    && record.videoTitle === entry.title;
+      && record.segmentCount === entry.rows
+      && record.lastEndSeconds === entry.durationSeconds
+      && record.videoTitle === entry.title;
   if (!metadataMatches) {
     addIssue(issues, "error", "schedule-metadata-mismatch", `${entry.transcriptPath} metadata does not match the manifest.`, entry.schedulePath, entry.line, entry.videoId);
   }
 }
 
 function validateManifestFilenameContract(
-  record: TranscriptManifestRecord,
-  manifestPath: string,
-  issues: TranscriptScheduleAuditIssue[],
+    record: TranscriptManifestRecord,
+    manifestPath: string,
+    issues: TranscriptScheduleAuditIssue[],
 ): void {
   if (typeof record.fileStem !== "string" || record.fileStem.length === 0) {
     addIssue(issues, "error", "manifest-missing-file-stem", `Manifest video ${record.videoId} has no fileStem.`, manifestPath, undefined, record.videoId);
@@ -318,11 +320,13 @@ function validateManifestFilenameContract(
 }
 
 function validateScheduleSourcePathContract(
-  entry: ScheduleEntry,
-  record: TranscriptManifestRecord,
-  issues: TranscriptScheduleAuditIssue[],
+    entry: ScheduleEntry,
+    record: TranscriptManifestRecord,
+    issues: TranscriptScheduleAuditIssue[],
 ): void {
-  if (typeof record.fileStem !== "string" || record.fileStem.length === 0) return;
+  if (typeof record.fileStem !== "string" || record.fileStem.length === 0) {
+    return;
+  }
   const expectedTxtName = `${record.fileStem}.txt`;
   const sourceTxtName = portableBaseName(entry.transcriptPath);
   if (sourceTxtName !== expectedTxtName) {
@@ -331,20 +335,26 @@ function validateScheduleSourcePathContract(
 }
 
 function validateArtifacts(
-  input: Parameters<typeof buildTranscriptScheduleAudit>[0],
-  entries: ScheduleEntry[],
-  manifestByVideoId: ReadonlyMap<string, TranscriptManifestRecord>,
-  issues: TranscriptScheduleAuditIssue[],
+    input: Parameters<typeof buildTranscriptScheduleAudit>[0],
+    entries: ScheduleEntry[],
+    manifestByVideoId: ReadonlyMap<string, TranscriptManifestRecord>,
+    issues: TranscriptScheduleAuditIssue[],
 ): void {
   const processingLogTimes = new Map<string, number[]>();
   for (const line of (input.processingLogText ?? "").split(/\r?\n/u)) {
-    if (!line) continue;
+    if (!line) {
+      continue;
+    }
     const fields = line.split("\t");
-    if (fields.length !== 6) continue;
+    if (fields.length !== 6) {
+      continue;
+    }
     const timestamp = Date.parse(fields[0] ?? "");
     const transcriptPath = fields[1] ?? "";
     const videoId = fields[2] ?? "";
-    if (Number.isNaN(timestamp)) continue;
+    if (Number.isNaN(timestamp)) {
+      continue;
+    }
     const key = `${transcriptPath}\0${videoId}`;
     const times = processingLogTimes.get(key) ?? [];
     times.push(timestamp);
@@ -353,16 +363,20 @@ function validateArtifacts(
   const segmentsInput = input.segmentsInput ?? defaultTranscriptScheduleSegmentsInput;
   const processingLogPath = input.processingLogPath ?? defaultTranscriptScheduleProcessingLog;
   for (const entry of entries) {
-    if (entry.state !== "x" && entry.state !== "~") continue;
+    if (entry.state !== "x" && entry.state !== "~") {
+      continue;
+    }
     const record = manifestByVideoId.get(entry.videoId);
     const shardFileName = record === undefined
-      ? undefined
-      : canonicalScheduleShardFileName(entry, record, issues);
-    if (shardFileName === undefined) continue;
+        ? undefined
+        : canonicalScheduleShardFileName(entry, record, issues);
+    if (shardFileName === undefined) {
+      continue;
+    }
     const shardPath = resolve(input.rootDir, segmentsInput, shardFileName);
     const shardExists = input.fileExists(shardPath);
     const freshLog = entry.scheduleTimestampMs !== undefined
-      && (processingLogTimes.get(`${entry.transcriptPath}\0${entry.videoId}`) ?? []).some((time) => time >= entry.scheduleTimestampMs!);
+        && (processingLogTimes.get(`${entry.transcriptPath}\0${entry.videoId}`) ?? []).some((time) => time >= entry.scheduleTimestampMs!);
     if (entry.state === "x") {
       if (!shardExists) {
         addIssue(issues, "error", "checked-row-missing-shard", `Checked row ${entry.videoId} has no current-schema shard.`, entry.schedulePath, entry.line, entry.videoId);
@@ -379,9 +393,9 @@ function validateArtifacts(
 }
 
 function canonicalScheduleShardFileName(
-  entry: ScheduleEntry,
-  record: TranscriptManifestRecord,
-  issues: TranscriptScheduleAuditIssue[],
+    entry: ScheduleEntry,
+    record: TranscriptManifestRecord,
+    issues: TranscriptScheduleAuditIssue[],
 ): string | undefined {
   if (typeof record.fileStem !== "string" || record.fileStem.length === 0) {
     addIssue(issues, "error", "schedule-artifact-missing-file-stem", `Cannot resolve a canonical shard for ${entry.videoId} without a manifest fileStem.`, entry.schedulePath, entry.line, entry.videoId);
@@ -417,20 +431,20 @@ function repositoryRelativePath(rootDir: string, path: string): string {
 }
 
 function addIssue(
-  issues: TranscriptScheduleAuditIssue[],
-  severity: "error" | "warning",
-  code: string,
-  message: string,
-  path?: string,
-  line?: number,
-  videoId?: string,
+    issues: TranscriptScheduleAuditIssue[],
+    severity: "error" | "warning",
+    code: string,
+    message: string,
+    path?: string,
+    line?: number,
+    videoId?: string,
 ): void {
   issues.push({
     severity,
     code,
     message,
-    ...(path === undefined ? {} : { path }),
-    ...(line === undefined ? {} : { line }),
-    ...(videoId === undefined ? {} : { videoId }),
+    ...(path === undefined ? {} : {path}),
+    ...(line === undefined ? {} : {line}),
+    ...(videoId === undefined ? {} : {videoId}),
   });
 }

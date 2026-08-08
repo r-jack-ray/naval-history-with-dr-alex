@@ -99,7 +99,9 @@ export async function fetchVideoTranscript(options: FetchVideoTranscriptOptions)
   try {
     return await fetchVideoTranscriptWithPlus(options, limitedFetch);
   } catch (error) {
-    options.logger?.(`youtube-transcript-plus failed: ${errorMessage(error)}. Trying watch-page caption fallback.`);
+    console.warn(
+      `youtube-transcript-plus failed: ${errorMessage(error)}. Trying watch-page caption fallback.`,
+    );
   }
 
   const watchPageTranscript = await fetchWatchPageTranscript({

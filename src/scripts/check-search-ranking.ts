@@ -2,10 +2,10 @@
 /// <reference lib="dom" />
 /// <reference lib="dom.iterable" />
 
-import { createServer, type Server } from "node:http";
 import { createHash } from "node:crypto";
-import { access, readFile, readdir, stat } from "node:fs/promises";
-import { extname, join, relative, resolve, sep } from "node:path";
+import { access, readdir, readFile, stat } from "node:fs/promises";
+import { createServer, type Server } from "node:http";
+import { extname, join, resolve, sep } from "node:path";
 
 import puppeteer, { type Browser, type Page } from "puppeteer-core";
 
@@ -147,18 +147,18 @@ async function main(): Promise<void> {
   const english = optionalRecord(languages?.en);
   const pageCount = typeof english?.page_count === "number" ? english.page_count : undefined;
   console.log(
-    `Search ranking fixture valid: ${fixture.cases.length} cases; Pagefind ` +
-    `${pageCount === undefined ? "page count unavailable" : `${pageCount.toLocaleString()} pages`}; ` +
-    `${indexBytes.toLocaleString()} bytes.`,
+      `Search ranking fixture valid: ${fixture.cases.length} cases; Pagefind ` +
+      `${pageCount === undefined ? "page count unavailable" : `${pageCount.toLocaleString()} pages`}; ` +
+      `${indexBytes.toLocaleString()} bytes.`,
   );
 
   if (
-    options.baselineIndexBytes !== undefined &&
-    indexBytes > Math.floor(options.baselineIndexBytes * 1.02)
+      options.baselineIndexBytes !== undefined &&
+      indexBytes > Math.floor(options.baselineIndexBytes * 1.02)
   ) {
     throw new Error(
-      `Pagefind index grew by more than 2%: ${indexBytes.toLocaleString()} bytes versus ` +
-      `${options.baselineIndexBytes.toLocaleString()} baseline bytes.`,
+        `Pagefind index grew by more than 2%: ${indexBytes.toLocaleString()} bytes versus ` +
+        `${options.baselineIndexBytes.toLocaleString()} baseline bytes.`,
     );
   }
 
@@ -179,13 +179,13 @@ async function main(): Promise<void> {
       reportMetrics(calculateMetrics(assessments));
       failIfAssessmentsFail(assessments, "Candidate ranking");
       console.log(
-        `Candidate passed: termSimilarity=${formatNumber(options.termSimilarity)}, ` +
-        `metaWeights.title=${formatNumber(options.titleWeight)}.`,
+          `Candidate passed: termSimilarity=${formatNumber(options.termSimilarity)}, ` +
+          `metaWeights.title=${formatNumber(options.titleWeight)}.`,
       );
       return;
     }
 
-    await page.goto(`${staticServer.origin}${siteBase}search/`, { waitUntil: "domcontentloaded" });
+    await page.goto(`${staticServer.origin}${siteBase}search/`, {waitUntil: "domcontentloaded"});
 
     if (options.mode === "baseline") {
       const assessments = await runDirectFixture(page, staticServer.origin, fixture, {
@@ -201,23 +201,23 @@ async function main(): Promise<void> {
         throw new Error("The fixture has no permanent regression case.");
       }
       const directRegression = assessments.find(
-        (assessment) => assessment.rankingCase.query === regressionCase.query,
+          (assessment) => assessment.rankingCase.query === regressionCase.query,
       );
       if (directRegression === undefined || directRegression.failures.length === 0) {
         throw new Error(
-          "The fresh baseline no longer reproduces the documented HMS Victory regression; " +
-          "amend the plan from measured results before tuning.",
+            "The fresh baseline no longer reproduces the documented HMS Victory regression; " +
+            "amend the plan from measured results before tuning.",
         );
       }
 
       const uiRegression = assessCase(
-        regressionCase,
-        await runUiQuery(page, regressionCase.query, inspectLimit),
+          regressionCase,
+          await runUiQuery(page, regressionCase.query, inspectLimit),
       );
       if (uiRegression.failures.length === 0) {
         throw new Error(
-          "The rendered baseline no longer reproduces the documented HMS Victory regression; " +
-          "amend the plan before tuning an independently configured Pagefind instance.",
+            "The rendered baseline no longer reproduces the documented HMS Victory regression; " +
+            "amend the plan before tuning an independently configured Pagefind instance.",
         );
       }
       console.log(`Rendered baseline reproduced HMS Victory: ${uiRegression.failures.join(" ")}`);
@@ -243,8 +243,8 @@ async function main(): Promise<void> {
       const publicTopics = topics.filter((topic) => publicTopicSlugs.has(topic.slug));
       const observationCases = buildTopicObservationCases(publicTopics, fixture, options.observeTopicSample);
       console.log(
-        `Topic observation sample (${observationCases.length}): ` +
-        observationCases.map((rankingCase) => rankingCase.query).join(" | "),
+          `Topic observation sample (${observationCases.length}): ` +
+          observationCases.map((rankingCase) => rankingCase.query).join(" | "),
       );
       const observationAssessments = await runUiFixture(page, {
         schemaVersion: 1,
@@ -264,8 +264,8 @@ async function main(): Promise<void> {
       }
     }
     console.log(
-      `Rendered search ranking passed: ${fixture.cases.length} cases, ${batchSize}-result initial batch, ` +
-      `${inspectLimit}-result inspection bound.`,
+        `Rendered search ranking passed: ${fixture.cases.length} cases, ${batchSize}-result initial batch, ` +
+        `${inspectLimit}-result inspection bound.`,
     );
   } finally {
     await browser?.close().catch(() => undefined);
@@ -285,7 +285,9 @@ function parseCli(args: readonly string[]): CliOptions {
 
   for (let index = 0; index < args.length; index += 1) {
     const argument = args[index];
-    if (argument === undefined) continue;
+    if (argument === undefined) {
+      continue;
+    }
     if (argument === "--verbose") {
       options.verbose = true;
       continue;
@@ -353,10 +355,10 @@ function parseRankingCase(value: unknown, index: number): RankingCase {
   const record = asRecord(value, `${fixturePath} case ${index + 1}`);
   const stratum = requiredEnum(record.stratum, Object.keys(stratumCounts) as Stratum[], "stratum", index);
   const queryKind = requiredEnum(
-    record.queryKind,
-    ["unique-title", "unique-alias", "ambiguous"] as const,
-    "queryKind",
-    index,
+      record.queryKind,
+      ["unique-title", "unique-alias", "ambiguous"] as const,
+      "queryKind",
+      index,
   );
   const rankingCase: RankingCase = {
     stratum,
@@ -392,12 +394,12 @@ function parseRankingCase(value: unknown, index: number): RankingCase {
   }
   if (record.allowedTopUrls !== undefined) {
     rankingCase.allowedTopUrls = requiredStringArray(record.allowedTopUrls, "allowedTopUrls", index)
-      .map((route) => requiredRoute(route, `case ${index + 1} allowed route`));
+        .map((route) => requiredRoute(route, `case ${index + 1} allowed route`));
   }
   if (record.allowedTopRank !== undefined) {
     rankingCase.allowedTopRank = requiredPositiveInteger(
-      record.allowedTopRank,
-      `case ${index + 1} allowedTopRank`,
+        record.allowedTopRank,
+        `case ${index + 1} allowedTopRank`,
     );
   }
   return rankingCase;
@@ -419,8 +421,8 @@ async function readSourceTopics(): Promise<SourceTopic[]> {
 }
 
 async function validateFixture(
-  fixture: RankingFixture,
-  topics: readonly SourceTopic[],
+    fixture: RankingFixture,
+    topics: readonly SourceTopic[],
 ): Promise<ReadonlySet<string>> {
   const expectedCaseCount = Object.values(stratumCounts).reduce<number>((sum, count) => sum + count, 0);
   if (fixture.cases.length !== expectedCaseCount) {
@@ -435,9 +437,9 @@ async function validateFixture(
       throw new Error(`Duplicate source topic slug ${topic.slug}.`);
     }
     topicsBySlug.set(topic.slug, topic);
-    addTopicMatch(matchesByNormalizedValue, topic.title, { slug: topic.slug, kind: "title", value: topic.title });
+    addTopicMatch(matchesByNormalizedValue, topic.title, {slug: topic.slug, kind: "title", value: topic.title});
     for (const alias of topic.aliases) {
-      addTopicMatch(matchesByNormalizedValue, alias, { slug: topic.slug, kind: "alias", value: alias });
+      addTopicMatch(matchesByNormalizedValue, alias, {slug: topic.slug, kind: "alias", value: alias});
     }
   }
 
@@ -452,16 +454,16 @@ async function validateFixture(
     const videoCount = topic.videoCount;
     const segmentCount = topic.segmentCount;
     if (
-      typeof videoCount !== "number" ||
-      !Number.isInteger(videoCount) ||
-      videoCount < 0 ||
-      typeof segmentCount !== "number" ||
-      !Number.isInteger(segmentCount) ||
-      segmentCount < 0
+        typeof videoCount !== "number" ||
+        !Number.isInteger(videoCount) ||
+        videoCount < 0 ||
+        typeof segmentCount !== "number" ||
+        !Number.isInteger(segmentCount) ||
+        segmentCount < 0
     ) {
       throw new Error(`${generatedTopicsPath} topic ${slug} has invalid relationship counts.`);
     }
-    if (isPublicTopic({ videoCount, segmentCount })) {
+    if (isPublicTopic({videoCount, segmentCount})) {
       generatedTopicSlugs.add(slug);
     }
   }
@@ -479,7 +481,7 @@ async function validateFixture(
   });
   const videoRoutes = new Set(generatedVideos.map((video) => `/videos/${video.slug}/`));
   const segmentRoutes = new Set(
-    generatedVideos.flatMap((video) => video.segmentSlugs.map((slug) => `/segments/${slug}/`)),
+      generatedVideos.flatMap((video) => video.segmentSlugs.map((slug) => `/segments/${slug}/`)),
   );
 
   for (const [stratum, expectedCount] of Object.entries(stratumCounts) as Array<[Stratum, number]>) {
@@ -505,7 +507,7 @@ async function validateFixture(
     }
 
     const exactMatches = (matchesByNormalizedValue.get(normalizedQuery) ?? [])
-      .filter((match) => generatedTopicSlugs.has(match.slug));
+        .filter((match) => generatedTopicSlugs.has(match.slug));
     const exactSlugs = [...new Set(exactMatches.map((match) => match.slug))].sort();
     const expectedUrls = rankingCase.expectedRankedUrls ?? [];
     const allowedUrls = rankingCase.allowedTopUrls ?? [];
@@ -520,8 +522,8 @@ async function validateFixture(
       const exactRoutes = exactSlugs.map((slug) => `/topics/${slug}/`).sort();
       if (rankingCase.allowedTopRank !== 1 || !sameStrings(exactRoutes, [...allowedUrls].sort())) {
         throw new Error(
-          `Fixture query ${rankingCase.query} must allow exactly its normalized topic matches at rank 1: ` +
-          `${exactRoutes.join(", ")}.`,
+            `Fixture query ${rankingCase.query} must allow exactly its normalized topic matches at rank 1: ` +
+            `${exactRoutes.join(", ")}.`,
         );
       }
       if (!sameStrings(exactSlugs, [...rankingCase.sourceTopicSlugs].sort())) {
@@ -530,8 +532,8 @@ async function validateFixture(
     } else {
       if (exactSlugs.length !== 1) {
         throw new Error(
-          `Fixture query ${rankingCase.query} must resolve to one normalized topic, found: ` +
-          `${exactSlugs.join(", ") || "none"}.`,
+            `Fixture query ${rankingCase.query} must resolve to one normalized topic, found: ` +
+            `${exactSlugs.join(", ") || "none"}.`,
         );
       }
       const exactSlug = exactSlugs[0];
@@ -542,8 +544,8 @@ async function validateFixture(
         throw new Error(`Fixture query ${rankingCase.query} is not an exact topic title.`);
       }
       if (
-        rankingCase.queryKind === "unique-alias" &&
-        (!exactMatches.some((match) => match.kind === "alias") || exactMatches.some((match) => match.kind === "title"))
+          rankingCase.queryKind === "unique-alias" &&
+          (!exactMatches.some((match) => match.kind === "alias") || exactMatches.some((match) => match.kind === "title"))
       ) {
         throw new Error(`Fixture query ${rankingCase.query} is not a unique alias-only match.`);
       }
@@ -552,7 +554,7 @@ async function validateFixture(
       const requiredMaxRank = rankingCase.queryKind === "unique-title" ? 1 : 3;
       if (canonicalExpectation === undefined || canonicalExpectation.maxRank > requiredMaxRank) {
         throw new Error(
-          `Fixture query ${rankingCase.query} must expect ${canonicalRoute} within rank ${requiredMaxRank}.`,
+            `Fixture query ${rankingCase.query} must expect ${canonicalRoute} within rank ${requiredMaxRank}.`,
         );
       }
     }
@@ -573,9 +575,9 @@ async function validateFixture(
 }
 
 function buildTopicObservationCases(
-  topics: readonly SourceTopic[],
-  fixture: RankingFixture,
-  requestedCount: number,
+    topics: readonly SourceTopic[],
+    fixture: RankingFixture,
+    requestedCount: number,
 ): RankingCase[] {
   const matchesByNormalizedValue = new Map<string, TopicMatch[]>();
   for (const topic of topics) {
@@ -597,16 +599,20 @@ function buildTopicObservationCases(
   const aliasCandidates: RankingCase[] = [];
   for (const [normalizedValue, matches] of matchesByNormalizedValue) {
     if (
-      excludedQueries.has(normalizedValue) ||
-      normalizedValue.length < 3 ||
-      normalizedValue.length > 80
+        excludedQueries.has(normalizedValue) ||
+        normalizedValue.length < 3 ||
+        normalizedValue.length > 80
     ) {
       continue;
     }
     const slugs = [...new Set(matches.map((match) => match.slug))];
-    if (slugs.length !== 1) continue;
+    if (slugs.length !== 1) {
+      continue;
+    }
     const slug = slugs[0];
-    if (slug === undefined) continue;
+    if (slug === undefined) {
+      continue;
+    }
     const titleMatch = matches.find((match) => match.kind === "title");
     if (titleMatch !== undefined) {
       titleCandidates.push({
@@ -614,7 +620,7 @@ function buildTopicObservationCases(
         query: titleMatch.value,
         queryKind: "unique-title",
         sourceTopicSlugs: [slug],
-        expectedRankedUrls: [{ url: `/topics/${slug}/`, maxRank: 1 }],
+        expectedRankedUrls: [{url: `/topics/${slug}/`, maxRank: 1}],
         reason: "Deterministic observation sample of a unique registry topic title.",
       });
       continue;
@@ -626,7 +632,7 @@ function buildTopicObservationCases(
         query: aliasMatch.value,
         queryKind: "unique-alias",
         sourceTopicSlugs: [slug],
-        expectedRankedUrls: [{ url: `/topics/${slug}/`, maxRank: 3 }],
+        expectedRankedUrls: [{url: `/topics/${slug}/`, maxRank: 3}],
         reason: "Deterministic observation sample of a unique registry topic alias.",
       });
     }
@@ -642,10 +648,10 @@ function buildTopicObservationCases(
   if (remaining > 0) {
     const selectedQueries = new Set(selected.map((rankingCase) => normalizeText(rankingCase.query)));
     const extras = fixedSeedSample(
-      [...titleCandidates, ...aliasCandidates].filter(
-        (rankingCase) => !selectedQueries.has(normalizeText(rankingCase.query)),
-      ),
-      remaining,
+        [...titleCandidates, ...aliasCandidates].filter(
+            (rankingCase) => !selectedQueries.has(normalizeText(rankingCase.query)),
+        ),
+        remaining,
     );
     selected.push(...extras);
   }
@@ -654,11 +660,11 @@ function buildTopicObservationCases(
 
 function fixedSeedSample(cases: readonly RankingCase[], count: number): RankingCase[] {
   return [...cases]
-    .sort((left, right) => (
-      stableSampleKey(left.query).localeCompare(stableSampleKey(right.query)) ||
-      left.query.localeCompare(right.query)
-    ))
-    .slice(0, count);
+      .sort((left, right) => (
+          stableSampleKey(left.query).localeCompare(stableSampleKey(right.query)) ||
+          left.query.localeCompare(right.query)
+      ))
+      .slice(0, count);
 }
 
 function stableSampleKey(value: string): string {
@@ -666,9 +672,9 @@ function stableSampleKey(value: string): string {
 }
 
 function addTopicMatch(
-  matchesByNormalizedValue: Map<string, TopicMatch[]>,
-  value: string,
-  match: TopicMatch,
+    matchesByNormalizedValue: Map<string, TopicMatch[]>,
+    value: string,
+    match: TopicMatch,
 ): void {
   const normalized = normalizeText(value);
   const matches = matchesByNormalizedValue.get(normalized) ?? [];
@@ -677,30 +683,30 @@ function addTopicMatch(
 }
 
 function validateGeneratedRoute(
-  route: string,
-  topicSlugs: ReadonlySet<string>,
-  videoRoutes: ReadonlySet<string>,
-  segmentRoutes: ReadonlySet<string>,
-  query: string,
+    route: string,
+    topicSlugs: ReadonlySet<string>,
+    videoRoutes: ReadonlySet<string>,
+    segmentRoutes: ReadonlySet<string>,
+    query: string,
 ): void {
   const topicMatch = /^\/topics\/([^/]+)\/$/u.exec(route);
   const exists = topicMatch !== null
-    ? topicSlugs.has(topicMatch[1] ?? "")
-    : route.startsWith("/videos/")
-      ? videoRoutes.has(route)
-      : route.startsWith("/segments/")
-        ? segmentRoutes.has(route)
-        : false;
+      ? topicSlugs.has(topicMatch[1] ?? "")
+      : route.startsWith("/videos/")
+          ? videoRoutes.has(route)
+          : route.startsWith("/segments/")
+              ? segmentRoutes.has(route)
+              : false;
   if (!exists) {
     throw new Error(`Fixture query ${query} references missing generated route ${route}.`);
   }
 }
 
 async function runDirectFixture(
-  page: Page,
-  origin: string,
-  fixture: RankingFixture,
-  options: CliOptions,
+    page: Page,
+    origin: string,
+    fixture: RankingFixture,
+    options: CliOptions,
 ): Promise<CaseAssessment[]> {
   const assessments: CaseAssessment[] = [];
   for (const rankingCase of fixture.cases) {
@@ -711,10 +717,10 @@ async function runDirectFixture(
 }
 
 async function runDirectQuery(
-  page: Page,
-  origin: string,
-  query: string,
-  options: CliOptions,
+    page: Page,
+    origin: string,
+    query: string,
+    options: CliOptions,
 ): Promise<QueryResult> {
   const browserResult = await page.evaluate(async (input) => {
     const pagefindModule = await import(input.pagefindUrl) as {
@@ -748,7 +754,7 @@ async function runDirectQuery(
         baseUrl: input.siteBase,
         ranking: {
           termSimilarity: input.termSimilarity,
-          metaWeights: { title: input.titleWeight },
+          metaWeights: {title: input.titleWeight},
         },
       });
       await instance.init?.();
@@ -803,7 +809,9 @@ async function runDirectQuery(
         title: result.title,
         matchedMetaFields: result.matchedMetaFields,
       };
-      if (result.score !== undefined) searchResult.score = result.score;
+      if (result.score !== undefined) {
+        searchResult.score = result.score;
+      }
       return searchResult;
     }),
   };
@@ -833,7 +841,7 @@ async function runUiQuery(page: Page, query: string, maxResults: number): Promis
       while (!predicate()) {
         if (performance.now() - startedAt > timeoutMs) {
           throw new Error(
-            `Timed out for "${input.query}" with search status: ${status.textContent ?? "unknown"}`,
+              `Timed out for "${input.query}" with search status: ${status.textContent ?? "unknown"}`,
           );
         }
         await new Promise((resolvePromise) => window.setTimeout(resolvePromise, 10));
@@ -842,11 +850,11 @@ async function runUiQuery(page: Page, query: string, maxResults: number): Promis
     const settled = () => {
       const message = status.textContent ?? "";
       return results.getAttribute("aria-busy") === "false" &&
-        !message.startsWith("Searching for") &&
-        !message.startsWith("Loading more");
+          !message.startsWith("Searching for") &&
+          !message.startsWith("Loading more");
     };
     const collectLinks = () => [...results.querySelectorAll<HTMLAnchorElement>("article h2 a")]
-      .map((link) => ({ href: link.getAttribute("href") ?? "", title: link.textContent?.trim() ?? "" }));
+        .map((link) => ({href: link.getAttribute("href") ?? "", title: link.textContent?.trim() ?? ""}));
 
     searchInput.value = input.query;
     const startedAt = performance.now();
@@ -871,8 +879,8 @@ async function runUiQuery(page: Page, query: string, maxResults: number): Promis
     const finalMatch = /^([\d,]+)\s+matches?\s+for/u.exec(initialStatus);
     const totalText = showingMatch?.[1] ?? finalMatch?.[1];
     const total = totalText === undefined
-      ? collectLinks().length
-      : Number.parseInt(totalText.replaceAll(",", ""), 10);
+        ? collectLinks().length
+        : Number.parseInt(totalText.replaceAll(",", ""), 10);
     return {
       total,
       initialCount,
@@ -880,7 +888,7 @@ async function runUiQuery(page: Page, query: string, maxResults: number): Promis
       elapsedMs,
       links: collectLinks().slice(0, input.maxResults),
     };
-  }, { query, maxResults });
+  }, {query, maxResults});
 
   return {
     query,
@@ -930,8 +938,8 @@ function assessCase(rankingCase: RankingCase, queryResult: QueryResult): CaseAss
     const worseRank = ranks.get(pair.worse);
     if (betterRank === undefined) {
       failures.push(
-        `${pair.better} is outside the first ${inspectLimit} and cannot precede ${pair.worse} ` +
-        `(${formatRank(worseRank)})`,
+          `${pair.better} is outside the first ${inspectLimit} and cannot precede ${pair.worse} ` +
+          `(${formatRank(worseRank)})`,
       );
     } else if (worseRank === undefined) {
       if (rankingCase.stratum === "regression") {
@@ -945,8 +953,8 @@ function assessCase(rankingCase: RankingCase, queryResult: QueryResult): CaseAss
     const route = queryResult.results[rankingCase.allowedTopRank - 1]?.route;
     if (route === undefined || !rankingCase.allowedTopUrls.includes(route)) {
       failures.push(
-        `rank ${rankingCase.allowedTopRank} is ${route ?? "absent"}; allowed: ` +
-        `${rankingCase.allowedTopUrls.join(", ")}`,
+          `rank ${rankingCase.allowedTopRank} is ${route ?? "absent"}; allowed: ` +
+          `${rankingCase.allowedTopUrls.join(", ")}`,
       );
     }
   }
@@ -954,7 +962,7 @@ function assessCase(rankingCase: RankingCase, queryResult: QueryResult): CaseAss
     failures.push(`initial rendered batch has ${String(queryResult.initialCount)} results, expected ${batchSize}`);
   }
 
-  return { rankingCase, queryResult, failures };
+  return {rankingCase, queryResult, failures};
 }
 
 function reportAssessments(assessments: readonly CaseAssessment[], verbose: boolean): void {
@@ -977,8 +985,8 @@ function reportAssessments(assessments: readonly CaseAssessment[], verbose: bool
       for (const [index, searchResult] of result.results.slice(0, diagnosticLimit).entries()) {
         const score = searchResult.score === undefined ? "" : ` score=${searchResult.score.toFixed(4)}`;
         const meta = searchResult.matchedMetaFields.length === 0
-          ? ""
-          : ` meta=${searchResult.matchedMetaFields.join(",")}`;
+            ? ""
+            : ` meta=${searchResult.matchedMetaFields.join(",")}`;
         console.log(`    ${index + 1}. ${searchResult.route}${score}${meta} — ${searchResult.title}`);
       }
     }
@@ -999,16 +1007,26 @@ function calculateMetrics(assessments: readonly CaseAssessment[]): RankingMetric
   let reciprocalRank = 0;
   let cases = 0;
   for (const assessment of assessments) {
-    if (assessment.rankingCase.queryKind === "ambiguous") continue;
+    if (assessment.rankingCase.queryKind === "ambiguous") {
+      continue;
+    }
     const topicExpectation = assessment.rankingCase.expectedRankedUrls?.find(
-      (expectation) => expectation.url.startsWith("/topics/"),
+        (expectation) => expectation.url.startsWith("/topics/"),
     );
-    if (topicExpectation === undefined) continue;
+    if (topicExpectation === undefined) {
+      continue;
+    }
     cases += 1;
     const rank = assessment.queryResult.results.findIndex((result) => result.route === topicExpectation.url) + 1;
-    if (rank === 1) hitAt1 += 1;
-    if (rank > 0 && rank <= 3) hitAt3 += 1;
-    if (rank > 0) reciprocalRank += 1 / rank;
+    if (rank === 1) {
+      hitAt1 += 1;
+    }
+    if (rank > 0 && rank <= 3) {
+      hitAt3 += 1;
+    }
+    if (rank > 0) {
+      reciprocalRank += 1 / rank;
+    }
   }
   return {
     cases,
@@ -1020,8 +1038,8 @@ function calculateMetrics(assessments: readonly CaseAssessment[]): RankingMetric
 
 function reportMetrics(metrics: RankingMetrics): void {
   console.log(
-    `Fixture metrics: Hit@1 ${metrics.hitAt1}/${metrics.cases}; Hit@3 ${metrics.hitAt3}/${metrics.cases}; ` +
-    `MRR ${metrics.meanReciprocalRank.toFixed(4)}.`,
+      `Fixture metrics: Hit@1 ${metrics.hitAt1}/${metrics.cases}; Hit@3 ${metrics.hitAt3}/${metrics.cases}; ` +
+      `MRR ${metrics.meanReciprocalRank.toFixed(4)}.`,
   );
 }
 
@@ -1044,8 +1062,8 @@ async function reportBenchmark(page: Page, options: CliOptions): Promise<void> {
     const limit = Math.max(100, options.baselineP95Ms * 1.2);
     if (maxP95 > limit) {
       throw new Error(
-        `Warm first-batch p95 ${maxP95.toFixed(1)} ms exceeds ${limit.toFixed(1)} ms ` +
-        `allowed from the ${options.baselineP95Ms.toFixed(1)} ms baseline.`,
+          `Warm first-batch p95 ${maxP95.toFixed(1)} ms exceeds ${limit.toFixed(1)} ms ` +
+          `allowed from the ${options.baselineP95Ms.toFixed(1)} ms baseline.`,
       );
     }
   }
@@ -1053,7 +1071,9 @@ async function reportBenchmark(page: Page, options: CliOptions): Promise<void> {
 }
 
 function percentile(sortedValues: readonly number[], fraction: number): number {
-  if (sortedValues.length === 0) return Number.POSITIVE_INFINITY;
+  if (sortedValues.length === 0) {
+    return Number.POSITIVE_INFINITY;
+  }
   const index = Math.max(0, Math.ceil(sortedValues.length * fraction) - 1);
   return sortedValues[index] ?? Number.POSITIVE_INFINITY;
 }
@@ -1062,7 +1082,7 @@ async function openSearchPage(browser: Browser, origin: string): Promise<Page> {
   const page = await browser.newPage();
   page.setDefaultTimeout(60_000);
   await page.evaluateOnNewDocument("globalThis.__name = (target, value) => target;");
-  await page.goto(`${origin}${siteBase}search/`, { waitUntil: "domcontentloaded" });
+  await page.goto(`${origin}${siteBase}search/`, {waitUntil: "domcontentloaded"});
   return page;
 }
 
@@ -1124,13 +1144,13 @@ async function startStaticServer(): Promise<StaticServer> {
     await closeServer(server);
     throw new Error("The loopback search-ranking server did not expose a TCP port.");
   }
-  return { server, origin: `http://127.0.0.1:${address.port}` };
+  return {server, origin: `http://127.0.0.1:${address.port}`};
 }
 
 async function serveStaticRequest(
-  requestUrl: string,
-  method: string,
-  response: import("node:http").ServerResponse,
+    requestUrl: string,
+    method: string,
+    response: import("node:http").ServerResponse,
 ): Promise<void> {
   if (method !== "GET" && method !== "HEAD") {
     response.statusCode = 405;
@@ -1153,8 +1173,11 @@ async function serveStaticRequest(
     response.end("<!doctype html><html lang=\"en\"><title>Search ranking check</title><body></body></html>");
     return;
   }
-  if (pathname === sitePrefix) pathname = "/";
-  else if (pathname.startsWith(siteBase)) pathname = pathname.slice(sitePrefix.length);
+  if (pathname === sitePrefix) {
+    pathname = "/";
+  } else if (pathname.startsWith(siteBase)) {
+    pathname = pathname.slice(sitePrefix.length);
+  }
 
   const relativePath = pathname.replace(/^\/+/, "");
   let filePath = resolve(siteDist, relativePath);
@@ -1165,7 +1188,9 @@ async function serveStaticRequest(
   }
   try {
     const fileStats = await stat(filePath);
-    if (fileStats.isDirectory()) filePath = join(filePath, "index.html");
+    if (fileStats.isDirectory()) {
+      filePath = join(filePath, "index.html");
+    }
   } catch {
     response.statusCode = 404;
     response.end("Not found.");
@@ -1176,11 +1201,14 @@ async function serveStaticRequest(
     response.statusCode = 200;
     response.setHeader("Content-Type", contentType(filePath));
     response.setHeader(
-      "Cache-Control",
-      extname(filePath).toLowerCase() === ".html" ? "no-store" : "public, max-age=31536000, immutable",
+        "Cache-Control",
+        extname(filePath).toLowerCase() === ".html" ? "no-store" : "public, max-age=31536000, immutable",
     );
-    if (method === "HEAD") response.end();
-    else response.end(body);
+    if (method === "HEAD") {
+      response.end();
+    } else {
+      response.end(body);
+    }
   } catch {
     response.statusCode = 404;
     response.end("Not found.");
@@ -1189,14 +1217,30 @@ async function serveStaticRequest(
 
 function contentType(path: string): string {
   const extension = extname(path).toLowerCase();
-  if (extension === ".html") return "text/html; charset=utf-8";
-  if (extension === ".js" || extension === ".mjs") return "text/javascript; charset=utf-8";
-  if (extension === ".json") return "application/json; charset=utf-8";
-  if (extension === ".css") return "text/css; charset=utf-8";
-  if (extension === ".wasm") return "application/wasm";
-  if (extension === ".svg") return "image/svg+xml";
-  if (extension === ".png") return "image/png";
-  if (extension === ".jpg" || extension === ".jpeg") return "image/jpeg";
+  if (extension === ".html") {
+    return "text/html; charset=utf-8";
+  }
+  if (extension === ".js" || extension === ".mjs") {
+    return "text/javascript; charset=utf-8";
+  }
+  if (extension === ".json") {
+    return "application/json; charset=utf-8";
+  }
+  if (extension === ".css") {
+    return "text/css; charset=utf-8";
+  }
+  if (extension === ".wasm") {
+    return "application/wasm";
+  }
+  if (extension === ".svg") {
+    return "image/svg+xml";
+  }
+  if (extension === ".png") {
+    return "image/png";
+  }
+  if (extension === ".jpg" || extension === ".jpeg") {
+    return "image/jpeg";
+  }
   return "application/octet-stream";
 }
 
@@ -1205,7 +1249,7 @@ async function closeServer(server: Server): Promise<void> {
 }
 
 async function directoryBytes(root: string): Promise<number> {
-  const entries = await readdir(root, { withFileTypes: true });
+  const entries = await readdir(root, {withFileTypes: true});
   const sizes = await Promise.all(entries.map(async (entry) => {
     const path = join(root, entry.name);
     return entry.isDirectory() ? directoryBytes(path) : (await stat(path)).size;
@@ -1215,24 +1259,31 @@ async function directoryBytes(root: string): Promise<number> {
 
 function normalizeText(value: string): string {
   return value
-    .normalize("NFKC")
-    .toLocaleLowerCase("en-US")
-    .replace(/[^\p{L}\p{N}]+/gu, " ")
-    .trim()
-    .replace(/\s+/gu, " ");
+      .normalize("NFKC")
+      .toLocaleLowerCase("en-US")
+      .replace(/[^\p{L}\p{N}]+/gu, " ")
+      .trim()
+      .replace(/\s+/gu, " ");
 }
 
 function normalizeRoute(value: string): string {
-  if (!value) return "";
+  if (!value) {
+    return "";
+  }
   let pathname: string;
   try {
     pathname = new URL(value, "https://search-ranking.invalid").pathname;
   } catch {
     return "";
   }
-  if (pathname === sitePrefix) pathname = "/";
-  else if (pathname.startsWith(siteBase)) pathname = pathname.slice(sitePrefix.length);
-  if (!pathname.startsWith("/")) pathname = `/${pathname}`;
+  if (pathname === sitePrefix) {
+    pathname = "/";
+  } else if (pathname.startsWith(siteBase)) {
+    pathname = pathname.slice(sitePrefix.length);
+  }
+  if (!pathname.startsWith("/")) {
+    pathname = `/${pathname}`;
+  }
   return pathname.replace(/\/{2,}/gu, "/");
 }
 
@@ -1254,8 +1305,8 @@ function asRecord(value: unknown, label: string): Record<string, unknown> {
 
 function optionalRecord(value: unknown): Record<string, unknown> | undefined {
   return typeof value === "object" && value !== null && !Array.isArray(value)
-    ? value as Record<string, unknown>
-    : undefined;
+      ? value as Record<string, unknown>
+      : undefined;
 }
 
 function requiredString(value: unknown, label: string, index: number): string {
@@ -1266,24 +1317,24 @@ function requiredString(value: unknown, label: string, index: number): string {
 }
 
 function requiredStringArray(
-  value: unknown,
-  label: string,
-  index: number,
-  allowEmpty = false,
+    value: unknown,
+    label: string,
+    index: number,
+    allowEmpty = false,
 ): string[] {
   if (!Array.isArray(value) || (!allowEmpty && value.length === 0)) {
     throw new Error(
-      `Case/item ${index + 1} ${label} must be ${allowEmpty ? "a" : "a non-empty"} string array.`,
+        `Case/item ${index + 1} ${label} must be ${allowEmpty ? "a" : "a non-empty"} string array.`,
     );
   }
   return value.map((entry) => requiredString(entry, label, index));
 }
 
 function requiredEnum<T extends string>(
-  value: unknown,
-  choices: readonly T[],
-  label: string,
-  index: number,
+    value: unknown,
+    choices: readonly T[],
+    label: string,
+    index: number,
 ): T {
   if (typeof value !== "string" || !choices.includes(value as T)) {
     throw new Error(`Case ${index + 1} ${label} must be one of: ${choices.join(", ")}.`);

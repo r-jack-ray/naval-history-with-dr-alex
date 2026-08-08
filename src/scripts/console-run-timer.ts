@@ -8,10 +8,10 @@ export function formatRunTime(milliseconds: number): string {
   const seconds = Math.floor((wholeMilliseconds % 60_000) / 1_000);
   const remainder = wholeMilliseconds % 1_000;
   return `${hours.toString().padStart(2, "0")}:${minutes
-    .toString()
-    .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}.${remainder
-    .toString()
-    .padStart(3, "0")}`;
+      .toString()
+      .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}.${remainder
+      .toString()
+      .padStart(3, "0")}`;
 }
 
 export function printRunTime(startedAt: number): void {

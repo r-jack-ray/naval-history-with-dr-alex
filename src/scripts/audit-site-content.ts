@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 import {
   auditSiteContent,
+  type AuditSiteContentOptions,
   defaultSiteContentAuditManifest,
   defaultSiteContentAuditOutput,
   defaultSiteContentAuditSegmentsInput,
   defaultSiteContentProcessingConfig,
   defaultSiteContentProcessingLog,
-  type AuditSiteContentOptions,
 } from "../content/site-content-audit.js";
 
 interface CliOptions extends AuditSiteContentOptions {
@@ -19,18 +19,23 @@ async function main(): Promise<void> {
   const audit = await auditSiteContent(options);
 
   if (!options.quiet) {
-    console.error(
-      [
-        `Site content audit: transcripts=${audit.stats.storedTranscriptCount}`,
-        `seeded-videos=${audit.stats.seededVideoCount}`,
-        `segments=${audit.stats.curatedSegmentCount}`,
-        `uncurated=${audit.stats.uncuratedStoredTranscriptCount}`,
-        `completed-log-videos=${audit.stats.completedProcessingLogVideoCount}`,
-        `errors=${audit.stats.errorCount}`,
-        `warnings=${audit.stats.warningCount}`,
-        `report=${options.output ?? "(none)"}`,
-      ].join(" "),
-    );
+    const summary = [
+      `Site content audit: transcripts=${audit.stats.storedTranscriptCount}`,
+      `seeded-videos=${audit.stats.seededVideoCount}`,
+      `segments=${audit.stats.curatedSegmentCount}`,
+      `uncurated=${audit.stats.uncuratedStoredTranscriptCount}`,
+      `completed-log-videos=${audit.stats.completedProcessingLogVideoCount}`,
+      `errors=${audit.stats.errorCount}`,
+      `warnings=${audit.stats.warningCount}`,
+      `report=${options.output ?? "(none)"}`,
+    ].join(" ");
+    if (audit.stats.errorCount > 0) {
+      console.error(summary);
+    } else if (audit.stats.warningCount > 0) {
+      console.warn(summary);
+    } else {
+      console.log(summary);
+    }
   }
 
   if (audit.stats.errorCount > 0) {
@@ -60,39 +65,39 @@ function parseArgs(args: string[]): CliOptions {
     const arg = args[index];
 
     switch (arg) {
-      case "--manifest":
-        options.manifestPath = readValue(args, ++index, arg);
-        break;
-      case "--segments-input":
-        options.segmentsInput = readValue(args, ++index, arg);
-        break;
-      case "--processing-log":
-        options.processingLog = readValue(args, ++index, arg);
-        break;
-      case "--processing-config":
-        options.processingConfig = readValue(args, ++index, arg);
-        break;
-      case "--output":
-        options.output = readValue(args, ++index, arg);
-        break;
-      case "--no-output":
-        delete options.output;
-        break;
-      case "--limit":
-        options.limit = readNonNegativeInteger(readValue(args, ++index, arg), arg);
-        break;
-      case "--fail-on-uncurated":
-        options.failOnUncurated = true;
-        break;
-      case "--quiet":
-        options.quiet = true;
-        break;
-      case "--help":
-      case "-h":
-        printHelp();
-        process.exit(0);
-      default:
-        throw new Error(`Unknown argument: ${arg ?? ""}`);
+    case "--manifest":
+      options.manifestPath = readValue(args, ++index, arg);
+      break;
+    case "--segments-input":
+      options.segmentsInput = readValue(args, ++index, arg);
+      break;
+    case "--processing-log":
+      options.processingLog = readValue(args, ++index, arg);
+      break;
+    case "--processing-config":
+      options.processingConfig = readValue(args, ++index, arg);
+      break;
+    case "--output":
+      options.output = readValue(args, ++index, arg);
+      break;
+    case "--no-output":
+      delete options.output;
+      break;
+    case "--limit":
+      options.limit = readNonNegativeInteger(readValue(args, ++index, arg), arg);
+      break;
+    case "--fail-on-uncurated":
+      options.failOnUncurated = true;
+      break;
+    case "--quiet":
+      options.quiet = true;
+      break;
+    case "--help":
+    case "-h":
+      printHelp();
+      process.exit(0);
+    default:
+      throw new Error(`Unknown argument: ${arg ?? ""}`);
     }
   }
 

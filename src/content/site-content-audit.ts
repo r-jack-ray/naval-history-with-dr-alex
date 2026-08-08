@@ -4,18 +4,10 @@ import { dirname, isAbsolute, join } from "node:path";
 
 import { segmentKinds } from "../index.js";
 import { writeTextAtomically } from "../pipeline/atomic-write.js";
+import { loadCuratedArchiveSeed, } from "../site/curated-seed.js";
 import type { CuratedArchiveSeed } from "./curated-archive-model.js";
-import {
-  validateSiteContentProcessingConfig,
-  type CuratedSegmentSeed,
-  type SiteContentProcessingConfig,
-} from "./schemas/index.js";
-import {
-  parseSiteContentProcessingLog,
-} from "./site-content-processing-log.js";
-import {
-  loadCuratedArchiveSeed,
-} from "../site/curated-seed.js";
+import { type CuratedSegmentSeed, type SiteContentProcessingConfig, validateSiteContentProcessingConfig, } from "./schemas/index.js";
+import { parseSiteContentProcessingLog, } from "./site-content-processing-log.js";
 
 export const defaultSiteContentAuditManifest = "src/transcripts/manifest.json";
 export const defaultSiteContentAuditSegmentsInput = "src/derived/video-segments";
@@ -129,12 +121,12 @@ export function buildSiteContentAudit(input: {
   const segmentVideoIds = new Set<string>();
   const allowedKinds = new Set<string>(segmentKinds);
   const processingConfig = input.processingConfig === undefined
-    ? undefined
-    : processingConfigForAudit(
-      input.processingConfig,
-      input.processingConfigPath ?? defaultSiteContentProcessingConfig,
-      issues,
-    );
+      ? undefined
+      : processingConfigForAudit(
+          input.processingConfig,
+          input.processingConfigPath ?? defaultSiteContentProcessingConfig,
+          issues,
+      );
   const minimumEvidenceWindows = processingConfig?.firstPass.minimumEvidenceWindows ?? 1;
   const processingLog = validateProcessingLog(input, issues);
 
@@ -157,11 +149,11 @@ export function buildSiteContentAudit(input: {
   }
 
   const uncuratedTranscriptRecords = input.manifest.transcripts
-    .filter((record) => !segmentVideoIds.has(record.videoId) && !processingLog.completedVideoIds.has(record.videoId))
-    .sort(compareTranscriptRecords);
+      .filter((record) => !segmentVideoIds.has(record.videoId) && !processingLog.completedVideoIds.has(record.videoId))
+      .sort(compareTranscriptRecords);
   const uncuratedTranscripts = uncuratedTranscriptRecords
-    .slice(0, input.limit)
-    .map((record) => backlogItem(record, input.transcriptRoot));
+      .slice(0, input.limit)
+      .map((record) => backlogItem(record, input.transcriptRoot));
 
   const errorCount = issues.filter((issue) => issue.severity === "error").length;
   const warningCount = issues.length - errorCount;
@@ -246,16 +238,16 @@ async function writeAuditReport(output: string, audit: SiteContentAudit): Promis
 }
 
 function validateSegment(
-  segment: CuratedSegmentSeed,
-  transcript: TranscriptManifestRecord | undefined,
-  input: {
-    rootDir: string;
-    transcriptRoot: string;
-    fileExists: (path: string) => boolean;
-  },
-  issues: SiteContentAuditIssue[],
-  allowedKinds: ReadonlySet<string>,
-  minimumEvidenceWindows: number,
+    segment: CuratedSegmentSeed,
+    transcript: TranscriptManifestRecord | undefined,
+    input: {
+      rootDir: string;
+      transcriptRoot: string;
+      fileExists: (path: string) => boolean;
+    },
+    issues: SiteContentAuditIssue[],
+    allowedKinds: ReadonlySet<string>,
+    minimumEvidenceWindows: number,
 ): void {
   if (!allowedKinds.has(segment.kind)) {
     issues.push({
@@ -315,11 +307,11 @@ function validateSegment(
 }
 
 function validateTranscriptRange(
-  segment: CuratedSegmentSeed,
-  transcript: TranscriptManifestRecord,
-  startSeconds: number | undefined,
-  endSeconds: number | undefined,
-  issues: SiteContentAuditIssue[],
+    segment: CuratedSegmentSeed,
+    transcript: TranscriptManifestRecord,
+    startSeconds: number | undefined,
+    endSeconds: number | undefined,
+    issues: SiteContentAuditIssue[],
 ): void {
   const lastEndSeconds = transcript.lastEndSeconds;
   if (lastEndSeconds === undefined) {
@@ -347,14 +339,14 @@ function validateTranscriptRange(
 }
 
 function validateSourcePath(
-  segment: CuratedSegmentSeed,
-  transcript: TranscriptManifestRecord | undefined,
-  input: {
-    rootDir: string;
-    transcriptRoot: string;
-    fileExists: (path: string) => boolean;
-  },
-  issues: SiteContentAuditIssue[],
+    segment: CuratedSegmentSeed,
+    transcript: TranscriptManifestRecord | undefined,
+    input: {
+      rootDir: string;
+      transcriptRoot: string;
+      fileExists: (path: string) => boolean;
+    },
+    issues: SiteContentAuditIssue[],
 ): void {
   if (segment.sourcePath === undefined) {
     issues.push({
@@ -393,10 +385,10 @@ function validateSourcePath(
 }
 
 function validateEvidence(
-  segment: CuratedSegmentSeed,
-  transcript: TranscriptManifestRecord | undefined,
-  issues: SiteContentAuditIssue[],
-  minimumEvidenceWindows: number,
+    segment: CuratedSegmentSeed,
+    transcript: TranscriptManifestRecord | undefined,
+    issues: SiteContentAuditIssue[],
+    minimumEvidenceWindows: number,
 ): void {
   const evidenceWindowCount = segment.evidence?.length ?? 0;
   if (evidenceWindowCount < minimumEvidenceWindows) {
@@ -481,9 +473,9 @@ function validateQuestionFields(segment: CuratedSegmentSeed, issues: SiteContent
 }
 
 function processingConfigForAudit(
-  value: unknown,
-  path: string,
-  issues: SiteContentAuditIssue[],
+    value: unknown,
+    path: string,
+    issues: SiteContentAuditIssue[],
 ): SiteContentProcessingConfig | undefined {
   const result = validateSiteContentProcessingConfig(value);
   if (result.success) {
@@ -506,18 +498,18 @@ interface ProcessingLogAudit {
 }
 
 function validateProcessingLog(
-  input: {
-    manifest: TranscriptManifest;
-    processingLogText?: string;
-    processingLogPath?: string;
-    rootDir: string;
-    fileExists: (path: string) => boolean;
-  },
-  issues: SiteContentAuditIssue[],
+    input: {
+      manifest: TranscriptManifest;
+      processingLogText?: string;
+      processingLogPath?: string;
+      rootDir: string;
+      fileExists: (path: string) => boolean;
+    },
+    issues: SiteContentAuditIssue[],
 ): ProcessingLogAudit {
   const processingLogPath = input.processingLogPath ?? "processing log";
   if (input.processingLogText === undefined || input.processingLogText.trim().length === 0) {
-    return { entryCount: 0, completedVideoIds: new Set<string>() };
+    return {entryCount: 0, completedVideoIds: new Set<string>()};
   }
   let parsed;
   try {
@@ -529,10 +521,10 @@ function validateProcessingLog(
       message: error instanceof Error ? error.message : String(error),
       path: processingLogPath,
     });
-    return { entryCount: 0, completedVideoIds: new Set<string>() };
+    return {entryCount: 0, completedVideoIds: new Set<string>()};
   }
   for (const problem of parsed.problems) {
-    issues.push({ severity: "error", code: problem.code, message: problem.message, path: processingLogPath });
+    issues.push({severity: "error", code: problem.code, message: problem.message, path: processingLogPath});
   }
   for (const record of parsed.records) {
     if (!input.fileExists(resolveRepoPath(input.rootDir, record.shardPath))) {
@@ -547,7 +539,9 @@ function validateProcessingLog(
 
   const completedVideoIds = new Set<string>();
   for (const [videoId, record] of parsed.latestByVideoId) {
-    if (record.needsFurtherProcessing === "no") completedVideoIds.add(videoId);
+    if (record.needsFurtherProcessing === "no") {
+      completedVideoIds.add(videoId);
+    }
   }
 
   return {
@@ -636,6 +630,6 @@ function fileExistsSync(path: string): boolean {
 
 function errorCode(error: unknown): string | undefined {
   return typeof error === "object" && error !== null && "code" in error
-    ? String((error as { code?: unknown }).code)
-    : undefined;
+      ? String((error as { code?: unknown }).code)
+      : undefined;
 }

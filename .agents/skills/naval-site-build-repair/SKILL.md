@@ -44,6 +44,13 @@ Repair site-pipeline failures without widening scope or destabilizing establishe
 - Add a missing shared topic only when a curated video or segment actually references it, the active creation policy accepts that slug as canonical, and the user's repair scope authorizes registry work; do not rewrite an unrelated shard to hide a registry problem.
 - Use `$naval-site-content-auditor` when the repair requires transcript-semantic judgment, public wording changes, or evidence validation.
 
+### Processing-log timestamp failures
+
+- Treat the canonical format for every new or repaired `src/derived/site-content-processing.log` timestamp as exactly 19 local wall-clock characters: `yyyy-MM-ddTHH:mm:ss`.
+- Remove fractional seconds, a trailing `Z`, and numeric UTC offsets from the persisted representation. When the source value denotes a different timezone, convert the instant to the repository machine's local time before formatting it; do not merely delete `Z` when that would change the represented local time.
+- Do not use the reader's broader legacy compatibility as the repair target. Existing valid historical rows with `Z` or numeric offsets may remain unless the user explicitly requests their normalization, but a newly written or directly repaired row must match the canonical suffix-free form.
+- When a failure exposes a mismatch between writer guidance and reader compatibility, preserve historical read compatibility and tighten the writer guidance or checks. Validate the repaired file with `npm run audit:site-content`.
+
 ### Generated archive manifest or integrity failures
 
 - Treat `site/src/data/generated/archive/index.json` and its listed files as generated evidence, never as hand-edit targets.

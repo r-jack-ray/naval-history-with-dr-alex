@@ -17,9 +17,14 @@ async function main(): Promise<void> {
   if (!options.quiet) {
     for (const issue of audit.issues) {
       const location = issue.path ? ` ${issue.path}${issue.line ? `:${issue.line}` : ""}` : "";
-      console.error(`[${issue.severity}] ${issue.code}${location}: ${issue.message}`);
+      const message = `[${issue.severity}] ${issue.code}${location}: ${issue.message}`;
+      if (issue.severity === "error") {
+        console.error(message);
+      } else {
+        console.warn(message);
+      }
     }
-    console.error([
+    console.log([
       `Transcript schedule audit: schedules=${audit.stats.scheduleCount}`,
       `scheduled=${audit.stats.scheduledTranscriptCount}`,
       `manifest=${audit.stats.manifestTranscriptCount}`,
@@ -31,7 +36,9 @@ async function main(): Promise<void> {
       `artifacts=${options.checkArtifacts ? "checked" : "skipped"}`,
     ].join(" "));
   }
-  if (audit.stats.errorCount > 0) process.exitCode = 1;
+  if (audit.stats.errorCount > 0) {
+    process.exitCode = 1;
+  }
 }
 
 function parseArgs(args: string[]): CliOptions {
@@ -48,15 +55,30 @@ function parseArgs(args: string[]): CliOptions {
   for (let index = 0; index < args.length; index += 1) {
     const arg = args[index];
     switch (arg) {
-      case "--manifest": options.manifestPath = readValue(args, ++index, arg); break;
-      case "--schedule": schedulePaths.push(readValue(args, ++index, arg)); break;
-      case "--check-artifacts": options.checkArtifacts = true; break;
-      case "--processing-log": processingLogPaths.push(readValue(args, ++index, arg)); break;
-      case "--segments-input": options.segmentsInput = readValue(args, ++index, arg); break;
-      case "--quiet": options.quiet = true; break;
-      case "--help":
-      case "-h": printHelp(); process.exit(0);
-      default: throw new Error(`Unknown argument: ${arg ?? ""}`);
+    case "--manifest":
+      options.manifestPath = readValue(args, ++index, arg);
+      break;
+    case "--schedule":
+      schedulePaths.push(readValue(args, ++index, arg));
+      break;
+    case "--check-artifacts":
+      options.checkArtifacts = true;
+      break;
+    case "--processing-log":
+      processingLogPaths.push(readValue(args, ++index, arg));
+      break;
+    case "--segments-input":
+      options.segmentsInput = readValue(args, ++index, arg);
+      break;
+    case "--quiet":
+      options.quiet = true;
+      break;
+    case "--help":
+    case "-h":
+      printHelp();
+      process.exit(0);
+    default:
+      throw new Error(`Unknown argument: ${arg ?? ""}`);
     }
   }
   if (schedulePaths.length === 0) {
@@ -71,7 +93,9 @@ function parseArgs(args: string[]): CliOptions {
 
 function readValue(args: string[], index: number, name: string): string {
   const value = args[index];
-  if (!value) throw new Error(`Missing value for ${name}.`);
+  if (!value) {
+    throw new Error(`Missing value for ${name}.`);
+  }
   return value;
 }
 

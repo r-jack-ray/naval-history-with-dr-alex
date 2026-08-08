@@ -27,28 +27,28 @@ export function parseBunWorkerOptions(args: readonly string[]): BunWorkerOptions
     const value = args[++index];
     workers = Number(value);
     if (
-      value === undefined
-      || !Number.isInteger(workers)
-      || workers < 1
-      || workers > availableParallelism()
+        value === undefined
+        || !Number.isInteger(workers)
+        || workers < 1
+        || workers > availableParallelism()
     ) {
       throw new Error(
-        `--workers must be an integer from 1 to ${availableParallelism()}; received ${JSON.stringify(value)}.`,
+          `--workers must be an integer from 1 to ${availableParallelism()}; received ${JSON.stringify(value)}.`,
       );
     }
   }
 
-  return { commandArgs, workers };
+  return {commandArgs, workers};
 }
 
 export function partitionRoundRobin<T>(
-  values: readonly T[],
-  partitionCount: number,
+    values: readonly T[],
+    partitionCount: number,
 ): T[][] {
   if (!Number.isInteger(partitionCount) || partitionCount < 1) {
     throw new Error(`Partition count must be a positive integer; received ${partitionCount}.`);
   }
-  const partitions = Array.from({ length: partitionCount }, () => [] as T[]);
+  const partitions = Array.from({length: partitionCount}, () => [] as T[]);
   for (let index = 0; index < values.length; index += 1) {
     partitions[index % partitionCount]!.push(values[index]!);
   }

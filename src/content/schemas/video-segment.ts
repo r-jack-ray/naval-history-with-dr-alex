@@ -4,10 +4,10 @@ import {
   nonEmptyStringSchema,
   parseSchema,
   safeVideoIdSchema,
+  type SchemaValidationResult,
   timestampLabelSchema,
   topicSlugSchema,
   validateSchema,
-  type SchemaValidationResult,
 } from "./shared.js";
 
 export const curatedSegmentEvidenceSchema = z.strictObject({
@@ -69,14 +69,14 @@ export type CuratedSegmentSeed = z.infer<typeof curatedSegmentSchema>;
 export type CuratedVideoFileSeed = z.infer<typeof curatedVideoFileSchema>;
 
 export function parseCuratedVideoFile(
-  value: unknown,
-  label: string,
+    value: unknown,
+    label: string,
 ): CuratedVideoFileSeed {
   return parseSchema(curatedVideoFileSchema, value, label);
 }
 
 export function validateCuratedVideoFile(
-  value: unknown,
+    value: unknown,
 ): SchemaValidationResult<CuratedVideoFileSeed> {
   return validateSchema(curatedVideoFileSchema, value);
 }

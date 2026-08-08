@@ -1,24 +1,16 @@
 #!/usr/bin/env node
-import { mkdir, readFile, readdir, stat, writeFile } from "node:fs/promises";
+import { mkdir, readdir, readFile, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 
-import {
-  parseSiteContentProcessingConfig,
-  validateCuratedVideoFile,
-  type SiteContentProcessingConfig,
-} from "../content/schemas/index.js";
-import {
-  DEFAULT_SITE_CONTENT_PROCESSING_LOG,
-  parseSiteContentProcessingLog,
-  type SiteContentProcessingLogRecord,
-} from "../content/site-content-processing-log.js";
+import { parseSiteContentProcessingConfig, type SiteContentProcessingConfig, validateCuratedVideoFile, } from "../content/schemas/index.js";
+import { DEFAULT_SITE_CONTENT_PROCESSING_LOG, parseSiteContentProcessingLog, type SiteContentProcessingLogRecord, } from "../content/site-content-processing-log.js";
 import {
   analyzeVideoSegmentRisk,
-  rankVideoSegmentAuditRisks,
-  renderVideoSegmentAuditRiskTsv,
   type AuditSegment,
   type ProcessingState,
   type QaExpectation,
+  rankVideoSegmentAuditRisks,
+  renderVideoSegmentAuditRiskTsv,
   type VideoSegmentAuditRiskRow,
 } from "../content/video-segment-audit-risk.js";
 
@@ -44,8 +36,8 @@ async function main(): Promise<void> {
   const options = parseArgs(process.argv.slice(2));
   const manifest = validateManifest(JSON.parse(await readFile(options.manifest, "utf8")) as unknown);
   const config = parseSiteContentProcessingConfig(
-    JSON.parse(await readFile(options.processingConfig, "utf8")) as unknown,
-    `Processing config ${options.processingConfig}`,
+      JSON.parse(await readFile(options.processingConfig, "utf8")) as unknown,
+      `Processing config ${options.processingConfig}`,
   );
   const manifestByStem = uniqueMap(manifest, (item) => item.fileStem, "file stem");
   const manifestByVideoId = uniqueMap(manifest, (item) => item.videoId, "video ID");
@@ -55,8 +47,8 @@ async function main(): Promise<void> {
     processLogEntriesByFileStem.set(record.fileStem, (processLogEntriesByFileStem.get(record.fileStem) ?? 0) + 1);
   }
   const shardNames = (await readdir(options.segmentsInput))
-    .filter((name) => name.endsWith(".json") && name !== "topics.json")
-    .sort();
+      .filter((name) => name.endsWith(".json") && name !== "topics.json")
+      .sort();
   const rows: VideoSegmentAuditRiskRow[] = [];
   let excludedSascShards = 0;
 
@@ -73,7 +65,9 @@ async function main(): Promise<void> {
     }
 
     const root = isRecord(parsed) ? parsed : undefined;
-    if (parsed !== undefined && root === undefined) structuralIssues.push("shard root must be a non-null object");
+    if (parsed !== undefined && root === undefined) {
+      structuralIssues.push("shard root must be a non-null object");
+    }
     if (root !== undefined) {
       const schemaValidation = validateCuratedVideoFile(root);
       if (!schemaValidation.success) {
@@ -81,16 +75,16 @@ async function main(): Promise<void> {
       }
     }
     const shardVideoId = root !== undefined && typeof root.videoId === "string" && /^[A-Za-z0-9_-]+$/u.test(root.videoId)
-      ? root.videoId
-      : undefined;
+        ? root.videoId
+        : undefined;
     const segments = root !== undefined && Array.isArray(root.segments) ? root.segments as AuditSegment[] : [];
 
     let manifestEntry = manifestByStem.get(fileStem);
     if (manifestEntry === undefined) {
       manifestEntry = shardVideoId === undefined ? undefined : manifestByVideoId.get(shardVideoId);
       structuralIssues.push(manifestEntry === undefined
-        ? "orphan shard filename does not map to a manifest fileStem"
-        : `noncanonical shard filename; expected ${manifestEntry.fileStem}.json`);
+          ? "orphan shard filename does not map to a manifest fileStem"
+          : `noncanonical shard filename; expected ${manifestEntry.fileStem}.json`);
     }
     if (manifestEntry !== undefined && shardVideoId !== undefined && shardVideoId !== manifestEntry.videoId) {
       structuralIssues.push("shard videoId does not match the manifest record for its fileStem");
@@ -103,8 +97,8 @@ async function main(): Promise<void> {
       continue;
     }
     const transcriptPath = manifestEntry?.paths?.txt
-      ? path.join(options.transcriptRoot, path.basename(manifestEntry.paths.txt))
-      : path.join(options.transcriptRoot, `${canonicalStem}.txt`);
+        ? path.join(options.transcriptRoot, path.basename(manifestEntry.paths.txt))
+        : path.join(options.transcriptRoot, `${canonicalStem}.txt`);
     const transcriptBytes = await fileSizeOrUndefined(transcriptPath);
     const latestProcessingRecord = processingLog.latestByFileStem.get(canonicalStem);
     const state: ProcessingState = latestProcessingRecord?.needsFurtherProcessing ?? "unknown";
@@ -117,7 +111,7 @@ async function main(): Promise<void> {
       processLogEntries: processLogEntriesByFileStem.get(canonicalStem) ?? 0,
       transcriptBytes,
       shardBytes,
-      ...(manifestEntry?.firstStartSeconds === undefined ? {} : { transcriptStartSeconds: manifestEntry.firstStartSeconds }),
+      ...(manifestEntry?.firstStartSeconds === undefined ? {} : {transcriptStartSeconds: manifestEntry.firstStartSeconds}),
       durationSeconds: manifestEntry?.lastEndSeconds,
       segments,
       needsFurtherProcessing: state,
@@ -129,13 +123,15 @@ async function main(): Promise<void> {
   }
 
   const rankedRows = rankVideoSegmentAuditRisks(rows);
-  await mkdir(path.dirname(options.output), { recursive: true });
+  await mkdir(path.dirname(options.output), {recursive: true});
   await writeFile(options.output, renderVideoSegmentAuditRiskTsv(rankedRows), "utf8");
   const routeCounts = new Map<string, number>();
-  for (const row of rankedRows) routeCounts.set(row.auditRoute, (routeCounts.get(row.auditRoute) ?? 0) + 1);
+  for (const row of rankedRows) {
+    routeCounts.set(row.auditRoute, (routeCounts.get(row.auditRoute) ?? 0) + 1);
+  }
   const unknownStates = rankedRows.filter((row) => row.needsFurtherProcessing === "unknown").length;
   const manualAudioReviewRows = rankedRows.filter((row) => row.manualAudioReviewRemaining).length;
-  console.error([
+  console.log([
     "Video segment audit risk ranking:",
     `shards=${rankedRows.length}`,
     `excluded_sasc_shards=${excludedSascShards}`,
@@ -165,41 +161,63 @@ function parseArgs(args: string[]): CliOptions {
   for (let index = 0; index < args.length; index += 1) {
     const arg = args[index];
     switch (arg) {
-      case "--manifest": options.manifest = readValue(args, ++index, arg); break;
-      case "--segments-input": options.segmentsInput = readValue(args, ++index, arg); break;
-      case "--transcript-root": options.transcriptRoot = readValue(args, ++index, arg); break;
-      case "--processing-config": options.processingConfig = readValue(args, ++index, arg); break;
-      case "--processing-log":
-        if (processingLogSeen) throw new Error("--processing-log may be specified only once; only the canonical schema is supported.");
-        processingLogSeen = true;
-        options.processingLog = readValue(args, ++index, arg);
-        break;
-      case "--output": options.output = readValue(args, ++index, arg); break;
-      case "--help":
-      case "-h": printHelp(); process.exit(0); break;
-      default: throw new Error(`Unknown argument: ${arg ?? ""}`);
+    case "--manifest":
+      options.manifest = readValue(args, ++index, arg);
+      break;
+    case "--segments-input":
+      options.segmentsInput = readValue(args, ++index, arg);
+      break;
+    case "--transcript-root":
+      options.transcriptRoot = readValue(args, ++index, arg);
+      break;
+    case "--processing-config":
+      options.processingConfig = readValue(args, ++index, arg);
+      break;
+    case "--processing-log":
+      if (processingLogSeen) {
+        throw new Error("--processing-log may be specified only once; only the canonical schema is supported.");
+      }
+      processingLogSeen = true;
+      options.processingLog = readValue(args, ++index, arg);
+      break;
+    case "--output":
+      options.output = readValue(args, ++index, arg);
+      break;
+    case "--help":
+    case "-h":
+      printHelp();
+      process.exit(0);
+      break;
+    default:
+      throw new Error(`Unknown argument: ${arg ?? ""}`);
     }
   }
   return options;
 }
 
 function validateManifest(value: unknown): ManifestTranscript[] {
-  if (!isRecord(value) || !Array.isArray(value.transcripts)) throw new Error("Transcript manifest must be an object with a transcripts array.");
+  if (!isRecord(value) || !Array.isArray(value.transcripts)) {
+    throw new Error("Transcript manifest must be an object with a transcripts array.");
+  }
   const records: ManifestTranscript[] = [];
   for (const [index, item] of value.transcripts.entries()) {
     if (!isRecord(item) || typeof item.videoId !== "string" || !/^[A-Za-z0-9_-]+$/u.test(item.videoId)
-      || typeof item.fileStem !== "string" || item.fileStem.length === 0) {
+        || typeof item.fileStem !== "string" || item.fileStem.length === 0) {
       throw new Error(`Transcript manifest record ${index + 1} must have a safe videoId and nonempty fileStem.`);
     }
-    const record: ManifestTranscript = { videoId: item.videoId, fileStem: item.fileStem };
-    if (typeof item.videoTitle === "string") record.videoTitle = item.videoTitle;
+    const record: ManifestTranscript = {videoId: item.videoId, fileStem: item.fileStem};
+    if (typeof item.videoTitle === "string") {
+      record.videoTitle = item.videoTitle;
+    }
     if (typeof item.firstStartSeconds === "number" && Number.isFinite(item.firstStartSeconds) && item.firstStartSeconds >= 0) {
       record.firstStartSeconds = item.firstStartSeconds;
     }
     if (typeof item.lastEndSeconds === "number" && Number.isFinite(item.lastEndSeconds) && item.lastEndSeconds >= 0) {
       record.lastEndSeconds = item.lastEndSeconds;
     }
-    if (isRecord(item.paths) && typeof item.paths.txt === "string") record.paths = { txt: item.paths.txt };
+    if (isRecord(item.paths) && typeof item.paths.txt === "string") {
+      record.paths = {txt: item.paths.txt};
+    }
     records.push(record);
   }
   return records;
@@ -209,7 +227,9 @@ function uniqueMap(records: ManifestTranscript[], key: (record: ManifestTranscri
   const result = new Map<string, ManifestTranscript>();
   for (const record of records) {
     const value = key(record);
-    if (result.has(value)) throw new Error(`Transcript manifest contains duplicate ${label}: ${value}`);
+    if (result.has(value)) {
+      throw new Error(`Transcript manifest contains duplicate ${label}: ${value}`);
+    }
     result.set(value, record);
   }
   return result;
@@ -218,10 +238,12 @@ function uniqueMap(records: ManifestTranscript[], key: (record: ManifestTranscri
 function qaExpectationFor(title: string, config: SiteContentProcessingConfig): QaExpectation {
   const equivalents = ["Q&A", "Q & A", "Q/A", "Q and A", "Questions Answered", "Question and Answer"];
   const markers = [...equivalents, ...config.liveStreamExtraction.explicitQaTitleMarkers];
-  if (markers.some((marker) => normalizedTitle(title).includes(normalizedTitle(marker)))) return "explicit_title";
+  if (markers.some((marker) => normalizedTitle(title).includes(normalizedTitle(marker)))) {
+    return "explicit_title";
+  }
   const configured = config.videoTypeRules.some((rule) =>
-    normalizedTitle(title).includes(normalizedTitle(rule.matchTitle))
-    && rule.followUpStage === "exhaustive-live-qa-review");
+      normalizedTitle(title).includes(normalizedTitle(rule.matchTitle))
+      && rule.followUpStage === "exhaustive-live-qa-review");
   return configured ? "configured_video_type" : "none";
 }
 
@@ -230,7 +252,9 @@ function isSascShard(...identifiers: string[]): boolean {
 }
 
 function hasManualAudioReviewRemaining(record: SiteContentProcessingLogRecord | undefined): boolean {
-  if (record?.needsFurtherProcessing !== "yes") return false;
+  if (record?.needsFurtherProcessing !== "yes") {
+    return false;
+  }
   const details = `${record.result} ${record.notes}`;
   return /\bmanual audio review remains\b|\bstill needs manual audio review\b/iu.test(details);
 }
@@ -240,7 +264,11 @@ function normalizedTitle(value: string): string {
 }
 
 async function fileSizeOrUndefined(filePath: string): Promise<number | undefined> {
-  try { return (await stat(filePath)).size; } catch { return undefined; }
+  try {
+    return (await stat(filePath)).size;
+  } catch {
+    return undefined;
+  }
 }
 
 function contentRootPath(filePath: string): string {
@@ -253,11 +281,15 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 
 function readValue(args: string[], index: number, name: string | undefined): string {
   const value = args[index];
-  if (!value) throw new Error(`Missing value for ${name ?? "option"}.`);
+  if (!value) {
+    throw new Error(`Missing value for ${name ?? "option"}.`);
+  }
   return value;
 }
 
-function message(error: unknown): string { return error instanceof Error ? error.message : String(error); }
+function message(error: unknown): string {
+  return error instanceof Error ? error.message : String(error);
+}
 
 function printHelp(): void {
   console.log(`Usage: npm run report:video-segment-audit-risk -- [options]

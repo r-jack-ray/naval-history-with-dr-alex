@@ -1,26 +1,12 @@
 #!/usr/bin/env node
 
-import { spawn } from "node:child_process";
-import { createHash } from "node:crypto";
-import {
-  lstat,
-  mkdir,
-  readFile,
-  readdir,
-  readlink,
-  rename,
-  rm,
-  stat,
-  writeFile,
-} from "node:fs/promises";
-import { dirname, isAbsolute, relative, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
+import {spawn} from "node:child_process";
+import {createHash} from "node:crypto";
+import {lstat, mkdir, readdir, readFile, readlink, rename, rm, stat, writeFile,} from "node:fs/promises";
+import {dirname, isAbsolute, relative, resolve} from "node:path";
+import {fileURLToPath} from "node:url";
 
-import {
-  captureRequiredSiteAssets,
-  parseAstroBuildConcurrency,
-  validateRequiredSiteAssets,
-} from "./site-build-support.mjs";
+import {captureRequiredSiteAssets, parseAstroBuildConcurrency, validateRequiredSiteAssets,} from "./site-build-support.mjs";
 
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 const archiveCachePath = resolve(repositoryRoot, ".tmp/site-archive-cache.json");
@@ -64,16 +50,16 @@ const runStartedAt = new Date();
 const defaultPagefindScript = "site:build:pagefind";
 const workspacePagefindScript = "site:build:pagefind:workspace";
 const workspacePagefindBinaryPath = `../pagefind/target/release/${
-  process.platform === "win32" ? "pagefind.exe" : "pagefind"
+    process.platform === "win32" ? "pagefind.exe" : "pagefind"
 }`;
 
 async function main() {
   const args = process.argv.slice(2);
   for (const arg of args) {
     if (
-      arg !== "--force" &&
-      arg !== "--generate" &&
-      arg !== "--workspace-pagefind"
+        arg !== "--force" &&
+        arg !== "--generate" &&
+        arg !== "--workspace-pagefind"
     ) {
       throw new Error(`Unknown argument: ${arg}`);
     }
@@ -82,18 +68,18 @@ async function main() {
   const force = args.includes("--force");
   const useWorkspacePagefind = args.includes("--workspace-pagefind");
   const pagefindScript = useWorkspacePagefind
-    ? workspacePagefindScript
-    : defaultPagefindScript;
+      ? workspacePagefindScript
+      : defaultPagefindScript;
   const pagefindInputPaths = useWorkspacePagefind
-    ? [workspacePagefindBinaryPath]
-    : [];
+      ? [workspacePagefindBinaryPath]
+      : [];
   const buildConcurrency = parseAstroBuildConcurrency(
-    process.env.ASTRO_BUILD_CONCURRENCY,
+      process.env.ASTRO_BUILD_CONCURRENCY,
   );
   if (args.includes("--generate")) {
     const sourceValidationExitCode = await measureStage(
-      "source validation",
-      () => runNpmScript("check:source"),
+        "source validation",
+        () => runNpmScript("check:source"),
     );
     if (sourceValidationExitCode !== 0) {
       process.exitCode = sourceValidationExitCode;
@@ -107,30 +93,30 @@ async function main() {
   }
 
   await ensureBuiltSite(
-    force,
-    buildConcurrency,
-    pagefindScript,
-    pagefindInputPaths,
+      force,
+      buildConcurrency,
+      pagefindScript,
+      pagefindInputPaths,
   );
 }
 
 async function ensureSiteArchive(force) {
   const typescriptSources = await measureStage(
-    "archive input discovery",
-    () => findFiles("src", (path) => path.endsWith(".ts")),
+      "archive input discovery",
+      () => findFiles("src", (path) => path.endsWith(".ts")),
   );
   const fingerprint = await measureStage(
-    "archive input fingerprint",
-    () => calculateFingerprint(
-      "site-archive",
-      archiveCacheVersion,
-      [...archiveInputPaths, ...typescriptSources],
-    ),
+      "archive input fingerprint",
+      () => calculateFingerprint(
+          "site-archive",
+          archiveCacheVersion,
+          [...archiveInputPaths, ...typescriptSources],
+      ),
   );
   const cache = await readCache(archiveCachePath, archiveCacheVersion);
   const archiveValidation = await measureStage(
-    "archive integrity validation (initial)",
-    validateSiteArchive,
+      "archive integrity validation (initial)",
+      validateSiteArchive,
   );
   const outputsExist = archiveValidation.valid;
 
@@ -140,17 +126,17 @@ async function ensureSiteArchive(force) {
   }
 
   const reason = buildReason(
-    force,
-    outputsExist,
-    cache,
-    "archive inputs changed",
-    archiveValidation.reason,
+      force,
+      outputsExist,
+      cache,
+      "archive inputs changed",
+      archiveValidation.reason,
   );
   console.log(`Generating site archive because ${reason}.`);
 
   const exitCode = await measureStage(
-    "archive generation",
-    () => runNpmScript("generate:site-data"),
+      "archive generation",
+      () => runNpmScript("generate:site-data"),
   );
   if (exitCode !== 0) {
     process.exitCode = exitCode;
@@ -158,22 +144,22 @@ async function ensureSiteArchive(force) {
   }
 
   const completedArchiveValidation = await measureStage(
-    "archive integrity validation (generated)",
-    validateSiteArchive,
+      "archive integrity validation (generated)",
+      validateSiteArchive,
   );
   if (!completedArchiveValidation.valid) {
     throw new Error(
-      `Generated site archive failed integrity validation: ${completedArchiveValidation.reason}`,
+        `Generated site archive failed integrity validation: ${completedArchiveValidation.reason}`,
     );
   }
 
   const completedFingerprint = await measureStage(
-    "archive input fingerprint (completed)",
-    () => calculateFingerprint(
-      "site-archive",
-      archiveCacheVersion,
-      [...archiveInputPaths, ...typescriptSources],
-    ),
+      "archive input fingerprint (completed)",
+      () => calculateFingerprint(
+          "site-archive",
+          archiveCacheVersion,
+          [...archiveInputPaths, ...typescriptSources],
+      ),
   );
   await writeCache(archiveCachePath, {
     version: archiveCacheVersion,
@@ -184,41 +170,41 @@ async function ensureSiteArchive(force) {
 }
 
 async function ensureBuiltSite(
-  force,
-  buildConcurrency,
-  pagefindScript,
-  pagefindInputPaths,
+    force,
+    buildConcurrency,
+    pagefindScript,
+    pagefindInputPaths,
 ) {
   const archiveValidation = await measureStage(
-    "archive integrity validation (site)",
-    validateSiteArchive,
+      "archive integrity validation (site)",
+      validateSiteArchive,
   );
   if (!archiveValidation.valid) {
     throw new Error(
-      `Generated site archive failed integrity validation: ${archiveValidation.reason}`,
+        `Generated site archive failed integrity validation: ${archiveValidation.reason}`,
     );
   }
 
   const environmentFiles = await measureStage(
-    "site environment discovery",
-    existingEnvironmentFiles,
+      "site environment discovery",
+      existingEnvironmentFiles,
   );
   const fingerprint = await measureStage(
-    "site input fingerprint",
-    () => calculateFingerprint(
-      "site-build",
-      siteCacheVersion,
-      [...siteInputPaths, ...environmentFiles, ...pagefindInputPaths],
-      [
-        ["astro-build-concurrency", String(buildConcurrency)],
-        ["pagefind-script", pagefindScript],
-      ],
-    ),
+      "site input fingerprint",
+      () => calculateFingerprint(
+          "site-build",
+          siteCacheVersion,
+          [...siteInputPaths, ...environmentFiles, ...pagefindInputPaths],
+          [
+            ["astro-build-concurrency", String(buildConcurrency)],
+            ["pagefind-script", pagefindScript],
+          ],
+      ),
   );
   const cache = await readCache(siteCachePath, siteCacheVersion);
   const outputValidation = await measureStage(
-    "site output validation",
-    () => validateBuiltSiteOutputs(cache),
+      "site output validation",
+      () => validateBuiltSiteOutputs(cache),
   );
   const outputsExist = outputValidation.valid;
 
@@ -228,27 +214,27 @@ async function ensureBuiltSite(
   }
 
   const reason = buildReason(
-    force,
-    outputsExist,
-    cache,
-    "site inputs changed",
-    outputValidation.reason,
+      force,
+      outputsExist,
+      cache,
+      "site inputs changed",
+      outputValidation.reason,
   );
   console.log(`Building Astro site because ${reason}.`);
 
   const prebuildArchiveValidation = await measureStage(
-    "archive integrity validation (pre-Astro)",
-    validateSiteArchive,
+      "archive integrity validation (pre-Astro)",
+      validateSiteArchive,
   );
   if (!prebuildArchiveValidation.valid) {
     throw new Error(
-      `Generated site archive became stale before Astro/Pagefind: ${prebuildArchiveValidation.reason}`,
+        `Generated site archive became stale before Astro/Pagefind: ${prebuildArchiveValidation.reason}`,
     );
   }
 
   const astroExitCode = await measureStage(
-    "Astro build",
-    () => runNpmScript("site:build:astro", { SITE_BUILD_TIMING: "1" }),
+      "Astro build",
+      () => runNpmScript("site:build:astro", {SITE_BUILD_TIMING: "1"}),
   );
   if (astroExitCode !== 0) {
     process.exitCode = astroExitCode;
@@ -256,13 +242,13 @@ async function ensureBuiltSite(
   }
 
   const requiredAssets = await measureStage(
-    "site asset validation (post-Astro)",
-    () => captureRequiredSiteAssets(repositoryRoot),
+      "site asset validation (post-Astro)",
+      () => captureRequiredSiteAssets(repositoryRoot),
   );
 
   const pagefindExitCode = await measureStage(
-    "Pagefind indexing",
-    () => runNpmScript(pagefindScript),
+      "Pagefind indexing",
+      () => runNpmScript(pagefindScript),
   );
   if (pagefindExitCode !== 0) {
     process.exitCode = pagefindExitCode;
@@ -282,19 +268,19 @@ async function validateBuiltSiteOutputs(cache) {
     return invalidArchive("a required site output sentinel is missing");
   }
   if (cache === undefined) {
-    return { valid: true };
+    return {valid: true};
   }
   return validateRequiredSiteAssets(repositoryRoot, cache.requiredAssets);
 }
 
 function buildReason(force, outputsExist, cache, changedReason, missingReason) {
   return force
-    ? "a forced build was requested"
-    : !outputsExist
-      ? (missingReason ?? "required output is missing")
-      : cache === undefined
-        ? "no successful cache exists"
-        : changedReason;
+      ? "a forced build was requested"
+      : !outputsExist
+          ? (missingReason ?? "required output is missing")
+          : cache === undefined
+              ? "no successful cache exists"
+              : changedReason;
 }
 
 async function validateSiteArchive() {
@@ -321,14 +307,14 @@ async function validateSiteArchive() {
     return invalidArchive("the archive manifest has an unsupported topic-normalization catalog path");
   }
   if (
-    typeof manifest.source.patternsSha256 !== "string" ||
-    !/^[a-f0-9]{64}$/.test(manifest.source.patternsSha256)
+      typeof manifest.source.patternsSha256 !== "string" ||
+      !/^[a-f0-9]{64}$/.test(manifest.source.patternsSha256)
   ) {
     return invalidArchive("the archive manifest topic-normalization catalog hash is invalid");
   }
   if (
-    typeof manifest.source.patternsSourceSha256 !== "string" ||
-    !/^[a-f0-9]{64}$/.test(manifest.source.patternsSourceSha256)
+      typeof manifest.source.patternsSourceSha256 !== "string" ||
+      !/^[a-f0-9]{64}$/.test(manifest.source.patternsSourceSha256)
   ) {
     return invalidArchive("the archive manifest topic-normalization source hash is invalid");
   }
@@ -347,8 +333,8 @@ async function validateSiteArchive() {
     return invalidArchive("the generated archive topic-normalization provenance is stale");
   }
   if (
-    manifest?.segmentSharding?.algorithm !== "sha256-video-id-mod" ||
-    manifest.segmentSharding.bucketCount !== 64
+      manifest?.segmentSharding?.algorithm !== "sha256-video-id-mod" ||
+      manifest.segmentSharding.bucketCount !== 64
   ) {
     return invalidArchive("the archive manifest has an unsupported segment-sharding contract");
   }
@@ -370,21 +356,21 @@ async function validateSiteArchive() {
     const expectedId = bucketIndex.toString(16).padStart(2, "0");
     const bucket = segmentBuckets[bucketIndex];
     if (
-      !isArchiveFileRecord(bucket) ||
-      bucket.id !== expectedId ||
-      bucket.path !== `./segments/${expectedId}.json`
+        !isArchiveFileRecord(bucket) ||
+        bucket.id !== expectedId ||
+        bucket.path !== `./segments/${expectedId}.json`
     ) {
       return invalidArchive(`the archive segment bucket ${expectedId} record is invalid`);
     }
   }
 
   if (
-    !isNonnegativeInteger(manifest?.counts?.videos) ||
-    !isNonnegativeInteger(manifest?.counts?.segments) ||
-    !isNonnegativeInteger(manifest?.counts?.topics) ||
-    videos.count !== manifest.counts.videos ||
-    topics.count !== manifest.counts.topics ||
-    segmentBuckets.reduce((sum, bucket) => sum + bucket.count, 0) !==
+      !isNonnegativeInteger(manifest?.counts?.videos) ||
+      !isNonnegativeInteger(manifest?.counts?.segments) ||
+      !isNonnegativeInteger(manifest?.counts?.topics) ||
+      videos.count !== manifest.counts.videos ||
+      topics.count !== manifest.counts.topics ||
+      segmentBuckets.reduce((sum, bucket) => sum + bucket.count, 0) !==
       manifest.counts.segments
   ) {
     return invalidArchive("the archive manifest counts are inconsistent");
@@ -402,10 +388,10 @@ async function validateSiteArchive() {
     const filePath = resolve(archiveDirectory, fileRecord.path);
     const archiveRelativePath = relative(archiveDirectory, filePath);
     if (
-      archiveRelativePath.length === 0 ||
-      archiveRelativePath === ".." ||
-      archiveRelativePath.startsWith(`..${process.platform === "win32" ? "\\" : "/"}`) ||
-      isAbsolute(archiveRelativePath)
+        archiveRelativePath.length === 0 ||
+        archiveRelativePath === ".." ||
+        archiveRelativePath.startsWith(`..${process.platform === "win32" ? "\\" : "/"}`) ||
+        isAbsolute(archiveRelativePath)
     ) {
       return invalidArchive(`the archive file path escapes its generated directory: ${fileRecord.path}`);
     }
@@ -446,17 +432,17 @@ async function validateSiteArchive() {
     topicSlugs.add(topic.slug);
   }
 
-  return { valid: true };
+  return {valid: true};
 }
 
 function isArchiveFileRecord(value) {
   return (
-    value !== null &&
-    typeof value === "object" &&
-    typeof value.path === "string" &&
-    isNonnegativeInteger(value.count) &&
-    typeof value.sha256 === "string" &&
-    /^[a-f0-9]{64}$/.test(value.sha256)
+      value !== null &&
+      typeof value === "object" &&
+      typeof value.path === "string" &&
+      isNonnegativeInteger(value.count) &&
+      typeof value.sha256 === "string" &&
+      /^[a-f0-9]{64}$/.test(value.sha256)
   );
 }
 
@@ -469,7 +455,10 @@ function isTopicRouteSlug(value) {
 }
 
 function invalidArchive(reason) {
-  return { valid: false, reason };
+  return {
+    valid: false,
+    reason
+  };
 }
 
 async function calculateFingerprint(name, version, paths, virtualEntries = []) {
@@ -494,7 +483,7 @@ async function findFiles(rootPath, predicate) {
   return matches.sort();
 
   async function visit(absolutePath) {
-    const entries = await readdir(absolutePath, { withFileTypes: true });
+    const entries = await readdir(absolutePath, {withFileTypes: true});
     for (const entry of entries) {
       const childPath = resolve(absolutePath, entry.name);
       if (entry.isDirectory()) {
@@ -512,8 +501,8 @@ async function findFiles(rootPath, predicate) {
 async function existingEnvironmentFiles() {
   const entries = await readdir(repositoryRoot);
   return entries
-    .filter((entry) => entry === ".env" || entry.startsWith(".env."))
-    .sort();
+      .filter((entry) => entry === ".env" || entry.startsWith(".env."))
+      .sort();
 }
 
 async function hashPath(hash, absolutePath) {
@@ -543,16 +532,16 @@ async function hashPath(hash, absolutePath) {
 
 async function allPathsExist(paths) {
   const results = await Promise.all(
-    paths.map(async (path) => {
-      try {
-        return (await stat(resolve(repositoryRoot, path))).isFile();
-      } catch (error) {
-        if (error?.code === "ENOENT") {
-          return false;
+      paths.map(async (path) => {
+        try {
+          return (await stat(resolve(repositoryRoot, path))).isFile();
+        } catch (error) {
+          if (error?.code === "ENOENT") {
+            return false;
+          }
+          throw error;
         }
-        throw error;
-      }
-    }),
+      }),
   );
   return results.every(Boolean);
 }
@@ -574,13 +563,13 @@ async function readCache(cachePath, expectedVersion) {
 
 async function runNpmScript(scriptName, environment = {}) {
   const npmCommand =
-    process.platform === "win32"
-      ? `"${resolve(dirname(process.execPath), "npm.cmd")}"`
-      : "npm";
+      process.platform === "win32"
+          ? `"${resolve(dirname(process.execPath), "npm.cmd")}"`
+          : "npm";
   return await new Promise((resolvePromise, reject) => {
     const child = spawn(`${npmCommand} run ${scriptName}`, {
       cwd: repositoryRoot,
-      env: { ...process.env, ...environment },
+      env: {...process.env, ...environment},
       shell: true,
       stdio: "inherit",
     });
@@ -608,13 +597,13 @@ async function measureStage(label, operation) {
 }
 
 async function writeCache(cachePath, cache) {
-  await mkdir(dirname(cachePath), { recursive: true });
+  await mkdir(dirname(cachePath), {recursive: true});
   const temporaryPath = `${cachePath}.${process.pid}.tmp`;
   try {
     await writeFile(temporaryPath, `${JSON.stringify(cache, null, 2)}\n`, "utf8");
     await rename(temporaryPath, cachePath);
   } finally {
-    await rm(temporaryPath, { force: true });
+    await rm(temporaryPath, {force: true});
   }
 }
 
@@ -636,8 +625,8 @@ function formatRunTime(milliseconds) {
   const seconds = Math.floor((milliseconds % 60_000) / 1_000);
   const remainder = milliseconds % 1_000;
   return `${hours.toString().padStart(2, "0")}:${minutes
-    .toString()
-    .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}.${remainder
-    .toString()
-    .padStart(3, "0")}`;
+      .toString()
+      .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}.${remainder
+      .toString()
+      .padStart(3, "0")}`;
 }

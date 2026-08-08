@@ -1,9 +1,5 @@
 #!/usr/bin/env node
-import {
-  defaultTranscriptProblemReportOutput,
-  defaultTranscriptProblemStatusInput,
-  generateTranscriptProblemReport,
-} from "../content/transcript-problem-report.js";
+import { defaultTranscriptProblemReportOutput, defaultTranscriptProblemStatusInput, generateTranscriptProblemReport, } from "../content/transcript-problem-report.js";
 
 interface CliOptions {
   statusInput: string;
@@ -15,25 +11,36 @@ async function main(): Promise<void> {
   const options = parseArgs(process.argv.slice(2));
   const report = await generateTranscriptProblemReport({
     statusInput: options.statusInput,
-    ...(options.output !== undefined ? { output: options.output } : {}),
+    ...(options.output !== undefined ? {output: options.output} : {}),
   });
   if (!options.quiet) {
-    console.error(`Transcript problem report: failures=${report.problems.length} source=${options.statusInput} report=${options.output ?? "(none)"}`);
+    console.log(`Transcript problem report: failures=${report.problems.length} source=${options.statusInput} report=${options.output ?? "(none)"}`);
   }
 }
 
 function parseArgs(args: string[]): CliOptions {
-  const options: CliOptions = { statusInput: defaultTranscriptProblemStatusInput, output: defaultTranscriptProblemReportOutput, quiet: false };
+  const options: CliOptions = {statusInput: defaultTranscriptProblemStatusInput, output: defaultTranscriptProblemReportOutput, quiet: false};
   for (let index = 0; index < args.length; index += 1) {
     const arg = args[index];
     switch (arg) {
-      case "--status-input": options.statusInput = readValue(args, ++index, arg); break;
-      case "--output": options.output = readValue(args, ++index, arg); break;
-      case "--no-output": options.output = undefined; break;
-      case "--quiet": options.quiet = true; break;
-      case "--help":
-      case "-h": printHelp(); process.exit(0);
-      default: throw new Error(`Unknown argument: ${arg ?? ""}`);
+    case "--status-input":
+      options.statusInput = readValue(args, ++index, arg);
+      break;
+    case "--output":
+      options.output = readValue(args, ++index, arg);
+      break;
+    case "--no-output":
+      options.output = undefined;
+      break;
+    case "--quiet":
+      options.quiet = true;
+      break;
+    case "--help":
+    case "-h":
+      printHelp();
+      process.exit(0);
+    default:
+      throw new Error(`Unknown argument: ${arg ?? ""}`);
     }
   }
   return options;
@@ -41,7 +48,9 @@ function parseArgs(args: string[]): CliOptions {
 
 function readValue(args: string[], index: number, name: string): string {
   const value = args[index];
-  if (!value) throw new Error(`Missing value for ${name}.`);
+  if (!value) {
+    throw new Error(`Missing value for ${name}.`);
+  }
   return value;
 }
 

@@ -62,11 +62,12 @@ Public fields must not expose workflow status. Do not put "first pass", "later e
 
 - A successful `npm run sync:video-topics` run under the active shared-output lease is a precondition for the completion row. The registry result may be `added N topics` or `already current`; record it in the handoff, not as an extra log field.
 - Before appending, read and verify that the existing first line is exactly `timestamp;shardPath;result;needsFurtherProcessing;notes`. If the file or header is missing or invalid, stop and report the blocker instead of creating or repairing the log.
-- Construct the row as exactly five field values in this order: local timestamp formatted `yyyy-MM-ddTHH:mm:ss` without timezone or UTC offset; canonical shard path; concise result; the bare lowercase value `yes` or `no`; concise notes. Field four must be exactly `yes` or exactly `no`. Never write a label in that field: `needsFurtherProcessing no`, `needsFurtherProcessing=no`, and `needsFurtherProcessing yes` are malformed.
+- Construct the row as exactly five field values in this order: an exactly 19-character local timestamp formatted `yyyy-MM-ddTHH:mm:ss`; canonical shard path; concise result; the bare lowercase value `yes` or `no`; concise notes. Do not write fractional seconds, a trailing `Z`, or a numeric UTC offset, and never use round-trip formats such as `Get-Date -Format o`. Field four must be exactly `yes` or exactly `no`. Never write a label in that field: `needsFurtherProcessing no`, `needsFurtherProcessing=no`, and `needsFurtherProcessing yes` are malformed.
 - Use this low-freedom PowerShell pattern, supplying the five variables with the actual curation result:
 
   ```powershell
   $timestamp = Get-Date -Format 'yyyy-MM-ddTHH:mm:ss'
+  if ($timestamp.Length -ne 19 -or $timestamp -cnotmatch '^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$') { throw 'Processing-log timestamp must be exactly yyyy-MM-ddTHH:mm:ss with no fraction or timezone suffix.' }
   $fields = @($timestamp, $shardPath, $result, $needsFurtherProcessing, $notes)
   if ($fields.Count -ne 5 -or $fields.Where({ [string]::IsNullOrWhiteSpace($_) }).Count -gt 0) { throw 'Processing-log row requires five nonempty fields.' }
   if ($needsFurtherProcessing -notin @('yes', 'no')) { throw 'Processing-log field four must be exactly yes or no.' }

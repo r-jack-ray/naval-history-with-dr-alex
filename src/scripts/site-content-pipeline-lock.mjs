@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-import { spawn } from "node:child_process";
-import { randomUUID } from "node:crypto";
-import { appendFile, mkdir, readFile, rename, rm, stat, writeFile } from "node:fs/promises";
-import { basename, dirname, join, resolve } from "node:path";
+import {spawn} from "node:child_process";
+import {randomUUID} from "node:crypto";
+import {appendFile, mkdir, readFile, rename, rm, stat, writeFile} from "node:fs/promises";
+import {basename, dirname, join, resolve} from "node:path";
 
 const defaultLockPath = ".tmp/site-content-pipeline.lock";
 const defaultProcessingLogPath = "src/derived/site-content-processing.log";
@@ -22,39 +22,39 @@ async function main() {
   const options = parseOptions(args);
 
   switch (command) {
-    case "acquire": {
-      const acquired = await acquireLease(options);
-      console.log(JSON.stringify(acquired, null, 2));
-      return;
+  case "acquire": {
+    const acquired = await acquireLease(options);
+    console.log(JSON.stringify(acquired, null, 2));
+    return;
+  }
+  case "status": {
+    console.log(JSON.stringify(await inspectLease(options), null, 2));
+    return;
+  }
+  case "renew": {
+    const renewed = await renewLease(requiredToken(options), options);
+    console.log(JSON.stringify(renewed, null, 2));
+    return;
+  }
+  case "release": {
+    const released = await releaseLease(requiredToken(options), options);
+    console.log(JSON.stringify(released, null, 2));
+    return;
+  }
+  case "run": {
+    if (options.command.length === 0) {
+      throw new Error("The run command requires a command after --.");
     }
-    case "status": {
-      console.log(JSON.stringify(await inspectLease(options), null, 2));
-      return;
-    }
-    case "renew": {
-      const renewed = await renewLease(requiredToken(options), options);
-      console.log(JSON.stringify(renewed, null, 2));
-      return;
-    }
-    case "release": {
-      const released = await releaseLease(requiredToken(options), options);
-      console.log(JSON.stringify(released, null, 2));
-      return;
-    }
-    case "run": {
-      if (options.command.length === 0) {
-        throw new Error("The run command requires a command after --.");
-      }
-      process.exitCode = await runWithLease(options);
-      return;
-    }
-    case "append-log": {
-      const result = await appendProcessingLog(options);
-      console.log(JSON.stringify(result, null, 2));
-      return;
-    }
-    default:
-      throw new Error(`Unknown content-pipeline lock command: ${command}`);
+    process.exitCode = await runWithLease(options);
+    return;
+  }
+  case "append-log": {
+    const result = await appendProcessingLog(options);
+    console.log(JSON.stringify(result, null, 2));
+    return;
+  }
+  default:
+    throw new Error(`Unknown content-pipeline lock command: ${command}`);
   }
 }
 
@@ -87,56 +87,56 @@ function parseOptions(args) {
     }
 
     switch (arg) {
-      case "--lock-path":
-        options.lockPath = readValue(args, ++index, arg);
-        break;
-      case "--processing-log":
-        options.processingLogPath = readValue(args, ++index, arg);
-        break;
-      case "--owner":
-        options.owner = readValue(args, ++index, arg);
-        break;
-      case "--purpose":
-        options.purpose = readValue(args, ++index, arg);
-        break;
-      case "--token":
-        options.token = readValue(args, ++index, arg);
-        break;
-      case "--stale-after-ms":
-        options.staleAfterMs = readPositiveInteger(readValue(args, ++index, arg), arg);
-        break;
-      case "--wait-ms":
-        options.waitMs = readNonNegativeInteger(readValue(args, ++index, arg), arg);
-        break;
-      case "--recover-stale":
-        options.recoverStale = true;
-        break;
-      case "--no-lease":
-        options.noLease = true;
-        break;
-      case "--build":
-        options.build = true;
-        break;
-      case "--processed-at":
-        options.processedAt = readValue(args, ++index, arg);
-        break;
-      case "--source-path":
-        options.sourcePath = readValue(args, ++index, arg);
-        break;
-      case "--video-id":
-        options.videoId = readValue(args, ++index, arg);
-        break;
-      case "--action":
-        options.action = readValue(args, ++index, arg);
-        break;
-      case "--needs-further-processing":
-        options.needsFurtherProcessing = readValue(args, ++index, arg);
-        break;
-      case "--determination":
-        options.determination = readValue(args, ++index, arg);
-        break;
-      default:
-        throw new Error(`Unknown option: ${arg}`);
+    case "--lock-path":
+      options.lockPath = readValue(args, ++index, arg);
+      break;
+    case "--processing-log":
+      options.processingLogPath = readValue(args, ++index, arg);
+      break;
+    case "--owner":
+      options.owner = readValue(args, ++index, arg);
+      break;
+    case "--purpose":
+      options.purpose = readValue(args, ++index, arg);
+      break;
+    case "--token":
+      options.token = readValue(args, ++index, arg);
+      break;
+    case "--stale-after-ms":
+      options.staleAfterMs = readPositiveInteger(readValue(args, ++index, arg), arg);
+      break;
+    case "--wait-ms":
+      options.waitMs = readNonNegativeInteger(readValue(args, ++index, arg), arg);
+      break;
+    case "--recover-stale":
+      options.recoverStale = true;
+      break;
+    case "--no-lease":
+      options.noLease = true;
+      break;
+    case "--build":
+      options.build = true;
+      break;
+    case "--processed-at":
+      options.processedAt = readValue(args, ++index, arg);
+      break;
+    case "--source-path":
+      options.sourcePath = readValue(args, ++index, arg);
+      break;
+    case "--video-id":
+      options.videoId = readValue(args, ++index, arg);
+      break;
+    case "--action":
+      options.action = readValue(args, ++index, arg);
+      break;
+    case "--needs-further-processing":
+      options.needsFurtherProcessing = readValue(args, ++index, arg);
+      break;
+    case "--determination":
+      options.determination = readValue(args, ++index, arg);
+      break;
+    default:
+      throw new Error(`Unknown option: ${arg}`);
     }
   }
 
@@ -148,7 +148,7 @@ async function acquireLease(options) {
   const deadline = Date.now() + options.waitMs;
   let recoveredStaleLock = undefined;
 
-  await mkdir(dirname(lockPath), { recursive: true });
+  await mkdir(dirname(lockPath), {recursive: true});
 
   while (true) {
     try {
@@ -157,7 +157,10 @@ async function acquireLease(options) {
       try {
         await writeTextAtomically(ownerPath(lockPath), `${JSON.stringify(lease, null, 2)}\n`);
       } catch (error) {
-        await rm(lockPath, { recursive: true, force: true });
+        await rm(lockPath, {
+          recursive: true,
+          force: true
+        });
         throw error;
       }
 
@@ -171,7 +174,10 @@ async function acquireLease(options) {
         throw error;
       }
 
-      const inspection = await inspectLease({ ...options, lockPath });
+      const inspection = await inspectLease({
+        ...options,
+        lockPath
+      });
       if (inspection.status === "stale" && options.recoverStale) {
         const quarantinePath = `${lockPath}.stale-${Date.now()}-${randomUUID()}`;
         try {
@@ -205,7 +211,10 @@ async function inspectLease(options) {
     lockStats = await stat(lockPath);
   } catch (error) {
     if (errorCode(error) === "ENOENT") {
-      return { status: "absent", lockPath };
+      return {
+        status: "absent",
+        lockPath
+      };
     }
     throw error;
   }
@@ -220,8 +229,8 @@ async function inspectLease(options) {
 
   const lease = await readLease(lockPath);
   const referenceTime = lease === undefined
-    ? lockStats.mtimeMs + options.staleAfterMs
-    : Date.parse(lease.expiresAt);
+      ? lockStats.mtimeMs + options.staleAfterMs
+      : Date.parse(lease.expiresAt);
   const stale = !Number.isFinite(referenceTime) || referenceTime <= Date.now();
 
   return {
@@ -242,14 +251,24 @@ async function renewLease(token, options) {
     expiresAt: new Date(now.getTime() + options.staleAfterMs).toISOString(),
   };
   await writeTextAtomically(ownerPath(lockPath), `${JSON.stringify(renewed, null, 2)}\n`);
-  return { lockPath, lease: renewed };
+  return {
+    lockPath,
+    lease: renewed
+  };
 }
 
 async function releaseLease(token, options) {
   const lockPath = resolve(options.lockPath);
   const lease = await assertOwnedLease(lockPath, token);
-  await rm(lockPath, { recursive: true, force: false });
-  return { lockPath, released: true, lease };
+  await rm(lockPath, {
+    recursive: true,
+    force: false
+  });
+  return {
+    lockPath,
+    released: true,
+    lease
+  };
 }
 
 async function runWithLease(options) {
@@ -269,11 +288,11 @@ async function runWithLease(options) {
   try {
     if (options.build) {
       const buildExitCode = await runCommand(
-        ["node", "node_modules/typescript/bin/tsc", "-p", "tsconfig.json"],
-        {
-          ...process.env,
-          [lockTokenEnvironment]: activeToken,
-        },
+          ["node", "node_modules/typescript/bin/tsc", "-p", "tsconfig.json"],
+          {
+            ...process.env,
+            [lockTokenEnvironment]: activeToken,
+          },
       );
       if (buildExitCode !== 0) {
         return buildExitCode;
@@ -286,7 +305,10 @@ async function runWithLease(options) {
     });
   } finally {
     if (acquiredHere && activeToken !== undefined) {
-      await releaseLease(activeToken, { ...options, lockPath });
+      await releaseLease(activeToken, {
+        ...options,
+        lockPath
+      });
     }
   }
 }
@@ -306,7 +328,7 @@ async function appendProcessingLog(options) {
   if (options.noLease) {
     const existing = await readOptionalText(processingLogPath);
     validateExistingProcessingLog(existing, processingLogPath);
-    await mkdir(dirname(processingLogPath), { recursive: true });
+    await mkdir(dirname(processingLogPath), {recursive: true});
     await appendFile(processingLogPath, `${fields.join("\t")}\n`, "utf8");
     return {
       processingLogPath,
@@ -339,7 +361,10 @@ async function appendProcessingLog(options) {
     };
   } finally {
     if (acquiredHere && activeToken !== undefined) {
-      await releaseLease(activeToken, { ...options, lockPath });
+      await releaseLease(activeToken, {
+        ...options,
+        lockPath
+      });
     }
   }
 }
@@ -347,12 +372,18 @@ async function appendProcessingLog(options) {
 async function assertOwnedLease(lockPath, token) {
   const lease = await readLease(lockPath);
   if (lease === undefined || lease.token !== token) {
-    const inspection = await inspectLease({ lockPath, staleAfterMs: defaultStaleAfterMs });
+    const inspection = await inspectLease({
+      lockPath,
+      staleAfterMs: defaultStaleAfterMs
+    });
     throw new Error(`Content-pipeline writer lease token does not own ${lockPath}: ${JSON.stringify(inspection)}`);
   }
   const expiresAt = Date.parse(lease.expiresAt);
   if (!Number.isFinite(expiresAt) || expiresAt <= Date.now()) {
-    const inspection = await inspectLease({ lockPath, staleAfterMs: defaultStaleAfterMs });
+    const inspection = await inspectLease({
+      lockPath,
+      staleAfterMs: defaultStaleAfterMs
+    });
     throw new Error(`Content-pipeline writer lease has expired: ${JSON.stringify(inspection)}`);
   }
   return lease;
@@ -390,24 +421,24 @@ function createLease(options) {
 
 function isLease(value) {
   return typeof value === "object" && value !== null &&
-    value.schemaVersion === 1 &&
-    typeof value.token === "string" &&
-    typeof value.owner === "string" &&
-    typeof value.purpose === "string" &&
-    typeof value.acquiredAt === "string" &&
-    typeof value.renewedAt === "string" &&
-    typeof value.expiresAt === "string";
+      value.schemaVersion === 1 &&
+      typeof value.token === "string" &&
+      typeof value.owner === "string" &&
+      typeof value.purpose === "string" &&
+      typeof value.acquiredAt === "string" &&
+      typeof value.renewedAt === "string" &&
+      typeof value.expiresAt === "string";
 }
 
 async function writeTextAtomically(destination, text) {
   const directory = dirname(destination);
   const temporary = join(directory, `.${basename(destination)}.${process.pid}.${randomUUID()}.tmp`);
-  await mkdir(directory, { recursive: true });
+  await mkdir(directory, {recursive: true});
   try {
     await writeFile(temporary, text, "utf8");
     await renameWithRetry(temporary, destination);
   } finally {
-    await rm(temporary, { force: true });
+    await rm(temporary, {force: true});
   }
 }
 
@@ -538,8 +569,8 @@ function readNonNegativeInteger(value, flag) {
 
 function errorCode(error) {
   return typeof error === "object" && error !== null && "code" in error
-    ? String(error.code)
-    : undefined;
+      ? String(error.code)
+      : undefined;
 }
 
 function sleep(milliseconds) {

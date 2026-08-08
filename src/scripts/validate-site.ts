@@ -1,9 +1,5 @@
 #!/usr/bin/env node
-import {
-  parseValidationCliOptions,
-  runValidationWorkflow,
-  type ValidationStep,
-} from "./validation-workflow.js";
+import { parseValidationCliOptions, runValidationWorkflow, type ValidationStep, } from "./validation-workflow.js";
 
 async function main(): Promise<void> {
   const options = parseValidationCliOptions(process.argv.slice(2));
@@ -13,13 +9,13 @@ async function main(): Promise<void> {
   }
 
   const steps: ValidationStep[] = [
-    { command: "npm", args: ["run", "build"] },
-    { command: "npm", args: ["run", "generate:site-data"] },
-    { command: "npm", args: ["run", "site:check:generated"] },
-    { command: "npm", args: ["run", "site:build:generated"] },
+    {command: "npm", args: ["run", "build"]},
+    {command: "npm", args: ["run", "generate:site-data"]},
+    {command: "npm", args: ["run", "site:check:generated"]},
+    {command: "npm", args: ["run", "site:build:generated"]},
   ];
   if (!options.skipRepoCheck) {
-    steps.push({ command: "npm", args: ["run", "check"] });
+    steps.push({command: "npm", args: ["run", "check"]});
   }
 
   await runValidationWorkflow({

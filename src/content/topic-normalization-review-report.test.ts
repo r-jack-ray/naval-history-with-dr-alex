@@ -1,13 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import type {
-  TopicNormalizationReviewFinding,
-} from "../site/topic-normalization-audit.js";
-import {
-  renderTopicNormalizationReviewReport,
-  topicNormalizationReviewReportHeaders,
-} from "./topic-normalization-review-report.js";
+import type { TopicNormalizationReviewFinding, } from "../site/topic-normalization-audit.js";
+import { renderTopicNormalizationReviewReport, topicNormalizationReviewReportHeaders, } from "./topic-normalization-review-report.js";
 
 test("renders actionable rule and collision findings with human-readable TSV headers", () => {
   const findings: TopicNormalizationReviewFinding[] = [
@@ -68,7 +63,7 @@ test("renders actionable rule and collision findings with human-readable TSV hea
   assert.equal(report.rows[1]?.related_topic_slug, "example-raid");
   assert.match(String(report.rows[1]?.collision_value), /operation example/u);
   assert.deepEqual(
-    new Set(report.tsv.trimEnd().split("\n").map((line) => line.split("\t").length)),
-    new Set([10]),
+      new Set(report.tsv.trimEnd().split("\n").map((line) => line.split("\t").length)),
+      new Set([10]),
   );
 });

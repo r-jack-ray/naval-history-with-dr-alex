@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 import assert from "node:assert/strict";
+import { readdir, readFile } from "node:fs/promises";
 import { createServer } from "node:http";
-import { readFile, readdir } from "node:fs/promises";
 import { extname, join, resolve, sep } from "node:path";
 import { pathToFileURL } from "node:url";
 
@@ -77,11 +77,14 @@ interface PagefindResultHandle {
 
 interface PagefindInstance {
   destroy?(): Promise<void>;
+
   init?(): Promise<void>;
+
   options?(options: {
     baseUrl: string;
     ranking: { termSimilarity: number; metaWeights: { title: number } };
   }): Promise<void>;
+
   search(query: string): Promise<{ results?: PagefindResultHandle[] }>;
 }
 
@@ -90,16 +93,16 @@ interface PagefindModule {
 }
 
 const entry = JSON.parse(
-  await readFile(join(pagefindRoot, "pagefind-entry.json"), "utf8"),
+    await readFile(join(pagefindRoot, "pagefind-entry.json"), "utf8"),
 ) as { languages?: { en?: { page_count?: number } } };
 const pageCount = entry.languages?.en?.page_count;
 assert.ok(
-  typeof pageCount === "number" && Number.isSafeInteger(pageCount),
-  "Pagefind entry must report an English page count.",
+    typeof pageCount === "number" && Number.isSafeInteger(pageCount),
+    "Pagefind entry must report an English page count.",
 );
-const fragmentCount = (await readdir(join(pagefindRoot, "fragment"), { withFileTypes: true }))
-  .filter((entry_) => entry_.isFile() && entry_.name.endsWith(".pf_fragment"))
-  .length;
+const fragmentCount = (await readdir(join(pagefindRoot, "fragment"), {withFileTypes: true}))
+    .filter((entry_) => entry_.isFile() && entry_.name.endsWith(".pf_fragment"))
+    .length;
 assert.equal(fragmentCount, pageCount, "Pagefind fragment count must match its manifest page count.");
 
 const server = createServer((request, response) => {
@@ -132,18 +135,18 @@ try {
   const basePath = `http://127.0.0.1:${address.port}/`;
   const pagefind = await import(pathToFileURL(join(pagefindRoot, "pagefind.js")).href) as PagefindModule;
   for (const expected of expectedSearches) {
-    const instance = pagefind.createInstance({ basePath, baseUrl: siteBase });
+    const instance = pagefind.createInstance({basePath, baseUrl: siteBase});
     await instance.options?.({
       baseUrl: siteBase,
-      ranking: { termSimilarity: 1, metaWeights: { title: 5 } },
+      ranking: {termSimilarity: 1, metaWeights: {title: 5}},
     });
     await instance.init?.();
     const response = await instance.search(expected.query);
     const handles = Array.isArray(response.results) ? response.results : [];
     const data = await Promise.all(handles.slice(0, 5).map((handle) => handle.data()));
     const urls = data.map((value) => new URL(
-      value.raw_url ?? value.url,
-      "https://pagefind-contract.invalid",
+        value.raw_url ?? value.url,
+        "https://pagefind-contract.invalid",
     ).pathname.replace(siteBase.slice(0, -1), ""));
     await instance.destroy?.();
     assert.equal(handles.length, expected.total, `${expected.query} result count`);
@@ -154,14 +157,20 @@ try {
 }
 
 console.log(
-  `Pagefind contract passed: ${pageCount.toLocaleString("en-US")} pages and ` +
-  `${expectedSearches.length} representative searches.`,
+    `Pagefind contract passed: ${pageCount.toLocaleString("en-US")} pages and ` +
+    `${expectedSearches.length} representative searches.`,
 );
 
 function contentType(path: string): string {
   const extension = extname(path).toLowerCase();
-  if (extension === ".js" || extension === ".mjs") return "text/javascript; charset=utf-8";
-  if (extension === ".json") return "application/json; charset=utf-8";
-  if (extension === ".wasm") return "application/wasm";
+  if (extension === ".js" || extension === ".mjs") {
+    return "text/javascript; charset=utf-8";
+  }
+  if (extension === ".json") {
+    return "application/json; charset=utf-8";
+  }
+  if (extension === ".wasm") {
+    return "application/wasm";
+  }
   return "application/octet-stream";
 }

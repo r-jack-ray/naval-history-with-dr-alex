@@ -1,7 +1,7 @@
 // Shared by the site build CLI and Astro configuration.
-import { createHash } from "node:crypto";
-import { readFile, readdir, stat } from "node:fs/promises";
-import { relative, resolve } from "node:path";
+import {createHash} from "node:crypto";
+import {readdir, readFile, stat} from "node:fs/promises";
+import {relative, resolve} from "node:path";
 
 const themeAssetDirectory = "site/dist/_astro";
 const themeAssetNamePattern = /^theme-interaction\.[A-Za-z0-9_-]+\.js$/u;
@@ -9,12 +9,12 @@ const themeAssetNamePattern = /^theme-interaction\.[A-Za-z0-9_-]+\.js$/u;
 export function parseAstroBuildConcurrency(value) {
   if (value === undefined) {
     throw new Error(
-      "ASTRO_BUILD_CONCURRENCY must be set through site-build.properties or the calling environment.",
+        "ASTRO_BUILD_CONCURRENCY must be set through site-build.properties or the calling environment.",
     );
   }
   if (!/^[1-8]$/u.test(value)) {
     throw new Error(
-      "ASTRO_BUILD_CONCURRENCY must be an integer from 1 through 8.",
+        "ASTRO_BUILD_CONCURRENCY must be an integer from 1 through 8.",
     );
   }
   return Number(value);
@@ -24,7 +24,7 @@ export async function captureRequiredSiteAssets(repositoryRoot) {
   const directory = resolve(repositoryRoot, themeAssetDirectory);
   let entries;
   try {
-    entries = await readdir(directory, { withFileTypes: true });
+    entries = await readdir(directory, {withFileTypes: true});
   } catch (error) {
     if (error?.code === "ENOENT") {
       throw new Error("Required theme interaction asset directory is missing.");
@@ -32,12 +32,12 @@ export async function captureRequiredSiteAssets(repositoryRoot) {
     throw error;
   }
   const matches = entries
-    .filter((entry) => entry.isFile() && themeAssetNamePattern.test(entry.name))
-    .map((entry) => entry.name)
-    .sort();
+      .filter((entry) => entry.isFile() && themeAssetNamePattern.test(entry.name))
+      .map((entry) => entry.name)
+      .sort();
   if (matches.length !== 1) {
     throw new Error(
-      `Expected exactly one content-hashed theme interaction asset; found ${matches.length}.`,
+        `Expected exactly one content-hashed theme interaction asset; found ${matches.length}.`,
     );
   }
 
@@ -58,15 +58,15 @@ export async function validateRequiredSiteAssets(repositoryRoot, records) {
   }
   const [record] = records;
   if (
-    record === null
-    || typeof record !== "object"
-    || record.role !== "theme-interaction"
-    || typeof record.path !== "string"
-    || !/^site\/dist\/_astro\/theme-interaction\.[A-Za-z0-9_-]+\.js$/u.test(record.path)
-    || !Number.isSafeInteger(record.size)
-    || record.size < 0
-    || typeof record.sha256 !== "string"
-    || !/^[a-f0-9]{64}$/u.test(record.sha256)
+      record === null
+      || typeof record !== "object"
+      || record.role !== "theme-interaction"
+      || typeof record.path !== "string"
+      || !/^site\/dist\/_astro\/theme-interaction\.[A-Za-z0-9_-]+\.js$/u.test(record.path)
+      || !Number.isSafeInteger(record.size)
+      || record.size < 0
+      || typeof record.sha256 !== "string"
+      || !/^[a-f0-9]{64}$/u.test(record.sha256)
   ) {
     return invalid("the site cache required-asset record is invalid");
   }
@@ -95,9 +95,12 @@ export async function validateRequiredSiteAssets(repositoryRoot, records) {
   if (sha256 !== record.sha256) {
     return invalid(`required site asset hash does not match: ${record.path}`);
   }
-  return { valid: true };
+  return {valid: true};
 }
 
 function invalid(reason) {
-  return { valid: false, reason };
+  return {
+    valid: false,
+    reason
+  };
 }

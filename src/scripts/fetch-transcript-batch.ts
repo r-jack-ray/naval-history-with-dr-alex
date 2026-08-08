@@ -4,12 +4,12 @@ import {
   defaultTranscriptBatchInput,
   defaultTranscriptBatchStatusOutput,
   fetchAndStoreTranscriptBatch,
-  formatTranscriptBatchHandoff,
   type FetchTranscriptBatchOptions,
+  formatTranscriptBatchHandoff,
 } from "../youtube/batch-transcripts.js";
+import { readIgnoredVideos } from "../youtube/ignored-videos.js";
 import { defaultTranscriptStorageRoot } from "../youtube/transcripts.js";
 import { defaultVideoMetadataOutput } from "../youtube/video-metadata.js";
-import { readIgnoredVideos } from "../youtube/ignored-videos.js";
 
 type CliOptions = Omit<FetchTranscriptBatchOptions, "logger" | "metadataInput"> & {
   metadataInput: string | undefined;
@@ -46,25 +46,28 @@ async function main(): Promise<void> {
     fetchOptions.dryRun = options.dryRun;
   }
   if (!options.quiet) {
-    fetchOptions.logger = (message) => console.error(message);
+    fetchOptions.logger = (message) => console.log(message);
   }
 
   const result = await fetchAndStoreTranscriptBatch(fetchOptions);
-  console.error(
-    [
-      `Transcript batch complete: fetched=${result.stats.fetchedCount}`,
-      `failed=${result.stats.failedCount}`,
-      `stored-skipped=${result.stats.skippedStoredCount}`,
-      `short-duration-blocked=${result.stats.skippedShortDurationCount}`,
-      `previous-failure-skipped=${result.stats.skippedPreviousFailureCount}`,
-      `pending=${result.stats.pendingCount}`,
-      `status=${options.statusOutput}`,
-    ].join(" "),
-  );
+  const summary = [
+    `Transcript batch complete: fetched=${result.stats.fetchedCount}`,
+    `failed=${result.stats.failedCount}`,
+    `stored-skipped=${result.stats.skippedStoredCount}`,
+    `short-duration-blocked=${result.stats.skippedShortDurationCount}`,
+    `previous-failure-skipped=${result.stats.skippedPreviousFailureCount}`,
+    `pending=${result.stats.pendingCount}`,
+    `status=${options.statusOutput}`,
+  ].join(" ");
+  if (result.stats.failedCount > 0) {
+    console.warn(summary);
+  } else {
+    console.log(summary);
+  }
   await writeStdout(`${formatTranscriptBatchHandoff(result.handoff)}\n`);
   await acknowledgeTranscriptBatchHandoff(
-    options.statusOutput,
-    result.handoff.newlyStoredTxtPaths,
+      options.statusOutput,
+      result.handoff.newlyStoredTxtPaths,
   );
 }
 
@@ -94,48 +97,48 @@ function parseArgs(args: string[]): CliOptions {
     const arg = args[index];
 
     switch (arg) {
-      case "--input":
-        options.inputPath = readValue(args, ++index, arg);
-        break;
-      case "--output-root":
-        options.outputRoot = readValue(args, ++index, arg);
-        break;
-      case "--status-output":
-        options.statusOutput = readValue(args, ++index, arg);
-        break;
-      case "--metadata-input":
-        options.metadataInput = readValue(args, ++index, arg);
-        break;
-      case "--no-metadata-lookup":
-        options.metadataInput = undefined;
-        break;
-      case "--language":
-        options.language = readValue(args, ++index, arg);
-        break;
-      case "--limit":
-        options.limit = readPositiveInteger(readValue(args, ++index, arg), arg);
-        break;
-      case "--request-delay-ms":
-        options.requestDelayMs = readPositiveInteger(readValue(args, ++index, arg), arg);
-        break;
-      case "--retry-failed":
-        options.retryFailed = true;
-        break;
-      case "--force":
-        options.force = true;
-        break;
-      case "--dry-run":
-        options.dryRun = true;
-        break;
-      case "--quiet":
-        options.quiet = true;
-        break;
-      case "--help":
-      case "-h":
-        printHelp();
-        process.exit(0);
-      default:
-        throw new Error(`Unknown argument: ${arg ?? ""}`);
+    case "--input":
+      options.inputPath = readValue(args, ++index, arg);
+      break;
+    case "--output-root":
+      options.outputRoot = readValue(args, ++index, arg);
+      break;
+    case "--status-output":
+      options.statusOutput = readValue(args, ++index, arg);
+      break;
+    case "--metadata-input":
+      options.metadataInput = readValue(args, ++index, arg);
+      break;
+    case "--no-metadata-lookup":
+      options.metadataInput = undefined;
+      break;
+    case "--language":
+      options.language = readValue(args, ++index, arg);
+      break;
+    case "--limit":
+      options.limit = readPositiveInteger(readValue(args, ++index, arg), arg);
+      break;
+    case "--request-delay-ms":
+      options.requestDelayMs = readPositiveInteger(readValue(args, ++index, arg), arg);
+      break;
+    case "--retry-failed":
+      options.retryFailed = true;
+      break;
+    case "--force":
+      options.force = true;
+      break;
+    case "--dry-run":
+      options.dryRun = true;
+      break;
+    case "--quiet":
+      options.quiet = true;
+      break;
+    case "--help":
+    case "-h":
+      printHelp();
+      process.exit(0);
+    default:
+      throw new Error(`Unknown argument: ${arg ?? ""}`);
     }
   }
 

@@ -1,10 +1,10 @@
 import assert from "node:assert/strict";
-import { mkdtemp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { execFile } from "node:child_process";
+import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { execFile } from "node:child_process";
-import { promisify } from "node:util";
 import test from "node:test";
+import { promisify } from "node:util";
 
 import type { SiteContentProcessingConfig } from "../content/schemas/index.js";
 
@@ -22,17 +22,31 @@ test("CLI maps canonical processing states, isolates malformed shards, and emits
     const configPath = path.join(root, "config.json");
     const outputPath = path.join(root, "output.tsv");
     const records = [
-      { videoId: "repair1", fileStem: "repair_repair1", videoTitle: "Repair", lastEndSeconds: 600, paths: { txt: "txt/repair_repair1.txt" } },
-      { videoId: "follow1", fileStem: "follow_follow1", videoTitle: "Follow", lastEndSeconds: 600, paths: { txt: "txt/follow_follow1.txt" } },
-      { videoId: "done1", fileStem: "done_done1", videoTitle: "Done", lastEndSeconds: 600, paths: { txt: "txt/done_done1.txt" } },
-      { videoId: "generic1", fileStem: "generic_generic1", videoTitle: "Bruships Trailer", lastEndSeconds: 600, paths: { txt: "txt/generic_generic1.txt" } },
-      { videoId: "explicit1", fileStem: "explicit_explicit1", videoTitle: "Naval Questions Answered", lastEndSeconds: 600, paths: { txt: "txt/explicit_explicit1.txt" } },
-      { videoId: "manual1", fileStem: "manual_manual1", videoTitle: "Manual Audio", lastEndSeconds: 600, paths: { txt: "txt/manual_manual1.txt" } },
-      { videoId: "school1", fileStem: "school-functions_school1", videoTitle: "SASC School Functions", lastEndSeconds: 600, paths: { txt: "txt/school-functions_school1.txt" } },
+      {videoId: "repair1", fileStem: "repair_repair1", videoTitle: "Repair", lastEndSeconds: 600, paths: {txt: "txt/repair_repair1.txt"}},
+      {videoId: "follow1", fileStem: "follow_follow1", videoTitle: "Follow", lastEndSeconds: 600, paths: {txt: "txt/follow_follow1.txt"}},
+      {videoId: "done1", fileStem: "done_done1", videoTitle: "Done", lastEndSeconds: 600, paths: {txt: "txt/done_done1.txt"}},
+      {videoId: "generic1", fileStem: "generic_generic1", videoTitle: "Bruships Trailer", lastEndSeconds: 600, paths: {txt: "txt/generic_generic1.txt"}},
+      {
+        videoId: "explicit1",
+        fileStem: "explicit_explicit1",
+        videoTitle: "Naval Questions Answered",
+        lastEndSeconds: 600,
+        paths: {txt: "txt/explicit_explicit1.txt"}
+      },
+      {videoId: "manual1", fileStem: "manual_manual1", videoTitle: "Manual Audio", lastEndSeconds: 600, paths: {txt: "txt/manual_manual1.txt"}},
+      {
+        videoId: "school1",
+        fileStem: "school-functions_school1",
+        videoTitle: "SASC School Functions",
+        lastEndSeconds: 600,
+        paths: {txt: "txt/school-functions_school1.txt"}
+      },
     ];
-    await writeFile(manifestPath, JSON.stringify({ transcripts: records }), "utf8");
+    await writeFile(manifestPath, JSON.stringify({transcripts: records}), "utf8");
     await writeFile(configPath, JSON.stringify(processingConfigFixture()), "utf8");
-    for (const record of records) await writeFile(path.join(transcripts, `${record.fileStem}.txt`), "transcript", "utf8");
+    for (const record of records) {
+      await writeFile(path.join(transcripts, `${record.fileStem}.txt`), "transcript", "utf8");
+    }
     await writeFile(path.join(segments, "repair_repair1.json"), "null", "utf8");
     const source = (stem: string) => path.relative(process.cwd(), path.join(transcripts, `${stem}.txt`)).replaceAll(path.sep, "/");
     const shard = (record: typeof records[number]) => ({
@@ -49,7 +63,7 @@ test("CLI maps canonical processing states, isolates malformed shards, and emits
         summary: "Fixture summary.",
         body: "Fixture body.",
         sourcePath: source(record.fileStem),
-        evidence: [{ start: "0:00", note: "Evidence." }],
+        evidence: [{start: "0:00", note: "Evidence."}],
       }],
     });
     await writeFile(path.join(segments, "follow_follow1.json"), JSON.stringify(shard(records[1]!)), "utf8");
@@ -131,10 +145,10 @@ test("CLI maps canonical processing states, isolates malformed shards, and emits
     assert.doesNotMatch(output, /repair_required|follow_up_required|review_candidate|low_signal/u);
     assert.doesNotMatch(output, /consume-plus-two-audits threshold|only manual audio review|no history segments after/u);
     assert.doesNotMatch(output, /school-functions_school1|SASC School Functions/u);
-    assert.match(result.stderr, /shards=6 excluded_sasc_shards=1 repair_required=1 follow_up_required=1 review_candidate=1 low_signal=3/u);
-    assert.match(result.stderr, /unknown_processing_states=1 manual_audio_review_remaining=1/u);
+    assert.match(result.stdout, /shards=6 excluded_sasc_shards=1 repair_required=1 follow_up_required=1 review_candidate=1 low_signal=3/u);
+    assert.match(result.stdout, /unknown_processing_states=1 manual_audio_review_remaining=1/u);
   } finally {
-    await rm(root, { recursive: true, force: true });
+    await rm(root, {recursive: true, force: true});
   }
 });
 

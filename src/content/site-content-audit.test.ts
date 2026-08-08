@@ -1,11 +1,8 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-
-import {
-  buildSiteContentAudit,
-  renderSiteContentAuditReport,
-} from "./site-content-audit.js";
 import type { SiteContentProcessingConfig } from "./schemas/index.js";
+
+import { buildSiteContentAudit, renderSiteContentAuditReport, } from "./site-content-audit.js";
 
 test("audits curated transcript-backed segments and reports uncurated transcripts", () => {
   const audit = buildSiteContentAudit({
@@ -41,8 +38,8 @@ test("flags missing transcript evidence and source paths", () => {
   });
 
   assert.deepEqual(
-    audit.issues.map((issue) => issue.code),
-    ["missing-source-path", "missing-evidence-window"],
+      audit.issues.map((issue) => issue.code),
+      ["missing-source-path", "missing-evidence-window"],
   );
   assert.equal(audit.stats.errorCount, 2);
 });
@@ -64,13 +61,13 @@ test("enforces the configured minimum number of transcript evidence windows", ()
 
   assert.equal(audit.issues.find((issue) => issue.code === "insufficient-evidence-windows")?.severity, "error");
   assert.match(
-    audit.issues.find((issue) => issue.code === "insufficient-evidence-windows")?.message ?? "",
-    /at least 2 transcript evidence windows/u,
+      audit.issues.find((issue) => issue.code === "insufficient-evidence-windows")?.message ?? "",
+      /at least 2 transcript evidence windows/u,
   );
 });
 
 test("validates the processing config video-level topic policy", () => {
-  const { videoLevelTopics: _videoLevelTopics, ...processingConfig } = sampleProcessingConfig();
+  const {videoLevelTopics: _videoLevelTopics, ...processingConfig} = sampleProcessingConfig();
 
   const audit = buildSiteContentAudit({
     manifest: sampleManifest(),
@@ -90,7 +87,7 @@ test("validates the processing config video-level topic policy", () => {
 });
 
 test("requires the live-stream mixed-content extraction policy", () => {
-  const { liveStreamExtraction: _liveStreamExtraction, ...processingConfig } = sampleProcessingConfig();
+  const {liveStreamExtraction: _liveStreamExtraction, ...processingConfig} = sampleProcessingConfig();
 
   const audit = buildSiteContentAudit({
     manifest: sampleManifest(),
@@ -152,7 +149,7 @@ test("requires full-file best-effort first-pass processing", () => {
 });
 
 test("requires the shard-derived automatic topic lifecycle", () => {
-  const { topicLifecycle: _topicLifecycle, ...processingConfig } = sampleProcessingConfig();
+  const {topicLifecycle: _topicLifecycle, ...processingConfig} = sampleProcessingConfig();
 
   const audit = buildSiteContentAudit({
     manifest: sampleManifest(),
@@ -172,7 +169,7 @@ test("requires the shard-derived automatic topic lifecycle", () => {
 });
 
 test("requires model-and-effort scoped content-exhaustion saturation", () => {
-  const { contentExhaustion: _contentExhaustion, ...processingConfig } = sampleProcessingConfig();
+  const {contentExhaustion: _contentExhaustion, ...processingConfig} = sampleProcessingConfig();
 
   const audit = buildSiteContentAudit({
     manifest: sampleManifest(),

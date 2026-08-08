@@ -1,11 +1,11 @@
 import assert from "node:assert/strict";
 import { spawn } from "node:child_process";
 import { existsSync } from "node:fs";
-import { mkdir, mkdtemp, readFile, readdir, rm, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, readdir, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
-import { fileURLToPath } from "node:url";
 import test from "node:test";
+import { fileURLToPath } from "node:url";
 
 import { siteArchiveSchemaVersion } from "../site/archive-data.js";
 import { replaceFileAtomically } from "./atomic-write.js";
@@ -36,16 +36,16 @@ test("atomic replacement preserves a complete previous file until replacement su
     assert.equal(await readFile(target, "utf8"), "{\"version\":\"new\"}\n");
 
     await assert.rejects(
-      replaceFileAtomically(target, async (temporaryPath) => {
-        await writeFile(temporaryPath, "{\"version\":\"partial\"", "utf8");
-        throw new Error("interrupted before replacement");
-      }),
-      /interrupted before replacement/u,
+        replaceFileAtomically(target, async (temporaryPath) => {
+          await writeFile(temporaryPath, "{\"version\":\"partial\"", "utf8");
+          throw new Error("interrupted before replacement");
+        }),
+        /interrupted before replacement/u,
     );
     assert.equal(await readFile(target, "utf8"), "{\"version\":\"new\"}\n");
     assert.equal((await readdir(directory)).filter((entry) => entry.endsWith(".tmp")).length, 0);
   } finally {
-    await rm(directory, { recursive: true, force: true });
+    await rm(directory, {recursive: true, force: true});
   }
 });
 
@@ -65,12 +65,12 @@ test("Phase 2 commands keep topic writes explicit and avoid duplicate site pipel
   const siteDevWrapper = await readFile(join(repositoryRoot, "src", "scripts", "site-dev.mjs"), "utf8");
 
   assert.match(
-    contentValidator,
-    /args:\s*\["run", "audit:topic-normalization", "--", "--patterns-input", topicPatternsPath\]/u,
+      contentValidator,
+      /args:\s*\["run", "audit:topic-normalization", "--", "--patterns-input", topicPatternsPath\]/u,
   );
   assert.match(
-    contentValidator,
-    /args:\s*\["run", "generate:site-data", "--", "--patterns-input", topicPatternsPath\]/u,
+      contentValidator,
+      /args:\s*\["run", "generate:site-data", "--", "--patterns-input", topicPatternsPath\]/u,
   );
   assert.match(siteValidator, /args: \["run", "generate:site-data"\]/u);
   assert.doesNotMatch(contentValidator, /dist\/scripts\/(audit-topic-normalization|generate-site-data)\.js/u);
@@ -85,19 +85,19 @@ test("Phase 2 commands keep topic writes explicit and avoid duplicate site pipel
   assert.match(siteValidator, /site:build:generated/u);
   const generateSiteDataScript = packageJson.scripts["generate:site-data"] ?? "";
   assert.equal(
-    generateSiteDataScript,
-    "node --env-file=site-build.properties src/scripts/site-content-pipeline-lock.mjs run --purpose site-archive-generation --recover-stale -- bun run src/scripts/generate-site-data-bun.ts",
+      generateSiteDataScript,
+      "node --env-file=site-build.properties src/scripts/site-content-pipeline-lock.mjs run --purpose site-archive-generation --recover-stale -- bun run src/scripts/generate-site-data-bun.ts",
   );
   assert.equal(packageJson.scripts["generate:site-data:bun"], undefined);
   const syncVideoTopicsScript = packageJson.scripts["sync:video-topics"] ?? "";
   assert.equal(
-    syncVideoTopicsScript,
-    "node src/scripts/site-content-pipeline-lock.mjs run --purpose video-topic-sync --recover-stale -- bun run src/scripts/sync-video-topics-bun.ts",
+      syncVideoTopicsScript,
+      "node src/scripts/site-content-pipeline-lock.mjs run --purpose video-topic-sync --recover-stale -- bun run src/scripts/sync-video-topics-bun.ts",
   );
   assert.equal(packageJson.scripts["sync:video-topics:bun"], undefined);
   assert.equal(
-    packageJson.scripts["check:video-topics"],
-    "bun run src/scripts/check-video-topics-bun.ts",
+      packageJson.scripts["check:video-topics"],
+      "bun run src/scripts/check-video-topics-bun.ts",
   );
   assert.match(checkVideoTopicsSource, /runCheckVideoTopics/u);
   assert.match(checkVideoTopicsSource, /prepareParallelTopicNormalizationInputs/u);
@@ -106,16 +106,16 @@ test("Phase 2 commands keep topic writes explicit and avoid duplicate site pipel
   assert.match(generateSiteDataSource, /patternsSha256: topicPlan\.catalog\.sha256/u);
   assert.match(generateSiteDataSource, /patternsSourceSha256: topicPlan\.catalog\.sourceSha256/u);
   assert.ok(
-    siteBuildWrapper.includes(`manifest?.schemaVersion !== ${siteArchiveSchemaVersion}`),
-    "site build wrapper must validate the current split-archive manifest schema",
+      siteBuildWrapper.includes(`manifest?.schemaVersion !== ${siteArchiveSchemaVersion}`),
+      "site build wrapper must validate the current split-archive manifest schema",
   );
   assert.ok(
-    archiveAdapter.includes(`schemaVersion: ${siteArchiveSchemaVersion};`),
-    "Astro archive adapter type must use the current split-archive manifest schema",
+      archiveAdapter.includes(`schemaVersion: ${siteArchiveSchemaVersion};`),
+      "Astro archive adapter type must use the current split-archive manifest schema",
   );
   assert.ok(
-    archiveAdapter.includes(`manifest.schemaVersion !== ${siteArchiveSchemaVersion}`),
-    "Astro archive adapter validator must use the current split-archive manifest schema",
+      archiveAdapter.includes(`manifest.schemaVersion !== ${siteArchiveSchemaVersion}`),
+      "Astro archive adapter validator must use the current split-archive manifest schema",
   );
   assert.match(siteBuildWrapper, /"src\/transcripts\/manifest\.json"/u);
   assert.match(siteBuildWrapper, /"src\/derived\/topic-normalization-patterns\.tsv"/u);
@@ -126,18 +126,18 @@ test("Phase 2 commands keep topic writes explicit and avoid duplicate site pipel
   const archiveGenerationIndex = siteBuildWrapper.indexOf("ensureSiteArchive(force)");
   assert.ok(sourceValidationIndex >= 0, "generated production builds must run check:source");
   assert.ok(
-    sourceValidationIndex < archiveGenerationIndex,
-    "source validation must run before archive generation and cache decisions",
+      sourceValidationIndex < archiveGenerationIndex,
+      "source validation must run before archive generation and cache decisions",
   );
   assert.equal(
-    siteBuildWrapper.match(/runNpmScript\("check:source"\)/gu)?.length,
-    1,
-    "the shared build wrapper must own one source-validation gate",
+      siteBuildWrapper.match(/runNpmScript\("check:source"\)/gu)?.length,
+      1,
+      "the shared build wrapper must own one source-validation gate",
   );
   assert.match(siteBuildWrapper, /if \(sourceValidationExitCode !== 0\)/u);
   assert.match(
-    siteBuildWrapper,
-    /async function ensureBuiltSite\(\s*force,\s*buildConcurrency,\s*pagefindScript,\s*pagefindInputPaths,\s*\)\s*\{\s*const archiveValidation = await measureStage\(\s*"archive integrity validation \(site\)",\s*validateSiteArchive,\s*\);/u,
+      siteBuildWrapper,
+      /async function ensureBuiltSite\(\s*force,\s*buildConcurrency,\s*pagefindScript,\s*pagefindInputPaths,\s*\)\s*\{\s*const archiveValidation = await measureStage\(\s*"archive integrity validation \(site\)",\s*validateSiteArchive,\s*\);/u,
   );
   assert.match(siteBuildWrapper, /became stale before Astro\/Pagefind/u);
   assert.match(archiveAdapter, /readFileSync\(expectedPatternsInput\)/u);
@@ -145,15 +145,15 @@ test("Phase 2 commands keep topic writes explicit and avoid duplicate site pipel
   assert.doesNotMatch(packageJson.scripts["site:check:generated"] ?? "", /generate:site-data/u);
   assert.doesNotMatch(packageJson.scripts["site:build:generated"] ?? "", /generate:site-data/u);
   assert.equal(
-    packageJson.scripts["site:dev"],
-    "node --env-file=site-build.properties src/scripts/site-dev.mjs",
+      packageJson.scripts["site:dev"],
+      "node --env-file=site-build.properties src/scripts/site-dev.mjs",
   );
   assert.match(siteDevWrapper, /runNpmScript\("generate:site-data"\)/u);
   assert.match(siteDevWrapper, /\[astroCli, "dev", \.\.\.process\.argv\.slice\(2\)\]/u);
   assert.match(siteDevWrapper, /ASTRO_DEV_BACKGROUND: "0"/u);
   assert.equal(
-    packageJson.scripts["check"],
-    "npm test && npm run check:source && npm run site:check",
+      packageJson.scripts["check"],
+      "npm test && npm run check:source && npm run site:check",
   );
   assert.equal(packageJson.scripts["check:quick"], undefined);
   assert.equal(packageJson.scripts["check:functional"], undefined);
@@ -166,22 +166,22 @@ test("Phase 2 commands keep topic writes explicit and avoid duplicate site pipel
   ];
   for (const stage of productionStages) {
     assert.equal(
-      productionCheckScript.split(stage).length - 1,
-      1,
-      `check:production must run ${stage} exactly once`,
+        productionCheckScript.split(stage).length - 1,
+        1,
+        `check:production must run ${stage} exactly once`,
     );
   }
   for (let index = 1; index < productionStages.length; index += 1) {
     assert.ok(
-      productionCheckScript.indexOf(productionStages[index - 1] ?? "")
+        productionCheckScript.indexOf(productionStages[index - 1] ?? "")
         < productionCheckScript.indexOf(productionStages[index] ?? ""),
-      "check:production stages must remain ordered",
+        "check:production stages must remain ordered",
     );
   }
   assert.doesNotMatch(
-    productionCheckScript,
-    /npm run (?:build|site:(?:check|build)(?::[^ ]+)?)\b/u,
-    "check:production must validate existing output without compiling, generating, or building",
+      productionCheckScript,
+      /npm run (?:build|site:(?:check|build)(?::[^ ]+)?)\b/u,
+      "check:production must validate existing output without compiling, generating, or building",
   );
 
   const ciCheckScript = packageJson.scripts["check:ci"] ?? "";
@@ -189,34 +189,34 @@ test("Phase 2 commands keep topic writes explicit and avoid duplicate site pipel
   const ciBuildIndex = ciCheckScript.indexOf("npm run site:build");
   const ciProductionIndex = ciCheckScript.indexOf("npm run check:production");
   assert.ok(
-    ciTestIndex >= 0 && ciTestIndex < ciBuildIndex && ciBuildIndex < ciProductionIndex,
-    "check:ci must test, build once, then validate the built production output",
+      ciTestIndex >= 0 && ciTestIndex < ciBuildIndex && ciBuildIndex < ciProductionIndex,
+      "check:ci must test, build once, then validate the built production output",
   );
   assert.equal(
-    ciCheckScript.match(/npm run site:build(?=\s|$)/gu)?.length,
-    1,
-    "check:ci must start exactly one site build",
+      ciCheckScript.match(/npm run site:build(?=\s|$)/gu)?.length,
+      1,
+      "check:ci must start exactly one site build",
   );
   assert.doesNotMatch(
-    ciCheckScript,
-    /npm run check(?=\s|$)/u,
-    "check:ci must not run the site:check graph before its production build",
+      ciCheckScript,
+      /npm run check(?=\s|$)/u,
+      "check:ci must not run the site:check graph before its production build",
   );
   assert.equal(
-    packageJson.scripts["site:build"],
-    "node --env-file=site-build.properties src/scripts/site-build-if-changed.mjs --generate",
+      packageJson.scripts["site:build"],
+      "node --env-file=site-build.properties src/scripts/site-build-if-changed.mjs --generate",
   );
   assert.equal(
-    packageJson.scripts["site:build:workspace-pagefind"],
-    "node --env-file=site-build.properties src/scripts/site-build-if-changed.mjs --generate --workspace-pagefind",
+      packageJson.scripts["site:build:workspace-pagefind"],
+      "node --env-file=site-build.properties src/scripts/site-build-if-changed.mjs --generate --workspace-pagefind",
   );
   assert.equal(
-    packageJson.scripts["check:site-seo"],
-    "npm run build && npm run check:site-seo:built",
+      packageJson.scripts["check:site-seo"],
+      "npm run build && npm run check:site-seo:built",
   );
   assert.equal(
-    packageJson.scripts["check:workspace-pagefind"],
-    "npm run site:build:workspace-pagefind && npm run check:pagefind-contract && npm run check:search-ranking && npm run check:rendered-video-dates",
+      packageJson.scripts["check:workspace-pagefind"],
+      "npm run site:build:workspace-pagefind && npm run check:pagefind-contract && npm run check:search-ranking && npm run check:rendered-video-dates",
   );
   assert.match(workspacePagefindRunner, /Workspace Pagefind prerequisite is unavailable/u);
   assert.match(workspacePagefindRunner, /portable official package/u);
@@ -288,12 +288,12 @@ test("topic curation reports consume exact normalization audit findings outside 
   const [packageJsonText, reportScript, bunReportScript] = await Promise.all([
     readFile(join(repositoryRoot, "package.json"), "utf8"),
     readFile(
-      join(repositoryRoot, "src", "scripts", "report-video-topic-usage.ts"),
-      "utf8",
+        join(repositoryRoot, "src", "scripts", "report-video-topic-usage.ts"),
+        "utf8",
     ),
     readFile(
-      join(repositoryRoot, "src", "scripts", "report-video-topic-usage-bun.ts"),
-      "utf8",
+        join(repositoryRoot, "src", "scripts", "report-video-topic-usage-bun.ts"),
+        "utf8",
     ),
   ]);
   const packageJson = JSON.parse(packageJsonText) as {
@@ -301,14 +301,14 @@ test("topic curation reports consume exact normalization audit findings outside 
   };
 
   assert.match(
-    reportScript,
-    /renderTopicNormalizationReviewReport\(normalizationAudit\.reviewFindings\)/u,
+      reportScript,
+      /renderTopicNormalizationReviewReport\(normalizationAudit\.reviewFindings\)/u,
   );
   assert.match(reportScript, /reports\/topic-normalization-review\.tsv/u);
   assert.match(reportScript, /normalization_reviews=/u);
   assert.equal(
-    packageJson.scripts["report:video-topic-usage"],
-    "bun run src/scripts/report-video-topic-usage-bun.ts",
+      packageJson.scripts["report:video-topic-usage"],
+      "bun run src/scripts/report-video-topic-usage-bun.ts",
   );
   assert.equal(packageJson.scripts["report:video-topic-usage:bun"], undefined);
   assert.match(bunReportScript, /new Worker\(new URL\(import\.meta\.url\)/u);
@@ -336,12 +336,12 @@ test("GitHub Pages configures Chrome and Bun before running the one-pass CI grap
   assert.match(workflow, /uses: oven-sh\/setup-bun@v2/u);
   assert.match(workflow, /bun-version: 1\.3\.14/u);
   assert.ok(
-    workflow.indexOf("oven-sh/setup-bun@v2") < workflow.indexOf("npm run check:ci"),
-    "GitHub Pages must install Bun before the canonical Bun-backed CI graph.",
+      workflow.indexOf("oven-sh/setup-bun@v2") < workflow.indexOf("npm run check:ci"),
+      "GitHub Pages must install Bun before the canonical Bun-backed CI graph.",
   );
   assert.ok(
-    workflow.indexOf("rmSync('site/src/data/generated/archive'") < workflow.indexOf("npm run check:ci"),
-    "GitHub Pages must prove the absent-archive bootstrap before CI.",
+      workflow.indexOf("rmSync('site/src/data/generated/archive'") < workflow.indexOf("npm run check:ci"),
+      "GitHub Pages must prove the absent-archive bootstrap before CI.",
   );
 });
 
@@ -401,8 +401,8 @@ test("two overlapping writer processes serialize complete archive, report, and l
     assert.equal(await readFile(join(directory, "report.md"), "utf8"), `# report second\n${"second".repeat(4096)}\n`);
 
     const rows = (await readFile(join(directory, "processing.log"), "utf8"))
-      .trim()
-      .split("\n");
+        .trim()
+        .split("\n");
     assert.equal(rows.length, 2);
     assert.deepEqual(rows.map((row) => row.split("\t").length), [6, 6]);
     assert.match(rows[0] ?? "", /\tfirst\t/u);
@@ -410,7 +410,7 @@ test("two overlapping writer processes serialize complete archive, report, and l
     assert.equal(existsSync(lockPath), false);
     assert.equal(existsSync(join(directory, "active-writer.txt")), false);
   } finally {
-    await rm(directory, { recursive: true, force: true });
+    await rm(directory, {recursive: true, force: true});
   }
 });
 
@@ -472,7 +472,7 @@ test("lock-aware log appends and stale recovery preserve diagnostics", async () 
     assert.equal(rows.length, 2);
     assert.deepEqual(rows.map((row) => row.split("\t").length), [6, 6]);
 
-    await mkdir(lockPath, { recursive: true });
+    await mkdir(lockPath, {recursive: true});
     await writeFile(join(lockPath, "owner.json"), JSON.stringify({
       schemaVersion: 1,
       token: "stale-token",
@@ -508,7 +508,7 @@ test("lock-aware log appends and stale recovery preserve diagnostics", async () 
     assert.equal(released.code, 0, released.stderr);
     assert.equal(existsSync(lockPath), false);
   } finally {
-    await rm(directory, { recursive: true, force: true });
+    await rm(directory, {recursive: true, force: true});
   }
 });
 
@@ -518,7 +518,7 @@ test("one-shot writer commands recover a stale lease and preserve its diagnostic
   const markerPath = join(directory, "ran.txt");
 
   try {
-    await mkdir(lockPath, { recursive: true });
+    await mkdir(lockPath, {recursive: true});
     await writeFile(join(lockPath, "owner.json"), JSON.stringify({
       schemaVersion: 1,
       token: "stale-run-token",
@@ -549,11 +549,11 @@ test("one-shot writer commands recover a stale lease and preserve its diagnostic
     const quarantined = (await readdir(directory)).filter((entry) => entry.startsWith("writer.lock.stale-"));
     assert.equal(quarantined.length, 1);
     const previousLease = JSON.parse(
-      await readFile(join(directory, quarantined[0] ?? "", "owner.json"), "utf8"),
+        await readFile(join(directory, quarantined[0] ?? "", "owner.json"), "utf8"),
     ) as { token: string };
     assert.equal(previousLease.token, "stale-run-token");
   } finally {
-    await rm(directory, { recursive: true, force: true });
+    await rm(directory, {recursive: true, force: true});
   }
 });
 
@@ -583,17 +583,17 @@ test("nested pipeline commands join an exported lease token without releasing it
     const acquired = JSON.parse(acquiredResult.stdout) as { lease: { token: string } };
 
     const nested = await runNode(
-      [
-        lockTool,
-        "run",
-        "--lock-path",
-        lockPath,
-        "--",
-        "node",
-        "-e",
-        `require('node:fs').writeFileSync(${JSON.stringify(markerPath)}, 'joined')`,
-      ],
-      { CONTENT_PIPELINE_LOCK_TOKEN: acquired.lease.token },
+        [
+          lockTool,
+          "run",
+          "--lock-path",
+          lockPath,
+          "--",
+          "node",
+          "-e",
+          `require('node:fs').writeFileSync(${JSON.stringify(markerPath)}, 'joined')`,
+        ],
+        {CONTENT_PIPELINE_LOCK_TOKEN: acquired.lease.token},
     );
     assert.equal(nested.code, 0, nested.stderr);
     assert.equal(await readFile(markerPath, "utf8"), "joined");
@@ -614,28 +614,32 @@ test("nested pipeline commands join an exported lease token without releasing it
     ]);
     assert.equal(released.code, 0, released.stderr);
   } finally {
-    await rm(directory, { recursive: true, force: true });
+    await rm(directory, {recursive: true, force: true});
   }
 });
 
 function runNode(
-  args: string[],
-  environment?: NodeJS.ProcessEnv,
+    args: string[],
+    environment?: NodeJS.ProcessEnv,
 ): Promise<{ code: number; stdout: string; stderr: string }> {
   return new Promise((resolvePromise, rejectPromise) => {
     const child = spawn("node", args, {
       stdio: ["ignore", "pipe", "pipe"],
-      env: environment === undefined ? process.env : { ...process.env, ...environment },
+      env: environment === undefined ? process.env : {...process.env, ...environment},
     });
     let stdout = "";
     let stderr = "";
     child.stdout.setEncoding("utf8");
     child.stderr.setEncoding("utf8");
-    child.stdout.on("data", (chunk: string) => { stdout += chunk; });
-    child.stderr.on("data", (chunk: string) => { stderr += chunk; });
+    child.stdout.on("data", (chunk: string) => {
+      stdout += chunk;
+    });
+    child.stderr.on("data", (chunk: string) => {
+      stderr += chunk;
+    });
     child.once("error", rejectPromise);
     child.once("exit", (code) => {
-      resolvePromise({ code: code ?? 1, stdout, stderr });
+      resolvePromise({code: code ?? 1, stdout, stderr});
     });
   });
 }
@@ -655,5 +659,5 @@ function deferred<T>(): { promise: Promise<T>; resolve: (value: T | PromiseLike<
   const promise = new Promise<T>((resolve) => {
     resolvePromise = resolve;
   });
-  return { promise, resolve: resolvePromise };
+  return {promise, resolve: resolvePromise};
 }

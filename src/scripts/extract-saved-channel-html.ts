@@ -1,20 +1,10 @@
 #!/usr/bin/env node
-import { dirname } from "node:path";
 import { mkdir, readFile, stat, writeFile } from "node:fs/promises";
-
-import {
-  defaultSavedStreamsHtmlInput,
-  defaultSavedVideosHtmlInput,
-  extractSavedChannelHtml,
-  type ExtractSavedChannelHtmlOptions,
-} from "../youtube/saved-channel-html.js";
-import {
-  splitChannelVideoLinksResult,
-  writeChannelEpisodeMasterOutput,
-  type ChannelInventoryCompleteness,
-  type ChannelVideoTab,
-} from "../youtube/channel-video-links.js";
+import { dirname } from "node:path";
+import { type ChannelInventoryCompleteness, type ChannelVideoTab, splitChannelVideoLinksResult, writeChannelEpisodeMasterOutput, } from "../youtube/channel-video-links.js";
 import { readIgnoredVideos } from "../youtube/ignored-videos.js";
+
+import { defaultSavedStreamsHtmlInput, defaultSavedVideosHtmlInput, extractSavedChannelHtml, type ExtractSavedChannelHtmlOptions, } from "../youtube/saved-channel-html.js";
 
 interface CliOptions {
   input?: string;
@@ -87,15 +77,15 @@ async function main(): Promise<void> {
   };
 
   if (
-    options.output === undefined &&
-    options.linksOutput === undefined &&
-    options.masterOutput === undefined &&
-    options.baseOutput === undefined &&
-    options.metadataOutput === undefined
+      options.output === undefined &&
+      options.linksOutput === undefined &&
+      options.masterOutput === undefined &&
+      options.baseOutput === undefined &&
+      options.metadataOutput === undefined
   ) {
     console.log(JSON.stringify(extraction, null, 2));
   } else {
-    console.error(JSON.stringify(summary, null, 2));
+    console.log(JSON.stringify(summary, null, 2));
   }
 }
 
@@ -109,45 +99,45 @@ function parseArgs(args: string[]): CliOptions {
     const arg = args[index];
 
     switch (arg) {
-      case "--input":
-        options.input = readValue(args, ++index, arg);
-        break;
-      case "--tab":
-        options.tab = readTab(readValue(args, ++index, arg));
-        break;
-      case "--output":
-        options.output = readValue(args, ++index, arg);
-        break;
-      case "--links-output":
-        options.linksOutput = readValue(args, ++index, arg);
-        break;
-      case "--master-output":
-        options.masterOutput = readValue(args, ++index, arg);
-        break;
-      case "--inventory-completeness":
-        options.inventoryCompleteness = readInventoryCompleteness(readValue(args, ++index, arg));
-        break;
-      case "--base-output":
-        options.baseOutput = readValue(args, ++index, arg);
-        break;
-      case "--metadata-output":
-        options.metadataOutput = readValue(args, ++index, arg);
-        break;
-      case "--channel-url":
-        options.channelUrl = readValue(args, ++index, arg);
-        break;
-      case "--channel-id":
-        options.channelId = readValue(args, ++index, arg);
-        break;
-      case "--fetched-at":
-        options.fetchedAt = readValue(args, ++index, arg);
-        break;
-      case "--help":
-      case "-h":
-        printHelp();
-        process.exit(0);
-      default:
-        throw new Error(`Unknown argument: ${arg ?? ""}`);
+    case "--input":
+      options.input = readValue(args, ++index, arg);
+      break;
+    case "--tab":
+      options.tab = readTab(readValue(args, ++index, arg));
+      break;
+    case "--output":
+      options.output = readValue(args, ++index, arg);
+      break;
+    case "--links-output":
+      options.linksOutput = readValue(args, ++index, arg);
+      break;
+    case "--master-output":
+      options.masterOutput = readValue(args, ++index, arg);
+      break;
+    case "--inventory-completeness":
+      options.inventoryCompleteness = readInventoryCompleteness(readValue(args, ++index, arg));
+      break;
+    case "--base-output":
+      options.baseOutput = readValue(args, ++index, arg);
+      break;
+    case "--metadata-output":
+      options.metadataOutput = readValue(args, ++index, arg);
+      break;
+    case "--channel-url":
+      options.channelUrl = readValue(args, ++index, arg);
+      break;
+    case "--channel-id":
+      options.channelId = readValue(args, ++index, arg);
+      break;
+    case "--fetched-at":
+      options.fetchedAt = readValue(args, ++index, arg);
+      break;
+    case "--help":
+    case "-h":
+      printHelp();
+      process.exit(0);
+    default:
+      throw new Error(`Unknown argument: ${arg ?? ""}`);
     }
   }
 
@@ -187,7 +177,7 @@ async function fileModifiedAt(path: string): Promise<string | undefined> {
 }
 
 async function writeJsonFile(path: string, value: unknown): Promise<void> {
-  await mkdir(dirname(path), { recursive: true });
+  await mkdir(dirname(path), {recursive: true});
   await writeFile(path, `${JSON.stringify(value, null, 2)}\n`, "utf8");
 }
 

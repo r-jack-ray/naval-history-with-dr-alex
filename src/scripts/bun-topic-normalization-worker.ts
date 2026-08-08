@@ -2,11 +2,7 @@
 
 import { parentPort, workerData } from "node:worker_threads";
 
-import {
-  resolveTopicCreation,
-  type TopicNormalizationCatalog,
-  type TopicSlugResolution,
-} from "../site/topic-normalization.js";
+import { resolveTopicCreation, type TopicNormalizationCatalog, type TopicSlugResolution, } from "../site/topic-normalization.js";
 
 interface TopicNormalizationWorkerTask {
   catalog: TopicNormalizationCatalog;

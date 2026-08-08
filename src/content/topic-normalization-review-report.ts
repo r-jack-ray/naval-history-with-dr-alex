@@ -1,6 +1,4 @@
-import type {
-  TopicNormalizationReviewFinding,
-} from "../site/topic-normalization-audit.js";
+import type { TopicNormalizationReviewFinding, } from "../site/topic-normalization-audit.js";
 
 export const topicNormalizationReviewReportHeaderKeys = [
   "finding_type",
@@ -16,7 +14,7 @@ export const topicNormalizationReviewReportHeaderKeys = [
 ] as const;
 
 export const topicNormalizationReviewReportHeaders =
-  topicNormalizationReviewReportHeaderKeys.map((header) => header.replaceAll("_", " "));
+    topicNormalizationReviewReportHeaderKeys.map((header) => header.replaceAll("_", " "));
 
 type HeaderKey = typeof topicNormalizationReviewReportHeaderKeys[number];
 type ReportValue = string | number;
@@ -35,7 +33,7 @@ export interface TopicNormalizationReviewReport {
 }
 
 export function renderTopicNormalizationReviewReport(
-  findings: readonly TopicNormalizationReviewFinding[],
+    findings: readonly TopicNormalizationReviewFinding[],
 ): TopicNormalizationReviewReport {
   const rows = findings.map(reviewFindingRow);
   const matrix: ReportValue[][] = [
@@ -43,7 +41,7 @@ export function renderTopicNormalizationReviewReport(
     ...rows.map((row) => topicNormalizationReviewReportHeaderKeys.map((header) => row[header])),
   ];
   const topicSlugs = new Set(rows.flatMap((row) => (
-    [String(row.topic_slug), String(row.related_topic_slug)].filter(Boolean)
+      [String(row.topic_slug), String(row.related_topic_slug)].filter(Boolean)
   )));
 
   return {
@@ -59,15 +57,15 @@ export function renderTopicNormalizationReviewReport(
 }
 
 function reviewFindingRow(
-  finding: TopicNormalizationReviewFinding,
+    finding: TopicNormalizationReviewFinding,
 ): TopicNormalizationReviewReportRow {
   if (finding.kind === "rule") {
     const candidateReplacement = finding.replacement === finding.slug
-      ? ""
-      : finding.replacement;
+        ? ""
+        : finding.replacement;
     const title = finding.canonicalTitle.length > 0
-      ? ` Candidate title: ${finding.canonicalTitle}.`
-      : "";
+        ? ` Candidate title: ${finding.canonicalTitle}.`
+        : "";
     return {
       finding_type: "review rule",
       topic_slug: finding.slug,
@@ -94,7 +92,7 @@ function reviewFindingRow(
     rule_id: "",
     candidate_replacement: "",
     collision_value: `${finding.collisionKey}: ${left.slug}=${left.values.join(" | ")}; `
-      + `${right.slug}=${right.values.join(" | ")}`,
+        + `${right.slug}=${right.values.join(" | ")}`,
     source_count: sources.length,
     sources: sources.join(" | "),
     details: `Distinct topic records expose the same normalized title or alias ${JSON.stringify(finding.collisionKey)}.`,

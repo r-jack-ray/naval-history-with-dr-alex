@@ -1,10 +1,6 @@
 import { z } from "zod";
 
-import {
-  nonEmptyStringSchema,
-  parseSchema,
-  topicSlugSchema,
-} from "./shared.js";
+import { nonEmptyStringSchema, parseSchema, topicSlugSchema, } from "./shared.js";
 
 export const curatedTopicSchema = z.strictObject({
   slug: topicSlugSchema,
@@ -33,8 +29,8 @@ export type CuratedTopicSeed = z.infer<typeof curatedTopicSchema>;
 export type CuratedTopicStore = z.infer<typeof curatedTopicStoreSchema>;
 
 export function parseCuratedTopicStore(
-  value: unknown,
-  label: string,
+    value: unknown,
+    label: string,
 ): CuratedTopicStore {
   return parseSchema(curatedTopicStoreSchema, value, label);
 }

@@ -3,30 +3,23 @@
 import { withSiteBuildRepairHint } from "../site/build-repair-guidance.js";
 import { prepareParallelTopicNormalizationInputs } from "./bun-topic-normalization.js";
 import { parseBunWorkerOptions } from "./bun-worker-options.js";
-import {
-  isDirectExecution,
-  printRunTime,
-} from "./console-run-timer.js";
-import {
-  generateSiteDataUsage,
-  parseGenerateSiteDataArgs,
-  runGenerateSiteData,
-} from "./generate-site-data.js";
+import { isDirectExecution, printRunTime, } from "./console-run-timer.js";
+import { generateSiteDataUsage, parseGenerateSiteDataArgs, runGenerateSiteData, } from "./generate-site-data.js";
 
 async function main(): Promise<void> {
   const bunOptions = parseBunWorkerOptions(process.argv.slice(2));
   const options = parseGenerateSiteDataArgs(bunOptions.commandArgs);
   if (options.help) {
     process.stdout.write(
-      generateSiteDataUsage("npm run generate:site-data", true),
+        generateSiteDataUsage("npm run generate:site-data", true),
     );
     return;
   }
 
   const prepared = await prepareParallelTopicNormalizationInputs(
-    options.segmentsInput,
-    options.patternsInput,
-    bunOptions.workers,
+      options.segmentsInput,
+      options.patternsInput,
+      bunOptions.workers,
   );
   await runGenerateSiteData(options, {
     precomputedCreationResolutions: prepared.creationResolutions,

@@ -1,34 +1,28 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import {
-  parseValidationCliOptions,
-  runValidationWorkflow,
-  type ValidationCliOptions,
-  type ValidationRuntime,
-  type ValidationStep,
-} from "./validation-workflow.js";
+import { parseValidationCliOptions, runValidationWorkflow, type ValidationCliOptions, type ValidationRuntime, type ValidationStep, } from "./validation-workflow.js";
 
 test("validation CLI parsing preserves defaults and enforces command capabilities", () => {
   assert.deepEqual(parseValidationCliOptions([]), defaultOptions());
   assert.deepEqual(
-    parseValidationCliOptions([
-      "--skip-repo-check",
-      "--retain-caller-lease",
-      "--backlog-limit", "10",
-      "--lock-token", "token-1",
-      "--lock-wait-seconds", "0",
-      "--lock-stale-after-minutes", "720",
-    ], { backlogLimit: true, retainCallerLease: true }),
-    {
-      backlogLimit: 10,
-      lockStaleAfterMinutes: 720,
-      lockToken: "token-1",
-      lockWaitSeconds: 0,
-      retainCallerLease: true,
-      showHelp: false,
-      skipRepoCheck: true,
-    },
+      parseValidationCliOptions([
+        "--skip-repo-check",
+        "--retain-caller-lease",
+        "--backlog-limit", "10",
+        "--lock-token", "token-1",
+        "--lock-wait-seconds", "0",
+        "--lock-stale-after-minutes", "720",
+      ], {backlogLimit: true, retainCallerLease: true}),
+      {
+        backlogLimit: 10,
+        lockStaleAfterMinutes: 720,
+        lockToken: "token-1",
+        lockWaitSeconds: 0,
+        retainCallerLease: true,
+        showHelp: false,
+        skipRepoCheck: true,
+      },
   );
   assert.throws(() => parseValidationCliOptions(["--backlog-limit", "1"]), /not supported/u);
   assert.throws(() => parseValidationCliOptions(["--retain-caller-lease"]), /not supported/u);
@@ -38,11 +32,11 @@ test("validation CLI parsing preserves defaults and enforces command capabilitie
 
 test("validation workflow acquires, exports, runs in order, releases, and restores", async () => {
   const calls: string[] = [];
-  const environment: NodeJS.ProcessEnv = { CONTENT_PIPELINE_LOCK_TOKEN: "previous-token" };
+  const environment: NodeJS.ProcessEnv = {CONTENT_PIPELINE_LOCK_TOKEN: "previous-token"};
   const runtime = makeRuntime(calls, environment);
   const steps: ValidationStep[] = [
-    { command: "npm", args: ["run", "build"] },
-    { command: "node", args: ["dist/scripts/audit-site-content.js"] },
+    {command: "npm", args: ["run", "build"]},
+    {command: "node", args: ["dist/scripts/audit-site-content.js"]},
   ];
 
   await runValidationWorkflow({
@@ -65,13 +59,13 @@ test("validation workflow renews and retains a caller lease only when requested"
   const calls: string[] = [];
   const environment: NodeJS.ProcessEnv = {};
   const runtime = makeRuntime(calls, environment);
-  const options = { ...defaultOptions(), lockToken: "caller-token", retainCallerLease: true };
+  const options = {...defaultOptions(), lockToken: "caller-token", retainCallerLease: true};
 
   await runValidationWorkflow({
     options,
     owner: "validator",
     purpose: "test-validation",
-    steps: [{ command: "npm", args: ["run", "build"] }],
+    steps: [{command: "npm", args: ["run", "build"]}],
   }, runtime);
 
   assert.match(calls[0] ?? "", /^node:renew --token caller-token /u);
@@ -81,17 +75,17 @@ test("validation workflow renews and retains a caller lease only when requested"
 
 test("validation workflow releases and restores after a stage failure", async () => {
   const calls: string[] = [];
-  const environment: NodeJS.ProcessEnv = { CONTENT_PIPELINE_LOCK_TOKEN: "previous-token" };
-  const runtime = makeRuntime(calls, environment, { failNpm: true });
+  const environment: NodeJS.ProcessEnv = {CONTENT_PIPELINE_LOCK_TOKEN: "previous-token"};
+  const runtime = makeRuntime(calls, environment, {failNpm: true});
 
   await assert.rejects(
-    runValidationWorkflow({
-      options: defaultOptions(),
-      owner: "validator",
-      purpose: "test-validation",
-      steps: [{ command: "npm", args: ["run", "build"] }],
-    }, runtime),
-    /stage failed/u,
+      runValidationWorkflow({
+        options: defaultOptions(),
+        owner: "validator",
+        purpose: "test-validation",
+        steps: [{command: "npm", args: ["run", "build"]}],
+      }, runtime),
+      /stage failed/u,
   );
 
   assert.equal(calls.some((call) => call.includes("release --token acquired-token")), true);
@@ -101,7 +95,7 @@ test("validation workflow releases and restores after a stage failure", async ()
 test("lease-release failure warns without replacing a successful validation result", async () => {
   const calls: string[] = [];
   const warnings: string[] = [];
-  const runtime = makeRuntime(calls, {}, { failRelease: true, warnings });
+  const runtime = makeRuntime(calls, {}, {failRelease: true, warnings});
 
   await runValidationWorkflow({
     options: defaultOptions(),
@@ -126,9 +120,9 @@ function defaultOptions(): ValidationCliOptions {
 }
 
 function makeRuntime(
-  calls: string[],
-  environment: NodeJS.ProcessEnv,
-  behavior: { failNpm?: boolean; failRelease?: boolean; warnings?: string[] } = {},
+    calls: string[],
+    environment: NodeJS.ProcessEnv,
+    behavior: { failNpm?: boolean; failRelease?: boolean; warnings?: string[] } = {},
 ): ValidationRuntime {
   return {
     environment,
@@ -139,7 +133,7 @@ function makeRuntime(
       if (displayArgs[0] === "release" && behavior.failRelease) {
         throw new Error("release failed");
       }
-      return captureOutput ? JSON.stringify({ lease: { token: "acquired-token" } }) : "";
+      return captureOutput ? JSON.stringify({lease: {token: "acquired-token"}}) : "";
     },
     async runNpm(args) {
       calls.push(`npm:${args.join(" ")}:token=${environment.CONTENT_PIPELINE_LOCK_TOKEN ?? ""}`);

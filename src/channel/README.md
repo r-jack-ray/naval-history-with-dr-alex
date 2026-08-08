@@ -1,7 +1,6 @@
 # Channel Source Data
 
-This directory stores canonical channel inventory data used by later transcript,
-curation, and search workflows.
+This directory stores canonical channel inventory data used by later transcript, curation, and search workflows.
 
 ## Files
 
@@ -14,42 +13,32 @@ src/channel/
 
 ## ignored-videos.json
 
-`ignored-videos.json` is the canonical full-video exclusion list. Records in it
-are omitted from channel inventory outputs, official metadata refreshes, saved
-HTML extraction, transcript batches, and direct transcript fetches. Use it only
-when the complete YouTube video should remain outside the project; transcript
+`ignored-videos.json` is the canonical full-video exclusion list. Records in it are omitted from channel inventory outputs, official metadata refreshes, saved
+HTML extraction, transcript batches, and direct transcript fetches. Use it only when the complete YouTube video should remain outside the project; transcript
 availability failures belong in `src/transcripts/fetch-status.json` instead.
 
 ## episodes.json
 
-`episodes.json` is the source master list for discovered channel videos and
-streams. Each episode record stores:
+`episodes.json` is the source master list for discovered channel videos and streams. Each episode record stores:
 
 - YouTube video ID and canonical URL.
 - A readable `slug` and `fileStem` for generated files.
 - Current channel order from the inventory crawl.
-- Title, duration, relative channel-page text, views, and exact raw date fields
-  when known.
+- Title, duration, relative channel-page text, views, and exact raw date fields when known.
 - Source tabs where the item appeared (`videos`, `streams`).
 - Transcript storage status pointing to `src/transcripts/` when available.
 
-The file includes an inventory completeness flag. Do not treat a partial master
-list as the full channel backlog.
+The file includes an inventory completeness flag. Do not treat a partial master list as the full channel backlog.
 
-In the current checked-in master, `inventory.completeness` is `unknown` and the
-inventory notes say the streams tab has not been fetched. Treat those fields as
+In the current checked-in master, `inventory.completeness` is `unknown` and the inventory notes say the streams tab has not been fetched. Treat those fields as
 the live status source instead of inferring completeness from record counts.
 
 Schema 2 keeps YouTube's raw `publishedAt`, `scheduledStartAt`,
-`actualStartAt`, and `actualEndAt` facts distinct. Completed, processed videos
-also have one normalized `videoDateAt` plus `videoDateKind`; consumers use that
-value for naming, sorting, and public dates. `videoKind` independently records
-whether the item is an upload or stream.
+`actualStartAt`, and `actualEndAt` facts distinct. Completed, processed videos also have one normalized `videoDateAt` plus `videoDateKind`; consumers use that
+value for naming, sorting, and public dates. `videoKind` independently records whether the item is an upload or stream.
 
-`fileStem` uses `timestamp_title-slug_videoId` when a canonical video date is
-available, otherwise `title-slug_videoId`. A stored transcript's manifest stem
-is authoritative and must win over a recomputed inventory stem. Keep the video
-ID suffix for stable lookup and dedupe.
+`fileStem` uses `timestamp_title-slug_videoId` when a canonical video date is available, otherwise `title-slug_videoId`. A stored transcript's manifest stem is
+authoritative and must win over a recomputed inventory stem. Keep the video ID suffix for stable lookup and dedupe.
 
 Refresh from a channel crawl:
 
@@ -57,8 +46,7 @@ Refresh from a channel crawl:
 npm run fetch:video-links
 ```
 
-The refresh automatically applies `ignored-videos.json`, so an excluded video
-found in a later channel crawl is not reintroduced to `episodes.json`.
+The refresh automatically applies `ignored-videos.json`, so an excluded video found in a later channel crawl is not reintroduced to `episodes.json`.
 
 Refresh from saved `/videos` and `/streams` HTML:
 
@@ -77,9 +65,6 @@ npm run fetch:video-metadata
 ```
 
 Upcoming and otherwise deferred livestream records retain YouTube's posted
-`scheduledStartTime`. A normal metadata refresh automatically rechecks them
-about 24 hours after the later of that scheduled time or their previous
-metadata fetch. If YouTube postpones a stream, the refreshed record stores the
-new scheduled time and the next automatic check moves to roughly 24 hours after
-that date. Use `--refresh-video-id <id>` when an earlier manual refresh is
-needed; `--force` still refreshes every stored record.
+`scheduledStartTime`. A normal metadata refresh automatically rechecks them about 24 hours after the later of that scheduled time or their previous metadata
+fetch. If YouTube postpones a stream, the refreshed record stores the new scheduled time and the next automatic check moves to roughly 24 hours after that date.
+Use `--refresh-video-id <id>` when an earlier manual refresh is needed; `--force` still refreshes every stored record.

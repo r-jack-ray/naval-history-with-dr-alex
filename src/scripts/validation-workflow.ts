@@ -27,8 +27,11 @@ export interface ValidationWorkflowConfig {
 export interface ValidationRuntime {
   environment: NodeJS.ProcessEnv;
   pid: number;
+
   runNode(args: string[], captureOutput?: boolean): Promise<string>;
+
   runNpm(args: string[]): Promise<void>;
+
   warn(message: string): void;
 }
 
@@ -53,8 +56,8 @@ const defaultRuntime: ValidationRuntime = {
 };
 
 export function parseValidationCliOptions(
-  args: readonly string[],
-  capabilities: ValidationCliCapabilities = {},
+    args: readonly string[],
+    capabilities: ValidationCliCapabilities = {},
 ): ValidationCliOptions {
   const options: ValidationCliOptions = {
     backlogLimit: 25,
@@ -68,36 +71,36 @@ export function parseValidationCliOptions(
   for (let index = 0; index < args.length; index += 1) {
     const arg = args[index];
     switch (arg) {
-      case "--skip-repo-check":
-        options.skipRepoCheck = true;
-        break;
-      case "--retain-caller-lease":
-        if (!capabilities.retainCallerLease) {
-          throw new Error(`${arg} is not supported by this validation command.`);
-        }
-        options.retainCallerLease = true;
-        break;
-      case "--backlog-limit":
-        if (!capabilities.backlogLimit) {
-          throw new Error(`${arg} is not supported by this validation command.`);
-        }
-        options.backlogLimit = readInteger(args, ++index, arg, 0);
-        break;
-      case "--lock-token":
-        options.lockToken = readValue(args, ++index, arg);
-        break;
-      case "--lock-wait-seconds":
-        options.lockWaitSeconds = readInteger(args, ++index, arg, 0, 300);
-        break;
-      case "--lock-stale-after-minutes":
-        options.lockStaleAfterMinutes = readInteger(args, ++index, arg, 1, 720);
-        break;
-      case "--help":
-      case "-h":
-        options.showHelp = true;
-        break;
-      default:
-        throw new Error(`Unknown argument: ${arg ?? ""}`);
+    case "--skip-repo-check":
+      options.skipRepoCheck = true;
+      break;
+    case "--retain-caller-lease":
+      if (!capabilities.retainCallerLease) {
+        throw new Error(`${arg} is not supported by this validation command.`);
+      }
+      options.retainCallerLease = true;
+      break;
+    case "--backlog-limit":
+      if (!capabilities.backlogLimit) {
+        throw new Error(`${arg} is not supported by this validation command.`);
+      }
+      options.backlogLimit = readInteger(args, ++index, arg, 0);
+      break;
+    case "--lock-token":
+      options.lockToken = readValue(args, ++index, arg);
+      break;
+    case "--lock-wait-seconds":
+      options.lockWaitSeconds = readInteger(args, ++index, arg, 0, 300);
+      break;
+    case "--lock-stale-after-minutes":
+      options.lockStaleAfterMinutes = readInteger(args, ++index, arg, 1, 720);
+      break;
+    case "--help":
+    case "-h":
+      options.showHelp = true;
+      break;
+    default:
+      throw new Error(`Unknown argument: ${arg ?? ""}`);
     }
   }
 
@@ -105,8 +108,8 @@ export function parseValidationCliOptions(
 }
 
 export async function runValidationWorkflow(
-  config: ValidationWorkflowConfig,
-  runtime: ValidationRuntime = defaultRuntime,
+    config: ValidationWorkflowConfig,
+    runtime: ValidationRuntime = defaultRuntime,
 ): Promise<void> {
   const previousLockToken = runtime.environment.CONTENT_PIPELINE_LOCK_TOKEN;
   let activeLockToken = normalizeToken(config.options.lockToken);
@@ -156,8 +159,8 @@ export async function runValidationWorkflow(
         await runtime.runNode([lockTool, "release", "--token", activeLockToken], true);
       } catch {
         runtime.warn(
-          `Unable to release content-pipeline writer lease ${activeLockToken}. ` +
-          "Inspect it with node src/scripts/site-content-pipeline-lock.mjs status.",
+            `Unable to release content-pipeline writer lease ${activeLockToken}. ` +
+            "Inspect it with node src/scripts/site-content-pipeline-lock.mjs status.",
         );
       }
     }
@@ -179,11 +182,11 @@ function readValue(args: readonly string[], index: number, name: string): string
 }
 
 function readInteger(
-  args: readonly string[],
-  index: number,
-  name: string,
-  minimum: number,
-  maximum?: number,
+    args: readonly string[],
+    index: number,
+    name: string,
+    minimum: number,
+    maximum?: number,
 ): number {
   const value = readValue(args, index, name);
   const parsed = Number(value);
@@ -207,9 +210,9 @@ function readLeaseToken(output: string): string {
     throw new Error("Unable to parse the content-pipeline lease response.");
   }
   if (
-    typeof parsed !== "object" || parsed === null || !("lease" in parsed) ||
-    typeof parsed.lease !== "object" || parsed.lease === null || !("token" in parsed.lease) ||
-    typeof parsed.lease.token !== "string" || parsed.lease.token.length === 0
+      typeof parsed !== "object" || parsed === null || !("lease" in parsed) ||
+      typeof parsed.lease !== "object" || parsed.lease === null || !("token" in parsed.lease) ||
+      typeof parsed.lease.token !== "string" || parsed.lease.token.length === 0
   ) {
     throw new Error("The content-pipeline lease response did not contain a token.");
   }
@@ -220,20 +223,20 @@ async function executeNpm(args: string[]): Promise<void> {
   if (process.platform === "win32") {
     const npmCommand = `"${resolve(dirname(process.execPath), "npm.cmd")}"`;
     const commandLine = [npmCommand, ...args.map(quoteWindowsShellArgument)].join(" ");
-    await runCommand(commandLine, [], { shell: true });
+    await runCommand(commandLine, [], {shell: true});
     return;
   }
   await runCommand("npm", args);
 }
 
 async function executeNode(args: string[], captureOutput = false): Promise<string> {
-  return await runCommand(process.execPath, args, { captureOutput });
+  return await runCommand(process.execPath, args, {captureOutput});
 }
 
 async function runCommand(
-  command: string,
-  args: string[],
-  options: CommandOptions = {},
+    command: string,
+    args: string[],
+    options: CommandOptions = {},
 ): Promise<string> {
   return await new Promise((resolvePromise, rejectPromise) => {
     const child = spawn(command, args, {
@@ -254,8 +257,12 @@ async function runCommand(
       }
       childStdout.setEncoding("utf8");
       childStderr.setEncoding("utf8");
-      childStdout.on("data", (chunk: string) => { stdout += chunk; });
-      childStderr.on("data", (chunk: string) => { stderr += chunk; });
+      childStdout.on("data", (chunk: string) => {
+        stdout += chunk;
+      });
+      childStderr.on("data", (chunk: string) => {
+        stderr += chunk;
+      });
     }
     child.once("error", rejectPromise);
     child.once("exit", (code, signal) => {
@@ -267,8 +274,8 @@ async function runCommand(
       if (exitCode !== 0) {
         const detail = stderr.trim();
         rejectPromise(new Error(
-          `${command} failed with exit code ${exitCode}.` +
-          (detail.length > 0 ? `\n${detail}` : ""),
+            `${command} failed with exit code ${exitCode}.` +
+            (detail.length > 0 ? `\n${detail}` : ""),
         ));
         return;
       }

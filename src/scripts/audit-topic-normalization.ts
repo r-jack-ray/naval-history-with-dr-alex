@@ -1,8 +1,5 @@
 import { auditTopicNormalization } from "../site/topic-normalization-audit.js";
-import type {
-  TopicNormalizationCatalog,
-  TopicSlugResolution,
-} from "../site/topic-normalization.js";
+import type { TopicNormalizationCatalog, TopicSlugResolution, } from "../site/topic-normalization.js";
 import type { VideoSegmentShardIndex } from "../site/video-segment-files.js";
 
 const defaultPatternsInput = "src/derived/topic-normalization-patterns.tsv";
@@ -24,16 +21,16 @@ export interface TopicNormalizationAuditCliRuntime {
 }
 
 export async function runAuditTopicNormalization(
-  args: readonly string[],
-  runtime: TopicNormalizationAuditCliRuntime = {},
+    args: readonly string[],
+    runtime: TopicNormalizationAuditCliRuntime = {},
 ): Promise<number> {
   const options = parseTopicNormalizationAuditArgs(args);
   return await executeTopicNormalizationAudit(options, runtime);
 }
 
 export async function executeTopicNormalizationAudit(
-  options: ParsedTopicNormalizationAuditOptions,
-  runtime: TopicNormalizationAuditCliRuntime = {},
+    options: ParsedTopicNormalizationAuditOptions,
+    runtime: TopicNormalizationAuditCliRuntime = {},
 ): Promise<number> {
   const stdout = runtime.stdout ?? ((text: string) => process.stdout.write(text));
   const stderr = runtime.stderr ?? ((text: string) => process.stderr.write(text));
@@ -45,23 +42,23 @@ export async function executeTopicNormalizationAudit(
   const result = await auditTopicNormalization({
     patternsInput: options.patternsInput,
     ...(runtime.precomputedCreationResolutions === undefined
-      ? {}
-      : { precomputedCreationResolutions: runtime.precomputedCreationResolutions }),
+        ? {}
+        : {precomputedCreationResolutions: runtime.precomputedCreationResolutions}),
     ...(runtime.preloadedCatalog === undefined
-      ? {}
-      : { preloadedCatalog: runtime.preloadedCatalog }),
+        ? {}
+        : {preloadedCatalog: runtime.preloadedCatalog}),
     ...(runtime.preloadedShardIndex === undefined
-      ? {}
-      : { preloadedShardIndex: runtime.preloadedShardIndex }),
+        ? {}
+        : {preloadedShardIndex: runtime.preloadedShardIndex}),
     segmentsInput: options.segmentsInput,
   });
   const summaryFields = runtime.summaryFields?.length
-    ? ` ${runtime.summaryFields.join(" ")}`
-    : "";
+      ? ` ${runtime.summaryFields.join(" ")}`
+      : "";
   stdout(
-    `Topic normalization audit: ${result.shardCount} shard(s), ${result.topicCount} registry topic(s), `
-    + `${result.usedTopicCount} used topic(s), ${result.blockers.length} blocker(s), `
-    + `${result.reviews.length} review finding(s).${summaryFields}\n`,
+      `Topic normalization audit: ${result.shardCount} shard(s), ${result.topicCount} registry topic(s), `
+      + `${result.usedTopicCount} used topic(s), ${result.blockers.length} blocker(s), `
+      + `${result.reviews.length} review finding(s).${summaryFields}\n`,
   );
   if (result.reviews.length > 0) {
     stdout(`${result.reviews.map((finding) => `REVIEW: ${finding}`).join("\n")}\n`);
@@ -74,7 +71,7 @@ export async function executeTopicNormalizationAudit(
 }
 
 export function parseTopicNormalizationAuditArgs(
-  args: readonly string[],
+    args: readonly string[],
 ): ParsedTopicNormalizationAuditOptions {
   let patternsInput = defaultPatternsInput;
   let segmentsInput = defaultSegmentsInput;
@@ -82,21 +79,21 @@ export function parseTopicNormalizationAuditArgs(
   for (let index = 0; index < args.length; index += 1) {
     const arg = args[index];
     switch (arg) {
-      case "--patterns-input":
-        patternsInput = readValue(args, ++index, arg);
-        break;
-      case "--segments-input":
-        segmentsInput = readValue(args, ++index, arg);
-        break;
-      case "--help":
-      case "-h":
-        help = true;
-        break;
-      default:
-        throw new Error(`Unknown argument: ${String(arg)}`);
+    case "--patterns-input":
+      patternsInput = readValue(args, ++index, arg);
+      break;
+    case "--segments-input":
+      segmentsInput = readValue(args, ++index, arg);
+      break;
+    case "--help":
+    case "-h":
+      help = true;
+      break;
+    default:
+      throw new Error(`Unknown argument: ${String(arg)}`);
     }
   }
-  return { patternsInput, segmentsInput, help };
+  return {patternsInput, segmentsInput, help};
 }
 
 function readValue(args: readonly string[], index: number, flag: string): string {
@@ -108,11 +105,11 @@ function readValue(args: readonly string[], index: number, flag: string): string
 }
 
 export function topicNormalizationAuditUsage(
-  command = "npm run audit:topic-normalization",
+    command = "npm run audit:topic-normalization",
 ): string {
   return `Usage: ${command} -- [options]\n\n`
-    + `Options:\n`
-    + `  --patterns-input <path>  Defaults to ${defaultPatternsInput}.\n`
-    + `  --segments-input <path>  Defaults to ${defaultSegmentsInput}.\n`
-    + "  --help                   Show this help.\n";
+      + `Options:\n`
+      + `  --patterns-input <path>  Defaults to ${defaultPatternsInput}.\n`
+      + `  --segments-input <path>  Defaults to ${defaultSegmentsInput}.\n`
+      + "  --help                   Show this help.\n";
 }

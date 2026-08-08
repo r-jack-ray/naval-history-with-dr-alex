@@ -3,11 +3,7 @@
 import { access, readFile } from "node:fs/promises";
 
 import { archiveTimestampPrefix } from "../naming.js";
-import {
-  readVideoMetadataStore,
-  resolveVideoState,
-  type VideoMetadataRecord,
-} from "../youtube/video-metadata.js";
+import { readVideoMetadataStore, resolveVideoState, type VideoMetadataRecord, } from "../youtube/video-metadata.js";
 
 const manifestPath = "src/transcripts/manifest.json";
 const episodesPath = "src/channel/episodes.json";
@@ -16,7 +12,9 @@ const generatedVideosPath = "site/src/data/generated/archive/videos.json";
 
 async function main(): Promise<void> {
   const metadataStore = await readVideoMetadataStore();
-  if (metadataStore === undefined) throw new Error("Video metadata store is missing.");
+  if (metadataStore === undefined) {
+    throw new Error("Video metadata store is missing.");
+  }
   const metadataById = new Map(metadataStore.videos.map((record) => [record.videoId, record]));
   const manifest = await readJsonObject(manifestPath);
   const episodeStore = await readJsonObject(episodesPath);
@@ -30,7 +28,9 @@ async function main(): Promise<void> {
   let segmentCount = 0;
   for (const transcript of transcriptRecords) {
     const videoId = requireString(transcript.videoId, "transcript videoId");
-    if (transcriptById.has(videoId)) throw new Error(`Duplicate transcript manifest videoId: ${videoId}`);
+    if (transcriptById.has(videoId)) {
+      throw new Error(`Duplicate transcript manifest videoId: ${videoId}`);
+    }
     transcriptById.set(videoId, transcript);
     assertNoLegacyFields(transcript, ["videoPublishedAt"], `transcript ${videoId}`);
     const state = readyState(metadataById.get(videoId), `transcript ${videoId}`);
@@ -60,7 +60,9 @@ async function main(): Promise<void> {
   const episodeIds = new Set<string>();
   for (const episode of episodes) {
     const videoId = requireString(episode.videoId, "episode videoId");
-    if (episodeIds.has(videoId)) throw new Error(`Duplicate episode videoId: ${videoId}`);
+    if (episodeIds.has(videoId)) {
+      throw new Error(`Duplicate episode videoId: ${videoId}`);
+    }
     episodeIds.add(videoId);
     assertNoLegacyFields(episode, ["publishDate", "uploadDate", "streamStartAt", "streamEndAt"], `episode ${videoId}`);
     const metadata = metadataById.get(videoId);
@@ -87,7 +89,9 @@ async function main(): Promise<void> {
   }
 
   for (const videoId of transcriptById.keys()) {
-    if (!episodeIds.has(videoId)) throw new Error(`Transcript manifest video is missing from episodes: ${videoId}`);
+    if (!episodeIds.has(videoId)) {
+      throw new Error(`Transcript manifest video is missing from episodes: ${videoId}`);
+    }
   }
 
   const failures = requireArray(fetchStatus.failures, `${fetchStatusPath} failures`).map((value) => requireRecord(value, "failure record"));
@@ -100,8 +104,8 @@ async function main(): Promise<void> {
   }
 
   const notReadyIds = metadataStore.videos
-    .filter((record) => resolveVideoState(record).state !== "ready")
-    .map((record) => record.videoId);
+      .filter((record) => resolveVideoState(record).state !== "ready")
+      .map((record) => record.videoId);
   const curatedNotReady = notReadyIds.filter((videoId) => transcriptById.has(videoId));
   if (curatedNotReady.length > 0) {
     throw new Error(`Not-ready videos remain in the transcript manifest: ${curatedNotReady.join(", ")}`);
@@ -110,18 +114,22 @@ async function main(): Promise<void> {
   if (generatedVideos !== undefined) {
     const generatedIds = new Set(generatedVideos.map((value) => requireString(requireRecord(value, "generated video").videoId, "generated videoId")));
     const exposed = notReadyIds.filter((videoId) => generatedIds.has(videoId));
-    if (exposed.length > 0) throw new Error(`Not-ready videos appear in generated site data: ${exposed.join(", ")}`);
+    if (exposed.length > 0) {
+      throw new Error(`Not-ready videos appear in generated site data: ${exposed.join(", ")}`);
+    }
   }
 
   console.log(
-    `Timestamp alignment audit passed: ${transcriptRecords.length} transcripts, ${episodes.length} episodes, ` +
-    `${segmentCount} segments, ${failures.length} failures, ${notReadyIds.length} not-ready metadata records.`,
+      `Timestamp alignment audit passed: ${transcriptRecords.length} transcripts, ${episodes.length} episodes, ` +
+      `${segmentCount} segments, ${failures.length} failures, ${notReadyIds.length} not-ready metadata records.`,
   );
 }
 
 function readyState(metadata: VideoMetadataRecord | undefined, label: string) {
   const state = resolveVideoState(metadata);
-  if (state.state !== "ready") throw new Error(`${label} is not ready: ${state.reason} (${state.diagnostic})`);
+  if (state.state !== "ready") {
+    throw new Error(`${label} is not ready: ${state.reason} (${state.diagnostic})`);
+  }
   return state;
 }
 
@@ -143,7 +151,9 @@ function assertSchema(value: Record<string, unknown>, expected: number, path: st
 
 function assertNoLegacyFields(value: Record<string, unknown>, fields: readonly string[], label: string): void {
   for (const field of fields) {
-    if (field in value) throw new Error(`${label} contains legacy field ${field}.`);
+    if (field in value) {
+      throw new Error(`${label} contains legacy field ${field}.`);
+    }
   }
 }
 
@@ -161,23 +171,31 @@ async function readOptionalJsonArray(path: string): Promise<unknown[] | undefine
   try {
     return requireArray(JSON.parse(await readFile(path, "utf8")) as unknown, path);
   } catch (error) {
-    if (typeof error === "object" && error !== null && "code" in error && error.code === "ENOENT") return undefined;
+    if (typeof error === "object" && error !== null && "code" in error && error.code === "ENOENT") {
+      return undefined;
+    }
     throw error;
   }
 }
 
 function requireRecord(value: unknown, label: string): Record<string, unknown> {
-  if (value === null || typeof value !== "object" || Array.isArray(value)) throw new Error(`${label} must be an object.`);
+  if (value === null || typeof value !== "object" || Array.isArray(value)) {
+    throw new Error(`${label} must be an object.`);
+  }
   return value as Record<string, unknown>;
 }
 
 function requireArray(value: unknown, label: string): unknown[] {
-  if (!Array.isArray(value)) throw new Error(`${label} must be an array.`);
+  if (!Array.isArray(value)) {
+    throw new Error(`${label} must be an array.`);
+  }
   return value;
 }
 
 function requireString(value: unknown, label: string): string {
-  if (typeof value !== "string" || value.length === 0) throw new Error(`${label} must be a non-empty string.`);
+  if (typeof value !== "string" || value.length === 0) {
+    throw new Error(`${label} must be a non-empty string.`);
+  }
   return value;
 }
 

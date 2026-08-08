@@ -143,23 +143,31 @@ export function analyzeVideoSegmentRisk(input: VideoSegmentAuditRiskInput): Vide
         const evidenceEnd = evidence.end === undefined ? undefined : boundedTimestamp(evidence.end, input.durationSeconds);
         const validNote = typeof evidence.note === "string" && evidence.note.trim().length > 0;
         if (evidenceStart === undefined || !validNote || (evidence.end !== undefined && evidenceEnd === undefined)
-          || (evidenceStart !== undefined && evidenceEnd !== undefined && evidenceEnd < evidenceStart)) {
+            || (evidenceStart !== undefined && evidenceEnd !== undefined && evidenceEnd < evidenceStart)) {
           evidenceInvalid = true;
-          if (evidenceStart === undefined) invalidAnchorCount += 1;
-          if (evidence.end !== undefined && evidenceEnd === undefined) invalidAnchorCount += 1;
+          if (evidenceStart === undefined) {
+            invalidAnchorCount += 1;
+          }
+          if (evidence.end !== undefined && evidenceEnd === undefined) {
+            invalidAnchorCount += 1;
+          }
           continue;
         }
         validEvidenceCount += 1;
         anchors.push(evidenceStart);
-        if (evidenceEnd !== undefined) anchors.push(evidenceEnd);
+        if (evidenceEnd !== undefined) {
+          anchors.push(evidenceEnd);
+        }
       }
-      if (evidenceInvalid || validEvidenceCount < minimumEvidenceWindows) invalidEvidenceSegments += 1;
+      if (evidenceInvalid || validEvidenceCount < minimumEvidenceWindows) {
+        invalidEvidenceSegments += 1;
+      }
     }
 
     if (segment.kind === "qa") {
       qaCount += 1;
       const validText = typeof segment.question === "string" && segment.question.trim().length > 0
-        && typeof segment.answerShort === "string" && segment.answerShort.trim().length > 0;
+          && typeof segment.answerShort === "string" && segment.answerShort.trim().length > 0;
       if (validText && segmentTimeValid && start !== undefined && validEvidenceCount >= minimumEvidenceWindows && !evidenceInvalid) {
         validQaCount += 1;
         qaAnchors.push(start);
@@ -167,13 +175,26 @@ export function analyzeVideoSegmentRisk(input: VideoSegmentAuditRiskInput): Vide
     }
   }
 
-  if (missingSourcePathSegments > 0) hardIssues.push(`${missingSourcePathSegments} segment(s) have a missing sourcePath`);
-  if (wrongSourcePathSegments > 0) hardIssues.push(`${wrongSourcePathSegments} segment(s) use the wrong transcript sourcePath`);
-  if (missingEvidenceSegments > 0) hardIssues.push(`${missingEvidenceSegments} segment(s) lack required evidence`);
-  if (invalidEvidenceSegments > 0) hardIssues.push(`${invalidEvidenceSegments} segment(s) contain invalid evidence`);
-  if (qaCount > validQaCount) hardIssues.push(`${qaCount - validQaCount} qa segment(s) are malformed`);
-  if (input.transcriptBytes === undefined) hardIssues.push("matching canonical transcript is missing");
-  else if (input.transcriptBytes === 0) hardIssues.push("matching canonical transcript is empty");
+  if (missingSourcePathSegments > 0) {
+    hardIssues.push(`${missingSourcePathSegments} segment(s) have a missing sourcePath`);
+  }
+  if (wrongSourcePathSegments > 0) {
+    hardIssues.push(`${wrongSourcePathSegments} segment(s) use the wrong transcript sourcePath`);
+  }
+  if (missingEvidenceSegments > 0) {
+    hardIssues.push(`${missingEvidenceSegments} segment(s) lack required evidence`);
+  }
+  if (invalidEvidenceSegments > 0) {
+    hardIssues.push(`${invalidEvidenceSegments} segment(s) contain invalid evidence`);
+  }
+  if (qaCount > validQaCount) {
+    hardIssues.push(`${qaCount - validQaCount} qa segment(s) are malformed`);
+  }
+  if (input.transcriptBytes === undefined) {
+    hardIssues.push("matching canonical transcript is missing");
+  } else if (input.transcriptBytes === 0) {
+    hardIssues.push("matching canonical transcript is empty");
+  }
 
   const interval = transcriptInterval(input.transcriptStartSeconds, input.durationSeconds);
   const distribution = temporalDistribution(anchors, interval);
@@ -181,42 +202,48 @@ export function analyzeVideoSegmentRisk(input: VideoSegmentAuditRiskInput): Vide
   const qaExpectation = input.qaExpectation ?? "none";
   const qaExpected = qaExpectation !== "none";
   const completedGenericNoQa = qaExpectation === "configured_video_type"
-    && input.needsFurtherProcessing === "no"
-    && validQaCount === 0;
+      && input.needsFurtherProcessing === "no"
+      && validQaCount === 0;
   if (qaExpected && !completedGenericNoQa && validQaCount === 0 && input.segments.length > 0) {
     reviewSignals.push("configured title or video type expects Q&A but the shard has no valid qa segments");
   } else if (qaExpected && validQaCount > 0 && interval !== undefined && interval.durationSeconds >= 3_600
-    && qaTemporalBinsCovered <= 1) {
+      && qaTemporalBinsCovered <= 1) {
     reviewSignals.push("Q&A records occupy only one temporal bin in a long Q&A-expected video");
   }
   if (input.segments.length > 0 && interval !== undefined && interval.durationSeconds >= 1_800) {
-    if ((distribution.largestGapPct ?? 0) >= 50) reviewSignals.push("valid anchors leave a gap of at least half the transcript duration");
-    if (distribution.binsCovered <= 2) reviewSignals.push("valid anchors occupy at most two of ten transcript bins");
+    if ((distribution.largestGapPct ?? 0) >= 50) {
+      reviewSignals.push("valid anchors leave a gap of at least half the transcript duration");
+    }
+    if (distribution.binsCovered <= 2) {
+      reviewSignals.push("valid anchors occupy at most two of ten transcript bins");
+    }
   }
   if (input.segments.length === 0 && input.needsFurtherProcessing !== "no") {
     reviewSignals.push("shard has no segments and is not intentionally completed");
   }
-  if (input.needsFurtherProcessing === "unknown") reviewSignals.push("latest processing state is unknown");
+  if (input.needsFurtherProcessing === "unknown") {
+    reviewSignals.push("latest processing state is unknown");
+  }
 
   const heavilyReviewed = input.processLogEntries >= HEAVILY_REVIEWED_PASS_THRESHOLD;
   const manualAudioReviewRemaining = input.manualAudioReviewRemaining ?? false;
   const textAuditDeprioritized = heavilyReviewed || manualAudioReviewRemaining;
   const auditRoute: AuditRoute = hardIssues.length > 0
-    ? "repair_required"
-    : input.needsFurtherProcessing === "yes" && !textAuditDeprioritized
-      ? "follow_up_required"
-      : reviewSignals.length > 0
-        ? "review_candidate"
-        : "low_signal";
+      ? "repair_required"
+      : input.needsFurtherProcessing === "yes" && !textAuditDeprioritized
+          ? "follow_up_required"
+          : reviewSignals.length > 0
+              ? "review_candidate"
+              : "low_signal";
   const completedEmptyAfterRecordedPass = auditRoute === "low_signal"
-    && input.needsFurtherProcessing === "no"
-    && input.processLogEntries >= 1
-    && input.segments.length === 0;
+      && input.needsFurtherProcessing === "no"
+      && input.processLogEntries >= 1
+      && input.segments.length === 0;
   const segmentCount = input.segments.length;
   const durationMinutes = interval === undefined ? undefined : interval.durationSeconds / 60;
   const largestAnchorGapMinutes = distribution.largestGapPct === undefined || durationMinutes === undefined
-    ? undefined
-    : durationMinutes * distribution.largestGapPct / 100;
+      ? undefined
+      : durationMinutes * distribution.largestGapPct / 100;
   const metadataRiskIndex = continuousMetadataRisk({
     durationMinutes,
     segmentCount,
@@ -228,15 +255,15 @@ export function analyzeVideoSegmentRisk(input: VideoSegmentAuditRiskInput): Vide
     qaTemporalBinsCovered,
   });
   const weightedMetadataRiskIndex = metadataRiskIndex
-    * (textAuditDeprioritized ? DEPRIORITIZED_TEXT_AUDIT_METADATA_WEIGHT : 1);
+      * (textAuditDeprioritized ? DEPRIORITIZED_TEXT_AUDIT_METADATA_WEIGHT : 1);
   const score = riskScore(auditRoute, hardIssues.length, reviewSignals.length, weightedMetadataRiskIndex);
   const riskSignals = [...hardIssues];
   if (input.needsFurtherProcessing === "yes") {
     riskSignals.push(manualAudioReviewRemaining
-      ? "latest pass leaves only manual audio review; text-only follow-up promotion is suppressed"
-      : heavilyReviewed
-        ? "latest processing state requests further processing, but the 3+ pass threshold prevents automatic follow-up promotion"
-        : "recorded processing state explicitly requests further processing");
+        ? "latest pass leaves only manual audio review; text-only follow-up promotion is suppressed"
+        : heavilyReviewed
+            ? "latest processing state requests further processing, but the 3+ pass threshold prevents automatic follow-up promotion"
+            : "recorded processing state explicitly requests further processing");
   }
   riskSignals.push(...reviewSignals);
   if (heavilyReviewed) {
@@ -288,12 +315,12 @@ export function analyzeVideoSegmentRisk(input: VideoSegmentAuditRiskInput): Vide
 
 export function rankVideoSegmentAuditRisks(rows: VideoSegmentAuditRiskRow[]): VideoSegmentAuditRiskRow[] {
   return [...rows].sort((left, right) =>
-    ROUTE_ORDER[left.auditRoute] - ROUTE_ORDER[right.auditRoute]
-    || auditDeprioritizationOrder(left) - auditDeprioritizationOrder(right)
-    || right.auditRiskScore - left.auditRiskScore
-    || left.videoTitle.localeCompare(right.videoTitle)
-    || left.videoId.localeCompare(right.videoId))
-    .map((row, index) => ({ ...row, rank: index + 1 }));
+      ROUTE_ORDER[left.auditRoute] - ROUTE_ORDER[right.auditRoute]
+      || auditDeprioritizationOrder(left) - auditDeprioritizationOrder(right)
+      || right.auditRiskScore - left.auditRiskScore
+      || left.videoTitle.localeCompare(right.videoTitle)
+      || left.videoId.localeCompare(right.videoId))
+      .map((row, index) => ({...row, rank: index + 1}));
 }
 
 export function renderVideoSegmentAuditRiskTsv(rows: VideoSegmentAuditRiskRow[]): string {
@@ -318,25 +345,41 @@ export function renderVideoSegmentAuditRiskTsv(rows: VideoSegmentAuditRiskRow[])
 }
 
 export function parseStrictTimestamp(value: unknown): number | undefined {
-  if (typeof value !== "string") return undefined;
+  if (typeof value !== "string") {
+    return undefined;
+  }
   let parts: string[];
-  if (/^\d+:\d{2}$/u.test(value)) parts = value.split(":");
-  else if (/^\d+:\d{2}:\d{2}$/u.test(value)) parts = value.split(":");
-  else return undefined;
+  if (/^\d+:\d{2}$/u.test(value)) {
+    parts = value.split(":");
+  } else if (/^\d+:\d{2}:\d{2}$/u.test(value)) {
+    parts = value.split(":");
+  } else {
+    return undefined;
+  }
   const numbers = parts.map(Number);
-  if (numbers.some((part) => !Number.isSafeInteger(part) || part < 0)) return undefined;
+  if (numbers.some((part) => !Number.isSafeInteger(part) || part < 0)) {
+    return undefined;
+  }
   if (numbers.length === 2) {
-    if (numbers[1]! > 59) return undefined;
+    if (numbers[1]! > 59) {
+      return undefined;
+    }
     return numbers[0]! * 60 + numbers[1]!;
   }
-  if (numbers[1]! > 59 || numbers[2]! > 59) return undefined;
+  if (numbers[1]! > 59 || numbers[2]! > 59) {
+    return undefined;
+  }
   return numbers[0]! * 3_600 + numbers[1]! * 60 + numbers[2]!;
 }
 
 function boundedTimestamp(value: unknown, durationSeconds: number | undefined): number | undefined {
   const seconds = parseStrictTimestamp(value);
-  if (seconds === undefined) return undefined;
-  if (durationSeconds !== undefined && seconds > durationSeconds + TIMESTAMP_TOLERANCE_SECONDS) return undefined;
+  if (seconds === undefined) {
+    return undefined;
+  }
+  if (durationSeconds !== undefined && seconds > durationSeconds + TIMESTAMP_TOLERANCE_SECONDS) {
+    return undefined;
+  }
   return seconds;
 }
 
@@ -347,23 +390,27 @@ interface TranscriptInterval {
 }
 
 function transcriptInterval(startSeconds: number | undefined, endSeconds: number | undefined): TranscriptInterval | undefined {
-  if (!positive(endSeconds)) return undefined;
+  if (!positive(endSeconds)) {
+    return undefined;
+  }
   const start = startSeconds !== undefined && Number.isFinite(startSeconds) && startSeconds >= 0 && startSeconds < endSeconds
-    ? startSeconds
-    : 0;
-  return { startSeconds: start, endSeconds, durationSeconds: endSeconds - start };
+      ? startSeconds
+      : 0;
+  return {startSeconds: start, endSeconds, durationSeconds: endSeconds - start};
 }
 
 function temporalDistribution(anchors: number[], interval: TranscriptInterval | undefined): {
   firstPct: number | undefined; lastPct: number | undefined; binsCovered: number; largestGapPct: number | undefined;
 } {
   if (interval === undefined || anchors.length === 0) {
-    return { firstPct: undefined, lastPct: undefined, binsCovered: 0, largestGapPct: undefined };
+    return {firstPct: undefined, lastPct: undefined, binsCovered: 0, largestGapPct: undefined};
   }
   const sorted = [...new Set(anchors.map((anchor) => clamp(anchor, interval.startSeconds, interval.endSeconds)))].sort((a, b) => a - b);
   const points = [interval.startSeconds, ...sorted, interval.endSeconds];
   let largestGap = 0;
-  for (let index = 1; index < points.length; index += 1) largestGap = Math.max(largestGap, points[index]! - points[index - 1]!);
+  for (let index = 1; index < points.length; index += 1) {
+    largestGap = Math.max(largestGap, points[index]! - points[index - 1]!);
+  }
   return {
     firstPct: ((sorted[0]! - interval.startSeconds) / interval.durationSeconds) * 100,
     lastPct: ((sorted[sorted.length - 1]! - interval.startSeconds) / interval.durationSeconds) * 100,
@@ -373,7 +420,9 @@ function temporalDistribution(anchors: number[], interval: TranscriptInterval | 
 }
 
 function occupiedBins(anchors: number[], interval: TranscriptInterval | undefined): number {
-  if (interval === undefined) return 0;
+  if (interval === undefined) {
+    return 0;
+  }
   return new Set(anchors.map((anchor) => {
     const bounded = clamp(anchor, interval.startSeconds, interval.endSeconds);
     return Math.min(9, Math.floor(((bounded - interval.startSeconds) / interval.durationSeconds) * 10));
@@ -393,7 +442,9 @@ interface MetadataRiskInput {
 
 function continuousMetadataRisk(input: MetadataRiskInput): number {
   if (input.segmentCount === 0 || input.durationMinutes === undefined
-    || input.largestAnchorGapPct === undefined || input.largestAnchorGapMinutes === undefined) return 0;
+      || input.largestAnchorGapPct === undefined || input.largestAnchorGapMinutes === undefined) {
+    return 0;
+  }
 
   // Short clips provide too little duration for sparse anchors to be a meaningful warning.
   const durationConfidence = unitInterval((input.durationMinutes - 5) / 25);
@@ -401,18 +452,18 @@ function continuousMetadataRisk(input: MetadataRiskInput): number {
   const absoluteGapRisk = unitInterval((input.largestAnchorGapMinutes - 5) / 55) * durationConfidence;
   const expectedTemporalBins = clamp(Math.ceil(input.durationMinutes / 10), 1, 10);
   const binDeficitRisk = unitInterval(
-    (expectedTemporalBins - input.temporalBinsCovered) / expectedTemporalBins,
+      (expectedTemporalBins - input.temporalBinsCovered) / expectedTemporalBins,
   ) * durationConfidence;
   const expectedQaBins = clamp(Math.ceil(input.durationMinutes / 30), 1, 10);
   const qaDispersionRisk = input.qaExpected && input.validQaCount > 0
-    ? unitInterval((expectedQaBins - input.qaTemporalBinsCovered) / expectedQaBins) * durationConfidence
-    : 0;
+      ? unitInterval((expectedQaBins - input.qaTemporalBinsCovered) / expectedQaBins) * durationConfidence
+      : 0;
 
   return unitInterval(
-    relativeGapRisk * 0.4
-    + absoluteGapRisk * 0.35
-    + binDeficitRisk * 0.15
-    + qaDispersionRisk * 0.1,
+      relativeGapRisk * 0.4
+      + absoluteGapRisk * 0.35
+      + binDeficitRisk * 0.15
+      + qaDispersionRisk * 0.1,
   );
 }
 
@@ -434,15 +485,23 @@ function riskScore(route: AuditRoute, hardIssueCount: number, reviewSignalCount:
 }
 
 function tierFor(score: number): RiskTier {
-  if (score >= 85) return "critical";
-  if (score >= 65) return "high";
-  if (score >= 35) return "medium";
+  if (score >= 85) {
+    return "critical";
+  }
+  if (score >= 65) {
+    return "high";
+  }
+  if (score >= 35) {
+    return "medium";
+  }
   return "low";
 }
 
 function auditDeprioritizationOrder(row: VideoSegmentAuditRiskRow): number {
   if (row.auditRoute === "low_signal" && row.needsFurtherProcessing === "no"
-    && row.processLogEntries >= 1 && row.segmentCount === 0) return 2;
+      && row.processLogEntries >= 1 && row.segmentCount === 0) {
+    return 2;
+  }
   return row.manualAudioReviewRemaining || row.processLogEntries >= HEAVILY_REVIEWED_PASS_THRESHOLD ? 1 : 0;
 }
 

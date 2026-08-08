@@ -1,10 +1,6 @@
 import path from "node:path";
 
-import {
-  SITE_CONTENT_PROCESSING_LOG_HEADER,
-  siteContentProcessingLogShardPathPattern,
-  validateSiteContentProcessingLogRow,
-} from "./schemas/index.js";
+import { SITE_CONTENT_PROCESSING_LOG_HEADER, siteContentProcessingLogShardPathPattern, validateSiteContentProcessingLogRow, } from "./schemas/index.js";
 
 export const DEFAULT_SITE_CONTENT_PROCESSING_LOG = "src/derived/site-content-processing.log";
 
@@ -43,8 +39,8 @@ export interface SiteContentProcessingLogParseResult {
 }
 
 export function parseSiteContentProcessingLog(
-  text: string,
-  manifestRecords: readonly ProcessingLogManifestRecord[],
+    text: string,
+    manifestRecords: readonly ProcessingLogManifestRecord[],
 ): SiteContentProcessingLogParseResult {
   const lines = text.split(/\r?\n/u);
   if (lines[0] !== SITE_CONTENT_PROCESSING_LOG_HEADER) {
@@ -55,11 +51,18 @@ export function parseSiteContentProcessingLog(
   const duplicateStems = new Set<string>();
   for (const record of manifestRecords) {
     const fileStem = manifestFileStem(record);
-    if (fileStem === undefined) continue;
-    if (manifestByStem.has(fileStem)) duplicateStems.add(fileStem);
-    else manifestByStem.set(fileStem, record);
+    if (fileStem === undefined) {
+      continue;
+    }
+    if (manifestByStem.has(fileStem)) {
+      duplicateStems.add(fileStem);
+    } else {
+      manifestByStem.set(fileStem, record);
+    }
   }
-  for (const stem of duplicateStems) manifestByStem.delete(stem);
+  for (const stem of duplicateStems) {
+    manifestByStem.delete(stem);
+  }
 
   const records: SiteContentProcessingLogRecord[] = [];
   const latestByFileStem = new Map<string, SiteContentProcessingLogRecord>();
@@ -75,7 +78,9 @@ export function parseSiteContentProcessingLog(
     if (line.trim().length === 0) {
       // A newline-terminated text file produces one final empty split item. It
       // is the expected line terminator, not an ignored log row.
-      if (index !== lines.length - 1 || line !== "") ignoredRowCount += 1;
+      if (index !== lines.length - 1 || line !== "") {
+        ignoredRowCount += 1;
+      }
       continue;
     }
     const fields = splitCanonicalFields(line);
@@ -95,10 +100,10 @@ export function parseSiteContentProcessingLog(
     if (!rowValidation.success) {
       malformedRowCount += 1;
       problems.push(problem(
-        lineNumber,
-        "processing-log-invalid-row",
-        `is invalid: ${rowValidation.issues.join("; ")}`,
-        line,
+          lineNumber,
+          "processing-log-invalid-row",
+          `is invalid: ${rowValidation.issues.join("; ")}`,
+          line,
       ));
       continue;
     }
@@ -110,12 +115,12 @@ export function parseSiteContentProcessingLog(
     if (manifestRecord === undefined) {
       unmappedRowCount += 1;
       problems.push(problem(
-        lineNumber,
-        "processing-log-unmapped-shard",
-        duplicateStems.has(fileStem)
-          ? `cannot map duplicate manifest file stem ${fileStem}`
-          : `cannot map shard ${fileStem} through the transcript manifest`,
-        line,
+          lineNumber,
+          "processing-log-unmapped-shard",
+          duplicateStems.has(fileStem)
+              ? `cannot map duplicate manifest file stem ${fileStem}`
+              : `cannot map shard ${fileStem} through the transcript manifest`,
+          line,
       ));
       continue;
     }
@@ -151,22 +156,30 @@ function splitCanonicalFields(line: string): [string, string, string, string, st
   const fields: string[] = [];
   let fieldStart = 0;
   for (let index = 0; index < line.length && fields.length < 4; index += 1) {
-    if (line[index] !== ";") continue;
+    if (line[index] !== ";") {
+      continue;
+    }
     fields.push(line.slice(fieldStart, index));
     fieldStart = index + 1;
   }
-  if (fields.length !== 4) return undefined;
+  if (fields.length !== 4) {
+    return undefined;
+  }
   fields.push(line.slice(fieldStart));
   return fields as [string, string, string, string, string];
 }
 
 export function manifestFileStem(record: ProcessingLogManifestRecord): string | undefined {
-  if (typeof record.fileStem === "string" && record.fileStem.length > 0) return record.fileStem;
+  if (typeof record.fileStem === "string" && record.fileStem.length > 0) {
+    return record.fileStem;
+  }
   const txt = record.paths?.txt;
-  if (typeof txt !== "string" || txt.length === 0) return undefined;
+  if (typeof txt !== "string" || txt.length === 0) {
+    return undefined;
+  }
   return path.posix.basename(txt.replaceAll("\\", "/"), ".txt");
 }
 
 function problem(lineNumber: number, code: string, message: string, line: string): SiteContentProcessingLogProblem {
-  return { lineNumber, code, message: `Processing log line ${lineNumber} ${message}.`, line };
+  return {lineNumber, code, message: `Processing log line ${lineNumber} ${message}.`, line};
 }

@@ -1,9 +1,6 @@
 import { defaultSiteSegmentsInput } from "../site/archive-data.js";
 import { withSiteBuildRepairHint } from "../site/build-repair-guidance.js";
-import {
-  findCuratedSegmentDuplicates,
-  formatCuratedSegmentDuplicate,
-} from "../site/curated-seed.js";
+import { findCuratedSegmentDuplicates, formatCuratedSegmentDuplicate, } from "../site/curated-seed.js";
 
 try {
   const options = parseArgs(process.argv.slice(2));
@@ -26,21 +23,21 @@ try {
 }
 
 function parseArgs(args: string[]): { segmentsInput: string } {
-  const options = { segmentsInput: defaultSiteSegmentsInput };
+  const options = {segmentsInput: defaultSiteSegmentsInput};
 
   for (let index = 0; index < args.length; index += 1) {
     const arg = args[index];
     switch (arg) {
-      case "--segments-input":
-        options.segmentsInput = readValue(args, ++index, arg);
-        break;
-      case "--help":
-      case "-h":
-        printUsage();
-        process.exit(0);
-        break;
-      default:
-        throw new Error(`Unknown argument: ${arg}`);
+    case "--segments-input":
+      options.segmentsInput = readValue(args, ++index, arg);
+      break;
+    case "--help":
+    case "-h":
+      printUsage();
+      process.exit(0);
+      break;
+    default:
+      throw new Error(`Unknown argument: ${arg}`);
     }
   }
 

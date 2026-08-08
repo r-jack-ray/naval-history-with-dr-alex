@@ -11,7 +11,7 @@ const records = [
 
 test("accepts unchecked, in-progress, and checked rows across a complete balanced schedule", () => {
   const audit = buildTranscriptScheduleAudit({
-    manifest: { transcripts: records },
+    manifest: {transcripts: records},
     manifestPath: "src/transcripts/manifest.json",
     schedules: [
       schedule("one.md", 1, 2, 2, [row("x", records[0]!), row("~", records[1]!)]),
@@ -23,15 +23,15 @@ test("accepts unchecked, in-progress, and checked rows across a complete balance
 
   assert.deepEqual(audit.issues, []);
   assert.deepEqual(
-    [audit.stats.scheduledTranscriptCount, audit.stats.uncheckedCount, audit.stats.inProgressCount, audit.stats.checkedCount],
-    [3, 1, 1, 1],
+      [audit.stats.scheduledTranscriptCount, audit.stats.uncheckedCount, audit.stats.inProgressCount, audit.stats.checkedCount],
+      [3, 1, 1, 1],
   );
 });
 
 test("reports invalid states, duplicate rows, missing files, and incomplete manifest coverage", () => {
   const badRows = [row("X", records[0]!), row(" ", records[0]!)];
   const audit = buildTranscriptScheduleAudit({
-    manifest: { transcripts: records },
+    manifest: {transcripts: records},
     manifestPath: "src/transcripts/manifest.json",
     schedules: [schedule("one.md", 1, 1, 2, badRows)],
     rootDir: "C:/repo",
@@ -44,7 +44,9 @@ test("reports invalid states, duplicate rows, missing files, and incomplete mani
     "duplicate-schedule-video-id",
     "missing-scheduled-transcript",
     "manifest-transcript-not-scheduled",
-  ]) assert.ok(codes.has(code), code);
+  ]) {
+    assert.ok(codes.has(code), code);
+  }
 });
 
 test("optional artifact checks require post-schedule log and shard completion", () => {
@@ -54,7 +56,7 @@ test("optional artifact checks require post-schedule log and shard completion", 
     `2026-07-09T01:00:00-05:00\tsrc/transcripts/txt/stored_b.txt\tb\tcurated\tno\tdone`,
   ].join("\n");
   const audit = buildTranscriptScheduleAudit({
-    manifest: { transcripts: records },
+    manifest: {transcripts: records},
     manifestPath: "src/transcripts/manifest.json",
     schedules,
     rootDir: "C:/repo",
@@ -70,7 +72,7 @@ test("optional artifact checks require post-schedule log and shard completion", 
 
 test("rejects old-form shards when artifact checks require a manifest filename", () => {
   const audit = buildTranscriptScheduleAudit({
-    manifest: { transcripts: records },
+    manifest: {transcripts: records},
     manifestPath: "src/transcripts/manifest.json",
     schedules: [schedule("one.md", 1, 1, 3, [row("x", records[0]!), row(" ", records[1]!), row(" ", records[2]!)])],
     rootDir: "C:/repo",
@@ -92,7 +94,7 @@ function record(videoId: string, videoDateAt: string, count: number) {
     videoDateAt,
     segmentCount: count,
     lastEndSeconds: count * 10,
-    paths: { txt: `txt/stored_${videoId}.txt` },
+    paths: {txt: `txt/stored_${videoId}.txt`},
   };
 }
 

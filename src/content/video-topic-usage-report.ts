@@ -1,6 +1,6 @@
+import type { TopicNormalizationRule } from "../site/topic-normalization.js";
 import type { CuratedArchiveSeed } from "./curated-archive-model.js";
 import type { CuratedTopicSeed } from "./schemas/index.js";
-import type { TopicNormalizationRule } from "../site/topic-normalization.js";
 
 export const videoTopicUsageReportHeaderKeys = [
   "topic_slug",
@@ -16,7 +16,7 @@ export const videoTopicUsageReportHeaderKeys = [
 ] as const;
 
 export const videoTopicUsageReportHeaders = videoTopicUsageReportHeaderKeys.map((header) => (
-  header.replaceAll("_", " ")
+    header.replaceAll("_", " ")
 ));
 
 type HeaderKey = typeof videoTopicUsageReportHeaderKeys[number];
@@ -72,17 +72,19 @@ interface TopicClassification {
 }
 
 export function renderVideoTopicUsageReport(
-  seed: CuratedArchiveSeed,
-  normalizationRules: readonly TopicNormalizationRule[],
-  options: RenderVideoTopicUsageReportOptions = {},
+    seed: CuratedArchiveSeed,
+    normalizationRules: readonly TopicNormalizationRule[],
+    options: RenderVideoTopicUsageReportOptions = {},
 ): VideoTopicUsageReport {
-  const { allTopics, registryBySlug, registryTopics } = collectTopicDefinitions(seed);
+  const {allTopics, registryBySlug, registryTopics} = collectTopicDefinitions(seed);
 
   const metricsBySlug = new Map<string, TopicMetrics>();
   const coTopicCounts = new Map<string, Map<string, number>>();
   const getMetrics = (slug: string): TopicMetrics => {
     const existing = metricsBySlug.get(slug);
-    if (existing !== undefined) return existing;
+    if (existing !== undefined) {
+      return existing;
+    }
     const created: TopicMetrics = {
       anyVideoIds: new Set(),
     };
@@ -113,7 +115,9 @@ export function renderVideoTopicUsageReport(
 
   const normalizationByReplacement = new Map<string, TopicNormalizationRule[]>();
   for (const rule of normalizationRules) {
-    if (rule.status !== "active" || !rule.scopes.includes("creation")) continue;
+    if (rule.status !== "active" || !rule.scopes.includes("creation")) {
+      continue;
+    }
     const target = normalizationByReplacement.get(rule.replacement) ?? [];
     target.push(rule);
     normalizationByReplacement.set(rule.replacement, target);
@@ -127,27 +131,27 @@ export function renderVideoTopicUsageReport(
   }
 
   const topCoTopics = (slug: string, limit: number): CoTopic[] => (
-    [...(coTopicCounts.get(slug) ?? new Map()).entries()]
-      .map(([otherSlug, count]) => ({
-        slug: otherSlug,
-        title: registryBySlug.get(otherSlug)?.title ?? titleFromSlug(otherSlug),
-        count,
-      }))
-      .sort((left, right) => (
-        right.count - left.count
-        || left.title.localeCompare(right.title, "en", { sensitivity: "base" })
-        || left.slug.localeCompare(right.slug, "en")
-      ))
-      .slice(0, limit)
+      [...(coTopicCounts.get(slug) ?? new Map()).entries()]
+          .map(([otherSlug, count]) => ({
+            slug: otherSlug,
+            title: registryBySlug.get(otherSlug)?.title ?? titleFromSlug(otherSlug),
+            count,
+          }))
+          .sort((left, right) => (
+              right.count - left.count
+              || left.title.localeCompare(right.title, "en", {sensitivity: "base"})
+              || left.slug.localeCompare(right.slug, "en")
+          ))
+          .slice(0, limit)
   );
 
   const rows: VideoTopicUsageReportRow[] = allTopics.map((topic) => {
     const metrics = getMetrics(topic.slug);
     const usageCount = metrics.anyVideoIds.size;
     const normalizationInputs = (normalizationByReplacement.get(topic.slug) ?? [])
-      .filter((rule) => rule.match !== topic.slug)
-      .map((rule) => `${rule.matchKind}:${rule.match}`)
-      .sort((left, right) => left.localeCompare(right, "en"));
+        .filter((rule) => rule.match !== topic.slug)
+        .map((rule) => `${rule.matchKind}:${rule.match}`)
+        .sort((left, right) => left.localeCompare(right, "en"));
     const classification = classifyTopic(topic);
     const similar = nameAnalysis.get(topic.slug) ?? [];
     const coTopics = topCoTopics(topic.slug, 5);
@@ -161,19 +165,19 @@ export function renderVideoTopicUsageReport(
       topic_aliases: topic.aliases.join(" | "),
       normalization_inputs: normalizationInputs.join(" | "),
       similar_topics: similar.map((entry) => (
-        `${entry.slug}|${entry.title} [${entry.score.toFixed(2)}]`
+          `${entry.slug}|${entry.title} [${entry.score.toFixed(2)}]`
       )).join(" ; "),
       frequent_co_topics: coTopics.map((entry) => (
-        `${entry.slug}|${entry.title} [${entry.count}]`
+          `${entry.slug}|${entry.title} [${entry.count}]`
       )).join(" ; "),
       potential_duplicate_review: similar[0]?.score !== undefined && similar[0].score >= 0.88 ? "yes" : "no",
     };
   });
 
   rows.sort((left, right) => (
-    Number(right.usage_count) - Number(left.usage_count)
-    || String(left.display_name).localeCompare(String(right.display_name), "en", { sensitivity: "base" })
-    || String(left.topic_slug).localeCompare(String(right.topic_slug), "en")
+      Number(right.usage_count) - Number(left.usage_count)
+      || String(left.display_name).localeCompare(String(right.display_name), "en", {sensitivity: "base"})
+      || String(left.topic_slug).localeCompare(String(right.topic_slug), "en")
   ));
 
   const matrix: ReportValue[][] = [
@@ -192,7 +196,7 @@ export function renderVideoTopicUsageReport(
       usedTopicCount: rows.filter((row) => Number(row.usage_count) > 0).length,
       unusedTopicCount: rows.filter((row) => Number(row.usage_count) === 0).length,
       unregisteredUsedTopicCount: allTopics.filter((topic) => (
-        !registryBySlug.has(topic.slug) && getMetrics(topic.slug).anyVideoIds.size > 0
+          !registryBySlug.has(topic.slug) && getMetrics(topic.slug).anyVideoIds.size > 0
       )).length,
       highestUsageCount: Number(rows[0]?.usage_count ?? 0),
       potentialDuplicateReviewCount: rows.filter((row) => row.potential_duplicate_review === "yes").length,
@@ -201,7 +205,7 @@ export function renderVideoTopicUsageReport(
 }
 
 export function collectVideoTopicNameDefinitions(
-  seed: CuratedArchiveSeed,
+    seed: CuratedArchiveSeed,
 ): VideoTopicNameDefinition[] {
   return collectTopicDefinitions(seed).allTopics;
 }
@@ -224,14 +228,14 @@ function collectTopicDefinitions(seed: CuratedArchiveSeed): {
   const allTopics = [...registryTopics];
   for (const slug of [...usedSlugs].sort()) {
     if (!registryBySlug.has(slug)) {
-      allTopics.push({ slug, title: titleFromSlug(slug), aliases: [] });
+      allTopics.push({slug, title: titleFromSlug(slug), aliases: []});
     }
   }
-  return { allTopics, registryBySlug, registryTopics };
+  return {allTopics, registryBySlug, registryTopics};
 }
 
 function topicDefinition(topic: CuratedTopicSeed): VideoTopicNameDefinition {
-  return { slug: topic.slug, title: topic.title, aliases: [...(topic.aliases ?? [])] };
+  return {slug: topic.slug, title: topic.title, aliases: [...(topic.aliases ?? [])]};
 }
 
 function incrementPair(counts: Map<string, Map<string, number>>, slug: string, otherSlug: string): void {
@@ -241,19 +245,19 @@ function incrementPair(counts: Map<string, Map<string, number>>, slug: string, o
 }
 
 export function buildVideoTopicNameAnalysisPartition(
-  topics: readonly VideoTopicNameDefinition[],
-  partitionIndex: number,
-  partitionCount: number,
+    topics: readonly VideoTopicNameDefinition[],
+    partitionIndex: number,
+    partitionCount: number,
 ): Map<string, VideoTopicSimilarity[]> {
   if (
-    !Number.isInteger(partitionCount)
-    || partitionCount < 1
-    || !Number.isInteger(partitionIndex)
-    || partitionIndex < 0
-    || partitionIndex >= partitionCount
+      !Number.isInteger(partitionCount)
+      || partitionCount < 1
+      || !Number.isInteger(partitionIndex)
+      || partitionIndex < 0
+      || partitionIndex >= partitionCount
   ) {
     throw new Error(
-      `Invalid topic name-analysis partition ${partitionIndex} of ${partitionCount}.`,
+        `Invalid topic name-analysis partition ${partitionIndex} of ${partitionCount}.`,
     );
   }
   const bySlug = new Map(topics.map((topic) => [topic.slug, topic]));
@@ -264,12 +268,14 @@ export function buildVideoTopicNameAnalysisPartition(
 
   for (const topic of topics) {
     const forms = uniqueStrings([topic.title, topic.slug.replaceAll("-", " "), ...topic.aliases])
-      .map(normalizeName)
-      .filter(Boolean);
+        .map(normalizeName)
+        .filter(Boolean);
     formsBySlug.set(topic.slug, forms);
     const tokens = new Set(forms.flatMap(tokenizeName));
     tokenSetsBySlug.set(topic.slug, tokens);
-    for (const token of tokens) tokenFrequency.set(token, (tokenFrequency.get(token) ?? 0) + 1);
+    for (const token of tokens) {
+      tokenFrequency.set(token, (tokenFrequency.get(token) ?? 0) + 1);
+    }
     const prefix = normalizeName(topic.title).replaceAll(" ", "").slice(0, 6);
     if (prefix.length >= 4) {
       const entries = prefixIndex.get(prefix) ?? [];
@@ -282,7 +288,9 @@ export function buildVideoTopicNameAnalysisPartition(
   for (const topic of topics) {
     for (const token of tokenSetsBySlug.get(topic.slug) ?? []) {
       const frequency = tokenFrequency.get(token) ?? 0;
-      if (frequency > 500 || token.length < 2) continue;
+      if (frequency > 500 || token.length < 2) {
+        continue;
+      }
       const entries = tokenIndex.get(token) ?? [];
       entries.push(topic.slug);
       tokenIndex.set(token, entries);
@@ -291,31 +299,39 @@ export function buildVideoTopicNameAnalysisPartition(
 
   const results = new Map<string, VideoTopicSimilarity[]>();
   for (
-    let topicIndex = partitionIndex;
-    topicIndex < topics.length;
-    topicIndex += partitionCount
+      let topicIndex = partitionIndex;
+      topicIndex < topics.length;
+      topicIndex += partitionCount
   ) {
     const topic = topics[topicIndex]!;
     const candidates = new Set<string>();
     for (const token of tokenSetsBySlug.get(topic.slug) ?? []) {
-      for (const candidate of tokenIndex.get(token) ?? []) candidates.add(candidate);
+      for (const candidate of tokenIndex.get(token) ?? []) {
+        candidates.add(candidate);
+      }
     }
     const prefix = normalizeName(topic.title).replaceAll(" ", "").slice(0, 6);
-    for (const candidate of prefixIndex.get(prefix) ?? []) candidates.add(candidate);
+    for (const candidate of prefixIndex.get(prefix) ?? []) {
+      candidates.add(candidate);
+    }
     candidates.delete(topic.slug);
 
     const scored: VideoTopicSimilarity[] = [];
     for (const candidateSlug of candidates) {
       const candidate = bySlug.get(candidateSlug);
-      if (candidate === undefined) continue;
+      if (candidate === undefined) {
+        continue;
+      }
       const score = topicSimilarity(formsBySlug.get(topic.slug) ?? [], formsBySlug.get(candidateSlug) ?? []);
-      if (score < 0.56) continue;
-      scored.push({ slug: candidate.slug, title: candidate.title, score });
+      if (score < 0.56) {
+        continue;
+      }
+      scored.push({slug: candidate.slug, title: candidate.title, score});
     }
     scored.sort((left, right) => (
-      right.score - left.score
-      || left.title.localeCompare(right.title, "en", { sensitivity: "base" })
-      || left.slug.localeCompare(right.slug, "en")
+        right.score - left.score
+        || left.title.localeCompare(right.title, "en", {sensitivity: "base"})
+        || left.slug.localeCompare(right.slug, "en")
     ));
     results.set(topic.slug, scored.slice(0, 5));
   }
@@ -326,7 +342,9 @@ function topicSimilarity(leftForms: readonly string[], rightForms: readonly stri
   let best = 0;
   for (const left of leftForms) {
     for (const right of rightForms) {
-      if (left === right) return 1;
+      if (left === right) {
+        return 1;
+      }
       const leftTokens = new Set(tokenizeName(left));
       const rightTokens = new Set(tokenizeName(right));
       const tokenScore = jaccard(leftTokens, rightTokens);
@@ -335,11 +353,13 @@ function topicSimilarity(leftForms: readonly string[], rightForms: readonly stri
       const longer = Math.max(left.length, right.length);
       const containment = shorter >= 5 && (left.includes(right) || right.includes(left)) ? shorter / longer : 0;
       let score = Math.max(
-        (0.68 * tokenScore) + (0.32 * characterScore),
-        characterScore >= 0.86 ? characterScore * 0.92 : 0,
-        containment >= 0.6 && tokenScore > 0 ? (0.55 * containment) + (0.45 * tokenScore) : 0,
+          (0.68 * tokenScore) + (0.32 * characterScore),
+          characterScore >= 0.86 ? characterScore * 0.92 : 0,
+          containment >= 0.6 && tokenScore > 0 ? (0.55 * containment) + (0.45 * tokenScore) : 0,
       );
-      if (leftTokens.size === 1 && rightTokens.size === 1 && tokenScore === 0) score *= 0.9;
+      if (leftTokens.size === 1 && rightTokens.size === 1 && tokenScore === 0) {
+        score *= 0.9;
+      }
       best = Math.max(best, Math.min(score, 0.99));
     }
   }
@@ -375,24 +395,48 @@ function classifyTopic(topic: VideoTopicNameDefinition): TopicClassification {
 }
 
 function generalSubjectFor(text: string, entityType: string): string {
-  if (entityType === "fictional_topic") return "science_fiction";
-  if (/\b(roman|rome|byzantine|greek|greece|persian|egypt|egyptian|carthage|carthaginian|viking|anglo saxon|medieval|ancient)\b/u.test(text)) return "ancient_history";
-  if (["ship", "ship_class", "ship_type", "navy_or_formation"].includes(entityType)) return "naval_maritime";
-  if (/\b(aviation|air power|aircraft|aeroplane|airplane|fighter|bomber|seaplane|flying boat|helicopter|airship|zeppelin|drone|uav|air wing)\b/u.test(text)) return "aviation";
-  if (/\b(naval|navy|navies|maritime|fleet|ship|ships|submarine|submarines|gunnery|sea power|seapower)\b/u.test(text)) return "naval_maritime";
-  if (/\b(army|armies|military|battle|war|wars|operation|campaign|siege|invasion|artillery|infantry|cavalry|tank|tanks)\b/u.test(text)) return "military_history";
-  if (/\b(industry|industrial|shipbuilding|logistics|supply|trade|economy|economic|finance|oil|fuel|railway|railways|railroad|production|factory|factories)\b/u.test(text)) return "economics_industry_logistics";
-  if (/\b(policy|doctrine|strategy|tactics|treaty|procurement|parliament|government|diplomacy|alliance|administration|leadership)\b/u.test(text)) return "politics_policy";
-  if (/\b(radar|sonar|engine|propulsion|reactor|nuclear|sensor|electronics|armour|armor|fire control|communications|technology|engineering|design|steam|diesel|turbine|gun|gunnery|torpedo|missile)\b/u.test(text)) return "technology_engineering";
-  if (entityType === "person") return "biography_leadership";
-  if (entityType === "place_or_geography") return "geography";
-  if (entityType === "research_media_or_culture") return "research_media_culture";
+  if (entityType === "fictional_topic") {
+    return "science_fiction";
+  }
+  if (/\b(roman|rome|byzantine|greek|greece|persian|egypt|egyptian|carthage|carthaginian|viking|anglo saxon|medieval|ancient)\b/u.test(text)) {
+    return "ancient_history";
+  }
+  if (["ship", "ship_class", "ship_type", "navy_or_formation"].includes(entityType)) {
+    return "naval_maritime";
+  }
+  if (/\b(aviation|air power|aircraft|aeroplane|airplane|fighter|bomber|seaplane|flying boat|helicopter|airship|zeppelin|drone|uav|air wing)\b/u.test(text)) {
+    return "aviation";
+  }
+  if (/\b(naval|navy|navies|maritime|fleet|ship|ships|submarine|submarines|gunnery|sea power|seapower)\b/u.test(text)) {
+    return "naval_maritime";
+  }
+  if (/\b(army|armies|military|battle|war|wars|operation|campaign|siege|invasion|artillery|infantry|cavalry|tank|tanks)\b/u.test(text)) {
+    return "military_history";
+  }
+  if (/\b(industry|industrial|shipbuilding|logistics|supply|trade|economy|economic|finance|oil|fuel|railway|railways|railroad|production|factory|factories)\b/u.test(text)) {
+    return "economics_industry_logistics";
+  }
+  if (/\b(policy|doctrine|strategy|tactics|treaty|procurement|parliament|government|diplomacy|alliance|administration|leadership)\b/u.test(text)) {
+    return "politics_policy";
+  }
+  if (/\b(radar|sonar|engine|propulsion|reactor|nuclear|sensor|electronics|armour|armor|fire control|communications|technology|engineering|design|steam|diesel|turbine|gun|gunnery|torpedo|missile)\b/u.test(text)) {
+    return "technology_engineering";
+  }
+  if (entityType === "person") {
+    return "biography_leadership";
+  }
+  if (entityType === "place_or_geography") {
+    return "geography";
+  }
+  if (entityType === "research_media_or_culture") {
+    return "research_media_culture";
+  }
   return "general_history_or_other";
 }
 
 function normalizeName(value: string): string {
   return value.normalize("NFKD").replace(/\p{Diacritic}/gu, "").toLowerCase()
-    .replace(/&/gu, " and ").replace(/[^a-z0-9]+/gu, " ").trim().replace(/\s+/gu, " ");
+      .replace(/&/gu, " and ").replace(/[^a-z0-9]+/gu, " ").trim().replace(/\s+/gu, " ");
 }
 
 function tokenizeName(value: string): string[] {
@@ -401,10 +445,18 @@ function tokenizeName(value: string): string[] {
 }
 
 function stemToken(token: string): string {
-  if (/^[0-9]+$/u.test(token)) return token;
-  if (token.length > 5 && token.endsWith("ies")) return `${token.slice(0, -3)}y`;
-  if (token.length > 5 && token.endsWith("sses")) return token.slice(0, -2);
-  if (token.length > 4 && token.endsWith("s") && !token.endsWith("ss")) return token.slice(0, -1);
+  if (/^[0-9]+$/u.test(token)) {
+    return token;
+  }
+  if (token.length > 5 && token.endsWith("ies")) {
+    return `${token.slice(0, -3)}y`;
+  }
+  if (token.length > 5 && token.endsWith("sses")) {
+    return token.slice(0, -2);
+  }
+  if (token.length > 4 && token.endsWith("s") && !token.endsWith("ss")) {
+    return token.slice(0, -1);
+  }
   return token;
 }
 
@@ -415,8 +467,12 @@ function jaccard(left: ReadonlySet<string>, right: ReadonlySet<string>): number 
 }
 
 function diceCoefficient(left: string, right: string): number {
-  if (left === right) return 1;
-  if (left.length < 2 || right.length < 2) return 0;
+  if (left === right) {
+    return 1;
+  }
+  if (left.length < 2 || right.length < 2) {
+    return 0;
+  }
   const leftBigrams = new Map<string, number>();
   for (let index = 0; index < left.length - 1; index += 1) {
     const bigram = left.slice(index, index + 2);

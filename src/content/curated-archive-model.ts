@@ -1,7 +1,4 @@
-import type {
-  CuratedSegmentSeed,
-  CuratedTopicSeed,
-} from "./schemas/index.js";
+import type { CuratedSegmentSeed, CuratedTopicSeed, } from "./schemas/index.js";
 
 export interface CuratedVideoSeed {
   videoId: string;

@@ -1,14 +1,14 @@
 #!/usr/bin/env node
-import { dirname } from "node:path";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { dirname } from "node:path";
 
 import {
+  type ChannelInventoryCompleteness,
+  type ChannelVideoLinksResult,
   mergeChannelVideoLinksResults,
   writeChannelEpisodeMasterOutput,
   writeSplitVideoLinksOutput,
   writeVideoLinksOutput,
-  type ChannelInventoryCompleteness,
-  type ChannelVideoLinksResult,
 } from "../youtube/channel-video-links.js";
 import { readIgnoredVideos } from "../youtube/ignored-videos.js";
 
@@ -39,21 +39,21 @@ async function main(): Promise<void> {
   }
   if (options.linksOutput !== undefined || options.metadataOutput !== undefined) {
     await writeSplitVideoLinksOutput(
-      options.linksOutput ?? "reports/dr-alex-video-list-merged.json",
-      options.metadataOutput ?? "reports/dr-alex-video-metadata-merged.json",
-      merged,
+        options.linksOutput ?? "reports/dr-alex-video-list-merged.json",
+        options.metadataOutput ?? "reports/dr-alex-video-metadata-merged.json",
+        merged,
     );
   }
 
   if (
-    options.output === undefined &&
-    options.masterOutput === undefined &&
-    options.linksOutput === undefined &&
-    options.metadataOutput === undefined
+      options.output === undefined &&
+      options.masterOutput === undefined &&
+      options.linksOutput === undefined &&
+      options.metadataOutput === undefined
   ) {
     console.log(JSON.stringify(merged, null, 2));
   } else {
-    console.error(`Merged ${merged.links.length} unique video links from ${options.inputs.length} input files.`);
+    console.log(`Merged ${merged.links.length} unique video links from ${options.inputs.length} input files.`);
   }
 }
 
@@ -67,30 +67,30 @@ function parseArgs(args: string[]): CliOptions {
     const arg = args[index];
 
     switch (arg) {
-      case "--input":
-        options.inputs.push(readValue(args, ++index, arg));
-        break;
-      case "--output":
-        options.output = readValue(args, ++index, arg);
-        break;
-      case "--master-output":
-        options.masterOutput = readValue(args, ++index, arg);
-        break;
-      case "--inventory-completeness":
-        options.inventoryCompleteness = readInventoryCompleteness(readValue(args, ++index, arg));
-        break;
-      case "--links-output":
-        options.linksOutput = readValue(args, ++index, arg);
-        break;
-      case "--metadata-output":
-        options.metadataOutput = readValue(args, ++index, arg);
-        break;
-      case "--help":
-      case "-h":
-        printHelp();
-        process.exit(0);
-      default:
-        throw new Error(`Unknown argument: ${arg ?? ""}`);
+    case "--input":
+      options.inputs.push(readValue(args, ++index, arg));
+      break;
+    case "--output":
+      options.output = readValue(args, ++index, arg);
+      break;
+    case "--master-output":
+      options.masterOutput = readValue(args, ++index, arg);
+      break;
+    case "--inventory-completeness":
+      options.inventoryCompleteness = readInventoryCompleteness(readValue(args, ++index, arg));
+      break;
+    case "--links-output":
+      options.linksOutput = readValue(args, ++index, arg);
+      break;
+    case "--metadata-output":
+      options.metadataOutput = readValue(args, ++index, arg);
+      break;
+    case "--help":
+    case "-h":
+      printHelp();
+      process.exit(0);
+    default:
+      throw new Error(`Unknown argument: ${arg ?? ""}`);
     }
   }
 
@@ -122,7 +122,7 @@ function readValue(args: string[], index: number, name: string): string {
 }
 
 async function writeJsonFile(path: string, value: unknown): Promise<void> {
-  await mkdir(dirname(path), { recursive: true });
+  await mkdir(dirname(path), {recursive: true});
   await writeFile(path, `${JSON.stringify(value, null, 2)}\n`, "utf8");
 }
 
