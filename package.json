@@ -14,8 +14,8 @@
     "test": "npm run clean && npm run build && node --test \"dist/**/*.test.js\"",
     "check:source": "npm run audit:topic-normalization && npm run check:video-topics && npm run audit:site-content && npm run report:video-topic-usage",
     "check": "npm test && npm run check:source && npm run site:check",
-    "check:production": "npm run site:build:generated && npm run check:site-seo:built && npm run check:search-ranking && npm run check:rendered-video-dates",
-    "check:ci": "npm run check && npm run check:production",
+    "check:production": "npm run check:site-seo:built && npm run check:search-ranking && npm run check:rendered-video-dates",
+    "check:ci": "npm test && npm run site:build && npm run check:production",
     "report:video-segment-audit-risk": "tsx src/scripts/rank-video-segment-audit-risk.ts",
     "report:video-topic-usage": "bun run src/scripts/report-video-topic-usage-bun.ts",
     "report:transcript-problems": "tsx src/scripts/report-transcript-problems.ts",
@@ -61,7 +61,7 @@
     "pagefind": "^1.5.2",
     "puppeteer-core": "^25.5.0",
     "saxes": "^6.0.0",
-    "tsx": "^4.23.9",
+    "tsx": "^4.23.11",
     "typescript": "^5.9.3"
   },
   "dependencies": {

@@ -49,7 +49,7 @@ test("atomic replacement preserves a complete previous file until replacement su
   }
 });
 
-test("Phase 2 commands keep topic writes explicit and generate the split archive once", async () => {
+test("Phase 2 commands keep topic writes explicit and avoid duplicate site pipelines", async () => {
   const packageJson = JSON.parse(await readFile(join(repositoryRoot, "package.json"), "utf8")) as {
     scripts: Record<string, string>;
   };
@@ -158,13 +158,49 @@ test("Phase 2 commands keep topic writes explicit and generate the split archive
   assert.equal(packageJson.scripts["check:quick"], undefined);
   assert.equal(packageJson.scripts["check:functional"], undefined);
   assert.equal(packageJson.scripts["check:generated"], undefined);
-  assert.equal(
-    packageJson.scripts["check:production"],
-    "npm run site:build:generated && npm run check:site-seo:built && npm run check:search-ranking && npm run check:rendered-video-dates",
+  const productionCheckScript = packageJson.scripts["check:production"] ?? "";
+  const productionStages = [
+    "npm run check:site-seo:built",
+    "npm run check:search-ranking",
+    "npm run check:rendered-video-dates",
+  ];
+  for (const stage of productionStages) {
+    assert.equal(
+      productionCheckScript.split(stage).length - 1,
+      1,
+      `check:production must run ${stage} exactly once`,
+    );
+  }
+  for (let index = 1; index < productionStages.length; index += 1) {
+    assert.ok(
+      productionCheckScript.indexOf(productionStages[index - 1] ?? "")
+        < productionCheckScript.indexOf(productionStages[index] ?? ""),
+      "check:production stages must remain ordered",
+    );
+  }
+  assert.doesNotMatch(
+    productionCheckScript,
+    /npm run (?:build|site:(?:check|build)(?::[^ ]+)?)\b/u,
+    "check:production must validate existing output without compiling, generating, or building",
+  );
+
+  const ciCheckScript = packageJson.scripts["check:ci"] ?? "";
+  const ciTestIndex = ciCheckScript.indexOf("npm test");
+  const ciBuildIndex = ciCheckScript.indexOf("npm run site:build");
+  const ciProductionIndex = ciCheckScript.indexOf("npm run check:production");
+  assert.ok(
+    ciTestIndex >= 0 && ciTestIndex < ciBuildIndex && ciBuildIndex < ciProductionIndex,
+    "check:ci must test, build once, then validate the built production output",
   );
   assert.equal(
-    packageJson.scripts["check:ci"],
-    "npm run check && npm run check:production",
+    ciCheckScript.match(/npm run site:build(?=\s|$)/gu)?.length,
+    1,
+    "check:ci must start exactly one site build",
+  );
+  assert.doesNotMatch(
+    ciCheckScript,
+    /npm run check(?=\s|$)/u,
+    "check:ci must not run the site:check graph before its production build",
   );
   assert.equal(
     packageJson.scripts["site:build"],

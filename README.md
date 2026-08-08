@@ -107,8 +107,8 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 | `test` | Clean, compile, and run all compiled `*.test.js` files with Node's test runner. |
 | `check:source` | Run the read-only topic audit/check, content audit, and complete two-report topic-curation canary. |
 | `check` | Run the canonical network-free compiled-test, source, and generated-data layers; `test` performs the TypeScript build/type check once. |
-| `check:production` | Build Astro and official Pagefind from the existing archive, then run SEO, search-ranking, and rendered-date validation. |
-| `check:ci` | Run `check` and the official production layer as the one-pass Pages graph. |
+| `check:production` | Validate an existing compiled Astro/Pagefind build with SEO, search-ranking, and rendered-date checks; this command does not generate or build the site. |
+| `check:ci` | Run tests, one cache-aware official production build, and the post-build checks as the one-pass Pages graph. |
 
 ### Curated Content and Reports
 
@@ -438,7 +438,7 @@ The process is intentionally segment-first. Use `kind: qa` only for actual Q&A e
 
 ### Shared Content-Pipeline Writes
 
-The deterministic manifest and shards under `site/src/data/generated/archive/` are ignored build output, not canonical source. `npm run generate:site-data`, `npm run site:dev`, and `npm run site:check` regenerate them directly; `npm run site:build` regenerates them only when its validated cache requires that stage. These commands fail with an actionable `npm run sync:video-topics` instruction rather than editing the canonical registry. Never hand-edit or commit `index.json` or its listed files; `index.json` remains the runtime manifest even though Git does not track it. The one-pass CI graph generates the archive once through `site:check`, then uses `site:build:generated` for Astro and official Pagefind.
+The deterministic manifest and shards under `site/src/data/generated/archive/` are ignored build output, not canonical source. `npm run generate:site-data`, `npm run site:dev`, and `npm run site:check` regenerate them directly; `npm run site:build` regenerates them only when its validated cache requires that stage. These commands fail with an actionable `npm run sync:video-topics` instruction rather than editing the canonical registry. Never hand-edit or commit `index.json` or its listed files; `index.json` remains the runtime manifest even though Git does not track it. The one-pass CI graph runs tests and then invokes `site:build` once; that wrapper owns source validation plus cache-aware archive, Astro, and official Pagefind work. `check:production` then validates the existing output without starting another build.
 
 The generated archive, backlog report, shared topic registry, and processing log are protected by the repository-wide writer lease at `.tmp/site-content-pipeline.lock`; independently owned per-video shards are not. Direct shared-writer commands such as `npm run audit:site-content`, `npm run sync:video-topics`, and `npm run generate:site-data` acquire a short-lived lease automatically. A coordinator that intentionally groups several shared-output operations may acquire one persistent lease and pass its token to the supported commands:
 

@@ -42,14 +42,18 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` when working on
 
 ## Validation
 
-Run:
+Run the focused network-free graph when a production render is not required:
 
 ```powershell
-npm run check:video-topics
 npm run check
-npm run check:production
 ```
 
-`check` owns the one archive-generation stage; `check:production` consumes that archive for Astro, official Pagefind, SEO, search-ranking, and rendered-date validation.
+When a full production render is required and authorized, run the one-pass graph instead:
+
+```powershell
+npm run check:ci
+```
+
+`check:ci` runs tests, one cache-aware `site:build`, and the post-build checks. `check:production` is post-build-only: it consumes existing compiled tools and `site/dist` for SEO, search-ranking, and rendered-date validation without generating or building again. Do not chain `check` and `check:production` as a substitute for `check:ci`.
 
 Do not treat `site:check` as sufficient for paginated or dynamic route changes; only the full build executes prerender path generation.
