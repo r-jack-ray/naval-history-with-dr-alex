@@ -76,6 +76,7 @@ export function parseVideoTopicUsageArgs(args: string[]): VideoTopicUsageCliOpti
     case "-h":
       printVideoTopicUsageHelp();
       process.exit(0);
+      break;
     default:
       throw new Error(`Unknown argument: ${arg ?? ""}`);
     }

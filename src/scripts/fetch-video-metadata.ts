@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { readIgnoredVideos } from "../youtube/ignored-videos.js";
 import { defaultVideoMetadataInput, defaultVideoMetadataOutput, fetchAndStoreVideoMetadata, type FetchVideoMetadataOptions, } from "../youtube/video-metadata.js";
+import { readPositiveInteger, readValue } from "./cli-arguments.js";
 import { resolveYoutubeApiKey } from "./youtube-api-key-file.js";
 
 type CliOptions = Omit<FetchVideoMetadataOptions, "apiKey"> & {
@@ -99,28 +100,13 @@ function parseArgs(args: string[]): CliOptions {
     case "-h":
       printHelp();
       process.exit(0);
+      break;
     default:
       throw new Error(`Unknown argument: ${arg ?? ""}`);
     }
   }
 
   return options;
-}
-
-function readValue(args: string[], index: number, name: string): string {
-  const value = args[index];
-  if (!value) {
-    throw new Error(`Missing value for ${name}.`);
-  }
-  return value;
-}
-
-function readPositiveInteger(value: string, name: string): number {
-  const parsed = Number(value);
-  if (!Number.isInteger(parsed) || parsed < 0) {
-    throw new Error(`${name} must be a non-negative integer.`);
-  }
-  return parsed;
 }
 
 function readBatchSize(value: string): number {

@@ -2,6 +2,7 @@
 import {spawn} from "node:child_process";
 import {access, constants} from "node:fs/promises";
 import {dirname, relative, resolve} from "node:path";
+import process, {platform} from "node:process";
 import {fileURLToPath} from "node:url";
 
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
@@ -11,11 +12,11 @@ const binaryPath = resolve(
     "pagefind",
     "target",
     "release",
-    process.platform === "win32" ? "pagefind.exe" : "pagefind",
+    platform === "win32" ? "pagefind.exe" : "pagefind",
 );
 
 try {
-  await access(binaryPath, process.platform === "win32" ? constants.F_OK : constants.X_OK);
+  await access(binaryPath, platform === "win32" ? constants.F_OK : constants.X_OK);
 } catch (error) {
   if (error?.code === "ENOENT") {
     throw new Error(

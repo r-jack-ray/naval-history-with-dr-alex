@@ -1,6 +1,7 @@
 // Start Astro development after generating the archive.
 import {spawn} from "node:child_process";
 import {dirname, resolve} from "node:path";
+import process, {platform} from "node:process";
 import {fileURLToPath} from "node:url";
 
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
@@ -26,7 +27,7 @@ if (generationExitCode !== 0) {
 }
 
 async function runNpmScript(scriptName) {
-  const npmCommand = process.platform === "win32"
+  const npmCommand = platform === "win32"
       ? `"${resolve(dirname(process.execPath), "npm.cmd")}"`
       : "npm";
   return await runCommand(`${npmCommand} run ${scriptName}`, [], {shell: true});

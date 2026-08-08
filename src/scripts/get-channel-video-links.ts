@@ -13,6 +13,7 @@ import {
 } from "../youtube/channel-video-links.js";
 import { readIgnoredVideos } from "../youtube/ignored-videos.js";
 import { defaultVideoMetadataOutput, fetchAndStoreVideoMetadata, readVideoMetadataStore, } from "../youtube/video-metadata.js";
+import { readInventoryCompleteness, readPositiveInteger, readValue } from "./cli-arguments.js";
 import { resolveYoutubeApiKey } from "./youtube-api-key-file.js";
 
 type CliOptions = FetchChannelVideoLinksOptions & {
@@ -185,6 +186,7 @@ function parseArgs(args: string[]): CliOptions {
     case "-h":
       printHelp();
       process.exit(0);
+      break;
     default:
       throw new Error(`Unknown argument: ${arg ?? ""}`);
     }
@@ -196,30 +198,6 @@ function parseArgs(args: string[]): CliOptions {
   }
 
   return options;
-}
-
-function readInventoryCompleteness(value: string): ChannelInventoryCompleteness {
-  if (value === "complete" || value === "partial" || value === "unknown") {
-    return value;
-  }
-
-  throw new Error("--inventory-completeness must be complete, partial, or unknown.");
-}
-
-function readValue(args: string[], index: number, name: string): string {
-  const value = args[index];
-  if (!value) {
-    throw new Error(`Missing value for ${name}.`);
-  }
-  return value;
-}
-
-function readPositiveInteger(value: string, name: string): number {
-  const parsed = Number(value);
-  if (!Number.isInteger(parsed) || parsed < 0) {
-    throw new Error(`${name} must be a non-negative integer.`);
-  }
-  return parsed;
 }
 
 function printHelp(): void {

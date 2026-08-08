@@ -4,6 +4,7 @@ import {spawn} from "node:child_process";
 import {createHash} from "node:crypto";
 import {lstat, mkdir, readdir, readFile, readlink, rename, rm, stat, writeFile,} from "node:fs/promises";
 import {dirname, isAbsolute, relative, resolve} from "node:path";
+import process, {platform} from "node:process";
 import {fileURLToPath} from "node:url";
 
 import {captureRequiredSiteAssets, parseAstroBuildConcurrency, validateRequiredSiteAssets,} from "./site-build-support.mjs";
@@ -50,7 +51,7 @@ const runStartedAt = new Date();
 const defaultPagefindScript = "site:build:pagefind";
 const workspacePagefindScript = "site:build:pagefind:workspace";
 const workspacePagefindBinaryPath = `../pagefind/target/release/${
-    process.platform === "win32" ? "pagefind.exe" : "pagefind"
+    platform === "win32" ? "pagefind.exe" : "pagefind"
 }`;
 
 async function main() {
@@ -74,7 +75,7 @@ async function main() {
       ? [workspacePagefindBinaryPath]
       : [];
   const buildConcurrency = parseAstroBuildConcurrency(
-      process.env.ASTRO_BUILD_CONCURRENCY,
+      process.env["ASTRO_BUILD_CONCURRENCY"],
   );
   if (args.includes("--generate")) {
     const sourceValidationExitCode = await measureStage(
@@ -390,7 +391,7 @@ async function validateSiteArchive() {
     if (
         archiveRelativePath.length === 0 ||
         archiveRelativePath === ".." ||
-        archiveRelativePath.startsWith(`..${process.platform === "win32" ? "\\" : "/"}`) ||
+        archiveRelativePath.startsWith(`..${platform === "win32" ? "\\" : "/"}`) ||
         isAbsolute(archiveRelativePath)
     ) {
       return invalidArchive(`the archive file path escapes its generated directory: ${fileRecord.path}`);
@@ -464,7 +465,7 @@ function invalidArchive(reason) {
 async function calculateFingerprint(name, version, paths, virtualEntries = []) {
   const hash = createHash("sha256");
   hash.update(`${name}-cache-v${version}\0`);
-  hash.update(`${process.platform}\0${process.arch}\0${process.versions.node}\0`);
+  hash.update(`${platform}\0${process.arch}\0${process.versions.node}\0`);
 
   for (const [entryName, entryValue] of virtualEntries) {
     hash.update(`configuration\0${entryName}\0${entryValue}\0`);
@@ -563,7 +564,7 @@ async function readCache(cachePath, expectedVersion) {
 
 async function runNpmScript(scriptName, environment = {}) {
   const npmCommand =
-      process.platform === "win32"
+      platform === "win32"
           ? `"${resolve(dirname(process.execPath), "npm.cmd")}"`
           : "npm";
   return await new Promise((resolvePromise, reject) => {

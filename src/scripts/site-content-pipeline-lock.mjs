@@ -4,6 +4,7 @@ import {spawn} from "node:child_process";
 import {randomUUID} from "node:crypto";
 import {appendFile, mkdir, readFile, rename, rm, stat, writeFile} from "node:fs/promises";
 import {basename, dirname, join, resolve} from "node:path";
+import process from "node:process";
 
 const defaultLockPath = ".tmp/site-content-pipeline.lock";
 const defaultProcessingLogPath = "src/derived/site-content-processing.log";
@@ -153,22 +154,6 @@ async function acquireLease(options) {
   while (true) {
     try {
       await mkdir(lockPath);
-      const lease = createLease(options);
-      try {
-        await writeTextAtomically(ownerPath(lockPath), `${JSON.stringify(lease, null, 2)}\n`);
-      } catch (error) {
-        await rm(lockPath, {
-          recursive: true,
-          force: true
-        });
-        throw error;
-      }
-
-      return {
-        lockPath,
-        lease,
-        recoveredStaleLock,
-      };
     } catch (error) {
       if (errorCode(error) !== "EEXIST") {
         throw error;
@@ -200,7 +185,25 @@ async function acquireLease(options) {
       }
 
       await sleep(retryIntervalMs);
+      continue;
     }
+
+    const lease = createLease(options);
+    try {
+      await writeTextAtomically(ownerPath(lockPath), `${JSON.stringify(lease, null, 2)}\n`);
+    } catch (error) {
+      await rm(lockPath, {
+        recursive: true,
+        force: true
+      });
+      throw error;
+    }
+
+    return {
+      lockPath,
+      lease,
+      recoveredStaleLock,
+    };
   }
 }
 
@@ -271,11 +274,10 @@ async function releaseLease(token, options) {
   };
 }
 
-async function runWithLease(options) {
+async function withLease(options, operation) {
   const lockPath = resolve(options.lockPath);
-  const token = options.token;
   let acquiredHere = false;
-  let activeToken = token;
+  let activeToken = options.token;
 
   if (activeToken === undefined || activeToken === "") {
     const acquired = await acquireLease(options);
@@ -286,12 +288,25 @@ async function runWithLease(options) {
   }
 
   try {
+    return await operation({lockPath, token: activeToken});
+  } finally {
+    if (acquiredHere) {
+      await releaseLease(activeToken, {
+        ...options,
+        lockPath
+      });
+    }
+  }
+}
+
+async function runWithLease(options) {
+  return await withLease(options, async ({token}) => {
     if (options.build) {
       const buildExitCode = await runCommand(
           ["node", "node_modules/typescript/bin/tsc", "-p", "tsconfig.json"],
           {
             ...process.env,
-            [lockTokenEnvironment]: activeToken,
+            [lockTokenEnvironment]: token,
           },
       );
       if (buildExitCode !== 0) {
@@ -301,16 +316,9 @@ async function runWithLease(options) {
 
     return await runCommand(options.command, {
       ...process.env,
-      [lockTokenEnvironment]: activeToken,
+      [lockTokenEnvironment]: token,
     });
-  } finally {
-    if (acquiredHere && activeToken !== undefined) {
-      await releaseLease(activeToken, {
-        ...options,
-        lockPath
-      });
-    }
-  }
+  });
 }
 
 async function appendProcessingLog(options) {
@@ -337,36 +345,17 @@ async function appendProcessingLog(options) {
     };
   }
 
-  const lockPath = resolve(options.lockPath);
-  const token = options.token;
-  let acquiredHere = false;
-  let activeToken = token;
-  if (activeToken === undefined || activeToken === "") {
-    const acquired = await acquireLease(options);
-    activeToken = acquired.lease.token;
-    acquiredHere = true;
-  } else {
-    await assertOwnedLease(lockPath, activeToken);
-  }
-
-  try {
+  return await withLease(options, async ({lockPath, token}) => {
     const existing = await readOptionalText(processingLogPath);
     validateExistingProcessingLog(existing, processingLogPath);
-    await assertOwnedLease(lockPath, activeToken);
+    await assertOwnedLease(lockPath, token);
     await writeTextAtomically(processingLogPath, `${existing}${fields.join("\t")}\n`);
     return {
       processingLogPath,
       appended: true,
-      token: activeToken,
+      token,
     };
-  } finally {
-    if (acquiredHere && activeToken !== undefined) {
-      await releaseLease(activeToken, {
-        ...options,
-        lockPath
-      });
-    }
-  }
+  });
 }
 
 async function assertOwnedLease(lockPath, token) {
@@ -412,7 +401,7 @@ function createLease(options) {
     owner: options.owner,
     purpose: options.purpose,
     pid: process.pid,
-    host: process.env.COMPUTERNAME ?? process.env.HOSTNAME ?? "unknown-host",
+    host: process.env["COMPUTERNAME"] ?? process.env["HOSTNAME"] ?? "unknown-host",
     acquiredAt: now.toISOString(),
     renewedAt: now.toISOString(),
     expiresAt: new Date(now.getTime() + options.staleAfterMs).toISOString(),
@@ -524,8 +513,8 @@ function ownerPath(lockPath) {
 }
 
 function defaultOwner() {
-  const user = process.env.USERNAME ?? process.env.USER ?? "unknown-user";
-  const host = process.env.COMPUTERNAME ?? process.env.HOSTNAME ?? "unknown-host";
+  const user = process.env["USERNAME"] ?? process.env["USER"] ?? "unknown-user";
+  const host = process.env["COMPUTERNAME"] ?? process.env["HOSTNAME"] ?? "unknown-host";
   return `${user}@${host}:${process.pid}`;
 }
 

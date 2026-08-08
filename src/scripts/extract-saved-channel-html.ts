@@ -5,6 +5,7 @@ import { type ChannelInventoryCompleteness, type ChannelVideoTab, splitChannelVi
 import { readIgnoredVideos } from "../youtube/ignored-videos.js";
 
 import { defaultSavedStreamsHtmlInput, defaultSavedVideosHtmlInput, extractSavedChannelHtml, type ExtractSavedChannelHtmlOptions, } from "../youtube/saved-channel-html.js";
+import { readInventoryCompleteness, readValue } from "./cli-arguments.js";
 
 interface CliOptions {
   input?: string;
@@ -136,6 +137,7 @@ function parseArgs(args: string[]): CliOptions {
     case "-h":
       printHelp();
       process.exit(0);
+      break;
     default:
       throw new Error(`Unknown argument: ${arg ?? ""}`);
     }
@@ -150,22 +152,6 @@ function readTab(value: string): ChannelVideoTab {
   }
 
   throw new Error("--tab must be videos or streams.");
-}
-
-function readInventoryCompleteness(value: string): ChannelInventoryCompleteness {
-  if (value === "complete" || value === "partial" || value === "unknown") {
-    return value;
-  }
-
-  throw new Error("--inventory-completeness must be complete, partial, or unknown.");
-}
-
-function readValue(args: string[], index: number, name: string): string {
-  const value = args[index];
-  if (!value) {
-    throw new Error(`Missing value for ${name}.`);
-  }
-  return value;
 }
 
 async function fileModifiedAt(path: string): Promise<string | undefined> {

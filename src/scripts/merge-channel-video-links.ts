@@ -1,6 +1,5 @@
 #!/usr/bin/env node
-import { mkdir, readFile, writeFile } from "node:fs/promises";
-import { dirname } from "node:path";
+import { readFile } from "node:fs/promises";
 
 import {
   type ChannelInventoryCompleteness,
@@ -11,6 +10,7 @@ import {
   writeVideoLinksOutput,
 } from "../youtube/channel-video-links.js";
 import { readIgnoredVideos } from "../youtube/ignored-videos.js";
+import { readInventoryCompleteness, readValue } from "./cli-arguments.js";
 
 interface CliOptions {
   inputs: string[];
@@ -89,6 +89,7 @@ function parseArgs(args: string[]): CliOptions {
     case "-h":
       printHelp();
       process.exit(0);
+      break;
     default:
       throw new Error(`Unknown argument: ${arg ?? ""}`);
     }
@@ -103,27 +104,6 @@ function parseArgs(args: string[]): CliOptions {
 
 async function readChannelVideoLinksResult(path: string): Promise<ChannelVideoLinksResult> {
   return JSON.parse(await readFile(path, "utf8")) as ChannelVideoLinksResult;
-}
-
-function readInventoryCompleteness(value: string): ChannelInventoryCompleteness {
-  if (value === "complete" || value === "partial" || value === "unknown") {
-    return value;
-  }
-
-  throw new Error("--inventory-completeness must be complete, partial, or unknown.");
-}
-
-function readValue(args: string[], index: number, name: string): string {
-  const value = args[index];
-  if (!value) {
-    throw new Error(`Missing value for ${name}.`);
-  }
-  return value;
-}
-
-async function writeJsonFile(path: string, value: unknown): Promise<void> {
-  await mkdir(dirname(path), {recursive: true});
-  await writeFile(path, `${JSON.stringify(value, null, 2)}\n`, "utf8");
 }
 
 function printHelp(): void {
