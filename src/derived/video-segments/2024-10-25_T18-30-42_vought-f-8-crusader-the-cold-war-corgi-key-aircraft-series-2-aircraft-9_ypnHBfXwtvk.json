@@ -5,9 +5,11 @@
     "carrier-fighters",
     "naval-aviation",
     "cold-war",
+    "vietnam-war",
     "us-navy",
     "french-navy",
-    "aircraft-procurement"
+    "aircraft-procurement",
+    "aircraft-design"
   ],
   "segments": [
     {
@@ -22,7 +24,8 @@
         "vought-f-8-crusader",
         "carrier-fighters",
         "naval-aviation",
-        "aircraft-guns"
+        "aircraft-guns",
+        "aircraft-design"
       ],
       "summary": "The F-8 was designed around getting four cannon onto a target, while still carrying missiles: the Cold War fighter often called the last gunfighter.",
       "body": "Dr. Clarke introduces the Crusader as a fighter built around guns at a point when missiles were meant to make close manoeuvring combat obsolete. He highlights its variable-incidence wing, all-moving tail, and titanium structure as features that make the aircraft feel surprisingly modern. The F-8's service with the US Navy, US Marine Corps, French Navy, and Philippine Air Force makes it a useful bridge between American carrier aviation and allied Cold War fleets. Its engine-dominated shape also makes the aircraft's purpose unusually legible: it was built to manoeuvre until its cannon could be brought onto a target.",
@@ -77,7 +80,7 @@
         "us-navy"
       ],
       "summary": "The Crusader's unusually long career included low-level photo reconnaissance that helped expose Soviet missile deployments in Cuba.",
-      "body": "The video stresses how long the F-8 remained useful after its mid-1950s introduction, especially in French naval service. Its photo-reconnaissance variants gave the aircraft an important role beyond fighter interception. During the Cuban Missile Crisis, their low-level imagery contributed to the information used by American decision-makers as they assessed Soviet activity in Cuba. The example shows how tactical reconnaissance could shape strategic crisis management by making the evidence behind national decisions more precise.",
+      "body": "The video stresses how long the F-8 remained useful after its mid-1950s introduction, especially in French naval service. Its photo-reconnaissance variants gave the aircraft an important role beyond fighter interception. During the Cuban Missile Crisis, their low-level imagery contributed to the information used by American decision-makers as they assessed Soviet activity in Cuba. Dr. Clarke rejects the idea that any Cold War clash would inevitably become nuclear within a few days, while still treating Cuba as one of the conflict's genuinely dangerous escalation points. The example shows how tactical reconnaissance could shape strategic crisis management by making the evidence behind national decisions more precise.",
       "sourcePath": "src/transcripts/txt/2024-10-25_T18-30-42_vought-f-8-crusader-the-cold-war-corgi-key-aircraft-series-2-aircraft-9_ypnHBfXwtvk.txt",
       "evidence": [
         {
@@ -151,7 +154,10 @@
         "carrier-fighters",
         "aircraft-design",
         "f-4-phantom-ii",
-        "f-11-tiger"
+        "f-11-tiger",
+        "f3h-demon",
+        "f-100-super-sabre",
+        "boeing-x-32"
       ],
       "summary": "The Navy's fighter contest drew proposals whose concepts and descendants continued to influence American combat-aircraft design long after the F-8 won.",
       "body": "Dr. Clarke places the Crusader within a competition involving Grumman's F11F Tiger, McDonnell's F3H Demon, and a navalized North American F-100 concept. Those alternatives mattered even though they lost because their design ideas fed later aircraft and role definitions. The Demon lineage helped lead toward the F-4 Phantom II, while the episode also compares Vought's enlarged Crusader development with the later Hornet-to-Super Hornet relationship. A visual resemblance between Vought intake experiments and Boeing's X-32 supports the broader point that discarded ideas can return in new procurement cycles.",
@@ -180,7 +186,7 @@
         "john-glenn"
       ],
       "summary": "Vought proposed a camera-equipped F-8 from the outset, and John Glenn's transcontinental flight demonstrated the aircraft's speed and operational reach.",
-      "body": "Vought treated photo reconnaissance as a planned role rather than an afterthought, replacing guns and missiles with cameras in the relevant variant. Dr. Clarke also stresses the testing intended to make the airframe rugged and reliable before turning to its speed. Major John Glenn's 1957 supersonic flight from California to New York then demonstrates more than a record: a fast carrier aircraft with that reach offered substantial operational flexibility. The moment connects performance headlines to the practical question of how far a carrier air wing could operate.",
+      "body": "Vought treated photo reconnaissance as a planned role rather than an afterthought, replacing guns and missiles with cameras in the relevant variant. Dr. Clarke also stresses the testing intended to make the airframe rugged and reliable before turning to its speed. Major John Glenn's supersonic flight from California to New York then demonstrates more than a record: a fast carrier aircraft with that reach offered substantial operational flexibility. The moment connects performance headlines to the practical question of how far a carrier air wing could operate.",
       "sourcePath": "src/transcripts/txt/2024-10-25_T18-30-42_vought-f-8-crusader-the-cold-war-corgi-key-aircraft-series-2-aircraft-9_ypnHBfXwtvk.txt",
       "evidence": [
         {
@@ -241,28 +247,58 @@
       ]
     },
     {
-      "id": "f-8-performance-and-armament",
+      "id": "f-8-size-weight-thrust-and-range",
       "videoId": "ypnHBfXwtvk",
-      "slug": "f-8-performance-and-armament",
-      "title": "Performance, cannon, and missile load",
+      "slug": "f-8-size-weight-thrust-and-range",
+      "title": "Size, thrust, and the carrier-performance envelope",
       "kind": "notable_point",
       "start": "25:14",
-      "end": "30:47",
+      "end": "29:27",
       "topics": [
         "vought-f-8-crusader",
         "aircraft-performance",
-        "aircraft-guns",
-        "aim-9-sidewinder",
-        "carrier-fighters"
+        "aircraft-design",
+        "aircraft-payload",
+        "pratt-whitney-j57",
+        "carrier-landings"
       ],
-      "summary": "A powerful J57 engine, low-speed carrier handling, four 20 mm cannon, and a flexible missile-and-bomb load made the F-8 more than a simple day fighter.",
-      "body": "The aircraft combined a relatively light airframe with an afterburning Pratt & Whitney J57, giving it a maximum speed of about Mach 1.8. Its wing and flap system also made a far slower landing approach possible than its normal-flight stall figures suggest. The armament discussion ranges from four 20 mm cannon and Sidewinders to French Matra Magic missiles, Bullpups, rockets, and conventional bombs. Together with the later AN/APQ-94 radar, that load shows how the Crusader expanded beyond the simplest idea of a gun-armed day fighter.",
+      "summary": "The figures show how Vought paired a relatively light airframe and powerful J57 with a wing system that could reconcile Mach 1.8 flight with 100 mph carrier approaches.",
+      "body": "At roughly 56 feet long, with a 36-foot wingspan and an empty weight of 18,800 pounds, the Crusader left substantial room between its empty and 34,000-pound maximum takeoff weights. Its internal fuel capacity was given as 5,112 litres, while the Pratt & Whitney J57 produced 11,400 pounds of dry thrust and 18,000 with afterburner. That combination supported a cited Mach 1.8 maximum speed, 58,000-foot ceiling, and 1,157-nautical-mile ferry range with external fuel. The variable-incidence wing and flaps matter because they could reduce the landing speed to about 100 mph even though the normal-flight stall figure was much higher. The figures turn the Crusader's unusual wing into an operational answer to the opposing demands of supersonic performance and carrier recovery.",
       "sourcePath": "src/transcripts/txt/2024-10-25_T18-30-42_vought-f-8-crusader-the-cold-war-corgi-key-aircraft-series-2-aircraft-9_ypnHBfXwtvk.txt",
       "evidence": [
         {
           "start": "25:14",
+          "end": "29:27",
+          "note": "The transcript gives the F-8's dimensions, weights, fuel load, J57 thrust, speed, landing behaviour, ceiling, and ferry range."
+        }
+      ]
+    },
+    {
+      "id": "f-8-performance-and-armament",
+      "videoId": "ypnHBfXwtvk",
+      "slug": "f-8-performance-and-armament",
+      "title": "Weapons and radar beyond the four cannon",
+      "kind": "notable_point",
+      "start": "29:37",
+      "end": "30:47",
+      "topics": [
+        "vought-f-8-crusader",
+        "aircraft-guns",
+        "aim-9-sidewinder",
+        "agm-12-bullpup",
+        "matra-magic",
+        "zuni-rockets",
+        "an-apq-94-radar",
+        "carrier-fighters"
+      ],
+      "summary": "Four 20 mm cannon remained central, but missiles, rockets, bombs, and the AN/APQ-94 radar gave the Crusader a much wider combat repertoire.",
+      "body": "The Crusader's four 20 mm cannon remained its defining armament, but Dr. Clarke lists a much broader weapons fit. Sidewinders and French Matra Magic missiles supported air combat, while AGM-12 Bullpup missiles, Zuni rocket pods, and conventional bombs extended the aircraft beyond a pure fighter role. Two fuselage missile stations and two underwing pylons provided the attachment points for that mixed load. The later AN/APQ-94 radar also gave the F-8 a capable sensor for its period. Taken together, the weapons and radar explain why an aircraft remembered as the last gunfighter could perform more than close-range interception.",
+      "sourcePath": "src/transcripts/txt/2024-10-25_T18-30-42_vought-f-8-crusader-the-cold-war-corgi-key-aircraft-series-2-aircraft-9_ypnHBfXwtvk.txt",
+      "evidence": [
+        {
+          "start": "29:37",
           "end": "30:47",
-          "note": "The video gives dimensions, engine and speed figures, landing behaviour, weapons, and radar fit."
+          "note": "The video lists the four cannon, missile, rocket, bomb, pylon, and AN/APQ-94 radar fit."
         }
       ]
     },
@@ -272,22 +308,24 @@
       "slug": "f-8-deck-handling-and-accidents",
       "title": "Deck handling, high sink rates, and folded-wing take-offs",
       "kind": "notable_point",
-      "start": "31:14",
+      "start": "31:43",
       "end": "33:01",
       "topics": [
         "vought-f-8-crusader",
         "carrier-operations",
         "carrier-landings",
-        "naval-aviation"
+        "naval-aviation",
+        "landing-signal-officers",
+        "aviation-safety"
       ],
-      "summary": "The Crusader's demanding deck behaviour illustrates the compromises of adapting a powerful early jet fighter to carrier operations.",
-      "body": "Although it was nominally a day fighter, the F-8 was sometimes used at night and its reconnaissance versions served in the Cuban Missile Crisis. Dr. Clarke notes the aircraft's early high sink rate and castering nose as features that could make deck operations difficult, especially on older carriers. High carrier speed and funnel smoke could further increase dependence on landing-signal officers during recovery. In contrast, its ability to take off and return with folded wings shows how much operational flexibility pilots could extract from the design.",
+      "summary": "A high sink rate, castering nosewheel, smoke-obscured approaches, and folded-wing take-offs show both the Crusader's hazards and its remarkable control authority at sea.",
+      "body": "Dr. Clarke attributes part of the Crusader's early mishap reputation to its high sink rate and castering nosewheel, both of which complicated movement and recovery on a carrier deck. Older carriers often had to maintain high speed into the wind, and their funnel smoke could obscure the approach enough to increase reliance on landing-signal officers. Against those difficulties, the aircraft could take off with its wings still folded and return safely, with pilots reporting control forces only slightly higher than normal. That survivable mistake does not make folded-wing flight routine, but it demonstrates how much control authority remained in the design. The contrast turns the F-8 into a useful example of how pilots and deck crews learned the peculiarities of early carrier jets after introduction.",
       "sourcePath": "src/transcripts/txt/2024-10-25_T18-30-42_vought-f-8-crusader-the-cold-war-corgi-key-aircraft-series-2-aircraft-9_ypnHBfXwtvk.txt",
       "evidence": [
         {
-          "start": "31:14",
+          "start": "31:43",
           "end": "33:01",
-          "note": "The transcript describes night use, reconnaissance, deck-handling difficulties, and folded-wing operation."
+          "note": "The transcript describes the high sink rate, castering nosewheel, smoke-obscured approaches, landing-signal officers, and folded-wing operation."
         }
       ]
     },
@@ -304,7 +342,9 @@
         "vought-f-8-crusader",
         "mig-17",
         "dogfighting",
-        "aim-9-sidewinder"
+        "aim-9-sidewinder",
+        "fighter-manoeuvrability",
+        "combat-air-patrol"
       ],
       "summary": "Vietnam brought close-range air combat back into prominence, and the manoeuvrable F-8 proved especially effective against MiGs at low altitude.",
       "body": "The video contrasts missile-era assumptions with the return of dogfighting in Vietnam. Although only four Crusader kills cited here were made with guns, its manoeuvrability helped pilots employ Sidewinders effectively in close engagements. Dr. Clarke explains that North Vietnamese aircraft often operated low to reduce exposure to American surface-to-air missiles, putting them into the regime where the Crusader was strongest. F-8 pairs combined visual lookout, onboard systems, and external guidance in a jet-age adaptation of earlier combat air patrol practice.",
@@ -321,25 +361,55 @@
       "id": "f-8-vietnam-record-and-essex-carriers",
       "videoId": "ypnHBfXwtvk",
       "slug": "f-8-vietnam-record-and-essex-carriers",
-      "title": "Vietnam combat record and Essex-class adaptability",
+      "title": "VF-51 and Essex-class carrier adaptability",
       "kind": "notable_point",
       "start": "36:18",
-      "end": "39:44",
+      "end": "37:40",
       "topics": [
         "vietnam-war",
         "vought-f-8-crusader",
         "essex-class-aircraft-carriers",
         "aircraft-carriers",
-        "mig-21"
+        "uss-bon-homme-richard-cv-31",
+        "vf-51",
+        "carrier-air-groups"
       ],
-      "summary": "Crusaders flew from adapted Essex-class carriers in Vietnam, where the episode presents their strong air-to-air record alongside the usual cautions about wartime claims.",
-      "body": "Dr. Clarke uses an engagement credited to Lieutenant McCoy of VF-51 aboard USS Bon Homme Richard to illustrate how carrier aviation achievements were usually group efforts rather than single-aircraft stories. He then argues that aircraft such as the F-8 allowed older Essex-class carriers to operate much newer generations of aviation technology. The video cites 19 air-to-air kills, mainly MiG-17s, while also acknowledging that Vietnamese loss claims differ and that many F-8 losses came from ground fire or accidents rather than air combat.",
+      "summary": "An engagement credited to VF-51 aboard USS Bon Homme Richard leads into a lesson about how adapted Essex-class carriers kept operating aircraft generations beyond their original design.",
+      "body": "Dr. Clarke presents an engagement credited to Lieutenant McCoy of VF-51 aboard USS Bon Homme Richard as a group achievement rather than an isolated single-pilot story. The ship was an Essex-class carrier conceived for Second World War aircraft yet operating the much later F-8 over Vietnam. Aircraft such as the Crusader therefore helped older carriers extract useful combat capability from successive generations of aviation technology. The episode notes that the Essex class had originated as a mass-produced development of the Yorktown design rather than as a hull planned around every later jet. The watch point makes carrier adaptability a design requirement: a useful flight deck and air group must absorb technologies that do not yet exist when the ship is laid down.",
       "sourcePath": "src/transcripts/txt/2024-10-25_T18-30-42_vought-f-8-crusader-the-cold-war-corgi-key-aircraft-series-2-aircraft-9_ypnHBfXwtvk.txt",
       "evidence": [
         {
           "start": "36:18",
+          "end": "37:40",
+          "note": "The transcript discusses the VF-51 engagement aboard USS Bon Homme Richard and the ability of Essex-class carriers to operate later aircraft generations."
+        }
+      ]
+    },
+    {
+      "id": "f-8-vietnam-claims-and-losses",
+      "videoId": "ypnHBfXwtvk",
+      "slug": "f-8-vietnam-claims-and-losses",
+      "title": "Reading Crusader kill and loss claims carefully",
+      "kind": "notable_point",
+      "start": "37:40",
+      "end": "39:44",
+      "topics": [
+        "vietnam-war",
+        "vought-f-8-crusader",
+        "mig-17",
+        "mig-21",
+        "aerial-victory-claims",
+        "ground-fire",
+        "aviation-accidents"
+      ],
+      "summary": "The episode gives the F-8 a 19-to-3 air-combat record, then separates that claim from disputed Vietnamese tallies and the aircraft's much larger losses to ground fire and accidents.",
+      "body": "For twelve engagements during June and July 1966, the episode says Crusaders claimed four MiG-17s for two losses. It gives the wider American air-combat tally as nineteen victories—sixteen MiG-17s and three MiG-21s—against three F-8s lost in aerial combat. Vietnamese claims of eleven Crusaders create a useful warning about wartime overclaiming, especially when explosions, damage, surface-to-air missiles, and incomplete observation complicate attribution. Dr. Clarke argues that the number of aircraft returning to American carriers supports the lower air-to-air loss total and says all three confirmed aerial losses occurred in 1966 to MiG-17 cannon. The ratio should not be mistaken for the type's whole wartime cost: the transcript gives 170 Crusaders lost overall, mostly to ground fire and accidents.",
+      "sourcePath": "src/transcripts/txt/2024-10-25_T18-30-42_vought-f-8-crusader-the-cold-war-corgi-key-aircraft-series-2-aircraft-9_ypnHBfXwtvk.txt",
+      "evidence": [
+        {
+          "start": "37:40",
           "end": "39:44",
-          "note": "The transcript discusses VF-51, USS Bon Homme Richard, Essex carriers, claimed kills, and loss-accounting caveats."
+          "note": "The transcript gives 1966 engagement figures, the 19-to-3 US tally, Vietnamese claims, confirmed air-combat losses, and the larger total from ground fire and accidents."
         }
       ]
     },
@@ -356,10 +426,14 @@
         "vought-f-8-crusader",
         "carrier-fighters",
         "cold-war",
-        "naval-aviation"
+        "naval-aviation",
+        "mig-21",
+        "carrier-air-defence",
+        "nato",
+        "yugoslav-wars"
       ],
       "summary": "French Crusaders supplied essential fighter cover from France's smaller carriers and remained useful in Cold War deployments long after American fighter service ended.",
-      "body": "The video presents the F-8FN as a particularly valued French naval aircraft, with a striking share of the small fleet preserved on display. It follows the aircraft through an encounter with Yemeni MiG-21s, Persian Gulf and Balkan deployments, and the air-defence role it provided from French carriers. In a NATO task group, the Crusader could protect the formation locally while longer-range interceptors such as Tomcats were used elsewhere. French modifications further developed the wing system to suit that carrier role.",
+      "body": "The video presents the F-8FN as a particularly valued French naval aircraft: twelve examples are described as preserved from a force that was seldom larger than about forty-eight. It follows the type through an unexpected encounter with Yemeni MiG-21s, deployments to the Persian Gulf, a deterrent role against Muammar Gaddafi, and operations during the Balkan conflicts through 1999, while noting that it did not participate in Desert Storm. Without the Crusader, France's smaller carriers would have lacked a fighter after the Vought Corsair retired. In a NATO task group, the F-8 could protect the formation locally while longer-range interceptors such as Tomcats were used elsewhere. French modifications increased the variable-incidence wing's movement, leaning further into the carrier-handling qualities that kept the aircraft useful.",
       "sourcePath": "src/transcripts/txt/2024-10-25_T18-30-42_vought-f-8-crusader-the-cold-war-corgi-key-aircraft-series-2-aircraft-9_ypnHBfXwtvk.txt",
       "evidence": [
         {
