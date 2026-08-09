@@ -150,4 +150,6 @@ Treat this repository's `AGENTS.md`, `.agents/` briefs, and `.agents/skills/` as
 
 For Astro/Pagefind page, route, search, or generated-data adapter work, use `.agents/site-archive-builder.md` with `$naval-video-page-prototype`. For build, archive-generation, Astro, or Pagefind failures, use `$naval-site-build-repair`; it delegates transcript-backed content judgment to `$naval-site-content-auditor` and site implementation changes to `$naval-video-page-prototype` when needed.
 
+For separately authorised corpus-wide topic taxonomy maintenance, use `$naval-topic-taxonomy-curator`. Keep one-shard transcript-backed topic discovery inside `$naval-transcript-to-site-content` or `$naval-site-content-auditor`, and keep narrow topic failures discovered during a build inside `$naval-site-build-repair` unless they require a broader semantic migration.
+
 Preserve the segment-first design. Ground claims in transcript evidence: video ID, timestamp, and source passage when possible. Keep temporary notes in `task-notes/`; put durable guidance here or in stable docs.
