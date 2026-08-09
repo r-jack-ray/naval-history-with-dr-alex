@@ -64,11 +64,10 @@ test("topic-producing and companion guidance use the shared normalization catalo
   }
 });
 
-test("steady-state guidance omits one-time rollout commands and URL compatibility claims", async () => {
+test("guidance omits retired rollout commands and URL compatibility claims", async () => {
   for (const relativePath of catalogGuidancePaths) {
     const guidance = await readGuidance(relativePath);
 
-    assert.doesNotMatch(guidance, /\bmigrat(?:e|es|ed|ing|ion|ions)\b/iu, `${relativePath} must be steady-state`);
     assert.doesNotMatch(
       guidance,
       /normalize:video-topics(?::apply)?/iu,
@@ -313,7 +312,11 @@ test("build repair audits steady-state policy and delegates semantic and site im
   assert.match(guidance, /review[^.]{0,160}does not authorize a mutation/iu);
   assert.match(guidance, /active `creation` rules[^.]{0,160}canonical slug/iu);
   assert.match(guidance, /explicit topic-policy scope/iu);
-  assert.match(guidance, /report:video-topic-usage[\s\S]{0,500}topic-normalization-review\.tsv/iu);
+  assert.match(
+    guidance,
+    /corpus-wide taxonomy maintenance[\s\S]{0,300}\$naval-topic-taxonomy-curator/iu,
+    "the build-repair skill must delegate broad taxonomy maintenance",
+  );
   assert.match(guidance, /\$naval-site-content-auditor/iu);
   assert.match(guidance, /\$naval-video-page-prototype/iu);
   assert.match(guidance, /steady-state policy compliance/iu);

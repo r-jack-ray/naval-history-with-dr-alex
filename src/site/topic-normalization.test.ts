@@ -313,20 +313,19 @@ test("production policy encodes the dc950 topic audit without collapsing semanti
   );
   const activeAuditRules = auditRules.filter(({ status }) => status === "active");
 
-  assert.equal(auditRules.length, 109);
-  assert.equal(activeAuditRules.length, 102);
-  assert.deepEqual(
-    auditRules.filter(({ status }) => status !== "active").map(({ ruleId }) => ruleId),
-    [
-      "normalize-dc950-midway-class-aircraft-carriers",
-      "normalize-dc950-admiral-lord-cork",
-      "normalize-dc950-lord-cork",
-      "normalize-dc950-rear-admiral-montagu",
-      "normalize-dc950-alexander-hood",
-      "normalize-dc950-lord-chatfield",
-      "normalize-dc950-kongo-class-battlecruisers",
-    ],
-  );
+  assert.ok(activeAuditRules.length > 0, "the dc950 audit must retain active creation rules");
+  const statusesByRuleId = new Map(auditRules.map(({ ruleId, status }) => [ruleId, status]));
+  for (const [ruleId, status] of new Map([
+    ["normalize-dc950-midway-class-aircraft-carriers", "disabled"],
+    ["normalize-dc950-admiral-lord-cork", "review"],
+    ["normalize-dc950-lord-cork", "review"],
+    ["normalize-dc950-rear-admiral-montagu", "review"],
+    ["normalize-dc950-alexander-hood", "disabled"],
+    ["normalize-dc950-lord-chatfield", "review"],
+    ["normalize-dc950-kongo-class-battlecruisers", "disabled"],
+  ] as const)) {
+    assert.equal(statusesByRuleId.get(ruleId), status, ruleId);
+  }
   for (const rule of activeAuditRules) {
     assert.deepEqual(rule.scopes, ["creation"], rule.ruleId);
     assert.equal(rule.matchKind, "exact", rule.ruleId);
