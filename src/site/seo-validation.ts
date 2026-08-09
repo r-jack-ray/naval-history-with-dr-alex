@@ -1,6 +1,6 @@
 import { createReadStream } from "node:fs";
 import { opendir, readFile, stat } from "node:fs/promises";
-import { basename, dirname, join, relative, resolve, sep } from "node:path";
+import { dirname, join, relative, resolve, sep } from "node:path";
 
 import { Parser } from "htmlparser2";
 import { SaxesParser } from "saxes";
@@ -38,6 +38,42 @@ export interface HtmlSeoSnapshot {
   ledes: string[];
   jsonLdBlocks: string[];
   visibleBreadcrumbs: Array<{ name: string; href?: string }>;
+  renderedDates: RenderedDateHtmlSnapshot;
+}
+
+export interface RenderedDateValue {
+  datetime: string;
+  label: string;
+}
+
+export interface RenderedSegmentBrowseCard {
+  segmentSlug: string;
+  dates: RenderedDateValue[];
+}
+
+export interface RenderedDateHtmlSnapshot {
+  forbiddenPublicText: string[];
+  timeElements: RenderedDateValue[];
+  sourceDateFields: RenderedDateValue[];
+  segmentBrowseCards: RenderedSegmentBrowseCard[];
+  videoDetailDateFields: RenderedDateValue[];
+  latestVideoGuideDates: RenderedDateValue[];
+}
+
+export interface RenderedHtmlPageSnapshot {
+  path: string;
+  relativePath: string;
+  pageUrl?: string;
+  snapshot?: HtmlSeoSnapshot;
+  error?: string;
+}
+
+export interface RenderedHtmlSiteSnapshot {
+  distRoot: string;
+  siteOrigin: string;
+  basePath: string;
+  outputFiles: string[];
+  pages: RenderedHtmlPageSnapshot[];
 }
 
 export interface SitemapSnapshot {
@@ -89,6 +125,13 @@ interface HtmlParserState {
 }
 
 const defaultHubWarningBytes = 1_000_000;
+export const forbiddenRenderedDatePublicText = [
+  "Scheduled for",
+  '<span class="label">Published</span>',
+  '<span class="label">Start date</span>',
+  '<span class="label">Streamed</span>',
+  ">P0D<",
+] as const;
 
 function normalizeWhitespace(value: string): string {
   return value.replace(/\s+/gu, " ").trim();
@@ -223,9 +266,48 @@ function createHtmlParser(state: HtmlParserState): Parser {
   }, { decodeEntities: true, lowerCaseAttributeNames: true, lowerCaseTags: true });
 }
 
-function snapshotFromState(state: HtmlParserState, bytes: number): HtmlSeoSnapshot {
+function extractRenderedDateValues(html: string, pattern: RegExp): RenderedDateValue[] {
+  return [...html.matchAll(pattern)].map((match) => ({
+    datetime: match[1] ?? "",
+    label: match[2] ?? "",
+  }));
+}
+
+function parseRenderedDateHtml(html: string): RenderedDateHtmlSnapshot {
+  const segmentBrowseCards = [...html.matchAll(
+    /<article\b[^>]*data-segment-slug="([^"]+)"[^>]*>([\s\S]*?)<\/article>/gu,
+  )].map((match) => ({
+    segmentSlug: match[1] ?? "",
+    dates: extractRenderedDateValues(
+      match[2] ?? "",
+      /<time\s+datetime="([^"]+)">([^<]+)<\/time>/gu,
+    ),
+  }));
   return {
-    bytes,
+    forbiddenPublicText: forbiddenRenderedDatePublicText.filter((text) => html.includes(text)),
+    timeElements: extractRenderedDateValues(
+      html,
+      /<time\s+datetime="([^"]+)">([^<]+)<\/time>/gu,
+    ),
+    sourceDateFields: extractRenderedDateValues(
+      html,
+      /<dt>Date<\/dt>\s*<dd>\s*<time datetime="([^"]+)">([^<]+)<\/time>\s*<\/dd>/gu,
+    ),
+    segmentBrowseCards,
+    videoDetailDateFields: extractRenderedDateValues(
+      html,
+      /<span class="label">Date<\/span><strong><time datetime="([^"]+)">([^<]+)<\/time><\/strong>/gu,
+    ),
+    latestVideoGuideDates: extractRenderedDateValues(
+      html,
+      /Latest video guide · <time datetime="([^"]+)">([^<]+)<\/time>/gu,
+    ),
+  };
+}
+
+function snapshotFromState(state: HtmlParserState, html: string): HtmlSeoSnapshot {
+  return {
+    bytes: Buffer.byteLength(html),
     titleCount: state.titleCount,
     title: normalizeWhitespace(state.titleText.join("")),
     descriptions: state.descriptions.map(normalizeWhitespace),
@@ -237,6 +319,7 @@ function snapshotFromState(state: HtmlParserState, bytes: number): HtmlSeoSnapsh
     ledes: state.ledes,
     jsonLdBlocks: state.jsonLdBlocks,
     visibleBreadcrumbs: state.visibleBreadcrumbs,
+    renderedDates: parseRenderedDateHtml(html),
   };
 }
 
@@ -244,31 +327,11 @@ export function parseHtmlSeoString(html: string): HtmlSeoSnapshot {
   const state = createHtmlParserState();
   const parser = createHtmlParser(state);
   parser.end(html);
-  return snapshotFromState(state, Buffer.byteLength(html));
+  return snapshotFromState(state, html);
 }
 
 export async function parseHtmlSeoFile(path: string): Promise<HtmlSeoSnapshot> {
-  const state = createHtmlParserState();
-  const parser = createHtmlParser(state);
-  let bytes = 0;
-  await new Promise<void>((resolvePromise, reject) => {
-    const stream = createReadStream(path);
-    stream.on("data", (chunk: string | Buffer) => {
-      const buffer = typeof chunk === "string" ? Buffer.from(chunk) : chunk;
-      bytes += buffer.length;
-      parser.write(buffer.toString("utf8"));
-    });
-    stream.once("error", reject);
-    stream.once("end", () => {
-      try {
-        parser.end();
-        resolvePromise();
-      } catch (error) {
-        reject(error);
-      }
-    });
-  });
-  return snapshotFromState(state, bytes);
+  return parseHtmlSeoString(await readFile(path, "utf8"));
 }
 
 export function parseSitemapXmlString(xml: string): SitemapSnapshot {
@@ -420,6 +483,46 @@ async function listOutputFiles(root: string): Promise<string[]> {
   }
   await visit(root);
   return files.sort((left, right) => left.localeCompare(right));
+}
+
+export async function readRenderedHtmlSiteSnapshot(
+  options: Pick<SeoValidationOptions, "distRoot" | "siteOrigin" | "basePath" | "concurrency">,
+): Promise<RenderedHtmlSiteSnapshot> {
+  const distRoot = resolve(options.distRoot);
+  const siteOrigin = new URL(options.siteOrigin).origin;
+  const basePath = normalizeBasePath(options.basePath);
+  const outputFiles = await listOutputFiles(distRoot);
+  const htmlPaths = outputFiles.filter((path) => path.endsWith(".html"));
+  const pages = new Array<RenderedHtmlPageSnapshot>(htmlPaths.length);
+  let cursor = 0;
+  const workerCount = Math.max(1, Math.min(options.concurrency ?? 8, 32));
+  const workers = Array.from({ length: workerCount }, async () => {
+    while (cursor < htmlPaths.length) {
+      const index = cursor;
+      cursor += 1;
+      const path = htmlPaths[index];
+      if (path === undefined) continue;
+      const relativePath = relative(distRoot, path).split(sep).join("/");
+      const pageUrl = htmlPathToPageUrl(path, distRoot, siteOrigin, basePath);
+      try {
+        pages[index] = {
+          path,
+          relativePath,
+          ...(pageUrl === undefined ? {} : { pageUrl }),
+          snapshot: await parseHtmlSeoFile(path),
+        };
+      } catch (error) {
+        pages[index] = {
+          path,
+          relativePath,
+          ...(pageUrl === undefined ? {} : { pageUrl }),
+          error: error instanceof Error ? error.message : String(error),
+        };
+      }
+    }
+  });
+  await Promise.all(workers);
+  return { distRoot, siteOrigin, basePath, outputFiles, pages };
 }
 
 function detailRouteKind(urlValue: string, basePath: string): "video" | "segment" | "topic" | undefined {
@@ -623,7 +726,10 @@ function validateBreadcrumbs(
   }
 }
 
-export async function validateRenderedSeoSite(options: SeoValidationOptions): Promise<SeoValidationResult> {
+export async function validateRenderedSeoSite(
+  options: SeoValidationOptions,
+  renderedHtml?: RenderedHtmlSiteSnapshot,
+): Promise<SeoValidationResult> {
   const distRoot = resolve(options.distRoot);
   const basePath = normalizeBasePath(options.basePath);
   const siteOrigin = new URL(options.siteOrigin).origin;
@@ -631,12 +737,24 @@ export async function validateRenderedSeoSite(options: SeoValidationOptions): Pr
   const diagnostic = (severity: SeoDiagnosticSeverity, rule: string, route: string, message: string): void => {
     diagnostics.push({ severity, rule, route, message });
   };
-  const outputFiles = await listOutputFiles(distRoot);
+  const renderedSite = renderedHtml ?? await readRenderedHtmlSiteSnapshot(options);
+  if (
+    renderedSite.distRoot !== distRoot
+    || renderedSite.siteOrigin !== siteOrigin
+    || renderedSite.basePath !== basePath
+  ) {
+    throw new Error("Rendered HTML snapshot does not match the SEO validation target.");
+  }
+  const outputFiles = renderedSite.outputFiles;
   const outputRelativePaths = new Set(outputFiles.map((path) => relative(distRoot, path).split(sep).join("/")));
-  const htmlPages = outputFiles
-    .filter((path) => path.endsWith(`${sep}index.html`) || basename(path) === "index.html")
-    .map((path) => ({ path, url: htmlPathToPageUrl(path, distRoot, siteOrigin, basePath) }))
-    .filter((page): page is { path: string; url: string } => page.url !== undefined);
+  const htmlPages = renderedSite.pages
+    .filter((page): page is RenderedHtmlPageSnapshot & { pageUrl: string } => page.pageUrl !== undefined)
+    .map((page) => ({
+      path: page.path,
+      url: page.pageUrl,
+      snapshot: page.snapshot,
+      error: page.error,
+    }));
   const routeUrls = new Set(htmlPages.map((page) => page.url));
   const indexableRouteUrls = new Set(htmlPages.filter((page) => isIndexablePageUrl(page.url, basePath)).map((page) => page.url));
   const titles = new Map<string, string>();
@@ -654,13 +772,11 @@ export async function validateRenderedSeoSite(options: SeoValidationOptions): Pr
       const page = htmlPages[cursor];
       cursor += 1;
       if (page === undefined) continue;
-      let snapshot: HtmlSeoSnapshot;
-      try {
-        snapshot = await parseHtmlSeoFile(page.path);
-      } catch (error) {
-        diagnostic("error", "html-parse", page.url, error instanceof Error ? error.message : String(error));
+      if (page.snapshot === undefined) {
+        diagnostic("error", "html-parse", page.url, page.error ?? "Rendered HTML snapshot is unavailable.");
         continue;
       }
+      const snapshot = page.snapshot;
       if (largestHtmlPage === undefined || snapshot.bytes > largestHtmlPage.bytes) {
         largestHtmlPage = { route: page.url, bytes: snapshot.bytes };
       }

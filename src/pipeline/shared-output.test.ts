@@ -63,6 +63,9 @@ test("Phase 2 commands keep topic writes explicit and avoid duplicate site pipel
   const workflow = await readFile(join(repositoryRoot, ".github", "workflows", "deploy-site.yml"), "utf8");
   const workspacePagefindRunner = await readFile(join(repositoryRoot, "src", "scripts", "run-workspace-pagefind.mjs"), "utf8");
   const siteDevWrapper = await readFile(join(repositoryRoot, "src", "scripts", "site-dev.mjs"), "utf8");
+  const renderedSiteCoordinator = await readFile(join(repositoryRoot, "src", "scripts", "check-rendered-site.ts"), "utf8");
+  const focusedSeoValidator = await readFile(join(repositoryRoot, "src", "scripts", "check-site-seo.ts"), "utf8");
+  const focusedDateValidator = await readFile(join(repositoryRoot, "src", "scripts", "check-rendered-video-dates.ts"), "utf8");
 
   assert.match(
       contentValidator,
@@ -156,14 +159,22 @@ test("Phase 2 commands keep topic writes explicit and avoid duplicate site pipel
       packageJson.scripts["check"],
       "npm test && npm run check:source && npm run site:check",
   );
+  assert.equal(
+      packageJson.scripts["check:source"],
+      "npm run audit:topic-normalization && npm run check:video-topics && npm run audit:site-content",
+  );
+  assert.doesNotMatch(
+      packageJson.scripts["check:source"] ?? "",
+      /report:video-topic-usage/u,
+      "check:source must retain gates without generating the on-demand topic reports",
+  );
   assert.equal(packageJson.scripts["check:quick"], undefined);
   assert.equal(packageJson.scripts["check:functional"], undefined);
   assert.equal(packageJson.scripts["check:generated"], undefined);
   const productionCheckScript = packageJson.scripts["check:production"] ?? "";
   const productionStages = [
-    "npm run check:site-seo",
+    "npm run check:rendered-site",
     "npm run check:search-ranking",
-    "npm run check:rendered-video-dates",
   ];
   for (const stage of productionStages) {
     assert.equal(
@@ -216,9 +227,30 @@ test("Phase 2 commands keep topic writes explicit and avoid duplicate site pipel
       "node --env-file=site-build.properties --import tsx src/scripts/check-site-seo.ts",
   );
   assert.equal(
-      packageJson.scripts["test"],
-      "npm run clean && npm run build && node --import tsx --test \"src/**/*.test.ts\"",
+      packageJson.scripts["check:rendered-site"],
+      "node --env-file=site-build.properties --import tsx src/scripts/check-rendered-site.ts",
   );
+  assert.equal(
+      renderedSiteCoordinator.match(/readRenderedHtmlSiteSnapshot\(/gu)?.length,
+      1,
+      "the production coordinator must create one rendered HTML snapshot",
+  );
+  assert.match(renderedSiteCoordinator, /validateRenderedSeoSite\(siteValidationOptions, renderedHtml\)/u);
+  assert.match(renderedSiteCoordinator, /validateRenderedVideoDates\([\s\S]+renderedHtml\)/u);
+  for (const timedValidator of [renderedSiteCoordinator, focusedSeoValidator, focusedDateValidator]) {
+    assert.match(timedValidator, /measureRunStage/u);
+    assert.match(timedValidator, /printRunTime\(runStartedAt\)/u);
+  }
+  assert.match(renderedSiteCoordinator, /"rendered HTML snapshot"/u);
+  assert.match(renderedSiteCoordinator, /"rendered SEO validation"/u);
+  assert.match(renderedSiteCoordinator, /"rendered date and Pagefind validation"/u);
+  assert.match(focusedSeoValidator, /"rendered HTML loading and SEO validation"/u);
+  assert.match(focusedDateValidator, /"rendered HTML and Pagefind date validation"/u);
+  assert.equal(
+      packageJson.scripts["test"],
+      "npm run check:types && node --import tsx --test \"src/**/*.test.ts\"",
+  );
+  assert.doesNotMatch(packageJson.scripts["test"] ?? "", /npm run (?:clean|build)\b/u);
   assert.equal(
       Object.keys(packageJson.scripts).filter((scriptName) => scriptName.endsWith(":built")).length,
       0,

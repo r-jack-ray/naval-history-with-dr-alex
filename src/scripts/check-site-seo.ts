@@ -2,41 +2,23 @@
 
 import { parseSiteSeoValidationConcurrency } from "../site/concurrency-settings.js";
 import { validateRenderedSeoSite } from "../site/seo-validation.js";
+import { measureRunStage, printRunTime } from "./console-run-timer.js";
+import { reportSeoValidationResult } from "./site-validation-output.js";
 
-const result = await validateRenderedSeoSite({
-  distRoot: "site/dist",
-  siteOrigin: "https://r-jack-ray.github.io",
-  basePath: "/naval-history-with-dr-alex/",
-  concurrency: parseSiteSeoValidationConcurrency(
-      process.env.SITE_SEO_VALIDATION_CONCURRENCY,
-  ),
-});
-const errors = result.diagnostics.filter((item) => item.severity === "error");
-const warnings = result.diagnostics.filter((item) => item.severity === "warning");
-
-for (const item of result.diagnostics.slice(0, 200)) {
-  const label = item.severity === "error" ? "ERROR" : "WARN";
-  const message = `${label} [${item.rule}] ${item.route}: ${item.message}`;
-  if (item.severity === "error") {
-    console.error(message);
-  } else {
-    console.warn(message);
-  }
-}
-if (result.diagnostics.length > 200) {
-  console.warn(`... ${result.diagnostics.length - 200} additional diagnostics omitted.`);
-}
-
-console.log(
-    `SEO validation checked ${result.htmlPages.toLocaleString("en-US")} HTML pages, `
-    + `${result.indexablePages.toLocaleString("en-US")} indexable routes, `
-    + `${result.sitemapUrls.toLocaleString("en-US")} sitemap URLs, ${result.videoSitemapEntries.toLocaleString("en-US")} video records, `
-    + `and ${result.sitemapFiles} child sitemaps (${result.videoSitemapFiles} video).`,
-);
-if (result.largestHtmlPage !== undefined) {
-  console.log(`Largest HTML page: ${result.largestHtmlPage.route} (${result.largestHtmlPage.bytes.toLocaleString("en-US")} bytes).`);
-}
-console.log(`SEO diagnostics: ${errors.length} errors, ${warnings.length} warnings.`);
-if (errors.length > 0) {
-  process.exitCode = 1;
+const runStartedAt = Date.now();
+try {
+  const result = await measureRunStage(
+    "rendered HTML loading and SEO validation",
+    async () => validateRenderedSeoSite({
+      distRoot: "site/dist",
+      siteOrigin: "https://r-jack-ray.github.io",
+      basePath: "/naval-history-with-dr-alex/",
+      concurrency: parseSiteSeoValidationConcurrency(
+        process.env.SITE_SEO_VALIDATION_CONCURRENCY,
+      ),
+    }),
+  );
+  if (!reportSeoValidationResult(result)) process.exitCode = 1;
+} finally {
+  printRunTime(runStartedAt);
 }

@@ -77,7 +77,7 @@ Install dependencies:
 npm install
 ```
 
-The normal network-free repository check compiles and type-checks once, then
+The normal network-free repository check type-checks once, then
 runs functional tests, source/topic validation, and generated-data/Astro validation:
 
 ```powershell
@@ -104,10 +104,10 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 | `clean` | Remove compiled `dist/` output. |
 | `build` | Compile the TypeScript tools into `dist/`. |
 | `check:types` | Type-check without emitting files. |
-| `test` | Clean, compile/type-check, and run canonical `src/**/*.test.ts` files through Node and `tsx`. |
-| `check:source` | Run the read-only topic audit/check, content audit, and complete two-report topic-curation canary. |
-| `check` | Run the canonical network-free source-test, source-validation, and generated-data layers; `test` performs the TypeScript build/type check once. |
-| `check:production` | Run source-owned SEO, search-ranking, and rendered-date validators against an existing Astro/Pagefind build; this command does not generate or build the site. |
+| `test` | Type-check without emitting root `dist/`, then run canonical `src/**/*.test.ts` files through Node and `tsx`. |
+| `check:source` | Run the gating read-only topic-normalization, topic-store, and site-content checks. |
+| `check` | Run the canonical network-free source-test, source-validation, and generated-data layers; `test` performs the TypeScript type check once. |
+| `check:production` | Traverse rendered HTML once for the source-owned SEO and date validators, then run search-ranking checks against the existing Astro/Pagefind build; this command does not generate or build the site. |
 | `check:ci` | Run tests, one cache-aware official production build, and the post-build checks as the one-pass Pages graph. |
 
 ### Curated Content and Reports
@@ -155,12 +155,13 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 | `check:pagefind-contract` | Verify Pagefind manifest/fragment counts and the five representative Phase 0 searches for either implementation. |
 | `check:search-ranking` | Exercise the built Pagefind index and rendered search UI against ranking cases. |
 | `check:rendered-video-dates` | Validate dates and video state in the built HTML and Pagefind output. |
+| `check:rendered-site` | Run SEO and rendered-date validation from one shared rendered-HTML snapshot. |
 
 ### SEO and Lighthouse
 
 | Script | Purpose |
 | --- | --- |
-| `check:site-seo` | Run the canonical TypeScript validator from `src/` against SEO metadata, sitemaps, and rendered `site/dist/` pages. |
+| `check:site-seo` | Run the focused canonical TypeScript validator from `src/` against SEO metadata, sitemaps, and rendered `site/dist/` pages. |
 | `audit:lighthouse` | Run one parameterized Lighthouse audit; defaults to the representative five-route production baseline and creates its report directory. |
 
 Use `--mode home` for a quick single-page audit, `--base-url` for a local or caller-supplied site root, and `--output-prefix` to choose the report location. The runner still accepts `SEO_AUDIT_BASE_URL`, with an explicit flag taking precedence:

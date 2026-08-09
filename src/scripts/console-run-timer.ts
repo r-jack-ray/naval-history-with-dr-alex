@@ -18,6 +18,21 @@ export function printRunTime(startedAt: number): void {
   console.log(`Run Time: ${formatRunTime(Date.now() - startedAt)}`);
 }
 
+export async function measureRunStage<T>(
+  label: string,
+  operation: () => Promise<T>,
+  now: () => number = Date.now,
+  log: (message: string) => void = console.log,
+): Promise<T> {
+  const startedAt = now();
+  log(`Stage Start: ${label}`);
+  try {
+    return await operation();
+  } finally {
+    log(`Stage Time: ${label}: ${formatRunTime(now() - startedAt)}`);
+  }
+}
+
 export function isDirectExecution(moduleUrl: string): boolean {
   const entryPath = process.argv[1];
   return entryPath !== undefined && pathToFileURL(resolve(entryPath)).href === moduleUrl;

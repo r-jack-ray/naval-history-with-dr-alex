@@ -32,6 +32,7 @@ test("all direct site commands load the shared properties file", async () => {
     "site:build:astro",
     "site:build:pagefind",
     "check:site-seo",
+    "check:rendered-site",
   ]) {
     assert.match(
       packageJson.scripts[scriptName] ?? "",
@@ -42,6 +43,10 @@ test("all direct site commands load the shared properties file", async () => {
   assert.equal(
     packageJson.scripts["check:site-seo"],
     "node --env-file=site-build.properties --import tsx src/scripts/check-site-seo.ts",
+  );
+  assert.equal(
+    packageJson.scripts["check:rendered-site"],
+    "node --env-file=site-build.properties --import tsx src/scripts/check-rendered-site.ts",
   );
 });
 

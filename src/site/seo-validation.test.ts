@@ -8,6 +8,7 @@ import {
   htmlPathToPageUrl,
   parseHtmlSeoString,
   parseSitemapXmlString,
+  readRenderedHtmlSiteSnapshot,
   validateRenderedSeoSite,
 } from "./seo-validation.js";
 import { buildBreadcrumbListJsonLd, serializeJsonLd } from "./structured-data.js";
@@ -61,7 +62,7 @@ async function writeRoute(root: string, route: string, html: string): Promise<vo
   await writeFile(join(directory, "index.html"), html, "utf8");
 }
 
-test("streams HTML metadata and parses strict sitemap XML", () => {
+test("parses rendered HTML metadata and strict sitemap XML", () => {
   const html = htmlPage("videos/example/", "Example video", {
     breadcrumbs: [
       { name: "Video Guides", route: "videos/" },
@@ -175,13 +176,15 @@ test("validates a rendered fixture and reports actionable hard failures", async 
       "utf8",
     );
 
-    const valid = await validateRenderedSeoSite({
+    const seoOptions = {
       distRoot: root,
       siteOrigin: origin,
       basePath: base,
       topicsPath,
       concurrency: 2,
-    });
+    };
+    const rendered = await readRenderedHtmlSiteSnapshot(seoOptions);
+    const valid = await validateRenderedSeoSite(seoOptions, rendered);
     assert.deepEqual(valid.diagnostics.filter((item) => item.severity === "error"), []);
     assert.equal(valid.indexablePages, indexableUrls.length);
     assert.equal(valid.videoSitemapEntries, 1);
