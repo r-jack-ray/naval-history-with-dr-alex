@@ -89,8 +89,8 @@ test("CLI maps canonical processing states, isolates malformed shards, and emits
       "2026-07-12T20:00:07;src/derived/video-segments/manual_manual1.json;strengthened;yes;Full transcript compared, manual audio review remains at 12:59-13:28",
     ].join("\n"), "utf8");
 
-    const script = path.resolve("dist/scripts/rank-video-segment-audit-risk.js");
-    const result = await execFileAsync(process.execPath, [script, "--manifest", manifestPath, "--segments-input", segments,
+    const script = path.resolve("src/scripts/rank-video-segment-audit-risk.ts");
+    const result = await execFileAsync(process.execPath, ["--import", "tsx", script, "--manifest", manifestPath, "--segments-input", segments,
       "--transcript-root", transcripts, "--processing-log", logPath, "--processing-config", configPath, "--output", outputPath]);
     const output = await readFile(outputPath, "utf8");
     const lines = output.trimEnd().split("\n");

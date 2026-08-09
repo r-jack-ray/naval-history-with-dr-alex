@@ -21,7 +21,7 @@ async function main(): Promise<void> {
     },
     {
       command: "node",
-      args: ["dist/scripts/audit-site-content.js", "--limit", String(options.backlogLimit)],
+      args: ["--import", "tsx", "src/scripts/audit-site-content.ts", "--limit", String(options.backlogLimit)],
     },
     {
       command: "npm",

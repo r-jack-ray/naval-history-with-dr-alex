@@ -11,10 +11,10 @@
     "clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
     "build": "tsc -p tsconfig.json",
     "check:types": "tsc --noEmit -p tsconfig.json",
-    "test": "npm run clean && npm run build && node --test \"dist/**/*.test.js\"",
+    "test": "npm run clean && npm run build && node --import tsx --test \"src/**/*.test.ts\"",
     "check:source": "npm run audit:topic-normalization && npm run check:video-topics && npm run audit:site-content && npm run report:video-topic-usage",
     "check": "npm test && npm run check:source && npm run site:check",
-    "check:production": "npm run check:site-seo:built && npm run check:search-ranking && npm run check:rendered-video-dates",
+    "check:production": "npm run check:site-seo && npm run check:search-ranking && npm run check:rendered-video-dates",
     "check:ci": "npm test && npm run site:build && npm run check:production",
     "report:video-segment-audit-risk": "tsx src/scripts/rank-video-segment-audit-risk.ts",
     "report:video-topic-usage": "bun run src/scripts/report-video-topic-usage-bun.ts",
@@ -47,8 +47,7 @@
     "check:pagefind-contract": "tsx src/scripts/check-pagefind-contract.ts",
     "check:search-ranking": "tsx src/scripts/check-search-ranking.ts",
     "check:rendered-video-dates": "tsx src/scripts/check-rendered-video-dates.ts",
-    "check:site-seo": "npm run build && npm run check:site-seo:built",
-    "check:site-seo:built": "node --env-file=site-build.properties dist/scripts/check-site-seo.js",
+    "check:site-seo": "node --env-file=site-build.properties --import tsx src/scripts/check-site-seo.ts",
     "audit:lighthouse": "tsx src/scripts/audit-seo-lighthouse.ts"
   },
   "devDependencies": {

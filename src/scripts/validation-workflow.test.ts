@@ -36,7 +36,7 @@ test("validation workflow acquires, exports, runs in order, releases, and restor
   const runtime = makeRuntime(calls, environment);
   const steps: ValidationStep[] = [
     {command: "npm", args: ["run", "build"]},
-    {command: "node", args: ["dist/scripts/audit-site-content.js"]},
+    {command: "node", args: ["--import", "tsx", "src/scripts/audit-site-content.ts"]},
   ];
 
   await runValidationWorkflow({
@@ -49,7 +49,7 @@ test("validation workflow acquires, exports, runs in order, releases, and restor
   assert.match(calls[0] ?? "", /^node:capture:acquire --owner validator:1234 /u);
   assert.deepEqual(calls.slice(1), [
     "npm:run build:token=acquired-token",
-    "node:dist/scripts/audit-site-content.js:token=acquired-token",
+    "node:--import tsx src/scripts/audit-site-content.ts:token=acquired-token",
     "node:capture:release --token acquired-token:token=acquired-token",
   ]);
   assert.equal(environment.CONTENT_PIPELINE_LOCK_TOKEN, "previous-token");

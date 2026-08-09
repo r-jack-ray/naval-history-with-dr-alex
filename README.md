@@ -104,10 +104,10 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 | `clean` | Remove compiled `dist/` output. |
 | `build` | Compile the TypeScript tools into `dist/`. |
 | `check:types` | Type-check without emitting files. |
-| `test` | Clean, compile, and run all compiled `*.test.js` files with Node's test runner. |
+| `test` | Clean, compile/type-check, and run canonical `src/**/*.test.ts` files through Node and `tsx`. |
 | `check:source` | Run the read-only topic audit/check, content audit, and complete two-report topic-curation canary. |
-| `check` | Run the canonical network-free compiled-test, source, and generated-data layers; `test` performs the TypeScript build/type check once. |
-| `check:production` | Validate an existing compiled Astro/Pagefind build with SEO, search-ranking, and rendered-date checks; this command does not generate or build the site. |
+| `check` | Run the canonical network-free source-test, source-validation, and generated-data layers; `test` performs the TypeScript build/type check once. |
+| `check:production` | Run source-owned SEO, search-ranking, and rendered-date validators against an existing Astro/Pagefind build; this command does not generate or build the site. |
 | `check:ci` | Run tests, one cache-aware official production build, and the post-build checks as the one-pass Pages graph. |
 
 ### Curated Content and Reports
@@ -160,8 +160,7 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 
 | Script | Purpose |
 | --- | --- |
-| `check:site-seo` | Compile the tools and validate SEO metadata, sitemaps, and rendered `site/dist/` pages. |
-| `check:site-seo:built` | Validate rendered SEO using existing compiled tools and site output without recompiling. |
+| `check:site-seo` | Run the canonical TypeScript validator from `src/` against SEO metadata, sitemaps, and rendered `site/dist/` pages. |
 | `audit:lighthouse` | Run one parameterized Lighthouse audit; defaults to the representative five-route production baseline and creates its report directory. |
 
 Use `--mode home` for a quick single-page audit, `--base-url` for a local or caller-supplied site root, and `--output-prefix` to choose the report location. The runner still accepts `SEO_AUDIT_BASE_URL`, with an explicit flag taking precedence:

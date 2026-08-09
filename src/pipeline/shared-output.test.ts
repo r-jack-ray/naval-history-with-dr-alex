@@ -13,7 +13,7 @@ import { replaceFileAtomically } from "./atomic-write.js";
 const currentDirectory = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(currentDirectory, "..", "..");
 const lockTool = join(repositoryRoot, "src", "scripts", "site-content-pipeline-lock.mjs");
-const worker = join(currentDirectory, "test-support", "shared-output-worker.js");
+const worker = join(repositoryRoot, "src", "pipeline", "test-support", "shared-output-worker.ts");
 
 test("atomic replacement preserves a complete previous file until replacement succeeds", async () => {
   const directory = await mkdtemp(join(tmpdir(), "atomic-write-"));
@@ -75,7 +75,8 @@ test("Phase 2 commands keep topic writes explicit and avoid duplicate site pipel
   assert.match(siteValidator, /args: \["run", "generate:site-data"\]/u);
   assert.doesNotMatch(contentValidator, /dist\/scripts\/(audit-topic-normalization|generate-site-data)\.js/u);
   assert.doesNotMatch(siteValidator, /dist\/scripts\/generate-site-data\.js/u);
-  assert.match(contentValidator, /dist\/scripts\/audit-site-content\.js/u);
+  assert.match(contentValidator, /"src\/scripts\/audit-site-content\.ts"/u);
+  assert.doesNotMatch(contentValidator, /dist\/scripts\//u);
   assert.match(contentValidator, /site:check:generated/u);
   assert.match(contentValidator, /src\/derived\/topic-normalization-patterns\.tsv/u);
   assert.match(contentValidator, /retainCallerLease: true/u);
@@ -160,7 +161,7 @@ test("Phase 2 commands keep topic writes explicit and avoid duplicate site pipel
   assert.equal(packageJson.scripts["check:generated"], undefined);
   const productionCheckScript = packageJson.scripts["check:production"] ?? "";
   const productionStages = [
-    "npm run check:site-seo:built",
+    "npm run check:site-seo",
     "npm run check:search-ranking",
     "npm run check:rendered-video-dates",
   ];
@@ -212,7 +213,21 @@ test("Phase 2 commands keep topic writes explicit and avoid duplicate site pipel
   );
   assert.equal(
       packageJson.scripts["check:site-seo"],
-      "npm run build && npm run check:site-seo:built",
+      "node --env-file=site-build.properties --import tsx src/scripts/check-site-seo.ts",
+  );
+  assert.equal(
+      packageJson.scripts["test"],
+      "npm run clean && npm run build && node --import tsx --test \"src/**/*.test.ts\"",
+  );
+  assert.equal(
+      Object.keys(packageJson.scripts).filter((scriptName) => scriptName.endsWith(":built")).length,
+      0,
+      "source-owned package commands must not expose generated-output entry points",
+  );
+  assert.doesNotMatch(
+      Object.values(packageJson.scripts).join("\n"),
+      /\bdist\/scripts\//u,
+      "package commands must reference canonical scripts under src rather than generated dist copies",
   );
   assert.equal(
       packageJson.scripts["check:workspace-pagefind"],
@@ -362,6 +377,8 @@ test("two overlapping writer processes serialize complete archive, report, and l
       "parallel-writer-test",
       "--",
       "node",
+      "--import",
+      "tsx",
       worker,
       "--root",
       directory,
@@ -383,6 +400,8 @@ test("two overlapping writer processes serialize complete archive, report, and l
       "parallel-writer-test",
       "--",
       "node",
+      "--import",
+      "tsx",
       worker,
       "--root",
       directory,
