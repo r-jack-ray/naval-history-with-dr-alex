@@ -1,6 +1,6 @@
 ---
 name: naval-topic-taxonomy-curator
-description: Curate the corpus-wide video-topic taxonomy for the Naval History with Dr. Alex repository. Use when asked to review, merge, split, rename, canonicalise, or deduplicate topics; resolve topic-normalization report findings; standardise topic titles, aliases, spelling, class names, calibres, people, fictional referents, or Type designators; or coherently update normalization policy, registry records, and all affected authored shard topic arrays. Use the shard content skills for transcript-backed topic additions confined to one selected video, and naval-site-build-repair for one narrow topic failure discovered during a build.
+description: Curate the corpus-wide video-topic taxonomy for the Naval History with Dr. Alex repository. Use when asked to review, merge, split, rename, canonicalise, deduplicate, or remove unused topics; resolve topic-normalization report findings; standardise topic titles, aliases, spelling, class names, calibres, people, fictional referents, or Type designators; or coherently update normalization policy, registry records, and all affected authored shard topic arrays. Use the shard content skills for transcript-backed topic additions confined to one selected video, and naval-site-build-repair for one narrow topic failure discovered during a build.
 ---
 
 # Naval Topic Taxonomy Curator
@@ -23,6 +23,7 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` for explicitly 
 3. Read the header and applicable rules in `src/derived/topic-normalization-patterns.tsv`. Do not treat an existing rule as correct merely because it is active.
 4. Run `npm run report:video-topic-usage`. Consume both `reports/video-topic-usage.tsv` and `reports/topic-normalization-review.tsv`; the reports are ignored, on-demand evidence rather than canonical source.
 5. Read the report headers before filtering or interpreting columns. Inspect every listed registry and shard source for each candidate under consideration.
+6. Inventory every registry row whose `usage count` is `0`. Unused registry topics are standard scope in every taxonomy-curation pass, including a pass whose requested examples concern a narrower topic family.
 
 ## Decide Semantically
 
@@ -51,10 +52,23 @@ For each candidate family, record an evidence table with the old slug, proposed 
 5. Parse every touched JSON file immediately. Treat malformed JSON, residual authored references, duplicate topic entries, and unexpected mapping matches as blockers.
 6. Run `npm run sync:video-topics` only when authored canonical references genuinely lack registry records. The synchronizer appends missing records; it does not migrate references or remove obsolete records.
 
+## Prune Unused Registry Topics
+
+After completing authored-reference migrations and any required synchronization, prune the registry as a standard part of the same curation pass.
+
+1. Regenerate `reports/video-topic-usage.tsv` and collect every registered topic whose `usage count` is `0`. Usage means an exact slug reference in a video-level or segment-level authored topic array. Aliases, summaries, normalization inputs, and policy destinations do not count as usage.
+2. Inspect each unused record and every policy rule that matches it or resolves to it. Confirm from the current shards that the slug has no authored reference before deleting it.
+3. Remove every confirmed unused record from `src/derived/video-segments/topics.json`.
+   - When the record is an obsolete variant of a surviving canonical topic, transfer any unique nonblank manual summary and still-valid aliases to that canonical record before deletion.
+   - When manual metadata has no safe surviving destination, treat the potential metadata loss as a blocker and resolve it explicitly before completing the pass.
+   - Do not retain a registry placeholder merely because an active creation or display rule targets the slug. Keep a still-valid policy rule so synchronization can recreate the canonical record if authored usage returns; remove or retarget the rule only when its semantics are obsolete.
+4. Reparse `topics.json` immediately and verify that the pruning changed no authored shard array.
+5. Proceed to the post-prune validation. A completed taxonomy pass must finish with `unused=0`; investigate any remaining zero-use registry record rather than exempting it silently.
+
 ## Validate
 
-1. Regenerate both reports with `npm run report:video-topic-usage`.
-2. Inspect both outputs. Confirm that retired authored references are absent, canonical sources are present, and the selected family has no unexplained actionable review findings or title/alias collisions. Review high-confidence similarity candidates semantically, but do not require the advisory similarity count to reach zero.
+1. Regenerate both reports with `npm run report:video-topic-usage` after the unused-topic prune.
+2. Inspect both outputs. Confirm that retired authored references are absent, canonical sources are present, `unused=0`, and the selected family has no unexplained actionable review findings or title/alias collisions. Review high-confidence similarity candidates semantically, but do not require the advisory similarity count to reach zero.
 3. Run the read-only `npm run audit:topic-normalization`.
 4. Run the focused `npm run check:video-topics` registry/reference check.
 5. Reparse every touched JSON file. Report any intentionally unresolved review candidates; never describe a pass as clean while blockers remain.
@@ -68,5 +82,5 @@ After a real taxonomy pass, identify workflow friction, missed safeguards, or re
 
 ## Handoff
 
-Report the candidate families reviewed, semantic decisions and evidence, old-to-canonical mappings applied, policy/shard/registry files changed, descriptions and aliases preserved, commands run, final report and audit counts, unresolved candidates, and the exact integration work left to the repository owner.
+Report the candidate families reviewed, semantic decisions and evidence, old-to-canonical mappings applied, policy/shard/registry files changed, initial unused-topic count, unused slugs removed, manual summaries and aliases transferred, commands run, final report and audit counts including `unused=0`, unresolved candidates, and the exact integration work left to the repository owner.
 
