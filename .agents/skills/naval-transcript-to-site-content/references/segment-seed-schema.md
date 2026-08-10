@@ -26,7 +26,7 @@ Do not recreate a monolithic curated-content file. The manifest and shards under
 ```
 
 - `videoId` must exist in `src/channel/episodes.json`.
-- `topics` contains stable lowercase, hyphenated slugs. The selected shard is written without the repository lease. After that write, the curator or auditor acquires the shared-output lease, runs `npm run sync:video-topics`, and appends its completion row before releasing the lease. `generate:site-data` checks completeness without writing canonical source.
+- `topics` contains stable lowercase, hyphenated slugs. The selected shard is written without the repository lease. After that write, the curator or auditor runs `C:\Program Files\nodejs\npm.cmd run sync:video-topics` with sandbox elevation on the first attempt and appends its completion row only after synchronization succeeds. The package command owns any internal writer coordination it requires; curators and auditors do not directly invoke `src/scripts/site-content-pipeline-lock.mjs` or manage its token. `generate:site-data` checks completeness without writing canonical source.
 - Resolve new slugs through active `creation` rules in `src/derived/topic-normalization-patterns.tsv`. Preserve established slugs unless the active creation policy canonicalizes them.
 - Treat `review`, disabled, ambiguous, or inapplicable candidates affecting the selected shard as finalization blockers and identify them in the handoff. Selected-shard work does not edit the normalization catalog, hand-edit `topics.json`, or perform corpus-wide topic rewrites; the deterministic synchronizer is the only registry writer.
 - Use `fiction-...` for referents that exist only inside a fictional work. Counterfactual real history, real proposed or unbuilt designs, possible future systems, and genre/format topics do not use that prefix. When fiction illustrates a real-world point, include both the fictional referent and the ordinary transcript-backed topics for the real lesson.
@@ -45,7 +45,7 @@ Do not recreate a monolithic curated-content file. The manifest and shards under
 ```
 
 - Keep slugs lowercase and hyphenated.
-- Routine transcript curation does not manually create or edit topic records. Before the run records success, the lease-protected synchronizer derives missing records from shard usage and preserves existing enriched titles, summaries, and aliases.
+- Routine transcript curation does not manually create or edit topic records. Before the run records success, the elevated synchronizer derives missing records from shard usage and preserves existing enriched titles, summaries, and aliases.
 - Outside active normalization rules, edit aliases or consolidate taxonomy only when validation identifies a problem or the user explicitly requests taxonomy work.
 
 ## Segment Seed
