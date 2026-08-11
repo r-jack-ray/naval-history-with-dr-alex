@@ -1,6 +1,6 @@
 {
   "videoId": "VaCXvmA5-vc",
-  "topics": ["royal-navy", "battleships", "battlecruisers", "naval-gunnery", "ship-design", "alternate-history"],
+  "topics": ["royal-navy", "battleships", "battlecruisers", "naval-gunnery", "ship-design", "alternate-history", "naval-wargaming"],
   "segments": [
     {
       "id": "agincourt-eighteen-inch-queen-elizabeth-concept",
@@ -10,7 +10,7 @@
       "kind": "notable_point",
       "start": "1:40",
       "end": "3:40",
-      "topics": ["battleships", "royal-navy", "alternate-history", "naval-gunnery", "ship-design"],
+      "topics": ["battleships", "royal-navy", "alternate-history", "naval-gunnery", "ship-design", "naval-wargaming"],
       "summary": "Dr. Clarke introduces an imagined modernised Queen Elizabeth-type battleship with six 18-inch guns, then sets it against a Bismarck analogue.",
       "body": "The UAD design is a way to test what a British 18-inch-gun capital ship might have looked like if the Royal Navy had pursued that path. He treats the ship as a modified Queen Elizabeth concept, with three twin 18-inch turrets and machinery sufficient for 28 knots. The game only unlocks British 18-inch guns much later, so the displayed ship is a modernised approximation rather than a literal 1913 reconstruction. The comparison with a Bismarck-like opponent exposes the trade between a very heavy main battery, displacement, speed, and a practical secondary armament.",
       "sourcePath": "src/transcripts/txt/2022-03-18_T18-00-09_the-18in-gun-hms-agincourt-and-uad-video-comment-response-long-patrol_VaCXvmA5-vc.txt",
@@ -40,7 +40,7 @@
       "kind": "qa",
       "start": "4:48",
       "end": "5:17",
-      "topics": ["secondary-armament", "naval-gunnery", "ship-design"],
+      "topics": ["secondary-armament", "naval-gunnery", "gunnery-accuracy", "ship-design", "naval-wargaming"],
       "summary": "The battle report can hide what a ship's smaller guns contributed, even when four-inch batteries have been effective in other runs.",
       "body": "He notes that the game's damage display credited the six- and 15-inch weapons rather than the four-inch battery in this particular action. That does not make the smaller weapons irrelevant, because in other simulated engagements four-inch guns have done substantial damage. Whether they contribute also depends on the range at which the action develops and the targets they are meant to engage. The useful caution is that a single report should not be treated as a complete measure of a secondary battery's value.",
       "question": "What do the displayed results show about the ship's secondary guns?",
@@ -63,6 +63,22 @@
       "answerShort": "He expects most would have been replaced, transferred, or relegated because the Royal Navy was already moving toward much heavier-gun ships.",
       "sourcePath": "src/transcripts/txt/2022-03-18_T18-00-09_the-18in-gun-hms-agincourt-and-uad-video-comment-response-long-patrol_VaCXvmA5-vc.txt",
       "evidence": [{"start": "5:45", "end": "6:30", "note": "He answers the delayed-war counterfactual."}]
+    },
+    {
+      "id": "uad-hit-rates-and-radar-settings",
+      "videoId": "VaCXvmA5-vc",
+      "slug": "uad-hit-rates-and-radar-settings",
+      "title": "Why simulated hit rates are not historical averages",
+      "kind": "qa",
+      "start": "6:47",
+      "end": "7:25",
+      "topics": ["naval-gunnery", "gunnery-accuracy", "naval-radar", "naval-wargaming"],
+      "summary": "Equipment choices such as radar can change UAD's accuracy results, so one simulated action should not be read as a historical hit-rate benchmark.",
+      "body": "A viewer asks whether UAD's algorithm produces hit rates above historical figures. Dr. Clarke answers that it does not necessarily do so. The player can alter the model's conditions through features such as radar, which changes the comparison being made. The useful caution is to read the result as output from a configured scenario rather than as a benchmark for real-world fleet gunnery.",
+      "question": "Does UAD produce higher hit rates than historical naval gunnery achieved?",
+      "answerShort": "Not necessarily; equipment choices such as radar can change the simulation, so one battle's accuracy should not stand in for historical rates.",
+      "sourcePath": "src/transcripts/txt/2022-03-18_T18-00-09_the-18in-gun-hms-agincourt-and-uad-video-comment-response-long-patrol_VaCXvmA5-vc.txt",
+      "evidence": [{"start": "6:47", "end": "7:25", "note": "He rejects a simple historical comparison and notes that settings such as radar affect the game's results."}]
     },
     {
       "id": "speed-margin-for-crossing-the-t",
@@ -95,6 +111,34 @@
       "evidence": [{"start": "11:30", "end": "14:06", "note": "He answers comments about armour, cruiser work, and the purpose of secondary weapons."}]
     },
     {
+      "id": "agincourt-battle-report-and-displacement",
+      "videoId": "VaCXvmA5-vc",
+      "slug": "agincourt-battle-report-and-displacement",
+      "title": "The size and accuracy of the 18-inch experiment",
+      "kind": "notable_point",
+      "start": "14:17",
+      "end": "15:18",
+      "topics": ["battleships", "naval-gunnery", "gunnery-accuracy", "warship-weight", "ship-design", "naval-wargaming"],
+      "summary": "The simulated Agincourt records 25 per cent main-gun accuracy and displaces about 39,000 tons, around 5,000 tons above the Queen Elizabeth-class figure Dr. Clarke quotes.",
+      "body": "The completed UAD action gives the imagined Agincourt 25 per cent main-gun accuracy and 22 per cent secondary-gun accuracy. Dr. Clarke then notes that the model displaces about 39,000 tons fully loaded, compared with roughly 34,000 tons for the Queen Elizabeth class as built. The added size allows the design to accommodate a useful battery of six 18-inch guns. These figures describe his configured counterfactual ship and its simulated battle rather than the performance of a vessel that entered service.",
+      "sourcePath": "src/transcripts/txt/2022-03-18_T18-00-09_the-18in-gun-hms-agincourt-and-uad-video-comment-response-long-patrol_VaCXvmA5-vc.txt",
+      "evidence": [{"start": "14:17", "end": "15:18", "note": "He reads the battle's accuracy figures and compares the 39,000-ton model with the Queen Elizabeth class as built."}]
+    },
+    {
+      "id": "baden-bayern-uad-calibre-substitution",
+      "videoId": "VaCXvmA5-vc",
+      "slug": "baden-bayern-uad-calibre-substitution",
+      "title": "A Baden–Bayern approximation with 14-inch guns",
+      "kind": "notable_point",
+      "start": "15:37",
+      "end": "16:40",
+      "topics": ["bayern-class-battleships", "imperial-german-navy", "battleships", "naval-gunnery", "ship-design", "naval-wargaming"],
+      "summary": "A German battleship inspired by Baden and Bayern uses triple 14-inch guns because UAD's 1916 technology set does not yet offer the historical 15-inch calibre.",
+      "body": "Dr. Clarke introduces a German battleship loosely based on Baden and Bayern for the requested battleship-on-battleship action. Because UAD does not offer German 15-inch guns at the selected 1916 date, he equips the model with triple 14-inch mountings. That substitution comes from the game's technology timeline rather than a claim that the historical ships used this battery. The moment shows how a historically framed simulation can preserve a recognisable design family while altering a major technical detail.",
+      "sourcePath": "src/transcripts/txt/2022-03-18_T18-00-09_the-18in-gun-hms-agincourt-and-uad-video-comment-response-long-patrol_VaCXvmA5-vc.txt",
+      "evidence": [{"start": "15:37", "end": "16:40", "note": "He introduces the Baden-and-Bayern-inspired model and explains why the game forces a 14-inch substitution in 1916."}]
+    },
+    {
       "id": "four-inch-five-inch-and-six-inch-secondary-choice",
       "videoId": "VaCXvmA5-vc",
       "slug": "four-inch-five-inch-and-six-inch-secondary-choice",
@@ -109,6 +153,20 @@
       "answerShort": "The choice balances rapid engagement, shell effect, mounting availability, expected targets, and whether a navy can afford specialised weapons.",
       "sourcePath": "src/transcripts/txt/2022-03-18_T18-00-09_the-18in-gun-hms-agincourt-and-uad-video-comment-response-long-patrol_VaCXvmA5-vc.txt",
       "evidence": [{"start": "16:44", "end": "19:08", "note": "He responds to questions on British and American secondary-gun choices."}]
+    },
+    {
+      "id": "british-battle-line-numerical-advantage",
+      "videoId": "VaCXvmA5-vc",
+      "slug": "british-battle-line-numerical-advantage",
+      "title": "Why the simulated British battle line has more ships",
+      "kind": "notable_point",
+      "start": "19:11",
+      "end": "19:25",
+      "topics": ["fleet-concentration", "royal-navy", "imperial-german-navy", "force-ratios", "naval-wargaming"],
+      "summary": "Dr. Clarke gives the Royal Navy roughly two-to-one or four-to-three superiority to represent the numerical advantage it expected in a battleship action.",
+      "body": "Dr. Clarke sets the simulated Royal Navy force with the numerical edge he believes British planners expected in a battleship action. He describes the intended advantage as either roughly two to one or four to three. The setup is a scenario choice rather than a reconstruction of a specific battle. It prepares the later argument that both navies sought favourable concentration rather than an even squadron duel.",
+      "sourcePath": "src/transcripts/txt/2022-03-18_T18-00-09_the-18in-gun-hms-agincourt-and-uad-video-comment-response-long-patrol_VaCXvmA5-vc.txt",
+      "evidence": [{"start": "19:11", "end": "19:25", "note": "He explains the British side's roughly two-to-one or four-to-three numerical advantage in the simulation."}]
     },
     {
       "id": "tiger-battlecruiser-hunter-role",
@@ -150,7 +208,7 @@
       "kind": "qa",
       "start": "31:14",
       "end": "31:55",
-      "topics": ["naval-gunnery", "shells", "ship-design"],
+      "topics": ["naval-gunnery", "gunnery-accuracy", "shells", "ship-design", "naval-wargaming"],
       "summary": "The simulation offers light through super-heavy shells, but Dr. Clarke normally favours standard shells because the model penalises heavier choices with barrel wear and poorer accuracy.",
       "body": "This is a simulation-specific design judgement rather than a claim about a universal historical rule. The game offers light, standard, heavy, and super-heavy shell settings. He finds that heavy shells create undesirable barrel-wear and accuracy effects, while super-heavy shells impose displacement costs. Standard shells therefore give him a more credible-feeling balance for his experimental designs.",
       "question": "Why use standard rather than heavy shells in UAD?",
@@ -166,13 +224,27 @@
       "kind": "qa",
       "start": "32:28",
       "end": "35:17",
-      "topics": ["ship-design", "naval-history", "alternate-history"],
+      "topics": ["ship-design", "naval-history", "alternate-history", "naval-wargaming"],
       "summary": "UAD lets players build ships from components rather than supplying exact historical templates, which is enough to explore many design choices without reproducing every fitting.",
       "body": "Dr. Clarke describes the value of approximation: available components can produce a ship close enough to make its broad design decisions visible. Exact templates would require a large collection of special features, including ship-specific fittings, and could raise development costs. The component system is therefore useful for design experiments even when turret or secondary-gun placement cannot match a historical ship exactly. He would still welcome missing gun options, especially 13.5-inch and 4.5-inch weapons, because their absence limits particular British designs.",
       "question": "Does UAD provide exact templates for historical warships?",
       "answerShort": "No; it is largely build-your-own, but near-equivalent components can still illustrate the important design choices without exact replicas.",
       "sourcePath": "src/transcripts/txt/2022-03-18_T18-00-09_the-18in-gun-hms-agincourt-and-uad-video-comment-response-long-patrol_VaCXvmA5-vc.txt",
       "evidence": [{"start": "32:28", "end": "35:17", "note": "He answers questions about templates, component fidelity, and missing gun choices."}]
+    },
+    {
+      "id": "flagship-loss-and-command-succession",
+      "videoId": "VaCXvmA5-vc",
+      "slug": "flagship-loss-and-command-succession",
+      "title": "Command succession after a flagship is lost",
+      "kind": "notable_point",
+      "start": "42:21",
+      "end": "42:37",
+      "topics": ["command-and-control", "command-succession", "fleet-tactics", "naval-wargaming"],
+      "summary": "After Hibernia sinks, Dr. Clarke argues that a fleet simulation should make the chain of command and the successor flagship explicit.",
+      "body": "After Hibernia sinks, the game transfers command without making the new hierarchy clear. Dr. Clarke says multiple-ship engagements should establish an explicit chain of command and show which ship assumes control. His criticism is directed at the simulation's mechanics rather than at a particular historical action. The moment still highlights the immediate command-and-control problem created when a formation loses its flagship.",
+      "sourcePath": "src/transcripts/txt/2022-03-18_T18-00-09_the-18in-gun-hms-agincourt-and-uad-video-comment-response-long-patrol_VaCXvmA5-vc.txt",
+      "evidence": [{"start": "42:21", "end": "42:37", "note": "After Hibernia sinks, he asks for an explicit command hierarchy and visible transfer to a successor ship."}]
     },
     {
       "id": "all-forward-battery-manoeuvre-and-blind-spots",
@@ -306,7 +378,7 @@
       "kind": "qa",
       "start": "36:28",
       "end": "39:29",
-      "topics": ["fleet-concentration", "royal-navy", "imperial-german-navy", "naval-strategy", "force-ratios"],
+      "topics": ["fleet-concentration", "royal-navy", "imperial-german-navy", "naval-strategy", "force-ratios", "naval-wargaming"],
       "summary": "A one-squadron duel was not the preferred strategic contest: Germany wanted local superiority, while Britain wanted its larger fleet concentrated against the enemy.",
       "body": "A viewer asks for one British squadron against one German squadron, the kind of clash both sides supposedly sought. Dr. Clarke replies that Germany would prefer to bring its whole fleet against an isolated British formation. Britain, with the larger force, would prefer a battle in which it outnumbered the German fleet. The difficulty was therefore not imagining an even duel but creating the concentration and intelligence conditions that delivered a favourable imbalance.",
       "question": "Would one British squadron against one German squadron represent the battle both navies wanted?",

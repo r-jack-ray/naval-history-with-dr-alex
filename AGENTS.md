@@ -154,3 +154,32 @@ For Astro/Pagefind page, route, search, or generated-data adapter work, use `.ag
 For separately authorised corpus-wide topic taxonomy maintenance, use `$naval-topic-taxonomy-curator`. Keep one-shard transcript-backed topic discovery inside `$naval-transcript-to-site-content` or `$naval-site-content-auditor`, and keep narrow topic failures discovered during a build inside `$naval-site-build-repair` unless they require a broader semantic migration.
 
 Preserve the segment-first design. Ground claims in transcript evidence: video ID, timestamp, and source passage when possible. Keep temporary notes in `task-notes/`; put durable guidance here or in stable docs.
+
+## Tool Advisor
+
+Prefer existing project tooling and installed libraries over ad hoc shell parsing, custom implementations, or new dependencies.
+
+Available development libraries include:
+
+* `proper-lockfile` — use when multiple processes or Codex sessions may read/write the same file or resource concurrently.
+* `ignore` — use for repository traversal or file matching that should honor `.gitignore` rules.
+* `fast-fuzzy` — use for fuzzy text matching, near-duplicate detection, title/question comparison, and typo-tolerant matching.
+* `gray-matter` — use for reading or writing Markdown front matter as structured data.
+* `markdown-it` — use when Markdown structure must be parsed reliably rather than approximated with regular expressions.
+* `systeminformation` — use when scripts need machine, CPU, memory, filesystem, process, or other system information.
+* `ps-list` — use for lightweight process enumeration and process metadata.
+
+Use these tools only when they directly simplify the task.
+
+Prefer:
+
+1. Existing project code and utilities.
+2. The JavaScript/TypeScript standard platform APIs.
+3. An already-installed library appropriate to the task.
+4. A small new implementation only when the above do not fit.
+
+Do not introduce new frameworks, abstraction layers, wrappers, logging systems, helper architectures, or dependencies merely because they could be useful.
+
+For simple tasks, keep the implementation simple.
+
+Before implementing functionality manually, check whether an existing installed library above already provides the required behavior.
