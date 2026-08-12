@@ -288,7 +288,10 @@ async function withLease(options, operation) {
   }
 
   try {
-    return await operation({lockPath, token: activeToken});
+    return await operation({
+      lockPath,
+      token: activeToken
+    });
   } finally {
     if (acquiredHere) {
       await releaseLease(activeToken, {
@@ -345,7 +348,10 @@ async function appendProcessingLog(options) {
     };
   }
 
-  return await withLease(options, async ({lockPath, token}) => {
+  return await withLease(options, async ({
+                                           lockPath,
+                                           token
+                                         }) => {
     const existing = await readOptionalText(processingLogPath);
     validateExistingProcessingLog(existing, processingLogPath);
     await assertOwnedLease(lockPath, token);

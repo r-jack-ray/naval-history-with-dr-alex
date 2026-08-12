@@ -1,8 +1,4 @@
-import type {
-  ChannelVideoLink,
-  ChannelVideoLinksResult,
-  ChannelVideoTab,
-} from "./channel-video-links.js";
+import type { ChannelVideoLink, ChannelVideoLinksResult, ChannelVideoTab, } from "./channel-video-links.js";
 
 export const defaultSavedVideosHtmlInput = "reports/Naval History with Dr Alex - YouTube_videos.html";
 export const defaultSavedStreamsHtmlInput = "reports/Naval History with Dr Alex - YouTube_live_streams.html";
@@ -52,18 +48,18 @@ interface LockupExtraction {
 }
 
 export function extractSavedChannelHtml(
-  html: string,
-  options: ExtractSavedChannelHtmlOptions,
+    html: string,
+    options: ExtractSavedChannelHtmlOptions,
 ): SavedChannelHtmlExtraction {
   const initialData = tryParseInitialData(html);
   const rendered = extractRenderedLockupRecords(html, options.tab);
   const fromInitialData = initialData
-    ? extractInitialDataLockupRecords(initialData, options.tab)
-    : { lockupCount: 0, records: [] };
+      ? extractInitialDataLockupRecords(initialData, options.tab)
+      : {lockupCount: 0, records: []};
   const extractionMethod = rendered.records.length > 0 ? "rendered-lockups" : "yt-initial-data";
   const selected = extractionMethod === "rendered-lockups" ? rendered : fromInitialData;
   const records = dedupeByVideoId(selected.records)
-    .filter((record) => !options.ignoredVideoIds?.has(record.videoId));
+      .filter((record) => !options.ignoredVideoIds?.has(record.videoId));
   const channelUrl = normalizeChannelUrl(options.channelUrl ?? savedFromUrl(html) ?? defaultChannelUrl);
   const channelId = options.channelId ?? (initialData ? findChannelId(initialData) : undefined) ?? defaultChannelId;
   const extractedAt = options.fetchedAt ?? new Date().toISOString();
@@ -91,9 +87,9 @@ export function extractSavedChannelHtml(
 
 function extractRenderedLockupRecords(html: string, tab: ChannelVideoTab): LockupExtraction {
   const blocks = html
-    .split(/<yt-lockup-view-model\b/iu)
-    .slice(1)
-    .map((block) => `<yt-lockup-view-model${block.split(/<\/yt-lockup-view-model>/iu)[0] ?? ""}</yt-lockup-view-model>`);
+      .split(/<yt-lockup-view-model\b/iu)
+      .slice(1)
+      .map((block) => `<yt-lockup-view-model${block.split(/<\/yt-lockup-view-model>/iu)[0] ?? ""}</yt-lockup-view-model>`);
   const records: ChannelVideoLink[] = [];
 
   for (const [index, block] of blocks.entries()) {
@@ -106,7 +102,7 @@ function extractRenderedLockupRecords(html: string, tab: ChannelVideoTab): Locku
       videoId,
       url: `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}`,
       tabs: [tab],
-      tabPositions: { [tab]: index + 1 },
+      tabPositions: {[tab]: index + 1},
     };
     const title = renderedTitle(block);
     const durationText = renderedDuration(block);
@@ -135,7 +131,7 @@ function extractRenderedLockupRecords(html: string, tab: ChannelVideoTab): Locku
     records.push(record);
   }
 
-  return { lockupCount: blocks.length, records };
+  return {lockupCount: blocks.length, records};
 }
 
 function extractInitialDataLockupRecords(initialData: unknown, tab: ChannelVideoTab): LockupExtraction {
@@ -163,16 +159,16 @@ function extractInitialDataLockupRecords(initialData: unknown, tab: ChannelVideo
       "url",
     ]);
     const videoId =
-      readString(lockup, "contentId") ??
-      readStringPath(lockup, [
-        "rendererContext",
-        "commandContext",
-        "onTap",
-        "innertubeCommand",
-        "watchEndpoint",
-        "videoId",
-      ]) ??
-      videoIdFromUrl(endpointUrl);
+        readString(lockup, "contentId") ??
+        readStringPath(lockup, [
+          "rendererContext",
+          "commandContext",
+          "onTap",
+          "innertubeCommand",
+          "watchEndpoint",
+          "videoId",
+        ]) ??
+        videoIdFromUrl(endpointUrl);
     if (videoId === undefined) {
       continue;
     }
@@ -183,11 +179,11 @@ function extractInitialDataLockupRecords(initialData: unknown, tab: ChannelVideo
       videoId,
       url: `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}`,
       tabs: [tab],
-      tabPositions: { [tab]: index + 1 },
+      tabPositions: {[tab]: index + 1},
     };
     const title =
-      textValue(readPath(metadataObject, ["title"])) ??
-      readStringPath(lockup, ["rendererContext", "accessibilityContext", "label"]);
+        textValue(readPath(metadataObject, ["title"])) ??
+        readStringPath(lockup, ["rendererContext", "accessibilityContext", "label"]);
     const durationText = initialDataDuration(readPath(lockup, ["contentImage", "thumbnailViewModel", "overlays"]));
     const viewCountText = metadataParts.find((text) => /\bviews?\b/iu.test(text));
     const publishedText = metadataParts.find((text) => looksLikePublishedText(text));
@@ -208,18 +204,18 @@ function extractInitialDataLockupRecords(initialData: unknown, tab: ChannelVideo
     records.push(record);
   }
 
-  return { lockupCount: lockups.length, records };
+  return {lockupCount: lockups.length, records};
 }
 
 function renderedTitle(block: string): string | undefined {
   return decodeHtmlText(firstMatch(block, /<h3\b[^>]*\btitle="([^"]+)"/iu)) ??
-    decodeHtmlText(firstMatch(block, /class="[^"]*ytLockupMetadataViewModelTitle[^"]*"[\s\S]*?<span\b[^>]*>([\s\S]*?)<\/span>/iu)?.replace(/<[^>]+>/gu, ""));
+      decodeHtmlText(firstMatch(block, /class="[^"]*ytLockupMetadataViewModelTitle[^"]*"[\s\S]*?<span\b[^>]*>([\s\S]*?)<\/span>/iu)?.replace(/<[^>]+>/gu, ""));
 }
 
 function renderedDuration(block: string): string | undefined {
   const matches = [...block.matchAll(/<div\b[^>]*class="[^"]*ytBadgeShapeText[^"]*"[^>]*>([^<]+)<\/div>/giu)]
-    .map((match) => decodeHtmlText(match[1]))
-    .filter((text): text is string => text !== undefined);
+      .map((match) => decodeHtmlText(match[1]))
+      .filter((text): text is string => text !== undefined);
   return matches.find((text) => /^\d{1,2}:\d{2}(?::\d{2})?$/u.test(text));
 }
 
@@ -230,8 +226,8 @@ function renderedMetadataSpans(block: string): string[] {
   }
 
   return [...row.matchAll(/<span\b[^>]*role="text"[^>]*>([\s\S]*?)<\/span>/giu)]
-    .map((match) => decodeHtmlText(match[1]?.replace(/<[^>]+>/gu, "")))
-    .filter((text): text is string => text !== undefined);
+      .map((match) => decodeHtmlText(match[1]?.replace(/<[^>]+>/gu, "")))
+      .filter((text): text is string => text !== undefined);
 }
 
 function renderedDateMetadata(block: string, videoId: string): {
@@ -319,11 +315,11 @@ function extractJsonObjectAfter(html: string, marker: string): string {
 }
 
 function buildSourceMetadata(
-  html: string,
-  extractedAt: string,
-  continuationTokenCount: number,
-  extractionMethod: SavedChannelHtmlExtraction["source"]["extractionMethod"],
-  sourcePath: string | undefined,
+    html: string,
+    extractedAt: string,
+    continuationTokenCount: number,
+    extractionMethod: SavedChannelHtmlExtraction["source"]["extractionMethod"],
+    sourcePath: string | undefined,
 ): SavedChannelHtmlExtraction["source"] {
   const source: SavedChannelHtmlExtraction["source"] = {
     extractedAt,
@@ -345,9 +341,9 @@ function buildSourceMetadata(
 }
 
 function tabState(
-  channelUrl: string,
-  tab: ChannelVideoTab,
-  count: number,
+    channelUrl: string,
+    tab: ChannelVideoTab,
+    count: number,
 ): ChannelVideoLinksResult["tabs"] {
   return {
     videos: {
@@ -525,8 +521,8 @@ function videoIdFromUrl(url: string | undefined): string | undefined {
 
 function looksLikePublishedText(text: string): boolean {
   return (
-    /\b(?:ago|premiered|streamed|scheduled|watching|waiting|live)\b/iu.test(text) ||
-    /\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\b\.?\s+\d{1,2},?\s+\d{4}\b/iu.test(text)
+      /\b(?:ago|premiered|streamed|scheduled|watching|waiting|live)\b/iu.test(text) ||
+      /\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\b\.?\s+\d{1,2},?\s+\d{4}\b/iu.test(text)
   );
 }
 
@@ -570,15 +566,15 @@ function decodeHtmlText(value: string | undefined): string | undefined {
   }
 
   const decoded = value
-    .replace(/&amp;/gu, "&")
-    .replace(/&quot;/gu, "\"")
-    .replace(/&#39;|&apos;/gu, "'")
-    .replace(/&lt;/gu, "<")
-    .replace(/&gt;/gu, ">")
-    .replace(/&#(\d+);/gu, (_, code: string) => String.fromCodePoint(Number(code)))
-    .replace(/&#x([0-9a-f]+);/giu, (_, code: string) => String.fromCodePoint(Number.parseInt(code, 16)))
-    .replace(/\s+/gu, " ")
-    .trim();
+      .replace(/&amp;/gu, "&")
+      .replace(/&quot;/gu, "\"")
+      .replace(/&#39;|&apos;/gu, "'")
+      .replace(/&lt;/gu, "<")
+      .replace(/&gt;/gu, ">")
+      .replace(/&#(\d+);/gu, (_, code: string) => String.fromCodePoint(Number(code)))
+      .replace(/&#x([0-9a-f]+);/giu, (_, code: string) => String.fromCodePoint(Number.parseInt(code, 16)))
+      .replace(/\s+/gu, " ")
+      .trim();
 
   return decoded || undefined;
 }
@@ -617,6 +613,6 @@ function readPath(value: unknown, path: string[]): unknown {
 
 function asRecord(value: unknown): Record<string, unknown> | undefined {
   return value && typeof value === "object" && !Array.isArray(value)
-    ? value as Record<string, unknown>
-    : undefined;
+      ? value as Record<string, unknown>
+      : undefined;
 }

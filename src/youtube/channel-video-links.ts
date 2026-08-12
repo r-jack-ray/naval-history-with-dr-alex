@@ -1,29 +1,20 @@
-import { dirname, join } from "node:path";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { dirname, join } from "node:path";
 
 import { slugifyVideoTitle, videoFileStem } from "../naming.js";
+import { defaultIgnoredVideosInput, readIgnoredVideos, } from "./ignored-videos.js";
 import {
   defaultVideoMetadataOutput,
   isBlockedTranscriptDuration,
   maxBlockedTranscriptDurationSeconds,
+  parseYoutubeDurationSeconds,
   readVideoMetadataStore,
   resolveVideoState,
-  parseYoutubeDurationSeconds,
   type VideoDateKind,
   type VideoKind,
   type VideoMetadataRecord,
 } from "./video-metadata.js";
-import {
-  defaultIgnoredVideosInput,
-  readIgnoredVideos,
-} from "./ignored-videos.js";
-import {
-  createYoutubeDataApiClient,
-  type ListPlaylistItemsParams,
-  type YoutubeDataApiClient,
-  type YoutubePlaylistItem,
-  type YoutubeVideo,
-} from "./youtube-data-api.js";
+import { createYoutubeDataApiClient, type ListPlaylistItemsParams, type YoutubeDataApiClient, type YoutubePlaylistItem, type YoutubeVideo, } from "./youtube-data-api.js";
 
 export type ChannelVideoTab = "videos" | "streams";
 export type ChannelInventoryCompleteness = "complete" | "partial" | "unknown";
@@ -40,23 +31,24 @@ export interface ResolveChannelVideoLinksMasterOutputOptions {
 }
 
 export function resolveChannelVideoLinksMasterOutput(
-  options: ResolveChannelVideoLinksMasterOutputOptions,
+    options: ResolveChannelVideoLinksMasterOutputOptions,
 ): string | undefined {
   if (options.masterOutput !== undefined) {
     return options.masterOutput;
   }
 
   if (
-    options.output !== undefined ||
-    options.linksOutput !== undefined ||
-    options.metadataOutput !== undefined ||
-    options.maxPages !== undefined
+      options.output !== undefined ||
+      options.linksOutput !== undefined ||
+      options.metadataOutput !== undefined ||
+      options.maxPages !== undefined
   ) {
     return undefined;
   }
 
   return defaultEpisodeMasterOutput;
 }
+
 export const defaultTranscriptManifestInput = "src/transcripts/manifest.json";
 
 export interface ChannelVideoLink {
@@ -88,18 +80,18 @@ export interface ChannelVideoLink {
  * of waiting for that record's possibly obsolete scheduled retry date.
  */
 export function selectMetadataRefreshVideoIdsFromChannelLinks(
-  links: readonly ChannelVideoLink[],
-  recordsById: ReadonlyMap<string, VideoMetadataRecord>,
+    links: readonly ChannelVideoLink[],
+    recordsById: ReadonlyMap<string, VideoMetadataRecord>,
 ): string[] {
   const refreshIds = new Set<string>();
 
   for (const link of links) {
     const record = recordsById.get(link.videoId);
     if (
-      record !== undefined &&
-      resolveVideoState(record).state !== "ready" &&
-      link.durationSeconds !== undefined &&
-      link.durationSeconds > maxBlockedTranscriptDurationSeconds
+        record !== undefined &&
+        resolveVideoState(record).state !== "ready" &&
+        link.durationSeconds !== undefined &&
+        link.durationSeconds > maxBlockedTranscriptDurationSeconds
     ) {
       refreshIds.add(link.videoId);
     }
@@ -211,16 +203,16 @@ export interface ChannelEpisodeRecord {
 }
 
 export type ChannelEpisodeTranscriptState =
-  | {
-      status: "stored";
-      txtPath: string;
-      segmentCount?: number;
-      selectedLanguage?: string;
-      fetchedAt?: string;
-    }
-  | {
-      status: "not_checked";
-    };
+    | {
+  status: "stored";
+  txtPath: string;
+  segmentCount?: number;
+  selectedLanguage?: string;
+  fetchedAt?: string;
+}
+    | {
+  status: "not_checked";
+};
 
 export interface BuildChannelEpisodeMasterOptions {
   completeness?: ChannelInventoryCompleteness;
@@ -295,8 +287,8 @@ export function createRateLimitedFetch(options: RateLimitedFetchOptions): typeof
 
     const result = chain.then(run, run);
     chain = result.then(
-      () => undefined,
-      () => undefined,
+        () => undefined,
+        () => undefined,
     );
     return result;
   };
@@ -305,7 +297,7 @@ export function createRateLimitedFetch(options: RateLimitedFetchOptions): typeof
 }
 
 export async function fetchChannelVideoLinks(
-  options: FetchChannelVideoLinksOptions,
+    options: FetchChannelVideoLinksOptions,
 ): Promise<ChannelVideoLinksResult> {
   const channelUrl = normalizeChannelUrl(options.channelUrl);
   const apiKey = options.apiKey?.trim();
@@ -316,7 +308,7 @@ export async function fetchChannelVideoLinks(
   const youtube = options.apiClient ?? createYoutubeDataApiClient({
     apiKey: apiKey ?? "",
     requestDelayMs: options.requestDelayMs,
-    ...(options.logger !== undefined ? { logger: options.logger } : {}),
+    ...(options.logger !== undefined ? {logger: options.logger} : {}),
   });
   const resolveOptions: {
     channelUrl: string;
@@ -364,8 +356,8 @@ export async function fetchChannelVideoLinks(
     }
 
     const response = await youtube.listPlaylistItems(
-      params,
-      `playlistItems.list uploads page ${pagesFetched}`,
+        params,
+        `playlistItems.list uploads page ${pagesFetched}`,
     );
     const items = response.items;
     rawCount += items.length;
@@ -387,19 +379,19 @@ export async function fetchChannelVideoLinks(
       rawCount,
     };
     options.logger?.(
-      `videos: fetched uploads page ${pagesFetched}; raw items=${rawCount}; extracted links=${records.length}`,
+        `videos: fetched uploads page ${pagesFetched}; raw items=${rawCount}; extracted links=${records.length}`,
     );
     if (options.checkpointOutput) {
       await writeVideoLinksOutput(
-        options.checkpointOutput,
-        {
-          channelUrl,
-          channelId: channel.channelId,
-          fetchedAt,
-          requestDelayMs: options.requestDelayMs,
-          tabs: tabState,
-          links: records,
-        },
+          options.checkpointOutput,
+          {
+            channelUrl,
+            channelId: channel.channelId,
+            fetchedAt,
+            requestDelayMs: options.requestDelayMs,
+            tabs: tabState,
+            links: records,
+          },
       );
     }
 
@@ -410,17 +402,17 @@ export async function fetchChannelVideoLinks(
   }
 
   await enrichWithOfficialVideoDetails(
-    youtube,
-    records,
-    options.detailLimit,
-    options.includeVideoDetails ?? false,
-    options.logger,
+      youtube,
+      records,
+      options.detailLimit,
+      options.includeVideoDetails ?? false,
+      options.logger,
   );
   const eligibleRecords = records.filter((record) => !isBlockedTranscriptDuration(record.durationSeconds));
   const blockedCount = records.length - eligibleRecords.length;
   if (blockedCount > 0) {
     options.logger?.(
-      `Blocked ${blockedCount} video(s) at or below the ${maxBlockedTranscriptDurationSeconds}s transcript cutoff.`,
+        `Blocked ${blockedCount} video(s) at or below the ${maxBlockedTranscriptDurationSeconds}s transcript cutoff.`,
     );
   }
   if (ignoredCount > 0) {
@@ -448,16 +440,16 @@ export async function fetchChannelVideoLinks(
 }
 
 export async function writeVideoLinksOutput(path: string, result: ChannelVideoLinksResult): Promise<void> {
-  await mkdir(dirname(path), { recursive: true });
+  await mkdir(dirname(path), {recursive: true});
   await writeFile(path, `${JSON.stringify(result, null, 2)}\n`, "utf8");
 }
 
 export async function writeSplitVideoLinksOutput(
-  linksPath: string,
-  metadataPath: string,
-  result: ChannelVideoLinksResult,
+    linksPath: string,
+    metadataPath: string,
+    result: ChannelVideoLinksResult,
 ): Promise<void> {
-  const { list, metadata } = splitChannelVideoLinksResult(result);
+  const {list, metadata} = splitChannelVideoLinksResult(result);
   await Promise.all([
     writeJsonFile(linksPath, list),
     writeJsonFile(metadataPath, metadata),
@@ -465,21 +457,21 @@ export async function writeSplitVideoLinksOutput(
 }
 
 export async function writeChannelEpisodeMasterOutput(
-  path: string,
-  result: ChannelVideoLinksResult,
-  options: BuildChannelEpisodeMasterOptions = {},
+    path: string,
+    result: ChannelVideoLinksResult,
+    options: BuildChannelEpisodeMasterOptions = {},
 ): Promise<void> {
   const ignoredVideos = options.ignoredVideoIds === undefined
-    ? await readIgnoredVideos(options.ignoredVideosPath ?? defaultIgnoredVideosInput)
-    : undefined;
+      ? await readIgnoredVideos(options.ignoredVideosPath ?? defaultIgnoredVideosInput)
+      : undefined;
   const ignoredVideoIds = options.ignoredVideoIds ?? new Set(ignoredVideos?.keys() ?? []);
   const storedTranscripts = options.storedTranscripts ??
-    await readStoredTranscriptEpisodeRecords(options.transcriptsManifestPath ?? defaultTranscriptManifestInput);
+      await readStoredTranscriptEpisodeRecords(options.transcriptsManifestPath ?? defaultTranscriptManifestInput);
   const metadataStore = options.metadataRecords === undefined
-    ? await readVideoMetadataStore(options.videoMetadataPath ?? defaultVideoMetadataOutput)
-    : undefined;
+      ? await readVideoMetadataStore(options.videoMetadataPath ?? defaultVideoMetadataOutput)
+      : undefined;
   const metadataRecords = options.metadataRecords ??
-    new Map(metadataStore?.videos.map((record) => [record.videoId, record]) ?? []);
+      new Map(metadataStore?.videos.map((record) => [record.videoId, record]) ?? []);
   await writeJsonFile(path, buildChannelEpisodeMaster(result, {
     ...options,
     ignoredVideoIds,
@@ -489,13 +481,13 @@ export async function writeChannelEpisodeMasterOutput(
 }
 
 export function buildChannelEpisodeMaster(
-  result: ChannelVideoLinksResult,
-  options: BuildChannelEpisodeMasterOptions = {},
+    result: ChannelVideoLinksResult,
+    options: BuildChannelEpisodeMasterOptions = {},
 ): ChannelEpisodeMasterResult {
   const notes = [...(options.notes ?? [])];
   const links = options.ignoredVideoIds === undefined
-    ? result.links
-    : result.links.filter((link) => !options.ignoredVideoIds?.has(link.videoId));
+      ? result.links
+      : result.links.filter((link) => !options.ignoredVideoIds?.has(link.videoId));
   if (result.tabs.streams.pagesFetched === 0) {
     notes.push("Streams tab has not been fetched in this inventory.");
   }
@@ -542,12 +534,12 @@ export function splitChannelVideoLinksResult(result: ChannelVideoLinksResult): {
       fetchedAt: result.fetchedAt,
       requestDelayMs: result.requestDelayMs,
       exactDetailsIncluded: result.links.some(
-        (link) =>
-          link.publishDate !== undefined ||
-          link.publishedAt !== undefined ||
-          link.scheduledStartAt !== undefined ||
-          link.actualStartAt !== undefined ||
-          link.actualEndAt !== undefined,
+          (link) =>
+              link.publishDate !== undefined ||
+              link.publishedAt !== undefined ||
+              link.scheduledStartAt !== undefined ||
+              link.actualStartAt !== undefined ||
+              link.actualEndAt !== undefined,
       ),
       videos: result.links.map((link) => videoMetadataRecord(link)),
     },
@@ -555,8 +547,8 @@ export function splitChannelVideoLinksResult(result: ChannelVideoLinksResult): {
 }
 
 export function mergeChannelVideoLinksResults(
-  results: ChannelVideoLinksResult[],
-  ignoredVideoIds: ReadonlySet<string> = new Set(),
+    results: ChannelVideoLinksResult[],
+    ignoredVideoIds: ReadonlySet<string> = new Set(),
 ): ChannelVideoLinksResult {
   if (results.length === 0) {
     throw new Error("At least one channel video link result is required.");
@@ -577,14 +569,14 @@ export function mergeChannelVideoLinksResults(
       streams: mergeTabState(results, "streams"),
     },
     links: mergeLinks(results.flatMap((result) => result.links))
-      .filter((link) => !ignoredVideoIds.has(link.videoId)),
+        .filter((link) => !ignoredVideoIds.has(link.videoId)),
   };
 }
 
 function channelEpisodeRecord(
-  link: ChannelVideoLink,
-  channelOrder: number,
-  options: BuildChannelEpisodeMasterOptions,
+    link: ChannelVideoLink,
+    channelOrder: number,
+    options: BuildChannelEpisodeMasterOptions,
 ): ChannelEpisodeRecord {
   const metadata = options.metadataRecords?.get(link.videoId);
   const state = resolveVideoState(metadata);
@@ -593,8 +585,8 @@ function channelEpisodeRecord(
   const normalizedDate = state.state === "ready" ? state.videoDateAt : undefined;
   const fallbackDate = link.videoDateAt ?? link.actualStartAt ?? link.publishedAt;
   const videoKind = metadata === undefined
-    ? link.videoKind ?? (link.tabs.includes("streams") ? "stream" : "upload")
-    : state.videoKind;
+      ? link.videoKind ?? (link.tabs.includes("streams") ? "stream" : "upload")
+      : state.videoKind;
   const record: ChannelEpisodeRecord = {
     videoId: link.videoId,
     fileStem: stored?.fileStem ?? videoFileStem(link.videoId, title, normalizedDate ?? fallbackDate),
@@ -604,8 +596,8 @@ function channelEpisodeRecord(
     tabPositions: link.tabPositions,
     videoKind,
     transcript: stored === undefined
-      ? options.transcriptStates?.get(link.videoId) ?? { status: "not_checked" }
-      : storedTranscriptState(stored),
+        ? options.transcriptStates?.get(link.videoId) ?? {status: "not_checked"}
+        : storedTranscriptState(stored),
   };
 
   if (title !== undefined) {
@@ -650,10 +642,10 @@ function storedTranscriptState(stored: StoredTranscriptEpisodeRecord): ChannelEp
 }
 
 function copyAuthoritativeEpisodeDates(
-  record: ChannelEpisodeRecord,
-  metadata: VideoMetadataRecord | undefined,
-  link: ChannelVideoLink,
-  state: ReturnType<typeof resolveVideoState>,
+    record: ChannelEpisodeRecord,
+    metadata: VideoMetadataRecord | undefined,
+    link: ChannelVideoLink,
+    state: ReturnType<typeof resolveVideoState>,
 ): void {
   const publishedAt = metadata?.snippet?.publishedAt ?? link.publishedAt;
   const scheduledStartAt = metadata?.liveStreamingDetails?.scheduledStartTime ?? link.scheduledStartAt;
@@ -678,7 +670,7 @@ function copyAuthoritativeEpisodeDates(
 }
 
 export async function readStoredTranscriptEpisodeRecords(
-  path = defaultTranscriptManifestInput,
+    path = defaultTranscriptManifestInput,
 ): Promise<ReadonlyMap<string, StoredTranscriptEpisodeRecord>> {
   const value = JSON.parse(await readFile(path, "utf8")) as unknown;
   const object = asRecord(value);
@@ -725,7 +717,7 @@ export function resolveStoredTranscriptTxtPath(manifestPath: string, txtPath: st
 }
 
 function videoToResolverRecord(videoId: string, video: YoutubeVideo): VideoMetadataRecord {
-  const record: VideoMetadataRecord = { videoId, fetchedAt: new Date(0).toISOString() };
+  const record: VideoMetadataRecord = {videoId, fetchedAt: new Date(0).toISOString()};
   if (video.snippet !== undefined && video.snippet !== null) {
     record.snippet = video.snippet;
   }
@@ -742,8 +734,8 @@ function videoToResolverRecord(videoId: string, video: YoutubeVideo): VideoMetad
 }
 
 function mergeTabState(
-  results: ChannelVideoLinksResult[],
-  tab: ChannelVideoTab,
+    results: ChannelVideoLinksResult[],
+    tab: ChannelVideoTab,
 ): ChannelVideoLinksResult["tabs"][ChannelVideoTab] {
   const first = results.find((result) => result.tabs[tab].pagesFetched > 0)?.tabs[tab] ?? results[0]?.tabs[tab];
 
@@ -760,7 +752,7 @@ function mergeLinks(records: ChannelVideoLink[]): ChannelVideoLink[] {
   for (const record of records) {
     const existing = linksById.get(record.videoId);
     if (!existing) {
-      linksById.set(record.videoId, { ...record, tabs: [...record.tabs], tabPositions: { ...record.tabPositions } });
+      linksById.set(record.videoId, {...record, tabs: [...record.tabs], tabPositions: {...record.tabPositions}});
       continue;
     }
 
@@ -797,9 +789,9 @@ function mergeLinks(records: ChannelVideoLink[]): ChannelVideoLink[] {
 }
 
 export function extractVideoLink(
-  node: unknown,
-  tab: ChannelVideoTab,
-  tabPosition: number,
+    node: unknown,
+    tab: ChannelVideoTab,
+    tabPosition: number,
 ): ChannelVideoLink | undefined {
   const object = asRecord(node);
   if (!object) {
@@ -808,9 +800,9 @@ export function extractVideoLink(
 
   const contentType = readString(object, "content_type");
   const videoId =
-    readString(object, "video_id") ??
-    (contentType === "VIDEO" ? readString(object, "content_id") : undefined) ??
-    readStringPath(object, ["renderer_context", "command_context", "on_tap", "payload", "videoId"]);
+      readString(object, "video_id") ??
+      (contentType === "VIDEO" ? readString(object, "content_id") : undefined) ??
+      readStringPath(object, ["renderer_context", "command_context", "on_tap", "payload", "videoId"]);
 
   if (!videoId) {
     return undefined;
@@ -820,17 +812,17 @@ export function extractVideoLink(
     videoId,
     url: `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}`,
     tabs: [tab],
-    tabPositions: { [tab]: tabPosition },
+    tabPositions: {[tab]: tabPosition},
   };
 
   const title =
-    textValue(object.title) ??
-    textValue(readPath(object, ["metadata", "title"])) ??
-    accessibilityTitle(object);
+      textValue(object.title) ??
+      textValue(readPath(object, ["metadata", "title"])) ??
+      accessibilityTitle(object);
   const durationText =
-    textValue(readPath(object, ["duration", "text"])) ??
-    textValue(object.length_text) ??
-    thumbnailBadgeText(object);
+      textValue(readPath(object, ["duration", "text"])) ??
+      textValue(object.length_text) ??
+      thumbnailBadgeText(object);
   const publishedText = firstMetadataPart(object, (text) => looksLikePublishedText(text));
   const viewCountText = firstMetadataPart(object, (text) => /\bviews?\b/i.test(text));
 
@@ -858,12 +850,12 @@ export function defaultChannelVideoLinksOptions(): FetchChannelVideoLinksOptions
 }
 
 async function resolveOfficialChannel(
-  youtube: YoutubeDataApiClient,
-  options: {
-    channelUrl: string;
-    channelId?: string;
-    uploadsPlaylistId?: string;
-  },
+    youtube: YoutubeDataApiClient,
+    options: {
+      channelUrl: string;
+      channelId?: string;
+      uploadsPlaylistId?: string;
+    },
 ): Promise<OfficialChannelInfo> {
   const channelId = options.channelId ?? channelIdFromUrl(options.channelUrl);
   if (channelId !== undefined && options.uploadsPlaylistId !== undefined) {
@@ -895,7 +887,7 @@ async function resolveOfficialChannel(
   const channel = response.items[0];
   const resolvedChannelId = channel?.id ?? channelId;
   const uploadsPlaylistId =
-    options.uploadsPlaylistId ?? channel?.contentDetails?.relatedPlaylists?.uploads ?? undefined;
+      options.uploadsPlaylistId ?? channel?.contentDetails?.relatedPlaylists?.uploads ?? undefined;
 
   if (resolvedChannelId === undefined || uploadsPlaylistId === undefined) {
     throw new Error(`Could not resolve channel uploads playlist from ${options.channelUrl}.`);
@@ -908,8 +900,8 @@ async function resolveOfficialChannel(
 }
 
 function playlistItemToVideoLink(
-  item: YoutubePlaylistItem,
-  tabPosition: number,
+    item: YoutubePlaylistItem,
+    tabPosition: number,
 ): ChannelVideoLink | undefined {
   const videoId = item.contentDetails?.videoId ?? item.snippet?.resourceId?.videoId ?? undefined;
   if (videoId === undefined) {
@@ -920,7 +912,7 @@ function playlistItemToVideoLink(
     videoId,
     url: `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}`,
     tabs: ["videos"],
-    tabPositions: { videos: tabPosition },
+    tabPositions: {videos: tabPosition},
   };
   const title = item.snippet?.title ?? undefined;
   const publishedAt = item.contentDetails?.videoPublishedAt ?? item.snippet?.publishedAt ?? undefined;
@@ -938,11 +930,11 @@ function playlistItemToVideoLink(
 }
 
 async function enrichWithOfficialVideoDetails(
-  youtube: YoutubeDataApiClient,
-  links: ChannelVideoLink[],
-  detailLimit: number | undefined,
-  includeVideoDetails: boolean,
-  logger: ((message: string) => void) | undefined,
+    youtube: YoutubeDataApiClient,
+    links: ChannelVideoLink[],
+    detailLimit: number | undefined,
+    includeVideoDetails: boolean,
+    logger: ((message: string) => void) | undefined,
 ): Promise<void> {
   if (includeVideoDetails && detailLimit === undefined) {
     await enrichOfficialVideoBatch(youtube, links, true, logger);
@@ -956,31 +948,31 @@ async function enrichWithOfficialVideoDetails(
 }
 
 async function enrichOfficialVideoBatch(
-  youtube: YoutubeDataApiClient,
-  links: ChannelVideoLink[],
-  includeVideoDetails: boolean,
-  logger: ((message: string) => void) | undefined,
+    youtube: YoutubeDataApiClient,
+    links: ChannelVideoLink[],
+    includeVideoDetails: boolean,
+    logger: ((message: string) => void) | undefined,
 ): Promise<void> {
   const linksById = new Map(links.map((link) => [link.videoId, link]));
 
   for (let index = 0; index < links.length; index += 50) {
     const batch = links.slice(index, index + 50);
     const detailLabel = includeVideoDetails
-      ? "full video metadata"
-      : "video duration/status eligibility";
+        ? "full video metadata"
+        : "video duration/status eligibility";
     logger?.(`Fetching ${detailLabel} ${index + 1}-${index + batch.length}/${links.length}`);
     const requestLabel = includeVideoDetails
-      ? "videos.list full metadata batch"
-      : "videos.list duration/status eligibility batch";
+        ? "videos.list full metadata batch"
+        : "videos.list duration/status eligibility batch";
     const response = await youtube.listVideos(
-      {
-        part: includeVideoDetails
-          ? ["snippet", "contentDetails", "statistics", "status", "liveStreamingDetails"]
-          : ["contentDetails", "status"],
-        id: batch.map((link) => link.videoId),
-        maxResults: 50,
-      },
-      `${requestLabel} ${Math.floor(index / 50) + 1}`,
+        {
+          part: includeVideoDetails
+              ? ["snippet", "contentDetails", "statistics", "status", "liveStreamingDetails"]
+              : ["contentDetails", "status"],
+          id: batch.map((link) => link.videoId),
+          maxResults: 50,
+        },
+        `${requestLabel} ${Math.floor(index / 50) + 1}`,
     );
 
     for (const video of response.items) {
@@ -1050,8 +1042,8 @@ export function officialVideoStreamStartTime(video: YoutubeVideo): string | unde
   const videoId = video.id ?? "metadata-record";
   const state = resolveVideoState(videoToResolverRecord(videoId, video));
   return state.state === "ready" && state.videoKind === "stream" && state.videoDateKind !== "published"
-    ? state.videoDateAt
-    : undefined;
+      ? state.videoDateAt
+      : undefined;
 }
 
 function videoMetadataRecord(link: ChannelVideoLink): ChannelVideoMetadataResult["videos"][number] {
@@ -1100,7 +1092,7 @@ function videoMetadataRecord(link: ChannelVideoLink): ChannelVideoMetadataResult
 }
 
 async function writeJsonFile(path: string, value: unknown): Promise<void> {
-  await mkdir(dirname(path), { recursive: true });
+  await mkdir(dirname(path), {recursive: true});
   await writeFile(path, `${JSON.stringify(value, null, 2)}\n`, "utf8");
 }
 
@@ -1178,8 +1170,8 @@ function firstMetadataPart(object: Record<string, unknown>, predicate: (value: s
 
 function looksLikePublishedText(text: string): boolean {
   return (
-    /\b(?:ago|premiered|streamed|scheduled|watching|waiting|live)\b/i.test(text) ||
-    /\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\b\.?\s+\d{1,2},?\s+\d{4}\b/i.test(text)
+      /\b(?:ago|premiered|streamed|scheduled|watching|waiting|live)\b/i.test(text) ||
+      /\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\b\.?\s+\d{1,2},?\s+\d{4}\b/i.test(text)
   );
 }
 

@@ -1,16 +1,10 @@
 import assert from "node:assert/strict";
 import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
-import { join } from "node:path";
 import { tmpdir } from "node:os";
+import { join } from "node:path";
 import test from "node:test";
 
-import {
-  findStoredTranscriptRecord,
-  parseVideoTranscriptJson,
-  transcriptToTxt,
-  writeTranscriptStorage,
-  type VideoTranscript,
-} from "./transcripts.js";
+import { findStoredTranscriptRecord, parseVideoTranscriptJson, transcriptToTxt, type VideoTranscript, writeTranscriptStorage, } from "./transcripts.js";
 
 test("parses an external structured transcript payload", () => {
   const transcript = parseVideoTranscriptJson({
@@ -42,7 +36,7 @@ test("stores transcript TXT and a version 3 manifest under a local root", async 
 
     const manifest = JSON.parse(await readFile(paths.manifestOutput, "utf8"));
     assert.equal(manifest.schemaVersion, 3);
-    assert.deepEqual(manifest.storage, { txt: "txt/{fileStem}.txt" });
+    assert.deepEqual(manifest.storage, {txt: "txt/{fileStem}.txt"});
     assert.equal(manifest.transcripts[0].videoId, "abc123");
     assert.equal(manifest.transcripts[0].fileStem, "2026-06-14_T10-29-19_ships-and-strategy-a-test_abc123");
     assert.equal(manifest.transcripts[0].videoTitle, "Ships & Strategy: A Test!");
@@ -50,10 +44,10 @@ test("stores transcript TXT and a version 3 manifest under a local root", async 
       txt: "txt/2026-06-14_T10-29-19_ships-and-strategy-a-test_abc123.txt",
     });
 
-    const stored = await findStoredTranscriptRecord({ videoId: "abc123", root: dir, language: "en" });
+    const stored = await findStoredTranscriptRecord({videoId: "abc123", root: dir, language: "en"});
     assert.equal(stored?.paths.txtOutput, paths.txtOutput);
   } finally {
-    await rm(dir, { recursive: true, force: true });
+    await rm(dir, {recursive: true, force: true});
   }
 });
 
@@ -64,9 +58,9 @@ test("requires the manifest-owned TXT file to treat a transcript as stored", asy
     const paths = await writeTranscriptStorage(sampleTranscript(), dir);
     await rm(paths.txtOutput);
 
-    assert.equal(await findStoredTranscriptRecord({ videoId: "abc123", root: dir }), undefined);
+    assert.equal(await findStoredTranscriptRecord({videoId: "abc123", root: dir}), undefined);
   } finally {
-    await rm(dir, { recursive: true, force: true });
+    await rm(dir, {recursive: true, force: true});
   }
 });
 
@@ -76,14 +70,14 @@ test("reuses the stored fileStem when an existing transcript is refetched", asyn
   try {
     const firstPaths = await writeTranscriptStorage(sampleTranscript(), dir);
     const secondPaths = await writeTranscriptStorage(
-      {
-        ...sampleTranscript(),
-        videoTitle: "Renamed Video",
-        videoDateAt: "2026-07-11T00:00:00Z",
-        videoDateKind: "published",
-        segments: [{ ...sampleTranscript().segments[0]!, text: "Updated" }],
-      },
-      dir,
+        {
+          ...sampleTranscript(),
+          videoTitle: "Renamed Video",
+          videoDateAt: "2026-07-11T00:00:00Z",
+          videoDateKind: "published",
+          segments: [{...sampleTranscript().segments[0]!, text: "Updated"}],
+        },
+        dir,
     );
 
     assert.equal(secondPaths.txtOutput, firstPaths.txtOutput);
@@ -91,7 +85,7 @@ test("reuses the stored fileStem when an existing transcript is refetched", asyn
     const manifest = JSON.parse(await readFile(secondPaths.manifestOutput, "utf8"));
     assert.equal(manifest.transcripts[0].fileStem, "2026-06-14_T10-29-19_ships-and-strategy-a-test_abc123");
   } finally {
-    await rm(dir, { recursive: true, force: true });
+    await rm(dir, {recursive: true, force: true});
   }
 });
 
@@ -100,33 +94,33 @@ test("removes a superseded safe TXT path while preserving the stored fileStem", 
   const oldTxt = join(dir, "txt", "old-name_abc123.txt");
 
   try {
-    await mkdir(join(dir, "txt"), { recursive: true });
+    await mkdir(join(dir, "txt"), {recursive: true});
     await writeFile(oldTxt, "old\n", "utf8");
     await writeFile(
-      join(dir, "manifest.json"),
-      `${JSON.stringify({
-        schemaVersion: 3,
-        updatedAt: "2026-07-07T00:00:00.000Z",
-        storage: { txt: "txt/{fileStem}.txt" },
-        transcripts: [{
-          videoId: "abc123",
-          fileStem: "replacement-name_abc123",
-          source: "youtube-transcript-plus",
-          fetchedAt: "2026-07-07T00:00:00.000Z",
-          availableLanguages: ["en"],
-          segmentCount: 1,
-          paths: { txt: "txt/old-name_abc123.txt" },
-        }],
-      }, null, 2)}\n`,
-      "utf8",
+        join(dir, "manifest.json"),
+        `${JSON.stringify({
+          schemaVersion: 3,
+          updatedAt: "2026-07-07T00:00:00.000Z",
+          storage: {txt: "txt/{fileStem}.txt"},
+          transcripts: [{
+            videoId: "abc123",
+            fileStem: "replacement-name_abc123",
+            source: "youtube-transcript-plus",
+            fetchedAt: "2026-07-07T00:00:00.000Z",
+            availableLanguages: ["en"],
+            segmentCount: 1,
+            paths: {txt: "txt/old-name_abc123.txt"},
+          }],
+        }, null, 2)}\n`,
+        "utf8",
     );
 
     const paths = await writeTranscriptStorage(sampleTranscript(), dir);
-    await assert.rejects(readFile(oldTxt, "utf8"), { code: "ENOENT" });
+    await assert.rejects(readFile(oldTxt, "utf8"), {code: "ENOENT"});
     assert.equal(paths.txtOutput, join(dir, "txt", "replacement-name_abc123.txt"));
     assert.equal(await readFile(paths.txtOutput, "utf8"), "[0:00] Hello\n");
   } finally {
-    await rm(dir, { recursive: true, force: true });
+    await rm(dir, {recursive: true, force: true});
   }
 });
 

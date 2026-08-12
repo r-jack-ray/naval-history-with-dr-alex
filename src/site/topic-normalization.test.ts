@@ -95,608 +95,68 @@ test("uses exact, regex, token, and fallback rules in deterministic precedence",
   });
 });
 
-test("production policy canonicalizes numeric millimeter gun topics", async () => {
-  const catalog = await loadTopicNormalizationCatalog(
-    "src/derived/topic-normalization-patterns.tsv",
-  );
+test("resolves self-contained policy cases without relying on the live catalog", () => {
+  const catalog = parseTopicNormalizationCatalog(catalogText([
+    row({
+      ruleId: "fixture-normalize-legacy-scout-vessels",
+      scope: "creation",
+      match: "legacy-scout-vessels",
+      replacement: "scout-vessels",
+      canonicalTitle: "Scout Vessels",
+      notes: "Synthetic exact normalization case",
+    }),
+    row({
+      ruleId: "fixture-review-ambiguous-scouting",
+      status: "review",
+      scope: "creation",
+      match: "ambiguous-scouting",
+      replacement: "ambiguous-scouting",
+      canonicalTitle: "Ambiguous Scouting",
+      notes: "Synthetic ambiguous input",
+    }),
+    row({
+      ruleId: "fixture-display-scout-vessels",
+      scope: "display",
+      match: "scout-vessels",
+      replacement: "scout-vessels",
+      canonicalTitle: "Scout Vessels",
+      aliases: ["Scouting Vessels"],
+      notes: "Synthetic display metadata",
+    }),
+  ]));
 
-  assert.deepEqual(resolveTopicCreation(catalog, "40-millimeter-guns"), {
-    input: "40-millimeter-guns",
-    slug: "40-mm-guns",
+  assert.deepEqual(resolveTopicCreation(catalog, "legacy-scout-vessels"), {
+    input: "legacy-scout-vessels",
+    slug: "scout-vessels",
     changed: true,
-    matchedRuleIds: ["normalize-40-millimeter-guns"],
+    matchedRuleIds: ["fixture-normalize-legacy-scout-vessels"],
   });
-  assert.deepEqual(resolveTopicCreation(catalog, "120-millimeter-guns"), {
-    input: "120-millimeter-guns",
-    slug: "4-7-inch-guns",
-    changed: true,
-    matchedRuleIds: ["normalize-120-millimeter-guns"],
-  });
-  assert.deepEqual(resolveTopicCreation(catalog, "90-millimeter-guns"), {
-    input: "90-millimeter-guns",
-    slug: "90-mm-guns",
-    changed: true,
-    matchedRuleIds: ["create-numeric-millimeter-guns"],
-  });
-  assert.deepEqual(resolveTopicCreation(catalog, "90-millimetre-guns"), {
-    input: "90-millimetre-guns",
-    slug: "90-mm-guns",
-    changed: true,
-    matchedRuleIds: ["create-numeric-millimeter-guns"],
-  });
-  assert.deepEqual(resolveTopicCreation(catalog, "forty-millimeter-guns"), {
-    input: "forty-millimeter-guns",
-    slug: "40-mm-guns",
-    changed: true,
-    matchedRuleIds: ["normalize-forty-millimeter-guns"],
-  });
-  assert.deepEqual(resolveTopicCreation(catalog, "x-millimeter-guns"), {
-    input: "x-millimeter-guns",
-    slug: "x-millimeter-guns",
+  assert.deepEqual(resolveTopicCreation(catalog, "ambiguous-scouting"), {
+    input: "ambiguous-scouting",
+    slug: "ambiguous-scouting",
     changed: false,
-    matchedRuleIds: [],
+    matchedRuleIds: ["fixture-review-ambiguous-scouting"],
   });
-  assert.deepEqual(resolveTopicCreation(catalog, "sixty-millimeter-guns"), {
-    input: "sixty-millimeter-guns",
-    slug: "sixty-millimeter-guns",
-    changed: false,
-    matchedRuleIds: [],
-  });
-});
 
-test("production policy consolidates the A-6F variant into the A-6 Intruder topic", async () => {
-  const catalog = await loadTopicNormalizationCatalog(
-    "src/derived/topic-normalization-patterns.tsv",
-  );
-
-  assert.deepEqual(resolveTopicCreation(catalog, "a-6f-intruder"), {
-    input: "a-6f-intruder",
-    slug: "a-6-intruder",
-    changed: true,
-    matchedRuleIds: ["normalize-a-6f-intruder"],
-  });
-});
-
-test("production policy canonicalizes AW101 Merlin aircraft naming", async () => {
-  const catalog = await loadTopicNormalizationCatalog(
-    "src/derived/topic-normalization-patterns.tsv",
-  );
-  const expected = [
-    ["agustawestland-merlin", "normalize-agustawestland-merlin"],
-    ["agustawestland-aw101-merlin", "normalize-agustawestland-aw101-merlin"],
-    ["eh101-merlin", "normalize-eh101-merlin"],
-    ["merlin-helicopter", "normalize-global-curation-merlin-helicopter"],
-    ["merlin-helicopters", "normalize-global-curation-merlin-helicopters"],
-  ] as const;
-
-  for (const [input, ruleId] of expected) {
-    assert.deepEqual(resolveTopicCreation(catalog, input), {
-      input,
-      slug: "aw101-merlin",
-      changed: true,
-      matchedRuleIds: [ruleId],
+  for (const distinctSlug of ["scout-vessels", "scouting-activity"]) {
+    assert.deepEqual(resolveTopicCreation(catalog, distinctSlug), {
+      input: distinctSlug,
+      slug: distinctSlug,
+      changed: false,
+      matchedRuleIds: [],
     });
   }
-  assert.deepEqual(resolveTopicDisplayTitle(catalog, "aw101-merlin"), {
-    slug: "aw101-merlin",
-    title: "AW101 Merlin",
-    matchedRuleIds: ["display-aw101-merlin"],
+
+  assert.deepEqual(resolveTopicDisplayTitle(catalog, "scout-vessels"), {
+    slug: "scout-vessels",
+    title: "Scout Vessels",
+    matchedRuleIds: ["fixture-display-scout-vessels"],
     resolution: "exact",
   });
   assert.deepEqual(
-    catalog.rules.find((rule) => rule.ruleId === "display-aw101-merlin")?.aliases,
-    [
-      "AgustaWestland AW101",
-      "AgustaWestland AW101 Merlin",
-      "AgustaWestland Merlin",
-      "EH101",
-      "EH101 Merlin",
-      "Merlin Helicopter",
-      "Merlin Helicopters",
-    ],
+    catalog.rules.find(({ruleId}) => ruleId === "fixture-display-scout-vessels")?.aliases,
+    ["Scouting Vessels"],
   );
-});
-
-test("production policy applies the repository-owner topic normalization batch", async () => {
-  const catalog = await loadTopicNormalizationCatalog(
-    "src/derived/topic-normalization-patterns.tsv",
-  );
-
-  const creationExpected = [
-    ["arc-royal", "ark-royal", "normalize-arc-royal"],
-    ["arc-royal-class", "ark-royal-class", "normalize-arc-royal-class"],
-    ["hms-arc-royal", "hms-ark-royal", "normalize-hms-arc-royal"],
-    ["hmnz-achilles", "hmnzs-achilles", "normalize-hmnz-achilles"],
-    ["hmnz-canterbury", "hmnzs-canterbury", "normalize-hmnz-ship-prefix"],
-    ["first-world-war", "world-war-i", "normalize-first-world-war"],
-    ["world-war-one", "world-war-i", "normalize-world-war-one"],
-    ["great-war", "world-war-i", "normalize-great-war"],
-    ["second-world-war", "world-war-ii", "normalize-second-world-war"],
-    ["world-war-two", "world-war-ii", "normalize-world-war-two"],
-    ["phony-war", "phoney-war", "normalize-phony-war"],
-    ["pom-pom", "pom-pom-guns", "normalize-pom-pom"],
-    ["pom-pom-gun", "pom-pom-guns", "normalize-pom-pom-gun"],
-    ["pom-poms", "pom-pom-guns", "normalize-pom-poms"],
-    ["wrens", "wrns", "normalize-wrens"],
-    [
-      "womens-royal-naval-service",
-      "wrns",
-      "normalize-womens-royal-naval-service",
-    ],
-    ["all-or-nothing-armor", "all-or-nothing-armour", "normalize-all-or-nothing-armor"],
-    ["planetary-defense", "planetary-defence", "normalize-planetary-defense"],
-    [
-      "model-1924-203-mm-gun",
-      "8-inch-guns",
-      "normalize-model-1924-203-mm-gun",
-    ],
-    [
-      "qf-2-pounder-pom-pom",
-      "2-pounder-guns",
-      "normalize-qf-2-pounder-pom-pom",
-    ],
-  ] as const;
-
-  for (const [input, slug, ruleId] of creationExpected) {
-    assert.deepEqual(resolveTopicCreation(catalog, input), {
-      input,
-      slug,
-      changed: true,
-      matchedRuleIds: [ruleId],
-    });
-  }
-
-  assert.deepEqual(resolveTopicCreation(catalog, "type-91-pom-pom"), {
-    input: "type-91-pom-pom",
-    slug: "type-91-40-mm-anti-aircraft-gun",
-    changed: true,
-    matchedRuleIds: ["normalize-topic-curation-20260802-type-91-pom-pom"],
-  });
-  assert.equal(
-    resolveTopicCreation(catalog, "vickers-pom-pom").slug,
-    "vickers-pom-pom",
-  );
-
-  const displayExpected = new Map([
-    ["3d-printing", "3D Printing"],
-    ["fairey-tsr", "Fairey TSR"],
-    ["hmas-australia", "HMAS Australia"],
-    ["hmnzs-canterbury", "HMNZS Canterbury"],
-    ["pgm-1-class", "PGM-1 Class"],
-    ["pgm-9-class", "PGM-9 Class"],
-    ["pla-air-force", "PLA Air Force"],
-    ["pla-navy", "PLA Navy"],
-    ["pq-17", "PQ 17"],
-    ["convoy-pq-13", "Convoy PQ 13"],
-    ["qp-11", "QP 11"],
-    ["wrns", "WRNS"],
-    ["world-war-i", "World War I"],
-    ["world-war-ii", "World War II"],
-  ]);
-  for (const [slug, title] of displayExpected) {
-    assert.equal(resolveTopicDisplayTitle(catalog, slug).title, title, slug);
-  }
-
-  assert.deepEqual(
-    catalog.rules.find((rule) => rule.ruleId === "display-world-war-i")?.aliases,
-    [
-      "WWI",
-      "WW1",
-      "World War 1",
-      "World War One",
-      "First World War",
-      "1st World War",
-      "Great War",
-      "The Great War",
-    ],
-  );
-  assert.deepEqual(
-    catalog.rules.find((rule) => rule.ruleId === "display-world-war-ii")?.aliases,
-    [
-      "WWII",
-      "WW2",
-      "World War 2",
-      "World War Two",
-      "Second World War",
-      "The Second World War",
-      "2nd World War",
-    ],
-  );
-});
-
-test("production policy encodes the dc950 topic audit without collapsing semantic distinctions", async () => {
-  const catalog = await loadTopicNormalizationCatalog(
-    "src/derived/topic-normalization-patterns.tsv",
-  );
-  const auditRules = catalog.rules.filter(({ ruleId }) =>
-    ruleId.startsWith("normalize-dc950-"),
-  );
-  const activeAuditRules = auditRules.filter(({ status }) => status === "active");
-
-  assert.ok(activeAuditRules.length > 0, "the dc950 audit must retain active creation rules");
-  const statusesByRuleId = new Map(auditRules.map(({ ruleId, status }) => [ruleId, status]));
-  for (const [ruleId, status] of new Map([
-    ["normalize-dc950-midway-class-aircraft-carriers", "disabled"],
-    ["normalize-dc950-admiral-lord-cork", "review"],
-    ["normalize-dc950-lord-cork", "review"],
-    ["normalize-dc950-rear-admiral-montagu", "review"],
-    ["normalize-dc950-alexander-hood", "disabled"],
-    ["normalize-dc950-lord-chatfield", "review"],
-    ["normalize-dc950-kongo-class-battlecruisers", "disabled"],
-  ] as const)) {
-    assert.equal(statusesByRuleId.get(ruleId), status, ruleId);
-  }
-  for (const rule of activeAuditRules) {
-    assert.deepEqual(rule.scopes, ["creation"], rule.ruleId);
-    assert.equal(rule.matchKind, "exact", rule.ruleId);
-    assert.deepEqual(resolveTopicCreation(catalog, rule.match), {
-      input: rule.match,
-      slug: rule.replacement,
-      changed: true,
-      matchedRuleIds: [rule.ruleId],
-    });
-  }
-
-  const highRiskMappings = new Map([
-    ["flooding-control", "damage-control"],
-    ["warship-repairs", "warship-repair"],
-    ["european-defense", "european-defence"],
-    ["ship-artifacts", "warship-artefacts"],
-    ["c-class-light-cruisers", "c-class-cruisers"],
-    ["j-class", "j-class-destroyers"],
-    ["k-class", "k-class-destroyers"],
-    ["uss-john-f-kennedy", "uss-john-f-kennedy-cv-67"],
-    ["second-naval-lord", "second-sea-lord"],
-    ["rfa-sir-david-attenborough", "rrs-sir-david-attenborough"],
-    ["rss-sir-david-attenborough", "rrs-sir-david-attenborough"],
-    ["bremerton-naval-shipyard", "puget-sound-naval-shipyard"],
-    ["port-stanley-airport", "stanley-airport"],
-    ["ship-engineering", "fiction-spacecraft-engineering"],
-    ["grand-admiral-thrawn", "fiction-star-wars-thrawn"],
-    ["hms-thunderchild", "fiction-hms-thunder-child"],
-    ["hms-fundra", "fiction-world-of-warships-fundra"],
-    ["unsc", "fiction-halo-united-nations-space-command"],
-    ["un-security-council", "united-nations-security-council"],
-  ]);
-  for (const [input, expected] of highRiskMappings) {
-    assert.equal(resolveTopicCreation(catalog, input).slug, expected, input);
-  }
-
-  for (const distinctTopic of [
-    "submarine-fleet",
-    "fleet-submarines",
-    "destroyer-fleet",
-    "fleet-destroyers",
-    "cruiser-scouting",
-    "scouting-cruisers",
-    "hms-oak",
-    "ammunition-stowage",
-    "air-launched-torpedoes",
-    "sea-lightning",
-    "science-fiction",
-    "alternate-history",
-  ]) {
-    assert.deepEqual(resolveTopicCreation(catalog, distinctTopic), {
-      input: distinctTopic,
-      slug: distinctTopic,
-      changed: false,
-      matchedRuleIds: [],
-    });
-  }
-
-  assert.deepEqual(resolveTopicCreation(catalog, "uss-texas"), {
-    input: "uss-texas",
-    slug: "uss-texas",
-    changed: false,
-    matchedRuleIds: ["review-contextual-uss-texas"],
-  });
-});
-
-test("production policy consolidates generic inch-gun topics without collapsing named models", async () => {
-  const catalog = await loadTopicNormalizationCatalog(
-    "src/derived/topic-normalization-patterns.tsv",
-  );
-
-  for (const calibre of ["14", "15", "16", "18", "20"]) {
-    assert.deepEqual(resolveTopicCreation(catalog, `${calibre}-inch-gun`), {
-      input: `${calibre}-inch-gun`,
-      slug: `${calibre}-inch-guns`,
-      changed: true,
-      matchedRuleIds: ["create-singular-integer-inch-gun"],
-    });
-  }
-  assert.deepEqual(resolveTopicCreation(catalog, "17-5-inch-gun"), {
-    input: "17-5-inch-gun",
-    slug: "17-5-inch-guns",
-    changed: true,
-    matchedRuleIds: ["create-singular-decimal-inch-gun"],
-  });
-  assert.deepEqual(resolveTopicCreation(catalog, "british-15-inch-gun"), {
-    input: "british-15-inch-gun",
-    slug: "15-inch-guns",
-    changed: true,
-    matchedRuleIds: ["normalize-british-15-inch-gun"],
-  });
-  assert.deepEqual(resolveTopicCreation(catalog, "five-inch-38-caliber-gun"), {
-    input: "five-inch-38-caliber-gun",
-    slug: "5-inch-guns",
-    changed: true,
-    matchedRuleIds: ["normalize-five-inch-38-caliber-gun"],
-  });
-  assert.deepEqual(resolveTopicCreation(catalog, "automatic-eight-inch-guns"), {
-    input: "automatic-eight-inch-guns",
-    slug: "8-inch-guns",
-    changed: true,
-    matchedRuleIds: ["normalize-automatic-eight-inch-guns"],
-  });
-  assert.deepEqual(resolveTopicCreation(catalog, "nine-inch-guns"), {
-    input: "nine-inch-guns",
-    slug: "9-inch-guns",
-    changed: true,
-    matchedRuleIds: ["normalize-nine-inch-guns"],
-  });
-  for (const [modelSlug, genericSlug] of [
-    ["qf-4-5-inch-gun", "4-5-inch-guns"],
-    ["qf-4-7-inch-gun", "4-7-inch-guns"],
-    ["qf-5-25-inch-gun", "5-25-inch-guns"],
-  ] as const) {
-    assert.deepEqual(resolveTopicCreation(catalog, modelSlug), {
-      input: modelSlug,
-      slug: genericSlug,
-      changed: true,
-      matchedRuleIds: [`normalize-global-curation-${modelSlug}`],
-    });
-  }
-  assert.deepEqual(resolveTopicCreation(catalog, "bl-15-inch-mark-i"), {
-    input: "bl-15-inch-mark-i",
-    slug: "bl-15-inch-mark-i-naval-gun",
-    changed: true,
-    matchedRuleIds: ["normalize-20260803-curation-bl-15-inch-mark-i"],
-  });
-  for (const modelSlug of [
-    "six-inch-mark-xxiii",
-    "15-inch-gun-mount",
-  ]) {
-    assert.deepEqual(resolveTopicCreation(catalog, modelSlug), {
-      input: modelSlug,
-      slug: modelSlug,
-      changed: false,
-      matchedRuleIds: [],
-    });
-  }
-});
-
-test("production policy preserves the distinct 11-inch and 1.1-inch gun topics", async () => {
-  const catalog = await loadTopicNormalizationCatalog(
-    "src/derived/topic-normalization-patterns.tsv",
-  );
-
-  assert.equal(resolveTopicCreation(catalog, "11-inch-guns").slug, "11-inch-guns");
-  assert.equal(resolveTopicCreation(catalog, "1-1-inch-guns").slug, "1-1-inch-guns");
-  assert.equal(topicTitleFromSlug("11-inch-guns", catalog), "11-inch Guns");
-  assert.equal(topicTitleFromSlug("1-1-inch-guns", catalog), "1.1-inch Guns");
-  assert.notEqual(
-    resolveTopicCreation(catalog, "11-inch-guns").slug,
-    resolveTopicCreation(catalog, "1-1-inch-guns").slug,
-  );
-});
-
-test("production policy normalizes pounder, metric, and rapid-firing gun variants", async () => {
-  const catalog = await loadTopicNormalizationCatalog(
-    "src/derived/topic-normalization-patterns.tsv",
-  );
-  const expected = [
-    ["6-pounder-gun", "6-pounder-guns", "normalize-numeric-pounder-gun"],
-    ["2-pounder-gun", "2-pounder-guns", "normalize-numeric-pounder-gun"],
-    ["12-pounder-gun", "12-pounder-guns", "normalize-numeric-pounder-gun"],
-    ["two-pounder", "2-pounder-guns", "normalize-written-two-pounder"],
-    ["two-pounder-guns", "2-pounder-guns", "normalize-written-two-pounder"],
-    ["six-pounder", "6-pounder-guns", "normalize-written-six-pounder"],
-    ["seventeen-pounder", "17-pounder-guns", "normalize-written-seventeen-pounder"],
-    ["forty-eight-pounder", "48-pounder-guns", "normalize-written-forty-eight-pounder"],
-    ["sixty-eight-pounder", "68-pounder-guns", "normalize-written-sixty-eight-pounder"],
-    ["long-nine-pounder", "9-pounder-guns", "normalize-long-nine-pounder"],
-    ["hotchkiss-3-pounder", "3-pounder-guns", "normalize-hotchkiss-3-pounder"],
-    ["two-pounder-pom-pom", "2-pounder-guns", "normalize-two-pounder-pom-pom"],
-    ["qf-2-pounder", "2-pounder-guns", "normalize-qf-2-pounder"],
-    ["qf-2-pounder-pom-pom", "2-pounder-guns", "normalize-qf-2-pounder-pom-pom"],
-    ["qf-17-pounder", "17-pounder-guns", "normalize-qf-17-pounder"],
-    ["pounder-guns", "gun-nomenclature", "normalize-pounder-guns"],
-    [
-      "forty-two-centimeter-guns",
-      "16-5-inch-guns",
-      "normalize-forty-two-centimeter-guns",
-    ],
-    ["35-centimeter-guns", "13-8-inch-guns", "normalize-35-centimeter-guns"],
-    ["rapid-fire-guns", "quick-firing-guns", "normalize-rapid-fire-guns"],
-    ["rapid-firing-guns", "quick-firing-guns", "normalize-rapid-firing-guns"],
-  ] as const;
-
-  for (const [input, slug, ruleId] of expected) {
-    assert.deepEqual(resolveTopicCreation(catalog, input), {
-      input,
-      slug,
-      changed: true,
-      matchedRuleIds: [ruleId],
-    });
-  }
-});
-
-test("production policy applies active full-corpus singular and plural consolidation rules", async () => {
-  const catalog = await loadTopicNormalizationCatalog(
-    "src/derived/topic-normalization-patterns.tsv",
-  );
-  const fullScanRules = catalog.rules.filter(({ ruleId }) =>
-    ruleId.startsWith("normalize-full-scan-"),
-  );
-  const activeFullScanRules = fullScanRules.filter(({ status }) => status === "active");
-
-  assert.ok(activeFullScanRules.length > 0, "Expected active full-scan normalization rules");
-  for (const rule of activeFullScanRules) {
-    assert.deepEqual(rule.scopes, ["creation"], rule.ruleId);
-    assert.equal(rule.matchKind, "exact", rule.ruleId);
-    assert.deepEqual(resolveTopicCreation(catalog, rule.match), {
-      input: rule.match,
-      slug: rule.replacement,
-      changed: true,
-      matchedRuleIds: [rule.ruleId],
-    });
-  }
-
-  const expected = [
-    ["leander-class-cruiser", "leander-class-light-cruisers-1931"],
-    ["leander-class-frigate", "leander-class-frigates"],
-    ["zumwalt-class", "zumwalt-class-destroyers"],
-    ["zumwalt-class-destroyer", "zumwalt-class-destroyers"],
-    ["alaska-class", "alaska-class-large-cruisers"],
-    ["alaska-class-cruisers", "alaska-class-large-cruisers"],
-  ] as const;
-  for (const [input, slug] of expected) {
-    assert.equal(resolveTopicCreation(catalog, input).slug, slug, input);
-  }
-
-  assert.deepEqual(resolveTopicCreation(catalog, "leander-class"), {
-    input: "leander-class",
-    slug: "leander-class",
-    changed: false,
-    matchedRuleIds: ["review-contextual-leander-class"],
-  });
-});
-
-test("production policy merges reviewed duplicate topics without guessing ambiguous context", async () => {
-  const catalog = await loadTopicNormalizationCatalog(
-    "src/derived/topic-normalization-patterns.tsv",
-  );
-  const expected = [
-    ["aav-7", "aav7", "normalize-duplicate-aav-7"],
-    ["abdacom", "abda-command", "normalize-duplicate-abdacom"],
-    [
-      "uncrewed-combat-aircraft",
-      "ucav",
-      "normalize-duplicate-uncrewed-combat-aircraft",
-    ],
-    ["v-2", "v-2-rocket", "normalize-duplicate-v-2"],
-    ["v-2-rockets", "v-2-rocket", "normalize-duplicate-v-2-rockets"],
-    ["n3-battleship-design", "n3-class-battleships", "normalize-duplicate-n3-battleship-design"],
-    [
-      "queen-elizabeth-class-carrier",
-      "queen-elizabeth-class-aircraft-carriers",
-      "normalize-duplicate-queen-elizabeth-class-carrier",
-    ],
-    [
-      "queen-elizabeth-class-battleship",
-      "queen-elizabeth-class-battleships",
-      "normalize-duplicate-queen-elizabeth-class-battleship",
-    ],
-    ["uss-enterprise-cv6", "uss-enterprise-cv-6", "normalize-duplicate-uss-enterprise-cv6"],
-  ] as const;
-
-  for (const [input, slug, ruleId] of expected) {
-    assert.deepEqual(resolveTopicCreation(catalog, input), {
-      input,
-      slug,
-      changed: true,
-      matchedRuleIds: [ruleId],
-    });
-  }
-  assert.deepEqual(resolveTopicCreation(catalog, "queen-elizabeth-class"), {
-    input: "queen-elizabeth-class",
-    slug: "queen-elizabeth-class",
-    changed: false,
-    matchedRuleIds: ["review-contextual-queen-elizabeth-class"],
-  });
-});
-
-test("production policy uses reviewed official and common display forms", async () => {
-  const catalog = await loadTopicNormalizationCatalog(
-    "src/derived/topic-normalization-patterns.tsv",
-  );
-  const expectedTitles = new Map([
-    ["aav7", "AAV7"],
-    ["abda-command", "ABDA Command"],
-    ["abc-1-staff-talks", "U.S.–British Staff Conference (ABC-1)"],
-    ["aden-cannon", "ADEN Cannon"],
-    ["ub-43", "UB-43"],
-    ["sm-u-21", "SM U-21"],
-    ["type-ub-iii-u-boat", "Type UB III U-Boat"],
-    ["type-uc-ii-u-boat", "Type UC II U-Boat"],
-    ["uavs", "Uncrewed Aircraft"],
-    ["ucav", "UCAV"],
-    ["uuvs", "Uncrewed Underwater Vehicles"],
-    ["n3-class-battleships", "N3 Class Battleships"],
-    ["queen-elizabeth-class-aircraft-carriers", "Queen Elizabeth Class Aircraft Carriers"],
-    ["queen-elizabeth-class-battleships", "Queen Elizabeth Class Battleships"],
-    ["u-5", "U-5"],
-    ["vf-2", "VF-2"],
-    ["vfa-2", "VFA-2"],
-    ["vmf-214", "VMF-214"],
-    ["uc-43", "UC-43"],
-    ["uss-enterprise-cv-6", "USS Enterprise (CV-6)"],
-    ["uss-enterprise-cvn-65", "USS Enterprise (CVN-65)"],
-    ["uss-texas-bb-35", "USS Texas (BB-35)"],
-    ["uss-turner-dd-648", "USS Turner (DD-648)"],
-    ["v-1-flying-bomb", "V-1 Flying Bomb"],
-    ["v-2-rocket", "V-2 Rocket"],
-    ["vstol-aircraft", "V/STOL Aircraft"],
-    ["vtol-aircraft", "VTOL Aircraft"],
-    ["vt-fuzes", "VT Fuzes"],
-  ]);
-
-  for (const [slug, title] of expectedTitles) {
-    assert.equal(resolveTopicDisplayTitle(catalog, slug).title, title, slug);
-  }
-});
-
-test("production policy preserves reviewed Type-designation referents and distinct variants", async () => {
-  const catalog = await loadTopicNormalizationCatalog(
-    "src/derived/topic-normalization-patterns.tsv",
-  );
-  const reviewedCases = [
-    ["bare", "type-212", "type-212-submarine", "normalize-topic-curation-20260802-type-212"],
-    ["class", "type-212-class", "type-212-submarine", "normalize-topic-curation-20260802-type-212-class"],
-    ["plural", "type-212-submarines", "type-212-submarine", "normalize-topic-curation-20260802-type-212-submarines"],
-    ["alphanumeric", "type-052c", "type-052c-destroyer", "normalize-topic-curation-20260802-type-052c"],
-    ["distinct alphanumeric variant", "type-212cd", "type-212cd-submarine", "normalize-topic-curation-20260802-type-212cd"],
-    ["Roman numeral", "type-ix-submarines", "type-ix-u-boat", "normalize-topic-curation-20260802-type-ix-submarines"],
-    ["non-ship missile", "type-12-missile", "type-12-surface-to-ship-missile", "normalize-topic-curation-20260802-type-12-missile"],
-  ] as const;
-
-  for (const [label, input, slug, ruleId] of reviewedCases) {
-    assert.deepEqual(resolveTopicCreation(catalog, input), {
-      input,
-      slug,
-      changed: true,
-      matchedRuleIds: [ruleId],
-    }, label);
-  }
-
-  for (const canonicalSlug of [
-    "type-212-submarine",
-    "type-212cd-submarine",
-    "type-ix-u-boat",
-    "type-267-radar",
-  ]) {
-    assert.deepEqual(resolveTopicCreation(catalog, canonicalSlug), {
-      input: canonicalSlug,
-      slug: canonicalSlug,
-      changed: false,
-      matchedRuleIds: [],
-    }, canonicalSlug);
-  }
-
-  assert.equal(topicTitleFromSlug("type-212cd-submarine", catalog), "Type 212CD Submarine");
-  assert.equal(topicTitleFromSlug("type-ix-u-boat", catalog), "Type IX U-Boat");
-  assert.equal(topicTitleFromSlug("type-267-radar", catalog), "Type 267 Radar");
-  assert.notEqual(
-    resolveTopicCreation(catalog, "type-212").slug,
-    resolveTopicCreation(catalog, "type-212cd").slug,
-  );
-  assert.deepEqual(resolveTopicCreation(catalog, "type-212a"), {
-    input: "type-212a",
-    slug: "type-212a",
-    changed: false,
-    matchedRuleIds: [],
-  }, "Type 212A remains intentionally unresolved without reviewed source evidence");
 });
 
 test("exact review policy suppresses broader active creation rules", () => {

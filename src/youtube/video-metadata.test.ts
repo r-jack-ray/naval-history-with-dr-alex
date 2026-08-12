@@ -8,43 +8,43 @@ import {
   mergeVideoIds,
   parseYoutubeDurationSeconds,
   readVideoIdsFromEpisodeMaster,
-  resolveVideoState,
   resolveAdditionalVideoIds,
   resolveVideoFetchState,
+  resolveVideoState,
   selectVideoMetadataTargetIds,
-  videoNamingMetadata,
   type VideoMetadataRecord,
+  videoNamingMetadata,
 } from "./video-metadata.js";
 
 test("reads unique video IDs from the episode master list", () => {
   assert.deepEqual(
-    readVideoIdsFromEpisodeMaster({
-      episodes: [
-        { videoId: "abc123" },
-        { videoId: "def456" },
-        { videoId: "abc123" },
-        { title: "missing id" },
-      ],
-    }),
-    ["abc123", "def456"],
+      readVideoIdsFromEpisodeMaster({
+        episodes: [
+          {videoId: "abc123"},
+          {videoId: "def456"},
+          {videoId: "abc123"},
+          {title: "missing id"},
+        ],
+      }),
+      ["abc123", "def456"],
   );
 });
 
 test("supplements episode IDs with unique explicit video IDs", () => {
   assert.deepEqual(
-    mergeVideoIds(["abc123", "def456"], ["missing789", "abc123", "missing999"]),
-    ["abc123", "def456", "missing789", "missing999"],
+      mergeVideoIds(["abc123", "def456"], ["missing789", "abc123", "missing999"]),
+      ["abc123", "def456", "missing789", "missing999"],
   );
 });
 
 test("retains supplemental IDs until they enter the episode inventory", () => {
   assert.deepEqual(
-    resolveAdditionalVideoIds(
-      ["abc123", "nowInEpisodes"],
-      ["storedMissing", "nowInEpisodes"],
-      ["requestedMissing", "storedMissing"],
-    ),
-    ["storedMissing", "requestedMissing"],
+      resolveAdditionalVideoIds(
+          ["abc123", "nowInEpisodes"],
+          ["storedMissing", "nowInEpisodes"],
+          ["requestedMissing", "storedMissing"],
+      ),
+      ["storedMissing", "requestedMissing"],
   );
 });
 
@@ -87,8 +87,8 @@ test("builds local naming metadata from YouTube video metadata", () => {
       actualStartTime: "2026-07-05T18:33:54Z",
       actualEndTime: "2026-07-05T20:33:54Z",
     },
-    status: { uploadStatus: "processed" },
-    contentDetails: { duration: "PT2H" },
+    status: {uploadStatus: "processed"},
+    contentDetails: {duration: "PT2H"},
   };
 
   assert.deepEqual(videoNamingMetadata(record), {
@@ -155,7 +155,7 @@ test("a postponed livestream uses the newly stored air date for its next automat
   const postponed: VideoMetadataRecord = {
     videoId: "postponed123",
     fetchedAt: "2026-07-20T18:31:00.123Z",
-    snippet: { liveBroadcastContent: "upcoming" },
+    snippet: {liveBroadcastContent: "upcoming"},
     liveStreamingDetails: {
       scheduledStartTime: "2026-07-23T18:30:00Z",
     },
@@ -173,8 +173,8 @@ test("explicit refreshes still override the deferred retry date", () => {
   const upcoming: VideoMetadataRecord = {
     videoId: "upcoming123",
     fetchedAt: "2026-07-20T00:00:00Z",
-    snippet: { liveBroadcastContent: "upcoming" },
-    liveStreamingDetails: { scheduledStartTime: "2026-07-30T18:30:00Z" },
+    snippet: {liveBroadcastContent: "upcoming"},
+    liveStreamingDetails: {scheduledStartTime: "2026-07-30T18:30:00Z"},
   };
 
   assert.deepEqual(selectVideoMetadataTargetIds({
@@ -203,8 +203,8 @@ test("requires processing, positive duration, and explicit stream completion", (
       publishedAt: "2026-07-05T23:25:48Z",
       liveBroadcastContent: "none",
     },
-    contentDetails: { duration: "PT2H" },
-    status: { uploadStatus: "processed" },
+    contentDetails: {duration: "PT2H"},
+    status: {uploadStatus: "processed"},
     liveStreamingDetails: {
       actualStartTime: "2026-07-05T18:33:54Z",
       scheduledStartTime: "2026-07-05T18:30:00Z",
@@ -219,8 +219,8 @@ test("requires processing, positive duration, and explicit stream completion", (
   });
   assert.equal(resolveVideoState({
     ...common,
-    status: { uploadStatus: "uploaded" },
-    contentDetails: { duration: "P0D" },
+    status: {uploadStatus: "uploaded"},
+    contentDetails: {duration: "P0D"},
   }).state, "deferred");
 });
 
@@ -232,8 +232,8 @@ test("uses scheduled start only after independent stream completion proof", () =
       publishedAt: "2026-07-01T00:00:00Z",
       liveBroadcastContent: "none",
     },
-    contentDetails: { duration: "PT1H30M" },
-    status: { uploadStatus: "processed" },
+    contentDetails: {duration: "PT1H30M"},
+    status: {uploadStatus: "processed"},
     liveStreamingDetails: {
       scheduledStartTime: "2026-07-05T18:30:00-05:00",
       actualEndTime: "2026-07-06T01:00:00Z",
@@ -253,9 +253,9 @@ test("ordinary processed uploads use publication time", () => {
   assert.deepEqual(resolveVideoState({
     videoId: "abc123",
     fetchedAt: "2026-07-08T00:00:00.000Z",
-    snippet: { publishedAt: "2026-07-05T18:30:00-05:00", liveBroadcastContent: "none" },
-    contentDetails: { duration: "PT12M34S" },
-    status: { uploadStatus: "processed" },
+    snippet: {publishedAt: "2026-07-05T18:30:00-05:00", liveBroadcastContent: "none"},
+    contentDetails: {duration: "PT12M34S"},
+    status: {uploadStatus: "processed"},
   }), {
     state: "ready",
     videoKind: "upload",

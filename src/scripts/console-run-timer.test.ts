@@ -13,10 +13,10 @@ test("times one named logical stage with stable start and completion messages", 
   const times = [1_000, 2_234];
   const messages: string[] = [];
   const result = await measureRunStage(
-    "rendered HTML snapshot",
-    async () => 42,
-    () => times.shift() ?? 0,
-    (message) => messages.push(message),
+      "rendered HTML snapshot",
+      async () => 42,
+      () => times.shift() ?? 0,
+      (message) => messages.push(message),
   );
   assert.equal(result, 42);
   assert.deepEqual(messages, [

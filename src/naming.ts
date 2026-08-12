@@ -21,13 +21,13 @@ export function videoFileStem(videoId: string, title?: string, timestamp?: strin
 
 export function slugifyVideoTitle(title: string, maxLength = maxDefaultSlugLength): string | undefined {
   const slug = title
-    .normalize("NFKD")
-    .replace(/[\u0300-\u036f]/gu, "")
-    .replace(/&/gu, " and ")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/gu, "-")
-    .replace(/^-+|-+$/gu, "")
-    .replace(/-{2,}/gu, "-");
+      .normalize("NFKD")
+      .replace(/[\u0300-\u036f]/gu, "")
+      .replace(/&/gu, " and ")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/gu, "-")
+      .replace(/^-+|-+$/gu, "")
+      .replace(/-{2,}/gu, "-");
 
   const trimmed = slug.slice(0, maxLength).replace(/-+$/gu, "");
   return trimmed || undefined;

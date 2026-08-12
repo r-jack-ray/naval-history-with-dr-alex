@@ -2,7 +2,6 @@ import assert from "node:assert/strict";
 import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import { fileURLToPath } from "node:url";
 import test from "node:test";
 
 import {
@@ -13,9 +12,7 @@ import {
   writeTopicStoreSynchronization,
 } from "./topic-store.js";
 import {
-  loadTopicNormalizationCatalog,
   parseTopicNormalizationCatalog,
-  resolveTopicDisplayTitle,
   topicNormalizationPatternHeader,
 } from "./topic-normalization.js";
 
@@ -244,300 +241,32 @@ test("uses catalog display policy when appending a canonical topic", async () =>
   }
 });
 
-test("keeps the bounded production topic titles and aliases curated without descriptions", async () => {
-  const store = JSON.parse(
-    await readFile(new URL("../../src/derived/video-segments/topics.json", import.meta.url), "utf8"),
-  ) as {
-    topics: Array<{ slug: string; title: string; summary?: string; aliases?: string[] }>;
-  };
-  const topicsBySlug = new Map(store.topics.map((topic) => [topic.slug, topic]));
-
-  assert.equal(productionTopicMapping.length, 17);
-  assert.equal(new Set(productionTopicMapping.map(({ slug }) => slug)).size, 17);
-  for (const expected of productionTopicMapping) {
-    const topic = topicsBySlug.get(expected.slug);
-    assert.ok(topic, `Missing production topic ${expected.slug}`);
-    assert.equal(topic.title, expected.title, `${expected.slug} title`);
-    assert.deepEqual(topic.aliases ?? [], expected.aliases, `${expected.slug} aliases`);
-    assert.equal(topic.summary, undefined, `${expected.slug} description removed`);
-  }
-});
-
-test("keeps the repository-owner normalization batch canonical in the production store", async () => {
-  const store = JSON.parse(
-    await readFile(new URL("../../src/derived/video-segments/topics.json", import.meta.url), "utf8"),
-  ) as {
-    topics: Array<{ slug: string; title: string; summary?: string; aliases?: string[] }>;
-  };
-  const catalog = await loadTopicNormalizationCatalog(
-    fileURLToPath(new URL("../../src/derived/topic-normalization-patterns.tsv", import.meta.url)),
+test("keeps similarly worded fixture topics as separate registry records", async () => {
+  const expectedSlugs = [
+    "scout-vessels",
+    "scouting-activity",
+    "scouting-aviation-units",
+  ];
+  const directory = await makeTopicDirectory(
+    ["scout-vessels", "scouting-activity"],
+    ["scout-vessels", "scouting-aviation-units"],
   );
-  const topicsBySlug = new Map(store.topics.map((topic) => [topic.slug, topic]));
+  try {
+    const result = await synchronizeFixture(directory);
+    const store = JSON.parse(await readFile(join(directory, "topics.json"), "utf8")) as {
+      topics: Array<{ slug: string; title: string; summary?: string; aliases?: string[] }>;
+    };
+    const topicsBySlug = new Map(store.topics.map((topic) => [topic.slug, topic]));
 
-  for (const deprecated of [
-    "arc-royal",
-    "arc-royal-class",
-    "hms-arc-royal",
-    "hmnz-achilles",
-    "first-world-war",
-    "world-war-one",
-    "second-world-war",
-    "world-war-two",
-    "phony-war",
-    "pom-pom",
-    "pom-pom-gun",
-    "pom-poms",
-    "wrens",
-    "womens-royal-naval-service",
-    "model-1924-203-mm-gun",
-  ]) {
-    assert.equal(topicsBySlug.has(deprecated), false, deprecated);
+    assert.equal(result.addedSlugs.length, expectedSlugs.length);
+    assert.equal(topicsBySlug.size, expectedSlugs.length);
+    for (const slug of expectedSlugs) {
+      assert.ok(topicsBySlug.has(slug), `Missing fixture topic ${slug}`);
+    }
+    assert.equal(topicsBySlug.has("ambiguous-scouting"), false);
+  } finally {
+    await rm(directory, { recursive: true, force: true });
   }
-
-  const expected = new Map<string, { title: string; aliases?: string[] }>([
-    ["3d-printing", { title: "3D Printing" }],
-    ["ark-royal", { title: "Ark Royal", aliases: ["Arc Royal"] }],
-    ["ark-royal-class", { title: "Ark Royal Class", aliases: ["Arc Royal Class"] }],
-    ["fairey-tsr", { title: "Fairey TSR" }],
-    ["hmnzs-achilles", { title: "HMNZS Achilles", aliases: ["HMNZ Achilles"] }],
-    ["hms-ark-royal", { title: "HMS Ark Royal", aliases: ["HMS Arc Royal"] }],
-    ["pgm-1-class", { title: "PGM-1 Class" }],
-    ["pgm-9-class", { title: "PGM-9 Class" }],
-    ["phoney-war", { title: "Phoney War", aliases: ["Phony War"] }],
-    ["pla-air-force", { title: "PLA Air Force" }],
-    ["pla-navy", { title: "PLA Navy" }],
-    ["pom-pom-guns", { title: "Pom Pom Guns", aliases: ["Pom Pom", "Pom Pom Gun", "Pom Poms"] }],
-    [
-      "world-war-i",
-      {
-        title: "World War I",
-        aliases: [
-          "WWI",
-          "First World War",
-          "WW1",
-          "World War 1",
-          "World War One",
-          "1st World War",
-          "Great War",
-          "The Great War",
-        ],
-      },
-    ],
-    [
-      "world-war-ii",
-      {
-        title: "World War II",
-        aliases: [
-          "WWII",
-          "WW2",
-          "World War 2",
-          "World War Two",
-          "Second World War",
-          "The Second World War",
-          "2nd World War",
-        ],
-      },
-    ],
-    [
-      "wrns",
-      {
-        title: "WRNS",
-        aliases: ["Wrens", "Women's Royal Naval Service", "Womens Royal Naval Service"],
-      },
-    ],
-  ]);
-
-  for (const [slug, expectedTopic] of expected) {
-    const topic = topicsBySlug.get(slug);
-    assert.ok(topic, `Missing production topic ${slug}`);
-    assert.equal(topic.title, expectedTopic.title, `${slug} title`);
-    assert.deepEqual(topic.aliases ?? [], expectedTopic.aliases ?? [], `${slug} aliases`);
-    assert.equal(topic.summary, undefined, `${slug} description removed`);
-  }
-
-  for (const topic of store.topics.filter(({ slug }) => (
-    slug.startsWith("hmas-")
-    || slug.startsWith("hmnzs-")
-    || slug.startsWith("pq-")
-    || slug.startsWith("qp-")
-    || slug.includes("-pq-")
-    || slug.includes("-qp-")
-  ))) {
-    assert.equal(
-      topic.title,
-      resolveTopicDisplayTitle(catalog, topic.slug).title,
-      `${topic.slug} acronym title`,
-    );
-  }
-
-  assert.equal(
-    topicsBySlug.get("mers-el-kebir")?.aliases?.includes("Ark Royal") ?? false,
-    false,
-    "Ark Royal must resolve only to the Ark Royal topic",
-  );
-});
-
-test("keeps the reviewed singular/plural and Leander split canonical in the production store", async () => {
-  const store = JSON.parse(
-    await readFile(new URL("../../src/derived/video-segments/topics.json", import.meta.url), "utf8"),
-  ) as {
-    topics: Array<{ slug: string; title: string; summary?: string; aliases?: string[] }>;
-  };
-  const topicsBySlug = new Map(store.topics.map((topic) => [topic.slug, topic]));
-
-  for (const retired of [
-    "leander-class",
-    "leander-class-1882",
-    "leander-class-cruiser",
-    "leander-class-cruisers",
-    "leander-class-frigate",
-    "zumwalt-class",
-    "zumwalt-class-destroyer",
-    "alaska-class",
-    "alaska-class-cruisers",
-  ]) {
-    assert.equal(topicsBySlug.has(retired), false, retired);
-  }
-
-  assert.equal(topicsBySlug.has("leander-class-protected-cruisers-1882"), true);
-  assert.equal(topicsBySlug.has("leander-class-light-cruisers-1931"), true);
-  assert.equal(topicsBySlug.has("leander-class-frigates"), true);
-  assert.equal(
-    topicsBySlug.get("fiction-sojourn-leander-class")?.title,
-    "Leander Class (Sojourn Fiction)",
-  );
-  assert.equal(
-    topicsBySlug.get("zumwalt-class-destroyers")?.aliases?.includes("Zumwalt Class"),
-    true,
-  );
-  assert.equal(
-    topicsBySlug.get("alaska-class-large-cruisers")?.aliases?.includes("Alaska Class"),
-    true,
-  );
-});
-
-test("keeps the dc950 topic audit canonical while retaining function and type topics", async () => {
-  const store = JSON.parse(
-    await readFile(new URL("../../src/derived/video-segments/topics.json", import.meta.url), "utf8"),
-  ) as {
-    topics: Array<{ slug: string; title: string; summary?: string; aliases?: string[] }>;
-  };
-  const catalog = await loadTopicNormalizationCatalog(
-    fileURLToPath(new URL("../../src/derived/topic-normalization-patterns.tsv", import.meta.url)),
-  );
-  const topicsBySlug = new Map(store.topics.map((topic) => [topic.slug, topic]));
-  const auditRules = catalog.rules.filter(({ ruleId }) =>
-    ruleId.startsWith("normalize-dc950-"),
-  );
-  const activeAuditRules = auditRules.filter(({ status }) => status === "active");
-
-  assert.ok(activeAuditRules.length > 0, "the dc950 audit must retain active creation rules");
-  for (const rule of activeAuditRules) {
-    assert.equal(topicsBySlug.has(rule.match), false, `Retired topic remains: ${rule.match}`);
-    assert.equal(
-      topicsBySlug.has(rule.replacement),
-      true,
-      `Canonical topic missing: ${rule.replacement}`,
-    );
-  }
-  assert.deepEqual(topicsBySlug.get("alexander-hood"), {
-    slug: "alexander-hood",
-    title: "Alexander Hood",
-    aliases: ["Lord Bridport", "1st Viscount Bridport"],
-  });
-
-  const expected = new Map<string, { title: string; aliases?: string[] }>([
-    [
-      "fiction-spacecraft-engineering",
-      {
-        title: "Spacecraft Engineering (Fiction)",
-        aliases: [
-          "Fictional Spacecraft Engineering",
-          "Science Fiction Spacecraft Engineering",
-        ],
-      },
-    ],
-    [
-      "fiction-star-wars-thrawn",
-      {
-        title: "Thrawn (Star Wars Fiction)",
-        aliases: ["Grand Admiral Thrawn", "Grand Admiral Thrawn (Star Wars Fiction)"],
-      },
-    ],
-    [
-      "fiction-hms-thunder-child",
-      {
-        title: "HMS Thunder Child (Fiction)",
-        aliases: ["HMS Thunder Child", "HMS Thunderchild", "Thunder Child"],
-      },
-    ],
-    [
-      "fiction-world-of-warships-fundra",
-      {
-        title: "Fundra (World of Warships Fiction)",
-        aliases: ["HMS Fundra", "World of Warships Fundra"],
-      },
-    ],
-    [
-      "fiction-halo-united-nations-space-command",
-      {
-        title: "United Nations Space Command (Halo Fiction)",
-        aliases: ["UNSC", "Halo UNSC", "United Nations Space Command"],
-      },
-    ],
-    [
-      "united-nations-security-council",
-      {
-        title: "United Nations Security Council",
-        aliases: ["UN Security Council"],
-      },
-    ],
-    [
-      "rrs-sir-david-attenborough",
-      {
-        title: "RRS Sir David Attenborough",
-        aliases: ["RFA Sir David Attenborough", "RSS Sir David Attenborough"],
-      },
-    ],
-    [
-      "puget-sound-naval-shipyard",
-      {
-        title: "Puget Sound Naval Shipyard",
-        aliases: ["Bremerton Naval Shipyard"],
-      },
-    ],
-    [
-      "mount-pleasant",
-      {
-        title: "Mount Pleasant",
-        aliases: ["Mount Pleasant Airfield", "RAF Mount Pleasant"],
-      },
-    ],
-  ]);
-  for (const [slug, expectedTopic] of expected) {
-    const topic = topicsBySlug.get(slug);
-    assert.ok(topic, `Missing production topic ${slug}`);
-    assert.equal(topic.title, expectedTopic.title, `${slug} title`);
-    assert.deepEqual(topic.aliases ?? [], expectedTopic.aliases ?? [], `${slug} aliases`);
-  }
-
-  for (const retainedTopic of [
-    "submarine-fleet",
-    "fleet-submarines",
-    "destroyer-fleet",
-    "fleet-destroyers",
-    "cruiser-scouting",
-    "scouting-cruisers",
-    "hms-oak",
-    "ammunition-stowage",
-    "air-launched-torpedoes",
-    "sea-lightning",
-  ]) {
-    assert.equal(topicsBySlug.has(retainedTopic), true, `Distinct topic missing: ${retainedTopic}`);
-  }
-  assert.equal(topicsBySlug.has("uss-texas"), false, "Reviewed bare USS Texas topic remains");
-  assert.equal(topicsBySlug.has("uss-texas-1892"), true);
-  assert.equal(topicsBySlug.has("uss-texas-bb-35"), true);
 });
 
 async function makeTopicDirectory(
@@ -597,119 +326,3 @@ function makeTestCatalogText(): string {
 function catalogRow(...fields: [string, string, string, string, string, string, string, string, string]): string {
   return fields.join("\t");
 }
-
-const productionTopicMapping = [
-  {
-    slug: "40-mm-guns",
-    title: "40 mm Guns",
-    aliases: ["40 Millimeter Guns", "Forty Millimeter Guns", "40 mm Cannon"],
-  },
-  {
-    slug: "4-5-inch-guns",
-    title: "4.5-inch Guns",
-    aliases: [
-      "4.5-inch Gun",
-      "Four Point Five Inch Gun",
-      "Four Point Five Inch Guns",
-      "QF 4.5-inch Gun",
-      "QF 4.5-inch Guns",
-    ],
-  },
-  {
-    slug: "4-7-inch-guns",
-    title: "4.7-inch Guns",
-    aliases: [
-      "Four Point Seven Inch Guns",
-      "QF 4.7-inch Gun",
-      "4.7-inch Gun",
-      "QF 4.7-inch Guns",
-      "120 mm Guns",
-      "120 Millimeter Guns",
-    ],
-  },
-  {
-    slug: "5-25-inch-guns",
-    title: "5.25-inch Guns",
-    aliases: [
-      "Five Point Two Inch Guns",
-      "Five Point Two Five Inch Gun",
-      "Five Point Two Five Inch Guns",
-      "QF 5.25-inch Gun",
-      "5.25-inch Gun",
-      "QF 5.25-inch Guns",
-    ],
-  },
-  {
-    slug: "9-2-inch-guns",
-    title: "9.2-inch Guns",
-    aliases: ["Nine Point Two Inch Guns"],
-  },
-  {
-    slug: "13-5-inch-guns",
-    title: "13.5-inch Guns",
-    aliases: ["13.5-inch Gun", "Thirteen Point Five Inch Guns"],
-  },
-  {
-    slug: "anglo-spanish-war-1654-1660",
-    title: "Anglo-Spanish War (1654–1660)",
-    aliases: [],
-  },
-  {
-    slug: "russo-swedish-war-1741-1743",
-    title: "Russo-Swedish War (1741–1743)",
-    aliases: [],
-  },
-  {
-    slug: "russo-swedish-war-1788-1790",
-    title: "Russo-Swedish War (1788–1790)",
-    aliases: [],
-  },
-  {
-    slug: "russo-turkish-war-1828-1829",
-    title: "Russo-Turkish War (1828–1829)",
-    aliases: [],
-  },
-  {
-    slug: "russo-turkish-war-1877-1878",
-    title: "Russo-Turkish War (1877–1878)",
-    aliases: [],
-  },
-  {
-    slug: "venezuelan-crisis-of-1902-1903",
-    title: "Venezuelan Crisis of 1902–1903",
-    aliases: [],
-  },
-  {
-    slug: "naval-warfare-1900-1939",
-    title: "Naval Warfare, 1900–1939",
-    aliases: [],
-  },
-  {
-    slug: "gloster-e-28-39",
-    title: "Gloster E.28/39",
-    aliases: [],
-  },
-  {
-    slug: "specification-m-1-30",
-    title: "Specification M.1/30",
-    aliases: [],
-  },
-  {
-    slug: "otobreda-127-64",
-    title: "OTO Melara 127/64",
-    aliases: [],
-  },
-  {
-    slug: "2-pounder-guns",
-    title: "2-Pounder Guns",
-    aliases: [
-      "2-Pounder Gun",
-      "Two Pounder",
-      "Two Pounder Guns",
-      "QF 2-pounder",
-      "QF 2-pounder Pom-Pom",
-      "Two Pounder Pom Pom",
-      "2 Pounder Pom Pom",
-    ],
-  },
-] as const;

@@ -3,12 +3,7 @@ import test from "node:test";
 import type { TopicNormalizationRule } from "../site/topic-normalization.js";
 
 import type { CuratedArchiveSeed } from "./curated-archive-model.js";
-import {
-  buildVideoTopicNameAnalysisPartition,
-  collectVideoTopicNameDefinitions,
-  renderVideoTopicUsageReport,
-  videoTopicUsageReportHeaders,
-} from "./video-topic-usage-report.js";
+import { buildVideoTopicNameAnalysisPartition, collectVideoTopicNameDefinitions, renderVideoTopicUsageReport, videoTopicUsageReportHeaders, } from "./video-topic-usage-report.js";
 
 test("topic usage TSV uses spaced headers and counts unique videos across both topic levels", () => {
   const seed: CuratedArchiveSeed = {

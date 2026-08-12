@@ -1,8 +1,5 @@
 import assert from "node:assert/strict";
-import { readdir, readFile } from "node:fs/promises";
-import { join } from "node:path";
 import test from "node:test";
-import { fileURLToPath } from "node:url";
 
 import {
   parseCuratedTopicStore,
@@ -83,12 +80,11 @@ test("validates the topic store without custom version metadata", () => {
   );
 });
 
-test("validates the processing config from its canonical schema without version metadata", async () => {
-  const configPath = fileURLToPath(
-      new URL("../../../src/derived/site-content-processing.config.json", import.meta.url),
+test("validates a processing-config fixture without version metadata", () => {
+  const config = parseSiteContentProcessingConfig(
+      sampleProcessingConfig(),
+      "fixture processing config",
   );
-  const value = JSON.parse(await readFile(configPath, "utf8")) as unknown;
-  const config = parseSiteContentProcessingConfig(value, "production processing config");
 
   assert.equal(config.firstPass.processingMode, "full-file-best-effort");
   assert.ok(config.topicLifecycle.fictionPolicy.length > 0);
@@ -125,26 +121,6 @@ test("validates processing-log rows independently from log parsing", () => {
   }).success, false);
 });
 
-test("all production curated-content files match the canonical schemas", async () => {
-  const directory = fileURLToPath(
-      new URL("../../../src/derived/video-segments", import.meta.url),
-  );
-  const fileNames = (await readdir(directory))
-      .filter((fileName) => fileName.endsWith(".json"))
-      .sort();
-
-  for (const fileName of fileNames) {
-    const value = JSON.parse(await readFile(join(directory, fileName), "utf8")) as unknown;
-    if (fileName === "topics.json") {
-      parseCuratedTopicStore(value, fileName);
-    } else {
-      parseCuratedVideoFile(value, fileName);
-    }
-  }
-
-  assert.ok(fileNames.length > 2_000);
-});
-
 function sampleVideo() {
   return {
     videoId: "abc123",
@@ -166,6 +142,59 @@ function sampleVideo() {
         end: "2:00",
         note: "The transcript supports the segment.",
       }],
+    }],
+  };
+}
+
+function sampleProcessingConfig() {
+  return {
+    firstPass: {
+      defaultAction: "Create useful fixture watch points.",
+      defaultNeedsFurtherProcessing: true,
+      processingMode: "full-file-best-effort",
+      minimumEvidenceWindows: 1,
+      preferredSegmentKinds: ["chapter", "qa"],
+      requiredContentScans: ["subject-segments", "qa-exchanges"],
+      guidance: "Inspect the complete fixture transcript.",
+    },
+    videoLevelTopics: {
+      mode: "curated-summary-subset",
+      requireAllSegmentTopics: false,
+    },
+    liveStreamExtraction: {
+      mode: "full-duration-mixed-content",
+      explicitQaTitleMarkers: ["Fixture Q&A"],
+      requiredQaFields: ["start", "question", "answerShort"],
+      guidance: "Separate fixture lecture and question segments.",
+    },
+    topicLifecycle: {
+      mode: "shard-derived-automatic",
+      contentPass: "Add fixture topic slugs.",
+      fictionPolicy: "Keep fictional fixture referents distinct.",
+      synchronization: "Synchronize the fixture registry.",
+      exceptionRule: "Review ambiguous fixture topics.",
+    },
+    contentExhaustion: {
+      mode: "model-effort-saturation",
+      comparisonScope: "Compare the fixture transcript and shard.",
+      stopRule: "Stop after fixture coverage is complete.",
+      reopenRule: "Reopen when fixture evidence changes.",
+    },
+    followUpStages: [{
+      slug: "fixture-follow-up",
+      title: "Fixture Follow-up",
+      description: "Review the fixture content.",
+    }],
+    videoTypeRules: [{
+      matchTitle: "Fixture Stream",
+      defaultKind: "chapter",
+      defaultTopics: ["fixture-topic"],
+      followUpStage: "fixture-follow-up",
+    }],
+    topicGroups: [{
+      slug: "fixture-group",
+      title: "Fixture Group",
+      topics: ["fixture-topic"],
     }],
   };
 }

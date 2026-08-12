@@ -1,5 +1,5 @@
-import { dirname } from "node:path";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { dirname } from "node:path";
 
 import {
   createYoutubeDataApiClient,
@@ -83,35 +83,35 @@ export interface VideoNamingMetadata {
 export type VideoDateKind = "actual_start" | "scheduled_start" | "published";
 export type VideoKind = "upload" | "stream";
 export type VideoReadinessReason =
-  | "upcoming"
-  | "live_in_progress"
-  | "processing"
-  | "metadata_missing"
-  | "invalid_metadata";
+    | "upcoming"
+    | "live_in_progress"
+    | "processing"
+    | "metadata_missing"
+    | "invalid_metadata";
 
 export const maxBlockedTranscriptDurationSeconds = 61;
 export const defaultDeferredMetadataRetryDelayMs = 24 * 60 * 60 * 1_000;
 
 export type VideoStateResult =
-  | {
-      state: "ready";
-      videoKind: VideoKind;
-      videoDateAt: string;
-      videoDateKind: VideoDateKind;
-      durationSeconds: number;
-    }
-  | {
-      state: "deferred";
-      videoKind: VideoKind;
-      reason: VideoReadinessReason;
-      diagnostic: string;
-    }
-  | {
-      state: "invalid";
-      videoKind: VideoKind;
-      reason: VideoReadinessReason;
-      diagnostic: string;
-    };
+    | {
+  state: "ready";
+  videoKind: VideoKind;
+  videoDateAt: string;
+  videoDateKind: VideoDateKind;
+  durationSeconds: number;
+}
+    | {
+  state: "deferred";
+  videoKind: VideoKind;
+  reason: VideoReadinessReason;
+  diagnostic: string;
+}
+    | {
+  state: "invalid";
+  videoKind: VideoKind;
+  reason: VideoReadinessReason;
+  diagnostic: string;
+};
 
 export function readVideoIdsFromEpisodeMaster(value: unknown): string[] {
   const object = asRecord(value);
@@ -138,18 +138,18 @@ export function mergeVideoIds(videoIds: readonly string[], additionalVideoIds: r
 }
 
 export function resolveAdditionalVideoIds(
-  inputVideoIds: readonly string[],
-  storedAdditionalVideoIds: readonly string[] = [],
-  requestedAdditionalVideoIds: readonly string[] = [],
+    inputVideoIds: readonly string[],
+    storedAdditionalVideoIds: readonly string[] = [],
+    requestedAdditionalVideoIds: readonly string[] = [],
 ): string[] {
   const inputIds = new Set(inputVideoIds);
   return mergeVideoIds(storedAdditionalVideoIds, requestedAdditionalVideoIds)
-    .filter((videoId) => !inputIds.has(videoId));
+      .filter((videoId) => !inputIds.has(videoId));
 }
 
 export async function findVideoMetadataRecord(
-  videoId: string,
-  path = defaultVideoMetadataOutput,
+    videoId: string,
+    path = defaultVideoMetadataOutput,
 ): Promise<VideoMetadataRecord | undefined> {
   const store = await readVideoMetadataStore(path);
   return store?.videos.find((record) => record.videoId === videoId);
@@ -183,7 +183,7 @@ export function videoNamingMetadata(record: VideoMetadataRecord | undefined): Vi
 /** @deprecated Use resolveVideoState so completion and processing are checked together. */
 export function isPublishedButUnstarted(record: VideoMetadataRecord | undefined): boolean {
   return record?.liveStreamingDetails?.scheduledStartTime != null &&
-    record.liveStreamingDetails.actualStartTime == null;
+      record.liveStreamingDetails.actualStartTime == null;
 }
 
 export function resolveVideoState(record: VideoMetadataRecord | undefined): VideoStateResult {
@@ -192,10 +192,10 @@ export function resolveVideoState(record: VideoMetadataRecord | undefined): Vide
   }
 
   const videoKind: VideoKind = record.liveStreamingDetails !== undefined ||
-    record.snippet?.liveBroadcastContent === "upcoming" ||
-    record.snippet?.liveBroadcastContent === "live"
-    ? "stream"
-    : "upload";
+  record.snippet?.liveBroadcastContent === "upcoming" ||
+  record.snippet?.liveBroadcastContent === "live"
+      ? "stream"
+      : "upload";
   const broadcastState = record.snippet?.liveBroadcastContent ?? undefined;
   if (broadcastState === "upcoming") {
     return deferredVideoState(videoKind, "upcoming", "The video is scheduled but has not started.");
@@ -210,20 +210,20 @@ export function resolveVideoState(record: VideoMetadataRecord | undefined): Vide
       return deferredVideoState(videoKind, "processing", "YouTube has not finished processing the video.");
     }
     return invalidVideoState(
-      videoKind,
-      uploadStatus === undefined ? "metadata_missing" : "invalid_metadata",
-      uploadStatus === undefined
-        ? "Video metadata is missing status.uploadStatus."
-        : `YouTube upload status is ${uploadStatus}, not processed.`,
+        videoKind,
+        uploadStatus === undefined ? "metadata_missing" : "invalid_metadata",
+        uploadStatus === undefined
+            ? "Video metadata is missing status.uploadStatus."
+            : `YouTube upload status is ${uploadStatus}, not processed.`,
     );
   }
 
   const durationSeconds = parseYoutubeDurationSeconds(record.contentDetails?.duration ?? undefined);
   if (durationSeconds === undefined || durationSeconds <= 0) {
     return invalidVideoState(
-      videoKind,
-      "invalid_metadata",
-      `Processed video has an invalid or non-positive duration: ${record.contentDetails?.duration ?? "missing"}.`,
+        videoKind,
+        "invalid_metadata",
+        `Processed video has an invalid or non-positive duration: ${record.contentDetails?.duration ?? "missing"}.`,
     );
   }
 
@@ -232,7 +232,7 @@ export function resolveVideoState(record: VideoMetadataRecord | undefined): Vide
   const actualEndTime = canonicalVideoTimestamp(record.liveStreamingDetails?.actualEndTime ?? undefined);
   const publishedAt = canonicalVideoTimestamp(record.snippet?.publishedAt ?? undefined);
   const malformedTimestamp = [actualStartTime, scheduledStartTime, actualEndTime, publishedAt]
-    .find((value) => value === null);
+      .find((value) => value === null);
   if (malformedTimestamp === null) {
     return invalidVideoState(videoKind, "invalid_metadata", "Video metadata contains a malformed timestamp.");
   }
@@ -240,15 +240,15 @@ export function resolveVideoState(record: VideoMetadataRecord | undefined): Vide
   if (videoKind === "stream") {
     if (actualEndTime === undefined) {
       return deferredVideoState(
-        videoKind,
-        "live_in_progress",
-        "Livestream metadata does not yet prove completion with actualEndTime.",
+          videoKind,
+          "live_in_progress",
+          "Livestream metadata does not yet prove completion with actualEndTime.",
       );
     }
     if (
-      typeof actualStartTime === "string" &&
-      typeof actualEndTime === "string" &&
-      Date.parse(actualEndTime) < Date.parse(actualStartTime)
+        typeof actualStartTime === "string" &&
+        typeof actualEndTime === "string" &&
+        Date.parse(actualEndTime) < Date.parse(actualStartTime)
     ) {
       return invalidVideoState(videoKind, "invalid_metadata", "Livestream actualEndTime precedes actualStartTime.");
     }
@@ -274,15 +274,15 @@ export function resolveVideoState(record: VideoMetadataRecord | undefined): Vide
 }
 
 export function resolveVideoFetchState(
-  record: VideoMetadataRecord | undefined,
-  metadataLookupEnabled: boolean,
+    record: VideoMetadataRecord | undefined,
+    metadataLookupEnabled: boolean,
 ): VideoStateResult | undefined {
   return metadataLookupEnabled ? resolveVideoState(record) : undefined;
 }
 
 export function deferredMetadataRetryAt(
-  record: VideoMetadataRecord,
-  retryDelayMs = defaultDeferredMetadataRetryDelayMs,
+    record: VideoMetadataRecord,
+    retryDelayMs = defaultDeferredMetadataRetryDelayMs,
 ): string | undefined {
   if (resolveVideoState(record).state !== "deferred") {
     return undefined;
@@ -363,24 +363,24 @@ export function isBlockedTranscriptDuration(durationSeconds: number | undefined)
   // container rounding or padding. Keep the tolerance narrow so eligibility
   // begins at 62 seconds.
   return durationSeconds !== undefined &&
-    durationSeconds > 0 &&
-    durationSeconds <= maxBlockedTranscriptDurationSeconds;
+      durationSeconds > 0 &&
+      durationSeconds <= maxBlockedTranscriptDurationSeconds;
 }
 
 function deferredVideoState(
-  videoKind: VideoKind,
-  reason: VideoReadinessReason,
-  diagnostic: string,
+    videoKind: VideoKind,
+    reason: VideoReadinessReason,
+    diagnostic: string,
 ): VideoStateResult {
-  return { state: "deferred", videoKind, reason, diagnostic };
+  return {state: "deferred", videoKind, reason, diagnostic};
 }
 
 function invalidVideoState(
-  videoKind: VideoKind,
-  reason: VideoReadinessReason,
-  diagnostic: string,
+    videoKind: VideoKind,
+    reason: VideoReadinessReason,
+    diagnostic: string,
 ): VideoStateResult {
-  return { state: "invalid", videoKind, reason, diagnostic };
+  return {state: "invalid", videoKind, reason, diagnostic};
 }
 
 export async function fetchAndStoreVideoMetadata(options: FetchVideoMetadataOptions): Promise<VideoMetadataStore> {
@@ -395,13 +395,13 @@ export async function fetchAndStoreVideoMetadata(options: FetchVideoMetadataOpti
   const discoveredInputVideoIds = readVideoIdsFromEpisodeMaster(input);
   const inputVideoIds = discoveredInputVideoIds.filter((videoId) => !ignoredVideoIds.has(videoId));
   const additionalVideoIds = resolveAdditionalVideoIds(
-    inputVideoIds,
-    existing?.source.additionalVideoIds,
-    options.additionalVideoIds,
+      inputVideoIds,
+      existing?.source.additionalVideoIds,
+      options.additionalVideoIds,
   ).filter((videoId) => !ignoredVideoIds.has(videoId));
   const videoIds = mergeVideoIds(inputVideoIds, additionalVideoIds);
   const ignoredCount = discoveredInputVideoIds.length - inputVideoIds.length +
-    (options.additionalVideoIds?.filter((videoId) => ignoredVideoIds.has(videoId)).length ?? 0);
+      (options.additionalVideoIds?.filter((videoId) => ignoredVideoIds.has(videoId)).length ?? 0);
   if (ignoredCount > 0) {
     options.logger?.(`Excluded ${ignoredCount} video ID(s) from metadata using the channel-wide ignore list.`);
   }
@@ -409,27 +409,27 @@ export async function fetchAndStoreVideoMetadata(options: FetchVideoMetadataOpti
   const targetIds = selectVideoMetadataTargetIds({
     videoIds,
     recordsById,
-    ...(options.clock !== undefined ? { now: options.clock() } : {}),
-    ...(options.refreshVideoIds !== undefined ? { refreshVideoIds: options.refreshVideoIds } : {}),
-    ...(options.force !== undefined ? { force: options.force } : {}),
+    ...(options.clock !== undefined ? {now: options.clock()} : {}),
+    ...(options.refreshVideoIds !== undefined ? {refreshVideoIds: options.refreshVideoIds} : {}),
+    ...(options.force !== undefined ? {force: options.force} : {}),
   });
   const pendingIds = options.limit === undefined ? targetIds : targetIds.slice(0, options.limit);
   const youtube = options.apiClient ?? createYoutubeDataApiClient({
     apiKey,
     requestDelayMs: options.requestDelayMs,
-    ...(options.logger !== undefined ? { logger: options.logger } : {}),
+    ...(options.logger !== undefined ? {logger: options.logger} : {}),
   });
   let batchesFetched = 0;
 
   for (let index = 0; index < pendingIds.length; index += options.batchSize) {
     const batch = pendingIds.slice(index, index + options.batchSize);
     const response = await youtube.listVideos(
-      {
-        part: [...defaultVideoMetadataParts],
-        id: batch,
-        maxResults: batch.length,
-      },
-      `videos.list full metadata ${index + 1}-${index + batch.length}/${pendingIds.length}`,
+        {
+          part: [...defaultVideoMetadataParts],
+          id: batch,
+          maxResults: batch.length,
+        },
+        `videos.list full metadata ${index + 1}-${index + batch.length}/${pendingIds.length}`,
     );
     const fetchedAt = (options.clock?.() ?? new Date()).toISOString();
     batchesFetched += 1;
@@ -449,7 +449,7 @@ export async function fetchAndStoreVideoMetadata(options: FetchVideoMetadataOpti
       recordsById,
       batchesFetched,
       generatedAt: (options.clock?.() ?? new Date()).toISOString(),
-      ...(additionalVideoIds.length > 0 ? { additionalVideoIds } : {}),
+      ...(additionalVideoIds.length > 0 ? {additionalVideoIds} : {}),
     }));
     options.logger?.(`Stored metadata for ${recordsById.size}/${videoIds.length} videos.`);
   }
@@ -462,7 +462,7 @@ export async function fetchAndStoreVideoMetadata(options: FetchVideoMetadataOpti
     recordsById,
     batchesFetched,
     generatedAt: (options.clock?.() ?? new Date()).toISOString(),
-    ...(additionalVideoIds.length > 0 ? { additionalVideoIds } : {}),
+    ...(additionalVideoIds.length > 0 ? {additionalVideoIds} : {}),
   });
   if (batchesFetched === 0) {
     await writeVideoMetadataStore(options.outputPath, store);
@@ -481,8 +481,8 @@ export function buildVideoMetadataStore(options: {
   additionalVideoIds?: string[];
 }): VideoMetadataStore {
   const videos = options.videoIds
-    .map((videoId) => options.recordsById.get(videoId))
-    .filter((record): record is VideoMetadataRecord => record !== undefined);
+      .map((videoId) => options.recordsById.get(videoId))
+      .filter((record): record is VideoMetadataRecord => record !== undefined);
   const pendingVideoIds = options.videoIds.filter((videoId) => !options.recordsById.has(videoId));
   const missingVideoIds = pendingVideoIds;
 
@@ -492,7 +492,7 @@ export function buildVideoMetadataStore(options: {
     source: {
       api: "youtube-data-api-v3",
       inputPath: options.inputPath,
-      ...(options.additionalVideoIds !== undefined ? { additionalVideoIds: options.additionalVideoIds } : {}),
+      ...(options.additionalVideoIds !== undefined ? {additionalVideoIds: options.additionalVideoIds} : {}),
       requestDelayMs: options.requestDelayMs,
       batchSize: options.batchSize,
       parts: [...defaultVideoMetadataParts],
@@ -522,13 +522,13 @@ async function readExistingStore(path: string): Promise<VideoMetadataStore | und
 }
 
 async function writeVideoMetadataStore(path: string, store: VideoMetadataStore): Promise<void> {
-  await mkdir(dirname(path), { recursive: true });
+  await mkdir(dirname(path), {recursive: true});
   await writeFile(path, `${JSON.stringify(store, null, 2)}\n`, "utf8");
 }
 
 function videoToMetadataRecord(
-  video: YoutubeVideo,
-  fetchedAt: string,
+    video: YoutubeVideo,
+    fetchedAt: string,
 ): VideoMetadataRecord | undefined {
   const videoId = video.id ?? undefined;
   if (videoId === undefined) {
@@ -572,6 +572,6 @@ function readString(object: Record<string, unknown> | undefined, key: string): s
 
 function asRecord(value: unknown): Record<string, unknown> | undefined {
   return value && typeof value === "object" && !Array.isArray(value)
-    ? value as Record<string, unknown>
-    : undefined;
+      ? value as Record<string, unknown>
+      : undefined;
 }

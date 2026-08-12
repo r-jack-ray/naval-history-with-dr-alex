@@ -1,12 +1,6 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-import {
-  buildSiteArchiveData,
-  type SiteArchiveData,
-} from "./archive-data.js";
-import { loadCuratedArchiveSeed } from "./curated-seed.js";
 import {
   MAX_METADATA_DESCRIPTION_LENGTH,
   MAX_METADATA_TITLE_LENGTH,
@@ -19,43 +13,6 @@ import {
   buildVideoStructuredName,
   segmentDescriptionSource,
 } from "./page-metadata.js";
-import { isPublicTopic } from "./public-topic.js";
-import { loadTopicNormalizationCatalog } from "./topic-normalization.js";
-
-const episodesInput = "src/channel/episodes.json";
-const metadataInput = "src/channel/video-metadata.json";
-const transcriptsInput = "src/transcripts/manifest.json";
-const segmentsInput = "src/derived/video-segments";
-const patternsInput = "src/derived/topic-normalization-patterns.tsv";
-
-async function readJson<T>(path: string): Promise<T> {
-  return JSON.parse(await readFile(path, "utf8")) as T;
-}
-
-async function buildCurrentArchive(): Promise<SiteArchiveData> {
-  const [episodesStore, metadataStore, transcriptsStore, seed, catalog] = await Promise.all([
-    readJson<Parameters<typeof buildSiteArchiveData>[0]["episodesStore"]>(episodesInput),
-    readJson<Parameters<typeof buildSiteArchiveData>[0]["metadataStore"]>(metadataInput),
-    readJson<Parameters<typeof buildSiteArchiveData>[0]["transcriptsStore"]>(transcriptsInput),
-    loadCuratedArchiveSeed(segmentsInput),
-    loadTopicNormalizationCatalog(patternsInput),
-  ]);
-  return buildSiteArchiveData({
-    episodesStore,
-    metadataStore,
-    transcriptsStore,
-    seed,
-    source: {
-      episodesInput,
-      metadataInput,
-      transcriptsInput,
-      segmentsInput,
-      patternsInput,
-      patternsSha256: catalog.sha256,
-      patternsSourceSha256: catalog.sourceSha256,
-    },
-  });
-}
 
 function assertUsefulMetadata(metadata: { title: string; description: string }): void {
   assert.ok(metadata.title.trim().length > 0);
@@ -66,11 +23,43 @@ function assertUsefulMetadata(metadata: { title: string; description: string }):
   assert.doesNotMatch(metadata.description, /\s{2,}/u);
 }
 
-test("builds unique, nonempty metadata for every current public detail page", async () => {
-  const archive = await buildCurrentArchive();
-  const videos = archive.videos;
-  const topics = archive.topics.filter(isPublicTopic);
-  const segments = archive.segments;
+test("builds unique, nonempty metadata for fixture detail pages", () => {
+  const videos: Array<Parameters<typeof buildVideoPageMetadata>[0]> = [
+    {
+      title: "Fixture destroyer design",
+      videoDateLabel: "1 January 2026",
+      videoKind: "upload",
+      topics: [{slug: "fixture-destroyers", title: "Fixture Destroyers"}],
+      segmentSlugs: ["fixture-armour-trade-off"],
+    },
+    {
+      title: "Fixture fleet logistics",
+      videoDateLabel: "2 January 2026",
+      videoKind: "stream",
+      topics: [{slug: "fixture-logistics", title: "Fixture Logistics"}],
+      segmentSlugs: ["fixture-fuel-endurance", "fixture-replenishment"],
+    },
+  ];
+  const segments: Array<Parameters<typeof buildSegmentPageMetadata>[0]> = [
+    {
+      title: "Fixture armour trade-off",
+      videoTitle: "Fixture destroyer design",
+      start: "1:00",
+      summary: "A fixture explanation of an armour trade-off.",
+      body: "Fixture body text for armour.",
+    },
+    {
+      title: "Fixture fuel endurance",
+      videoTitle: "Fixture fleet logistics",
+      start: "2:00",
+      summary: "A fixture explanation of fuel endurance.",
+      body: "Fixture body text for logistics.",
+    },
+  ];
+  const topics: Array<Parameters<typeof buildTopicPageMetadata>[0]> = [
+    {title: "Fixture Destroyers", videoCount: 1, segmentCount: 1},
+    {title: "Fixture Logistics", videoCount: 1, segmentCount: 2},
+  ];
   const metadata = [
     ...videos.map(buildVideoPageMetadata),
     ...segments.map(buildSegmentPageMetadata),

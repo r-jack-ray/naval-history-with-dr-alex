@@ -15,7 +15,7 @@ export interface IgnoredVideosConfig {
 }
 
 export async function readIgnoredVideos(
-  path = defaultIgnoredVideosInput,
+    path = defaultIgnoredVideosInput,
 ): Promise<ReadonlyMap<string, IgnoredVideoRecord>> {
   const value = JSON.parse(await readFile(path, "utf8")) as unknown;
   const config = parseIgnoredVideosConfig(value, path);
@@ -23,8 +23,8 @@ export async function readIgnoredVideos(
 }
 
 export function parseIgnoredVideosConfig(
-  value: unknown,
-  source = "ignored videos config",
+    value: unknown,
+    source = "ignored videos config",
 ): IgnoredVideosConfig {
   const object = asRecord(value);
   if (object?.schemaVersion !== 1 || !Array.isArray(object.ignoredVideos)) {
@@ -72,8 +72,8 @@ export function parseIgnoredVideosConfig(
 }
 
 export function omitIgnoredVideoIds(
-  videoIds: readonly string[],
-  ignoredVideoIds: ReadonlySet<string>,
+    videoIds: readonly string[],
+    ignoredVideoIds: ReadonlySet<string>,
 ): string[] {
   return videoIds.filter((videoId) => !ignoredVideoIds.has(videoId));
 }
@@ -85,6 +85,6 @@ function readString(object: Record<string, unknown> | undefined, key: string): s
 
 function asRecord(value: unknown): Record<string, unknown> | undefined {
   return typeof value === "object" && value !== null && !Array.isArray(value)
-    ? value as Record<string, unknown>
-    : undefined;
+      ? value as Record<string, unknown>
+      : undefined;
 }

@@ -19,10 +19,10 @@ export function printRunTime(startedAt: number): void {
 }
 
 export async function measureRunStage<T>(
-  label: string,
-  operation: () => Promise<T>,
-  now: () => number = Date.now,
-  log: (message: string) => void = console.log,
+    label: string,
+    operation: () => Promise<T>,
+    now: () => number = Date.now,
+    log: (message: string) => void = console.log,
 ): Promise<T> {
   const startedAt = now();
   log(`Stage Start: ${label}`);

@@ -1,12 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import {
-  formatTimestamp,
-  projectName,
-  segmentKinds,
-  youtubeTimestampUrl,
-} from "./index.js";
+import { formatTimestamp, projectName, segmentKinds, youtubeTimestampUrl, } from "./index.js";
 import { archiveTimestampPrefix, slugifyVideoTitle, videoFileStem } from "./naming.js";
 
 test("exports the project identity", () => {
@@ -29,8 +24,8 @@ test("formats timestamps for video labels", () => {
 
 test("builds direct YouTube timestamp links", () => {
   assert.equal(
-    youtubeTimestampUrl("abc123", 83),
-    "https://youtu.be/abc123?t=83",
+      youtubeTimestampUrl("abc123", 83),
+      "https://youtu.be/abc123?t=83",
   );
 });
 
@@ -38,8 +33,8 @@ test("builds readable video file stems", () => {
   assert.equal(slugifyVideoTitle("Ships & Strategy: A Test!"), "ships-and-strategy-a-test");
   assert.equal(archiveTimestampPrefix("2026-06-14T05:29:19-05:00"), "2026-06-14_T10-29-19");
   assert.equal(
-    videoFileStem("abc123", "Ships & Strategy: A Test!", "2026-06-14T05:29:19-05:00"),
-    "2026-06-14_T10-29-19_ships-and-strategy-a-test_abc123",
+      videoFileStem("abc123", "Ships & Strategy: A Test!", "2026-06-14T05:29:19-05:00"),
+      "2026-06-14_T10-29-19_ships-and-strategy-a-test_abc123",
   );
   assert.throws(() => archiveTimestampPrefix("2026-06-14 05:29:19"), /timezone-bearing/u);
 });

@@ -139,7 +139,7 @@ For follow-up quality passes, use `.agents/site-content-auditor.md` and `$naval-
 
 ## Testing Guidelines
 
-Use Node's built-in test runner with `*.test.ts` files. Validators should check timestamp labels and links, transcript sources, inventory references, search manifest integrity, generated site-data references, duplicate routes, topic references, curation backlog state, transcript evidence passages, and TXT coverage. Add search tests for ship names, battles, classes, operations, admirals, countries, dates, and abbreviations.
+Use Node's built-in test runner with `*.test.ts` files. Unit tests under `src/**/*.test.ts` use self-contained fixtures for channel records, transcript manifests, curated shards, topic registries, normalization catalogs, and generated archives. Keep current-corpus membership, counts, titles, aliases, and cross-file integrity in the dedicated source and production validators; never load canonical corpus files merely to pin their present contents in a unit test. Validators should check timestamp labels and links, transcript sources, inventory references, search manifest integrity, generated site-data references, duplicate routes, topic references, curation backlog state, transcript evidence passages, and TXT coverage. Add search tests for ship names, battles, classes, operations, admirals, countries, dates, and abbreviations.
 
 ## Commit & Pull Request Guidelines
 

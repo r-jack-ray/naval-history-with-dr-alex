@@ -1,14 +1,6 @@
 import { z } from "zod";
 
-import {
-  nonEmptyStringSchema,
-  parseSchema,
-  safeVideoIdSchema,
-  type SchemaValidationResult,
-  timestampLabelSchema,
-  topicSlugSchema,
-  validateSchema,
-} from "./shared.js";
+import { nonEmptyStringSchema, parseSchema, safeVideoIdSchema, type SchemaValidationResult, timestampLabelSchema, topicSlugSchema, validateSchema, } from "./shared.js";
 
 export const curatedSegmentEvidenceSchema = z.strictObject({
   start: timestampLabelSchema,

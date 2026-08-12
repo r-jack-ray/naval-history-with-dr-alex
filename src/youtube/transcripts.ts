@@ -1,14 +1,14 @@
-import { dirname, isAbsolute, join, relative, resolve } from "node:path";
 import { mkdir, readFile, rm, writeFile } from "node:fs/promises";
+import { dirname, isAbsolute, join, relative, resolve } from "node:path";
 import { setTimeout as sleep } from "node:timers/promises";
 
-import { fetchTranscript as fetchTranscriptPlus } from "youtube-transcript-plus";
 import type {
   FetchParams as TranscriptPlusFetchParams,
   TranscriptConfig as TranscriptPlusConfig,
   TranscriptResult as TranscriptPlusResult,
   TranscriptSegment as TranscriptPlusSegment,
 } from "youtube-transcript-plus";
+import { fetchTranscript as fetchTranscriptPlus } from "youtube-transcript-plus";
 
 import { formatTimestamp } from "../index.js";
 import { videoFileStem } from "../naming.js";
@@ -19,7 +19,7 @@ type FetchHeaders = NonNullable<NonNullable<Parameters<typeof fetch>[1]>["header
 type FetchResponseHeaders = Awaited<ReturnType<typeof fetch>>["headers"];
 
 const youtubeUserAgent =
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126 Safari/537.36";
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126 Safari/537.36";
 export const defaultTranscriptStorageRoot = "src/transcripts";
 
 export interface TranscriptSegment {
@@ -93,14 +93,14 @@ export interface FetchVideoTranscriptOptions {
 export async function fetchVideoTranscript(options: FetchVideoTranscriptOptions): Promise<VideoTranscript> {
   const limitedFetch = options.fetch ?? createRateLimitedFetch({
     delayMs: options.requestDelayMs,
-    ...(options.logger ? { logger: options.logger } : {}),
+    ...(options.logger ? {logger: options.logger} : {}),
   });
 
   try {
     return await fetchVideoTranscriptWithPlus(options, limitedFetch);
   } catch (error) {
     console.warn(
-      `youtube-transcript-plus failed: ${errorMessage(error)}. Trying watch-page caption fallback.`,
+        `youtube-transcript-plus failed: ${errorMessage(error)}. Trying watch-page caption fallback.`,
     );
   }
 
@@ -118,8 +118,8 @@ export async function fetchVideoTranscript(options: FetchVideoTranscriptOptions)
 }
 
 async function fetchVideoTranscriptWithPlus(
-  options: FetchVideoTranscriptOptions,
-  limitedFetch: typeof fetch,
+    options: FetchVideoTranscriptOptions,
+    limitedFetch: typeof fetch,
 ): Promise<VideoTranscript> {
   const config: TranscriptPlusConfig & { videoDetails: true } = {
     retries: 0,
@@ -141,8 +141,8 @@ async function fetchVideoTranscriptWithPlus(
 }
 
 function transcriptPlusResultToVideoTranscript(
-  videoId: string,
-  result: TranscriptPlusResult,
+    videoId: string,
+    result: TranscriptPlusResult,
 ): VideoTranscript {
   const segments: TranscriptPlusSegment[] = result.segments;
   if (segments.length === 0) {
@@ -161,8 +161,8 @@ function transcriptPlusResultToVideoTranscript(
     selectedLanguage: languages[0] ?? "unknown",
     availableLanguages: languages,
     segments: segments
-      .map((segment) => transcriptPlusSegmentToTranscriptSegment(segment))
-      .filter((segment): segment is TranscriptSegment => segment !== undefined),
+        .map((segment) => transcriptPlusSegmentToTranscriptSegment(segment))
+        .filter((segment): segment is TranscriptSegment => segment !== undefined),
   };
 }
 
@@ -187,9 +187,9 @@ function transcriptPlusSegmentToTranscriptSegment(segment: TranscriptPlusSegment
 }
 
 async function transcriptPlusFetch(
-  params: TranscriptPlusFetchParams,
-  limitedFetch: typeof fetch,
-  requestLabel: string,
+    params: TranscriptPlusFetchParams,
+    limitedFetch: typeof fetch,
+    requestLabel: string,
 ): Promise<Response> {
   const headers: Record<string, string> = {
     ...(params.headers ?? {}),
@@ -225,8 +225,8 @@ function errorMessage(error: unknown): string {
 
 function errorCode(error: unknown): string | undefined {
   return typeof error === "object" && error !== null && "code" in error
-    ? String((error as { code?: unknown }).code)
-    : undefined;
+      ? String((error as { code?: unknown }).code)
+      : undefined;
 }
 
 async function withTransientFileRetry<T>(operation: () => Promise<T>): Promise<T> {
@@ -258,8 +258,8 @@ export function extractJson3TranscriptSegments(value: unknown): TranscriptSegmen
   }
 
   return events
-    .map((event) => json3EventSegment(event))
-    .filter((segment): segment is TranscriptSegment => segment !== undefined);
+      .map((event) => json3EventSegment(event))
+      .filter((segment): segment is TranscriptSegment => segment !== undefined);
 }
 
 export function extractVttTranscriptSegments(value: string): TranscriptSegment[] {
@@ -316,16 +316,16 @@ export function extractTranscriptSegments(transcriptInfo: unknown): TranscriptSe
   }
 
   return segments
-    .map((segment) => segmentRecord(segment))
-    .filter((segment): segment is TranscriptSegment => segment !== undefined);
+      .map((segment) => segmentRecord(segment))
+      .filter((segment): segment is TranscriptSegment => segment !== undefined);
 }
 
 export async function writeTranscriptOutputs(
-  transcript: VideoTranscript,
-  outputs: {
-    txtOutput?: string;
-    tsvOutput?: string;
-  },
+    transcript: VideoTranscript,
+    outputs: {
+      txtOutput?: string;
+      tsvOutput?: string;
+    },
 ): Promise<void> {
   const writes: Promise<void>[] = [];
 
@@ -341,14 +341,14 @@ export async function writeTranscriptOutputs(
 }
 
 export async function writeTranscriptStorage(
-  transcript: VideoTranscript,
-  root = defaultTranscriptStorageRoot,
+    transcript: VideoTranscript,
+    root = defaultTranscriptStorageRoot,
 ): Promise<TranscriptStoragePaths> {
   const manifestOutput = join(root, "manifest.json");
   const manifest = await readTranscriptManifest(manifestOutput);
   const existingRecord = manifest.transcripts.find((record) => record.videoId === transcript.videoId);
   const stem = existingRecord?.fileStem ??
-    videoFileStem(transcript.videoId, transcript.videoTitle, transcript.videoDateAt);
+      videoFileStem(transcript.videoId, transcript.videoTitle, transcript.videoDateAt);
   const paths = transcriptStoragePathsFromStem(root, stem);
 
   await writeTranscriptOutputs(transcript, {
@@ -363,10 +363,10 @@ export async function writeTranscriptStorage(
 }
 
 export function transcriptStoragePaths(
-  videoId: string,
-  root = defaultTranscriptStorageRoot,
-  title?: string,
-  timestamp?: string,
+    videoId: string,
+    root = defaultTranscriptStorageRoot,
+    title?: string,
+    timestamp?: string,
 ): TranscriptStoragePaths {
   const stem = videoFileStem(videoId, title, timestamp);
   return transcriptStoragePathsFromStem(root, stem);
@@ -381,8 +381,8 @@ function transcriptStoragePathsFromStem(root: string, stem: string): TranscriptS
 }
 
 export function transcriptStoragePathsFromRecord(
-  record: TranscriptManifestRecord,
-  root = defaultTranscriptStorageRoot,
+    record: TranscriptManifestRecord,
+    root = defaultTranscriptStorageRoot,
 ): TranscriptStoragePaths {
   return {
     root,
@@ -399,7 +399,7 @@ export async function findStoredTranscriptRecord(options: {
   const root = options.root ?? defaultTranscriptStorageRoot;
   const manifest = await readTranscriptManifest(join(root, "manifest.json"));
   const record = manifest.transcripts.find((candidate) =>
-    candidate.videoId === options.videoId && transcriptLanguageMatches(candidate, options.language),
+      candidate.videoId === options.videoId && transcriptLanguageMatches(candidate, options.language),
   );
   if (record === undefined) {
     return undefined;
@@ -415,14 +415,14 @@ export async function findStoredTranscriptRecord(options: {
     throw error;
   }
 
-  return { record, paths };
+  return {record, paths};
 }
 
 async function upsertTranscriptManifest(
-  transcript: VideoTranscript,
-  paths: TranscriptStoragePaths,
-  manifest: TranscriptManifest,
-  fileStem: string,
+    transcript: VideoTranscript,
+    paths: TranscriptStoragePaths,
+    manifest: TranscriptManifest,
+    fileStem: string,
 ): Promise<TranscriptManifestRecord | undefined> {
   const record = transcriptManifestRecord(transcript, fileStem);
   const index = manifest.transcripts.findIndex((existing) => existing.videoId === transcript.videoId);
@@ -441,15 +441,15 @@ async function upsertTranscriptManifest(
 }
 
 async function removeSupersededTranscriptOutputs(
-  root: string,
-  previousRecord: TranscriptManifestRecord,
-  currentPaths: TranscriptStoragePaths,
+    root: string,
+    previousRecord: TranscriptManifestRecord,
+    currentPaths: TranscriptStoragePaths,
 ): Promise<void> {
   const previousPaths = transcriptStoragePathsFromRecord(previousRecord, root);
   const obsoletePaths = [previousPaths.txtOutput].filter((path) => !samePath(path, currentPaths.txtOutput));
 
   for (const path of obsoletePaths) {
-    await rm(resolveTranscriptStorePath(root, path), { force: true });
+    await rm(resolveTranscriptStorePath(root, path), {force: true});
   }
 }
 
@@ -503,8 +503,8 @@ function normalizeTranscriptManifest(value: unknown): TranscriptManifest {
     ...emptyTranscriptManifest(),
     updatedAt: readString(object, "updatedAt") ?? new Date(0).toISOString(),
     transcripts: object.transcripts
-      .map((record) => transcriptManifestRecordFromJson(record))
-      .filter((record): record is TranscriptManifestRecord => record !== undefined),
+        .map((record) => transcriptManifestRecordFromJson(record))
+        .filter((record): record is TranscriptManifestRecord => record !== undefined),
   };
 }
 
@@ -584,7 +584,7 @@ function transcriptManifestRecordFromJson(value: unknown): TranscriptManifestRec
     fetchedAt,
     availableLanguages: readStringArray(object?.availableLanguages),
     segmentCount,
-    paths: { txt },
+    paths: {txt},
   };
   const selectedLanguage = readString(object, "selectedLanguage");
   const firstStartSeconds = integerValue(object.firstStartSeconds);
@@ -640,8 +640,8 @@ async function fetchWatchPageTranscript(options: {
 }): Promise<VideoTranscript | undefined> {
   options.logger?.(`Fetching watch page captions: ${options.videoId}`);
   const response = await options.fetch(
-    `https://www.youtube.com/watch?v=${encodeURIComponent(options.videoId)}`,
-    fetchInitWithRequestLabel({ headers: youtubeRequestHeaders() }, "watch page"),
+      `https://www.youtube.com/watch?v=${encodeURIComponent(options.videoId)}`,
+      fetchInitWithRequestLabel({headers: youtubeRequestHeaders()}, "watch page"),
   );
   const body = await response.text();
 
@@ -693,7 +693,7 @@ async function fetchTranscriptFromCaptionTracks(options: {
 
   return {
     videoId: options.videoId,
-    ...(options.videoTitle ? { videoTitle: options.videoTitle } : {}),
+    ...(options.videoTitle ? {videoTitle: options.videoTitle} : {}),
     source: "watch-page-captions",
     fetchedAt: new Date().toISOString(),
     selectedLanguage: captionTrackLanguage(track),
@@ -703,9 +703,9 @@ async function fetchTranscriptFromCaptionTracks(options: {
 }
 
 async function fetchCaptionTrackSegments(
-  track: Record<string, unknown>,
-  fetcher: typeof fetch,
-  headers: FetchHeaders,
+    track: Record<string, unknown>,
+    fetcher: typeof fetch,
+    headers: FetchHeaders,
 ): Promise<TranscriptSegment[]> {
   const vttResponse = await fetchCaptionTrackFormat(track, fetcher, "vtt", headers);
   const vttSegments = extractVttTranscriptSegments(vttResponse);
@@ -735,38 +735,38 @@ function captionTracksFromPlayerResponse(playerResponse: unknown): Record<string
 }
 
 function selectCaptionTrack(
-  tracks: Record<string, unknown>[],
-  language: string | undefined,
+    tracks: Record<string, unknown>[],
+    language: string | undefined,
 ): Record<string, unknown> | undefined {
   if (language) {
     const normalizedLanguage = language.toLowerCase();
     return tracks.find((track) =>
-      [
-        readString(track, "language_code"),
-        readString(track, "languageCode"),
-        readString(track, "vss_id"),
-        readString(track, "vssId"),
-        captionTrackLanguage(track),
-      ].some((value) => value?.toLowerCase() === normalizedLanguage),
+        [
+          readString(track, "language_code"),
+          readString(track, "languageCode"),
+          readString(track, "vss_id"),
+          readString(track, "vssId"),
+          captionTrackLanguage(track),
+        ].some((value) => value?.toLowerCase() === normalizedLanguage),
     );
   }
 
   return (
-    tracks.find((track) => captionTrackCode(track) === "en" && readString(track, "kind") !== "asr") ??
-    tracks.find((track) => captionTrackCode(track) === "en") ??
-    tracks[0]
+      tracks.find((track) => captionTrackCode(track) === "en" && readString(track, "kind") !== "asr") ??
+      tracks.find((track) => captionTrackCode(track) === "en") ??
+      tracks[0]
   );
 }
 
 async function fetchCaptionTrackFormat(
-  track: Record<string, unknown>,
-  fetcher: typeof fetch,
-  format: "json3" | "vtt",
-  headers: FetchHeaders,
+    track: Record<string, unknown>,
+    fetcher: typeof fetch,
+    format: "json3" | "vtt",
+    headers: FetchHeaders,
 ): Promise<string> {
   const response = await fetcher(
-    captionTrackFormatUrl(track, format),
-    fetchInitWithRequestLabel({ headers }, `${format} caption track`),
+      captionTrackFormatUrl(track, format),
+      fetchInitWithRequestLabel({headers}, `${format} caption track`),
   );
   const body = await response.text();
 
@@ -794,9 +794,9 @@ function cookieHeader(headers: FetchResponseHeaders): string | undefined {
   const getSetCookie = (headers as FetchResponseHeaders & { getSetCookie?: () => string[] }).getSetCookie;
   const cookies = getSetCookie ? getSetCookie.call(headers) : splitSetCookieHeader(headers.get("set-cookie"));
   const cookie = cookies
-    .map((value) => value.split(";", 1)[0]?.trim())
-    .filter((value): value is string => value !== undefined && value.length > 0)
-    .join("; ");
+      .map((value) => value.split(";", 1)[0]?.trim())
+      .filter((value): value is string => value !== undefined && value.length > 0)
+      .join("; ");
 
   return cookie || undefined;
 }
@@ -838,8 +838,8 @@ function readTranscriptSource(object: Record<string, unknown>): VideoTranscript[
 
 function readVideoDateKind(value: unknown): VideoDateKind | undefined {
   return value === "actual_start" || value === "scheduled_start" || value === "published"
-    ? value
-    : undefined;
+      ? value
+      : undefined;
 }
 
 function extractInitialPlayerResponse(html: string): unknown | undefined {
@@ -935,8 +935,8 @@ export function parseVideoTranscriptJson(value: unknown, sourceName = "transcrip
 
 export function transcriptToTxt(transcript: VideoTranscript): string {
   return `${transcript.segments
-    .map((segment) => `[${segment.startTimeText}] ${segment.text}`)
-    .join("\n")}\n`;
+      .map((segment) => `[${segment.startTimeText}] ${segment.text}`)
+      .join("\n")}\n`;
 }
 
 function readTranscriptSegmentsArray(value: unknown, sourceName: string): TranscriptSegment[] {
@@ -964,10 +964,10 @@ function readTranscriptSegment(value: unknown, sourceName: string): TranscriptSe
   const endSeconds = integerValue(object.endSeconds) ?? (endMs === undefined ? undefined : Math.ceil(endMs / 1000));
 
   if (
-    startMs === undefined ||
-    endMs === undefined ||
-    startSeconds === undefined ||
-    endSeconds === undefined
+      startMs === undefined ||
+      endMs === undefined ||
+      startSeconds === undefined ||
+      endSeconds === undefined
   ) {
     throw new Error(`${sourceName} is missing usable timestamp fields.`);
   }
@@ -1003,8 +1003,8 @@ function readStringArray(value: unknown): string[] {
 
 function recordArray(value: unknown): Record<string, unknown>[] {
   return Array.isArray(value)
-    ? value.map((item) => asRecord(item)).filter((item): item is Record<string, unknown> => item !== undefined)
-    : [];
+      ? value.map((item) => asRecord(item)).filter((item): item is Record<string, unknown> => item !== undefined)
+      : [];
 }
 
 function json3EventSegment(event: unknown): TranscriptSegment | undefined {
@@ -1044,12 +1044,12 @@ function json3EventText(segs: unknown): string | undefined {
   }
 
   const text = segs
-    .map((seg) => {
-      const object = asRecord(seg);
-      return object ? readString(object, "utf8") : undefined;
-    })
-    .filter((value): value is string => value !== undefined)
-    .join("");
+      .map((seg) => {
+        const object = asRecord(seg);
+        return object ? readString(object, "utf8") : undefined;
+      })
+      .filter((value): value is string => value !== undefined)
+      .join("");
 
   return text.replace(/\s+/gu, " ").trim() || undefined;
 }
@@ -1082,19 +1082,19 @@ function parseVttTimestampMs(value: string): number | undefined {
 
 function cleanCaptionText(value: string): string | undefined {
   const text = decodeCaptionEntities(value.replace(/<[^>]*>/gu, " "))
-    .replace(/\s+/gu, " ")
-    .trim();
+      .replace(/\s+/gu, " ")
+      .trim();
 
   return text || undefined;
 }
 
 function decodeCaptionEntities(value: string): string {
   return value
-    .replace(/&amp;/gu, "&")
-    .replace(/&lt;/gu, "<")
-    .replace(/&gt;/gu, ">")
-    .replace(/&quot;/gu, "\"")
-    .replace(/&#39;/gu, "'");
+      .replace(/&amp;/gu, "&")
+      .replace(/&lt;/gu, "<")
+      .replace(/&gt;/gu, ">")
+      .replace(/&quot;/gu, "\"")
+      .replace(/&#39;/gu, "'");
 }
 
 export function transcriptToTsv(transcript: VideoTranscript): string {
@@ -1187,7 +1187,7 @@ function textValue(value: unknown): string | undefined {
 }
 
 async function writeTextFile(path: string, content: string): Promise<void> {
-  await mkdir(dirname(path), { recursive: true });
+  await mkdir(dirname(path), {recursive: true});
   await writeFileWithRetry(path, content);
 }
 

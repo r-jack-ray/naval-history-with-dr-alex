@@ -2,9 +2,10 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import {
-  applyOfficialVideoMetadata,
   applyOfficialVideoDuration,
+  applyOfficialVideoMetadata,
   buildChannelEpisodeMaster,
+  type ChannelVideoLink,
   createRateLimitedFetch,
   extractVideoLink,
   fetchInitWithRequestLabel,
@@ -14,106 +15,105 @@ import {
   resolveStoredTranscriptTxtPath,
   selectMetadataRefreshVideoIdsFromChannelLinks,
   splitChannelVideoLinksResult,
-  type ChannelVideoLink,
 } from "./channel-video-links.js";
 import { isBlockedTranscriptDuration, type VideoMetadataRecord } from "./video-metadata.js";
 
 test("defaults a full video-link fetch to the canonical episode master", () => {
   assert.equal(resolveChannelVideoLinksMasterOutput({}), "src/channel/episodes.json");
   assert.equal(
-    resolveChannelVideoLinksMasterOutput({ masterOutput: "reports/custom-episodes.json" }),
-    "reports/custom-episodes.json",
+      resolveChannelVideoLinksMasterOutput({masterOutput: "reports/custom-episodes.json"}),
+      "reports/custom-episodes.json",
   );
 });
 
 test("does not implicitly overwrite the episode master for probes or alternate outputs", () => {
-  assert.equal(resolveChannelVideoLinksMasterOutput({ maxPages: 1 }), undefined);
-  assert.equal(resolveChannelVideoLinksMasterOutput({ output: "reports/probe.json" }), undefined);
-  assert.equal(resolveChannelVideoLinksMasterOutput({ linksOutput: "reports/links.json" }), undefined);
-  assert.equal(resolveChannelVideoLinksMasterOutput({ metadataOutput: "reports/metadata.json" }), undefined);
+  assert.equal(resolveChannelVideoLinksMasterOutput({maxPages: 1}), undefined);
+  assert.equal(resolveChannelVideoLinksMasterOutput({output: "reports/probe.json"}), undefined);
+  assert.equal(resolveChannelVideoLinksMasterOutput({linksOutput: "reports/links.json"}), undefined);
+  assert.equal(resolveChannelVideoLinksMasterOutput({metadataOutput: "reports/metadata.json"}), undefined);
 });
 
 test("refreshes deferred metadata when the current channel fetch reports a transcript-eligible duration", () => {
   const staleUpcoming: VideoMetadataRecord = {
     videoId: "staleUpcoming",
     fetchedAt: "2026-07-08T02:35:14.944Z",
-    snippet: { liveBroadcastContent: "upcoming" },
-    contentDetails: { duration: "P0D" },
-    status: { uploadStatus: "uploaded" },
-    liveStreamingDetails: { scheduledStartTime: "2026-08-13T18:30:00Z" },
+    snippet: {liveBroadcastContent: "upcoming"},
+    contentDetails: {duration: "P0D"},
+    status: {uploadStatus: "uploaded"},
+    liveStreamingDetails: {scheduledStartTime: "2026-08-13T18:30:00Z"},
   };
   const ready: VideoMetadataRecord = {
     videoId: "alreadyReady",
     fetchedAt: "2026-07-31T12:42:52.632Z",
-    snippet: { publishedAt: "2026-07-30T18:34:15Z", liveBroadcastContent: "none" },
-    contentDetails: { duration: "PT2H34M5S" },
-    status: { uploadStatus: "processed" },
+    snippet: {publishedAt: "2026-07-30T18:34:15Z", liveBroadcastContent: "none"},
+    contentDetails: {duration: "PT2H34M5S"},
+    status: {uploadStatus: "processed"},
   };
 
   assert.deepEqual(
-    selectMetadataRefreshVideoIdsFromChannelLinks(
-      [
-        {
-          videoId: "staleUpcoming",
-          url: "https://www.youtube.com/watch?v=staleUpcoming",
-          durationSeconds: 9_245,
-          tabs: ["videos"],
-          tabPositions: { videos: 1 },
-        },
-        {
-          videoId: "stillUnresolved",
-          url: "https://www.youtube.com/watch?v=stillUnresolved",
-          tabs: ["videos"],
-          tabPositions: { videos: 2 },
-        },
-        {
-          videoId: "alreadyReady",
-          url: "https://www.youtube.com/watch?v=alreadyReady",
-          durationSeconds: 9_245,
-          tabs: ["videos"],
-          tabPositions: { videos: 3 },
-        },
-      ],
-      new Map([
-        [staleUpcoming.videoId, staleUpcoming],
-        [ready.videoId, ready],
-      ]),
-    ),
-    ["staleUpcoming"],
+      selectMetadataRefreshVideoIdsFromChannelLinks(
+          [
+            {
+              videoId: "staleUpcoming",
+              url: "https://www.youtube.com/watch?v=staleUpcoming",
+              durationSeconds: 9_245,
+              tabs: ["videos"],
+              tabPositions: {videos: 1},
+            },
+            {
+              videoId: "stillUnresolved",
+              url: "https://www.youtube.com/watch?v=stillUnresolved",
+              tabs: ["videos"],
+              tabPositions: {videos: 2},
+            },
+            {
+              videoId: "alreadyReady",
+              url: "https://www.youtube.com/watch?v=alreadyReady",
+              durationSeconds: 9_245,
+              tabs: ["videos"],
+              tabPositions: {videos: 3},
+            },
+          ],
+          new Map([
+            [staleUpcoming.videoId, staleUpcoming],
+            [ready.videoId, ready],
+          ]),
+      ),
+      ["staleUpcoming"],
   );
 });
 
 test("resolves manifest-relative transcript paths for episode records", () => {
   assert.equal(
-    resolveStoredTranscriptTxtPath("src/transcripts/manifest.json", "txt/example-video.txt"),
-    "src/transcripts/txt/example-video.txt",
+      resolveStoredTranscriptTxtPath("src/transcripts/manifest.json", "txt/example-video.txt"),
+      "src/transcripts/txt/example-video.txt",
   );
 });
 
 test("extracts video links from YouTube LockupView nodes", () => {
   const record = extractVideoLink(
-    {
-      content_id: "--l6rRIfksQ",
-      content_type: "VIDEO",
-      metadata: {
-        title: { text: "Ideal Destroyers" },
+      {
+        content_id: "--l6rRIfksQ",
+        content_type: "VIDEO",
         metadata: {
-          metadata_rows: [
-            {
-              metadata_parts: [
-                { text: { text: "1.7K views" } },
-                { text: { text: "3 days ago" } },
-              ],
-            },
-          ],
+          title: {text: "Ideal Destroyers"},
+          metadata: {
+            metadata_rows: [
+              {
+                metadata_parts: [
+                  {text: {text: "1.7K views"}},
+                  {text: {text: "3 days ago"}},
+                ],
+              },
+            ],
+          },
+        },
+        content_image: {
+          overlays: [{badges: [{text: "1:30:46"}]}],
         },
       },
-      content_image: {
-        overlays: [{ badges: [{ text: "1:30:46" }] }],
-      },
-    },
-    "videos",
-    7,
+      "videos",
+      7,
   );
 
   assert.deepEqual(record, {
@@ -124,7 +124,7 @@ test("extracts video links from YouTube LockupView nodes", () => {
     publishedText: "3 days ago",
     viewCountText: "1.7K views",
     tabs: ["videos"],
-    tabPositions: { videos: 7 },
+    tabPositions: {videos: 7},
   });
 });
 
@@ -153,7 +153,7 @@ test("splits base video links from metadata records", () => {
         title: "Ideal Destroyers",
         publishDate: "2026-07-04",
         tabs: ["videos"],
-        tabPositions: { videos: 1 },
+        tabPositions: {videos: 1},
       },
     ],
   });
@@ -163,7 +163,7 @@ test("splits base video links from metadata records", () => {
       videoId: "--l6rRIfksQ",
       url: "https://www.youtube.com/watch?v=--l6rRIfksQ",
       tabs: ["videos"],
-      tabPositions: { videos: 1 },
+      tabPositions: {videos: 1},
     },
   ]);
   assert.equal(split.metadata.exactDetailsIncluded, true);
@@ -178,48 +178,48 @@ test("splits base video links from metadata records", () => {
 
 test("builds a canonical source episode master list", () => {
   const master = buildChannelEpisodeMaster(
-    {
-      channelUrl: "https://www.youtube.com/@DrAlexClarke",
-      channelId: "UCE2x09tU0GwAGiSbFPEhIwQ",
-      fetchedAt: "2026-07-07T23:00:00.000Z",
-      requestDelayMs: 60_000,
-      tabs: {
-        videos: {
-          url: "https://www.youtube.com/@DrAlexClarke/videos",
-          pagesFetched: 1,
-          rawCount: 1,
+      {
+        channelUrl: "https://www.youtube.com/@DrAlexClarke",
+        channelId: "UCE2x09tU0GwAGiSbFPEhIwQ",
+        fetchedAt: "2026-07-07T23:00:00.000Z",
+        requestDelayMs: 60_000,
+        tabs: {
+          videos: {
+            url: "https://www.youtube.com/@DrAlexClarke/videos",
+            pagesFetched: 1,
+            rawCount: 1,
+          },
+          streams: {
+            url: "https://www.youtube.com/@DrAlexClarke/streams",
+            pagesFetched: 0,
+            rawCount: 0,
+          },
         },
-        streams: {
-          url: "https://www.youtube.com/@DrAlexClarke/streams",
-          pagesFetched: 0,
-          rawCount: 0,
-        },
-      },
-      links: [
-        {
-          videoId: "uURe69Wnh-Q",
-          url: "https://www.youtube.com/watch?v=uURe69Wnh-Q",
-          title: "Stored transcript video",
-          durationText: "4:35:38",
-          tabs: ["videos"],
-          tabPositions: { videos: 1 },
-        },
-      ],
-    },
-    {
-      completeness: "partial",
-      transcriptStates: new Map([
-        [
-          "uURe69Wnh-Q",
+        links: [
           {
-            status: "stored",
-            txtPath: "src/transcripts/txt/uURe69Wnh-Q.txt",
-            segmentCount: 6438,
-            selectedLanguage: "en",
+            videoId: "uURe69Wnh-Q",
+            url: "https://www.youtube.com/watch?v=uURe69Wnh-Q",
+            title: "Stored transcript video",
+            durationText: "4:35:38",
+            tabs: ["videos"],
+            tabPositions: {videos: 1},
           },
         ],
-      ]),
-    },
+      },
+      {
+        completeness: "partial",
+        transcriptStates: new Map([
+          [
+            "uURe69Wnh-Q",
+            {
+              status: "stored",
+              txtPath: "src/transcripts/txt/uURe69Wnh-Q.txt",
+              segmentCount: 6438,
+              selectedLanguage: "en",
+            },
+          ],
+        ]),
+      },
   );
 
   assert.equal(master.inventory.completeness, "partial");
@@ -235,7 +235,7 @@ test("builds a canonical source episode master list", () => {
       durationText: "4:35:38",
       videoKind: "upload",
       tabs: ["videos"],
-      tabPositions: { videos: 1 },
+      tabPositions: {videos: 1},
       transcript: {
         status: "stored",
         txtPath: "src/transcripts/txt/uURe69Wnh-Q.txt",
@@ -248,26 +248,26 @@ test("builds a canonical source episode master list", () => {
 
 test("exposes a stream start only after completion is independently proven", () => {
   assert.equal(
-    officialVideoStreamStartTime({
-      snippet: { publishedAt: "2026-06-14T16:44:14Z", liveBroadcastContent: "upcoming" },
-      status: { uploadStatus: "uploaded" },
-      contentDetails: { duration: "P0D" },
-      liveStreamingDetails: { scheduledStartTime: "2026-07-12T18:30:00Z" },
-    }),
-    undefined,
+      officialVideoStreamStartTime({
+        snippet: {publishedAt: "2026-06-14T16:44:14Z", liveBroadcastContent: "upcoming"},
+        status: {uploadStatus: "uploaded"},
+        contentDetails: {duration: "P0D"},
+        liveStreamingDetails: {scheduledStartTime: "2026-07-12T18:30:00Z"},
+      }),
+      undefined,
   );
   assert.equal(
-    officialVideoStreamStartTime({
-      snippet: { publishedAt: "2026-06-14T16:44:14Z", liveBroadcastContent: "none" },
-      status: { uploadStatus: "processed" },
-      contentDetails: { duration: "PT2H" },
-      liveStreamingDetails: {
-        scheduledStartTime: "2026-07-12T18:30:00Z",
-        actualStartTime: "2026-07-12T18:33:54Z",
-        actualEndTime: "2026-07-12T20:33:54Z",
-      },
-    }),
-    "2026-07-12T18:33:54Z",
+      officialVideoStreamStartTime({
+        snippet: {publishedAt: "2026-06-14T16:44:14Z", liveBroadcastContent: "none"},
+        status: {uploadStatus: "processed"},
+        contentDetails: {duration: "PT2H"},
+        liveStreamingDetails: {
+          scheduledStartTime: "2026-07-12T18:30:00Z",
+          actualStartTime: "2026-07-12T18:33:54Z",
+          actualEndTime: "2026-07-12T20:33:54Z",
+        },
+      }),
+      "2026-07-12T18:33:54Z",
   );
 });
 
@@ -276,7 +276,7 @@ test("official enrichment keeps raw stream dates separate from the effective dat
     videoId: "abc123",
     url: "https://www.youtube.com/watch?v=abc123",
     tabs: ["streams" as const],
-    tabPositions: { streams: 1 },
+    tabPositions: {streams: 1},
   };
 
   applyOfficialVideoMetadata(link, {
@@ -285,8 +285,8 @@ test("official enrichment keeps raw stream dates separate from the effective dat
       publishedAt: "2026-06-14T16:44:14Z",
       liveBroadcastContent: "none",
     },
-    status: { uploadStatus: "processed" },
-    contentDetails: { duration: "PT2H" },
+    status: {uploadStatus: "processed"},
+    contentDetails: {duration: "PT2H"},
     liveStreamingDetails: {
       scheduledStartTime: "2026-07-12T18:30:00Z",
       actualStartTime: "2026-07-12T18:33:54Z",
@@ -310,10 +310,10 @@ test("official duration metadata blocks nominal 60-second clips with one second 
     videoId: "short123",
     url: "https://www.youtube.com/watch?v=short123",
     tabs: ["videos"],
-    tabPositions: { videos: 1 },
+    tabPositions: {videos: 1},
   };
 
-  applyOfficialVideoDuration(link, { contentDetails: { duration: "PT1M" } });
+  applyOfficialVideoDuration(link, {contentDetails: {duration: "PT1M"}});
   assert.equal(link.durationSeconds, 60);
   assert.equal(isBlockedTranscriptDuration(link.durationSeconds), true);
   assert.equal(isBlockedTranscriptDuration(61), true);
@@ -329,8 +329,8 @@ test("merges channel video link results across tabs", () => {
       fetchedAt: "2026-07-07T23:00:00.000Z",
       requestDelayMs: 0,
       tabs: {
-        videos: { url: "https://www.youtube.com/@DrAlexClarke/videos", pagesFetched: 1, rawCount: 2 },
-        streams: { url: "https://www.youtube.com/@DrAlexClarke/streams", pagesFetched: 0, rawCount: 0 },
+        videos: {url: "https://www.youtube.com/@DrAlexClarke/videos", pagesFetched: 1, rawCount: 2},
+        streams: {url: "https://www.youtube.com/@DrAlexClarke/streams", pagesFetched: 0, rawCount: 0},
       },
       links: [
         {
@@ -338,7 +338,7 @@ test("merges channel video link results across tabs", () => {
           url: "https://www.youtube.com/watch?v=abc123",
           title: "Video",
           tabs: ["videos"],
-          tabPositions: { videos: 1 },
+          tabPositions: {videos: 1},
         },
       ],
     },
@@ -348,21 +348,21 @@ test("merges channel video link results across tabs", () => {
       fetchedAt: "2026-07-08T00:00:00.000Z",
       requestDelayMs: 0,
       tabs: {
-        videos: { url: "https://www.youtube.com/@DrAlexClarke/videos", pagesFetched: 0, rawCount: 0 },
-        streams: { url: "https://www.youtube.com/@DrAlexClarke/streams", pagesFetched: 1, rawCount: 2 },
+        videos: {url: "https://www.youtube.com/@DrAlexClarke/videos", pagesFetched: 0, rawCount: 0},
+        streams: {url: "https://www.youtube.com/@DrAlexClarke/streams", pagesFetched: 1, rawCount: 2},
       },
       links: [
         {
           videoId: "abc123",
           url: "https://www.youtube.com/watch?v=abc123",
           tabs: ["streams"],
-          tabPositions: { streams: 1 },
+          tabPositions: {streams: 1},
         },
         {
           videoId: "def456",
           url: "https://www.youtube.com/watch?v=def456",
           tabs: ["streams"],
-          tabPositions: { streams: 2 },
+          tabPositions: {streams: 2},
         },
       ],
     },
@@ -372,7 +372,7 @@ test("merges channel video link results across tabs", () => {
   assert.equal(merged.tabs.streams.pagesFetched, 1);
   assert.deepEqual(merged.links.map((link) => link.videoId), ["abc123", "def456"]);
   assert.deepEqual(merged.links[0]?.tabs, ["videos", "streams"]);
-  assert.deepEqual(merged.links[0]?.tabPositions, { videos: 1, streams: 1 });
+  assert.deepEqual(merged.links[0]?.tabPositions, {videos: 1, streams: 1});
 });
 
 test("excludes ignored videos from merged links and the canonical episode master", () => {
@@ -383,27 +383,27 @@ test("excludes ignored videos from merged links and the canonical episode master
     fetchedAt: "2026-07-26T18:00:00.000Z",
     requestDelayMs: 0,
     tabs: {
-      videos: { url: "https://www.youtube.com/@DrAlexClarke/videos", pagesFetched: 1, rawCount: 2 },
-      streams: { url: "https://www.youtube.com/@DrAlexClarke/streams", pagesFetched: 0, rawCount: 0 },
+      videos: {url: "https://www.youtube.com/@DrAlexClarke/videos", pagesFetched: 1, rawCount: 2},
+      streams: {url: "https://www.youtube.com/@DrAlexClarke/streams", pagesFetched: 0, rawCount: 0},
     },
     links: [
       {
         videoId: "ts331iLYWlc",
         url: "https://www.youtube.com/watch?v=ts331iLYWlc",
         tabs: ["videos" as const],
-        tabPositions: { videos: 1 },
+        tabPositions: {videos: 1},
       },
       {
         videoId: "keep-video1",
         url: "https://www.youtube.com/watch?v=keep-video1",
         tabs: ["videos" as const],
-        tabPositions: { videos: 2 },
+        tabPositions: {videos: 2},
       },
     ],
   };
 
   const merged = mergeChannelVideoLinksResults([result], ignoredVideoIds);
-  const master = buildChannelEpisodeMaster(result, { ignoredVideoIds });
+  const master = buildChannelEpisodeMaster(result, {ignoredVideoIds});
 
   assert.deepEqual(merged.links.map((link) => link.videoId), ["keep-video1"]);
   assert.deepEqual(master.episodes.map((episode) => episode.videoId), ["keep-video1"]);

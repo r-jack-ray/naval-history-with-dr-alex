@@ -1,11 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import {
-  omitIgnoredVideoIds,
-  parseIgnoredVideosConfig,
-  readIgnoredVideos,
-} from "./ignored-videos.js";
+import { omitIgnoredVideoIds, parseIgnoredVideosConfig, readIgnoredVideos, } from "./ignored-videos.js";
 
 test("loads the canonical full-video ignore list", async () => {
   const ignored = await readIgnoredVideos();
@@ -24,18 +20,18 @@ test("rejects duplicate ignored video IDs", () => {
   };
 
   assert.throws(
-    () => parseIgnoredVideosConfig(duplicate),
-    /duplicate ignored video ID ts331iLYWlc/u,
+      () => parseIgnoredVideosConfig(duplicate),
+      /duplicate ignored video ID ts331iLYWlc/u,
   );
 });
 
 test("omits ignored IDs while preserving source order", () => {
   assert.deepEqual(
-    omitIgnoredVideoIds(
-      ["keep-first1", "ts331iLYWlc", "keep-last22"],
-      new Set(["ts331iLYWlc"]),
-    ),
-    ["keep-first1", "keep-last22"],
+      omitIgnoredVideoIds(
+          ["keep-first1", "ts331iLYWlc", "keep-last22"],
+          new Set(["ts331iLYWlc"]),
+      ),
+      ["keep-first1", "keep-last22"],
   );
 });
 

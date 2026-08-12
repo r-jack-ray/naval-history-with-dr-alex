@@ -7,6 +7,7 @@ export interface YoutubeChannel {
     } | null;
     [key: string]: unknown;
   } | null;
+
   [key: string]: unknown;
 }
 
@@ -25,6 +26,7 @@ export interface YoutubePlaylistItem {
     } | null;
     [key: string]: unknown;
   } | null;
+
   [key: string]: unknown;
 }
 
@@ -41,6 +43,7 @@ export interface YoutubeVideoSnippet {
     maxres?: YoutubeThumbnail | null;
     [key: string]: unknown;
   } | null;
+
   [key: string]: unknown;
 }
 
@@ -48,11 +51,13 @@ export interface YoutubeThumbnail {
   url?: string | null;
   width?: number | null;
   height?: number | null;
+
   [key: string]: unknown;
 }
 
 export interface YoutubeVideoContentDetails {
   duration?: string | null;
+
   [key: string]: unknown;
 }
 
@@ -60,11 +65,13 @@ export interface YoutubeVideoStatistics {
   viewCount?: string | null;
   likeCount?: string | null;
   commentCount?: string | null;
+
   [key: string]: unknown;
 }
 
 export interface YoutubeVideoStatus {
   uploadStatus?: string | null;
+
   [key: string]: unknown;
 }
 
@@ -72,6 +79,7 @@ export interface YoutubeVideoLiveStreamingDetails {
   scheduledStartTime?: string | null;
   actualStartTime?: string | null;
   actualEndTime?: string | null;
+
   [key: string]: unknown;
 }
 
@@ -84,6 +92,7 @@ export interface YoutubeVideo {
   statistics?: YoutubeVideoStatistics | null;
   status?: YoutubeVideoStatus | null;
   liveStreamingDetails?: YoutubeVideoLiveStreamingDetails | null;
+
   [key: string]: unknown;
 }
 
@@ -113,10 +122,12 @@ export interface ListVideosParams {
 
 export interface YoutubeDataApiClient {
   listChannels(params: ListChannelsParams, label?: string): Promise<YoutubeListResponse<YoutubeChannel>>;
+
   listPlaylistItems(
-    params: ListPlaylistItemsParams,
-    label?: string,
+      params: ListPlaylistItemsParams,
+      label?: string,
   ): Promise<YoutubeListResponse<YoutubePlaylistItem>>;
+
   listVideos(params: ListVideosParams, label?: string): Promise<YoutubeListResponse<YoutubeVideo>>;
 }
 
@@ -175,9 +186,9 @@ export function createYoutubeDataApiClient(options: YoutubeDataApiClientOptions)
   };
 
   const request = async <T extends Record<string, unknown>>(
-    resource: string,
-    params: URLSearchParams,
-    label: string,
+      resource: string,
+      params: URLSearchParams,
+      label: string,
   ): Promise<YoutubeListResponse<T>> => {
     params.set("key", apiKey);
     const requestUrl = new URL(resource, youtubeDataApiRoot);
@@ -188,23 +199,23 @@ export function createYoutubeDataApiClient(options: YoutubeDataApiClientOptions)
       let response: Response;
       try {
         response = await baseFetch(requestUrl, {
-          headers: { accept: "application/json" },
+          headers: {accept: "application/json"},
         });
       } catch (error) {
         if (attempt < maxAttempts) {
           const retryDelayMs = boundedExponentialDelay(
-            retryBaseDelayMs,
-            attempt,
-            maxRetryDelayMs,
+              retryBaseDelayMs,
+              attempt,
+              maxRetryDelayMs,
           );
           console.warn(
-            `YouTube Data API ${label} failed before receiving a response; retrying in ${retryDelayMs}ms.`,
+              `YouTube Data API ${label} failed before receiving a response; retrying in ${retryDelayMs}ms.`,
           );
           await sleep(retryDelayMs);
           continue;
         }
         throw new Error(
-          `YouTube Data API ${label} failed after ${maxAttempts} attempts: ${safeErrorMessage(error, apiKey)}`,
+            `YouTube Data API ${label} failed after ${maxAttempts} attempts: ${safeErrorMessage(error, apiKey)}`,
         );
       }
 
@@ -213,13 +224,13 @@ export function createYoutubeDataApiClient(options: YoutubeDataApiClientOptions)
         const retryable = transientStatusCodes.has(response.status);
         if (retryable && attempt < maxAttempts) {
           const retryDelayMs = retryDelayFromResponse(
-            response,
-            now(),
-            boundedExponentialDelay(retryBaseDelayMs, attempt, maxRetryDelayMs),
-            maxRetryDelayMs,
+              response,
+              now(),
+              boundedExponentialDelay(retryBaseDelayMs, attempt, maxRetryDelayMs),
+              maxRetryDelayMs,
           );
           console.warn(
-            `YouTube Data API ${label} returned HTTP ${response.status}; retrying in ${retryDelayMs}ms.`,
+              `YouTube Data API ${label} returned HTTP ${response.status}; retrying in ${retryDelayMs}ms.`,
           );
           await sleep(retryDelayMs);
           continue;
@@ -227,8 +238,8 @@ export function createYoutubeDataApiClient(options: YoutubeDataApiClientOptions)
 
         const exhaustion = retryable ? ` after ${attempt} attempts` : "";
         throw new Error(
-          `YouTube Data API ${label} failed${exhaustion} with HTTP ${response.status}` +
-          `${response.statusText ? ` ${response.statusText}` : ""}${responseMessage ? `: ${responseMessage}` : "."}`,
+            `YouTube Data API ${label} failed${exhaustion} with HTTP ${response.status}` +
+            `${response.statusText ? ` ${response.statusText}` : ""}${responseMessage ? `: ${responseMessage}` : "."}`,
         );
       }
 
@@ -241,43 +252,43 @@ export function createYoutubeDataApiClient(options: YoutubeDataApiClientOptions)
   return {
     listChannels(params, label = "channels.list") {
       return request<YoutubeChannel>(
-        "channels",
-        listParams({
-          part: params.part,
-          ...(params.id !== undefined ? { id: params.id } : {}),
-          ...(params.forHandle !== undefined ? { forHandle: params.forHandle } : {}),
-        }),
-        label,
+          "channels",
+          listParams({
+            part: params.part,
+            ...(params.id !== undefined ? {id: params.id} : {}),
+            ...(params.forHandle !== undefined ? {forHandle: params.forHandle} : {}),
+          }),
+          label,
       );
     },
     listPlaylistItems(params, label = "playlistItems.list") {
       return request<YoutubePlaylistItem>(
-        "playlistItems",
-        listParams({
-          part: params.part,
-          playlistId: params.playlistId,
-          maxResults: params.maxResults,
-          ...(params.pageToken !== undefined ? { pageToken: params.pageToken } : {}),
-        }),
-        label,
+          "playlistItems",
+          listParams({
+            part: params.part,
+            playlistId: params.playlistId,
+            maxResults: params.maxResults,
+            ...(params.pageToken !== undefined ? {pageToken: params.pageToken} : {}),
+          }),
+          label,
       );
     },
     listVideos(params, label = "videos.list") {
       return request<YoutubeVideo>(
-        "videos",
-        listParams({
-          part: params.part,
-          id: params.id,
-          maxResults: params.maxResults,
-        }),
-        label,
+          "videos",
+          listParams({
+            part: params.part,
+            id: params.id,
+            maxResults: params.maxResults,
+          }),
+          label,
       );
     },
   };
 }
 
 function listParams(
-  values: Readonly<Record<string, string | number | readonly string[]>>,
+    values: Readonly<Record<string, string | number | readonly string[]>>,
 ): URLSearchParams {
   const params = new URLSearchParams();
   for (const [key, value] of Object.entries(values)) {
@@ -287,8 +298,8 @@ function listParams(
 }
 
 function parseListResponse<T extends Record<string, unknown>>(
-  value: unknown,
-  label: string,
+    value: unknown,
+    label: string,
 ): YoutubeListResponse<T> {
   if (!isRecord(value)) {
     throw new Error(`YouTube Data API ${label} returned a malformed response: expected an object.`);
@@ -308,7 +319,7 @@ function parseListResponse<T extends Record<string, unknown>>(
 
   return {
     items: items as T[],
-    ...(nextPageToken !== undefined ? { nextPageToken } : {}),
+    ...(nextPageToken !== undefined ? {nextPageToken} : {}),
   };
 }
 
@@ -346,10 +357,10 @@ async function readErrorResponse(response: Response, apiKey: string): Promise<st
 }
 
 function retryDelayFromResponse(
-  response: Response,
-  nowMs: number,
-  fallbackDelayMs: number,
-  maxDelayMs: number,
+    response: Response,
+    nowMs: number,
+    fallbackDelayMs: number,
+    maxDelayMs: number,
 ): number {
   const retryAfter = response.headers.get("retry-after");
   if (retryAfter === null) {
@@ -361,8 +372,8 @@ function retryDelayFromResponse(
   }
   const dateMs = Date.parse(retryAfter);
   return Number.isFinite(dateMs)
-    ? Math.min(maxDelayMs, Math.max(0, dateMs - nowMs))
-    : fallbackDelayMs;
+      ? Math.min(maxDelayMs, Math.max(0, dateMs - nowMs))
+      : fallbackDelayMs;
 }
 
 function boundedExponentialDelay(baseDelayMs: number, attempt: number, maxDelayMs: number): number {

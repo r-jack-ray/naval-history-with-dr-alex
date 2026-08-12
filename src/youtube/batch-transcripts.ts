@@ -1,25 +1,24 @@
-import { dirname } from "node:path";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { dirname } from "node:path";
+import { createRateLimitedFetch } from "./channel-video-links.js";
 
 import {
   defaultTranscriptStorageRoot,
   fetchVideoTranscript,
-  findStoredTranscriptRecord,
-  writeTranscriptStorage,
   type FetchVideoTranscriptOptions,
+  findStoredTranscriptRecord,
   type VideoTranscript,
+  writeTranscriptStorage,
 } from "./transcripts.js";
-import { createRateLimitedFetch } from "./channel-video-links.js";
 import {
   defaultVideoMetadataInput,
-  defaultVideoMetadataOutput,
   isBlockedTranscriptDuration,
   maxBlockedTranscriptDurationSeconds,
   readVideoMetadataStore,
   resolveVideoFetchState,
-  videoNamingMetadata,
   type VideoDateKind,
   type VideoMetadataRecord,
+  videoNamingMetadata,
   type VideoNamingMetadata,
   type VideoReadinessReason,
   type VideoStateResult,
@@ -53,11 +52,11 @@ export interface TranscriptBatchFailure {
 }
 
 export type TranscriptFailureClassification =
-  | "no_caption_tracks"
-  | "language_unavailable"
-  | "empty_transcript"
-  | "rate_limited_or_blocked"
-  | "fetch_failed";
+    | "no_caption_tracks"
+    | "language_unavailable"
+    | "empty_transcript"
+    | "rate_limited_or_blocked"
+    | "fetch_failed";
 
 export interface TranscriptBatchStatus {
   schemaVersion: 2;
@@ -97,10 +96,10 @@ export interface TranscriptBatchDeferredRecord {
 }
 
 export type TranscriptBatchPendingReason =
-  | "circuit_breaker"
-  | "dry_run"
-  | "limit_reached"
-  | "previous_failure";
+    | "circuit_breaker"
+    | "dry_run"
+    | "limit_reached"
+    | "previous_failure";
 
 export interface TranscriptBatchPendingRecord {
   videoId: string;
@@ -151,26 +150,26 @@ interface TranscriptBatchCounters {
 }
 
 export async function fetchAndStoreTranscriptBatch(
-  options: FetchTranscriptBatchOptions,
+    options: FetchTranscriptBatchOptions,
 ): Promise<TranscriptBatchResult> {
   const inputEpisodes = await readTranscriptBatchEpisodes(options.inputPath);
   const ignoredVideoIds = options.ignoredVideoIds ?? new Set<string>();
   const episodes = inputEpisodes.filter((episode) => !ignoredVideoIds.has(episode.videoId));
   if (episodes.length !== inputEpisodes.length) {
     options.logger?.(
-      `Excluded ${inputEpisodes.length - episodes.length} video(s) from transcripts using the channel-wide ignore list.`,
+        `Excluded ${inputEpisodes.length - episodes.length} video(s) from transcripts using the channel-wide ignore list.`,
     );
   }
   const existingStatus = await readTranscriptBatchStatus(options.statusOutput);
   const failuresById = new Map(
-    existingStatus.failures
-      .filter((failure) => !ignoredVideoIds.has(failure.videoId))
-      .map((failure) => [failure.videoId, failure]),
+      existingStatus.failures
+          .filter((failure) => !ignoredVideoIds.has(failure.videoId))
+          .map((failure) => [failure.videoId, failure]),
   );
   const metadataById = await readVideoMetadataById(options.metadataInput);
   const sharedFetch = createRateLimitedFetch({
     delayMs: options.requestDelayMs,
-    ...(options.logger ? { logger: options.logger } : {}),
+    ...(options.logger ? {logger: options.logger} : {}),
   });
   const fetchTranscript = options.fetchTranscript ?? fetchVideoTranscript;
   const counters: TranscriptBatchCounters = {
@@ -206,18 +205,18 @@ export async function fetchAndStoreTranscriptBatch(
       failuresById.delete(episode.videoId);
       counters.skippedShortDurationCount += 1;
       options.logger?.(
-        `Blocking short video ${episode.videoId}: duration=${state.durationSeconds}s cutoff=${maxBlockedTranscriptDurationSeconds}s`,
+          `Blocking short video ${episode.videoId}: duration=${state.durationSeconds}s cutoff=${maxBlockedTranscriptDurationSeconds}s`,
       );
       continue;
     }
 
     const stored = options.force
-      ? undefined
-      : await findStoredTranscriptRecord({
-        videoId: episode.videoId,
-        root: options.outputRoot,
-        ...(options.language !== undefined ? { language: options.language } : {}),
-      });
+        ? undefined
+        : await findStoredTranscriptRecord({
+          videoId: episode.videoId,
+          root: options.outputRoot,
+          ...(options.language !== undefined ? {language: options.language} : {}),
+        });
     if (stored !== undefined) {
       failuresById.delete(episode.videoId);
       counters.skippedStoredCount += 1;
@@ -233,8 +232,11 @@ export async function fetchAndStoreTranscriptBatch(
       counters.deferredCounts[state.reason] += 1;
       deferredRecords.push(transcriptBatchDeferredRecord(episode, state));
       const message = `Skipping not-ready video ${episode.videoId}: ${state.reason} (${state.diagnostic})`;
-      if (state.state === "invalid") console.warn(message);
-      else options.logger?.(message);
+      if (state.state === "invalid") {
+        console.warn(message);
+      } else {
+        options.logger?.(message);
+      }
       continue;
     }
 
@@ -293,9 +295,9 @@ export async function fetchAndStoreTranscriptBatch(
     } catch (error) {
       counters.failedCount += 1;
       const failure = transcriptBatchFailure(
-        episode,
-        error,
-        state?.state === "ready" ? state.videoDateAt : episode.videoDateAt,
+          episode,
+          error,
+          state?.state === "ready" ? state.videoDateAt : episode.videoDateAt,
       );
       failuresById.set(episode.videoId, failure);
       failedRecords.push(failure);
@@ -310,11 +312,11 @@ export async function fetchAndStoreTranscriptBatch(
   }
 
   const status = await writeTranscriptBatchStatus(
-    options,
-    episodes,
-    counters,
-    failuresById,
-    pendingHandoffTxtPaths,
+      options,
+      episodes,
+      counters,
+      failuresById,
+      pendingHandoffTxtPaths,
   );
   return {
     ...status,
@@ -337,30 +339,30 @@ export function formatTranscriptBatchHandoff(handoff: TranscriptBatchHandoff): s
 
   appendHandoffSection(lines, "New transcript TXT paths", normalized.newlyStoredTxtPaths);
   appendHandoffSection(
-    lines,
-    "Deferred records",
-    normalized.deferredRecords.map((record) =>
-      `${record.videoId} [${record.reason}]${record.title ? ` ${singleLine(record.title)}` : ""}: ${singleLine(record.diagnostic)}`
-    ),
+      lines,
+      "Deferred records",
+      normalized.deferredRecords.map((record) =>
+          `${record.videoId} [${record.reason}]${record.title ? ` ${singleLine(record.title)}` : ""}: ${singleLine(record.diagnostic)}`
+      ),
   );
   appendHandoffSection(
-    lines,
-    "Failed records",
-    normalized.failedRecords.map((record) =>
-      `${record.videoId} [${record.classification}]${record.title ? ` ${singleLine(record.title)}` : ""}: ${singleLine(record.error)}`
-    ),
+      lines,
+      "Failed records",
+      normalized.failedRecords.map((record) =>
+          `${record.videoId} [${record.classification}]${record.title ? ` ${singleLine(record.title)}` : ""}: ${singleLine(record.error)}`
+      ),
   );
   appendHandoffSection(
-    lines,
-    "Still-pending records",
-    normalized.pendingRecords.map((record) =>
-      `${record.videoId} [${record.reason}]${record.title ? ` ${singleLine(record.title)}` : ""}`
-    ),
+      lines,
+      "Still-pending records",
+      normalized.pendingRecords.map((record) =>
+          `${record.videoId} [${record.reason}]${record.title ? ` ${singleLine(record.title)}` : ""}`
+      ),
   );
   lines.push(
-    "Curation next steps:",
-    "- Run one single-agent $naval-transcript-to-site-content task for each new TXT path.",
-    "- Run at least two independent sequential single-agent $naval-site-content-auditor tasks for each resulting shard.",
+      "Curation next steps:",
+      "- Run one single-agent $naval-transcript-to-site-content task for each new TXT path.",
+      "- Run at least two independent sequential single-agent $naval-site-content-auditor tasks for each resulting shard.",
   );
 
   return lines.join("\n");
@@ -441,8 +443,8 @@ export async function readTranscriptBatchStatus(path: string): Promise<Transcrip
 }
 
 export async function acknowledgeTranscriptBatchHandoff(
-  path: string,
-  acknowledgedTxtPaths: readonly string[],
+    path: string,
+    acknowledgedTxtPaths: readonly string[],
 ): Promise<void> {
   const acknowledged = new Set(normalizeTranscriptTxtPaths(acknowledgedTxtPaths));
   if (acknowledged.size === 0) {
@@ -479,15 +481,15 @@ function applyNamingMetadata(transcript: VideoTranscript, metadata: VideoNamingM
 }
 
 function namingMetadataForEpisode(
-  episode: TranscriptBatchEpisode,
-  metadataRecord: VideoMetadataRecord | undefined,
-  state: Extract<VideoStateResult, { state: "ready" }> | undefined,
+    episode: TranscriptBatchEpisode,
+    metadataRecord: VideoMetadataRecord | undefined,
+    state: Extract<VideoStateResult, { state: "ready" }> | undefined,
 ): VideoNamingMetadata {
   const metadata = videoNamingMetadata(metadataRecord);
   const result: VideoNamingMetadata = {};
   const title = metadata.title ?? episode.title;
   const timestamp = metadata.timestamp ?? state?.videoDateAt ?? episode.videoDateAt ?? episode.actualStartAt ??
-    episode.scheduledStartAt ?? episode.publishedAt;
+      episode.scheduledStartAt ?? episode.publishedAt;
 
   if (title !== undefined) {
     result.title = title;
@@ -517,37 +519,37 @@ async function readVideoMetadataById(path: string | undefined): Promise<Readonly
 }
 
 async function writeTranscriptBatchStatus(
-  options: FetchTranscriptBatchOptions,
-  episodes: TranscriptBatchEpisode[],
-  counters: TranscriptBatchCounters,
-  failuresById: ReadonlyMap<string, TranscriptBatchFailure>,
-  pendingHandoffTxtPaths: readonly string[],
+    options: FetchTranscriptBatchOptions,
+    episodes: TranscriptBatchEpisode[],
+    counters: TranscriptBatchCounters,
+    failuresById: ReadonlyMap<string, TranscriptBatchFailure>,
+    pendingHandoffTxtPaths: readonly string[],
 ): Promise<TranscriptBatchStatus> {
   const status = buildTranscriptBatchStatus(
-    options,
-    episodes,
-    counters,
-    failuresById,
-    pendingHandoffTxtPaths,
+      options,
+      episodes,
+      counters,
+      failuresById,
+      pendingHandoffTxtPaths,
   );
-  await mkdir(dirname(options.statusOutput), { recursive: true });
+  await mkdir(dirname(options.statusOutput), {recursive: true});
   await writeFile(options.statusOutput, `${JSON.stringify(status, null, 2)}\n`, "utf8");
   return status;
 }
 
 function buildTranscriptBatchStatus(
-  options: FetchTranscriptBatchOptions,
-  episodes: TranscriptBatchEpisode[],
-  counters: TranscriptBatchCounters,
-  failuresById: ReadonlyMap<string, TranscriptBatchFailure>,
-  pendingHandoffTxtPaths: readonly string[],
+    options: FetchTranscriptBatchOptions,
+    episodes: TranscriptBatchEpisode[],
+    counters: TranscriptBatchCounters,
+    failuresById: ReadonlyMap<string, TranscriptBatchFailure>,
+    pendingHandoffTxtPaths: readonly string[],
 ): TranscriptBatchStatus {
   const processedCount = counters.skippedStoredCount +
-    counters.skippedDeferredCount +
-    counters.skippedShortDurationCount +
-    counters.fetchedCount +
-    counters.failedCount +
-    counters.pendingCount;
+      counters.skippedDeferredCount +
+      counters.skippedShortDurationCount +
+      counters.fetchedCount +
+      counters.failedCount +
+      counters.pendingCount;
   const pendingCount = counters.pendingCount + Math.max(0, episodes.length - processedCount);
   const status: TranscriptBatchStatus = {
     schemaVersion: 2,
@@ -563,7 +565,7 @@ function buildTranscriptBatchStatus(
       skippedStoredCount: counters.skippedStoredCount,
       skippedDeferredCount: counters.skippedDeferredCount,
       skippedShortDurationCount: counters.skippedShortDurationCount,
-      deferredCounts: { ...counters.deferredCounts },
+      deferredCounts: {...counters.deferredCounts},
       skippedPreviousFailureCount: counters.skippedPreviousFailureCount,
       attemptedCount: counters.attemptedCount,
       fetchedCount: counters.fetchedCount,
@@ -598,35 +600,35 @@ function buildTranscriptBatchHandoff(handoff: TranscriptBatchHandoff): Transcrip
 }
 
 function transcriptBatchDeferredRecord(
-  episode: TranscriptBatchEpisode,
-  state: Exclude<VideoStateResult, { state: "ready" }>,
+    episode: TranscriptBatchEpisode,
+    state: Exclude<VideoStateResult, { state: "ready" }>,
 ): TranscriptBatchDeferredRecord {
   return {
     videoId: episode.videoId,
     reason: state.reason,
     diagnostic: state.diagnostic,
-    ...(episode.title === undefined ? {} : { title: episode.title }),
-    ...(episode.channelOrder === undefined ? {} : { channelOrder: episode.channelOrder }),
+    ...(episode.title === undefined ? {} : {title: episode.title}),
+    ...(episode.channelOrder === undefined ? {} : {channelOrder: episode.channelOrder}),
     tabs: [...episode.tabs],
   };
 }
 
 function transcriptBatchPendingRecord(
-  episode: TranscriptBatchEpisode,
-  reason: TranscriptBatchPendingReason,
+    episode: TranscriptBatchEpisode,
+    reason: TranscriptBatchPendingReason,
 ): TranscriptBatchPendingRecord {
   return {
     videoId: episode.videoId,
     reason,
-    ...(episode.title === undefined ? {} : { title: episode.title }),
-    ...(episode.channelOrder === undefined ? {} : { channelOrder: episode.channelOrder }),
+    ...(episode.title === undefined ? {} : {title: episode.title}),
+    ...(episode.channelOrder === undefined ? {} : {channelOrder: episode.channelOrder}),
     tabs: [...episode.tabs],
   };
 }
 
 function compareHandoffRecords(
-  left: { videoId: string },
-  right: { videoId: string },
+    left: { videoId: string },
+    right: { videoId: string },
 ): number {
   return left.videoId.localeCompare(right.videoId);
 }
@@ -650,16 +652,16 @@ function portablePath(path: string): string {
 
 function normalizeTranscriptTxtPaths(paths: readonly string[]): string[] {
   return [...new Set(
-    paths
-      .map((path) => portablePath(path).trim())
-      .filter((path) => path.length > 0),
+      paths
+          .map((path) => portablePath(path).trim())
+          .filter((path) => path.length > 0),
   )].sort((left, right) => left.localeCompare(right));
 }
 
 function transcriptBatchFailure(
-  episode: TranscriptBatchEpisode,
-  error: unknown,
-  videoDateAt: string | undefined,
+    episode: TranscriptBatchEpisode,
+    error: unknown,
+    videoDateAt: string | undefined,
 ): TranscriptBatchFailure {
   const message = error instanceof Error ? error.message : String(error);
   const failure: TranscriptBatchFailure = {
@@ -710,8 +712,8 @@ function normalizeTranscriptBatchStatus(value: unknown): TranscriptBatchStatus {
     ...emptyTranscriptBatchStatus(),
     pendingHandoffTxtPaths: normalizeTranscriptTxtPaths(readStringArray(object.pendingHandoffTxtPaths)),
     failures: object.failures
-      .map((failure) => transcriptBatchFailureFromJson(failure))
-      .filter((failure): failure is TranscriptBatchFailure => failure !== undefined),
+        .map((failure) => transcriptBatchFailureFromJson(failure))
+        .filter((failure): failure is TranscriptBatchFailure => failure !== undefined),
   };
 }
 
@@ -751,12 +753,12 @@ function transcriptBatchFailureFromJson(value: unknown): TranscriptBatchFailure 
 
 function readTranscriptFailureClassification(value: unknown): TranscriptFailureClassification {
   return value === "no_caption_tracks" ||
-    value === "language_unavailable" ||
-    value === "empty_transcript" ||
-    value === "rate_limited_or_blocked" ||
-    value === "fetch_failed"
-    ? value
-    : "fetch_failed";
+  value === "language_unavailable" ||
+  value === "empty_transcript" ||
+  value === "rate_limited_or_blocked" ||
+  value === "fetch_failed"
+      ? value
+      : "fetch_failed";
 }
 
 function emptyTranscriptBatchStatus(): TranscriptBatchStatus {
@@ -798,8 +800,8 @@ function emptyDeferredCounts(): Record<VideoReadinessReason, number> {
 
 function readVideoDateKind(value: unknown): VideoDateKind | undefined {
   return value === "actual_start" || value === "scheduled_start" || value === "published"
-    ? value
-    : undefined;
+      ? value
+      : undefined;
 }
 
 function readString(object: Record<string, unknown> | undefined, key: string): string | undefined {
@@ -821,6 +823,6 @@ function asRecord(value: unknown): Record<string, unknown> | undefined {
 
 function errorCode(error: unknown): string | undefined {
   return typeof error === "object" && error !== null && "code" in error
-    ? String((error as { code?: unknown }).code)
-    : undefined;
+      ? String((error as { code?: unknown }).code)
+      : undefined;
 }

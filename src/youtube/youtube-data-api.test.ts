@@ -19,7 +19,7 @@ test("calls the narrow channels endpoint with the expected typed parameters", as
       return jsonResponse({
         items: [{
           id: "UCE2x09tU0GwAGiSbFPEhIwQ",
-          contentDetails: { relatedPlaylists: { uploads: "UUE2x09tU0GwAGiSbFPEhIwQ" } },
+          contentDetails: {relatedPlaylists: {uploads: "UUE2x09tU0GwAGiSbFPEhIwQ"}},
         }],
       });
     },
@@ -40,8 +40,8 @@ test("calls the narrow channels endpoint with the expected typed parameters", as
 test("accepts empty and partial list responses but rejects malformed responses", async () => {
   const responses = [
     jsonResponse({}),
-    jsonResponse({ items: [{ id: "partial0001" }] }),
-    jsonResponse({ items: {} }),
+    jsonResponse({items: [{id: "partial0001"}]}),
+    jsonResponse({items: {}}),
   ];
   const client = createYoutubeDataApiClient({
     apiKey: "fixture-key",
@@ -51,16 +51,16 @@ test("accepts empty and partial list responses but rejects malformed responses",
   });
 
   assert.deepEqual(
-    await client.listVideos({ part: ["snippet"], id: ["empty000001"], maxResults: 1 }),
-    { items: [] },
+      await client.listVideos({part: ["snippet"], id: ["empty000001"], maxResults: 1}),
+      {items: []},
   );
   assert.deepEqual(
-    await client.listVideos({ part: ["snippet"], id: ["partial0001"], maxResults: 1 }),
-    { items: [{ id: "partial0001" }] },
+      await client.listVideos({part: ["snippet"], id: ["partial0001"], maxResults: 1}),
+      {items: [{id: "partial0001"}]},
   );
   await assert.rejects(
-    client.listVideos({ part: ["snippet"], id: ["invalid0001"], maxResults: 1 }),
-    /malformed response: items must be an array/u,
+      client.listVideos({part: ["snippet"], id: ["invalid0001"], maxResults: 1}),
+      /malformed response: items must be an array/u,
   );
 });
 
@@ -81,12 +81,12 @@ test("retries transient responses with bounded backoff and then succeeds", async
     fetch: async () => {
       requests += 1;
       return requests === 1
-        ? jsonResponse({ error: { message: "temporarily unavailable" } }, 503, { "retry-after": "2" })
-        : jsonResponse({ items: [{ id: "retry000001" }] });
+          ? jsonResponse({error: {message: "temporarily unavailable"}}, 503, {"retry-after": "2"})
+          : jsonResponse({items: [{id: "retry000001"}]});
     },
   });
 
-  const response = await client.listVideos({ part: ["snippet"], id: ["retry000001"], maxResults: 1 });
+  const response = await client.listVideos({part: ["snippet"], id: ["retry000001"], maxResults: 1});
 
   assert.deepEqual(response.items.map((item) => item.id), ["retry000001"]);
   assert.equal(requests, 2);
@@ -111,12 +111,12 @@ test("caps server Retry-After delays at the configured retry maximum", async () 
     fetch: async () => {
       requests += 1;
       return requests === 1
-        ? jsonResponse({ error: { message: "rate limited" } }, 429, { "retry-after": "86400" })
-        : jsonResponse({ items: [{ id: "retry000001" }] });
+          ? jsonResponse({error: {message: "rate limited"}}, 429, {"retry-after": "86400"})
+          : jsonResponse({items: [{id: "retry000001"}]});
     },
   });
 
-  const response = await client.listVideos({ part: ["snippet"], id: ["retry000001"], maxResults: 1 });
+  const response = await client.listVideos({part: ["snippet"], id: ["retry000001"], maxResults: 1});
 
   assert.deepEqual(response.items.map((item) => item.id), ["retry000001"]);
   assert.equal(requests, 2);
@@ -140,13 +140,13 @@ test("exhausts transient retries but does not retry permanent responses", async 
     },
     fetch: async () => {
       transientRequests += 1;
-      return jsonResponse({ error: { message: "still unavailable" } }, 503);
+      return jsonResponse({error: {message: "still unavailable"}}, 503);
     },
   });
 
   await assert.rejects(
-    transientClient.listVideos({ part: ["snippet"], id: ["retry000001"], maxResults: 1 }),
-    /failed after 3 attempts with HTTP 503/u,
+      transientClient.listVideos({part: ["snippet"], id: ["retry000001"], maxResults: 1}),
+      /failed after 3 attempts with HTTP 503/u,
   );
   assert.equal(transientRequests, 3);
   assert.deepEqual(transientSleeps, [10, 15]);
@@ -161,12 +161,12 @@ test("exhausts transient retries but does not retry permanent responses", async 
     logger: (message) => logs.push(message),
     fetch: async () => {
       permanentRequests += 1;
-      return jsonResponse({ error: { message: `invalid API key ${secret}` } }, 403);
+      return jsonResponse({error: {message: `invalid API key ${secret}`}}, 403);
     },
   });
 
   const permanentError = await captureError(
-    permanentClient.listVideos({ part: ["snippet"], id: ["denied00001"], maxResults: 1 }),
+      permanentClient.listVideos({part: ["snippet"], id: ["denied00001"], maxResults: 1}),
   );
   assert.equal(permanentRequests, 1);
   assert.doesNotMatch(permanentError.message, new RegExp(secret, "u"));
@@ -188,12 +188,12 @@ test("paces every Data API request through injected sleep and clock dependencies
     },
     fetch: async () => {
       starts.push(currentTime);
-      return jsonResponse({ items: [] });
+      return jsonResponse({items: []});
     },
   });
 
-  await client.listChannels({ part: ["contentDetails"], forHandle: "@DrAlexClarke" });
-  await client.listPlaylistItems({ part: ["contentDetails"], playlistId: "uploads", maxResults: 50 });
+  await client.listChannels({part: ["contentDetails"], forHandle: "@DrAlexClarke"});
+  await client.listPlaylistItems({part: ["contentDetails"], playlistId: "uploads", maxResults: 50});
 
   assert.deepEqual(starts, [5_000, 6_000]);
   assert.deepEqual(sleeps, [1_000]);
@@ -201,7 +201,7 @@ test("paces every Data API request through injected sleep and clock dependencies
 
 test("paginates uploads, filters ignored videos, enriches in 50-ID batches, and writes the final checkpoint", async (t) => {
   const fixtureRoot = await mkdtemp(join(tmpdir(), "naval-youtube-channel-"));
-  t.after(() => rm(fixtureRoot, { recursive: true, force: true }));
+  t.after(() => rm(fixtureRoot, {recursive: true, force: true}));
   const checkpointPath = join(fixtureRoot, "checkpoint.json");
   const playlistTokens: (string | null)[] = [];
   const videoBatchSizes: number[] = [];
@@ -211,36 +211,36 @@ test("paginates uploads, filters ignored videos, enriches in 50-ID batches, and 
     fetch: async (input) => {
       const url = requestUrl(input);
       switch (url.pathname) {
-        case "/youtube/v3/channels":
-          return jsonResponse({
-            items: [{
-              id: "UCE2x09tU0GwAGiSbFPEhIwQ",
-              contentDetails: { relatedPlaylists: { uploads: "uploads-playlist" } },
-            }],
-          });
-        case "/youtube/v3/playlistItems": {
-          const pageToken = url.searchParams.get("pageToken");
-          playlistTokens.push(pageToken);
-          return pageToken === null
+      case "/youtube/v3/channels":
+        return jsonResponse({
+          items: [{
+            id: "UCE2x09tU0GwAGiSbFPEhIwQ",
+            contentDetails: {relatedPlaylists: {uploads: "uploads-playlist"}},
+          }],
+        });
+      case "/youtube/v3/playlistItems": {
+        const pageToken = url.searchParams.get("pageToken");
+        playlistTokens.push(pageToken);
+        return pageToken === null
             ? jsonResponse({
-                items: [playlistItem("keep-video1"), playlistItem("ignore00001")],
-                nextPageToken: "page-2",
-              })
-            : jsonResponse({ items: [playlistItem("keep-video2")] });
-        }
-        case "/youtube/v3/videos": {
-          const ids = (url.searchParams.get("id") ?? "").split(",").filter(Boolean);
-          videoBatchSizes.push(ids.length);
-          return jsonResponse({
-            items: ids.map((id) => ({
-              id,
-              contentDetails: { duration: "PT2M" },
-              status: { uploadStatus: "processed" },
-            })),
-          });
-        }
-        default:
-          return jsonResponse({ error: { message: "unexpected endpoint" } }, 404);
+              items: [playlistItem("keep-video1"), playlistItem("ignore00001")],
+              nextPageToken: "page-2",
+            })
+            : jsonResponse({items: [playlistItem("keep-video2")]});
+      }
+      case "/youtube/v3/videos": {
+        const ids = (url.searchParams.get("id") ?? "").split(",").filter(Boolean);
+        videoBatchSizes.push(ids.length);
+        return jsonResponse({
+          items: ids.map((id) => ({
+            id,
+            contentDetails: {duration: "PT2M"},
+            status: {uploadStatus: "processed"},
+          })),
+        });
+      }
+      default:
+        return jsonResponse({error: {message: "unexpected endpoint"}}, 404);
       }
     },
   });
@@ -266,7 +266,7 @@ test("paginates uploads, filters ignored videos, enriches in 50-ID batches, and 
 
 test("honors the optional page limit and preserves the last successful playlist checkpoint on failure", async (t) => {
   const fixtureRoot = await mkdtemp(join(tmpdir(), "naval-youtube-checkpoint-"));
-  t.after(() => rm(fixtureRoot, { recursive: true, force: true }));
+  t.after(() => rm(fixtureRoot, {recursive: true, force: true}));
   const limitedCalls: (string | null)[] = [];
   const limitedClient = createYoutubeDataApiClient({
     apiKey: "fixture-key",
@@ -278,7 +278,7 @@ test("honors the optional page limit and preserves the last successful playlist 
       }
       if (url.pathname.endsWith("/playlistItems")) {
         limitedCalls.push(url.searchParams.get("pageToken"));
-        return jsonResponse({ items: [playlistItem("keep-video1")], nextPageToken: "page-2" });
+        return jsonResponse({items: [playlistItem("keep-video1")], nextPageToken: "page-2"});
       }
       return videoResponse(url);
     },
@@ -307,8 +307,8 @@ test("honors the optional page limit and preserves the last successful playlist 
       if (url.pathname.endsWith("/playlistItems")) {
         playlistPage += 1;
         return playlistPage === 1
-          ? jsonResponse({ items: [playlistItem("keep-video1")], nextPageToken: "page-2" })
-          : jsonResponse({ error: { message: "fixture failure" } }, 503);
+            ? jsonResponse({items: [playlistItem("keep-video1")], nextPageToken: "page-2"})
+            : jsonResponse({error: {message: "fixture failure"}}, 503);
       }
       return videoResponse(url);
     },
@@ -332,11 +332,11 @@ test("honors the optional page limit and preserves the last successful playlist 
 
 test("batches 50 video IDs, checkpoints a partial response, and resumes only missing IDs", async (t) => {
   const fixtureRoot = await mkdtemp(join(tmpdir(), "naval-youtube-metadata-"));
-  t.after(() => rm(fixtureRoot, { recursive: true, force: true }));
+  t.after(() => rm(fixtureRoot, {recursive: true, force: true}));
   const inputPath = join(fixtureRoot, "episodes.json");
   const outputPath = join(fixtureRoot, "video-metadata.json");
-  const videoIds = Array.from({ length: 51 }, (_, index) => `id-${String(index).padStart(8, "0")}`);
-  await writeFile(inputPath, `${JSON.stringify({ episodes: videoIds.map((videoId) => ({ videoId })) })}\n`);
+  const videoIds = Array.from({length: 51}, (_, index) => `id-${String(index).padStart(8, "0")}`);
+  await writeFile(inputPath, `${JSON.stringify({episodes: videoIds.map((videoId) => ({videoId}))})}\n`);
 
   const requestedBatches: string[][] = [];
   let batchNumber = 0;
@@ -350,8 +350,8 @@ test("batches 50 video IDs, checkpoints a partial response, and resumes only mis
       requestedBatches.push(ids);
       batchNumber += 1;
       return batchNumber === 1
-        ? jsonResponse({ items: ids.slice(0, 49).map(metadataVideo) })
-        : jsonResponse({ error: { message: "second batch failed" } }, 503);
+          ? jsonResponse({items: ids.slice(0, 49).map(metadataVideo)})
+          : jsonResponse({error: {message: "second batch failed"}}, 503);
     },
   });
 
@@ -377,7 +377,7 @@ test("batches 50 video IDs, checkpoints a partial response, and resumes only mis
     fetch: async (input) => {
       const ids = (requestUrl(input).searchParams.get("id") ?? "").split(",").filter(Boolean);
       resumedBatches.push(ids);
-      return jsonResponse({ items: ids.map(metadataVideo) });
+      return jsonResponse({items: ids.map(metadataVideo)});
     },
   });
   const resumed = await fetchAndStoreVideoMetadata({
@@ -397,7 +397,7 @@ test("batches 50 video IDs, checkpoints a partial response, and resumes only mis
 
 test("resolves API keys in explicit, file, then environment order", async (t) => {
   const fixtureRoot = await mkdtemp(join(tmpdir(), "naval-youtube-key-"));
-  t.after(() => rm(fixtureRoot, { recursive: true, force: true }));
+  t.after(() => rm(fixtureRoot, {recursive: true, force: true}));
   const keyPath = join(fixtureRoot, "youtube-key.txt");
   await writeFile(keyPath, "file-key\n", "utf8");
   const previous = process.env.YOUTUBE_API_KEY;
@@ -410,8 +410,8 @@ test("resolves API keys in explicit, file, then environment order", async (t) =>
     }
   });
 
-  assert.equal(await resolveYoutubeApiKey({ apiKey: "explicit-key", apiKeyFile: keyPath }), "explicit-key");
-  assert.equal(await resolveYoutubeApiKey({ apiKeyFile: keyPath }), "file-key");
+  assert.equal(await resolveYoutubeApiKey({apiKey: "explicit-key", apiKeyFile: keyPath}), "explicit-key");
+  assert.equal(await resolveYoutubeApiKey({apiKeyFile: keyPath}), "file-key");
   assert.equal(await resolveYoutubeApiKey({}), "environment-key");
 });
 
@@ -423,13 +423,13 @@ function requestUrl(input: Parameters<typeof fetch>[0]): URL {
 }
 
 function jsonResponse(
-  value: unknown,
-  status = 200,
-  headers: Record<string, string> = {},
+    value: unknown,
+    status = 200,
+    headers: Record<string, string> = {},
 ): Response {
   return new Response(JSON.stringify(value), {
     status,
-    headers: { "content-type": "application/json", ...headers },
+    headers: {"content-type": "application/json", ...headers},
   });
 }
 
@@ -437,7 +437,7 @@ function channelResponse(): Response {
   return jsonResponse({
     items: [{
       id: "UCE2x09tU0GwAGiSbFPEhIwQ",
-      contentDetails: { relatedPlaylists: { uploads: "uploads-playlist" } },
+      contentDetails: {relatedPlaylists: {uploads: "uploads-playlist"}},
     }],
   });
 }
@@ -448,13 +448,13 @@ function playlistItem(videoId: string): Record<string, unknown> {
       videoId,
       videoPublishedAt: "2026-08-02T18:00:00Z",
     },
-    snippet: { title: `Video ${videoId}` },
+    snippet: {title: `Video ${videoId}`},
   };
 }
 
 function videoResponse(url: URL): Response {
   const ids = (url.searchParams.get("id") ?? "").split(",").filter(Boolean);
-  return jsonResponse({ items: ids.map(metadataVideo) });
+  return jsonResponse({items: ids.map(metadataVideo)});
 }
 
 function metadataVideo(id: string): Record<string, unknown> {
@@ -465,8 +465,8 @@ function metadataVideo(id: string): Record<string, unknown> {
       publishedAt: "2026-08-02T18:00:00Z",
       liveBroadcastContent: "none",
     },
-    contentDetails: { duration: "PT2M" },
-    status: { uploadStatus: "processed" },
+    contentDetails: {duration: "PT2M"},
+    status: {uploadStatus: "processed"},
   };
 }
 

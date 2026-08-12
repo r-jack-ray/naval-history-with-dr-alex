@@ -1,13 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import {
-  extractJson3TranscriptSegments,
-  extractTranscriptSegments,
-  extractVttTranscriptSegments,
-  transcriptToTsv,
-  transcriptToTxt,
-} from "./transcripts.js";
+import { extractJson3TranscriptSegments, extractTranscriptSegments, extractVttTranscriptSegments, transcriptToTsv, transcriptToTxt, } from "./transcripts.js";
 
 test("extracts transcript segments from legacy transcript shape", () => {
   const segments = extractTranscriptSegments({
@@ -19,13 +13,13 @@ test("extracts transcript segments from legacy transcript shape", () => {
               type: "TranscriptSegment",
               start_ms: "1230",
               end_ms: "4560",
-              snippet: { text: "Opening line" },
-              start_time_text: { text: "0:01" },
+              snippet: {text: "Opening line"},
+              start_time_text: {text: "0:01"},
               target_id: "abc.transcript.0",
             },
             {
               type: "TranscriptSectionHeader",
-              title: { text: "Chapter" },
+              title: {text: "Chapter"},
             },
           ],
         },
@@ -52,7 +46,7 @@ test("extracts transcript segments from YouTube json3 caption events", () => {
       {
         tStartMs: 1234,
         dDurationMs: 2200,
-        segs: [{ utf8: "Opening" }, { utf8: " line" }],
+        segs: [{utf8: "Opening"}, {utf8: " line"}],
       },
       {
         tStartMs: 4000,
@@ -115,7 +109,7 @@ test("formats transcript text and TSV outputs", () => {
 
   assert.equal(transcriptToTxt(transcript), "[0:01] First\tline\n");
   assert.equal(
-    transcriptToTsv(transcript),
-    "StartSeconds\tEndSeconds\tStart\tText\tVideoUrl\n1\t3\t0:01\tFirst line\thttps://youtu.be/abc123?t=1\n",
+      transcriptToTsv(transcript),
+      "StartSeconds\tEndSeconds\tStart\tText\tVideoUrl\n1\t3\t0:01\tFirst line\thttps://youtu.be/abc123?t=1\n",
   );
 });
