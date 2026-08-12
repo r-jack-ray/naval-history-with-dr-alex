@@ -63,7 +63,6 @@ Repair site-pipeline failures without widening scope or destabilizing establishe
 - Trace the first source error before changing generated output.
 - Use `$naval-video-page-prototype` for generated archive contracts, Astro routes, templates, generated-data adapters, or Pagefind behavior changes. Build repair diagnoses and verifies those changes but does not widen itself into their implementation workflow.
 - For `getStaticPaths` failures, remember that Astro isolates the exported function from frontmatter-local computed constants. Move reusable route data behind imported adapter helpers. A full build is the only complete prerender-path check because `astro check` does not execute path generation; run it only after explicit user authorization, otherwise report that validation gap without running it.
-- Treat writer-lease contention as a stop condition. Do not bypass the repository lock or interfere with scheduled transcript workers.
 
 ## Command Selection
 
@@ -89,7 +88,7 @@ Choose the smallest applicable outcome:
 
 - Do not run `npm run generate:site-data` immediately before `npm run site:check` or `npm run site:build`.
 - Do not run `npm run site:check` immediately before `npm run site:build`. A successful full build normally supersedes the site check; if both are specifically required, run `site:build` once and then `site:check:generated`.
-- Do not start another writer while a pipeline command is running. If a command is interrupted, verify its exact process tree has exited and its writer lease has been released before starting another command; never delete an active lease.
+- Do not start another pipeline command while one is running. If a command is interrupted, verify its exact process tree has exited before starting another command.
 - Honor user-owned validation literally. When the user says they will build or asks Codex not to run checks, generation, or builds, leave those commands to the user.
 
 ## Validation

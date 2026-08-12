@@ -1,6 +1,5 @@
 import assert from "node:assert/strict";
 import { execFile } from "node:child_process";
-import { existsSync } from "node:fs";
 import { mkdir, mkdtemp, readdir, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -16,9 +15,6 @@ const generateScriptPath = fileURLToPath(
 );
 const syncScriptPath = fileURLToPath(
     new URL("../../src/scripts/sync-video-topics-bun.ts", import.meta.url),
-);
-const lockToolPath = fileURLToPath(
-    new URL("../../src/scripts/site-content-pipeline-lock.mjs", import.meta.url),
 );
 
 test("generation rejects pending normalization before changing topic or archive output", async () => {
@@ -88,7 +84,7 @@ test("generation rejects an invalid catalog before changing archive output", asy
   }
 });
 
-test("missing topics require leased synchronization while generation remains source-read-only", async () => {
+test("missing topics require explicit synchronization while generation remains source-read-only", async () => {
   const fixture = await makeFixture();
   try {
     const canonicalPaths = await writeCompleteArchiveInputs(fixture);
@@ -108,8 +104,7 @@ test("missing topics require leased synchronization while generation remains sou
     assert.deepEqual(await readTextSnapshot(canonicalPaths), beforeGeneration);
     assert.equal(await readFile(fixture.sentinelPath, "utf8"), "existing archive bytes\n");
 
-    await runSynchronizerUnderLease(fixture);
-    assert.equal(existsSync(fixture.lockPath), false);
+    await runSynchronizer(fixture);
     const synchronizedStoreText = await readFile(topicStorePath, "utf8");
     const synchronizedStore = JSON.parse(synchronizedStoreText) as {
       topics: Array<{ slug: string; title: string; summary?: string }>;
@@ -133,7 +128,7 @@ test("missing topics require leased synchronization while generation remains sou
       }
     }
 
-    await runSynchronizerUnderLease(fixture);
+    await runSynchronizer(fixture);
     assert.equal(await readFile(topicStorePath, "utf8"), synchronizedStoreText);
 
     await runGenerator(fixture);
@@ -159,7 +154,6 @@ interface GeneratorFixture {
   patternsInput: string;
   outputDir: string;
   sentinelPath: string;
-  lockPath: string;
 }
 
 async function makeFixture(): Promise<GeneratorFixture> {
@@ -179,7 +173,6 @@ async function makeFixture(): Promise<GeneratorFixture> {
     patternsInput: join(root, "patterns.tsv"),
     outputDir,
     sentinelPath,
-    lockPath: join(root, "site-content.lock"),
   };
 }
 
@@ -196,14 +189,8 @@ async function runGenerator(fixture: GeneratorFixture): Promise<unknown> {
   ]);
 }
 
-async function runSynchronizerUnderLease(fixture: GeneratorFixture): Promise<unknown> {
-  return execFileAsync("node", [
-    lockToolPath,
-    "run",
-    "--lock-path", fixture.lockPath,
-    "--purpose", "phase-2-topic-sync-test",
-    "--",
-    "bun",
+async function runSynchronizer(fixture: GeneratorFixture): Promise<unknown> {
+  return execFileAsync("bun", [
     "run",
     syncScriptPath,
     "--segments-input", fixture.segmentsInput,

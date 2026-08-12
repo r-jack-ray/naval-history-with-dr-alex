@@ -14,7 +14,7 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` for explicitly 
 - Re-inventory the current corpus for every selected topic family. Supplied examples illustrate the problem; they do not define a closed list.
 - Use `$naval-transcript-to-site-content` or `$naval-site-content-auditor` when the task is to discover or add transcript-backed topics in one selected shard. Use `$naval-site-build-repair` for a narrow missing-topic or invalid-topic failure whose repair does not require corpus taxonomy work.
 - Leave `site/src/data/generated/archive/`, `site/dist/`, processing logs, schedules, package files, and public prose untouched. Do not run archive generation, Astro, Pagefind, repository-wide tests, or site builds unless the user separately authorises them.
-- Run only one report, synchronizer, or other shared writer at a time. Never bypass an active repository writer lease.
+- Run only one report, synchronizer, or other shared writer at a time.
 
 ## Start
 

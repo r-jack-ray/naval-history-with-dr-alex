@@ -115,9 +115,9 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 | Script | Purpose |
 | --- | --- |
 | `report:video-segment-audit-risk` | Rank curated shards for follow-up and write `reports/video-segment-audit-risk.tsv`. |
-| `audit:site-content` | Validate current-schema shards and transcript evidence, then write the backlog report. This command uses the shared writer lease. |
+| `audit:site-content` | Validate current-schema shards and transcript evidence, then write the backlog report. |
 | `diagnose:site-content-duplicates` | Check curated shards for duplicate segment IDs and slugs. |
-| `sync:video-topics` | Add missing shared topic records derived from shard usage and normalization policy with parallel Bun workers. This command writes `topics.json` under the shared writer lease. |
+| `sync:video-topics` | Add missing shared topic records derived from shard usage and normalization policy with parallel Bun workers. |
 | `check:video-topics` | Verify registry completeness without writing source and name the explicit synchronization command when records are missing. |
 | `audit:topic-normalization` | Read-only validation of topic-normalization policy against curated shards with parallel Bun workers. |
 | `audit:transcript-schedules` | Audit one or more explicitly supplied transcript schedules; at least one `--schedule <path>` is required. |
@@ -140,7 +140,7 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 
 | Script | Purpose |
 | --- | --- |
-| `generate:site-data` | Validate registry completeness and regenerate the ignored split archive under the generated-output writer lease. It never writes `src/derived/video-segments/topics.json`. |
+| `generate:site-data` | Validate registry completeness and regenerate the ignored split archive. It never writes `src/derived/video-segments/topics.json`. |
 | `site:dev` | Validate/generate the archive, then start Astro without changing canonical source. |
 | `site:preview` | Preview an existing `site/dist/` build. |
 | `site:check` | Regenerate archive data, then run the Astro check. |
@@ -347,7 +347,7 @@ Q&A stays as `kind: qa` inside the segment model rather than a separate question
 
 Transcript curation has one selected semantic-edit shard plus one deterministic shared-registry finalization. Each run must be given exactly one stored TXT transcript and must edit only its manifest-owned `src/derived/video-segments/<manifest.fileStem>.json` file. The transcript basename, `manifest.fileStem`, and shard basename must match; do not derive a new shard name from current title metadata.
 
-The curation run reads the full selected transcript, keeps lecture material as chapters or notable points, and creates `kind: qa` records only for substantive transcript-visible prompts and answers. It reads `src/derived/topic-normalization-patterns.tsv`, resolves new slugs through active creation rules, and preserves established slugs unless the active creation policy canonicalizes them. It applies and validates the canonical shard write without acquiring or waiting on the repository writer lease. After the shard write is complete, it acquires the lease only for `npm run sync:video-topics` and the one required result-line append to `src/derived/site-content-processing.log`. A lease or synchronization failure prevents the completion row but does not invalidate the completed shard write. The run edits no other shard, never manually edits the normalization catalog or `topics.json`, performs no corpus-wide topic rewrite, and writes no schedules, reports, generated archives, package/tooling files, or site sources. It also does not run repository-wide audits, generation, tests, or builds.
+The curation run reads the full selected transcript, keeps lecture material as chapters or notable points, and creates `kind: qa` records only for substantive transcript-visible prompts and answers. It reads `src/derived/topic-normalization-patterns.tsv`, resolves new slugs through active creation rules, and preserves established slugs unless the active creation policy canonicalizes them. It applies and validates the canonical shard write, runs `npm run sync:video-topics`, and appends the one required result line to `src/derived/site-content-processing.log` only after synchronization succeeds. A synchronization failure prevents the completion row but does not invalidate the completed shard write. The run edits no other shard, never manually edits the normalization catalog or `topics.json`, performs no corpus-wide topic rewrite, and writes no schedules, reports, generated archives, package/tooling files, or site sources. It also does not run repository-wide audits, generation, tests, or builds.
 
 For agent-driven curation, use `.agents/transcript-content-curator.md` with `.agents/skills/naval-transcript-to-site-content/SKILL.md`. For a follow-up substance and wording pass on one explicitly selected shard, use `.agents/site-content-auditor.md` with `.agents/skills/naval-site-content-auditor/SKILL.md`.
 
@@ -369,7 +369,7 @@ The existing processing log has this exact semicolon-separated header:
 timestamp;shardPath;result;needsFurtherProcessing;notes
 ```
 
-Each curator or auditor result is one newline-terminated five-field row appended at the physical bottom. `shardPath` is the selected manifest-owned JSON shard, and `needsFurtherProcessing` is exactly `yes` or `no`. Both workflows write and validate the independently owned shard without the repository lease, then keep the shared writer lease only across deterministic topic synchronization and the append. The curator appends only after its shard write and synchronization succeed; the auditor does the same after every completed selected-file audit, including unchanged, saturated, and intentionally empty results. A synchronization failure is reported without a completion row.
+Each curator or auditor result is one newline-terminated five-field row appended at the physical bottom. `shardPath` is the selected manifest-owned JSON shard, and `needsFurtherProcessing` is exactly `yes` or `no`. The curator appends only after its shard write and synchronization succeed; the auditor does the same after every completed selected-file audit, including unchanged, saturated, and intentionally empty results. A synchronization failure is reported without a completion row.
 
 Write new timestamps as exactly 19-character local `yyyy-MM-ddTHH:mm:ss` values. Do not write fractional seconds, a trailing `Z`, or a numeric UTC offset. The reader still accepts older ISO timestamps with `Z` or a numeric UTC offset for compatibility, but those legacy forms are not templates for new writes or repairs and do not need manual removal merely for parsing. The required final newline is also not a data row.
 
@@ -432,31 +432,12 @@ Other project workflows are:
 - `.agents/site-archive-builder.md`: role brief for Astro/Pagefind pages, routes, search, and generated-data adapters.
 - `.agents/skills/naval-video-page-prototype/SKILL.md`: reusable workflow for Astro/Pagefind study-guide implementation.
 - `.agents/skills/naval-site-build-repair/SKILL.md`: reusable workflow for diagnosing and repairing site-pipeline failures.
-- `src/scripts/validate-content-pipeline.ts`: audit, regenerate generated site data, run Astro checks, and optionally run the full repository check.
 
 The process is intentionally segment-first. Use `kind: qa` only for actual Q&A exchanges; keep lecture material as `chapter`, `notable_point`, or `transcript_excerpt`.
 
-### Shared Content-Pipeline Writes
+### Generated Site Data
 
 The deterministic manifest and shards under `site/src/data/generated/archive/` are ignored build output, not canonical source. `npm run generate:site-data`, `npm run site:dev`, and `npm run site:check` regenerate them directly; `npm run site:build` regenerates them only when its validated cache requires that stage. These commands fail with an actionable `npm run sync:video-topics` instruction rather than editing the canonical registry. Never hand-edit or commit `index.json` or its listed files; `index.json` remains the runtime manifest even though Git does not track it. The one-pass CI graph runs tests and then invokes `site:build` once; that wrapper owns source validation plus cache-aware archive, Astro, and official Pagefind work. `check:production` then validates the existing output without starting another build.
-
-The generated archive, backlog report, shared topic registry, and processing log are protected by the repository-wide writer lease at `.tmp/site-content-pipeline.lock`; independently owned per-video shards are not. Direct shared-writer commands such as `npm run audit:site-content`, `npm run sync:video-topics`, and `npm run generate:site-data` acquire a short-lived lease automatically. A coordinator that intentionally groups several shared-output operations may acquire one persistent lease and pass its token to the supported commands:
-
-```powershell
-$lease = node src/scripts/site-content-pipeline-lock.mjs acquire --owner "content-coordinator" --purpose "shared-content-integration" --recover-stale | ConvertFrom-Json
-```
-
-Keep `$lease.lease.token` for the current run and export it before invoking any normal pipeline npm command, so that command joins the existing lease:
-
-```powershell
-$env:CONTENT_PIPELINE_LOCK_TOKEN = $lease.lease.token
-node --import tsx src/scripts/validate-content-pipeline.ts --skip-repo-check --lock-token $lease.lease.token
-Remove-Item Env:CONTENT_PIPELINE_LOCK_TOKEN -ErrorAction SilentlyContinue
-```
-
-The TypeScript validator releases the lease in `finally` on success or failure; the caller clears its own environment variable after the child process returns. If a run stops before reaching validation, release it explicitly with `node src/scripts/site-content-pipeline-lock.mjs release --token $lease.lease.token`. Leases expire after 90 minutes unless renewed; use `status` to inspect a blocker, and `acquire --recover-stale` to quarantine an expired lease with its owner metadata before continuing.
-
-Lane-isolated transcript automations follow their prompt-owned atomic claim, lane-private log, video-specific temporary checks, and exact completion/reset procedure. They remain single-agent. Each one writes and validates its independently owned canonical shard without acquiring or waiting on the repository lease. It then acquires the short shared-output lease only for deterministic topic synchronization and the processing-log append, releasing it before lane completion. They do not manually edit shared topics or write reports or generated archives.
 
 ## Project Helpers
 
@@ -467,15 +448,6 @@ Lane-isolated transcript automations follow their prompt-owned atomic claim, lan
 - `.agents/skills/naval-transcript-to-site-content/SKILL.md`: reusable Codex skill for processing one transcript into curated site content.
 - `.agents/skills/naval-site-content-auditor/SKILL.md`: reusable Codex skill for strengthening one selected video shard.
 - `.agents/skills/naval-site-build-repair/SKILL.md`: reusable Codex skill for diagnosing and repairing site-pipeline failures.
-- `src/scripts/validate-site.ts`: optional validation coordinator for site checks and the full repository check.
-- `src/scripts/validate-content-pipeline.ts`: optional validation coordinator for transcript curation plus generated site checks.
-
-Run the helper directly when you want a site-focused validation pass:
-
-```powershell
-node --import tsx src/scripts/validate-site.ts --skip-repo-check
-```
-
 ## Contributor Notes
 
 See `AGENTS.md` for repository-specific contributor and agent guidance.

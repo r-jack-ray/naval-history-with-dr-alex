@@ -36,7 +36,7 @@ test("all direct site commands load the shared properties file", async () => {
   ]) {
     assert.match(
       packageJson.scripts[scriptName] ?? "",
-      /node --env-file=site-build\.properties/u,
+      /(?:node|bun) --env-file=site-build\.properties/u,
       `${scriptName} must load site-build.properties`,
     );
   }

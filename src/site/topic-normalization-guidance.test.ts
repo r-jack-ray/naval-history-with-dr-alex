@@ -81,7 +81,7 @@ test("guidance omits retired rollout commands and URL compatibility claims", asy
   }
 });
 
-test("curator and auditor guidance keep shard writes lock-free and delegate shared-writer coordination", async () => {
+test("curator and auditor guidance keep shard scope and finalization order", async () => {
   for (const relativePath of shardWorkflowPaths) {
     const guidance = await readGuidance(relativePath);
 
@@ -115,21 +115,6 @@ test("curator and auditor guidance keep shard writes lock-free and delegate shar
     );
     assert.match(
       guidance,
-      /elevated[^.]{0,120}(?:package )?command[^.]{0,120}owns[^.]{0,120}internal (?:shared-)?writer coordination/iu,
-      `${relativePath} must delegate shared-writer coordination to the elevated synchronizer`,
-    );
-    assert.match(
-      guidance,
-      /(?:do not|does not|must not)[^.]{0,220}(?:directly )?invoke[^.]{0,120}site-content-pipeline-lock\.mjs/iu,
-      `${relativePath} must prohibit direct lock-helper invocation`,
-    );
-    assert.match(
-      guidance,
-      /(?:selected|canonical)[^.]{0,100}shard[^.]{0,220}without[^.]{0,120}(?:writer |repository )?lease/iu,
-      `${relativePath} must write the independently owned shard without the repository lease`,
-    );
-    assert.match(
-      guidance,
       /(?:shard write|canonical shard write)[\s\S]{0,900}sync:video-topics/iu,
       `${relativePath} must order the shard write before synchronization`,
     );
@@ -137,11 +122,6 @@ test("curator and auditor guidance keep shard writes lock-free and delegate shar
       guidance,
       /(?:append(?:s|ing)? exactly one|completion row)[\s\S]{0,420}only after synchronization succeeds/iu,
       `${relativePath} must append completion only after successful synchronization`,
-    );
-    assert.doesNotMatch(
-      guidance,
-      /acquire[^.]{0,180}(?:writer )?lease[^.]{0,180}(?:before|immediately before)[^.]{0,100}(?:shard write|canonical shard write)/iu,
-      `${relativePath} must not acquire the repository lease for a shard write`,
     );
     assert.doesNotMatch(
       guidance,
@@ -161,12 +141,6 @@ test("curator and auditor guidance keep shard writes lock-free and delegate shar
     /After the selected shard write is complete[\s\S]{0,320}sync:video-topics[\s\S]{0,260}first attempt/iu,
     "the curator must run the elevated synchronizer only after its shard write",
   );
-  assert.match(
-    curatorSkill,
-    /Do not directly invoke[^.]{0,160}site-content-pipeline-lock\.mjs[\s\S]{0,520}package command owns any internal shared-writer coordination/iu,
-    "the curator must leave shared-writer coordination to the synchronization command",
-  );
-
   const auditorSkill = await readGuidance(auditorSkillPath);
   assert.match(
     auditorSkill,
@@ -232,7 +206,6 @@ test("companion guidance preserves review blockers, shard boundaries, and finali
   assert.match(agents, /preserve established slugs unless[^.]{0,120}active creation policy canonicalizes/iu);
   assert.match(agents, /review[^.]{0,220}block/iu);
   assert.match(agents, /must not perform corpus-wide topic rewrites/iu);
-  assert.match(agents, /selected shard[^.]{0,260}without[^.]{0,120}writer lease/iu);
   assert.match(agents, /After the shard write is complete[\s\S]{0,500}sync:video-topics[\s\S]{0,360}append exactly one result line[\s\S]{0,240}synchronization succeeds/iu);
   assert.match(agents, /report:video-topic-usage[\s\S]{0,500}topic-normalization-review\.tsv/iu);
   assert.match(agents, /do not expect routine site builds[^.]{0,140}curation backlog/iu);
@@ -251,10 +224,8 @@ test("companion guidance preserves review blockers, shard boundaries, and finali
   assert.match(config, /preserve established slugs unless the active creation policy canonicalizes them/iu);
   assert.match(config, /review or ambiguous[^.]{0,220}before shared-output finalization/iu);
   assert.match(config, /must not.{0,420}perform corpus-wide topic rewrites/iu);
-  assert.match(config, /selected canonical shard without the repository writer lease/iu);
-  assert.match(config, /After the shard write[^.]{0,220}sync:video-topics[^.]{0,220}package command owns[^.]{0,160}internal writer coordination/iu);
+  assert.match(config, /After the shard write[^.]{0,220}sync:video-topics/iu);
   assert.match(config, /Append the processing-log row[^.]{0,120}synchronization succeeds/iu);
-  assert.doesNotMatch(config, /shared-output lease/iu);
 
   const readme = await readGuidance("README.md");
   assert.match(readme, /steady-state topic creation/iu);
@@ -364,8 +335,8 @@ test("build repair audits steady-state policy and delegates semantic and site im
   );
   assert.match(
     guidance,
-    /if a command is interrupted[^.]{0,240}process tree[^.]{0,240}writer lease/iu,
-    "the skill must require interrupted writer cleanup before another pipeline command",
+    /if a command is interrupted[^.]{0,240}process tree[^.]{0,240}before starting another command/iu,
+    "the skill must require interrupted process cleanup before another pipeline command",
   );
   assert.match(
     guidance,

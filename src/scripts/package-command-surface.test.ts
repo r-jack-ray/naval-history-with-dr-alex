@@ -70,7 +70,6 @@ test("Phase 7 keeps canonical commands and retires zero-caller scripts", async (
     join(repositoryRoot, ".codex", "hooks", "run-workspace-pagefind.mjs"),
     join(repositoryRoot, ".codex", "hooks", "site-build-if-changed.mjs"),
     join(repositoryRoot, ".codex", "hooks", "site-build-support.mjs"),
-    join(repositoryRoot, ".codex", "hooks", "site-content-pipeline-lock.mjs"),
     join(repositoryRoot, ".codex", "hooks", "site-dev.mjs"),
     join(repositoryRoot, ".codex", "hooks", "validate-content-pipeline.ps1"),
     join(repositoryRoot, ".codex", "hooks", "validate-site.ps1"),
@@ -150,11 +149,7 @@ test("Phase 7 keeps canonical commands and retires zero-caller scripts", async (
     "run-workspace-pagefind.mjs",
     "site-build-if-changed.mjs",
     "site-build-support.mjs",
-    "site-content-pipeline-lock.mjs",
     "site-dev.mjs",
-    "validate-content-pipeline.ts",
-    "validate-site.ts",
-    "validation-workflow.ts",
   ]) {
     assert.equal(
         existsSync(join(repositoryRoot, "src", "scripts", retainedScriptPath)),

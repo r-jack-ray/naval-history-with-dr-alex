@@ -21,7 +21,6 @@ const siteOutputSentinels = [
 ];
 const archiveInputPaths = [
   "src/scripts/site-build-if-changed.mjs",
-  "src/scripts/site-content-pipeline-lock.mjs",
   "package.json",
   "package-lock.json",
   ".bun-version",

@@ -1,7 +1,5 @@
 import assert from "node:assert/strict";
-import { spawn } from "node:child_process";
-import { existsSync } from "node:fs";
-import { mkdir, mkdtemp, readdir, readFile, rm, writeFile } from "node:fs/promises";
+import { mkdtemp, readdir, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import test from "node:test";
@@ -12,8 +10,6 @@ import { replaceFileAtomically } from "./atomic-write.js";
 
 const currentDirectory = dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = resolve(currentDirectory, "..", "..");
-const lockTool = join(repositoryRoot, "src", "scripts", "site-content-pipeline-lock.mjs");
-const worker = join(repositoryRoot, "src", "pipeline", "test-support", "shared-output-worker.ts");
 
 test("atomic replacement preserves a complete previous file until replacement succeeds", async () => {
   const directory = await mkdtemp(join(tmpdir(), "atomic-write-"));
@@ -53,9 +49,6 @@ test("Phase 2 commands keep topic writes explicit and avoid duplicate site pipel
   const packageJson = JSON.parse(await readFile(join(repositoryRoot, "package.json"), "utf8")) as {
     scripts: Record<string, string>;
   };
-  const contentValidator = await readFile(join(repositoryRoot, "src", "scripts", "validate-content-pipeline.ts"), "utf8");
-  const siteValidator = await readFile(join(repositoryRoot, "src", "scripts", "validate-site.ts"), "utf8");
-  const validationWorkflow = await readFile(join(repositoryRoot, "src", "scripts", "validation-workflow.ts"), "utf8");
   const siteBuildWrapper = await readFile(join(repositoryRoot, "src", "scripts", "site-build-if-changed.mjs"), "utf8");
   const archiveAdapter = await readFile(join(repositoryRoot, "site", "src", "data", "archive.ts"), "utf8");
   const generateSiteDataSource = await readFile(join(repositoryRoot, "src", "scripts", "generate-site-data.ts"), "utf8");
@@ -67,36 +60,20 @@ test("Phase 2 commands keep topic writes explicit and avoid duplicate site pipel
   const focusedSeoValidator = await readFile(join(repositoryRoot, "src", "scripts", "check-site-seo.ts"), "utf8");
   const focusedDateValidator = await readFile(join(repositoryRoot, "src", "scripts", "check-rendered-video-dates.ts"), "utf8");
 
-  assert.match(
-      contentValidator,
-      /args:\s*\["run", "audit:topic-normalization", "--", "--patterns-input", topicPatternsPath\]/u,
+  assert.equal(
+      packageJson.scripts["audit:site-content"],
+      "node --import tsx src/scripts/audit-site-content.ts",
   );
-  assert.match(
-      contentValidator,
-      /args:\s*\["run", "generate:site-data", "--", "--patterns-input", topicPatternsPath\]/u,
-  );
-  assert.match(siteValidator, /args: \["run", "generate:site-data"\]/u);
-  assert.doesNotMatch(contentValidator, /dist\/scripts\/(audit-topic-normalization|generate-site-data)\.js/u);
-  assert.doesNotMatch(siteValidator, /dist\/scripts\/generate-site-data\.js/u);
-  assert.match(contentValidator, /"src\/scripts\/audit-site-content\.ts"/u);
-  assert.doesNotMatch(contentValidator, /dist\/scripts\//u);
-  assert.match(contentValidator, /site:check:generated/u);
-  assert.match(contentValidator, /src\/derived\/topic-normalization-patterns\.tsv/u);
-  assert.match(contentValidator, /retainCallerLease: true/u);
-  assert.match(validationWorkflow, /config\.options\.retainCallerLease && callerProvidedLock/u);
-  assert.match(validationWorkflow, /CONTENT_PIPELINE_LOCK_TOKEN/u);
-  assert.match(siteValidator, /site:check:generated/u);
-  assert.match(siteValidator, /site:build:generated/u);
   const generateSiteDataScript = packageJson.scripts["generate:site-data"] ?? "";
   assert.equal(
       generateSiteDataScript,
-      "node --env-file=site-build.properties src/scripts/site-content-pipeline-lock.mjs run --purpose site-archive-generation --recover-stale -- bun run src/scripts/generate-site-data-bun.ts",
+      "bun --env-file=site-build.properties run src/scripts/generate-site-data-bun.ts",
   );
   assert.equal(packageJson.scripts["generate:site-data:bun"], undefined);
   const syncVideoTopicsScript = packageJson.scripts["sync:video-topics"] ?? "";
   assert.equal(
       syncVideoTopicsScript,
-      "node src/scripts/site-content-pipeline-lock.mjs run --purpose video-topic-sync --recover-stale -- bun run src/scripts/sync-video-topics-bun.ts",
+      "bun run src/scripts/sync-video-topics-bun.ts",
   );
   assert.equal(packageJson.scripts["sync:video-topics:bun"], undefined);
   assert.equal(
@@ -391,319 +368,6 @@ test("GitHub Pages configures Chrome and Bun before running the one-pass CI grap
       "GitHub Pages must prove the absent-archive bootstrap before CI.",
   );
 });
-
-test("two overlapping writer processes serialize complete archive, report, and log output", async () => {
-  const directory = await mkdtemp(join(tmpdir(), "site-content-writer-"));
-  const lockPath = join(directory, "writer.lock");
-  const releaseFirst = join(directory, "release-first.txt");
-
-  try {
-    const first = runNode([
-      lockTool,
-      "run",
-      "--lock-path",
-      lockPath,
-      "--wait-ms",
-      "5000",
-      "--purpose",
-      "parallel-writer-test",
-      "--",
-      "node",
-      "--import",
-      "tsx",
-      worker,
-      "--root",
-      directory,
-      "--id",
-      "first",
-      "--wait-for",
-      releaseFirst,
-    ]);
-    await waitForFile(join(directory, "entered-first.txt"));
-
-    const second = runNode([
-      lockTool,
-      "run",
-      "--lock-path",
-      lockPath,
-      "--wait-ms",
-      "5000",
-      "--purpose",
-      "parallel-writer-test",
-      "--",
-      "node",
-      "--import",
-      "tsx",
-      worker,
-      "--root",
-      directory,
-      "--id",
-      "second",
-    ]);
-
-    await writeFile(releaseFirst, "release", "utf8");
-    const [firstResult, secondResult] = await Promise.all([first, second]);
-    assert.equal(firstResult.code, 0, firstResult.stderr);
-    assert.equal(secondResult.code, 0, secondResult.stderr);
-
-    const archive = JSON.parse(await readFile(join(directory, "archive.json"), "utf8")) as { writer: string; payload: string };
-    assert.equal(archive.writer, "second");
-    assert.equal(archive.payload, "second".repeat(4096));
-    assert.equal(await readFile(join(directory, "report.md"), "utf8"), `# report second\n${"second".repeat(4096)}\n`);
-
-    const rows = (await readFile(join(directory, "processing.log"), "utf8"))
-        .trim()
-        .split("\n");
-    assert.equal(rows.length, 2);
-    assert.deepEqual(rows.map((row) => row.split("\t").length), [6, 6]);
-    assert.match(rows[0] ?? "", /\tfirst\t/u);
-    assert.match(rows[1] ?? "", /\tsecond\t/u);
-    assert.equal(existsSync(lockPath), false);
-    assert.equal(existsSync(join(directory, "active-writer.txt")), false);
-  } finally {
-    await rm(directory, {recursive: true, force: true});
-  }
-});
-
-test("lock-aware log appends and stale recovery preserve diagnostics", async () => {
-  const directory = await mkdtemp(join(tmpdir(), "site-content-lease-"));
-  const lockPath = join(directory, "writer.lock");
-  const logPath = join(directory, "processing.log");
-
-  try {
-    const firstAppend = runNode([
-      lockTool,
-      "append-log",
-      "--lock-path",
-      lockPath,
-      "--processing-log",
-      logPath,
-      "--wait-ms",
-      "5000",
-      "--processed-at",
-      "2026-07-09T16:05:25-05:00",
-      "--source-path",
-      "src/transcripts/txt/first.txt",
-      "--video-id",
-      "first",
-      "--action",
-      "curated 1 segment",
-      "--needs-further-processing",
-      "yes",
-      "--determination",
-      "first writer",
-    ]);
-    const secondAppend = runNode([
-      lockTool,
-      "append-log",
-      "--lock-path",
-      lockPath,
-      "--processing-log",
-      logPath,
-      "--wait-ms",
-      "5000",
-      "--processed-at",
-      "2026-07-09T16:05:26-05:00",
-      "--source-path",
-      "src/transcripts/txt/second.txt",
-      "--video-id",
-      "second",
-      "--action",
-      "curated 1 segment",
-      "--needs-further-processing",
-      "yes",
-      "--determination",
-      "second writer",
-    ]);
-    const [firstResult, secondResult] = await Promise.all([firstAppend, secondAppend]);
-    assert.equal(firstResult.code, 0, firstResult.stderr);
-    assert.equal(secondResult.code, 0, secondResult.stderr);
-
-    const rows = (await readFile(logPath, "utf8")).trim().split("\n");
-    assert.equal(rows.length, 2);
-    assert.deepEqual(rows.map((row) => row.split("\t").length), [6, 6]);
-
-    await mkdir(lockPath, {recursive: true});
-    await writeFile(join(lockPath, "owner.json"), JSON.stringify({
-      schemaVersion: 1,
-      token: "stale-token",
-      owner: "interrupted-worker",
-      purpose: "test",
-      acquiredAt: "2026-07-09T00:00:00.000Z",
-      renewedAt: "2026-07-09T00:00:00.000Z",
-      expiresAt: "2026-07-09T00:01:00.000Z",
-    }), "utf8");
-
-    const recovered = await runNode([
-      lockTool,
-      "acquire",
-      "--lock-path",
-      lockPath,
-      "--wait-ms",
-      "0",
-      "--recover-stale",
-    ]);
-    assert.equal(recovered.code, 0, recovered.stderr);
-    const acquired = JSON.parse(recovered.stdout) as { lease: { token: string }; recoveredStaleLock?: { quarantinePath: string } };
-    assert.ok(acquired.recoveredStaleLock?.quarantinePath);
-    assert.equal(existsSync(acquired.recoveredStaleLock?.quarantinePath ?? ""), true);
-
-    const released = await runNode([
-      lockTool,
-      "release",
-      "--lock-path",
-      lockPath,
-      "--token",
-      acquired.lease.token,
-    ]);
-    assert.equal(released.code, 0, released.stderr);
-    assert.equal(existsSync(lockPath), false);
-  } finally {
-    await rm(directory, {recursive: true, force: true});
-  }
-});
-
-test("one-shot writer commands recover a stale lease and preserve its diagnostics", async () => {
-  const directory = await mkdtemp(join(tmpdir(), "site-content-stale-run-"));
-  const lockPath = join(directory, "writer.lock");
-  const markerPath = join(directory, "ran.txt");
-
-  try {
-    await mkdir(lockPath, {recursive: true});
-    await writeFile(join(lockPath, "owner.json"), JSON.stringify({
-      schemaVersion: 1,
-      token: "stale-run-token",
-      owner: "interrupted-worker",
-      purpose: "test",
-      acquiredAt: "2026-07-09T00:00:00.000Z",
-      renewedAt: "2026-07-09T00:00:00.000Z",
-      expiresAt: "2026-07-09T00:01:00.000Z",
-    }), "utf8");
-
-    const recovered = await runNode([
-      lockTool,
-      "run",
-      "--lock-path",
-      lockPath,
-      "--wait-ms",
-      "0",
-      "--recover-stale",
-      "--",
-      "node",
-      "-e",
-      `require('node:fs').writeFileSync(${JSON.stringify(markerPath)}, 'ran')`,
-    ]);
-    assert.equal(recovered.code, 0, recovered.stderr);
-    assert.equal(await readFile(markerPath, "utf8"), "ran");
-    assert.equal(existsSync(lockPath), false);
-
-    const quarantined = (await readdir(directory)).filter((entry) => entry.startsWith("writer.lock.stale-"));
-    assert.equal(quarantined.length, 1);
-    const previousLease = JSON.parse(
-        await readFile(join(directory, quarantined[0] ?? "", "owner.json"), "utf8"),
-    ) as { token: string };
-    assert.equal(previousLease.token, "stale-run-token");
-  } finally {
-    await rm(directory, {recursive: true, force: true});
-  }
-});
-
-test("schedule queue commands are not part of the writer lease utility", async () => {
-  for (const command of ["schedule-claim", "schedule-complete", "schedule-reset"]) {
-    const result = await runNode([lockTool, command]);
-    assert.notEqual(result.code, 0);
-    assert.match(result.stderr, new RegExp(`Unknown content-pipeline lock command: ${command}`, "u"));
-  }
-});
-
-test("nested pipeline commands join an exported lease token without releasing it", async () => {
-  const directory = await mkdtemp(join(tmpdir(), "site-content-nested-"));
-  const lockPath = join(directory, "writer.lock");
-  const markerPath = join(directory, "nested-ran.txt");
-
-  try {
-    const acquiredResult = await runNode([
-      lockTool,
-      "acquire",
-      "--lock-path",
-      lockPath,
-      "--wait-ms",
-      "0",
-    ]);
-    assert.equal(acquiredResult.code, 0, acquiredResult.stderr);
-    const acquired = JSON.parse(acquiredResult.stdout) as { lease: { token: string } };
-
-    const nested = await runNode(
-        [
-          lockTool,
-          "run",
-          "--lock-path",
-          lockPath,
-          "--",
-          "node",
-          "-e",
-          `require('node:fs').writeFileSync(${JSON.stringify(markerPath)}, 'joined')`,
-        ],
-        {CONTENT_PIPELINE_LOCK_TOKEN: acquired.lease.token},
-    );
-    assert.equal(nested.code, 0, nested.stderr);
-    assert.equal(await readFile(markerPath, "utf8"), "joined");
-
-    const statusResult = await runNode([lockTool, "status", "--lock-path", lockPath]);
-    assert.equal(statusResult.code, 0, statusResult.stderr);
-    const status = JSON.parse(statusResult.stdout) as { status: string; lease?: { token: string } };
-    assert.equal(status.status, "active");
-    assert.equal(status.lease?.token, acquired.lease.token);
-
-    const released = await runNode([
-      lockTool,
-      "release",
-      "--lock-path",
-      lockPath,
-      "--token",
-      acquired.lease.token,
-    ]);
-    assert.equal(released.code, 0, released.stderr);
-  } finally {
-    await rm(directory, {recursive: true, force: true});
-  }
-});
-
-function runNode(
-    args: string[],
-    environment?: NodeJS.ProcessEnv,
-): Promise<{ code: number; stdout: string; stderr: string }> {
-  return new Promise((resolvePromise, rejectPromise) => {
-    const child = spawn("node", args, {
-      stdio: ["ignore", "pipe", "pipe"],
-      env: environment === undefined ? process.env : {...process.env, ...environment},
-    });
-    let stdout = "";
-    let stderr = "";
-    child.stdout.setEncoding("utf8");
-    child.stderr.setEncoding("utf8");
-    child.stdout.on("data", (chunk: string) => {
-      stdout += chunk;
-    });
-    child.stderr.on("data", (chunk: string) => {
-      stderr += chunk;
-    });
-    child.once("error", rejectPromise);
-    child.once("exit", (code) => {
-      resolvePromise({code: code ?? 1, stdout, stderr});
-    });
-  });
-}
-
-async function waitForFile(path: string): Promise<void> {
-  const deadline = Date.now() + 5_000;
-  while (!existsSync(path)) {
-    if (Date.now() >= deadline) {
-      throw new Error(`Timed out waiting for ${path}.`);
-    }
-    await new Promise((resolvePromise) => setTimeout(resolvePromise, 10));
-  }
-}
 
 function deferred<T>(): { promise: Promise<T>; resolve: (value: T | PromiseLike<T>) => void } {
   let resolvePromise: (value: T | PromiseLike<T>) => void = () => undefined;

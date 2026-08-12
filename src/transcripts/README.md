@@ -80,7 +80,7 @@ For each new TXT in the handoff, run one separate single-agent
 sequential single-agent `$naval-site-content-auditor` tasks for the resulting
 exact shard. These file-scoped curation stages remain separate from acquisition
 and from one another. Each task finalizes its canonical shard write,
-lease-protected `npm run sync:video-topics`, and processing-log append before
+`npm run sync:video-topics`, and processing-log append before
 the next task begins.
 
 Videos in `src/channel/ignored-videos.json` are excluded before batch accounting
