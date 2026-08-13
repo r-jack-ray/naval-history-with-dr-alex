@@ -74,7 +74,6 @@ const topicGroupSchema = z.strictObject({
 export const siteContentProcessingConfigSchema = z.strictObject({
   firstPass: z.strictObject({
     defaultAction: nonEmptyStringSchema,
-    defaultNeedsFurtherProcessing: z.boolean(),
     processingMode: z.literal("full-file-best-effort"),
     minimumEvidenceWindows: z.number().int().positive(),
     preferredSegmentKinds: z.array(segmentKindSchema).min(1),

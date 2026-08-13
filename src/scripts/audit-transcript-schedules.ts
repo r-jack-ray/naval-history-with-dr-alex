@@ -107,7 +107,7 @@ Options:
   --manifest <path>        Transcript manifest path.
   --schedule <path>        Schedule path; required and repeatable.
   --check-artifacts        Require checked rows to have a fresh log entry and shard.
-  --processing-log <path>  Processing log used by artifact checks; defaults to src/derived/site-content-processing.log.
+  --processing-log <path>  Canonical processing log used by artifact checks; repeatable and defaults to src/derived/site-content-processing.log.
   --segments-input <path>  Current-schema shard directory.
   --quiet                  Suppress issue and summary output.
   --help                   Show this help.`);

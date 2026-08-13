@@ -108,8 +108,8 @@ For every first-pass transcript, scan the full duration for substantive transcri
 ## Validation Expectations
 
 - Source shards and `topics.json` do not carry a custom `schemaVersion`.
-- Source shards do not carry `needsFurtherProcessing`; processing state belongs
-  in `src/derived/site-content-processing.log`.
+- Source shards do not carry workflow status. The processing log records each
+  pass's result, notes, and any unresolved work.
 - Unknown root and record properties are rejected by the canonical runtime schemas.
 - `sourcePath` must exist and should match the TXT path in `src/transcripts/manifest.json`.
 - Segment and evidence timestamps must be within the stored transcript duration.

@@ -2,6 +2,7 @@ import { existsSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { dirname, relative, resolve } from "node:path";
 
+import { parseSiteContentProcessingLog } from "../content/site-content-processing-log.js";
 import { canonicalVideoSegmentFileName } from "../site/video-segment-files.js";
 
 export const defaultTranscriptScheduleManifest = "src/transcripts/manifest.json";
@@ -84,11 +85,11 @@ interface ParsedSchedule {
 
 export async function auditTranscriptSchedules(options: TranscriptScheduleAuditOptions): Promise<TranscriptScheduleAudit> {
   const processingLogPaths = options.processingLogPaths ?? [options.processingLogPath];
-  const [manifestText, scheduleTexts, processingLogTexts] = await Promise.all([
+  const [manifestText, scheduleTexts, processingLogs] = await Promise.all([
     readFile(options.manifestPath, "utf8"),
     Promise.all(options.schedulePaths.map(async (path) => ({path, text: await readFile(path, "utf8")}))),
     options.checkArtifacts
-        ? Promise.all(processingLogPaths.map((path) => readFile(path, "utf8")))
+        ? Promise.all(processingLogPaths.map(async (path) => ({path, text: await readFile(path, "utf8")})))
         : Promise.resolve(undefined),
   ]);
 
@@ -99,7 +100,7 @@ export async function auditTranscriptSchedules(options: TranscriptScheduleAuditO
     rootDir: process.cwd(),
     fileExists: existsSync,
     checkArtifacts: options.checkArtifacts,
-    ...(processingLogTexts === undefined ? {} : {processingLogText: processingLogTexts.join("\n")}),
+    ...(processingLogs === undefined ? {} : {processingLogs}),
     processingLogPath: processingLogPaths.join(", "),
     segmentsInput: options.segmentsInput,
   });
@@ -112,7 +113,7 @@ export function buildTranscriptScheduleAudit(input: {
   rootDir: string;
   fileExists: (path: string) => boolean;
   checkArtifacts?: boolean;
-  processingLogText?: string;
+  processingLogs?: ScheduleSource[];
   processingLogPath?: string;
   segmentsInput?: string;
 }): TranscriptScheduleAudit {
@@ -341,24 +342,29 @@ function validateArtifacts(
     issues: TranscriptScheduleAuditIssue[],
 ): void {
   const processingLogTimes = new Map<string, number[]>();
-  for (const line of (input.processingLogText ?? "").split(/\r?\n/u)) {
-    if (!line) {
+  for (const source of input.processingLogs ?? []) {
+    let parsed;
+    try {
+      parsed = parseSiteContentProcessingLog(source.text, input.manifest.transcripts);
+    } catch (error: unknown) {
+      addIssue(
+          issues,
+          "error",
+          "processing-log-invalid-header",
+          error instanceof Error ? error.message : String(error),
+          source.path,
+      );
       continue;
     }
-    const fields = line.split("\t");
-    if (fields.length !== 6) {
-      continue;
+    for (const problem of parsed.problems) {
+      addIssue(issues, "error", problem.code, problem.message, source.path, problem.lineNumber);
     }
-    const timestamp = Date.parse(fields[0] ?? "");
-    const transcriptPath = fields[1] ?? "";
-    const videoId = fields[2] ?? "";
-    if (Number.isNaN(timestamp)) {
-      continue;
+    for (const record of parsed.records) {
+      const timestamp = Date.parse(record.timestamp);
+      const times = processingLogTimes.get(record.shardPath) ?? [];
+      times.push(timestamp);
+      processingLogTimes.set(record.shardPath, times);
     }
-    const key = `${transcriptPath}\0${videoId}`;
-    const times = processingLogTimes.get(key) ?? [];
-    times.push(timestamp);
-    processingLogTimes.set(key, times);
   }
   const segmentsInput = input.segmentsInput ?? defaultTranscriptScheduleSegmentsInput;
   const processingLogPath = input.processingLogPath ?? defaultTranscriptScheduleProcessingLog;
@@ -375,8 +381,9 @@ function validateArtifacts(
     }
     const shardPath = resolve(input.rootDir, segmentsInput, shardFileName);
     const shardExists = input.fileExists(shardPath);
+    const canonicalLogShardPath = `src/derived/video-segments/${shardFileName}`;
     const freshLog = entry.scheduleTimestampMs !== undefined
-        && (processingLogTimes.get(`${entry.transcriptPath}\0${entry.videoId}`) ?? []).some((time) => time >= entry.scheduleTimestampMs!);
+        && (processingLogTimes.get(canonicalLogShardPath) ?? []).some((time) => time >= entry.scheduleTimestampMs!);
     if (entry.state === "x") {
       if (!shardExists) {
         addIssue(issues, "error", "checked-row-missing-shard", `Checked row ${entry.videoId} has no current-schema shard.`, entry.schedulePath, entry.line, entry.videoId);

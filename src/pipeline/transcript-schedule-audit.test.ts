@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
+import { SITE_CONTENT_PROCESSING_LOG_HEADER } from "../content/schemas/index.js";
 import { buildTranscriptScheduleAudit } from "./transcript-schedule-audit.js";
 
 const records = [
@@ -49,12 +50,8 @@ test("reports invalid states, duplicate rows, missing files, and incomplete mani
   }
 });
 
-test("optional artifact checks require post-schedule log and shard completion", () => {
+test("artifact checks accept fresh rows from multiple canonical logs and preserve semicolon notes", () => {
   const schedules = [schedule("one.md", 1, 1, 3, [row("x", records[0]!), row("~", records[1]!), row(" ", records[2]!)])];
-  const log = [
-    `2026-07-09T01:00:00-05:00\tsrc/transcripts/txt/stored_a.txt\ta\tcurated\tno\tdone`,
-    `2026-07-09T01:00:00-05:00\tsrc/transcripts/txt/stored_b.txt\tb\tcurated\tno\tdone`,
-  ].join("\n");
   const audit = buildTranscriptScheduleAudit({
     manifest: {transcripts: records},
     manifestPath: "src/transcripts/manifest.json",
@@ -62,12 +59,74 @@ test("optional artifact checks require post-schedule log and shard completion", 
     rootDir: "C:/repo",
     fileExists: (path) => path.replaceAll("\\", "/").includes("/src/transcripts/txt/") || path.endsWith("stored_a.json") || path.endsWith("stored_b.json"),
     checkArtifacts: true,
-    processingLogText: log,
+    processingLogs: [
+      {
+        path: "processing-one.log",
+        text: [
+          SITE_CONTENT_PROCESSING_LOG_HEADER,
+          "2026-07-09T01:00:00-05:00;src/derived/video-segments/stored_a.json;curated;done; semicolon preserved",
+        ].join("\n"),
+      },
+      {
+        path: "processing-two.log",
+        text: [
+          SITE_CONTENT_PROCESSING_LOG_HEADER,
+          "2026-07-09T01:00:00-05:00;src/derived/video-segments/stored_b.json;audited;ready",
+        ].join("\n"),
+      },
+    ],
     processingLogPath: "processing.log",
     segmentsInput: "segments",
   });
   assert.equal(audit.stats.errorCount, 0);
   assert.equal(audit.issues[0]?.code, "in-progress-ready-to-finalize");
+});
+
+test("artifact checks reject stale, wrong-shard, and malformed canonical rows", () => {
+  const audit = buildTranscriptScheduleAudit({
+    manifest: {transcripts: records},
+    manifestPath: "src/transcripts/manifest.json",
+    schedules: [schedule("one.md", 1, 1, 3, [row("x", records[0]!), row(" ", records[1]!), row(" ", records[2]!)])],
+    rootDir: "C:/repo",
+    fileExists: () => true,
+    checkArtifacts: true,
+    processingLogs: [{
+      path: "processing.log",
+      text: [
+        SITE_CONTENT_PROCESSING_LOG_HEADER,
+        "2026-07-08T23:00:00-05:00;src/derived/video-segments/stored_a.json;audited;stale",
+        "2026-07-09T01:00:00-05:00;src/derived/video-segments/stored_b.json;audited;wrong shard for checked row",
+        "not enough fields",
+      ].join("\n"),
+    }],
+    processingLogPath: "processing.log",
+    segmentsInput: "segments",
+  });
+
+  const codes = new Set(audit.issues.map((issue) => issue.code));
+  assert.ok(codes.has("processing-log-field-count"));
+  assert.ok(codes.has("checked-row-missing-fresh-log"));
+});
+
+test("artifact checks reject the obsolete tab-separated log shape", () => {
+  const audit = buildTranscriptScheduleAudit({
+    manifest: {transcripts: records},
+    manifestPath: "src/transcripts/manifest.json",
+    schedules: [schedule("one.md", 1, 1, 3, [row("x", records[0]!), row(" ", records[1]!), row(" ", records[2]!)])],
+    rootDir: "C:/repo",
+    fileExists: () => true,
+    checkArtifacts: true,
+    processingLogs: [{
+      path: "legacy.log",
+      text: "2026-07-09T01:00:00-05:00\tsrc/transcripts/txt/stored_a.txt\ta\tcurated\tno\tdone\n",
+    }],
+    processingLogPath: "legacy.log",
+    segmentsInput: "segments",
+  });
+
+  const codes = new Set(audit.issues.map((issue) => issue.code));
+  assert.ok(codes.has("processing-log-invalid-header"));
+  assert.ok(codes.has("checked-row-missing-fresh-log"));
 });
 
 test("rejects old-form shards when artifact checks require a manifest filename", () => {
@@ -78,7 +137,10 @@ test("rejects old-form shards when artifact checks require a manifest filename",
     rootDir: "C:/repo",
     fileExists: (path) => path.replaceAll("\\", "/").includes("/src/transcripts/txt/") || path.endsWith("video-a.json"),
     checkArtifacts: true,
-    processingLogText: "2026-07-09T01:00:00-05:00\tsrc/transcripts/txt/stored_a.txt\ta\tcurated\tno\tdone\n",
+    processingLogs: [{
+      path: "processing.log",
+      text: `${SITE_CONTENT_PROCESSING_LOG_HEADER}\n2026-07-09T01:00:00-05:00;src/derived/video-segments/stored_a.json;curated;done\n`,
+    }],
     processingLogPath: "processing.log",
     segmentsInput: "segments",
   });

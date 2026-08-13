@@ -68,6 +68,20 @@
       "evidence": [{"start": "16:52", "end": "18:20", "note": "He answers a chat claim comparing Tirpitz with Vanguard."}]
     },
     {
+      "id": "budgeting-for-transport-research-and-readiness",
+      "videoId": "qqou-Qq8liw",
+      "slug": "budgeting-for-transport-research-and-readiness",
+      "title": "Balancing transport capacity, research, training, and fleet readiness",
+      "kind": "notable_point",
+      "start": "18:23",
+      "end": "24:59",
+      "topics": ["ultimate-admiral-dreadnoughts", "naval-budgets", "naval-logistics", "military-readiness", "naval-presence"],
+      "summary": "The campaign budget prioritizes transport capacity, technology, and crew training while rushing light cruisers to create presence before a war begins.",
+      "body": "Dr. Clarke maximizes transport capacity because the game ties it to economic growth, then gives research and crew training the same priority. His immediate research choices—boilers, cruiser design, and rangefinders—are intended to make early hulls more usable rather than advance every technology evenly. He already has a battleship core, but lacks enough lighter ships to avoid appearing weak and sustain presence across several stations. The plan therefore links economic investment, technical development, trained crews, and deployable hull numbers as parts of readiness. These choices operate inside the campaign's abstraction: the numerical effects are game rules, while the broader dependence of global naval power on money, training, technology, and ships in commission is the learning point.",
+      "sourcePath": "src/transcripts/txt/2023-11-13_T19-00-22_check-campaign-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_qqou-Qq8liw.txt",
+      "evidence": [{"start": "18:23", "end": "24:59", "note": "He sets transport, research, and training priorities, then explains why light cruisers are being rushed to support worldwide presence and reduce early vulnerability."}]
+    },
+    {
       "id": "port-capacity-constrains-capital-ship-basing",
       "videoId": "qqou-Qq8liw",
       "slug": "port-capacity-constrains-capital-ship-basing",
@@ -149,7 +163,7 @@
       "end": "46:45",
       "topics": ["force-structure", "attrition", "industrial-warfare", "military-logistics", "m4-sherman", "tiger-i", "t-55", "world-war-ii"],
       "summary": "A chat question leads to an attrition example showing why losses hurt a small elite force much more severely than a larger force of adequate platforms.",
-      "body": "The answer is about resilience as much as individual combat quality. In Dr. Clarke's illustrative arithmetic, losing two platforms removes forty percent of a five-unit elite force, while losing several platforms from a much larger adequate force leaves most of it available. Numbers create operational depth and reduce the strategic cost of each casualty. He connects this reasoning to Second World War mass production, contrasting the Tiger's fame with the Sherman as the more consequential war-winning system. He also invokes the T-55 as a numbers-oriented design while cautioning that it was not simply a bad tank in its own time. The point is not that quality never matters, but that a small pursuit of perfection can leave a force brittle.",
+      "body": "The answer is about resilience as much as individual combat quality. In Dr. Clarke's illustrative arithmetic, losing two platforms removes forty percent of a five-unit elite force, while losing several platforms from a much larger adequate force leaves most of it available. Numbers create operational depth and reduce the strategic cost of each casualty, but he adds that numerical strength still depends on investment in supporting infrastructure. He connects this reasoning to Second World War mass production, contrasting the Tiger's fame with the Sherman as the more consequential war-winning system. He also invokes the T-55 as a numbers-oriented design while cautioning that it was not simply a bad tank in its own time. The point is not that quality never matters, but that a small pursuit of perfection can leave a force brittle.",
       "question": "Is it better to have many adequate platforms than only a few very good ones?",
       "answerShort": "Often, yes. A larger adequate force can absorb losses far better than a small elite force and is more likely to be available in useful numbers.",
       "sourcePath": "src/transcripts/txt/2023-11-13_T19-00-22_check-campaign-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_qqou-Qq8liw.txt",
@@ -217,15 +231,18 @@
       "id": "basic-steam-engine-stability-bug-hypothesis",
       "videoId": "qqou-Qq8liw",
       "slug": "basic-steam-engine-stability-bug-hypothesis",
-      "title": "Triple-expansion engines reveal a possible stability bug",
+      "title": "Triple-expansion engines narrow, but do not solve, the stability problem",
       "kind": "notable_point",
       "start": "1:32:23",
-      "end": "1:36:20",
+      "end": "1:44:12",
       "topics": ["marine-engineering", "triple-expansion-engines", "ship-stability", "ship-design"],
-      "summary": "A refit with triple-expansion machinery suddenly produces acceptable stability, suggesting the basic steam-engine calculation may be causing the early-design failures.",
-      "body": "The machinery upgrade changes more than propulsion efficiency: the battleship's stability falls into a workable range. Dr. Clarke can then restore armor while keeping the design stable and efficient. That result gives him a concrete hypothesis for the earlier failures, namely that the basic steam-engine model may be feeding an incorrect value into the stability calculation. The discovery also explains why later technology can rescue designs that appear almost unusable at campaign start.",
+      "summary": "A battleship refit becomes workable with triple-expansion machinery, but a later cruiser remains badly unbalanced, leaving the basic-engine calculation as a plausible rather than complete explanation.",
+      "body": "The machinery upgrade changes more than propulsion efficiency: the battleship's stability falls into a workable range. Dr. Clarke can then restore armor while keeping the design stable and efficient, which suggests that the basic steam-engine model may be feeding an incorrect value into the calculation. A later cruiser trial with triple-expansion machinery still remains badly unbalanced, however, so the improvement does not solve every early-hull problem. He notes that stability was a fundamental concern for naval architects, making the persistently extreme values suspect even within an early-technology campaign. The sequence leaves the engine calculation as a concrete hypothesis rather than a complete diagnosis.",
       "sourcePath": "src/transcripts/txt/2023-11-13_T19-00-22_check-campaign-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_qqou-Qq8liw.txt",
-      "evidence": [{"start": "1:32:23", "end": "1:36:20", "note": "After fitting triple-expansion engines, he observes acceptable stability and proposes a basic-engine calculation issue."}]
+      "evidence": [
+        {"start": "1:32:23", "end": "1:36:20", "note": "After fitting triple-expansion engines, he observes acceptable battleship stability and proposes a basic-engine calculation issue."},
+        {"start": "1:39:53", "end": "1:44:12", "note": "A later cruiser with triple-expansion machinery remains badly unbalanced, so the engine hypothesis does not explain every hull."}
+      ]
     }
   ]
 }

@@ -5,7 +5,6 @@ import { SITE_CONTENT_PROCESSING_LOG_HEADER, siteContentProcessingLogShardPathPa
 export const DEFAULT_SITE_CONTENT_PROCESSING_LOG = "src/derived/site-content-processing.log";
 
 export interface ProcessingLogManifestRecord {
-  videoId: string;
   fileStem?: string;
   paths?: { txt?: string };
 }
@@ -15,9 +14,7 @@ export interface SiteContentProcessingLogRecord {
   timestamp: string;
   shardPath: string;
   fileStem: string;
-  videoId: string;
   result: string;
-  needsFurtherProcessing: "yes" | "no";
   notes: string;
 }
 
@@ -31,7 +28,6 @@ export interface SiteContentProcessingLogProblem {
 export interface SiteContentProcessingLogParseResult {
   records: SiteContentProcessingLogRecord[];
   latestByFileStem: Map<string, SiteContentProcessingLogRecord>;
-  latestByVideoId: Map<string, SiteContentProcessingLogRecord>;
   problems: SiteContentProcessingLogProblem[];
   malformedRowCount: number;
   unmappedRowCount: number;
@@ -66,7 +62,6 @@ export function parseSiteContentProcessingLog(
 
   const records: SiteContentProcessingLogRecord[] = [];
   const latestByFileStem = new Map<string, SiteContentProcessingLogRecord>();
-  const latestByVideoId = new Map<string, SiteContentProcessingLogRecord>();
   const problems: SiteContentProcessingLogProblem[] = [];
   let malformedRowCount = 0;
   let unmappedRowCount = 0;
@@ -86,15 +81,24 @@ export function parseSiteContentProcessingLog(
     const fields = splitCanonicalFields(line);
     if (fields === undefined) {
       malformedRowCount += 1;
-      problems.push(problem(lineNumber, "processing-log-field-count", "must have at least 5 semicolon-separated fields", line));
+      problems.push(problem(lineNumber, "processing-log-field-count", "must have at least 4 semicolon-separated fields", line));
       continue;
     }
-    const [timestamp, shardPath, result, needsFurtherProcessing, notes] = fields;
+    const [timestamp, shardPath, result, notes] = fields;
+    if (/^(?:yes|no);/u.test(notes)) {
+      malformedRowCount += 1;
+      problems.push(problem(
+          lineNumber,
+          "processing-log-obsolete-state-field",
+          "uses the obsolete processing-state field",
+          line,
+      ));
+      continue;
+    }
     const rowValidation = validateSiteContentProcessingLogRow({
       timestamp,
       shardPath,
       result,
-      needsFurtherProcessing,
       notes,
     });
     if (!rowValidation.success) {
@@ -130,21 +134,17 @@ export function parseSiteContentProcessingLog(
       timestamp: row.timestamp,
       shardPath: row.shardPath,
       fileStem,
-      videoId: manifestRecord.videoId,
       result: row.result.trim(),
-      needsFurtherProcessing: row.needsFurtherProcessing,
       notes: row.notes.trim(),
     };
     records.push(record);
     // The file is append-only and local timestamps may be equal or out of order.
     latestByFileStem.set(fileStem, record);
-    latestByVideoId.set(record.videoId, record);
   }
 
   return {
     records,
     latestByFileStem,
-    latestByVideoId,
     problems,
     malformedRowCount,
     unmappedRowCount,
@@ -152,21 +152,21 @@ export function parseSiteContentProcessingLog(
   };
 }
 
-function splitCanonicalFields(line: string): [string, string, string, string, string] | undefined {
+function splitCanonicalFields(line: string): [string, string, string, string] | undefined {
   const fields: string[] = [];
   let fieldStart = 0;
-  for (let index = 0; index < line.length && fields.length < 4; index += 1) {
+  for (let index = 0; index < line.length && fields.length < 3; index += 1) {
     if (line[index] !== ";") {
       continue;
     }
     fields.push(line.slice(fieldStart, index));
     fieldStart = index + 1;
   }
-  if (fields.length !== 4) {
+  if (fields.length !== 3) {
     return undefined;
   }
   fields.push(line.slice(fieldStart));
-  return fields as [string, string, string, string, string];
+  return fields as [string, string, string, string];
 }
 
 export function manifestFileStem(record: ProcessingLogManifestRecord): string | undefined {

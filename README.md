@@ -114,7 +114,7 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 
 | Script | Purpose |
 | --- | --- |
-| `report:video-segment-audit-risk` | Rank curated shards for follow-up and write `reports/video-segment-audit-risk.tsv`. |
+| `report:video-segment-audit-risk` | Rank deterministic shard repairs and metadata-indicated substantive audit candidates, then write `reports/video-segment-audit-risk.tsv`. |
 | `audit:site-content` | Validate current-schema shards and transcript evidence, then write the backlog report. |
 | `diagnose:site-content-duplicates` | Check curated shards for duplicate segment IDs and slugs. |
 | `sync:video-topics` | Add missing shared topic records derived from shard usage and normalization policy with parallel Bun workers. |
@@ -361,15 +361,15 @@ npm run site:check
 npm run site:build
 ```
 
-`npm run audit:site-content` validates curated transcript evidence and writes `reports/site-content-backlog.md`, including manifest transcripts that still have no curated segments. Reports are ignored by Git. Shared generation, reports, schedules, and logs other than the shard worker's one required `src/derived/site-content-processing.log` append are coordinator-owned outputs.
+`npm run audit:site-content` validates curated transcript evidence and writes `reports/site-content-backlog.md`, including manifest transcripts that still have no canonical shard. A valid empty shard counts as canonical presence. Reports are ignored by Git. Shared generation, reports, schedules, and logs other than the shard worker's one required `src/derived/site-content-processing.log` append are coordinator-owned outputs.
 
 The existing processing log has this exact semicolon-separated header:
 
 ```text
-timestamp;shardPath;result;needsFurtherProcessing;notes
+timestamp;shardPath;result;notes
 ```
 
-Each curator or auditor result is one newline-terminated five-field row appended at the physical bottom. `shardPath` is the selected manifest-owned JSON shard, and `needsFurtherProcessing` is exactly `yes` or `no`. The curator appends only after its shard write and synchronization succeed; the auditor does the same after every completed selected-file audit, including unchanged, saturated, and intentionally empty results. A synchronization failure is reported without a completion row.
+Each curator or auditor result is one newline-terminated four-field row appended at the physical bottom. `shardPath` is the selected manifest-owned JSON shard. `result` and `notes` describe what the pass accomplished and identify any unresolved transcript ranges, Q&A, audiovisual work, or other limitation. The curator appends only after its shard write and synchronization succeed; the auditor does the same after every completed selected-file audit, including unchanged, saturated, and intentionally empty results. A synchronization failure is reported without a completion row.
 
 Write new timestamps as exactly 19-character local `yyyy-MM-ddTHH:mm:ss` values. Do not write fractional seconds, a trailing `Z`, or a numeric UTC offset. The reader still accepts older ISO timestamps with `Z` or a numeric UTC offset for compatibility, but those legacy forms are not templates for new writes or repairs and do not need manual removal merely for parsing. The required final newline is also not a data row.
 
@@ -415,7 +415,7 @@ Everything under `reports/` is ignored local output, never canonical source or p
 
 | Report/output | Generator | Owner and use | Lifecycle |
 | --- | --- | --- | --- |
-| `reports/video-segment-audit-risk.tsv` | `report:video-segment-audit-risk` | Repository owner manually prioritizes shard repair and follow-up review. | Mandatory keep; ignored, on-demand, and replaced by each run. |
+| `reports/video-segment-audit-risk.tsv` | `report:video-segment-audit-risk` | Repository owner prioritizes deterministic repairs and current metadata-indicated substantive audit candidates. | Mandatory keep; ignored, on-demand, and replaced by each run. |
 | `reports/video-topic-usage.tsv` | `report:video-topic-usage` | Repository owner and Codex inspect usage, aliases, similarity, normalization inputs, and co-topic context. | Mandatory keep; ignored, on-demand companion output, and replaced by each run. |
 | `reports/topic-normalization-review.tsv` | `report:video-topic-usage` | Repository owner and Codex review exact policy matches, collisions, source locations, and recommended actions. | Mandatory keep; ignored, on-demand companion output, and replaced by each run even when it contains only the header. |
 | `reports/site-content-backlog.md` | `audit:site-content` | Repository owner or integration coordinator reviews transcript-evidence and shard-quality findings. | Ignored, on-demand validator output; regenerated rather than edited as source. |
@@ -424,6 +424,8 @@ Everything under `reports/` is ignored local output, never canonical source or p
 | Acquisition probe/extraction JSON under `reports/` | Explicit output flags on inventory or saved-HTML commands | Acquisition operator inspects a bounded probe or reconciles alternate inputs before a canonical apply. | Ignored, opt-in scratch output; retention is operator-managed and it never replaces `src/channel/episodes.json` or `src/channel/video-metadata.json`. |
 
 One-off manual analyses may also remain in the ignored directory. Without a documented generator and owner they are not a supported command contract; this lifecycle review does not delete them.
+
+The video-segment audit report exposes `repair_required`, `review_candidate`, and `low_signal` routes. Its Audit Risk Score is the scale-independent relative anchor-gap heuristic within those routes; blank scores identify rows whose required transcript interval or anchors are unavailable. Raw sizes, counts, density, temporal-bin, absolute-gap, and Q&A columns are reviewer diagnostics. Processing-log entry count breaks equal-score ties as audit-opportunity context. `manual audio review remaining` is operational display data only and cannot change route, score, or Rank. This metadata queue does not prove semantic completeness.
 
 Shard workers must not edit the catalog, shared registry, or other shards. Changes to shared topic policy or any corpus-wide topic rewrite require a separate, explicitly scoped taxonomy-maintenance task.
 

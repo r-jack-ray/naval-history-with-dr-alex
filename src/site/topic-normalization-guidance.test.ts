@@ -232,7 +232,7 @@ test("companion guidance preserves review blockers, shard boundaries, and finali
   assert.match(readme, /npm run audit:topic-normalization/iu);
   assert.match(readme, /report:video-topic-usage[\s\S]{0,500}topic-normalization-review\.tsv/iu);
   assert.match(readme, /review details are intentionally kept out of routine site-build output/iu);
-  assert.match(readme, /timestamp;shardPath;result;needsFurtherProcessing;notes/u);
+  assert.match(readme, /timestamp;shardPath;result;notes/u);
 });
 
 test("current guidance and CLI use the retained video-segment report command", async () => {
@@ -253,6 +253,12 @@ test("current guidance and CLI use the retained video-segment report command", a
       `${relativePath} must not name the stale package command`,
     );
   }
+
+  const readme = await readGuidance("README.md");
+  assert.match(readme, /repair_required[^.]{0,120}review_candidate[^.]{0,120}low_signal/iu);
+  assert.match(readme, /Audit Risk Score[^.]{0,120}relative anchor-gap heuristic/iu);
+  assert.match(readme, /manual audio review remaining[^.]{0,160}display data only/iu);
+  assert.match(readme, /transcripts that still have no canonical shard/iu);
 });
 
 test("README documents the complete topic-curation and report lifecycle contract", async () => {

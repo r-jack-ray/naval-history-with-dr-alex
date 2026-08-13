@@ -24,7 +24,6 @@ async function main(): Promise<void> {
       `seeded-videos=${audit.stats.seededVideoCount}`,
       `segments=${audit.stats.curatedSegmentCount}`,
       `uncurated=${audit.stats.uncuratedStoredTranscriptCount}`,
-      `completed-log-videos=${audit.stats.completedProcessingLogVideoCount}`,
       `errors=${audit.stats.errorCount}`,
       `warnings=${audit.stats.warningCount}`,
       `report=${options.output ?? "(none)"}`,

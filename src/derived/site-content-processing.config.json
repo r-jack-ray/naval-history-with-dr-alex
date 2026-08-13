@@ -1,7 +1,6 @@
 {
   "firstPass": {
     "defaultAction": "curated granular first-pass segments",
-    "defaultNeedsFurtherProcessing": true,
     "processingMode": "full-file-best-effort",
     "minimumEvidenceWindows": 1,
     "preferredSegmentKinds": [
@@ -14,7 +13,7 @@
       "subject-segments",
       "qa-exchanges"
     ],
-    "guidance": "Every first pass must do as much useful in-file processing as the configured model and effort can support across the full transcript. Inspect for both subject segments and transcript-visible Q&A regardless of source type or title; preserve substantive chapters and notable points, and create a separate qa segment for every substantive prompt and response. Do not stop at an overview, sample a subset, or deliberately reserve supported content for a later stage. Let segment count arise from the transcript; do not target a numeric range or create padding. Mark needsFurtherProcessing=yes when the lower-effort run genuinely leaves substantive chapter or Q&A coverage unresolved, and never report a pass complete when transcript-visible Q&A was skipped."
+    "guidance": "Every first pass must do as much useful in-file processing as the configured model and effort can support across the full transcript. Inspect for both subject segments and transcript-visible Q&A regardless of source type or title; preserve substantive chapters and notable points, and create a separate qa segment for every substantive prompt and response. Do not stop at an overview, sample a subset, or deliberately reserve supported content for a later stage. Let segment count arise from the transcript; do not target a numeric range or create padding. Record any unresolved chapter ranges, Q&A coverage, audiovisual work, or other limitations plainly in the processing-log result and notes and in the handoff."
   },
   "videoLevelTopics": {
     "mode": "curated-summary-subset",
@@ -33,7 +32,7 @@
       "question",
       "answerShort"
     ],
-    "guidance": "Inspect every live stream across its full duration as mixed classroom-style content. Preserve substantive lecture blocks as chapter or notable_point segments and create one timestamped qa segment for every substantive prompt and response. Explicit Q&A title markers make exhaustive Q&A extraction mandatory. A sampled subset must remain needsFurtherProcessing=yes."
+    "guidance": "Inspect every live stream across its full duration as mixed classroom-style content. Preserve substantive lecture blocks as chapter or notable_point segments and create one timestamped qa segment for every substantive prompt and response. Explicit Q&A title markers make exhaustive Q&A extraction mandatory. Describe any incomplete coverage or audiovisual limitation plainly in the processing-log result and notes and in the handoff."
   },
   "topicLifecycle": {
     "mode": "shard-derived-automatic",

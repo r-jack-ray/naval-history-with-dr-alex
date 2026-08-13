@@ -7,7 +7,6 @@ import { DEFAULT_SITE_CONTENT_PROCESSING_LOG, parseSiteContentProcessingLog, typ
 import {
   analyzeVideoSegmentRisk,
   type AuditSegment,
-  type ProcessingState,
   type QaExpectation,
   rankVideoSegmentAuditRisks,
   renderVideoSegmentAuditRiskTsv,
@@ -101,7 +100,6 @@ async function main(): Promise<void> {
         : path.join(options.transcriptRoot, `${canonicalStem}.txt`);
     const transcriptBytes = await fileSizeOrUndefined(transcriptPath);
     const latestProcessingRecord = processingLog.latestByFileStem.get(canonicalStem);
-    const state: ProcessingState = latestProcessingRecord?.needsFurtherProcessing ?? "unknown";
     rows.push(analyzeVideoSegmentRisk({
       fileStem,
       filePath: contentRootPath(shardPath),
@@ -114,7 +112,6 @@ async function main(): Promise<void> {
       ...(manifestEntry?.firstStartSeconds === undefined ? {} : {transcriptStartSeconds: manifestEntry.firstStartSeconds}),
       durationSeconds: manifestEntry?.lastEndSeconds,
       segments,
-      needsFurtherProcessing: state,
       manualAudioReviewRemaining: hasManualAudioReviewRemaining(latestProcessingRecord),
       structuralIssues,
       qaExpectation: qaExpectationFor(videoTitle, config),
@@ -129,20 +126,17 @@ async function main(): Promise<void> {
   for (const row of rankedRows) {
     routeCounts.set(row.auditRoute, (routeCounts.get(row.auditRoute) ?? 0) + 1);
   }
-  const unknownStates = rankedRows.filter((row) => row.needsFurtherProcessing === "unknown").length;
   const manualAudioReviewRows = rankedRows.filter((row) => row.manualAudioReviewRemaining).length;
   console.log([
     "Video segment audit risk ranking:",
     `shards=${rankedRows.length}`,
     `excluded_sasc_shards=${excludedSascShards}`,
     `repair_required=${routeCounts.get("repair_required") ?? 0}`,
-    `follow_up_required=${routeCounts.get("follow_up_required") ?? 0}`,
     `review_candidate=${routeCounts.get("review_candidate") ?? 0}`,
     `low_signal=${routeCounts.get("low_signal") ?? 0}`,
     `malformed_log_rows=${processingLog.malformedRowCount}`,
     `unmapped_log_rows=${processingLog.unmappedRowCount}`,
     `ignored_log_rows=${processingLog.ignoredRowCount}`,
-    `unknown_processing_states=${unknownStates}`,
     `manual_audio_review_remaining=${manualAudioReviewRows}`,
     `output=${options.output}`,
   ].join(" "));
@@ -252,11 +246,14 @@ function isSascShard(...identifiers: string[]): boolean {
 }
 
 function hasManualAudioReviewRemaining(record: SiteContentProcessingLogRecord | undefined): boolean {
-  if (record?.needsFurtherProcessing !== "yes") {
+  if (record === undefined) {
     return false;
   }
   const details = `${record.result} ${record.notes}`;
-  return /\bmanual audio review remains\b|\bstill needs manual audio review\b/iu.test(details);
+  if (/\bmanual audio review (?:is )?(?:complete|completed|finished|resolved)\b|\bcompleted manual audio review\b/iu.test(details)) {
+    return false;
+  }
+  return /\bmanual audio review remains\b|\bstill needs manual audio review\b|\bmanual audio needed\b|\bneeds audiovisual recovery\b/iu.test(details);
 }
 
 function normalizedTitle(value: string): string {
@@ -294,27 +291,23 @@ function message(error: unknown): string {
 function printHelp(): void {
   console.log(`Usage: npm run report:video-segment-audit-risk -- [options]
 
-Ranks existing per-video shards for repair or follow-up audit using processing state,
-shard structure, timestamps, evidence metadata, and inexpensive warning heuristics.
+Ranks existing per-video shards by deterministic repair needs and current metadata
+that can indicate value from another substantive transcript-backed audit.
 SASC school-function shards are excluded from the ranking.
 It does not read transcript text, measure semantic completeness, or return calibrated probabilities.
-The one-decimal audit risk score is an uncalibrated within-route metadata grade.
-Three or more recorded passes (one consume plus at least two audits) reduce the
-continuous metadata-risk contribution to 20 percent and prevent a residual
-needsFurtherProcessing=yes state from automatically forcing the follow-up route.
-Within each route, these heavily reviewed files also sort after files with fewer
-than three passes. Structural repair and independent review warnings still control routing.
-A latest yes row that explicitly leaves only manual audio review receives the same
-text-audit downweighting and does not force another transcript-only follow-up.
-Completed empty shards with at least one recorded pass sort last within low_signal,
-so non-history or administrative clips do not need two extra audits merely to be downranked.
-Manifest transcripts with no shard remain visible through npm run audit:site-content.
+The one-decimal Audit Risk Score is an uncalibrated relative-anchor-gap heuristic.
+Scores are blank when the required transcript interval or anchors are unavailable.
+Routes sort repair_required, review_candidate, then low_signal. Within a route,
+defined scores sort descending, equal scores use fewer processing-log entries,
+and file stem is the final deterministic tie-break. Display diagnostics do not alter
+the score or ranking. Manual-audio status is operational display data only.
+Manifest transcripts without a canonical shard remain visible through npm run audit:site-content.
 
 Options:
   --manifest <path>          Transcript manifest (default: src/transcripts/manifest.json).
   --segments-input <path>    Per-video shard directory (default: src/derived/video-segments).
   --transcript-root <path>   Transcript TXT directory (default: src/transcripts/txt).
-  --processing-log <path>    Canonical five-field processing log; may be specified once.
+  --processing-log <path>    Canonical four-field processing log; may be specified once.
   --processing-config <path> Processing configuration for evidence and Q&A rules.
   --output <path>            TSV output (default: reports/video-segment-audit-risk.tsv).
   --help                     Show this help.

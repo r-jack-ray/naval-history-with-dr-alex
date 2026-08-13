@@ -21,12 +21,12 @@ test("accepts source shards without custom version metadata", () => {
 test("rejects undeclared source-shard metadata", () => {
   const result = validateCuratedVideoFile({
     ...sampleVideo(),
-    needsFurtherProcessing: false,
+    unexpectedMetadata: false,
   });
 
   assert.equal(result.success, false);
   if (!result.success) {
-    assert.match(result.issues.join("\n"), /needsFurtherProcessing/u);
+    assert.match(result.issues.join("\n"), /unexpectedMetadata/u);
   }
 });
 
@@ -103,21 +103,26 @@ test("validates a processing-config fixture without version metadata", () => {
 test("validates processing-log rows independently from log parsing", () => {
   assert.equal(
       SITE_CONTENT_PROCESSING_LOG_HEADER,
-      "timestamp;shardPath;result;needsFurtherProcessing;notes",
+      "timestamp;shardPath;result;notes",
   );
   assert.equal(validateSiteContentProcessingLogRow({
     timestamp: "2026-07-26T12:00:00-05:00",
     shardPath: "src/derived/video-segments/sample-video_abc123.json",
     result: "audited",
-    needsFurtherProcessing: "no",
     notes: "full transcript compared",
   }).success, true);
   assert.equal(validateSiteContentProcessingLogRow({
     timestamp: "2026-07-26T12:00:00-05:00",
     shardPath: "src\\derived\\video-segments\\sample-video_abc123.json",
     result: "audited",
-    needsFurtherProcessing: "no",
     notes: "full transcript compared",
+  }).success, false);
+  assert.equal(validateSiteContentProcessingLogRow({
+    timestamp: "2026-07-26T12:00:00-05:00",
+    shardPath: "src/derived/video-segments/sample-video_abc123.json",
+    result: "audited",
+    obsoleteStatus: "no",
+    notes: "obsolete state field",
   }).success, false);
 });
 
@@ -150,7 +155,6 @@ function sampleProcessingConfig() {
   return {
     firstPass: {
       defaultAction: "Create useful fixture watch points.",
-      defaultNeedsFurtherProcessing: true,
       processingMode: "full-file-best-effort",
       minimumEvidenceWindows: 1,
       preferredSegmentKinds: ["chapter", "qa"],

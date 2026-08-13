@@ -209,8 +209,8 @@ test("counts valid processing log entries", () => {
     manifest: sampleManifest(),
     seed: sampleSeed(),
     processingLogText: [
-      "timestamp;shardPath;result;needsFurtherProcessing;notes",
-      "2026-07-08T02:45:00-05:00;src/derived/video-segments/sample-video_abc123.json;curated 1 notable point;no;ready for site",
+      "timestamp;shardPath;result;notes",
+      "2026-07-08T02:45:00-05:00;src/derived/video-segments/sample-video_abc123.json;curated 1 notable point;ready for site",
     ].join("\n"),
     processingLogPath: "src/derived/site-content-processing.log",
     rootDir: "C:/repo",
@@ -220,18 +220,19 @@ test("counts valid processing log entries", () => {
   });
 
   assert.equal(audit.stats.processingLogEntryCount, 1);
-  assert.equal(audit.stats.completedProcessingLogVideoCount, 1);
   assert.equal(audit.stats.errorCount, 0);
 });
 
-test("omits transcripts with a latest completed processing log line from backlog", () => {
+test("excludes a canonical empty shard from backlog regardless of processing-log history", () => {
+  const seed = sampleSeed();
+  seed.videos.push({videoId: "def456", topics: []});
   const audit = buildSiteContentAudit({
     manifest: sampleManifest(),
-    seed: sampleSeed(),
+    seed,
     processingLogText: [
-      "timestamp;shardPath;result;needsFurtherProcessing;notes",
-      "2026-07-08T02:45:00-05:00;src/derived/video-segments/uncurated-video_def456.json;reviewed no usable segments;yes;first pass needs a revisit",
-      "2026-07-08T03:45:00-05:00;src/derived/video-segments/uncurated-video_def456.json;reviewed no usable segments;no;complete without site segment",
+      "timestamp;shardPath;result;notes",
+      "2026-07-08T02:45:00-05:00;src/derived/video-segments/uncurated-video_def456.json;reviewed no usable segments;first pass found no public watch point",
+      "2026-07-08T03:45:00-05:00;src/derived/video-segments/uncurated-video_def456.json;reviewed no usable segments;second independent review also found none",
     ].join("\n"),
     rootDir: "C:/repo",
     transcriptRoot: "src/transcripts",
@@ -240,18 +241,18 @@ test("omits transcripts with a latest completed processing log line from backlog
   });
 
   assert.equal(audit.stats.uncuratedStoredTranscriptCount, 0);
-  assert.equal(audit.stats.completedProcessingLogVideoCount, 1);
+  assert.equal(audit.stats.processingLogEntryCount, 2);
   assert.equal(audit.uncuratedTranscripts.length, 0);
 });
 
-test("keeps transcripts in backlog when a later processing log line needs more work", () => {
+test("keeps a transcript without a canonical shard in backlog regardless of processing-log rows", () => {
   const audit = buildSiteContentAudit({
     manifest: sampleManifest(),
     seed: sampleSeed(),
     processingLogText: [
-      "timestamp;shardPath;result;needsFurtherProcessing;notes",
-      "2026-07-08T02:45:00-05:00;src/derived/video-segments/uncurated-video_def456.json;reviewed no usable segments;no;complete without site segment",
-      "2026-07-08T03:45:00-05:00;src/derived/video-segments/uncurated-video_def456.json;reopened for topic review;yes;needs topic pass",
+      "timestamp;shardPath;result;notes",
+      "2026-07-08T02:45:00-05:00;src/derived/video-segments/uncurated-video_def456.json;reviewed no usable segments;no public watch point found",
+      "2026-07-08T03:45:00-05:00;src/derived/video-segments/uncurated-video_def456.json;reviewed again;result does not control backlog membership",
     ].join("\n"),
     rootDir: "C:/repo",
     transcriptRoot: "src/transcripts",
@@ -260,7 +261,7 @@ test("keeps transcripts in backlog when a later processing log line needs more w
   });
 
   assert.equal(audit.stats.uncuratedStoredTranscriptCount, 1);
-  assert.equal(audit.stats.completedProcessingLogVideoCount, 0);
+  assert.equal(audit.stats.processingLogEntryCount, 2);
   assert.equal(audit.uncuratedTranscripts[0]?.videoId, "def456");
 });
 
@@ -268,7 +269,7 @@ test("flags malformed processing log entries", () => {
   const audit = buildSiteContentAudit({
     manifest: sampleManifest(),
     seed: sampleSeed(),
-    processingLogText: "timestamp;shardPath;result;needsFurtherProcessing;notes\nnot enough fields\n",
+    processingLogText: "timestamp;shardPath;result;notes\nnot enough fields\n",
     processingLogPath: "src/derived/site-content-processing.log",
     rootDir: "C:/repo",
     transcriptRoot: "src/transcripts",
@@ -292,6 +293,7 @@ test("renders a markdown report", () => {
   const report = renderSiteContentAuditReport(audit);
 
   assert.match(report, /# Site Content Backlog/u);
+  assert.match(report, /Stored transcripts without a canonical shard/u);
   assert.match(report, /Uncurated Video \(def456\)/u);
 });
 
@@ -369,7 +371,6 @@ function sampleProcessingConfig(): SiteContentProcessingConfig {
   return {
     firstPass: {
       defaultAction: "curated granular first-pass segments",
-      defaultNeedsFurtherProcessing: true,
       processingMode: "full-file-best-effort",
       minimumEvidenceWindows: 1,
       preferredSegmentKinds: ["notable_point", "chapter", "qa", "transcript_excerpt"],

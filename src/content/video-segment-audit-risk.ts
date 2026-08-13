@@ -1,6 +1,4 @@
-export type ProcessingState = "yes" | "no" | "unknown";
-export type AuditRoute = "repair_required" | "follow_up_required" | "review_candidate" | "low_signal";
-export type RiskTier = "critical" | "high" | "medium" | "low";
+export type AuditRoute = "repair_required" | "review_candidate" | "low_signal";
 export type QaExpectation = "none" | "explicit_title" | "configured_video_type";
 
 export interface AuditEvidence {
@@ -31,7 +29,6 @@ export interface VideoSegmentAuditRiskInput {
   transcriptStartSeconds?: number;
   durationSeconds: number | undefined;
   segments: AuditSegment[];
-  needsFurtherProcessing: ProcessingState;
   manualAudioReviewRemaining?: boolean;
   structuralIssues?: string[];
   qaExpectation?: QaExpectation;
@@ -40,14 +37,12 @@ export interface VideoSegmentAuditRiskInput {
 
 export interface VideoSegmentAuditRiskRow {
   rank: number;
-  auditRiskScore: number;
-  riskTier: RiskTier;
+  auditRiskScore: number | undefined;
   auditRoute: AuditRoute;
   videoId: string;
   fileStem: string;
   filePath: string | undefined;
   videoTitle: string;
-  needsFurtherProcessing: ProcessingState;
   manualAudioReviewRemaining: boolean;
   processLogEntries: number;
   transcriptBytes: number | undefined;
@@ -75,17 +70,15 @@ export interface VideoSegmentAuditRiskRow {
 
 const ROUTE_ORDER: Record<AuditRoute, number> = {
   repair_required: 0,
-  follow_up_required: 1,
-  review_candidate: 2,
-  low_signal: 3,
+  review_candidate: 1,
+  low_signal: 2,
 };
 const TIMESTAMP_TOLERANCE_SECONDS = 2;
-const HEAVILY_REVIEWED_PASS_THRESHOLD = 3;
-const DEPRIORITIZED_TEXT_AUDIT_METADATA_WEIGHT = 0.2;
 
 export function analyzeVideoSegmentRisk(input: VideoSegmentAuditRiskInput): VideoSegmentAuditRiskRow {
   const hardIssues = [...(input.structuralIssues ?? [])];
   const reviewSignals: string[] = [];
+  const diagnosticSignals: string[] = [];
   const minimumEvidenceWindows = input.minimumEvidenceWindows ?? 1;
   const anchors: number[] = [];
   const qaAnchors: number[] = [];
@@ -197,97 +190,56 @@ export function analyzeVideoSegmentRisk(input: VideoSegmentAuditRiskInput): Vide
   }
 
   const interval = transcriptInterval(input.transcriptStartSeconds, input.durationSeconds);
+  if (input.segments.length > 0 && interval === undefined) {
+    hardIssues.push("matching canonical transcript duration is missing or unusable");
+  }
   const distribution = temporalDistribution(anchors, interval);
   const qaTemporalBinsCovered = occupiedBins(qaAnchors, interval);
   const qaExpectation = input.qaExpectation ?? "none";
-  const qaExpected = qaExpectation !== "none";
-  const completedGenericNoQa = qaExpectation === "configured_video_type"
-      && input.needsFurtherProcessing === "no"
-      && validQaCount === 0;
-  if (qaExpected && !completedGenericNoQa && validQaCount === 0 && input.segments.length > 0) {
-    reviewSignals.push("configured title or video type expects Q&A but the shard has no valid qa segments");
-  } else if (qaExpected && validQaCount > 0 && interval !== undefined && interval.durationSeconds >= 3_600
+  if (qaExpectation === "explicit_title" && validQaCount === 0 && input.segments.length > 0) {
+    reviewSignals.push("explicit Q&A title has no valid qa segments");
+  } else if (qaExpectation === "explicit_title" && validQaCount > 0 && interval !== undefined && interval.durationSeconds >= 3_600
       && qaTemporalBinsCovered <= 1) {
-    reviewSignals.push("Q&A records occupy only one temporal bin in a long Q&A-expected video");
+    reviewSignals.push("Q&A records occupy only one temporal bin in a long explicit-title Q&A video");
   }
-  if (input.segments.length > 0 && interval !== undefined && interval.durationSeconds >= 1_800) {
-    if ((distribution.largestGapPct ?? 0) >= 50) {
-      reviewSignals.push("valid anchors leave a gap of at least half the transcript duration");
-    }
-    if (distribution.binsCovered <= 2) {
-      reviewSignals.push("valid anchors occupy at most two of ten transcript bins");
-    }
+  if (qaExpectation === "configured_video_type" && validQaCount === 0 && input.segments.length > 0) {
+    diagnosticSignals.push("configured video type expects Q&A, retained as diagnostic context only");
   }
-  if (input.segments.length === 0 && input.needsFurtherProcessing !== "no") {
-    reviewSignals.push("shard has no segments and is not intentionally completed");
+  if (input.segments.length === 0 && input.processLogEntries <= 1) {
+    reviewSignals.push("shard has no segments after at most one recorded audit opportunity");
   }
-  if (input.needsFurtherProcessing === "unknown") {
-    reviewSignals.push("latest processing state is unknown");
-  }
-
-  const heavilyReviewed = input.processLogEntries >= HEAVILY_REVIEWED_PASS_THRESHOLD;
-  const manualAudioReviewRemaining = input.manualAudioReviewRemaining ?? false;
-  const textAuditDeprioritized = heavilyReviewed || manualAudioReviewRemaining;
   const auditRoute: AuditRoute = hardIssues.length > 0
       ? "repair_required"
-      : input.needsFurtherProcessing === "yes" && !textAuditDeprioritized
-          ? "follow_up_required"
-          : reviewSignals.length > 0
-              ? "review_candidate"
-              : "low_signal";
-  const completedEmptyAfterRecordedPass = auditRoute === "low_signal"
-      && input.needsFurtherProcessing === "no"
-      && input.processLogEntries >= 1
-      && input.segments.length === 0;
+      : reviewSignals.length > 0
+          ? "review_candidate"
+          : "low_signal";
   const segmentCount = input.segments.length;
   const durationMinutes = interval === undefined ? undefined : interval.durationSeconds / 60;
   const largestAnchorGapMinutes = distribution.largestGapPct === undefined || durationMinutes === undefined
       ? undefined
       : durationMinutes * distribution.largestGapPct / 100;
-  const metadataRiskIndex = continuousMetadataRisk({
+  const score = relativeAnchorGapScore({
+    transcriptBytes: input.transcriptBytes,
     durationMinutes,
     segmentCount,
-    temporalBinsCovered: distribution.binsCovered,
     largestAnchorGapPct: distribution.largestGapPct,
-    largestAnchorGapMinutes,
-    qaExpected,
-    validQaCount,
-    qaTemporalBinsCovered,
   });
-  const weightedMetadataRiskIndex = metadataRiskIndex
-      * (textAuditDeprioritized ? DEPRIORITIZED_TEXT_AUDIT_METADATA_WEIGHT : 1);
-  const score = riskScore(auditRoute, hardIssues.length, reviewSignals.length, weightedMetadataRiskIndex);
   const riskSignals = [...hardIssues];
-  if (input.needsFurtherProcessing === "yes") {
-    riskSignals.push(manualAudioReviewRemaining
-        ? "latest pass leaves only manual audio review; text-only follow-up promotion is suppressed"
-        : heavilyReviewed
-            ? "latest processing state requests further processing, but the 3+ pass threshold prevents automatic follow-up promotion"
-            : "recorded processing state explicitly requests further processing");
-  }
   riskSignals.push(...reviewSignals);
-  if (heavilyReviewed) {
-    riskSignals.push(`${input.processLogEntries} recorded passes meet the consume-plus-two-audits threshold; residual metadata risk is strongly downweighted`);
-  }
-  if (completedEmptyAfterRecordedPass) {
-    const passLabel = input.processLogEntries === 1 ? "pass" : "passes";
-    riskSignals.push(`completed shard has no history segments after ${input.processLogEntries} recorded ${passLabel}; repeated content audits sort at the bottom`);
-  }
+  riskSignals.push(...diagnosticSignals);
   if (riskSignals.length === 0) {
-    riskSignals.push("no route-level failure or warning detected; score uses continuous metadata diagnostics only");
+    riskSignals.push("no route-level failure or review cue detected; score uses relative anchor gap only");
   }
 
   return {
     rank: 0,
     auditRiskScore: score,
-    riskTier: tierFor(score),
     auditRoute,
     videoId: input.videoId,
     fileStem: input.fileStem,
     filePath: input.filePath,
     videoTitle: input.videoTitle,
-    needsFurtherProcessing: input.needsFurtherProcessing,
-    manualAudioReviewRemaining,
+    manualAudioReviewRemaining: input.manualAudioReviewRemaining ?? false,
     processLogEntries: input.processLogEntries,
     transcriptBytes: input.transcriptBytes,
     shardBytes: input.shardBytes,
@@ -316,30 +268,30 @@ export function analyzeVideoSegmentRisk(input: VideoSegmentAuditRiskInput): Vide
 export function rankVideoSegmentAuditRisks(rows: VideoSegmentAuditRiskRow[]): VideoSegmentAuditRiskRow[] {
   return [...rows].sort((left, right) =>
       ROUTE_ORDER[left.auditRoute] - ROUTE_ORDER[right.auditRoute]
-      || auditDeprioritizationOrder(left) - auditDeprioritizationOrder(right)
-      || right.auditRiskScore - left.auditRiskScore
-      || left.videoTitle.localeCompare(right.videoTitle)
-      || left.videoId.localeCompare(right.videoId))
+      || scoreAvailabilityOrder(left.auditRiskScore) - scoreAvailabilityOrder(right.auditRiskScore)
+      || compareDefinedScoresDescending(left.auditRiskScore, right.auditRiskScore)
+      || left.processLogEntries - right.processLogEntries
+      || left.fileStem.localeCompare(right.fileStem))
       .map((row, index) => ({...row, rank: index + 1}));
 }
 
 export function renderVideoSegmentAuditRiskTsv(rows: VideoSegmentAuditRiskRow[]): string {
   const headers = [
-    "file stem", "rank", "audit risk score", "manual audio review remaining", "process log entries", "transcript bytes", "shard bytes",
+    "file stem", "rank", "audit risk score", "audit route", "process log entries", "transcript bytes", "shard bytes",
     "shard to transcript ratio", "duration minutes",
     "segment count", "qa count", "valid qa count", "qa temporal bins covered", "segments per hour",
     "first segment position pct", "last segment position pct", "temporal bins covered", "largest anchor gap pct",
     "largest anchor gap minutes",
-    "valid anchor count",
+    "valid anchor count", "manual audio review remaining",
   ];
   const body = rows.map((row) => [
-    row.filePath ?? row.fileStem, row.rank, format(row.auditRiskScore, 1),
-    row.manualAudioReviewRemaining, row.processLogEntries, row.transcriptBytes ?? "", row.shardBytes,
+    row.filePath ?? row.fileStem, row.rank, format(row.auditRiskScore, 1), row.auditRoute,
+    row.processLogEntries, row.transcriptBytes ?? "", row.shardBytes,
     format(row.shardToTranscriptRatio, 4),
     format(row.durationMinutes, 1), row.segmentCount, row.qaCount, row.validQaCount, row.qaTemporalBinsCovered,
     format(row.segmentsPerHour, 2), format(row.firstSegmentPositionPct, 1), format(row.lastSegmentPositionPct, 1),
     row.temporalBinsCovered, format(row.largestAnchorGapPct, 1), format(row.largestAnchorGapMinutes, 1),
-    row.validAnchorCount,
+    row.validAnchorCount, row.manualAudioReviewRemaining,
   ].map(escapeTsv).join("\t"));
   return `${headers.join("\t")}\n${body.join("\n")}\n`;
 }
@@ -429,80 +381,34 @@ function occupiedBins(anchors: number[], interval: TranscriptInterval | undefine
   })).size;
 }
 
-interface MetadataRiskInput {
+interface RelativeAnchorGapScoreInput {
+  transcriptBytes: number | undefined;
   durationMinutes: number | undefined;
   segmentCount: number;
-  temporalBinsCovered: number;
   largestAnchorGapPct: number | undefined;
-  largestAnchorGapMinutes: number | undefined;
-  qaExpected: boolean;
-  validQaCount: number;
-  qaTemporalBinsCovered: number;
 }
 
-function continuousMetadataRisk(input: MetadataRiskInput): number {
-  if (input.segmentCount === 0 || input.durationMinutes === undefined
-      || input.largestAnchorGapPct === undefined || input.largestAnchorGapMinutes === undefined) {
-    return 0;
+function relativeAnchorGapScore(input: RelativeAnchorGapScoreInput): number | undefined {
+  if (!positive(input.transcriptBytes) || input.segmentCount === 0 || input.durationMinutes === undefined
+      || input.largestAnchorGapPct === undefined) {
+    return undefined;
   }
 
   // Short clips provide too little duration for sparse anchors to be a meaningful warning.
   const durationConfidence = unitInterval((input.durationMinutes - 5) / 25);
   const relativeGapRisk = unitInterval((input.largestAnchorGapPct - 5) / 45) * durationConfidence;
-  const absoluteGapRisk = unitInterval((input.largestAnchorGapMinutes - 5) / 55) * durationConfidence;
-  const expectedTemporalBins = clamp(Math.ceil(input.durationMinutes / 10), 1, 10);
-  const binDeficitRisk = unitInterval(
-      (expectedTemporalBins - input.temporalBinsCovered) / expectedTemporalBins,
-  ) * durationConfidence;
-  const expectedQaBins = clamp(Math.ceil(input.durationMinutes / 30), 1, 10);
-  const qaDispersionRisk = input.qaExpected && input.validQaCount > 0
-      ? unitInterval((expectedQaBins - input.qaTemporalBinsCovered) / expectedQaBins) * durationConfidence
-      : 0;
-
-  return unitInterval(
-      relativeGapRisk * 0.4
-      + absoluteGapRisk * 0.35
-      + binDeficitRisk * 0.15
-      + qaDispersionRisk * 0.1,
-  );
+  return roundToOneDecimal(relativeGapRisk * 100);
 }
 
-function riskScore(route: AuditRoute, hardIssueCount: number, reviewSignalCount: number, metadataRisk: number): number {
-  let score: number;
-  if (route === "repair_required") {
-    score = 85 + Math.max(0, hardIssueCount - 1) * 2 + reviewSignalCount * 0.5 + metadataRisk * 6;
-    return roundToOneDecimal(clamp(score, 85, 99));
-  }
-  if (route === "follow_up_required") {
-    score = 65 + reviewSignalCount * 2.5 + metadataRisk * 19.9;
-    return roundToOneDecimal(clamp(score, 65, 84.9));
-  }
-  if (route === "review_candidate") {
-    score = 35 + Math.max(0, reviewSignalCount - 1) * 4 + metadataRisk * 24.9;
-    return roundToOneDecimal(clamp(score, 35, 64.9));
-  }
-  return roundToOneDecimal(clamp(5 + metadataRisk * 19.9, 5, 24.9));
+function scoreAvailabilityOrder(score: number | undefined): number {
+  return score === undefined ? 1 : 0;
 }
 
-function tierFor(score: number): RiskTier {
-  if (score >= 85) {
-    return "critical";
+function compareDefinedScoresDescending(left: number | undefined, right: number | undefined): number {
+  if (left === undefined || right === undefined) {
+    return 0;
   }
-  if (score >= 65) {
-    return "high";
-  }
-  if (score >= 35) {
-    return "medium";
-  }
-  return "low";
-}
-
-function auditDeprioritizationOrder(row: VideoSegmentAuditRiskRow): number {
-  if (row.auditRoute === "low_signal" && row.needsFurtherProcessing === "no"
-      && row.processLogEntries >= 1 && row.segmentCount === 0) {
-    return 2;
-  }
-  return row.manualAudioReviewRemaining || row.processLogEntries >= HEAVILY_REVIEWED_PASS_THRESHOLD ? 1 : 0;
+  return right - left;
 }
 
 function normalizePath(value: string): string {

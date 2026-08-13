@@ -11,13 +11,13 @@ const manifest = [
 test("parses canonical semicolon rows and uses last physical valid occurrence", () => {
   const parsed = parseSiteContentProcessingLog([
     SITE_CONTENT_PROCESSING_LOG_HEADER,
-    "2026-07-08T03:45:00-05:00;src/derived/video-segments/sample-video_abc123.json;first;yes;needs work",
-    "2026-07-08T02:45:00;src/derived/video-segments/sample-video_abc123.json;second;no;complete",
+    "2026-07-08T03:45:00-05:00;src/derived/video-segments/sample-video_abc123.json;first;needs work",
+    "2026-07-08T02:45:00;src/derived/video-segments/sample-video_abc123.json;second;complete",
     "",
   ].join("\n"), manifest);
 
   assert.equal(parsed.records.length, 2);
-  assert.equal(parsed.latestByVideoId.get("abc123")?.needsFurtherProcessing, "no");
+  assert.equal(parsed.latestByFileStem.get("sample-video_abc123")?.result, "second");
   assert.equal(parsed.malformedRowCount, 0);
   assert.equal(parsed.unmappedRowCount, 0);
   assert.equal(parsed.ignoredRowCount, 0);
@@ -26,12 +26,11 @@ test("parses canonical semicolon rows and uses last physical valid occurrence", 
 test("preserves semicolons in the final free-text notes field", () => {
   const parsed = parseSiteContentProcessingLog([
     SITE_CONTENT_PROCESSING_LOG_HEADER,
-    "2026-07-08T03:45:00;src/derived/video-segments/sample-video_abc123.json;audited;no;full transcript compared; current pass saturated",
+    "2026-07-08T03:45:00;src/derived/video-segments/sample-video_abc123.json;audited;full transcript compared; current pass saturated",
   ].join("\n"), manifest);
 
   assert.equal(parsed.records.length, 1);
   assert.equal(parsed.records[0]?.notes, "full transcript compared; current pass saturated");
-  assert.equal(parsed.latestByVideoId.get("abc123")?.needsFurtherProcessing, "no");
   assert.equal(parsed.malformedRowCount, 0);
 });
 
@@ -39,9 +38,9 @@ test("counts malformed and unmapped rows without accepting legacy tabs or counti
   const parsed = parseSiteContentProcessingLog([
     SITE_CONTENT_PROCESSING_LOG_HEADER,
     "2026-07-08T03:45:00\tsrc/transcripts/txt/sample-video_abc123.txt\tabc123\tcurated\tno\tcomplete",
-    "not-a-time;src/derived/video-segments/sample-video_abc123.json;curated;no;complete",
-    "2026-02-31T03:45:00;src/derived/video-segments/sample-video_abc123.json;curated;no;complete",
-    "2026-07-08T03:45:00;src/derived/video-segments/missing_def456.json;curated;yes;needs work",
+    "2026-07-08T03:45:00;src/derived/video-segments/sample-video_abc123.json;curated;no;obsolete state-bearing row",
+    "2026-02-31T03:45:00;src/derived/video-segments/sample-video_abc123.json;curated;complete",
+    "2026-07-08T03:45:00;src/derived/video-segments/missing_def456.json;curated;needs work",
     "",
   ].join("\n"), manifest);
 
@@ -55,7 +54,7 @@ test("counts an interior blank line as ignored", () => {
   const parsed = parseSiteContentProcessingLog([
     SITE_CONTENT_PROCESSING_LOG_HEADER,
     "",
-    "2026-07-08T03:45:00;src/derived/video-segments/sample-video_abc123.json;audited;no;complete",
+    "2026-07-08T03:45:00;src/derived/video-segments/sample-video_abc123.json;audited;complete",
   ].join("\n"), manifest);
 
   assert.equal(parsed.records.length, 1);

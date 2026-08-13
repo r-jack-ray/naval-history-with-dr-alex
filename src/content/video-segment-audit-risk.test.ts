@@ -6,6 +6,7 @@ import {
   parseStrictTimestamp,
   rankVideoSegmentAuditRisks,
   renderVideoSegmentAuditRiskTsv,
+  type AuditSegment,
   type VideoSegmentAuditRiskInput,
 } from "./video-segment-audit-risk.js";
 
@@ -26,7 +27,6 @@ function input(overrides: Partial<VideoSegmentAuditRiskInput> = {}): VideoSegmen
       kind: "chapter", start: "0:00", end: "10:00", sourcePath,
       evidence: [{start: "0:00", end: "10:00", note: "Opening evidence."}],
     }],
-    needsFurtherProcessing: "no",
     ...overrides,
   };
 }
@@ -39,16 +39,15 @@ test("strict timestamp parsing rejects malformed clock components", () => {
   }
 });
 
-test("one late segment exposes sparse temporal distribution rather than complete coverage", () => {
+test("one late segment exposes sparse temporal distribution without forcing a route", () => {
   const row = analyzeVideoSegmentRisk(input({
     durationSeconds: 7_200,
-    needsFurtherProcessing: "unknown",
     segments: [{
       kind: "chapter", start: "1:58:00", sourcePath,
       evidence: [{start: "1:58:00", end: "2:00:00", note: "Late evidence."}],
     }],
   }));
-  assert.equal(row.auditRoute, "review_candidate");
+  assert.equal(row.auditRoute, "low_signal");
   assert.equal(row.lastSegmentPositionPct, 100);
   assert.ok((row.largestAnchorGapPct ?? 0) > 95);
   assert.equal(row.temporalBinsCovered, 1);
@@ -56,20 +55,16 @@ test("one late segment exposes sparse temporal distribution rather than complete
 
 test("distributed anchors cover more bins and preserve a smaller internal gap", () => {
   const clustered = analyzeVideoSegmentRisk(input({
-    segments: [
-      {kind: "chapter", start: "1:00", sourcePath, evidence: [{start: "1:00", note: "a"}]},
-      {kind: "chapter", start: "2:00", sourcePath, evidence: [{start: "2:00", note: "b"}]},
-    ]
+    durationSeconds: 1_800,
+    segments: segmentsAt(0, 600, 1_200, 1_800),
   }));
   const distributed = analyzeVideoSegmentRisk(input({
-    segments: [
-      {kind: "chapter", start: "1:00", sourcePath, evidence: [{start: "1:00", note: "a"}]},
-      {kind: "chapter", start: "30:00", sourcePath, evidence: [{start: "30:00", note: "b"}]},
-    ]
+    durationSeconds: 1_800,
+    segments: segmentsAt(0, 300, 600, 900, 1_200, 1_500, 1_800),
   }));
   assert.ok(distributed.temporalBinsCovered > clustered.temporalBinsCovered);
   assert.ok((distributed.largestAnchorGapPct ?? 100) < (clustered.largestAnchorGapPct ?? 0));
-  assert.ok(distributed.auditRiskScore < clustered.auditRiskScore);
+  assert.ok(distributed.auditRiskScore! < clustered.auditRiskScore!);
 });
 
 test("transcript temporal metrics use the manifest transcript interval rather than video zero", () => {
@@ -101,131 +96,113 @@ test("structural and evidence defects route to repair", () => {
   assert.ok(row.invalidAnchorCount > 0);
 });
 
-test("Q/A expectation requires a valid qa record", () => {
+test("explicit-title Q/A expectation requires a valid qa record", () => {
   const row = analyzeVideoSegmentRisk(input({
     videoTitle: "Questions Q/A",
     qaExpectation: "explicit_title",
     segments: [{kind: "chapter", start: "0:00", sourcePath, evidence: [{start: "0:00", note: "Opening."}]}],
   }));
   assert.equal(row.auditRoute, "review_candidate");
-  assert.match(row.riskSignals.join(" "), /expects Q&A/u);
+  assert.match(row.riskSignals.join(" "), /explicit Q&A title/u);
 });
 
-test("a completed audit overrides only a generic configured Q/A expectation", () => {
-  const overrides: Partial<VideoSegmentAuditRiskInput> = {
-    durationSeconds: 600,
-    segments: [{kind: "chapter", start: "0:00", sourcePath, evidence: [{start: "0:00", end: "10:00", note: "Opening."}]}],
-    needsFurtherProcessing: "no",
-  };
-  const generic = analyzeVideoSegmentRisk(input({...overrides, qaExpectation: "configured_video_type"}));
-  const explicit = analyzeVideoSegmentRisk(input({...overrides, qaExpectation: "explicit_title"}));
+test("configured-video-type Q/A expectation is diagnostic only", () => {
+  const generic = analyzeVideoSegmentRisk(input({qaExpectation: "configured_video_type"}));
+  const explicit = analyzeVideoSegmentRisk(input({qaExpectation: "explicit_title"}));
 
   assert.equal(generic.auditRoute, "low_signal");
+  assert.match(generic.riskSignals.join(" "), /diagnostic context only/u);
   assert.equal(explicit.auditRoute, "review_candidate");
 });
 
-test("processing state controls route and intentional empty completion stays low signal", () => {
-  const followUp = analyzeVideoSegmentRisk(input({needsFurtherProcessing: "yes"}));
-  const intentionalEmpty = analyzeVideoSegmentRisk(input({processLogEntries: 1, segments: [], needsFurtherProcessing: "no"}));
-  const unfinishedEmpty = analyzeVideoSegmentRisk(input({processLogEntries: 1, segments: [], needsFurtherProcessing: "yes"}));
-  assert.equal(followUp.auditRoute, "follow_up_required");
-  assert.equal(followUp.riskTier, "high");
-  assert.match(followUp.riskSignals.join(" "), /explicitly requests further processing/u);
-  assert.equal(intentionalEmpty.auditRoute, "low_signal");
-  assert.equal(intentionalEmpty.auditRiskScore, 5);
-  assert.match(intentionalEmpty.riskSignals.join(" "), /no history segments after 1 recorded pass/u);
-  assert.equal(unfinishedEmpty.auditRoute, "follow_up_required");
-  assert.equal(analyzeVideoSegmentRisk(input({needsFurtherProcessing: "unknown"})).auditRoute, "review_candidate");
+test("empty shards use audit opportunity for route and remain unscored", () => {
+  const unreviewed = analyzeVideoSegmentRisk(input({processLogEntries: 0, segments: []}));
+  const onceReviewed = analyzeVideoSegmentRisk(input({processLogEntries: 1, segments: []}));
+  const repeatedlyReviewed = analyzeVideoSegmentRisk(input({processLogEntries: 2, segments: []}));
+
+  assert.equal(unreviewed.auditRoute, "review_candidate");
+  assert.equal(onceReviewed.auditRoute, "review_candidate");
+  assert.equal(repeatedlyReviewed.auditRoute, "low_signal");
+  assert.equal(unreviewed.auditRiskScore, undefined);
+  assert.equal(onceReviewed.auditRiskScore, undefined);
+  assert.equal(repeatedlyReviewed.auditRiskScore, undefined);
 });
 
-test("three recorded passes strongly downweight residual metadata risk", () => {
+test("processing-log count does not change route or score", () => {
   const firstPass = analyzeVideoSegmentRisk(input({processLogEntries: 1, durationSeconds: 1_200}));
   const secondPass = analyzeVideoSegmentRisk(input({processLogEntries: 2, durationSeconds: 1_200}));
   const thirdPass = analyzeVideoSegmentRisk(input({processLogEntries: 3, durationSeconds: 1_200}));
   const laterPass = analyzeVideoSegmentRisk(input({processLogEntries: 6, durationSeconds: 1_200}));
 
+  assert.equal(firstPass.auditRoute, "low_signal");
+  assert.equal(secondPass.auditRoute, firstPass.auditRoute);
+  assert.equal(thirdPass.auditRoute, firstPass.auditRoute);
+  assert.equal(laterPass.auditRoute, firstPass.auditRoute);
   assert.equal(secondPass.auditRiskScore, firstPass.auditRiskScore);
-  assert.ok(thirdPass.auditRiskScore < secondPass.auditRiskScore);
-  assert.ok(thirdPass.auditRiskScore - 5 <= (secondPass.auditRiskScore - 5) * 0.25);
+  assert.equal(thirdPass.auditRiskScore, secondPass.auditRiskScore);
   assert.equal(laterPass.auditRiskScore, thirdPass.auditRiskScore);
-  assert.match(thirdPass.riskSignals.join(" "), /consume-plus-two-audits threshold/u);
 });
 
-test("three-pass weighting suppresses automatic follow-up promotion but not structural repair", () => {
-  const secondPass = analyzeVideoSegmentRisk(input({processLogEntries: 2, needsFurtherProcessing: "yes"}));
-  const thirdPass = analyzeVideoSegmentRisk(input({processLogEntries: 3, needsFurtherProcessing: "yes", durationSeconds: 1_200}));
-  const warnedThirdPass = analyzeVideoSegmentRisk(input({
-    processLogEntries: 3,
-    needsFurtherProcessing: "yes",
-    durationSeconds: 1_200,
-    qaExpectation: "explicit_title",
-  }));
-  const repair = analyzeVideoSegmentRisk(input({processLogEntries: 3, structuralIssues: ["bad root"]}));
+test("manual audio is display-only and cannot change route, score, order, or rank", () => {
+  const withoutManual = analyzeVideoSegmentRisk(input({videoId: "a", fileStem: "a", manualAudioReviewRemaining: false}));
+  const withManual = analyzeVideoSegmentRisk(input({videoId: "a", fileStem: "a", manualAudioReviewRemaining: true}));
+  const {manualAudioReviewRemaining: _withoutDisplay, ...withoutRiskFields} = withoutManual;
+  const {manualAudioReviewRemaining: _withDisplay, ...withRiskFields} = withManual;
+  assert.deepEqual(withRiskFields, withoutRiskFields);
 
-  assert.equal(secondPass.auditRoute, "follow_up_required");
-  assert.equal(thirdPass.auditRoute, "low_signal");
-  assert.equal(warnedThirdPass.auditRoute, "review_candidate");
-  assert.match(thirdPass.riskSignals.join(" "), /prevents automatic follow-up promotion/u);
-  assert.equal(repair.auditRoute, "repair_required");
+  const other = analyzeVideoSegmentRisk(input({videoId: "b", fileStem: "b", processLogEntries: 1}));
+  const original = rankVideoSegmentAuditRisks([withoutManual, other]);
+  const toggled = rankVideoSegmentAuditRisks([
+    {...withoutManual, manualAudioReviewRemaining: true},
+    {...other, manualAudioReviewRemaining: !other.manualAudioReviewRemaining},
+  ]);
+  assert.deepEqual(original.map(({videoId, rank}) => ({videoId, rank})), toggled.map(({videoId, rank}) => ({videoId, rank})));
 });
 
-test("manual-audio-only follow-up is deprioritized without hiding independent warnings", () => {
-  const actionable = analyzeVideoSegmentRisk(input({
-    videoId: "actionable",
-    processLogEntries: 2,
-    needsFurtherProcessing: "yes",
-    durationSeconds: 1_200,
+test("relative gap score is exact and ignores absolute gap, bins, sizes, and segment count", () => {
+  const zero = analyzeVideoSegmentRisk(input({
+    durationSeconds: 1_800,
+    segments: segmentsAt(...Array.from({length: 21}, (_, index) => index * 90)),
   }));
-  const manualAudio = analyzeVideoSegmentRisk(input({
-    videoId: "manual",
-    processLogEntries: 2,
-    needsFurtherProcessing: "yes",
-    manualAudioReviewRemaining: true,
-    durationSeconds: 1_200,
+  const partial = analyzeVideoSegmentRisk(input({
+    durationSeconds: 1_800,
+    segments: segmentsAt(0, 495, 990, 1_485, 1_800),
   }));
-  const warnedManualAudio = analyzeVideoSegmentRisk(input({
-    processLogEntries: 2,
-    needsFurtherProcessing: "yes",
-    manualAudioReviewRemaining: true,
-    durationSeconds: 1_200,
-    qaExpectation: "explicit_title",
-  }));
-  const repair = analyzeVideoSegmentRisk(input({
-    processLogEntries: 2,
-    needsFurtherProcessing: "yes",
-    manualAudioReviewRemaining: true,
-    structuralIssues: ["bad root"],
-  }));
-
-  assert.equal(actionable.auditRoute, "follow_up_required");
-  assert.equal(manualAudio.auditRoute, "low_signal");
-  assert.equal(warnedManualAudio.auditRoute, "review_candidate");
-  assert.equal(repair.auditRoute, "repair_required");
-  assert.match(manualAudio.riskSignals.join(" "), /only manual audio review/u);
-});
-
-test("shard and transcript sizes remain diagnostic only", () => {
+  const capped = analyzeVideoSegmentRisk(input({durationSeconds: 1_800, segments: segmentsAt(0)}));
   const compact = analyzeVideoSegmentRisk(input({shardBytes: 1, transcriptBytes: 100}));
   const verbose = analyzeVideoSegmentRisk(input({shardBytes: 1_000_000, transcriptBytes: 1_000_000}));
+
+  assert.equal(zero.auditRiskScore, 0);
+  assert.equal(partial.auditRiskScore, 50);
+  assert.equal(capped.auditRiskScore, 100);
   assert.equal(verbose.auditRiskScore, compact.auditRiskScore);
+  const longer = analyzeVideoSegmentRisk(input({durationSeconds: 7_200, segments: segmentsAt(0, 1_800, 3_600, 5_400, 7_200)}));
+  const shorter = analyzeVideoSegmentRisk(input({durationSeconds: 3_600, segments: segmentsAt(0, 900, 1_800, 2_700, 3_600)}));
+  assert.equal(longer.largestAnchorGapPct, shorter.largestAnchorGapPct);
+  assert.ok((longer.largestAnchorGapMinutes ?? 0) > (shorter.largestAnchorGapMinutes ?? 0));
+  assert.equal(longer.auditRiskScore, shorter.auditRiskScore);
 });
 
-test("published grades use non-overlapping route bands", () => {
-  const low = analyzeVideoSegmentRisk(input({durationSeconds: 1_200}));
-  const review = analyzeVideoSegmentRisk(input({durationSeconds: 1_200, needsFurtherProcessing: "unknown"}));
-  const followUp = analyzeVideoSegmentRisk(input({durationSeconds: 1_200, needsFurtherProcessing: "yes"}));
-  const repair = analyzeVideoSegmentRisk(input({durationSeconds: 1_200, structuralIssues: ["bad root"]}));
+test("Q&A dispersion and extra temporal bins are diagnostic only", () => {
+  const clustered = analyzeVideoSegmentRisk(input({
+    qaExpectation: "configured_video_type",
+    segments: [qaAt(0), ...segmentsAt(900, 1_800, 2_700, 3_600)],
+  }));
+  const distributed = analyzeVideoSegmentRisk(input({
+    qaExpectation: "configured_video_type",
+    segments: [qaAt(0), qaAt(300), qaAt(1_200), qaAt(2_400), ...segmentsAt(900, 1_800, 2_700, 3_600)],
+  }));
 
-  assert.ok(low.auditRiskScore < 35);
-  assert.ok(review.auditRiskScore >= 35 && review.auditRiskScore < 65);
-  assert.ok(followUp.auditRiskScore >= 65 && followUp.auditRiskScore < 85);
-  assert.ok(repair.auditRiskScore >= 85 && repair.auditRiskScore <= 99);
+  assert.equal(clustered.largestAnchorGapPct, distributed.largestAnchorGapPct);
+  assert.ok(distributed.temporalBinsCovered > clustered.temporalBinsCovered);
+  assert.ok(distributed.qaTemporalBinsCovered > clustered.qaTemporalBinsCovered);
+  assert.equal(distributed.auditRiskScore, clustered.auditRiskScore);
 });
 
-test("route precedence beats score while TSV exposes only retained audit metrics", () => {
-  const repair = analyzeVideoSegmentRisk(input({videoTitle: "Z repair", structuralIssues: ["bad root"]}));
-  const followUp = analyzeVideoSegmentRisk(input({videoTitle: "A follow up", needsFurtherProcessing: "yes"}));
-  const ranked = rankVideoSegmentAuditRisks([followUp, repair]);
+test("route precedence and TSV expose the controlling model", () => {
+  const repair = analyzeVideoSegmentRisk(input({fileStem: "repair", structuralIssues: ["bad root"]}));
+  const review = analyzeVideoSegmentRisk(input({fileStem: "review", processLogEntries: 1, segments: []}));
+  const ranked = rankVideoSegmentAuditRisks([review, repair]);
   const tsv = renderVideoSegmentAuditRiskTsv(ranked);
   const lines = tsv.trimEnd().split("\n");
   const header = (lines[0] ?? "").split("\t");
@@ -234,7 +211,7 @@ test("route precedence beats score while TSV exposes only retained audit metrics
     "file stem",
     "rank",
     "audit risk score",
-    "manual audio review remaining",
+    "audit route",
     "process log entries",
     "transcript bytes",
     "shard bytes",
@@ -251,43 +228,86 @@ test("route precedence beats score while TSV exposes only retained audit metrics
     "largest anchor gap pct",
     "largest anchor gap minutes",
     "valid anchor count",
+    "manual audio review remaining",
   ]);
   const firstRow = (lines[1] ?? "").split("\t");
   assert.equal(firstRow.length, header.length);
   assert.match(firstRow[header.indexOf("audit risk score")] ?? "", /^\d+\.\d$/u);
+  assert.equal(header.at(-1), "manual audio review remaining");
   assert.doesNotMatch(lines[0] ?? "", /_/u);
 });
 
-test("within low signal, completed empty shards sort after heavily reviewed nonempty shards", () => {
-  const fresh = analyzeVideoSegmentRisk(input({
-    videoId: "fresh",
-    videoTitle: "Fresh",
-    processLogEntries: 2,
-    durationSeconds: 300,
-    segments: [{
-      kind: "chapter", start: "0:00", end: "5:00", sourcePath,
-      evidence: [{start: "0:00", end: "5:00", note: "Complete short clip."}],
-    }],
+test("rank uses score before opportunity and file stem as the final tie-break", () => {
+  const highAfterMorePasses = analyzeVideoSegmentRisk(input({
+    fileStem: "z-high",
+    videoId: "high",
+    processLogEntries: 4,
+    durationSeconds: 1_800,
+    segments: segmentsAt(0),
   }));
-  const squeezed = analyzeVideoSegmentRisk(input({
-    videoId: "squeezed",
-    videoTitle: "Squeezed",
-    processLogEntries: 3,
-    durationSeconds: 1_740,
-  }));
-  const completedEmpty = analyzeVideoSegmentRisk(input({
-    videoId: "empty",
-    videoTitle: "Empty",
+  const lowerAfterOnePass = analyzeVideoSegmentRisk(input({
+    fileStem: "a-low",
+    videoId: "low",
     processLogEntries: 1,
-    segments: [],
+    durationSeconds: 1_800,
+    segments: segmentsAt(0, 450, 900, 1_350, 1_800),
   }));
+  const equalFewerPasses = analyzeVideoSegmentRisk(input({fileStem: "z-fewer", videoId: "fewer", processLogEntries: 1}));
+  const equalMorePasses = analyzeVideoSegmentRisk(input({fileStem: "a-more", videoId: "more", processLogEntries: 2}));
+  const fileStemA = analyzeVideoSegmentRisk(input({fileStem: "a-final", videoId: "file-a", processLogEntries: 3}));
+  const fileStemB = analyzeVideoSegmentRisk(input({fileStem: "b-final", videoId: "file-b", processLogEntries: 3}));
+  const blank = analyzeVideoSegmentRisk(input({fileStem: "blank", videoId: "blank", processLogEntries: 2, segments: []}));
 
-  assert.equal(fresh.auditRoute, "low_signal");
-  assert.equal(squeezed.auditRoute, "low_signal");
-  assert.equal(completedEmpty.auditRoute, "low_signal");
-  assert.ok(squeezed.auditRiskScore > fresh.auditRiskScore);
+  assert.ok((highAfterMorePasses.auditRiskScore ?? 0) > (lowerAfterOnePass.auditRiskScore ?? 0));
   assert.deepEqual(
-      rankVideoSegmentAuditRisks([completedEmpty, squeezed, fresh]).map((row) => row.videoId),
-      ["fresh", "squeezed", "empty"],
+      rankVideoSegmentAuditRisks([lowerAfterOnePass, highAfterMorePasses]).map((row) => row.videoId),
+      ["high", "low"],
   );
+  assert.deepEqual(rankVideoSegmentAuditRisks([equalMorePasses, equalFewerPasses]).map((row) => row.videoId), ["fewer", "more"]);
+  assert.deepEqual(rankVideoSegmentAuditRisks([fileStemB, fileStemA]).map((row) => row.videoId), ["file-a", "file-b"]);
+  assert.deepEqual(rankVideoSegmentAuditRisks([blank, lowerAfterOnePass]).map((row) => row.videoId), ["low", "blank"]);
 });
+
+test("blank score renders as blank and manual audio is the final value", () => {
+  const row = analyzeVideoSegmentRisk(input({
+    fileStem: "blank",
+    videoId: "blank",
+    processLogEntries: 2,
+    segments: [],
+    manualAudioReviewRemaining: true,
+  }));
+  const lines = renderVideoSegmentAuditRiskTsv(rankVideoSegmentAuditRisks([row])).trimEnd().split("\n");
+  const header = (lines[0] ?? "").split("\t");
+  const cells = (lines[1] ?? "").split("\t");
+  assert.equal(cells[header.indexOf("audit risk score")], "");
+  assert.equal(cells.at(-1), "true");
+});
+
+function segmentsAt(...seconds: number[]): AuditSegment[] {
+  return seconds.map((start) => ({
+    kind: "chapter",
+    start: timestamp(start),
+    sourcePath,
+    evidence: [{start: timestamp(start), note: `Evidence at ${start}.`}],
+  }));
+}
+
+function qaAt(start: number): AuditSegment {
+  return {
+    kind: "qa",
+    start: timestamp(start),
+    sourcePath,
+    question: `Question at ${start}?`,
+    answerShort: "Answer.",
+    evidence: [{start: timestamp(start), note: `Q&A evidence at ${start}.`}],
+  };
+}
+
+function timestamp(seconds: number): string {
+  const hours = Math.floor(seconds / 3_600);
+  const minutes = Math.floor((seconds % 3_600) / 60);
+  const remainder = seconds % 60;
+  return hours > 0
+      ? `${hours}:${String(minutes).padStart(2, "0")}:${String(remainder).padStart(2, "0")}`
+      : `${minutes}:${String(remainder).padStart(2, "0")}`;
+}

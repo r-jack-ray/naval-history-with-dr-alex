@@ -3,7 +3,7 @@ import { z } from "zod";
 import { nonEmptyStringSchema, type SchemaValidationResult, validateSchema, } from "./shared.js";
 
 export const SITE_CONTENT_PROCESSING_LOG_HEADER =
-    "timestamp;shardPath;result;needsFurtherProcessing;notes";
+    "timestamp;shardPath;result;notes";
 
 export const siteContentProcessingLogShardPathPattern =
     /^src\/derived\/video-segments\/([A-Za-z0-9][A-Za-z0-9._-]*)\.json$/u;
@@ -15,7 +15,6 @@ export const siteContentProcessingLogRowSchema = z.strictObject({
       "must use a canonical repo-relative video-segment shard path",
   ),
   result: nonEmptyStringSchema,
-  needsFurtherProcessing: z.enum(["yes", "no"]),
   notes: nonEmptyStringSchema,
 });
 

@@ -32,7 +32,6 @@ export interface SiteContentAudit {
     videosWithSegmentsCount: number;
     uncuratedStoredTranscriptCount: number;
     processingLogEntryCount: number;
-    completedProcessingLogVideoCount: number;
     errorCount: number;
     warningCount: number;
   };
@@ -118,6 +117,7 @@ export function buildSiteContentAudit(input: {
 }): SiteContentAudit {
   const issues: SiteContentAuditIssue[] = [];
   const manifestByVideoId = new Map<string, TranscriptManifestRecord>();
+  const seedVideoIds = new Set(input.seed.videos.map((video) => video.videoId));
   const segmentVideoIds = new Set<string>();
   const allowedKinds = new Set<string>(segmentKinds);
   const processingConfig = input.processingConfig === undefined
@@ -149,7 +149,7 @@ export function buildSiteContentAudit(input: {
   }
 
   const uncuratedTranscriptRecords = input.manifest.transcripts
-      .filter((record) => !segmentVideoIds.has(record.videoId) && !processingLog.completedVideoIds.has(record.videoId))
+      .filter((record) => !seedVideoIds.has(record.videoId))
       .sort(compareTranscriptRecords);
   const uncuratedTranscripts = uncuratedTranscriptRecords
       .slice(0, input.limit)
@@ -166,7 +166,6 @@ export function buildSiteContentAudit(input: {
       videosWithSegmentsCount: segmentVideoIds.size,
       uncuratedStoredTranscriptCount: uncuratedTranscriptRecords.length,
       processingLogEntryCount: processingLog.entryCount,
-      completedProcessingLogVideoCount: processingLog.completedVideoIds.size,
       errorCount,
       warningCount,
     },
@@ -187,9 +186,8 @@ export function renderSiteContentAuditReport(audit: SiteContentAudit): string {
     `- Seeded site videos: ${audit.stats.seededVideoCount}`,
     `- Curated segments: ${audit.stats.curatedSegmentCount}`,
     `- Videos with curated segments: ${audit.stats.videosWithSegmentsCount}`,
-    `- Stored transcripts without curated segments: ${audit.stats.uncuratedStoredTranscriptCount}`,
+    `- Stored transcripts without a canonical shard: ${audit.stats.uncuratedStoredTranscriptCount}`,
     `- Processing log entries: ${audit.stats.processingLogEntryCount}`,
-    `- Completed processing-log videos: ${audit.stats.completedProcessingLogVideoCount}`,
     `- Errors: ${audit.stats.errorCount}`,
     `- Warnings: ${audit.stats.warningCount}`,
     "",
@@ -494,7 +492,6 @@ function processingConfigForAudit(
 
 interface ProcessingLogAudit {
   entryCount: number;
-  completedVideoIds: Set<string>;
 }
 
 function validateProcessingLog(
@@ -509,7 +506,7 @@ function validateProcessingLog(
 ): ProcessingLogAudit {
   const processingLogPath = input.processingLogPath ?? "processing log";
   if (input.processingLogText === undefined || input.processingLogText.trim().length === 0) {
-    return {entryCount: 0, completedVideoIds: new Set<string>()};
+    return {entryCount: 0};
   }
   let parsed;
   try {
@@ -521,7 +518,7 @@ function validateProcessingLog(
       message: error instanceof Error ? error.message : String(error),
       path: processingLogPath,
     });
-    return {entryCount: 0, completedVideoIds: new Set<string>()};
+    return {entryCount: 0};
   }
   for (const problem of parsed.problems) {
     issues.push({severity: "error", code: problem.code, message: problem.message, path: processingLogPath});
@@ -537,16 +534,8 @@ function validateProcessingLog(
     }
   }
 
-  const completedVideoIds = new Set<string>();
-  for (const [videoId, record] of parsed.latestByVideoId) {
-    if (record.needsFurtherProcessing === "no") {
-      completedVideoIds.add(videoId);
-    }
-  }
-
   return {
     entryCount: parsed.records.length,
-    completedVideoIds,
   };
 }
 

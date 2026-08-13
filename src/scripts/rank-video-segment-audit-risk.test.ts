@@ -10,7 +10,7 @@ import type { SiteContentProcessingConfig } from "../content/schemas/index.js";
 
 const execFileAsync = promisify(execFile);
 
-test("CLI maps canonical processing states, isolates malformed shards, and emits reduced report columns", async () => {
+test("CLI consumes the four-field log, isolates malformed shards, and renders state-free ranking", async () => {
   const root = await mkdtemp(path.join(tmpdir(), "video-segment-audit-risk-"));
   try {
     const segments = path.join(root, "segments");
@@ -34,6 +34,10 @@ test("CLI maps canonical processing states, isolates malformed shards, and emits
         paths: {txt: "txt/explicit_explicit1.txt"}
       },
       {videoId: "manual1", fileStem: "manual_manual1", videoTitle: "Manual Audio", lastEndSeconds: 600, paths: {txt: "txt/manual_manual1.txt"}},
+      {videoId: "manual2", fileStem: "manual-still_manual2", videoTitle: "Manual Audio Still", lastEndSeconds: 600, paths: {txt: "txt/manual-still_manual2.txt"}},
+      {videoId: "manual3", fileStem: "manual-needed_manual3", videoTitle: "Manual Audio Needed", lastEndSeconds: 600, paths: {txt: "txt/manual-needed_manual3.txt"}},
+      {videoId: "manual4", fileStem: "audiovisual_manual4", videoTitle: "Audiovisual Recovery", lastEndSeconds: 600, paths: {txt: "txt/audiovisual_manual4.txt"}},
+      {videoId: "complete1", fileStem: "manual-complete_complete1", videoTitle: "Manual Audio Complete", lastEndSeconds: 600, paths: {txt: "txt/manual-complete_complete1.txt"}},
       {
         videoId: "school1",
         fileStem: "school-functions_school1",
@@ -75,18 +79,26 @@ test("CLI maps canonical processing states, isolates malformed shards, and emits
     await writeFile(path.join(segments, "generic_generic1.json"), JSON.stringify(shard(records[3]!)), "utf8");
     await writeFile(path.join(segments, "explicit_explicit1.json"), JSON.stringify(shard(records[4]!)), "utf8");
     await writeFile(path.join(segments, "manual_manual1.json"), JSON.stringify(shard(records[5]!)), "utf8");
-    await writeFile(path.join(segments, "school-functions_school1.json"), JSON.stringify(shard(records[6]!)), "utf8");
+    await writeFile(path.join(segments, "manual-still_manual2.json"), JSON.stringify(shard(records[6]!)), "utf8");
+    await writeFile(path.join(segments, "manual-needed_manual3.json"), JSON.stringify(shard(records[7]!)), "utf8");
+    await writeFile(path.join(segments, "audiovisual_manual4.json"), JSON.stringify(shard(records[8]!)), "utf8");
+    await writeFile(path.join(segments, "manual-complete_complete1.json"), JSON.stringify(shard(records[9]!)), "utf8");
+    await writeFile(path.join(segments, "school-functions_school1.json"), JSON.stringify(shard(records[10]!)), "utf8");
     await writeFile(logPath, [
-      "timestamp;shardPath;result;needsFurtherProcessing;notes",
-      "2026-07-12T20:00:00;src/derived/video-segments/follow_follow1.json;reviewed;yes;more work",
-      "2026-07-12T20:00:00;src/derived/video-segments/follow_follow1.json;reviewed;yes;still more work",
-      "2026-07-12T20:00:01;src/derived/video-segments/done_done1.json;closed;no;intentional empty",
-      "2026-07-12T20:00:02;src/derived/video-segments/generic_generic1.json;curated 1 first-pass segment;yes;initial consume",
-      "2026-07-12T20:00:03;src/derived/video-segments/generic_generic1.json;audited;no;no transcript-visible Q and A",
-      "2026-07-12T20:00:04;src/derived/video-segments/generic_generic1.json;audited;no;high-effort audit saturated",
-      "2026-07-12T20:00:05;src/derived/video-segments/explicit_explicit1.json;audited;no;title still warrants review",
-      "2026-07-12T20:00:06;src/derived/video-segments/manual_manual1.json;audited;no;full transcript compared",
-      "2026-07-12T20:00:07;src/derived/video-segments/manual_manual1.json;strengthened;yes;Full transcript compared, manual audio review remains at 12:59-13:28",
+      "timestamp;shardPath;result;notes",
+      "2026-07-12T20:00:00;src/derived/video-segments/follow_follow1.json;reviewed;more work",
+      "2026-07-12T20:00:00;src/derived/video-segments/follow_follow1.json;reviewed;still more work",
+      "2026-07-12T20:00:01;src/derived/video-segments/done_done1.json;closed;intentional empty",
+      "2026-07-12T20:00:02;src/derived/video-segments/generic_generic1.json;curated 1 first-pass segment;initial consume",
+      "2026-07-12T20:00:03;src/derived/video-segments/generic_generic1.json;audited;no transcript-visible Q and A",
+      "2026-07-12T20:00:04;src/derived/video-segments/generic_generic1.json;audited;high-effort audit saturated",
+      "2026-07-12T20:00:05;src/derived/video-segments/explicit_explicit1.json;audited;title still warrants review",
+      "2026-07-12T20:00:06;src/derived/video-segments/manual_manual1.json;audited;full transcript compared",
+      "2026-07-12T20:00:07;src/derived/video-segments/manual_manual1.json;strengthened;Full transcript compared; manual audio review remains at 12:59-13:28",
+      "2026-07-12T20:00:08;src/derived/video-segments/manual-still_manual2.json;audited;still needs manual audio review",
+      "2026-07-12T20:00:09;src/derived/video-segments/manual-needed_manual3.json;audited;manual audio needed",
+      "2026-07-12T20:00:10;src/derived/video-segments/audiovisual_manual4.json;audited;needs audiovisual recovery",
+      "2026-07-12T20:00:11;src/derived/video-segments/manual-complete_complete1.json;audited;manual audio review completed",
     ].join("\n"), "utf8");
 
     const script = path.resolve("src/scripts/rank-video-segment-audit-risk.ts");
@@ -99,7 +111,7 @@ test("CLI maps canonical processing states, isolates malformed shards, and emits
       "file stem",
       "rank",
       "audit risk score",
-      "manual audio review remaining",
+      "audit route",
       "process log entries",
       "transcript bytes",
       "shard bytes",
@@ -116,6 +128,7 @@ test("CLI maps canonical processing states, isolates malformed shards, and emits
       "largest anchor gap pct",
       "largest anchor gap minutes",
       "valid anchor count",
+      "manual audio review remaining",
     ]);
     assert.doesNotMatch(lines[0] ?? "", /_|probability/u);
     const rows = lines.slice(1).map((line) => line.split("\t"));
@@ -123,6 +136,7 @@ test("CLI maps canonical processing states, isolates malformed shards, and emits
     const fileStemIndex = header.indexOf("file stem");
     const rankIndex = header.indexOf("rank");
     const auditRiskScoreIndex = header.indexOf("audit risk score");
+    const auditRouteIndex = header.indexOf("audit route");
     const manualAudioReviewIndex = header.indexOf("manual audio review remaining");
     const processLogEntriesIndex = header.indexOf("process log entries");
     const follow = rows.find((row) => row[fileStemIndex]?.endsWith("follow_follow1.json"));
@@ -131,22 +145,36 @@ test("CLI maps canonical processing states, isolates malformed shards, and emits
     const generic = rows.find((row) => row[fileStemIndex]?.endsWith("generic_generic1.json"));
     const explicit = rows.find((row) => row[fileStemIndex]?.endsWith("explicit_explicit1.json"));
     const manual = rows.find((row) => row[fileStemIndex]?.endsWith("manual_manual1.json"));
+    const manualStill = rows.find((row) => row[fileStemIndex]?.endsWith("manual-still_manual2.json"));
+    const manualNeeded = rows.find((row) => row[fileStemIndex]?.endsWith("manual-needed_manual3.json"));
+    const audiovisual = rows.find((row) => row[fileStemIndex]?.endsWith("audiovisual_manual4.json"));
+    const completed = rows.find((row) => row[fileStemIndex]?.endsWith("manual-complete_complete1.json"));
     assert.equal(follow?.[processLogEntriesIndex], "2");
     assert.equal(repair?.[processLogEntriesIndex], "0");
     assert.equal(generic?.[processLogEntriesIndex], "3");
     assert.equal(manual?.[processLogEntriesIndex], "2");
     assert.equal(manual?.[manualAudioReviewIndex], "true");
+    assert.equal(manualStill?.[manualAudioReviewIndex], "true");
+    assert.equal(manualNeeded?.[manualAudioReviewIndex], "true");
+    assert.equal(audiovisual?.[manualAudioReviewIndex], "true");
+    assert.equal(completed?.[manualAudioReviewIndex], "false");
+    assert.equal(header.at(-1), "manual audio review remaining");
     assert.equal(repair?.[rankIndex], "1");
-    assert.ok(Number(done?.[rankIndex]) > Number(manual?.[rankIndex]));
-    assert.equal(Number(done?.[rankIndex]), rows.length);
-    assert.ok(rows.every((row) => /^\d+\.\d$/u.test(row[auditRiskScoreIndex] ?? "")));
-    assert.ok(Number(follow?.[rankIndex]) < Number(explicit?.[rankIndex]));
+    assert.equal(repair?.[auditRouteIndex], "repair_required");
+    assert.equal(explicit?.[auditRouteIndex], "review_candidate");
+    assert.equal(done?.[auditRouteIndex], "review_candidate");
+    assert.equal(generic?.[auditRouteIndex], "low_signal");
+    assert.ok(Number(explicit?.[rankIndex]) < Number(done?.[rankIndex]));
+    assert.equal(done?.[auditRiskScoreIndex], "");
+    assert.equal(repair?.[auditRiskScoreIndex], "");
+    assert.ok(rows.filter((row) => row !== done && row !== repair).every((row) => /^\d+\.\d$/u.test(row[auditRiskScoreIndex] ?? "")));
+    assert.ok(Number(done?.[rankIndex]) < Number(follow?.[rankIndex]));
+    assert.ok(Number(follow?.[rankIndex]) < Number(generic?.[rankIndex]));
     assert.ok(Number(explicit?.[rankIndex]) < Number(generic?.[rankIndex]));
-    assert.doesNotMatch(output, /repair_required|follow_up_required|review_candidate|low_signal/u);
-    assert.doesNotMatch(output, /consume-plus-two-audits threshold|only manual audio review|no history segments after/u);
+    assert.match(output, /repair_required|review_candidate|low_signal/u);
     assert.doesNotMatch(output, /school-functions_school1|SASC School Functions/u);
-    assert.match(result.stdout, /shards=6 excluded_sasc_shards=1 repair_required=1 follow_up_required=1 review_candidate=1 low_signal=3/u);
-    assert.match(result.stdout, /unknown_processing_states=1 manual_audio_review_remaining=1/u);
+    assert.match(result.stdout, /shards=10 excluded_sasc_shards=1 repair_required=1 review_candidate=2 low_signal=7/u);
+    assert.match(result.stdout, /manual_audio_review_remaining=4/u);
   } finally {
     await rm(root, {recursive: true, force: true});
   }
@@ -156,7 +184,6 @@ function processingConfigFixture(): SiteContentProcessingConfig {
   return {
     firstPass: {
       defaultAction: "curate transcript-backed segments",
-      defaultNeedsFurtherProcessing: true,
       processingMode: "full-file-best-effort",
       minimumEvidenceWindows: 1,
       preferredSegmentKinds: ["chapter", "notable_point", "qa", "transcript_excerpt"],
