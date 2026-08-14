@@ -1,12 +1,16 @@
 {
   "videoId": "L_xA3YaDELM",
   "topics": [
+    "16-5-inch-guns",
+    "18-inch-guns",
     "alternate-history",
     "austro-hungarian-navy",
     "battleships",
+    "king-george-v-class-1939-battleships",
     "kriegsmarine",
     "naval-architecture",
     "naval-gunnery",
+    "queen-elizabeth-class-battleships",
     "royal-navy",
     "ship-design",
     "surface-warfare",
@@ -23,10 +27,15 @@
       "start": "2:00",
       "end": "6:39",
       "topics": [
+        "16-5-inch-guns",
+        "16-inch-guns",
         "alternate-history",
         "battleships",
+        "queen-elizabeth-class-battleships",
         "royal-navy",
-        "ship-design"
+        "secondary-batteries",
+        "ship-design",
+        "wargaming-simulation"
       ],
       "summary": "The stream opens by turning a Royal Navy Queen Elizabeth counterfactual into a testable heavy-gun battleship design.",
       "body": "Dr. Clarke frames the exercise as a way to test a more aggressive Queen Elizabeth-style battleship than the historical Royal Navy chose. He notes that the model uses game constraints, including 16-inch guns in place of the 16.5-inch weapons he is discussing, and that the design is heavier and less restrained than a strictly historical build. He also has to widen the hull and reconsider the missing secondary battery because the game offers components derived mainly from ships that were actually built. The useful point is the design logic: a plausible Royal Navy counterfactual still has to wrestle with displacement, layout, secondary armament, and the limits of what the simulation can represent.",
@@ -53,6 +62,7 @@
       "start": "12:03",
       "end": "16:22",
       "topics": [
+        "15-inch-guns",
         "austro-hungarian-navy",
         "battleships",
         "naval-gunnery",
@@ -83,6 +93,7 @@
       "start": "20:11",
       "end": "22:39",
       "topics": [
+        "18-inch-guns",
         "naval-gunnery",
         "naval-history",
         "research-methods",
@@ -105,23 +116,24 @@
       ]
     },
     {
-      "id": "long-range-rangefinding-and-damage-model",
+      "id": "long-range-ranging-gun-caliber-and-speed",
       "videoId": "L_xA3YaDELM",
-      "slug": "long-range-rangefinding-and-damage-model",
-      "title": "Long-range ranging and the limits of the damage model",
+      "slug": "long-range-ranging-gun-caliber-and-speed",
+      "title": "Long-range ranging, gun caliber, and engagement control",
       "kind": "notable_point",
       "start": "23:21",
       "end": "32:42",
       "topics": [
+        "15-inch-guns",
+        "16-inch-guns",
         "austro-hungarian-navy",
         "battleships",
-        "damage-control",
         "naval-gunnery",
         "surface-warfare",
         "wargaming-simulation"
       ],
-      "summary": "The opening battle illustrates how capital ships ranged on distant silhouettes, how gun caliber affects damage, and how speed controls the engagement distance.",
-      "body": "As the Queen Elizabeth Maximus pair engages Austro-Hungarian opponents, Dr. Clarke uses the game to visualize ships firing at what often amounted to smudges on the horizon. He notes how quickly the British design ranges in, contrasts the effects of 16-inch and 15-inch fire, and then points to speed as the means of choosing the range. The battle also exposes a simulation caveat: ships can retain implausibly high flotation after their structural integrity has nearly vanished. The result is therefore useful for comparing design tendencies and engagement control rather than predicting literal survivability.",
+      "summary": "The opening battle illustrates how capital ships ranged on distant silhouettes, how 15- and 16-inch gunfire differed in the simulation, and how speed controlled engagement distance.",
+      "body": "As the Queen Elizabeth Maximus pair engages Austro-Hungarian opponents, Dr. Clarke uses the game to visualize ships firing at what often amounted to smudges on the horizon. He notes how quickly the British design ranges in and contrasts the simulated effects of its 16-inch guns with the Austro-Hungarian 15-inch battery. The extra six British guns add broadside volume, while the faster design can choose a range that favors its own weapons and protection. The result is useful as a visualization of ranging and engagement control, with the game's outputs serving as illustrative comparisons rather than literal predictions.",
       "sourcePath": "src/transcripts/txt/2023-02-21_T19-06-42_uad-queen-elizabeth-maximus-and-other-ideas_L_xA3YaDELM.txt",
       "evidence": [
         {
@@ -147,9 +159,10 @@
       "slug": "uad-as-a-historians-design-test",
       "title": "UAD as a historian's quick design test",
       "kind": "notable_point",
-      "start": "41:49",
+      "start": "41:55",
       "end": "43:45",
       "topics": [
+        "historical-simulations",
         "naval-history",
         "research-methods",
         "ship-design",
@@ -160,7 +173,7 @@
       "sourcePath": "src/transcripts/txt/2023-02-21_T19-06-42_uad-queen-elizabeth-maximus-and-other-ideas_L_xA3YaDELM.txt",
       "evidence": [
         {
-          "start": "41:49",
+          "start": "41:55",
           "end": "42:21",
           "note": "Dr. Clarke says the appeal for a historian is the ability to test design ideas."
         },
@@ -180,8 +193,12 @@
       "start": "49:48",
       "end": "54:47",
       "topics": [
+        "16-5-inch-guns",
+        "16-inch-guns",
         "alternate-history",
         "battleships",
+        "iron-duke-class-battleships",
+        "queen-elizabeth-class-battleships",
         "royal-navy",
         "ship-design",
         "wargaming-simulation"
@@ -203,6 +220,37 @@
       ]
     },
     {
+      "id": "structural-integrity-flotation-and-damage-modelling",
+      "videoId": "L_xA3YaDELM",
+      "slug": "structural-integrity-flotation-and-damage-modelling",
+      "title": "Structural integrity, flotation, and the damage model",
+      "kind": "notable_point",
+      "start": "54:58",
+      "end": "58:10",
+      "topics": [
+        "battleships",
+        "damage-control",
+        "damage-modelling",
+        "naval-architecture",
+        "wargaming-simulation"
+      ],
+      "summary": "An Austro-Hungarian battleship that remains afloat after nearly all structural integrity is gone exposes a key limitation in UAD's survivability model.",
+      "body": "Dr. Clarke watches an Austro-Hungarian battleship remain in action as its displayed structural integrity falls from five percent to fractions of one percent. At the same time, the game still credits the ship with more than ninety percent flotation, a combination he considers physically implausible. He jokingly invokes exceptional internal subdivision, but the mismatch shows that the simulation separates flooding from hull destruction too generously. This watch point is a reminder that a model can illustrate relative design and combat tendencies while still producing impossible survivability outcomes.",
+      "sourcePath": "src/transcripts/txt/2023-02-21_T19-06-42_uad-queen-elizabeth-maximus-and-other-ideas_L_xA3YaDELM.txt",
+      "evidence": [
+        {
+          "start": "54:58",
+          "end": "55:15",
+          "note": "Dr. Clarke argues that a ship reduced to one percent structural integrity should no longer be viable."
+        },
+        {
+          "start": "57:55",
+          "end": "58:10",
+          "note": "The ship retains about 91 percent flotation while structural integrity falls below one percent, prompting the internal-subdivision caveat."
+        }
+      ]
+    },
+    {
       "id": "kgv-alternative-chatfield-not-in-charge",
       "videoId": "L_xA3YaDELM",
       "slug": "kgv-alternative-chatfield-not-in-charge",
@@ -211,14 +259,18 @@
       "start": "1:00:35",
       "end": "1:14:34",
       "topics": [
+        "5-25-inch-guns",
+        "6-inch-guns",
         "battleships",
+        "king-george-v-class-1939-battleships",
         "naval-architecture",
         "naval-gunnery",
         "royal-navy",
+        "secondary-batteries",
         "ship-design"
       ],
       "summary": "A King George V redesign walks through displacement, armor, machinery, range, secondary guns, and off-the-shelf compromises.",
-      "body": "Dr. Clarke builds a King George V alternative by starting from displacement and speed, then working through protection, propulsion, range, and secondary armament. He keeps comparing the simulation options with historical Royal Navy equipment, including the absence of a 5.25-inch option and the temptation to use six-inch secondaries. A five-inch substitute would be less historically credible, whereas an off-the-shelf six-inch weapon might be adapted into a dual-purpose mounting for carriers and capital ships. The value here is seeing how a seemingly simple alternative battleship quickly becomes a chain of linked compromises.",
+      "body": "Dr. Clarke builds a King George V alternative by starting from displacement and speed, then working through protection, propulsion, range, and secondary armament. He keeps comparing the simulation options with historical Royal Navy equipment, including the absence of a 5.25-inch option and the temptation to use six-inch secondaries. He also cautions that UAD displays range at high speed, whereas the historical endurance figure he cites is measured at 10 knots, so the numbers cannot be compared directly. A five-inch substitute would be less historically credible, whereas an off-the-shelf six-inch weapon might be adapted into a dual-purpose mounting for carriers and capital ships. The value here is seeing how a seemingly simple alternative battleship quickly becomes a chain of linked compromises.",
       "sourcePath": "src/transcripts/txt/2023-02-21_T19-06-42_uad-queen-elizabeth-maximus-and-other-ideas_L_xA3YaDELM.txt",
       "evidence": [
         {
@@ -251,6 +303,7 @@
         "kiel-canal",
         "kriegsmarine",
         "naval-architecture",
+        "secondary-batteries",
         "ship-design"
       ],
       "summary": "A German opponent redesign connects beam and draft limits, the Kiel Canal, diesel machinery, twin turrets, and secondary-gun preferences.",
@@ -278,9 +331,12 @@
       "start": "1:25:12",
       "end": "1:35:51",
       "topics": [
+        "18-inch-guns",
+        "6-inch-guns",
         "battleships",
         "naval-architecture",
         "naval-gunnery",
+        "secondary-batteries",
         "ship-design",
         "wargaming-simulation"
       ],
@@ -317,7 +373,9 @@
         "battleships",
         "naval-architecture",
         "naval-gunnery",
-        "ship-design"
+        "secondary-batteries",
+        "ship-design",
+        "torpedoes"
       ],
       "summary": "An extreme heavy-gun design shows why turret placement, engine efficiency, secondaries, and weight savings matter even in a deliberately exaggerated battleship.",
       "body": "The Goliath design is deliberately excessive, but the discussion still exposes real naval-architecture constraints. Dr. Clarke experiments with forward firepower, turret spacing, engine efficiency, bulkheads, torpedoes, and secondary batteries. He repeatedly notes where the game permits arrangements that would be awkward or unrealistic in steel, including concentrating enormous weight and firepower toward one end of the hull. This time note is useful for watching how an apparently overwhelming main battery still has to be balanced against protection, machinery, trim, and usable arcs of fire.",
@@ -337,6 +395,51 @@
           "start": "1:49:55",
           "end": "1:52:58",
           "note": "The final setup adds torpedoes, faces classification problems, and moves toward a custom battle test."
+        }
+      ]
+    },
+    {
+      "id": "range-control-and-secondary-battery-lessons",
+      "videoId": "L_xA3YaDELM",
+      "slug": "range-control-and-secondary-battery-lessons",
+      "title": "Range control and secondary-battery lessons",
+      "kind": "notable_point",
+      "start": "1:54:49",
+      "end": "2:32:50",
+      "topics": [
+        "15-inch-guns",
+        "16-inch-guns",
+        "7-inch-guns",
+        "battleships",
+        "kriegsmarine",
+        "naval-gunnery",
+        "secondary-batteries",
+        "ship-design",
+        "surface-warfare"
+      ],
+      "summary": "The battle tests show how speed, range control, armor, and secondary-gun reach can decide a capital-ship duel.",
+      "body": "The final battle tests turn the design work into a lesson about engagement envelopes. Dr. Clarke first highlights how Ajax's speed lets her fight at a range that suits her armor and main guns while keeping enemy secondaries irrelevant. A later closer fight reverses the lesson: once seven-inch secondaries are brought into range, their rapid fire damages structure and degrades the British ship's fighting efficiency. Ajax cannot recover her preferred distance after engine damage slows her, making a destroyer smoke screen the kind of support needed to disengage. The comparison shows why setup, scouting, screens, and range control matter as much as headline gun caliber.",
+      "sourcePath": "src/transcripts/txt/2023-02-21_T19-06-42_uad-queen-elizabeth-maximus-and-other-ideas_L_xA3YaDELM.txt",
+      "evidence": [
+        {
+          "start": "1:54:49",
+          "end": "1:58:45",
+          "note": "Ajax is described as a 28-knot heavy-gun design, and the transcript connects the number of guns to accuracy and volume of fire."
+        },
+        {
+          "start": "2:03:55",
+          "end": "2:05:58",
+          "note": "The transcript explicitly explains speed, firepower, armor envelopes, and staying just outside secondary range."
+        },
+        {
+          "start": "2:24:40",
+          "end": "2:26:29",
+          "note": "A closer engagement shows seven-inch secondaries causing damage when Ajax cannot keep the range open."
+        },
+        {
+          "start": "2:30:16",
+          "end": "2:32:50",
+          "note": "The later assessment blames the close setup, points to the need for destroyer smoke, and notes the impact of fifteen guns."
         }
       ]
     },
@@ -374,6 +477,7 @@
       "start": "1:58:07",
       "end": "1:58:45",
       "topics": [
+        "14-inch-guns",
         "battleships",
         "king-george-v-class-1939-battleships",
         "naval-gunnery",
@@ -434,6 +538,10 @@
       "start": "2:10:47",
       "end": "2:22:57",
       "topics": [
+        "14-inch-guns",
+        "16-5-inch-guns",
+        "16-inch-guns",
+        "18-inch-guns",
         "alternate-history",
         "battleships",
         "naval-gunnery",
@@ -460,48 +568,6 @@
           "start": "2:22:24",
           "end": "2:22:57",
           "note": "The answer distinguishes Britain's numerical competition with Germany from the American qualitative competition with Britain."
-        }
-      ]
-    },
-    {
-      "id": "range-control-and-secondary-battery-lessons",
-      "videoId": "L_xA3YaDELM",
-      "slug": "range-control-and-secondary-battery-lessons",
-      "title": "Range control and secondary-battery lessons",
-      "kind": "notable_point",
-      "start": "1:54:49",
-      "end": "2:32:50",
-      "topics": [
-        "battleships",
-        "kriegsmarine",
-        "naval-gunnery",
-        "ship-design",
-        "surface-warfare",
-        "us-navy"
-      ],
-      "summary": "The battle tests show how speed, range control, armor, and secondary-gun reach can decide a capital-ship duel.",
-      "body": "The final battle tests turn the design work into a lesson about engagement envelopes. Dr. Clarke first highlights how Ajax's speed lets her fight at a range that suits her armor and main guns while keeping enemy secondaries irrelevant. A later closer fight reverses the lesson: once seven-inch secondaries are brought into range, their rapid fire damages structure and degrades the British ship's fighting efficiency. Ajax cannot recover her preferred distance after engine damage slows her, making a destroyer smoke screen the kind of support needed to disengage. The comparison shows why setup, scouting, screens, and range control matter as much as headline gun caliber.",
-      "sourcePath": "src/transcripts/txt/2023-02-21_T19-06-42_uad-queen-elizabeth-maximus-and-other-ideas_L_xA3YaDELM.txt",
-      "evidence": [
-        {
-          "start": "1:54:49",
-          "end": "1:58:45",
-          "note": "Ajax is described as a 28-knot heavy-gun design, and the transcript connects the number of guns to accuracy and volume of fire."
-        },
-        {
-          "start": "2:03:55",
-          "end": "2:05:58",
-          "note": "The transcript explicitly explains speed, firepower, armor envelopes, and staying just outside secondary range."
-        },
-        {
-          "start": "2:24:40",
-          "end": "2:26:29",
-          "note": "A closer engagement shows seven-inch secondaries causing damage when Ajax cannot keep the range open."
-        },
-        {
-          "start": "2:30:16",
-          "end": "2:32:50",
-          "note": "The later assessment blames the close setup, points to the need for destroyer smoke, and notes the impact of fifteen guns."
         }
       ]
     }

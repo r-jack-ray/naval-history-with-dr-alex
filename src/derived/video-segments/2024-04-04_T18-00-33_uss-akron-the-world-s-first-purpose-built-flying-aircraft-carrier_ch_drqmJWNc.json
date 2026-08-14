@@ -138,16 +138,19 @@
         "naval-aviation",
         "rigid-airships",
         "interwar-navy",
-        "technology-development"
+        "technology-development",
+        "airship-design",
+        "aviation-safety",
+        "helium"
       ],
       "summary": "Shenandoah, ZR-2, and Los Angeles gave the US Navy a costly but cumulative body of experience in rigid-airship construction and operation.",
-      "body": "Dr. Clarke places Akron in a sequence of American experiments rather than treating it as an isolated marvel. ZR-2 was lost before delivery, Shenandoah was fabricated through the Naval Aircraft Factory and assembled at Lakehurst, and the German-built Los Angeles became an especially useful test platform. Helium scarcity meant the Navy could not simply operate every ship whenever it wished, but each generation supplied construction, handling, and parasite-aircraft knowledge for the next.",
+      "body": "Dr. Clarke places Akron in a sequence of American experiments rather than treating it as an isolated marvel. ZR-2 was lost before delivery, Shenandoah was fabricated through the Naval Aircraft Factory and assembled at Lakehurst, and the German-built Los Angeles became an especially useful test platform. Helium scarcity meant the Navy could not simply operate every ship whenever it wished. On Shenandoah, gas valves had been removed to conserve the lifting gas, but the reduced venting capacity let cells burst when the ship rose above pressure altitude in a storm. Each generation therefore supplied construction, handling, safety, and parasite-aircraft knowledge for the next.",
       "sourcePath": "src/transcripts/txt/2024-04-04_T18-00-33_uss-akron-the-world-s-first-purpose-built-flying-aircraft-carrier_ch_drqmJWNc.txt",
       "evidence": [
         {
           "start": "30:42",
           "end": "39:26",
-          "note": "The transcript traces the early US rigid-airship sequence and the operational constraint imposed by limited helium supplies."
+          "note": "The transcript traces the early US rigid-airship sequence and explains how helium scarcity constrained simultaneous operation and encouraged the valve changes implicated in Shenandoah's storm loss."
         },
         {
           "start": "39:26",
@@ -340,10 +343,11 @@
         "naval-aviation",
         "naval-doctrine",
         "naval-intelligence",
-        "naval-strategy"
+        "naval-strategy",
+        "rigid-airships"
       ],
       "summary": "Akron's doctrine shifted toward keeping the airship at range and sending heavier-than-air scouts forward to find the enemy.",
-      "body": "The Navy wanted a platform with the range and endurance to search the Pacific, but the same size that made Akron useful also made it vulnerable to weather and enemy action. Incorporating parasite aircraft changed the operational logic: the airship could become a mobile base while smaller scouts covered the dangerous search area. Dr. Clarke treats that shift as evidence that designers already understood the risk of taking the mothership close to hostile forces.",
+      "body": "The Navy wanted a platform with the range, altitude, and endurance to search the Pacific beyond the practical reach of smaller blimps. The same huge hull behaved like a sail in air currents and remained vulnerable to weather and enemy action. Incorporating parasite aircraft changed the operational logic: the airship could become a mobile base while smaller scouts covered the dangerous search area. Dr. Clarke treats that shift as evidence that designers already understood the risk of taking the mothership close to hostile forces.",
       "sourcePath": "src/transcripts/txt/2024-04-04_T18-00-33_uss-akron-the-world-s-first-purpose-built-flying-aircraft-carrier_ch_drqmJWNc.txt",
       "evidence": [
         {
@@ -422,16 +426,47 @@
         "ship-design",
         "ship-propulsion",
         "naval-logistics",
-        "naval-aviation"
+        "naval-aviation",
+        "rigid-airships",
+        "airship-design"
       ],
       "summary": "Three internal keels, maintainable engines, swiveling propellers, and a carefully divided lift budget made Akron a ship-like structure built inside a lifting envelope.",
-      "body": "Akron's 12 helium cells supplied gross lift, but its structure consumed most of that capacity before fuel, ballast, crew, supplies, aircraft, and their support equipment could be added. Three longitudinal keels carried walkways, control wiring, 110 fuel tanks, 44 water-ballast bags, and eight separate engine rooms. Mounting the engines internally made in-flight maintenance possible and was safer because helium would not carry an engine fire through the hull as hydrogen could. Shafts drove external propellers that could swivel or reverse thrust for maneuvering, while later three-bladed metal propellers promised better performance for Macon.",
+      "body": "Akron's 12 helium cells supplied about 183 tons of gross lift at normal fill, but the 109-ton structure left roughly 73 tons for fuel, ballast, crew, supplies, aircraft, and their support equipment. Its quoted cruising speed was about 43 knots, with a nominal 9,190-nautical-mile range, while maximum speed was about 73 knots. Three longitudinal keels carried walkways, control wiring, 110 fuel tanks, 44 water-ballast bags, and eight separate engine rooms. Mounting the engines internally made in-flight maintenance possible and was safer because helium would not carry an engine fire through the hull as hydrogen could. Shafts drove external propellers that could swivel or reverse thrust for maneuvering, while later three-bladed metal propellers promised better performance for Macon.",
       "sourcePath": "src/transcripts/txt/2024-04-04_T18-00-33_uss-akron-the-world-s-first-purpose-built-flying-aircraft-carrier_ch_drqmJWNc.txt",
       "evidence": [
         {
           "start": "1:19:37",
           "end": "1:36:47",
           "note": "Dimensions, lift, engines, three-keel construction, internal access, payload limits, swiveling propulsion, and propeller development are described."
+        }
+      ]
+    },
+    {
+      "id": "akron-buoyancy-and-stall-speed",
+      "videoId": "ch_drqmJWNc",
+      "slug": "akron-buoyancy-and-stall-speed",
+      "title": "Why Akron had no conventional stall speed",
+      "kind": "notable_point",
+      "start": "1:22:54",
+      "end": "1:25:45",
+      "topics": [
+        "rigid-airships",
+        "flight-envelope",
+        "airship-design"
+      ],
+      "summary": "Helium buoyancy kept Akron aloft without forward airspeed, although wind drift and the need for control authority still constrained the airship.",
+      "body": "Dr. Clarke distinguishes a rigid airship from a fixed-wing aircraft whose wings must keep moving through the air to generate lift. Akron's helium supplied buoyancy, so the ship could be at zero knots without suffering a conventional aerodynamic stall. That did not make it immune to the atmosphere: wind could carry the enormous hull like a sail, and purposeful maneuvering still required enough control authority. The distinction helps explain how an airship could remain aloft at very low speed yet become difficult to manage in adverse weather.",
+      "sourcePath": "src/transcripts/txt/2024-04-04_T18-00-33_uss-akron-the-world-s-first-purpose-built-flying-aircraft-carrier_ch_drqmJWNc.txt",
+      "evidence": [
+        {
+          "start": "1:22:54",
+          "end": "1:23:38",
+          "note": "The transcript explains that buoyant lift lets an airship remain aloft at zero knots without a fixed-wing-style stall, while wind can still move it."
+        },
+        {
+          "start": "1:25:39",
+          "end": "1:25:45",
+          "note": "The discussion clarifies that some speed remains useful for maneuvering even though it is not required to create buoyant lift."
         }
       ]
     },
