@@ -415,15 +415,29 @@
       "kind": "qa",
       "start": "32:08",
       "end": "45:02",
-      "topics": ["imperial-russia", "naval-logistics", "russo-japanese-war", "world-war-i", "railways"],
+      "topics": [
+        "imperial-russia",
+        "naval-logistics",
+        "russo-japanese-war",
+        "world-war-i",
+        "railways"
+      ],
       "question": "What changes if Imperial Russia suddenly receives a uniform-gauge, four-track railway from St Petersburg through Moscow to Vladivostok in 1895?",
       "answerShort": "It could transform wartime movement and overseas trade, but only if Russia can supply rolling stock, maintain an immense route, and overcome bottlenecks such as Lake Baikal.",
       "summary": "A logistics counterfactual tests whether a four-track Trans-Siberian Railway could improve Russia's performance in the Russo-Japanese War and First World War.",
       "body": "The panel separates the value of track from the rolling stock, maintenance capacity, bridges, tunnels, and ferries needed to use it. Four tracks could carry express, local, troop, and freight traffic simultaneously, greatly improving movement toward Vladivostok and allowing imports or exports when Russia's western ports were constrained. The Lake Baikal crossing and the enormous engineering burden show why transport capacity is a chain of systems rather than a single piece of infrastructure.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
       "evidence": [
-        {"start": "32:08", "end": "34:56", "note": "The prompt supplies the four-track route and the panel distinguishes track capacity from rolling stock."},
-        {"start": "37:42", "end": "41:59", "note": "The discussion covers Lake Baikal bottlenecks and potential effects in the Russo-Japanese War and First World War."}
+        {
+          "start": "32:08",
+          "end": "34:56",
+          "note": "The prompt supplies the four-track route and the panel distinguishes track capacity from rolling stock."
+        },
+        {
+          "start": "37:42",
+          "end": "41:59",
+          "note": "The discussion covers Lake Baikal bottlenecks and potential effects in the Russo-Japanese War and First World War."
+        }
       ]
     },
     {
@@ -434,13 +448,25 @@
       "kind": "qa",
       "start": "54:11",
       "end": "56:26",
-      "topics": ["royal-navy", "type-45-destroyer", "naval-gunnery", "naval-procurement", "vulcano-ammunition"],
+      "topics": [
+        "royal-navy",
+        "type-45-destroyer",
+        "naval-gunnery",
+        "naval-procurement",
+        "vulcano-ammunition"
+      ],
       "question": "What else changes if Britain fields a 127 mm quick-firing gun by the time of the Type 45 destroyer?",
       "answerShort": "The ships change little, but Britain becomes a participant in a five-inch gun and ammunition program, probably leaning toward the Italian Vulcano route.",
       "summary": "A Type 45 counterfactual links adoption of a five-inch gun to British participation in guided-ammunition development rather than a wholesale destroyer redesign.",
       "body": "Dr. Clarke sees the main consequence in industrial and ammunition choices. Britain would have to choose between American and Italian ammunition families, with the timing making cooperation on Vulcano-style rounds plausible. The watch point shows how adopting a gun caliber can pull a navy into a wider development ecosystem even when the hull changes little.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
-      "evidence": [{"start": "54:11", "end": "56:26", "note": "The prompt asks about a British five-inch gun and the answer discusses American versus Italian ammunition paths and Vulcano."}]
+      "evidence": [
+        {
+          "start": "54:11",
+          "end": "56:26",
+          "note": "The prompt asks about a British five-inch gun and the answer discusses American versus Italian ammunition paths and Vulcano."
+        }
+      ]
     },
     {
       "id": "bruships-238-stanflex-software-crews-scale-qa",
@@ -450,15 +476,30 @@
       "kind": "qa",
       "start": "1:08:38",
       "end": "1:11:19",
-      "topics": ["modular-warship-design", "stanflex", "danish-navy", "royal-navy", "force-structure", "combat-systems"],
+      "topics": [
+        "modular-warship-design",
+        "stanflex",
+        "danish-navy",
+        "royal-navy",
+        "force-structure",
+        "combat-systems"
+      ],
       "question": "How accurate is it to describe the limits placed on StanFlex as if a game master were balancing a system?",
       "answerShort": "Many limits reflect funding and implementation choices: software must be rebuilt rather than patched indefinitely, crews can be trained in several ways, and the system best suits small-to-upper-medium navies seeking many flexible 80-percent solutions.",
       "summary": "A StanFlex implementation answer connects combat-system upkeep, specialist crews, fleet size, and the difference between flexible hulls and dedicated high-end ships.",
       "body": "The answer uses Danish combat-system problems to show that modular hardware still depends on sustained software funding. It outlines several crewing models, including specialists moving with modules, retraining ship crews, or maintaining broader qualifications. Dr. Clarke argues that larger navies can have more personnel depth, but superpower fleets can afford dedicated ships; StanFlex is strongest where a navy values numerous adaptable hulls over a smaller number of near-perfect specialists.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
       "evidence": [
-        {"start": "1:08:38", "end": "1:09:31", "note": "The prompt leads into Danish combat-system funding and the limits of repeated software patching."},
-        {"start": "1:09:35", "end": "1:11:19", "note": "The answer compares crewing options and identifies the fleet scales for which adaptable 80-percent solutions are useful."}
+        {
+          "start": "1:08:38",
+          "end": "1:09:31",
+          "note": "The prompt leads into Danish combat-system funding and the limits of repeated software patching."
+        },
+        {
+          "start": "1:09:35",
+          "end": "1:11:19",
+          "note": "The answer compares crewing options and identifies the fleet scales for which adaptable 80-percent solutions are useful."
+        }
       ]
     },
     {
@@ -469,13 +510,26 @@
       "kind": "qa",
       "start": "1:15:47",
       "end": "1:17:30",
-      "topics": ["imperial-japanese-navy", "ibuki-class-heavy-cruisers-1943", "cruisers", "naval-aviation", "radar", "ship-design"],
+      "topics": [
+        "imperial-japanese-navy",
+        "ibuki-class-heavy-cruisers-1943",
+        "cruisers",
+        "naval-aviation",
+        "radar",
+        "ship-design"
+      ],
       "question": "Could the Ibuki-class cruisers rely entirely on radar and eliminate their seaplane facilities?",
       "answerShort": "Not for the reconnaissance role Japan expected, although moving aviation scouting to small carriers would free cruiser space for better structure and protection.",
       "summary": "An Ibuki-class design answer explains why radar did not simply replace cruiser reconnaissance aircraft and how separate scouting carriers could reshape Japanese cruisers.",
       "body": "The panel treats the aircraft installation as a response to Japanese reconnaissance doctrine, not as redundant equipment that radar automatically supersedes. If treaty rules or force structure move scouting aircraft onto small carriers, the cruiser can use the released volume and weight for a cleaner structural and protection scheme. The exchange highlights how changing one fleet function can alter an entire ship design.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
-      "evidence": [{"start": "1:15:47", "end": "1:17:30", "note": "The question asks whether radar removes the need for seaplanes; the answer ties them to reconnaissance and describes the design benefit of moving that role to carriers."}]
+      "evidence": [
+        {
+          "start": "1:15:47",
+          "end": "1:17:30",
+          "note": "The question asks whether radar removes the need for seaplanes; the answer ties them to reconnaissance and describes the design benefit of moving that role to carriers."
+        }
+      ]
     },
     {
       "id": "bruships-238-us-fourteen-inch-standardization-qa",
@@ -485,13 +539,26 @@
       "kind": "qa",
       "start": "1:41:24",
       "end": "1:43:41",
-      "topics": ["us-navy", "battleships", "washington-naval-treaty", "naval-treaties", "naval-gunnery", "ship-design"],
+      "topics": [
+        "us-navy",
+        "battleships",
+        "washington-naval-treaty",
+        "naval-treaties",
+        "naval-gunnery",
+        "ship-design"
+      ],
       "question": "How would Second World War US battleships develop if the Navy standardized on triple 14-inch turrets from the Nevada class onward?",
       "answerShort": "The United States would likely press for a 15-inch treaty ceiling rather than accept a 16-inch standard it could not exploit, while relying on the high rate of fire of its triple 14-inch mounts.",
       "summary": "A battleship counterfactual connects American gun standardization to Washington treaty bargaining, Japanese 16-inch ships, British 15-inch fleets, and later capital-ship design.",
       "body": "The answer begins with the guns already in service when the Washington Naval Treaty is negotiated. Japan might retain Nagato-class 16-inch ships as an exception and Britain would resist any limit that made its 15-inch battle line obsolete, making 15 inches a plausible general ceiling. American standardization therefore changes both ship design and the diplomatic position from which naval limits are negotiated.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
-      "evidence": [{"start": "1:41:24", "end": "1:43:41", "note": "The prompt introduces triple 14-inch standardization and the answer traces its consequences through treaty limits and British, Japanese, and American gun choices."}]
+      "evidence": [
+        {
+          "start": "1:41:24",
+          "end": "1:43:41",
+          "note": "The prompt introduces triple 14-inch standardization and the answer traces its consequences through treaty limits and British, Japanese, and American gun choices."
+        }
+      ]
     },
     {
       "id": "bruships-238-british-shipyard-production-qa",
@@ -501,15 +568,30 @@
       "kind": "qa",
       "start": "1:47:00",
       "end": "1:50:09",
-      "topics": ["royal-navy", "naval-procurement", "shipbuilding", "shipyards", "queen-elizabeth-class-aircraft-carriers", "type-45-destroyer"],
+      "topics": [
+        "royal-navy",
+        "naval-procurement",
+        "shipbuilding",
+        "shipyards",
+        "queen-elizabeth-class-aircraft-carriers",
+        "type-45-destroyer"
+      ],
       "question": "Would an Australian-style ship lift solve the shortage of dry docks and speed British warship production?",
       "answerShort": "No. Britain already has advanced facilities; the larger constraints are mid-career workforce gaps and orders deliberately stretched to keep yards open without buying more ships.",
       "summary": "A British shipbuilding answer shifts attention from dry-dock hardware to skilled labor, stop-start ordering, and the cost of stretching carrier and destroyer construction.",
       "body": "Dr. Clarke says British yards are technically capable and have strong junior and senior cohorts, but fewer workers in the middle of their careers. The deeper problem is procurement cadence: government orders too few ships for rapid construction to sustain the yards, then pays to spread work over longer periods. Examples from the Queen Elizabeth class and Type 45 program show how industrial continuity can raise unit costs without adding hulls.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
       "evidence": [
-        {"start": "1:47:00", "end": "1:47:53", "note": "The answer says Britain already has ship lifts and advanced yards but lacks some mid-career personnel."},
-        {"start": "1:48:01", "end": "1:50:09", "note": "The panel explains how slow ordering preserves yards while adding substantial cost to carriers and Type 45 destroyers."}
+        {
+          "start": "1:47:00",
+          "end": "1:47:53",
+          "note": "The answer says Britain already has ship lifts and advanced yards but lacks some mid-career personnel."
+        },
+        {
+          "start": "1:48:01",
+          "end": "1:50:09",
+          "note": "The panel explains how slow ordering preserves yards while adding substantial cost to carriers and Type 45 destroyers."
+        }
       ]
     },
     {
@@ -520,13 +602,26 @@
       "kind": "qa",
       "start": "2:29:10",
       "end": "2:30:13",
-      "topics": ["kriegsmarine", "regia-marina", "bismarck-class-battleships", "battleships", "ship-design", "interwar-period"],
+      "topics": [
+        "kriegsmarine",
+        "regia-marina",
+        "bismarck-class-battleships",
+        "battleships",
+        "ship-design",
+        "interwar-period"
+      ],
       "question": "Why did German naval architects not work with Italy as German tank designers worked in the Soviet Union, and would a Bismarck with 15-inch guns have been much larger?",
       "answerShort": "A 15-inch Bismarck would be larger, but meaningful cooperation was blocked by German-Italian rivalry and their dispute over Austria during the ships' design period.",
       "summary": "A Bismarck counterfactual grounds naval design cooperation in the hostile German-Italian politics of the interwar years.",
       "body": "The panel cautions against projecting the later Axis partnership backward into the years when the ships were designed. Germany and Italy distrusted one another, competed over Austria, and lacked the working relationship required for a shared naval architecture program. The answer is a reminder that technical exchange depends on political alignment as much as engineering opportunity.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
-      "evidence": [{"start": "2:29:10", "end": "2:30:13", "note": "The prompt proposes cooperation and the answer identifies mutual hostility and Austria as barriers during Bismarck's design period."}]
+      "evidence": [
+        {
+          "start": "2:29:10",
+          "end": "2:30:13",
+          "note": "The prompt proposes cooperation and the answer identifies mutual hostility and Austria as barriers during Bismarck's design period."
+        }
+      ]
     },
     {
       "id": "bruships-238-european-nato-procurement-qa",
@@ -536,15 +631,31 @@
       "kind": "qa",
       "start": "2:30:16",
       "end": "2:34:40",
-      "topics": ["nato", "naval-procurement", "italian-navy", "polish-armed-forces", "horizon-class-frigates", "type-45-destroyer", "s-400"],
+      "topics": [
+        "nato",
+        "naval-procurement",
+        "italian-navy",
+        "polish-armed-forces",
+        "horizon-class-frigates",
+        "type-45-destroyer",
+        "s-400"
+      ],
       "question": "Which European NATO member has had the least nonsensical procurement in the twenty-first century?",
       "answerShort": "Italy is the panel's leading answer, with Poland also doing well through broad purchasing, though comparisons must account for fleet size and each country's self-inflicted program failures.",
       "summary": "A NATO procurement comparison weighs Italian consistency, Polish buying, British and Franco-Italian fleet numbers, and Turkey's loss of F-35B access after buying the S-400.",
       "body": "The panel chooses Italy cautiously, emphasizing 'least nonsensical' rather than declaring any system ideal. It warns that clean-looking programs may buy very few ships: France and Italy each field only a small Horizon-class force, while Britain bought six Type 45s. Turkey illustrates a different failure mode, building an aviation concept around the F-35B and then losing access through the S-400 purchase.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
       "evidence": [
-        {"start": "2:30:16", "end": "2:31:48", "note": "The question asks for the least nonsensical NATO procurement record; Italy and Poland are compared with British and Franco-Italian ship numbers."},
-        {"start": "2:32:11", "end": "2:34:40", "note": "Turkey's F-35B and S-400 choices lead into a discussion of engineering and modernization limits."}
+        {
+          "start": "2:30:16",
+          "end": "2:31:48",
+          "note": "The question asks for the least nonsensical NATO procurement record; Italy and Poland are compared with British and Franco-Italian ship numbers."
+        },
+        {
+          "start": "2:32:11",
+          "end": "2:34:40",
+          "note": "Turkey's F-35B and S-400 choices lead into a discussion of engineering and modernization limits."
+        }
       ]
     },
     {
@@ -555,15 +666,30 @@
       "kind": "qa",
       "start": "3:29:04",
       "end": "3:32:33",
-      "topics": ["french-navy", "regia-marina", "washington-naval-treaty", "naval-treaties", "capital-ships", "force-structure"],
+      "topics": [
+        "french-navy",
+        "regia-marina",
+        "washington-naval-treaty",
+        "naval-treaties",
+        "capital-ships",
+        "force-structure"
+      ],
       "question": "What could France gain at the Washington Naval Conference with its best negotiators, and how would that affect relations with Britain and Italy?",
       "answerShort": "France might argue for more capital ships, but Italy would demand parity and France's weak postwar fleet and economy left it little leverage; gains for France would tend to raise Italian or wider totals too.",
       "summary": "A Washington treaty answer explains why French global commitments did not translate easily into bargaining leverage against Italy and the larger naval powers.",
       "body": "Dr. Clarke argues that France needed enough capital ships both to contain Italy and to support colonial commitments, perhaps eight to ten in total. An ocean-based allocation formula could express those needs, but the treaty did not limit cruisers and any capital-ship concession would invite matching claims. The panel concludes that even better negotiators could not erase France's damaged economy and weak fleet position.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
       "evidence": [
-        {"start": "3:29:04", "end": "3:31:34", "note": "The answer considers French capital-ship needs, Italian parity, global patrol requirements, and an ocean-based allocation proposal."},
-        {"start": "3:31:36", "end": "3:32:33", "note": "The panel explains France's limited leverage and Italy's stronger negotiating position."}
+        {
+          "start": "3:29:04",
+          "end": "3:31:34",
+          "note": "The answer considers French capital-ship needs, Italian parity, global patrol requirements, and an ocean-based allocation proposal."
+        },
+        {
+          "start": "3:31:36",
+          "end": "3:32:33",
+          "note": "The panel explains France's limited leverage and Italy's stronger negotiating position."
+        }
       ]
     },
     {
@@ -574,13 +700,26 @@
       "kind": "qa",
       "start": "3:32:39",
       "end": "3:33:16",
-      "topics": ["nato", "cruisers", "seven-provinces-class", "royal-navy", "french-navy", "ship-design"],
+      "topics": [
+        "nato",
+        "cruisers",
+        "seven-provinces-class",
+        "royal-navy",
+        "french-navy",
+        "ship-design"
+      ],
       "question": "Which last-generation NATO cruiser design should have been carried forward as the basis for continued development?",
       "answerShort": "For a NATO-wide choice, Dr. Clarke favors the Dutch De Zeven Provinciën class; Britain and France kept designing cruisers later but did not build them.",
       "summary": "A concise cruiser-design answer selects the Dutch De Zeven Provinciën class as a practical NATO development baseline.",
       "body": "The answer distinguishes a NATO-wide choice from a purely British preference. The Dutch cruisers are presented as sound ships with room for continued evolution, while later British and French concepts remained paper projects. It is a useful pointer for comparing an operational hull with ambitious but unbuilt national studies.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
-      "evidence": [{"start": "3:32:39", "end": "3:33:16", "note": "The prompt asks for a NATO cruiser baseline and the answer selects the De Zeven Provinciën class while noting unbuilt British and French designs."}]
+      "evidence": [
+        {
+          "start": "3:32:39",
+          "end": "3:33:16",
+          "note": "The prompt asks for a NATO cruiser baseline and the answer selects the De Zeven Provinciën class while noting unbuilt British and French designs."
+        }
+      ]
     },
     {
       "id": "bruships-238-german-1914-naval-strategy-qa",
@@ -590,13 +729,25 @@
       "kind": "qa",
       "start": "3:50:19",
       "end": "3:50:59",
-      "topics": ["imperial-german-navy", "royal-navy", "world-war-i", "amphibious-warfare", "naval-strategy"],
+      "topics": [
+        "imperial-german-navy",
+        "royal-navy",
+        "world-war-i",
+        "amphibious-warfare",
+        "naval-strategy"
+      ],
       "question": "What naval strategy might Germany use for a France-first or Russia-first plan if it knows Britain will enter the war after a move through Belgium?",
       "answerShort": "Avoiding Belgium creates the possibility of an amphibious move against France, while Britain would initially watch how that difficult operation developed.",
       "summary": "A 1914 strategy counterfactual turns the Schlieffen Plan's political problem into an amphibious naval-planning problem.",
       "body": "The answer is deliberately brief but shifts the operational map: if Germany refuses to trigger Britain through Belgium, it must find another route against France. An amphibious assault is one possibility, bringing the navy directly into the opening land campaign. The segment is valuable as a prompt to consider how diplomatic constraints create maritime requirements.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
-      "evidence": [{"start": "3:50:19", "end": "3:50:59", "note": "The prompt assumes Britain will react to a move through Belgium; the answer raises an amphibious attack on France as the alternative."}]
+      "evidence": [
+        {
+          "start": "3:50:19",
+          "end": "3:50:59",
+          "note": "The prompt assumes Britain will react to a move through Belgium; the answer raises an amphibious attack on France as the alternative."
+        }
+      ]
     },
     {
       "id": "bruships-238-continuous-british-ship-orders-qa",
@@ -606,13 +757,27 @@
       "kind": "qa",
       "start": "3:52:41",
       "end": "3:53:48",
-      "topics": ["royal-navy", "naval-procurement", "shipbuilding", "queen-elizabeth-class-aircraft-carriers", "type-45-destroyer", "type-23-frigate", "river-class-offshore-patrol-vessels"],
+      "topics": [
+        "royal-navy",
+        "naval-procurement",
+        "shipbuilding",
+        "queen-elizabeth-class-aircraft-carriers",
+        "type-45-destroyer",
+        "type-23-frigate",
+        "river-class-offshore-patrol-vessels"
+      ],
       "question": "How many more ships could Britain obtain from the same budget if it ordered enough work to keep yards continuously occupied?",
       "answerShort": "The rough estimate is a third carrier, Type 45s seven through nine, extra River-class patrol ships, and perhaps several more Type 23 frigates.",
       "summary": "A back-of-the-envelope fleet estimate translates continuous shipyard work into additional British carriers, destroyers, frigates, and patrol vessels.",
       "body": "Dr. Clarke labels the figures as mental estimates rather than a costed force plan. They nevertheless show the scale of the opportunity cost attributed to deliberately slow construction: a third Queen Elizabeth-class carrier, three more Type 45 destroyers, additional River-class ships, and possibly two to four more Type 23s. The answer complements the earlier shipyard discussion by expressing procurement cadence in hulls rather than percentages.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
-      "evidence": [{"start": "3:52:41", "end": "3:53:48", "note": "The answer gives rough additional-hull estimates for continuous ordering while explicitly describing them as back-of-the-skull calculations."}]
+      "evidence": [
+        {
+          "start": "3:52:41",
+          "end": "3:53:48",
+          "note": "The answer gives rough additional-hull estimates for continuous ordering while explicitly describing them as back-of-the-skull calculations."
+        }
+      ]
     },
     {
       "id": "bruships-238-plymouth-class-cruisers-1939-qa",
@@ -622,15 +787,31 @@
       "kind": "qa",
       "start": "4:04:23",
       "end": "4:06:39",
-      "topics": ["royal-navy", "cruisers", "town-class-light-cruisers-1936", "battle-of-the-river-plate", "norwegian-campaign", "naval-gunnery", "radar"],
+      "topics": [
+        "royal-navy",
+        "cruisers",
+        "town-class-light-cruisers-1936",
+        "battle-of-the-river-plate",
+        "norwegian-campaign",
+        "naval-gunnery",
+        "radar"
+      ],
       "question": "What changes if every Royal Navy light cruiser becomes a World of Warships-style HMS Plymouth on 1 January 1939?",
       "answerShort": "Britain gains much stronger gun, radar, and director capabilities before the war; early manpower is manageable, though sustaining the larger cruisers becomes harder as wartime demands grow.",
       "summary": "A light-cruiser counterfactual tests sixteen-gun Plymouths at the River Plate, Norway, and in the Mediterranean while separating early-war crewing from later manpower strain.",
       "body": "The panel imagines two Plymouths replacing the Leander-class ships at the River Plate and modern radar and directors inflicting much heavier losses on German aircraft in Norway. It also challenges the assumption that the Royal Navy lacked crews from the outset: competition with Army manpower became more acute later in the war. The result combines an enormous tactical upgrade with a realistic warning about long-term sustainment.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
       "evidence": [
-        {"start": "4:04:23", "end": "4:05:16", "note": "The prompt defines the Plymouth replacement and the panel applies it to the River Plate and fleet capability."},
-        {"start": "4:05:17", "end": "4:06:39", "note": "The answer distinguishes 1939 manpower from later wartime shortages and discusses radar and fire-control effects in Norway."}
+        {
+          "start": "4:04:23",
+          "end": "4:05:16",
+          "note": "The prompt defines the Plymouth replacement and the panel applies it to the River Plate and fleet capability."
+        },
+        {
+          "start": "4:05:17",
+          "end": "4:06:39",
+          "note": "The answer distinguishes 1939 manpower from later wartime shortages and discusses radar and fire-control effects in Norway."
+        }
       ]
     },
     {
@@ -641,15 +822,31 @@
       "kind": "qa",
       "start": "4:07:38",
       "end": "4:10:48",
-      "topics": ["royal-navy", "danish-navy", "stanflex", "littoral-combat-ship", "modular-warship-design", "sea-wolf", "naval-procurement"],
+      "topics": [
+        "royal-navy",
+        "danish-navy",
+        "stanflex",
+        "littoral-combat-ship",
+        "modular-warship-design",
+        "sea-wolf",
+        "naval-procurement"
+      ],
       "question": "What would keep a British StanFlex adoption from falling apart like the Littoral Combat Ship module concept?",
       "answerShort": "Danish insistence on strict standards, the Royal Navy's unusually disciplined post-Falklands procurement moment, and Dutch participation could keep the system coherent; designing modules to a common heavy standard also avoids the LCS drive for extreme lightness.",
       "summary": "A modular-warship comparison explains why StanFlex standardization, timing, and weight discipline could avoid the Littoral Combat Ship program's module failures.",
       "body": "Dr. Clarke argues that the same British idea would fail in some decades but had a viable window after the Falklands War, when procurement discipline and demand for flexible light frigates aligned. Danish and Dutch participation would reinforce a common standard, while Sea Wolf modules could create a distinct missile path. The panel's sharpest technical contrast is that Denmark standardized modules at a common heavy weight, even adding ballast, whereas the United States tried to force every LCS module below a lightness threshold.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
       "evidence": [
-        {"start": "4:07:38", "end": "4:09:06", "note": "The prompt compares StanFlex with LCS; the answer emphasizes Danish standards, the post-Falklands British window, and Dutch involvement."},
-        {"start": "4:09:11", "end": "4:10:48", "note": "The discussion covers Sea Wolf options and contrasts Danish common-heavy modules with American lightness requirements."}
+        {
+          "start": "4:07:38",
+          "end": "4:09:06",
+          "note": "The prompt compares StanFlex with LCS; the answer emphasizes Danish standards, the post-Falklands British window, and Dutch involvement."
+        },
+        {
+          "start": "4:09:11",
+          "end": "4:10:48",
+          "note": "The discussion covers Sea Wolf options and contrasts Danish common-heavy modules with American lightness requirements."
+        }
       ]
     },
     {
@@ -660,13 +857,27 @@
       "kind": "qa",
       "start": "4:10:53",
       "end": "4:12:10",
-      "topics": ["cruisers", "italian-navy", "town-class-light-cruisers-1936", "des-moines-class-cruisers", "albany-class-guided-missile-cruisers", "sverdlov-class-cruisers", "ship-design"],
+      "topics": [
+        "cruisers",
+        "italian-navy",
+        "town-class-light-cruisers-1936",
+        "des-moines-class-cruisers",
+        "albany-class-guided-missile-cruisers",
+        "sverdlov-class-cruisers",
+        "ship-design"
+      ],
       "question": "Which navy had the best cruiser in the 1890s, 1930s, and 1950s?",
       "answerShort": "The panel chooses Italian export-influenced cruisers for the 1890s, the British Town class for the 1930s, and debates the US Des Moines or rebuilt Albany classes against the Soviet Sverdlovs for the 1950s.",
       "summary": "A cross-era comparison treats the best cruiser as the ship that best fits its navy, then weighs Italian designs, Towns, Des Moines, Albany, and Sverdlov.",
       "body": "Dr. Clarke explicitly defines 'best' as best fit for the user rather than a universal specification contest. He favors the Town class for Royal Navy needs in the 1930s and points to a successful Italian family in the 1890s that influenced export ships. For the 1950s, the panel weighs the very large Des Moines class, Albany missile rebuilds, and Soviet Sverdlovs, making the segment a compact entry point into different cruiser missions.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
-      "evidence": [{"start": "4:10:53", "end": "4:12:10", "note": "The panel defines its selection criterion and names its preferred or competing cruiser classes for all three periods."}]
+      "evidence": [
+        {
+          "start": "4:10:53",
+          "end": "4:12:10",
+          "note": "The panel defines its selection criterion and names its preferred or competing cruiser classes for all three periods."
+        }
+      ]
     },
     {
       "id": "bruships-238-yuuzhan-vong-clone-wars-invasion-qa",
@@ -676,15 +887,31 @@
       "kind": "qa",
       "start": "57:28",
       "end": "1:03:00",
-      "topics": ["science-fiction-fleets", "star-wars", "yuuzhan-vong", "clone-wars", "galactic-empire", "force-structure", "mobilisation"],
+      "topics": [
+        "science-fiction-fleets",
+        "star-wars",
+        "yuuzhan-vong",
+        "clone-wars",
+        "galactic-empire",
+        "force-structure",
+        "mobilisation"
+      ],
       "question": "What happens if the Yuuzhan Vong invade during the Clone Wars or when the Galactic Empire is at the height of its power?",
       "answerShort": "The under-militarized Clone Wars galaxy probably loses despite useful droid armies, while the Empire's far larger fleet gives it a better chance but still leaves it facing a war on an exceptional scale.",
       "summary": "A Star Wars fleet comparison tests the Yuuzhan Vong against Clone Wars mobilization, Palpatine's foreknowledge, droid armies, and the Empire's much larger destroyer force.",
       "body": "The panel separates the political surprise from the material balance. A Clone Wars invasion disrupts Palpatine's controlled conflict and arrives before the galaxy has mobilized enough ships and troops, although droid armies would be valuable against an enemy hostile to machines. The Empire at its height has vastly more Star Destroyers and a stronger chance, but the later New Republic and Imperial Remnant still struggled together, showing how demanding the invasion remains.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
       "evidence": [
-        {"start": "57:28", "end": "59:43", "note": "The prompt introduces both eras and the panel discusses Palpatine's Legends foreknowledge, Outbound Flight, and early Yuuzhan Vong probes."},
-        {"start": "1:01:31", "end": "1:03:00", "note": "The answer compares Clone Wars mobilization with the Empire's much larger fleet and the scale of the later invasion."}
+        {
+          "start": "57:28",
+          "end": "59:43",
+          "note": "The prompt introduces both eras and the panel discusses Palpatine's Legends foreknowledge, Outbound Flight, and early Yuuzhan Vong probes."
+        },
+        {
+          "start": "1:01:31",
+          "end": "1:03:00",
+          "note": "The answer compares Clone Wars mobilization with the Empire's much larger fleet and the scale of the later invasion."
+        }
       ]
     },
     {
@@ -695,15 +922,31 @@
       "kind": "qa",
       "start": "1:30:54",
       "end": "1:35:18",
-      "topics": ["potsdam-conference", "franklin-d-roosevelt", "harry-s-truman", "clement-attlee", "joseph-stalin", "world-war-ii", "international-relations"],
+      "topics": [
+        "potsdam-conference",
+        "franklin-d-roosevelt",
+        "harry-s-truman",
+        "clement-attlee",
+        "joseph-stalin",
+        "world-war-ii",
+        "international-relations"
+      ],
       "question": "How important was President Truman at the Potsdam Conference, and what might change if Franklin Roosevelt were still president?",
       "answerShort": "Roosevelt would provide continuity and a personal relationship with Stalin, probably producing somewhat more trust and a slightly different agreement even though Attlee would still be a new British leader.",
       "summary": "A Potsdam counterfactual explains how the simultaneous arrival of Truman and Attlee weakened personal continuity among the wartime Allies.",
       "body": "Stalin was the only one of the three principal leaders who remained from the established wartime partnership. Truman lacked Roosevelt's relationship with him, while Attlee was new and viewed suspiciously from both Washington and Moscow. Dr. Clarke argues that Roosevelt's presence would not erase national disagreements, but it would preserve one line of trust and experience during negotiations over the postwar settlement.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
       "evidence": [
-        {"start": "1:30:54", "end": "1:32:04", "note": "The prompt asks about Truman and Roosevelt, and the answer identifies Stalin as the only continuing principal leader."},
-        {"start": "1:33:47", "end": "1:35:18", "note": "The panel says Roosevelt would add continuity, personal trust, and the prospect of a somewhat different agreement."}
+        {
+          "start": "1:30:54",
+          "end": "1:32:04",
+          "note": "The prompt asks about Truman and Roosevelt, and the answer identifies Stalin as the only continuing principal leader."
+        },
+        {
+          "start": "1:33:47",
+          "end": "1:35:18",
+          "note": "The panel says Roosevelt would add continuity, personal trust, and the prospect of a somewhat different agreement."
+        }
       ]
     },
     {
@@ -714,15 +957,31 @@
       "kind": "qa",
       "start": "2:00:19",
       "end": "2:04:26",
-      "topics": ["world-war-i", "sarajevo-assassination", "british-royal-family", "serbia", "russian-empire", "austria-hungary", "diplomacy"],
+      "topics": [
+        "world-war-i",
+        "sarajevo-assassination",
+        "british-royal-family",
+        "serbia",
+        "russian-empire",
+        "austria-hungary",
+        "diplomacy"
+      ],
       "question": "What changes if a member of the British royal family and their spouse are killed with Archduke Franz Ferdinand by Gavrilo Princip?",
       "answerShort": "Britain pays immediate attention to the crisis, Serbia loses sympathy, and even Russia may hesitate if responsibility points toward Serbia, potentially changing the alignments that produced the First World War.",
       "summary": "A Sarajevo counterfactual traces how a British royal casualty could alter public attention, Serbian diplomatic support, and the family politics of Europe's monarchies.",
       "body": "A royal senior enough to accompany Franz Ferdinand would likely be close to the British succession, turning a distant Balkan assassination into a direct British crisis. The panel expects closer British scrutiny and a rapid erosion of Serbia's international support. Because the British, German, and Russian royal houses were interconnected, the death might also create a shared dynastic grievance that cuts across the alliances which historically escalated the war.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
       "evidence": [
-        {"start": "2:00:19", "end": "2:01:32", "note": "The prompt adds British royal casualties and the answer describes British attention, declining support for Serbia, and Russian caution."},
-        {"start": "2:01:35", "end": "2:03:02", "note": "The panel connects the counterfactual to royal family ties among Britain, Germany, and Russia and to French support for Russia."}
+        {
+          "start": "2:00:19",
+          "end": "2:01:32",
+          "note": "The prompt adds British royal casualties and the answer describes British attention, declining support for Serbia, and Russian caution."
+        },
+        {
+          "start": "2:01:35",
+          "end": "2:03:02",
+          "note": "The panel connects the counterfactual to royal family ties among Britain, Germany, and Russia and to French support for Russia."
+        }
       ]
     },
     {
@@ -733,15 +992,32 @@
       "kind": "qa",
       "start": "2:43:36",
       "end": "2:57:16",
-      "topics": ["science-fiction-fleets", "star-wars", "clone-wars", "ryloth", "fiction-star-wars-venator-class-star-destroyers", "lucrehulk-class", "carrier-warfare", "fleet-tactics"],
+      "topics": [
+        "science-fiction-fleets",
+        "star-wars",
+        "clone-wars",
+        "ryloth",
+        "fiction-star-wars-venator-class-star-destroyers",
+        "lucrehulk-class",
+        "carrier-warfare",
+        "fleet-tactics"
+      ],
       "question": "How should the Republic deploy its force against the Separatist blockade in the opening phase of the second Battle of Ryloth?",
       "answerShort": "Three Venators are badly outmatched by a Lucrehulk and its escorts, so the Republic needs reinforcements, surprise, local concentration, or an extreme fireship tactic rather than a straightforward attack.",
       "summary": "A Clone Wars fleet exercise compares Venators, a Lucrehulk, Munificent escorts, fighter capacity, hyperspace surprise, and the political pressure to attack with inadequate forces.",
       "body": "The panel begins by asking for Acclamator transports or more Venators to turn three capital ships into a viable combined force. A Lucrehulk brings heavier guns, shields, mass, and roughly fifteen hundred Vulture droids, making a direct carrier battle unfavorable. Proposed alternatives include jumping close to isolate part of the blockade, using the planet to mask enemy fire, conducting repeated hit-and-run attacks, creating a diversion, or sacrificing an explosive-packed Venator as a fireship. The exchange emphasizes that political urgency cannot remove the material consequences of attacking a fortified blockade with too little force.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
       "evidence": [
-        {"start": "2:43:36", "end": "2:49:22", "note": "The question defines the Ryloth scenario and the panel compares three Venators with a Lucrehulk, escorts, and its much larger fighter force."},
-        {"start": "2:49:52", "end": "2:57:16", "note": "The discussion tests reinforcement, hyperspace surprise, diversion, close attack, and fireship options under political pressure."}
+        {
+          "start": "2:43:36",
+          "end": "2:49:22",
+          "note": "The question defines the Ryloth scenario and the panel compares three Venators with a Lucrehulk, escorts, and its much larger fighter force."
+        },
+        {
+          "start": "2:49:52",
+          "end": "2:57:16",
+          "note": "The discussion tests reinforcement, hyperspace surprise, diversion, close attack, and fireship options under political pressure."
+        }
       ]
     },
     {
@@ -752,15 +1028,30 @@
       "kind": "qa",
       "start": "2:58:32",
       "end": "3:02:08",
-      "topics": ["french-army", "world-war-i", "battle-of-verdun", "1917-french-army-mutinies", "british-army", "civil-military-relations"],
+      "topics": [
+        "french-army",
+        "world-war-i",
+        "battle-of-verdun",
+        "1917-french-army-mutinies",
+        "british-army",
+        "civil-military-relations"
+      ],
       "question": "What happens if the French Army launches an anti-war coup in 1917 after suffering heavier losses and losing Verdun?",
       "answerShort": "The coup produces a divided and unstable France rather than an easy German victory: its leaders must remove or neutralize the British Army, while many French soldiers may oppose further offensives without accepting surrender to Germany.",
       "summary": "A 1917 counterfactual distinguishes refusal to attack from refusal to defend France and asks how an anti-war army could handle Britain, Germany, and its own divided ranks.",
       "body": "The panel first stresses that the coup's politics matter: an army can condemn an incompetent government or offensive strategy without becoming pro-German. Historically, the 1917 mutinies centered on refusing further assaults while continuing to defend France. An anti-war coup would therefore face resistance inside the French Army, the presence of a large British force, and the difficulty of negotiating with the state that had inflicted the losses driving the revolt.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
       "evidence": [
-        {"start": "2:58:32", "end": "2:59:50", "note": "The prompt describes the coup and clarifies that it seeks to end the war; the answer raises British intervention and a divided French Army."},
-        {"start": "3:00:08", "end": "3:02:08", "note": "The panel distinguishes the historical refusal of attacks from abandoning defense and explains why anti-war sentiment would not make the army pro-German."}
+        {
+          "start": "2:58:32",
+          "end": "2:59:50",
+          "note": "The prompt describes the coup and clarifies that it seeks to end the war; the answer raises British intervention and a divided French Army."
+        },
+        {
+          "start": "3:00:08",
+          "end": "3:02:08",
+          "note": "The panel distinguishes the historical refusal of attacks from abandoning defense and explains why anti-war sentiment would not make the army pro-German."
+        }
       ]
     },
     {
@@ -771,13 +1062,25 @@
       "kind": "qa",
       "start": "3:45:10",
       "end": "3:46:12",
-      "topics": ["naval-gunnery", "royal-navy", "4-inch-guns", "rate-of-fire", "gun-crews"],
+      "topics": [
+        "naval-gunnery",
+        "royal-navy",
+        "4-inch-guns",
+        "rate-of-fire",
+        "gun-crews"
+      ],
       "question": "How long would a gun crew take to fire 86 rounds from a 4-inch/50 gun?",
       "answerShort": "At a sustainable average near twelve rounds per minute, about seven minutes; a later 4-inch/45 sustaining roughly sixteen rounds per minute could do it in a little over five minutes.",
       "summary": "A short naval-gunnery calculation distinguishes maximum cyclic fire from a rate a crew can sustain across 86 rounds.",
       "body": "The panel avoids using the gun's short-term peak rate for the whole ammunition expenditure. It estimates the older 4-inch/50 at about twelve rounds per minute over the sequence, then contrasts the later 4-inch/45 at closer to sixteen. This gives a practical illustration of why sustained rate of fire matters more than a headline maximum for prolonged engagement.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
-      "evidence": [{"start": "3:45:10", "end": "3:46:12", "note": "The prompt specifies 86 4-inch/50 rounds and the panel calculates sustainable firing times for the 4-inch/50 and 4-inch/45."}]
+      "evidence": [
+        {
+          "start": "3:45:10",
+          "end": "3:46:12",
+          "note": "The prompt specifies 86 4-inch/50 rounds and the panel calculates sustainable firing times for the 4-inch/50 and 4-inch/45."
+        }
+      ]
     },
     {
       "id": "bruships-238-edward-grey-russian-naval-talks-qa",
@@ -787,13 +1090,26 @@
       "kind": "qa",
       "start": "3:54:53",
       "end": "3:55:46",
-      "topics": ["royal-navy", "imperial-russian-navy", "edward-grey", "world-war-i", "naval-diplomacy", "triple-entente"],
+      "topics": [
+        "royal-navy",
+        "imperial-russian-navy",
+        "edward-grey",
+        "world-war-i",
+        "naval-diplomacy",
+        "triple-entente"
+      ],
       "question": "What changes if Sir Edward Grey refuses to entertain the Russian foreign minister's request for naval talks in 1914?",
       "answerShort": "Probably little happens operationally, but the refusal signals that Britain does not want to pursue that form of naval coordination, making further talks pointless without the leading naval power involved.",
       "summary": "A prewar diplomacy answer separates the limited operational effect of proposed naval talks from the political signal sent by British refusal.",
       "body": "Dr. Clarke judges that the discussions themselves were unlikely to transform events. Their significance lies in participation: a naval arrangement in 1914 has little value if Britain declines to join it. Grey's refusal would therefore narrow the diplomatic agenda and tell Russia which forms of military coordination London was unwilling to explore.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
-      "evidence": [{"start": "3:54:53", "end": "3:55:46", "note": "The prompt asks about Grey refusing Russian naval talks and the answer says little changes beyond the signal that Britain will not participate."}]
+      "evidence": [
+        {
+          "start": "3:54:53",
+          "end": "3:55:46",
+          "note": "The prompt asks about Grey refusing Russian naval talks and the answer says little changes beyond the signal that Britain will not participate."
+        }
+      ]
     },
     {
       "id": "bruships-238-germany-gcap-industrial-workshare-qa",
@@ -803,13 +1119,28 @@
       "kind": "qa",
       "start": "4:03:34",
       "end": "4:04:23",
-      "topics": ["gcap", "defence-procurement", "germany", "canada", "japan", "italy", "united-kingdom", "industrial-policy"],
+      "topics": [
+        "gcap",
+        "defence-procurement",
+        "germany",
+        "canada",
+        "japan",
+        "italy",
+        "united-kingdom",
+        "industrial-policy"
+      ],
       "question": "If Japan brings Canada into GCAP as a major customer, how likely is Germany to switch into the program?",
       "answerShort": "Unlikely, because Germany would demand a large industrial share, reopening the workshare disputes already balancing British, Italian, and Japanese interests and risking another program breakdown.",
       "summary": "A fighter-procurement answer explains why adding a customer is easier than admitting another industrial lead into a mature multinational program.",
       "body": "Canada can join primarily as a large buyer without demanding control over the program's established industrial structure. Germany would be expected to seek substantial design and production work, creating direct competition with the three partners that joined from the beginning. The panel links that problem to Franco-German workshare disputes and warns that another major industrial claimant could destabilize GCAP.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
-      "evidence": [{"start": "4:03:34", "end": "4:04:23", "note": "The prompt adds Canada and asks about Germany; the answer focuses on German industrial demands, existing partner workshare, and program risk."}]
+      "evidence": [
+        {
+          "start": "4:03:34",
+          "end": "4:04:23",
+          "note": "The prompt adds Canada and asks about Germany; the answer focuses on German industrial demands, existing partner workshare, and program risk."
+        }
+      ]
     },
     {
       "id": "bruships-238-orinda-campaign-vong-invasion-qa",
@@ -819,15 +1150,31 @@
       "kind": "qa",
       "start": "4:12:15",
       "end": "4:17:52",
-      "topics": ["science-fiction-fleets", "star-wars", "yuuzhan-vong", "new-republic", "imperial-remnant", "mobilisation", "combat-experience"],
+      "topics": [
+        "science-fiction-fleets",
+        "star-wars",
+        "yuuzhan-vong",
+        "new-republic",
+        "imperial-remnant",
+        "mobilisation",
+        "combat-experience"
+      ],
       "question": "How does the Yuuzhan Vong invasion change if the Orinda campaign never happens?",
       "answerShort": "Very little changes: the campaign's losses and experience were concentrated among small elite forces, so it neither mobilized nor prepared the mass formations needed for the much larger and very different Yuuzhan Vong war.",
       "summary": "A Star Wars campaign comparison distinguishes elite combat experience and limited ship testing from the mass mobilization required for a civilization-scale invasion.",
       "body": "The New Republic would retain a few ships lost at Orinda, but the units gaining experience there were already elites such as Rogue Squadron. The campaign did not train a broad force or overcome the political constraints that later hampered mobilization. Dr. Clarke compares that imbalance with relying on a tiny real-world special force when a major war requires large formations, while the panel notes that some new ship classes at least received operational testing.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
       "evidence": [
-        {"start": "4:12:15", "end": "4:15:55", "note": "The question removes the Orinda campaign and the panel says losses were limited and experience accrued mainly to established elite units."},
-        {"start": "4:16:00", "end": "4:17:52", "note": "The answer contrasts elite formations with mass mobilization and notes limited testing of new ship classes and persistent political problems."}
+        {
+          "start": "4:12:15",
+          "end": "4:15:55",
+          "note": "The question removes the Orinda campaign and the panel says losses were limited and experience accrued mainly to established elite units."
+        },
+        {
+          "start": "4:16:00",
+          "end": "4:17:52",
+          "note": "The answer contrasts elite formations with mass mobilization and notes limited testing of new ship classes and persistent political problems."
+        }
       ]
     },
     {
@@ -838,15 +1185,31 @@
       "kind": "qa",
       "start": "3:33:46",
       "end": "3:44:34",
-      "topics": ["united-kingdom", "public-policy", "infrastructure", "energy-security", "government-procurement", "parliament", "armed-forces-reserves"],
+      "topics": [
+        "united-kingdom",
+        "public-policy",
+        "infrastructure",
+        "energy-security",
+        "government-procurement",
+        "parliament",
+        "armed-forces-reserves"
+      ],
       "question": "If Dr. Clarke became prime minister with an absolute majority, how would he reform government and the economy to support it?",
       "answerShort": "He would begin with infrastructure, outcome-based departmental measures, energy resilience, stronger contract expertise, larger reserves, and a three-house legislature combining constituencies with proportional representation and specialist scrutiny.",
       "summary": "A British governance answer links economic capacity to infrastructure, public-service outcomes, energy imports, contract oversight, military reserves, and parliamentary design.",
       "body": "Dr. Clarke starts with reliable transport and technical infrastructure, then proposes judging departments by a small number of outcomes such as successful treatment and staff retention rather than sprawling metric sets. He favors faster nuclear construction and easier household adoption of solar, batteries, wind, and heat pumps as ways to reduce imported energy, while remaining cautious about nationalization. Better contract lawyers and forensic accountants would strengthen the state's position with private suppliers. His constitutional sketch preserves constituency elections in the Commons, adds a proportionally allocated assembly drawn from strong unsuccessful constituency candidates, and retains a reworked Lords as a pool of elected and appointed specialist experience.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
       "evidence": [
-        {"start": "3:33:46", "end": "3:39:10", "note": "The answer prioritizes infrastructure, departmental outcomes, reserves, energy security, utility oversight, contract lawyers, and forensic accountants."},
-        {"start": "3:39:52", "end": "3:44:34", "note": "Dr. Clarke outlines a Commons, proportional assembly, and specialist Lords while preserving constituency links and reducing tactical voting."}
+        {
+          "start": "3:33:46",
+          "end": "3:39:10",
+          "note": "The answer prioritizes infrastructure, departmental outcomes, reserves, energy security, utility oversight, contract lawyers, and forensic accountants."
+        },
+        {
+          "start": "3:39:52",
+          "end": "3:44:34",
+          "note": "Dr. Clarke outlines a Commons, proportional assembly, and specialist Lords while preserving constituency links and reducing tactical voting."
+        }
       ]
     },
     {
@@ -857,15 +1220,29 @@
       "kind": "qa",
       "start": "3:57:40",
       "end": "4:03:30",
-      "topics": ["switzerland", "direct-democracy", "referendums", "political-institutions", "public-policy"],
+      "topics": [
+        "switzerland",
+        "direct-democracy",
+        "referendums",
+        "political-institutions",
+        "public-policy"
+      ],
       "question": "Could Swiss-style direct democracy or legislation by referendum work as a broader model?",
       "answerShort": "It works in Switzerland because of its long institutional history and distinctive cantonal setting, but most voters elsewhere lack the time to master every technical issue and would be unusually exposed to organized persuasion.",
       "summary": "A discussion of Swiss institutions weighs cultural diversity, cantonal geography, voter time, specialist knowledge, and the limits of referendum government.",
       "body": "The panel rejects the idea that Switzerland is a simple monoculture, pointing to its German, French, Italian, Romansh, Catholic, and Protestant divisions and the historical autonomy of its towns and cantons. That system developed over a long period in a geography that helped separate rival communities. Dr. Clarke accepts referendums for major constitutional decisions but argues that routine legislation demands more research time than citizens with jobs and families can normally provide. A referendum-heavy state would therefore depend on unusually engaged voters and remain vulnerable to whichever actors can dominate the available information.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
       "evidence": [
-        {"start": "3:57:40", "end": "3:59:43", "note": "The question raises Swiss direct democracy and the panel explains Switzerland's cultural divisions, cantonal history, and geography."},
-        {"start": "4:01:13", "end": "4:03:30", "note": "The discussion limits referendums to major decisions and explains the burdens of voter time, technical study, and organized persuasion."}
+        {
+          "start": "3:57:40",
+          "end": "3:59:43",
+          "note": "The question raises Swiss direct democracy and the panel explains Switzerland's cultural divisions, cantonal history, and geography."
+        },
+        {
+          "start": "4:01:13",
+          "end": "4:03:30",
+          "note": "The discussion limits referendums to major decisions and explains the burdens of voter time, technical study, and organized persuasion."
+        }
       ]
     },
     {
@@ -876,13 +1253,27 @@
       "kind": "notable_point",
       "start": "12:10",
       "end": "12:46",
-      "topics": ["royal-navy", "aircraft-carriers", "shipyards", "naval-procurement", "naval-readiness"],
+      "topics": [
+        "royal-navy",
+        "aircraft-carriers",
+        "shipyards",
+        "naval-procurement",
+        "naval-readiness"
+      ],
       "summary": "A short procurement aside argues that the Queen Elizabeth-class carrier program also paid for dry-dock improvements needed by Royal Navy escorts.",
       "body": "Dr. Clarke challenges the claim that aircraft-carrier spending simply displaced escort construction. He puts the carrier program at roughly 0.9 percent of the British defence budget during its construction period. More importantly for fleet readiness, some dry-dock upgrades used by escorts were included in the carrier project. The point shows how a major procurement program can fund enabling infrastructure whose value extends beyond the headline ships.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
       "evidence": [
-        {"start": "12:10", "end": "12:35", "note": "Dr. Clarke says the carriers represented about 0.9 percent of the defence budget during construction and that their investment helped preserve working dry docks for escorts."},
-        {"start": "12:41", "end": "12:46", "note": "He says escort dry-dock upgrades were deliberately included in the carrier project."}
+        {
+          "start": "12:10",
+          "end": "12:35",
+          "note": "Dr. Clarke says the carriers represented about 0.9 percent of the defence budget during construction and that their investment helped preserve working dry docks for escorts."
+        },
+        {
+          "start": "12:41",
+          "end": "12:46",
+          "note": "He says escort dry-dock upgrades were deliberately included in the carrier project."
+        }
       ]
     },
     {
@@ -893,13 +1284,27 @@
       "kind": "notable_point",
       "start": "53:28",
       "end": "55:03",
-      "topics": ["us-navy", "zumwalt-class-destroyers", "destroyers", "land-attack", "force-structure"],
+      "topics": [
+        "us-navy",
+        "zumwalt-class-destroyers",
+        "destroyers",
+        "land-attack",
+        "force-structure"
+      ],
       "summary": "A fleet-role correction distinguishes the Zumwalt class's land-attack mission from the anti-submarine escort work associated with Oliver Hazard Perry-class frigates.",
       "body": "Dr. Clarke rejects a claim that Zumwalt-class destroyers were intended to replace the Oliver Hazard Perry class as submarine hunters. He describes Zumwalt as a land-attack destroyer built around littoral operations, while acknowledging that it retained some air-defence and other capabilities. The distinction matters because superficially replacing one surface-combatant generation with another does not mean the ships fill the same operational role. This watch point is useful for separating hull-count comparisons from force-structure intent.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
       "evidence": [
-        {"start": "53:28", "end": "53:36", "note": "The discussion raises the claim that Zumwalt-class destroyers would have replaced Perry-class frigates as submarine hunters."},
-        {"start": "54:54", "end": "55:03", "note": "Dr. Clarke identifies the Zumwalt class as land-attack destroyers for littoral operations, with some air-defence capability."}
+        {
+          "start": "53:28",
+          "end": "53:36",
+          "note": "The discussion raises the claim that Zumwalt-class destroyers would have replaced Perry-class frigates as submarine hunters."
+        },
+        {
+          "start": "54:54",
+          "end": "55:03",
+          "note": "Dr. Clarke identifies the Zumwalt class as land-attack destroyers for littoral operations, with some air-defence capability."
+        }
       ]
     },
     {
@@ -910,15 +1315,29 @@
       "kind": "qa",
       "start": "1:44:03",
       "end": "1:45:29",
-      "topics": ["naval-leadership", "world-war-ii", "military-rations", "wartime-logistics", "winston-churchill"],
+      "topics": [
+        "naval-leadership",
+        "world-war-ii",
+        "military-rations",
+        "wartime-logistics",
+        "winston-churchill"
+      ],
       "question": "Which admiral might have performed better if given access to nicotine?",
       "answerShort": "Almost none lacked access: smoking was pervasive, cigarettes were issued in wartime rations, and senior leaders such as Churchill could obtain preferred tobacco even through special supply flights.",
       "summary": "A humorous prompt becomes a short logistics note on how common tobacco was among wartime commanders, troops, and political leaders.",
       "body": "The panel answers by reversing the premise: the list of admirals without nicotine was far shorter than the list with access to it. Cigarettes were included in wartime rations, and smoking was common enough that finding a nonsmoking area could require effort. Churchill's preferred cigars illustrate the priority sometimes given to supplying senior leaders, with the discussion recalling emergency transatlantic flights for replacements. The exchange is a compact reminder that modern assumptions about tobacco availability do not fit the social and logistical environment of the Second World War.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
       "evidence": [
-        {"start": "1:44:03", "end": "1:44:57", "note": "The prompt asks which admiral needed nicotine, and the answer says nearly all had access while cigarettes were issued in wartime rations."},
-        {"start": "1:45:00", "end": "1:45:29", "note": "The panel says the pictured leaders had nicotine and recalls emergency flights used to resupply Churchill's preferred cigars."}
+        {
+          "start": "1:44:03",
+          "end": "1:44:57",
+          "note": "The prompt asks which admiral needed nicotine, and the answer says nearly all had access while cigarettes were issued in wartime rations."
+        },
+        {
+          "start": "1:45:00",
+          "end": "1:45:29",
+          "note": "The panel says the pictured leaders had nicotine and recalls emergency flights used to resupply Churchill's preferred cigars."
+        }
       ]
     },
     {
@@ -929,14 +1348,33 @@
       "kind": "notable_point",
       "start": "1:28:04",
       "end": "1:30:40",
-      "topics": ["danish-navy", "modular-warship-design", "anti-ship-missiles", "harpoon-missile", "naval-weapons", "ship-design"],
+      "topics": [
+        "danish-navy",
+        "modular-warship-design",
+        "anti-ship-missiles",
+        "harpoon-missile",
+        "naval-weapons",
+        "ship-design"
+      ],
       "summary": "A StanFlex follow-up inventories Danish modular weapons and explains why exposed missile box launchers become awkward on smaller combatants.",
       "body": "Dr. Clarke expands the deeper-module answer beyond VLS, noting possible larger guns and the modular torpedo, close-in weapon, Evolved Sea Sparrow, and Harpoon fits used by Danish ships. He emphasizes that Danish combatants can carry sixteen Harpoon missiles, a heavier anti-ship battery than many larger NATO ships. The discussion then turns to box launchers, which remain viable on battleship- or cruiser-sized decks but consume scarce topside space on smaller hulls. This gives a concrete comparison between the flexibility of modular payload spaces and the geometric limits of simply adding more exposed launch canisters.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
       "evidence": [
-        {"start": "1:28:04", "end": "1:29:16", "note": "The follow-up discusses larger guns and Danish StanFlex installations for torpedoes, Millennium close-in weapons, Evolved Sea Sparrow, and Harpoon missiles."},
-        {"start": "1:29:16", "end": "1:29:49", "note": "Dr. Clarke notes that Danish ships can carry sixteen Harpoons, more anti-ship missiles than many larger NATO combatants."},
-        {"start": "1:29:55", "end": "1:30:40", "note": "The panel contrasts box launchers on large battleships or cruisers with the tight deck-space problem they create on smaller ships."}
+        {
+          "start": "1:28:04",
+          "end": "1:29:16",
+          "note": "The follow-up discusses larger guns and Danish StanFlex installations for torpedoes, Millennium close-in weapons, Evolved Sea Sparrow, and Harpoon missiles."
+        },
+        {
+          "start": "1:29:16",
+          "end": "1:29:49",
+          "note": "Dr. Clarke notes that Danish ships can carry sixteen Harpoons, more anti-ship missiles than many larger NATO combatants."
+        },
+        {
+          "start": "1:29:55",
+          "end": "1:30:40",
+          "note": "The panel contrasts box launchers on large battleships or cruisers with the tight deck-space problem they create on smaller ships."
+        }
       ]
     },
     {
@@ -947,14 +1385,25 @@
       "kind": "qa",
       "start": "3:44:34",
       "end": "3:45:10",
-      "topics": ["panama-canal", "kiel-canal", "royal-navy", "us-navy", "merchant-shipping", "naval-logistics"],
+      "topics": [
+        "panama-canal",
+        "kiel-canal",
+        "royal-navy",
+        "us-navy",
+        "merchant-shipping",
+        "naval-logistics"
+      ],
       "question": "How would larger Panama and Kiel canals built to modern dimensions before the war affect the Royal Navy and merchant shipping?",
       "answerShort": "The Royal Navy gains little beyond easier transit, the United States benefits more directly, merchant ships may grow somewhat, and an enlarged Kiel Canal strengthens German movement enough to make British mining more important.",
       "summary": "A brief infrastructure counterfactual compares the naval and merchant effects of enlarging the Panama and Kiel canals before wartime operations.",
       "body": "Dr. Clarke expects the Royal Navy to notice relatively little beyond faster or easier passage through Panama. The United States Navy has more reason to welcome a larger canal because it links its two principal ocean fleets. Merchant hulls might become somewhat larger, although the panel does not expect a dramatic change from canal dimensions alone. An enlarged Kiel Canal would be more valuable to Germany, while Britain would respond by treating its approaches as a major mining problem.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
       "evidence": [
-        {"start": "3:44:34", "end": "3:45:10", "note": "The prompt asks about enlarged Panama and Kiel canals, and the panel contrasts limited Royal Navy effects with US transit, merchant-ship size, German benefits, and British mining."}
+        {
+          "start": "3:44:34",
+          "end": "3:45:10",
+          "note": "The prompt asks about enlarged Panama and Kiel canals, and the panel contrasts limited Royal Navy effects with US transit, merchant-ship size, German benefits, and British mining."
+        }
       ]
     },
     {
@@ -965,15 +1414,30 @@
       "kind": "qa",
       "start": "3:48:17",
       "end": "3:49:12",
-      "topics": ["french-revolution", "louis-xvi", "marie-antoinette", "great-britain", "austria", "napoleonic-wars"],
+      "topics": [
+        "french-revolution",
+        "louis-xvi",
+        "marie-antoinette",
+        "great-britain",
+        "austria",
+        "napoleonic-wars"
+      ],
       "question": "What changes if Louis XVI and his family successfully flee France during the French Revolution?",
       "answerShort": "The panel sees Britain as the safest refuge; Austria has family ties through Marie Antoinette but would later be exposed to French and Napoleonic military pressure.",
       "summary": "A French Revolution counterfactual weighs British safety against Marie Antoinette's Austrian connections and Austria's vulnerability to later French power.",
       "body": "The answer first sends Louis XVI and his family to Britain, where the king would become an important and politically complicated royal guest. Austria is the obvious alternative because Marie Antoinette was Austrian. Dr. Clarke nevertheless treats it as the less secure destination because French and later Napoleonic armies repeatedly operated there. The exchange stays focused on refuge and personal safety rather than claiming a detailed new course for the Revolution.",
       "sourcePath": "src/transcripts/txt/2026-04-05_T18-35-16_bruships-238-naval-history-questions-answered-live_pqBl_0M1Jzk.txt",
       "evidence": [
-        {"start": "3:48:17", "end": "3:48:36", "note": "The prompt asks about a successful royal escape, and Dr. Clarke identifies Britain as the safest destination."},
-        {"start": "3:48:36", "end": "3:49:12", "note": "The panel raises Marie Antoinette's Austrian ties but argues that Austria would be exposed to later French and Napoleonic pressure."}
+        {
+          "start": "3:48:17",
+          "end": "3:48:36",
+          "note": "The prompt asks about a successful royal escape, and Dr. Clarke identifies Britain as the safest destination."
+        },
+        {
+          "start": "3:48:36",
+          "end": "3:49:12",
+          "note": "The panel raises Marie Antoinette's Austrian ties but argues that Austria would be exposed to later French and Napoleonic pressure."
+        }
       ]
     }
   ]
