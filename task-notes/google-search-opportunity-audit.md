@@ -1,4 +1,4 @@
-# Google Search opportunity audit — usability-first revision
+# Google Search opportunity audit - usability-first revision
 
 Date: 2026-07-22  
 Scope: the deployed learner-facing site and the current generated `site/dist` build  
@@ -119,7 +119,7 @@ These areas should be maintained, not rebuilt:
 
 ## Prioritized findings
 
-### P0 — Turn very large topic pages into usable subject collections
+### P0 - Turn very large topic pages into usable subject collections
 
 The problem is not merely that Googlebot cannot process all of the HTML. A learner who opens a topic containing thousands of moments is presented with a collection too large to scan or understand as a learning path.
 
@@ -144,7 +144,7 @@ The Google requirement supports the same design: Googlebot processes only the fi
 
 Expected effect: **high learner and technical value**. Visitors get a navigable subject reference, and Google can reach material that is currently beyond its fetch limit.
 
-### P0 — Make broad searches easier to narrow and compare
+### P0 - Make broad searches easier to narrow and compare
 
 The search experience already has good foundations: the query is stored in the URL, exact topic matches appear early, results identify their type and source, and each time note has a descriptive title and summary.
 
@@ -164,7 +164,7 @@ The Search page is deliberately `noindex`, so this work should be judged by find
 
 Expected effect: **high learner value**. It shortens the path from a broad historical question to the right explanation.
 
-### P1 — Strengthen topic coherence before changing index coverage
+### P1 - Strengthen topic coherence before changing index coverage
 
 Current public-topic distribution provides scale context, not a quality verdict:
 
@@ -186,13 +186,13 @@ Recommended change:
 - Disambiguate genuinely different concepts in their display names, for example a geographic place versus a battle.
 - Audit broad or surprising topic associations for subject accuracy. The question is whether the linked note teaches that topic, not merely whether the transcript contains the word.
 - Add reviewed introductions only to high-use or easily misunderstood topics. Do not bulk-generate 21,048 descriptions.
-- Keep a precise singleton topic indexable when it is a useful reference entry. Exclude empty, erroneous, duplicate, or irreducibly ambiguous pages—not pages based only on a low item count.
+- Keep a precise singleton topic indexable when it is a useful reference entry. Exclude empty, erroneous, duplicate, or irreducibly ambiguous pages-not pages based only on a low item count.
 
 Google's people-first and scaled-content guidance supports accuracy and unique value, but it does not supply an item-count threshold. See [helpful-content guidance](https://developers.google.com/search/docs/fundamentals/creating-helpful-content), [generative-AI guidance](https://developers.google.com/search/docs/fundamentals/using-gen-ai-content), and [scaled content abuse](https://developers.google.com/search/docs/essentials/spam-policies#scaled-content).
 
 Expected effect: **high reference-integrity value** and a likely secondary indexing benefit from reducing duplicate or confusing landing pages.
 
-### P1 — Let visitors watch a discovered moment in one action
+### P1 - Let visitors watch a discovered moment in one action
 
 The current pages separate two useful actions:
 
@@ -213,7 +213,7 @@ If local timestamp URLs are implemented well for visitors, they can later be reu
 
 Expected effect: **high purpose alignment**. The site's central promise is to help someone find and watch the relevant moment.
 
-### P1 — Add one public About/Methodology page for reference transparency
+### P1 - Add one public About/Methodology page for reference transparency
 
 The public site explains its learner purpose and each note exposes source information, but it does not currently explain the editorial method in one place.
 
@@ -232,7 +232,7 @@ This is useful to learners independently of Google. It also aligns with Google's
 
 Expected effect: **medium-to-high trust value** with low ongoing maintenance.
 
-### P2 — Shorten browser titles for human scanning; retain useful visible headings
+### P2 - Shorten browser titles for human scanning; retain useful visible headings
 
 Current detail-page title distribution:
 
@@ -257,7 +257,7 @@ Google has no fixed title-character limit, so this should not become a 60-charac
 
 Expected effect: **medium usability and result-presentation value**.
 
-### P2 — Investigate real video-page loading experience before changing the player
+### P2 - Investigate real video-page loading experience before changing the player
 
 The representative video page scored 61 for Lighthouse performance with an 8.4-second LCP. Its own document and CSS were small; most transfer weight came from the YouTube player, including roughly 862 KiB of player scripts in that run. The page already uses `youtube-nocookie.com` and `loading="lazy"`.
 
@@ -273,7 +273,7 @@ Do not rewrite a working player based on one lab run. Google's video and page-ex
 
 Expected effect: **conditional medium learner value**. Do nothing if field behavior is already good.
 
-### P2 — Use Search Console as a diagnostic, not as the product roadmap
+### P2 - Use Search Console as a diagnostic, not as the product roadmap
 
 The site has a deployed verification file and valid sitemaps. The remaining account-side checks are worthwhile but should diagnose the public surface rather than decide which naval-history material deserves coverage.
 
@@ -289,7 +289,7 @@ Search data can reveal a naming or findability problem, but it should not cause 
 
 Expected effect: **high diagnostic value, low direct learner value**.
 
-### P3 — Permit large image previews for genuine high-resolution thumbnails
+### P3 - Permit large image previews for genuine high-resolution thumbnails
 
 Current thumbnail sources:
 
@@ -305,7 +305,7 @@ If implemented, preserve `noindex` on non-indexable pages, update the validator 
 
 Expected effect: **low-priority search-presentation value**.
 
-### P3 — Add Google `Clip` markup only after timestamp URLs help visitors
+### P3 - Add Google `Clip` markup only after timestamp URLs help visitors
 
 The archive already contains curated segment titles and `startSeconds`. If same-page timestamp URLs are added for the watch workflow, a bounded set of those moments could be exposed as `Clip` records under `VideoObject`.
 

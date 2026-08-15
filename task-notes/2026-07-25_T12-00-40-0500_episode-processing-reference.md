@@ -6,9 +6,9 @@ This reference records a three-pass episode-processing example. The **source rec
 
 | Pass | Action | Model and effort | Result |
 | --- | --- | --- | --- |
-| 1 | Convert the selected transcript TXT into its manifest-owned site-content shard. | 5.6 Terra — High | Created 23 records: 11 historical watch points and 12 substantive Q&A entries. |
-| 2 | Audit the new shard against the full transcript. | 5.6 Sol — High | Added 18 watch points, bringing the shard to 41 records; added 27 topic slugs and canonicalized 4 topic references. |
-| 3 | Re-audit the same shard at a higher effort level. | 5.6 Sol — Ultra | Added 8 watch points and strengthened 2 existing records, bringing the shard to 49 records; added 7 topics. |
+| 1 | Convert the selected transcript TXT into its manifest-owned site-content shard. | 5.6 Terra - High | Created 23 records: 11 historical watch points and 12 substantive Q&A entries. |
+| 2 | Audit the new shard against the full transcript. | 5.6 Sol - High | Added 18 watch points, bringing the shard to 41 records; added 27 topic slugs and canonicalized 4 topic references. |
+| 3 | Re-audit the same shard at a higher effort level. | 5.6 Sol - Ultra | Added 8 watch points and strengthened 2 existing records, bringing the shard to 49 records; added 7 topics. |
 
 The cumulative result is a growth from **23 to 49 transcript-backed records**: 26 additional focused watch points, plus two strengthened existing records. Each pass remained limited to the same video shard and the required processing-log append.
 
@@ -16,7 +16,7 @@ The cumulative result is a growth from **23 to 49 transcript-backed records**: 2
 
 This section preserves the prompts and final responses from each pass. It is intentionally kept separate from the editable interpretation below.
 
-### Pass 1 — Transcript TXT to site-content shard
+### Pass 1 - Transcript TXT to site-content shard
 
 - **Model:** 5.6 Terra
 - **Effort:** High
@@ -40,7 +40,7 @@ Video topics: task-force-doctrine, royal-navy, us-navy, japanese-navy, interwar-
 needsFurtherProcessing=no. Intentionally did not touch the topic registry, normalization catalog, generated site data, schedules, reports, tests, builds, or validation.
 ```
 
-### Pass 2 — First site-content audit
+### Pass 2 - First site-content audit
 
 - **Model:** 5.6 Sol
 - **Effort:** High
@@ -69,7 +69,7 @@ Completed the shard-only audit.
 The normalization catalog, shared topic registry, other shards, synchronization, generation, tests, builds, audits, and repository-wide validation were intentionally untouched.
 ```
 
-### Pass 3 — Second site-content audit
+### Pass 3 - Second site-content audit
 
 - **Model:** 5.6 Sol
 - **Effort:** Ultra
@@ -108,7 +108,7 @@ The order matters: each audit evaluates and improves the result of the preceding
 
 ### Coverage and depth
 
-Pass 1 established broad coverage with 23 records. Pass 2 produced the largest gain, recovering 18 omitted watch points and expanding the subject range across doctrine, ship design, aviation, command, training, and modern naval questions. Pass 3 found a smaller but still material remainder—8 additional watch points—and strengthened 2 records. The diminishing additions across the two audits are consistent with progressive content exhaustion for this example.
+Pass 1 established broad coverage with 23 records. Pass 2 produced the largest gain, recovering 18 omitted watch points and expanding the subject range across doctrine, ship design, aviation, command, training, and modern naval questions. Pass 3 found a smaller but still material remainder-8 additional watch points-and strengthened 2 records. The diminishing additions across the two audits are consistent with progressive content exhaustion for this example.
 
 ### Discovery and taxonomy
 

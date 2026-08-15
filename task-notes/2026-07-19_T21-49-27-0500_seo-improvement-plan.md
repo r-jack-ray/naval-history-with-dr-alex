@@ -67,7 +67,7 @@ Every item is intended to be independently shippable. “Interlock” identifies
 
 ## Independent work items
 
-### SEO-01 — Keep Search out of search results
+### SEO-01 - Keep Search out of search results
 
 Scope:
 
@@ -82,7 +82,7 @@ Acceptance:
 
 Interlock: SEO-05 must consume the same indexability decision, but SEO-01 can ship first.
 
-### SEO-02 — Add one canonical URL contract
+### SEO-02 - Add one canonical URL contract
 
 Scope:
 
@@ -98,7 +98,7 @@ Acceptance:
 
 Interlocks: SEO-03, SEO-05, SEO-07, SEO-10, SEO-11, and SEO-13 should reuse this URL helper rather than build URLs independently.
 
-### SEO-03 — Add social preview metadata
+### SEO-03 - Add social preview metadata
 
 Scope:
 
@@ -114,7 +114,7 @@ Acceptance:
 
 Interlock: This can ship with current descriptions, but SEO-06 should become the single long-term metadata source.
 
-### SEO-04 — Stop publishing orphan topic routes
+### SEO-04 - Stop publishing orphan topic routes
 
 Scope:
 
@@ -131,7 +131,7 @@ Acceptance:
 
 Interlock: Do this before or alongside SEO-05. If it ships later, the sitemap filter must temporarily exclude the known orphan URLs.
 
-### SEO-05 — Generate and submit a split XML sitemap
+### SEO-05 - Generate and submit a split XML sitemap
 
 Scope:
 
@@ -151,7 +151,7 @@ Acceptance:
 
 Interlocks: SEO-01, SEO-02, and SEO-04 define what belongs in the sitemap. SEO-09 adds pagination routes that must be included when it ships.
 
-### SEO-06 — Improve page titles and descriptions
+### SEO-06 - Improve page titles and descriptions
 
 Scope:
 
@@ -170,7 +170,7 @@ Acceptance:
 
 Interlocks: SEO-03, SEO-10, and SEO-11 should reuse these values. SEO-12 remains necessary because programmatic metadata does not turn a formulaic Topic page into a rich subject guide.
 
-### SEO-07 — Add breadcrumbs and breadcrumb structured data
+### SEO-07 - Add breadcrumbs and breadcrumb structured data
 
 Scope:
 
@@ -186,7 +186,7 @@ Acceptance:
 
 Interlock: Reuse SEO-02 URLs. This task can ship without `VideoObject`.
 
-### SEO-08 — Add automated SEO validation and a measurement baseline
+### SEO-08 - Add automated SEO validation and a measurement baseline
 
 Scope:
 
@@ -203,7 +203,7 @@ Acceptance:
 
 Interlock: This is a recommended companion to every later item, but no other item must wait for it if that item includes focused tests.
 
-### SEO-09 — Paginate oversized Video and Topic directories
+### SEO-09 - Paginate oversized Video and Topic directories
 
 Scope:
 
@@ -224,7 +224,7 @@ Acceptance:
 
 Interlocks: Pagination needs SEO-02-compatible self-canonicals and SEO-05 sitemap inclusion. SEO-08 must understand the new route contract. It does not depend on social or structured metadata.
 
-### SEO-10 — Add accurate `VideoObject` markup
+### SEO-10 - Add accurate `VideoObject` markup
 
 Scope:
 
@@ -241,7 +241,7 @@ Acceptance:
 
 Interlocks: SEO-02 supplies the page URL and SEO-06 supplies the description. The archive must expose source-preserved ISO duration. SEO-11 can reuse the same validated video record.
 
-### SEO-11 — Generate a video sitemap
+### SEO-11 - Generate a video sitemap
 
 Scope:
 
@@ -257,7 +257,7 @@ Acceptance:
 
 Interlock: This can ship before SEO-10, but both should share one validated metadata model. SEO-02, SEO-05, and the ISO-duration work from SEO-10 are recommended prerequisites.
 
-### SEO-12 — Curate high-value Topic landing pages
+### SEO-12 - Curate high-value Topic landing pages
 
 Scope:
 
@@ -277,7 +277,7 @@ Acceptance:
 
 Interlocks: This can begin at any time. SEO-05 and Search Console make prioritization easier; SEO-09 makes Topic discovery more reliable; SEO-06 improves snippets while deeper content is curated.
 
-### SEO-13 — Add local timestamp URLs and key-moment markup
+### SEO-13 - Add local timestamp URLs and key-moment markup
 
 Scope:
 
@@ -294,7 +294,7 @@ Acceptance:
 
 Interlock: SEO-10 is required. Current links jump directly to YouTube and do not satisfy the same-page Clip URL contract by themselves.
 
-### SEO-14 — Conditionally migrate to a custom domain
+### SEO-14 - Conditionally migrate to a custom domain
 
 Status: Deferred and out of scope unless the domain, migration, and ongoing renewal costs require no owner spending or are explicitly covered by external funding.
 

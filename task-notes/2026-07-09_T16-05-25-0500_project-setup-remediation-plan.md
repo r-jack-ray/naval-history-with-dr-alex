@@ -141,11 +141,11 @@ Files changed:
 
 Checks:
 
-- `npm run check` — 46 tests passed, including cross-process writer, stale-recovery, nested-lease, atomic-write, and single-generation regression coverage.
-- `pwsh -NoProfile -File .codex/hooks/validate-content-pipeline.ps1 -SkipRepoCheck` — passed with one archive generation.
-- `pwsh -NoProfile -File .codex/hooks/validate-site.ps1 -SkipRepoCheck` and `npm run site:build` — passed.
-- Persistent-lease handoff integration (nested `npm.cmd` audit plus validation) — passed and released the lease.
-- `npm audit --omit=dev` — 0 vulnerabilities.
+- `npm run check` - 46 tests passed, including cross-process writer, stale-recovery, nested-lease, atomic-write, and single-generation regression coverage.
+- `pwsh -NoProfile -File .codex/hooks/validate-content-pipeline.ps1 -SkipRepoCheck` - passed with one archive generation.
+- `pwsh -NoProfile -File .codex/hooks/validate-site.ps1 -SkipRepoCheck` and `npm run site:build` - passed.
+- Persistent-lease handoff integration (nested `npm.cmd` audit plus validation) - passed and released the lease.
+- `npm audit --omit=dev` - 0 vulnerabilities.
 
 Next unchecked phase: Phase 2, queue and completion-state correctness.
 

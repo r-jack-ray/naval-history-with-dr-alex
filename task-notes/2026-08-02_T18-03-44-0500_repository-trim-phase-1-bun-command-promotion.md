@@ -42,9 +42,9 @@ The third mandatory retained report, `report:video-segment-audit-risk`, regenera
 
 The corrected caller and structural contracts passed in both execution modes:
 
-- Compiled Node focus: `node --test dist/scripts/generate-site-data.test.js dist/pipeline/shared-output.test.js` — 14 passed.
-- Bun source focus: `bun test src/pipeline/shared-output.test.ts src/scripts/generate-site-data.test.ts --test-name-pattern "canonical Bun|GitHub Pages|validation hooks|generation rejects"` — 5 passed.
-- `npm run check:types` — passed.
+- Compiled Node focus: `node --test dist/scripts/generate-site-data.test.js dist/pipeline/shared-output.test.js` - 14 passed.
+- Bun source focus: `bun test src/pipeline/shared-output.test.ts src/scripts/generate-site-data.test.ts --test-name-pattern "canonical Bun|GitHub Pages|validation hooks|generation rejects"` - 5 passed.
+- `npm run check:types` - passed.
 
 The full unsandboxed `npm test` run compiled successfully and reported 224 tests: 218 passed and 6 failed. Both former Phase 1 generator regressions now pass. The remaining six failures are the same pre-existing topic-normalization/store fixture mismatches already recorded in the Phase 0 baseline and earlier Phase 1 review; no later-phase fixture migration was performed here.
 

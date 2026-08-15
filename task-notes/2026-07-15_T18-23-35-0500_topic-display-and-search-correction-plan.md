@@ -97,13 +97,13 @@ Snapshot: the 2026-07-15 review scanned 17,511 registry records. The bounded exp
 
 | Stable slug | Canonical title | Required aliases |
 | --- | --- | --- |
-| `anglo-spanish-war-1654-1660` | `Anglo-Spanish War (1654–1660)` | `Anglo-Spanish War 1654-1660`; `Anglo Spanish War 1654 1660` |
-| `russo-swedish-war-1741-1743` | `Russo-Swedish War (1741–1743)` | `Russo-Swedish War 1741-1743`; `Russo Swedish War 1741 1743` |
-| `russo-swedish-war-1788-1790` | `Russo-Swedish War (1788–1790)` | `Russo-Swedish War 1788-1790`; `Russo Swedish War 1788 1790` |
-| `russo-turkish-war-1828-1829` | `Russo-Turkish War (1828–1829)` | `Russo-Turkish War 1828-1829`; `Russo Turkish War 1828 1829` |
-| `russo-turkish-war-1877-1878` | `Russo-Turkish War (1877–1878)` | `Russo-Turkish War 1877-1878`; `Russo Turkish War 1877 1878` |
-| `venezuelan-crisis-of-1902-1903` | `Venezuelan Crisis of 1902–1903` | `Venezuelan Crisis of 1902-1903`; `Venezuelan Crisis of 1902 1903` |
-| `naval-warfare-1900-1939` | `Naval Warfare, 1900–1939` | `Naval Warfare 1900-1939`; `Naval Warfare 1900 1939` |
+| `anglo-spanish-war-1654-1660` | `Anglo-Spanish War (1654-1660)` | `Anglo-Spanish War 1654-1660`; `Anglo Spanish War 1654 1660` |
+| `russo-swedish-war-1741-1743` | `Russo-Swedish War (1741-1743)` | `Russo-Swedish War 1741-1743`; `Russo Swedish War 1741 1743` |
+| `russo-swedish-war-1788-1790` | `Russo-Swedish War (1788-1790)` | `Russo-Swedish War 1788-1790`; `Russo Swedish War 1788 1790` |
+| `russo-turkish-war-1828-1829` | `Russo-Turkish War (1828-1829)` | `Russo-Turkish War 1828-1829`; `Russo Turkish War 1828 1829` |
+| `russo-turkish-war-1877-1878` | `Russo-Turkish War (1877-1878)` | `Russo-Turkish War 1877-1878`; `Russo Turkish War 1877 1878` |
+| `venezuelan-crisis-of-1902-1903` | `Venezuelan Crisis of 1902-1903` | `Venezuelan Crisis of 1902-1903`; `Venezuelan Crisis of 1902 1903` |
+| `naval-warfare-1900-1939` | `Naval Warfare, 1900-1939` | `Naval Warfare 1900-1939`; `Naval Warfare 1900 1939` |
 
 ### Punctuated designations: three records
 
@@ -111,7 +111,7 @@ Snapshot: the 2026-07-15 review scanned 17,511 registry records. The bounded exp
 | --- | --- | --- | --- |
 | `gloster-e-28-39` | `Gloster E.28/39` | `Gloster E 28 39` | Existing segment prose uses `E.28/39`. |
 | `specification-m-1-30` | `Specification M.1/30` | `Specification M 1 30` | Existing segment titles and summaries use `M.1/30`. |
-| `otobreda-127-64` | `OTO Melara 127/64` | `OTO Melara 127 64` | The owning shard says `OTO Melara 127/64` and the transcript at 3:25:04–3:25:07 supports that reading. |
+| `otobreda-127-64` | `OTO Melara 127/64` | `OTO Melara 127 64` | The owning shard says `OTO Melara 127/64` and the transcript at 3:25:04-3:25:07 supports that reading. |
 
 The `otobreda-127-64` slug is a legacy identifier, not a display label. Do not preserve `Otobreda 127 64` or add `OTO Breda 127/64` as aliases because the local evidence does not support that manufacturer name. Do not add `OTO Melara 127 mm`: a separate broader `oto-melara-127mm` topic already exists.
 
@@ -281,7 +281,7 @@ Representative query matrix:
 | `4 5 inch gun` | `/topics/4-5-inch-gun/` |
 | `QF 5.25` | `/topics/qf-5-25-inch-gun/` |
 | `QF 2 pounder pom pom` | `/topics/qf-2-pounder-pom-pom/` |
-| `1828–1829` | `/topics/russo-turkish-war-1828-1829/` |
+| `1828-1829` | `/topics/russo-turkish-war-1828-1829/` |
 | `1828-1829` | `/topics/russo-turkish-war-1828-1829/` |
 | `1828 1829` | `/topics/russo-turkish-war-1828-1829/` |
 | `E.28/39` | `/topics/gloster-e-28-39/` |
