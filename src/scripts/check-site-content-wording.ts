@@ -10,6 +10,7 @@ import {
 
 import {
   scanCuratedVideoFileMechanicalWording,
+  siteContentWordingRuleIds,
   type SiteContentWordingFinding,
 } from "../content/site-content-wording.js";
 import { parseCuratedVideoFile, type CuratedVideoFileSeed, } from "../content/schemas/index.js";
@@ -30,7 +31,19 @@ export interface SiteContentWordingCliOptions {
   strictReview: boolean;
   fuzzy: boolean;
   fuzzyThreshold: number;
+  rules: string[];
   summaryOnly: boolean;
+}
+
+export interface SiteContentWordingRuleCount {
+  confidence: SiteContentWordingFinding["confidence"];
+  ruleId: string;
+  count: number;
+}
+
+export interface SiteContentWordingValueCount {
+  value: string;
+  count: number;
 }
 
 export interface SiteContentWordingReport {
@@ -42,6 +55,7 @@ export interface SiteContentWordingReport {
   strictReview: boolean;
   fuzzy: boolean;
   fuzzyThreshold: number;
+  rules: string[];
   filesScanned: number;
   videosScanned: number;
   segmentsScanned: number;
@@ -49,6 +63,12 @@ export interface SiteContentWordingReport {
   findingCount: number;
   highConfidenceCount: number;
   reviewCount: number;
+  fuzzyCount: number;
+  filesWithHighConfidence: number;
+  filesWithReview: number;
+  ruleCounts: SiteContentWordingRuleCount[];
+  fieldCounts: SiteContentWordingValueCount[];
+  segmentKindCounts: SiteContentWordingValueCount[];
   parseErrorCount: number;
   parseErrors: string[];
   findings: SiteContentWordingFinding[];
@@ -100,9 +120,12 @@ export async function main(args: readonly string[] = process.argv.slice(2)): Pro
     }));
   }
 
-  findings.sort(compareFindings);
-  const highConfidenceCount = findings.filter((finding) => finding.confidence === "high").length;
-  const reviewCount = findings.length - highConfidenceCount;
+  const selectedFindings = options.rules.length === 0
+    ? findings
+    : findings.filter((finding) => options.rules.includes(finding.ruleId));
+  selectedFindings.sort(compareFindings);
+  const highConfidenceCount = selectedFindings.filter((finding) => finding.confidence === "high").length;
+  const reviewCount = selectedFindings.length - highConfidenceCount;
   const report: SiteContentWordingReport = {
     generatedAt: new Date().toISOString(),
     completionCriterion,
@@ -112,16 +135,29 @@ export async function main(args: readonly string[] = process.argv.slice(2)): Pro
     strictReview: options.strictReview,
     fuzzy: options.fuzzy,
     fuzzyThreshold: options.fuzzyThreshold,
+    rules: [...options.rules],
     filesScanned: files.length,
     videosScanned,
     segmentsScanned,
     publicFieldsScanned,
-    findingCount: findings.length,
+    findingCount: selectedFindings.length,
     highConfidenceCount,
     reviewCount,
+    fuzzyCount: selectedFindings.filter(
+      (finding) => finding.ruleId === "possible-mechanical-phrase-variant",
+    ).length,
+    filesWithHighConfidence: new Set(
+      selectedFindings.filter((finding) => finding.confidence === "high").map((finding) => finding.file),
+    ).size,
+    filesWithReview: new Set(
+      selectedFindings.filter((finding) => finding.confidence === "review").map((finding) => finding.file),
+    ).size,
+    ruleCounts: ruleCounts(selectedFindings),
+    fieldCounts: valueCounts(selectedFindings.map((finding) => finding.field)),
+    segmentKindCounts: valueCounts(selectedFindings.map((finding) => finding.segmentKind)),
     parseErrorCount: parseErrors.length,
     parseErrors,
-    findings,
+    findings: selectedFindings,
   };
 
   console.log(
@@ -142,11 +178,11 @@ export async function main(args: readonly string[] = process.argv.slice(2)): Pro
   if (!options.summaryOnly) {
     printFindings(
       "Actionable site-content wording issues:",
-      findings.filter((finding) => finding.confidence === "high"),
+      selectedFindings.filter((finding) => finding.confidence === "high"),
     );
     printFindings(
       "Judgment-required review candidates:",
-      findings.filter((finding) => finding.confidence === "review"),
+      selectedFindings.filter((finding) => finding.confidence === "review"),
     );
   }
 
@@ -164,7 +200,7 @@ export async function main(args: readonly string[] = process.argv.slice(2)): Pro
   }
 
   const strictFailure = options.strict && highConfidenceCount > 0;
-  const strictReviewFailure = options.strictReview && findings.length > 0;
+  const strictReviewFailure = options.strictReview && selectedFindings.length > 0;
   return parseErrors.length > 0 || strictFailure || strictReviewFailure ? 1 : 0;
 }
 
@@ -182,6 +218,7 @@ export function parseArgs(args: readonly string[]): SiteContentWordingCliOptions
     strictReview: false,
     fuzzy: false,
     fuzzyThreshold: 0.9,
+    rules: [],
     summaryOnly: false,
   };
 
@@ -211,6 +248,8 @@ export function parseArgs(args: readonly string[]): SiteContentWordingCliOptions
       options.fuzzy = true;
     } else if (argument === "--fuzzy-threshold") {
       options.fuzzyThreshold = probability(required(args[++index], argument), argument);
+    } else if (argument === "--rule") {
+      options.rules.push(required(args[++index], argument));
     } else if (argument === "--summary-only") {
       options.summaryOnly = true;
     } else if (argument === "--help" || argument === "-h") {
@@ -219,6 +258,12 @@ export function parseArgs(args: readonly string[]): SiteContentWordingCliOptions
     } else {
       throw new Error(`Unknown argument: ${argument ?? "(missing)"}`);
     }
+  }
+  options.rules = [...new Set(options.rules)];
+  const knownRuleIds = new Set(siteContentWordingRuleIds);
+  const unknownRuleIds = options.rules.filter((ruleId) => !knownRuleIds.has(ruleId));
+  if (unknownRuleIds.length > 0) {
+    throw new Error(`Unknown site-content wording rule: ${unknownRuleIds.join(", ")}`);
   }
   return options;
 }
@@ -271,7 +316,10 @@ function reportMarkdown(report: SiteContentWordingReport): string {
     `| Segments scanned | ${report.segmentsScanned} |`,
     `| Public fields scanned | ${report.publicFieldsScanned} |`,
     `| High-confidence issues | ${report.highConfidenceCount} |`,
+    `| Files with high-confidence issues | ${report.filesWithHighConfidence} |`,
     `| Review candidates | ${report.reviewCount} |`,
+    `| Files with review candidates | ${report.filesWithReview} |`,
+    `| Fuzzy review candidates | ${report.fuzzyCount} |`,
     `| Curated-shard parse errors | ${report.parseErrorCount} |`,
     "",
     report.completionCriterion,
@@ -279,6 +327,9 @@ function reportMarkdown(report: SiteContentWordingReport): string {
     report.reviewPolicy,
     "",
   ];
+  appendRuleCountTable(lines, report.ruleCounts);
+  appendValueCountTable(lines, "Findings by Public Field", "Field", report.fieldCounts);
+  appendValueCountTable(lines, "Findings by Segment Kind", "Segment kind", report.segmentKindCounts);
   if (report.parseErrors.length > 0) {
     lines.push(
       "## Curated-Shard Parse Errors",
@@ -300,6 +351,42 @@ function reportMarkdown(report: SiteContentWordingReport): string {
   return `${lines.join("\n")}\n`;
 }
 
+function appendRuleCountTable(
+  lines: string[],
+  counts: readonly SiteContentWordingRuleCount[],
+): void {
+  if (counts.length === 0) {
+    return;
+  }
+  lines.push(
+    "## Findings by Rule",
+    "",
+    "| Confidence | Rule | Count |",
+    "|---|---|---:|",
+    ...counts.map((item) => `| ${item.confidence} | \`${escapeInlineCode(item.ruleId)}\` | ${item.count} |`),
+    "",
+  );
+}
+
+function appendValueCountTable(
+  lines: string[],
+  heading: string,
+  label: string,
+  counts: readonly SiteContentWordingValueCount[],
+): void {
+  if (counts.length === 0) {
+    return;
+  }
+  lines.push(
+    `## ${heading}`,
+    "",
+    `| ${label} | Count |`,
+    "|---|---:|",
+    ...counts.map((item) => `| \`${escapeInlineCode(item.value)}\` | ${item.count} |`),
+    "",
+  );
+}
+
 function appendReportFindings(
   lines: string[],
   heading: string,
@@ -315,7 +402,7 @@ function appendReportFindings(
       : `; near \`${escapeInlineCode(finding.referencePhrase ?? "")}\` at ${finding.similarity.toFixed(3)}`;
     lines.push(
       `- \`${escapeInlineCode(finding.file)}\` segment \`${escapeInlineCode(finding.segmentId)}\` ` +
-      `at \`${finding.segmentStart}\` [${finding.field}] \`${finding.ruleId}\`: ` +
+      `at \`${finding.segmentStart}\` [${finding.segmentKind}/${finding.field}] \`${finding.ruleId}\`: ` +
       `\`${escapeInlineCode(finding.match)}\`${fuzzyDetail}`,
       `  - ${escapeMarkdown(finding.excerpt)}`,
       `  - Guidance: ${escapeMarkdown(finding.guidance)}`,
@@ -337,8 +424,9 @@ function printFindings(
       ? ""
       : ` -> ${JSON.stringify(finding.referencePhrase)} (${finding.similarity.toFixed(3)})`;
     console.log(
-      `  ${finding.file}#${finding.segmentId}@${finding.segmentStart} [${finding.field}] ` +
-      `${finding.ruleId}: ${JSON.stringify(finding.match)}${fuzzyDetail}`,
+      `  ${finding.file}#${finding.segmentId}@${finding.segmentStart} ` +
+      `[${finding.segmentKind}/${finding.field}] ${finding.ruleId}: ` +
+      `${JSON.stringify(finding.match)}${fuzzyDetail}`,
     );
     console.log(`    Guidance: ${finding.guidance}`);
   }
@@ -352,6 +440,38 @@ function compareFindings(
     || left.segmentIndex - right.segmentIndex
     || left.characterStart - right.characterStart
     || left.ruleId.localeCompare(right.ruleId);
+}
+
+function ruleCounts(findings: readonly SiteContentWordingFinding[]): SiteContentWordingRuleCount[] {
+  const counts = new Map<string, SiteContentWordingRuleCount>();
+  for (const finding of findings) {
+    const key = `${finding.confidence}\u0000${finding.ruleId}`;
+    const current = counts.get(key);
+    if (current === undefined) {
+      counts.set(key, { confidence: finding.confidence, ruleId: finding.ruleId, count: 1 });
+    } else {
+      current.count += 1;
+    }
+  }
+  return [...counts.values()].sort((left, right) =>
+    confidenceOrder(left.confidence) - confidenceOrder(right.confidence)
+    || right.count - left.count
+    || left.ruleId.localeCompare(right.ruleId)
+  );
+}
+
+function valueCounts(values: readonly string[]): SiteContentWordingValueCount[] {
+  const counts = new Map<string, number>();
+  for (const value of values) {
+    counts.set(value, (counts.get(value) ?? 0) + 1);
+  }
+  return [...counts].map(([value, count]) => ({ value, count })).sort((left, right) =>
+    right.count - left.count || left.value.localeCompare(right.value)
+  );
+}
+
+function confidenceOrder(confidence: SiteContentWordingFinding["confidence"]): number {
+  return confidence === "high" ? 0 : 1;
 }
 
 function repoDisplayPath(repoRoot: string, path: string): string {
@@ -392,9 +512,9 @@ Scans public fields in current-schema per-video JSON shards for mechanical,
 report-shaped, or workflow-shaped wording. Evidence notes and topic metadata are
 outside the scan. The default mode reports actionable high-confidence issues.
 
-Review candidates require transcript-grounded judgment. Keep context-sensitive
-terms such as prototype, processing, and seed when they describe the historical,
-technical, or operational subject. A zero review count is not a completion target.
+Review candidates require transcript-grounded judgment. Broad subject terms such
+as prototype, processing, extraction, and seed are retained unless they appear in
+workflow-shaped collocations. A zero review count is not a completion target.
 
 Options:
   --repo-root <path>
@@ -409,12 +529,14 @@ Options:
   --strict-review                  Exit 1 on high-confidence issues or review candidates
   --fuzzy                          Enable review mode and add typo-tolerant variants
   --fuzzy-threshold <0..1>         Defaults to 0.9
+  --rule <rule-id>                 Include one rule; repeat for multiple rules
   --summary-only                   Suppress individual console findings
   --help
 
 Examples:
   npm run check:site-content-wording -- --summary-only
   npm run check:site-content-wording -- --review --fuzzy --report
+  npm run check:site-content-wording -- --review --rule meta-content-frame --report
   npm run check:site-content-wording -- --path src/derived/video-segments/FILE.json --strict --review
 `);
 }

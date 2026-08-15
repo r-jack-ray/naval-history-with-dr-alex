@@ -116,7 +116,7 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 | --- | --- |
 | `report:video-segment-audit-risk` | Rank deterministic shard repairs and metadata-indicated substantive audit candidates, then write `reports/video-segment-audit-risk.tsv`. |
 | `audit:site-content` | Validate current-schema shards and transcript evidence, then write the backlog report. |
-| `check:site-content-wording` | Scan public shard fields for mechanical, report-shaped, and workflow-shaped wording; supports full-corpus and repeated `--path` scans. |
+| `check:site-content-wording` | Scan public shard fields for mechanical, report-shaped, and workflow-shaped wording; its actionable strict scan runs in `check:source`, with full-corpus, repeated `--path`, and repeated `--rule` triage controls. |
 | `diagnose:site-content-duplicates` | Check curated shards for duplicate segment IDs and slugs. |
 | `sync:video-topics` | Add missing shared topic records derived from shard usage and normalization policy with parallel Bun workers. |
 | `check:video-topics` | Verify registry completeness without writing source and name the explicit synchronization command when records are missing. |
@@ -358,12 +358,12 @@ After curator and auditor tasks have synchronized their shared topic records, th
 npm run audit:topic-normalization
 npm run check:video-topics
 npm run audit:site-content
-npm run check:site-content-wording -- --summary-only
+npm run check:site-content-wording -- --strict --summary-only
 npm run site:check
 npm run site:build
 ```
 
-`npm run audit:site-content` validates curated transcript evidence and writes `reports/site-content-backlog.md`, including manifest transcripts that still have no canonical shard. A valid empty shard counts as canonical presence. `npm run check:site-content-wording` scans every canonical shard by default. Add `--path src/derived/video-segments/<manifest.fileStem>.json --strict --review` for the curator and auditor completion gate, `--review` for context-sensitive candidates, `--fuzzy` for typo-tolerant variants, and `--report` for ignored JSON and Markdown triage reports. Review candidates are transcript-grounded judgment calls, and their count is not a completion target. Reports are ignored by Git. Shared generation, reports, schedules, and logs other than the shard worker's one required `src/derived/site-content-processing.log` append are coordinator-owned outputs.
+`npm run audit:site-content` validates curated transcript evidence and writes `reports/site-content-backlog.md`, including manifest transcripts that still have no canonical shard. A valid empty shard counts as canonical presence. `npm run check:site-content-wording` scans every canonical shard by default, and its actionable `--strict --summary-only` form is part of `check:source`. Add `--path src/derived/video-segments/<manifest.fileStem>.json --strict --review` for the curator and auditor completion gate, `--review` for judgment-required candidates, `--fuzzy` for typo-tolerant variants, repeated `--rule <rule-id>` filters for a focused rule family, and `--report` for ignored JSON and Markdown triage reports. Reports include aggregate counts by rule, public field, and segment kind before the detailed findings. Review candidates are transcript-grounded judgment calls, and their count is not a completion target. Reports are ignored by Git. Shared generation, reports, schedules, and logs other than the shard worker's one required `src/derived/site-content-processing.log` append are coordinator-owned outputs.
 
 The existing processing log has this exact semicolon-separated header:
 

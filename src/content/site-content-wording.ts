@@ -1,6 +1,6 @@
 import { fuzzy } from "fast-fuzzy";
 
-import type { CuratedVideoFileSeed } from "./schemas/index.js";
+import type { CuratedSegmentSeed, CuratedVideoFileSeed } from "./schemas/index.js";
 
 export type SiteContentWordingField =
   | "title"
@@ -9,6 +9,7 @@ export type SiteContentWordingField =
   | "question"
   | "answerShort";
 export type SiteContentWordingConfidence = "high" | "review";
+export type SiteContentWordingSegmentKind = CuratedSegmentSeed["kind"];
 
 export interface SiteContentWordingFinding {
   file: string;
@@ -16,6 +17,7 @@ export interface SiteContentWordingFinding {
   segmentId: string;
   segmentStart: string;
   segmentIndex: number;
+  segmentKind: SiteContentWordingSegmentKind;
   field: SiteContentWordingField;
   ruleId: string;
   confidence: SiteContentWordingConfidence;
@@ -40,6 +42,8 @@ interface SiteContentWordingRule {
   pattern: RegExp;
   captureGroup: string | null;
   guidance: string;
+  segmentKinds?: readonly SiteContentWordingSegmentKind[];
+  requiresClauseBoundary?: boolean;
 }
 
 interface FuzzyPhrase {
@@ -122,6 +126,18 @@ const deterministicRules: readonly SiteContentWordingRule[] = [
     pattern: /\b(?:the|this)\s+(?:answer|response|reply)\s+(?:says?|states?|notes?|records?|reports?|explains?|describes?|mentions?|shows?|identifies?|indicates?|confirms?)\b/giu,
     captureGroup: null,
     guidance: "Replace commentary about the answer, response, or reply with the direct answer and its transcript-backed reasoning.",
+    segmentKinds: ["qa"],
+    requiresClauseBoundary: true,
+  },
+  {
+    id: "non-qa-answer-reporting-frame",
+    confidence: "review",
+    fields: answerFields,
+    pattern: /\b(?:the|this)\s+(?:answer|response|reply)\s+(?:says?|states?|notes?|records?|reports?|explains?|describes?|mentions?|shows?|identifies?|indicates?|confirms?)\b/giu,
+    captureGroup: null,
+    guidance: "Check whether this is commentary about an answer or a genuine historical, operational, or institutional response. Rewrite only the commentary form.",
+    segmentKinds: ["chapter", "notable_point", "transcript_excerpt"],
+    requiresClauseBoundary: true,
   },
   {
     id: "content-workflow-deferral",
@@ -146,6 +162,14 @@ const deterministicRules: readonly SiteContentWordingRule[] = [
     pattern: /\b(?:search\s+metadata|useful\s+for\s+(?:search|browsing)|search\s+target|searchable\s+(?:seed|prototype|record|entry))\b/giu,
     captureGroup: null,
     guidance: "Describe the historical or technical learning value directly instead of the record's search function.",
+  },
+  {
+    id: "source-evidence-window-reference",
+    confidence: "high",
+    fields: allFields,
+    pattern: /\b(?:source|evidence)\s+window\b/giu,
+    captureGroup: null,
+    guidance: "Replace internal source-window or evidence-window terminology with the supported subject matter or a plain source limitation.",
   },
   {
     id: "segment-existence-frame",
@@ -180,10 +204,10 @@ const deterministicRules: readonly SiteContentWordingRule[] = [
     guidance: "Prefer the direct answer unless question-reporting language is needed to explain a mismatch or ambiguity in the exchange.",
   },
   {
-    id: "meta-content-opening",
+    id: "meta-content-frame",
     confidence: "review",
     fields: answerFields,
-    pattern: /\b(?<phrase>this\s+(?:segment|record|entry|note|chapter|passage|section)\s+(?:shows?|explains?|describes?|covers?|discusses?|introduces?|examines?|uses?|highlights?|connects?|focuses?))\b/giu,
+    pattern: /\b(?<phrase>(?:this|the)\s+(?:segment|record|entry|note|chapter|passage|section)\s+(?:shows?|explains?|describes?|covers?|discusses?|introduces?|examines?|uses?|highlights?|connects?|focuses?))\b/giu,
     captureGroup: "phrase",
     guidance: "Check whether the sentence can name the subject and takeaway directly; retain watch-point framing when it genuinely helps the reader navigate the video.",
   },
@@ -191,9 +215,9 @@ const deterministicRules: readonly SiteContentWordingRule[] = [
     id: "context-sensitive-workflow-term",
     confidence: "review",
     fields: allFields,
-    pattern: /\b(?<phrase>first[ -]pass|initial\s+pass|(?:later|future|follow-up|subsequent)\s+(?:pass|audit|review|extraction|curation|processing)|processing|curat(?:ion|ed|ing)|extract(?:ion|ed|ing)|seed(?:ed|ing|s)?|prototypes?)\b/giu,
+    pattern: /\b(?<phrase>(?:site|content|transcript|question|answer|segment|shard|metadata|scaffold)\s+(?:processing|curation|extraction|pass|review|status|stage|queue|backlog)|(?:processing|curation|extraction|pass|review)\s+(?:status|stage|queue|backlog|workflow)|(?:first|initial|later|future|follow-up|subsequent)\s+(?:content|curation|processing|extraction)\s+(?:pass|stage|review))\b/giu,
     captureGroup: "phrase",
-    guidance: "Check the transcript context. Keep this term for genuine historical, technical, or operational subject matter and remove it when it describes content workflow or scaffolding.",
+    guidance: "Check whether this collocation describes site workflow. Move workflow status to the processing log while preserving genuine historical, technical, or operational subject matter.",
   },
 ];
 
@@ -211,6 +235,13 @@ const fuzzyPhrases: readonly FuzzyPhrase[] = [
   { phrase: "this segment exists to", anchor: "exists", fields: allFields },
   { phrase: "later extraction", anchor: "extraction", fields: allFields },
 ];
+
+export const siteContentWordingRuleIds: readonly string[] = [
+  ...new Set([
+    ...deterministicRules.map((rule) => rule.id),
+    "possible-mechanical-phrase-variant",
+  ]),
+].sort();
 
 export function scanCuratedVideoFileMechanicalWording(
   file: string,
@@ -246,6 +277,7 @@ export function scanCuratedVideoFileMechanicalWording(
         segment.id,
         segment.start,
         segmentIndex,
+        segment.kind,
         field,
         text,
         includeReview,
@@ -268,6 +300,7 @@ function scanField(
   segmentId: string,
   segmentStart: string,
   segmentIndex: number,
+  segmentKind: SiteContentWordingSegmentKind,
   field: SiteContentWordingField,
   text: string,
   includeReview: boolean,
@@ -276,7 +309,11 @@ function scanField(
 ): SiteContentWordingFinding[] {
   const located: LocatedFinding[] = [];
   for (const rule of deterministicRules) {
-    if (!rule.fields.includes(field) || (!includeReview && rule.confidence === "review")) {
+    if (
+      !rule.fields.includes(field)
+      || (rule.segmentKinds !== undefined && !rule.segmentKinds.includes(segmentKind))
+      || (!includeReview && rule.confidence === "review")
+    ) {
       continue;
     }
     for (const match of text.matchAll(rule.pattern)) {
@@ -289,6 +326,9 @@ function scanField(
       const phraseOffset = match[0].lastIndexOf(phrase);
       const start = match.index + Math.max(phraseOffset, 0);
       const end = start + phrase.length;
+      if (rule.requiresClauseBoundary === true && !isClauseBoundary(text, start)) {
+        continue;
+      }
       if (rule.confidence === "review" && overlaps(start, end, located)) {
         continue;
       }
@@ -299,6 +339,7 @@ function scanField(
           segmentId,
           segmentStart,
           segmentIndex,
+          segmentKind,
           field,
           rule.id,
           rule.confidence,
@@ -320,6 +361,7 @@ function scanField(
       segmentId,
       segmentStart,
       segmentIndex,
+      segmentKind,
       field,
       text,
       fuzzyThreshold,
@@ -335,6 +377,7 @@ function fuzzyFindings(
   segmentId: string,
   segmentStart: string,
   segmentIndex: number,
+  segmentKind: SiteContentWordingSegmentKind,
   field: SiteContentWordingField,
   text: string,
   threshold: number,
@@ -385,6 +428,7 @@ function fuzzyFindings(
             segmentId,
             segmentStart,
             segmentIndex,
+            segmentKind,
             field,
             "possible-mechanical-phrase-variant",
             "review",
@@ -438,6 +482,7 @@ function baseFinding(
   segmentId: string,
   segmentStart: string,
   segmentIndex: number,
+  segmentKind: SiteContentWordingSegmentKind,
   field: SiteContentWordingField,
   ruleId: string,
   confidence: SiteContentWordingConfidence,
@@ -452,6 +497,7 @@ function baseFinding(
     segmentId,
     segmentStart,
     segmentIndex,
+    segmentKind,
     field,
     ruleId,
     confidence,
@@ -472,6 +518,15 @@ function wordTokens(text: string): WordToken[] {
 
 function overlaps(start: number, end: number, findings: readonly LocatedFinding[]): boolean {
   return findings.some((finding) => start < finding.end && end > finding.start);
+}
+
+function isClauseBoundary(text: string, start: number): boolean {
+  if (start === 0) {
+    return true;
+  }
+  return /(?:[.!?;:]\s+|,\s+|\b(?:and|although|because|but|so|while|yet)\s+)$/iu.test(
+    text.slice(0, start),
+  );
 }
 
 function excerptAround(text: string, start: number, length: number): string {

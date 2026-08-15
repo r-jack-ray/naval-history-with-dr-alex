@@ -10,7 +10,7 @@ import type { CuratedVideoFileSeed } from "./schemas/index.js";
 import { scanCuratedVideoFileMechanicalWording } from "./site-content-wording.js";
 
 test("site-content wording rules separate actionable and review findings", () => {
-  const video = sampleVideo(
+  const video = sampleQaVideo(
     "The answer explains that destroyer range constrained the operation.",
     "This passage shows why fuel endurance mattered.",
   );
@@ -29,7 +29,7 @@ test("site-content wording rules separate actionable and review findings", () =>
       {
         field: "summary",
         confidence: "review",
-        ruleId: "meta-content-opening",
+        ruleId: "meta-content-frame",
         match: "This passage shows",
       },
       {
@@ -42,9 +42,11 @@ test("site-content wording rules separate actionable and review findings", () =>
   );
 });
 
-test("context-sensitive naval and technical terms are review-only", () => {
+test("bare naval and technical terms do not create review noise", () => {
   const video = sampleVideo(
-    "The prototype aircraft uses signal processing to seed a sonobuoy field ahead of the convoy.",
+    "The prototype aircraft uses signal processing during troop extraction and can seed a sonobuoy field. " +
+    "Curated footage appears during a first pass through the book; the ship would later pass through support duties " +
+    "before a future defence review.",
   );
 
   assert.deepEqual(
@@ -52,12 +54,39 @@ test("context-sensitive naval and technical terms are review-only", () => {
     [],
   );
   assert.deepEqual(
+    scanCuratedVideoFileMechanicalWording("example.json", video, { includeReview: true }),
+    [],
+  );
+});
+
+test("meta-content frames include this and the variants", () => {
+  const video = sampleVideo(
+    "The passage explains how propulsion limits affected the deployment.",
+    "This section shows why endurance mattered.",
+  );
+
+  assert.deepEqual(
+    scanCuratedVideoFileMechanicalWording("example.json", video, { includeReview: true })
+      .map(({ field, ruleId, match }) => ({ field, ruleId, match })),
+    [
+      { field: "summary", ruleId: "meta-content-frame", match: "This section shows" },
+      { field: "body", ruleId: "meta-content-frame", match: "The passage explains" },
+    ],
+  );
+});
+
+test("workflow collocations remain judgment-required", () => {
+  const video = sampleVideo("The content processing stage remains unfinished.");
+
+  assert.deepEqual(
     scanCuratedVideoFileMechanicalWording("example.json", video, { includeReview: true })
       .map(({ confidence, ruleId, match }) => ({ confidence, ruleId, match })),
     [
-      { confidence: "review", ruleId: "context-sensitive-workflow-term", match: "prototype" },
-      { confidence: "review", ruleId: "context-sensitive-workflow-term", match: "processing" },
-      { confidence: "review", ruleId: "context-sensitive-workflow-term", match: "seed" },
+      {
+        confidence: "review",
+        ruleId: "context-sensitive-workflow-term",
+        match: "content processing",
+      },
     ],
   );
 });
@@ -85,6 +114,80 @@ test("source limitations and interpretive attribution remain unflagged", () => {
   assert.deepEqual(
     scanCuratedVideoFileMechanicalWording("example.json", video, { includeReview: true }),
     [],
+  );
+});
+
+test("exact source and evidence window terminology is actionable", () => {
+  const video = sampleVideo(
+    "The source window is incomplete, while the evidence window remains a placeholder.",
+  );
+
+  assert.deepEqual(
+    scanCuratedVideoFileMechanicalWording("example.json", video)
+      .map(({ confidence, ruleId, match }) => ({ confidence, ruleId, match })),
+    [
+      {
+        confidence: "high",
+        ruleId: "source-evidence-window-reference",
+        match: "source window",
+      },
+      {
+        confidence: "high",
+        ruleId: "source-evidence-window-reference",
+        match: "evidence window",
+      },
+    ],
+  );
+});
+
+test("answer reporting is scoped to Q&A clause boundaries", () => {
+  const subjectVideo = sampleVideo(
+    "The speed of the response shows how prior planning supported the landing.",
+  );
+  const qaVideo = sampleQaVideo(
+    "The answer shows how prior planning supported the landing. Modern examples in the answer show the same pattern.",
+  );
+
+  assert.deepEqual(scanCuratedVideoFileMechanicalWording("subject.json", subjectVideo), []);
+  const subjectReviewVideo = sampleVideo(
+    "The response explains why the navy changed its deployment.",
+  );
+  assert.deepEqual(
+    scanCuratedVideoFileMechanicalWording(
+      "subject-review.json",
+      subjectReviewVideo,
+      { includeReview: true },
+    ).map(({ segmentKind, confidence, ruleId, match }) => ({
+      segmentKind,
+      confidence,
+      ruleId,
+      match,
+    })),
+    [
+      {
+        segmentKind: "notable_point",
+        confidence: "review",
+        ruleId: "non-qa-answer-reporting-frame",
+        match: "The response explains",
+      },
+    ],
+  );
+  assert.deepEqual(
+    scanCuratedVideoFileMechanicalWording("qa.json", qaVideo)
+      .map(({ segmentKind, confidence, ruleId, match }) => ({
+        segmentKind,
+        confidence,
+        ruleId,
+        match,
+      })),
+    [
+      {
+        segmentKind: "qa",
+        confidence: "high",
+        ruleId: "answer-reporting-frame",
+        match: "The answer shows",
+      },
+    ],
   );
 });
 
@@ -121,7 +224,7 @@ test("site-content wording CLI scopes strict scans and writes reports", async ()
     );
     await writeFile(
       join(repoRoot, issueRelativePath),
-      `${JSON.stringify(sampleVideo("The answer explains that fuel endurance constrained the operation."), null, 2)}\n`,
+      `${JSON.stringify(sampleQaVideo("The answer explains that fuel endurance constrained the operation."), null, 2)}\n`,
       "utf8",
     );
 
@@ -137,6 +240,17 @@ test("site-content wording CLI scopes strict scans and writes reports", async ()
         "--summary-only",
       ])),
       1,
+    );
+    assert.equal(
+      await withoutConsole(() => checkSiteContentWording([
+        "--repo-root",
+        repoRoot,
+        "--rule",
+        "source-evidence-window-reference",
+        "--strict",
+        "--summary-only",
+      ])),
+      0,
     );
     assert.equal(
       await withoutConsole(() => checkSiteContentWording([
@@ -174,8 +288,11 @@ test("site-content wording CLI scopes strict scans and writes reports", async ()
     assert.equal(existsSync(jsonReportPath), true);
     assert.equal(existsSync(markdownReportPath), true);
     assert.match(await readFile(jsonReportPath, "utf8"), /answer-reporting-frame/u);
+    assert.match(await readFile(jsonReportPath, "utf8"), /"segmentKind": "qa"/u);
+    assert.match(await readFile(jsonReportPath, "utf8"), /"ruleCounts"/u);
     assert.match(await readFile(jsonReportPath, "utf8"), /Do not bulk-rewrite/u);
     assert.match(await readFile(markdownReportPath, "utf8"), /## Actionable Issues/u);
+    assert.match(await readFile(markdownReportPath, "utf8"), /## Findings by Rule/u);
   } finally {
     await rm(repoRoot, { recursive: true, force: true });
   }
@@ -191,6 +308,10 @@ test("site-content wording CLI accepts repeated paths and review controls", () =
     "--fuzzy",
     "--fuzzy-threshold",
     "0.93",
+    "--rule",
+    "answer-reporting-frame",
+    "--rule",
+    "meta-content-frame",
     "--strict-review",
     "--summary-only",
   ]);
@@ -202,8 +323,16 @@ test("site-content wording CLI accepts repeated paths and review controls", () =
   assert.equal(options.review, true);
   assert.equal(options.fuzzy, true);
   assert.equal(options.fuzzyThreshold, 0.93);
+  assert.deepEqual(options.rules, ["answer-reporting-frame", "meta-content-frame"]);
   assert.equal(options.strictReview, true);
   assert.equal(options.summaryOnly, true);
+});
+
+test("site-content wording CLI rejects unknown rule filters", () => {
+  assert.throws(
+    () => parseArgs(["--rule", "missing-rule"]),
+    /Unknown site-content wording rule: missing-rule/u,
+  );
 });
 
 function sampleVideo(
@@ -236,6 +365,21 @@ function sampleVideo(
       },
     ],
   };
+}
+
+function sampleQaVideo(
+  body: string,
+  summary = "Fuel endurance and operating radius",
+): CuratedVideoFileSeed {
+  const video = sampleVideo(body, summary);
+  const source = video.segments[0]!;
+  video.segments[0] = {
+    ...source,
+    kind: "qa",
+    question: "How did fuel endurance affect the operation?",
+    answerShort: "Fuel endurance constrained the operating radius.",
+  };
+  return video;
 }
 
 async function withoutConsole<T>(operation: () => Promise<T>): Promise<T> {

@@ -138,7 +138,12 @@ test("Phase 2 commands keep topic writes explicit and avoid duplicate site pipel
   );
   assert.equal(
       packageJson.scripts["check:source"],
-      "npm run audit:topic-normalization && npm run check:video-topics && npm run audit:site-content",
+      "npm run audit:topic-normalization && npm run check:video-topics && npm run audit:site-content && npm run check:site-content-wording -- --strict --summary-only",
+  );
+  assert.match(
+      packageJson.scripts["check:source"] ?? "",
+      /check:site-content-wording -- --strict --summary-only/u,
+      "check:source must retain the actionable public-wording gate",
   );
   assert.doesNotMatch(
       packageJson.scripts["check:source"] ?? "",
