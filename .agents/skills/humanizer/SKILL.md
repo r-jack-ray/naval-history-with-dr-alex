@@ -352,6 +352,17 @@ Before returning the final rewrite, scan it for `—` and `–`. Any hit means t
 **After:**
 > Whether it's worth the price depends on how often you'll use it.
 
+### 34. Redundant Source or Speaker Attribution
+
+**Signs to watch:** Repeating the same author, presenter, lecturer, host, or source name at the start of sentence after sentence, or naming that person again in both a summary and the body it introduces.
+**Problem:** Once the page or section has already established a sole speaker, repeated reidentification is editorial clutter. It makes reference prose sound like a report about the source instead of an explanation of the subject. Preserve the difference between fact, interpretation, and uncertainty, but do not assume the person's name must carry that distinction every time.
+**Before:**
+> Dr. Clarke explains that the programme lost continuity. Dr. Clarke argues that delay mattered more than the initial saving. Dr. Clarke cautions that the surviving figures remain uncertain.
+**After:**
+> The programme lost continuity, and delay mattered more than the initial saving. The surviving figures remain uncertain.
+
+Keep explicit attribution only when multiple people must be distinguished or a direct quotation needs an owner. In a single-source context, drop it, use direct subject-first prose, and preserve uncertainty with words such as "may," "likely," "appears," or "in this interpretation." Do not substitute repetitive labels such as "the presenter," "the speaker," or "the host." Confirm the person's identity before deleting a surname. Preserve references to other people who share the source's surname.
+
 ## DETECTION GUIDANCE
 
 ### What NOT to flag (false positives)

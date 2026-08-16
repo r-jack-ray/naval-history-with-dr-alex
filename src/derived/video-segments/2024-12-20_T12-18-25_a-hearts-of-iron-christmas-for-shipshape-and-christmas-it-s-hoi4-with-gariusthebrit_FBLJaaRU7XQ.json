@@ -7,7 +7,9 @@
     "royal-navy",
     "swedish-navy",
     "military-logistics",
-    "political-history"
+    "political-history",
+    "spanish-civil-war",
+    "military-procurement"
   ],
   "segments": [
     {
@@ -27,7 +29,7 @@
         "hearts-of-iron-iv"
       ],
       "summary": "The Spanish player argues that the base game misrepresents Spain's España-class battleships and Canarias-class heavy cruisers, then questions a cruiser construction schedule stretching to 1940.",
-      "body": "Early in the stream, the Spanish player objects that the base-game models for the España-class battleships do not resemble the historical ships. The Canarias-class heavy cruisers are more conspicuously represented as oversized Baltimore-class cruisers, which he treats as the wrong visual identity for the class. Later, he also says that assigning one dockyard should not leave an advanced cruiser under construction until about 1940. These are criticisms of Hearts of Iron IV's ship models and production system rather than a technical comparison of the three classes. Opening the video here helps viewers identify the named Spanish classes while keeping the game's appearance and build timeline separate from their historical designs.",
+      "body": "Early in the stream, the Spanish player objects that the base-game models for the España-class battleships do not resemble the historical ships. He says the Canarias-class heavy cruisers look like oversized Baltimore-class cruisers instead of the Spanish class they represent. Later, he objects that assigning one dockyard leaves a Canarias-class cruiser under construction until about 1940. The criticism concerns Hearts of Iron IV's ship art and production system, not the real specifications of the three classes. These examples separate the game's visual and construction abstractions from the historical warships named on screen.",
       "sourcePath": "src/transcripts/txt/2024-12-20_T12-18-25_a-hearts-of-iron-christmas-for-shipshape-and-christmas-it-s-hoi4-with-gariusthebrit_FBLJaaRU7XQ.txt",
       "evidence": [
         {
@@ -53,11 +55,12 @@
       "topics": [
         "swedish-navy",
         "coastal-defence-ships",
+        "destroyers",
         "naval-wargaming",
         "hearts-of-iron-iv"
       ],
       "summary": "The players flag a major limitation in the base game's treatment of Sweden's coast-defence ships, which makes the Swedish Navy easier to dismiss than its real force structure warrants.",
-      "body": "The discussion cautions against reading the game balance as a literal assessment of the Swedish Navy. In the unmodified game, Sweden's coast-defence ships are described as nearly useless, leaving them unable to impose the obstacle that the players believe they should present to an attacker. Later advice to transform the ships into more powerful designs is expressly labelled physically impossible in reality, identifying it as a game exploit rather than a plausible refit. The players also criticize the base game's naval-gun technology ladder for jumping through calibres in an unrealistic sequence. Together, these moments show why the scenario's ship performance and research unlocks should not be treated as a reconstruction of Sweden's historical coastal fleet. Opening the video here is useful for seeing how a strategy game's abstractions can distort the apparent value of a fleet designed to fight near its own coast.",
+      "body": "The exchange warns against treating game balance as a literal estimate of Sweden's fleet. In the base game, the coast-defence ships are nearly useless, so they cannot impose the obstacle the players think the Swedish Navy should pose. Advice to convert them into more powerful vessels is explicitly described as physically impossible, making it a game exploit rather than a plausible refit. The players also criticize the heavy-gun research ladder because it jumps through calibres unrealistically. They do not reject every Swedish design: one player calls the starting 1936 destroyer hull reasonably good. That qualifier keeps the weak coast-defence ships from standing in for the whole Swedish fleet.",
       "sourcePath": "src/transcripts/txt/2024-12-20_T12-18-25_a-hearts-of-iron-christmas-for-shipshape-and-christmas-it-s-hoi4-with-gariusthebrit_FBLJaaRU7XQ.txt",
       "evidence": [
         {
@@ -71,9 +74,55 @@
           "note": "The group recommends a game conversion of Swedish coast-defence ships while explicitly saying it would be physically impossible in reality."
         },
         {
+          "start": "42:47",
+          "end": "42:58",
+          "note": "A player says Sweden's starting 1936 destroyer hull is a reasonably good design, qualifying the criticism of the base game's Swedish fleet."
+        },
+        {
           "start": "47:09",
           "end": "47:37",
           "note": "The discussion criticizes the base game's heavy-battery calibre progression as unrealistic."
+        }
+      ]
+    },
+    {
+      "id": "international-equipment-market-in-hearts-of-iron-iv",
+      "videoId": "FBLJaaRU7XQ",
+      "slug": "international-equipment-market-in-hearts-of-iron-iv",
+      "title": "How the international market fills equipment shortages",
+      "kind": "notable_point",
+      "start": "21:46",
+      "end": "22:36",
+      "topics": [
+        "hearts-of-iron-iv",
+        "arms-trade",
+        "military-procurement",
+        "military-logistics",
+        "heinkel-he-51"
+      ],
+      "summary": "The players use foreign fighters, locomotives, and rifles to cover shortfalls. Hearts of Iron IV compresses international procurement into market access, industrial payments, and guaranteed deliveries.",
+      "body": "The group uses the international market to cover shortages that domestic factories cannot fill quickly. The Swedish player buys British LMS Class 8F locomotives and Lee-Enfield rifles, while another player contracts for German Heinkel He 51 fighters. When Germany enters civil war, the players say the existing export contract still guarantees the aircraft deliveries. Later purchases of British and Chinese rifles follow the same logic: available foreign equipment can put units in the field sooner, even when its quality is poor. These transactions belong to the Hearts of Iron IV scenario and do not record those exact historical deals. In game terms, arms trade, industrial capacity, transport, and political risk become market access and contract rules.",
+      "sourcePath": "src/transcripts/txt/2024-12-20_T12-18-25_a-hearts-of-iron-christmas-for-shipshape-and-christmas-it-s-hoi4-with-gariusthebrit_FBLJaaRU7XQ.txt",
+      "evidence": [
+        {
+          "start": "21:46",
+          "end": "22:36",
+          "note": "The players open the international market, offer Heinkel He 51 fighters, and buy British LMS Class 8F locomotives and Lee-Enfield rifles."
+        },
+        {
+          "start": "28:14",
+          "end": "28:42",
+          "note": "The German player says an existing export contract guarantees the aircraft deliveries during Germany's civil war, and Dr. Clarke identifies the Heinkel He 51 as capable for 1936."
+        },
+        {
+          "start": "43:24",
+          "end": "43:49",
+          "note": "A player buys another batch of British Lee-Enfield rifles to fill army stocks before a civil war."
+        },
+        {
+          "start": "1:33:53",
+          "end": "1:34:24",
+          "note": "A player buys old rifles offered by Chinese states, while the former Ethiopian player contrasts that access with the aid shortages faced during the Ethiopian campaign."
         }
       ]
     },
@@ -87,18 +136,25 @@
       "end": "28:42",
       "topics": [
         "heinkel-he-51",
+        "dornier-do-23",
+        "dornier-do-86",
         "fighter-aircraft",
         "interwar-aviation",
         "hearts-of-iron-iv"
       ],
-      "summary": "Dr. Clarke cautions that the Heinkel He 51 should be judged in its 1936 setting, when it still ranked among the more capable fighters available.",
-      "body": "The players discuss German aircraft offered through the game's international market and pause over the Heinkel He 51. Dr. Clarke stresses that in 1936 it was still one of the more capable fighters available. The date qualifier is the important part of the claim: the comparison concerns the start of the scenario rather than every later stage represented by the game. The exchange does not compare specifications or combat records, but it gives a concise example of why an aircraft's reputation must be tied to the period in which it served.",
+      "summary": "The players describe the Heinkel He 51 as one of the more capable fighters available in 1936, while questioning whether the game's Do 23 squadron image depicts a Dornier Do 86.",
+      "body": "The players discuss aircraft offered through the game's international market and describe the Heinkel He 51 as one of the more capable fighters available in 1936. The date limits the claim to the scenario's opening year and avoids judging the aircraft by later wartime standards. A few minutes later, another player tentatively says the image for a Do 23 squadron looks like a Dornier Do 86. Neither exchange compares specifications or combat records. Both comments warn against taking the game's ratings and visual labels at face value.",
       "sourcePath": "src/transcripts/txt/2024-12-20_T12-18-25_a-hearts-of-iron-christmas-for-shipshape-and-christmas-it-s-hoi4-with-gariusthebrit_FBLJaaRU7XQ.txt",
       "evidence": [
         {
           "start": "28:36",
           "end": "28:42",
           "note": "Dr. Clarke says that the Heinkel He 51 was still one of the more capable fighters available in 1936."
+        },
+        {
+          "start": "33:46",
+          "end": "33:56",
+          "note": "Another player tentatively identifies the image used for a Do 23 squadron as a Dornier Do 86."
         }
       ]
     },
@@ -119,7 +175,7 @@
         "hearts-of-iron-iv"
       ],
       "summary": "A discussion of the Ethiopian campaign uses fallback positions, supply dumps, and Italian overextension to explain why logistics can matter more than the amount of ground initially surrendered.",
-      "body": "The players discuss an Ethiopian defense that gives up exposed ground in order to establish a shorter, more defensible line. Dr. Clarke emphasizes retaining the supply dumps while the Italian army advances beyond its own supply zones. If Italy crowds more divisions into that poorly supplied space, the additional troops can worsen its logistical problem instead of delivering a quick victory. The later result keeps the example in perspective: Italian numbers eventually overwhelm Ethiopia, and the player says that surviving the scenario requires some luck even when following the recommended defense. The exchange is framed through Hearts of Iron IV, so it describes a game plan rather than a literal reconstruction of the campaign. It is still a useful illustration of the historical principle that operational reach depends on supply, and that a defender can trade territory for a stronger logistical position.",
+      "body": "The players plan an Ethiopian withdrawal to a shorter line rather than defend every exposed province. The plan depends on holding the supply dumps while Italian units advance beyond their own supply zones. More divisions in that poorly supplied area can deepen Italy's problem instead of securing a quick victory. The game also rewards survival because, if the war lasts long enough, an international intervention can force Italy to stop. Italy wins this run through numerical pressure, and the Ethiopian player says even the recommended approach needs favorable game randomness. This is a Hearts of Iron IV plan rather than a literal reconstruction of the campaign. It still illustrates the operational logic of trading ground to shorten a front and strain an attacker's supply.",
       "sourcePath": "src/transcripts/txt/2024-12-20_T12-18-25_a-hearts-of-iron-christmas-for-shipshape-and-christmas-it-s-hoi4-with-gariusthebrit_FBLJaaRU7XQ.txt",
       "evidence": [
         {
@@ -131,6 +187,11 @@
           "start": "1:28:17",
           "end": "1:29:46",
           "note": "Ethiopia later capitulates under Italian numerical pressure, and the player says that success with the recommended approach still requires some favorable game randomness."
+        },
+        {
+          "start": "59:03",
+          "end": "59:10",
+          "note": "The players say that if Ethiopia survives long enough, an international intervention can force Italy to stop."
         }
       ]
     },
@@ -151,7 +212,7 @@
         "wartime-trade"
       ],
       "summary": "A question about Sweden's wartime iron trade leads to Narvik, German control of nearby routes, and the strategic difficulty of denying Germany Swedish ore.",
-      "body": "Dr. Clarke explains that Sweden's practical export options were constrained by German control of Norway and Finland's alignment against the Soviet Union, directing Swedish iron ore toward Germany. He highlights Narvik as the crucial alternative outlet for that trade. Without German control there, Britain, probably with American backing, could potentially have purchased the ore on the open market and denied it to German industry. Germany would then have had to weigh the industrial value of the ore against the high cost of attacking a well-defended Sweden. The passage presents this as a counterfactual rooted in strategic geography, not as a claim that Sweden could freely redirect its exports under the actual wartime conditions.",
+      "body": "Sweden's export options were constrained by German control of Norway and Finland's position in the war against the Soviet Union. Together, those conditions directed Swedish ore toward Germany. Narvik was the crucial alternative outlet. Without German control there, Britain, probably backed by the United States, might have bought the ore on the open market and denied it to German industry. Germany would then have had to weigh the ore's industrial value against the cost of invading a well-defended Sweden. The answer is a counterfactual built on strategic geography; it does not suggest Sweden could freely redirect exports under actual wartime conditions.",
       "question": "Did Sweden sell iron to Britain during the Second World War, or did it go to Germany and the Soviet Union?",
       "answerShort": "Swedish ore largely went to Germany, not Britain or the Soviet Union, because German control of Norway and the regional war closed other practical routes; control of Narvik was therefore strategically important.",
       "sourcePath": "src/transcripts/txt/2024-12-20_T12-18-25_a-hearts-of-iron-christmas-for-shipshape-and-christmas-it-s-hoi4-with-gariusthebrit_FBLJaaRU7XQ.txt",
@@ -160,6 +221,57 @@
           "start": "34:23",
           "end": "35:15",
           "note": "Dr. Clarke connects Swedish iron-ore exports to German control of Norway, Finland's position, Narvik, and the cost of a possible invasion of Sweden."
+        }
+      ]
+    },
+    {
+      "id": "spanish-civil-war-fronts-and-attrition-in-hearts-of-iron-iv",
+      "videoId": "FBLJaaRU7XQ",
+      "slug": "spanish-civil-war-fronts-and-attrition-in-hearts-of-iron-iv",
+      "title": "How HOI4 models fronts and attrition in the Spanish Civil War",
+      "kind": "notable_point",
+      "start": "35:45",
+      "end": "36:05",
+      "topics": [
+        "spanish-civil-war",
+        "hearts-of-iron-iv",
+        "military-strategy",
+        "attrition",
+        "foreign-military-aid"
+      ],
+      "summary": "The players compare northern, southern, and central approaches, then explain how offensive penalties, manpower loss, and Soviet-supplied equipment shape the game's Spanish Civil War.",
+      "body": "The players compare several ways to fight the Spanish Civil War in the game: clear the south before turning north, attack the north first, or drive through the middle. Temporary offensive penalties interrupt the opening movement and let the front settle into a stalemate. The Nationalist player then relies on holding ground while Republican attacks consume manpower and equipment. Soviet I-16 fighters and later Soviet lend-lease supplies reinforce the Republican side within the scenario. The discussion concerns the game's operational puzzle rather than the historical campaign sequence. Within the scenario, regional offensives, front-line control, attrition, and foreign material support shape the fighting.",
+      "sourcePath": "src/transcripts/txt/2024-12-20_T12-18-25_a-hearts-of-iron-christmas-for-shipshape-and-christmas-it-s-hoi4-with-gariusthebrit_FBLJaaRU7XQ.txt",
+      "evidence": [
+        {
+          "start": "35:45",
+          "end": "36:05",
+          "note": "The players contrast an attack in the north with the usual game strategy of breaking the southern front first."
+        },
+        {
+          "start": "50:16",
+          "end": "50:34",
+          "note": "The group again compares clearing the south before the north with a drive through the middle."
+        },
+        {
+          "start": "1:01:40",
+          "end": "1:01:49",
+          "note": "A player explains that an initial burst of movement gives way to a temporary planning penalty and a halt in the fighting."
+        },
+        {
+          "start": "1:02:06",
+          "end": "1:03:49",
+          "note": "Republican Spain fields Soviet I-16 fighters while the Nationalist player discusses aircraft bought from Germany."
+        },
+        {
+          "start": "1:07:08",
+          "end": "1:08:30",
+          "note": "The Nationalist player describes northern operations draining army strength and plans to hold while Republican attacks consume manpower and equipment."
+        },
+        {
+          "start": "1:26:02",
+          "end": "1:26:15",
+          "note": "The players identify Soviet lend-lease deliveries as a source of Republican equipment."
         }
       ]
     },
@@ -181,8 +293,8 @@
         "5-inch-guns",
         "world-war-ii"
       ],
-      "summary": "Dr. Clarke distinguishes a genuine proposal involving HMS Enterprise and HMS Victorious from the claim that an American refit would have given the cruiser 4.5-inch guns.",
-      "body": "The possibility of HMS Enterprise accompanying HMS Victorious to the United States was one of several options considered, so the escort story itself is not a myth. Dr. Clarke separates that proposal from the armament claim: an American refit would more plausibly have installed 5-inch guns. The available British 4.5-inch weapons used BD mounts, and fitting them would have demanded substantial structural work. Enterprise was also too useful in her existing configuration, including her twin 6-inch forward mounting, to make that reconstruction an obvious choice. A C- or D-class cruiser therefore appears as the more plausible escort and conversion candidate.",
+      "summary": "A genuine proposal involving HMS Enterprise and HMS Victorious is separate from the claim that an American refit would have given the cruiser 4.5-inch guns.",
+      "body": "HMS Enterprise was one of several escorts considered for HMS Victorious's voyage to the United States. That proposal is separate from the armament claim: an American refit would more likely use 5-inch guns. The available British 4.5-inch weapons used BD mounts, and fitting them would require major structural work. Enterprise was also too useful in her existing configuration, including the twin 6-inch mounting forward, to make such a reconstruction attractive. A C- or D-class cruiser was therefore the more plausible escort and conversion candidate.",
       "question": "Is the story that HMS Enterprise was considered to accompany HMS Victorious to the United States a myth, and was she meant to receive 4.5-inch guns?",
       "answerShort": "The escort idea was genuinely considered, but a U.S. refit would more likely have used 5-inch guns; Enterprise's utility and the scale of the required work made another cruiser a likelier choice.",
       "sourcePath": "src/transcripts/txt/2024-12-20_T12-18-25_a-hearts-of-iron-christmas-for-shipshape-and-christmas-it-s-hoi4-with-gariusthebrit_FBLJaaRU7XQ.txt",
@@ -212,16 +324,23 @@
         "coffee-trade",
         "great-depression",
         "economic-history",
+        "economic-diversification",
+        "naval-arms-race",
         "hearts-of-iron-iv"
       ],
-      "summary": "A player trying to diversify Brazil's economy notes how heavily the country depended on coffee exports before the economic crash represented in the game.",
-      "body": "The Brazilian player explains that roughly thirty percent of Brazil's gross domestic product before the crash came from coffee exports. That dependence makes the game objective of producing more than coffee a historically informed economic problem, not merely a change of factory icons. A country tied to one export commodity is especially exposed when world demand and prices collapse. The video does not develop a full account of Brazilian economic policy, and the figure is presented conversationally rather than as a sourced statistical series. Opening the stream here nevertheless shows how economic history can give a strategy-game production plan a real historical logic.",
+      "summary": "The Brazilian player connects the country's pre-crash reliance on coffee exports to diversifying production and rebuilding before another naval arms race.",
+      "body": "The Brazilian player says coffee exports produced roughly thirty percent of GDP before the crash. That dependence gives the objective of producing more than coffee a historical economic basis beyond changing factory icons. Later, the player says the economy must be rebuilt before Brazil starts another naval arms race, linking diversification to future military spending. An export economy concentrated in one commodity is vulnerable when demand and prices collapse. The figure is given conversationally, and the video does not provide a full account of Brazilian economic policy. The scenario's push for a broader productive base follows that logic.",
       "sourcePath": "src/transcripts/txt/2024-12-20_T12-18-25_a-hearts-of-iron-christmas-for-shipshape-and-christmas-it-s-hoi4-with-gariusthebrit_FBLJaaRU7XQ.txt",
       "evidence": [
         {
           "start": "48:30",
           "end": "48:52",
           "note": "The Brazilian player says the country needs an economy based on more than coffee and states that coffee exports accounted for about thirty percent of GDP before the crash."
+        },
+        {
+          "start": "1:04:26",
+          "end": "1:04:45",
+          "note": "The Brazilian player says the economy should be rebuilt before starting another naval arms race and returns to the need to make goods other than coffee."
         }
       ]
     },
@@ -239,8 +358,8 @@
         "interwar-britain",
         "political-violence"
       ],
-      "summary": "Dr. Clarke recounts an interwar anecdote in which a Blackshirt's demand that an older peer yield to 'the future' is answered with the peer's walking cane.",
-      "body": "Dr. Clarke introduces the story as an incident from the period of Blackshirt organization in Britain. A uniformed fascist tries to force his way past a senior member of the House of Lords on a London street and tells the older man to make way for the future. The peer instead strikes him with his cane. The anecdote is brief and the people involved are not named, so it should be treated as the story Dr. Clarke tells rather than a complete case study. It gives the stream a small, vivid example of how interwar political confrontation could appear in ordinary public space and how fascist claims of generational inevitability could meet blunt resistance.",
+      "summary": "In an interwar anecdote, a Blackshirt demands that an older peer yield to 'the future,' and the peer answers with his walking cane.",
+      "body": "The story is presented as an incident from the period when Blackshirts were organizing in Britain. A uniformed fascist tries to force past a senior member of the House of Lords on a London street and tells the older man to make way for the future. The peer answers by striking him with his cane. Neither man is named, so the anecdote should not be treated as a complete case study. Whatever its precise details, the story contrasts the Blackshirt's claim to represent Britain's future with an immediate refusal to defer to him.",
       "sourcePath": "src/transcripts/txt/2024-12-20_T12-18-25_a-hearts-of-iron-christmas-for-shipshape-and-christmas-it-s-hoi4-with-gariusthebrit_FBLJaaRU7XQ.txt",
       "evidence": [
         {
@@ -265,8 +384,8 @@
         "fascism",
         "world-war-ii"
       ],
-      "summary": "A game event about fascist Norway prompts Dr. Clarke to stress Vidkun Quisling's lack of domestic political weight before German occupation made his name synonymous with collaboration.",
-      "body": "The stream pauses over a fascist path for Norway and turns to Vidkun Quisling's actual political standing. Dr. Clarke portrays him as so marginal that, in the anecdote given, a police chief did not recognize him when Quisling arrived to make demands. The official's response was simply to throw him out rather than treat him as a serious threat or national leader. The point is that Quisling's later notoriety can obscure how little authority he possessed in Norway before occupation. The anecdote is compressed and unnamed, but it usefully separates retrospective fame from contemporary political importance.",
+      "summary": "A game event about fascist Norway prompts a discussion of Vidkun Quisling's lack of domestic political weight before German occupation made his name synonymous with collaboration.",
+      "body": "The stream pauses over a fascist path for Norway and turns to Vidkun Quisling's actual political standing. He is described as so marginal that a police chief did not recognize him when he arrived to make demands. The official simply threw him out instead of treating him as a serious threat or national leader. Quisling's later notoriety can obscure how little authority he held in Norway before occupation. The anecdote is compressed and leaves the official unnamed, but his later fame should not be mistaken for pre-occupation political influence.",
       "sourcePath": "src/transcripts/txt/2024-12-20_T12-18-25_a-hearts-of-iron-christmas-for-shipshape-and-christmas-it-s-hoi4-with-gariusthebrit_FBLJaaRU7XQ.txt",
       "evidence": [
         {
@@ -292,7 +411,7 @@
         "hearts-of-iron-iv"
       ],
       "summary": "The players distinguish the autogyro shown for Spain from a true helicopter and connect the game abstraction to Spanish military use of autogyros.",
-      "body": "The Spanish player notes that the game's helicopter technology uses an autogyro image for Spain. Dr. Clarke immediately objects to calling the aircraft a helicopter, and the group explains that the icon represents Spain's use of autogyros in military service during the period. Within the game, the technology fills the helicopter slot but performs much worse than the other helicopters represented there. That is a rules abstraction rather than evidence that autogyros and helicopters were the same aircraft type. Opening the stream here is useful for seeing how a historical Spanish aircraft is fitted into a broader game category while the speakers preserve the distinction.",
+      "body": "The Spanish player notes that the game's helicopter technology uses an autogyro image for Spain. The group immediately challenges calling it a helicopter and explains that the icon represents Spain's military use of autogyros during the period. The technology occupies the helicopter slot and performs much worse than the other helicopters represented there. That is a rules abstraction, not evidence that autogyros and helicopters were the same type of aircraft. The players preserve the technical distinction even though the game fits the autogyro into a broader technology category.",
       "sourcePath": "src/transcripts/txt/2024-12-20_T12-18-25_a-hearts-of-iron-christmas-for-shipshape-and-christmas-it-s-hoi4-with-gariusthebrit_FBLJaaRU7XQ.txt",
       "evidence": [
         {

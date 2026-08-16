@@ -36,6 +36,7 @@ export interface SiteContentWordingCliOptions {
 }
 
 export interface SiteContentWordingRuleCount {
+  enforcement: "error" | "strict" | "review";
   confidence: SiteContentWordingFinding["confidence"];
   ruleId: string;
   count: number;
@@ -61,9 +62,12 @@ export interface SiteContentWordingReport {
   segmentsScanned: number;
   publicFieldsScanned: number;
   findingCount: number;
+  matchedOccurrenceCount: number;
+  errorCount: number;
   highConfidenceCount: number;
   reviewCount: number;
   fuzzyCount: number;
+  filesWithErrors: number;
   filesWithHighConfidence: number;
   filesWithReview: number;
   ruleCounts: SiteContentWordingRuleCount[];
@@ -76,11 +80,14 @@ export interface SiteContentWordingReport {
 
 const defaultSegmentsInput = "src/derived/video-segments";
 const completionCriterion =
-  "Completion is based on shard parse errors and actionable high-confidence issues; review candidates are triage input.";
+  "Prohibited Unicode dashes and shard parse failures are unconditional errors. Other actionable high-confidence issues require strict mode. Review candidates are triage input.";
 const reviewPolicy =
   "Review candidates require transcript-grounded judgment. Do not bulk-rewrite them or use a zero review " +
-  "count as a completion target. Preserve technical terms and attribution when they carry subject-matter " +
-  "meaning, interpretation, uncertainty, disagreement, opinion, preference, or personal experience.";
+  "count as a general completion target. Preserve technical terms when they carry subject-matter meaning. " +
+  "Treat host-attribution as a whole-shard review. Verify each Clark or Clarke match against the transcript " +
+  "before editing. Each segment already carries sourcePath and evidence, so remove routine references to the " +
+  "host in solo-speaker prose. Preserve other people named Clark or Clarke. In multi-speaker material, also " +
+  "retain attribution needed to distinguish speakers or identify a quotation.";
 
 export async function main(args: readonly string[] = process.argv.slice(2)): Promise<number> {
   const options = parseArgs(args);
@@ -122,10 +129,15 @@ export async function main(args: readonly string[] = process.argv.slice(2)): Pro
 
   const selectedFindings = options.rules.length === 0
     ? findings
-    : findings.filter((finding) => options.rules.includes(finding.ruleId));
+    : findings.filter(
+      (finding) => finding.unconditionalError || options.rules.includes(finding.ruleId),
+    );
   selectedFindings.sort(compareFindings);
-  const highConfidenceCount = selectedFindings.filter((finding) => finding.confidence === "high").length;
-  const reviewCount = selectedFindings.length - highConfidenceCount;
+  const errorCount = selectedFindings.filter((finding) => finding.unconditionalError).length;
+  const highConfidenceCount = selectedFindings.filter(
+    (finding) => finding.confidence === "high" && !finding.unconditionalError,
+  ).length;
+  const reviewCount = selectedFindings.filter((finding) => finding.confidence === "review").length;
   const report: SiteContentWordingReport = {
     generatedAt: new Date().toISOString(),
     completionCriterion,
@@ -141,13 +153,23 @@ export async function main(args: readonly string[] = process.argv.slice(2)): Pro
     segmentsScanned,
     publicFieldsScanned,
     findingCount: selectedFindings.length,
+    matchedOccurrenceCount: selectedFindings.reduce(
+      (count, finding) => count + (finding.occurrenceCount ?? 1),
+      0,
+    ),
+    errorCount,
     highConfidenceCount,
     reviewCount,
     fuzzyCount: selectedFindings.filter(
       (finding) => finding.ruleId === "possible-mechanical-phrase-variant",
     ).length,
+    filesWithErrors: new Set(
+      selectedFindings.filter((finding) => finding.unconditionalError).map((finding) => finding.file),
+    ).size,
     filesWithHighConfidence: new Set(
-      selectedFindings.filter((finding) => finding.confidence === "high").map((finding) => finding.file),
+      selectedFindings.filter(
+        (finding) => finding.confidence === "high" && !finding.unconditionalError,
+      ).map((finding) => finding.file),
     ).size,
     filesWithReview: new Set(
       selectedFindings.filter((finding) => finding.confidence === "review").map((finding) => finding.file),
@@ -163,8 +185,9 @@ export async function main(args: readonly string[] = process.argv.slice(2)): Pro
   console.log(
     `Site-content wording scan: mode=${includeReview ? "review" : "actionable"} ` +
     `files=${report.filesScanned} videos=${report.videosScanned} segments=${report.segmentsScanned} ` +
-    `fields=${report.publicFieldsScanned} issues=${report.highConfidenceCount} ` +
-    `review-candidates=${report.reviewCount} parse-errors=${report.parseErrorCount}.`,
+    `fields=${report.publicFieldsScanned} errors=${report.errorCount} issues=${report.highConfidenceCount} ` +
+    `review-candidates=${report.reviewCount} matched-occurrences=${report.matchedOccurrenceCount} ` +
+    `parse-errors=${report.parseErrorCount}.`,
   );
   if (parseErrors.length > 0) {
     console.error("Curated-shard parse errors:");
@@ -177,8 +200,14 @@ export async function main(args: readonly string[] = process.argv.slice(2)): Pro
   }
   if (!options.summaryOnly) {
     printFindings(
+      "Nonnegotiable site-content wording errors:",
+      selectedFindings.filter((finding) => finding.unconditionalError),
+    );
+    printFindings(
       "Actionable site-content wording issues:",
-      selectedFindings.filter((finding) => finding.confidence === "high"),
+      selectedFindings.filter(
+        (finding) => finding.confidence === "high" && !finding.unconditionalError,
+      ),
     );
     printFindings(
       "Judgment-required review candidates:",
@@ -201,7 +230,7 @@ export async function main(args: readonly string[] = process.argv.slice(2)): Pro
 
   const strictFailure = options.strict && highConfidenceCount > 0;
   const strictReviewFailure = options.strictReview && selectedFindings.length > 0;
-  return parseErrors.length > 0 || strictFailure || strictReviewFailure ? 1 : 0;
+  return errorCount > 0 || parseErrors.length > 0 || strictFailure || strictReviewFailure ? 1 : 0;
 }
 
 export function parseArgs(args: readonly string[]): SiteContentWordingCliOptions | null {
@@ -315,6 +344,9 @@ function reportMarkdown(report: SiteContentWordingReport): string {
     `| Valid videos scanned | ${report.videosScanned} |`,
     `| Segments scanned | ${report.segmentsScanned} |`,
     `| Public fields scanned | ${report.publicFieldsScanned} |`,
+    `| Matched occurrences | ${report.matchedOccurrenceCount} |`,
+    `| Unconditional errors | ${report.errorCount} |`,
+    `| Files with unconditional errors | ${report.filesWithErrors} |`,
     `| High-confidence issues | ${report.highConfidenceCount} |`,
     `| Files with high-confidence issues | ${report.filesWithHighConfidence} |`,
     `| Review candidates | ${report.reviewCount} |`,
@@ -340,8 +372,15 @@ function reportMarkdown(report: SiteContentWordingReport): string {
   }
   appendReportFindings(
     lines,
+    "Nonnegotiable Errors",
+    report.findings.filter((finding) => finding.unconditionalError),
+  );
+  appendReportFindings(
+    lines,
     "Actionable Issues",
-    report.findings.filter((finding) => finding.confidence === "high"),
+    report.findings.filter(
+      (finding) => finding.confidence === "high" && !finding.unconditionalError,
+    ),
   );
   appendReportFindings(
     lines,
@@ -361,9 +400,11 @@ function appendRuleCountTable(
   lines.push(
     "## Findings by Rule",
     "",
-    "| Confidence | Rule | Count |",
-    "|---|---|---:|",
-    ...counts.map((item) => `| ${item.confidence} | \`${escapeInlineCode(item.ruleId)}\` | ${item.count} |`),
+    "| Enforcement | Confidence | Rule | Count |",
+    "|---|---|---|---:|",
+    ...counts.map(
+      (item) => `| ${item.enforcement} | ${item.confidence} | \`${escapeInlineCode(item.ruleId)}\` | ${item.count} |`,
+    ),
     "",
   );
 }
@@ -445,19 +486,34 @@ function compareFindings(
 function ruleCounts(findings: readonly SiteContentWordingFinding[]): SiteContentWordingRuleCount[] {
   const counts = new Map<string, SiteContentWordingRuleCount>();
   for (const finding of findings) {
-    const key = `${finding.confidence}\u0000${finding.ruleId}`;
+    const enforcement = findingEnforcement(finding);
+    const key = `${enforcement}\u0000${finding.ruleId}`;
     const current = counts.get(key);
     if (current === undefined) {
-      counts.set(key, { confidence: finding.confidence, ruleId: finding.ruleId, count: 1 });
+      counts.set(key, {
+        enforcement,
+        confidence: finding.confidence,
+        ruleId: finding.ruleId,
+        count: 1,
+      });
     } else {
       current.count += 1;
     }
   }
   return [...counts.values()].sort((left, right) =>
-    confidenceOrder(left.confidence) - confidenceOrder(right.confidence)
+    enforcementOrder(left.enforcement) - enforcementOrder(right.enforcement)
     || right.count - left.count
     || left.ruleId.localeCompare(right.ruleId)
   );
+}
+
+function findingEnforcement(
+  finding: SiteContentWordingFinding,
+): SiteContentWordingRuleCount["enforcement"] {
+  if (finding.unconditionalError) {
+    return "error";
+  }
+  return finding.confidence === "high" ? "strict" : "review";
 }
 
 function valueCounts(values: readonly string[]): SiteContentWordingValueCount[] {
@@ -470,8 +526,8 @@ function valueCounts(values: readonly string[]): SiteContentWordingValueCount[] 
   );
 }
 
-function confidenceOrder(confidence: SiteContentWordingFinding["confidence"]): number {
-  return confidence === "high" ? 0 : 1;
+function enforcementOrder(enforcement: SiteContentWordingRuleCount["enforcement"]): number {
+  return enforcement === "error" ? 0 : enforcement === "strict" ? 1 : 2;
 }
 
 function repoDisplayPath(repoRoot: string, path: string): string {
@@ -510,7 +566,8 @@ function printHelp(): void {
 
 Scans public fields in current-schema per-video JSON shards for mechanical,
 report-shaped, or workflow-shaped wording. Evidence notes and topic metadata are
-outside the scan. The default mode reports actionable high-confidence issues.
+outside the scan. Prohibited Unicode dashes always produce errors and exit 1.
+The default mode also reports other actionable high-confidence issues.
 
 Review candidates require transcript-grounded judgment. Broad subject terms such
 as prototype, processing, extraction, and seed are retained unless they appear in
@@ -529,7 +586,7 @@ Options:
   --strict-review                  Exit 1 on high-confidence issues or review candidates
   --fuzzy                          Enable review mode and add typo-tolerant variants
   --fuzzy-threshold <0..1>         Defaults to 0.9
-  --rule <rule-id>                 Include one rule; repeat for multiple rules
+  --rule <rule-id>                 Include one rule; unconditional errors remain included
   --summary-only                   Suppress individual console findings
   --help
 

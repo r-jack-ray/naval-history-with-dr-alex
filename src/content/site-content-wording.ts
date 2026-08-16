@@ -21,12 +21,16 @@ export interface SiteContentWordingFinding {
   field: SiteContentWordingField;
   ruleId: string;
   confidence: SiteContentWordingConfidence;
+  unconditionalError: boolean;
   match: string;
   excerpt: string;
   guidance: string;
   characterStart: number;
   similarity?: number;
   referencePhrase?: string;
+  occurrenceCount?: number;
+  affectedSegmentCount?: number;
+  repeatedSegmentCount?: number;
 }
 
 export interface SiteContentWordingOptions {
@@ -42,6 +46,7 @@ interface SiteContentWordingRule {
   pattern: RegExp;
   captureGroup: string | null;
   guidance: string;
+  unconditionalError?: boolean;
   segmentKinds?: readonly SiteContentWordingSegmentKind[];
   requiresClauseBoundary?: boolean;
 }
@@ -64,6 +69,17 @@ interface WordToken {
   end: number;
 }
 
+interface HostAttributionReference {
+  segmentId: string;
+  segmentStart: string;
+  segmentIndex: number;
+  segmentKind: SiteContentWordingSegmentKind;
+  field: SiteContentWordingField;
+  text: string;
+  match: string;
+  characterStart: number;
+}
+
 const allFields: readonly SiteContentWordingField[] = [
   "title",
   "summary",
@@ -77,8 +93,19 @@ const answerFields: readonly SiteContentWordingField[] = [
   "body",
   "answerShort",
 ];
+const hostAttributionRuleId = "host-attribution";
+const hostAttributionPattern = /\b(?:(?:(?:Dr\.?|Doctor|Professor)\s+(?:Alex\s+)?|Alex\s+)Clarke(?:['’]s)?|Clarke(?:['’]s)?)\b/giu;
 
 const deterministicRules: readonly SiteContentWordingRule[] = [
+  {
+    id: "prohibited-unicode-dash",
+    confidence: "high",
+    fields: allFields,
+    pattern: /[\u2013\u2014]/gu,
+    captureGroup: null,
+    guidance: "Replace this prohibited Unicode dash with punctuation or wording appropriate to the sentence.",
+    unconditionalError: true,
+  },
   {
     id: "transcript-position-reference",
     confidence: "high",
@@ -239,6 +266,7 @@ const fuzzyPhrases: readonly FuzzyPhrase[] = [
 export const siteContentWordingRuleIds: readonly string[] = [
   ...new Set([
     ...deterministicRules.map((rule) => rule.id),
+    hostAttributionRuleId,
     "possible-mechanical-phrase-variant",
   ]),
 ].sort();
@@ -256,6 +284,7 @@ export function scanCuratedVideoFileMechanicalWording(
   }
 
   const findings: SiteContentWordingFinding[] = [];
+  const hostAttributions: HostAttributionReference[] = [];
   for (const [segmentIndex, segment] of video.segments.entries()) {
     const fields: Array<[SiteContentWordingField, string]> = [
       ["title", segment.title],
@@ -271,6 +300,20 @@ export function scanCuratedVideoFileMechanicalWording(
 
     for (const [field, value] of fields) {
       const text = visibleFieldText(value);
+      if (includeReview) {
+        for (const match of text.matchAll(hostAttributionPattern)) {
+          hostAttributions.push({
+            segmentId: segment.id,
+            segmentStart: segment.start,
+            segmentIndex,
+            segmentKind: segment.kind,
+            field,
+            text,
+            match: match[0],
+            characterStart: match.index,
+          });
+        }
+      }
       findings.push(...scanField(
         file,
         video.videoId,
@@ -285,6 +328,10 @@ export function scanCuratedVideoFileMechanicalWording(
         fuzzyThreshold,
       ));
     }
+  }
+
+  if (includeReview) {
+    findings.push(...hostAttributionFindings(file, video, hostAttributions));
   }
 
   return findings.sort(compareFindings);
@@ -347,6 +394,7 @@ function scanField(
           text,
           start,
           rule.guidance,
+          rule.unconditionalError ?? false,
         ),
         start,
         end,
@@ -369,6 +417,56 @@ function scanField(
     ));
   }
   return located.map((item) => item.finding);
+}
+
+function hostAttributionFindings(
+  file: string,
+  video: CuratedVideoFileSeed,
+  references: readonly HostAttributionReference[],
+): SiteContentWordingFinding[] {
+  if (references.length === 0) {
+    return [];
+  }
+
+  const countsBySegment = new Map<number, number>();
+  for (const reference of references) {
+    countsBySegment.set(
+      reference.segmentIndex,
+      (countsBySegment.get(reference.segmentIndex) ?? 0) + 1,
+    );
+  }
+  const affectedSegmentCount = countsBySegment.size;
+  const repeatedSegmentCount = [...countsBySegment.values()]
+    .filter((count) => count > 1)
+    .length;
+  const first = references[0]!;
+  const segmentLabel = affectedSegmentCount === 1 ? "segment" : "segments";
+  const guidance =
+    `This shard uses host attribution ${references.length} times across ${affectedSegmentCount} ${segmentLabel}. `
+    + "Review every public-field occurrence and confirm that the matched Clark or Clarke refers to the host before changing it. Each segment already has sourcePath and evidence, so the public prose does not need the host's name for provenance. In a solo-speaker episode, remove routine host reidentification and write the subject naturally. In a multi-speaker episode, retain attribution that distinguishes the speakers or identifies a quotation. Preserve other people named Clark or Clarke.";
+  return [
+    {
+      ...baseFinding(
+        file,
+        video.videoId,
+        first.segmentId,
+        first.segmentStart,
+        first.segmentIndex,
+        first.segmentKind,
+        first.field,
+        hostAttributionRuleId,
+        "review",
+        first.match,
+        first.text,
+        first.characterStart,
+        guidance,
+        false,
+      ),
+      occurrenceCount: references.length,
+      affectedSegmentCount,
+      repeatedSegmentCount,
+    },
+  ];
 }
 
 function fuzzyFindings(
@@ -436,6 +534,7 @@ function fuzzyFindings(
             text,
             first.start,
             fuzzyGuidance,
+            false,
           ),
           similarity: roundedScore(score),
           referencePhrase: reference.phrase,
@@ -490,7 +589,9 @@ function baseFinding(
   text: string,
   characterStart: number,
   guidance: string,
+  unconditionalError: boolean,
 ): SiteContentWordingFinding {
+  const excerpt = excerptAround(text, characterStart, match.length);
   return {
     file,
     videoId,
@@ -501,11 +602,18 @@ function baseFinding(
     field,
     ruleId,
     confidence,
-    match,
-    excerpt: excerptAround(text, characterStart, match.length),
+    unconditionalError,
+    match: safeDiagnosticText(match),
+    excerpt: safeDiagnosticText(excerpt),
     guidance,
     characterStart,
   };
+}
+
+function safeDiagnosticText(value: string): string {
+  return value
+    .replace(/\u2013/gu, "\\u2013")
+    .replace(/\u2014/gu, "\\u2014");
 }
 
 function wordTokens(text: string): WordToken[] {

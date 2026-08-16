@@ -15,6 +15,11 @@ const shardWorkflowPaths = [
   ".agents/site-content-auditor.md",
 ] as const;
 
+const soloSpeakerGuidancePaths = [
+  "AGENTS.md",
+  ...shardWorkflowPaths,
+] as const;
+
 const companionGuidancePaths = [
   "AGENTS.md",
   "README.md",
@@ -147,6 +152,42 @@ test("curator and auditor guidance keep shard scope and finalization order", asy
     /Append this result line for every completed selected-file audit[^.]{0,220}unchanged[^.]{0,160}saturated[^.]{0,160}intentionally empty/iu,
     "the auditor must append for every completed selected-file audit result",
   );
+});
+
+test("curation guidance drops redundant host attribution in solo-speaker shards", async () => {
+  for (const relativePath of soloSpeakerGuidancePaths) {
+    const guidance = await readGuidance(relativePath);
+
+    assert.match(
+      guidance,
+      /sourcePath[^.]{0,100}evidence/iu,
+      `${relativePath} must rely on the segment's explicit provenance fields`,
+    );
+    assert.match(
+      guidance,
+      /solo-speaker[^.]{0,220}(?:drop|contain no|clear|eliminate)/iu,
+      `${relativePath} must drop routine host attribution in solo-speaker content`,
+    );
+    assert.match(
+      guidance,
+      /host-attribution/iu,
+      `${relativePath} must name the scoped wording-review rule`,
+    );
+    assert.match(
+      guidance,
+      /other people named Clark or Clarke/iu,
+      `${relativePath} must preserve other people who share the host's surname`,
+    );
+    assert.doesNotMatch(
+      guidance,
+      /preserve speaker attribution whenever/iu,
+      `${relativePath} must not blanket-preserve speaker attribution`,
+    );
+  }
+
+  const humanizer = await readGuidance(".agents/skills/humanizer/SKILL.md");
+  assert.match(humanizer, /Redundant Source or Speaker Attribution/u);
+  assert.match(humanizer, /single-source context[^.]{0,120}drop it/iu);
 });
 
 test("topic creation guidance keeps descriptions blank and preserves manual text", async () => {

@@ -25,8 +25,8 @@
         "naval-gunnery",
         "naval-simulations"
       ],
-      "summary": "A ship-design exercise frames the scout cruiser as a destroyer counter, balancing six-inch and four-inch guns, torpedoes, weight, and speed.",
-      "body": "Dr. Clarke uses a naval design simulation to make the scout-cruiser problem tangible. The proposed cruiser combines six-inch guns with a larger battery of smaller weapons intended to fire rapidly against destroyers. Torpedoes provide another attack option, but every mounting competes for space and weight. He repeatedly adjusts the hull, funnels, mast, and gun positions because the design tool will not always permit the symmetrical layout he wants. The exercise shows how a seemingly modest armament change can force a wider reconsideration of displacement, arrangement, and performance.",
+      "summary": "A ship-design exercise turns the scout cruiser into a practical destroyer-fighting problem involving guns, torpedoes, weight, arrangement, and speed.",
+      "body": "The design starts with four six-inch and four four-inch guns, then tests whether more small guns can fit. Torpedoes add another attack option, while each weapon and funnel consumes space and weight. The mast and gun positions resist the desired symmetry, so the hull and arrangement change around the design tool's limits. Even a modest armament change can alter displacement, balance, and performance.",
       "sourcePath": "src/transcripts/txt/2022-01-29_T11-00-20_scout-cruisers-and-conning-towers-a-uad-infused-discussion-long-patrol_NIpZjYf3r9c.txt",
       "evidence": [
         {
@@ -50,8 +50,8 @@
         "naval-architecture",
         "scout-cruisers"
       ],
-      "summary": "The design session shows how machinery capacity, funnels, armour, stability, and hull weight constrain a cruiser’s achievable speed.",
-      "body": "Adding speed is not simply a matter of asking for more horsepower. The design can reach about 31 knots before the weight required for further gains becomes severe, and 32 knots forces another round of sacrifices. Funnel capacity and forced-draught boilers add their own weight, while armour thickness and fore-and-aft balance limit what remains available. Dr. Clarke therefore settles on a six-thousand-ton cruiser that is more protected than the lightly built historical scouts he calls \"eggshells.\" The resulting ship is useful precisely because its speed, protection, machinery, and armament have been treated as one connected design problem rather than independent specifications.",
+      "summary": "Machinery capacity, funnels, armour, fore-and-aft balance, and hull weight constrain the speed that the cruiser can achieve.",
+      "body": "More horsepower alone does not solve the speed problem. The design reaches about 31 knots before the additional machinery weight rises sharply, while 32 knots demands further cuts elsewhere. Funnel capacity and forced-draught boilers consume weight, and armour plus fore-and-aft balance narrow the remaining options. The result is a 6,000-ton cruiser with better protection than the lightly built scout cruisers described as \"eggshells.\" Speed, protection, machinery, and armament have to be balanced together because changing one alters the rest.",
       "sourcePath": "src/transcripts/txt/2022-01-29_T11-00-20_scout-cruisers-and-conning-towers-a-uad-infused-discussion-long-patrol_NIpZjYf3r9c.txt",
       "evidence": [
         {
@@ -65,7 +65,7 @@
       "id": "gun-position-firing-arc-motion-accuracy",
       "videoId": "NIpZjYf3r9c",
       "slug": "gun-position-firing-arc-motion-accuracy",
-      "title": "Gun position trades firing arc against motion",
+      "title": "A gun's position trades firing arc against motion",
       "kind": "notable_point",
       "start": "13:18",
       "end": "13:45",
@@ -75,8 +75,8 @@
         "naval-gunnery",
         "fire-control"
       ],
-      "summary": "Moving a gun can improve its firing arc, but a position nearer the ship's centre reduces motion and may improve the chance of hitting targets within that arc.",
-      "body": "A gun mounting's position affects more than whether it physically fits. Moving it outward can open a better field of fire, but the weapon then experiences more of the ship's motion. Placing it nearer the centre reduces that movement and can improve the likelihood of hitting any target the gun can bear on. This short design aside connects arrangement, seakeeping, and practical gunnery instead of treating deck space as the only constraint.",
+      "summary": "Moving a gun can improve its firing arc, while a position nearer the ship's centre reduces motion and may improve accuracy within that arc.",
+      "body": "A gun mounting's position affects whether it can bear on a target and how much motion it experiences. Moving it outward can open a better field of fire, but the weapon then travels through more of the ship's movement. Placing it nearer the centre reduces that motion and may improve the chance of hitting any target within its arc. Deck arrangement therefore shapes practical gunnery alongside the basic question of whether a mounting fits.",
       "sourcePath": "src/transcripts/txt/2022-01-29_T11-00-20_scout-cruisers-and-conning-towers-a-uad-infused-discussion-long-patrol_NIpZjYf3r9c.txt",
       "evidence": [
         {
@@ -99,10 +99,11 @@
         "destroyers",
         "naval-doctrine",
         "torpedoes",
-        "naval-gunnery"
+        "naval-gunnery",
+        "fire-control"
       ],
-      "summary": "Scout cruisers are presented as close-range destroyer counters: draw or evade torpedoes, then use rapid gunfire to keep destroyers away from battleships.",
-      "body": "The preferred fight is a gun duel, not an exchange of torpedoes. A scout cruiser wants enemy destroyers to expend their torpedoes against another target or miss the cruiser during its approach. It can then close far enough for its manually aimed, fast-firing weapons to become decisive. The cruiser's purpose is to prevent the destroyers from reaching torpedo range of the battleships, so merely trading inaccurate fire at long range does not complete the escort task. A six-inch hit may cause serious damage, but the small and manoeuvrable target still has to be stopped quickly enough to protect the battle line.",
+      "summary": "Scout cruisers use rapid gunfire at close range after destroyers expend or miss with their torpedoes, keeping the attackers away from the battle line.",
+      "body": "The scout cruisers lack the sophisticated sighting gear of the larger battleships and rely on manually aimed, fast-firing guns at short range. Their preferred fight is a gun duel after the destroyers have spent their torpedoes on another target or missed during the approach. The cruisers then close until their fire can stop the attackers quickly. Their escort role is to keep destroyers outside torpedo range of the battleships, so exchanging inaccurate fire from a distance leaves the task unfinished. Even with better fire control, a cruiser faces a small, manoeuvrable target. A six-inch hit may do severe damage, but first it has to land. The simulation's fall-of-shot model is judged better than many alternatives, yet the action still shows why nominal gun range is a poor guide to effective kill range.",
       "sourcePath": "src/transcripts/txt/2022-01-29_T11-00-20_scout-cruisers-and-conning-towers-a-uad-infused-discussion-long-patrol_NIpZjYf3r9c.txt",
       "evidence": [
         {
@@ -125,10 +126,11 @@
         "royal-navy",
         "naval-command",
         "ship-design",
-        "world-war-i"
+        "world-war-i",
+        "type-23-frigate"
       ],
-      "summary": "The Royal Navy’s conning towers increasingly became hardened positions rather than heavily armoured command centres, because close fighting still depended on what officers could see.",
-      "body": "A conning tower could protect a command team to a degree, but it could not be armoured against equivalent incoming fire without imposing a serious design penalty. Royal Navy designs therefore increasingly treated it as a hardened space rather than an invulnerable command centre. Dr. Clarke contrasts it with a modern combat information centre, where electronic sensors and displays can carry a battle picture from beyond visual range. He notes that even a modern Type 23 frigate's crew moves to the bridge when handling a close encounter because human vision remains valuable for tracking a nearby ship. In early twentieth-century action, that visual dependence was greater still, making an enclosed armoured box a poor substitute for a command position with a clear view. The conning tower could sound persuasive as a Victorian promise to protect senior officers, yet prove much less useful in the conditions where those officers actually had to fight the ship.",
+      "summary": "Royal Navy conning towers increasingly became hardened positions instead of heavily armoured command centres because close fighting depended on what officers could see.",
+      "body": "An armoured conning tower could protect a command team, but armour thick enough to resist equivalent fire imposed a serious design penalty. Royal Navy designs increasingly treated the tower as a hardened space instead of an invulnerable command centre. A modern combat information centre can receive a battle picture through sensors and displays when combat occurs beyond visual range. At close range, direct sight still matters. A television example, tentatively identified as HMS Northumberland, shows a Type 23 frigate's team on the bridge during an encounter with a Russian spy ship. Early twentieth-century ships depended even more heavily on the human eye, so an enclosed armoured box could obstruct the command work it was meant to protect. The idea sounded persuasive as a Victorian promise to shield senior officers, but it worked poorly when they needed an unobstructed view.",
       "sourcePath": "src/transcripts/txt/2022-01-29_T11-00-20_scout-cruisers-and-conning-towers-a-uad-infused-discussion-long-patrol_NIpZjYf3r9c.txt",
       "evidence": [
         {
@@ -142,7 +144,7 @@
       "id": "visual-range-and-the-kill-position",
       "videoId": "NIpZjYf3r9c",
       "slug": "visual-range-and-the-kill-position",
-      "title": "Range is not the same as a firing solution",
+      "title": "A firing solution depends on position as well as range",
       "kind": "notable_point",
       "start": "30:45",
       "end": "32:32",
@@ -150,10 +152,11 @@
         "naval-doctrine",
         "naval-gunnery",
         "torpedoes",
-        "world-war-i"
+        "world-war-i",
+        "naval-simulations"
       ],
-      "summary": "The engagement illustrates why a ship can be within nominal gun or torpedo range yet still lack the position needed to hit effectively.",
-      "body": "The decisive question is not just weapon range but whether a ship has reached a workable firing position. A destroyer can be close enough for its torpedoes while still lacking the angle and track needed for a good solution. The French destroyers fail because they never establish that solution before expending their weapons, whereas the cruisers can continue closing to improve their gunfire. Dr. Clarke also separates the simulation's forced finish from a plausible historical choice: the surviving 30-knot destroyer would probably have withdrawn once its companions were lost. The example turns nominal range, tactical position, and the ability to disengage into separate problems rather than treating them as one measure.",
+      "summary": "The simulated engagement shows how a ship can be within nominal gun or torpedo range while still lacking the position needed to hit effectively.",
+      "body": "Weapon range alone does not determine whether a ship can hit. A destroyer may be close enough to launch torpedoes while lacking the angle and track for a good solution, and cruisers can be in gun range before their fire becomes effective. In the simulation, the French destroyers expend their weapons without reaching a useful torpedo position, while the cruisers keep closing for better gunfire. The forced finish differs from likely wartime behaviour: the surviving 30-knot destroyer probably would have withdrawn after its companions were lost. Nominal range, firing position, and the freedom to disengage are separate tactical problems.",
       "sourcePath": "src/transcripts/txt/2022-01-29_T11-00-20_scout-cruisers-and-conning-towers-a-uad-infused-discussion-long-patrol_NIpZjYf3r9c.txt",
       "evidence": [
         {
@@ -178,8 +181,8 @@
         "north-sea",
         "world-war-i"
       ],
-      "summary": "The game is useful for illustrating tactics, but its heavily built destroyers, calm seas, and generous cruiser accuracy make the action less punishing than a North Sea fight would have been.",
-      "body": "Dr. Clarke pauses the scenario to identify where its model should not be mistaken for a literal reconstruction. The destroyers are more heavily built than their historical counterparts and may even carry armour, allowing them to absorb punishment that speed was normally meant to help them avoid. The simulated sea is also comparatively calm, whereas North Sea waves could hide a destroyer and make visual tracking harder even at short distances. He therefore argues that a cruiser would need to close further to guarantee a kill. He also judges the game's cruiser-gun accuracy too high beyond roughly four kilometres, especially against a small target, while allowing that fire against an equivalent or larger ship might be different. These caveats preserve the scenario's tactical lesson without presenting every game mechanic as historical evidence.",
+      "summary": "The game's heavily built destroyers, calm seas, and generous cruiser accuracy make the action less punishing than a North Sea fight would have been.",
+      "body": "The scenario exaggerates how much punishment its destroyers can absorb. They are more heavily built than their historical counterparts and may carry armour, although real destroyers often depended on speed for survival. The simulated sea is unusually calm, while North Sea waves could hide a destroyer and complicate visual tracking even at short range. A cruiser would therefore need to close further to make a kill likely. Cruiser accuracy also appears too high beyond about four kilometres against a small target, though fire against an equal or larger ship may behave differently. These caveats keep the tactical experiment useful without treating its mechanics as historical evidence.",
       "sourcePath": "src/transcripts/txt/2022-01-29_T11-00-20_scout-cruisers-and-conning-towers-a-uad-infused-discussion-long-patrol_NIpZjYf3r9c.txt",
       "evidence": [
         {
@@ -202,8 +205,8 @@
         "ship-design",
         "naval-command"
       ],
-      "summary": "The closing judgment is that conning towers consumed weight and money without providing enough practical advantage in the kind of close action being discussed.",
-      "body": "The video concludes that the conning tower's theoretical protection did not justify its cost. In the simulated action, even a three-inch-protected conning tower is only partly effective against three-inch and five-inch gunfire. Its value was especially doubtful when commanders needed good visual awareness at close range rather than shelter inside an armoured enclosure. Weight and money spent on the tower therefore bought protection that could interfere with the command function it was meant to preserve. The broader design lesson is to judge protective features against the actual demands of command and combat, not against their appeal on paper.",
+      "summary": "The closing assessment is that conning towers consumed weight and money without providing enough practical advantage in close action.",
+      "body": "In the scenario, even a tower with three inches of protection is only about 50 percent effective against three-inch and five-inch gunfire. Its value is especially doubtful when officers need a clear view at close range instead of shelter inside an armoured enclosure. The tower's weight and cost can therefore interfere with the command function it is meant to preserve. The value of such protection depends on the actual demands of command and combat.",
       "sourcePath": "src/transcripts/txt/2022-01-29_T11-00-20_scout-cruisers-and-conning-towers-a-uad-infused-discussion-long-patrol_NIpZjYf3r9c.txt",
       "evidence": [
         {
