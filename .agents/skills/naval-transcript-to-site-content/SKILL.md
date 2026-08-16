@@ -19,6 +19,7 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` when converting
 6. Read `.agents/skills/naval-transcript-to-site-content/references/segment-seed-schema.md` before changing the selected shard.
 7. Check `src/derived/site-content-processing.config.json` for first-pass content policy, video-type defaults, follow-up stages, and topic grouping guidance.
 8. Read `src/derived/topic-normalization-patterns.tsv` before evaluating or changing topic arrays. Treat the catalog as read-only authored policy.
+9. Read `.agents/skills/humanizer/SKILL.md` completely. Reserve its embedded-mode rewrite loop for the final public-wording pass below.
 
 ## Site Intent
 
@@ -49,6 +50,18 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` when converting
 15. Use a `fiction-...` slug when the topic referent exists only inside a fictional work, including fictional vessels, people, factions, events, technologies, and in-universe systems. Do not put counterfactual real history, real proposed or unbuilt designs, possible future systems, or genre/format topics in that namespace. When Dr. Clarke uses fiction to explain a real-world point, tag both the fictional referent and the ordinary transcript-backed doctrine, engineering, logistics, institutional, or other concepts it illustrates.
 
 Public fields must not expose workflow status. Do not put "first pass", "later extraction", "processing", "curation", "search metadata", "source window", "evidence window", "seed", "prototype", or "this segment exists to..." language in `title`, `summary`, `body`, `question`, or `answerShort` when it describes the site or content pipeline. The same words are allowed when the related transcript specifically uses them in the same subject-matter sense, such as warship prototypes, electoral first-past-the-post discussion, or data processing. Put incomplete-work status in the processing log or handoff. Segment `body` should normally be 4-10 substantive sentences, especially for `chapter` and `notable_point` records, with concrete transcript-backed detail rather than a one-line label.
+
+## Final Public-Wording Pass
+
+After all transcript-backed content and topic decisions are complete, and before writing and validating the canonical shard:
+
+1. Apply `$humanizer` in embedded mode. Run its draft, audit, and final loop internally, then use only the final rewrite in the shard. Do not place Humanizer draft text, audit bullets, or a separate Humanizer summary in the JSON, processing log, or handoff.
+2. Apply Humanizer only to string values in `title`, `summary`, `body`, `question`, and `answerShort`, including video-level and segment-level occurrences. Use a neutral reference and study-guide voice. Leave clean wording unchanged when no clustered AI-writing pattern warrants a rewrite.
+3. Treat the transcript and this naval-content skill's evidence-preservation instructions as higher priority than generic Humanizer defaults. Preserve every transcript-backed claim, attribution, proper noun, date, number, technical list, qualification, uncertainty, caveat, limitation, and real-history-versus-scenario distinction.
+4. Preserve speaker attribution whenever a statement expresses interpretation, judgment, prediction, recommendation, humor, uncertainty, or caution. Do not turn attributed analysis into an unqualified statement of fact.
+5. During this wording phase, leave identifiers, slugs, kinds, starts, ends, timestamps, topics, `sourcePath`, evidence, key order, array order, JSON structure, and all other fields unchanged. Do not rewrite existing processing-log text. Required finalization may append its one new row after the checks succeed.
+6. Review the fields one at a time and recheck every rewrite against its cited transcript passage. Check video-level `title` and `summary` wording against the full transcript and the evidence supporting its segments. Reject or revise wording that adds, removes, strengthens, weakens, or reattributes a claim.
+7. Write the final field values, then perform canonical shard validation, the scoped wording check, topic synchronization, and processing-log finalization in the required order below.
 
 ## Shared-Output Finalization
 

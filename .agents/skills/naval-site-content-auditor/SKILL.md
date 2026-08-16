@@ -29,6 +29,7 @@ This audit is repeatable. A prior first, second, third, or later pass is not evi
 4. Treat `src/derived/video-segments/` as the source for public segment wording. Treat the shards under `site/src/data/generated/archive/` as generated output.
 5. Preserve every other shard and all generated outputs. The deterministic topic synchronizer described below is the only permitted shared-source writer.
 6. Read `src/derived/topic-normalization-patterns.tsv` before evaluating the selected shard's topic arrays. Treat the catalog as read-only authored policy.
+7. Read `.agents/skills/humanizer/SKILL.md` completely. Reserve its embedded-mode rewrite loop for the final public-wording pass below.
 
 ## Transcript Read Safety
 
@@ -64,6 +65,18 @@ This audit is repeatable. A prior first, second, third, or later pass is not evi
 4. Keep video-level topics as a concise summary subset of the richer segment-level topics. Resolve active creation rules before the canonical write. Treat review, ambiguous, or synchronization failures caused by the selected shard as blockers to finalization rather than leaving them for another process; do not widen the audit into unrelated corpus taxonomy maintenance.
 5. Put referents that exist only inside fictional works under `fiction-...`, including fictional vessels, people, factions, events, technologies, and in-universe systems. Keep counterfactual real history, real proposed or unbuilt designs, possible future systems, and genre/format topics outside that namespace. If the fictional example illustrates a real-world point, retain both its `fiction-...` topic and the ordinary transcript-backed topics for the real doctrine, engineering, logistics, institution, or other lesson.
 6. Treat the audit as iterative rather than terminal. On each content-exhaustion review, independently compare the full transcript against the current shard instead of reviewing only previously selected windows. Leave precise follow-up targets for thin or under-extracted ranges. Stop repeating the same model and effort when a pass produces churn without new transcript-backed substance, but keep the transcript eligible for a future review under a materially stronger configuration or improved method.
+
+## Final Public-Wording Pass
+
+After all transcript-backed content and topic decisions are complete, and before writing and validating the canonical shard:
+
+1. Apply `$humanizer` in embedded mode. Run its draft, audit, and final loop internally, then use only the final rewrite in the shard. Do not place Humanizer draft text, audit bullets, or a separate Humanizer summary in the JSON, processing log, or handoff.
+2. Apply Humanizer only to string values in `title`, `summary`, `body`, `question`, and `answerShort`, including video-level and segment-level occurrences. Use a neutral reference and study-guide voice. Leave clean wording unchanged when no clustered AI-writing pattern warrants a rewrite.
+3. Treat the transcript and this naval-content skill's evidence-preservation instructions as higher priority than generic Humanizer defaults. Preserve every transcript-backed claim, attribution, proper noun, date, number, technical list, qualification, uncertainty, caveat, limitation, and real-history-versus-scenario distinction.
+4. Preserve speaker attribution whenever a statement expresses interpretation, judgment, prediction, recommendation, humor, uncertainty, or caution. Do not turn attributed analysis into an unqualified statement of fact.
+5. During this wording phase, leave identifiers, slugs, kinds, starts, ends, timestamps, topics, `sourcePath`, evidence, key order, array order, JSON structure, and all other fields unchanged. Do not rewrite existing processing-log text. Required finalization may append its one new row after the checks succeed.
+6. Review the fields one at a time and recheck every rewrite against its cited transcript passage. Check video-level `title` and `summary` wording against the full transcript and the evidence supporting its segments. Reject or revise wording that adds, removes, strengthens, weakens, or reattributes a claim.
+7. Write the final field values, then perform canonical shard validation, the scoped wording check, topic synchronization, and processing-log finalization in the required order below.
 
 ## Shared-Output Boundary
 
