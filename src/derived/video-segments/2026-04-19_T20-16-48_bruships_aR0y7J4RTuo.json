@@ -27,7 +27,9 @@
     "world-war-i",
     "imperial-german-navy",
     "world-war-ii",
-    "kriegsmarine"
+    "kriegsmarine",
+    "healthcare-systems",
+    "tornado-outbreaks"
   ],
   "segments": [
     {
@@ -41,9 +43,12 @@
         "naval-weapons",
         "naval-gunnery",
         "battleships",
-        "ship-design"
+        "ship-design",
+        "16-inch-guns",
+        "18-inch-guns",
+        "armour-penetration"
       ],
-      "body": "The discussion argues that moving from a 16-inch to an 18-inch gun imposes substantial weight and complexity for a limited general return. The larger caliber becomes worthwhile mainly when unusually high armor penetration is the decisive requirement. This short watch point captures the design tradeoff behind choosing a maximum-caliber battleship weapon rather than treating a larger shell as an automatic improvement.",
+      "body": "An 18-inch naval gun adds considerable weight and complexity over a 16-inch weapon. The larger shell does not offer enough general improvement to justify those penalties in most designs. Armor penetration is the main circumstance in which the larger caliber becomes worthwhile. The tradeoff shows why maximum gun size must be judged against the cost imposed on the whole ship.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T20-16-48_bruships_aR0y7J4RTuo.txt",
       "evidence": [
         {
@@ -58,7 +63,7 @@
         }
       ],
       "kind": "notable_point",
-      "summary": "The restarted stream opens with a compact comparison of 16-inch and 18-inch naval guns, emphasizing weight, complexity, and armor penetration."
+      "summary": "An 18-inch gun offers limited general gain over a 16-inch weapon once weight and complexity are counted; armor penetration is the main exception."
     },
     {
       "id": "bruships-restart-pahlavi-iranian-navy",
@@ -72,9 +77,14 @@
         "modern-navy",
         "naval-procurement",
         "japanese-navy",
-        "destroyers"
+        "destroyers",
+        "pahlavi-iran",
+        "iranian-navy",
+        "type-209-submarines",
+        "kilo-class-submarines",
+        "arleigh-burke-class-destroyers"
       ],
-      "body": "The answer treats continued Pahlavi rule as a procurement path toward a dominant Middle Eastern military rather than a modest local navy. Dr. Clarke suggests Iran might keep buying advanced systems, including submarines and perhaps Japanese-built ships that push Arleigh Burke-derived ideas further. The useful naval point is how a wealthy regional power could concentrate money into a few unusually capable surface combatants instead of buying a very large fleet.",
+      "body": "Continued Pahlavi rule is presented as a path toward the strongest military in the Middle East. Iran would probably keep buying advanced systems, including Type 209 and Kilo-class submarines and possibly Japanese-built surface combatants. The Japanese example matters because a small production run can concentrate money on capabilities that the United States might omit from a much larger Arleigh Burke programme. The counterfactual therefore produces a compact, heavily armed regional navy rather than a large fleet.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T20-16-48_bruships_aR0y7J4RTuo.txt",
       "evidence": [
         {
@@ -89,9 +99,9 @@
         }
       ],
       "kind": "qa",
-      "summary": "A Bruships answer uses a Pahlavi Iran counterfactual to discuss regional naval procurement, submarines, and high-end destroyer design.",
+      "summary": "A wealthy Pahlavi Iran might concentrate naval spending on advanced submarines and a small number of high-end Japanese surface combatants.",
       "question": "How would the Iranian navy look in 2000 if the Pahlavi regime had remained in power?",
-      "answerShort": "The answer imagines a very heavily armed regional force, potentially buying advanced submarines and high-end Japanese-style surface combatants."
+      "answerShort": "It would probably be the strongest regional force, with advanced submarines and a small number of very capable Japanese-style surface combatants."
     },
     {
       "id": "bruships-restart-vls-cell-thresholds",
@@ -107,7 +117,7 @@
         "naval-weapons",
         "vertical-launch-systems"
       ],
-      "body": "The discussion treats missile capacity as a visible marker of how modern frigates and destroyers are judged. Light frigates are described as moving toward at least 32 VLS cells, heavier frigates toward 48 or more, and destroyers toward much larger loads. The answer also notes the practical packaging problem: VLS modules come in multiples of eight, so a desired headline number may not match the way launch cells are actually installed. An 80-cell destroyer is described as carrying a serious combat load, while Dr. Clarke would prefer at least 96 cells in a three-by-four module arrangement.",
+      "body": "Modern frigates and destroyers are increasingly judged by missile capacity. Light frigates are described as moving toward at least 32 VLS cells, heavier frigates toward 48 or more, and destroyers toward much larger loads. VLS modules come in multiples of eight, so desired headline numbers must fit the way cells are installed. An 80-cell destroyer is treated as a serious combat load, with 96 cells in a three-by-four module arrangement given as the preferred configuration.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T20-16-48_bruships_aR0y7J4RTuo.txt",
       "evidence": [
         {
@@ -122,7 +132,7 @@
         }
       ],
       "kind": "notable_point",
-      "summary": "A chat exchange frames modern surface-combatant categories around rising vertical-launch-system expectations."
+      "summary": "Modern surface-combatant categories are linked to rising VLS expectations, from 32-cell light frigates to destroyers carrying 80 or 96 cells."
     },
     {
       "id": "bruships-restart-kaiser-liberty-ship-benefits",
@@ -135,9 +145,14 @@
         "shipbuilding",
         "naval-logistics",
         "industrial-mobilisation",
-        "world-war-ii"
+        "world-war-ii",
+        "henry-j-kaiser",
+        "liberty-ships",
+        "kaiser-permanente",
+        "employer-provided-health-insurance",
+        "wartime-wage-controls"
       ],
-      "body": "Dr. Clarke connects Kaiser Permanente to industrialist Henry J. Kaiser and his mass production of Liberty ships during the Second World War. With wartime wage limits restricting direct pay competition, Kaiser could attract scarce workers by offering health insurance as an employment benefit. The passage shows how shipbuilding mobilization depended on labor policy and workforce support as well as yards, steel, and standardized hulls.",
+      "body": "Kaiser Permanente takes its name from industrialist Henry J. Kaiser, whose yards mass-produced Liberty ships during the Second World War. Wartime wage limits kept employers from competing freely through direct pay. Kaiser instead used health insurance as an employment benefit to attract scarce workers. Mass shipbuilding therefore depended on labour policy and workforce support alongside yards, steel, and standardised hulls.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T20-16-48_bruships_aR0y7J4RTuo.txt",
       "evidence": [
         {
@@ -152,7 +167,74 @@
         }
       ],
       "kind": "notable_point",
-      "summary": "A discussion of wartime health systems links Henry Kaiser's Liberty-ship yards to employer-provided health insurance as a tool for recruiting workers under wage controls."
+      "summary": "Henry Kaiser's Liberty-ship yards used employer-provided health insurance to recruit workers when wartime wage controls restricted pay competition."
+    },
+    {
+      "id": "bruships-restart-healthcare-system-path-dependence",
+      "videoId": "aR0y7J4RTuo",
+      "slug": "bruships-restart-healthcare-system-path-dependence",
+      "title": "Health systems and institutional path dependence",
+      "start": "6:30",
+      "end": "8:15",
+      "topics": [
+        "healthcare-systems",
+        "healthcare-policy",
+        "national-health-service",
+        "public-private-finance-initiative"
+      ],
+      "body": "The panel rejects the idea that healthcare policy offers only a choice between the British and American systems. The National Health Service grew from Britain's own inherited institutions and political compromises, so its current form is not a universal template. Public-private finance partnerships are cited as an example of later governments shifting immediate costs into future obligations. The result is a system shaped by successive decisions instead of a design built from a clean slate.",
+      "sourcePath": "src/transcripts/txt/2026-04-19_T20-16-48_bruships_aR0y7J4RTuo.txt",
+      "evidence": [
+        {
+          "start": "6:38",
+          "end": "7:27",
+          "note": "The panel rejects treating British and American healthcare as the only two models and describes the NHS as a historically specific system that other countries need not copy."
+        },
+        {
+          "start": "7:45",
+          "end": "8:07",
+          "note": "The discussion uses public-private finance partnerships as an example of policy that deferred costs to later governments."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "British and American healthcare developed through different institutional histories, while the NHS and public-private finance partnerships show how earlier choices constrain later policy."
+    },
+    {
+      "id": "bruships-restart-nhs-wartime-consolidation",
+      "videoId": "aR0y7J4RTuo",
+      "slug": "bruships-restart-nhs-wartime-consolidation",
+      "title": "Wartime consolidation and the origins of the NHS",
+      "start": "8:20",
+      "end": "11:50",
+      "topics": [
+        "healthcare-systems",
+        "national-health-service",
+        "beveridge-report",
+        "world-war-ii",
+        "wartime-administration",
+        "rationing"
+      ],
+      "body": "Before the National Health Service, British healthcare came from a complicated mixture of charities and other institutions. The Second World War brought greater central coordination of health provision, much as police and fire services were consolidated for wartime administration. Much of that national structure remained after the war. The Beveridge Report of the early 1940s is named as one source for the postwar settlement under Labour. Continued rationing and the slow dismantling of wartime controls show why Britain did not receive an immediate peace dividend.",
+      "sourcePath": "src/transcripts/txt/2026-04-19_T20-16-48_bruships_aR0y7J4RTuo.txt",
+      "evidence": [
+        {
+          "start": "8:20",
+          "end": "9:34",
+          "note": "The panel describes the British system as a consolidation of inherited institutions and says both British and American healthcare arrangements responded to Second World War pressures."
+        },
+        {
+          "start": "10:14",
+          "end": "10:59",
+          "note": "The discussion traces the NHS to wartime rationalization of a patchwork of charities and institutions, comparing it with consolidation of police and fire services."
+        },
+        {
+          "start": "11:03",
+          "end": "11:50",
+          "note": "The speakers say wartime nationalization was not fully undone, cite the Beveridge Report, and note that rationing and wartime structures persisted into the postwar years."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "The NHS is traced through wartime consolidation of fragmented health services, the Beveridge Report, and the persistence of wartime administration after 1945."
     },
     {
       "id": "bruships-restart-trade-winds-sailing-routes",
@@ -167,9 +249,13 @@
         "age-of-sail",
         "naval-strategy",
         "maritime-navigation",
-        "battle-of-trafalgar"
+        "battle-of-trafalgar",
+        "trade-winds",
+        "aubrey-maturin-series",
+        "cape-of-good-hope",
+        "ushant"
       ],
-      "body": "The answer is a compact navigation lesson for readers used to steam or motor routes. Sailing ships had to work with winds and tides, so the most efficient passage could look indirect on a modern map. Predictable wind routes also created recurring interception zones rather than distributing encounters evenly across the ocean. Dr. Clarke points to Ushant and the Battle of Trafalgar as examples of fighting concentrated where the winds carried fleets.",
+      "body": "Age of Sail routing followed wind and tide, so the fastest passage could look indirect on a modern map. An Aubrey-Maturin voyage might cross toward South America before turning for the Cape of Good Hope because the trade winds made that route quicker. Predictable wind routes also concentrated ships in recurring interception zones. Ushant and Trafalgar are cited as examples of battles occurring where sailing conditions carried fleets and allowed enemies to wait for them.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T20-16-48_bruships_aR0y7J4RTuo.txt",
       "evidence": [
         {
@@ -189,9 +275,9 @@
         }
       ],
       "kind": "qa",
-      "summary": "A sailing-route Q&A explains why Age of Sail passages could cross the Atlantic twice on the way to the Cape.",
+      "summary": "Trade winds could make a double Atlantic crossing faster than the shorter-looking route down the African coast during the Age of Sail.",
       "question": "Why do Aubrey-Maturin sailing passages cross the Atlantic before heading for the Cape of Good Hope instead of staying near Africa?",
-      "answerShort": "The answer points to trade winds and currents: sail-era ships often followed the fastest wind route rather than the shortest-looking map route."
+      "answerShort": "Trade winds and currents could make a double Atlantic crossing faster than the shorter-looking route down the African coast."
     },
     {
       "id": "bruships-restart-invincible-speed-margin",
@@ -205,9 +291,14 @@
         "battlecruisers",
         "ship-design",
         "naval-doctrine",
-        "naval-tactics"
+        "naval-tactics",
+        "invincible-class-battlecruisers",
+        "lion-class-battlecruisers",
+        "hms-queen-mary",
+        "hms-tiger-1913",
+        "speed-advantage"
       ],
-      "body": "Speed as a control mechanism rather than just a specification. A one- or two-knot increase sharpens the contrast with German designs, which Dr. Clarke characterizes as closer to second-line battleships, but does not transform the Invincibles. A three- or four-knot margin lets the faster force choose the range and pace. If the Invincibles instead begin around 28 knots, roughly seven knots faster than the battle line, the advantage becomes large enough to dictate the whole gunnery engagement.",
+      "body": "Speed can control a gunnery engagement as well as define a ship's performance. A one- or two-knot increase would sharpen the contrast with German designs, described here as closer to second-line battleships, without transforming the Invincibles' tactical role. A three- or four-knot margin would let the faster force choose range and pace. Starting the Invincibles at about 28 knots, roughly seven knots faster than the battle line, would let them dictate the engagement far more completely.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T20-16-48_bruships_aR0y7J4RTuo.txt",
       "evidence": [
         {
@@ -222,9 +313,9 @@
         }
       ],
       "kind": "qa",
-      "summary": "A battlecruiser Q&A separates minor speed gains from the larger tactical effect of a seven-knot advantage over battleships.",
+      "summary": "A seven-knot margin over the battle line gives a battlecruiser far more tactical control than a one- or two-knot increase.",
       "question": "How much would faster Invincible, Lion, Queen Mary, and Tiger speeds change British battlecruiser design and tactics?",
-      "answerShort": "A small speed increase changes little, but a much larger margin over the battle line lets a battlecruiser force dictate range, pace, and engagement terms."
+      "answerShort": "One or two extra knots would change little. A much larger margin over the battle line would let a battlecruiser force dictate range, pace, and engagement terms."
     },
     {
       "id": "bruships-restart-seventy-cruisers-treaties",
@@ -242,7 +333,7 @@
         "washington-naval-treaty",
         "london-naval-treaty"
       ],
-      "body": "Dr. Clarke distinguishes between the Washington Treaty limits and later cruiser-number bargaining. Washington constrained the maximum size of an individual cruiser rather than imposing the simple fleet-number ceiling imagined by the prompt. The statutory floor would therefore bite more strongly during London-style negotiations, where Britain might insist on retaining 70 cruisers rather than fight for a new Act of Parliament. He suggests the compromise could allocate both Britain and the United States about 700,000 tons of cruisers, showing how domestic law could reshape international arms-limitation bargaining.",
+      "body": "A legal requirement to keep 70 Royal Navy cruisers would have limited effect on the Washington Treaty, which capped the size of individual cruisers rather than setting a simple fleet-number ceiling. The constraint becomes more important in later London negotiations over cruiser totals and tonnage. Britain could insist that any agreement preserve the statutory floor, since changing it would require another Act of Parliament. One possible bargain gives both Britain and the United States roughly 700,000 tons of cruisers, illustrating how domestic law could shape international arms control.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T20-16-48_bruships_aR0y7J4RTuo.txt",
       "evidence": [
         {
@@ -262,9 +353,9 @@
         }
       ],
       "kind": "qa",
-      "summary": "A treaty Q&A explores how a statutory Royal Navy cruiser floor could reshape interwar cruiser negotiations.",
+      "summary": "A statutory 70-cruiser floor would have mattered most in London-era tonnage bargaining, since Washington limited individual cruiser size.",
       "question": "If Britain wrote a legal requirement for 70 Royal Navy cruisers before the Washington system, how would that affect the naval treaties?",
-      "answerShort": "The answer argues Washington would not matter much for cruiser numbers, but London-style treaty bargaining would likely have to accommodate the 70-cruiser floor or force a new Act of Parliament."
+      "answerShort": "Washington would matter little for cruiser numbers. London-style bargaining would probably have to accommodate the 70-cruiser floor or force a new Act of Parliament."
     },
     {
       "id": "bruships-restart-carrier-strike-dominion-flagship",
@@ -282,9 +373,14 @@
         "royal-australian-navy",
         "royal-navy",
         "us-navy",
-        "force-structure"
+        "force-structure",
+        "wilhelmshaven",
+        "lexington-class-aircraft-carriers",
+        "carrier-flagships",
+        "dominion-navies",
+        "indian-ocean"
       ],
-      "body": "The answer is a caution about counterfactual naval planning. A carrier strike that ends World War I would change prestige, treaty politics, and procurement priorities across multiple fleets before the Australian carrier question even appears. A dominion carrier flagship would imply wider Royal Navy choices about carrier flag facilities and earlier experience for admirals commanding from flight decks. The same signal could prompt the United States to convert the entire Lexington class rather than completing any as battlecruisers. Dr. Clarke closes by noting that changed Royal Navy carrier and capital-ship deployments in the Indian Ocean would alter Japan's strategic problem before 1940, making a direct extrapolation unreliable.",
+      "body": "A carrier strike decisive enough to end the First World War would alter prestige, treaty politics, and procurement before the Australian carrier question arises. A dominion carrier flagship could imply wider Royal Navy policy, including flag facilities aboard carriers and earlier experience for admirals commanding from flight decks. The same signal might lead the United States to convert the entire Lexington class instead of completing some ships as battlecruisers. Royal Navy carriers and capital ships operating farther into the Indian Ocean would also change Japan's strategic problem. These cumulative changes make a direct forecast of Japanese planning in 1940 unreliable.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T20-16-48_bruships_aR0y7J4RTuo.txt",
       "evidence": [
         {
@@ -309,8 +405,8 @@
         }
       ],
       "kind": "qa",
-      "summary": "An alternate-history Q&A explains why an early carrier victory makes later Japanese planning hard to forecast.",
-      "question": "If World War I ended after a carrier strike on Wilhelmshaven and Australia later chose a carrier flagship, how much older would Japanese planning be by 1940?",
+      "summary": "An early carrier victory would reshape treaties and force structures too thoroughly for a clean forecast of Japanese plans in 1940.",
+      "question": "If World War I ended after a carrier strike on Wilhelmshaven and Australia later chose a carrier flagship, how much would Japanese planning have changed by 1940?",
       "answerShort": "The premise changes too much to extrapolate cleanly; carrier success would alter interwar treaties, British, Japanese, and American force structure, and dominion naval policy."
     },
     {
@@ -324,9 +420,12 @@
         "live-q-and-a",
         "steam-rams",
         "ship-design",
-        "naval-doctrine"
+        "naval-doctrine",
+        "ramming",
+        "steam-propulsion",
+        "crossbows"
       ],
-      "body": "The panel treats the scenario as one where ships might combine steam propulsion with archers, windlasses, and other non-gunpowder weapons. Steam-powered windlasses could make powerful crossbow-style weapons possible, but they would not remove the importance of closing with an enemy. In that world, the ability to drive a powered hull into an opponent becomes much more tactically important. The answer also keeps the engineering caveat in view: ramming is usually hard on both ships unless the rammer is deliberately built with a reinforced bow and forward structure.",
+      "body": "Steam propulsion before gunpowder would make closing and ramming central to naval combat. Ships could use archers and steam-powered windlasses for powerful crossbow-style weapons, but those systems would not remove the need to reach an enemy hull. Powered ships could strike with more control and force than sail alone allowed. Ramming remains dangerous to both vessels, so a purpose-built ram would need a reinforced bow and forward structure to absorb the impact.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T20-16-48_bruships_aR0y7J4RTuo.txt",
       "evidence": [
         {
@@ -346,7 +445,7 @@
         }
       ],
       "kind": "qa",
-      "summary": "A technology counterfactual uses pre-gunpowder steam warships to explain why ramming depends on propulsion, hull strength, and available weapons.",
+      "summary": "Pre-gunpowder steam warships make ramming a central tactic, provided their bows and forward structures can absorb the impact.",
       "question": "If steam power appeared on warships before gunpowder, would ramming become dominant?",
       "answerShort": "Probably yes: without gunpowder weapons, powered hulls would make ramming and reinforced bows much more important."
     },
@@ -364,7 +463,7 @@
         "rules-of-engagement",
         "flag-state-jurisdiction"
       ],
-      "body": "The answer avoids treating shipboard guards as a simple equipment choice. Dr. Clarke points to overlapping legal regimes: the ship's flag state, the nationality of the hirer, the security personnel's home countries, civil liability, and rules of engagement. Commercial anti-piracy security therefore requires extensive paperwork, preparation, and a clear understanding of who could prosecute or sue after an incident. The panel also warns that the ship's crew may interpret an armed team's actions differently, adding an operational complication to the jurisdictional problem.",
+      "body": "Armed merchant security depends on overlapping legal systems before any weapon is used. The relevant rules may come from the ship's flag state, the nationality of the company hiring the guards, the guards' home countries, civil liability, and the team's rules of engagement. Companies therefore need extensive paperwork and preparation to establish who could prosecute or sue after an incident. Crew members may also interpret an armed team's actions differently, creating an operational problem alongside the jurisdictional one.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T20-16-48_bruships_aR0y7J4RTuo.txt",
       "evidence": [
         {
@@ -384,9 +483,49 @@
         }
       ],
       "kind": "qa",
-      "summary": "A maritime-security Q&A explains why armed ship security is a legal and jurisdictional problem before it is a weapons problem.",
+      "summary": "Armed ship security depends on overlapping jurisdictions, rules of engagement, civil liability, and crew reactions.",
       "question": "What legal issues arise when arming ships, starting with security teams?",
-      "answerShort": "The issue turns on jurisdiction, flag state, hiring nationality, rules of engagement, and how any incident might be prosecuted or sued over."
+      "answerShort": "Jurisdiction, flag state, hiring nationality, rules of engagement, and civil liability determine how an incident might be prosecuted or sued over."
+    },
+    {
+      "id": "bruships-restart-france-tornado-schlieffen-plan",
+      "videoId": "aR0y7J4RTuo",
+      "slug": "bruships-restart-france-tornado-schlieffen-plan",
+      "title": "A 1912 tornado disaster and French war readiness",
+      "start": "30:46",
+      "end": "33:18",
+      "topics": [
+        "alternate-history",
+        "tornado-outbreaks",
+        "france",
+        "world-war-i",
+        "schlieffen-plan",
+        "disaster-relief",
+        "military-mobilisation"
+      ],
+      "body": "The counterfactual assumes a 2011 Missouri-scale tornado outbreak reaches France in 1912 and possibly affects other parts of Europe. France would turn inward toward relief and reconstruction, leaving it distracted before the First World War. The same emergency might already have mobilised large parts of the armed forces for disaster work, creating a competing effect on readiness. Germany's Schlieffen Plan remains the fixed strategic problem because its route through Belgium does not depend on France recovering first. The panel also speculates that the Pyrenees, Alps, and Irish high ground could disrupt the weather system; those geographical effects are scenario assumptions, not recorded history.",
+      "sourcePath": "src/transcripts/txt/2026-04-19_T20-16-48_bruships_aR0y7J4RTuo.txt",
+      "evidence": [
+        {
+          "start": "30:46",
+          "end": "31:51",
+          "note": "The prompt proposes a 2011 Missouri-scale tornado outbreak in France in 1912, and the panel says France would panic and become inward-looking during recovery."
+        },
+        {
+          "start": "31:55",
+          "end": "32:27",
+          "note": "The answer keeps the Schlieffen Plan in place and contrasts a France weakened by recovery with one whose armed forces may already be mobilized for disaster relief."
+        },
+        {
+          "start": "32:38",
+          "end": "33:18",
+          "note": "The panel speculates about Ireland, the Pyrenees, and the Alps breaking up the hypothetical weather system."
+        }
+      ],
+      "kind": "qa",
+      "summary": "A 1912 tornado disaster could leave France consumed by recovery while also mobilising troops for relief before Germany executes the Schlieffen Plan.",
+      "question": "What would happen if a tornado outbreak on the scale of the 2011 Missouri super outbreak hit France in 1912?",
+      "answerShort": "France would probably turn inward for recovery. Its war readiness could decline, although disaster relief might also mobilise troops before a German attack."
     },
     {
       "id": "bruships-restart-canadian-cruiser-leipzig",
@@ -404,7 +543,7 @@
         "world-war-i",
         "imperial-german-navy"
       ],
-      "body": "Dr. Clarke identifies Leipzig as a German light cruiser and points to a Town-class cruiser as the practical answer. The segment is useful because it frames victory in operational terms, not only sinking: forcing Leipzig away from the mission can still count as defeating her. It also gives viewers a concise comparison point between a Canadian-manned British-style cruiser and a German light cruiser on a distant station.",
+      "body": "SMS Leipzig was a German light cruiser, so a Canadian-manned Town-class cruiser is the practical answer. A later Town-class ship would have enough fighting power to defeat her in a direct encounter. The operational goal need not be a sinking: forcing Leipzig away from San Francisco could still count as victory. The comparison gives a useful measure of what one Canadian cruiser could accomplish on a distant station in 1914.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T20-16-48_bruships_aR0y7J4RTuo.txt",
       "evidence": [
         {
@@ -419,7 +558,7 @@
         }
       ],
       "kind": "qa",
-      "summary": "A First World War cruiser Q&A weighs what single Canadian ship could handle SMS Leipzig off San Francisco.",
+      "summary": "A Canadian-manned Town-class cruiser should be able to defeat or drive off SMS Leipzig near San Francisco in 1914.",
       "question": "What would the Royal Canadian Navy need in one ship to defeat SMS Leipzig off San Francisco in 1914?",
       "answerShort": "A Town-class cruiser with a Canadian crew should probably do the job, especially since driving Leipzig off may be enough."
     },
@@ -441,7 +580,7 @@
         "ship-design",
         "world-war-ii"
       ],
-      "body": "The answer treats the conversion as alarming but limited. A full flight-deck conversion is estimated to carry roughly 40 to 50 aircraft, yet the ships would still be constrained by their historical machinery and speed. Their strategic effect would be less about becoming ideal fleet carriers than about the threat signal they send to Britain. Dr. Clarke expects that signal to drive much heavier funding for the Illustrious class and accelerate the Implacable-class program.",
+      "body": "A full flight-deck conversion of a Deutschland-class cruiser is estimated to carry roughly 40 to 50 aircraft. The historical machinery would still limit speed, leaving the converted ships short of ideal fleet-carrier performance. Their largest effect could come from the threat they signal to Britain. The prospect of German carriers entering service from 1938 would likely bring much heavier funding for the Illustrious class and accelerate the Implacable-class programme.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T20-16-48_bruships_aR0y7J4RTuo.txt",
       "evidence": [
         {
@@ -461,9 +600,9 @@
         }
       ],
       "kind": "qa",
-      "summary": "A Kriegsmarine counterfactual considers Deutschland-class carrier conversions and the likely British carrier-building reaction.",
+      "summary": "Converting the Deutschlands into 40- to 50-aircraft carriers would prompt a larger British carrier-building response, while their original machinery limits speed.",
       "question": "If the Deutschland-class pocket battleships were converted into aircraft carriers in 1938, what air group and World War II effect would they have?",
-      "answerShort": "The answer estimates about 40 to 50 aircraft, no speed improvement, and a British panic that accelerates funding for Illustrious and Implacable-class carriers."
+      "answerShort": "Each conversion might carry about 40 to 50 aircraft without gaining speed, while Britain would likely accelerate the Illustrious and Implacable-class programmes."
     }
   ]
 }
