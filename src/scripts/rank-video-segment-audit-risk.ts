@@ -102,7 +102,7 @@ async function main(): Promise<void> {
     const latestProcessingRecord = processingLog.latestByFileStem.get(canonicalStem);
     rows.push(analyzeVideoSegmentRisk({
       fileStem,
-      filePath: contentRootPath(shardPath),
+      filePath: path.basename(shardPath),
       videoId: manifestEntry?.videoId ?? shardVideoId ?? "unknown",
       videoTitle,
       canonicalSourcePath: contentRootPath(transcriptPath),

@@ -136,7 +136,7 @@ export function analyzeVideoSegmentRisk(input: VideoSegmentAuditRiskInput): Vide
         const evidenceEnd = evidence.end === undefined ? undefined : boundedTimestamp(evidence.end, input.durationSeconds);
         const validNote = typeof evidence.note === "string" && evidence.note.trim().length > 0;
         if (evidenceStart === undefined || !validNote || (evidence.end !== undefined && evidenceEnd === undefined)
-            || (evidenceStart !== undefined && evidenceEnd !== undefined && evidenceEnd < evidenceStart)) {
+            || (evidenceEnd !== undefined && evidenceEnd < evidenceStart)) {
           evidenceInvalid = true;
           if (evidenceStart === undefined) {
             invalidAnchorCount += 1;

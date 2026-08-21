@@ -1,19 +1,9 @@
 #!/usr/bin/env node
 import { readFile } from "node:fs/promises";
-import {
-  basename,
-  extname,
-  isAbsolute,
-  relative,
-  resolve,
-} from "node:path";
+import { basename, extname, isAbsolute, relative, resolve, } from "node:path";
+import { type CuratedVideoFileSeed, parseCuratedVideoFile, } from "../content/schemas/index.js";
 
-import {
-  scanCuratedVideoFileMechanicalWording,
-  siteContentWordingRuleIds,
-  type SiteContentWordingFinding,
-} from "../content/site-content-wording.js";
-import { parseCuratedVideoFile, type CuratedVideoFileSeed, } from "../content/schemas/index.js";
+import { scanCuratedVideoFileMechanicalWording, type SiteContentWordingFinding, siteContentWordingRuleIds, } from "../content/site-content-wording.js";
 import { writeTextAtomically } from "../pipeline/atomic-write.js";
 import { listVideoSegmentShardFileNames } from "../site/video-segment-files.js";
 import { isDirectExecution } from "./console-run-timer.js";
@@ -80,14 +70,14 @@ export interface SiteContentWordingReport {
 
 const defaultSegmentsInput = "src/derived/video-segments";
 const completionCriterion =
-  "Prohibited Unicode dashes and shard parse failures are unconditional errors. Other actionable high-confidence issues require strict mode. Review candidates are triage input.";
+    "Prohibited Unicode dashes and shard parse failures are unconditional errors. Other actionable high-confidence issues require strict mode. Review candidates are triage input.";
 const reviewPolicy =
-  "Review candidates require transcript-grounded judgment. Do not bulk-rewrite them or use a zero review " +
-  "count as a general completion target. Preserve technical terms when they carry subject-matter meaning. " +
-  "Treat host-attribution as a whole-shard review. Verify each Clark or Clarke match against the transcript " +
-  "before editing. Each segment already carries sourcePath and evidence, so remove routine references to the " +
-  "host in solo-speaker prose. Preserve other people named Clark or Clarke. In multi-speaker material, also " +
-  "retain attribution needed to distinguish speakers or identify a quotation.";
+    "Review candidates require transcript-grounded judgment. Do not bulk-rewrite them or use a zero review " +
+    "count as a general completion target. Preserve technical terms when they carry subject-matter meaning. " +
+    "Treat host-attribution as a whole-shard review. Verify each Clark or Clarke match against the transcript " +
+    "before editing. Each segment already carries sourcePath and evidence, so remove routine references to the " +
+    "host in solo-speaker prose. Preserve other people named Clark or Clarke. In multi-speaker material, also " +
+    "retain attribution needed to distinguish speakers or identify a quotation.";
 
 export async function main(args: readonly string[] = process.argv.slice(2)): Promise<number> {
   const options = parseArgs(args);
@@ -109,8 +99,8 @@ export async function main(args: readonly string[] = process.argv.slice(2)): Pro
     let video: CuratedVideoFileSeed;
     try {
       video = parseCuratedVideoFile(
-        JSON.parse(await readFile(path, "utf8")) as unknown,
-        `Curated video shard ${file}`,
+          JSON.parse(await readFile(path, "utf8")) as unknown,
+          `Curated video shard ${file}`,
       );
     } catch (error: unknown) {
       parseErrors.push(`${file}: ${error instanceof Error ? error.message : String(error)}`);
@@ -128,14 +118,14 @@ export async function main(args: readonly string[] = process.argv.slice(2)): Pro
   }
 
   const selectedFindings = options.rules.length === 0
-    ? findings
-    : findings.filter(
-      (finding) => finding.unconditionalError || options.rules.includes(finding.ruleId),
-    );
+      ? findings
+      : findings.filter(
+          (finding) => finding.unconditionalError || options.rules.includes(finding.ruleId),
+      );
   selectedFindings.sort(compareFindings);
   const errorCount = selectedFindings.filter((finding) => finding.unconditionalError).length;
   const highConfidenceCount = selectedFindings.filter(
-    (finding) => finding.confidence === "high" && !finding.unconditionalError,
+      (finding) => finding.confidence === "high" && !finding.unconditionalError,
   ).length;
   const reviewCount = selectedFindings.filter((finding) => finding.confidence === "review").length;
   const report: SiteContentWordingReport = {
@@ -154,25 +144,25 @@ export async function main(args: readonly string[] = process.argv.slice(2)): Pro
     publicFieldsScanned,
     findingCount: selectedFindings.length,
     matchedOccurrenceCount: selectedFindings.reduce(
-      (count, finding) => count + (finding.occurrenceCount ?? 1),
-      0,
+        (count, finding) => count + (finding.occurrenceCount ?? 1),
+        0,
     ),
     errorCount,
     highConfidenceCount,
     reviewCount,
     fuzzyCount: selectedFindings.filter(
-      (finding) => finding.ruleId === "possible-mechanical-phrase-variant",
+        (finding) => finding.ruleId === "possible-mechanical-phrase-variant",
     ).length,
     filesWithErrors: new Set(
-      selectedFindings.filter((finding) => finding.unconditionalError).map((finding) => finding.file),
+        selectedFindings.filter((finding) => finding.unconditionalError).map((finding) => finding.file),
     ).size,
     filesWithHighConfidence: new Set(
-      selectedFindings.filter(
-        (finding) => finding.confidence === "high" && !finding.unconditionalError,
-      ).map((finding) => finding.file),
+        selectedFindings.filter(
+            (finding) => finding.confidence === "high" && !finding.unconditionalError,
+        ).map((finding) => finding.file),
     ).size,
     filesWithReview: new Set(
-      selectedFindings.filter((finding) => finding.confidence === "review").map((finding) => finding.file),
+        selectedFindings.filter((finding) => finding.confidence === "review").map((finding) => finding.file),
     ).size,
     ruleCounts: ruleCounts(selectedFindings),
     fieldCounts: valueCounts(selectedFindings.map((finding) => finding.field)),
@@ -183,11 +173,11 @@ export async function main(args: readonly string[] = process.argv.slice(2)): Pro
   };
 
   console.log(
-    `Site-content wording scan: mode=${includeReview ? "review" : "actionable"} ` +
-    `files=${report.filesScanned} videos=${report.videosScanned} segments=${report.segmentsScanned} ` +
-    `fields=${report.publicFieldsScanned} errors=${report.errorCount} issues=${report.highConfidenceCount} ` +
-    `review-candidates=${report.reviewCount} matched-occurrences=${report.matchedOccurrenceCount} ` +
-    `parse-errors=${report.parseErrorCount}.`,
+      `Site-content wording scan: mode=${includeReview ? "review" : "actionable"} ` +
+      `files=${report.filesScanned} videos=${report.videosScanned} segments=${report.segmentsScanned} ` +
+      `fields=${report.publicFieldsScanned} errors=${report.errorCount} issues=${report.highConfidenceCount} ` +
+      `review-candidates=${report.reviewCount} matched-occurrences=${report.matchedOccurrenceCount} ` +
+      `parse-errors=${report.parseErrorCount}.`,
   );
   if (parseErrors.length > 0) {
     console.error("Curated-shard parse errors:");
@@ -200,18 +190,18 @@ export async function main(args: readonly string[] = process.argv.slice(2)): Pro
   }
   if (!options.summaryOnly) {
     printFindings(
-      "Nonnegotiable site-content wording errors:",
-      selectedFindings.filter((finding) => finding.unconditionalError),
+        "Nonnegotiable site-content wording errors:",
+        selectedFindings.filter((finding) => finding.unconditionalError),
     );
     printFindings(
-      "Actionable site-content wording issues:",
-      selectedFindings.filter(
-        (finding) => finding.confidence === "high" && !finding.unconditionalError,
-      ),
+        "Actionable site-content wording issues:",
+        selectedFindings.filter(
+            (finding) => finding.confidence === "high" && !finding.unconditionalError,
+        ),
     );
     printFindings(
-      "Judgment-required review candidates:",
-      selectedFindings.filter((finding) => finding.confidence === "review"),
+        "Judgment-required review candidates:",
+        selectedFindings.filter((finding) => finding.confidence === "review"),
     );
   }
 
@@ -298,13 +288,13 @@ export function parseArgs(args: readonly string[]): SiteContentWordingCliOptions
 }
 
 async function selectedShardPaths(
-  options: SiteContentWordingCliOptions,
-  repoRoot: string,
+    options: SiteContentWordingCliOptions,
+    repoRoot: string,
 ): Promise<string[]> {
   const paths = options.paths.length > 0
-    ? options.paths.map((path) => resolve(repoRoot, path))
-    : (await listVideoSegmentShardFileNames(resolve(repoRoot, options.segmentsInput)))
-      .map((fileName) => resolve(repoRoot, options.segmentsInput, fileName));
+      ? options.paths.map((path) => resolve(repoRoot, path))
+      : (await listVideoSegmentShardFileNames(resolve(repoRoot, options.segmentsInput)))
+          .map((fileName) => resolve(repoRoot, options.segmentsInput, fileName));
 
   const unique = new Map<string, string>();
   for (const path of paths) {
@@ -364,74 +354,74 @@ function reportMarkdown(report: SiteContentWordingReport): string {
   appendValueCountTable(lines, "Findings by Segment Kind", "Segment kind", report.segmentKindCounts);
   if (report.parseErrors.length > 0) {
     lines.push(
-      "## Curated-Shard Parse Errors",
-      "",
-      ...report.parseErrors.map((error) => `- ${escapeMarkdown(error)}`),
-      "",
+        "## Curated-Shard Parse Errors",
+        "",
+        ...report.parseErrors.map((error) => `- ${escapeMarkdown(error)}`),
+        "",
     );
   }
   appendReportFindings(
-    lines,
-    "Nonnegotiable Errors",
-    report.findings.filter((finding) => finding.unconditionalError),
+      lines,
+      "Nonnegotiable Errors",
+      report.findings.filter((finding) => finding.unconditionalError),
   );
   appendReportFindings(
-    lines,
-    "Actionable Issues",
-    report.findings.filter(
-      (finding) => finding.confidence === "high" && !finding.unconditionalError,
-    ),
+      lines,
+      "Actionable Issues",
+      report.findings.filter(
+          (finding) => finding.confidence === "high" && !finding.unconditionalError,
+      ),
   );
   appendReportFindings(
-    lines,
-    "Judgment-Required Review Candidates",
-    report.findings.filter((finding) => finding.confidence === "review"),
+      lines,
+      "Judgment-Required Review Candidates",
+      report.findings.filter((finding) => finding.confidence === "review"),
   );
   return `${lines.join("\n")}\n`;
 }
 
 function appendRuleCountTable(
-  lines: string[],
-  counts: readonly SiteContentWordingRuleCount[],
+    lines: string[],
+    counts: readonly SiteContentWordingRuleCount[],
 ): void {
   if (counts.length === 0) {
     return;
   }
   lines.push(
-    "## Findings by Rule",
-    "",
-    "| Enforcement | Confidence | Rule | Count |",
-    "|---|---|---|---:|",
-    ...counts.map(
-      (item) => `| ${item.enforcement} | ${item.confidence} | \`${escapeInlineCode(item.ruleId)}\` | ${item.count} |`,
-    ),
-    "",
+      "## Findings by Rule",
+      "",
+      "| Enforcement | Confidence | Rule | Count |",
+      "|---|---|---|---:|",
+      ...counts.map(
+          (item) => `| ${item.enforcement} | ${item.confidence} | \`${escapeInlineCode(item.ruleId)}\` | ${item.count} |`,
+      ),
+      "",
   );
 }
 
 function appendValueCountTable(
-  lines: string[],
-  heading: string,
-  label: string,
-  counts: readonly SiteContentWordingValueCount[],
+    lines: string[],
+    heading: string,
+    label: string,
+    counts: readonly SiteContentWordingValueCount[],
 ): void {
   if (counts.length === 0) {
     return;
   }
   lines.push(
-    `## ${heading}`,
-    "",
-    `| ${label} | Count |`,
-    "|---|---:|",
-    ...counts.map((item) => `| \`${escapeInlineCode(item.value)}\` | ${item.count} |`),
-    "",
+      `## ${heading}`,
+      "",
+      `| ${label} | Count |`,
+      "|---|---:|",
+      ...counts.map((item) => `| \`${escapeInlineCode(item.value)}\` | ${item.count} |`),
+      "",
   );
 }
 
 function appendReportFindings(
-  lines: string[],
-  heading: string,
-  findings: readonly SiteContentWordingFinding[],
+    lines: string[],
+    heading: string,
+    findings: readonly SiteContentWordingFinding[],
 ): void {
   if (findings.length === 0) {
     return;
@@ -439,22 +429,22 @@ function appendReportFindings(
   lines.push(`## ${heading}`, "");
   for (const finding of findings) {
     const fuzzyDetail = finding.similarity === undefined
-      ? ""
-      : `; near \`${escapeInlineCode(finding.referencePhrase ?? "")}\` at ${finding.similarity.toFixed(3)}`;
+        ? ""
+        : `; near \`${escapeInlineCode(finding.referencePhrase ?? "")}\` at ${finding.similarity.toFixed(3)}`;
     lines.push(
-      `- \`${escapeInlineCode(finding.file)}\` segment \`${escapeInlineCode(finding.segmentId)}\` ` +
-      `at \`${finding.segmentStart}\` [${finding.segmentKind}/${finding.field}] \`${finding.ruleId}\`: ` +
-      `\`${escapeInlineCode(finding.match)}\`${fuzzyDetail}`,
-      `  - ${escapeMarkdown(finding.excerpt)}`,
-      `  - Guidance: ${escapeMarkdown(finding.guidance)}`,
+        `- \`${escapeInlineCode(finding.file)}\` segment \`${escapeInlineCode(finding.segmentId)}\` ` +
+        `at \`${finding.segmentStart}\` [${finding.segmentKind}/${finding.field}] \`${finding.ruleId}\`: ` +
+        `\`${escapeInlineCode(finding.match)}\`${fuzzyDetail}`,
+        `  - ${escapeMarkdown(finding.excerpt)}`,
+        `  - Guidance: ${escapeMarkdown(finding.guidance)}`,
     );
   }
   lines.push("");
 }
 
 function printFindings(
-  title: string,
-  findings: readonly SiteContentWordingFinding[],
+    title: string,
+    findings: readonly SiteContentWordingFinding[],
 ): void {
   if (findings.length === 0) {
     return;
@@ -462,25 +452,25 @@ function printFindings(
   console.log(title);
   for (const finding of findings) {
     const fuzzyDetail = finding.similarity === undefined
-      ? ""
-      : ` -> ${JSON.stringify(finding.referencePhrase)} (${finding.similarity.toFixed(3)})`;
+        ? ""
+        : ` -> ${JSON.stringify(finding.referencePhrase)} (${finding.similarity.toFixed(3)})`;
     console.log(
-      `  ${finding.file}#${finding.segmentId}@${finding.segmentStart} ` +
-      `[${finding.segmentKind}/${finding.field}] ${finding.ruleId}: ` +
-      `${JSON.stringify(finding.match)}${fuzzyDetail}`,
+        `  ${finding.file}#${finding.segmentId}@${finding.segmentStart} ` +
+        `[${finding.segmentKind}/${finding.field}] ${finding.ruleId}: ` +
+        `${JSON.stringify(finding.match)}${fuzzyDetail}`,
     );
     console.log(`    Guidance: ${finding.guidance}`);
   }
 }
 
 function compareFindings(
-  left: SiteContentWordingFinding,
-  right: SiteContentWordingFinding,
+    left: SiteContentWordingFinding,
+    right: SiteContentWordingFinding,
 ): number {
   return left.file.localeCompare(right.file)
-    || left.segmentIndex - right.segmentIndex
-    || left.characterStart - right.characterStart
-    || left.ruleId.localeCompare(right.ruleId);
+      || left.segmentIndex - right.segmentIndex
+      || left.characterStart - right.characterStart
+      || left.ruleId.localeCompare(right.ruleId);
 }
 
 function ruleCounts(findings: readonly SiteContentWordingFinding[]): SiteContentWordingRuleCount[] {
@@ -501,14 +491,14 @@ function ruleCounts(findings: readonly SiteContentWordingFinding[]): SiteContent
     }
   }
   return [...counts.values()].sort((left, right) =>
-    enforcementOrder(left.enforcement) - enforcementOrder(right.enforcement)
-    || right.count - left.count
-    || left.ruleId.localeCompare(right.ruleId)
+      enforcementOrder(left.enforcement) - enforcementOrder(right.enforcement)
+      || right.count - left.count
+      || left.ruleId.localeCompare(right.ruleId)
   );
 }
 
 function findingEnforcement(
-  finding: SiteContentWordingFinding,
+    finding: SiteContentWordingFinding,
 ): SiteContentWordingRuleCount["enforcement"] {
   if (finding.unconditionalError) {
     return "error";
@@ -521,8 +511,8 @@ function valueCounts(values: readonly string[]): SiteContentWordingValueCount[] 
   for (const value of values) {
     counts.set(value, (counts.get(value) ?? 0) + 1);
   }
-  return [...counts].map(([value, count]) => ({ value, count })).sort((left, right) =>
-    right.count - left.count || left.value.localeCompare(right.value)
+  return [...counts].map(([value, count]) => ({value, count})).sort((left, right) =>
+      right.count - left.count || left.value.localeCompare(right.value)
   );
 }
 
@@ -533,8 +523,8 @@ function enforcementOrder(enforcement: SiteContentWordingRuleCount["enforcement"
 function repoDisplayPath(repoRoot: string, path: string): string {
   const relativePath = relative(repoRoot, path);
   const display = relativePath.startsWith("..") || isAbsolute(relativePath)
-    ? path
-    : relativePath;
+      ? path
+      : relativePath;
   return display.replaceAll("\\", "/");
 }
 
