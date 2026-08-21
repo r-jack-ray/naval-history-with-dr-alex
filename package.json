@@ -16,6 +16,7 @@
     "check": "npm test && npm run check:source && npm run site:check",
     "check:production": "npm run check:rendered-site && npm run check:search-ranking",
     "check:ci": "npm test && npm run site:build && npm run check:production",
+    "fix:video-segment-stort-by-timestamps": "bun run ./src/scripts/sort-video-segments-by-start.ts ./src/derived/video-segments",
     "report:video-segment-audit-risk": "tsx src/scripts/rank-video-segment-audit-risk.ts",
     "report:video-topic-usage": "bun run src/scripts/report-video-topic-usage-bun.ts",
     "report:transcript-problems": "tsx src/scripts/report-transcript-problems.ts",
