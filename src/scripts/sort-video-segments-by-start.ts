@@ -21,12 +21,9 @@ import { listVideoSegmentShardFileNames } from "../site/video-segment-files.js";
  * With no argument, the script checks every canonical shard in the default
  * video-segments directory. The optional argument may name another directory
  * or one shard JSON file. Directory mode excludes the shared topics.json file.
- * Every run replaces reports/video-segment-malformed-timestamps.tsv with the
- * malformed timestamp findings from the files checked by that invocation.
  */
 
 const DEFAULT_INPUT = path.resolve("src/derived/video-segments");
-const DEFAULT_REPORT = path.resolve("reports/video-segment-malformed-timestamps.tsv");
 const timestampPattern = /^(\d+):([0-5]\d)(?::([0-5]\d))?$/u;
 
 type FileSortResult = {
@@ -39,7 +36,6 @@ type MalformedTimestampFinding = {
   problem: string;
   segmentId: string;
   segmentNumber: number;
-  shardPath: string;
   timestampValue: string;
 };
 
@@ -50,7 +46,6 @@ type OrderedSegment = {
 };
 
 export interface SortVideoSegmentsRuntime {
-  reportPath?: string;
   stderr?: (text: string) => void;
   stdout?: (text: string) => void;
 }
@@ -62,7 +57,6 @@ export interface SortVideoSegmentsResult {
   failedFileCount: number;
   malformedFileCount: number;
   malformedTimestampCount: number;
-  reportPath: string;
 }
 
 export function startTimeToSeconds(start: string): number {
@@ -95,7 +89,6 @@ export function startTimeToSeconds(start: string): number {
 
 function collectMalformedTimestamps(
     parsed: unknown,
-    filePath: string,
 ): MalformedTimestampFinding[] {
   const findings: MalformedTimestampFinding[] = [];
   let segments: unknown[] = [];
@@ -114,7 +107,6 @@ function collectMalformedTimestamps(
     const segmentId = typeof segmentRecord?.id === "string" ? segmentRecord.id : "";
     appendTimestampFinding(
         findings,
-        filePath,
         index,
         segmentId,
         `segments[${index}].start`,
@@ -123,7 +115,6 @@ function collectMalformedTimestamps(
     );
     appendTimestampFinding(
         findings,
-        filePath,
         index,
         segmentId,
         `segments[${index}].end`,
@@ -139,7 +130,6 @@ function collectMalformedTimestamps(
             : undefined;
         appendTimestampFinding(
             findings,
-            filePath,
             index,
             segmentId,
             `segments[${index}].evidence[${evidenceIndex}].start`,
@@ -148,7 +138,6 @@ function collectMalformedTimestamps(
         );
         appendTimestampFinding(
             findings,
-            filePath,
             index,
             segmentId,
             `segments[${index}].evidence[${evidenceIndex}].end`,
@@ -164,7 +153,6 @@ function collectMalformedTimestamps(
 
 function appendTimestampFinding(
     findings: MalformedTimestampFinding[],
-    filePath: string,
     segmentIndex: number,
     segmentId: string,
     field: string,
@@ -178,7 +166,6 @@ function appendTimestampFinding(
       problem,
       segmentId,
       segmentNumber: segmentIndex + 1,
-      shardPath: reportPathForFile(filePath),
       timestampValue: formatUnknownValue(value),
     });
   }
@@ -212,30 +199,6 @@ function formatUnknownValue(value: unknown): string {
   return formatted;
 }
 
-function reportPathForFile(filePath: string): string {
-  const relativePath = path.relative(process.cwd(), filePath);
-  return relativePath.split(path.sep).join("/");
-}
-
-function escapeTsv(value: string): string {
-  return value.replace(/[\t\r\n]+/gu, " ");
-}
-
-function renderMalformedTimestampReport(
-    findings: readonly MalformedTimestampFinding[],
-): string {
-  const header = "Shard Path\tSegment Number\tSegment ID\tTimestamp Field\tTimestamp Value\tProblem";
-  const rows = findings.map((finding) => [
-    finding.shardPath,
-    String(finding.segmentNumber),
-    finding.segmentId,
-    finding.field,
-    finding.timestampValue,
-    finding.problem,
-  ].map(escapeTsv).join("\t"));
-  return `${[header, ...rows].join("\n")}\n`;
-}
-
 async function resolveInputFiles(inputPath: string): Promise<string[]> {
   const inputStats = await stat(inputPath);
   let filePaths: string[];
@@ -265,7 +228,7 @@ async function sortSegmentsInFile(filePath: string): Promise<FileSortResult> {
     throw new Error(`Could not parse video-segment shard ${filePath}.`, {cause: error});
   }
 
-  const malformedTimestamps = collectMalformedTimestamps(parsed, filePath);
+  const malformedTimestamps = collectMalformedTimestamps(parsed);
   let changed = false;
 
   if (malformedTimestamps.length === 0) {
@@ -300,22 +263,31 @@ export async function runSortVideoSegmentsByStart(
     runtime: SortVideoSegmentsRuntime = {},
 ): Promise<SortVideoSegmentsResult> {
   const resolvedInputPath = path.resolve(inputPath);
-  const reportPath = path.resolve(runtime.reportPath ?? DEFAULT_REPORT);
   const stdout = runtime.stdout ?? ((text: string) => console.log(text));
   const stderr = runtime.stderr ?? ((text: string) => console.error(text));
   const jsonFiles = await resolveInputFiles(resolvedInputPath);
   let changedCount = 0;
   let failedCount = 0;
-  const malformedTimestamps: MalformedTimestampFinding[] = [];
+  let malformedFileCount = 0;
+  let malformedTimestampCount = 0;
 
   for (const filePath of jsonFiles) {
     try {
       const result = await sortSegmentsInFile(filePath);
-      malformedTimestamps.push(...result.malformedTimestamps);
       if (result.malformedTimestamps.length > 0) {
+        malformedFileCount += 1;
+        malformedTimestampCount += result.malformedTimestamps.length;
         stderr(
             `Skipped, ${result.malformedTimestamps.length} malformed timestamp(s): ${filePath}`,
         );
+        for (const finding of result.malformedTimestamps) {
+          const segmentLabel = finding.segmentId.length > 0
+              ? `segment ${finding.segmentNumber} (${finding.segmentId})`
+              : `segment ${finding.segmentNumber}`;
+          stderr(
+              `  ${segmentLabel}, ${finding.field}=${finding.timestampValue}: ${finding.problem}`,
+          );
+        }
       } else if (result.changed) {
         changedCount += 1;
         stdout(`Sorted: ${filePath}`);
@@ -329,29 +301,21 @@ export async function runSortVideoSegmentsByStart(
     }
   }
 
-  await writeTextAtomically(
-      reportPath,
-      renderMalformedTimestampReport(malformedTimestamps),
-  );
-  const malformedFileCount = new Set(
-      malformedTimestamps.map((finding) => finding.shardPath),
-  ).size;
   stdout(
       [
         `Finished. ${jsonFiles.length} JSON file(s) checked, ${changedCount} changed,`,
-        `${malformedTimestamps.length} malformed timestamp(s) in ${malformedFileCount} file(s),`,
-        `${failedCount} other failure(s). Report: ${reportPath}`,
+        `${malformedTimestampCount} malformed timestamp(s) in ${malformedFileCount} file(s),`,
+        `${failedCount} other failure(s).`,
       ].join(" "),
   );
-  const exitCode = malformedTimestamps.length > 0 || failedCount > 0 ? 1 : 0;
+  const exitCode = malformedTimestampCount > 0 || failedCount > 0 ? 1 : 0;
   return {
     changedFileCount: changedCount,
     checkedFileCount: jsonFiles.length,
     exitCode,
     failedFileCount: failedCount,
     malformedFileCount,
-    malformedTimestampCount: malformedTimestamps.length,
-    reportPath,
+    malformedTimestampCount,
   };
 }
 
