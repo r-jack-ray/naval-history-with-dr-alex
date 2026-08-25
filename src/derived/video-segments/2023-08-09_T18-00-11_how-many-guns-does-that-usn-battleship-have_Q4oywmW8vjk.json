@@ -101,10 +101,12 @@
         "us-navy",
         "ship-design",
         "naval-gunnery",
+        "16-inch-guns",
+        "iowa-class-battleships",
         "all-or-nothing-armour"
       ],
       "summary": "The Tillman IV maximum-battleship proposal shows how gun count, armour, and stability compete for a finite displacement.",
-      "body": "The Tillman IV exercise tries to fit twenty-four 16-inch guns onto an 80,000-ton maximum battleship. The design also needs 25 knots, oil-fired machinery, an all-or-nothing armour scheme, anti-torpedo protection, heavy turret armour, and secondary guns. Those requirements consume the weight allowance before the arrangement is stable. Concentrating much of the main battery aft creates a visible fore-and-aft balance problem. The broadside looks spectacular, but turrets, armour, machinery, and stability all draw from the same displacement.",
+      "body": "The Tillman IV exercise tries to fit twenty-four 16-inch guns onto an 80,000-ton maximum battleship. The design also needs 25 knots, oil-fired machinery, an all-or-nothing armour scheme, anti-torpedo protection, secondary guns, and heavy turret and barbette armour. The game fit assigns about 20 inches to the turret sides, 17 inches to the barbettes, 19 inches to the main belt, and roughly 4 inches to the protective deck. Those requirements exhaust the weight allowance and leave a serious fore-and-aft balance problem because much of the main battery sits aft. A later replay compares the battery with the firepower of two and two-thirds Iowa-class battleships. The comparison is about gun count in the simulation, since the broadside still depends on ammunition, fire control, protection, machinery, and a stable hull.",
       "sourcePath": "src/transcripts/txt/2023-08-09_T18-00-11_how-many-guns-does-that-usn-battleship-have_Q4oywmW8vjk.txt",
       "evidence": [
         {
@@ -116,6 +118,16 @@
           "start": "29:50",
           "end": "30:05",
           "note": "Clarke identifies the 24-gun 16-inch proposal as Tillman IV while distinguishing it from the 15-gun Tillman IV-2 variant."
+        },
+        {
+          "start": "17:44",
+          "end": "20:06",
+          "note": "The game fit assigns heavy turret, barbette and belt armour while the protective deck remains much thinner."
+        },
+        {
+          "start": "50:25",
+          "end": "51:16",
+          "note": "The 24-gun 16-inch/50 battery is compared with the firepower of two and two-thirds Iowa-class battleships before a turret is destroyed."
         }
       ]
     },
@@ -132,10 +144,11 @@
         "us-navy",
         "ship-design",
         "18-inch-guns",
-        "naval-gunnery"
+        "naval-gunnery",
+        "yamato-class-battleships"
       ],
       "summary": "Checking A. D. Zinn's 1975 article changes the exercise from a 24-gun Tillman IV to Tillman IV-2 with fifteen 18-inch/45 guns.",
-      "body": "After building the 24-gun ship, the design is checked against A. D. Zinn's 1975 Warship International article on the American maximum battleship proposals. The reference identifies Tillman IV-2 as the proposal with fifteen 18-inch guns. The game model uses 18-inch/45 weapons, then adjusts the gun arrangement, armour, fore-and-aft balance, and stability before facing Yamato. Consulting the published design reference changes the ship under examination rather than merely supplying extra detail. Even the corrected headline battery must still fit within the rest of the hull.",
+      "body": "After building the 24-gun ship, the design is checked against A. D. Zinn's 1975 Warship International article on the American maximum battleship proposals. The reference identifies Tillman IV-2 as the proposal with fifteen 18-inch guns. The game model uses 18-inch/45 weapons, then adjusts the gun arrangement, armour, fore-and-aft balance, and stability before facing Yamato. In the trial, the aft turrets alone are compared with Yamato's main-battery firepower, leaving the forward turrets as extra weight of fire. Consulting the published reference changes the ship under examination rather than merely supplying extra detail. Even the corrected headline battery must still fit within the rest of the hull.",
       "sourcePath": "src/transcripts/txt/2023-08-09_T18-00-11_how-many-guns-does-that-usn-battleship-have_Q4oywmW8vjk.txt",
       "evidence": [
         {
@@ -147,6 +160,11 @@
           "start": "34:31",
           "end": "37:45",
           "note": "He finishes the 18-inch/45 design, checks its balance and stability, and launches the Yamato comparison."
+        },
+        {
+          "start": "40:30",
+          "end": "41:08",
+          "note": "The aft battery alone is compared with Yamato's firepower, with the forward turrets treated as additional firepower."
         }
       ]
     },
@@ -244,16 +262,41 @@
         "tillman-battleships",
         "ship-design",
         "naval-gunnery",
+        "18-inch-guns",
         "yamato-class-battleships"
       ],
       "summary": "Mounting twenty, then eighteen, 18-inch guns exposes the displacement, stability, and survivability costs of an extraordinary broadside.",
-      "body": "The next maximum-battleship experiment starts with twenty 18-inch guns and immediately exceeds the weight allowance. Reducing the battery to eighteen guns and lowering speed to 24 knots saves just enough weight to make the arrangement workable. Deck protection remains important because the expected fight involves plunging fire. The completed ship still carries serious stability and survivability compromises. In combat, one damaged turret can destroy a large share of the ammunition, while flooding and fire may prevent the ship from using its nominal firepower.",
+      "body": "The next maximum-battleship experiment starts with twenty 18-inch guns and immediately exceeds the weight allowance. The first trial accepts poor stability and appears to lose nearly all its ammunition when one turret is destroyed. The revised design drops to eighteen guns and 24 knots, saving only enough weight to make the arrangement work. In the simulation, those eighteen guns are compared with the firepower of two Yamatos, while deck protection remains important against plunging fire. Flooding, fire, and a turret explosion then prevent the ship from turning that nominal broadside into a clean victory. The exercise shows why gun count cannot compensate for vulnerable ammunition arrangements, weak stability, or battle damage.",
       "sourcePath": "src/transcripts/txt/2023-08-09_T18-00-11_how-many-guns-does-that-usn-battleship-have_Q4oywmW8vjk.txt",
       "evidence": [
         {
           "start": "51:43",
           "end": "1:09:09",
           "note": "The transcript designs and fights 20- and 18-gun 18-inch Tillman variants."
+        }
+      ]
+    },
+    {
+      "id": "harp-gun-battleship-thought-experiment",
+      "videoId": "Q4oywmW8vjk",
+      "slug": "harp-gun-battleship-thought-experiment",
+      "title": "The HARP gun as a battleship thought experiment",
+      "kind": "notable_point",
+      "start": "1:06:01",
+      "end": "1:08:26",
+      "topics": [
+        "naval-gunnery",
+        "16-inch-guns",
+        "ship-design"
+      ],
+      "summary": "A brief aside uses the HARP gun's joined 16-inch/50 barrels to show why extreme barrel length would complicate a battleship installation.",
+      "body": "A brief aside asks what a battleship built around the HARP gun might look like. The weapon is described as two 16-inch/50 barrels welded together. That extreme length would make fitting it into a practical ship arrangement difficult before turret and ammunition requirements were considered. The reference remains a thought experiment within the game design rather than a historical battleship proposal.",
+      "sourcePath": "src/transcripts/txt/2023-08-09_T18-00-11_how-many-guns-does-that-usn-battleship-have_Q4oywmW8vjk.txt",
+      "evidence": [
+        {
+          "start": "1:06:01",
+          "end": "1:08:26",
+          "note": "The transcript raises fitting the HARP gun to a battleship and describes the weapon as two 16-inch/50 barrels welded together. The captions render the weapon name and calibre phrase imperfectly."
         }
       ]
     },
@@ -270,17 +313,23 @@
         "us-navy",
         "japanese-navy",
         "ship-design",
+        "8-inch-guns",
         "torpedoes",
         "type-93-torpedo"
       ],
       "summary": "Two fictional game designs contrast an armoured American heavy cruiser with a Japanese counterpart carrying a 30-torpedo Long Lance broadside.",
-      "body": "The American heavy-cruiser design works through gun placement, stability, armour, anti-aircraft guns, and sensors. Its Japanese counterpart receives a broadly similar fit but can fire thirty Long Lance torpedoes to either side. The American ship carries fewer 8-inch guns and more armour, while the Japanese ship accepts less protection for a much larger torpedo threat. The exercise presents them as plausible products of their navies, though both are fictional game designs. The comparison weighs protection, gun power, and torpedo armament without treating either ship as a historical class.",
+      "body": "The American heavy-cruiser design works through gun placement, stability, armour, anti-aircraft guns, and sensors. Its Japanese counterpart receives a broadly similar fit but can fire thirty Long Lance torpedoes to either side. In the later trial, the American ship carries twelve 8-inch guns and more armour, while the Japanese ship accepts less protection for a much larger torpedo threat. The exercise presents them as plausible products of their navies, though both are fictional game designs. The comparison weighs protection, gun power, and torpedo armament without treating either ship as a historical class.",
       "sourcePath": "src/transcripts/txt/2023-08-09_T18-00-11_how-many-guns-does-that-usn-battleship-have_Q4oywmW8vjk.txt",
       "evidence": [
         {
           "start": "1:10:17",
           "end": "1:33:28",
           "note": "The transcript designs the two heavy cruisers and describes their armour, guns and torpedo armament."
+        },
+        {
+          "start": "1:45:31",
+          "end": "1:46:11",
+          "note": "The second duel identifies the American cruiser's twelve 8-inch guns and greater armour while the Japanese ship has a range advantage."
         }
       ]
     },
