@@ -24,7 +24,7 @@
         "shipbuilding-capacity"
       ],
       "summary": "The campaign's large shipyard capacity prompts a force-structure choice: add roughly a hundred destroyers and a hundred submarines while retaining a credible reason to fund them.",
-      "body": "The campaign turns fleet expansion into a force-planning problem rather than a hull-counting exercise. A 466,000-ton shipyard can support another hundred destroyers and another hundred submarines, but the fleet still needs a strategic purpose and a budget that can be defended. The joking wish for a war exposes the political constraint: construction capacity alone does not create a requirement. The moment connects game choices to the recurring naval task of matching industry, force structure, and policy.",
+      "body": "The 466,000-ton shipyard invites plans for another hundred destroyers and another hundred submarines. Capacity is available, but the fleet still needs a strategic purpose and an affordable budget. The joke about needing a war to justify a moderate defence budget points to the political side of expansion. Industrial capacity sets what can be built; policy decides what should be built.",
       "sourcePath": "src/transcripts/txt/2024-07-22_T18-00-20_check-campaign-26-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_meFZB1q6zqs.txt",
       "evidence": [
         {
@@ -49,7 +49,7 @@
         "destroyers"
       ],
       "summary": "A question about pre-1900 campaigns leads to a compact explanation of why expanding naval personnel requires sustained investment in training.",
-      "body": "The crew question identifies personnel as a continuing constraint on expansion. The practical answer within the campaign is sustained spending at the maximum training setting and on every available training system. Training capacity is infrastructure that must grow with the fleet. More hulls do not create the trained crews needed to operate them.",
+      "body": "Fleet growth depends on a steady supply of trained personnel. Within the campaign, that means keeping training at the maximum setting and funding every available training system. Training capacity has to grow with the fleet. Additional hulls do not create the crews needed to operate them.",
       "question": "How can a pre-1900 campaign generate enough crew for its growing fleet?",
       "answerShort": "Treat crew generation as a continual training investment and fund the available training systems rather than expecting fleet expansion to supply personnel automatically.",
       "sourcePath": "src/transcripts/txt/2024-07-22_T18-00-20_check-campaign-26-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_meFZB1q6zqs.txt",
@@ -102,6 +102,8 @@
         "cruisers",
         "escort-cruisers",
         "ship-design",
+        "naval-ship-design",
+        "naval-mine-warfare",
         "naval-survivability",
         "force-structure",
         "ship-displacement"
@@ -228,7 +230,7 @@
         "force-z"
       ],
       "summary": "A counterfactual German fleet focused on submarines, destroyers, and aircraft would reduce the Royal Navy's need for heavy ships in Atlantic waters and free them for other theatres.",
-      "body": "A German navy without capital ships or cruisers would present a narrower Atlantic problem. Destroyers and smaller patrol or escort vessels could do much of the work, with cruisers chiefly serving as flagships. British battleships, battlecruisers, and aircraft carriers could then concentrate in the Mediterranean and Far East. Operating major ships in the Indian Ocean would also reduce their exposure to the German submarine threat. The counterfactual shows how force deployment follows an opponent's mix of capabilities.",
+      "body": "A German navy without capital ships or cruisers would present a narrower Atlantic problem. Destroyers and smaller patrol or escort vessels could do much of the work, with cruisers chiefly serving as flagships. British battleships, battlecruisers, and aircraft carriers could then concentrate in the Mediterranean and Far East. Operating major ships in the Indian Ocean would also reduce their exposure to the German submarine threat. The opponent's force mix determines where the Royal Navy can concentrate its capital ships.",
       "question": "What would change if Germany built a one-dimensional fleet of submarines, destroyers, and aircraft rather than capital ships and cruisers?",
       "answerShort": "Britain could cover much of the Atlantic with destroyers and smaller escorts, then shift more of its capital-ship and carrier strength to the Mediterranean and Far East.",
       "sourcePath": "src/transcripts/txt/2024-07-22_T18-00-20_check-campaign-26-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_meFZB1q6zqs.txt",
@@ -244,7 +246,7 @@
       "id": "mediterranean-consequences-of-german-submarine-focus",
       "videoId": "meFZB1q6zqs",
       "slug": "mediterranean-consequences-of-german-submarine-focus",
-      "title": "Mediterranean consequences of a German submarine focus",
+      "title": "How a German submarine focus changes Matapan and Taranto",
       "kind": "notable_point",
       "start": "54:27",
       "end": "55:58",
@@ -255,6 +257,7 @@
         "mediterranean",
         "capital-ships",
         "naval-aviation",
+        "battle-of-cape-matapan",
         "battle-of-taranto",
         "hms-king-george-v",
         "hms-prince-of-wales",
@@ -263,14 +266,14 @@
         "hms-valiant",
         "hms-glorious"
       ],
-      "summary": "Freed from a major German surface threat, the Royal Navy could bring more battleships and carriers to bear against Italy in the Mediterranean.",
-      "body": "With no major German surface threat, the Italian navy would face a heavier and more numerous British battle fleet. King George V, Prince of Wales, Warspite, Queen Elizabeth, and Valiant could operate together in a concentration that historical Atlantic demands made harder. Glorious might also survive to add another carrier to Mediterranean operations. More carriers and capital ships could reinforce attacks such as Taranto and leave Italy in a weaker position by late 1941.",
+      "summary": "Without a major German surface threat, Britain could concentrate a stronger battle fleet at Cape Matapan and send more carriers against Italy at Taranto.",
+      "body": "Without a major German surface threat, the Italian navy would face a heavier British concentration. At Cape Matapan, King George V and Prince of Wales could join Warspite, Queen Elizabeth, and Valiant in the battle line because fewer capital ships would be tied to Atlantic duties. Glorious might also survive the Norway campaign and add another carrier to Mediterranean operations. Extra carrier strength could support attacks such as Taranto. By late 1941, Italy would face a much worse balance of naval power.",
       "sourcePath": "src/transcripts/txt/2024-07-22_T18-00-20_check-campaign-26-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_meFZB1q6zqs.txt",
       "evidence": [
         {
           "start": "54:27",
           "end": "55:58",
-          "note": "He describes the greater British battle-fleet and carrier concentration that a less demanding Atlantic theatre could permit against Italy."
+          "note": "He places a stronger British battle line at Cape Matapan, adds carrier strength for attacks such as Taranto, and describes the pressure this could put on Italy by late 1941."
         }
       ]
     },
@@ -320,7 +323,7 @@
         "naval-procurement",
         "flower-class-corvettes"
       ],
-      "summary": "The campaign discussion links Royal Navy escort construction to fear of mine warfare as well as the more familiar submarine threat.",
+      "summary": "Mine-laying submarines create a different defensive problem from torpedo attack, helping explain early Royal Navy investment in corvettes and the Flower class.",
       "body": "The value and limits of a submarine fleet depend on whether it emphasizes torpedo attack or mining. Torpedoes and mines create different defensive problems, especially when submarines can seed contested waters. Fear of mine warfare influenced the Royal Navy's early corvette and Flower-class construction. Escort procurement therefore responded to more than the direct threat of submarine torpedo attack.",
       "sourcePath": "src/transcripts/txt/2024-07-22_T18-00-20_check-campaign-26-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_meFZB1q6zqs.txt",
       "evidence": [
@@ -386,7 +389,7 @@
         "force-structure"
       ],
       "summary": "Prolonged peace removes the reason to retain every old hull, so the campaign begins deleting pre-1930 designs while balancing modernization against a large active construction programme.",
-      "body": "Older ships were retained while another war seemed possible, but a prolonged peace makes their cost harder to defend. The campaign therefore starts deleting pre-1930 designs and thinning the submarine fleet. This happens within a wider budget problem: losses run at about 24 billion per month while 158 new ships consume a substantial share of expenditure, even though transport capacity and research remain healthy. Repeated refits have kept some old designs in service, but they do not settle which hulls still provide useful capability. The peace dividend becomes an active modernization choice rather than a simple reduction in ship numbers.",
+      "body": "Older ships were retained while another war seemed possible, but a prolonged peace makes their cost harder to defend. The campaign therefore starts deleting pre-1930 designs and thinning the submarine fleet. This happens within a wider budget problem: losses run at about 24 billion per month while 158 new ships consume a substantial share of expenditure, even though transport capacity and research remain healthy. Repeated refits have kept some old designs in service, but they do not settle which hulls still provide useful capability. The peace dividend forces decisions about which old hulls still justify their cost and which should give way to new construction.",
       "sourcePath": "src/transcripts/txt/2024-07-22_T18-00-20_check-campaign-26-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_meFZB1q6zqs.txt",
       "evidence": [
         {
