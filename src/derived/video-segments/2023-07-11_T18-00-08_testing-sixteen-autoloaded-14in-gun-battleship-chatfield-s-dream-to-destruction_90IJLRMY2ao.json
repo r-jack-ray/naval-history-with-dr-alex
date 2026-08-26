@@ -25,7 +25,7 @@
         "autoloaders",
         "quadruple-turrets"
       ],
-      "body": "Dr. Clarke introduces a Duke of York-inspired design intended to test what rapid-fire modern gun technology might do to a Second World War-era capital ship. The ship carries four quadruple 14-inch turrets and deliberately pushes the game engine's assumptions about gun length, rate of fire, and broadside weight. Its smaller weapons approximate historical British calibres where the game lacks exact equivalents. The exercise is a comparative thought experiment, not a claim that this exact ship could have been built historically.",
+      "body": "A Duke of York-inspired design tests what rapid-fire modern gun technology could do when applied to a Second World War-era capital ship. The ship carries sixteen 14-inch guns in four quadruple turrets, using the maximum gun length available in the game. Its smaller weapons stand in for historical British calibres that the game does not reproduce exactly. The design is a comparative thought experiment. The transcript does not claim the ship could have been built in this form.",
       "sourcePath": "src/transcripts/txt/2023-07-11_T18-00-08_testing-sixteen-autoloaded-14in-gun-battleship-chatfield-s-dream-to-destruction_90IJLRMY2ao.txt",
       "evidence": [
         {
@@ -52,7 +52,7 @@
         "autoloaders",
         "range-control"
       ],
-      "body": "The opening battle establishes the ship's layered range advantage before the larger counterfactual is explained. Its 5.3-inch battery reaches about 22.8 kilometres, whereas the older enemy's 13.4-inch guns reach about 14.8 kilometres, letting it enter secondary range while remaining outside hostile main-gun range. The central counterfactual then combines sixteen 14-inch guns with modern loading technology and a nominal 60-kilometre reach. Dr. Clarke argues that at extreme range armour matters less than detecting, ranging, and repeatedly hitting an opponent before historical weapons and fire control can answer. The comparison shows how rate of fire and engagement geometry can make a familiar calibre far more dangerous than its historical counterpart.",
+      "body": "The opening battle establishes the ship's layered range advantage before explaining the larger counterfactual. Its 5.3-inch battery reaches about 22.8 kilometres, while the older enemy's 13.4-inch guns reach about 14.8 kilometres. The modern ship can therefore enter secondary range while staying outside the hostile main guns' reach. The design combines sixteen 14-inch guns with modern loading technology and a nominal 60-kilometre range. At extreme distance, armour matters less than detecting, ranging on, and repeatedly hitting an opponent before historical weapons and fire control can answer. Rate of fire and engagement geometry make a familiar calibre far more dangerous than its historical counterpart.",
       "sourcePath": "src/transcripts/txt/2023-07-11_T18-00-08_testing-sixteen-autoloaded-14in-gun-battleship-chatfield-s-dream-to-destruction_90IJLRMY2ao.txt",
       "evidence": [
         {
@@ -78,7 +78,7 @@
         "fire-control",
         "secondary-batteries"
       ],
-      "body": "Dr. Clarke directs the modern ship across the German formation's T while the older ships try to close into 13-inch range. Their AI does not rush directly into the centre, but the Duke of York stays near the edge of their main-battery envelope while remaining inside its own 5.3-inch range. The arrangement lets it keep firing without surrendering its distance advantage. The moment shows that technological superiority is multiplied by manoeuvre and range discipline, not simply by gun count.",
+      "body": "The modern ship turns across the German formation's T while the older ships try to close into 13-inch range. Their AI avoids rushing into the centre, but Duke of York stays near the edge of their main-battery envelope while remaining inside its own 5.3-inch range. It can keep firing without surrendering the distance advantage. Technology pays off here because manoeuvre and range discipline preserve the conditions in which the newer guns work best.",
       "sourcePath": "src/transcripts/txt/2023-07-11_T18-00-08_testing-sixteen-autoloaded-14in-gun-battleship-chatfield-s-dream-to-destruction_90IJLRMY2ao.txt",
       "evidence": [
         {
@@ -103,7 +103,7 @@
         "battleship-design",
         "6-inch-guns"
       ],
-      "body": "While discussing an all-guns design, Dr. Clarke notes the temptation to crowd a hull with six-inch weapons. In the scenario, rapid-firing medium guns do much of the practical damage, whereas the heavy battery supplies reach and prestige. Historically, he says, the secondary battery was expected to perform much of the killing once targets entered its range. It is a useful reminder that a warship's advertised main armament and its most productive weapon system need not be the same thing.",
+      "body": "An all-guns design creates a strong temptation to crowd the hull with six-inch weapons. In this scenario, rapid-firing medium guns do much of the practical damage, while the heavy battery supplies reach and prestige. The historical design logic described here expected the secondary battery to do much of the killing once targets entered its range. A warship's advertised main armament and its most productive weapon system could therefore be different batteries.",
       "sourcePath": "src/transcripts/txt/2023-07-11_T18-00-08_testing-sixteen-autoloaded-14in-gun-battleship-chatfield-s-dream-to-destruction_90IJLRMY2ao.txt",
       "evidence": [
         {
@@ -113,7 +113,31 @@
         }
       ],
       "kind": "notable_point",
-      "summary": "The stream contrasts status-oriented heavy guns with the medium-calibre battery that may actually inflict most damage."
+      "summary": "Rapid-firing medium guns may inflict more practical damage than the heavy battery carried for reach and prestige."
+    },
+    {
+      "id": "visibility-limits-extreme-range-fire",
+      "videoId": "90IJLRMY2ao",
+      "slug": "visibility-limits-extreme-range-fire",
+      "title": "Visibility limits the useful firing range",
+      "start": "15:08",
+      "end": "15:19",
+      "topics": [
+        "fire-control",
+        "range-control",
+        "reconnaissance"
+      ],
+      "body": "Opening the distance would protect the modern ship from the older guns, but it would also make enemy ships and their individual parts harder to see. That trade-off limits how much of the 14-inch battery's theoretical reach can be used effectively. The safest possible range is not automatically the best firing position. Useful range still depends on keeping the target visible enough for deliberate aiming.",
+      "sourcePath": "src/transcripts/txt/2023-07-11_T18-00-08_testing-sixteen-autoloaded-14in-gun-battleship-chatfield-s-dream-to-destruction_90IJLRMY2ao.txt",
+      "evidence": [
+        {
+          "start": "15:08",
+          "end": "15:19",
+          "note": "He says opening the range too far would make enemy ships and their individual parts harder to see."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Too much distance protects the ship but makes enemy vessels and specific components harder to see."
     },
     {
       "id": "testing-against-successive-dreadnought-generations",
@@ -130,7 +154,7 @@
         "imperial-german-navy",
         "technology-gap"
       ],
-      "body": "Rather than judging the design against one opponent, the stream raises the enemy fleet through successive historical design eras. The 1900 scenario pits the single fast, heavily armed ship against two German battle squadrons, making ammunition endurance as important as survivability. Advancing the opposition in five-year increments helps identify when sheer numbers and improving gun range begin to erase the technological advantage. The method makes the result a force-on-force comparison rather than a simple duel between individual ships.",
+      "body": "The enemy fleet advances through successive design eras instead of serving as a single benchmark. In the 1900 scenario, one fast, heavily armed ship faces two German battle squadrons, so ammunition endurance matters alongside survivability. The older 13-inch guns now reach about 21 kilometres, roughly the range of the modern ship's 5.3-inch battery. For the first time, entering secondary range carries a serious cost. Five-year steps reveal when numbers and improving gun range begin to erase the technology gap, turning the experiment into a force-on-force comparison.",
       "sourcePath": "src/transcripts/txt/2023-07-11_T18-00-08_testing-sixteen-autoloaded-14in-gun-battleship-chatfield-s-dream-to-destruction_90IJLRMY2ao.txt",
       "evidence": [
         {
@@ -156,7 +180,7 @@
         "range-control",
         "naval-wargaming"
       ],
-      "body": "Dr. Clarke notes that the ship is still cruising at 22 knots and could use its full speed to disrupt enemy aim. Instead, it has closed far enough for two-inch weapons to affect opposing battleships. Those guns were included for historical plausibility, not because he expected them to matter in a capital-ship engagement. Their participation therefore works as a diagnostic: the ship has compressed the range so far that its long-range advantage is being squandered.",
+      "body": "The ship is still cruising at 22 knots and could use its full speed to disrupt enemy aim. Instead, it has closed far enough for two-inch weapons to affect opposing battleships. Those guns were included for historical plausibility, with no expectation that they would matter in a capital-ship engagement. Their participation is a warning that the ship has compressed the range so far that its long-range advantage is being squandered.",
       "sourcePath": "src/transcripts/txt/2023-07-11_T18-00-08_testing-sixteen-autoloaded-14in-gun-battleship-chatfield-s-dream-to-destruction_90IJLRMY2ao.txt",
       "evidence": [
         {
@@ -181,7 +205,7 @@
         "battleship-design",
         "range-control"
       ],
-      "body": "Dr. Clarke deliberately closes with the German ships to accelerate the test and immediately begins taking damage. He distinguishes this choice from sensible real-world employment, because the modern ship's reach and speed should keep the older squadron outside an effective firing solution. At close range, even obsolete weapons gain opportunities through sheer volume and reduced ballistic difficulty. The episode turns technological superiority into a tactical lesson: an advantage only matters if the commander preserves the conditions that make it useful.",
+      "body": "The modern ship deliberately closes with the German squadron to accelerate the test and immediately begins taking damage. This choice would make little sense in real combat, where superior reach and speed should keep the older ships outside an effective firing solution. At close range, even obsolete weapons gain opportunities through sheer volume and reduced ballistic difficulty. A technical advantage matters only while the commander preserves the conditions that make it useful.",
       "sourcePath": "src/transcripts/txt/2023-07-11_T18-00-08_testing-sixteen-autoloaded-14in-gun-battleship-chatfield-s-dream-to-destruction_90IJLRMY2ao.txt",
       "evidence": [
         {
@@ -209,7 +233,7 @@
         "harrier-jump-jet",
         "f-35-lightning-ii"
       ],
-      "body": "Dr. Clarke rejects treating aircraft carriers as expendable simply because other British forces also need funding. He distinguishes criticism of particular procurement choices from a case for discarding the capability itself. A different transition from Harrier to F-35, he suggests, could have preserved more aviation capacity while the new aircraft became available. The broader lesson is that force-structure arguments require looking at the whole defence system rather than shifting shortages from one service to another.",
+      "body": "The argument rejects sacrificing aircraft carriers simply because other British forces also lack funds. Criticism of specific procurement choices does not amount to a case for discarding the capability. A slower transition from Harrier to F-35 could have preserved more aviation capacity while the new aircraft entered service. Force-structure choices have to be judged across the whole defence system, since transferring money can shift a shortage from one service to another.",
       "sourcePath": "src/transcripts/txt/2023-07-11_T18-00-08_testing-sixteen-autoloaded-14in-gun-battleship-chatfield-s-dream-to-destruction_90IJLRMY2ao.txt",
       "evidence": [
         {
@@ -219,7 +243,7 @@
         }
       ],
       "kind": "notable_point",
-      "summary": "A diversion from the game argues that underfunded services should not compete by stripping each other's essential capabilities."
+      "summary": "A discussion of British defence spending argues that underfunded services should not compete by stripping each other's essential capabilities."
     },
     {
       "id": "speed-and-range-control-the-battle",
@@ -235,7 +259,7 @@
         "range-control",
         "magazine-capacity"
       ],
-      "body": "Against 1905 dreadnoughts, the ship's extra speed lets it choose distance and remain outside the most dangerous engagement envelope. A three-knot advantage is enough to make disengagement or range control possible against the slower squadron. Dr. Clarke stresses that this does not make the ship invulnerable: maintaining long-range accuracy consumes ammunition and reduces the chance of finishing every opponent. The moment connects tactical mobility to the logistical limit of magazine capacity.",
+      "body": "Against eight 1905 dreadnoughts, the ship's extra speed lets it choose distance and remain outside the most dangerous engagement envelope. A three-knot advantage is enough to make disengagement or range control possible against the slower squadron. The improvised scenario imagines a radar-equipped British super-battleship trying to leave the Baltic while Germany sends its eight oldest available battleships. Long-range fighting keeps the ship safer, though the ammunition needed to finish every opponent remains a hard limit. Tactical mobility and magazine capacity determine the result together.",
       "sourcePath": "src/transcripts/txt/2023-07-11_T18-00-08_testing-sixteen-autoloaded-14in-gun-battleship-chatfield-s-dream-to-destruction_90IJLRMY2ao.txt",
       "evidence": [
         {
@@ -260,7 +284,7 @@
         "naval-gunnery",
         "target-prioritisation"
       ],
-      "body": "The automated fire-control system appears to divide individual turrets among several German dreadnoughts. Dr. Clarke argues that this wastes opportunities because a badly damaged ship remains able to fight while shells fall on healthier targets. Concentrating fire on Baden during its damage-control crisis could have removed one enemy before shifting aim. The watch point illustrates why target prioritisation and finishing fire matter as much as nominal rate of fire.",
+      "body": "The automated fire-control system appears to divide individual turrets among several German dreadnoughts. This wastes opportunities because a badly damaged ship remains able to fight while shells fall on healthier targets. Concentrating fire on Baden during its damage-control crisis could have removed one enemy before shifting aim. The German ships also carry full magazines when they are hit, while the modern ship has already expended much of its ammunition. Target prioritisation and finishing fire matter as much as nominal rate of fire.",
       "sourcePath": "src/transcripts/txt/2023-07-11_T18-00-08_testing-sixteen-autoloaded-14in-gun-battleship-chatfield-s-dream-to-destruction_90IJLRMY2ao.txt",
       "evidence": [
         {
@@ -287,7 +311,7 @@
         "high-explosive-shells",
         "magazine-capacity"
       ],
-      "body": "Reviewing the damaged 1905 dreadnoughts, Dr. Clarke notes that their armour is thick enough to trigger armour-piercing shells without necessarily making that ammunition the best choice. Against the earlier pre-dreadnoughts, he suggests that an all-high-explosive load might have destroyed targets faster. By this stage the ship has already consumed its high-explosive 5.3-inch ammunition and must continue with armour-piercing rounds. The comparison shows that magazine endurance depends not only on shell count but also on carrying the right ammunition mix for the expected target set.",
+      "body": "The damaged 1905 dreadnoughts have enough armour to trigger armour-piercing shells, though that does not automatically make them the best ammunition. Against the earlier pre-dreadnoughts, an all-high-explosive load might have destroyed targets faster. By this stage the ship has already consumed its high-explosive 5.3-inch ammunition and must continue with armour-piercing rounds. Magazine endurance depends on shell count and on carrying the right ammunition mix for the expected targets.",
       "sourcePath": "src/transcripts/txt/2023-07-11_T18-00-08_testing-sixteen-autoloaded-14in-gun-battleship-chatfield-s-dream-to-destruction_90IJLRMY2ao.txt",
       "evidence": [
         {
@@ -330,7 +354,7 @@
       "videoId": "90IJLRMY2ao",
       "slug": "forty-year-technology-gap-against-a-squadron",
       "title": "Testing forty years of technology against numbers",
-      "start": "1:40:21",
+      "start": "1:39:09",
       "end": "1:43:09",
       "topics": [
         "dreadnoughts",
@@ -340,9 +364,14 @@
         "battle-squadrons",
         "13-inch-guns"
       ],
-      "body": "Dr. Clarke frames the last formal comparison as a forty-year technology gap between the modernised Duke of York concept and eight 1910-era German dreadnoughts. The older ships now carry 13-inch guns reaching about 24 kilometres, so entering secondary-battery range would expose the modern ship to a large volume of heavy fire. The question is no longer whether the newer ship is individually superior, but whether its sensors, speed, protection, and rapid-firing guns can offset an entire squadron. The scenario provides a clear boundary test for claims that technology can substitute for numbers.",
+      "body": "The last formal comparison pits the modernised Duke of York concept against eight 1910-era German dreadnoughts, a technology gap of about forty years. Limited subdivision gives the older designs another survivability disadvantage before the guns even open fire. Their 13-inch weapons now reach about 24 kilometres, so entering secondary-battery range would expose the modern ship to a large volume of heavy shells. The test asks whether newer sensors, speed, protection, and rapid-firing guns can offset an entire squadron. It sets a clear boundary on claims that technology can substitute for numbers.",
       "sourcePath": "src/transcripts/txt/2023-07-11_T18-00-08_testing-sixteen-autoloaded-14in-gun-battleship-chatfield-s-dream-to-destruction_90IJLRMY2ao.txt",
       "evidence": [
+        {
+          "start": "1:39:09",
+          "end": "1:39:16",
+          "note": "He identifies the older ships' limited subdivision as a factor that could affect the comparison."
+        },
         {
           "start": "1:40:21",
           "end": "1:43:09",
@@ -366,7 +395,7 @@
         "radar-fire-control",
         "analogue-computers"
       ],
-      "body": "Dr. Clarke agrees that modern radar fire control is a major advantage, but adds an important historical qualification. Radar-directed fire was available by the end of the Second World War, while the associated computers still reflected the limits of that era. Period analogue computers were capable rather than useless, but later systems could exploit radar information more effectively. The point is not merely that a ship has radar, but what its sensors and calculation systems can do together.",
+      "body": "Modern radar fire control is a major advantage, with an important historical qualification. Radar-directed fire was available by the end of the Second World War, while its computers still reflected the limits of that era. Period analogue computers were capable systems, though later equipment could exploit radar information more effectively. A ship's fighting power depends on what its sensors and calculation systems can do together.",
       "sourcePath": "src/transcripts/txt/2023-07-11_T18-00-08_testing-sixteen-autoloaded-14in-gun-battleship-chatfield-s-dream-to-destruction_90IJLRMY2ao.txt",
       "evidence": [
         {
@@ -394,7 +423,7 @@
         "range-control",
         "13-inch-guns"
       ],
-      "body": "The older squadron throws a dense pattern of 13-inch shells at the modern ship even while its individual weapons and fire-control systems are inferior. One hit arrives amid the barrage, and closing toward eight-inch range only increases the danger. Dr. Clarke describes the effect as the law of large numbers: enough shells eventually create a hit even when the per-shot chance is poor. The passage explains why a single technically superior hull cannot treat an entire battle squadron's volume of fire as irrelevant.",
+      "body": "The older squadron throws a dense pattern of 13-inch shells at the modern ship even though each weapon and fire-control system is inferior. One hit arrives amid the barrage, and closing toward eight-inch range only increases the danger. The law of large numbers applies: enough shells eventually create a hit even when each shot has a poor chance. A single technically superior hull still has to respect an entire battle squadron's volume of fire.",
       "sourcePath": "src/transcripts/txt/2023-07-11_T18-00-08_testing-sixteen-autoloaded-14in-gun-battleship-chatfield-s-dream-to-destruction_90IJLRMY2ao.txt",
       "evidence": [
         {
@@ -421,7 +450,7 @@
         "5-inch-guns",
         "programmable-ammunition"
       ],
-      "body": "Dr. Clarke says that newer technology can make a smaller weapon competitive with an older larger one, but the advantage is temporary if the same technology reaches the larger calibre. He points to the 40 mm class as a place where new ammunition and control technologies often appear early, perhaps because production volume and price make experimentation worthwhile. Larger weapons then adopt scalable versions of those developments, as with programmable ammunition moving into modern five-inch systems. The result is a recurring cycle of technical adoption and renewed calibre advantage.",
+      "body": "Newer technology can make a smaller weapon competitive with an older, larger one. That advantage fades when the same technology reaches the larger calibre. New ammunition and control systems often appear first in the 40 mm class, perhaps because production volume and price make experimentation worthwhile. Larger weapons then adopt scalable versions of those developments, as programmable ammunition has moved into modern five-inch systems. Once that happens, the larger gun regains its range and destructive advantage.",
       "sourcePath": "src/transcripts/txt/2023-07-11_T18-00-08_testing-sixteen-autoloaded-14in-gun-battleship-chatfield-s-dream-to-destruction_90IJLRMY2ao.txt",
       "evidence": [
         {
@@ -432,8 +461,33 @@
       ],
       "kind": "qa",
       "summary": "A technological advance can improve a smaller gun without preventing rivals from applying it to larger weapons.",
-      "question": "Can advancing technology make a smaller gun more effective than an older larger gun?",
+      "question": "Can newer technology make a smaller gun more effective than an older larger gun?",
       "answerShort": "Yes, but the advantage fades when the same technology is applied to larger guns, restarting the competition."
+    },
+    {
+      "id": "uss-texas-and-gunnery-while-heeling",
+      "videoId": "90IJLRMY2ao",
+      "slug": "uss-texas-and-gunnery-while-heeling",
+      "title": "USS Texas and gunnery from a heavily heeled ship",
+      "start": "1:53:39",
+      "end": "1:53:49",
+      "topics": [
+        "naval-gunnery",
+        "uss-texas-bb-35",
+        "battle-damage",
+        "ship-stability"
+      ],
+      "body": "A damaged German ship in the simulation continues firing while heeled at an extreme angle. USS Texas is invoked as the historical comparison that makes such a case memorable, precisely because firing from a severe heel is exceptional. The transcript gives no details of the Texas episode and uses it only to mark the game's behaviour as unrealistic. A ship damaged badly enough to lean that far would not normally keep its guns in effective action.",
+      "sourcePath": "src/transcripts/txt/2023-07-11_T18-00-08_testing-sixteen-autoloaded-14in-gun-battleship-chatfield-s-dream-to-destruction_90IJLRMY2ao.txt",
+      "evidence": [
+        {
+          "start": "1:53:39",
+          "end": "1:53:49",
+          "note": "He invokes USS Texas while explaining that ships do not normally keep firing when battle damage leaves them heavily heeled."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "A damaged ship firing from an extreme heel prompts a brief comparison with USS Texas and the limits of realistic gunnery."
     },
     {
       "id": "bigger-autoloaders-retain-the-range-advantage",
@@ -451,7 +505,7 @@
         "18-inch-guns",
         "range-control"
       ],
-      "body": "Answering a question about sixteen 14-inch guns versus a larger number of smaller weapons, Dr. Clarke argues that a larger autoloading calibre normally retains superior reach. A ship cannot indefinitely multiply long-range guns because fire-control solutions become harder to manage, with roughly sixteen heavy weapons presented as a practical upper bound for the example. Matching speed would let the larger-calibre ship exploit its wider ideal engagement zone during a chase. The key comparison is the distance at which each side can hit effectively, not its theoretical maximum range alone.",
+      "body": "A larger autoloading calibre normally retains superior reach against a greater number of smaller guns. A ship cannot keep multiplying long-range weapons because the fire-control solutions become harder to manage; roughly sixteen heavy guns are presented as a practical upper bound for this example. At matching speeds, the larger-calibre ship can exploit its wider ideal engagement zone during a chase. The useful comparison is the distance at which each side can hit effectively, rather than theoretical maximum range alone.",
       "sourcePath": "src/transcripts/txt/2023-07-11_T18-00-08_testing-sixteen-autoloaded-14in-gun-battleship-chatfield-s-dream-to-destruction_90IJLRMY2ao.txt",
       "evidence": [
         {
@@ -478,7 +532,7 @@
         "reconnaissance",
         "spotter-aircraft"
       ],
-      "body": "Dr. Clarke says a spotter aircraft would make the extreme-range engagement substantially different. Air observation could help the modern ship correct fall of shot beyond what its own view permits. The benefit is not one-sided, because German aircraft could also locate the attacker and report its approach. The brief exchange highlights that reconnaissance and information flow shape long-range gunnery for both hunter and target.",
+      "body": "A spotter aircraft would make the extreme-range engagement substantially different. Air observation could help the modern ship correct its fall of shot beyond what the ship can see for itself. German aircraft could also locate the attacker and report its approach, so the benefit would work in both directions. Reconnaissance and information flow shape long-range gunnery for hunter and target alike.",
       "sourcePath": "src/transcripts/txt/2023-07-11_T18-00-08_testing-sixteen-autoloaded-14in-gun-battleship-chatfield-s-dream-to-destruction_90IJLRMY2ao.txt",
       "evidence": [
         {
@@ -506,7 +560,7 @@
         "target-prioritisation",
         "salvo-fire"
       ],
-      "body": "Dr. Clarke acknowledges that a game-optimised ship could be built around a mass of six-inch guns and only a token heavy weapon. He rejects that solution because the purpose is to compare plausible historical design choices and technical change. His more formal method cross-checks real ship data against the game's data and repeats scenarios dozens of times while recording results. He also points out that the game lacks fine-grained target-priority and salvo-fire controls, so interface constraints affect what the test can represent. The value of a simulation depends on whether its assumptions, controls, and replication still answer the historical question being investigated.",
+      "body": "A game-optimised ship could be built around a mass of six-inch guns and a token heavy weapon. That solution would answer a different question from the intended comparison of plausible historical design choices and technical change. The more formal method cross-checks real ship data against the game's values, then repeats each scenario dozens of times while recording the results. The game also lacks fine-grained target-priority and salvo-fire controls, which limits what the test can represent. Its assumptions, available controls, and repeated trials must still address the historical question under investigation.",
       "sourcePath": "src/transcripts/txt/2023-07-11_T18-00-08_testing-sixteen-autoloaded-14in-gun-battleship-chatfield-s-dream-to-destruction_90IJLRMY2ao.txt",
       "evidence": [
         {
@@ -521,7 +575,7 @@
         }
       ],
       "kind": "qa",
-      "summary": "The stream explains why an all-six-inch-gun game build would be effective but would not answer the historical design question being tested.",
+      "summary": "An all-six-inch-gun game build might be effective, but it would not answer the historical design question being tested.",
       "question": "Why not optimise the design by filling it with six-inch guns?",
       "answerShort": "That could be effective in the game, but it would no longer be a useful test of plausible capital-ship technology and design trade-offs."
     },
@@ -540,7 +594,7 @@
         "9-2-inch-guns",
         "capital-ships"
       ],
-      "body": "Dr. Clarke argues that Japanese heavy cruisers repeatedly had to take on duties beyond the roles for which eight-inch cruisers were designed. Their deployment illustrates how heavy cruisers became stand-ins when capital ships were unavailable or too scarce. Treaty calibre constraints made it difficult to turn them into the substitutes for capital ships that strategy sometimes demanded. He suggests that a prepared 9.2-inch up-gunning path could have offered more flexibility, though it would not solve the wider force-structure problem by itself.",
+      "body": "Japanese heavy cruisers repeatedly had to take on duties beyond the roles for which eight-inch cruisers were designed. Their deployment shows how heavy cruisers became stand-ins when capital ships were unavailable or too scarce. Treaty calibre constraints made it difficult to turn them into the substitutes that strategy sometimes demanded. A prepared 9.2-inch up-gunning path could have offered more flexibility, though it would not solve the wider force-structure problem by itself.",
       "sourcePath": "src/transcripts/txt/2023-07-11_T18-00-08_testing-sixteen-autoloaded-14in-gun-battleship-chatfield-s-dream-to-destruction_90IJLRMY2ao.txt",
       "evidence": [
         {
@@ -550,7 +604,7 @@
         }
       ],
       "kind": "notable_point",
-      "summary": "A late discussion argues that Japanese heavy cruisers were burdened by missions better suited to larger ships."
+      "summary": "Japanese heavy cruisers were repeatedly assigned missions better suited to capital ships."
     },
     {
       "id": "ammunition-exhaustion-ends-the-final-test",
@@ -567,7 +621,7 @@
         "14-inch-guns",
         "battle-squadrons"
       ],
-      "body": "The modern ship reaches the decisive logistical limit before it can eliminate the 1910 squadron. With too little 14-inch ammunition left to finish the surviving dreadnoughts, Dr. Clarke treats escape as a technical default defeat and orders a close-range final charge. The German ships' accuracy rises as the range collapses, while the British main-battery accuracy for the battle remains poor. The result confirms that superior technology can destroy several older opponents without making one hull equivalent to an entire battle squadron under every condition.",
+      "body": "The modern ship reaches its logistical limit before it can eliminate the 1910 squadron. Too little 14-inch ammunition remains to finish the surviving dreadnoughts, and escape would count as a technical default defeat under the test's rules. The ship therefore makes a final close-range charge. German accuracy rises as the range collapses, while the British main-battery accuracy for the battle remains poor. Superior technology destroys several older opponents, yet one hull still cannot replace an entire battle squadron under every condition.",
       "sourcePath": "src/transcripts/txt/2023-07-11_T18-00-08_testing-sixteen-autoloaded-14in-gun-battleship-chatfield-s-dream-to-destruction_90IJLRMY2ao.txt",
       "evidence": [
         {
