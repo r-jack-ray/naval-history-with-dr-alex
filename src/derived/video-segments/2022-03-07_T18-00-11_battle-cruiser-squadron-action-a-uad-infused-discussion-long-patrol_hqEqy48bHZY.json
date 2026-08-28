@@ -6,6 +6,8 @@
     "naval-doctrine",
     "torpedoes",
     "naval-wargaming",
+    "historical-simulations",
+    "ultimate-admiral-dreadnoughts",
     "royal-navy"
   ],
   "segments": [
@@ -24,7 +26,7 @@
         "naval-wargaming"
       ],
       "summary": "Equal four-ship battle squadrons should rarely meet alone because fleet actions are designed to bring larger forces together, making a faster battlecruiser encounter more plausible.",
-      "body": "A fleet action should bring larger forces together, so two evenly matched battle squadrons fighting in isolation would mean serious operational errors on both sides. Even an independently operating American squadron accidentally meeting a German formation is treated as a remote possibility. A battlecruiser encounter provides a more plausible case for exploring a fast-squadron fight. This keeps the tactical game scenario tied to the operational assumptions behind First World War fleet doctrine.",
+      "body": "A fleet action should bring larger forces together, so two evenly matched battle squadrons fighting in isolation would mean serious operational errors on both sides. Even an independently operating American squadron accidentally meeting a German formation is treated as a remote possibility. The episode therefore switches to battlecruisers, whose fast-squadron role makes an independent encounter more plausible. That choice keeps the game scenario within the operational assumptions of First World War fleet doctrine.",
       "question": "What would happen if two equally matched battle squadrons met?",
       "answerShort": "Such an isolated four-ship-on-four-ship duel would imply serious operational errors on both sides, so a faster battlecruiser encounter provides the more plausible case.",
       "sourcePath": "src/transcripts/txt/2022-03-07_T18-00-11_battle-cruiser-squadron-action-a-uad-infused-discussion-long-patrol_hqEqy48bHZY.txt",
@@ -53,14 +55,19 @@
         "14-inch-guns",
         "13-5-inch-guns"
       ],
-      "summary": "A modified Tiger-class design provides the tactical case study, with armour, heavy guns, and six-inch turrets shaped for fighting peer battlecruisers.",
-      "body": "The simulated Tiger differs from the historical ship in several details, including turreted six-inch guns, a game-modelled 14-inch main battery, no torpedoes, and altered funnels. It tests the problem of a fast capital ship meeting a comparable opponent rather than claiming to be a literal reconstruction. Citadel protection, displacement, speed, and armament all matter, and no single statistic decides the design's value. A battlecruiser intended to fight another battlecruiser needs a different balance from one built chiefly to overwhelm cruisers.",
+      "summary": "A modified Tiger-class design supplies the tactical case study, though the recording leaves its citadel setting uncertain and the game substitutes 14-inch guns for the historical 13.5-inch battery.",
+      "body": "The simulated Tiger differs from the historical ship in several details: its six-inch guns sit in turrets instead of casemates, the game models the main battery with 14-inch guns, it has no torpedoes, and its two funnels are different sizes. The recording does not settle whether the armoured-citadel option was active because it appears absent in the earlier video but selected when this scenario is opened. That uncertainty limits any direct comparison of protection. The design still provides a useful way to examine a fast capital ship intended to fight peer battlecruisers, where armour, speed, displacement, and sustained gunnery compete for weight.",
       "sourcePath": "src/transcripts/txt/2022-03-07_T18-00-11_battle-cruiser-squadron-action-a-uad-infused-discussion-long-patrol_hqEqy48bHZY.txt",
       "evidence": [
         {
           "start": "1:20",
           "end": "4:13",
           "note": "The speaker describes the modified Tiger design and sets up the squadron-fighting discussion."
+        },
+        {
+          "start": "22:10",
+          "end": "23:42",
+          "note": "The transcript contrasts Renown with Tiger and presents Tiger's six-inch battery as part of a design for sustained fighting against peer battlecruisers."
         }
       ]
     },
@@ -81,7 +88,7 @@
         "naval-wargaming"
       ],
       "summary": "Building the opposing battlecruiser exposes how extra armour, torpedo equipment, machinery, and speed compete for the same displacement.",
-      "body": "The simulated opponent becomes an armoured box with 11-inch guns because the design still has roughly a thousand tons to allocate. Adding protection to the hull, stern, and superstructure makes it much more heavily armoured than its historical counterpart. Torpedo equipment, bulkheads, and other fittings also consume weight, while the desired speed remains about 26.5 knots. The resulting design shows why warship characteristics cannot be maximized independently, although the exact values belong to the game model rather than a historical design study.",
+      "body": "The simulated opponent becomes an armoured box with 11-inch guns because the design still has roughly a thousand tons to allocate. Adding protection to the hull, stern, and superstructure makes it much more heavily armoured than its historical counterpart. Torpedo equipment and bulkheads also consume weight, while the desired speed remains about 26.5 knots. Increasing one feature changes the weight available for the others, although the exact figures belong to the game model rather than a historical design study.",
       "sourcePath": "src/transcripts/txt/2022-03-07_T18-00-11_battle-cruiser-squadron-action-a-uad-infused-discussion-long-patrol_hqEqy48bHZY.txt",
       "evidence": [
         {
@@ -114,6 +121,33 @@
           "start": "7:14",
           "end": "8:45",
           "note": "The transcript describes the two-to-one numerical advantage, the need to turn distributed guns toward broadside, and the squadron forming into line."
+        }
+      ]
+    },
+    {
+      "id": "modelling-thirteen-and-a-half-inch-guns-in-a-fourteen-inch-system",
+      "videoId": "hqEqy48bHZY",
+      "slug": "modelling-thirteen-and-a-half-inch-guns-in-a-fourteen-inch-system",
+      "title": "Modelling 13.5-inch guns in a 14-inch game system",
+      "kind": "notable_point",
+      "start": "8:13",
+      "end": "8:45",
+      "topics": [
+        "naval-gunnery",
+        "naval-wargaming",
+        "historical-simulations",
+        "ultimate-admiral-dreadnoughts",
+        "13-5-inch-guns",
+        "14-inch-guns"
+      ],
+      "summary": "The game uses a 14-inch battery to approximate Tiger's historical 13.5-inch guns, accepting a mismatch in calibre because heavy shells would distort the operating characteristics.",
+      "body": "The simulation uses 14-inch guns even though the historical Tiger carried 13.5-inch weapons. Heavy shells would bring the model closer to the historical shell weight, but they would make its performance less accurate for the intended comparison. The chosen setup accepts a mismatch in calibre terminology to keep the operating characteristics closer to Tiger's guns. It is a useful example of the compromises involved when a game's available components do not match the historical equipment.",
+      "sourcePath": "src/transcripts/txt/2022-03-07_T18-00-11_battle-cruiser-squadron-action-a-uad-infused-discussion-long-patrol_hqEqy48bHZY.txt",
+      "evidence": [
+        {
+          "start": "8:13",
+          "end": "8:45",
+          "note": "The transcript compares the simulated 14-inch guns with Tiger's historical 13.5-inch battery and explains why heavy shells would improve the terminology match while worsening the performance match."
         }
       ]
     },
@@ -156,7 +190,7 @@
         "hms-penelope"
       ],
       "summary": "A humorous aside groups Royal Navy ships named Penelope as either calmly competent or berserk in action, inviting viewers to compare the namesake ships.",
-      "body": "Penelope's performance in the simulation prompts a brief claim about the Royal Navy's ships of that name. Their service records are described as falling into two broad patterns: calm competence or berserk action. The remark is a humorous historical generalization rather than a formal classification. No individual examples are given here, so the moment works best as an invitation to compare the ships that carried the name.",
+      "body": "Penelope's performance in the simulation prompts a brief claim about the Royal Navy's ships of that name. Their service records are described as falling into two broad patterns: calm competence or berserk action. The remark is a humorous historical generalization rather than a formal classification. The passage gives no individual cases, so it offers a prompt for comparison rather than evidence for the classification.",
       "sourcePath": "src/transcripts/txt/2022-03-07_T18-00-11_battle-cruiser-squadron-action-a-uad-infused-discussion-long-patrol_hqEqy48bHZY.txt",
       "evidence": [
         {
@@ -294,7 +328,7 @@
         "naval-wargaming"
       ],
       "summary": "The simulated action turns when torpedoes sink two battlecruisers, showing why closing and scattering divisions can make a nominal advantage costly.",
-      "body": "The game outcome is not offered as a literal historical reconstruction, but it illustrates a real tactical hazard. A squadron drawn into a confused close fight may present repeated torpedo opportunities and lose ships faster than it can convert its gun advantage into results. Britain might accept trading two battlecruisers for two enemy battlecruisers because it has greater numbers, but that arithmetic still makes the encounter a costly victory. Formation discipline, range control, and torpedo avoidance remain linked: splitting into divisions can create useful angles, yet it can also create gaps that the enemy exploits.",
+      "body": "The simulated losses illustrate a real tactical hazard, though they do not reproduce a historical action. A squadron drawn into a confused close fight may present repeated torpedo opportunities and lose ships faster than it can convert its gun advantage into results. Britain might accept trading two battlecruisers for two enemy battlecruisers because it has greater numbers, but that arithmetic still makes the encounter a costly victory. Dividing a squadron creates useful angles only if both pairs retain formation and enough range to avoid torpedoes.",
       "sourcePath": "src/transcripts/txt/2022-03-07_T18-00-11_battle-cruiser-squadron-action-a-uad-infused-discussion-long-patrol_hqEqy48bHZY.txt",
       "evidence": [
         {
@@ -322,10 +356,12 @@
         "24-inch-torpedoes",
         "motor-torpedo-boats",
         "nelson-class-battleships",
-        "tribal-class-destroyers-1936"
+        "tribal-class-destroyers-1936",
+        "capital-ships",
+        "japanese-navy"
       ],
-      "summary": "Britain already had a 24-inch torpedo for Nelson and Rodney, so the puzzle is why destroyers retained 21-inch weapons instead of extending the heavier system.",
-      "body": "The Royal Navy already funded a heavy 24-inch torpedo for Nelson and Rodney, which weakens any simple Treasury-refusal explanation. The central question is why that capability did not develop into a destroyer weapon when greater range and destructive power could have given Tribal-class ships a harder punch. The 18-inch aircraft weapon later served motor torpedo boats, while destroyers retained 21-inch torpedoes, but neither fact explains the absence of a heavier surface-force branch. The issue remains institutional and doctrinal because the weapon's existence alone does not establish that a destroyer-sized system would have been practical.",
+      "summary": "Britain had already developed a 24-inch torpedo for Nelson and Rodney, raising the question of why destroyers kept 21-inch weapons when Japan pursued longer-ranged heavy torpedoes.",
+      "body": "First World War capital ships carried torpedoes because even one hit could decide an action. By the Second World War, Japan stood out for continuing to develop long-range heavy torpedoes, while Britain and the United States did not follow the same path. The Royal Navy had already funded a 24-inch weapon for Nelson and Rodney, so a simple Treasury refusal does not explain why destroyers retained 21-inch torpedoes. A heavier weapon could have given the Tribal class a longer-ranged punch, though the transcript leaves open whether a destroyer could carry the necessary handling equipment. The later use of 18-inch aircraft torpedoes in motor torpedo boats explains another branch of British development, not the absence of a 24-inch destroyer weapon. The unresolved question concerns doctrine, platform limits, and whether continued investment would have made the system practical.",
       "sourcePath": "src/transcripts/txt/2022-03-07_T18-00-11_battle-cruiser-squadron-action-a-uad-infused-discussion-long-patrol_hqEqy48bHZY.txt",
       "evidence": [
         {
@@ -355,7 +391,7 @@
         "town-class-light-cruisers-1936"
       ],
       "summary": "Weight, manpower, and reload machinery may explain why 24-inch torpedoes suit larger cruisers better than destroyers, despite their greater range and hitting power.",
-      "body": "A 24-inch torpedo is heavy enough that moving and reloading it imposes machinery and crew demands beyond those of a 21-inch weapon. Japanese practice provides the comparison: large torpedoes made autoloading and other support systems part of ship design. A later Royal Navy analogy points to Sea Slug loading teams, whose crews had to shift substantial missile weight by hand. Larger cruisers have more space and displacement for support machinery, which makes a 24-inch weapon more plausible on a Town-class cruiser than on a destroyer. The extra torpedo volume can carry more fuel and power rather than more explosive, extending range while retaining a large warhead. Calibre therefore creates a logistical problem for the platform that must store, move, launch, and reload the weapon.",
+      "body": "A 24-inch torpedo is heavy enough that moving and reloading it imposes machinery and crew demands beyond those of a 21-inch weapon. Japanese practice provides the comparison: large torpedoes made autoloading and other support systems part of ship design. Sea Slug loading teams in the 1960s provide a later Royal Navy example because their crews still had to move substantial missile weight by hand. Larger cruisers have more space and displacement for support machinery, which makes a 24-inch weapon more plausible on a Town-class cruiser than on a destroyer. The extra torpedo volume can carry more fuel and power rather than more explosive, extending range while retaining a large warhead. A navy choosing the larger calibre also has to provide room and manpower for storage, movement, launching, and reloading.",
       "sourcePath": "src/transcripts/txt/2022-03-07_T18-00-11_battle-cruiser-squadron-action-a-uad-infused-discussion-long-patrol_hqEqy48bHZY.txt",
       "evidence": [
         {
@@ -408,7 +444,7 @@
         "fleet-tactics"
       ],
       "summary": "Apparently strange ship or weapon choices become more intelligible when read as components of a fleet structure shaped by contemporary doctrine and information.",
-      "body": "A ship or weapon makes little sense when judged as though a navy ordered it in isolation. Procurement creates a component of a fleet, so its value depends on the doctrine, force structure, and supporting units around it. Choices that look like gaps to a later observer may have followed the internal logic and information available at the time. Some decisions were still poor, but their institutional context gives historians a stronger starting point than a comparison of individual specifications.",
+      "body": "A ship or weapon makes little sense when judged as though a navy ordered it in isolation. Procurement creates a component of a fleet, so its value depends on the doctrine, force structure, and supporting units around it. Choices that look like gaps to a later observer may have followed the logic and information available at the time. That context does not make every decision sound, but it explains the reasoning that produced it.",
       "sourcePath": "src/transcripts/txt/2022-03-07_T18-00-11_battle-cruiser-squadron-action-a-uad-infused-discussion-long-patrol_hqEqy48bHZY.txt",
       "evidence": [
         {
@@ -467,7 +503,7 @@
         "south-china-sea"
       ],
       "summary": "The Royal Navy's ten-torpedo forward salvo points to a submarine designed to ambush forces in confined waters, then withdraw toward another prepared position.",
-      "body": "The T-class forward battery could put ten torpedoes into the water at once, an unusually large spread that points to an ambush mission. Two submarines positioned around straits or island channels in Southeast Asia could attack a task force from different angles with as many as twenty weapons. While the target turns and evades, the boats gain time to leave the firing position rather than remain in a prolonged pursuit. They then move toward another ambush point with fewer torpedoes, ideally reinforcing a refreshed submarine already waiting there. Weapon arrangement therefore reveals an operating pattern of concentrated surprise in constrained geography followed by withdrawal, rather than high-tempo wolfpack hunting.",
+      "body": "The T-class forward battery could put ten torpedoes into the water at once, an unusually large spread suited to an ambush. Two submarines positioned around straits or island channels in Southeast Asia could attack a task force from different angles with as many as twenty weapons. While the target turns and evades, the boats gain time to leave the firing position instead of remaining in a prolonged pursuit. They then move toward another ambush point with fewer torpedoes, ideally reinforcing a refreshed submarine already waiting there. The battery fits concentrated surprise in confined waters, followed by withdrawal toward another prepared position. It is poorly suited to sustained wolfpack hunting.",
       "sourcePath": "src/transcripts/txt/2022-03-07_T18-00-11_battle-cruiser-squadron-action-a-uad-infused-discussion-long-patrol_hqEqy48bHZY.txt",
       "evidence": [
         {
@@ -491,10 +527,13 @@
         "fleet-tactics",
         "naval-doctrine",
         "naval-wargaming",
-        "torpedo-avoidance"
+        "torpedo-avoidance",
+        "historical-simulations",
+        "world-of-warships",
+        "ultimate-admiral-dreadnoughts"
       ],
       "summary": "The closing assessment contrasts the successful division that stayed back and fired with the ships lost after getting too close.",
-      "body": "Tiger and Penelope survive by hanging back and using their guns, while the ships that mixed into the close fight are exposed to torpedoes. The game does not reproduce every historical condition, but the contrast reinforces a central principle of capital-ship tactics: exploit range, speed, and concentrated fire instead of treating heavy ships as close-combat units. Ultimate Admiral: Dreadnoughts leaves an expansive battlefield, while other games compress the fighting space and simulated ships may still fail to use the distance available. Those incentives and artificial-intelligence limits can produce behavior that would be tactically unsound at sea.",
+      "body": "Tiger and Penelope survive by hanging back and using their guns, while the ships that mix into the close fight are exposed to torpedoes. Historical capital ships were meant to exploit range, speed, and concentrated fire instead of charging into a brawl. Ultimate Admiral: Dreadnoughts provides an expansive battlespace, though its AI-controlled ships sometimes fail to use that distance. World of Warships compresses the fighting area to make the game enjoyable, which encourages engagements at ranges a historical capital ship should avoid. These game constraints help explain why a simulation may produce behavior that would be tactically unsound at sea.",
       "sourcePath": "src/transcripts/txt/2022-03-07_T18-00-11_battle-cruiser-squadron-action-a-uad-infused-discussion-long-patrol_hqEqy48bHZY.txt",
       "evidence": [
         {

@@ -6,6 +6,7 @@
     "anti-submarine-warfare",
     "submarines",
     "kriegsmarine",
+    "karl-donitz",
     "royal-navy",
     "merchant-navy",
     "naval-industrial-base",
@@ -23,17 +24,20 @@
       "id": "doenitz-300-submarine-force-math",
       "videoId": "5cfwGctzr64",
       "slug": "doenitz-300-submarine-force-math",
-      "title": "Doenitz's 300-submarine force math",
+      "title": "Dönitz's 300-submarine force calculation",
       "start": "1:27",
       "end": "3:26",
       "topics": [
         "battle-of-the-atlantic",
         "submarines",
         "kriegsmarine",
+        "karl-donitz",
         "naval-logistics",
-        "anti-submarine-warfare"
+        "anti-submarine-warfare",
+        "asdic",
+        "naval-radar"
       ],
-      "body": "Dr. Clarke starts from the German side of the Battle of the Atlantic and turns Doenitz's famous 300-submarine requirement into availability math. Only about a third of a submarine force could be on operations while the rest transited, refitted, or worked up, which made the 21 boats available at the start of war far too few for the intended campaign. The same section introduces the Allied technical counterpressure from ASDIC, radar, Enigma, depth charges, and ahead-throwing weapons.",
+      "body": "Germany entered the war with 21 available U-boats against Karl Dönitz's desired force of 300. His calculation assumed that only one third could be on patrol, with another third in transit and the rest refitting or working up. The 1939 force was therefore far short of the 100 boats he wanted at sea for the campaign. Allied radar, Enigma intelligence, ASDIC, depth charges, and ahead-throwing weapons further reduced what each boat could achieve. Early depth-charge attacks often required one escort to hold ASDIC contact while another crossed the target, which explains the value of later weapons that could fire ahead.",
       "sourcePath": "src/transcripts/txt/2021-08-14_T16-00-03_battle-of-the-atlantic-redo-crackpot-schemes-or-good-ideas-badly-done-p7-7_5cfwGctzr64.txt",
       "evidence": [
         {
@@ -48,7 +52,7 @@
         }
       ],
       "kind": "chapter",
-      "summary": "The opening explains why Doenitz wanted 300 submarines and why Germany's actual 1939 U-boat force could not deliver that campaign plan."
+      "summary": "Why Dönitz wanted 300 submarines, how the one-third availability rule worked, and why 21 boats could not execute his campaign plan."
     },
     {
       "id": "u-boat-peak-and-tonnage-curve",
@@ -64,7 +68,7 @@
         "merchant-navy",
         "naval-strategy"
       ],
-      "body": "This watch point is useful for reading the Battle of the Atlantic as a changing force-balance problem rather than a fixed contest. Dr. Clarke notes that Germany did not reach roughly one hundred submarines at sea until late 1942, and that peak U-boat strength in 1943 coincided with rising submarine losses and falling tonnage sunk. The segment frames the central question: if submarines were powerful and Germany increasingly prioritized them, why did the campaign not produce victory?",
+      "body": "Germany did not keep roughly 100 U-boats at sea until late 1942, three years into the war. Strength then rose toward 160 in 1943, but the larger deployment no longer translated into more merchant tonnage sunk. U-boat losses climbed while both the number of boats at sea and the tonnage destroyed began to fall. The graph separates local submarine effectiveness from strategic success: experienced crews and heavier investment could produce a peak without forcing victory. That reversal sets up the comparison between German specialization and the expanding Allied defense.",
       "sourcePath": "src/transcripts/txt/2021-08-14_T16-00-03_battle-of-the-atlantic-redo-crackpot-schemes-or-good-ideas-badly-done-p7-7_5cfwGctzr64.txt",
       "evidence": [
         {
@@ -84,7 +88,7 @@
         }
       ],
       "kind": "notable_point",
-      "summary": "A graph discussion connects submarine numbers, tonnage sunk, and rising U-boat losses to the failure of Germany's single-arm commerce strategy."
+      "summary": "The force and tonnage curves show U-boat strength peaking as submarine losses rose and merchant sinkings began to fall."
     },
     {
       "id": "escorts-outbuild-submarines",
@@ -99,9 +103,11 @@
         "naval-industrial-base",
         "royal-navy",
         "kriegsmarine",
-        "submarines"
+        "submarines",
+        "asdic",
+        "naval-radar"
       ],
-      "body": "Dr. Clarke argues that a mixed strategy built around convoys and escorts could outproduce and outlast a submarine-only attack. Damaged escorts could often be brought home, while damaged submarines and their experienced crews were much harder to recover; distant U-boat operations also consumed milk-cow support submarines. The Royal Navy's many trawlers, Flower-class corvettes, Hunt-class escort destroyers, converted destroyers, and River-class frigates become the material answer to German Type VII numbers.",
+      "body": "A mixed convoy strategy could outproduce and outlast a submarine-only attack even when both sides began with similar maritime capacity. Germany built nearly 700 Type VII boats, but combat losses, damaged boats, and the need for milk-cow supply submarines kept the usable force much smaller. Damaged escorts could often be towed home, while a damaged U-boat and its experienced crew were far harder to recover. The Royal Navy built 225 original and 69 modified Flower-class corvettes, losing 33 during the war, including 22 to submarines. It also completed 86 Hunt-class escort destroyers and expanded the River-class frigate order from 30 to 151, of which five were lost. Trawlers, converted V and W-class destroyers, improved ASDIC, centimetric radar, Hedgehog, Squid, and heavier depth-charge batteries steadily widened the Allied advantage.",
       "sourcePath": "src/transcripts/txt/2021-08-14_T16-00-03_battle-of-the-atlantic-redo-crackpot-schemes-or-good-ideas-badly-done-p7-7_5cfwGctzr64.txt",
       "evidence": [
         {
@@ -121,7 +127,7 @@
         }
       ],
       "kind": "chapter",
-      "summary": "The lecture compares Type VII submarines with trawlers, Flower-class corvettes, Hunt escorts, old destroyers, and River-class frigates to show why escort production mattered."
+      "summary": "Production and loss figures for Type VII U-boats, Flowers, Hunts, Rivers, trawlers, and converted destroyers explain the escort advantage."
     },
     {
       "id": "convoy-geometry-favors-escorts",
@@ -138,7 +144,7 @@
         "royal-navy",
         "naval-strategy"
       ],
-      "body": "This segment explains the campaign's geometry in simple terms. Submarines had only best guesses about convoy routes, while escorts could assume submarines would be near the convoy if contact came at all; a convoy that crossed without attack was already a success for the escort side. Dr. Clarke also points out that German U-boats were primarily hunting merchant ships, while escorts were faster, more maneuverable targets whose growing numbers made the submarine blockade harder to sustain.",
+      "body": "U-boats searched a vast ocean using their best estimate of convoy routes, while escorts knew that any attacking submarine had to approach the convoy. An uneventful crossing already counted as success for the defense, and an attack could still end with U-boats lost. German boats primarily hunted merchant ships as part of an economic blockade, leaving the faster and more maneuverable escorts less attractive as targets. Britain could also replace those escorts more readily than Germany could replace submarines and experienced crews. In this interpretation, the 1938 Flower-class order gave Britain the cheap, numerous ships needed to answer a one-dimensional submarine campaign before the war began.",
       "sourcePath": "src/transcripts/txt/2021-08-14_T16-00-03_battle-of-the-atlantic-redo-crackpot-schemes-or-good-ideas-badly-done-p7-7_5cfwGctzr64.txt",
       "evidence": [
         {
@@ -158,7 +164,7 @@
         }
       ],
       "kind": "notable_point",
-      "summary": "A tactical-strategic section explains why escorts knew where the submarines had to come, while U-boats had to find convoys across the Atlantic."
+      "summary": "Convoy geometry made U-boats search for moving targets while escorts waited where an attacker eventually had to appear."
     },
     {
       "id": "escort-carriers-and-shore-air-cover",
@@ -175,7 +181,7 @@
         "naval-aviation",
         "submarines"
       ],
-      "body": "Dr. Clarke adds aviation to the expanding Allied escort system rather than treating the Battle of the Atlantic as a contest between submarines and surface escorts alone. Escort carriers brought air cover closer to convoys, while shore-based aircraft made waters near Britain increasingly dangerous for U-boats. Submarines were therefore pushed toward the mid-Atlantic even though they still could not reliably predict a convoy's route. This moment shows how layered convoy defense compounded Germany's difficulty instead of relying on any single sensor, weapon, or ship type.",
+      "body": "Escort carriers extended air cover toward the convoys, while shore-based aircraft made the approaches to Britain increasingly dangerous for U-boats. Submarines were pushed toward the mid-Atlantic, where they still could not reliably predict a convoy's route. Aircraft operated alongside surface escorts, intelligence, and improving sensors, so every added layer reduced the space in which U-boats could search and attack safely. The defense became stronger through the interaction of these systems rather than through one decisive weapon or ship type.",
       "sourcePath": "src/transcripts/txt/2021-08-14_T16-00-03_battle-of-the-atlantic-redo-crackpot-schemes-or-good-ideas-badly-done-p7-7_5cfwGctzr64.txt",
       "evidence": [
         {
@@ -190,7 +196,7 @@
         }
       ],
       "kind": "notable_point",
-      "summary": "The convoy system grew stronger as escort carriers and land-based aircraft reduced the ocean space in which U-boats could search and attack safely."
+      "summary": "Escort carriers and land-based aircraft reduced the ocean space in which U-boats could search, surface, and attack safely."
     },
     {
       "id": "modern-commerce-war-torpedo-math",
@@ -206,7 +212,7 @@
         "naval-strategy",
         "surface-warfare"
       ],
-      "body": "Dr. Clarke shifts briefly from World War II to the practical arithmetic of a modern submarine campaign against trade. Container ships are larger and fewer, but their scale and compartmentalization may require multiple torpedoes to sink, turning every attack into a weapons-capacity problem for the submarine force. Satellite surveillance could help locate targets, yet the enemy could interfere with that system, so finding ships would remain part of the contest rather than a solved problem.",
+      "body": "A modern commerce campaign would face different arithmetic from its World War II counterpart. Container ships are larger and fewer, but their size and compartmentalization may require several torpedoes to sink. Each attack would therefore consume a significant share of a submarine's limited weapon load. Satellites could help locate targets, although wartime interference would make that surveillance part of the contest rather than a guaranteed solution.",
       "sourcePath": "src/transcripts/txt/2021-08-14_T16-00-03_battle-of-the-atlantic-redo-crackpot-schemes-or-good-ideas-badly-done-p7-7_5cfwGctzr64.txt",
       "evidence": [
         {
@@ -221,7 +227,7 @@
         }
       ],
       "kind": "notable_point",
-      "summary": "A short modern comparison asks how larger, less numerous merchant ships and limited submarine torpedo loads would reshape an Atlantic commerce campaign."
+      "summary": "Larger merchant ships, limited torpedo loads, and vulnerable satellite surveillance change the arithmetic of a modern commerce campaign."
     },
     {
       "id": "british-shipyard-asymmetry",
@@ -239,7 +245,7 @@
         "royal-navy",
         "kriegsmarine"
       ],
-      "body": "Dr. Clarke traces the imbalance to the post-First World War reduction of Germany's maritime infrastructure. German yards faced sequential choices such as a carrier or battleship and then the Scharnhorst pair, while Britain could build fleet carriers, battleships, and escorts at the same time. Corvettes and trawlers could also come from smaller yards in Britain, Canada, and the United States without displacing major-warship construction. As escort totals approached and then exceeded U-boat numbers, individual convoys could field more escorts than a German wolfpack had submarines.",
+      "body": "The post-First World War settlement left Germany without the maritime infrastructure needed for parallel major-warship construction. Its yards faced sequential choices such as a carrier or battleship followed by the Scharnhorst pair, while Britain could build fleet carriers, battleships, and escorts at the same time. German leaders in the 1930s wanted a powerful navy without supplying the money or time needed to rebuild that industrial base. Britain, Canada, and the United States could produce corvettes and trawlers in smaller yards without displacing major-warship work. Once Allied escort totals approached and exceeded U-boat strength, some convoys could carry more escorts than the attacking wolfpack had submarines.",
       "sourcePath": "src/transcripts/txt/2021-08-14_T16-00-03_battle-of-the-atlantic-redo-crackpot-schemes-or-good-ideas-badly-done-p7-7_5cfwGctzr64.txt",
       "evidence": [
         {
@@ -259,7 +265,7 @@
         }
       ],
       "kind": "chapter",
-      "summary": "The comparison moves from tactics to industrial capacity, showing why Germany could not match Britain's simultaneous capital-ship and distributed escort production."
+      "summary": "Germany's sequential warship construction faced Britain's simultaneous capital-ship work and distributed escort production."
     },
     {
       "id": "august-1941-u-boat-map",
@@ -276,7 +282,7 @@
         "naval-logistics",
         "world-war-ii"
       ],
-      "body": "Dr. Clarke uses a specific date, 14 August 1941, to show the gap between apparent submarine deployments and the practical difficulty of finding ships. The map places German U-boats near the Bay of Biscay and the Greenland-Iceland-UK gap, but the argument stresses how much ocean sits between those positions and convoy traffic. The section then connects 1941 losses, Canadian and imperial shipbuilding, American entry approaching, and Britain's ability to concentrate on the North Atlantic and Mediterranean.",
+      "body": "A map for 14 August 1941 shows German U-boats near the Bay of Biscay and south of the Greenland-Iceland-UK gap. The symbols look concentrated at map scale, but each boat could observe only a tiny part of the ocean around it. Germany had about 40 submarines at sea at points that year and lost roughly six during August, even as the campaign sank merchant tonnage. Britain and the wider Allied war effort were adding capacity in Canada, India, Australia, and New Zealand. With American policy moving from lend-lease toward direct entry, Germany's search problem was becoming harder while Allied production accelerated.",
       "sourcePath": "src/transcripts/txt/2021-08-14_T16-00-03_battle-of-the-atlantic-redo-crackpot-schemes-or-good-ideas-badly-done-p7-7_5cfwGctzr64.txt",
       "evidence": [
         {
@@ -296,7 +302,7 @@
         }
       ],
       "kind": "chapter",
-      "summary": "A U-boat location map for 14 August 1941 shows why even concentrated wolfpacks faced vast ocean spaces and accelerating Allied production."
+      "summary": "The 14 August 1941 deployment map sets roughly 40 U-boats against the Atlantic's scale and accelerating Allied production."
     },
     {
       "id": "german-balanced-force-alternative",
@@ -314,7 +320,7 @@
         "naval-industrial-base",
         "naval-strategy"
       ],
-      "body": "This watch point is not a claim that Germany could easily win at sea; it is an explanation of why a one-arm submarine strategy was easier for Britain to answer. Dr. Clarke argues that a layered German threat with more 15-inch-gun Scharnhorst-type ships, surface raiders, and possibly carriers would have forced Britain to worry more about conventional surface warfare. The caveat is central: Germany lacked the maritime infrastructure, time, and money to build that balanced fleet after the post-World War I reduction of its naval industrial base.",
+      "body": "A broader German threat would have been harder for Britain to answer than a campaign centered almost entirely on submarines. The counterfactual proposes building several Scharnhorst-type ships with 15-inch guns, repeating one design rather than changing programs, and pairing them with a carrier. Three such ships operating from Norway could have forced Renown to withdraw and required Britain to devote more strength to conventional surface warfare. British planners might also have accelerated fleet-carrier construction or armed the King George V class with 15-inch guns. Those reactions could have reduced the effort available for escorts. Germany still lacked the yards, money, and time to build this balanced force, so the scenario explains the strategic bind rather than presenting an easy route to victory.",
       "sourcePath": "src/transcripts/txt/2021-08-14_T16-00-03_battle-of-the-atlantic-redo-crackpot-schemes-or-good-ideas-badly-done-p7-7_5cfwGctzr64.txt",
       "evidence": [
         {
@@ -334,7 +340,7 @@
         }
       ],
       "kind": "notable_point",
-      "summary": "A counterfactual weighs whether more 15-inch Scharnhorst-type ships and a broader surface threat would have complicated British escort allocation."
+      "summary": "More 15-inch Scharnhorst-type ships and a carrier could have diverted British resources from escorts, but Germany lacked the capacity to build them."
     },
     {
       "id": "convoys-counter-surfaced-u-boats",
@@ -351,7 +357,7 @@
         "merchant-navy",
         "royal-navy"
       ],
-      "body": "Dr. Clarke explains why convoy defense could exploit the attacker's need to come to the protected ships and surrender surprise when firing. Early in the war, U-boats sometimes made daring night surface runs through the middle of a convoy, a tactic the British had not expected. The response included more guns for merchant ships and a Flower-class corvette waiting inside the formation. A surfaced submarine was fast and dangerous, but its unarmoured pressure hull could be damaged so that diving became impossible or fatal.",
+      "body": "Convoy defense exploited the attacker's need to approach the protected ships and reveal itself when firing. Early in the war, U-boats sometimes made daring night surface runs through the middle of a convoy, a tactic Britain had not expected. Merchant ships received more guns, and a Flower-class corvette could wait inside the formation for a boat that penetrated the screen. A surfaced submarine was fast and dangerous, but it had no armor. Damage to the pressure hull could make diving impossible or fatal.",
       "sourcePath": "src/transcripts/txt/2021-08-14_T16-00-03_battle-of-the-atlantic-redo-crackpot-schemes-or-good-ideas-badly-done-p7-7_5cfwGctzr64.txt",
       "evidence": [
         {
@@ -371,7 +377,41 @@
         }
       ],
       "kind": "notable_point",
-      "summary": "World War I convoy lessons and early-war surfaced attacks show how escorts and armed merchantmen adapted once a U-boat revealed itself inside the formation."
+      "summary": "World War I convoy lessons helped escorts and armed merchantmen answer U-boats that attacked on the surface from inside the formation."
+    },
+    {
+      "id": "best-worst-option-and-deutschland-class-limits",
+      "videoId": "5cfwGctzr64",
+      "slug": "best-worst-option-and-deutschland-class-limits",
+      "title": "The best bad option and the Deutschland-class problem",
+      "start": "28:15",
+      "end": "29:47",
+      "topics": [
+        "battle-of-the-atlantic",
+        "alternate-history",
+        "kriegsmarine",
+        "naval-strategy",
+        "surface-warfare",
+        "battlecruisers",
+        "deutschland-class-cruisers",
+        "naval-industrial-base"
+      ],
+      "body": "The submarine campaign is treated as Germany's best bad option after earlier decisions narrowed the available strategy. Submarines could remain central, but a more balanced force would have made British countermeasures harder to concentrate. The Deutschland-class Panzerschiffe expose the weakness of Germany's existing surface-raider concept because they were not fast enough to escape battlecruisers. Repulse, the refitted Renown, and Hood could catch and overpower them, denying the raiders the freedom of action the strategy required. A submarine-centered campaign would have needed a maritime infrastructure advantage over Britain to overcome Allied replacement capacity, and Germany did not possess one.",
+      "sourcePath": "src/transcripts/txt/2021-08-14_T16-00-03_battle-of-the-atlantic-redo-crackpot-schemes-or-good-ideas-badly-done-p7-7_5cfwGctzr64.txt",
+      "evidence": [
+        {
+          "start": "28:15",
+          "end": "29:16",
+          "note": "The transcript calls submarines Germany's best worst option, argues for a more balanced force, and says the Deutschland class could not outrun Repulse, Renown, or Hood."
+        },
+        {
+          "start": "29:23",
+          "end": "29:47",
+          "note": "The transcript says Germany repeated the strategy that had worked best in the previous war but lacked the maritime infrastructure needed to make it succeed against Britain."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Why Deutschland-class raiders could not escape Repulse, Renown, or Hood, and why submarines remained Germany's best bad option."
     },
     {
       "id": "defensive-submarines-and-fast-raiders",
@@ -389,7 +429,7 @@
         "naval-strategy",
         "kriegsmarine"
       ],
-      "body": "Dr. Clarke closes by asking what Germany should have done instead and offers two broad alternatives: use submarines defensively around the coast, or combine submarines with fast surface commerce raiders and long-range aircraft. The fast-raider idea imagines cruiser-sized ships built for speed, range, and commerce attack rather than balanced fleet combat. Even then, the conclusion is constrained: any serious German naval buildup would have been visible, would have provoked British reaction, and would still run into limited shipyard and infrastructure capacity.",
+      "body": "Two alternatives follow from rejecting a submarine-only Atlantic campaign. Germany could have used its boats defensively near the coast as another layer of the Atlantic Wall. It could instead have combined submarines with small, fast surface raiders and long-range aircraft to stretch British defenses. The notional cruiser sacrifices balanced fleet-combat qualities for speed, range, and repeated commerce attacks. Any serious buildup would still have been visible, provoked a British response, and run into Germany's limited shipyard capacity.",
       "sourcePath": "src/transcripts/txt/2021-08-14_T16-00-03_battle-of-the-atlantic-redo-crackpot-schemes-or-good-ideas-badly-done-p7-7_5cfwGctzr64.txt",
       "evidence": [
         {
@@ -404,7 +444,7 @@
         }
       ],
       "kind": "chapter",
-      "summary": "The closing alternative suggests defensive submarine use or fast long-range commerce raiders, while emphasizing Germany's inescapable infrastructure bind."
+      "summary": "Defensive submarines or fast long-range raiders offered different uses for German resources, although both remained limited by shipyard capacity."
     },
     {
       "id": "disguised-forty-knot-raider-design",
@@ -421,7 +461,7 @@
         "naval-strategy",
         "kriegsmarine"
       ],
-      "body": "Dr. Clarke suggests disguising the raider's real performance by claiming more armour, lower speed, and shorter range than it actually possessed. The notional ship is roughly Town-class size and power but carries only six 6-inch guns, leaving weight and volume for more fuel and ammunition. Its approximately forty-knot speed is the key defensive feature: it is intended to strike commerce and escape rather than fight a balanced cruiser engagement.",
+      "body": "The proposed raider would conceal its real performance by claiming more armor, lower speed, and shorter range than it possessed. Its hull and machinery would be comparable to a Town-class cruiser, but it would carry only six 6-inch guns. The lighter armament would leave capacity for more fuel and ammunition. A speed of roughly 40 knots would let it attack commerce and escape rather than fight a balanced cruiser engagement.",
       "sourcePath": "src/transcripts/txt/2021-08-14_T16-00-03_battle-of-the-atlantic-redo-crackpot-schemes-or-good-ideas-badly-done-p7-7_5cfwGctzr64.txt",
       "evidence": [
         {
@@ -436,7 +476,7 @@
         }
       ],
       "kind": "notable_point",
-      "summary": "The proposed surface-raider design trades broad combat power for concealed speed, range, ammunition endurance, and repeatable construction."
+      "summary": "A Town-class-sized raider with six 6-inch guns would trade broad combat power for concealed speed, range, and ammunition endurance."
     },
     {
       "id": "axis-naval-infrastructure-comparison",
@@ -454,7 +494,7 @@
         "naval-strategy",
         "world-war-ii"
       ],
-      "body": "Germany and Japan are presented as navies constrained by limited space and industrial infrastructure relative to the fleets they hoped to sustain. Italy, by contrast, possessed a shipbuilding base adequate for its stated ambitions. Dr. Clarke therefore treats the Regia Marina's lack of a more rounded force as chiefly a consequence of procurement decisions, not an unavoidable shortage of yards. The comparison reinforces his verdict that Germany's submarine-centered Atlantic strategy began from a structurally bad position.",
+      "body": "Germany and Japan faced limited space and industrial infrastructure relative to the fleets they hoped to sustain. Italy had a shipbuilding base adequate for its stated ambitions. The Regia Marina's failure to field a more rounded force is therefore attributed chiefly to procurement decisions rather than an unavoidable shortage of yards. The comparison returns the Battle of the Atlantic to Germany's structural problem: a submarine-centered campaign depended on an industrial contest it was poorly placed to win.",
       "sourcePath": "src/transcripts/txt/2021-08-14_T16-00-03_battle-of-the-atlantic-redo-crackpot-schemes-or-good-ideas-badly-done-p7-7_5cfwGctzr64.txt",
       "evidence": [
         {
@@ -474,7 +514,7 @@
         }
       ],
       "kind": "notable_point",
-      "summary": "A closing comparison separates German and Japanese capacity limits from Italy's more avoidable procurement choices."
+      "summary": "German and Japanese capacity limits differed from Italy's more avoidable procurement choices."
     },
     {
       "id": "battlecruisers-as-treaty-frigates",
@@ -489,7 +529,7 @@
         "naval-classification",
         "alternate-history"
       ],
-      "body": "After the main conclusion, Dr. Clarke sketches a naval-classification counterfactual for a possible future discussion. He asks whether Jackie Fisher's battlecruisers might have developed as a distinct category if they had been called frigates rather than carrying the word battle in their name. Under that naming convention, naval treaties might have limited battleships, frigates, and aircraft carriers separately. The point is speculative, but it highlights how terminology can influence the categories through which fleets and treaty systems are organized.",
+      "body": "A closing counterfactual asks whether Jackie Fisher's battlecruisers might have developed as a distinct category if they had been called frigates. Without the word battle in the name, treaty negotiators might have separated them from battleships. Limits could then have applied independently to battleships, frigates, and aircraft carriers. The idea remains speculative, but it shows how classification can shape the categories used to regulate fleets.",
       "sourcePath": "src/transcripts/txt/2021-08-14_T16-00-03_battle-of-the-atlantic-redo-crackpot-schemes-or-good-ideas-badly-done-p7-7_5cfwGctzr64.txt",
       "evidence": [
         {
@@ -504,7 +544,7 @@
         }
       ],
       "kind": "notable_point",
-      "summary": "A closing counterfactual asks whether calling Fisher's battlecruisers frigates could have placed them in a separate treaty category from battleships."
+      "summary": "Calling Fisher's battlecruisers frigates might have placed them in a treaty category separate from battleships."
     }
   ]
 }
