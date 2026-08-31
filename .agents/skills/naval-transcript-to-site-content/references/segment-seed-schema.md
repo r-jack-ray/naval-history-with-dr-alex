@@ -53,7 +53,6 @@ Do not recreate a monolithic curated-content file. The manifest and shards under
 ```json
 {
   "id": "carrier-group-force-structure",
-  "videoId": "uURe69Wnh-Q",
   "slug": "carrier-group-force-structure",
   "title": "Carrier group force structure sketch",
   "kind": "notable_point",
@@ -76,7 +75,6 @@ Do not recreate a monolithic curated-content file. The manifest and shards under
 Required fields:
 
 - `id`: stable unique identifier.
-- `videoId`: video the segment belongs to.
 - `slug`: route slug under `/segments/`.
 - `title`: concise page title.
 - `kind`: one of `chapter`, `notable_point`, `qa`, or `transcript_excerpt`.
@@ -86,6 +84,9 @@ Required fields:
 - `body`: human-readable segment note.
 - `sourcePath`: repo-relative TXT transcript path.
 - `evidence`: one or more timestamp windows from the transcript.
+
+The containing video file's root `videoId` is authoritative. Every segment in
+that file inherits the root identity and must not repeat `videoId`.
 
 Optional fields:
 
@@ -115,5 +116,5 @@ For every first-pass transcript, scan the full duration for substantive transcri
 - Segment and evidence timestamps must be within the stored transcript duration.
 - `end` must be after `start`.
 - Every topic slug must be lowercase and hyphenated so the synchronizer can materialize its registry record.
-- Every segment video must match the containing manifest-named shard's JSON `videoId`; JSON identity remains authoritative even though the filename is readable.
+- Every shard root `videoId` must match its manifest-owned video. Segments inherit that JSON identity; the readable filename is a cross-check rather than the authority.
 - Q&A fields belong only on `kind: qa` records.

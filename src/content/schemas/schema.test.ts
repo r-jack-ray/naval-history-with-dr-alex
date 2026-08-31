@@ -30,6 +30,21 @@ test("rejects undeclared source-shard metadata", () => {
   }
 });
 
+test("rejects legacy segment-level video identity", () => {
+  const result = validateCuratedVideoFile({
+    ...sampleVideo(),
+    segments: [{
+      ...sampleVideo().segments[0],
+      videoId: "abc123",
+    }],
+  });
+
+  assert.equal(result.success, false);
+  if (!result.success) {
+    assert.match(result.issues.join("\n"), /videoId/u);
+  }
+});
+
 test("allows Q&A answerShort to serve as the concise result when summary is absent", () => {
   const video = parseCuratedVideoFile({
     ...sampleVideo(),
@@ -132,7 +147,6 @@ function sampleVideo() {
     topics: ["destroyers"],
     segments: [{
       id: "sample-segment",
-      videoId: "abc123",
       slug: "sample-segment",
       title: "Sample segment",
       kind: "chapter" as const,

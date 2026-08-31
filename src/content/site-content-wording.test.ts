@@ -563,7 +563,6 @@ function sampleVideo(
     segments: [
       {
         id: "destroyer-endurance",
-        videoId: "abcdefghijk",
         slug: "destroyer-endurance",
         title: "Destroyer endurance",
         kind: "notable_point",

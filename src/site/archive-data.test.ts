@@ -416,7 +416,6 @@ test("loads curated site content from per-video files", async () => {
         {
           id: "intro",
           slug: "intro",
-          videoId: "abc123",
           title: "Intro",
           kind: "chapter",
           start: "0:00",
@@ -540,7 +539,6 @@ function sampleCuratedSegment(videoId: string, title: string) {
   return {
     id: "duplicate-segment",
     slug: "duplicate-segment",
-    videoId,
     title,
     kind: "chapter",
     start: "1:23",

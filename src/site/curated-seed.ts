@@ -18,6 +18,7 @@ import {
 } from "./video-segment-files.js";
 
 export type {
+  CuratedArchiveSegmentSeed,
   CuratedArchiveSeed,
   CuratedVideoSeed,
 } from "../content/curated-archive-model.js";
@@ -95,7 +96,10 @@ async function loadCuratedSeedFiles(
         topics: [...video.topics],
       })),
       topics: topicStore.topics,
-      segments: loadedVideos.flatMap(({ video }) => video.segments),
+      segments: loadedVideos.flatMap(({ video }) => video.segments.map((segment) => ({
+        ...segment,
+        videoId: video.videoId,
+      }))),
     },
     loadedVideos,
   };
@@ -128,7 +132,7 @@ async function loadCuratedVideoFiles(
   preloadedShardIndex?: VideoSegmentShardIndex,
 ): Promise<LoadedCuratedVideoFile[]> {
   const { shards } = preloadedShardIndex ?? await discoverVideoSegmentShards(inputDirectory);
-  return shards.map(({ fileName, filePath, value }) => {
+  return shards.map(({ filePath, value }) => {
     return { filePath, video: value };
   });
 }

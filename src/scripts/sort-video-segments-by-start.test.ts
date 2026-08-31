@@ -162,7 +162,6 @@ function segment(
   }
   return {
     id,
-    videoId: "placeholder",
     slug: id,
     title: `Title for ${id}`,
     start,
@@ -179,6 +178,5 @@ function shardText(
     videoId: string,
     segments: Array<Record<string, unknown>>,
 ): string {
-  const ownedSegments = segments.map((entry) => ({...entry, videoId}));
-  return `${JSON.stringify({videoId, topics: [], segments: ownedSegments}, null, 2)}\n`;
+  return `${JSON.stringify({videoId, topics: [], segments}, null, 2)}\n`;
 }

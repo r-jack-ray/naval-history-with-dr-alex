@@ -10,7 +10,6 @@ export const curatedSegmentEvidenceSchema = z.strictObject({
 
 const commonSegmentShape = {
   id: nonEmptyStringSchema,
-  videoId: safeVideoIdSchema,
   slug: nonEmptyStringSchema,
   title: nonEmptyStringSchema,
   start: timestampLabelSchema,
@@ -44,16 +43,6 @@ export const curatedVideoFileSchema = z.strictObject({
   videoId: safeVideoIdSchema,
   topics: z.array(topicSlugSchema),
   segments: z.array(curatedSegmentSchema),
-}).superRefine((video, context) => {
-  for (const [index, segment] of video.segments.entries()) {
-    if (segment.videoId !== video.videoId) {
-      context.addIssue({
-        code: "custom",
-        path: ["segments", index, "videoId"],
-        message: `must match containing videoId ${video.videoId}`,
-      });
-    }
-  }
 });
 
 export type CuratedSegmentEvidenceSeed = z.infer<typeof curatedSegmentEvidenceSchema>;

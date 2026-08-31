@@ -5,7 +5,7 @@ import { join } from "node:path";
 import { formatTimestamp, segmentKinds, type SegmentKind } from "../index.js";
 import { slugifyVideoTitle } from "../naming.js";
 import { writeTextAtomically } from "../pipeline/atomic-write.js";
-import type { CuratedArchiveSeed } from "../content/curated-archive-model.js";
+import type { CuratedArchiveSeed, CuratedArchiveSegmentSeed, } from "../content/curated-archive-model.js";
 import type {
   CuratedSegmentSeed,
   CuratedTopicSeed,
@@ -1035,7 +1035,7 @@ function buildSiteVideo(input: {
 }
 
 function buildSiteSegment(input: {
-  seed: CuratedSegmentSeed;
+  seed: CuratedArchiveSegmentSeed;
   video: SiteVideo;
   topics: TopicRef[];
 }): SiteSegment {

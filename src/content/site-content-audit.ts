@@ -5,8 +5,8 @@ import { dirname, isAbsolute, join } from "node:path";
 import { segmentKinds } from "../index.js";
 import { writeTextAtomically } from "../pipeline/atomic-write.js";
 import { loadCuratedArchiveSeed, } from "../site/curated-seed.js";
-import type { CuratedArchiveSeed } from "./curated-archive-model.js";
-import { type CuratedSegmentSeed, type SiteContentProcessingConfig, validateSiteContentProcessingConfig, } from "./schemas/index.js";
+import type { CuratedArchiveSeed, CuratedArchiveSegmentSeed, } from "./curated-archive-model.js";
+import { type SiteContentProcessingConfig, validateSiteContentProcessingConfig, } from "./schemas/index.js";
 import { parseSiteContentProcessingLog, } from "./site-content-processing-log.js";
 
 export const defaultSiteContentAuditManifest = "src/transcripts/manifest.json";
@@ -236,7 +236,7 @@ async function writeAuditReport(output: string, audit: SiteContentAudit): Promis
 }
 
 function validateSegment(
-    segment: CuratedSegmentSeed,
+    segment: CuratedArchiveSegmentSeed,
     transcript: TranscriptManifestRecord | undefined,
     input: {
       rootDir: string;
@@ -305,7 +305,7 @@ function validateSegment(
 }
 
 function validateTranscriptRange(
-    segment: CuratedSegmentSeed,
+    segment: CuratedArchiveSegmentSeed,
     transcript: TranscriptManifestRecord,
     startSeconds: number | undefined,
     endSeconds: number | undefined,
@@ -337,7 +337,7 @@ function validateTranscriptRange(
 }
 
 function validateSourcePath(
-    segment: CuratedSegmentSeed,
+    segment: CuratedArchiveSegmentSeed,
     transcript: TranscriptManifestRecord | undefined,
     input: {
       rootDir: string;
@@ -383,7 +383,7 @@ function validateSourcePath(
 }
 
 function validateEvidence(
-    segment: CuratedSegmentSeed,
+    segment: CuratedArchiveSegmentSeed,
     transcript: TranscriptManifestRecord | undefined,
     issues: SiteContentAuditIssue[],
     minimumEvidenceWindows: number,
@@ -445,7 +445,7 @@ function validateEvidence(
   }
 }
 
-function validateQuestionFields(segment: CuratedSegmentSeed, issues: SiteContentAuditIssue[]): void {
+function validateQuestionFields(segment: CuratedArchiveSegmentSeed, issues: SiteContentAuditIssue[]): void {
   const hasQuestion = "question" in segment && segment.question !== undefined;
   const hasAnswerShort = "answerShort" in segment && segment.answerShort !== undefined;
 

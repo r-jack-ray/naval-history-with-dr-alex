@@ -282,7 +282,6 @@ async function makeTopicDirectory(
       {
         id: "segment-one",
         slug: "segment-one",
-        videoId: "abc123",
         title: "Segment one",
         kind: "chapter",
         start: "0:00",

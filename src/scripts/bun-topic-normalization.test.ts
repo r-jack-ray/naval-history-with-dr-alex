@@ -25,7 +25,6 @@ test("topic creation inputs are unique and sorted across shard video and segment
               summary: "Summary",
               body: "Body",
               kind: "chapter",
-              videoId: "video",
               start: "0:00",
               topics: ["bravo", "charlie"],
               sourcePath: "src/transcripts/txt/video.txt",
