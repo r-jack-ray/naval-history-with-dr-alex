@@ -3,13 +3,13 @@
 import { resolve } from "node:path";
 
 import {
-  migrateVideoSegmentShardVideoIds,
-  type VideoSegmentShardVideoIdMigrationMode,
-} from "../pipeline/video-segment-shard-video-id-migration.js";
+  migrateVideoSegmentShardDryFields,
+  type VideoSegmentShardDryMigrationMode,
+} from "../pipeline/video-segment-shard-dry-migration.js";
 
 interface CliOptions {
   inputDirectory: string;
-  mode: VideoSegmentShardVideoIdMigrationMode;
+  mode: VideoSegmentShardDryMigrationMode;
   showHelp: boolean;
 }
 
@@ -17,12 +17,12 @@ const options = parseArgs(process.argv.slice(2));
 if (options.showHelp) {
   printHelp();
 } else {
-  migrateVideoSegmentShardVideoIds({
+  migrateVideoSegmentShardDryFields({
     inputDirectory: options.inputDirectory,
     mode: options.mode,
   }).then((result) => {
     console.log(
-      `Video-segment shard videoId migration ${result.mode}: ` +
+      `Video-segment shard DRY migration ${result.mode}: ` +
       `${result.shardCount.toLocaleString("en-US")} shard(s), ` +
       `${result.segmentCount.toLocaleString("en-US")} segment(s), ` +
       `${result.changedShardCount.toLocaleString("en-US")} shard(s) requiring change, ` +
@@ -42,7 +42,7 @@ if (options.showHelp) {
 }
 
 function parseArgs(args: readonly string[]): CliOptions {
-  let mode: VideoSegmentShardVideoIdMigrationMode = "dry-run";
+  let mode: VideoSegmentShardDryMigrationMode = "dry-run";
   let modeSelected = false;
   let inputDirectory = resolve("src/derived/video-segments");
   let showHelp = false;
@@ -77,7 +77,7 @@ function parseArgs(args: readonly string[]): CliOptions {
 }
 
 function printHelp(): void {
-  console.log(`Usage: npm run migrate:video-segment-shard-video-ids -- [options]
+  console.log(`Usage: npm run migrate:video-segment-shard-dry-fields -- [options]
 
 Options:
   --write                   Create a validated backup, then apply the migration.
@@ -85,6 +85,8 @@ Options:
   --segments-input <path>   Override src/derived/video-segments.
   --help                    Show this help.
 
-The default mode is a read-only dry run that accepts resumable legacy and target shards.
+The default mode is a read-only dry run that accepts resumable legacy and target
+shards. Legacy segment id values must equal slug, and legacy segment videoId
+values must equal the containing root videoId.
 `);
 }

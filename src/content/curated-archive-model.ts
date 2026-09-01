@@ -1,6 +1,7 @@
 import type { CuratedSegmentSeed, CuratedTopicSeed, } from "./schemas/index.js";
 
 export type CuratedArchiveSegmentSeed = CuratedSegmentSeed & {
+  id: string;
   videoId: string;
 };
 

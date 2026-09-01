@@ -303,7 +303,7 @@ export function scanCuratedVideoFileMechanicalWording(
       if (includeReview) {
         for (const match of text.matchAll(hostAttributionPattern)) {
           hostAttributions.push({
-            segmentId: segment.id,
+            segmentId: segment.slug,
             segmentStart: segment.start,
             segmentIndex,
             segmentKind: segment.kind,
@@ -317,7 +317,7 @@ export function scanCuratedVideoFileMechanicalWording(
       findings.push(...scanField(
         file,
         video.videoId,
-        segment.id,
+        segment.slug,
         segment.start,
         segmentIndex,
         segment.kind,

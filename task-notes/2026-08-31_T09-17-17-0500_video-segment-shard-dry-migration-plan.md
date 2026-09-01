@@ -1,13 +1,33 @@
 # Video Segment Shard DRY Migration Plan
 
-Status: corrected planning only. No migration has been executed.
+Status: implemented with the aligned-ID extension described below.
 
 Timestamp: 2026-08-31T09:17:17-05:00
 
 Reviewed: 2026-08-31T09:34:19-05:00
 
+Implemented: 2026-09-01T03:08:34-05:00
+
 Related findings:
 `task-notes/2026-08-31_T09-17-17-0500_video-segment-shard-dry-findings.md`
+
+## Implemented extension after alignment
+
+The reviewed plan originally preserved authored `id` because 335 values differed
+from their route slugs. Those values were aligned after a consumer trace found no
+ID-based cross-link or foreign-key mechanism. With `id === slug` established for
+all 63,999 segments, the migration scope was extended to remove both redundant
+authored child fields:
+
+- segment `videoId` is derived from the containing root;
+- segment `id` is derived from the authored `slug`;
+- generated archive records retain `videoId`, `id`, and `slug` for compatibility.
+
+The strict target schema, loader, source-only diagnostics, checked migration
+helper, tests, and active writer guidance now implement that shape. The migration
+removed 63,999 aligned `id` fields from 2,104 non-empty shards and passed its
+target-only check. The remainder of this document records the reviewed plan before
+that extension and is superseded wherever it says authored `id` must remain.
 
 ## Correction from the initial plan
 
@@ -226,16 +246,16 @@ identical.
 
 Use a structural migration rather than a corpus-wide text replacement.
 
-- `src/pipeline/video-segment-shard-video-id-migration.ts` - Parse legacy and
+- `src/pipeline/video-segment-shard-dry-migration.ts` - Parse legacy and
   target shard shapes, preflight the complete corpus, transform deterministically,
   and write atomically.
-- `src/scripts/migrate-video-segment-shard-video-ids.ts` - Dry-run by default,
+- `src/scripts/migrate-video-segment-shard-dry-fields.ts` - Dry-run by default,
   require `--write` for mutation, and support a target-only `--check` mode.
-- `src/pipeline/video-segment-shard-video-id-migration.test.ts` - Cover valid
+- `src/pipeline/video-segment-shard-dry-migration.test.ts` - Cover valid
   transformation, mismatched parent identity, already-current shards, empty
   shards, unknown fields, atomic writes, and interrupted-run resumption.
 - `package.json` - Add a narrow command such as
-  `migrate:video-segment-shard-video-ids`.
+  `migrate:video-segment-shard-dry-fields`.
 
 The helper must:
 
@@ -308,9 +328,9 @@ Historical task notes and processing logs remain unchanged.
 With writers still frozen:
 
 ```powershell
-C:\Program Files\nodejs\npm.cmd run migrate:video-segment-shard-video-ids
-C:\Program Files\nodejs\npm.cmd run migrate:video-segment-shard-video-ids -- --write
-C:\Program Files\nodejs\npm.cmd run migrate:video-segment-shard-video-ids -- --check
+C:\Program Files\nodejs\npm.cmd run migrate:video-segment-shard-dry-fields
+C:\Program Files\nodejs\npm.cmd run migrate:video-segment-shard-dry-fields -- --write
+C:\Program Files\nodejs\npm.cmd run migrate:video-segment-shard-dry-fields -- --check
 ```
 
 Review the post-write result before broader validation:

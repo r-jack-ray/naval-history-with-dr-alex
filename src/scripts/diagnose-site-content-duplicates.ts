@@ -7,7 +7,7 @@ try {
   const duplicates = await findCuratedSegmentDuplicates(options.segmentsInput);
 
   if (duplicates.length === 0) {
-    console.log(`No duplicate segment IDs or slugs found in ${options.segmentsInput}.`);
+    console.log(`No duplicate segment slugs found in ${options.segmentsInput}.`);
   } else {
     const report = [
       `Found ${duplicates.length} duplicate segment key${duplicates.length === 1 ? "" : "s"} in ${options.segmentsInput}:`,

@@ -161,7 +161,6 @@ async function makeFixture(topics: string[]): Promise<{
     videoId: "abc123",
     topics,
     segments: [{
-      id: "one",
       slug: "one",
       title: "Fixture segment",
       kind: "chapter",

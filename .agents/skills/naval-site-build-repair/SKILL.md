@@ -1,6 +1,6 @@
 ---
 name: naval-site-build-repair
-description: Diagnose and safely repair build, archive-generation, Astro, and Pagefind failures in the Naval History with Dr. Alex study-guide repository. Use when `generate:site-data`, `site:check`, or `site:build` fails; when errors report an unsupported archive-manifest schema, missing or corrupt generated shards, duplicate segment IDs or slugs, missing topics, duplicate taxonomy, topic-normalization failures, invalid curated shards, TypeScript or Astro failures, or Pagefind indexing problems; or when the user asks to repair a pasted naval site build error while preserving unrelated filesystem changes.
+description: Diagnose and safely repair build, archive-generation, Astro, and Pagefind failures in the Naval History with Dr. Alex study-guide repository. Use when `generate:site-data`, `site:check`, or `site:build` fails; when errors report an unsupported archive-manifest schema, missing or corrupt generated shards, duplicate segment slugs or generated IDs, missing topics, duplicate taxonomy, topic-normalization failures, invalid curated shards, TypeScript or Astro failures, or Pagefind indexing problems; or when the user asks to repair a pasted naval site build error while preserving unrelated filesystem changes.
 ---
 
 # Naval Site Build Repair
@@ -19,18 +19,18 @@ Repair site-pipeline failures without widening scope or destabilizing establishe
 
 ## Repair Rules
 
-### Duplicate segment IDs or slugs
+### Duplicate segment slugs or generated IDs
 
 - Inspect every occurrence reported by `npm run diagnose:site-content-duplicates`.
 - Preserve both substantive watch points unless transcript evidence proves one is accidental duplication.
 - Treat a collision involving a transcript-visible answered exchange as a route-key collision, not permission to delete, merge, downgrade, or reclassify the `kind: qa` segment. Preserve each substantive Q&A as a separate segment in its owning video, including its `question` and `answerShort`, even when it collides with a chapter, notable point, or Q&A in another video.
-- Resolve every preserved Q&A as a separate route. When a Q&A occurrence needs a replacement `id` and `slug`, derive them from the exchange's learner-facing subject and append a concise `-qa` qualifier when the subject alone would still collide. Remove a Q&A occurrence only when the containing shard's root `videoId`, timestamp/evidence window, question, and answer establish that it is the same accidental duplicate within the same video.
+- Resolve every preserved Q&A as a separate route. When a Q&A occurrence needs a replacement `slug`, derive it from the exchange's learner-facing subject and append a concise `-qa` qualifier when the subject alone would still collide. The loader derives the runtime and generated ID from that slug. Remove a Q&A occurrence only when the containing shard's root `videoId`, timestamp/evidence window, question, and answer establish that it is the same accidental duplicate within the same video.
 - Rank occurrences by comparative confidence that each segment is accurate and complete; do not invent a numeric probability when the evidence supports only a qualitative judgment. Do not treat diagnostic order, creation date, filename date, file age, or prior generated-output order as content-quality evidence. Judge the current files and transcript evidence directly.
 - Apply evidence in this order:
   1. **Accuracy gate:** verify the containing shard's root `videoId`, the segment's `sourcePath`, timestamp, evidence note, and public claims against the transcript. An unsupported or contradicted occurrence must not keep the contested route.
   2. **Segment completeness:** among accurate candidates, prefer the focused occurrence that captures the full exchange or argument, supplies substantive learner-facing fields, uses an appropriate kind and topics, and includes enough evidence for its claims.
   3. **Audit provenance:** give a documented later content audit more weight than first-pass provenance when the current segment reflects added transcript-backed substance or correction. Treat an audit label, pass number, or model level as context rather than proof; judge the resulting content and evidence. Do not use `reports/video-segment-audit-risk.tsv` to choose the canonical occurrence because it is a fast metadata-based prioritization aid, not an accuracy or semantic-completeness measure.
-- Keep the contested `id` and `slug` on the highest-confidence occurrence. Derive unique replacements for every lower-confidence occurrence from its learner-facing title or subject, and keep `id` and `slug` equal unless the existing schema deliberately differs.
+- Keep the contested `slug` on the highest-confidence occurrence. Derive unique replacement slugs for every lower-confidence occurrence from its learner-facing title or subject. Authored segments must not add a separate `id`.
 - If candidates remain tied, prefer the occurrence whose learner-facing subject most precisely matches the contested key. Search the repository for the old value before renaming. If transcript evidence, audit state, and semantic fit still do not separate the candidates confidently, or references require compatibility the repository cannot preserve, stop and ask for direction; never break the tie by choosing what was first or oldest.
 - Rerun the duplicate diagnostic after editing; do not stop after clearing only the first reported collision.
 

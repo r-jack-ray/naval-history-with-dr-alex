@@ -69,10 +69,10 @@ test("sorts directory shards, preserves ties, skips topics, and rejects malforme
       malformedTimestampCount: 2,
     });
     const sorted = JSON.parse(await readFile(validPath, "utf8")) as {
-      segments: Array<{ id: string; start: string }>;
+      segments: Array<{ slug: string; start: string }>;
     };
     assert.deepEqual(
-        sorted.segments.map((entry) => entry.id),
+        sorted.segments.map((entry) => entry.slug),
         ["earlier-a", "earlier-b", "later"],
     );
     assert.deepEqual(
@@ -149,28 +149,27 @@ test("reports a failed shard without rewriting it", async () => {
 });
 
 function segment(
-    id: string,
+    slug: string,
     start: string,
     evidenceEnd?: string,
 ): Record<string, unknown> {
   const evidence: Record<string, unknown> = {
     start: "0:00",
-    note: `Evidence for ${id}.`,
+    note: `Evidence for ${slug}.`,
   };
   if (evidenceEnd !== undefined) {
     evidence.end = evidenceEnd;
   }
   return {
-    id,
-    slug: id,
-    title: `Title for ${id}`,
+    slug,
+    title: `Title for ${slug}`,
     start,
     topics: [],
-    body: `Body for ${id}.`,
+    body: `Body for ${slug}.`,
     sourcePath: "src/transcripts/txt/fixture.txt",
     evidence: [evidence],
     kind: "chapter",
-    summary: `Summary for ${id}.`,
+    summary: `Summary for ${slug}.`,
   };
 }
 

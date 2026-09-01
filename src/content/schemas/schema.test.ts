@@ -45,6 +45,21 @@ test("rejects legacy segment-level video identity", () => {
   }
 });
 
+test("rejects legacy segment IDs because slug is the authored segment key", () => {
+  const result = validateCuratedVideoFile({
+    ...sampleVideo(),
+    segments: [{
+      ...sampleVideo().segments[0],
+      id: "sample-segment",
+    }],
+  });
+
+  assert.equal(result.success, false);
+  if (!result.success) {
+    assert.match(result.issues.join("\n"), /id/u);
+  }
+});
+
 test("allows Q&A answerShort to serve as the concise result when summary is absent", () => {
   const video = parseCuratedVideoFile({
     ...sampleVideo(),
@@ -146,7 +161,6 @@ function sampleVideo() {
     videoId: "abc123",
     topics: ["destroyers"],
     segments: [{
-      id: "sample-segment",
       slug: "sample-segment",
       title: "Sample segment",
       kind: "chapter" as const,

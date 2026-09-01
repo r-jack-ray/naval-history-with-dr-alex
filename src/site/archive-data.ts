@@ -1089,7 +1089,6 @@ function buildSiteSegment(input: {
 function validateSeed(seed: CuratedArchiveSeed): void {
   assertUnique(seed.videos.map((video) => video.videoId), "video ID");
   assertUnique(seed.topics.map((topic) => topic.slug), "topic slug");
-  assertUnique(seed.segments.map((segment) => segment.id), "segment ID");
   assertUnique(seed.segments.map((segment) => segment.slug), "segment slug");
 
   const videoIds = new Set(seed.videos.map((video) => video.videoId));
@@ -1105,6 +1104,9 @@ function validateSeed(seed: CuratedArchiveSeed): void {
   }
 
   for (const segment of seed.segments) {
+    if (segment.id !== segment.slug) {
+      throw new Error(`Segment runtime ID must be derived from slug: ${segment.slug}`);
+    }
     if (!videoIds.has(segment.videoId)) {
       throw new Error(`Segment ${segment.id} references missing seeded video: ${segment.videoId}`);
     }

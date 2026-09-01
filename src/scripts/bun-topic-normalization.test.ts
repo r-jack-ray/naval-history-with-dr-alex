@@ -19,7 +19,6 @@ test("topic creation inputs are unique and sorted across shard video and segment
             videoId: "video",
             topics: ["zulu", "alpha", "charlie"],
             segments: [{
-              id: "segment",
               slug: "segment",
               title: "Segment",
               summary: "Summary",

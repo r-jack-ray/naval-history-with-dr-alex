@@ -52,7 +52,6 @@ Do not recreate a monolithic curated-content file. The manifest and shards under
 
 ```json
 {
-  "id": "carrier-group-force-structure",
   "slug": "carrier-group-force-structure",
   "title": "Carrier group force structure sketch",
   "kind": "notable_point",
@@ -74,8 +73,7 @@ Do not recreate a monolithic curated-content file. The manifest and shards under
 
 Required fields:
 
-- `id`: stable unique identifier.
-- `slug`: route slug under `/segments/`.
+- `slug`: stable unique segment key and route slug under `/segments/`.
 - `title`: concise page title.
 - `kind`: one of `chapter`, `notable_point`, `qa`, or `transcript_excerpt`.
 - `start`: timestamp label, `m:ss` or `h:mm:ss`.
@@ -87,6 +85,8 @@ Required fields:
 
 The containing video file's root `videoId` is authoritative. Every segment in
 that file inherits the root identity and must not repeat `videoId`.
+Authored segments also do not repeat a separate `id`; the loader derives the
+runtime and generated `id` from `slug` for archive compatibility.
 
 Optional fields:
 

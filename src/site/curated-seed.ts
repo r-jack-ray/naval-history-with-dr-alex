@@ -37,7 +37,7 @@ export interface CuratedSegmentOccurrence {
 }
 
 export interface CuratedSegmentDuplicate {
-  field: "id" | "slug";
+  field: "slug";
   value: string;
   occurrences: CuratedSegmentOccurrence[];
 }
@@ -65,7 +65,7 @@ export async function loadCuratedArchiveSeed(
 /**
  * Loads topic-report inputs without applying archive route-uniqueness checks.
  * Topic usage depends on video/topic relationships, so an unrelated duplicate
- * segment ID or slug must not prevent taxonomy curation.
+ * segment slug must not prevent taxonomy curation.
  */
 export async function loadCuratedTopicUsageSeed(
   inputDirectory: string,
@@ -98,6 +98,7 @@ async function loadCuratedSeedFiles(
       topics: topicStore.topics,
       segments: loadedVideos.flatMap(({ video }) => video.segments.map((segment) => ({
         ...segment,
+        id: segment.slug,
         videoId: video.videoId,
       }))),
     },
@@ -113,11 +114,10 @@ export async function findCuratedSegmentDuplicates(
 }
 
 export function formatCuratedSegmentDuplicate(duplicate: CuratedSegmentDuplicate): string {
-  const label = duplicate.field === "id" ? "ID" : "slug";
   const occurrences = duplicate.occurrences.map(({ filePath, videoId, segment }) => (
     `  - ${filePath} (videoId ${videoId}, start ${segment.start}, title ${JSON.stringify(segment.title)})`
   ));
-  return [`Duplicate segment ${label}: ${duplicate.value}`, ...occurrences].join("\n");
+  return [`Duplicate segment slug: ${duplicate.value}`, ...occurrences].join("\n");
 }
 
 async function validateInputDirectory(inputDirectory: string): Promise<void> {
@@ -142,26 +142,22 @@ function collectCuratedSegmentDuplicates(
 ): CuratedSegmentDuplicate[] {
   const duplicates: CuratedSegmentDuplicate[] = [];
 
-  for (const field of ["id", "slug"] as const) {
-    const occurrencesByValue = new Map<string, CuratedSegmentOccurrence[]>();
-    for (const { filePath, video } of loadedVideos) {
-      for (const segment of video.segments) {
-        const occurrences = occurrencesByValue.get(segment[field]) ?? [];
-        occurrences.push({ filePath, videoId: video.videoId, segment });
-        occurrencesByValue.set(segment[field], occurrences);
-      }
-    }
-
-    for (const [value, occurrences] of occurrencesByValue) {
-      if (occurrences.length > 1) {
-        duplicates.push({ field, value, occurrences });
-      }
+  const occurrencesByValue = new Map<string, CuratedSegmentOccurrence[]>();
+  for (const { filePath, video } of loadedVideos) {
+    for (const segment of video.segments) {
+      const occurrences = occurrencesByValue.get(segment.slug) ?? [];
+      occurrences.push({ filePath, videoId: video.videoId, segment });
+      occurrencesByValue.set(segment.slug, occurrences);
     }
   }
 
-  return duplicates.sort((left, right) => (
-    left.field.localeCompare(right.field) || left.value.localeCompare(right.value)
-  ));
+  for (const [value, occurrences] of occurrencesByValue) {
+    if (occurrences.length > 1) {
+      duplicates.push({ field: "slug", value, occurrences });
+    }
+  }
+
+  return duplicates.sort((left, right) => left.value.localeCompare(right.value));
 }
 
 async function readJson(path: string): Promise<unknown> {

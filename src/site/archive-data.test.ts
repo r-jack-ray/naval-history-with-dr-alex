@@ -177,7 +177,7 @@ test("splits and reconstructs the logical archive with 64 deterministic segment 
   );
   assert.deepEqual(
     split.segmentBuckets.find((bucket) => bucket.id === "12")?.segments.map((segment) => segment.id),
-    ["intro", "qa"],
+    ["intro", "qa-segment"],
   );
   assert.equal(split.manifest.files.segmentBuckets[0]?.path, "./segments/00.json");
   assert.equal(split.manifest.files.segmentBuckets[63]?.path, "./segments/3f.json");
@@ -229,7 +229,7 @@ test("keeps existing bucket filenames and assignments stable when records are ap
   assert.equal(siteArchiveSegmentBucketId("def456"), "1c");
   assert.deepEqual(
     appended.segmentBuckets.find((bucket) => bucket.id === "12")?.segments.map((segment) => segment.id),
-    ["intro", "qa"],
+    ["intro", "qa-segment"],
   );
 });
 
@@ -322,7 +322,6 @@ test("rejects duplicate segment routes", () => {
   const input = sampleInput();
   input.seed.segments.push({
     ...input.seed.segments[0]!,
-    id: "second-id",
   });
 
   assert.throws(
@@ -364,6 +363,7 @@ test("reserves browse route slugs for paginated archive directories", () => {
 
   const segmentInput = sampleInput();
   segmentInput.seed.segments[0]!.slug = "browse";
+  segmentInput.seed.segments[0]!.id = "browse";
   assert.throws(
     () => buildSiteArchiveData(segmentInput),
     /Segment slug browse is reserved/u,
@@ -414,7 +414,6 @@ test("loads curated site content from per-video files", async () => {
       topics: ["destroyers"],
       segments: [
         {
-          id: "intro",
           slug: "intro",
           title: "Intro",
           kind: "chapter",
@@ -438,7 +437,7 @@ test("loads curated site content from per-video files", async () => {
   }
 });
 
-test("reports every source shard for duplicate segment IDs and slugs", async () => {
+test("reports every source shard for duplicate segment slugs", async () => {
   const directory = await mkdtemp(join(tmpdir(), "naval-site-content-duplicates-"));
   try {
     await writeFile(join(directory, "topics.json"), JSON.stringify({
@@ -458,16 +457,13 @@ test("reports every source shard for duplicate segment IDs and slugs", async () 
     const duplicates = await findCuratedSegmentDuplicates(directory);
     assert.deepEqual(
       duplicates.map((duplicate) => [duplicate.field, duplicate.value, duplicate.occurrences.length]),
-      [
-        ["id", "duplicate-segment", 2],
-        ["slug", "duplicate-segment", 2],
-      ],
+      [["slug", "duplicate-segment", 2]],
     );
 
     await assert.rejects(
       () => loadCuratedArchiveSeed(directory),
       (error: Error) => {
-        assert.match(error.message, /Duplicate segment ID: duplicate-segment/u);
+        assert.match(error.message, /Duplicate segment slug: duplicate-segment/u);
         assert.match(error.message, /first-video_abc123\.json/u);
         assert.match(error.message, /second-video_def456\.json/u);
         assert.match(error.message, /First title/u);
@@ -498,7 +494,6 @@ test("loads readable shard filenames in video-ID order rather than filename orde
       topics: [],
       segments: [{
         ...sampleCuratedSegment("def456", "Second"),
-        id: "second-segment",
         slug: "second-segment",
       }],
     }));
@@ -537,7 +532,6 @@ test("rejects duplicate video identities across readable shard filenames", async
 
 function sampleCuratedSegment(videoId: string, title: string) {
   return {
-    id: "duplicate-segment",
     slug: "duplicate-segment",
     title,
     kind: "chapter",
@@ -629,7 +623,7 @@ function sampleInput(): Parameters<typeof buildSiteArchiveData>[0] {
           evidence: [{ start: "0:00", note: "Fixture evidence." }],
         },
         {
-          id: "qa",
+          id: "qa-segment",
           slug: "qa-segment",
           videoId: "abc123",
           title: "Question",

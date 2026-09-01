@@ -8,16 +8,16 @@ import { validateCuratedVideoFile, type CuratedVideoFileSeed, } from "../content
 import { writeTextAtomically } from "./atomic-write.js";
 import { listVideoSegmentShardFileNames } from "../site/video-segment-files.js";
 
-export type VideoSegmentShardVideoIdMigrationMode = "dry-run" | "write" | "check";
+export type VideoSegmentShardDryMigrationMode = "dry-run" | "write" | "check";
 
-export interface VideoSegmentShardVideoIdMigrationOptions {
+export interface VideoSegmentShardDryMigrationOptions {
   inputDirectory: string;
-  mode?: VideoSegmentShardVideoIdMigrationMode;
+  mode?: VideoSegmentShardDryMigrationMode;
   backupRoot?: string;
 }
 
-export interface VideoSegmentShardVideoIdMigrationResult {
-  mode: VideoSegmentShardVideoIdMigrationMode;
+export interface VideoSegmentShardDryMigrationResult {
+  mode: VideoSegmentShardDryMigrationMode;
   shardCount: number;
   segmentCount: number;
   changedShardCount: number;
@@ -53,14 +53,14 @@ interface BackupManifest {
   }>;
 }
 
-export async function migrateVideoSegmentShardVideoIds(
-  options: VideoSegmentShardVideoIdMigrationOptions,
-): Promise<VideoSegmentShardVideoIdMigrationResult> {
+export async function migrateVideoSegmentShardDryFields(
+  options: VideoSegmentShardDryMigrationOptions,
+): Promise<VideoSegmentShardDryMigrationResult> {
   const mode = options.mode ?? "dry-run";
   const inputDirectory = resolve(options.inputDirectory);
   const plans = await preflightShards(inputDirectory, mode === "check");
   const changedPlans = plans.filter((plan) => plan.state === "legacy");
-  const result: VideoSegmentShardVideoIdMigrationResult = {
+  const result: VideoSegmentShardDryMigrationResult = {
     mode,
     shardCount: plans.length,
     segmentCount: plans.reduce((total, plan) => total + plan.segmentCount, 0),
@@ -87,7 +87,7 @@ export async function migrateVideoSegmentShardVideoIds(
         const inspected = inspectShard(sourceText, plan.filePath, false);
         if (inspected.state !== "legacy") {
           throw new Error(
-            `Shard ${plan.filePath} no longer has the legacy segment videoId shape.`,
+            `Shard ${plan.filePath} no longer has the legacy segment field shape.`,
           );
         }
         requireHash(plan, inspected.targetText, plan.targetSha256, "target changed after preflight");
@@ -120,7 +120,6 @@ async function preflightShards(
   const fileNames = await listVideoSegmentShardFileNames(inputDirectory);
   const plans: ShardMigrationPlan[] = [];
   const failures: string[] = [];
-  const idLocations = new Map<string, string>();
   const slugLocations = new Map<string, string>();
 
   for (const fileName of fileNames) {
@@ -138,7 +137,6 @@ async function preflightShards(
         targetSha256: sha256(inspected.targetText),
       });
       for (const segment of inspected.target.segments) {
-        registerUniqueValue(idLocations, segment.id, filePath, "ID");
         registerUniqueValue(slugLocations, segment.slug, filePath, "slug");
       }
     } catch (error) {
@@ -148,7 +146,7 @@ async function preflightShards(
 
   if (failures.length > 0) {
     throw new Error(
-      `Video-segment shard videoId migration preflight failed for ` +
+      `Video-segment shard DRY migration preflight failed for ` +
       `${failures.length} shard(s):\n- ${failures.join("\n- ")}`,
     );
   }
@@ -173,23 +171,39 @@ function inspectShard(
   const shard = parsed as Record<string, unknown> & { segments: unknown[] };
 
   const rootVideoId = shard.videoId;
+  const hasLegacyId = shard.segments.map((segment, index) => {
+    if (!isRecord(segment)) {
+      throw new Error(`segments[${index}] must be an object`);
+    }
+    return Object.hasOwn(segment, "id");
+  });
   const hasLegacyVideoId = shard.segments.map((segment, index) => {
     if (!isRecord(segment)) {
       throw new Error(`segments[${index}] must be an object`);
     }
     return Object.hasOwn(segment, "videoId");
   });
+  const legacyIdCount = hasLegacyId.filter(Boolean).length;
   const legacySegmentCount = hasLegacyVideoId.filter(Boolean).length;
+  if (legacyIdCount > 0 && legacyIdCount !== shard.segments.length) {
+    throw new Error("shard mixes legacy and current segment id shapes");
+  }
   if (legacySegmentCount > 0 && legacySegmentCount !== shard.segments.length) {
     throw new Error("shard mixes legacy and current segment videoId shapes");
   }
-  if (targetOnly && legacySegmentCount > 0) {
-    throw new Error("legacy segment videoId fields remain");
+  const removedFieldCount = legacyIdCount + legacySegmentCount;
+  if (targetOnly && removedFieldCount > 0) {
+    throw new Error("legacy segment id or videoId fields remain");
   }
 
   const transformedSegments = shard.segments.map((segment, index) => {
     const record = segment as Record<string, unknown>;
-    let transformed = record;
+    if (hasLegacyId[index] && record.id !== record.slug) {
+      throw new Error(
+        `segments[${index}].id ${JSON.stringify(record.id)} ` +
+        `must match slug ${JSON.stringify(record.slug)}`,
+      );
+    }
     if (hasLegacyVideoId[index]) {
       if (typeof rootVideoId !== "string" || record.videoId !== rootVideoId) {
         throw new Error(
@@ -197,13 +211,16 @@ function inspectShard(
           `must match root videoId ${JSON.stringify(rootVideoId)}`,
         );
       }
+    }
+    let transformed = record;
+    if (hasLegacyId[index] || hasLegacyVideoId[index]) {
       transformed = {};
       for (const [key, value] of Object.entries(record)) {
-        if (key !== "videoId") {
+        if (key !== "id" && key !== "videoId") {
           transformed[key] = value;
         }
       }
-      const expectedKeys = Object.keys(record).filter((key) => key !== "videoId");
+      const expectedKeys = Object.keys(record).filter((key) => key !== "id" && key !== "videoId");
       if (!isDeepStrictEqual(Object.keys(transformed), expectedKeys)) {
         throw new Error(`segments[${index}] key order changed during migration planning`);
       }
@@ -219,17 +236,13 @@ function inspectShard(
   if (!validation.success) {
     throw new Error(validation.issues.join("; "));
   }
-  const projectedSource = removeLegacySegmentVideoIds(shard);
+  const projectedSource = removeLegacySegmentFields(shard);
   if (!isDeepStrictEqual(projectedSource, targetValue)) {
     throw new Error("migration changes retained shard values or key order");
   }
-  const targetText = legacySegmentCount === 0
+  const targetText = removedFieldCount === 0
     ? sourceText
-    : removeLegacySegmentVideoIdProperties(
-        sourceText,
-        String(rootVideoId),
-        legacySegmentCount,
-      );
+    : removeLegacySegmentProperties(sourceText, removedFieldCount);
   let parsedTargetText: unknown;
   try {
     parsedTargetText = JSON.parse(targetText) as unknown;
@@ -241,20 +254,18 @@ function inspectShard(
   }
 
   return {
-    state: legacySegmentCount === 0 ? "current" : "legacy",
+    state: removedFieldCount === 0 ? "current" : "legacy",
     segmentCount: validation.data.segments.length,
-    removedFieldCount: legacySegmentCount,
+    removedFieldCount,
     targetText,
     target: validation.data,
   };
 }
 
-function removeLegacySegmentVideoIdProperties(
+function removeLegacySegmentProperties(
   sourceText: string,
-  rootVideoId: string,
   expectedCount: number,
 ): string {
-  const encodedVideoId = escapeRegExp(JSON.stringify(rootVideoId));
   const segmentsProperty = /^[ \t]{2}"segments"[ \t]*:[ \t]*\[[ \t]*\r?\n/mu.exec(sourceText);
   if (segmentsProperty === null) {
     throw new Error("could not locate the root segments array in the supported shard layout");
@@ -263,7 +274,7 @@ function removeLegacySegmentVideoIdProperties(
   const sourcePrefix = sourceText.slice(0, segmentsOffset);
   let targetSegmentsText = sourceText.slice(segmentsOffset);
   const propertyWithFollowingSibling = new RegExp(
-    `^[ \\t]{2,}"videoId"[ \\t]*:[ \\t]*${encodedVideoId}[ \\t]*,[ \\t]*\\r?\\n`,
+    `^[ \\t]{2,}"(?:id|videoId)"[ \\t]*:[^\\r\\n]*,[ \\t]*\\r?\\n`,
     "gmu",
   );
   let removedCount = 0;
@@ -272,7 +283,7 @@ function removeLegacySegmentVideoIdProperties(
     return "";
   });
   const finalProperty = new RegExp(
-    `,\\r?\\n[ \\t]{2,}"videoId"[ \\t]*:[ \\t]*${encodedVideoId}[ \\t]*(\\r?\\n)(?=[ \\t]*\\})`,
+    `,\\r?\\n[ \\t]{2,}"(?:id|videoId)"[ \\t]*:[^\\r\\n]*(\\r?\\n)(?=[ \\t]*\\})`,
     "gmu",
   );
   targetSegmentsText = targetSegmentsText.replace(finalProperty, (_match, followingNewline: string) => {
@@ -281,14 +292,14 @@ function removeLegacySegmentVideoIdProperties(
   });
   if (removedCount !== expectedCount) {
     throw new Error(
-      `expected ${expectedCount} removable segment videoId line(s), found ${removedCount}; ` +
+      `expected ${expectedCount} removable segment id or videoId line(s), found ${removedCount}; ` +
       "source formatting is outside the supported two-space shard layout",
     );
   }
   return `${sourcePrefix}${targetSegmentsText}`;
 }
 
-function removeLegacySegmentVideoIds(
+function removeLegacySegmentFields(
   value: Record<string, unknown> & { segments: unknown[] },
 ): Record<string, unknown> {
   return {
@@ -296,7 +307,7 @@ function removeLegacySegmentVideoIds(
     segments: value.segments.map((segment) => {
       const transformed: Record<string, unknown> = {};
       for (const [key, item] of Object.entries(segment as Record<string, unknown>)) {
-        if (key !== "videoId") {
+        if (key !== "id" && key !== "videoId") {
           transformed[key] = item;
         }
       }
@@ -312,7 +323,7 @@ async function backUpLegacyShards(
 ): Promise<string> {
   const backupRoot = resolve(requestedBackupRoot ?? tmpdir());
   await mkdir(backupRoot, { recursive: true });
-  const backupDirectory = await mkdtemp(join(backupRoot, "video-segment-shard-video-id-"));
+  const backupDirectory = await mkdtemp(join(backupRoot, "video-segment-shard-dry-"));
   const manifest: BackupManifest = {
     schemaVersion: 1,
     sourceDirectory: inputDirectory,
@@ -363,10 +374,6 @@ function requireHash(
 
 function sha256(text: string): string {
   return createHash("sha256").update(text, "utf8").digest("hex");
-}
-
-function escapeRegExp(value: string): string {
-  return value.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&");
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {

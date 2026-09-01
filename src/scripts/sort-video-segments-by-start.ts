@@ -34,7 +34,7 @@ type FileSortResult = {
 type MalformedTimestampFinding = {
   field: string;
   problem: string;
-  segmentId: string;
+  segmentSlug: string;
   segmentNumber: number;
   timestampValue: string;
 };
@@ -104,11 +104,11 @@ function collectMalformedTimestamps(
     const segmentRecord = typeof segment === "object" && segment !== null && !Array.isArray(segment)
         ? segment as Record<string, unknown>
         : undefined;
-    const segmentId = typeof segmentRecord?.id === "string" ? segmentRecord.id : "";
+    const segmentSlug = typeof segmentRecord?.slug === "string" ? segmentRecord.slug : "";
     appendTimestampFinding(
         findings,
         index,
-        segmentId,
+        segmentSlug,
         `segments[${index}].start`,
         segmentRecord?.start,
         true,
@@ -116,7 +116,7 @@ function collectMalformedTimestamps(
     appendTimestampFinding(
         findings,
         index,
-        segmentId,
+        segmentSlug,
         `segments[${index}].end`,
         segmentRecord?.end,
         false,
@@ -131,7 +131,7 @@ function collectMalformedTimestamps(
         appendTimestampFinding(
             findings,
             index,
-            segmentId,
+            segmentSlug,
             `segments[${index}].evidence[${evidenceIndex}].start`,
             evidenceRecord?.start,
             true,
@@ -139,7 +139,7 @@ function collectMalformedTimestamps(
         appendTimestampFinding(
             findings,
             index,
-            segmentId,
+            segmentSlug,
             `segments[${index}].evidence[${evidenceIndex}].end`,
             evidenceRecord?.end,
             false,
@@ -154,7 +154,7 @@ function collectMalformedTimestamps(
 function appendTimestampFinding(
     findings: MalformedTimestampFinding[],
     segmentIndex: number,
-    segmentId: string,
+    segmentSlug: string,
     field: string,
     value: unknown,
     required: boolean,
@@ -164,7 +164,7 @@ function appendTimestampFinding(
     findings.push({
       field,
       problem,
-      segmentId,
+      segmentSlug,
       segmentNumber: segmentIndex + 1,
       timestampValue: formatUnknownValue(value),
     });
@@ -281,8 +281,8 @@ export async function runSortVideoSegmentsByStart(
             `Skipped, ${result.malformedTimestamps.length} malformed timestamp(s): ${filePath}`,
         );
         for (const finding of result.malformedTimestamps) {
-          const segmentLabel = finding.segmentId.length > 0
-              ? `segment ${finding.segmentNumber} (${finding.segmentId})`
+          const segmentLabel = finding.segmentSlug.length > 0
+              ? `segment ${finding.segmentNumber} (${finding.segmentSlug})`
               : `segment ${finding.segmentNumber}`;
           stderr(
               `  ${segmentLabel}, ${finding.field}=${finding.timestampValue}: ${finding.problem}`,

@@ -33,7 +33,6 @@ test("generation rejects pending normalization before changing topic or archive 
       videoId: "abc123",
       topics: ["old-topic"],
       segments: [{
-        id: "segment-one",
         slug: "segment-one",
         title: "Segment one",
         kind: "chapter",
@@ -242,7 +241,6 @@ async function writeCompleteArchiveInputs(fixture: GeneratorFixture): Promise<st
       videoId: "abc123",
       topics: ["destroyers", "royal-navy"],
       segments: [{
-        id: "intro",
         slug: "intro",
         title: "Introduction",
         kind: "chapter",

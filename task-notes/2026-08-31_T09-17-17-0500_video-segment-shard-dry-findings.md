@@ -1,10 +1,35 @@
 # Video Segment Shard DRY Findings
 
-Status: corrected analysis only. No shard, schema, script, or generated-data changes have been made.
+Status: implemented. `slug` is now the sole authored segment key. Runtime and
+generated archive IDs are derived from it.
 
 Timestamp: 2026-08-31T09:17:17-05:00
 
 Reviewed: 2026-08-31T09:34:19-05:00
+
+Remediated: 2026-09-01T02:52:27-05:00
+
+Implemented: 2026-09-01T03:08:34-05:00
+
+## Remediation
+
+The 335 historical `id` and `slug` differences were aligned first. A
+repository-wide consumer trace found no ID-based cross-link mechanism: routes
+and parent-video relationships use `slug` and `videoId`, while generated `id`
+is an archive compatibility field. The one cross-field equality between two
+Australian naval-heritage segments was a naming collision rather than a working
+link.
+
+The checked migration then removed all 63,999 authored segment `id` fields from
+2,104 non-empty shards. The strict source schema now accepts `slug` as the sole
+segment key, source-only diagnostics use it, and the loader derives runtime
+`id = slug`. Generated archive records remain unchanged in shape. The source
+migration removed 2,945,362 compact JSON bytes, 3.10% of the aligned pre-migration
+corpus.
+
+The measurements and initial conclusions below are retained as the
+pre-remediation analysis. The implemented outcome at the end supersedes the
+recommendation that `id` and `slug` remain separate in authored shards.
 
 ## Correction from the initial draft
 
@@ -48,7 +73,7 @@ The review traced fields through:
 A read-only Python 3.14 pass measured all current shards. CodeGraph and targeted
 source searches traced cross-file uses.
 
-## Current field contracts
+## Pre-remediation field contracts
 
 The canonical segment reference assigns these meanings explicitly:
 
@@ -73,7 +98,7 @@ text.
 | Root topics and segment topics                   | Separate editorial scopes                                    | Keep both                          |
 | Prose fields                                     | Separate presentation and evidence roles                     | Keep all                           |
 
-## Corpus measurements
+## Pre-remediation corpus measurements
 
 | Measurement                                           |                   Result | Relevance                                         |
 | ----------------------------------------------------- | -----------------------: | ------------------------------------------------- |
@@ -88,7 +113,7 @@ text.
 | Empty shards                                          |                       56 | They have no segment provenance fields to compare |
 | Shards mapped to manifest with matching root identity |     2,160 of 2,160, 100% | Root `videoId` is a reliable parent authority     |
 
-## Segment `id` and `slug` are not duplicates
+## Initial `id` and `slug` conclusion, superseded
 
 The strongest deceptive similarity is `id` versus `slug`.
 
@@ -237,7 +262,6 @@ The conservative normalized shape removes only segment `videoId`:
   "topics": ["carrier-groups"],
   "segments": [
     {
-      "id": "carrier-group-force-structure",
       "slug": "carrier-group-force-structure",
       "title": "Carrier group force structure sketch",
       "kind": "notable_point",
@@ -259,34 +283,32 @@ The conservative normalized shape removes only segment `videoId`:
 }
 ```
 
-## Corrected reduction estimate
+## Implemented reduction
 
-Removing only authored segment `videoId` saves 1,535,976 compact JSON bytes,
-which is 1.59% of the current compact shard corpus.
+Removing authored segment `videoId` saved 1,535,976 compact JSON bytes in the
+earlier migration. Removing the now-aligned authored `id` saved another
+2,945,362 compact bytes. The combined compact source reduction from the original
+96,673,746-byte snapshot is 4,484,270 bytes, or 4.64%.
 
-No generated archive reduction follows from this change. The loader must restore
-derived `videoId` context before flattening, so generated segment records remain
-unchanged.
+No generated archive reduction follows from these source changes. The loader
+restores derived `videoId` and `id` context before generation, so generated
+segment records remain unchanged in shape.
 
-The larger estimates in the initial draft depended on removing fields that are not
-proven duplicates. They are withdrawn.
-
-## Recommendation
-
-Limit the DRY migration plan to authored `segments[n].videoId`. Derive that value
-from the containing root at load time and retain it in flattened runtime and
-generated records.
+## Implemented outcome
 
 Retain:
 
 - root `videoId`;
-- segment `id`;
-- segment `slug`;
+- authored segment `slug` as the stable key and route;
 - segment `sourcePath`;
 - segment and evidence timestamps;
 - root and segment topic lists;
 - all public prose and evidence fields.
 
-Consider source-path hoisting, ID and slug unification, or generated-payload
-pruning only as separate contract investigations with their own compatibility and
-provenance requirements.
+Derive:
+
+- runtime segment `videoId` from the containing root;
+- runtime and generated segment `id` from the authored `slug`.
+
+Generated-payload pruning and source-path hoisting remain separate contract
+investigations with their own compatibility and provenance requirements.

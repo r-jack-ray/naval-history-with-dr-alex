@@ -280,7 +280,6 @@ async function makeTopicDirectory(
     topics: videoTopics,
     segments: [
       {
-        id: "segment-one",
         slug: "segment-one",
         title: "Segment one",
         kind: "chapter",

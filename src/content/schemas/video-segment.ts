@@ -9,7 +9,6 @@ export const curatedSegmentEvidenceSchema = z.strictObject({
 });
 
 const commonSegmentShape = {
-  id: nonEmptyStringSchema,
   slug: nonEmptyStringSchema,
   title: nonEmptyStringSchema,
   start: timestampLabelSchema,

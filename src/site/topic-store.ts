@@ -243,7 +243,7 @@ function scanTopicCorpus(
     for (const segment of value.segments) {
       collectTopicArray(
         segment.topics,
-        `${fileName} segment ${segment.id}`,
+        `${fileName} segment ${segment.slug}`,
         slugs,
         catalog,
         creationResolutions,

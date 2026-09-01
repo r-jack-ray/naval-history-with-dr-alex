@@ -562,7 +562,6 @@ function sampleVideo(
     topics: [],
     segments: [
       {
-        id: "destroyer-endurance",
         slug: "destroyer-endurance",
         title: "Destroyer endurance",
         kind: "notable_point",

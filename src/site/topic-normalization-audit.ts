@@ -103,7 +103,7 @@ export async function auditTopicNormalization(
     for (const segment of shard.value.segments) {
       auditTopicArray(
         segment.topics,
-        `${shard.fileName} segment ${String(segment.id)}`,
+        `${shard.fileName} segment ${segment.slug}`,
         catalog,
         usedSlugs,
         blockers,

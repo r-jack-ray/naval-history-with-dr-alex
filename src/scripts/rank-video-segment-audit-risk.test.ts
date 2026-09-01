@@ -57,7 +57,6 @@ test("CLI consumes the four-field log, isolates malformed shards, and renders st
       videoId: record.videoId,
       topics: ["destroyers"],
       segments: [{
-        id: `${record.videoId}-segment`,
         slug: `${record.videoId}-segment`,
         title: "Fixture segment",
         kind: "chapter",
