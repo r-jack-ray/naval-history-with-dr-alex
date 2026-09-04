@@ -1,28 +1,26 @@
 {
   "videoId": "8Dfwzli3iTE",
   "topics": [
-    "ultimate-admiral-dreadnoughts",
-    "royal-navy",
-    "naval-strategy",
+    "battlecruisers",
     "force-structure",
     "naval-procurement",
+    "naval-strategy",
     "naval-treaties",
-    "battlecruisers"
+    "royal-navy",
+    "ultimate-admiral-dreadnoughts"
   ],
   "segments": [
     {
       "slug": "campaign-update-and-submarine-surplus",
       "title": "A campaign fleet overwhelmed by submarines",
-      "kind": "chapter",
       "start": "0:16",
       "end": "18:55",
       "topics": [
-        "ultimate-admiral-dreadnoughts",
-        "submarines",
         "fleet-management",
-        "royal-navy"
+        "royal-navy",
+        "submarines",
+        "ultimate-admiral-dreadnoughts"
       ],
-      "summary": "The updated Ultimate Admiral campaign opens with Britain holding an unwieldy thousand-ship fleet and far more submarines than the game can comfortably sustain.",
       "body": "The fleet is cut from well over a thousand submarines to 339, yet Britain still retains about a thousand ships. The campaign shows how a militarily dominant force can become financially and administratively unmanageable. Hundreds of submarines have to go simply to keep the late-game simulation usable, so the resulting fleet should not be read as a plausible British order of battle. A game rule also mothballs new ships when trained crew are scarce while older vessels remain active. The mismatch separates the number of hulls owned from the personnel available to operate them.",
       "sourcePath": "src/transcripts/txt/2024-07-29_T18-00-03_check-campaign-27-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_8Dfwzli3iTE.txt",
       "evidence": [
@@ -36,21 +34,21 @@
           "end": "18:55",
           "note": "He explains that the campaign had grown beyond what the game could handle, required submarine reductions, and mothballed new ships when crew were unavailable."
         }
-      ]
+      ],
+      "kind": "chapter",
+      "summary": "The updated Ultimate Admiral campaign opens with Britain holding an unwieldy thousand-ship fleet and far more submarines than the game can comfortably sustain."
     },
     {
       "slug": "royal-navy-ship-naming-conventions",
       "title": "Reading Royal Navy ship types through their names",
-      "kind": "notable_point",
       "start": "15:37",
       "end": "17:27",
       "topics": [
-        "ultimate-admiral-dreadnoughts",
         "royal-navy",
         "ship-naming",
+        "ultimate-admiral-dreadnoughts",
         "warship-classification"
       ],
-      "summary": "While deleting duplicate submarines, the names Andromeda, Royal Sovereign, Rodney, Forester, and Swift become examples of how Royal Navy naming traditions suggest a ship's expected type.",
       "body": "The game's name generator ignores historical associations between Royal Navy names and ship types. Andromeda sounds more like a cruiser name, while Royal Sovereign and Rodney fit battleships. Forester and Swift suggest destroyers, whereas Tyde suits a submarine. These are judgments about naming tradition rather than fixed rules, since navies reuse names across generations and categories. Several duplicate names appear at once, another sign that the fleet is a simulation abstraction rather than a plausible commissioned list.",
       "sourcePath": "src/transcripts/txt/2024-07-29_T18-00-03_check-campaign-27-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_8Dfwzli3iTE.txt",
       "evidence": [
@@ -59,20 +57,20 @@
           "end": "17:27",
           "note": "He contrasts submarine names with names associated with cruisers, battleships, and destroyers, then notices several duplicate names in simultaneous use."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "While deleting duplicate submarines, the names Andromeda, Royal Sovereign, Rodney, Forester, and Swift become examples of how Royal Navy naming traditions suggest a ship's expected type."
     },
     {
       "slug": "mothball-preservation-and-stripped-equipment",
       "title": "What mothballing a warship actually involves",
-      "kind": "notable_point",
       "start": "22:13",
       "end": "22:42",
       "topics": [
-        "reserve-fleet",
         "fleet-maintenance",
-        "naval-logistics"
+        "naval-logistics",
+        "reserve-fleet"
       ],
-      "summary": "A brief aside explains that reserve ships are treated with strong insecticides and stripped of vulnerable fittings rather than simply tied up and abandoned.",
       "body": "Mothballing involves more than tying up a ship and leaving it unattended. Strong insecticides protect stored vessels, and useful or perishable fittings are removed before long-term reserve. Upholstery is the concrete example of material that would normally come off the ship. A reserve fleet therefore still requires preservation work and decisions about which equipment remains installed. Operating costs fall, but mothballing is an organized logistical state rather than neglect.",
       "sourcePath": "src/transcripts/txt/2024-07-29_T18-00-03_check-campaign-27-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_8Dfwzli3iTE.txt",
       "evidence": [
@@ -81,21 +79,21 @@
           "end": "22:42",
           "note": "He says mothballed ships receive strong insecticide treatment and have useful material, including upholstery, removed."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "A brief aside explains that reserve ships are treated with strong insecticides and stripped of vulnerable fittings rather than simply tied up and abandoned."
     },
     {
       "slug": "peacetime-budget-and-fleet-maintenance",
       "title": "Peacetime budgets versus a wartime-scale fleet",
-      "kind": "notable_point",
       "start": "35:42",
       "end": "41:40",
       "topics": [
-        "ultimate-admiral-dreadnoughts",
-        "naval-budgets",
         "fleet-maintenance",
-        "naval-strategy"
+        "naval-budgets",
+        "naval-strategy",
+        "ultimate-admiral-dreadnoughts"
       ],
-      "summary": "A postwar funding cut leaves a huge British fleet unaffordable, showing how maintenance, training, research, and shipyard capacity compete for naval money.",
       "body": "The campaign's central problem is the cost of keeping an oversized force ready during peace. Wartime funding had produced a large surplus, but the peacetime budget now leaves Britain in deficit despite the empire's size. Training and technology are already funded at their maximum settings, while fleet maintenance and fixed expenses consume the available money. Eliminating research would buy only a few more months. Keeping the force intact would therefore require cuts to readiness, research, or construction. The figures belong to the game, while the competition among budget categories closely resembles a real naval planning problem.",
       "sourcePath": "src/transcripts/txt/2024-07-29_T18-00-03_check-campaign-27-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_8Dfwzli3iTE.txt",
       "evidence": [
@@ -109,21 +107,21 @@
           "end": "41:40",
           "note": "He reviews fixed expenses, training and technology spending, shipyard capacity, and a possible research cut."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "A postwar funding cut leaves a huge British fleet unaffordable, showing how maintenance, training, research, and shipyard capacity compete for naval money."
     },
     {
       "slug": "dock-size-versus-national-construction-capacity",
       "title": "A large dock is not the same as shipbuilding capacity",
-      "kind": "notable_point",
       "start": "38:37",
       "end": "40:14",
       "topics": [
-        "ultimate-admiral-dreadnoughts",
         "british-shipbuilding",
+        "industrial-capacity",
         "naval-procurement",
-        "industrial-capacity"
+        "ultimate-admiral-dreadnoughts"
       ],
-      "summary": "A critique of the campaign economy distinguishes the largest hull a yard can accept from the total industrial capacity available across an empire.",
       "body": "The game's economy treats the maximum size of one yard as if it were closely related to total shipbuilding capacity. In this campaign, individual yards can accept 530,000-ton hulls, yet the empire's whole construction allowance amounts to fewer than three such ships. That sits awkwardly with control of 215 provinces and an economy that should include many yards, suppliers, and labor pools. The complaint concerns a game abstraction rather than a measured estimate of historical British output. The underlying procurement distinction is clear: dock dimensions set the largest hull one site can build, while national capacity depends on the number of yards and the industrial network supporting them.",
       "sourcePath": "src/transcripts/txt/2024-07-29_T18-00-03_check-campaign-27-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_8Dfwzli3iTE.txt",
       "evidence": [
@@ -137,22 +135,22 @@
           "end": "40:14",
           "note": "He argues that an empire controlling 215 provinces should represent a much larger distributed economy and construction base."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "A critique of the campaign economy distinguishes the largest hull a yard can accept from the total industrial capacity available across an empire."
     },
     {
       "slug": "mothballing-and-scrapping-for-affordability",
       "title": "Mothballing and scrapping to make a fleet affordable",
-      "kind": "chapter",
       "start": "47:24",
       "end": "1:05:24",
       "topics": [
-        "ultimate-admiral-dreadnoughts",
+        "battleships",
         "fleet-maintenance",
         "reserve-fleet",
-        "battleships",
-        "submarines"
+        "submarines",
+        "ultimate-admiral-dreadnoughts"
       ],
-      "summary": "The campaign turns fleet reduction into a practical exercise: retire old capital ships, place regional forces in reserve, and weigh mothball savings against active readiness.",
       "body": "An unsustainable deficit drives the retirement or mothballing of older battleships and regional forces. One group of capital ships costs roughly two billion per turn, and the largest hulls carry much of the maintenance burden. A mothballed ship costs far less but cannot be used immediately. Scrapping ends the expense permanently, while reserve status preserves a hull for later reactivation. Even 1929-vintage submarines begin to disappear before they are twenty years old, since redundancy and fleet scale matter more than calendar age. The campaign applies the two measures differently across regional fleets and likely contingencies. The sequence makes capital-ship upkeep tangible and separates nominal hull numbers from usable combat power.",
       "sourcePath": "src/transcripts/txt/2024-07-29_T18-00-03_check-campaign-27-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_8Dfwzli3iTE.txt",
       "evidence": [
@@ -171,22 +169,22 @@
           "end": "1:01:57",
           "note": "He begins removing submarines built in 1929 and observes that they are not yet twenty years old in the campaign's 1946 date."
         }
-      ]
+      ],
+      "kind": "chapter",
+      "summary": "The campaign turns fleet reduction into a practical exercise: retire old capital ships, place regional forces in reserve, and weigh mothball savings against active readiness."
     },
     {
       "slug": "political-control-of-war-and-fleet-readiness",
       "title": "Political control can frustrate naval strategy",
-      "kind": "notable_point",
       "start": "56:47",
       "end": "1:00:54",
       "topics": [
-        "ultimate-admiral-dreadnoughts",
         "civilian-control",
         "naval-strategy",
+        "readiness",
         "reserve-fleet",
-        "readiness"
+        "ultimate-admiral-dreadnoughts"
       ],
-      "summary": "Unable to declare war despite a financial incentive to do so, the campaign highlights the tension between political decision-making, readiness, and operational plans.",
       "body": "The game prevents a naval commander from declaring war, which exaggerates a real division of authority: officers prepare forces, while political leaders decide whether they fight. Diplomatic tension can be raised, but it cannot be turned directly into a declaration. A half-serious proposal to place ships close enough to a minor power to provoke war shows how operational behavior can manufacture a crisis even when formal authority remains political. The Baltic force stays active for a possible war with Germany, while forces in the Adriatic, Arabian Sea, Bay of Bengal, and other areas enter reserve. This keeps one contingency ready and reduces costs elsewhere. Fleet planning follows political authority as well as the commander's preferred campaign.",
       "sourcePath": "src/transcripts/txt/2024-07-29_T18-00-03_check-campaign-27-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_8Dfwzli3iTE.txt",
       "evidence": [
@@ -195,21 +193,21 @@
           "end": "1:00:54",
           "note": "He cannot declare war, raises tension instead, and keeps the Baltic fleet active for a possible German war."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "Unable to declare war despite a financial incentive to do so, the campaign highlights the tension between political decision-making, readiness, and operational plans."
     },
     {
       "slug": "peacetime-reserves-and-selective-readiness",
       "title": "Reserve fleets are normal peacetime force structure",
-      "kind": "notable_point",
       "start": "1:16:59",
       "end": "1:20:41",
       "topics": [
-        "reserve-fleet",
-        "naval-readiness",
         "fleet-maintenance",
-        "force-structure"
+        "force-structure",
+        "naval-readiness",
+        "reserve-fleet"
       ],
-      "summary": "The campaign recovers financially by keeping only the forces needed for the likely German contingency active and placing much of the wider fleet in reserve.",
       "body": "Navies normally keep a substantial share of their ships mothballed or outside full active service in peacetime. The campaign's reserve decisions follow that force-management principle even though its fleet numbers are fantastical. Britain retains enough active strength for a possible German war and accepts lower readiness elsewhere. Selling older ships and cutting active upkeep restore a positive monthly balance. The result is selective readiness: a large nominal inventory can be preserved without crewing and operating every hull at once.",
       "sourcePath": "src/transcripts/txt/2024-07-29_T18-00-03_check-campaign-27-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_8Dfwzli3iTE.txt",
       "evidence": [
@@ -223,22 +221,22 @@
           "end": "1:20:41",
           "note": "He reports a positive monthly balance after reserve measures and sales of older ships."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "The campaign recovers financially by keeping only the forces needed for the likely German contingency active and placing much of the wider fleet in reserve."
     },
     {
       "slug": "punitive-naval-treaty-counterfactual",
       "title": "Could a harsher naval treaty have broken the challengers?",
-      "kind": "chapter",
       "start": "1:42:46",
       "end": "1:47:35",
       "topics": [
-        "naval-treaties",
-        "washington-naval-treaty",
+        "alternate-history",
         "capital-ships",
+        "naval-treaties",
         "royal-navy",
-        "alternate-history"
+        "washington-naval-treaty"
       ],
-      "summary": "A game-driven counterfactual asks whether higher capital-ship and carrier allowances for Britain and America could have forced Japan and Italy into an unsustainable naval race.",
       "body": "The game's overwhelming British fleet prompts a deliberately unequal treaty proposal. Britain and the United States would each be allowed roughly thirty capital ships and perhaps twenty or thirty carriers, while Japan would retain a seven-to-ten ratio. France and Italy would receive smaller proportional allowances. The idea is that Mussolini's Italy and imperial Japan might exhaust their weaker economies trying to use the permitted tonnage, leaving Germany isolated after Hitler came to power. Britain and the United States could approach their ceilings slowly because Britain already possessed much of the capital fleet the scheme allowed. This is a counterfactual argument, and it offers a concrete way to think about treaty ratios, industrial capacity, and fiscal pressure.",
       "sourcePath": "src/transcripts/txt/2024-07-29_T18-00-03_check-campaign-27-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_8Dfwzli3iTE.txt",
       "evidence": [
@@ -247,21 +245,21 @@
           "end": "1:47:35",
           "note": "He outlines a counterfactual treaty with larger British and American capital-ship and carrier allowances and a 7:10 Japanese ratio."
         }
-      ]
+      ],
+      "kind": "chapter",
+      "summary": "A game-driven counterfactual asks whether higher capital-ship and carrier allowances for Britain and America could have forced Japan and Italy into an unsustainable naval race."
     },
     {
       "slug": "treaty-enforcement-and-closed-systems",
       "title": "Treaty limits need credible enforcement",
-      "kind": "notable_point",
       "start": "1:47:37",
       "end": "1:55:50",
       "topics": [
-        "naval-treaties",
         "arms-control",
         "international-relations",
-        "naval-strategy"
+        "naval-strategy",
+        "naval-treaties"
       ],
-      "summary": "Arms-control agreements restrain willing members only while they remain within a system able to enforce its rules.",
       "body": "Treaty rules work best when participants continue to accept them and weaken when a state withdraws or violates them. British domestic weapons regulation serves as an analogy for a closed system that can control access and impose consequences. International relations do not form the same kind of closed system: outside states can build arms, and members can leave. Any judgment of a naval treaty therefore has to consider who remains bound by it and which penalties are credible. The analogy is an explanatory model, not proof that domestic law and international arms control work alike.",
       "sourcePath": "src/transcripts/txt/2024-07-29_T18-00-03_check-campaign-27-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_8Dfwzli3iTE.txt",
       "evidence": [
@@ -275,21 +273,21 @@
           "end": "1:55:50",
           "note": "He concludes that the treaties could control only members that continued to participate."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "Arms-control agreements restrain willing members only while they remain within a system able to enforce its rules."
     },
     {
       "slug": "british-policing-and-controlled-escalation",
       "title": "Why routine British policing remains mostly unarmed",
-      "kind": "notable_point",
       "start": "1:49:05",
       "end": "1:53:07",
       "topics": [
         "british-history",
-        "law-enforcement",
+        "civil-military-relations",
         "firearms-regulation",
-        "civil-military-relations"
+        "law-enforcement"
       ],
-      "summary": "The argument presented here is that keeping routine British police unarmed reduces pressure on criminals to carry guns, while armed specialists and military support provide higher levels of response.",
       "body": "The case against routinely arming British police rests on institutional escalation. If officers visibly carry firearms as standard, criminals may begin to treat guns as necessary equipment rather than an exceptional risk. Routine officers already have tasers, batons, and body armour, while specialist armed units can answer a more dangerous threat. In an extreme case, the state can escalate again through military support. This is one interpretation of British policing and deterrence, not a complete account of the law, crime, or every police force.",
       "sourcePath": "src/transcripts/txt/2024-07-29_T18-00-03_check-campaign-27-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_8Dfwzli3iTE.txt",
       "evidence": [
@@ -298,21 +296,21 @@
           "end": "1:53:07",
           "note": "He argues that routinely arming police could encourage criminals to arm themselves, then describes tasers, batons, body armour, specialist firearms officers, and military support as escalating responses."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "The argument presented here is that keeping routine British police unarmed reduces pressure on criminals to carry guns, while armed specialists and military support provide higher levels of response."
     },
     {
       "slug": "british-firearms-controls-and-body-armour",
       "title": "Ammunition, firearm components, and body armour in Britain",
-      "kind": "notable_point",
       "start": "1:53:18",
       "end": "1:57:31",
       "topics": [
+        "arms-control",
         "british-history",
         "firearms-regulation",
-        "arms-control",
         "law-enforcement"
       ],
-      "summary": "The treaty analogy leads to a practical discussion of British firearms controls: ammunition and pressure-bearing components receive close attention, while body armour remains available to buy.",
       "body": "The discussion treats ammunition as a major regulatory choke point in Britain and later favors controls on a firearm's pressure-bearing components over rules centered on the frame. Body armour can be bought, including through some army-surplus shops, though the market is described as limited. These examples support the earlier comparison between a closed domestic regulatory system and an international treaty system that states can leave. They also show that regulation depends on which parts of a weapons ecosystem the state can control. This is an informal account given during a livestream, not legal advice or a complete statement of current British law.",
       "sourcePath": "src/transcripts/txt/2024-07-29_T18-00-03_check-campaign-27-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_8Dfwzli3iTE.txt",
       "evidence": [
@@ -326,22 +324,20 @@
           "end": "1:57:31",
           "note": "British controls on pressure-bearing components are contrasted with frame-based language, and body armour is described as legal to buy but a small market."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "The treaty analogy leads to a practical discussion of British firearms controls: ammunition and pressure-bearing components receive close attention, while body armour remains available to buy."
     },
     {
       "slug": "british-and-american-gun-culture-divergence",
       "title": "Why did British gun culture diverge from America's?",
-      "kind": "qa",
       "start": "1:53:57",
       "end": "1:55:18",
       "topics": [
         "british-history",
-        "social-history",
-        "firearms-regulation"
+        "firearms-regulation",
+        "social-history"
       ],
-      "summary": "The suggested explanation for Britain's different firearms culture looks to island ecology, the earlier loss of large predators, and hunting traditions formed before modern guns.",
-      "question": "Why did Britain not develop the same gun culture as the United States?",
-      "answerShort": "The suggested explanation is that Britain lost most large predators before modern gun culture emerged, while later hunting focused more on birds and rarely required more than a shotgun.",
       "body": "Geography and hunting history are offered as part of the explanation for different British and American relationships with firearms. Britain is an island where most large native predators had disappeared before the modern period. Much of its earlier hunting tradition developed around bows, while later shooting often focused on birds. In this account, that pattern created less everyday demand for the range of firearms associated with hunting and frontier life in the United States. The answer is a broad interpretation from a livestream discussion rather than a comprehensive social history of either country.",
       "sourcePath": "src/transcripts/txt/2024-07-29_T18-00-03_check-campaign-27-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_8Dfwzli3iTE.txt",
       "evidence": [
@@ -350,21 +346,23 @@
           "end": "1:55:18",
           "note": "He repeats a question about the absence of an equivalent British gun culture and answers through island ecology, predator loss, and hunting traditions."
         }
-      ]
+      ],
+      "kind": "qa",
+      "summary": "The suggested explanation for Britain's different firearms culture looks to island ecology, the earlier loss of large predators, and hunting traditions formed before modern guns.",
+      "question": "Why did Britain not develop the same gun culture as the United States?",
+      "answerShort": "The suggested explanation is that Britain lost most large predators before modern gun culture emerged, while later hunting focused more on birds and rarely required more than a shotgun."
     },
     {
       "slug": "british-dreadnought-industrial-capacity",
       "title": "British shipbuilding capacity in the dreadnought race",
-      "kind": "notable_point",
       "start": "2:08:43",
       "end": "2:09:13",
       "topics": [
-        "dreadnoughts",
-        "royal-navy",
+        "anglo-german-naval-arms-race",
         "british-shipbuilding",
-        "anglo-german-naval-arms-race"
+        "dreadnoughts",
+        "royal-navy"
       ],
-      "summary": "A short reflection on Britain building roughly a third of the world's dreadnoughts points to the industrial imbalance behind the Anglo-German naval race.",
       "body": "Britain built a large share of the world's dreadnoughts during the roughly ten years before the First World War. Some British yards capable of building them still lacked enough orders and faced bankruptcy. Ship totals therefore understate the depth of unused industrial capacity. Germany would have faced the ships Britain had ordered and the additional construction Britain could mobilize under greater pressure. The passage invites comparison of each rival's ability to sustain capital-ship construction over time.",
       "sourcePath": "src/transcripts/txt/2024-07-29_T18-00-03_check-campaign-27-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_8Dfwzli3iTE.txt",
       "evidence": [
@@ -373,23 +371,21 @@
           "end": "2:09:13",
           "note": "He says Britain built nearly a third of the world’s dreadnoughts and questions whether Germany could have won the naval race."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "A short reflection on Britain building roughly a third of the world's dreadnoughts points to the industrial imbalance behind the Anglo-German naval race."
     },
     {
       "slug": "deterrence-through-overwhelming-fleet-strength",
       "title": "Deterrence that prevents the battle you wanted",
-      "kind": "qa",
       "start": "2:15:04",
       "end": "2:17:00",
       "topics": [
         "deterrence",
-        "naval-strategy",
         "force-structure",
+        "naval-strategy",
         "ultimate-admiral-dreadnoughts"
       ],
-      "summary": "The campaign’s greatest success is also its disappointment: Britain’s strength deters every opponent, leaving no naval battle to fight.",
-      "question": "Did Britain's overwhelming campaign fleet accidentally frighten every opponent out of declaring war?",
-      "answerShort": "Yes. Even after extensive mothballing, an active fleet of 834 ships makes deterrence so effective that the campaign produces no final battle.",
       "body": "Britain controls 216 provinces and fields a much larger navy than any rival, so the game's opponents avoid war. Widespread mothballing still leaves more than eight hundred active ships. Deterrence succeeds strategically but frustrates a player seeking combat. The campaign ends without the climactic naval battle its buildup seemed to promise. This is the strategic purpose of naval power in compact form: an enemy that decides against war can be a successful outcome even when no battle occurs.",
       "sourcePath": "src/transcripts/txt/2024-07-29_T18-00-03_check-campaign-27-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_8Dfwzli3iTE.txt",
       "evidence": [
@@ -403,22 +399,24 @@
           "end": "2:17:00",
           "note": "He says other powers are too frightened to declare war and calls deterrence very successful."
         }
-      ]
+      ],
+      "kind": "qa",
+      "summary": "The campaign’s greatest success is also its disappointment: Britain’s strength deters every opponent, leaving no naval battle to fight.",
+      "question": "Did Britain's overwhelming campaign fleet accidentally frighten every opponent out of declaring war?",
+      "answerShort": "Yes. Even after extensive mothballing, an active fleet of 834 ships makes deterrence so effective that the campaign produces no final battle."
     },
     {
       "slug": "designing-hms-deterrence",
       "title": "Designing HMS Deterrence as a battlecruiser",
-      "kind": "chapter",
       "start": "2:15:58",
       "end": "2:31:34",
       "topics": [
         "battlecruisers",
-        "ship-design",
         "naval-gunnery",
         "naval-procurement",
+        "ship-design",
         "ultimate-admiral-dreadnoughts"
       ],
-      "summary": "A heavy-cruiser replacement becomes a 45,000-ton battlecruiser after a design process balancing armament, range, protection, stability, and crew demand.",
       "body": "The design begins with 9.2-inch main guns, but they look too slight for the proposed battlecruiser hull. The next choices cover capped shells, fire-control range, secondary batteries, bulkheads, draft, weight distribution, roll, and pitch. Reducing maximum bulkheads frees weight for the desired armament at some cost to underwater survivability. The final HMS Deterrence displaces about 45,000 tons and carries 15-inch main guns, twin six-inch secondary mounts, and quad 40 mm anti-aircraft weapons. Long range and a crew of more than 1,250 add operational costs to the construction bill. The exercise shows warship design as a balance of competing requirements rather than a search for a single maximum statistic.",
       "sourcePath": "src/transcripts/txt/2024-07-29_T18-00-03_check-campaign-27-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_8Dfwzli3iTE.txt",
       "evidence": [
@@ -432,22 +430,22 @@
           "end": "2:31:34",
           "note": "He finalizes HMS Deterrence, lists its displacement and armament, and explains why the earlier 9.2-inch design looked too slight."
         }
-      ]
+      ],
+      "kind": "chapter",
+      "summary": "A heavy-cruiser replacement becomes a 45,000-ton battlecruiser after a design process balancing armament, range, protection, stability, and crew demand."
     },
     {
       "slug": "ordering-a-battlecruiser-class",
       "title": "Ordering a battlecruiser class for a balanced fleet",
-      "kind": "notable_point",
       "start": "2:33:19",
       "end": "2:36:50",
       "topics": [
         "battlecruisers",
+        "fleet-composition",
         "force-structure",
         "naval-procurement",
-        "fleet-composition",
         "ultimate-admiral-dreadnoughts"
       ],
-      "summary": "The campaign closes with an order for 24 battlecruisers and a deliberately balanced future fleet of capital ships, cruisers, destroyers, and submarines.",
       "body": "The first order covers sixteen battlecruisers, followed by eight more after the remaining construction allowance is checked. A total of twenty-four divides into three eight-ship squadrons, which matters more than using every ton of yard capacity. The projected fleet contains roughly sixty-four battleships, forty-seven battlecruisers, two hundred light cruisers, four hundred destroyers, and four hundred submarines. Heavy cruisers would disappear because the new battlecruisers fill their intended role. These deliberately extravagant game numbers still frame force structure as a mixture of capital ships, screens, and undersea forces. They also show why procurement totals should follow deployable formations rather than capacity alone.",
       "sourcePath": "src/transcripts/txt/2024-07-29_T18-00-03_check-campaign-27-uad-has-updated-and-to-learn-it-s-new-ways-i-started-another-british-campaign_8Dfwzli3iTE.txt",
       "evidence": [
@@ -456,7 +454,9 @@
           "end": "2:36:50",
           "note": "He orders 24 battlecruisers, checks spare construction capacity, and lays out a desired fleet composition."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "The campaign closes with an order for 24 battlecruisers and a deliberately balanced future fleet of capital ships, cruisers, destroyers, and submarines."
     }
   ]
 }

@@ -106,6 +106,42 @@ function topicArraysMatch(left: readonly string[], right: readonly string[]): bo
   return left.length === right.length && left.every((topic, index) => topic === right[index]);
 }
 
+function sortSegmentFields(
+    segment: CuratedVideoFileSeed["segments"][number],
+    topics: string[],
+): CuratedVideoFileSeed["segments"][number] {
+  const commonFields = {
+    slug: segment.slug,
+    title: segment.title,
+    start: segment.start,
+    ...(segment.end === undefined ? {} : {end: segment.end}),
+    topics,
+    body: segment.body,
+    sourcePath: segment.sourcePath,
+    evidence: segment.evidence.map((entry) => ({
+      start: entry.start,
+      ...(entry.end === undefined ? {} : {end: entry.end}),
+      note: entry.note,
+    })),
+  };
+
+  if (segment.kind === "qa") {
+    return {
+      ...commonFields,
+      kind: segment.kind,
+      ...(segment.summary === undefined ? {} : {summary: segment.summary}),
+      question: segment.question,
+      answerShort: segment.answerShort,
+    };
+  }
+
+  return {
+    ...commonFields,
+    kind: segment.kind,
+    summary: segment.summary,
+  };
+}
+
 async function sortTopicsInFile(filePath: string): Promise<FileSortResult> {
   const originalText = await readFile(filePath, "utf8");
   let parsed: unknown;
@@ -123,21 +159,21 @@ async function sortTopicsInFile(filePath: string): Promise<FileSortResult> {
   }
   const segments = data.segments.map((segment) => {
     const topics = sortTopicSlugs(segment.topics);
-    if (topicArraysMatch(topics, segment.topics)) {
-      return segment;
+    if (!topicArraysMatch(topics, segment.topics)) {
+      sortedTopicArrayCount += 1;
     }
-    sortedTopicArrayCount += 1;
-    return {...segment, topics};
+    return sortSegmentFields(segment, topics);
   });
 
-  const changed = sortedTopicArrayCount > 0;
+  const sortedData: CuratedVideoFileSeed = {
+    videoId: data.videoId,
+    topics: videoTopics,
+    segments,
+  };
+  const sortedText = `${JSON.stringify(sortedData, null, 2)}\n`;
+  const changed = sortedText !== originalText;
   if (changed) {
-    const sortedData: CuratedVideoFileSeed = {
-      ...data,
-      topics: videoTopics,
-      segments,
-    };
-    await writeTextAtomically(filePath, `${JSON.stringify(sortedData, null, 2)}\n`);
+    await writeTextAtomically(filePath, sortedText);
   }
 
   return {changed, sortedTopicArrayCount};
@@ -194,9 +230,11 @@ export async function runSortVideoSegmentTopics(
     if (outcome.result.changed) {
       changedFileCount += 1;
       sortedTopicArrayCount += outcome.result.sortedTopicArrayCount;
-      stdout(`Sorted ${outcome.result.sortedTopicArrayCount} topic array(s): ${outcome.filePath}`);
+      stdout(
+          `Normalized shard (${outcome.result.sortedTopicArrayCount} topic array(s) sorted): ${outcome.filePath}`,
+      );
     } else {
-      stdout(`Already sorted: ${outcome.filePath}`);
+      stdout(`Already canonical: ${outcome.filePath}`);
     }
   }
 
@@ -220,7 +258,7 @@ export async function runSortVideoSegmentTopics(
 function usage(): string {
   return `Usage: npm run fix:video-segment-topic-order -- [directory] [options]
 
-Sorts video-level and segment-level topic arrays in every shard JSON file.
+Sorts schema fields plus video-level and segment-level topic arrays in every shard JSON file.
 The shared topics.json registry is excluded.
 
 Options:

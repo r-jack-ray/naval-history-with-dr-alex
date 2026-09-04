@@ -1,33 +1,29 @@
 {
   "videoId": "AaY3lNBty2g",
   "topics": [
-    "naval-history",
-    "imperial-japanese-navy",
     "battle-of-midway",
-    "submarines",
-    "royal-navy",
+    "imperial-japanese-navy",
     "naval-aviation",
-    "naval-staff"
+    "naval-history",
+    "naval-staff",
+    "royal-navy",
+    "submarines"
   ],
   "segments": [
     {
       "slug": "deutschland-class-cruisers-not-capital-ships",
       "title": "Why the Deutschland class were cruisers, not capital ships",
-      "kind": "qa",
       "start": "0:11",
       "end": "1:53",
       "topics": [
+        "11-inch-guns",
+        "capital-ships",
+        "coastal-defence-ships",
         "deutschland-class-cruisers",
         "heavy-cruisers",
-        "capital-ships",
-        "washington-naval-treaty",
-        "coastal-defence-ships",
-        "11-inch-guns"
+        "washington-naval-treaty"
       ],
-      "summary": "Large guns and the press label 'pocket battleship' did not make the Deutschland class capital ships.",
       "body": "The answer classifies the Deutschland class by displacement, armament, speed, and contemporary treaty categories rather than by its dramatic nickname. The Washington Naval Treaty treated ships up to 10,000 tons as cruisers, and the class's roughly 8,000-ton scale sat inside that framework. Six 11-inch guns made the ships unusually powerful cruisers, but contemporary capital ships began around 14-inch armament and were moving toward 15- and 16-inch guns. A 5,000-ton ship belonged in light-cruiser territory. Comparisons with monitors and purpose-built coastal-defence ships show why carrying a battleship-calibre weapon does not by itself determine a vessel's class.",
-      "question": "Were the 8,000-ton Deutschland-class 'pocket battleships' normally considered capital ships?",
-      "answerShort": "No. They were powerful heavy cruisers; their 11-inch guns and nickname did not outweigh their cruiser-scale displacement, speed, and overall characteristics.",
       "sourcePath": "src/transcripts/txt/2025-07-02_T18-30-06_scuttlebutt-12-not-pocket-battleships-no-guadalcanal-and-a-load-of-submarine-signals_AaY3lNBty2g.txt",
       "evidence": [
         {
@@ -40,26 +36,26 @@
           "end": "3:25",
           "note": "The follow-up rejects 5,000 tons as a heavy-cruiser benchmark and distinguishes small cruisers from the established coastal-defence-ship category."
         }
-      ]
+      ],
+      "kind": "qa",
+      "summary": "Large guns and the press label 'pocket battleship' did not make the Deutschland class capital ships.",
+      "question": "Were the 8,000-ton Deutschland-class 'pocket battleships' normally considered capital ships?",
+      "answerShort": "No. They were powerful heavy cruisers; their 11-inch guns and nickname did not outweigh their cruiser-scale displacement, speed, and overall characteristics."
     },
     {
       "slug": "pom-pom-versus-bofors-threat-context",
       "title": "Pom-pom or Bofors depends on the expected air threat",
-      "kind": "qa",
       "start": "1:55",
       "end": "7:29",
       "topics": [
-        "naval-anti-aircraft-weapons",
         "2-pounder-guns",
         "bofors-40-mm",
-        "royal-navy",
+        "drone-warfare",
+        "naval-anti-aircraft-weapons",
         "regia-marina",
-        "drone-warfare"
+        "royal-navy"
       ],
-      "summary": "A comparison of clip-fed Bofors guns and belt-fed pom-poms shows how engagement range, sustained fire, crew fatigue, and the expected attack pattern shape weapon choice.",
       "body": "The Bofors offers greater engagement range, while the pom-pom's belt feed supports a longer continuous volume of fire. Bofors clips are easier to store and move around a ship, but repeated manual replenishment can slow under manoeuvre or as loaders tire. This distinction separates prolonged Royal Navy carrier and convoy defence in the Mediterranean from the shorter attacks the Regia Marina was more likely to face. A small simulation of Second World War weapons against drone swarms illustrates the same principle: useful comparison means judging performance against the expected threat, not making an abstract ranking of weapons.",
-      "question": "Was clipped ammunition really a disadvantage for the Bofors, and was it clearly superior to the pom-pom?",
-      "answerShort": "Clips had logistical advantages but required repeated human replenishment, which could slow under manoeuvre or fatigue. The Bofors and pom-pom suited different engagement ranges and durations.",
       "sourcePath": "src/transcripts/txt/2025-07-02_T18-30-06_scuttlebutt-12-not-pocket-battleships-no-guadalcanal-and-a-load-of-submarine-signals_AaY3lNBty2g.txt",
       "evidence": [
         {
@@ -72,21 +68,23 @@
           "end": "7:29",
           "note": "The answer compares Bofors range with pom-pom sustained fire, Mediterranean threat patterns, and a drone-swarm simulation."
         }
-      ]
+      ],
+      "kind": "qa",
+      "summary": "A comparison of clip-fed Bofors guns and belt-fed pom-poms shows how engagement range, sustained fire, crew fatigue, and the expected attack pattern shape weapon choice.",
+      "question": "Was clipped ammunition really a disadvantage for the Bofors, and was it clearly superior to the pom-pom?",
+      "answerShort": "Clips had logistical advantages but required repeated human replenishment, which could slow under manoeuvre or fatigue. The Bofors and pom-pom suited different engagement ranges and durations."
     },
     {
       "slug": "shell-bursting-charge-table-correction",
       "title": "Correction to a shell bursting-charge comparison",
-      "kind": "notable_point",
       "start": "7:33",
       "end": "14:04",
       "topics": [
-        "naval-artillery",
-        "naval-shells",
         "ammunition",
-        "historical-method"
+        "historical-method",
+        "naval-artillery",
+        "naval-shells"
       ],
-      "summary": "A bursting-charge figure changed between the source spreadsheet and the published comparison slide.",
       "body": "The underlying spreadsheet retained the intended bursting-charge value, but the PowerPoint table displayed a different number. Comparing both working files confirms the viewer's correction and prompts an apology for the initial response. The discrepancy separates an error in the presentation artifact from the calculation preserved in the source table. The exchange shows why published naval-ammunition data should be checked against the underlying work.",
       "sourcePath": "src/transcripts/txt/2025-07-02_T18-30-06_scuttlebutt-12-not-pocket-battleships-no-guadalcanal-and-a-load-of-submarine-signals_AaY3lNBty2g.txt",
       "evidence": [
@@ -95,25 +93,23 @@
           "end": "14:04",
           "note": "The transcript compares the spreadsheet and slide, identifies the incorrect displayed bursting charge, and records the apology."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "A bursting-charge figure changed between the source spreadsheet and the published comparison slide."
     },
     {
       "slug": "ijn-rank-inflation-and-apprentice-admirals",
       "title": "IJN rank inflation and the problem of apprentice admirals",
-      "kind": "qa",
       "start": "14:26",
       "end": "23:28",
       "topics": [
+        "battle-of-midway",
+        "command-and-control",
         "imperial-japanese-navy",
         "naval-leadership",
-        "command-and-control",
-        "battle-of-midway",
         "officer-training"
       ],
-      "summary": "The IJN's many senior officers reflected a training and trust problem more than a need to distribute commands among factions.",
       "body": "The Japanese system produced excellent specialists but took longer to turn them into generalists capable of mixed-force command. Rear admirals often functioned as closely supervised 'apprentice admirals,' while vice admirals carried responsibilities that other navies might entrust to lower ranks. That lack of delegated trust overloaded senior commanders with multiple roles and encouraged tightly controlled small divisions rather than independent subordinate commands. The discussion connects this structure to a wider master-student culture in Japanese service training and promotion. Factional politics mattered, but it was not the main cause of operational complexity.",
-      "question": "Did an excess of IJN flag officers drive Japan's complex, widely dispersed operations by creating commands for competing factions?",
-      "answerShort": "Less than might be expected. Specialist training, slow development of generalist commanders, and limited trust in rear admirals did more to produce overloaded vice admirals and awkward command structures.",
       "sourcePath": "src/transcripts/txt/2025-07-02_T18-30-06_scuttlebutt-12-not-pocket-battleships-no-guadalcanal-and-a-load-of-submarine-signals_AaY3lNBty2g.txt",
       "evidence": [
         {
@@ -126,27 +122,27 @@
           "end": "23:28",
           "note": "The transcript describes apprentice admirals, rank equivalence, limited delegation, overloaded vice admirals, and master-student service culture."
         }
-      ]
+      ],
+      "kind": "qa",
+      "summary": "The IJN's many senior officers reflected a training and trust problem more than a need to distribute commands among factions.",
+      "question": "Did an excess of IJN flag officers drive Japan's complex, widely dispersed operations by creating commands for competing factions?",
+      "answerShort": "Less than might be expected. Specialist training, slow development of generalist commanders, and limited trust in rear admirals did more to produce overloaded vice admirals and awkward command structures."
     },
     {
       "slug": "even-midway-battle-us-carrier-response",
       "title": "How an even Battle of Midway could reshape US carrier building",
-      "kind": "qa",
       "start": "28:40",
       "end": "30:34",
       "topics": [
-        "battle-of-midway",
-        "us-navy",
-        "essex-class-aircraft-carriers",
-        "midway-class-aircraft-carriers",
+        "aircraft-carriers",
         "alaska-class-large-cruisers",
         "atlanta-class-cruisers",
-        "aircraft-carriers"
+        "battle-of-midway",
+        "essex-class-aircraft-carriers",
+        "midway-class-aircraft-carriers",
+        "us-navy"
       ],
-      "summary": "An alternate Midway with heavier American losses would probably preserve the Essex program while accelerating Midways and strengthening carrier air-defence escorts.",
       "body": "The United States would likely keep the Essex production surge but place greater urgency on the larger, more survivable Midway class. Alaska-class ships already under construction might be rushed into service with much stronger anti-aircraft batteries. Ordering more Atlanta-class cruisers offers a cleaner escort solution, but it would take longer than adapting hulls already being built. The answer therefore changes the protection and support around the carrier force rather than replacing carriers with a submarine-led Pacific strategy.",
-      "question": "If Midway had been a much more even battle, would the United States favor Essex carriers, accelerate the Midway class, or turn toward submarine blockade?",
-      "answerShort": "The Essex program would likely continue, with more or earlier Midways and added emphasis on heavily armed carrier escorts rather than a submarine-led strategy.",
       "sourcePath": "src/transcripts/txt/2025-07-02_T18-30-06_scuttlebutt-12-not-pocket-battleships-no-guadalcanal-and-a-load-of-submarine-signals_AaY3lNBty2g.txt",
       "evidence": [
         {
@@ -154,25 +150,27 @@
           "end": "30:34",
           "note": "The question and answer compare continued Essex production, an accelerated Midway program, and Alaska- or Atlanta-class carrier escorts."
         }
-      ]
+      ],
+      "kind": "qa",
+      "summary": "An alternate Midway with heavier American losses would probably preserve the Essex program while accelerating Midways and strengthening carrier air-defence escorts.",
+      "question": "If Midway had been a much more even battle, would the United States favor Essex carriers, accelerate the Midway class, or turn toward submarine blockade?",
+      "answerShort": "The Essex program would likely continue, with more or earlier Midways and added emphasis on heavily armed carrier escorts rather than a submarine-led strategy."
     },
     {
       "slug": "even-midway-delays-guadalcanal-and-british-entry",
       "title": "An even Midway could delay Guadalcanal and enlarge British involvement",
-      "kind": "notable_point",
       "start": "30:38",
       "end": "31:39",
       "topics": [
+        "allied-strategy",
         "battle-of-midway",
+        "battle-of-the-atlantic",
         "guadalcanal-campaign",
+        "mediterranean-theatre",
         "pacific-war",
         "royal-navy",
-        "us-navy",
-        "allied-strategy",
-        "mediterranean-theatre",
-        "battle-of-the-atlantic"
+        "us-navy"
       ],
-      "summary": "Heavier carrier losses at Midway could postpone Guadalcanal, preserve American cruisers and destroyers for later battles, and give Britain more time to reinforce the Pacific.",
       "body": "The scenario does not change the expected Allied victory, but heavier carrier losses at Midway would delay the next Pacific offensives. If both sides lost roughly two carriers and entered repair periods, neither would hold easy control of the sea, making a rapid American advance less likely. Without an immediate Guadalcanal campaign, the US Navy would preserve more destroyers and cruisers for later fighting around Australia. The Mediterranean and North Atlantic campaigns would also advance further before those Pacific battles, potentially freeing a larger British naval contribution. This is a change in timing and force availability within the scenario, not a claim that Japan wins the war.",
       "sourcePath": "src/transcripts/txt/2025-07-02_T18-30-06_scuttlebutt-12-not-pocket-battleships-no-guadalcanal-and-a-load-of-submarine-signals_AaY3lNBty2g.txt",
       "evidence": [
@@ -181,23 +179,23 @@
           "end": "31:39",
           "note": "The transcript links a deferred Guadalcanal campaign to retained US cruisers and destroyers, later fighting near Australia, greater British availability, and temporary carrier parity while both navies repair losses."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "Heavier carrier losses at Midway could postpone Guadalcanal, preserve American cruisers and destroyers for later battles, and give Britain more time to reinforce the Pacific."
     },
     {
       "slug": "japanese-held-midway-decisive-battle-trap",
       "title": "A Japanese-held Midway could become a decisive-battle trap",
-      "kind": "notable_point",
       "start": "31:42",
       "end": "33:06",
       "topics": [
         "battle-of-midway",
-        "imperial-japanese-navy",
-        "us-navy",
         "decisive-battle-doctrine",
+        "imperial-japanese-navy",
         "naval-reconnaissance",
-        "submarines"
+        "submarines",
+        "us-navy"
       ],
-      "summary": "Capturing Midway could force the United States into a costly counterattack while Japanese aircraft and submarines waited around the island.",
       "body": "Midway matters less as a valuable permanent base than as leverage for forcing the US Navy to fight. American political and strategic pressure to retake the island would make its surviving carriers approach on a route the Japanese could anticipate. Land-based reconnaissance could provide warning while submarines and other forces attrited the counterattack. The scheme would reverse the historical battle by using Midway to draw the Americans into an ambush instead of allowing the Americans to ambush the Japanese.",
       "sourcePath": "src/transcripts/txt/2025-07-02_T18-30-06_scuttlebutt-12-not-pocket-battleships-no-guadalcanal-and-a-load-of-submarine-signals_AaY3lNBty2g.txt",
       "evidence": [
@@ -206,24 +204,24 @@
           "end": "33:06",
           "note": "The transcript explains how occupying Midway could compel an American counterattack and support a Japanese ambush with reconnaissance, submarines, and other assets."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "Capturing Midway could force the United States into a costly counterattack while Japanese aircraft and submarines waited around the island."
     },
     {
       "slug": "treaty-tonnage-shaped-carrier-compromises",
       "title": "Treaty tonnage forced carrier armor and air-group compromises",
-      "kind": "notable_point",
       "start": "33:20",
       "end": "34:55",
       "topics": [
         "aircraft-carriers",
-        "washington-naval-treaty",
-        "naval-treaties",
-        "us-navy",
-        "royal-navy",
+        "implacable-class-aircraft-carriers",
         "midway-class-aircraft-carriers",
-        "implacable-class-aircraft-carriers"
+        "naval-treaties",
+        "royal-navy",
+        "us-navy",
+        "washington-naval-treaty"
       ],
-      "summary": "American and British carrier differences reflected choices imposed by a 135,000-ton treaty ceiling rather than wholly different ideals.",
       "body": "The United States wanted more carrier protection, while Britain wanted larger air groups, but the treaty ceiling limited how many large decks either navy could build. Designers therefore had to trade individual-ship protection against aircraft capacity and total carrier numbers. Without the restriction, both navies probably would have preferred roughly 27,000-ton armored carriers from the outset. British designs would retain somewhat more protection and American ships somewhat more aircraft, but the resulting fleets would be much closer than their treaty-era carriers suggest.",
       "sourcePath": "src/transcripts/txt/2025-07-02_T18-30-06_scuttlebutt-12-not-pocket-battleships-no-guadalcanal-and-a-load-of-submarine-signals_AaY3lNBty2g.txt",
       "evidence": [
@@ -232,25 +230,23 @@
           "end": "34:55",
           "note": "The transcript connects the 135,000-ton carrier limit to British and American compromises in armor, air-group size, and the number of flight decks."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "American and British carrier differences reflected choices imposed by a 135,000-ton treaty ceiling rather than wholly different ideals."
     },
     {
       "slug": "submarine-scouting-information-delay",
       "title": "Why submarines struggled to provide tactical scouting reports",
-      "kind": "qa",
       "start": "35:05",
       "end": "36:42",
       "topics": [
-        "submarines",
-        "naval-reconnaissance",
-        "command-and-control",
         "carrier-operations",
+        "command-and-control",
+        "naval-reconnaissance",
+        "submarines",
         "targeting"
       ],
-      "summary": "Submarines could supply strategic reconnaissance, but deployment limits and reporting delays made their information less useful against moving fleets.",
       "body": "A submarine could travel quickly on the surface, but doing so sacrificed stealth and exposed it to visual or radar detection. Its contact report normally travelled through submarine headquarters and fleet headquarters, adding delay while the target continued moving. That information remained useful for strategic reconnaissance but aged rapidly at tactical timescales. A submarine's best immediate contribution could therefore be attacking the contact rather than relaying a position that would soon be stale.",
-      "question": "Was the shortage of submarine scouting at Midway doctrinal, or caused by deployment and communications problems?",
-      "answerShort": "Availability, position, and reporting delay were decisive. Submarines were useful strategically, but their contact reports aged quickly against moving ships and often passed through several headquarters.",
       "sourcePath": "src/transcripts/txt/2025-07-02_T18-30-06_scuttlebutt-12-not-pocket-battleships-no-guadalcanal-and-a-load-of-submarine-signals_AaY3lNBty2g.txt",
       "evidence": [
         {
@@ -258,23 +254,25 @@
           "end": "36:42",
           "note": "The answer explains surface transit, stealth loss, the reporting chain, strategic versus tactical value, and why direct attack could be preferable to a delayed report."
         }
-      ]
+      ],
+      "kind": "qa",
+      "summary": "Submarines could supply strategic reconnaissance, but deployment limits and reporting delays made their information less useful against moving fleets.",
+      "question": "Was the shortage of submarine scouting at Midway doctrinal, or caused by deployment and communications problems?",
+      "answerShort": "Availability, position, and reporting delay were decisive. Submarines were useful strategically, but their contact reports aged quickly against moving ships and often passed through several headquarters."
     },
     {
       "slug": "moving-target-data-and-long-range-missiles",
       "title": "Long-range missiles still need fresh moving-target data",
-      "kind": "notable_point",
       "start": "36:45",
       "end": "37:46",
       "topics": [
         "anti-ship-ballistic-missiles",
-        "targeting",
-        "naval-reconnaissance",
         "carrier-operations",
+        "command-and-control",
+        "naval-reconnaissance",
         "submarines",
-        "command-and-control"
+        "targeting"
       ],
-      "summary": "The submarine-scouting problem becomes a modern lesson in why weapon speed cannot compensate for stale target positions.",
       "body": "Delayed submarine reports resemble the targeting problem faced by long-range anti-ship ballistic missiles. Even a very fast weapon can spend roughly 45 minutes to an hour reaching a maximum-range target, during which a ship may alter course and speed. Extreme velocity can also complicate midcourse or terminal updates because of the plasma layer around the missile. Aircraft that shadow a fleet and report continuously are therefore more useful than a single old position for both carrier strikes and long-range missile attacks.",
       "sourcePath": "src/transcripts/txt/2025-07-02_T18-30-06_scuttlebutt-12-not-pocket-battleships-no-guadalcanal-and-a-load-of-submarine-signals_AaY3lNBty2g.txt",
       "evidence": [
@@ -283,25 +281,23 @@
           "end": "37:46",
           "note": "The transcript uses anti-ship ballistic missiles to illustrate time of flight, target movement, guidance limits, and the value of continuous aerial shadowing."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "The submarine-scouting problem becomes a modern lesson in why weapon speed cannot compensate for stale target positions."
     },
     {
       "slug": "japanese-signals-intelligence-midway-failure",
       "title": "Japanese signals intelligence and the exceptional failure at Midway",
-      "kind": "qa",
       "start": "37:49",
       "end": "41:03",
       "topics": [
-        "signals-intelligence",
-        "imperial-japanese-navy",
         "battle-of-midway",
+        "codebreaking",
+        "imperial-japanese-navy",
         "operational-security",
-        "codebreaking"
+        "signals-intelligence"
       ],
-      "summary": "Japan was normally capable at signals intelligence, which makes its failure to question the Americans' conspicuous Midway messages especially striking.",
       "body": "Japan was generally capable in the intelligence war and normally showed appropriate suspicion. The open American messages about Midway's water system should have appeared too convenient because encoding them would not materially delay repairs or resupply. A cautious intelligence staff should have considered deception and the operational consequences of revealing an island's logistics problem. Midway therefore stands out as an unusual series of Japanese intelligence failures rather than normal practice.",
-      "question": "Were the Japanese as poor as Germany at signals intelligence, or even worse against the US Navy?",
-      "answerShort": "No. Japan was usually competent and security-conscious; its repeated failure to challenge the conspicuous American signals before Midway was exceptional.",
       "sourcePath": "src/transcripts/txt/2025-07-02_T18-30-06_scuttlebutt-12-not-pocket-battleships-no-guadalcanal-and-a-load-of-submarine-signals_AaY3lNBty2g.txt",
       "evidence": [
         {
@@ -309,29 +305,31 @@
           "end": "41:03",
           "note": "The transcript assesses normal Japanese signals practice and explains why the Midway water message should have triggered suspicion."
         }
-      ]
+      ],
+      "kind": "qa",
+      "summary": "Japan was normally capable at signals intelligence, which makes its failure to question the Americans' conspicuous Midway messages especially striking.",
+      "question": "Were the Japanese as poor as Germany at signals intelligence, or even worse against the US Navy?",
+      "answerShort": "No. Japan was usually competent and security-conscious; its repeated failure to challenge the conspicuous American signals before Midway was exceptional."
     },
     {
       "slug": "british-vstol-airfield-survivability-and-carriers",
       "title": "Why Britain pursued supersonic V/STOL aircraft",
-      "kind": "notable_point",
       "start": "42:20",
       "end": "47:31",
       "topics": [
-        "vstol-aircraft",
-        "harrier-jump-jet",
-        "sea-harrier",
-        "royal-navy",
-        "naval-aviation",
-        "aircraft-carriers",
-        "f-4-phantom-ii",
-        "ski-jump-carriers",
         "airborne-early-warning",
-        "fairey-gannet",
+        "aircraft-carriers",
+        "british-aerospace-industry",
         "e-2-hawkeye",
-        "british-aerospace-industry"
+        "f-4-phantom-ii",
+        "fairey-gannet",
+        "harrier-jump-jet",
+        "naval-aviation",
+        "royal-navy",
+        "sea-harrier",
+        "ski-jump-carriers",
+        "vstol-aircraft"
       ],
-      "summary": "British V/STOL projects linked survivable dispersed air operations, a larger usable carrier force, and an exportable national aerospace capability.",
       "body": "Postwar jets needed more specialized runways than wartime aircraft, making known airfields increasingly vulnerable to reconnaissance and attack. V/STOL promised to preserve usable airfield capacity while also letting more Royal Navy carriers operate advanced fighters than a Phantom-centered force restricted to Ark Royal and Eagle. Royal Navy interest in two-seat Harrier variants also shows how a preferred specification could narrow options before the service accepted a single-seat solution. Sustained investment in a supersonic Harrier family could have created an exportable British capability attractive to the US Marine Corps. One possible carrier design is a 35,000- to 40,000-ton ski-jump ship with a waist catapult for Gannet or successor airborne-early-warning aircraft. A reciprocal purchase of the E-2 Hawkeye then becomes one possible industrial and operational consequence of that alternative path.",
       "sourcePath": "src/transcripts/txt/2025-07-02_T18-30-06_scuttlebutt-12-not-pocket-battleships-no-guadalcanal-and-a-load-of-submarine-signals_AaY3lNBty2g.txt",
       "evidence": [
@@ -345,24 +343,24 @@
           "end": "47:31",
           "note": "The discussion links a supersonic Harrier path to more usable carriers, British exports, a ski-jump design, catapult-launched airborne early warning, and a possible Hawkeye purchase."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "British V/STOL projects linked survivable dispersed air operations, a larger usable carrier force, and an exportable national aerospace capability."
     },
     {
       "slug": "f35-variant-fleet-support-costs",
       "title": "A small F-35A fleet can cost more than its purchase price suggests",
-      "kind": "notable_point",
       "start": "47:42",
       "end": "50:58",
       "topics": [
-        "f-35-lightning-ii",
-        "royal-air-force",
-        "royal-navy",
-        "naval-aviation",
         "aircraft-carriers",
         "defence-procurement",
-        "fleet-readiness"
+        "f-35-lightning-ii",
+        "fleet-readiness",
+        "naval-aviation",
+        "royal-air-force",
+        "royal-navy"
       ],
-      "summary": "Buying twelve cheaper F-35As creates a fleet within a fleet whose refuelling, support, training, and readiness costs must be counted.",
       "body": "The F-35A's lower unit price does not capture the cost of supporting a small variant alongside Britain's F-35Bs. Different refuelling equipment and other support requirements create a separate logistical burden for only twelve aircraft. Two carriers carrying up to 36 fighters each would require about 96 F-35Bs to generate 72 deployable aircraft. Adding a credible land-based strike wing would push the total requirement well beyond the planned 138-aircraft headline figure once maintenance and accidental losses are included. The wider procurement warning is that a decision designed for a cheap short-term headline must either be reversed later or funded as a coherent force structure.",
       "sourcePath": "src/transcripts/txt/2025-07-02_T18-30-06_scuttlebutt-12-not-pocket-battleships-no-guadalcanal-and-a-load-of-submarine-signals_AaY3lNBty2g.txt",
       "evidence": [
@@ -371,22 +369,22 @@
           "end": "50:58",
           "note": "The transcript compares F-35A acquisition savings with variant-specific support, calculates aircraft needed for two carrier air groups and a land-based strike wing, allows for attrition, and warns about short-term decisions."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "Buying twelve cheaper F-35As creates a fleet within a fleet whose refuelling, support, training, and readiness costs must be counted."
     },
     {
       "slug": "tactical-nuclear-weapons-escalation-risk",
       "title": "Why tactical nuclear weapons weaken escalation control",
-      "kind": "notable_point",
       "start": "51:01",
       "end": "51:56",
       "topics": [
-        "nuclear-deterrence",
-        "nuclear-weapons",
         "defence-policy",
         "f-35-lightning-ii",
+        "nuclear-deterrence",
+        "nuclear-weapons",
         "strategic-deterrence"
       ],
-      "summary": "The proposed F-35 nuclear role prompts a warning that tactical weapons make nuclear use more thinkable without reliably containing escalation.",
       "body": "A strategic deterrent differs from tactical nuclear weapons that planners might expect to use in a limited way. A tactical strike offers no dependable route to de-escalation. Once nuclear weapons are used, the doctrines of other nuclear powers create a serious risk that many more weapons will follow. The value of a national arsenal therefore lies in deterring nuclear attack, not in presenting decision-makers with an apparently usable battlefield option.",
       "sourcePath": "src/transcripts/txt/2025-07-02_T18-30-06_scuttlebutt-12-not-pocket-battleships-no-guadalcanal-and-a-load-of-submarine-signals_AaY3lNBty2g.txt",
       "evidence": [
@@ -395,25 +393,25 @@
           "end": "51:56",
           "note": "The transcript contrasts strategic deterrence with tactical nuclear weapons and argues that limited nuclear use is unlikely to remain limited."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "The proposed F-35 nuclear role prompts a warning that tactical weapons make nuclear use more thinkable without reliably containing escalation."
     },
     {
       "slug": "late-catobar-conversion-force-structure-cost",
       "title": "A late CATOBAR conversion cannot cheaply undo force-structure choices",
-      "kind": "notable_point",
       "start": "52:01",
       "end": "54:11",
       "topics": [
+        "aircraft-carriers",
         "catobar",
         "f-35c",
-        "queen-elizabeth-class-aircraft-carriers",
-        "aircraft-carriers",
-        "type-45-destroyer",
-        "royal-navy",
+        "fleet-readiness",
         "force-structure",
-        "fleet-readiness"
+        "queen-elizabeth-class-aircraft-carriers",
+        "royal-navy",
+        "type-45-destroyer"
       ],
-      "summary": "The F-35C's range may favor catapults, but changing course late is far costlier than funding the carrier, escort, and aircraft numbers coherently from the start.",
       "body": "The F-35C offers attractive strike range, yet converting the Queen Elizabeth class to CATOBAR after construction would be an expensive reversal. That choice sits beside earlier force-structure decisions to buy six rather than the desired twelve Type 45 destroyers and two rather than three carriers. A three-carrier fleet plus two land-based strike wings would require about 240 aircraft once operational squadrons, short-term maintenance, and deep-overhaul capacity are counted. Britain therefore has to make the existing carrier system work because changing the ship design and its support structure gets more expensive with time.",
       "sourcePath": "src/transcripts/txt/2025-07-02_T18-30-06_scuttlebutt-12-not-pocket-battleships-no-guadalcanal-and-a-load-of-submarine-signals_AaY3lNBty2g.txt",
       "evidence": [
@@ -422,28 +420,26 @@
           "end": "54:11",
           "note": "The transcript considers F-35C range, CATOBAR conversion, Type 45 and carrier numbers, aircraft maintenance ratios, and the cost of changing an established procurement path."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "The F-35C's range may favor catapults, but changing course late is far costlier than funding the carrier, escort, and aircraft numbers coherently from the start."
     },
     {
       "slug": "naval-staff-shells-armor-and-battlecruisers",
       "title": "Could a stronger naval staff have fixed British shells before the First World War?",
-      "kind": "qa",
       "start": "54:13",
       "end": "56:22",
       "topics": [
-        "royal-navy",
-        "naval-staff",
+        "civil-military-relations",
+        "john-jellicoe",
+        "naval-armour",
         "naval-logistics",
         "naval-shells",
-        "naval-armour",
-        "john-jellicoe",
+        "naval-staff",
         "queen-elizabeth-class-battleships",
-        "civil-military-relations"
+        "royal-navy"
       ],
-      "summary": "An empowered naval staff and ministerial ally could have helped Jellicoe secure earlier investigations into British shell fuzes, shell quality, and armor.",
       "body": "In the proposed staff system, the Third Sea Lord would gain direct ministerial help in Parliament, while the Fourth Sea Lord retained responsibility for logistics. A minister able to campaign for Jellicoe could have stopped opponents from persuading Parliament that a prewar investigation was unnecessary. That inquiry would cover shell fuzes, shell quality, and armour rather than treating ammunition as an isolated technical problem. Earlier action could therefore have improved both British shells and Queen Elizabeth-class armour before the First World War.",
-      "question": "Would a stronger Royal Navy staff system have identified faulty shells and ammunition handling sooner?",
-      "answerShort": "Probably. Giving Jellicoe sustained political support could have secured earlier investigations into shell, fuze, and armor quality, producing better matériel before the First World War.",
       "sourcePath": "src/transcripts/txt/2025-07-02_T18-30-06_scuttlebutt-12-not-pocket-battleships-no-guadalcanal-and-a-load-of-submarine-signals_AaY3lNBty2g.txt",
       "evidence": [
         {
@@ -451,27 +447,29 @@
           "end": "56:22",
           "note": "The question and answer cover staff responsibilities, parliamentary support for Jellicoe, and earlier shell and armour investigations."
         }
-      ]
+      ],
+      "kind": "qa",
+      "summary": "An empowered naval staff and ministerial ally could have helped Jellicoe secure earlier investigations into British shell fuzes, shell quality, and armor.",
+      "question": "Would a stronger Royal Navy staff system have identified faulty shells and ammunition handling sooner?",
+      "answerShort": "Probably. Giving Jellicoe sustained political support could have secured earlier investigations into shell, fuze, and armor quality, producing better matériel before the First World War."
     },
     {
       "slug": "dominion-fleets-and-british-battlecruiser-modernization",
       "title": "Dominion fleets could absorb early battlecruisers as Britain modernized",
-      "kind": "notable_point",
       "start": "56:26",
       "end": "57:58",
       "topics": [
-        "royal-navy",
+        "15-inch-guns",
         "battlecruisers",
         "dominion-navies",
-        "invincible-class-battlecruisers",
         "indefatigable-class-battlecruisers",
-        "lion-class-battlecruisers",
-        "tiger-class-battlecruisers",
+        "invincible-class-battlecruisers",
         "john-fisher",
-        "15-inch-guns",
-        "naval-procurement"
+        "lion-class-battlecruisers",
+        "naval-procurement",
+        "royal-navy",
+        "tiger-class-battlecruisers"
       ],
-      "summary": "Removing Fisher could speed the shift away from early armored-cruiser-derived ships, with older battlecruisers transferred to Dominion fleets while Britain built Lions, Tigers, and improved 15-inch designs.",
       "body": "The transition from armored-cruiser-derived early battle cruisers to the later battlecruiser concept would wait until Fisher left power. In this scenario, Invincible- and Indefatigable-class ships would be transferred quickly to Dominion fleets. That would let the British Royal Navy concentrate on Lion- and Tiger-class ships and add improved 15-inch battlecruisers alongside the Queen Elizabeth and R-class programs. The example shows how leadership, imperial force distribution, and successive design generations interact in fleet modernization.",
       "sourcePath": "src/transcripts/txt/2025-07-02_T18-30-06_scuttlebutt-12-not-pocket-battleships-no-guadalcanal-and-a-load-of-submarine-signals_AaY3lNBty2g.txt",
       "evidence": [
@@ -480,26 +478,26 @@
           "end": "57:58",
           "note": "The transcript ties Fisher's departure to the battlecruiser transition, transfers of Invincible and Indefatigable ships to Dominion fleets, and construction of Tigers and improved 15-inch designs."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "Removing Fisher could speed the shift away from early armored-cruiser-derived ships, with older battlecruisers transferred to Dominion fleets while Britain built Lions, Tigers, and improved 15-inch designs."
     },
     {
       "slug": "fast-r-class-battle-line-and-postwar-design-pressure",
       "title": "A 24-knot battle line would pressure British and American successors",
-      "kind": "notable_point",
       "start": "58:00",
       "end": "59:17",
       "topics": [
-        "royal-navy",
-        "us-navy",
-        "queen-elizabeth-class-battleships",
-        "revenge-class-battleships",
-        "nelson-class-battleships",
+        "15-inch-guns",
         "battlecruisers",
         "fleet-speed",
         "naval-procurement",
-        "15-inch-guns"
+        "nelson-class-battleships",
+        "queen-elizabeth-class-battleships",
+        "revenge-class-battleships",
+        "royal-navy",
+        "us-navy"
       ],
-      "summary": "Five R-class ships developed as 24-knot Queen Elizabeth improvements could establish a faster British battle line and shape both Nelson-class and American design choices.",
       "body": "Building five R-class ships as improved 24-knot Queen Elizabeths, with another construction slot in each group used for a battlecruiser, would produce ten fast battleships. Once the Royal Navy established a 24-knot battle line, it would be reluctant to let later ships such as Nelson and Rodney slow it down. Faster British 15-inch ships could also dictate range against slower American contemporaries. The scenario shows how one procurement sequence can establish a fleet-wide speed standard that constrains later domestic and foreign designs.",
       "sourcePath": "src/transcripts/txt/2025-07-02_T18-30-06_scuttlebutt-12-not-pocket-battleships-no-guadalcanal-and-a-load-of-submarine-signals_AaY3lNBty2g.txt",
       "evidence": [
@@ -508,21 +506,21 @@
           "end": "59:17",
           "note": "The transcript develops a five-ship 24-knot R-class order, a ten-ship fast battle line, effects on Nelson and Rodney, and range-control pressure on slower American battleships."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "Five R-class ships developed as 24-knot Queen Elizabeth improvements could establish a faster British battle line and shape both Nelson-class and American design choices."
     },
     {
       "slug": "counterfactual-history-and-the-weight-of-decisions",
       "title": "Counterfactual history tests the weight of decisions",
-      "kind": "notable_point",
       "start": "59:20",
       "end": "1:00:05",
       "topics": [
         "counterfactual-history",
-        "historical-method",
         "historical-contingency",
+        "historical-method",
         "naval-history"
       ],
-      "summary": "The alternate fleet discussion closes with a methodological warning that history was not preordained and that even small decisions can redirect later outcomes.",
       "body": "The alternate fleet discussion rejects the idea that history follows a preordained path. Choices about institutions, investigations, ship programs, and fleet speed can accumulate into very different strategic conditions. Even decisions that appear small or innocuous carry weight because later choices inherit the force structure they create. The counterfactual asks which decisions mattered and how their consequences could propagate.",
       "sourcePath": "src/transcripts/txt/2025-07-02_T18-30-06_scuttlebutt-12-not-pocket-battleships-no-guadalcanal-and-a-load-of-submarine-signals_AaY3lNBty2g.txt",
       "evidence": [
@@ -531,7 +529,9 @@
           "end": "1:00:05",
           "note": "The closing passage rejects historical inevitability and argues that even small decisions have weight and bearing."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "The alternate fleet discussion closes with a methodological warning that history was not preordained and that even small decisions can redirect later outcomes."
     }
   ]
 }

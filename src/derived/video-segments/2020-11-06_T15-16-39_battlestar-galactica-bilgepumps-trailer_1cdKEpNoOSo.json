@@ -1,27 +1,25 @@
 {
   "videoId": "1cdKEpNoOSo",
   "topics": [
-    "science-fiction",
     "hypersonic-missiles",
+    "military-ai",
     "network-centric-warfare",
-    "military-ai"
+    "science-fiction"
   ],
   "segments": [
     {
       "slug": "hypersonic-missiles-and-flak",
       "title": "Flak against high-speed missiles",
-      "kind": "notable_point",
       "start": "0:23",
       "end": "1:15",
       "topics": [
-        "supersonic-missiles",
-        "hypersonic-missiles",
-        "zircon-missile",
-        "missile-defence",
         "flak",
-        "saturation-attacks"
+        "hypersonic-missiles",
+        "missile-defence",
+        "saturation-attacks",
+        "supersonic-missiles",
+        "zircon-missile"
       ],
-      "summary": "A fast missile's own speed can make even small impacts destructive, suggesting that flak could complicate a Zircon-style saturation attack.",
       "body": "The trailer tests a science-fiction idea against the vulnerability of supersonic and hypersonic missiles. Its example assumes a Zircon travelling at Mach 5: a half-gram aluminium fragment would hit far harder than at a few hundred miles per hour. Saturation attacks are meant to overwhelm the limited number of defensive missiles a ship can carry. If a ship can carry much more flak and make the incoming missile's environment hostile enough, speed may turn small impacts and guidance confusion into a serious weakness.",
       "sourcePath": "src/transcripts/txt/2020-11-06_T15-16-39_battlestar-galactica-bilgepumps-trailer_1cdKEpNoOSo.txt",
       "evidence": [
@@ -30,20 +28,20 @@
           "end": "1:15",
           "note": "The introduction proposes testing science fiction for military ideas. The discussion then considers supersonic and hypersonic missile vulnerabilities, assumes a Zircon at Mach 5, compares fragment impacts at different speeds, and suggests flak and guidance confusion as weaknesses in saturation attacks."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "A fast missile's own speed can make even small impacts destructive, suggesting that flak could complicate a Zircon-style saturation attack."
     },
     {
       "slug": "military-ai-and-human-chaos",
       "title": "Can military AI cope with human chaos?",
-      "kind": "notable_point",
       "start": "1:12",
       "end": "2:05",
       "topics": [
-        "military-ai",
+        "decision-making",
         "machine-learning",
-        "decision-making"
+        "military-ai"
       ],
-      "summary": "A joking prediction of human victory over AI draws on machine-learning errors, including a Force K video reportedly misclassified as pornography.",
       "body": "A joking prediction that humans would defeat AI rests on their ability to create more chaos than it could handle. The comparison uses YouTube's algorithm, described as having billions of hours of machine learning behind it yet still marking ordinary naval-history videos as unsuitable for advertising. Manual review overturns those decisions in the examples described. A video about Force K reportedly received a pornography flag.",
       "sourcePath": "src/transcripts/txt/2020-11-06_T15-16-39_battlestar-galactica-bilgepumps-trailer_1cdKEpNoOSo.txt",
       "evidence": [
@@ -52,21 +50,21 @@
           "end": "2:05",
           "note": "Human-created chaos prompts a joking prediction of victory in a war against AI. The discussion compares this with YouTube advertising classifications overturned by human review, including a Force K video reportedly flagged as pornography at 2:00-2:03."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "A joking prediction of human victory over AI draws on machine-learning errors, including a Force K video reportedly misclassified as pornography."
     },
     {
       "slug": "network-warfare-resilience-and-backups",
       "title": "Networked warfare needs resilient backups",
-      "kind": "notable_point",
       "start": "2:10",
       "end": "2:58",
       "topics": [
-        "network-centric-warfare",
-        "military-ai",
         "command-and-control",
+        "military-ai",
+        "network-centric-warfare",
         "systems-resilience"
       ],
-      "summary": "A fully connected combat network improves information flow, but its many access points demand backup arrangements that avoid a single point of failure.",
       "body": "Future military networks face a trade-off between data density and dependable function. Letting every element communicate gives a force the widest possible information picture while creating hundreds or thousands of potential access points. One failed point can cripple the network, so protection and backup arrangements have to be designed alongside connectivity. A force also needs a way to keep operating if its computers stop working, avoiding a single point of failure in command and control.",
       "sourcePath": "src/transcripts/txt/2020-11-06_T15-16-39_battlestar-galactica-bilgepumps-trailer_1cdKEpNoOSo.txt",
       "evidence": [
@@ -75,7 +73,9 @@
           "end": "2:58",
           "note": "The transcript contrasts dense networked information with many access points, then calls for protection, backups, and avoiding a single point of failure."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "A fully connected combat network improves information flow, but its many access points demand backup arrangements that avoid a single point of failure."
     }
   ]
 }

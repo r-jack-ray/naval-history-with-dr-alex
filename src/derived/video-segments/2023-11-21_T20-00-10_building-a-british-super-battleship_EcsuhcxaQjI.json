@@ -2,29 +2,27 @@
   "videoId": "EcsuhcxaQjI",
   "topics": [
     "battleships",
+    "naval-gunnery",
     "royal-navy",
     "ship-design",
-    "warship-simulations",
-    "naval-gunnery",
-    "warship-protection"
+    "warship-protection",
+    "warship-simulations"
   ],
   "segments": [
     {
       "slug": "british-super-battleship-design-brief",
       "title": "A British super-battleship takes shape",
-      "kind": "chapter",
       "start": "3:06",
       "end": "10:12",
       "topics": [
+        "18-inch-guns",
         "battleships",
+        "displacement",
+        "naval-gunnery",
         "royal-navy",
         "ship-design",
-        "naval-gunnery",
-        "18-inch-guns",
-        "displacement",
         "stability"
       ],
-      "summary": "The design begins with geared turbines, very heavy guns, and the first difficult tradeoffs among range, stability, and displacement.",
       "body": "An intentionally ambitious British battleship concept begins with geared turbines, long-barrel 18-inch guns, and heavy shells. The ship is immediately thousands of tons overweight. Roll, pitch, range, and ammunition all compete for the same displacement, so no single characteristic can be maximized in isolation. Cutting the nominal cruising range from 17,000 to 12,000 kilometers saves much of the excess weight, though the hull remains badly balanced. The opening design work turns a wish list into a set of naval-architecture compromises before combat testing begins.",
       "sourcePath": "src/transcripts/txt/2023-11-21_T20-00-10_building-a-british-super-battleship_EcsuhcxaQjI.txt",
       "evidence": [
@@ -33,23 +31,23 @@
           "end": "10:12",
           "note": "The transcript follows the initial machinery, armament, range, ammunition, weight, roll, and pitch decisions."
         }
-      ]
+      ],
+      "kind": "chapter",
+      "summary": "The design begins with geared turbines, very heavy guns, and the first difficult tradeoffs among range, stability, and displacement."
     },
     {
       "slug": "sixteen-and-a-half-inch-gun-compromise",
       "title": "Why the main battery drops to 16.5 inches",
-      "kind": "notable_point",
       "start": "15:28",
       "end": "18:43",
       "topics": [
-        "battleships",
-        "naval-gunnery",
-        "ship-design",
-        "displacement",
         "16-5-inch-guns",
-        "18-inch-guns"
+        "18-inch-guns",
+        "battleships",
+        "displacement",
+        "naval-gunnery",
+        "ship-design"
       ],
-      "summary": "An overweight 18-inch-gun design retreats to twelve 16.5-inch weapons to preserve firepower within the available displacement.",
       "body": "The initial 18-inch gun choice proves too heavy once the rest of the ship is considered. Comparing weapon weights and ranges leads to twelve 16.5-inch guns as an intermediate solution, followed by cuts to protection and other systems until the design fits. The smaller caliber gives up some maximum range while removing a substantial weight penalty and retaining an exceptionally heavy broadside. Combat power also depends on barrel count, range, hull balance, and the equipment sacrificed to carry the battery.",
       "sourcePath": "src/transcripts/txt/2023-11-21_T20-00-10_building-a-british-super-battleship_EcsuhcxaQjI.txt",
       "evidence": [
@@ -58,26 +56,26 @@
           "end": "18:43",
           "note": "The transcript compares gun weights and ranges, selects 16.5-inch weapons, and continues reducing weight."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "An overweight 18-inch-gun design retreats to twelve 16.5-inch weapons to preserve firepower within the available displacement."
     },
     {
       "slug": "rodney-versus-italian-battleship-test",
       "title": "Rodney meets an Italian battleship test opponent",
-      "kind": "chapter",
       "start": "18:58",
       "end": "24:53",
       "topics": [
-        "battleships",
-        "royal-navy",
-        "italian-navy",
-        "naval-gunnery",
-        "warship-design",
-        "francesco-caracciolo-class-battleships",
         "15-inch-guns",
         "16-5-inch-guns",
+        "battleships",
+        "francesco-caracciolo-class-battleships",
+        "italian-navy",
+        "naval-gunnery",
+        "royal-navy",
+        "warship-design",
         "warship-simulations"
       ],
-      "summary": "The first combat trial pits twelve British 16.5-inch guns against eight Italian 15-inch guns and tests how the design fights at range.",
       "body": "An Italian opponent loosely inspired by the Francesco Caracciolo class carries eight 15-inch guns against Rodney's twelve 16.5-inch weapons. The ships receive roughly comparable gun range so the trial tests battery weight and tactical behavior rather than a simple reach advantage. British secondary guns are deliberately omitted to see whether the game will keep Rodney at long range instead of closing. The simulation labels the fast British design a battlecruiser because its classification logic follows selected characteristics rather than the designer's intended label. The matchup turns the design screen's numerical choices into an operational question: whether the ship will exploit its heavy battery and preferred engagement distance.",
       "sourcePath": "src/transcripts/txt/2023-11-21_T20-00-10_building-a-british-super-battleship_EcsuhcxaQjI.txt",
       "evidence": [
@@ -86,22 +84,22 @@
           "end": "24:53",
           "note": "The transcript constructs the Italian opponent and states the two ships' main-battery comparison and test purpose."
         }
-      ]
+      ],
+      "kind": "chapter",
+      "summary": "The first combat trial pits twelve British 16.5-inch guns against eight Italian 15-inch guns and tests how the design fights at range."
     },
     {
       "slug": "secondary-battery-engagement-range",
       "title": "Secondary batteries can shape engagement range",
-      "kind": "notable_point",
       "start": "24:53",
       "end": "25:38",
       "topics": [
-        "secondary-batteries",
-        "naval-tactics",
         "naval-gunnery",
+        "naval-tactics",
+        "secondary-batteries",
         "ship-design",
         "warship-simulations"
       ],
-      "summary": "The no-secondary trial suggests that fitting secondary guns may encourage a battleship to close instead of exploiting long-range firepower.",
       "body": "The British ship appears to hold its distance when it carries only the main battery. This suggests that secondary armament may cause the game's tactical system to seek a range where every weapon can engage. That behavior would squander the reach of a powerful main battery by bringing the ship into a less favorable tactical envelope. The test also reflects a real design tension: secondary guns remain important against small ships even when closing range is undesirable for the battleship's primary mission.",
       "sourcePath": "src/transcripts/txt/2023-11-21_T20-00-10_building-a-british-super-battleship_EcsuhcxaQjI.txt",
       "evidence": [
@@ -110,25 +108,23 @@
           "end": "25:38",
           "note": "The transcript links the ship's range-keeping behavior to the absence of secondary guns and explains their competing value."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "The no-secondary trial suggests that fitting secondary guns may encourage a battleship to close instead of exploiting long-range firepower."
     },
     {
       "slug": "barbette-width-structural-tradeoff",
       "title": "Barbette width links guns, protection, and hull strength",
-      "kind": "qa",
       "start": "25:56",
       "end": "26:44",
       "topics": [
         "barbettes",
-        "turrets",
-        "warship-protection",
         "hull-structure",
-        "naval-gunnery"
+        "naval-gunnery",
+        "turrets",
+        "warship-protection"
       ],
-      "summary": "An audience question prompts an explanation of why a barbette must support the turret and ammunition system without becoming a structural weak point.",
       "body": "A barbette that is too narrow cannot provide enough protected space for the turret machinery and ammunition supply. It must also carry the turret and preserve an armored route for shells and propellant moving upward from the magazines. Making it disproportionately wide creates another problem because the large opening and concentrated loads can put stress on the hull and bulkheads. Barbette diameter is therefore a systems-level compromise among firepower, protection, internal arrangements, and structural continuity.",
-      "question": "Why not make the barbette smaller or wider to solve the design problem?",
-      "answerShort": "It must be wide enough for the turret, ammunition handling, and protection, but excessive width can create dangerous stress points in the hull.",
       "sourcePath": "src/transcripts/txt/2023-11-21_T20-00-10_building-a-british-super-battleship_EcsuhcxaQjI.txt",
       "evidence": [
         {
@@ -136,24 +132,24 @@
           "end": "26:44",
           "note": "Dr. Clarke answers by connecting barbette dimensions with turret support, ammunition supply, armor, and hull stress."
         }
-      ]
+      ],
+      "kind": "qa",
+      "summary": "An audience question prompts an explanation of why a barbette must support the turret and ammunition system without becoming a structural weak point.",
+      "question": "Why not make the barbette smaller or wider to solve the design problem?",
+      "answerShort": "It must be wide enough for the turret, ammunition handling, and protection, but excessive width can create dangerous stress points in the hull."
     },
     {
       "slug": "game-physics-as-naval-design-analogue",
       "title": "How seriously should the game's naval physics be taken?",
-      "kind": "qa",
       "start": "27:07",
       "end": "27:15",
       "topics": [
-        "ship-design",
         "naval-architecture",
+        "ship-design",
         "warship-protection",
         "warship-simulations"
       ],
-      "summary": "The game's physics make it a useful design analogue, though the comparison stops short of claiming exact real-world behavior.",
       "body": "An audience prompt asks whether the game represents the structural effects just described for barbettes and hulls. The physics engine has received enough development that similar effects seem plausible, so the design exercise proceeds as though it were real. The comparison remains cautious and does not claim that every naval-architecture consequence is reproduced exactly. This distinction separates the historical design principles being illustrated from the limits of a game model.",
-      "question": "Does the game model structural effects such as barbette-related hull stress?",
-      "answerShort": "Its physics engine appears to produce similar effects, which makes the design exercise useful, though it is not claimed as an exact real-world simulation.",
       "sourcePath": "src/transcripts/txt/2023-11-21_T20-00-10_building-a-british-super-battleship_EcsuhcxaQjI.txt",
       "evidence": [
         {
@@ -161,24 +157,26 @@
           "end": "27:15",
           "note": "Dr. Clarke says he treats the game as real-world because of the work put into its physics engine and expects similar effects."
         }
-      ]
+      ],
+      "kind": "qa",
+      "summary": "The game's physics make it a useful design analogue, though the comparison stops short of claiming exact real-world behavior.",
+      "question": "Does the game model structural effects such as barbette-related hull stress?",
+      "answerShort": "Its physics engine appears to produce similar effects, which makes the design exercise useful, though it is not claimed as an exact real-world simulation."
     },
     {
       "slug": "magazine-explosion-and-turret-loss",
       "title": "What an airborne turret implies about magazine damage",
-      "kind": "notable_point",
       "start": "27:20",
       "end": "28:00",
       "topics": [
-        "magazines",
-        "magazine-explosions",
-        "turrets",
         "battle-damage",
-        "warship-protection",
         "damage-control",
+        "magazine-explosions",
+        "magazines",
+        "turrets",
+        "warship-protection",
         "warship-simulations"
       ],
-      "summary": "A dramatic turret loss leads to a distinction between separate magazines and the catastrophic hull damage a true magazine explosion would cause.",
       "body": "The game depicts one turret being blown clear and all guns losing ammunition. The shared ammunition failure seems questionable because separate turrets should have separate magazines. Even so, an explosion powerful enough to throw a turret would probably open a massive hole in the ship and create an immediate sinking risk. The spectacle illustrates both magazine separation and the scale of structural damage behind such battle imagery.",
       "sourcePath": "src/transcripts/txt/2023-11-21_T20-00-10_building-a-british-super-battleship_EcsuhcxaQjI.txt",
       "evidence": [
@@ -187,22 +185,22 @@
           "end": "28:00",
           "note": "The transcript discusses separate magazines and the likely hull consequences of a turret-launching explosion."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "A dramatic turret loss leads to a distinction between separate magazines and the catastrophic hull damage a true magazine explosion would cause."
     },
     {
       "slug": "six-inch-secondary-broadside-redesign",
       "title": "A six-inch secondary battery reshapes the ship",
-      "kind": "chapter",
       "start": "28:29",
       "end": "35:27",
       "topics": [
-        "secondary-batteries",
+        "6-inch-guns",
         "naval-gunnery",
+        "secondary-batteries",
         "ship-design",
-        "stability",
-        "6-inch-guns"
+        "stability"
       ],
-      "summary": "The redesigned battleship gains a huge six-inch broadside, forcing another round of pitch, balance, armor, and displacement compromises.",
       "body": "The second design iteration adds numerous six-inch guns, briefly producing a broadside of roughly twenty-one secondary weapons. The battery promises formidable fire against smaller ships and gives the battleship coverage beyond its main turrets. A moving funnel marker reveals the center of mass while the secondary layout changes. Moving the guns alters weight distribution and worsens pitch, prompting further adjustments to hull proportions, armor, and other characteristics. Adding a useful weapon system affects the entire ship, far beyond the weapons line in a specification.",
       "sourcePath": "src/transcripts/txt/2023-11-21_T20-00-10_building-a-british-super-battleship_EcsuhcxaQjI.txt",
       "evidence": [
@@ -211,24 +209,24 @@
           "end": "35:27",
           "note": "The transcript adds the six-inch battery, counts its broadside, and works through the resulting pitch and weight problems."
         }
-      ]
+      ],
+      "kind": "chapter",
+      "summary": "The redesigned battleship gains a huge six-inch broadside, forcing another round of pitch, balance, armor, and displacement compromises."
     },
     {
       "slug": "armor-weight-thought-experiment",
       "title": "Extreme armor exposes the limits of balance-by-weight",
-      "kind": "notable_point",
       "start": "37:12",
       "end": "38:30",
       "topics": [
         "armour",
         "armour-belts",
         "deck-armour",
-        "warship-protection",
-        "stability",
         "displacement",
-        "ship-design"
+        "ship-design",
+        "stability",
+        "warship-protection"
       ],
-      "summary": "Pushing deck and belt armor to absurd thicknesses improves the balance figure but produces a ship whose practicality and buoyancy are doubtful.",
       "body": "The design is pushed to discover how much theoretical weight would be needed to correct the ship's pitch. The experiment reaches roughly nineteen inches of deck armor and thirty-five inches of belt armor, figures so extreme that the vessel's ability to float becomes doubtful. The absurd protection scheme would intimidate an opponent on paper while creating a ship whose weight and buoyancy make little practical sense. A favorable balance statistic cannot make the result coherent when the solution consumes displacement without regard to realistic construction and buoyancy.",
       "sourcePath": "src/transcripts/txt/2023-11-21_T20-00-10_building-a-british-super-battleship_EcsuhcxaQjI.txt",
       "evidence": [
@@ -237,25 +235,25 @@
           "end": "38:30",
           "note": "The transcript raises armor thickness to extreme values while testing pitch, then rejects the resulting hull."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "Pushing deck and belt armor to absurd thicknesses improves the balance figure but produces a ship whose practicality and buoyancy are doubtful."
     },
     {
       "slug": "war-canoe-armageddon-redesign",
       "title": "Armageddon: rebuilding from the heaviest requirements",
-      "kind": "chapter",
       "start": "38:33",
       "end": "46:21",
       "topics": [
-        "battleships",
-        "ship-design",
-        "naval-gunnery",
-        "warship-protection",
-        "displacement",
-        "18-inch-guns",
         "16-5-inch-guns",
+        "18-inch-guns",
+        "battleships",
+        "displacement",
+        "naval-gunnery",
+        "ship-design",
+        "warship-protection",
         "warship-simulations"
       ],
-      "summary": "A fresh hull starts with maximum ambitions and then works downward through gun caliber, protection, speed, and survivability systems.",
       "body": "The replacement concept, nicknamed Armageddon, begins far overweight and is deliberately treated as a top-down requirements exercise. Its initial displacement is so excessive that the design must shed tens of thousands of tons before becoming usable. The game's 18-inch guns unexpectedly show much less range than the 16.5-inch option, so that simulation-specific result reinforces the move to the smaller caliber. Speed, protection systems, armor, and other features are then reduced while the main-battery arrangement improves. Starting with an unconstrained ideal reveals the cost of each requirement before the designer chooses which capabilities to surrender.",
       "sourcePath": "src/transcripts/txt/2023-11-21_T20-00-10_building-a-british-super-battleship_EcsuhcxaQjI.txt",
       "evidence": [
@@ -264,25 +262,23 @@
           "end": "46:21",
           "note": "The transcript starts a new hull, reports its severe excess displacement, and trims multiple systems while retaining heavy guns."
         }
-      ]
+      ],
+      "kind": "chapter",
+      "summary": "A fresh hull starts with maximum ambitions and then works downward through gun caliber, protection, speed, and survivability systems."
     },
     {
       "slug": "price-limited-standard-battleship-challenge",
       "title": "Can a budget design defeat several US Standard battleships?",
-      "kind": "qa",
       "start": "47:06",
       "end": "50:45",
       "topics": [
         "battleships",
-        "us-navy",
-        "standard-type-battleships",
+        "cost",
         "naval-procurement",
-        "cost"
+        "standard-type-battleships",
+        "us-navy"
       ],
-      "summary": "A viewer's price challenge forces the design toward the speed and capability needed to confront multiple American Standard-type battleships.",
       "body": "The audience proposes a price-limited battleship challenge, later clarified as a budget in millions rather than thousands and ultimately as 35 million. The opponent matters because late US Standard-type battleships are capable ships, while an artificially tiny budget would make the problem meaningless. Since the Standards make about 21 knots, a 24-knot design becomes one possible way to create a tactical advantage without paying for extreme speed. The 35-million ceiling proves much harder than the earlier figure, and the full challenge is deferred to Discord rather than presented as a finished, viable design. A procurement cost ceiling must be tied to a defined mission, enemy, and standard of success.",
-      "question": "How would you build a price-limited battleship to take on multiple US Standard-type ships?",
-      "answerShort": "The budget and opposing Standard type must be specified. A 24-knot approach is sketched, though no viable 35-million design is finished during the stream.",
       "sourcePath": "src/transcripts/txt/2023-11-21_T20-00-10_building-a-british-super-battleship_EcsuhcxaQjI.txt",
       "evidence": [
         {
@@ -295,25 +291,25 @@
           "end": "50:45",
           "note": "The opponent, budget ambiguity, corrected million-pound figure, and initial speed tradeoff are discussed."
         }
-      ]
+      ],
+      "kind": "qa",
+      "summary": "A viewer's price challenge forces the design toward the speed and capability needed to confront multiple American Standard-type battleships.",
+      "question": "How would you build a price-limited battleship to take on multiple US Standard-type ships?",
+      "answerShort": "The budget and opposing Standard type must be specified. A 24-knot approach is sketched, though no viable 35-million design is finished during the stream."
     },
     {
       "slug": "warship-cost-model-accuracy",
       "title": "How closely does the game model historical warship cost?",
-      "kind": "qa",
       "start": "50:57",
       "end": "51:16",
       "topics": [
-        "warship-costs",
         "naval-procurement",
         "queen-elizabeth-class-battleships",
         "ship-design",
+        "warship-costs",
         "warship-simulations"
       ],
-      "summary": "A viewer question prompts a cautious assessment of the game's cost model using Queen Elizabeth-class battleships as a comparison.",
       "body": "The cost system is a rough guide rather than a historically exact accounting model. Attempts to reproduce ships such as the Queen Elizabeth class do not align precisely with their historical cost. Even so, the estimates are good enough to indicate the broad financial consequences of changing a design. That limitation matters whenever game-based design exercises are used to reason about real procurement choices.",
-      "question": "Is the game's ship-cost model historically accurate?",
-      "answerShort": "It gives a reasonable rough indication, but historical designs such as the Queen Elizabeth class do not reproduce their real costs precisely.",
       "sourcePath": "src/transcripts/txt/2023-11-21_T20-00-10_building-a-british-super-battleship_EcsuhcxaQjI.txt",
       "evidence": [
         {
@@ -321,25 +317,27 @@
           "end": "51:16",
           "note": "Dr. Clarke evaluates the game's cost accuracy and cites Queen Elizabeth-class reproduction as a limitation."
         }
-      ]
+      ],
+      "kind": "qa",
+      "summary": "A viewer question prompts a cautious assessment of the game's cost model using Queen Elizabeth-class battleships as a comparison.",
+      "question": "Is the game's ship-cost model historically accurate?",
+      "answerShort": "It gives a reasonable rough indication, but historical designs such as the Queen Elizabeth class do not reproduce their real costs precisely."
     },
     {
       "slug": "final-rodney-layout-and-combat-test",
       "title": "The final Rodney combines speed, heavy guns, and all-around secondary fire",
-      "kind": "chapter",
       "start": "51:24",
       "end": "55:30",
       "topics": [
-        "battleships",
-        "royal-navy",
-        "naval-gunnery",
-        "secondary-batteries",
-        "naval-tactics",
         "16-5-inch-guns",
         "6-inch-guns",
+        "battleships",
+        "naval-gunnery",
+        "naval-tactics",
+        "royal-navy",
+        "secondary-batteries",
         "stability"
       ],
-      "summary": "The completed 32-knot design combines twelve 16.5-inch guns with a distributed six-inch battery while bringing weight and stability under control.",
       "body": "The six-inch secondary battery is moved until the ship's weight distribution improves. The final arrangement reaches about 32 knots and carries twelve 16.5-inch guns in three quadruple turrets. Its six-inch weapons cover forward and broadside arcs, giving the ship useful fire in several directions. The speed, gun layout, and firing arcs produce the coherent fast super-battleship that the earlier overweight concepts could not become.",
       "sourcePath": "src/transcripts/txt/2023-11-21_T20-00-10_building-a-british-super-battleship_EcsuhcxaQjI.txt",
       "evidence": [
@@ -353,23 +351,23 @@
           "end": "58:58",
           "note": "The transcript describes the secondary firing arcs and identifies the twelve-gun main battery."
         }
-      ]
+      ],
+      "kind": "chapter",
+      "summary": "The completed 32-knot design combines twelve 16.5-inch guns with a distributed six-inch battery while bringing weight and stability under control."
     },
     {
       "slug": "rodney-combat-test-fire-control-range-collapse",
       "title": "Battle damage overturns Rodney's long-range design logic",
-      "kind": "notable_point",
       "start": "56:49",
       "end": "1:00:23",
       "topics": [
-        "battleships",
-        "naval-tactics",
-        "fire-control",
-        "secondary-batteries",
         "battle-damage",
+        "battleships",
+        "fire-control",
+        "naval-tactics",
+        "secondary-batteries",
         "warship-simulations"
       ],
-      "summary": "An early hit disrupts long-range fire control, but Rodney then closes to six-inch range instead of exploiting the opponent's damage.",
       "body": "The Italian opponent lands an early hit on Rodney's superstructure, demonstrating how battle damage can compromise a design before its preferred tactics develop. Rodney then damages the enemy's long-range director and gains a potential main-battery advantage at distance. Instead of preserving that advantage, the British ship closes until its six-inch guns can engage. The trial shows how tactical behavior and fire-control casualties can overturn the engagement-range logic built into a warship's armament.",
       "sourcePath": "src/transcripts/txt/2023-11-21_T20-00-10_building-a-british-super-battleship_EcsuhcxaQjI.txt",
       "evidence": [
@@ -378,7 +376,9 @@
           "end": "1:00:23",
           "note": "The transcript follows the early superstructure hit, damage to the opponent's long-range fire control, and Rodney's decision to close into six-inch range."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "An early hit disrupts long-range fire control, but Rodney then closes to six-inch range instead of exploiting the opponent's damage."
     }
   ]
 }

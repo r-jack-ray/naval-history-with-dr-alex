@@ -1,30 +1,28 @@
 {
   "videoId": "_UHSPySZw74",
   "topics": [
-    "naval-gunnery",
     "autoloaders",
-    "warship-automation",
     "human-factors",
+    "naval-gunnery",
+    "naval-industrial-base",
+    "naval-procurement",
     "rate-of-fire",
     "royal-navy",
-    "naval-procurement",
-    "naval-industrial-base"
+    "warship-automation"
   ],
   "segments": [
     {
       "slug": "why-navies-automate-gun-loading",
       "title": "Why navies sought automated gun loading",
-      "kind": "chapter",
       "start": "0:01",
       "end": "3:56",
       "topics": [
-        "naval-gunnery",
         "autoloaders",
-        "warship-crews",
+        "fire-control",
         "human-factors",
-        "fire-control"
+        "naval-gunnery",
+        "warship-crews"
       ],
-      "summary": "The opening explains how fatigue, long engagements, and precision work made human gun crews a limit on sustained naval fire.",
       "body": "Automation reduced the physical and mental burden on gun crews. Turrets needed relief teams because loading and other strenuous work could not be sustained indefinitely. Sighting and calculation imposed a different burden: long-range fighting demanded prolonged concentration on precise numbers and visual information. A distracted operator could enter the wrong settings, so mechanization reduced errors caused by fatigue and distraction.",
       "sourcePath": "src/transcripts/txt/2024-01-05_T22-00-16_the-philosophy-behind-autoloader-development-for-navies__UHSPySZw74.txt",
       "evidence": [
@@ -33,21 +31,21 @@
           "end": "3:34",
           "note": "The lecture connects automation with crew fatigue, relief teams, and the precision demanded during long engagements."
         }
-      ]
+      ],
+      "kind": "chapter",
+      "summary": "The opening explains how fatigue, long engagements, and precision work made human gun crews a limit on sustained naval fire."
     },
     {
       "slug": "mechanization-before-full-automation",
       "title": "Autoloaders evolved from existing machinery",
-      "kind": "chapter",
       "start": "3:57",
       "end": "6:00",
       "topics": [
         "autoloaders",
-        "warship-automation",
         "battleship-guns",
-        "naval-fire-control"
+        "naval-fire-control",
+        "warship-automation"
       ],
-      "summary": "Large-gun automation emerged by extending mechanical handling systems while humans continued to supply judgment and sensing.",
       "body": "Autoloaders did not emerge through a single prototype because battleship mountings already mechanized much of the physical work. People increasingly served as sensors and controllers rather than as the main source of lifting power. They had to judge whether shells and charges were correctly positioned while the ship moved, the turret trained, and guns fired nearby. A mistaken loading decision could prevent the weapon from firing or create a dangerous failure inside the barrel. The difficult transition was therefore from machine-assisted handling to reliable machine sensing and control.",
       "sourcePath": "src/transcripts/txt/2024-01-05_T22-00-16_the-philosophy-behind-autoloader-development-for-navies__UHSPySZw74.txt",
       "evidence": [
@@ -56,21 +54,21 @@
           "end": "5:45",
           "note": "Dr. Clarke describes autoloading as an evolution and identifies human sensing and control as the difficult functions to replace."
         }
-      ]
+      ],
+      "kind": "chapter",
+      "summary": "Large-gun automation emerged by extending mechanical handling systems while humans continued to supply judgment and sensing."
     },
     {
       "slug": "autoloader-definition-and-ship-design-payoff",
       "title": "What an autoloader changes aboard ship",
-      "kind": "notable_point",
       "start": "6:58",
       "end": "9:01",
       "topics": [
         "autoloaders",
-        "warship-design",
+        "ship-displacement",
         "warship-crews",
-        "ship-displacement"
+        "warship-design"
       ],
-      "summary": "A working definition of the autoloader leads into its wider effects on turret size, crew accommodation, weight, and armor choices.",
       "body": "An autoloader is a mechanical aid or replacement for the personnel who retrieve ammunition and feed a crew-served weapon. This definition separates the handling system from mechanisms integrated into the gun itself. A smaller operating crew can reduce the access space needed inside a turret and the accommodation, food, water, and support services required elsewhere in the ship. Those savings can produce a smaller hull or release weight and volume for armor and other capabilities. The payoff extends well beyond a faster loading cycle.",
       "sourcePath": "src/transcripts/txt/2024-01-05_T22-00-16_the-philosophy-behind-autoloader-development-for-navies__UHSPySZw74.txt",
       "evidence": [
@@ -79,21 +77,21 @@
           "end": "9:00",
           "note": "The transcript defines autoloading and traces reduced manpower into ship-space and weight savings."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "A working definition of the autoloader leads into its wider effects on turret size, crew accommodation, weight, and armor choices."
     },
     {
       "slug": "gatling-gun-rapid-fire-limit",
       "title": "The Gatling gun's naval limitation",
-      "kind": "chapter",
       "start": "9:02",
       "end": "12:29",
       "topics": [
         "gatling-guns",
-        "rapid-fire-weapons",
+        "hms-warrior",
         "ironclads",
-        "hms-warrior"
+        "rapid-fire-weapons"
       ],
-      "summary": "Early rapid-fire mechanisms could sweep exposed decks, but their projectiles could not defeat armored warships at useful combat ranges.",
       "body": "The Gatling gun demonstrated the attraction of mechanical volume of fire, yet scaling its mechanism to ship-killing power proved difficult. Its projectiles could sweep exposed personnel from a deck, support a boarding action, or help a ship defend itself in harbor. They could not penetrate the protected central section of an armored warship such as HMS Warrior, which could also fight from beyond useful Gatling range. Making a rotary weapon large enough to damage such a ship introduced mechanical problems that defeated the original advantage. Rapid fire mattered only when each projectile could produce meaningful damage at the ranges where the opponent could be engaged.",
       "sourcePath": "src/transcripts/txt/2024-01-05_T22-00-16_the-philosophy-behind-autoloader-development-for-navies__UHSPySZw74.txt",
       "evidence": [
@@ -102,20 +100,20 @@
           "end": "12:29",
           "note": "The lecture follows rapid-fire experimentation to the Gatling gun and explains why it could not damage armored ships effectively."
         }
-      ]
+      ],
+      "kind": "chapter",
+      "summary": "Early rapid-fire mechanisms could sweep exposed decks, but their projectiles could not defeat armored warships at useful combat ranges."
     },
     {
       "slug": "rapid-fire-before-the-gatling-gun",
       "title": "Rapid fire before the Gatling gun",
-      "kind": "notable_point",
       "start": "9:12",
       "end": "10:59",
       "topics": [
-        "rapid-fire-weapons",
+        "crossbows",
         "longbows",
-        "crossbows"
+        "rapid-fire-weapons"
       ],
-      "summary": "Roman and Chinese mechanisms, medieval bows, and musket-era massed shot show that firing speed was a long-running military problem.",
       "body": "The Gatling gun belonged to a much older search for faster projectile delivery. Roman and Chinese experiments with mechanized or rapid-fire weapons preceded the medieval European longbow and crossbow. The longbow combined a high firing rate with a comparatively simple weapon, while the crossbow could be easier to learn and, depending on its power, offer greater range at a slower cadence. Musket-era forces continued to pursue volume by loading cannon with large numbers of musket balls. The Gatling gun was an industrial step in an old trade-off among rate, range, training, and projectile effect.",
       "sourcePath": "src/transcripts/txt/2024-01-05_T22-00-16_the-philosophy-behind-autoloader-development-for-navies__UHSPySZw74.txt",
       "evidence": [
@@ -124,22 +122,22 @@
           "end": "10:59",
           "note": "The lecture surveys Roman and Chinese rapid-fire mechanisms, longbow and crossbow trade-offs, and musket-era massed-projectile cannon fire."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "Roman and Chinese mechanisms, medieval bows, and musket-era massed shot show that firing speed was a long-running military problem."
     },
     {
       "slug": "quick-firing-cartridge-ammunition",
       "title": "Cartridge ammunition makes quick firing practical",
-      "kind": "chapter",
       "start": "12:30",
       "end": "16:06",
       "topics": [
-        "quick-firing-guns",
+        "4-7-inch-guns",
         "hotchkiss",
-        "royal-navy",
         "naval-logistics",
-        "4-7-inch-guns"
+        "quick-firing-guns",
+        "royal-navy"
       ],
-      "summary": "Combining projectile and propellant into one cartridge made a sustained quick-firing cycle practical for a small crew.",
       "body": "Hotchkiss-style quick firing combined the projectile and propellant in one cartridge instead of requiring them to be loaded separately. A small crew could pass in a complete round, close the breech, fire, and repeat the cycle at roughly twelve or more rounds per minute. The 1885 QF 4.7-inch Mark I shows the approach becoming the starting point for a durable Royal Navy gun family. The arrangement reduced the number of separate physical actions required from the crew. It marks an important stage in automation: simplify human work before technology is ready to replace it. The efficient ammunition package and shorter loading sequence produced the practical gain.",
       "sourcePath": "src/transcripts/txt/2024-01-05_T22-00-16_the-philosophy-behind-autoloader-development-for-navies__UHSPySZw74.txt",
       "evidence": [
@@ -148,21 +146,21 @@
           "end": "14:15",
           "note": "The transcript explains how cartridge ammunition reduced separate loading steps, enabled a small crew to sustain quick fire, and led into the 1885 QF 4.7-inch Mark I."
         }
-      ]
+      ],
+      "kind": "chapter",
+      "summary": "Combining projectile and propellant into one cartridge made a sustained quick-firing cycle practical for a small crew."
     },
     {
       "slug": "royal-navy-caliber-proliferation",
       "title": "Caliber proliferation multiplies fleet burdens",
-      "kind": "notable_point",
       "start": "13:43",
       "end": "15:29",
       "topics": [
-        "royal-navy",
-        "naval-procurement",
+        "naval-gunnery",
         "naval-logistics",
-        "naval-gunnery"
+        "naval-procurement",
+        "royal-navy"
       ],
-      "summary": "Seven overlapping British gun calibers illustrate how technical experimentation can burden training, ammunition supply, and fleet standardization.",
       "body": "The Royal Navy worked on seven calibers from 3-inch to 5.5-inch weapons at the same time for broadly similar roles. Every additional caliber created distinct training requirements, ammunition chains, and support needs. Some variety could be justified for upgrading old ships or separating submarine, destroyer, cruiser, and capital-ship requirements. Two or perhaps three families may have covered those differences. A technically plausible weapon can still be a poor fleet-level procurement choice when proliferation overwhelms standardization.",
       "sourcePath": "src/transcripts/txt/2024-01-05_T22-00-16_the-philosophy-behind-autoloader-development-for-navies__UHSPySZw74.txt",
       "evidence": [
@@ -171,21 +169,21 @@
           "end": "15:29",
           "note": "The transcript lists seven overlapping Royal Navy calibers and connects each to separate training and logistics requirements."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "Seven overlapping British gun calibers illustrate how technical experimentation can burden training, ammunition supply, and fleet standardization."
     },
     {
       "slug": "six-inch-human-loading-ceiling",
       "title": "Six inches marks the practical hand-loading ceiling",
-      "kind": "notable_point",
       "start": "16:07",
       "end": "17:34",
       "topics": [
         "6-inch-guns",
-        "quick-firing-guns",
         "naval-gunnery",
+        "quick-firing-guns",
         "rate-of-fire"
       ],
-      "summary": "The six-inch gun became dominant because its shell was near the upper limit that one person could handle quickly and repeatedly.",
       "body": "Royal Navy trials valued the total weight of explosive delivered and the likelihood of scoring damaging hits, not merely the power of one shell. An individual 8-inch projectile was more destructive, but a 6-inch gun could create more chances to hit or blind an opponent before a torpedo attack. The 6-inch round also sat near the upper limit that one person could move repeatedly through a quick-firing cycle. Above that size, machinery or several handlers became necessary and slowed the process. The caliber's importance therefore came from the interaction of shell effect, hit probability, and sustainable human handling.",
       "sourcePath": "src/transcripts/txt/2024-01-05_T22-00-16_the-philosophy-behind-autoloader-development-for-navies__UHSPySZw74.txt",
       "evidence": [
@@ -194,21 +192,21 @@
           "end": "17:33",
           "note": "Dr. Clarke identifies six inches as the heaviest practical manually handled quick-firing round and links it to hit probability."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "The six-inch gun became dominant because its shell was near the upper limit that one person could handle quickly and repeatedly."
     },
     {
       "slug": "world-war-one-battleship-ammunition-chain",
       "title": "Inside a World War I battleship ammunition chain",
-      "kind": "chapter",
       "start": "17:35",
       "end": "20:11",
       "topics": [
+        "ammunition-handling",
         "battleship-guns",
-        "magazines",
         "flash-protection",
-        "ammunition-handling"
+        "magazines"
       ],
-      "summary": "A step-by-step look at shell and propellant movement shows how machinery already carried and rammed heavy ammunition during World War I.",
       "body": "The World War I ammunition chain was already a heavily mechanized system rather than a line of sailors carrying shells. A trolley collected the projectile from the magazine, hoists and transfer carriages moved it upward, and a powered rammer placed it in the gun because the shell was far too heavy for manual handling. Lighter propellant bags still passed through human hands at several stages. Flash-tight doors and transfer arrangements were supposed to isolate the magazine from a fire in the turret. Crews who bypassed those barriers to increase their rate of fire traded a small speed gain for a catastrophic safety risk.",
       "sourcePath": "src/transcripts/txt/2024-01-05_T22-00-16_the-philosophy-behind-autoloader-development-for-navies__UHSPySZw74.txt",
       "evidence": [
@@ -217,21 +215,21 @@
           "end": "20:11",
           "note": "The transcript describes the machinery, manual propellant handling, safety doors, and ramming sequence in a heavy-gun mounting."
         }
-      ]
+      ],
+      "kind": "chapter",
+      "summary": "A step-by-step look at shell and propellant movement shows how machinery already carried and rammed heavy ammunition during World War I."
     },
     {
       "slug": "sensors-as-the-autoloading-bottleneck",
       "title": "Sensors, not lifting power, blocked full automation",
-      "kind": "chapter",
       "start": "20:12",
       "end": "23:10",
       "topics": [
         "autoloaders",
-        "sensors",
+        "battleship-guns",
         "naval-fire-control",
-        "battleship-guns"
+        "sensors"
       ],
-      "summary": "Heavy-gun machinery could already move ammunition; the remaining challenge was reliably sensing position and safe completion under shock.",
       "body": "Humans throughout the ammunition path acted as limit switches and inspectors, confirming that shells were secure and mechanisms had reached the correct position. Central fire control could already provide much of the gun's training and elevation information, while machinery supplied the force needed to move and ram ammunition. Full automation required sensors to tell each machine when to stop, continue, or reject an unsafe condition. Those devices had to remain dependable beside gun blast, recoil, shock, and moving equipment. Control reliability was therefore a greater obstacle than raw mechanical force, and extreme precision was useful only if the sensor could survive the environment.",
       "sourcePath": "src/transcripts/txt/2024-01-05_T22-00-16_the-philosophy-behind-autoloader-development-for-navies__UHSPySZw74.txt",
       "evidence": [
@@ -240,22 +238,22 @@
           "end": "22:54",
           "note": "Dr. Clarke argues that humans supplied the sensing functions in an otherwise heavily mechanized ammunition system."
         }
-      ]
+      ],
+      "kind": "chapter",
+      "summary": "Heavy-gun machinery could already move ammunition; the remaining challenge was reliably sensing position and safe completion under shock."
     },
     {
       "slug": "british-interwar-autoloading-research",
       "title": "British interwar research tests automated heavy guns",
-      "kind": "chapter",
       "start": "23:11",
       "end": "26:18",
       "topics": [
-        "royal-navy",
+        "f2-battlecruiser",
+        "f3-battlecruiser",
         "interwar-period",
         "nelson-class-battleships",
-        "f2-battlecruiser",
-        "f3-battlecruiser"
+        "royal-navy"
       ],
-      "summary": "Royal Navy professionals debated gun automation in the 1920s, but the F2 and F3 studies judged the concept too immature for Nelson and Rodney.",
       "body": "The British studied automation through professional papers and published institutional discussions, where other specialists subjected proposals to direct criticism. Automated heavy guns entered debate around the F2 and F3 capital-ship studies as designers searched for more firepower within demanding ship constraints. The concept was rejected as insufficiently mature for the design path that produced Nelson and Rodney. Sensor technology available by the mid-1930s may have made the idea more plausible, although the earlier decision was sensible in its own technological context.",
       "sourcePath": "src/transcripts/txt/2024-01-05_T22-00-16_the-philosophy-behind-autoloader-development-for-navies__UHSPySZw74.txt",
       "evidence": [
@@ -264,12 +262,13 @@
           "end": "26:18",
           "note": "The transcript covers British institutional study of automation and its rejection for the F2/F3-derived Nelson design."
         }
-      ]
+      ],
+      "kind": "chapter",
+      "summary": "Royal Navy professionals debated gun automation in the 1920s, but the F2 and F3 studies judged the concept too immature for Nelson and Rodney."
     },
     {
       "slug": "interwar-autoloader-research-constraints",
       "title": "Interwar research depended on money and surviving evidence",
-      "kind": "notable_point",
       "start": "23:39",
       "end": "24:14",
       "topics": [
@@ -278,7 +277,6 @@
         "naval-research",
         "royal-navy"
       ],
-      "summary": "A cross-national comparison explains why British autoloader research is easier to trace than American, Japanese, or German work in the 1920s.",
       "body": "Technical interest did not guarantee that an institution could fund or document research. The United States may have wanted to explore automated heavy guns, but obtaining money for that work in the 1920s was difficult. Much Japanese evidence is no longer available, which limits a confident assessment of its program. Germany was in no position to pursue comparable development under its postwar constraints. British work is easier to trace because it continued and appeared in published professional discussions.",
       "sourcePath": "src/transcripts/txt/2024-01-05_T22-00-16_the-philosophy-behind-autoloader-development-for-navies__UHSPySZw74.txt",
       "evidence": [
@@ -287,21 +285,21 @@
           "end": "24:14",
           "note": "The transcript contrasts British published work with American funding limits, missing Japanese records, and German postwar weakness."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "A cross-national comparison explains why British autoloader research is easier to trace than American, Japanese, or German work in the 1920s."
     },
     {
       "slug": "lion-class-crew-reduction-and-automation",
       "title": "Automation ambitions behind the Lion-class guns",
-      "kind": "notable_point",
       "start": "26:19",
       "end": "28:01",
       "topics": [
+        "16-inch-guns",
         "lion-class-battleships",
         "royal-navy",
-        "16-inch-guns",
         "turret-design"
       ],
-      "summary": "The Lion-class gun difficulty may have reflected British efforts to shrink turret crews and automate more of the firing cycle.",
       "body": "One cautious interpretation assigns part of the Lion-class gun difficulty to automation goals alongside the 16-inch gun itself. By the Lion-class period, suitable sensing and control systems were more plausible than they had been during the F2 and F3 studies. British designers may have been trying to automate more of the firing sequence so that the turret could use fewer people and occupy less space. The surviving evidence does not justify claiming a completely automatic loading cycle. An ambitious manpower and turret-design goal may help explain difficulties often attributed only to gun caliber.",
       "sourcePath": "src/transcripts/txt/2024-01-05_T22-00-16_the-philosophy-behind-autoloader-development-for-navies__UHSPySZw74.txt",
       "evidence": [
@@ -310,21 +308,21 @@
           "end": "27:50",
           "note": "The lecture links possible Lion-class gun difficulties to an effort to reduce crew and automate the firing process."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "The Lion-class gun difficulty may have reflected British efforts to shrink turret crews and automate more of the firing cycle."
     },
     {
       "slug": "sustained-versus-advertised-rate-of-fire",
       "title": "Why advertised gun rates mislead at sea",
-      "kind": "chapter",
       "start": "28:02",
       "end": "31:18",
       "topics": [
-        "rate-of-fire",
+        "ammunition-handling",
         "naval-gunnery",
-        "sea-state",
-        "ammunition-handling"
+        "rate-of-fire",
+        "sea-state"
       ],
-      "summary": "Practical rate of fire depends on sustained ammunition supply, loading angle, turret movement, and the ship's motion in a seaway.",
       "body": "A quoted maximum often assumes a stationary mounting kept at the ideal loading angle, conditions unlike a maneuvering ship. Heavy guns usually had to return near horizontal before ammunition could be loaded safely, so every salvo could require elevation changes as well as training toward the target. Roll and pitch altered the effective loading angle and encouraged crews to choose a conservative setting rather than risk a shell moving incorrectly in the barrel. Ammunition supply also had to keep pace after the ready projectiles were gone. The meaningful measure was therefore the first fifty rounds under seagoing conditions, not the first few shots in a favorable test.",
       "sourcePath": "src/transcripts/txt/2024-01-05_T22-00-16_the-philosophy-behind-autoloader-development-for-navies__UHSPySZw74.txt",
       "evidence": [
@@ -333,22 +331,22 @@
           "end": "31:17",
           "note": "The transcript contrasts headline firing rates with sustained operation at safe loading angles in a moving ship."
         }
-      ]
+      ],
+      "kind": "chapter",
+      "summary": "Practical rate of fire depends on sustained ammunition supply, loading angle, turret movement, and the ship's motion in a seaway."
     },
     {
       "slug": "postwar-royal-navy-automatic-guns",
       "title": "Postwar automatic guns outran their development base",
-      "kind": "chapter",
       "start": "31:19",
       "end": "35:10",
       "topics": [
-        "postwar-royal-navy",
         "automatic-guns",
+        "crown-colony-class-cruisers",
+        "postwar-royal-navy",
         "tiger-class-cruisers",
-        "town-class-light-cruisers-1936",
-        "crown-colony-class-cruisers"
+        "town-class-light-cruisers-1936"
       ],
-      "summary": "Britain's postwar automatic six-inch and three-inch guns promised exceptional performance but lacked the production depth needed to mature them.",
       "body": "A postwar generation of battleships would probably have used automatic main guns if construction had resumed. Britain retained Lion-class hulls for a time and continued to study a successor to Vanguard into the late 1940s, showing that the design question did not vanish immediately in 1945. The Royal Navy's actual postwar automatic six-inch and three-inch weapons pursued very high performance. At extreme rates and angles, however, the mechanisms could damage themselves. The concept was credible, but the weapons needed a deeper development program than postwar construction plans provided.",
       "sourcePath": "src/transcripts/txt/2024-01-05_T22-00-16_the-philosophy-behind-autoloader-development-for-navies__UHSPySZw74.txt",
       "evidence": [
@@ -357,12 +355,13 @@
           "end": "35:10",
           "note": "The lecture discusses hypothetical automated postwar battleships and the insufficient development run of British automatic six- and three-inch systems."
         }
-      ]
+      ],
+      "kind": "chapter",
+      "summary": "Britain's postwar automatic six-inch and three-inch guns promised exceptional performance but lacked the production depth needed to mature them."
     },
     {
       "slug": "production-runs-as-weapons-development",
       "title": "Production runs were part of weapons development",
-      "kind": "notable_point",
       "start": "33:00",
       "end": "35:10",
       "topics": [
@@ -371,7 +370,6 @@
         "royal-navy",
         "tiger-class-cruisers"
       ],
-      "summary": "The troubled postwar automatic guns reveal how small ship classes removed the Royal Navy's traditional path from early faults to mature equipment.",
       "body": "Prewar British procurement assumed that the first ships and mountings in a series would expose faults under service conditions. Later units could incorporate corrections, and major refits could return those improvements to the early ships. That pattern helped mature successive twin- and triple-six-inch installations from Enterprise through the Town and Crown Colony classes. The postwar automatic guns entered service in only a handful of mountings, leaving too little equipment for the same iterative learning. Their reputation partly reflects the loss of that development base, while the underlying automatic-gun concept remained credible.",
       "sourcePath": "src/transcripts/txt/2024-01-05_T22-00-16_the-philosophy-behind-autoloader-development-for-navies__UHSPySZw74.txt",
       "evidence": [
@@ -380,21 +378,21 @@
           "end": "35:10",
           "note": "The transcript contrasts prewar series production and refit learning with the tiny run of postwar automatic six-inch mountings."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "The troubled postwar automatic guns reveal how small ship classes removed the Royal Navy's traditional path from early faults to mature equipment."
     },
     {
       "slug": "des-moines-heavy-gun-alternative",
       "title": "The Des Moines class shows the heavy-gun alternative",
-      "kind": "chapter",
       "start": "35:11",
       "end": "38:15",
       "topics": [
-        "des-moines-class-cruisers",
         "8-inch-guns",
-        "shore-bombardment",
-        "amphibious-warfare"
+        "amphibious-warfare",
+        "des-moines-class-cruisers",
+        "shore-bombardment"
       ],
-      "summary": "The automatic 8-inch Mark 16 illustrates a path toward rapid heavy fire for land attack and potentially broader fleet-defense roles.",
       "body": "The Des Moines class demonstrated that an automatic 8-inch cruiser gun could combine a heavy projectile with a much higher rate of fire. The Mark 16 suggests that large automatic naval guns still had a viable development path after the Second World War. Shore bombardment remained a substantial mission because amphibious forces needed sustained and comparatively inexpensive fire support. Suitable large bursting shells might also have helped defend against massed missile attacks, although this is presented as a speculative use. Optimizing solely for the North Atlantic antisubmarine fight discarded useful heavy-gun options for other naval tasks.",
       "sourcePath": "src/transcripts/txt/2024-01-05_T22-00-16_the-philosophy-behind-autoloader-development-for-navies__UHSPySZw74.txt",
       "evidence": [
@@ -403,21 +401,21 @@
           "end": "38:05",
           "note": "The transcript praises the Des Moines automatic 8-inch system and considers heavy-gun uses beyond the North Atlantic mission."
         }
-      ]
+      ],
+      "kind": "chapter",
+      "summary": "The automatic 8-inch Mark 16 illustrates a path toward rapid heavy fire for land attack and potentially broader fleet-defense roles."
     },
     {
       "slug": "automation-culminates-in-vls",
       "title": "Vertical launch embodies the autoloader philosophy",
-      "kind": "chapter",
       "start": "38:16",
       "end": "41:23",
       "topics": [
-        "vertical-launch-systems",
         "missiles",
-        "warship-automation",
-        "rate-of-fire"
+        "rate-of-fire",
+        "vertical-launch-systems",
+        "warship-automation"
       ],
-      "summary": "Modern vertical launch systems reduce moving parts and physical human actions while retaining people for command decisions.",
       "body": "A vertical launch system shortens the path from decision to discharge. Missiles sit in ready cells, computers control the sequence, and operators act from a protected position instead of physically passing ammunition toward a launcher. Fewer mechanical movements reduce the time and number of failure points between the command to fire and weapon release. Human judgment remains in command decisions even as operators leave the physical machinery loop. Automation accelerates execution while people remain responsible for the decision to engage.",
       "sourcePath": "src/transcripts/txt/2024-01-05_T22-00-16_the-philosophy-behind-autoloader-development-for-navies__UHSPySZw74.txt",
       "evidence": [
@@ -426,21 +424,21 @@
           "end": "39:21",
           "note": "Dr. Clarke explicitly connects rapid-fire development and reduced human handling to modern VLS operation."
         }
-      ]
+      ],
+      "kind": "chapter",
+      "summary": "Modern vertical launch systems reduce moving parts and physical human actions while retaining people for command decisions."
     },
     {
       "slug": "first-fire-and-volume-of-fire",
       "title": "Firing first creates more chances to disable the enemy",
-      "kind": "notable_point",
       "start": "39:25",
       "end": "41:23",
       "topics": [
+        "combat-effectiveness",
         "naval-gunnery",
-        "rate-of-fire",
         "naval-tactics",
-        "combat-effectiveness"
+        "rate-of-fire"
       ],
-      "summary": "Equal accuracy still favors the ship that fires sooner and more often, provided each projectile can inflict useful damage.",
       "body": "The tactical value of rapid fire lies in the number of opportunities a ship creates to hit something critical. If two opponents achieve the same accuracy, the ship firing three times as many rounds gets roughly three times as many chances to cause decisive damage. Preparation, leadership, and weapon reliability still matter, so volume alone is not a guarantee of victory. The projectile must also be powerful enough and have enough range to affect the opponent, which is why a Gatling gun could not solve the armored-warship problem. Automation can shorten the first-shot delay and sustain a higher flow of effective weapons.",
       "sourcePath": "src/transcripts/txt/2024-01-05_T22-00-16_the-philosophy-behind-autoloader-development-for-navies__UHSPySZw74.txt",
       "evidence": [
@@ -449,21 +447,21 @@
           "end": "41:23",
           "note": "The transcript compares equal hit rates under different firing volumes and qualifies volume by the need for effective projectiles."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "Equal accuracy still favors the ship that fires sooner and more often, provided each projectile can inflict useful damage."
     },
     {
       "slug": "shell-power-versus-volume-of-fire",
       "title": "Balancing shell power against volume of fire",
-      "kind": "notable_point",
       "start": "41:24",
       "end": "44:38",
       "topics": [
+        "battleship-design",
         "naval-gunnery",
         "rate-of-fire",
-        "battleship-design",
         "turret-design"
       ],
-      "summary": "A numerical thought experiment shows how numerous faster guns can overcome a range and shell-weight disadvantage over a sustained action.",
       "body": "A very large weapon offers destructive power and perhaps longer range, but fewer barrels and slower firing reduce the number of chances to hit. A numerical example compares six hypothetical 22-inch guns firing one round every forty seconds with sixteen 14-inch guns firing twice per minute. The larger weapon receives an opening period when only it is in range, yet the numerous smaller guns overtake its shell count as the engagement continues. The comparison is illustrative rather than a complete ship design, because armor, accuracy, and damage per hit would also affect the outcome. Turret count also changes resilience: losing one of three turrets costs a larger fraction of firepower than losing one of four.",
       "sourcePath": "src/transcripts/txt/2024-01-05_T22-00-16_the-philosophy-behind-autoloader-development-for-navies__UHSPySZw74.txt",
       "evidence": [
@@ -472,22 +470,22 @@
           "end": "44:35",
           "note": "The transcript compares six slow heavy guns with sixteen faster lighter guns and calculates their accumulating salvo totals."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "A numerical thought experiment shows how numerous faster guns can overcome a range and shell-weight disadvantage over a sustained action."
     },
     {
       "slug": "vls-magazine-depth-and-at-sea-reloading",
       "title": "VLS speed trades away magazine depth",
-      "kind": "chapter",
       "start": "44:39",
       "end": "46:05",
       "topics": [
-        "vertical-launch-systems",
-        "mark-41-vls",
-        "ticonderoga-class-cruisers",
         "arleigh-burke-class-destroyers",
-        "rearming-at-sea"
+        "mark-41-vls",
+        "rearming-at-sea",
+        "ticonderoga-class-cruisers",
+        "vertical-launch-systems"
       ],
-      "summary": "Vertical launch cells expose every missile for rapid use but modern fleets generally cannot replenish those cells while underway.",
       "body": "The VLS offers immediate access to its carried weapons, yet its ready ammunition is also effectively its entire magazine. Early Mark 41 installations on Ticonderoga-class cruisers reserved cell space for a crane intended to support reloading. Arleigh Burke-class destroyers and most later installations did not preserve a practical equivalent. The design choice reflected Cold War expectations that a major conflict would end quickly or escalate to nuclear war before repeated conventional rearming became decisive. Modern ships consequently gain rapid access to every carried missile but generally must leave the operating area to restore that depth after firing.",
       "sourcePath": "src/transcripts/txt/2024-01-05_T22-00-16_the-philosophy-behind-autoloader-development-for-navies__UHSPySZw74.txt",
       "evidence": [
@@ -496,7 +494,9 @@
           "end": "46:05",
           "note": "The lecture contrasts VLS firepower access with limited magazine depth and the disappearance of at-sea reloading."
         }
-      ]
+      ],
+      "kind": "chapter",
+      "summary": "Vertical launch cells expose every missile for rapid use but modern fleets generally cannot replenish those cells while underway."
     }
   ]
 }

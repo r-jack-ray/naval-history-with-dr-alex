@@ -1,33 +1,29 @@
 {
   "videoId": "i6-eoxU6pEM",
   "topics": [
+    "battleships",
+    "cva-01",
     "naval-history",
     "naval-procurement",
-    "royal-navy",
-    "cva-01",
-    "battleships",
-    "pearl-harbor"
+    "pearl-harbor",
+    "royal-navy"
   ],
   "segments": [
     {
       "slug": "integrated-power-versus-turbo-electric-drive",
       "title": "Integrated power systems versus early turbo-electric drive",
-      "kind": "qa",
       "start": "0:53",
       "end": "6:07",
       "topics": [
-        "integrated-power-systems",
-        "turbo-electric-drive",
-        "warship-design",
         "damage-control",
-        "type-45-destroyer",
+        "integrated-power-systems",
         "naval-maintenance",
-        "redundancy"
+        "redundancy",
+        "turbo-electric-drive",
+        "type-45-destroyer",
+        "warship-design"
       ],
-      "summary": "How modern integrated power differs from older turbo-electric propulsion, and why surplus generating capacity improves warship resilience and availability.",
       "body": "The underlying electrical principle is familiar from early turbo-electric ships, but modern machinery, metallurgy, control systems, and efficiency are much more capable. An integrated system supplies propulsion, sensors, weapons, and hotel loads from a common electrical architecture, with sensors and weapons often imposing the largest demands. Multiple generators allow operators to triage the electrical network after damage instead of treating propulsion and combat systems as isolated loads. Designing generating capacity at about 150 percent of expected demand would let a ship absorb damage or take machinery offline for maintenance without losing its operational output.",
-      "question": "Beyond the name, how does a modern integrated power system differ from the turbo-electric drives used on older American warships?",
-      "answerShort": "Modern systems integrate propulsion and every major electrical load, use far more efficient machinery and controls, and can distribute redundant generating capacity to preserve capability after damage or during maintenance.",
       "sourcePath": "src/transcripts/txt/2025-06-04_T18-30-06_scuttlebutt-11-from-sdsr-to-pearl-harbor-with-a-stop-at-cva-01-along-the-way_i6-eoxU6pEM.txt",
       "evidence": [
         {
@@ -35,24 +31,26 @@
           "end": "6:07",
           "note": "The answer contrasts the two electrical architectures and explains load integration, redundancy, and at-sea maintenance."
         }
-      ]
+      ],
+      "kind": "qa",
+      "summary": "How modern integrated power differs from older turbo-electric propulsion, and why surplus generating capacity improves warship resilience and availability.",
+      "question": "Beyond the name, how does a modern integrated power system differ from the turbo-electric drives used on older American warships?",
+      "answerShort": "Modern systems integrate propulsion and every major electrical load, use far more efficient machinery and controls, and can distribute redundant generating capacity to preserve capability after damage or during maintenance."
     },
     {
       "slug": "sonar-range-computing-and-array-scale",
       "title": "Why a quoted sonar range can mislead",
-      "kind": "notable_point",
       "start": "2:41",
       "end": "3:52",
       "topics": [
-        "sonar",
         "anti-submarine-warfare",
-        "submarines",
         "naval-technology",
         "nuclear-attack-submarines",
+        "seabed-mapping",
         "signal-processing",
-        "seabed-mapping"
+        "sonar",
+        "submarines"
       ],
-      "summary": "A short technical aside contrasts compact civilian seabed-mapping sonar with the computing power, sensitivity, and array scale available to a nuclear attack submarine.",
       "body": "A universal 2,400-metre range is a poor description of modern sonar. Some compact civilian pulse-sonar systems used for seabed mapping may fit that figure, but the small vessels that carry them and their processing capacity are not comparable to a nuclear attack submarine. Detection performance depends on the array's size and sensitivity as well as the computing power available to interpret its returns. Isolated range figures therefore say little about military sonar capability, while the scale of the sensor and its processing load helps explain why sensors can dominate a warship's electrical demand.",
       "sourcePath": "src/transcripts/txt/2025-06-04_T18-30-06_scuttlebutt-11-from-sdsr-to-pearl-harbor-with-a-stop-at-cva-01-along-the-way_i6-eoxU6pEM.txt",
       "evidence": [
@@ -61,23 +59,23 @@
           "end": "3:52",
           "note": "Clarke contrasts small civilian seabed-mapping sonar with attack-submarine arrays, processing power, and sensitivity."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "A short technical aside contrasts compact civilian seabed-mapping sonar with the computing power, sensitivity, and array scale available to a nuclear attack submarine."
     },
     {
       "slug": "historical-disagreement-and-right-of-reply",
       "title": "How historians can disagree over the same documents",
-      "kind": "notable_point",
       "start": "6:09",
       "end": "11:31",
       "topics": [
-        "historiography",
-        "naval-history",
-        "historical-method",
         "academic-debate",
         "cva-01",
-        "edward-hampshire"
+        "edward-hampshire",
+        "historical-method",
+        "historiography",
+        "naval-history"
       ],
-      "summary": "The CVA-01 manpower debate becomes a lesson in right of reply, causal sequence, and legitimate disagreement over the same documents.",
       "body": "Before taking up the CVA-01 dispute, the video sets out a right-of-reply rule: an absent historian should not be made the target of a one-sided argument. Edward Hampshire gives the manpower establishment more causal weight, while the reading offered here places the carrier decision first. Both agree on the government's broader move away from a large carrier navy. The surviving record supports disagreement over sequence because the Royal Navy kept trying to revive the carrier after policy had moved against it, and later personnel cuts made that effort harder. Historians can therefore read the same documents differently without either account becoming a simple factual error.",
       "sourcePath": "src/transcripts/txt/2025-06-04_T18-30-06_scuttlebutt-11-from-sdsr-to-pearl-harbor-with-a-stop-at-cva-01-along-the-way_i6-eoxU6pEM.txt",
       "evidence": [
@@ -86,28 +84,26 @@
           "end": "11:31",
           "note": "Clarke explains his right-of-reply rule and compares two compatible but differently ordered readings of the CVA-01 decision."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "The CVA-01 manpower debate becomes a lesson in right of reply, causal sequence, and legitimate disagreement over the same documents."
     },
     {
       "slug": "cva-01-cancellation-and-royal-navy-manning",
       "title": "Did Royal Navy manning shortages help cancel CVA-01?",
-      "kind": "qa",
       "start": "7:01",
       "end": "11:31",
       "topics": [
-        "cva-01",
-        "royal-navy",
         "aircraft-carriers",
+        "cva-01",
         "defence-policy",
-        "naval-personnel",
-        "historiography",
+        "edward-hampshire",
         "historical-method",
-        "edward-hampshire"
+        "historiography",
+        "naval-personnel",
+        "royal-navy"
       ],
-      "summary": "A documentary-interpretation question asks whether personnel reductions caused CVA-01's cancellation or followed the decision to abandon carrier groups.",
       "body": "The disagreement turns on emphasis and sequence rather than mutually exclusive claims. The transition from national service to an all-volunteer force left a real manning legacy, but the Navy was still much larger and CVA-01 would have required fewer sailors than the ships it was intended to replace. In the reading offered here, the government first chose a less naval and less carrier-centred posture, after which Treasury assumptions about no longer operating full carrier groups justified reductions in personnel. Edward Hampshire's interpretation gives the shrinking manpower establishment more causal weight because the Navy continued seeking ways to revive the carrier programme after the initial decision. The same documents can support both emphases without making either historian simply wrong.",
-      "question": "Did Royal Navy manning problems contribute materially to the cancellation of the CVA-01 carrier program?",
-      "answerShort": "Only indirectly in the reading offered here: the carrier-centred strategy was cut first, and the associated personnel reductions then made revival harder, though Edward Hampshire reasonably gives the reverse causal link more weight.",
       "sourcePath": "src/transcripts/txt/2025-06-04_T18-30-06_scuttlebutt-11-from-sdsr-to-pearl-harbor-with-a-stop-at-cva-01-along-the-way_i6-eoxU6pEM.txt",
       "evidence": [
         {
@@ -115,24 +111,26 @@
           "end": "11:31",
           "note": "Clarke compares two readings of the relationship between carrier cancellation and personnel cuts."
         }
-      ]
+      ],
+      "kind": "qa",
+      "summary": "A documentary-interpretation question asks whether personnel reductions caused CVA-01's cancellation or followed the decision to abandon carrier groups.",
+      "question": "Did Royal Navy manning problems contribute materially to the cancellation of the CVA-01 carrier program?",
+      "answerShort": "Only indirectly in the reading offered here: the carrier-centred strategy was cut first, and the associated personnel reductions then made revival harder, though Edward Hampshire reasonably gives the reverse causal link more weight."
     },
     {
       "slug": "two-carrier-fleet-breadth-and-extra-flight-decks",
       "title": "Why two carrier hulls leave little fleet breadth",
-      "kind": "notable_point",
       "start": "11:31",
       "end": "12:19",
       "topics": [
-        "queen-elizabeth-class-aircraft-carriers",
         "aircraft-carriers",
         "amphibious-warfare",
+        "fleet-availability",
         "force-structure",
-        "royal-navy",
         "lhd",
-        "fleet-availability"
+        "queen-elizabeth-class-aircraft-carriers",
+        "royal-navy"
       ],
-      "summary": "Before the CATOBAR question, the discussion explains why a two-carrier fleet may still need additional flight decks, potentially in the form of amphibious assault ships.",
       "body": "Replacing the Invincible class with only two Queen Elizabeth-class hulls concentrates capability but limits the fleet's breadth. Maintenance, readiness, and simultaneous commitments become harder to manage when there are only two large flight decks. Additional defence funding might therefore support more aviation-capable hulls, possibly landing helicopter dock ships rather than another full carrier. Aircraft capacity and fleet presence are separate problems: one large carrier can operate many aircraft, but it cannot provide another hull where the navy needs one.",
       "sourcePath": "src/transcripts/txt/2025-06-04_T18-30-06_scuttlebutt-11-from-sdsr-to-pearl-harbor-with-a-stop-at-cva-01-along-the-way_i6-eoxU6pEM.txt",
       "evidence": [
@@ -141,26 +139,26 @@
           "end": "12:19",
           "note": "Clarke links the two-hull Queen Elizabeth-class fleet to limited breadth and possible additional LHD-style flight decks."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "Before the CATOBAR question, the discussion explains why a two-carrier fleet may still need additional flight decks, potentially in the form of amphibious assault ships."
     },
     {
       "slug": "queen-elizabeth-class-catobar-conversion",
       "title": "What a Queen Elizabeth-class CATOBAR conversion would entail",
-      "kind": "notable_point",
       "start": "11:31",
       "end": "14:41",
       "topics": [
-        "queen-elizabeth-class-aircraft-carriers",
         "aircraft-carriers",
-        "naval-procurement",
         "catobar",
-        "naval-aviation",
-        "ship-conversion",
         "emals",
         "gas-turbines",
+        "naval-aviation",
+        "naval-procurement",
+        "queen-elizabeth-class-aircraft-carriers",
+        "ship-conversion",
         "shipbuilding"
       ],
-      "summary": "A speculative conversion sketch explains why adding catapults and arresting gear could demand more hull volume, power generation, and extensive recommissioning.",
       "body": "A fixed-wing CATOBAR conversion might require inserting a new hull section for additional machinery and greater hangar space. Electromagnetic catapults would increase the electrical requirement enough to justify at least one additional gas turbine. The modular design may provide a practical cut point where cables and services are easier to separate, though the exact position is uncertain from the available plans and images. Such a major alteration would force the ship through commissioning trials again, and a new carrier might prove quicker or more economical by the time purpose-built sections were fabricated and installed.",
       "sourcePath": "src/transcripts/txt/2025-06-04_T18-30-06_scuttlebutt-11-from-sdsr-to-pearl-harbor-with-a-stop-at-cva-01-along-the-way_i6-eoxU6pEM.txt",
       "evidence": [
@@ -169,28 +167,26 @@
           "end": "14:41",
           "note": "The discussion covers extra flight decks, hull insertion, generating capacity, service connections, and recommissioning."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "A speculative conversion sketch explains why adding catapults and arresting gear could demand more hull volume, power generation, and extensive recommissioning."
     },
     {
       "slug": "orion-class-and-anglo-german-naval-race",
       "title": "Could a larger Orion-class leap have changed the naval race?",
-      "kind": "qa",
       "start": "14:44",
       "end": "19:53",
       "topics": [
-        "orion-class-battleships",
-        "dreadnoughts",
-        "anglo-german-naval-arms-race",
-        "imperial-german-navy",
-        "world-war-i",
         "alternate-history",
+        "anglo-german-naval-arms-race",
         "defence-spending",
-        "german-army"
+        "dreadnoughts",
+        "german-army",
+        "imperial-german-navy",
+        "orion-class-battleships",
+        "world-war-i"
       ],
-      "summary": "An alternate-history answer traces how more expensive British dreadnoughts might have forced Germany to leave the naval race earlier and altered Britain's path into World War I.",
       "body": "Germany possessed the industrial potential to compete at sea, but doing so required infrastructure and money that its politically entrenched army also demanded. A larger British technological leap could therefore have raised the price of competition until the German army prevailed in the budget struggle and the navy dropped out sooner. If Germany withdrew from the naval race around 1910, the resulting reduction in Anglo-German tension could make British neutrality more plausible, especially if Germany avoided Belgium. A more ambitious Orion class would therefore change more than Britain's chances in a naval war; it could alter whether Britain entered a continental war at all.",
-      "question": "Would a more ambitious technological leap in the Orion class have weakened Britain and produced a very different First World War?",
-      "answerShort": "Not necessarily; it might have made the dreadnought race too expensive for Germany, reduced the naval threat perceived by Britain, and changed the diplomatic conditions under which Britain entered the war.",
       "sourcePath": "src/transcripts/txt/2025-06-04_T18-30-06_scuttlebutt-11-from-sdsr-to-pearl-harbor-with-a-stop-at-cva-01-along-the-way_i6-eoxU6pEM.txt",
       "evidence": [
         {
@@ -198,22 +194,24 @@
           "end": "19:53",
           "note": "The response links dreadnought costs, German army-navy budget competition, reduced Anglo-German tension, and possible British neutrality."
         }
-      ]
+      ],
+      "kind": "qa",
+      "summary": "An alternate-history answer traces how more expensive British dreadnoughts might have forced Germany to leave the naval race earlier and altered Britain's path into World War I.",
+      "question": "Would a more ambitious technological leap in the Orion class have weakened Britain and produced a very different First World War?",
+      "answerShort": "Not necessarily; it might have made the dreadnought race too expensive for Germany, reduced the naval threat perceived by Britain, and changed the diplomatic conditions under which Britain entered the war."
     },
     {
       "slug": "german-naval-power-and-british-diplomatic-alignment",
       "title": "Why German naval power changed Britain's diplomatic alignment",
-      "kind": "notable_point",
       "start": "19:53",
       "end": "23:17",
       "topics": [
         "anglo-german-naval-arms-race",
-        "british-foreign-policy",
         "british-empire",
-        "russian-empire",
-        "diplomatic-history"
+        "british-foreign-policy",
+        "diplomatic-history",
+        "russian-empire"
       ],
-      "summary": "Britain's alignment with France and hostility toward Germany are explained as changing strategic calculations shaped by imperial rivalry and the German fleet challenge.",
       "body": "Britain's prewar alignments followed changing threat calculations rather than permanent friendships. Russia remained a competitor over Afghanistan, India, and the Far East, while France became useful as a counterweight to Germany; Britain had traditionally worked with Prussia against French and Russian pressure. Germany's decision to combine Europe's most capable army with a fleet able to challenge British sea power made it a direct danger to an empire dependent on maritime strength. German assurances could not erase the strategic signal sent by fleet construction, which is why the naval race reshaped British diplomacy.",
       "sourcePath": "src/transcripts/txt/2025-06-04_T18-30-06_scuttlebutt-11-from-sdsr-to-pearl-harbor-with-a-stop-at-cva-01-along-the-way_i6-eoxU6pEM.txt",
       "evidence": [
@@ -222,28 +220,26 @@
           "end": "23:17",
           "note": "Clarke contrasts Britain's rivalry with Russia and alignment with France before explaining why German fleet building changed British threat perceptions."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "Britain's alignment with France and hostility toward Germany are explained as changing strategic calculations shaped by imperial rivalry and the German fleet challenge."
     },
     {
       "slug": "italy-won-interwar-naval-treaty-system",
       "title": "Who gained most from the interwar naval treaty system?",
-      "kind": "qa",
       "start": "23:19",
       "end": "26:41",
       "topics": [
-        "naval-treaties",
-        "washington-naval-treaty",
-        "london-naval-treaty",
-        "italian-navy",
-        "french-navy",
-        "submarines",
         "benito-mussolini",
-        "great-depression"
+        "french-navy",
+        "great-depression",
+        "italian-navy",
+        "london-naval-treaty",
+        "naval-treaties",
+        "submarines",
+        "washington-naval-treaty"
       ],
-      "summary": "Italy, rather than Britain or the United States, emerges as the chief beneficiary of the interwar naval treaties.",
       "body": "The treaty system constrained the fleets and building choices of Britain and the United States despite helping them retire unwanted ships. Italy gained status alongside France, constrained its principal Mediterranean rival, and reduced the ability of the stronger Royal Navy to overwhelm it. The 1930 London system did not bind Italy or France to the same submarine limitations, extending Italy's room for manoeuvre. Italy's limited infrastructure and Mussolini's policy prevented it from exploiting every advantage, but the diplomatic and legal position it received cost comparatively little.",
-      "question": "Which country truly won the interwar naval treaty system?",
-      "answerShort": "Italy, because the treaties elevated it to parity with France, constrained its rivals, and protected it from Britain's overwhelming superiority without requiring Italy to match their naval investment.",
       "sourcePath": "src/transcripts/txt/2025-06-04_T18-30-06_scuttlebutt-11-from-sdsr-to-pearl-harbor-with-a-stop-at-cva-01-along-the-way_i6-eoxU6pEM.txt",
       "evidence": [
         {
@@ -251,27 +247,27 @@
           "end": "26:41",
           "note": "Clarke weighs the American and British cases before explaining Italy's relative gains."
         }
-      ]
+      ],
+      "kind": "qa",
+      "summary": "Italy, rather than Britain or the United States, emerges as the chief beneficiary of the interwar naval treaties.",
+      "question": "Which country truly won the interwar naval treaty system?",
+      "answerShort": "Italy, because the treaties elevated it to parity with France, constrained its rivals, and protected it from Britain's overwhelming superiority without requiring Italy to match their naval investment."
     },
     {
       "slug": "pearl-harbor-third-wave-contingency",
       "title": "Was a third strike wave planned for Pearl Harbor?",
-      "kind": "qa",
       "start": "29:39",
       "end": "37:45",
       "topics": [
-        "pearl-harbor",
-        "imperial-japanese-navy",
-        "naval-aviation",
         "carrier-operations",
+        "imperial-japanese-navy",
         "military-doctrine",
+        "naval-aviation",
         "naval-intelligence",
-        "operational-risk"
+        "operational-risk",
+        "pearl-harbor"
       ],
-      "summary": "The proposed third wave is explained as a doctrinal contingency for attacking infrastructure after the American carriers and battleships had been neutralized.",
       "body": "The first two waves could be planned in detail because both launched before aircraft recovery, while any later strike depended on which aircraft and crews returned and what they reported. Japanese doctrine supported follow-on attacks against infrastructure once primary targets were destroyed, so a third wave did not require an equally detailed advance plan. Its composition would have depended on how quickly surviving first-wave aircraft could be serviced, rearmed, and relaunched. With the American carriers absent and still a potential threat to the Japanese force, withholding that follow-on strike was a rational operational decision rather than proof that the concept never existed. Destroying the carriers while finding the battle fleet absent might have reversed that calculation, because infrastructure attacks could trap slower surface forces while the Japanese carrier force withdrew.",
-      "question": "Was there really a plan to attack Pearl Harbor's facilities in a third wave?",
-      "answerShort": "There was a contingency grounded in Japanese doctrine, but its composition and launch depended on the first waves destroying both primary targets and returning enough serviceable aircraft; the missing American carriers made launching it too risky.",
       "sourcePath": "src/transcripts/txt/2025-06-04_T18-30-06_scuttlebutt-11-from-sdsr-to-pearl-harbor-with-a-stop-at-cva-01-along-the-way_i6-eoxU6pEM.txt",
       "evidence": [
         {
@@ -279,24 +275,26 @@
           "end": "37:45",
           "note": "The answer distinguishes a detailed scheduled wave from a conditional doctrinal follow-on attack."
         }
-      ]
+      ],
+      "kind": "qa",
+      "summary": "The proposed third wave is explained as a doctrinal contingency for attacking infrastructure after the American carriers and battleships had been neutralized.",
+      "question": "Was there really a plan to attack Pearl Harbor's facilities in a third wave?",
+      "answerShort": "There was a contingency grounded in Japanese doctrine, but its composition and launch depended on the first waves destroying both primary targets and returning enough serviceable aircraft; the missing American carriers made launching it too risky."
     },
     {
       "slug": "fuchida-memory-and-pearl-harbor-evidence",
       "title": "How to read Fuchida's Pearl Harbor account",
-      "kind": "notable_point",
       "start": "34:17",
       "end": "36:25",
       "topics": [
-        "pearl-harbor",
-        "imperial-japanese-navy",
-        "naval-aviation",
         "historiography",
+        "imperial-japanese-navy",
         "military-doctrine",
         "mitsuo-fuchida",
+        "naval-aviation",
+        "pearl-harbor",
         "personal-memoirs"
       ],
-      "summary": "Mitsuo Fuchida's recollection records a perspective shaped by hindsight and doctrine, rather than an infallible account or a wholesale fabrication.",
       "body": "Personal accounts can contain inaccuracies without being deliberate fabrications. A conditional third strike would leave less detailed paperwork than the two waves that were certain to launch, making the surviving evidence inherently uneven. Fuchida's frustration was also retrospective: he knew that no American carrier strike had punished the Japanese force, whereas commanders on 7 December did not. The memoir therefore needs to be read alongside Japanese doctrine, earlier operations in China, and the operational uncertainty facing the carrier force rather than accepted or rejected in isolation.",
       "sourcePath": "src/transcripts/txt/2025-06-04_T18-30-06_scuttlebutt-11-from-sdsr-to-pearl-harbor-with-a-stop-at-cva-01-along-the-way_i6-eoxU6pEM.txt",
       "evidence": [
@@ -305,33 +303,31 @@
           "end": "36:25",
           "note": "Clarke discusses personal memory, contingency planning, Japanese aviator adaptability, doctrine, and hindsight in Fuchida's account."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "Mitsuo Fuchida's recollection records a perspective shaped by hindsight and doctrine, rather than an infallible account or a wholesale fabrication."
     },
     {
       "slug": "replacing-revenge-class-with-battlecruisers",
       "title": "Why 25,000-ton battlecruisers were poor Revenge-class replacements",
-      "kind": "qa",
       "start": "37:45",
       "end": "44:12",
       "topics": [
-        "revenge-class-battleships",
+        "14-inch-guns",
+        "15-inch-guns",
         "battlecruisers",
         "battleships",
-        "fast-battleships",
-        "king-george-v-class-1939-battleships",
-        "nelson-class-battleships",
-        "naval-gunnery",
         "convoy-escort",
+        "fast-battleships",
         "german-battleship-bismarck",
         "german-battleship-tirpitz",
-        "scharnhorst-class-battleships",
-        "14-inch-guns",
-        "15-inch-guns"
+        "king-george-v-class-1939-battleships",
+        "naval-gunnery",
+        "nelson-class-battleships",
+        "revenge-class-battleships",
+        "scharnhorst-class-battleships"
       ],
-      "summary": "A proposed 1930s battlecruiser replacement is tested against convoy escort, survivability, armament, and treaty-era fleet needs.",
       "body": "By the 1930s, machinery power density made a fast battleship more useful than a lightly protected battlecruiser of the proposed size. The slow Revenge-class ships still forced Bismarck or Tirpitz to respect their armour and heavy guns, while Scharnhorst and Gneisenau could avoid an R-class convoy escort only by leaving its convoy intact. A 25,000-ton design with six 14-inch guns would be uncomfortable against either a Kongō-class battlecruiser or a modern fast battleship and might not be fast enough to escape the latter. Speed would not solve the escort problem because convoy work required a ship able to deter or survive contact with enemy capital ships. Continued British development of the 15-inch gun, followed by fleet-wide standardisation, could also have simplified logistics and strengthened later reconstruction options.",
-      "question": "Should Britain have replaced the Revenge class with five fast 25,000-ton battlecruisers and armed the King George V class with triple 15-inch turrets?",
-      "answerShort": "No to the small battlecruisers, whose protection and mission fit would be poor; yes to developing triple 15-inch mountings and standardizing on an improved 15-inch gun across the battle fleet.",
       "sourcePath": "src/transcripts/txt/2025-06-04_T18-30-06_scuttlebutt-11-from-sdsr-to-pearl-harbor-with-a-stop-at-cva-01-along-the-way_i6-eoxU6pEM.txt",
       "evidence": [
         {
@@ -339,27 +335,29 @@
           "end": "44:12",
           "note": "Clarke compares the proposal with fast battleships, convoy missions, enemy raiders, and British gun standardization."
         }
-      ]
+      ],
+      "kind": "qa",
+      "summary": "A proposed 1930s battlecruiser replacement is tested against convoy escort, survivability, armament, and treaty-era fleet needs.",
+      "question": "Should Britain have replaced the Revenge class with five fast 25,000-ton battlecruisers and armed the King George V class with triple 15-inch turrets?",
+      "answerShort": "No to the small battlecruisers, whose protection and mission fit would be poor; yes to developing triple 15-inch mountings and standardizing on an improved 15-inch gun across the battle fleet."
     },
     {
       "slug": "nelson-rodney-f3-fast-capital-ship-alternative",
       "title": "An F3-style alternative for Nelson and Rodney",
-      "kind": "notable_point",
       "start": "42:47",
       "end": "44:12",
       "topics": [
-        "nelson-class-battleships",
+        "15-inch-guns",
         "battlecruisers",
+        "f3-battlecruiser-design",
         "fast-battleships",
         "naval-gunnery",
         "naval-logistics",
-        "f3-battlecruiser-design",
-        "15-inch-guns",
+        "naval-prestige",
+        "nelson-class-battleships",
         "queen-elizabeth-class-battleships",
-        "revenge-class-battleships",
-        "naval-prestige"
+        "revenge-class-battleships"
       ],
-      "summary": "Nelson and Rodney are reimagined as fast, fully armoured F3-style capital ships built around triple 15-inch mountings.",
       "body": "The discussion turns from replacing the Revenge class to an earlier design choice involving Nelson and Rodney. The alternative proposed here is a pair of fully armoured F3-style ships capable of roughly 28 knots or more and armed with triple 15-inch mountings. Developing a 15-inch/50-calibre weapon instead of Britain's 16-inch gun would have encouraged common ammunition and gun policy across the capital fleet. That standard could also have supported later rearming of the Queen Elizabeth and Revenge classes, trading the prestige of a 16-inch ship for fleet-wide logistical and reconstruction benefits.",
       "sourcePath": "src/transcripts/txt/2025-06-04_T18-30-06_scuttlebutt-11-from-sdsr-to-pearl-harbor-with-a-stop-at-cva-01-along-the-way_i6-eoxU6pEM.txt",
       "evidence": [
@@ -368,31 +366,29 @@
           "end": "44:12",
           "note": "Clarke outlines an F3-style fast design for Nelson and Rodney and a fleet-wide 15-inch/50 standard."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "Nelson and Rodney are reimagined as fast, fully armoured F3-style capital ships built around triple 15-inch mountings."
     },
     {
       "slug": "larger-main-guns-and-layered-drone-defense",
       "title": "Larger naval guns and layered defense against drones",
-      "kind": "qa",
       "start": "44:19",
       "end": "50:01",
       "topics": [
-        "naval-gunnery",
-        "drone-warfare",
-        "vertical-launch-systems",
-        "electronic-warfare",
-        "directed-energy-weapons",
-        "layered-defence",
         "3-inch-guns",
         "40-mm-guns",
+        "directed-energy-weapons",
+        "drone-warfare",
+        "electronic-warfare",
         "hypersonic-weapons",
+        "layered-defence",
+        "naval-gunnery",
+        "naval-logistics",
         "replenishment-at-sea",
-        "naval-logistics"
+        "vertical-launch-systems"
       ],
-      "summary": "Why future warships may carry larger main guns while relying on rapid-fire small calibers, lasers, electronic warfare, and missiles against drone swarms.",
       "body": "The main gun's missions differ from those of close-defence weapons. A larger gun may support shore bombardment or throw a fragmentation cloud against a hypersonic weapon at long range without needing the firing rate required against many small drones. Gun ammunition is also easier to replenish at sea than vertical-launch missiles, making a larger gun battery attractive while navies work on VLS rearming. For the gun layer of local defence, the preferred mix centres on 76 mm, or 3-inch, and 40 mm weapons, supplemented by smaller guns, lasers, electronic warfare, missiles, and passive measures. Each weapon needs a useful place in the layered defence rather than a requirement to answer every threat.",
-      "question": "Does the threat from drone swarms mean naval guns must become smaller and faster-firing rather than increase in caliber?",
-      "answerShort": "No single gun must answer every threat: larger main guns can serve long-range and bombardment roles, while layered defenses of rapid-fire smaller guns, lasers, electronic warfare, and missiles handle drones.",
       "sourcePath": "src/transcripts/txt/2025-06-04_T18-30-06_scuttlebutt-11-from-sdsr-to-pearl-harbor-with-a-stop-at-cva-01-along-the-way_i6-eoxU6pEM.txt",
       "evidence": [
         {
@@ -400,24 +396,26 @@
           "end": "50:01",
           "note": "The response assigns distinct missions to main guns and close-defense weapons and discusses drone range and geography."
         }
-      ]
+      ],
+      "kind": "qa",
+      "summary": "Why future warships may carry larger main guns while relying on rapid-fire small calibers, lasers, electronic warfare, and missiles against drone swarms.",
+      "question": "Does the threat from drone swarms mean naval guns must become smaller and faster-firing rather than increase in caliber?",
+      "answerShort": "No single gun must answer every threat: larger main guns can serve long-range and bombardment roles, while layered defenses of rapid-fire smaller guns, lasers, electronic warfare, and missiles handle drones."
     },
     {
       "slug": "drone-range-and-maritime-chokepoints",
       "title": "Why short-range drone swarms are a chokepoint danger",
-      "kind": "notable_point",
       "start": "48:17",
       "end": "49:50",
       "topics": [
         "drone-warfare",
+        "force-protection",
         "maritime-chokepoints",
-        "strait-of-gibraltar",
-        "suez-canal",
         "panama-canal",
         "port-security",
-        "force-protection"
+        "strait-of-gibraltar",
+        "suez-canal"
       ],
-      "summary": "Drone range and maritime geography make small swarms more dangerous in harbours, canals, and narrow straits than against a fleet operating far offshore.",
       "body": "Drone swarms must be judged against range and maritime geography rather than treated as an equally strong threat everywhere. A 100-mile range is significant near land but cannot reach a fleet operating 200 miles offshore; extending range makes drones larger, costlier, and easier to detect, reducing some of the advantages of a swarm. The sharper danger is at the Strait of Gibraltar, the Suez Canal, the Panama Canal, and harbours, where ships cannot manoeuvre freely and civilian infrastructure complicates defence. Future naval planning therefore needs security arrangements for chokepoints as well as additional shipboard weapons.",
       "sourcePath": "src/transcripts/txt/2025-06-04_T18-30-06_scuttlebutt-11-from-sdsr-to-pearl-harbor-with-a-stop-at-cva-01-along-the-way_i6-eoxU6pEM.txt",
       "evidence": [
@@ -426,23 +424,23 @@
           "end": "49:50",
           "note": "Clarke contrasts short-range drones with fleets far offshore and names Gibraltar, Suez, Panama, and harbours as constrained high-risk environments."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "Drone range and maritime geography make small swarms more dangerous in harbours, canals, and narrow straits than against a fleet operating far offshore."
     },
     {
       "slug": "specialist-weapons-and-whole-ship-balance",
       "title": "Why a warship's weapons need not all be general purpose",
-      "kind": "notable_point",
       "start": "50:01",
       "end": "51:10",
       "topics": [
-        "warship-design",
-        "naval-weapons",
-        "vertical-launch-systems",
-        "surface-to-air-missiles",
         "land-attack-missiles",
-        "sea-viper"
+        "naval-weapons",
+        "sea-viper",
+        "surface-to-air-missiles",
+        "vertical-launch-systems",
+        "warship-design"
       ],
-      "summary": "Land-attack and air-defence missiles illustrate why designers should judge the balance of the complete weapons suite instead of demanding that every system answer every threat.",
       "body": "The drone-defence answer closes by warning against requiring every weapon to perform every mission. A tactical land-attack missile does not become pointless because it cannot provide air defence, just as a surface-to-air missile's emergency anti-ship capability does not make it the preferred weapon for that job. Standard missiles and Sea Viper could be used against ships, but the result would be expensive and less useful than employing a purpose-built system. Designers should judge how the complete weapons suite balances threats rather than score each component as a universal solution.",
       "sourcePath": "src/transcripts/txt/2025-06-04_T18-30-06_scuttlebutt-11-from-sdsr-to-pearl-harbor-with-a-stop-at-cva-01-along-the-way_i6-eoxU6pEM.txt",
       "evidence": [
@@ -451,26 +449,24 @@
           "end": "51:10",
           "note": "Clarke uses land-attack and air-defence missiles to explain why specialist weapons should be assessed as part of a balanced whole-ship suite."
         }
-      ]
+      ],
+      "kind": "notable_point",
+      "summary": "Land-attack and air-defence missiles illustrate why designers should judge the balance of the complete weapons suite instead of demanding that every system answer every threat."
     },
     {
       "slug": "hawkeye-versus-p139b-for-cva-01",
       "title": "Why CVA-01 was likely to operate the E-2 Hawkeye",
-      "kind": "qa",
       "start": "51:14",
       "end": "53:35",
       "topics": [
+        "airborne-early-warning",
         "cva-01",
         "e-2-hawkeye",
         "hawker-siddeley-p139b",
-        "airborne-early-warning",
-        "naval-aviation",
-        "nato-interoperability"
+        "nato-interoperability",
+        "naval-aviation"
       ],
-      "summary": "Fleet size, unit cost, French interest, and NATO interoperability made the American E-2 Hawkeye more likely than Britain's P.139B airborne early-warning project.",
       "body": "A British carrier force of only two or three ships would probably require roughly a dozen to fifteen airborne early-warning aircraft, too small a production run to absorb a bespoke programme easily. The much larger American Hawkeye fleet offered scale, while possible French adoption strengthened the political case for a common Western carrier aircraft. A shared type would also improve NATO carrier interoperability instead of leaving Britain with a tiny national fleet. A joint European commitment to P.139B might have changed the calculation, but cost and interoperability make Hawkeye the more likely choice for CVA-01.",
-      "question": "Would CVA-01 have used the British P.139B as its Gannet replacement, or the E-2 Hawkeye?",
-      "answerShort": "Probably the Hawkeye, because the small British requirement made an indigenous aircraft expensive and a shared NATO type offered scale and interoperability, especially if France adopted it too.",
       "sourcePath": "src/transcripts/txt/2025-06-04_T18-30-06_scuttlebutt-11-from-sdsr-to-pearl-harbor-with-a-stop-at-cva-01-along-the-way_i6-eoxU6pEM.txt",
       "evidence": [
         {
@@ -478,7 +474,11 @@
           "end": "53:35",
           "note": "Clarke compares expected British and allied fleet sizes, program economics, and interoperability."
         }
-      ]
+      ],
+      "kind": "qa",
+      "summary": "Fleet size, unit cost, French interest, and NATO interoperability made the American E-2 Hawkeye more likely than Britain's P.139B airborne early-warning project.",
+      "question": "Would CVA-01 have used the British P.139B as its Gannet replacement, or the E-2 Hawkeye?",
+      "answerShort": "Probably the Hawkeye, because the small British requirement made an indigenous aircraft expensive and a shared NATO type offered scale and interoperability, especially if France adopted it too."
     }
   ]
 }
