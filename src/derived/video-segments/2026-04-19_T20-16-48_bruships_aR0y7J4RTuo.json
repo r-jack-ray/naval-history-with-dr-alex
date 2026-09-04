@@ -3,33 +3,15 @@
   "topics": [
     "live-q-and-a",
     "naval-history",
-    "modern-navy",
-    "destroyers",
-    "naval-procurement",
-    "japanese-navy",
-    "age-of-sail",
-    "naval-strategy",
-    "battlecruisers",
-    "ship-design",
-    "naval-weapons",
-    "naval-doctrine",
-    "naval-treaties",
-    "royal-navy",
-    "naval-policy",
-    "naval-aviation",
     "alternate-history",
-    "royal-australian-navy",
-    "force-structure",
-    "steam-rams",
-    "maritime-security",
-    "royal-canadian-navy",
-    "cruisers",
-    "world-war-i",
-    "imperial-german-navy",
-    "world-war-ii",
-    "kriegsmarine",
+    "naval-procurement",
+    "ship-design",
+    "naval-strategy",
+    "naval-treaties",
+    "naval-aviation",
     "healthcare-systems",
-    "tornado-outbreaks"
+    "maritime-security",
+    "uk-politics"
   ],
   "segments": [
     {
@@ -75,7 +57,7 @@
         "naval-weapons",
         "vertical-launch-systems"
       ],
-      "body": "Modern frigates and destroyers are increasingly judged by missile capacity. Light frigates are described as moving toward at least 32 VLS cells, heavier frigates toward 48 or more, and destroyers toward much larger loads. VLS modules come in multiples of eight, so desired headline numbers must fit the way cells are installed. An 80-cell destroyer is treated as a serious combat load, with 96 cells in a three-by-four module arrangement given as the preferred configuration.",
+      "body": "The discussion puts rising missile-capacity expectations at 32 or more vertical launch system (VLS) cells for light frigates, 48 or more for heavier frigates, and about 72 or more for destroyers. These are suggested benchmarks for a credible weapons load, rather than formal definitions of ship types. The follow-up explains why a 74-cell destroyer does not fit the eight-cell modules under discussion. An 80-cell load is considered useful, while the stated preference is at least 96 cells in a three-by-four module arrangement.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T20-16-48_bruships_aR0y7J4RTuo.txt",
       "evidence": [
         {
@@ -90,7 +72,7 @@
         }
       ],
       "kind": "notable_point",
-      "summary": "Modern surface-combatant categories are linked to rising VLS expectations, from 32-cell light frigates to destroyers carrying 80 or 96 cells."
+      "summary": "The proposed VLS benchmarks run from 32-cell light frigates to destroyers with 80 or preferably 96 cells, with eight-cell modules constraining the total."
     },
     {
       "slug": "bruships-restart-pahlavi-iranian-navy",
@@ -109,13 +91,13 @@
         "kilo-class-submarines",
         "arleigh-burke-class-destroyers"
       ],
-      "body": "Continued Pahlavi rule is presented as a path toward the strongest military in the Middle East. Iran would probably keep buying advanced systems, including Type 209 and Kilo-class submarines and possibly Japanese-built surface combatants. The Japanese example matters because a small production run can concentrate money on capabilities that the United States might omit from a much larger Arleigh Burke programme. The counterfactual therefore produces a compact, heavily armed regional navy rather than a large fleet.",
+      "body": "Continued Pahlavi rule is expected to produce the strongest military in the Middle East through further purchases of advanced equipment. The question mentions Type 209 and Kilo-class submarines, but the answer does not specify a submarine programme for 2000. It suggests Iran might buy Japanese surface combatants instead of American ships. The comparison favours Japan's ability to concentrate spending on a few highly equipped ships, while the United States must equip a much larger force. This is a speculative procurement direction, with no fleet size or order list supplied.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T20-16-48_bruships_aR0y7J4RTuo.txt",
       "evidence": [
         {
           "start": "4:12",
           "end": "4:32",
-          "note": "The prompt asks about a Pahlavi Iranian navy in 2000, and the answer says it would likely keep buying very interesting equipment and be the strongest military in the Middle East."
+          "note": "The prompt mentions Type 209 and Kilo-class submarines and asks about Pahlavi Iran in 2000. The answer predicts continued advanced purchases and the strongest military in the Middle East without specifying a submarine programme."
         },
         {
           "start": "5:29",
@@ -124,9 +106,34 @@
         }
       ],
       "kind": "qa",
-      "summary": "A wealthy Pahlavi Iran might concentrate naval spending on advanced submarines and a small number of high-end Japanese surface combatants.",
+      "summary": "A surviving Pahlavi regime is expected to keep buying advanced equipment, with Japanese surface combatants suggested as one possible choice.",
       "question": "How would the Iranian navy look in 2000 if the Pahlavi regime had remained in power?",
-      "answerShort": "It would probably be the strongest regional force, with advanced submarines and a small number of very capable Japanese-style surface combatants."
+      "answerShort": "It is expected to become the region's strongest military and continue buying advanced equipment, possibly including Japanese surface combatants. The answer gives no detailed fleet programme."
+    },
+    {
+      "slug": "bruships-restart-japanese-destroyer-small-production-runs",
+      "title": "Japanese destroyers and the cost of equipping a large fleet",
+      "start": "5:29",
+      "end": "6:22",
+      "topics": [
+        "japanese-navy",
+        "us-navy",
+        "naval-procurement",
+        "destroyers",
+        "arleigh-burke-class-destroyers",
+        "force-structure"
+      ],
+      "body": "The Japanese destroyer comparison asks what the US Navy would put into an Arleigh Burke-derived ship if it needed only four ships instead of nearly a hundred. Features that look affordable for a small run become expensive when repeated across a large fleet. At some point, the American preference would be to buy another ship instead of adding more equipment to each hull. Japan's smaller production runs are presented as allowing more ambitious equipment choices per ship. This explains the suggested appeal of Japanese ships to a wealthy regional buyer in the Pahlavi Iran counterfactual.",
+      "sourcePath": "src/transcripts/txt/2026-04-19_T20-16-48_bruships_aR0y7J4RTuo.txt",
+      "evidence": [
+        {
+          "start": "5:29",
+          "end": "6:22",
+          "note": "The answer compares Japan concentrating spending on four ships with the US Navy equipping nearly a hundred Arleigh Burkes, and says buying another ship can become preferable to adding more equipment."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "A four-ship programme can afford equipment choices that become costly across nearly a hundred destroyers, creating a tradeoff between capability per hull and fleet size."
     },
     {
       "slug": "bruships-restart-healthcare-system-path-dependence",
@@ -169,13 +176,13 @@
         "wartime-administration",
         "rationing"
       ],
-      "body": "Before the National Health Service, British healthcare came from a complicated mixture of charities and other institutions. The Second World War brought greater central coordination of health provision, much as police and fire services were consolidated for wartime administration. Much of that national structure remained after the war. The Beveridge Report of the early 1940s is named as one source for the postwar settlement under Labour. Continued rationing and the slow dismantling of wartime controls show why Britain did not receive an immediate peace dividend.",
+      "body": "Before the National Health Service, British healthcare came from a complicated mixture of charities and other institutions. One participant connects the system's origins to resources from the British Empire; another disputes that explanation and stresses the practical consolidation of existing services under a central bureaucracy. The Second World War brought greater coordination of health provision, compared here with the rationalisation of police and fire services. The national fire service was later broken up, while much of the central health structure remained. The Beveridge Report, recalled as dating to about 1942 or 1943, is named as one source for the postwar Labour settlement. Continued rationing into the early 1950s illustrates how slowly wartime controls were dismantled and why there was no immediate peace dividend.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T20-16-48_bruships_aR0y7J4RTuo.txt",
       "evidence": [
         {
           "start": "8:20",
           "end": "9:34",
-          "note": "The panel describes the British system as a consolidation of inherited institutions and says both British and American healthcare arrangements responded to Second World War pressures."
+          "note": "One participant links the health system to imperial resources, while another rejects that explanation and stresses consolidation of existing institutions. British and American arrangements are then described as responses to Second World War pressures."
         },
         {
           "start": "10:14",
@@ -207,7 +214,7 @@
         "employer-provided-health-insurance",
         "wartime-wage-controls"
       ],
-      "body": "Kaiser Permanente takes its name from industrialist Henry J. Kaiser, whose yards mass-produced Liberty ships during the Second World War. Wartime wage limits kept employers from competing freely through direct pay. Kaiser instead used health insurance as an employment benefit to attract scarce workers. Mass shipbuilding therefore depended on labour policy and workforce support alongside yards, steel, and standardised hulls.",
+      "body": "Kaiser Permanente takes its name from industrialist Henry J. Kaiser, whose yards built Liberty ships during the Second World War. Wartime wage limits kept employers from competing freely through direct pay. Kaiser used health insurance as an employment benefit to attract workers. The discussion traces the growth of American employment-based health cover through this response to wartime labour restrictions.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T20-16-48_bruships_aR0y7J4RTuo.txt",
       "evidence": [
         {
@@ -263,7 +270,7 @@
       "kind": "qa",
       "summary": "Trade winds could make a double Atlantic crossing faster than the shorter-looking route down the African coast during the Age of Sail.",
       "question": "Why do Aubrey-Maturin sailing passages cross the Atlantic before heading for the Cape of Good Hope instead of staying near Africa?",
-      "answerShort": "Trade winds and currents could make a double Atlantic crossing faster than the shorter-looking route down the African coast."
+      "answerShort": "Trade winds and tides could make a double Atlantic crossing faster than the shorter-looking route down the African coast."
     },
     {
       "slug": "bruships-restart-invincible-speed-margin",
@@ -302,6 +309,29 @@
       "answerShort": "One or two extra knots would change little. A much larger margin over the battle line would let a battlecruiser force dictate range, pace, and engagement terms."
     },
     {
+      "slug": "bruships-restart-foreign-pressure-british-politics",
+      "title": "Foreign diplomatic pressure and British political backlash",
+      "start": "16:16",
+      "end": "17:05",
+      "topics": [
+        "uk-politics",
+        "diplomacy",
+        "british-parliament",
+        "brexit"
+      ],
+      "body": "An American ambassador has no formal power to stop legislation passing through the British Parliament. Diplomatic influence would depend on persuasion. The political argument offered here is that warnings from foreign politicians can backfire by increasing British support for the policy they oppose. The EU referendum is cited as an example, with the recollection that British Remain politicians urged European counterparts to stay away from the campaign. That recollection illustrates the argument about political backlash; it is not offered as a measured account of the referendum result.",
+      "sourcePath": "src/transcripts/txt/2026-04-19_T20-16-48_bruships_aR0y7J4RTuo.txt",
+      "evidence": [
+        {
+          "start": "16:16",
+          "end": "17:05",
+          "note": "Following a question deferred for missing context, the discussion says an American ambassador cannot block Parliament and uses recollections of Remain politicians discouraging European interventions to illustrate possible backlash."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "The EU referendum aside distinguishes diplomatic persuasion from parliamentary authority and argues that foreign interventions can provoke a political backlash."
+    },
+    {
       "slug": "bruships-restart-seventy-cruisers-treaties",
       "title": "Seventy cruisers and treaty bargaining",
       "start": "17:33",
@@ -315,7 +345,7 @@
         "washington-naval-treaty",
         "london-naval-treaty"
       ],
-      "body": "A legal requirement to keep 70 Royal Navy cruisers would have limited effect on the Washington Treaty, which capped the size of individual cruisers rather than setting a simple fleet-number ceiling. The constraint becomes more important in later London negotiations over cruiser totals and tonnage. Britain could insist that any agreement preserve the statutory floor, since changing it would require another Act of Parliament. One possible bargain gives both Britain and the United States roughly 700,000 tons of cruisers, illustrating how domestic law could shape international arms control.",
+      "body": "A legal requirement to keep 70 Royal Navy cruisers would have limited effect on the Washington Treaty, which capped individual cruisers at 10,000 tons rather than setting a simple fleet-number ceiling. The constraint becomes more important in later London negotiations over cruiser totals and tonnage. Britain could insist that any agreement preserve the statutory floor, since changing it would require another Act of Parliament. One possible bargain gives both Britain and the United States roughly 700,000 tons of cruisers, illustrating how domestic law could shape international arms control.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T20-16-48_bruships_aR0y7J4RTuo.txt",
       "evidence": [
         {
@@ -343,7 +373,7 @@
       "slug": "bruships-restart-carrier-strike-dominion-flagship",
       "title": "Carrier strike victory and dominion carrier flagships",
       "start": "19:13",
-      "end": "22:20",
+      "end": "21:22",
       "topics": [
         "live-q-and-a",
         "alternate-history",
@@ -357,10 +387,9 @@
         "wilhelmshaven",
         "lexington-class-aircraft-carriers",
         "carrier-flagships",
-        "dominion-navies",
-        "indian-ocean"
+        "dominion-navies"
       ],
-      "body": "A carrier strike decisive enough to end the First World War would alter prestige, treaty politics, and procurement before the Australian carrier question arises. A dominion carrier flagship could imply wider Royal Navy policy, including flag facilities aboard carriers and earlier experience for admirals commanding from flight decks. The same signal might lead the United States to convert the entire Lexington class instead of completing some ships as battlecruisers. Royal Navy carriers and capital ships operating farther into the Indian Ocean would also change Japan's strategic problem. These cumulative changes make a direct forecast of Japanese planning in 1940 unreliable.",
+      "body": "A carrier strike decisive enough to end the First World War would alter the victors' relative prestige and could change whether interwar naval treaties emerged at all. Japanese and British procurement in the 1920s and 1930s would then need to be reconsidered, including whether Japan retained a battleship fleet. An Australian carrier flagship after 1930 raises further questions about a common dominion policy and Royal Navy flag facilities aboard carriers. Admirals might gain experience commanding from flight decks earlier. The American response is equally open: Congress might favour converting the entire Lexington class into carriers. These are unresolved branches of the scenario, so the prompt does not establish enough to predict Japanese plans in 1940.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T20-16-48_bruships_aR0y7J4RTuo.txt",
       "evidence": [
         {
@@ -377,17 +406,39 @@
           "start": "20:17",
           "end": "21:22",
           "note": "The answer asks whether dominion carrier flagships imply wider Royal Navy carrier policy and whether the United States converts all Lexingtons into carriers."
-        },
-        {
-          "start": "21:25",
-          "end": "22:20",
-          "note": "A comparison with another alternate-history scenario explains that moving more Royal Navy carriers and capital ships into the Indian Ocean would change Japanese options before the date in the prompt."
         }
       ],
       "kind": "qa",
       "summary": "An early carrier victory would reshape treaties and force structures too thoroughly for a clean forecast of Japanese plans in 1940.",
       "question": "If World War I ended after a carrier strike on Wilhelmshaven and Australia later chose a carrier flagship, how much would Japanese planning have changed by 1940?",
       "answerShort": "The premise changes too much to extrapolate cleanly; carrier success would alter interwar treaties, British, Japanese, and American force structure, and dominion naval policy."
+    },
+    {
+      "slug": "bruships-restart-french-navy-stays-in-war-indian-ocean",
+      "title": "A French navy still at war and British forces in the Indian Ocean",
+      "start": "21:25",
+      "end": "22:20",
+      "topics": [
+        "alternate-history",
+        "french-navy",
+        "royal-navy",
+        "japanese-navy",
+        "world-war-ii",
+        "indian-ocean",
+        "aircraft-carriers",
+        "naval-strategy"
+      ],
+      "body": "A separate counterfactual keeps the French navy in the war and considers how that would change British fleet deployment. A large part of the Royal Navy's carriers and capital ships could then become available to operate in the Indian Ocean. From there they could interfere with Japanese plans while remaining, in this scenario's assessment, beyond easy Japanese attack. Those changed conditions are given as the reason to stop the projection at a point in 1941. Extending it further would require a new account of Japanese choices.",
+      "sourcePath": "src/transcripts/txt/2026-04-19_T20-16-48_bruships_aR0y7J4RTuo.txt",
+      "evidence": [
+        {
+          "start": "21:25",
+          "end": "22:20",
+          "note": "The speaker explicitly changes to his French-navy-stays-in-the-war scenario and explains the 1941 limit through greater British carrier and capital-ship availability in the Indian Ocean."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Keeping the French navy in the war could free British forces for the Indian Ocean, making Japanese decisions beyond 1941 difficult to extrapolate."
     },
     {
       "slug": "bruships-restart-steam-power-ramming",
@@ -403,7 +454,7 @@
         "steam-propulsion",
         "crossbows"
       ],
-      "body": "Steam propulsion before gunpowder would make closing and ramming central to naval combat. Ships could use archers and steam-powered windlasses for powerful crossbow-style weapons, but those systems would not remove the need to reach an enemy hull. Powered ships could strike with more control and force than sail alone allowed. Ramming remains dangerous to both vessels, so a purpose-built ram would need a reinforced bow and forward structure to absorb the impact.",
+      "body": "Ramming would probably dominate naval combat if steam warships appeared before gunpowder. Ships could still carry archers, windlass-driven weapons, and possibly steam-powered crossbow-style or other tension weapons. Ramming could damage or sink both vessels, even in modern conditions. A purpose-built ram would therefore need a reinforced bow and forward structure to withstand impact.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T20-16-48_bruships_aR0y7J4RTuo.txt",
       "evidence": [
         {
@@ -423,7 +474,7 @@
         }
       ],
       "kind": "qa",
-      "summary": "Pre-gunpowder steam warships make ramming a central tactic, provided their bows and forward structures can absorb the impact.",
+      "summary": "Steam propulsion before gunpowder would probably make ramming dominant, while collision damage would remain a danger to both ships.",
       "question": "If steam power appeared on warships before gunpowder, would ramming become dominant?",
       "answerShort": "Probably yes: without gunpowder weapons, powered hulls would make ramming and reinforced bows much more important."
     },
@@ -439,7 +490,7 @@
         "rules-of-engagement",
         "flag-state-jurisdiction"
       ],
-      "body": "Armed merchant security depends on overlapping legal systems before any weapon is used. The relevant rules may come from the ship's flag state, the nationality of the company hiring the guards, the guards' home countries, civil liability, and the team's rules of engagement. Companies therefore need extensive paperwork and preparation to establish who could prosecute or sue after an incident. Crew members may also interpret an armed team's actions differently, creating an operational problem alongside the jurisdictional one.",
+      "body": "Armed merchant security depends on overlapping legal systems before any weapon is used. The relevant rules may come from the ship's flag state, the nationality of the company hiring the guards, the guards' home countries, civil liability, and the team's rules of engagement. Companies therefore need extensive paperwork and preparation to establish who could prosecute or sue after an incident. Crew members may also interpret an armed team's actions differently, creating an operational problem alongside the jurisdictional one. For detailed practical experience, the answer refers the question to Kate Jameson, who had arranged such work, rather than attempting to settle a particular legal case.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T20-16-48_bruships_aR0y7J4RTuo.txt",
       "evidence": [
         {
@@ -456,6 +507,11 @@
           "start": "30:09",
           "end": "30:29",
           "note": "The answer adds that crew interpretation and shipboard reactions can also matter."
+        },
+        {
+          "start": "29:05",
+          "end": "29:20",
+          "note": "The answer refers detailed practical questions to Kate Jameson because she had experience arranging armed security."
         }
       ],
       "kind": "qa",
@@ -477,13 +533,13 @@
         "disaster-relief",
         "military-mobilisation"
       ],
-      "body": "The counterfactual assumes a 2011 Missouri-scale tornado outbreak reaches France in 1912 and possibly affects other parts of Europe. France would turn inward toward relief and reconstruction, leaving it distracted before the First World War. The same emergency might already have mobilised large parts of the armed forces for disaster work, creating a competing effect on readiness. Germany's Schlieffen Plan remains the fixed strategic problem because its route through Belgium does not depend on France recovering first. The panel also speculates that the Pyrenees, Alps, and Irish high ground could disrupt the weather system; those geographical effects are scenario assumptions, not recorded history.",
+      "body": "The counterfactual assumes a 2011 Missouri-scale tornado outbreak reaches France in 1912 and possibly affects other parts of Europe. France would turn inward toward relief and reconstruction, leaving it distracted before the First World War. The same emergency might already have mobilised large parts of the armed forces for disaster work, creating a competing effect on readiness. Germany's Schlieffen Plan remains the fixed strategic problem because its route through Belgium does not depend on France recovering first. The panel speculates about a route through southern France and Bordeaux that skirts the Alps, and about Irish high ground and the Pyrenees disrupting the weather system; these geographical claims remain speculative.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T20-16-48_bruships_aR0y7J4RTuo.txt",
       "evidence": [
         {
           "start": "30:46",
           "end": "31:51",
-          "note": "The prompt proposes a 2011 Missouri-scale tornado outbreak in France in 1912, and the panel says France would panic and become inward-looking during recovery."
+          "note": "The prompt proposes a 2011 Missouri-scale tornado outbreak in France in 1912, and the panel says France would panic and become inward-looking during recovery. The suggested route passes through southern France and Bordeaux and skirts the Alps."
         },
         {
           "start": "31:55",
@@ -493,7 +549,7 @@
         {
           "start": "32:38",
           "end": "33:18",
-          "note": "The panel speculates about Ireland, the Pyrenees, and the Alps breaking up the hypothetical weather system."
+          "note": "The panel speculates that Irish high ground and the Pyrenees could disrupt the hypothetical weather system."
         }
       ],
       "kind": "qa",
@@ -513,9 +569,10 @@
         "town-class-light-cruisers-1910",
         "sms-leipzig",
         "world-war-i",
-        "imperial-german-navy"
+        "imperial-german-navy",
+        "c-class-cruisers"
       ],
-      "body": "SMS Leipzig was a German light cruiser, so a Canadian-manned Town-class cruiser is the practical answer. A later Town-class ship would have enough fighting power to defeat her in a direct encounter. The operational goal need not be a sinking: forcing Leipzig away from San Francisco could still count as victory. The comparison gives a useful measure of what one Canadian cruiser could accomplish on a distant station in 1914.",
+      "body": "A Canadian-manned Town-class cruiser is suggested as a probable match for SMS Leipzig off San Francisco in 1914. The preference is for a later Town, with an early C-class cruiser also mentioned as an alternative. The assessment rests on the recollection that Leipzig was a German light cruiser, rather than a large armoured cruiser, and is not a detailed comparison of individual ships. Victory could mean driving her away; sinking her would not be necessary.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T20-16-48_bruships_aR0y7J4RTuo.txt",
       "evidence": [
         {
@@ -526,7 +583,7 @@
         {
           "start": "33:31",
           "end": "34:14",
-          "note": "The answer identifies Leipzig as a German light cruiser and says a Town-class cruiser should be able to defeat or at least drive her off."
+          "note": "The answer suggests a Town-class cruiser, preferably a later ship, and briefly mentions early C-class cruisers. It repeatedly qualifies Leipzig's identity and the comparison as from memory and says driving her off could count as victory."
         }
       ],
       "kind": "qa",
@@ -548,9 +605,10 @@
         "illustrious-class-aircraft-carriers",
         "implacable-class-aircraft-carriers",
         "ship-design",
-        "world-war-ii"
+        "world-war-ii",
+        "alternate-history"
       ],
-      "body": "A full flight-deck conversion of a Deutschland-class cruiser is estimated to carry roughly 40 to 50 aircraft. The historical machinery would still limit speed, leaving the converted ships short of ideal fleet-carrier performance. Their largest effect could come from the threat they signal to Britain. The prospect of German carriers entering service from 1938 would likely bring much heavier funding for the Illustrious class and accelerate the Implacable-class programme.",
+      "body": "A full flight-deck conversion of a Deutschland-class cruiser is estimated to carry roughly 40 to 50 aircraft. The historical engines would still limit its speed. Beginning conversions from 1938 would also change British expectations of the German naval threat. The predicted response is much heavier funding for the Illustrious class and an accelerated Implacable programme.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T20-16-48_bruships_aR0y7J4RTuo.txt",
       "evidence": [
         {

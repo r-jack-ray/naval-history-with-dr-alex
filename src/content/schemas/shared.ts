@@ -11,7 +11,7 @@ export const safeVideoIdSchema = z.string().regex(
 );
 
 export const topicSlugSchema = z.string().regex(
-    /^[a-z0-9]+(?:-[a-z0-9]+)*$/u,
+    /^[0-9a-z]+(?:-[0-9a-z]+)*$/u,
     "must be a lowercase hyphenated topic slug",
 );
 

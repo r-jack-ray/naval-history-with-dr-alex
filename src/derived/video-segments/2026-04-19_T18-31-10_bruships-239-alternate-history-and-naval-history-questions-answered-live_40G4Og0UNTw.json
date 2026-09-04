@@ -5,21 +5,15 @@
     "alternate-history",
     "naval-history",
     "submarines",
-    "kriegsmarine",
-    "royal-navy",
     "ship-design",
+    "shipbuilding",
     "naval-gunnery",
     "battleships",
-    "battlecruisers",
-    "imperial-russian-navy",
-    "japanese-navy",
-    "imperial-german-navy",
-    "french-navy",
-    "force-structure",
-    "shipbuilding",
     "naval-institutions",
-    "modern-warships",
-    "world-war-ii"
+    "world-war-ii",
+    "constitutional-monarchy",
+    "history-of-technology",
+    "naval-life"
   ],
   "segments": [
     {
@@ -34,23 +28,23 @@
         "destroyers",
         "torpedo-boats"
       ],
-      "body": "The comparison depends on the period. Destroyer and torpedo-boat combat provide the clearest naval parallels to cavalry doctrine. The analogy is limited and does not map across naval warfare as a whole.",
+      "body": "The usefulness of cavalry doctrine at sea depends on the period being compared. Destroyer and torpedo-boat fighting are offered as areas with some overlap. The brief answer does not identify a particular cavalry manoeuvre or develop a detailed tactical comparison.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T18-31-10_bruships-239-alternate-history-and-naval-history-questions-answered-live_40G4Og0UNTw.txt",
       "evidence": [
         {
           "start": "3:08",
           "end": "3:35",
-          "note": "The prompt asks whether cavalry doctrine applies at sea, and the answer identifies destroyer and torpedo-boat combat as the strongest parallel."
+          "note": "The prompt asks whether cavalry doctrine applies at sea, and the answer says it depends on the era and identifies some overlap with destroyer and torpedo-boat combat."
         }
       ],
       "kind": "qa",
-      "summary": "Destroyer and torpedo-boat fighting provides the clearest limited naval parallel to cavalry doctrine.",
+      "summary": "Destroyer and torpedo-boat combat offer some parallels with cavalry doctrine, depending on the period.",
       "question": "Can cavalry doctrine be applied to naval combat?",
-      "answerShort": "It depends on the period, but the analogy is most useful for destroyer and torpedo-boat combat."
+      "answerShort": "It depends on the period, but destroyer and torpedo-boat combat offer some parallels."
     },
     {
       "slug": "bruships-239-submarine-steam-speed-boost",
-      "title": "Submarine steam speed boost problem",
+      "title": "Why the stored-steam submarine boost is rejected",
       "start": "8:17",
       "end": "10:23",
       "topics": [
@@ -59,7 +53,7 @@
         "ship-design",
         "naval-propulsion"
       ],
-      "body": "Stored steam would lose heat over time, while liquid water cannot serve as a compressed energy store. Feeding the burst into an electric submarine drive would add an awkward second propulsion path. A sufficiently violent acceleration could also produce supercavitation, and submarines usually have little reason to make a brief high-speed run. The machinery would add complexity without offering much practical benefit.",
+      "body": "The proposed system would keep steam under pressure and release it for a short burst of submarine speed. The answer objects that stored steam would lose heat and energy over time, and rejects treating water as a compressible energy reserve. Integrating the proposed burst with an electric drive is considered another major complication. Supercavitation is also raised as an objection, without a speed or propulsion calculation. The practical question is why a submarine would need this brief acceleration when it usually has little reason to run at high speed.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T18-31-10_bruships-239-alternate-history-and-naval-history-questions-answered-live_40G4Og0UNTw.txt",
       "evidence": [
         {
@@ -76,7 +70,7 @@
       "kind": "qa",
       "summary": "Stored steam loses energy, does not integrate cleanly with electric drive, and offers little practical value for a submarine speed burst.",
       "question": "Could a submarine use stored steam pressure as a short burst of extra propulsion?",
-      "answerShort": "No. Steam would lose heat in storage, water cannot be compressed into a useful energy reserve, and the extra drive path would be impractical."
+      "answerShort": "The proposal is rejected because of heat loss, objections to the energy store, and the difficulty of integrating it with electric propulsion. Its operational value is also questioned."
     },
     {
       "slug": "bruships-239-gibraltar-u-boat-breakout",
@@ -144,6 +138,29 @@
       "answerShort": "Damaged ships belonged in fitting-out or repair facilities, especially dry docks for underwater damage. Capital ships were built on slipways, so an incomplete hull had to be launched before that construction space became available."
     },
     {
+      "slug": "bruships-239-launch-weight-hull-bending",
+      "title": "Why launch weight and slipway angle matter",
+      "start": "14:22",
+      "end": "15:08",
+      "topics": [
+        "shipbuilding",
+        "ship-design",
+        "ship-launching",
+        "dockyards"
+      ],
+      "body": "A slipway launch places changing loads on the hull as it enters the water. Too much installed weight can produce unacceptable bending, so some equipment must wait until the ship reaches a fitting-out yard. The launch angle has to suit the hull and the intended movement into the water. Entering too quickly or too slowly can create problems, as can a stage of the launch that puts excessive weight or bending on the hull. These constraints help explain why a slipway is a poor answer to repairing a fully equipped ship with underwater damage.",
+      "sourcePath": "src/transcripts/txt/2026-04-19_T18-31-10_bruships-239-alternate-history-and-naval-history-questions-answered-live_40G4Og0UNTw.txt",
+      "evidence": [
+        {
+          "start": "14:22",
+          "end": "15:08",
+          "note": "The discussion rejects using a slipway for underwater repair and explains launch-weight limits, later fitting out, entry speed, angle and hull bending."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Launch weight, slipway angle, and the speed of entry must keep hull bending within acceptable limits."
+    },
+    {
       "slug": "bruships-239-postwar-borders-resources-and-armies",
       "title": "Resources versus armies in postwar border making",
       "start": "19:13",
@@ -181,7 +198,7 @@
         "churchill-tank",
         "chieftain-tank"
       ],
-      "body": "A discussion of tank warfare on Hokkaido separates the island's flat areas from its generally difficult terrain. The Churchill is proposed for its ability to climb steep inclines, even if slowly, while the Chieftain is treated as a mobile pillbox. The panel adds an important maintenance caveat: Chieftain could be fast by NATO standards when working properly, but its engine reputation made mobility uncertain. The exchange shows how terrain and mechanical readiness affect the choice of tank for a theater.",
+      "body": "Hokkaido has some flat areas suitable for tanks, but the island as a whole is disputed as good tank country. The Churchill is proposed for steep slopes, with its slow climbing speed acknowledged. The Chieftain is suggested as a mobile pillbox, prompting doubt about the mobile part of that description. Its defender makes performance conditional on proper engine maintenance and recalls it as having been NATO's fastest tank at one point. The panel also corrects a reference to Challenger: Chieftain is the tank meant in the discussion of a multifuel engine. The exchange separates useful terrain, desired firepower, and mechanical readiness.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T18-31-10_bruships-239-alternate-history-and-naval-history-questions-answered-live_40G4Og0UNTw.txt",
       "evidence": [
         {
@@ -196,7 +213,7 @@
         }
       ],
       "kind": "notable_point",
-      "summary": "A Hokkaido tangent compares the Churchill's climbing ability with the Chieftain's maintenance-sensitive mobile-pillbox role."
+      "summary": "The Churchill's climbing ability and the Chieftain's firepower prompt a discussion of Hokkaido's terrain and the importance of engine maintenance."
     },
     {
       "slug": "bruships-239-admiral-hood-flag-transfer",
@@ -237,9 +254,11 @@
         "schnellboote",
         "thames-estuary",
         "chatham-dockyard",
-        "coastal-defence"
+        "coastal-defence",
+        "naval-air-defence",
+        "dual-purpose-guns"
       ],
-      "body": "Reaching the Thames Estuary was possible, but surviving the attack and return was the harder problem. Narrow approaches exposed fast craft to short-range naval guns, anti-aircraft weapons, and any destroyers in the area. Chatham Dockyard and the Medway added nearby naval forces to an already heavily defended approach to London. An S-boat might get in and strike, but losses were likely. German raiders had good reason to choose targets farther up the east coast where defenses were thinner.",
+      "body": "Reaching the Thames Estuary was possible, but surviving the attack and return was the harder problem. Narrow approaches exposed fast craft to short-range naval guns, anti-aircraft weapons, and any destroyers in the area. Chatham Dockyard and the Medway added nearby naval forces to an already heavily defended approach to London. An S-boat might get in and strike, but losses were likely. German raiders had good reason to choose targets farther up the east coast where defenses were thinner. Destroyers nearby could also use dual-purpose guns to help defend cities against air attack. The discussion connects that assistance with later local commemoration of ships, while leaving the examples uncertain.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T18-31-10_bruships-239-alternate-history-and-naval-history-questions-answered-live_40G4Og0UNTw.txt",
       "evidence": [
         {
@@ -251,6 +270,11 @@
           "start": "23:35",
           "end": "26:43",
           "note": "The answer points to narrow waters, naval guns, anti-aircraft guns, destroyers, Chatham, and the concentration of defenses in the Thames approaches."
+        },
+        {
+          "start": "24:47",
+          "end": "25:45",
+          "note": "The discussion links destroyers' dual-purpose guns and assistance against air attack to local commemoration, without settling the examples."
         }
       ],
       "kind": "qa",
@@ -294,17 +318,17 @@
         "amphibious-warfare",
         "naval-logistics"
       ],
-      "body": "The panel describes an improvised British attempt to turn fuel tankers into fireships against enemy-held ports. The vessels were to be packed with fuel, steered into harbors used by invasion shipping, and destroyed there. Mechanical failures frustrated the effort before the converted ships could carry out the intended attack. The episode shows how Britain explored unconventional coastal warfare to threaten landing craft and disrupt preparations for a cross-Channel invasion.",
+      "body": "The panel recalls an improvised British plan to use fuel tankers as fireships against enemy-held harbours. The vessels would carry fuel into the ports and be blown up there. One participant thinks they broke down before completing the attempt, so the failure explanation remains tentative. The example follows the discussion of attacking invasion shipping along the coast.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T18-31-10_bruships-239-alternate-history-and-naval-history-questions-answered-live_40G4Og0UNTw.txt",
       "evidence": [
         {
           "start": "27:38",
           "end": "28:03",
-          "note": "The panel says fuel tankers were to be filled with fuel and sailed into enemy harbors as fireships, but the vessels broke down during the attempt."
+          "note": "The panel recalls fuel tankers intended to enter enemy harbours and explode, with breakdown offered tentatively as the reason the attempt failed."
         }
       ],
       "kind": "notable_point",
-      "summary": "British planners tried to turn fuel tankers into fireships for attacks on invasion harbors, but mechanical failures stopped the attempt."
+      "summary": "Fuel tankers were reportedly prepared as fireships for attacks on enemy harbours; mechanical breakdown is recalled as a possible reason for failure."
     },
     {
       "slug": "bruships-239-beagle-cartography-missions",
@@ -345,7 +369,7 @@
       "slug": "bruships-239-east-india-company-royal-navy-leverage",
       "title": "How the Royal Navy checked the East India Company at sea",
       "start": "30:29",
-      "end": "32:19",
+      "end": "32:28",
       "topics": [
         "royal-navy",
         "east-india-company",
@@ -354,7 +378,7 @@
         "abolitionism",
         "east-indiamen"
       ],
-      "body": "Royal Navy officers on half pay often commanded armed East India Company shipping. During a dispute, the Navy could post those officers back to naval ships and leave the Company without its experienced command cadre. That personnel leverage mattered because the Company still depended on naval protection for profitable trade, even when it resisted naval authority over dockyards or early anti-slavery enforcement. The Navy could therefore coerce a powerful chartered company without fighting it.",
+      "body": "Royal Navy officers on half pay often commanded armed East India Company shipping. During a dispute, the Navy could post those officers back to naval ships and leave the Company without its experienced command cadre. That personnel leverage mattered because the Company still depended on naval protection for profitable trade, even when it resisted naval authority over dockyards or early anti-slavery enforcement. The Navy could therefore coerce a powerful chartered company without fighting it. In the anti-slavery example, the threat of criminal prosecution on returning to Britain is recalled as another reason to stop resisting enforcement.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T18-31-10_bruships-239-alternate-history-and-naval-history-questions-answered-live_40G4Og0UNTw.txt",
       "evidence": [
         {
@@ -366,6 +390,11 @@
           "start": "31:49",
           "end": "32:19",
           "note": "The panel links these conflicts to dockyard access, commercial dependence on the Navy, and early abolition enforcement."
+        },
+        {
+          "start": "32:19",
+          "end": "32:28",
+          "note": "The discussion says the threat of prosecution on returning to Britain deterred continued slave trading."
         }
       ],
       "kind": "notable_point",
@@ -382,9 +411,10 @@
         "battleships",
         "ship-design",
         "naval-gunnery",
-        "nagato-class-battleships"
+        "nagato-class-battleships",
+        "barbettes"
       ],
-      "body": "Four conflicting figures for Nagato's barbette diameter make false precision unwarranted. Roughly 30 feet appears plausible when compared with the ship's beam and contemporary American battleship barbettes. An 18-foot figure fails a physical check because the guns and handling machinery could not fit inside it. Lost Japanese records, different measurement points, and later alterations may explain the disagreement. The result is a study in testing documentary claims against engineering constraints.",
+      "body": "Four conflicting figures prevent an exact answer for Nagato's barbette diameter. Roughly 30 feet appears plausible against the ship's stated beam of 29.2 metres, approximately 95 feet. The cited estimates include 29 feet 2 inches and 31 feet, while contemporary American twin 14-inch turrets are offered as a comparison with barbettes around 29 feet across. An 18-foot figure is rejected because the equipment could not physically fit inside it. Different measurement points and later alterations might explain some disagreement, while the destruction of Japanese archive material complicates verification. Around 30 feet remains a provisional estimate, with an exact figure unresolved.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T18-31-10_bruships-239-alternate-history-and-naval-history-questions-answered-live_40G4Og0UNTw.txt",
       "evidence": [
         {
@@ -396,6 +426,16 @@
           "start": "35:58",
           "end": "39:32",
           "note": "The answer gives roughly thirty feet as a cautious estimate, discusses archival loss and measurement differences, and rejects an 18-foot figure as physically implausible."
+        },
+        {
+          "start": "35:33",
+          "end": "35:46",
+          "note": "The beam is given as 29.2 metres, approximately 95 feet, to test whether the larger estimates are physically plausible."
+        },
+        {
+          "start": "36:57",
+          "end": "37:44",
+          "note": "American twin 14-inch barbettes around 29 feet are compared with Nagato estimates of 29 feet 2 inches and 31 feet."
         }
       ],
       "kind": "qa",
@@ -416,7 +456,7 @@
         "naval-gunnery",
         "ship-design"
       ],
-      "body": "Feasibility alone is not the decisive issue. A central armored battery concentrated weight and weapons in one protected section, but eighteenth-century guns lacked the individual power needed to justify that arrangement. Removing the steam engine would not solve the mismatch between the layout and the available artillery. The later design only made sense once naval guns, armor, and propulsion had changed together.",
+      "body": "The proposed sail-only ironclad would use a central battery in the 1700s. The answer doubts that this would be worthwhile because such a layout relies on a small number of powerful guns. Eighteenth-century guns are considered too weak individually to justify concentrating the ship's firepower in that way. The objection concerns the available artillery; the brief exchange does not establish that building an armoured sailing hull was impossible.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T18-31-10_bruships-239-alternate-history-and-naval-history-questions-answered-live_40G4Og0UNTw.txt",
       "evidence": [
         {
@@ -426,9 +466,9 @@
         }
       ],
       "kind": "qa",
-      "summary": "Eighteenth-century guns were too weak to justify concentrating them in a sail-only armored central battery.",
+      "summary": "A central battery depends on a few powerful guns, which the answer considers a poor fit for eighteenth-century artillery.",
       "question": "Would a sail-only central-battery ironclad have been feasible in the 1700s?",
-      "answerShort": "No. Contemporary guns lacked the individual firepower needed to make the concentrated armored battery worthwhile."
+      "answerShort": "Not really: the answer doubts that eighteenth-century guns had enough individual firepower to make a small central battery worthwhile."
     },
     {
       "slug": "bruships-239-daring-reserve-hull-life",
@@ -438,13 +478,13 @@
       "topics": [
         "live-q-and-a",
         "royal-navy",
-        "daring-class-destroyers-1949",
+        "type-45-destroyer",
         "destroyers",
         "ship-maintenance",
         "fleet-readiness",
         "warship-life-cycles"
       ],
-      "body": "Calendar age and active-service wear are not equivalent. A year in reserve might preserve only three months of active hull life in poor conditions, or as much as nine months with better layup and maintenance; six months is offered as a working average. On that basis, nine years laid up would consume about four and a half years of service life. Reserve status slows wear, but it does not stop aging altogether.",
+      "body": "Calendar age and active-service wear are not equivalent, so HMS Daring's nine-year refit and layup would not extend its usable life by nine years. The discussion recalls Royal Navy design assumptions of roughly 30 years, with an added allowance described as about 40 years of heavy-duty life; these figures are tentative. A year in reserve might preserve only three months of active hull life in poor conditions, or as much as nine months with better layup and maintenance. Six months is offered as a working average. On that basis, nine years laid up would consume about four and a half years of service life. Reserve status slows wear while still requiring maintenance.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T18-31-10_bruships-239-alternate-history-and-naval-history-questions-answered-live_40G4Og0UNTw.txt",
       "evidence": [
         {
@@ -477,7 +517,7 @@
         "russo-japanese-war",
         "naval-logistics"
       ],
-      "body": "Russia possessed enough strength on paper to make victory possible, but it could not deploy that strength effectively in the theater. A different outcome required advance preparation, a capable forward fleet, and the infrastructure to support it. In a Russian victory, the government might have pursued total conquest if it believed that aim was attainable. The panel immediately warns that conquering Japan would be a nightmare, so the proposed peace terms remain an extreme counterfactual rather than an easy outcome.",
+      "body": "Russia possessed enough strength on paper to make victory possible, but it could not deploy that strength effectively in the theater. A different outcome required advance preparation, a capable forward fleet, and the infrastructure to support it. In a Russian victory, the government might have pursued total conquest if it believed that aim was attainable. The panel immediately warns that conquering Japan would be a nightmare, so the proposed peace terms remain an extreme counterfactual rather than an easy outcome. The answer develops Russian ambitions but leaves the Japanese peace terms in the question unspecified.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T18-31-10_bruships-239-alternate-history-and-naval-history-questions-answered-live_40G4Og0UNTw.txt",
       "evidence": [
         {
@@ -511,9 +551,10 @@
         "naval-propulsion",
         "small-tube-boilers",
         "queen-elizabeth-class-battleships",
-        "revenge-class-battleships"
+        "revenge-class-battleships",
+        "hms-tiger-1913"
       ],
-      "body": "Fitting Tiger with small-tube boilers could plausibly have made her a 30-knot test bed. The larger consequence would be institutional: successful machinery might then appear in the Queen Elizabeth and R classes. Projected speeds rise to roughly 30 knots for battlecruisers and 27 knots for battleships. That would give the Royal Navy a much faster battle line than it historically possessed.",
+      "body": "Fitting Tiger with small-tube boilers could plausibly have made her a 30-knot test bed. Successful machinery might then have been adopted in the Queen Elizabeth class, for which about 26 to 27 knots, perhaps slightly more, is suggested. The projection gives later battlecruisers speeds around 30 knots and battleships around 27 knots. The R class might follow the same machinery path. In this counterfactual, the Royal Navy could build a substantially faster battle line.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T18-31-10_bruships-239-alternate-history-and-naval-history-questions-answered-live_40G4Og0UNTw.txt",
       "evidence": [
         {
@@ -530,7 +571,33 @@
       "kind": "qa",
       "summary": "Successful small-tube boilers in Tiger could have produced a faster generation of Royal Navy battlecruisers and battleships.",
       "question": "If Tiger had served as a small-tube boiler test bed, could she have reached 30 knots?",
-      "answerShort": "Probably. Success could also have pushed later battlecruisers toward 30 knots and Queen Elizabeth and R-class battleships toward roughly 27 knots."
+      "answerShort": "Probably. The answer projects roughly 30 knots for Tiger and later battlecruisers, about 26 to 27 knots or slightly more for the Queen Elizabeths, and around 27 knots for the R class."
+    },
+    {
+      "slug": "bruships-239-internet-adoption-history",
+      "title": "Remembering the spread of everyday internet use",
+      "start": "56:39",
+      "end": "57:30",
+      "topics": [
+        "internet-history",
+        "history-of-technology"
+      ],
+      "body": "The panel uses 1991 and 1995 as rough dividing lines when discussing memories of life before everyday internet use. The first marks what it calls practical existence, and the second wider use; the discussion is about public adoption. It cites an estimate that 16% of the world population used the internet in 2005. The figures described as current during this recording are 67% worldwide and 93% in the developed world. The comparison illustrates how widespread use arrived at different times across populations.",
+      "sourcePath": "src/transcripts/txt/2026-04-19_T18-31-10_bruships-239-alternate-history-and-naval-history-questions-answered-live_40G4Og0UNTw.txt",
+      "evidence": [
+        {
+          "start": "56:39",
+          "end": "57:03",
+          "note": "The discussion uses 1991 and 1995 as rough dividing lines for practical existence and wider public use."
+        },
+        {
+          "start": "57:06",
+          "end": "57:30",
+          "note": "The recording cites 16 percent worldwide internet use in 2005, compared with figures described as current of 67 percent worldwide and 93 percent in the developed world."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Early-1990s memories and population estimates illustrate the gradual and uneven spread of everyday internet use."
     },
     {
       "slug": "bruships-239-monarch-opposes-government-action",
@@ -545,7 +612,7 @@
         "political-power",
         "elizabeth-ii"
       ],
-      "body": "A British monarch can oppose government action through private influence long before invoking a formal power. Staff contacts, influence in the Lords and Commons, weekly audiences with the prime minister, and access to government papers create several channels for pressure. The sovereign can also signal displeasure indirectly in public, a technique associated here with Elizabeth II. Forcing a general election is presented as a theoretical reserve power, but using it against the government would probably lead Parliament to close the loophole. Unwritten conventions therefore make the crown's rarely used powers politically potent and risky.",
+      "body": "A British monarch can oppose government action through private influence long before invoking a formal power. Staff contacts, influence in the Lords and Commons, weekly audiences with the prime minister, and access to government papers create several channels for pressure. The sovereign can also signal displeasure indirectly in public, a technique associated here with Elizabeth II. Forcing a general election is presented as a theoretical reserve power, but using it against the government would probably lead Parliament to close the loophole. The distinction is between routine influence and a disputed constitutional last resort with severe political consequences.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T18-31-10_bruships-239-alternate-history-and-naval-history-questions-answered-live_40G4Og0UNTw.txt",
       "evidence": [
         {
@@ -562,7 +629,35 @@
       "kind": "qa",
       "summary": "Private influence, access to ministers and papers, and indirect public signals gave the monarch leverage short of a constitutional crisis.",
       "question": "What options does the British monarch have if the government plans an action the sovereign actively opposes?",
-      "answerShort": "The sovereign could use private influence, access to ministers and documents, and carefully signaled public displeasure. Forcing an election was technically possible, but doing so would likely trigger a constitutional crisis and removal of the power."
+      "answerShort": "The monarch could use private influence and indirect public signals. Forcing an election is discussed as a theoretical last resort whose use would probably prompt politicians to remove the claimed power."
+    },
+    {
+      "slug": "bruships-239-elizabeth-ii-informal-disapproval",
+      "title": "Elizabeth II and informal signals of disapproval",
+      "start": "1:03:46",
+      "end": "1:05:09",
+      "topics": [
+        "british-history",
+        "constitutional-monarchy",
+        "elizabeth-ii",
+        "saudi-arabia"
+      ],
+      "body": "Two anecdotes illustrate Elizabeth II expressing disapproval through the way she treated visitors. An unnamed prime minister is said to have stood through an audience in the garden, without refreshments, after making a dismissive remark about women doing the same jobs as men. In the second story, she personally drove a visiting Saudi king at high speed around her estate after his remarks about women drivers. He reportedly asked his translator to persuade her to slow down. The stories present personal conduct as a way to communicate royal displeasure; the exchange does not identify either visitor by name.",
+      "sourcePath": "src/transcripts/txt/2026-04-19_T18-31-10_bruships-239-alternate-history-and-naval-history-questions-answered-live_40G4Og0UNTw.txt",
+      "evidence": [
+        {
+          "start": "1:03:46",
+          "end": "1:04:25",
+          "note": "The panel recounts an unnamed prime minister's uncomfortable garden audience after a dismissive remark about women working."
+        },
+        {
+          "start": "1:04:29",
+          "end": "1:05:09",
+          "note": "The story of driving a Saudi king at speed includes the explicitly reported claim that he asked the translator to have her slow down."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Two anecdotes describe Elizabeth II using audiences and personal conduct to express her views on women."
     },
     {
       "slug": "bruships-239-anglo-german-alliance-1880",
@@ -581,7 +676,7 @@
         "franco-russian-alliance",
         "world-war-i-origins"
       ],
-      "body": "An 1880 Anglo-German alliance would combine Europe's largest navy with one of its strongest armies. British sea power would secure Germany's maritime flank and could move German forces around France, weakening the encirclement logic behind Franco-Russian planning. A durable alliance could also reduce the strategic case for a large German navy, since army leaders would resist spending that competed with their own budget. If the partnership lasted for decades, the panel expects it to alter the conditions that produced the First World War.",
+      "body": "An 1880 Anglo-German alliance would combine Europe's largest navy with one of its strongest armies. British sea power would secure Germany's maritime flank and could move German forces around France, weakening the encirclement logic behind Franco-Russian planning. A durable alliance could also reduce the strategic case for a large German navy, since army leaders would resist spending that competed with their own budget. If the partnership reached the suggested 25-year mark, the panel expects it to alter the conditions that produced the First World War.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T18-31-10_bruships-239-alternate-history-and-naval-history-questions-answered-live_40G4Og0UNTw.txt",
       "evidence": [
         {
@@ -635,9 +730,12 @@
         "naval-gunnery",
         "battleships",
         "naval-treaties",
-        "14-inch-guns"
+        "14-inch-guns",
+        "rate-of-fire",
+        "king-george-v-class-1939-battleships",
+        "armour-penetration"
       ],
-      "body": "A worldwide 14-inch standard is plausible because Japan, Britain, and the United States all had experience with the calibre. The difficulty is that a 14-inch gun sits at the bottom of a slower rate-of-fire bracket, while smaller weapons near the top of their bracket can deliver more shells. Enemies can also build battleship protection effective against 14-inch fire. Once that happens, navies have a strong reason to choose a larger calibre instead of preserving the standard into the 1950s. The exchange links calibre, shell effect, firing rate, and armor rather than treating bore size alone as decisive.",
+      "body": "Japan, Britain, and the United States had experience with 14-inch guns, but an enduring worldwide standard is judged highly unlikely. The explanation groups roughly 7.5- to 9.2-inch guns in one rate-of-fire band, roughly 9.2 or 9.5 to 13.5 inches in another, and 14 to about 16.5 inches in the next. In that account, 14 inches sits at the bottom of a slower-firing band and gains less shell power than larger weapons with comparable firing rates. Another participant tentatively recalls the King George V class as protected against 16-inch shells and well protected against its own 14-inch guns. Opponents could also build protection effective against the standard calibre. Both arguments give navies a reason to increase calibre instead of holding to the standard into the 1950s. These are the broad comparisons used in the answer, rather than firing-rate specifications for every gun in those ranges.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T18-31-10_bruships-239-alternate-history-and-naval-history-questions-answered-live_40G4Og0UNTw.txt",
       "evidence": [
         {
@@ -649,12 +747,53 @@
           "start": "1:10:00",
           "end": "1:13:05",
           "note": "The answer argues that 14-inch guns sit awkwardly in rate-of-fire categories and can be armored against, pushing navies toward larger guns."
+        },
+        {
+          "start": "1:10:10",
+          "end": "1:10:57",
+          "note": "The answer gives approximate firing-rate bands and places 14 inches at the bottom of the band extending to about 16.5 inches."
+        },
+        {
+          "start": "1:12:27",
+          "end": "1:13:04",
+          "note": "A participant qualifies the King George V armour comparison as from memory, then argues that effective protection against 14-inch shells would encourage larger guns."
         }
       ],
       "kind": "qa",
       "summary": "A 14-inch battleship standard would struggle because the calibre sits low in its rate-of-fire bracket and can be countered with armor.",
       "question": "If a major sales campaign made 14-inch guns dominant, which navies would follow that doctrine and could it last into the 1950s?",
-      "answerShort": "Several navies could adopt the standard, but 14-inch guns offered too little advantage in firing rate or penetration to remain dominant once opponents armored against them."
+      "answerShort": "Japan, Britain, and the United States already had 14-inch experience, but an enduring common standard is judged highly unlikely. Rate-of-fire tradeoffs and armour able to resist the shells would encourage larger guns."
+    },
+    {
+      "slug": "bruships-239-cruiser-calibre-volume-and-penetration",
+      "title": "Six-inch firing volume and the case for 9.2-inch guns",
+      "start": "1:11:03",
+      "end": "1:12:01",
+      "topics": [
+        "naval-gunnery",
+        "cruisers",
+        "6-inch-guns",
+        "8-inch-guns",
+        "9-2-inch-guns",
+        "rate-of-fire",
+        "armour-penetration"
+      ],
+      "body": "The comparison weighs firing rate, hit probability, and explosive weight delivered when judging cruiser guns. At the engagement ranges expected before radar, 6-inch guns are favoured over 8-inch guns because they can put more shells and more high explosive onto a target. The 6-inch calibre is described as near the top of a high-rate-of-fire group, while 8-inch weapons sit less advantageously within a slower group. Moving to 9.2 inches changes the comparison: fewer, heavier shells are argued to deliver a similar weight of high explosive to 6-inch fire. Their greater penetration could then decide the choice.",
+      "sourcePath": "src/transcripts/txt/2026-04-19_T18-31-10_bruships-239-alternate-history-and-naval-history-questions-answered-live_40G4Og0UNTw.txt",
+      "evidence": [
+        {
+          "start": "1:11:03",
+          "end": "1:11:41",
+          "note": "The answer compares 6-inch and 8-inch firing volume, hit probability and high-explosive delivery at expected pre-radar engagement ranges."
+        },
+        {
+          "start": "1:11:45",
+          "end": "1:12:01",
+          "note": "The 9.2-inch alternative is argued to deliver similar high-explosive weight in fewer shells with greater penetration."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "The pre-radar comparison favours 6-inch firing volume over 8-inch guns, while 9.2-inch shells offer a different penetration tradeoff."
     },
     {
       "slug": "bruships-239-allied-war-crimes-accounting",
@@ -668,7 +807,7 @@
         "military-law",
         "occupation-policy"
       ],
-      "body": "A comprehensive count would have required difficult judgments about different levels of responsibility: senior direction, direct killing, administrative support, and confused battlefield conduct. The Allies also had to govern and rebuild defeated societies, and indiscriminate punishment could provoke an insurgency. Some combat cases were legally serious but factually ambiguous, such as continued fire when a surrender was not seen amid battle. Investigators therefore concentrated on clearer high-level responsibility while many lower-level acts remained unresolved.",
+      "body": "The answer argues that Allied authorities had practical reasons to avoid an exhaustive count of Germans and Japanese involved in war crimes, because they still had to work with defeated societies. It distinguishes senior direction and direct killing from administrative support, using staff at Auschwitz as a difficult example of how to assign responsibility. The distinction is presented as a problem of culpability and punishment, without excusing the administrative role. The discussion also warns that making an entire population expect imprisonment or execution could provoke an insurgency. At the battlefield level, it uses continued fire after an unseen surrender to illustrate the difficulty of establishing intent amid combat. Fog of war and uneven knowledge of the rules among wartime recruits are further reasons offered for concentrating investigations on clearer high-level responsibility. These are the panel's explanations for the limits of postwar accountability.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T18-31-10_bruships-239-alternate-history-and-naval-history-questions-answered-live_40G4Og0UNTw.txt",
       "evidence": [
         {
@@ -698,9 +837,10 @@
         "fleet-screening",
         "royal-navy",
         "2-pounder-guns",
-        "molins-gun"
+        "molins-gun",
+        "6-pounder-guns"
       ],
-      "body": "Many 2-pounder pom-pom mounts could depress far enough because they were expected to engage low-flying torpedo bombers. Against small escort craft at close range, a quadruple or octuple mount would deliver punishing rapid fire. The discussion then points to the later 6-pounder and Molins-gun concept as a heavier solution for small surface targets. Mount geometry therefore mattered as much as nominal calibre when deciding whether an anti-aircraft weapon could be used against boats.",
+      "body": "Many 2-pounder pom-pom mounts could depress far enough because they were expected to engage low-flying torpedo bombers. Against small escort craft at close range, a quadruple or octuple mount would deliver punishing rapid fire. The discussion then points to the later 6-pounder and Molins-gun concept as a heavier solution for small surface targets. The mount has to depress far enough to bring its fire to bear on a surface target.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T18-31-10_bruships-239-alternate-history-and-naval-history-questions-answered-live_40G4Og0UNTw.txt",
       "evidence": [
         {
@@ -731,7 +871,7 @@
         "shipboard-food",
         "naval-discipline"
       ],
-      "body": "The panel invents several intentionally unpleasant meals, including hardtack, disliked rations, and deliberately meager servings. After those joking proposals, Dr. Clarke rejects food as a routine disciplinary tool because it is central to morale. He also opposes punishing an entire crew for individual failures. Provisioning decisions can damage trust and cohesion when they become collective punishment.",
+      "body": "The panel invents intentionally unpleasant meals, including hardtack, disliked rations, and deliberately meagre servings. The offal example depends on period: brains and other organs are described as familiar food for poorer people and sailors up to around the nineteenth century. After the joking proposals, Dr. Clarke says that interfering with food would never be his preferred punishment because meals matter too much to morale. He also rejects collective punishment. The serious conclusion concerns the effect of provisioning on the crew, rather than which meal would be most unpleasant.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T18-31-10_bruships-239-alternate-history-and-naval-history-questions-answered-live_40G4Og0UNTw.txt",
       "evidence": [
         {
@@ -743,6 +883,11 @@
           "start": "1:29:29",
           "end": "1:30:58",
           "note": "Dr. Clarke concludes that interfering with food damages morale and says he does not support collective punishment."
+        },
+        {
+          "start": "1:25:23",
+          "end": "1:25:49",
+          "note": "The panel describes offal, including brains, as common food among poorer people and sailors up to around the nineteenth century."
         }
       ],
       "kind": "qa",
@@ -769,7 +914,7 @@
         "shore-bombardment",
         "command-ships"
       ],
-      "body": "The proposed design brings gun calibre back toward 14 inches because a long 70-calibre weapon offers range and is easier to automate than a much larger gun. Two twin turrets would sit forward, with a large vertical-launch battery and helicopter hangar taking much of the remaining hull. The ship would command surface action groups, support operations ashore, and provide a conspicuous presence in crises that did not justify a carrier group. This is a hybrid arsenal, aviation, and command ship rather than a traditional gun-line battleship.",
+      "body": "Continued battleship development could eventually favour guns around 14 inches as range and automated loading became more important. In this proposal, a 14-inch/70 weapon appears more plausible than a 16.5-inch/70, though the feasibility of the long barrel and automatic handling remains uncertain. A large vertical-launch battery and helicopter hangar would occupy much of the hull. Two twin turrets forward are suggested, giving four guns, although the discussion does not establish a fixed layout. The ship would command surface action groups, support operations ashore, and provide a conspicuous presence when sending a carrier group was unnecessary.",
       "sourcePath": "src/transcripts/txt/2026-04-19_T18-31-10_bruships-239-alternate-history-and-naval-history-questions-answered-live_40G4Og0UNTw.txt",
       "evidence": [
         {
@@ -784,9 +929,64 @@
         }
       ],
       "kind": "qa",
-      "summary": "A continuously developed battleship becomes a missile-heavy command and support ship with automated guns, aviation facilities, and a political presence role.",
+      "summary": "A hypothetical continuation of battleship development produces a proposed missile-heavy command and support ship, with uncertain gun and automation choices.",
       "question": "If battleship construction had continued into the modern era through a Soviet-led arms race, what would the ships look like?",
-      "answerShort": "It would likely be a missile-heavy command ship with automated 14-inch guns forward, a large vertical-launch battery, and an extensive helicopter hangar aft."
+      "answerShort": "The proposal is a missile-heavy command and support ship with guns forward and a large helicopter hangar aft. Automated 14-inch/70 guns are suggested, with their feasibility left uncertain."
+    },
+    {
+      "slug": "bruships-239-gun-barrels-and-naval-display",
+      "title": "Gun barrels as a display of naval power",
+      "start": "1:35:34",
+      "end": "1:36:32",
+      "topics": [
+        "naval-diplomacy",
+        "capital-ships",
+        "naval-gunnery",
+        "battleships"
+      ],
+      "body": "Large naval guns could impress visitors during shipboard diplomatic events. Accounts recalled here repeatedly describe a barrel as large enough to put a head inside. That recurring comparison prompts a tentative suggestion that reception areas or deck arrangements sometimes placed visitors where they could judge the bore at close range. The intention behind those arrangements remains speculation, with no particular ship offered as a documented example.",
+      "sourcePath": "src/transcripts/txt/2026-04-19_T18-31-10_bruships-239-alternate-history-and-naval-history-questions-answered-live_40G4Og0UNTw.txt",
+      "evidence": [
+        {
+          "start": "1:35:34",
+          "end": "1:36:32",
+          "note": "The discussion recalls visitors comparing gun bores with their heads and tentatively suggests that deck arrangements helped make this visual comparison possible during diplomatic events."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "A recurring visitor comparison prompts a tentative interpretation that deck arrangements helped display the size of warship guns."
+    },
+    {
+      "slug": "bruships-239-fourteen-inch-seventy-calibre-gun",
+      "title": "The dimensions of a proposed 14-inch/70 gun",
+      "start": "1:36:39",
+      "end": "1:37:36",
+      "topics": [
+        "live-q-and-a",
+        "alternate-history",
+        "naval-gunnery",
+        "14-inch-guns",
+        "gun-barrel-length",
+        "automatic-loading"
+      ],
+      "body": "The proposed weapon combines a 14-inch bore with a barrel 70 calibres long. Multiplying 14 by 70 gives 980 inches, roughly 81 to 82 feet. Shell weight and the prospects for automated loading are also part of the calculation. This long-barrelled weapon belongs to the counterfactual modern battleship proposal and differs from the earlier 14-inch guns discussed in the programme.",
+      "sourcePath": "src/transcripts/txt/2026-04-19_T18-31-10_bruships-239-alternate-history-and-naval-history-questions-answered-live_40G4Og0UNTw.txt",
+      "evidence": [
+        {
+          "start": "1:36:39",
+          "end": "1:36:56",
+          "note": "A viewer asks whether the proposed 14-inch gun is bigger than the earlier weapons, and the answer points to shell weight, automation, and a 70-calibre barrel."
+        },
+        {
+          "start": "1:36:58",
+          "end": "1:37:36",
+          "note": "The barrel is calculated as 980 inches long, then estimated at roughly 81 to 82 feet."
+        }
+      ],
+      "kind": "qa",
+      "summary": "A 14-inch/70 barrel would measure 980 inches, roughly 81 to 82 feet, while shell weight and automation also shape the proposal.",
+      "question": "Is the proposed modern 14-inch gun bigger than the 14-inch weapons discussed earlier?",
+      "answerShort": "Its bore remains 14 inches. The proposed 70-calibre barrel would be 980 inches long, roughly 81 to 82 feet, with shell weight and automation also influencing the design."
     }
   ]
 }
