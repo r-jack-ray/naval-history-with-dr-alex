@@ -10,25 +10,32 @@
   "segments": [
     {
       "slug": "standardization-two-paths",
-      "title": "Why navies standardize equipment",
-      "start": "0:48",
+      "title": "Can navies standardize too much?",
+      "start": "0:00",
       "end": "1:36",
       "topics": [
         "naval-logistics",
         "naval-procurement",
         "standardisation"
       ],
-      "body": "The opening frames standardization as a tradeoff rather than an automatic good. An organization may reduce variation to simplify administration and logistics, or outside limits on money, industry, and available designs may leave it few alternatives. Similar-looking fleets can therefore reach uniformity for different reasons. The important questions are what produced the standard and how much flexibility it removed.",
+      "body": "Standardization can meet an organizational need by making equipment easier to support and administer. It can also result from a lack of options imposed from outside the organization. Those routes to uniformity need separate examination because adopting a common design does not establish that it is the best available solution. The historical and modern examples explore how much flexibility each choice leaves.",
       "sourcePath": "src/transcripts/txt/2026-07-25_T18-30-06_the-perils-of-standardisation-can-navy-s-standardise-too-much-patreon-premier_qnPjSQ-1qpM.txt",
       "evidence": [
         {
+          "start": "0:00",
+          "end": "0:13",
+          "note": "The opening identifies the question about excessive standardization as a viewer's prompt."
+        },
+        {
           "start": "0:48",
           "end": "1:36",
-          "note": "The lecture distinguishes logistics-led organizational standardization from uniformity imposed by external constraints."
+          "note": "The direct response says excessive standardization is possible and distinguishes organizational convenience from externally restricted options."
         }
       ],
-      "kind": "chapter",
-      "summary": "Standardization may be chosen to simplify administration and logistics or imposed by a shortage of viable options."
+      "kind": "qa",
+      "summary": "Common equipment can simplify support, but the reasons for adopting it matter.",
+      "question": "Can navies have too much standardization?",
+      "answerShort": "Yes. Standardization can simplify logistics and administration, but uniformity can also arise because a navy has too few viable alternatives."
     },
     {
       "slug": "royal-navy-gun-standardization-churn",
@@ -38,6 +45,7 @@
       "topics": [
         "4-5-inch-guns",
         "4-7-inch-guns",
+        "4-inch-guns",
         "5-25-inch-guns",
         "5-5-inch-guns",
         "5-inch-guns",
@@ -45,7 +53,7 @@
         "royal-navy",
         "standardisation"
       ],
-      "body": "Royal Navy efforts to rationalize destroyer and secondary armament repeatedly ran into changing requirements during the 1920s and 1930s. The 5.5-inch, 5.25-inch, 4.7-inch, 4.5-inch, and 4-inch families each answered a plausible need or promised a new fleet standard. Aircraft improved quickly, mountings needed higher elevation, and each large order committed the navy to more barrels, ammunition, and support arrangements. Production was substantial, from more than 100 5.5-inch barrels to thousands for other types, while capital ships also needed shells for 14-inch, 15-inch, and 16-inch guns. The American 5-inch/38 offers the contrast used in the lecture: limited funding encouraged designers to wait and refine one choice. Repeated government pressure to standardize quickly left Britain with more variation and expense than a less prescriptive approach might have produced.",
+      "body": "Royal Navy efforts to rationalize destroyer and secondary armament repeatedly ran into changing requirements during the 1920s and 1930s. New technology prompted another proposed fleet standard every few years, followed by substantial orders that committed the navy to more barrels, ammunition, and support arrangements. Production ranged from well over 100 barrels for the 5.5-inch gun to thousands for other types, while capital ships also needed shells for 14-inch, 15-inch, and 16-inch guns. Improved aircraft created demand for mountings that could elevate to 85 degrees, undermining earlier choices. In the comparison with the American 5-inch/38, tighter US funding encouraged designers to wait and refine one choice. Pressure to standardize quickly could therefore increase variation and expense even when the intention was to save money.",
       "sourcePath": "src/transcripts/txt/2026-07-25_T18-30-06_the-perils-of-standardisation-can-navy-s-standardise-too-much-patreon-premier_qnPjSQ-1qpM.txt",
       "evidence": [
         {
@@ -56,6 +64,34 @@
       ],
       "kind": "chapter",
       "summary": "Interwar attempts to select one destroyer and secondary gun repeatedly restarted as technology changed, leaving the Royal Navy with several calibres and variants instead of a simpler supply system."
+    },
+    {
+      "slug": "royal-navy-gun-calibres-and-variants",
+      "title": "Why one gun calibre did not guarantee one fleet standard",
+      "start": "2:12",
+      "end": "3:20",
+      "topics": [
+        "4-5-inch-guns",
+        "4-7-inch-guns",
+        "4-inch-guns",
+        "5-25-inch-guns",
+        "5-5-inch-guns",
+        "dido-class-cruisers",
+        "naval-guns",
+        "royal-navy",
+        "standardisation"
+      ],
+      "body": "The 5.5-inch gun served on Hood and HMS Eagle and was considered a powerful destroyer weapon, but treaty limits on ship size worked against that option. The 5.25-inch gun equipped Dido-class cruisers and capital ships as a dual-purpose weapon and was also considered for destroyers. By the Second World War, the Royal Navy had four service variants of the 4.7-inch gun, three of the 4.5-inch gun, and two of the 4-inch gun. Each represented an attempt to establish a useful fleet standard. Supporting the resulting variety required attention to individual variants as well as calibre.",
+      "sourcePath": "src/transcripts/txt/2026-07-25_T18-30-06_the-perils-of-standardisation-can-navy-s-standardise-too-much-patreon-premier_qnPjSQ-1qpM.txt",
+      "evidence": [
+        {
+          "start": "2:12",
+          "end": "3:20",
+          "note": "The transcript names Hood, Eagle and the Dido class, explains the treaty constraint on 5.5-inch destroyer armament, and counts service variants of 4.7-inch, 4.5-inch and 4-inch guns."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "British armament proposals covered several calibres, while individual calibres also accumulated different service variants."
     },
     {
       "slug": "royal-navy-12-pounder-de-facto-standard",
@@ -93,7 +129,7 @@
         "standardisation",
         "us-navy"
       ],
-      "body": "The American standard battleships show how a useful baseline can become a constraint. Twenty-one knots looked impressive beside older reciprocating-engine ships and supported a coherent armored battle line. Turbines, gearing, and boilers soon made higher sustained speeds practical, while cruisers and destroyers still had to maneuver around the slowest capital ships. Faster machinery also widened the useful range between economical cruising and maximum speed. A 21-knot minimum could have preserved common doctrine without fixing every later ship at the same performance level.",
+      "body": "The American standard battleships combined heavy armor and numerous guns in a coherent battle line. A 21-knot design speed was defensible when chosen in 1911, but ships ordered in 1916 and later retained it as machinery and rival designs improved. Britain's plan was moving toward a battle line of roughly 23 knots. A fleet tied to 21-knot capital ships also constrained the movement of its cruisers and destroyers. Treating 21 knots as a minimum could have preserved a common baseline while allowing later ships to exploit more powerful machinery.",
       "sourcePath": "src/transcripts/txt/2026-07-25_T18-30-06_the-perils-of-standardisation-can-navy-s-standardise-too-much-patreon-premier_qnPjSQ-1qpM.txt",
       "evidence": [
         {
@@ -104,6 +140,29 @@
       ],
       "kind": "chapter",
       "summary": "A uniform 21-knot battle line offered armor and firepower, but fixing that speed into later US battleships limited the maneuver of the entire fleet as turbines and rival designs improved."
+    },
+    {
+      "slug": "turbine-cruising-speed-and-fleet-mobility",
+      "title": "How turbine cruising performance expanded fleet mobility",
+      "start": "9:12",
+      "end": "12:47",
+      "topics": [
+        "battle-fleet-tactics",
+        "battleships",
+        "naval-propulsion",
+        "steam-turbines"
+      ],
+      "body": "Earlier expansion-engine battleships could reach about 18 knots, while an economical speed might be nearer 15 or 16 knots, with considerable variation between generations. Dreadnoughts made 21 knots appear a substantial improvement, but turbine efficiency, gearing, and boilers continued to develop. A more capable installation could offer a useful operating speed between its most economical setting and maximum power. That intermediate speed could improve strategic movement with a relatively small reduction in range. The benefit depended on having enough speed available above economical cruising speed. A fleet tied to 21-knot capital ships had less freedom to exploit those developments.",
+      "sourcePath": "src/transcripts/txt/2026-07-25_T18-30-06_the-perils-of-standardisation-can-navy-s-standardise-too-much-patreon-premier_qnPjSQ-1qpM.txt",
+      "evidence": [
+        {
+          "start": "9:12",
+          "end": "12:47",
+          "note": "The transcript distinguishes maximum and economical speeds, describes an intermediate turbine operating speed, and connects it to strategic maneuver and the limits of a 21-knot battle line."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Improved turbines could support a useful speed above economical cruising without the range penalty of sustained maximum power."
     },
     {
       "slug": "german-quantity-quality-naval-race",
@@ -129,9 +188,33 @@
       "summary": "Imperial Germany could compete in ship quality or maintain the numbers needed for the naval race, but doing both would have required a politically unviable challenge to army funding."
     },
     {
+      "slug": "anglo-american-turbine-design-exchange",
+      "title": "How British and American yards refined each other's turbines",
+      "start": "14:17",
+      "end": "15:24",
+      "topics": [
+        "naval-propulsion",
+        "parsons-turbines",
+        "royal-navy",
+        "steam-turbines",
+        "us-navy"
+      ],
+      "body": "British and American machinery development benefited from designs moving between the two countries. The Brown shipyard in Britain took American turbine designs and extracted additional power, prompting the original supplier to seek an example for examination. Parsons turbines also travelled to America and were refined there. The American yard is tentatively recalled as Bath Iron Works, and that identification remains uncertain. These exchanges help explain the machinery expertise available for the proposed American fast-battleship alternative.",
+      "sourcePath": "src/transcripts/txt/2026-07-25_T18-30-06_the-perils-of-standardisation-can-navy-s-standardise-too-much-patreon-premier_qnPjSQ-1qpM.txt",
+      "evidence": [
+        {
+          "start": "14:17",
+          "end": "15:24",
+          "note": "The transcript describes Brown's refinement of American turbines and American work on Parsons turbines. Bath Iron Works is explicitly a tentative recollection."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Reciprocal turbine development gave British and American builders access to improvements beyond their own original designs."
+    },
+    {
       "slug": "us-battleship-standardization-opportunity-cost",
       "title": "What US battleship standardization left unexplored",
-      "start": "14:17",
+      "start": "15:28",
       "end": "18:09",
       "topics": [
         "battleship-design",
@@ -140,13 +223,13 @@
         "naval-budgets",
         "us-navy"
       ],
-      "body": "Britain and the United States were exchanging and refining turbine designs, giving American yards the technical basis for much faster capital ships. An early 28-knot American battleship is presented as a counterfactual opportunity, not an event that occurred. Such a leap could have changed how other navies judged US design leadership, while later forces would have gained fast capital ships better able to accompany quick task groups. Standard battleships remained politically attractive because some members of Congress opposed naval spending as a route into foreign wars, while others expected new equipment to become obsolete quickly. Deferring procurement could save money for a time, but it also risked losing the yards and specialist capacity needed when rapid construction became urgent.",
+      "body": "American industry and machinery expertise could have supported a much faster capital ship. A 28-knot battleship ordered around 1911 or 1912 is presented as a counterfactual opportunity. Such a leap could have changed how other navies judged US design leadership, while later forces would have gained fast capital ships better able to accompany quick task groups. Standard battleships remained politically attractive because some members of Congress opposed naval spending as a route into foreign wars, while others expected new equipment to become obsolete quickly. Deferring procurement could save money for a time, but it also risked losing the yards and specialist capacity needed when rapid construction became urgent.",
       "sourcePath": "src/transcripts/txt/2026-07-25_T18-30-06_the-perils-of-standardisation-can-navy-s-standardise-too-much-patreon-premier_qnPjSQ-1qpM.txt",
       "evidence": [
         {
-          "start": "14:17",
+          "start": "15:28",
           "end": "18:09",
-          "note": "The lecture discusses Anglo-American machinery development, a hypothetical early US fast battleship, political limits on naval spending, and industrial capacity."
+          "note": "The transcript proposes an early 28-knot American battleship as a counterfactual, then explains congressional spending objections and the industrial cost of delaying procurement."
         }
       ],
       "kind": "notable_point",
@@ -190,7 +273,7 @@
         "naval-reconnaissance",
         "tsr-2"
       ],
-      "body": "The Fleet Air Arm's TSR label meant torpedo-spotter-reconnaissance, not the tactical strike reconnaissance title used by the later RAF TSR-2. A Swordfish could carry a torpedo or bombs, spot naval gunfire for capital ships and cruisers, and scout for the fleet. The Fairey Fulmar similarly paired fighter and reconnaissance duties in a two-seat aircraft. Combining compatible duties reduced the number of specialized types competing for limited carrier hangar space. Larger groups of fewer types could generate more available aircraft while concentrating engineers, maintenance knowledge, spares, and stores. These examples show why multi-role design can work when the missions make similar demands on the airframe.",
+      "body": "The Fleet Air Arm's TSR label meant torpedo-spotter-reconnaissance, distinct from the tactical strike reconnaissance title used by the later RAF TSR-2. A Swordfish could carry a torpedo or bombs, spot naval gunfire for capital ships and cruisers, including HMS Warspite, and scout for the fleet. The Fairey Fulmar paired fighter and reconnaissance duties in a two-seat aircraft after the proposed spotting role was dropped. Combining compatible duties reduced the number of specialized types competing for limited carrier hangar space. An illustrative comparison suggests that six groups of six aircraft might each supply only two available machines, whereas two groups of eighteen might each supply about twelve. These figures illustrate the maintenance argument rather than a fixed readiness formula. Larger groups of fewer types concentrated engineering expertise, spares, and stores and could generate stronger strikes and air defence.",
       "sourcePath": "src/transcripts/txt/2026-07-25_T18-30-06_the-perils-of-standardisation-can-navy-s-standardise-too-much-patreon-premier_qnPjSQ-1qpM.txt",
       "evidence": [
         {
@@ -214,7 +297,7 @@
         "multi-role-aircraft",
         "supermarine-spitfire"
       ],
-      "body": "Conflict compresses development schedules, and each additional requirement delays an aircraft's entry into service. A wartime design should enter around one clearly defined role, with useful secondary missions added after operational experience accumulates. The Spitfire illustrates an aircraft introduced for an urgent primary purpose and then adapted as experience accumulated. Peacetime programs have more room to combine roles when their aerodynamic and structural demands fit together. Fighter and dive-bomber requirements ask one airframe to meet incompatible performance needs.",
+      "body": "Conflict compresses development schedules, and each additional requirement creates more conditions an aircraft must meet before entering service. A programme can respond by concentrating on one clearly defined role and adding useful secondary missions after operational experience accumulates. The Spitfire entered service before the war during an emergency buildup and illustrates this approach to meeting an urgent primary requirement. Peacetime programmes have more time to combine roles when their aerodynamic and structural demands fit together. Dive bombing demanded particular maneuvers and an airframe able to withstand substantial loads, which could leave an aircraft agile in some directions yet insufficiently maneuverable for fighter combat.",
       "sourcePath": "src/transcripts/txt/2026-07-25_T18-30-06_the-perils-of-standardisation-can-navy-s-standardise-too-much-patreon-premier_qnPjSQ-1qpM.txt",
       "evidence": [
         {
@@ -238,7 +321,7 @@
         "organisational-culture",
         "royal-air-force"
       ],
-      "body": "The lecture moves from common equipment to institutional monoculture. Air Ministry bomber advocates sincerely believed heavy bombers offered Britain's best defence, but their dominance made other needs appear unnecessary. Fighter Command, Coastal Command, transport aviation, and dive-bomber development all struggled for attention. This narrowing was particularly striking because the Royal Flying Corps and Royal Naval Air Service had helped develop dive bombing, and aircraft such as the Hawker Hart kept aspects of the practice alive. A doctrine becomes dangerous when its supporters control the institution responsible for evaluating alternatives.",
+      "body": "Institutions can standardize their thinking as well as their equipment. Air Ministry bomber advocates sincerely believed heavy bombers offered Britain's best defence, but their dominance made other needs appear unnecessary. Fighter Command, Coastal Command, transport aviation, and dive-bomber development all struggled for attention. This narrowing was particularly striking because the Royal Flying Corps and Royal Naval Air Service had helped develop dive bombing, and aircraft such as the Hawker Hart kept aspects of the practice alive. A doctrine becomes dangerous when its supporters control the institution responsible for evaluating alternatives.",
       "sourcePath": "src/transcripts/txt/2026-07-25_T18-30-06_the-perils-of-standardisation-can-navy-s-standardise-too-much-patreon-premier_qnPjSQ-1qpM.txt",
       "evidence": [
         {
@@ -333,7 +416,7 @@
         "submarine-warfare",
         "type-vii-u-boat"
       ],
-      "body": "The claim that an all-submarine German fleet in the 1930s would automatically have won the Atlantic war overlooks the predictability of a single threat. Mass Type VII production would remain dangerous, but it would let Britain organize construction, crewing, and convoy defence around anti-submarine warfare. The naval treaty rules described here permitted unlimited vessels below 2,000 tons that stayed under 20 knots and carried no torpedoes, creating room for sloops and Flower-class corvettes. Such escorts were easier to build and crew than submarines. A U-boat still had to find a convoy and penetrate its screen, so an all-submarine fleet would concentrate British planning on one operational problem.",
+      "body": "The claim that an all-submarine German fleet in the 1930s would automatically have won the Atlantic war overlooks the predictability of a single threat. The scenario assumes mass production of Type VII boats, with Type XXI excluded as an option for that period. It would let Britain concentrate construction, crewing, and convoy defence on anti-submarine warfare. The treaty exemption described here covered vessels below 2,000 tons, not designed to exceed 20 knots or carry torpedoes, creating room for sloops and Flower-class corvettes. Such escorts were easier to build and crew than submarines. A submarine normally had to approach the convoy, giving its defenders a positional advantage, although escorts could still fail and submarines could penetrate the screen.",
       "sourcePath": "src/transcripts/txt/2026-07-25_T18-30-06_the-perils-of-standardisation-can-navy-s-standardise-too-much-patreon-premier_qnPjSQ-1qpM.txt",
       "evidence": [
         {
@@ -394,53 +477,130 @@
       "slug": "missile-diversity-complicates-defence",
       "title": "Missile diversity complicates an enemy's solution",
       "start": "36:01",
-      "end": "40:21",
+      "end": "38:16",
       "topics": [
-        "5-25-inch-guns",
-        "5-inch-guns",
         "allied-interoperability",
+        "evolved-sea-sparrow-missile",
         "missile-defence",
         "naval-air-defence",
         "sea-ceptor",
         "sea-viper",
-        "standard-missile"
+        "standard-missile",
+        "vertical-launch-systems"
       ],
-      "body": "Every missile compromises around cell dimensions, propulsion, altitude, range, and warhead requirements, so even an excellent design has recurring limits. A fleet built around one weapon reproduces those limits everywhere. Complementary missile families such as Enhanced Sea Sparrow, Sea Viper, and Sea Ceptor give an attacker different engagement problems across ships and allied formations. During the Second World War, Japanese aircraft could maneuver around the known reach of US 5-inch/38 fire yet encounter longer-ranged British 5.25-inch guns, along with some 8-inch cruiser fire. A second defensive system can upset tactics optimized for the dominant standard.",
+      "body": "Even an excellent missile compromises around the dimensions of its vertical launch system (VLS) cell, the warhead it must carry, and its intended targets. Operating altitude also affects engine design. Repeating one design across a fleet repeats its limitations. Enhanced Sea Sparrow provides a second missile type aboard a ship, while allied systems such as Sea Viper and Sea Ceptor add further defensive problems. Those alternatives complicate an opponent's preparations, especially when allied ships fight together.",
       "sourcePath": "src/transcripts/txt/2026-07-25_T18-30-06_the-perils-of-standardisation-can-navy-s-standardise-too-much-patreon-premier_qnPjSQ-1qpM.txt",
       "evidence": [
         {
           "start": "36:01",
-          "end": "40:21",
-          "note": "The transcript explains shared missile compromises and compares complementary modern systems with differing US and British naval gun engagement ranges."
+          "end": "38:16",
+          "note": "The transcript explains shared design compromises, VLS dimensions, warhead and altitude requirements, and complementary missile families within ships and allied formations."
         }
       ],
       "kind": "chapter",
-      "summary": "Different defensive missiles across ships and allies force attackers to account for several engagement envelopes, seekers, and weaknesses instead of optimizing against one known system."
+      "summary": "Different defensive missiles across ships and allies force attackers to account for different missile designs and their limitations."
+    },
+    {
+      "slug": "allied-gun-ranges-disrupt-air-attack-tactics",
+      "title": "How British gun ranges disrupted Japanese air tactics",
+      "start": "38:18",
+      "end": "39:38",
+      "topics": [
+        "5-25-inch-guns",
+        "5-inch-guns",
+        "8-inch-guns",
+        "allied-interoperability",
+        "naval-air-defence",
+        "naval-gunnery"
+      ],
+      "body": "Japanese aircraft could exploit familiarity with the reach of the American 5-inch/38 by circling outside its range while watching for targets. British 5.25-inch guns on light cruisers and capital ships could reach farther and fire into that circling area. Some British-built cruisers could produce a similar surprise with their 8-inch guns. The 5-inch/38 remained an effective weapon, but tactics developed around its limits were less reliable against a mixed formation. Even relatively few guns with a different reach could complicate an attack planned around the dominant standard.",
+      "sourcePath": "src/transcripts/txt/2026-07-25_T18-30-06_the-perils-of-standardisation-can-navy-s-standardise-too-much-patreon-premier_qnPjSQ-1qpM.txt",
+      "evidence": [
+        {
+          "start": "38:18",
+          "end": "39:38",
+          "note": "The transcript describes Japanese aircraft circling near the limits of 5-inch/38 fire and the additional threat from British 5.25-inch and some 8-inch guns."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Aircraft accustomed to the 5-inch/38 could encounter longer-ranged British fire, making familiar circling tactics unsafe."
+    },
+    {
+      "slug": "type-45-complementary-missile-families",
+      "title": "A Type 45 alternative with two missile families",
+      "start": "39:41",
+      "end": "40:21",
+      "topics": [
+        "aster-15",
+        "aster-30",
+        "naval-air-defence",
+        "sea-ceptor",
+        "sea-viper",
+        "sea-wolf-missile",
+        "standardisation",
+        "type-45-destroyer"
+      ],
+      "body": "The Type 45's selection of Aster 30 and Aster 15 for Sea Viper prompts a proposed alternative weapons fit. It would retain Aster 30 and add vertical-launch Sea Wolf or its forthcoming CAMM replacement in place of Aster 15. The aim is to give the destroyer two distinct missile families. An attacker prepared to defeat Sea Viper would also need an answer to the other system. This is a suggested alternative to the original selection, with CAMM discussed as a future replacement at that time.",
+      "sourcePath": "src/transcripts/txt/2026-07-25_T18-30-06_the-perils-of-standardisation-can-navy-s-standardise-too-much-patreon-premier_qnPjSQ-1qpM.txt",
+      "evidence": [
+        {
+          "start": "39:41",
+          "end": "40:21",
+          "note": "The transcript recalls Aster 30 and Aster 15 being selected and proposes Sea Wolf or forthcoming CAMM alongside Aster 30 as an alternative that would complicate an attacker's preparations."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Pairing Aster 30 with Sea Wolf or CAMM is proposed as a way to give a Type 45 two different defensive missile families."
     },
     {
       "slug": "mixed-weapon-raids-overload-defenders",
       "title": "Mixed weapons multiply a fleet's defensive problem",
       "start": "40:24",
-      "end": "43:38",
+      "end": "42:01",
       "topics": [
         "anti-ship-missiles",
         "combined-arms",
         "drone-warfare",
         "exocet-missile",
         "harpoon-missile",
-        "naval-air-defence"
+        "naval-air-defence",
+        "naval-strike-missile"
       ],
-      "body": "Diversity complicates offensive threats as well as fleet defence. Carrying Harpoon and Exocet forced an opponent to prepare for different missile behavior instead of tuning every response to one profile. Modern raids can combine drones, cruise missiles, and hypersonic weapons, giving sensors, command teams, and interceptors several timing and geometry problems at once. Second World War attacks similarly mixed torpedo bombers, dive bombers, level bombers, and fighters. Each side fights with a connected force of people, platforms, sensors, and weapons.",
+      "body": "Diversity complicates offensive threats as well as fleet defence. Standardization on Harpoon, followed by the introduction of Naval Strike Missile, is contrasted with carrying more than one anti-ship missile type. Buying Harpoon and Exocet could serve relationships with American and European suppliers while also forcing an opponent to prepare for different attack profiles. An opponent equipped to handle one missile still had to account for the other arriving alongside it. Modern raids can combine drones, cruise missiles, and hypersonic missiles, requiring defenders to handle several threats at the same time. Treating drones as an isolated mass misses the more complicated attack they can help form.",
       "sourcePath": "src/transcripts/txt/2026-07-25_T18-30-06_the-perils-of-standardisation-can-navy-s-standardise-too-much-patreon-premier_qnPjSQ-1qpM.txt",
       "evidence": [
         {
           "start": "40:24",
-          "end": "43:38",
-          "note": "The transcript links Harpoon and Exocet diversity, modern mixed missile and drone raids, and multi-type Second World War air attacks."
+          "end": "42:01",
+          "note": "The transcript discusses standardization on Harpoon and then Naval Strike Missile, the tactical value of combining Harpoon and Exocet, and modern raids mixing drones, cruise missiles and hypersonic missiles."
         }
       ],
       "kind": "chapter",
-      "summary": "Combining missiles, drones, and aircraft with different attack profiles creates a harder threat picture than sending a larger mass of one standardized weapon."
+      "summary": "Combining drones with cruise and hypersonic missiles gives defenders several different threats to handle at once."
+    },
+    {
+      "slug": "mixed-air-attacks-divide-fleet-attention",
+      "title": "How mixed air attacks divided a fleet's attention",
+      "start": "42:05",
+      "end": "43:38",
+      "topics": [
+        "combined-arms",
+        "dive-bombers",
+        "naval-air-defence",
+        "naval-aviation",
+        "torpedo-bombers"
+      ],
+      "body": "A fleet under air attack had to manage several approaches at once. Torpedo bombers came in low while dive bombers approached from above for descending attacks. Level bombers also demanded attention and evasive maneuvers because their bombs could still hit. Attacking fighters added strafing runs, while defending ships had to track their own fighters amid antiaircraft fire. These overlapping demands explain why comparisons between individual weapons give an incomplete account of naval combat. The outcome depended on the interacting ships, aircraft, weapons, and people on both sides.",
+      "sourcePath": "src/transcripts/txt/2026-07-25_T18-30-06_the-perils-of-standardisation-can-navy-s-standardise-too-much-patreon-premier_qnPjSQ-1qpM.txt",
+      "evidence": [
+        {
+          "start": "42:05",
+          "end": "43:38",
+          "note": "The transcript uses Second World War Mediterranean air attacks to explain approach geometry, maneuvering, friendly-fighter awareness, and the interaction of entire attacking and defending forces."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Torpedo bombers, dive bombers, level bombers, and fighters imposed different defensive tasks simultaneously."
     },
     {
       "slug": "overlapping-aircraft-fleets-sustain-capability",
@@ -448,13 +608,17 @@
       "start": "43:42",
       "end": "47:15",
       "topics": [
+        "blackburn-buccaneer",
+        "carrier-air-groups",
         "defence-procurement",
         "deterrence",
         "force-structure",
         "military-aviation",
-        "multi-role-aircraft"
+        "multi-role-aircraft",
+        "panavia-tornado",
+        "sepecat-jaguar"
       ],
-      "body": "Aircraft capability rises as crews master a type and upgrades mature, then falls as airframes age and further modernization becomes harder. Staggering overlapping types can keep one fleet near its peak while another enters service or approaches retirement. Starting a replacement before the old type disappears leaves time to solve early service problems without creating a sudden gap. Jaguar, Tornado, and Buccaneer show how several ground-attack types could sustain capability across different life-cycle stages. A common airframe may yield more nominal aircraft for the same support budget, but it also synchronizes aging, upgrade limits, and replacement risk across the force.",
+      "body": "Aircraft capability rises as crews master a type and upgrades mature, then falls as airframes age and further modernization becomes harder. Staggering overlapping types can keep one fleet near its peak while another enters service or approaches retirement. Starting a replacement before the old type disappears leaves time to solve early service problems without creating a sudden gap. Jaguar, Tornado, and Buccaneer show how several ground-attack types could sustain capability across different life-cycle stages, and carrier air wings also carried overlapping strike and fighter types. A common airframe may yield more nominal aircraft for the same support budget, but it also concentrates aging, upgrade limits, and replacement risk across the force. At sufficient force size, the extra support burden of overlapping types can be justified by steadier warfighting and conventional deterrent capability.",
       "sourcePath": "src/transcripts/txt/2026-07-25_T18-30-06_the-perils-of-standardisation-can-navy-s-standardise-too-much-patreon-premier_qnPjSQ-1qpM.txt",
       "evidence": [
         {
@@ -492,54 +656,107 @@
     },
     {
       "slug": "missile-radar-monopolies-narrow-design-options",
-      "title": "Missile and radar monopolies narrow design choices",
+      "title": "Fewer competitors in aircraft, radar, and missile development",
       "start": "51:59",
-      "end": "56:23",
+      "end": "54:00",
       "topics": [
+        "boeing",
         "defence-industrial-base",
-        "mbda",
+        "f-22-raptor",
+        "f-35-lightning-ii",
+        "lockheed-martin",
         "missile-development",
         "monopolies",
         "naval-radar",
+        "northrop-grumman",
         "raytheon"
       ],
-      "body": "The passage treats Raytheon and MBDA as skilled suppliers with dedicated staff. The structural risk comes from the breadth of systems concentrated within them. Raytheon's portfolio includes naval radars and weapons such as Tomahawk, Patriot, Sparrow, Enhanced Sea Sparrow, and Standard Missile. Competition can shrink to two teams, divisions of one group, or one European supplier against one American supplier. Repeated choices then inherit the same corporate assumptions and design culture. Independent teams matter for price and for producing different answers to the same operational problem.",
+      "body": "The F-35 competition came down to two serious teams, Lockheed Martin and Boeing. Raytheon's broad radar and weapons portfolio provides another example of the concentration of design work. The F-22 radar's joint development with Northrop Grumman qualifies the claim that US radar work had become concentrated in one company. The weapons listed include Standard Missile, Maverick, HARM, the Advanced Cruise Missile, Joint Standoff Weapon, Sparrow, Sidewinder, Phoenix, Tomahawk, TOW, Stinger, Paveway, Javelin, Hawk, Patriot, Sea Sparrow, and Enhanced Sea Sparrow. They include historical systems as well as more recent products and illustrate the breadth of the portfolio. The concern is dependence on one supplier across many programmes, even when its staff are skilled and dedicated.",
       "sourcePath": "src/transcripts/txt/2026-07-25_T18-30-06_the-perils-of-standardisation-can-navy-s-standardise-too-much-patreon-premier_qnPjSQ-1qpM.txt",
       "evidence": [
         {
           "start": "51:59",
-          "end": "56:23",
-          "note": "The transcript surveys concentration in US radar and missile work and European missile competition through Raytheon and MBDA."
+          "end": "54:00",
+          "note": "The transcript identifies the two serious F-35 competitors, Raytheon's broad radar and weapons portfolio, the Northrop Grumman F-22 radar exception, and the distinction between capable staff and supplier concentration."
         }
       ],
       "kind": "chapter",
-      "summary": "Raytheon's broad US missile and radar portfolio and MBDA's position in Europe show how capable suppliers can still create systemic risk when meaningful alternatives disappear."
+      "summary": "The F-35 competition and Raytheon's broad portfolio illustrate how many equipment choices can depend on a small group of independent suppliers."
     },
     {
-      "slug": "defence-monopsony-standardization-by-scarcity",
-      "title": "Standardization by supplier scarcity",
-      "start": "57:14",
-      "end": "1:00:56",
+      "slug": "mbda-competition-within-one-company",
+      "title": "When competing missile teams belong to the same company",
+      "start": "54:00",
+      "end": "57:10",
       "topics": [
         "defence-industrial-base",
         "defence-procurement",
-        "diesel-engines",
-        "monopsony",
-        "nato-standardisation",
-        "nuclear-submarines",
-        "standardisation"
+        "mbda",
+        "missile-development",
+        "monopolies",
+        "organisational-culture",
+        "raytheon"
       ],
-      "body": "The British nuclear-submarine yard illustrates a market with one government customer and one essential supplier. Writing down cost overruns does not make them disappear because a private firm must recover money through later business with that same customer. Without a competing yard, commercial ownership cannot impose the price discipline expected from competition. The same concentration appears in missiles, armored vehicles, ship design, and diesel engines, where apparently different products may trace back to only a few underlying sources. NATO has met some standardization goals because suppliers offer so few alternatives, but that commonality reflects lost choice as much as deliberate agreement. The closing question is how to keep the logistical benefits of standards while preserving enough choice to avoid these risks.",
+      "body": "A supplier can employ capable, dedicated people while leaving customers with few independent alternatives. One missile competition is recalled as involving MBDA's UK operation and possibly its Italian operation, before the teams joined forces on a common project. The particular weapon is not identified, and the Italian participant remains uncertain. Buying an American alternative is presented here as moving the choice to Raytheon, leaving a narrow field of suppliers. Similar concerns extend to armored vehicles and ship design, where successive decisions within one corporate culture can repeatedly favor the same approach. A dominant supplier's pursuit of profit follows the commercial position created for it.",
+      "sourcePath": "src/transcripts/txt/2026-07-25_T18-30-06_the-perils-of-standardisation-can-navy-s-standardise-too-much-patreon-premier_qnPjSQ-1qpM.txt",
+      "evidence": [
+        {
+          "start": "54:00",
+          "end": "57:10",
+          "note": "The transcript recalls a competition between MBDA UK and tentatively MBDA Italy, explicitly forgets the system, and connects limited supplier choice to corporate design culture and commercial incentives."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Competition between divisions can leave procurement dependent on one corporate group and its established design choices."
+    },
+    {
+      "slug": "defence-monopsony-standardization-by-scarcity",
+      "title": "One submarine yard and one government customer",
+      "start": "57:14",
+      "end": "59:28",
+      "topics": [
+        "bae-systems",
+        "defence-industrial-base",
+        "defence-procurement",
+        "monopolies",
+        "monopsony",
+        "nuclear-submarines"
+      ],
+      "body": "The British nuclear-submarine yard combines a government monopsony, with one purchaser, and a supplier monopoly operated by BAE. A cost write-down does not remove the company's incentive to recover that money through later business. In this argument, its sole customer is the British government, so the taxpayer ultimately funds that recovery and the supplier's profit margin. The expected benefit of commercial ownership is competition that constrains prices. Without another yard able to compete for the work, that source of price pressure is absent.",
       "sourcePath": "src/transcripts/txt/2026-07-25_T18-30-06_the-perils-of-standardisation-can-navy-s-standardise-too-much-patreon-premier_qnPjSQ-1qpM.txt",
       "evidence": [
         {
           "start": "57:14",
-          "end": "1:00:56",
-          "note": "The transcript uses the UK nuclear-submarine yard and concentrated diesel-engine supply to explain standardization created by limited industrial options."
+          "end": "59:28",
+          "note": "The transcript pairs the British government's monopsony with BAE's nuclear-submarine-yard monopoly and argues that cost write-downs must ultimately be recovered from its sole customer."
         }
       ],
       "kind": "chapter",
-      "summary": "When governments have only one yard or a handful of component suppliers, common equipment may reflect industrial scarcity rather than a freely chosen optimum."
+      "summary": "The British nuclear-submarine yard illustrates the pricing problem when a sole government buyer depends on a sole commercial supplier."
+    },
+    {
+      "slug": "nato-standardisation-and-diesel-supplier-scarcity",
+      "title": "How supplier scarcity standardizes NATO equipment",
+      "start": "59:31",
+      "end": "1:01:01",
+      "topics": [
+        "defence-industrial-base",
+        "defence-procurement",
+        "diesel-engines",
+        "nato-standardisation",
+        "standardisation"
+      ],
+      "body": "Some NATO standardization goals have been reached because procurement offers only two or three supplier choices. That produces common equipment through a restricted market. Diesel engines illustrate how visible variety can overstate the number of independent designs: an engine sold under one company's name can be a rebadged design from another. No underlying manufacturer is identified in this example. The logistical advantages of common equipment still need to be weighed against the loss of design and supplier choice.",
+      "sourcePath": "src/transcripts/txt/2026-07-25_T18-30-06_the-perils-of-standardisation-can-navy-s-standardise-too-much-patreon-premier_qnPjSQ-1qpM.txt",
+      "evidence": [
+        {
+          "start": "59:31",
+          "end": "1:01:01",
+          "note": "The transcript connects NATO standardization to limited suppliers, describes rebadged diesel designs, leaves the manufacturer's identity as an unanswered question, and closes with the tradeoff between commonality and excessive standardization."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "NATO equipment can converge because few suppliers remain, while differently branded diesel engines may share an underlying design."
     }
   ]
 }

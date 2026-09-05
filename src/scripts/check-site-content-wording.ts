@@ -51,6 +51,7 @@ export interface SiteContentWordingReport {
   videosScanned: number;
   segmentsScanned: number;
   publicFieldsScanned: number;
+  evidenceNotesScanned: number;
   findingCount: number;
   matchedOccurrenceCount: number;
   errorCount: number;
@@ -74,10 +75,11 @@ const completionCriterion =
 const reviewPolicy =
     "Review candidates require transcript-grounded judgment. Do not bulk-rewrite them or use a zero review " +
     "count as a general completion target. Preserve technical terms when they carry subject-matter meaning. " +
-    "Treat host-attribution as a whole-shard review. Verify each Clark or Clarke match against the transcript " +
+    "Treat host-attribution as a whole-shard review performed in small segment batches, including evidence notes. Verify each Clark or Clarke match against the transcript " +
     "before editing. Each segment already carries sourcePath and evidence, so remove routine references to the " +
     "host in solo-speaker prose. Preserve other people named Clark or Clarke. In multi-speaker material, also " +
-    "retain attribution needed to distinguish speakers or identify a quotation.";
+    "retain attribution needed to distinguish speakers or identify a quotation. A passing strict scan does not " +
+    "resolve review findings: remove routine reporting frames, preserve source limits, and check coordinated verbs after rewriting.";
 
 export async function main(args: readonly string[] = process.argv.slice(2)): Promise<number> {
   const options = parseArgs(args);
@@ -93,6 +95,7 @@ export async function main(args: readonly string[] = process.argv.slice(2)): Pro
   let videosScanned = 0;
   let segmentsScanned = 0;
   let publicFieldsScanned = 0;
+  let evidenceNotesScanned = 0;
 
   for (const path of files) {
     const file = repoDisplayPath(repoRoot, path);
@@ -110,6 +113,7 @@ export async function main(args: readonly string[] = process.argv.slice(2)): Pro
     videosScanned += 1;
     segmentsScanned += video.segments.length;
     publicFieldsScanned += publicFieldCount(video);
+    evidenceNotesScanned += video.segments.reduce((count, segment) => count + segment.evidence.length, 0);
     findings.push(...scanCuratedVideoFileMechanicalWording(file, video, {
       includeReview,
       includeFuzzy: options.fuzzy,
@@ -142,6 +146,7 @@ export async function main(args: readonly string[] = process.argv.slice(2)): Pro
     videosScanned,
     segmentsScanned,
     publicFieldsScanned,
+    evidenceNotesScanned,
     findingCount: selectedFindings.length,
     matchedOccurrenceCount: selectedFindings.reduce(
         (count, finding) => count + (finding.occurrenceCount ?? 1),
@@ -175,7 +180,8 @@ export async function main(args: readonly string[] = process.argv.slice(2)): Pro
   console.log(
       `Site-content wording scan: mode=${includeReview ? "review" : "actionable"} ` +
       `files=${report.filesScanned} videos=${report.videosScanned} segments=${report.segmentsScanned} ` +
-      `fields=${report.publicFieldsScanned} errors=${report.errorCount} issues=${report.highConfidenceCount} ` +
+      `public-fields=${report.publicFieldsScanned} evidence-notes=${report.evidenceNotesScanned} ` +
+      `errors=${report.errorCount} issues=${report.highConfidenceCount} ` +
       `review-candidates=${report.reviewCount} matched-occurrences=${report.matchedOccurrenceCount} ` +
       `parse-errors=${report.parseErrorCount}.`,
   );
@@ -334,6 +340,7 @@ function reportMarkdown(report: SiteContentWordingReport): string {
     `| Valid videos scanned | ${report.videosScanned} |`,
     `| Segments scanned | ${report.segmentsScanned} |`,
     `| Public fields scanned | ${report.publicFieldsScanned} |`,
+    `| Evidence notes scanned | ${report.evidenceNotesScanned} |`,
     `| Matched occurrences | ${report.matchedOccurrenceCount} |`,
     `| Unconditional errors | ${report.errorCount} |`,
     `| Files with unconditional errors | ${report.filesWithErrors} |`,
@@ -350,7 +357,7 @@ function reportMarkdown(report: SiteContentWordingReport): string {
     "",
   ];
   appendRuleCountTable(lines, report.ruleCounts);
-  appendValueCountTable(lines, "Findings by Public Field", "Field", report.fieldCounts);
+  appendValueCountTable(lines, "Findings by Text Field", "Field", report.fieldCounts);
   appendValueCountTable(lines, "Findings by Segment Kind", "Segment kind", report.segmentKindCounts);
   if (report.parseErrors.length > 0) {
     lines.push(
@@ -433,7 +440,7 @@ function appendReportFindings(
         : `; near \`${escapeInlineCode(finding.referencePhrase ?? "")}\` at ${finding.similarity.toFixed(3)}`;
     lines.push(
         `- \`${escapeInlineCode(finding.file)}\` segment \`${escapeInlineCode(finding.segmentId)}\` ` +
-        `at \`${finding.segmentStart}\` [${finding.segmentKind}/${finding.field}] \`${finding.ruleId}\`: ` +
+        `at \`${finding.segmentStart}\` [${finding.segmentKind}/${findingFieldPath(finding)}] \`${finding.ruleId}\`: ` +
         `\`${escapeInlineCode(finding.match)}\`${fuzzyDetail}`,
         `  - ${escapeMarkdown(finding.excerpt)}`,
         `  - Guidance: ${escapeMarkdown(finding.guidance)}`,
@@ -456,11 +463,15 @@ function printFindings(
         : ` -> ${JSON.stringify(finding.referencePhrase)} (${finding.similarity.toFixed(3)})`;
     console.log(
         `  ${finding.file}#${finding.segmentId}@${finding.segmentStart} ` +
-        `[${finding.segmentKind}/${finding.field}] ${finding.ruleId}: ` +
+        `[${finding.segmentKind}/${findingFieldPath(finding)}] ${finding.ruleId}: ` +
         `${JSON.stringify(finding.match)}${fuzzyDetail}`,
     );
     console.log(`    Guidance: ${finding.guidance}`);
   }
+}
+
+function findingFieldPath(finding: SiteContentWordingFinding): string {
+  return finding.evidenceIndex === undefined ? finding.field : `evidence[${finding.evidenceIndex}].note`;
 }
 
 function compareFindings(
@@ -469,6 +480,8 @@ function compareFindings(
 ): number {
   return left.file.localeCompare(right.file)
       || left.segmentIndex - right.segmentIndex
+      || left.field.localeCompare(right.field)
+      || (left.evidenceIndex ?? -1) - (right.evidenceIndex ?? -1)
       || left.characterStart - right.characterStart
       || left.ruleId.localeCompare(right.ruleId);
 }
@@ -554,14 +567,16 @@ function escapeMarkdown(value: string): string {
 function printHelp(): void {
   console.log(`Usage: npm run check:site-content-wording -- [options]
 
-Scans public fields in current-schema per-video JSON shards for mechanical,
-report-shaped, or workflow-shaped wording. Evidence notes and topic metadata are
-outside the scan. Prohibited Unicode dashes always produce errors and exit 1.
+Scans public prose and every evidence.note in current-schema per-video JSON shards
+for mechanical, report-shaped, or workflow-shaped wording. Topic metadata and
+evidence timestamps are outside the scan. Prohibited Unicode dashes always produce errors and exit 1.
 The default mode also reports other actionable high-confidence issues.
 
 Review candidates require transcript-grounded judgment. Broad subject terms such
 as prototype, processing, extraction, and seed are retained unless they appear in
 workflow-shaped collocations. A zero review count is not a completion target.
+Host-attribution findings identify each affected field and evidence-note index;
+review the full shard in small segment batches and preserve necessary speaker ownership.
 
 Options:
   --repo-root <path>

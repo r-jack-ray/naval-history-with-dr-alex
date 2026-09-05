@@ -4,25 +4,20 @@
     "15-inch-guns",
     "alternate-history",
     "battlecruisers",
-    "battleships",
     "force-structure",
     "hms-tiger-1913",
-    "interwar-navy",
     "naval-architecture",
     "naval-strategy",
-    "naval-treaties",
-    "naval-weapons",
     "royal-navy",
-    "ship-design",
     "ship-modernisation",
-    "ship-propulsion"
+    "washington-naval-treaty"
   ],
   "segments": [
     {
       "slug": "tiger-barbette-and-hull-density-case",
-      "title": "Tiger's hull makes a 15-inch refit physically plausible",
+      "title": "Tiger's beam leaves room to consider larger barbettes",
       "start": "0:37",
-      "end": "4:41",
+      "end": "1:32",
       "topics": [
         "13-5-inch-guns",
         "15-inch-guns",
@@ -33,22 +28,47 @@
         "royal-navy",
         "ship-modernisation"
       ],
-      "body": "The counterfactual begins with ship geometry and the space required for heavier guns. Tiger's 13.5-inch barbettes were about 24 feet 6 inches across, while the 15-inch Mark I mounting required roughly 30 feet, so the supporting structure needed to grow by about 2 feet 9 inches on every side. The comparison then turns to Tiger's beam and displacement density alongside the Queen Elizabeth class, Renown, and Hood. Tiger scores much closer to ships already carrying 15-inch guns than to the more lightly built Renown. The calculation does not make the conversion easy, but it gives a concrete reason to regard the hull as strong and spacious enough for serious study.",
+      "body": "Tiger's 13.5-inch barbettes were about 24 feet 6 inches across, while the 15-inch Mark I mounting required roughly 30 feet. The diameter would have to grow by 5 feet 6 inches, or 2 feet 9 inches on each side. Tiger's beam was 90 feet 6 inches, only an inch narrower than the Queen Elizabeth class, which already carried 15-inch guns. Their similar beams give a first reason to investigate whether Tiger could accommodate the larger mountings.",
       "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
       "evidence": [
         {
           "start": "0:37",
-          "end": "1:15",
-          "note": "Compares the 13.5-inch and 15-inch barbette diameters and calculates the extra width required."
-        },
-        {
-          "start": "1:18",
-          "end": "4:41",
-          "note": "Uses beam and displacement-density comparisons to argue that Tiger's hull could support the larger armament."
+          "end": "1:32",
+          "note": "Gives both barbette diameters, the required enlargement, and the nearly identical beams of Tiger and the Queen Elizabeth class."
         }
       ],
       "kind": "chapter",
-      "summary": "Barbette diameters, beam, and displacement density turn the proposed 15-inch rearmament into a testable naval-architecture problem."
+      "summary": "The proposed gun change requires wider barbettes, and Tiger's beam is almost identical to that of the 15-inch-armed Queen Elizabeth class."
+    },
+    {
+      "slug": "tiger-displacement-area-comparison",
+      "title": "A rough hull comparison puts Tiger near existing 15-inch ships",
+      "start": "1:32",
+      "end": "4:41",
+      "topics": [
+        "battlecruisers",
+        "hms-hood",
+        "hms-tiger-1913",
+        "naval-architecture",
+        "queen-elizabeth-class-battleships",
+        "standard-displacement"
+      ],
+      "body": "A rough comparison divides standard displacement by half the product of length and beam. Using the figures in the discussion gives the Queen Elizabeth class about 0.9489, Tiger 0.8947, Renown 0.7405, and Hood about 0.9190. Tiger's 28,500-ton standard displacement puts her much closer on this measure to ships already carrying 15-inch guns than to Renown. The figures are a quick comparison of how heavily the ships were built, with substantial reconstruction still required. They support an initial case for carrying the larger armament.",
+      "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
+      "evidence": [
+        {
+          "start": "1:32",
+          "end": "3:59",
+          "note": "Explains the calculation and gives the comparative figures for Queen Elizabeth, Tiger, Renown, and Hood."
+        },
+        {
+          "start": "4:12",
+          "end": "4:41",
+          "note": "Uses the comparison to support rearmament while acknowledging the work required."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Displacement divided by approximate hull area supplies a rough comparison for judging whether Tiger could support heavier guns."
     },
     {
       "slug": "tiger-fast-battleship-convergence",
@@ -82,39 +102,62 @@
     },
     {
       "slug": "tiger-speed-stability-and-design-pressure",
-      "title": "Tiger's speed and stability reflect pressure from foreign battlecruisers",
+      "title": "Tiger's trials and stability suggest scope for an oil-fired refit",
       "start": "6:08",
-      "end": "9:30",
+      "end": "7:59",
       "topics": [
         "battlecruisers",
         "hms-tiger-1913",
-        "kongo-class-battlecruisers",
         "naval-architecture",
         "royal-navy",
         "ship-propulsion"
       ],
-      "body": "Tiger's official speed was 28 knots, but her fully laden trials reached about 29.5 knots despite coal-and-oil firing and a curious arrangement of 39 boilers. Full oil firing could plausibly have pushed her toward 30 knots. A strong metacentric height also made her a notably stable gun platform. Although only slightly longer and wider than Queen Mary, Tiger was roughly 2,000 tons heavier and represented a materially different design. British observation of German construction, Japan's Kongo-class orders, and faster battle-line concepts increased the likelihood of battles between fast heavy ships and help explain the extra investment.",
+      "body": "Tiger's official speed was 28 knots, while her fully laden trials reached about 29.5 knots. Her machinery used 39 coal-and-oil-fired boilers at 235 psi in five rooms, four with eight boilers and one with seven. Full oil firing could plausibly have brought her to about 30 knots. Her metacentric height at deep load was about 6 feet, or 1.9 metres, which is presented as a reason for her stability. These are useful starting points for the refit proposal, with the higher speed remaining an estimate.",
       "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
       "evidence": [
         {
           "start": "6:08",
-          "end": "7:59",
-          "note": "Covers trials speed, boiler pressure, oil firing, the 39-boiler layout, and metacentric stability."
+          "end": "7:18",
+          "note": "Gives official and trial speeds, boiler pressure, mixed firing, the oil-fired estimate, and the boiler-room arrangement."
         },
         {
-          "start": "8:08",
-          "end": "9:30",
-          "note": "Compares Tiger with Queen Mary and links the design to German ships, Japan's Kongo class, and rising battle-line speeds."
+          "start": "7:48",
+          "end": "7:59",
+          "note": "Gives metacentric height at deep load and describes Tiger as stable."
         }
       ],
       "kind": "chapter",
-      "summary": "Trials performance and construction distinguish Tiger from Queen Mary and show how foreign battlecruisers influenced the design."
+      "summary": "Trials speed, the 39-boiler plant, and deep-load stability provide the starting figures for Tiger's proposed machinery upgrade."
+    },
+    {
+      "slug": "tiger-queen-mary-and-foreign-design-pressure",
+      "title": "Tiger adds substantial weight to a hull only slightly larger than Queen Mary's",
+      "start": "8:08",
+      "end": "9:30",
+      "topics": [
+        "battlecruisers",
+        "hms-queen-mary",
+        "hms-tiger-1913",
+        "kongo-class-battlecruisers",
+        "ship-design"
+      ],
+      "body": "Tiger was only about 4 feet longer and roughly 1.5 feet wider than Queen Mary, yet she was about 2,000 tons heavier. The extra weight marks a substantial design difference despite the similar dimensions. British planners were watching German construction and Japan's Kongo-class orders, alongside wider discussion of battlecruiser development. Encounters between opposing battlecruisers looked increasingly likely, while faster battle-line designs were also under discussion. Those pressures help explain Tiger's move toward the qualities of a fast battleship.",
+      "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
+      "evidence": [
+        {
+          "start": "8:08",
+          "end": "9:30",
+          "note": "Queen Mary, German construction, and Japan's Kongo class explain why Tiger's designers invested in a heavier ship."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Queen Mary, German construction, and Japan's Kongo class explain why Tiger's designers invested in a heavier ship."
     },
     {
       "slug": "tiger-jutland-damage-resilience",
       "title": "Jutland supplies combat evidence for Tiger's resilience",
       "start": "9:35",
-      "end": "10:57",
+      "end": "11:03",
       "topics": [
         "battle-of-jutland",
         "battlecruisers",
@@ -123,18 +166,18 @@
         "warship-survivability",
         "world-war-i"
       ],
-      "body": "The Battle of Jutland turns Tiger's strength from a design claim into operational evidence. She was hit by fifteen 11-inch shells, at least two 12-inch shells, and several 5.9-inch rounds. Damage affected her belt area, flare stores, sick bay, cable spaces, and a funnel, yet the ship survived and returned to service quickly. That record does not prove that every reconstruction choice would work, but it does show a resilient structure capable of absorbing severe punishment. The example helps explain why the Royal Navy still valued Tiger when treaty negotiations began.",
+      "body": "At Jutland, Tiger was hit by fifteen 11-inch shells, at least two 12-inch shells, and several 5.9-inch rounds. Damage affected her belt area, flare stores, and sick bay, with a cable locker also recalled as a possible damaged space. A funnel is tentatively described as having been heavily peppered. Despite the punishment, Tiger survived and returned to service quickly. Her resilience helps explain why the Royal Navy wanted to retain her at Washington, and supplies combat experience relevant to the proposed reconstruction.",
       "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
       "evidence": [
         {
           "start": "9:35",
           "end": "10:24",
-          "note": "Enumerates Tiger's shell hits and damaged spaces at Jutland."
+          "note": "Enumerates Tiger's shell hits and damaged spaces, with the cable locker recalled tentatively."
         },
         {
           "start": "10:26",
-          "end": "10:57",
-          "note": "Emphasizes the ship's survival, resilience, and rapid return to service."
+          "end": "11:03",
+          "note": "Describes rapid return to service, tentatively recalls funnel damage, and connects resilience to British interest in retaining Tiger at Washington."
         }
       ],
       "kind": "notable_point",
@@ -153,7 +196,7 @@
         "ship-modernisation",
         "washington-naval-treaty"
       ],
-      "body": "Technical feasibility and treaty permission were separate questions. The reconstruction rules permitted bulges, blisters, anti-aircraft protection, and up to 3,000 tons of defensive additions. They barred changes to side armor and to the caliber, number, or general mounting type of a retained capital ship's main armament, except for specified French, Italian, and British cases. Tiger would remain below the 35,000-ton standard-displacement ceiling and the 16-inch gun limit even after a substantial rebuild. The specific ban on changing the main battery explains why the conversion did not happen historically.",
+      "body": "Technical feasibility and treaty permission were separate questions. The reconstruction rules permitted bulges, blisters, anti-aircraft deck protection, and up to 3,000 tons of defensive additions. They generally barred changes to side armor and to the caliber, number, or general mounting type of a retained capital ship's main armament. France and Italy could increase armor protection and gun caliber within the stated allowance, up to the 16-inch limit. Britain's named Renown exception covered armor alterations already begun and temporarily suspended. Tiger could remain below the 35,000-ton standard-displacement ceiling and 16-inch gun limit after a substantial rebuild, yet the specific main-armament prohibition still blocked her conversion. A comparable exception would therefore have needed to be negotiated for Tiger.",
       "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
       "evidence": [
         {
@@ -183,22 +226,51 @@
         "naval-weapons",
         "ship-modernisation"
       ],
-      "body": "Britain did not need to design every part of a Tiger rearmament from scratch. The 15-inch guns and turrets removed during the Courageous-class carrier conversions were stored, leaving the main hardware for an eight-gun ship available. Britain also held armor plate in reserve and was willing to buy specialist material abroad. If political leaders had believed that emergency rearmament justified any expense, they could have used these assets to pursue a Vanguard-like capital ship much earlier. Their choice supports a reading of British rearmament as a measured political and economic response, despite greater urgency within the armed forces.",
+      "body": "The 15-inch guns and four turrets removed during the Courageous-class carrier conversions were stored, leaving the main hardware for an eight-gun ship available. Britain therefore had equipment that could support an earlier Vanguard-like capital ship. Armor-production limits remained, but Britain also held armor plate in reserve and could buy material abroad, with Sweden and the Czechs named as options. Those resources support the argument that British rearmament followed a chosen political and economic pace. Greater urgency within the armed forces coexisted with political leaders' desire to limit economic strain. In this interpretation, the unused hardware weakens the description of rearmament as a panicked effort to mobilize every available resource.",
       "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
       "evidence": [
         {
           "start": "14:13",
-          "end": "16:41",
-          "note": "Identifies the stored Courageous-class turrets and explains why hull strength matters when carrying armor."
+          "end": "14:52",
+          "note": "Raises the fate of Courageous-class 15-inch guns and describes stored armament for a complete ship."
         },
         {
-          "start": "16:46",
+          "start": "16:21",
           "end": "18:25",
-          "note": "Uses stored guns and armor-supply options to characterize British rearmament as politically measured."
+          "note": "Identifies four stored turrets, acknowledges armor-production limits and foreign supply options, and argues that rearmament was politically measured."
         }
       ],
       "kind": "notable_point",
       "summary": "Stored 15-inch mountings from the Courageous-class conversions provide the hardware for an eight-gun ship and weaken claims of panicked rearmament."
+    },
+    {
+      "slug": "tiger-internal-supports-and-armour-weight",
+      "title": "Internal supports determine how much armor a hull can carry",
+      "start": "14:59",
+      "end": "16:17",
+      "topics": [
+        "armour-protection",
+        "battlecruisers",
+        "hms-tiger-1913",
+        "naval-architecture",
+        "ship-design"
+      ],
+      "body": "A fully armored battlecruiser could have extensive external armor while retaining a battlecruiser's internal arrangement. Tiger's denser construction provides the closer comparison for the design discussed here. More subdivision, thicker internal metalwork, and additional supports allow a hull to carry greater armor weight. The analogy is hanging a heavy mirror: the structure behind the wall must support the load. Assessing the armor therefore also means examining the hull beneath it.",
+      "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
+      "evidence": [
+        {
+          "start": "14:59",
+          "end": "15:15",
+          "note": "Distinguishes internal battlecruiser construction from full external armor coverage."
+        },
+        {
+          "start": "15:17",
+          "end": "16:17",
+          "note": "Explains how subdivision, thicker metalwork, and supports carry armor weight, using a heavy mirror analogy."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Subdivision and strong internal construction provide support for heavier external armor."
     },
     {
       "slug": "tiger-singapore-rapid-response-force",
@@ -214,7 +286,7 @@
         "royal-navy",
         "singapore-strategy"
       ],
-      "body": "Tiger's 1918 refit and continued retention make sense when viewed through the Royal Navy's worldwide response problem. British political and economic thinking treated the empire as a national necessity, leaving much of its Far Eastern defense to the navy. At a crisis cruising speed near 24 knots, a fast squadron could reach Singapore from Portsmouth in about fourteen days or from Malta in roughly ten. Those times compare favorably with a possible Japanese movement from Sasebo once warning from mobilization is included, while an 18-to-21-knot battle fleet might be too late. The immediate aim was deterrence: place visible power in the region while the crisis was still developing and before the larger fleet arrived.",
+      "body": "Tiger's 1918 refit and continued retention fit the Royal Navy's worldwide response problem. British political and economic thinking treated the empire as a national necessity, leaving much of its Far Eastern defense to the navy. At a crisis cruising speed near 24 knots, a fast squadron could reach Singapore from Portsmouth in about fourteen days or from Malta in roughly ten. The slower battle fleet, advancing at about 18 to 21 knots, is estimated to need twenty-one days or more from Portsmouth. A hypothetical Japanese assault from Sasebo involved about seven days of steaming, with visible mobilization potentially giving another three or four days' warning. Fast ships already at Malta could therefore arrive in time if ordered to sail immediately. Their immediate purpose was deterrence through a visible naval presence while the larger fleet followed.",
       "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
       "evidence": [
         {
@@ -263,40 +335,105 @@
     },
     {
       "slug": "third-sea-lords-and-task-group-thinking",
-      "title": "Third Sea Lords connect Tiger to worldwide task-group operations",
+      "title": "Frederick Field links design policy to worldwide force projection",
       "start": "24:50",
-      "end": "32:01",
+      "end": "27:12",
       "topics": [
-        "battlecruisers",
-        "ernle-chatfield",
+        "alternate-history",
+        "f3-battlecruiser",
         "force-projection",
         "frederick-field",
+        "n3-class-battleships",
+        "royal-navy-leadership"
+      ],
+      "body": "A plausible Tiger counterfactual needs a reason for naval policy to change. Frederick Field's three years as Third Sea Lord gave him time to develop a longer view, whereas predecessors' brief appointments left less opportunity to settle policy. His preference for F3 over N3 is tied to the possibility of a future war far from Britain. Such a war would require heavy ships able to project power worldwide at speed. That strategic preference supplies an institutional reason to consider retaining and improving Tiger.",
+      "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
+      "evidence": [
+        {
+          "start": "24:50",
+          "end": "26:11",
+          "note": "Calls for a logical mechanism behind counterfactual change and contrasts brief appointments with Field's three-year tenure."
+        },
+        {
+          "start": "26:13",
+          "end": "27:12",
+          "note": "Connects Field's F3 preference over N3 with distant-war requirements and worldwide force projection."
+        }
+      ],
+      "kind": "chapter",
+      "summary": "Field's longer tenure and preference for F3 provide a policy setting in which a faster, more heavily armed Tiger could make sense."
+    },
+    {
+      "slug": "battlecruiser-speed-armour-and-forward-basing",
+      "title": "Why battlecruisers traded protection for strategic speed",
+      "start": "27:18",
+      "end": "28:56",
+      "topics": [
+        "armour-protection",
+        "battlecruisers",
+        "battleships",
+        "force-projection",
+        "naval-architecture",
+        "naval-basing",
+        "ship-propulsion"
+      ],
+      "body": "A force arriving after a crisis has been decided cannot compensate by being stronger on paper. Forward basing enough battleships could reduce that problem, but it would require substantially more ships and money. Battlecruisers offered another way to move heavy naval power quickly between distant commitments. A fully armored fast battleship became viable only when machinery had enough power density to combine speed with armor and adequate subdivision. Until then, protection required compromises, particularly in how much of the hull the armor covered. Thick armor over a restricted area was different from the fuller coverage associated with a fully armored battlecruiser.",
+      "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
+      "evidence": [
+        {
+          "start": "27:18",
+          "end": "28:56",
+          "note": "Strategic speed offered an alternative to expensive permanent forward deployment, while machinery limits constrained protection."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Strategic speed offered an alternative to expensive permanent forward deployment, while machinery limits constrained protection."
+    },
+    {
+      "slug": "naval-memoirs-and-credit-for-subordinates",
+      "title": "Naval memoirs can obscure the work of subordinates",
+      "start": "29:26",
+      "end": "30:38",
+      "topics": [
+        "ernle-chatfield",
+        "naval-history-method",
+        "royal-navy-leadership"
+      ],
+      "body": "One criticism of Chatfield's autobiographies is that they give too little credit to Admiral Henderson. The explanation offered here goes beyond personal self-interest: a leadership culture in which subordinates' credit flows upward can encourage commanders to regard collective achievements as their own. That interpretation leaves room for institutional habits as well as individual motives. It also raises a problem when using memoirs to assess who shaped naval policy, since the senior author's account can minimise the officers working beneath him.",
+      "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
+      "evidence": [
+        {
+          "start": "29:26",
+          "end": "30:38",
+          "note": "Introduces Chatfield, criticizes his autobiographical treatment of Henderson, and offers upward-flowing institutional credit as a partly charitable explanation."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "The criticism of Chatfield's treatment of Henderson raises a question about how command culture shapes autobiographical credit."
+    },
+    {
+      "slug": "backhouse-dispersed-task-groups-and-mutual-support",
+      "title": "Dispersed task groups need speed to support one another",
+      "start": "31:14",
+      "end": "32:01",
+      "topics": [
+        "force-projection",
         "naval-strategy",
         "roger-backhouse",
         "royal-navy-leadership",
         "task-groups"
       ],
-      "body": "A workable counterfactual needs a plausible reason for policy to change, and this one begins with the Third Sea Lords who could turn strategic need into ship-design policy. Frederick Field held the post long enough to develop a worldwide vision and favored the fast F3 concept over the slower N3 because a future war might be fought far from Britain. An ideal force arriving late is operationally useless, while permanent forward deployment would require far more ships and money. Battlecruisers were an interim answer until machinery achieved the power density needed for a fully armored fast battleship. Ernle Chatfield and Roger Backhouse also appear as officers thinking about dispersed task groups that would need strategic speed to maneuver and support one another across the globe.",
+      "body": "Roger Backhouse is presented as an officer deeply concerned with the navy's future deployments. The discussion links him and Field with thinking about task groups dispersed around the world. Small forces operating far apart would need to maneuver quickly if they were to reinforce one another. Strategic speed therefore affected the navy's ability to combine ships for an operation as well as its ability to reach a distant crisis.",
       "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
       "evidence": [
         {
-          "start": "24:50",
-          "end": "25:24",
-          "note": "Explains that the counterfactual needs a logical mechanism and identifies the Third Sea Lords as the starting point."
-        },
-        {
-          "start": "25:24",
-          "end": "28:56",
-          "note": "Introduces the Third Sea Lords, Field's preference for F3, global force projection, and the machinery tradeoff behind battlecruisers."
-        },
-        {
-          "start": "29:12",
+          "start": "31:14",
           "end": "32:01",
-          "note": "Discusses Chatfield, Backhouse, dispersed task groups, mutual support, and strategic speed."
+          "note": "Backhouse and Field's interest in dispersed forces makes rapid reinforcement a reason to invest in fast capital ships."
         }
       ],
-      "kind": "chapter",
-      "summary": "Frederick Field, Ernle Chatfield, and Roger Backhouse supply the institutional case for fast capital ships able to reinforce dispersed forces."
+      "kind": "notable_point",
+      "summary": "Backhouse and Field's interest in dispersed forces makes rapid reinforcement a reason to invest in fast capital ships."
     },
     {
       "slug": "fifteen-inch-standardization-treaty-bargain",
@@ -336,18 +473,18 @@
         "naval-treaties",
         "standard-displacement"
       ],
-      "body": "The treaty allowance adds 3,000 tons to Tiger's declared 28,500-ton standard displacement, but that figure does not describe a fully loaded ship. The transcript assigns about 7,000 tons to coal and fuel oil alone, then adds feed water to estimate roughly 39,000 to 40,000 tons at full load. It also cautions that treaty declarations gave Britain an incentive to keep the stated standard figure low, so the precise baseline should be treated carefully. Even on the declared figure, a rebuilt Tiger would exceed the standard displacement of the Queen Elizabeth and R classes and remain below Hood. The arithmetic shows why standard and full-load displacement answer different questions.",
+      "body": "Tiger's 28,500-ton figure is treated here as standard displacement because that is how Britain declared it for the Washington treaty, despite its being labeled normal displacement elsewhere. The argument notes Britain's incentive to keep the declared figure low as a reason to question those alternative descriptions. Adding the 3,000-ton reconstruction allowance would bring the proposed standard displacement to 31,500 tons. Fuel and feed water fall outside standard displacement. A separate calculation starts with the original 28,500-ton figure, adds about 7,000 tons of coal and fuel oil to reach 35,500, then adds feed water to estimate roughly 39,000 to 40,000 tons at full load. For comparison, Renown and Repulse are given as 26,500 tons standard, the Queen Elizabeth class as 27,500, and the R class as 25,750. On those figures, the rebuilt Tiger would remain smaller than Hood but exceed the standard displacement of the other retained British capital ships.",
       "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
       "evidence": [
         {
           "start": "34:23",
           "end": "36:35",
-          "note": "Adds the 3,000-ton allowance to Tiger's declared standard displacement, then estimates full load from fuel, coal, and feed water while cautioning about treaty declarations."
+          "note": "Distinguishes standard from full-load displacement, estimates full load, and uses the treaty declaration to challenge alternative descriptions of the 28,500-ton figure."
         },
         {
-          "start": "37:01",
+          "start": "36:40",
           "end": "37:53",
-          "note": "Compares a rebuilt Tiger's declared standard displacement with Hood, the Queen Elizabeth class, and the R class."
+          "note": "Gives Renown and Repulse's displacement, calculates 31,500 tons after the allowance, and compares Tiger with Hood, the Queen Elizabeth class, and the R class."
         }
       ],
       "kind": "notable_point",
@@ -359,6 +496,7 @@
       "start": "38:00",
       "end": "42:05",
       "topics": [
+        "4-inch-guns",
         "admiralty-three-drum-boilers",
         "hms-tiger-1913",
         "naval-architecture",
@@ -366,7 +504,7 @@
         "ship-modernisation",
         "ship-propulsion"
       ],
-      "body": "The proposed rebuild changes far more than the gun mountings. Converting Tiger to all-oil firing would release coal-bunker space, while new boilers and possibly geared turbines would permit a major rearrangement of the machinery rooms and funnels. Tiger's 39 older water-tube boilers produced 85,000 shaft horsepower, while the eight higher-pressure Admiralty three-drum boilers in Nelson and Rodney produced 45,000 horsepower. On that rough power-density basis, about sixteen modern boilers could give Tiger roughly 90,000 horsepower while occupying far less space. The result might sustain about 29.5 knots or approach 30, improve the secondary-gun layout, and make the modernization a whole-ship engineering project rather than a turret exchange.",
+      "body": "The proposed rebuild includes all-oil firing, rearranged coal-bunker spaces, and possibly new geared turbines. Reducing the funnels could free deck space for 4-inch guns: the UAD illustration uses one funnel, although a reconstruction might retain two. Tiger and Hood's 235 psi boilers provide the starting comparison with the 250 psi Admiralty three-drum boilers associated with Nelson and Rodney. Tiger's 39 boilers supported 85,000 shaft horsepower, while eight boilers in Nelson and Rodney supported 45,000. On that rough comparison, sixteen modern boilers could provide about 90,000 horsepower while occupying less space, despite being individually larger. About 30 knots is suggested as a possible result. The UAD simulation instead used 29.5 knots and performed well in exercises within the game. Its results illustrate the proposal without establishing the performance of a real reconstruction.",
       "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
       "evidence": [
         {
@@ -415,34 +553,66 @@
     },
     {
       "slug": "tiger-refit-buys-time-and-force-generation",
-      "title": "Rebuilding Tiger buys time and completes a four-ship fast force",
+      "title": "A 1918 reconstruction could keep Tiger useful while new designs took shape",
       "start": "44:02",
-      "end": "50:46",
+      "end": "47:19",
       "topics": [
+        "alternate-history",
         "battlecruisers",
         "courageous-class-warship-lineage",
-        "force-generation",
         "hms-tiger-1913",
         "hms-warspite",
         "royal-navy",
         "ship-modernisation"
       ],
-      "body": "In the first scenario, Tiger's reconstruction begins in 1918 to preserve a useful fast capital ship while the Admiral class and successor designs remain unsettled. The Royal Navy wanted Courageous and Glorious out of the battle line quickly, but Tiger was its newest purpose-built battlecruiser and had spent most of the war operating near home maintenance facilities. Hard wartime service did not make a major rebuild unreasonable: Warspite was launched in November 1913, Tiger followed in December, and Warspite remained worth keeping in service. Retaining Tiger alongside Hood, Renown, and Repulse would create a four-ship fast force, enough in a standard force-generation model to keep one deployed, one training or transiting, one in light work, and one in major refit. Oil firing could also improve range, while eight 15-inch guns would give Tiger status and combat weight beyond the six-gun Renown and Repulse.",
+      "body": "In the first scenario, Tiger's reconstruction could begin with her 1918 refit to buy time while the Admiral class and successor designs remained unsettled. The Royal Navy wanted Courageous and Glorious out of the battle line quickly, increasing the value of a useful fast ship. Tiger had seen hard wartime service, but most of it was in the North Sea with access to home maintenance facilities. Warspite's continued usefulness supplies a comparison: she was launched in November 1913, just before Tiger in December. Commissioning reverses that order, since Tiger entered service in October 1914 and Warspite in March 1915. Age and war service therefore provide little basis by themselves for dismissing Tiger as a reconstruction candidate.",
       "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
       "evidence": [
         {
           "start": "44:02",
-          "end": "47:19",
-          "note": "Frames the refit as a bridge to future ships and compares Tiger's age and service condition with Warspite."
+          "end": "46:27",
+          "note": "Relates imperial responsibilities and delayed successor designs to a possible 1918 reconstruction, then discusses Tiger's service and maintenance."
         },
         {
-          "start": "47:26",
-          "end": "50:46",
-          "note": "Explains four-hull force generation, the resulting gun balance, improved endurance, prestige use, and possible bow changes."
+          "start": "46:35",
+          "end": "47:19",
+          "note": "Distinguishes launch dates from commissioning dates in the comparison with Warspite."
         }
       ],
       "kind": "chapter",
-      "summary": "A 1918 reconstruction could bridge the gap to new designs and give the Royal Navy four fast capital ships for a sustainable deploy-train-refit cycle."
+      "summary": "Delayed replacement designs and Tiger's age and service condition support treating the 1918 refit as a possible start for rearmament."
+    },
+    {
+      "slug": "tiger-four-hull-force-generation-and-empire-cruise",
+      "title": "Four fast ships support a deploy-train-refit cycle",
+      "start": "47:26",
+      "end": "50:46",
+      "topics": [
+        "alternate-history",
+        "battlecruisers",
+        "force-generation",
+        "hms-hood",
+        "hms-tiger-1913",
+        "imperial-defence",
+        "royal-navy",
+        "ship-modernisation"
+      ],
+      "body": "Retaining Tiger alongside Hood, Renown, and Repulse would create a four-ship fast force. A usual four-hull model allows one ship at sea, one training or in transit, one in light refit, and one in major refit. Two eight-gun and two six-gun 15-inch ships would give the force more fighting weight, although their differing designs would still require support. New boilers and all-oil firing would probably improve Tiger's endurance for distant operations. Hood and Tiger could then undertake the round-the-world Empire cruise together as the two ships with the greatest visible gun power. Tiger might also receive a more Atlantic-shaped bow during reconstruction, although that remains a suggested modification.",
+      "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
+      "evidence": [
+        {
+          "start": "47:26",
+          "end": "48:57",
+          "note": "Explains four-hull force generation, two eight-gun and two six-gun ships, and the differing designs within the force."
+        },
+        {
+          "start": "49:03",
+          "end": "50:46",
+          "note": "Suggests improved range, a Hood-Tiger Empire cruise, and a possible Atlantic-style bow."
+        }
+      ],
+      "kind": "chapter",
+      "summary": "Tiger provides the fourth hull for sustainable deployments and could join Hood on the Empire cruise after improvements to endurance."
     },
     {
       "slug": "treaty-acceptance-and-hood-refit-effects",
@@ -458,7 +628,7 @@
         "treaty-negotiations",
         "washington-naval-treaty"
       ],
-      "body": "The treaty system often accepted work and ships that already existed, as the special treatment of Renown and Hood illustrates. Refusing Tiger could prompt Britain to leave the agreement or demand authority for a third new 16-inch capital ship, worsening the tonnage arithmetic for other powers. Allowing one more 15-inch reconstruction could therefore become the least disruptive compromise. Britain would then enter the Second World War with four fast 15-inch capital ships. Tiger could cover assignments that historically fell to Hood, making it easier to send Hood into her planned modernization and changing which assets were available when war began.",
+      "body": "The treaty system accepted some work and ships that already existed, as the treatment of Renown and Hood illustrates. Refusing the proposed Tiger conversion could prompt Britain to leave the agreement or demand a third new 16-inch capital ship, worsening the tonnage arithmetic for other powers. Allowing the reconstruction could therefore become an acceptable compromise. In this scenario Britain would enter the Second World War with four fast 15-inch capital ships, making it easier to release Hood for modernization while Tiger covered some of her assignments. The consequences would depend on Hood's eventual refit and the different operating characteristics of the two ships. Tiger would probably need more than the proposed sixteen boilers to reach Hood's roughly 32 knots, using additional machinery space. Whether that speed justified a larger installation would remain a separate design decision.",
       "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
       "evidence": [
         {
@@ -479,7 +649,7 @@
       "slug": "f3-tonnage-and-fifteen-inch-fleet-expansion",
       "title": "Treaty tonnage could produce three or four F3-style capital ships",
       "start": "54:24",
-      "end": "56:15",
+      "end": "56:35",
       "topics": [
         "15-inch-guns",
         "capital-ships",
@@ -490,12 +660,12 @@
         "royal-navy",
         "washington-naval-treaty"
       ],
-      "body": "The more ambitious scenario treats 15-inch standardization as a bargaining asset instead of an exemption confined to Tiger. After removing the four 13.5-inch battleships, Britain retained a little over 136,000 tons of capital-ship allowance. That was enough on paper for four ships near 34,000 tons, although three would be a more likely negotiated maximum. Even three F3-style ships, added to four battlecruisers, five Queen Elizabeths, and five R-class battleships, would create an unusually large and fast capital fleet.",
+      "body": "The more ambitious scenario treats 15-inch standardization as a bargaining asset. After removing the four 13.5-inch battleships and upgrading Tiger, Britain would retain a little over 136,000 tons of capital-ship allowance in this calculation. That could accommodate four ships of about 34,000 tons each, provided an F3-derived design could be brought within that figure. Nelson and Rodney's stated 33,800-ton standard displacement supplies a comparison for the arithmetic. Three new ships are judged a more likely negotiated maximum. Four would give Britain eighteen capital ships: four new ships, four older battlecruisers, five Queen Elizabeths, and five R-class battleships. Eight could make at least 28 knots in the expanded scenario, while the three-new-ship alternative would still provide seven fast capital ships.",
       "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
       "evidence": [
         {
           "start": "54:24",
-          "end": "56:15",
+          "end": "56:35",
           "note": "Calculates the remaining British treaty allowance and the possible three- or four-ship F3 program."
         }
       ],
@@ -542,7 +712,7 @@
         "royal-navy",
         "task-groups"
       ],
-      "body": "A fleet with four F3s and four older battlecruisers would possess something close to two distinct battle lines. The conventional battle fleet could hold concentrated positions while fast ships formed task groups able to move between theaters. Availability matters as much as the headline total: the larger pool makes it realistic to have several fast capital ships at sea and several more ready in port despite training and refit demands. Even the less expansive seven-ship version would generate substantial deployable strength. The difference between 15-inch and 16-inch guns matters less in this argument than the number of heavy, fast hulls an opponent must account for.",
+      "body": "A fleet with four F3s and four older battlecruisers would possess something close to two distinct battle lines. The conventional battle fleet could hold concentrated positions while fast ships formed task groups able to move between theaters. Availability matters as much as the headline total: the larger pool makes it realistic to have two or three fast capital ships at sea and another two or three available in port despite training and refit demands. Even the less expansive seven-ship version would generate substantial deployable strength. The difference between 15-inch and 16-inch guns matters less in this argument than the number of heavy, fast hulls an opponent must account for.",
       "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
       "evidence": [
         {
@@ -617,22 +787,50 @@
       "topics": [
         "battle-of-cape-matapan",
         "battle-of-the-denmark-strait",
-        "king-george-v-class-1939-battleships",
         "mediterranean-theatre",
         "nelson-class-battleships",
         "world-war-ii"
       ],
-      "body": "Faster Nelson-derived ships would spend less time guarding fixed choke points such as Gibraltar. With more high-speed capital ships available, British commanders could accept greater operational risk and bring heavier forces to battles such as Matapan. A 15-inch standard might also reshape the later King George V class, potentially avoiding some difficulties associated with the historical quadruple turrets. Greater availability could produce a different force at the Denmark Strait and other operations where strategic speed determined which ships could participate. The operational benefit comes from adding deployable speed across the fleet rather than relying on a few exceptional ships.",
+      "body": "In the expanded scenario, faster Nelson-derived ships could spend more time on mobile operations beyond fixed choke points such as Gibraltar. More high-speed capital ships would let British commanders accept greater operational risk and bring heavier forces to battles such as Matapan. Additional availability could also produce a different British force at the Denmark Strait. These are possible consequences of a larger pool of ships capable of 28 knots or more. The operational benefit lies in deployable speed across the fleet, which determines how much strength can reach a distant operation in time.",
       "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
       "evidence": [
         {
           "start": "1:03:03",
+          "end": "1:04:08",
+          "note": "Contrasts historical choke-point duties and hunting limitations with possible faster deployments and greater strength at Matapan."
+        },
+        {
+          "start": "1:04:44",
           "end": "1:05:19",
-          "note": "Discusses Gibraltar, Matapan, possible King George V armament changes, Denmark Strait, and strategic speed."
+          "note": "Suggests greater availability at Denmark Strait and emphasizes strategic, deployable speed."
         }
       ],
       "kind": "chapter",
       "summary": "A larger pool of 28-knot capital ships changes where Britain can accept risk and which heavy units can reach time-sensitive operations."
+    },
+    {
+      "slug": "fifteen-inch-standardization-and-king-george-v-triple-turrets",
+      "title": "A tentative King George V alternative uses twelve 15-inch guns",
+      "start": "1:04:08",
+      "end": "1:04:38",
+      "topics": [
+        "15-inch-guns",
+        "alternate-history",
+        "king-george-v-class-1939-battleships",
+        "naval-weapons",
+        "ship-design"
+      ],
+      "body": "Fleet-wide 15-inch standardization could influence the later King George V class as well as Tiger. One tentative alternative is a 28-knot ship with twelve 15-inch guns in four triple turrets. That arrangement might avoid difficulties associated with the historical quadruple mountings. The suggestion extends the counterfactual to later procurement without establishing a completed design.",
+      "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
+      "evidence": [
+        {
+          "start": "1:04:08",
+          "end": "1:04:38",
+          "note": "A proposed four-triple-turret arrangement shows how choosing 15-inch standardization could carry into a later battleship generation."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "A proposed four-triple-turret arrangement shows how choosing 15-inch standardization could carry into a later battleship generation."
     },
     {
       "slug": "fast-battle-line-reshapes-carrier-speed",
@@ -661,10 +859,11 @@
     },
     {
       "slug": "eastern-battle-squadron-basing-options",
-      "title": "An eighteenth capital ship could support an Eastern battle squadron",
+      "title": "An eighteen-ship fleet could support another battle squadron",
       "start": "1:06:08",
       "end": "1:09:48",
       "topics": [
+        "bombay",
         "ceylon",
         "force-structure",
         "imperial-defence",
@@ -674,7 +873,7 @@
         "singapore-strategy",
         "trincomalee"
       ],
-      "body": "Britain could reach eighteen capital ships because its retained ships averaged about 27,782 tons once the 13.5-inch ships and Nelson and Rodney were set aside, well below the 35,000-ton individual ceiling. That total could support an additional battle squadron, which then raises the question of where to base it. Direct basing at Singapore becomes less attractive once Fascist Italy and Mediterranean tension demand flexibility closer to the Suez route. Trincomalee in Ceylon or a base on India's west coast would signal a visible commitment to Australia, New Zealand, and Britain's Eastern possessions. Ships stationed there could also move through the Arabian Sea, Red Sea, and Suez Canal to reinforce the Mediterranean from an unexpected direction. The basing choice connects imperial defense with European war planning.",
+      "body": "Under the expanded treaty bargain, Britain could reach eighteen capital ships because its retained ships averaged about 27,782 tons once the 13.5-inch ships and Nelson and Rodney were set aside, well below the 35,000-ton individual ceiling. That total could support an additional battle squadron, which then raises the question of where to base it. Direct basing at Singapore becomes less attractive once Fascist Italy and Mediterranean tension demand flexibility closer to the Suez route. Trincomalee in Ceylon or Bombay (Mumbai) on India's west coast would signal a visible commitment to Australia, New Zealand, and Britain's Eastern possessions. Ships stationed there could also move through the Arabian Sea, Red Sea, and Suez Canal to reinforce the Mediterranean from an unexpected direction. The basing choice connects imperial defense with European war planning.",
       "sourcePath": "src/transcripts/txt/2026-06-20_T18-30-06_what-if-the-rn-decided-to-upgrade-hms-tiger-to-15in-guns_uqSLUFlWki8.txt",
       "evidence": [
         {

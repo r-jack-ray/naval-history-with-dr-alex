@@ -38,6 +38,12 @@ test("site-content wording rules separate actionable and review findings", () =>
         ruleId: "answer-reporting-frame",
         match: "The answer explains",
       },
+      {
+        field: "evidence.note",
+        confidence: "review",
+        ruleId: "transcript-reporting-frame",
+        match: "The transcript says",
+      },
     ],
   );
 });
@@ -199,7 +205,7 @@ test("a single host attribution creates one shard-level review finding", () => {
   assert.equal(finding?.repeatedSegmentCount, 0);
 });
 
-test("repeated host attribution is summarized in one shard-level review finding", () => {
+test("host attribution locates each affected field while retaining shard totals", () => {
   const video = sampleVideo(
     "Dr. Clarke argues that the surviving figure is still useful.",
     "In Dr. Clarke's view, the surviving figure needs qualification.",
@@ -214,6 +220,7 @@ test("repeated host attribution is summarized in one shard-level review finding"
         occurrenceCount,
         affectedSegmentCount,
         repeatedSegmentCount,
+        shardOccurrenceCount,
       }) => ({
         confidence,
         ruleId,
@@ -221,15 +228,26 @@ test("repeated host attribution is summarized in one shard-level review finding"
         occurrenceCount,
         affectedSegmentCount,
         repeatedSegmentCount,
+        shardOccurrenceCount,
       })),
     [
       {
         confidence: "review",
         ruleId: "host-attribution",
         match: "Dr. Clarke's",
-        occurrenceCount: 2,
+        occurrenceCount: 1,
         affectedSegmentCount: 1,
         repeatedSegmentCount: 1,
+        shardOccurrenceCount: 2,
+      },
+      {
+        confidence: "review",
+        ruleId: "host-attribution",
+        match: "Dr. Clarke",
+        occurrenceCount: 1,
+        affectedSegmentCount: 1,
+        repeatedSegmentCount: 1,
+        shardOccurrenceCount: 2,
       },
     ],
   );
@@ -262,7 +280,7 @@ test("host attribution includes contextual surname variants", () => {
     { includeReview: true },
   ).find(({ ruleId }) => ruleId === "host-attribution");
 
-  assert.equal(finding?.occurrenceCount, 4);
+  assert.equal(finding?.shardOccurrenceCount, 4);
   assert.equal(finding?.affectedSegmentCount, 4);
   assert.equal(finding?.repeatedSegmentCount, 0);
   assert.match(finding?.guidance ?? "", /solo-speaker episode/u);
@@ -370,10 +388,9 @@ test("fuzzy review is opt-in and catches typo variants", () => {
     video,
     { includeFuzzy: true },
   );
-  assert.equal(findings.length, 1);
-  assert.equal(findings[0]?.ruleId, "possible-mechanical-phrase-variant");
-  assert.equal(findings[0]?.referencePhrase, "earlier in the transcript");
-  assert.ok((findings[0]?.similarity ?? 0) >= 0.9);
+  const fuzzyFinding = findings.find(({ ruleId }) => ruleId === "possible-mechanical-phrase-variant");
+  assert.equal(fuzzyFinding?.referencePhrase, "earlier in the transcript");
+  assert.ok((fuzzyFinding?.similarity ?? 0) >= 0.9);
 });
 
 test("site-content wording CLI scopes strict scans and writes reports", async () => {
@@ -553,6 +570,120 @@ test("site-content wording CLI rejects unknown rule filters", () => {
   );
 });
 
+test("evidence-only attributions include every note location and surname variant", () => {
+  const video = sampleVideo("Fuel endurance constrained the operation.");
+  video.segments[0]!.evidence = [
+    { start: "1:00", note: "Dr Clarke contrasts fuel load and endurance. Alex Clarke explains the tradeoff." },
+    { start: "1:20", note: "Clark notes a limit; Clarke then compares the estimates." },
+  ];
+  const findings = scanCuratedVideoFileMechanicalWording("example.json", video, { includeReview: true });
+  const attribution = findings.filter(({ ruleId }) => ruleId === "host-attribution");
+  assert.deepEqual(attribution.map(({ field, evidenceIndex, occurrenceCount, shardOccurrenceCount }) => ({
+    field, evidenceIndex, occurrenceCount, shardOccurrenceCount,
+  })), [
+    { field: "evidence.note", evidenceIndex: 0, occurrenceCount: 2, shardOccurrenceCount: 4 },
+    { field: "evidence.note", evidenceIndex: 1, occurrenceCount: 2, shardOccurrenceCount: 4 },
+  ]);
+  assert.equal(attribution.every(({ confidence }) => confidence === "review"), true);
+  assert.deepEqual(scanCuratedVideoFileMechanicalWording("example.json", video), []);
+});
+
+test("evidence notes receive actionable checks and contextual review without scanning source metadata", () => {
+  const video = sampleVideo("Fuel endurance constrained the operation.");
+  video.segments[0]!.sourcePath = "src/transcripts/txt/the-transcript-explains_abcdefghijk.txt";
+  video.segments[0]!.evidence = [
+    { start: "1:00", note: "The transcript contrasts the estimates." },
+    { start: "1:20", note: "Range\u2014and its limits." },
+  ];
+  assert.deepEqual(
+    scanCuratedVideoFileMechanicalWording("example.json", video, { includeReview: true })
+      .map(({ ruleId, evidenceIndex, unconditionalError }) => ({ ruleId, evidenceIndex, unconditionalError })),
+    [
+      { ruleId: "transcript-reporting-frame", evidenceIndex: 0, unconditionalError: false },
+      { ruleId: "prohibited-unicode-dash", evidenceIndex: 1, unconditionalError: true },
+    ],
+  );
+});
+
+test("descriptive reporting variants are reviewed in notes and actionable in public answers", () => {
+  const frames = [
+    "The transcript covers", "The transcript gives", "The transcript connects",
+    "The transcript lists", "The transcript names", "The transcript follows", "The transcript sets out",
+    "The answer compares", "The answer contrasts", "The answer connects", "The answer traces",
+    "The answer gives", "The answer lists", "The answer lays out",
+  ];
+  for (const frame of frames) {
+    const video = sampleQaVideo(`${frame} the destroyer designs.`);
+    video.segments[0]!.evidence[0]!.note = `${frame} the destroyer designs.`;
+    const findings = scanCuratedVideoFileMechanicalWording("example.json", video, { includeReview: true });
+    assert.deepEqual(findings.map(({ field, confidence, match }) => ({ field, confidence, match })), [
+      { field: "body", confidence: "high", match: frame },
+      { field: "evidence.note", confidence: "review", match: frame },
+    ], frame);
+  }
+});
+
+test("bare Alex reporting is review-only and preserves competing speaker ownership", () => {
+  const video = sampleVideo("Jamie doubts the claim. Alex argues that the handbook was shared.");
+  const findings = scanCuratedVideoFileMechanicalWording("example.json", video, { includeReview: true });
+  assert.equal(findings[0]?.match, "Alex");
+  assert.equal(findings[0]?.confidence, "review");
+  assert.deepEqual(scanCuratedVideoFileMechanicalWording("example.json", video), []);
+  assert.deepEqual(scanCuratedVideoFileMechanicalWording(
+    "example.json", sampleVideo("Alexandria contains the dockyard. Alex Nelson commanded the ship."), { includeReview: true },
+  ), []);
+});
+
+test("generic narrators and compound reporting cannot hide behind a removed host name", () => {
+  const video = sampleVideo(
+    "The presenter compares fuel loads, explains the tradeoff, and describes the resulting range. " +
+    "The discussion links endurance to deployment.",
+  );
+  video.segments[0]!.evidence[0]!.note = "The proposed fleet, while doubting that it prevents the battle.";
+  const findings = scanCuratedVideoFileMechanicalWording("example.json", video, { includeReview: true });
+  assert.deepEqual(findings.map(({ ruleId }) => ruleId), [
+    "generic-speaker-reporting-frame",
+    "discussion-reporting-frame",
+    "possible-dangling-narration",
+  ]);
+  assert.equal(findings.every(({ confidence }) => confidence === "review"), true);
+});
+
+test("watch-point value filler is actionable while historical assessments retain context", () => {
+  const video = sampleVideo("This segment is useful because it explains the ship's endurance.");
+  assert.equal(scanCuratedVideoFileMechanicalWording("example.json", video)[0]?.ruleId, "watch-point-value-frame");
+  const clean = sampleVideo(
+    "The book is useful because its tables record fuel consumption. " +
+    "The speed of the response shows prior planning. The speaker of the assembly held a different office.",
+  );
+  clean.segments[0]!.evidence[0]!.note = "The exact range remains uncertain; no archival confirmation was available.";
+  assert.deepEqual(scanCuratedVideoFileMechanicalWording("example.json", clean, { includeReview: true }), []);
+});
+
+test("CLI scans evidence-only defects and reports their exact location and coverage", async () => {
+  const repoRoot = await mkdtemp(join(tmpdir(), "site-content-wording-evidence-"));
+  try {
+    const video = sampleVideo("Fuel endurance constrained the operation.");
+    video.segments[0]!.evidence[0]!.note = "This segment exists to provide search metadata.";
+    await writeFile(join(repoRoot, "example.json"), JSON.stringify(video));
+    const args = ["--repo-root", repoRoot, "--path", "example.json", "--report", "--summary-only"];
+    assert.equal(await withoutConsole(() => checkSiteContentWording([...args, "--strict"])), 1);
+    const report = JSON.parse(await readFile(join(repoRoot, "reports/site-content-wording-scan.json"), "utf8"));
+    assert.equal(report.publicFieldsScanned, 3);
+    assert.equal(report.evidenceNotesScanned, 1);
+    assert.equal(report.findings[0].field, "evidence.note");
+    assert.equal(report.findings[0].evidenceIndex, 0);
+    assert.match(await readFile(join(repoRoot, "reports/site-content-wording-scan.md"), "utf8"), /evidence\[0\]\.note/u);
+
+    video.segments[0]!.evidence[0]!.note = "Dr. Clarke recalls a personal visit to the ship.";
+    await writeFile(join(repoRoot, "example.json"), JSON.stringify(video));
+    assert.equal(await withoutConsole(() => checkSiteContentWording([...args, "--strict", "--review"])), 0);
+    assert.equal(await withoutConsole(() => checkSiteContentWording([...args, "--strict-review"])), 1);
+  } finally {
+    await rm(repoRoot, { recursive: true, force: true });
+  }
+});
+
 function sampleVideo(
   body: string,
   summary = "Fuel endurance and operating radius",
@@ -575,7 +706,7 @@ function sampleVideo(
           {
             start: "1:00",
             end: "2:00",
-            note: "The source passage compares fuel load with operating radius.",
+            note: "Fuel load compared with operating radius.",
           },
         ],
       },

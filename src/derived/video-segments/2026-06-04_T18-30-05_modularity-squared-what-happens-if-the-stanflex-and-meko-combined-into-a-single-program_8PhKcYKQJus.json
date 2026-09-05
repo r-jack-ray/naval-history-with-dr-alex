@@ -4,17 +4,11 @@
     "counterfactual-history",
     "danish-navy",
     "defence-industrial-base",
-    "force-structure",
     "frigates",
     "interoperability",
     "meko",
-    "missiles",
     "modular-warship-design",
-    "naval-architecture",
-    "naval-history",
     "naval-procurement",
-    "naval-weapons",
-    "ship-design",
     "stanflex"
   ],
   "segments": [
@@ -32,7 +26,7 @@
         "ship-design",
         "stanflex"
       ],
-      "body": "The combination raises a basic design question: can a modular frigate family gain anything from a second, containerized layer of modularity? The joking name \"Moflex\" covers a serious 1980s procurement idea, where a buyer selects a hull and systems from a menu while preserving room for later changes. That approach reduces the research and development burden for navies that need a capable ship without designing one from scratch. A second modular layer can produce complexity as easily as flexibility.",
+      "body": "The counterfactual asks whether a modular frigate family would benefit from a second layer of containerized weapons. The joking name \"Moflex\" combines MEKO and StanFlex, both associated here with the 1980s enthusiasm for modularity. A buyer could select a hull and systems from a menu, then use interchangeable weapons to preserve options for later upgrades. That approach would reduce the research and development burden for navies buying an established design. The opening question is whether this much modularity would be useful in practice.",
       "sourcePath": "src/transcripts/txt/2026-06-04_T18-30-05_modularity-squared-what-happens-if-the-stanflex-and-meko-combined-into-a-single-program_8PhKcYKQJus.txt",
       "evidence": [
         {
@@ -47,7 +41,7 @@
         }
       ],
       "kind": "notable_point",
-      "summary": "A modular frigate family combines with a modular weapons-container system, creating an adaptable package with the risk of duplicated complexity."
+      "summary": "The Moflex counterfactual combines a configurable frigate family with interchangeable weapons, raising the question of how much adaptability a navy would actually use."
     },
     {
       "slug": "stanflex-container-limits-and-crew",
@@ -62,7 +56,7 @@
         "ship-design",
         "stanflex"
       ],
-      "body": "StanFlex uses standardized weapon containers fitted into prepared slots across the Danish fleet. The original dimensions cap the equipment that can be packaged inside, making container size the main limitation. Denmark considered a larger format. The international partners expected to help fund it did not join the programme. A mix of standard and standard-plus slots could have widened the payload range, showing how modular flexibility still depends on shared investment and compatible interfaces.",
+      "body": "StanFlex uses standardized weapon containers fitted into prepared slots across the Danish fleet. Container dimensions are presented as its largest limitation because they restrict the equipment each module can accommodate. A larger format was considered, but the hoped-for international funding for further development did not materialize. The existing system remained sufficient for Danish needs. A proposed mix of standard and standard-plus slots could have widened the payload range if more partners had financed it.",
       "sourcePath": "src/transcripts/txt/2026-06-04_T18-30-05_modularity-squared-what-happens-if-the-stanflex-and-meko-combined-into-a-single-program_8PhKcYKQJus.txt",
       "evidence": [
         {
@@ -91,7 +85,7 @@
         "readiness",
         "stanflex"
       ],
-      "body": "Hardware swaps do not create readiness on their own. Each module needs trained specialists who can move to a converted ship. Simulations, schools, and personnel plans must keep those skills available. Routine changes can be scheduled through crew rotations, while an emergency might draw staff from the training establishment. Denmark has often managed the system well without doing so perfectly, and maintaining that structure in a secure allied setting is noteworthy because other governments might have allowed it to decay.",
+      "body": "Changing a ship's role can require trained specialists who move with the relevant equipment. Simulations, experience aboard equipped ships, and personnel plans must keep those skills available. Routine changes can be scheduled through crew rotations, while an emergency might draw staff from the training establishment. Denmark has often managed this well, although reports of failures prevent treating the system as flawless. Its continued funding is judged favourably given Denmark's secure position among allies, where a government could have allowed such readiness arrangements to decline.",
       "sourcePath": "src/transcripts/txt/2026-06-04_T18-30-05_modularity-squared-what-happens-if-the-stanflex-and-meko-combined-into-a-single-program_8PhKcYKQJus.txt",
       "evidence": [
         {
@@ -106,41 +100,115 @@
         }
       ],
       "kind": "chapter",
-      "summary": "Rapid module swaps work only when specialist crews, training pipelines, and planned rotations can move with the equipment."
+      "summary": "Rapid role changes depend on having the necessary specialist crews available through training and planned rotations."
     },
     {
-      "slug": "stanflex-payload-menu",
-      "title": "StanFlex modules give one hull a wide mission menu",
+      "slug": "stanflex-anti-ship-missile-battery",
+      "title": "StanFlex scales the anti-ship battery in eight-missile modules",
       "start": "9:57",
-      "end": "13:12",
+      "end": "10:43",
       "topics": [
-        "force-structure",
+        "anti-ship-missiles",
         "harpoon-missile",
-        "mine-countermeasures",
-        "missiles",
-        "modular-warship-design",
-        "mu90-impact-torpedo",
+        "mark-141-launcher",
+        "mission-modules",
         "naval-strike-missile",
-        "naval-weapons",
-        "rim-7-sea-sparrow",
         "stanflex"
       ],
-      "body": "Available modules show the breadth of StanFlex. Harpoon or Naval Strike Missile launchers can provide anti-ship firepower. Sea Sparrow cells, MU90 torpedoes, sonar, and mine-hunting control equipment cover other combat roles. Crane, boat, storage, pollution-response, and support modules extend the system into disaster relief and civil tasks. A fitted module may be adequate rather than optimal, but the same hull can still cover more roles across the fleet.",
+      "body": "Each anti-ship module carries two Mark 141 quad launchers, giving eight Harpoons. Ten such modules are listed in the inventory discussed. The illustrated ship carries two modules, with sixteen missiles ready to fire. A possible switch to Naval Strike Missile is mentioned as an uncertain report, again envisaging eight missiles per module. The number of installed modules therefore determines the size of the ship's anti-ship battery.",
       "sourcePath": "src/transcripts/txt/2026-06-04_T18-30-05_modularity-squared-what-happens-if-the-stanflex-and-meko-combined-into-a-single-program_8PhKcYKQJus.txt",
       "evidence": [
         {
           "start": "9:57",
           "end": "10:43",
-          "note": "Harpoon and Naval Strike Missile module possibilities are described, including sixteen ready Harpoons on one ship."
-        },
+          "note": "The transcript describes ten eight-Harpoon modules, two installed modules with sixteen ready missiles on the illustrated ship, and uncertain reports of an eight-missile Naval Strike Missile upgrade."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Two quad launchers give each module eight Harpoons, while the suggested Naval Strike Missile replacement remains uncertain."
+    },
+    {
+      "slug": "stanflex-air-defence-growth-and-dimensions",
+      "title": "Container dimensions limit StanFlex air-defence upgrades",
+      "start": "10:45",
+      "end": "11:41",
+      "topics": [
+        "air-defence",
+        "camm",
+        "mission-modules",
+        "modular-warship-design",
+        "rim-7-sea-sparrow",
+        "standard-missile",
+        "stanflex"
+      ],
+      "body": "The air-defence example uses a six-cell Sea Sparrow module, with twenty modules in the inventory described. A larger customer group could have funded further development, including a possible quad-packed missile arrangement. The standard container measures 3 metres long, 3.5 metres wide, and 2.5 metres high. Those dimensions leave room to reconsider the missile fit, although longer-range weapons such as Standard missiles are more doubtful candidates. Sea Sparrow and CAMM are suggested as plausible systems to develop within the format. These are possible upgrades in the discussion, rather than confirmed new module designs.",
+      "sourcePath": "src/transcripts/txt/2026-06-04_T18-30-05_modularity-squared-what-happens-if-the-stanflex-and-meko-combined-into-a-single-program_8PhKcYKQJus.txt",
+      "evidence": [
         {
           "start": "10:45",
-          "end": "13:12",
-          "note": "The transcript lists air-defence, torpedo, sonar, mine-hunting, boat-recovery, storage, and support modules."
+          "end": "11:41",
+          "note": "The transcript gives the six-cell Sea Sparrow fit and twenty-module inventory, proposes further development and quad packing, states the container dimensions, and contrasts Sea Sparrow or CAMM possibilities with doubtful longer-range missile fits."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Six-cell Sea Sparrow modules prompt proposals for further development, but the container's dimensions constrain which missiles could fit."
+    },
+    {
+      "slug": "stanflex-payload-menu",
+      "title": "StanFlex extends combat roles within the limits of each hull",
+      "start": "11:45",
+      "end": "13:16",
+      "topics": [
+        "anti-submarine-warfare",
+        "force-structure",
+        "mine-countermeasures",
+        "modular-warship-design",
+        "mu90-impact-torpedo",
+        "naval-weapons",
+        "oto-melara-76-mm",
+        "remotely-operated-vehicles",
+        "stanflex",
+        "variable-depth-sonar"
+      ],
+      "body": "The combat-module menu includes OTO Breda 76 mm/62 guns. MU90 Impact torpedoes provide an anti-submarine option. Variable-depth sonar supplies another part of the ASW fit, with four sonar modules described alongside four torpedo systems. Mine-hunting control equipment can operate drone minehunters and Double Eagle remotely operated vehicles. These options let ships change roles across a fleet. The equipment may be adequate without being the best available for every task. Each ship's permanent fit and number of module positions still determine how much of that flexibility it can use.",
+      "sourcePath": "src/transcripts/txt/2026-06-04_T18-30-05_modularity-squared-what-happens-if-the-stanflex-and-meko-combined-into-a-single-program_8PhKcYKQJus.txt",
+      "evidence": [
+        {
+          "start": "11:45",
+          "end": "12:16",
+          "note": "The combat menu includes 76 mm/62 guns, MU90 torpedoes, variable-depth sonar, drone minehunters, and Double Eagle remotely operated vehicles."
+        },
+        {
+          "start": "12:46",
+          "end": "13:16",
+          "note": "The equipment is not necessarily optimal, and achievable roles depend on each ship's base fit and number of modules."
         }
       ],
       "kind": "chapter",
-      "summary": "The payload examples range from Harpoon and Sea Sparrow modules to sonar, mine-hunting, storage, and disaster-relief fits."
+      "summary": "Gun, torpedo, sonar, and mine-hunting modules broaden a ship's combat roles, while its permanent equipment and available slots limit the result."
+    },
+    {
+      "slug": "stanflex-boats-storage-and-disaster-relief",
+      "title": "Boat and storage modules adapt warships for disaster relief",
+      "start": "12:19",
+      "end": "12:46",
+      "topics": [
+        "disaster-relief",
+        "mission-modules",
+        "naval-logistics",
+        "stanflex"
+      ],
+      "body": "A hydraulic crane module helps recover rigid inflatable boats. Another arrangement places a boat above deck while providing shelving below it. That combination offers useful carrying capacity for disaster relief. Separate storage and anti-pollution modules extend the choices for support and civil tasks. StanFlex can therefore change the practical work a ship undertakes even when no additional weapon is needed.",
+      "sourcePath": "src/transcripts/txt/2026-06-04_T18-30-05_modularity-squared-what-happens-if-the-stanflex-and-meko-combined-into-a-single-program_8PhKcYKQJus.txt",
+      "evidence": [
+        {
+          "start": "12:19",
+          "end": "12:46",
+          "note": "The transcript describes hydraulic crane recovery of RIBs, a boat position with below-deck shelving for disaster relief, and storage and anti-pollution modules."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Crane, boat, shelving, and anti-pollution modules give compatible ships useful options for relief and support work."
     },
     {
       "slug": "modularity-needs-open-interfaces",
@@ -156,7 +224,7 @@
         "naval-procurement",
         "stanflex"
       ],
-      "body": "Blohm & Voss developed strong designs, yet its inward-looking corporate culture could miss useful work done elsewhere. Defence secrecy encourages firms to distrust outside ideas or treat them as deliberate misdirection. That habit can keep a company from learning even when the engineering case for a common interface is strong. A MEKO-StanFlex fleet therefore depends on management, trust, and contracting as much as compatible dimensions and connectors.",
+      "body": "An inward-looking design culture is offered as a possible reason Blohm & Voss did not pursue a MEKO-StanFlex combination. The company produced capable designs, yet is criticised here for sometimes overlooking other firms' methods and reinventing solutions. Defence secrecy can encourage that habit when outside work is treated as mistaken or deliberately misleading. Such suspicion can prevent designers from learning from one another. Compatible equipment depends partly on a willingness to consider ideas developed elsewhere.",
       "sourcePath": "src/transcripts/txt/2026-06-04_T18-30-05_modularity-squared-what-happens-if-the-stanflex-and-meko-combined-into-a-single-program_8PhKcYKQJus.txt",
       "evidence": [
         {
@@ -171,16 +239,17 @@
         }
       ],
       "kind": "notable_point",
-      "summary": "Defence secrecy and an inward-looking design culture can keep firms from adopting compatible systems developed elsewhere."
+      "summary": "Blohm & Voss's inward-looking design culture is suggested as one possible obstacle to a MEKO-StanFlex partnership."
     },
     {
       "slug": "meko-360-origin-nigeria-argentina",
       "title": "Nigeria's Aradu begins the MEKO 360 line before Argentina expands it",
       "start": "14:43",
-      "end": "15:57",
+      "end": "15:59",
       "topics": [
         "almirante-brown-class-destroyers",
         "argentine-navy",
+        "aspide-missile",
         "exocet-missile",
         "frigates",
         "meko",
@@ -189,18 +258,18 @@
         "nigerian-navy",
         "nns-aradu"
       ],
-      "body": "Nigeria's Aradu appears first in the MEKO 360 line, at about 3,360 tons and 125 metres long. Argentina's Almirante Brown class followed with a related configuration and room for capability growth. Its eight-Exocet fit shows how the common design method could serve a different customer without producing an identical ship. MEKO was a configurable family rather than one fixed vessel repeated for every navy.",
+      "body": "Nigeria's Aradu appears first in the MEKO 360 line, at about 3,360 tons and 125 metres long. Argentina's Almirante Brown class followed with a related configuration and room for capability growth. The Argentine fit includes eight Exocets and an octuple launcher for Aspide surface-to-air missiles. A range of 4,500 nautical miles at 18 knots gives another measure of the capability offered to that customer. MEKO could serve different navies through a configurable family of ships.",
       "sourcePath": "src/transcripts/txt/2026-06-04_T18-30-05_modularity-squared-what-happens-if-the-stanflex-and-meko-combined-into-a-single-program_8PhKcYKQJus.txt",
       "evidence": [
         {
           "start": "14:43",
           "end": "15:20",
-          "note": "The MEKO 360 account begins with Nigeria's Aradu, including its approximate displacement and dimensions."
+          "note": "The MEKO 360 account begins with Nigeria's Aradu, including approximate displacement and dimensions."
         },
         {
           "start": "15:20",
-          "end": "15:57",
-          "note": "Argentina's Almirante Brown class is introduced as a capable follow-on with growth potential and an eight-Exocet fit."
+          "end": "15:59",
+          "note": "Argentina's Almirante Brown class is described with growth potential, a 4,500-nautical-mile range at 18 knots, eight Exocets, and an octuple Aspide launcher. The inconsistent transcribed top-speed figure is not used."
         }
       ],
       "kind": "chapter",
@@ -222,7 +291,7 @@
         "naval-weapons",
         "ship-design"
       ],
-      "body": "The Argentine MEKO 360 combines gas-turbine propulsion, Exocet missiles, a 5-inch gun, and four twin Bofors 40 mm mounts. Replacing the older systems with modern equivalents would leave unusually broad medium-calibre coverage around the ship. Several mounts could engage a small drone from most approach angles. Guns would retain a practical role alongside missiles, electronic warfare, and possible laser systems. An apparently dated weapons layout can acquire new value against uncrewed threats.",
+      "body": "The Argentine MEKO 360 combines Exocet missiles, a 5-inch gun, and four twin Bofors 40 mm mounts. Its combined gas-and-gas propulsion uses Olympus TM3 and Tyne RM1C gas turbines. Replacing the older weapons with modern equivalents would leave broad medium-calibre coverage around the ship. In the assessment here, two twin mounts, and often three, could bear on an approaching drone, bringing four to six barrels into action. That gives a small navy a gun option against targets for which using an air-defence missile may be questionable. Fragmentation from a nearby 40 mm shell would threaten such small drones. Guns could retain this role alongside electronic warfare and possible laser systems. The argument concerns an updated weapons fit, rather than a claim that the original equipment already provides modern counter-drone performance.",
       "sourcePath": "src/transcripts/txt/2026-06-04_T18-30-05_modularity-squared-what-happens-if-the-stanflex-and-meko-combined-into-a-single-program_8PhKcYKQJus.txt",
       "evidence": [
         {
@@ -243,7 +312,7 @@
       "slug": "meko-configurable-hulls-and-stealth",
       "title": "MEKO scales hulls and machinery while its stealth evolves",
       "start": "18:58",
-      "end": "20:54",
+      "end": "21:10",
       "topics": [
         "anzac-class-frigates",
         "frigates",
@@ -257,18 +326,23 @@
         "stealth-ships",
         "valour-class-frigates"
       ],
-      "body": "MEKO buyers can choose among the 140, 200, and 360 hull families, different propulsion arrangements, and different mission capabilities within a common design method. Australian ANZAC ships show an earlier, more cluttered MEKO 200 layout. South African Valour-class and Algerian examples use cleaner surfaces that reduce radar return. The contrast shows how ideas about topside shaping changed within the same design family. Modularity did not freeze the family in the 1980s, since hull size, machinery, and radar-signature treatment could continue to evolve.",
+      "body": "MEKO buyers can choose among the 140, 200, and 360 hull families, different propulsion arrangements, and different mission capabilities within a common design method. The smaller 140 offers a cheaper option, while diesel or gas-turbine machinery can be selected to suit the requirement. Australian ANZAC ships illustrate an earlier, more cluttered MEKO 200 layout. The visual comparison favours the cleaner topsides of South African Valour-class and Algerian examples as better suited to reducing radar return. This is an assessment of their shape, without measured radar-performance figures. Egypt's use of the family and a possible German MEKO A200D, associated here with F128, are mentioned tentatively. Modularity still leaves room for successive designs to change hull size, machinery, and radar-signature treatment.",
       "sourcePath": "src/transcripts/txt/2026-06-04_T18-30-05_modularity-squared-what-happens-if-the-stanflex-and-meko-combined-into-a-single-program_8PhKcYKQJus.txt",
       "evidence": [
         {
           "start": "18:58",
           "end": "19:38",
-          "note": "MEKO 140, 200, and 360 hulls are presented as configurable families with standardized machinery and capability choices."
+          "note": "MEKO 140, 200, and 360 hulls offer different costs and standardized machinery choices, including diesel or gas turbines."
         },
         {
           "start": "19:41",
           "end": "20:54",
-          "note": "Older cluttered designs are contrasted with the cleaner radar-signature treatment of later MEKO 200 variants."
+          "note": "A visual comparison contrasts older cluttered ANZAC designs with cleaner Valour-class and Algerian MEKO variants."
+        },
+        {
+          "start": "20:54",
+          "end": "21:10",
+          "note": "Egypt and a possible German F128 or MEKO A200D are mentioned with explicit uncertainty."
         }
       ],
       "kind": "chapter",
@@ -287,9 +361,10 @@
         "naval-procurement",
         "royal-navy",
         "shipbuilding",
-        "type-31-frigate"
+        "type-31-frigate",
+        "type-32-frigate"
       ],
-      "body": "Successful exports can keep a shipbuilding line active between domestic orders. Germany can then buy from continuing MEKO production instead of recreating the industrial base for each batch. Britain's Type 31 programme provides the comparison: additional Royal Navy orders would help the design build the reputation and throughput needed for sustained export work. Modularity has more value when procurement policy preserves the industrial system that can produce it.",
+      "body": "Successful exports can keep a shipbuilding line active between domestic orders. Germany could then obtain ships from continuing MEKO production when its own navy needs another batch. Britain's Type 31 programme provides the comparison: additional Royal Navy orders would help establish the reputation and throughput needed for sustained export work. The suggestion allows either further Type 31s with a different weapons fit or a second batch called Type 32. The designation matters less to this argument than placing enough orders to sustain the line until export demand develops.",
       "sourcePath": "src/transcripts/txt/2026-06-04_T18-30-05_modularity-squared-what-happens-if-the-stanflex-and-meko-combined-into-a-single-program_8PhKcYKQJus.txt",
       "evidence": [
         {
@@ -307,9 +382,33 @@
       "summary": "MEKO's international order stream becomes a model for keeping production active until the home navy needs more ships."
     },
     {
+      "slug": "meko-general-purpose-patrol-requirements",
+      "title": "MEKO offers a general-purpose ship when requirements remain broad",
+      "start": "22:26",
+      "end": "22:55",
+      "topics": [
+        "air-defence",
+        "anti-submarine-warfare",
+        "frigates",
+        "meko",
+        "naval-procurement"
+      ],
+      "body": "A navy may know that it needs a useful presence at sea before settling every operational requirement. The example combines efficient patrol work with enough air defence and anti-submarine capability to remain useful across several roles. MEKO offers an established family from which that combination can be selected. A buyer can start with this broad requirement and choose a fit suited to its fleet.",
+      "sourcePath": "src/transcripts/txt/2026-06-04_T18-30-05_modularity-squared-what-happens-if-the-stanflex-and-meko-combined-into-a-single-program_8PhKcYKQJus.txt",
+      "evidence": [
+        {
+          "start": "22:26",
+          "end": "22:55",
+          "note": "A hypothetical buyer wants efficient patrols, defence against air attack, some anti-submarine capability, and a useful presence at sea without a narrowly specified role."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "An efficient patrol ship with air-defence and anti-submarine capability illustrates the broad requirement a MEKO design could meet."
+    },
+    {
       "slug": "frigate-destroyer-role-labels",
       "title": "Frigate and destroyer labels often follow role rather than tonnage",
-      "start": "22:26",
+      "start": "22:59",
       "end": "25:02",
       "topics": [
         "air-defence",
@@ -319,27 +418,56 @@
         "meko-a400",
         "ship-classification"
       ],
-      "body": "TKMS markets the roughly 12,000-ton MEKO A400 AMD as a frigate, despite a displacement many readers would associate with a destroyer. Modern labels often follow primary combat orientation more than a strict tonnage boundary. Air-defence ships commonly receive the destroyer label, while anti-submarine ships are more often called frigates. Either type can be large and carry extensive computing and combat systems, so the name alone says less than the fitted role.",
+      "body": "The catalogue described here places the roughly 12,000-ton MEKO A400 AMD under frigates, despite a displacement that prompts comparison with destroyers. Modern labels often follow primary combat orientation more than a strict tonnage boundary. Air-defence ships commonly receive the destroyer label, while anti-submarine ships are more often called frigates. Either type can be large and carry extensive computing and combat systems. The discussion favours calling the A400 a destroyer while acknowledging that a navy can choose its own designation.",
       "sourcePath": "src/transcripts/txt/2026-06-04_T18-30-05_modularity-squared-what-happens-if-the-stanflex-and-meko-combined-into-a-single-program_8PhKcYKQJus.txt",
       "evidence": [
         {
-          "start": "22:26",
+          "start": "22:59",
           "end": "24:07",
-          "note": "The MEKO catalogue and approximately 12,000-ton A400 AMD are introduced under the frigate label."
+          "note": "The catalogue labels the approximately 12,000-ton A400 AMD a frigate."
         },
         {
           "start": "24:11",
           "end": "25:02",
-          "note": "Frigate and destroyer labels are explained through ASW versus air-defence orientation rather than tonnage alone."
+          "note": "The discussion explains common ASW and air-defence naming conventions, favours calling A400 a destroyer, and acknowledges national freedom over designations."
         }
       ],
       "kind": "notable_point",
-      "summary": "TKMS calls the 12,000-ton MEKO A400 a frigate because modern labels often follow combat orientation more closely than displacement."
+      "summary": "The 12,000-ton MEKO A400's frigate label prompts a discussion of primary combat roles and national naming choices."
+    },
+    {
+      "slug": "moflex-founding-partnership-and-shared-pools",
+      "title": "An early MEKO-StanFlex partnership could create shared module pools",
+      "start": "26:37",
+      "end": "28:22",
+      "topics": [
+        "anzac-class-frigates",
+        "counterfactual-history",
+        "danish-navy",
+        "interoperability",
+        "meko",
+        "nato",
+        "naval-procurement",
+        "royal-australian-navy",
+        "royal-new-zealand-navy",
+        "stanflex"
+      ],
+      "body": "The scenario assumes that MEKO and StanFlex combine at the beginning of their programmes. Later MEKO customers could then buy into the module system as they acquired their ships. Using a stated customer-base assumption of sixteen nations, the discussion envisages a much wider market than Denmark alone. Germany, Greece, Turkey, Portugal, Denmark, and eventually Poland would give the standard a substantial NATO user group. Algeria, Egypt, Nigeria, and South Africa would extend that customer base across several African fleets. Australia and New Zealand could buy a common pool of StanFlex modules alongside their ANZAC frigates. Shared purchases would connect their fleets through both the hull family and the payload standard.",
+      "sourcePath": "src/transcripts/txt/2026-06-04_T18-30-05_modularity-squared-what-happens-if-the-stanflex-and-meko-combined-into-a-single-program_8PhKcYKQJus.txt",
+      "evidence": [
+        {
+          "start": "26:37",
+          "end": "28:22",
+          "note": "The counterfactual explicitly starts the partnership at the beginning. The transcript lists fifteen MEKO customers but states sixteen, so sixteen is retained only as its stated assumption. NATO users and a proposed common Australian-New Zealand StanFlex pool follow."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Combining the programmes from the outset could bring MEKO customers into StanFlex, including NATO fleets and a joint Australian-New Zealand module pool."
     },
     {
       "slug": "meko-stanflex-export-network",
       "title": "Common modules separate ship purchases from weapon purchases",
-      "start": "26:37",
+      "start": "28:22",
       "end": "28:49",
       "topics": [
         "danish-navy",
@@ -353,14 +481,9 @@
         "royal-new-zealand-navy",
         "stanflex"
       ],
-      "body": "Sixteen navies use MEKO designs. A common StanFlex interface could have turned that customer base into a multinational payload pool. The group would include several NATO members, African fleets, Australia, and New Zealand. A navy with modules already in service could buy a larger hull without repurchasing every weapon, or change its existing ships by ordering a new mission fit. Hull procurement and payload procurement would become partly independent within a shared ecosystem.",
+      "body": "A navy with StanFlex modules already in service could buy a more capable hull without repurchasing its entire weapons fit. Alternatively, it could change the capability of existing ships by buying different modules. Hull purchases and weapons purchases would become partly independent within the proposed MEKO-StanFlex system. The choice would depend on whether the navy needed another ship, a different payload, or both.",
       "sourcePath": "src/transcripts/txt/2026-06-04_T18-30-05_modularity-squared-what-happens-if-the-stanflex-and-meko-combined-into-a-single-program_8PhKcYKQJus.txt",
       "evidence": [
-        {
-          "start": "26:37",
-          "end": "28:18",
-          "note": "Sixteen MEKO operators are listed, including a substantial NATO group and Australia and New Zealand."
-        },
         {
           "start": "28:22",
           "end": "28:49",
@@ -368,7 +491,7 @@
         }
       ],
       "kind": "notable_point",
-      "summary": "Sixteen MEKO operators could turn StanFlex into a multinational payload pool in which navies buy hulls and weapon modules on different schedules."
+      "summary": "An existing module inventory could equip a new hull, while new modules could change the capability of ships already in service."
     },
     {
       "slug": "moflex-shared-market-lowers-entry-costs",
@@ -407,6 +530,7 @@
       "start": "30:28",
       "end": "32:05",
       "topics": [
+        "5-inch-guns",
         "interoperability",
         "mark-41-vls",
         "meko",
@@ -417,13 +541,13 @@
         "stanflex",
         "vertical-launch-systems"
       ],
-      "body": "The combined design need not make every weapon removable. One example keeps 48 Mark 41 VLS cells as a permanent missile battery and adds about six StanFlex slots for payloads that change with the mission. A larger standard-plus interface could accept heavier systems. An OTO Melara 76 mm gun module would suit many customers already familiar with the weapon. Fixed systems would provide baseline combat power, and the modules would alter the ship's role without a rebuild.",
+      "body": "The proposed combined design could keep some weapons permanently installed. One example retains 48 Mark 41 VLS cells and adds about six StanFlex slots for payloads that change with the mission. A larger standard-plus interface could accommodate a 5-inch gun, extending the choice beyond the existing 3-inch format. An OTO Melara 76 mm gun module is also suggested as attractive to many customers. Fixed systems would provide a core missile battery while the interchangeable equipment changed the deployment fit. These are example arrangements for the counterfactual.",
       "sourcePath": "src/transcripts/txt/2026-06-04_T18-30-05_modularity-squared-what-happens-if-the-stanflex-and-meko-combined-into-a-single-program_8PhKcYKQJus.txt",
       "evidence": [
         {
           "start": "30:28",
-          "end": "31:19",
-          "note": "The example combines forty-eight fixed Mark 41 VLS cells with about six StanFlex slots and a possible standard-plus format."
+          "end": "31:25",
+          "note": "The example combines forty-eight fixed Mark 41 VLS cells with about six StanFlex slots and a possible standard-plus format for a 5-inch gun beyond the existing 3-inch option."
         },
         {
           "start": "31:28",
@@ -437,7 +561,7 @@
     {
       "slug": "moflex-procurement-politics",
       "title": "Modularity can spread through procurement politics",
-      "start": "32:10",
+      "start": "33:04",
       "end": "33:52",
       "topics": [
         "force-structure",
@@ -447,18 +571,13 @@
         "naval-procurement",
         "stanflex"
       ],
-      "body": "Defence procurement spreads through political imitation as well as engineering. A government can point to a MEKO-StanFlex package, swap modules, and present the result as an air-warfare or ASW frigate. Photographs of visible torpedoes or missiles make that claim easy to communicate even when the fitted capability is adequate rather than optimal. A repeatable modular package can gather momentum because officials have a simple model to explain and copy.",
+      "body": "Defence procurement can spread through politicians comparing how they have met similar requirements. In the counterfactual, a government could select a MEKO-StanFlex package, swap modules, and present the resulting ship as an air-warfare or ASW frigate. The example treats the capability as adequate, while visible torpedoes and missiles make it easy to present to the press. A repeatable package could attract further buyers because officials have a simple procurement model to explain and copy.",
       "sourcePath": "src/transcripts/txt/2026-06-04_T18-30-05_modularity-squared-what-happens-if-the-stanflex-and-meko-combined-into-a-single-program_8PhKcYKQJus.txt",
       "evidence": [
         {
-          "start": "32:10",
-          "end": "33:13",
-          "note": "The transcript compares channel growth/network effects with defence procurement diffusion."
-        },
-        {
-          "start": "33:18",
+          "start": "33:04",
           "end": "33:52",
-          "note": "Politicians can claim air-warfare or ASW capability by swapping modules and presenting visible weapons to the public."
+          "note": "A hypothetical conversation between politicians shows how modular procurement could spread, with swapped modules and visible weapons supporting public claims of air-warfare or ASW capability."
         }
       ],
       "kind": "notable_point",
@@ -512,7 +631,7 @@
         "royal-new-zealand-navy",
         "stanflex"
       ],
-      "body": "Denmark's Absalon class combines frigate functions with command facilities, stores, transport, and operational support. Navies already using common StanFlex modules could adopt that type of flexible support ship more easily. Australia and New Zealand are plausible customers in the counterfactual. The idea fits the 1990s and early 2000s demand for ships able to support littoral operations as well as fight. A shared payload standard would let the support-frigate concept spread without requiring every navy to create its own systems.",
+      "body": "Denmark's Absalon class combines frigate functions with command facilities, stores, transport, and operational support. Navies already using common StanFlex modules could adopt that type of flexible support ship more easily. In the counterfactual, New Zealand might want one as its flagship, while Australia might buy several for its operations. The idea fits the 1990s and early 2000s interest in ships able to support littoral operations as well as fight. Such ships could draw on an existing module inventory while adding the ability to carry supplies and support other forces.",
       "sourcePath": "src/transcripts/txt/2026-06-04_T18-30-05_modularity-squared-what-happens-if-the-stanflex-and-meko-combined-into-a-single-program_8PhKcYKQJus.txt",
       "evidence": [
         {
@@ -532,23 +651,25 @@
     {
       "slug": "a400-fixed-and-modular-architecture",
       "title": "The MEKO A400 could combine Aegis, fixed VLS, and modular payloads",
-      "start": "37:01",
+      "start": "37:45",
       "end": "38:59",
       "topics": [
+        "5-inch-guns",
         "aegis-combat-system",
         "mark-41-vls",
         "meko-a400",
         "modular-warship-design",
+        "naval-strike-missile",
         "naval-weapons",
         "ship-design",
         "stanflex",
         "vertical-launch-systems"
       ],
-      "body": "The 12,000-ton MEKO A400 tests the concept at the high end of surface warfare. Aegis and 96 Mark 41 VLS cells remain permanent, while five to eight StanFlex positions carry anti-ship missiles, close-in weapons, or other payloads. A standard-plus interface might support a 5-inch gun, although the gun and VLS could also stay fixed beside the module positions. The baseline combat system remains intact while deployment fits change.",
+      "body": "A hypothetical StanFlex-equipped version of the 12,000-ton MEKO A400 could combine Aegis and 96 fixed Mark 41 VLS cells with five to eight module positions. Those slots could carry Naval Strike Missiles, close-in weapons, and other equipment. A 5-inch gun would not fit the original StanFlex format. It would need the larger StanFlex Plus interface imagined in this scenario, or remain permanently installed alongside the VLS. Such a layout would retain a substantial fixed weapons fit while allowing other equipment to change between deployments.",
       "sourcePath": "src/transcripts/txt/2026-06-04_T18-30-05_modularity-squared-what-happens-if-the-stanflex-and-meko-combined-into-a-single-program_8PhKcYKQJus.txt",
       "evidence": [
         {
-          "start": "37:01",
+          "start": "37:45",
           "end": "38:19",
           "note": "The A400 example combines Aegis and ninety-six Mark 41 cells with five to eight StanFlex modules for additional weapons."
         },
@@ -559,7 +680,7 @@
         }
       ],
       "kind": "chapter",
-      "summary": "A 12,000-ton MEKO A400 provides room for permanent Aegis and Mark 41 systems alongside five to eight swappable mission modules."
+      "summary": "A hypothetical MEKO A400 fit could combine Aegis and 96 fixed Mark 41 cells with five to eight StanFlex positions, while a modular 5-inch gun would require a larger interface."
     },
     {
       "slug": "moflex-uncertain-loadouts",
@@ -586,11 +707,11 @@
         }
       ],
       "kind": "notable_point",
-      "summary": "The tactical downside of modularity is that observers may not know which missiles or capabilities a ship actually carries."
+      "summary": "Swappable modules could make an opponent's missile count and mission fit harder to establish, particularly when loading is concealed."
     },
     {
       "slug": "moflex-impact-and-lcs-caveat",
-      "title": "No major naval war provides a test for the Moflex counterfactual",
+      "title": "The Moflex scenario lacks a relevant naval-war test",
       "start": "40:00",
       "end": "40:26",
       "topics": [
@@ -601,7 +722,7 @@
         "modular-warship-design",
         "naval-history"
       ],
-      "body": "The counterfactual has no major naval war that can serve as a direct combat test. Argentina's MEKO ships commissioned in 1983 and therefore missed the Falklands War. No later conflict in the period placed a large Moflex fleet at the centre of naval fighting. The scenario can explore procurement and industrial effects, but any claim about combat performance remains untested.",
+      "body": "The counterfactual offers little basis for tracing a changed naval-war outcome. Argentina's MEKO ships commissioned in 1983 and therefore missed the Falklands War. The discussion identifies no subsequent major naval conflict in which the proposed combined system would have been involved. Its conclusions concern procurement and industrial effects, while combat results remain speculative.",
       "sourcePath": "src/transcripts/txt/2026-06-04_T18-30-05_modularity-squared-what-happens-if-the-stanflex-and-meko-combined-into-a-single-program_8PhKcYKQJus.txt",
       "evidence": [
         {
@@ -611,7 +732,7 @@
         }
       ],
       "kind": "chapter",
-      "summary": "The absence of a large naval conflict after the early 1980s limits claims about how the combined system would have performed in combat."
+      "summary": "Argentina's MEKOs missed the Falklands War, and the counterfactual identifies no later major naval conflict in which to assess the proposed system."
     },
     {
       "slug": "danish-german-meko-design-competition",
@@ -628,7 +749,7 @@
         "ship-design",
         "stanflex"
       ],
-      "body": "The counterfactual could produce separate Danish and German MEKO design groups rather than one merged office. Both teams would treat StanFlex as a standard option while competing over hulls and arrangements. Customers could choose among more ship designs without losing compatibility with the shared payload pool. Rival design work inside a common interface could enlarge the ecosystem and attract additional partners.",
+      "body": "The counterfactual could produce separate Danish and German MEKO design groups. Both teams would treat StanFlex as a standard option while competing over hulls and arrangements. Customers could choose among more ship designs while retaining compatibility with the shared payload pool. Rival designs using a common interface could attract additional partners to the programme.",
       "sourcePath": "src/transcripts/txt/2026-06-04_T18-30-05_modularity-squared-what-happens-if-the-stanflex-and-meko-combined-into-a-single-program_8PhKcYKQJus.txt",
       "evidence": [
         {
@@ -653,7 +774,7 @@
         "modular-warship-design",
         "naval-procurement"
       ],
-      "body": "The Littoral Combat Ship programme separates the promise of modular weapons from the institutions responsible for delivering them. Defence firms can compete for profit and influence while still being expected to produce interoperable systems. That tension contributed to the mission-module trouble described here. Strong engineering inside each company cannot guarantee that the combined product will work. A common interface therefore needs governance that forces separate contractors to deliver one functioning result.",
+      "body": "One explanation for the Littoral Combat Ship's mission-module difficulties centres on contractor coordination. Defence firms can compete for profit and influence while still being expected to produce interoperable systems. In this interpretation, that rivalry helped undermine delivery even where individual companies employed capable engineers. Good engineering inside each company cannot guarantee that the combined product will work. A common interface therefore needs arrangements that make separate contractors responsible for delivering a functioning result.",
       "sourcePath": "src/transcripts/txt/2026-06-04_T18-30-05_modularity-squared-what-happens-if-the-stanflex-and-meko-combined-into-a-single-program_8PhKcYKQJus.txt",
       "evidence": [
         {
@@ -663,7 +784,7 @@
         }
       ],
       "kind": "notable_point",
-      "summary": "The Littoral Combat Ship comparison separates the value of modular weapons from the contracting and corporate rivalry that hindered delivery."
+      "summary": "Contractor rivalry is offered as an explanation for LCS mission-module difficulties, while the underlying modular-weapons concept is judged sound."
     },
     {
       "slug": "modular-contract-enforcement",
@@ -677,7 +798,7 @@
         "naval-procurement",
         "stanflex"
       ],
-      "body": "Competition can improve engineering, but a modular programme also needs a shared consequence when suppliers fail to deliver compatible equipment. Denmark appears to have applied a blunt StanFlex rule: a module must work with the standard before the supplier is paid. That discipline keeps corporate rivalry from eroding the interface on which every ship and payload depends. Contract enforcement therefore belongs inside the technical architecture.",
+      "body": "Competition can improve engineering, but a modular programme also needs consequences when suppliers fail to deliver compatible equipment. Exactly how to enforce shared consequences across competing suppliers remains an open question. Denmark appears to have applied a blunt StanFlex rule: a module must work with the standard before the supplier is paid. Such a requirement could keep corporate rivalry from eroding the interface on which the ships and payloads depend. The example connects procurement terms to the practical delivery of compatible modules.",
       "sourcePath": "src/transcripts/txt/2026-06-04_T18-30-05_modularity-squared-what-happens-if-the-stanflex-and-meko-combined-into-a-single-program_8PhKcYKQJus.txt",
       "evidence": [
         {
@@ -692,7 +813,7 @@
         }
       ],
       "kind": "notable_point",
-      "summary": "StanFlex's success is linked to a hard procurement rule: suppliers must deliver equipment that works with the common system."
+      "summary": "Denmark appears to have tied payment to StanFlex compatibility, illustrating how procurement terms could protect a shared standard."
     },
     {
       "slug": "moflex-export-market-effects",

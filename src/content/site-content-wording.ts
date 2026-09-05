@@ -7,7 +7,8 @@ export type SiteContentWordingField =
   | "summary"
   | "body"
   | "question"
-  | "answerShort";
+  | "answerShort"
+  | "evidence.note";
 export type SiteContentWordingConfidence = "high" | "review";
 export type SiteContentWordingSegmentKind = CuratedSegmentSeed["kind"];
 
@@ -19,6 +20,7 @@ export interface SiteContentWordingFinding {
   segmentIndex: number;
   segmentKind: SiteContentWordingSegmentKind;
   field: SiteContentWordingField;
+  evidenceIndex?: number;
   ruleId: string;
   confidence: SiteContentWordingConfidence;
   unconditionalError: boolean;
@@ -31,6 +33,7 @@ export interface SiteContentWordingFinding {
   occurrenceCount?: number;
   affectedSegmentCount?: number;
   repeatedSegmentCount?: number;
+  shardOccurrenceCount?: number;
 }
 
 export interface SiteContentWordingOptions {
@@ -42,6 +45,7 @@ export interface SiteContentWordingOptions {
 interface SiteContentWordingRule {
   id: string;
   confidence: SiteContentWordingConfidence;
+  evidenceConfidence?: SiteContentWordingConfidence;
   fields: readonly SiteContentWordingField[];
   pattern: RegExp;
   captureGroup: string | null;
@@ -75,6 +79,7 @@ interface HostAttributionReference {
   segmentIndex: number;
   segmentKind: SiteContentWordingSegmentKind;
   field: SiteContentWordingField;
+  evidenceIndex?: number;
   text: string;
   match: string;
   characterStart: number;
@@ -86,15 +91,17 @@ const allFields: readonly SiteContentWordingField[] = [
   "body",
   "question",
   "answerShort",
+  "evidence.note",
 ];
 const answerFields: readonly SiteContentWordingField[] = [
   "title",
   "summary",
   "body",
   "answerShort",
+  "evidence.note",
 ];
 const hostAttributionRuleId = "host-attribution";
-const hostAttributionPattern = /\b(?:(?:(?:Dr\.?|Doctor|Professor)\s+(?:Alex\s+)?|Alex\s+)Clarke(?:['’]s)?|Clarke(?:['’]s)?)\b/giu;
+const hostAttributionPattern = /\b(?:(?:(?:Dr\.?|Doctor|Professor)\s+(?:Alex\s+)?|Alex\s+)Clarke?(?:['’]s)?|Clarke?(?:['’]s)?|Alex(?=\s+(?:(?:also|then|explicitly)\s+)?(?:says?|said|states?|notes?|explains?|describes?|argues?|compares?|contrasts?|suggests?|discusses?|identifies?|gives?|links?|connects?|asks?|answers?|sets?\s+out)\b))\b/giu;
 
 const deterministicRules: readonly SiteContentWordingRule[] = [
   {
@@ -141,16 +148,18 @@ const deterministicRules: readonly SiteContentWordingRule[] = [
   {
     id: "transcript-reporting-frame",
     confidence: "high",
+    evidenceConfidence: "review",
     fields: allFields,
-    pattern: /\b(?:the|this)\s+transcript\s+(?:says?|states?|notes?|records?|reads?|renders?|describes?|mentions?|shows?|identifies?|explains?|indicates?)\b/giu,
+    pattern: /\b(?:the|this)\s+transcript\s+(?:says?|states?|notes?|records?|reads?|renders?|describes?|mentions?|shows?|identifies?|explains?|indicates?|compares?|contrasts?|discusses?|outlines?|summari[sz]es?|introduces?|traces?|links?|distinguishes?|covers?|gives?|connects?|lists?|names?|follows?|sets?\s+out|lays?\s+out)\b/giu,
     captureGroup: null,
     guidance: "Rewrite as direct study-guide prose when possible; retain explicit source limits when the transcript leaves a point uncertain.",
   },
   {
     id: "answer-reporting-frame",
     confidence: "high",
+    evidenceConfidence: "review",
     fields: answerFields,
-    pattern: /\b(?:the|this)\s+(?:answer|response|reply)\s+(?:says?|states?|notes?|records?|reports?|explains?|describes?|mentions?|shows?|identifies?|indicates?|confirms?)\b/giu,
+    pattern: /\b(?:the|this)\s+(?:answer|response|reply)\s+(?:says?|states?|notes?|records?|reports?|explains?|describes?|mentions?|shows?|identifies?|indicates?|confirms?|compares?|contrasts?|connects?|traces?|covers?|gives?|lists?|names?|follows?|sets?\s+out|lays?\s+out)\b/giu,
     captureGroup: null,
     guidance: "Replace commentary about the answer, response, or reply with the direct answer and its transcript-backed reasoning.",
     segmentKinds: ["qa"],
@@ -160,7 +169,7 @@ const deterministicRules: readonly SiteContentWordingRule[] = [
     id: "non-qa-answer-reporting-frame",
     confidence: "review",
     fields: answerFields,
-    pattern: /\b(?:the|this)\s+(?:answer|response|reply)\s+(?:says?|states?|notes?|records?|reports?|explains?|describes?|mentions?|shows?|identifies?|indicates?|confirms?)\b/giu,
+    pattern: /\b(?:the|this)\s+(?:answer|response|reply)\s+(?:says?|states?|notes?|records?|reports?|explains?|describes?|mentions?|shows?|identifies?|indicates?|confirms?|compares?|contrasts?|connects?|traces?|covers?|gives?|lists?|names?|follows?|sets?\s+out|lays?\s+out)\b/giu,
     captureGroup: null,
     guidance: "Check whether this is commentary about an answer or a genuine historical, operational, or institutional response. Rewrite only the commentary form.",
     segmentKinds: ["chapter", "notable_point", "transcript_excerpt"],
@@ -221,6 +230,40 @@ const deterministicRules: readonly SiteContentWordingRule[] = [
     pattern: /\b(?:sourcePath|answerShort|videoId|fileStem|topics\.json|JSON\s+shard|segment\s+shard|generated\s+archive)\b/giu,
     captureGroup: null,
     guidance: "Remove internal field names, filenames, and generated-data terminology from public study-guide prose.",
+  },
+  {
+    id: "watch-point-value-frame",
+    confidence: "high",
+    fields: answerFields,
+    pattern: /\b(?:this|the)\s+(?:segment|passage|section|exchange|answer|watch\s+point)\s+(?:is|remains)\s+(?:especially\s+|particularly\s+)?(?:useful|valuable|helpful|important)\s+(?:because|as|for\s+(?:showing|explaining|understanding))\b/giu,
+    captureGroup: null,
+    guidance: "State the supported subject and reasoning directly instead of explaining why this watch point is useful.",
+    requiresClauseBoundary: true,
+  },
+  {
+    id: "generic-speaker-reporting-frame",
+    confidence: "review",
+    fields: allFields,
+    pattern: /\b(?:the|this)\s+(?:presenter|speaker|lecturer|host)\s+(?:(?:explicitly|directly|briefly|also|then)\s+)?(?:says?|states?|notes?|explains?|describes?|mentions?|shows?|identifies?|compares?|contrasts?|discusses?|outlines?|summari[sz]es?|introduces?|traces?|links?|distinguishes?|argues?|suggests?|emphasi[sz]es?|stresses?|recalls?|recommends?|answers?|asks?|uses?|gives?|cautions?|rejects?|accepts?|calls?|makes?|points?\s+out)\b/giu,
+    captureGroup: null,
+    guidance: "If this is the video's host, write the subject directly instead of replacing the name with a generic narrator. Preserve the same uncertainty and any testimony or speaker distinction that needs an owner.",
+  },
+  {
+    id: "discussion-reporting-frame",
+    confidence: "review",
+    fields: answerFields,
+    pattern: /\b(?:the|this)\s+(?:discussion|exchange|conversation|source\s+passage)\s+(?:says?|states?|notes?|explains?|describes?|mentions?|shows?|identifies?|compares?|contrasts?|discusses?|outlines?|summari[sz]es?|introduces?|traces?|links?|distinguishes?|moves?\s+to|turns?\s+to|focuses?\s+on)\b/giu,
+    captureGroup: null,
+    guidance: "Review this reporting frame in its segment. State the supported point directly when possible; retain wording needed to describe an actual historical discussion or distinguish an exchange.",
+    requiresClauseBoundary: true,
+  },
+  {
+    id: "possible-dangling-narration",
+    confidence: "review",
+    fields: ["evidence.note"],
+    pattern: /\b(?:while|before|after)\s+(?:(?:explicitly|immediately|separately|also)\s+)?(?:noting|explaining|describing|acknowledging|doubting|identifying|rejecting|commenting)\b/giu,
+    captureGroup: null,
+    guidance: "Check that this reporting action still has a grammatical subject. Removing host attribution can leave a book, ship, or rank apparently doing the explaining. Keep any qualification or source limit when repairing the sentence.",
   },
   {
     id: "question-reporting-frame",
@@ -286,7 +329,7 @@ export function scanCuratedVideoFileMechanicalWording(
   const findings: SiteContentWordingFinding[] = [];
   const hostAttributions: HostAttributionReference[] = [];
   for (const [segmentIndex, segment] of video.segments.entries()) {
-    const fields: Array<[SiteContentWordingField, string]> = [
+    const fields: Array<[SiteContentWordingField, string, number?]> = [
       ["title", segment.title],
     ];
     if ("summary" in segment && segment.summary !== undefined) {
@@ -297,8 +340,11 @@ export function scanCuratedVideoFileMechanicalWording(
       fields.push(["question", segment.question]);
       fields.push(["answerShort", segment.answerShort]);
     }
+    for (const [evidenceIndex, evidence] of segment.evidence.entries()) {
+      fields.push(["evidence.note", evidence.note, evidenceIndex]);
+    }
 
-    for (const [field, value] of fields) {
+    for (const [field, value, evidenceIndex] of fields) {
       const text = visibleFieldText(value);
       if (includeReview) {
         for (const match of text.matchAll(hostAttributionPattern)) {
@@ -308,6 +354,7 @@ export function scanCuratedVideoFileMechanicalWording(
             segmentIndex,
             segmentKind: segment.kind,
             field,
+            ...(evidenceIndex === undefined ? {} : { evidenceIndex }),
             text,
             match: match[0],
             characterStart: match.index,
@@ -326,7 +373,7 @@ export function scanCuratedVideoFileMechanicalWording(
         includeReview,
         includeFuzzy,
         fuzzyThreshold,
-      ));
+      ).map((finding) => evidenceIndex === undefined ? finding : { ...finding, evidenceIndex }));
     }
   }
 
@@ -356,10 +403,15 @@ function scanField(
 ): SiteContentWordingFinding[] {
   const located: LocatedFinding[] = [];
   for (const rule of deterministicRules) {
+    // Evidence notes describe what a passage supports. Reporting can be warranted
+    // there, so these frames need editorial judgment rather than automatic rejection.
+    const confidence = field === "evidence.note"
+      ? rule.evidenceConfidence ?? rule.confidence
+      : rule.confidence;
     if (
       !rule.fields.includes(field)
       || (rule.segmentKinds !== undefined && !rule.segmentKinds.includes(segmentKind))
-      || (!includeReview && rule.confidence === "review")
+      || (!includeReview && confidence === "review")
     ) {
       continue;
     }
@@ -376,7 +428,7 @@ function scanField(
       if (rule.requiresClauseBoundary === true && !isClauseBoundary(text, start)) {
         continue;
       }
-      if (rule.confidence === "review" && overlaps(start, end, located)) {
+      if (confidence === "review" && overlaps(start, end, located)) {
         continue;
       }
       located.push({
@@ -389,7 +441,7 @@ function scanField(
           segmentKind,
           field,
           rule.id,
-          rule.confidence,
+          confidence,
           phrase,
           text,
           start,
@@ -439,13 +491,21 @@ function hostAttributionFindings(
   const repeatedSegmentCount = [...countsBySegment.values()]
     .filter((count) => count > 1)
     .length;
-  const first = references[0]!;
   const segmentLabel = affectedSegmentCount === 1 ? "segment" : "segments";
   const guidance =
     `This shard uses host attribution ${references.length} times across ${affectedSegmentCount} ${segmentLabel}. `
-    + "Review every public-field occurrence and confirm that the matched Clark or Clarke refers to the host before changing it. Each segment already has sourcePath and evidence, so the public prose does not need the host's name for provenance. In a solo-speaker episode, remove routine host reidentification and write the subject naturally. In a multi-speaker episode, retain attribution that distinguishes the speakers or identifies a quotation. Preserve other people named Clark or Clarke.";
-  return [
-    {
+    + "Review every prose and evidence-note occurrence in small segment batches and confirm that the matched Clark or Clarke refers to the host before changing it. Each segment already has sourcePath and evidence, so its text does not need the host's name for provenance. In a solo-speaker episode, remove routine host reidentification, including compound reporting clauses, and write the subject naturally. In multi-speaker material, retain names where a change of speaker, disagreement, testimony, or quotation needs an owner. A Bruships or interview title is not a blanket exemption. Preserve other people named Clark or Clarke, uncertainty, and source limitations. Do not substitute generic narrator labels or leave dangling pronouns and reporting verbs.";
+  // Each affected field gets its own location so an auditor can work in segment-sized batches.
+  const byField = new Map<string, HostAttributionReference[]>();
+  for (const reference of references) {
+    const key = `${reference.segmentIndex}/${reference.field}/${reference.evidenceIndex ?? ""}`;
+    const group = byField.get(key) ?? [];
+    group.push(reference);
+    byField.set(key, group);
+  }
+  return [...byField.values()].map((group) => {
+    const first = group[0]!;
+    return {
       ...baseFinding(
         file,
         video.videoId,
@@ -462,11 +522,13 @@ function hostAttributionFindings(
         guidance,
         false,
       ),
-      occurrenceCount: references.length,
+      ...(first.evidenceIndex === undefined ? {} : { evidenceIndex: first.evidenceIndex }),
+      occurrenceCount: group.length,
+      shardOccurrenceCount: references.length,
       affectedSegmentCount,
       repeatedSegmentCount,
-    },
-  ];
+    };
+  });
 }
 
 function fuzzyFindings(
@@ -660,10 +722,12 @@ function compareFindings(
     body: 2,
     question: 3,
     answerShort: 4,
+    "evidence.note": 5,
   };
   return left.file.localeCompare(right.file)
     || left.segmentIndex - right.segmentIndex
     || fieldOrder[left.field] - fieldOrder[right.field]
+    || (left.evidenceIndex ?? -1) - (right.evidenceIndex ?? -1)
     || left.characterStart - right.characterStart
     || left.ruleId.localeCompare(right.ruleId);
 }
