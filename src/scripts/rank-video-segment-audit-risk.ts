@@ -3,7 +3,7 @@ import { mkdir, readdir, readFile, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 
 import { parseSiteContentProcessingConfig, type SiteContentProcessingConfig, validateCuratedVideoFile, } from "../content/schemas/index.js";
-import { DEFAULT_SITE_CONTENT_PROCESSING_LOG, parseSiteContentProcessingLog, type SiteContentProcessingLogRecord, } from "../content/site-content-processing-log.js";
+import { DEFAULT_SITE_CONTENT_PROCESSING_LOG, parseSiteContentProcessingLog, } from "../content/site-content-processing-log.js";
 import {
   analyzeVideoSegmentRisk,
   type AuditSegment,
@@ -50,6 +50,7 @@ async function main(): Promise<void> {
       .sort();
   const rows: VideoSegmentAuditRiskRow[] = [];
   let excludedSascShards = 0;
+  let excludedEmptyShards = 0;
 
   for (const shardName of shardNames) {
     const fileStem = shardName.slice(0, -".json".length);
@@ -95,6 +96,13 @@ async function main(): Promise<void> {
       excludedSascShards += 1;
       continue;
     }
+    if (segments.length === 0) {
+      excludedEmptyShards += 1;
+      if (structuralIssues.length > 0) {
+        console.warn(`Excluded shard with an empty or unreadable segment array ${shardName}: ${structuralIssues.join("; ")}`);
+      }
+      continue;
+    }
     const transcriptPath = manifestEntry?.paths?.txt
         ? path.join(options.transcriptRoot, path.basename(manifestEntry.paths.txt))
         : path.join(options.transcriptRoot, `${canonicalStem}.txt`);
@@ -112,10 +120,10 @@ async function main(): Promise<void> {
       ...(manifestEntry?.firstStartSeconds === undefined ? {} : {transcriptStartSeconds: manifestEntry.firstStartSeconds}),
       durationSeconds: manifestEntry?.lastEndSeconds,
       segments,
-      manualAudioReviewRemaining: hasManualAudioReviewRemaining(latestProcessingRecord),
       structuralIssues,
       qaExpectation: qaExpectationFor(videoTitle, config),
       minimumEvidenceWindows: config.firstPass.minimumEvidenceWindows,
+      ...(latestProcessingRecord === undefined ? {} : {latestProcessingRecord}),
     }));
   }
 
@@ -126,18 +134,17 @@ async function main(): Promise<void> {
   for (const row of rankedRows) {
     routeCounts.set(row.auditRoute, (routeCounts.get(row.auditRoute) ?? 0) + 1);
   }
-  const manualAudioReviewRows = rankedRows.filter((row) => row.manualAudioReviewRemaining).length;
   console.log([
     "Video segment audit risk ranking:",
     `shards=${rankedRows.length}`,
     `excluded_sasc_shards=${excludedSascShards}`,
+    `excluded_empty_shards=${excludedEmptyShards}`,
     `repair_required=${routeCounts.get("repair_required") ?? 0}`,
     `review_candidate=${routeCounts.get("review_candidate") ?? 0}`,
     `low_signal=${routeCounts.get("low_signal") ?? 0}`,
     `malformed_log_rows=${processingLog.malformedRowCount}`,
     `unmapped_log_rows=${processingLog.unmappedRowCount}`,
     `ignored_log_rows=${processingLog.ignoredRowCount}`,
-    `manual_audio_review_remaining=${manualAudioReviewRows}`,
     `output=${options.output}`,
   ].join(" "));
 }
@@ -245,17 +252,6 @@ function isSascShard(...identifiers: string[]): boolean {
   return identifiers.some((identifier) => /(^|[^a-z0-9])sasc([^a-z0-9]|$)/iu.test(identifier));
 }
 
-function hasManualAudioReviewRemaining(record: SiteContentProcessingLogRecord | undefined): boolean {
-  if (record === undefined) {
-    return false;
-  }
-  const details = `${record.result} ${record.notes}`;
-  if (/\bmanual audio review (?:is )?(?:complete|completed|finished|resolved)\b|\bcompleted manual audio review\b/iu.test(details)) {
-    return false;
-  }
-  return /\bmanual audio review remains\b|\bstill needs manual audio review\b|\bmanual audio needed\b|\bneeds audiovisual recovery\b/iu.test(details);
-}
-
 function normalizedTitle(value: string): string {
   return value.toLocaleLowerCase("en-US").replace(/[^a-z0-9]+/gu, " ").trim();
 }
@@ -293,14 +289,22 @@ function printHelp(): void {
 
 Ranks existing per-video shards by deterministic repair needs and current metadata
 that can indicate value from another substantive transcript-backed audit.
-SASC school-function shards are excluded from the ranking.
+SASC school-function shards and shards with empty or unreadable segment arrays are excluded.
+Malformed excluded shards are identified on stderr; this report is not a replacement for source validation.
 It does not read transcript text, measure semantic completeness, or return calibrated probabilities.
-The one-decimal Audit Risk Score is an uncalibrated relative-anchor-gap heuristic.
-Scores are blank when the required transcript interval or anchors are unavailable.
+The former Audit Risk Score and processing-log-count tie-break have been removed.
+Largest evidence gaps are measured between the union of valid, source-matching evidence
+ranges, including leading and trailing gaps. Citations without an end are points.
+Gap metrics are blank when the transcript file or usable interval is unavailable.
 Routes sort repair_required, review_candidate, then low_signal. Within a route,
-defined scores sort descending, equal scores use fewer processing-log entries,
-and file stem is the final deterministic tie-break. Display diagnostics do not alter
-the score or ranking. Manual-audio status is operational display data only.
+defined evidence-gap minutes sort descending, then gap percentage, then file stem.
+Transcript Bytes Per Minute divides transcript file bytes by the unrounded duration
+in minutes, with two decimal places; unavailable bytes or duration leave it blank.
+Anchor gaps, transcript byte density, log counts, and latest outcomes are display context only.
+The latest record follows physical append order, including blocked or unchanged audits.
+Read its result and notes, then spot-check the reported range before selecting work:
+gaps may contain personal material, silence, or other deliberately excluded content.
+Old saturation does not exclude a shard from stronger-model or improved-method review.
 Manifest transcripts without a canonical shard remain visible through npm run audit:site-content.
 
 Options:

@@ -1,313 +1,283 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-
 import {
-  analyzeVideoSegmentRisk,
-  parseStrictTimestamp,
-  rankVideoSegmentAuditRisks,
-  renderVideoSegmentAuditRiskTsv,
-  type AuditSegment,
-  type VideoSegmentAuditRiskInput,
+  analyzeVideoSegmentRisk, parseStrictTimestamp, rankVideoSegmentAuditRisks, renderVideoSegmentAuditRiskTsv,
+  type AuditSegment, type VideoSegmentAuditRiskInput,
 } from "./video-segment-audit-risk.js";
 
 const sourcePath = "src/transcripts/txt/sample-video_abc123.txt";
-
 function input(overrides: Partial<VideoSegmentAuditRiskInput> = {}): VideoSegmentAuditRiskInput {
   return {
-    fileStem: "sample-video_abc123",
-    filePath: "src/derived/video-segments/sample-video_abc123.json",
-    videoId: "abc123",
-    videoTitle: "Sample video",
-    canonicalSourcePath: sourcePath,
-    processLogEntries: 0,
-    transcriptBytes: 10_000,
-    shardBytes: 2_000,
-    durationSeconds: 3_600,
-    segments: [{
-      kind: "chapter", start: "0:00", end: "10:00", sourcePath,
-      evidence: [{start: "0:00", end: "10:00", note: "Opening evidence."}],
-    }],
-    ...overrides,
+    fileStem: "sample-video_abc123", filePath: "src/derived/video-segments/sample-video_abc123.json",
+    videoId: "abc123", videoTitle: "Sample video", canonicalSourcePath: sourcePath, processLogEntries: 0,
+    transcriptBytes: 10_000, shardBytes: 2_000, durationSeconds: 3_600, segments: [span(0, 600)], ...overrides,
   };
 }
 
-test("strict timestamp parsing rejects malformed clock components", () => {
+test("strict timestamps reject malformed clock components", () => {
   assert.equal(parseStrictTimestamp("1:59"), 119);
   assert.equal(parseStrictTimestamp("1:02:03"), 3_723);
-  for (const value of ["1:60", "1:60:00", "1:00:60", "-1:00", "1:2", "1:02:3"]) {
-    assert.equal(parseStrictTimestamp(value), undefined, value);
+  for (const value of ["1:60", "1:60:00", "1:00:60", "-1:00", "1:2", "1:02:3", null, 60]) {
+    assert.equal(parseStrictTimestamp(value), undefined, String(value));
   }
 });
 
-test("one late segment exposes sparse temporal distribution without forcing a route", () => {
+test("late evidence reports an exact leading gap without a predictive score", () => {
+  const row = analyzeVideoSegmentRisk(input({durationSeconds: 7_200, segments: [span(7_080, 7_200)]}));
+  assert.equal(row.auditRoute, "low_signal");
+  assert.equal(row.largestEvidenceGapPct, 7_080 / 7_200 * 100);
+  assert.equal(row.largestEvidenceGapMinutes, 118);
+  assert.equal(row.largestEvidenceGapStartSeconds, 0);
+  assert.equal(row.largestEvidenceGapEndSeconds, 7_080);
+  assert.equal(row.lastSegmentPositionPct, 100);
+  assert.equal("auditRiskScore" in row, false);
+});
+
+test("continuous evidence covers the space between its endpoints", () => {
+  const row = analyzeVideoSegmentRisk(input({segments: [span(0, 3_600)]}));
+  assert.equal(row.largestAnchorGapPct, 100);
+  assert.equal(row.largestAnchorGapMinutes, 60);
+  assert.equal(row.largestEvidenceGapPct, 0);
+  assert.equal(row.largestEvidenceGapMinutes, 0);
+  assert.equal(row.largestEvidenceGapStartSeconds, 0);
+  assert.equal(row.largestEvidenceGapEndSeconds, 0);
+});
+
+test("union handles unsorted, overlapping, nested, duplicate, and touching intervals", () => {
+  const segments = [span(400, 800), span(100, 600), span(200, 300), span(800, 900), span(100, 600)];
+  for (const ordered of [segments, [...segments].reverse()]) {
+    const row = analyzeVideoSegmentRisk(input({durationSeconds: 1_000, segments: ordered}));
+    assert.equal(row.largestEvidenceGapPct, 10);
+    assert.equal(row.largestEvidenceGapMinutes, 100 / 60);
+    assert.equal(row.largestEvidenceGapStartSeconds, 0);
+    assert.equal(row.largestEvidenceGapEndSeconds, 100);
+  }
+});
+
+test("largest gap can be internal or trailing", () => {
+  const internal = analyzeVideoSegmentRisk(input({durationSeconds: 1_000, segments: [span(0, 200), span(700, 1_000)]}));
+  const trailing = analyzeVideoSegmentRisk(input({durationSeconds: 1_000, segments: [span(0, 200)]}));
+  assert.equal(internal.largestEvidenceGapPct, 50);
+  assert.equal(internal.largestEvidenceGapStartSeconds, 200);
+  assert.equal(internal.largestEvidenceGapEndSeconds, 700);
+  assert.equal(trailing.largestEvidenceGapPct, 80);
+  assert.equal(trailing.largestEvidenceGapStartSeconds, 200);
+  assert.equal(trailing.largestEvidenceGapEndSeconds, 1_000);
+});
+
+test("missing evidence end is a point even when the segment has an end", () => {
   const row = analyzeVideoSegmentRisk(input({
-    durationSeconds: 7_200,
-    segments: [{
-      kind: "chapter", start: "1:58:00", sourcePath,
-      evidence: [{start: "1:58:00", end: "2:00:00", note: "Late evidence."}],
-    }],
+    durationSeconds: 1_200,
+    segments: [{kind: "chapter", start: "5:00", end: "20:00", sourcePath, evidence: [{start: "5:00", note: "Point."}]}],
+  }));
+  assert.equal(row.largestEvidenceGapPct, 75);
+  assert.equal(row.largestEvidenceGapStartSeconds, 300);
+  assert.equal(row.largestEvidenceGapEndSeconds, 1_200);
+});
+
+test("nonzero transcript starts constrain the interval and preserve absolute gap locations", () => {
+  const covered = analyzeVideoSegmentRisk(input({
+    transcriptStartSeconds: 600, durationSeconds: 1_200, segments: [span(600, 900), span(900, 1_200)],
+  }));
+  assert.equal(covered.durationMinutes, 10);
+  assert.equal(covered.firstSegmentPositionPct, 0);
+  assert.equal(covered.lastSegmentPositionPct, 100);
+  assert.equal(covered.largestAnchorGapPct, 50);
+  assert.equal(covered.largestEvidenceGapPct, 0);
+  const gap = analyzeVideoSegmentRisk(input({transcriptStartSeconds: 600, durationSeconds: 1_200, segments: [span(720, 900)]}));
+  assert.equal(gap.largestEvidenceGapPct, 50);
+  assert.equal(gap.largestEvidenceGapMinutes, 5);
+  assert.equal(gap.largestEvidenceGapStartSeconds, 900);
+  assert.equal(gap.largestEvidenceGapEndSeconds, 1_200);
+});
+
+test("invalid evidence, source paths, and segment timing cannot create coverage", () => {
+  const cases: AuditSegment[] = [
+    {...span(0, 600), sourcePath: "wrong.txt"}, {...span(0, 600), sourcePath: undefined},
+    {...span(0, 600), start: "0:70"}, {...span(0, 600), end: "0:70"}, {...span(300, 600), end: "0:00"},
+    {...span(0, 600), evidence: [{start: "0:00", end: "10:00", note: " "}]},
+    {...span(0, 600), evidence: [{start: "0:00", end: "0:70", note: "Malformed."}]},
+    {...span(0, 600), evidence: [{start: "10:00", end: "0:00", note: "Reversed."}]},
+    {...span(0, 600), evidence: [null]},
+  ];
+  for (const segment of cases) {
+    const row = analyzeVideoSegmentRisk(input({durationSeconds: 600, segments: [segment]}));
+    assert.equal(row.auditRoute, "repair_required", JSON.stringify(segment));
+    assert.equal(row.largestEvidenceGapPct, 100, JSON.stringify(segment));
+    assert.equal(row.largestEvidenceGapStartSeconds, 0);
+    assert.equal(row.largestEvidenceGapEndSeconds, 600);
+  }
+});
+
+test("earlier citations remain valid and only evidence overlapping the segment contributes coverage", () => {
+  const row = analyzeVideoSegmentRisk(input({
+    durationSeconds: 1_200,
+    segments: [{kind: "chapter", start: "5:00", end: "10:00", sourcePath, evidence: [
+      {start: "0:00", end: "2:00", note: "Earlier supporting citation."},
+      {start: "6:00", end: "9:00", note: "Local evidence."},
+    ]}],
   }));
   assert.equal(row.auditRoute, "low_signal");
-  assert.equal(row.lastSegmentPositionPct, 100);
-  assert.ok((row.largestAnchorGapPct ?? 0) > 95);
-  assert.equal(row.temporalBinsCovered, 1);
+  assert.equal(row.invalidEvidenceSegments, 0);
+  assert.ok(Math.abs(row.largestEvidenceGapPct! - 55) < 1e-9);
+  assert.equal(row.largestEvidenceGapStartSeconds, 540);
+  const clipped = analyzeVideoSegmentRisk(input({
+    durationSeconds: 1_200, segments: [{kind: "chapter", start: "5:00", end: "10:00", sourcePath,
+      evidence: [{start: "0:00", end: "20:00", note: "Broad supporting evidence."}]}],
+  }));
+  assert.equal(clipped.auditRoute, "low_signal");
+  assert.equal(clipped.largestEvidenceGapPct, 50);
+  assert.equal(clipped.largestEvidenceGapStartSeconds, 600);
 });
 
-test("distributed anchors cover more bins and preserve a smaller internal gap", () => {
-  const clustered = analyzeVideoSegmentRisk(input({
-    durationSeconds: 1_800,
-    segments: segmentsAt(0, 600, 1_200, 1_800),
-  }));
-  const distributed = analyzeVideoSegmentRisk(input({
-    durationSeconds: 1_800,
-    segments: segmentsAt(0, 300, 600, 900, 1_200, 1_500, 1_800),
-  }));
-  assert.ok(distributed.temporalBinsCovered > clustered.temporalBinsCovered);
-  assert.ok((distributed.largestAnchorGapPct ?? 100) < (clustered.largestAnchorGapPct ?? 0));
-  assert.ok(distributed.auditRiskScore! < clustered.auditRiskScore!);
+test("malformed segment entries produce repair rows without throwing", () => {
+  for (const malformed of [null, 7, "segment", []]) {
+    const row = analyzeVideoSegmentRisk(input({segments: [malformed as unknown as AuditSegment]}));
+    assert.equal(row.auditRoute, "repair_required");
+    assert.equal(row.segmentCount, 1);
+    assert.equal(row.largestEvidenceGapPct, 100);
+  }
 });
 
-test("transcript temporal metrics use the manifest transcript interval rather than video zero", () => {
-  const row = analyzeVideoSegmentRisk(input({
-    transcriptStartSeconds: 600,
-    durationSeconds: 1_200,
-    segments: [
-      {kind: "chapter", start: "10:00", sourcePath, evidence: [{start: "10:00", end: "15:00", note: "a"}]},
-      {kind: "chapter", start: "15:00", sourcePath, evidence: [{start: "15:00", end: "20:00", note: "b"}]},
-    ],
-  }));
-
-  assert.equal(row.durationMinutes, 10);
-  assert.equal(row.firstSegmentPositionPct, 0);
-  assert.equal(row.lastSegmentPositionPct, 100);
-  assert.equal(row.largestAnchorGapPct, 50);
-  assert.equal(row.largestAnchorGapMinutes, 5);
-});
-
-test("structural and evidence defects route to repair", () => {
-  const row = analyzeVideoSegmentRisk(input({
-    structuralIssues: ["unknown shard root property"],
-    segments: [{kind: "qa", start: "0:70", sourcePath: "wrong.txt", evidence: [{}]}],
-  }));
-  assert.equal(row.auditRoute, "repair_required");
-  assert.equal(row.wrongSourcePathSegments, 1);
-  assert.equal(row.invalidEvidenceSegments, 1);
-  assert.equal(row.validQaCount, 0);
-  assert.ok(row.invalidAnchorCount > 0);
-});
-
-test("explicit-title Q/A expectation requires a valid qa record", () => {
-  const row = analyzeVideoSegmentRisk(input({
-    videoTitle: "Questions Q/A",
-    qaExpectation: "explicit_title",
-    segments: [{kind: "chapter", start: "0:00", sourcePath, evidence: [{start: "0:00", note: "Opening."}]}],
-  }));
-  assert.equal(row.auditRoute, "review_candidate");
-  assert.match(row.riskSignals.join(" "), /explicit Q&A title/u);
-});
-
-test("configured-video-type Q/A expectation is diagnostic only", () => {
-  const generic = analyzeVideoSegmentRisk(input({qaExpectation: "configured_video_type"}));
+test("explicit-title Q&A requires valid records while configured types remain diagnostic", () => {
   const explicit = analyzeVideoSegmentRisk(input({qaExpectation: "explicit_title"}));
-
+  const generic = analyzeVideoSegmentRisk(input({qaExpectation: "configured_video_type"}));
+  assert.equal(explicit.auditRoute, "review_candidate");
+  assert.match(explicit.riskSignals.join(" "), /explicit Q&A title/u);
   assert.equal(generic.auditRoute, "low_signal");
   assert.match(generic.riskSignals.join(" "), /diagnostic context only/u);
-  assert.equal(explicit.auditRoute, "review_candidate");
+  const qa = {...span(0, 600), kind: "qa", question: "Fixture question?", answerShort: "Answer."};
+  assert.equal(analyzeVideoSegmentRisk(input({durationSeconds: 600, qaExpectation: "explicit_title", segments: [qa]})).validQaCount, 1);
+  const invalid = analyzeVideoSegmentRisk(input({segments: [{...qa, answerShort: " "}]}));
+  assert.equal(invalid.validQaCount, 0);
+  assert.equal(invalid.auditRoute, "repair_required");
 });
 
-test("empty shards use audit opportunity for route and remain unscored", () => {
-  const unreviewed = analyzeVideoSegmentRisk(input({processLogEntries: 0, segments: []}));
-  const onceReviewed = analyzeVideoSegmentRisk(input({processLogEntries: 1, segments: []}));
-  const repeatedlyReviewed = analyzeVideoSegmentRisk(input({processLogEntries: 2, segments: []}));
-
-  assert.equal(unreviewed.auditRoute, "review_candidate");
-  assert.equal(onceReviewed.auditRoute, "review_candidate");
-  assert.equal(repeatedlyReviewed.auditRoute, "low_signal");
-  assert.equal(unreviewed.auditRiskScore, undefined);
-  assert.equal(onceReviewed.auditRiskScore, undefined);
-  assert.equal(repeatedlyReviewed.auditRiskScore, undefined);
+test("zero-segment rows never enter ranking regardless of counts or structural issues", () => {
+  const rows = [0, 1, 2, 20].map((processLogEntries) => analyzeVideoSegmentRisk(input({segments: [], processLogEntries})));
+  rows.push(analyzeVideoSegmentRisk(input({segments: [], structuralIssues: ["malformed JSON"]})));
+  assert.deepEqual(rankVideoSegmentAuditRisks(rows), []);
+  const populated = analyzeVideoSegmentRisk(input({fileStem: "populated"}));
+  assert.deepEqual(rankVideoSegmentAuditRisks([...rows, populated]).map(({fileStem, rank}) => ({fileStem, rank})), [{fileStem: "populated", rank: 1}]);
 });
 
-test("processing-log count does not change route or score", () => {
-  const firstPass = analyzeVideoSegmentRisk(input({processLogEntries: 1, durationSeconds: 1_200}));
-  const secondPass = analyzeVideoSegmentRisk(input({processLogEntries: 2, durationSeconds: 1_200}));
-  const thirdPass = analyzeVideoSegmentRisk(input({processLogEntries: 3, durationSeconds: 1_200}));
-  const laterPass = analyzeVideoSegmentRisk(input({processLogEntries: 6, durationSeconds: 1_200}));
-
-  assert.equal(firstPass.auditRoute, "low_signal");
-  assert.equal(secondPass.auditRoute, firstPass.auditRoute);
-  assert.equal(thirdPass.auditRoute, firstPass.auditRoute);
-  assert.equal(laterPass.auditRoute, firstPass.auditRoute);
-  assert.equal(secondPass.auditRiskScore, firstPass.auditRiskScore);
-  assert.equal(thirdPass.auditRiskScore, secondPass.auditRiskScore);
-  assert.equal(laterPass.auditRiskScore, thirdPass.auditRiskScore);
+test("processing-log count and saturation context never suppress or promote a row", () => {
+  const first = analyzeVideoSegmentRisk(input({processLogEntries: 1}));
+  for (const processLogEntries of [0, 2, 3, 6, 100]) {
+    const later = analyzeVideoSegmentRisk(input({
+      processLogEntries,
+      latestProcessingRecord: {timestamp: "2026-09-05T12:00:00", lineNumber: 12, result: "saturated", notes: "GPT-6 Astra Ultra audit added no further content."},
+    }));
+    const {processLogEntries: _firstCount, latestProcessingRecord: _firstLog, ...firstMeasures} = first;
+    const {processLogEntries: _laterCount, latestProcessingRecord: _laterLog, ...laterMeasures} = later;
+    assert.deepEqual(laterMeasures, firstMeasures);
+  }
 });
 
-test("manual audio is display-only and cannot change route, score, order, or rank", () => {
-  const withoutManual = analyzeVideoSegmentRisk(input({videoId: "a", fileStem: "a", manualAudioReviewRemaining: false}));
-  const withManual = analyzeVideoSegmentRisk(input({videoId: "a", fileStem: "a", manualAudioReviewRemaining: true}));
-  const {manualAudioReviewRemaining: _withoutDisplay, ...withoutRiskFields} = withoutManual;
-  const {manualAudioReviewRemaining: _withDisplay, ...withRiskFields} = withManual;
-  assert.deepEqual(withRiskFields, withoutRiskFields);
-
-  const other = analyzeVideoSegmentRisk(input({videoId: "b", fileStem: "b", processLogEntries: 1}));
-  const original = rankVideoSegmentAuditRisks([withoutManual, other]);
-  const toggled = rankVideoSegmentAuditRisks([
-    {...withoutManual, manualAudioReviewRemaining: true},
-    {...other, manualAudioReviewRemaining: !other.manualAudioReviewRemaining},
-  ]);
-  assert.deepEqual(original.map(({videoId, rank}) => ({videoId, rank})), toggled.map(({videoId, rank}) => ({videoId, rank})));
+test("audio-related processing notes remain verbatim context without affecting measurements", () => {
+  const record = {timestamp: "2026-09-05T12:00:00", lineNumber: 12, result: "audited", notes: "manual audio review completed"};
+  const first = analyzeVideoSegmentRisk(input({latestProcessingRecord: record}));
+  const later = analyzeVideoSegmentRisk(input({latestProcessingRecord: {...record, notes: "manual audio review remains"}}));
+  const {latestProcessingRecord: firstRecord, ...firstMeasures} = first;
+  const {latestProcessingRecord: laterRecord, ...laterMeasures} = later;
+  assert.deepEqual(firstMeasures, laterMeasures);
+  assert.equal(firstRecord?.notes, "manual audio review completed");
+  assert.equal(laterRecord?.notes, "manual audio review remains");
+  assert.equal("manualAudioReviewRemaining" in first, false);
 });
 
-test("relative gap score is exact and ignores absolute gap, bins, sizes, and segment count", () => {
-  const zero = analyzeVideoSegmentRisk(input({
-    durationSeconds: 1_800,
-    segments: segmentsAt(...Array.from({length: 21}, (_, index) => index * 90)),
-  }));
-  const partial = analyzeVideoSegmentRisk(input({
-    durationSeconds: 1_800,
-    segments: segmentsAt(0, 495, 990, 1_485, 1_800),
-  }));
-  const capped = analyzeVideoSegmentRisk(input({durationSeconds: 1_800, segments: segmentsAt(0)}));
-  const compact = analyzeVideoSegmentRisk(input({shardBytes: 1, transcriptBytes: 100}));
-  const verbose = analyzeVideoSegmentRisk(input({shardBytes: 1_000_000, transcriptBytes: 1_000_000}));
-
-  assert.equal(zero.auditRiskScore, 0);
-  assert.equal(partial.auditRiskScore, 50);
-  assert.equal(capped.auditRiskScore, 100);
-  assert.equal(verbose.auditRiskScore, compact.auditRiskScore);
-  const longer = analyzeVideoSegmentRisk(input({durationSeconds: 7_200, segments: segmentsAt(0, 1_800, 3_600, 5_400, 7_200)}));
-  const shorter = analyzeVideoSegmentRisk(input({durationSeconds: 3_600, segments: segmentsAt(0, 900, 1_800, 2_700, 3_600)}));
-  assert.equal(longer.largestAnchorGapPct, shorter.largestAnchorGapPct);
-  assert.ok((longer.largestAnchorGapMinutes ?? 0) > (shorter.largestAnchorGapMinutes ?? 0));
-  assert.equal(longer.auditRiskScore, shorter.auditRiskScore);
+test("gap percentage has no clip-length thresholds or size weighting", () => {
+  const short = analyzeVideoSegmentRisk(input({durationSeconds: 120, segments: [span(0, 60)]}));
+  const long = analyzeVideoSegmentRisk(input({durationSeconds: 7_200, segments: [span(0, 3_600)]}));
+  assert.equal(short.largestEvidenceGapPct, 50);
+  assert.equal(long.largestEvidenceGapPct, 50);
+  assert.equal(short.largestEvidenceGapMinutes, 1);
+  assert.equal(long.largestEvidenceGapMinutes, 60);
+  assert.equal(analyzeVideoSegmentRisk(input({transcriptBytes: 1, shardBytes: 1_000_000})).largestEvidenceGapPct,
+      analyzeVideoSegmentRisk(input()).largestEvidenceGapPct);
 });
 
-test("Q&A dispersion and extra temporal bins are diagnostic only", () => {
-  const clustered = analyzeVideoSegmentRisk(input({
-    qaExpectation: "configured_video_type",
-    segments: [qaAt(0), ...segmentsAt(900, 1_800, 2_700, 3_600)],
-  }));
-  const distributed = analyzeVideoSegmentRisk(input({
-    qaExpectation: "configured_video_type",
-    segments: [qaAt(0), qaAt(300), qaAt(1_200), qaAt(2_400), ...segmentsAt(900, 1_800, 2_700, 3_600)],
-  }));
-
-  assert.equal(clustered.largestAnchorGapPct, distributed.largestAnchorGapPct);
-  assert.ok(distributed.temporalBinsCovered > clustered.temporalBinsCovered);
-  assert.ok(distributed.qaTemporalBinsCovered > clustered.qaTemporalBinsCovered);
-  assert.equal(distributed.auditRiskScore, clustered.auditRiskScore);
+test("rank uses route, absolute gap, percentage, then filename without count tie-breaking", () => {
+  const repair = analyzeVideoSegmentRisk(input({fileStem: "z-repair", structuralIssues: ["bad root"], segments: [span(0, 3_600)]}));
+  const review = analyzeVideoSegmentRisk(input({fileStem: "z-review", qaExpectation: "explicit_title", segments: [span(0, 3_600)]}));
+  const long = analyzeVideoSegmentRisk(input({fileStem: "z-long", durationSeconds: 7_200, segments: [span(0, 6_000)]}));
+  const clip = analyzeVideoSegmentRisk(input({fileStem: "a-clip", durationSeconds: 180, segments: [span(0, 60)]}));
+  assert.ok(long.largestEvidenceGapPct! < clip.largestEvidenceGapPct!);
+  assert.deepEqual(rankVideoSegmentAuditRisks([clip, long, review, repair]).map(({fileStem}) => fileStem), ["z-repair", "z-review", "z-long", "a-clip"]);
+  const tieA = analyzeVideoSegmentRisk(input({fileStem: "a-tie", processLogEntries: 99}));
+  const tieB = analyzeVideoSegmentRisk(input({fileStem: "b-tie", processLogEntries: 0}));
+  assert.deepEqual(rankVideoSegmentAuditRisks([tieB, tieA]).map(({fileStem}) => fileStem), ["a-tie", "b-tie"]);
+  const lowPct = analyzeVideoSegmentRisk(input({fileStem: "a-low-pct", durationSeconds: 2_400, segments: [span(0, 1_800)]}));
+  const highPct = analyzeVideoSegmentRisk(input({fileStem: "z-high-pct", durationSeconds: 1_200, segments: [span(0, 600)]}));
+  assert.deepEqual(rankVideoSegmentAuditRisks([lowPct, highPct]).map(({fileStem}) => fileStem), ["z-high-pct", "a-low-pct"]);
 });
 
-test("route precedence and TSV expose the controlling model", () => {
-  const repair = analyzeVideoSegmentRisk(input({fileStem: "repair", structuralIssues: ["bad root"]}));
-  const review = analyzeVideoSegmentRisk(input({fileStem: "review", processLogEntries: 1, segments: []}));
-  const ranked = rankVideoSegmentAuditRisks([review, repair]);
-  const tsv = renderVideoSegmentAuditRiskTsv(ranked);
-  const lines = tsv.trimEnd().split("\n");
-  const header = (lines[0] ?? "").split("\t");
-  assert.equal(ranked[0]?.auditRoute, "repair_required");
-  assert.deepEqual(header, [
-    "file stem",
-    "rank",
-    "audit risk score",
-    "audit route",
-    "process log entries",
-    "transcript bytes",
-    "shard bytes",
-    "shard to transcript ratio",
-    "duration minutes",
-    "segment count",
-    "qa count",
-    "valid qa count",
-    "qa temporal bins covered",
-    "segments per hour",
-    "first segment position pct",
-    "last segment position pct",
-    "temporal bins covered",
-    "largest anchor gap pct",
-    "largest anchor gap minutes",
-    "valid anchor count",
-    "manual audio review remaining",
-  ]);
-  const firstRow = (lines[1] ?? "").split("\t");
-  assert.equal(firstRow.length, header.length);
-  assert.match(firstRow[header.indexOf("audit risk score")] ?? "", /^\d+\.\d$/u);
-  assert.equal(header.at(-1), "manual audio review remaining");
-  assert.doesNotMatch(lines[0] ?? "", /_/u);
+test("invalid transcript intervals have undefined measurements and sort after measured repair rows", () => {
+  for (const override of [{durationSeconds: undefined}, {durationSeconds: 600, transcriptStartSeconds: 600},
+    {durationSeconds: 600, transcriptStartSeconds: 700}]) {
+    const missing = analyzeVideoSegmentRisk(input({fileStem: "a-missing", ...override}));
+    const measured = analyzeVideoSegmentRisk(input({fileStem: "z-measured", structuralIssues: ["bad root"]}));
+    assert.equal(missing.largestEvidenceGapPct, undefined);
+    assert.equal(missing.largestEvidenceGapMinutes, undefined);
+    assert.equal(missing.largestEvidenceGapStartSeconds, undefined);
+    assert.equal(missing.largestEvidenceGapEndSeconds, undefined);
+    assert.equal(missing.transcriptBytesPerMinute, undefined);
+    assert.deepEqual(rankVideoSegmentAuditRisks([missing, measured]).map(({fileStem}) => fileStem), ["z-measured", "a-missing"]);
+  }
 });
 
-test("rank uses score before opportunity and file stem as the final tie-break", () => {
-  const highAfterMorePasses = analyzeVideoSegmentRisk(input({
-    fileStem: "z-high",
-    videoId: "high",
-    processLogEntries: 4,
-    durationSeconds: 1_800,
-    segments: segmentsAt(0),
-  }));
-  const lowerAfterOnePass = analyzeVideoSegmentRisk(input({
-    fileStem: "a-low",
-    videoId: "low",
-    processLogEntries: 1,
-    durationSeconds: 1_800,
-    segments: segmentsAt(0, 450, 900, 1_350, 1_800),
-  }));
-  const equalFewerPasses = analyzeVideoSegmentRisk(input({fileStem: "z-fewer", videoId: "fewer", processLogEntries: 1}));
-  const equalMorePasses = analyzeVideoSegmentRisk(input({fileStem: "a-more", videoId: "more", processLogEntries: 2}));
-  const fileStemA = analyzeVideoSegmentRisk(input({fileStem: "a-final", videoId: "file-a", processLogEntries: 3}));
-  const fileStemB = analyzeVideoSegmentRisk(input({fileStem: "b-final", videoId: "file-b", processLogEntries: 3}));
-  const blank = analyzeVideoSegmentRisk(input({fileStem: "blank", videoId: "blank", processLogEntries: 2, segments: []}));
-
-  assert.ok((highAfterMorePasses.auditRiskScore ?? 0) > (lowerAfterOnePass.auditRiskScore ?? 0));
-  assert.deepEqual(
-      rankVideoSegmentAuditRisks([lowerAfterOnePass, highAfterMorePasses]).map((row) => row.videoId),
-      ["high", "low"],
-  );
-  assert.deepEqual(rankVideoSegmentAuditRisks([equalMorePasses, equalFewerPasses]).map((row) => row.videoId), ["fewer", "more"]);
-  assert.deepEqual(rankVideoSegmentAuditRisks([fileStemB, fileStemA]).map((row) => row.videoId), ["file-a", "file-b"]);
-  assert.deepEqual(rankVideoSegmentAuditRisks([blank, lowerAfterOnePass]).map((row) => row.videoId), ["low", "blank"]);
-});
-
-test("blank score renders as blank and manual audio is the final value", () => {
+test("TSV exposes measured gaps and safe latest-processing context", () => {
   const row = analyzeVideoSegmentRisk(input({
-    fileStem: "blank",
-    videoId: "blank",
-    processLogEntries: 2,
-    segments: [],
-    manualAudioReviewRemaining: true,
+    durationSeconds: 7_200, segments: [span(0, 3_900)], structuralIssues: ["issue\twith\nwhitespace"],
+    latestProcessingRecord: {timestamp: "2026-09-05T12:00:00", lineNumber: 37, result: "strengthened\tsegments", notes: "Astra Ultra; added examples\nFull coverage\rchecked."},
   }));
-  const lines = renderVideoSegmentAuditRiskTsv(rankVideoSegmentAuditRisks([row])).trimEnd().split("\n");
-  const header = (lines[0] ?? "").split("\t");
-  const cells = (lines[1] ?? "").split("\t");
-  assert.equal(cells[header.indexOf("audit risk score")], "");
-  assert.equal(cells.at(-1), "true");
+  const lines = renderVideoSegmentAuditRiskTsv([row]).trimEnd().split("\n");
+  const header = lines[0]!.split("\t");
+  const cells = lines[1]!.split("\t");
+  assert.deepEqual(header, [
+    "file stem", "rank", "process log entries", "transcript bytes", "shard bytes",
+    "shard to transcript ratio", "duration minutes", "Transcript Bytes Per Minute", "segment count", "qa count", "valid qa count",
+    "qa temporal bins covered", "segments per hour", "first segment position pct", "last segment position pct",
+    "temporal bins covered", "largest anchor gap pct", "largest anchor gap minutes", "largest evidence gap pct",
+    "largest evidence gap minutes", "largest evidence gap start", "largest evidence gap end", "valid anchor count",
+    "latest processing timestamp", "latest processing log line", "latest processing result",
+    "latest processing notes", "audit route",
+  ]);
+  assert.equal(lines.length, 2);
+  assert.equal(cells.length, header.length);
+  for (const [column, expected] of [
+    ["Transcript Bytes Per Minute", "83.33"],
+    ["largest evidence gap pct", "45.8"], ["largest evidence gap start", "1:05:00"], ["largest evidence gap end", "2:00:00"],
+    ["latest processing timestamp", "2026-09-05T12:00:00"],
+    ["latest processing log line", "37"], ["latest processing result", "strengthened segments"],
+    ["latest processing notes", "Astra Ultra; added examples Full coverage checked."],
+  ]) assert.equal(cells[header.indexOf(column!)], expected);
+  assert.equal(cells.at(-1), "repair_required");
+  assert.doesNotMatch(header.join("\t"), /_|score|probability/u);
+  const unavailable = renderVideoSegmentAuditRiskTsv([analyzeVideoSegmentRisk(input({durationSeconds: undefined}))]).trimEnd().split("\n")[1]!.split("\t");
+  for (const name of ["Transcript Bytes Per Minute", "largest evidence gap pct", "largest evidence gap minutes", "largest evidence gap start", "largest evidence gap end",
+    "latest processing timestamp", "latest processing log line", "latest processing result", "latest processing notes"]) {
+    assert.equal(unavailable[header.indexOf(name)], "", name);
+  }
+  const short = renderVideoSegmentAuditRiskTsv([analyzeVideoSegmentRisk(input({durationSeconds: 601, segments: [span(0, 300)]}))]).trimEnd().split("\n")[1]!.split("\t");
+  assert.equal(short[header.indexOf("duration minutes")], "10.0");
+  assert.equal(short[header.indexOf("Transcript Bytes Per Minute")], "998.34");
+  assert.equal(short[header.indexOf("largest evidence gap start")], "5:00");
+  assert.equal(short[header.indexOf("largest evidence gap end")], "10:01");
+  for (const [transcriptBytes, expected] of [[undefined, ""], [0, "0.00"]] as const) {
+    const values = renderVideoSegmentAuditRiskTsv([analyzeVideoSegmentRisk(input({transcriptBytes}))]).trimEnd().split("\n")[1]!.split("\t");
+    assert.equal(values[header.indexOf("Transcript Bytes Per Minute")], expected);
+  }
 });
 
-function segmentsAt(...seconds: number[]): AuditSegment[] {
-  return seconds.map((start) => ({
-    kind: "chapter",
-    start: timestamp(start),
-    sourcePath,
-    evidence: [{start: timestamp(start), note: `Evidence at ${start}.`}],
-  }));
+function span(start: number, end: number): AuditSegment {
+  return {kind: "chapter", start: timestamp(start), end: timestamp(end), sourcePath,
+    evidence: [{start: timestamp(start), end: timestamp(end), note: "Transcript evidence."}]};
 }
-
-function qaAt(start: number): AuditSegment {
-  return {
-    kind: "qa",
-    start: timestamp(start),
-    sourcePath,
-    question: `Question at ${start}?`,
-    answerShort: "Answer.",
-    evidence: [{start: timestamp(start), note: `Q&A evidence at ${start}.`}],
-  };
-}
-
 function timestamp(seconds: number): string {
   const hours = Math.floor(seconds / 3_600);
   const minutes = Math.floor((seconds % 3_600) / 60);
   const remainder = seconds % 60;
-  return hours > 0
-      ? `${hours}:${String(minutes).padStart(2, "0")}:${String(remainder).padStart(2, "0")}`
-      : `${minutes}:${String(remainder).padStart(2, "0")}`;
+  return hours > 0 ? hours + ":" + String(minutes).padStart(2, "0") + ":" + String(remainder).padStart(2, "0")
+      : minutes + ":" + String(remainder).padStart(2, "0");
 }

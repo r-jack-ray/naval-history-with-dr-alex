@@ -17,6 +17,13 @@ export interface AuditSegment {
   answerShort?: unknown;
 }
 
+export interface AuditProcessingRecord {
+  timestamp: string;
+  lineNumber: number;
+  result: string;
+  notes: string;
+}
+
 export interface VideoSegmentAuditRiskInput {
   fileStem: string;
   filePath?: string;
@@ -29,26 +36,25 @@ export interface VideoSegmentAuditRiskInput {
   transcriptStartSeconds?: number;
   durationSeconds: number | undefined;
   segments: AuditSegment[];
-  manualAudioReviewRemaining?: boolean;
   structuralIssues?: string[];
   qaExpectation?: QaExpectation;
   minimumEvidenceWindows?: number;
+  latestProcessingRecord?: AuditProcessingRecord;
 }
 
 export interface VideoSegmentAuditRiskRow {
   rank: number;
-  auditRiskScore: number | undefined;
   auditRoute: AuditRoute;
   videoId: string;
   fileStem: string;
   filePath: string | undefined;
   videoTitle: string;
-  manualAudioReviewRemaining: boolean;
   processLogEntries: number;
   transcriptBytes: number | undefined;
   shardBytes: number;
   shardToTranscriptRatio: number | undefined;
   durationMinutes: number | undefined;
+  transcriptBytesPerMinute: number | undefined;
   segmentCount: number;
   qaCount: number;
   validQaCount: number;
@@ -59,6 +65,10 @@ export interface VideoSegmentAuditRiskRow {
   temporalBinsCovered: number;
   largestAnchorGapPct: number | undefined;
   largestAnchorGapMinutes: number | undefined;
+  largestEvidenceGapPct: number | undefined;
+  largestEvidenceGapMinutes: number | undefined;
+  largestEvidenceGapStartSeconds: number | undefined;
+  largestEvidenceGapEndSeconds: number | undefined;
   validAnchorCount: number;
   invalidAnchorCount: number;
   missingSourcePathSegments: number;
@@ -66,6 +76,7 @@ export interface VideoSegmentAuditRiskRow {
   missingEvidenceSegments: number;
   invalidEvidenceSegments: number;
   riskSignals: string[];
+  latestProcessingRecord?: AuditProcessingRecord;
 }
 
 const ROUTE_ORDER: Record<AuditRoute, number> = {
@@ -82,6 +93,7 @@ export function analyzeVideoSegmentRisk(input: VideoSegmentAuditRiskInput): Vide
   const minimumEvidenceWindows = input.minimumEvidenceWindows ?? 1;
   const anchors: number[] = [];
   const qaAnchors: number[] = [];
+  const evidenceSpans: EvidenceSpan[] = [];
   let invalidAnchorCount = 0;
   let missingSourcePathSegments = 0;
   let wrongSourcePathSegments = 0;
@@ -93,8 +105,12 @@ export function analyzeVideoSegmentRisk(input: VideoSegmentAuditRiskInput): Vide
   for (let index = 0; index < input.segments.length; index += 1) {
     const segment = input.segments[index]!;
     const label = `segment ${index + 1}`;
-    const start = boundedTimestamp(segment.start, input.durationSeconds);
-    const end = segment.end === undefined ? undefined : boundedTimestamp(segment.end, input.durationSeconds);
+    if (!isRecord(segment)) {
+      hardIssues.push(`${label} must be an object`);
+      continue;
+    }
+    const start = boundedTimestamp(segment.start, input.durationSeconds, input.transcriptStartSeconds);
+    const end = segment.end === undefined ? undefined : boundedTimestamp(segment.end, input.durationSeconds, input.transcriptStartSeconds);
     let segmentTimeValid = true;
     if (start === undefined) {
       invalidAnchorCount += 1;
@@ -115,14 +131,18 @@ export function analyzeVideoSegmentRisk(input: VideoSegmentAuditRiskInput): Vide
       }
     }
 
+    let sourceValid = true;
     if (typeof segment.sourcePath !== "string" || segment.sourcePath.trim().length === 0) {
       missingSourcePathSegments += 1;
+      sourceValid = false;
     } else if (input.canonicalSourcePath !== undefined && normalizePath(segment.sourcePath) !== normalizePath(input.canonicalSourcePath)) {
       wrongSourcePathSegments += 1;
+      sourceValid = false;
     }
 
     let validEvidenceCount = 0;
     let evidenceInvalid = false;
+    const segmentSpans: EvidenceSpan[] = [];
     if (!Array.isArray(segment.evidence) || segment.evidence.length < minimumEvidenceWindows) {
       missingEvidenceSegments += 1;
     } else {
@@ -132,8 +152,8 @@ export function analyzeVideoSegmentRisk(input: VideoSegmentAuditRiskInput): Vide
           continue;
         }
         const evidence = evidenceValue as AuditEvidence;
-        const evidenceStart = boundedTimestamp(evidence.start, input.durationSeconds);
-        const evidenceEnd = evidence.end === undefined ? undefined : boundedTimestamp(evidence.end, input.durationSeconds);
+        const evidenceStart = boundedTimestamp(evidence.start, input.durationSeconds, input.transcriptStartSeconds);
+        const evidenceEnd = evidence.end === undefined ? undefined : boundedTimestamp(evidence.end, input.durationSeconds, input.transcriptStartSeconds);
         const validNote = typeof evidence.note === "string" && evidence.note.trim().length > 0;
         if (evidenceStart === undefined || !validNote || (evidence.end !== undefined && evidenceEnd === undefined)
             || (evidenceEnd !== undefined && evidenceEnd < evidenceStart)) {
@@ -147,6 +167,13 @@ export function analyzeVideoSegmentRisk(input: VideoSegmentAuditRiskInput): Vide
           continue;
         }
         validEvidenceCount += 1;
+        // Earlier or later citations can support a cross-reference. They are not
+        // schema defects, but only their overlap with this watch point spans it.
+        const spanStart = Math.max(evidenceStart, start ?? evidenceStart);
+        const spanEnd = Math.min(evidenceEnd ?? evidenceStart, end ?? Number.POSITIVE_INFINITY);
+        if (spanEnd >= spanStart) {
+          segmentSpans.push({startSeconds: spanStart, endSeconds: spanEnd});
+        }
         anchors.push(evidenceStart);
         if (evidenceEnd !== undefined) {
           anchors.push(evidenceEnd);
@@ -157,11 +184,15 @@ export function analyzeVideoSegmentRisk(input: VideoSegmentAuditRiskInput): Vide
       }
     }
 
+    if (sourceValid && segmentTimeValid && !evidenceInvalid && validEvidenceCount >= minimumEvidenceWindows) {
+      evidenceSpans.push(...segmentSpans);
+    }
+
     if (segment.kind === "qa") {
       qaCount += 1;
       const validText = typeof segment.question === "string" && segment.question.trim().length > 0
           && typeof segment.answerShort === "string" && segment.answerShort.trim().length > 0;
-      if (validText && segmentTimeValid && start !== undefined && validEvidenceCount >= minimumEvidenceWindows && !evidenceInvalid) {
+      if (validText && sourceValid && segmentTimeValid && start !== undefined && validEvidenceCount >= minimumEvidenceWindows && !evidenceInvalid) {
         validQaCount += 1;
         qaAnchors.push(start);
       }
@@ -205,9 +236,6 @@ export function analyzeVideoSegmentRisk(input: VideoSegmentAuditRiskInput): Vide
   if (qaExpectation === "configured_video_type" && validQaCount === 0 && input.segments.length > 0) {
     diagnosticSignals.push("configured video type expects Q&A, retained as diagnostic context only");
   }
-  if (input.segments.length === 0 && input.processLogEntries <= 1) {
-    reviewSignals.push("shard has no segments after at most one recorded audit opportunity");
-  }
   const auditRoute: AuditRoute = hardIssues.length > 0
       ? "repair_required"
       : reviewSignals.length > 0
@@ -218,33 +246,30 @@ export function analyzeVideoSegmentRisk(input: VideoSegmentAuditRiskInput): Vide
   const largestAnchorGapMinutes = distribution.largestGapPct === undefined || durationMinutes === undefined
       ? undefined
       : durationMinutes * distribution.largestGapPct / 100;
-  const score = relativeAnchorGapScore({
-    transcriptBytes: input.transcriptBytes,
-    durationMinutes,
-    segmentCount,
-    largestAnchorGapPct: distribution.largestGapPct,
-  });
+  const evidenceGap = positive(input.transcriptBytes) && segmentCount > 0
+      ? largestEvidenceGap(evidenceSpans, interval)
+      : undefined;
   const riskSignals = [...hardIssues];
   riskSignals.push(...reviewSignals);
   riskSignals.push(...diagnosticSignals);
   if (riskSignals.length === 0) {
-    riskSignals.push("no route-level failure or review cue detected; score uses relative anchor gap only");
+    riskSignals.push("no repair or Q&A review cue; evidence gaps need a transcript spot check and the latest audit notes");
   }
 
   return {
     rank: 0,
-    auditRiskScore: score,
     auditRoute,
     videoId: input.videoId,
     fileStem: input.fileStem,
     filePath: input.filePath,
     videoTitle: input.videoTitle,
-    manualAudioReviewRemaining: input.manualAudioReviewRemaining ?? false,
     processLogEntries: input.processLogEntries,
     transcriptBytes: input.transcriptBytes,
     shardBytes: input.shardBytes,
     shardToTranscriptRatio: positive(input.transcriptBytes) ? input.shardBytes / input.transcriptBytes : undefined,
     durationMinutes,
+    transcriptBytesPerMinute: input.transcriptBytes === undefined || durationMinutes === undefined
+        ? undefined : input.transcriptBytes / durationMinutes,
     segmentCount,
     qaCount,
     validQaCount,
@@ -255,6 +280,11 @@ export function analyzeVideoSegmentRisk(input: VideoSegmentAuditRiskInput): Vide
     temporalBinsCovered: distribution.binsCovered,
     largestAnchorGapPct: distribution.largestGapPct,
     largestAnchorGapMinutes,
+    largestEvidenceGapPct: evidenceGap === undefined || interval === undefined ? undefined
+        : (evidenceGap.endSeconds - evidenceGap.startSeconds) / interval.durationSeconds * 100,
+    largestEvidenceGapMinutes: evidenceGap === undefined ? undefined : (evidenceGap.endSeconds - evidenceGap.startSeconds) / 60,
+    largestEvidenceGapStartSeconds: evidenceGap?.startSeconds,
+    largestEvidenceGapEndSeconds: evidenceGap?.endSeconds,
     validAnchorCount: anchors.length,
     invalidAnchorCount,
     missingSourcePathSegments,
@@ -262,36 +292,43 @@ export function analyzeVideoSegmentRisk(input: VideoSegmentAuditRiskInput): Vide
     missingEvidenceSegments,
     invalidEvidenceSegments,
     riskSignals,
+    ...(input.latestProcessingRecord === undefined ? {} : {latestProcessingRecord: input.latestProcessingRecord}),
   };
 }
 
 export function rankVideoSegmentAuditRisks(rows: VideoSegmentAuditRiskRow[]): VideoSegmentAuditRiskRow[] {
-  return [...rows].sort((left, right) =>
+  return rows.filter((row) => row.segmentCount > 0).sort((left, right) =>
       ROUTE_ORDER[left.auditRoute] - ROUTE_ORDER[right.auditRoute]
-      || scoreAvailabilityOrder(left.auditRiskScore) - scoreAvailabilityOrder(right.auditRiskScore)
-      || compareDefinedScoresDescending(left.auditRiskScore, right.auditRiskScore)
-      || left.processLogEntries - right.processLogEntries
+      || compareDefinedGapsDescending(left.largestEvidenceGapMinutes, right.largestEvidenceGapMinutes)
+      || compareDefinedGapsDescending(left.largestEvidenceGapPct, right.largestEvidenceGapPct)
       || left.fileStem.localeCompare(right.fileStem))
       .map((row, index) => ({...row, rank: index + 1}));
 }
 
 export function renderVideoSegmentAuditRiskTsv(rows: VideoSegmentAuditRiskRow[]): string {
   const headers = [
-    "file stem", "rank", "audit risk score", "audit route", "process log entries", "transcript bytes", "shard bytes",
-    "shard to transcript ratio", "duration minutes",
+    "file stem", "rank", "process log entries", "transcript bytes", "shard bytes",
+    "shard to transcript ratio", "duration minutes", "Transcript Bytes Per Minute",
     "segment count", "qa count", "valid qa count", "qa temporal bins covered", "segments per hour",
     "first segment position pct", "last segment position pct", "temporal bins covered", "largest anchor gap pct",
     "largest anchor gap minutes",
-    "valid anchor count", "manual audio review remaining",
+    "largest evidence gap pct", "largest evidence gap minutes", "largest evidence gap start", "largest evidence gap end",
+    "valid anchor count", "latest processing timestamp", "latest processing log line",
+    "latest processing result", "latest processing notes", "audit route",
   ];
-  const body = rows.map((row) => [
-    row.filePath ?? row.fileStem, row.rank, format(row.auditRiskScore, 1), row.auditRoute,
+  const body = rows.filter((row) => row.segmentCount > 0).map((row) => [
+    row.filePath ?? row.fileStem, row.rank,
     row.processLogEntries, row.transcriptBytes ?? "", row.shardBytes,
     format(row.shardToTranscriptRatio, 4),
-    format(row.durationMinutes, 1), row.segmentCount, row.qaCount, row.validQaCount, row.qaTemporalBinsCovered,
+    format(row.durationMinutes, 1), format(row.transcriptBytesPerMinute, 2),
+    row.segmentCount, row.qaCount, row.validQaCount, row.qaTemporalBinsCovered,
     format(row.segmentsPerHour, 2), format(row.firstSegmentPositionPct, 1), format(row.lastSegmentPositionPct, 1),
     row.temporalBinsCovered, format(row.largestAnchorGapPct, 1), format(row.largestAnchorGapMinutes, 1),
-    row.validAnchorCount, row.manualAudioReviewRemaining,
+    format(row.largestEvidenceGapPct, 1), format(row.largestEvidenceGapMinutes, 1),
+    formatTimestamp(row.largestEvidenceGapStartSeconds), formatTimestamp(row.largestEvidenceGapEndSeconds),
+    row.validAnchorCount, row.latestProcessingRecord?.timestamp ?? "",
+    row.latestProcessingRecord?.lineNumber ?? "", row.latestProcessingRecord?.result ?? "", row.latestProcessingRecord?.notes ?? "",
+    row.auditRoute,
   ].map(escapeTsv).join("\t"));
   return `${headers.join("\t")}\n${body.join("\n")}\n`;
 }
@@ -324,12 +361,15 @@ export function parseStrictTimestamp(value: unknown): number | undefined {
   return numbers[0]! * 3_600 + numbers[1]! * 60 + numbers[2]!;
 }
 
-function boundedTimestamp(value: unknown, durationSeconds: number | undefined): number | undefined {
+function boundedTimestamp(value: unknown, durationSeconds: number | undefined, startSeconds?: number): number | undefined {
   const seconds = parseStrictTimestamp(value);
   if (seconds === undefined) {
     return undefined;
   }
   if (durationSeconds !== undefined && seconds > durationSeconds + TIMESTAMP_TOLERANCE_SECONDS) {
+    return undefined;
+  }
+  if (startSeconds !== undefined && seconds < startSeconds - TIMESTAMP_TOLERANCE_SECONDS) {
     return undefined;
   }
   return seconds;
@@ -345,9 +385,10 @@ function transcriptInterval(startSeconds: number | undefined, endSeconds: number
   if (!positive(endSeconds)) {
     return undefined;
   }
-  const start = startSeconds !== undefined && Number.isFinite(startSeconds) && startSeconds >= 0 && startSeconds < endSeconds
-      ? startSeconds
-      : 0;
+  const start = startSeconds ?? 0;
+  if (!Number.isFinite(start) || start < 0 || start >= endSeconds) {
+    return undefined;
+  }
   return {startSeconds: start, endSeconds, durationSeconds: endSeconds - start};
 }
 
@@ -381,32 +422,38 @@ function occupiedBins(anchors: number[], interval: TranscriptInterval | undefine
   })).size;
 }
 
-interface RelativeAnchorGapScoreInput {
-  transcriptBytes: number | undefined;
-  durationMinutes: number | undefined;
-  segmentCount: number;
-  largestAnchorGapPct: number | undefined;
+interface EvidenceSpan {
+  startSeconds: number;
+  endSeconds: number;
 }
 
-function relativeAnchorGapScore(input: RelativeAnchorGapScoreInput): number | undefined {
-  if (!positive(input.transcriptBytes) || input.segmentCount === 0 || input.durationMinutes === undefined
-      || input.largestAnchorGapPct === undefined) {
+function largestEvidenceGap(spans: EvidenceSpan[], interval: TranscriptInterval | undefined): EvidenceSpan | undefined {
+  if (interval === undefined) {
     return undefined;
   }
-
-  // Short clips provide too little duration for sparse anchors to be a meaningful warning.
-  const durationConfidence = unitInterval((input.durationMinutes - 5) / 25);
-  const relativeGapRisk = unitInterval((input.largestAnchorGapPct - 5) / 45) * durationConfidence;
-  return roundToOneDecimal(relativeGapRisk * 100);
+  // Union authored evidence spans, including point citations. Segment endpoints
+  // alone do not establish evidence. This is geometry, not semantic completeness.
+  const sorted = spans.map((span) => ({
+    startSeconds: clamp(span.startSeconds, interval.startSeconds, interval.endSeconds),
+    endSeconds: clamp(span.endSeconds, interval.startSeconds, interval.endSeconds),
+  })).sort((left, right) => left.startSeconds - right.startSeconds || left.endSeconds - right.endSeconds);
+  let cursor = interval.startSeconds;
+  let largest = {startSeconds: cursor, endSeconds: cursor};
+  for (const span of [...sorted, {startSeconds: interval.endSeconds, endSeconds: interval.endSeconds}]) {
+    if (span.startSeconds - cursor > largest.endSeconds - largest.startSeconds) {
+      largest = {startSeconds: cursor, endSeconds: span.startSeconds};
+    }
+    cursor = Math.max(cursor, span.endSeconds);
+  }
+  return largest;
 }
 
-function scoreAvailabilityOrder(score: number | undefined): number {
-  return score === undefined ? 1 : 0;
-}
-
-function compareDefinedScoresDescending(left: number | undefined, right: number | undefined): number {
-  if (left === undefined || right === undefined) {
-    return 0;
+function compareDefinedGapsDescending(left: number | undefined, right: number | undefined): number {
+  if (left === undefined) {
+    return right === undefined ? 0 : 1;
+  }
+  if (right === undefined) {
+    return -1;
   }
   return right - left;
 }
@@ -435,10 +482,13 @@ function clamp(value: number, minimum: number, maximum: number): number {
   return Math.min(maximum, Math.max(minimum, value));
 }
 
-function unitInterval(value: number): number {
-  return clamp(value, 0, 1);
-}
-
-function roundToOneDecimal(value: number): number {
-  return Math.round((value + Number.EPSILON) * 10) / 10;
+function formatTimestamp(value: number | undefined): string {
+  if (value === undefined) {
+    return "";
+  }
+  const seconds = Math.floor(value);
+  const hours = Math.floor(seconds / 3_600);
+  const minutes = Math.floor(seconds % 3_600 / 60);
+  const remainder = String(seconds % 60).padStart(2, "0");
+  return hours > 0 ? `${hours}:${String(minutes).padStart(2, "0")}:${remainder}` : `${minutes}:${remainder}`;
 }

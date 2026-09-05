@@ -10,28 +10,6 @@
   ],
   "segments": [
     {
-      "slug": "naval-food-as-operational-logistics",
-      "title": "Naval food as operational logistics",
-      "start": "0:00",
-      "end": "1:18",
-      "topics": [
-        "naval-logistics",
-        "naval-provisioning",
-        "shipboard-life"
-      ],
-      "body": "Naval food provides a starting point for comparing the culinary traditions of different fleets. Preservation and storage determined what could be taken to sea, while crews found ways to turn durable staples into filling, tolerable meals. The introduction covers salt meat, ship's biscuit, drink rations, stews, curry, and cookbooks. Together, these foods offer evidence about daily naval life and the practical limits of supporting a crew at sea.",
-      "sourcePath": "src/transcripts/txt/2025-12-25_T19-30-06_navy-food-a-beginning_nkalY1DVMAw.txt",
-      "evidence": [
-        {
-          "start": "0:00",
-          "end": "1:18",
-          "note": "The video introduces the culinary traditions of different navies and previews salt meat, biscuit, drink, and prepared dishes as an entry into naval history."
-        }
-      ],
-      "kind": "chapter",
-      "summary": "The introduction frames naval food as a problem of preservation, storage, nutrition, and the culinary traditions that crews built around those constraints."
-    },
-    {
       "slug": "salt-meat-preservation-and-nutrition",
       "title": "Salt meat, preservation, and nutrition",
       "start": "1:18",
@@ -39,17 +17,18 @@
       "topics": [
         "food-preservation",
         "naval-logistics",
+        "naval-nutrition",
         "naval-provisioning",
         "salt-meat",
         "shipboard-life"
       ],
-      "body": "Thin cuts were layered with salt and covered in brine so a barrel could preserve meat by excluding air and slowing spoilage. Fatty pieces absorbed the salt particularly well and could therefore remain usable for longer voyages. Heavier salting and longer storage reduced the meat's nutritional value. That became a problem when later navies tried to establish adequate diets for their personnel. The same technique that supported endurance at sea could work against crew health if provisions remained salted for too long.",
+      "body": "Thin cuts were layered with salt and covered in brine so a barrel could preserve meat by excluding air and slowing spoilage. Fatty pieces absorbed the salt particularly well and could remain usable for longer voyages. Heavier salting and longer storage reduced the meat's nutritional value. That became a problem when later navies tried to establish adequate diets for their personnel.",
       "sourcePath": "src/transcripts/txt/2025-12-25_T19-30-06_navy-food-a-beginning_nkalY1DVMAw.txt",
       "evidence": [
         {
           "start": "1:18",
           "end": "2:40",
-          "note": "The transcript explains barrel preservation with salt and brine, the value of fatty cuts, and the nutritional cost of prolonged salting."
+          "note": "Barrel preservation with salt and brine, the value of fatty cuts, and the nutritional cost of prolonged salting."
         }
       ],
       "kind": "chapter",
@@ -57,37 +36,92 @@
     },
     {
       "slug": "salt-pork-scale-and-salt-beef-quality",
-      "title": "Salt pork, economies of scale, and poor naval beef",
+      "title": "Why did salt pork become cheaper than salt beef?",
       "start": "2:40",
-      "end": "5:14",
+      "end": "3:31",
       "topics": [
         "economies-of-scale",
         "naval-provisioning",
-        "salt-beef",
-        "salt-pork",
-        "shipboard-life"
+        "salt-pork"
       ],
-      "body": "Salt pork began as the more expensive option, but large and predictable naval orders made it cheaper at scale. The example shows how institutional demand can change the relative cost of provisions. Pork also had a taste advantage over salt beef made from almost any available part of the animal. Period salt beef could have a wooden texture and should not be confused with the tender meat in a modern Reuben sandwich. The closing joke that barrels of salt beef made sailors eager to fish shows how poor food could affect morale and behavior aboard ship.",
+      "body": "Salt pork initially cost more than salt beef. The explanation for its later price advantage is that pork was available on a larger scale, allowing navies to order in bulk without paying to establish as many additional facilities. A preference for pork could keep its individual price higher while large orders still worked out cheaper. Naval provisioning therefore depended on the scale and organization of supply as well as the price of a single purchase.",
       "sourcePath": "src/transcripts/txt/2025-12-25_T19-30-06_navy-food-a-beginning_nkalY1DVMAw.txt",
       "evidence": [
         {
           "start": "2:40",
-          "end": "3:31",
-          "note": "The transcript explains how volume of demand and bulk ordering made salt pork cheaper at naval scale."
+          "end": "2:58",
+          "note": "Salt pork's initial price premium and subsequent price advantage as naval demand increased."
         },
         {
+          "start": "2:58",
+          "end": "3:31",
+          "note": "A reported question about the price reversal, answered through greater production scale, bulk orders, and avoided facilities costs."
+        }
+      ],
+      "kind": "qa",
+      "summary": "Bulk naval orders drew on a larger pork supply and avoided facilities costs, reversing the price comparison with salt beef.",
+      "question": "How did salt pork become cheaper than salt beef despite initially costing more?",
+      "answerShort": "Navies could obtain salt pork on a larger scale, ordering in bulk without paying to set up additional supply facilities."
+    },
+    {
+      "slug": "naval-salt-beef-cuts-texture-and-fishing",
+      "title": "Why naval salt beef could resemble wood",
+      "start": "3:31",
+      "end": "5:14",
+      "topics": [
+        "naval-provisioning",
+        "salt-beef",
+        "shipboard-life"
+      ],
+      "body": "Period naval salt beef could be made from almost any available part of the cow, packed tightly into a barrel. Descriptions comparing its texture with wood refer to that poor-quality provision. A modern Reuben sandwich uses a better cut and careful preparation, so its tender salt beef can give students a misleading expectation of the naval ration. The joke that barrels of salt beef made crews eager to fish depends on how strongly sailors would want something better to eat.",
+      "sourcePath": "src/transcripts/txt/2025-12-25_T19-30-06_navy-food-a-beginning_nkalY1DVMAw.txt",
+      "evidence": [
+        {
           "start": "3:31",
+          "end": "4:54",
+          "note": "Wood-like texture, indiscriminate cuts, and the contrast with tender salt beef in a modern Reuben sandwich."
+        },
+        {
+          "start": "4:54",
           "end": "5:14",
-          "note": "It contrasts poor period salt beef with modern delicatessen meat and jokes that its quality encouraged crews to fish for something better."
+          "note": "A joke about poor salt beef encouraging crews to fish for alternatives."
         }
       ],
       "kind": "notable_point",
-      "summary": "Bulk naval demand helped salt pork become economical, while indiscriminate cuts left period salt beef tough enough to damage morale and encourage crews to seek alternatives."
+      "summary": "Indiscriminate cuts and tight barrel packing help explain the contrast between tough naval salt beef and a modern delicatessen serving."
+    },
+    {
+      "slug": "hardtack-shapes-storage-and-surviving-examples",
+      "title": "Hardtack shapes, storage, and surviving examples",
+      "start": "5:14",
+      "end": "6:23",
+      "topics": [
+        "food-preservation",
+        "hardtack",
+        "naval-provisioning",
+        "ships-biscuit"
+      ],
+      "body": "Hardtack appeared in different national forms. Alex Clarke found the Japanese hardtack he tried just as dry as other ship's biscuit. A British Arctic expedition took hexagonal pieces because the shape was supposed to make them easier to store. A Danish example apparently survives from 1852.",
+      "sourcePath": "src/transcripts/txt/2025-12-25_T19-30-06_navy-food-a-beginning_nkalY1DVMAw.txt",
+      "evidence": [
+        {
+          "start": "5:14",
+          "end": "5:50",
+          "note": "Japanese hardtack and a personal recollection of trying an extremely dry example."
+        },
+        {
+          "start": "5:50",
+          "end": "6:23",
+          "note": "Hexagonal British Arctic expedition hardtack intended to store more easily, and a Danish example apparently dating from 1852."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Japanese hardtack, hexagonal Arctic expedition biscuit, and a Danish survivor illustrate the forms and durability of ship's biscuit."
     },
     {
       "slug": "ships-biscuit-for-voyage-endurance",
       "title": "Ship's biscuit for voyage endurance",
-      "start": "5:14",
+      "start": "6:23",
       "end": "7:55",
       "topics": [
         "food-preservation",
@@ -96,18 +130,18 @@
         "naval-provisioning",
         "ships-biscuit"
       ],
-      "body": "Examples from Japan, a British Arctic expedition, and Denmark show that hardtack took different forms while serving the same storage goal. Biscuit intended for sea was baked four times rather than the twice typical for land use, driving out more moisture. It could be prepared six months before sailing, meaning a crew began its voyage with food already designed for age rather than freshness. The flour-water-salt staple was usually more useful crushed into meat and vegetable broth than eaten whole. There it supplied carbohydrates, thickened the liquid, and made limited provisions more filling.",
+      "body": "Ship's biscuit used a simple recipe of flour, water, and salt. Baking it four times for sea service, compared with twice for land use, drove out more moisture. Preparing it six months before sailing also provided time to check whether it would spoil, although this meant the first day's ration was already six months old. Mixed into broths with meat and vegetables, the biscuit thickened the liquid and made the meal more filling and palatable. It also supplied carbohydrates.",
       "sourcePath": "src/transcripts/txt/2025-12-25_T19-30-06_navy-food-a-beginning_nkalY1DVMAw.txt",
       "evidence": [
         {
-          "start": "5:14",
-          "end": "6:23",
-          "note": "Examples from Japan, a British Arctic expedition, and Denmark introduce hardtack as an extremely dry, durable staple."
+          "start": "6:23",
+          "end": "7:03",
+          "note": "Flour, water, and salt, four bakings for sea service, and six months of storage before sailing to check for spoilage."
         },
         {
-          "start": "6:23",
+          "start": "7:03",
           "end": "7:55",
-          "note": "The transcript describes four bakings for sea use, six months of advance preparation, and biscuit's use as a carbohydrate-rich broth thickener."
+          "note": "National biscuit traditions and the use of biscuit to thicken broth, improve palatability, and supply filling carbohydrates."
         }
       ],
       "kind": "chapter",
@@ -119,19 +153,20 @@
       "start": "7:55",
       "end": "9:30",
       "topics": [
+        "jamaica",
         "naval-logistics",
         "naval-provisioning",
         "royal-navy",
         "rum-ration",
         "ship-endurance"
       ],
-      "body": "Beer contributed to a sailor's calorific intake, but a ration of eight pints per day consumed substantial stowage volume. After the conquest of Jamaica gave Britain a dependable rum supply, the Royal Navy could replace that bulk with half a pint of spirits. The concentrated ration reduced the space required to support each sailor. The substitution lengthened voyage range and expanded the crew's operational capability. Drinking the spirits undiluted created a discipline problem that the grog system had to solve.",
+      "body": "Beer contributed to a sailor's calorific intake, but a ration of eight pints per day consumed substantial stowage volume. After the conquest of Jamaica gave Britain a dependable rum supply, the Royal Navy could replace that bulk with half a pint of spirits. The saving in hull space substantially extended voyage range and the crew's operational capability. Drinking the spirits all at once created a discipline problem that the grog system had to address.",
       "sourcePath": "src/transcripts/txt/2025-12-25_T19-30-06_navy-food-a-beginning_nkalY1DVMAw.txt",
       "evidence": [
         {
           "start": "7:55",
           "end": "9:30",
-          "note": "The transcript contrasts eight pints of beer with half a pint of spirits and connects the change after Jamaica to hull space, range, and discipline."
+          "note": "Eight pints of beer replaced by half a pint of spirits after Jamaica supplied reliable rum, saving hull space and extending range while creating a discipline problem."
         }
       ],
       "kind": "chapter",
@@ -141,7 +176,7 @@
       "slug": "vernon-grog-discipline-and-standardization",
       "title": "Admiral Vernon's grog standard controls the rum ration",
       "start": "9:30",
-      "end": "12:32",
+      "end": "12:35",
       "topics": [
         "grog",
         "naval-logistics",
@@ -150,18 +185,18 @@
         "rum-ration",
         "shipboard-discipline"
       ],
-      "body": "The Navy spent decades trying to prevent sailors from consuming their spirit allowance all at once before Admiral Vernon imposed a standard he had used as a captain. His issue mixed half a pint of rum with one quart of water, a four-to-one ratio that sharply lowered the drink's strength. One intended advantage was that the rum might make questionable stored water safer, although this was the plan rather than a guaranteed result. Earlier attempts to divide the ration failed because sailors saved or pooled their servings. Preparing the mixture under a watchful eye made rapid intoxication more difficult without abolishing the allowance. Fixed quantities and a common procedure also improved discipline and logistical planning across ships.",
+      "body": "After 85 years of attempts to manage the spirit ration, Admiral Vernon standardized a mixture he had used as a captain. Half a pint of rum went into one quart of water, giving four parts water to one part rum. Rum was expected to make questionable stored water safer, an approach judged here to have mostly worked. Dividing the spirit allowance into smaller servings had failed because sailors saved it up or pooled their cups with friends. Grog still allowed drunkenness, but its dilution and the volume issued made rapid intoxication more difficult. Supervised mixing ensured the ration had the intended proportions. Standard quantities also made provisioning easier to plan.",
       "sourcePath": "src/transcripts/txt/2025-12-25_T19-30-06_navy-food-a-beginning_nkalY1DVMAw.txt",
       "evidence": [
         {
           "start": "9:30",
           "end": "10:47",
-          "note": "The transcript explains Vernon's standard mixture of half a pint of rum and one quart of water after decades of inconsistent attempts."
+          "note": "An 85-year interval before Vernon's standard mixture, half a pint of rum to one quart of water."
         },
         {
           "start": "10:47",
-          "end": "12:32",
-          "note": "It describes the intended water benefit, sailors' efforts to save or pool spirits, supervised mixing, and the logistical value of standardization."
+          "end": "12:35",
+          "note": "The intended water benefit and qualified assessment that it mostly worked, efforts to save or pool spirits, supervised mixing, and standardized logistics."
         }
       ],
       "kind": "chapter",
@@ -170,7 +205,7 @@
     {
       "slug": "warship-size-generalists-and-specialists",
       "title": "Why warships cycle between generalists and specialists",
-      "start": "13:12",
+      "start": "13:25",
       "end": "14:05",
       "topics": [
         "force-structure",
@@ -179,53 +214,109 @@
         "ship-design",
         "specialist-warships"
       ],
-      "body": "Warships tend to grow as navies ask each hull to perform more roles and answer more threats. Added general-purpose capability drives size and eventually raises cost to an uncomfortable level. Navies then respond by introducing smaller ships for narrower tasks. Neither approach is universally correct because fleets need a balance between versatile and specialized vessels. The aside provides a compact model for recurring changes in warship size and force structure.",
+      "body": "Warships tend to grow as navies ask each hull to perform more roles and answer more threats. Added general-purpose capability drives size and eventually raises cost to an uncomfortable level. Navies then respond by introducing smaller ships for narrower tasks. This recurring cycle leaves fleets needing a balance between versatile and specialized vessels.",
       "sourcePath": "src/transcripts/txt/2025-12-25_T19-30-06_navy-food-a-beginning_nkalY1DVMAw.txt",
       "evidence": [
         {
-          "start": "13:12",
+          "start": "13:25",
           "end": "14:05",
-          "note": "The transcript previews a discussion of ships growing as they become generalists, reaching a cost threshold, and prompting a return to smaller specialist designs."
+          "note": "General-purpose capability drives growth until cost encourages smaller specialist designs, with a balance of both needed."
         }
       ],
       "kind": "notable_point",
-      "summary": "A preview of a later discussion sketches a recurring force-structure cycle in which general-purpose warships grow larger and costlier before navies introduce smaller specialist ships."
+      "summary": "Adding roles and threats drives warships toward greater size and cost, prompting renewed demand for smaller specialist ships."
     },
     {
       "slug": "burgoo-turns-staples-into-a-meal",
-      "title": "Burgoo turns preserved staples into a meal",
+      "title": "Burgoo's thickness and a salt-pork cooking experiment",
       "start": "14:05",
-      "end": "17:56",
+      "end": "16:23",
       "topics": [
         "burgoo",
-        "food-preservation",
-        "japanese-navy",
+        "experimental-history",
         "naval-provisioning",
         "royal-navy",
+        "salt-pork",
         "shipboard-life",
         "ships-biscuit"
       ],
-      "body": "Burgoo is defined here by its extreme thickness: a spoon placed upright should remain standing. The naval version slowly cooked salted meat to soften it and draw some salt into the liquid, then used that liquor to cook vegetables. Crushed ship's biscuit added carbohydrates and thickened the mixture into a substantial meal. In a naval-history potluck experiment, ship's biscuit produced a more convincing burgoo than other thickeners. Japanese cooks probably used rice flour because it was more readily available. Curry later displaced dishes such as burgoo in many fleets because spices are easier to carry and the meal better suits many contemporary tastes.",
+      "body": "Alex Clarke's family test for burgoo is that a spoon must stand upright in it without slipping, a rule taught by his grandfather. The dish combines slowly cooked meat and vegetables with a thickener, traditionally ship's biscuit in Royal Navy practice. For a university naval-history potluck, he made a salt-pork version and found that biscuit produced the required thickness more successfully than other thickeners. He recalls both some of his favourite burgoos and disappointingly thin versions in Kentucky.",
       "sourcePath": "src/transcripts/txt/2025-12-25_T19-30-06_navy-food-a-beginning_nkalY1DVMAw.txt",
       "evidence": [
         {
           "start": "14:05",
+          "end": "15:15",
+          "note": "The upright-spoon test as a family tradition taught by a grandfather and strongly defended as a personal definition of burgoo."
+        },
+        {
+          "start": "15:15",
           "end": "15:59",
-          "note": "Burgoo is defined as an exceptionally thick slow-cooked meat-and-vegetable stew traditionally thickened with ship's biscuit."
+          "note": "Slow-cooked meat and vegetables, traditional Royal Navy biscuit thickening, and a salt-pork burgoo made for a university potluck."
         },
         {
           "start": "15:59",
-          "end": "17:14",
-          "note": "The transcript contrasts burgoo with curry in modern navies and describes rice flour as a Japanese thickener suited to local supply."
-        },
-        {
-          "start": "17:14",
-          "end": "17:56",
-          "note": "Salt meat, vegetables, liquor, and thickener cooked into the finished dish."
+          "end": "16:23",
+          "note": "Personal comparisons of Kentucky burgoo, judged partly by whether it passes the upright-spoon test."
         }
       ],
       "kind": "chapter",
-      "summary": "Burgoo combined long-cooked salt meat, vegetables, and ship's biscuit into a dense stew. Later variants show how navies adapted the meal to available staples and changing tastes."
+      "summary": "A family test for burgoo's thickness accompanies a salt-pork cooking experiment using ship's biscuit as the traditional naval thickener."
+    },
+    {
+      "slug": "naval-burgoo-curry-and-rice-flour",
+      "title": "Curry and rice flour in naval meals",
+      "start": "16:23",
+      "end": "17:14",
+      "topics": [
+        "burgoo",
+        "curry",
+        "japanese-navy",
+        "naval-logistics",
+        "naval-provisioning",
+        "rice-flour",
+        "royal-navy",
+        "ships-biscuit"
+      ],
+      "body": "Curry has become more prominent than burgoo in the modern Royal Navy and many other fleets. One suggested reason is that spices are easier to carry than ship's biscuit. Another is that many contemporary diners probably prefer curry to burgoo's thickness. Japanese attempts at burgoo used rice flour as the thickener. The reason for that choice is uncertain; a more ample local supply is the suggested explanation.",
+      "sourcePath": "src/transcripts/txt/2025-12-25_T19-30-06_navy-food-a-beginning_nkalY1DVMAw.txt",
+      "evidence": [
+        {
+          "start": "16:23",
+          "end": "16:59",
+          "note": "The prominence of curry in modern fleets, with ease of carrying spices and preferences about thickness offered as probable reasons."
+        },
+        {
+          "start": "16:59",
+          "end": "17:14",
+          "note": "Japanese use of rice flour for burgoo, with more ample supply proposed as a reason rather than established."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Spices may have made curry easier to provision, while a plentiful local supply may explain Japan's use of rice flour in burgoo."
+    },
+    {
+      "slug": "cooking-salted-meat-into-burgoo",
+      "title": "Cooking salted meat into burgoo",
+      "start": "17:14",
+      "end": "17:56",
+      "topics": [
+        "burgoo",
+        "food-preservation",
+        "naval-provisioning",
+        "salt-meat",
+        "shipboard-life"
+      ],
+      "body": "Salted meat cooks for a long time in liquid to soften it and draw out some of its salt. Vegetables then cook in the liquor produced by the meat and added liquid. The thickener goes in at the end to produce the dense finished dish. The same upright-spoon test returns as the preferred way to distinguish a successful burgoo from a thinner stew.",
+      "sourcePath": "src/transcripts/txt/2025-12-25_T19-30-06_navy-food-a-beginning_nkalY1DVMAw.txt",
+      "evidence": [
+        {
+          "start": "17:14",
+          "end": "17:56",
+          "note": "The sequence of cooking salt meat in liquid, adding vegetables, and finishing with thickener, followed by the preferred upright-spoon test."
+        }
+      ],
+      "kind": "chapter",
+      "summary": "Long cooking turns salt meat into the basis of a stew, with vegetables added before the final thickener."
     },
     {
       "slug": "japanese-ship-curry-and-crew-identity",
@@ -233,19 +324,25 @@
       "start": "17:56",
       "end": "19:35",
       "topics": [
+        "curry",
         "japan-maritime-self-defense-force",
         "japanese-navy",
         "naval-traditions",
         "shipboard-culture",
         "shipboard-life"
       ],
-      "body": "Curry shows how a practical shipboard meal can become a ship-specific tradition. Rather than follow one uniform fleet recipe, Japan Maritime Self-Defense Force crews maintain distinctive flavorings for individual vessels. Sailors defend their own ship's curry with an intensity that can spark arguments across crews. Asking the question near Japanese bases deliberately started such debates, while American sailors at a joint base immediately recognized what was happening. The anecdote connects food with morale, rivalry, and the social identity formed aboard a warship.",
+      "body": "Individual Japan Maritime Self-Defense Force ships have their own curry flavorings, and crews are fiercely loyal to them. Asking which ship makes the best curry can therefore start an argument between sailors. Alex Clarke recalls deliberately raising the question near Japanese naval bases with English-speaking crews. At a joint base, American sailors immediately recognized the debate he had set off among Japanese chief petty officers. A ship's distinctive meal becomes a focus for crew loyalty and rivalry.",
       "sourcePath": "src/transcripts/txt/2025-12-25_T19-30-06_navy-food-a-beginning_nkalY1DVMAw.txt",
       "evidence": [
         {
           "start": "17:56",
+          "end": "18:45",
+          "note": "Distinctive curry flavorings for individual Japanese ships and fierce crew loyalty."
+        },
+        {
+          "start": "18:45",
           "end": "19:35",
-          "note": "The transcript describes ship-specific Japanese curry recipes, the intense loyalty they inspire, and debates involving Japanese and American sailors."
+          "note": "Personal recollections of starting curry debates near Japanese naval bases, including an exchange among chief petty officers at a joint base."
         }
       ],
       "kind": "notable_point",
@@ -253,7 +350,7 @@
     },
     {
       "slug": "chiefs-mess-as-naval-social-space",
-      "title": "The chiefs' mess as a naval social space",
+      "title": "A preference for the chiefs' bar",
       "start": "19:35",
       "end": "20:21",
       "topics": [
@@ -262,17 +359,17 @@
         "shipboard-culture",
         "shipboard-life"
       ],
-      "body": "In this personal comparison, the chiefs' bar offers good food, a quiet drink, and informed company in a naval town. Officers' establishments are expensive and rule-bound, while sailors' bars are louder and host drinking competitions that may appeal more to younger visitors. The chiefs' space encourages conversation with experienced personnel who know how their ship and service operate. That practical knowledge can give an interested visitor a better account of what is happening aboard ship. The comparison uses mess life to explain differences of rank, age, and social organization within a navy.",
+      "body": "Alex Clarke prefers chiefs' bars when visiting naval towns. He finds officers' establishments expensive and full of rules, while sailors' bars tend toward noise and drinking competitions he enjoyed more when younger. The chiefs' bar suits his preference for a quiet drink, a meal, and conversation. Once chiefs recognize a visitor's interest, they can give a useful account of what is happening in the service.",
       "sourcePath": "src/transcripts/txt/2025-12-25_T19-30-06_navy-food-a-beginning_nkalY1DVMAw.txt",
       "evidence": [
         {
           "start": "19:35",
           "end": "20:21",
-          "note": "The transcript contrasts officers', sailors', and chiefs' social spaces and emphasizes the chiefs' combination of food, quiet conversation, and experienced company."
+          "note": "A personal preference for chiefs' bars, contrasting their food and conversation with officers' rules and sailors' drinking competitions."
         }
       ],
       "kind": "notable_point",
-      "summary": "The chiefs' mess offers quieter company than sailors' bars and less formality than officers' spaces."
+      "summary": "A personal comparison favors the chiefs' bar for quieter conversation and an informed account of naval life."
     },
     {
       "slug": "chiefs-as-keepers-of-shipboard-knowledge",
@@ -287,70 +384,58 @@
         "oral-history",
         "shipboard-culture"
       ],
-      "body": "Chief petty officers can translate practical experience into the questions an outsider actually needs to ask. Once they understand a historian's purpose, they may redirect an ill-framed request toward a more revealing line of inquiry. Many chiefs also bring technical knowledge and institutional memory to historical debate. Their explanations bridge the gap between formal descriptions of a ship and the way its systems and routines work in practice. Conversation with experienced enlisted leaders can therefore be valuable evidence for naval history.",
+      "body": "Alex Clarke credits chief petty officers with helping him gain more access for historical research than he initially expected. Once they understood his purpose, they advised him how to explain it to others and reach the questions he needed to ask. He ranks chiefs among the most helpful and enthusiastic historians aboard ship and values their historical debates. Many officers also have history degrees and read widely, a qualification he explicitly recognizes.",
       "sourcePath": "src/transcripts/txt/2025-12-25_T19-30-06_navy-food-a-beginning_nkalY1DVMAw.txt",
       "evidence": [
         {
           "start": "20:21",
+          "end": "20:42",
+          "note": "Personal testimony about chiefs improving explanations of a research project, access, and the questions pursued."
+        },
+        {
+          "start": "20:42",
           "end": "21:25",
-          "note": "The transcript explains how chief petty officers redirect a historian toward better questions and contribute practical knowledge and historical interest."
+          "note": "A personal assessment of chiefs as helpful and enthusiastic historians, with recognition of officers' history degrees and interests."
         }
       ],
       "kind": "notable_point",
-      "summary": "Chief petty officers can use their practical experience to guide historians toward better questions and explanations of shipboard life."
+      "summary": "Chief petty officers helped a naval historian explain his research, gain access, and find better questions."
     },
     {
       "slug": "naval-cookbooks-as-historical-sources",
-      "title": "Naval cookbooks as historical sources",
+      "title": "Cooking naval history from old cookbooks",
       "start": "21:25",
-      "end": "22:49",
+      "end": "23:54",
       "topics": [
+        "experimental-history",
         "historical-method",
         "japanese-navy",
         "material-culture",
         "naval-cookbooks",
-        "naval-provisioning"
+        "naval-provisioning",
+        "translation"
       ],
-      "body": "Collecting naval cookbooks and preparing their dishes offers a practical way to study food at sea. The proposed project would work through historic recipes in a dedicated kitchen and show viewers whether the dishes appeal to them. A 1908 Japanese Navy cookbook is the difficult example because no trusted English edition had been found for the project. Automatic or literal translation cannot safely carry all the context and nuance needed to make a recipe. Reconstructing the dish therefore depends on a translator who understands both the language and the culinary instructions.",
+      "body": "A proposed series would prepare recipes from naval cookbooks so viewers could see the dishes and decide whether to try them. A dedicated kitchen and a growing collection of books would make it possible to test recipes in practice. The plan was to choose one recipe from each book in turn, in a project envisaged as lasting 20 or 30 years. A 1908 Japanese Navy cookbook posed a particular difficulty: Alex Clarke had been unable to find an English edition and did not trust his own Japanese or automatic translation for cooking. He wanted a translator with a better understanding of the culinary context and nuance. Viewers were invited to help assemble a shared list of cookbooks that other readers could also obtain. Trying the recipes would offer a practical way to take part in naval history.",
       "sourcePath": "src/transcripts/txt/2025-12-25_T19-30-06_navy-food-a-beginning_nkalY1DVMAw.txt",
       "evidence": [
         {
           "start": "21:25",
           "end": "22:15",
-          "note": "The transcript introduces the plan to collect naval cookbooks and prepare their recipes in a dedicated kitchen."
+          "note": "A proposed cooking series using collected naval cookbooks and a dedicated kitchen to try their recipes."
         },
         {
           "start": "22:15",
-          "end": "22:49",
-          "note": "A 1908 Japanese Navy cookbook illustrates why literal or automatic translation is unreliable when recipes depend on culinary context and nuance."
-        }
-      ],
-      "kind": "notable_point",
-      "summary": "Historic naval cookbooks offer a practical route into provisioning and material culture, but reconstructing their recipes requires culinary context as well as literal language."
-    },
-    {
-      "slug": "comparing-recipes-across-naval-traditions",
-      "title": "Comparing recipes across naval traditions",
-      "start": "22:49",
-      "end": "23:54",
-      "topics": [
-        "comparative-naval-history",
-        "experimental-history",
-        "material-culture",
-        "naval-cookbooks",
-        "naval-provisioning"
-      ],
-      "body": "The closing request asks viewers to suggest naval cookbooks from different countries and periods. Crowdsourcing a list would help other readers and cooks find the same books and try the recipes themselves. The proposed series would then prepare one recipe from each book in turn. Comparing the results would show how the dishes actually work in a modern kitchen and whether they are enjoyable. The plan could last 20 or 30 years and treats cooking as a hands-on way to engage with naval history.",
-      "sourcePath": "src/transcripts/txt/2025-12-25_T19-30-06_navy-food-a-beginning_nkalY1DVMAw.txt",
-      "evidence": [
+          "end": "22:54",
+          "note": "The search for an English translation of a 1908 Japanese Navy cookbook, with personal limits in Japanese and a preference for a translator who understands culinary nuance."
+        },
         {
-          "start": "22:49",
+          "start": "22:54",
           "end": "23:54",
-          "note": "The transcript asks viewers to identify naval cookbooks, proposes a shared list, and describes cooking one recipe from each as a long-term comparative project."
+          "note": "A shared cookbook list and a plan to cook one recipe from each book in turn as a long-term participatory project."
         }
       ],
       "kind": "notable_point",
-      "summary": "Building a broad collection of naval cookbooks and testing one recipe from each would turn everyday food into a comparative, participatory form of naval history."
+      "summary": "Testing recipes from naval cookbooks would let viewers explore food at sea, while a 1908 Japanese book raises a specific problem of culinary translation."
     }
   ]
 }

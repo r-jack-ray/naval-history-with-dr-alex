@@ -229,8 +229,8 @@ test("current guidance and CLI use the retained video-segment report command", a
 
   const readme = await readGuidance("README.md");
   assert.match(readme, /repair_required[^.]{0,120}review_candidate[^.]{0,120}low_signal/iu);
-  assert.match(readme, /Audit Risk Score[^.]{0,120}relative anchor-gap heuristic/iu);
-  assert.match(readme, /manual audio review remaining[^.]{0,160}display data only/iu);
+  assert.match(readme, /Audit Risk Score[^.]{0,160}have been removed/iu);
+  assert.match(readme, /Audio concerns remain in the latest processing result and notes/iu);
   assert.match(readme, /transcripts that still have no canonical shard/iu);
 });
 
