@@ -155,6 +155,10 @@ History uses concise imperative commits. Keep commits scoped. PRs should explain
 
 Treat this repository's `AGENTS.md`, `.agents/` briefs, and `.agents/skills/` as the authoritative setup guidance. Do not consult or modify sibling repositories unless the user explicitly requests it.
 
+### CodeGraph
+
+When the repository root contains `.codegraph/`, use `codegraph explore` before `rg`, file searches, or direct reads for code discovery and code-relationship questions. On this Windows Codex host, a sandboxed `codegraph` call may incorrectly report that the command is not recognized even though CodeGraph is installed and available outside the sandbox. Treat that result, `EPERM`, access denied, and similar launch failures as sandbox-shaped failures. Immediately retry the same safe, read-only CodeGraph command with `sandbox_permissions: require_escalated` and a narrowly scoped `codegraph explore` approval prefix. Fall back to `rg` or direct reads only if the elevated retry also fails or CodeGraph reports that the index cannot answer the query.
+
 For Astro/Pagefind page, route, search, or generated-data adapter work, use `.agents/site-archive-builder.md` with `$naval-video-page-prototype`. For build, archive-generation, Astro, or Pagefind failures, use `$naval-site-build-repair`; it delegates transcript-backed content judgment to `$naval-site-content-auditor` and site implementation changes to `$naval-video-page-prototype` when needed.
 
 For separately authorised corpus-wide topic taxonomy maintenance, use `$naval-topic-taxonomy-curator`. Keep one-shard transcript-backed topic discovery inside `$naval-transcript-to-site-content` or `$naval-site-content-auditor`, and keep narrow topic failures discovered during a build inside `$naval-site-build-repair` unless they require a broader semantic migration.
