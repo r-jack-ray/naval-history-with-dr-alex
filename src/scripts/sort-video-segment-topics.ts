@@ -3,10 +3,7 @@ import { availableParallelism } from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import {
-  parseCuratedVideoFile,
-  type CuratedVideoFileSeed,
-} from "../content/schemas/index.js";
+import { type CuratedVideoFileSeed, parseCuratedVideoFile, } from "../content/schemas/index.js";
 import { writeTextAtomically } from "../pipeline/atomic-write.js";
 import { listVideoSegmentShardFileNames } from "../site/video-segment-files.js";
 

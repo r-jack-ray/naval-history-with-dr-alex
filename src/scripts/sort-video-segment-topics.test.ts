@@ -1,14 +1,10 @@
 import assert from "node:assert/strict";
-import { mkdir, mkdtemp, readFile, readdir, rm, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, readdir, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import test from "node:test";
 
-import {
-  defaultSortVideoSegmentTopicsWorkerCount,
-  parseSortVideoSegmentTopicsArgs,
-  runSortVideoSegmentTopics,
-} from "./sort-video-segment-topics.js";
+import { defaultSortVideoSegmentTopicsWorkerCount, parseSortVideoSegmentTopicsArgs, runSortVideoSegmentTopics, } from "./sort-video-segment-topics.js";
 
 test("parses a bounded worker count and optional shard directory", () => {
   assert.deepEqual(parseSortVideoSegmentTopicsArgs(["fixtures", "--workers", "1"]), {

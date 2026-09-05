@@ -83,8 +83,10 @@ test("does not rewrite an invalid topic registry", async () => {
     await writeFile(registryPath, invalidText, "utf8");
 
     await assert.rejects(
-        runSortVideoTopicRegistry(registryPath, {stdout: () => {
-        }}),
+        runSortVideoTopicRegistry(registryPath, {
+          stdout: () => {
+          }
+        }),
         /duplicates topic slug duplicate/u,
     );
     assert.equal(await readFile(registryPath, "utf8"), invalidText);

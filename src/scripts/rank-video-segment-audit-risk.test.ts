@@ -1,11 +1,11 @@
 import assert from "node:assert/strict";
-import {execFile} from "node:child_process";
-import {mkdir, mkdtemp, readFile, rm, writeFile} from "node:fs/promises";
-import {tmpdir} from "node:os";
+import { execFile } from "node:child_process";
+import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { tmpdir } from "node:os";
 import path from "node:path";
 import test from "node:test";
-import {promisify} from "node:util";
-import type {SiteContentProcessingConfig} from "../content/schemas/index.js";
+import { promisify } from "node:util";
+import type { SiteContentProcessingConfig } from "../content/schemas/index.js";
 
 const execFileAsync = promisify(execFile);
 
@@ -46,14 +46,27 @@ test("CLI excludes empty shards and exposes append-order context without predict
       };
       let serialized: string;
       switch (record.fileStem) {
-        case "broken": serialized = "{"; break;
-        case "null-root": serialized = "null"; break;
-        case "missing-array": serialized = JSON.stringify({videoId: record.videoId, topics: []}); break;
-        case "empty-unlogged":
-        case "empty-logged": serialized = JSON.stringify({...shard, segments: []}); break;
-        case "null-entry": serialized = JSON.stringify({...shard, segments: [null]}); break;
-        case "structural": serialized = JSON.stringify({...shard, unexpected: true}); break;
-        default: serialized = JSON.stringify(shard);
+      case "broken":
+        serialized = "{";
+        break;
+      case "null-root":
+        serialized = "null";
+        break;
+      case "missing-array":
+        serialized = JSON.stringify({videoId: record.videoId, topics: []});
+        break;
+      case "empty-unlogged":
+      case "empty-logged":
+        serialized = JSON.stringify({...shard, segments: []});
+        break;
+      case "null-entry":
+        serialized = JSON.stringify({...shard, segments: [null]});
+        break;
+      case "structural":
+        serialized = JSON.stringify({...shard, unexpected: true});
+        break;
+      default:
+        serialized = JSON.stringify(shard);
       }
       await writeFile(path.join(segments, record.fileStem + ".json"), serialized, "utf8");
     }
@@ -85,7 +98,7 @@ test("CLI excludes empty shards and exposes append-order context without predict
     assert.equal(header[header.indexOf("duration minutes") + 1], "Transcript Bytes Per Minute");
     assert.equal(header[header.indexOf("Transcript Bytes Per Minute") + 1], "segment count");
     const cell = (stem: string, column: string) =>
-      rows.find((row) => row[header.indexOf("file stem")] === stem + ".json")?.[header.indexOf(column)];
+        rows.find((row) => row[header.indexOf("file stem")] === stem + ".json")?.[header.indexOf(column)];
     assert.ok(rows.every((row) => Number(row[header.indexOf("segment count")]) > 0));
     for (const stem of ["empty-unlogged", "empty-logged", "broken", "null-root", "missing-array", "school"]) {
       assert.equal(cell(stem, "rank"), undefined, stem);

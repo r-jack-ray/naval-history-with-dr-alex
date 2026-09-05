@@ -2,11 +2,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import {
-  parseCuratedTopicStore,
-  type CuratedTopicSeed,
-  type CuratedTopicStore,
-} from "../content/schemas/index.js";
+import { type CuratedTopicSeed, type CuratedTopicStore, parseCuratedTopicStore, } from "../content/schemas/index.js";
 import { writeTextAtomically } from "../pipeline/atomic-write.js";
 
 const DEFAULT_TOPIC_STORE_PATH = path.resolve("src/derived/video-segments/topics.json");
@@ -35,8 +31,8 @@ function sortTopic(topic: CuratedTopicSeed): CuratedTopicSeed {
     slug: topic.slug,
     title: topic.title,
     ...(topic.summary === undefined || topic.summary.trim().length === 0
-      ? {}
-      : {summary: topic.summary}),
+        ? {}
+        : {summary: topic.summary}),
     ...(topic.aliases === undefined ? {} : {aliases: [...topic.aliases].sort(compareText)}),
   };
 }
@@ -44,8 +40,8 @@ function sortTopic(topic: CuratedTopicSeed): CuratedTopicSeed {
 export function sortVideoTopicRegistry(store: CuratedTopicStore): CuratedTopicStore {
   return {
     topics: store.topics
-      .map(sortTopic)
-      .sort((left, right) => compareText(left.slug, right.slug)),
+        .map(sortTopic)
+        .sort((left, right) => compareText(left.slug, right.slug)),
   };
 }
 
@@ -66,11 +62,11 @@ export async function runSortVideoTopicRegistry(
   const store = parseCuratedTopicStore(parsed, `Topic registry ${resolvedInputPath}`);
   const sortedStore = sortVideoTopicRegistry(store);
   const removedBlankSummaryCount = store.topics.filter((topic) => (
-    topic.summary !== undefined && topic.summary.trim().length === 0
+      topic.summary !== undefined && topic.summary.trim().length === 0
   )).length;
   const sortedAliasListCount = store.topics.filter((topic) => (
-    topic.aliases !== undefined
-    && !arraysMatch(topic.aliases, [...topic.aliases].sort(compareText))
+      topic.aliases !== undefined
+      && !arraysMatch(topic.aliases, [...topic.aliases].sort(compareText))
   )).length;
   const sortedText = `${JSON.stringify(sortedStore, null, 2)}\n`;
   const changed = sortedText !== originalText;

@@ -28,7 +28,6 @@
     "sync:video-topics": "bun run src/scripts/sync-video-topics-bun.ts",
     "check:video-topics": "bun run src/scripts/check-video-topics-bun.ts",
     "audit:topic-normalization": "bun run src/scripts/audit-topic-normalization-bun.ts",
-    "audit:transcript-schedules": "tsx src/scripts/audit-transcript-schedules.ts",
     "audit:video-timestamp-alignment": "tsx src/scripts/audit-video-timestamp-alignment.ts",
     "fetch:video-links": "tsx src/scripts/get-channel-video-links.ts --api-key-file .local/youtube-api-key.txt",
     "fetch:video-metadata": "tsx src/scripts/fetch-video-metadata.ts --api-key-file .local/youtube-api-key.txt",

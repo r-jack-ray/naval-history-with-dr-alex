@@ -2,10 +2,7 @@ import { readFile, stat } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-import {
-  parseCuratedVideoFile,
-  type CuratedSegmentSeed,
-} from "../content/schemas/index.js";
+import { type CuratedSegmentSeed, parseCuratedVideoFile, } from "../content/schemas/index.js";
 import { writeTextAtomically } from "../pipeline/atomic-write.js";
 import { listVideoSegmentShardFileNames } from "../site/video-segment-files.js";
 

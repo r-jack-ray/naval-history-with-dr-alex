@@ -1,13 +1,10 @@
 import assert from "node:assert/strict";
-import { mkdir, mkdtemp, readFile, readdir, rm, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, readdir, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import test from "node:test";
 
-import {
-  runSortVideoSegmentsByStart,
-  startTimeToSeconds,
-} from "./sort-video-segments-by-start.js";
+import { runSortVideoSegmentsByStart, startTimeToSeconds, } from "./sort-video-segments-by-start.js";
 
 test("converts m:ss and h:mm:ss timestamps to sortable seconds", () => {
   assert.equal(startTimeToSeconds("24:57"), 1_497);

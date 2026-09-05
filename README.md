@@ -121,7 +121,6 @@ On this Windows machine, use `C:\Program Files\nodejs\npm.cmd` for interactive c
 | `sync:video-topics` | Add missing shared topic records derived from shard usage and normalization policy with parallel Bun workers. |
 | `check:video-topics` | Verify registry completeness without writing source and name the explicit synchronization command when records are missing. |
 | `audit:topic-normalization` | Read-only validation of topic-normalization policy against curated shards with parallel Bun workers. |
-| `audit:transcript-schedules` | Audit one or more explicitly supplied transcript schedules; at least one `--schedule <path>` is required. |
 | `audit:video-timestamp-alignment` | Check timestamp and video-state consistency across source, transcript, shard, and generated data. |
 | `report:video-topic-usage` | Write topic usage to `reports/video-topic-usage.tsv` and exact actionable normalization findings to `reports/topic-normalization-review.tsv`. |
 | `report:transcript-problems` | Build the human-readable transcript failure report from saved status without contacting YouTube. |
