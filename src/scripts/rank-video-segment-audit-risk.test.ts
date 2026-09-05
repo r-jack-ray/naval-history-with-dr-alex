@@ -9,7 +9,7 @@ import type { SiteContentProcessingConfig } from "../content/schemas/index.js";
 
 const execFileAsync = promisify(execFile);
 
-test("CLI excludes empty shards and exposes append-order context without predictive suppression", async () => {
+test("CLI excludes empty shards, exposes append-order context, and reports warning severity", async () => {
   const root = await mkdtemp(path.join(tmpdir(), "video-segment-audit-risk-"));
   try {
     const segments = path.join(root, "segments");
@@ -125,16 +125,36 @@ test("CLI excludes empty shards and exposes append-order context without predict
     assert.equal(header.includes("manual audio review remaining"), false);
     assert.equal(cell("manual", "latest processing notes"), "Full transcript; manual audio review remains at 12:59-13:28");
     assert.equal(cell("manual-complete", "latest processing notes"), "manual audio review completed");
-    assert.match(result.stdout, /shards=8/u);
-    assert.match(result.stdout, /excluded_sasc_shards=1/u);
-    assert.match(result.stdout, /excluded_empty_shards=5/u);
-    assert.match(result.stdout, /repair_required=2 review_candidate=1 low_signal=5/u);
-    assert.doesNotMatch(result.stdout, /manual_audio_review_remaining/u);
+    assert.match(result.stderr, /Video segment audit risk ranking:/u);
+    assert.match(result.stderr, /shards=8/u);
+    assert.match(result.stderr, /excluded_sasc_shards=1/u);
+    assert.match(result.stderr, /excluded_empty_shards=5/u);
+    assert.match(result.stderr, /repair_required=2 review_candidate=1 low_signal=5/u);
+    assert.match(result.stderr, /errors=2 warnings=1/u);
+    assert.match(result.stderr, /report=.*output\.tsv/u);
+    assert.doesNotMatch(result.stderr, /manual_audio_review_remaining/u);
+    assert.doesNotMatch(result.stdout, /Video segment audit risk ranking:/u);
     for (const name of ["broken.json", "null-root.json", "missing-array.json"]) {
       assert.ok(result.stderr.includes(name), name);
     }
     assert.ok(!result.stderr.includes("empty-unlogged.json"));
     assert.ok(!result.stderr.includes("empty-logged.json"));
+
+    const warningSegments = path.join(root, "warning-segments");
+    const warningOutputPath = path.join(root, "warning-output.tsv");
+    await mkdir(warningSegments);
+    await writeFile(
+      path.join(warningSegments, "explicit.json"),
+      await readFile(path.join(segments, "explicit.json")),
+    );
+    const warningResult = await execFileAsync(process.execPath, [
+      "--import", "tsx", path.resolve("src/scripts/rank-video-segment-audit-risk.ts"),
+      "--manifest", manifestPath, "--segments-input", warningSegments, "--transcript-root", transcripts,
+      "--processing-log", logPath, "--processing-config", configPath, "--output", warningOutputPath,
+    ]);
+    assert.match(warningResult.stderr, /errors=0 warnings=1/u);
+    assert.match(warningResult.stderr, /report=.*warning-output\.tsv/u);
+    assert.doesNotMatch(warningResult.stdout, /Video segment audit risk ranking:/u);
   } finally {
     await rm(root, {recursive: true, force: true});
   }

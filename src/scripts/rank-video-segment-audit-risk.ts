@@ -134,19 +134,31 @@ async function main(): Promise<void> {
   for (const row of rankedRows) {
     routeCounts.set(row.auditRoute, (routeCounts.get(row.auditRoute) ?? 0) + 1);
   }
-  console.log([
+  const errorCount = routeCounts.get("repair_required") ?? 0;
+  const warningCount = routeCounts.get("review_candidate") ?? 0;
+  const summary = [
     "Video segment audit risk ranking:",
     `shards=${rankedRows.length}`,
     `excluded_sasc_shards=${excludedSascShards}`,
     `excluded_empty_shards=${excludedEmptyShards}`,
-    `repair_required=${routeCounts.get("repair_required") ?? 0}`,
-    `review_candidate=${routeCounts.get("review_candidate") ?? 0}`,
+    `repair_required=${errorCount}`,
+    `review_candidate=${warningCount}`,
     `low_signal=${routeCounts.get("low_signal") ?? 0}`,
+    `errors=${errorCount}`,
+    `warnings=${warningCount}`,
     `malformed_log_rows=${processingLog.malformedRowCount}`,
     `unmapped_log_rows=${processingLog.unmappedRowCount}`,
     `ignored_log_rows=${processingLog.ignoredRowCount}`,
+    `report=${path.basename(options.output)}`,
     `output=${options.output}`,
-  ].join(" "));
+  ].join(" ");
+  if (errorCount > 0) {
+    console.error(summary);
+  } else if (warningCount > 0) {
+    console.warn(summary);
+  } else {
+    console.log(summary);
+  }
 }
 
 function parseArgs(args: string[]): CliOptions {
@@ -298,6 +310,8 @@ ranges, including leading and trailing gaps. Citations without an end are points
 Gap metrics are blank when the transcript file or usable interval is unavailable.
 Routes sort repair_required, review_candidate, then low_signal. Within a route,
 defined evidence-gap minutes sort descending, then gap percentage, then file stem.
+The console summary reports error and warning counts with the TSV filename. It uses
+stderr for repair-required rows and the warning stream for review candidates.
 Transcript Bytes Per Minute divides transcript file bytes by the unrounded duration
 in minutes, with two decimal places; unavailable bytes or duration leave it blank.
 Anchor gaps, transcript byte density, log counts, and latest outcomes are display context only.

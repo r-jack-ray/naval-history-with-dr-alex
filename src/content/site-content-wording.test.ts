@@ -40,7 +40,7 @@ test("site-content wording rules separate actionable and review findings", () =>
       },
       {
         field: "evidence.note",
-        confidence: "review",
+        confidence: "high",
         ruleId: "transcript-reporting-frame",
         match: "The transcript says",
       },
@@ -177,13 +177,33 @@ test("Unicode dash characters are unconditional errors in every public field", (
   );
 });
 
-test("source limitations and naturally qualified interpretation remain unflagged", () => {
+test("unqualified transcript references require source-grounded review", () => {
   const video = sampleVideo(
     "The transcript does not establish the exact range. The surviving figure may still be useful.",
   );
 
   assert.deepEqual(
-    scanCuratedVideoFileMechanicalWording("example.json", video, { includeReview: true }),
+    scanCuratedVideoFileMechanicalWording("example.json", video),
+    [],
+  );
+  assert.deepEqual(
+    scanCuratedVideoFileMechanicalWording("example.json", video, { includeReview: true })
+      .map(({ confidence, ruleId, match }) => ({ confidence, ruleId, match })),
+    [
+      {
+        confidence: "review",
+        ruleId: "transcript-reference",
+        match: "The transcript",
+      },
+    ],
+  );
+
+  assert.deepEqual(
+    scanCuratedVideoFileMechanicalWording(
+      "example.json",
+      sampleVideo("A court-martial transcript was entered into evidence with the witness's account."),
+      { includeReview: true },
+    ),
     [],
   );
 });
@@ -505,8 +525,7 @@ test("site-content wording CLI scopes strict scans and writes reports", async ()
       ])),
       1,
     );
-    assert.equal(
-      await withoutConsole(() => checkSiteContentWording([
+    const reportRun = await captureConsole(() => checkSiteContentWording([
         "--repo-root",
         repoRoot,
         "--path",
@@ -515,8 +534,11 @@ test("site-content wording CLI scopes strict scans and writes reports", async ()
         issueRelativePath,
         "--report",
         "--summary-only",
-      ])),
-      0,
+      ]));
+    assert.equal(reportRun.result, 0);
+    assert.match(
+      reportRun.warnings.join("\n"),
+      /Wording report contains errors or warnings: .*report=site-content-wording-scan\.md json=site-content-wording-scan\.json\./u,
     );
     assert.equal(existsSync(jsonReportPath), true);
     assert.equal(existsSync(markdownReportPath), true);
@@ -525,9 +547,26 @@ test("site-content wording CLI scopes strict scans and writes reports", async ()
     assert.match(await readFile(jsonReportPath, "utf8"), /"ruleCounts"/u);
     assert.match(await readFile(jsonReportPath, "utf8"), /"matchedOccurrenceCount"/u);
     assert.match(await readFile(jsonReportPath, "utf8"), /Do not bulk-rewrite/u);
+    assert.match(await readFile(jsonReportPath, "utf8"), /Inspect every transcript-reference finding/u);
     assert.match(await readFile(jsonReportPath, "utf8"), /Verify each Clark or Clarke match against the transcript/u);
     assert.match(await readFile(markdownReportPath, "utf8"), /## Actionable Issues/u);
     assert.match(await readFile(markdownReportPath, "utf8"), /## Findings by Rule/u);
+
+    const cleanReportRun = await captureConsole(() => checkSiteContentWording([
+      "--repo-root",
+      repoRoot,
+      "--path",
+      cleanRelativePath,
+      "--report",
+      "--json-name",
+      "clean-wording.json",
+      "--markdown-name",
+      "clean-wording.md",
+      "--summary-only",
+    ]));
+    assert.equal(cleanReportRun.result, 0);
+    assert.equal(cleanReportRun.warnings.length, 0);
+    assert.equal(cleanReportRun.errors.length, 0);
   } finally {
     await rm(repoRoot, { recursive: true, force: true });
   }
@@ -597,18 +636,44 @@ test("evidence notes receive actionable checks and contextual review without sca
   ];
   assert.deepEqual(
     scanCuratedVideoFileMechanicalWording("example.json", video, { includeReview: true })
-      .map(({ ruleId, evidenceIndex, unconditionalError }) => ({ ruleId, evidenceIndex, unconditionalError })),
+      .map(({ ruleId, confidence, evidenceIndex, unconditionalError }) => ({
+        ruleId, confidence, evidenceIndex, unconditionalError,
+      })),
     [
-      { ruleId: "transcript-reporting-frame", evidenceIndex: 0, unconditionalError: false },
-      { ruleId: "prohibited-unicode-dash", evidenceIndex: 1, unconditionalError: true },
+      {
+        ruleId: "transcript-reporting-frame",
+        confidence: "high",
+        evidenceIndex: 0,
+        unconditionalError: false,
+      },
+      {
+        ruleId: "prohibited-unicode-dash",
+        confidence: "high",
+        evidenceIndex: 1,
+        unconditionalError: true,
+      },
     ],
   );
 });
 
-test("descriptive reporting variants are reviewed in notes and actionable in public answers", () => {
+test("transcript reporting variants are actionable in public prose and evidence notes", () => {
   const frames = [
     "The transcript covers", "The transcript gives", "The transcript connects",
     "The transcript lists", "The transcript names", "The transcript follows", "The transcript sets out",
+  ];
+  for (const frame of frames) {
+    const video = sampleQaVideo(`${frame} the destroyer designs.`);
+    video.segments[0]!.evidence[0]!.note = `${frame} the destroyer designs.`;
+    const findings = scanCuratedVideoFileMechanicalWording("example.json", video, { includeReview: true });
+    assert.deepEqual(findings.map(({ field, confidence, match }) => ({ field, confidence, match })), [
+      { field: "body", confidence: "high", match: frame },
+      { field: "evidence.note", confidence: "high", match: frame },
+    ], frame);
+  }
+});
+
+test("answer reporting variants remain contextual in evidence notes", () => {
+  const frames = [
     "The answer compares", "The answer contrasts", "The answer connects", "The answer traces",
     "The answer gives", "The answer lists", "The answer lays out",
   ];
@@ -660,11 +725,11 @@ test("watch-point value filler is actionable while historical assessments retain
   assert.deepEqual(scanCuratedVideoFileMechanicalWording("example.json", clean, { includeReview: true }), []);
 });
 
-test("CLI scans evidence-only defects and reports their exact location and coverage", async () => {
+test("CLI makes transcript-reporting evidence notes fail strict checks", async () => {
   const repoRoot = await mkdtemp(join(tmpdir(), "site-content-wording-evidence-"));
   try {
     const video = sampleVideo("Fuel endurance constrained the operation.");
-    video.segments[0]!.evidence[0]!.note = "This segment exists to provide search metadata.";
+    video.segments[0]!.evidence[0]!.note = "The transcript traces prewar multi-carrier organization.";
     await writeFile(join(repoRoot, "example.json"), JSON.stringify(video));
     const args = ["--repo-root", repoRoot, "--path", "example.json", "--report", "--summary-only"];
     assert.equal(await withoutConsole(() => checkSiteContentWording([...args, "--strict"])), 1);
@@ -673,6 +738,14 @@ test("CLI scans evidence-only defects and reports their exact location and cover
     assert.equal(report.evidenceNotesScanned, 1);
     assert.equal(report.findings[0].field, "evidence.note");
     assert.equal(report.findings[0].evidenceIndex, 0);
+    assert.equal(report.findings[0].ruleId, "transcript-reporting-frame");
+    assert.equal(report.findings[0].confidence, "high");
+    assert.deepEqual(report.ruleCounts, [{
+      enforcement: "strict",
+      confidence: "high",
+      ruleId: "transcript-reporting-frame",
+      count: 1,
+    }]);
     assert.match(await readFile(join(repoRoot, "reports/site-content-wording-scan.md"), "utf8"), /evidence\[0\]\.note/u);
 
     video.segments[0]!.evidence[0]!.note = "Dr. Clarke recalls a personal visit to the ship.";
@@ -730,14 +803,29 @@ function sampleQaVideo(
 }
 
 async function withoutConsole<T>(operation: () => Promise<T>): Promise<T> {
+  return (await captureConsole(operation)).result;
+}
+
+async function captureConsole<T>(operation: () => Promise<T>): Promise<{
+  result: T;
+  logs: string[];
+  warnings: string[];
+  errors: string[];
+}> {
   const originalLog = console.log;
+  const originalWarn = console.warn;
   const originalError = console.error;
+  const logs: string[] = [];
+  const warnings: string[] = [];
+  const errors: string[] = [];
   try {
-    console.log = () => undefined;
-    console.error = () => undefined;
-    return await operation();
+    console.log = (...values: unknown[]) => logs.push(values.map(String).join(" "));
+    console.warn = (...values: unknown[]) => warnings.push(values.map(String).join(" "));
+    console.error = (...values: unknown[]) => errors.push(values.map(String).join(" "));
+    return {result: await operation(), logs, warnings, errors};
   } finally {
     console.log = originalLog;
+    console.warn = originalWarn;
     console.error = originalError;
   }
 }

@@ -71,10 +71,11 @@ export interface SiteContentWordingReport {
 
 const defaultSegmentsInput = "src/derived/video-segments";
 const completionCriterion =
-    "Prohibited Unicode dashes and shard parse failures are unconditional errors. Other actionable high-confidence issues require strict mode. Review candidates are triage input.";
+    "Prohibited Unicode dashes and shard parse failures are unconditional errors. Other actionable high-confidence issues require strict mode, including transcript-reporting frames in evidence notes. Review candidates are triage input.";
 const reviewPolicy =
     "Review candidates require transcript-grounded judgment. Do not bulk-rewrite them or use a zero review " +
     "count as a general completion target. Preserve technical terms when they carry subject-matter meaning. " +
+    "Inspect every transcript-reference finding and retain it only when a speaker is discussing a transcript as subject matter. " +
     "Treat host-attribution as a whole-shard review performed in small segment batches, including evidence notes. Verify each Clark or Clarke match against the transcript " +
     "before editing. Each segment already carries sourcePath and evidence, so remove routine references to the " +
     "host in solo-speaker prose. Preserve other people named Clark or Clarke. In multi-speaker material, also " +
@@ -132,6 +133,8 @@ export async function main(args: readonly string[] = process.argv.slice(2)): Pro
       (finding) => finding.confidence === "high" && !finding.unconditionalError,
   ).length;
   const reviewCount = selectedFindings.filter((finding) => finding.confidence === "review").length;
+  const strictFailure = options.strict && highConfidenceCount > 0;
+  const strictReviewFailure = options.strictReview && selectedFindings.length > 0;
   const report: SiteContentWordingReport = {
     generatedAt: new Date().toISOString(),
     completionCriterion,
@@ -177,14 +180,21 @@ export async function main(args: readonly string[] = process.argv.slice(2)): Pro
     findings: selectedFindings,
   };
 
-  console.log(
+  const warningCount = report.highConfidenceCount + report.reviewCount;
+  const summary =
       `Site-content wording scan: mode=${includeReview ? "review" : "actionable"} ` +
       `files=${report.filesScanned} videos=${report.videosScanned} segments=${report.segmentsScanned} ` +
       `public-fields=${report.publicFieldsScanned} evidence-notes=${report.evidenceNotesScanned} ` +
-      `errors=${report.errorCount} issues=${report.highConfidenceCount} ` +
+      `errors=${report.errorCount} warnings=${warningCount} issues=${report.highConfidenceCount} ` +
       `review-candidates=${report.reviewCount} matched-occurrences=${report.matchedOccurrenceCount} ` +
-      `parse-errors=${report.parseErrorCount}.`,
-  );
+      `parse-errors=${report.parseErrorCount}.`;
+  if (errorCount > 0 || parseErrors.length > 0 || strictFailure || strictReviewFailure) {
+    console.error(summary);
+  } else if (warningCount > 0) {
+    console.warn(summary);
+  } else {
+    console.log(summary);
+  }
   if (parseErrors.length > 0) {
     console.error("Curated-shard parse errors:");
     for (const error of parseErrors) {
@@ -219,13 +229,21 @@ export async function main(args: readonly string[] = process.argv.slice(2)): Pro
       writeTextAtomically(jsonPath, `${JSON.stringify(report, null, 2)}\n`),
       writeTextAtomically(markdownPath, reportMarkdown(report)),
     ]);
+    if (report.findingCount > 0 || report.parseErrorCount > 0) {
+      const reportNotice =
+          `Wording report contains errors or warnings: errors=${report.errorCount + report.parseErrorCount} ` +
+          `warnings=${warningCount} report=${basename(markdownPath)} json=${basename(jsonPath)}.`;
+      if (errorCount > 0 || parseErrors.length > 0 || strictFailure || strictReviewFailure) {
+        console.error(reportNotice);
+      } else {
+        console.warn(reportNotice);
+      }
+    }
     console.log("Detailed reports:");
     console.log(`  ${jsonPath}`);
     console.log(`  ${markdownPath}`);
   }
 
-  const strictFailure = options.strict && highConfidenceCount > 0;
-  const strictReviewFailure = options.strictReview && selectedFindings.length > 0;
   return errorCount > 0 || parseErrors.length > 0 || strictFailure || strictReviewFailure ? 1 : 0;
 }
 
@@ -571,10 +589,14 @@ Scans public prose and every evidence.note in current-schema per-video JSON shar
 for mechanical, report-shaped, or workflow-shaped wording. Topic metadata and
 evidence timestamps are outside the scan. Prohibited Unicode dashes always produce errors and exit 1.
 The default mode also reports other actionable high-confidence issues.
+The one-line summary uses the error or warning stream when findings require attention.
+With --report, the console notice names the Markdown and JSON report files.
 
 Review candidates require transcript-grounded judgment. Broad subject terms such
 as prototype, processing, extraction, and seed are retained unless they appear in
 workflow-shaped collocations. A zero review count is not a completion target.
+Inspect every transcript-reference finding. Retain the phrase only when a speaker
+is discussing a transcript as subject matter.
 Host-attribution findings identify each affected field and evidence-note index;
 review the full shard in small segment batches and preserve necessary speaker ownership.
 

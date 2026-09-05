@@ -148,7 +148,6 @@ const deterministicRules: readonly SiteContentWordingRule[] = [
   {
     id: "transcript-reporting-frame",
     confidence: "high",
-    evidenceConfidence: "review",
     fields: allFields,
     pattern: /\b(?:the|this)\s+transcript\s+(?:says?|states?|notes?|records?|reads?|renders?|describes?|mentions?|shows?|identifies?|explains?|indicates?|compares?|contrasts?|discusses?|outlines?|summari[sz]es?|introduces?|traces?|links?|distinguishes?|covers?|gives?|connects?|lists?|names?|follows?|sets?\s+out|lays?\s+out)\b/giu,
     captureGroup: null,
@@ -288,6 +287,14 @@ const deterministicRules: readonly SiteContentWordingRule[] = [
     pattern: /\b(?<phrase>(?:site|content|transcript|question|answer|segment|shard|metadata|scaffold)\s+(?:processing|curation|extraction|pass|review|status|stage|queue|backlog)|(?:processing|curation|extraction|pass|review)\s+(?:status|stage|queue|backlog|workflow)|(?:first|initial|later|future|follow-up|subsequent)\s+(?:content|curation|processing|extraction)\s+(?:pass|stage|review))\b/giu,
     captureGroup: "phrase",
     guidance: "Check whether this collocation describes site workflow. Move workflow status to the processing log while preserving genuine historical, technical, or operational subject matter.",
+  },
+  {
+    id: "transcript-reference",
+    confidence: "review",
+    fields: allFields,
+    pattern: /\b(?:the|this)\s+transcript\b/giu,
+    captureGroup: null,
+    guidance: "Inspect the source passage. Retain this phrase only when a speaker is discussing a transcript as subject matter; otherwise state the supported historical or technical point directly.",
   },
 ];
 
