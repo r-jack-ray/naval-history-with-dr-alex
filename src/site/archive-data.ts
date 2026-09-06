@@ -182,7 +182,6 @@ interface ChannelEpisode {
   videoId: string;
   title: string;
   slug?: string;
-  url?: string;
   fileStem?: string;
   durationText?: string;
   publishedText?: string;
@@ -194,7 +193,6 @@ interface ChannelEpisode {
   videoDateKind?: VideoDateKind;
   videoKind?: VideoKind;
   viewCountText?: string;
-  tabs?: string[];
   transcript?: {
     status?: string;
   };
@@ -992,7 +990,7 @@ function buildSiteVideo(input: {
 }): SiteVideo {
   const title = input.metadata?.snippet?.title ?? input.episode.title;
   const slug = input.episode.slug ?? slugifyVideoTitle(title) ?? input.episode.videoId;
-  const youtubeUrl = input.episode.url ?? `https://www.youtube.com/watch?v=${input.episode.videoId}`;
+  const youtubeUrl = `https://www.youtube.com/watch?v=${encodeURIComponent(input.episode.videoId)}`;
   const stats = buildStats(input.metadata);
   if (input.episode.fileStem === undefined || input.episode.fileStem.length === 0) {
     throw new Error(`Site video ${input.episode.videoId} is missing its manifest-owned fileStem.`);

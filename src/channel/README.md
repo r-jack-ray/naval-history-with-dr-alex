@@ -21,11 +21,9 @@ availability failures belong in `src/transcripts/fetch-status.json` instead.
 
 `episodes.json` is the source master list for discovered channel videos and streams. Each episode record stores:
 
-- YouTube video ID and canonical URL.
+- YouTube video ID.
 - A readable `slug` and `fileStem` for generated files.
-- Current channel order from the inventory crawl.
 - Title, duration, relative channel-page text, views, and exact raw date fields when known.
-- Source tabs where the item appeared (`videos`, `streams`).
 - Transcript storage status pointing to `src/transcripts/` when available.
 
 The file includes an inventory completeness flag. Do not treat a partial master list as the full channel backlog.

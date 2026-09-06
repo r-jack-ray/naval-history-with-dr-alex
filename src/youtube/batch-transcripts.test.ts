@@ -23,8 +23,8 @@ test("reads unique transcript batch episodes from the channel master list", asyn
         input,
         JSON.stringify({
           episodes: [
-            {videoId: "abc123", title: "First", tabs: ["videos"], channelOrder: 1},
-            {videoId: "abc123", title: "Duplicate", tabs: ["streams"], channelOrder: 2},
+            {videoId: "abc123", title: "First"},
+            {videoId: "abc123", title: "Duplicate"},
             {videoId: "def456", title: "Second", publishedAt: "2026-07-01T00:00:00Z"},
           ],
         }),
@@ -35,7 +35,6 @@ test("reads unique transcript batch episodes from the channel master list", asyn
 
     assert.deepEqual(episodes.map((episode) => episode.videoId), ["abc123", "def456"]);
     assert.equal(episodes[0]?.title, "First");
-    assert.deepEqual(episodes[0]?.tabs, ["videos"]);
   } finally {
     await rm(dir, {recursive: true, force: true});
   }
@@ -73,8 +72,8 @@ test("batch fetch skips stored transcripts and writes checkpoint status", async 
         input,
         JSON.stringify({
           episodes: [
-            {videoId: "abc123", title: "Stored", tabs: ["videos"], channelOrder: 1},
-            {videoId: "def456", title: "Pending", tabs: ["streams"], channelOrder: 2},
+            {videoId: "abc123", title: "Stored"},
+            {videoId: "def456", title: "Pending"},
           ],
         }),
         "utf8",
@@ -85,7 +84,6 @@ test("batch fetch skips stored transcripts and writes checkpoint status", async 
         attemptedAt: "2026-07-08T00:00:00.000Z",
         classification: "fetch_failed",
         error: "Stale failure for an already stored TXT.",
-        tabs: ["videos"],
       }],
     }), "utf8");
     await writeFile(
@@ -157,7 +155,6 @@ test("batch can fetch without a metadata lookup when explicitly requested", asyn
         videoId: "abc123",
         title: "Metadata-free transcript",
         publishedAt: "2026-07-03T18:30:17Z",
-        tabs: ["videos"],
       }],
     }), "utf8");
 
@@ -194,8 +191,8 @@ test("batch fully excludes ignored videos and clears their stale failures", asyn
   try {
     await writeFile(input, JSON.stringify({
       episodes: [
-        {videoId: "ts331iLYWlc", title: "Ignored error", tabs: ["streams"]},
-        {videoId: "keep-video1", title: "Keep", tabs: ["videos"]},
+        {videoId: "ts331iLYWlc", title: "Ignored error"},
+        {videoId: "keep-video1", title: "Keep"},
       ],
     }), "utf8");
     await mkdir(outputRoot, {recursive: true});
@@ -205,7 +202,6 @@ test("batch fully excludes ignored videos and clears their stale failures", asyn
         attemptedAt: "2026-07-26T00:00:00.000Z",
         classification: "fetch_failed",
         error: "Old failure.",
-        tabs: ["streams"],
       }],
     }), "utf8");
 
@@ -243,7 +239,7 @@ test("batch refetches a manifest record whose TXT file is missing", async () => 
     await rm(stored.txtOutput);
     await writeFile(
         input,
-        JSON.stringify({episodes: [{videoId: "abc123", title: "Stored", tabs: ["videos"]}]}),
+        JSON.stringify({episodes: [{videoId: "abc123", title: "Stored"}]}),
         "utf8",
     );
     await writeReadyMetadata(metadataInput, ["abc123"]);
@@ -284,7 +280,7 @@ test("batch force-refetch preserves an existing manifest fileStem", async () => 
     }, outputRoot);
     await writeFile(
         input,
-        JSON.stringify({episodes: [{videoId: "abc123", title: "Renamed Title", tabs: ["videos"]}]}),
+        JSON.stringify({episodes: [{videoId: "abc123", title: "Renamed Title"}]}),
         "utf8",
     );
     await writeReadyMetadata(metadataInput, ["abc123"]);
@@ -323,7 +319,7 @@ test("batch skips previous failures until retry is requested", async () => {
     await writeFile(
         input,
         JSON.stringify({
-          episodes: [{videoId: "abc123", title: "Previously failed", tabs: ["videos"], channelOrder: 1}],
+          episodes: [{videoId: "abc123", title: "Previously failed"}],
         }),
         "utf8",
     );
@@ -338,7 +334,6 @@ test("batch skips previous failures until retry is requested", async () => {
               attemptedAt: "2026-07-08T00:00:00.000Z",
               classification: "no_caption_tracks",
               error: "No caption tracks found for video: abc123.",
-              tabs: ["videos"],
             },
           ],
         }),
@@ -399,9 +394,9 @@ test("batch blocks nominal 60-second videos including one second of metadata pad
   try {
     await writeFile(input, JSON.stringify({
       episodes: [
-        {videoId: "exact60", title: "Exact 60", tabs: ["videos"]},
-        {videoId: "padded60", title: "Padded 60", tabs: ["videos"]},
-        {videoId: "longer123", title: "Longer", tabs: ["videos"]},
+        {videoId: "exact60", title: "Exact 60"},
+        {videoId: "padded60", title: "Padded 60"},
+        {videoId: "longer123", title: "Longer"},
       ],
     }), "utf8");
     await writeFile(metadataInput, JSON.stringify({
@@ -444,7 +439,7 @@ test("batch skips published but unstarted videos and clears stale failures", asy
   try {
     await writeFile(
         input,
-        JSON.stringify({episodes: [{videoId: "upcoming123", title: "Upcoming", tabs: ["streams"]}]}),
+        JSON.stringify({episodes: [{videoId: "upcoming123", title: "Upcoming"}]}),
         "utf8",
     );
     await writeFile(
@@ -468,7 +463,6 @@ test("batch skips published but unstarted videos and clears stale failures", asy
             attemptedAt: "2026-07-09T00:00:00.000Z",
             classification: "no_caption_tracks",
             error: "No caption tracks found for video: upcoming123.",
-            tabs: ["streams"],
           }],
         }),
         "utf8",
@@ -515,9 +509,9 @@ test("batch checkpoints partial failures and a later retry fetches only the miss
   try {
     await writeFile(input, JSON.stringify({
       episodes: [
-        {videoId: "aaa111", title: "First", tabs: ["videos"]},
-        {videoId: "bbb222", title: "Second", tabs: ["videos"]},
-        {videoId: "ccc333", title: "Third", tabs: ["videos"]},
+        {videoId: "aaa111", title: "First"},
+        {videoId: "bbb222", title: "Second"},
+        {videoId: "ccc333", title: "Third"},
       ]
     }), "utf8");
     await writeReadyMetadata(metadataInput, ["aaa111", "bbb222", "ccc333"]);
@@ -588,7 +582,7 @@ test("batch re-emits checkpointed TXT handoff paths after interruption until ack
   try {
     await writeFile(input, JSON.stringify({
       episodes: [
-        {videoId: "abc123", title: "Recovered handoff", tabs: ["videos"]},
+        {videoId: "abc123", title: "Recovered handoff"},
       ]
     }), "utf8");
     await writeReadyMetadata(metadataInput, ["abc123"]);
@@ -653,9 +647,9 @@ test("batch circuit breaker stops later eligible fetches and leaves them pending
   try {
     await writeFile(input, JSON.stringify({
       episodes: [
-        {videoId: "aaa111", title: "Blocked", tabs: ["videos"]},
-        {videoId: "bbb222", title: "Pending B", tabs: ["videos"]},
-        {videoId: "ccc333", title: "Pending C", tabs: ["videos"]},
+        {videoId: "aaa111", title: "Blocked"},
+        {videoId: "bbb222", title: "Pending B"},
+        {videoId: "ccc333", title: "Pending C"},
       ]
     }), "utf8");
     await writeReadyMetadata(metadataInput, ["aaa111", "bbb222", "ccc333"]);
@@ -706,7 +700,6 @@ test("formats a deterministic acquisition-to-curation handoff", () => {
       reason: "processing",
       diagnostic: "Still\nprocessing",
       title: "Deferred video",
-      tabs: ["streams"],
     }],
     failedRecords: [{
       videoId: "failed111",
@@ -714,11 +707,10 @@ test("formats a deterministic acquisition-to-curation handoff", () => {
       classification: "fetch_failed",
       error: "Socket\nclosed",
       title: "Failed video",
-      tabs: ["videos"],
     }],
     pendingRecords: [
-      {videoId: "pending999", reason: "limit_reached", title: "Later", tabs: ["videos"]},
-      {videoId: "pending111", reason: "circuit_breaker", title: "Sooner", tabs: ["videos"]},
+      {videoId: "pending999", reason: "limit_reached", title: "Later"},
+      {videoId: "pending111", reason: "circuit_breaker", title: "Sooner"},
     ],
     circuitBreakerTripped: true,
   });

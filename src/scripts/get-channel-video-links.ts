@@ -90,7 +90,7 @@ async function main(): Promise<void> {
         inputPath: options.masterOutput,
         outputPath: defaultVideoMetadataOutput,
         requestDelayMs: options.requestDelayMs,
-        batchSize: 50,
+        batchSize: 100,
         ignoredVideoIds,
         ...(metadataRefreshVideoIds.length > 0 ? {refreshVideoIds: metadataRefreshVideoIds} : {}),
         ...(!options.quiet ? {logger: (message: string) => console.log(message)} : {}),

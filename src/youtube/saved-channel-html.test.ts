@@ -32,7 +32,6 @@ test("extracts rendered channel video lockups with exact publish timestamps", ()
       publishedAt: "2026-07-04T18:30:06+00:00",
       publishDate: "2026-07-04",
       tabs: ["videos"],
-      tabPositions: {videos: 1},
     },
     {
       videoId: "eYhGE7TDlHQ",
@@ -44,7 +43,6 @@ test("extracts rendered channel video lockups with exact publish timestamps", ()
       publishedAt: "2026-07-03T18:30:17+00:00",
       publishDate: "2026-07-03",
       tabs: ["videos"],
-      tabPositions: {videos: 2},
     },
   ]);
 });
@@ -95,7 +93,6 @@ test("matches the retired streams parser on ytInitialData lockups", () => {
         title: "The Press Gang, myth and reality...",
         publishedText: "Scheduled for 8/13/26, 1:30 PM",
         tabs: ["streams"],
-        tabPositions: {streams: 2},
       },
       {
         videoId: "uURe69Wnh-Q",
@@ -105,7 +102,6 @@ test("matches the retired streams parser on ytInitialData lockups", () => {
         publishedText: "Streamed 2 days ago",
         viewCountText: "1K views",
         tabs: ["streams"],
-        tabPositions: {streams: 3},
       },
       {
         videoId: "AbCdEfGhI12",
@@ -115,7 +111,6 @@ test("matches the retired streams parser on ytInitialData lockups", () => {
         publishedText: "Premiered Jul 1, 2026",
         viewCountText: "22 views",
         tabs: ["streams"],
-        tabPositions: {streams: 4},
       },
     ],
   });
@@ -139,7 +134,7 @@ test("omits ignored videos from saved channel HTML extraction", () => {
   assert.deepEqual(extraction.result.links.map((record) => record.videoId), ["eYhGE7TDlHQ"]);
 });
 
-test("omits ignored streams while preserving raw counts and source positions", () => {
+test("omits ignored streams while preserving raw counts", () => {
   const extraction = extractSavedChannelHtml(initialDataFixtureHtml(), {
     tab: "streams",
     ignoredVideoIds: new Set(["uURe69Wnh-Q"]),
@@ -147,13 +142,10 @@ test("omits ignored streams while preserving raw counts and source positions", (
 
   assert.equal(extraction.stats.extractedVideoCount, 2);
   assert.equal(extraction.result.tabs.streams.rawCount, 4);
-  assert.deepEqual(
-      extraction.result.links.map((record) => [record.videoId, record.tabPositions.streams]),
-      [
-        ["Nfv-qSf9wLs", 2],
-        ["AbCdEfGhI12", 4],
-      ],
-  );
+  assert.deepEqual(extraction.result.links.map((record) => record.videoId), [
+    "Nfv-qSf9wLs",
+    "AbCdEfGhI12",
+  ]);
 });
 
 function renderedFixtureHtml(): string {

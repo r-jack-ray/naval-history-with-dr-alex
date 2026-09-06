@@ -68,7 +68,6 @@ export interface ChannelVideoLink {
   videoDateKind?: VideoDateKind;
   videoKind?: VideoKind;
   tabs: ChannelVideoTab[];
-  tabPositions: Partial<Record<ChannelVideoTab, number>>;
 }
 
 /**
@@ -135,7 +134,6 @@ export interface ChannelVideoListResult {
     videoId: string;
     url: string;
     tabs: ChannelVideoTab[];
-    tabPositions: Partial<Record<ChannelVideoTab, number>>;
   }[];
 }
 
@@ -183,8 +181,6 @@ export interface ChannelEpisodeRecord {
   videoId: string;
   slug?: string;
   fileStem: string;
-  url: string;
-  channelOrder: number;
   title?: string;
   durationText?: string;
   durationSeconds?: number;
@@ -197,8 +193,6 @@ export interface ChannelEpisodeRecord {
   videoDateAt?: string;
   videoDateKind?: VideoDateKind;
   videoKind: VideoKind;
-  tabs: ChannelVideoTab[];
-  tabPositions: Partial<Record<ChannelVideoTab, number>>;
   transcript: ChannelEpisodeTranscriptState;
 }
 
@@ -363,7 +357,7 @@ export async function fetchChannelVideoLinks(
     rawCount += items.length;
 
     for (const item of items) {
-      const record = playlistItemToVideoLink(item, records.length + 1);
+      const record = playlistItemToVideoLink(item);
       if (record !== undefined) {
         if (options.ignoredVideoIds?.has(record.videoId)) {
           ignoredCount += 1;
@@ -506,7 +500,7 @@ export function buildChannelEpisodeMaster(
     storage: {
       transcriptsManifest: "src/transcripts/manifest.json",
     },
-    episodes: links.map((link, index) => channelEpisodeRecord(link, index + 1, options)),
+    episodes: links.map((link) => channelEpisodeRecord(link, options)),
   };
 }
 
@@ -525,7 +519,6 @@ export function splitChannelVideoLinksResult(result: ChannelVideoLinksResult): {
         videoId: link.videoId,
         url: link.url,
         tabs: link.tabs,
-        tabPositions: link.tabPositions,
       })),
     },
     metadata: {
@@ -575,7 +568,6 @@ export function mergeChannelVideoLinksResults(
 
 function channelEpisodeRecord(
     link: ChannelVideoLink,
-    channelOrder: number,
     options: BuildChannelEpisodeMasterOptions,
 ): ChannelEpisodeRecord {
   const metadata = options.metadataRecords?.get(link.videoId);
@@ -590,10 +582,6 @@ function channelEpisodeRecord(
   const record: ChannelEpisodeRecord = {
     videoId: link.videoId,
     fileStem: stored?.fileStem ?? videoFileStem(link.videoId, title, normalizedDate ?? fallbackDate),
-    url: link.url,
-    channelOrder,
-    tabs: link.tabs,
-    tabPositions: link.tabPositions,
     videoKind,
     transcript: stored === undefined
         ? options.transcriptStates?.get(link.videoId) ?? {status: "not_checked"}
@@ -752,16 +740,13 @@ function mergeLinks(records: ChannelVideoLink[]): ChannelVideoLink[] {
   for (const record of records) {
     const existing = linksById.get(record.videoId);
     if (!existing) {
-      linksById.set(record.videoId, {...record, tabs: [...record.tabs], tabPositions: {...record.tabPositions}});
+      linksById.set(record.videoId, {...record, tabs: [...record.tabs]});
       continue;
     }
 
     for (const tab of record.tabs) {
       if (!existing.tabs.includes(tab)) {
         existing.tabs.push(tab);
-      }
-      if (existing.tabPositions[tab] === undefined && record.tabPositions[tab] !== undefined) {
-        existing.tabPositions[tab] = record.tabPositions[tab];
       }
     }
 
@@ -791,7 +776,6 @@ function mergeLinks(records: ChannelVideoLink[]): ChannelVideoLink[] {
 export function extractVideoLink(
     node: unknown,
     tab: ChannelVideoTab,
-    tabPosition: number,
 ): ChannelVideoLink | undefined {
   const object = asRecord(node);
   if (!object) {
@@ -812,7 +796,6 @@ export function extractVideoLink(
     videoId,
     url: `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}`,
     tabs: [tab],
-    tabPositions: {[tab]: tabPosition},
   };
 
   const title =
@@ -899,10 +882,7 @@ async function resolveOfficialChannel(
   };
 }
 
-function playlistItemToVideoLink(
-    item: YoutubePlaylistItem,
-    tabPosition: number,
-): ChannelVideoLink | undefined {
+function playlistItemToVideoLink(item: YoutubePlaylistItem): ChannelVideoLink | undefined {
   const videoId = item.contentDetails?.videoId ?? item.snippet?.resourceId?.videoId ?? undefined;
   if (videoId === undefined) {
     return undefined;
@@ -912,7 +892,6 @@ function playlistItemToVideoLink(
     videoId,
     url: `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}`,
     tabs: ["videos"],
-    tabPositions: {videos: tabPosition},
   };
   const title = item.snippet?.title ?? undefined;
   const publishedAt = item.contentDetails?.videoPublishedAt ?? item.snippet?.publishedAt ?? undefined;

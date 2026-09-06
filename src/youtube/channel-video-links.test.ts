@@ -58,20 +58,17 @@ test("refreshes deferred metadata when the current channel fetch reports a trans
               url: "https://www.youtube.com/watch?v=staleUpcoming",
               durationSeconds: 9_245,
               tabs: ["videos"],
-              tabPositions: {videos: 1},
             },
             {
               videoId: "stillUnresolved",
               url: "https://www.youtube.com/watch?v=stillUnresolved",
               tabs: ["videos"],
-              tabPositions: {videos: 2},
             },
             {
               videoId: "alreadyReady",
               url: "https://www.youtube.com/watch?v=alreadyReady",
               durationSeconds: 9_245,
               tabs: ["videos"],
-              tabPositions: {videos: 3},
             },
           ],
           new Map([
@@ -113,7 +110,6 @@ test("extracts video links from YouTube LockupView nodes", () => {
         },
       },
       "videos",
-      7,
   );
 
   assert.deepEqual(record, {
@@ -124,7 +120,6 @@ test("extracts video links from YouTube LockupView nodes", () => {
     publishedText: "3 days ago",
     viewCountText: "1.7K views",
     tabs: ["videos"],
-    tabPositions: {videos: 7},
   });
 });
 
@@ -153,7 +148,6 @@ test("splits base video links from metadata records", () => {
         title: "Ideal Destroyers",
         publishDate: "2026-07-04",
         tabs: ["videos"],
-        tabPositions: {videos: 1},
       },
     ],
   });
@@ -163,7 +157,6 @@ test("splits base video links from metadata records", () => {
       videoId: "--l6rRIfksQ",
       url: "https://www.youtube.com/watch?v=--l6rRIfksQ",
       tabs: ["videos"],
-      tabPositions: {videos: 1},
     },
   ]);
   assert.equal(split.metadata.exactDetailsIncluded, true);
@@ -202,7 +195,6 @@ test("builds a canonical source episode master list", () => {
             title: "Stored transcript video",
             durationText: "4:35:38",
             tabs: ["videos"],
-            tabPositions: {videos: 1},
           },
         ],
       },
@@ -229,13 +221,9 @@ test("builds a canonical source episode master list", () => {
       videoId: "uURe69Wnh-Q",
       slug: "stored-transcript-video",
       fileStem: "stored-transcript-video_uURe69Wnh-Q",
-      url: "https://www.youtube.com/watch?v=uURe69Wnh-Q",
-      channelOrder: 1,
       title: "Stored transcript video",
       durationText: "4:35:38",
       videoKind: "upload",
-      tabs: ["videos"],
-      tabPositions: {videos: 1},
       transcript: {
         status: "stored",
         txtPath: "src/transcripts/txt/uURe69Wnh-Q.txt",
@@ -276,7 +264,6 @@ test("official enrichment keeps raw stream dates separate from the effective dat
     videoId: "abc123",
     url: "https://www.youtube.com/watch?v=abc123",
     tabs: ["streams" as const],
-    tabPositions: {streams: 1},
   };
 
   applyOfficialVideoMetadata(link, {
@@ -310,7 +297,6 @@ test("official duration metadata blocks nominal 60-second clips with one second 
     videoId: "short123",
     url: "https://www.youtube.com/watch?v=short123",
     tabs: ["videos"],
-    tabPositions: {videos: 1},
   };
 
   applyOfficialVideoDuration(link, {contentDetails: {duration: "PT1M"}});
@@ -338,7 +324,6 @@ test("merges channel video link results across tabs", () => {
           url: "https://www.youtube.com/watch?v=abc123",
           title: "Video",
           tabs: ["videos"],
-          tabPositions: {videos: 1},
         },
       ],
     },
@@ -356,13 +341,11 @@ test("merges channel video link results across tabs", () => {
           videoId: "abc123",
           url: "https://www.youtube.com/watch?v=abc123",
           tabs: ["streams"],
-          tabPositions: {streams: 1},
         },
         {
           videoId: "def456",
           url: "https://www.youtube.com/watch?v=def456",
           tabs: ["streams"],
-          tabPositions: {streams: 2},
         },
       ],
     },
@@ -372,7 +355,6 @@ test("merges channel video link results across tabs", () => {
   assert.equal(merged.tabs.streams.pagesFetched, 1);
   assert.deepEqual(merged.links.map((link) => link.videoId), ["abc123", "def456"]);
   assert.deepEqual(merged.links[0]?.tabs, ["videos", "streams"]);
-  assert.deepEqual(merged.links[0]?.tabPositions, {videos: 1, streams: 1});
 });
 
 test("excludes ignored videos from merged links and the canonical episode master", () => {
@@ -391,13 +373,11 @@ test("excludes ignored videos from merged links and the canonical episode master
         videoId: "ts331iLYWlc",
         url: "https://www.youtube.com/watch?v=ts331iLYWlc",
         tabs: ["videos" as const],
-        tabPositions: {videos: 1},
       },
       {
         videoId: "keep-video1",
         url: "https://www.youtube.com/watch?v=keep-video1",
         tabs: ["videos" as const],
-        tabPositions: {videos: 2},
       },
     ],
   };
@@ -407,7 +387,6 @@ test("excludes ignored videos from merged links and the canonical episode master
 
   assert.deepEqual(merged.links.map((link) => link.videoId), ["keep-video1"]);
   assert.deepEqual(master.episodes.map((episode) => episode.videoId), ["keep-video1"]);
-  assert.equal(master.episodes[0]?.channelOrder, 1);
 });
 
 test("spaces fetch calls through a serial rate limiter", async () => {

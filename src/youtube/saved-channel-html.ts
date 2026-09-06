@@ -92,7 +92,7 @@ function extractRenderedLockupRecords(html: string, tab: ChannelVideoTab): Locku
       .map((block) => `<yt-lockup-view-model${block.split(/<\/yt-lockup-view-model>/iu)[0] ?? ""}</yt-lockup-view-model>`);
   const records: ChannelVideoLink[] = [];
 
-  for (const [index, block] of blocks.entries()) {
+  for (const block of blocks) {
     const videoId = firstMatch(block, /href="https:\/\/www\.youtube\.com\/watch\?v=([A-Za-z0-9_-]+)/iu);
     if (videoId === undefined) {
       continue;
@@ -102,7 +102,6 @@ function extractRenderedLockupRecords(html: string, tab: ChannelVideoTab): Locku
       videoId,
       url: `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}`,
       tabs: [tab],
-      tabPositions: {[tab]: index + 1},
     };
     const title = renderedTitle(block);
     const durationText = renderedDuration(block);
@@ -138,7 +137,7 @@ function extractInitialDataLockupRecords(initialData: unknown, tab: ChannelVideo
   const lockups = collectValuesForKey(initialData, "lockupViewModel");
   const records: ChannelVideoLink[] = [];
 
-  for (const [index, lockupValue] of lockups.entries()) {
+  for (const lockupValue of lockups) {
     const lockup = asRecord(lockupValue);
     if (!lockup) {
       continue;
@@ -179,7 +178,6 @@ function extractInitialDataLockupRecords(initialData: unknown, tab: ChannelVideo
       videoId,
       url: `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}`,
       tabs: [tab],
-      tabPositions: {[tab]: index + 1},
     };
     const title =
         textValue(readPath(metadataObject, ["title"])) ??

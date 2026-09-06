@@ -336,7 +336,6 @@ test("makes duplicate video title slugs route-unique", () => {
     videoId: "def456",
     title: "Sample Video",
     slug: "sample-video",
-    url: "https://www.youtube.com/watch?v=def456",
     fileStem: "2026-07-07_T00-00-00_sample-video_def456",
   });
   input.metadataStore.videos.push(readyUploadMetadata("def456", "Sample Video", "2026-07-07T00:00:00Z"));
@@ -561,9 +560,7 @@ function sampleInput(): Parameters<typeof buildSiteArchiveData>[0] {
           videoId: "abc123",
           title: "Sample Video",
           slug: "sample-video",
-          url: "https://www.youtube.com/watch?v=abc123",
           fileStem: "2026-07-08_T00-00-00_sample-video_abc123",
-          tabs: ["streams"],
           transcript: { status: "stored" },
         },
       ],

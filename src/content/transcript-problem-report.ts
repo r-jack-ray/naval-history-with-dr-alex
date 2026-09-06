@@ -130,14 +130,13 @@ export function renderTranscriptProblemReport(report: TranscriptProblemReport): 
       lines.push(`- \`${reason}\`: ${count}`);
     }
     lines.push("", "## Videos", "");
-    lines.push("| Last attempt | Video | Source | Saved failure | Probable reason | Confidence | Evidence |", "| --- | --- | --- | --- | --- | --- | --- |");
+    lines.push("| Last attempt | Video | Saved failure | Probable reason | Confidence | Evidence |", "| --- | --- | --- | --- | --- | --- |");
     for (const problem of report.problems) {
       const title = problem.title ?? "Untitled video";
       const video = `[${escapeTable(title)}](https://www.youtube.com/watch?v=${encodeURIComponent(problem.videoId)})<br>\`${escapeTable(problem.videoId)}\``;
       lines.push(`| ${[
         escapeTable(problem.attemptedAt),
         video,
-        escapeTable(problem.tabs.length > 0 ? problem.tabs.join(", ") : "unknown"),
         `\`${problem.classification}\``,
         escapeTable(problem.diagnosis.probableReason),
         problem.diagnosis.confidence,

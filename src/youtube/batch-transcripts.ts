@@ -36,8 +36,6 @@ export interface TranscriptBatchEpisode {
   actualEndAt?: string;
   videoDateAt?: string;
   videoDateKind?: VideoDateKind;
-  channelOrder?: number;
-  tabs: string[];
 }
 
 export interface TranscriptBatchFailure {
@@ -47,8 +45,6 @@ export interface TranscriptBatchFailure {
   error: string;
   title?: string;
   videoDateAt?: string;
-  channelOrder?: number;
-  tabs: string[];
 }
 
 export type TranscriptFailureClassification =
@@ -91,8 +87,6 @@ export interface TranscriptBatchDeferredRecord {
   reason: VideoReadinessReason;
   diagnostic: string;
   title?: string;
-  channelOrder?: number;
-  tabs: string[];
 }
 
 export type TranscriptBatchPendingReason =
@@ -105,8 +99,6 @@ export interface TranscriptBatchPendingRecord {
   videoId: string;
   reason: TranscriptBatchPendingReason;
   title?: string;
-  channelOrder?: number;
-  tabs: string[];
 }
 
 export interface TranscriptBatchHandoff {
@@ -388,7 +380,6 @@ export async function readTranscriptBatchEpisodes(path: string): Promise<Transcr
 
     const batchEpisode: TranscriptBatchEpisode = {
       videoId,
-      tabs: readStringArray(record?.tabs),
     };
     const title = readString(record, "title");
     const publishedAt = readString(record, "publishedAt");
@@ -397,7 +388,6 @@ export async function readTranscriptBatchEpisodes(path: string): Promise<Transcr
     const actualEndAt = readString(record, "actualEndAt");
     const videoDateAt = readString(record, "videoDateAt");
     const videoDateKind = readVideoDateKind(record?.videoDateKind);
-    const channelOrder = integerValue(record?.channelOrder);
 
     if (title !== undefined) {
       batchEpisode.title = title;
@@ -419,9 +409,6 @@ export async function readTranscriptBatchEpisodes(path: string): Promise<Transcr
     }
     if (videoDateKind !== undefined) {
       batchEpisode.videoDateKind = videoDateKind;
-    }
-    if (channelOrder !== undefined) {
-      batchEpisode.channelOrder = channelOrder;
     }
 
     result.push(batchEpisode);
@@ -608,8 +595,6 @@ function transcriptBatchDeferredRecord(
     reason: state.reason,
     diagnostic: state.diagnostic,
     ...(episode.title === undefined ? {} : {title: episode.title}),
-    ...(episode.channelOrder === undefined ? {} : {channelOrder: episode.channelOrder}),
-    tabs: [...episode.tabs],
   };
 }
 
@@ -621,8 +606,6 @@ function transcriptBatchPendingRecord(
     videoId: episode.videoId,
     reason,
     ...(episode.title === undefined ? {} : {title: episode.title}),
-    ...(episode.channelOrder === undefined ? {} : {channelOrder: episode.channelOrder}),
-    tabs: [...episode.tabs],
   };
 }
 
@@ -669,7 +652,6 @@ function transcriptBatchFailure(
     attemptedAt: new Date().toISOString(),
     classification: classifyTranscriptFailure(message),
     error: message,
-    tabs: episode.tabs,
   };
 
   if (episode.title !== undefined) {
@@ -677,9 +659,6 @@ function transcriptBatchFailure(
   }
   if (videoDateAt !== undefined) {
     failure.videoDateAt = videoDateAt;
-  }
-  if (episode.channelOrder !== undefined) {
-    failure.channelOrder = episode.channelOrder;
   }
 
   return failure;
@@ -732,20 +711,15 @@ function transcriptBatchFailureFromJson(value: unknown): TranscriptBatchFailure 
     attemptedAt,
     classification,
     error,
-    tabs: readStringArray(object.tabs),
   };
   const title = readString(object, "title");
   const videoDateAt = readString(object, "videoDateAt") ?? readString(object, "publishedAt");
-  const channelOrder = integerValue(object.channelOrder);
 
   if (title !== undefined) {
     failure.title = title;
   }
   if (videoDateAt !== undefined) {
     failure.videoDateAt = videoDateAt;
-  }
-  if (channelOrder !== undefined) {
-    failure.channelOrder = channelOrder;
   }
 
   return failure;

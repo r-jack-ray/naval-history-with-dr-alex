@@ -43,7 +43,6 @@ function failure(overrides: Partial<TranscriptBatchFailure> = {}): TranscriptBat
     attemptedAt: "2026-07-09T06:00:00.000Z",
     classification: "no_caption_tracks",
     error: "No caption tracks found for video: video123.",
-    tabs: ["videos"],
     ...overrides,
   };
 }
