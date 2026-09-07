@@ -1,32 +1,29 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-09-07T08:02:21.178Z",
+  "updatedAt": "2026-09-07T18:37:01.887Z",
   "inputPath": "src/channel/episodes.json",
   "outputRoot": "src/transcripts",
   "requestDelayMs": 5000,
   "retryFailed": false,
   "force": false,
-  "pendingHandoffTxtPaths": [
-    "src/transcripts/txt/2026-09-05_T18-30-06_what-if-britain-joined-with-australian-and-canada-to-build-a-maximum-invincible-class-instead_Vlr3LIEN9l0.txt",
-    "src/transcripts/txt/2026-09-06_T18-51-37_bruships-258-naval-history-questions-answered-live_oajYjWcUgkg.txt"
-  ],
+  "pendingHandoffTxtPaths": [],
   "stats": {
     "inputVideoCount": 2186,
-    "skippedStoredCount": 0,
-    "skippedDeferredCount": 0,
+    "skippedStoredCount": 2165,
+    "skippedDeferredCount": 6,
     "skippedShortDurationCount": 0,
     "deferredCounts": {
-      "upcoming": 0,
+      "upcoming": 6,
       "live_in_progress": 0,
       "processing": 0,
       "metadata_missing": 0,
       "invalid_metadata": 0
     },
-    "skippedPreviousFailureCount": 0,
-    "attemptedCount": 1,
-    "fetchedCount": 1,
+    "skippedPreviousFailureCount": 15,
+    "attemptedCount": 0,
+    "fetchedCount": 0,
     "failedCount": 0,
-    "pendingCount": 2185,
+    "pendingCount": 15,
     "totalFailureCount": 15
   },
   "failures": [
