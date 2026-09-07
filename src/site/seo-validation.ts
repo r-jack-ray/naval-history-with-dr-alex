@@ -1030,7 +1030,7 @@ export async function validateRenderedSeoSite(
           if (record.videoCount === 0 && record.segmentCount === 0 && typeof record.slug === "string") {
             const orphanUrl = new URL(`${basePath}topics/${record.slug}/`, siteOrigin).href;
             if (routeUrls.has(orphanUrl) || sitemapUrls.has(orphanUrl)) {
-              diagnostic("error", "orphan-topic-route", orphanUrl, "Unreferenced topic was rendered or included in the sitemap.");
+              diagnostic("warning", "orphan-topic-route", orphanUrl, "Unreferenced topic was rendered or included in the sitemap.");
             }
           }
         }

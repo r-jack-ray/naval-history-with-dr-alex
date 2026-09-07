@@ -23,7 +23,7 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` for explicitly 
 3. Read the header and applicable rules in `src/derived/topic-normalization-patterns.tsv`. Do not treat an existing rule as correct merely because it is active.
 4. Run `npm run report:video-topic-usage`. Consume both `reports/video-topic-usage.tsv` and `reports/topic-normalization-review.tsv`; the reports are ignored, on-demand evidence rather than canonical source.
 5. Read the report headers before filtering or interpreting columns. Inspect every listed registry and shard source for each candidate under consideration.
-6. Inventory every registry row whose `usage count` is `0`. Unused registry topics are standard scope in every taxonomy-curation pass, including a pass whose requested examples concern a narrower topic family.
+6. Treat zero usage as informational context. Review unused records when relevant to the requested topic family; a taxonomy pass does not require deleting them or reaching `unused=0`.
 
 ## Decide Semantically
 
@@ -50,27 +50,22 @@ For each candidate family, record an evidence table with the old slug, proposed 
    - Before a bulk mechanical rewrite, record the exact old-slug occurrence count and affected files for every mapping.
    - Make the rewrite resumable and idempotent. A permissions interruption may leave a valid partial migration, so a retry must accept already-migrated occurrences while still rejecting counts above the reviewed maximum.
    - After any interrupted write, re-inventory the partial state before retrying. Verify that every resulting topic array remains duplicate-free.
-4. Update the corresponding registry records in `src/derived/video-segments/topics.json`. Preserve every nonblank manual description and all still-valid aliases. Remove an obsolete record only after all authored references have moved and the normalization policy resolves its old slug directly to the canonical destination.
+4. Update the corresponding registry records in `src/derived/video-segments/topics.json`. Preserve every nonblank curated `summary` and all still-valid aliases. When the user requests descriptions for selected topics, write compact, source-backed reference text in the optional `summary` field. Lead with the role or identifying characteristic, omit the repeated topic name and opening articles, and keep only useful distinctions or operators. Keep deterministic creation and synchronization free of generated descriptions. Remove an obsolete record only after all authored references have moved and the normalization policy resolves its old slug directly to the canonical destination.
 5. Parse every touched JSON file immediately. Treat malformed JSON, residual authored references, duplicate topic entries, and unexpected mapping matches as blockers.
 6. Run `npm run sync:video-topics` only when authored canonical references genuinely lack registry records. The synchronizer appends missing records; it does not migrate references or remove obsolete records.
 
-## Prune Unused Registry Topics
+## Retain Unused Registry Topics
 
-After completing authored-reference migrations and any required synchronization, prune the registry as a standard part of the same curation pass.
+Retain valid registry topics when authored usage reaches zero, including their curated summaries and aliases. Usage means an exact slug reference in a video-level or segment-level topic array; it does not measure whether a registry record is worth keeping.
 
-1. Regenerate `reports/video-topic-usage.tsv` and collect every registered topic whose `usage count` is `0`. Usage means an exact slug reference in a video-level or segment-level authored topic array. Aliases, summaries, normalization inputs, and policy destinations do not count as usage.
-2. Inspect each unused record and every policy rule that matches it or resolves to it. Confirm from the current shards that the slug has no authored reference before deleting it.
-3. Remove every confirmed unused record from `src/derived/video-segments/topics.json`.
-   - When the record is an obsolete variant of a surviving canonical topic, transfer any unique nonblank manual summary and still-valid aliases to that canonical record before deletion.
-   - When manual metadata has no safe surviving destination, treat the potential metadata loss as a blocker and resolve it explicitly before completing the pass.
-   - Do not retain a registry placeholder merely because an active creation or display rule targets the slug. Keep a still-valid policy rule so synchronization can recreate the canonical record if authored usage returns; remove or retarget the rule only when its semantics are obsolete.
-4. Reparse `topics.json` immediately and verify that the pruning changed no authored shard array.
-5. Proceed to the post-prune validation. A completed taxonomy pass must finish with `unused=0`; investigate any remaining zero-use registry record rather than exempting it silently.
+- Report unused counts as informational or, at most, warnings. Zero usage alone must not be an error, a completion blocker, or a reason to delete a record.
+- Remove a record only through a reviewed semantic consolidation or an explicit deletion request. Before deleting an obsolete variant, confirm that its authored references have moved, preserve unique curated metadata at the canonical destination, and update the applicable policy. Resolve any potential metadata loss before deletion.
+- Preserve valid creation and display rules for retained topics. Missing authored references do not make their naming policy obsolete.
 
 ## Validate
 
-1. Regenerate both reports with `npm run report:video-topic-usage` after the unused-topic prune.
-2. Inspect both outputs. Confirm that retired authored references are absent, canonical sources are present, `unused=0`, and the selected family has no unexplained actionable review findings or title/alias collisions. Review high-confidence similarity candidates semantically, but do not require the advisory similarity count to reach zero.
+1. Regenerate both reports with `npm run report:video-topic-usage` after the reviewed changes.
+2. Inspect both outputs. Confirm that retired authored references are absent, canonical sources are present, and the selected family has no unexplained actionable review findings or title/alias collisions. Report unused counts without requiring zero. Review high-confidence similarity candidates semantically, but do not require the advisory similarity count to reach zero.
 3. Run the read-only `npm run audit:topic-normalization`.
 4. Run the focused `npm run check:video-topics` registry/reference check.
 5. Reparse every touched JSON file. Report any intentionally unresolved review candidates; never describe a pass as clean while blockers remain.
@@ -84,5 +79,5 @@ After a real taxonomy pass, identify workflow friction, missed safeguards, or re
 
 ## Handoff
 
-Report the candidate families reviewed, semantic decisions and evidence, old-to-canonical mappings applied, policy/shard/registry files changed, initial unused-topic count, unused slugs removed, manual summaries and aliases transferred, commands run, final report and audit counts including `unused=0`, unresolved candidates, and the exact integration work left to the repository owner.
+Report the candidate families reviewed, semantic decisions and evidence, old-to-canonical mappings applied, policy/shard/registry files changed, curated summaries and alias changes, commands run, final report and audit counts, unresolved candidates, and the exact integration work left to the repository owner. Include the unused count as context and explain any explicitly authorised record deletions or metadata transfers.
 

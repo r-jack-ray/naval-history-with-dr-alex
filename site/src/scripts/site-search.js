@@ -36,6 +36,7 @@
   let pagefindPromise;
   let searchRankingPromise;
   let topicLookupPromise;
+  let topicSummaries = {};
   let debounceTimer;
   let activeSearchPromise;
   let pendingSearch;
@@ -255,6 +256,7 @@
         if (lookup?.v !== 1 || !isRecord(lookup.e)) {
           throw new Error("The exact topic lookup has an unsupported schema.");
         }
+        topicSummaries = isRecord(lookup.s) ? lookup.s : {};
         return lookup;
       })
       .catch((error) => {
@@ -592,6 +594,9 @@
     if ((type === "video" || type === "segment") && (!videoDateAt || !videoDateLabel)) {
       return null;
     }
+    const topicSlug = type === "topic"
+      ? canonicalResultPath(firstText(data.raw_url) || url).match(/^\/topics\/([^/]+)\/$/u)?.[1]
+      : undefined;
 
     return {
       type,
@@ -600,7 +605,9 @@
       label: labels.filter(Boolean).join(" · "),
       videoDateAt,
       videoDateLabel,
-      summary: firstText(data.plain_excerpt) || firstText(data.excerpt),
+      summary: type === "topic"
+        ? (topicSlug ? firstText(topicSummaries[topicSlug]) : "")
+        : firstText(data.plain_excerpt) || firstText(data.excerpt),
       topics: textValues(filters.topic),
     };
   };

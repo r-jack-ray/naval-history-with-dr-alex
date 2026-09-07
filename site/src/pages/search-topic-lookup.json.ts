@@ -23,6 +23,11 @@ for (const topic of publicArchiveTopics) {
 
 const payload = JSON.stringify({
   v: 1,
+  s: Object.fromEntries(
+    publicArchiveTopics
+      .filter((topic) => topic.summary?.trim())
+      .map((topic) => [topic.slug, topic.summary!.trim()]),
+  ),
   e: Object.fromEntries(
     [...entries.entries()]
       .sort(([left], [right]) => left.localeCompare(right))

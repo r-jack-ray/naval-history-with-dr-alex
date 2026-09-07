@@ -190,6 +190,15 @@ test("validates a rendered fixture and reports actionable hard failures", async 
     assert.equal(valid.videoSitemapEntries, 1);
     assert.equal(valid.videoSitemapFiles, 1);
 
+    await writeFile(
+      topicsPath,
+      JSON.stringify([{ slug: "example", videoCount: 0, segmentCount: 0 }]),
+      "utf8",
+    );
+    const unusedTopic = await validateRenderedSeoSite(seoOptions, rendered);
+    assert.ok(unusedTopic.diagnostics.some((item) => item.rule === "orphan-topic-route" && item.severity === "warning"));
+    assert.deepEqual(unusedTopic.diagnostics.filter((item) => item.severity === "error"), []);
+
     await writeRoute(root, "videos/example/", htmlPage("videos/wrong/", "Example video", {
       breadcrumbs: [
         { name: "Video Guides", route: "videos/" },
