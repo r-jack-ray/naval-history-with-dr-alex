@@ -46,6 +46,9 @@ const fictionGuidancePaths = [
   "src/derived/site-content-processing.config.json",
 ] as const;
 
+const retiredTopicRouteCompatibilityClaim =
+  /(?=[^.!?]{0,240}\b(?:legacy|retired|obsolete|old)\s+topic\s+(?:slugs?|urls?|routes?)\b)(?=[^.!?]{0,240}\b(?:redirect(?:s|ed|ing)?|compatibility\s+routes?|continue\s+to\s+work|remain\s+(?:available|reachable))\b)[^.!?]{1,240}/iu;
+
 async function readGuidance(relativePath: string): Promise<string> {
   const repositoryRoot = new URL("../../", import.meta.url);
   const content = await readFile(new URL(relativePath, repositoryRoot), "utf8");
@@ -80,9 +83,24 @@ test("guidance omits retired rollout commands and URL compatibility claims", asy
     );
     assert.doesNotMatch(
       guidance,
-      /\b(?:legacy\s+)?redirects?\b/iu,
+      retiredTopicRouteCompatibilityClaim,
       `${relativePath} must not promise compatibility routes for retired topic slugs`,
     );
+  }
+});
+
+test("retired topic route guard distinguishes policy mappings from URL compatibility", () => {
+  assert.doesNotMatch(
+    "Creation-exact redirects to that target may leave canonical_title empty.",
+    retiredTopicRouteCompatibilityClaim,
+  );
+
+  for (const compatibilityClaim of [
+    "Retired topic slugs remain available through redirects.",
+    "Legacy topic URLs continue to work through compatibility routes.",
+    "Redirects preserve old topic routes for inbound links.",
+  ]) {
+    assert.match(compatibilityClaim, retiredTopicRouteCompatibilityClaim);
   }
 });
 
