@@ -9,6 +9,7 @@ export const videoTopicUsageReportHeaderKeys = [
   "usage_count",
   "general_subject",
   "entity_type",
+  "summary",
   "topic_aliases",
   "normalization_inputs",
   "similar_topics",
@@ -163,6 +164,7 @@ export function renderVideoTopicUsageReport(
       display_name: topic.title,
       general_subject: classification.generalSubject,
       entity_type: classification.entityType,
+      summary: registryBySlug.get(topic.slug)?.summary ?? "",
       topic_aliases: topic.aliases.join(" | "),
       normalization_inputs: normalizationInputs.join(" | "),
       similar_topics: similar.map((entry) => (
@@ -213,11 +215,11 @@ export function collectVideoTopicNameDefinitions(
 
 function collectTopicDefinitions(seed: CuratedArchiveSeed): {
   allTopics: VideoTopicNameDefinition[];
-  registryBySlug: Map<string, VideoTopicNameDefinition>;
+  registryBySlug: Map<string, CuratedTopicSeed>;
   registryTopics: VideoTopicNameDefinition[];
 } {
   const registryTopics = seed.topics.map(topicDefinition);
-  const registryBySlug = new Map(registryTopics.map((topic) => [topic.slug, topic]));
+  const registryBySlug = new Map(seed.topics.map((topic) => [topic.slug, topic]));
   if (registryBySlug.size !== registryTopics.length) {
     throw new Error("Topic registry contains duplicate slugs.");
   }

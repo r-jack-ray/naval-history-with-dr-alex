@@ -23,6 +23,7 @@
     "report:video-segment-audit-risk": "tsx src/scripts/rank-video-segment-audit-risk.ts",
     "report:video-topic-usage": "bun run src/scripts/report-video-topic-usage-bun.ts",
     "report:transcript-problems": "tsx src/scripts/report-transcript-problems.ts",
+		"import:video-topic-summaries": "tsx src/scripts/import-video-topic-summaries.ts",
 		"report": "npm run report:video-segment-audit-risk && npm run report:video-topic-usage && npm run report:transcript-problems",
     "audit:site-content": "node --import tsx src/scripts/audit-site-content.ts",
     "check:site-content-wording": "node --import tsx src/scripts/check-site-content-wording.ts",

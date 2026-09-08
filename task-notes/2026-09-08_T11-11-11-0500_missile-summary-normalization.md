@@ -1,6 +1,6 @@
 # Missile summary normalization and preloaded topics
 
-Updated 72 existing summaries after identifying 110 existing nonblank missile summaries before editing. Added 22 preloaded missile topics and 73 exact normalization/display rules. Left 38 existing topic summaries unchanged for review.
+Updated 72 existing summaries after identifying 110 existing nonblank missile summaries before editing. Added 22 preloaded missile topics and 76 exact normalization/display rules, including the subsequent AIM-7 family and ASRAAM naming corrections. Left 38 existing topic summaries unchanged for review.
 
 New topics cover selected air-combat, air-defence and naval anti-ship missiles. No transcript-use requirement was applied to preloads. The user-supplied Wikipedia lists were used for candidate coverage; the tables below retain specification sources. Existing slugs, titles, aliases, authored references and unrelated registry metadata are preserved. Existing blank descriptions were outside the summary-normalization pass. Candidate lists were reviewed selectively, without bulk-loading ground-to-ground weapons.
 
@@ -19,6 +19,7 @@ Use the terminal homing category for homing missiles; do not catalogue every nav
 - `active radar homing`
 - `passive radar homing`
 - `radar homing`
+- `radar-guided`
 - `electro-optical homing`
 - `semi-active laser homing`
 - `command guidance`
@@ -33,7 +34,7 @@ Use the terminal homing category for homing missiles; do not catalogue every nav
 - `digital scene matching`
 - `fibre-optic command guidance`
 
-`radar homing` and `command guidance` are broader categories for sources that do not establish a subtype. Navigation and fibre-optic categories are available for future labels even where a missile remains unchanged because its type does not fit. They are supported by the reviewed Trident, Tomahawk and IDAS material; do not treat a data link alone as a seeker type. The user-provided guidance screenshot was treated as a coverage reference. Steering laws, target-recognition features and individual sensors were not added as interchangeable guidance classes. Guidance or missile-type ambiguities remain in the unchanged list.
+`radar homing` and `command guidance` are broader categories for sources that do not establish a subtype. `radar-guided` covers a family spanning radar beam riding and radar homing, as with AIM-7 Sparrow. Navigation and fibre-optic categories are available for future labels even where a missile remains unchanged because its type does not fit. They are supported by the reviewed Trident, Tomahawk and IDAS material; do not treat a data link alone as a seeker type. The user-provided guidance screenshot was treated as a coverage reference. Steering laws, target-recognition features and individual sensors were not added as interchangeable guidance classes. Guidance or missile-type ambiguities remain in the unchanged list.
 
 Navigation and command references: [Trident II D5](https://www.navy.mil/Resources/Fact-Files/Display-FactFiles/Article/2169285/trident-ii-d5-missile/trident-ii-d5-missile/), [Tomahawk](https://www.navy.mil/Resources/Fact-Files/Display-FactFiles/Article/2169229/tomohawk-cruise-missile/tomahawk-cruise-missile/), [IDAS](https://new.diehl.com/defence/en/press-media/news/diehl-defence-and-thyssenkrupp-marine-systems-develop-unique-defence-system-for-submarines-idas). The existing Trident project material also identifies celestial fixes.
 
@@ -124,10 +125,10 @@ Candidate lists: [air-to-air](https://en.wikipedia.org/wiki/Air-to-air_missile),
 | `aam-4-missile` | AAM-4 Missile | Japan active radar homing air-to-air missile. | `aam-4`, `type-99-air-to-air-missile` | [1](https://www.mod.go.jp/en/d_act/d_budget/pdf/220416.pdf); [2](https://www.mod.go.jp/asdf/adtw/adm/shiken/kakoshiken_missile2.html) |
 | `aam-5-missile` | AAM-5 Missile | Japan short-range infrared homing air-to-air missile. | `aam-5`, `type-04-air-to-air-missile` | [1](https://www.mhi.com/jp/business/products-services/space-defense/missile-systems/type04-air-to-air-missile-aam-5); [2](https://www.mod.go.jp/asdf/adtw/adm/shiken/kakoshiken_missile2.html); [3](https://www.clearing.mod.go.jp/hakusho_data/2013/2013/pdf/25shiryo2.pdf) |
 | `aim-120-amraam` | AIM-120 AMRAAM | USA active radar homing air-to-air and surface-to-air missile family. | `aim-120`, `amraam`, `amraam-missile`, `advanced-medium-range-air-to-air-missile` | [1](https://www.af.mil/About-Us/Fact-Sheets/Display/Article/104576/aim-120-amraam/); [2](https://www.kongsberg.com/what-we-do/defence-and-security/integrated-air-and-missile-defence/nasams-multi-missile-launcher/) |
-| `aim-132-asraam` | AIM-132 ASRAAM | UK short-range infrared homing air-to-air missile. | `aim-132`, `asraam`, `asraam-missile`, `advanced-short-range-air-to-air-missile` | [1](https://www.gov.uk/government/news/mod-to-upgrade-air-to-air-missile); [2](https://www.mbda-systems.com/sites/mbda/files/2024-06/2023%20ASRAAM%20datasheet.pdf); [3](https://www.afmc.af.mil/News/Photos/igphoto/2001513739/) |
 | `aim-4-falcon` | AIM-4 Falcon | USA short-range semi-active radar homing or infrared homing air-to-air missile family. | `aim-4`, `hughes-aim-4-falcon` | [1](https://airandspace.si.edu/collection-objects/model-missile-falcon-aim-4d/nasm_A19981617000); [2](https://mapsairmuseum.org/wp-content/uploads/2024/02/AIM-4-Falcon.pdf); [3](https://www.nationalmuseum.af.mil/Visit/Museum-Exhibits/Fact-Sheets/Display/Article/197614/hughes-aim-4f-super-falcon-air-to-air-missile/) |
-| `aim-7m-sparrow` | AIM-7M Sparrow | USA medium-range semi-active radar homing air-to-air missile. | `aim-7m`, `aim-7m-sparrow-missile` | [1](https://www.af.mil/About-Us/Fact-Sheets/Display/Article/104575/aim-7-sparrow/%20/lang/aim-7-sparrow/); [2](https://www.navair.navy.mil/sparrow) |
+| `aim-7-sparrow` | AIM-7 Sparrow | USA medium-range radar-guided air-to-air missile family. | `aim-7`, `aim-7-sparrow-missile`, `aim-7m`, `aim-7m-sparrow`, `aim-7m-sparrow-missile` | [1](https://en.wikipedia.org/wiki/AIM-7_Sparrow); [2](https://www.navair.navy.mil/sparrow) |
 | `asm-3-missile` | ASM-3 Missile | Japan active radar homing and passive radar homing air-to-surface missile for supersonic anti-ship strikes. | `asm-3`, `asm-3-anti-ship-missile` | [1](https://www.mod.go.jp/atla/research/ats2018/img/ats2018_summary.pdf); [2](https://www.mod.go.jp/j/policy/hyouka/yosan_shikko/2018/04.pdf) |
+| `asraam` | ASRAAM | UK short-range infrared homing air-to-air missile. | `aim-132`, `aim-132-asraam`, `asraam-missile`, `advanced-short-range-air-to-air-missile` | [1](https://www.gov.uk/government/news/mod-to-upgrade-air-to-air-missile); [2](https://www.mbda-systems.com/sites/mbda/files/2024-06/2023%20ASRAAM%20datasheet.pdf); [3](https://en.wikipedia.org/wiki/ASRAAM) |
 | `astra-mk1-missile` | Astra Mk1 Missile | India beyond-visual-range active radar homing air-to-air missile. | `astra-mk1`, `astra-mk-1`, `astra-mark-1`, `astra-mk-1-missile` | [1](https://bdl-india.in/astra); [2](https://www.pib.gov.in/PressReleseDetailm.aspx?PRID=1992193&lang=2&reg=48); [3](https://www.pib.gov.in/PressReleasePage.aspx?PRID=1989502&lang=2&reg=48) |
 | `atmaca-missile` | ATMACA Missile | Turkey active radar homing surface-to-surface missile for anti-ship and land attack. | `atmaca`, `atmaca-anti-ship-missile` | [1](https://www.roketsan.com.tr/en/products/atmaca-anti-ship-missile) |
 | `hsiung-feng-iii-missile` | Hsiung Feng III Missile | Taiwan active radar homing surface-to-surface missile for supersonic anti-ship strikes. | `hsiung-feng-iii`, `hsiung-feng-3`, `hsiung-feng-iii-anti-ship-missile` | [1](https://www.ncsist.org.tw/eng/csistdup/products/product.aspx?catalog=8&product_Id=10); [2](https://www.ncsist.org.tw/csistdup/products/product.aspx?catalog=8&product_Id=274) |
@@ -143,7 +144,7 @@ Candidate lists: [air-to-air](https://en.wikipedia.org/wiki/Air-to-air_missile),
 | `rbs15-mk3-missile` | RBS15 Mk3 Missile | Germany and Sweden active radar homing surface-to-surface missile for anti-ship and land attack. | `rbs15-mk3`, `rbs-15-mk3`, `rbs-15-mk3-missile` | [1](https://www.diehl.com/defence/de/presse-und-medien/news/diehl-liefert-weitere-seezielflugkoerper-an-die-deutsche-marine/); [2](https://www.saab.com/newsroom/press-releases/2016/saab-signs-rbs15-mk3-teaming-agreement-with-mesko); [3](https://www.saab.com/newsroom/press-releases/2008/rbs15-mk3-surface-to-surface-missile-successfully-fired) |
 | `type-80-air-to-ship-missile` | Type 80 Air-to-Ship Missile | Japan active radar homing air-to-surface missile for anti-ship strikes. | `type-80-asm-1`, `type-80-air-to-ship-missile` | [1](https://www.mod.go.jp/asdf/airpark/GUIDE/equipment/weapon/asm1.html) |
 
-Each new canonical slug also has an exact display rule. Generic Falcon, Sparrow/AIM-7, Astra and Derby names are not redirected to narrower variants. New summaries are manual registry metadata; the deterministic synchronizer still creates blank descriptions.
+Each new canonical slug also has an exact display rule. AIM-7 and the retired AIM-7M preload resolve directly to the AIM-7 family. Generic Falcon, Astra and Derby names are not redirected to narrower variants. Bare Sparrow remains unmapped because the name has other referents. New summaries are manual registry metadata; the deterministic synchronizer still creates blank descriptions.
 
 ## Existing slugs left unchanged
 
@@ -191,7 +192,6 @@ Each new canonical slug also has an exact display rule. Generic Falcon, Sparrow/
 These are proposed slugs for deferred candidates, not existing topic records. Submarine-only candidates remain here because the reviewed material did not establish a fit with the four requested type labels. Other candidates have unresolved family, origin or guidance boundaries.
 
 - `3m80-moskit-missile`
-- `aim-7-sparrow`
 - `c-802-missile`
 - `exocet-sm39`
 - `jl-1`
@@ -217,5 +217,17 @@ These are proposed slugs for deferred candidates, not existing topic records. Su
 ## Files changed
 
 - [topics.json](../src/derived/video-segments/topics.json): normalized existing summaries and added the 22 reviewed preloads.
-- [topic-normalization-patterns.tsv](../src/derived/topic-normalization-patterns.tsv): added 51 exact creation mappings and 22 exact display rules for the new topics.
+- [topic-normalization-patterns.tsv](../src/derived/topic-normalization-patterns.tsv): added 54 exact creation mappings and 22 exact display rules for the new topics, including the AIM-7 family and ASRAAM naming corrections.
 - This task note: records the classification vocabulary, revised summaries, sources, deferred slugs and validation results.
+
+## AIM-7 family correction
+
+The user requested the broader `aim-7-sparrow` topic after the initial preload. Replaced `aim-7m-sparrow` with `aim-7-sparrow`, titled AIM-7 Sparrow, and retained AIM-7M and AIM-7M Sparrow as searchable aliases alongside AIM-7. Before editing, the old slug occurred in one registry record, three policy rows and zero authored shard topic arrays. The reports showed zero usage and no actionable collision or review finding for this topic. The registry and those policy rows were the complete affected canonical sources; no shard migration was required.
+
+The compact summary uses `radar-guided`: Sparrow I used beam riding, the cancelled Sparrow II used active radar homing, and Sparrow III and later operational variants used semi-active radar homing. [Family history](https://en.wikipedia.org/wiki/AIM-7_Sparrow) supports these distinctions; [NAVAIR](https://www.navair.navy.mil/sparrow) supports the medium-range air-to-air classification. Sea Sparrow remains a separate topic. This correction removes AIM-7 from the deferred list, leaving 15 deferred preload candidates.
+
+## ASRAAM naming correction
+
+The user requested slug `asraam`, title ASRAAM and alias AIM-132. Replaced `aim-132-asraam` with `asraam`, kept the summary unchanged, and preserved the expanded name and former title as aliases. The old slug occurred in one registry record, five policy rows and zero authored shard topic arrays. The refreshed reports showed zero usage and no actionable review findings. All four creation inputs now resolve directly to `asraam`; its display rule preserves uppercase ASRAAM. [Wikipedia](https://en.wikipedia.org/wiki/ASRAAM) identifies AIM-132 as the US designation, and [MBDA](https://www.mbda-systems.com/products/air-dominance/asraam) uses ASRAAM as the product name.
+
+Combined follow-up validation passed: `report:video-topic-usage` reported 29,823 stored topics, 29,799 used, 24 unused, zero unregistered topics, zero normalization blockers and zero normalization reviews. Both reports were inspected; both renamed topics have zero usage, and the advisory similarity count remains 215. `audit:topic-normalization` passed across 2,165 shards with zero blockers and zero review findings. `check:video-topics` confirmed the registry is current. JSON parsing and exact-rule assertions passed; neither retired slug remains in a registry record or authored shard, and neither is an active policy target. Independent read-only review confirmed that the registry, rules and note agree. No synchronization or site generation was needed or run.
