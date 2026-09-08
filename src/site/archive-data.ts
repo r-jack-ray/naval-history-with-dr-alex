@@ -3,6 +3,7 @@ import { readdir, readFile, rm } from "node:fs/promises";
 import { join } from "node:path";
 
 import { formatTimestamp, segmentKinds, type SegmentKind } from "../index.js";
+import { britishEnglishLocale } from "../locale.js";
 import { slugifyVideoTitle } from "../naming.js";
 import { writeTextAtomically } from "../pipeline/atomic-write.js";
 import type { CuratedArchiveSeed, CuratedArchiveSegmentSeed, } from "../content/curated-archive-model.js";
@@ -1208,7 +1209,7 @@ function formatCount(value: string | null | undefined, label: string): string | 
     return `${value} ${label}`;
   }
 
-  return `${new Intl.NumberFormat("en-US").format(parsedValue)} ${label}`;
+  return `${new Intl.NumberFormat(britishEnglishLocale).format(parsedValue)} ${label}`;
 }
 
 function formatDate(value: string): string {
@@ -1217,7 +1218,7 @@ function formatDate(value: string): string {
     throw new Error(`Invalid canonical video date: ${value}`);
   }
 
-  return new Intl.DateTimeFormat("en-US", {
+  return new Intl.DateTimeFormat(britishEnglishLocale, {
     timeZone: "UTC",
     month: "short",
     day: "numeric",

@@ -6,6 +6,8 @@ import { createServer } from "node:http";
 import { extname, join, resolve, sep } from "node:path";
 import { pathToFileURL } from "node:url";
 
+import { britishEnglishLocale } from "../locale.js";
+
 const pagefindRoot = resolve("site/dist/pagefind");
 const siteBase = "/naval-history-with-dr-alex/";
 const representativeQueries = ["HMS Victory", "HMS Victoria", "RN", "Skagerrak", "Radar"] as const;
@@ -108,7 +110,7 @@ try {
 }
 
 console.log(
-    `Pagefind contract passed: ${pageCount.toLocaleString("en-US")} pages and ` +
+    `Pagefind contract passed: ${pageCount.toLocaleString(britishEnglishLocale)} pages and ` +
     `${representativeQueries.length} representative searches.`,
 );
 

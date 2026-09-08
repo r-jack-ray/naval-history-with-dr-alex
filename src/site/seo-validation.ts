@@ -7,6 +7,7 @@ import { SaxesParser } from "saxes";
 
 import { isIndexablePageUrl } from "../../site/src/data/page-indexing.js";
 import { videoSitemapEntryLimit } from "../../site/src/data/video-sitemap-routing.js";
+import { britishEnglishLocale } from "../locale.js";
 import {
   maxVideoSitemapDurationSeconds,
   parseVideoDurationSeconds,
@@ -885,7 +886,7 @@ export async function validateRenderedSeoSite(
       const relativeRoute = new URL(page.url).pathname.slice(basePath.length);
       if (isDirectoryHubRoute(relativeRoute)
         && snapshot.bytes > (options.hubWarningBytes ?? defaultHubWarningBytes)) {
-        diagnostic("warning", "oversized-hub", page.url, `Hub HTML is ${snapshot.bytes.toLocaleString("en-US")} bytes.`);
+        diagnostic("warning", "oversized-hub", page.url, `Hub HTML is ${snapshot.bytes.toLocaleString(britishEnglishLocale)} bytes.`);
       }
     }
   });

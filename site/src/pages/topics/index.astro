@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { publicArchiveTopics } from "../../data/archive";
 import searchSubmitFeedbackUrl from "../../scripts/search-submit-feedback.js?url";
+import { britishEnglishLocale } from "../../../../src/locale.js";
 import { staticPageMetadata } from "../../../../src/site/page-metadata.js";
 
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
@@ -10,7 +11,7 @@ const baseUrl = import.meta.env.BASE_URL.endsWith("/")
 const featuredTopics = [...publicArchiveTopics]
   .sort((left, right) => right.segmentCount - left.segmentCount
     || right.videoCount - left.videoCount
-    || left.title.localeCompare(right.title, "en", { sensitivity: "base" }))
+    || left.title.localeCompare(right.title, britishEnglishLocale, { sensitivity: "base" }))
   .slice(0, 12);
 const videoCountLabel = (count: number) => count === 1 ? "1 video" : `${count} videos`;
 const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${count} time notes`;
@@ -118,7 +119,7 @@ const metadata = staticPageMetadata.topics;
         </div>
       </div>
       <p>
-        The paginated directory keeps all {publicArchiveTopics.length.toLocaleString("en-US")} covered subjects
+        The paginated directory keeps all {publicArchiveTopics.length.toLocaleString(britishEnglishLocale)} covered subjects
         reachable through ordinary links. You can also load the full A-Z collection when you want everything on one page.
       </p>
       <div class="action-row">

@@ -1,13 +1,14 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { topicsForBrowse } from "../../../data/archive";
+import { britishEnglishLocale } from "../../../../../src/locale.js";
 
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
 const topics = topicsForBrowse();
 const groupKeyForTitle = (title: string): string => {
-  const firstCharacter = title.trim().charAt(0).toLocaleUpperCase("en");
+  const firstCharacter = title.trim().charAt(0).toLocaleUpperCase(britishEnglishLocale);
   return /^[A-Z]$/u.test(firstCharacter) ? firstCharacter : "0–9 & other";
 };
 const groupedTopics = topics.reduce((groups, topic) => {
@@ -21,7 +22,7 @@ const groupedTopics = topics.reduce((groups, topic) => {
   return groups;
 }, new Map<string, (typeof topics)[number][]>());
 const groups = [...groupedTopics].map(([label, values]) => ({
-  id: label === "0–9 & other" ? "other" : label.toLocaleLowerCase("en"),
+  id: label === "0–9 & other" ? "other" : label.toLocaleLowerCase(britishEnglishLocale),
   label,
   topics: values,
 }));
@@ -32,7 +33,7 @@ const countLabel = (videoCount: number, segmentCount: number): string => {
 };
 const metadata = {
   title: "All Naval History Topics A-Z | Naval History with Dr. Alex Study Guide",
-  description: `Open all ${topics.length.toLocaleString("en-US")} naval-history subjects in one compact A-Z directory, with links to related Dr. Alex Clarke video guides and time notes.`,
+  description: `Open all ${topics.length.toLocaleString(britishEnglishLocale)} naval-history subjects in one compact A-Z directory, with links to related Dr. Alex Clarke video guides and time notes.`,
 };
 ---
 
@@ -42,7 +43,7 @@ const metadata = {
       <p class="eyebrow">Complete directory</p>
       <h1>All topics A-Z, on one page.</h1>
       <p class="lede">
-        Browse all {topics.length.toLocaleString("en-US")} covered subjects in a compact directory. This page is large by design;
+        Browse all {topics.length.toLocaleString(britishEnglishLocale)} covered subjects in a compact directory. This page is large by design;
         use the paginated view for faster loading.
       </p>
       <div class="action-row">

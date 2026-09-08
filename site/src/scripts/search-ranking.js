@@ -1,9 +1,11 @@
 const nonWordPattern = /[^\p{L}\p{N}]+/gu;
-
+const britishEnglishLocale = typeof document === "undefined"
+  ? "en-GB"
+  : document.documentElement.dataset.siteLocale || "en-GB";
 export const normalizeSearchText = (value) =>
   String(value ?? "")
     .normalize("NFKC")
-    .toLocaleLowerCase("en-US")
+    .toLocaleLowerCase(britishEnglishLocale)
     .replace(nonWordPattern, " ")
     .trim()
     .replace(/\s+/gu, " ");
@@ -82,7 +84,7 @@ const orderedUniqueIds = (candidates, field) => {
   const ids = [];
   const seen = new Set();
   for (const candidate of [...candidates].sort((left, right) => (
-    rankValue(left, field) - rankValue(right, field) || left.id.localeCompare(right.id)
+    rankValue(left, field) - rankValue(right, field) || left.id.localeCompare(right.id, britishEnglishLocale)
   ))) {
     if (!seen.has(candidate.id)) {
       seen.add(candidate.id);

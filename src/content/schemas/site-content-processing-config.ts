@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import { segmentKinds } from "../../index.js";
+import { britishEnglishLocale } from "../../locale.js";
 import { nonEmptyStringSchema, parseSchema, type SchemaValidationResult, topicSlugSchema, validateSchema, } from "./shared.js";
 
 const segmentKindSchema = z.enum(segmentKinds);
@@ -46,7 +47,7 @@ const explicitQaTitleMarkersSchema = z.array(nonEmptyStringSchema).min(1).superR
       addDuplicateIssues(
           values,
           context,
-          (value) => value.toLocaleLowerCase("en-US"),
+          (value) => value.toLocaleLowerCase(britishEnglishLocale),
           "duplicates another marker when matched case-insensitively",
       );
     },
@@ -117,7 +118,7 @@ export const siteContentProcessingConfigSchema = z.strictObject({
   addDuplicateIssues(
       config.videoTypeRules,
       context,
-      (rule) => rule.matchTitle.toLocaleLowerCase("en-US"),
+      (rule) => rule.matchTitle.toLocaleLowerCase(britishEnglishLocale),
       "duplicates another rule when matched case-insensitively",
       ["videoTypeRules"],
   );

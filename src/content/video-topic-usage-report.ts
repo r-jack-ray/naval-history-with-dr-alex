@@ -1,3 +1,4 @@
+import { britishEnglishLocale } from "../locale.js";
 import type { TopicNormalizationRule } from "../site/topic-normalization.js";
 import type { CuratedArchiveSeed } from "./curated-archive-model.js";
 import type { CuratedTopicSeed } from "./schemas/index.js";
@@ -139,8 +140,8 @@ export function renderVideoTopicUsageReport(
           }))
           .sort((left, right) => (
               right.count - left.count
-              || left.title.localeCompare(right.title, "en", {sensitivity: "base"})
-              || left.slug.localeCompare(right.slug, "en")
+              || left.title.localeCompare(right.title, britishEnglishLocale, {sensitivity: "base"})
+              || left.slug.localeCompare(right.slug, britishEnglishLocale)
           ))
           .slice(0, limit)
   );
@@ -151,7 +152,7 @@ export function renderVideoTopicUsageReport(
     const normalizationInputs = (normalizationByReplacement.get(topic.slug) ?? [])
         .filter((rule) => rule.match !== topic.slug)
         .map((rule) => `${rule.matchKind}:${rule.match}`)
-        .sort((left, right) => left.localeCompare(right, "en"));
+        .sort((left, right) => left.localeCompare(right, britishEnglishLocale));
     const classification = classifyTopic(topic);
     const similar = nameAnalysis.get(topic.slug) ?? [];
     const coTopics = topCoTopics(topic.slug, 5);
@@ -176,8 +177,8 @@ export function renderVideoTopicUsageReport(
 
   rows.sort((left, right) => (
       Number(right.usage_count) - Number(left.usage_count)
-      || String(left.display_name).localeCompare(String(right.display_name), "en", {sensitivity: "base"})
-      || String(left.topic_slug).localeCompare(String(right.topic_slug), "en")
+      || String(left.display_name).localeCompare(String(right.display_name), britishEnglishLocale, {sensitivity: "base"})
+      || String(left.topic_slug).localeCompare(String(right.topic_slug), britishEnglishLocale)
   ));
 
   const matrix: ReportValue[][] = [
@@ -330,8 +331,8 @@ export function buildVideoTopicNameAnalysisPartition(
     }
     scored.sort((left, right) => (
         right.score - left.score
-        || left.title.localeCompare(right.title, "en", {sensitivity: "base"})
-        || left.slug.localeCompare(right.slug, "en")
+        || left.title.localeCompare(right.title, britishEnglishLocale, {sensitivity: "base"})
+        || left.slug.localeCompare(right.slug, britishEnglishLocale)
     ));
     results.set(topic.slug, scored.slice(0, 5));
   }

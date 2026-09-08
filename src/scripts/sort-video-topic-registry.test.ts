@@ -6,25 +6,25 @@ import test from "node:test";
 
 import { runSortVideoTopicRegistry } from "./sort-video-topic-registry.js";
 
-test("sorts topic records by slug and each alias list", async () => {
+test("sorts topic records by slug and each alias list in natural order", async () => {
   const root = await mkdtemp(path.join(tmpdir(), "sort-video-topic-registry-"));
   try {
     const registryPath = path.join(root, "topics.json");
     await writeFile(registryPath, `${JSON.stringify({
       topics: [{
-        slug: "zulu",
-        title: "Zulu",
+        slug: "series-54",
+        title: "Series 54",
         summary: "",
-        aliases: ["zulu ships", "alpha ships", "middle ships"],
+        aliases: ["series 100", "series 9", "series 54"],
       }, {
-        slug: "alpha",
-        title: "Alpha",
+        slug: "series-9",
+        title: "Series 9",
         summary: "Alpha summary.",
       }, {
-        slug: "middle",
-        title: "Middle",
+        slug: "series-100",
+        title: "Series 100",
         summary: "   ",
-        aliases: ["second", "first"],
+        aliases: ["series 54", "series 9"],
       }],
     }, null, 2)}\n`, "utf8");
 
@@ -44,12 +44,12 @@ test("sorts topic records by slug and each alias list", async () => {
     const sorted = JSON.parse(await readFile(registryPath, "utf8")) as {
       topics: Array<{ aliases?: string[]; slug: string; summary?: string }>;
     };
-    assert.deepEqual(sorted.topics.map((topic) => topic.slug), ["alpha", "middle", "zulu"]);
+    assert.deepEqual(sorted.topics.map((topic) => topic.slug), ["series-9", "series-54", "series-100"]);
     assert.equal(sorted.topics[0]?.summary, "Alpha summary.");
     assert.equal(sorted.topics[1]?.summary, undefined);
     assert.equal(sorted.topics[2]?.summary, undefined);
-    assert.deepEqual(sorted.topics[1]?.aliases, ["first", "second"]);
-    assert.deepEqual(sorted.topics[2]?.aliases, ["alpha ships", "middle ships", "zulu ships"]);
+    assert.deepEqual(sorted.topics[1]?.aliases, ["series 9", "series 54", "series 100"]);
+    assert.deepEqual(sorted.topics[2]?.aliases, ["series 9", "series 54"]);
     assert.match(
         stdout.join("\n"),
         /Sorted 3 topics by slug and 2 alias list\(s\); removed 2 blank summary field\(s\)/u,

@@ -3,6 +3,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 import { type CuratedSegmentSeed, parseCuratedVideoFile, } from "../content/schemas/index.js";
+import { britishEnglishLocale } from "../locale.js";
 import { writeTextAtomically } from "../pipeline/atomic-write.js";
 import { listVideoSegmentShardFileNames } from "../site/video-segment-files.js";
 
@@ -322,7 +323,7 @@ function isCliEntryPoint(moduleUrl: string, argumentPath: string | undefined): b
     const modulePath = path.resolve(fileURLToPath(moduleUrl));
     const resolvedArgumentPath = path.resolve(argumentPath);
     isEntryPoint = process.platform === "win32"
-        ? modulePath.toLocaleLowerCase("en-US") === resolvedArgumentPath.toLocaleLowerCase("en-US")
+        ? modulePath.toLocaleLowerCase(britishEnglishLocale) === resolvedArgumentPath.toLocaleLowerCase(britishEnglishLocale)
         : modulePath === resolvedArgumentPath;
   }
   return isEntryPoint;

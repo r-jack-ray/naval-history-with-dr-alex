@@ -29,7 +29,7 @@ test("builds deterministic site archive data from channel metadata and segment s
   assert.equal(archive.videos.length, 1);
   assert.equal(archive.videos[0]?.slug, "sample-video");
   assert.equal(archive.videos[0]?.videoDateAt, "2026-07-08T00:00:00Z");
-  assert.equal(archive.videos[0]?.videoDateLabel, "Jul 8, 2026");
+  assert.equal(archive.videos[0]?.videoDateLabel, "8 Jul 2026");
   assert.equal(archive.videos[0]?.publishedAt, "2026-07-08T00:00:00Z");
   assert.equal(archive.videos[0]?.durationIso, "PT1H2M3S");
   assert.deepEqual(archive.videos[0]?.segmentSlugs, ["intro", "qa-segment"]);

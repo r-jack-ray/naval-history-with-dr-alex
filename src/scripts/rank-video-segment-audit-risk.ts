@@ -2,6 +2,7 @@
 import { mkdir, readdir, readFile, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 
+import { britishEnglishLocale } from "../locale.js";
 import { parseSiteContentProcessingConfig, type SiteContentProcessingConfig, validateCuratedVideoFile, } from "../content/schemas/index.js";
 import { DEFAULT_SITE_CONTENT_PROCESSING_LOG, parseSiteContentProcessingLog, } from "../content/site-content-processing-log.js";
 import {
@@ -265,7 +266,7 @@ function isSascShard(...identifiers: string[]): boolean {
 }
 
 function normalizedTitle(value: string): string {
-  return value.toLocaleLowerCase("en-US").replace(/[^a-z0-9]+/gu, " ").trim();
+  return value.toLocaleLowerCase(britishEnglishLocale).replace(/[^a-z0-9]+/gu, " ").trim();
 }
 
 async function fileSizeOrUndefined(filePath: string): Promise<number | undefined> {

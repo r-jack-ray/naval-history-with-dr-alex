@@ -1,3 +1,4 @@
+import { britishEnglishLocale } from "../locale.js";
 import type { RenderedVideoDateValidationResult } from "../site/rendered-video-date-validation.js";
 import type { SeoValidationResult } from "../site/seo-validation.js";
 
@@ -19,16 +20,16 @@ export function reportSeoValidationResult(result: SeoValidationResult): boolean 
   }
 
   console.log(
-      `SEO validation checked ${result.htmlPages.toLocaleString("en-US")} HTML pages, `
-      + `${result.indexablePages.toLocaleString("en-US")} indexable routes, `
-      + `${result.sitemapUrls.toLocaleString("en-US")} sitemap URLs, `
-      + `${result.videoSitemapEntries.toLocaleString("en-US")} video records, `
+      `SEO validation checked ${result.htmlPages.toLocaleString(britishEnglishLocale)} HTML pages, `
+      + `${result.indexablePages.toLocaleString(britishEnglishLocale)} indexable routes, `
+      + `${result.sitemapUrls.toLocaleString(britishEnglishLocale)} sitemap URLs, `
+      + `${result.videoSitemapEntries.toLocaleString(britishEnglishLocale)} video records, `
       + `and ${result.sitemapFiles} child sitemaps (${result.videoSitemapFiles} video).`,
   );
   if (result.largestHtmlPage !== undefined) {
     console.log(
         `Largest HTML page: ${result.largestHtmlPage.route} `
-        + `(${result.largestHtmlPage.bytes.toLocaleString("en-US")} bytes).`,
+        + `(${result.largestHtmlPage.bytes.toLocaleString(britishEnglishLocale)} bytes).`,
     );
   }
   console.log(`SEO diagnostics: ${errors.length} errors, ${warnings.length} warnings.`);

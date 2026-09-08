@@ -1,4 +1,6 @@
 ---
+import { britishEnglishLocale } from "../../../src/locale.js";
+
 interface ShowAllLink {
   href: string;
   label: string;
@@ -61,7 +63,7 @@ const pageInputId = `${pageLabel.replaceAll(" ", "-")}-page-${position}`;
 >
   <div class="archive-pagination-status">
     <strong>Page {currentPage} of {lastPage}</strong>
-    <small>{itemLabel} {itemStart.toLocaleString("en-US")}–{itemEnd.toLocaleString("en-US")} of {itemCount.toLocaleString("en-US")}</small>
+    <small>{itemLabel} {itemStart.toLocaleString(britishEnglishLocale)}–{itemEnd.toLocaleString(britishEnglishLocale)} of {itemCount.toLocaleString(britishEnglishLocale)}</small>
   </div>
   <div class="archive-pagination-controls">
     {previousUrl ? <a class="secondary-link" href={previousUrl} rel="prev">Previous</a> : <span class="archive-pagination-disabled" aria-hidden="true">Previous</span>}

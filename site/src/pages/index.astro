@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { archiveSegments, archiveVideos, compareVideosByDateDescending, publicArchiveTopics } from "../data/archive";
 import type { ArchiveSegment } from "../data/archive";
 import featuredWatchPointsUrl from "../scripts/featured-watch-points.js?url&no-inline";
+import { britishEnglishLocale } from "../../../src/locale.js";
 import { staticPageMetadata } from "../../../src/site/page-metadata.js";
 
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
@@ -41,7 +42,7 @@ const featuredCandidates = sampledVideos.flatMap((video, index) => {
       Math.min(right.topics.length, 6) - Math.min(left.topics.length, 6)
       || Math.abs(left.summary.length - 180) - Math.abs(right.summary.length - 180)
       || left.startSeconds - right.startSeconds
-      || left.slug.localeCompare(right.slug, "en")
+      || left.slug.localeCompare(right.slug, britishEnglishLocale)
     ))[0];
   if (segment === undefined) {
     return [];

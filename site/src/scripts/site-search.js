@@ -1,5 +1,6 @@
 /* Emitted through Astro's asset pipeline for cache-safe search updates. */
 (() => {
+  const britishEnglishLocale = document.documentElement.dataset.siteLocale || "en-GB";
   const form = document.querySelector("[data-site-search-form]");
   const input = document.querySelector("[data-site-search-input]");
   const clearButton = document.querySelector("[data-site-search-clear]");
@@ -79,7 +80,7 @@
     title.replace(/\s+\|\s+Naval History with Dr\. Alex Study Guide$/i, "").trim();
 
   const searchResultCacheKey = (query) =>
-    query.normalize("NFKC").toLocaleLowerCase("en-US");
+    query.normalize("NFKC").toLocaleLowerCase(britishEnglishLocale);
 
   const appendText = (parent, tagName, value, className) => {
     const element = document.createElement(tagName);

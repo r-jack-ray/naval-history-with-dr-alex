@@ -9,6 +9,7 @@ import { extname, join, resolve, sep } from "node:path";
 
 import puppeteer, { type Browser, type Page } from "puppeteer-core";
 
+import { britishEnglishLocale } from "../locale.js";
 import { isPublicTopic } from "../site/public-topic.js";
 
 const siteDist = resolve("site/dist");
@@ -148,8 +149,8 @@ async function main(): Promise<void> {
   const pageCount = typeof english?.page_count === "number" ? english.page_count : undefined;
   console.log(
       `Search ranking fixture valid: ${fixture.cases.length} cases; Pagefind ` +
-      `${pageCount === undefined ? "page count unavailable" : `${pageCount.toLocaleString()} pages`}; ` +
-      `${indexBytes.toLocaleString()} bytes.`,
+      `${pageCount === undefined ? "page count unavailable" : `${pageCount.toLocaleString(britishEnglishLocale)} pages`}; ` +
+      `${indexBytes.toLocaleString(britishEnglishLocale)} bytes.`,
   );
 
   if (
@@ -157,8 +158,8 @@ async function main(): Promise<void> {
       indexBytes > Math.floor(options.baselineIndexBytes * 1.02)
   ) {
     throw new Error(
-        `Pagefind index grew by more than 2%: ${indexBytes.toLocaleString()} bytes versus ` +
-        `${options.baselineIndexBytes.toLocaleString()} baseline bytes.`,
+        `Pagefind index grew by more than 2%: ${indexBytes.toLocaleString(britishEnglishLocale)} bytes versus ` +
+        `${options.baselineIndexBytes.toLocaleString(britishEnglishLocale)} baseline bytes.`,
     );
   }
 
@@ -662,7 +663,7 @@ function fixedSeedSample(cases: readonly RankingCase[], count: number): RankingC
   return [...cases]
       .sort((left, right) => (
           stableSampleKey(left.query).localeCompare(stableSampleKey(right.query)) ||
-          left.query.localeCompare(right.query)
+          left.query.localeCompare(right.query, britishEnglishLocale)
       ))
       .slice(0, count);
 }
@@ -1260,7 +1261,7 @@ async function directoryBytes(root: string): Promise<number> {
 function normalizeText(value: string): string {
   return value
       .normalize("NFKC")
-      .toLocaleLowerCase("en-US")
+      .toLocaleLowerCase(britishEnglishLocale)
       .replace(/[^\p{L}\p{N}]+/gu, " ")
       .trim()
       .replace(/\s+/gu, " ");

@@ -1,7 +1,9 @@
 ---
 import "../styles/site.css";
+import localizeDatesUrl from "../scripts/localize-dates.js?url&no-inline";
 import themeInteractionUrl from "../scripts/theme-interaction.js?url&no-inline";
 import { pageIndexingForPathname } from "../data/page-indexing.js";
+import { britishEnglishLocale } from "../../../src/locale.js";
 import { canonicalUrlForPath } from "../../../src/site/site-urls.js";
 
 interface Props {
@@ -55,7 +57,7 @@ const isActivePath = (path: string) => currentPath.startsWith(`${baseUrl}${path}
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-site-locale={britishEnglishLocale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -164,6 +166,7 @@ const isActivePath = (path: string) => currentPath.startsWith(`${baseUrl}${path}
         <a href={`${baseUrl}search/`}>Search</a>
       </nav>
     </footer>
+    <script type="module" src={localizeDatesUrl} is:inline data-localize-dates></script>
     <script src={themeInteractionUrl} defer is:inline data-theme-interaction></script>
   </body>
 </html>

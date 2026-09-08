@@ -34,8 +34,8 @@ test("sorts every shard field and topic array and skips the shared topic store",
     const topicsPath = path.join(shardsPath, "topics.json");
     await mkdir(shardsPath);
 
-    const unsortedText = shardText("unsorted-video", ["royal-navy", "aircraft-carriers"], [
-      segment("first", "0:00", ["fleet-air-arm", "aircraft-carriers"]),
+    const unsortedText = shardText("unsorted-video", ["series-54", "series-9"], [
+      segment("first", "0:00", ["series-100", "series-54", "series-9"]),
       segment("second", "1:00", ["destroyers"]),
     ]);
     const sortedText = shardText("sorted-video", ["cruisers", "royal-navy"], [
@@ -102,9 +102,9 @@ test("sorts every shard field and topic array and skips the shared topic store",
       topics: string[];
       segments: Array<{ slug: string; topics: string[] }>;
     };
-    assert.deepEqual(sorted.topics, ["aircraft-carriers", "royal-navy"]);
+    assert.deepEqual(sorted.topics, ["series-9", "series-54"]);
     assert.deepEqual(sorted.segments.map((entry) => entry.slug), ["first", "second"]);
-    assert.deepEqual(sorted.segments[0]?.topics, ["aircraft-carriers", "fleet-air-arm"]);
+    assert.deepEqual(sorted.segments[0]?.topics, ["series-9", "series-54", "series-100"]);
     assert.deepEqual(sorted.segments[1]?.topics, ["destroyers"]);
     const reorderedFields = JSON.parse(await readFile(unorderedFieldsPath, "utf8")) as {
       segments: Array<{ evidence: Array<Record<string, unknown>> }>;

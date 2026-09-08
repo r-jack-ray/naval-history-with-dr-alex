@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { archiveVideos, compareVideosByDateDescending } from "../../data/archive";
+import { britishEnglishLocale } from "../../../../src/locale.js";
 import { staticPageMetadata } from "../../../../src/site/page-metadata.js";
 
 const baseUrl = import.meta.env.BASE_URL.endsWith("/")
@@ -73,7 +74,7 @@ const metadata = staticPageMetadata.videos;
         </div>
       </div>
       <p>
-        The paginated directory keeps all {videosByDate.length.toLocaleString("en-US")} video guides
+        The paginated directory keeps all {videosByDate.length.toLocaleString(britishEnglishLocale)} video guides
         reachable through ordinary links in reverse publication-date order.
       </p>
       <div class="action-row">

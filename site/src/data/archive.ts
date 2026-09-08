@@ -3,6 +3,7 @@ import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { performance } from "node:perf_hooks";
 
+import { britishEnglishLocale } from "../../../src/locale.js";
 import { isPublicTopic } from "../../../src/site/public-topic.js";
 import { parseVideoDurationSeconds } from "../../../src/site/video-seo.js";
 
@@ -566,8 +567,8 @@ export function videosForBrowse(): ArchiveVideo[] {
 
 export function topicsForBrowse(): ArchiveTopic[] {
   return [...publicArchiveTopics].sort((left, right) =>
-    left.title.localeCompare(right.title, "en", { sensitivity: "base" })
-    || left.slug.localeCompare(right.slug)
+    left.title.localeCompare(right.title, britishEnglishLocale, { sensitivity: "base" })
+    || left.slug.localeCompare(right.slug, britishEnglishLocale)
   );
 }
 
@@ -577,7 +578,7 @@ export function videosForTopic(topic: ArchiveTopic): ArchiveVideo[] {
 
 export function compareVideosByDateDescending(left: ArchiveVideo, right: ArchiveVideo): number {
   return Date.parse(right.videoDateAt) - Date.parse(left.videoDateAt)
-    || left.videoId.localeCompare(right.videoId);
+    || left.videoId.localeCompare(right.videoId, britishEnglishLocale);
 }
 
 function sortSegmentsByVideoDate(segments: readonly ArchiveSegment[]): ArchiveSegment[] {
@@ -589,7 +590,7 @@ function sortSegmentsByVideoDate(segments: readonly ArchiveSegment[]): ArchiveSe
     }
     return compareVideosByDateDescending(leftVideo, rightVideo)
       || left.startSeconds - right.startSeconds
-      || left.slug.localeCompare(right.slug);
+      || left.slug.localeCompare(right.slug, britishEnglishLocale);
   });
 }
 

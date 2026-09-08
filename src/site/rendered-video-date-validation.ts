@@ -10,7 +10,6 @@ import {
   type RenderedHtmlSiteSnapshot,
 } from "./seo-validation.js";
 
-const canonicalDatePattern = /^[A-Z][a-z]{2} \d{1,2}, \d{4}$/u;
 const canonicalTimestampPattern = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/u;
 
 export interface GeneratedVideoDateRecord {
@@ -148,8 +147,8 @@ export function validateRenderedVideoDateHtml(
       );
     }
     for (const value of snapshot.renderedDates.timeElements) {
-      if (!canonicalTimestampPattern.test(value.datetime) || !canonicalDatePattern.test(value.label)) {
-        throw new Error(`Rendered output contains a noncanonical date <time>: ${page.path}`);
+      if (!canonicalTimestampPattern.test(value.datetime)) {
+        throw new Error(`Rendered output contains a non-ISO date <time>: ${page.path}`);
       }
       timeCount += 1;
     }
@@ -226,7 +225,8 @@ function validateGeneratedVideo(video: GeneratedVideoDateRecord): void {
     typeof video.videoId !== "string"
     || typeof video.slug !== "string"
     || !canonicalTimestampPattern.test(video.videoDateAt)
-    || !canonicalDatePattern.test(video.videoDateLabel)
+    || typeof video.videoDateLabel !== "string"
+    || video.videoDateLabel.trim().length === 0
     || video.durationLabel === "P0D"
     || video.durationLabel === "0:00"
     || !Array.isArray(video.segmentSlugs)
@@ -348,7 +348,6 @@ function validateBruships250(
   }
   if (
     video.videoDateAt !== "2026-07-12T18:30:05Z"
-    || video.videoDateLabel !== "Jul 12, 2026"
     || video.durationLabel !== "4:32:47"
     || video.videoKind !== "stream"
   ) {
@@ -357,7 +356,7 @@ function validateBruships250(
   const fragment = fragmentsByUrl.get(`/videos/${video.slug}/`);
   if (
     fragment === undefined
-    || !fragment.content.includes("DateJul 12, 2026")
+    || !fragment.content.includes(`Date${video.videoDateLabel}`)
     || !fragment.content.includes("Runtime4:32:47")
     || !fragment.content.includes("FormatStream")
   ) {

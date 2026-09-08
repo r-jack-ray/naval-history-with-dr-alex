@@ -16,7 +16,7 @@ const video: GeneratedVideoDateRecord = {
   videoId: "example",
   slug: "example-video",
   videoDateAt: "2026-08-09T12:34:56Z",
-  videoDateLabel: "Aug 9, 2026",
+  videoDateLabel: "9 Aug 2026",
   durationLabel: "12:34",
   videoKind: "upload",
   segmentSlugs: ["example-segment"],
@@ -28,23 +28,26 @@ async function writeRoute(root: string, route: string, html: string): Promise<vo
   await writeFile(join(directory, "index.html"), html, "utf8");
 }
 
-async function writeValidFixture(root: string): Promise<void> {
-  const time = `<time datetime="${video.videoDateAt}">${video.videoDateLabel}</time>`;
+async function writeValidFixture(
+    root: string,
+    videoRecord: GeneratedVideoDateRecord = video,
+): Promise<void> {
+  const time = `<time datetime="${videoRecord.videoDateAt}">${videoRecord.videoDateLabel}</time>`;
   await writeRoute(root, "", `Latest video guide · ${time}`);
   await writeRoute(
     root,
-    `videos/${video.slug}/`,
+    `videos/${videoRecord.slug}/`,
     `<span class="label">Date</span><strong>${time}</strong>`,
   );
   await writeRoute(
     root,
-    `segments/${video.segmentSlugs[0]}/`,
+    `segments/${videoRecord.segmentSlugs[0]}/`,
     `<dl><dt>Date</dt><dd>${time}</dd></dl>`,
   );
   await writeRoute(
     root,
     "segments/browse/",
-    `<article data-segment-slug="${video.segmentSlugs[0]}">${time}</article>`,
+    `<article data-segment-slug="${videoRecord.segmentSlugs[0]}">${time}</article>`,
   );
 }
 
@@ -59,6 +62,26 @@ test("validates all rendered HTML date surfaces from one parsed snapshot", async
       concurrency: 2,
     });
     assert.deepEqual(validateRenderedVideoDateHtml([video], rendered), {
+      htmlFiles: 4,
+      timeElements: 4,
+    });
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("accepts a generated date label without prescribing its regional format", async () => {
+  const root = await mkdtemp(join(tmpdir(), "naval-rendered-dates-locale-"));
+  const alternateDateLabelVideo = {...video, videoDateLabel: "Aug 9, 2026"};
+  try {
+    await writeValidFixture(root, alternateDateLabelVideo);
+    const rendered = await readRenderedHtmlSiteSnapshot({
+      distRoot: root,
+      siteOrigin: origin,
+      basePath,
+      concurrency: 2,
+    });
+    assert.deepEqual(validateRenderedVideoDateHtml([alternateDateLabelVideo], rendered), {
       htmlFiles: 4,
       timeElements: 4,
     });

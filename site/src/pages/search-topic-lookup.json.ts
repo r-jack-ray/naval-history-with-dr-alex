@@ -1,12 +1,13 @@
 import type { APIRoute } from "astro";
 
+import { britishEnglishLocale } from "../../../src/locale.js";
 import { publicArchiveTopics } from "../data/archive";
 
 export const prerender = true;
 
 const normalize = (value: string): string => value
   .normalize("NFKC")
-  .toLocaleLowerCase("en-US")
+  .toLocaleLowerCase(britishEnglishLocale)
   .replace(/[^\p{L}\p{N}]+/gu, " ")
   .trim()
   .replace(/\s+/gu, " ");
@@ -30,10 +31,10 @@ const payload = JSON.stringify({
   ),
   e: Object.fromEntries(
     [...entries.entries()]
-      .sort(([left], [right]) => left.localeCompare(right))
+      .sort(([left], [right]) => left.localeCompare(right, britishEnglishLocale))
       .map(([key, topics]) => [
         key,
-        [...topics.values()].sort(([left], [right]) => left.localeCompare(right)),
+        [...topics.values()].sort(([left], [right]) => left.localeCompare(right, britishEnglishLocale)),
       ]),
   ),
 });
