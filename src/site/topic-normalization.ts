@@ -73,7 +73,6 @@ export class TopicNormalizationCatalogError extends Error {
 const topicSlugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/u;
 const ruleIdPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/u;
 const tokenPattern = /^[a-z0-9]+$/u;
-const regexReplacementPattern = /^(?:[a-z0-9]+|\$[1-9][0-9]*)(?:-(?:[a-z0-9]+|\$[1-9][0-9]*))*$/u;
 const romanNumerals = new Set(["i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x"]);
 
 export async function loadTopicNormalizationCatalog(
@@ -348,7 +347,8 @@ function validateRuleFields(
     } catch (error) {
       issues.push(`regex match is invalid: ${error instanceof Error ? error.message : String(error)}`);
     }
-    if (!regexReplacementPattern.test(replacement)) {
+    // Substitute captures before checking slug syntax, allowing forms like $1-$2s.
+    if (!topicSlugPattern.test(replacement.replace(/\$[1-9][0-9]*/gu, "a"))) {
       issues.push("a regex replacement must be a lowercase slug template using numeric $1 capture references");
     }
     if (expression !== undefined) {

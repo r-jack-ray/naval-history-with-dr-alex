@@ -380,6 +380,10 @@ Curator and auditor runs append rather than rewriting earlier rows. Repository-l
 
 `src/derived/topic-normalization-patterns.tsv` is the detailed source of truth for steady-state topic creation, display names, aliases, and exceptions. `src/derived/video-segments/topics.json` remains authoritative for curated topic metadata unrelated to that policy. Routine synchronization validates policy compliance and may append missing blank-description registry records. Generation uses the same planning path only as a read-only completeness check; neither command rewrites source shards merely because the catalog changed.
 
+Keep the nine-column TSV format. An active exact display rule that maps a canonical slug to itself can own its title and approved aliases. Creation-exact redirects to that target may leave `canonical_title` empty and `aliases_json` as `[]` when the display rule already contains the same metadata. Synchronization and auditing collect this metadata across active exact rules for each target. Verify that factoring metadata preserves the synchronizer's alias ordering and spelling, including overlaps with other creation rules. Preserve distinct aliases, source URLs, review dates, and naming caveats when shortening notes; keep review and disabled rules intact during mechanical compaction.
+
+Regex replacement templates can combine numeric captures and lowercase literals within a slug token, such as `$1-$2s` for a bounded list of singular class vessel types. Capture references must exist, and the resolved output must be a valid topic slug. Exact rules retain precedence over regex rules. Combine regex rules only when the accepted inputs and outputs remain the same; keep special plurals such as `ships-of-the-line` separate.
+
 Resolve every new shard topic through active creation rules before writing it. Preserve established slugs unless the active creation policy canonicalizes them, and leave `review`, disabled, ambiguous, or inapplicable candidates unchanged. Use the read-only audit to check policy and registry consistency before shared synchronization or integration work:
 
 ```powershell

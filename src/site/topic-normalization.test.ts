@@ -159,6 +159,117 @@ test("resolves self-contained policy cases without relying on the live catalog",
   );
 });
 
+test("pluralizes a bounded set of class types while preserving exact exceptions", () => {
+  const catalog = parseTopicNormalizationCatalog(catalogText([
+    row({
+      ruleId: "pluralize-class-types",
+      scope: "creation",
+      matchKind: "regex",
+      match: "^(.+-class)-(destroyer|cruiser|frigate)$",
+      replacement: "$1-$2s",
+      notes: "Pluralize supported class types",
+    }),
+    row({
+      ruleId: "special-class-exception",
+      scope: "creation",
+      match: "special-class-cruiser",
+      replacement: "special-class-battlecruisers",
+      notes: "Exact class exception",
+    }),
+  ]));
+
+  for (const type of ["destroyer", "cruiser", "frigate"]) {
+    const input = `scout-class-${type}`;
+    assert.deepEqual(resolveTopicCreation(catalog, input), {
+      input,
+      slug: `${input}s`,
+      changed: true,
+      matchedRuleIds: ["pluralize-class-types"],
+    });
+  }
+  for (const slug of ["scout-class-destroyers", "scout-class-submarine", "scout-destroyer"]) {
+    assert.deepEqual(resolveTopicCreation(catalog, slug), {
+      input: slug,
+      slug,
+      changed: false,
+      matchedRuleIds: [],
+    });
+  }
+  assert.deepEqual(resolveTopicCreation(catalog, "special-class-cruiser"), {
+    input: "special-class-cruiser",
+    slug: "special-class-battlecruisers",
+    changed: true,
+    matchedRuleIds: ["special-class-exception"],
+  });
+});
+
+test("allows literals and captures together within replacement slug tokens", () => {
+  for (const [replacement, expected] of [
+    ["$1-$2s", "scout-42s"],
+    ["pre$1-post$2s", "prescout-post42s"],
+    ["$1$2", "scout42"],
+    ["12$1x", "12scoutx"],
+  ] as const) {
+    const catalog = parseTopicNormalizationCatalog(catalogText([
+      row({
+        ruleId: "combined-replacement",
+        scope: "creation",
+        matchKind: "regex",
+        match: "^([a-z]+)-([0-9]+)$",
+        replacement,
+        notes: "Combine literal text and captures",
+      }),
+    ]));
+    assert.equal(resolveTopicCreation(catalog, "scout-42").slug, expected);
+  }
+});
+
+test("rejects malformed combined replacement templates and missing captures", () => {
+  for (const replacement of ["-$1", "$1-", "$1--$2s", "$1_$2", "$1-$$", "$1-$&"]) {
+    assert.throws(() => parseTopicNormalizationCatalog(catalogText([
+      row({
+        ruleId: "invalid-combined-replacement",
+        scope: "creation",
+        matchKind: "regex",
+        match: "^([a-z]+)-([0-9]+)$",
+        replacement,
+        notes: "Invalid slug template",
+      }),
+    ])), /a regex replacement must be a lowercase slug template/u);
+  }
+  for (const replacement of ["$1-$0s", "$1-$3s"]) {
+    assert.throws(() => parseTopicNormalizationCatalog(catalogText([
+      row({
+        ruleId: "missing-combined-capture",
+        scope: "creation",
+        matchKind: "regex",
+        match: "^([a-z]+)-([0-9]+)$",
+        replacement,
+        notes: "Missing capture in combined replacement",
+      }),
+    ])), /replacement references missing regex capture/u);
+  }
+});
+
+test("rejects invalid slugs produced by an unmatched optional capture", () => {
+  const catalog = parseTopicNormalizationCatalog(catalogText([
+    row({
+      ruleId: "optional-combined-capture",
+      scope: "creation",
+      matchKind: "regex",
+      match: "^([a-z]+)(?:-(more))?$",
+      replacement: "$2-$1s",
+      notes: "Optional capture can leave an empty slug token",
+    }),
+  ]));
+
+  assert.equal(resolveTopicCreation(catalog, "scout-more").slug, "more-scouts");
+  assert.throws(
+    () => resolveTopicCreation(catalog, "scout"),
+    /Invalid topic slug for replacement from rule optional-combined-capture/u,
+  );
+});
+
 test("exact review policy suppresses broader active creation rules", () => {
   const catalog = resolutionCatalog();
 

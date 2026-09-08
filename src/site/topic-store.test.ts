@@ -223,7 +223,7 @@ test("refuses a new noncanonical creation slug before creating topics.json", asy
   }
 });
 
-test("uses catalog display policy when appending a canonical topic", async () => {
+test("uses display-owned metadata when a creation redirect omits title and aliases", async () => {
   const directory = await makeTopicDirectory(["57-mm-guns"], ["57-mm-guns"]);
   try {
     await synchronizeFixture(directory);
@@ -316,7 +316,8 @@ function makeTestCatalogText(): string {
     catalogRow("display-qf-decimal-inch-gun", "active", "display", "regex", "^qf-([0-9]+)-([0-9]+)-inch-gun$", "qf-$1-$2-inch-gun", "QF $1.$2-inch Gun", "[]", "QF decimal calibre"),
     catalogRow("display-metric-mm-guns", "active", "display", "regex", "^([0-9]+)-mm-guns$", "$1-mm-guns", "$1 mm Guns", "[]", "Metric calibre"),
     catalogRow("create-metric-mm-guns", "active", "creation", "regex", "^([0-9]+)mm-guns$", "$1-mm-guns", "$1 mm Guns", "[]", "Future metric construction"),
-    catalogRow("normalize-57mm-gun", "active", "creation", "exact", "57mm-gun", "57-mm-guns", "57 mm Guns", "[\"57mm Gun\"]", "Confirmed fixture duplicate"),
+    catalogRow("normalize-57mm-gun", "active", "creation", "exact", "57mm-gun", "57-mm-guns", "", "[]", "Confirmed fixture duplicate; metadata belongs to display rule"),
+    catalogRow("display-57-mm-guns", "active", "display", "exact", "57-mm-guns", "57-mm-guns", "57 mm Guns", "[\"57mm Gun\"]", "Canonical title and aliases"),
   ];
   return `${topicNormalizationPatternHeader.join("\t")}\n${rows.join("\n")}\n`;
 }
