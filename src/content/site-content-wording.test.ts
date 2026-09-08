@@ -41,8 +41,8 @@ test("site-content wording rules separate actionable and review findings", () =>
       {
         field: "evidence.note",
         confidence: "high",
-        ruleId: "transcript-reporting-frame",
-        match: "The transcript says",
+        ruleId: "prohibited-transcript-reference",
+        match: "The transcript",
       },
     ],
   );
@@ -177,27 +177,48 @@ test("Unicode dash characters are unconditional errors in every public field", (
   );
 });
 
-test("unqualified transcript references require source-grounded review", () => {
-  const video = sampleVideo(
-    "The transcript does not establish the exact range. The surviving figure may still be useful.",
+test("literal the transcript references are unconditional errors in every segment text field", () => {
+  const video = sampleQaVideo(
+    "THE TRANSCRIPT does not establish the exact range.",
+    "tHe TrAnScRiPt preserves a disputed range.",
   );
+  const segment = video.segments[0]!;
+  segment.title = "The Transcript and destroyer range";
+  if (segment.kind === "qa") {
+    segment.question = "What does the transcript establish?";
+    segment.answerShort = "THE TRANSCRIPT leaves the exact range uncertain.";
+  }
+  segment.evidence[0]!.note = "The transcript places the estimate in its operational context.";
 
+  const findings = scanCuratedVideoFileMechanicalWording("example.json", video);
+  assert.deepEqual(findings.map(({ field }) => field), [
+    "title",
+    "summary",
+    "body",
+    "question",
+    "answerShort",
+    "evidence.note",
+  ]);
+  assert.equal(findings.every(({ ruleId }) => ruleId === "prohibited-transcript-reference"), true);
+  assert.equal(findings.every(({ confidence }) => confidence === "high"), true);
+  assert.equal(findings.every(({ unconditionalError }) => unconditionalError), true);
+
+  const contextual = scanCuratedVideoFileMechanicalWording(
+    "example.json",
+    sampleVideo("This transcript does not establish the exact range."),
+    { includeReview: true },
+  );
   assert.deepEqual(
-    scanCuratedVideoFileMechanicalWording("example.json", video),
+    contextual.map(({ confidence, ruleId, match }) => ({ confidence, ruleId, match })),
+    [{ confidence: "review", ruleId: "transcript-reference", match: "This transcript" }],
+  );
+  assert.deepEqual(
+    scanCuratedVideoFileMechanicalWording(
+      "example.json",
+      sampleVideo("This transcript does not establish the exact range."),
+    ),
     [],
   );
-  assert.deepEqual(
-    scanCuratedVideoFileMechanicalWording("example.json", video, { includeReview: true })
-      .map(({ confidence, ruleId, match }) => ({ confidence, ruleId, match })),
-    [
-      {
-        confidence: "review",
-        ruleId: "transcript-reference",
-        match: "The transcript",
-      },
-    ],
-  );
-
   assert.deepEqual(
     scanCuratedVideoFileMechanicalWording(
       "example.json",
@@ -542,13 +563,19 @@ test("site-content wording CLI scopes strict scans and writes reports", async ()
     );
     assert.equal(existsSync(jsonReportPath), true);
     assert.equal(existsSync(markdownReportPath), true);
-    assert.match(await readFile(jsonReportPath, "utf8"), /answer-reporting-frame/u);
-    assert.match(await readFile(jsonReportPath, "utf8"), /"segmentKind": "qa"/u);
-    assert.match(await readFile(jsonReportPath, "utf8"), /"ruleCounts"/u);
-    assert.match(await readFile(jsonReportPath, "utf8"), /"matchedOccurrenceCount"/u);
-    assert.match(await readFile(jsonReportPath, "utf8"), /Do not bulk-rewrite/u);
-    assert.match(await readFile(jsonReportPath, "utf8"), /Inspect every transcript-reference finding/u);
-    assert.match(await readFile(jsonReportPath, "utf8"), /Verify each Clark or Clarke match against the transcript/u);
+    const jsonReport = await readFile(jsonReportPath, "utf8");
+    assert.match(jsonReport, /answer-reporting-frame/u);
+    assert.match(jsonReport, /"segmentKind": "qa"/u);
+    assert.match(jsonReport, /"ruleCounts"/u);
+    assert.match(jsonReport, /"matchedOccurrenceCount"/u);
+    assert.match(jsonReport, /Do not bulk-rewrite/u);
+    assert.equal(
+      (JSON.parse(jsonReport) as { reviewPolicy: string }).reviewPolicy.includes(
+          'Remove every literal "the transcript" occurrence.',
+      ),
+      true,
+    );
+    assert.match(jsonReport, /Verify each Clark or Clarke match against the transcript/u);
     assert.match(await readFile(markdownReportPath, "utf8"), /## Actionable Issues/u);
     assert.match(await readFile(markdownReportPath, "utf8"), /## Findings by Rule/u);
 
@@ -641,10 +668,10 @@ test("evidence notes receive actionable checks and contextual review without sca
       })),
     [
       {
-        ruleId: "transcript-reporting-frame",
+        ruleId: "prohibited-transcript-reference",
         confidence: "high",
         evidenceIndex: 0,
-        unconditionalError: false,
+        unconditionalError: true,
       },
       {
         ruleId: "prohibited-unicode-dash",
@@ -658,8 +685,8 @@ test("evidence notes receive actionable checks and contextual review without sca
 
 test("transcript reporting variants are actionable in public prose and evidence notes", () => {
   const frames = [
-    "The transcript covers", "The transcript gives", "The transcript connects",
-    "The transcript lists", "The transcript names", "The transcript follows", "The transcript sets out",
+    "This transcript covers", "This transcript gives", "This transcript connects",
+    "This transcript lists", "This transcript names", "This transcript follows", "This transcript sets out",
   ];
   for (const frame of frames) {
     const video = sampleQaVideo(`${frame} the destroyer designs.`);
@@ -725,28 +752,43 @@ test("watch-point value filler is actionable while historical assessments retain
   assert.deepEqual(scanCuratedVideoFileMechanicalWording("example.json", clean, { includeReview: true }), []);
 });
 
-test("CLI makes transcript-reporting evidence notes fail strict checks", async () => {
+test("CLI reports literal transcript references as unconditional errors", async () => {
   const repoRoot = await mkdtemp(join(tmpdir(), "site-content-wording-evidence-"));
   try {
     const video = sampleVideo("Fuel endurance constrained the operation.");
     video.segments[0]!.evidence[0]!.note = "The transcript traces prewar multi-carrier organization.";
     await writeFile(join(repoRoot, "example.json"), JSON.stringify(video));
-    const args = ["--repo-root", repoRoot, "--path", "example.json", "--report", "--summary-only"];
-    assert.equal(await withoutConsole(() => checkSiteContentWording([...args, "--strict"])), 1);
+    const args = ["--repo-root", repoRoot, "--path", "example.json", "--report"];
+    const reportRun = await captureConsole(() => checkSiteContentWording(args));
+    assert.equal(reportRun.result, 1);
+    assert.match(reportRun.errors.join("\n"), /Site-content wording scan: .*errors=1/u);
+    assert.match(
+      reportRun.errors.join("\n"),
+      /Wording report contains errors or warnings: errors=1 .*report=site-content-wording-scan\.md json=site-content-wording-scan\.json\./u,
+    );
+    assert.match(
+      reportRun.logs.join("\n"),
+      /example\.json#destroyer-endurance@1:00 \[notable_point\/evidence\[0\]\.note\] prohibited-transcript-reference/u,
+    );
+    assert.match(reportRun.logs.join("\n"), /Detailed reports:/u);
     const report = JSON.parse(await readFile(join(repoRoot, "reports/site-content-wording-scan.json"), "utf8"));
     assert.equal(report.publicFieldsScanned, 3);
     assert.equal(report.evidenceNotesScanned, 1);
+    assert.equal(report.errorCount, 1);
     assert.equal(report.findings[0].field, "evidence.note");
     assert.equal(report.findings[0].evidenceIndex, 0);
-    assert.equal(report.findings[0].ruleId, "transcript-reporting-frame");
+    assert.equal(report.findings[0].ruleId, "prohibited-transcript-reference");
     assert.equal(report.findings[0].confidence, "high");
+    assert.equal(report.findings[0].unconditionalError, true);
     assert.deepEqual(report.ruleCounts, [{
-      enforcement: "strict",
+      enforcement: "error",
       confidence: "high",
-      ruleId: "transcript-reporting-frame",
+      ruleId: "prohibited-transcript-reference",
       count: 1,
     }]);
-    assert.match(await readFile(join(repoRoot, "reports/site-content-wording-scan.md"), "utf8"), /evidence\[0\]\.note/u);
+    const markdownReport = await readFile(join(repoRoot, "reports/site-content-wording-scan.md"), "utf8");
+    assert.match(markdownReport, /## Nonnegotiable Errors/u);
+    assert.match(markdownReport, /evidence\[0\]\.note/u);
 
     video.segments[0]!.evidence[0]!.note = "Dr. Clarke recalls a personal visit to the ship.";
     await writeFile(join(repoRoot, "example.json"), JSON.stringify(video));

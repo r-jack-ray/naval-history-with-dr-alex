@@ -71,11 +71,11 @@ export interface SiteContentWordingReport {
 
 const defaultSegmentsInput = "src/derived/video-segments";
 const completionCriterion =
-    "Prohibited Unicode dashes and shard parse failures are unconditional errors. Other actionable high-confidence issues require strict mode, including transcript-reporting frames in evidence notes. Review candidates are triage input.";
+    "Literal \"the transcript\" references, prohibited Unicode dashes, and shard parse failures are unconditional errors. Other actionable high-confidence issues require strict mode, including transcript-reporting frames in evidence notes. Review candidates are triage input.";
 const reviewPolicy =
     "Review candidates require transcript-grounded judgment. Do not bulk-rewrite them or use a zero review " +
     "count as a general completion target. Preserve technical terms when they carry subject-matter meaning. " +
-    "Inspect every transcript-reference finding and retain it only when a speaker is discussing a transcript as subject matter. " +
+    "Remove every literal \"the transcript\" occurrence. Inspect remaining transcript-reference findings and retain them only when a speaker is discussing a transcript as subject matter. " +
     "Treat host-attribution as a whole-shard review performed in small segment batches, including evidence notes. Verify each Clark or Clarke match against the transcript " +
     "before editing. Each segment already carries sourcePath and evidence, so remove routine references to the " +
     "host in solo-speaker prose. Preserve other people named Clark or Clarke. In multi-speaker material, also " +
@@ -587,7 +587,8 @@ function printHelp(): void {
 
 Scans public prose and every evidence.note in current-schema per-video JSON shards
 for mechanical, report-shaped, or workflow-shaped wording. Topic metadata and
-evidence timestamps are outside the scan. Prohibited Unicode dashes always produce errors and exit 1.
+evidence timestamps are outside the scan. Literal "the transcript" references and
+prohibited Unicode dashes always produce errors and exit 1.
 The default mode also reports other actionable high-confidence issues.
 The one-line summary uses the error or warning stream when findings require attention.
 With --report, the console notice names the Markdown and JSON report files.
@@ -595,8 +596,8 @@ With --report, the console notice names the Markdown and JSON report files.
 Review candidates require transcript-grounded judgment. Broad subject terms such
 as prototype, processing, extraction, and seed are retained unless they appear in
 workflow-shaped collocations. A zero review count is not a completion target.
-Inspect every transcript-reference finding. Retain the phrase only when a speaker
-is discussing a transcript as subject matter.
+Remove every literal "the transcript" occurrence. Inspect remaining transcript-reference
+findings and retain them only when a speaker is discussing a transcript as subject matter.
 Host-attribution findings identify each affected field and evidence-note index;
 review the full shard in small segment batches and preserve necessary speaker ownership.
 

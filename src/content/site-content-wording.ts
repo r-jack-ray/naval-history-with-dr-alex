@@ -114,6 +114,15 @@ const deterministicRules: readonly SiteContentWordingRule[] = [
     unconditionalError: true,
   },
   {
+    id: "prohibited-transcript-reference",
+    confidence: "high",
+    fields: allFields,
+    pattern: /\bthe\s+transcript\b/giu,
+    captureGroup: null,
+    guidance: "Remove this transcript reference and state the supported historical or technical point directly.",
+    unconditionalError: true,
+  },
+  {
     id: "transcript-position-reference",
     confidence: "high",
     fields: allFields,
@@ -435,7 +444,10 @@ function scanField(
       if (rule.requiresClauseBoundary === true && !isClauseBoundary(text, start)) {
         continue;
       }
-      if (confidence === "review" && overlaps(start, end, located)) {
+      if (
+        overlapsUnconditionalError(start, end, located)
+        || (confidence === "review" && overlaps(start, end, located))
+      ) {
         continue;
       }
       located.push({
@@ -695,6 +707,16 @@ function wordTokens(text: string): WordToken[] {
 
 function overlaps(start: number, end: number, findings: readonly LocatedFinding[]): boolean {
   return findings.some((finding) => start < finding.end && end > finding.start);
+}
+
+function overlapsUnconditionalError(
+  start: number,
+  end: number,
+  findings: readonly LocatedFinding[],
+): boolean {
+  return findings.some(
+    (finding) => finding.finding.unconditionalError && start < finding.end && end > finding.start,
+  );
 }
 
 function isClauseBoundary(text: string, start: number): boolean {
