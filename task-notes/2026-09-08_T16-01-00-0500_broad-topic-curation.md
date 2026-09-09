@@ -4,8 +4,6 @@ Applied 528 reviewed global registry mappings and 262 source-specific reference 
 
 All 259 pre-existing nonblank curated summaries survive verbatim at their retained or consolidated destinations. All 25 previously unused records remain intact. No descriptions were generated. Misleading aliases were removed only after source review. Public prose, evidence, non-topic JSON fields and unrelated shards are byte-identical to the starting snapshot.
 
-The [machine-readable evidence ledger](2026-09-08_T16-01-00-0500_broad-topic-curation.json) contains every mapping, exact old and destination source locations, source-specific exceptions, affected policy rules, reasons and authoritative URLs, metadata decisions, file hashes, validation results and unresolved cases.
-
 ## Review coverage
 
 | Review | Model and effort | Coverage |
@@ -40,11 +38,11 @@ Models and effort were chosen for the review task. Shared writes and final valid
 - `npm run audit:topic-normalization` passed.
 - `npm run check:video-topics` passed.
 - All 2,165 shard files checked against baseline hashes; changes are confined to the reviewed topic arrays.
-- Canonical writes used reviewed pre/postimage hashes, atomic replacement, JSON readback and a resumable application ledger.
+- Canonical writes were verified using before-and-after file hashes, atomic replacement and JSON readback.
 
 ## Retained reviews and separate content work
 
-491 existing guides had video-level topics absent from their segment topics before this pass. These require source-based content review; the changes introduce no new gaps. Exact paths and missing topics are in the evidence ledger.
+491 existing guides had video-level topics absent from their segment topics before this pass. These require source-based content review; the changes introduce no new gaps. Future review should compare each authored shard's video-level topic list with the union of its segment topics to locate the current gaps.
 
 - `ijn-natori, natori`: Natori bare is explicitly Nagara-class light cruiser; IJN Natori source describes capture and unsuccessful scuttling before gunfire, inconsistent with confidently assigning the same hull. Requires exact transcript identification before migration.
 - `dunkirk-class`: The sole source uses a game approximation of French all-forward capital-ship geometry. The real Dunkerque-class analogy is plausible but a class identity and complete canonical destination review are still needed. Fiction lane confirmed this should not automatically receive a fiction prefix.
@@ -55,12 +53,16 @@ Models and effort were chosen for the review task. Shared writes and final valid
 - `saratoga-class`: The source concerns the eight-inch guns of the Lexington/Saratoga carrier pair. Full existing Lexington-class destination coverage is still required before consolidation.
 - `troude-class`: The source identifies the related French cruiser procurement group, but exact protected-cruiser nomenclature was not independently resolved; retain pending the spelling/type check.
 - `z-class`: The generic German Z-series comparison does not establish one numbered destroyer design. A specific Type 1934/1936 class would overstate the evidence; preserve for broad-family or contextual review.
-- `London naval treaty topics`: The separate london-decisions.json review classifies all 323 singular occurrences. It supports 143 source-scoped replacements and retains 180 unqualified singular sources because their authored context does not establish 1930, 1936, or the plural treaty system. A global singular mapping remains unsafe.
+- `London naval treaty topics`: Source review classified all 323 singular occurrences. It supported 143 source-scoped replacements and retained 180 unqualified singular sources because their authored context did not establish 1930, 1936, or the plural treaty system. A global singular mapping remains unsafe.
 
-Source-content issues discovered during identity checks remain outside this taxonomy write: Natori/Takao scuttling identification, the public S6 carrier wording, and the Uganda/Quebec naming answer. Exact paths, transcript intervals and reasons are retained in the ledger.
+Source-content issues discovered during identity checks remain outside this taxonomy write:
+
+- [Bruships 177](../src/derived/video-segments/2025-01-05_T19-34-41_bruships-177-new-year-same-dr-alex-possibly-with-new-gym-membership_vlWlCw_VCgY.json), segment `ijn-natori-scuttling-difficulties`: Recheck the Natori/Takao identification against the matching transcript at `3:46:13` to `3:47:00`. The reviewed passage describes Kingston valves, charges and gunfire from a Crown Colony-class cruiser; the public Natori identification requires correction or confirmation before merging topics.
+- [Bruships 151](../src/derived/video-segments/2024-05-12_T19-11-43_bruships-151-naval-history-questions-answered-boxes-packed-and-july-patreon-vote_IP88zxJL_mk.json), segment `larger-carriers-and-accident-rates`: The topic correction is complete, but the public question still says "S6-type carriers". Check the carrier/aircraft wording against the segment's transcript evidence.
+- [Bruships 205](../src/derived/video-segments/2025-08-03_T18-29-46_bruships-205-naval-history-questions-answered-live_zSPKeAUrJqc.json), segment `hmcs-quebec-naming-history`: The public prose denies that HMCS Quebec existed and treats the Uganda renaming as unrealized. Review the matching transcript at `4:46:19` to `4:47:01`, especially the commissioning and renaming statement at `4:46:39` to `4:46:42`, before correcting the public fields.
 
 ## Integration
 
-`src/derived/topic-normalization-patterns.tsv`, `src/derived/video-segments/topics.json`, and the ledger-listed shard topic arrays are updated. Existing consumers accepted the revised data without further process changes. No synchronizer run was necessary because every canonical record was included.
+`src/derived/topic-normalization-patterns.tsv`, `src/derived/video-segments/topics.json`, and the affected authored shard topic arrays are updated. Existing consumers accepted the revised data without further process changes. No synchronizer run was necessary because every canonical record was included.
 
-The repository owner can run `C:\Program Files\nodejs\npm.cmd run generate:site-data` to refresh generated site data. Archive generation, Astro, Pagefind, site builds, processing logs, schedules, and public prose were left untouched.
+Archive generation, Astro, Pagefind, site builds, processing logs, schedules, and public prose were left untouched during the taxonomy pass. The subsequently requested `npm run check` completed on 2026-09-08: all 282 tests and source checks passed, the archive was regenerated, and Astro reported zero errors, warnings and hints.
