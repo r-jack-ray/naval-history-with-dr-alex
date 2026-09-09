@@ -3,6 +3,7 @@
   "topics": [
     "age-of-sail",
     "battle-of-copenhagen",
+    "combined-arms",
     "diplomacy",
     "grand-strategy",
     "historical-simulations",
@@ -11,53 +12,109 @@
     "napoleonic-warfare",
     "naval-historiography",
     "naval-strategy",
-    "naval-warfare"
+    "naval-warfare",
+    "war-finance"
   ],
   "segments": [
     {
       "slug": "james-goldrick-naval-historian",
       "title": "Remembering Admiral James Goldrick",
-      "start": "3:03",
+      "start": "3:13",
       "end": "3:48",
       "topics": [
         "australian-naval-history",
         "james-goldrick",
         "naval-historiography"
       ],
-      "body": "Before the campaign begins, the stream pauses to remember Admiral James Goldrick, an Australian admiral and noted naval historian. The tribute gives equal weight to his scholarship and his personal kindness. It also mentions a memorial included at the end of another video. This short remembrance introduces Goldrick's professional reputation and the kindness remembered by a fellow historian.",
+      "body": "James Goldrick is remembered as an Australian admiral and a noted naval historian. Alex Clarke recalls his personal kindness with particular affection. A short memorial appears at the end of the day's recorded video.",
       "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
       "evidence": [
         {
-          "start": "3:03",
+          "start": "3:13",
           "end": "3:48",
-          "note": "James Goldrick, an Australian admiral and noted naval historian, is remembered for his kindness."
+          "note": "James Goldrick's naval career, historical scholarship, and personal kindness are remembered."
         }
       ],
       "kind": "notable_point",
-      "summary": "Before the campaign, the stream remembers Australian admiral and naval historian James Goldrick, with particular emphasis on his kindness."
+      "summary": "A remembrance of Australian admiral and naval historian James Goldrick gives particular attention to his personal kindness."
     },
     {
       "slug": "blockade-port-trade-vulnerability",
       "title": "A blockade exposes a brittle trade network",
       "start": "11:42",
-      "end": "13:04",
+      "end": "15:30",
       "topics": [
         "commerce-warfare",
+        "historical-simulations",
         "maritime-trade",
         "naval-blockade",
-        "ports"
+        "ports",
+        "war-finance"
       ],
-      "body": "A blockade at Bristol appears to eliminate nearly all campaign trade income despite Britain possessing commercial ports at Liverpool, Greenwich, Newcastle, and in Scotland. The apparent bottleneck raises the question of why the wider port network cannot reroute that trade. Naval pressure here works through access to a port rather than territorial conquest. The game's unusually centralized trade-routing mechanic should still be distinguished from the greater redundancy suggested by the ports visible on the map.",
+      "body": "A small blockade at Bristol appears to eliminate the campaign's trade income despite commercial ports at Liverpool, Greenwich, Newcastle, and in Scotland. The other ports seem unable to reroute the interrupted trade, making the game's dependence on Bristol difficult to explain. To keep the army rather than disband units, taxes are raised to their maximum. Rebellion is anticipated, and worker strikes follow. The naval interruption creates a financial and domestic problem within the simulation.",
       "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
       "evidence": [
         {
           "start": "11:42",
           "end": "13:04",
           "note": "A blockade of Bristol removes trade income despite several other British commercial ports."
+        },
+        {
+          "start": "14:37",
+          "end": "15:30",
+          "note": "Maximum taxes preserve the army after the income shock, with rebellion anticipated and worker strikes reported."
         }
       ],
       "kind": "notable_point",
-      "summary": "A small blockading force collapses campaign income and prompts a discussion of how maritime trade is routed through ports."
+      "summary": "A blockade disrupts the game's trade income, forcing maximum taxes to maintain the army and prompting concern about unrest."
+    },
+    {
+      "slug": "merchant-ships-and-trade-protection",
+      "title": "Merchant income and the warships needed to protect it",
+      "start": "29:12",
+      "end": "30:24",
+      "topics": [
+        "historical-simulations",
+        "maritime-trade",
+        "naval-blockade",
+        "naval-strategy",
+        "war-finance"
+      ],
+      "body": "Trade with France is being blockaded while the campaign faces another projected deficit. Money had gone into trading ships in the hope that their earnings would buy more warships. The blockade makes that investment sequence difficult to sustain because the expected revenue is interrupted. The immediate regret is that more of the earlier spending should have gone into warships.",
+      "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
+      "evidence": [
+        {
+          "start": "29:12",
+          "end": "30:24",
+          "note": "Blockaded French trade and a projected deficit prompt regret over buying trading ships to finance future warship construction."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Interrupted trade exposes the risk in buying merchant ships to finance a larger navy before that commerce has adequate protection."
+    },
+    {
+      "slug": "naval-concentration-against-selected-targets",
+      "title": "Concentrating heavy ships against selected targets",
+      "start": "32:34",
+      "end": "33:23",
+      "topics": [
+        "force-concentration",
+        "historical-simulations",
+        "naval-tactics",
+        "sixth-rates",
+        "third-rates"
+      ],
+      "body": "The fleet is ordered into line with a plan to concentrate against selected enemy ships. Sixth rates receive the smaller vessels at the back of the Spanish fleet, identified as a sloop and a brig. The heavier opponents are each assigned two third rates. This game battle plan reserves the larger ships for engagements where concentrated firepower is expected to matter most.",
+      "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
+      "evidence": [
+        {
+          "start": "32:34",
+          "end": "33:23",
+          "note": "Sixth rates take the enemy sloop and brig individually, while pairs of third rates concentrate on the remaining targets."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "A fleet battle plan assigns small enemy vessels to sixth rates while concentrating pairs of third rates against stronger opponents."
     },
     {
       "slug": "panama-imperial-chokepoint",
@@ -70,17 +127,40 @@
         "military-logistics",
         "panama"
       ],
-      "body": "Panama's value in the campaign is positional rather than financial. Holding it cuts the Spanish Empire's American territories into two operational areas and forces troops moving between them to pass the occupying force. That makes the province a barrier to reinforcement as well as a base for further operations. Control of a narrow transit zone can disrupt an imperial system even when the territory itself produces little revenue.",
+      "body": "Panama's value in the campaign is positional rather than financial. Holding it cuts the Spanish Empire's American territories into two operational areas. Armies moving to reinforce either side must pass the occupying position. Control of the narrow transit zone can therefore obstruct reinforcement even though the territory produces little revenue.",
       "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
       "evidence": [
         {
           "start": "41:34",
           "end": "42:07",
-          "note": "Taking Panama divides Spain's American empire and forces reinforcing armies to march past the occupying position."
+          "note": "In the game campaign, Panama divides Spain's American territories and places the occupying army across the route of reinforcements."
         }
       ],
       "kind": "notable_point",
-      "summary": "A campaign decision illustrates why control of Panama could obstruct reinforcement between the Spanish Empire's territories."
+      "summary": "Holding Panama in the campaign places an occupying army across Spain's reinforcement route between its American territories."
+    },
+    {
+      "slug": "artillery-guards-and-maneuver-force",
+      "title": "Protecting artillery while keeping troops free to manoeuvre",
+      "start": "43:31",
+      "end": "46:10",
+      "topics": [
+        "artillery",
+        "combined-arms",
+        "historical-simulations",
+        "terrain"
+      ],
+      "body": "The game position is arranged with troops covering the artillery's front and rear. Three units receive the specific task of guarding the guns, while another force is placed centrally so it can manoeuvre. The centre of the town is secured as the enemy advances toward the artillery on the hill. The guns have a dedicated guard while other troops remain available to respond elsewhere.",
+      "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
+      "evidence": [
+        {
+          "start": "43:31",
+          "end": "46:10",
+          "note": "Troops protect the artillery from the front and rear, a separate force takes a central manoeuvre position, and the enemy advances toward the guns on the hill."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "A town defence separates the artillery guard from a centrally placed manoeuvre force as the enemy advances toward the guns."
     },
     {
       "slug": "east-indiaman-warship-silhouette",
@@ -94,7 +174,7 @@
         "historical-simulations",
         "sloops"
       ],
-      "body": "The game labels the vessel an East Indiaman, but its model does not look like one. The type should resemble a fourth-rate warship 'in disguise,' whereas the vessel on screen looks more like a brig or sloop. The comparison concerns ship categories and silhouettes rather than a claim that a merchantman was literally a rated warship. The simulation names the right kind of vessel while visually blurring the historical distinction between a large trading ship and smaller sailing craft.",
+      "body": "An East Indiaman is expected to look like a fourth-rate warship 'in disguise'. The game's trading vessel instead looks more like a brig or sloop. Its label and apparent size therefore suggest different kinds of ship. The criticism concerns the game's representation of an East Indiaman's appearance.",
       "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
       "evidence": [
         {
@@ -104,7 +184,31 @@
         }
       ],
       "kind": "notable_point",
-      "summary": "The game's trade-ship model helps distinguish the expected appearance of an East Indiaman from the smaller profile of a brig or sloop."
+      "summary": "The game's East Indiaman is criticised for resembling a small brig or sloop instead of the expected fourth-rate-like trading ship."
+    },
+    {
+      "slug": "sequencing-overseas-campaigns",
+      "title": "Finishing the American campaign before expanding into India",
+      "start": "55:15",
+      "end": "56:13",
+      "topics": [
+        "grand-strategy",
+        "historical-simulations",
+        "imperial-strategy",
+        "india",
+        "strategic-planning"
+      ],
+      "body": "An army is already available for a possible invasion of India, with Mysore and Satara considered as targets. The intended sequence is to remove Spain from America and then defeat the American faction before beginning that campaign. Expansion toward Russia is another possibility. The decision becomes more urgent because the Indian power has reached the European map and is judged to be growing too strong. These are priorities within the game's counterfactual campaign.",
+      "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
+      "evidence": [
+        {
+          "start": "55:15",
+          "end": "56:13",
+          "note": "Potential Indian targets are weighed against unfinished campaigns in America and concern about an Indian power expanding onto the European map."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "A prepared army creates an opportunity in India, but the campaign postpones that offensive while watching another power's growing reach."
     },
     {
       "slug": "grand-strategy-joined-up-thinking",
@@ -116,7 +220,7 @@
         "imperial-strategy",
         "strategic-planning"
       ],
-      "body": "Spain's poor coordination leads to an unusually direct definition of grand strategy: 'joined-up thinking.' Its wars, diplomacy, and troop movements repeatedly work against one another instead of forming a coherent plan. The phrase ties separate military and political decisions to the state-level purpose they are meant to serve. It offers a practical definition that applies to both the game campaign and historical statecraft.",
+      "body": "Grand strategy receives a plain definition here: 'joined-up thinking'. Spain's conduct in the campaign is criticised for lacking it. The judgment concerns how the campaign is being directed as a whole, rather than the outcome of an individual battle.",
       "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
       "evidence": [
         {
@@ -126,40 +230,115 @@
         }
       ],
       "kind": "notable_point",
-      "summary": "Spain's disconnected campaign decisions lead to a plain-language definition of grand strategy as 'joined-up thinking.'"
+      "summary": "Criticism of Spain's campaign decisions leads to a plain-language definition of grand strategy as 'joined-up thinking'."
     },
     {
-      "slug": "game-rules-versus-age-of-sail-practice",
-      "title": "Game rules versus age-of-sail practice",
-      "start": "1:35:17",
-      "end": "1:35:47",
+      "slug": "fixed-defences-direction-of-attack",
+      "title": "Fixed defences and the direction of attack",
+      "start": "1:01:33",
+      "end": "1:04:29",
+      "topics": [
+        "artillery",
+        "combined-arms",
+        "historical-simulations",
+        "terrain"
+      ],
+      "body": "In the game battle, the defenders have placed their guns and prepared positions to face an approach the attacking army is not using. Attacking troops assemble elsewhere, leaving those gun positions badly oriented. The defenders then leave their works and form in the valley while their artillery remains exposed. The attacking cavalry is directed along higher ground for cover, although one heavy cavalry unit takes the low route.",
+      "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
+      "evidence": [
+        {
+          "start": "1:01:33",
+          "end": "1:04:29",
+          "note": "Enemy guns and prepared defences face a different approach, troops abandon those positions for the valley, and attacking cavalry is directed along covered high ground."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Defenders abandon prepared positions that face the wrong approach, leaving their artillery exposed while the attackers use higher ground."
+    },
+    {
+      "slug": "cavalry-strike-artillery-reserve",
+      "title": "Attacking artillery while keeping a cavalry reserve",
+      "start": "1:06:20",
+      "end": "1:10:46",
+      "topics": [
+        "artillery",
+        "cavalry",
+        "combined-arms",
+        "historical-simulations"
+      ],
+      "body": "The plan in this game battle sends four mounted units against the artillery and keeps a fifth in a covering position. The guns must be eliminated before the cavalry attacks the rest of the army. Because the artillery position is dangerous to approach, the attack depends on speed and timing while the covering unit waits for an order to charge anyone who interferes. A captured position in the town later gives the cavalry somewhere to recover before moving again.",
+      "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
+      "evidence": [
+        {
+          "start": "1:06:20",
+          "end": "1:07:16",
+          "note": "Four mounted units are assigned to attack the artillery while a fifth covers them and waits to counter interference."
+        },
+        {
+          "start": "1:10:24",
+          "end": "1:10:46",
+          "note": "A captured town position gives the cavalry time to recover."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Four mounted units attack the enemy guns while a fifth covers the operation and waits to intercept interference."
+    },
+    {
+      "slug": "sailing-into-wind-during-pursuit",
+      "title": "Using the wind and distance during a pursuit",
+      "start": "1:21:31",
+      "end": "1:22:18",
       "topics": [
         "age-of-sail",
-        "fleet-composition",
         "historical-simulations",
         "naval-tactics"
       ],
-      "body": "Repeated naval battles require relearning tactics around the game's rules. A force of one third rate and four fifth rates should make a much weaker enemy surrender quickly, yet the simulated ships collide and fail to coordinate. Later, the game encourages treating a fleet action like a set of individual cavalry engagements and concentrates third rates where a historical force in this setting would be expected to rely more on fourth and fifth rates. The contrast between historical plausibility and game mechanics is explicit. A simulation can introduce real ship categories and tactical problems while rewarding behavior and force structures that should not be mistaken for period practice.",
+      "body": "Turning into the wind is considered as a way to make pursuit harder in the game. It would also slow the escaping ship, but the existing separation gives it a distance advantage. Keeping the Spanish ships in pursuit has another attraction: they are not earning money while they follow. The manoeuvre is considered for both its effect on the chase and the time it takes away from the enemy's trade.",
+      "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
+      "evidence": [
+        {
+          "start": "1:21:31",
+          "end": "1:22:18",
+          "note": "Sailing into the wind would slow both sides, while distance favours the escaping ship and pursuit keeps Spanish ships from earning money."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "A pursuit raises a tradeoff between sailing against the wind, preserving separation, and keeping enemy ships away from earning trade income."
+    },
+    {
+      "slug": "game-rules-versus-age-of-sail-practice",
+      "title": "Concentrating naval fire under the game's rules",
+      "start": "1:26:37",
+      "end": "1:35:51",
+      "topics": [
+        "age-of-sail",
+        "fifth-rates",
+        "galleons",
+        "historical-simulations",
+        "naval-tactics",
+        "third-rates"
+      ],
+      "body": "The opposing galleon is expected to offer serious resistance, while the other vessels should be defeated quickly. A squadron of one third rate and four fifth rates ought to make such a weak opponent give up rapidly under the age-of-sail comparison offered here. The immediate plan concentrates fire on the admiral's ship, whose guns provide most of the enemy's ability to resist. In the game, the attacking ships obstruct one another and form a five-ship pile-up. The battle is eventually won at the cost of a ship. Successful play requires relearning tactics around the game's behaviour, even when the ship types suggest an overwhelming historical advantage.",
       "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
       "evidence": [
         {
           "start": "1:26:37",
           "end": "1:30:21",
-          "note": "One third rate and four fifth rates should hold an advantage, yet the simulated ships collide during the battle."
+          "note": "The plan concentrates a third rate and four fifth rates on the main enemy fighting ship, but the attacking vessels obstruct one another."
+        },
+        {
+          "start": "1:33:31",
+          "end": "1:33:39",
+          "note": "The naval battle is won with one ship lost."
         },
         {
           "start": "1:35:17",
-          "end": "1:35:47",
-          "note": "Successful play requires following game rules rather than actual age-of-sail battle rules."
-        },
-        {
-          "start": "4:03:20",
-          "end": "4:03:50",
-          "note": "The game's individual-ship engagements resemble cavalry combat, while its third-rate-heavy fleet contrasts with the expected historical mix of fourth and fifth rates."
+          "end": "1:35:51",
+          "note": "Successful play requires adapting to game rules rather than expected age-of-sail tactics."
         }
       ],
       "kind": "notable_point",
-      "summary": "Repeatedly awkward fleet actions separate the tactics and fleet composition rewarded by the game from plausible age-of-sail practice."
+      "summary": "A strong squadron plans to silence the enemy's principal fighting ship, but collisions complicate a battle expected to be easy."
     },
     {
       "slug": "ceylon-imperial-forward-position",
@@ -174,22 +353,17 @@
         "maratha-confederacy",
         "sri-lanka"
       ],
-      "body": "The campaign's occupation of Ceylon, identified with modern Sri Lanka, is intended to prevent the Maratha Confederacy from dominating the whole Indian theatre. The island is defensible and can support a substantial army for future operations. Later, additional warships head into the Indian Ocean because the local fleet is too weak to answer a possible Spanish deployment. An island base can serve as a denial position and forward foothold only when maritime communications and regional sea power can support it.",
+      "body": "The occupation of Ceylon, identified as modern Sri Lanka, is intended to check the Maratha Confederacy's control of the Indian theatre. Preventing another power from dominating an entire continent is one of the campaign's stated aims. The island provides a defensible position for a substantial army. That army still has little artillery and is expected to acquire more for its next operations.",
       "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
       "evidence": [
         {
           "start": "1:36:47",
           "end": "1:37:44",
-          "note": "Control of Ceylon checks Maratha dominance and provides a defensible base for later operations."
-        },
-        {
-          "start": "3:08:53",
-          "end": "3:09:08",
-          "note": "Reinforces the Indian Ocean fleet because it is too weak to answer a possible Spanish deployment."
+          "note": "Ceylon checks Maratha dominance and holds a substantial army whose artillery remains limited."
         }
       ],
       "kind": "notable_point",
-      "summary": "Ceylon shows how a defensible island position can check a dominant continental power and support later operations."
+      "summary": "Ceylon provides a defensible foothold against Maratha dominance, although the army stationed there still needs more artillery."
     },
     {
       "slug": "bomb-vessels-copenhagen-1801",
@@ -199,10 +373,12 @@
       "topics": [
         "battle-of-copenhagen",
         "bomb-vessels",
+        "historical-simulations",
+        "horatio-nelson",
         "naval-bombardment",
         "royal-navy"
       ],
-      "body": "Bomb vessels were used to bombard ports and cities after an enemy fleet had been dealt with. At Copenhagen, getting them into firing position was central to the British plan because their mortars could threaten the city. The game gives the vessel mortars but does not place them as they would have been historically, when part of the rig could be removed to accommodate their firing arrangement. Their role connects naval control with coercive diplomacy, while the model reveals a technical limit in the game's representation of the ship type.",
+      "body": "At Copenhagen in 1801, Nelson's objective was to put bomb vessels within range of the city. The threat of mortar bombardment was considered sufficient to decide the contest once they reached their firing positions. Bomb vessels attacked ports and cities from the sea after the enemy fleet had been defeated. Empire: Total War gives its bomb vessel mortars, but their placement differs from the historical arrangement described here, which involved taking down a mast. Within the game, combining the vessel with third rates is considered an awkward fit.",
       "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
       "evidence": [
         {
@@ -215,9 +391,33 @@
       "summary": "A game battle prompts a concise explanation of why British bomb vessels mattered at Copenhagen in 1801."
     },
     {
+      "slug": "infantry-support-artillery-friendly-fire",
+      "title": "Supporting artillery without shooting friendly troops",
+      "start": "2:06:02",
+      "end": "2:07:07",
+      "topics": [
+        "artillery",
+        "combined-arms",
+        "friendly-fire",
+        "historical-simulations",
+        "infantry-tactics"
+      ],
+      "body": "The preferred arrangement in the game keeps infantry immediately behind the artillery, ready to move forward when the guns come under attack. The infantry must be angled carefully so its fire does not hit the gun crews. Canister creates another danger when friendly troops enter the artillery's field of fire. As infantry and cavalry cross in front of the guns, firing must stop to avoid shooting them in the back.",
+      "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
+      "evidence": [
+        {
+          "start": "2:06:02",
+          "end": "2:07:07",
+          "note": "Infantry protects the artillery, but firing angles and troop movements require precautions against friendly fire."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Keeping infantry behind the guns provides protection, but their angle and movement require careful control of friendly fire."
+    },
+    {
       "slug": "age-of-sail-galleons-and-rated-warships",
       "title": "Galleons against rated warships",
-      "start": "2:09:39",
+      "start": "2:08:54",
       "end": "2:10:20",
       "topics": [
         "age-of-sail",
@@ -227,36 +427,59 @@
         "ships-of-the-line",
         "third-rates"
       ],
-      "body": "A galleon might plausibly give a fourth- or fifth-rate warship a fair fight. A third-rate ship of the line, however, represents a much more unequal opponent. The comparison concerns combat power rather than a simple progression of ship labels. Rated warships were distinct fighting categories rather than interchangeable age-of-sail vessels.",
+      "body": "Two Spanish galleons are treated as capable opponents, but a larger British fleet is approaching in the campaign. The comparison gives a galleon a possible fair fight against a fourth or fifth rate. Against a third rate, the balance is much more unequal. The immediate plan is to withdraw the valuable ships already engaged while the larger force approaches.",
       "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
       "evidence": [
         {
-          "start": "2:09:39",
+          "start": "2:08:54",
           "end": "2:10:20",
-          "note": "A galleon might match a fourth or fifth rate but would face a much more unequal contest against a third rate."
+          "note": "A withdrawal is planned for valuable ships ahead of a larger fleet, followed by a comparison of galleons against fourth, fifth, and third rates."
         }
       ],
       "kind": "notable_point",
       "summary": "A fleet encounter prompts a compact comparison between galleons and third-, fourth-, and fifth-rate warships."
     },
     {
+      "slug": "damaging-spanish-ports-buys-time",
+      "title": "Damaging ports while Spain expands in Europe",
+      "start": "2:16:50",
+      "end": "2:17:58",
+      "topics": [
+        "historical-simulations",
+        "naval-strategy",
+        "ports",
+        "spain"
+      ],
+      "body": "Spain now controls France in the campaign, creating an unexpected strategic problem. The immediate response is to damage its ports so that it cannot act freely while a larger response is considered. A direct attack on Spain may become necessary because France has largely retreated into Italy. These events belong to the game scenario, whose territorial changes can depart sharply from history.",
+      "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
+      "evidence": [
+        {
+          "start": "2:16:50",
+          "end": "2:17:58",
+          "note": "Damage to Spanish ports is intended to restrict action while a response to Spain's conquest of France is considered."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Spain's conquest of France prompts an immediate attack on its ports while Britain decides whether to intervene on land."
+    },
+    {
       "slug": "british-infantry-confidence-against-cavalry",
       "title": "Could cavalry reputation shape infantry confidence?",
       "start": "2:29:14",
-      "end": "2:30:08",
+      "end": "2:30:13",
       "topics": [
         "british-army",
         "cavalry",
         "infantry-tactics",
         "napoleonic-warfare"
       ],
-      "body": "Watching British cavalry pursue a fleeing enemy raises a deliberately speculative question about how the arm's reputation may have affected infantry confidence. Soldiers accustomed to criticizing their own cavalry might have been less inclined to regard enemy cavalry as irresistible. The suggestion is explicitly offered for debate rather than as an established explanation. It shows how battlefield behavior can invite a cultural hypothesis while the evidence still requires the claim to remain provisional.",
+      "body": "One speculative explanation for British infantry confidence against cavalry is that experience of their own cavalry encouraged them to underestimate the arm. If British cavalry supplied a poor baseline, enemy cavalry might also have seemed less frightening. That perception could be misplaced when facing more capable opponents. The proposed connection remains an idea for debate.",
       "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
       "evidence": [
         {
           "start": "2:29:14",
-          "end": "2:30:08",
-          "note": "Speculates that British infantry familiarity with their own cavalry's reputation may have reduced their fear of enemy cavalry, and explicitly presents the suggestion as an idea for debate."
+          "end": "2:30:13",
+          "note": "A speculative connection between familiarity with British cavalry's poor reputation and infantry confidence against enemy cavalry."
         }
       ],
       "kind": "notable_point",
@@ -287,50 +510,104 @@
     },
     {
       "slug": "british-cavalry-reputation-and-terrain",
-      "title": "British cavalry, reputation, and terrain",
+      "title": "British cavalry's difficulty stopping a charge",
       "start": "2:35:13",
-      "end": "2:40:46",
+      "end": "2:35:35",
       "topics": [
         "british-army",
         "cavalry",
-        "combined-arms",
-        "napoleonic-warfare",
-        "terrain"
+        "napoleonic-warfare"
       ],
-      "body": "British cavalry could be very effective on the charge but had a reputation for continuing beyond the point where it remained useful. Heavy losses also removed capable officers from service. Officers such as Paget should not simply be dismissed as bad cavalry commanders because deployment skill and the suitability of the chosen ground mattered greatly. A capable officer could still produce poor results by choosing terrain or circumstances unsuited to cavalry action. The discussion closes with a reminder that mixed-order tactics were more common than simplified accounts often suggest.",
+      "body": "British cavalry could be effective on the charge but had a reputation for failing to stop. Some of its best officers also spent long periods out of service for various reasons. Those interruptions complicate the assessment of an arm whose battlefield aggression could exceed useful limits.",
       "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
       "evidence": [
         {
           "start": "2:35:13",
-          "end": "2:40:46",
-          "note": "British cavalry's charge discipline, officer reputation, terrain, and frequent mixed-order tactics complicate simple judgments of its performance."
+          "end": "2:35:35",
+          "note": "British cavalry's charging ability is qualified by poor stopping discipline and capable officers' absence for unspecified reasons."
         }
       ],
       "kind": "notable_point",
-      "summary": "A discussion of British cavalry cautions against judging officers and formations without considering charge discipline, terrain, and employment."
+      "summary": "British cavalry's effective charges are weighed against difficulty stopping and interruptions in the service of capable officers."
     },
     {
       "slug": "french-infantry-adaptability",
       "title": "French infantry beyond the attack column",
       "start": "2:36:39",
-      "end": "2:37:30",
+      "end": "2:40:46",
       "topics": [
         "attack-columns",
         "french-army",
         "infantry-tactics",
+        "mixed-order-tactics",
         "napoleonic-warfare"
       ],
-      "body": "French infantry are often remembered chiefly for massed fighting and attacks in column. That image is incomplete because elite and line formations could be highly capable, and French infantry were among the most adaptable troops of the period. Their ability to use more than one formation or fighting method matters more than the single image preserved in popular memory. The passage separates a memorable tactical stereotype from the broader battlefield record.",
+      "body": "French infantry are often remembered chiefly for massed fighting and attacks in column. Elite and line formations could be highly capable, and French infantry are assessed as among the most adaptable units of the period. They used more methods than their popular reputation for column attacks suggests. Mixed-order tactics were also more common than is often assumed.",
       "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
       "evidence": [
         {
           "start": "2:36:39",
           "end": "2:37:30",
           "note": "French infantry was more adaptable and capable than its popular association with attack columns suggests."
+        },
+        {
+          "start": "2:40:43",
+          "end": "2:40:46",
+          "note": "Mixed-order tactics were more common than is often assumed."
         }
       ],
       "kind": "notable_point",
       "summary": "French infantry were more adaptable than the familiar image of massed attack columns suggests."
+    },
+    {
+      "slug": "prussian-presence-american-target-priority",
+      "title": "Why remove the Prussian foothold first?",
+      "start": "2:38:31",
+      "end": "2:38:41",
+      "topics": [
+        "grand-strategy",
+        "historical-simulations",
+        "prussia"
+      ],
+      "body": "From the American faction's position in the game, the proposed priority is to attack the Prussians. Removing that foothold would eliminate a power oriented towards land warfare from the Americas.",
+      "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
+      "evidence": [
+        {
+          "start": "2:38:31",
+          "end": "2:38:41",
+          "note": "Attacking the Prussians is proposed to remove a power oriented towards land warfare from the Americas."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "A short campaign assessment prioritises removing Prussia as a land-war opponent in the Americas."
+    },
+    {
+      "slug": "cavalry-officer-reputation-and-ground",
+      "title": "Cavalry officers, reputation, and the choice of ground",
+      "start": "2:38:53",
+      "end": "2:43:31",
+      "topics": [
+        "british-army",
+        "cavalry",
+        "napoleonic-warfare",
+        "terrain"
+      ],
+      "body": "An officer could know how to deploy cavalry yet choose battles that did not suit it. The choice of ground could limit what skilful handling achieved. Erskine appears in a later argument that British officers sometimes receive a worse reputation than they deserve. How the ground and cavalry were used had a large effect on their success.",
+      "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
+      "evidence": [
+        {
+          "start": "2:38:53",
+          "end": "2:39:22",
+          "note": "Deployment skill did not guarantee that the chosen battle or ground suited cavalry; the officer's name is unclear."
+        },
+        {
+          "start": "2:43:11",
+          "end": "2:43:31",
+          "note": "Erskine's reputation prompts a defence of British cavalry officers based on terrain and employment."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "An assessment of cavalry command distinguishes deployment skill from the choice of battles and terrain."
     },
     {
       "slug": "spanish-empire-habsburg-bonaparte",
@@ -343,13 +620,13 @@
         "imperial-strategy",
         "spanish-empire"
       ],
-      "body": "In this interpretation, the Spanish Empire had become complacent, and the identity of its ruling dynasty mattered. The empire was substantially formed under the Habsburgs, whose approach is contrasted with the policies associated with Bonaparte rule. Imperial policy appears as a product of political leadership rather than an automatic continuation of inherited territory. A change of ruling house can alter the priorities of an established imperial system.",
+      "body": "In this interpretation, the Spanish Empire became complacent after its formation under the Habsburgs. Bonaparte rule is associated with a different approach to empire-building. The contrast is stated briefly, without examples of the policies involved.",
       "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
       "evidence": [
         {
           "start": "2:48:47",
           "end": "2:49:06",
-          "note": "Habsburg formation of the Spanish Empire differed from the imperial policy associated with Bonaparte rule."
+          "note": "The interpretation contrasts Habsburg empire-building with Bonaparte policy, using the dynasty names as spoken."
         }
       ],
       "kind": "notable_point",
@@ -366,7 +643,7 @@
         "imperial-strategy",
         "spanish-empire"
       ],
-      "body": "A viewer points out that destroying Spain's European state can make its colonies fragment, offering a much faster route than conquering them individually. The answer acknowledges the mechanic but favors a more historical style of play. The campaign therefore prioritizes taking Spanish possessions across the Americas before attacking the metropolitan power, with Ceylon as a separate intervention against Maratha dominance. The exchange distinguishes a simulation's optimal shortcut from a self-imposed historical approach, which produces different strategic constraints and learning opportunities.",
+      "body": "Eliminating Spain's European state can make its colonies fragment in the game, offering a faster route than conquering them individually. The personal preference here is for a more historical style of campaign, despite the extra time it takes. Spanish possessions in the Americas are therefore the first objective. Ceylon is an exception, taken because the Maratha Confederacy has become so powerful.",
       "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
       "evidence": [
         {
@@ -378,11 +655,11 @@
       "kind": "qa",
       "summary": "The campaign rejects a fast state-collapse mechanic in favor of a more historical, colony-first approach.",
       "question": "Why not eliminate Spain in Europe and let its colonies break away?",
-      "answerShort": "Because the campaign follows a more historical, colony-first approach instead of exploiting the faster state-collapse mechanic."
+      "answerShort": "The campaign follows a personal preference for a more historical, colony-first approach, despite the extra time it takes."
     },
     {
       "slug": "continental-territory-land-war-commitment",
-      "title": "Why continental territory can trap a maritime power",
+      "title": "Continental territory and land-war commitments",
       "start": "2:56:30",
       "end": "2:57:05",
       "topics": [
@@ -391,7 +668,7 @@
         "grand-strategy",
         "imperial-strategy"
       ],
-      "body": "Spain's conquest of France makes occupying Paris difficult to avoid even though the campaign has steered clear of European territory. Acquiring a continental possession creates obligations that can pull Britain into sustained land warfare. The choice pits an immediate opportunity against a maritime power's freedom to concentrate on overseas objectives. Territorial commitments can redirect force structure, spending, and strategy long after the initial conquest.",
+      "body": "Spain's conquest of France makes occupying Paris difficult to avoid even though the campaign has steered clear of European territory. A large army has consequently been assembled in Britain. Taking continental territory is expected to draw Britain into a land war, which is why the campaign has delayed such acquisitions. The immediate need to respond to Spain conflicts with that earlier restraint.",
       "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
       "evidence": [
         {
@@ -401,7 +678,7 @@
         }
       ],
       "kind": "notable_point",
-      "summary": "The prospect of taking Paris prompts a warning that continental possessions can pull a maritime empire into an expensive land war."
+      "summary": "The prospect of taking Paris challenges a campaign strategy that avoids European possessions and the land wars they are expected to bring."
     },
     {
       "slug": "diplomacy-outpaces-strategic-plan",
@@ -428,6 +705,62 @@
       "summary": "An attempt to loosen Franco-Spanish relations succeeds too well, leaving Spain dominant in western Europe and forcing an unwanted strategic pivot."
     },
     {
+      "slug": "artillery-bait-draws-infantry-downhill",
+      "title": "Drawing infantry downhill with exposed artillery",
+      "start": "3:02:37",
+      "end": "3:08:51",
+      "topics": [
+        "artillery",
+        "historical-simulations",
+        "infantry-tactics",
+        "terrain"
+      ],
+      "body": "The outnumbered defenders would be better served by holding a defensive position, and they have placed obstacles that threaten cavalry. Artillery offers a tempting target that can draw them out. The plan is to have the guns in position before the enemy attacks and then spring a trap, but the defenders reach the artillery too soon. Even so, the lure makes them leave the hill. In the simulated engagement, avoiding an uphill attack comes at the cost of exposing the guns before the trap is ready.",
+      "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
+      "evidence": [
+        {
+          "start": "3:02:37",
+          "end": "3:03:49",
+          "note": "The outnumbered force has prepared a defensive position with obstacles dangerous to cavalry."
+        },
+        {
+          "start": "3:06:21",
+          "end": "3:06:48",
+          "note": "The defenders catch the artillery before the intended trap is ready."
+        },
+        {
+          "start": "3:08:28",
+          "end": "3:08:51",
+          "note": "Tempting artillery draws the defenders downhill and avoids attacking their original position."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "An attempt to lure defenders off a hill shows both the attraction of artillery as bait and the risk of mistiming the trap."
+    },
+    {
+      "slug": "indian-ocean-fleet-reinforcement",
+      "title": "Reinforcing a fleet before a threat arrives",
+      "start": "3:08:53",
+      "end": "3:09:08",
+      "topics": [
+        "fleet-deployment",
+        "historical-simulations",
+        "indian-ocean",
+        "naval-strategy"
+      ],
+      "body": "Additional ships are sent to reinforce the Indian Ocean fleet in the campaign. Its present size is considered inadequate, with concern about what Spain might send into the theatre. The reinforcement responds to a possible deployment rather than a Spanish force already identified there.",
+      "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
+      "evidence": [
+        {
+          "start": "3:08:53",
+          "end": "3:09:08",
+          "note": "The Indian Ocean fleet is reinforced because its size is inadequate for a possible Spanish deployment."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Concern about a possible Spanish deployment prompts reinforcement of an undersized Indian Ocean fleet."
+    },
+    {
       "slug": "arctic-winter-naval-actions",
       "title": "Could fleets fight in Arctic winter?",
       "start": "3:09:15",
@@ -438,7 +771,7 @@
         "fleet-operations",
         "naval-warfare"
       ],
-      "body": "Full fleet actions in Arctic winter conditions were rare, while single-ship actions occurred more often. Geography changes the answer because fleets in the inner Baltic operated in wintry conditions with some regularity. The scale of the action and the precise waters therefore matter as much as the season. Weather constraints vary by theatre rather than applying uniformly across naval warfare.",
+      "body": "Full fleet actions in Arctic winter conditions were rare, while single-ship actions occurred more often. Fleets in the inner Baltic operated in wintry conditions with greater regularity. The distinction depends on both the scale of the action and the waters involved. An Arctic fleet action and a smaller engagement in winter conditions are different comparisons.",
       "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
       "evidence": [
         {
@@ -447,10 +780,59 @@
           "note": "Arctic winter naval actions occurred rarely at fleet scale, while the Baltic theatre saw wintry operations more regularly."
         }
       ],
-      "kind": "qa",
-      "summary": "A viewer question distinguishes uncommon Arctic winter fleet actions from more frequent Baltic operations in wintry conditions.",
-      "question": "Were naval battles fought in winter Arctic conditions?",
-      "answerShort": "Full fleet actions were rare in Arctic winter conditions, though single-ship actions occurred; wintry fleet operations were more regular in the inner Baltic."
+      "kind": "notable_point",
+      "summary": "Uncommon Arctic winter fleet actions are distinguished from single-ship actions and more frequent Baltic operations in wintry conditions."
+    },
+    {
+      "slug": "poodles-roman-origin-and-war-dog-units",
+      "title": "Poodles, Roman origins, and war-dog units",
+      "start": "3:11:40",
+      "end": "3:12:40",
+      "topics": [
+        "historical-simulations",
+        "roman-empire",
+        "war-dogs"
+      ],
+      "body": "Alex Clarke places poodles' origins in the Austrian region during the Roman Empire and says that Romans used them. This follows a remark about a modification that apparently supplies poodles as war dogs when playing France, which he finds odd given that claimed origin. War dogs also appear in the original Rome: Total War and Rome II.",
+      "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
+      "evidence": [
+        {
+          "start": "3:11:40",
+          "end": "3:12:40",
+          "note": "Alex Clarke's claim about poodles' Austrian and Roman origins accompanies a comparison of war-dog units in a modification and the Rome games."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "A comment about war-dog units connects a game modification with a brief claim about poodles and the Roman Empire."
+    },
+    {
+      "slug": "religious-colleges-public-order",
+      "title": "Religious colleges and control of conquered territory",
+      "start": "3:12:50",
+      "end": "3:14:19",
+      "topics": [
+        "historical-simulations",
+        "imperial-strategy",
+        "jesuits",
+        "protestantism",
+        "religion-and-war"
+      ],
+      "body": "Spanish Jesuit colleges repeatedly appear in conquered territory during the campaign. Protestant institutions are preferred because they make the population happier and easier to control in the game. The same public-order incentive explains the Spanish building choices that prompt the complaint. Religious infrastructure is part of holding territory as the campaign expands.",
+      "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
+      "evidence": [
+        {
+          "start": "3:12:50",
+          "end": "3:12:54",
+          "note": "Spanish construction of Jesuit colleges prompts a complaint."
+        },
+        {
+          "start": "3:14:01",
+          "end": "3:14:19",
+          "note": "Religious institutions improve population happiness and control in the game, explaining both sides' college construction."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Jesuit and Protestant colleges become competing tools for keeping the population content and maintaining control in the game campaign."
     },
     {
       "slug": "infantry-squares-firepower-cavalry",
@@ -464,7 +846,7 @@
         "infantry-tactics",
         "napoleonic-warfare"
       ],
-      "body": "Two shrinking Spanish squares stand before British line infantry while cavalry waits nearby. In this game battle, a square can bring only about a quarter to at most half its muskets to bear in that direction, whereas the line infantry can fire its whole front. The cavalry does not need to charge because its presence forces the opposing infantry to retain the anti-cavalry formation and accept the firepower disadvantage. The exact proportions belong to the simulated engagement, but the exchange clearly illustrates how combined-arms pressure can make a protective formation tactically costly.",
+      "body": "Two shrinking Spanish squares stand before British line infantry while cavalry waits nearby. In this game battle, a square can bring only about a quarter to at most half its muskets to bear in that direction, whereas the line infantry can fire its whole front. The cavalry does not need to charge because its presence forces the opposing infantry to retain the anti-cavalry formation and accept the firepower disadvantage. These proportions describe the simulated engagement.",
       "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
       "evidence": [
         {
@@ -488,22 +870,39 @@
         "operational-strategy",
         "philadelphia"
       ],
-      "body": "A large British army is expensive, and further expansion depends on breaking the American field forces nearby. The plan is to destroy one army while another British force pins nearby troops, opening a hole in the opponent's wider force structure. Philadelphia matters within the scenario because it functions as the American technology hub, so taking the city would remove more than territory. The later assault is explicitly treated as a gamble: the defenders ought to be able to hold, but a rapid capture would save time and a failed first attempt would only delay the operation. The costly victory, followed by preparations for a counterattack, shows that strategic value does not remove operational risk. Philadelphia's technology role and the campaign events belong to the game rather than an actual historical operation.",
+      "body": "Maintaining the large British army is expensive, and further expansion depends on dealing with the American forces nearby. The plan is to destroy one army while another force pins nearby troops, opening a hole in the opponent's wider force structure. Philadelphia is a priority because it functions as the American technology hub in this game. The Americans have also acquired Prussian territory, helping explain the size of the army that must be dealt with next.",
       "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
       "evidence": [
         {
           "start": "3:45:43",
           "end": "3:47:04",
-          "note": "The plan accepts the cost of a large army to pin enemy forces, break the opposing force structure, and capture Philadelphia as the scenario's technology hub."
-        },
-        {
-          "start": "4:16:13",
-          "end": "4:25:22",
-          "note": "The assault is a calculated gamble whose main cost of failure is delay; after victory, the damaged force prepares for an expected counterattack."
+          "note": "The plan targets the American field armies and Philadelphia's research capability, with Prussian territorial losses helping explain American strength."
         }
       ],
       "kind": "notable_point",
-      "summary": "Philadelphia's in-game research role makes the city a capability center worth gambling on despite the nearby American armies."
+      "summary": "Philadelphia's research role makes it an urgent campaign objective, alongside the need to break the American field armies."
+    },
+    {
+      "slug": "trade-agreement-refusals-in-game",
+      "title": "Questioning refusals of profitable trade agreements",
+      "start": "3:52:37",
+      "end": "3:52:49",
+      "topics": [
+        "diplomacy",
+        "historical-simulations",
+        "maritime-trade"
+      ],
+      "body": "A personal assessment of the game's diplomacy questions why countries refuse trade agreements when relations are merely indifferent. In that situation, the financial benefits are considered sufficient reason to accept. This is a preference about the simulation's decisions, without a wider explanation of historical trade diplomacy.",
+      "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
+      "evidence": [
+        {
+          "start": "3:52:37",
+          "end": "3:52:49",
+          "note": "A personal view favours profitable trade agreements between indifferent countries in the game."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Refused trade agreements prompt the view that financial benefits should carry more weight when relations are indifferent."
     },
     {
       "slug": "portugal-operational-access-war-finance",
@@ -519,13 +918,13 @@
         "spain",
         "war-finance"
       ],
-      "body": "The falling treasury is linked to the cost of maintaining a very large army. With Spain's forces concentrated elsewhere, Madrid is considered, but Portugal becomes the more reachable coastal objective because an enemy ship blocks a direct landing near the Spanish capital. In the game scenario, Portugal would offer a secure foothold and better control of the surrounding area. Conquering Spain's American possessions has also consumed enough money that further expansion requires reorienting forces and rebuilding finances. Operational reach depends on whether the campaign can pay to maintain its forces after rapid conquest.",
+      "body": "Maintaining the large army is drawing down the campaign treasury. With Spanish forces concentrated elsewhere, Madrid is considered, but Portugal is easier to reach because an enemy ship obstructs the direct landing route towards Madrid and another fleet complicates access. Portugal would also provide another college and a foothold judged fairly easy to secure. Conquering Spain's possessions in the Americas has consumed enough money that further expansion requires reorienting forces and rebuilding finances. The next objective must fit both the available maritime access and the cost of sustaining the army.",
       "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
       "evidence": [
         {
           "start": "3:53:04",
           "end": "3:54:43",
-          "note": "High army upkeep and Spain's troop concentration make Portugal an accessible maritime target and secure foothold."
+          "note": "High army upkeep and Spain's troop concentration make Portugal an accessible foothold with the additional benefit of a college."
         },
         {
           "start": "3:55:32",
@@ -535,6 +934,123 @@
       ],
       "kind": "notable_point",
       "summary": "Planning an attack on Portugal connects coastal access and enemy troop concentration with the financial pause required after rapid conquest."
+    },
+    {
+      "slug": "game-fleets-cavalry-engagements",
+      "title": "When game fleet actions resemble cavalry combat",
+      "start": "4:03:20",
+      "end": "4:03:51",
+      "topics": [
+        "age-of-sail",
+        "fleet-composition",
+        "historical-simulations",
+        "naval-tactics"
+      ],
+      "body": "Individual ships in this game encounter are handled almost like separate cavalry units. The nearby fleet contains numerous third rates. The historical comparison instead recalls fourth and fifth rates in the corresponding setting. Both the tactical analogy and the difference in ship mix qualify how the game represents naval warfare.",
+      "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
+      "evidence": [
+        {
+          "start": "4:03:20",
+          "end": "4:03:51",
+          "note": "Game ship engagements resemble individual cavalry actions, while a fleet of third rates differs from the historical comparison with fourth and fifth rates."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "The game's ship engagements invite cavalry-like tactics, alongside a fleet composition that differs from the historical comparison."
+    },
+    {
+      "slug": "siege-assault-artillery-defensive-position",
+      "title": "Artillery exposure and a defender abandoning the position",
+      "start": "4:07:47",
+      "end": "4:14:13",
+      "topics": [
+        "artillery",
+        "historical-simulations",
+        "infantry-tactics",
+        "siege-warfare"
+      ],
+      "body": "During this game assault, an infantry position is criticised for giving enemy artillery a clear view. Some troops are deliberately committed to hold the defenders' attention, with their loss accepted as part of the attack. Artillery and mortars are treated as having similar ranges here, making the earlier care over mortar placement relevant. The defenders repeatedly leave their position to attack, making the assault easier when their objective is to hold.",
+      "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
+      "evidence": [
+        {
+          "start": "4:07:47",
+          "end": "4:07:56",
+          "note": "An infantry position exposes troops to enemy artillery."
+        },
+        {
+          "start": "4:11:16",
+          "end": "4:11:43",
+          "note": "Diversionary troops hold attention, and artillery and mortars are treated as having similar ranges in the game."
+        },
+        {
+          "start": "4:12:53",
+          "end": "4:14:13",
+          "note": "Defenders make the assault easier by leaving the position they should hold."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "An assault uses diversionary troops while defenders make the attack easier by leaving a position they should hold."
+    },
+    {
+      "slug": "assault-risk-commanders-rallying-troops",
+      "title": "Accepting a costly assault to save campaign time",
+      "start": "4:16:13",
+      "end": "4:25:22",
+      "topics": [
+        "command-and-control",
+        "historical-simulations",
+        "military-leadership",
+        "morale",
+        "operational-strategy"
+      ],
+      "body": "The assault is attempted with defeat expected because an early success would save time, while a slower campaign remains acceptable. The loss of the general leaves the army unable to rally troops when defeat again appears possible. The eventual victory costs many troops, consistent with the expectation that the current commanders cannot inspire them as well as the previous general. An American recapture is anticipated after the assault, and the following movements account for that response. These calculations and events belong to the game campaign.",
+      "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
+      "evidence": [
+        {
+          "start": "4:16:13",
+          "end": "4:16:31",
+          "note": "The defenders were expected to hold, making the assault a gamble."
+        },
+        {
+          "start": "4:19:43",
+          "end": "4:20:19",
+          "note": "No general remains to rally troops, and the risk of defeat was accepted to attempt a faster capture."
+        },
+        {
+          "start": "4:24:18",
+          "end": "4:25:22",
+          "note": "Commanders' weaker inspiration explains expected casualties, and subsequent movements anticipate an American recapture."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "An attack attempted with defeat expected becomes a costly victory, complicated by the loss of the general and an anticipated counterattack."
+    },
+    {
+      "slug": "defensive-fences-fields-of-fire",
+      "title": "Fences, fields of fire, and gaps in a defensive line",
+      "start": "4:27:05",
+      "end": "4:30:34",
+      "topics": [
+        "fortifications",
+        "historical-simulations",
+        "infantry-tactics"
+      ],
+      "body": "Fences narrow the troops' field of fire in this game deployment, so leaving them out of part of the position gives a wider arc. The approaching enemy later aims at a gap near prepared defences. Infantry is placed there to block the route. The placement of obstacles must account for both firing space and openings the attacker can use.",
+      "sourcePath": "src/transcripts/txt/2023-03-27_T18-00-24_empire-total-war-twitch-stream-7-march-2023_g0c4uPA9yPc.txt",
+      "evidence": [
+        {
+          "start": "4:27:05",
+          "end": "4:27:17",
+          "note": "Omitting fences widens the field of fire in the game deployment."
+        },
+        {
+          "start": "4:30:13",
+          "end": "4:30:34",
+          "note": "The enemy approaches a gap near prepared defences, where infantry is placed to block it."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "A defensive deployment leaves out fences to widen the field of fire, then places infantry where attackers approach a gap."
     }
   ]
 }
