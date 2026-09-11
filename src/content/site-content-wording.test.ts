@@ -81,6 +81,47 @@ test("meta-content frames include this and the variants", () => {
   );
 });
 
+test("lecture references prompt contextual review in every segment text field", () => {
+  const video = sampleQaVideo(
+    "The lecture examines the gap between public reputation and wartime conduct.",
+    "This lecture covers wartime conduct.",
+  );
+  const segment = video.segments[0]!;
+  segment.title = "The lecture and wartime conduct";
+  if (segment.kind === "qa") {
+    segment.question = "What does the lecture establish?";
+    segment.answerShort = "THE LECTURE discusses wartime conduct.";
+  }
+  segment.evidence[0]!.note = "The lecture introduces four incidents from 1939-1940.";
+
+  assert.deepEqual(scanCuratedVideoFileMechanicalWording("example.json", video), []);
+  const findings = scanCuratedVideoFileMechanicalWording("example.json", video, { includeReview: true });
+  assert.deepEqual(findings.map(({ field, match }) => ({ field, match })), [
+    { field: "title", match: "The lecture" },
+    { field: "summary", match: "This lecture" },
+    { field: "body", match: "The lecture" },
+    { field: "question", match: "the lecture" },
+    { field: "answerShort", match: "THE LECTURE" },
+    { field: "evidence.note", match: "The lecture" },
+  ]);
+  assert.equal(findings.every(({ ruleId }) => ruleId === "lecture-reference"), true);
+  assert.equal(findings.every(({ confidence }) => confidence === "review"), true);
+  assert.equal(findings.every(({ unconditionalError }) => !unconditionalError), true);
+  assert.equal(findings.at(-1)?.evidenceIndex, 0);
+});
+
+test("lecture review catches references without a reporting verb and respects word boundaries", () => {
+  const video = sampleVideo(
+    "After the lecture, officers returned to sea. The\nlecture was delivered in 1905. " +
+    "The lecturer's notes survive alongside lecture notes from another course.",
+  );
+  const findings = scanCuratedVideoFileMechanicalWording("example.json", video, { includeReview: true });
+  assert.deepEqual(findings.map(({ ruleId, match }) => ({ ruleId, match })), [
+    { ruleId: "lecture-reference", match: "the lecture" },
+    { ruleId: "lecture-reference", match: "The lecture" },
+  ]);
+});
+
 test("workflow collocations remain judgment-required", () => {
   const video = sampleVideo("The content processing stage remains unfinished.");
 

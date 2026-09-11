@@ -600,6 +600,9 @@ Remove every literal "the transcript" occurrence. Inspect remaining transcript-r
 findings and retain them only when a speaker is discussing a transcript as subject matter.
 Host-attribution findings identify each affected field and evidence-note index;
 review the full shard in small segment batches and preserve necessary speaker ownership.
+Every "the lecture" or "this lecture" reference is a contextual review candidate,
+regardless of the following verb. Check the whole sentence and nearby notes for
+rigid narration or repetition; retain natural event references and useful scope wording.
 
 Options:
   --repo-root <path>

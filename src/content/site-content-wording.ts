@@ -290,6 +290,14 @@ const deterministicRules: readonly SiteContentWordingRule[] = [
     guidance: "Check whether the sentence can name the subject and takeaway directly; retain watch-point framing when it genuinely helps the reader navigate the video.",
   },
   {
+    id: "lecture-reference",
+    confidence: "review",
+    fields: allFields,
+    pattern: /\b(?:the|this)\s+lecture\b/giu,
+    captureGroup: null,
+    guidance: "Review the whole sentence and nearby notes for rigid or repetitive narration, especially \"the lecture examines\" or \"the lecture discusses\". Event references such as \"during the lecture\" or \"the lecture was delivered\" can be natural; \"the lecture covers\" can describe scope when useful. These are contextual examples, not approved or banned verb lists. Prefer the supported subject and takeaway directly when clearer, preserving uncertainty and necessary attribution. Do not mechanically substitute another narrator label.",
+  },
+  {
     id: "context-sensitive-workflow-term",
     confidence: "review",
     fields: allFields,
