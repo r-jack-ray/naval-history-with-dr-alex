@@ -2,6 +2,7 @@
 /// <reference lib="dom" />
 /// <reference lib="dom.iterable" />
 
+import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { access, readdir, readFile, stat } from "node:fs/promises";
 import { createServer, type Server } from "node:http";
@@ -239,6 +240,7 @@ async function main(): Promise<void> {
     reportAssessments(assessments, options.verbose);
     reportMetrics(calculateMetrics(assessments));
     failIfAssessmentsFail(assessments, "Rendered search ranking");
+    await validateRenderedCardSummaries(page, "Panavia Tornado");
 
     if (options.observeTopicSample > 0) {
       const publicTopics = topics.filter((topic) => publicTopicSlugs.has(topic.slug));
@@ -906,6 +908,78 @@ async function runUiQuery(page: Page, query: string, maxResults: number): Promis
       matchedMetaFields: [],
     })),
   };
+}
+
+async function validateRenderedCardSummaries(page: Page, query: string): Promise<void> {
+  const snapshot = await page.evaluate(async (input) => {
+    const form = document.querySelector<HTMLFormElement>("[data-site-search-form]");
+    const searchInput = document.querySelector<HTMLInputElement>("[data-site-search-input]");
+    const status = document.querySelector<HTMLElement>("[data-site-search-status]");
+    const results = document.querySelector<HTMLElement>("[data-site-search-results]");
+    if (!form || !searchInput || !status || !results) {
+      throw new Error("The rendered search controls are incomplete.");
+    }
+
+    const startedAt = performance.now();
+    searchInput.value = input.query;
+    form.requestSubmit();
+    while (
+      results.getAttribute("aria-busy") !== "false"
+      || (status.textContent ?? "").startsWith("Searching for")
+      || results.querySelector("article") === null
+    ) {
+      if (performance.now() - startedAt > 60_000) {
+        throw new Error(`Timed out while checking card summaries for ${input.query}.`);
+      }
+      await new Promise((resolvePromise) => window.setTimeout(resolvePromise, 10));
+    }
+
+    const normalize = (value: string | null | undefined) => value?.replace(/\s+/gu, " ").trim() ?? "";
+    const cards = [...results.querySelectorAll<HTMLElement>("article")].flatMap((article) => {
+      const link = article.querySelector<HTMLAnchorElement>("h2 a");
+      if (!link) return [];
+      const pathname = new URL(link.href, window.location.href).pathname;
+      if (
+        !pathname.startsWith(`${input.sitePrefix}/segments/`)
+        && !pathname.startsWith(`${input.sitePrefix}/videos/`)
+      ) {
+        return [];
+      }
+      return [{
+        title: normalize(link.textContent),
+        url: link.href,
+        actual: normalize(article.querySelector(":scope > p")?.textContent),
+      }];
+    });
+    const comparisons = await Promise.all(cards.map(async (card) => {
+      const response = await fetch(card.url);
+      if (!response.ok) {
+        return {...card, expected: "", error: `detail page returned ${response.status}`};
+      }
+      const document_ = new DOMParser().parseFromString(await response.text(), "text/html");
+      const expected = normalize(document_
+        .querySelector<HTMLMetaElement>('meta[data-pagefind-meta="summary[content]"]')
+        ?.content);
+      return {
+        ...card,
+        expected,
+        error: expected ? "" : "detail page has no Pagefind summary metadata",
+      };
+    }));
+    return comparisons;
+  }, {query, sitePrefix});
+
+  assert.ok(snapshot.length > 0, `${query} must render at least one video or time-note card.`);
+  const failures = snapshot.filter((card) => card.error || card.actual !== card.expected);
+  assert.deepEqual(
+      failures,
+      [],
+      `Search cards must render their explicit summary metadata: ${failures
+        .slice(0, 5)
+        .map((card) => `${card.title}: ${card.error || JSON.stringify(card.actual)}`)
+        .join(" | ")}`,
+  );
+  console.log(`${snapshot.length} rendered video and time-note cards use explicit summary metadata.`);
 }
 
 function assessCase(rankingCase: RankingCase, queryResult: QueryResult): CaseAssessment {

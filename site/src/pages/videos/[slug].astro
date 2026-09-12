@@ -57,6 +57,7 @@ const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${c
     <meta data-pagefind-meta="videoId[content]" content={video.videoId} />
     <meta data-pagefind-meta="videoDateAt[content]" content={video.videoDateAt} />
     <meta data-pagefind-meta="videoDateLabel[content]" content={video.videoDateLabel} />
+    <meta data-pagefind-meta="summary[content]" content={metadata.description} />
     <meta data-pagefind-filter="video[content]" content={video.title} />
     {video.topics.map((topic) => <meta data-pagefind-filter="topic[content]" content={topic.title} />)}
     <script type="application/ld+json" set:html={videoObjectJsonLd} is:inline></script>

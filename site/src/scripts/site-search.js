@@ -608,7 +608,7 @@
       videoDateLabel,
       summary: type === "topic"
         ? (topicSlug ? firstText(topicSummaries[topicSlug]) : "")
-        : firstText(data.plain_excerpt) || firstText(data.excerpt),
+        : firstText(meta.summary),
       topics: textValues(filters.topic),
     };
   };
