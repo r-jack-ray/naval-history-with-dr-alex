@@ -7,6 +7,10 @@ export const curatedTopicSchema = z.strictObject({
   title: nonEmptyStringSchema,
   summary: z.string().optional(),
   aliases: z.array(nonEmptyStringSchema).optional(),
+  furtherReading: z.array(z.strictObject({
+    label: nonEmptyStringSchema,
+    url: z.url({protocol: /^https$/u}),
+  })).optional(),
 });
 
 export const curatedTopicStoreSchema = z.strictObject({

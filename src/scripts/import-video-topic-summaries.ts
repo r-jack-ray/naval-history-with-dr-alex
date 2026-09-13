@@ -213,6 +213,7 @@ function topicWithSummary(topic: CuratedTopicSeed, summary: string): CuratedTopi
     title: topic.title,
     ...(summary === "" ? {} : {summary}),
     ...(topic.aliases === undefined ? {} : {aliases: [...topic.aliases]}),
+    ...(topic.furtherReading === undefined ? {} : {furtherReading: topic.furtherReading.map((link) => ({...link}))}),
   };
 }
 

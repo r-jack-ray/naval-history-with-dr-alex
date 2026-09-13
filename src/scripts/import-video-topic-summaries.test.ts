@@ -16,7 +16,7 @@ test("imports only changed topic summaries and reports slugs that cannot be upda
   const topicsInput = join(directory, "topics.json");
   await writeFile(topicsInput, `${JSON.stringify({
     topics: [
-      {slug: "alpha", title: "Alpha", summary: "Old summary.", aliases: ["A"]},
+      {slug: "alpha", title: "Alpha", summary: "Old summary.", aliases: ["A"], furtherReading: [{label: "Reference", url: "https://example.org/alpha"}]},
       {slug: "beta", title: "Beta"},
       {slug: "conflict", title: "Conflict", summary: "Keep this."},
       {slug: "gamma", title: "Gamma", summary: "Remove this."},
@@ -48,7 +48,7 @@ test("imports only changed topic summaries and reports slugs that cannot be upda
       topicsInput,
   );
   assert.deepEqual(store.topics, [
-    {slug: "alpha", title: "Alpha", summary: "New summary.", aliases: ["A"]},
+    {slug: "alpha", title: "Alpha", summary: "New summary.", aliases: ["A"], furtherReading: [{label: "Reference", url: "https://example.org/alpha"}]},
     {slug: "beta", title: "Beta", summary: "Added summary."},
     {slug: "conflict", title: "Conflict", summary: "Keep this."},
     {slug: "gamma", title: "Gamma"},

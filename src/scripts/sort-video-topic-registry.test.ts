@@ -20,6 +20,7 @@ test("sorts topic records by slug and each alias list in natural order", async (
         slug: "series-9",
         title: "Series 9",
         summary: "Alpha summary.",
+        furtherReading: [{label: "Reference", url: "https://example.org/series-9"}],
       }, {
         slug: "series-100",
         title: "Series 100",
@@ -42,10 +43,11 @@ test("sorts topic records by slug and each alias list in natural order", async (
       topicCount: 3,
     });
     const sorted = JSON.parse(await readFile(registryPath, "utf8")) as {
-      topics: Array<{ aliases?: string[]; slug: string; summary?: string }>;
+      topics: Array<{ aliases?: string[]; furtherReading?: {label: string; url: string}[]; slug: string; summary?: string }>;
     };
     assert.deepEqual(sorted.topics.map((topic) => topic.slug), ["series-9", "series-54", "series-100"]);
     assert.equal(sorted.topics[0]?.summary, "Alpha summary.");
+    assert.deepEqual(sorted.topics[0]?.furtherReading, [{label: "Reference", url: "https://example.org/series-9"}]);
     assert.equal(sorted.topics[1]?.summary, undefined);
     assert.equal(sorted.topics[2]?.summary, undefined);
     assert.deepEqual(sorted.topics[1]?.aliases, ["series 9", "series 54", "series 100"]);

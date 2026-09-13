@@ -49,6 +49,7 @@ test("propagates manually curated topic metadata while keeping topic refs compac
       title,
       summary: "4.5-inch Gun watch points and related historical context.",
       aliases: ["4.5 inch gun", "4 5 inch gun"],
+      furtherReading: [{label: "Reference", url: "https://example.org/4-5-inch-gun"}],
     },
   ];
   input.seed.videos[0]!.topics = [slug];
@@ -69,6 +70,7 @@ test("propagates manually curated topic metadata while keeping topic refs compac
     title,
     summary: "4.5-inch Gun watch points and related historical context.",
     aliases: ["4.5 inch gun", "4 5 inch gun"],
+    furtherReading: [{label: "Reference", url: "https://example.org/4-5-inch-gun"}],
     videoCount: 1,
     segmentCount: 2,
   });

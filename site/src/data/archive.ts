@@ -110,6 +110,7 @@ export interface ArchiveTopic {
   title: string;
   summary?: string;
   aliases: string[];
+  furtherReading?: {label: string; url: string}[];
   videoCount: number;
   segmentCount: number;
 }

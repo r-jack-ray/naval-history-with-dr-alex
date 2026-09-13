@@ -1,29 +1,31 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-09-11T21:15:06.132Z",
+  "updatedAt": "2026-09-13T10:02:01.133Z",
   "inputPath": "src/channel/episodes.json",
   "outputRoot": "src/transcripts",
   "requestDelayMs": 5000,
   "retryFailed": false,
   "force": false,
-  "pendingHandoffTxtPaths": [],
+  "pendingHandoffTxtPaths": [
+    "src/transcripts/txt/2026-09-12_T19-04-29_air-defence-at-sea-from-air-ships-in-1906-to-drones-in-2026-and-everything-in-between_GdSmILLiJvg.txt"
+  ],
   "stats": {
     "inputVideoCount": 2188,
-    "skippedStoredCount": 2165,
-    "skippedDeferredCount": 7,
+    "skippedStoredCount": 0,
+    "skippedDeferredCount": 0,
     "skippedShortDurationCount": 0,
     "deferredCounts": {
-      "upcoming": 7,
+      "upcoming": 0,
       "live_in_progress": 0,
       "processing": 0,
       "metadata_missing": 0,
       "invalid_metadata": 0
     },
-    "skippedPreviousFailureCount": 15,
+    "skippedPreviousFailureCount": 0,
     "attemptedCount": 1,
     "fetchedCount": 1,
     "failedCount": 0,
-    "pendingCount": 15,
+    "pendingCount": 2187,
     "totalFailureCount": 15
   },
   "failures": [

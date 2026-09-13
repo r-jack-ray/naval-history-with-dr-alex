@@ -160,6 +160,7 @@ export interface SiteTopic {
   title: string;
   summary?: string;
   aliases: string[];
+  furtherReading?: {label: string; url: string}[];
   videoCount: number;
   segmentCount: number;
 }
@@ -339,6 +340,12 @@ export function buildSiteArchiveData(input: {
     };
     if (typeof topic.summary === "string" && topic.summary.trim().length > 0) {
       siteTopic.summary = topic.summary;
+    }
+    if (topic.furtherReading?.length) {
+      siteTopic.furtherReading = topic.furtherReading.map((link) => ({
+        label: link.label,
+        url: link.url,
+      }));
     }
     return siteTopic;
   });

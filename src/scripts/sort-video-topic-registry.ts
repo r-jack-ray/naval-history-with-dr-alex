@@ -35,6 +35,7 @@ function sortTopic(topic: CuratedTopicSeed): CuratedTopicSeed {
         ? {}
         : {summary: topic.summary}),
     ...(topic.aliases === undefined ? {} : {aliases: [...topic.aliases].sort(compareText)}),
+    ...(topic.furtherReading === undefined ? {} : {furtherReading: topic.furtherReading.map((link) => ({...link}))}),
   };
 }
 

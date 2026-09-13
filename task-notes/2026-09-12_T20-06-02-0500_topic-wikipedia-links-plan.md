@@ -1,0 +1,61 @@
+# Topic Wikipedia links for Further reading
+
+Timestamp: 2026-09-12T20:06:02-05:00
+
+Status: Phase 1 research pass completed on 2026-09-13, with documented identity and scope holds. Phases 2 and 3 have not started.
+
+This plan covers Wikipedia links for topic slugs that identify individual ships, ship classes, specific weapon systems, and people. The companion [topic Wikipedia link tracker](2026-09-12_T20-06-02-0500_topic-wikipedia-links.tsv) is the working inventory and approval record. It preserves the existing `hms-victoria-1859` registry link shown in the topic page example. That URL has not been audited or approved by this plan. Phase 1 has added candidate links, all pending review.
+
+The canonical topic records are in `src/derived/video-segments/topics.json`. Their optional `furtherReading` entries already reach the topic page, so phase 3 should update approved registry records rather than change the page layout. The registry has no authoritative entity-type field. `reports/video-topic-usage.tsv` can help discover candidates, but its entity labels include false positives and omissions. Confirm scope and referent from the current registry and relevant authored context before treating any candidate as eligible. Keep the registry slug unchanged.
+
+Working scope for the resumed pass includes fictional ships, classes, systems, and characters, along with named proposed or cancelled ship designs. Systems coverage follows the tracker's existing named radar, sonar, fire-control, and combat-system entries, including named tactical combat-data systems. Generic technologies, broad weapon categories, aircraft, land vehicles, propulsion engines, places, and shore establishments are outside these four groups. Mixed identities and uncertain programme or design-family scope remain explicit holds. A named class or system variant can use its parent article when that article explicitly covers the variant in substance. A namesake biography, event, film, franchise, list, or unrelated class article does not substitute for an exact entity article.
+
+## Tracker fields
+
+Each TSV row has one exact registry slug. `topic title` and `topic type` help reviewers identify the referent; the type is a working classification. `wikipedia link` holds one direct HTTPS article URL or stays blank. `link audited` is `no` or `yes`. `approval status` is `pending`, `approved`, or `rejected`; an audited link can be rejected. Use `review note` for ambiguity, a missing suitable article, or the reason for rejection. The trailing `comments` column holds flexible research details, source pointers, search limitations, and follow-up actions. Comments supplement the review note and never change the audit or approval state. A blank URL or a pre-existing registry link never implies approval. Keep one row per slug and record competing article candidates in its note until a reviewer chooses one.
+
+## Model and effort for later subtasks
+
+These are suggested Codex settings for this workload, based on the [current OpenAI model catalog](https://developers.openai.com/api/docs/models). Confirm that each model and effort setting is available when a phase is assigned. Give agents disjoint slug batches and the exact current registry context. Subagents return findings; one coordinator applies TSV changes in order. Use a different reviewer from the phase 1 researcher for each phase 2 audit.
+
+| Subtask | AI model | Reasoning effort | Assignment boundary |
+| --- | --- | --- | --- |
+| Phase 1, classify candidate topics and find likely articles for clear identities | `gpt-5.6-terra` | `medium` | Read-only research on one bounded slug batch; return exact slug, proposed URL, and identity evidence. |
+| Phase 1, resolve same-name ships, unclear classes, weapon variants, or people | `gpt-5.6-sol` | `high` | Research only the ambiguous rows escalated from the first pass; leave unresolved matches pending. |
+| Phase 2, independently audit routine proposed matches | `gpt-5.6-sol` | `medium` | Open each article and compare it with the current topic and relevant authored context; recommend approval or rejection with a reason. |
+| Phase 2, adjudicate conflicting or historically difficult matches | `gpt-6-astra` | `high` | Review the competing identities and the first review's evidence independently; keep uncertainty visible if the sources do not resolve it. |
+
+Use deterministic checks for slug uniqueness, TSV values, and URL syntax. The phase 3 registry edit, validation, and progress counts belong to one coordinator using `gpt-5.6-sol` at `high` effort; do not assign concurrent agents to write the shared TSV or `topics.json`. Raise effort only for a specific unresolved case, then record why it needs another review. These assignments do not authorize starting a phase.
+
+## Phase 1: Inventory topics and fetch candidate links
+
+- [x] Reconcile current topic slugs against the four scoped entity groups. Use the usage report and slug patterns only as discovery aids; include eligible topics they miss and exclude generic subjects, roles, broad weapon types, and misclassified records.
+- [x] For each eligible slug, check the current title, summary, aliases, and relevant topic usage to identify the exact ship, class, system, or person. Leave ambiguous identities unresolved in `review note`.
+- [x] Find a direct English Wikipedia article for that exact referent where one exists. Record its URL in the TSV. Record `no suitable article found` in `review note` when applicable, leaving the URL blank. Check existing `furtherReading` links as candidates, including `hms-victoria-1859`; do not count their presence as a new search or audit.
+- [x] Keep every new or changed URL at `link audited = no` and `approval status = pending`. Do not update the registry in this phase.
+
+Progress, 2026-09-13: 6,914 provisional scoped rows saved to the TSV: 2,605 individual ships, 1,443 ship classes, 610 specific weapon systems, and 2,256 people (including fictional characters). There are 5,758 candidate URLs, including the one pre-existing registry link, and 1,156 blank URLs. The blanks comprise 727 completed searches with no suitable article found and 429 identity or scope holds. All rows remain `link audited = no` and `approval status = pending`; this task has made no registry edits. Each research assignment has a recorded outcome. Documented holds retain blank URLs and need the stated identity, source, or scope decision before a link can be selected.
+
+Previous pause, 2026-09-12: Batched English Wikipedia Action API title checks initially returned HTTP 429 for 7 batches, and variant-title checks returned HTTP 429 for 17 batches. Slower retries completed those batches. Subsequent article-search calls against both desktop and mobile Wikipedia API endpoints continued to return HTTP 429. The plan recorded 62 outstanding Wikidata identities. A separate web-search fallback saved results for 1,000 of 1,154 then-unlinked slugs before remote lookup was stopped at the user's direction. These fallback results remain candidate evidence, and a blank URL does not mean that no suitable article exists.
+
+Resumption, 2026-09-13: Reconciliation found 66 outstanding QIDs in the saved data. All 66 were fetched after a paced retry of a transient Wikidata maxlag response. English Wikipedia title, redirect, and article-introduction checks resumed in small paced batches. Current source context is used to distinguish namesakes, mixed ship identities, fictional referents, and specific class or weapon variants. Record `no suitable article found` only after an actual completed search and identity review. Recheck any candidate affected by a redirect or variant before phase 2. Keep all results pending until the independent phase 2 audit.
+
+Coverage and evidence: all 29,576 current registry records received title, alias, and summary screening. The initial omitted-topic review covered 2,962 records; three further bounded reviews covered the remaining 22,751. The 19 records appended concurrently were screened separately. Likely entities and ambiguous matches received authored-context review, with the exact reading depth and exclusions recorded in the [phase 1 evidence file](2026-09-12_T20-06-02-0500_topic-wikipedia-links-phase1-evidence.json). That file preserves research findings by exact slug, article and alternative-source URLs, authored references, and coverage limits. The tracker comments give a convenient first source pointer and additional research details. This pass did not read every transcript or independently audit every complete article. The `galactar` source-type question remains recorded in the coverage evidence without assigning it to a guessed entity group.
+
+Validation: all 6,914 rows round-trip through the eight-column TSV contract, have unique exact registry slugs and current titles, and use allowed types and pending audit states. Recorded authored references resolve to their source files and topic usages. Populated URLs pass syntax checks and have no conflict with the page metadata observed during research. A concurrent task appended 19 registry records without modifying previous records and changed one authored shard. The coordinator reconciled those additions and refreshed identity checks for its 62 affected tracked topics before accepting the current source fingerprint. This task did not edit canonical topic records, authored shards, generated archives, or processing logs.
+
+## Phase 2: Audit and decide
+
+- [ ] Review every populated URL against the exact current registry topic and, where names collide, the authored video/segment context. Open the article and check its subject, redirects, disambiguation, and whether it is the right vessel, class, weapon system, or person.
+- [ ] Check that the URL is HTTPS, points to a suitable article rather than a search or disambiguation page, and does not duplicate a different `furtherReading` entry already on the topic.
+- [ ] Set `link audited = yes` only after that review. Record `approval status = approved` for an accepted match or `rejected` with a reason in `review note`. Keep unresolved or unreviewed rows at `no` and `pending`. Recheck a changed candidate URL before approving it.
+
+Progress: not started. Audited: 0. Approved: 0. Rejected: 0.
+
+## Phase 3: Add approved links
+
+- [ ] Select only rows with a nonblank `wikipedia link`, `link audited = yes`, and `approval status = approved`. Reconfirm the slug still identifies the reviewed topic and that the approved URL has not changed.
+- [ ] Add `{ "label": "Wikipedia", "url": "..." }` to that topic's `furtherReading` in `src/derived/video-segments/topics.json`. Preserve existing links, summaries, aliases, and unrelated records. Skip an identical existing link rather than duplicating it.
+- [ ] Run the relevant source validation, then verify the approved links on rendered topic pages through the authorized site build workflow. Record applied slugs and any blocked rows here. Do not treat a rejected or pending row as an implementation instruction.
+
+Progress: not started. Applied: 0.

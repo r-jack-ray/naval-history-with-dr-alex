@@ -92,6 +92,20 @@ const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${c
             ))
           }
         </ul>
+        {topic.furtherReading && topic.furtherReading.length > 0 && (
+          <section class="further-reading" aria-labelledby="further-reading-heading">
+            <h2 id="further-reading-heading">Further reading</h2>
+            <ul class="small-card-list">
+              {topic.furtherReading.map((link) => (
+                <li>
+                  <a href={link.url} target="_blank" rel="noopener noreferrer" aria-label={`${link.label} (opens in a new tab)`}>
+                    <strong>{link.label}</strong>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
       </aside>
     </section>
   </main>

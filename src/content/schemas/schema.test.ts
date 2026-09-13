@@ -95,10 +95,18 @@ test("validates the topic store without custom version metadata", () => {
       slug: "destroyers",
       title: "Destroyers",
       aliases: ["tin cans"],
+      furtherReading: [{label: "Reference", url: "https://example.org/destroyers"}],
     }],
   }, "sample topic store");
 
   assert.equal(store.topics[0]?.slug, "destroyers");
+  assert.equal(store.topics[0]?.furtherReading?.[0]?.url, "https://example.org/destroyers");
+  assert.throws(
+      () => parseCuratedTopicStore({
+        topics: [{slug: "destroyers", title: "Destroyers", furtherReading: [{label: "Unsafe", url: "javascript:alert(1)"}]}],
+      }, "invalid topic link"),
+      /furtherReading/u,
+  );
   assert.throws(
       () => parseCuratedTopicStore({
         topics: [
