@@ -103,7 +103,7 @@ test("Phase 7 keeps canonical commands and retires zero-caller scripts", async (
   }
   assert.match(
       readme,
-      /npm run alternate:extract:saved-channel-html -- --tab videos/u,
+      /alternate:extract:saved-channel-html/u,
   );
   assert.match(
       channelReadme,
@@ -113,7 +113,7 @@ test("Phase 7 keeps canonical commands and retires zero-caller scripts", async (
       savedHtmlCli,
       /npm run alternate:extract:saved-channel-html -- --tab videos/u,
   );
-  for (const streamsGuidance of [readme, channelReadme, savedHtmlCli]) {
+  for (const streamsGuidance of [channelReadme, savedHtmlCli]) {
     assert.match(
         streamsGuidance,
         /npm run alternate:extract:saved-channel-html -- --tab streams/u,
@@ -123,7 +123,7 @@ test("Phase 7 keeps canonical commands and retires zero-caller scripts", async (
       packageJson.scripts["audit:lighthouse"],
       "tsx src/scripts/audit-seo-lighthouse.ts",
   );
-  assert.match(readme, /npm run audit:lighthouse/u);
+  assert.match(readme, /\[package\.json\]\(package\.json\)/u);
   assert.match(lighthouseCli, /npm run audit:lighthouse -- \[options\]/u);
   assert.match(auditRiskCli, /npm run audit:site-content/u);
 

@@ -1,15 +1,11 @@
 import assert from "node:assert/strict";
-import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import test from "node:test";
 
 import type { CuratedVideoFileSeed } from "../content/schemas/index.js";
-import {
-  main as searchSiteContentWording,
-  parseArgs,
-  searchCuratedVideoFileWording,
-} from "./search-site-content-wording.js";
+import { main as searchSiteContentWording, parseArgs, searchCuratedVideoFileWording, } from "./search-site-content-wording.js";
 
 test("shard wording search covers every segment text field with word boundaries", () => {
   const video = sampleVideo();
@@ -19,32 +15,32 @@ test("shard wording search covers every segment text field with word boundaries"
     substring: false,
   });
 
-  assert.deepEqual(hits.map(({ field, evidenceIndex, occurrenceCount }) => ({
+  assert.deepEqual(hits.map(({field, evidenceIndex, occurrenceCount}) => ({
     field, evidenceIndex, occurrenceCount,
   })), [
-    { field: "title", evidenceIndex: undefined, occurrenceCount: 1 },
-    { field: "summary", evidenceIndex: undefined, occurrenceCount: 1 },
-    { field: "body", evidenceIndex: undefined, occurrenceCount: 1 },
-    { field: "question", evidenceIndex: undefined, occurrenceCount: 1 },
-    { field: "answerShort", evidenceIndex: undefined, occurrenceCount: 1 },
-    { field: "evidence.note", evidenceIndex: 0, occurrenceCount: 2 },
+    {field: "title", evidenceIndex: undefined, occurrenceCount: 1},
+    {field: "summary", evidenceIndex: undefined, occurrenceCount: 1},
+    {field: "body", evidenceIndex: undefined, occurrenceCount: 1},
+    {field: "question", evidenceIndex: undefined, occurrenceCount: 1},
+    {field: "answerShort", evidenceIndex: undefined, occurrenceCount: 1},
+    {field: "evidence.note", evidenceIndex: 0, occurrenceCount: 2},
   ]);
   assert.equal(hits.reduce((count, hit) => count + hit.occurrenceCount, 0), 7);
   assert.equal(
-    searchCuratedVideoFileWording("example.json", video, {
-      phrases: ["the transcript"],
-      caseSensitive: true,
-      substring: false,
-    }).length,
-    2,
+      searchCuratedVideoFileWording("example.json", video, {
+        phrases: ["the transcript"],
+        caseSensitive: true,
+        substring: false,
+      }).length,
+      2,
   );
   assert.equal(
-    searchCuratedVideoFileWording("example.json", video, {
-      phrases: ["the transcript"],
-      caseSensitive: false,
-      substring: true,
-    }).find(({ field }) => field === "body")?.occurrenceCount,
-    2,
+      searchCuratedVideoFileWording("example.json", video, {
+        phrases: ["the transcript"],
+        caseSensitive: false,
+        substring: true,
+      }).find(({field}) => field === "body")?.occurrenceCount,
+      2,
   );
 
   const excerptVideo = sampleVideo();
@@ -80,11 +76,11 @@ test("shard wording search CLI prints scoped locations and treats matches as dis
   const shardDirectory = join(repoRoot, "src/derived/video-segments");
   const shardRelativePath = "src/derived/video-segments/example.json";
   try {
-    await mkdir(shardDirectory, { recursive: true });
+    await mkdir(shardDirectory, {recursive: true});
     await writeFile(
-      join(repoRoot, shardRelativePath),
-      `${JSON.stringify(sampleVideo(), null, 2)}\n`,
-      "utf8",
+        join(repoRoot, shardRelativePath),
+        `${JSON.stringify(sampleVideo(), null, 2)}\n`,
+        "utf8",
     );
 
     const output = await captureConsole(() => searchSiteContentWording([
@@ -99,8 +95,8 @@ test("shard wording search CLI prints scoped locations and treats matches as dis
     assert.equal(output.result, 0);
     assert.equal(output.errors.length, 0);
     assert.match(
-      output.logs[0] ?? "",
-      /matching-files=1 matching-segments=1 matching-fields=6 matched-occurrences=7 parse-errors=0/u,
+        output.logs[0] ?? "",
+        /matching-files=1 matching-segments=1 matching-fields=6 matched-occurrences=7 parse-errors=0/u,
     );
     assert.match(output.logs.join("\n"), /example\.json#wording-search@1:00 \[qa\/title\]/u);
     assert.match(output.logs.join("\n"), /\[qa\/evidence\[0\]\.note\] occurrences=2/u);
@@ -118,42 +114,42 @@ test("shard wording search CLI prints scoped locations and treats matches as dis
     assert.equal(failed.result, 1);
     assert.match(failed.errors.join("\n"), /parse-errors=1/u);
   } finally {
-    await rm(repoRoot, { recursive: true, force: true });
+    await rm(repoRoot, {recursive: true, force: true});
   }
 });
 
 test("shard wording search CLI requires a phrase and parses search controls", () => {
   assert.throws(() => parseArgs([]), /Provide at least one --phrase/u);
   assert.deepEqual(
-    parseArgs([
-      "--phrase", "the transcript",
-      "--phrase", "the transcript",
-      "--case-sensitive",
-      "--substring",
-      "--summary-only",
-      "--path", "one.json",
-    ]),
-    {
-      repoRoot: ".",
-      segmentsInput: "src/derived/video-segments",
-      paths: ["one.json"],
-      phrases: ["the transcript"],
-      caseSensitive: true,
-      substring: true,
-      summaryOnly: true,
-    },
+      parseArgs([
+        "--phrase", "the transcript",
+        "--phrase", "the transcript",
+        "--case-sensitive",
+        "--substring",
+        "--summary-only",
+        "--path", "one.json",
+      ]),
+      {
+        repoRoot: ".",
+        segmentsInput: "src/derived/video-segments",
+        paths: ["one.json"],
+        phrases: ["the transcript"],
+        caseSensitive: true,
+        substring: true,
+        summaryOnly: true,
+      },
   );
   assert.deepEqual(
-    parseArgs(["--phrase", "The Transcript", "--phrase", "the transcript"])?.phrases,
-    ["The Transcript"],
+      parseArgs(["--phrase", "The Transcript", "--phrase", "the transcript"])?.phrases,
+      ["The Transcript"],
   );
   assert.deepEqual(
-    parseArgs([
-      "--phrase", "The Transcript",
-      "--phrase", "the transcript",
-      "--case-sensitive",
-    ])?.phrases,
-    ["The Transcript", "the transcript"],
+      parseArgs([
+        "--phrase", "The Transcript",
+        "--phrase", "the transcript",
+        "--case-sensitive",
+      ])?.phrases,
+      ["The Transcript", "the transcript"],
   );
 });
 
@@ -198,7 +194,7 @@ async function captureConsole<T>(operation: () => Promise<T>): Promise<{
   try {
     console.log = (...values: unknown[]) => logs.push(values.map(String).join(" "));
     console.error = (...values: unknown[]) => errors.push(values.map(String).join(" "));
-    return { result: await operation(), logs, errors };
+    return {result: await operation(), logs, errors};
   } finally {
     console.log = originalLog;
     console.error = originalError;

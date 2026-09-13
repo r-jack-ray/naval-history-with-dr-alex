@@ -144,8 +144,8 @@ test("CLI excludes empty shards, exposes append-order context, and reports warni
     const warningOutputPath = path.join(root, "warning-output.tsv");
     await mkdir(warningSegments);
     await writeFile(
-      path.join(warningSegments, "explicit.json"),
-      await readFile(path.join(segments, "explicit.json")),
+        path.join(warningSegments, "explicit.json"),
+        await readFile(path.join(segments, "explicit.json")),
     );
     const warningResult = await execFileAsync(process.execPath, [
       "--import", "tsx", path.resolve("src/scripts/rank-video-segment-audit-risk.ts"),

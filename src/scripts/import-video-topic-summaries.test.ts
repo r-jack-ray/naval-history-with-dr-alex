@@ -5,10 +5,7 @@ import { join } from "node:path";
 import test from "node:test";
 
 import { parseCuratedTopicStore } from "../content/schemas/index.js";
-import {
-  formatVideoTopicSummaryImportResult,
-  importVideoTopicSummaries,
-} from "./import-video-topic-summaries.js";
+import { formatVideoTopicSummaryImportResult, importVideoTopicSummaries, } from "./import-video-topic-summaries.js";
 
 test("imports only changed topic summaries and reports slugs that cannot be updated", async () => {
   const directory = await mkdtemp(join(tmpdir(), "topic-summary-import-"));

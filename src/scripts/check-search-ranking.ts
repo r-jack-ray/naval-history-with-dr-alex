@@ -924,10 +924,10 @@ async function validateRenderedCardSummaries(page: Page, query: string): Promise
     searchInput.value = input.query;
     form.requestSubmit();
     while (
-      results.getAttribute("aria-busy") !== "false"
-      || (status.textContent ?? "").startsWith("Searching for")
-      || results.querySelector("article") === null
-    ) {
+        results.getAttribute("aria-busy") !== "false"
+        || (status.textContent ?? "").startsWith("Searching for")
+        || results.querySelector("article") === null
+        ) {
       if (performance.now() - startedAt > 60_000) {
         throw new Error(`Timed out while checking card summaries for ${input.query}.`);
       }
@@ -937,11 +937,13 @@ async function validateRenderedCardSummaries(page: Page, query: string): Promise
     const normalize = (value: string | null | undefined) => value?.replace(/\s+/gu, " ").trim() ?? "";
     const cards = [...results.querySelectorAll<HTMLElement>("article")].flatMap((article) => {
       const link = article.querySelector<HTMLAnchorElement>("h2 a");
-      if (!link) return [];
+      if (!link) {
+        return [];
+      }
       const pathname = new URL(link.href, window.location.href).pathname;
       if (
-        !pathname.startsWith(`${input.sitePrefix}/segments/`)
-        && !pathname.startsWith(`${input.sitePrefix}/videos/`)
+          !pathname.startsWith(`${input.sitePrefix}/segments/`)
+          && !pathname.startsWith(`${input.sitePrefix}/videos/`)
       ) {
         return [];
       }
@@ -958,8 +960,8 @@ async function validateRenderedCardSummaries(page: Page, query: string): Promise
       }
       const document_ = new DOMParser().parseFromString(await response.text(), "text/html");
       const expected = normalize(document_
-        .querySelector<HTMLMetaElement>('meta[data-pagefind-meta="summary[content]"]')
-        ?.content);
+          .querySelector<HTMLMetaElement>('meta[data-pagefind-meta="summary[content]"]')
+          ?.content);
       return {
         ...card,
         expected,
@@ -975,9 +977,9 @@ async function validateRenderedCardSummaries(page: Page, query: string): Promise
       failures,
       [],
       `Search cards must render their explicit summary metadata: ${failures
-        .slice(0, 5)
-        .map((card) => `${card.title}: ${card.error || JSON.stringify(card.actual)}`)
-        .join(" | ")}`,
+          .slice(0, 5)
+          .map((card) => `${card.title}: ${card.error || JSON.stringify(card.actual)}`)
+          .join(" | ")}`,
   );
   console.log(`${snapshot.length} rendered video and time-note cards use explicit summary metadata.`);
 }

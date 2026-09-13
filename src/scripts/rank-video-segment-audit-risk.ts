@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 import { mkdir, readdir, readFile, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
-
-import { britishEnglishLocale } from "../locale.js";
 import { parseSiteContentProcessingConfig, type SiteContentProcessingConfig, validateCuratedVideoFile, } from "../content/schemas/index.js";
 import { DEFAULT_SITE_CONTENT_PROCESSING_LOG, parseSiteContentProcessingLog, } from "../content/site-content-processing-log.js";
 import {
@@ -13,6 +11,8 @@ import {
   renderVideoSegmentAuditRiskTsv,
   type VideoSegmentAuditRiskRow,
 } from "../content/video-segment-audit-risk.js";
+
+import { britishEnglishLocale } from "../locale.js";
 
 interface ManifestTranscript {
   videoId: string;

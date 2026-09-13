@@ -2,21 +2,17 @@
 import { readFile } from "node:fs/promises";
 import { basename, extname, isAbsolute, relative, resolve } from "node:path";
 
-import {
-  type CuratedSegmentSeed,
-  type CuratedVideoFileSeed,
-  parseCuratedVideoFile,
-} from "../content/schemas/index.js";
+import { type CuratedSegmentSeed, type CuratedVideoFileSeed, parseCuratedVideoFile, } from "../content/schemas/index.js";
 import { listVideoSegmentShardFileNames } from "../site/video-segment-files.js";
 import { isDirectExecution } from "./console-run-timer.js";
 
 export type ShardWordingSearchField =
-  | "title"
-  | "summary"
-  | "body"
-  | "question"
-  | "answerShort"
-  | "evidence.note";
+    | "title"
+    | "summary"
+    | "body"
+    | "question"
+    | "answerShort"
+    | "evidence.note";
 
 export interface ShardWordingSearchOptions {
   repoRoot: string;
@@ -187,7 +183,7 @@ export function searchCuratedVideoFileWording(
           segmentIndex,
           segmentKind: segment.kind,
           field,
-          ...(evidenceIndex === undefined ? {} : { evidenceIndex }),
+          ...(evidenceIndex === undefined ? {} : {evidenceIndex}),
           phrase,
           occurrenceCount: positions.length,
           excerpt: excerptAround(text, positions[0]!, phrase.length),
@@ -264,9 +260,9 @@ async function selectedShardPaths(
     repoRoot: string,
 ): Promise<string[]> {
   const paths = options.paths.length > 0
-    ? options.paths.map((path) => resolve(repoRoot, path))
-    : (await listVideoSegmentShardFileNames(resolve(repoRoot, options.segmentsInput)))
-        .map((fileName) => resolve(repoRoot, options.segmentsInput, fileName));
+      ? options.paths.map((path) => resolve(repoRoot, path))
+      : (await listVideoSegmentShardFileNames(resolve(repoRoot, options.segmentsInput)))
+          .map((fileName) => resolve(repoRoot, options.segmentsInput, fileName));
   const unique = new Map<string, string>();
   for (const path of paths) {
     validateShardPath(path);

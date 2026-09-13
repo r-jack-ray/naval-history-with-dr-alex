@@ -3,7 +3,7 @@
 import { readFile } from "node:fs/promises";
 import { extname } from "node:path";
 
-import { parseCuratedTopicStore, type CuratedTopicSeed, } from "../content/schemas/index.js";
+import { type CuratedTopicSeed, parseCuratedTopicStore, } from "../content/schemas/index.js";
 import { writeTextAtomically } from "../pipeline/atomic-write.js";
 import { readValue } from "./cli-arguments.js";
 import { isDirectExecution } from "./console-run-timer.js";

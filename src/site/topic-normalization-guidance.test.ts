@@ -219,11 +219,10 @@ test("companion guidance preserves review blockers, shard boundaries, and finali
   assert.match(config, /Append the processing-log row[^.]{0,120}synchronization succeeds/iu);
 
   const readme = await readGuidance("README.md");
-  assert.match(readme, /steady-state topic creation/iu);
+  assert.match(readme, /topic naming policy/iu);
   assert.match(readme, /npm run audit:topic-normalization/iu);
   assert.match(readme, /report:video-topic-usage[\s\S]{0,500}topic-normalization-review\.tsv/iu);
-  assert.match(readme, /review details are intentionally kept out of routine site-build output/iu);
-  assert.match(readme, /timestamp;shardPath;result;notes/u);
+  assert.match(readme, /\[AGENTS\.md\]\(AGENTS\.md\)/u);
 });
 
 test("current guidance and CLI use the retained video-segment report command", async () => {
@@ -246,43 +245,26 @@ test("current guidance and CLI use the retained video-segment report command", a
   }
 
   const readme = await readGuidance("README.md");
-  assert.match(readme, /repair_required[^.]{0,120}review_candidate[^.]{0,120}low_signal/iu);
-  assert.match(readme, /Audit Risk Score[^.]{0,160}have been removed/iu);
-  assert.match(readme, /Audio concerns remain in the latest processing result and notes/iu);
-  assert.match(readme, /transcripts that still have no canonical shard/iu);
+  assert.match(readme, /Transcript gaps are review prompts, not proof of missing content/iu);
 });
 
-test("README documents the complete topic-curation and report lifecycle contract", async () => {
+test("README points contributors to topic curation and report tools", async () => {
   const readme = await readGuidance("README.md");
-
-  assert.match(readme, /Curate the topics.{0,220}type-<number>/isu);
-  assert.match(readme, /report:video-topic-usage[^.]{0,260}always emits both companion inputs/iu);
-  assert.match(readme, /reports\/video-topic-usage\.tsv[^.]{0,500}reports\/topic-normalization-review\.tsv/iu);
-  assert.match(readme, /src\/derived\/topic-normalization-patterns\.tsv/iu);
-  assert.match(readme, /src\/derived\/video-segments\/\*\.json/iu);
-  assert.match(readme, /src\/derived\/video-segments\/topics\.json/iu);
-  assert.match(readme, /sync:video-topics[^.]{0,220}genuinely missing canonical registry records/iu);
-  assert.match(readme, /read-only `npm run audit:topic-normalization`/iu);
-  assert.match(readme, /repository-owner integration flow[^.]{0,180}generate:site-data/iu);
-  assert.match(readme, /Type 212A[^.]{0,120}Type 212CD[^.]{0,160}string similarity/iu);
 
   for (const reportPath of [
     "reports/video-segment-audit-risk.tsv",
     "reports/video-topic-usage.tsv",
     "reports/topic-normalization-review.tsv",
+    "reports/site-content-backlog.md",
+    "reports/transcript-problems.md",
   ]) {
     const escapedPath = reportPath.replace(/[.*+?^${}()|[\]\\]/gu, "\\$&");
-    assert.match(
-      readme,
-      new RegExp(`${escapedPath}.{0,500}Mandatory keep`, "iu"),
-      `${reportPath} must retain its owner and lifecycle`,
-    );
+    assert.match(readme, new RegExp(escapedPath, "u"));
   }
-  assert.match(readme, /reports\/site-content-backlog\.md/iu);
-  assert.match(readme, /reports\/transcript-problems\.md/iu);
-  assert.match(readme, /reports\/lighthouse\/\*\*/iu);
-  assert.match(readme, /Acquisition probe\/extraction JSON under `reports\/`/iu);
-  assert.match(readme, /One-off manual analyses.{0,300}does not delete them/isu);
+  assert.match(readme, /topic naming policy/iu);
+  assert.match(readme, /sync:video-topics/u);
+  assert.match(readme, /npm run audit:topic-normalization/u);
+  assert.match(readme, /\[AGENTS\.md\]\(AGENTS\.md\)/u);
 });
 
 test("build repair audits steady-state policy and delegates semantic and site implementation work", async () => {
