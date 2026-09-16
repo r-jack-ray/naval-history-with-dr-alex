@@ -18,7 +18,7 @@ within a video. Use the linked video to check the original discussion, especiall
 
 ## Run the site locally
 
-You need Node.js 22 or newer, npm, and Bun 1.3.14 (the version in [.bun-version](.bun-version)). npm installs the project dependencies; Bun runs several content and archive tools.
+These are needed: Node.js 22 or newer, npm, and Bun 1.3.14 (the version in [.bun-version](.bun-version)). npm installs the project dependencies; Bun runs several content and archive tools.
 
 Clone or download this repository, open a terminal in its root directory, and run:
 
@@ -27,8 +27,7 @@ npm ci
 npm run site:dev
 ```
 
-Open the local address printed by Astro. The development command generates the site data automatically from the checked-in sources. You do not need a YouTube API key to work with
-the existing archive.
+Open the local address printed by Astro. The development command generates the site data automatically from the checked-in sources. A YouTube API key is not needed to work with the existing archive.
 
 To preview the production site, including its Pagefind search index:
 
@@ -42,9 +41,7 @@ rebuild, run `npm run site:build -- --force`.
 
 Build concurrency settings are in [site-build.properties](site-build.properties). Environment variables override those settings.
 
-## Check your changes
-
-Choose the check that fits your change:
+## Check changes
 
 | Command                    | What it does                                                                                                        |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------|
@@ -63,7 +60,7 @@ Production checks require an installed Chrome or Edge browser. The checker finds
 GitHub Actions runs the deployment check on pushes to `master` and on manual workflow runs, then publishes `site/dist/` to GitHub Pages. See
 the [deployment workflow](.github/workflows/deploy-site.yml).
 
-## Find your way around the repository
+## Sitemap
 
 The site uses Astro and Pagefind. Its content and maintenance tools are written in TypeScript.
 
