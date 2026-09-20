@@ -80,7 +80,6 @@ const metadata = buildVideoBrowseMetadata(page.currentPage, page.lastPage);
                 height="360"
               />
               <div>
-                <span class="label">{video.videoKind === "stream" ? "stream" : "video"}</span>
                 <h2>{video.title}</h2>
                 <p>
                   <time datetime={video.videoDateAt}>{video.videoDateLabel}</time> · {video.durationLabel} · {timeNoteCountLabel(video.segmentSlugs.length)}

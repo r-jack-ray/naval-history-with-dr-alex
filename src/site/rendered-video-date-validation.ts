@@ -2,7 +2,7 @@ import { readdir, readFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { gunzipSync } from "node:zlib";
 
-import { readVideoMetadataStore, resolveVideoState } from "../youtube/video-metadata.js";
+import { readVideoMetadataStore, resolveVideoReadiness } from "../youtube/video-metadata.js";
 import {
   readRenderedHtmlSiteSnapshot,
   type RenderedDateValue,
@@ -18,7 +18,6 @@ export interface GeneratedVideoDateRecord {
   videoDateAt: string;
   videoDateLabel: string;
   durationLabel: string;
-  videoKind: "upload" | "stream";
   segmentSlugs: string[];
 }
 
@@ -330,7 +329,7 @@ async function validateNotReadyVideosAreAbsent(videos: readonly GeneratedVideoDa
     throw new Error("Video metadata is required for the public eligibility regression.");
   }
   const notReadyIds = metadataStore.videos
-    .filter((metadata) => resolveVideoState(metadata).state !== "ready")
+    .filter((metadata) => resolveVideoReadiness(metadata).state !== "ready")
     .map((metadata) => metadata.videoId);
   const exposed = notReadyIds.filter((videoId) => publicIds.has(videoId));
   if (exposed.length > 0) {
@@ -349,7 +348,6 @@ function validateBruships250(
   if (
     video.videoDateAt !== "2026-07-12T18:30:05Z"
     || video.durationLabel !== "4:32:47"
-    || video.videoKind !== "stream"
   ) {
     throw new Error("Bruships 250 does not have the refreshed canonical date/runtime contract.");
   }
@@ -358,7 +356,6 @@ function validateBruships250(
     fragment === undefined
     || !fragment.content.includes(`Date${video.videoDateLabel}`)
     || !fragment.content.includes("Runtime4:32:47")
-    || !fragment.content.includes("FormatStream")
   ) {
     throw new Error("Bruships 250 Pagefind content does not contain the refreshed public metadata.");
   }

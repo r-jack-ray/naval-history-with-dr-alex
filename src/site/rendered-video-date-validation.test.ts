@@ -18,7 +18,6 @@ const video: GeneratedVideoDateRecord = {
   videoDateAt: "2026-08-09T12:34:56Z",
   videoDateLabel: "9 Aug 2026",
   durationLabel: "12:34",
-  videoKind: "upload",
   segmentSlugs: ["example-segment"],
 };
 

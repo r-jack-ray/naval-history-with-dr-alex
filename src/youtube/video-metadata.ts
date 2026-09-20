@@ -92,26 +92,25 @@ export type VideoReadinessReason =
 export const maxBlockedTranscriptDurationSeconds = 61;
 export const defaultDeferredMetadataRetryDelayMs = 24 * 60 * 60 * 1_000;
 
-export type VideoStateResult =
+export type VideoReadinessResult =
     | {
   state: "ready";
-  videoKind: VideoKind;
   videoDateAt: string;
   videoDateKind: VideoDateKind;
   durationSeconds: number;
 }
     | {
   state: "deferred";
-  videoKind: VideoKind;
   reason: VideoReadinessReason;
   diagnostic: string;
 }
     | {
   state: "invalid";
-  videoKind: VideoKind;
   reason: VideoReadinessReason;
   diagnostic: string;
 };
+
+export type VideoStateResult = VideoReadinessResult & { videoKind: VideoKind };
 
 export function readVideoIdsFromEpisodeMaster(value: unknown): string[] {
   const object = asRecord(value);
@@ -187,30 +186,35 @@ export function isPublishedButUnstarted(record: VideoMetadataRecord | undefined)
 }
 
 export function resolveVideoState(record: VideoMetadataRecord | undefined): VideoStateResult {
-  if (record === undefined) {
-    return invalidVideoState("upload", "metadata_missing", "Video metadata is missing.");
-  }
-
-  const videoKind: VideoKind = record.liveStreamingDetails !== undefined ||
-  record.snippet?.liveBroadcastContent === "upcoming" ||
-  record.snippet?.liveBroadcastContent === "live"
+  // Preserve the legacy inventory hint. Premieres can have the same broadcast
+  // metadata as livestreams, so site consumers must use resolveVideoReadiness.
+  const videoKind: VideoKind = record?.liveStreamingDetails !== undefined ||
+  record?.snippet?.liveBroadcastContent === "upcoming" ||
+  record?.snippet?.liveBroadcastContent === "live"
       ? "stream"
       : "upload";
+  return { ...resolveVideoReadiness(record), videoKind };
+}
+
+export function resolveVideoReadiness(record: VideoMetadataRecord | undefined): VideoReadinessResult {
+  if (record === undefined) {
+    return invalidVideoState("metadata_missing", "Video metadata is missing.");
+  }
+
   const broadcastState = record.snippet?.liveBroadcastContent ?? undefined;
   if (broadcastState === "upcoming") {
-    return deferredVideoState(videoKind, "upcoming", "The video is scheduled but has not started.");
+    return deferredVideoState("upcoming", "The video is scheduled but has not started.");
   }
   if (broadcastState === "live") {
-    return deferredVideoState(videoKind, "live_in_progress", "The livestream is currently in progress.");
+    return deferredVideoState("live_in_progress", "The video broadcast is currently in progress.");
   }
 
   const uploadStatus = record.status?.uploadStatus ?? undefined;
   if (uploadStatus !== "processed") {
     if (uploadStatus === "uploaded") {
-      return deferredVideoState(videoKind, "processing", "YouTube has not finished processing the video.");
+      return deferredVideoState("processing", "YouTube has not finished processing the video.");
     }
     return invalidVideoState(
-        videoKind,
         uploadStatus === undefined ? "metadata_missing" : "invalid_metadata",
         uploadStatus === undefined
             ? "Video metadata is missing status.uploadStatus."
@@ -221,7 +225,6 @@ export function resolveVideoState(record: VideoMetadataRecord | undefined): Vide
   const durationSeconds = parseYoutubeDurationSeconds(record.contentDetails?.duration ?? undefined);
   if (durationSeconds === undefined || durationSeconds <= 0) {
     return invalidVideoState(
-        videoKind,
         "invalid_metadata",
         `Processed video has an invalid or non-positive duration: ${record.contentDetails?.duration ?? "missing"}.`,
     );
@@ -234,15 +237,15 @@ export function resolveVideoState(record: VideoMetadataRecord | undefined): Vide
   const malformedTimestamp = [actualStartTime, scheduledStartTime, actualEndTime, publishedAt]
       .find((value) => value === null);
   if (malformedTimestamp === null) {
-    return invalidVideoState(videoKind, "invalid_metadata", "Video metadata contains a malformed timestamp.");
+    return invalidVideoState("invalid_metadata", "Video metadata contains a malformed timestamp.");
   }
 
-  if (videoKind === "stream") {
+  // YouTube supplies these timestamps for both livestreams and premieres.
+  if (record.liveStreamingDetails !== undefined) {
     if (actualEndTime === undefined) {
       return deferredVideoState(
-          videoKind,
           "live_in_progress",
-          "Livestream metadata does not yet prove completion with actualEndTime.",
+          "Broadcast metadata does not yet prove completion with actualEndTime.",
       );
     }
     if (
@@ -250,7 +253,7 @@ export function resolveVideoState(record: VideoMetadataRecord | undefined): Vide
         typeof actualEndTime === "string" &&
         Date.parse(actualEndTime) < Date.parse(actualStartTime)
     ) {
-      return invalidVideoState(videoKind, "invalid_metadata", "Livestream actualEndTime precedes actualStartTime.");
+      return invalidVideoState("invalid_metadata", "Broadcast actualEndTime precedes actualStartTime.");
     }
   }
 
@@ -261,12 +264,11 @@ export function resolveVideoState(record: VideoMetadataRecord | undefined): Vide
   ];
   const selected = candidates.find(([, value]) => value !== undefined);
   if (selected === undefined || selected[1] === undefined) {
-    return invalidVideoState(videoKind, "metadata_missing", "No canonical publication or stream timestamp is available.");
+    return invalidVideoState("metadata_missing", "No canonical publication or broadcast timestamp is available.");
   }
 
   return {
     state: "ready",
-    videoKind,
     videoDateAt: selected[1],
     videoDateKind: selected[0],
     durationSeconds,
@@ -368,19 +370,17 @@ export function isBlockedTranscriptDuration(durationSeconds: number | undefined)
 }
 
 function deferredVideoState(
-    videoKind: VideoKind,
     reason: VideoReadinessReason,
     diagnostic: string,
-): VideoStateResult {
-  return {state: "deferred", videoKind, reason, diagnostic};
+): VideoReadinessResult {
+  return {state: "deferred", reason, diagnostic};
 }
 
 function invalidVideoState(
-    videoKind: VideoKind,
     reason: VideoReadinessReason,
     diagnostic: string,
-): VideoStateResult {
-  return {state: "invalid", videoKind, reason, diagnostic};
+): VideoReadinessResult {
+  return {state: "invalid", reason, diagnostic};
 }
 
 export async function fetchAndStoreVideoMetadata(options: FetchVideoMetadataOptions): Promise<VideoMetadataStore> {

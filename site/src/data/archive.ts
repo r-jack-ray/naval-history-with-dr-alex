@@ -12,7 +12,7 @@ const archiveInitializationStartedAt = performance.now();
 const expectedPatternsInput = "src/derived/topic-normalization-patterns.tsv";
 
 export interface ArchiveData {
-  schemaVersion: 6;
+  schemaVersion: 7;
   videos: ArchiveVideo[];
   segments: ArchiveSegment[];
   topics: ArchiveTopic[];
@@ -29,7 +29,7 @@ export interface ArchiveSegmentBucketRecord extends ArchiveFileRecord {
 }
 
 export interface ArchiveManifest {
-  schemaVersion: 7;
+  schemaVersion: 8;
   source: {
     episodesInput: string;
     metadataInput: string;
@@ -65,7 +65,6 @@ export interface ArchiveVideo {
   videoDateAt: string;
   videoDateLabel: string;
   videoDateKind: "actual_start" | "scheduled_start" | "published";
-  videoKind: "upload" | "stream";
   publishedAt: string;
   durationIso: string;
   durationLabel: string;
@@ -210,8 +209,8 @@ function bucketIdForVideo(videoId: string): string {
 }
 
 function validateManifestShape(): void {
-  if (!isRecord(manifest) || manifest.schemaVersion !== 7) {
-    archiveError(`manifest schemaVersion must be 7; received ${String(manifest?.schemaVersion)}.`);
+  if (!isRecord(manifest) || manifest.schemaVersion !== 8) {
+    archiveError(`manifest schemaVersion must be 8; received ${String(manifest?.schemaVersion)}.`);
   }
   if (!isRecord(manifest.source)) {
     archiveError("manifest source is missing.");
@@ -393,8 +392,8 @@ for (const video of archiveVideos) {
   ) {
     archiveError(`video ${video.videoId} has an invalid videoDateKind.`);
   }
-  if (video.videoKind !== "upload" && video.videoKind !== "stream") {
-    archiveError(`video ${video.videoId} has an invalid videoKind.`);
+  if ("videoKind" in video) {
+    archiveError(`video ${video.videoId} must not expose videoKind in the site archive.`);
   }
   const publishedAt = assertStringField(video, "publishedAt", `video ${video.videoId}`);
   if (!/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/u.test(publishedAt)
@@ -511,7 +510,7 @@ for (const topic of archiveTopics) {
 }
 
 export const archive: ArchiveData = {
-  schemaVersion: 6,
+  schemaVersion: 7,
   videos: archiveVideos,
   segments: archiveSegments,
   topics: archiveTopics,

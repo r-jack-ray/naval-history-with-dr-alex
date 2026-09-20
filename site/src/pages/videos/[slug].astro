@@ -40,7 +40,6 @@ const videoSeoMetadata = buildVideoSeoMetadata({
   embedUrl: video.embedUrl,
 });
 const videoObjectJsonLd = serializeJsonLd(buildVideoObjectJsonLd(videoSeoMetadata));
-const formatVideoKind = (videoKind: ArchiveVideo["videoKind"]) => videoKind === "stream" ? "Stream" : "Video";
 const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${count} time notes`;
 ---
 
@@ -101,10 +100,6 @@ const timeNoteCountLabel = (count: number) => count === 1 ? "1 time note" : `${c
       <article>
         <span class="label">Runtime</span>
         <strong>{video.durationLabel}</strong>
-      </article>
-      <article>
-        <span class="label">Format</span>
-        <strong>{formatVideoKind(video.videoKind)}</strong>
       </article>
       <article>
         <span class="label">Guide points</span>

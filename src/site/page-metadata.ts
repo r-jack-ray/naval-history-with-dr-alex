@@ -21,7 +21,7 @@ export const staticPageMetadata = {
   },
   videos: {
     title: `Dr. Alex Clarke Video Guides | ${siteName}`,
-    description: "Browse Dr. Alex Clarke video guides by publication date, subject, format, and available time notes, then choose the moment you want to watch.",
+    description: "Browse Dr. Alex Clarke video guides by publication date, subject, and available time notes, then choose the moment you want to watch.",
   },
   segments: {
     title: `Find Naval History Time Notes | ${siteName}`,
@@ -62,17 +62,16 @@ function meaningfulTopics(video: Pick<SiteVideo, "topics">): string {
 }
 
 export function buildVideoPageMetadata(
-  video: Pick<SiteVideo, "title" | "videoDateLabel" | "videoKind" | "topics" | "segmentSlugs">,
+  video: Pick<SiteVideo, "title" | "videoDateLabel" | "topics" | "segmentSlugs">,
 ): PageMetadata {
   const structuredName = buildVideoStructuredName(video);
   const title = boundText(video.title, 105);
   const date = boundText(video.videoDateLabel, 35);
-  const format = video.videoKind === "stream" ? "stream" : "video";
   const timeNotes = countLabel(video.segmentSlugs.length, "time note");
   return {
     title: `${structuredName} | Dr. Alex Clarke Video Guide`,
     description: boundText(
-      `Study ${title}, a Dr. Alex Clarke ${format} from ${date}, with ${timeNotes}.${meaningfulTopics(video)}`,
+      `Study ${title}, a Dr. Alex Clarke video from ${date}, with ${timeNotes}.${meaningfulTopics(video)}`,
       MAX_METADATA_DESCRIPTION_LENGTH,
     ),
   };

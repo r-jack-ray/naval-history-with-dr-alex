@@ -29,6 +29,7 @@ Use this brief with `$naval-video-page-prototype` when working on the Astro/Page
 
 ## Generated Archive Contract
 
+- Exclude the legacy `episodes.json` field `videoKind` from generated data and all site labels, descriptions, search metadata, and filters. Premieres share livestream metadata, so the hint cannot establish format. Use `resolveVideoReadiness` for completion checks and dates without inferring format.
 - Treat `siteArchiveSchemaVersion` in `src/site/archive-data.ts` as the authority for the split `archive/index.json` manifest schema.
 - Keep the manifest reader in `site/src/data/archive.ts`, the integrity and cache validator in `src/scripts/site-build-if-changed.mjs`, and `src/pipeline/shared-output.test.ts` synchronized with that constant whenever the manifest contract changes.
 - Distinguish the split-manifest schema from the logical reconstructed `SiteArchiveData.schemaVersion`; do not bump or rewrite one merely to make the other agree.

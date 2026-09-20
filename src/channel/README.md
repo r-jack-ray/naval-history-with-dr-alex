@@ -33,7 +33,11 @@ the live status source instead of inferring completeness from record counts.
 
 Schema 2 keeps YouTube's raw `publishedAt`, `scheduledStartAt`,
 `actualStartAt`, and `actualEndAt` facts distinct. Completed, processed videos also have one normalized `videoDateAt` plus `videoDateKind`; consumers use that
-value for naming, sorting, and public dates. `videoKind` independently records whether the item is an upload or stream.
+value for naming, sorting, and public dates.
+
+`videoKind` is a legacy inventory hint retained in `episodes.json`. YouTube supplies broadcast metadata for premieres as well as livestreams, so this field
+cannot reliably distinguish their formats. The generated site archive omits it, and site pages, descriptions, search metadata, and filters must not use it.
+Site eligibility and dates use `resolveVideoReadiness`, which checks processing status and broadcast timestamps without classifying the format.
 
 `fileStem` uses `timestamp_title-slug_videoId` when a canonical video date is available, otherwise `title-slug_videoId`. A stored transcript's manifest stem is
 authoritative and must win over a recomputed inventory stem. Keep the video ID suffix for stable lookup and dedupe.
@@ -62,7 +66,7 @@ Populate official metadata. The package script defaults to
 npm run fetch:video-metadata
 ```
 
-Upcoming and otherwise deferred livestream records retain YouTube's posted
+Upcoming and otherwise deferred videos with broadcast metadata retain YouTube's posted
 `scheduledStartTime`. A normal metadata refresh automatically rechecks them about 24 hours after the later of that scheduled time or their previous metadata
-fetch. If YouTube postpones a stream, the refreshed record stores the new scheduled time and the next automatic check moves to roughly 24 hours after that date.
+fetch. If YouTube postpones a broadcast, the refreshed record stores the new scheduled time and the next automatic check moves to roughly 24 hours after that date.
 Use `--refresh-video-id <id>` when an earlier manual refresh is needed; `--force` still refreshes every stored record.

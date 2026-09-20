@@ -10,6 +10,7 @@ import {
   readVideoIdsFromEpisodeMaster,
   resolveAdditionalVideoIds,
   resolveVideoFetchState,
+  resolveVideoReadiness,
   resolveVideoState,
   selectVideoMetadataTargetIds,
   type VideoMetadataRecord,
@@ -215,7 +216,7 @@ test("requires processing, positive duration, and explicit stream completion", (
     state: "deferred",
     videoKind: "stream",
     reason: "live_in_progress",
-    diagnostic: "Livestream metadata does not yet prove completion with actualEndTime.",
+    diagnostic: "Broadcast metadata does not yet prove completion with actualEndTime.",
   });
   assert.equal(resolveVideoState({
     ...common,
@@ -262,6 +263,40 @@ test("ordinary processed uploads use publication time", () => {
     videoDateAt: "2026-07-05T23:30:00Z",
     videoDateKind: "published",
     durationSeconds: 754,
+  });
+});
+
+test("resolves premiere readiness and dates without classifying its format", () => {
+  const premiere: VideoMetadataRecord = {
+    videoId: "premiere123",
+    fetchedAt: "2026-07-08T00:00:00Z",
+    snippet: {publishedAt: "2026-07-01T00:00:00Z", liveBroadcastContent: "none"},
+    contentDetails: {duration: "PT1H"},
+    status: {uploadStatus: "processed"},
+    liveStreamingDetails: {
+      scheduledStartTime: "2026-07-05T18:30:00Z",
+      actualStartTime: "2026-07-05T18:30:08Z",
+    },
+  };
+
+  assert.deepEqual(resolveVideoReadiness(premiere), {
+    state: "deferred",
+    reason: "live_in_progress",
+    diagnostic: "Broadcast metadata does not yet prove completion with actualEndTime.",
+  });
+  assert.deepEqual(resolveVideoReadiness({
+    ...premiere,
+    liveStreamingDetails: {...premiere.liveStreamingDetails, actualEndTime: "2026-07-05T19:30:08Z"},
+  }), {
+    state: "ready",
+    videoDateAt: "2026-07-05T18:30:08Z",
+    videoDateKind: "actual_start",
+    durationSeconds: 3_600,
+  });
+  assert.deepEqual(resolveVideoReadiness(undefined), {
+    state: "invalid",
+    reason: "metadata_missing",
+    diagnostic: "Video metadata is missing.",
   });
 });
 

@@ -81,10 +81,10 @@ test("preserves catalog provenance without adding noncanonical topic routes", ()
   const topic = archive.topics[0];
   const split = splitSiteArchiveData(archive);
 
-  assert.equal(archive.schemaVersion, 6);
+  assert.equal(archive.schemaVersion, 7);
   assert.equal(topic?.videoCount, 1);
   assert.equal(topic?.segmentCount, 2);
-  assert.equal(split.manifest.schemaVersion, 7);
+  assert.equal(split.manifest.schemaVersion, 8);
   assert.equal(split.manifest.source.patternsInput, "patterns.tsv");
   assert.equal(split.manifest.source.patternsSha256, "a".repeat(64));
   assert.equal(split.manifest.source.patternsSourceSha256, "b".repeat(64));
@@ -104,7 +104,7 @@ test("uses livestream time instead of the advance upload timestamp", () => {
 
   assert.equal(archive.videos[0]?.videoDateAt, "2026-07-12T18:33:54Z");
   assert.equal(archive.videos[0]?.publishedAt, "2026-06-14T16:44:14Z");
-  assert.equal(archive.videos[0]?.videoKind, "stream");
+  assert.equal(Object.hasOwn(archive.videos[0]!, "videoKind"), false);
 });
 
 test("rejects a publishable stream without a source publication timestamp", () => {
@@ -261,7 +261,7 @@ test("rejects schema mismatch, misbucketed records, and damaged shard sets", asy
   (wrongSchema.manifest as { schemaVersion: number }).schemaVersion = 99;
   assert.throws(
     () => validateSiteArchiveSplitData(wrongSchema),
-    /schemaVersion must be 7/u,
+    /schemaVersion must be 8/u,
   );
 
   const invalidProvenance = structuredClone(split);
@@ -269,6 +269,14 @@ test("rejects schema mismatch, misbucketed records, and damaged shard sets", asy
   assert.throws(
     () => validateSiteArchiveSplitData(invalidProvenance),
     /source\.patternsSha256 must be a lowercase SHA-256/u,
+  );
+
+  const exposedFormat = structuredClone(split);
+  Object.assign(exposedFormat.videos[0]!, {videoKind: "stream"});
+  exposedFormat.manifest.files.videos.sha256 = siteArchiveSha256(canonicalSiteArchiveJson(exposedFormat.videos));
+  assert.throws(
+    () => validateSiteArchiveSplitData(exposedFormat),
+    /must not expose videoKind/u,
   );
 
   const invalidSourceProvenance = structuredClone(split);

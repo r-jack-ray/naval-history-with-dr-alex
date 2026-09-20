@@ -49,7 +49,6 @@ const metadata = staticPageMetadata.videos;
                   height="360"
                 />
                 <div>
-                  <span class="label">{video.videoKind === "stream" ? "stream" : "video"}</span>
                   <h3>{video.title}</h3>
                   <p>
                     <time datetime={video.videoDateAt}>{video.videoDateLabel}</time> · {video.durationLabel} · {timeNoteCountLabel(video.segmentSlugs.length)}

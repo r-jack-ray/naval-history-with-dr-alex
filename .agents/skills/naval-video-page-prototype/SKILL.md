@@ -19,6 +19,7 @@ Use this skill inside `C:\Workspaces\naval-history-with-dr-alex` when working on
 
 - Read `AGENTS.md` and `.agents/site-archive-builder.md` first for current repository rules and the site-builder brief.
 - Use `src/channel/episodes.json` for canonical video IDs, slugs, URLs, transcript state, and inventory stems.
+- Keep its legacy `videoKind` hint out of generated data and site presentation, including descriptions, search metadata, and filters. Premieres share livestream metadata, so the hint cannot establish format. Use `resolveVideoReadiness` for site completion checks and dates without inferring format.
 - Use `src/channel/video-metadata.json` for YouTube title, description, thumbnail, duration, and statistics.
 - Use `src/transcripts/manifest.json` for stored transcript identity and manifest-owned `fileStem` references.
 - Use `src/derived/video-segments/` for current curated video, segment, and topic source data.

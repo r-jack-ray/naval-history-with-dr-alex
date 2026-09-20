@@ -28,14 +28,12 @@ test("builds unique, nonempty metadata for fixture detail pages", () => {
     {
       title: "Fixture destroyer design",
       videoDateLabel: "1 January 2026",
-      videoKind: "upload",
       topics: [{slug: "fixture-destroyers", title: "Fixture Destroyers"}],
       segmentSlugs: ["fixture-armour-trade-off"],
     },
     {
       title: "Fixture fleet logistics",
       videoDateLabel: "2 January 2026",
-      videoKind: "stream",
       topics: [{slug: "fixture-logistics", title: "Fixture Logistics"}],
       segmentSlugs: ["fixture-fuel-endurance", "fixture-replenishment"],
     },
@@ -67,6 +65,7 @@ test("builds unique, nonempty metadata for fixture detail pages", () => {
   ];
 
   metadata.forEach(assertUsefulMetadata);
+  assert.ok(videos.map(buildVideoPageMetadata).every((item) => !/\bstream\b/iu.test(item.description)));
   assert.equal(new Set(metadata.map((item) => item.title)).size, metadata.length);
   assert.equal(new Set(metadata.map((item) => item.description)).size, metadata.length);
   const structuredVideoNames = videos.map(buildVideoStructuredName);

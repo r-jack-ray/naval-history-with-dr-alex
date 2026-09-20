@@ -34,6 +34,8 @@ The site should help visitors:
 
 Public pages should privilege subject discovery, direct video jumps, and learning value. Avoid foregrounding YouTube creator metrics, internal filenames, transcript-processing status, or implementation details unless a user explicitly asks for an admin/debug view.
 
+Treat `videoKind` in `src/channel/episodes.json` as an unreliable legacy inventory hint: premieres can share livestream metadata. Exclude it from the generated archive and every site display, description, search field, and filter. Use `resolveVideoReadiness` for site eligibility and dates without inferring a format. Determine lecture and Q&A content from the transcript; the inventory hint does not establish that an episode was live or contained audience questions.
+
 ## Build, Test, and Development Commands
 
 Use Node 22+ and TypeScript. Bun `1.3.14` is pinned in `.bun-version` for the canonical `report:video-topic-usage`, `sync:video-topics`, `audit:topic-normalization`, and `generate:site-data` maintenance commands; npm and `package-lock.json` remain the install contract.
