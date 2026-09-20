@@ -13,23 +13,24 @@
   "segments": [
     {
       "slug": "remnant-faction-reserves-and-readiness",
-      "title": "A reserve fleet works only if ships, crews, and stores survive",
+      "title": "Remnant Faction: mobilizing an intact reserve fleet",
       "start": "6:37",
       "end": "9:20",
       "topics": [
         "fleet-readiness",
         "mobilisation",
         "naval-logistics",
+        "remnant-faction",
         "reserve-fleet",
         "science-fiction"
       ],
-      "body": "The reinforcement force exists because Rear Admiral Clark stops the decommissioning process before usable capital ships are stripped for parts. Caretaker crews preserve the hulls, but logistics personnel must restock them and a reserve-and-veteran network must supply enough people to sail and fight. Mixed crews and older fighters are accepted because immediate availability matters more than having the ideal establishment. The force then endures fifteen-hour days in acceleration tanks to catch the main fleet, showing that mobilization speed has physical as well as administrative costs. The passage turns reserve strength from a paper ship count into a system of maintenance, stores, trained personnel, and timely movement.",
+      "body": "In Remnant Faction, Rear Admiral Clark stops decommissioning before usable capital ships are stripped for parts. Caretaker crews have preserved the hulls, but logistics personnel must restock them and a reserve-and-veteran network must provide volunteer crews. Older fighters are accepted because they are available for the emergency. Henry infers that the reinforcements spent fifteen hours a day in acceleration tanks to catch up with the main force. Even that effort would have brought them too late to prevent defeat if the earlier battle had gone differently. The rescue depends on preserving ships, restoring their stores, finding crews, and reaching the battle in time.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
           "start": "6:37",
           "end": "9:20",
-          "note": "The opening excerpt describes halted decommissioning, intact reserve ships, logistics restocking, volunteer crews, older fighters, and sustained acceleration-tank use."
+          "note": "Fictional Rear Admiral Clark halts disposal and restocks reserve ships, volunteers supply crews, and Henry infers prolonged acceleration-tank use from the reinforcement fleet's arrival."
         }
       ],
       "kind": "chapter",
@@ -46,13 +47,13 @@
         "palletisation",
         "twentieth-century-warfare"
       ],
-      "body": "Primitive load-unit practices appeared by the First World War, but they were not yet the standardized pallet-and-forklift system familiar today. The decisive change came when pallets, forklifts, and handling methods began working together. By the 1950s and 1960s, that combination had become a recognizable logistics system rather than a collection of isolated experiments. Mechanized handling changed the speed, labor demands, and repeatability of military supply movement across the whole logistics chain.",
+      "body": "Early versions of palletization are placed as far back as the First World War. Those arrangements are distinguished from palletization as it would now be understood. The combination of pallets and forklifts is dated more broadly to the 1950s and 1960s. These are approximate periods in a brief answer, without a precise first military adoption date.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
           "start": "13:16",
           "end": "13:43",
-          "note": "The answer dates early palletization and the later adoption of forklift-based systems."
+          "note": "Early palletization precedents are distinguished from the pallet-and-forklift system placed in the 1950s and 1960s."
         }
       ],
       "kind": "qa",
@@ -64,270 +65,486 @@
       "slug": "military-dilemmas-not-simple-problems",
       "title": "War presents dilemmas rather than tidy problems",
       "start": "13:47",
-      "end": "19:03",
+      "end": "16:16",
       "topics": [
         "military-education",
         "military-logistics",
         "operational-planning",
         "strategy"
       ],
-      "body": "A problem has a clean solution, while a dilemma leaves serious costs attached to every choice. Military planning usually involves dilemmas because the enemy can react, create traps, and turn an apparent advantage into a new vulnerability. In one staff exercise, the fastest road became a mined and blocked supply corridor exposed to converging counterattacks. The student's neat movement plan failed because it treated terrain and enemy dispositions as fixed inputs rather than active parts of the contest. War therefore demands judgment about tradeoffs rather than a search for a frictionless answer.",
+      "body": "A dilemma leaves an opponent choosing between unattractive options, while a problem can have a satisfactory solution. This distinction is presented as a principle of military doctrine and as a useful way to read the battles in Remnant Faction. War can produce dilemmas even without either side deliberately designing them. Military histories and biographies can obscure those tradeoffs when they turn command into a succession of problems neatly solved. An apparently straightforward route to victory deserves scrutiny because the enemy can exploit the same apparent advantage.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
           "start": "13:47",
-          "end": "19:03",
-          "note": "The discussion defines military dilemmas and recounts a staff exercise in which the apparently easy route became a trap."
+          "end": "16:16",
+          "note": "Military dilemmas, least-worst choices, and the criticism of histories that present command as straightforward problem-solving."
         }
       ],
       "kind": "chapter",
       "summary": "Military choices usually trade one danger for another, and an apparently easy route may conceal the enemy's intended trap."
     },
     {
+      "slug": "bruships-86-tabletop-road-trap",
+      "title": "A fast route becomes a trap when the enemy attacks the supply line",
+      "start": "16:19",
+      "end": "19:03",
+      "topics": [
+        "military-education",
+        "military-logistics",
+        "operational-planning",
+        "wargaming"
+      ],
+      "body": "Clarke recalls a tabletop exercise in which a student selected the widest, flattest roads for a two-day advance. The route looked lightly defended, while enemy maneuver forces on either side appeared too far away to intervene promptly. Destroyed bridges and mines slowed the advance to a six-day slog before it was even halfway complete. Those delays gave the flanking forces time to attack the supply route behind the main column, forcing it to turn back as the defenders advanced from the objective. The apparent easy route allowed forces from the harder approaches to converge on the same army.",
+      "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
+      "evidence": [
+        {
+          "start": "16:19",
+          "end": "19:03",
+          "note": "Clarke's teaching recollection: a student's road plan failed after bridge demolition, mines, flanking attacks, and an advance by the objective's defenders."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "A tabletop exercise shows how obstacles and attacks on supply lines can defeat a movement plan built around road speed."
+    },
+    {
       "slug": "submarine-conning-tower-jimmy-name",
-      "title": "Why a submarine conning tower may be called the Jimmy",
+      "title": "The submarine nickname Jimmy has competing origin stories",
       "start": "19:18",
       "end": "19:52",
       "topics": [
-        "conning-towers",
         "naval-terminology",
         "submarine-service",
         "submarines"
       ],
-      "body": "Jimmy is an established submarine term for the conning tower rather than a modern screenwriter's invention. Several traditional explanations for the nickname circulate among people familiar with submarine history. Those specialists do not agree on which account is correct. The usage is well established, but its precise etymology remains unsettled.",
+      "body": "Jimmy is treated as a long-standing nickname in submarine usage. Several competing stories circulate about its origin, with no firm etymology established here. The historical specialists consulted are described as disagreeing. The film prompt is unclear in the captions, so it does not establish exactly whom the nickname identifies.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
           "start": "19:18",
           "end": "19:52",
-          "note": "The response identifies the nickname as traditional and explains that several origin stories compete."
+          "note": "The film prompt is garbled, while the reply establishes traditional usage, competing origin stories, and insufficient expertise to choose between them."
         }
       ],
       "kind": "qa",
-      "summary": "The nickname is a long-standing submarine tradition, but competing origin stories make a confident etymology difficult.",
-      "question": "Where did the submarine nickname Jimmy for the conning tower come from?",
-      "answerShort": "It is old submarine usage, but its precise origin remains disputed among knowledgeable researchers."
+      "summary": "Jimmy is described as traditional submarine usage, with several competing explanations for its origin.",
+      "question": "Where did the nickname Jimmy, heard in a submarine film, come from?",
+      "answerShort": "It is long-standing submarine usage, but its precise origin remains unresolved."
+    },
+    {
+      "slug": "bruships-86-paladin-diplomatic-withdrawal",
+      "title": "Paladin's diplomatic mission cannot overcome its military limits",
+      "start": "20:56",
+      "end": "30:10",
+      "topics": [
+        "command-and-control",
+        "deterrence",
+        "diplomacy",
+        "remnant-faction",
+        "science-fiction",
+        "strategy"
+      ],
+      "body": "Paladin carries a diplomatic detachment, but its ambassador knows one destroyer cannot reverse the attack on the system. A one-light-minute separation imposes a two-minute round trip on messages with the local command. The surviving local admiral expects to surrender and warns that the resulting terms could force her own security forces to hunt the visitors. Paladin therefore withdraws while arranging future contact and aid, with the possibility of drawing pursuing ships toward an allied carrier. The attackers' refusal to answer surrender messages undermines the assumption that they want submission. Their uncharacteristic silence and anger leave Henry uncertain whether his experience of the enemy still predicts its behavior.",
+      "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
+      "evidence": [
+        {
+          "start": "20:56",
+          "end": "30:10",
+          "note": "Paladin's diplomatic detachment, communication delay, local surrender plans, withdrawal toward allies, and uncertainty about the attackers' changed behavior."
+        }
+      ],
+      "kind": "chapter",
+      "summary": "Delayed messages, limited force, and an enemy refusing surrender prevent a diplomatic mission from saving an allied world."
     },
     {
       "slug": "missile-range-and-planetary-bombardment",
-      "title": "Missile range becomes arbitrary against a planet",
-      "start": "20:36",
+      "title": "Remnant Faction: missiles can coast beyond their powered range",
+      "start": "30:12",
       "end": "32:34",
       "topics": [
         "command-and-control",
         "missile-warfare",
         "planetary-bombardment",
+        "remnant-faction",
         "science-fiction",
         "space-warfare",
         "strategic-attack",
         "strategic-ethics"
       ],
-      "body": "A lone destroyer arrives too late to reverse the stronger fleet's attack and can offer the local government only warning and future assistance. Light-speed delays slow the attempted diplomacy, while the attackers refuse communication and remove any timely political off-ramp. A missile's published range normally measures powered travel against a target able to maneuver. A planet cannot evade, and a missile keeps its existing velocity after the drive burns out, so the nominal range limit becomes arbitrary. The estimated salvo of at least 1,500 fusion warheads shows how a chain of strategic reprisals can shift from fleet combat to mass destruction before the defender can intervene.",
+      "body": "The attackers fire while well beyond the missiles' nominal powered range, initially confusing the observers aboard Paladin. In this fictional setting, range is normally calculated against targets that retain some ability to evade. The missiles keep moving after their drives stop, and a planet cannot maneuver away like a ship or an orbital platform. The estimated attack contains at least 1,500 missiles, each thought to carry a 500-megaton fusion warhead. The threatened world must try to intercept a bombardment that the nearby destroyer cannot prevent.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
-          "start": "20:36",
+          "start": "30:12",
           "end": "32:34",
-          "note": "The reading follows delayed diplomacy, an enemy fleet's refusal to negotiate, the distinction between powered missile range and continuing velocity, and a mass fusion-warhead salvo against a planet."
+          "note": "Missiles retain velocity after powered flight, the target is the planet, and the estimated salvo carries at least 1,500 missiles with likely 500-megaton warheads."
         }
       ],
       "kind": "chapter",
-      "summary": "Against a maneuvering warship, missile range ends with useful powered flight; against a planet, the same missile can coast onward and turn a fleet action into strategic bombardment."
+      "summary": "A planetary target cannot evade missiles coasting beyond their powered range, leaving Paladin to witness a bombardment it cannot stop."
     },
     {
       "slug": "decapitation-strike-genocidal-consequences",
-      "title": "A decapitation strike can produce genocidal consequences",
+      "title": "Why does the remnant faction attack a planet?",
       "start": "33:27",
       "end": "38:47",
       "topics": [
         "decapitation-strikes",
         "deterrence",
+        "remnant-faction",
         "science-fiction",
         "strategic-ethics",
         "strategy"
       ],
-      "body": "The fictional strike removes an imperial leadership and also destroys the caste through which the species reproduces. A plan framed as surgical decapitation therefore becomes genocidal in effect even though its immediate aim is to end an aggressive slave empire's war-making capacity. Moral judgment cannot stop with the attacker's justification or the label attached to the target list. The survivors experience the result as an existential assault and answer from grief, revenge, and fear rather than through the old political logic. The strategic victory also creates a more dangerous enemy.",
+      "body": "The fictional empire's leadership and reproductive caste occupy the same centers. Destroying those centers therefore removes its ability to reproduce as well as its command structure, making the decapitation strike genocidal in effect. The surviving warriors' anger helps explain why they now behave differently from the enemy encountered during the earlier war. The moral argument remains contested: the empire runs on slavery and aggression, while its opponents regard an abhorrent attack as their remaining way to end the war. An analogy with the decision to use atomic bombs against Japan frames the problem of choosing an abhorrent action to end a war. It is an interpretation of the strategic dilemma rather than a claim that the cases are identical.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
           "start": "33:27",
           "end": "38:47",
-          "note": "The discussion explains how the fictional leadership strike also eliminated reproduction and created an enduring strategic dilemma."
+          "note": "The reproductive caste also forms the imperial command centers, and the ensuing strategic dilemma is compared with the atomic bombing of Japan."
         }
       ],
-      "kind": "notable_point",
-      "summary": "Destroying an enemy's command center may also destroy the institutions or biology needed for that society to survive."
+      "kind": "qa",
+      "summary": "A fictional leadership strike also prevents reproduction, leaving the survivors with an existential grievance and changing their conduct of war.",
+      "question": "Why is the remnant faction bombarding a planet?",
+      "answerShort": "Its surviving warriors are reacting to a leadership strike that also destroyed their species' reproductive caste."
     },
     {
       "slug": "operation-medusa-communications-decapitation",
-      "title": "Operation Medusa destroys command by destroying communications",
+      "title": "Operation Medusa targets the network that holds a force together",
       "start": "39:47",
-      "end": "53:17",
+      "end": "44:36",
       "topics": [
         "command-and-control",
         "communications",
+        "fiction-operation-medusa",
         "fleet-readiness",
         "missile-warfare",
         "science-fiction",
         "strategic-attack"
       ],
-      "body": "Operation Medusa attacks an interstellar communications system rather than trying to defeat every enemy warship directly. Losing that network strips commanders of real-time sensors, national direction, and reliable intelligence, much as destroying satellites, cables, telephone links, and internet infrastructure would paralyze a modern force. The reading first presents a Commonwealth fleet that expects a decisive offensive because it can concentrate seventy-eight capital ships, even though its formations have already spent very different shares of their missile magazines. When the alliance strike destroys the quantum-communications network and attacks core systems, that local strength becomes strategically isolated. The sequence treats communications and replenishable ammunition as combat power: intact ships cannot prosecute a coherent campaign when they do not know what has happened, where authority survives, or what orders still apply.",
+      "body": "Operation Medusa attacks the interstellar communications system in the Castle Federation setting. The intended result is to destroy a larger power's ability to coordinate its war effort. The modern comparison is the simultaneous loss of satellites, communications cables, and telephone masts. A force dependent on those connections would have to rebuild communications before it could operate normally. The fictional attack makes the supporting network a strategic target even while many enemy ships remain intact.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
           "start": "39:47",
-          "end": "44:29",
-          "note": "The commentary defines Operation Medusa as an attack on the communications system and compares its effect with losing satellites, cables, telephone links, and internet infrastructure."
-        },
-        {
-          "start": "46:53",
-          "end": "53:17",
-          "note": "The reading contrasts missile-magazine states and plans for a concentrated offensive before the communications strike reaches the Commonwealth core."
+          "end": "44:36",
+          "note": "Operation Medusa targets interstellar communications, with an analogy to simultaneous loss of satellites, communications cables, and telephone masts."
         }
       ],
       "kind": "chapter",
-      "summary": "Operation Medusa attacks an interstellar communications network, leaving physically surviving fleets unable to gather intelligence, coordinate forces, or exploit local victories."
+      "summary": "Destroying a pervasive communications network can disable coordination across a force whose ships still survive."
+    },
+    {
+      "slug": "bruships-86-medusa-magazines-and-concentration",
+      "title": "Concentrating a fleet requires ammunition and exposes the frontier",
+      "start": "46:53",
+      "end": "49:27",
+      "topics": [
+        "fiction-operation-medusa",
+        "fleet-readiness",
+        "force-concentration",
+        "missile-warfare",
+        "naval-logistics",
+        "science-fiction"
+      ],
+      "body": "Before Operation Medusa takes effect, the Commonwealth commander plans to gather seventy-eight capital ships for a decisive offensive. His formations have very different ammunition states: one has fired roughly fifteen percent of its missiles, while another has expended more than seventy percent. Reloading at Niagara must precede the next advance. Concentration also requires drawing ships away from local defenses, leaving much of the frontier lightly protected. The plan accepts that exposure in the hope of destroying the opposing fleets before they can receive further reinforcements.",
+      "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
+      "evidence": [
+        {
+          "start": "46:53",
+          "end": "49:27",
+          "note": "Magazine states, proposed rearming at Niagara, seventy-eight capital ships, and the lightly defended frontier created by concentration."
+        }
+      ],
+      "kind": "chapter",
+      "summary": "Missile expenditure and the need to weaken local defenses constrain a fictional plan for a decisive fleet battle."
     },
     {
       "slug": "operation-medusa-command-authority-and-pow-protection",
       "title": "Command authority and POW duties survive communications collapse",
       "start": "54:02",
-      "end": "1:02:51",
+      "end": "58:20",
       "topics": [
         "command-and-control",
         "continuity-of-government",
+        "fiction-operation-medusa",
         "military-law",
         "military-logistics",
         "prisoners-of-war",
         "science-fiction",
         "strategic-ethics"
       ],
-      "body": "After the communications strike, surviving admirals propose revenge or a march back to the capital, but the regional marshal refuses to act on anger without intelligence. His commission gives him absolute authority inside the Ringward Marches yet makes leaving the region without Senate authorization desertion and taking the fleet with him treason, illustrating how lawful command can constrain an apparently sensible emergency response. The continuity-of-government facility has already been destroyed, while planned additional backups were canceled so funds could build super-battleships, turning an old procurement tradeoff into a crisis vulnerability. He orders the force back to Niagara, where surviving civil authority or new instructions may find it. He also transfers captured enemy personnel to civilian custody because sailors grieving attacks on their home systems may retaliate, and the law of war still binds the fleet. The scene makes institutional resilience a combination of communications, delegated authority, redundant government, disciplined personnel, and protected prisoners rather than simply surviving hulls.",
+      "body": "After the fictional communications strike, one admiral proposes a revenge offensive and another suggests returning to the capital. The regional marshal rejects both courses because he lacks intelligence and his commission limits his authority to the Ringward Marches. Leaving without Senate authorization would constitute desertion, and taking his fleet to the capital would constitute treason regardless of his intentions. The emergency continuity-of-government facility has been destroyed, while two planned backups were canceled to fund super-battleships that have also been lost. He orders the fleet back to Niagara, its previously designated gathering point, where surviving authorities will know to look for it. He also orders prisoners removed from the warships to proper detention facilities because grieving sailors may retaliate against captives whose comrades attacked their homes.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
           "start": "54:02",
           "end": "58:20",
-          "note": "The surviving commanders reject a revenge offensive, explain the marshal's legal limits, review failed continuity plans, and order prisoners moved away from angry crews."
-        },
-        {
-          "start": "58:25",
-          "end": "1:02:51",
-          "note": "The prisoner dialogue connects the successful strike with civilian disorder, strategic responsibility, and continuing obligations toward captives."
+          "note": "The marshal's regional commission restricts movement toward the capital, canceled government backups leave no surviving communications contingency, and the fleet receives orders to regroup and protect its prisoners."
         }
       ],
       "kind": "chapter",
-      "summary": "After strategic communications fail, lawful authority, continuity plans, and prisoner protection determine what an intact regional fleet can legitimately do."
+      "summary": "A regional marshal faces legal limits on moving his fleet, failed government backups, and an immediate duty to protect enemy prisoners after attacks on his home systems."
     },
     {
-      "slug": "science-fiction-creates-distance-for-teaching-strategy",
-      "title": "Science fiction creates distance for judging strategy and legitimacy",
-      "start": "1:06:00",
-      "end": "1:08:51",
+      "slug": "operation-medusa-civilian-consequences-and-responsibility",
+      "title": "Operation Medusa leaves civilian harm and responsibility disputed",
+      "start": "58:25",
+      "end": "1:02:51",
       "topics": [
-        "case-studies",
+        "civilian-casualties",
+        "fiction-operation-medusa",
         "military-education",
+        "psychological-warfare",
+        "science-fiction",
+        "strategic-ethics"
+      ],
+      "body": "Operation Medusa succeeds, but the fictional marshal and his captive opponent disagree over responsibility for its consequences. The marshal predicts that mutiny and civil disorder will kill millions even if every object attacked was a legitimate military target. His prisoner replies that Commonwealth systems must be self-sufficient in food and basic industry, so the loss of communications need not destroy the civilization. Their argument returns to an earlier planetary atrocity, for which the marshal accepts responsibility despite the attacking captain having acted without authorization. The marshal recognizes the use of speed, aggression, and shock from his own work on psychological warfare, only to learn that his opponent studied that work in a rival academy's library. He nevertheless arranges civilian custody for the prisoners because his own sailors include more people from the attacked home system. The captive admiral places responsibility for the wider catastrophe on the leaders who began the war, leaving an unresolved dispute over its human cost.",
+      "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
+      "evidence": [
+        {
+          "start": "58:25",
+          "end": "1:00:55",
+          "note": "The marshal predicts civilian deaths from unrest after the communications strike, while his prisoner invokes local self-sufficiency and challenges responsibility for an earlier planetary atrocity."
+        },
+        {
+          "start": "1:00:58",
+          "end": "1:01:42",
+          "note": "The marshal recognizes his own psychological-warfare doctrine in the enemy operation and learns that his opponent studied his thesis."
+        },
+        {
+          "start": "1:01:49",
+          "end": "1:02:51",
+          "note": "Civilian custody is chosen to reduce the risk of reprisals, and the prisoner assigns responsibility for the war's consequences to its initiators."
+        }
+      ],
+      "kind": "chapter",
+      "summary": "A successful communications strike prompts competing arguments about civilian deaths, responsibility for escalation, and using an enemy's strategic doctrine against him."
+    },
+    {
+      "slug": "political-unity-consent-and-coerced-referendums",
+      "title": "Political unity and the problem of coerced consent",
+      "start": "1:06:00",
+      "end": "1:07:50",
+      "topics": [
         "political-legitimacy",
         "science-fiction",
-        "self-determination",
-        "strategy"
+        "self-determination"
       ],
-      "body": "Political unity gains legitimacy through choice, and a union imposed by force cannot be treated as the same thing. That premise frames why the fictional war cannot be reduced to an orderly project of unification. The teaching sequence moves from a fictional example to an old historical case, a recent case, and finally a current event. Science fiction gives students distance from familiar loyalties while still presenting recognizable problems of command, logistics, and strategic choice. The historical examples test whether the same reasoning survives contact with real evidence and consequences. By the time discussion reaches current affairs, students already have a framework against which to check their instincts. The sequence makes it easier to notice when allegiance to a present-day side begins to replace analysis.",
+      "body": "Voluntary choice is the proposed test of legitimacy for a united Earth or another political union. Referendums are accepted as a way for people to decide whether to remain within a larger political body. Armed people visiting houses to collect votes cannot establish that consent. The objection concerns coercion of the voters, even when political unity is the stated goal.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
           "start": "1:06:00",
-          "end": "1:08:51",
-          "note": "The speaker explains chosen unity and his staged method for teaching strategic reasoning through fiction and history."
+          "end": "1:06:29",
+          "note": "Political unity is presented as legitimate only when chosen, with referendums accepted as a means of deciding continued membership."
+        },
+        {
+          "start": "1:07:40",
+          "end": "1:07:50",
+          "note": "Collecting referendum votes through armed visits to people's homes is rejected as coercive."
         }
       ],
       "kind": "notable_point",
-      "summary": "A fictional dispute over forced unity lets students test legitimacy and strategic logic before present-day loyalties distort their judgment."
+      "summary": "The argument for political unity depends on consent, which an armed collection of votes cannot establish."
+    },
+    {
+      "slug": "science-fiction-creates-distance-for-teaching-strategy",
+      "title": "Science fiction gives students distance to test strategic reasoning",
+      "start": "1:08:00",
+      "end": "1:08:51",
+      "topics": [
+        "case-studies",
+        "military-education",
+        "science-fiction",
+        "strategy"
+      ],
+      "body": "The teaching sequence begins with science fiction, proceeds to an old historical example and a more recent one, and finishes with a current event. Students first work through the logic of a situation away from their present political loyalties. Those earlier cases then provide comparisons when the class reaches a dispute in which students identify with one side. If loyalty begins to replace reasoning, the teacher can return to conclusions the students already accepted in the fictional and historical examples. The method aims to make strategic thinking consistent across cases that provoke different personal reactions.",
+      "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
+      "evidence": [
+        {
+          "start": "1:08:00",
+          "end": "1:08:51",
+          "note": "A teaching sequence moves from fiction through older and newer historical cases to current events, revisiting earlier reasoning when students default to supporting their own side."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Fictional and historical cases give students a basis for testing whether loyalty to a present-day side is changing their strategic reasoning."
     },
     {
       "slug": "drifters-folly-high-speed-destroyer-attack",
       "title": "Two destroyers exploit velocity, surprise, and time-on-target fire",
       "start": "1:08:55",
-      "end": "1:25:03",
+      "end": "1:20:49",
       "topics": [
-        "damage-control",
         "destroyers",
+        "fiction-gravity-shields",
         "missile-warfare",
-        "mission-kill",
         "science-fiction",
-        "strategic-ethics",
         "surprise",
         "time-on-target"
       ],
-      "body": "The Drifter's Folly battle treats relative velocity as both weapon range and protection. Two destroyers pre-position missiles so hundreds activate together as one time-on-target salvo, denying the heavier formation the warning it would receive from a conventional launch. Their high closing speed carries them rapidly through missile and laser range, while gravity shields let the small ships survive fire that would otherwise overwhelm them. Concentrated attack destroys one dreadnought and disables another's propulsion, leaving it to fall into a gas giant. One destroyer is lost in the passage, so the victory demonstrates both the combat value and the terrible cost of a carefully designed asymmetric attack. Henry is nevertheless glad when enemy escorts turn back to rescue the disabled ship's crew, even though those same ships could resume the pursuit. His refusal to seek needless deaths makes restraint and the enemy captains' willingness to recover survivors part of the battle's moral test.",
+      "body": "In Drifter's Folly, two destroyers approach a much heavier force at 10,000 kilometers per second. Their existing velocity extends the reach of missiles fired ahead and limits the time spent within enemy weapon range. Once the destroyers have passed, the enemy missiles lack the change in velocity needed to catch them. Before revealing themselves, the destroyers have already placed 700 missiles ahead of their approach and programmed them to arrive as one coordinated time-on-target strike. The attack concentrates its penetrator missiles on one super-dreadnought while the ships prepare to direct their lasers against the other. Gravity shields allow the destroyers to survive the initial return fire, but increasing proximity eventually defeats that protection. One enemy super-dreadnought is destroyed, and one of the two destroyers is lost with 400 people aboard during the close pass.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
-          "start": "1:08:55",
-          "end": "1:25:03",
-          "note": "The battle reading covers approach velocity, coordinated missile activation, gravity shields, laser engagement, a mission kill, one destroyer lost, and the rescue of enemy survivors."
+          "start": "1:10:07",
+          "end": "1:14:14",
+          "note": "The high-speed approach extends forward missile reach, restricts the engagement interval, and prevents missiles from catching the destroyers after the pass."
+        },
+        {
+          "start": "1:14:16",
+          "end": "1:18:20",
+          "note": "Pre-positioned missiles form a coordinated 700-missile strike that destroys one super-dreadnought."
+        },
+        {
+          "start": "1:18:20",
+          "end": "1:20:49",
+          "note": "Gravity shields withstand the initial return fire but fail at close range, and one destroyer is lost with 400 personnel."
         }
       ],
       "kind": "chapter",
-      "summary": "A small force defeats much heavier ships by pre-positioning a coordinated missile strike, concentrating on decisive targets, and escaping on a velocity the enemy cannot match."
+      "summary": "Two fictional destroyers combine a concealed missile barrage with a high-speed pass against super-dreadnoughts, losing one ship during the attack."
+    },
+    {
+      "slug": "drifters-folly-mission-kill-and-enemy-rescue",
+      "title": "A mission kill leaves a super-dreadnought falling into a gas giant",
+      "start": "1:21:06",
+      "end": "1:25:03",
+      "topics": [
+        "intelligence",
+        "mission-kill",
+        "orbital-mechanics",
+        "science-fiction",
+        "strategic-ethics"
+      ],
+      "body": "The surviving destroyer's attack has disabled the second super-dreadnought's engines rather than destroyed its hull outright. In this fictional setting, impacts against the larger ship's energy screens transfer momentum to the protected ship, pushing it toward the gas giant below. Accurate intelligence supplied by the Drifters lets the attackers direct their lasers against the engines, leaving the target unable to arrest its fall. Its escorts initially pursue the destroyer and turn back too late to save the ship, although they can recover escape pods and evacuation shuttles. Henry welcomes that rescue despite his hatred of the enemy and the possibility that the escorts could attack again. His earlier role in destroying the species' future gives him another reason to avoid unnecessary deaths. The victory has still cost half his two-ship squadron, and rescue operations leave the enemy captains with a choice between withdrawing with survivors and risking them in renewed combat.",
+      "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
+      "evidence": [
+        {
+          "start": "1:21:06",
+          "end": "1:22:58",
+          "note": "Disabled engines and momentum transferred through energy screens leave the super-dreadnought falling into the planet, while returning escorts can recover survivors but cannot save the ship."
+        },
+        {
+          "start": "1:23:03",
+          "end": "1:24:10",
+          "note": "The target is identified as a gas giant, and Henry welcomes rescue while acknowledging his hatred of the enemy, its inability to replace its dead, and the escorts' continuing ability to fight."
+        },
+        {
+          "start": "1:24:53",
+          "end": "1:25:03",
+          "note": "The victory costs one of the two attacking destroyers."
+        }
+      ],
+      "kind": "chapter",
+      "summary": "Precise engine damage and the setting's shield physics doom a capital ship, while rescuing its crew creates a further tactical and moral choice for both sides."
     },
     {
       "slug": "capital-ship-weapon-speed-versus-fleet-numbers",
-      "title": "Faster weapons belong first on scarce capital ships",
+      "title": "Projectile speed drives the initial weapon choice",
       "start": "1:31:21",
       "end": "1:32:12",
       "topics": [
-        "capital-ships",
-        "destroyers",
-        "force-structure",
         "naval-gunnery",
         "procurement",
-        "science-fiction"
+        "science-fiction",
+        "weapon-design"
       ],
-      "body": "The ten-percent-light-speed weapon offers much greater delivered energy and reaches a distant target sooner. That advantage matters most on capital ships and carriers, where each platform must deliver the strongest possible attack. Destroyers may retain the proven seven-percent weapon if the smaller system allows the fleet to build more hulls. The numerical advantage matters only when enough trained crews are available for those additional ships.",
+      "body": "The fictional design choice is between shrinking a weapon while retaining a projectile velocity of seven percent of light speed and keeping its existing length to reach ten percent. The initial preference is firmly for the faster weapon. Moving from seven to ten percent is described as almost a fifty-percent increase in speed. The reason given is the greater energy delivered at impact.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
           "start": "1:31:21",
           "end": "1:32:12",
-          "note": "The initial answer favors the faster system for its energy advantage."
-        },
-        {
-          "start": "1:55:53",
-          "end": "1:57:30",
-          "note": "The follow-up differentiates capital-ship firepower from destroyer numbers and crew constraints."
+          "note": "The initial procurement choice favors keeping the weapon's length and raising projectile velocity from seven to ten percent of light speed for greater impact energy."
         }
       ],
       "kind": "qa",
-      "summary": "A major increase in projectile velocity is most valuable on capital ships, while cheaper destroyers may retain the older weapon to preserve numbers.",
-      "question": "Should the fleet keep a seven-percent-light-speed weapon or adopt a larger ten-percent system?",
-      "answerShort": "Put the faster weapon on capital ships and carriers, but consider retaining the smaller system on destroyers to preserve fleet numbers."
+      "summary": "The initial fictional procurement choice favors greater impact energy over shrinking a weapon that retains its existing projectile speed.",
+      "question": "Should a weapon be shortened while retaining seven-percent-light-speed projectiles, or keep its length and reach ten percent?",
+      "answerShort": "Keep its length and use the faster projectile because of the increase in impact energy."
+    },
+    {
+      "slug": "rimward-stars-liberation-and-coalition-diplomacy",
+      "title": "Liberation requires agreements over territory, bases, and allies",
+      "start": "1:36:05",
+      "end": "1:40:46",
+      "topics": [
+        "coalition-warfare",
+        "diplomacy",
+        "intelligence",
+        "logistics-bases",
+        "political-legitimacy",
+        "rimward-stars",
+        "science-fiction"
+      ],
+      "body": "In Rimward Stars, the alliance intends to liberate an occupied world while recognizing that its resources belong to its inhabitants. Neighboring governments will have to negotiate with whoever governs the liberated planet. A captured fueling station creates a separate dispute because stolen resources built it and its position has allowed raids against more than one neighbor. Joint ownership under the free-trade-zone rules offers a way to retain the station's usefulness without returning it to a threatening power. The military coalition accepts limited help from an enemy officer whose desire for revenge makes him dependable for the immediate operation, without extending that trust to other missions. Intelligence about the destination will be six days old on arrival, so the commanders defer a final attack plan until they can scout the system. New alliance members have little force left to contribute, but their willingness to join during a dangerous war still carries political and morale value.",
+      "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
+      "evidence": [
+        {
+          "start": "1:36:05",
+          "end": "1:38:24",
+          "note": "Liberated resources remain the local population's property, and neighboring governments consider joint ownership of a captured fueling station."
+        },
+        {
+          "start": "1:38:25",
+          "end": "1:39:29",
+          "note": "Six-day travel makes existing intelligence perishable, while a hostile officer receives limited trust for an operation that serves his own motives."
+        },
+        {
+          "start": "1:39:31",
+          "end": "1:40:46",
+          "note": "Militarily weakened states consider joining the alliance, whose commanders recognize the morale value of their support and leave station security and prisoner jurisdiction to political agreement."
+        }
+      ],
+      "kind": "chapter",
+      "summary": "The fictional coalition must settle ownership, shared bases, limited trust, and alliance membership before military liberation can produce a workable political outcome."
     },
     {
       "slug": "rimward-stars-coalition-and-joint-operations",
-      "title": "Coalition warfare joins diplomacy, intelligence, and surprise",
-      "start": "1:33:26",
-      "end": "1:54:11",
+      "title": "Captured intelligence makes a coalition attack possible",
+      "start": "1:40:57",
+      "end": "1:49:30",
       "topics": [
         "carrier-aviation",
         "coalition-warfare",
         "diplomacy",
+        "information-security",
         "intelligence",
         "joint-operations",
         "readiness",
+        "rimward-stars",
         "science-fiction"
       ],
-      "body": "Rimward Stars begins with negotiations over liberated territory, shared infrastructure, prisoners, and alliance membership before moving to a combined assault. The partners lack the strength to impose every preference, so diplomacy establishes a workable distribution of risks and rewards before the shooting begins. Captured intelligence reveals the defensive network, but mistrust forces the allies to design a limited, tamper-resistant way to share live targeting data. A damaged strike cruiser then creates the diversion and sensor picture that lets a carrier emerge close enough to launch its bombers effectively. Veteran crews exploit the conscripts' slow reaction, showing that coalition trust, intelligence, and readiness can matter more than nominal platform strength.",
+      "body": "In Rimward Stars, almost two thousand defensive platforms make the pirate base a difficult target even though much of its equipment is obsolete. Captured records reveal the defenses, but the attackers must allow for missiles produced locally or supplied more recently. Long-range fire could defeat the fixed defenses if enemy raiders, fighters, and the battlecruiser could first be kept from overwhelming the attacking force. The allies also need current targeting information without exposing their sensitive equipment to one another. A probe fitted with a tamper-resistant self-destruct mechanism provides the necessary link between their ships. The strike cruiser's dangerous approach supplies both a diversion and the battlecruiser's position, at the cost of serious damage and a difficult escape.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
-          "start": "1:33:26",
-          "end": "1:54:11",
-          "note": "The reading covers coalition diplomacy, shared facilities, captured intelligence, scouting, a diversion, carrier launch, and the readiness gap between veterans and conscripts."
+          "start": "1:41:51",
+          "end": "1:43:45",
+          "note": "The defensive network includes nearly two thousand platforms, uncertain missile stocks, and mobile forces that prevent an easy long-range attack."
+        },
+        {
+          "start": "1:45:00",
+          "end": "1:45:11",
+          "note": "The carrier needs both the battlecruiser's current position and a diversion."
+        },
+        {
+          "start": "1:47:07",
+          "end": "1:47:35",
+          "note": "Protected probes relay targeting information between allies that distrust one another."
+        },
+        {
+          "start": "1:48:43",
+          "end": "1:49:30",
+          "note": "The damaged strike cruiser reports the battlecruiser's position while struggling to escape."
         }
       ],
       "kind": "chapter",
-      "summary": "A coalition turns weak partners, captured intelligence, and complementary forces into an attack against a much stronger defensive system."
+      "summary": "Two mistrustful allies combine captured records, protected targeting links, and a diversion to attack a heavily defended pirate base."
     },
     {
       "slug": "training-scenarios-teach-when-to-cut-losses",
@@ -346,17 +563,84 @@
         {
           "start": "1:41:22",
           "end": "1:41:49",
-          "note": "The reading explains that some training scenarios teach officers to cut losses and accept a lesser victory rather than lose ships and lives pursuing the formal objective."
+          "note": "Deliberately unwinnable exercises teach officers to preserve ships and lives by accepting a lesser success, while some scenarios reward an ingenious solution."
         }
       ],
       "kind": "notable_point",
       "summary": "Some war-college exercises are deliberately unwinnable so officers learn to preserve ships and lives by accepting a lesser success."
     },
     {
+      "slug": "rimward-stars-ready-fighters-and-reaction-time",
+      "title": "Ready fighters matter more than a battlecruiser's paper strength",
+      "start": "1:43:46",
+      "end": "1:54:07",
+      "topics": [
+        "carrier-aviation",
+        "combat-readiness",
+        "military-training",
+        "rimward-stars",
+        "science-fiction"
+      ],
+      "body": "The Rimward Stars attack plan depends on reaching the enemy before its fighters can organize a defense. A launch at maximum range gives the battlecruiser ten minutes to respond, so the attackers seek a closer approach with substantial initial velocity. Their actual launch leaves only three minutes and forty seconds before impact. The battlecruiser takes about a minute to alter course and more than two minutes to open fire, while its fighters emerge with less than a minute remaining. Its heavy weapons and strong protection cannot compensate for that delay. Veteran crews are contrasted with conscripts whose delay leaves their available fighters unable to stop the attack.",
+      "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
+      "evidence": [
+        {
+          "start": "1:43:46",
+          "end": "1:45:11",
+          "note": "Planning compares missile flight time with fighter deployment and uses approach velocity to shorten the defender's reaction time."
+        },
+        {
+          "start": "1:51:01",
+          "end": "1:51:42",
+          "note": "The bomber launch produces ninety-six torpedoes with a reported flight time of three minutes and forty seconds."
+        },
+        {
+          "start": "1:52:09",
+          "end": "1:54:07",
+          "note": "The conscript crew delays maneuvering, opening fire, and launching fighters until the torpedoes are almost upon it."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "A bomber attack succeeds by shortening missile flight time and exploiting a conscript crew's failure to launch its ready fighters."
+    },
+    {
+      "slug": "faster-space-weapons-and-destroyer-numbers",
+      "title": "Balance faster weapons against ship numbers and available crews",
+      "start": "1:55:53",
+      "end": "2:01:32",
+      "topics": [
+        "capital-ships",
+        "crewing",
+        "destroyers",
+        "force-structure",
+        "naval-gunnery",
+        "procurement",
+        "science-fiction"
+      ],
+      "body": "Cheaper or smaller weapons can support a more numerous fleet, but additional hulls still need trained crews. The proposed compromise keeps an adequate older weapon on destroyers while giving capital ships and carriers the faster system. Greater projectile speed also shortens the target's time to respond at a given distance, even if maximum range stays the same. A later clarification says that even the smaller new weapon is too large for destroyers. Under that constraint, the choice concerns capital ships, for which the faster system remains the preference.",
+      "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
+      "evidence": [
+        {
+          "start": "1:55:53",
+          "end": "1:57:30",
+          "note": "The follow-up weighs destroyer numbers and crew availability against faster weapons for capital ships and carriers."
+        },
+        {
+          "start": "2:01:24",
+          "end": "2:01:32",
+          "note": "The clarified weapon remains too large for destroyers, leaving the faster option preferred for capital ships."
+        }
+      ],
+      "kind": "qa",
+      "summary": "The choice changes with ship role, weapon size, and the number of crews available for a larger fleet.",
+      "question": "Should a fleet keep seven-percent-light-speed weapons to build more ships, or adopt ten-percent weapons?",
+      "answerShort": "Favor the faster weapon for capital ships and carriers. A smaller destroyer weapon is useful only if it fits the ship and enough crews exist for the additional hulls."
+    },
+    {
       "slug": "staged-earth-mars-logistics",
-      "title": "Build a Mars supply chain in stages rather than one leap",
+      "title": "Lunar bases could support a staged Mars supply chain",
       "start": "1:58:15",
-      "end": "2:04:03",
+      "end": "2:07:35",
       "topics": [
         "logistics-bases",
         "mars",
@@ -365,73 +649,157 @@
         "space-logistics",
         "transportation"
       ],
-      "body": "A practical Mars supply chain would begin with a lunar station, add a base around a Martian moon, and connect them with specialized transport links. Crews could learn how to build and maintain an off-world base close to Earth before repeating the work near Mars. Separate vehicles could handle Earth-to-Moon travel, the interplanetary leg, and local movement near Mars instead of forcing one design to meet every requirement. The Martian-moon base would also hold supplies and give an expedition somewhere to withdraw during an emergency.",
+      "body": "The proposed Mars supply chain begins with a base on Earth's Moon, followed by a station on a suitable Martian moon. Experience gained close to Earth would inform construction farther away, while the second station could accumulate supplies before a settlement on Mars is attempted. Separate vehicles would handle surface-to-moon transport and the journey between the two moons. A craft that remains in space avoids atmospheric entry requirements, although radiation shielding remains necessary. Low-thrust propulsion could then serve a different role from the engines needed to reach orbit. The station near Mars would give an expedition somewhere to withdraw during an emergency, while its own risks would require compartmentation and lessons learned from the nearer base.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
           "start": "1:58:15",
-          "end": "2:04:03",
-          "note": "The response proposes lunar and Martian-moon bases, specialized transport legs, and an evacuation point."
-        }
-      ],
-      "kind": "qa",
-      "summary": "Separate Earth-to-Moon, interplanetary, and Mars-orbit transport creates safer bases, specialized vehicles, and practical evacuation points.",
-      "question": "How should a practical logistics system for a Mars colony be organized?",
-      "answerShort": "Use staged bases and specialized transport links through the Moon and a Martian moon instead of one Earth-to-Mars vehicle."
-    },
-    {
-      "slug": "ravens-course-damage-deception-and-terrain",
-      "title": "A crippled ship uses deception and terrain to survive",
-      "start": "2:04:08",
-      "end": "2:22:08",
-      "topics": [
-        "amphibious-warfare",
-        "anti-ship-missiles",
-        "damage-control",
-        "deception",
-        "exocet-missile",
-        "falklands-war",
-        "guerrilla-warfare",
-        "hypersonic-weapons",
-        "littoral-warfare",
-        "science-fiction",
-        "submarines"
-      ],
-      "body": "The battle begins with a damaged ship balancing shield resets, a broken keel, reduced acceleration, and a tiny surviving fighter force. Those limits force the crew to seek concealment, manipulate the enemy's picture, and use a comet field as terrain rather than treating space as an empty arena. Hidden shuttles, weapons, and explosives turn the pursuit into a form of guerrilla warfare in three dimensions. The same logic appears in Michael Clapp's 'rock beats Exocet' choice of San Carlos Water, where landforms complicated a fast missile's attack geometry. The comparison also exposes a tradeoff in amphibious planning: standing farther offshore gives defensive missiles more interception space, while closing with complex terrain can force Exocet-like or hypersonic weapons into difficult pop-up maneuvers. Submarine crews offer a useful model for spacecraft because they combine three-dimensional awareness with long endurance in a confined vessel.",
-      "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
-      "evidence": [
+          "end": "2:00:06",
+          "note": "Lunar bases and separate transport legs divide the proposed journey into manageable stages."
+        },
         {
-          "start": "2:04:08",
-          "end": "2:22:08",
-          "note": "The reading and commentary connect damage control, information manipulation, comet-field concealment, San Carlos terrain, standoff-versus-pop-up missile geometry, and submarine crewing."
+          "start": "2:02:13",
+          "end": "2:03:10",
+          "note": "Historical staging bases illustrate transfers between transport types, followed by the distinction between atmospheric and radiation protection."
+        },
+        {
+          "start": "2:03:32",
+          "end": "2:03:59",
+          "note": "Low-thrust propulsion suits a different part of the journey from surface launch."
+        },
+        {
+          "start": "2:06:42",
+          "end": "2:07:35",
+          "note": "A station near Mars provides an evacuation point, with compartmentation and experience from the Moon proposed to reduce its own risks."
         }
       ],
       "kind": "chapter",
-      "summary": "Raven's Course turns structural damage, sensor ambiguity, asteroids, and hidden weapons into a lesson about guerrilla warfare and maritime terrain."
+      "summary": "A proposed chain of lunar bases separates surface transport from interplanetary travel and gives a Mars expedition a nearby withdrawal point."
+    },
+    {
+      "slug": "ravens-course-damage-deception-and-terrain",
+      "title": "Structural damage forces Raven to abandon a running escape",
+      "start": "2:07:39",
+      "end": "2:11:24",
+      "topics": [
+        "damage-control",
+        "fiction-ravens-course-raven",
+        "naval-engineering",
+        "operational-planning",
+        "ravens-course",
+        "science-fiction"
+      ],
+      "body": "In Raven's Course, restoring the shield does not restore the ship's ability to fight or escape. The damaged keel leaves the main battery unusable without a complete reconstruction, though that loss frees power for the surviving systems. Continued high acceleration threatens to break the ship apart, so the captain gives engineering authority over the safe thrust limit. Slowing down allows the pursuers to gain and forces a new plan to hide in a comet swarm. Enemy fighters remain a problem because they could find the ship before the larger pursuers arrive. The crew therefore has to defeat the immediate fighter threat while preserving enough of the damaged vessel to reach concealment.",
+      "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
+      "evidence": [
+        {
+          "start": "2:07:39",
+          "end": "2:09:10",
+          "note": "Shield recovery, an irreparable keel, loss of the main battery, and damaged compensators limit the ship's options."
+        },
+        {
+          "start": "2:10:04",
+          "end": "2:11:24",
+          "note": "Engineering controls the acceleration limit while the captain plans concealment in a comet swarm and considers the approaching fighters."
+        }
+      ],
+      "kind": "chapter",
+      "summary": "A damaged keel removes Raven's main battery and limits acceleration, forcing its crew to seek concealment while hostile fighters close in."
     },
     {
       "slug": "selective-sensor-footage-and-war-escalation",
-      "title": "Missing sensor history can turn uncertainty into war",
+      "title": "Selective sensor footage can conceal grounds for doubt",
       "start": "2:12:24",
-      "end": "2:14:02",
+      "end": "2:14:41",
       "topics": [
         "deception",
+        "fiction-ravens-course-raven",
         "information-warfare",
         "intelligence",
+        "ravens-course",
+        "rules-of-engagement",
         "science-fiction",
+        "source-criticism",
         "strategy"
       ],
-      "body": "The damaged Raven must decide whether approaching Drifter fighters are rescuers or attackers after a confused battle. Henry realizes that a party trying to provoke war could remove the ninety seconds before the first visible shots from otherwise authentic sensor footage, reversing the apparent responsibility without fabricating the remaining record. The gap would be too small to prove an incident, yet large enough to undermine confidence and encourage leaders to suspect a planned attack. He therefore sends a warning before authorizing fire inside a defined boundary, showing how intelligence uncertainty constrains tactical self-defense. The watch point links selective evidence, attribution, and escalation: an incomplete but genuine-looking record can be as dangerous as an obvious fake.",
+      "body": "Henry doubts the apparent account of the battle because a force credited with a devastating opening strike then waited ninety seconds before the Drifters fired. He suspects that omitting this interval from otherwise authentic sensor footage could hide the reason to question that account. The full record would not prove innocence, but it would provide enough doubt to justify talking to the accused side before going to war. His officers also challenge whether fear and personal anger are shaping his interpretation. With unidentified fighters approaching the damaged Raven, the crew cannot settle those questions before deciding how to defend itself. A warning sets a boundary of 750,000 kilometers and states that fighters entering it will be fired upon.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
           "start": "2:12:24",
+          "end": "2:13:07",
+          "note": "The unexplained ninety-second interval raises doubt about responsibility, while selective omission could support a case for war."
+        },
+        {
+          "start": "2:13:13",
           "end": "2:14:02",
-          "note": "Henry explains how omitting ninety seconds of otherwise authentic sensor footage could conceal who fired first, create doubt, and provoke war, then issues a warning before setting a fire boundary."
+          "note": "Officers challenge the captain's interpretation before he orders a warning and conditional fire."
+        },
+        {
+          "start": "2:14:06",
+          "end": "2:14:41",
+          "note": "The transmitted warning sets a 750,000-kilometer defensive boundary."
         }
       ],
       "kind": "notable_point",
-      "summary": "Removing ninety seconds from otherwise authentic sensor footage can hide who fired first and leave enough doubt to push states toward war."
+      "summary": "In Raven's Course, ninety seconds of unexplained inactivity could justify talks before war. Removing those seconds makes the apparent attack harder to question."
+    },
+    {
+      "slug": "comet-terrain-and-san-carlos-missile-defense",
+      "title": "Comet concealment leads to a comparison with San Carlos",
+      "start": "2:16:49",
+      "end": "2:19:58",
+      "topics": [
+        "amphibious-warfare",
+        "anti-ship-missiles",
+        "exocet-missile",
+        "falklands-war",
+        "fiction-ravens-course-raven",
+        "guerrilla-warfare",
+        "hypersonic-weapons",
+        "littoral-warfare",
+        "ravens-course",
+        "science-fiction"
+      ],
+      "body": "Raven's Course uses a comet field as cover for a damaged ship, with concealed shuttles and explosives buying time against pursuers. The comparison with naval warfare challenges the assumption that an open environment offers no useful terrain. Michael Clapp's phrase 'rock beats Exocet' introduces San Carlos as an example of using landforms to obstruct missile approaches. Operating farther offshore gives defensive missiles more room for interception. The alternative argument favors closing with terrain that forces an attacker to negotiate difficult approach geometry, including pop-up maneuvers. The fictional pursuit extends that use of concealment into a form of guerrilla warfare in space.",
+      "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
+      "evidence": [
+        {
+          "start": "2:16:49",
+          "end": "2:18:57",
+          "note": "Comet-field concealment is compared with San Carlos terrain and the tradeoff between offshore interception space and difficult missile approach geometry."
+        },
+        {
+          "start": "2:19:39",
+          "end": "2:19:58",
+          "note": "Concealed shuttles and other devices support the comparison with guerrilla warfare."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Raven's use of hidden positions and traps prompts a comparison between offshore missile defense and the protection offered by coastal terrain."
+    },
+    {
+      "slug": "submarine-crews-as-space-warship-model",
+      "title": "Submarine crews offer a model for operating space warships",
+      "start": "2:20:46",
+      "end": "2:22:08",
+      "topics": [
+        "crewing",
+        "science-fiction",
+        "space-warfare",
+        "submarines"
+      ],
+      "body": "A space warship combines a large vessel's combat power with movement in every direction. Surface operations encourage a different spatial habit from the up-and-down movement familiar to submariners and aviators. Submarine crews also have experience living and working for months inside an enclosed vessel. Those combined demands make them the preferred starting point proposed here for crewing the first space warships.",
+      "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
+      "evidence": [
+        {
+          "start": "2:20:46",
+          "end": "2:22:08",
+          "note": "Three-dimensional movement and prolonged life in a confined vessel underpin the preference for submarine crews."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Submariners combine movement in three dimensions with experience living for months inside a confined vessel."
     },
     {
       "slug": "taranto-giulio-cesare-attack-geometry",
@@ -446,19 +814,19 @@
         "italian-navy",
         "torpedo-bombers"
       ],
-      "body": "Giulio Cesare's berth offered almost no workable torpedo approach. The only plausible route came from the southeast and exposed the attacking aircraft to dense defenses. Littorio, Cavour, Duilio, and other ships were easier to reach. Planners also had stronger reasons to spend scarce attack runs on newer or more valuable battleships.",
+      "body": "In repeated Taranto attack simulations, Giulio Cesare proves much harder to reach than the other battleships. Littorio is exposed, and workable approaches exist against Cavour, Duilio, Doria, and Vittorio Veneto. Giulio Cesare's position leaves almost no usable torpedo run. The possible approach from the southeast crosses so many defenses that the attacking aircraft are unlikely to survive.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
           "start": "2:25:33",
           "end": "2:27:32",
-          "note": "The answer compares target access and identifies the defended southeastern approach to Giulio Cesare."
+          "note": "Comparison of simulated attack approaches identifies Giulio Cesare's difficult berth and the hazardous southeastern route."
         }
       ],
       "kind": "qa",
-      "summary": "Giulio Cesare was a difficult torpedo target because the available approach crossed heavy defenses and offered poor angles compared with more valuable ships.",
+      "summary": "Repeated Taranto attack simulations find Giulio Cesare difficult to reach because her berth leaves almost no workable torpedo approach.",
       "question": "Why was Giulio Cesare so difficult to hit during a Taranto attack simulation?",
-      "answerShort": "Her berth offered very poor torpedo approaches, and the one possible angle crossed too many defenses for a lower-priority target."
+      "answerShort": "Her berth leaves almost no workable torpedo approach, while the possible southeastern route crosses heavy defenses."
     },
     {
       "slug": "no-washington-treaty-fast-battleship-race",
@@ -466,6 +834,7 @@
       "start": "2:27:47",
       "end": "2:28:19",
       "topics": [
+        "alternate-history",
         "battleships",
         "italian-navy",
         "japanese-navy",
@@ -474,24 +843,19 @@
         "us-navy",
         "washington-naval-treaty"
       ],
-      "body": "Interwar battleship competition was a technology race as well as a contest over numbers. A large American jump in speed, armament, and displacement would not remain isolated. Britain and Italy would seek matching designs, Japan would participate, and Germany's ability to compete would shrink further. That renewed competition would make a Washington treaty settlement unlikely.",
+      "body": "Replacing the American standard battleships with later fast-battleship designs would change the basis of interwar naval competition. The prediction is that Britain would build to match them. Italy and Japan would also respond. Under those assumptions, the Washington treaty settlement would not occur.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
           "start": "2:27:47",
           "end": "2:28:19",
-          "note": "The response predicts a British, Italian, and Japanese reaction and the loss of a Washington settlement."
-        },
-        {
-          "start": "2:56:37",
-          "end": "2:59:26",
-          "note": "A follow-up projects larger British ships and a renewed international arms race."
+          "note": "The counterfactual predicts British, Italian, and Japanese building responses and the absence of a Washington treaty."
         }
       ],
       "kind": "qa",
       "summary": "Building advanced fast battleships instead of the Standards would drive Britain, Italy, and Japan to respond and make the Washington settlement unlikely.",
       "question": "What if the United States built fast battleships instead of Standards before the Washington treaty?",
-      "answerShort": "The treaty would probably fail because Britain, Italy, and Japan would build to match the new American ships."
+      "answerShort": "Britain, Italy, and Japan would respond with their own ships, and the prediction is that the Washington treaty would not occur."
     },
     {
       "slug": "stargate-spacecraft-need-naval-crews",
@@ -512,13 +876,11 @@
         {
           "start": "2:28:34",
           "end": "2:29:27",
-          "note": "The answer distinguishes aircraft piloting from shipboard engineering, watches, and personnel support."
+          "note": "Large spacecraft require engine-room work, watches, and support for deployed personnel, motivating a mixed service crew."
         }
       ],
-      "kind": "qa",
-      "summary": "Pilots may come from an air force, but sustained operation of a large multi-crew spacecraft calls for shipboard engineering, watches, and logistics.",
-      "question": "What is wrong with Stargate's Air Force-only approach to crewing spacecraft?",
-      "answerShort": "Large spacecraft require naval engineering, watchkeeping, and logistics personnel even if air-force pilots fly their smaller craft."
+      "kind": "notable_point",
+      "summary": "Pilots may come from an air force, but sustained operation of a large multi-crew spacecraft calls for shipboard engineering, watches, and logistics."
     },
     {
       "slug": "littorio-magazine-explosion",
@@ -532,18 +894,13 @@
         "magazine-explosions",
         "naval-gunnery"
       ],
-      "body": "The distinction between structural failure and total loss becomes academic at this scale. Either main magazine combines propellant and heavy 15-inch shells in a confined armored volume, so its detonation would destroy the ship rather than leave a repairable hull. A follow-up estimate, based on uncertain ammunition figures, puts both magazines together at roughly 2.5 kilotons of explosive effect. The blast and resulting wave would also threaten nearby battleships, cruisers, and harbor facilities at Taranto. The scenario changes from damage to one target into a potential cascading disaster across the fleet base.",
+      "body": "A hypothetical explosion in either of Littorio's 15-inch magazines is expected to destroy the ship outright. Breaking her back would understate the resulting loss. There would be no meaningful hull left to rebuild. This is a qualitative judgment, without a detailed damage calculation.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
           "start": "2:30:32",
           "end": "2:30:59",
-          "note": "The response says the explosive power would leave nothing meaningful to rebuild."
-        },
-        {
-          "start": "2:42:53",
-          "end": "2:46:13",
-          "note": "The follow-up estimates the ammunition energy and describes damage to nearby ships and harbor facilities."
+          "note": "The hypothetical detonation of either main magazine is judged to leave no meaningful ship to rebuild."
         }
       ],
       "kind": "qa",
@@ -570,7 +927,7 @@
         {
           "start": "2:31:02",
           "end": "2:31:47",
-          "note": "The response compares Swordfish and Skua dive bombing and considers Ark Royal's participation."
+          "note": "Swordfish and Skua dive-bombing options, possible Ark Royal participation, and Giulio Cesare's lower target priority."
         }
       ],
       "kind": "qa",
@@ -591,19 +948,19 @@
         "type-26-frigate",
         "type-31-frigate"
       ],
-      "body": "Type 23 embedded point defense in Sea Wolf and its vertical-launch missile system rather than a separate rapid-fire gun. The Falklands War did not lead to a class-wide Phalanx or Goalkeeper installation. By the time later threat experience might have changed the calculation, a broad retrofit was no longer practical. Type 26 and Type 31 moved on with different defensive arrangements.",
+      "body": "The explanation for Type 23's lack of a separate gun CIWS is reliance on Sea Wolf and its vertical-launch system. The period after the Falklands War is identified as the natural point to have chosen an additional close-in gun. That installation did not follow, and by this October 2022 discussion it is considered unlikely to happen. Type 26, Type 31, and other ships are cited as taking a different approach.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
           "start": "2:31:49",
           "end": "2:32:18",
-          "note": "The answer ties the omission to reliance on Sea Wolf and the timing of later replacement classes."
+          "note": "Reliance on Sea Wolf and vertical launch explains the choice, followed by the October 2022 judgment that a later gun installation is unlikely."
         }
       ],
       "kind": "qa",
       "summary": "The Royal Navy chose Sea Wolf and vertical-launch missiles for Type 23 rather than adding Phalanx or Goalkeeper after the Falklands War.",
       "question": "Why did Type 23 frigates not receive Phalanx or Goalkeeper?",
-      "answerShort": "They were designed to rely on Sea Wolf and vertical-launch defense, and a fleetwide gun-CIWS retrofit later became impractical."
+      "answerShort": "The class relied on Sea Wolf and vertical-launch missile defense. An additional gun CIWS is considered unlikely to be fitted at this stage."
     },
     {
       "slug": "aircraft-design-follows-engine",
@@ -618,19 +975,19 @@
         "naval-aviation",
         "sbd-dauntless"
       ],
-      "body": "An aircraft is designed around its engine from the beginning. Building around a Hercules or Centaurus would change the airframe rather than produce a simple powerplant swap. A Dauntless or Devastator developed around either British engine would therefore have different dimensions, mass, structure, and balance. It would be a new design with only a loose relationship to the historical American aircraft.",
+      "body": "Aircraft are products of the engines around which they are designed. The proposed combination gives the Dauntless a Bristol Hercules and the Devastator a Bristol Centaurus. Developing the aircraft around those engines would produce substantially different designs. The result would change more than the powerplant fitted to an otherwise familiar aircraft.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
           "start": "2:35:19",
           "end": "2:35:49",
-          "note": "The response explains that aircraft are products of their engines and must be designed around them."
+          "note": "The engine is a starting condition for the airframe design, so changing it during development produces a different aircraft."
         }
       ],
       "kind": "qa",
-      "summary": "A Dauntless or Devastator built around a different large radial engine would become a substantially different aircraft, not a simple engine swap.",
+      "summary": "A Dauntless or Devastator developed around the proposed Bristol engine would be a substantially different aircraft.",
       "question": "What would a Dauntless or Devastator be like with Bristol Hercules or Centaurus engines?",
-      "answerShort": "They would require such extensive redesign around the new engines that they would no longer be the same aircraft."
+      "answerShort": "Aircraft designed around the Hercules or Centaurus would differ substantially from the historical Dauntless and Devastator."
     },
     {
       "slug": "naval-films-discipline-and-skilled-crews",
@@ -655,17 +1012,17 @@
         {
           "start": "2:37:02",
           "end": "2:39:04",
-          "note": "The answer cites ubiquitous medieval swords, multiplied Yamato depictions, and the practical limits of terror-based naval discipline."
+          "note": "Ubiquitous medieval swords, repeated Yamato depictions, and the practical limits of governing skilled, armed sailors by threats of violence."
         }
       ],
       "kind": "qa",
       "summary": "Films make swords universal, multiply Yamato-class battleships, and reduce Age of Sail discipline to terror, obscuring scarcity and skilled cooperation.",
       "question": "What recurring historical errors are especially bad in war and naval films?",
-      "answerShort": "They make scarce prestige weapons ubiquitous and portray ships as governed mainly by violence, ignoring the skilled cooperation that kept crews effective."
+      "answerShort": "They make swords too common, multiply Yamato depictions, and treat extreme brutality as ordinary naval discipline despite officers' dependence on skilled, armed crews."
     },
     {
       "slug": "industrial-warfare-never-ended",
-      "title": "Industrial warfare never disappeared",
+      "title": "The argument that industrial warfare never went away",
       "start": "2:39:11",
       "end": "2:42:50",
       "topics": [
@@ -676,23 +1033,48 @@
         "military-industry",
         "strategy"
       ],
-      "body": "The end of the Cold War did not end industrial warfare. The Soviet collapse was a geopolitical setback and realignment rather than proof that competition or the material basis of war had disappeared. Britain lost France and Norway in 1940 without ending World War II, which shows why a dramatic reverse should not be mistaken for terminal defeat. Claims that cyber or information effects would replace production also ignore countermeasures such as disconnected systems, state control of communications, and the continuing need to rebuild physical combat power. A war between industrial powers remains industrial because losses, munitions, platforms, and infrastructure must still be replaced at scale.",
+      "body": "Industrial warfare is treated as a continuing feature of conflict between industrialized states. One argument is that the end of the Cold War brought a major setback and a realignment rather than ending the underlying rivalry. Britain's losses in France and Norway in 1940 illustrate the distinction between a severe reverse and the end of a war. The expectation that cyber warfare would replace industrial warfare is challenged by the possibility of disconnecting systems. Information warfare also meets practical limits when states control much of their public's internet access, even imperfectly.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
           "start": "2:39:11",
           "end": "2:42:50",
-          "note": "The response disputes the post-Cold War disappearance of industrial conflict and tests cyber and information claims against practical countermeasures."
+          "note": "An argument for continued industrial warfare, the 1940 analogy, and proposed limits on cyber and information operations."
         }
       ],
       "kind": "qa",
-      "summary": "Conflict between industrial states still depends on production, while cyber and information operations can be constrained by disconnection and state control.",
-      "question": "Has industrial warfare returned after disappearing at the end of the Cold War?",
-      "answerShort": "No; it never went away, because war between industrial powers still rests on industrial capacity despite cyber and information operations."
+      "summary": "The argument for continuing industrial warfare challenges the assumption that a geopolitical setback or new technology removes the material basis of conflict.",
+      "question": "Had industrial warfare disappeared before its supposed return?",
+      "answerShort": "The argument is that industrial warfare never disappeared, and that cyber and information operations do not replace conflict between industrialized states."
+    },
+    {
+      "slug": "littorio-magazine-detonation-salvage",
+      "title": "Could Littorio survive the explosion of both main magazines?",
+      "start": "2:42:53",
+      "end": "2:46:13",
+      "topics": [
+        "alternate-history",
+        "battle-of-taranto",
+        "littorio-class-battleships",
+        "magazine-explosions"
+      ],
+      "body": "The hypothetical detonation would destroy Littorio and could damage other ships concentrated around her. Nearby battleships and cruisers would face the blast and the resulting wave. A rough calculation considers shell weights and magazine contents, but the ammunition figures are uncertain during the calculation. The expectation is a catastrophic local event, without a reliable explosive-yield calculation or precise reconstruction of what would have happened at Taranto.",
+      "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
+      "evidence": [
+        {
+          "start": "2:42:53",
+          "end": "2:46:13",
+          "note": "Hypothetical destruction of Littorio, danger to surrounding ships, and an uncertain on-air calculation using ammunition loads."
+        }
+      ],
+      "kind": "qa",
+      "summary": "A hypothetical double-magazine explosion threatens nearby ships as well as Littorio, although the on-air ammunition calculation remains uncertain.",
+      "question": "Would anything be salvageable if Littorio's two 15-inch magazines exploded?",
+      "answerShort": "The expectation is that little would remain, with a large explosion also threatening nearby ships."
     },
     {
       "slug": "current-technology-space-warship",
-      "title": "A current-technology space warship favors missiles and railguns",
+      "title": "A speculative space-warship concept favors missiles and railguns",
       "start": "2:46:44",
       "end": "2:47:37",
       "topics": [
@@ -703,29 +1085,24 @@
         "space-warfare",
         "warship-design"
       ],
-      "body": "The proposed design avoids fictional energy weapons and works from technologies that can deliver destructive energy in vacuum. Nuclear power would support the ship's sustained onboard demands, while railguns belong only if engineering can make them operationally reliable. Compact Western missile components could free more volume for propellant and warhead, extending reach without requiring an invented weapon. A follow-up specifies an armor-penetrating nuclear payload that enters the target before detonation because available conventional explosives cannot deliver the desired effect.",
+      "body": "The proposed space warship would use nuclear power and missiles, with railguns if they could be made to work. Large missile bodies would leave room for more fuel and a nuclear warhead. Compact Western components are preferred to make better use of that volume. This is a speculative choice of technologies, with railgun development still an unresolved condition.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
           "start": "2:46:44",
           "end": "2:47:37",
-          "note": "The answer selects nuclear power, long-fueled missiles, nuclear warheads, and railguns."
-        },
-        {
-          "start": "2:59:55",
-          "end": "3:00:11",
-          "note": "The follow-up specifies an armor-penetrating nuclear warhead."
+          "note": "A hypothetical nuclear-powered ship with missiles, compact components, extra fuel, nuclear warheads, and conditional railgun development."
         }
       ],
       "kind": "qa",
-      "summary": "A plausible near-term design would be nuclear-powered and rely on long-fueled missiles with nuclear warheads plus railguns if they can be made reliable.",
+      "summary": "The hypothetical design favors nuclear power and missiles, with railguns contingent on making them work.",
       "question": "How would you build a space warship with current technology?",
-      "answerShort": "Use nuclear power, missiles with large fuel fractions and nuclear penetrator warheads, and railguns if they can be made operational."
+      "answerShort": "The proposal uses nuclear power, missiles with more fuel and nuclear warheads, and railguns if they can be made to work."
     },
     {
       "slug": "better-aircraft-end-albacore",
       "title": "A reliable modern aircraft would displace the Albacore",
-      "start": "2:47:43",
+      "start": "2:47:58",
       "end": "2:49:36",
       "topics": [
         "aircraft-reliability",
@@ -735,13 +1112,13 @@
         "fleet-air-arm",
         "naval-aviation"
       ],
-      "body": "The Albacore was intended as an interim improvement while Barracuda matured. Its Taurus engine and reliability problems undermined that replacement role, and Swordfish remained more dependable. A successful modern alternative designed around a stronger engine could perform the same mission without the Albacore's limitations. That would remove the reason to keep the interim type in frontline service.",
+      "body": "The Albacore was intended as an interim improvement while Barracuda matured. Its Taurus engine and reliability problems undermined that replacement role, and Swordfish remained more dependable. A successful modern alternative designed around a stronger engine could perform the same mission without the Albacore's limitations. That would remove the reason to keep the interim type in frontline service. Fleet Air Arm aircrew's song praising the Swordfish's engine expresses that frustration with the Albacore's reliability.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
-          "start": "2:47:43",
+          "start": "2:47:58",
           "end": "2:49:36",
-          "note": "The answer explains Albacore's interim role, reliability problems, and relationship to Swordfish and Barracuda."
+          "note": "Albacore's interim role before Barracuda, its reliability problems, and the contrast with Swordfish's engine."
         }
       ],
       "kind": "qa",
@@ -751,7 +1128,7 @@
     },
     {
       "slug": "russian-navy-moskva-loss-comparison",
-      "title": "Moskva's loss resembles Taranto more than Hood or Belgrano",
+      "title": "Comparing Moskva's loss with Taranto, Hood, and Belgrano",
       "start": "2:50:15",
       "end": "2:53:10",
       "topics": [
@@ -763,13 +1140,13 @@
         "russian-cruiser-moskva",
         "russian-navy"
       ],
-      "body": "Moskva's loss did not sideline the Black Sea Fleet, which continued to operate with reduced power-projection capacity. That makes Hood a poor analogy, since the Royal Navy absorbed that loss without the same regional constraint. General Belgrano is also misleading because the Argentine fleet largely returned to port afterward. Taranto is closer: important ships and a major operating base were damaged, prestige suffered, yet the navy retained meaningful operational capability.",
+      "body": "In this October 2022 assessment, Taranto offers the closest analogy for the loss of Moskva. The Black Sea Fleet has lost an important asset and suffered reverses, but it continues operating with reduced power-projection capacity. Hood is a less useful comparison because the Royal Navy could absorb that loss within a much larger force. General Belgrano is also rejected as the model because the Argentine ships subsequently withdrew. Taranto combines a serious loss of ships, use of a base, and prestige with continued naval operations. This interpretation places the effect between a minor setback and the disappearance of a fleet from the war.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
           "start": "2:50:15",
           "end": "2:53:10",
-          "note": "The response compares continued Russian operations with Hood, Belgrano, and Taranto."
+          "note": "October 2022 assessment of continued Russian operations and the proposed analogy with Taranto rather than Hood or General Belgrano."
         }
       ],
       "kind": "qa",
@@ -784,6 +1161,7 @@
       "end": "2:54:16",
       "topics": [
         "age-of-sail",
+        "fiction-horatio-hornblower",
         "naval-administration",
         "naval-discipline",
         "royal-navy",
@@ -795,7 +1173,7 @@
         {
           "start": "2:53:14",
           "end": "2:54:16",
-          "note": "The response explains fatigue, reporting channels, official logs, and consequences for an abusive captain."
+          "note": "A 36-hour watch wastes an officer's usefulness, while reports by other officers and mandatory punishment records limit a captain's freedom to impose abuse."
         }
       ],
       "kind": "qa",
@@ -815,19 +1193,144 @@
         "missile-warfare",
         "naval-gunnery"
       ],
-      "body": "The opening weeks of a high-intensity war could consume much of the available precision-guided stockpile. Missile production may be too slow to replace that expenditure. Simpler 40 mm weapons and five- or six-inch guns would then regain importance because their ammunition can sustain combat. The manufacturing rate behind each weapon becomes as important as its performance in the first exchange.",
+      "body": "The question links expensive smart weapons and slow replacement to renewed use of simpler naval guns. The forecast is that missiles would dominate the first two weeks of a future war. The following six months could look different as available stocks run down. That is a speculative warning about sustained supply, without a detailed production calculation or a firm prediction of which gun systems would replace missiles.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
           "start": "2:55:03",
           "end": "2:55:27",
-          "note": "The response predicts missile-heavy opening weeks followed by a longer period with depleted stocks."
+          "note": "A question about smart-weapon cost and replacement speed prompts a forecast of missile-heavy opening weeks and a different following six months."
         }
       ],
       "kind": "qa",
       "summary": "A high-intensity war may begin with missiles but continue for months after expensive smart-weapon inventories are exhausted.",
       "question": "Could costly, slowly replaced smart weapons bring back simpler naval guns?",
       "answerShort": "Yes; missiles may dominate the first weeks, while the following months could depend on weapons and ammunition that industry can replenish."
+    },
+    {
+      "slug": "littorio-explosion-wave-risk",
+      "title": "A Littorio explosion could threaten nearby ships with a large wave",
+      "start": "2:55:34",
+      "end": "2:55:49",
+      "topics": [
+        "alternate-history",
+        "battle-of-taranto",
+        "littorio-class-battleships",
+        "magazine-explosions"
+      ],
+      "body": "The proposed effect is a dangerous wave around the ships in the harbor. The town is not expected to be swamped. The distinction is between damage to vessels close to the explosion and a much larger coastal inundation. No calculated wave height is supplied.",
+      "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
+      "evidence": [
+        {
+          "start": "2:55:34",
+          "end": "2:55:49",
+          "note": "A local explosion wave is considered dangerous to ships but unlikely to swamp the town."
+        }
+      ],
+      "kind": "qa",
+      "summary": "The expected local wave is dangerous to ships without necessarily swamping the town.",
+      "question": "Could a Littorio magazine explosion produce a tsunami?",
+      "answerShort": "A large local wave is expected, dangerous to nearby ships, although it probably would not swamp the town."
+    },
+    {
+      "slug": "littorio-turret-throw-distance-uncertain",
+      "title": "The distance a Littorio gunhouse might be thrown remains unresolved",
+      "start": "2:56:04",
+      "end": "2:56:27",
+      "topics": [
+        "alternate-history",
+        "littorio-class-battleships",
+        "magazine-explosions"
+      ],
+      "body": "The hypothetical magazine explosion could throw a gunhouse a considerable distance. Its height and range remain unresolved, with further investigation needed before offering a numerical estimate.",
+      "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
+      "evidence": [
+        {
+          "start": "2:56:04",
+          "end": "2:56:27",
+          "note": "No numerical turret-throw estimate, with an explicit need to investigate further."
+        }
+      ],
+      "kind": "qa",
+      "summary": "The turret-throw question receives no numerical estimate.",
+      "question": "How high or far would Littorio's 15-inch gunhouses be thrown?",
+      "answerShort": "No distance is given. Estimating it would require further investigation."
+    },
+    {
+      "slug": "north-carolina-in-early-naval-race",
+      "title": "Early North Carolina-level battleships would start a larger arms race",
+      "start": "2:56:37",
+      "end": "2:59:26",
+      "topics": [
+        "alternate-history",
+        "battleships",
+        "naval-arms-race",
+        "north-carolina-class-battleships",
+        "royal-navy",
+        "us-navy"
+      ],
+      "body": "The ship name is initially confused with South Carolina, then corrected to the 1930s North Carolina class. Moving a ship with nine 16-inch guns and roughly 28-knot speed into the earlier building race would force a much larger British response. Suggested British answers carry twelve 16-inch or twelve 15-inch guns. Germany is judged unable to match that scale, while Italy and Japan would still want to respond. This counterfactual changes the size and cost of the competition without ending it.",
+      "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
+      "evidence": [
+        {
+          "start": "2:56:37",
+          "end": "2:59:26",
+          "note": "Correction from South Carolina to North Carolina, a larger British gun battery, and different national abilities to sustain the resulting arms race."
+        }
+      ],
+      "kind": "qa",
+      "summary": "A much earlier American fast battleship prompts larger British designs and different responses from the other naval powers.",
+      "question": "What if the United States built North Carolina-level ships instead of its earlier standard battleships?",
+      "answerShort": "Britain would attempt to match or exceed them, while Germany would struggle and other naval powers would face a renewed arms race."
+    },
+    {
+      "slug": "space-warship-nuclear-penetrator-rationale",
+      "title": "The proposed space-warship missile uses a nuclear penetrator",
+      "start": "2:59:55",
+      "end": "3:00:11",
+      "topics": [
+        "missiles",
+        "nuclear-weapons",
+        "science-fiction",
+        "space-warfare",
+        "warship-design"
+      ],
+      "body": "The nuclear warhead is a preference within the hypothetical space-warship proposal. Conventional explosives are considered insufficient for the effect sought. The proposed payload would penetrate the target and detonate inside it. This remains a concept without a detailed design or demonstrated performance.",
+      "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
+      "evidence": [
+        {
+          "start": "2:59:55",
+          "end": "3:00:11",
+          "note": "Preference for a nuclear payload intended to penetrate and detonate inside the target."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "The proposed missile would penetrate the target before detonating, using a nuclear warhead for the desired destructive effect."
+    },
+    {
+      "slug": "taranto-memory-if-littorio-exploded",
+      "title": "Littorio's destruction would make Taranto a greater disaster",
+      "start": "3:00:55",
+      "end": "3:01:03",
+      "topics": [
+        "alternate-history",
+        "battle-of-taranto",
+        "italian-navy",
+        "littorio-class-battleships"
+      ],
+      "body": "The hypothetical explosion would add far greater damage to the Taranto attack. Its effect on the Regia Marina would be more dramatic. The brief answer does not develop a separate chain of later wartime consequences.",
+      "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
+      "evidence": [
+        {
+          "start": "3:00:55",
+          "end": "3:01:03",
+          "note": "Greater hypothetical damage and a more dramatic effect on the Regia Marina."
+        }
+      ],
+      "kind": "qa",
+      "summary": "A magazine explosion would make the attack more destructive and its effect on the Italian navy more dramatic.",
+      "question": "How would Taranto be remembered if Littorio had exploded?",
+      "answerShort": "The greater destruction would make the attack a more dramatic disaster for the Regia Marina."
     },
     {
       "slug": "naval-shell-weight-and-caliber",
@@ -841,19 +1344,19 @@
         "naval-gunnery",
         "naval-terminology"
       ],
-      "body": "Pounder names describe projectile weight rather than bore diameter. Shell construction and historical naming vary, so weight does not map to caliber through one dependable rule. Common pairs such as the 2-pounder at about 40 mm, the 6-pounder at about 57 mm, and the 12-pounder at about 76 mm must be learned individually. Those reference points do not form a formula that scales cleanly.",
+      "body": "Common gun labels and their associated diameters have to be learned individually. The two-pounder is paired with 40 mm and the twelve-pounder with 76 mm. The six-pounder example moves between 57 mm and 37 mm in the captions, so this passage is not a reliable conversion table. Its consistent advice is to learn the individual associations rather than assume that a proportional increase in projectile weight gives the same increase in diameter.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
           "start": "3:01:10",
           "end": "3:03:14",
-          "note": "The response gives common pounder-to-millimeter values and explains why they do not form a simple progression."
+          "note": "Two-pounder/40 mm and twelve-pounder/76 mm examples, memorized associations, and inconsistent captioned 57 mm/37 mm values for the six-pounder."
         }
       ],
       "kind": "qa",
-      "summary": "Common naval labels must be learned individually: the two-pounder is about 40 mm, the six-pounder about 57 mm, and the twelve-pounder about 76 mm.",
+      "summary": "Common pounder labels are learned individually; the captioned six-pounder example is inconsistent, so the passage should not be used as a conversion table.",
       "question": "Is there an easy conversion from naval pounder names to gun diameter?",
-      "answerShort": "No universal shortcut works; remember common pairs such as 2-pounder/40 mm, 6-pounder/57 mm, and 12-pounder/76 mm."
+      "answerShort": "Learn the common pairs individually. No dependable general conversion is supplied, and the six-pounder figure is inconsistent in the captions."
     },
     {
       "slug": "helicopter-cruiser-asw-coordinator",
@@ -874,50 +1377,36 @@
         {
           "start": "3:03:46",
           "end": "3:04:19",
-          "note": "The response assigns the cruiser a helicopter-support and coordination role and sends frigates forward."
+          "note": "Helicopter support and coordination from the rear, with cheaper frigates and aircraft making the forward search and engagement."
         }
       ],
-      "kind": "qa",
-      "summary": "The high-value helicopter platform should remain back, direct the search, and let cheaper frigates and aircraft approach submarines.",
-      "question": "Should a helicopter cruiser use its own sonar to hunt submarines?",
-      "answerShort": "No; it should coordinate from safer waters while helicopters and cheaper frigates conduct the forward search and attack."
+      "kind": "notable_point",
+      "summary": "The high-value helicopter platform should remain back, direct the search, and let cheaper frigates and aircraft approach submarines."
     },
     {
-      "slug": "statistics-production-and-historical-bias",
-      "title": "Production statistics require definitions and bias checks",
+      "slug": "kiev-loss-estimates-and-memory",
+      "title": "Kiev loss estimates require caution",
       "start": "3:06:43",
-      "end": "3:19:20",
+      "end": "3:08:24",
       "topics": [
         "historical-method",
-        "military-production",
         "source-criticism",
         "soviet-union",
-        "statistics",
-        "t-34-tank"
+        "statistics"
       ],
-      "body": "Questions about Kiev and Soviet tank totals lead to a broader source-criticism lesson. A reader must first determine whether a figure describes one battle or the wider campaign, because geographical and temporal boundaries change casualty totals. Formation reports may exaggerate nominal strength, while a damaged tank returned to a factory can be counted again as production, allowing one vehicle to appear multiple times. Raw data then passes through an interpreter who selects examples and explains them for an assumed audience. Historians must identify and manage bias, including their own, rather than claim to eliminate it.",
+      "body": "The recalled figures include roughly 500 destroyed and 1,000 damaged, followed by more than half a million people captured. The huge prisoner total is treated as especially significant. The equipment behind the first two figures is not clearly identified in this exchange. The recollection carries an explicit warning that the numbers may be wrong.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
           "start": "3:06:43",
           "end": "3:08:24",
-          "note": "The first response gives remembered Kiev loss figures with an explicit warning that the numbers may be wrong and distinguishes destroyed, damaged, and captured equipment."
-        },
-        {
-          "start": "3:11:57",
-          "end": "3:14:53",
-          "note": "The answer distinguishes battle from campaign figures and explains how repaired tanks can inflate production totals."
-        },
-        {
-          "start": "3:16:18",
-          "end": "3:19:20",
-          "note": "The follow-up explains presentation, source trust, and the historian's own selection bias."
+          "note": "Remembered destroyed and damaged totals, more than half a million people captured, and an explicit warning that the figures may be inaccurate."
         }
       ],
       "kind": "qa",
-      "summary": "Battle boundaries, repaired equipment counted as production, unreliable formation returns, and an author's choice of examples can all change the apparent result.",
-      "question": "How should readers judge large wartime loss and production statistics?",
-      "answerShort": "Check the geography, definitions, repair and recounting practices, source incentives, and the interpreter's own selection bias before trusting the headline total."
+      "summary": "Remembered loss figures emphasize the scale of the defeat and its prisoner total, with an explicit warning that the numbers may be inaccurate.",
+      "question": "What scale of losses was involved at Kiev?",
+      "answerShort": "The remembered totals suggest a very large defeat, especially in prisoners, but the figures are explicitly offered with uncertainty."
     },
     {
       "slug": "early-centaurus-engine-fleet-air-arm",
@@ -938,7 +1427,7 @@
         {
           "start": "3:08:29",
           "end": "3:09:12",
-          "note": "The response links an early mature Centaurus to a new Swordfish successor and a changed aviation program."
+          "note": "Heavy investment and unusually favorable engine development as conditions for a Swordfish successor around 1940."
         }
       ],
       "kind": "qa",
@@ -959,19 +1448,79 @@
         "public-opinion",
         "royal-navy"
       ],
-      "body": "The decisive constraint is not whether the foreign ship looks overwhelming on arrival, but whether rivals possess the industrial base and political will to respond. Britain's prewar 'we want eight' battleship campaign demonstrates the mass support available for continued construction, making permanent deterrence by one design unlikely.",
+      "body": "An Iowa-sized battleship appearing in the 1910s would dwarf contemporary construction and could interrupt the race. Germany might be forced out, but Britain is expected to respond if the necessary technology exists. The public demand for eight battleships is offered as evidence of the political support behind British construction. Even a ship with 18-inch guns would invite a British answer with comparable armament. The prediction is a pause while rivals adjust, followed by renewed competition.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
           "start": "3:09:29",
+          "end": "3:10:37",
+          "note": "The Iowa counterfactual, Germany's possible exclusion, and British public support for continued battleship construction."
+        },
+        {
+          "start": "3:11:21",
           "end": "3:11:25",
-          "note": "The response considers Iowa's disruptive scale and Britain's industrial and popular ability to answer it."
+          "note": "An 18-inch-gun ship is expected to prompt a British response with similar guns."
         }
       ],
       "kind": "qa",
       "summary": "A 1940s-scale American battleship might price Germany out temporarily, but British industry and public support would produce an answer.",
       "question": "What American ship could stop the naval race if built in the 1910s?",
       "answerShort": "An Iowa might pause the race and knock Germany out, but Britain would build a response rather than concede naval superiority."
+    },
+    {
+      "slug": "statistics-production-and-historical-bias",
+      "title": "Kiev casualty totals depend on which campaign is counted",
+      "start": "3:11:57",
+      "end": "3:12:44",
+      "topics": [
+        "historical-method",
+        "source-criticism",
+        "soviet-union",
+        "statistics"
+      ],
+      "body": "A loss figure for Kiev must first identify the year and the operation being counted. The 1941 and 1943 fighting involved different circumstances. A total for the city battle can differ from one covering the wider offensive. The geographical boundaries determine which losses enter the comparison, so an apparently conflicting number can reflect a different scope.",
+      "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
+      "evidence": [
+        {
+          "start": "3:11:57",
+          "end": "3:12:44",
+          "note": "The distinction between Kiev in 1941 and 1943 and between a battle and a wider offensive."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "The battles around Kiev in 1941 and 1943, and the wider offensives around them, need separate geographical and chronological definitions."
+    },
+    {
+      "slug": "soviet-tank-strength-and-repair-counting",
+      "title": "Soviet tank totals depend on reporting and repair categories",
+      "start": "3:13:06",
+      "end": "3:14:53",
+      "topics": [
+        "historical-method",
+        "military-production",
+        "source-criticism",
+        "soviet-union",
+        "statistics",
+        "t-34-tank"
+      ],
+      "body": "The claimed prewar ratio of tanks to men is rejected as an official figure that did not reflect actual strength. A claim of 21,000 tanks lost at Kiev is also disputed, including whether it describes the battle or a much wider defense. T-34 figures provide an example of the accounting concern: a damaged tank repaired at a factory can appear again in a production total. Under that interpretation, repeated repairs and losses can produce several entries for one vehicle. These are criticisms of the reported totals, without a replacement audited total.",
+      "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
+      "evidence": [
+        {
+          "start": "3:13:06",
+          "end": "3:13:36",
+          "note": "A reported tank-to-man ratio and formation strengths are challenged as overstated."
+        },
+        {
+          "start": "3:13:48",
+          "end": "3:14:53",
+          "note": "The scope of a loss claim is questioned, and repaired T-34s counted in production provide an example of possible repeated counting."
+        }
+      ],
+      "kind": "qa",
+      "summary": "Reported strengths and repaired tanks counted again as production complicate claims about the number of separate vehicles.",
+      "question": "Do reported Soviet tank strengths and losses establish how many separate tanks existed?",
+      "answerShort": "The totals are challenged because formation returns could overstate strength and repaired vehicles could reappear in production figures."
     },
     {
       "slug": "argentine-battleship-modernization-limits",
@@ -986,19 +1535,41 @@
         "rivadavia-class-battleships",
         "ship-modernisation"
       ],
-      "body": "A major battleship modernization requires a dockyard able to handle deep machinery, protection, and armament work. Argentina had very little domestic capacity for a reconstruction on that scale. The ships would therefore have to go abroad to a country willing and able to accept them. Foreign capacity, policy, price, and availability would set the practical limits of any modernization plan.",
+      "body": "Argentina had very limited facilities for modernizing the Rivadavia-class battleships at home. Major work would require sending them abroad. The available options depended on which country was prepared to carry out the modernization.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
           "start": "3:14:58",
           "end": "3:15:14",
-          "note": "The response ties modernization to scarce Argentine facilities and foreign-yard availability."
+          "note": "Limited Argentine facilities and dependence on a foreign country willing to modernize the ships."
         }
       ],
       "kind": "qa",
       "summary": "Argentina lacked the domestic facilities for a major rebuild, so modernization options depended on a foreign country willing to accept the work.",
       "question": "How limited were modernization options for Argentina's Rivadavia-class battleships?",
       "answerShort": "Very limited domestically; a major rebuild required a foreign yard willing and able to perform it."
+    },
+    {
+      "slug": "historian-audience-assumptions-and-selection-bias",
+      "title": "Assumptions about readers shape a historian's choice of examples",
+      "start": "3:16:18",
+      "end": "3:19:20",
+      "topics": [
+        "historical-method",
+        "source-criticism",
+        "statistics"
+      ],
+      "body": "Numbers can support different arguments depending on which figures an author selects and how they are presented. Access to raw data still leaves the problem of interpreting it and checking personal bias. Alex Clarke identifies his own assumption that readers need technical terms and background explained. That approach can make books accessible while favoring events that are easier to explain. Other events can then receive less attention even when they matter. Recognizing that preference creates a reason to find better ways to explain the neglected examples.",
+      "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
+      "evidence": [
+        {
+          "start": "3:16:18",
+          "end": "3:19:20",
+          "note": "Personal account of audience assumptions, example selection, and checking one's own bias when interpreting statistics and writing history."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Explaining a subject to newcomers can favor the easiest examples and leave other events underrepresented."
     },
     {
       "slug": "naval-command-unifies-carrier-aviation-development",
@@ -1012,24 +1583,55 @@
         "naval-aviation",
         "royal-navy"
       ],
-      "body": "Keeping carrier aircraft inside the Navy would place ships, aircraft, aircrew policy, and carrier operations under one command. That institutional unity would shape requirements and investment from the start. It is the most direct intervention for changing the early Fleet Air Arm's development. The precise chain of later effects remains uncertain, but the long-term program would differ substantially.",
+      "body": "The preferred change is to keep carrier aircraft within the Navy under a single command. That would avoid the institutional separation raised in the question. Substantial consequences are expected, but their long-term course is explicitly uncertain. No detailed alternative aircraft program is supplied.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
           "start": "3:19:51",
           "end": "3:20:15",
-          "note": "The response chooses continued naval control of carrier aircraft as the key change."
+          "note": "A preference for one naval command over carrier aircraft, with uncertain long-term consequences."
         }
       ],
       "kind": "qa",
-      "summary": "Retaining carrier aircraft within the Navy creates one command for ship and air development and would produce significant long-term changes.",
-      "question": "What change would most improve the Fleet Air Arm's long-term development?",
+      "summary": "Keeping carrier aircraft under naval command is the preferred institutional change, with substantial but unspecified long-term effects.",
+      "question": "Would keeping carrier aviation under naval control change the Fleet Air Arm's development?",
       "answerShort": "Keep carrier aircraft inside the Navy under one command rather than separating naval aviation institutionally."
+    },
+    {
+      "slug": "armoured-carrier-no-pause-service-dates",
+      "title": "A no-pause timetable places four armored carriers in 1940",
+      "start": "3:22:01",
+      "end": "3:25:26",
+      "topics": [
+        "aircraft-carriers",
+        "alternate-history",
+        "illustrious-class-aircraft-carriers",
+        "naval-procurement",
+        "shipbuilding"
+      ],
+      "body": "Illustrious provides the comparison for reconstructing the other ships' intended schedules. The suggested dates are approximately 27 April for Illustrious, 17 June for Formidable, and 4 May 1940 for Victorious. Indomitable is tentatively placed on 10 November 1940. These dates belong to the proposed no-delay timetable rather than the ships' actual service histories.",
+      "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
+      "evidence": [
+        {
+          "start": "3:22:01",
+          "end": "3:24:20",
+          "note": "Comparison with Illustrious and consultation of an existing carrier timetable."
+        },
+        {
+          "start": "3:25:13",
+          "end": "3:25:26",
+          "note": "Approximate 1940 dates for the four carriers, with Indomitable explicitly tentative."
+        }
+      ],
+      "kind": "qa",
+      "summary": "The proposed timetable places the early armored carriers in 1940, with Indomitable's date explicitly tentative.",
+      "question": "When were the early armored carriers expected to enter service without the construction delay?",
+      "answerShort": "The proposed timetable puts Illustrious, Formidable, Victorious, and potentially Indomitable into service during 1940."
     },
     {
       "slug": "d-day-concrete-breakwaters-gun-platforms",
       "title": "Concrete D-Day platforms could carry limited guns",
-      "start": "3:24:27",
+      "start": "3:24:40",
       "end": "3:25:03",
       "topics": [
         "amphibious-warfare",
@@ -1038,19 +1640,19 @@
         "mulberry-harbours",
         "naval-infrastructure"
       ],
-      "body": "Some concrete components of the D-Day artificial harbors carried guns and could contribute to local defense. Their stationary position made them useful for protecting a limited area. Their stability and engineering design placed practical limits on heavier weapons. Treating them as major artillery ships would ask a breakwater structure to absorb loads and perform missions for which it was not built.",
+      "body": "Some of the concrete platforms associated with the D-Day landings already carried guns. Larger weapons would extend that use, but their utility is left uncertain. No particular heavy battery or engineering reason for the limitation is identified.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
-          "start": "3:24:27",
+          "start": "3:24:40",
           "end": "3:25:03",
-          "note": "The answer confirms some gun use while limiting the structures' suitability for heavy weapons."
+          "note": "Existing gun installations on some concrete platforms and uncertainty about the usefulness of heavier guns."
         }
       ],
       "kind": "qa",
-      "summary": "Some concrete harbor structures carried weapons, but their stability and utility limited their value as heavy-gun platforms.",
+      "summary": "Some D-Day concrete platforms carried guns, while their usefulness for large weapons remains uncertain.",
       "question": "Could the Allies use concrete D-Day breakwaters as gun platforms?",
-      "answerShort": "They could and sometimes did carry guns, but their practical value as large artillery platforms was limited."
+      "answerShort": "Some platforms already carried guns. Their usefulness for large weapons is left uncertain."
     },
     {
       "slug": "no-carrier-pause-yard-throughput",
@@ -1066,32 +1668,26 @@
         "naval-procurement",
         "shipyards"
       ],
-      "body": "Ship construction is a pipeline, so a gap affects more than the hulls immediately delayed. The preceding timeline discussion places the first several armored carriers across 1940 and frames delay as a program-wide scheduling problem rather than the fate of one ship. Earlier completions free slips and experienced workforces for Implacable and Indefatigable instead of leaving capacity and knowledge idle. That acceleration then carries into Audacious, Unicorn, and the light carriers. Continuous orders therefore compound across classes: avoiding the pause does not merely add one early carrier, but moves the whole program forward.",
+      "body": "Completing the earlier carriers would release yard space for the ships that followed them. Implacable and Indefatigable are expected to arrive sooner under that counterfactual. Audacious, Unicorn, and the light carriers could also benefit. The effect carries through successive projects because each completed hull makes construction capacity available again.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
-          "start": "3:22:01",
-          "end": "3:25:24",
-          "note": "The discussion reviews the intended service timeline for the first armored carriers and places several ships across 1940."
-        },
-        {
           "start": "3:25:53",
           "end": "3:26:25",
-          "note": "The response traces freed yard capacity into faster follow-on carrier construction."
+          "note": "Earlier carrier completion frees yard space and could accelerate subsequent carrier classes."
         }
       ],
       "kind": "qa",
-      "summary": "Finishing early carriers sooner frees experienced yards for Implacable, Indefatigable, Audacious, and Unicorn, accelerating the whole program rather than one class alone.",
+      "summary": "Earlier carrier completions free yard space that could accelerate Implacable, Indefatigable, Audacious, Unicorn, and the light carriers.",
       "question": "How would avoiding the Royal Navy's carrier construction pause affect later classes?",
       "answerShort": "Earlier completions would free yards and expertise sooner, accelerating Implacable, Indefatigable, Audacious, and Unicorn as well."
     },
     {
       "slug": "extra-british-carriers-change-war",
-      "title": "Earlier British carriers reshape Taranto, Bismarck, and Force Z",
+      "title": "Earlier British carriers expand the options at Taranto and against Bismarck",
       "start": "3:28:50",
-      "end": "3:33:21",
+      "end": "3:31:21",
       "topics": [
-        "abda-command",
         "aircraft-carriers",
         "alternate-history",
         "battle-of-taranto",
@@ -1100,19 +1696,45 @@
         "german-battleship-bismarck",
         "illustrious-class-aircraft-carriers"
       ],
-      "body": "The counterfactual follows ship availability rather than assuming every extra hull appears at the decisive point. Two armored carriers at Taranto could deepen the strike, delay Italian recovery, and alter later operations around Greece and Crete. A larger pool could also place a carrier with separate Bismarck-hunting groups rather than concentrating scarce aviation in one formation. Fighter cover for Force Z could disrupt unescorted land-based torpedo bombers and help summon additional land-based support. If Prince of Wales and Repulse survive, ABDA can form around a stronger battle force, requiring Japan to send heavier forces and perhaps prompting an American carrier response. The resulting branch remains open rather than leading to one inevitable outcome.",
+      "body": "If the early armored carriers were available by the end of 1940, the Taranto strike could involve two armored carriers. More aircraft could inflict greater damage and delay the return of Italian ships to service, affecting operations around Greece and Crete. A larger pool of carriers could also put air support with separate groups hunting Bismarck. Earlier follow-on construction would further increase the available pool and improve the prospect of sending a carrier with Force Z. The enlarged carrier force would also need its aircraft supplied sooner. The counterfactual depends on what ships and aircraft can actually be made available for each operation.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
           "start": "3:28:50",
-          "end": "3:33:21",
-          "note": "The response traces added carriers through Taranto, Mediterranean operations, Bismarck hunting groups, Force Z, and ABDA."
+          "end": "3:31:21",
+          "note": "Added carriers, earlier aircraft supply, a larger operational pool, Taranto's Mediterranean effects, and air support for Bismarck-hunting groups."
         }
       ],
       "kind": "qa",
-      "summary": "A larger carrier pool enables multi-carrier Taranto, air support for more Atlantic groups, and fighter cover that may preserve Force Z and strengthen ABDA.",
+      "summary": "A larger carrier pool could expand Taranto and provide air support to more Atlantic groups, provided the aircraft arrive sooner as well.",
       "question": "How would three Illustrious-class carriers and Indomitable in service by 1940 change the war?",
-      "answerShort": "They could expand Taranto, strengthen Atlantic carrier coverage, preserve Force Z, and create a much stronger ABDA force that demands a larger Japanese commitment."
+      "answerShort": "They could expand Taranto, alter Mediterranean operations, and provide carriers to more task groups, including groups hunting Bismarck and potentially Force Z."
+    },
+    {
+      "slug": "force-z-survival-abda-counterfactual",
+      "title": "Surviving Force Z could give ABDA a stronger battle fleet",
+      "start": "3:31:25",
+      "end": "3:33:21",
+      "topics": [
+        "abda-command",
+        "aircraft-carriers",
+        "alternate-history",
+        "force-z",
+        "naval-air-defence"
+      ],
+      "body": "The long-range torpedo bombers attacking Force Z lacked fighter escorts. Carrier fighters could break up those attacks, while radar warning could help bring land-based fighters into the defense. If Prince of Wales and Repulse survived, ABDA's cruisers and destroyers could assemble around them. Japan would need a force larger than the cruiser group that defeated the historical ABDA cruiser command. A major Japanese deployment might draw American carriers south to join the British. Beyond that, the counterfactual remains open because both sides could change their deployments.",
+      "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
+      "evidence": [
+        {
+          "start": "3:31:25",
+          "end": "3:33:21",
+          "note": "Carrier fighter defense, a surviving Force Z as the center of ABDA, and uncertain Japanese and American responses."
+        }
+      ],
+      "kind": "qa",
+      "summary": "A surviving Force Z could anchor ABDA and compel larger Japanese deployments, with possible American intervention left open.",
+      "question": "How much longer might Force Z survive if it had a carrier?",
+      "answerShort": "Carrier fighters could disrupt the initial attacks, leaving Prince of Wales and Repulse available to anchor a stronger ABDA force and compel a larger Japanese response."
     },
     {
       "slug": "science-fiction-industrial-timelines",
@@ -1124,19 +1746,20 @@
         "military-logistics",
         "naval-industry",
         "science-fiction",
-        "shipbuilding"
+        "shipbuilding",
+        "star-trek"
       ],
-      "body": "Some settings make super-battleships appear on demand, while stronger stories track how ships are financed, built, crewed, and moved into service. A convincing fleet cannot acquire a major warship merely because the plot needs one at the next battle. Yard capacity, construction time, trained personnel, and the sequence of earlier orders determine what is actually available. Those constraints also shape how quickly losses can be replaced and how many operations can be attempted at once. Industrial timelines are part of strategy rather than background decoration.",
+      "body": "A convincing science-fiction fleet needs time to build its ships. Major warships should not appear immediately whenever the story needs them. Some Star Trek scenes prompt the question of where the available ships came from. Realistic construction schedules make fleet availability part of the setting's constraints.",
       "sourcePath": "src/transcripts/txt/2022-10-02_T18-00-29_bruships-86-science-fiction-strikes-some-more_RrsbbjTyyRw.txt",
       "evidence": [
         {
           "start": "3:33:36",
           "end": "3:34:18",
-          "note": "The closing remarks make realistic shipbuilding timelines a test of good military science fiction."
+          "note": "Realistic shipbuilding timelines as a criterion for judging science fiction, with Star Trek as an example."
         }
       ],
       "kind": "notable_point",
-      "summary": "Fleets become convincing when authors account for construction time, industrial capacity, and the origin of replacement ships."
+      "summary": "Believable fleets require construction schedules that explain where their available ships came from."
     }
   ]
 }
