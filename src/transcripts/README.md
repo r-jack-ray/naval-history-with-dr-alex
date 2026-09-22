@@ -84,8 +84,17 @@ and from one another. Each task finalizes its canonical shard write,
 the next task begins.
 
 Videos in `src/channel/ignored-videos.json` are excluded before batch accounting
-and are also blocked by the direct transcript command. They do not belong in
-the transcript failure list because the whole video is outside project scope.
+and remain excluded during forced or retry batches. They do not belong in the
+transcript failure list because the whole video is outside project scope.
+
+Vertical streams are excluded before caption downloads using actual video
+format dimensions from YouTube player metadata. Thumbnail sizes do not establish
+orientation. Confirmed exclusions are saved as `blockedVerticalStreamIds` in
+`fetch-status.json`; later runs skip these IDs without requests, including
+`--force` and `--retry-failed`. The summary reports `vertical-stream-blocked`.
+Landscape and square streams remain eligible. Missing or conflicting stream
+dimensions produce a saved failure for review and explicit retry, with no TXT
+or curation handoff. This check also applies with `--no-metadata-lookup`.
 
 The ordinary weekly `npm run fetch:video-links` command reconciles inventory and
 official metadata before caption scraping. Keep `npm run fetch:video-metadata`

@@ -8,6 +8,7 @@ import {
   type FetchVideoTranscriptOptions,
   findStoredTranscriptRecord,
   type VideoTranscript,
+  VerticalStreamError,
   writeTranscriptStorage,
 } from "./transcripts.js";
 import {
@@ -63,11 +64,13 @@ export interface TranscriptBatchStatus {
   retryFailed: boolean;
   force: boolean;
   pendingHandoffTxtPaths: string[];
+  blockedVerticalStreamIds: string[];
   stats: {
     inputVideoCount: number;
     skippedStoredCount: number;
     skippedDeferredCount: number;
     skippedShortDurationCount: number;
+    skippedVerticalStreamCount: number;
     deferredCounts: Record<VideoReadinessReason, number>;
     skippedPreviousFailureCount: number;
     attemptedCount: number;
@@ -133,6 +136,7 @@ interface TranscriptBatchCounters {
   skippedStoredCount: number;
   skippedDeferredCount: number;
   skippedShortDurationCount: number;
+  skippedVerticalStreamCount: number;
   deferredCounts: Record<VideoReadinessReason, number>;
   skippedPreviousFailureCount: number;
   attemptedCount: number;
@@ -153,9 +157,10 @@ export async function fetchAndStoreTranscriptBatch(
     );
   }
   const existingStatus = await readTranscriptBatchStatus(options.statusOutput);
+  const blockedVerticalStreamIds = new Set(existingStatus.blockedVerticalStreamIds);
   const failuresById = new Map(
       existingStatus.failures
-          .filter((failure) => !ignoredVideoIds.has(failure.videoId))
+          .filter((failure) => !ignoredVideoIds.has(failure.videoId) && !blockedVerticalStreamIds.has(failure.videoId))
           .map((failure) => [failure.videoId, failure]),
   );
   const metadataById = await readVideoMetadataById(options.metadataInput);
@@ -168,6 +173,7 @@ export async function fetchAndStoreTranscriptBatch(
     skippedStoredCount: 0,
     skippedDeferredCount: 0,
     skippedShortDurationCount: 0,
+    skippedVerticalStreamCount: 0,
     deferredCounts: emptyDeferredCounts(),
     skippedPreviousFailureCount: 0,
     attemptedCount: 0,
@@ -175,7 +181,10 @@ export async function fetchAndStoreTranscriptBatch(
     failedCount: 0,
     pendingCount: 0,
   };
-  const pendingHandoffTxtPaths = [...existingStatus.pendingHandoffTxtPaths];
+  const excludedVideoIds = new Set([...ignoredVideoIds, ...blockedVerticalStreamIds]);
+  const pendingHandoffTxtPaths = existingStatus.pendingHandoffTxtPaths.filter((path) =>
+      ![...excludedVideoIds].some((videoId) => path.endsWith(`_${videoId}.txt`)),
+  );
   const deferredRecords: TranscriptBatchDeferredRecord[] = [];
   const failedRecords: TranscriptBatchFailure[] = [];
   const pendingRecords: TranscriptBatchPendingRecord[] = [];
@@ -188,9 +197,14 @@ export async function fetchAndStoreTranscriptBatch(
     }
   }
 
-  await writeTranscriptBatchStatus(options, episodes, counters, failuresById, pendingHandoffTxtPaths);
+  await writeTranscriptBatchStatus(options, episodes, counters, failuresById, pendingHandoffTxtPaths, blockedVerticalStreamIds);
 
   for (const episode of episodes) {
+    if (blockedVerticalStreamIds.has(episode.videoId)) {
+      counters.skippedVerticalStreamCount += 1;
+      options.logger?.(`Skipping previously identified vertical stream: ${episode.videoId}`);
+      continue;
+    }
     const metadata = metadataById.get(episode.videoId);
     const state = resolveVideoFetchState(metadata, options.metadataInput !== undefined);
     if (state?.state === "ready" && isBlockedTranscriptDuration(state.durationSeconds)) {
@@ -259,7 +273,7 @@ export async function fetchAndStoreTranscriptBatch(
       counters.pendingCount += 1;
       pendingRecords.push(transcriptBatchPendingRecord(episode, "dry_run"));
       options.logger?.(`Dry run would fetch transcript: ${episode.videoId}`);
-      await writeTranscriptBatchStatus(options, episodes, counters, failuresById, pendingHandoffTxtPaths);
+      await writeTranscriptBatchStatus(options, episodes, counters, failuresById, pendingHandoffTxtPaths, blockedVerticalStreamIds);
       continue;
     }
 
@@ -269,6 +283,7 @@ export async function fetchAndStoreTranscriptBatch(
         videoId: episode.videoId,
         requestDelayMs: options.requestDelayMs,
         fetch: sharedFetch,
+        isLiveContent: Boolean(metadata?.liveStreamingDetails?.actualStartTime || episode.actualStartAt),
       };
       if (options.language !== undefined) {
         fetchOptions.language = options.language;
@@ -285,6 +300,19 @@ export async function fetchAndStoreTranscriptBatch(
       pendingHandoffTxtPaths.push(portablePath(paths.txtOutput));
       options.logger?.(`Stored transcript TXT: ${paths.txtOutput}`);
     } catch (error) {
+      if (error instanceof VerticalStreamError) {
+        blockedVerticalStreamIds.add(episode.videoId);
+        failuresById.delete(episode.videoId);
+        counters.skippedVerticalStreamCount += 1;
+        for (let index = pendingHandoffTxtPaths.length - 1; index >= 0; index -= 1) {
+          if (pendingHandoffTxtPaths[index]?.endsWith(`_${episode.videoId}.txt`)) {
+            pendingHandoffTxtPaths.splice(index, 1);
+          }
+        }
+        options.logger?.(error.message);
+        await writeTranscriptBatchStatus(options, episodes, counters, failuresById, pendingHandoffTxtPaths, blockedVerticalStreamIds);
+        continue;
+      }
       counters.failedCount += 1;
       const failure = transcriptBatchFailure(
           episode,
@@ -300,7 +328,7 @@ export async function fetchAndStoreTranscriptBatch(
       console.error(`Transcript fetch failed for ${episode.videoId}: ${failure.error}`);
     }
 
-    await writeTranscriptBatchStatus(options, episodes, counters, failuresById, pendingHandoffTxtPaths);
+    await writeTranscriptBatchStatus(options, episodes, counters, failuresById, pendingHandoffTxtPaths, blockedVerticalStreamIds);
   }
 
   const status = await writeTranscriptBatchStatus(
@@ -309,6 +337,7 @@ export async function fetchAndStoreTranscriptBatch(
       counters,
       failuresById,
       pendingHandoffTxtPaths,
+      blockedVerticalStreamIds,
   );
   return {
     ...status,
@@ -511,6 +540,7 @@ async function writeTranscriptBatchStatus(
     counters: TranscriptBatchCounters,
     failuresById: ReadonlyMap<string, TranscriptBatchFailure>,
     pendingHandoffTxtPaths: readonly string[],
+    blockedVerticalStreamIds: ReadonlySet<string>,
 ): Promise<TranscriptBatchStatus> {
   const status = buildTranscriptBatchStatus(
       options,
@@ -518,6 +548,7 @@ async function writeTranscriptBatchStatus(
       counters,
       failuresById,
       pendingHandoffTxtPaths,
+      blockedVerticalStreamIds,
   );
   await mkdir(dirname(options.statusOutput), {recursive: true});
   await writeFile(options.statusOutput, `${JSON.stringify(status, null, 2)}\n`, "utf8");
@@ -530,10 +561,12 @@ function buildTranscriptBatchStatus(
     counters: TranscriptBatchCounters,
     failuresById: ReadonlyMap<string, TranscriptBatchFailure>,
     pendingHandoffTxtPaths: readonly string[],
+    blockedVerticalStreamIds: ReadonlySet<string>,
 ): TranscriptBatchStatus {
   const processedCount = counters.skippedStoredCount +
       counters.skippedDeferredCount +
       counters.skippedShortDurationCount +
+      counters.skippedVerticalStreamCount +
       counters.fetchedCount +
       counters.failedCount +
       counters.pendingCount;
@@ -547,11 +580,13 @@ function buildTranscriptBatchStatus(
     retryFailed: options.retryFailed ?? false,
     force: options.force ?? false,
     pendingHandoffTxtPaths: normalizeTranscriptTxtPaths(pendingHandoffTxtPaths),
+    blockedVerticalStreamIds: [...blockedVerticalStreamIds].sort(),
     stats: {
       inputVideoCount: episodes.length,
       skippedStoredCount: counters.skippedStoredCount,
       skippedDeferredCount: counters.skippedDeferredCount,
       skippedShortDurationCount: counters.skippedShortDurationCount,
+      skippedVerticalStreamCount: counters.skippedVerticalStreamCount,
       deferredCounts: {...counters.deferredCounts},
       skippedPreviousFailureCount: counters.skippedPreviousFailureCount,
       attemptedCount: counters.attemptedCount,
@@ -690,6 +725,8 @@ function normalizeTranscriptBatchStatus(value: unknown): TranscriptBatchStatus {
   return {
     ...emptyTranscriptBatchStatus(),
     pendingHandoffTxtPaths: normalizeTranscriptTxtPaths(readStringArray(object.pendingHandoffTxtPaths)),
+    blockedVerticalStreamIds: [...new Set(readStringArray(object.blockedVerticalStreamIds))]
+        .filter((videoId) => /^[A-Za-z0-9_-]{11}$/u.test(videoId)).sort(),
     failures: object.failures
         .map((failure) => transcriptBatchFailureFromJson(failure))
         .filter((failure): failure is TranscriptBatchFailure => failure !== undefined),
@@ -745,11 +782,13 @@ function emptyTranscriptBatchStatus(): TranscriptBatchStatus {
     retryFailed: false,
     force: false,
     pendingHandoffTxtPaths: [],
+    blockedVerticalStreamIds: [],
     stats: {
       inputVideoCount: 0,
       skippedStoredCount: 0,
       skippedDeferredCount: 0,
       skippedShortDurationCount: 0,
+      skippedVerticalStreamCount: 0,
       deferredCounts: emptyDeferredCounts(),
       skippedPreviousFailureCount: 0,
       attemptedCount: 0,

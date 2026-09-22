@@ -147,8 +147,8 @@ npm run alternate:fetch:transcripts -- --limit 1 --request-delay-ms 5000
 ```
 
 Fetch progress and failures are stored in `src/transcripts/fetch-status.json`. The safe command leaves saved failures for a deliberate retry through the base command's
-`--retry-failed` option. Videos at or below 61 seconds are skipped, and upcoming or unfinished videos are
-deferred. [src/channel/ignored-videos.json](src/channel/ignored-videos.json) lists videos excluded from the project.
+`--retry-failed` option. Videos at or below 61 seconds and confirmed vertical streams are skipped. Upcoming or unfinished videos are
+deferred. Streams whose orientation cannot be confirmed are held for review and retry. [src/channel/ignored-videos.json](src/channel/ignored-videos.json) lists videos excluded from the project.
 
 Check `inventory.completeness` in `src/channel/episodes.json` before treating the inventory as a complete channel list. For offline inventory work,
 `alternate:extract:saved-channel-html` and `alternate:merge:video-links` can extract and combine saved channel pages.

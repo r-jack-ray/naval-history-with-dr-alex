@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-09-19T20:48:04.463Z",
+  "updatedAt": "2026-09-22T05:47:34.808Z",
   "inputPath": "src/channel/episodes.json",
   "outputRoot": "src/transcripts",
   "requestDelayMs": 5000,
@@ -8,23 +8,23 @@
   "force": false,
   "pendingHandoffTxtPaths": [],
   "stats": {
-    "inputVideoCount": 2193,
-    "skippedStoredCount": 2171,
-    "skippedDeferredCount": 6,
+    "inputVideoCount": 2195,
+    "skippedStoredCount": 2172,
+    "skippedDeferredCount": 5,
     "skippedShortDurationCount": 0,
     "deferredCounts": {
-      "upcoming": 6,
+      "upcoming": 5,
       "live_in_progress": 0,
       "processing": 0,
       "metadata_missing": 0,
       "invalid_metadata": 0
     },
     "skippedPreviousFailureCount": 15,
-    "attemptedCount": 1,
-    "fetchedCount": 1,
-    "failedCount": 0,
+    "attemptedCount": 3,
+    "fetchedCount": 2,
+    "failedCount": 1,
     "pendingCount": 15,
-    "totalFailureCount": 15
+    "totalFailureCount": 16
   },
   "failures": [
     {
@@ -138,6 +138,14 @@
       "error": "No caption tracks found for video: usSZIzRtuas.",
       "title": "No Sound??? Battle of the Atlantic: Escort Procurement - Comment Response",
       "videoDateAt": "2021-08-23T16:00:32Z"
+    },
+    {
+      "videoId": "xGvbY5KMz0Q",
+      "attemptedAt": "2026-09-22T05:47:22.181Z",
+      "classification": "no_caption_tracks",
+      "error": "No caption tracks found for video: xGvbY5KMz0Q.",
+      "title": "Bruships 260: Naval History Questions Answered Live",
+      "videoDateAt": "2026-09-20T18:40:19Z"
     },
     {
       "videoId": "xsE4uYFn1m0",

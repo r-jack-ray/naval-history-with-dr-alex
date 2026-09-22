@@ -11,7 +11,7 @@ import {
   readTranscriptBatchEpisodes,
   type TranscriptBatchStatus,
 } from "./batch-transcripts.js";
-import { type VideoTranscript, writeTranscriptStorage } from "./transcripts.js";
+import { type VideoTranscript, VerticalStreamError, writeTranscriptStorage } from "./transcripts.js";
 import { resolveVideoState } from "./video-metadata.js";
 
 test("reads unique transcript batch episodes from the channel master list", async () => {
@@ -423,6 +423,138 @@ test("batch blocks nominal 60-second videos including one second of metadata pad
     assert.equal(status.stats.skippedShortDurationCount, 2);
     assert.equal(status.stats.fetchedCount, 1);
     assert.equal(status.stats.pendingCount, 0);
+  } finally {
+    await rm(dir, {recursive: true, force: true});
+  }
+});
+
+test("batch checkpoints vertical exclusions without failures or curation handoff and keeps them excluded on forced retries", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "naval-transcript-batch-"));
+  const input = join(dir, "episodes.json");
+  const outputRoot = join(dir, "transcripts");
+  const statusOutput = join(outputRoot, "fetch-status.json");
+  const verticalId = "aXmqy_3hu78";
+  const horizontalId = "i6I6YwSHbBk";
+  const calls: string[] = [];
+
+  try {
+    await writeFile(input, JSON.stringify({
+      episodes: [{videoId: verticalId}, {videoId: horizontalId, actualStartAt: "2026-09-20T18:43:23Z"}],
+    }), "utf8");
+    const oldPaths = await writeTranscriptStorage(sampleTranscript(verticalId), outputRoot);
+    await writeFile(statusOutput, JSON.stringify({
+      failures: [{videoId: verticalId, attemptedAt: "2026-09-20T00:00:00Z", classification: "fetch_failed", error: "Old failure"}],
+      pendingHandoffTxtPaths: [oldPaths.txtOutput.replaceAll("\\", "/")],
+    }), "utf8");
+    const fetchOptions = {
+      inputPath: input, outputRoot, statusOutput, requestDelayMs: 0, force: true, retryFailed: true,
+      fetchTranscript: async (options: {videoId: string; isLiveContent?: boolean}) => {
+        calls.push(options.videoId);
+        if (options.videoId === verticalId) {
+          throw new VerticalStreamError(verticalId);
+        }
+        assert.equal(options.isLiveContent, true);
+        return sampleTranscript(options.videoId);
+      },
+    };
+    const result = await fetchAndStoreTranscriptBatch(fetchOptions);
+
+    assert.deepEqual(calls, [verticalId, horizontalId]);
+    assert.deepEqual(result.blockedVerticalStreamIds, [verticalId]);
+    assert.equal(result.stats.skippedVerticalStreamCount, 1);
+    assert.equal(result.stats.failedCount, 0);
+    assert.equal(result.stats.totalFailureCount, 0);
+    assert.equal(result.stats.fetchedCount, 1);
+    assert.equal(result.stats.pendingCount, 0);
+    assert.equal(result.handoff.circuitBreakerTripped, false);
+    assert.deepEqual(result.handoff.failedRecords, []);
+    assert(!result.handoff.newlyStoredTxtPaths.some((path) => path.endsWith(`_${verticalId}.txt`)));
+    assert.equal(await readFile(oldPaths.txtOutput, "utf8"), "[0:00] Hello\n");
+    const checkpoint = JSON.parse(await readFile(statusOutput, "utf8")) as TranscriptBatchStatus;
+    assert.deepEqual(checkpoint.blockedVerticalStreamIds, [verticalId]);
+
+    calls.length = 0;
+    const retry = await fetchAndStoreTranscriptBatch(fetchOptions);
+    assert.deepEqual(calls, [horizontalId]);
+    assert.equal(retry.stats.skippedVerticalStreamCount, 1);
+    assert.equal(retry.stats.attemptedCount, 1);
+    assert.equal(retry.stats.pendingCount, 0);
+  } finally {
+    await rm(dir, {recursive: true, force: true});
+  }
+});
+
+test("new vertical streams never receive TXT or manifest entries and exclusions persist in dry runs", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "naval-transcript-batch-"));
+  const input = join(dir, "episodes.json");
+  const outputRoot = join(dir, "transcripts");
+  const statusOutput = join(outputRoot, "fetch-status.json");
+  const verticalId = "aXmqy_3hu78";
+
+  try {
+    await writeFile(input, JSON.stringify({episodes: [{videoId: verticalId}]}), "utf8");
+    const options = {
+      inputPath: input, outputRoot, statusOutput, requestDelayMs: 0,
+      fetchTranscript: async () => { throw new VerticalStreamError(verticalId); },
+    };
+    const result = await fetchAndStoreTranscriptBatch(options);
+    assert.deepEqual(result.blockedVerticalStreamIds, [verticalId]);
+    assert.equal(result.stats.pendingCount, 0);
+    assert.deepEqual(result.handoff.newlyStoredTxtPaths, []);
+    await assert.rejects(readFile(join(outputRoot, "manifest.json")), {code: "ENOENT"});
+    await assert.rejects(readFile(join(outputRoot, "txt", `${verticalId}.txt`)), {code: "ENOENT"});
+
+    const dryRun = await fetchAndStoreTranscriptBatch({
+      ...options, dryRun: true,
+      fetchTranscript: async () => { assert.fail("A saved vertical exclusion must not make requests"); },
+    });
+    assert.deepEqual(dryRun.blockedVerticalStreamIds, [verticalId]);
+    assert.equal(dryRun.stats.skippedVerticalStreamCount, 1);
+    assert.equal(dryRun.stats.attemptedCount, 0);
+    assert.equal(dryRun.stats.pendingCount, 0);
+  } finally {
+    await rm(dir, {recursive: true, force: true});
+  }
+});
+
+test("unknown stream orientation remains retryable and does not trip the rate-limit circuit breaker", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "naval-transcript-batch-"));
+  const input = join(dir, "episodes.json");
+  const outputRoot = join(dir, "transcripts");
+  const statusOutput = join(outputRoot, "fetch-status.json");
+  const calls: string[] = [];
+
+  try {
+    await writeFile(input, JSON.stringify({episodes: [{videoId: "aXmqy_3hu78"}, {videoId: "i6I6YwSHbBk"}]}), "utf8");
+    const options = {
+      inputPath: input, outputRoot, statusOutput, requestDelayMs: 0,
+      fetchTranscript: async ({videoId}: {videoId: string}) => {
+        calls.push(videoId);
+        if (videoId === "aXmqy_3hu78") {
+          throw new Error(`Stream orientation unavailable or inconsistent for ${videoId}; caption download deferred.`);
+        }
+        return sampleTranscript(videoId);
+      },
+    };
+    const result = await fetchAndStoreTranscriptBatch(options);
+    assert.deepEqual(calls, ["aXmqy_3hu78", "i6I6YwSHbBk"]);
+    assert.deepEqual(result.blockedVerticalStreamIds, []);
+    assert.equal(result.failures[0]?.classification, "fetch_failed");
+    assert.equal(result.handoff.circuitBreakerTripped, false);
+    assert.equal(result.stats.fetchedCount, 1);
+    await assert.rejects(readFile(join(outputRoot, "txt", "aXmqy_3hu78.txt")), {code: "ENOENT"});
+
+    calls.length = 0;
+    const retry = await fetchAndStoreTranscriptBatch({
+      ...options, retryFailed: true,
+      fetchTranscript: async ({videoId}) => {
+        calls.push(videoId);
+        return sampleTranscript(videoId);
+      },
+    });
+    assert.deepEqual(calls, ["aXmqy_3hu78"]);
+    assert.equal(retry.stats.totalFailureCount, 0);
+    assert.equal(retry.stats.fetchedCount, 1);
   } finally {
     await rm(dir, {recursive: true, force: true});
   }

@@ -85,9 +85,23 @@ export interface StoredTranscriptRecord {
 export interface FetchVideoTranscriptOptions {
   videoId: string;
   requestDelayMs: number;
+  isLiveContent?: boolean;
   language?: string;
   fetch?: typeof fetch;
   logger?: (message: string) => void;
+}
+
+export class VerticalStreamError extends Error {
+  constructor(readonly videoId: string) {
+    super(`Vertical stream ${videoId} is excluded from transcript acquisition.`);
+    this.name = "VerticalStreamError";
+  }
+}
+
+interface StreamOrientation {
+  isLiveContent: boolean;
+  hasPortraitFormat: boolean;
+  hasNonPortraitFormat: boolean;
 }
 
 export async function fetchVideoTranscript(options: FetchVideoTranscriptOptions): Promise<VideoTranscript> {
@@ -95,10 +109,18 @@ export async function fetchVideoTranscript(options: FetchVideoTranscriptOptions)
     delayMs: options.requestDelayMs,
     ...(options.logger ? {logger: options.logger} : {}),
   });
+  const orientation: StreamOrientation = {
+    isLiveContent: options.isLiveContent === true,
+    hasPortraitFormat: false,
+    hasNonPortraitFormat: false,
+  };
 
   try {
-    return await fetchVideoTranscriptWithPlus(options, limitedFetch);
+    return await fetchVideoTranscriptWithPlus(options, limitedFetch, orientation);
   } catch (error) {
+    if (error instanceof VerticalStreamError) {
+      throw error;
+    }
     console.warn(
         `youtube-transcript-plus failed: ${errorMessage(error)}. Trying watch-page caption fallback.`,
     );
@@ -109,6 +131,7 @@ export async function fetchVideoTranscript(options: FetchVideoTranscriptOptions)
     language: options.language,
     fetch: limitedFetch,
     logger: options.logger,
+    orientation,
   });
   if (watchPageTranscript) {
     return watchPageTranscript;
@@ -120,14 +143,32 @@ export async function fetchVideoTranscript(options: FetchVideoTranscriptOptions)
 async function fetchVideoTranscriptWithPlus(
     options: FetchVideoTranscriptOptions,
     limitedFetch: typeof fetch,
+    orientation: StreamOrientation,
 ): Promise<VideoTranscript> {
   const config: TranscriptPlusConfig & { videoDetails: true } = {
     retries: 0,
     userAgent: youtubeUserAgent,
     videoDetails: true,
-    videoFetch: (params: TranscriptPlusFetchParams) => transcriptPlusFetch(params, limitedFetch, "video page"),
-    playerFetch: (params: TranscriptPlusFetchParams) => transcriptPlusFetch(params, limitedFetch, "player metadata"),
-    transcriptFetch: (params: TranscriptPlusFetchParams) => transcriptPlusFetch(params, limitedFetch, "transcript data"),
+    videoFetch: async (params: TranscriptPlusFetchParams) => {
+      const response = await transcriptPlusFetch(params, limitedFetch, "video page");
+      if (response.ok) {
+        inspectStreamOrientation(
+            extractInitialPlayerResponse(await response.clone().text()), options.videoId, orientation,
+        );
+      }
+      return response;
+    },
+    playerFetch: async (params: TranscriptPlusFetchParams) => {
+      const response = await transcriptPlusFetch(params, limitedFetch, "player metadata");
+      if (response.ok) {
+        inspectStreamOrientation(await response.clone().json(), options.videoId, orientation);
+      }
+      return response;
+    },
+    transcriptFetch: (params: TranscriptPlusFetchParams) => {
+      assertStreamOrientation(options.videoId, orientation);
+      return transcriptPlusFetch(params, limitedFetch, "transcript data");
+    },
   };
 
   if (options.language !== undefined) {
@@ -138,6 +179,44 @@ async function fetchVideoTranscriptWithPlus(
   const result = await fetchTranscriptPlus(options.videoId, config);
 
   return transcriptPlusResultToVideoTranscript(options.videoId, result);
+}
+
+function inspectStreamOrientation(
+    playerResponse: unknown,
+    videoId: string,
+    orientation: StreamOrientation,
+): void {
+  const details = asRecord(readPath(playerResponse, ["videoDetails"]));
+  if (details?.videoId !== undefined && details.videoId !== videoId) {
+    throw new Error(`Player metadata video ID does not match requested video ${videoId}.`);
+  }
+  orientation.isLiveContent ||= details?.isLiveContent === true || details?.isLive === true ||
+      asRecord(readPath(playerResponse, ["microformat", "playerMicroformatRenderer", "liveBroadcastDetails"])) !== undefined;
+  const formats = [
+    ...recordArray(readPath(playerResponse, ["streamingData", "formats"])),
+    ...recordArray(readPath(playerResponse, ["streamingData", "adaptiveFormats"])),
+  ];
+  for (const format of formats) {
+    const {width, height, mimeType} = format;
+    if (
+        typeof width !== "number" || typeof height !== "number" ||
+        !Number.isSafeInteger(width) || !Number.isSafeInteger(height) || width <= 0 || height <= 0 ||
+        (typeof mimeType === "string" && !mimeType.startsWith("video/"))
+    ) {
+      continue;
+    }
+    orientation.hasPortraitFormat ||= height > width;
+    orientation.hasNonPortraitFormat ||= width >= height;
+  }
+  if (orientation.isLiveContent && orientation.hasPortraitFormat && !orientation.hasNonPortraitFormat) {
+    throw new VerticalStreamError(videoId);
+  }
+}
+
+function assertStreamOrientation(videoId: string, orientation: StreamOrientation): void {
+  if (orientation.isLiveContent && (!orientation.hasNonPortraitFormat || orientation.hasPortraitFormat)) {
+    throw new Error(`Stream orientation unavailable or inconsistent for ${videoId}; caption download deferred.`);
+  }
 }
 
 function transcriptPlusResultToVideoTranscript(
@@ -637,6 +716,7 @@ async function fetchWatchPageTranscript(options: {
   language: string | undefined;
   fetch: typeof fetch;
   logger: ((message: string) => void) | undefined;
+  orientation: StreamOrientation;
 }): Promise<VideoTranscript | undefined> {
   options.logger?.(`Fetching watch page captions: ${options.videoId}`);
   const response = await options.fetch(
@@ -654,6 +734,8 @@ async function fetchWatchPageTranscript(options: {
     return undefined;
   }
 
+  inspectStreamOrientation(playerResponse, options.videoId, options.orientation);
+  assertStreamOrientation(options.videoId, options.orientation);
   const videoDetails = asRecord(readPath(playerResponse, ["videoDetails"]));
   return fetchTranscriptFromCaptionTracks({
     videoId: options.videoId,

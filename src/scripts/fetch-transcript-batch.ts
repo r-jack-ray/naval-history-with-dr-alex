@@ -56,6 +56,7 @@ async function main(): Promise<void> {
     `failed=${result.stats.failedCount}`,
     `stored-skipped=${result.stats.skippedStoredCount}`,
     `short-duration-blocked=${result.stats.skippedShortDurationCount}`,
+    `vertical-stream-blocked=${result.stats.skippedVerticalStreamCount}`,
     `previous-failure-skipped=${result.stats.skippedPreviousFailureCount}`,
     `pending=${result.stats.pendingCount}`,
     `status=${options.statusOutput}`,
@@ -169,6 +170,10 @@ Options:
 
 Videos with official durations at or below 61 seconds are never fetched. This
 includes one second of tolerance for nominal 60-second clips reported as 61s.
+Vertical streams are excluded using actual video format dimensions before any
+caption download. Confirmed exclusions are saved in the status checkpoint and
+remain excluded with --force or --retry-failed. Streams with unavailable or
+conflicting dimensions are saved as failures for explicit review and retry.
 Videos in src/channel/ignored-videos.json are excluded from every batch even if
 they are present in a custom episode input.
 
