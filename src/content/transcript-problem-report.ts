@@ -2,6 +2,7 @@ import { readFile } from "node:fs/promises";
 
 import { writeTextAtomically } from "../pipeline/atomic-write.js";
 import type { TranscriptBatchFailure, TranscriptBatchStatus, TranscriptFailureClassification, } from "../youtube/batch-transcripts.js";
+import { defaultIgnoredVideosInput, readIgnoredVideos } from "../youtube/ignored-videos.js";
 
 export const defaultTranscriptProblemStatusInput = "src/transcripts/fetch-status.json";
 export const defaultTranscriptProblemReportOutput = "reports/transcript-problems.md";
@@ -38,10 +39,14 @@ export interface TranscriptProblemReport {
 
 export async function generateTranscriptProblemReport(options: {
   statusInput: string;
+  ignoredVideosInput?: string;
   output?: string;
 }): Promise<TranscriptProblemReport> {
-  const status = await readStatus(options.statusInput);
-  const report = buildTranscriptProblemReport(status, options.statusInput);
+  const [status, ignoredVideos] = await Promise.all([
+    readStatus(options.statusInput),
+    readIgnoredVideos(options.ignoredVideosInput ?? defaultIgnoredVideosInput),
+  ]);
+  const report = buildTranscriptProblemReport(status, options.statusInput, new Set(ignoredVideos.keys()));
   if (options.output !== undefined) {
     await writeTextAtomically(options.output, renderTranscriptProblemReport(report));
   }
@@ -49,10 +54,13 @@ export async function generateTranscriptProblemReport(options: {
 }
 
 export function buildTranscriptProblemReport(
-    status: Pick<TranscriptBatchStatus, "updatedAt" | "failures">,
+    status: Pick<TranscriptBatchStatus, "updatedAt" | "failures"> & {blockedVerticalStreamIds?: readonly string[]},
     sourcePath: string,
+    ignoredVideoIds: ReadonlySet<string> = new Set(),
 ): TranscriptProblemReport {
+  const excludedVideoIds = new Set([...ignoredVideoIds, ...(status.blockedVerticalStreamIds ?? [])]);
   const problems = status.failures
+      .filter((failure) => !excludedVideoIds.has(failure.videoId))
       .map((failure) => ({...failure, diagnosis: diagnoseTranscriptFailure(failure)}))
       .sort(compareProblems);
   const classificationCounts = emptyClassificationCounts();
@@ -109,11 +117,11 @@ export function renderTranscriptProblemReport(report: TranscriptProblemReport): 
     `Prior-run source: ${report.sourcePath}`,
     `Source last updated: ${report.sourceUpdatedAt}`,
     "",
-    "> This report is diagnostic only. It reads saved prior-run failures and does not request or retry transcripts. Probable reasons are inferences, not fresh checks of YouTube.",
+    "> This report is diagnostic only. It reads saved prior-run failures and does not request or retry transcripts. Videos already excluded from transcript acquisition are omitted. Probable reasons are inferences, not fresh checks of YouTube.",
     "",
     "## Summary",
     "",
-    `- Videos with saved transcript-fetch failures: ${report.problems.length}`,
+    `- Videos with reportable transcript-fetch failures: ${report.problems.length}`,
   ];
 
   for (const [classification, count] of Object.entries(report.classificationCounts)) {
@@ -124,7 +132,7 @@ export function renderTranscriptProblemReport(report: TranscriptProblemReport): 
 
   lines.push("", "### Probable reasons", "");
   if (report.problems.length === 0) {
-    lines.push("No saved transcript-fetch failures were present.", "");
+    lines.push("No reportable transcript-fetch failures were present.", "");
   } else {
     for (const [reason, count] of Object.entries(report.reasonCounts).sort(([left], [right]) => left.localeCompare(right))) {
       lines.push(`- \`${reason}\`: ${count}`);
@@ -194,12 +202,15 @@ function escapeTable(value: string): string {
   return value.replace(/\|/gu, "\\|").replace(/[\r\n]+/gu, " ").trim();
 }
 
-async function readStatus(path: string): Promise<Pick<TranscriptBatchStatus, "updatedAt" | "failures">> {
+async function readStatus(path: string): Promise<Pick<TranscriptBatchStatus, "updatedAt" | "failures"> & {blockedVerticalStreamIds?: string[]}> {
   const value = JSON.parse(await readFile(path, "utf8")) as unknown;
-  if (!isRecord(value) || typeof value.updatedAt !== "string" || !Array.isArray(value.failures)) {
+  if (!isRecord(value) || typeof value.updatedAt !== "string" || !Array.isArray(value.failures) ||
+      (value.blockedVerticalStreamIds !== undefined &&
+       (!Array.isArray(value.blockedVerticalStreamIds) ||
+        !value.blockedVerticalStreamIds.every((id) => typeof id === "string")))) {
     throw new Error(`Transcript fetch status is invalid: ${path}`);
   }
-  return value as unknown as Pick<TranscriptBatchStatus, "updatedAt" | "failures">;
+  return value as unknown as Pick<TranscriptBatchStatus, "updatedAt" | "failures"> & {blockedVerticalStreamIds?: string[]};
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {

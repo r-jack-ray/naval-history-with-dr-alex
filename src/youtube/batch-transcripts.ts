@@ -7,6 +7,7 @@ import {
   fetchVideoTranscript,
   type FetchVideoTranscriptOptions,
   findStoredTranscriptRecord,
+  resolveTranscriptLanguage,
   type VideoTranscript,
   VerticalStreamError,
   writeTranscriptStorage,
@@ -148,6 +149,7 @@ interface TranscriptBatchCounters {
 export async function fetchAndStoreTranscriptBatch(
     options: FetchTranscriptBatchOptions,
 ): Promise<TranscriptBatchResult> {
+  options = {...options, language: resolveTranscriptLanguage(options.language)};
   const inputEpisodes = await readTranscriptBatchEpisodes(options.inputPath);
   const ignoredVideoIds = options.ignoredVideoIds ?? new Set<string>();
   const episodes = inputEpisodes.filter((episode) => !ignoredVideoIds.has(episode.videoId));

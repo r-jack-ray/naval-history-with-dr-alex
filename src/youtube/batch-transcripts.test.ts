@@ -880,6 +880,40 @@ test("started livestream remains deferred until completion is proven", () => {
   }).state, "deferred");
 });
 
+test("the standard batch replaces a non-English cached transcript with English", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "naval-transcript-language-"));
+  const inputPath = join(dir, "episodes.json");
+  const outputRoot = join(dir, "transcripts");
+  const statusOutput = join(outputRoot, "fetch-status.json");
+  try {
+    const paths = await writeTranscriptStorage({
+      ...sampleTranscript("abc123"), selectedLanguage: "ar", availableLanguages: ["ar", "en"],
+    }, outputRoot);
+    await writeFile(inputPath, JSON.stringify({episodes: [{videoId: "abc123"}]}), "utf8");
+    const languages: Array<string | undefined> = [];
+    const result = await fetchAndStoreTranscriptBatch({
+      inputPath, outputRoot, statusOutput, requestDelayMs: 0,
+      fetchTranscript: async (options) => {
+        languages.push(options.language);
+        return sampleTranscript(options.videoId);
+      },
+    });
+    assert.deepEqual(languages, ["en"]);
+    assert.equal(result.language, "en");
+    assert.equal(result.stats.skippedStoredCount, 0);
+    assert.equal(result.stats.fetchedCount, 1);
+    const manifest = JSON.parse(await readFile(paths.manifestOutput, "utf8"));
+    assert.equal(manifest.transcripts[0].selectedLanguage, "en");
+    assert.equal(await readFile(paths.txtOutput, "utf8"), "[0:00] Hello\n");
+
+    await assert.rejects(fetchAndStoreTranscriptBatch({
+      inputPath, outputRoot, statusOutput, requestDelayMs: 0, language: "ar",
+    }), /requires English/u);
+  } finally {
+    await rm(dir, {recursive: true, force: true});
+  }
+});
+
 function sampleTranscript(videoId: string): VideoTranscript {
   return {
     videoId,

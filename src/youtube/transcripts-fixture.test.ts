@@ -124,6 +124,25 @@ test("removes a superseded safe TXT path while preserving the stored fileStem", 
   }
 });
 
+test("stored lookup checks the selected language rather than available tracks", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "naval-transcript-language-"));
+  try {
+    for (const selectedLanguage of ["ar", undefined, "English (en)", "EN"]) {
+      const transcript = {...sampleTranscript(), availableLanguages: ["ar", "en"]};
+      if (selectedLanguage === undefined) {
+        delete transcript.selectedLanguage;
+      } else {
+        transcript.selectedLanguage = selectedLanguage;
+      }
+      await writeTranscriptStorage(transcript, dir);
+      const stored = await findStoredTranscriptRecord({videoId: "abc123", root: dir, language: "en"});
+      assert.equal(stored !== undefined, selectedLanguage === "English (en)" || selectedLanguage === "EN");
+    }
+  } finally {
+    await rm(dir, {recursive: true, force: true});
+  }
+});
+
 function sampleTranscript(): VideoTranscript {
   return {
     videoId: "abc123",

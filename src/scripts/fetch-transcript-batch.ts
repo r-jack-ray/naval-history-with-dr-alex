@@ -159,7 +159,7 @@ Options:
   --status-output <path>  Resume/status JSON. Defaults to src/transcripts/fetch-status.json.
   --metadata-input <path> Local video metadata JSON. Defaults to src/channel/video-metadata.json.
   --no-metadata-lookup    Bypass local metadata readiness and naming lookup.
-  --language <name>       Optional transcript language code or label.
+  --language <code>       English only. Defaults to en; other languages are rejected.
   --limit <count>         Maximum number of new transcript fetch attempts.
   --request-delay-ms <ms> Delay between requests; base default 5000, safe command sets 60000.
   --retry-failed          Explicitly retry videos in the status failure file; never implied by the safe command.

@@ -122,6 +122,50 @@ test("a different video ID cannot classify or download the requested video", asy
   assert.equal(stub.urls.length, 2);
 });
 
+for (const fallback of [false, true]) {
+  test(`English is enforced with Arabic first in ${fallback ? "fallback" : "primary"} caption tracks`, async () => {
+    const response = multilingualResponse();
+    const stub = stubFetch(response, fallback ? () => new Response("Unavailable", {status: 503}) : response);
+    const result = await fetchVideoTranscript({videoId, requestDelayMs: 0, fetch: stub.fetch});
+
+    assert.equal(result.selectedLanguage, "en");
+    assert(stub.urls.some((url) => url.startsWith("https://captions.example.test/track-en")));
+    assert(stub.urls.every((url) => !url.startsWith("https://captions.example.test/track-ar")));
+    assert.equal(result.source, fallback ? "watch-page-captions" : "youtube-transcript-plus");
+  });
+}
+
+test("English acquisition fails instead of downloading the only Arabic track", async () => {
+  const response = multilingualResponse();
+  response.captions.playerCaptionsTracklistRenderer.captionTracks.pop();
+  const stub = stubFetch(response, response);
+
+  await assert.rejects(fetchVideoTranscript({videoId, requestDelayMs: 0, fetch: stub.fetch}), /No caption track matched language: en/u);
+  assert(stub.urls.every((url) => !url.startsWith("https://captions.example.test/")));
+});
+
+test("an explicit non-English language is rejected before network access", async () => {
+  const response = multilingualResponse();
+  const stub = stubFetch(response, response);
+
+  await assert.rejects(fetchVideoTranscript({videoId, language: "ar", requestDelayMs: 0, fetch: stub.fetch}), /requires English/u);
+  assert.deepEqual(stub.urls, []);
+});
+
+function multilingualResponse() {
+  return {
+    ...playerResponse(false, [landscape]),
+    captions: {
+      playerCaptionsTracklistRenderer: {
+        captionTracks: [
+          {baseUrl: "https://captions.example.test/track-ar", languageCode: "ar", name: {simpleText: "Arabic"}},
+          {baseUrl: "https://captions.example.test/track-en", languageCode: "en", name: {simpleText: "English"}},
+        ],
+      },
+    },
+  };
+}
+
 function playerResponse(isLiveContent: boolean, formats: readonly unknown[]) {
   return {
     videoDetails: {videoId, title: "Bruships 260", isLiveContent, thumbnail: {thumbnails: [] as unknown[]}},

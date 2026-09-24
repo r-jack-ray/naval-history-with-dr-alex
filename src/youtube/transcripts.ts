@@ -21,6 +21,14 @@ type FetchResponseHeaders = Awaited<ReturnType<typeof fetch>>["headers"];
 const youtubeUserAgent =
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126 Safari/537.36";
 export const defaultTranscriptStorageRoot = "src/transcripts";
+export const defaultTranscriptLanguage = "en";
+
+export function resolveTranscriptLanguage(language = defaultTranscriptLanguage): "en" {
+  if (language.toLowerCase() !== defaultTranscriptLanguage) {
+    throw new Error("Transcript acquisition requires English captions (--language en).");
+  }
+  return defaultTranscriptLanguage;
+}
 
 export interface TranscriptSegment {
   startMs: number;
@@ -105,6 +113,7 @@ interface StreamOrientation {
 }
 
 export async function fetchVideoTranscript(options: FetchVideoTranscriptOptions): Promise<VideoTranscript> {
+  const language = resolveTranscriptLanguage(options.language);
   const limitedFetch = options.fetch ?? createRateLimitedFetch({
     delayMs: options.requestDelayMs,
     ...(options.logger ? {logger: options.logger} : {}),
@@ -116,7 +125,7 @@ export async function fetchVideoTranscript(options: FetchVideoTranscriptOptions)
   };
 
   try {
-    return await fetchVideoTranscriptWithPlus(options, limitedFetch, orientation);
+    return await fetchVideoTranscriptWithPlus({...options, language}, limitedFetch, orientation);
   } catch (error) {
     if (error instanceof VerticalStreamError) {
       throw error;
@@ -128,7 +137,7 @@ export async function fetchVideoTranscript(options: FetchVideoTranscriptOptions)
 
   const watchPageTranscript = await fetchWatchPageTranscript({
     videoId: options.videoId,
-    language: options.language,
+    language,
     fetch: limitedFetch,
     logger: options.logger,
     orientation,
@@ -554,7 +563,8 @@ function transcriptLanguageMatches(record: TranscriptManifestRecord, language: s
   }
 
   const normalized = language.toLowerCase();
-  return [record.selectedLanguage, ...record.availableLanguages].some((value) => value?.toLowerCase() === normalized);
+  const stored = record.selectedLanguage?.toLowerCase();
+  return stored === normalized || stored?.endsWith(` (${normalized})`) === true;
 }
 
 async function readTranscriptManifest(path: string): Promise<TranscriptManifest> {
@@ -778,7 +788,7 @@ async function fetchTranscriptFromCaptionTracks(options: {
     ...(options.videoTitle ? {videoTitle: options.videoTitle} : {}),
     source: "watch-page-captions",
     fetchedAt: new Date().toISOString(),
-    selectedLanguage: captionTrackLanguage(track),
+    selectedLanguage: captionTrackCode(track) ?? captionTrackLanguage(track),
     availableLanguages: captionTracks.map(captionTrackLanguage),
     segments,
   };

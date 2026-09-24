@@ -3,6 +3,7 @@ import { defaultTranscriptProblemReportOutput, defaultTranscriptProblemStatusInp
 
 interface CliOptions {
   statusInput: string;
+  ignoredVideosInput: string | undefined;
   output: string | undefined;
   quiet: boolean;
 }
@@ -11,6 +12,7 @@ async function main(): Promise<void> {
   const options = parseArgs(process.argv.slice(2));
   const report = await generateTranscriptProblemReport({
     statusInput: options.statusInput,
+    ...(options.ignoredVideosInput !== undefined ? {ignoredVideosInput: options.ignoredVideosInput} : {}),
     ...(options.output !== undefined ? {output: options.output} : {}),
   });
   if (!options.quiet) {
@@ -19,12 +21,15 @@ async function main(): Promise<void> {
 }
 
 function parseArgs(args: string[]): CliOptions {
-  const options: CliOptions = {statusInput: defaultTranscriptProblemStatusInput, output: defaultTranscriptProblemReportOutput, quiet: false};
+  const options: CliOptions = {statusInput: defaultTranscriptProblemStatusInput, ignoredVideosInput: undefined, output: defaultTranscriptProblemReportOutput, quiet: false};
   for (let index = 0; index < args.length; index += 1) {
     const arg = args[index];
     switch (arg) {
     case "--status-input":
       options.statusInput = readValue(args, ++index, arg);
+      break;
+    case "--ignored-videos-input":
+      options.ignoredVideosInput = readValue(args, ++index, arg);
       break;
     case "--output":
       options.output = readValue(args, ++index, arg);
@@ -59,9 +64,11 @@ function printHelp(): void {
   console.log(`Usage: npm run report:transcript-problems -- [options]
 
 Reads saved transcript-fetch failures only. It never contacts YouTube or retries a transcript.
+Known excluded videos are omitted.
 
 Options:
   --status-input <path>  Prior-run status JSON. Defaults to src/transcripts/fetch-status.json.
+  --ignored-videos-input <path>  Curated exclusions. Defaults to src/channel/ignored-videos.json.
   --output <path>        Markdown report. Defaults to reports/transcript-problems.md.
   --no-output            Analyze without writing a report.
   --quiet                Suppress the one-line summary.

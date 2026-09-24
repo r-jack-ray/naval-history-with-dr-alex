@@ -1,17 +1,19 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-09-22T05:47:34.808Z",
+  "updatedAt": "2026-09-24T22:00:33.283Z",
   "inputPath": "src/channel/episodes.json",
   "outputRoot": "src/transcripts",
   "requestDelayMs": 5000,
   "retryFailed": false,
   "force": false,
   "pendingHandoffTxtPaths": [],
+  "blockedVerticalStreamIds": [],
   "stats": {
     "inputVideoCount": 2195,
-    "skippedStoredCount": 2172,
+    "skippedStoredCount": 2173,
     "skippedDeferredCount": 5,
     "skippedShortDurationCount": 0,
+    "skippedVerticalStreamCount": 0,
     "deferredCounts": {
       "upcoming": 5,
       "live_in_progress": 0,
@@ -19,11 +21,11 @@
       "metadata_missing": 0,
       "invalid_metadata": 0
     },
-    "skippedPreviousFailureCount": 15,
-    "attemptedCount": 3,
-    "fetchedCount": 2,
-    "failedCount": 1,
-    "pendingCount": 15,
+    "skippedPreviousFailureCount": 16,
+    "attemptedCount": 1,
+    "fetchedCount": 1,
+    "failedCount": 0,
+    "pendingCount": 16,
     "totalFailureCount": 16
   },
   "failures": [
