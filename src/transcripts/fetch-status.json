@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-09-24T22:00:33.283Z",
+  "updatedAt": "2026-09-28T13:46:16.847Z",
   "inputPath": "src/channel/episodes.json",
   "outputRoot": "src/transcripts",
   "requestDelayMs": 5000,
@@ -9,24 +9,24 @@
   "pendingHandoffTxtPaths": [],
   "blockedVerticalStreamIds": [],
   "stats": {
-    "inputVideoCount": 2195,
-    "skippedStoredCount": 2173,
-    "skippedDeferredCount": 5,
+    "inputVideoCount": 2204,
+    "skippedStoredCount": 2174,
+    "skippedDeferredCount": 14,
     "skippedShortDurationCount": 0,
     "skippedVerticalStreamCount": 0,
     "deferredCounts": {
-      "upcoming": 5,
+      "upcoming": 14,
       "live_in_progress": 0,
       "processing": 0,
       "metadata_missing": 0,
       "invalid_metadata": 0
     },
-    "skippedPreviousFailureCount": 16,
+    "skippedPreviousFailureCount": 15,
     "attemptedCount": 1,
     "fetchedCount": 1,
     "failedCount": 0,
-    "pendingCount": 16,
-    "totalFailureCount": 16
+    "pendingCount": 15,
+    "totalFailureCount": 15
   },
   "failures": [
     {
@@ -142,14 +142,6 @@
       "videoDateAt": "2021-08-23T16:00:32Z"
     },
     {
-      "videoId": "xGvbY5KMz0Q",
-      "attemptedAt": "2026-09-22T05:47:22.181Z",
-      "classification": "no_caption_tracks",
-      "error": "No caption tracks found for video: xGvbY5KMz0Q.",
-      "title": "Bruships 260: Naval History Questions Answered Live",
-      "videoDateAt": "2026-09-20T18:40:19Z"
-    },
-    {
       "videoId": "xsE4uYFn1m0",
       "attemptedAt": "2026-07-09T06:02:44.856Z",
       "classification": "no_caption_tracks",
@@ -158,5 +150,6 @@
       "videoDateAt": "2020-12-13T14:00:26Z"
     }
   ],
-  "metadataInput": "src/channel/video-metadata.json"
+  "metadataInput": "src/channel/video-metadata.json",
+  "language": "en"
 }
