@@ -58,7 +58,7 @@
         {
           "start": "5:19",
           "end": "6:19",
-          "note": "Resources in different corners of a large map require rail transport for efficient movement."
+          "note": "Resources in different corners of a large map motivate a desired steam-train modification for efficient transport."
         }
       ],
       "kind": "notable_point",
@@ -77,7 +77,7 @@
         "timberborn",
         "water-management"
       ],
-      "body": "The map looks easy because it contains abundant water and metal, yet too much inflow can be as dangerous as too little. High water inundates the obvious cropland, while channels of different depth make the timing and volume of drainage harder to predict. Fixed dams can preserve water for droughts, but later inflows may spill over the banks and across crops. A gate connected to a flow meter would adjust its opening with the water level, turning the setup into an explicit feedback-control problem. As a result, the middle difficulty can be easier than the nominally easy setting, which floods. Scarce water creates the opposite incentive: players retain as much as possible and risk a flash flood when flow returns. Flood protection, drought reserves and control rules must work together even within Timberborn's simplified hydraulics.",
+      "body": "The map looks easy because it contains abundant water and metal, yet too much inflow can be as dangerous as too little. High water inundates the obvious cropland, while channels of different depth make the timing and volume of drainage harder to predict. Fixed dams can preserve water for droughts, but later inflows may spill over the banks and across crops. A proposed gate modification would connect a gate to a flow meter and adjust its opening with the water level. That would let the player retain water during droughts while controlling the next inflow. On this map, the middle difficulty can be easier than the nominally easy setting, which floods. Scarce water creates the opposite incentive: players retain as much as possible and risk a flash flood when flow returns. Flood protection, drought reserves and control rules must work together even within Timberborn's simplified hydraulics.",
       "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
       "evidence": [
         {
@@ -88,6 +88,29 @@
       ],
       "kind": "chapter",
       "summary": "The map's apparent abundance exposes a systems problem: flood protection, drought storage and gate-control rules can undermine one another."
+    },
+    {
+      "slug": "timberborn-scattered-metal-and-transport-cost",
+      "title": "Scattered resources and the cost of reaching them",
+      "start": "10:06",
+      "end": "10:51",
+      "topics": [
+        "game-design",
+        "resource-management",
+        "timberborn",
+        "transport-logistics"
+      ],
+      "body": "Metal deposits across the Timberborn map draw attention toward several possible expansion routes, even though one nearby area already contains enough for the settlement's needs. Their distribution is a deliberate distraction in the map design. Reaching the distant deposits requires planning access, and terrain at the same height suggests a long straight connection. A railway would make that route efficient. The scenario asks the player to consider transport effort alongside the apparent abundance of resources.",
+      "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
+      "evidence": [
+        {
+          "start": "10:06",
+          "end": "10:51",
+          "note": "Scattered metal deposits encourage expansion planning despite adequate nearby supply, with a straight railway proposed for efficient access."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "Scattered metal deposits encourage expansion plans even when nearby supply is sufficient, making access costs part of resource strategy."
     },
     {
       "slug": "raising-reservoir-levels-requires-system-wide-investment",
@@ -101,22 +124,22 @@
         "timberborn",
         "water-management"
       ],
-      "body": "Raising the map's water level would reshape the whole settlement. The player would need to build around a wider shoreline and fill low ground, so another dam would solve only part of the problem. Producing enough soil requires reaching the stage when golems are available, which ties the hydraulic plan to capabilities developed elsewhere in the game. Extra storage is useful only if the surrounding land and production system can adapt. Timberborn simplifies the engineering, yet the dependencies are clear: a larger reservoir brings new construction, resource and technology requirements.",
+      "body": "Raising the map's water level would reshape the whole settlement. The plan involves building around the map and probably filling low ground to bring more land up to the new level. That would mean producing soil and reaching the stage when golems are available. Extra water storage therefore depends on construction and technology elsewhere in the settlement. The larger reservoir is a possible later development whose supporting work must be planned in advance.",
       "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
       "evidence": [
         {
           "start": "11:52",
           "end": "13:41",
-          "note": "A higher water level would require construction around the map, filling low ground, producing soil, and reaching the golem stage."
+          "note": "A higher water level would require building around the map and probably filling low ground, with soil production and golems needed for that work."
         }
       ],
       "kind": "notable_point",
-      "summary": "The map's larger water-storage option depends on shoreline construction, soil production and a settlement advanced enough to support both."
+      "summary": "Larger water reserves would require construction around the map and probably soil production to raise the surrounding low ground."
     },
     {
       "slug": "western-squadron-brest-blockade-reading",
       "title": "Reading the Western Squadron's Brest blockade",
-      "start": "16:34",
+      "start": "17:18",
       "end": "18:31",
       "topics": [
         "brest-blockade",
@@ -127,13 +150,13 @@
         "royal-navy",
         "western-squadron"
       ],
-      "body": "A preview of the Western Squadron places the blockade of Brest within a much longer Royal Navy effort. The stream describes nearly twenty-two years of blockade between 1793 and 1815, with interruptions rather than one unbroken watch. Its reading suggestions include Roger Knight's Convoys and N. A. M. Rodger's The Command of the Ocean for the wider naval setting, along with The Ardent Ships for Brest itself. Rodger's survey offers a route into British naval history from roughly 1650 to 1850. Together, these books frame blockade as a sustained operational system built around squadrons, convoys, administration and endurance.",
+      "body": "The Western Squadron's blockade of Brest frames a reading guide to Royal Navy operations from 1793 to 1815, a span of nearly twenty-two years. Roger Knight's Convoys is recommended alongside N. A. M. Rodger's The Command of the Ocean. The recommendation presents Rodger's book as broad naval-history reading for roughly 1650 to 1850.",
       "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
       "evidence": [
         {
-          "start": "16:34",
+          "start": "17:18",
           "end": "18:31",
-          "note": "Naval-history questions, a preview of the Western Squadron video, and books on convoys, naval history, and the Brest blockade."
+          "note": "The Western Squadron and the Brest blockade of 1793-1815, with recommendations for Convoys and The Command of the Ocean. A further Brest book title is unclear in the captions."
         }
       ],
       "kind": "notable_point",
@@ -198,13 +221,13 @@
         "resource-management",
         "timberborn"
       ],
-      "body": "Housing is an early production requirement because the Folktails population grows only when adults have room to reproduce. The number of beds sets an effective population ceiling, which in turn limits how many jobs the settlement can fill. More houses can expand the labour force, but the resulting population must still have enough food and water. Timberborn connects demographic growth to infrastructure and subsistence rather than treating workers as an unlimited resource.",
+      "body": "Housing is an early production requirement because the Folktails population grows only when adults have room to reproduce. The number of beds sets an effective population ceiling, which in turn limits how many jobs the settlement can fill. More houses can expand the labour force, but the resulting population must still have enough food and water. The other playable tribe uses breeding pods supplied with berries, so its population depends on a different production arrangement. In either case, growth depends on what the settlement can sustain.",
       "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
       "evidence": [
         {
           "start": "30:08",
           "end": "32:53",
-          "note": "Housing priorities, Folktails reproduction, and sleeping places as the population ceiling."
+          "note": "Housing priorities and Folktails reproduction, compared with the other tribe's berry-fed breeding pods and the need to sustain the resulting population."
         }
       ],
       "kind": "notable_point",
@@ -218,6 +241,7 @@
       "topics": [
         "delegation",
         "fiction-warhammer-40k-jaghatai-khan",
+        "fiction-warhammer-40k-lion-el-jonson",
         "fiction-warhammer-40k-roboute-guilliman",
         "military-administration",
         "military-command",
@@ -247,7 +271,7 @@
         "military-administration",
         "strategic-planning"
       ],
-      "body": "Roboute Guilliman is described as a master politician who presents the version of himself that a situation requires. His rigid and intensely organized image may therefore be partly constructed. Signs of humor suggest a more flexible personality beneath that public role. The fictional example separates administrative competence from the persona a leader uses to project authority.",
+      "body": "Roboute Guilliman's political skill includes presenting the version of himself that a situation requires. His rigid and intensely organized image may therefore be partly constructed. Signs of humor suggest a more flexible personality beneath that public role. The fictional example separates administrative competence from the persona a leader uses to project authority.",
       "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
       "evidence": [
         {
@@ -263,23 +287,31 @@
       "slug": "strategic-command-nimitz-cunningham-st-vincent",
       "title": "Roboute Guilliman through Nimitz, Cunningham and St Vincent",
       "start": "57:39",
-      "end": "1:00:59",
+      "end": "1:01:00",
       "topics": [
+        "andrew-cunningham",
+        "chester-w-nimitz",
+        "dwight-d-eisenhower",
         "fiction-warhammer-40k-roboute-guilliman",
+        "george-s-patton",
+        "john-jervis",
         "military-administration",
         "naval-command",
         "naval-strategy",
+        "oliver-cromwell",
         "royal-navy",
+        "ulysses-s-grant",
         "us-navy",
+        "william-tecumseh-sherman",
         "world-war-ii"
       ],
-      "body": "The historical comparison places Roboute Guilliman closer to Eisenhower, Nimitz, Cunningham and St Vincent than to Grant alone. The shared traits are strategic thought, bureaucracy and organization rather than individual battlefield skill. Cromwell is another possible parallel because he combined military direction with political and administrative ability. A senior coordinator also needs capable operational subordinates, illustrated by Grant and Sherman or Eisenhower and Patton. The fictional comparison separates theater-level direction from the work of commanders sent to conduct particular campaigns and battles.",
+      "body": "The historical comparison places Roboute Guilliman closer to Eisenhower, Nimitz, Cunningham and St Vincent than to Grant alone. The shared traits are strategic thought, bureaucracy and organization rather than personal combat prowess. Cromwell is another possible parallel because he combined military direction with political and administrative ability. A senior coordinator also needs capable operational subordinates, illustrated by Grant and Sherman or Eisenhower and Patton. The fictional comparison separates theater-level direction from the work of commanders sent to conduct particular campaigns and battles.",
       "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
       "evidence": [
         {
           "start": "57:39",
-          "end": "1:00:59",
-          "note": "Roboute Guilliman compared with Nimitz, Cunningham, and St Vincent by strategic thinking, organization, and the division between higher direction and battlefield command."
+          "end": "1:01:00",
+          "note": "Guilliman compared with Eisenhower, Nimitz, Cunningham, St Vincent and Cromwell for strategic and administrative ability. Grant with Sherman and Eisenhower with Patton illustrate the need for operational subordinates."
         }
       ],
       "kind": "notable_point",
@@ -311,28 +343,30 @@
     },
     {
       "slug": "macarthur-or-german-navy-command",
-      "title": "MacArthur as a subordinate or command of the German Navy?",
+      "title": "Serving under MacArthur or commanding the German Navy?",
       "start": "1:03:52",
       "end": "1:04:37",
       "topics": [
+        "douglas-macarthur",
         "kriegsmarine",
         "military-command",
+        "military-force-structure",
         "naval-strategy",
         "world-war-ii"
       ],
-      "body": "Both choices are bad, but MacArthur is the more manageable problem. The joking solution is to keep him incapacitated so that a competent command team can continue without him. Commanding the German Navy leaves no comparable escape because the force itself is profoundly out of balance. The answer distinguishes a difficult subordinate who might be contained through personnel management from a fleet whose composition and war-making capacity impose structural limits on any commander.",
+      "body": "Both choices are treated as difficult, but serving as MacArthur's deputy leaves a way to take effective command. The joke is to give him food poisoning and take over while he is incapacitated. His deputy would then have a capable force to direct. A command role in the German Navy offers no comparable solution because the force itself is profoundly out of balance. Sidelining a commander cannot remove that structural weakness.",
       "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
       "evidence": [
         {
           "start": "1:03:52",
           "end": "1:04:37",
-          "note": "A viewer asks Clarke to choose between MacArthur as second-in-command and command of the German Navy in the Second World War. Clarke chooses MacArthur because he could sideline him, whereas the German Navy remained an absurdly unbalanced war machine."
+          "note": "Preference for serving as MacArthur's deputy, with a joke about incapacitating him to take command, contrasted with the German Navy's unbalanced force."
         }
       ],
       "kind": "qa",
       "summary": "A deliberately unpleasant command choice turns on the German Navy's fundamental imbalance in the Second World War.",
-      "question": "Which is preferable: MacArthur as second-in-command or command of the German Navy in the Second World War?",
-      "answerShort": "MacArthur as second-in-command, because he could be kept away from command while the German Navy's deeper force-structure problems would remain."
+      "question": "Would you rather be MacArthur's second-in-command or command the German Navy in the Second World War?",
+      "answerShort": "Serving under MacArthur is the preferred choice: his deputy could take over a capable force, whereas the German Navy would still be profoundly unbalanced."
     },
     {
       "slug": "wellington-adapting-to-modern-war",
@@ -370,13 +404,13 @@
         "military-command",
         "napoleonic-wars"
       ],
-      "body": "The joke that Wellington might make MacArthur his cavalry commander leads into a criticism of Wellington's own appointments. Officers he disliked could be sent to command the cavalry and then get themselves killed. In this interpretation, those choices help explain the British Army's poor cavalry reputation in the Napoleonic Wars. Personnel decisions can turn conflict among senior officers into an institutional weakness. This is a quick interpretation rather than a complete account of British cavalry performance.",
+      "body": "A joke about putting MacArthur under Wellington ends with the suggestion that he might become Wellington's cavalry commander. The accompanying quip alleges that Wellington put officers he disliked in charge of cavalry because they would get themselves killed. That is offered as a humorous explanation for poor British cavalry performance in the Napoleonic Wars. The criticism concerns the effect of personal dislikes on officer selection, rather than establishing a deliberate policy of sacrificing commanders.",
       "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
       "evidence": [
         {
           "start": "1:07:41",
           "end": "1:08:12",
-          "note": "A joke about putting MacArthur in cavalry command, followed by Wellington's disliked cavalry appointees and British cavalry performance in the Napoleonic Wars."
+          "note": "A humorous claim linking Wellington's dislike of cavalry appointees with their deaths and poor British cavalry performance, prompted by a MacArthur counterfactual."
         }
       ],
       "kind": "notable_point",
@@ -457,7 +491,7 @@
     },
     {
       "slug": "strategy-games-and-basic-needs-sequencing",
-      "title": "Thinking three moves ahead by securing basic needs first",
+      "title": "Planning ahead by securing basic needs first",
       "start": "1:15:25",
       "end": "1:16:33",
       "topics": [
@@ -467,9 +501,11 @@
         "resource-management",
         "strategic-planning",
         "strategy-games",
+        "timberborn",
+        "victoria-3",
         "water-supply"
       ],
-      "body": "The stream contrasts a strategy game with what it calls an empire game: Victoria 3 rewards thinking three or four steps ahead instead of reacting to the latest event. Timberborn demonstrates the same method when timber production is delayed until housing, population growth, water and basic food are secure. More workers are a prerequisite for later industry, and those workers need beds and sustenance before advanced production can scale. The dependency chain determines the sequence: identify what the desired capability requires, then build those foundations in order. An apparently inactive opening can therefore be strategically productive when it removes future bottlenecks.",
+      "body": "Victoria 3 rewards thinking three or four steps ahead, a demand that can catch out players accustomed to reacting to events. Timberborn illustrates the same approach when timber production is delayed until housing, population growth, water and basic food are secure. More workers are needed for later industry, and they need beds and sustenance before that production can expand. Berries, chestnuts and carrots are enough for this early stage. The immediate priority is to establish the population and its supplies before pushing into further production.",
       "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
       "evidence": [
         {
@@ -493,13 +529,13 @@
         "napoleonic-wars",
         "peninsular-war"
       ],
-      "body": "The answer distinguishes tactical movement from strategic purpose. The French could claim that they kept pushing the Anglo-Portuguese army back, but Wellington was already conducting a planned withdrawal toward the Lines of Torres Vedras. His smaller force inflicted substantially greater casualties and bought time for those defenses to be completed. On those terms, Buçaco was an Anglo-Portuguese victory even though the French continued their advance.",
+      "body": "Wellington was already conducting a planned withdrawal toward the Lines of Torres Vedras. At Buçaco, his smaller Anglo-Portuguese force is credited with inflicting two to three times the casualties it suffered. The battle also bought time for those defenses to be completed, which was the immediate strategic purpose. The French could claim that they continued to push the defenders back, but withdrawal was part of Wellington's plan. On that assessment, Buçaco was an Anglo-Portuguese victory despite the continued French advance.",
       "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
       "evidence": [
         {
           "start": "1:16:43",
           "end": "1:18:07",
-          "note": "At Buçaco, the smaller Anglo-Portuguese force inflicted heavier casualties and achieved Wellington's aim of buying time for the Lines of Torres Vedras."
+          "note": "An Anglo-Portuguese victory judged by the stated casualty ratio of two or three to one and by the time gained for the Lines of Torres Vedras."
         }
       ],
       "kind": "qa",
@@ -520,13 +556,13 @@
         "military-logistics",
         "napoleonic-wars"
       ],
-      "body": "The proposed army selects admired components from several national forces and places Wellington and Blücher in senior command. The response warns that assembling excellent parts does not automatically create a coherent whole. Commanders must be able to work together, and the same requirement applies to the troops and support systems placed under them. Compatibility is therefore part of force design rather than a secondary concern.",
+      "body": "The proposed composite army includes French artillery, Portuguese and British infantry, and British logistics under Wellington and Blücher. Other armies also contain good troops, and other generals deserve consideration. There is doubt that Wellington and Blücher would make the best command partnership. Choosing an ideal army therefore requires people who can work together, even when each component looks attractive in isolation.",
       "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
       "evidence": [
         {
           "start": "1:18:11",
           "end": "1:18:52",
-          "note": "A composite Napoleonic army must be able to work together; Wellington and Blücher are considered potentially poor partners despite their individual strengths."
+          "note": "A proposed composite Napoleonic army prompts doubt about Wellington and Blücher as partners, recognition of other good troops and generals, and a requirement for people who can work together."
         }
       ],
       "kind": "qa",
@@ -546,17 +582,17 @@
         "military-operations",
         "mobility"
       ],
-      "body": "The Australian campaign against emus is told as a comic military vignette. Troops use machine guns and lorries yet fail to stop or redirect birds that scatter and continue moving where they want. A powerful weapon may have little practical effect against the wrong kind of target. Mobility, dispersion and the task being attempted matter as much as nominal firepower. Calling the emus Australia's 'unvanquished overlords' keeps the passage firmly in humorous commentary rather than a complete account of the operation.",
+      "body": "The Great Emu War becomes a humorous example of armed force failing to achieve its task. Machine guns and troops in lorries fail to stop the emus going where they want. The joke depends on the gap between the equipment available and the inability to redirect the birds. Descriptions of the emus as Australia's undefeated rulers and superior strategists are comic exaggerations. The operational criticism concerns the failure to divert the animals despite the force deployed.",
       "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
       "evidence": [
         {
           "start": "1:19:23",
           "end": "1:24:24",
-          "note": "The Great Emu War's machine guns, lorries, dispersal, and failure to redirect the emus, discussed with jokes."
+          "note": "Machine guns and troops in lorries fail to divert the emus, followed by jokes about the birds outwitting the Australian Army."
         }
       ],
       "kind": "notable_point",
-      "summary": "The Great Emu War jokes turn on a real operational mismatch between machine guns and lorries and a dispersed, mobile animal population."
+      "summary": "Machine guns and lorries fail to divert the emus in a comic account of an operation that could not achieve its task."
     },
     {
       "slug": "busaco-campaign-logistics-withdrawal",
@@ -564,6 +600,8 @@
       "start": "1:34:07",
       "end": "1:38:38",
       "topics": [
+        "andre-massena",
+        "arthur-wellesley",
         "battle-of-busaco",
         "continental-army",
         "george-washington",
@@ -573,17 +611,17 @@
         "military-withdrawal",
         "peninsular-war"
       ],
-      "body": "Buçaco makes more sense inside Wellington's campaign than as an isolated battlefield result. Wellington intended to fall back on the Lines of Torres Vedras, stretch French supply difficulties until their logistics broke and preserve his own army along the way. Withdrawal from contact in good order is a central test of command because many armies suffered their worst losses after battle when retreat turned into collapse. Wellington's retreat and Washington's preservation of the Continental Army both demonstrate that skill.",
+      "body": "Wellington's purpose at Buçaco was to gain time before falling back on the Lines of Torres Vedras. A Portuguese corps reaching a crossroads in time could have blocked Masséna and forced another battle, delaying the French further. That opportunity did not change the underlying plan: withdrawal remained the intended course unless an extraordinary victory destroyed Masséna's army. The defensive campaign aimed to strain French logistics until they broke. Orderly disengagement mattered because many of the losses that made French victories overwhelming came during the defeated army's withdrawal. Keeping an army together under those conditions required skill and some luck. Washington's repeated preservation of the Continental Army provides another example of recognizing when to pull out and retaining a force.",
       "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
       "evidence": [
         {
           "start": "1:34:07",
           "end": "1:38:38",
-          "note": "Wellington's plan to strain French logistics while withdrawing to the Lines of Torres Vedras, with orderly disengagement as a key test of a general."
+          "note": "A missed opportunity to delay Masséna at a crossroads within Wellington's planned retreat to Torres Vedras. French logistics, orderly withdrawal, skill and luck, and Washington's preservation of his army explain the wider campaign argument."
         }
       ],
       "kind": "notable_point",
-      "summary": "A longer return to Buçaco explains Wellington's plan to stretch French logistics and why orderly withdrawal is a demanding measure of generalship."
+      "summary": "Wellington's planned withdrawal toward Torres Vedras aimed to gain time, strain French logistics and preserve his army."
     },
     {
       "slug": "samuel-pepys-naval-administration",
@@ -596,18 +634,18 @@
         "samuel-pepys",
         "seventeenth-century"
       ],
-      "body": "The answer chooses Samuel Pepys's career because he was good at its demanding administrative work. His example points to the importance of capable officials behind a navy alongside the officers at sea. Pepys's effectiveness makes administration part of the achievement being admired rather than a lesser alternative to command afloat. A personal caveat remains: Pepys wanted children but apparently never became a father, the major ambition his otherwise accomplished life did not fulfill.",
+      "body": "Pepys's job is the preferred choice, though his work was demanding. He is admired for doing it well and for enjoying a full life. The personal reservation concerns his desire for children. He apparently never became a father, despite wanting to, and that unfulfilled wish tempers the favorable assessment.",
       "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
       "evidence": [
         {
           "start": "1:39:10",
           "end": "1:40:02",
-          "note": "In response to a choice involving Samuel Pepys's job, Clarke selects Pepys, calls him good at difficult work, and describes his life as accomplished apart from his unfulfilled wish to be a father."
+          "note": "Preference for Pepys's demanding but successful career, qualified by his apparently unfulfilled wish to become a father. The particular captaincy proposed in the question is unclear."
         }
       ],
       "kind": "qa",
-      "summary": "Samuel Pepys's demanding administrative career is preferred to command at sea because he did the work well and led an accomplished life.",
-      "question": "Which is preferable: a captain's career or Samuel Pepys's job?",
+      "summary": "Samuel Pepys's demanding career is the preferred choice for its accomplishment and enjoyment, with a reservation about his unfulfilled wish for children.",
+      "question": "Would you prefer a captaincy or Samuel Pepys's job?",
       "answerShort": "Pepys's job: it was hard work, but he was effective at it and led an unusually full and successful life."
     },
     {
@@ -621,7 +659,7 @@
         "naval-administration",
         "staff-work"
       ],
-      "body": "Political skill, public communication and administrative competence are separate abilities, and finding all of them in one person is difficult. A leader therefore needs capable advisers and must be willing to listen to them. Building that team is a skill in its own right because complementary abilities and conflicting personalities have to be balanced. Ordinary group projects may miss this work when teachers assign the members or friends choose one another without considering the task's full needs. In a naval or military institution, effective command depends on staffs and administrators as well as the person holding the senior title.",
+      "body": "Political skill, public communication and administrative competence are separate abilities, and finding all of them in one person is difficult. A leader therefore needs capable advisers and must be willing to listen to them. Building that team is a skill in its own right because complementary abilities and conflicting personalities have to be balanced. Ordinary group projects may miss this work when teachers assign the members or friends choose one another without considering the task's full needs. Choosing friends can leave a group with duplicated abilities and missing skills, so team selection needs attention alongside teamwork itself.",
       "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
       "evidence": [
         {
@@ -631,11 +669,11 @@
         }
       ],
       "kind": "notable_point",
-      "summary": "The discussion following Samuel Pepys turns from individual competence to the difficult skill of choosing advisers and balancing a leadership team."
+      "summary": "Leaders need advisers with complementary skills and must judge whether different personalities can work together."
     },
     {
       "slug": "timberborn-as-an-engineering-ecology-simulator",
-      "title": "Why engineering students treat Timberborn as an ecology simulator",
+      "title": "Timberborn's appeal to engineering students",
       "start": "1:50:09",
       "end": "1:51:37",
       "topics": [
@@ -646,17 +684,17 @@
         "timberborn",
         "water-management"
       ],
-      "body": "Engineering students introduced the game because they enjoy its ecological simulation. Timberborn asks players to reshape water, sustain a settlement and use levees to turn suitable ground into farmland. Their enthusiasm comes from systems thinking as much as the beaver theme: environmental conditions, infrastructure and food production all interact. The game remains stylized, but this watch point explains why its water-management choices work as an engineering exercise.",
+      "body": "Alex Clarke's engineering students introduced him to Timberborn because they enjoyed its ecological simulation. The custom map gives water management a direct role in farming. Levees help shape the land available for agriculture, and part of the map is set aside for that use. Designing the terrain lets the player create these interactions between water and food production.",
       "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
       "evidence": [
         {
           "start": "1:50:09",
           "end": "1:51:37",
-          "note": "Clarke says his engineering students introduced him to the game for its ecological simulation and then points to levees and farming on the custom map."
+          "note": "Engineering students' enthusiasm for ecological simulation, followed by the use of levees and farming on the custom map."
         }
       ],
       "kind": "notable_point",
-      "summary": "Engineering students value Timberborn for the way water, levees, ecology and food production interact inside its settlement system."
+      "summary": "Engineering students' interest in ecological simulation leads into an example of levees and farming on a custom Timberborn map."
     },
     {
       "slug": "technical-possibility-versus-sensible-design",
@@ -670,7 +708,7 @@
         "stronghold",
         "technology-adoption"
       ],
-      "body": "The original Stronghold's isometric design is compared favorably with the newer 3D presentation of its sequels. This leads to a broader design question: a technology may allow a feature, but that does not make the feature sensible. Capability and purpose need separate consideration, and an innovation should be judged by what it improves in the system rather than by novelty alone. The verdict on the games is personal, but the engineering point is clear: technical possibility does not justify adoption on its own.",
+      "body": "The original Stronghold's isometric presentation is preferred here to the 3D approach of Stronghold 2 and 3. The judgment concerns enjoyment and gameplay as well as the visual change. A new technical capability does not establish that using it will produce a better game. Designers still need to ask whether the change is sensible for the experience they want to create.",
       "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
       "evidence": [
         {
@@ -688,19 +726,24 @@
       "start": "1:58:50",
       "end": "2:03:25",
       "topics": [
+        "fiction-warhammer-40k-necrons",
+        "fiction-warhammer-40k-orks",
+        "fiction-warhammer-40k-tau",
+        "fiction-warhammer-40k-tyranids",
         "fiction-warhammer-40000-infrastructure",
         "infrastructure-planning",
         "maintenance-and-repair",
+        "research-and-development",
         "strategic-uncertainty",
         "technology-adoption"
       ],
-      "body": "No single faction wins because each depends on a different kind of capability. Necron systems may be excellent, but much of their infrastructure is decaying and no longer maintained. The Imperium possesses vast inherited systems that often go without meaningful upgrades, while the Tau are difficult to judge without knowing more about the group that runs their society. Orks need little conventional infrastructure, and the requirements of the fleet-based Tyranids remain poorly understood. The comparison separates technical stock from the ability to operate, improve and replace it. In this fictional setting, infrastructure creates power only when it fits the user and can be sustained, while unknown requirements make an opponent difficult to assess.",
+      "body": "A clear ranking remains uncertain because the factions have different requirements. Necron infrastructure is theoretically excellent but decaying without adequate maintenance, while the Imperium possesses vast systems that often receive no upgrades. Ordinary improvements to tanks, equipment and armour should have continued regardless of the gene-seed changes associated with the Primaris project. The Tau are difficult to judge without knowing more about those who run their society. Orks need little conventional infrastructure. The Tyranids appear to be an entirely fleet-based organism, but too little is understood about them to assess their infrastructure or the full threat they pose. In this fictional comparison, inherited equipment, maintenance and continuing development need separate consideration. Uncertainty about an opponent's requirements also limits the usefulness of comparisons.",
       "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
       "evidence": [
         {
           "start": "1:58:50",
           "end": "2:03:25",
-          "note": "Warhammer 40,000 infrastructure compared: decaying Necron systems, failure to upgrade Imperial equipment, Orks' limited conventional needs, and uncertainty about fleet-based Tyranids."
+          "note": "Decaying Necron systems, Imperial failures to improve tanks and equipment independently of gene-seed work, uncertainty about Tau leadership, Orks' limited needs, and poorly understood Tyranid infrastructure."
         }
       ],
       "kind": "qa",
@@ -721,17 +764,17 @@
         "no-win-scenarios",
         "scenario-based-learning"
       ],
-      "body": "The teaching sequence begins with an abstract no-win scenario in which the learner has no personal stake. That distance matters because people resist admitting that their own command problem cannot be won. An historical case comes next, asking what a real decision-maker did under comparable constraints. Only after those models are understood does the learner enter a new scenario without being told that it is unwinnable. Fiction and history create progressive levels of distance, allowing judgment and self-awareness to develop before ego enters the exercise.",
+      "body": "Star Trek's Kobayashi Maru puts the participant personally in command of a no-win scenario. That makes it difficult to admit that the situation cannot be won. The proposed teaching sequence begins with an abstract example in which the learner has no personal stake, allowing the problem to be recognized at a distance. A historical case follows, asking what a real decision-maker did under comparable constraints. Only after those examples does the learner enter a scenario without being told that it is unwinnable. The progression gives the learner a basis for recognizing the predicament before having to confront it in a command role.",
       "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
       "evidence": [
         {
           "start": "2:09:23",
           "end": "2:10:45",
-          "note": "Clarke explains a teaching progression from an abstract no-win scenario to a historical example and finally to a personally involving command problem."
+          "note": "The Kobayashi Maru's personal command problem and a proposed teaching progression from an abstract no-win scenario to a historical example and then a personally involving exercise."
         }
       ],
       "kind": "notable_point",
-      "summary": "Fiction, historical cases and personal command scenarios become a staged method for teaching people to recognize decisions that cannot produce a clean victory."
+      "summary": "Abstract examples, historical cases and personal command scenarios provide a staged method for learning to recognize unwinnable situations."
     },
     {
       "slug": "imperium-xenophobia-and-pragmatic-agreements",
@@ -744,7 +787,7 @@
         "institutional-pragmatism",
         "political-doctrine"
       ],
-      "body": "The Imperium is described as xenophobic in its official posture yet much more pragmatic in practice. Its many agreements with alien groups do not fit the strict doctrine proclaimed on paper. The gap shows policy being applied more flexibly than the setting's ideology suggests. This is an interpretation of a fictional institution and its diplomacy.",
+      "body": "The Imperium's official xenophobia coexists with pragmatic agreements with alien groups. Those agreements do not fit the strict doctrine proclaimed on paper. The gap suggests that policy is applied more flexibly than the ideology implies. This is an interpretation of a fictional institution and its diplomacy.",
       "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
       "evidence": [
         {
@@ -763,23 +806,47 @@
       "end": "2:43:21",
       "topics": [
         "fiction-warhammer-40k-roboute-guilliman",
+        "fiction-warhammer-40000-space-marines",
         "force-generation",
         "military-force-structure",
         "military-readiness",
         "offensive-operations",
         "strategic-planning"
       ],
-      "body": "Roboute Guilliman's tolerance of chapters growing beyond the thousand-Marine limit is treated as a pragmatic response to military need. Restoring existing chapters to strength provides immediate readiness, while allowing other formations to grow builds capacity for later crusades. Those larger forces may develop away from active fronts, but their accumulated personnel make future offensive operations possible. The force-structure choice follows the strategy: Guilliman cannot defeat Abaddon by remaining permanently on the defensive after the enemy has had time to prepare long-term plans. The setting is fictional, yet the force must still be generated and made ready before it can regain the initiative.",
+      "body": "Roboute Guilliman's tacit tolerance of chapters growing beyond the thousand-Marine limit is interpreted as a pragmatic response to military need. This is a distinction between tolerating expansion and formally changing the rule. Removing a limit would still leave formations needing time to build their strength. Replenishing existing chapters to their authorized numbers provides immediate readiness, while allowing further growth prepares capacity for later crusades. Formations away from active fronts may have more opportunity to accumulate personnel. The strategic argument is that Guilliman must eventually regain the offensive against Abaddon, whose preparations have already achieved their primary objectives. In this fictional war, changing force policy and generating the troops needed to act on it are separate tasks.",
       "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
       "evidence": [
         {
           "start": "2:38:37",
           "end": "2:43:21",
-          "note": "Guilliman's pragmatic tolerance of chapters exceeding older limits, their potential role in future crusades, and the case that remaining on the defensive cannot win the war."
+          "note": "Tacit tolerance of larger chapters, the time needed to increase their numbers, replenishment to authorized strength, and the argument for building forces for future offensives against Abaddon."
         }
       ],
       "kind": "notable_point",
       "summary": "Guilliman's tolerance of oversized Space Marine chapters reflects a force-generation problem: formations must grow before a state can sustain offensive action."
+    },
+    {
+      "slug": "warhammer-chapter-trainees-and-replacement-capacity",
+      "title": "Trainees as a reserve beyond formal strength limits",
+      "start": "2:44:19",
+      "end": "2:44:53",
+      "topics": [
+        "fiction-warhammer-40000-space-marines",
+        "force-generation",
+        "military-reserves",
+        "military-training"
+      ],
+      "body": "A chapter can keep substantial numbers of aspirants outside its count of full Space Marines. That offers a way to remain formally compliant with chapter limits while preparing more personnel. Those trainees can become full Marines quickly when needed. In this fictional example, replacement capacity depends on the pool already in training as well as the formation's present strength.",
+      "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
+      "evidence": [
+        {
+          "start": "2:44:19",
+          "end": "2:44:53",
+          "note": "Large numbers of trainees preserve formal compliance while providing personnel who can become full Marines quickly."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "A large pool of aspirants can provide rapid replacements while a Space Marine chapter remains formally within its strength limit."
     },
     {
       "slug": "research-capacity-before-advanced-infrastructure",
@@ -792,7 +859,7 @@
         "research-and-development",
         "timberborn"
       ],
-      "body": "The settlement cannot place an underground pile on demand because research must unlock the design first. Early inventors generate science, while later observatories expand that capacity as advanced systems demand larger research reserves. Production also moves from logs to planks to gears, so knowledge and manufacturing capacity have to develop together. Timberborn simplifies technological change, but the moment shows why advanced infrastructure depends on institutions that produce knowledge as well as workshops that turn designs into equipment.",
+      "body": "The settlement cannot place an underground pile on demand because research must unlock the design first. Early inventors generate science, while later observatories expand that capacity as advanced systems demand larger research reserves. Production also moves from logs to planks to gears, so knowledge and manufacturing capacity have to develop together. Advanced infrastructure therefore depends on research capacity and the workshops that supply its components.",
       "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
       "evidence": [
         {
@@ -803,6 +870,32 @@
       ],
       "kind": "notable_point",
       "summary": "An underground store cannot be ordered on demand: inventors, observatories and a logs-to-planks-to-gears production chain must create the capability first."
+    },
+    {
+      "slug": "warhammer-dividing-regency-and-command-across-fronts",
+      "title": "A proposed division of command across the Imperium",
+      "start": "2:47:07",
+      "end": "2:48:11",
+      "topics": [
+        "delegation",
+        "fiction-warhammer-40k-dante",
+        "fiction-warhammer-40k-jaghatai-khan",
+        "fiction-warhammer-40k-lion-el-jonson",
+        "fiction-warhammer-40k-roboute-guilliman",
+        "military-administration",
+        "military-command"
+      ],
+      "body": "One imagined command arrangement leaves Guilliman running the Imperium as regent while Lion El'Jonson becomes its senior military commander. Another Primarch would assist Dante, with a further one operating more freely. Jaghatai Khan is the preferred partner for Dante because the two are expected to work well together. Their partnership would repeat the division between field command and the administrative work of a regent. This is a speculative arrangement for the fictional setting, built around delegating duties and matching personalities.",
+      "sourcePath": "src/transcripts/txt/2023-04-05_T18-00-26_timberborne-a-test-for-year-of-technology-my-students-favourite-engineering-game-2nd-edition_ejo0Euj-swM.txt",
+      "evidence": [
+        {
+          "start": "2:47:07",
+          "end": "2:48:11",
+          "note": "A proposed division among Guilliman, Lion and other Primarchs, with Khan suggested as a compatible partner for Dante and command separated from administration."
+        }
+      ],
+      "kind": "notable_point",
+      "summary": "A speculative Guilliman-Lion arrangement extends the split between administration and field command to a possible Khan-Dante partnership."
     }
   ]
 }
