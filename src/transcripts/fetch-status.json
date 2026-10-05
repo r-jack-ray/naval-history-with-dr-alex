@@ -1,31 +1,33 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-10-03T23:05:50.992Z",
+  "updatedAt": "2026-10-05T16:13:19.613Z",
   "inputPath": "src/channel/episodes.json",
   "outputRoot": "src/transcripts",
   "requestDelayMs": 5000,
   "retryFailed": false,
   "force": false,
-  "pendingHandoffTxtPaths": [],
+  "pendingHandoffTxtPaths": [
+    "src/transcripts/txt/2026-10-04_T18-40-39_bruships-262-naval-history-questions-answered-live_oN-Vgo9KkS4.txt"
+  ],
   "blockedVerticalStreamIds": [],
   "stats": {
     "inputVideoCount": 2206,
-    "skippedStoredCount": 2179,
-    "skippedDeferredCount": 11,
+    "skippedStoredCount": 0,
+    "skippedDeferredCount": 0,
     "skippedShortDurationCount": 0,
     "skippedVerticalStreamCount": 0,
     "deferredCounts": {
-      "upcoming": 11,
+      "upcoming": 0,
       "live_in_progress": 0,
       "processing": 0,
       "metadata_missing": 0,
       "invalid_metadata": 0
     },
-    "skippedPreviousFailureCount": 15,
+    "skippedPreviousFailureCount": 0,
     "attemptedCount": 1,
     "fetchedCount": 1,
     "failedCount": 0,
-    "pendingCount": 15,
+    "pendingCount": 2205,
     "totalFailureCount": 15
   },
   "failures": [
