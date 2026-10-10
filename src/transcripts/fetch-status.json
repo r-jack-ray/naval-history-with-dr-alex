@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-10-09T21:17:36.055Z",
+  "updatedAt": "2026-10-10T20:14:10.083Z",
   "inputPath": "src/channel/episodes.json",
   "outputRoot": "src/transcripts",
   "requestDelayMs": 5000,
@@ -10,23 +10,23 @@
   "blockedVerticalStreamIds": [],
   "stats": {
     "inputVideoCount": 2209,
-    "skippedStoredCount": 2181,
-    "skippedDeferredCount": 11,
+    "skippedStoredCount": 2183,
+    "skippedDeferredCount": 10,
     "skippedShortDurationCount": 0,
     "skippedVerticalStreamCount": 0,
     "deferredCounts": {
-      "upcoming": 11,
+      "upcoming": 10,
       "live_in_progress": 0,
       "processing": 0,
       "metadata_missing": 0,
       "invalid_metadata": 0
     },
-    "skippedPreviousFailureCount": 16,
+    "skippedPreviousFailureCount": 15,
     "attemptedCount": 1,
     "fetchedCount": 1,
     "failedCount": 0,
-    "pendingCount": 16,
-    "totalFailureCount": 16
+    "pendingCount": 15,
+    "totalFailureCount": 15
   },
   "failures": [
     {
@@ -52,14 +52,6 @@
       "error": "No caption tracks found for video: 2FM59LjWsyI.",
       "title": "Arethusa Class Cruisers",
       "videoDateAt": "2020-11-03T18:05:31Z"
-    },
-    {
-      "videoId": "4DVE9dXe-R4",
-      "attemptedAt": "2026-10-07T19:56:04.527Z",
-      "classification": "no_caption_tracks",
-      "error": "No caption track matched language: en.",
-      "title": "Royal Navy Destroyers of WWI...",
-      "videoDateAt": "2026-10-07T18:30:06Z"
     },
     {
       "videoId": "8vkrEqP1xUM",
