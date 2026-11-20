@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "updatedAt": "2026-11-18T08:06:42.947Z",
+  "updatedAt": "2026-11-20T15:25:44.306Z",
   "inputPath": "src/channel/episodes.json",
   "outputRoot": "src/transcripts",
   "requestDelayMs": 5000,
@@ -9,24 +9,24 @@
   "pendingHandoffTxtPaths": [],
   "blockedVerticalStreamIds": [],
   "stats": {
-    "inputVideoCount": 2241,
-    "skippedStoredCount": 2220,
-    "skippedDeferredCount": 3,
+    "inputVideoCount": 2247,
+    "skippedStoredCount": 2223,
+    "skippedDeferredCount": 5,
     "skippedShortDurationCount": 0,
     "skippedVerticalStreamCount": 0,
     "deferredCounts": {
-      "upcoming": 3,
-      "live_in_progress": 0,
+      "upcoming": 4,
+      "live_in_progress": 1,
       "processing": 0,
       "metadata_missing": 0,
       "invalid_metadata": 0
     },
     "skippedPreviousFailureCount": 15,
-    "attemptedCount": 3,
+    "attemptedCount": 4,
     "fetchedCount": 3,
-    "failedCount": 0,
+    "failedCount": 1,
     "pendingCount": 15,
-    "totalFailureCount": 15
+    "totalFailureCount": 16
   },
   "failures": [
     {
@@ -140,6 +140,14 @@
       "error": "No caption tracks found for video: usSZIzRtuas.",
       "title": "No Sound??? Battle of the Atlantic: Escort Procurement - Comment Response",
       "videoDateAt": "2021-08-23T16:00:32Z"
+    },
+    {
+      "videoId": "vr5bamtOpyg",
+      "attemptedAt": "2026-11-20T15:25:15.319Z",
+      "classification": "no_caption_tracks",
+      "error": "No caption tracks found for video: vr5bamtOpyg.",
+      "title": "Historiophon 2026 part 9 of 18 for the National Museums of the Royal Navy",
+      "videoDateAt": "2026-11-19T12:59:54Z"
     },
     {
       "videoId": "xsE4uYFn1m0",
